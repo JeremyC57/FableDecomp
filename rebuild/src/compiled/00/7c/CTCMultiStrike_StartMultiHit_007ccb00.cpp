@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007CCB00, 619 bytes, `ret 8`.
 // Callees: CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10
 //   (CIntelligentPointer<CThing> vtable 0x01238C6C), __ftol2 @ 0x00BFEA70, GetSubDef<CSpecialEffectsDef> @ 0x00669580,
-//   CalcAndLookup @ 0x00669D30, CCharString @ 0x0099EBF0/0x0099EAE0, CThing::GetPosition @ 0x004C73D0, CreateParticleEffect
+//   CalcAndLookup @ 0x00669D30, CCharString @ 0x0099EBF0/0x0099EAE0, CThing::GetPos @ 0x004C73D0, CreateParticleEffect
 //   @ 0x0072AB70 (__fastcall), const LowerBound @ 0x004365B0 (0x13) / LowerBound @ 0x0040F020 (0x68), CTCMultiStrike::
 //   RemoveEffectOnWeapon @ 0x007CC9E0, CThing::GetPlayer @ 0x004C7A30, CPlayer::IsMainPlayer @ 0x00487520,
 //   GFGetSystemManager @ 0x009A4EC0, CThing::GetJoystickDeviceNumber @ 0x004C7CA0, the joystick's Rumble (slot 17),
@@ -152,7 +152,7 @@ public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     CPlayer* GetPlayer() const;                        // 0x004C7A30
     long GetJoystickDeviceNumber() const;              // 0x004C7CA0
 };
@@ -247,7 +247,7 @@ void CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target)
     long effect = 0;
     bool found = ((CDefClassBase*)PDef.Object)->GetSubDef(&effects) && effects->CalcAndLookup("HIT_EFFECT", &effect);
     if (found)
-        CreateParticleEffect(effect, target->GetPosition());
+        CreateParticleEffect(effect, target->GetPos());
     const CThing* parentThing = ParentThing;
     if (parentThing->HasTC(0x13)) {
         CThing* weapon = ((CTCWeaponHolder*)parentThing->GetTC(0x13))->PWeapon.GetPItem();

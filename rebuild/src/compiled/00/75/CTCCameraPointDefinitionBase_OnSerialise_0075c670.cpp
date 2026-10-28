@@ -3,7 +3,7 @@
 // Leaf: OnSerialise
 //
 // Retail 0x0075C670, 714 bytes (`ret 8`).
-// Callees: CThing::GetPosition @ 0x004C73D0, CPersistContext::Transfer<bool> @ 0x004045C0, Transfer<float> @ 0x00410620
+// Callees: CThing::GetPos @ 0x004C73D0, CPersistContext::Transfer<bool> @ 0x004045C0, Transfer<float> @ 0x00410620
 // ("FOV", default 72), Transfer<C3DVector> @ 0x004859AD (manifest label Transfer<CFloatRange> is a propagated name);
 // virtual OnSerialseLeaf (vtable +0x84, slot 33).
 // Layout = Ego_r.pdb CTCCameraPointDefinitionBase (64 bytes, packed: CoordBase +0x16, CoordAxis +0x22 unaligned), as the
@@ -27,7 +27,7 @@ class CRightHandedSet { public:
     C3DVector Forward;                          // +0x0c
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CPersistContext { public:
     unsigned char _pad00[0x18];
@@ -96,7 +96,7 @@ public:
 
 void CTCCameraPointDefinitionBase::OnSerialise(CPersistContext& context, bool transfer)
 {
-    C3DVector parentPos = ParentThing->GetPosition();
+    C3DVector parentPos = ParentThing->GetPos();
     context.Transfer("CutInto", CutInto, false);
     context.Transfer("CutOutOf", CutOutOf, false);
     context.Transfer("TestAngleBeforeActivation", TestAngleBeforeActivation, false);

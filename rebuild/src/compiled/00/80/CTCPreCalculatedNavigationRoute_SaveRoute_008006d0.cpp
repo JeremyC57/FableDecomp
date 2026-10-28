@@ -1,6 +1,6 @@
 // CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context) -- when the target thing exists and is alive, recompute the owner->target route and save its step count, then each step's local position and nav layer; otherwise save a step count of 0
 // Retail: Fable.exe @ 0x008006D0, 480 bytes (`ret 4`).
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0, CalculateRouteFromTo 0x00800540,
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, CalculateRouteFromTo 0x00800540,
 //   CPersistContext::Transfer<long> 0x00410BE0 / <C2DVector> 0x00800B90 / <unsigned char> 0x00405A60, CTCBase::PeekWorldMap
 //   0x00686D20, CWorldMap::ConvertWorldMapCoordsToLocalCoords 0x004FC330, GFIntToCharString 0x0099F830,
 //   operator+(const char*, const CCharString&) 0x0099F690, CCharString::ToConstChar 0x0099E4C0, ~CCharString 0x0099EAE0, free 0x00BFEA14.
@@ -21,7 +21,7 @@ class CThing { public:
     short          RegionIndex;                     // +0x8e
     unsigned char  _pad90;
     unsigned char  Dead : 1;                        // +0x91 bit 0
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -86,7 +86,7 @@ void CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context)
         CThing* owner = Owner;
         long region = owner->RegionIndex;
         CNavStepVector route;
-        CalculateRouteFromTo(owner->GetPosition(), PThingToCalculateRouteTo.GetPItem()->GetPosition(), route);
+        CalculateRouteFromTo(owner->GetPos(), PThingToCalculateRouteTo.GetPItem()->GetPos(), route);
         long steps = route.size();
         context->Transfer("NumberOfStepsOnRoute", steps, 0);
         long i = 0;

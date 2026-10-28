@@ -32,7 +32,7 @@ class CMessageEventFilter_IsOriginatedByThing { public:
 
 class CMessageEventFilter_IsTargettedAtThing { public:
     unsigned __int64 UID;
-    CMessageEventFilter_IsTargettedAtThing(const CThing* thing);    // 0x006AF290
+    CMessageEventFilter_IsTargettedAtThing(const CThing& thing);    // 0x006AF290 ??0CMessageEventFilter_IsTargettedAtThing@@QAE@ABVCThing@@@Z
 };
 
 template<class A, class B> class CFilter_Bind2 { public:
@@ -115,7 +115,7 @@ bool CAIStateGroup_GoToPub::GetPaymentRequestReplyMessage()
     CThing* barman = PBarman.GetPItem();
     CMessageEvent* event;
     if (AIAction_WaitForMessage(2, CReplyFilter(CMessageEventFilter_IsOfType(0x30), CMessageEventFilter_IsOriginatedByThing(*barman),
-            CMessageEventFilter_IsTargettedAtThing(creature)), &event) == 2) {
+            CMessageEventFilter_IsTargettedAtThing(*creature)), &event) == 2) {
         GetPWorld()->GetPMessageManager()->RemoveMessage(event);
         return true;
     }

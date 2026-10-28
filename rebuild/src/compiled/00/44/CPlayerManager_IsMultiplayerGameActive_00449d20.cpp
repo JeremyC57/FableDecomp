@@ -3,13 +3,14 @@ struct PlayerActivity
     unsigned char unused00[0x91];
     unsigned char flags91;
 };
+class CThingPlayerCreature : public PlayerActivity { };
 
 class CPlayer
 {
 public:
     unsigned char unused00[0x28];
     int playerIndex;
-    PlayerActivity* GetActivity() const;
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 
 struct PlayerVector
@@ -49,7 +50,7 @@ bool CPlayerManager::IsMultiplayerGameActive() const
                     if (player->playerIndex != neutralPlayerIndex)
                     {
                         player = GetPlayer(slot);
-                        PlayerActivity* activity = player->GetActivity();
+                        PlayerActivity* activity = player->GetPControlledCreature();
                         if (activity != 0 && (activity->flags91 & 1) == 0)
                             return true;
                     }

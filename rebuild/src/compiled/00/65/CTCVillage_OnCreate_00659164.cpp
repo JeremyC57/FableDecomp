@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00659164, 305 bytes (plain `ret`, `leave`).
 // Callees: CTCBase::GetDefinitionManager() const 0x006869D0; CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) 0x0042AF3C;
 //          CDefClassBase::GetSubDef<CVillageDef>(CDefPointer<const CVillageDef>*) 0x0065F440 (into PDef);
-//          CWorld::GetCurrentPlayer() const 0x0049D9D0; CPlayer::GetCharacterThing() 0x00487DC0;
+//          CWorld::GetCurrentPlayer() const 0x0049D9D0; CPlayer::GetPControlledCreature() 0x00487DC0;
 //          CDefClassBase::GetSubDef<CVillagePeopleDef> 0x00512FE0; IS_THING_ALIVE<const CThing*>(const CThing* const&) 0x0043DBD0
 //          (`__fastcall`); std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x14); CVectorMap<ETCInterfaceType,
 //          CTCBase*>::LowerBound 0x0040F020; the interface-0x14 component's ratio getter 0x005CDBBE (manifest
@@ -110,10 +110,11 @@ public:
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
-// Stand-in body for IS_THING_ALIVE<const CThing*> 0x0043DBD0 (`__fastcall`, defined in another TU; retail's link-time
+class CThingPlayerCreature : public CThing { };
+// Stand-in body for IS_THING_ALIVE<CThingPlayerCreature*> 0x0043DBD0 (`__fastcall`, defined in another TU; retail's link-time
 // knowledge that it only reads its argument lets the hero stay in edi across the call).
 #pragma auto_inline(off)
-__declspec(noinline) bool __fastcall IS_THING_ALIVE(const CThing* const& thing)
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)
 {
     if (thing == 0)
         return false;
@@ -125,7 +126,7 @@ struct CTCRenownRatio {                         // the interface-0x14 component
     float CalculateRatio();                     // 0x005CDBBE
 };
 class CPlayer { public:
-    CThing* GetCharacterThing();                // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
 };
 class CWorld { public:
     unsigned char _pad_0x00[0x1c];
@@ -178,7 +179,7 @@ void CTCVillage::OnCreate()
     StanceToHero = PDef->DefaultStanceToHero;
     NextGuardRespawn = 0;
     InCurfew = false;
-    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetCharacterThing();
+    CThingPlayerCreature* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
     CDefPointer<CVillagePeopleDef> peopleDef;
     if (thingDef->GetSubDef(&peopleDef) && IS_THING_ALIVE(hero) && hero->HasTC(0x14))
         NextGuardRespawn = (long)(((CTCRenownRatio*)hero->GetTC(0x14))->CalculateRatio()

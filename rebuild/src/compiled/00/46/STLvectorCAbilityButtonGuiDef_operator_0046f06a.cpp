@@ -14,7 +14,9 @@ template<class T>__forceinline T*_Copy(T*first,T*last,T*out){for(int n=last-firs
 template<class T>__forceinline void _Construct(T*p,const T&v){if(p)new(p)T(v);}
 template<class T>__forceinline void _UninitializedCopy(T*out,T*first,T*last){while(first!=last){_Construct(out,*first++);++out;}}
 template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;
+ protected:
  T*_M_allocate_and_copy(unsigned,T*,T*);void _M_clear();vector&operator=(const vector&);
+ public:
 };
 template<class T>vector<T>&vector<T>::operator=(const vector&rhs){
  if(&rhs!=this){unsigned count=rhs._M_finish-rhs._M_start;

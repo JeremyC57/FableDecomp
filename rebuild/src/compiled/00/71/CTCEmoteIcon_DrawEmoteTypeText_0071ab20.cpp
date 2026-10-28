@@ -68,7 +68,7 @@ class CThing { public:
     unsigned char _pad20[0x64 - 0x20];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     CTCGraphicAppearance* GetGraphicAppearance() const { return PGraphicAppearance; }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 class CMainGameComponent { public:
     unsigned char _pad00[0x16144];
@@ -97,7 +97,7 @@ class CTCEmoteIcon : public CTCBase { public:
 void CTCEmoteIcon::DrawEmoteTypeText(const CEnginePrimitivePrepareInfo& info)
 {
     const CWorld* camera = (&PeekWorld());
-    const C3DVector& pos = ParentThing->GetPosition();
+    const C3DVector& pos = ParentThing->GetPos();
     if ((camera->GetPosition() - pos).GetLengthSquared() < 576.0f) {
         C3DVector focal;
         if (ParentThing->GetGraphicAppearance()->GetStaticFocalPosIfLoaded(&focal)) {

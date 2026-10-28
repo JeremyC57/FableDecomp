@@ -1,7 +1,7 @@
 // CTCTavernGameCoinGolf::GetCamera(C3DVector& camPos, C3DVector& lookAt) -- overview camera orbiting the table by the Z angle; once the coin is live, a chase camera behind and above the coin, pitched and turned by the player's angles
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007D3560, 416 bytes (+ int3 padding), `ret 8`.
 // Callees: C3DVector rotate-about-Z 0x00A14040 (landed spelling, 0x007A9960) and the two-angle rotate 0x00A14260;
-//   CBaseIntelligentPointer::GetPItem 0x00A01B50 (inline IS_THING_ALIVE + the position fetch); CThing::GetPosition 0x004C73D0.
+//   CBaseIntelligentPointer::GetPItem 0x00A01B50 (inline IS_THING_ALIVE + the position fetch); CThing::GetPos 0x004C73D0.
 // Constants: 0.05f/1.75f immediates, 0.1f 0x0122EE58, 0.9f 0x0126F3C8, 0.25f 0x0123078C, 0.2f 0x012305A0, 0.025f 0x0126F42C.
 // Layout: ZAngle +0x148 / XAngle +0x14c (PDB +0x160/+0x164: retail CTCTavernGame base is 0x18 smaller); +0x108 coin record
 //   pointer whose thing pointer sits at the odd offset +0x25 (pack(1)); +0x10c table centre (descriptive names).
@@ -23,7 +23,7 @@ class CThing {
 public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -75,7 +75,7 @@ void CTCTavernGameCoinGolf::GetCamera(C3DVector& camPos, C3DVector& lookAt)
     camPos = offset;
     lookAt = centre;
     if (PCoin && IS_THING_ALIVE(PCoin->Thing)) {
-        lookAt = PCoin->Thing.GetPItem()->GetPosition();
+        lookAt = PCoin->Thing.GetPItem()->GetPos();
         lookAt.Z += 0.1f;
         camPos = C3DVector(0.0f, XAngle * 0.9f + 0.25f, 0.0f);
         camPos.Rotate(0.0f, XAngle * 0.2f + 0.025f);

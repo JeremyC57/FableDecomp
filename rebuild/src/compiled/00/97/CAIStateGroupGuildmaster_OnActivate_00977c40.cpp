@@ -2,14 +2,14 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00977C40, length 436 bytes (+ int3 padding; `and esp,-8` frame for the 8-byte
 // intelligent-pointer temporary).
 // Callees: CAIStateGroup_Guildmaster::FindAndStoreBodyguards @ 0x00977B10, CCharString(const char*, long) @ 0x0099EBF0 / copy
-// ctor @ 0x0099EC30 / ~CCharString @ 0x0099EAE0 ("GuildmasterTeleportMarker" @ 0x01298840), CThing::GetPosition @ 0x004C73D0,
+// ctor @ 0x0099EC30 / ~CCharString @ 0x0099EAE0 ("GuildmasterTeleportMarker" @ 0x01298840), CThing::GetPos @ 0x004C73D0,
 // __ftol2 @ 0x00BFEA70, CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, the rough-area collector @ 0x00978250 (three
 // arguments: box, filter, output vector; the manifest "GetPBestThingInRoughArea<HasTrackName, Nearest, CThingTrackNode>"
 // is a BSim guess with five), CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 /
 // dtor @ 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C), the member vector's _M_insert_overflow @ 0x004AC940,
 // CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 = bit 17 of +0x24), CTCCreatureModeManager::HasMode
 // @ 0x0073A8A0 / AddMode @ 0x0073AE10, the CRT free @ 0x00BFEA14 (the local vector's storage).
-// Shape: the name and a NAMED filter copy are built before the position (one GetPosition, x then y truncated); the box is a
+// Shape: the name and a NAMED filter copy are built before the position (one GetPos, x then y truncated); the box is a
 // temporary; a same-TU noinline stand-in for the collector (retail instantiates it in this TU) lets VC keep the local vector's
 // start in esi across the loop (reloaded at the latch and reused by the final free); size() cached before an unsigned loop.
 // Layout: Guildmaster from Ego_r.pdb (base 0x14): TeleportMarkers +0x28, LastWillFrame +0x34 and LastTeleportFrame +0x38 (PDB
@@ -28,7 +28,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -139,7 +139,7 @@ void CAIStateGroup_Guildmaster::OnActivate()
     {
         CCharString name("GuildmasterTeleportMarker");
         CThingFilter_HasTrackName filter(name);
-        const C3DVector& pos = GetCreature()->GetPosition();
+        const C3DVector& pos = GetCreature()->GetPos();
         long x = (long)pos.X;
         long y = (long)pos.Y;
         PeekThingSearchTools()->GetAllThingsInRoughArea(C2DBoxI(x - 55, y - 55, x + 55, y + 55), filter, markers);

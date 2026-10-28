@@ -12,9 +12,9 @@ struct CShaderHolder_009f2e20 {
     void Release();                                // 0x009F2E20
 };
 
-struct CBufferHolder_009f9f70 {
+struct CTexture {
     unsigned char _body[0xc];
-    void Release();                                // 0x009F9F70
+    void Uninitialise();                           // 0x009F9F70 ?Uninitialise@CTexture@@QAEXXZ
 };
 
 class CEngineShadowRenderer { public:
@@ -22,11 +22,11 @@ class CEngineShadowRenderer { public:
     bool                   m_defaultPoolHeld;      // +0x2af
     unsigned char          _pad2b0[0x14];
     CRenderTarget          m_renderTarget;         // +0x2c4
-    CBufferHolder_009f9f70 m_bufferA;              // +0x2e8
+    CTexture m_bufferA;              // +0x2e8
     unsigned char          _pad2f4[4];
     CShaderHolder_009f2e20 m_shaderA;              // +0x2f8
     CShaderHolder_009f2e20 m_shaderB;              // +0x308
-    CBufferHolder_009f9f70 m_bufferB;              // +0x318
+    CTexture m_bufferB;              // +0x318
     void OnReleaseDefaultPoolResources();
 };
 
@@ -36,8 +36,8 @@ void CEngineShadowRenderer::OnReleaseDefaultPoolResources()
         m_renderTarget.Uninitialise();
         m_shaderB.Release();
         m_shaderA.Release();
-        m_bufferB.Release();
-        m_bufferA.Release();
+        m_bufferB.Uninitialise();
+        m_bufferA.Uninitialise();
         m_defaultPoolHeld = false;
     }
 }

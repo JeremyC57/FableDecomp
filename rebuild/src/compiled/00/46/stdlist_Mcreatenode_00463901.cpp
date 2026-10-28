@@ -1,5 +1,5 @@
 // std::list::_M_create_node(const CStringParserCommentBoundaries& __x) -- (list<CStringParserCommentBoundaries>) allocate a node and copy-construct x into it
-// Leaf: ?_M_create_node@?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@QAEPAU?$_List_node@VCStringParserCommentBoundaries@@@2@ABVCStringParserCommentBoundaries@@@Z
+// Leaf: ?_M_create_node@?$list@VCStringParserCommentBoundaries@@V?$allocator@VCStringParserCommentBoundaries@@@std@@@std@@IAEPAU?$_List_node@VCStringParserCommentBoundaries@@@2@ABVCStringParserCommentBoundaries@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00463901, 34 bytes, thiscall (this unused), `ret 4` (size-optimised module).
 // Identity (proven): its caller is the landed list<CStringParserCommentBoundaries>::_M_insert_dispatch 0x004638C8 (the CStringParser copy constructor's comment-boundary list).
 // Callees: malloc 0x00BFEA0E (the node allocator).
@@ -20,12 +20,14 @@ public:
 };
 template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
 public:
+    protected:
     _List_node<_Tp>* _M_create_node(const _Tp& __x)
     {
         _List_node<_Tp>* __p = this->_M_node.allocate(1);
         _Construct(&__p->_M_data, __x);
         return __p;
     }
+    public:
 };
 template class list<CStringParserCommentBoundaries >;
 }

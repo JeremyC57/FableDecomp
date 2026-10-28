@@ -1,7 +1,7 @@
 // CTCContainerRewardHero::ReleaseItems(float speed) -- pop every reward item out of the container: each item is created as a thing object a little above the container (0.1 up) and launched along a popout vector laid out in rings of up to eight, then every created object is told to ignore its siblings and the item list is cleared
 // Leaf: ReleaseItems
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074E6E0, 384 bytes (`ret 4`).
-// Callees: CThing::GetPosition() const @ 0x004C73D0, GeneratePopoutVectorFromVars(long, long, long, float) const @ 0x0074E140
+// Callees: CThing::GetPos() const @ 0x004C73D0, GeneratePopoutVectorFromVars(long, long, long, float) const @ 0x0074E140
 // (C3DVector by hidden pointer), CreateNewObject(long, const C3DVector&, const C3DVector&, const CCharString&) @ 0x0074E560,
 // vector<CThingObject*>::_M_insert_overflow(pos, x, __true_type, 1, true) @ 0x0074F900, std::for_each<CThingObject**, functor>
 // @ 0x0074FBB0 (the functor returned by hidden pointer; ecx = return slot, edx = first: modelled as __fastcall),
@@ -19,7 +19,7 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 class CThingObject;
 struct SContainerItem {                                 // pair<long, CCharString>
@@ -92,7 +92,7 @@ void CTCContainerRewardHero::ReleaseItems(float speed)
 {
     if (ContainerItems.empty())
         return;
-    const C3DVector& position = ParentThing->GetPosition();
+    const C3DVector& position = ParentThing->GetPos();
     C3DVector pos;
     pos.X = position.X;
     pos.Y = position.Y;

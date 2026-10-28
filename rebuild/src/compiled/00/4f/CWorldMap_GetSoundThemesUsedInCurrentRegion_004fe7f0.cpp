@@ -111,6 +111,7 @@ public:
 
     _Rb_tree() : _Rb_tree_base<_Value, _Alloc>(allocator<_Node>()), _M_node_count(0) { _M_empty_initialize(); }
     ~_Rb_tree() { clear(); }
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;
@@ -118,9 +119,16 @@ public:
         _M_leftmost() = this->_M_header._M_data;
         _M_rightmost() = this->_M_header._M_data;
     }
+    public:
+    protected:
     _Base_ptr& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
     iterator begin() { return iterator(_M_leftmost()); }
     iterator end() { return iterator(this->_M_header._M_data); }
 

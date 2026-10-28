@@ -89,12 +89,14 @@ public:
     iterator end() { return iterator(this->_M_node._M_data); }
     const_iterator begin() const { return const_iterator((_Node*)this->_M_node._M_data->_M_next); }
     const_iterator end() const { return const_iterator(this->_M_node._M_data); }
+    protected:
     _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __p = (_Node*)malloc(sizeof(_Node));
         new (&__p->_M_data) _Tp(__x);
         return __p;
     }
+    public:
     iterator insert(iterator __position, const _Tp& __x)
     {
         _Node* __tmp = _M_create_node(__x);

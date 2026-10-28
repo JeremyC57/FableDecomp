@@ -1,6 +1,6 @@
 // CAIStateGroup_NonVillageGuardPatrol::IsRunnable() -- runnable when a "MoveTrack" track node lies in the 10m square around the creature: latch the nearest one as the patrol node
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093CC60, length 336 bytes (+ int3 padding).
-// Callees: CThing::GetPosition @ 0x004C73D0 (five times), __ftol2 @ 0x00BFEA70, CCharString(const char*, long)
+// Callees: CThing::GetPos @ 0x004C73D0 (five times), __ftol2 @ 0x00BFEA70, CCharString(const char*, long)
 //          @ 0x0099EBF0 ("MoveTrack" @ 0x012925BC) / copy ctor @ 0x0099EC30 / ~CCharString @ 0x0099EAE0,
 //          CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, CThingSearchTools::GetPBestThingInRoughArea<
 //          CThingFilter_HasTrackName, CThingCompare_Nearest, CThingTrackNode> @ 0x0093CDB0, CBaseIntelligentPointer
@@ -16,7 +16,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) { X = v.X; Y = v.Y; Z = v.Z; }
 };
 class CThing { public:
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
 };
 class CThingTrackNode;
 class C2DBoxI { public:
@@ -90,14 +90,14 @@ struct CAIStateGroup_NonVillageGuardPatrol : CAIStateGroupBase {
 
 bool CAIStateGroup_NonVillageGuardPatrol::IsRunnable()
 {
-    C2DBoxI area((long)(GetCreature()->GetPosition().X - 5.0f), (long)(GetCreature()->GetPosition().Y - 5.0f),
-                 (long)(GetCreature()->GetPosition().X + 5.0f), (long)(GetCreature()->GetPosition().Y + 5.0f));
+    C2DBoxI area((long)(GetCreature()->GetPos().X - 5.0f), (long)(GetCreature()->GetPos().Y - 5.0f),
+                 (long)(GetCreature()->GetPos().X + 5.0f), (long)(GetCreature()->GetPos().Y + 5.0f));
     CThingTrackNode* node = 0;
     bool found;
     {
         CCharString track("MoveTrack");
         found = PeekThingSearchTools()->GetPBestThingInRoughArea(area, CThingFilter_HasTrackName(track),
-            CThingCompare_Nearest(GetCreature()->GetPosition()), &node);
+            CThingCompare_Nearest(GetCreature()->GetPos()), &node);
     }
     if (found) {
         PNode = CIntelligentPointerTrackNode(node);

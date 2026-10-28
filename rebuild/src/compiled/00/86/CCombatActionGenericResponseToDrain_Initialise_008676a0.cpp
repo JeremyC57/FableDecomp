@@ -2,7 +2,7 @@
 // Leaf: ?Initialise@CCombatAction_GenericResponseToDrain@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008676A0, 379 bytes (384 with padding), virtual Initialise.
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("GENERIC_RESPONSE_DRAIN" 0x012771D0), SetAnimationName 0x008574D0,
-//   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440 (catalog
+//   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440 (catalog
 //   label C3DVector::GetScaled), the physics virtual slot 32 (+0x80, orientation from a CRightHandedSet), CVectorMap::LowerBound
 //   0x0040F020 (inlined GetInterface 0x31; the absent arm reads the never-set out pointer from its shared frame word),
 //   operator new 0x00BFEA1A (0x80 bytes), NCreatureMode::CModeDrained(CThing*, CThing*) 0x00868220 (landed),
@@ -70,7 +70,7 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -136,8 +136,8 @@ void CCombatAction_GenericResponseToDrain::Initialise()
     }
     if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1)) {
         CThing* creature = PCreature.GetPItem();
-        const C3DVector& drainerPosition = PTarget.GetPItem()->GetPosition();
-        const C3DVector& position = creature->GetPosition();
+        const C3DVector& drainerPosition = PTarget.GetPItem()->GetPos();
+        const C3DVector& position = creature->GetPos();
         C3DVector away(position.X - drainerPosition.X, position.Y - drainerPosition.Y, 0.0f);
         away.AccurateNormalise();
         CTCPhysicsBase& physics = *PCreature.GetPItem()->GetPhysics();

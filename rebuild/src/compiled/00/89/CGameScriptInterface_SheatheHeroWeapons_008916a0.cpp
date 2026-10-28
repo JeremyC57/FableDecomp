@@ -1,16 +1,17 @@
 class CGSISheatheHeroWeapons_Target;
 class CCreatureActionBase;
+class CThingPlayerCreature;
 
-class CGSISheatheHeroWeapons_LookupResult
+class CPlayer
 {
 public:
-    CGSISheatheHeroWeapons_Target* ResolveTarget();
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 
 class CGSISheatheHeroWeapons_LookupSource
 {
 public:
-    CGSISheatheHeroWeapons_LookupResult* BeginLookup();
+    CPlayer* BeginLookup();
 };
 
 class CGSISheatheHeroWeapons_Target
@@ -25,6 +26,7 @@ public:
     unsigned char m_Unused[0x91];
     unsigned char m_Flags;
 };
+class CThingPlayerCreature : public CGSISheatheHeroWeapons_Target { };
 
 class CGSISheatheHeroWeapons_ActionStorage
 {
@@ -57,7 +59,7 @@ void CGameScriptInterface::SheatheHeroWeapons() const
         reinterpret_cast<
             const CGSISheatheHeroWeapons_Interface*>(
                 this)->m_LookupSource
-            ->BeginLookup()->ResolveTarget();
+            ->BeginLookup()->GetPControlledCreature();
 
     if (target != 0 &&
         (target->m_Flags & 1) == 0 &&

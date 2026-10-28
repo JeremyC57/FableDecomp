@@ -61,11 +61,12 @@ struct CThing_Retail {
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }   // the masked word (a bool would narrow the test)
 };
-struct CPlayer_Retail {
-    CThing_Retail* GetHeroThing();               // 0x00487DC0 (the label is propagated; the landed IsHeroNaked helper)
+class CThingPlayerCreature : public CThing_Retail { };
+struct CPlayer {
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0 (the label is propagated; the landed IsHeroNaked helper)
 };
 struct CPlayerManager_Retail {
-    CPlayer_Retail* GetPlayer();                 // 0x00449970 (labelled "Catch@0040d959", propagated)
+    CPlayer* GetPlayer();                 // 0x00449970 (labelled "Catch@0040d959", propagated)
 };
 struct CTCHeroFishing_Retail {                 // interface type 0x68
     unsigned char _pad[0xc];
@@ -86,7 +87,7 @@ class CGameScriptInterface { public:
 
 long CGameScriptInterface::GetHeroFishingLevel() const
 {
-    CThing_Retail* hero = PlayerManager->GetPlayer()->GetHeroThing();
+    CThing_Retail* hero = PlayerManager->GetPlayer()->GetPControlledCreature();
     if (hero && !hero->m_dead) {
         CTCHeroFishing_Retail* fishing;
         if (hero->GetInterface(&fishing, 0x68))

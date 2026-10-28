@@ -22,7 +22,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -211,7 +213,6 @@ struct CThingWithUID {                          // a thing seen through its 64-b
 };
 class CThingCreatureBase;
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 class C2DBoxI { public:
     long x0, y0, x1, y1;
@@ -316,14 +317,14 @@ CThingCreatureBase* CAIStateGroup_MinionReactToUnconsciousPerson::FindUnconsciou
     long framesPerSecond = g_framesPerSecond;
     CThingCreatureBase* found = 0;
     if ((CWorld::GetFrame() + uid) % framesPerSecond == 0) {
-        const C3DVector& pos = ((CThingPos*)PBrain->PCreature)->GetPosition();
+        const C3DVector& pos = ((CThingPos*)PBrain->PCreature)->GetPos();
         long x = (long)pos.x;
         long y = (long)pos.y;
         C2DBoxI box(x - 7, y - 7, x + 7, y + 7);
         PeekThingSearchTools()->GetPBestThingInRoughArea(box,
             CThingFilter_IsAICreatureAwareOf(PBrain->PCreature) && CThingFilter_IsUnconscious()
                 && CThingFilter_IsAnAlly(PBrain->PCreature),
-            CThingCompare_Nearest(((CThingPos*)PBrain->PCreature)->GetPosition()), &found);
+            CThingCompare_Nearest(((CThingPos*)PBrain->PCreature)->GetPos()), &found);
     }
     return found;
 }

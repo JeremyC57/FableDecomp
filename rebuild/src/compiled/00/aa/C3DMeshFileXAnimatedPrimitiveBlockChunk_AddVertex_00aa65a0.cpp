@@ -56,7 +56,9 @@ template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     typedef typename _Is_POD<_Tp>::_Ret _IsPODType;
+    protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const _IsPODType&, unsigned int __fill_len, bool __atend);   // 0x00464ACE / 0x00A96C20 (same-TU body below)
+    public:
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
     const _Tp& operator[](unsigned int __n) const { return this->_M_start[__n]; }
     void push_back(const _Tp& __x)

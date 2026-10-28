@@ -49,10 +49,12 @@ struct CPhysicsBody {                      // the creature's physics body at +0x
     virtual C3DVector GetFacing();         // slot 70 (+0x118), by value through the hidden pointer
 };
 
-class CThingCreatureBase { public:
+class CThing { public:
+    const C3DVector& GetPos() const;       // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ
+};
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* PPhysics;                // +0x60
-    const C3DVector& GetPosition() const;  // 0x004C73D0
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
@@ -100,6 +102,6 @@ void NCreatureMode::CModeDragonStrafe::FrameUpdate()
     }
     float step = Speed / g_FramesPerSecond;
     C3DVector offset = creature->PPhysics->GetFacing() * step;
-    C3DVector position = ParentThing->GetPosition() + offset;
+    C3DVector position = ParentThing->GetPos() + offset;
     ParentThing->PPhysics->SetPosition(position);
 }

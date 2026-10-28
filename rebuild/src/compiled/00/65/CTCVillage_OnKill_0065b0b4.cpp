@@ -3,7 +3,7 @@
 // Leaf: ?OnKill@CTCVillage
 // Retail: Fable.exe @ 0x0065B0B4, 142 bytes; size TU (unaligned entry): `optimize("s",on)`.
 // Callees: CTCBase::GetWorld() 0x00686A70; CGameTimeManager::SetTimeAsStopped(bool, long*) 0x006BBE30 (the world's +0x1c);
-//          CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetCurrentPlayer() 0x00449970; CPlayer::GetCharacterThing()
+//          CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetCurrentPlayer() 0x00449970; CPlayer::GetPControlledCreature()
 //          0x00487DC0; IS_THING_ALIVE<CThing*>(CThing* const&) 0x0043DBD0 (__fastcall); std::bitset<>::test(size_t) const
 //          0x00410DE0 (interface 243); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inlined GetTC); the
 //          component's method 0x007E2780 (no arguments; manifest "CXMVPlaybackInfo" ctor label is a propagation, real name
@@ -42,14 +42,18 @@ public:
     }
 };
 class CThingCreatureBase : public CThing {};
-bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
+class CThingPlayerCreature : public CThingCreatureBase { };
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 
 struct CTCInterface243 {                        // the hero's interface-243 component (class name unknown)
     void OnVillageKilled();                     // 0x007E2780
 };
 
 class CPlayer { public:
-    CThingCreatureBase* GetCharacterThing();    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;    // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetCurrentPlayer();                // 0x00449970
@@ -87,7 +91,7 @@ void CTCVillage::OnKill()
         CWorld* world = (&GetWorld());
         world->TimeManager->SetTimeAsStopped(false, &TimeStopIndex);
     }
-    CThingCreatureBase* hero = GetPlayerManager().GetCurrentPlayer()->GetCharacterThing();
-    if (IS_THING_ALIVE_0043dbd0(hero) && hero->HasTC(243))
+    CThingPlayerCreature* hero = GetPlayerManager().GetCurrentPlayer()->GetPControlledCreature();
+    if (IS_THING_ALIVE(hero) && hero->HasTC(243))
         ((CTCInterface243*)hero->GetTC(243))->OnVillageKilled();
 }

@@ -4,7 +4,7 @@
 //   `?IsThingAbleToDig@CTCCarriedActionUseSpade@@SI_NABVCThingCreatureBase@@@Z` (public static `__fastcall`); callers
 //   CTCCarriedActionUseSpade 0x007F03D0 and CContextSensitiveItemDef::IsValidOverride 0x00850A80.
 // Callees: the creature's virtual GetThingStandingOn (slot 39, +0x9c: CThing returns 0, CThingGameObject its
-//   PThingStandingOn), CThing::GetPosition 0x004C73D0, CWorld::PeekWorldMap (slot 13, +0x34),
+//   PThingStandingOn), CThing::GetPos 0x004C73D0, CWorld::PeekWorldMap (slot 13, +0x34),
 //   CWorldMap::GetStrongestEngineThemeAt(const C3DVector&, long*) 0x0063ADF0, CDefinitionManager::GetDef<CEngineThemeDef>
 //   0x0063F3A0 and GetDef<CMaterialDef> 0x0066C340 (manifest names both "<CThingPhysicalSwitchDef>": byte twins), the def's
 //   virtual slot 1 (destroy).
@@ -105,7 +105,7 @@ public:
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35();
     virtual void v36(); virtual void v37(); virtual void v38();
     virtual CThing* GetThingStandingOn() const;                 // slot 39 (+0x9c)
-    const C3DVector& GetPosition() const;                       // 0x004C73D0
+    const C3DVector& GetPos() const;                       // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { };
 
@@ -120,7 +120,7 @@ bool __fastcall CTCCarriedActionUseSpade::IsThingAbleToDig(const CThingCreatureB
         CWorld* world = g_pMainGameComponent->PWorld;
         long weight;
         CDefPointer<const CEngineThemeDef> themeDef;
-        if (world->GetDefinitionManager().GetDef(world->PeekWorldMap().GetStrongestEngineThemeAt(creature.GetPosition(), &weight), &themeDef)) {
+        if (world->GetDefinitionManager().GetDef(world->PeekWorldMap().GetStrongestEngineThemeAt(creature.GetPos(), &weight), &themeDef)) {
             CDefPointer<const CMaterialDef> materialDef;
             world->GetDefinitionManager().GetDef(themeDef->MaterialDef, &materialDef);
             if (materialDef->IsDiggable)

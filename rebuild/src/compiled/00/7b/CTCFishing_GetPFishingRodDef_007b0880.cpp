@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B0880, length 200 bytes (+ int3 padding). __fastcall, `ret`.
 //         Ego_r.pdb: `?GetPFishingRodDef@CTCFishing@@QBEPBVCFishingRodDef@@XZ`.
 // Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
-//          CPlayer::GetHeroThing @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0
+//          CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0
 //          (interface 0x46 CTCCarrying, word 2 bit 6; interface 0xEA CTCInventoryItem, word 7 bit 10),
 //          CTCCarrying::GetThingInPrimarySlot() const @ 0x006A1440, the def's virtual slot 1 (destroy at the last release).
 // Shape: the carrying component is `T* p = 0; if (HasTC(k)) p = GetTC(k);` (the preloaded `xor ecx,ecx`, called even
@@ -56,6 +56,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CDefClassBase {
 public:
@@ -95,7 +96,7 @@ public:
 
 class CPlayer {
 public:
-    CThing* GetHeroThing() const;                   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                   // 0x00487DC0
 };
 class CPlayerManager {
 public:
@@ -118,7 +119,7 @@ public:
 
 const CFishingRodDef* CTCFishing::GetPFishingRodDef() const
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer().GetHeroThing();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1)) {
         CTCCarrying* carrying = 0;
         if (hero->HasTC(0x46))

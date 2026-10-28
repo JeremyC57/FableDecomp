@@ -66,7 +66,7 @@ class CGameTimeManager { public:
 class CWorld { public:
     unsigned char _pad[0x1c];
     CGameTimeManager* m_pTimeManager;           // +0x1c
-    CGameTimeManager* GetPTimeManager() { return m_pTimeManager; }
+    CGameTimeManager* GetPTimeManager() const { return m_pTimeManager; }
 };
 
 class CAIBrain { public:
@@ -78,7 +78,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
 };
 
 class CAIStateGroup_LightHomeCandle : public CAIStateGroupBase { public:
@@ -94,8 +96,8 @@ bool CAIStateGroup_LightHomeCandle::ShouldBeLit()
         CVillageDef* def = villager->GetPVillage()->PDef;
         if (def)
             def->AddRef();
-        CWorld* world = GetPThingWorld();
-        bool lit = world->GetPTimeManager()->IsTimeOfDayInRange(def->LightOnTime, def->LightOffTime);
+        const CWorld& world = PeekWorld();
+        bool lit = world.GetPTimeManager()->IsTimeOfDayInRange(def->LightOnTime, def->LightOffTime);
         def->Release();
         return lit;
     }

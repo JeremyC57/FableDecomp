@@ -117,12 +117,13 @@ struct CThing_Retail {
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct CPlayer_Retail {
-    CThing_Retail* GetHeroThing();                  // 0x00487DC0 (label propagated)
-    CThing_Retail* GetControlledThing();            // 0x00487DD0 (label propagated)
+class CThingPlayerCreature : public CThing_Retail { };
+struct CPlayer {
+    CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0 (label propagated)
+    const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0 (label propagated)
 };
 struct CPlayerManager_Retail {
-    CPlayer_Retail* GetPlayer();                    // 0x00449970 (labelled "Catch@0040d959", propagated)
+    CPlayer* GetPlayer();                    // 0x00449970 (labelled "Catch@0040d959", propagated)
 };
 class CWorld;
 struct CDefinitionManager_Retail;
@@ -138,7 +139,7 @@ class CGameScriptInterface { public:
 
 bool CGameScriptInterface::IsDPadButtonHeldForExpression(long button) const
 {
-    CThing_Retail* hero = PlayerManager->GetPlayer()->GetHeroThing();
+    CThing_Retail* hero = PlayerManager->GetPlayer()->GetPControlledCreature();
     if (hero && !hero->m_dead) {
         CTCInventory_Retail* inventory;
         if (hero->GetInterface(&inventory, 0x11))

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00951B20, length 553 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill @ 0x004C9B80, SetHeadTurning @ 0x00950BB0,
 // WaitForAnimLoop @ 0x00950950, CAIStateGroupBase::IsStopping @ 0x008FD010, Terminate @ 0x008FCF40, C3DVector::RotateAboutZ
-// @ 0x00A14040, CThing::GetPosition @ 0x004C73D0, GetPWorld @ 0x008FCFC0, CWorld::GetPRandomSeed @ 0x0049D810, GFROR13
+// @ 0x00A14040, CThing::GetPos @ 0x004C73D0, GetPWorld @ 0x008FCFC0, CWorld::GetPRandomSeed @ 0x0049D810, GFROR13
 // @ 0x00497890 (`__fastcall`), vector<C3DVector>::push_back @ 0x0066E630, CCreatureAction_DragonTakeOffIntoFlying ctor
 // @ 0x009533E0 / dtor @ 0x00953470, AIAction_PerformActionAndWait @ 0x0097DB70, ChooseHoverOrStrafeState @ 0x0094FFF0,
 // free @ 0x00BFEA14.
@@ -40,7 +40,7 @@ class CThing { public:
     CPhysicsBodyV* PhysicsBody;                 // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     void Kill(bool b);                          // 0x004C9B80
 };
 class CThingCreatureBase : public CThing { public: };
@@ -149,7 +149,7 @@ void CAIStateGroup_JackDragon::FlyOutOfGround()
     }
     C3DVector up(0.0f, 50.0f, 0.0f);
     up.RotateAboutZ(GetCreature()->PhysicsBody->GetHeading());
-    GetCreature()->GetPosition();
+    GetCreature()->GetPos();
     CVector3DList route;
     if (WorldRandomRange(GetPWorld()->GetPRandomSeed(), 100) > 50)
         GoLeft = 1;

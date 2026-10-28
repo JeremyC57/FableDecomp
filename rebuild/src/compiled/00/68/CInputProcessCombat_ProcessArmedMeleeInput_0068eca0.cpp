@@ -2,7 +2,7 @@
 // Leaf: ProcessArmedMeleeInput
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068ECA0, 684 bytes (+ int3 padding), `ret 0Ch` (/GS cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
-// Callees: CWorld::GetMainPlayer 0x0049D9D0, CPlayer::GetHeroCreature 0x00487DC0, CVectorMap::LowerBound 0x004365B0 (const
+// Callees: CWorld::GetMainPlayer 0x0049D9D0, CPlayer::GetPControlledCreature 0x00487DC0, CVectorMap::LowerBound 0x004365B0 (const
 //   overload, the inline GetInterface for interface 0x30), CTCCombat::IsMeleeFlourishValid 0x00733EE0 (landed) and 0x00733290
 //   (labelled CTCCombat::Query_733290; descriptive IsBreakBlockValid), CInputProcessGameBase::IsEventButtonPressed 0x00687A90 /
 //   IsEventGameAction 0x00687CF0 / GetButtonPressureForEvent 0x00687D10, CCharString 0x0099EBF0 / 0x0099EAE0,
@@ -65,13 +65,14 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCCombat { public:
     bool IsMeleeFlourishValid() const;             // 0x00733EE0
     bool IsBreakBlockValid() const;                // 0x00733290 (descriptive)
 };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CWorld { public:
     CPlayer* GetMainPlayer();                      // 0x0049D9D0
@@ -97,7 +98,7 @@ public:
 
 void CInputProcessCombat::ProcessArmedMeleeInput(const CInputEvent& event, CProcessedInput& processed, const CThing& weapon)
 {
-    CThing* hero = World->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = World->GetMainPlayer()->GetPControlledCreature();
     CTCCombat* combat = 0;
     hero->GetInterface(&combat, 0x30);
     if (!IsEventButtonPressed(event))

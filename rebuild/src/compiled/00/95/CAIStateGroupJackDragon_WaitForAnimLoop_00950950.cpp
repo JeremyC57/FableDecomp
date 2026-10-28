@@ -26,7 +26,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -95,6 +97,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -165,7 +170,6 @@ class CWorld { public:
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
 extern "C" double __cdecl sqrt(double);
@@ -178,7 +182,6 @@ class C2DVector { public:
 };
 
 struct CThingPositioned {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 
 // CDefPointer<T>: the def object's vtable slot 1 (+4) deletes it, the intrusive count is at +4.

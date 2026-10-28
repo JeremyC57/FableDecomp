@@ -6,7 +6,7 @@
 //   bit 21 of bitset word +0x38; hero stats type 4 = bit 4 of +0x20), the house component's member @ 0x006D3C40 (manifest
 //   "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated; called with 0) and CTCBuyableHouse::SetRented(bool)
 //   @ 0x006C1150, CTCWife::SetAttractionIcon(bool, float, unsigned char) @ 0x006CFC90, CPlayerManager::GetMainPlayer
-//   @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CTCHeroStats::SetMarriageState(CThingAICreature*, EMarriageState)
+//   @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CTCHeroStats::SetMarriageState(CThingAICreature*, EMarriageState)
 //   @ 0x0057BC6E. Global g_pMainGameComponent 0x013B86A0 (PlayerManager +0x1C).
 // Layout: CTCWife ParentThing +0x04 (CTCBase; engine/CTCWife.h leaves it as padding, so the landed CTCWife::Died
 //   0x006D0020 local model is used), FrameGotMarriedToThePlayer +0x20, NeedsToChangeBrain +0x26; CThingAICreature
@@ -42,6 +42,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -64,7 +65,7 @@ public:
     CIntelligentPointer<CThing> HomeBuilding;       // +0x168 CIntelligentPointer<CThingBuilding>
 };
 class CPlayer { public:
-    CThing* GetHeroThing() const;               // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -111,7 +112,7 @@ void CTCWife::Unmarry(bool keepHouseUnrented)
         }
         SetAttractionIcon(false, 1.0f, 255);
         FrameGotMarriedToThePlayer = 0x7fffffff;
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
         if (hero && !(hero->Flags91 & 1)) {
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);

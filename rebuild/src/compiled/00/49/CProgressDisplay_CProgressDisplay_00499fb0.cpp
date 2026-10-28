@@ -26,7 +26,8 @@ class CWideString { public:
 class CTexture { public:                                  // 8 bytes
     void* m_pTexture;
     void* m_pHandle;
-    ~CTexture();                                   // 0x009F9F70
+    void Uninitialise();                           // 0x009F9F70 ?Uninitialise@CTexture@@QAEXXZ
+    ~CTexture() { Uninitialise(); }
 };
 
 template <class T> inline void _Destroy(T* first, T* last)

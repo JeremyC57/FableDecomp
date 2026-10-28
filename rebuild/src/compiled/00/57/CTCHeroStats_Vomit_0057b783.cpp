@@ -3,13 +3,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057B783, 596 bytes; size TU with the biased `lea ebp,[esp-78h]` frame:
 // `#pragma optimize("s", on)` alone (adding `optimize("y", off)` as the smaller CTCHeroStats rows gives `mov ebp,esp`).
 // Callees: CTCBase::PeekPlayerManager() @ 0x00686D50, CPlayerManager::GetMainPlayer() @ 0x00449960,
-//          CPlayer::GetPPlayerCharacter() @ 0x00487DC0, CTCBase::GetDefinitionManager() @ 0x006869D0, CTCBase::GetPWorldSeed()
+//          CPlayer::GetPControlledCreature() @ 0x00487DC0, CTCBase::GetDefinitionManager() @ 0x006869D0, CTCBase::GetPWorldSeed()
 //          @ 0x00686DA0, _ftol @ 0x00BFEA70, GFRandom(range, seed) @ 0x004CDAE0 (__fastcall), CCharString @ 0x0099EBF0 /
 //          ~CCharString @ 0x0099EAE0 ("ST_PUKE_INTO" 0x0124F37C, "ST_PUKE_LOOP" 0x0124F38C, "ST_PUKE_OUTOF" 0x0124F39C),
 //          CCreatureAction_PlayIntoLoopOutOfAnimation ctor @ 0x008427E0 and its implicit dtor @ 0x0057A545 (emitted in
 //          this TU), std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCHeroOnlineScoreboard::UpdateScoreForActivity @ 0x0055F3B0, CThingCreatureBase::IsFreeToPerformAction
-//          @ 0x00662210 / SetCurrentAction @ 0x006644F0, CThing::GetPosition() @ 0x004C73D0,
+//          @ 0x00662210 / SetCurrentAction @ 0x006644F0, CThing::GetPos() @ 0x004C73D0,
 //          CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990, GFGetCurrentFrame() @ 0x0049D870.
 // Globals: 3.0f @ 0x0122DED4, 1.0f @ 0x0122DED8, 2^32 @ 0x0122DCB4, g_framesPerSecond @ 0x01375550.
 // Shape: the loop time is `(Drunkenness - 3) / def` capped at the def's maximum, then a random whole number of seconds
@@ -41,7 +41,7 @@ class CThing { public:
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
@@ -94,7 +94,7 @@ class CThingCreatureBase : public CThing { public:
 };
 class CThingPlayerCreature : public CThingCreatureBase { public:};
 class CPlayer { public:
-    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960
@@ -155,7 +155,7 @@ class CTCHeroStats : public CTCBase { public:
 
 void CTCHeroStats::Vomit()
 {
-    CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer()->GetPPlayerCharacter();
+    CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
     float seconds = (Drunkenness - 3.0f) / GetHeroStatsDef()->DrunkennessPerVomitSecond;
     if (GetHeroStatsDef()->MaxVomitSeconds < seconds)
         seconds = (float)GetHeroStatsDef()->MaxVomitSeconds;
@@ -172,7 +172,7 @@ void CTCHeroStats::Vomit()
         if (hero) {
             CTCHeroOpinionDeedLog* log;
             if (hero->GetInterface(&log, 0x51))
-                DeedHandle = log->PostDeed(0x15, hero->GetPosition(), 0, 0, 7, 0, 1, 0, 0, 0);
+                DeedHandle = log->PostDeed(0x15, hero->GetPos(), 0, 0, 7, 0, 1, 0, 0, 0);
             hero->SetCurrentAction(action);
         }
         long fps = g_framesPerSecond;

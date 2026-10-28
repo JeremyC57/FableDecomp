@@ -69,9 +69,10 @@ class CThing { public:
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCQuestCompletionUI* GetTC(long kind) { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CInputProcessQuestCompletionUI : public CInputProcessGameBase {
 public:
@@ -85,7 +86,7 @@ public:
 
 void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = MyPlayer->GetHeroCreature();
+    CThing* hero = MyPlayer->GetPControlledCreature();
     if (!hero->HasTC(0xfc))
         return;
     CTCQuestCompletionUI* ui = hero->GetTC(0xfc);

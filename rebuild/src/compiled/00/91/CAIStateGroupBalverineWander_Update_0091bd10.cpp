@@ -1,6 +1,6 @@
 // CAIStateGroup_BalverineWander::Update() -- wander near the start position (straight back to it once 10 or more away), then play an animation (HOWL with its sound 20% of the time, else ST_IDLE), repeating while idling keeps running; terminate when a move fails
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091BD10, 638 bytes (aligned frame). ?Update@CAIStateGroup_BalverineWander@@UAEXXZ (Ego_r.pdb).
-// Callees: CThing::GetPosition 0x004C73D0, CTCCreatureNavigation::GetNearbyWanderPosition 0x006CB6E0 (interface 7, inline
+// Callees: CThing::GetPos 0x004C73D0, CTCCreatureNavigation::GetNearbyWanderPosition 0x006CB6E0 (interface 7, inline
 //   lower_bound), AIAction_MoveToPosProximity 0x0097E890, GetPWorldSeed 0x008FCFD0, GFROR13 0x00497890,
 //   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, the creature's GetSoundPair (slot 89, +0x164),
 //   CCreatureAction_PlayAnimation ctor 0x008424F0, AIAction_PerformAction 0x0097D8B0, ~CCreatureActionBase 0x00693EF0,
@@ -62,7 +62,7 @@ class CThing { public:
     virtual void v4e(); virtual void v4f(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53();
     virtual void v54(); virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58();
     virtual CSoundPair GetSoundPair(const CCharString& name);   // slot 89 (+0x164)
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned char _pad04[0x20 - 4];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -136,11 +136,11 @@ struct CAIStateGroup_BalverineWander : CAIStateGroupBase {
 
 void CAIStateGroup_BalverineWander::Update()
 {
-    C3DVector startPos = GetCreature()->GetPosition();
+    C3DVector startPos = GetCreature()->GetPos();
     CTCCreatureNavigation* nav;
     do {
         C3DVector dest;
-        C3DVector offset = GetCreature()->GetPosition() - startPos;
+        C3DVector offset = GetCreature()->GetPos() - startPos;
         float distanceSquared = offset.GetLengthSquared();
         if (!(distanceSquared < 100.0f))
             dest = startPos;
@@ -148,7 +148,7 @@ void CAIStateGroup_BalverineWander::Update()
             CThingCreatureBase* creature = GetCreature();
             bool found;
             creature->GetInterfaceR(&nav, 7, found);
-            if (!nav->GetNearbyWanderPosition(creature->GetPosition(), 4.0f, &dest, true))
+            if (!nav->GetNearbyWanderPosition(creature->GetPos(), 4.0f, &dest, true))
                 dest = startPos;
         }
         bool moving;

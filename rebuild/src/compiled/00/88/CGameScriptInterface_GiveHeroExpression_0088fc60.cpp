@@ -17,8 +17,8 @@ struct CThingPlayerCreature_GiveHeroExpression_Overlay
 };
 
 // engine callees (addresses reloc-masked by the parity checker)
-extern "C" void*                 __fastcall GSI_GiveHeroExpression_Helper_A(void* p);   // 0x00449970
-extern "C" CThingPlayerCreature* __fastcall GSI_GiveHeroExpression_Helper_B(void* p);   // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
+extern "C" CPlayer* __fastcall GSI_GiveHeroExpression_Helper_A(void* p);   // 0x00449970
 
 class CGameScriptInterface
 {
@@ -36,8 +36,7 @@ void CGameScriptInterface::GiveHeroExpression(
     bool immediate) const
 {
     CThingPlayerCreature* const hero =
-        GSI_GiveHeroExpression_Helper_B(
-            GSI_GiveHeroExpression_Helper_A(m_Field14));
+        GSI_GiveHeroExpression_Helper_A(m_Field14)->GetPControlledCreature();
 
     if ((hero != 0) &&
         ((reinterpret_cast<const CThingPlayerCreature_GiveHeroExpression_Overlay*>(hero)->m_Flags91 & 0x01) == 0))

@@ -61,7 +61,7 @@ class CMessageEventManager { public:
 class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
-    CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+    CMessageEventManager* GetPMessageManager() const { return m_pMessageManager; }
 };
 
 class CAIBrain { public:
@@ -73,7 +73,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
     unsigned char _pad[0xc];                // +0x08..+0x13
-    CWorld* GetPThingWorld();               // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
 };
 
 struct CAIStateGroup_MinionGuardHeardYellForHelp : CAIStateGroupBase {
@@ -83,7 +85,7 @@ struct CAIStateGroup_MinionGuardHeardYellForHelp : CAIStateGroupBase {
 
 CMessageEvent* CAIStateGroup_MinionGuardHeardYellForHelp::FindYellForHelpEvent()
 {
-    return GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage(
+    return PeekWorld().GetPMessageManager()->FindMostRecentMessage(
         CMessageEventFilter_IsOfType(11) && CMessageEventFilter_HasExtraData() && CMessageEventFilter_IsForThing(PBrain->Creature));
 }
 

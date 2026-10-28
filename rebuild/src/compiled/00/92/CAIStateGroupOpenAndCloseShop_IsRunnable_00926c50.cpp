@@ -4,7 +4,7 @@
 // @ 0x0040F020 (inlined GetInterface: 0x90 CTCShopKeeper, bit 16 of +0x30; 0xBD the shop sign, bit 29 of +0x34),
 // CTCShopKeeper::GetShopTC @ 0x00798F50 / GetAreOtherPeopleInShop(bool) @ 0x00799A60, CTCShop::IsOpeningHours @ 0x00773950 /
 // IsPermanentlyStocked @ 0x007721A0, the building occupant tests @ 0x0082DD90 / 0x0082DE20 (manifest "CountMoneyBags" labels
-// are wrong: both take the thing), CThingBuilding::IsPointInside @ 0x0082D000, CThing::GetPosition @ 0x004C73D0.
+// are wrong: both take the thing), CThingBuilding::IsPointInside @ 0x0082D000, CThing::GetPos @ 0x004C73D0.
 // Layout: engine header has GoToInsideFace +0x14 / Lock +0x15 only (Ego_r.pdb); the base and the keeper/shop models are
 // the landed InitCreaturePosition 0x00926B30 ones.
 // ---- shared AI state-group model (same shapes as the landed CAIStateGroup_* sources) ----
@@ -31,7 +31,7 @@ class CThing { public:
     unsigned char _pad2[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     unsigned char m_flags92;                    // +0x92
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
@@ -219,15 +219,15 @@ bool CAIStateGroup_OpenAndCloseShop::IsRunnable()
                     CThingShopkeeper* creature = GetCreature();
                     CThingBuilding* myShop = creature->GetPShop();
                     CThingBuilding* home = GetCreature()->GetPHome();
-                    if (shop->IsPointInside(creature->GetPosition()) != (myShop == home)) {
-                        GoToInsideFace = shop->IsPointInside(GetCreature()->GetPosition());
+                    if (shop->IsPointInside(creature->GetPos()) != (myShop == home)) {
+                        GoToInsideFace = shop->IsPointInside(GetCreature()->GetPos());
                         Lock = false;
                         return true;
                     }
                     if (!keeper->GetAreOtherPeopleInShop(false))
                         return false;
                 }
-                GoToInsideFace = shop->IsPointInside(GetCreature()->GetPosition());
+                GoToInsideFace = shop->IsPointInside(GetCreature()->GetPos());
                 Lock = false;
                 return true;
             }

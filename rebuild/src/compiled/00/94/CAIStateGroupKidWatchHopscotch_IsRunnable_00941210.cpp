@@ -1,11 +1,11 @@
 // CAIStateGroup_KidWatchHopscotch::IsRunnable() -- update the fatigue flag from the activation rate (tired above 3 per minute, rested below 2.5), then, if not fatigued, find the nearest hopscotch board and cache its centre and radius
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941210, length 417 bytes (+ int3 padding).
-// Callees: CWorld::GetWorldFrame @ 0x0049D870 (static, twice), CThingCreatureBase::GetPosition @ 0x006A4D00 (the creature's
-// byte twin of CThing::GetPosition), CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000,
+// Callees: CWorld::GetWorldFrame @ 0x0049D870 (static, twice), CThingCreatureBase::PeekPos @ 0x006A4D00 (the creature's
+// byte twin of CThing::PeekPos), CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000,
 // CThingSearchTools::GetPBestThing<CIsHopscotchBoard, CThingCompare_Nearest, CThingObject> @ 0x00941450 (this TU),
 // CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10,
 // CVectorMap::LowerBound const @ 0x004365B0 (inlined lookup 2 = CTCPhysicsBase), CTCPhysicsBase virtual slot 93 (+0x174,
-// GetPhysicsMeshInfo), CThing::GetPosition @ 0x004C73D0.
+// GetPhysicsMeshInfo), CThing::PeekPos @ 0x004C73D0.
 // Globals: 2.5f @ 0x01292718, 3.0f @ 0x0122DED4; CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Shape: the rate expression is written in each arm (VC hoists the fild/fimul and spills it per arm); the empty filter has
 // a user ctor (no zero byte store); the creature position is a named C3DVector local; the board out pointer lives in an
@@ -35,7 +35,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -48,8 +48,10 @@ class CThing { public:
         return false;
     }
 };
-class CThingCreatureBase : public CThing { public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingObject : public CThing { public: };
 
@@ -151,7 +153,7 @@ bool CAIStateGroup_KidWatchHopscotch::IsRunnable()
     if (!Fatigued) {
         {
             CThingObject* board;
-            C3DVector pos = PBrain->PCreature->GetPosition();
+            C3DVector pos = PBrain->PCreature->PeekPos();
             if (!PeekThingSearchTools().GetPBestThing(CIsHopscotchBoard(), CThingCompare_Nearest(pos), &board))
                 return false;
             PHopscotchBoard = board;
@@ -159,7 +161,7 @@ bool CAIStateGroup_KidWatchHopscotch::IsRunnable()
         CTCPhysicsBase* physics;
         PHopscotchBoard.GetPItem()->GetInterface(&physics, 2);
         const CThingPhysicsMeshInfo* mesh = physics->GetPhysicsMeshInfo();
-        HopscotchCentre = mesh->ToCentre + PHopscotchBoard.GetPItem()->GetPosition();
+        HopscotchCentre = mesh->ToCentre + PHopscotchBoard.GetPItem()->GetPos();
         HopscotchRadius = mesh->BoundingCircleRadius;
         return true;
     }

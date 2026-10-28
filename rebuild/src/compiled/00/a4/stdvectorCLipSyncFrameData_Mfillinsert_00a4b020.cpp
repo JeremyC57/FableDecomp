@@ -1,5 +1,5 @@
 // std::vector<CLipSyncFrameData>::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
-// Leaf: ?_M_fill_insert@?$vector@VCLipSyncFrameData@@V?$allocator@VCLipSyncFrameData@@@std@@@std@@IAEXPAVCLipSyncFrameData@@IABV3@@Z
+// Leaf: ?_M_fill_insert@?$vector@VCLipSyncFrameData@@V?$allocator@VCLipSyncFrameData@@@std@@@std@@QAEXPAVCLipSyncFrameData@@IABV3@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00a4b020, 300 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): bound ?_M_fill_insert@?$vector@VCLipSyncFrameData@@...@Z; callers CLipSyncSampleData::ReadFromFile 0x00A495F0 and the resize 0x00A4B160 (Ego_r.pdb CLipSyncSampleData::FrameData, CArray<CLipSyncFrameData>); its tail copy is bound __uninitialized_copy<CLipSyncFrameData*>; overflow callee the landed _M_insert_overflow 0x00A4AF00.
 // Callees: vector<CLipSyncPhoneme>::vector(const vector&) 0x00A49C60 (bound) and ~vector 0x006E54D0 (landed) through CLipSyncFrameData's implicit copy constructor / destructor, __uninitialized_copy<CLipSyncFrameData*, CLipSyncFrameData*> 0x00A4AA10 (bound), __copy_backward 0x00A4AAC0, uninitialized_fill_n 0x00A4AA70, fill 0x00A4AD80 (landed under stand-in names), _M_insert_overflow 0x00A4AF00 (landed).
@@ -81,7 +81,9 @@ public:
 protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                                             // 0x00A4AF00
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
+    protected:
 };
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, const _Tp& __x)

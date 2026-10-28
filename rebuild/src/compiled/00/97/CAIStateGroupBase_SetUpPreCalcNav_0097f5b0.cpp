@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097F5B0, length 219 bytes (`ret 8`, C3DVector by hidden pointer).
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (type 7) and the const copy @ 0x004365B0
 // (type 0xA6 on the const route thing), CTCPreCalculatedNavigationRoute::HasRoute @ 0x00800500 and ::GetRouteDestination
-// @ 0x008004D0 (twice), CThing::GetPosition @ 0x004C73D0, the navigation component's route setup @ 0x006CB9C0 (three
+// @ 0x008004D0 (twice), CThing::GetPos @ 0x004C73D0, the navigation component's route setup @ 0x006CB9C0 (three
 // arguments; manifest "CScriptThing::operator==" is propagated).
 // Shape: the route component is deliberately unset when the interface is absent (retail reads a dead slot), the
 // navigation component is kept in ebx; the creature is re-read into a named local before the setup call (retail loads
@@ -24,12 +24,11 @@ struct CInterfaceMap                                // CVectorMap<ETCInterfaceTy
     const SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 
-class CThing
-{ public:
+class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 
     __forceinline bool HasTC(long type) const
     {
@@ -96,7 +95,7 @@ C3DVector CAIStateGroupBase::SetUpPreCalcNav(const CThing* routeThing)
         if (route->HasRoute())
         {
             CThing* mover = PBrain->Creature;
-            nav->SetUpRoute(mover->GetPosition(), route->RouteStart, route->GetRouteDestination());
+            nav->SetUpRoute(mover->GetPos(), route->RouteStart, route->GetRouteDestination());
             return route->GetRouteDestination();
         }
     }

@@ -1,7 +1,7 @@
 // CTCCameraPointDefinitionBase::GetActiveCameraPosition(const CThing* thing) -- catalog label; the body is the constructor of a bounding sphere taken from a thing: its position and its physics radius
 // Leaf: ??0CThingBoundingSphere
 //
-// Retail 0x00942230, 47 bytes (`ret 4`, returns `this`). Callee: CThing::GetPosition() const
+// Retail 0x00942230, 47 bytes (`ret 4`, returns `this`). Callee: CThing::GetPos() const
 // @ 0x004C73D0 (returns a const C3DVector&). Called from CAIStateGroup_KidReactToBlockage::IsRunnable
 // (0x00941FC0), so the camera-point label is propagated over an unrelated body; the class is named
 // here by what it builds (CThingBoundingSphere: a centre at +0 and a radius at +0xc).
@@ -20,11 +20,10 @@ class CTCPhysicsBase
     float         Radius;                           // +0x34
 };
 
-class CThing
-{ public:
+class CThing { public:
     unsigned char   _pad_0x00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 struct CThingBoundingSphere
@@ -39,7 +38,7 @@ struct CThingBoundingSphere
 
 CThingBoundingSphere::CThingBoundingSphere(const CThing* thing)
 {
-    const C3DVector& position = thing->GetPosition();
+    const C3DVector& position = thing->GetPos();
     CentreX = position.X;
     CentreY = position.Y;
     CentreZ = position.Z;

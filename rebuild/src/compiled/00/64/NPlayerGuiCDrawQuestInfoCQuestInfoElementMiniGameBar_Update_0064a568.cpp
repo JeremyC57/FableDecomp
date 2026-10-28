@@ -1,6 +1,6 @@
 // NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::Update() -- while the bar is updatable, stop updating it once the living hero lets go of the button held for its mini-game's expression (pick-lock or pick-pocket); always reports success
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064A568, length 209 bytes, plain `ret` (bool true).
-// Callees: CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1c), CPlayer::GetHeroThing
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1c), CPlayer::GetPControlledCreature
 // 0x00487DC0, IS_THING_ALIVE 0x0043DBF0 (`__fastcall`, by reference; a separate instantiation from the CThing* one at
 // 0x0043DBD0; its T is unproven -- CThingPlayerCreature* is assumed, the hero pointer reaches it through a converted
 // temporary in the frame so the thing stays in esi), std::bitset::test 0x00410DE0 (TC type 0x11,
@@ -55,14 +55,18 @@ class CThing { public:                                          // retail CThing
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CThingPlayerCreature;
-template<class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0 (T = CThingPlayerCreature*, unproven)
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBF0 (T = const CThingPlayerCreature*)
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 
 class CTCInventory { public:                                    // TC type 0x11
     bool IsButtonHeldForExpression(const CCharString& expression);  // 0x00582A16
 };
 class CPlayer { public:
-    CThing* GetHeroThing() const;                        // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -87,9 +91,9 @@ struct CQuestInfoElementMiniGameBar {
 bool CQuestInfoElementMiniGameBar::Update()
 {
     if (Updatable) {
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroThing();
+        const CThingPlayerCreature* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
         CTCInventory* inventory;
-        if (IS_THING_ALIVE<CThingPlayerCreature*>((CThingPlayerCreature*)hero) && hero->GetInterface(&inventory, 0x11)) {
+        if (IS_THING_ALIVE(hero) && hero->GetInterface(&inventory, 0x11)) {
             switch (Type) {
             case 3:
                 if (inventory->IsButtonHeldForExpression("EXPRESSION_PICKPOCKET") ? false : true)

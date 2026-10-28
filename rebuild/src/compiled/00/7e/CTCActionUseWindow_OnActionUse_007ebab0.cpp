@@ -6,7 +6,7 @@
 // LookThroughWindow(CThingAICreature&) @ 0x007EBA20 (stores vtable 0x01270FBC = CCreatureAction_LookThroughWindow; catalog
 // label "CCreatureAction_AlertToPlayer" propagated), CThingCreatureBase::SetCurrentAction @ 0x006644F0 (result dropped),
 // ~CCreatureActionBase @ 0x00693EF0, CTCBase::GetWorld @ 0x00686A70, the camera's virtual slot 9 (+0x24, bool, out pointer),
-// CThing::GetPosition @ 0x004C73D0 (result unused), the user's physics virtual slot 70 (+0x118, out pointer).
+// CThing::GetPos @ 0x004C73D0 (result unused), the user's physics virtual slot 70 (+0x118, out pointer).
 // Shape: the action temporary (0xA8 bytes, no own members: only the out-of-line base dtor runs) is passed by reference straight
 // from the ctor's eax; the null/dead test guards only the action; the second block reads user.+0x60 unconditionally. The camera
 // is reached through an inline CWorld accessor (GetCurrentGameCamera, stand-in name): it lands straight in ecx for the virtual
@@ -35,7 +35,7 @@ public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                     // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    const C3DVector& GetPosition() const;      // 0x004C73D0
+    const C3DVector& GetPos() const;      // 0x004C73D0
 };
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing {
@@ -85,7 +85,7 @@ public:
     {
         long view;
         if (GetWorld().GetCurrentGameCamera()->GetView(&view)) {
-            ParentThing->GetPosition();
+            ParentThing->GetPos();
             C3DVector v;
             user.Physics->GetVector(&v);
         }

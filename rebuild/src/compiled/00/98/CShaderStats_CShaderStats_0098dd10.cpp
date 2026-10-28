@@ -77,6 +77,7 @@ public:
     {
         _M_empty_initialize();
     }
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;          // _S_rb_tree_red
@@ -84,6 +85,7 @@ public:
         this->_M_header._M_data->_M_left = this->_M_header._M_data;
         this->_M_header._M_data->_M_right = this->_M_header._M_data;
     }
+    public:
 };
 
 template <class Key, class T, class Compare = less<Key>, class Alloc = allocator<pair<const Key, T> > > class map {

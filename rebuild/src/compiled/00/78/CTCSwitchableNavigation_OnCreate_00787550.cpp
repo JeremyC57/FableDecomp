@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00787550, length 35 bytes; vtable 0x0123C02C (CTCSwitchableNavigation)
 // slot 4, the CTCBase OnCreate slot (Ego_r ?OnCreate@CTCSwitchableNavigation@@UAEXXZ).
 // Callees: the CTCBase getter @ 0x00686D30 (returns the game component's member at +0x28; the manifest's
-// "CViewBase::GetDisplayEngine" is propagated, the object is named here by its use), CThing::GetPosition() const
+// "CViewBase::GetDisplayEngine" is propagated, the object is named here by its use), CThing::GetPos() const
 // @ 0x004C73D0 (returns &[+0x60]->+0x0c; manifest "CVertexBufferWin32::DoSizeof", propagated), and that object's
 // virtual slot 16 (+0x40) taking the position and returning the map index.
 // Layout: Ego_r.pdb CTCSwitchableNavigation (0x10 bytes): MapIndex +0x0c.
@@ -19,7 +19,7 @@ class CWorldMap { public:
 };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 
 class CTCBase
@@ -40,5 +40,5 @@ class CTCSwitchableNavigation : public CTCBase { public:
 void CTCSwitchableNavigation::OnCreate()
 {
     CWorldMap* source = (&GetWorldMap());
-    MapIndex = source->GetNavMapIndex(ParentThing->GetPosition());
+    MapIndex = source->GetNavMapIndex(ParentThing->GetPos());
 }

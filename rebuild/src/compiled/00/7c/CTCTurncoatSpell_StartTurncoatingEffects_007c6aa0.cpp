@@ -4,7 +4,7 @@
 // Callees: CBaseIntelligentPointer() 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / ~ 0x00A01C10; LowerBound
 //   0x0040F020 (interfaces 0x10 sound player, 0x4B particle emitter); CTCSoundPlayer::PlaySound 0x0066BD00; the spell def's
 //   effect-table lookup 0x00669580 (manifest label "GetSubDef<CAICreatureWillPowerIndicatorDef>" is propagated) and the
-//   table's named lookup 0x00669D30 (manifest label "CCRC::CalcAndLookup"); CThing::GetPosition() const 0x004C73D0;
+//   table's named lookup 0x00669D30 (manifest label "CCRC::CalcAndLookup"); CThing::GetPos() const 0x004C73D0;
 //   CreateParticleEffect 0x0072AB70 (`__fastcall`); CTCDParticleEmitter::AttachToThing 0x006E0BE0; CCharString 0x0099EBF0 /
 //   ~ 0x0099EAE0. CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Layout (retail CTCTurncoatSpell = Ego_r.pdb less 4 after the timer): PDef +0x40, PTarget +0x44, LoopingSound +0x50,
@@ -43,7 +43,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector* pos);   // 0x0072AB70
 
@@ -148,7 +148,7 @@ void CTCTurncoatSpell::StartTurncoatingEffects()
         long effect = 0;
         if (PDef->GetSubDef(&table)) {
             if (table->Lookup("HERO_TURNCOATING_EFFECT", &effect)) {
-                TurncoatingEffectOnMe = CIntelligentPointer<CThing>(CreateParticleEffect(effect, &ParentThing->GetPosition()));
+                TurncoatingEffectOnMe = CIntelligentPointer<CThing>(CreateParticleEffect(effect, &ParentThing->GetPos()));
                 if (IS_THING_ALIVE(TurncoatingEffectOnMe)) {
                     CTCDParticleEmitter* emitter;
                     TurncoatingEffectOnMe.GetPItem()->GetInterface(&emitter, 0x4b);
@@ -156,7 +156,7 @@ void CTCTurncoatSpell::StartTurncoatingEffects()
                 }
             }
             if (table->Lookup("ENEMY_TURNCOATING_EFFECT", &effect)) {
-                TurncoatingEffectOnTarget = CIntelligentPointer<CThing>(CreateParticleEffect(effect, &PTarget.GetPItem()->GetPosition()));
+                TurncoatingEffectOnTarget = CIntelligentPointer<CThing>(CreateParticleEffect(effect, &PTarget.GetPItem()->GetPos()));
                 if (IS_THING_ALIVE(TurncoatingEffectOnTarget)) {
                     CTCDParticleEmitter* emitter;
                     TurncoatingEffectOnTarget.GetPItem()->GetInterface(&emitter, 0x4b);

@@ -4,7 +4,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), the body's (+0x60) virtual slots 63 (+0xfc,
 //          GetFacingAngleXY) / 66 (+0x108, SetFacingAngleXY), CCombatAction_GenericStrikeResponseBase::Initialise 0x00865F40,
 //          CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580 (on a counted copy of the thing's def +0x70), CCharString
-//          0x0099EBF0 / ~ 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString 0x00669D30, CThing::GetPosition 0x004C73D0,
+//          0x0099EBF0 / ~ 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString 0x00669D30, CThing::GetPos 0x004C73D0,
 //          CreateEffectThing 0x006E0880 (__fastcall), CTCDParticleEmitter::AttachToThing 0x006E0BE0; def release slot 1.
 // Model: the landed CCreatureAction_UndeadReturnToEarth::Initialise (0x008EC320) and CTCResurrectionItem::OnItemUsed
 //          (0x007F04C0) models (the emitter is the effect thing's cached interface-0x4b component at +0x5c).
@@ -94,7 +94,7 @@ public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     CPhysicsBody* GetBody() const { return m_pBody; }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -143,7 +143,7 @@ void CCombatAction_StrikeResponseScorpionKing::Initialise()
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
         if (effects->GetEffectFromString("EYE_GET_HIT", effectType)) {
-            CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPosition(), false);
+            CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
             if (effect && !(effect->m_flags91 & 1) && effect->HasTC(0x4b)) {
                 CTCDParticleEmitter* emitter = effect->PTCDriver;
                 emitter->AttachToThing(PCreature.GetPItem(), 10, "EMITTER_EYE", 0, 0.0f);

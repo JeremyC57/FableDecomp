@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095B5A0, length 222 bytes (+ int3 padding). Vtable slot 11.
 // Callees: CVectorMap::LowerBound @ 0x004365B0 (inlined GetInterface, type 8 = bit 8 of +0x20), the component's
 // virtual slot 29 (+0x74) GetEnemy, the brain's player-manager accessor @ 0x008FCF90 (PBrain->+0x20; manifest label
-// CPixelShader::CountReferences propagated), CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPCharacter
+// CPixelShader::CountReferences propagated), CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature
 // @ 0x00487DC0 (+0x2c pointer), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor, the brain world accessor
 // @ 0x008FCFC0, CCombatManager::RegisterCombatant(CThingCreatureBase*, CThingCreatureBase*, bool) @ 0x006EDC50,
 // CAIStateGroup_HoverHornetQueen::SetupArena @ 0x0095B3E0.
@@ -65,6 +65,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -97,6 +98,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -114,7 +118,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 };
 
 
@@ -170,7 +176,6 @@ class CWorld { public:
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
 struct CTCCombatTarget {                        // interface type 8
@@ -184,7 +189,7 @@ struct CTCCombatTarget {                        // interface type 8
 };
 
 class CPlayer { public:
-    CThing* GetPCharacter();                    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -213,11 +218,11 @@ bool CAIStateGroup_HoverHornetQueen::IsRunnable()
     PBrain->PCreature->GetInterfaceT(&combat, 8);
     CThing* enemy = combat->GetEnemy();
     if (!enemy)
-        enemy = GetPPlayerManager()->GetMainPlayer()->GetPCharacter();
+        enemy = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (enemy) {
         PTargetThing = CIntelligentPointerCreature(enemy);
         CThing* creature = PBrain->PCreature;
-        CCombatManager* manager = GetPWorld()->CombatManager;
+        CCombatManager* manager = GetWorld().CombatManager;
         manager->RegisterCombatant(creature, PTargetThing.GetPItem(), true);
         SetupArena();
         return true;

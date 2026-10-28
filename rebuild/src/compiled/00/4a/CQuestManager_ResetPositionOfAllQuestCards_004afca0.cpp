@@ -2,13 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AFCA0, length 221 bytes, plain `ret`.
 // Quest cards are real things kept in limbo; whenever the hero is moved they are reset onto him so that a card dropped
 // back into the world appears at his feet.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1c), CPlayer::GetHeroThing
-// 0x00487DC0, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0 (const C3DVector&),
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1c), CPlayer::GetPControlledCreature
+// 0x00487DC0, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0 (const C3DVector&),
 // CTCPhysicsBase::ResetPosition (vtable slot 31, +0x7c; RTTI vtable 0x0125D2C4 -> 0x006B01D0).
 // Layout: retail CThing (PDB -0x10): PhysicsTC +0x60, Dead +0x91 bit 0, InLimbo +0x91 bit 5; retail CQuestManager
 // ActiveQuestCards +0x5c and CompletedQuestCards +0x60 (4-byte STLport lists of CIntelligentPointer<CThing>, node data +8).
 // Shape: the two walks are written out one after the other (each re-reads its list head for the end test); VC7.1
-// fetches the physics vtable before the GetPosition call and parks it, and the hero, in the two frame words.
+// fetches the physics vtable before the GetPos call and parks it, and the hero, in the two frame words.
 class C3DVector { public: float X, Y, Z; };
 class CTCPhysicsBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -31,10 +31,11 @@ class CThing { public:                                  // retail CThing (local 
     unsigned char   InLimbo : 1;                 // bit 5
     unsigned char   KillLocked : 1;
     unsigned char   CreatedBySerialisation : 1;
-    const C3DVector& GetPosition() const;        // 0x004C73D0
+    const C3DVector& GetPos() const;        // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroThing() const;                // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -76,7 +77,7 @@ class CQuestManager { public:
 
 void CQuestManager::ResetPositionOfAllQuestCards()
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || hero->Dead)
         return;
     CCardNode* node;
@@ -85,7 +86,7 @@ void CQuestManager::ResetPositionOfAllQuestCards()
         if (card && !card->Dead && card->InLimbo) {
             CTCPhysicsBase* physics = card->PhysicsTC;
             if (physics)
-                physics->ResetPosition(hero->GetPosition());
+                physics->ResetPosition(hero->GetPos());
         }
     }
     for (node = CompletedQuestCards->_M_next; node != CompletedQuestCards; node = node->_M_next) {
@@ -93,7 +94,7 @@ void CQuestManager::ResetPositionOfAllQuestCards()
         if (card && !card->Dead && card->InLimbo) {
             CTCPhysicsBase* physics = card->PhysicsTC;
             if (physics)
-                physics->ResetPosition(hero->GetPosition());
+                physics->ResetPosition(hero->GetPos());
         }
     }
 }

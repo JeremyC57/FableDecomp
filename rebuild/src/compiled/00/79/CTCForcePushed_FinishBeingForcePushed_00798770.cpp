@@ -3,10 +3,10 @@
 // is killed and the component removes itself
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00798770, 451 bytes (+ int3 padding), `ret 8`.
 // Leaf: FinishBeingForcePushed
-// Shape: the hit is built by a __forceinline helper taking the owner position BY VALUE (`HitOwner(owner, owner->GetPosition(),
-// direction, damage)`): the by-value argument is an aggregate copy of the GetPosition() reference, so VC loads the three words
+// Shape: the hit is built by a __forceinline helper taking the owner position BY VALUE (`HitOwner(owner, owner->GetPos(),
+// direction, damage)`): the by-value argument is an aggregate copy of the GetPos() reference, so VC loads the three words
 // into ecx/edx/eax before the CHitParameters argument pushes and stores them between the pushes (retail); a named
-// `C3DVector position = owner->GetPosition();` local interleaves load/store, whatever the copy-ctor spelling. C3DVector has no
+// `C3DVector position = owner->GetPos();` local interleaves load/store, whatever the copy-ctor spelling. C3DVector has no
 // user copy constructor (the position copy must be the implicit aggregate one); `direction` is built memberwise from the
 // DirectionBeingPushed members through the three-float constructor (retail `mov eax,[edi+2Ch] ; mov ecx,[edi+30h] ; ...`).
 // Layout: landed CTCForcePushed_SetUpForcePush_007986a0 model; CHitParameters CreateDustParticleEffectOnHit +0x24, GuaranteeHit +0x25 (PDB).
@@ -75,7 +75,7 @@ public:
     unsigned long ThingTypeFlags;                   // +0x6C (bit 3)
     unsigned char _pad70[0x91 - 0x70];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
     void Kill(bool immediately);                    // 0x004C9B80
     void RemoveTC(long interfaceType);              // 0x004C9840
 };
@@ -126,9 +126,9 @@ void CTCForcePushed::FinishBeingForcePushed(bool reversed, float damage)
         C3DVector direction(DirectionBeingPushed.X, DirectionBeingPushed.Y, DirectionBeingPushed.Z);
         if (reversed) {
             direction = -direction;
-            HitOwner(owner, owner->GetPosition(), direction, damage);
+            HitOwner(owner, owner->GetPos(), direction, damage);
         } else
-            HitOwner(owner, owner->GetPosition(), direction, 1.0f);
+            HitOwner(owner, owner->GetPos(), direction, 1.0f);
     }
     if (ParentThing->ThingClass == 1)
         ((CThingAnimatable*)ParentThing)->SetSuspendAnimation(false, 0);

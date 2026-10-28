@@ -5,7 +5,7 @@
 // Retail 0x007B2AB0, 320 bytes incl. padding (plain `ret`). Ego_r.pdb `?OnDie@CTCGuard@@UAEXXZ`.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 ("OBJECT_GOLDBAG_SMALL_WITH_COINS" @ 0x0125D760, "" @ 0x0122D70E),
 // ~CCharString @ 0x0099EAE0, CTCBase::GetDefinitionManager @ 0x006869D0, CDefinitionManager::GetDefGlobalIndexFromName
-// @ 0x009AD410, CThing::GetPosition @ 0x004C73D0, CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*,
+// @ 0x009AD410, CThing::GetPos @ 0x004C73D0, CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*,
 // unsigned long, const CCharString&) @ 0x00703210 (static __fastcall), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound
 // @ 0x0040F020 (inlined GetInterface for CTCMoney, type 0xCC = bit 12 of the bitset word +0x38, `test ah,10h`),
 // CTCBase::GetPWorldSeed @ 0x00686DA0, GFFloatRandom(float, unsigned long*) @ 0x004978A0 (__fastcall), C3DVector::RotateXY
@@ -58,7 +58,7 @@ public:
     CTCPhysicsBase* PhysicsTC;                              // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                                  // +0x91 bit 0 Dead
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -116,7 +116,7 @@ void CTCGuard::OnDie()
             index = GetDefinitionManager().GetDefGlobalIndexFromName(name);
         }
         if (index > 0) {
-            CThingObject* bag = CThingObject::Create(index, GetParentThing()->GetPosition(), 5, 0, 0, "");
+            CThingObject* bag = CThingObject::Create(index, GetParentThing()->GetPos(), 5, 0, 0, "");
             if (bag && !(bag->Flags91 & 1)) {
                 CTCMoney* money;
                 if (bag->GetInterface(&money, 0xcc) && money)

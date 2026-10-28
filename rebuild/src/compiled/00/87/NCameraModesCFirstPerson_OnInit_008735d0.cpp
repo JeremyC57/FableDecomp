@@ -4,7 +4,7 @@
 // Leaf: OnInit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008735D0, length 183 bytes (padded to 192), `ret`.
 // Callees: NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0 (CameraManager->PObservedThing.GetPItem();
-// labelled _Cons_val), CThing::GetPosition() const @ 0x004C73D0 (labelled CVertexBufferWin32::DoSizeof), the thing
+// labelled _Cons_val), CThing::GetPos() const @ 0x004C73D0 (labelled CVertexBufferWin32::DoSizeof), the thing
 // physics' virtual slot 70 (+0x118, a C3DVector by hidden pointer: the facing vector), C3DVector::Normalise
 // @ 0x00A14440.
 // Retail layout (Ego_r.pdb names; retail NCameraModes::CBase is 0xA4 bytes, PDB 0xC8: CPhysicsState 0x30 and a 12-byte
@@ -47,7 +47,7 @@ class CThing { public:
     unsigned char _pad[0x60];
     CThingPhysics* m_pPhysics;              // +0x60
     CThingPhysics* GetPhysics() const { return m_pPhysics; }
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 class CThingGameObject : public CThing { public:};
 
@@ -87,7 +87,7 @@ public:
 
 void NCameraModes::CFirstPerson::OnInit()
 {
-    Base = GetObservedThing()->GetPosition();
+    Base = GetObservedThing()->GetPos();
     PrincipleAxis = GetObservedThing()->GetPhysics()->GetFacingVector();
     PrincipleAxis.Z = 0.0f;
     PrincipleAxis.AccurateNormalise();

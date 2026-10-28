@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00748C10, 96 bytes, `ret 8` (link-time __fastcall: first in ecx, last in edx, the
 //   value-type tag pointer and the comparator on the stack).
 // Callees: CCompare_FurthestFromInitPos2D::operator()(CThing*, CThing*) const @ 0x007483E0 (landed, __fastcall `ret 8`,
-//   never reads `this`; its landed body is repeated below as the same-TU definition), CThing::GetPosition @ 0x004C73D0
+//   never reads `this`; its landed body is repeated below as the same-TU definition), CThing::GetPos @ 0x004C73D0
 //   (inside that body).
 // Callers: the thing-pointer sort family 0x007485xx-0x007497xx (the landed sort 0x00749740 calls this address as its
 //   unguarded insertion pass).
@@ -30,7 +30,7 @@ class CThing { public:
     unsigned char m_flags6c;                    // +0x6c bit 3: creature
     unsigned char _pad6d[0x91 - 0x6d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 class CThingCreatureBase : public CThing { public:
@@ -39,7 +39,7 @@ class CThingCreatureBase : public CThing { public:
     float InitialPosY;                          // +0xec
     C2DVector GetOffsetFromInitialPos2D() const
     {
-        const C3DVector& position = GetPosition();
+        const C3DVector& position = GetPos();
         return C2DVector(InitialPosX - position.X, InitialPosY - position.Y);
     }
 };

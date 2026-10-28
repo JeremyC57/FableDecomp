@@ -104,18 +104,24 @@ public:
     typedef T* pointer;
     typedef unsigned int size_type;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer s, pointer f, pointer e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
+    protected:
     void _M_insert_overflow(pointer position, const T& x, const __false_type&, size_type fill_len, bool atend);
+    public:
 };
 
 template <class T, class A>

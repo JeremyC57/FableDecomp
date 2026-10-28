@@ -7,15 +7,16 @@ class CWideString { public:
     ~CWideString();                                // 0x0099B510
 };
 
-struct CBufferHolder_009f9f70 {
+struct CTexture {
     unsigned char _body[0xc];
-    ~CBufferHolder_009f9f70();                     // 0x009F9F70
+    void Uninitialise();                           // 0x009F9F70 ?Uninitialise@CTexture@@QAEXXZ
+    ~CTexture() { Uninitialise(); }
 };
 
 struct CBufferAndString_009c20c0 {
     unsigned char          _pad[0x14];
     CWideString            m_name;                 // +0x14
-    CBufferHolder_009f9f70 m_buffer;               // +0x18
+    CTexture m_buffer;               // +0x18
     ~CBufferAndString_009c20c0() { }
 };
 

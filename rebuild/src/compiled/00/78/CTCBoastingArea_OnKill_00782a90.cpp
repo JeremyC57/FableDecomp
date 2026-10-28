@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00782A90, length 58 bytes (+ int3 padding).
 // Callees: the player-manager accessor @ 0x00686D40 (__cdecl, no arguments: the game singleton
 // @ 0x013B8A1C, +0x30; manifest "CViewBase::GetDisplayEngine" is propagated), CPlayerManager::
-// GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0 (landed names),
+// GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0 (landed names),
 // CTCBoastingArea::OnHeroLeavingArea(CThing*) @ 0x00782860.
 // Identity: slot 14 of vtable 0x0126B314 = CTCBoastingArea (rtti-vtables.tsv).
 // Layout = Ego_r.pdb CTCBoastingArea: HeroWithinRadiusState +0xc (EHeroWithinRadiusState; 2 = inside);
@@ -12,9 +12,10 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                               // +0x91 bit 0
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
-    CThing* GetHeroCreature();                              // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                              // 0x00487DC0
 };
 
 class CPlayerManager { public:
@@ -40,7 +41,7 @@ struct CTCBoastingArea {
 void CTCBoastingArea::OnKill()
 {
     if (HeroWithinRadiusState != HERO_OUTSIDE) {
-        CThing* hero = GetPlayerManager()->GetMainPlayer().GetHeroCreature();
+        CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
         if (hero && !hero->m_dead && HeroWithinRadiusState == HERO_WITHIN_RADIUS)
             OnHeroLeavingArea(hero);
     }

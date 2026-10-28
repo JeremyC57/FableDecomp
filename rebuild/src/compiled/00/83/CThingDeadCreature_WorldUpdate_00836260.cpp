@@ -4,7 +4,7 @@
 // Callees: CThingGameObject::WorldUpdate @ 0x00838BA0, CThingBodyReorienter::IsUpdateNeeded @ 0x00863250 /
 //   UpdateBodyReorienation @ 0x00863E10 / the one-byte flag setter @ 0x00863260, CThing::UpdateGraphicAppearance(long)
 //   @ 0x004C7590, CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDef<CThingCreatureDef>(long,
-//   CDefPointer&) @ 0x00513160, CThingDeadCreature::PeekDefinition @ 0x00835B90, CThing::GetPosition @ 0x004C73D0,
+//   CDefPointer&) @ 0x00513160, CThingDeadCreature::PeekDefinition @ 0x00835B90, CThing::GetPos @ 0x004C73D0,
 //   CreateSpecialEffect @ 0x006E0880 (__fastcall), CThing::GetTCDriver<CTCDParticleEmitter> @ 0x004ACB50,
 //   CTCDParticleEmitter::AttachToThing @ 0x006E0BE0, CCharString(const char*, long) @ 0x0099EBF0 / dtor @ 0x0099EAE0,
 //   LowerBound @ 0x0040F020 (non-const) / @ 0x004365B0 (const), CThing::AddTC @ 0x004C9D60, CTCFadeOutAndIn::Fade
@@ -108,7 +108,7 @@ public:
     unsigned short m_defGlobalIndex;                    // +0x8c
     unsigned char _pad8e[0x91 - 0x8e];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void UpdateGraphicAppearance(long reason);          // 0x004C7590
     CDefinitionManager* GetDefinitionManager() const;   // 0x004C7990
     CTCBase* AddTC(const CCharString& name, long a, long b);   // 0x004C9D60
@@ -187,7 +187,7 @@ bool CThingDeadCreature::WorldUpdate()
             if (!StartedDecay) {
                 StartedDecay = true;
                 if (PeekDefinition().DeadBodyDecayEffect > 0) {
-                    CThing* effect = CreateSpecialEffect(PeekDefinition().DeadBodyDecayEffect, GetPosition(), false);
+                    CThing* effect = CreateSpecialEffect(PeekDefinition().DeadBodyDecayEffect, GetPos(), false);
                     if (effect && !effect->Dead) {
                         CTCDParticleEmitter* emitter = 0;
                         effect->GetTCDriver(&emitter);

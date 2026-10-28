@@ -112,12 +112,14 @@ public:
     typedef _List_node<_Tp> _Node;
     typedef _List_iterator<_Tp, _Nonconst_traits<_Tp> > iterator;
     typedef _List_iterator<_Tp, _Const_traits<_Tp> > const_iterator;
+    protected:
     _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __tmp = this->_M_node.allocate(1);
         _Construct(&__tmp->_M_data, __x);
         return __tmp;
     }
+    public:
     iterator begin() { return iterator((_Node*)(this->_M_node._M_data->_M_next)); }
     const_iterator begin() const { return const_iterator((_Node*)(this->_M_node._M_data->_M_next)); }
     iterator end() { return iterator(this->_M_node._M_data); }

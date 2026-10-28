@@ -2,7 +2,7 @@
 // Leaf: InitialiseSellableItems
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059D820, 397 bytes, plain `ret`. Size TU with a frame pointer:
 //   `#pragma optimize("y", off)` + `("s", on)` (`push 11h ; pop ebx`).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449960 (engine 0x013B86A0 +0x1C), CPlayer::GetControlledCreature
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449960 (engine 0x013B86A0 +0x1C), CPlayer::PeekPControlledCreature
 //   @ 0x00487DD0, std::bitset<>::test @ 0x00410DE0 and the const CVectorMap LowerBound @ 0x004365B0 (the inlined
 //   GetInterface), CTCInventoryBase::GetAllItems(vector<NInventory::CItem>&) @ 0x005BF482 (landed, another TU),
 //   CTCBase owner getter @ 0x005BC4C4 (label "CWorld::DrawGetEnvironment" is propagated), CTCInventoryItem::IsBuyable
@@ -48,7 +48,8 @@ public:
         return false;
     }
 };
-class CPlayer { public: CThing* GetControlledCreature() const; };          // 0x00487DD0
+class CThingPlayerCreature : public CThing { };
+class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };          // 0x00487DD0
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };          // 0x00449960
 class CEngine { public:
     unsigned char _pad00[0x1c];
@@ -105,7 +106,7 @@ void CTCInventoryTrade::InitialiseSellableItems()
 {
     CategoryIdent = 0xc;
     long total = 0;
-    CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->GetControlledCreature();
+    const CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->PeekPControlledCreature();
     CItemVector items;
     CTCInventoryBase* inventory = 0;
     hero->GetInterface(&inventory, 0x11);

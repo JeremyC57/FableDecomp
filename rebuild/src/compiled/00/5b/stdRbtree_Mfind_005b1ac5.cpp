@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<NUISystem::CComponent*, long> (CTCInventoryTrade's local per-branch counters)) STLport exact-key lookup over an unsigned 32-bit key: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@QBEPAU?$_Rb_tree_node@U?$pair@QAVCComponent@NUISystem@@J@std@@@2@ABQAVCComponent@NUISystem@@@Z
+// Leaf: ?_M_find@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@J@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@J@std@@@4@@std@@ABEPAU?$_Rb_tree_node@U?$pair@QAVCComponent@NUISystem@@J@std@@@2@ABQAVCComponent@NUISystem@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005B1AC5, 54 bytes (unaligned entry, size-optimised TU), thiscall, `ret 4`;
 //   returns the node pointer (header node pointer = end()).
 // Identity (proven): map<NUISystem::CComponent*, long> (CTCInventoryTrade's local per-branch counters); evidence: CTCInventoryTrade::ConstructNormalShopList / ConstructActualBuyInventoryPC / ConstructActualWantedInventoryPC call it on a local map keyed by GetMenuBranchFromDefIndex(PC)'s result (Ego_r.pdb ?GetMenuBranchFromDefIndex@CTCInventoryTrade@@AAEPAVCComponent@NUISystem@@...: a CComponent*): a miss stores 1 through operator[] 0x0042D1B7 (Ego_r.pdb has map<NUISystem::CComponent*, long>::operator[]), a hit increments the node's long (+0x14).
@@ -63,8 +63,12 @@ public:
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
+    private:
     _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

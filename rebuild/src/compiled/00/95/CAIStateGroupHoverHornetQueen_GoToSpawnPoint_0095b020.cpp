@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095B020, length 599 bytes (+ int3 padding), plain `ret`, /GS cookie (sprintf buffer).
 // Callees: GetPWorld @ 0x008FCFC0, CWorld random-seed getter @ 0x0049D810 (labelled CVertexBufferWin32::DoSizeof; result unused),
 // LowerBound @ 0x0040F020, SetNavigatorToType @ 0x006CBA80, GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, sprintf @ 0x00BFEB10,
-// CCharString @ 0x0099EBF0 / 0x0099EC30 / ~ @ 0x0099EAE0, CThing::GetPosition @ 0x004C73D0, _ftol @ 0x00BFEA70,
+// CCharString @ 0x0099EBF0 / 0x0099EC30 / ~ @ 0x0099EAE0, CThing::GetPos @ 0x004C73D0, _ftol @ 0x00BFEA70,
 // PeekThingSearchTools @ 0x008FD000, GetPFirstThingInRoughArea<CThingFilter_HasDefGlobalIndex,CThing> @ 0x007FD110,
 // IsStillRunnable @ 0x0095A420, GetPItem @ 0x00A01B50, AIAction_LookAtPos @ 0x0097D580,
 // AIAction_MoveToPosProximityAndFacePos @ 0x0091D510, Terminate @ 0x008FCF40. String "QueenDepositPos%d" @ 0x01294EE4.
@@ -47,7 +47,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0xe8 - 0x4c];
     C3DVector StartPos;                         // +0xe8
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { public: };
 class CTCCreatureNavigation { public:
@@ -138,7 +138,7 @@ void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()
     {
         CCharString name(text, -1);
         CThingFilter_HasDefGlobalIndex filter(name);
-        const C3DVector& pos = GetCreature()->GetPosition();
+        const C3DVector& pos = GetCreature()->GetPos();
         C2DCoordI centre((long)pos.X, (long)pos.Y);
         area.Left = centre.X - 60;
         area.Top = centre.Y - 60;
@@ -147,11 +147,11 @@ void CAIStateGroup_HoverHornetQueen::GoToSpawnPoint()
         PeekThingSearchTools()->GetPFirstThingInRoughArea(area, filter, &found);
     }
     if (found)
-        target = found->GetPosition();
+        target = found->GetPos();
     else
         target = GetCreature()->StartPos;
     if (IsStillRunnable()) {
-        C3DVector look = PTarget.GetPItem()->GetPosition();
+        C3DVector look = PTarget.GetPItem()->GetPos();
         if (AIAction_LookAtPos(AI_ACTION_REPEAT_UNTIL_DONE, look, 0x11, 0.05f) != AI_ACTION_DONE) {
             Terminate();
             return;

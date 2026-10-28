@@ -183,7 +183,7 @@ class CThing { public:
     CDefClassBase*        PDef;                        // +0x70
     unsigned char         _pad74[0x90 - 0x74];
     signed char           PlayerNumber;                // +0x90
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     __forceinline CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     CDefClassBase* GetDef() const { return PDef; }
     long GetPlayerNumber() const { return PlayerNumber; }
@@ -243,7 +243,7 @@ void CCreatureAction_DragonRearUpFull::PerformAction()
         GetPWorld()->PDefinitionManager->GetDef(index, &out);
         shotDef = out;
     }
-    const C3DVector& creaturePos = PCreature.GetPItem()->GetPosition();
+    const C3DVector& creaturePos = PCreature.GetPItem()->GetPos();
     C3DVector position(creaturePos.X, creaturePos.Y, creaturePos.Z + 10.0f);
     position.Z = GetPWorld()->GetWorldMap()->GetGroundSizeZAt(position) + 0.25f;
     CThing* thing = CreateThingObject(shotDef->Thing, position, PCreature.GetPItem(), "");
@@ -276,7 +276,7 @@ void CCreatureAction_DragonRearUpFull::PerformAction()
     creature->GetDef()->GetSubDef(&effects);
     if (effects) {
         if (effects->GetEffectFromString("GROUND_SLAM_EXPLOSION", effectType))
-            CreateEffectThing(effectType, &PCreature.GetPItem()->GetPosition(), false);
+            CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
         effects->Release();
     }
     shotDef->Release();

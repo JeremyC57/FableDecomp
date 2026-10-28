@@ -7,7 +7,7 @@
 //   PDB ?ActivateWorld@CWorld@@QAEX_N@Z.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; the loading-stage marker 0x009D8240
 //   (__fastcall, string + 0; empty in retail) and its closing marker 0x009D8250 (__fastcall, 0; empty);
-//   CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetHeroCreature 0x00487DC0, CPlayerManager::
+//   CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, CPlayerManager::
 //   InitPlayerCharacter(bool) 0x00449D90, the spell-effect interpolator's screen-effect refresh 0x006B8410 (its
 //   ScreenEffectPriorityStack at +0x90), CPlayerGui::InitialActivate 0x0043A380 on g_pPlayerGui 0x013B8790,
 //   CQuestManager::ActivateMultipleQuests(CArray<CCharString>*, bool, bool) 0x004B4260 and PostBoastTransfer 0x004B2890
@@ -33,8 +33,9 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Dead : 1;                              // +0x91 bit 0
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                           // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                           // 0x00487DC0
 };
 class CPlayerManager { public:
     void InitPlayerCharacter(bool loadedGame);           // 0x00449D90
@@ -81,7 +82,7 @@ class CWorld : public CWorld_PDB { public:
 void CWorld::ActivateWorld(bool loadedGame)
 {
     LoadingStage("Init Characters", 0);
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || hero->Dead)
         PlayerManager->InitPlayerCharacter(loadedGame);
     PEnvironment_ptr->SpellEffectInterpolator->RefreshScreenEffects();

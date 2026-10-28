@@ -2,7 +2,7 @@
 // Leaf: OnDie
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDef<T>
 // @ 0x007923C0, CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CThing::PeekWorld @ 0x004C7AA0,
-// CThingCreatureBase::GetPosition @ 0x006A4D00, CMessageEventManager::AddMessage @ 0x00687730, LowerBound @ 0x0040F020 (non-const) and
+// CThingCreatureBase::PeekPos @ 0x006A4D00, CMessageEventManager::AddMessage @ 0x00687730, LowerBound @ 0x0040F020 (non-const) and
 // @ 0x004365B0 (const), CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990, CTCWife::Murdered @ 0x006D00A0, CTCWife::Died @ 0x006D0020,
 // CThingCreatureBase::OnDie @ 0x00663F50.
 // Shape: GetDef gets a same-TU auto_inline(off) stand-in that only writes the def slot (the slot then does not escape, so the
@@ -132,8 +132,10 @@ class CTCWife { public:
     void Died();                                        // 0x006D0020
 };
 
-class CThingCreatureBase : public CThing { public:
-    const C3DVector& GetPosition() const;               // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;               // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
     void OnDie();                                       // 0x00663F50
 };
 
@@ -156,7 +158,7 @@ void CThingAICreature::OnDie()
         }
         if (found) {
             CMessageEventManager* manager = PeekWorld()->MessageEventManager;
-            manager->AddMessage(def.m_p, &GetPosition(), killer, this, 0);
+            manager->AddMessage(def.m_p, &PeekPos(), killer, this, 0);
         }
     }
     CTCWife* wife = 0;
@@ -167,8 +169,8 @@ void CThingAICreature::OnDie()
         if (HasTC(0x49)) {
             const CTCFaction* faction = GetConstTC<CTCFaction>(0x49);
             if (faction->GetFaction()) {
-                log->PostDeed(9, GetPosition(), this, 0, 2, true, false, faction->GetFaction(), false, 0);
-                log->PostDeed(0x3a, GetPosition(), this, 0, 7, false, false, faction->GetFaction(), true, 0);
+                log->PostDeed(9, PeekPos(), this, 0, 2, true, false, faction->GetFaction(), false, 0);
+                log->PostDeed(0x3a, PeekPos(), this, 0, 7, false, false, faction->GetFaction(), true, 0);
             }
         }
         if (wife)

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080F870, 608 bytes, `ret 4`.
 // Callees: GetSubDef<CSpecialEffectsDef> @ 0x00669580, GetEffectFromString @ 0x00669D30, CCharString @ 0x0099EBF0/0x0099EAE0,
 //   CBaseIntelligentPointer @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
-//   CThing::Kill @ 0x004C9B80, CThing::GetPosition @ 0x004C73D0, CTCDParticleEmitter::Create @ 0x006E0880 (__fastcall),
+//   CThing::Kill @ 0x004C9B80, CThing::GetPos @ 0x004C73D0, CTCDParticleEmitter::Create @ 0x006E0880 (__fastcall),
 //   LowerBound @ 0x0040F020, AttachToThing @ 0x006E0BE0, __ftol2 @ 0x00BFEA70, the owner's slot 28 and its physics body's
 //   slot 44; the effects def's slot 1.
 // Data: "HOVER" 0x0126848C, "DUMMY_CENTRE" 0x0126F110, frames per second 0x01375550.
@@ -121,7 +121,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 // Same-TU stand-in for the GetSubDef<T> COMDAT (as the landed 0x00801A50): with the body visible VC7.1 sees that the out
 // pointer does not escape and keeps the def object in ebp through to its release, as retail.
@@ -227,7 +227,7 @@ void CTCNymph::StopFlyingAround(long fadeTime)
     if (POldEffect.IsAlive())
         POldEffect.GetPItem()->Kill(true);
     POldEffect = PEffect;
-    PEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, ParentThing->GetPosition(), false));
+    PEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, ParentThing->GetPos(), false));
     if (PEffect.IsAlive()) {
         CTCDParticleEmitter* emitter = 0;
         PEffect.GetPItem()->GetInterface(&emitter, 0x4b);

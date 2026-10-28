@@ -31,7 +31,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     __forceinline bool TestTC(long type) const { return ((m_presentBits[type >> 5] >> (type & 31)) & 1) != 0; }
     __forceinline CTCBase* GetTC(long type)
     {
@@ -41,8 +41,10 @@ class CThing { public:
         return (it == map->last || type < it->type ? map->last : it)->component;
     }
 };
-class CThingCreatureBase : public CThing { public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingBuilding;
 struct CBaseIntelligentPointer {
@@ -113,7 +115,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
             return 3;
         CThing* item = thing.GetPItem();
         bool reached;
-        result = AIAction_MoveToPosProximity(2, item->GetPosition(), proximity, reached, 3, true, false, true, 0, true, 0.0f);
+        result = AIAction_MoveToPosProximity(2, item->GetPos(), proximity, reached, 3, true, false, true, 0, true, 0.0f);
         if (result == 2)
             break;
         if (result == 4)
@@ -162,7 +164,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
         return result;
     }
     C3DVector forward = orientation.Forward;
-    C3DVector lookPos = forward + PBrain->PCreature->GetPosition();
+    C3DVector lookPos = forward + PBrain->PCreature->PeekPos();
     for (;;) {
         if (!IS_THING_ALIVE(thing))
             return 3;

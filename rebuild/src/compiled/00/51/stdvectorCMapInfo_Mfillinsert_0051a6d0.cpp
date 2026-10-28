@@ -1,5 +1,5 @@
 // std::vector<CMapInfo>::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
-// Leaf: ?_M_fill_insert@?$vector@VCMapInfo@@V?$allocator@VCMapInfo@@@std@@@std@@IAEXPAVCMapInfo@@IABV3@@Z
+// Leaf: ?_M_fill_insert@?$vector@VCMapInfo@@V?$allocator@VCMapInfo@@@std@@@std@@QAEXPAVCMapInfo@@IABV3@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051a6d0, 302 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): 72-byte stride (0x38E38E39 sar 4) and a 0x48-byte __x_copy frame; its callees are bound to the CMapInfo copy constructor, __uninitialized_copy and __copy_backward, and its overflow callee is vector<CMapInfo>::_M_insert_overflow 0x00519A50; callers the resize 0x0051B770 and 0x0051AF20 (tail jump).
 // Callees: CMapInfo::CMapInfo(const CMapInfo&) 0x005110B0 (bound), CMapInfo::~CMapInfo 0x0050F910 (FableWin.pdb ??1CMapInfo@@QAE@XZ; unbound), __uninitialized_copy<CMapInfo*, CMapInfo*> 0x00513830 (bound), __copy_backward<CMapInfo*, CMapInfo*, int> 0x00513D40 (bound), uninitialized_fill_n<CMapInfo*, unsigned int, CMapInfo> 0x00514DB0 and fill<CMapInfo*, CMapInfo> 0x00515090 (landed under stand-in names), _M_insert_overflow 0x00519A50 (L003).
@@ -78,7 +78,9 @@ public:
 protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                                             // 0x00519A50
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
+    protected:
 };
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, const _Tp& __x)

@@ -1,7 +1,7 @@
-// std::vector<CBrainBehaviour>::resize(size_type n, const value_type& x) -- shrink by erasing the tail, else grow by inserting n - size() copies of x at the end
-// Leaf: ?resize@?$vector@VCBrainBehaviour@@V?$allocator@VCBrainBehaviour@@@std@@@std@@QAEXIABVCBrainBehaviour@@@Z
+// std::vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::CThemeWeight>::resize(size_type n, const value_type& x) -- shrink by erasing the tail, else grow by inserting n - size() copies of x at the end
+// Leaf: ?resize@?$vector@UCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@V?$allocator@UCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@std@@@std@@QAEXIABUCThemeWeight@CEnvironmentThemePriorityStackEntry@NEnvironmentInternal@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00889440, 87 bytes, thiscall, `ret 8`.
-// Identity (probable): its caller 0x00887330 (landed) builds a zeroed 12-byte CBrainBehaviour (Ego_r.pdb Name / Priority / ScriptAIPriority; the first element then gets the name and priority 1.0f) and calls resize(1, value) on the vector at +0x08; other callers 0x00887380 and 0x00889650; bound only as the stand-in ?resize@CRetailVector_CBrainBehaviour@@QAEXKABVCBrainBehaviour@@@Z.
+// Identity (probable): its caller 0x00887330 (landed) builds a zeroed 12-byte CThemeWeight (Ego_r.pdb Name / Priority / ScriptAIPriority; the first element then gets the name and priority 1.0f) and calls resize(1, value) on the vector at +0x08; other callers 0x00887380 and 0x00889650; bound only as the stand-in ?resize@CRetailVector_CBrainBehaviour@@QAEXKABVCBrainBehaviour@@@Z.
 // Callees: __copy<T*, T*, int>(first, last, result, const random_access_iterator_tag&, int*) 0x00885E10 (erase's __copy_ptrs,
 //   __fastcall), vector<T>::_M_fill_insert(pos, n, x) 0x008890F0.
 // Body: STLport 4.6 `if (n < size()) erase(begin() + n, end()); else insert(end(), n - size(), x);` -- erase's _Destroy loop is
@@ -12,12 +12,16 @@ class CDefString {                                         // Ego_r.pdb, 4 bytes
 public:
     long TablePos;                                        // +0x00
 };
-class CBrainBehaviour {                                    // Ego_r.pdb, 12 bytes (TLC stores Priority as a float)
-public:
-    CDefString Name;                                      // +0x00
-    float      Priority;                                  // +0x04
-    long       ScriptAIPriority;                          // +0x08
+namespace NEnvironmentInternal {
+class CEnvironmentThemePriorityStackEntry { public:
+    struct CThemeWeight {                                 // Ego_r.pdb, 12 bytes
+        long  ThemeID;                                    // +0x00
+        float Weight;                                     // +0x04
+        bool  LockWeight;                                 // +0x08
+    };
 };
+}
+typedef NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::CThemeWeight CThemeWeight;
 namespace std {
 struct __false_type { __false_type() { } };
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -74,4 +78,4 @@ protected:
     void _M_fill_insert(iterator __pos, size_type __n, const _Tp& __x);   // 0x008890F0
 };
 }   // namespace std
-template void std::vector<CBrainBehaviour >::resize(unsigned int, const CBrainBehaviour&);
+template void std::vector<CThemeWeight >::resize(unsigned int, const CThemeWeight&);

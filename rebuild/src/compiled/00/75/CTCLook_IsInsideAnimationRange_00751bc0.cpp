@@ -1,6 +1,6 @@
 // CTCLook::IsInsideAnimationRange() -- whether the creature is close enough to the camera (in the XY plane) for its look animation to matter, and is either on screen or in a movie sequence
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00751BC0, length 176 bytes (+ int3 padding); speed TU (no frame pointer, esp-relative frame).
-// Callees: CThing::GetPosition @ 0x004C73D0, CTCBase::GetWorld @ 0x00686A70 (twice), CWorld virtual slot 8 (+0x20, GetViewPosition --
+// Callees: CThing::GetPos @ 0x004C73D0, CTCBase::GetWorld @ 0x00686A70 (twice), CWorld virtual slot 8 (+0x20, GetViewPosition --
 // a C3DVector through the hidden pointer), Distance2D(const C2DVector&, const C2DVector&) @ 0x009E2460 (`__fastcall`, float in st0),
 // CTCGraphicAppearance::WasRenderedLastFrame @ 0x004BD200 on CThing::PTCGraphicAppearance (+0x64), CGameScriptInterface::
 // IsInMovieSequence() const (slot 395, +0x62C) through CWorld::PGameScriptInterface (+0x38). CLookDef::CutOffNoLooking +0x50 (PDB).
@@ -24,7 +24,7 @@ struct CTCGraphicAppearance {
 class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64 (PDB +0x74)
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
@@ -103,7 +103,7 @@ class CTCLook : public CTCBase { public:
 };
 bool CTCLook::IsInsideAnimationRange()
 {
-    C3DVector position = ParentThing->GetPosition();
+    C3DVector position = ParentThing->GetPos();
     C3DVector view = GetWorld().GetViewPosition();
     CLookDef* def = PDef.Object;
     if (Distance2D(C2DVector(position), C2DVector(view)) <= def->CutOffNoLooking)

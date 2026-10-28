@@ -10,7 +10,9 @@
 // CTCHeroStats QAEXM / QAEXXZ members.
 // Layout: CThing as the matched 0x00899B10 row (UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0).
 // Shape: /O2 (16-aligned entry); GetTC uses the one-ternary component store (the 0x00899B10 idiom).
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
@@ -69,12 +71,12 @@ public:
     void ResetTrainingStatus_0057a5be();                          // 0x0057A5BE (name not confirmed)
 };
 class CThingPlayerCreature : public CThing { };
-struct CPlayer_Methods : CPlayer {
+class CPlayer : public CPlayerPdb { public:
     CThingPlayerCreature* GetPControlledCreature() const; // 0x00487DC0
 };
 class CPlayerManager {
 public:
-    CPlayer_Methods& GetMainPlayer();                    // 0x00449970
+    CPlayer& GetMainPlayer();                    // 0x00449970
 };
 class CGameScriptInterface {
 public:

@@ -1,6 +1,6 @@
 // CCreatureAction_UseObject::PerformAction() -- re-aim the move-to position at the creature, queue a CEventItemUsed(creature) on the used thing's entity events, then hand the use to the thing's scripted hook (CTCActionUseScriptedHook::OnActionUse) when it has one, else to its CTCActionUse component's virtual slot 28
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0069FE60, length 366 bytes (+ int3 padding).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8, PUsedThing +0xa8), CThing::GetPosition @ 0x004C73D0,
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8, PUsedThing +0xa8), CThing::GetPos @ 0x004C73D0,
 // CCreatureActionBase::SetMoveToPos(const C3DVector&) @ 0x006929E0, CVectorMap::LowerBound @ 0x0040F020 (inlined lookups: 0x42
 // CTCEntityEvents, bit 2 of +0x28, tested; 0xC2 CTCActionUseScriptedHook, bit 2 of +0x38, tested; 0xD CTCActionUse, bit 13 of +0x20,
 // untested), operator new @ 0x00BFEA1A (0x10-byte event), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 (the
@@ -23,7 +23,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -96,7 +96,7 @@ class CCreatureAction_UseObject : public CCreatureActionBase { public:
 
 void CCreatureAction_UseObject::PerformAction()
 {
-    SetMoveToPos(PCreature.GetPItem()->GetPosition());
+    SetMoveToPos(PCreature.GetPItem()->GetPos());
     CThing* used = PUsedThing.GetPItem();
     if (used->HasTC(0x42)) {
         CTCEntityEvents* events = used->GetTC<CTCEntityEvents>(0x42);

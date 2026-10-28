@@ -4,7 +4,7 @@
 // Leaf: FrameUpdate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DB460, 0x1BB bytes (padded to 448), plain `ret`.
 // Callees: CModeBase::FrameUpdate 0x0073AC50, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound
-//   0x0040F020 (inline TC lookup 0x43), CTCLook::LookAtPos(const C3DVector*, long) 0x00753E90, CThing::GetPosition
+//   0x0040F020 (inline TC lookup 0x43), CTCLook::LookAtPos(const C3DVector*, long) 0x00753E90, CThing::GetPos
 //   0x004C73D0, CThingCreatureBase::IsPerformingAnyAction 0x006622A0; the driver TC's virtual slots 70 (forward vector,
 //   returned by value) and 30 (move to). Data: 50.0f 0x0124E7F8, 14.0f 0x01266304, 0.04f 0x0125B25C.
 // Layout: local model. Mode: owner +4, PTarget +0x74 (CIntelligentPointer<CThing>), UseHeadTurning +0x7C (PDB). Thing:
@@ -55,7 +55,7 @@ class CThing { public:
     CTCDriverBase* PTCDriver;                   // +0x60
     unsigned char  _pad64[0x91 - 0x64];
     unsigned char  Killed;                      // +0x91 (bit 0)
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
@@ -101,10 +101,10 @@ void CModeDragonHover::FrameUpdate()
     if (owner->HasTC(0x43)) {
         CTCLook* look = owner->GetTC<CTCLook>(0x43);
         if (UseHeadTurning) {
-            look->LookAtPos(&PTarget.GetPItem()->GetPosition(), 10);
+            look->LookAtPos(&PTarget.GetPItem()->GetPos(), 10);
         } else {
             C3DVector ahead = owner->PTCDriver->GetForward() * 50.0f;
-            C3DVector position = Owner->GetPosition() + ahead;
+            C3DVector position = Owner->GetPos() + ahead;
             look->LookAtPos(&position, 10);
         }
     }
@@ -112,10 +112,10 @@ void CModeDragonHover::FrameUpdate()
         return;
     CThing* me = Owner;
     CThing* target = PTarget.GetPItem();
-    C3DVector delta = target->GetPosition() - me->GetPosition();
+    C3DVector delta = target->GetPos() - me->GetPos();
     if (delta.GetLength2D() < 14.0f) {
         C3DVector back = Owner->PTCDriver->GetForward() * 0.04f;
-        C3DVector destination = Owner->GetPosition() - back;
+        C3DVector destination = Owner->GetPos() - back;
         Owner->PTCDriver->MoveTo(destination);
     }
 }

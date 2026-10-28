@@ -3,9 +3,9 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00663F50, 1052 bytes (+ int3 padding), plain `ret`; virtual OnDie of CThingCreatureBase
 //   (the landed CThingAICreature::OnDie 0x00832E60 tail-calls it).
 // Callees: CThingPhysical::OnDie 0x006A4CF0, CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580,
-//   CSpecialEffectsDef::GetEffectFromString 0x00669D30, CThing::GetPosition 0x004C73D0, CreateEffectThing 0x006E0880,
+//   CSpecialEffectsDef::GetEffectFromString 0x00669D30, CThing::GetPos 0x004C73D0, CreateEffectThing 0x006E0880,
 //   LowerBound 0x004365B0 (const) / 0x0040F020, CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 (the mode's slot 4),
-//   operator+(const CCharString&, const char*) 0x0099F600 / ~CCharString 0x0099EAE0, CThingCreatureBase::GetPosition
+//   operator+(const CCharString&, const char*) 0x0099F600 / ~CCharString 0x0099EAE0, CThingPhysical::PeekPos
 //   0x006A4D00, CThingDeadCreature::Create 0x00835C80 (engine_api: __fastcall long, C3DVector*, long, CCharString*,
 //   CAnimFilterBase*), CTCPhysicsBase slots 72 GetLastRHSet / 32 ResetRHSet / 41 / 40, CThing::AddAndCopyTC 0x004C9F60,
 //   CTCGraphicAppearance::SetLightingChannel 0x004BFB40 / SetAsChanged 0x004BF9E0, the dead body's killer setter 0x00669230
@@ -139,7 +139,7 @@ public:
     unsigned char _pad8e[0x90 - 0x8e];
     signed char   PlayerNumber;                         // +0x90
     unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     CWorld* PeekWorld();                                // 0x004C7AA0
     void AddAndCopyTC(const CTCBase* tc, bool activate);   // 0x004C9F60
     __forceinline bool HasTC(long type) const
@@ -193,6 +193,7 @@ class CThingCreatureDef { public:
 
 class CThingPhysical : public CThing {
 public:
+    const C3DVector& PeekPos() const;    // 0x006A4D00 (?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ)
     void OnDie();                                       // 0x006A4CF0
 };
 class CThingDeadCreature;
@@ -209,7 +210,6 @@ public:
     bool MeleeAttacked : 1;
     bool LeaveDeadBodyOverride : 1;                     // bit 4
     bool LeaveExperienceOrbsOverride : 1;               // bit 5
-    const C3DVector& GetCreaturePosition() const;       // 0x006A4D00 (CThingCreatureBase::GetPosition)
     void OnDie();
 };
 class CThingDeadCreature : public CThing {
@@ -228,7 +228,7 @@ void CThingCreatureBase::OnDie()
         bool found = PBaseDef->GetSubDef(effectsSlot);
         CSpecialEffectsDef* effects = effectsSlot.m_p;
         if (found && effects->GetEffectFromString("EXPLODE_ON_KILLING_BLOW", effectType))
-            CreateEffectThing(effectType, &GetPosition(), false);
+            CreateEffectThing(effectType, &GetPos(), false);
         if (effects && --effects->m_refCount == 0)
             effects->Destroy();
     }
@@ -240,7 +240,7 @@ void CThingCreatureBase::OnDie()
         CCreatureModeBase* mode = modes->GetCurrentMode();
         long playerNumber = PlayerNumber;
         long definition = DefGlobalIndex;
-        body = CThingDeadCreature::Create(definition, &GetCreaturePosition(), playerNumber,
+        body = CThingDeadCreature::Create(definition, &PeekPos(), playerNumber,
                                           &(ScriptName + "_DEAD_CREATURE"), mode->GetDeathAnimFilter());
         if (body) {
             const CTCBase* component;

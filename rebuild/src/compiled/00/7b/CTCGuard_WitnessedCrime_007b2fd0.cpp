@@ -5,7 +5,7 @@
 // `?WitnessedCrime@CTCGuard@@QAEXABVCOpinionDeed@@J@Z`.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (interfaces 0x23 village member, 0x51 hero deed log),
 // CTCVillageMember::GetPVillage @ 0x007EE540, CTCVillage::HasCrimeBeenReported(long) @ 0x0065914B (descriptive), CBaseIntelligentPointer::
-// GetPItem @ 0x00A01B50, CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::GetHeroCreature @ 0x00487DC0, CTCHeroOpinionDeedLog::
+// GetPItem @ 0x00A01B50, CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0, CTCHeroOpinionDeedLog::
 // GetDeedEffectsDef(long) @ 0x006C5630 (CDefPointer by hidden pointer), GFGetCurrentFrame @ 0x0049D870, CTCGuard's crime report
 // @ 0x007B2C70 (village, handle, deed type, self flag; named descriptively), CTCVillage::RecalculateSecuritySweep(long) @ 0x00659C32.
 // Globals: the main game component @ 0x013B86A0 (+0x24 the world).
@@ -43,8 +43,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                          // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CWorld { public:
     CPlayer* PeekMyPlayer() const;                      // 0x0049D9D0
@@ -138,7 +139,7 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
         return;
     CThing* parent = ParentThing;
     bool self = deed.Perpetrator.GetPItem() == parent;
-    CThing* hero = g_pMainGameComponent->World->PeekMyPlayer()->GetHeroCreature();
+    CThing* hero = g_pMainGameComponent->World->PeekMyPlayer()->GetPControlledCreature();
     bool severe = false;
     if (hero) {
         CTCHeroOpinionDeedLog* log;

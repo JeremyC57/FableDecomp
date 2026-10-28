@@ -5,7 +5,7 @@
 // Leaf: Update
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064D6A8, length 254 bytes.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetCharacterThing @ 0x00487DC0, IS_THING_ALIVE<CThing*> @ 0x0043DBD0,
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, IS_THING_ALIVE<CThing*> @ 0x0043DBD0,
 // CDrawQuickAccessIcons::GetActivationTimeForButton(long) @ 0x0064B5C1 (float), CMemoryBuffer::Copy @ 0x009F1760,
 // CMainGameComponent::AddGameEvent @ 0x0041649C (on 0x013B86A0), __security_check_cookie @ 0x00BFE9F9. Globals: g_fEpsilon 0x0129BA3C,
 // g_framesPerSecond 0x01375550 (int), 1.0f 0x0122DED8, 0.0f 0x0122DEDC.
@@ -13,8 +13,12 @@
 // +0x35, ChargeFade +0x38); CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527; the hero's player byte +0x90.
 class CThing { public: unsigned char _pad[0x90]; unsigned char PlayerNumber; };   // +0x90 (descriptive)
 class CThingCreatureBase : public CThing { public: };
-template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
-class CPlayer { public: CThingCreatureBase* GetCharacterThing(); };          // 0x00487DC0
+class CThingPlayerCreature : public CThingCreatureBase { };
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };                  // 0x00449970
 struct CMemoryBuffer { void Copy(unsigned long length, const void* data); };   // 0x009F1760
 class CGameEvent : public CMemoryBuffer { public:
@@ -47,8 +51,8 @@ class CDrawQuickAccessIcons { public:
 };
 void CDrawQuickAccessIcons::Update()
 {
-    CThingCreatureBase* const& hero = PlayerManager->GetMainPlayer()->GetCharacterThing();
-    if (!IS_THING_ALIVE_0043dbd0<CThing*>(hero))
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    if (!IS_THING_ALIVE(hero))
         return;
     if (Charging) {
         float level = GetActivationTimeForButton(ChargingAbility);

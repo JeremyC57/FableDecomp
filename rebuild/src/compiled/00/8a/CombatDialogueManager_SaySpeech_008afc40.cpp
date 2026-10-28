@@ -81,6 +81,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -122,7 +123,7 @@ struct CDefPointerCombatDialogueDef {       // CDefPointer<const CCombatDialogue
 extern long g_framesPerSecond;              // 0x01375550
 class CPlayer {
 public:
-    CThingCreatureBase* GetHeroThing() const;   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager {
 public:

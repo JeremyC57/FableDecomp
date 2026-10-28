@@ -1,7 +1,7 @@
 // CGameScriptInterface::GetNumberOfItemsOfTypeInInventory(const CCharString& defName) const -- how many items of the named definition the controlled hero creature carries (0 for an unknown definition or no live creature)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00897190, length 137 bytes.
 // Callees: CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CPlayerManager::GetMainPlayer @ 0x00449970,
-//          CPlayer::GetControlledCreature @ 0x00487DD0, the const component-map LowerBound @ 0x004365B0 (kind 0x11),
+//          CPlayer::PeekPControlledCreature @ 0x00487DD0, the const component-map LowerBound @ 0x004365B0 (kind 0x11),
 //          CTCInventoryBase::GetNumberOfItemsOfTypeInInventory @ 0x005BDF08.
 // Shape: the inventory component is fetched through an inline accessor that leaves its result unset when the
 // mask bit 0x11 is clear (retail then reads the dead key slot `mov eax,[esp+0Ch]`), so the call is emitted twice.
@@ -44,6 +44,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
+class CThingPlayerCreature : public CThing_Retail { };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
@@ -62,8 +63,8 @@ class CScriptThing { public:
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
 class CPlayer { public:
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -126,7 +127,7 @@ long CGameScriptInterface::GetNumberOfItemsOfTypeInInventory(const CCharString& 
 {
     long defIndex = DefinitionManager->GetDefGlobalIndexFromName(defName);
     if (defIndex > 0) {
-        const CThing_Retail* hero = PlayerManager->GetMainPlayer().GetControlledCreature();
+        const CThing_Retail* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
         if (hero && !hero->m_dead)
             return ((CTCInventoryBase_Retail*)GetTCIfPresentConst(hero, 0x11))->GetNumberOfItemsOfTypeInInventory(defIndex);
     }

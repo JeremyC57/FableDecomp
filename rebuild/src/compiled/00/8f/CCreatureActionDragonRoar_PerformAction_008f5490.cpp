@@ -2,7 +2,7 @@
 // Leaf: ?PerformAction@CCreatureAction_DragonRoar@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008F5490, 321 bytes (336 with padding).
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/B50/B90/C10 (CIntelligentPointer<CThing>
-//   vtable 0x01238C6C), CThing::GetPosition 0x004C73D0, CTCGraphicAppearance::GetDummyObject 0x004C08C0 (the
+//   vtable 0x01238C6C), CThing::GetPos 0x004C73D0, CTCGraphicAppearance::GetDummyObject 0x004C08C0 (the
 //   "DRAGON_MOUTH_DUMMY" literal 0x01285B4C; CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0), the physics virtual
 //   GetFacing (slot 70, +0x118, C3DVector by hidden pointer), the barrier factory (__fastcall start, end, radius)
 //   0x007FD4B0, the driver's lifetime setter 0x007FD3D0 (stores (long)(g_rate * seconds) at +0x24; its catalog label
@@ -76,7 +76,7 @@ class CThing { public:
     CTCDriverBase* PTCDriver;                   // +0x5c
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     __forceinline CTCGraphicAppearance* GetGraphicAppearance() const { return PTCGraphicAppearance; }
     CTCDriverBase* GetDriver() const
@@ -98,15 +98,15 @@ class CCreatureAction_DragonRoar { public:
 
 void CCreatureAction_DragonRoar::PerformAction()
 {
-    C3DVector position = PCreature.GetPItem()->GetPosition();
+    C3DVector position = PCreature.GetPItem()->GetPos();
     CRightHandedSet orientation;
     {
         CCharString name("DRAGON_MOUTH_DUMMY");
         PCreature.GetPItem()->GetGraphicAppearance()->GetDummyObject(name, 0, 0, &position, &orientation, 1.0f);
     }
-    position.Z = PCreature.GetPItem()->GetPosition().Z;
+    position.Z = PCreature.GetPItem()->GetPos().Z;
     position += PCreature.GetPItem()->GetPhysics()->GetFacing() * 2.0f;
-    CThing* barrier = CreatePhysicalBarrierThing(position, PCreature.GetPItem()->GetPosition(), 2.0f);
+    CThing* barrier = CreatePhysicalBarrierThing(position, PCreature.GetPItem()->GetPos(), 2.0f);
     if (barrier) {
         CTCDriverBase* driver = barrier->GetDriver();
         driver->SetLifetime(3.0f);

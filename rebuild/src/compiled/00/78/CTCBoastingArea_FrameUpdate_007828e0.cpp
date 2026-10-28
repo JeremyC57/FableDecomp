@@ -1,6 +1,6 @@
 // CTCBoastingArea::FrameUpdate() -- track the living hero against the area's anticipation and boasting radii and fire the enter/leave/approach notifications on each state change
 // Retail 0x007828E0, 432 bytes (plain `ret`). Callees: the player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer
-// @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, CThing::GetPosition @ 0x004C73D0, CTCBoastingArea::OnHeroEnteringArea
+// @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0, CTCBoastingArea::OnHeroEnteringArea
 // @ 0x007827D0, OnHeroLeavingArea @ 0x00782860, CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface 0x73),
 // CTCBoastingCrowdControl::OnHeroApproachPodiumArea @ 0x00783BC0.
 // Layout = Ego_r.pdb CTCBoastingArea: HeroWithinRadiusState +0x0c, Radius +0x10, AnticipationRadius +0x14 (CTCBase +4 parent).
@@ -31,7 +31,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                         // +0x91 bit 0
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -44,8 +44,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -72,13 +73,13 @@ struct CTCBoastingArea {
 
 void CTCBoastingArea::FrameUpdate()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer().GetHeroCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (!hero || hero->Dead) {
         HeroWithinRadiusState = HERO_OUTSIDE;
         return;
     }
-    bool inAnticipation = InRange(GetThing()->GetPosition() - hero->GetPosition(), AnticipationRadius);
-    bool inRadius = InRange(GetThing()->GetPosition() - hero->GetPosition(), Radius);
+    bool inAnticipation = InRange(GetThing()->GetPos() - hero->GetPos(), AnticipationRadius);
+    bool inRadius = InRange(GetThing()->GetPos() - hero->GetPos(), Radius);
     switch (HeroWithinRadiusState) {
     case HERO_OUTSIDE:
         if (!inAnticipation)

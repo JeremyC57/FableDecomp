@@ -2,7 +2,7 @@
 // Leaf: ?IsQuestStartScreenActive@CGameScriptInterface@@UBE_NAAVCCharString@@@Z
 // Retail: Fable.exe @ 0x0089AD90, 155 bytes, `ret 4`; Ego_r.pdb same symbol (CGameScriptInterface slot 36).
 // Body: hero = g_pMainGameComponent (0x013B86A0)->PPlayerManager (+0x1c)->GetMainPlayer() (0x00449970)
-// ->GetPPlayerCharacter() (0x00487DC0), not null-tested; if it holds interface 0xfc (bit 28 of UsingComponents[7], +0x3c):
+// ->GetPControlledCreature() (0x00487DC0), not null-tested; if it holds interface 0xfc (bit 28 of UsingComponents[7], +0x3c):
 // ui = the component (non-const LowerBound 0x0040F020); true when ui->Active and !ui->Quitting and ui->Completion == 0
 // and ui->ScriptName == questName (inline CCharString ==, Compare 0x00411570).
 // Layout: interface 0xfc = CTCQuestCompletionUI by its retail offsets: Ego_r.pdb Active +0xc, Quitting +0x20,
@@ -71,7 +71,7 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager {
 public:
@@ -91,7 +91,7 @@ public:
 
 bool CGameScriptInterface::IsQuestStartScreenActive(CCharString& questName) const
 {
-    CThingPlayerCreature* hero = g_pMainGameComponent->GetPlayerManager()->GetMainPlayer().GetPPlayerCharacter();
+    CThingPlayerCreature* hero = g_pMainGameComponent->GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero->HasTC(CTCQuestCompletionUI::INTERFACE_TYPE))
     {
         CTCQuestCompletionUI* ui = hero->GetTC<CTCQuestCompletionUI>();

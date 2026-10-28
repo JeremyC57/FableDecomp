@@ -3,13 +3,13 @@
 //         Ego_r.pdb: `?OnHit@CTCElectrocuteOnTouch@@QAEXAAVCThing@@@Z`.
 // Callees: CThing::AddTC(const CCharString&, bool, const CTCParamsBase*) @ 0x004C9D60, CCharString(const char*, long) @
 //          0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("CTCElectrocutedEffect" @ 0x0123D394), CTCElectrocutedEffect::Reset @
-//          0x007CE7A0, CThing::GetPosition @ 0x004C73D0 (x3), CHitParameters ctor (9 args) @ 0x00789238,
+//          0x007CE7A0, CThing::GetPos @ 0x004C73D0 (x3), CHitParameters ctor (9 args) @ 0x00789238,
 //          CHitParameters::AddDamageWithAttribute(EDamageAttribute, float) @ 0x00868CA0, ~CHitParameters @ 0x00789358, the
 //          thing's virtual OnHit(CHitParameters&) (slot 65, +0x104) for a game object.
 // Shape: the effect test is the raw bitset word (interface 0x8A, word 4 bit 10: `test ah,4`); the class name is a named
 //        CCharString in its own block, homed in the dead `thing` argument slot; the hit direction is filled member by
 //        member from two position references (owner first; a `return C3DVector(...)` operator computes Z first, a named
-//        result adds a copy) and the owner is a named local read between (retail keeps it in ebx across GetPosition);
+//        result adds a copy) and the owner is a named local read between (retail keeps it in ebx across GetPos);
 //        MoveBack = false is stored before the game-object test.
 // Layout: CHitParameters 0x60 bytes (landed 0x00789238 model): MoveBack +0x22; retail CThing ThingTypeFlags +0x6C (bit 2 game object).
 class CThing;
@@ -67,7 +67,7 @@ public:
     unsigned char _pad44[0x6c - 0x44];
     unsigned long ThingTypeFlags;                   // +0x6C
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 class CTCElectrocuteOnTouch {
@@ -87,14 +87,14 @@ void CTCElectrocuteOnTouch::OnHit(CThing& thing)
         }
         effect->Reset();
     }
-    const C3DVector& from = ParentThing->GetPosition();
-    const C3DVector& to = thing.GetPosition();
+    const C3DVector& from = ParentThing->GetPos();
+    const C3DVector& to = thing.GetPos();
     CThing* owner = ParentThing;
     C3DVector direction;
     direction.X = to.X - from.X;
     direction.Y = to.Y - from.Y;
     direction.Z = to.Z - from.Z;
-    CHitParameters hit(0, owner, 0, thing.GetPosition(), direction, true, false, false, false);
+    CHitParameters hit(0, owner, 0, thing.GetPos(), direction, true, false, false, false);
     hit.AddDamageWithAttribute(2, 1.0f);
     hit.MoveBack = false;
     if (thing.ThingTypeFlags & 4)

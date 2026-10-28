@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_lower_bound(const key_type& k) const -- (map<unsigned __int64, CGroupMemberData >) STLport lower-bound walk: from the root keep the last node whose 64-bit key is not below k (going left), else go right; the header when none
-// Leaf: ?_M_lower_bound@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@AB_K@Z
+// Leaf: ?_M_lower_bound@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@AB_K@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00813200, 55 bytes (+ int3 padding), thiscall, `ret 4`; returns the node pointer.
 // Identity (proven): std::_Rb_tree<unsigned __int64, pair<const unsigned __int64, CGroupMemberData >, _Select1st<...>, less<unsigned __int64>,
 //   allocator<...> >::_M_lower_bound; evidence: its callers are lower_bound 0x008133D0 and equal_range 0x00813530, whose caller is erase(const key_type&) 0x00813640, run by CTCCreatureGroup::RemoveMember 0x00813100; Ego_r.pdb CTCCreatureGroup::Members is map<unsigned __int64, CGroupMemberData>, the only map of that value.
@@ -65,8 +65,12 @@ public:
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
+    private:
     _Rb_tree_node<_Value>* _M_lower_bound(const _Key& __k) const;
+    public:
 };
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 _Rb_tree_node<_Value>* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_lower_bound(const _Key& __k) const

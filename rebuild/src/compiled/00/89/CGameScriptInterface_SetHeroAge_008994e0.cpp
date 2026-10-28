@@ -1,6 +1,6 @@
 // CGameScriptInterface::SetHeroAge(float) const -- sets the hero's age
 // Leaf: SetHeroAge@CGameScriptInterface
-// Retail: Fable.exe @ 0x008994E0, 113 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPPlayerCharacter 0x00487DC0,
+// Retail: Fable.exe @ 0x008994E0, 113 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0,
 // then CThing::GetTC<CTCHeroStats> (Ego_r.pdb bool/out-pointer form; Components lower_bound 0x0040F020); CTCHeroStats::SetAge 0x0057B05F.
 // Shape: GetTC's result is not tested -- without the TC bit retail uses the uninitialised out pointer.
 // Layout: CGameScriptInterface per engine/CGameScriptInterface.h (+0x14 PlayerManager); CThing retail (UsingComponents +0x20,
@@ -60,8 +60,8 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
-    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
 };
 class CPlayerManager {
 public:
@@ -143,7 +143,7 @@ public:
 
 void CGameScriptInterface::SetHeroAge(float age) const
 {
-    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead())
     {
         CTCHeroStats* tc;

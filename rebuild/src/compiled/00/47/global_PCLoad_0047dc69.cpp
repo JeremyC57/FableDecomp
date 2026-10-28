@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0047DC69, 308 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed CTCInGameMenu::CloseInGameMenuPC 0x0047DBB8), `ret`.
 // Callees: NUISystem::CManager::GetInstance() @ 0x0041E5F2 (x5), CCharString::CCharString(const char*, long) @ 0x0099EBF0
-//          (built in the by-value argument slot), CPlayerManager::GetMainPlayer() @ 0x00449970, CPlayer::GetCharacterThing()
+//          (built in the by-value argument slot), CPlayerManager::GetMainPlayer() @ 0x00449970, CPlayer::GetPControlledCreature()
 //          @ 0x00487DC0 (manifest labels on both are propagated junk), std::bitset::test @ 0x00410DE0, CVectorMap<ETCInterfaceType,
 //          CTCBase*>::LowerBound @ 0x0040F020; the dialog's CComponent slot 3 (+0x0C, find child by name), the manager's
 //          CObservable slots 10 (+0x28) and 2 (+0x08), the pointer's CObserver slot 3 (+0x0C, event 0x19).
@@ -79,9 +79,10 @@ class CThing { public:
         return (T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
-    CThing* GetCharacterThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -119,7 +120,7 @@ void PCLoad()
     if (noButton)
         NUISystem::CManager::GetInstance()->ReleaseObserver_0055ca00(noButton);
     CTCInGameMenu* menu = 0;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetCharacterThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero->HasInterface(TC_IN_GAME_MENU))
         menu = hero->GetInterfaceUnchecked<CTCInGameMenu>(TC_IN_GAME_MENU);
     menu->LoadGameIndex = menu->SaveGameToLoad;

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006610C7, 302 bytes, `ret 0Ch` (size TU: odd start, frame pointer,
 //   `push 51h ; pop edi`, the out-of-line bitset test).
 // Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
-//   CPlayer::GetControlledCreature @ 0x00487DD0, std::bitset::test(long) @ 0x00410DE0 (the presence bitset),
+//   CPlayer::PeekPControlledCreature @ 0x00487DD0, std::bitset::test(long) @ 0x00410DE0 (the presence bitset),
 //   CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0, CTCHeroOpinionDeedLog::GetDeedFromHandle(long)
 //   @ 0x006C58F0, COpinionDeedFilter_IsCrimeToRunAndFindAGuard::operator()(const COpinionDeed*) const @ 0x00681750.
 // Pragmas: optimize("y", off) + optimize("s", on) (the size TU keeps the frame pointer).
@@ -43,8 +43,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature();                    // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
@@ -90,7 +91,7 @@ template <class TFilter>
 const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(const TFilter& filter, long* outHandle, bool includePending) const
 {
     const COpinionDeed* best = 0;
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetControlledCreature();
+    const CThing* hero = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
     if (hero) {
         const CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

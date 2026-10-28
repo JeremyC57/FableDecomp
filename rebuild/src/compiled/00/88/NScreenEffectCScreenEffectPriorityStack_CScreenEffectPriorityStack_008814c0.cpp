@@ -95,9 +95,15 @@ public:
     typedef _Rb_tree_node_base* _Base_ptr;
     unsigned int _M_node_count;                             // +0x04
     _Compare     _M_key_compare;                            // +0x08
+    protected:
     _Base_ptr& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
     ~_Rb_tree() { clear(); }
 private:
     void _M_erase(_Link_type __x);                          // 0x00882BC0

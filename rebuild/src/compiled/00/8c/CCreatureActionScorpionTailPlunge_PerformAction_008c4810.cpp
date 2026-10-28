@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4810, length 130 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall, returns
 // the manager), CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, CCharString::~CCharString @ 0x0099EAE0,
-// CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, twice), CThing::GetPosition @ 0x004C73D0,
+// CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, twice), CThing::GetPos @ 0x004C73D0,
 // CreateThing(long, const C3DVector&) @ 0x0080C460 (`__fastcall`), the explosion driver's exclusion add @ 0x0080CBF0 (wraps the thing
 // in a CIntelligentPointer; manifest label "CCreatureActionBase::AddDependentThing" is propagated).
 // Shape: the def name is a CCharString in its own block (the definition manager is fetched after the argument push: chained call),
@@ -19,7 +19,7 @@ class CThing { public:
     unsigned char     m_driverFlags;        // +0x28 bit 1: the driver component is cached
     unsigned char     _pad1[0x5c - 0x29];
     CExplosionDriver* m_pDriver;            // +0x5c
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     bool GetTCDriver(CExplosionDriver** out)
     {
         if (m_driverFlags & 2) {
@@ -74,7 +74,7 @@ void CCreatureAction_ScorpionTailPlunge::PerformAction()
         CCharString name("THING_EXPLOSION_SCORPION_KING_PLUNGE", -1);
         explosionIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
     }
-    CThing* explosion = CreateThing(explosionIndex, PCreature.GetPItem()->GetPosition());
+    CThing* explosion = CreateThing(explosionIndex, PCreature.GetPItem()->GetPos());
     if (explosion) {
         CExplosionDriver* driver;
         explosion->GetTCDriver(&driver);

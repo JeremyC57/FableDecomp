@@ -89,7 +89,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     void SetSuspendAnimation(bool suspend, NCreatureMode::CModeBase* mode);   // 0x00833A10
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -315,7 +315,7 @@ void CModeGuildmasterPowerUpShield::OnActivate()
     long bodyguardDef = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_GUILDMASTER_BODYGUARD");
     {
         CThingFilter_HasDefGlobalIndex filter(bodyguardDef);
-        const C3DVector& pos = m_pThing->GetPosition();
+        const C3DVector& pos = m_pThing->GetPos();
         C2DCoordI centre((long)pos.X, (long)pos.Y);
         C2DBoxI area(centre.X - 20, centre.Y - 20, centre.X + 20, centre.Y + 20);
         CWorld* world = GetWorld();
@@ -337,7 +337,7 @@ void CModeGuildmasterPowerUpShield::OnActivate()
             bodyguards._M_start[index]->SetCurrentAction(CCreatureAction_CastPhysicalShieldSpell(*bodyguards._M_start[index], 2, true, "", timeLimit, 10.0f));
             ShieldTargets.push_back(CIntelligentPointerCreature(bodyguards._M_start[index]));
             EraseCreature(bodyguards, &bodyguards._M_start[index]);
-            CThing* fx = CreateSpecialEffect(effect, m_pThing->GetPosition(), false);
+            CThing* fx = CreateSpecialEffect(effect, m_pThing->GetPos(), false);
             if (fx && !(fx->m_flags91 & 1))
                 Effects.push_back(CIntelligentPointerThing2(fx));
         }

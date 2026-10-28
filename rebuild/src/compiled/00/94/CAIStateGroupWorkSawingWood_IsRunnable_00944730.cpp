@@ -5,7 +5,7 @@
 //          non-const) / const @ 0x004365B0 (0x21 CTCThingOwner, 0x2D CTCUserActionPointBase), CTCCreatureModeManager::
 //          GetCurrentMode @ 0x0073A6E0 + the mode's slot 1, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem
 //          @ 0x00A01B90, list<CIntelligentPointer<CThing>> copy @ 0x00618DA0 / destructor @ 0x004B96F0 (out of line here),
-//          CThing::GetProperties (slot 48), IsActionPointFree @ 0x007FEBF0, CThing::GetPosition @ 0x004C73D0 (x2).
+//          CThing::GetProperties (slot 48), IsActionPointFree @ 0x007FEBF0, CThing::GetPos @ 0x004C73D0 (x2).
 // Layout / shape: the landed sibling CAIStateGroup_WorkHammerAnvil::IsRunnable 0x00944E80 (PSawHorse at +0x15 as PAnvil).
 class CTCBase;
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
@@ -64,7 +64,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -229,7 +229,7 @@ bool CAIStateGroup_WorkSawingWood::IsRunnable()
                         && static_cast<const CThing*>(horse)->GetInterface(&point, 0x2d)
                         && point->IsActionPointFree()) {
                         CThing* creature = PBrain->PCreature;
-                        float distance = (creature->GetPosition() - horse->GetPosition()).GetLengthSquared();
+                        float distance = (creature->GetPos() - horse->GetPos()).GetLengthSquared();
                         if (best == 0 || distance < bestDistance) {
                             bestDistance = distance;
                             best = horse;

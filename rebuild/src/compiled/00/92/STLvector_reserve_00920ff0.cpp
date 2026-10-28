@@ -82,23 +82,29 @@ public:
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
     void reserve(size_type __n);
+    protected:
     pointer _M_allocate_and_copy(size_type __n, const_pointer __first, const_pointer __last)
     {
         pointer __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, __false_type());
         return __result;
     }
+    public:
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
 };
 
 template <class _Tp, class _Alloc>

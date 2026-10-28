@@ -44,9 +44,10 @@ public:
     unsigned char m_91_1 : 7;
     void Kill(bool immediately);                // 0x004C9B80
 };
+class CThingPlayerCreature : public CThing { };
 class CThingPlayerCreature;
 class CPlayer { public:
-    CThing* GetHeroThing() const;               // 0x00487DC0 (CIntelligentPointer at +0x2c)
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0 (CIntelligentPointer at +0x2c)
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449970

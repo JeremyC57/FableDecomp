@@ -5,7 +5,7 @@
 // Callees: CTCVillage::IsHeroCriminal() 0x0065BFCE; CTCVillage::InvalidateAndClearAllSecuritySweepTasks() 0x006590A0;
 //          CTCBase::PeekWorld() const 0x00686A80 (its result only feeds the static frame getter); CWorld::GetWorldFrame()
 //          0x0049D870 (static); __ftol2 0x00BFEA70; CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetMainPlayer()
-//          0x00449970 (Ego_r.pdb returns CPlayer&); CPlayer::GetHeroThing() 0x00487DC0; CThing::GetPosition() const
+//          0x00449970 (Ego_r.pdb returns CPlayer&); CPlayer::GetPControlledCreature() 0x00487DC0; CThing::GetPos() const
 //          0x004C73D0; CTCVillage::CalculateSecuritySweepTasks() 0x00659800. Globals: g_framesPerSecond 0x01375550;
 //          7.5f 0x0125AA1C, 100.0f 0x01230A08.
 // Layout: retail CTCVillage FrameStartedSecuritySweep +0x10, PositionPlayerWasInWhenSecuritySweepCalculated +0x14,
@@ -17,10 +17,11 @@
 #pragma optimize("s", on)
 class C3DVector { public: float X, Y, Z; };
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer& GetMainPlayer();                   // 0x00449970
@@ -69,9 +70,9 @@ void CTCVillage::UpdateSecuritySweepTasks()
         long framesPerSecond = g_framesPerSecond;
         if ((world->GetWorldFrame() - FrameStartedSecuritySweep) % (long)(framesPerSecond * 7.5f) == 0)
             recalculate = true;
-        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero) {
-            const C3DVector& position = hero->GetPosition();
+            const C3DVector& position = hero->GetPos();
             float dx = PositionPlayerWasInWhenSecuritySweepCalculated.X - position.X;
             float dy = PositionPlayerWasInWhenSecuritySweepCalculated.Y - position.Y;
             float distanceSquared = dx * dx;

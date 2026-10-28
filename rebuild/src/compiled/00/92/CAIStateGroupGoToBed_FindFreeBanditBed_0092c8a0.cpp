@@ -3,7 +3,7 @@
 // Callees: CVectorMap::LowerBound 0x0040F020 / const 0x004365B0 (same-TU stand-ins; inlined GetInterface 0x23 (const)
 //   and 0xAC), the region accessor 0x007EE540, CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem
 //   0x00A01B90 / dtor 0x00A01C10, CThingFilter_IsMySleepPoint::operator() 0x006A8930, the blocking test 0x006A8A30,
-//   CThing::GetPosition 0x004C73D0, the graphic's virtual slot 72 (+0x120, orientation), the sleep point's SetUser
+//   CThing::GetPos 0x004C73D0, the graphic's virtual slot 72 (+0x120, orientation), the sleep point's SetUser
 //   0x0087C390 (catalog "AssignCreatureToTask", propagated).
 // Layout: CAIStateGroup_GoToBed PBed +0x14, IsBedSleepPointMarker +0x1c, BedPos +0x3c, Rhset +0x48 (Ego_r.pdb).
 // Shape: the out-of-range lookups read an uninitialised component (retail jumps to a load of the empty slot); the list
@@ -53,7 +53,7 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 float __fastcall GFFloatRandom(unsigned long* seed, float range);   // 0x004978A0
 
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -176,8 +176,8 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
                 CThing* bed = node->_M_data.GetPItem();
                 if (bed && !(bed->m_flags91 & 1) && isMine(bed) && !isBlocked(bed)) {
                     CThing* me = GetCreature();
-                    const C3DVector& bedPos = bed->GetPosition();
-                    const C3DVector& myPos = me->GetPosition();
+                    const C3DVector& bedPos = bed->GetPos();
+                    const C3DVector& myPos = me->GetPos();
                     float dx = myPos.X - bedPos.X;
                     float dy = myPos.Y - bedPos.Y;
                     float dz = myPos.Z - bedPos.Z;
@@ -185,7 +185,7 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
                     if (!PBed.GetPItem() || bestDistanceSquared > distanceSquared) {
                         PBed.SetPItem(bed);
                         bestDistanceSquared = distanceSquared;
-                        BedPos = bed->GetPosition();
+                        BedPos = bed->GetPos();
                         Rhset = *bed->PGraphic->GetRHSet();
                     }
                 }

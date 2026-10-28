@@ -89,8 +89,10 @@ public:
         else
             _M_insert_overflow(this->_M_finish, __x, __true_type(), 1UL, true);
     }
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __true_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
 };
 
 template <class _Tp, class _Alloc>

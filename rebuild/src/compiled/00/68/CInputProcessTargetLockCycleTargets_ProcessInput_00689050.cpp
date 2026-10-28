@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00689050, 222 bytes, `ret 8`.
 // Callees: CInputProcessGameBase::IsEventGameAction @ 0x00687CF0, IsEventButtonReleased @ 0x00687B30 (labelled
 //   IsEventButtonHeld; see GOTCHAS chunk 144), GetButtonPressureForEvent @ 0x00687D10 (landed, returns float),
-//   CPlayer::GetHeroThing @ 0x00487DC0, the component-map LowerBound @ 0x0040F020, CTCTargetingPlayer::
+//   CPlayer::GetPControlledCreature @ 0x00487DC0, the component-map LowerBound @ 0x0040F020, CTCTargetingPlayer::
 //   SetAsTargetNextThing @ 0x00802590.
 // Layout: Ego_r.pdb CInputProcessTargetLockCycleTargets (LastButtonPressure +0x28, ButtonPressureThresholdForClick +0x2c,
 //   ClickAcceptancePulseTimer +0x30, AllowPulsesOnly +0x34) over CInputProcessGameBase (MyPlayer +0x18); retail CThing
@@ -41,6 +41,7 @@ class CThing { public:
     unsigned char  _bits91 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCTargetingPlayer { public:
     void SetAsTargetNextThing();                   // 0x00802590
 };
@@ -53,7 +54,7 @@ __forceinline CTCTargetingPlayer* GetTargetingIfPresent(CThing* thing)
 }
 class CPlayer {
 public:
-    CThing* GetHeroThing();                        // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -92,7 +93,7 @@ void CInputProcessTargetLockCycleTargets::ProcessInput(const CInputEvent& event,
             ClickAcceptancePulseTimer = timer - 1;
         LastButtonPressure = pressure;
         if (click) {
-            CThing* hero = MyPlayer->GetHeroThing();
+            CThing* hero = MyPlayer->GetPControlledCreature();
             if (hero && !hero->Dead)
                 GetTargetingIfPresent(hero)->SetAsTargetNextThing();
         }

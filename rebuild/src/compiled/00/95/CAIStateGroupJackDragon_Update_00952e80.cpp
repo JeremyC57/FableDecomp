@@ -1,7 +1,7 @@
 // CAIStateGroup_JackDragon::Update() -- target the main player's character, then until the enemy dies or the group stops: advance the boss phase when ready and run the current dragon state's handler; terminate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00952E80, length 384 bytes including the 24-byte jump table at 0x00952FE4.
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970,
-//          CPlayer::GetPCharacter @ 0x00487DC0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable
+//          CPlayer::GetPControlledCreature @ 0x00487DC0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable
 //          0x0123E7D8), CAIStateGroupBase::IsStopping @ 0x008FD010, the inlined STLport lower_bound of the interface map
 //          (0xad = CTCBoss, bit 13 of +0x34), CTCBoss::IsReadyForPhaseChange @ 0x007AEE90 / IncrementBossPhase @ 0x007AED20,
 //          the state handlers IntoGround @ 0x00951070, UpdateGround @ 0x00952890, IntoHover @ 0x00951D60, UpdateHover
@@ -53,6 +53,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -77,7 +78,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 
 class CPlayer { public:
-    CThing* GetPCharacter();                    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -131,7 +132,7 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
 
 void CAIStateGroup_JackDragon::Update()
 {
-    PEnemy = CIntelligentPointerCreature(GetPPlayerManager()->GetMainPlayer()->GetPCharacter());
+    PEnemy = CIntelligentPointerCreature(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
     CTCBoss* boss;
     while (IS_THING_ALIVE(PEnemy) && !IsStopping()) {
         GetCreature()->GetInterface(&boss, 0xad);

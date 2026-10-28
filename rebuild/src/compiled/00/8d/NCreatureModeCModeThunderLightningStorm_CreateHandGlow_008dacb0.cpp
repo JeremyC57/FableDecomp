@@ -3,7 +3,7 @@
 // Shape: GetSubDef and GetEffectFromString have same-TU out-slot-only stand-in bodies, so the effect type does not escape:
 //   VC7.1 overlays its word with the intelligent-pointer temporary, the GetInterface key and the bone-name string (as
 //   retail); GetInterface out-store as one ternary.
-// Callees: GetSubDef 0x00669580 (same-TU stand-in body), CCharString 0x0099EBF0/~ 0x0099EAE0, GetEffectFromString 0x00669D30, GetPosition 0x004C73D0, CreateEffectThing 0x006E0880, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10, LowerBound 0x0040F020, CTCDParticleEmitter::AttachToThing 0x006E0BE0.
+// Callees: GetSubDef 0x00669580 (same-TU stand-in body), CCharString 0x0099EBF0/~ 0x0099EAE0, GetEffectFromString 0x00669D30, GetPos 0x004C73D0, CreateEffectThing 0x006E0880, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10, LowerBound 0x0040F020, CTCDParticleEmitter::AttachToThing 0x006E0BE0.
 class CTCBase;
 class CBaseObject;
 class C3DVector { public: float X, Y, Z; };
@@ -104,7 +104,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
@@ -151,7 +151,7 @@ void CModeThunderLightningStorm::CreateHandGlow()
     PDef->GetSubDef(&out);
     CDefHolder<CSpecialEffectsDef> effects(out.Object);
     if (effects->GetEffectFromString("LIGHTNING_HAND_EFFECT", &effectType)) {
-        C3DVector position = ParentThing->GetPosition();
+        C3DVector position = ParentThing->GetPos();
         CThing* glow = CreateEffectThing(effectType, &position, false);
         if (glow && !glow->IsDead()) {
             PHandGlow = CIntelligentPointer<CThing>(glow);

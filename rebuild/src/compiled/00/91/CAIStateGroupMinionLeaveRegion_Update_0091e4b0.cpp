@@ -51,7 +51,7 @@ struct CThingBody {
  virtual void v29();
  virtual void v30();
  virtual void SetPosition(const C3DVector&); };
-class CThing { public: unsigned char prefix[0x60]; CThingBody* Body; void SetInLimbo(bool); const C3DVector& GetPosition() const; };
+class CThing { public: unsigned char prefix[0x60]; CThingBody* Body; void SetInLimbo(bool); const C3DVector& GetPos() const; /* 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb) */ };
 struct CBrainVirtual { virtual void v0(); virtual void v1(); virtual bool SuspendSuspendableProcess(); };
 struct ThingVector { CThing** first; CThing** last; CThing** capacity; ThingVector():first(0),last(0),capacity(0){}  };
 struct CThingFilter_IsRegionNode { bool Exit; CThingFilter_IsRegionNode(bool exit):Exit(exit){} };
@@ -80,7 +80,7 @@ void CAIStateGroup_MinionLeaveRegion_Adapter::Update() {
  *seed=GFROR13(*seed);
  unsigned long index=count?*seed%count:0;
  CThing* chosen=first[index];
- ((CThing*)Brain()->Creature)->Body->SetPosition(chosen->GetPosition());
+ ((CThing*)Brain()->Creature)->Body->SetPosition(chosen->GetPos());
  Terminate();
  if(first) free(first);
 }

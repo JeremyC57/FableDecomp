@@ -5,7 +5,7 @@
 //
 // Retail 0x007796B0, 598 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer
-// @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CThing::GetPosition @ 0x004C73D0 (twice), CDisplayEngine::StartLetterBoxMode
+// @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0 (twice), CDisplayEngine::StartLetterBoxMode
 // (float, float, float) @ 0x00434BA0 / EndLetterBox @ 0x004349D0 (g_pMainGameComponent 0x013B86A0 +0x28), CTCBase::GetWorld
 // const @ 0x00686A80 (byte +0xdf), CVectorMap::LowerBound @ 0x0040F020 (CTCRegionDisplay 0x8e on the hero),
 // CTCDRegionExit::GetDisplayName @ 0x00779260, CTCRegionDisplay::SetCurrentAreaName @ 0x00639BA0 / FinishShowingRegionName
@@ -28,7 +28,7 @@ public:
     unsigned char Dead : 1;                                  // +0x91 bit 0
     unsigned char _pad92[0xb4 - 0x92];
     float         Health;                                    // +0xb4
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
@@ -38,6 +38,7 @@ public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -55,7 +56,7 @@ public:
 public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
-class CPlayer { public: CThing* GetHeroThing(); };                  // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                  // 0x00487DC0
 class CPlayerManager { public: public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };         // 0x00449970
@@ -121,12 +122,12 @@ void CTCDRegionExit::FrameUpdate()
         return;
     if (!PEntranceConnectedTo.GetPItem())
         return;
-    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (!hero || hero->Dead)
         return;
     bool moveHero = false;
-    const C3DVector& exitPos = ParentThing->GetPosition();
-    const C3DVector& heroPos = hero->GetPosition();
+    const C3DVector& exitPos = ParentThing->GetPos();
+    const C3DVector& heroPos = hero->GetPos();
     float dx = heroPos.X - exitPos.X;
     float dy = heroPos.Y - exitPos.Y;
     float dz = heroPos.Z - exitPos.Z;

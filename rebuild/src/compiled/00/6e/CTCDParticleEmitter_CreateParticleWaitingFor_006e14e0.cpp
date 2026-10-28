@@ -1,6 +1,6 @@
 // CTCDParticleEmitter::CreateParticleWaitingFor() -- create the particle emitter the component has been waiting for from its pending creation parameters (interpolated or plain), copy the pending update parameters / creation-disabled / always-update state onto it, adopt it and drop the parameters
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E14E0, 309 bytes (+ int3 padding), plain `ret`.
-// Callees: CThing::GetPosition @ 0x004C73D0, CParticleEmitterManager::Get @ 0x00AEAAF0 (static), CreateInterpolatedEmitter(long,
+// Callees: CThing::GetPos @ 0x004C73D0, CParticleEmitterManager::Get @ 0x00AEAAF0 (static), CreateInterpolatedEmitter(long,
 //   long, float, const C3DVector&, const CRightHandedSet&, bool) @ 0x00AEB8C0, CreateEmitter(long, const C3DVector&, bool,
 //   const CRightHandedSet&) @ 0x00AEB6D0, NParticleEngine::CParticleEmitter::SetUpdateParameters @ 0x00AF0610,
 //   CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::IsAffectedByBulletTime @ 0x004C9920, SetPEmitter @
@@ -21,7 +21,7 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     bool IsAffectedByBulletTime();              // 0x004C9920
 };
 struct CParticleUpdateParameters { unsigned char _body[0x24]; };
@@ -137,9 +137,9 @@ void CTCDParticleEmitter::CreateParticleWaitingFor()
     NParticleEngine::CParticleEmitter* emitter;
     if (params->InterpolatingParticle)
         emitter = CParticleEmitterManager::Get()->CreateInterpolatedEmitter(params->StartParticleID, params->EndParticleID,
-            params->Interpolate, thing->GetPosition(), params->RHSet, false);
+            params->Interpolate, thing->GetPos(), params->RHSet, false);
     else
-        emitter = CParticleEmitterManager::Get()->CreateEmitter(ParticleTypeID, thing->GetPosition(), false, params->RHSet);
+        emitter = CParticleEmitterManager::Get()->CreateEmitter(ParticleTypeID, thing->GetPos(), false, params->RHSet);
     if (emitter) {
         if (PCreationParameters->UpdateParametersSet)
             emitter->SetUpdateParameters(PCreationParameters->UpdateParameters);

@@ -1,10 +1,10 @@
 // CThingCreatureBase::IsPosInFOV(const C3DVector& position, bool useLookOffset) const -- with the field-of-view TC (0x34): the wrapped XY angle to the position is within half the field of view of the creature's facing (plus the look TC's head offset when asked)
 // Leaf: ?IsPosInFOV@CThingCreatureBase@@QBE_NABVC3DVector@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665260, `ret 8`, bool in al. Catalogued as CVertexBufferWin32::ComputeAngleBetweenPositions
-//   (wrong: `this` is a creature -- interface bitset +0x20, interface map +0x44, PhysicsTC +0x60, CThingCreatureBase::GetPosition
+//   (wrong: `this` is a creature -- interface bitset +0x20, interface map +0x44, PhysicsTC +0x60, CThingCreatureBase::PeekPos
 //   0x006A4D00); FableWin.pdb names it ?IsPosInFOV@CThingCreatureBase@@QBE_NABVC3DVector@@_N@Z.
 // Callees: CInterfaceMap::LowerBound const 0x004365B0, TC 0x34's float query 0x007445D0 (catalogued GetAirResistance),
-//   CThingCreatureBase::GetPosition 0x006A4D00, PhysicsTC slot 70 (+0x118, facing direction by hidden pointer),
+//   CThingCreatureBase::PeekPos 0x006A4D00, PhysicsTC slot 70 (+0x118, facing direction by hidden pointer),
 //   CTCLook float query 0x00751A80 (catalogued DrawGetSeaLevel), _CIfmod 0x00BFEB28. Constants: 1/(2pi) 0x01237F08,
 //   0.0f 0x0122DEDC, 1.0f 0x0122DED8, double 1.0 0x01237F00, 0.5f 0x0122F59C.
 // Layout: retail CThing interface bitset +0x20 (TC 0x34 = word +0x24 bit 20, TC 0x43 = word +0x28 bit 3), interface map +0x44,
@@ -78,9 +78,11 @@ public:
     }
 };
 
-class CThingCreatureBase : public CThing {
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical {
 public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
     bool IsPosInFOV(const C3DVector& position, bool useLookOffset) const;
 };
 
@@ -88,7 +90,7 @@ bool CThingCreatureBase::IsPosInFOV(const C3DVector& position, bool useLookOffse
 {
     if (UsingComponents[0x34 >> 5] & (1UL << (0x34 & 31))) {
         float fieldOfView = GetTC<CTCFieldOfView>(0x34)->GetFieldOfView();
-        C3DVector delta = position - GetPosition();
+        C3DVector delta = position - PeekPos();
         C3DVector dir = PhysicsTC->GetFacingDirection();
         float angle = WrapAngle((float)atan2(dir.X, dir.Y) * 0.15915494f);
         float facing = angle;

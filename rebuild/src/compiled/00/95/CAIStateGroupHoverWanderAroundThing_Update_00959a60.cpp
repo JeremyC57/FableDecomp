@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00959A60, length 400 bytes (vtable 0x0128D1BC slot 12).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 7 = CTCCreatureNavigation, bit 7 of +0x20 as a
 //          bitset::test byte), CBaseIntelligentPointer ctor/GetPItem/SetPItem @ 0x00A01B10/0x00A01B50/0x00A01B90,
-//          CThing::GetPosition @ 0x004C73D0, CTCCreatureNavigation::GetNearbyWanderPosition @ 0x006CB6E0,
+//          CThing::GetPos @ 0x004C73D0, CTCCreatureNavigation::GetNearbyWanderPosition @ 0x006CB6E0,
 //          CAIStateGroupBase::AIAction_LookAtThing @ 0x0097D6F0 (CIntelligentPointer<const CThing> by value, vtable
 //          0x01237F1C), CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CWorld::GetPRandomSeed @ 0x0049D810, GFROR13 @ 0x00497890,
 //          virtual CAIStateGroup_HoverMovementBase::AIAction_MoveToPosAndFacePos (slot 22, 0x0091D7F0),
@@ -32,7 +32,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     bool TestTC(long interfaceType) const
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
@@ -134,7 +134,7 @@ void CAIStateGroup_HoverWanderAroundThing::Update()
         GetCreature()->GetInterfaceT(&navigation, 7);
         C3DVector target;
         if (IS_THING_ALIVE(PThing)
-            && navigation->GetNearbyWanderPosition(PThing.GetPItem()->GetPosition(), 5.0f, &target, false)) {
+            && navigation->GetNearbyWanderPosition(PThing.GetPItem()->GetPos(), 5.0f, &target, false)) {
             if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(PThing), 0x11, 0.05f) != 2) {
                 Terminate();
                 return;
@@ -147,7 +147,7 @@ void CAIStateGroup_HoverWanderAroundThing::Update()
                     Terminate();
                     return;
                 }
-                result = AIAction_MoveToPosAndFacePos(2, target, PThing.GetPItem()->GetPosition(), reached, movement);
+                result = AIAction_MoveToPosAndFacePos(2, target, PThing.GetPItem()->GetPos(), reached, movement);
             } while (result == 4);
             if (result != 2) {
                 Terminate();

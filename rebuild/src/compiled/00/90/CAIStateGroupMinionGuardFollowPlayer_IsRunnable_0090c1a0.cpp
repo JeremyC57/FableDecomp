@@ -3,7 +3,7 @@
 // creature with the guard component (0xB4) to the hero; otherwise re-arm the one-second timer.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090C1A0, length 293 bytes (+ int3 padding).
 // Callees: GFGetCurrentFrame @ 0x0049D870 (x2), CWorld::GetCurrentPlayer @ 0x0049D9D0 (the world at +0x24 of the
-// global @ 0x013B86A0), CPlayer::GetCharacterThing @ 0x00487DC0, CVectorMap::LowerBound @ 0x0040F020 (inlined
+// global @ 0x013B86A0), CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap::LowerBound @ 0x0040F020 (inlined
 // GetInterface: 0x23 = CTCVillager bit 3 of +0x24), GFGetPVillageInterface @ 0x007EE540 (x2; manifest
 // "IS_THING_ALIVE<...>" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the village's +0xbd guard
 // pointer), CThing::GetPosition @ 0x004C73D0, CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000,
@@ -25,7 +25,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -80,6 +82,7 @@ class CThing { public:
         }
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -156,7 +159,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) : x(v.x), y(v.y), z(v.z) { }
 };
 class CPlayer { public:
-    CThing* GetCharacterThing();                // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
 };
 struct CWorldP {
     CPlayer* GetCurrentPlayer();                // 0x0049D9D0
@@ -167,7 +170,6 @@ struct CGameGlobals {
 };
 extern CGameGlobals* g_pMainGameComponent;      // 0x013B86A0
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCVillager;
 #pragma pack(push, 1)
@@ -214,7 +216,7 @@ bool CThingSearchTools::GetPBestThing(const CThingFilter_HasTC& filter, const CT
         CThing* thing = *it;
         if (!thing->HasTC(filter.m_type))
             continue;
-        const C3DVector& pos = ((CThingPos*)thing)->GetPosition();
+        const C3DVector& pos = ((CThingPos*)thing)->GetPos();
         float dx = pos.x - compare.m_pos.x;
         float dy = pos.y - compare.m_pos.y;
         float dz = pos.z - compare.m_pos.z;
@@ -233,7 +235,7 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsRunnable()
 {
     if (NextCheckFrame > (unsigned long)GFGetCurrentFrame())
         return false;
-    CThing* hero = g_pMainGameComponent->m_pWorld->GetCurrentPlayer()->GetCharacterThing();
+    CThing* hero = g_pMainGameComponent->m_pWorld->GetCurrentPlayer()->GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1) && PBrain->PCreature->HasTC(0x23)) {
         CTCVillager* villager = (CTCVillager*)PBrain->PCreature->FindEntry(0x23)->component;
         if (GFGetPVillageInterface(villager)) {
@@ -242,7 +244,7 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsRunnable()
             if (!follower || (follower->m_flags91 & 1)) {
                 CThingAICreature* nearest;
                 PeekThingSearchTools()->GetPBestThing(CThingFilter_HasTC(0xb4),
-                    CThingCompare_Nearest(((CThingPos*)hero)->GetPosition()), &nearest);
+                    CThingCompare_Nearest(((CThingPos*)hero)->GetPos()), &nearest);
                 if ((CThing*)nearest == PBrain->PCreature
                         && ((CAIStateGroup_MinionGuardFollowPlayerV*)this)->IsStillRunnable(true))
                     return true;

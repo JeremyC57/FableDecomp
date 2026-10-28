@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<NUISystem::CComponent*, pair<long, long> > (CTCInventoryTrade::ItemsToBuy / ItemsToSell)) STLport exact-key lookup over an unsigned 32-bit key: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@QBEPAU?$_Rb_tree_node@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@ABQAVCComponent@NUISystem@@@Z
+// Leaf: ?_M_find@?$_Rb_tree@PAVCComponent@NUISystem@@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@U?$less@PAVCComponent@NUISystem@@@4@V?$allocator@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@4@@std@@ABEPAU?$_Rb_tree_node@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@@2@ABQAVCComponent@NUISystem@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042B4F3, 54 bytes (unaligned entry, size-optimised TU), thiscall, `ret 4`;
 //   returns the node pointer (header node pointer = end()).
 // Identity (proven): map<NUISystem::CComponent*, pair<long, long> > (CTCInventoryTrade::ItemsToBuy / ItemsToSell); evidence: its callers are the find front ends 0x0042B963 / 0x0042BF53 and the inline lookups 0x0042CD61 / 0x0042CD3E (`it = find(c); return it == end() ? -1 : it->second.second;`, node +0x18) on this+0x144 / +0x150: CTCInventoryTrade's ItemsToBuy / ItemsToSell (Ego_r.pdb map<NUISystem::CComponent*, pair<long, long> > at +360 / +376; retail 0x144 / 0x150 with the six later maps at 0x180.. 0x1C8 that the trade TU's own lookups use, see 0x005B1A43 / 0x005B1A8D).
@@ -63,8 +63,12 @@ public:
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
+    private:
     _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

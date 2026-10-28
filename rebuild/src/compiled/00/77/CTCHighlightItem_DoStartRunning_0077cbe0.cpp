@@ -2,14 +2,14 @@
 // Leaf: DoStartRunning
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CBE0, 186 bytes.
 // Callees: CDefClassBase::GetSubDef<CHighlightItemDef>(CDefPointer&) @ 0x0077D080 (same TU; see the stand-in
-//          below), CThing::GetPosition() const @ 0x004C73D0, CreateEffectThing(long, const C3DVector*, bool)
+//          below), CThing::GetPos() const @ 0x004C73D0, CreateEffectThing(long, const C3DVector*, bool)
 //          @ 0x006E0880 (__fastcall), CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, ::SetPItem
 //          @ 0x00A01B90 (x2), ::GetPItem @ 0x00A01B50, ::~CBaseIntelligentPointer @ 0x00A01C10; CIntelligentPointer
 //          <CThing> vtable 0x01238C6C.
 // Shape: the highlight def comes through the owner's def (CThing +0x70) into a CDefPointer local that VC keeps in
 // edi for the whole body -- it can, because GetSubDef's body sits earlier in the same TU (it does not leak the
 // local's address); the release at the end has no null test (the def was dereferenced). The spawn position is a
-// by-value copy of GetPosition() raised by DistanceFromGround; the emitter is stored through the landed
+// by-value copy of GetPos() raised by DistanceFromGround; the emitter is stored through the landed
 // "assign through a stack CIntelligentPointer" shape (construct, SetPItem, member SetPItem(GetPItem()), destroy).
 // Layout (Ego_r.pdb, matches retail): CTCHighlightItem StartRunning +0x0C, Running +0x0D, LifeTimer +0x10,
 // PParticleEmitter +0x20; CHighlightItemDef ParticleEmitter +0x28, DistanceFromGround +0x34. The class is a local
@@ -96,7 +96,7 @@ class C3DVector { public:
 class CThing { public:
     unsigned char  _pad_0x00[0x70];
     CDefClassBase* PDef;                             // +0x70 CDefPointer<const CThingDef>::Object
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
 };
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
@@ -131,7 +131,7 @@ void CTCHighlightItem::DoStartRunning()
     CHighlightItemDefPointer def;
     ParentThing->PDef->GetSubDef(def);
     if (def->ParticleEmitter) {
-        C3DVector position = ParentThing->GetPosition();
+        C3DVector position = ParentThing->GetPos();
         position.Z += def->DistanceFromGround;
         CThing* emitter = CreateEffectThing(def->ParticleEmitter, &position, false);
         CIntelligentPointer pointer;

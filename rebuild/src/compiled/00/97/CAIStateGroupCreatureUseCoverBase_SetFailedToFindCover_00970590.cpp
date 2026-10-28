@@ -1,6 +1,6 @@
 // CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover() -- remember where and when cover search failed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970590, length 54 bytes (+ int3 padding).
-// Callees: CThingPhysical::GetPosition @ 0x004C73D0 (reference into the creature's physics
+// Callees: CThingPhysical::GetPos @ 0x004C73D0 (reference into the creature's physics
 // block, copied memberwise into FailedToFindCoverAt), CAIStateGroupBase::GetPWorld @ 0x008FCFC0
 // (PBrain -> World, called for its result object only), CWorld::GetFrameCount @ 0x0049D870
 // (a static reading the frame counter global; __fastcall with no arguments).
@@ -11,8 +11,10 @@ class C3DVector { public:
     float X, Y, Z;
 };
 
-class CThingAICreature { public:
-    const C3DVector& GetPosition();         // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;         // 0x004C73D0
+};
+class CThingAICreature : public CThing { public:
 };
 
 class CWorld { public:
@@ -42,6 +44,6 @@ struct CAIStateGroup_CreatureUseCoverBase : CAIStateGroupBase {
 void CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover()
 {
     FailedToFindCover = true;
-    FailedToFindCoverAt = PBrain->Creature->GetPosition();
+    FailedToFindCoverAt = PBrain->Creature->GetPos();
     FailedTime = GetPWorld()->GetFrameCount();
 }

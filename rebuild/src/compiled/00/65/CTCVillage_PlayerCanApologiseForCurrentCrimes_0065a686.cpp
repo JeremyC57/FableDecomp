@@ -4,7 +4,7 @@
 // `?PlayerCanApologiseForCurrentCrimes@CTCVillage@@QAE_NJ@Z`).
 // Callees: CTCBase::GetWorld() 0x00686A70 (evaluated for the static frame getter); GFGetCurrentFrame 0x0049D870 (x2,
 //          `__fastcall`, the static CWorld frame getter of the landed callers); CWorld::GetCurrentPlayer() const 0x0049D9D0
-//          (on g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetHeroThing() 0x00487DC0; std::bitset<>::test(size_t)
+//          (on g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetPControlledCreature() 0x00487DC0; std::bitset<>::test(size_t)
 //          const 0x00410DE0 (interface 0x51, the deed log); CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020;
 //          CTCHeroOpinionDeedLog::GetDeedFromHandle(long) 0x006C58F0; the deed log's effects-def getter 0x006C5630
 //          (CDefPointer by hidden pointer); the STLport tree increment Successor 0x004292C0 (`__cdecl`); g_framesPerSecond
@@ -44,9 +44,10 @@ class CThing { public:
         return it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
@@ -130,7 +131,7 @@ bool CTCVillage::PlayerCanApologiseForCurrentCrimes(long seconds)
 {
     if (LastFrameApologised != 0 && GetWorld().GetFrame() - LastFrameApologised < 450)
         return false;
-    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetHeroThing();
+    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         if (hero->HasTC(0x51))

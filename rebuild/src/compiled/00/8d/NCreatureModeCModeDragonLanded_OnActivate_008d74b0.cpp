@@ -1,8 +1,8 @@
-// NCreatureMode::CModeDragonLanded::OnActivate() -- the CModeStandBase activation (0x008621A0), then the target pointer (+0x74) set to the hero thing (game -> player manager (+0x1c) -> GetPlayer @ 0x00449970 -> GetHeroThing @ 0x00487DC0) through a CIntelligentPointer<CThing> temporary
+// NCreatureMode::CModeDragonLanded::OnActivate() -- the CModeStandBase activation (0x008621A0), then the target pointer (+0x74) set to the hero thing (game -> player manager (+0x1c) -> GetPlayer @ 0x00449970 -> GetPControlledCreature @ 0x00487DC0) through a CIntelligentPointer<CThing> temporary
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D74B0, length 94 bytes.
-// Callees: CModeStandBase::OnActivate @ 0x008621A0, CPlayerManager::GetPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, SetPItem @ 0x00A01B90, GetPItem @ 0x00A01B50, ~CBaseIntelligentPointer @ 0x00A01C10. The temporary (frame +8) is the implicit conversion of the thing for the assignment operator: its constructor runs the base out of line, stores the CIntelligentPointer<CThing> vtable (0x01238C6C) and SetPItem's the thing; the assignment copies GetPItem into the member; the implicit destructor stores no vtable. Vtable slot 5 of CModeDragonLanded. Shape: `this` in esi, the hero in edi, `ret`.
+// Callees: CModeStandBase::OnActivate @ 0x008621A0, CPlayerManager::GetPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, SetPItem @ 0x00A01B90, GetPItem @ 0x00A01B50, ~CBaseIntelligentPointer @ 0x00A01C10. The temporary (frame +8) is the implicit conversion of the thing for the assignment operator: its constructor runs the base out of line, stores the CIntelligentPointer<CThing> vtable (0x01238C6C) and SetPItem's the thing; the assignment copies GetPItem into the member; the implicit destructor stores no vtable. Vtable slot 5 of CModeDragonLanded. Shape: `this` in esi, the hero in edi, `ret`.
 namespace NCreatureMode {
-struct CThing;
+struct CThing { };                                // opaque here: only its pointer is stored
 struct CBaseObject;
 struct CBaseIntelligentPointer {                   // 8 bytes: vptr + item
     virtual void v00();
@@ -17,10 +17,12 @@ template<class T> struct CIntelligentPointer : CBaseIntelligentPointer {   // vt
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
 };
-
-struct CPlayer {
-    CThing* GetHeroThing();                        // 0x00487DC0
+}
+class CThingPlayerCreature : public NCreatureMode::CThing { };
+class CPlayer { public:
+    CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
+namespace NCreatureMode {
 struct CPlayerManager {
     CPlayer* GetPlayer();                          // 0x00449970
 };
@@ -51,6 +53,6 @@ class CModeDragonLanded : public CModeStandBase { public:
 void CModeDragonLanded::OnActivate()
 {
     CModeStandBase::OnActivate();
-    PTarget = g_pGame->m_pPlayerManager->GetPlayer()->GetHeroThing();
+    PTarget = g_pGame->m_pPlayerManager->GetPlayer()->GetPControlledCreature();
 }
 }

@@ -3,7 +3,7 @@
 // Callees: FindCallHomeEvent @ 0x0090EE20, CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 /
 // SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10 (the held message: CIntelligentPointer<CMessageEvent> vtable 0x0128B0C0;
 // the by-value targets: CIntelligentPointer<const CThing> vtable 0x01237F1C), the player-manager accessor @ 0x008FCF80,
-// GetPMainPlayer @ 0x00449960, CPlayer::GetControlledCreature @ 0x00487DD0, CThing::GetPosition @ 0x004C73D0,
+// GetPMainPlayer @ 0x00449960, CPlayer::PeekPControlledCreature @ 0x00487DD0, CThing::GetPos @ 0x004C73D0,
 // the creature's virtual slot 92 (+0x170, an angle in degrees), AIAction_LookAtThing @ 0x0097D6F0,
 // AIAction_MoveToThingProximity @ 0x0097E380, AIAction_DoNothing @ 0x0097E200, Terminate @ 0x008FCF40.
 // Data: 1.44f (1.2 squared) @ 0x0128F570, 1/360 @ 0x01238E00 (`/ 360.0f` becomes a reciprocal multiply).
@@ -39,8 +39,9 @@ class CThing : public CBaseObject { public:
     virtual float GetTurnAngleDegrees();        // slot 92 (+0x170)
     unsigned char _pad4[0x91 - 4];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 struct CBaseIntelligentPointer {
     virtual void v00();
     CBaseObject* m_pItem;                       // +0x04
@@ -56,14 +57,14 @@ struct CIntelligentPointerMessage : CBaseIntelligentPointer {    // CIntelligent
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer { // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointerConstThing(CThing* item) { SetPItem(item); }
+    __forceinline CIntelligentPointerConstThing(const CThing* item) { SetPItem(const_cast<CThing*>(item)); }
 };
 class CThingAICreature : public CThing { public:
     unsigned char _pad94[0x180 - 0x94];
     CBaseIntelligentPointer PMother;            // +0x180
 };
 class CPlayer { public:
-    CThing* GetControlledCreature();            // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
 };
 class CPlayerManager { public:
     CPlayer* GetPMainPlayer();                  // 0x00449960
@@ -100,15 +101,15 @@ void CAIStateGroup_MinionKidCalledToMother::Update()
             Terminate();
             return;
         }
-        CThing* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetControlledCreature();
+        const CThing* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->PeekPControlledCreature();
         if (hero != 0 && !(hero->m_flags91 & 1)) {
             CThing* mother = GetCreature()->PMother.GetPItem();
             if (mother != 0 && !(mother->m_flags91 & 1)) {
                 CThingAICreature* creature = GetCreature();
                 float distanceSquared;
                 {
-                    const C3DVector& motherPos = creature->PMother.GetPItem()->GetPosition();
-                    const C3DVector& pos = creature->GetPosition();
+                    const C3DVector& motherPos = creature->PMother.GetPItem()->GetPos();
+                    const C3DVector& pos = creature->GetPos();
                     float dx = pos.X - motherPos.X;
                     float dy = pos.Y - motherPos.Y;
                     distanceSquared = dy * dy + dx * dx;

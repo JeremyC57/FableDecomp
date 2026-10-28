@@ -106,10 +106,13 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)==offsetof(CScriptThing,PImp_Dat
 FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)==offsetof(CScriptThing,PImp_Info));
 
 #include "engine/CPlayerManager.h"
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 #include "engine/CTCHeroStats.h"
-struct PlayerMethods:CPlayer{CThingNative* GetHeroThing();}; //00487DC0
-struct PlayerManagerMethods:CPlayerManager{PlayerMethods* GetMainPlayer();}; //00449970
+class CThingPlayerCreature : public CThingNative { };
+class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
+struct PlayerManagerMethods:CPlayerManager{CPlayer* GetMainPlayer();}; //00449970
 // Donor stats counts +E8/+EC differ from native +E0/+E4. No other stats fields are accessed here.
 struct HeroStatsRetail{unsigned char BeforeCounts[0xe0];long NumberOfShopsOwned,NumberOfHousesOwned;};
 struct BuyableHouseMethods:CTCBuyableHouse{void SetOwnedByPlayer(bool);void SetRented(bool);}; //006C17B0,006C1150
@@ -119,6 +122,6 @@ struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetHouseOwnedByPlay
 void CGameScriptInterfaceMethods::SetHouseOwnedByPlayer(const ScriptMethods& script,bool owned,bool rented)const{
  CThingNative* thing=script.GetPThing();if(thing&&!(thing->DeletedFlags&1)&&(thing->UsingComponents[6]&0x200000)){
  BuyableHouseMethods* house=GetComponent<213,BuyableHouseMethods>(thing);if(house){house->SetOwnedByPlayer(owned);house->SetRented(rented);
- CThingNative* hero=static_cast<PlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetHeroThing();if(hero&&!(hero->DeletedFlags&1)&&(hero->UsingComponents[0]&0x10)){HeroStatsRetail* stats=GetComponent<4,HeroStatsRetail>(hero);if(thing->UsingComponents[2]&0x80000){if(owned)++stats->NumberOfShopsOwned;else --stats->NumberOfShopsOwned;}else{if(owned)++stats->NumberOfHousesOwned;else --stats->NumberOfHousesOwned;}}
+ CThingNative* hero=static_cast<PlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();if(hero&&!(hero->DeletedFlags&1)&&(hero->UsingComponents[0]&0x10)){HeroStatsRetail* stats=GetComponent<4,HeroStatsRetail>(hero);if(thing->UsingComponents[2]&0x80000){if(owned)++stats->NumberOfShopsOwned;else --stats->NumberOfShopsOwned;}else{if(owned)++stats->NumberOfHousesOwned;else --stats->NumberOfHousesOwned;}}
  }}
 }

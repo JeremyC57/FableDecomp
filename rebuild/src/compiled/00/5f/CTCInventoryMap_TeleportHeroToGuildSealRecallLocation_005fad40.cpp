@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FAD40, 336 bytes, `ret`, esp frame (speed TU), /GS (cookie
 //   0x0139C8A8, __security_check_cookie @ 0x00BFE9F9).
 // Callees: CTCBase::GetPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer @ 0x00449960,
-//   CPlayer::GetControlledCreature @ 0x00487DD0 (as the landed sibling TeleportHeroToGuild 0x005FBD90), CTCBase::GetWorld
+//   CPlayer::PeekPControlledCreature @ 0x00487DD0 (as the landed sibling TeleportHeroToGuild 0x005FBD90), CTCBase::GetWorld
 //   @ 0x00686A70 and its const twin @ 0x00686A80, CMemoryBuffer::Copy(unsigned long, const void*) @ 0x009F1760,
 //   CPlayerManager::GetMainPlayerID @ 0x00449700 (engine 0x013B86A0 +0x1C), CWorld::HandleMoveHeroToRegionGameEvent
 //   @ 0x0049EAF0 (landed; it reads X, Y, Z, angle and three flag bytes in this order).
@@ -31,8 +31,9 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char IsDead : 1;                         // +0x91 bit 0
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature() const;            // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                   // 0x00449960
@@ -62,7 +63,7 @@ class CTCInventoryMap { public:
 
 void CTCInventoryMap::TeleportHeroToGuildSealRecallLocation()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetControlledCreature();
+    const CThing* hero = GetPlayerManager()->GetMainPlayer()->PeekPControlledCreature();
     if (hero && !hero->IsDead) {
         GetWorld()->DisplayMiniMapOnRegionLoad = true;
         const C3DVector& pos = GetWorldConst().GuildSealRecallPos;

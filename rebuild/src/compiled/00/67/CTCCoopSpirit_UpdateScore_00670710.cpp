@@ -3,7 +3,7 @@
 // Retail 0x00670710, 135 bytes (plain `ret`). Callees: CTCBase::GetPlayerManager @ 0x00686D40
 // (`[0x013B8A1C]+0x30`; manifest "CViewBase::GetDisplayEngine", propagated), CPlayerManager::
 // GetMainPlayerNumber @ 0x00449700 (label "CWorld::DrawGetEnvironment" propagated), CPlayerManager::
-// GetPlayer(long) @ 0x004498C0, CPlayer::GetHeroThing @ 0x00487DC0 (label propagated),
+// GetPlayer(long) @ 0x004498C0, CPlayer::GetPControlledCreature @ 0x00487DC0 (label propagated),
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CTCCoopSpirit::SwapToHero @ 0x0066FF20.
 // Layout: Ego_r.pdb CTCCoopSpirit: Score +0x10.
 // Shape: the guard `Score >= 20` around a four-player loop (index in edi, `this` in ebp); the main
@@ -36,6 +36,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CTCCoopScore {                                       // the interface-0xc7 component
     unsigned char _pad[0x10];
@@ -43,7 +44,7 @@ struct CTCCoopScore {                                       // the interface-0xc
 };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                                 // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                                 // 0x00487DC0
 };
 
 class CPlayerManager { public:
@@ -76,7 +77,7 @@ void CTCCoopSpirit::UpdateScore()
         {
             if (player != GetPlayerManager().GetMainPlayerNumber())
             {
-                CThing* hero = GetPlayerManager().GetPlayer(player)->GetHeroThing();
+                CThing* hero = GetPlayerManager().GetPlayer(player)->GetPControlledCreature();
                 CTCCoopScore* score;
                 if (hero && hero->GetInterface(&score, 0xc7))
                     score->m_counter = 0;

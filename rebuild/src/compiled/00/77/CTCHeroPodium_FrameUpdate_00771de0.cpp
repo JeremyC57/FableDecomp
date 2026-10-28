@@ -1,8 +1,8 @@
 // CTCHeroPodium::FrameUpdate() -- when the hero steps onto the podium post the podium message event (and reset the crowd), when he leaves remove it
 // Leaf: FrameUpdate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00771DE0, 225 bytes (+ int3 padding).
-// Callees: CThing::GetPosition() const @ 0x004C73D0 (x2), CTCBase::GetWorld() @ 0x00686A70 (x2), CWorld::
-//          GetCurrentPlayer() @ 0x0049D9D0, CPlayer::GetControlledCreature() @ 0x00487DD0, CMessageEventManager::
+// Callees: CThing::GetPos() const @ 0x004C73D0 (x2), CTCBase::GetWorld() @ 0x00686A70 (x2), CWorld::
+//          GetCurrentPlayer() @ 0x0049D9D0, CPlayer::PeekPControlledCreature() @ 0x00487DD0, CMessageEventManager::
 //          FindMostRecentMessage<CMessageEventFilter_IsOfType>(const filter&) @ 0x004AB8B0, std::vector<long>::resize(n,
 //          const long&) @ 0x004428F0, CMessageEventManager::AddMessage(...) @ 0x00687540, ::RemoveMessage(const
 //          CMessageEvent*) @ 0x00493B5B, std::vector<long>::clear() @ 0x00485D1A (out of line;
@@ -20,10 +20,11 @@ class C3DVector { public:
 extern const float g_podiumRadiusSquared_0126a88c;   // 0x0126A88C (1.0f)
 
 class CThing { public:
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature();                 // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;                 // 0x00487DD0
 };
 class CMessageEvent;
 class CMessageEventFilter_IsOfType { public:
@@ -68,10 +69,10 @@ class CTCHeroPodium : public CTCBase { public:
 void CTCHeroPodium::FrameUpdate()
 {
     CThing* podium = ParentThing;
-    const C3DVector& podiumPos = podium->GetPosition();
-    CThing* hero = GetWorld().GetCurrentPlayer()->GetControlledCreature();
+    const C3DVector& podiumPos = podium->GetPos();
+    const CThing* hero = GetWorld().GetCurrentPlayer()->PeekPControlledCreature();
     if (hero) {
-        const C3DVector& heroPos = hero->GetPosition();
+        const C3DVector& heroPos = hero->GetPos();
         float dx = podiumPos.X - heroPos.X;
         float dy = podiumPos.Y - heroPos.Y;
         bool onPodium = dx * dx + dy * dy < g_podiumRadiusSquared_0126a88c ? true : false;

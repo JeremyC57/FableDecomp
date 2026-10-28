@@ -22,6 +22,8 @@ struct IsPCReady_Creature
     char           pad31[0x91 - 0x31];
     unsigned char  m_Flags91;    /* [+0x91] : bit0 (0x1) must be clear       */
 };
+class CThingPlayerCreature : public IsPCReady_Creature { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 /* std-style ordered map living at creature+0x44: begin at +0, end at +4. */
 struct IsPCReady_MapNode
@@ -40,8 +42,7 @@ struct IsPCReady_Map
 };
 
 /* --- engine callees / globals: relocation-masked, declared extern --- */
-extern void*  __fastcall IsPCReady_GetSubsystem(void* thisField14);          /* call ffbafd60 */
-extern void*  __fastcall IsPCReady_GetCreature(void* subsystem);             /* call ffbee1b0 */
+extern CPlayer* __fastcall IsPCReady_GetSubsystem(void* thisField14);        /* 0x00449970 */
 extern float  __fastcall IsPCReady_GetReadiness(void* weapon);               /* call ffeefe50 */
 extern const float IsPCReady_ReadyThreshold;                                 /* ds:0x129ba3c  */
 
@@ -50,8 +51,8 @@ bool __fastcall CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon
 {
     IsPCReady_Self* self = (IsPCReady_Self*)thisptr;
 
-    void* subsystem = IsPCReady_GetSubsystem(self->m_Field14);
-    IsPCReady_Creature* creature = (IsPCReady_Creature*)IsPCReady_GetCreature(subsystem);
+    CPlayer* subsystem = IsPCReady_GetSubsystem(self->m_Field14);
+    IsPCReady_Creature* creature = subsystem->GetPControlledCreature();
 
     if (creature == 0)
         return false;

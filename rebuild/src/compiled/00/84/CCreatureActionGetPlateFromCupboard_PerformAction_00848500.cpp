@@ -2,7 +2,7 @@
 // Leaf: PerformAction
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00848500, 275 bytes, virtual PerformAction.
 // Callees: CCharString(const char*, long) 0x0099EBF0 ("" 0x0122D70E), CBaseIntelligentPointer::GetPItem 0x00A01B50
-//   (PCreature +0x08), CThing::GetPosition 0x004C73D0, CreateObject(long, const C3DVector*, long, float*, unsigned long,
+//   (PCreature +0x08), CThing::GetPos 0x004C73D0, CreateObject(long, const C3DVector*, long, float*, unsigned long,
 //   const CCharString&) 0x00703210 (__fastcall; landed CAIStateGroupBase::CreateItem form), ~CCharString 0x0099EAE0,
 //   CDefClassBase::GetSubDef<CCarryableDef> 0x005CC10E, CVectorMap::LowerBound 0x0040F020 (inlined GetInterface: type
 //   0x46 = bit 6 of the word at +0x28, CTCCarrying; type 0x31 = bit 17 of the word at +0x24, CTCCreatureModeManager),
@@ -118,7 +118,7 @@ class CThing { public:
     unsigned char _pad74[0x90 - 0x74];
     signed char m_player;                             // +0x90
     long GetPlayer() const { return m_player; }
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -173,7 +173,7 @@ void CCreatureAction_GetPlateFromCupboard::PerformAction()
     CThingObject* plate;
     {
         CCharString name("");
-        plate = CreateObject(m_plateDefIndex, &m_pCupboard->GetPosition(), PCreature.GetPItem()->GetPlayer(), 0, 0, name);
+        plate = CreateObject(m_plateDefIndex, &m_pCupboard->GetPos(), PCreature.GetPItem()->GetPlayer(), 0, 0, name);
     }
     CDefPointer<CCarryableDef> carryDef;
     plate->m_pDef->GetSubDef(&carryDef);

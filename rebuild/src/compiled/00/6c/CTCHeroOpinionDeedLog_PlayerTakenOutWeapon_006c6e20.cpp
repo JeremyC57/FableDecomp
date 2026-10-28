@@ -3,7 +3,7 @@
 // Callees: CTCHeroOpinionDeedLog::RemoveDeedStillSearchingForWitnesses(long) @ 0x006C5920,
 //          CTCHeroOpinionDeedLog::RemoveDeed(long) @ 0x006C59E0 (find + erase in the opinion-deed map),
 //          CTCHeroOpinionDeedLog::RemoveCrimeFromVillage(long) @ 0x006C5F80,
-//          CThing::GetPosition() @ 0x004C73D0 (`&m_pPlace->Position`, manifest label "DoSizeof" is propagated),
+//          CThing::GetPos() @ 0x004C73D0 (`&m_pPlace->Position`, manifest label "DoSizeof" is propagated),
 //          CTCHeroOpinionDeedLog::PostDeed(EOpinionDeedType, const C3DVector&, CThing*, CThingAICreature*,
 //              EOpinionPostDeedType, bool, bool, CFaction*, bool, long) @ 0x006C6990.
 //
@@ -19,7 +19,7 @@ class CThingAICreature;
 class CFaction;
 
 class CThing { public:
-    const C3DVector& GetPosition();           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 class CTCHeroOpinionDeedLog { public:
@@ -47,5 +47,5 @@ void CTCHeroOpinionDeedLog::PlayerTakenOutWeapon()
         WeaponOutDeedHandle = -1;
     }
     if (WeaponOutCrimeEnabled)
-        WeaponOutDeedHandle = PostDeed(1, ParentThing->GetPosition(), 0, 0, 2, true, true, 0, false, 0);
+        WeaponOutDeedHandle = PostDeed(1, ParentThing->GetPos(), 0, 0, 2, true, true, 0, false, 0);
 }

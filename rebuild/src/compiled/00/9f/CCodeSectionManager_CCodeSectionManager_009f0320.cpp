@@ -71,9 +71,16 @@ public:
     unsigned int _M_node_count;
     _Compare     _M_key_compare;
 
+    protected:
     _Base_ptr& _M_root() const { return (_Base_ptr&)this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Base_ptr& _M_leftmost() const { return (_Base_ptr&)this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Base_ptr& _M_rightmost() const { return (_Base_ptr&)this->_M_header._M_data->_M_right; }
+    public:
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;          // red: tells the header from the root
@@ -81,6 +88,7 @@ public:
         _M_leftmost() = this->_M_header._M_data;
         _M_rightmost() = this->_M_header._M_data;
     }
+    public:
     _Rb_tree(const _Compare& __comp = _Compare(), const _Alloc& __a = _Alloc())
         : _Rb_tree_base<_Value, _Alloc>(__a), _M_node_count(0), _M_key_compare(__comp)
     {

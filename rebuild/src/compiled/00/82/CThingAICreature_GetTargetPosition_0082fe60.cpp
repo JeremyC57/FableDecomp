@@ -17,11 +17,13 @@ class CTCPhysicsBase { public:
     float         m_height;                          // +0x34
 };
 
-class CThing { public:
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;            // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:
     void*           __vftable;                       // +0x00
     unsigned char   _pad04[0x60 - 0x04];
     CTCPhysicsBase* PhysicsTC;                       // +0x60 (PDB +0x70)
-    const C3DVector& GetPosition_006a4d00() const;            // 0x006A4D00
 };
 
 class CThingAICreature : public CThing { public:
@@ -30,7 +32,7 @@ class CThingAICreature : public CThing { public:
 
 C3DVector CThingAICreature::GetTargetPosition() const
 {
-    const C3DVector& position = GetPosition_006a4d00();
+    const C3DVector& position = PeekPos();
     C3DVector target;
     target.X = position.X;
     target.Y = position.Y;

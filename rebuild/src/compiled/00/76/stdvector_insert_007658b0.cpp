@@ -128,8 +128,10 @@ public:
     typedef __false_type _IsPODType;
     iterator begin() { return this->_M_start; }
     iterator end() { return this->_M_finish; }
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                                             // 0x007656D0
+    public:
     iterator insert(iterator __position, const _Tp& __x);
 };
 

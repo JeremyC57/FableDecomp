@@ -8,8 +8,8 @@ struct Vec {
     Node* lower_bound(int* key); // __fastcall, key pushed as stack arg
 };
 
-extern void* __fastcall GetHeroObj(void* mgr);   // 0xffbae5e0
-extern void* __fastcall ResolveHero(void* obj);  // 0xffbeca30
+class CPlayer;
+extern CPlayer* __fastcall GetHeroObj(void* mgr);   // 0x00449970
 extern void  __fastcall DoRemove(void* self);    // 0xffd18d56
 
 struct HeroData {
@@ -19,13 +19,15 @@ struct HeroData {
     unsigned char flag91;  // +0x91
     // Vec at +0x44
 };
+class CThingPlayerCreature : public HeroData { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 
 void __fastcall CGameScriptInterface_RemoveHeroClothing(CGameScriptInterface* self)
 {
     int key;
-    void* h = GetHeroObj(self->PlayerManager);
-    HeroData* d = (HeroData*)ResolveHero(h);
+    CPlayer* h = GetHeroObj(self->PlayerManager);
+    HeroData* d = h->GetPControlledCreature();
     if (!d) return;
     if (d->flag91 & 1) return;
     if (!(d->flags20 & 0x40000)) return;

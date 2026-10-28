@@ -10,7 +10,7 @@
 class C3DVector { public: float X, Y, Z; };
 
 class CThing { public:
-    const C3DVector& GetPosition();                     // 0x004C73D0
+    const C3DVector& GetPos() const;                     // 0x004C73D0
 };
 
 struct CTCGatherPointRadialArea {
@@ -25,7 +25,7 @@ long CTCGatherPointRadialArea::vfunc_28(const C3DVector& position)
 {
     CThing* owner = ParentThing;
     float radius = GatherRadius;
-    const C3DVector& centre = owner->GetPosition();
+    const C3DVector& centre = owner->GetPos();
     float dx = position.X - centre.X;
     float dy = position.Y - centre.Y;
     if (dx * dx + dy * dy < radius * radius)

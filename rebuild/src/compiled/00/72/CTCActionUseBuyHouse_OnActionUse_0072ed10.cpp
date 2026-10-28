@@ -4,7 +4,7 @@
 //   slot 28 (the catalog's "vfunc_28"; chunk 160: the vfunc_28 rows are OnActionUse(CThing&)).
 // Callees: CTCActionUseBase::OnActionUse(CThing&) 0x007EAB90 (manifest "$E2" is propagated), CVectorMap<ETCInterfaceType,
 //   CTCBase*>::LowerBound 0x0040F020, CBaseIntelligentPointer::GetPItem 0x00A01B50, CTCBase::GetPlayerManager 0x00686D40,
-//   CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetHeroThing 0x00487DC0, CTCActionUseBuyHouse::OnActionUseMain
+//   CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, CTCActionUseBuyHouse::OnActionUseMain
 //   (CTCBuyableHouse*, long) 0x0072E940 / OnActionUseDress(CTCBuyableHouse*, long) 0x0072E710.
 // Layout: CTCBase {vptr, ParentThing +4}, CTCActionUseBase PActionUseDef +0x0c / Usable +0x10, PDef +0x14
 //   (CDefPointer<CBuyHouseDef const>, Main at def +0x25), WaitingForConfirmation +0x18, HouseQuestion +0x1c (Ego_r.pdb
@@ -59,6 +59,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -86,7 +87,7 @@ class CTCHeroStats : public CTCHeroStatsDonor {
  public:                           // interface 4
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -139,7 +140,7 @@ void CTCActionUseBuyHouse::OnActionUse(CThing& user)
             thing = owner.GetPItem();
             if (thing->HasTC(0xd5)) {
                 CTCBuyableHouse* house = thing->GetTC<CTCBuyableHouse>(0xd5);
-                CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+                CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
                 if (hero && hero->HasTC(4)) {
                     CTCHeroStats* stats = hero->GetTC<CTCHeroStats>(4);
                     if (PDef->Main)

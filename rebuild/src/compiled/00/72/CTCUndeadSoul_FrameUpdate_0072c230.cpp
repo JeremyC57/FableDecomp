@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0072C230, 318 bytes (plain `ret`); CTCUndeadSoul vtable 0x0123A364 slot 9
 // (Ego_r.pdb `?FrameUpdate@CTCUndeadSoul@@UAEXXZ`; the manifest says "vfunc_9").
 // Callees: CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetMainPlayer() 0x00449970; CPlayer::
-//          GetControlledCreature() 0x00487DD0; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0
+//          PeekPControlledCreature() 0x00487DD0; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0
 //          (interface 0x6F, CTCInventoryAbilities, through the const GetTC) and 0x0040F020 (interface 9, CTCTargeted);
 //          CTCInventoryAbilities::IsAbleToUseAbility(EHeroAbility, bool) 0x005EE49A; CThing::DrawIsDrawable (slot 27, +0x6C)
 //          and SetAsDrawable(bool) (slot 28, +0x70); CThing::SetSuspendAnimation(bool, long) 0x00833A10.
@@ -56,6 +56,7 @@ public:
     }
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCInventoryAbilities { public:
     bool IsAbleToUseAbility(long ability, bool checkLevel) const;   // 0x005EE49A (EHeroAbility)
@@ -65,7 +66,7 @@ class CTCTargeted { public:
     bool          Targetable;                   // +0x10
 };
 class CPlayer { public:
-    CThing* GetControlledCreature();            // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -86,7 +87,7 @@ struct CTCUndeadSoul : CTCBase {
 
 void CTCUndeadSoul::FrameUpdate()
 {
-    const CThing* hero = GetPlayerManager().GetMainPlayer()->GetControlledCreature();
+    const CThing* hero = GetPlayerManager().GetMainPlayer()->PeekPControlledCreature();
     if (hero && !(hero->m_flags & 1) && hero->HasTC(0x6f)
         && ((const CTCInventoryAbilities*)hero->GetTC(0x6f))->IsAbleToUseAbility(7, true)) {
         if (!ParentThing->DrawIsDrawable()) {

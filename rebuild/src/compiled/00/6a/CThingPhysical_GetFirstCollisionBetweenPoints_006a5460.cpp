@@ -19,7 +19,7 @@ class C3DVector { public:
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLength() const;                                // 0x00A14480
+    float GetMagnitudeAndNormalise();                                // 0x00A14480 ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ (normalises in place, returns the old magnitude)
     float GetLengthInline() const { return (float)sqrt(X * X + (Y * Y + Z * Z)); }
 };
 __forceinline float DotProduct(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.X * b.X + a.Y * b.Y; }
@@ -52,7 +52,7 @@ class CThingPhysical { public:
 bool CThingPhysical::GetFirstCollisionBetweenPoints(float radius, const C3DVector& from, const C3DVector& to, C3DVector& hitPosition, C3DVector& hitNormal) const
 {
     C3DVector delta = to - from;
-    float length = delta.GetLength();
+    float length = delta.GetMagnitudeAndNormalise();
     if (!(length > 0.0001f))
         return false;
     if (GetPhysicsTC() && GetPhysicsTC()->GetPhysicsMesh()) {

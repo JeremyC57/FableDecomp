@@ -6,7 +6,7 @@
 //   const LowerBound @ 0x004365B0 (interfaces 0x6F, 0x13) / LowerBound @ 0x0040F020 (0x10), CTCInventoryAbilities::
 //   GetAbilityLevel @ 0x005EDE93 (ability 0x11), __ftol2 @ 0x00BFEA70, CThingCreatureBase::MakeNoise @ 0x00662110,
 //   CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCMultiArrow::ApplyEffectOnWeapon @ 0x007CC060 / CreateAmmoEffect
-//   @ 0x007CC2B0, GetSubDef<CSpecialEffectsDef> @ 0x00669580, CalcAndLookup @ 0x00669D30, CThing::GetPosition @ 0x004C73D0,
+//   @ 0x007CC2B0, GetSubDef<CSpecialEffectsDef> @ 0x00669580, CalcAndLookup @ 0x00669D30, CThing::GetPos @ 0x004C73D0,
 //   CreateParticleEffect @ 0x0072AB70 (__fastcall), CDefStringTable::GetString @ 0x009D49B0 (table 0x013CA828),
 //   CTCSoundPlayer::PlaySound @ 0x0066BD00; the def's slot 1.
 // Data: "SPECIAL_ABILITIES_MULTI_ARROW_DEF" 0x01235AC0, "SIMPLE_NOISE" 0x01268A5C, "CAST_EFFECT" 0x0126EDF8, frames per
@@ -189,7 +189,7 @@ public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     void MakeNoise(const CCharString& noise);          // 0x00662110 (CThingCreatureBase)
 };
 CThing* __fastcall CreateParticleEffect(long type, const C3DVector& position);   // 0x0072AB70
@@ -251,7 +251,7 @@ void CTCMultiArrow::Init()
         long effect = 0;
         bool found = ((CDefClassBase*)PDef.Object)->GetSubDef(&effects) && effects->CalcAndLookup("CAST_EFFECT", &effect);
         if (found)
-            CreateParticleEffect(effect, parent->GetPosition());
+            CreateParticleEffect(effect, parent->GetPos());
     }
     CTCSoundPlayer* player;
     if (parent->GetInterface(&player, 0x10)) {

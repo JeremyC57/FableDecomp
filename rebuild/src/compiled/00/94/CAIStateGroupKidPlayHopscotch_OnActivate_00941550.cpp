@@ -14,7 +14,7 @@
 class C3DVector;
 
 class CThing { public:
-    C3DVector* GetPosition();               // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
 class CMessageEvent;
@@ -63,5 +63,5 @@ void CAIStateGroup_KidPlayHopscotch::OnActivate()
     CThing* creature = PBrain->Creature;
     CThing* marker = m_pMarker.GetPItem();
     CMessageEventManager* messages = GetPWorld()->m_pMessageManager;
-    messages->AddMessage(0x18, 9999999, marker->GetPosition(), creature, m_pMarker.GetPItem(), 0.0f, 0.0f, 0);
+    messages->AddMessage(0x18, 9999999, (C3DVector*)&marker->GetPos(), creature, m_pMarker.GetPItem(), 0.0f, 0.0f, 0);
 }

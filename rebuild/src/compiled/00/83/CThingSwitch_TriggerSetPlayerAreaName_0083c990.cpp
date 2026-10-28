@@ -1,8 +1,8 @@
 // CThingSwitch::TriggerSetPlayerAreaName() -- once: when the living hero stands inside the switch's trigger square and has a region display, show the switch's script name as the current area name
 // Leaf: TriggerSetPlayerAreaName
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083C990, length 255 bytes (+ int3 padding).
-// Callees: CThing::GetPosition() const @ 0x006A4D00 (four times), the player-manager accessor @ 0x004C7A00,
-// CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, C2DBoxF::ContainsPoint(const
+// Callees: CThing::PeekPos() const @ 0x006A4D00 (four times), the player-manager accessor @ 0x004C7A00,
+// CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, C2DBoxF::ContainsPoint(const
 // C2DVector&) const @ 0x00535CD0 (out of line), CVectorMap::LowerBound @ 0x0040F020 (interface 0x8e = CTCRegionDisplay,
 // bit 14 of +0x30), CTCRegionDisplay::SetCurrentAreaName(const CCharString&, float, bool, bool, bool) @ 0x00639BA0.
 // Layout (retail): CThing ScriptName +0x74, PhysicsTC +0x60 (position +0x0c), interface bitset +0x20 / map +0x44, Dead
@@ -64,23 +64,26 @@ public:
 protected:
     CPlayerManager& GetPlayerManager();   // 0x004C7A00
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                                 // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                                 // 0x00487DC0
 };
 class CPlayerManager {
 public:
 public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };
-class CThingSwitch : public CThing {
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;                      // 0x006A4D00
+};
+class CThingSwitch : public CThingPhysical {
 public:
     unsigned char _pad94[0xd0 - 0x94];
     float         TriggerRadius;                               // +0xd0
     CCharString   EnvironmentDef;                              // +0xd4
     float         TimeToChangeEnvironmentDef;                  // +0xd8
     bool          AreaNameShown;                               // +0xdc
-    const C3DVector& GetPosition() const;                      // 0x006A4D00
     void TriggerSetPlayerAreaName();
 };
 
@@ -89,11 +92,11 @@ void CThingSwitch::TriggerSetPlayerAreaName()
     if (AreaNameShown)
         return;
     C2DBoxF area;
-    area.TLX = GetPosition().X - TriggerRadius;
-    area.TLY = GetPosition().Y - TriggerRadius;
-    area.BRX = GetPosition().X + TriggerRadius;
-    area.BRY = GetPosition().Y + TriggerRadius;
-    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroCreature();
+    area.TLX = PeekPos().X - TriggerRadius;
+    area.TLY = PeekPos().Y - TriggerRadius;
+    area.BRX = PeekPos().X + TriggerRadius;
+    area.BRY = PeekPos().Y + TriggerRadius;
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead) {
         const C3DVector& pos = hero->GetPhysicsPosition();
         if (area.ContainsPoint(C2DVector(pos)) && hero->HasTC(0x8e)) {

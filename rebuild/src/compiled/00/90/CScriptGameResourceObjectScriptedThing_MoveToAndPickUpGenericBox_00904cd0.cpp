@@ -3,7 +3,7 @@
 // Retail 0x00904CD0, 327 bytes, ret 0xC. Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PThing +0x14), the box's
 // CScriptThing::GetPThing (slot 11, +0x2C), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inline
 // GetInterface 0x1F = CTCScriptedControl), operator new 0x00BFEA1A, CActionMoveTo ctor 0x009051F0 (0x50 bytes),
-// CThing::GetPosition 0x004C73D0, CActionTurnToFacePosition ctor 0x007185D0 (0x1C bytes, speed 1/72),
+// CThing::GetPos 0x004C73D0, CActionTurnToFacePosition ctor 0x007185D0 (0x1C bytes, speed 1/72),
 // CActionPickUpGenericBox ctor 0x00713200 (0x20 bytes), CTCScriptedControl::AddAction 0x007137D0.
 // Layout: engine/CScriptGameResourceObjectScriptedThing.h (PThing +0x14) through a method view, as the landed
 // DropGenericBox 0x00904E20.
@@ -24,13 +24,16 @@ struct CInterfaceMap {                             // CVectorMap<ETCInterfaceTyp
     SEntry* LowerBound(const long* type);          // 0x0040F020
 };
 
-struct CThing_Retail {
+class C3DVector;
+class CThing { public:
+    const C3DVector& GetPos() const;   // 0x004C73D0
+};
+struct CThing_Retail : public CThing {
     unsigned char  _pad00[0x20];
     unsigned long  m_presentBits[9];               // +0x20 std::bitset of interface types
     CInterfaceMap  m_interfaces;                   // +0x44
     unsigned char  _pad4c[0x20];
     unsigned long  ThingTypeFlags;                 // +0x6c
-    const class C3DVector& GetPosition() const;   // 0x004C73D0
     unsigned char  _pad70[0x21];
     unsigned char  m_dead : 1;                     // +0x91 bit 0
     unsigned char  m_91_1 : 7;
@@ -119,7 +122,7 @@ void CScriptGameResourceObjectScriptedThing_Methods::MoveToAndPickUpGenericBox(c
                 default: movement = 1; break;
                 }
                 control->AddAction(new NTCScriptedControl::CActionMoveTo(boxThing, movement, 1.5f, true, run, true, true, true, false));
-                control->AddAction(new NTCScriptedControl::CActionTurnToFacePosition(boxThing->GetPosition(), 0.013888889f));
+                control->AddAction(new NTCScriptedControl::CActionTurnToFacePosition(boxThing->GetPos(), 0.013888889f));
                 control->AddAction(new NTCScriptedControl::CActionPickUpGenericBox(boxThing));
             }
         }

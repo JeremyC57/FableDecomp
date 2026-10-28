@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075DAA0, length 229 bytes (+ int3 padding).
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80, CGameCameraManager::GetCameraManager(CCameraManager**) (virtual slot 10, +0x28;
 // world +0x34), CTCCameraPointBuilding::GetOwnerBuilding @ 0x0075D940, NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0 (the
-// camera manager's current mode, +0x98), CTCGraphicAppearance::GetCameraFocalPos(float) @ 0x004C12D0, CThing::GetPosition
+// camera manager's current mode, +0x98), CTCGraphicAppearance::GetCameraFocalPos(float) @ 0x004C12D0, CThing::GetPos
 // @ 0x004C73D0, GetPBuildingThingOccupying(CThing*) @ 0x006989D0 (__fastcall), CTools::IsLineOfSightFiltered @ 0x00877C40 (the
 // camera manager's tools at +0x78; 8 arguments).
 // Layout = Ego_r.pdb CTCCameraPointBuilding: InMyBuilding +0x40, ExitPoint +0x41, StartPoint +0x42.
@@ -22,7 +22,7 @@ class CThing {
 public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 const CThing* __fastcall GetPBuildingThingOccupying(CThing* thing);     // 0x006989D0 (the CThingBuilding)
 struct CTools {
@@ -95,7 +95,7 @@ bool CTCCameraPointBuilding::IsLeafCriteriaMet()
         CThing* observed = camera->PCurrentMode->GetObservedThing();
         if (observed) {
             C3DVector focal = observed->PGraphicAppearance->GetCameraFocalPos(1.0f);
-            C3DVector heroPosition = ParentThing->GetPosition();
+            C3DVector heroPosition = ParentThing->GetPos();
             if (thing == GetPBuildingThingOccupying(observed)) {
                 const CThing* hitThing = 0;
                 if (!ExitPoint && !StartPoint) {

@@ -1,10 +1,10 @@
 // CTCUnholyPower::OnCreate() -- raise a physical barrier on the owner's position, register the owner with the barrier's driver and keep the barrier as PObstruction
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007949F0, length 193 bytes (+ int3 padding). __fastcall, `ret`.
 //         CTCUnholyPower vtable 0x0126BFDC slot 4 (the catalog label "CTCDivineWrath::OnCreate" is propagated).
-// Callees: CThing::GetPosition @ 0x004C73D0, the barrier factory (__fastcall start, end, radius) @ 0x007FD4B0,
+// Callees: CThing::GetPos @ 0x004C73D0, the barrier factory (__fastcall start, end, radius) @ 0x007FD4B0,
 //          CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10
 //          (CIntelligentPointer<CThing> vtable 0x01238C6C), vector<CIntelligentPointer<CThing>>::push_back @ 0x004AD520.
-// Shape: the position is a named reference (GetPosition runs before the radius load) and the physics component a named
+// Shape: the position is a named reference (GetPos runs before the radius load) and the physics component a named
 //        local (else the radius load swaps ecx/edx); the driver is a named local taken before the temporary, read by the
 //        inline cached-component accessor (interface 0xED = bitset word 7 bit 13, PTCDriver at retail +0x5C) that leaves
 //        its result unset when the bit is clear; both intelligent-pointer temporaries share the accessor's frame word.
@@ -67,7 +67,7 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                      // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
     CTCDriverBase* GetDriver() const
     {
         CTCDriverBase* driver;
@@ -92,7 +92,7 @@ class CTCUnholyPower { public:
 
 void CTCUnholyPower::OnCreate()
 {
-    const C3DVector& position = ParentThing->GetPosition();
+    const C3DVector& position = ParentThing->GetPos();
     CTCPhysicsBase* physics = ParentThing->PhysicsTC;
     CThing* barrier = CTCDPhysicalObstruction::Create(position, position, physics->Radius);
     if (barrier && !(barrier->m_flags91 & 1)) {

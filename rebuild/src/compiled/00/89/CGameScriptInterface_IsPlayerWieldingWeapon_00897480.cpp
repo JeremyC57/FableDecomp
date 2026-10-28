@@ -1,6 +1,6 @@
 // CGameScriptInterface::IsPlayerWieldingWeapon() const -- whether the live hero creature holds a weapon in its primary carrying slot (the held thing carries component kind 0x48)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00897480, length 109 bytes.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, the const component-map
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the const component-map
 //          LowerBound @ 0x004365B0 (kind 0x46, carrying), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440.
 // Shape: the outer `return false` is the byte `xor al,al`; the inner `w && w->HasTC(0x48)` materialises a full-register 0/1.
 // Leaf: ?IsPlayerWieldingWeapon@CGameScriptInterface@@UBE_NXZ
@@ -42,6 +42,7 @@ class CThing { public:
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
+class CThingPlayerCreature : public CThing { };
 __forceinline CTCBase_Retail* GetTC(CThing* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
@@ -60,8 +61,8 @@ class CScriptThing { public:
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
 class CPlayer { public:
-    CThing* GetHeroCreature();              // 0x00487DC0
-    CThing* GetControlledCreature();        // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -122,7 +123,7 @@ class CGameScriptInterface { public:
 
 bool CGameScriptInterface::IsPlayerWieldingWeapon() const
 {
-    const CThing* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
+    const CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->m_dead && hero->HasTC(0x46)) {
         CThing* weapon = ((CTCCarrying*)GetTCConst(hero, 0x46))->GetThingInPrimarySlot();
         return weapon && weapon->HasTC(0x48);

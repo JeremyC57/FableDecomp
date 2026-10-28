@@ -2,12 +2,12 @@
 // Leaf: ?FrameUpdate@CModeScreamerAggressive
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DA610, 121 bytes (+ int3 padding), `ret`; vtable slot 3.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type
-//   0x43 = bit 3 of the bitset dword at +0x28 = CTCLook), CThing::GetPosition @ 0x004C73D0,
+//   0x43 = bit 3 of the bitset dword at +0x28 = CTCLook), CThing::GetPos @ 0x004C73D0,
 //   CTCLook::LookAtPos(const C3DVector*, long priority) @ 0x00753E90, CModeBase::FrameUpdate @ 0x0073AC50 (qualified).
 // Name: FableWin.pdb `?FrameUpdate@CModeScreamerAggressive@NCreatureMode@@UAEXXZ` (slot 3).
 // Layout: Ego_r.pdb CModeScreamerAggressive: CModeStandBase 0x68, Filter +0x68, PEffect +0x74, PTarget +0x7c.
 // Shape: IS_ALIVE (GetPItem twice, dead bit +0x91) then the out-parameter GetInterface with the ternary entry pick (the
-//   CModeBlock::FrameUpdate 0x008D8EA0 model); the component stays in esi across the GetPItem / GetPosition calls.
+//   CModeBlock::FrameUpdate 0x008D8EA0 model); the component stays in esi across the GetPItem / GetPos calls.
 class CTCBase;
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -25,7 +25,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;            // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;               // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;  // 0x004C73D0
+    const C3DVector& GetPos() const;  // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -85,6 +85,6 @@ void NCreatureMode::CModeScreamerAggressive::FrameUpdate()
 {
     CTCLook* look;
     if (PTarget.GetPItem() != 0 && !(PTarget.GetPItem()->m_flags91 & 1) && ParentThing->GetInterface(&look, 0x43))
-        look->LookAtPos(&PTarget.GetPItem()->GetPosition(), 0x67);
+        look->LookAtPos(&PTarget.GetPItem()->GetPos(), 0x67);
     CModeBase::FrameUpdate();
 }

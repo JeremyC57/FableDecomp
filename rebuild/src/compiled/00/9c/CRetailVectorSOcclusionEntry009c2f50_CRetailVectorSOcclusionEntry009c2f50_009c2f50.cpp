@@ -14,16 +14,17 @@ class CWideString { public:
     ~CWideString();                            // 0x0099B510
 };
 
-struct CTextureHandle {                        // {texture, flags}: release through the texture's vslot 2, clear the top flag nibble
+struct CTexture {                        // {texture, flags}: release through the texture's vslot 2, clear the top flag nibble
     void*         m_pTexture;
     unsigned long m_flags;
-    ~CTextureHandle();                         // 0x009F9F70
+    void Uninitialise();                       // 0x009F9F70 ?Uninitialise@CTexture@@QAEXXZ
+    ~CTexture() { Uninitialise(); }
 };
 
 struct SOcclusionEntry {                       // 60 bytes
     unsigned char  _pad0[0x14];
     CWideString    m_name;                     // +0x14
-    CTextureHandle m_texture;                  // +0x18
+    CTexture m_texture;                  // +0x18
     unsigned char  _pad1[0x1c];                // +0x20..+0x3b
 };
 

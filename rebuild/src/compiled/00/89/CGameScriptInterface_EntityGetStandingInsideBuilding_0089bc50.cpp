@@ -43,6 +43,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
+class CThingPlayerCreature : public CThing_Retail { };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing {
@@ -64,12 +65,12 @@ class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThi
 public:
     static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
-struct CPlayer_Retail {
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0
+struct CPlayer {
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970
+    CPlayer* GetMainPlayer();               // 0x00449970
 };
 class CCharString;
 struct CDefinitionManager_Retail {

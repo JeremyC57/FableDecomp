@@ -19,7 +19,7 @@ struct CInterfaceMap {
 };
 
 class CThing { public:
-    const C3DVector* GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -71,7 +71,7 @@ CThingBuilding* CAIStateGroup_EatAtTavern::GetBuilding()
     CTCVillager* villager;
     if (PBrain->Creature->GetInterface(&villager, 0x23)) {
         if (GFGetPVillageInterface(villager) != 0)
-            return GFGetPVillageInterface(villager)->AIStateGroup_FindNearestBuildingWithProperty(*PBrain->Creature->GetPosition(), 0x20);
+            return GFGetPVillageInterface(villager)->AIStateGroup_FindNearestBuildingWithProperty(PBrain->Creature->GetPos(), 0x20);
     }
     return 0;
 }

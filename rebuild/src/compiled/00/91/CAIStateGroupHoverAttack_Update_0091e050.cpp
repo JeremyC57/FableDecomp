@@ -3,7 +3,7 @@
 // Callees: CThingCreatureBase::GetCombatManager @ 0x00661ED0 / IsRegisteredCombatant @ 0x00662410, CAIStateGroupBase::
 // GetPWorld @ 0x008FCFC0, CCombatManager::SetAttackerAsReadyToAttack @ 0x006EA450 / GetPreferredPos @ 0x006EA770 /
 // GetNextActionForCreature @ 0x006EB600, IsToAttackTarget @ 0x00864D00 (`__fastcall`), CBaseIntelligentPointer::GetPItem
-// @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, AIAction_CombatPerformActionAndWait @ 0x0097DA40, Terminate @ 0x008FCF40;
+// @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, AIAction_CombatPerformActionAndWait @ 0x0097DA40, Terminate @ 0x008FCF40;
 // virtual slots 15 IsRunnableLeaf (+0x3c), 19 GetCombatMinDistance (+0x4c), 22 AIAction_MoveToPosAndFacePos (+0x58).
 // Shape: an outer while over the attack conditions, an inner for(;;) hover loop whose in-range flag is reset per outer pass.
 // Layout: Ego_r.pdb CAIStateGroup_HoverMovementBase (0x1c bytes): target pointer +0x14; CWorld +0x4c combat manager.
@@ -18,7 +18,7 @@ class CCombatManager;
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { public:
     CCombatManager* GetCombatManager();         // 0x00661ED0
@@ -107,12 +107,12 @@ void CAIStateGroup_HoverAttack::Update()
             }
             bool arrived;
             C3DVector preferred = combat->GetPreferredPos(GetCreature());
-            long result = AIAction_MoveToPosAndFacePos(2, preferred, PTarget.GetPItem()->GetPosition(), arrived, 8);
+            long result = AIAction_MoveToPosAndFacePos(2, preferred, PTarget.GetPItem()->GetPos(), arrived, 8);
             if (IsAlive(PTarget)) {
                 const CThing* me = GetCreature();
                 const CThing* target = PTarget.GetPItem();
                 float minDistance = GetCombatMinDistance();
-                C3DVector offset = target->GetPosition() - me->GetPosition();
+                C3DVector offset = target->GetPos() - me->GetPos();
                 inRange = offset.X * offset.X + offset.Y * offset.Y < minDistance * minDistance;
             }
             if (result == 4) {

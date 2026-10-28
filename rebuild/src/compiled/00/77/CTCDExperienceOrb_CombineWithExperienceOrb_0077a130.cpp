@@ -1,6 +1,6 @@
 // CTCDExperienceOrb::CombineWithExperienceOrb(CThing* otherOrb) -- absorb the other orb's points, play the combining effect, kill it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077A130, length 72 bytes (+8 int3).
-// Callees: CTCDExperienceOrb::SetExperiencePoints(long) @ 0x00779E10, CThing::GetPosition @ 0x004C73D0, the __fastcall
+// Callees: CTCDExperienceOrb::SetExperiencePoints(long) @ 0x00779E10, CThing::GetPos @ 0x004C73D0, the __fastcall
 // thing creator @ 0x006E0880 (def index in ecx, position in edx, one stack argument), CThing::Kill(bool) @ 0x004C9B80.
 // Shape: the other thing's orb driver is the inlined GetTCDriver probe: bitset word +0x2c (CThing UsingComponents +0x20,
 // word 3) bit 9 selects PTCDriver (+0x5c, retail offset) else null, read without a null test (`->ExperiencePoints`, +0x10).
@@ -14,7 +14,7 @@ class CThing { public:
     unsigned long UsingComponents[9];       // +0x20 bitset<274>
     unsigned char _pad44[0x5c - 0x44];
     void* PTCDriver;                        // +0x5c
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     void Kill(bool checkLocked);            // 0x004C9B80
     CTCDExperienceOrb* GetTCDriverExperienceOrb() const
     {
@@ -56,6 +56,6 @@ class CTCDExperienceOrb { public:
 void CTCDExperienceOrb::CombineWithExperienceOrb(CThing* otherOrb)
 {
     SetExperiencePoints(otherOrb->GetTCDriverExperienceOrb()->ExperiencePoints + ExperiencePoints);
-    CreateThing(PDef->OrbCombiningParticleEffect, GetParent()->GetPosition(), 0);
+    CreateThing(PDef->OrbCombiningParticleEffect, GetParent()->GetPos(), 0);
     otherOrb->Kill(true);
 }

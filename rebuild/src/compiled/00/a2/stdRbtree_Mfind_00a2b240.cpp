@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<CCharString, CArray<CMeshDataBank::CLipSyncEntry> >) STLport exact-key lookup over CCharString keys: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@@3@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@@2@ABVCCharString@@@Z
+// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CArray@VCLipSyncEntry@CMeshDataBank@@@@@std@@@2@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2B240, 112 bytes (+ int3 padding), thiscall, `ret 4`; returns the node pointer.
 // Identity: `map<CCharString, CArray<CMeshDataBank::CLipSyncEntry> >`; evidence: the landed CMeshDataBank::FindLipSyncAnimation 0x00A26530 calls it on LipSyncAnimations (Ego_r CMeshDataBank: map<CCharString, CArray<CMeshDataBank::CLipSyncEntry> >).
 //   Family F012 (17 byte-identical bodies, one COMDAT per tree type): the manifest label "RBTree_FindNode_CCharString" is behavioural.
@@ -131,8 +131,12 @@ public:
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
+    private:
     _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

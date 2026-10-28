@@ -3,7 +3,7 @@
 // CTCBurntEffect::Reset() -- restart the burn: zero CurTime, scale the def's fade times by the frame rate, and if the
 // def's "SINGE_EFFECT" sub-def names an effect type, spawn three effect things at the owner, attach their particle emitters
 // (two global helper names on attach type 10, "" on type 8) and keep all three in Effects
-// Retail 0x007CDD10, 0x2CF bytes. Callees: __ftol2 0x00BFEA70; CThing::GetPosition 0x004C73D0;
+// Retail 0x007CDD10, 0x2CF bytes. Callees: __ftol2 0x00BFEA70; CThing::GetPos 0x004C73D0;
 // CDefClassBase::GetSubDef 0x00669580; CCharString(const char*, int) 0x0099EBF0 / ~CCharString 0x0099EAE0;
 // GetEffectFromString 0x00669D30; CreateEffectThing 0x006E0880 (__fastcall); CVectorMap::LowerBound 0x0040F020
 // (inlined GetTC 0x4b); CTCDParticleEmitter::AttachToThing 0x006E0BE0; CBaseIntelligentPointer() 0x00A01B10 /
@@ -82,7 +82,7 @@ public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                          // +0x91 bit 0 = being deleted
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long interfaceType)
     {
@@ -142,7 +142,7 @@ void CTCBurntEffect::Reset()
     FadeOutTime = (long)(PDef->FadeOutTime * g_FramesPerSecond);
     CDefPointer<CEffectDef> def;
     long type = 0;
-    C3DVector position = ParentThing->GetPosition();
+    C3DVector position = ParentThing->GetPos();
     if (GetDef()->GetSubDef(&def) && def->GetEffectFromString("SINGE_EFFECT", type)) {
         CThing* effectA = CreateEffectThing(type, &position, false);
         if (effectA) {

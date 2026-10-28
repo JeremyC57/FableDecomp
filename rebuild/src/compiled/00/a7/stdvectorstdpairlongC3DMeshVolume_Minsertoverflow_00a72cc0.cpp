@@ -1,5 +1,5 @@
 // std::vector<std::pair<long, C3DMeshVolume> >::_M_insert_overflow(std::pair<long, C3DMeshVolume>* position, const std::pair<long, C3DMeshVolume>& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth for the long-keyed mesh-volume map entries (16 bytes): move into a size + max(size, fill_len) block with x inserted fill_len times at position
-// Leaf: ?_M_insert_overflow@?$vector@U?$pair@JVC3DMeshVolume@@@std@@V?$allocator@U?$pair@JVC3DMeshVolume@@@std@@@2@@std@@QAEXPAU?$pair@JVC3DMeshVolume@@@2@ABU32@ABU__false_type@2@I_N@Z
+// Leaf: ?_M_insert_overflow@?$vector@U?$pair@JVC3DMeshVolume@@@std@@V?$allocator@U?$pair@JVC3DMeshVolume@@@std@@@2@@std@@IAEXPAU?$pair@JVC3DMeshVolume@@@2@ABU32@ABU__false_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A72CC0, 258 bytes, thiscall `ret 14h` (a /Gr TU: the helpers are __fastcall).
 // Identity: callers CPhysicsMesh::GetContainmentDataFromFileData (0x00A6D7EF) and the landed push_back 0x00A734D0, itself
 //   called only by 0x00A737B0 (catalogued "C3DAnimFile::AddKeyedChunk", propagated: it is the map's Add, setting the Dirty
@@ -120,19 +120,25 @@ public:
     typedef unsigned int size_type;
     typedef _Tp* pointer;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
 };
 
 template <class _Tp, class _Alloc>

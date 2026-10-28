@@ -1,8 +1,8 @@
 // C3DMeshStats::HasDummyObject(unsigned long key) -- is any dummy object stored under `key`?
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A2EA60, oracle length 63 bytes.
 // Callees: CPreAllocVectorMap<unsigned long,C3DDummyObject>::LowerBound(const ulong&) @ 0x00A31790 (manifest).
-// Result type: `unsigned char` -- the retail epilogue is a bare `setne al` (a `bool` result here gets
-// `xor edx,edx ; setne dl ; mov al,dl`, tried: DIFFER), the usual sign of the engine's byte-sized flag type.
+// Result type: `bool` const (Ego_r.pdb ?HasDummyObject@C3DMeshStats@@QBE_NK@Z). The bare `setne al` epilogue comes from the
+// `if (found) return true; return false;` form; `return a != b;` as a bool materialises `xor edx,edx ; setne dl ; mov al,dl`.
 // Same shape as HasHelperPoint @ 0x00A2EA20, on the DummyObjects map at +0x48 whose entries are 56 bytes
 // (`imul ecx,ecx,38h` is that stride).
 //
@@ -25,9 +25,9 @@ struct CDummyObjectMap {                   // CPreAllocVectorMap<unsigned long, 
     SDummyObjectEntry* Elements;           // +4
     unsigned long      Size;               // +8
     bool               Dirty;              // +0xC
-    SDummyObjectEntry* LowerBound(const unsigned long& key);   // 0x00A31790
-    SDummyObjectEntry* End() { return Elements + Size; }
-    SDummyObjectEntry* Find(const unsigned long& key)
+    SDummyObjectEntry* LowerBound(const unsigned long& key) const;   // 0x00A31790
+    SDummyObjectEntry* End() const { return Elements + Size; }
+    SDummyObjectEntry* Find(const unsigned long& key) const
     {
         SDummyObjectEntry* it = LowerBound(key);
         if (it == End() || key < it->first)
@@ -40,10 +40,12 @@ class C3DMeshStats { public:
     virtual void v00();
     unsigned char   _pad_0x04[0x48 - 0x04];
     CDummyObjectMap DummyObjects;          // +0x48
-    unsigned char HasDummyObject(unsigned long key);
+    bool HasDummyObject(unsigned long key) const;   // ?HasDummyObject@C3DMeshStats@@QBE_NK@Z
 };
 
-unsigned char C3DMeshStats::HasDummyObject(unsigned long key)
+bool C3DMeshStats::HasDummyObject(unsigned long key) const
 {
-    return DummyObjects.Find(key) != DummyObjects.End();
+    if (DummyObjects.Find(key) != DummyObjects.End())
+        return true;
+    return false;
 }

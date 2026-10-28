@@ -3,7 +3,7 @@
 // enabling, the will is only usable in the current region if the region definition does not forbid it
 // Leaf: SetHeroWillAsUsable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00898340, length 208 bytes, `ret 4`.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, the TC map lower bound
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the TC map lower bound
 // @ 0x0040F020, CWorld virtual slot 12 GetWorldMap (+0x30), CWorldMap::GetCurrentRegionNumber @ 0x004FB150,
 // CWorldMap::GetRegion(long) @ 0x004FB490 (0x58-byte region records), the region def's virtual slot 1 (destroy).
 // Layout: CGameScriptInterface World +0x04, PlayerManager +0x14; CThing dead bit +0x91 bit 0, TC 0x29 present bit
@@ -50,6 +50,7 @@ class CThing { public:
         return tc;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCHero { public:                          // TC 0x29 (PDB layout agrees)
     unsigned char _pad[0xc];
@@ -61,7 +62,7 @@ class CTCHero { public:                          // TC 0x29 (PDB layout agrees)
 
 class CPlayer {
 public:
-    CThing* GetHeroThing();               // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 
 class CPlayerManager { public:
@@ -116,7 +117,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::SetHeroWillAsUsable(bool usable) const
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->m_dead) {
         CTCHero* will = hero->GetTC<CTCHero>(0x29);
         will->WillUseOverriddenByScripts = !usable;

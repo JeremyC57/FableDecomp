@@ -38,7 +38,7 @@ class C3DVector { public:
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                 // 0x004C73D0
+    const C3DVector& GetPos() const;                 // 0x004C73D0
 };
 class CThingObject : public CThing { };              // mask 0x807
 
@@ -60,8 +60,8 @@ template <class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
         return b;
     if (!b)
         return a;
-    C3DVector deltaA = a->GetPosition() - Pos;
-    C3DVector deltaB = b->GetPosition() - Pos;
+    C3DVector deltaA = a->GetPos() - Pos;
+    C3DVector deltaB = b->GetPos() - Pos;
     return deltaA.GetLengthSquared() < deltaB.GetLengthSquared() ? a : b;
 }
 #pragma auto_inline(on)

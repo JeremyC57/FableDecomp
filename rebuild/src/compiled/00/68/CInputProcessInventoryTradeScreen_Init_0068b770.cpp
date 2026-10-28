@@ -5,8 +5,8 @@
 //   CInputProcessGameBase : CAInputProcess : CBaseClassNonCopyable : CBaseClass); FableWin.pdb names ?Init@CInputProcessInventoryTradeScreen@@UAEXXZ and
 //   ?GetPInventory@CInputProcessInventoryTradeScreen@@MBE...; Ego_r.pdb CInputProcessInventoryTradeScreen::PInventory is a CTCInventoryTrade* at +0x34. Family G037 (8 Init bodies that
 //   differ only in the interface type), the sibling of the landed CInputProcessInventoryQuestsScreen::Init 0x0068BC20.
-// Callees: CPlayer::GetPPlayerCharacter() const 0x00487DC0 (MyPlayer +0x18; `add ecx,2Ch ; jmp GetPItem`, byte twin of
-//   GetPControlledCreature 0x00487DD0 -- the catalog and the landed bindings split the two FableWin.pdb getters this way),
+// Callees: CPlayer::GetPControlledCreature() const 0x00487DC0 (MyPlayer +0x18; `add ecx,2Ch ; jmp GetPItem`, byte twin of
+//   PeekPControlledCreature 0x00487DD0 -- the catalog and the landed bindings split the two FableWin.pdb getters this way),
 //   CInterfaceMap::LowerBound 0x0040F020 (the creature's {type, component} vector map at +0x44).
 // Shape: the GetInterface template is `__forceinline` (as in the landed GetInterface rows): one `push ecx` frame slot for the
 //   key, the map pointer advanced into esi once, `it = last` when the key is past it, PInventory the out pointer.
@@ -40,7 +40,7 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature* GetPPlayerCharacter() const;       // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
 };
 class CBaseClass {                                           // RTTI root, vtable 0x01231710
 public:
@@ -87,5 +87,5 @@ public:
 
 void CInputProcessInventoryTradeScreen::Init()
 {
-    MyPlayer->GetPPlayerCharacter()->GetInterface(&PInventory, 0x17);
+    MyPlayer->GetPControlledCreature()->GetInterface(&PInventory, 0x17);
 }

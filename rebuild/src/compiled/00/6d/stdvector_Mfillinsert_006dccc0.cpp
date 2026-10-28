@@ -70,8 +70,10 @@ public:
     typedef __false_type _IsPODType;
     vector(const vector<_Tp, _Alloc>& __x);                 // 0x004F9408 for the attack-combo pairs (landed)
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);         // 0x006DCA50 for CAttackHistoryCombo (landed)
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
 };
 

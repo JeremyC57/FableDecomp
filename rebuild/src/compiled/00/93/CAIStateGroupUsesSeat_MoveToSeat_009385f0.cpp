@@ -36,8 +36,10 @@ class CThing { public:
         return false;
     }
 };
-struct CThingCreature : CThing {
-    const C3DVector& GetPhysicsPosition() const;    // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;    // 0x006A4D00
+};
+struct CThingCreature : public CThingPhysical {
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -111,7 +113,7 @@ bool CAIStateGroup_UsesSeat::MoveToSeat(long movement)
     if (PSeat.GetPItem() == 0 || !IsSeatValid())
         return false;
     C3DVector forward = orientation.Forward;
-    C3DVector lookPos = forward + PBrain->PCreature->GetPhysicsPosition();
+    C3DVector lookPos = forward + PBrain->PCreature->PeekPos();
     do {
         if (PSeat.GetPItem() == 0 || !IsSeatValid())
             return false;

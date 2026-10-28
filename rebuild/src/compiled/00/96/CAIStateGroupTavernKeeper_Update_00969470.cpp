@@ -27,11 +27,15 @@ struct CInterfaceMap {
     SEntry* last;
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
+class CThingPhysicsBody;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    unsigned char _pad4c[0x91 - 0x4c];
+    unsigned char _pad4c[0x60 - 0x4c];
+    CThingPhysicsBody* PBody;                   // +0x60
+    unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -116,10 +120,7 @@ struct CThingPhysicsBody {
 struct CThingBuildingModel : CThing {
     bool IsPointInside(const C3DVector& pos);   // 0x0082D000
 };
-struct CThingPos {
-    unsigned char _pad[0x60];
-    CThingPhysicsBody* PBody;                   // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+struct CThingPos : CThing {                     // no data of its own: PBody is CThing's +0x60
     C3DVector GetPhysPos() const;               // 0x004C7950
 };
 struct CIntelligentPointerObject : CBaseIntelligentPointer {     // CIntelligentPointer<CThingObject>
@@ -158,7 +159,7 @@ void CAIStateGroup_TavernKeeper::Update()
     scratch->Reset();
     CThingPos* creature = (CThingPos*)GetCreature();
     CThingBuildingModel* pub = (CThingBuildingModel*)PPub.GetPItem();
-    if (!pub->IsPointInside(creature->GetPosition())) {
+    if (!pub->IsPointInside(creature->GetPos())) {
         bool arrived;
         CThingPhysicsBody* body = ((CThingPos*)PPub.GetPItem())->PBody;
         CThingPos* pubThing = (CThingPos*)PPub.GetPItem();

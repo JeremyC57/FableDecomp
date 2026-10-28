@@ -73,6 +73,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -90,7 +93,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
@@ -104,7 +109,6 @@ class CTCVillage { public:
 CTCVillage* __fastcall GFGetPVillageInterface(CTCVillager* villager);    // 0x007EE540
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
 struct CAIStateGroup_MinionSitOnSeatBase : CAIStateGroupBaseW {
@@ -118,7 +122,7 @@ struct CAIStateGroup_MinionSitAtSchool : CAIStateGroup_MinionSitOnSeatBase {
     __forceinline bool IsTimeForSchool(CTCVillager* villager)
     {
         CThing* creature = PBrain->PCreature;
-        return GFGetPVillageInterface(villager)->IsTimeToGoToSchool(creature, GetPThingWorld(), true);
+        return GFGetPVillageInterface(villager)->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), true);
     }
 };
 

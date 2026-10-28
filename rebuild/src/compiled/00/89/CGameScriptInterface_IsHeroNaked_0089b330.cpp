@@ -17,6 +17,7 @@ struct HeroTarget {
     char  pad4C[0x45];
     u8    flags91;    // +0x91
 };
+class CThingPlayerCreature : public HeroTarget { };
 
 
 struct TCMap {
@@ -24,13 +25,13 @@ struct TCMap {
 };
 
 // engine callees (addresses reloc-masked)
-extern "C" void*       __fastcall GSI_Helper_A(void* p);            // 0x0040D959-ish
-extern "C" HeroTarget* __fastcall GSI_Helper_B(void* p);           // 0x00487DC0-ish
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
+extern "C" CPlayer* __fastcall GSI_Helper_A(void* p);               // 0x00449970
 extern "C" bool        __fastcall TCShop_GetName(void* self);
 
 bool __fastcall CGameScriptInterface_IsHeroNaked(const CGameScriptInterface* self)
 {
-    HeroTarget* target = GSI_Helper_B(GSI_Helper_A(self->PlayerManager));
+    HeroTarget* target = GSI_Helper_A(self->PlayerManager)->GetPControlledCreature();
 
     if (target != 0 &&
         (target->flags91 & 0x1) == 0 &&

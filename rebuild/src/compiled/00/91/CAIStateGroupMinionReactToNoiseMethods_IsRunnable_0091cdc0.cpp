@@ -3,7 +3,7 @@
 //   AddMessage argument calls (retail spills it), and two unused named float locals at entry (E-19 symbol-count re-key: fiadd)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091CDC0, length 384 bytes.
 // Callees: GFGetCurrentFrame @ 0x0049D870, the inlined GetInterface 0x34 (CTCPerceiveThing, bit 20 of +0x24),
-//          CTCPerceiveThing::GetPerceivedThing @ 0x007446A0, CThing::GetPosition @ 0x004C73D0, CBaseIntelligentPointer::
+//          CTCPerceiveThing::GetPerceivedThing @ 0x007446A0, CThing::GetPos @ 0x004C73D0, CBaseIntelligentPointer::
 //          GetPItem @ 0x00A01B50 (the creature's PHome +0x168), CAIStateGroupBase::GetPWorld @ 0x008FCFC0,
 //          CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF290, CMessageEventManager::FindMostRecentMessage<
 //          CFilter_Bind2<...>> @ 0x008D46D0 / AddMessage @ 0x00687540 (world +0x60), CThingBuilding::IsPointInside
@@ -41,7 +41,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     bool IsPointInside(const C3DVector& point); // 0x0082D000 (CThingBuilding)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -146,7 +146,7 @@ bool CAIStateGroupMinionReactToNoiseMethods::IsRunnable()
         GetCreature()->GetInterface(&perceive, 0x34);
         CThing* noise = perceive->GetPerceivedThing();
         if (noise) {
-            const C3DVector& noisePos = noise->GetPosition();
+            const C3DVector& noisePos = noise->GetPos();
             CThing* home = GetCreature()->PHome.GetPItem();
             if (home) {
                 CMessageEventManager* messages = GetPWorld()->PMessageManager;

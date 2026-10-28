@@ -4,7 +4,7 @@
 // Callees: CNavigatorBase slot 7 (+0x1C, returns a C3DVector through a hidden pointer), CTCBase::GetWorldMap @ 0x00686D20,
 // CWorldMap::IsPosInMap @ 0x004FC600.
 // Shape: `return a && b;` gives the 32-bit 1/0 exits.
-// Layout: Ego_r.pdb CTCCreatureNavigation: PNavigator +0xC (the active CNavigatorBase). Retail CThing::GetPosition @ 0x004C73D0.
+// Layout: Ego_r.pdb CTCCreatureNavigation: PNavigator +0xC (the active CNavigatorBase). Retail CThing::GetPos @ 0x004C73D0.
 // Globals: the 1e-4f tolerance @ 0x0129BA3C is an extern float variable (`fld [g] ; fmul [g]` squares it).
 class C3DVector { public:
     float X, Y, Z;
@@ -34,7 +34,7 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
 }
 extern float g_fTolerance;                      // 0x0129BA3C (1e-4f)
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos) const;      // 0x004FC600

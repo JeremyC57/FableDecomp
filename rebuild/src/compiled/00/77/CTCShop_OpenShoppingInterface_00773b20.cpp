@@ -2,7 +2,7 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00773B20, 210 bytes (plain `ret`, /GS cookie 0x0139C8A8).
 // Callees: CTCBase::GetGameSubsystem @ 0x00686D60 (its +0x1c member is the player manager here), CPlayerManager::GetMainPlayer
-// const @ 0x00449960, CPlayer::GetHeroThing @ 0x00487DC0, the const-less interface LowerBound @ 0x0040F020, the interface 0x17
+// const @ 0x00449960, CPlayer::GetPControlledCreature @ 0x00487DC0, the const-less interface LowerBound @ 0x0040F020, the interface 0x17
 // component's shop setter @ 0x005BC4CB (`mov [ecx+0B8h],arg ; ret 4`, named SetCurrentShop -- the manifest's
 // CObservable::AddExclusiveObserver is propagated), CMemoryBuffer::Copy @ 0x009F1760, CTCBase::GetPlayerManager const
 // @ 0x00686D50, CPlayerManager::GetMainPlayerNumber @ 0x00449700, CMainGameComponent::AddGameEvent @ 0x0041649C on
@@ -39,11 +39,12 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 struct CTCShoppingComponent {                           // the hero's interface 0x17 component (an inventory TC)
     void SetCurrentShop(CThing* shop);                  // 0x005BC4CB (+0xb8)
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
@@ -85,7 +86,7 @@ class CTCShop : public CTCBase { public:
 
 void CTCShop::OpenShoppingInterface()
 {
-    CThing* hero = GetGameSubsystem()->PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetGameSubsystem()->PlayerManager->GetMainPlayer()->GetPControlledCreature();
     CTCShoppingComponent* shopping;
     if (hero && !(hero->m_flags91 & 1) && hero->GetInterface(0x17, (CTCBase**)&shopping))
         shopping->SetCurrentShop(ParentThing);

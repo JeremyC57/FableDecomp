@@ -109,8 +109,10 @@ public:
     typedef _Tp* pointer;
     typedef unsigned int size_type;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
 protected:
     void _M_clear()
     {

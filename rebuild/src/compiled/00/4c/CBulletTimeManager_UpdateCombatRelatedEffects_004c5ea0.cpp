@@ -1,7 +1,7 @@
 // CBulletTimeManager::UpdateCombatRelatedEffects() -- while the main player's creature is performing a combat action, keep the default bullet-time multiplier on and restart the strike-action countdown; otherwise count it down
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C5EA0, length 107 bytes.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (landed name), CPlayer::IsInitialised @ 0x0099A330 (the shared
-// CInitBaseClass `mov al,[ecx+4]` query), CPlayer::GetPlayerCreature @ 0x00487DC0 (landed name),
+// CInitBaseClass `mov al,[ecx+4]` query), CPlayer::GetPControlledCreature @ 0x00487DC0 (landed name),
 // CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0; virtual slot 15 (+0x3c) of the creature's object at +0x100
 // (a bool "doing a strike" query). Globals 0x01375550 and 0x01378D08 are multiplied for the countdown length.
 // Layout: rebuild/include/engine/CBulletTimeManager.h puts a 0x10-byte map first; retail reads PlayerManager at
@@ -39,7 +39,7 @@ class CThingPlayerCreature : public CThingCreatureBase { public:
 };
 class CPlayer { public:
     bool IsInitialised();                     // 0x0099A330
-    CThingPlayerCreature* GetPlayerCreature();// 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;// 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -63,7 +63,7 @@ void CBulletTimeManager::UpdateCombatRelatedEffects()
 {
     if (!PlayerManager->GetMainPlayer().IsInitialised())
         return;
-    CThingPlayerCreature* creature = PlayerManager->GetMainPlayer().GetPlayerCreature();
+    CThingPlayerCreature* creature = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (creature == 0 || !creature->IsPerformingAnyAction())
         return;
     if (creature->m_pStrikeQuery->IsStriking()) {

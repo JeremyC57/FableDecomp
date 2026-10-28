@@ -2,7 +2,7 @@
 // Leaf: OnActivate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7510, 111 bytes (`ret`).
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CPlayerManager::GetMainPlayer @ 0x00449970 (catalog label is a
-// catch funclet; the 0x00449960 twin is GetMainPlayer per GOTCHAS chunk 139), CPlayer::GetHeroThing @ 0x00487DC0
+// catch funclet; the 0x00449960 twin is GetMainPlayer per GOTCHAS chunk 139), CPlayer::GetPControlledCreature @ 0x00487DC0
 // (GOTCHAS chunk 140), CBaseIntelligentPointer: ctor 0x00A01B10, SetPItem 0x00A01B90, GetPItem 0x00A01B50,
 // ~CBaseIntelligentPointer 0x00A01C10, CThingAnimatable::SetSuspendAnimation @ 0x00833A10.
 // Globals: the engine singleton @ 0x013B86A0 (player manager at +0x1c).
@@ -18,8 +18,9 @@ struct CThing {
 };
 }
 using NCreatureMode::CThing;
+class CThingPlayerCreature : public CThing { };
 
-class CPlayer { public: CThing* GetHeroThing();  };       // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };       // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
 class CEngine { public:
     unsigned char   _pad00[0x1c];
@@ -66,7 +67,7 @@ struct CModeDragonGetHit : CModeStandBase {
 void CModeDragonGetHit::OnActivate()
 {
     CModeStandBase::OnActivate();
-    PTarget = CIntelligentPointer(g_pEngine->m_pPlayerManager->GetMainPlayer()->GetHeroThing());
+    PTarget = CIntelligentPointer(g_pEngine->m_pPlayerManager->GetMainPlayer()->GetPControlledCreature());
     if (m_pThing->m_type == 1)
         m_pThing->SetSuspendAnimation(true, this);
 }

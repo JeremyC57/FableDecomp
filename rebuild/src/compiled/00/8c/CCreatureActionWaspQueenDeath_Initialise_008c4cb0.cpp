@@ -3,7 +3,7 @@
 // Callees: CCharString ctor/dtor @ 0x0099EBF0 / 0x0099EAE0, CCombatActionBase::SetAnimationName @ 0x008574D0 and Initialise @ 0x00857520,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8), CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580 on a by-value
 // copy of the thing's def (+0x70, add-ref / release around the call), CSpecialEffectsDef::GetEffectFromString @ 0x00669D30, CThing::
-// GetPosition @ 0x004C73D0, CreateEffectThing @ 0x006E0880 (`__fastcall`), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem
+// GetPos @ 0x004C73D0, CreateEffectThing @ 0x006E0880 (`__fastcall`), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem
 // @ 0x00A01B90 / dtor @ 0x00A01C10 (the `PDeathEffect = CIntelligentPointer<CThing>(effect)` temporary, vtable 0x01238C6C),
 // CTCDParticleEmitter::AttachToThing @ 0x006E0BE0.
 // Layout: retail CCombatActionBase is 0x114 bytes (PCreature +8): PDeathEffect is this class's +0x114. CThing +0x70 the def pointer,
@@ -92,7 +92,7 @@ class CThing { public:
     CDefPointer PDef;                           // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     CDefPointer GetDef() const { return PDef; }
     bool GetTCParticleEmitter(CTCDParticleEmitter** out)
     {
@@ -146,7 +146,7 @@ void CCreatureAction_WaspQueenDeath::Initialise()
             found = effects->GetEffectFromString(name, effectType);
         }
         if (found) {
-            CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPosition(), false);
+            CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
             if (effect && !(effect->m_flags91 & 1)) {
                 PDeathEffect = CIntelligentThingPointer(effect);
                 CTCDParticleEmitter* emitter;

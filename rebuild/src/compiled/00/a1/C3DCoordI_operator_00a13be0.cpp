@@ -10,10 +10,10 @@ class C3DVector { public:
 
 class C3DCoordI { public:
     long X, Y, Z;
-    C3DCoordI& operator+=(const C3DVector& v);
+    const C3DCoordI& operator+=(const C3DVector& v);   // Ego_r.pdb ??Y C3DCoordI ... ABV0 (const reference)
 };
 
-C3DCoordI& C3DCoordI::operator+=(const C3DVector& v)
+const C3DCoordI& C3DCoordI::operator+=(const C3DVector& v)
 {
     X = (long)((float)X + v.X);
     Y = (long)((float)Y + v.Y);

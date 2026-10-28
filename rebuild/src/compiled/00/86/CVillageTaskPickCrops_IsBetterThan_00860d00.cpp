@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00860D00, 282 bytes (288 with padding), `ret 8`.
 //   PDB ?IsBetterThan@CVillageTaskPickCrops@@QBE_NPBV1@ABVCThing@@@Z (non-virtual).
 // Callees: virtual IsTaskAvailable (slot 4, +0x10 of vtable 0x0125A928; twice), CBaseIntelligentPointer::GetPItem
-//   0x00A01B50 (x2), CThing::GetPosition 0x004C73D0 (x3).
+//   0x00A01B50 (x2), CThing::GetPos 0x004C73D0 (x3).
 // Layout (Ego_r.pdb = retail): Crop +0x08, CreatureAssignedToTask +0x10.
 // Shape: the landed CVillageTaskSecuritySweep::IsBetterThan (0x00860430) with both goal points taken from the crop
 //   things: by-value position copies, named deltas, `myDist < rivalDist` evaluated left first.
@@ -23,7 +23,7 @@ class C3DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 class CThing : public CBaseObject { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vptr + item
     virtual void v00();
@@ -44,9 +44,9 @@ class CVillageTaskPickCrops { public:                     // vtable 0x0125A928
 bool CVillageTaskPickCrops::IsBetterThan(const CVillageTaskPickCrops* other, const CThing& thing) const
 {
     if (other && IsTaskAvailable()) {
-        C3DVector crop = static_cast<const CThing*>(Crop.GetPItem())->GetPosition();
-        C3DVector rivalCrop = static_cast<const CThing*>(other->Crop.GetPItem())->GetPosition();
-        C3DVector position = thing.GetPosition();
+        C3DVector crop = static_cast<const CThing*>(Crop.GetPItem())->GetPos();
+        C3DVector rivalCrop = static_cast<const CThing*>(other->Crop.GetPItem())->GetPos();
+        C3DVector position = thing.GetPos();
         C3DVector myDelta = crop - position;
         C3DVector rivalDelta = rivalCrop - position;
         return myDelta.GetLengthSquared() < rivalDelta.GetLengthSquared();

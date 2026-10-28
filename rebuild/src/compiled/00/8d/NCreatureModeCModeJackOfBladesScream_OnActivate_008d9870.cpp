@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D9870, 312 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CDefClassBase::GetSubDef<CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580, CCharString(const
 //   char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&)
-//   0x00669D30, CThing::GetPosition 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool) 0x006E0880,
+//   0x00669D30, CThing::GetPos 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool) 0x006E0880,
 //   CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10,
 //   CTCDParticleEmitter::AttachToThing(CThing*, long, const CCharString&, long, float) 0x006E0BE0.
 // Layout: Ego_r.pdb CModeJackOfBladesScream (0xBC): PEmitter +0x9C; CModeStandBase ParentThing +0x04. Thing (retail
@@ -83,7 +83,7 @@ class CThing { public:
     unsigned char  Dead : 1;                    // +0x91 bit 0
     unsigned char  _pad92[0xbc - 0x92];
     unsigned char  CreatureFlags;               // +0xBC (creature-derived member)
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     bool HasTC(long type) const
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31)))
@@ -152,7 +152,7 @@ void CModeJackOfBladesScream::OnActivate()
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
         if (effects->GetEffectFromString("FLOAT_SCREAM", effectType)) {
-            CThing* effect = CreateEffectThing(effectType, &ParentThing->GetPosition(), false);
+            CThing* effect = CreateEffectThing(effectType, &ParentThing->GetPos(), false);
             if (effect && !effect->Dead) {
                 PEmitter = CIntelligentPointer<CThing>(effect);
                 if (effect->HasTC(0x4b)) {

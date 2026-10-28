@@ -39,7 +39,7 @@ public:
     CPhysicsBody*  PhysicsBody;                       // +0x60
     CTCGraphicAppearance* GraphicAppearance;          // +0x64
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     bool GetDummyObject(const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
     {
         return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
@@ -95,11 +95,11 @@ class CCreatureAction_SnapDragon : public CCreatureActionBase { public:
 
 void CCreatureAction_SnapDragon::PerformAction()
 {
-    C3DVector mouth = GetCreature()->GetPosition();
+    C3DVector mouth = GetCreature()->GetPos();
     CRightHandedSet orientation;
     GetCreature()->GetDummyObject("DRAGON_MOUTH_DUMMY", &mouth, &orientation);
-    mouth.Z = GetCreature()->GetPosition().Z;
-    CThing* obstruction = CreateObstruction(&mouth, &GetCreature()->GetPosition(), 1.5f);
+    mouth.Z = GetCreature()->GetPos().Z;
+    CThing* obstruction = CreateObstruction(&mouth, &GetCreature()->GetPos(), 1.5f);
     if (obstruction) {
         CTCDriverED* driver = 0;
         if (obstruction->HasTC(0xed))
@@ -109,7 +109,7 @@ void CCreatureAction_SnapDragon::PerformAction()
     }
     long explosion = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("THING_EXPLOSION_JACK_DRAGON_BITE");
     C3DVector position = mouth - GetCreature()->GetPhysics()->GetFacing() * 2.5f;
-    CThing* bite = CreateThing(explosion, &position, &GetCreature()->GetPosition());
+    CThing* bite = CreateThing(explosion, &position, &GetCreature()->GetPos());
     if (bite) {
         CTCDriver41* driver;
         if (bite->HasTC(0x41))

@@ -1,5 +1,5 @@
 // std::vector<CResourcePage>::_M_clear() -- scratch-texture memory pages: destroy every page (freeing its ResourceList block), then free the vector's own block
-// Leaf: ?_M_clear@?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@UCResourcePage@CGPUScratchBufferTextureManager@@@std@@@std@@QAEXXZ
+// Leaf: ?_M_clear@?$vector@UCResourcePage@CGPUScratchBufferTextureManager@@V?$allocator@UCResourcePage@CGPUScratchBufferTextureManager@@@std@@@std@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F38710, 58 bytes, thiscall, plain `ret`: start/finish loaded once, for each 0x1C-byte
 //   page `if ([esi+4]) free([esi+4])`, then `if (start) free(start)` (free 0x00BFEA14).
 // Identity (sweep1, 2026-10-25; FINDINGS chunk 453 "0xF384xx-0xF388xx Vector_* = vector<CResourcePage>"; hand453 README label
@@ -42,7 +42,9 @@ template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : protected _Vector_base<_Tp, _Alloc> {
 public:
     ~vector() { }                                      // long: trivial element destroy
+    protected:
     void _M_clear();
+    public:
 };
 }   // namespace std
 class CGPUScratchBufferTextureManager {

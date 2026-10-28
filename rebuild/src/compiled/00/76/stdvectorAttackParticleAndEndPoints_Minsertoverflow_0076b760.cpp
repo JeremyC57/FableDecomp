@@ -110,18 +110,24 @@ public:
 template <class T, class A = allocator<T> > class vector : protected _Vector_base<T, A> {
 public:
     unsigned int size() const { return this->_M_finish - this->_M_start; }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(T* s, T* f, T* e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
+    protected:
     void _M_insert_overflow(T* __position, const T& __x, const __false_type&, unsigned int __fill_len, bool __atend);
+    public:
 };
 
 template <class T, class A>

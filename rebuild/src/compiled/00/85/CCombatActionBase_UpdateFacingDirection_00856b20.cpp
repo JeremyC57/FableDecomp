@@ -5,7 +5,7 @@
 // Leaf: UpdateFacingDirection
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00856B20, 513 bytes (528 with padding).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CAnimationEntry::GetRotationInAnimation 0x005DBFD0,
-//   CThing::GetPosition 0x004C73D0, fmod (intrinsic) 0x00BFEB28, AngleDifference 0x00A441E0 (__stdcall).
+//   CThing::GetPos 0x004C73D0, fmod (intrinsic) 0x00BFEB28, AngleDifference 0x00A441E0 (__stdcall).
 // Layout: Ego_r.pdb CCreatureActionBase: PCreature +0x08, PAnimEntry +0x74; CCombatActionBase PTarget PDB +0xb4 =
 //   retail +0xa8 (retail CCreatureActionBase is 0xa8: its three STLport containers are 4 bytes smaller each).
 extern "C" double __cdecl atan2(double y, double x);
@@ -32,7 +32,7 @@ struct CPhysicsBody {
 class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* m_pPhysics;                   // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     CPhysicsBody* GetPhysics() const { return m_pPhysics; }
 };
 class CAnimationEntry { public:
@@ -104,8 +104,8 @@ void CCombatActionBase::UpdateFacingDirection()
     }
     CThing* target = PTarget.GetPItem();
     CThing* creature = PCreature.GetPItem();
-    const C3DVector& from = creature->GetPosition();
-    const C3DVector& to = target->GetPosition();
+    const C3DVector& from = creature->GetPos();
+    const C3DVector& to = target->GetPos();
     C3DVector delta;
     delta.X = to.X - from.X;
     delta.Y = to.Y - from.Y;

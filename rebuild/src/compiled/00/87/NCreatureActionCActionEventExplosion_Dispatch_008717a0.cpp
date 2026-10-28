@@ -51,7 +51,7 @@ class CThing { public:
     CInterfaceMap Components;
     unsigned char _pad4c[0x18];
     CTCGraphicAppearance* PTCGraphicAppearance; // +0x64, native adjusted view from PDB +0x74
-    C3DVector* GetPosition(); // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 class CTCDExplosion { public:
     void AddExcludedThing(CThing* thing); // 0x0080CBF0
@@ -70,7 +70,7 @@ CThing* __fastcall CreateThing(long id, C3DVector* position); // 0x0080C460
 
 void CActionEventExplosion::Dispatch(const CCreatureActionBase& action)
 {
-    C3DVector sourcePosition = *SourceThing->GetPosition();
+    C3DVector sourcePosition = SourceThing->GetPos();
     CTCGraphicAppearance* appearance = SourceThing->PTCGraphicAppearance;
     if (UseActionHelper) {
         CCharString helperName = ((const CCreatureActionBaseVirtuals&)action).GetStrikeEventHelperName();

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CB60, 116 bytes (+12 int3); default /O2 TU, no frame.
 // Catalog label "CTCHighlightItem::vfunc_6" = CTCBase::OnInitialActivate slot.
 // Callees: CThingDef::GetSubDef<CHighlightItemDef> @ 0x0077D080 (manifest name is a byte-twin instantiation),
-//          CThing::GetPosition() @ 0x004C73D0, CTCBase::GetGameSubsystem() @ 0x00686D60 and its slot 9 (+0x24).
+//          CThing::GetPos() @ 0x004C73D0, CTCBase::GetGameSubsystem() @ 0x00686D60 and its slot 9 (+0x24).
 // Shape: the zeroed CDefPointer local is the `push ecx` frame word (zero stored after the push); the position copy
 // goes through the member address (`lea edx,[esi+14h]`); a busy camera sets StartRunning and clears LifeTimer.
 // Layout: CTCHighlightItem (PDB, matches retail): StartRunning +0x0C, Running +0x0D, LifeTimer +0x10, StartPos +0x14,
@@ -56,7 +56,7 @@ template <class T> struct CDefPointerMember {
 class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefPointerMember<CThingDef> PDef;               // +0x70 CDefPointer<const CThingDef>
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
     void Kill(bool immediately);                     // 0x004C9B80
     void UpdateGraphicAppearance(long reason);       // 0x004C7590
 };
@@ -104,7 +104,7 @@ void CTCHighlightItem::OnInitialActivate()
     thingDef->GetSubDef(&pdef);
     const CHighlightItemDef* def = pdef.Object;
     if (def) {
-        StartPos = ParentThing->GetPosition();
+        StartPos = ParentThing->GetPos();
         if (def->WaitForCameraIdle && !GetGameSubsystem()->IsCameraIdle()) {
             StartRunning = true;
             LifeTimer = 0;

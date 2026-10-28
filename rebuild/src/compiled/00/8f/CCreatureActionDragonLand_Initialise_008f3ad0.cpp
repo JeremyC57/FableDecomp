@@ -32,7 +32,7 @@ class CThing : public CClass { public:
  unsigned char _nativeBeforeUsingComponents[0xf];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char _nativeBeforePhysics[0x14];CPhysicsMethods* PPhysics;
  __forceinline CPhysicsMethods* GetPhysics()const{return PPhysics;}
- const C3DVector& GetPosition() const; //004C73D0
+ const C3DVector& GetPos() const; //004C73D0
  void SetSuspendAnimation(bool,const void*); //00833A10, requester keyed suspension
 };
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThing* GetPItem() const;}; //00A01C10/00A01B50
@@ -52,7 +52,7 @@ void CCreatureAction_DragonLand::Initialise(){
   if(p==map->Last || p->Type>0x3a)p=map->Last;
   static_cast<CTCMapwho*>(p->Component)->InMapwho[0]&=~1;
  }
- C3DVector position=PCreature.GetPItem()->GetPosition();position.Z-=g_DragonLandingHeightDrop;
+ C3DVector position=PCreature.GetPItem()->GetPos();position.Z-=g_DragonLandingHeightDrop;
  PCreature.GetPItem()->GetPhysics()->ResetPosition(position);
  C3DVector facing;
  PCreature.GetPItem()->GetPhysics()->GetFacingVectorInto(facing);

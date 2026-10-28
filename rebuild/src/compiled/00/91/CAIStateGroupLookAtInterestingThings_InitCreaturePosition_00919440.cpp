@@ -24,7 +24,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -71,6 +73,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -88,7 +93,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 };
 
 
@@ -141,7 +148,6 @@ class CWorld { public:
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
 unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
@@ -163,8 +169,7 @@ class CTCIdleScheduler { public:                       // interface 0xd3
 };
 
 class C3DVector { public: float x, y, z; };
-struct CThingPositioned {
-    const C3DVector& GetPosition();             // 0x004C73D0
+struct CThingPositioned : public CThing {
 };
 class CThingCreatureBase { public:
     bool AutoPlaceNear(const C3DVector& position, float radius);    // 0x00665DF0
@@ -185,7 +190,7 @@ struct CAIStateGroup_LookAtInterestingThings : CAIStateGroupBaseW {
     __forceinline bool PlaceNearInterestingThing()
     {
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
-        return creature->AutoPlaceNear(((CThingPositioned*)FindInterestingThing())->GetPosition(), 2.0f);
+        return creature->AutoPlaceNear(((CThingPositioned*)FindInterestingThing())->GetPos(), 2.0f);
     }
     virtual bool IsRunnable();
 };

@@ -4,7 +4,7 @@
 // caller is CDisplayEngine::DoRender 0x004357D8 (this = the display engine); it pushes this->Engine3D (+0x2c) into
 // CTCHeroStats::RenderHeroDrunkenness 0x0057B43F; Ego_r.pdb ?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z.
 // Calls: the main game component singleton 0x013B86A0 (+0x1c PPlayerManager), CPlayerManager::GetMainPlayer 0x00449970,
-// CPlayer::GetPPlayerCharacter 0x00487DC0, CThing::GetTC<CTCHeroStats> (Components lower_bound 0x0040F020).
+// CPlayer::GetPControlledCreature 0x00487DC0, CThing::GetTC<CTCHeroStats> (Components lower_bound 0x0040F020).
 // Layout: CDisplayEngine per Ego_r.pdb (Engine3D +0x2c); CMainGameComponent PPlayerManager +0x1c.
 // CTCHeroStats retail = Ego_r.pdb minus 8 through +0x118 (12-byte STLport map and vector), minus 0x18 after the four vectors
 // (Age +0x30, Stamina +0x58, RenownLevel +0x70, Attractiveness +0x9c, BestTimePairs +0x178, Marriages +0x1d8); engine/CTCHeroStats.h
@@ -59,8 +59,8 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
-    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
 };
 class CPlayerManager {
 public:
@@ -149,7 +149,7 @@ public:
 
 void CDisplayEngine::RenderHeroDrunkenness(const CInterpolationInfo& info) const
 {
-    CThingPlayerCreature* hero = g_pMainGameComponent->GetPlayerManager()->GetMainPlayer().GetPPlayerCharacter();
+    CThingPlayerCreature* hero = g_pMainGameComponent->GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     CTCHeroStats* stats;
     if (hero && hero->GetTC(&stats))
     {

@@ -45,6 +45,7 @@ public:
     size_t _M_node_count;
     C      _M_key_compare;
     _Rb_tree() : _M_node_count(0) { _M_empty_initialize(); }
+    private:
     void _M_empty_initialize()
     {
         this->_M_header->_M_color = false;
@@ -52,6 +53,7 @@ public:
         this->_M_header->_M_left = this->_M_header;
         this->_M_header->_M_right = this->_M_header;
     }
+    public:
 };
 template <class K, class C = less<K>, class A = allocator<K> > class set {
 public:

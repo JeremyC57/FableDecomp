@@ -74,12 +74,14 @@ public:
     typedef _List_iterator<T, _Nonconst_traits<T> > iterator;
     typedef _List_iterator<T, _Const_traits<T> > const_iterator;
 
+    protected:
     _Node* _M_create_node(const T& x)
     {
         _Node* p = this->_M_node.allocate(1);
         _Construct(&p->_M_data, x);
         return p;
     }
+    public:
     iterator insert(iterator position, const T& x)
     {
         _Node* tmp = _M_create_node(x);

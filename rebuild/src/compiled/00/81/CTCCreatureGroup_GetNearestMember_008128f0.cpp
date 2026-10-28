@@ -18,8 +18,10 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     float GetLengthSquared() const { float s = Z * Z; s += Y * Y; s += X * X; return s; }
 };
-class CThing { public:
-    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:
 };
 struct CBaseIntelligentPointer {
     void* __vftable;                            // +0x00
@@ -90,14 +92,14 @@ CThing* CTCCreatureGroup::GetNearestMember(const C3DVector& pos)
     for (CGroupMemberIterator it = Members.begin(); it != Members.end(); ++it) {
         CThing* thing = it->Value.PMember.GetPItem();
         if (nearest) {
-            float distSq = (thing->GetPosition_006a4d00() - pos).GetLengthSquared();
+            float distSq = (thing->PeekPos() - pos).GetLengthSquared();
             if (distSq < nearestDistSq * nearestDistSq) {
                 nearest = it->Value.PMember.GetPItem();
                 nearestDistSq = distSq;
             }
         } else {
             nearest = thing;
-            nearestDistSq = (it->Value.PMember.GetPItem()->GetPosition_006a4d00() - pos).GetLengthSquared();
+            nearestDistSq = (it->Value.PMember.GetPItem()->PeekPos() - pos).GetLengthSquared();
         }
     }
     return nearest;

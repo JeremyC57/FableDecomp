@@ -1,5 +1,5 @@
 // std::_Rb_tree<long, std::pair<const long, CCharString>, ...>::_M_lower_bound(const long& k) const -- STLport lower bound: walk to the first node whose key is not less than k; return it, or the header when none
-// Leaf: ?_M_lower_bound@?$_Rb_tree@JU?$pair@$$CBJVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBJVCCharString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCCharString@@@std@@@2@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBJVCCharString@@@std@@@2@ABJ@Z
+// Leaf: ?_M_lower_bound@?$_Rb_tree@JU?$pair@$$CBJVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBJVCCharString@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCCharString@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBJVCCharString@@@std@@@2@ABJ@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00cd28f4, 37 bytes, thiscall, `ret 4`; size-optimised TU (unaligned address).
 // Identity (proven): bound (owner map) ?_M_lower_bound@?$map@JVCCharString@@...; callers the landed map<long, CCharString>::operator[] 0x00CD3A16 and the _Rb_tree<long, pair<const long, CCharString> > helper 0x00CD2DDC.
 // Callees: none.
@@ -61,8 +61,12 @@ public:
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
+    private:
     _Rb_tree_node<_Value>* _M_lower_bound(const _Key& __k) const;
+    public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

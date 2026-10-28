@@ -87,16 +87,20 @@ public:
     typedef const _Tp* const_iterator;
     typedef unsigned int size_type;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear()
     {
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
     template <class _ForwardIterator>
     void _M_range_insert(iterator __position, _ForwardIterator __first, _ForwardIterator __last, const forward_iterator_tag&);
 };

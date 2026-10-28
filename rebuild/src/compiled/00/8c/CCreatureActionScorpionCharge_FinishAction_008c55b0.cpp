@@ -5,7 +5,7 @@
 // Layout: retail CCombatActionBase is 0x114 (Ego_r.pdb 0x12c): ChargeDistance +0x114, StartPos +0x118 (PDB +0x12c/+0x130);
 //   PTarget +0xa8 (PDB +0xb4); CThing interface bitset +0x20, map +0x44, dead flag +0x91 bit 0 (landed 0x008C5490).
 // Shape: travelled distance is the XY length from StartPos (inline fsqrt); a discarded (compiled-out) debug call with
-//   (target position, creature position) keeps both GetPosition calls -- the target through an inline accessor, so its
+//   (target position, creature position) keeps both GetPos calls -- the target through an inline accessor, so its
 //   GetPItem runs first; IS_THING_ALIVE-style inline twice (bl = 1 reused for the dead-bit test); both temporaries are
 //   destroyed through ~CCombatActionBase on one merged tail.
 #include <math.h>
@@ -23,7 +23,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     void RemoveTC(long type);                         // 0x004C9840
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -92,12 +92,12 @@ inline void DebugLine(const C3DVector& from, const C3DVector& to) { }
 
 void CCreatureAction_ScorpionCharge::FinishAction()
 {
-    const C3DVector& pos = GetCreature()->GetPosition();
+    const C3DVector& pos = GetCreature()->GetPos();
     float dx = pos.X - StartPos.X;
     float dy = pos.Y - StartPos.Y;
     float travelled = (float)sqrt(dx * dx + dy * dy);
     float remaining = ChargeDistance - travelled;
-    DebugLine(GetTarget()->GetPosition(), GetCreature()->GetPosition());
+    DebugLine(GetTarget()->GetPos(), GetCreature()->GetPos());
     CCombatActionBase::FinishAction();
     if (IsTargetAlive()) {
         CTCPhysicalShieldSpell* shield;

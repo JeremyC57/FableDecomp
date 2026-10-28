@@ -7,7 +7,7 @@
 // GoToSpawnPoint @ 0x0095B020, Spawn @ 0x0095B820, CAIStateGroupBase::GetPWorld @ 0x008FCFC0, CCombatManager::
 // DeregisterCombatant @ 0x006ED9C0 / RegisterCombatant @ 0x006EDC50, WaitWhileBabiesFight @ 0x0095C0B0,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, Attack @ 0x0095BCF0, IsKnockedDown @ 0x0085F010 (`__fastcall`), PlayIdle
-// @ 0x0095B680, CThing::GetPosition @ 0x004C73D0, DiveBomb @ 0x0095B9E0.
+// @ 0x0095B680, CThing::GetPos @ 0x004C73D0, DiveBomb @ 0x0095B9E0.
 // Layout: Ego_r.pdb CAIStateGroup_HoverHornetQueen PTarget +0x14, ArenaCentrePos +0x28; CWorld +0x4c combat manager.
 #include <math.h>
 class C3DVector { public:
@@ -29,7 +29,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -161,7 +161,7 @@ void CAIStateGroup_HoverHornetQueen::Update()
                 Terminate();
                 return;
             }
-            if ((PTarget.GetPItem()->GetPosition() - ArenaCentrePos).GetXYMagnitude() > g_HornetDiveBombRange)
+            if ((PTarget.GetPItem()->GetPos() - ArenaCentrePos).GetXYMagnitude() > g_HornetDiveBombRange)
                 Attack();
             else
                 DiveBomb();

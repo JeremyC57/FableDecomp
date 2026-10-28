@@ -2,7 +2,7 @@
 // Retry 10b (B-12 sweep): the ground length is a const REFERENCE to the float temporary (`const float& distance = (float)sqrt(...)`): computed BEFORE the virtual radius call and homed in the dead argument slot (`fstp [esp+28h] ; call ; fcomp [esp+28h]`); a value local is computed after the call.
 // Leaf: ??RCIsSwitchValid
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00875990, length 157 bytes.
-// Callees: CThing::GetPosition @ 0x004C73D0, the thing's virtual float getter (slot 62, +0xf8). Float constant 0x0122DEDC = 0.0f.
+// Callees: CThing::GetPos @ 0x004C73D0, the thing's virtual float getter (slot 62, +0xf8). Float constant 0x0122DEDC = 0.0f.
 // Model: CIsSwitchValid from Ego_r.pdb (CameraPos +0, FocusPos +4, both C3DVector*). The two offsets are inline
 // `C3DVector operator-` results (right-to-left: FocusPos is read before the position call; the dead Z differences are
 // dropped but keep their frame words); the ground length is a const-reference float temporary
@@ -37,7 +37,7 @@ public:
     virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
     virtual void v060(); virtual void v061();
     virtual float GetSwitchRadius() const;         // slot 62 (+0xf8)
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 class CIsSwitchValid {
 public:
@@ -48,7 +48,7 @@ public:
 
 bool CIsSwitchValid::operator()(CThing* thing) const
 {
-    C3DVector toThing = thing->GetPosition() - *FocusPos;
+    C3DVector toThing = thing->GetPos() - *FocusPos;
     C3DVector toCamera = *CameraPos - *FocusPos;
     const float& distance = (float)sqrt(toThing.X * toThing.X + toThing.Y * toThing.Y);
     if (thing->GetSwitchRadius() > distance && toThing.X * toCamera.X + toThing.Y * toCamera.Y > 0.0f)

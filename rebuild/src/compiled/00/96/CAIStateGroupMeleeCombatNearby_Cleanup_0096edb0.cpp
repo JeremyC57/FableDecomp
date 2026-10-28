@@ -82,6 +82,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -99,7 +102,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 };
 
 
@@ -156,7 +161,6 @@ class CWorld { public:
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
 class CThingCreatureBase { public:
@@ -193,17 +197,17 @@ void CAIStateGroup_MeleeCombatNearby::Cleanup()
     CThingCreatureBase* creature;
     CWorld* world;
     if (!((CThingCreatureBase*)PBrain->PCreature)->IsRegisteredCombatant()
-        || (creature = (CThingCreatureBase*)PBrain->PCreature, world = GetPWorld(),
+        || (creature = (CThingCreatureBase*)PBrain->PCreature, world = &GetWorld(),
             world->GetPCombatManager()->IsCreatureAttacking(creature))) {
         if (!((CThingCreatureBase*)PBrain->PCreature)->IsRegisteredCombatant()) {
             creature = (CThingCreatureBase*)PBrain->PCreature;
-            world = GetPWorld();
+            world = &GetWorld();
             world->CombatManager->IsCreatureAttacking(creature);   // retail calls 0x006E92C0 again (no ICF in this build: duplicate bodies stay separate)
         }
     }
     if (((CThingCreatureBase*)PBrain->PCreature)->IsRegisteredCombatant()) {
         creature = (CThingCreatureBase*)PBrain->PCreature;
-        world = GetPWorld();
+        world = &GetWorld();
         world->CombatManager->DeregisterCombatant(creature);
     }
     if (((CThingCreatureBase*)PBrain->PCreature)->IsInCombatMode()) {

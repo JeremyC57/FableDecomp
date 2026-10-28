@@ -4,7 +4,7 @@
 // Callees: CBaseClass ctor/dtor 0x0099A2D0 / 0x0099A2E0, CScriptThing::operator= 0x008AB980 / dtor 0x004AA840 (the
 //   GetScriptThing temporaries), CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, GetDef<CThingCreatureDef> 0x00513160,
 //   CThingAICreatureInit ctor 0x004FACD0, CCharString 0x0099EBF0 / 0x0099EAE0 / operator=(const CCharString&) 0x0099EFB0,
-//   CThing::GetPosition 0x004C73D0 / IsGameStatePersisted 0x004C8280 / SetAsGameStatePersisted 0x004C7880 / GetScriptThing
+//   CThing::GetPos 0x004C73D0 / IsGameStatePersisted 0x004C8280 / SetAsGameStatePersisted 0x004C7880 / GetScriptThing
 //   0x004C7E50 / AddAndCopyTC 0x004C9F60 / CopyTCIfExists 0x004C8FB0 / Kill 0x004C9B80, CThingAICreature::Create 0x00833800 and
 //   CThingPlayerCreature::Create 0x006AC910 (static __fastcall), interface-map LowerBound 0x004365B0 (const), g_pPlayerGui
 //   0x013B8790 GetPHeroInfoScreensManager 0x00437CD0, CManager::DeregisterAllScreens 0x0066EBE0, CPlayerManager::GetMainPlayer
@@ -162,7 +162,7 @@ public:
     unsigned short m_defGlobalIndex;                    // +0x8c
     unsigned char _pad8e[0x90 - 0x8e];
     signed char PlayerNumber;                           // +0x90
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     bool IsGameStatePersisted() const;                  // 0x004C8280
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
     CScriptThing GetScriptThing();                      // 0x004C7E50
@@ -227,7 +227,7 @@ CScriptThing CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, c
                 init.ScriptName = old->ScriptName;
                 CDefPointer<CThingCreatureDef> def;
                 if (DefinitionManager->GetDef(index, def)) {
-                    CThingAICreature* creature = CThingAICreature::Create(index, old->GetPosition(), old->PlayerNumber, init);
+                    CThingAICreature* creature = CThingAICreature::Create(index, old->GetPos(), old->PlayerNumber, init);
                     if (creature) {
                         creature->SetAsGameStatePersisted(old->IsGameStatePersisted());
                         result = creature->GetScriptThing();
@@ -239,7 +239,7 @@ CScriptThing CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, c
                 if (DefinitionManager->GetDef(index, def)) {
                     g_pPlayerGui->GetPHeroInfoScreensManager()->DeregisterAllScreens();
                     CThingPlayerCreatureInit init;
-                    CThingPlayerCreature* creature = CThingPlayerCreature::Create(index, old->GetPosition(), old->PlayerNumber, init);
+                    CThingPlayerCreature* creature = CThingPlayerCreature::Create(index, old->GetPos(), old->PlayerNumber, init);
                     if (creature) {
                         creature->SetAsGameStatePersisted(true);
                         result = creature->GetScriptThing();

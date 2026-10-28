@@ -113,7 +113,7 @@ class CSpecialAbilitiesThunderLightningStormDef : public CDefClassBase { public:
 class CThing { public:
     unsigned char  _pad0[0x91];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector& position, bool flag);   // 0x006E0880
 
@@ -176,7 +176,7 @@ void CModeThunderLightningStorm::CreateLightningBeams()
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects->GetEffectFromString("LIGHTNING_BEAM_EFFECT", effectType)) {
         MainBeamsCreated = true;
-        C3DVector position = ParentThing->GetPosition();
+        C3DVector position = ParentThing->GetPos();
         for (long i = 0; i < PLightningStormDef->NumberOfBeams; ++i) {
             CThing* beam = CreateEffectThing(effectType, position, false);
             if (beam && !(beam->m_flags91 & 1))
@@ -184,7 +184,7 @@ void CModeThunderLightningStorm::CreateLightningBeams()
         }
     }
     if (effects->GetEffectFromStringInline("LIGHTNING_BEAM_END_EFFECT", effectType)) {
-        C3DVector position = ParentThing->GetPosition();
+        C3DVector position = ParentThing->GetPos();
         for (long i = 0; i < PLightningStormDef->NumberOfBeams; ++i) {
             CThing* beam = CreateEffectThing(effectType, position, false);
             if (beam && !(beam->m_flags91 & 1))

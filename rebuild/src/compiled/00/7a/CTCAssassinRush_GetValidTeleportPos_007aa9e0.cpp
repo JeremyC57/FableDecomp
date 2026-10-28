@@ -1,7 +1,7 @@
 // CTCAssassinRush::GetValidTeleportPos(const CThing* rusher) -- a free spot behind the collided thing for the rush to land on: straight behind it first, then swinging round in 1/36 turns and stepping further out each full turn, giving up after ten tries (back to where the rusher stands), dropped to the ground
 // Leaf: GetValidTeleportPos
 // Retail 0x007AA9E0, 624 bytes, `ret 8` (hidden result + one argument). Callees: CIntelligentPointer::GetPItem
-// 0x00A01B50, CTCBase::GetWorld 0x00686A70 (virtual +0x34), CThing::GetPosition 0x004C73D0, the placement object's
+// 0x00A01B50, CTCBase::GetWorld 0x00686A70 (virtual +0x34), CThing::GetPos 0x004C73D0, the placement object's
 // virtual +0x118 (facing, by out pointer), CTCAssassinRush::FindValidTeleportPos 0x007AA880, C3DVector::RotateXY
 // 0x00A14040, CThingCreatureBase::GetHeightZBelowAt 0x00666D40. Constants 1.0f 0x0122DED8, 1/36 0x0126C324.
 // Layout: Ego_r.pdb CTCAssassinRush (PDef +0x14, CollidedThing +0x39); retail CSpecialAbilitiesAssassinRushDef
@@ -99,7 +99,7 @@ class CThing { public:
     float         Radius;                               // +0x34
     unsigned char _pad38[0x60 - 0x38];
     CPlacement*   Placement;                            // +0x60
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     float GetHeightZBelowAt(const C3DVector& pos, bool a, bool b);   // 0x00666D40
 };
 struct CBaseIntelligentPointer {
@@ -157,14 +157,14 @@ C3DVector CTCAssassinRush::GetValidTeleportPos(const CThing* rusher)
     if (scale < 1.0f)
         scale = 1.0f;
     float distance = PDef->TeleportDistance + collided->Placement->Radius + rusher->Radius;
-    C3DVector centre = collided->GetPosition();
+    C3DVector centre = collided->GetPos();
     C3DVector facing;
     collided->Placement->GetFacing(&facing);
     float step = distance;
     facing *= distance;
     long tries = 0;
     C3DVector candidate = centre - facing;
-    C3DVector fallback = ParentThing->GetPosition();
+    C3DVector fallback = ParentThing->GetPos();
     float angle = 0.0f;
     while (!FindValidTeleportPos(centre, candidate, map, rusher, scale)) {
         angle += 1.0f / 36.0f;
@@ -175,7 +175,7 @@ C3DVector CTCAssassinRush::GetValidTeleportPos(const CThing* rusher)
         C3DVector temp;
         C3DVector back = -collided->Placement->GetFacing(&temp);
         back.RotateXY(angle);
-        candidate = collided->GetPosition() + back * distance;
+        candidate = collided->GetPos() + back * distance;
         if (++tries > 10) {
             candidate = fallback;
             break;

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009624D0, length 738 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020, CTCStealth::SetAsInDanger
 // @ 0x00747B80, CTCCreatureModeManager::HasMode @ 0x0073A8A0, CCreatureAction_RiseUp ctor @ 0x008BD880, ~CCombatActionBase
-// @ 0x0062E900, AIAction_CombatPerformActionAndWait @ 0x0097DA40, CThing::GetPosition @ 0x004C73D0, C3DVector::Normalise
+// @ 0x0062E900, AIAction_CombatPerformActionAndWait @ 0x0097DA40, CThing::GetPos @ 0x004C73D0, C3DVector::Normalise
 // @ 0x00A14440, the physics body's GetFacing (virtual slot 70 on CThing+0x60), CCharString ctor @ 0x0099EBF0 / dtor
 // @ 0x0099EAE0, CCreatureAction_PlayCombatAnimation ctor @ 0x008B7FF0, AIAction_PerformActionAndWait @ 0x0097DB70,
 // IsStillRunnable @ 0x00961C50, action ctor @ 0x0094E5F0 (manifest CCombatAction_StabThing), Terminate @ 0x008FCF40.
@@ -47,7 +47,7 @@ class CThing { public:
     CPhysicsBody* PhysicsBody;                  // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -207,8 +207,8 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
             }
         }
         if (IS_THING_ALIVE(PTarget)) {
-            C3DVector targetPos = PTarget.GetPItem()->GetPosition();
-            const C3DVector& myPos = GetCreature()->GetPosition();
+            C3DVector targetPos = PTarget.GetPItem()->GetPos();
+            const C3DVector& myPos = GetCreature()->GetPos();
             C3DVector toTarget(targetPos.X - myPos.X, targetPos.Y - myPos.Y, targetPos.Z - myPos.Z);
             toTarget.Z = 0.0f;
             if (toTarget.MagnitudeSquared() > g_epsilon_0129ba3c * g_epsilon_0129ba3c)

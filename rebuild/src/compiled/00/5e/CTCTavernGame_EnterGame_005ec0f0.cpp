@@ -1,7 +1,7 @@
 // CTCTavernGame::EnterGame() -- start playing: enter (or leave on a pending quit) the game state, hide the hero in limbo, bind the hero's game player, close the hero's menu, open the game UI, and seed the bets and money from the hero's purse and the def's minimum bet
 // Leaf: ?EnterGame@CTCTavernGame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC0F0, 373 bytes (plain `ret`).
-// Callees: CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetHeroThing 0x00487DC0; the hero's virtual slot 28 (+0x70);
+// Callees: CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetPControlledCreature 0x00487DC0; the hero's virtual slot 28 (+0x70);
 //          CThing::SetInLimbo(bool) 0x004C8CF0; CDefClassBase::GetSubDef<CTavernGameDef>(CDefPointer*) 0x005ED4A0 (the
 //          inline GetDef, as the landed GetTotalWinnings 0x005EA310); CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 //          0x0040F020 (interfaces 0xD0 = word 6 bit 16 and 0xF6 = word 7 bit 22); CTCGamePlayer::SetGame(CTCTavernGame*)
@@ -118,6 +118,7 @@ class CThing { public:
     }
     void SetInLimbo(bool inLimbo);              // 0x004C8CF0
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCTavernGame;
 class CTCGamePlayer { public:
@@ -130,7 +131,7 @@ class CTCHeroStats : public CTCHeroStatsDonor {
  public:
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -196,7 +197,7 @@ void CTCTavernGame::EnterGame()
     GamePlayed = false;
     GameFinished = false;
     GameWon = false;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     hero->SetVisible(false);
     hero->SetInLimbo(true);
     CDefPointer def;

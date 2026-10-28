@@ -2,7 +2,7 @@
 // Leaf: GetTransformedPosition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00853290, length 144 bytes (131 + int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times, re-fetched per test),
-// CThing::GetPosition @ 0x004C73D0 (out of line here).
+// CThing::GetPos @ 0x004C73D0 (out of line here).
 // Shape: `C3DVector origin = CoordOrigin;` (frame local through the memberwise user copy ctor: direct
 // member loads, no `lea`), overwritten from the thing's
 // position under the nested null / dead-bit (+0x91) tests, then `return C3DVector(origin.X + offset.X, ...)`
@@ -22,7 +22,7 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                        // +0x91 bit 0
     unsigned char m_91_1 : 7;
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
 };
 
 struct CBaseIntelligentPointer {
@@ -53,7 +53,7 @@ C3DVector CScriptModuleBase::GetTransformedPosition(const C3DVector& offset)
     C3DVector origin = CoordOrigin;
     if (PThingOrigin.GetPItem()) {
         if (!PThingOrigin->m_dead)
-            origin = PThingOrigin->GetPosition();
+            origin = PThingOrigin->GetPos();
     }
     return C3DVector(origin.X + offset.X, origin.Y + offset.Y, origin.Z + offset.Z);
 }

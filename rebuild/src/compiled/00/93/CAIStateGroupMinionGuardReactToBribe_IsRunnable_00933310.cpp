@@ -1,7 +1,7 @@
 // CAIStateGroup_MinionGuardReactToBribe::IsRunnable() -- with the guard's bribe component: react at once to a pending bribe (latch the live hero, no bribe received), else react while a bribe offered within the last 4 seconds is newer than 7 seconds after the last reaction (bribe received)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00933310, length 352 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xb4, bit 20 of +0x34), CAIStateGroupBase::
-//          GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPCharacter @ 0x00487DC0,
+//          GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable 0x01231C4C), GFGetCurrentFrame
 //          @ 0x0049D870, IS_THING_ALIVE<CIntelligentPointer<...>> @ 0x0048C740 (__fastcall, out of line at the second test).
 // Globals: FramesPerSecond @ 0x01375550.
@@ -61,6 +61,7 @@ class CThing { public:
         }
     }
 };
+class CThingPlayerCreature : public CThing { };
 struct CTCGuardBribe {                          // interface 0xb4 (descriptive)
     unsigned char _pad[0x10];
     long PendingBribe;                          // +0x10 (descriptive: negative while a bribe awaits a reaction)
@@ -68,7 +69,7 @@ struct CTCGuardBribe {                          // interface 0xb4 (descriptive)
     long FrameBribeOffered;                     // +0x40 (descriptive)
 };
 class CPlayer { public:
-    CThing* GetPCharacter();                    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -118,7 +119,7 @@ bool CAIStateGroupMinionGuardReactToBribeMethods::IsRunnable()
         CTCGuardBribe* bribe;
         creature->GetInterfaceV(&bribe, 0xb4);
         if (bribe->PendingBribe < 0) {
-            Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer()->GetPCharacter());
+            Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
             if (IS_THING_ALIVE(Hero())) {
                 HasRecievedBribe = false;
                 return true;
@@ -127,7 +128,7 @@ bool CAIStateGroupMinionGuardReactToBribeMethods::IsRunnable()
         long deadline = bribe->FrameBribeOffered + FramesPerSecond * 4;
         long earliest = FramesPerSecond * 7 + FrameLastReactedToReceiveing;
         if (GFGetCurrentFrame() < deadline && deadline > earliest) {
-            Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer()->GetPCharacter());
+            Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
             if (IS_THING_ALIVE_Pointer(Hero())) {
                 HasRecievedBribe = true;
                 return true;

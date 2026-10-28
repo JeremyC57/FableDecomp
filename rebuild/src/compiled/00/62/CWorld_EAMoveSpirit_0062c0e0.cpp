@@ -2,7 +2,7 @@
 // Leaf: EAMoveSpirit
 // Flags: /GS
 // Retail: Fable.exe @ 0x0062C0E0, 215 bytes (/GS cookie 0x0139C8A8). PDB ?EAMoveSpirit@CWorld@@QAEXPBVCGameEvent@@@Z
-// Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetHeroThing 0x00487DC0 (twice),
+// Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetPControlledCreature 0x00487DC0 (twice),
 // CInterfaceMap::LowerBound 0x0040F020, CGameEvent::GetData 0x009F17A0 (label "CEventPacket::CopyToBuffer"),
 // CMemoryBuffer::Read(unsigned long, void*) 0x009F18F0 (label "CircularBuffer_Read"),
 // CTCCoopSpirit::ApplyMovementVector(const C3DVector&) 0x0066FAE0, __security_check_cookie 0x00BFE9F9.
@@ -59,6 +59,7 @@ class CThing { public:
         return (T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class C3DVector { public:
     float X, Y, Z;
@@ -67,7 +68,7 @@ class C3DVector { public:
 class CTCCoopSpirit { public:
     void ApplyMovementVector(const C3DVector& movement);   // 0x0066FAE0
 };
-class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 
 class CWorld { public:
     CPlayer* GetPlayer(long number);               // 0x0049D850
@@ -77,9 +78,9 @@ class CWorld { public:
 void CWorld::EAMoveSpirit(const CGameEvent* event)
 {
     CPlayer* player = GetPlayer(event->Player);
-    if (player->GetHeroThing())
+    if (player->GetPControlledCreature())
     {
-        CThing* hero = player->GetHeroThing();
+        CThing* hero = player->GetPControlledCreature();
         if (hero->HasTC(0xC7))
         {
             CTCCoopSpirit* spirit = hero->GetTC<CTCCoopSpirit>(0xC7);

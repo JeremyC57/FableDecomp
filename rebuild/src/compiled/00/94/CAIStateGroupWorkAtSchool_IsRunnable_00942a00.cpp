@@ -26,7 +26,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const; // 0x004365B0 (the const copy: the first lookup goes through a const map)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;            // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -176,6 +178,9 @@ long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -237,10 +242,8 @@ class CDefPointer { public:
 };
 class CThingBuilding : public CThing { public:
     CDefPointer<CSimBuildingDef> PeekPSimDefinition() const;   // 0x0082D2D0
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCVillager;
 class CTCVillage;
@@ -255,7 +258,6 @@ class CTCVillage { public:
 };
 struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
     CThingSchoolKid* GetCreature() const { return (CThingSchoolKid*)PBrain->PCreature; }
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
     bool IsRunnable();
     virtual void Update();
 };
@@ -271,7 +273,7 @@ bool CAIStateGroup_WorkAtSchool::IsRunnable()
                     CTCVillager* schoolVillager = (CTCVillager*)school->FindEntry(0x23)->component;
                     if (GFGetPVillageInterface(schoolVillager)) {
                         CThingAICreature* creature = (CThingAICreature*)PBrain->PCreature;
-                        bool result = GFGetPVillageInterface(schoolVillager)->IsTimeToGoToSchool(creature, GetPThingWorld(), false);
+                        bool result = GFGetPVillageInterface(schoolVillager)->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), false);
                         return result;
                     }
                 }

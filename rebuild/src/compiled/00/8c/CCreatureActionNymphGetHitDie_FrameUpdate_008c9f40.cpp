@@ -1,7 +1,7 @@
 // CCreatureAction_NymphGetHitDie::FrameUpdate() -- base FrameUpdate, then lower the nymph towards the ground: Z = ground height below it + HeightOnInit * (1 - progress)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C9F40, length 125 bytes (+ int3 padding).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call, first), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8,
-// twice), CThing::GetPosition @ 0x004C73D0 (const C3DVector&), the action's progress getter @ 0x006925E0 (float; manifest label
+// twice), CThing::GetPos @ 0x004C73D0 (const C3DVector&), the action's progress getter @ 0x006925E0 (float; manifest label
 // "CInputTypeMouseMovementEvent::operator==" is propagated), CCreatureActionBase::GetWorldMap @ 0x00692C10,
 // CWorldMap::GetHeightZBelowPos(const C3DVector*) @ 0x0063E480, the physics component's virtual slot 30 (`call [edx+78h]` on thing+0x60).
 // Shape: the position is copied by value (three integer moves into the frame), `1.0f - progress` is `fsubr [1.0f]`, the height
@@ -23,7 +23,7 @@ struct CPhysicsComponent {
 class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsComponent* m_pPhysics;          // +0x60
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     CPhysicsComponent* GetPhysics() const { return m_pPhysics; }
 };
 class CBaseObject;
@@ -64,7 +64,7 @@ class CCreatureAction_NymphGetHitDie : public CCombatActionBase { public:
 void CCreatureAction_NymphGetHitDie::FrameUpdate()
 {
     CCombatActionBase::FrameUpdate();
-    C3DVector position = PCreature.GetPItem()->GetPosition();
+    C3DVector position = PCreature.GetPItem()->GetPos();
     float height = HeightOnInit * (1.0f - GetProgress());
     position.Z = GetWorldMap()->GetHeightZBelowPos(&position) + height;
     PCreature.GetPItem()->GetPhysics()->SetPositionOnGround(position);

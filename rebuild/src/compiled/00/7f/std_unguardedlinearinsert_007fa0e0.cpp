@@ -5,7 +5,7 @@
 //   and C3DVector are classes as in every PDB symbol. Bytes unchanged.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FA0E0, 116 bytes (`ret 34h` + int3 padding); called by the landed
 //   __unguarded_insertion_sort_aux 0x007FA290 (which declares this address). Catalog label `Vector_InsertionSort`.
-// Callees: CThingCompare_BestForTargeting2::GetThingCompareMultiplier @ 0x007F9E70, CThing::GetPosition @ 0x004C73D0,
+// Callees: CThingCompare_BestForTargeting2::GetThingCompareMultiplier @ 0x007F9E70, CThing::GetPos @ 0x004C73D0,
 //   CVectorCompare_BestForTargeting::GetCompareValueForPoint @ 0x007F9660 (the comparator inlined).
 // Shape: SGI `next = last; --next; while (comp(val, *next)) { *last = *next; last = next; --next; } *last = val;`.
 // Family: the SGI algorithm instantiations over CThing** with CThingCompare_BestForTargeting2 (/Gr TU: every free
@@ -17,7 +17,7 @@ class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X),
 
 class CThing {
 public:
-    const C3DVector& GetPosition();                             // 0x004C73D0
+    const C3DVector& GetPos() const;                             // 0x004C73D0
 };
 
 class CVectorCompare_BestForTargeting { public:                        // Ego_r.pdb, 44 bytes
@@ -42,8 +42,8 @@ public:
     {
         float multiplierA = GetThingCompareMultiplier(a);
         float multiplierB = GetThingCompareMultiplier(b);
-        const C3DVector& posB = b->GetPosition();
-        const C3DVector& posA = a->GetPosition();
+        const C3DVector& posB = b->GetPos();
+        const C3DVector& posA = a->GetPos();
         float valueA = VectorCompare.GetCompareValueForPoint(posA);
         float valueB = VectorCompare.GetCompareValueForPoint(posB);
         if (valueA > valueB)

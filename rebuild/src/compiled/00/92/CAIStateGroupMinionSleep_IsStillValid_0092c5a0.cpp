@@ -5,7 +5,7 @@
 // a const thing), GFGetPVillageInterface @ 0x007EE540 (__fastcall; manifest "IS_THING_ALIVE<..>" is propagated),
 // CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF290, the brain's thing-world accessor @ 0x008FCFA0 (message
 // manager at +0x60), CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, IsOriginatedByThing>> @ 0x008D46D0,
-// CTCCreatureModeManager::GetCurrentMode @ 0x0073A6E0 (mode's virtual type getter, slot 1), CThing::GetPosition @ 0x004C73D0,
+// CTCCreatureModeManager::GetCurrentMode @ 0x0073A6E0 (mode's virtual type getter, slot 1), CThing::GetPos @ 0x004C73D0,
 // the 0x42 component's IsModeActive copy @ 0x00811340, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice, inlined IS_THING_ALIVE).
 // Shape: every miss path reads the never-written out slot, which is also the lookup key slot.
 // Layout: engine/CAIStateGroup_MinionSleep.h flattens the base (pads only); Ego_r.pdb puts CAIStateGroup_GoToBed (0x60 bytes,
@@ -28,7 +28,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -115,7 +115,7 @@ class CMessageEventManager { public:
 class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
-    CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+    CMessageEventManager* GetPMessageManager() const { return m_pMessageManager; }
 };
 
 struct CTCVillager;
@@ -142,7 +142,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPThingWorld() const;             // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
 };
 
 struct CAIStateGroup_GoToBed : CAIStateGroupBase {
@@ -181,14 +183,14 @@ bool CAIStateGroup_MinionSleep::IsStillValid() const
     PBrain->PCreature->GetInterface(&villager, 0x23);
     if (GFGetPVillageInterface(villager) != 0) {
         CThing* creature = PBrain->PCreature;
-        if (GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage(
+        if (PeekWorld().GetPMessageManager()->FindMostRecentMessage(
                 CMessageEventFilter_IsOfType(4) && CMessageEventFilter_IsOriginatedByThing(creature)) != 0)
             return false;
     }
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x31);
     if (modes->GetCurrentMode()->GetModeType() == 0xd) {
-        const C3DVector& pos = PBrain->PCreature->GetPosition();
+        const C3DVector& pos = PBrain->PCreature->GetPos();
         float dx = BedPos.X - pos.X;
         float dy = BedPos.Y - pos.Y;
         if ((float)sqrt(dy * dy + dx * dx) > 0.1f)

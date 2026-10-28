@@ -1,7 +1,7 @@
 // CInputProcessParalysed::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- count held presses of game action 9; past ten, a live hero breaks off the drain holding it (current action = CCombatAction_GenericBreakOffDrain)
 // Leaf: ProcessInput
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690D30, length 116 bytes. Vtable 0x01237D88 slot 4.
-// Callees: CInputProcessGameBase::IsEventGameAction @ 0x00687CF0, IsEventButtonHeld @ 0x00687BD0, CPlayer::GetHeroCreature
+// Callees: CInputProcessGameBase::IsEventGameAction @ 0x00687CF0, IsEventButtonHeld @ 0x00687BD0, CPlayer::GetPControlledCreature
 // @ 0x00487DC0 (MyPlayer +0x18), CCombatAction_GenericBreakOffDrain::CCombatAction_GenericBreakOffDrain(CThingCreatureBase*)
 // @ 0x00690DB0 (stores vtable 0x0125BF6C; manifest label "CCombatAction_GenericResponseToDecapitation" is propagated),
 // CThingCreatureBase::SetCurrentAction(CCreatureActionBase*) @ 0x006644F0, CCombatActionBase::~CCombatActionBase @ 0x0062E900.
@@ -29,9 +29,10 @@ class CThingCreatureBase { public:
     unsigned char m_91_1 : 7;
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer {
 public:
-    CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -56,7 +57,7 @@ void CInputProcessParalysed::ProcessInput(const CInputEvent& event, CProcessedIn
 {
     if (IsEventGameAction(9, event) && IsEventButtonHeld(event)) {
         if (++m_pressCount > 10) {
-            CThingCreatureBase* hero = MyPlayer->GetHeroCreature();
+            CThingCreatureBase* hero = MyPlayer->GetPControlledCreature();
             if (hero && !hero->m_dead)
                 hero->SetCurrentAction(&CCombatAction_GenericBreakOffDrain(hero));
         }

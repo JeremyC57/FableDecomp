@@ -2,7 +2,7 @@
 // melee weapon the hero wielded before (hero TC 0x13), true when there is one with a non-empty name
 // Leaf: ?GetPreviouslyWieldedMeleeWeaponName@CGameScriptInterface
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00897560, length 208 bytes, `ret 4`.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, the TC map lower bound
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the TC map lower bound
 // copy @ 0x004365B0, CDefinitionManager::GetDefNameFromGlobalIndex(long) @ 0x009ACCC0 (CDefString by hidden
 // pointer), CDefStringTable::GetString(long) @ 0x009D49B0 on the global table 0x013CA828 (CCharString by hidden
 // pointer), CCharString::operator= @ 0x0099EFB0, ~CCharString @ 0x0099EAE0, CCharString::operator!=(const char*)
@@ -68,6 +68,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CTCHeroWeaponHistory {           // TC 0x13
     unsigned char _pad[0x168];
@@ -76,7 +77,7 @@ struct CTCHeroWeaponHistory {           // TC 0x13
 
 class CPlayer {
 public:
-    CThing* GetHeroThing();               // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer& GetMainPlayer();             // 0x00449970 (the non-const overload; 0x00449960 is the const one)
@@ -94,7 +95,7 @@ class CGameScriptInterface { public:
 
 bool CGameScriptInterface::GetPreviouslyWieldedMeleeWeaponName(CCharString& name) const
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroWeaponHistory* history;
     if (hero && !hero->m_dead && hero->GetInterface(&history, 0x13)) {
         long weapon = history->PreviouslyWieldedMeleeWeapon;

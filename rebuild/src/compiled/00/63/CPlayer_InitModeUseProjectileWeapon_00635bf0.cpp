@@ -2,19 +2,21 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00635BF0, length 383 bytes (+ int3 padding), `ret 8`.
 // Identity: Ego_r.pdb `?InitModeUseProjectileWeapon@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z` (a
 // CPlayer::PlayerModeInfo InitFunc).
-// Callees: CAInputProcess::AddToInterface(CGamePlayerInterface*) (virtual slot 1, eleven processes), CPlayer::GetHeroThing
+// Callees: CAInputProcess::AddToInterface(CGamePlayerInterface*) (virtual slot 1, eleven processes), CPlayer::GetPControlledCreature
 // 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inline lookups: type 0x31 = the creature
 // mode manager, bit 17 of +0x24; type 0x81 = CTCHeroRangedAttacks, bit 1 of +0x30), CTCCreatureModeManager::GetCurrentMode
 // 0x0073A6E0 (the mode's type is virtual slot 1), CTCCreatureModeManager::AddMode(unsigned long) 0x0073AE10,
 // CTCHeroRangedAttacks::ResetProjectileTargetingZoomParameter 0x00789B00, the world's +0x34 object's slot 9
 // (GetCameraManager out-parameter, +0x24), CGameCameraManager::PushProjectileWeaponMode 0x00698D10.
 // Layout: engine/CPlayer.h (scoped_ptr<CInputProcess*> members, PlayerInterface +0x0C, World +0x1C) through the lane's
-// CPlayer_Methods carrier; CThing interface bitset +0x20, interface map +0x44, dead bit +0x91 & 1 (the model of the
+// CPlayer carrier; CThing interface bitset +0x20, interface map +0x44, dead bit +0x91 & 1 (the model of the
 // landed sibling InitModeFirstPersonTargeting 0x00635A50).
 // Shape: the mode manager is zero-initialised and filled by the out-parameter GetInterface (`xor ebx,ebx` before the
 // bitset test, the component kept in ebx); the ranged-attack component is HasTC + the landed ternary GetTC (straight
 // into ecx); the camera manager out pointer is zero-initialised in its frame word and the getter's bool guards the push.
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 
 typedef long EPlayerMode;
 class CProcessedInput;
@@ -60,6 +62,7 @@ class CThing { public:
     }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
+class CThingPlayerCreature : public CThing { };
 
 inline bool IsThingAlive(const CThing* thing)
 {
@@ -92,12 +95,12 @@ class CWorld { public:
     CCameraManagerSource* CameraSource;                 // +0x34
 };
 
-struct CPlayer_Methods : CPlayer {
-    CThing* GetHeroThing();                             // 0x00487DC0
+class CPlayer : public CPlayerPdb { public:
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
     void InitModeUseProjectileWeapon(EPlayerMode mode, CProcessedInput* input);
 };
 
-void CPlayer_Methods::InitModeUseProjectileWeapon(EPlayerMode mode, CProcessedInput* input)
+void CPlayer::InitModeUseProjectileWeapon(EPlayerMode mode, CProcessedInput* input)
 {
     (void)mode; (void)input;
     reinterpret_cast<CAInputProcess*>(InputProcessControlCreature_ptr)->AddToInterface(PlayerInterface);
@@ -111,7 +114,7 @@ void CPlayer_Methods::InitModeUseProjectileWeapon(EPlayerMode mode, CProcessedIn
     reinterpret_cast<CAInputProcess*>(InputProcessTargetLockCycleTargets_ptr)->AddToInterface(PlayerInterface);
     reinterpret_cast<CAInputProcess*>(InputProcessSpecialAbilities_ptr)->AddToInterface(PlayerInterface);
     reinterpret_cast<CAInputProcess*>(InputProcessProjectileTargetingAnalogueZoom_ptr)->AddToInterface(PlayerInterface);
-    CThing* hero = GetHeroThing();
+    CThing* hero = GetPControlledCreature();
     if (IsThingAlive(hero)) {
         CTCCreatureModeManager* modes = 0;
         hero->GetInterface(&modes, 0x31);

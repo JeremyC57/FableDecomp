@@ -28,7 +28,7 @@ class CThing { public:
     unsigned char Flags91;                                   // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                             // 0x004C9B80
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -178,7 +178,7 @@ void CTCCreatureGroupBoastingCrowd::EnterCrowdState(long state)
     if (deedType) {
         CTCHeroOpinionDeedLog* log;
         if (PHero.GetPItem() && !PHero.GetPItem()->IsDead() && PHero.GetPItem()->GetInterface(&log, 0x51))
-            CurrentOpinionDeedHandle = log->AddDeed(deedType, PHero.GetPItem()->GetPosition(), 0, 0, 2, 0, 1, 0, 0, 0);
+            CurrentOpinionDeedHandle = log->AddDeed(deedType, PHero.GetPItem()->GetPos(), 0, 0, 2, 0, 1, 0, 0, 0);
     }
     CrowdState = state;
 }

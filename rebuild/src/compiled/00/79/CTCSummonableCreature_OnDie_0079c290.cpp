@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0079C290, 336 bytes (`ret`); CTCSummonableCreature vtable 0x0126C41C slot 13.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2); CVectorMap::LowerBound 0x0040F020 (non-const copy:
 //          CTCSummonableCreature 0xa0, CTCSummonSpell 0x91); the owner's physics virtual slot 70 (+0x118, a C3DVector by value;
-//          descriptive name); CThing::GetPosition 0x004C73D0; CTCSummonSpell::SetSummonCreatureGlobalDefNum 0x0079B650.
+//          descriptive name); CThing::GetPos 0x004C73D0; CTCSummonSpell::SetSummonCreatureGlobalDefNum 0x0079B650.
 // Layout: CTCSummonableCreature PDef +0x0c, HasBeenSummoned +0x10, Summoner +0x11 (PDB, packed); the def's summon level +0x28
 //          (descriptive); retail CThing interface bitset +0x20, map +0x44, physics +0x60, flags +0x6c (bit 3: dead/killed),
 //          def index word +0x8c, killer intelligent pointer +0xf4 (descriptive).
@@ -68,7 +68,7 @@ public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 class CSummonableCreatureDef { public:
     unsigned char _pad00[0x28];
@@ -104,7 +104,7 @@ void CTCSummonableCreature::OnDie()
                 CTCSummonSpell* spell;
                 if (summoner->GetInterface(&spell, 0x91)) {
                     C3DVector velocity = owner->Physics->GetVelocity();
-                    C3DVector spawnPos = velocity + owner->GetPosition();
+                    C3DVector spawnPos = velocity + owner->GetPos();
                     spell->SetSummonCreatureGlobalDefNum(defIndex, spawnPos, -velocity);
                 }
             }

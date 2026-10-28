@@ -1,0 +1,37 @@
+address	new_name
+0040dce0	IS_THING_ALIVE<CThing*>
+0043dbd0	IS_THING_ALIVE<CThingPlayerCreature*>
+0043dbf0	IS_THING_ALIVE<const CThingPlayerCreature*>
+005c05c0	IS_THING_ALIVE<CThingCreatureBase*>
+006a8880	CThingFilter_IsRelatedTo::operator()
+00887330	NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::SetOnlyTheme
+00889440	std::vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::CThemeWeight>::resize
+008d6860	CModeJackOfBladesDeath::OnActivate
+00935160	Condition::Check
+00b1a700	NParticleEngine::CPSCLight::DatabaseCopy
+0062cf90	CWorld::EACreatureBlock
+0093cfe0	CAIStateGroup_ButterflyWander::Initialise
+00959ee0	CAIStateGroup_HoverKeepInArea::Initialise
+0095a270	CAIStateGroup_HoverAttackArea::Initialise
+009112a0	CAIStateGroup_MinionGuardReactToBodyFoundMessage::FindBodyFoundEvent
+0092edc0	CAIStateGroup_MinionReactToPlayerInteraction::FindPlayerInteractionEvent
+0094bfc0	CAIStateGroup_SellToBuyer::GetBuyersOrder
+00958770	CAIStateGroup_MinionReactToCrime::GetSomeoneElseGettingHelpMessage
+00917050	CAIStateGroup_ThrowLogsOnFire::GetPNearestFreeLogPile
+009170b0	CAIStateGroup_ThrowLogsOnFire::GetPNearestBonfire
+009652c0	CAIStateGroup_RecoverStealableItem::FindPTargetPoint
+0099f3d0	CCharString::Insert
+004c73d0	CThing::GetPos
+006a4d00	CThingPhysical::PeekPos
+006a4d10	CThingPhysical::PeekLastPos
+006a4cf0	CThingPhysical::Kill
+00661cc0	CThingCreatureBase::GetPersonalSpaceRadius
+007f1b70	_global::CreateCameraShake
+00487dc0	CPlayer::GetPControlledCreature
+00487dd0	CPlayer::PeekPControlledCreature
+008fcfa0	CAIStateGroupBase::PeekWorld
+008fcfc0	CAIStateGroupBase::GetWorld
+006af290	CMessageEventFilter_IsTargettedAtThing::CMessageEventFilter_IsTargettedAtThing
+008d46d0	CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<CMessageEventFilter_IsOfType,CMessageEventFilter_IsTargettedAtThing> >
+006870c0	CVectorMap<CCharString,CTCBase::CRegisteredTCInfo,CKeyPairCompareLess<CCharString,CTCBase::CRegisteredTCInfo> >::LowerBound
+00a11210	std::__uninitialized_copy<CPlane*,CPlane*>

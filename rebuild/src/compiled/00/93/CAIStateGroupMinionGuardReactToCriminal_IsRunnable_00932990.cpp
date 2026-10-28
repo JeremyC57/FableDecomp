@@ -3,7 +3,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined lookup 0x23 = CTCVillager) and the const LowerBound @ 0x004365B0
 // (0x34 = CTCPerceiveThing), GFGetPVillageInterface @ 0x007EE540 (manifest "IS_THING_ALIVE<..>" propagated),
 // CTCVillage::IsHeroCriminal @ 0x0065BFCE, CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer
-// @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 /
+// @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 /
 // SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, CTCPerceiveThing::GetPerceivedThing @ 0x007446A0 (twice), the this-TU
 // operator==(const CThing*, const CIntelligentPointer&) @ 0x00933250 (register arguments; manifest label propagated),
 // CTCPerceiveThing::CanSeeOrSmellPerceivedThing @ 0x00661600, CTCVillage::GetWarningStringForCurrentCrimes @ 0x0065A075,
@@ -56,6 +56,7 @@ class CThing { public:
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 template<class T> bool __fastcall IS_THING_ALIVE(T* const& thing);     // 0x004A88F0 <CThing*>
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
@@ -100,7 +101,7 @@ class CCharString { public:
 };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -149,7 +150,7 @@ bool CAIStateGroup_MinionGuardReactToCriminal::IsRunnable()
         const CThing* creature = PBrain->PCreature;
         if (creature->HasTC(0x34)) {
             CTCPerceiveThing* perceive = creature->GetTC<CTCPerceiveThing>(0x34);
-            PHero = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+            PHero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
             if (PHero.GetPItem() != 0 && perceive->GetPerceivedThing() != 0
                 && perceive->GetPerceivedThing() == PHero && perceive->CanSeeOrSmellPerceivedThing()) {
                 bool isFine;

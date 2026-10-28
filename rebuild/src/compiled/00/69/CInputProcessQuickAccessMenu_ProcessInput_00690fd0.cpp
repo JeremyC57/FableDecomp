@@ -1,7 +1,7 @@
 // CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- while the live hero's quick-access menu (component 0xF6) is open and not closing, translate press/release of actions 0x25..0x28 into front-end UI events 0..3, and close the menu on a press of action 2; handled input is marked
 // Leaf: ProcessInput
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690FD0, length 325 bytes, `ret 8`.
-// Callees: CPlayer::GetHeroCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020, the
+// Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020, the
 //   menu component's IsActive() @ 0x00625930 (+0x0C), IsClosing() @ 0x00625940 (+0x1C) and RequestClose() @ 0x00625920
 //   (manifest labels "GetCanItemBeQuickAssigned" / "CTCCreditsUI::Deactivate" are propagated; names as in the landed
 //   CTCInventory::AddCloseInventoryEvent 0x00584A73), CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90,
@@ -54,9 +54,10 @@ class CThing { public:
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCQuickAccessMenu* GetTC(long kind) { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CInputProcessQuickAccessMenu : public CInputProcessGameBase {
 public:
@@ -68,7 +69,7 @@ public:
 
 void CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = MyPlayer->GetHeroCreature();
+    CThing* hero = MyPlayer->GetPControlledCreature();
     if (!hero || hero->m_dead || !hero->HasTC(0xf6))
         return;
     CTCQuickAccessMenu* menu = hero->GetTC(0xf6);

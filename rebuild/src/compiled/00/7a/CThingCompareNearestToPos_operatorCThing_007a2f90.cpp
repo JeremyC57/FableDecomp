@@ -9,10 +9,10 @@
 //   its std sort family (_Push_heap / _Adjust_heap / _Make_heap / _Med3 / _Median / _Unguarded_partition / _Sort_heap /
 //   _Sort over CThing**). It is not CThingCompare_Nearest: both PDBs give every Nearest::operator()<T> a T* return (the
 //   nearer pointer, cf. 0x0091F740), while this body returns a bool in al. FINDINGS chunk 407 (comment vs T* conflict).
-// Callees: CThing::GetPosition @ 0x004C73D0.
+// Callees: CThing::GetPos @ 0x004C73D0.
 // Layout: CThingCompare_NearestToPos (Ego_r.pdb, 12 bytes) = Pos (C3DVector) +0x00.
-// Shape: the two deltas are `GetPosition() - Pos` through an inline C3DVector operator-; the first is live across
-//   the second GetPosition call so it is spilled to the 12-byte frame, the second stays on the x87 stack; both
+// Shape: the two deltas are `GetPos() - Pos` through an inline C3DVector operator-; the first is live across
+//   the second GetPos call so it is spilled to the 12-byte frame, the second stays on the x87 stack; both
 //   squared lengths are the plain inline `X*X + Y*Y + Z*Z` (VC7.1 ranks the terms itself: Z, X, Y for the spilled
 //   delta, Z, Y, X for the stack one; the statement chain forces one order on both and differs); `if (la < lb)
 //   return true; return false;` shares the `mov al,1` exit with the null-b test.
@@ -26,7 +26,7 @@ public:
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 
 class CThingCompare_NearestToPos {
@@ -41,8 +41,8 @@ template<class T> bool CThingCompare_NearestToPos::operator()(T* a, T* b) const
         return false;
     if (!b)
         return true;
-    C3DVector deltaA = a->GetPosition() - Pos;
-    C3DVector deltaB = b->GetPosition() - Pos;
+    C3DVector deltaA = a->GetPos() - Pos;
+    C3DVector deltaB = b->GetPos() - Pos;
     if (deltaA.GetLengthSquared() < deltaB.GetLengthSquared())
         return true;
     return false;

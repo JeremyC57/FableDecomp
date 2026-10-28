@@ -3,23 +3,23 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00961550, length 240 bytes.
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing
 // @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (type 0xAD = word 5 bit 13),
-// CTCBoss::IsOnFinalPhase @ 0x007AEDE0, CTCBoss::IsReadyForPhaseChange @ 0x007AEE90, CThing::GetPosition @ 0x004C73D0,
+// CTCBoss::IsOnFinalPhase @ 0x007AEDE0, CTCBoss::IsReadyForPhaseChange @ 0x007AEE90, CThing::GetPos @ 0x004C73D0,
 // CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer(CThingCreatureBase*) @ 0x0048BD00 and ::operator= @ 0x0048BD20
 // (both out of line in this TU), CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10.
 // Shape: the boss component kept in esi (named local from the lookup); `d = dx*dx; d += dy*dy;` gives retail's X-term-first x87
 // order (a single sum puts the Y term first); the pointer is a named local (a temporary reuses the ctor's eax); `> R` gives `test ah,41h ; jne`.
 class C3DVector { public: float X, Y, Z; };
 
-class CThing
-{ public:
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
+    const C3DVector& GetPos() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer
 { public:
-    CThing* GetHeroThing();                         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 
 class CPlayerManager
@@ -106,7 +106,7 @@ struct CAIStateGroup_BanditKingThrowWeapons
 
 bool CAIStateGroup_BanditKingThrowWeapons::IsRunnable()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1))
     {
         CThingWithTCs* creature = (CThingWithTCs*)PBrain->Creature;
@@ -115,8 +115,8 @@ bool CAIStateGroup_BanditKingThrowWeapons::IsRunnable()
             CTCBoss* boss = (CTCBoss*)creature->FindEntry(0xad)->component;
             if (!boss->IsOnFinalPhase() && boss->IsReadyForPhaseChange())
             {
-                const C3DVector& from = PBrain->Creature->GetPosition();
-                const C3DVector& to = hero->GetPosition();
+                const C3DVector& from = PBrain->Creature->GetPos();
+                const C3DVector& to = hero->GetPos();
                 float dx = to.X - from.X;
                 float dy = to.Y - from.Y;
                 float dist2 = dx * dx;

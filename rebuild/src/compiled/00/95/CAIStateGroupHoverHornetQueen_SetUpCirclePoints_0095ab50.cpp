@@ -1,13 +1,13 @@
 // CAIStateGroup_HoverHornetQueen::SetUpCirclePoints() -- rebuild the circle markers from the live "WaspQueenCirclePos<n>" track things (n = 1, 2, ... until one is missing) within 60 units of the queen, and set the circle radius to the farthest marker's distance from the arena centre plus 12
 //   template instance, manifest <CThingFilter_HasDefGlobalIndex, CThing>) as a same-TU `template <class TFilter, class T>
 //   __declspec(noinline)` body: VC7.1 then knows only that call writes `marker`, keeps the one marker load in esi across the
-//   GetPosition call and drops the null half of the loop test. The body is a STAND-IN (the real search walks the thing-map
+//   GetPos call and drops the null half of the loop test. The body is a STAND-IN (the real search walks the thing-map
 //   cells; FindFirstInArea is a placeholder declaration) -- flag it for review. (2) The loop is
 //   `do { lookup; if (IS_THING_ALIVE(marker)) { ... } } while (IS_THING_ALIVE(marker));` with marker declared outside and
 //   nulled per iteration; retail's loop-bottom `test [esi+91h],1` is that while test with the null half folded.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095AB50, length 448 bytes (+ int3 padding; /GS: the 32-byte name buffer).
 // Callees: vector::erase(first, last) @ 0x004AC0F0 (the inline clear), sprintf @ 0x00BFEB10 ("WaspQueenCirclePos%d" @ 0x01294ECC),
-// CCharString(const char*, long) @ 0x0099EBF0 / copy ctor @ 0x0099EC30 / ~CCharString @ 0x0099EAE0, CThing::GetPosition
+// CCharString(const char*, long) @ 0x0099EBF0 / copy ctor @ 0x0099EC30 / ~CCharString @ 0x0099EAE0, CThing::GetPos
 // @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, CThingSearchTools::
 // GetPFirstThingInRoughArea @ 0x007FD110 (manifest instance <CThingFilter_HasDefGlobalIndex, CThing>; here the filter carries
 // a track name), CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10
@@ -24,7 +24,7 @@ class C3DVector { public:
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
 };
 #define IS_THING_ALIVE(p) ((p) != 0 && !((p)->m_flags91 & 1))
 class C2DBoxI { public:
@@ -126,13 +126,13 @@ void CAIStateGroup_HoverHornetQueen::SetUpCirclePoints()
         {
             CCharString track(name);
             CThingFilter_HasTrackName filter(track);
-            const C3DVector& pos = GetCreature()->GetPosition();
+            const C3DVector& pos = GetCreature()->GetPos();
             long x = (long)pos.X;
             long y = (long)pos.Y;
             PeekThingSearchTools()->GetPFirstThingInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), filter, &marker);
         }
         if (IS_THING_ALIVE(marker)) {
-            const C3DVector& pos = marker->GetPosition();
+            const C3DVector& pos = marker->GetPos();
             float dx = pos.X - ArenaCentrePos.X;
             float dy = pos.Y - ArenaCentrePos.Y;
             float distance = (float)sqrt(dx * dx + dy * dy);

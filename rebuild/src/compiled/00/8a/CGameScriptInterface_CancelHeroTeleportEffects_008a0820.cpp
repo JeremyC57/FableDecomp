@@ -1,6 +1,6 @@
 // CGameScriptInterface::CancelHeroTeleportEffects() const -- remove the live hero creature's fade component (kind 0xf9) and kill the live effect thing held by its teleport component (kind 0x29, intelligent pointer at +0x30)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A0820, length 125 bytes.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, CThing::RemoveTC(long) @ 0x004C9840,
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::RemoveTC(long) @ 0x004C9840,
 //          the component-map LowerBound @ 0x0040F020, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80.
 // Leaf: ?CancelHeroTeleportEffects@CGameScriptInterface@@UBEXXZ
 struct CTCBase_Retail;
@@ -58,12 +58,12 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
-struct CPlayer_Retail {
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0
+class CThingPlayerCreature : public CThing_Retail { };
+struct CPlayer {
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970
+    CPlayer* GetMainPlayer();               // 0x00449970
 };
 class CCharString;
 struct CDefinitionManager_Retail {
@@ -127,7 +127,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::CancelHeroTeleportEffects() const
 {
-    CThingKill_Retail* hero = (CThingKill_Retail*)PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThingKill_Retail* hero = (CThingKill_Retail*)PlayerManager->GetMainPlayer()->GetPControlledCreature();
     if (hero && !hero->m_dead) {
         hero->RemoveTC(0xf9);
         CTCTeleport_Retail* teleport;

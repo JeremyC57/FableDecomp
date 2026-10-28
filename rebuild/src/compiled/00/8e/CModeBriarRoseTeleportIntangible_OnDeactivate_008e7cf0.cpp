@@ -29,8 +29,10 @@ class C3DVector{ public:float X,Y,Z;};struct NativeDefinition;struct EmitterMeth
 struct ThingNative;
 struct ComponentEntry{int Type;void* Component;};
 struct ComponentMap{ComponentEntry*First,*Last,*Limit;ComponentEntry*LowerBound(const int*);}; //40F020
-struct ThingNative {
- const C3DVector&GetPos()const; //4C73D0 position-interface60 +C, realGetPos reference
+class CThing { public:
+    const C3DVector& GetPos() const; //4C73D0 position-interface60 +C, realGetPos reference
+};
+struct ThingNative : public CThing {
  void SuspendAI(bool,void*); //833A10, actual CThingAICreature donor53A870, native suspenders1CC/AISuspended1C8bit1
  void* VTable;unsigned char BaseData[0xc];unsigned char RuntimeType;unsigned char BaseData11[0xf];unsigned int UsingComponents[9];ComponentMap Components;
  unsigned char Unrecovered50[0xc];EmitterMethods*Emitter;void*PositionInterface;unsigned char Unrecovered64[8];unsigned long TypeFlags;NativeDefinition*Definition;unsigned char Unrecovered74[0x18];unsigned short DefGlobalIndex;short CurrentMapNumber;signed char PlayerNumber;unsigned char LifeFlags;

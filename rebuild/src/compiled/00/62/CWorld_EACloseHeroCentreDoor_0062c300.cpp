@@ -2,7 +2,7 @@
 // Leaf: EACloseHeroCentreDoor
 // Flags: /GS
 // Retail: Fable.exe @ 0x0062C300, 216 bytes (/GS cookie 0x0139C8A8). PDB ?EACloseHeroCentreDoor@CWorld@@QAEXPBVCGameEvent@@@Z
-// Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetHeroThing 0x00487DC0,
+// Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetPControlledCreature 0x00487DC0,
 // CGameEvent::GetData 0x009F17A0 (label "CEventPacket::CopyToBuffer"), CMemoryBuffer::Read(unsigned long, void*)
 // 0x009F18F0 (label "CircularBuffer_Read"), CWorld virtual slot 3 GetThingManager (vtable 0x012390F0 -> 0x0049E1B0),
 // CThingManager::GetThingWithUID(__int64) 0x0051ED80 (label "CStopWatch::GetTicks"), CInterfaceMap::LowerBound
@@ -66,6 +66,7 @@ class CThing { public:
         return component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCHeroCentre { public:
     void OnHeroCloseDoor();                        // 0x0077D3E0
@@ -73,7 +74,7 @@ class CTCHeroCentre { public:
 class CThingManager { public:
     CThing* GetThingWithUID(__int64 uid);          // 0x0051ED80
 };
-class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 
 class CWorld { public:
     virtual void _slot0();
@@ -86,7 +87,7 @@ class CWorld { public:
 
 void CWorld::EACloseHeroCentreDoor(const CGameEvent* event)
 {
-    CThing* hero = GetPlayer(event->Player)->GetHeroThing();
+    CThing* hero = GetPlayer(event->Player)->GetPControlledCreature();
     if (hero && !hero->Dead)
     {
         CMemoryBuffer buffer;

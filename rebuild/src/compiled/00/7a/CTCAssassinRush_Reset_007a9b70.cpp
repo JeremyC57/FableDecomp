@@ -1,7 +1,7 @@
 // CTCAssassinRush::Reset() -- reset the rush: remember the start position, forget the collided thing, clear the flags, convert the def's trail and rush delays to frames, take the dash distance for the spell level and kill both trail effects if alive
 // Leaf: ?Reset@CTCAssassinRush
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A9B70, 267 bytes (+5 int3 padding), `ret`.
-// Callees: CThing::GetPosition() const 0x004C73D0, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
+// Callees: CThing::GetPos() const 0x004C73D0, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
 //   GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C), __ftol2 0x00BFEA70,
 //   CThing::Kill(bool) 0x004C9B80. Global g_framesPerSecond 0x01375550.
 // Layout (pack(1): Ego_r.pdb CTCAssassinRush puts C3DVectors at odd offsets): PDef +0x14, AssassinTrail +0x18,
@@ -21,7 +21,7 @@ class CThing {
 public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                 // +0x91 (bit 0: dead)
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     void Kill(bool immediately);                // 0x004C9B80
 };
 #pragma pack(push, 1)
@@ -100,7 +100,7 @@ public:
 void CTCAssassinRush::Reset()
 {
     StartTrailDelay = false;
-    PositionStartedFrom = ParentThing->GetPosition();
+    PositionStartedFrom = ParentThing->GetPos();
     CollidedThing = CIntelligentPointer<CThing>(0);
     StartedMoving = false;
     JustReleased = true;

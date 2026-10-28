@@ -1,7 +1,7 @@
 // CAIStateGroup_VersusScorpionKing::GetChargeDodgePos(C3DVector& pos) -- start from the creature's position; while the scorpion is alive, step 10 units sideways (a quarter turn left or right of the scorpion's normalised facing, whichever side the creature is facing towards)
 // Leaf: GetChargeDodgePos
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009633E0, length 469 bytes (`ret 4`, the position by reference).
-// Callees: CThing::GetPosition @ 0x004C73D0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3 on PEnemy), the physics
+// Callees: CThing::GetPos @ 0x004C73D0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3 on PEnemy), the physics
 //          body's virtual GetFacing (slot 70, +0x118, C3DVector by hidden pointer, on thing+0x60; twice),
 //          C3DVector::RotateXY(float turns) @ 0x00A14040 (-0.25 / +0.25).
 // Globals: the reciprocal-square-root mantissa table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C, 0.0f 0x0122DEDC,
@@ -54,7 +54,7 @@ class CThing { public:
     CPhysicsBody* GetPhysicsBody() const { return PhysicsBody; }
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -106,7 +106,7 @@ struct CAIStateGroup_VersusScorpionKing : CAIStateGroupBase {
 
 void CAIStateGroup_VersusScorpionKing::GetChargeDodgePos(C3DVector& pos)
 {
-    pos = PBrain->PCreature->GetPosition();
+    pos = PBrain->PCreature->GetPos();
     if (IS_THING_ALIVE(PEnemy)) {
         C3DVector facing = PEnemy.GetPItem()->GetPhysicsBody()->GetFacing();
         facing.Normalise();

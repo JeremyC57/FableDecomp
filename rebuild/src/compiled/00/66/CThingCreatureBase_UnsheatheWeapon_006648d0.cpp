@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006648D0, length 233 bytes, `ret 8`.
 // Callees: CInterfaceMap::LowerBound @ 0x0040F020 (TC 0x46 = CTCCarrying), CTCCarrying::IsCarryingThing(long) @ 0x006A10A0,
 //   CTCCarrying::GetCarriedThing(long) @ 0x006A1120, CTCCarrying::RemoveThing(CThing*) @ 0x006A19B0,
-//   CTCCarrying::PutThingInCarrySlot(CThing*, long, bool) @ 0x006A1F80, CThing::GetPosition @ 0x004C73D0,
+//   CTCCarrying::PutThingInCarrySlot(CThing*, long, bool) @ 0x006A1F80, CThing::GetPos @ 0x004C73D0,
 //   CThingObject::Create @ 0x00703210 (`__fastcall`; declared as the landed callers spell it, CreateObject),
 //   CDefClassBase::GetSubDef<CCarryableDef> @ 0x005CC10E, CCharString(const char*, long) @ 0x0099EBF0 /
 //   ~CCharString @ 0x0099EAE0, the def's virtual Destroy (slot 1).
@@ -77,7 +77,7 @@ public:
     CDefClassBase* PBaseDef;                    // +0x70 CDefPointer<CThingBaseDef const>::Object
     unsigned char _pad74[0x90 - 0x74];
     signed char PlayerNumber;                   // +0x90
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline CCarryableDef* GetCarryableDef()
     {
         CDefPointer<const CCarryableDef> out;
@@ -119,7 +119,7 @@ void CThingCreatureBase::UnsheatheWeapon(long weaponDefIndex, bool useActiveSlot
         weapon = carrying->GetCarriedThing(weaponDefIndex);
         carrying->RemoveThing(weapon);
     } else {
-        weapon = (CThing*)CreateObject(weaponDefIndex, const_cast<C3DVector*>(&GetPosition()), PlayerNumber, 0, 0, "");
+        weapon = (CThing*)CreateObject(weaponDefIndex, const_cast<C3DVector*>(&GetPos()), PlayerNumber, 0, 0, "");
     }
     CDefPointer<const CCarryableDef> out;
     weapon->PBaseDef->GetSubDef(&out);

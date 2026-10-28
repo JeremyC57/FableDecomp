@@ -4,7 +4,7 @@
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Leaf: AddMessage
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064E0DA, length 226 bytes, `ret 0Ch`.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetControlledCreature @ 0x00487DD0,
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::PeekPControlledCreature @ 0x00487DD0,
 // IS_THING_ALIVE<T*>(const T*&) @ 0x0043DBF0 (`__fastcall`, by reference), CThingCreatureBase::IsChild @ 0x00661F70,
 // std::bitset::test @ 0x00410DE0 (the thing's interface presence bits), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // @ 0x004365B0, CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("OBJECT_GUILD_SEAL_1" @ 0x01251B4C),
@@ -28,7 +28,7 @@ class CCharString { public:
 
 class CTCBase;
 struct CPresenceBits {
-    bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
+    bool test(long bit) const;                           // 0x00410DE0 (std::bitset::test)
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -41,22 +41,26 @@ class CThing { public:
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
-    bool HasInterface(long type) { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type)
+    bool HasInterface(long type) const { return m_present.test(type); }
+    template <class T> __forceinline T* GetInterfaceUnchecked(long type) const
     {
         long key = type;
-        CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&key);
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBF0
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 class CThingCreatureBase : public CThing { public:
 public:
     bool IsChild() const;   // 0x00661F70
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer { public:
-    CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -97,8 +101,8 @@ class CDrawGuildSeal { public:
 
 void CDrawGuildSeal::AddMessage(const CCharString& text, long time, bool force)
 {
-    CThingCreatureBase* hero = PlayerManager->GetMainPlayer().GetControlledCreature();
-    if (!IS_THING_ALIVE<CThing*>(hero) || hero->IsChild())
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
+    if (!IS_THING_ALIVE(hero) || hero->IsChild())
         return;
     if (!hero->HasInterface(0x11))
         return;

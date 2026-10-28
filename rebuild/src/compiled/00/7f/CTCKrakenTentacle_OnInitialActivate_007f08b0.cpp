@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F08B0, 593 bytes, plain `ret`. Vtable 0x012407BC (CTCKrakenTentacle) slot 6.
 // Callees: CDefClassBase::GetSubDef<CKrakenTentacleDef> @ 0x007F16B0, CTCKrakenTentacle::KillRippleFX @ 0x007F07A0,
 //   GetSubDef<CSpecialEffectsDef> @ 0x00669580, GetEffectFromString @ 0x00669D30, CCharString @ 0x0099EBF0/0x0099EAE0,
-//   CThing::GetPosition @ 0x004C73D0, CTCDParticleEmitter::Create @ 0x006E0880, AttachToThing @ 0x006E0BE0,
+//   CThing::GetPos @ 0x004C73D0, CTCDParticleEmitter::Create @ 0x006E0880, AttachToThing @ 0x006E0BE0,
 //   CBaseIntelligentPointer @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10, LowerBound @ 0x0040F020,
 //   CTCBase::OnInitialActivate @ 0x00686870 (empty base body).
 // Model: the landed sibling CTCKrakenTentacle::DoDieFX 0x007F0B10 (its second half is this function's tail).
@@ -103,7 +103,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 // Same-TU stand-in for the GetSubDef<T> COMDAT (as the landed 0x00801A50): with the body visible VC7.1 sees that the out
 // pointer does not escape and keeps the def object in ebp through to its release, as retail.
@@ -182,7 +182,7 @@ void CTCKrakenTentacle::OnInitialActivate()
     long effect = 0;
     const CDefClassBase* thingDef = ParentThing->PDef;
     thingDef->GetSubDef(&effects) && effects->GetEffectFromString("DRIP", &effect);
-    CThing* drip = CTCDParticleEmitter::Create(effect, ParentThing->GetPosition(), false);
+    CThing* drip = CTCDParticleEmitter::Create(effect, ParentThing->GetPos(), false);
     if (drip && !(drip->Flags91 & 1)) {
         CTCDParticleEmitter* emitter = 0;
         drip->GetInterface(&emitter, 0x4b);
@@ -190,7 +190,7 @@ void CTCKrakenTentacle::OnInitialActivate()
     }
     thingDef = ParentThing->PDef;
     thingDef->GetSubDef(&effects) && effects->GetEffectFromString("MEETS_WATER", &effect);
-    PRippleEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, ParentThing->GetPosition(), false));
+    PRippleEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, ParentThing->GetPos(), false));
     if (PRippleEffect.IsAlive()) {
         CTCDParticleEmitter* emitter = 0;
         PRippleEffect.GetPItem()->GetInterface(&emitter, 0x4b);

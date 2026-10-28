@@ -1,7 +1,7 @@
 // NPlayerGui::CDrawAbilityButtonsPC::DrawExpressionButton(CEnginePrimitivePrepareInfo*, vector<long>*, long, long, long, float) -- draw one expression button: only for a live hero thing that has the expression component (0x6f); for a valid expression index inside the column-rounded list, place the button at the definition's expression origin plus the slot's button-type offset (X from the slot's type, Y from the first type) and the row step, look the expression def up by its global index, and draw the button with the def's graphic at full scale (or the default graphic at a third of the scale when there is no def), on layer 0x45 for type 1 and 0x44 otherwise
 // Leaf: DrawExpressionButton
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00658020, length 536 bytes (`ret 0x18`).
-// Callees: GetPlayer 0x00643D7C (PlayerManager->GetMainPlayer), CPlayer::GetCharacterThing 0x00487DD0, button-type list fill
+// Callees: GetPlayer 0x00643D7C (PlayerManager->GetMainPlayer), CPlayer::PeekPControlledCreature 0x00487DD0, button-type list fill
 //   0x00657C80, LowerBound 0x004365B0 (const overload), PeekGuiDef 0x00438570, button vector size 0x0043CAC0 (0x5c entries),
 //   GFA-to-screen position helper 0x00643D0C (ecx = out, edx = in), CDefinitionManager::GetPDefFromGlobalIndex 0x009AD9E0,
 //   CDrawAbilityButtons::DrawButton 0x00645099, CRT free 0x00BFEA14 (vector storage).
@@ -25,7 +25,8 @@ struct CThingNative {
     void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components;
     unsigned char State[0x45]; unsigned char LifeFlags;
 };
-class CPlayer { public: CThingNative* GetCharacterThing(); };          // 0x00487DD0
+class CThingPlayerCreature : public CThingNative { };
+class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };          // 0x00487DD0
 class CPlayerManager;
 struct LongVector {
     long *Start, *Finish, *End;
@@ -97,7 +98,7 @@ struct CDrawAbilityButtonsPC {
 void CDrawAbilityButtonsPC::DrawExpressionButton(CEnginePrimitivePrepareInfo* info, LongVector* expressions, long slot,
                                                  long index, long row, float scale)
 {
-    CThingNative* hero = GetPlayer()->GetCharacterThing();
+    const CThingNative* hero = GetPlayer()->PeekPControlledCreature();
     if (hero == 0 || (hero->LifeFlags & 1))
         return;
     LongVector types;

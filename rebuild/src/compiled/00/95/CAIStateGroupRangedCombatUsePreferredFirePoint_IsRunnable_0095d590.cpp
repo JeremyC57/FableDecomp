@@ -5,7 +5,7 @@
 // (slot 29, +0x74), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10
 // (CIntelligentPointer<CThingCreatureBase> vtable 0x0123E7D8, CIntelligentPointer<CThing> vtable 0x01238C6C),
 // GetFirePointList(vector<CThing*>&) @ 0x0095D4C0 (same TU), std::sort over the points with a by-position comparator
-// @ 0x0095E010 (register-passed first/last; manifest "std_sort_Introsort"), CThing::GetPosition @ 0x004C73D0, the fire
+// @ 0x0095E010 (register-passed first/last; manifest "std_sort_Introsort"), CThing::GetPos @ 0x004C73D0, the fire
 // point's occupant setter @ 0x0087C390 (manifest "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated),
 // free @ 0x00BFEA14 (the vector's storage).
 // Layout: engine/CAIStateGroup_RangedCombatUsePreferredFirePoint.h (PEnemy +0x14, PFirePoint +0x1c, TimeOutCounter +0x24)
@@ -30,7 +30,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -167,7 +167,7 @@ bool CAIStateGroup_RangedCombatUsePreferredFirePoint::IsRunnable()
     if (IS_THING_ALIVE(PEnemy)) {
         CThingVector points;
         GetFirePointList(points);
-        SortFirePoints(points._M_start, points._M_finish, CCompareDistanceTo(PBrain->PCreature->GetPosition()));
+        SortFirePoints(points._M_start, points._M_finish, CCompareDistanceTo(PBrain->PCreature->GetPos()));
         if (points.size() > 0) {
             PFirePoint = CIntelligentPointerThing(*points._M_start);
             CTCFirePoint* firePoint;

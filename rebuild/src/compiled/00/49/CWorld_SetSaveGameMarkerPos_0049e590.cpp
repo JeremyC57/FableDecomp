@@ -2,7 +2,7 @@
 // Leaf: ?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0049E590, 78 bytes (+2 int3 padding), thiscall, `ret 4`.
 //   Ego_r.pdb ?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z (0x004A77F0).
-// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetHeroThing 0x00487DC0, the hero's physics component
+// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, the hero's physics component
 //   (+0x60) virtual slot 63 (+0xFC) GetAngleXY() const (name as landed callers of the same slot).
 // Layout: local model. engine/CWorld.h (Ego_r.pdb, packed) has SaveGameMarkerPos +0x151 / SaveGameMarkerAngleXY +0x160;
 //   retail writes +0x141 / +0x150 (four containers before them are 4 bytes smaller each in retail), so the header is
@@ -32,8 +32,9 @@ class CThing { public:
     unsigned char   _pad_0x64[0x2d];
     unsigned char   Dead : 1;                           // +0x91 bit 0
 };
+class CThingPlayerCreature : public CThing { };
 
-class CPlayer { public: CThing* GetHeroThing(); };             // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };             // 0x00487DC0
 class CPlayerManager { public: public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };    // 0x00449970
@@ -54,7 +55,7 @@ public:
 void CWorld::SetSaveGameMarkerPos(const C3DVector& pos)
 {
     SaveGameMarkerPos = pos;
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead)
         SaveGameMarkerAngleXY = hero->PhysicsTC->GetAngleXY();
 }

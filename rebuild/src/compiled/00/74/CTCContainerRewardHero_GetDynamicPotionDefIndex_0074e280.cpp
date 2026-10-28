@@ -1,7 +1,7 @@
 // CTCContainerRewardHero::GetDynamicPotionDefIndex() -- pick the potion a reward container should give the living hero: the health or mana potion, by whichever stat is relatively lower, else by which kind he carries fewer of
 // Retail 0x0074E280, 480 bytes (plain `ret`, `long` result: 0 without a living hero carrying an inventory).
 // Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
-// CPlayer::GetHeroCreature @ 0x00487DC0, CVectorMap LowerBound const @ 0x004365B0 (inlined const GetTC: inventory 0x11,
+// CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap LowerBound const @ 0x004365B0 (inlined const GetTC: inventory 0x11,
 // hero stats 4), CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CGameDefinitionManager::Get
 // @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410,
 // CTCInventoryBase::GetNumberOfItemsOfTypeInInventory(long) @ 0x005BDF08. Float constant 0x0129BA3C = 0.0001f.
@@ -60,8 +60,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                 // 0x00449960
@@ -93,7 +94,7 @@ class CTCContainerRewardHero : public CTCContainer { public:
 
 long CTCContainerRewardHero::GetDynamicPotionDefIndex()
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
     CTCInventoryBase* inventory;
     if (!hero || hero->Dead || !hero->GetInterface(&inventory, 0x11))
         return 0;

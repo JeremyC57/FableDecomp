@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D8EA0, 129 bytes (+ int3 padding), `ret`; vtable 0x01267C3C slot 3.
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x43 = bit 3 of the bitset dword at +0x28 =
 //   CTCLook), CThingCreatureBase::IsRegisteredCombatant @ 0x00662410, CModeBase::GetWorld @ 0x0073A680 (combat manager
-//   at +0x4c), CCombatManager::GetCombatantInfo @ 0x006E9360, CThing::GetPosition @ 0x004C73D0,
+//   at +0x4c), CCombatManager::GetCombatantInfo @ 0x006E9360, CThing::GetPos @ 0x004C73D0,
 //   CTCLook::LookAtPos(const C3DVector*, long priority) @ 0x00753E90, CModeBase::FrameUpdate @ 0x0073AC50 (qualified).
 // Name: FableWin.pdb `?FrameUpdate@CModeBlock@NCreatureMode@@UAEXXZ` (slot 3).
 // Layout: CModeBase (retail 0x1c) ParentThing +0x04; CModeBlock PCreature +0x1c (Ego_r.pdb). CCombatantInfo (Ego_r.pdb):
@@ -29,7 +29,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;            // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;               // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;  // 0x004C73D0
+    const C3DVector& GetPos() const;  // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -91,7 +91,7 @@ void NCreatureMode::CModeBlock::FrameUpdate()
             CCombatManager* combatManager = GetWorld()->CombatManager;
             CCombatantInfo* info = combatManager->GetCombatantInfo(PCreature);
             if (info->AttackerInfo.Attacked != 0 && !(info->AttackerInfo.Attacked->m_flags91 & 1))
-                look->LookAtPos(&info->AttackerInfo.Attacked->GetPosition(), 0x21);
+                look->LookAtPos(&info->AttackerInfo.Attacked->GetPos(), 0x21);
         }
     }
     CModeBase::FrameUpdate();

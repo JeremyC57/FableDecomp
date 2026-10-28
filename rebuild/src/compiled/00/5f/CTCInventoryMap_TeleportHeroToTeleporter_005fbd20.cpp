@@ -1,7 +1,7 @@
 // CTCInventoryMap::TeleportHeroToTeleporter(CThing* teleporter) -- while the hero creature is alive, sends it through the teleporter thing's teleporter component
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FBD20, length 98 bytes (+ int3), `ret 4`; `this` only feeds the player-manager getter.
 // Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50 (manifest "CViewBase::GetDisplayEngine", propagated),
-// CPlayerManager::GetMainPlayer @ 0x00449960, CPlayer::GetControlledCreature @ 0x00487DD0 (manifest a propagated _Cons_val),
+// CPlayerManager::GetMainPlayer @ 0x00449960, CPlayer::PeekPControlledCreature @ 0x00487DD0 (manifest a propagated _Cons_val),
 // CVectorMap::LowerBound @ 0x0040F020 (the inline CThing::GetInterface for interface 0xDD: bit 29 of the bitset dword at +0x38),
 // CTCTeleporter::TeleportHero() @ 0x007DFCF0.
 // Shape: the inline bitset test (`test dword ptr [eax+38h],20000000h`) and the GetInterface key homed in the dead `teleporter`
@@ -34,8 +34,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature() const;      // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -63,7 +64,7 @@ class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
 
 void CTCInventoryMap::TeleportHeroToTeleporter(CThing* teleporter)
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer().GetControlledCreature();
+    const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (hero && !hero->IsDead) {
         CTCTeleporter* teleporterTC;
         if (teleporter->GetInterface(&teleporterTC, 0xDD))

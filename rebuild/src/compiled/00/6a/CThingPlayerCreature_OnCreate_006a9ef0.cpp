@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A9EF0, length 528 bytes, `ret`, bool in al. Vtable 0x012457FC slot 8
 //   (the catalog's "CThingCreatureBase::OnCreateHero" is a propagated label).
 // Callees: CThingCreatureBase::OnCreate @ 0x00666310, CThing::SetAsGameStatePersisted(bool) @ 0x004C7880,
-//   CThingCreatureBase::GetPosition @ 0x006A4D00, CThingPlayerCreature::InitialiseMovementSpeeds @ 0x006A9A00,
+//   CThingCreatureBase::PeekPos @ 0x006A4D00, CThingPlayerCreature::InitialiseMovementSpeeds @ 0x006A9A00,
 //   CCharString::operator=(const char*) @ 0x0099EFE0, CThingCreatureBase::GetHeroCombatDef @ 0x00663340 (CDefPointer by
 //   hidden pointer), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetDefinitionManager
 //   @ 0x004C7990, CDefinitionManager::GetDef<CPlayerMovementDef>(const CCharString&, CDefPointer&) @ 0x006AE1C0,
@@ -101,6 +101,7 @@ public:
 class CThingPhysical : public CThing
 {
 public:
+    const C3DVector& PeekPos() const;    // 0x006A4D00
 };
 class CThingGameObject : public CThingPhysical
 {
@@ -124,7 +125,6 @@ class CThingCreatureBase : public CThingGameObject { public:
     unsigned char _pad128[0x16c - 0x128];
     CDefinitionManager* GetDefinitionManager();         // 0x004C7990 (CThing)
     bool ValidateInitialisation();                      // 0x006A4D60 (CThingPhysical)
-    const C3DVector& GetPosition() const;               // 0x006A4D00
     CDefPointer<CHeroCombatDef> GetHeroCombatDef() const;   // 0x00663340
     void CreateDefaultWeapons();                        // 0x00664680
     bool OnCreate();                                    // 0x00666310
@@ -156,7 +156,7 @@ bool CThingPlayerCreature::OnCreate()
     if (CThingCreatureBase::OnCreate()) {
         LevelPersistent = true;
         SetAsGameStatePersisted(true);
-        InitialPos = GetPosition();
+        InitialPos = PeekPos();
         InitialiseMovementSpeeds();
         PPlayerMovementDef.Clear();
         PHeroCombatDef.Clear();

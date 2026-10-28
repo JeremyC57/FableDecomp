@@ -1,7 +1,7 @@
 // CTCHero::OnCreate() -- set the hero's weapon and will usability from the def of the region the parent thing stands in (usable unless the region prevents it); usable when the region has no def
 // Leaf: OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CA5A0, 171 bytes (plain `ret`). Vtable 0x0125EB54 (CTCHero, rtti-vtables.tsv) slot 4.
-// Callees: CTCBase::GetWorldMap @ 0x00686D30 (three times), CThing::GetPosition() const @ 0x004C73D0, CWorldMap::GetMapNumberAt
+// Callees: CTCBase::GetWorldMap @ 0x00686D30 (three times), CThing::GetPos() const @ 0x004C73D0, CWorldMap::GetMapNumberAt
 // (virtual slot 16, +0x40, as the landed 0x006AEBF0), CWorldMap::GetRegionNumberMapIsIn(long) @ 0x004FC190, CWorldMap::GetRegion(long)
 // @ 0x004FB490 (manifest "CTCInventoryBase::GetCategoryWithIndex", propagated), CTCHero::SetWeaponsAsUsable(bool) @ 0x006CA380; the
 // region def's virtual slot 1 on the last release.
@@ -16,7 +16,7 @@ class C3DVector { public: float X, Y, Z; };
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                // 0x004C73D0
+    const C3DVector& GetPos() const;                // 0x004C73D0
 };
 
 class CRegionDef { public:
@@ -72,7 +72,7 @@ public:
 
 void CTCHero::OnCreate()
 {
-    CRegion& region = GetWorldMap().GetRegion(GetWorldMap().GetRegionNumberMapIsIn(GetWorldMap().GetMapNumberAt(ParentThing->GetPosition())));
+    CRegion& region = GetWorldMap().GetRegion(GetWorldMap().GetRegionNumberMapIsIn(GetWorldMap().GetMapNumberAt(ParentThing->GetPos())));
     if (region.GetDef().Object) {
         SetWeaponsAsUsable(!region.GetDef()->PreventHeroWeaponUse);
         WillUsable = !region.GetDef()->PreventHeroWillUse;

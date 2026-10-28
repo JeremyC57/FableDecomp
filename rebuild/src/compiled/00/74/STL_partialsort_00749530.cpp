@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00749530, 104 bytes, `ret 0Ch` (link-time __fastcall: first in ecx, middle in edx,
 //   then last, the value-type tag pointer and the comparator on the stack).
 // Callees: __make_heap @ 0x00749050 (first, middle, comp, 0, 0), CCompare_FurthestFromInitPos2D::operator() @ 0x007483E0
-//   (landed; its body is repeated below as the same-TU definition, with CThing::GetPosition @ 0x004C73D0),
+//   (landed; its body is repeated below as the same-TU definition, with CThing::GetPos @ 0x004C73D0),
 //   __adjust_heap @ 0x00748C90 (the inlined __pop_heap), sort_heap @ 0x00749390 (out of line, `ret 4`; the manifest's
 //   `_Sort_heap<long*>` is a propagation).
 // Label: the manifest's "IntrosortPhase_FinalHeapSort" is descriptive; the body is STLport `__partial_sort` over the
@@ -30,7 +30,7 @@ class CThing { public:
     unsigned char m_flags6c;                    // +0x6c bit 3: creature
     unsigned char _pad6d[0x91 - 0x6d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 class CThingCreatureBase : public CThing { public:
@@ -39,7 +39,7 @@ class CThingCreatureBase : public CThing { public:
     float InitialPosY;                          // +0xec
     C2DVector GetOffsetFromInitialPos2D() const
     {
-        const C3DVector& position = GetPosition();
+        const C3DVector& position = GetPos();
         return C2DVector(InitialPosX - position.X, InitialPosY - position.Y);
     }
 };

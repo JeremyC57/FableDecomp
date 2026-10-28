@@ -2,9 +2,9 @@
 // Leaf: OnReplace
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009261F0, 512 bytes.
 // Callees: CAIStateGroupBase::GetPlayerManager @ 0x008FCF90 (manifest "CPixelShader::CountReferences", propagated),
-//   CPlayerManager::GetMainPlayer @ 0x00449970 (manifest "Catch@0040d959"), CPlayer::GetHeroCreature @ 0x00487DC0 (manifest
+//   CPlayerManager::GetMainPlayer @ 0x00449970 (manifest "Catch@0040d959"), CPlayer::GetPControlledCreature @ 0x00487DC0 (manifest
 //   "_Cons_val<...EHeroMorphType...>"), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::
-//   GetPosition @ 0x004C73D0, CreateThingObject @ 0x00703210 (__fastcall), CVectorMap::LowerBound @ 0x0040F020, the inventory
+//   GetPos @ 0x004C73D0, CreateThingObject @ 0x00703210 (__fastcall), CVectorMap::LowerBound @ 0x0040F020, the inventory
 //   item's category getter @ 0x005D9030, puts @ 0x00BFEAF2 + abort @ 0x00BFEAEC (STLport bitset<274>::test range check),
 //   CTCInventoryItem::AddToInventory @ 0x005D8D50, CDataBank::GetTextBySymbol @ 0x009C95E0 (CWideString by hidden pointer),
 //   CTCInventoryItem::GetDescription @ 0x005D9070, ConstructString @ 0x009C7980 (__fastcall), ~CWideString @ 0x0099B510,
@@ -35,7 +35,7 @@ class CThing { public:
     unsigned char _pad4c[0x90 - 0x4c];
     signed char PlayerNumber;                           // +0x90
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     bool TestComponent(unsigned long position) const
     {
@@ -69,6 +69,7 @@ class CThing { public:
         return tc;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
@@ -87,7 +88,7 @@ class CTCInventoryItem { public:
     bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
     CWideString GetDescription();                       // 0x005D9070
 };
-class CPlayer { public: CThing* GetHeroCreature(); };          // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
 namespace NGameText {
 class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& symbol) const; };
@@ -139,10 +140,10 @@ void CAIStateGroup_WifeGiveYouGift::OnReplace()
 {
     if (!DeliveredGiveSpeech)
         return;
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero == 0 || (hero->m_flags91 & 1))
         return;
-    CThing* gift = CreateThingObject(GiftToGiveDef, &hero->GetPosition(), hero->PlayerNumber, 0, 0, "");
+    CThing* gift = CreateThingObject(GiftToGiveDef, &hero->GetPos(), hero->PlayerNumber, 0, 0, "");
     CTCInventoryItem* item = (CTCInventoryItem*)gift->GetTCIfHas(0x1a);
     long type = item->GetInventoryType();
     item->AddToInventory((CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);

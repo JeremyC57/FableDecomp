@@ -4,7 +4,7 @@
 // 8, 0x34, 0xAA) and @ 0x0040F020 (the enemy's 0x36 = CTCStealth), IsAbleToBeEngagedInCombat @ 0x0085FBC0 (__fastcall),
 // the 8 component's virtual slot 29 (+0x74, combat target), CTCPerceiveThing::GetPerceivedThing @ 0x007446A0 /
 // CanSeeOrSmellPerceivedThing @ 0x00661600 / GetDirectAwareness @ 0x00744430, IsRegisteredCombatant @ 0x00662410,
-// CThing::GetPosition @ 0x004C73D0, IsEnemyRunningAway @ 0x0093D3A0, CTCStealth::SetAsRunningAwayFromCombat @ 0x007470E0.
+// CThing::GetPos @ 0x004C73D0, IsEnemyRunningAway @ 0x0093D3A0, CTCStealth::SetAsRunningAwayFromCombat @ 0x007470E0.
 // Layout: local model (PBrain +4; brain PCreature +0x18; PEnemy +0x14; presence bits +0x20, interface map +0x44, dead bit +0x91;
 // 0x30 component engaged byte +0x80; 0xAA component range float +0x64).
 // Shape: masked-test GetInterface lookups used unchecked (a miss reads an undefined slot); the early checks nest so they share one
@@ -32,7 +32,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
@@ -143,7 +143,7 @@ bool CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool checkCombatant)
                     if (result) {
                         const CThing* creature = GetCreature();
                         const CThing* enemy = PEnemy.GetPItem();
-                        C3DVector offset = enemy->GetPosition() - creature->GetPosition();
+                        C3DVector offset = enemy->GetPos() - creature->GetPos();
                         const CTCCombatRange* range;
                         ((const CThing*)GetCreature())->GetInterface(&range, 0xaa);
                         float limit = range->Range;

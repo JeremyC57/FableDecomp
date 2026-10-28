@@ -5,9 +5,10 @@
 // label is propagated; the class is named by address.
 extern "C" void __cdecl free(void* block);        // 0x00BFEA14
 
-struct CMember_009f9f70 {
+struct CTexture {
     unsigned char _body[0xc];
-    ~CMember_009f9f70();                           // 0x009F9F70
+    void Uninitialise();                           // 0x009F9F70 ?Uninitialise@CTexture@@QAEXXZ
+    ~CTexture() { Uninitialise(); }
 };
 
 struct CHolderBase_009f2e20 {
@@ -28,7 +29,7 @@ struct CResourceHolder_00642a60 {
     CBuffer_00642a60 m_bufferA;                    // +0x08
     unsigned char    _pad0c[8];
     CHolder_00642a60 m_holder;                     // +0x14
-    CMember_009f9f70 m_member;                     // +0x24
+    CTexture m_member;                     // +0x24
     CBuffer_00642a60 m_bufferB;                    // +0x30
     ~CResourceHolder_00642a60();
 };

@@ -44,6 +44,7 @@ template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Al
 class _Rb_tree : public _Rb_tree_base<_Value, _Alloc> { public:
     _Rb_tree(const _Compare& __comp, const _Alloc& __a)
         : _Rb_tree_base<_Value, _Alloc>(__a), _M_node_count(0), _M_key_compare(__comp) { _M_empty_initialize(); }
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;      // _S_rb_tree_red
@@ -51,6 +52,7 @@ class _Rb_tree : public _Rb_tree_base<_Value, _Alloc> { public:
         this->_M_header._M_data->_M_left = this->_M_header._M_data;
         this->_M_header._M_data->_M_right = this->_M_header._M_data;
     }
+    public:
     unsigned int _M_node_count;
     _Compare     _M_key_compare;
 };

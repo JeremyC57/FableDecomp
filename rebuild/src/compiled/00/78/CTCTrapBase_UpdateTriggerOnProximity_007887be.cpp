@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007887BE, 204 bytes (plain `ret`, `leave`): frame-pointer size TU, so
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)` (the CTCTrapBase TU is `optimize("s")`, landed ManualReset
 // 0x00787C0C and UpdateTrigger 0x0078888A). Ego_r.pdb `?UpdateTriggerOnProximity@CTCTrapBase@@IAEXXZ`.
-// Callees: CThing::GetPosition() const 0x004C73D0 (owner, then each trigger thing); CBaseIntelligentPointer::GetPItem()
+// Callees: CThing::GetPos() const 0x004C73D0 (owner, then each trigger thing); CBaseIntelligentPointer::GetPItem()
 //          const 0x00A01B50; CFadeInFadeOutBase::IsOpen() 0x0048DA30 (the landed callers' non-const spelling; Ego_r.pdb
 //          declares it const); CTCTrapBase::Reset() 0x00787BF1; CTCTrapBase::Trigger() 0x00788229.
 // Layout: engine/CTCTrapBase.h carries Ego_r.pdb offsets; retail (12-byte STLport vectors, as the landed constructor
@@ -23,7 +23,7 @@ class C3DVector { public:
 };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing>: vptr + item (8 bytes)
     void* __vftable;
@@ -66,10 +66,10 @@ class CTCTrapBase { public:
 
 void CTCTrapBase::UpdateTriggerOnProximity()
 {
-    C3DVector position = ParentThing->GetPosition();
+    C3DVector position = ParentThing->GetPos();
     bool inRange = false;
     for (CBaseIntelligentPointer* it = TriggerThings.begin(); it != TriggerThings.end(); ++it) {
-        const C3DVector& thing = it->GetPItem()->GetPosition();
+        const C3DVector& thing = it->GetPItem()->GetPos();
         float dx = thing.X - position.X;
         float dy = thing.Y - position.Y;
         float dz = thing.Z - position.Z;

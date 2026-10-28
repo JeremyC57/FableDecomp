@@ -2,7 +2,7 @@
 // Leaf: ?ProcessInput@CInputProcessSetRangedWeaponMode@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068F180, 201 bytes, `ret 8`.
 // Callees: CInputProcessGameBase::IsEventButtonHeld @ 0x00687BD0 and IsEventGameAction @ 0x00687CF0 (landed model
-//   names), CPlayer::IsFirstPersonTargeting @ 0x004874D0, CPlayer::GetHeroThing @ 0x00487DC0 (x2), the const component-map
+//   names), CPlayer::IsFirstPersonTargeting @ 0x004874D0, CPlayer::GetPControlledCreature @ 0x00487DC0 (x2), the const component-map
 //   LowerBound @ 0x004365B0, CProcessedInput::AddGameEvent(const CGameEvent&) @ 0x00A0D340.
 // Globals: a bool gate @ 0x01375752 (unnamed).
 // Layout: engine/CInputProcessGameBase.h (MyPlayer +0x18), local model as in the landed 0x0068EA60 (the class carries
@@ -78,9 +78,10 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroThing();                        // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 public:
     bool IsFirstPersonTargeting() const;   // 0x004874D0
 };
@@ -108,10 +109,10 @@ void CInputProcessSetRangedWeaponMode::ProcessInput(const CInputEvent& event, CP
     if (IsEventButtonHeld(event) && IsEventGameAction(0x2d, event)) {
         if (g_rangedWeaponModeGate && !MyPlayer->IsFirstPersonTargeting()) {
             CTC81* tc;
-            if (MyPlayer->GetHeroThing()->GetInterface(&tc, 0x81) && !tc->m_15)
+            if (MyPlayer->GetPControlledCreature()->GetInterface(&tc, 0x81) && !tc->m_15)
                 return;
         }
-        CThing* hero = MyPlayer->GetHeroThing();
+        CThing* hero = MyPlayer->GetPControlledCreature();
         if (hero && !hero->Dead)
             input.AddGameEvent(0x31);
     }

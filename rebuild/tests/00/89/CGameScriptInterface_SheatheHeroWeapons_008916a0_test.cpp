@@ -13,16 +13,17 @@ public:
     unsigned long m_Identity;
 };
 
-class CGSISheatheHeroWeapons_LookupResult
+class CThingPlayerCreature;
+class CPlayer
 {
 public:
-    CGSISheatheHeroWeapons_Target* ResolveTarget();
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0 (Ego_r.pdb spelling)
 };
 
 class CGSISheatheHeroWeapons_LookupSource
 {
 public:
-    CGSISheatheHeroWeapons_LookupResult* BeginLookup();
+    CPlayer* BeginLookup();
 };
 
 class CGSISheatheHeroWeapons_Target
@@ -37,6 +38,7 @@ public:
     unsigned char m_Unused[0x91];
     unsigned char m_Flags;
 };
+class CThingPlayerCreature : public CGSISheatheHeroWeapons_Target { };
 
 class CGSISheatheHeroWeapons_ActionStorage
 {
@@ -61,9 +63,9 @@ public:
 
 static CGSISheatheHeroWeapons_LookupSource*
     g_ObservedLookupSource;
-static CGSISheatheHeroWeapons_LookupResult*
+static CPlayer*
     g_LookupResult;
-static CGSISheatheHeroWeapons_LookupResult*
+static CPlayer*
     g_ObservedLookupResult;
 static CGSISheatheHeroWeapons_Target* g_Target;
 static CGSISheatheHeroWeapons_Target*
@@ -90,7 +92,7 @@ static void RecordEvent(unsigned long event)
     ++g_EventCount;
 }
 
-CGSISheatheHeroWeapons_LookupResult*
+CPlayer*
 CGSISheatheHeroWeapons_LookupSource::BeginLookup()
 {
     g_ObservedLookupSource = this;
@@ -98,12 +100,12 @@ CGSISheatheHeroWeapons_LookupSource::BeginLookup()
     return g_LookupResult;
 }
 
-CGSISheatheHeroWeapons_Target*
-CGSISheatheHeroWeapons_LookupResult::ResolveTarget()
+CThingPlayerCreature*
+CPlayer::GetPControlledCreature() const
 {
-    g_ObservedLookupResult = this;
+    g_ObservedLookupResult = const_cast<CPlayer*>(this);
     RecordEvent(2);
-    return g_Target;
+    return static_cast<CThingPlayerCreature*>(g_Target);
 }
 
 bool CGSISheatheHeroWeapons_Target::IsThingCarryingWeapon()
@@ -193,7 +195,7 @@ static bool CheckEvents(
 int main()
 {
     CGSISheatheHeroWeapons_LookupSource lookupSource;
-    CGSISheatheHeroWeapons_LookupResult lookupResult;
+    CPlayer lookupResult;
     CGSISheatheHeroWeapons_Target target = {};
     CCreatureActionBase action(0x11223344);
     CGameScriptInterface interfaceObject;

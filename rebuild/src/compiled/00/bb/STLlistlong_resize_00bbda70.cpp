@@ -70,12 +70,14 @@ public:
     typedef unsigned int size_type;
     typedef _List_iterator<_Tp, _Nonconst_traits<_Tp> > iterator;
 
+    protected:
     _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __p = (_Node*)malloc(sizeof(_Node));
         _Construct(&__p->_M_data, __x);
         return __p;
     }
+    public:
     void _M_deallocate(_Node* __p) { if (__p != 0) free(__p); }
     iterator begin() { return iterator(this->_M_node._M_data->_M_next); }
     iterator end() { return iterator(this->_M_node._M_data); }

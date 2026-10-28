@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<unsigned long, long> (CTCInventoryStats::CreaturesKilled)) STLport exact-key lookup over an unsigned 32-bit key: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@ABK@Z
+// Leaf: ?_M_find@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@ABK@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005D83B3, 54 bytes (unaligned entry, size-optimised TU), thiscall, `ret 4`;
 //   returns the node pointer (header node pointer = end()).
 // Identity (proven): map<unsigned long, long> (CTCInventoryStats::CreaturesKilled); evidence: the landed CTCInventoryStats::SetCreatureAsKilled 0x005D66BA and FrameUpdate 0x005CDCCB call it on this+0x134 and increment the node's long: CreaturesKilled (Ego_r.pdb map<unsigned long, long>; the unsigned `jb` compare agrees, where the landed header's map<long, long> would compare signed).
@@ -59,8 +59,12 @@ public:
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
+    private:
     _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

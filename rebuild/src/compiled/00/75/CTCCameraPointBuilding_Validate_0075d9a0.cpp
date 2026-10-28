@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075D9A0, 254 bytes (+ int3 padding), `ret 4`. Vtable 0x0123ECBC
 //   (CTCCameraPointBuilding) slot 17, the slot the landed CTCCameraPointScripted::vfunc_17 0x0075CDF0 fills.
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0 (inlined GetInterface for type 0x33 =
-//   word 1 bit 19), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0,
+//   word 1 bit 19), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0,
 //   CThingBuilding::IsPointInside(const C3DVector&) @ 0x0082D000, CCharString::operator=(const char*) @ 0x0099EFE0.
 // Strings: 0x01269FF0 "CAMERA_POINT_BUILDING is not attached to a building!", 0x0126A028 "CAMERA_POINT_BUILDING is both
 //   start and end point!", 0x01269F30 "CAMERA_POINT_BUILDING is attached to something other than a building!",
@@ -53,7 +53,7 @@ class CThing { public:
     unsigned char _pad70[0x91 - 0x70];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
     {
@@ -106,7 +106,7 @@ bool CTCCameraPointBuilding::vfunc_17(CCharString& error) const
         error = "CAMERA_POINT_BUILDING is attached to something other than a building!";
         goto fail;
     }
-    bool inside = ((CThingBuilding*)owner)->IsPointInside(ParentThing->GetPosition());
+    bool inside = ((CThingBuilding*)owner)->IsPointInside(ParentThing->GetPos());
     if (ExitPoint && inside) {
         error = "point is inside building but flagged as an exit point!";
         goto fail;

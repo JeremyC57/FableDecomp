@@ -47,10 +47,18 @@ public:
     typedef _Rb_tree_node<_Value>* _Link_type;
     unsigned int _M_node_count;                           // +0x04
     _Compare _M_key_compare;                              // +0x08
+    protected:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
+    private:
     void _M_erase(_Link_type __x);                        // 0x004AA650
+    public:
     void clear()
     {
         if (_M_node_count != 0) {

@@ -14,8 +14,10 @@ class C3DVector { public:
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-class CThingPos { public:
-    C3DVector* GetPosition();                   // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
+};
+class CThingPos : public CThing { public:
 };
 
 class CBaseObject;
@@ -56,5 +58,5 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBase { public:
 bool CAIStateGroup_OpinionReactionRoot::TryAndLookOnAwarenessUpdate()
 {
     CThingPos* pThing = ThingReactingTo.GetPItem();   // fetched before the literal pushes (a named local)
-    return AIAction_LookAtPos(1, *pThing->GetPosition(), 0x21, 0.0027777f) == 2;
+    return AIAction_LookAtPos(1, pThing->GetPos(), 0x21, 0.0027777f) == 2;
 }

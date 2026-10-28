@@ -3,8 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DDDA0, 496 bytes, plain `ret`.
 // Callees: CCharString() 0x0099E4B0 / operator=(const char*) 0x0099EFE0 ("STRAFE_RIGHT" 0x0126FAC8, "FLY_LOOP" 0x0126FAD8,
 //   "BREATHE_FIRE_STRAIGHT_LOOP" 0x0126FAE4) / ~CCharString 0x0099EAE0, CTCBase::PeekWorld 0x00686A80 (catalog
-//   "CViewBase::GetDisplayEngine"), CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetPPlayerCharacter 0x00487DC0,
-//   CThing::GetPosition 0x004C73D0, the physics body's facing (vtable +0x118), CTCBase::GetWorld 0x00686A70,
+//   "CViewBase::GetDisplayEngine"), CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetPControlledCreature 0x00487DC0,
+//   CThing::GetPos 0x004C73D0, the physics body's facing (vtable +0x118), CTCBase::GetWorld 0x00686A70,
 //   CEnvironment::OverrideWindDirection 0x006B2B10, CCreatureAction_DragonFlight ctor 0x008F4CB0 / temporary dtor
 //   0x0062E900 (~CCombatActionBase), CThingCreatureBase::SetCurrentAction 0x006644F0.
 // Layout: CTCCreatureFlyInCircles Creature +0x0c, Mode +0x34, Transitioning +0x38, SwoopProgress +0x6c; CThing physics
@@ -57,9 +57,10 @@ class CThing { public:
     CPhysicsBody* PhysicsBody;                             // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char StateBits;                               // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;                  // 0x004C73D0
+    const C3DVector& GetPos() const;                  // 0x004C73D0
     bool IsDead() const { return (StateBits & 1) != 0; }
 };
+class CThingPlayerCreature : public CThing { };
 class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
@@ -73,7 +74,7 @@ class CCreatureAction_DragonFlight : public CCombatActionBase { public:
 };
 
 class CPlayer { public:
-    CThing* GetPPlayerCharacter() const;                   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                   // 0x00487DC0
 };
 class CEnvironment { public:
     void OverrideWindDirection(const C3DVector& direction, float speed);   // 0x006B2B10
@@ -113,9 +114,9 @@ void CTCCreatureFlyInCircles::PlayLoopAnim()
     CCharString animation;
     float windSpeed = 0.0f;
     C3DVector direction;
-    CThing* hero = PeekWorld().PeekMyPlayer()->GetPPlayerCharacter();
+    CThing* hero = PeekWorld().PeekMyPlayer()->GetPControlledCreature();
     if (hero && !hero->IsDead())
-        direction = hero->GetPosition() - Creature->GetPosition();
+        direction = hero->GetPos() - Creature->GetPos();
     else
         direction = Creature->PhysicsBody->GetFacing();
     direction.Z = 0.0f;

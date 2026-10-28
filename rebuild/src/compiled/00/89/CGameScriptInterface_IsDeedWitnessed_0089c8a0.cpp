@@ -35,16 +35,17 @@ struct TCMap
 };
 
 struct GSI_Target;
+class CThingPlayerCreature;
+class CPlayer
+{
+public:
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
+};
 
 // [self+0x14] object with a single argument-less __fastcall accessor.
 struct GSI_HelperAObj
 {
-    void* HelperA();   // call 0xffbad0d0 -> returns a HelperB-holder pointer
-};
-
-struct GSI_HelperBObj
-{
-    GSI_Target* HelperB();   // call 0xffbeb520 -> returns GSI_Target*
+    CPlayer* HelperA();   // 0x00449970
 };
 
 struct GSI_Target
@@ -56,6 +57,7 @@ struct GSI_Target
     unsigned char pad4c[0x45];
     unsigned char flags91;   // +0x91  (tested & 0x01)
 };
+class CThingPlayerCreature : public GSI_Target { };
 
 // bool __fastcall CGameScriptInterface::IsDeedWitnessed(void* arg0)
 // (this in ecx; single stack arg -> ret 4)
@@ -66,8 +68,8 @@ bool __fastcall CGameScriptInterface_IsDeedWitnessed(const void* thisPtr,
     const GSI_Self* self = reinterpret_cast<const GSI_Self*>(thisPtr);
 
     GSI_HelperAObj* a = reinterpret_cast<GSI_HelperAObj*>(self->field14);
-    GSI_HelperBObj* b = reinterpret_cast<GSI_HelperBObj*>(a->HelperA());
-    GSI_Target*     target = b->HelperB();
+    CPlayer*        b = a->HelperA();
+    GSI_Target*     target = b->GetPControlledCreature();
 
     if (target != 0 &&
         (target->flags91 & 0x01) == 0 &&

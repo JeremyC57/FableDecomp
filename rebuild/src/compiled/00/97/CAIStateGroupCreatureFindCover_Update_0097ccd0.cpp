@@ -4,7 +4,7 @@
 //          GetInterface 0x34 = CTCPerceiveThing, bit 20 of +0x24), CTCPerceiveThing::GetPerceivedThing @ 0x007446A0 (manifest
 //          "_Cons_val<...>" is propagated) and SetAsDirectlyAwareOfPerceivedThing @ 0x007449B0, GetHiddenCoverPosAndSetUpCoverThing
 //          @ 0x00970CD0, SetFailedToFindCover @ 0x00970590, MoveIntoCover @ 0x009711D0, DuckBehindCover(bool) @ 0x009713E0,
-//          GetHiddenCoverPos(C3DVector&, CThing*) @ 0x00970930, CThing::GetPosition @ 0x004C73D0, IsStillRunnable @ 0x0097CB10.
+//          GetHiddenCoverPos(C3DVector&, CThing*) @ 0x00970930, CThing::GetPos @ 0x004C73D0, IsStillRunnable @ 0x0097CB10.
 // Globals: 1.0f @ 0x0122DED8.
 // Shape: the enemy is fetched before the perception's target call (ebp) for the comparison; after moving into cover the
 //          group ducks while the cover and the enemy live, the hidden cover position stays within 1.0 of the creature (XY,
@@ -49,7 +49,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -156,7 +156,7 @@ void CAIStateGroupCreatureFindCoverMethods::Update()
                 break;
             C3DVector hidden;
             GetHiddenCoverPos(hidden, Cover().GetPItem());
-            const C3DVector& pos = GetCreature()->GetPosition();
+            const C3DVector& pos = GetCreature()->GetPos();
             C2DVector delta;
             delta.x = hidden.X - pos.X;
             delta.y = hidden.Y - pos.Y;

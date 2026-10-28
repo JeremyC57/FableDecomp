@@ -4,7 +4,7 @@
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (evaluated for the static call), CWorld::GetWorldFrame @ 0x0049D870
 //          (static), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0x46 CTCCarrying = bit 6 of +0x28, 8 the
 //          enemy source = bit 8 of +0x20, 0x36 CTCStealth = bit 22 of +0x24), CTCCarrying::GetThingInPrimarySlot
-//          @ 0x006A1440, the enemy source's virtual slot 29 (+0x74), CThing::GetPosition @ 0x004C73D0 (x2),
+//          @ 0x006A1440, the enemy source's virtual slot 29 (+0x74), CThing::GetPos @ 0x004C73D0 (x2),
 //          CThingCreatureBase::GetCombatManager @ 0x00661ED0, CCombatManager::IsCreatureFightingThing @ 0x006E9310 /
 //          CheckSummonerChargeable @ 0x006EA050, CIntelligentPointer<CThing>(CThing*) @ 0x004A96F0, CIntelligentPointer::
 //          operator= @ 0x004A9760, ~CBaseIntelligentPointer @ 0x00A01C10.
@@ -39,7 +39,7 @@ class CThing { public:
     unsigned long ThingTypeFlags;               // +0x6c
     unsigned char _pad70[0x91 - 0x70];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -148,8 +148,8 @@ bool CAIStateGroup_SummonerCharge::IsRunnable()
     if (GetCreature()->GetInterfaceX(&source, 8)) {
         CThing* enemy = source->GetEnemy();
         if (enemy && !(enemy->m_flags91 & 1)) {
-            const C3DVector& from = GetCreature()->GetPosition();
-            const C3DVector& to = enemy->GetPosition();
+            const C3DVector& from = GetCreature()->GetPos();
+            const C3DVector& to = enemy->GetPos();
             float distanceSquared = C2DVector(to.x - from.x, to.y - from.y).GetLengthSquared();
             float nearRange = PDef->ChargeRangeNear;
             if (distanceSquared > nearRange * nearRange) {

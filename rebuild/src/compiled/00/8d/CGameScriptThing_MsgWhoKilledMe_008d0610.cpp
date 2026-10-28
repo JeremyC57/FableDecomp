@@ -64,7 +64,7 @@ template <class A, class B> class CFilter_Bind2 { public: // the bound filter ho
 template <class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsTargettedAtThing> CKilledMeFilter;
 class CMessageEventManager { public:
-    CMessageEvent* FindMostRecentMessage(const CKilledMeFilter& filter);   // 0x008D46D0
+    template <class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter) const;   // 0x008D46D0 ??$FindMostRecentMessage@V?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@...
 };
 
 class CGameScriptThingManager { public:
@@ -84,7 +84,7 @@ struct CGameScriptThingMethods : CGameScriptThing {
 CScriptThing CGameScriptThingMethods::MsgWhoKilledMe() const
 {
     CMessageEventManager* messages = World->PMessageEventManager_Data;
-    CMessageEvent* message = messages->FindMostRecentMessage(
+    const CMessageEvent* message = messages->FindMostRecentMessage(
         CMessageEventFilter_IsOfType(9) && CMessageEventFilter_IsTargettedAtThing(ThingUID));
     if (message) {
         if (message->POriginator.GetPItem() &&

@@ -2,8 +2,7 @@
 // Leaf: ?Update@CAIStateGroup_BirdStartled@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00914600, 65 bytes (+ int3 padding), thiscall virtual (slot 12), `ret`.
 // Identity (proven): Ego_r.pdb ?Update@CAIStateGroup_BirdStartled@@UAEXXZ (0x00938260), vtable slot 12; the label agrees.
-// Callees: the position getter 0x006A4D00 (byte twin of CThing::GetPos 0x004C73D0; no PDB name proves it, so the existing
-//   descriptive binding CThing::GetPosition_006a4d00 of the landed 0x00911710 is reused -- one address, one name),
+// Callees: CThingPhysical::PeekPos 0x006A4D00 (?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ by Ego_r donor order Kill/PeekPos/PeekLastPos/OnCreate; byte twin of CThing::GetPos 0x004C73D0),
 //   CAIStateGroup_FlyingThingBase::GetRandomFlightPos(const C3DVector&, float, C3DVector&, bool) const 0x00912700 (Ego_r.pdb,
 //   landed), CAIStateGroup_FlyingThingBase::AIAction_RandomFlyToPos(const C3DVector&) 0x009130D0 (Ego_r.pdb donor order and
 //   its CalculatePrettyPath call; the bindings spell it ExecuteFlyingPath), CAIStateGroupBase::Terminate() 0x008FCF40.
@@ -55,9 +54,10 @@ public:
     unsigned char _pad54[0x91 - 0x54];
     unsigned char Dead : 1;                             // +0x91 bit 0
     const C3DVector& GetPos() const;                    // 0x004C73D0
-    const C3DVector& GetPosition_006a4d00() const;      // 0x006A4D00 (descriptive; the landed 0x00911710 spelling)
 };
-class CThingPhysical : public CThing { };
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;    // 0x006A4D00 (descriptive; the landed 0x00911710 spelling)
+};
 class CThingGameObject : public CThingPhysical { };
 class CThingCreatureBase : public CThingGameObject {
 public:
@@ -69,6 +69,7 @@ class CThingBuilding;
 
 #include "engine/CWorld.h"                            // PThingCombatManager_ptr +0x4C, PMessageEventManager_Data +0x60
 class CThingSearchTools;
+class CWorld;
 class CAIStateGroupBase : public CBaseClass {
 public:
     CAIBrain*     PBrain;                               // +0x04
@@ -79,8 +80,12 @@ public:
     bool          Enabled;                              // +0x12
     void Terminate();                                   // 0x008FCF40
 protected:
-    const CWorld& PeekWorld() const;                    // 0x008FCFA0
-    CWorld& GetWorld() const;                           // 0x008FCFC0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0
+public:
     unsigned long* GetPWorldSeed() const;               // 0x008FCFD0
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000
     bool IsStopping() const;                            // 0x008FD010
@@ -100,7 +105,7 @@ void CAIStateGroup_BirdStartled::Update()
 {
     C3DVector pos;
     CThingAICreature* creature = PBrain->Creature;
-    if (!GetRandomFlightPos(creature->GetPosition_006a4d00(), 15.0f, pos, true)) {
+    if (!GetRandomFlightPos(creature->PeekPos(), 15.0f, pos, true)) {
         Terminate();
         return;
     }

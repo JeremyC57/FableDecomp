@@ -71,8 +71,12 @@ protected:
     static _Link_type& _S_right(_Base_ptr __x) { return (_Link_type&)(__x->_M_right); }
     static const _Key& _S_key(_Base_ptr __x) { return _KeyOfValue()(((_Link_type)__x)->_M_value_field); }
 public:
+    private:
     _Link_type _M_lower_bound(const key_type& __k) const;
+    public:
+    private:
     _Link_type _M_upper_bound(const key_type& __k) const;
+    public:
     iterator lower_bound(const key_type& __x) { return iterator(_M_lower_bound(__x)); }
     iterator upper_bound(const key_type& __x) { return iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x) {

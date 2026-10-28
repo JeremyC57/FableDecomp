@@ -97,9 +97,13 @@ public:
 
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
+    protected:
     template <class _ForwardIterator>
     pointer _M_allocate_and_copy(size_type __n, _ForwardIterator __first, _ForwardIterator __last);   // 0x00477C18
+    public:
+    protected:
     void _M_clear();                                                                                 // 0x00477BFC
+    public:
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);
 };
 

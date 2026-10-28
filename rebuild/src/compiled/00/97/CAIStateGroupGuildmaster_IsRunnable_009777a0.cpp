@@ -2,7 +2,7 @@
 // Leaf: ?IsRunnable@CAIStateGroup_Guildmaster@@MAE_NXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009777A0, length 128 bytes.
 // Callees: the state group's player-manager accessor @ 0x008FCF90 (PBrain->+0x20), CPlayerManager::GetMainPlayer
-// @ 0x00449970 (landed name), CPlayer::GetPCharacter @ 0x00487DC0 (`add ecx,2Ch ; jmp GetPItem`),
+// @ 0x00449970 (landed name), CPlayer::GetPControlledCreature @ 0x00487DC0 (`add ecx,2Ch ; jmp GetPItem`),
 // CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10, the
 // world accessor @ 0x008FCFC0 (PBrain->+0x1c->+0x24), CCombatManager::RegisterCombatant(CThingCreatureBase*,
 // CThingCreatureBase*, bool) @ 0x006EDC50. Vtable 0x0123E7D8 = CIntelligentPointer<CThingCreatureBase>.
@@ -18,7 +18,8 @@
 // header CAIStateGroup_Guildmaster.h is a flattened data-only layout without the vptr chain: local model.
 // Shape: the CIntelligentPointer operator= names the GetPItem() CALL result (`T* item = other.GetPItem(); SetPItem(item);`), which
 //   keeps `lea edi,[esi+18h]` (this of SetPItem) after the temporary's GetPItem call as retail; the inline expression form hoists it.
-class CThingCreatureBase;
+class CThingCreatureBase { };                       // opaque here: only its pointer is passed on
+class CThingPlayerCreature : public CThingCreatureBase { };
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -46,7 +47,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 };
 
 class CPlayer { public:
-    CThingCreatureBase* GetPCharacter();        // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;        // 0x00487DC0
 };
 
 class CPlayerManager { public:
@@ -92,7 +93,7 @@ protected:
 
 bool CAIStateGroup_Guildmaster::IsRunnable()
 {
-    PEnemy = CIntelligentPointer<CThingCreatureBase>(GetPPlayerManager()->GetMainPlayer().GetPCharacter());
+    PEnemy = CIntelligentPointer<CThingCreatureBase>(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
     CThingCreatureBase* creature = PBrain->PCreature;
     CCombatManager* combat = GetPWorld()->m_pCombatManager;
     combat->RegisterCombatant(creature, PEnemy.GetPItem(), true);

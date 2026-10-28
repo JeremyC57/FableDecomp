@@ -4,7 +4,7 @@
 // thing in edx, the alerter and the radius on the stack). Ego_r.pdb `?AlertAllNearby@CCreatureAction_AlertAllNearbyToThing@@
 // SIXABVCThingSearchTools@@ABVCThing@@AAVCThingCreatureBase@@M@Z`; its only caller is PerformAction 0x0084A7E0 (the next
 // function). The catalog's "CTCTrapBase::UpdateTriggerThings" is a propagated label.
-// Callees: CThing::GetPosition() const 0x004C73D0; __ftol2 0x00BFEA70 (x, y, radius); CThingSearchTools::
+// Callees: CThing::GetPos() const 0x004C73D0; __ftol2 0x00BFEA70 (x, y, radius); CThingSearchTools::
 //          GetAllTCsInRoughArea<CTCPerceiveThing, CFilter_Bind2<CThingFilter_IsPerceivingThing, CThingFilter_IsNot>,
 //          vector<CTCPerceiveThing*> >(const C2DBoxI&, const CFilter_Bind2&, vector&) const 0x0084BA50 (the manifest
 //          names the list instantiation); std::for_each<CTCPerceiveThing**, mem_fun_t<void, CTCPerceiveThing> >
@@ -27,7 +27,7 @@ extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
 class C3DVector { public: float X, Y, Z; };
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { public: };
 class CTCPerceiveThing { public:
@@ -122,7 +122,7 @@ void __fastcall CCreatureAction_AlertAllNearbyToThing::AlertAllNearby(const CThi
                                                                        CThingCreatureBase& alerter, float radius)
 {
     CRetailVector<CTCPerceiveThing*> perceivers;
-    const C3DVector& position = alerter.GetPosition();
+    const C3DVector& position = alerter.GetPos();
     long x = (long)position.X;
     long y = (long)position.Y;
     long r = (long)radius;

@@ -5,7 +5,7 @@
 // accessor), CAIStateGroupBase::GetPWorld @ 0x008FCFA0 (the second copy of the PBrain -> +0x1c ->
 // +0x24 getter), CWorld::GetPRandomSeed @ 0x0049D810 (`[world+8] + 1613Ch`), GFFloatRandom
 // (float, unsigned long*) @ 0x004978A0 (__fastcall: the float on the stack, the seed in ecx),
-// CThingPhysical::GetPosition @ 0x004C73D0, CThingCreatureBase::AutoPlaceNear(const C3DVector&,
+// CThingPhysical::GetPos @ 0x004C73D0, CThingCreatureBase::AutoPlaceNear(const C3DVector&,
 // float) @ 0x00665DF0 whose byte result is returned as is.
 // Shape: nested if with the `xor al,al` false tail at the end (an early return would reuse the
 // virtual's zero al inline); the warehouse (edi) and the creature (ebx, a named
@@ -16,7 +16,7 @@ class C3DVector;
 class CThing { public:
     unsigned char _pad[0x10];
     unsigned char PWarehouse[8];                // +0x10 CIntelligentPointer<CThing>
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
 };
 
 class CBaseObject;
@@ -57,7 +57,7 @@ class CGame { public:
 class CWorld { public:
     unsigned char _pad[8];
     CGame* m_pGame;                             // +0x08
-    unsigned long* GetPRandomSeed();            // 0x0049D810
+    unsigned long* GetPRandomSeed() const;            // 0x0049D810
 };
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978A0
@@ -79,7 +79,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
 };
 
 struct CAIStateGroup_WorkInWarehouse : CAIStateGroupBase {
@@ -93,7 +95,7 @@ bool CAIStateGroup_WorkInWarehouse::InitCreaturePosition()
     if (IsRunnable()) {
         CThing* warehouse = static_cast<CThingCrate*>(PCrate.GetPItem())->GetPWarehouse();
         CThingAICreature* creature = PBrain->Creature;
-        return creature->AutoPlaceNear(warehouse->GetPosition(), GFFloatRandom(30.0f, GetPWorld_008fcfa0()->GetPRandomSeed()));
+        return creature->AutoPlaceNear(warehouse->GetPos(), GFFloatRandom(30.0f, PeekWorld().GetPRandomSeed()));
     }
     return false;
 }

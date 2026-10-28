@@ -32,12 +32,14 @@ public:
 };
 template <class T, class A = allocator<T> > class vector : protected _Vector_base<T, A> {
 public:
+    protected:
     T* _M_allocate_and_copy(unsigned int n, const T* first, const T* last)
     {
         T* result = this->_M_end_of_storage.allocate(n);
         __uninitialized_copy(first, last, result, __true_type());
         return result;
     }
+    public:
 };
 template float* vector<float >::_M_allocate_and_copy(unsigned int, const float*, const float*);
 }   // namespace std

@@ -1,7 +1,7 @@
 // CAIStateGroup_CreatureAdvanceInCover::Update() -- advance to the next hidden cover position, crouch there when the enemy is alive, then refresh the cover list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009790F0, length 361 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPosAndSetUpCoverThing
-//          @ 0x00970CD0 (landed), SetFailedToFindCover @ 0x00970590 (manifest "SetAtFailed"), Terminate @ 0x008FCF40, CThing::GetPosition
+//          @ 0x00970CD0 (landed), SetFailedToFindCover @ 0x00970590 (manifest "SetAtFailed"), Terminate @ 0x008FCF40, CThing::GetPos
 //          @ 0x004C73D0, CCreatureAction_ProjectileCrouch(creature, enemy, const C3DVector&) @ 0x008B8310, AIAction_PerformActionAndWait
 //          @ 0x0097DB70, ~CCombatActionBase @ 0x0062E900, MoveIntoCover(C3DVector&) @ 0x009711D0, DuckBehindCover(bool) @ 0x009713E0,
 //          CAIStateGroup_CreatureAdvanceInCover::IsStillRunnable @ 0x00978F10 (landed), vector<CIntelligentPointer<CThing> >::erase
@@ -44,7 +44,7 @@ class C2DVector { public:
 class CThing { public:
     unsigned char _00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -118,7 +118,7 @@ void CAIStateGroupCreatureAdvanceInCoverMethods::Update()
         Terminate();
         return;
     }
-    const C3DVector& pos = GetCreature()->GetPosition();
+    const C3DVector& pos = GetCreature()->GetPos();
     C2DVector delta;
     delta.x = coverPos.X - pos.X;
     delta.y = coverPos.Y - pos.Y;

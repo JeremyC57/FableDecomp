@@ -36,7 +36,7 @@ class C3DVector { public:
 
 class CThing { public:
     CScriptThing GetScriptThing();              // 0x004C7E50
-    C3DVector* GetPosition();                   // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
 namespace NTCScriptedControl {
@@ -72,7 +72,7 @@ CActionSummonerLightningAttackTarget::CActionSummonerLightningAttackTarget(CThin
     , PTarget(target->GetScriptThing())
     , StartedAttack(false)
     , TurnedToFace(false)
-    , TurnToFaceAction(*target->GetPosition())
+    , TurnToFaceAction(target->GetPos())
 {
 }
 

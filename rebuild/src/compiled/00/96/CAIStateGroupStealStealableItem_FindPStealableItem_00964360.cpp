@@ -19,7 +19,7 @@ class C3DVector { public:                              // POD: a whole-record co
 };
 
 class CThing { public:
-    C3DVector* GetPosition();                   // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
 class CThingObject;
@@ -78,7 +78,7 @@ struct CAIStateGroup_StealStealableItem_Methods : CAIStateGroup_StealStealableIt
 CThingObject* CAIStateGroup_StealStealableItem_Methods::FindPStealableItem()
 {
     CThingObject* item = 0;
-    CThingCompare_Nearest compare(*GetPBrain()->PCreature->GetPosition());
+    CThingCompare_Nearest compare(GetPBrain()->PCreature->GetPos());
     CThingFilter_ObjectHasProperty hasProperty(0x08000000);
     PeekThingSearchTools()->GetPBestThing(CStealableFilter(hasProperty, CThingFilter_HasFreeActionPoint()), compare, &item);
     return item;

@@ -14,7 +14,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy constructor (fixed-offset moves);
 };                                                                                 // assignment stays implicit (re-based through `lea`)
 class CThing { public:
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 class CSoundPair { public:
     long m_first;

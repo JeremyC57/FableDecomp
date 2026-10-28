@@ -90,7 +90,7 @@ CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool 
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];           // +0x20
     unsigned char   _pad44[0x5c - 0x44];

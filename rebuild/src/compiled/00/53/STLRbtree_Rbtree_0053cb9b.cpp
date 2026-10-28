@@ -56,9 +56,15 @@ template <class K, class V, class KoV, class C, class A> class _Rb_tree : public
 public:
     typedef _Rb_tree_node<V>* _Link_type;
     unsigned int        _M_node_count;                   // +0x04 (the empty comparator follows)
+    protected:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header->_M_parent; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header->_M_left; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header->_M_right; }
+    public:
     static bool& _S_color(_Rb_tree_node_base* x) { return x->_M_color; }
     static _Link_type _S_minimum(_Link_type x) { return (_Link_type)_Rb_tree_node_base::_S_minimum(x); }
     static _Link_type _S_maximum(_Link_type x) { return (_Link_type)_Rb_tree_node_base::_S_maximum(x); }

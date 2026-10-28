@@ -1,7 +1,7 @@
 // CTCBoss::FrameUpdate() -- while strikes are being counted, reset the count once the hero has been hit in melee by this boss (a matching CEventHitBy in the hero's entity events)
 // Leaf: ?FrameUpdate@CTCBoss@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AF050, length 153 bytes (+7 int3 padding).
-// Callees: the CTCBase player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing
+// Callees: the CTCBase player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature
 // @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (inlined GetInterface for CTCEntityEvents, type
 // 0x42 = bit 2 of +0x28), CTCEntityEvents::GetEvent<const CEventHitBy, CFilter_Bind2<CIsHitEventHitByMelee, CIsHitEventHitBy>>
 // @ 0x007AFB90.
@@ -36,7 +36,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                // 0x004C9B80
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -51,6 +51,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;
@@ -68,7 +69,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
 };
 class CBossDef;
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0 (CPlayer::GetHeroThing)
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0 (CPlayer::GetPControlledCreature)
 };
 class CPlayerManager { public:
 public:
@@ -130,7 +131,7 @@ public:
 void CTCBoss::FrameUpdate()
 {
     if (StrikesSinceHit > 0) {
-        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCEntityEvents* events;
         if (hero && !hero->IsDead() && hero->GetInterface(&events, 0x42)) {
             const NEntityEvents::CEventHitBy* hit;

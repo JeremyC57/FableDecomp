@@ -50,12 +50,14 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
 public:
     typedef _List_node<_Tp> _Node;
+    protected:
     _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __p = this->_M_node.allocate(1);
         _Construct(&__p->_M_data, __x);
         return __p;
     }
+    public:
     void _M_insert(_List_node_base* __n, const _Tp& __x)
     {
         _Node* __tmp = _M_create_node(__x);

@@ -7,7 +7,7 @@
 //          CThingBuilding::PeekPMaterial @ 0x0082D2D0 (CDefPointer by hidden pointer, inline release through slot 1),
 //          CTCVillage::IsCookTime @ 0x00658A80, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
 //          CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall), CDefinitionManager::GetDefGlobalIndexFromName
-//          @ 0x009AD410, CThing::GetPosition @ 0x004C73D0, CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000,
+//          @ 0x009AD410, CThing::GetPos @ 0x004C73D0, CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000,
 //          CThingSearchTools::GetPBestThing<CThingFilter_HasDefGlobalIndex, CThingCompare_Nearest, CThing> @ 0x009107B0.
 // Model: the landed sibling CAIStateGroup_WorkAtSchool::IsRunnable (0x00942A00) shared AI state-group model (the
 //          generated engine/CAIStateGroup_TellStory.h flattens the vptr and has no members used here).
@@ -32,7 +32,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const; // 0x004365B0 (the const copy: the first lookup goes through a const map)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;            // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -251,10 +253,8 @@ class CDefPointer { public:
 };
 class CThingBuilding : public CThing { public:
     CDefPointer<CMaterialDef> PeekPMaterial();  // 0x0082D2D0
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCVillager;
 class CTCVillage;
@@ -318,7 +318,7 @@ bool CAIStateGroup_TellStory::IsRunnable()
                             index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
                         }
                         CThing* marker;
-                        CThingCompare_Nearest compare(((CThingPos*)PBrain->PCreature)->GetPosition());
+                        CThingCompare_Nearest compare(((CThingPos*)PBrain->PCreature)->GetPos());
                         CThingFilter_HasDefGlobalIndex filter(index);
                         if (PeekThingSearchTools()->GetPBestThing(filter, compare, &marker))
                             return true;

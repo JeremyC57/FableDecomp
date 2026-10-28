@@ -2,7 +2,7 @@
 // Leaf: Reset
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00780700, length 249 bytes (+ int3 padding), plain `ret`.
 // Signature from Ego_r.pdb: ?Reset@CFirePoint@NFire@@QAEXXZ.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80, CThing::GetPosition @ 0x004C73D0,
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80, CThing::GetPos @ 0x004C73D0,
 //   the __fastcall effect-thing factory Create(const CCharString&, const C3DVector&, bool) @ 0x006E0970 (landed callers
 //   0x00781F10), CCharString(const char*, long) @ 0x0099EBF0 ("Flaming_Hands_Die" @ 0x0126B18C) / ~CCharString @ 0x0099EAE0,
 //   the interface map LowerBound @ 0x0040F020, CTCDParticleEmitter::AttachToThing(CThing*, long, const CCharString&, long, float)
@@ -36,7 +36,7 @@ public:
     unsigned char m_flags91;                            // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
     void Kill(bool immediately);                        // 0x004C9B80
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     bool HasTC(long type) const { if (m_presentBits[type >> 5] & (1UL << (type & 31))) return true; return false; }
     template <class T> __forceinline T* GetTC(long interfaceType)
     {
@@ -92,7 +92,7 @@ void CFirePoint::Reset()
         CThing* effect;
         {
             CCharString name("Flaming_Hands_Die", -1);
-            effect = Create(name, PParentThing->GetPosition(), false);
+            effect = Create(name, PParentThing->GetPos(), false);
         }
         if (effect && !effect->IsDead()) {
             CTCDParticleEmitter* emitter = 0;

@@ -2,7 +2,7 @@
 // Leaf: EAUseQuickAccessItemInCutscene
 // Flags: /GS
 // Retail: Fable.exe @ 0x0062AD90, 184 bytes (/GS cookie 0x0139C8A8). PDB ?EAUseQuickAccessItemInCutscene@CWorld@@QAEXPBVCGameEvent@@@Z
-// Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetHeroThing 0x00487DC0,
+// Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetPControlledCreature 0x00487DC0,
 // CGameEvent::GetData 0x009F17A0 (label "CEventPacket::CopyToBuffer"), CInterfaceMap::LowerBound 0x0040F020,
 // CMemoryBuffer::Read(unsigned long, void*) 0x009F18F0 (label "CircularBuffer_Read"), the inventory's quick-access
 // handler 0x005819A7 (a `ret 4` stub in retail; manifest "$E2", name descriptive), __security_check_cookie 0x00BFE9F9.
@@ -58,11 +58,12 @@ class CThing { public:
         return (T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCInventory { public:
     void UseQuickAccessItemInCutscene(long slot);  // 0x005819A7
 };
-class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 
 class CWorld { public:
     CPlayer* GetPlayer(long number);               // 0x0049D850
@@ -71,7 +72,7 @@ class CWorld { public:
 
 void CWorld::EAUseQuickAccessItemInCutscene(const CGameEvent* event)
 {
-    CThing* hero = GetPlayer(event->Player)->GetHeroThing();
+    CThing* hero = GetPlayer(event->Player)->GetPControlledCreature();
     if (hero && !hero->Dead)
     {
         CMemoryBuffer buffer;

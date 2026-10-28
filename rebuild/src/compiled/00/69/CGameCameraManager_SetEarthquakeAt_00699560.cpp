@@ -9,7 +9,7 @@
 struct CQuakeVector {float X,Y,Z;void Rotate(const CQuakeVector&,float);}; //A13C60
 struct CQuakeRandom {unsigned Seed;};
 float __fastcall FloatRandom(float,CQuakeRandom*); //4978A0 genuine free-fastcall float stack/seedECX
-unsigned __fastcall RotateRandom(unsigned); //497890 real free fastcall
+long __fastcall GFROR13(unsigned long value); //497890 ?GFROR13@@YIJK@Z (Ego_r.pdb)
 int __fastcall GetQuakeFrame(); //49D870 global13B89BC
 struct CQuakeWorld {CQuakeRandom& GetRandom();}; //49D810 returns[World8]+1613C
 struct CQuake {CQuakeVector Position,Axis;int Frame;float Amplitude,Duration,Frequency,Phase;bool Global;};
@@ -31,7 +31,7 @@ typedef char QuakesEC[offsetof(CGameCameraManager,EarthQuakes)==0xec?1:-1];
 void CGameCameraManager::SetEarthquakeAt(const CQuakeVector& position,float amplitude,float duration,bool global){
  CQuake quake;quake.Position=position;quake.Axis=CameraAxis;
  quake.Axis.Rotate(CameraUp,FloatRandom(1.0f,&World->GetRandom()));
- quake.Frame=GetQuakeFrame();CQuakeRandom& random=World->GetRandom();random.Seed=random.Seed*9377u+9439u;random.Seed=RotateRandom(random.Seed);
+ quake.Frame=GetQuakeFrame();CQuakeRandom& random=World->GetRandom();random.Seed=random.Seed*9377u+9439u;random.Seed=GFROR13(random.Seed);
  quake.Phase=(0.5f-float(random.Seed&1u))*2.0f;
  quake.Amplitude=amplitude;quake.Duration=duration;quake.Frequency=2.0f;quake.Global=global;
  EarthQuakes.Push(quake);

@@ -86,9 +86,15 @@ public:
     unsigned int _M_node_count;
     Compare      _M_key_compare;
 
+    protected:
     _Base_ptr& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
     static _Base_ptr& _S_left(_Base_ptr x) { return x->_M_left; }
     static _Base_ptr& _S_right(_Base_ptr x) { return x->_M_right; }
     static _Base_ptr& _S_parent(_Base_ptr x) { return x->_M_parent; }

@@ -5,7 +5,7 @@
 // (interface 0x36 CTCStealth, through the const lookup), CTCCreatureNavigation::SetThingToIgnore @ 0x006CBE30 /
 // GetNextNavPosOnRoute @ 0x006CBAC0 / SetNavigationTarget @ 0x006CB960, SetAsSneaking @ 0x00713D50, the 2D distance @ 0x009E1AD0
 // (__fastcall), the thing's current speed @ 0x00661CD0, sneak speed @ 0x00664CB0 / virtual max speed (slot 81, +0x144),
-// CThing::GetPosition @ 0x004C73D0, IsPerformingAnyAction @ 0x006622A0, CTCLook::LookAtPos @ 0x00753E90 / IsPosInViewRange
+// CThing::GetPos @ 0x004C73D0, IsPerformingAnyAction @ 0x006622A0, CTCLook::LookAtPos @ 0x00753E90 / IsPosInViewRange
 // @ 0x007534B0; the script thing's slots 11/71/76/77 (+0x2c/+0x11c/+0x130/+0x134) and the physics slots 33/70 (+0x84/+0x118).
 // Data: 0.7f @ 0x01255318, 8.0f @ 0x0125916C, 0.5f @ 0x0122F59C, 0.8f @ 0x012654EC, 1.5f @ 0x0125AADC, epsilon 0.0001f @ 0x0129BA3C.
 // Layout: per the landed CActionFollowCreature::OnActivate 0x00715710 (+0x09 is the finished flag, +0x1C Sneaking, +0x20
@@ -73,7 +73,7 @@ class CThing { public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     CTCPhysicsBase* PPhysics;                   // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     float GetCurrentSpeed() const;              // 0x00661CD0
     float GetSneakSpeedTowards(const C3DVector& pos);   // 0x00664CB0
     bool IsPerformingAnyAction();               // 0x006622A0
@@ -202,10 +202,10 @@ void NTCScriptedControl::CActionFollowCreature::Update()
     float targetSpeed = PTargetThing.GetThing()->GetCurrentSpeed();
     if (targetSpeed == 0.0f) {
         CThing* t = PTargetThing.GetThing();
-        targetSpeed = t->GetMaxSpeedTowards(PTCScript->ParentThing->GetPosition());
+        targetSpeed = t->GetMaxSpeedTowards(PTCScript->ParentThing->GetPos());
     }
     CThing* me = PTCScript->ParentThing;
-    C3DVector ahead = Offset(me->GetPosition(), me->PPhysics->GetVelocity());
+    C3DVector ahead = Offset(me->GetPos(), me->PPhysics->GetVelocity());
     float maxSpeed;
     if (Sneaking)
         maxSpeed = GetCreature()->GetSneakSpeedTowards(ahead);
@@ -229,7 +229,7 @@ void NTCScriptedControl::CActionFollowCreature::Update()
     }
     const float& finalSpeed = Min(speed, maxSpeed);
     CNavigationInput input;
-    input.Destination = PTargetThing.GetThing()->GetPosition();
+    input.Destination = PTargetThing.GetThing()->GetPos();
     input.Proximity = radii;
     input.MovementType = 0;
     input.Speed = finalSpeed;

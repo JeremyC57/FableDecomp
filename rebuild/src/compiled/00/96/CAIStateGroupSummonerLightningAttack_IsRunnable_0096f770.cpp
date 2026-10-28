@@ -26,7 +26,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -145,9 +145,9 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
             CCameraManager* camera;
             CWorld* world = GetPWorld();
             if (world->PCameraManager->GetCameraManager(&camera)) {
-                const C3DVector& e = enemy->GetPosition();
+                const C3DVector& e = enemy->GetPos();
                 C3DVector to(e.x, e.y, e.z + 2.0f);
-                const C3DVector& c = PBrain->PCreature->GetPosition();
+                const C3DVector& c = PBrain->PCreature->GetPos();
                 C3DVector from(c.x, c.y, c.z + 2.0f);
                 C3DVector hitPos, hitNormal;
                 float distance;
@@ -156,8 +156,8 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
                     return false;
             }
             {
-                const C3DVector& from = GetCreature()->GetPosition();
-                const C3DVector& to = enemy->GetPosition();
+                const C3DVector& from = GetCreature()->GetPos();
+                const C3DVector& to = enemy->GetPos();
                 float distanceSquared = C2DVector(to.x - from.x, to.y - from.y).GetLengthSquared();
                 if (distanceSquared > range * range) {
                     PTarget = CIntelligentPointerCreature(enemy);

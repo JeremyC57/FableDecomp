@@ -7,7 +7,7 @@
 //   +0x24, 0x10 CTCSoundPlayer bit 16 of +0x20), operator new 0x00BFEA1A (0x80 bytes), CModeBriarRoseTeleportIntangible
 //   (CThing* owner, CThingCreatureBase* enemy) 0x008C3700, CCountedPointer<CModeBase>(CModeBase*) 0x00718A00,
 //   CTCCreatureModeManager::AddMode 0x0073ACC0, CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580 and
-//   <CEntitySoundDef> 0x0065F604, CSpecialEffectsDef::CalcAndLookup 0x00669D30, CThing::GetPosition 0x004C73D0,
+//   <CEntitySoundDef> 0x0065F604, CSpecialEffectsDef::CalcAndLookup 0x00669D30, CThing::GetPos 0x004C73D0,
 //   CreateSpecialEffect 0x006E0880 (__fastcall), CSoundMap::GetPSound(Pair) 0x0065FBA4 (manifest
 //   "CVectorMap_LowerBound_Faction" is propagated), CTCSoundPlayer::PlaySound(long, const CSoundInit&, long, long)
 //   0x0066ACE0 (manifest "AI_PlaySoundAtCreatureWithStateGroup" is propagated). Strings "INVULNERABLE_OUT_OF" 0x01280374,
@@ -115,7 +115,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                              // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -184,7 +184,7 @@ void CCreatureAction_BriarRoseInvulnerableTeleport::Initialise()
     CDefPointer<CSpecialEffectsDef> effects;
     long effect = 0;
     if (CDefClassReference(PCreature.GetPItem()->m_pDef)->GetSubDef(&effects) && effects->CalcAndLookup("TELEPORT_POP", &effect))
-        CreateSpecialEffect(effect, PCreature.GetPItem()->GetPosition(), false);
+        CreateSpecialEffect(effect, PCreature.GetPItem()->GetPos(), false);
     CDefPointer<CEntitySoundDef> sounds;
     if (PCreature.GetPItem()->GetInterface(&soundPlayer, 0x10) && CDefClassReference(PCreature.GetPItem()->m_pDef)->GetSubDef(&sounds)) {
         const long* sound = sounds->SoundMap.GetPSound("TELEPORT_AWAY_WANK");

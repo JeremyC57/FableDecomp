@@ -2,7 +2,7 @@
 // Leaf: TeleportHeroToGuild
 // Retail 0x005FBD90, 272 bytes (+ int3), esp frame (speed TU).
 // Callees: CTCBase::PeekPlayerManager() const 0x00686D50, CPlayerManager::GetMainPlayer 0x00449960,
-// CPlayer::GetControlledCreature 0x00487DD0, malloc 0x00BFEA0E (the STLport list head node), CTCBase::GetWorld
+// CPlayer::PeekPControlledCreature 0x00487DD0, malloc 0x00BFEA0E (the STLport list head node), CTCBase::GetWorld
 // 0x00686A70 (non-const twin of 0x00686A80), the search tools' GetAllThings<CThing, list, CThingFilter_HasTC>
 // 0x00617860 (manifest "GetAllLeafThings<CThingBuilding const, vector>" is propagated: the body fills a list),
 // CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CGameDefinitionManager::Get 0x0044C6B0
@@ -35,6 +35,7 @@ class CThing { public:
     unsigned char _pad8e[0x91 - 0x8e];
     unsigned char IsDead : 1;                         // +0x91 bit 0
 };
+class CThingPlayerCreature : public CThing { };
 
 template <class T> struct list {                      // STLport list<T>: one head-node pointer
     struct _Node { _Node* _M_next; _Node* _M_prev; T _M_data; };
@@ -107,7 +108,7 @@ class CWorld { public:
     CThingSearchTools* ThingSearchTools;              // +0x20
 };
 class CPlayer { public:
-    CThing* GetControlledCreature() const;            // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -139,7 +140,7 @@ class CTCInventoryMap : public NInventory::CTCInventoryBase { public:
 
 void CTCInventoryMap::TeleportHeroToGuild()
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer().GetControlledCreature();
+    const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (hero && !hero->IsDead) {
         list<CThing*> teleporters;
         GetAllThings(CThingFilter_HasTC(0xDD), teleporters);

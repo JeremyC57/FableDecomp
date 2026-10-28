@@ -1,9 +1,9 @@
 // CTCBuyableHouse::SetOwnedByPlayer(bool owned) -- (un)register the house with the living hero (ownership flag, frame stamp, persisted state, the hero stats' house positions, eviction on sale), refresh the sign post and the player GUI
 // Retail 0x006C17B0, 435 bytes (tail `jmp` to CPlayerGui::Refresh with the argument slot reused). Callees: the
-// player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0,
+// player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // GFGetCurrentFrame @ 0x0049D870 (__fastcall), CThing::SetAsGameStatePersisted(bool) @ 0x004C7880, CTCBase::GetWorld
 // @ 0x00686A80, CWorld virtual slot 13 GetWorldMap, CWorldMap::GetCurrentRegionNumber @ 0x004FB150, CWorldMap::GetRegion
-// @ 0x004FC180, CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface, CTCHeroStats = 4), CThing::GetPosition @ 0x004C73D0,
+// @ 0x004FC180, CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface, CTCHeroStats = 4), CThing::GetPos @ 0x004C73D0,
 // CTCHeroStats::AddHousePosition @ 0x0057CB4B / RemoveHousePosition @ 0x0057ADF7, CTCBuyableHouse::Evict @ 0x006C0FD0,
 // CIntelligentPointer<CThing>::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80, NeedsMainSignPost @ 0x006BFB90,
 // CreateMainSignPost @ 0x006C0F00, CPlayerGui::Refresh(long) @ 0x004378C0 on g_pPlayerGui 0x013B8790.
@@ -26,7 +26,7 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                         // +0x91 bit 0
     void SetAsGameStatePersisted(bool persisted);   // 0x004C7880
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
     void Kill(bool b);                              // 0x004C9B80
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -40,8 +40,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
@@ -100,7 +101,7 @@ class CTCBuyableHouse { public:
 
 void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero && !hero->Dead) {
         if (owned) {
             OwnedByPlayer = true;
@@ -110,7 +111,7 @@ void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);
             CWorld* world = GetWorld();
-            stats->AddHousePosition(world->GetWorldMap()->GetRegion(region), Thing->GetPosition());
+            stats->AddHousePosition(world->GetWorldMap()->GetRegion(region), Thing->GetPos());
         } else {
             OwnedByPlayer = false;
             FrameToNextCheckIfWeNeedToCreateAnything = GFGetCurrentFrame();
@@ -118,7 +119,7 @@ void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);
             CWorld* world = GetWorld();
-            stats->RemoveHousePosition(world->GetWorldMap()->GetRegion(region), Thing->GetPosition());
+            stats->RemoveHousePosition(world->GetWorldMap()->GetRegion(region), Thing->GetPos());
             if (PDef->EvictOnSale)
                 Evict();
         }

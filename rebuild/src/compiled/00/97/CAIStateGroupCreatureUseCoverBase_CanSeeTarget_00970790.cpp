@@ -1,7 +1,7 @@
 // CAIStateGroup_CreatureUseCoverBase::CanSeeTarget() -- with a live target and cover thing: true when the cover has no physics mesh, else when the eye-height line from the creature to the target does not hit the cover's mesh
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00970790, 264 bytes (`ret`). Ego_r.pdb: ?CanSeeTarget@CAIStateGroup_CreatureUseCoverBase@@IAE_NXZ.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (IS_THING_ALIVE twice, then the cover/target things),
-// CTCPhysicsBase virtual slot 93 (+0x174, GetPhysicsMeshInfo), CThing::GetPosition 0x004C73D0,
+// CTCPhysicsBase virtual slot 93 (+0x174, GetPhysicsMeshInfo), CThing::GetPos 0x004C73D0,
 // CTCPhysicsBase::GetPhysicsMeshObject 0x006B0850 (CPhysicsMeshObject by hidden pointer) / ~CPhysicsMeshObject 0x00A127D0,
 // CPhysicsMeshObject::GetPointIntersectionFromTo(const C3DVector*, const C3DVector*, CMeshIntersectionData*) 0x00A12450;
 // 1.2f pool 0x0129749C (eye height).
@@ -71,7 +71,7 @@ class CThing { public:
     CTCPhysicsBaseV* GetPhysics() const { return Physics; }
     unsigned char _pad64[0x2d];
     unsigned char m_flags91;                       // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
 
@@ -107,9 +107,9 @@ bool CAIStateGroup_CreatureUseCoverBase::CanSeeTarget()
 {
     if (IS_THING_ALIVE(PTarget) && IS_THING_ALIVE(PCoverThing)) {
         if (PCoverThing.GetPItem()->GetPhysics()->GetPhysicsMeshInfo()) {
-            const C3DVector& eye = PBrain->PCreature->GetPosition();
+            const C3DVector& eye = PBrain->PCreature->GetPos();
             C3DVector from(eye.X, eye.Y, eye.Z + 1.2f);
-            const C3DVector& target = PTarget.GetPItem()->GetPosition();
+            const C3DVector& target = PTarget.GetPItem()->GetPos();
             C3DVector to(target.X, target.Y, target.Z + 1.2f);
             CTCPhysicsBaseV* physics = PCoverThing.GetPItem()->Physics;
             CMeshIntersectionData data;

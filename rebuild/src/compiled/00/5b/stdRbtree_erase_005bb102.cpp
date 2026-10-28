@@ -80,7 +80,9 @@ public:
     typedef _Rb_tree_iterator<_Value, _Nonconst_traits<_Value> > iterator;
     unsigned int _M_node_count;
     _Compare _M_key_compare;
+    protected:
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
     void clear();                                      // 0x005BABB8 (own COMDAT)
     void erase(iterator __position);                   // 0x005BACBD (own COMDAT)
     void erase(iterator __first, iterator __last);

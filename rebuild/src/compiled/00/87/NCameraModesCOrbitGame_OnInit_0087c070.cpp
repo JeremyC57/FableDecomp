@@ -4,9 +4,9 @@
 // Leaf: ?OnInit@COrbitGame
 // Name: vtable 0x0125C6DC slot 21 (the CBase OnInit slot, as CSimplePointBase::OnInit 0x008734F0); FableWin.pdb
 //       ?OnInit@COrbitGame@NCameraModes@@UAEXXZ.
-// Callees: NCameraModes::CBase::GetWorld 0x0084D050, CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetHeroThing 0x00487DC0,
+// Callees: NCameraModes::CBase::GetWorld 0x0084D050, CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetPControlledCreature 0x00487DC0,
 //          CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (the inlined out-parameter GetInterface for CTCGamePlayer,
-//          type 0xd0 = bit 16 of the bitset word +0x38), CTCGamePlayer::GetGame 0x005EDC90 (twice), CThing::GetPosition 0x004C73D0.
+//          type 0xd0 = bit 16 of the bitset word +0x38), CTCGamePlayer::GetGame 0x005EDC90 (twice), CThing::GetPos 0x004C73D0.
 //          The callee names and the GetInterface model are the landed COrbitGame::Update 0x0087C150's.
 // Layout: Ego_r.pdb COrbitGame Focus +0xc8, FocusDistance +0xd4, ZAngle +0xd8, XAngle +0xdc, 0x24 lower in retail (+0xa4..+0xb8);
 //         CBase DefaultFOV +0x04, CameraManager +0x40, ObservedPositionZOffset +0x8c; CGameCameraManager CurrentMode +0x98.
@@ -41,8 +41,9 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CTCTavernGame { public:
     void*   __vftable;
     CThing* ParentThing;                             // +0x04 (CTCBase)
@@ -51,7 +52,7 @@ class CTCGamePlayer { public:
     CTCTavernGame* GetGame() const;                  // 0x005EDC90
 };
 class CPlayer { public:
-    CThing* GetHeroThing() const;                    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CWorld { public:
 public:
@@ -90,11 +91,11 @@ struct COrbitGame : CBase {
 };
 void COrbitGame::OnInit()
 {
-    CThing* hero = GetWorld().PeekMyPlayer()->GetHeroThing();
+    CThing* hero = GetWorld().PeekMyPlayer()->GetPControlledCreature();
     CTCGamePlayer* player;
     hero->GetInterface(&player, 0xd0);
     if (player && player->GetGame()) {
-        Focus = player->GetGame()->ParentThing->GetPosition();
+        Focus = player->GetGame()->ParentThing->GetPos();
         Focus.Z += 1.0;
         FocusDistance = 1.0f;
         ZAngle = 0.0f;

@@ -50,7 +50,7 @@ struct CEnvironmentThemePriorityStackEntry {
     void* Start; void* Finish; void* End;
     unsigned char _b14[0x1c];
     ~CEnvironmentThemePriorityStackEntry() { if (Start) free(Start); }
-    void Reset(long theme);                                    // 0x00887330
+    void SetOnlyTheme(long themeID);                           // 0x00887330 (descriptive name shared with the landed 0x00887A30 caller; no PDB name)
 };
 inline void _Destroy(CEnvironmentThemePriorityStackEntry* first, CEnvironmentThemePriorityStackEntry* last)
 {
@@ -234,7 +234,7 @@ CEnvironment::CEnvironment(CGameDefinitionManager* defs)
     BuildThemes();
     for (long i = 0; i < 6; ++i) {
         PriorityStackChannels.push_back(CEnvironmentThemePriorityStack(5));
-        PriorityStackChannels._M_start[i].Start->Reset(0);
+        PriorityStackChannels._M_start[i].Start->SetOnlyTheme(0);
         ThemeSet.Day->GetBlendedTheme(&GameTickState.BlendedTheme[i], 12.0f);
         ThemeSet.Day->GetBlendedTheme(&PrevGameTickState.BlendedTheme[i], 12.0f);
     }

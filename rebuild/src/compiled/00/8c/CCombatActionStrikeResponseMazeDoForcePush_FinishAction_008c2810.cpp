@@ -4,7 +4,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020 (inlined GetInterface 0xAD =
 //   CTCBoss, bit 13 of +0x34; result ignored, the absent arm reads the shared out word), CDefClassBase::GetSubDef
 //   <CMazeBattleDef> 0x008C3510 (landed), CCombatAction_GenericStrikeResponseBase::FinishAction 0x008663D0, CThing::
-//   GetPosition 0x004C73D0, CTCBoss::GetCurrentPhase 0x007AED10 (catalog label CWorld::DrawGetEnvironment is a folded
+//   GetPos 0x004C73D0, CTCBoss::GetCurrentPhase 0x007AED10 (catalog label CWorld::DrawGetEnvironment is a folded
 //   name), 4.0f 0x0123088C, CCombatAction_WillForcePushInto(CThingCreatureBase*) 0x008C38B0 (vtable 0x012804FC RTTI; the
 //   catalog label CCombatAction_Guildmaster_HealFollowersInto is wrong), CThingCreatureBase::SetCurrentAction 0x006644F0,
 //   ~CCombatActionBase 0x0062E900; the def released inline (dec [def+4]; vcall slot 1).
@@ -97,7 +97,7 @@ class CThing { public:
     CDefClassBase* PBaseDef;                    // +0x70 CDefPointer<const CDefClassBase> object word
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetSubDef(T& out) const { return PBaseDef->GetSubDef(out); }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -163,8 +163,8 @@ void CCombatAction_StrikeResponseMazeDoForcePush::FinishAction()
     long hits = boss->GenericCounter + 1;
     if (PAttacker.GetPItem() && !(PAttacker.GetPItem()->m_flags91 & 1)) {
         CThingCreatureBase* me = PCreature.GetPItem();
-        const C3DVector& attackerPosition = PAttacker.GetPItem()->GetPosition();
-        const C3DVector& position = me->GetPosition();
+        const C3DVector& attackerPosition = PAttacker.GetPItem()->GetPos();
+        const C3DVector& position = me->GetPos();
         C3DVector offset(position.X - attackerPosition.X, position.Y - attackerPosition.Y, position.Z - attackerPosition.Z);
         if (boss->GetCurrentPhase() > 0 && offset.Get2DLength() < 4.0f) {
             if (hits > battleDef->TutorialNumGetHits || boss->GetCurrentPhase() == 2)

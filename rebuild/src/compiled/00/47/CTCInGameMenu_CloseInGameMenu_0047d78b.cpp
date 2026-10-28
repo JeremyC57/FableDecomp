@@ -11,7 +11,7 @@
 //          the components' deleting destructors (slot 0), vector<CComponent*>::erase @ 0x00485AA7,
 //          NUISystem::CManager::GetInstance() @ 0x0041E5F2 (slots 6, 29, 37, 40 and 42), the UI list clear @ 0x004855A3 on
 //          0x013B8A98, CPlayerGui::Close() @ 0x004374B0 (g_pPlayerGui 0x013B8790), CTCBase::GetPlayerManager() @ 0x00686D40,
-//          CPlayerManager::GetMainPlayer() @ 0x00449970, CPlayer::GetCharacterThing() @ 0x00487DC0,
+//          CPlayerManager::GetMainPlayer() @ 0x00449970, CPlayer::GetPControlledCreature() @ 0x00487DC0,
 //          IS_THING_ALIVE<CThing*> @ 0x0043DBD0, CMemoryBuffer::Copy @ 0x009F1760, CMainGameComponent::AddGameEvent
 //          @ 0x0041649C, the static menu reset @ 0x0041D165 (descriptive name).
 // Shape: the volume getters are the same-TU inline profile accessors (called after Get(), before the game state load);
@@ -90,13 +90,17 @@ extern CMainGameComponent* g_pMainGameComponent;     // 0x013B86A0
 
 class CThing { public:
 };
-template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad_0x00[0x90];
     signed char   PlayerNumber;                      // +0x90
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer { public:
-    CThingCreatureBase* GetCharacterThing();         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                        // 0x00449970
@@ -221,8 +225,8 @@ void CTCInGameMenu::CloseInGameMenu()
     NUISystem::CManager::GetInstance()->PlayUISound_0041d0a8(owner->GetIconsDef()->CloseMenuSound_1a8, true);
     g_pMainGameComponent->PDisplayEngine->Engine3D->SetCameraMoved(false, false);
     if (OpenInventory) {
-        CThingCreatureBase* const& hero = GetPlayerManager().GetMainPlayer()->GetCharacterThing();
-        if (IS_THING_ALIVE_0043dbd0<CThing*>(hero)) {
+        CThingPlayerCreature* const& hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+        if (IS_THING_ALIVE(hero)) {
             CGameEvent event(GAME_EVENT_OPEN_INVENTORY);
             event.Player = hero->PlayerNumber;
             event.AddLong(4);

@@ -2,7 +2,7 @@
 // Leaf: GiveDamageToThing
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080CA20, 464 bytes (`ret 4`), no EH frame.
 //         Ego_r.pdb: `?GiveDamageToThing@CTCDExplosion@@AAEXAAVCThingGameObject@@@Z`.
-// Callees: NCreatureMode::IsToEvadeAllHits(const CThing&) __fastcall @ 0x0085FA00, CThing::GetPosition @ 0x004C73D0,
+// Callees: NCreatureMode::IsToEvadeAllHits(const CThing&) __fastcall @ 0x0085FA00, CThing::GetPos @ 0x004C73D0,
 //          Geometry_ClosestPointOnLineSegment __fastcall @ 0x008F5970 (hidden result in ecx, start in edx, end + point
 //          on the stack), CHitParameters ctor (9 args) @ 0x00789238 / dtor @ 0x00789358, AddDamageWithAttribute @
 //          0x00868CA0, Geometry_DistancePointToLineSegment __fastcall @ 0x008F5BA0 (inline
@@ -85,7 +85,7 @@ public:
     unsigned char _pad4c[0x6c - 0x4c];
     unsigned long ThingTypeFlags;                   // +0x6C
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
@@ -158,7 +158,7 @@ public:
     CRetailVector<CIntelligentPointer<CThing> > HitThings;   // +0x54
     float GetDistanceFromMeAsRatioOfDamageRadius(const CThing* thing) const
     {
-        return Geometry_DistancePointToLineSegment(StartPos, EndPos, thing->GetPosition()) / DamageRadius;
+        return Geometry_DistancePointToLineSegment(StartPos, EndPos, thing->GetPos()) / DamageRadius;
     }
     void GiveDamageToThing(CThingGameObject& thing);
 };
@@ -167,8 +167,8 @@ void CTCDExplosion::GiveDamageToThing(CThingGameObject& thing)
 {
     if (NCreatureMode::IsToEvadeAllHits(thing))
         return;
-    C3DVector closest = Geometry_ClosestPointOnLineSegment(StartPos, EndPos, thing.GetPosition());
-    const C3DVector& position = thing.GetPosition();
+    C3DVector closest = Geometry_ClosestPointOnLineSegment(StartPos, EndPos, thing.GetPos());
+    const C3DVector& position = thing.GetPos();
     CHitParameters hit(0, ParentThing, 0, closest,
                        C3DVector(position.X - closest.X, position.Y - closest.Y, position.Z - closest.Z),
                        false, false, false, false);

@@ -22,7 +22,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -198,7 +200,6 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class C3DVector { public: float x, y, z; };
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 struct CThingVector {                           // std::vector<CThing*> (STLport: first, last, end)
@@ -253,7 +254,7 @@ bool CThingSearchTools::GetPBestThing(const CThingFilter_EscapePoint& filter, co
         CThing* thing = *it;
         if (GetThingType(thing) != filter.m_type)
             continue;
-        const C3DVector& pos = ((CThingPos*)thing)->GetPosition();
+        const C3DVector& pos = ((CThingPos*)thing)->GetPos();
         float dx = pos.x - compare.m_pos.x;
         float dy = pos.y - compare.m_pos.y;
         float dz = pos.z - compare.m_pos.z;
@@ -273,7 +274,7 @@ CThing* CAIStateGroup_StealStealableItem::FindPEscapePoint(bool nearest)
     CThing* result = 0;
     if (nearest) {
         PeekThingSearchTools()->GetPBestThing(CThingFilter_EscapePoint(1),
-            CThingCompare_Nearest(((CThingPos*)PBrain->PCreature)->GetPosition()), &result);
+            CThingCompare_Nearest(((CThingPos*)PBrain->PCreature)->GetPos()), &result);
         return result;
     } else {
     CThingVector points;

@@ -18,7 +18,7 @@ public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -54,5 +54,5 @@ public:
 
 C3DVector CTCAvoidRegionExit::GetPosition()
 {
-    return HasPosition() ? EntranceMarker.GetPItem()->GetPosition() : C3DVector(0.0f, 0.0f, 0.0f);
+    return HasPosition() ? EntranceMarker.GetPItem()->GetPos() : C3DVector(0.0f, 0.0f, 0.0f);
 }

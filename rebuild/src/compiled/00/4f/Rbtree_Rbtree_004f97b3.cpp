@@ -46,9 +46,15 @@ private:
 public:
     static SRbNode* _S_minimum(SRbNode* x) { while (x->Left != 0) x = x->Left; return x; }
     static SRbNode* _S_maximum(SRbNode* x) { while (x->Right != 0) x = x->Right; return x; }
+    protected:
     SRbNode*& _M_root() const { return Header->Parent; }
+    public:
+    protected:
     SRbNode*& _M_leftmost() const { return Header->Left; }
+    public:
+    protected:
     SRbNode*& _M_rightmost() const { return Header->Right; }
+    public:
     static unsigned char& _S_color(SRbNode* x) { return x->Color; }
 };
 

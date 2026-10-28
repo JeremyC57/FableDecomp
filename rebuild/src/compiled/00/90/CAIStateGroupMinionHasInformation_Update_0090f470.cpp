@@ -1,7 +1,7 @@
 // CAIStateGroup_MinionHasInformation::Update() -- while the minion still wants the hero's attention, look at the (living) hero; every 5 seconds wave (playing ATTRACT_HERO_ATTENTION through the sound component, but after 20 seconds only every fifth wave), every 10 seconds wander; terminate when the hero is gone, attention is no longer wanted or the wander fails
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F470, length 418 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CAIStateGroupBase brain accessor @ 0x008FCF80 (brain +0x20), the main-player accessor @ 0x00449960,
-// CPlayer::GetHeroCreature @ 0x00487DC0, CreatureWantsPlayersAttention @ 0x0090F290, CBaseIntelligentPointer ctor
+// CPlayer::GetPControlledCreature @ 0x00487DC0, CreatureWantsPlayersAttention @ 0x0090F290, CBaseIntelligentPointer ctor
 // @ 0x00A01B10 / SetPItem @ 0x00A01B90 (CIntelligentPointer<const CThing> vtable 0x01237F1C, by value),
 // CAIStateGroupBase::AIAction_LookAtThing @ 0x0097D6F0, CThingAICreature WaveWithInformation getter @ 0x008300F0 and
 // WanderWithInformation getter @ 0x008300E0 (out of line), CWorld::GetWorldFrame @ 0x0049D870, CVectorMap::LowerBound
@@ -39,6 +39,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CThingAICreature : public CThing { public:
     bool GetWanderWithInformation() const;      // 0x008300E0 (+0x1c8 bit 3)
     bool GetWaveWithInformation() const;        // 0x008300F0 (+0x1c8 bit 4)
@@ -69,7 +70,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CPlayer { public:
-    CThing* GetHeroCreature();                  // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetPMainPlayer();                  // 0x00449960
@@ -110,7 +111,7 @@ struct CAIStateGroup_MinionHasInformation : CAIStateGroupBase {
 
 void CAIStateGroup_MinionHasInformation::Update()
 {
-    CThing* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetPControlledCreature();
     if (hero == 0 || (hero->m_flags91 & 1)) {
         Terminate();
         return;

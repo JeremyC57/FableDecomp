@@ -64,7 +64,7 @@ public:
             it = map->last;
         return it->component;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     long GetVillagerState();                    // 0x00662010 (descriptive)
 };
 struct CBaseIntelligentPointer {
@@ -74,7 +74,10 @@ struct CBaseIntelligentPointer {
 };
 bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& thing);   // 0x004CC340
 bool __fastcall IS_THING_ALIVE_Villager(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
-bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 class CASoundBank { public:
     long GetSoundIndexFromSymbol(const CCharString& symbol);   // 0x00A01920
 };
@@ -153,7 +156,7 @@ class CTCLight { public:
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThingPlayerCreature* GetHeroThing();       // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -282,11 +285,11 @@ void CTCVillage::FrameUpdate()
                     if (soundBank) {
                         long sample = soundBank->GetSoundIndexFromSymbol("SND_" + entry->SoundName);
                         if (sample > 0) {
-                            C3DVector pos = ParentThing->GetPosition();
-                            CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
-                            if (IS_THING_ALIVE_0043dbd0(hero)) {
+                            C3DVector pos = ParentThing->GetPos();
+                            CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+                            if (IS_THING_ALIVE(hero)) {
                                 C3DVector offset = hero->PhysicsTC->GetRHSet().Forward * 20.0f;
-                                pos = hero->GetPosition() + offset;
+                                pos = hero->GetPos() + offset;
                             }
                             {
                                 CThingSoundEmitter* emitter = CThingSoundEmitter::Create(pos, 0, true);

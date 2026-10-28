@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008ED090, 220 bytes (`ret 4`; the kill arm tail-jumps reusing the argument slot).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (two inlined lookups), the inventory item's category
 // getter @ 0x005D9030 (manifest "CCategory::GetCategoryIdentifier", propagated; returns the interface type of the inventory
-// that holds it), CTCBase::GetPlayerManager() @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature
+// that holds it), CTCBase::GetPlayerManager() @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature
 // @ 0x00487DC0, puts @ 0x00BFEAF2 + abort @ 0x00BFEAEC (STLport's exception-free bitset range check, literal "bitset"
 // @ 0x0122E068), CTCInventoryItem::AddToInventory(CTCInventoryBase*, bool, bool, long, bool, bool) @ 0x005D8D50, CThing::Kill(bool)
 // @ 0x004C9B80.
@@ -49,13 +49,14 @@ class CThing { public:
     }
     void Kill(bool immediately);                        // 0x004C9B80
 };
+class CThingPlayerCreature : public CThing { };
 struct CTCInventoryBase;
 class CTCInventoryItem { public:
     long GetInventoryType();                            // 0x005D9030
     bool AddToInventory(CTCInventoryBase* inventory, bool a, bool b, long c, bool d, bool e);   // 0x005D8D50
 };
 class CPlayer { public:
-    CThing* GetHeroCreature();                          // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -79,7 +80,7 @@ void CTCContainer::AddItemToInventory(CThing* item)
     if (item->HasTC(0x1a)) {
         CTCInventoryItem* inventoryItem = (CTCInventoryItem*)item->GetTC(0x1a);
         long type = inventoryItem->GetInventoryType();
-        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroCreature();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         inventoryItem->AddToInventory((CTCInventoryBase*)hero->GetTCIfPresent(type), false, true, 0, false, false);
     } else
         item->Kill(false);

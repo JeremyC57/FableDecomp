@@ -82,6 +82,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -99,7 +102,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 public:
     void Terminate();   // 0x008FCF40
 };
@@ -158,7 +163,6 @@ class CWorld { public:
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
 class CThingCreatureBase { public:
@@ -186,8 +190,8 @@ void CAIStateGroup_MeleeCombatNearby::AttackEnemy()
 {
     if (((CThingCreatureBase*)PBrain->PCreature)->IsRegisteredCombatant()) {
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
-        CWorld* world = GetPWorld();
-        world->CombatManager->SetAttackerAsReadyToAttack(creature, true);
+        const CWorld& world = GetWorld();
+        world.CombatManager->SetAttackerAsReadyToAttack(creature, true);
     }
     do {
         EAIActionReturn result = AIAction_PumpCombatActions();
@@ -202,8 +206,8 @@ void CAIStateGroup_MeleeCombatNearby::AttackEnemy()
         if (!IsEnemyCreatureNearCombatPosition())
             return;
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
-        CWorld* world = GetPWorld();
-        if (world->GetPCombatManager()->IsAttackerReadyToAttack(creature))
+        const CWorld& world = GetWorld();
+        if (world.GetPCombatManager()->IsAttackerReadyToAttack(creature))
             return;
     } while (true);
 }

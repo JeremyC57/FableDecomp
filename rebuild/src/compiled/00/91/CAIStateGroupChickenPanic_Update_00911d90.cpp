@@ -1,6 +1,6 @@
 // CAIStateGroup_ChickenPanic::Update() -- while the last attacker is within 8 units, run to the nearest flee position; then terminate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00911D90, length 332 bytes.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0 and the const copy @ 0x006A4D00
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0 and the const copy @ 0x006A4D00
 //          (manifest "CVertexBufferWin32::DoSizeof" is propagated), CTCCreatureNavigation::GetNearestFleePosition(const C3DVector&,
 //          float, C3DVector*) @ 0x006CB840, CAIStateGroupBase::AIAction_MoveToPosProximity @ 0x0097E890, AIAction_DoNothing
 //          @ 0x0097E200, Terminate @ 0x008FCF40 (manifest "CXMVPlaybackInfo" is propagated).
@@ -65,14 +65,16 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class CThing { public:
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0xf4 - 0x4c];
     CIntelligentPointer<CThing> LastAttacker;       // +0xf4 (CThingCreatureBase)
-    const C3DVector& GetPosition();             // 0x004C73D0
-    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
+    const C3DVector& GetPos() const;             // 0x004C73D0
     bool TestTC(long interfaceType) const
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
@@ -126,8 +128,8 @@ void CAIStateGroup_ChickenPanic::Update()
         if (!PBrain->GetPCreature()->LastAttacker.GetPItem())
             break;
         CThing* creature = PBrain->PCreature;
-        const C3DVector& attackerPos = creature->LastAttacker.GetPItem()->GetPosition();
-        const C3DVector& pos = creature->GetPosition();
+        const C3DVector& attackerPos = creature->LastAttacker.GetPItem()->GetPos();
+        const C3DVector& pos = creature->GetPos();
         C2DVector delta;
         delta.x = pos.x - attackerPos.x;
         delta.y = pos.y - attackerPos.y;
@@ -137,7 +139,7 @@ void CAIStateGroup_ChickenPanic::Update()
         CThing* chicken = PBrain->PCreature;
         chicken->GetInterfaceT(&navigation, 7);
         C3DVector fleePos;
-        if (navigation->GetNearestFleePosition(((const CThing*)chicken->LastAttacker.GetPItem())->GetPosition_006a4d00(), 8.0f, &fleePos)) {
+        if (navigation->GetNearestFleePosition(((const CThing*)chicken->LastAttacker.GetPItem())->PeekPos(), 8.0f, &fleePos)) {
             bool reached = false;
             AIAction_MoveToPosProximity(1, fleePos, 1.0f, &reached, 5, true, false, true, 0, true, 0.0f);
         }

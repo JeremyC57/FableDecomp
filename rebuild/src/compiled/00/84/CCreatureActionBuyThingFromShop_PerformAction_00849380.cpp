@@ -10,7 +10,7 @@
 //   @ 0x005BF2ED, CCharString() @ 0x0099E4B0 / (const char*, long) @ 0x0099EBF0 / operator=(const char*) @ 0x0099EFE0 / ~ @
 //   0x0099EAE0, CThing::GetMainGameComponent @ 0x004C7A70 (a static accessor called on the creature; font bank +0x1614c),
 //   CSubtitleRenderer::SetText @ 0x00492ED1 on the player GUI @ 0x013B8790 (+0x18), CTCHeroStats::AddMoney @ 0x0057B327,
-//   CThing::GetPosition @ 0x004C73D0, CThingObject::Create @ 0x00703210 (__fastcall), CTCInventoryItem::AddToInventory @
+//   CThing::GetPos @ 0x004C73D0, CThingObject::Create @ 0x00703210 (__fastcall), CTCInventoryItem::AddToInventory @
 //   0x005D8D50, CTCStockItem::GetShopTC @ 0x007F4FC0, operator new @ 0x00BFEA1A (0x1c bytes), NEntityEvents::CEventSoldItem ctor
 //   @ 0x0084AF30, CTCEntityEvents::AddEvent @ 0x008113C0, CCreatureActionBase::GetWorld @ 0x00692940, CMessageEventManager::
 //   AddMessage @ 0x00687540. Strings: "You already have this item!" @ 0x012758B8, "You don't have room in your inventory for this
@@ -22,7 +22,7 @@
 //   `const CThing*`), so every lookup key shares its frame word with its out pointer. The subtitle renderer is a named local
 //   read before the first lookup; the inventory lookup is the range-checked bitset::test form. The creation goes through an
 //   inline helper taking the three things (target, creature, creature) plus the implicit "" name: the three GetPItem calls come
-//   first, the def word is read into a local in the helper, then the stack arguments, then GetPosition into edx. The font bank
+//   first, the def word is read into a local in the helper, then the stack arguments, then GetPos into edx. The font bank
 //   comes from a named CMainGameComponent local (a named font-bank local or a plain argument picks eax over edx); the sold
 //   event's buyer goes through the intelligent pointer's inline conversion (fetched before the push of `false`); the shopkeeper
 //   is an inline CTCShop accessor (`lea ecx,[eax+10h]`); the message manager is a named local after a named buyer local.
@@ -93,7 +93,7 @@ class CThing { public:
     signed char    PlayerNumber;                        // +0x90
     unsigned char  m_flags91;                           // +0x91 bit 0: dead
     long GetPlayer() const { return PlayerNumber; }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     CMainGameComponent* GetMainGameComponent();         // 0x004C7A70
     bool TestComponent(unsigned long position) const    // STLport bitset<274>::test (exception-free range check)
     {
@@ -144,7 +144,7 @@ CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, l
 __forceinline CThing* CreateThingAt(const CThing* item, const CThing* at, const CThing* owner, const CCharString& name)
 {
     long defIndex = item->DefIndex;
-    return CreateThingObject(defIndex, &at->GetPosition(), owner->GetPlayer(), 0, 0, name);
+    return CreateThingObject(defIndex, &at->GetPos(), owner->GetPlayer(), 0, 0, name);
 }
 
 struct CBaseIntelligentPointer {
@@ -257,7 +257,7 @@ void CCreatureAction_BuyThingFromShop::PerformAction()
                     events->AddEvent(new NEntityEvents::CEventSoldItem(PCreature, PTarget.GetPItem(), false));
                 CThing* buyer = PCreature.GetPItem();
                 CMessageEventManager* manager = GetWorld()->MessageEventManager;
-                manager->AddMessage(0x13, 1000, buyer->GetPosition(), PCreature.GetPItem(), 0, 0.0f, 0.0f, 0);
+                manager->AddMessage(0x13, 1000, buyer->GetPos(), PCreature.GetPItem(), 0, 0.0f, 0.0f, 0);
             }
         }
     }

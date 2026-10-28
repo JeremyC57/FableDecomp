@@ -1,5 +1,5 @@
 // CTCDParticleEmitter::FrameUpdate() -- count down the wait for the particle to load (dying when it runs out), die when
-//   (`SetPositionFrom(ParentThing->GetPosition())`): the by-value argument copy gives retail's load-ahead interleave.
+//   (`SetPositionFrom(ParentThing->GetPos())`): the by-value argument copy gives retail's load-ahead interleave.
 // the emitter is gone or the die-off timer expires, follow an independent object's physics, die with a vanished attached
 // thing, then refresh the attachment (hidden state, thing or camera) and re-arm the position/orientation resets
 // Leaf: FrameUpdate
@@ -114,7 +114,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
     void Kill(bool immediately);                             // 0x004C9B80
     const CRightHandedSet& GetOrientation() const { return PhysicsTC->GetOrientation(); }
 };
@@ -215,7 +215,7 @@ void CTCDParticleEmitter::FrameUpdate()
         C3DOrientationInterpolator orientation;
         ParentThing->PhysicsTC->GetOrientationInterpolator(&orientation);
         if (PEmitter.GetPItem()) {
-            SetPositionFrom(ParentThing->GetPosition());
+            SetPositionFrom(ParentThing->GetPos());
             PEmitter.GetPItem()->SetOrientation(orientation);
         } else if (WaitingForParticleToLoad) {
             PCreationParameters->RHSet = orientation.End;

@@ -42,19 +42,25 @@ public:
     typedef T* pointer;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
+    protected:
     template <class ForwardIter>
     T* _M_allocate_and_copy(unsigned int n, ForwardIter first, ForwardIter last);   // 0x009B2780
+    public:
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer s, pointer f, pointer e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
     void reserve(size_type n);
 };
 

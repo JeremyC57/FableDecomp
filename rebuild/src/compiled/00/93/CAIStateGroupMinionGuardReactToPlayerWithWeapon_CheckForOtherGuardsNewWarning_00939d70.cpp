@@ -62,13 +62,15 @@ class CMessageEventManager { public:
 class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
-    CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+    CMessageEventManager* GetPMessageManager() const { return m_pMessageManager; }
 };
 
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13
-    CWorld* GetPThingWorld();               // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
 };
 
 struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
@@ -80,7 +82,7 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::CheckForOtherGuardsNewWarning()
 {
-    CMessageEvent* event = GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage_00939cb0(
+    CMessageEvent* event = PeekWorld().GetPMessageManager()->FindMostRecentMessage_00939cb0(
         CMessageEventFilter_IsOfType(0x1b) && CMessageEventFilter_CanBeSeenOrHeard(m_lastWarningId));
     if (event) {
         m_lastWarningId = event->m_id;

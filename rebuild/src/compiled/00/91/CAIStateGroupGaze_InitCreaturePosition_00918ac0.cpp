@@ -25,7 +25,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 class C3DVector { public: float X, Y, Z; };
 
 class CThing { public:
-    const C3DVector* GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
 class CThingCreatureBase
@@ -74,7 +74,7 @@ bool CAIStateGroup_Gaze::InitCreaturePosition()
         if (WorldRandomRange(*GetPWorldSeed(), 100) < 30.0f) {
             CThingGameObject* marker = FindFreeGazePos();
             CThingAICreature* creature = PBrain->Creature;
-            return creature->AutoPlaceNear(*((CThing*)marker)->GetPosition(), 1.0f);
+            return creature->AutoPlaceNear(((CThing*)marker)->GetPos(), 1.0f);
         }
     }
     return false;

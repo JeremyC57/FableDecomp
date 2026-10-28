@@ -5,7 +5,7 @@
 //   0x008FD010, GetPBestTargetToFaceForCreature 0x0097E140 (__fastcall), CTCLook::TrackNearestInterestingThing 0x00753840,
 //   CTCCreatureNavigation::GetNextNavPosOnRoute 0x006CBAC0 (CCreatureNavOutput by hidden pointer),
 //   CThingCreatureBase::IsPerformingAnyAction 0x006622A0, the current action's virtual slot 49 (+0xC4),
-//   CBrainOutput::CBrainOutput 0x00835620, CThingCreatureBase::GetPosition 0x006A4D00, CBrainOutput::SetAsLookAtThing
+//   CBrainOutput::CBrainOutput 0x00835620, CThingCreatureBase::PeekPos 0x006A4D00, CBrainOutput::SetAsLookAtThing
 //   0x0093E760, CAIBrain::SetBrainOutput 0x0088B8F0, ~CBaseIntelligentPointer 0x00A01C10, operator delete 0x00BFE9BC,
 //   the brain's virtual slot 2 (+8, yield). Epsilon 0.0001f @ 0x0129BA3C.
 // Layout: state group per engine/CAIStateGroupBase.h (PBrain +4), brain creature +0x18; creature interface bitset +0x20
@@ -84,7 +84,10 @@ struct CCreatureActionVirtuals {
     virtual bool BlocksMovement();              // slot 49 (+0xc4)
 };
 
-class CThingCreatureBase { public:
+class CThingPhysical { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -119,7 +122,6 @@ class CThingCreatureBase { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;       // 0x006A4D00
 public:
     bool IsPerformingAnyAction() const;   // 0x006622A0
 };
@@ -230,7 +232,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MoveToPos(EAIActionRepeat repeat, C3
                 break;
             case 2: {
                 CBrainOutput brainOutput;
-                brainOutput.SetAsMoveToPos(output.Offset + GetCreature()->GetPosition(), input);
+                brainOutput.SetAsMoveToPos(output.Offset + GetCreature()->PeekPos(), input);
                 if (faceTarget && !IsDead(faceTarget))
                     brainOutput.SetAsLookAtThing(faceTarget, 0x97);
                 else if (lookAround) {

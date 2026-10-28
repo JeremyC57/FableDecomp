@@ -1,5 +1,5 @@
 // Behaviour test for CThingCompare_NearestToPos::operator()<CThing> (0x007A2F90): links against the source object's
-// instantiation; CThing::GetPosition is defined here over a position at the start of the test thing.
+// instantiation; CThing::GetPos is defined here over a position at the start of the test thing.
 #include <cstdio>
 class C3DVector {
 public:
@@ -8,10 +8,10 @@ public:
 };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;
+    const C3DVector& GetPos() const;
 };
 struct STestThing { C3DVector Pos; STestThing(float x, float y, float z) : Pos(x, y, z) { } };
-const C3DVector& CThing::GetPosition() const { return reinterpret_cast<const STestThing*>(this)->Pos; }
+const C3DVector& CThing::GetPos() const { return reinterpret_cast<const STestThing*>(this)->Pos; }
 class CThingCompare_NearestToPos {
 public:
     C3DVector Pos;

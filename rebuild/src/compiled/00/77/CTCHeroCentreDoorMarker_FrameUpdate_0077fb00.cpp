@@ -4,7 +4,7 @@
 //
 // Retail 0x0077FB00, 321 bytes (plain `ret`, /GS cookie 0x0139C8A8 checked by __security_check_cookie @ 0x00BFE9F9).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (inline IS_THING_ALIVE pair, then the UID read), CTCBase::GetPlayerManager
-// @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CThing::GetPosition @ 0x004C73D0
+// @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0
 // (own thing first, then the hero), CMemoryBuffer::Copy @ 0x009F1760 (DoorType, then the 8-byte UID), CMainGameComponent::AddGameEvent
 // @ 0x0041649C on g_pMainGameComponent 0x013B86A0, CTCHeroCentreDoorMarker::UpdateParticleExperience @ 0x0077F970.
 // Shape: the landed CTCHeroCentre::OpenTrainingScreen 0x0077D4B0 event model (CGameEvent over an empty CMemoryBuffer); the planar
@@ -19,8 +19,9 @@ public:
     unsigned char _pad20[0x90 - 0x20];
     signed char Player;                                 // +0x90
     unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -41,7 +42,7 @@ public:
 template <class P> inline bool IS_THING_ALIVE(const P& p) { return p.GetPItem() && !p.GetPItem()->Dead; }
 
 class CPlayer { public:
-    CThing* GetHeroThing();                             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
@@ -90,10 +91,10 @@ public:
 void CTCHeroCentreDoorMarker::FrameUpdate()
 {
     if (IS_THING_ALIVE(PHeroCentre)) {
-        CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
         if (hero && !hero->Dead) {
-            const C3DVector& pos = ParentThing->GetPosition();
-            const C3DVector& heroPos = hero->GetPosition();
+            const C3DVector& pos = ParentThing->GetPos();
+            const C3DVector& heroPos = hero->GetPos();
             float dx = heroPos.X - pos.X;
             float dy = heroPos.Y - pos.Y;
             float radius = Radius;

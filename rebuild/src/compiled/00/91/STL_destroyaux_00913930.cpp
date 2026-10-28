@@ -171,7 +171,9 @@ public:
             _M_push_back_aux_v(__t);
     }
     void clear();
+    protected:
     void _M_push_back_aux_v(const value_type& __t);     // 0x00913D60
+    public:
 };
 
 template <class _Tp, class _Alloc>

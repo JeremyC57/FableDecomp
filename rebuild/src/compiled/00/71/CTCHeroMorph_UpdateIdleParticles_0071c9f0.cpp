@@ -1,6 +1,6 @@
 // CTCHeroMorph::UpdateIdleParticles() -- prunes dead idle emitters; when the hero has stood still long enough spawns the idle particle morphs, otherwise kills them
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071C9F0, 832 bytes, `ret`.
-// Callees: CPlayerManager/GetMainPlayer folded getters @ 0x00686D50/0x00449960, CPlayer::GetMovement @ 0x00487DD0,
+// Callees: CPlayerManager/GetMainPlayer folded getters @ 0x00686D50/0x00449960, CPlayer::PeekPControlledCreature @ 0x00487DD0,
 //          GFGetCurrentFrame, CDefClassBase::GetSubDef<CHeroMorphDef> @ 0x0071F930 (folded label), CParticleMorphs::GetAllMorphsOfType
 //          @ 0x0081B160, GetMorphStrength @ 0x0071BA60, IS_THING_ALIVE @ 0x0040DCE0, CThing::GetTCDriver @ 0x004ACB50,
 //          CTCDParticleEmitter::Create / AttachToThing, CIntelligentPointer(T*) @ 0x004A96F0, KillIdleParticles @ 0x0071C1F0,
@@ -122,19 +122,21 @@ public:
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                              // +0x91
     __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     bool GetTCDriver(CTCDParticleEmitter** out);        // 0x004ACB50
 };
 bool __fastcall IS_THING_ALIVE(CThing* const& thing);  // 0x0040DCE0
+class CThingPlayerCreature;
 class CPlayer {
 public:
     long GetCurrentMode() const;                        // 0x00633BE0
-    struct CMovement* GetMovement();                    // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
 };
 struct CMovement {
     unsigned char _pad00[0x10c];
     C3DVector Velocity;                                 // +0x10C
 };
+class CThingPlayerCreature : public CMovement { };
 class CPlayerManager {
 public:
     CPlayer* GetMainPlayer() const;                           // 0x00449960
@@ -187,7 +189,7 @@ void CTCHeroMorph::UpdateIdleParticles()
             node = node->_M_next;
     }
     long mode = PeekPlayerManager().GetMainPlayer()->GetCurrentMode();
-    CMovement* movement = PeekPlayerManager().GetMainPlayer()->GetMovement();
+    const CMovement* movement = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
     if (mode == 1 && !(movement->Velocity.X * movement->Velocity.X + movement->Velocity.Y * movement->Velocity.Y
                        + movement->Velocity.Z * movement->Velocity.Z > g_fEpsilon * g_fEpsilon)) {
         if (!FrameHeroBecameIdle) {
@@ -208,9 +210,9 @@ void CTCHeroMorph::UpdateIdleParticles()
                             float t = 1.0f;
                             if (fabs(entry->Max - entry->Min) > g_fEpsilon)
                                 t = (value - entry->Min) / (entry->Max - entry->Min);
-                            particle = CTCDParticleEmitter::Create(entry->ParticleType, entry->ParticleTypeEnd, t, Thing->GetPosition(), false);
+                            particle = CTCDParticleEmitter::Create(entry->ParticleType, entry->ParticleTypeEnd, t, Thing->GetPos(), false);
                         } else {
-                            particle = CTCDParticleEmitter::Create(entry->ParticleType, Thing->GetPosition(), false);
+                            particle = CTCDParticleEmitter::Create(entry->ParticleType, Thing->GetPos(), false);
                         }
                         if (IS_THING_ALIVE((CThing*)particle)) {
                             CTCDParticleEmitter* emitter = 0;

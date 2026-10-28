@@ -5,7 +5,7 @@
 // Callees: CThingCreatureBase::GetCreatureType @ 0x00662000, the const CVectorMap LowerBound @ 0x004365B0,
 //   CTCVillageMember::GetPVillage @ 0x007EE540, CVillage::IsVillagerPerformingVillageTask @ 0x00659104,
 //   CTCShopKeeper::HasBeenCustomer @ 0x00798DD0, the opinion manager's GetOpinionAttitudeToPlayer @ 0x00701840
-//   (reached through [[0x013B8A1C]+0x24]+0x74), CIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition
+//   (reached through [[0x013B8A1C]+0x24]+0x74), CIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos
 //   const @ 0x004C73D0; 6.0f @ 0x0126C11C.
 // Layout (Ego_r.pdb, matches retail): ShopperContainer +0, Pos +4, TCShopKeeper +0x10, AllowExistingShopper +0x14;
 //   CTCBase::ParentThing +4. CThing (retail, 0x10 below the PDB): thing-type byte +0x10, bitset +0x20, map +0x44.
@@ -39,7 +39,7 @@ class CThing { public:
     unsigned char  _pad11[0x20 - 0x11];
     unsigned long  m_presentBits[9];                    // +0x20
     CInterfaceMap  m_interfaces;                        // +0x44
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -125,7 +125,7 @@ bool CThingFilter_IsPotentialCustomer::operator()(const CThing& thing) const
                 if (holder->Item.GetPItem() != ShopperContainer)
                     return false;
             }
-            if (ShopperContainer || Length(Pos - thing.GetPosition()) < 6.0f)
+            if (ShopperContainer || Length(Pos - thing.GetPos()) < 6.0f)
                 return true;
         }
     }

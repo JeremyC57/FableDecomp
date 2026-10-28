@@ -6,7 +6,7 @@
 //   GetHiddenCoverPosAndSetUpCoverThing 0x00970CD0, SetFailedToFindCover 0x00970590, IsLowCover 0x00970760, MoveIntoCover
 //   0x009711D0, RemoveThingFromCoverList 0x009708A0, ClearCoverThing 0x00970B60, DuckBehindCover 0x009713E0,
 //   GetHiddenCoverPos 0x00970930, CanSeeTarget 0x00970790, RefreshCoverList 0x009710D0, IsStillRunnable 0x00979E90,
-//   AttackTargetThing 0x00979F70, MoveFromCoverToFiringPosition 0x0097A1B0, CThing::GetPosition 0x004C73D0,
+//   AttackTargetThing 0x00979F70, MoveFromCoverToFiringPosition 0x0097A1B0, CThing::GetPos 0x004C73D0,
 //   CCreatureAction_ProjectileCrouch 0x008B8310 / ~CCombatActionBase 0x0062E900, AIAction_PerformActionAndWait 0x0097DB70,
 //   GetPWorld 0x008FCFC0 / CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890, IS_THING_ALIVE 0x006961F0 (__fastcall),
 //   CIntelligentPointer<const CThing>(CThing*) 0x0056C860 / (const CIntelligentPointer<const CThing>&) 0x0091F990 / dtor
@@ -52,7 +52,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -176,7 +176,7 @@ struct CAIStateGroup_CreatureTakeCover {
     }
     __forceinline float FlatDistanceTo(const C3DVector& pos)
     {
-        const C3DVector& here = GetCreature()->GetPosition();
+        const C3DVector& here = GetCreature()->GetPos();
         float dx = pos.X - here.X;
         float dy = pos.Y - here.Y;
         return (float)sqrt(dx * dx + dy * dy);

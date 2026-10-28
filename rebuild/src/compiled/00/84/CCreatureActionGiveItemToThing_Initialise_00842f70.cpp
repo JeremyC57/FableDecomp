@@ -12,8 +12,10 @@
 class C3DVector;
 class CMessageEvent;
 
-class CThing { public:                             // engine/CThing.h exists but is not used: only the position accessor is modelled
-    const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;   // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:                             // engine/CThing.h exists but is not used: only the position accessor is modelled
 };
 
 class CMessageEventManager { public:
@@ -64,5 +66,5 @@ void CCreatureAction_GiveItemToThing::Initialise()
     CThing* pCreatureThing = PCreature.GetPItem();
     CThing* pCreature = PCreature.GetPItem();
     CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;   // named: retail resolves the manager (ebp) before the arguments
-    pManager->AddMessage(0x14, 0x10, &pCreature->GetPosition_006a4d00(), pCreatureThing, PReceivingThing.GetPItem(), 0.0f, 0.0f, 5);
+    pManager->AddMessage(0x14, 0x10, &pCreature->PeekPos(), pCreatureThing, PReceivingThing.GetPItem(), 0.0f, 0.0f, 5);
 }

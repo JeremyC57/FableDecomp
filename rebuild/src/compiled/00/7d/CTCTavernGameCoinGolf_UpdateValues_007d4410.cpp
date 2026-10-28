@@ -4,7 +4,7 @@
 //   at 0x0126F53C (the catalog's "CTCTavernGameShoveHaPenny" label is wrong; the ShoveHaPenny one is 0x007D0850).
 // Callees: CTCTavernGame::UpdateValues() 0x005EA010; GetHeroStats 0x005EB4B0; GetDef 0x005EA000; CThing::GetDefName
 //   0x004C7CC0; CDefString::operator==(const char*) 0x005B3440; GivePrize 0x005EB590; GetMainPlayer 0x00449960;
-//   GetHeroThing 0x00487DC0; LowerBound 0x0040F020; UpdateScoreForActivity 0x0055F3B0.
+//   GetPControlledCreature 0x00487DC0; LowerBound 0x0040F020; UpdateScoreForActivity 0x0055F3B0.
 // Layout: as the landed ShoveHaPenny UpdateValues 0x007D0850; CTCHeroStats (retail) BestScoreCoinGolf +0x184,
 //   BestScoreCoinGolfSnowspire +0x188, PrizeGivenCoinGolf +0x197, PrizeGivenCoinGolfSnowspire +0x198.
 class CDefString { public:                                 // 4-byte def-name handle (user constructor: hidden-pointer return)
@@ -40,12 +40,13 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                  // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;          // 0x00449960
@@ -118,7 +119,7 @@ bool CTCTavernGameCoinGolf::UpdateValues()
                 stats->PrizeGivenCoinGolf = true;
                 GivePrize();
             }
-            CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+            CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
             CTCHeroOnlineScoreboard* scoreboard;
             hero->GetInterface(&scoreboard, 0x10d);
             scoreboard->UpdateScoreForActivity(0x16, Score, true);
@@ -133,7 +134,7 @@ bool CTCTavernGameCoinGolf::UpdateValues()
             stats->PrizeGivenCoinGolfSnowspire = true;
             GivePrize();
         }
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         hero->GetInterface(&scoreboard, 0x10d);
         scoreboard->UpdateScoreForActivity(0x17, Score, true);

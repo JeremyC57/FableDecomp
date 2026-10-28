@@ -1,7 +1,7 @@
 // NPlayerGui::CDrawAbilityButtons::DrawAbilityList(CEnginePrimitivePrepareInfo*, float) -- draw the hero's ability grid: for a live hero with the abilities component (0x6f), scale by 0.75, fetch the ability def list, and starting at the row after the scroll row draw every row that holds at least one ability (each column at its slot offset), then wrap round to the rows before the scroll row, numbering the drawn rows consecutively from 0
 // Leaf: DrawAbilityList
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064DB2B, length 546 bytes (frame pointer /Os TU, `ret 8`).
-// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetControlledCreature 0x00487DD0, IS_THING_ALIVE 0x0043DBF0
+// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::PeekPControlledCreature 0x00487DD0, IS_THING_ALIVE 0x0043DBF0
 //   (__fastcall, by reference; same-TU stand-in body), virtual slot 5 (slot-offset fill), std::bitset::test 0x00410DE0, LowerBound
 //   0x004365B0 (const; same-TU stand-in body), CTCHeroAbilities ability-list fill 0x005F4B30, the ability vector dtor 0x005F9F14,
 //   DrawAbilityButton 0x0064AE80, CRT free 0x00BFEA14 (offset vector storage).
@@ -56,6 +56,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
 bool IsThingAliveImpl(const void* thing);
 #pragma auto_inline(off)
@@ -65,7 +66,7 @@ template <class T> bool __fastcall IS_THING_ALIVE(const T& thing)
 }
 #pragma auto_inline(on)
 class CPlayer { public:
-    CThing* GetControlledCreature();               // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;               // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -108,7 +109,7 @@ class CDrawAbilityButtons { public:
 
 void CDrawAbilityButtons::DrawAbilityList(CEnginePrimitivePrepareInfo* info, float scale)
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetControlledCreature();
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
     if (!IS_THING_ALIVE(hero))
         return;
     LongVector offsets;

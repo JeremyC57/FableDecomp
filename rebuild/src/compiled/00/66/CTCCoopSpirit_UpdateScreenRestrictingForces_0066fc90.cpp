@@ -5,9 +5,9 @@
 // Leaf: UpdateScreenRestrictingForces
 //
 // Retail 0x0066FC90, 655 bytes, plain `ret`.
-// Callees: the display's GetScreenArea @ 0x00434B50 (C2DBoxF by hidden pointer), CThing::GetPosition @ 0x004C73D0, the
+// Callees: the display's GetScreenArea @ 0x00434B50 (C2DBoxF by hidden pointer), CThing::GetPos @ 0x004C73D0, the
 // camera's slot 13 (+0x34, world to screen), CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetPlayer @ 0x004498C0,
-// CPlayer::GetHeroCreature @ 0x00487DC0, CThingPlayerCreature::GetCurrentRelativeMovementAngleXY @ 0x006A9640,
+// CPlayer::GetPControlledCreature @ 0x00487DC0, CThingPlayerCreature::GetCurrentRelativeMovementAngleXY @ 0x006A9640,
 // C3DVector::RotateXY @ 0x00A14040 / GetLength @ 0x00A14480, CTCPhysicsBase::ApplyAcceleration @ 0x006B0210, __ftol2
 // @ 0x00BFEA70, CCreatureAction_SpiritReturnToHero @ 0x00854660, CThingCreatureBase::SetCurrentAction @ 0x006644F0, the
 // action's base dtor @ 0x00693EF0.
@@ -23,7 +23,7 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
-    float GetLength() const;                                 // 0x00A14480
+    float GetMagnitudeAndNormalise();                                 // 0x00A14480 ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ (normalises in place, returns the old magnitude)
     C3DVector& operator*=(float s) { X *= s; Y *= s; Z *= s; return *this; }
 public:
     void RotateXY(float);   // 0x00A14040
@@ -52,9 +52,10 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                               // +0x60
     unsigned char   _pad64[0x90 - 0x64];
     char            PlayerNumber;                            // +0x90
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
     float GetCurrentRelativeMovementAngleXY() const;         // 0x006A9640 (CThingPlayerCreature)
 };
+class CThingPlayerCreature : public CThing { };
 class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _body[0xa8 - 4];
@@ -67,7 +68,7 @@ class CCreatureAction_SpiritReturnToHero : public CCreatureActionBase { public:
 class CThingCreatureBase : public CThing { public:
     void SetCurrentAction(const CCreatureActionBase& action);        // 0x006644F0
 };
-class CPlayer { public: CThing* GetHeroCreature(); };               // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };               // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetPlayer(long number); };  // 0x004498C0
 class CTCBase
 {
@@ -89,7 +90,7 @@ void CTCCoopSpirit::UpdateScreenRestrictingForces()
     CDisplay* display = g_pMainGameComponent->PDisplay;
     CCamera* camera = display->PCamera;
     C2DBoxF area = display->GetScreenArea();
-    const C3DVector& position = ParentThing->GetPosition();
+    const C3DVector& position = ParentThing->GetPos();
     C3DVector spiritPos;
     spiritPos.X = position.X;
     spiritPos.Y = position.Y;
@@ -116,12 +117,12 @@ void CTCCoopSpirit::UpdateScreenRestrictingForces()
     }
     if ((float)fabs(forceX) > 0.0001f || (float)fabs(forceY) > 0.0001f) {
         long player = ParentThing->PlayerNumber;
-        CThing* hero = GetPlayerManager().GetPlayer(player)->GetHeroCreature();
+        CThing* hero = GetPlayerManager().GetPlayer(player)->GetPControlledCreature();
         float angle = hero->GetCurrentRelativeMovementAngleXY();
         C3DVector force(forceX, forceY, 0.0f);
         force.RotateXY(angle);
         force *= 0.8f;
-        float length = force.GetLength();
+        float length = force.GetMagnitudeAndNormalise();
         if (length > 0.0001f) {
             if (length > 3.0f)
                 length = 3.0f;

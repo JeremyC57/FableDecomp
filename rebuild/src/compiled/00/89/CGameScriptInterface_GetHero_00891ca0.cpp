@@ -2,7 +2,7 @@
 // or reset it to the null script thing, and return it
 // Leaf: ?GetHero@CGameScriptInterface@@UAEAAVCScriptThing@@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891CA0, length 176 bytes, `ret`.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CThing::GetScriptThing()
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetScriptThing()
 // @ 0x004C7E50 (by hidden pointer), CGameScriptThing::CreateNullThing() @ 0x008CFF40, CScriptThing::operator= @ 0x008AB980,
 // operator delete @ 0x00BFE9BC, CBaseClass::~CBaseClass @ 0x0099A2E0. CScriptThing vtable 0x01238C8C.
 // Layout: CGameScriptInterface PlayerManager +0x14, Hero (CScriptThing, 12 bytes) +0x30; CScriptThing = CBaseClass
@@ -56,10 +56,11 @@ public:
 class CThing { public:
     CScriptThing GetScriptThing();                  // 0x004C7E50
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer {
 public:
-    CThing* GetHeroThing();                         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                         // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer& GetMainPlayer();                       // 0x00449970 (the non-const overload; 0x00449960 is the const one)
@@ -79,7 +80,7 @@ class CGameScriptInterface { public:
 
 CScriptThing& CGameScriptInterface::GetHero()
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero)
         Hero = hero->GetScriptThing();
     else

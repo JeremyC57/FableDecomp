@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092ED40, length 115 bytes (+ int3 padding), `ret 4`.
 // Callees: CThing::GetPosition() const @ 0x004C73D0 on PBrain->PCreature and on the argument, the combat
 // minimum-distance getter @ 0x00661CC0 (`fld [0x0125AAB8] ; ret`, no arguments; the manifest's
-// "CAIStateGroup_EnemyCreatureBase::GetCombatMinDistance" label, taken as a free function here).
+// "CAIStateGroup_EnemyCreatureBase::GetCombatMinDistance" label is propagated; Ego_r.pdb names it CThingCreatureBase::GetPersonalSpaceRadius).
 // Shape: the delta (player - creature) is built by the by-value `operator-` and SPILLED to the 12-byte frame
 // because the distance call follows; the squared magnitude is then summed from memory, the call result squared
 // (`fld st(1) ; fmul st(2)`) and compared with `fcompp ; test ah,41h` (less-than); the bool is materialised per
@@ -24,7 +24,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -102,11 +104,12 @@ class C3DVector { public:
     float MagnitudeSquared() const { return X * X + (Y * Y + Z * Z); }   // VC7.1 re-associates: retail sums z*z + y*y, then x*x (landed 0x00805920 note)
 };
 
-struct CThingPos {
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+struct CThingPos : CThing {
 };
 
-float GetCombatMinDistance();                   // 0x00661CC0
+class CThingCreatureBase : public CThing { public:
+    static float __fastcall GetPersonalSpaceRadius();   // 0x00661CC0 ?GetPersonalSpaceRadius@CThingCreatureBase@@SIMXZ (Ego_r.pdb; donor 0x0053CA80 in the CThingCreatureBase run before GetPHeroCombatDef/IsPosInFOV)
+};
 
 struct CAIStateGroup_MinionReactToPlayerInteraction : CAIStateGroupBase {
     bool IsTooNearToThePlayer(const CThing* player);
@@ -114,9 +117,9 @@ struct CAIStateGroup_MinionReactToPlayerInteraction : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionReactToPlayerInteraction::IsTooNearToThePlayer(const CThing* player)
 {
-    const C3DVector& creaturePos = ((CThingPos*)PBrain->PCreature)->GetPosition();
-    C3DVector delta = ((const CThingPos*)player)->GetPosition() - creaturePos;
-    float minDistance = GetCombatMinDistance();
+    const C3DVector& creaturePos = ((CThingPos*)PBrain->PCreature)->GetPos();
+    C3DVector delta = ((const CThingPos*)player)->GetPos() - creaturePos;
+    float minDistance = CThingCreatureBase::GetPersonalSpaceRadius();
     if (delta.MagnitudeSquared() < minDistance * minDistance)
         return true;
     return false;

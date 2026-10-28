@@ -29,11 +29,13 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
 };
 
-class CThing { public:
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
     bool TestTC(long interfaceType) const
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
@@ -120,7 +122,7 @@ void CAIStateGroup_ChickenWander::Update()
     CTCCreatureNavigation* navigation;
     creature->GetInterfaceT(&navigation, 7);
     C3DVector target;
-    if (!navigation->GetNearbyWanderPosition(creature->GetPosition_006a4d00(), 2.0f, &target, true))
+    if (!navigation->GetNearbyWanderPosition(creature->PeekPos(), 2.0f, &target, true))
         return;
     bool reached = false;
     if (AIAction_MoveToPos(1, target, &reached, 3, true, true, 0, true, 0.0f) != 2)

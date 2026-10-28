@@ -4,7 +4,7 @@
 //   manifest's "CTCTargetingAI::vfunc_9"; slot 9 is the CTCBase FrameUpdate).
 // Callees: CTCBase::FrameUpdate @ 0x006868A0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, the pointer's virtual
 //   destructor (slot 0 with 0) and free @ 0x00BFEA14 (inline list erase), the const interface LowerBound @ 0x004365B0
-//   (interface 0x36 = CTCStealth), CTCStealth::IsAvailableForAttack @ 0x00747B00, CThing::GetPosition @ 0x004C73D0 (twice),
+//   (interface 0x36 = CTCStealth), CTCStealth::IsAvailableForAttack @ 0x00747B00, CThing::GetPos @ 0x004C73D0 (twice),
 //   CTCTargetingAI::UpdatePBestEnemyCreatureForAttack(bool) @ 0x007F6200, UpdateNearestInterestingThing (slot 39, +0x9C).
 //   25.0f from 0x0123003C.
 // Layout: Ego_r.pdb CTCTargetingAI ThingsToNotAttack (STLport list<CIntelligentPointer<CThing> >, the sentinel pointer) +0x48
@@ -34,7 +34,7 @@ public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type) const
     {
@@ -109,7 +109,7 @@ void CTCTargetingAI::FrameUpdate()
                 continue;
             }
             if (thing->HasTC(0x36) && thing->GetTC<CTCStealth>(0x36)->IsAvailableForAttack()) {
-                C3DVector offset = thing->GetPosition() - ParentThing->GetPosition();
+                C3DVector offset = thing->GetPos() - ParentThing->GetPos();
                 if (offset.X * offset.X + offset.Y * offset.Y < 25.0f) {
                     it = ThingsToNotAttack.erase(it);
                     continue;

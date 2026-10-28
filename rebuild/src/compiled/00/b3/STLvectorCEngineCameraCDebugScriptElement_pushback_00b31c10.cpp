@@ -53,7 +53,9 @@ public:
 
 template <class T> class vector : public _Vector_base<T> {
 public:
+    protected:
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fill_len, bool atend);   // 0x00B31B10
+    public:
     void push_back(const T& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

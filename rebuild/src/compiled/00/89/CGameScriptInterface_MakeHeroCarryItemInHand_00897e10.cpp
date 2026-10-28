@@ -1,7 +1,7 @@
 // CGameScriptInterface::MakeHeroCarryItemInHand(const CCharString& itemDefName) const -- an empty name empties the hero's primary carry slot; otherwise find an item of the named def in the hero's inventory (TC 0x11) or second store (TC 0x13) and hand it to the script-thing overload
 // Leaf: ?MakeHeroCarryItemInHand@CGameScriptInterface@@UBEXABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00897E10, length 383 bytes (`ret 4`).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CBasicString<char>::operator==
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CBasicString<char>::operator==
 //   @ 0x004115A0 (inline CCharString::operator==(const char*)), CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 //   the component map LowerBound @ 0x0040F020, CTCCarrying::RemoveThingFromPrimarySlot(bool) @ 0x006A1E00, the store
 //   component's virtual slot 47 (+0xBC, find an item of a def), CThing::GetScriptThing @ 0x004C7E50, ~CScriptThing
@@ -74,6 +74,7 @@ class CThing { public:
     }
     CScriptThing GetScriptThing();                  // 0x004C7E50
 };
+class CThingPlayerCreature : public CThing { };
 class CScriptThing { public:
     void* PImp_Data;
     void* PImp_Info;
@@ -98,7 +99,7 @@ __forceinline CThing* FindItemInStore(CThing* thing, long interfaceType, long de
 class CTCCarrying { public: public:
     CThing* RemoveThingFromPrimarySlot(bool);   // 0x006A1E00
 };   // 0x006A1E00
-class CPlayer { public: CThing* GetHeroThing(); };      // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
 class CPlayerManager { public: public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };    // 0x00449970
@@ -128,7 +129,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::MakeHeroCarryItemInHand(const CCharString& itemDefName) const
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || hero->m_dead)
         return;
     // the inline CCharString::operator==("") with its two returns written as two tests that jump to the empty arm

@@ -1,7 +1,7 @@
 // CTCHeroMorph::AddParticles(EHeroMorphType type, float value) -- for every particle morph of the type whose [Min, Max] range (with epsilon) covers the value, creates the emitter (interpolated between two particle types when asked), attaches it to the hero by attach mode and records it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071C7C0, 548 bytes, `ret 8`.
 // Callees: CDefClassBase::GetSubDef<CHeroMorphDef> @ 0x0071F930 (folded label), CParticleMorphs::GetAllMorphsOfType @ 0x0081B160,
-//          CThing::GetPosition @ 0x004C73D0, CTCDParticleEmitter::Create(long, long, float, const C3DVector&, bool) @ 0x006E11F0 /
+//          CThing::GetPos @ 0x004C73D0, CTCDParticleEmitter::Create(long, long, float, const C3DVector&, bool) @ 0x006E11F0 /
 //          Create(long, const C3DVector&, bool) @ 0x006E0880, CTCDParticleEmitter::AttachToThing @ 0x006E0BE0,
 //          CCharString(const char*, long) @ 0x0099EBF0, CDefString::operator CCharString @ 0x00415DD0, ~CCharString @ 0x0099EAE0,
 //          CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10, the emitter list push_back
@@ -109,7 +109,7 @@ public:
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Flags91;                              // +0x91
     __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 class CTCBase {
 public:
@@ -154,9 +154,9 @@ void CTCHeroMorph::AddParticles(long type, float value)
                     float t = 1.0f;
                     if (fabs(entry->Max - entry->Min) > g_fEpsilon)
                         t = (value - entry->Min) / (entry->Max - entry->Min);
-                    particle = CTCDParticleEmitter::Create(entry->ParticleType, entry->ParticleTypeEnd, t, Thing->GetPosition(), false);
+                    particle = CTCDParticleEmitter::Create(entry->ParticleType, entry->ParticleTypeEnd, t, Thing->GetPos(), false);
                 } else {
-                    particle = CTCDParticleEmitter::Create(entry->ParticleType, Thing->GetPosition(), false);
+                    particle = CTCDParticleEmitter::Create(entry->ParticleType, Thing->GetPos(), false);
                 }
                 if (particle && !(particle->Flags91 & 1)) {
                     CTCDParticleEmitter* emitter = 0;

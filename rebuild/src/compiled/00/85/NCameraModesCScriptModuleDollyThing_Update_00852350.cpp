@@ -1,12 +1,12 @@
 // NCameraModes::CScriptModuleDollyThing::Update() -- put the owning camera at RotThing's position + DollyVector looking at RotThing, then turn DollyVector about Z by one frame's share of a full turn
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852350, length 172 bytes (`ret`).
-// Callees: CThing::GetPosition() const @ 0x004C73D0 (twice), C3DVector::Rotate(const C3DVector& axis, float angle) @ 0x00A13C60.
+// Callees: CThing::GetPos() const @ 0x004C73D0 (twice), C3DVector::Rotate(const C3DVector& axis, float angle) @ 0x00A13C60.
 // Globals: the frames-per-second count @ 0x01375550 (a long).
 // Shape: the landed CScriptModuleDolly::Update 0x008522B0 with the thing's position for PosAround: the frame rate read
 // into a long local first, `position + DollyVector` through the inline member operator+ (VC loads the right operand
 // first, so retail's `fld DollyVector ; fadd position` needs the position on the left), the owner taken into a local
-// before the second GetPosition (kept in ebx across the call) for the look-at copy, the Z axis a C3DVector(0,0,1) temporary, angle 1 / (fps * TimeFor360Turn).
+// before the second GetPos (kept in ebx across the call) for the look-at copy, the Z axis a C3DVector(0,0,1) temporary, angle 1 / (fps * TimeFor360Turn).
 // Layout: Ego_r.pdb NCameraModes::CScriptModuleDollyThing (0x60 bytes): RotThing +0x4c, DollyVector +0x50,
 // TimeFor360Turn +0x5c, over the 0x4c-byte CScriptModuleBase (POwner +0x38).
 extern long g_FramesPerSecond;                       // 0x01375550
@@ -28,7 +28,7 @@ class C3DVector { public:
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
 };
 
 struct CCameraState {
@@ -54,9 +54,9 @@ struct CScriptModuleDollyThing {
 void CScriptModuleDollyThing::Update()
 {
     long fps = g_FramesPerSecond;
-    POwner->Position = RotThing->GetPosition() + DollyVector;
+    POwner->Position = RotThing->GetPos() + DollyVector;
     CCameraState* owner = POwner;
-    owner->LookAt = RotThing->GetPosition();
+    owner->LookAt = RotThing->GetPos();
     DollyVector.Rotate(C3DVector(0.0f, 0.0f, 1.0f), 1.0f / (fps * TimeFor360Turn));
 }
 

@@ -1,6 +1,6 @@
 // CTCCoopSpirit::UpdateAttractionToMaster() -- once the spirit has not moved for a while, pull it towards its master's hero: an acceleration along the offset, scaled by how far beyond 1.5 units it is (capped at 2.5) times 1.027
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006701A0, 312 bytes (+ int3 padding), plain `ret`.
-// Callees: __ftol2 @ 0x00BFEA70, CPlayer::GetHeroThing @ 0x00487DC0, CThing::GetPosition @ 0x004C73D0 (x2),
+// Callees: __ftol2 @ 0x00BFEA70, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0 (x2),
 //   C3DVector::GetLength @ 0x00A14480 (manifest "C3DVector::GetScaled" is propagated), CVectorMap<ETCInterfaceType,
 //   CTCBase*>::LowerBound @ 0x0040F020 (inlined lookup of the physics TC, interface 2 = word 0 bit 2),
 //   CTCPhysicsBase::ApplyAcceleration(const C3DVector&) @ 0x006B0210.
@@ -8,7 +8,7 @@
 //   variable, named descriptively), 1.5f @ 0x0125AADC, 2.5f @ 0x01241D68, 1.027f @ 0x0125B250.
 // Layout = Ego_r.pdb CTCCoopSpirit: ParentThing +0x04, NoMovementTimer +0x0c, Master (CPlayer*) +0x24.
 // Shape: the master's position is copied into a named C3DVector (three dword moves) before the spirit's own position is
-//   read; the offset is a named C3DVector built by `masterPos - GetPosition()` where GetPosition is an inline BY-VALUE
+//   read; the offset is a named C3DVector built by `masterPos - GetPos()` where GetPos is an inline BY-VALUE
 //   accessor and C3DVector has a memberwise user copy ctor (the temporary keeps X/Y on the FPU and copies Z as a dword
 //   into a dead frame word, the chunk-138 shape; without the copy ctor the copy is three dword moves, through the
 //   reference the subtraction folds into memory operands); the distance a named float (fst); the physics TC
@@ -23,7 +23,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
     C3DVector operator*(float f) const { return C3DVector(X * f, Y * f, Z * f); }
-    float GetLength() const;                    // 0x00A14480
+    float GetMagnitudeAndNormalise();                    // 0x00A14480 ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ (normalises in place, returns the old magnitude)
 };
 class CTCBase;
 struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
@@ -51,14 +51,15 @@ class CThing { public:
             tc = GetTC(interfaceType);
         return tc;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CTCPhysicsBase { public:
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
 class CPlayer {
 public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CTCCoopSpirit { public:
     virtual void v00();
@@ -69,7 +70,7 @@ class CTCCoopSpirit { public:
     long    OffscreenCounter;                   // +0x14
     C3DVector MovementVector;                   // +0x18
     CPlayer* Master;                            // +0x24
-    C3DVector GetPosition() const { return ParentThing->GetPosition(); }   // by-value inline accessor
+    C3DVector GetPos() const { return ParentThing->GetPos(); }   // by-value inline accessor
     void UpdateAttractionToMaster();
 };
 
@@ -77,11 +78,11 @@ void CTCCoopSpirit::UpdateAttractionToMaster()
 {
     CPlayer* master = Master;
     if (master && NoMovementTimer > (long)(g_framesPerSecond * g_CoopSpiritAttractionDelay)) {
-        CThing* hero = master->GetHeroThing();
+        CThing* hero = master->GetPControlledCreature();
         if (hero) {
-            C3DVector masterPos = hero->GetPosition();
-            C3DVector offset = masterPos - GetPosition();
-            float distance = offset.GetLength();
+            C3DVector masterPos = hero->GetPos();
+            C3DVector offset = masterPos - GetPos();
+            float distance = offset.GetMagnitudeAndNormalise();
             if (distance > 1.5f) {
                 CTCPhysicsBase* physics = (CTCPhysicsBase*)ParentThing->GetTCIfPresent(2);
                 float pull = distance - 1.5f;

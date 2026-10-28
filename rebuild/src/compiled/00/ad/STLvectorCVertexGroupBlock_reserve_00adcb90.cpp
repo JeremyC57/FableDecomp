@@ -102,6 +102,7 @@ public:
     }
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
 
+    protected:
     template <class _ForwardIterator>
     pointer _M_allocate_and_copy(unsigned int __n, _ForwardIterator __first, _ForwardIterator __last)
     {
@@ -109,17 +110,22 @@ public:
         __uninitialized_copy(__first, __last, __result, __false_type());
         return __result;
     }
+    public:
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
     void reserve(unsigned int __n);
 };
 
@@ -173,9 +179,15 @@ public:
     Compare      _M_key_compare;                            // +0x08
 
     _Rb_tree(const _Rb_tree& __x);                          // 0x00A96E40
+    protected:
     _Base_ptr& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Base_ptr& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Base_ptr& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
     static _Link_type& _S_left(_Base_ptr x) { return (_Link_type&)x->_M_left; }
     static _Link_type& _S_right(_Base_ptr x) { return (_Link_type&)x->_M_right; }
 

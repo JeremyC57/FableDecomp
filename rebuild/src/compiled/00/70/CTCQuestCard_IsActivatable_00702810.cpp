@@ -4,7 +4,7 @@
 // Label correction: catalog "CViewBase_FindParticleMorph" is propagated; callers are CQuestManager::ActivateFeatCard
 //   0x004B1590 / ActivateQuestCard 0x004B4AA0 on the interface-0x6C component (CTCQuestCard::GetInterfaceType 0x007029F0
 //   returns 0x6C), and Ego_r.pdb's `?IsActivatable@CTCQuestCard@@QBE_NXZ` is the only bool() const member that fits.
-// Callees: CTCBase::GetPlayerManager 0x00686D50, CPlayerManager::GetMainPlayer 0x00449960, CPlayer::GetControlledCreature
+// Callees: CTCBase::GetPlayerManager 0x00686D50, CPlayerManager::GetMainPlayer 0x00449960, CPlayer::GetPControlledCreature
 //   0x00487DC0, CVectorMap LowerBound (const) 0x004365B0.
 // Layout: CTCQuestCard PDef +0x0C; CQuestCardDef Prerequisites (map<EQuestCardPrerequisite,long>) at retail +0x5C
 //   (PDB +0x60, its 16-byte vector is 12 here); interface 4 = CTCHeroStats (GetInterfaceType returns 4), RenownLevel at
@@ -140,10 +140,11 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer {
 public:
-    CThing* GetControlledCreature();                      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 
 class CPlayerManager {
@@ -171,7 +172,7 @@ bool CTCQuestCard::IsActivatable() const
     if (PDef.Object) {
         for (std::map<EQuestCardPrerequisite, long>::const_iterator it = PDef->Prerequisites.begin(); it != PDef->Prerequisites.end(); ++it) {
             if (it->first == QUEST_CARD_PREREQUISITE_RENOWN_LEVEL) {
-                CThing* hero = PeekPlayerManager().GetMainPlayer()->GetControlledCreature();
+                CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
                 if (hero && !hero->Dead) {
                     const CTCHeroStats* stats = 0;
                     hero->GetInterface(TC_HERO_STATS, &stats);

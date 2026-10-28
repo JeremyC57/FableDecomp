@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CCD70, 685 bytes (+ int3 padding), virtual FinishAction, plain `ret`.
 // Callees: CCombatActionBase::FinishAction 0x00859A20 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8,
 //   PTarget +0xa8), SetThingAsNotBloodyWillableAtAll 0x007E4040 (__fastcall, dl = false), the physics TC's slots 84 SetFlying
-//   (+0x150), 31 SetPosition (+0x7c) and 75 SetRHSet (+0x12c), CTCGraphicAppearance::SetAlpha 0x004BFAC0, CThing::GetPosition
+//   (+0x150), 31 SetPosition (+0x7c) and 75 SetRHSet (+0x12c), CTCGraphicAppearance::SetAlpha 0x004BFAC0, CThing::GetPos
 //   0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440, CVectorMap::LowerBound 0x0040F020 (inlined GetInterface: 0x31
 //   CTCCreatureModeManager bit 17 of +0x24, 0x82 attached particles bit 2 of +0x30), CDefClassBase::GetSubDef
 //   <CBalverineBattleDef> 0x008CD0D0 ("CBalverineBattleDef" 0x01243B94; manifest "<CAICreatureWillPowerIndicatorDef>" is
@@ -106,7 +106,7 @@ class CThing { public:
     CDefClassBase*  m_pDef;                             // +0x70
     unsigned char   _pad74[0x91 - 0x74];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     CTCGraphicAppearance* GetGraphicAppearance() const { return GraphicAppearanceTC; }
     CDefClassBase* GetDef() const { return m_pDef; }
@@ -202,8 +202,8 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
             CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysics();
             physics->SetPosition(*EndPos);
             CThing* target = PTarget.GetPItem();
-            const C3DVector& from = PCreature.GetPItem()->GetPosition();
-            const C3DVector& to = target->GetPosition();
+            const C3DVector& from = PCreature.GetPItem()->GetPos();
+            const C3DVector& to = target->GetPos();
             C3DVector forward(to.X - from.X, to.Y - from.Y, 0.0f);
             forward.AccurateNormalise();
             physics->SetRHSet(CRightHandedSet(C3DVector(0.0f, 0.0f, 1.0f), forward));

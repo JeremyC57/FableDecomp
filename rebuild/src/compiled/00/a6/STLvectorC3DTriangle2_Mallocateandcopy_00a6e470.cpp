@@ -60,6 +60,7 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 public:
     typedef _Tp* pointer;
     typedef __false_type _IsPODType;
+    protected:
     template <class _ForwardIterator>
     pointer _M_allocate_and_copy(unsigned int __n, _ForwardIterator __first, _ForwardIterator __last)
     {
@@ -67,6 +68,7 @@ public:
         __uninitialized_copy(__first, __last, __result, _IsPODType());
         return __result;
     }
+    public:
 };
 
 template C3DTriangle2* vector<C3DTriangle2>::_M_allocate_and_copy<const C3DTriangle2*>(unsigned int, const C3DTriangle2*, const C3DTriangle2*);

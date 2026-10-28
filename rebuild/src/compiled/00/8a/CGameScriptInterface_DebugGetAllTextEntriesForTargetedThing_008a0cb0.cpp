@@ -76,6 +76,7 @@ class CThing { public:
     unsigned char  Metadata[0x21];
     unsigned char  LifeFlags;                            // +0x91
 };
+class CThingPlayerCreature : public CThing { };
 struct CTCTargeting {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -85,7 +86,7 @@ struct CTCTargeting {
     virtual CThing* GetTarget() const;   // slot 33 (+0x84)
 };
 struct CTCText { CCharString GetBankHandle() const; };  // 0x004FAEE0
-class CPlayer { public: CThing* GetTargetThing() const; };      // 0x00487DD0
+class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };      // 0x00487DD0
 class CPlayerManager { public: public:
     const CPlayer& GetMainPlayer() const;   // 0x00449960
 };   // 0x00449960
@@ -113,9 +114,9 @@ class CGameScriptInterface { public:
 void CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing(CStringSet& entries) const
 {
     entries.clear();
-    CThing* hero;
+    const CThing* hero;
     CThing* target;
-    if (g_DebugNarrator == "" && (hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetTargetThing()) != 0
+    if (g_DebugNarrator == "" && (hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().PeekPControlledCreature()) != 0
         && !(hero->LifeFlags & 1) && (hero->UsingComponents[0] & 0x100)
         && (target = GetComponent<CTCTargeting, 8>(hero)->GetTarget()) != 0 && (target->ThingTypeFlags & 0x10)) {
         if (target->UsingComponents[0] & 0x8000) {

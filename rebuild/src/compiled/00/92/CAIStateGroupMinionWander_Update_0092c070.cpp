@@ -1,7 +1,7 @@
 // CAIStateGroup_MinionWander::Update() -- wander loop: wander and idle; when the creature has strayed out of its wander circle (the scratchpad centre and max distance for state 4, else its start position and 10) walk back, then idle; repeat while DoNothing keeps running
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092C070, length 491 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xAA = CTCAIScratchpad, bit 10 of +0x34),
-// CDefClassBase::GetSubDef<CCreatureNavigationDef> @ 0x006CD2F0 (on the creature's +0x70), CThing::GetPosition @ 0x004C73D0
+// CDefClassBase::GetSubDef<CCreatureNavigationDef> @ 0x006CD2F0 (on the creature's +0x70), CThing::GetPos @ 0x004C73D0
 // (twice), CAIStateGroupBase::AIAction_MinionWander @ 0x0097F870, AIAction_MinionIdle @ 0x0097FA00 (twice),
 // AIAction_MoveToPosProximity @ 0x0097E890, AIAction_DoNothing @ 0x0097E200, Terminate @ 0x008FCF40 (twice).
 // Shape: the presence bit is bound to a const reference (frame byte, later reused by the `reached` flag); the navigation
@@ -56,7 +56,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x24];
     CDefClassBase* PhysicsTC;                   // +0x70
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned char HasTC(long interfaceType) const { return (unsigned char)((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1); }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -133,7 +133,7 @@ void CAIStateGroup_MinionWander::Update()
     creature->GetInterface(&scratchpad, 0xaa);
     CDefPointerNav navDef;
     creature->PhysicsTC->GetSubDef(&navDef);
-    C3DVector start = PBrain->PCreature->GetPosition();
+    C3DVector start = PBrain->PCreature->GetPos();
     CNavDefHolder def(navDef.m_p);
     bool reached;
     do {
@@ -145,7 +145,7 @@ void CAIStateGroup_MinionWander::Update()
         float radius = scratchpad->ScriptingStateGroup == 4 ? scratchpad->WanderMaxDistance : 10.0f;
         float distSq;
         {
-            const C3DVector& pos = PBrain->PCreature->GetPosition();
+            const C3DVector& pos = PBrain->PCreature->GetPos();
             float dx = pos.X - centre.X;
             float dy = pos.Y - centre.Y;
             distSq = dy * dy + dx * dx;

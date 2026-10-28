@@ -5,7 +5,7 @@
 // Identity: the manifest labels this row "CVillageTaskHorn::IsCreatureMoreAppropriateForTask" (propagated across the
 //   byte twins 0x00860650 / 0x00860840); by address it sits in the CVillageTaskHorn block (after Horn AssignTarget 0x00860750 / RemoveThingFromTask 0x008607A0), and the PDB lists the
 //   method for Torch, Horn, Patrol, SecuritySweep and CarryCrate.
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2), CThing::GetPosition 0x004C73D0 (x3). Constant 1.5625f
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2), CThing::GetPos 0x004C73D0 (x3). Constant 1.5625f
 //   0x01276D70 (a literal).
 // Layout (Ego_r.pdb = retail): PHorn +0x08, CreatureAssignedToTask +0x10.
 // Shape: the landed CVillageTaskSecuritySweep::IsCreatureMoreAppropriateForTask (0x00860ED0) with the goal point taken
@@ -27,7 +27,7 @@ class C3DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 class CThing : public CBaseObject { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vptr + item
     virtual void v00();
@@ -43,9 +43,9 @@ class CVillageTaskHorn { public:                         // vtable 0x0125A8D8
 };
 bool CVillageTaskHorn::IsCreatureMoreAppropriateForTask(const CThing& creature) const
 {
-    C3DVector horn = static_cast<const CThing*>(PHorn.GetPItem())->GetPosition();
-    C3DVector assigned = static_cast<const CThing*>(CreatureAssignedToTask.GetPItem())->GetPosition();
-    C3DVector position = creature.GetPosition();
+    C3DVector horn = static_cast<const CThing*>(PHorn.GetPItem())->GetPos();
+    C3DVector assigned = static_cast<const CThing*>(CreatureAssignedToTask.GetPItem())->GetPos();
+    C3DVector position = creature.GetPos();
     C3DVector assignedDelta = horn - assigned;
     C3DVector creatureDelta = horn - position;
     return creatureDelta.GetLengthSquared() * 1.5625f < assignedDelta.GetLengthSquared();

@@ -32,9 +32,11 @@ struct DeathRecoveryMarkerNameMap
     }
 };
 
+class CThingPlayerCreature;
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 class CPlayerManager
 { public:
-    void* GetTarget();
+    CPlayer* GetTarget();
 };
 
 template <class T> __forceinline bool GetTCOut(unsigned char* thing, int kind, T** out)
@@ -46,16 +48,14 @@ template <class T> __forceinline bool GetTCOut(unsigned char* thing, int kind, T
     return false;
 }
 
-extern "C" void* __fastcall ResolveDeathRecoveryMarkerTarget(void* source);
-
 void __fastcall CGameScriptInterface_SetDeathRecoveryMarkerName(
     CGameScriptInterface* self,
     unsigned long,
     const CCharString& name)
 {
-    void* source = self->PlayerManager->GetTarget();
+    CPlayer* source = self->PlayerManager->GetTarget();
     unsigned char* target =
-        (unsigned char*)ResolveDeathRecoveryMarkerTarget(source);
+        (unsigned char*)source->GetPControlledCreature();
 
     if (target == 0)
         return;

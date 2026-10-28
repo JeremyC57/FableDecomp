@@ -18,10 +18,12 @@ class C3DVector { public:
 class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                              // +0x18
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                        // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
 };
-class CThingAICreature : public CThing { public:
-    const C3DVector& GetPosition() const;                   // 0x006A4D00 (the members' out-of-line copy; the query creature's call goes through CThing's 0x004C73D0)
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;                       // 0x006A4D00 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order; the members' call; the query creature's call goes through CThing::GetPos 0x004C73D0)
+};
+class CThingAICreature : public CThingPhysical { public:
 };
 struct CIntelligentPointer_AICreature {                     // CIntelligentPointer<CThingAICreature const>: 8 bytes
     void* Data[2];
@@ -74,7 +76,7 @@ const CThingAICreature* CTCCreatureGroup::GetNearestOtherActiveMember(const CThi
 {
     if (creature == 0)
         return 0;
-    C3DVector pos = static_cast<const CThing*>(creature)->GetPosition();
+    C3DVector pos = static_cast<const CThing*>(creature)->GetPos();
     unsigned __int64 id = creature->UniqueID;
     const CThingAICreature* nearest = 0;
     float bestDistance = 0;
@@ -85,14 +87,14 @@ const CThingAICreature* CTCCreatureGroup::GetNearestOtherActiveMember(const CThi
             continue;
         const CThingAICreature* member = it->Data.PMember.GetPItem();
         if (nearest != 0) {
-            float distance = (member->GetPosition() - pos).GetLengthSquared();
+            float distance = (member->PeekPos() - pos).GetLengthSquared();
             if (distance < bestDistance * bestDistance) {
                 nearest = it->Data.PMember.GetPItem();
                 bestDistance = distance;
             }
         } else {
             nearest = member;
-            bestDistance = (it->Data.PMember.GetPItem()->GetPosition() - pos).GetLengthSquared();
+            bestDistance = (it->Data.PMember.GetPItem()->PeekPos() - pos).GetLengthSquared();
         }
     }
     return nearest;

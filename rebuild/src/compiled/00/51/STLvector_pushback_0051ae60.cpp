@@ -68,8 +68,10 @@ class vector : protected _Vector_base<_Tp, _Alloc> {
 public:
     typedef _Tp* pointer;
     typedef unsigned int size_type;
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
     void push_back(const _Tp& __x) {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {
             _Construct(this->_M_finish, __x);

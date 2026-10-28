@@ -3,7 +3,7 @@
 // Retail: Fable.exe @ 0x008AF5F0, 239 bytes, `__fastcall`, `ret 4` (Ego_r.pdb ?IsSpeechAllowed@CombatDialogueManager@@QBE_NABVCThingCreatureBase@@@Z;
 // called by the landed PlayBattleCry 0x008AF850).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2), CPlayerManager::GetMainPlayer 0x00449970 (g_pWorld+0x1C),
-// CPlayer::GetHeroThing 0x00487DC0, the const CVectorMap::LowerBound(const long&) 0x004365B0 (inline GetInterface, type 0x36 =
+// CPlayer::GetPControlledCreature 0x00487DC0, the const CVectorMap::LowerBound(const long&) 0x004365B0 (inline GetInterface, type 0x36 =
 // bit 22 of CThing+0x24), the type-0x36 component's list membership test 0x00747450 (std::find over +0x38..+0x3C != end;
 // manifest label "CTCBuyableHouse::MovedInNotification" is propagated; component class named descriptively),
 // GetFrameNumber 0x004167C8 on g_pWorld 0x013B86A0; g_framesPerSecond 0x01375550.
@@ -85,6 +85,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -118,7 +119,7 @@ struct CDefPointerCombatDialogueDef {       // CDefPointer<const CCombatDialogue
 extern long g_framesPerSecond;              // 0x01375550
 class CPlayer {
 public:
-    CThingCreatureBase* GetHeroThing() const;   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager {
 public:
@@ -150,7 +151,7 @@ bool CombatDialogueManager::IsSpeechAllowed(const CThingCreatureBase& creature) 
 {
     if (PCurrentTalker.Get() && !PCurrentTalker->Dead)
         return false;
-    CThingCreatureBase* hero = ((CWorldPlayers*)g_pWorld)->PlayerManager->GetMainPlayer().GetHeroThing();
+    CThingCreatureBase* hero = ((CWorldPlayers*)g_pWorld)->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || hero->Dead)
         return false;
     CTCCombatSpeechTargets* targets;

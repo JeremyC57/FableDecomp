@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00487C20, 192 bytes (+ int3 padding), `ret 4`.
 // Callees: the world's GetWorldMap (vtable slot 12, +0x30, three times) and GetThingManager (slot 3, +0xC),
 //   CWorldMap::GetRegionNumberFromName(const CCharString&) 0x004FC210, CWorldMap::LoadRegion 0x00500540,
-//   CThingManager::GetThingWithUID(__int64) 0x0051ED80 (catalogued "CStopWatch::GetTicks"), CThing::GetPosition 0x004C73D0
+//   CThingManager::GetThingWithUID(__int64) 0x0051ED80 (catalogued "CStopWatch::GetTicks"), CThing::GetPos 0x004C73D0
 //   (catalogued "CVertexBufferWin32::DoSizeof"), CWorldMap::SetPlayerPos(long, const C3DVector&, ELoadType) 0x005063E0,
 //   CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10.
 // Shape: CPlayerSave (Ego_r.pdb: CharacterUID ulong64 +0, RegionName CCharString +8). Every world-map call goes back
@@ -11,7 +11,7 @@
 //   short epilogue at the end. The adopt step is
 //   `PlayerCharacter = CIntelligentPointer<CThingPlayerCreature>(thing)`: a temporary intelligent pointer (vtable
 //   0x01231C4C) built in the frame, copied with the inline operator= (`SetPItem(other.GetPItem())`) and destroyed. The
-//   world is held in ebx for the SetPlayerPos call: VC reads `World` before evaluating the GetPosition argument.
+//   world is held in ebx for the SetPlayerPos call: VC reads `World` before evaluating the GetPos argument.
 //   Members (World +0x1C, Number +0x28, PlayerCharacter +0x34) from engine/CPlayer.h.
 #include "engine/CPlayer.h"
 
@@ -27,7 +27,7 @@ struct CPlayerSave {
 class C3DVector;
 class CBaseObject;
 class CThing { public:
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 class CThingPlayerCreature;
 class CThingManager { public:
@@ -78,7 +78,7 @@ bool CPlayer_Methods::LoadPlayerCharacterFromGameState(const CPlayerSave& save)
         GetWorld()->GetWorldMap()->LoadRegion(region, false, true);
         CThing* thing = GetWorld()->GetThingManager()->GetThingWithUID(save.CharacterUID);
         if (thing != 0) {
-            GetWorld()->GetWorldMap()->SetPlayerPos(Number, thing->GetPosition(), 0);
+            GetWorld()->GetWorldMap()->SetPlayerPos(Number, thing->GetPos(), 0);
             PlayerCharacterPointer() = CIntelligentPointer<CThingPlayerCreature>((CThingPlayerCreature*)thing);
             return true;
         }

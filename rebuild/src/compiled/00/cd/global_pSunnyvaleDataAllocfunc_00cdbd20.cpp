@@ -31,9 +31,14 @@ public:
 };
 }
 
-class CScriptDataBase {
+class CBaseClassNonCopyable {
 protected:
-    CScriptDataBase();                                  // 0x0099A2F0
+    CBaseClassNonCopyable();                            // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ
+    virtual ~CBaseClassNonCopyable();
+};
+class __declspec(novtable) CScriptDataBase : public CBaseClassNonCopyable {
+protected:
+    CScriptDataBase() { }
 public:
     virtual ~CScriptDataBase();
 };

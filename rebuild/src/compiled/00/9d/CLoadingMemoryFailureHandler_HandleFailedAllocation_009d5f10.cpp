@@ -6,11 +6,11 @@
 // Shape: the layout of the landed destructor 0x009D5EE0 (Banks array +0x04, CriticalSection +0x10); the 8-byte
 // lock local is destroyed on both exits (no EH frame: the TU is built without /EHsc); the bank count
 // `(last - first) >> 2` is re-evaluated each iteration and compared unsigned; the size argument is unused.
-struct SCriticalSection { unsigned char _body[0x18]; };   // RTL_CRITICAL_SECTION
+struct _RTL_CRITICAL_SECTION { unsigned char _body[0x18]; };
 struct CCriticalSectionLock {                      // 8 bytes on the stack
-    SCriticalSection* m_pSection;
+    _RTL_CRITICAL_SECTION* m_pSection;
     bool              m_locked;
-    CCriticalSectionLock(SCriticalSection* section, bool tryOnly);   // 0x00A62920
+    CCriticalSectionLock(_RTL_CRITICAL_SECTION& section, bool tryOnly);   // 0x00A62920 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z
     ~CCriticalSectionLock();                       // 0x00A629A0
 };
 class CBankFileAsync { public:
@@ -27,13 +27,13 @@ class CFailedAllocationHandler { public:                  // vtable 0x0129B874
 };
 class CLoadingMemoryFailureHandler : public CFailedAllocationHandler { public:   // vtable 0x0129B8C4
     CRetailArray<CBankFileAsync*> Banks;           // +0x04
-    SCriticalSection              CriticalSection; // +0x10
+    _RTL_CRITICAL_SECTION              CriticalSection; // +0x10
     virtual bool HandleFailedAllocation(unsigned long size);
 };
 
 bool CLoadingMemoryFailureHandler::HandleFailedAllocation(unsigned long size)
 {
-    CCriticalSectionLock lock(&CriticalSection, false);
+    CCriticalSectionLock lock(CriticalSection, false);
     for (unsigned long i = 0; i < Banks.Size(); ++i)
         if (Banks.first[i]->HandleFailedAllocation())
             return true;

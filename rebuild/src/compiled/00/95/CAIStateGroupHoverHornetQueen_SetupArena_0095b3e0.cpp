@@ -1,6 +1,6 @@
 // CAIStateGroup_HoverHornetQueen::SetupArena() -- set up the circle points, make the queen not solid to everything around her (60 units), and take the arena centre from the "WaspQueenArenaCentre" track thing near her, else from her initial position
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095B3E0, length 437 bytes (+ int3 padding).
-// Callees: CAIStateGroup_HoverHornetQueen::SetUpCirclePoints @ 0x0095AB50, CThing::GetPosition @ 0x004C73D0, __ftol2 @ 0x00BFEA70,
+// Callees: CAIStateGroup_HoverHornetQueen::SetUpCirclePoints @ 0x0095AB50, CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70,
 // CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, the rough-area collector @ 0x0095C7C0 (box, an empty filter, the output
 // vector; the manifest "GetPBestThingInRoughArea<HasTrackName, Nearest, CThingTrackNode>" is a BSim guess with five arguments),
 // CVectorMap::LowerBound @ 0x0040F020 (inlined GetTC 0x4d CTCSolidToThing = bit 13 of +0x28), CTCSolidToThing::
@@ -25,7 +25,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     __forceinline unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
@@ -103,7 +103,7 @@ void CAIStateGroup_HoverHornetQueen::SetupArena()
     CThing* self = GetCreature();
     CThingPtrVector things;
     {
-        const C3DVector& pos = self->GetPosition();
+        const C3DVector& pos = self->GetPos();
         long x = (long)pos.X;
         long y = (long)pos.Y;
         PeekThingSearchTools()->GetAllThingsInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), CThingFilter_All(), things);
@@ -120,13 +120,13 @@ void CAIStateGroup_HoverHornetQueen::SetupArena()
         {
             CCharString name("WaspQueenArenaCentre");
             CThingFilter_HasTrackName filter(name);
-            const C3DVector& pos = GetCreature()->GetPosition();
+            const C3DVector& pos = GetCreature()->GetPos();
             long x = (long)pos.X;
             long y = (long)pos.Y;
             PeekThingSearchTools()->GetPFirstThingInRoughArea(C2DBoxI(x - 60, y - 60, x + 60, y + 60), filter, &centre);
         }
         if (centre)
-            ArenaCentrePos = centre->GetPosition();
+            ArenaCentrePos = centre->GetPos();
         else
             ArenaCentrePos = GetCreature()->InitialPos;
     }

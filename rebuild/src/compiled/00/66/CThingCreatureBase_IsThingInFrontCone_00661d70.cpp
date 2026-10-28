@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00661D70, 256 bytes (248 without padding), thiscall `ret 4`, bool in al. No code or data
 //   reference to it was found in Fable.exe (an unreferenced member of the CThingCreatureBase TU 0x0066xxxx).
 // Callees: the physics TC's virtual GetFacing (slot 70, +0x118, C3DVector by hidden pointer, on PhysicsTC +0x60), the out-of-line
-//   CThing::GetPosition() const 0x006A4D00 (twice: this, then the other thing); inline FastInvSqrt over the mantissa table
+//   CThing::PeekPos() const 0x006A4D00 (twice: this, then the other thing); inline FastInvSqrt over the mantissa table
 //   0x013CE558 (3.0f 0x0122DED4, 0.5f 0x0122F59C); the constant 20-degree angle 0x0125AAE0 (0.349065850398866, double) goes
 //   through the cos intrinsic (`fcos` at run time).
 // Label: catalog "CVertexBufferWin32_DistanceSqr" -- no PDB name matches this one-argument shape, so the name is descriptive.
@@ -55,11 +55,13 @@ public:
     virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
     virtual C3DVector GetFacing() const;               // slot 70 (+0x118)
 };
-class CThing {
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;              // 0x006A4D00 (PhysicsTC +0xc; out of line, catalog "CVertexBufferWin32::DoSizeof")
+};
+class CThing : public CThingPhysical {
 public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                         // +0x60
-    const C3DVector& GetPosition() const;              // 0x006A4D00 (PhysicsTC +0xc; out of line, catalog "CVertexBufferWin32::DoSizeof")
 };
 class CThingCreatureBase : public CThing {
 public:
@@ -69,8 +71,8 @@ public:
 bool CThingCreatureBase::IsThingInFrontCone(const CThing* thing) const
 {
     C3DVector forward = PhysicsTC->GetFacing();
-    const C3DVector& position = GetPosition();
-    C3DVector direction = thing->GetPosition() - position;
+    const C3DVector& position = PeekPos();
+    C3DVector direction = thing->PeekPos() - position;
     direction.Normalise();
     if (Dot(forward, direction) > (float)cos(0.34906585039886590))
         return true;

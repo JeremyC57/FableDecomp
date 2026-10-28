@@ -4,10 +4,10 @@
 // Identity: T = CThingMarker -- proven; evidence: its only caller 0x00914330 is a GetPBestThing over CThingMarker (thing-type test `and edx,8007h ; cmp edx,8007h`, the CThingMarker mask of G015's 0x00964160; filter 0x006A7E30) -- the landed CAIStateGroupBirdFlyToFood::IsRunnable 0x00913F30 declares 0x00914330 with a CThingPhysical** out, which the mask contradicts; the PDB name set holds GetPBestThing<CThingFilter_HasScriptName, CThingCompare_Nearest, CThingMarker>; operator()<const CThingMarker> is G015's 0x00964160. The FableWin.pdb name set holds this exact
 //   symbol (??$?RVCThingMarker@@@CThingCompare_Nearest@@QBEPAVCThingMarker@@PAV1@0@Z).
 // Label: the manifest's "operator()<CThingMarker>" is propagated across byte-identical bodies (the template body does not depend on T).
-// Callees: CThing::GetPosition() const @ 0x004C73D0 (T derives from CThing at offset 0).
+// Callees: CThing::GetPos() const @ 0x004C73D0 (T derives from CThing at offset 0).
 // Layout: CThingCompare_Nearest (Ego_r.pdb, 12 bytes) = Pos (C3DVector) +0x00.
 // Shape: as the landed CThingCompare_NearestToPos::operator()<CThing> 0x007A2F90: the first delta is spilled to the
-//   12-byte frame across the second GetPosition call, the second stays on the x87 stack; both squared lengths are the
+//   12-byte frame across the second GetPos call, the second stays on the x87 stack; both squared lengths are the
 //   plain inline X*X + Y*Y + Z*Z (VC7.1 ranks the terms itself); the result is one `?:` on the strict less.
 class C3DVector {
 public:
@@ -19,7 +19,7 @@ public:
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 class CThingMarker : public CThing { };
 class CThingCompare_Nearest {
@@ -34,8 +34,8 @@ template<class T> T* CThingCompare_Nearest::operator()(T* a, T* b) const
         return b;
     if (!b)
         return a;
-    C3DVector deltaA = a->GetPosition() - Pos;
-    C3DVector deltaB = b->GetPosition() - Pos;
+    C3DVector deltaA = a->GetPos() - Pos;
+    C3DVector deltaB = b->GetPos() - Pos;
     return (deltaA.GetLengthSquared() < deltaB.GetLengthSquared()) ? a : b;
 }
 

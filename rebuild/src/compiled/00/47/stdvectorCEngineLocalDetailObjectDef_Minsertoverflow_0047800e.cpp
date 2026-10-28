@@ -79,9 +79,15 @@ public:
 template <class T, class _Alloc = allocator<T> > class vector : public _Vector_base<T, _Alloc> {
 public:
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear();                                // 0x00477BFC
+    public:
+    protected:
     __forceinline void _M_set(T* s, T* f, T* e) { this->_M_start = s; this->_M_finish = f; this->_M_end_of_storage._M_data = e; }
+    public:
+    protected:
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLength, bool atEnd);
+    public:
 };
 
 template <class T, class _Alloc>

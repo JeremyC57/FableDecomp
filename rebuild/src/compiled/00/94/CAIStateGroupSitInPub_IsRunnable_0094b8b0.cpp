@@ -28,7 +28,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -212,7 +214,6 @@ struct CIntelligentPointerThingB : CBaseIntelligentPointer {         // CIntelli
     CIntelligentPointerThingB& operator=(const CIntelligentPointerConstThing& other);   // 0x004A9760 (out of line)
 };
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCVillager;
 class CTCVillage { public:
@@ -244,7 +245,7 @@ bool CAIStateGroup_SitInPub::IsRunnable()
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
         CTCVillage* village = GFGetPVillageInterface(villager);
         if (village) {
-            CThing* pub = village->FindNearestBuildingWithProperty(((CThingPos*)PBrain->PCreature)->GetPosition(), 0x20);
+            CThing* pub = village->FindNearestBuildingWithProperty(((CThingPos*)PBrain->PCreature)->GetPos(), 0x20);
             if (pub && pub->HasTC(0x7b)) {
                 CTCGatherPointBase* gather;
                 pub->GetInterfaceX(&gather, 0x7b);

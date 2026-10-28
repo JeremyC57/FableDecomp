@@ -1,12 +1,12 @@
 // CTCKraken::DoHeadTracking() -- turn the kraken's body toward the live target, capped per frame by the beam / targeting track speed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FAF60, length 444 bytes (+ int3 padding), esp frame, plain `ret`.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, _CIfmod @ 0x00BFEB28 (the
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, _CIfmod @ 0x00BFEB28 (the
 // intrinsic fmod of WrapAngle), AngleDifference @ 0x00A441E0 (`__stdcall`), the physics TC's GetFacingAngleXY (slot 63,
 // +0xFC) and SetFacingAngleXY (slot 66, +0x108). Constants: 1/(2pi) 0x01237F08, 0.0f 0x0122DEDC, 1.0f 0x0122DED8,
 // double 1.0 0x01237F00, 1/360 0x01238E00.
 // Shape: HeadTrackTarget && IS_THING_ALIVE(PTarget) (the IsDead() member form: the `& 1` stays an immediate; the raw
 // `m_flags91 & 1` form CSEs the 1 into bl and costs a fourth register); the track speed is an if/else on the beam effect;
-// the target angle is WrapAngle(atan2(dX, dY) * 1/(2pi)) of the two positions (own GetPosition called first). The step is
+// the target angle is WrapAngle(atan2(dX, dY) * 1/(2pi)) of the two positions (own GetPos called first). The step is
 // `Clamp(AngleDifference(facing, angle), -(speed/360), speed/360)` with the limit written twice in place (CSE'd: fst limit,
 // fchs, fstp -limit -- a NAMED limit local swaps the two frame slots); Clamp returns a const reference (the `lea eax`
 // three-way pick) and the wrapped sum goes to SetFacingAngleXY.
@@ -42,7 +42,7 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
 
@@ -115,8 +115,8 @@ void CTCKraken::DoHeadTracking()
             speed = PKrakenDef->TargetingTrackSpeed;
         CThing* parent = ParentThing;
         CThing* target = PTarget.GetPItem();
-        const C3DVector& ownPos = parent->GetPosition();
-        const C3DVector& targetPos = target->GetPosition();
+        const C3DVector& ownPos = parent->GetPos();
+        const C3DVector& targetPos = target->GetPos();
         float angle = WrapAngle((float)atan2(targetPos.X - ownPos.X, targetPos.Y - ownPos.Y) * 0.15915494f);
         float facing = ParentThing->PhysicsTC->GetFacingAngleXY();
         ParentThing->PhysicsTC->SetFacingAngleXY(WrapAngle(facing + Clamp(AngleDifference(facing, angle),

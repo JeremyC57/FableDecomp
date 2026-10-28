@@ -1,6 +1,6 @@
 // CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front) -- draw the minimap sprite (switching the prison-courtyard map on the hero's height and the Headsman's Hill half on its y), then its markers
 // Retail 0x0082BE60, 511 bytes, `ret 0x10`.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970 (label "Catch" is wrong), GetHeroCreature 0x00487DC0, __fastcall
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (label "Catch" is wrong), GetPControlledCreature 0x00487DC0, __fastcall
 //   PeekGuiDef 0x00438570, the hero's position getter 0x004C73D0 (label "CVertexBufferWin32::DoSizeof" is wrong),
 //   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, the gui def's minimap-name map find
 //   0x0042B467 (node pointer; value at +0x14), __fastcall ToScreenBox(const C2DBoxF&) 0x00643BEF (a GFToScreen
@@ -48,12 +48,15 @@ class CEnginePrimitivePrepareInfo { public:
     unsigned char _pad00[0x34];
     CIEngine*     Engine;                          // +0x34
 };
-struct CHero {
+class CThing { public:
+    const C3DVector& GetPos() const;          // 0x004C73D0
+};
+struct CHero : public CThing {
     unsigned char _pad00[0x91];
     unsigned char Flags91;                         // +0x91
-    const C3DVector& GetPosition() const;          // 0x004C73D0
 };
-class CPlayer { public: CHero* GetHeroCreature(); };      // 0x00487DC0
+class CThingPlayerCreature : public CHero { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -89,14 +92,14 @@ class CMiniMapDisplay { public:
 
 void CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front)
 {
-    CHero* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetHeroCreature();
+    CHero* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
     if (!hero || (hero->Flags91 & 1) || MiniMapGraphic <= 0)
         return;
     long layer = 0x44;
     if (!front)
         layer = 0x47;
     CPlayerGuiDef* def = PeekGuiDef();
-    if (MiniMapIsPrisonCourtyard1 && hero->GetPosition().Z > 51.0f) {
+    if (MiniMapIsPrisonCourtyard1 && hero->GetPos().Z > 51.0f) {
         CMinimapNode* node;
         {
             CCharString name("MINIMAP_PRISONCOURTYARD2", -1);
@@ -105,7 +108,7 @@ void CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& 
         MiniMapGraphic = node->Graphic;
         MiniMapIsPrisonCourtyard1 = false;
         MiniMapIsPrisonCourtyard2 = true;
-    } else if (MiniMapIsPrisonCourtyard2 && hero->GetPosition().Z <= 51.0f) {
+    } else if (MiniMapIsPrisonCourtyard2 && hero->GetPos().Z <= 51.0f) {
         CMinimapNode* node;
         {
             CCharString name("MINIMAP_PRISONCOURTYARD1", -1);
@@ -114,10 +117,10 @@ void CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& 
         MiniMapGraphic = node->Graphic;
         MiniMapIsPrisonCourtyard1 = true;
         MiniMapIsPrisonCourtyard2 = false;
-    } else if (MiniMapIsHeadsmansHillNorth && hero->GetPosition().Y <= 4740.0f) {
+    } else if (MiniMapIsHeadsmansHillNorth && hero->GetPos().Y <= 4740.0f) {
         MiniMapIsHeadsmansHillNorth = false;
         MiniMapIsHeadsmansHillSouth = true;
-    } else if (MiniMapIsHeadsmansHillSouth && hero->GetPosition().Y > 4740.0f) {
+    } else if (MiniMapIsHeadsmansHillSouth && hero->GetPos().Y > 4740.0f) {
         MiniMapIsHeadsmansHillNorth = true;
         MiniMapIsHeadsmansHillSouth = false;
     }

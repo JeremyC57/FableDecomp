@@ -1,6 +1,6 @@
-// CInputProcessCreatureMovement::Init() -- point PCreature (+0x28, a CIntelligentPointer) at the player's creature: a temporary intelligent pointer is built from CPlayer::GetPlayerCreature and assigned through SetPItem/GetPItem, then destroyed
+// CInputProcessCreatureMovement::Init() -- point PCreature (+0x28, a CIntelligentPointer) at the player's creature: a temporary intelligent pointer is built from CPlayer::GetPControlledCreature and assigned through SetPItem/GetPItem, then destroyed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00691D20, length 77 bytes (+ int3 padding). Vtable slot 2 (Init) of CInputProcessCreatureMovement (vtable 0x01237F4C).
-// Callees: CPlayer::GetPlayerCreature @ 0x00487DC0 (`add ecx,2Ch ; jmp CBaseIntelligentPointer::GetPItem`), CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
+// Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (`add ecx,2Ch ; jmp CBaseIntelligentPointer::GetPItem`), CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 // CBaseIntelligentPointer::SetPItem @ 0x00A01B90, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10.
 // MyPlayer is CInputProcessGameBase::MyPlayer (+0x18); the temporary's vtable is 0x01237F14 (the CIntelligentPointer instantiation).
 // Shape: the creature pointer is fetched first (edi), the 8-byte temporary lives at [esp+8] (base constructor, then its own vtable
@@ -27,7 +27,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CPlayer { public:
-    CThingPlayerCreature* GetPlayerCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CInputProcessCreatureMovement { public:
     virtual void v00(); virtual void v01();
@@ -43,5 +43,5 @@ class CInputProcessCreatureMovement { public:
 
 void CInputProcessCreatureMovement::Init()
 {
-    PCreature = CIntelligentPointer<const CThingPlayerCreature>(MyPlayer->GetPlayerCreature());
+    PCreature = CIntelligentPointer<const CThingPlayerCreature>(MyPlayer->GetPControlledCreature());
 }

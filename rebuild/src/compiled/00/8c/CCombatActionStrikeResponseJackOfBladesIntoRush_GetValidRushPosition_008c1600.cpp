@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C1600, 761 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), GetSubDef<CJackOfBladesBattleDef> 0x008C33E0 (same-TU
 //   stand-in), CVectorMap::LowerBound 0x0040F020 (same-TU stand-in), CCreatureActionBase::GetPWorld 0x00692940, CWorld virtual
-//   slot 12 (+0x30, world map), NCreatureHiding::GetValidPositions 0x0074A5D0 (__fastcall), CThing::GetPosition 0x004C73D0,
+//   slot 12 (+0x30, world map), NCreatureHiding::GetValidPositions 0x0074A5D0 (__fastcall), CThing::GetPos 0x004C73D0,
 //   STLport remove_if<C3DVector*, pred> 0x008AC060 / 0x008C34A0 (__fastcall, 16-byte predicate by value), STLport __copy
 //   <C3DVector> 0x0074CA20 (same-TU stand-in), CWorld::GetPRandomSeed 0x0049D810, GFROR13 0x00497890,
 //   CTCCreatureNavigation::IsAbleToNavigateFromPosToPos 0x006CB620, free 0x00BFEA14 (vector storage), def release via slot 1.
@@ -12,7 +12,7 @@
 // Shape: the boss and navigation out pointers are never null-initialised (the absent path reads the stale argument slot, as
 //   retail); same-TU LowerBound and __copy bodies put both lookup keys in one frame word and home the empty iterator-tag
 //   temporaries in the dead argument slot; the near-Jack predicate is a NAMED local built from a named creature pointer and a
-//   named distance (GetPItem, distance spill, GetPosition, X/Y on the x87 stack, Z through the frame), and the first erase
+//   named distance (GetPItem, distance spill, GetPos, X/Y on the x87 stack, Z through the frame), and the first erase
 //   takes `positions.end()` captured right after the size test (retail's edi survives the calls); the second erase is the
 //   plain expression form; `while (!found && size)` with if/else (no break) keeps retail's top-tested loop and the
 //   `mov bl,1` / `mov bl,[found]` exits.
@@ -154,7 +154,7 @@ class CThing { public:
     CInterfaceMap   m_interfaces;                       // +0x44
     unsigned char   _pad4c[0x70 - 0x4c];
     CDefClassBase*  m_pDef;                             // +0x70
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -223,13 +223,13 @@ bool CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DV
     CWorld* world = GetPWorld();
     CThing* creature = PCreature.GetPItem();
     const CThingSearchTools& search = *GetPWorld()->PThingSearchTools;
-    GetValidPositions(positions, world->GetWorldMap(), search, creature->GetPosition(), def->RushAwayDistance + 2.0f, false, 0);
+    GetValidPositions(positions, world->GetWorldMap(), search, creature->GetPos(), def->RushAwayDistance + 2.0f, false, 0);
     if (positions.size() == 0)
         return false;
     C3DVector* last = positions.end();
     CThing* me = PCreature.GetPItem();
     float distance = def->RushAwayDistance;
-    CDistancePredicate tooClose(distance, me->GetPosition());
+    CDistancePredicate tooClose(distance, me->GetPos());
     positions.erase(RemoveIf(positions.begin(), positions.end(), tooClose), last);
     positions.erase(RemoveIf(positions.begin(), positions.end(), CPhaseDistancePredicate(21.0f, boss->PhaseStartPos)),
                     positions.end());
@@ -241,7 +241,7 @@ bool CCombatAction_StrikeResponseJackOfBladesIntoRush::GetValidRushPosition(C3DV
         unsigned long random = GFRandom(GetPWorld()->GetPRandomSeed());
         unsigned long index = count ? random % count : 0;
         CThing* self = PCreature.GetPItem();
-        if (navigation->IsAbleToNavigateFromPosToPos(self->GetPosition(), positions[index], 0.0f)) {
+        if (navigation->IsAbleToNavigateFromPosToPos(self->GetPos(), positions[index], 0.0f)) {
             *out = positions[index];
             found = true;
         } else {

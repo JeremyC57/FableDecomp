@@ -1,4 +1,5 @@
 // std::find<long*> -- Dinkumware `_Find`: four-way unrolled scan with a switch on the remainder (4-byte elements)
+// Leaf: __find
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D6E80, oracle length 112 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -9,33 +10,38 @@
 // of four comparisons (the value cached in a register) followed by a `switch` on the 0..3
 // remaining elements. Written out by hand because the DDK headers are a different revision.
 // One of 23 bodies of this shape.
-struct CIteratorTag { };
-
-long* __fastcall Find_009d6e80(long* first, long* last, const long& value, CIteratorTag tag)
+namespace std {
+struct random_access_iterator_tag { };
+template <class _RandomAccessIter, class _Tp>
+_RandomAccessIter __fastcall __find(_RandomAccessIter __first, _RandomAccessIter __last, const _Tp& __val,
+                                    const random_access_iterator_tag&)   // STLport 4.6 _algobase.c
 {
-    long count;
-    for (count = (last - first) >> 2; 0 < count; --count) {
-        if (*first == value) return first;
-        ++first;
-        if (*first == value) return first;
-        ++first;
-        if (*first == value) return first;
-        ++first;
-        if (*first == value) return first;
-        ++first;
+    long __trip_count = (__last - __first) >> 2;
+    for ( ; __trip_count > 0 ; --__trip_count) {
+        if (*__first == __val) return __first;
+        ++__first;
+        if (*__first == __val) return __first;
+        ++__first;
+        if (*__first == __val) return __first;
+        ++__first;
+        if (*__first == __val) return __first;
+        ++__first;
     }
-    switch (last - first) {
+    switch (__last - __first) {
     case 3:
-        if (*first == value) return first;
-        ++first;
+        if (*__first == __val) return __first;
+        ++__first;
     case 2:
-        if (*first == value) return first;
-        ++first;
+        if (*__first == __val) return __first;
+        ++__first;
     case 1:
-        if (*first == value) return first;
+        if (*__first == __val) return __first;
+        ++__first;
     case 0:
     default:
-        break;
+        return __last;
     }
-    return last;
 }
+}
+class CBankFileAsync;
+template CBankFileAsync** __fastcall std::__find<CBankFileAsync**, CBankFileAsync*>(CBankFileAsync**, CBankFileAsync**, CBankFileAsync* const&, const std::random_access_iterator_tag&);

@@ -2,7 +2,7 @@
 // Leaf: ProcessInput
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068B7C0, length 1111 bytes, `ret 8`.
-// Callees: CPlayer::GetHeroCreature @ 0x00487DC0, CVectorMap LowerBound @ 0x0040F020, CInputProcessGameBase::
+// Callees: CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap LowerBound @ 0x0040F020, CInputProcessGameBase::
 //   IsEventButtonPressed @ 0x00687A90 / IsEventButtonHeld @ 0x00687BD0 / IsEventButtonReleased @ 0x00687B30 /
 //   IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance @ 0x0041E5F2 (+ slot 0 SendEvent, slot 38
 //   +0x98, ScrollMenu @ 0x0041DA2D), CPlayerManager::GetMainPlayerNumber @ 0x00449700, CMainGameComponent::AddGameEvent
@@ -107,9 +107,10 @@ class CThing { public:
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCInventoryMap* GetTC(long kind) { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CInputProcessInventoryTradeScreen : public CInputProcessGameBase {
 public:
@@ -125,7 +126,7 @@ void CInputProcessInventoryTradeScreen::ProcessInput(const CInputEvent& event, C
 {
     Refresh();
     CTCInventoryMap* map = 0;
-    CThing* hero = MyPlayer->GetHeroCreature();
+    CThing* hero = MyPlayer->GetPControlledCreature();
     if (hero->HasTC(0x1b))
         map = hero->GetTC(0x1b);
     if (IsEventButtonPressed(event)) {

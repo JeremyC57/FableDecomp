@@ -104,7 +104,13 @@ public:
     typedef _Rb_tree_iterator<_Value, _Const_traits<_Value> > const_iterator;
     unsigned int _M_node_count;                         // +0x04
     _Compare _M_key_compare;                            // +0x08 (empty)
-    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;          // out of line (_tree.c)
+    private:
+    _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;          // out of line (_tree.c); private in STLport 4.6 _tree.h
+public:
+    // unique-key count: the found node against the header node (the header word is read after the _M_find call)
+    unsigned int count(const _Key& __x) const { return _M_find(__x) == _M_header._M_data ? 0 : 1; }
+private:
+    public:
     const_iterator find(const _Key& __k) const { return const_iterator(_M_find(__k)); }
     const_iterator end() const { return const_iterator(this->_M_header._M_data); }
 };
@@ -117,8 +123,7 @@ public:
     _Rep_type _M_t;
     iterator find(const _Key& __x) const { return _M_t.find(__x); }
     iterator end() const { return _M_t.end(); }
-    // unique-key count: the found node against the header node (the header word is read after the _M_find call)
-    unsigned int count(const _Key& __x) const { return _M_t._M_find(__x) == _M_t._M_header._M_data ? 0 : 1; }
+    unsigned int count(const _Key& __x) const { return _M_t.count(__x); }
 };
 
 } // namespace std

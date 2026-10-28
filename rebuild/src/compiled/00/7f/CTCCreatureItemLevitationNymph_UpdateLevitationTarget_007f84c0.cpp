@@ -2,7 +2,7 @@
 // Leaf: UpdateLevitationTarget
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F84C0, length 116 bytes (+ int3 padding). Vtable 0x012415F4 slot 31 (catalog
 // "vfunc_31"; CTCCreatureItemLevitationBase::FrameUpdate 0x007F8300 calls this slot first every frame).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::GetPosition @ 0x004C73D0 (parent, then target),
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::GetPos @ 0x004C73D0 (parent, then target),
 // C3DVector::AccurateNormalise @ 0x00A14440.
 // Shape: inline IS_THING_ALIVE, then the same C3DVector(dx, dy, 0) temporary as SetTarget; Normalise is void and the
 // C2DVector member is filled by an inline Set(x, y) (a C2DVector temporary adds a frame copy).
@@ -21,7 +21,7 @@ class C2DVector { public:
 class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -72,8 +72,8 @@ struct CTCCreatureItemLevitationNymph {
 void CTCCreatureItemLevitationNymph::UpdateLevitationTarget()
 {
     if (IS_THING_ALIVE(PTarget)) {
-        const C3DVector& position = ParentThing->GetPosition();
-        const C3DVector& targetPosition = PTarget.GetPItem()->GetPosition();
+        const C3DVector& position = ParentThing->GetPos();
+        const C3DVector& targetPosition = PTarget.GetPItem()->GetPos();
         C3DVector direction(position.X - targetPosition.X, position.Y - targetPosition.Y, 0.0f);
         direction.AccurateNormalise();
         NymphHoverXYDirectionFromTarget.Set(direction.X, direction.Y);

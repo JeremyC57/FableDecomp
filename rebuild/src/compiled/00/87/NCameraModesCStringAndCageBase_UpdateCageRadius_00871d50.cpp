@@ -5,7 +5,7 @@
 // ?UpdateCageRadius@CStringAndCageBase@NCameraModes@@ABE_NAAVC3DVector@@@Z (private const). Caller: the landed
 // CStringAndCageBase::Update @ 0x008728C0 (`if (!UpdateStringLength(goTo)) UpdateCageRadius(goTo);` -- it names the pair
 // UpdatePositionWithVelocity 0x008722D0 / UpdatePosition 0x00871D50, descriptively).
-// Callees: NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0, CThing::GetPosition() const @ 0x004C73D0.
+// Callees: NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0, CThing::GetPos() const @ 0x004C73D0.
 // Pools: 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8.
 // Layout (retail = Ego_r - 0x24 for this class, as the landed UpdateZVars 0x00872050): CurrentCageRadius +0xB8.
 // Shape: the observed thing's position is copied into a C3DVector local through a memberwise copy constructor (X/Y stay
@@ -28,7 +28,7 @@ class C3DVector { public:
 };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                  // 0x004C73D0
+    const C3DVector& GetPos() const;                  // 0x004C73D0
 };
 class CThingGameObject : public CThing { };
 namespace NCameraModes {
@@ -50,7 +50,7 @@ public:
 };
 bool CStringAndCageBase::UpdateCageRadius(C3DVector& pos) const
 {
-    C3DVector centre = GetObservedThing()->GetPosition();
+    C3DVector centre = GetObservedThing()->GetPos();
     C3DVector offset(pos.X - centre.X, pos.Y - centre.Y, 0.0f);
     float distSq = offset.X * offset.X;
     distSq += offset.Y * offset.Y;

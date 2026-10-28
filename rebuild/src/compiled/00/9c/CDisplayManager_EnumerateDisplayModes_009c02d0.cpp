@@ -107,19 +107,25 @@ public:
     void reserve(size_type __n);                                // 0x009C2900 for CDisplayModeDesc
     iterator erase(iterator __first, iterator __last);          // 0x009C2680 for CDisplayModeDesc
     void clear() { erase(begin(), end()); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
     __forceinline void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {
@@ -216,6 +222,7 @@ public:
         _M_empty_initialize();
     }
     ~_Rb_tree() { clear(); }
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;
@@ -223,16 +230,25 @@ public:
         this->_M_header._M_data->_M_left = this->_M_header._M_data;
         this->_M_header._M_data->_M_right = this->_M_header._M_data;
     }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
     static _Link_type& _S_left(_Rb_tree_node_base* __x) { return (_Link_type&)(__x->_M_left); }
     static _Link_type& _S_right(_Rb_tree_node_base* __x) { return (_Link_type&)(__x->_M_right); }
     iterator begin() { return iterator(_M_leftmost()); }
     iterator end() { return iterator(this->_M_header._M_data); }
     unsigned int size() const { return _M_node_count; }
     pair<iterator, bool> insert_unique(const _Value& __x);      // 0x009C2800 for CDisplayModeDesc
+    private:
     void _M_erase(_Link_type __x);
+    public:
     void clear()
     {
         if (_M_node_count != 0) {

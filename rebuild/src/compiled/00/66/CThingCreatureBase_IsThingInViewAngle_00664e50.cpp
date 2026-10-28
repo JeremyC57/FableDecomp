@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00664E50, 656 bytes (639 without padding), thiscall `ret 0Ch`, bool in al. Ego_r.pdb
 //   name set: ?IsThingInViewAngle@CThingCreatureBase@@QBE_NABVCThing@@M_N@Z; its caller is IsThingInFOV 0x00665190
 //   (`call` at 0x00665247). Catalog label "CVertexBufferWin32_CalculateViewingAngle" is propagated and wrong.
-// Callees: CThing::GetPosition() const 0x004C73D0 (twice: this, then thing), CTCPhysicsBase::GetFacing() vtable slot 70
+// Callees: CThing::GetPos() const 0x004C73D0 (twice: this, then thing), CTCPhysicsBase::GetFacing() vtable slot 70
 //   (+0x118, C3DVector through the hidden pointer), CInterfaceMap::LowerBound const 0x004365B0 (CTCLook, interface 0x43),
 //   CTCLook::GetLookAngleRelToBodyXY() const 0x00751A80 (catalog "CMap::DrawGetSeaLevel"; fld [+34] ; fadd [+2C]),
 //   _CIfmod 0x00BFEB28 through the fmod intrinsic. Constants: 1/(2*pi) float 0x01237F08, 1.0 double 0x01237F00,
@@ -11,7 +11,7 @@
 // Shape: angles are turns (atan2 * 1/2pi). The fully inlined NormaliseAngle (`if (a < 0 || a >= 1) { a = fmod(a, 1);
 //   if (a < 0) a += 1; }`) runs five times: once per GetAngleXY, once on the look sum, and twice more inside
 //   AngleDifference (left operand spilled, right kept in st0, then `fsubr` / `fabs` / wrap past 0.5). The 0x20-byte
-//   frame needs the offset as a full C3DVector (thing.GetPosition() - GetPosition(), right operand first): its dead Z
+//   frame needs the offset as a full C3DVector (thing.GetPos() - GetPos(), right operand first): its dead Z
 //   store is dropped but the slot stays, which puts the facing vector at +0x14. The CTCLook lookup happens before the
 //   useLookAngle test (no null check); `if (...) return true; return false;` merges with the dead-thing early return at
 //   the end. Helpers must be __forceinline (plain inline leaves NormaliseAngle / GetAngleXY out of line).
@@ -82,7 +82,7 @@ public:
     CTCPhysicsBase* PhysicsTC;                         // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                             // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     bool IsDead() const { return (Flags91 & 1) != 0; }
     __forceinline bool HasTC(long type) const
     {
@@ -107,7 +107,7 @@ bool CThingCreatureBase::IsThingInViewAngle(const CThing& thing, float viewAngle
 {
     if (thing.IsDead())
         return false;
-    C3DVector toThing = thing.GetPosition() - GetPosition();
+    C3DVector toThing = thing.GetPos() - GetPos();
     C3DVector facing = PhysicsTC->GetFacing();
     float facingAngle = GetAngleXY(facing.X, facing.Y);
     float lookAngle = facingAngle;

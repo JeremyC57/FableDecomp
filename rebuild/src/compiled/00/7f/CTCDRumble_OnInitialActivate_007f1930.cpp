@@ -5,8 +5,8 @@
 // "CTCDRumble::vfunc_6").
 // Callees: CDefClassBase::GetSubDef<const CRumbleDef>(CDefPointer*) @ 0x007F1EE0, CTCBase::GetWorld @ 0x00686A70, the current game
 // camera's virtual slot 9 (+0x24, fetch its camera manager), CGameCameraManager::SetEarthquakeAt(const C3DVector&, float, float,
-// bool) @ 0x00699560, CThing::GetPosition @ 0x004C73D0, CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @
-// 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, the distance falloff exp(k * |a - b|^2) @ 0x007F1840 (`__fastcall`, two vectors),
+// bool) @ 0x00699560, CThing::GetPos @ 0x004C73D0, CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @
+// 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the distance falloff exp(k * |a - b|^2) @ 0x007F1840 (`__fastcall`, two vectors),
 // CThing::GetJoystickDeviceNumber @ 0x004C7CA0, the joystick device's virtual slot 17 (+0x44, start a rumble), `_ftol` @ 0x00BFEA70,
 // the defs' virtual slot 1 on release. Globals: g_pInputManager 0x013B8388 (joystick table +0x2c, 8-byte entries),
 // g_FramesPerSecond 0x01375550.
@@ -68,11 +68,12 @@ public:
     CThingBaseDef* PDef;                                // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     long GetJoystickDeviceNumber() const;               // 0x004C7CA0
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroThing();                             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -146,16 +147,16 @@ void CTCDRumble::OnInitialActivate()
     CGameCameraManager* cameraManager;
     if (GetWorld().GetGameCameraManager(&cameraManager)) {
         CThing* thing = ParentThing;
-        cameraManager->SetEarthquakeAt(thing->GetPosition(), Strength, Length, GlobalRumble);
+        cameraManager->SetEarthquakeAt(thing->GetPos(), Strength, Length, GlobalRumble);
     }
     float decayTime = Length * 0.8f;
     float attackTime = Length * 0.2f;
-    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead) {
         float scale = 1.0f;
         if (!GlobalRumble) {
             CThing* thing = ParentThing;
-            scale = RumbleDistanceFalloff(thing->GetPosition(), hero->GetPosition());
+            scale = RumbleDistanceFalloff(thing->GetPos(), hero->GetPos());
         }
         long joystick = hero->GetJoystickDeviceNumber();
         CJoystickDevice* device = g_pInputManager->Joysticks[joystick].Device;

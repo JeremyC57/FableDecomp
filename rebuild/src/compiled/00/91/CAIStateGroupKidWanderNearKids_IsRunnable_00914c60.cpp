@@ -17,11 +17,18 @@
 //   user-provided empty ctor so value-initialization does not zero an unused byte. The *_Methods structs are the lane's
 //   method carriers for generated data-only headers.
 #include "engine/CAIBrain.h"
-#include "engine/CAIStateGroupBase.h"
+#define CAIStateGroupBase CAIStateGroupBasePdb
+#include "engine/CAIStateGroupBase.h"              // layout only; the local class below carries the protected accessors (PDB: IBE)
+#undef CAIStateGroupBase
 #include "engine/CAIStateGroup_KidWanderNearKids.h"
 #include "engine/CThingAICreature.h"
 #include "engine/CThingSearchTools.h"
 #include "engine/CWorld.h"
+class CAIStateGroupBase : public CAIStateGroupBasePdb {
+protected:
+    const CWorld& PeekWorld() const;                        // 0x008FCFA0
+    const CThingSearchTools& PeekThingSearchTools() const;  // 0x008FD000
+};
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_KidWanderNearKids) == sizeof(CAIStateGroupBase));
 
 class CTCBase { public: };
@@ -47,11 +54,7 @@ class CTCIdleScheduler : public CTCBase { public: bool IsPreferredIdle(CAIStateG
 class CTCCreatureModeManager : public CTCBase { public: public:
     bool IsModeActive(unsigned long) const;   // 0x0073A8A0
 };          // 0x0073A8A0
-struct CAIStateGroupBase_Methods : CAIStateGroupBase {
-    CWorld* GetPWorld();                                // 0x008FCFA0
-    CThingSearchTools* PeekThingSearchTools();          // 0x008FD000
-};
-struct CAIStateGroup_KidWanderNearKids_Methods : CAIStateGroup_KidWanderNearKids {
+struct CAIStateGroup_KidWanderNearKids_Methods : CAIStateGroupBase {
     bool IsRunnable();
 };
 class CThingFilter_IsNot { public:
@@ -75,7 +78,7 @@ struct CThingSearchTools_Methods : CThingSearchTools {
 long __fastcall GFROR13(unsigned long);          // 0x00497890
 
 bool CAIStateGroup_KidWanderNearKids_Methods::IsRunnable() {
-    CAIStateGroupBase_Methods* stateGroup = (CAIStateGroupBase_Methods*)(CAIStateGroupBase*)this;
+    CAIStateGroupBase* stateGroup = this;
     if (((CThing*)stateGroup->PBrain->Creature)->UsingComponents[6] & 0x80000) {
         CTCIdleScheduler* scheduler=((CThing*)(stateGroup->PBrain->Creature))->GetTC<CTCIdleScheduler>(0xd3);
         if (!scheduler->IsPreferredIdle(stateGroup)) return false;
@@ -83,14 +86,14 @@ bool CAIStateGroup_KidWanderNearKids_Methods::IsRunnable() {
     if (((CThing*)stateGroup->PBrain->Creature)->UsingComponents[1] & 0x20000) {
         CTCCreatureModeManager* modes=((CThing*)(stateGroup->PBrain->Creature))->GetTCConst<CTCCreatureModeManager>(0x31);
         if (modes->IsModeActive(8) || modes->IsModeActive(9)) {
-            unsigned int* seed=((CWorld_Methods*)stateGroup->GetPWorld())->GetPRandomSeed();
+            unsigned int* seed=((CWorld_Methods*)&PeekWorld())->GetPRandomSeed();
             *seed=*seed*0x24a1+0x24df;
             *seed=GFROR13(*seed);
             if (*seed % 100 > 10) return false;
         }
     }
     CThingAICreature* found;
-    return ((CThingSearchTools_Methods*)stateGroup->PeekThingSearchTools())->GetPFirstThing(
+    return ((CThingSearchTools_Methods*)&PeekThingSearchTools())->GetPFirstThing(
         CThingFilter_IsNot((const CThing*)stateGroup->PBrain->Creature) && CThingFilter_IsChild(),
         &found);
 }

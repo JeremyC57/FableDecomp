@@ -1,4 +1,4 @@
-// CAIStateGroupBase::WaitForMessageEvent(long waitMode, const CFilter_Bind2& filter, CMessageEvent** event) -- AI state-group coroutine helper: poll the world's message-event manager for the most recent message passing a Bind2<IsOfType, CanBeSeenOrHeard> filter, yielding a frame between polls
+// CAIStateGroupBase::WaitForMessageEvent(long waitMode, const CFilter_Bind2& filter, const CMessageEvent** event) -- AI state-group coroutine helper: poll the world's message-event manager for the most recent message passing a Bind2<IsOfType, CanBeSeenOrHeard> filter, yielding a frame between polls
 // Leaf: WaitForMessageEvent
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00969760, length 120 bytes (ret 0Ch).
 // Callees: CAIStateGroupBase::IsStopping @ 0x008FD010, CAIStateGroupBase::GetPWorld @ 0x008FCFA0 (landed names),
@@ -16,7 +16,7 @@
 class CMessageEvent;
 struct CFilter_Bind2;                                  // the bound message filter, passed by address
 class CMessageEventManager { public:
-    CMessageEvent* FindMostRecentMessage(const CFilter_Bind2& filter);   // 0x008D46D0
+    const CMessageEvent* FindMostRecentMessage(const CFilter_Bind2& filter) const;   // 0x008D46D0 (PDB: a const template member returning const CMessageEvent*)
 };
 class CWorld { public:
     unsigned char         _pad[0x60];
@@ -33,17 +33,19 @@ public:
     void*   __vftable;                        // +0x00
     CBrain* PBrain;                           // +0x04
     bool IsStopping();                        // 0x008FD010
-    CWorld* GetPWorld_008fcfa0();                      // 0x008FCFA0 (PBrain->+0x1c->+0x24)
-    long WaitForMessageEvent(long waitMode, const CFilter_Bind2& filter, CMessageEvent** event);
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0 (PBrain->+0x1c->+0x24)
+public:
+    long WaitForMessageEvent(long waitMode, const CFilter_Bind2& filter, const CMessageEvent** event);
 };
 
-long CAIStateGroupBase::WaitForMessageEvent(long waitMode, const CFilter_Bind2& filter, CMessageEvent** event)
+long CAIStateGroupBase::WaitForMessageEvent(long waitMode, const CFilter_Bind2& filter, const CMessageEvent** event)
 {
     if (IsStopping())
         return 1;
     long result;
     do {
-        CMessageEventManager* manager = GetPWorld_008fcfa0()->MessageEventManager;
+        CMessageEventManager* manager = PeekWorld().MessageEventManager;
         *event = manager->FindMostRecentMessage(filter);
         if (*event) {
             result = 2;

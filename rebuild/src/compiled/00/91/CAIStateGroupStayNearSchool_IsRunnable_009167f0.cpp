@@ -5,7 +5,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the kid's +0x170 school pointer), CVectorMap::LowerBound
 // const @ 0x004365B0 (inlined GetInterface 0x23 = CTCVillager, bit 3 of +0x24), GFGetPVillageInterface @ 0x007EE540,
 // CAIStateGroup_WorkBase::IsInSchoolHours @ 0x00916790, CThingBuilding::PeekPMaterial @ 0x0082D2D0 (CDefPointer by
-// hidden pointer; inline release through the def's slot 1), CThing::GetPosition @ 0x004C73D0 (x2). Constant 400.0f
+// hidden pointer; inline release through the def's slot 1), CThing::GetPos @ 0x004C73D0 (x2). Constant 400.0f
 // @ 0x0125D824.
 // Shape: the landed CAIStateGroup_Clean / LightHomeCandle CDefPointer model (force-inlined release); the range test
 // is an inline bool helper (`mov eax,1 / xor eax,eax`) negated into bl (`sete bl`) that rides across the release.
@@ -23,7 +23,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;            // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -223,10 +225,8 @@ class CDefPointer { public:
 };
 class CThingBuilding : public CThing { public:
     CDefPointer<CMaterialDef> PeekPMaterial();  // 0x0082D2D0
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCVillager;
 class CTCVillage;
@@ -238,8 +238,8 @@ struct CThingSchoolKid : CThing {
 // the kid is within 20 units (XY) of the school: the delta kept on the FPU, squared length against 400
 __forceinline bool IsNearSchool(CThingBuilding* school, CThingPos* kid)
 {
-    const C3DVector& schoolPos = school->GetPosition();
-    const C3DVector& kidPos = kid->GetPosition();
+    const C3DVector& schoolPos = school->GetPos();
+    const C3DVector& kidPos = kid->GetPos();
     C2DVector delta;
     delta.x = kidPos.x - schoolPos.x;
     delta.y = kidPos.y - schoolPos.y;

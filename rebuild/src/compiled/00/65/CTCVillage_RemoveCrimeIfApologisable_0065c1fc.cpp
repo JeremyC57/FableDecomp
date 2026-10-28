@@ -4,7 +4,7 @@
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)`. Ego_r.pdb `?RemoveCrimeIfApologisable@CTCVillage@@QAEXJ@Z`.
 // Callees: CTCBase::GetWorld() 0x00686A70 (its result only feeds the static frame getter); CWorld::GetWorldFrame()
 //          0x0049D870 (static); CWorld::GetCurrentPlayer() const 0x0049D9D0 (g_pMainGameComponent 0x013B86A0 +0x24);
-//          CPlayer::GetHeroThing() 0x00487DC0; std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x51); CVectorMap<
+//          CPlayer::GetPControlledCreature() 0x00487DC0; std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x51); CVectorMap<
 //          ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020; CTCHeroOpinionDeedLog::GetDeedFromHandle(long) 0x006C58F0;
 //          the effects-def getter 0x006C5630 (landed spelling GetDeedEffectsDef); CTCVillage::RemoveCrime(long) 0x0065C146;
 //          the def's slot 1 on the last release.
@@ -56,9 +56,10 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
@@ -126,7 +127,7 @@ void CTCVillage::RemoveCrimeIfApologisable(long deedHandle)
     long* lastApology = &LastFrameApologised;
     if (*lastApology != 0 && GetWorld()->GetWorldFrame() - *lastApology < 450)
         return;
-    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetHeroThing();
+    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

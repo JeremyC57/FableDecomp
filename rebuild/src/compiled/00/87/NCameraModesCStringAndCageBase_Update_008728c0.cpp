@@ -6,7 +6,7 @@
 // second result) / UpdateAutoGoBehind 0x00872110 (all C3DVector&; Ego_r.pdb ?UpdateStringLength@ / ?UpdateCageRadius@
 // CStringAndCageBase@NCameraModes@@ABE_NAAVC3DVector@@@Z, ?UpdateAutoGoBehind@...@@ABEXAAVC3DVector@@@Z, in the TU order
 // UpdateAutoGoBehind, UpdateStringLength, UpdateCageRadius), private UpdateXYVars 0x00871FD0, UpdateZVars 0x00872050, CGameCameraManager::GetNoControlMovementTime 0x00697710,
-// CThing::GetPosition 0x004C73D0, NCameraModes::CBase::GetCamTools 0x0084D080 (result unused), virtual slots 28
+// CThing::GetPos 0x004C73D0, NCameraModes::CBase::GetCamTools 0x0084D080 (result unused), virtual slots 28
 // (+0x70, auto-go-behind enabled), 29 (+0x74, auto-go-behind time) and 30 (+0x78, SetGoToPosition).
 // Pools: 0.0f 0x0122DEDC, 10.0f 0x01237F0C, 2.0f 0x01277538, 1.0f 0x0122DED8.
 // Layout (retail = PDB - 0x10 at LookAt's tail, - 0x14 after the 12-byte vector, as the landed UpdateZVars 0x00872050):
@@ -24,7 +24,7 @@ class C3DVector { public:
 };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                         // 0x004C73D0
+    const C3DVector& GetPos() const;                         // 0x004C73D0
 };
 class CTCGraphicAppearance {
 public:
@@ -90,7 +90,7 @@ void CStringAndCageBase::Update()
     }
     UpdateXYVars();
     UpdateZVars();
-    goTo.Z = GetObservedThing()->GetPosition().Z + CurrentHeightOffset;
+    goTo.Z = GetObservedThing()->GetPos().Z + CurrentHeightOffset;
     bool noSmoothing = CameraManager->NoSmoothing;
     float rate = noSmoothing ? 0.0f : 10.0f;
     float z = (GoToPosition.Z * rate + goTo.Z) / (rate + 1.0f);

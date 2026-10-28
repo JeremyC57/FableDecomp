@@ -3,7 +3,7 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062C1C0, 305 bytes (320 with padding), `ret 4`, /GS (cookie 0x0139C8A8).
 //   PDB ?EAOpenHeroCentreDoor@CWorld@@QAEXPBVCGameEvent@@@Z.
-// Callees: CWorld::GetPlayer(long) 0x0049D850, CPlayer::GetHeroThing 0x00487DC0, the const interface-map LowerBound
+// Callees: CWorld::GetPlayer(long) 0x0049D850, CPlayer::GetPControlledCreature 0x00487DC0, the const interface-map LowerBound
 //   0x004365B0 (the hero is a const CThing*), CGameEvent::GetData 0x009F17A0, CMemoryBuffer::Read 0x009F18F0, CWorld
 //   virtual slot 3 GetThingManager, CThingManager::GetThingWithUID(__int64) 0x0051ED80, the non-const LowerBound
 //   0x0040F020, CTCHeroCentre::OnHeroWalkedThroughDoor(EHeroCentreDoorType) 0x0077DB90, __security_check_cookie 0x00BFE9F9.
@@ -84,6 +84,7 @@ class CThing { public:
         return component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CTCInventoryBase {                          // TC 0x11
     unsigned char _pad[0x58];
@@ -96,7 +97,7 @@ class CTCHeroCentre { public:                             // TC 0x6A
 class CThingManager { public:
     CThing* GetThingWithUID(__int64 uid);          // 0x0051ED80
 };
-class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 
 class CWorld { public:
     virtual void _slot0();
@@ -109,7 +110,7 @@ class CWorld { public:
 
 void CWorld::EAOpenHeroCentreDoor(const CGameEvent* event)
 {
-    const CThing* hero = GetPlayer(event->Player)->GetHeroThing();
+    const CThing* hero = GetPlayer(event->Player)->GetPControlledCreature();
     if (hero && !hero->Dead)
     {
         if (!hero->PeekTC<CTCInventoryBase>(0x11)->InventoryOpen)

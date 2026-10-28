@@ -1,7 +1,7 @@
 // CAIStateGroup_Drunk::IsRunnable() -- runnable when the creature has not just sent a "drunk" message (type 0x14),
 // has no scripted override, and its drunk component (interface 0xc3) reports it is drunk.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00922600, length 166 bytes (+ int3 padding). Vtable slot 11.
-// Callees: CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF290, the second world accessor @ 0x008FCFA0
+// Callees: CMessageEventFilter_IsTargettedAtThing ctor @ 0x006AF290, the second world accessor @ 0x008FCFA0
 // (message manager at +0x60), CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType,
 // IsOriginatedByThing>> @ 0x008D46D0, the brain accessor @ 0x0088B7D0 (`[+0x38] ? [+0x38]+0xc : 0`; the manifest's
 // CEditWorld::DrawGetWorldMap label is propagated), CVectorMap::LowerBound @ 0x004365B0 (interface 0xc3).
@@ -89,6 +89,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -106,7 +109,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 };
 
 
@@ -129,9 +134,9 @@ struct CMessageEventFilter_IsForThing {
     CMessageEventFilter_IsForThing(CThing* thing) : m_pThing(thing) { }
 };
 
-class CMessageEventFilter_IsOriginatedByThing { public:
+class CMessageEventFilter_IsTargettedAtThing { public:
     unsigned __int64 UID;                       // the originator's 64-bit UID (PDB)
-    CMessageEventFilter_IsOriginatedByThing(const CThing* thing);    // 0x006AF2B0 (0x006AF2B0 / 0x006AF290 twins, out of line, `ret 4`)
+    CMessageEventFilter_IsTargettedAtThing(const CThing& thing);     // 0x006AF290 ??0CMessageEventFilter_IsTargettedAtThing@@QAE@ABVCThing@@@Z (retail calls 0x6AF290 at both sites)
 };
 
 template<class A, class B> class CFilter_Bind2 { public:
@@ -155,14 +160,13 @@ class CMessageEventManager;
 class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
-    CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+    CMessageEventManager* GetPMessageManager() const { return m_pMessageManager; }
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
-typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing> CDrunkFilter;
+typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsTargettedAtThing> CDrunkFilter;
 
 class CMessageEventManager { public:
     CMessageEvent* FindMostRecentMessage(const CDrunkFilter& filter);   // 0x008D46D0
@@ -195,8 +199,8 @@ struct CAIStateGroup_Drunk : CAIStateGroupBaseW {
 bool CAIStateGroup_Drunk::IsRunnable()
 {
     CThing* creature = PBrain->PCreature;
-    if (GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage(
-            CMessageEventFilter_IsOfType(0x14) && CMessageEventFilter_IsOriginatedByThing(creature)))
+    if (PeekWorld().GetPMessageManager()->FindMostRecentMessage(
+            CMessageEventFilter_IsOfType(0x14) && CMessageEventFilter_IsTargettedAtThing(*creature)))
         return false;
     CTCDrunk* drunk;
     return ((CAIBrainX*)PBrain)->GetPOverride() == 0

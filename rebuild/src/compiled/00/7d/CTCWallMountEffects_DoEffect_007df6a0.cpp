@@ -1,7 +1,7 @@
 // CTCWallMountEffects::DoEffect() -- stamp the use frame, then a teleport mount starts its CTCTeleporter on the living hero and a healing mount heals the living creature using it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DF6A0, 201 bytes (+ int3 padding).
 // Callees: CWorld::GetWorldFrame() @ 0x0049D870 (static); CTCBase::GetPlayerManager() @ 0x00686D40;
-//          CPlayerManager::GetMainPlayer() @ 0x00449970; CPlayer::GetHeroThing() @ 0x00487DC0;
+//          CPlayerManager::GetMainPlayer() @ 0x00449970; CPlayer::GetPControlledCreature() @ 0x00487DC0;
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (interface 0xdd = CTCTeleporter, bit 29 of the
 //          bitset dword at +0x38); CTCTeleporter::StartTeleporting(CThingPlayerCreature*) @ 0x007DFF90;
 //          CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 (x3); CThingPhysical::ModifyHealth(float, bool) @ 0x006A68F0 (virtual slot 59, +0xec), called with
@@ -36,6 +36,7 @@ class CThing { public:
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CThingPlayerCreature;
 class CThingPhysical : public CThing { public:          // CThingCreatureBase derives from it
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
@@ -82,7 +83,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 }
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer& GetMainPlayer();                   // 0x00449970
@@ -120,7 +121,7 @@ void CTCWallMountEffects::DoEffect()
     FrameEffectLastUsed = CWorld::GetWorldFrame();
     switch (PDef->Effect) {
     case WALL_MOUNT_EFFECT_TELEPORT: {
-        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero && !hero->IsDead()) {
             CThing* thing = ParentThing;
             CTCTeleporter* teleporter = 0;

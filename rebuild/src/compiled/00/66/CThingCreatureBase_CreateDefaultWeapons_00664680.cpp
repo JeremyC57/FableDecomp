@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00664680, length 354 bytes (+14 int3), plain `ret`.
 //   Name from Ego_r.pdb `?CreateDefaultWeapons@CThingCreatureBase@@IAEXXZ`.
 // Callees: CreateWeaponForThingFromDef(CThing*, long) @ 0x00663990 (`__fastcall`), CCharString(const char*, long)
-//   @ 0x0099EBF0 ("" @ 0x0122D70E), CThing::GetPosition() const @ 0x004C73D0, CreateThingObject @ 0x00703210 (`__fastcall`:
+//   @ 0x0099EBF0 ("" @ 0x0122D70E), CThing::GetPos() const @ 0x004C73D0, CreateThingObject @ 0x00703210 (`__fastcall`:
 //   def, position; player, orientation, flags, script name), ~CCharString @ 0x0099EAE0, CThing::SetAsGameStatePersisted
 //   @ 0x004C7880, the const CVectorMap LowerBound copy @ 0x004365B0 (the object's lookup) and the non-const @ 0x0040F020
 //   (the creature's), the carryable's slot query @ 0x00705D00 (manifest "CTCTavernGame::GetBanter" is propagated; a
@@ -15,7 +15,7 @@
 //   Primary/SecondaryMeleeWeaponDef +0xd8/+0xdc, RangedWeaponDef +0xe0, InitialSheathedWeapon +0xe4,
 //   UseMeleeWeaponAsDefault bit 4 of +0x148 (PDB 8 higher: def base 4, the NavigatorTypes vector 4).
 // Shape: every def read goes through an inline GetDef() pointer accessor (retail copies the def into eax for the melee
-//   pair and keeps it in edi across GetPosition); the object's lookup goes through a `const CThing*` (const LowerBound).
+//   pair and keeps it in edi across GetPos); the object's lookup goes through a `const CThing*` (const LowerBound).
 class CTCBase;
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet;
@@ -45,7 +45,7 @@ class CThing { public:
     unsigned char  _bits92 : 4;
     unsigned char  LevelPersistent : 1;                 // +0x92 bit 4
     unsigned char  _bits92b : 3;
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
     __forceinline bool HasTC(long type) const
     {
@@ -118,7 +118,7 @@ void CThingCreatureBase::CreateDefaultWeapons()
     CreateWeaponForThingFromDef(this, weapon);
     CreateWeaponForThingFromDef(this, secondWeapon);
     if (GetDef()->InitialSheathedWeapon > 0) {
-        CThing* item = CreateThingObject(GetDef()->InitialSheathedWeapon, GetPosition(), PlayerNumber, 0, 0, "");
+        CThing* item = CreateThingObject(GetDef()->InitialSheathedWeapon, GetPos(), PlayerNumber, 0, 0, "");
         if (item && !item->Dead) {
             item->SetAsGameStatePersisted(false);
             item->LevelPersistent = false;

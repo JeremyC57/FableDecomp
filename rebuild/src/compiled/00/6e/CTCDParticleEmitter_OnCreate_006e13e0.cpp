@@ -1,7 +1,7 @@
 // CTCDParticleEmitter::OnCreate() -- mark a dependent emitter's thing as not game-state persisted, clear the attachments, then create the particle emitter at the thing's position; if the manager cannot create it yet, wait ~0.9 s for the particle to load, keeping the creation parameters
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E13E0, 251 bytes (+ int3 padding), plain `ret`.
 // Callees: CThing::SetAsGameStatePersisted(bool) @ 0x004C9C10, CTCDParticleEmitter::ClearAttachments @ 0x006E0AF0,
-//   CThing::GetPosition @ 0x004C73D0, CParticleEmitterManager::Get @ 0x00AEAAF0 (static; manifest "GFGetPreMainMemoryUsed"
+//   CThing::GetPos @ 0x004C73D0, CParticleEmitterManager::Get @ 0x00AEAAF0 (static; manifest "GFGetPreMainMemoryUsed"
 //   is a byte twin), CParticleEmitterManager::CreateEmitter(long, const C3DVector&, bool, const CRightHandedSet&) @
 //   0x00AEB6D0, SetPEmitter @ 0x006E1080, __ftol2 @ 0x00BFEA70, operator new @ 0x00BFEA1A, CParticleCreationParameters(
 //   long, const CRightHandedSet&) @ 0x006E25C0, CCountedPointer<CParticleCreationParameters>::Reset @ 0x006E2710.
@@ -11,9 +11,9 @@
 //   FramesLeftToWaitForParticleToCreate +0x38, PCreationParameters +0x3c, the flag bits of +0x44
 //   (WaitingForParticleToLoad 0, ForceParticleToLoad 1, IndependantObject 2).
 // Shape: the parent thing is a named local read before the orientation (its `mov ecx,[esi+4]` precedes the bit read;
-//   read inline in the call it is loaded after the force bit and the type before GetPosition); the orientation is a
+//   read inline in the call it is loaded after the force bit and the type before GetPos); the orientation is a
 //   named identity CRightHandedSet (six immediate stores interleaved with the argument
-//   pushes); CreateEmitter's arguments evaluate right to left (the set, the force bit, GetPosition, the type) before
+//   pushes); CreateEmitter's arguments evaluate right to left (the set, the force bit, GetPos, the type) before
 //   the static manager getter; the new creation record is `p = new T(..)` handed to Reset (the null arm pushes eax=0).
 class C3DVector { public:
     float X, Y, Z;
@@ -31,7 +31,7 @@ extern bool g_bParticlesEnabled;                // 0x01375754
 extern const CRightHandedSet g_IdentityRHSet;   // 0x01380104
 class CThing { public:
     void SetAsGameStatePersisted_004c9c10(bool persisted);   // 0x004C9C10
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 namespace NParticleEngine {
 class CParticleEmitter;
@@ -80,7 +80,7 @@ void CTCDParticleEmitter::OnCreate()
         CThing* thing = ParentThing;
         CRightHandedSet orientation(C3DVector(0.0f, 0.0f, 1.0f), C3DVector(0.0f, 1.0f, 0.0f));
         NParticleEngine::CParticleEmitter* emitter = CParticleEmitterManager::Get()->CreateEmitter(
-            ParticleTypeID, thing->GetPosition(), ForceParticleToLoad, orientation);
+            ParticleTypeID, thing->GetPos(), ForceParticleToLoad, orientation);
         if (emitter) {
             SetPEmitter(emitter);
             return;

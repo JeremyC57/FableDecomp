@@ -1,5 +1,5 @@
-// CThingFilter_IsInFaction::operator()(const CThing& thing) const -- whether the thing's faction component (kind 0x57) lists the filter's faction; false without one
-// Leaf: ??RCThingFilter_IsInFaction
+// CThingFilter_IsRelatedTo::operator()(const CThing& thing) const -- whether the thing's family component (kind 0x57) lists the filter's thing as a relative; false without one
+// Leaf: ??RCThingFilter_IsRelatedTo
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8880, length 78 bytes (+ int3 padding).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (const instantiation), the component's
 // membership query @ 0x00778AB0 (searches its list at +0xc/+0x10 for the value; manifest "CHitParameters::
@@ -48,19 +48,19 @@ class CThing { public:
     }
 };
 
-struct CTCFactionMembership {                   // component kind 0x57
-    bool IsMember(long faction) const;          // 0x00778AB0
+class CTCFamilyMember { public:                 // component kind 0x57 (Ego_r.pdb: vector<const CThing*> FamilyMembers at +0xc, the list 0x00778AB0 searches)
+    bool IsRelatedTo(const CThing& thing) const;   // 0x00778AB0 ?IsRelatedTo@CTCFamilyMember@@QBE_NABVCThing@@@Z
 };
 
-struct CThingFilter_IsInFaction {
-    long m_faction;                             // +0x00
+class CThingFilter_IsRelatedTo { public:        // Ego_r.pdb ??RCThingFilter_IsRelatedTo@@QBE_NABVCThing@@@Z
+    const CThing* m_pThing;                     // +0x00 the relative
     bool operator()(const CThing& thing) const;
 };
 
-bool CThingFilter_IsInFaction::operator()(const CThing& thing) const
+bool CThingFilter_IsRelatedTo::operator()(const CThing& thing) const
 {
-    CTCFactionMembership* membership;
-    if (thing.GetInterface(&membership, 0x57))
-        return membership->IsMember(m_faction);
+    CTCFamilyMember* family;
+    if (thing.GetInterface(&family, 0x57))
+        return family->IsRelatedTo(*m_pThing);
     return false;
 }

@@ -5,7 +5,7 @@
 // OPINION_REACTION_TYPE_COMMENT_TO_SELF row @ 0x013BBC30), so it is a condition callback on a reaction record; the
 // record and method are named descriptively.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the target pointer at the unaligned +0x6b, four times through
-//          one `lea esi,[edi+6Bh]`), CThingPhysical::GetPosition @ 0x004C73D0 (twice).
+//          one `lea esi,[edi+6Bh]`), CThingPhysical::GetPos @ 0x004C73D0 (twice).
 // Global: the float 3.0f @ 0x0122DED4.
 // Shape: the three guards are NESTED ifs so they share the trailing `xor al,al` (early `return false`s put a tail
 //          inline); the owner's creature (record +4 -> +0x18) is read before the target is fetched; the difference
@@ -40,7 +40,7 @@ class CThing { public:
     unsigned char _pad44[0x91 - 0x44];
     unsigned char m_flags;                      // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 class CBaseObject;
@@ -82,7 +82,7 @@ bool COpinionReactionRecord::IsTargetValidAndDistant()
             if (m_target.GetPItem()->m_presentBits[2] & 0x20000) {
                 CThing* creature = m_pOwner->m_pCreature;
                 CThing* target = m_target.GetPItem();
-                return (target->GetPosition() - creature->GetPosition()).Length() > 3.0f;
+                return (target->GetPos() - creature->GetPos()).Length() > 3.0f;
             }
         }
     }

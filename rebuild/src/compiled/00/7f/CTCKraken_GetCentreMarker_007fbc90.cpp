@@ -3,9 +3,9 @@
 // Callees: the CTCBase accessors GetWorld @ 0x00686D60 (its slot 9, +0x24, a bool "loading" query; name descriptive),
 // GetDefinitionManager @ 0x006869D0, GetThingSearchTools @ 0x00686D90 and GetPlayerManager @ 0x00686D40 (manifest labels
 // "GetDisplayEngine" / "_Cons_val" are propagated), CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
-// CCharString(const char*, long) @ 0x0099EBF0 / copy @ 0x0099EC30 / ~CCharString @ 0x0099EAE0, CThing::GetPosition @
+// CCharString(const char*, long) @ 0x0099EBF0 / copy @ 0x0099EC30 / ~CCharString @ 0x0099EAE0, CThing::GetPos @
 // 0x004C73D0, __ftol2 @ 0x00BFEA70, CThingSearchTools::GetPFirstThingInRoughArea<HasDefGlobalIndex> @ 0x007FCEF0 and
-// <HasTrackName> @ 0x007FD110, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPPlayerCharacter @ 0x00487DC0,
+// <HasTrackName> @ 0x007FD110, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10
 // (CIntelligentPointer<CThing> vtable 0x01238C6C).
 // Strings: "BUILDING_KRAKEN_CHAMBER" @ 0x01272074, "KRACKEN_CHAMBER_CENTRE" @ 0x0127205C.
@@ -27,8 +27,9 @@ class CCharString { public:
 };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CThingFilter_HasDefGlobalIndex { public:
     long m_defGlobalIndex;
     CThingFilter_HasDefGlobalIndex(long index) : m_defGlobalIndex(index) { }
@@ -52,7 +53,7 @@ class CWorld { public:
 };
 class CThingPlayerCreature;
 class CPlayer { public:
-    CThing* GetPPlayerCharacter() const;                // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -105,7 +106,7 @@ void CTCKraken::GetCentreMarker()
     CDefinitionManager* definitions = GetDefinitionManager();
     long chamberIndex = definitions->GetDefGlobalIndexFromName("BUILDING_KRAKEN_CHAMBER");
     {
-        const C3DVector& pos = ParentThing->GetPosition();
+        const C3DVector& pos = ParentThing->GetPos();
         long x = (long)pos.X;
         long y = (long)pos.Y;
         C2DBoxI area(x - 5, y - 5, x + 5, y + 5);
@@ -118,5 +119,5 @@ void CTCKraken::GetCentreMarker()
         }
         PCentreMarker = CIntelligentPointer<CThing>(found);
     }
-    PTarget = CIntelligentPointer<CThing>(GetPlayerManager()->GetMainPlayer().GetPPlayerCharacter());
+    PTarget = CIntelligentPointer<CThing>(GetPlayerManager()->GetMainPlayer().GetPControlledCreature());
 }

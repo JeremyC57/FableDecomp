@@ -4,7 +4,7 @@
 // `?ForceTrespass@CTCTrespasser@@QAEXXZ`.
 // Callees: CBaseIntelligentPointer::GetPItem() const 0x00A01B50 (IS_THING_ALIVE, the trespassable test and the deed
 //          target); CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (interface 0x51 = word 2 bit 17, the
-//          opinion deed log); CThing::GetPosition() const 0x004C73D0; CTCHeroOpinionDeedLog::PostDeed(EOpinionDeedType,
+//          opinion deed log); CThing::GetPos() const 0x004C73D0; CTCHeroOpinionDeedLog::PostDeed(EOpinionDeedType,
 //          const C3DVector&, const CThing*, CThingAICreature*, EOpinionPostDeedType, bool, bool, const CFaction*, bool,
 //          long) 0x006C6990 (Ego_r.pdb signature; the landed callers spell it four different ways).
 // Layout (Ego_r.pdb CTCTrespasser, retail equal up to the list): DeedHandles[3] +0x10, TrespassingThing +0x2d (an
@@ -54,7 +54,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 class CTCHeroOpinionDeedLog { public:                  // interface 0x51
@@ -101,10 +101,10 @@ void CTCTrespasser::ForceTrespass()
     if (IS_THING_ALIVE(TrespassingThing) && TrespassingThing.GetPItem()->HasTC(0xbd)) {
         CTCHeroOpinionDeedLog* log = 0;
         if (ParentThing->GetInterface(&log, 0x51) && DeedHandles[2] == -1)
-            DeedHandles[2] = log->PostDeed(OPINION_DEED_TYPE_TRESPASS, ParentThing->GetPosition(), TrespassingThing.GetPItem(), 0,
+            DeedHandles[2] = log->PostDeed(OPINION_DEED_TYPE_TRESPASS, ParentThing->GetPos(), TrespassingThing.GetPItem(), 0,
                                            OPINION_POST_DEED_TYPE_0x12, true, true, 0, false, 0);
         else
-            log->PostDeed(OPINION_DEED_TYPE_TRESPASS, ParentThing->GetPosition(), TrespassingThing.GetPItem(), 0,
+            log->PostDeed(OPINION_DEED_TYPE_TRESPASS, ParentThing->GetPos(), TrespassingThing.GetPItem(), 0,
                           OPINION_POST_DEED_TYPE_0x12, true, false, 0, false, 0);
     }
 }

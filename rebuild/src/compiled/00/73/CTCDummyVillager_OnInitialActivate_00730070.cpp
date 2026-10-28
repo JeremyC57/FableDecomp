@@ -5,7 +5,7 @@
 //          IS_THING_ALIVE<CIntelligentPointer<CThingBuilding>> @ 0x0065F8CA (__fastcall), CThingAICreature::SetWorkBuilding
 //          @ 0x00512260, CThingAICreature::SetHomeBuilding @ 0x00512210, LowerBound @ 0x0040F020, the 0x90 component's
 //          virtual slot 6, CTCVillageMember::GetVillage() @ 0x007EE540, CTCVillage::AddThingToVillage @ 0x0065B854,
-//          CTCDummyVillager::CanBeRecreated() @ 0x0072F9E0, CTCBase::GetWorld() @ 0x00686A70, CThingPhysical::GetPosition()
+//          CTCDummyVillager::CanBeRecreated() @ 0x0072F9E0, CTCBase::GetWorld() @ 0x00686A70, CThingPhysical::GetPos()
 //          @ 0x004C73D0, CTCDummyVillager::CreateVillager @ 0x0072F750.
 // Layout (Ego_r.pdb, matches retail): HomeBuilding +0x10 / UID +0x18, WorkBuilding +0x20 / UID +0x28, Creature +0x30 /
 //         UID +0x38, DayToBeRecreated +0x40, Respawnable +0x48; CThing type byte +0x10 (1 creature, 3 building);
@@ -69,7 +69,7 @@ public:
         CInterfaceMap::SEntry* end = map->last;
         return (it == end || type < it->type ? end : it)->component;
     }
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 class CThingBuilding : public CThing { };
 class CThingAICreature : public CThing {
@@ -175,6 +175,6 @@ void CTCDummyVillager::OnInitialActivate()
         Thing->HasTC(0x23)) {
         CTCVillage* village = ((CTCVillageMember*)Thing->GetTC(0x23))->GetVillage();
         if (village)
-            CreateVillager(village, village->Thing->GetPosition(), false);
+            CreateVillager(village, village->Thing->GetPos(), false);
     }
 }

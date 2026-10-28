@@ -8,8 +8,8 @@ public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 static C3DVector g_pos;
-class CThing { public: const C3DVector& GetPosition() const; };
-const C3DVector& CThing::GetPosition() const { return g_pos; }
+class CThing { public: const C3DVector& GetPos() const; };
+const C3DVector& CThing::GetPos() const { return g_pos; }
 class CTCBase {
 public:
     virtual void v00();

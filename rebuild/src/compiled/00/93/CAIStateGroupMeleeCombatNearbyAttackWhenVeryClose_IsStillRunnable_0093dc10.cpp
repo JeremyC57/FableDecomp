@@ -13,9 +13,11 @@ class C3DVector { public:
  float GetLengthSquared2D() const { float xx=X*X; float yy=Y*Y; return yy+xx; }
 };
 
-struct CThingCombatGeometry {
+class CThing { public:
+    const C3DVector& GetPos() const; // 004C73D0
+};
+struct CThingCombatGeometry : public CThing {
  unsigned char _beforePhysics[0x60]; CTCPhysicsBase* PhysicsTC;
- const C3DVector& GetPosition() const; // 004C73D0
 };
 struct CIntelligentTargetView {
  void* __vftable; CThingCombatGeometry* Object;
@@ -32,8 +34,8 @@ bool CMeleeCloseMethods::IsStillRunnable(bool initial) {
  if(CMeleeNearbyBaseMethods::IsStillRunnable(initial)) {
   CThingCombatGeometry* creature=(CThingCombatGeometry*)PBrain->Creature;
   CThingCombatGeometry* enemy=Enemy.GetPItem();
-  const C3DVector& mine=creature->GetPosition();
-  C3DVector delta=enemy->GetPosition()-mine;
+  const C3DVector& mine=creature->GetPos();
+  C3DVector delta=enemy->GetPos()-mine;
   if(fabs(delta.Z)<2.0f) {
    CThingCombatGeometry* other=Enemy.GetPItem();
    CThingCombatGeometry* me=(CThingCombatGeometry*)PBrain->Creature;

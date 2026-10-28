@@ -2,7 +2,7 @@
 //
 // Retail 0x007DD990, 154 bytes (plain `ret`). Callees: CTCBase::GetWorld() const @ 0x00686A80
 // (`[0x013B8A1C]+0x24`; manifest "CViewBase::GetDisplayEngine", propagated), CWorld::GetCurrentPlayer
-// @ 0x0049D9D0, CPlayer::GetHeroThing @ 0x00487DC0 (labels propagated), CVectorMap<ETCInterfaceType,
+// @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0 (labels propagated), CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x004365B0, CTCEntityEvents::GetEvent<NEntityEvents::CEventHitBy,
 // CFilter_Bind2<CIsHitEventHitBy, CIsHitEventHitByShot>>(CEventHitBy**, const filter&) @ 0x007DE2E0.
 // Layout: Ego_r.pdb CTCCreatureFlyInCircles: Creature +0x0c, HasBeenHit +0x43.
@@ -44,6 +44,7 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                             // +0x91 (bit 0 = dead)
 };
+class CThingPlayerCreature : public CThing { };
 
 inline bool IsThingAlive(const CThing* thing)
 {
@@ -75,7 +76,7 @@ class CTCEntityEvents { public:
 };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                                 // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                                 // 0x00487DC0
 };
 
 class CWorld { public:
@@ -97,7 +98,7 @@ void CTCCreatureFlyInCircles::CheckForHits()
 {
     if (!HasBeenHit)
     {
-        CThing* hero = GetWorld()->GetCurrentPlayer()->GetHeroThing();
+        CThing* hero = GetWorld()->GetCurrentPlayer()->GetPControlledCreature();
         CTCEntityEvents* events;
         if (IsThingAlive(hero) && Creature->GetInterface(&events, 0x42))
         {

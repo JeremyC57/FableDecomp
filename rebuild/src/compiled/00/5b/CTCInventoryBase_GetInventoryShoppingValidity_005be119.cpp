@@ -6,8 +6,8 @@
 //   @ 0x0043DBD0 (the hero), all `__fastcall` on the pointer's address; std::bitset<>::test @ 0x00410DE0 and
 //   CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface, types 0x53 and 2),
 //   CBaseIntelligentPointer::GetPItem @ 0x00A01B50, IsFreeToFinishAction @ 0x006621C0, FinishCurrentAction @ 0x00662650,
-//   CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing
-//   @ 0x00487DC0, CThing::GetPosition @ 0x004C73D0, _CIfmod @ 0x00BFEB28, the type-2 component's virtual slot 66
+//   CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature
+//   @ 0x00487DC0, CThing::GetPos @ 0x004C73D0, _CIfmod @ 0x00BFEB28, the type-2 component's virtual slot 66
 //   (+0x108, set the facing angle).
 // Data: 1/(2*pi) @ 0x01237F08, 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8.
 // Shape: same-TU `auto_inline(off)` stand-ins for the three IS_THING_ALIVE instantiations and LowerBound let VC7.1 pack
@@ -38,7 +38,7 @@ public:
     CPresenceBits present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
@@ -56,10 +56,8 @@ public:
     bool IsFreeToFinishAction();                            // 0x006621C0
     void FinishCurrentAction();                             // 0x00662650
 };
-class CThingHero : public CThing { };
-bool __fastcall IS_THING_ALIVE(CThing* const& thing);                  // 0x0040DCE0
-bool __fastcall IS_THING_ALIVE(CThingCreatureBase* const& thing);      // 0x005C05C0
-bool __fastcall IS_THING_ALIVE(CThingHero* const& thing);              // 0x0043DBD0
+class CThingPlayerCreature : public CThing { };
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // <CThing*> 0x0040DCE0, <CThingCreatureBase*> 0x005C05C0, <CThingPlayerCreature*> 0x0043DBD0
 
 // Same-TU stand-ins: with these bodies visible VC7.1 sees that the pointer addresses and the lookup key do not
 // escape, and packs the frame as retail did.
@@ -78,9 +76,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     }
     return lo;
 }
-bool __fastcall IS_THING_ALIVE(CThing* const& thing) { return thing != 0 && IsAlive(thing); }
-bool __fastcall IS_THING_ALIVE(CThingCreatureBase* const& thing) { return thing != 0 && IsAlive(thing); }
-bool __fastcall IS_THING_ALIVE(CThingHero* const& thing) { return thing != 0 && IsAlive(thing); }
+template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return thing != 0 && IsAlive(thing); }
 #pragma auto_inline(on)
 
 struct CBaseIntelligentPointer {
@@ -112,7 +108,7 @@ struct CTCFacing {                                          // interface 2
     float X;                                                // +0x0C
     float Y;                                                // +0x10
 };
-class CPlayer { public: CThingHero* GetHeroThing(); };             // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };             // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };        // 0x00449970
 
 class CTCBase
@@ -141,11 +137,11 @@ bool CTCInventoryBase::GetInventoryShoppingValidity()
             if (IS_THING_ALIVE(creature)) {
                 if (creature->IsFreeToFinishAction())
                     creature->FinishCurrentAction();
-                CThingHero* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
+                CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
                 if (IS_THING_ALIVE(hero)) {
                     CTCFacing* facing;
                     creature->GetInterface(&facing, 2);
-                    const C3DVector& target = hero->GetPosition();
+                    const C3DVector& target = hero->GetPos();
                     const C2DVector& difference = C2DVector(target.X - facing->X, target.Y - facing->Y);
                     float angle = atan2(difference.X, difference.Y) * 0.15915494f;
                     if (angle < 0.0f || angle >= 1.0f) {

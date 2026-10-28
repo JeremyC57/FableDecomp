@@ -95,7 +95,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0xc];
-    CWorld* GetPThingWorld() const;             // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
 };
 struct CAIStateGroup_DeedReactionRoot : CAIStateGroupBase {
     CBaseIntelligentPointer Reactee;            // +0x14
@@ -107,7 +109,7 @@ struct CAIStateGroup_DeedReactionRoot : CAIStateGroupBase {
 
 bool CAIStateGroup_DeedReactionRoot::IsStillValid() const
 {
-    CThing* hero = GetPThingWorld()->PMainPlayer->GetCharacterThing().GetPItem();
+    CThing* hero = PeekWorld().PMainPlayer->GetCharacterThing().GetPItem();
     if (IS_THING_ALIVE(Reactee) && (!OnlyReactToHero || hero == Reactee.GetPItem() || hero == 0)) {
         CTCHeroOpinionDeedLog* reactions;
         if (Reactee.GetPItemConst()->GetInterface(&reactions, 0x51)) {

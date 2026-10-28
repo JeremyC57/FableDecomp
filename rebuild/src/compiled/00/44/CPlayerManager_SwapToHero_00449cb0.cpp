@@ -10,12 +10,13 @@
 struct CThingCalls {
     void Kill(bool flag);                                   // 0x004C9B80
 };
+class CThingPlayerCreature : public CThingCalls { };
 
-struct CPlayerRetail {
+struct CPlayer {
     unsigned char _pad00[0x28];
     long          Number;                                   // +0x28
-    bool SwitchPlayerCharactersWith(CPlayerRetail* other);  // 0x004888C0
-    CThingCalls* GetHeroThing();                            // 0x00487DC0
+    bool SwitchPlayerCharactersWith(CPlayer* other);  // 0x004888C0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 
 class CPlayerManager { public:
@@ -26,19 +27,19 @@ class CPlayerManager { public:
     long          PlayerNeutral;                            // +0x18
     long          MainPlayer;                               // +0x1c
     bool IsPlayer(long player);                             // 0x00449880
-    CPlayerRetail* GetPlayer(long player);                  // 0x004498C0
+    CPlayer* GetPlayer(long player);                  // 0x004498C0
     void SwapToHero(long player);
 };
 
 void CPlayerManager::SwapToHero(long player)
 {
     if (IsPlayer(player)) {
-        CPlayerRetail* newPlayer = GetPlayer(player);
-        CPlayerRetail* oldPlayer = GetPlayer(MainPlayer);
+        CPlayer* newPlayer = GetPlayer(player);
+        CPlayer* oldPlayer = GetPlayer(MainPlayer);
         MainPlayer = newPlayer->Number;
         if (!newPlayer->SwitchPlayerCharactersWith(oldPlayer))
             MainPlayer = oldPlayer->Number;
-        if (oldPlayer->GetHeroThing())
-            oldPlayer->GetHeroThing()->Kill(true);
+        if (oldPlayer->GetPControlledCreature())
+            oldPlayer->GetPControlledCreature()->Kill(true);
     }
 }

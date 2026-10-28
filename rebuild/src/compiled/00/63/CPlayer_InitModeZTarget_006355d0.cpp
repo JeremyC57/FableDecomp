@@ -1,13 +1,13 @@
 // CPlayer::InitModeZTarget(EPlayerMode mode, CProcessedInput* input) -- entering Z-targeting attaches its sixteen input processes, flags ZTargeting, drops a pending carried thing if the creature is in mode 0x22, puts the creature mode manager into the Z-target mode 25 (re-adding mode 12 when it was current), switches the player to aggressive mode, pushes the Z-target camera and asks the targeting component to pick a new lock target
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006355D0, length 611 bytes (+ int3 padding), `ret 8`.
-// Callees: CAInputProcess::AddToInterface (virtual slot 1, sixteen processes), CPlayer::GetHeroThing 0x00487DC0,
+// Callees: CAInputProcess::AddToInterface (virtual slot 1, sixteen processes), CPlayer::GetPControlledCreature 0x00487DC0,
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x004365B0 (const copy, the first mode-manager lookup) and 0x0040F020,
 // CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 / RemoveMode 0x0073ABA0 / AddMode 0x0073AE10, CTCCarrying
 // 0x006A1270 (bool query) / RemoveThingFromPrimarySlot 0x006A1E00, CPlayer::SetAggressiveMode 0x00487EB0, the world's
 // +0x34 object's slot 9 (GetCameraManager, +0x24), CGameCameraManager::PushZTargetMode 0x00698E40,
 // CTCTargetingPlayer::SetAsPickUpNewLockTarget 0x008023A0.
 // Layout: engine/CPlayer.h (scoped_ptr<CInputProcess*> members, PlayerInterface +0x0C, World +0x1C, ZTargeting +0x20A)
-// through the lane's CPlayer_Methods carrier (the landed InitModeUseProjectileWeapon 0x00635BF0 model); CThing interface
+// through the lane's CPlayer carrier (the landed InitModeUseProjectileWeapon 0x00635BF0 model); CThing interface
 // bitset +0x20, interface map +0x44.
 // Shape: optional components are `T* p = 0; if (HasTC(t)) p = GetTC<T>(t);` (the miss zero kept in a callee-saved
 // register and the call made either way); the mode-0x22 test reads the manager through the const GetTC.
@@ -15,14 +15,17 @@
 #include "engine/CPlayer.h"
 #undef CPlayer
 
+typedef long EPlayerMode;
+class CProcessedInput;
+class CThingPlayerCreature;
 class CPlayer : public CPlayerLayout
 {
 public:
     void SetAggressiveMode(bool);   // 0x00487EB0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
+    void InitModeZTarget(EPlayerMode mode, CProcessedInput* input);
 };
 
-typedef long EPlayerMode;
-class CProcessedInput;
 class CTCBase;
 
 class CAInputProcess { public:
@@ -73,6 +76,7 @@ class CThing { public:
         return (const T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CMode {
     virtual void v00();
@@ -104,12 +108,8 @@ class CWorld { public:
     CCameraManagerSource* CameraSource;                 // +0x34
 };
 
-struct CPlayer_Methods : CPlayer {
-    CThing* GetHeroThing();                             // 0x00487DC0
-    void InitModeZTarget(EPlayerMode mode, CProcessedInput* input);
-};
 
-void CPlayer_Methods::InitModeZTarget(EPlayerMode mode, CProcessedInput* input)
+void CPlayer::InitModeZTarget(EPlayerMode mode, CProcessedInput* input)
 {
     (void)mode; (void)input;
     reinterpret_cast<CAInputProcess*>(InputProcessControlCreature_ptr)->AddToInterface(PlayerInterface);
@@ -129,7 +129,7 @@ void CPlayer_Methods::InitModeZTarget(EPlayerMode mode, CProcessedInput* input)
     reinterpret_cast<CAInputProcess*>(InputProcessTargetLockCycleTargets_ptr)->AddToInterface(PlayerInterface);
     reinterpret_cast<CAInputProcess*>(InputProcessWatchForControlAngleChange_ptr)->AddToInterface(PlayerInterface);
     ZTargeting = true;
-    CThing* hero = GetHeroThing();
+    CThing* hero = GetPControlledCreature();
     if (hero->HasTC(0x31)) {
         if (hero->GetConstTC<CTCCreatureModeManager>(0x31)->GetCurrentMode()->GetModeType() == 0x22) {
             CTCCarrying* carrying = 0;

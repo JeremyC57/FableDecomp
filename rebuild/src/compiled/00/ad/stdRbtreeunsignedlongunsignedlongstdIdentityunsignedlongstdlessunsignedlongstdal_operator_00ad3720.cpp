@@ -48,9 +48,15 @@ public:
     typedef _Rb_tree_node<_Value>* _Link_type;
     unsigned int _M_node_count;                      // +0x04
     _Compare     _M_key_compare;                     // +0x08
+    protected:
     _Link_type& _M_root() const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Link_type& _M_leftmost() const { return (_Link_type&)this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Link_type& _M_rightmost() const { return (_Link_type&)this->_M_header._M_data->_M_right; }
+    public:
     static _Link_type _S_minimum(_Link_type __x) { return (_Link_type)_Rb_tree_node_base::_S_minimum(__x); }
     static _Link_type _S_maximum(_Link_type __x) { return (_Link_type)_Rb_tree_node_base::_S_maximum(__x); }
 private:

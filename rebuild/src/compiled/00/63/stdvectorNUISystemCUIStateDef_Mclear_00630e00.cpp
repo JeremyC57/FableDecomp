@@ -1,5 +1,5 @@
 // std::vector<NUISystem::CUIStateDef>::_M_clear() -- destroy every element (virtual destructor), then free the block
-// Leaf: ?_M_clear@?$vector@VCUIStateDef@NUISystem@@V?$allocator@VCUIStateDef@NUISystem@@@std@@@std@@QAEXXZ
+// Leaf: ?_M_clear@?$vector@VCUIStateDef@NUISystem@@V?$allocator@VCUIStateDef@NUISystem@@@std@@@std@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00630E00, 50 bytes, thiscall, plain `ret`.
 // Identity (proven): its only caller is vector<NUISystem::CUIStateDef>::operator= 0x006315E0 (the grow arm: allocate-and-copy, then this), which CUIDef's constructor 0x006303C0 and operator= 0x00631720 apply to CUIDef::States (Ego_r.pdb vector<NUISystem::CUIStateDef>, 0x84-byte element, 0x7C in retail: the 124-byte stride). The manifest's "~vector<CConversation>" is propagated.
 // Callees: the element's virtual destructor (vtable slot 0, flags 0), free 0x00BFEA14.
@@ -52,11 +52,13 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
 };
 }
 template void std::vector<NUISystem::CUIStateDef>::_M_clear();

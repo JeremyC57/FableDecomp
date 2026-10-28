@@ -3,7 +3,7 @@
 // Leaf: ProcessInput
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00691560, length 105 bytes.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (player manager at CMainGameComponent +0x1c, the component global
-// @ 0x013B86A0), CPlayer::GetHeroCreature @ 0x00487DC0, the component map's LowerBound @ 0x0040F020; the component's
+// @ 0x013B86A0), CPlayer::GetPControlledCreature @ 0x00487DC0, the component map's LowerBound @ 0x0040F020; the component's
 // virtual slot 28 (+0x70) takes (event, processed, this). The enable flag is the byte @ 0x013BAE1D.
 // Shape: the presence test is the masked bitset word (`test byte ptr [eax+40h],4` for kind 0x102), the map `find` is
 // inlined with its key in the `push ecx` frame word; the flag test sits in an inline member of the component
@@ -41,8 +41,9 @@ class CThing { public:
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCBase* GetTC(long kind) { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -71,7 +72,7 @@ public:
 
 void CInputProcessBetting::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero->HasTC(0x102)) {
         static_cast<CTCBetting*>(hero->GetTC(0x102))->ProcessInputIfEnabled(event, processed, this);
     }

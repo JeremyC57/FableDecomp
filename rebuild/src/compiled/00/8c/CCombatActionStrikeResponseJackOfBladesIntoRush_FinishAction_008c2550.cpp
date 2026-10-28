@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C2550, 607 bytes (+ int3 padding), virtual, no EH frame.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8), CVectorMap::LowerBound 0x0040F020 (same-TU stand-in),
 //   CDefClassBase::GetSubDef<CJackOfBladesBattleDef> 0x008C33E0 (same-TU stand-in), GetValidRushPosition 0x008C1600 (same-TU
-//   stand-in), CThing::GetPosition 0x004C73D0, CCombatAction_GenericStrikeResponseBase::FinishAction 0x008663D0, operator new
+//   stand-in), CThing::GetPos 0x004C73D0, CCombatAction_GenericStrikeResponseBase::FinishAction 0x008663D0, operator new
 //   0x00BFEA1A, CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CCreatureAction_PlayCombatAnimation 0x008B7FF0,
 //   CCountedPointer<T>(T*) 0x00695880 (same-TU stand-in; ICF-shared, catalog label names CFileInstaller::CFileInfo),
 //   CCreatureAction_CastAssassinRush 0x008CE1B0 / ~ 0x0072D990, CThingCreatureBase::SetCurrentAction 0x006644F0, operator
@@ -117,7 +117,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                        // +0x44
     unsigned char _pad4c[0x70 - 0x4c];
     CDefClassBase* PDef;                               // +0x70
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     __forceinline bool GetSubDef(CDefPointer_CJackOfBladesBattleDef* out) const { return PDef->GetSubDef(out); }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -226,7 +226,7 @@ void CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction()
         counter->RushCount = count;
     C3DVector rushPosition;
     if (CauseRush && GetValidRushPosition(rushPosition)) {
-        C3DVector delta = rushPosition - PCreature.GetPItem()->GetPosition();
+        C3DVector delta = rushPosition - PCreature.GetPItem()->GetPos();
         C3DVector direction = Normalise(delta);
         float distance = delta.Get2DLength();
         CThingCreatureBase* creature = PCreature.GetPItem();

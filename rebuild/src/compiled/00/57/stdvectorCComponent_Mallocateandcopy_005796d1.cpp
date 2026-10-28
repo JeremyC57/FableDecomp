@@ -70,6 +70,7 @@ public:
     typedef const _Tp* const_pointer;
     typedef unsigned int size_type;
     typedef __true_type _IsPODType;                 // __type_traits<_Tp*>::is_POD_type
+    protected:
     template <class _ForwardIterator>
     pointer _M_allocate_and_copy(size_type __n, _ForwardIterator __first, _ForwardIterator __last)
     {
@@ -77,6 +78,7 @@ public:
         __uninitialized_copy(__first, __last, __result, _IsPODType());
         return __result;
     }
+    public:
 };
 
 template NUISystem::CComponent** vector<NUISystem::CComponent*>::_M_allocate_and_copy(

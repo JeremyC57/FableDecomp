@@ -4,7 +4,7 @@
 // = bit 18 of +0x34 on the target point; both miss paths read the never-written key slot), CBaseIntelligentPointer
 // ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C,
 // CIntelligentPointer<const CThing> vtable 0x01237F1C), FindPTargetPoint @ 0x009652C0,
-// FindPStealableItemOutsideTargetPointRange(const C3DVector&, float) @ 0x00965210, CThing::GetPosition @ 0x004C73D0.
+// FindPStealableItemOutsideTargetPointRange(const C3DVector&, float) @ 0x00965210, CThing::GetPos @ 0x004C73D0.
 // Layout: engine/CAIStateGroup_RecoverStealableItem.h (PStealableItem +0x14, PTargetPoint +0x1c, PPreviouslyCarriedItem
 // +0x24, GotActionPoint +0x2c, ActionPointIndex +0x30, ReachedDestination +0x34, PickUpActionID +0x38, NeedsCleanup +0x3c)
 // over the landed local CAIStateGroupBase model (the generated header flattens the vptr).
@@ -26,7 +26,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -124,7 +124,7 @@ bool CAIStateGroup_RecoverStealableItem::IsRunnable()
                 CTCTargetPoint* target;
                 PTargetPoint.GetPItem()->GetInterface(&target, 0xb2);
                 CThing* point = PTargetPoint.GetPItem();
-                PStealableItem = CIntelligentPointerThing(FindPStealableItemOutsideTargetPointRange(point->GetPosition(), target->Range));
+                PStealableItem = CIntelligentPointerThing(FindPStealableItemOutsideTargetPointRange(point->GetPos(), target->Range));
             }
             return IS_THING_ALIVE(PStealableItem) && IS_THING_ALIVE(PTargetPoint);
         }

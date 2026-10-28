@@ -62,8 +62,12 @@ public:
     typedef const _Tp* const_pointer;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
+    protected:
     template <class _ForwardIter> pointer _M_allocate_and_copy(size_type __n, _ForwardIter __first, _ForwardIter __last);   // 0x00462DC1
+    public:
+    protected:
     void _M_clear();                                                                           // 0x00462E04
+    public:
     vector& operator=(const vector& __x);
 };
 

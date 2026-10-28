@@ -2,7 +2,7 @@
 // Leaf: OnDie
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0087BBF0, length 298 bytes (`ret`).
 // Callees: the script module's virtual slot 7 (+0x1c, bool; descriptive IsFinished), NCameraModes::CBase::GetObservedThing()
-// const @ 0x0084F1B0 (twice), CThing::GetPosition() const @ 0x004C73D0, CCamera::GetHorizontalFOV() const @ 0x00A0BEB0.
+// const @ 0x0084F1B0 (twice), CThing::GetPos() const @ 0x004C73D0, CCamera::GetHorizontalFOV() const @ 0x00A0BEB0.
 // Layout: retail NCameraModes::CBase as the landed CFirstPerson::OnInit 0x008735D0 (LookAt +0x10, CameraManager +0x40, GoTo +0x54,
 // CameraFOV +0x84); CScriptedControl (Ego_r.pdb - 0x24): PScriptModule +0xa4, ObservedThingMeshHeightOnInit +0xac, InitCamera
 // (CCamera, 0x38 bytes) +0xb0; CGameCameraManager Camera +4, OldCamera +0x3c, SingleCut +0xb0.
@@ -47,7 +47,7 @@ void __fastcall SetCameraRoll(CCamera* camera, float roll);   // 0x0084CD10
 class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 class CThingGameObject : public CThing { public: };
 inline bool IS_THING_ALIVE(const CThing* thing) { return thing && !(thing->m_flags91 & 1); }
@@ -114,7 +114,7 @@ void CScriptedControl::OnDie()
         C3DVector position = InitCamera.WorldPosition;
         float distance = 1.0f;
         if (IS_THING_ALIVE(GetObservedThing()))
-            distance = (position - GetObservedThing()->GetPosition()).GetLength();
+            distance = (position - GetObservedThing()->GetPos()).GetLength();
         GoTo.Position = position;
         LookAt.Position = InitCamera.RHSet.Forward * distance + position;
         CameraFOV = InitCamera.GetHorizontalFOV();

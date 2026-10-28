@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872EC0, 365 bytes (+ int3 padding), plain `ret`; virtual slot 24 of
 //   NCameraModes::CZTargetNew (called through +0x60 by the landed OnInit 0x00872A20).
 // Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0 (twice), the const CVectorMap::LowerBound 0x004365B0
-//   (interface lookup, key 8 = the targeting TC), the TC's virtual slot 36 (+0x90) GetTargetedThing, CThing::GetPosition
+//   (interface lookup, key 8 = the targeting TC), the TC's virtual slot 36 (+0x90) GetTargetedThing, CThing::GetPos
 //   0x004C73D0 (const C3DVector&, twice), C3DVector::AccurateNormalise @ 0x00A14440, CZTargetNew::InitialiseTransitionVariables
 //   0x00872490, CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10;
 //   CIntelligentPointer<const CThing> vtable 0x01237F1C; 1e-4f @ 0x0129BA3C (squared at run time).
@@ -50,7 +50,7 @@ class CThing { public:
     CInterfaceMap Interfaces;                           // +0x44
     unsigned char _pad50[0x41];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return TCFlags & (1 << type); }
     template<long TYPE> __forceinline CTCBase* GetTC() const
     {
@@ -128,8 +128,8 @@ void NCameraModes::CZTargetNew::UpdateCoordSystem()
     if (thing->HasTC(8)) {
         const CThing* target = thing->GetTC<8>()->GetTargetedThing();
         if (IS_THING_ALIVE(target)) {
-            const C3DVector& targetPos = target->GetPosition();
-            const C3DVector& pos = GetObservedThing()->GetPosition();
+            const C3DVector& targetPos = target->GetPos();
+            const C3DVector& pos = GetObservedThing()->GetPos();
             C3DVector axis(pos.X - targetPos.X, pos.Y - targetPos.Y, 0.0f);
             if (axis.GetLengthSquaredXY() > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {
                 axis.AccurateNormalise();

@@ -1,7 +1,7 @@
 // CMiniMapDisplay::InitialiseInformationMarkers() -- with a region loaded and the main player's creature alive: look up the four body-guard def indices and the hero's followed component (0xbc); for every information thing in the current region that carries the information flag, add a marker: the body-guard graphic ([8].Secondary) when it is one of the hero's followers of a body-guard def, else the information graphic ([2].Secondary)
 // Leaf: ?InitialiseInformationMarkers@CMiniMapDisplay
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082A9B0, 529 bytes (`ret`).
-// Callees: CPlayerManager::GetMainPlayer() const 0x00449960, CPlayer::GetControlledCreature 0x00487DD0, CCharString 0x0099EBF0 /
+// Callees: CPlayerManager::GetMainPlayer() const 0x00449960, CPlayer::PeekPControlledCreature 0x00487DD0, CCharString 0x0099EBF0 /
 //   ~ 0x0099EAE0, CGameDefinitionManager::Get 0x0044C6B0 (static __fastcall) / GetDefGlobalIndexFromName 0x009AD410,
 //   CVectorMap::LowerBound const 0x004365B0 (inline GetTC 0xbc), CWorld slots 13 (GetWorldMap) and 4 (GetThingManager),
 //   CWorldMap::GetRegionNumberMapIsIn 0x004FC190 / GetCurrentRegionNumber 0x004FB150, the thing's information-flag getter
@@ -58,6 +58,7 @@ class CThing { public:
         return (const T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 template <class T> struct _List_node {
     _List_node* _M_next;
     _List_node* _M_prev;
@@ -99,7 +100,7 @@ class CWorld { public:
     virtual CWorldMap* GetWorldMap();              // slot 13 (+0x34)
 };
 class CPlayer { public:
-    CThing* GetControlledCreature() const;         // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;         // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -124,7 +125,7 @@ class CMiniMapDisplay { public:
 void CMiniMapDisplay::InitialiseInformationMarkers()
 {
     if (m_pRegion) {
-        CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetControlledCreature();
+        const CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().PeekPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             long bodyGuard = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD");
             long bodyGuardWeak = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_BODY_GUARD_WEAK");

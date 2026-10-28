@@ -1,7 +1,7 @@
 // CWorld::AutoSaveCheckPoint() -- checkpoint autosave: record the save type, have the main hero's three inventories take a quest-persistent reference on their non-persistent items, save as the checkpoint file and remember that a checkpoint exists
 // Leaf: AutoSaveCheckPoint
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A0BB0, 285 bytes (288 with padding), plain `ret`. PDB ?AutoSaveCheckPoint@CWorld@@QAE_NXZ.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetHeroThing 0x00487DC0, CInterfaceMap::LowerBound
+// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, CInterfaceMap::LowerBound
 //   0x0040F020 (x3), NInventory::CTCInventoryBase::IncrementQuestPersistentRefCountForNonPersistentItems 0x005BCF51
 //   (`UpdateNonQuestPersistentRefCountForItems(true)`; label "_Dest_val<...CFlash>" is wrong; name from the PDB list,
 //   its false twin at 0x005BCF59), CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0, CUserProfileManager::
@@ -52,12 +52,13 @@ class CThing { public:
         return (T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 namespace NInventory {
 class CTCInventoryBase { public:                          // TC 0x11 / 0x12 / 0x13 (the three inventories)
     void IncrementQuestPersistentRefCountForNonPersistentItems();   // 0x005BCF51
 };
 }
-class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 class CPlayerManager { public: public:
     CPlayer& GetMainPlayer();   // 0x00449970
 }; // 0x00449970
@@ -76,7 +77,7 @@ bool CWorld::AutoSaveCheckPoint()
 {
     MostRecentSaveType = 2;
     MostRecentSaveTypeBeforeManualSave = 2;
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead)
     {
         if (hero->HasTC(0x11))

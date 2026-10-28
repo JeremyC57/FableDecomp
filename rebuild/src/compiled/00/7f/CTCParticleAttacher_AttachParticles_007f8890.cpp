@@ -5,7 +5,7 @@
 // Callees: CDefClassBase::GetSubDef<CParticleAttacherDef> @ 0x007F87A0 (pushes "CParticleAttacherDef" 0x01243F00; the
 //   FableWin name GetSubDef<CAICreatureWillPowerIndicatorDef> is wrong), CDefStringTable::GetString @ 0x009D49B0 on
 //   g_DefStringTable 0x013CA828, CTCGraphicAppearance::GetNoDummyObjects @ 0x004BE000 / GetNoHelperPoints @ 0x004BDE90,
-//   CBasicString<char>::operator== @ 0x004115A0, CThing::GetPosition @ 0x004C73D0, CTCDParticleEmitter::Create (__fastcall,
+//   CBasicString<char>::operator== @ 0x004115A0, CThing::GetPos @ 0x004C73D0, CTCDParticleEmitter::Create (__fastcall,
 //   particle index) @ 0x006E0880, CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10, the
 //   particle list push_back @ 0x004AD520, CTCDParticleEmitter::AttachToThing @ 0x006E0BE0, CCharString @ 0x0099EBF0 / dtor
 //   @ 0x0099EAE0. Data: "" @ 0x0122D70E, CIntelligentPointer<CThing> vtable 0x01238C6C.
@@ -110,7 +110,7 @@ public:
     CDefClassBase*        PBaseDef;                    // +0x70
     unsigned char         _pad74[0x91 - 0x74];
     unsigned char         m_flags91;                   // +0x91 bit 0 dead
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -168,7 +168,7 @@ void CTCParticleAttacher::AttachParticles()
         else
             count = appearance->GetNoHelperPoints(name, 1.0f);
         if (name == "") {
-            CThing* particle = CTCDParticleEmitter::Create(info->ParticleIndex, ParentThing->GetPosition(), false);
+            CThing* particle = CTCDParticleEmitter::Create(info->ParticleIndex, ParentThing->GetPos(), false);
             if (particle && !(particle->m_flags91 & 1)) {
                 {
                     CIntelligentPointer<CThing> pointer(particle);
@@ -185,7 +185,7 @@ void CTCParticleAttacher::AttachParticles()
         } else {
             if (count > 0)
             for (long i = 0; i != count; ++i) {
-                CThing* particle = CTCDParticleEmitter::Create(info->ParticleIndex, ParentThing->GetPosition(), false);
+                CThing* particle = CTCDParticleEmitter::Create(info->ParticleIndex, ParentThing->GetPos(), false);
                 if (particle && !(particle->m_flags91 & 1)) {
                     {
                     CIntelligentPointer<CThing> pointer(particle);

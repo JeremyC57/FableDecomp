@@ -123,7 +123,7 @@ class CThing { public:
     CTCBase*       PTCBase64;                                  // +0x64
     unsigned char  _pad68[0x70 - 0x68];
     CThingBaseDef* PBaseDef;                                   // +0x70
-    const C3DVector& GetPosition() const;                      // 0x004C73D0
+    const C3DVector& GetPos() const;                      // 0x004C73D0
     void AddAndCopyTC(CTCBase* tc, bool activate);             // 0x004C9F60
     CTCBase* AddTC(const CCharString& name, bool activate, void* params);   // 0x004C9D60
     bool HasTC(long type) { return m_present.test(type); }
@@ -194,7 +194,7 @@ void CTCInventoryClothing::InitialiseMannequin()
         PMannequin = 0;
         return;
     }
-    PMannequin = CreateThing(GetInventoryDef()->MannequinDef, GetParentThing()->GetPosition(), true);
+    PMannequin = CreateThing(GetInventoryDef()->MannequinDef, GetParentThing()->GetPos(), true);
     if (PMannequin) {
         PMannequin->AddAndCopyTC(ParentThing->PTCBase64, false);
         CTCBase* tc;

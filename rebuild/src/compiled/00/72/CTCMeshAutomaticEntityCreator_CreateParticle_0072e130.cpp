@@ -4,7 +4,7 @@
 //   `lea ecx,[ecx]` loop alignment); the 8-byte intelligent-pointer temporary built inside the loop gives the
 //   `and esp,-8` aligned frame (GOTCHAS chunk 232).
 // Callees: CTCGraphicAppearance::GetNoDummyObjects(const CCharString&, float) @ 0x004BE000 (re-evaluated per pass),
-//   CThing::GetPosition @ 0x004C73D0 (label "CVertexBufferWin32::DoSizeof" is propagated), CTCDParticleEmitter::Create
+//   CThing::GetPos @ 0x004C73D0 (label "CVertexBufferWin32::DoSizeof" is propagated), CTCDParticleEmitter::Create
 //   (`__fastcall`) @ 0x006E0970, CTCDParticleEmitter::AttachToThing @ 0x006E0BE0, CCharString(const char*, long = -1)
 //   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::AddTC @ 0x004C9D60, CBaseIntelligentPointer ctor @ 0x00A01B10 /
 //   GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, CTCOwnedEntity::SetPOwner @ 0x007E8590 (through
@@ -45,7 +45,7 @@ public:
     CTCDParticleEmitter* PTCDriver;                    // +0x5c (the cached interface-0x4B component)
     unsigned char        _pad60[0x91 - 0x60];
     unsigned char        m_flags91;                    // +0x91 bit 0 dead, bit 1 created by owner thing creation
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     __forceinline bool HasTC(long type) const
     {
@@ -103,7 +103,7 @@ void CTCMeshAutomaticEntityCreator::CreateParticle(const CCharString& dummyName,
                                                    CTCGraphicAppearance* appearance)
 {
     for (long i = 0; i < appearance->GetNoDummyObjects(dummyName, 1.0f); ++i) {
-        CThing* particle = CTCDParticleEmitter::Create(particleName, m_pThing->GetPosition(), false);
+        CThing* particle = CTCDParticleEmitter::Create(particleName, m_pThing->GetPos(), false);
         if (particle && !(particle->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = 0;
             if (particle->HasTC(0x4b))

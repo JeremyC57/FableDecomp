@@ -4,7 +4,7 @@
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("FALL_DEAD" 0x012821F8), CCombatActionBase::SetAnimationName
 //   0x008574D0, CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +0x08), the physics component's virtual slots 36
 //   (+0x90, arg 1), 43 (+0xac, arg 2) and 80 (+0x140) (names unconfirmed), CVectorMap::LowerBound 0x0040F020 (inlined
-//   GetInterface 0xF5 = CTCNymph, bit 21 of +0x3c), CTCNymph::StopFlyingAround(long) 0x0080F870, CThing::GetPosition
+//   GetInterface 0xF5 = CTCNymph, bit 21 of +0x3c), CTCNymph::StopFlyingAround(long) 0x0080F870, CThing::GetPos
 //   0x004C73D0, CCreatureActionBase::GetWorldMap 0x00692C10, CWorldMap::GetHeightZBelowPos 0x0063E480,
 //   CCombatActionBase::Initialise 0x00857520.
 // Layout: as the landed sibling CCreatureAction_NymphGetHitDie::FrameUpdate 0x008C9F40: CThing +0x60 the physics
@@ -47,7 +47,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     CPhysicsComponent* m_pPhysics;                    // +0x60
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     CPhysicsComponent* GetPhysics() const { return m_pPhysics; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -112,7 +112,7 @@ void CCreatureAction_NymphGetHitDie::Initialise()
     CTCNymph* nymph;
     if (PCreature.GetPItem()->GetInterface(&nymph, 0xF5))
         nymph->StopFlyingAround(-1);
-    C3DVector position = PCreature.GetPItem()->GetPosition();
+    C3DVector position = PCreature.GetPItem()->GetPos();
     HeightOnInit = position.Z - GetWorldMap()->GetHeightZBelowPos(&position);
     CCombatActionBase::Initialise();
 }

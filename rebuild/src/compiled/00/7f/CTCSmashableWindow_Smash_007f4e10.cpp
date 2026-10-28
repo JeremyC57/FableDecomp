@@ -2,7 +2,7 @@
 // Leaf: ?Smash@CTCSmashableWindow@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F4E10, 86 bytes. Vtable 0x01240BA4 (CTCSmashableWindow, rtti-vtables.tsv) slot 28.
 // CTCSmashableBarrier::Smash 0x007EEB20 and CTCSmashableWindow::Smash 0x007F4E10 are byte-identical bodies (two classes).
-// Callees: CTCSmashableBase::Smash @ 0x007EED20 (landed), CThing::GetPosition() const @ 0x004C73D0,
+// Callees: CTCSmashableBase::Smash @ 0x007EED20 (landed), CThing::GetPos() const @ 0x004C73D0,
 //   CreateEffectThing(long, const C3DVector*, bool) @ 0x006E0880 (`__fastcall`, as in the landed 0x008C0FB0), the def's
 //   virtual Destroy (slot 1) on each last release (the second as a sibling-call `jmp`).
 // Layout: Ego_r.pdb CTCSmashableBase (as the landed 0x007EECF0 / 0x007EED20): Definition +0x14; CSmashableDef
@@ -13,7 +13,7 @@ class C3DVector { public: float X, Y, Z; };
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                // 0x004C73D0
+    const C3DVector& GetPos() const;                // 0x004C73D0
 };
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
@@ -69,5 +69,5 @@ void CTCSmashableWindow::Smash()
 {
     CTCSmashableBase::Smash();
     if (GetDef()->SmashParticleEmitter)
-        CreateEffectThing(GetDef()->SmashParticleEmitter, &GetThing()->GetPosition(), false);
+        CreateEffectThing(GetDef()->SmashParticleEmitter, &GetThing()->GetPos(), false);
 }

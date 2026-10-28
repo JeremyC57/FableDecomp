@@ -1,7 +1,7 @@
 // CTCWife::Died() -- a married wife's death unmarries her and sets the living hero's marriage state to 6 (widowed)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006D0020, 120 bytes (+8 int3). __fastcall, `ret`.
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCWife::Unmarry(bool) 0x006CFF10; CPlayerManager::GetMainPlayer()
-//          0x00449970; CPlayer::GetHeroThing() 0x00487DC0; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020;
+//          0x00449970; CPlayer::GetPControlledCreature() 0x00487DC0; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020;
 //          CTCHeroStats::SetMarriageState(CThingAICreature*, EMarriageState) 0x0057BC6E. Global g_pMainGameComponent 0x013B86A0.
 // Shape: same guard as OnGreet; the player manager is read from the main game component's +0x1C (not through CTCBase);
 //        interface 4 is CTCHeroStats (bitset byte +0x20 bit 4), called through the out-parameter lookup form.
@@ -25,7 +25,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     unsigned char _pad92[0x1c9 - 0x92];
     unsigned char Flags1C9;                     // +0x1c9 (CThingCreatureBase flag byte; bit 3 tested, descriptive)
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -40,8 +40,9 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroThing() const;               // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
@@ -71,7 +72,7 @@ void CTCWife::Died()
     if (FrameGotMarriedToThePlayer > CWorld::GetWorldFrame())
         return;
     Unmarry(true);
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
     if (!hero || (hero->Flags91 & 1))
         return;
     CTCHeroStats* stats;

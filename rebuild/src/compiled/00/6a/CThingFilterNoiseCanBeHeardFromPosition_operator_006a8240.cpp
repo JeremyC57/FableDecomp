@@ -2,7 +2,7 @@
 // Leaf: ??RCThingFilter_NoiseCanBeHeardFromPosition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A8240, length 178 bytes, `ret 4`, bool in al.
 // Callees: CInterfaceMap::LowerBound const @ 0x004365B0 (TC 0x37, the noise-emitting component; class not identified),
-//   CThing::GetPosition @ 0x004C73D0.
+//   CThing::GetPos @ 0x004C73D0.
 // Layout: CThingFilter_NoiseCanBeHeardFromPosition (Ego_r.pdb, 16 bytes): Position +0, ListenersHearingRange +0xc; retail
 //   CThing interface bitset +0x20 (TC 0x37 = word +0x24 bit 23), interface map +0x44; the component's noise radius at
 //   +0x44.
@@ -33,7 +33,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[9];           // +0x20 bitset<274>
     CInterfaceMap Components;                   // +0x44
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     bool HasTC(long type) const
     {
         if (UsingComponents[type >> 5] & (1UL << (type & 31)))
@@ -61,7 +61,7 @@ bool CThingFilter_NoiseCanBeHeardFromPosition::operator()(CThing* thing) const
 {
     if (thing->HasTC(0x37)) {
         CTCNoiseMaker_37* noise = thing->GetTC<CTCNoiseMaker_37>(0x37);
-        float distanceSquared = (thing->GetPosition() - Position).GetLengthSquared();
+        float distanceSquared = (thing->GetPos() - Position).GetLengthSquared();
         float radius = noise->NoiseRadius;
         float range = Min(radius, ListenersHearingRange);
         return distanceSquared <= range * range;

@@ -24,7 +24,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -103,8 +105,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 class C3DVector { public: float X, Y, Z; };
 class C2DBoxI { public: long MinX, MinY, MaxX, MaxY; };
 
-struct CThingCreaturePos {
-    const C3DVector& GetPosition();             // 0x004C73D0
+struct CThingCreaturePos : public CThing {
 };
 
 struct CThingFilter_IsDeadSpouse {
@@ -132,7 +133,7 @@ bool CAIStateGroup_MinionBehaviourSad::FoundDeadSpouse()
     CThing* spouse;
     bool found;
     {
-        const C3DVector& pos = ((CThingCreaturePos*)PBrain->PCreature)->GetPosition();
+        const C3DVector& pos = ((CThingCreaturePos*)PBrain->PCreature)->GetPos();
         long x = (long)pos.X;
         long y = (long)pos.Y;
         C2DBoxI box;

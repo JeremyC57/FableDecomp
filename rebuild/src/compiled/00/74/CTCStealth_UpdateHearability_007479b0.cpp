@@ -1,7 +1,7 @@
 // CTCStealth::UpdateHearability() -- unless sneaking (or without a stealth def), a moving owner can be heard from the def's base distance scaled by its pace (running / walking / creeping multiplier) and the hearability modifiers; a SIMPLE_NOISE of that radius is made at the owner and handed the owner
 // Leaf: UpdateHearability
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007479B0, 331 bytes (plain `ret`).
-// Callees: CThing::GetPosition 0x004C73D0 (x3); the owner's virtual speed getters slot 80 (+0x140, running) and slot 79
+// Callees: CThing::GetPos 0x004C73D0 (x3); the owner's virtual speed getters slot 80 (+0x140, running) and slot 79
 //          (+0x13c, walking), each taking the position; CTCStealth::GetHearabilityModifier 0x007475C0 (name descriptive; manifest
 //          "CTCHearabilityManager::GetSoundRadiusWithModifiers"); CCharString(const char*, long) 0x0099EBF0 ("SIMPLE_NOISE"
 //          0x01268A5C) / ~CCharString 0x0099EAE0; CTCBase::GetDefinitions 0x006869D0; CDefinitionManager::
@@ -50,7 +50,7 @@ public:
     CTCPhysicsBase* PhysicsTC;                  // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CThingNoise : public CThing { public:
     static CThingNoise* __fastcall Create(long defIndex, const C3DVector& pos, float radius);   // 0x008385B0
@@ -100,11 +100,11 @@ void CTCStealth::UpdateHearability()
     if (speedSquared > g_epsilon_0129ba3c) {
         DistanceCanBeHeardFrom = PDef->BaseHearingDistance;
         float multiplier;
-        float runSpeed = owner->GetRunSpeed(owner->GetPosition()) + g_epsilon_0129ba3c;
+        float runSpeed = owner->GetRunSpeed(owner->GetPos()) + g_epsilon_0129ba3c;
         if (speedSquared > runSpeed * runSpeed)
             multiplier = PDef->RunningMultiplier;
         else {
-            float walkSpeed = owner->GetWalkSpeed(owner->GetPosition()) + g_epsilon_0129ba3c;
+            float walkSpeed = owner->GetWalkSpeed(owner->GetPos()) + g_epsilon_0129ba3c;
             if (speedSquared > walkSpeed * walkSpeed)
                 multiplier = PDef->WalkingMultiplier;
             else
@@ -117,7 +117,7 @@ void CTCStealth::UpdateHearability()
             CCharString noiseName("SIMPLE_NOISE");
             defIndex = GetDefinitionManager().GetDefGlobalIndexFromName(noiseName);
         }
-        CThingNoise* noise = CThingNoise::Create(defIndex, ParentThing->GetPosition(), DistanceCanBeHeardFrom);
+        CThingNoise* noise = CThingNoise::Create(defIndex, ParentThing->GetPos(), DistanceCanBeHeardFrom);
         if (noise && !(noise->m_flags91 & 1))
             noise->PassToNoiseComponent(ParentThing);
     }

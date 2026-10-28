@@ -3,7 +3,7 @@
 // Label: 0x00487510 returns CPlayer +0x228 = JoystickDeviceNumber (PDB +0x230 less the 8 bytes of the 4-byte retail
 // PlayerModes list); its manifest label "CWorld::DrawGetEnvironment" and the landed "GetPlayerNumber" are wrong.
 // Callees: CWideString::operator=(const wchar_t*) 0x0099B800, CPlayerManager::GetPlayer(long) 0x00449910,
-// CPlayer::GetHeroThing 0x00487DC0, CPlayer::IsMainPlayer 0x00487520, CPlayer::GetJoystickDeviceNumber 0x00487510,
+// CPlayer::GetPControlledCreature 0x00487DC0, CPlayer::IsMainPlayer 0x00487520, CPlayer::GetJoystickDeviceNumber 0x00487510,
 // IntToWideString(long) 0x00405F00 and operator+(const wchar_t*, const CWideString&) 0x0099BFF0 (both `__fastcall`,
 // hidden result in ecx), CWideString::operator+=(const CWideString&) 0x0099B8D0 / operator+=(const wchar_t*) 0x0099B940,
 // ~CWideString 0x0099B510, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0 (TC 0xc7, the co-op
@@ -49,12 +49,13 @@ class CThing { public:
     __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     __forceinline CTCBase* GetTC(long type) const { return Components.Find(type); }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCCoopSpirit { public:                                 // TC type 0xc7
     long GetScore() const;                             // 0x0066FB20
 };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                            // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                            // 0x00487DC0
     bool IsMainPlayer() const;                         // 0x00487520
     long GetJoystickDeviceNumber() const;                      // 0x00487510
 };
@@ -68,7 +69,7 @@ bool CPlayerManager::DrawGetEnvironmentInfo(long playerNumber, CWideString& text
 {
     text = L"";
     CPlayer* player = GetPlayer_00449910(playerNumber);
-    CThing* hero = player->GetHeroThing();
+    CThing* hero = player->GetPControlledCreature();
     if (player->IsMainPlayer() || hero == 0)
         return false;
     text += L"P" + IntToWideString(player->GetJoystickDeviceNumber() + 1);

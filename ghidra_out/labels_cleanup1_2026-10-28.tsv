@@ -1,0 +1,30 @@
+address	name	evidence
+004c73d0	?GetPos@CThing@@QBEABVC3DVector@@XZ	Ego_r.pdb/FableWin.pdb sole name for the `mov eax,[ecx+60h]; add eax,0Ch; ret` body in the CThing run; 706 landed callers respelled (cleanup pass 1)
+006a4d00	?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ	Ego_r.pdb donor order OnDie 00683d30 / PeekPos 00683d40 / PeekLastPos 00683d50 / OnCreate 00683d60 = retail Kill 006a4cf0 / 006a4d00 / 006a4d10 / OnCreate 006a4d20; creature-typed call-site feeds agree
+006a4d10	?PeekLastPos@CThingPhysical@@QBEABVC3DVector@@XZ	same donor order as 006a4d00 (second of the pair)
+006a4cf0	?Kill@CThingPhysical@@QAEXXZ	same donor order (first of the run; catalog name agrees)
+00661cc0	?GetPersonalSpaceRadius@CThingCreatureBase@@SIMXZ	Ego_r.pdb donor 0053ca80 in the CThingCreatureBase run before GetPHeroCombatDef 0053e2a0 / IsPosInFOV 0053f470 = retail 00663340 / 00665260; body `fld [g]; ret`; three invented spellings unified
+006cba20	?IsPosNavLineOfSightTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@@Z	Ego_r.pdb donor 00701490; thiscall `ret 4`; catalog name agrees (landed model keeps a register-explicit skeleton, see NOTES)
+007f1b70	CreateCameraShake (__fastcall(const C3DVector&, long, long, unsigned char), `ret 8`)	00871250's two stack pushes are its 3rd/4th parameters (not CThing::GetBonePosition arguments); name descriptive (catalog "_global::Create")
+0043dbd0	??$IS_THING_ALIVE@PAVCThingPlayerCreature@@@@YI_NABQAVCThingPlayerCreature@@@Z	all 26 retail feeds are CPlayer::GetPControlledCreature 0x00487DC0 results (W/probe/alive_feeds.txt); byte-identical 18-byte twins are distinct instantiations (no ICF)
+0043dbf0	??$IS_THING_ALIVE@PBVCThingPlayerCreature@@@@YI_NABQBVCThingPlayerCreature@@@Z	18 feeds are CPlayer::PeekPControlledCreature 0x00487DD0 results (const pointer cannot feed the non-const instantiation)
+0040dce0	??$IS_THING_ALIVE@PAVCThing@@@@YI_NABQAVCThing@@@Z	feeds are CThing*-returning functions (GetPItem, Create, GetThingInPrimarySlot) -- probable
+005c05c0	??$IS_THING_ALIVE@PAVCThingCreatureBase@@@@YI_NABQAVCThingCreatureBase@@@Z	creature feeds (W/probe/alive_feeds.txt) -- probable
+00487dc0	?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	Ego_r.pdb (brief issue 1; 67 spellings unified)
+00487dd0	?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	Ego_r.pdb (brief issue 1)
+008fcfa0	?PeekWorld@CAIStateGroupBase@@IBEABVCWorld@@XZ	Ego_r.pdb donor order Terminate 008fcf40 / PeekWorld / GetWorld / GetPWorldSeed / PeekThingSearchTools / IsStopping (catalog label "GetPThingWorld" is propagated)
+008fcfc0	?GetWorld@CAIStateGroupBase@@IBEAAVCWorld@@XZ	same donor order
+006af290	??0CMessageEventFilter_IsTargettedAtThing@@QAE@ABVCThing@@@Z	Ego_r.pdb; the catalog label "IsOriginatedByThing ctor" belongs to 0x006AF2B0
+006af2b0	??0CMessageEventFilter_IsOriginatedByThing@@QAE@ABVCThing@@@Z	Ego_r.pdb donor order
+008d46d0	??$FindMostRecentMessage@V?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@Z	landed body (QBE const, PBV const return; Ego_r.pdb); W/new/b517 callers bind it
+009a06b0	?Insert@?$CBasicString@D@@QAEXKPAD@Z	both PDBs (char* text, not const char*: the landed body's `const T*` would mangle ...KPBD@Z)
+00887330	NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::SetOnlyTheme(long)	no PDB name; one descriptive name shared with the landed 0x00887A30 caller (was also "Reset")
+013b8394	g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)	set in GFInitialise from GFGetSystemManager()->+0x7c; CSoundManagerLH vtable 0x0129D2C4 (RTTI bases CASoundManager, CBaseClassNonCopyable, CBaseClass); no PDB data symbol
+013ba89c	CTCBase::RegisteredTCs (CVectorMap<CCharString, CTCBase::CRegisteredTCInfo, CKeyPairCompareLess<...>>)	callers CTCBase::AllocateTC / GetPTCInfo / Clone load it as the map `this` for LowerBound 0x006870C0; entry 16 bytes (CRegisteredTCInfo 12)
+006870c0	?LowerBound@?$CVectorMap@VCCharString@@VCRegisteredTCInfo@CTCBase@@V?$CKeyPairCompareLess@VCCharString@@VCRegisteredTCInfo@CTCBase@@@@@@QAEPAU?$pair@VCCharString@@VCRegisteredTCInfo@CTCBase@@@std@@ABVCCharString@@@Z	the 0x013BA89C map's lower bound (16-byte entries); spelling follows the landed CVectorMap::LowerBound rows
+00a11210	??$__uninitialized_copy@PAVCPlane@@PAVCPlane@@@std@@YAPAVCPlane@@PAV1@0PAV1@U?$__false_type@std@@@Z	landed 0x00A13720 proves vector<CPlane> (C3DMeshFileConvexVolumeChunk); 15 byte-identical 56-byte twins; 0x00A13490 is the proven C2DLineF copy
+008fd000	?PeekThingSearchTools@CAIStateGroupBase@@IBEABVCThingSearchTools@@XZ	Ego_r.pdb (same getter run as PeekWorld/GetWorld); 00914c60 respelled
+008fd010	?IsStopping@CAIStateGroupBase@@IBE_NXZ	Ego_r.pdb; 0097d360 respelled
+0097d360	?AIAction_WaitForMessage@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMessageEventType@@PBVCThingCreatureBase@@J@Z	Ego_r.pdb (protected, const CThingCreatureBase*); the landed row's leaf lived in an invented CAIStateGroupBaseAccess
+0049d810	CWorld::GetPRandomSeed const (`[world+8] + 1613Ch`; no PDB name)	called on the const PeekWorld (0x008FCFA0) result in 00943ae0 / 00914c60 / 00950a30, so the retail member is const; 17 distinct landed spellings (CWorld / CWorldSeed / CWorld_Methods / CQuakeWorld::GetRandom ...) are a leftover family
+0065a8ee	?IsTimeToGoToSchool@CTCVillage@@QAE_NPAVCThingAICreature@@ABVCWorld@@_N@Z	Ego_r.pdb: the world parameter is const CWorld& (landed rows 0090fd20 / 00942a00 pass the PeekWorld result; their stand-ins still spell CWorld* -- leftover)

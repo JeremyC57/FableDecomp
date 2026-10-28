@@ -1,7 +1,7 @@
 // CTCCreatureItemLevitationBase::FrameUpdate() -- refresh the levitation target, then pin every levitating item at the creature's position plus the levitation offset (drawable, physics awake and moving)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F8300, length 135 bytes (+ int3 padding). Vtable 0x0124156C slot 9.
 // Callees: own virtual slot 31 (+0x7C; 0x007F84C0 in CTCCreatureItemLevitationNymph, which recomputes its hover direction),
-// CThing::GetPosition @ 0x004C73D0, CThing::SetAsDrawable(bool) (slot 28, +0x70), CTCPhysicsBase slot 36 (+0x90, bool; an empty
+// CThing::GetPos @ 0x004C73D0, CThing::SetAsDrawable(bool) (slot 28, +0x70), CTCPhysicsBase slot 36 (+0x90, bool; an empty
 // `ret 4` in the base), CTCPhysicsBase::SetAsMoving(bool) @ 0x006B0130, CTCPhysicsBase::SetPosition(const C3DVector&) (slot 30, +0x78).
 // Globals: the levitation offset C3DVector @ 0x01384494 (x, y, z).
 // Layout: Ego_r.pdb CTCCreatureItemLevitationBase: LevitatingItems +0xC (retail single-pointer STLport list<CThing*>,
@@ -34,7 +34,7 @@ class CThing { public:
     virtual void SetAsDrawable(bool drawable);  // slot 28 (+0x70)
     unsigned char _pad04[0x60 - 0x04];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 struct SThingListNode { SThingListNode* next; SThingListNode* prev; CThing* value; };
 struct CThingList {                             // list<CThing*> (retail: one sentinel pointer)
@@ -63,7 +63,7 @@ class CTCCreatureItemLevitationBase : public CTCBase { public:
 void CTCCreatureItemLevitationBase::FrameUpdate()
 {
     UpdateLevitationTarget();
-    const C3DVector& position = ParentThing->GetPosition();
+    const C3DVector& position = ParentThing->GetPos();
     for (SThingListNode* node = LevitatingItems.head->next; node != LevitatingItems.head; node = node->next) {
         CThing* item = node->value;
         C3DVector itemPosition;

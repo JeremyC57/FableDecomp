@@ -14,7 +14,8 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
     float GetLengthSquared2D() const { return X * X + Y * Y; }
 };
-struct CThingRetail { const C3DVector& GetPosition() const; };   // 0x004C73D0
+class CThing { public: const C3DVector& GetPos() const; };
+struct CThingRetail : public CThing { public:  };   // 0x004C73D0
 struct CAIBrainRetail { unsigned char _pad[0x18]; CThingRetail* Creature; };   // +0x18
 class CWorld { public: static long GetFramesPerSecond(); };
 extern long g_framesPerSecond;                  // 0x01375550
@@ -50,7 +51,7 @@ struct UseCoverMethods:CAIStateGroup_CreatureUseCoverBase {
 };
 bool UseCoverMethods::IsRunnableLeaf(){
  if(RetailFailedToFindCover()){
-  C3DVector offset=RetailFailedToFindCoverAt()-GetCreature()->GetPosition();
+  C3DVector offset=RetailFailedToFindCoverAt()-GetCreature()->GetPos();
   long framesPerSecond=GetPWorld()->GetFramesPerSecond();
   long seconds=(GFGetCurrentFrame()-RetailFailedTime())/framesPerSecond;
   if(offset.GetLengthSquared2D()<225.0f&&seconds<8)return false;
@@ -63,7 +64,7 @@ bool UseCoverMethods::IsRunnableLeaf(){
   for(CThingRetail** it=things.first;it!=things.last;++it)Covers().push_back(CIntelligentPointerRetail(*it));
   return true;
  }
- RetailFailedToFindCoverAt()=GetCreature()->GetPosition();
+ RetailFailedToFindCoverAt()=GetCreature()->GetPos();
  RetailFailedToFindCover()=true;
  return false;
 }

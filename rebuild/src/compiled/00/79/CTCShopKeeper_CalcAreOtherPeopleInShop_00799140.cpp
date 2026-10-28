@@ -1,8 +1,8 @@
 // CTCShopKeeper::CalcAreOtherPeopleInShop() -- true when some other living villager of the keeper's village is inside the shop building without living there (or outside while living there), or blocks its door, or when the hero is in the shop or blocks its door
 // Retail: Fable.exe @ 0x00799140, 480 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, LowerBound 0x0040F020 (x2), CTCVillageMember::GetPVillage 0x007EE540,
-//   CThing::GetPosition 0x004C73D0, CThingBuilding::IsPointInside 0x0082D000, CThingBuilding::IsDoorBlockedBy 0x0082D9C0,
-//   CTCBase::GetPlayerManager 0x00686D40, CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetHeroCreature 0x00487DC0.
+//   CThing::GetPos 0x004C73D0, CThingBuilding::IsPointInside 0x0082D000, CThingBuilding::IsDoorBlockedBy 0x0082D9C0,
+//   CTCBase::GetPlayerManager 0x00686D40, CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0.
 // Layout (retail CThing, 0x10 below the PDB): state byte +0x10, TC bitset +0x20 (bit 0x23 = village member at +0x24 bit 3,
 //   bit 0x75 at +0x2c bit 21), interface map +0x44, Dead +0x91 bit 0, home building pointer +0x170; CVillage villager list
 //   header +0x2c (node data at +0x08); TC 0x75's building pointer +0x0c.
@@ -46,8 +46,9 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CThingBuilding : public CThing { public:
     bool IsPointInside(const C3DVector& pos);       // 0x0082D000
     bool IsDoorBlockedBy(CThing* thing);            // 0x0082D9C0
@@ -60,7 +61,7 @@ struct CVillage {
 };
 class CTCVillageMember { public: CVillage* GetPVillage(); };   // 0x007EE540
 struct CTCHeroBuilding { unsigned char _pad00[0x0c]; CBaseIntelligentPointer Building; };   // TC 0x75, +0x0c
-class CPlayer { public: CThing* GetHeroCreature(); };      // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
 class CTCBase
 {
@@ -95,7 +96,7 @@ bool CTCShopKeeper::CalcAreOtherPeopleInShop()
                 {
                     CThing* other = villager.GetPItem();
                     CThing* home = other->HomeBuilding.GetPItem();
-                    if (building->IsPointInside(villager.GetPItem()->GetPosition()) != (home == building))
+                    if (building->IsPointInside(villager.GetPItem()->GetPos()) != (home == building))
                         return true;
                 }
                 if (villager.GetPItem() && !villager.GetPItem()->Dead && villager.GetPItem() != owner)
@@ -106,7 +107,7 @@ bool CTCShopKeeper::CalcAreOtherPeopleInShop()
             }
         }
     }
-    CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
     CTCHeroBuilding* heroBuilding;
     if (hero && !hero->Dead && hero->GetInterface(0x75, &heroBuilding))
     {

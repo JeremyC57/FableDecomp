@@ -77,19 +77,25 @@ template <class T> class vector : public _Vector_base<T> {
 public:
     unsigned int size() const { return unsigned int(this->_M_finish - this->_M_start); }
     unsigned int capacity() const { return unsigned int(this->_M_end_of_storage._M_data - this->_M_start); }
+    protected:
     template <class _ForwardIterator>
     T* _M_allocate_and_copy(unsigned int n, _ForwardIterator first, _ForwardIterator last);   // 0x00515020
+    public:
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(T* s, T* f, T* e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
     void reserve(unsigned int n);
 };
 

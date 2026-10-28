@@ -2,7 +2,7 @@
 // Leaf: UpdateHighlightedObject
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007D8290, 291 bytes (plain `ret`).
 // Callees: CDefClassBase::GetSubDef<CTavernGameSpotTheAdditionDef>(CDefPointer<const CTavernGameSpotTheAdditionDef>*)
-//          0x007D9A80 (on the owner's def class, owner +0x70; this TU, see the stand-in below); CThing::GetPosition()
+//          0x007D9A80 (on the owner's def class, owner +0x70; this TU, see the stand-in below); CThing::GetPos()
 //          const 0x004C73D0; CCharString(const char*, long) 0x0099EBF0 ("TAVERN_GAME_OBJECT_SELECTION_CHANGE" 0x0125603C);
 //          CTCTavernGame::PlaySound(const CCharString&) 0x005EA950; ~CCharString 0x0099EAE0; the def's slot 1 on release.
 // Layout (retail, PDB - 0x18): CTCTavernGameSpotTheAddition Pointer +0x104, DistFromObject +0x10c, KnickKnacks
@@ -23,7 +23,7 @@ class CCharString { public:
 };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 struct KnickKnack {                             // 0x10 bytes
     C3DVector Pos;                              // +0x00
@@ -97,8 +97,8 @@ void CTCTavernGameSpotTheAddition::UpdateHighlightedObject()
     DistFromObject = -1.0f;
     long index = 0;
     for (KnickKnack* knick = KnickKnacksBegin; knick != KnickKnacksEnd; ++knick, ++index) {
-        const C3DVector& pointerPos = Pointer->GetPosition();
-        const C3DVector& pos = knick->Thing->GetPosition();
+        const C3DVector& pointerPos = Pointer->GetPos();
+        const C3DVector& pos = knick->Thing->GetPos();
         float dx = pos.X - pointerPos.X;
         float dy = pos.Y - pointerPos.Y;
         float dist = (float)sqrt(dx * dx + dy * dy);

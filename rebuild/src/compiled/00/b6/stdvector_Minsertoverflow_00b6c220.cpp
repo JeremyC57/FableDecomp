@@ -1,5 +1,5 @@
 // std::vector::_M_insert_overflow(CLandscapeTheme* __position, const CLandscapeTheme& __x, const __false_type&, unsigned int __fill_len, bool __atend) -- (vector<CLandscapeTheme >) STLport grow path: allocate size + max(size, fill_len), copy the prefix, construct fill_len copies of x, copy the suffix unless atend, free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@UCLandscapeTheme@@V?$allocator@UCLandscapeTheme@@@std@@@std@@QAEXPAUCLandscapeTheme@@ABU3@ABU__false_type@2@I_N@Z
+// Leaf: ?_M_insert_overflow@?$vector@UCLandscapeTheme@@V?$allocator@UCLandscapeTheme@@@std@@@std@@IAEXPAUCLandscapeTheme@@ABU3@ABU__false_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B6C220, 310 bytes, thiscall, `ret 14h`.
 // Identity (proven): its only caller 0x00B6C700 is bound ?_M_fill_insert@?$vector@UCLandscapeTheme@@... (from the landed vector<CLandscapeTheme>::resize 0x00B6CB20, proven there); 56-byte stride = Ego_r.pdb CLandscapeTheme.
 // Callees: malloc 0x00BFEA0E, free 0x00BFEA14 (everything else inline).
@@ -79,18 +79,24 @@ public:
     typedef unsigned int size_type;
     typedef _Tp* pointer;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len, bool __atend = false);
+    public:
 };
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&,

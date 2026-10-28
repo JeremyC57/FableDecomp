@@ -1,7 +1,7 @@
 // CIsNearCampfireWithSpace::operator()(CThing* thing) const -- true for an action-point thing (flag bit 14) within DistanceSq of FromPos whose user-action-point component (kind 0x2d) is free
 // Leaf: ??RCIsNearCampfireWithSpace
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00939A50, length 145 bytes.
-// Callees: the thing's virtual type-flags getter (slot 48, +0xc0), CThing::GetPosition @ 0x004C73D0, CVectorMap<ETCInterfaceType,
+// Callees: the thing's virtual type-flags getter (slot 48, +0xc0), CThing::GetPos @ 0x004C73D0, CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound (const) @ 0x004365B0, CTCUserActionPointBase::IsActionPointFree @ 0x007FEBF0.
 // Model: CIsNearCampfireWithSpace from Ego_r.pdb (DistanceSq +0, FromPos +4, 16 bytes); the thing's presence bitset at
 // +0x20 (kind 0x2d = bit 13 of the word at +0x24) and component map at +0x44 as the landed CGameScriptInterface rows.
@@ -47,7 +47,7 @@ public:
     unsigned long  m_tcMask[8];                    // +0x20
     unsigned char  _pad40[4];
     CTCMap_Retail  m_tcs;                          // +0x44
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCBase_Retail* GetTC(long kind) const { return m_tcs.Find(kind); }
 };
@@ -61,7 +61,7 @@ public:
 bool CIsNearCampfireWithSpace::operator()(CThing* thing) const
 {
     if ((unsigned char)(thing->GetThingTypeFlags() >> 14) & 1) {
-        const C3DVector& pos = thing->GetPosition();
+        const C3DVector& pos = thing->GetPos();
         float dx = pos.X - FromPos.X;
         float dy = pos.Y - FromPos.Y;
         float dz = pos.Z - FromPos.Z;

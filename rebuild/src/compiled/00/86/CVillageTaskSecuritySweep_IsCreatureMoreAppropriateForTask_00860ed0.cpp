@@ -2,7 +2,7 @@
 // Leaf: IsCreatureMoreAppropriateForTask
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00860ED0, 205 bytes (padded to 208), `ret 4`.
 //   PDB name ?IsCreatureMoreAppropriateForTask@CVillageTaskSecuritySweep@@QBE_NABVCThing@@@Z.
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (CreatureAssignedToTask +0x08), CThing::GetPosition 0x004C73D0
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (CreatureAssignedToTask +0x08), CThing::GetPos 0x004C73D0
 //   (x2). Constant 1.5625f 0x01276D70 (a literal: `x * k` loads x first, then `fmul [pool]`).
 // Layout (engine/CVillageTaskSecuritySweep.h): CreatureAssignedToTask +0x08, PositionToGoTo +0x10.
 // Shape: both positions are by-value copies of the const references (the assigned one fully copied through integer
@@ -24,7 +24,7 @@ class C3DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 class CThing : public CBaseObject { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<const CThing>: vptr + item
     virtual void v00();
@@ -49,8 +49,8 @@ class CVillageTaskSecuritySweep { public:                 // vtable 0x0125A868
 };
 bool CVillageTaskSecuritySweep::IsCreatureMoreAppropriateForTask(const CThing& creature) const
 {
-    C3DVector assigned = static_cast<const CThing*>(CreatureAssignedToTask.GetPItem())->GetPosition();
-    C3DVector position = creature.GetPosition();
+    C3DVector assigned = static_cast<const CThing*>(CreatureAssignedToTask.GetPItem())->GetPos();
+    C3DVector position = creature.GetPos();
     C3DVector assignedDelta = PositionToGoTo - assigned;
     C3DVector creatureDelta = PositionToGoTo - position;
     return creatureDelta.GetLengthSquared() * 1.5625f < assignedDelta.GetLengthSquared();

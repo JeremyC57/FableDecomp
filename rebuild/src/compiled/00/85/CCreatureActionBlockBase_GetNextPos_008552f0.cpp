@@ -1,6 +1,6 @@
 // CCreatureAction_BlockBase::GetNextPos() -- the owner's position pushed along the block's movement direction by a decaying amount: pos + dir * 0.2 * exp(-100 * t^2), t = 1 - remaining/total frames
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008552F0, length 194 bytes (+ int3 padding), `ret 4` (hidden return-object pointer).
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (the owner pointer at +8), CThing::GetPosition 0x004C73D0
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (the owner pointer at +8), CThing::GetPos 0x004C73D0
 // (manifest label "CVertexBufferWin32::DoSizeof" is propagated). Constants 1.0 @ 0x0122DED8, 0.2 @ 0x012305A0, -100.0 @ 0x01275E8C.
 // Shape: the frame counts are CCreatureActionBase +0x10 (total) / +0x1c (current); t = 1 - (float)(total - current) / total
 // (fild/fidiv); exp is the inline x87 intrinsic (fldl2e/f2xm1/fscale); dir * 0.2 and then * the factor are inline C3DVector
@@ -19,7 +19,7 @@ class C3DVector { public:
 };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 
 class CBaseObjectPointer;
@@ -55,5 +55,5 @@ C3DVector CCreatureAction_BlockBase::GetNextPos()
 {
     float t = 1.0f - (float)(TotalFrames - CurrentFrame) / TotalFrames;
     C3DVector dir = MovementDirection * 0.2f;
-    return Owner.GetPItem()->GetPosition() + dir * (float)exp(t * t * -100.0f);
+    return Owner.GetPItem()->GetPos() + dir * (float)exp(t * t * -100.0f);
 }

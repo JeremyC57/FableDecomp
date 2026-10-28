@@ -1,6 +1,6 @@
 // CAIStateGroup_MinionGuardGreetPlayer::Update() -- greet the living player: push the village's next-greet frame 120 frames ahead, pick a speech (an opinion-graded TEXT_AI_GUARD_GREET_* tag when the hero-stats field is clear, else the creature opinion's greet group), speak it, then set the next-greet frame 1200 (spoken) or 120 frames ahead; always Terminate()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00929820, length 623 bytes (+ int3 padding), plain `ret` (virtual).
-// Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::GetPCharacter @ 0x00487DC0, CVectorMap::LowerBound @ 0x0040F020
+// Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap::LowerBound @ 0x0040F020
 // (creature 0x23 / 0x4F lookups) and its const instantiation @ 0x004365B0 (the player's interface 4), GetWorldFrame
 // @ 0x0049D870, CTCVillageMember::GetPVillage @ 0x007EE540, _ftol @ 0x00BFEA70, CCharString() @ 0x0099E4B0 /
 // operator=(const char*) @ 0x0099EFE0 / ~CCharString @ 0x0099EAE0, GetPThingWorld @ 0x008FCFA0, GetOpinionValue
@@ -85,10 +85,16 @@ struct CTagTable {
     unsigned long GetTagFromCRC(unsigned long crc) const;   // 0x009CC410
 };
 class CPlayer { public:
-    CThingPlayerCreature* GetPCharacter();      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;      // 0x00487DC0
+};
+struct COpinionManager {
+    float GetOpinionValue(CThing* thing, long opinion);     // 0x00701750
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer();                // 0x0049D9D0
+    unsigned char _pad[0x74];
+    COpinionManager* POpinions;                 // +0x74
+    COpinionManager* GetPOpinions() const { return POpinions; }
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x14];
@@ -98,14 +104,6 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 long GetWorldFrame();                           // 0x0049D870
-struct COpinionManager {
-    float GetOpinionValue(CThing* thing, long opinion);     // 0x00701750
-};
-struct CThingWorld {
-    unsigned char _pad[0x74];
-    COpinionManager* POpinions;                 // +0x74
-    COpinionManager* GetPOpinions() const { return POpinions; }
-};
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
@@ -129,7 +127,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CThingWorld* GetPThingWorld();              // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     void Terminate();                           // 0x008FCF40
     long AIAction_SpeakAISpeechToTarget(long repeat, CIntelligentPointerCreature speaker,
         CIntelligentPointerConstThing target, unsigned long speech, bool interrupt, long priority);   // 0x009812C0
@@ -140,7 +140,7 @@ struct CAIStateGroup_MinionGuardGreetPlayer : CAIStateGroupBase {
 
 void CAIStateGroup_MinionGuardGreetPlayer::Update()
 {
-    CThingPlayerCreature* player = g_pMainGameComponent->PWorld->GetCurrentPlayer()->GetPCharacter();
+    CThingPlayerCreature* player = g_pMainGameComponent->PWorld->GetCurrentPlayer()->GetPControlledCreature();
     if (player && !(player->m_flags91 & 1)) {
         CTCVillageMember* member;
         GetCreature()->GetInterface(&member, 0x23);
@@ -152,7 +152,7 @@ void CAIStateGroup_MinionGuardGreetPlayer::Update()
         if (((const CThing*)player)->GetInterface(&stats, 4) && stats->Field114 == 0) {
             CCharString text;
             CThingCreatureBase* creature = GetCreature();
-            float opinion = GetPThingWorld()->GetPOpinions()->GetOpinionValue(creature, 0);
+            float opinion = PeekWorld().GetPOpinions()->GetOpinionValue(creature, 0);
             text = "TEXT_AI_GUARD_GREET_NEUTRAL";
             if (opinion > 0.3f)
                 text = "TEXT_AI_GUARD_GREET_FRIENDLY";

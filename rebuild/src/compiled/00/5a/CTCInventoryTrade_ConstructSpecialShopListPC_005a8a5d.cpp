@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005A8A5D, 521 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CFrontEndManager::GetInstance 0x0041E5F2 / CreateComponent 0x0041DB1D, CGameDefinitionManager::Get 0x0044C6B0 /
 //   GetDefGlobalIndexFromName 0x009AD390 / GetDef 0x0042B312 (same-TU noinline stand-in), GetMainPlayer 0x00449960,
-//   GetControlledCreature 0x00487DD0, the item interface-type lookup 0x005D99D0 (`__fastcall`, manifest "GetInventoryCategory"),
+//   PeekPControlledCreature 0x00487DD0, the item interface-type lookup 0x005D99D0 (`__fastcall`, manifest "GetInventoryCategory"),
 //   bitset::test 0x00410DE0 + LowerBound 0x004365B0 (inline GetInterface), IsItemAffordable 0x0059DA10, CanAddItem 0x005BF2ED,
 //   IsSpecialCase 0x0059C983, AlreadyHaveSpecial 0x0059FC17, component slots 3 (+0x0C) / 142 (+0x238) / 144 (+0x240),
 //   CWideString copy 0x0099B720 / operator= 0x0099B7D0 / += 0x0099B8D0 / ~ 0x0099B510, GetXString 0x005CC772,
@@ -66,11 +66,11 @@ class CThing { public:
     CPresenceBits present;                                  // +0x20
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
-    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
+    template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (present.test(interfaceType)) {
             long type = interfaceType;
-            CInterfaceMap* map = &m_interfaces;
+            const CInterfaceMap* map = &m_interfaces;
             CInterfaceMap::SEntry* it = map->LowerBound(&type);
             *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
             return true;
@@ -78,7 +78,8 @@ class CThing { public:
         return false;
     }
 };
-class CPlayer { public: CThing* GetControlledCreature(); };    // 0x00487DD0
+class CThingPlayerCreature : public CThing { };
+class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };    // 0x00487DD0
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
 class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
@@ -160,7 +161,7 @@ NUISystem::CComponent* CTCInventoryTrade::ConstructSpecialShopListPC(const std::
         for (const std::pair<long, long>* it = items.begin(); it != items.end(); ++it) {
             long defIndex = it->first;
             long count = it->second;
-            CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetControlledCreature();
+            const CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->PeekPControlledCreature();
             CTCInventoryBase* inventory = 0;
             hero->GetInterface(&inventory, GetInventoryInterfaceType(defIndex));
             if (IsItemAffordable(defIndex, true) && (inventory->CanAddItem(defIndex) || IsSpecialCase(defIndex)) && count > 0

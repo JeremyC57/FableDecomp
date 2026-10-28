@@ -6,7 +6,7 @@
 // thing in its primary carrying slot: any thing for an empty name, else one whose definition has that name
 // Leaf: IsPlayerCarryingItemOfType
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008973A0, length 224 bytes, `ret 4`.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, the TC map lower bound
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the TC map lower bound
 // copy @ 0x004365B0 (same body as 0x0040F020), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440,
 // CBasicString<char>::operator==(const char*) @ 0x004115A0, CThing::GetDefName() (CDefString by hidden pointer)
 // @ 0x004C7CC0, CDefString::operator==(const CCharString&) @ 0x004B7980. "" @ 0x0122D70E.
@@ -81,10 +81,11 @@ class CThing { public:
         return (T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer {
 public:
-    CThing* GetHeroThing();               // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer& GetMainPlayer();             // 0x00449970 (the non-const overload; 0x00449960 is the const one)
@@ -102,7 +103,7 @@ class CGameScriptInterface { public:
 
 bool CGameScriptInterface::IsPlayerCarryingItemOfType(const CCharString& defName) const
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->m_dead && hero->HasTC(0x46)) {
         CThing* item = hero->GetTC<CTCCarrying>(0x46)->GetThingInPrimarySlot();
         if (defName.PStringData == 0) {

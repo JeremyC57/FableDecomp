@@ -3,7 +3,7 @@
 // NPlayerGui::CDrawPerceivers::Update() -- rebuild the perceiver summary: for each perceiving thing still alive, its perception component raises State to 2 (hostile perception) or 1 (aware) and counts it; each counted thing makes the allegiance 2 (an enemy of the hero) or else 1 (an ally); dead things are erased from the list
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064A1AE, length 301 bytes (frame pointer).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0 (the
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::PeekPControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0 (the
 // hero) and @ 0x00436380 (each thing) -- `__fastcall`, by reference, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, std::bitset::test
 // @ 0x00410DE0, the interface map LowerBound const @ 0x004365B0, CTCPerceiveThing::IsAwareOfThing @ 0x00643B3B, AreThingsEnemies /
 // AreThingsAllies @ 0x0076D2F0 / 0x0076D4F0 (`__fastcall` (hero, thing)), list::erase(iterator) @ 0x006550E2 (by-value iterator,
@@ -81,7 +81,7 @@ template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing)   // 
 }
 #pragma auto_inline(on)
 class CPlayer { public:
-    CThingPlayerCreature* GetControlledCreature(); // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
@@ -179,7 +179,7 @@ void CDrawPerceivers::Update()
     State = 0;
     Allegiance = 0;
     ThingCount = 0;
-    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->GetControlledCreature();
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->PeekPControlledCreature();
     if (!IS_THING_ALIVE(hero))
         return;
     for (CRetailThingPointerList::iterator it = Things.begin(); it != Things.end(); ) {

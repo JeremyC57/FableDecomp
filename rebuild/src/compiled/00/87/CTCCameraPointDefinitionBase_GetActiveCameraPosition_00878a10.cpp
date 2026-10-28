@@ -1,6 +1,6 @@
 // CTCCameraPointDefinitionBase::GetActiveCameraPosition(const CThing* thing) -- the camera position for a thing: its position raised by 1.6 units
 //
-// Retail 0x00878A10, 52 bytes. Callee: CThing::GetPosition() const @ 0x004C73D0 (returns a const
+// Retail 0x00878A10, 52 bytes. Callee: CThing::GetPos() const @ 0x004C73D0 (returns a const
 // C3DVector&; manifest label "CVertexBufferWin32::DoSizeof" propagated). Constant 0x012777F0 = 1.6f.
 // No direct callers (no E8/E9 reference): reached through a pointer.
 // Shape: a static `__fastcall` returning the C3DVector (a class with user constructors) through the
@@ -14,9 +14,8 @@ class C3DVector
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) {}
 };
 
-class CThing
-{ public:
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 class CTCCameraPointDefinitionBase
@@ -26,7 +25,7 @@ class CTCCameraPointDefinitionBase
 
 C3DVector __fastcall CTCCameraPointDefinitionBase::GetActiveCameraPosition(const CThing* thing)
 {
-    const C3DVector& position = thing->GetPosition();
+    const C3DVector& position = thing->GetPos();
     C3DVector camera(position.X, position.Y, position.Z + 1.6f);
     return camera;
 }

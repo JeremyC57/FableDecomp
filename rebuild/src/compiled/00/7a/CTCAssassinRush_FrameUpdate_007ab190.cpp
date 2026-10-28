@@ -2,7 +2,7 @@
 // Leaf: FrameUpdate
 // Retail 0x007AB190, 620 bytes, `ret`. Callees: CThingCreatureBase::FinishCurrentAction 0x00662650, LowerBound
 // 0x0040F020, CCharString 0x0099EBF0 / dtor 0x0099EAE0, CTCSound::PlaySound 0x0066BD00, CreateTrailingEffect
-// 0x007A9FE0, CThing::GetPosition 0x004C73D0, CTCBase::GetWorld 0x00686A70, the spell-effect interpolator's
+// 0x007A9FE0, CThing::GetPos 0x004C73D0, CTCBase::GetWorld 0x00686A70, the spell-effect interpolator's
 // RadialBlurSetCenterWorldPos 0x006B8310 and fade-out 0x006B82E0 (world +0x18 -> +0x1964), RushForwards 0x007AAC50,
 // RemoveBulletTimeSlowdown 0x004C6140 (world +0x68), SetSuspendAnimation 0x00833A10, CIntelligentPointer::GetPItem
 // 0x00A01B50, CThing::Kill 0x004C9B80, CThing::RemoveTC 0x004C9840, CancelMove 0x007AA480.
@@ -35,7 +35,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
     void RemoveTC(long interfaceType);                  // 0x004C9840
     void FinishCurrentAction();                         // 0x00662650
@@ -143,7 +143,7 @@ void CTCAssassinRush::FrameUpdate()
         CreateTrailingEffect();
     } else if (StartTrailDelay) {
         --TrailDelay;
-        C3DVector pos = parent->GetPosition();
+        C3DVector pos = parent->GetPos();
         CWorld* world = (&GetWorld());
         world->PEnvironment->SpellEffects->RadialBlurSetCenterWorldPos(RadialBlurFadeKey,
             C3DVector(pos.X, pos.Y, pos.Z + PDef->BlurHeight));

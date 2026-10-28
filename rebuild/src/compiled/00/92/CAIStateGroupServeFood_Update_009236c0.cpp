@@ -7,7 +7,7 @@
 // CCreatureAction_RemoveFoodFromTable ctor @ 0x00922EE0, CCreatureAction_PutDownTankard ctor @ 0x00922F50,
 // AIAction_PerformActionAndWait @ 0x0097DB70, ~CCreatureActionBase @ 0x00693EF0, CTCCarrying::RemoveThingFromPrimarySlot
 // @ 0x006A1E00 / PutThingInCarrySlot @ 0x006A1F80, IS_THING_ALIVE<CIntelligentPointer<...>> @ 0x0078B2A0 (__fastcall),
-// CThing::Kill(bool) @ 0x004C9B80, CThing::GetPosition @ 0x004C73D0, MakeFood @ 0x00923510, GetSubDef<CCarryableDef> @
+// CThing::Kill(bool) @ 0x004C9B80, CThing::GetPos @ 0x004C73D0, MakeFood @ 0x00923510, GetSubDef<CCarryableDef> @
 // 0x005CC10E, the table's served notification @ 0x007B85F0, Terminate @ 0x008FCF40 (manifest "CXMVPlaybackInfo" is
 // propagated), virtual OnReplace (slot 10).
 // Layout: no engine header for this class; PTable +0x18, TaskIndex +0x1c, ServePos +0x20, ServeRHSet +0x2c
@@ -117,7 +117,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                      // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     void Kill(bool silent);                     // 0x004C9B80
     bool HasTC(long interfaceType) const
     {
@@ -226,7 +226,7 @@ void CAIStateGroup_ServeFood::Update()
     switch (Mode) {
     case 1:
         if (WalkTo(ServePos, ServeRHSet)) {
-            CThingObject* food = MakeFood(&PTable->GetPosition(), PTable);
+            CThingObject* food = MakeFood(&PTable->GetPos(), PTable);
             CTCCarrying* carrying;
             GetCreature()->FindInterface(&carrying, 0x46);
             CDefPointer<CCarryableDef> carryDef;

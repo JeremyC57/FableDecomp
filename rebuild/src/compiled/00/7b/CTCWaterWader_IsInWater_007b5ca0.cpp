@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B5CA0, length 417 bytes (+ int3 padding; `ret 0Ch`).
 // Mangled (Ego_r.pdb): ?IsInWater@CTCWaterWader@@ABEXAA_N0AAM@Z.
 // Callees: CTCBase::GetWorld() 0x00686A70; the world's +0x38 object slot 395 (+0x62C); the world's slot 8 (+0x20, by-value
-//   C3DVector reference point); CThing::GetPosition 0x004C73D0; CTCGraphicAppearance::WasRenderedLastFrame 0x004BD200;
+//   C3DVector reference point); CThing::GetPos 0x004C73D0; CTCGraphicAppearance::WasRenderedLastFrame 0x004BD200;
 //   the parent's slot 39 (+0x9C); CVectorMap LowerBound 0x004365B0 (const); the 0x31 component's getter 0x0073A6E0 and its
 //   result's slot 1; CTCBase::PeekWorldMap() 0x00686D20; CWorldMap::GetWaterSizeZAt 0x0063A420, GetGroundSizeZAt 0x0063A300.
 // Data: float pool 400.0f 0x0125D824, 0.05f 0x0125A15C, 0.1f 0x0126D948, 0.7f 0x0126D94C.
@@ -54,8 +54,8 @@ class CThing { public:
         STCEntry* it = map->LowerBound((unsigned long)kind);
         return (it == map->m_pLast || kind < it->m_kind ? map->m_pLast : it)->m_pTC;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
-    float GetDistanceSquaredTo(const C3DVector& point) const { return (GetPosition() - point).GetLengthSquared(); }
+    const C3DVector& GetPos() const;                   // 0x004C73D0
+    float GetDistanceSquaredTo(const C3DVector& point) const { return (GetPos() - point).GetLengthSquared(); }
 };
 struct CKindObject {
     virtual void v00();
@@ -98,7 +98,7 @@ struct CTCWaterWader : CTCBase {
     {
         CWorld* world = (&GetWorld());
         const CThing* parent = ParentThing;
-        return (parent->GetPosition() - world->GetReferencePoint()).GetLengthSquared();
+        return (parent->GetPos() - world->GetReferencePoint()).GetLengthSquared();
     }
 };
 
@@ -120,11 +120,11 @@ void CTCWaterWader::IsInWater(bool& inWater, bool& deep, float& waterHeight) con
         return;
     if (((CTC31*)ParentThing->GetTC(0x31))->GetKindObject()->GetKind() == 0x1a)
         return;
-    waterHeight = PeekWorldMap().GetWaterSizeZAt(ParentThing->GetPosition());
+    waterHeight = PeekWorldMap().GetWaterSizeZAt(ParentThing->GetPos());
     if (waterHeight > 0.05f)
     {
-        float groundHeight = PeekWorldMap().GetGroundSizeZAt(ParentThing->GetPosition());
+        float groundHeight = PeekWorldMap().GetGroundSizeZAt(ParentThing->GetPos());
         inWater = waterHeight - groundHeight > 0.1f;
-        deep = waterHeight - ParentThing->GetPosition().Z > 0.7f;
+        deep = waterHeight - ParentThing->GetPos().Z > 0.7f;
     }
 }

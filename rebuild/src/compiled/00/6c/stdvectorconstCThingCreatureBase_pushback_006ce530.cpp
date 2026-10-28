@@ -45,8 +45,10 @@ public:
     typedef unsigned int size_type;
     typedef _Tp* pointer;
     typedef __true_type _IsPODType;
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __true_type&, size_type __fill_len,
                             bool __atend = false);                                             // 0x006CE570
+    public:
     void push_back(const _Tp& __x);
 };
 

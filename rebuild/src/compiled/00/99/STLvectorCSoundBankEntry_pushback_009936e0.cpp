@@ -92,7 +92,9 @@ public:
 
 template <class T, class Alloc = allocator<T> > class vector : public _Vector_base<T, Alloc> {
 public:
+    protected:
     void _M_insert_overflow(T* position, const T& x, const __false_type&, size_t fillLen, bool atEnd = false);   // 0x00993310
+    public:
     void push_back(const T& x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

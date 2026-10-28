@@ -55,12 +55,14 @@ template <class T, class A = allocator<T> > class list : public _List_base<T, A>
 public:
     typedef _List_node<T> _Node;
     typedef _List_iterator<T> iterator;
+    protected:
     _Node* _M_create_node(const T& x)
     {
         _Node* tmp = this->_M_node.allocate(1);
         _Construct(&tmp->_M_data, x);
         return tmp;
     }
+    public:
 };
 template class list<CScriptThing>;
 } // namespace std

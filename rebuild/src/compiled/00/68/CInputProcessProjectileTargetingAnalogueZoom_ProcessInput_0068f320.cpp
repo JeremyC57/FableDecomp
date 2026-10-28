@@ -1,7 +1,7 @@
 // CInputProcessProjectileTargetingAnalogueZoom::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- for a live hero: the analogue action 0x54 zooms the projectile-targeting camera by its Y value / 255, presses of actions 0x6e / 0x6f zoom by +-196/255; a zoom marks the input handled
 // Leaf: ProcessInput
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068F320, length 323 bytes, `ret 8`.
-// Callees: CPlayer::GetHeroCreature @ 0x00487DC0 (MyPlayer +0x18), CInputProcessGameBase::GetEventGameActionVector(long,
+// Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), CInputProcessGameBase::GetEventGameActionVector(long,
 //   const CInputEvent&, C2DVector*) @ 0x00687D00 (landed name), IsEventGameAction @ 0x00687CF0, IsEventButtonPressed
 //   @ 0x00687A90, the component map's LowerBound @ 0x0040F020, the zoom component's AdjustZoom(float) @ 0x00789A10
 //   (adds delta * k to +0x40 and clamps it to [0,1]; manifest "ZoomControl_Update"), CProcessedInput::SetHandled @ 0x00A0D390.
@@ -53,9 +53,10 @@ class CThing { public:
         return tc;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CInputProcessProjectileTargetingAnalogueZoom : public CInputProcessGameBase {
 public:
@@ -67,7 +68,7 @@ public:
 
 void CInputProcessProjectileTargetingAnalogueZoom::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = MyPlayer->GetHeroCreature();
+    CThing* hero = MyPlayer->GetPControlledCreature();
     if (!hero || hero->m_dead)
         return;
     C2DVector zoom;

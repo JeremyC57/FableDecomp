@@ -2,7 +2,7 @@
 // Native: Fable.exe TLC VC7.1 @ 0x0093cb20, 306-byte body (320 including 14 bytes of int3 padding).
 // Retail evidence: CurrentGuardpostThing is the 8-byte CIntelligentPointer<const CThingTrackNode> at +0x14; successor is +0xd0.
 // Native callees: CBaseIntelligentPointer::{CBaseIntelligentPointer,GetPItem,SetPItem,~CBaseIntelligentPointer}
-// @ 0x00a01b10/0x00a01b50/0x00a01b90/0x00a01c10; GetPosition @ 0x006a4d00;
+// @ 0x00a01b10/0x00a01b50/0x00a01b90/0x00a01c10; PeekPos @ 0x006a4d00;
 // CAIStateGroupBase::AIAction_MoveToPos @ 0x0097ec00; PeekTrackStartNode @ 0x00836da0;
 // CAIStateGroupBase::Terminate @ 0x008fcf40. The generated CThingTrackNode header is unavailable and its donor
 // layout differs on the host; the native view retains its CBaseObject base plus native successor +0xd0.
@@ -35,10 +35,12 @@ class C3DVector { public:
     C3DVector() {}
     C3DVector(const C3DVector& v) { X=v.X; Y=v.Y; Z=v.Z; }
 };
-class CThingTrackNode : public CBaseObject { public:
+class CThingPhysical : public CBaseObject { public:
+    const C3DVector& PeekPos() const; // 0x006a4d00
+};
+class CThingTrackNode : public CThingPhysical { public:
     unsigned char _nativeThingAndTrackState[0xd0 - 8];
     CThingTrackNode* m_pNextNode;
-    const C3DVector* GetPosition() const; // 0x006a4d00
     const CThingTrackNode* PeekTrackStartNode() const; // 0x00836da0
 };
 struct CBaseObjectPointer {
@@ -71,7 +73,7 @@ void CAIStateGroup_NonVillageGuardPatrol::Update()
         return;
     for (;;) {
         const CThingTrackNode* movingNode = (const CThingTrackNode*)CurrentGuardpostThing.GetPItem();
-        long result = AIAction_MoveToPos(2, *movingNode->GetPosition(), reached, 3, true, true, 0, true, 0.0f);
+        long result = AIAction_MoveToPos(2, movingNode->PeekPos(), reached, 3, true, true, 0, true, 0.0f);
         if (CurrentGuardpostThing.GetPItem() != 0 && result == 4)
             continue;
         if (result != 2) {

@@ -13,9 +13,11 @@ class C3DVector { public:
  C3DVector operator*(float factor) const { return C3DVector(X*factor,Y*factor,Z*factor); }
  C3DVector& AccurateNormalise(); // 00A14440, called with no arguments; propagated GetScaled signature disagrees.
 };
-struct CGeometryThing {
+class CThing { public:
+    const C3DVector& GetPos() const; // 004C73D0
+};
+struct CGeometryThing : public CThing {
  unsigned char _beforePhysics[0x60]; CTCPhysicsBase* PhysicsTC;
- const C3DVector& GetPosition() const; // 004C73D0
 };
 class CWorldMap { public: public:
     float GetHeightZBelowPos(const C3DVector&) const;   // 0x0063E480
@@ -32,8 +34,8 @@ struct CBalverineLandMethods : CAIStateGroupBase {
 };
 C3DVector CBalverineLandMethods::GetLandPos(CGeometryThing* target) {
  float radius=(((CGeometryThing*)PBrain->Creature)->PhysicsTC->Radius+target->PhysicsTC->Radius)*1.2f;
- C3DVector targetPos=target->GetPosition();
- const C3DVector& mine=((CGeometryThing*)PBrain->Creature)->GetPosition();
+ C3DVector targetPos=target->GetPos();
+ const C3DVector& mine=((CGeometryThing*)PBrain->Creature)->GetPos();
  C3DVector direction(targetPos.X-mine.X,targetPos.Y-mine.Y,0.0f);
  direction.AccurateNormalise();
  C3DVector result=targetPos+direction*radius;

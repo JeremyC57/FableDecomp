@@ -1,7 +1,7 @@
 // CCombatManager::IsTargetOverriddenByAttemptedFacingDirection(const CThingCreatureBase&, const CThing&, const C3DVector&) const -- true when the target lies outside the cone (the controlling thing's combat override angle, default 60 degrees) around the direction the creature tries to face
 // Leaf: IsTargetOverriddenByAttemptedFacingDirection
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA5F0, 383 bytes (384 with padding). `ret 0Ch`.
-// Callees: CThing::GetPosition 0x004C73D0 (twice), C3DVector::AccurateNormalise @ 0x00A14440 (catalogued GetScaled),
+// Callees: CThing::GetPos 0x004C73D0 (twice), C3DVector::AccurateNormalise @ 0x00A14440 (catalogued GetScaled),
 //          CVectorMap::LowerBound 0x004365B0 (inlined GetInterface, type 0x46 = CTCCarrying, bit 6 of the bitset byte
 //          +0x28), CTCCarrying::GetThingInPrimarySlot 0x006A1440, CDefClassBase::GetSubDef<T> 0x0042B1A6 (same-TU
 //          stand-in below), the defs' virtual slot 1 on release; the fcos intrinsic. Globals: 1e-4f 0x0129BA3C,
@@ -99,7 +99,7 @@ class CThing { public:
     CDefClassPointer PBaseDef;              // +0x70
     unsigned char _pad74[0x1d];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -124,8 +124,8 @@ class CCombatManager { public:
 bool CCombatManager::IsTargetOverriddenByAttemptedFacingDirection(const CThingCreatureBase& creature, const CThing& target,
                                                                   const C3DVector& facing) const
 {
-    C3DVector targetPosition = target.GetPosition();
-    C3DVector direction = targetPosition - creature.GetPosition();
+    C3DVector targetPosition = target.GetPos();
+    C3DVector direction = targetPosition - creature.GetPos();
     if (direction.GetLengthSquared() > g_Epsilon * g_Epsilon) {
         direction.AccurateNormalise();
         const CThing* controller = &creature;

@@ -31,8 +31,9 @@ class CThing { public:
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature_00487dc0();                       // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                       // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -48,7 +49,7 @@ class CPlayerGui { public:
 
 void CPlayerGui::DrawInventory(void* world)
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetControlledCreature_00487dc0();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || (hero->m_statusFlags & 1))
         return;
     DRAW_TC(0x11);

@@ -62,7 +62,7 @@ class CThing:public CBaseObject { public:
     CDefLookup* PBaseDef;
     unsigned char LaterState[0x1d];
     unsigned char DeadFlags;
-    const C3DVector& GetPosition()const; //004C73D0
+    const C3DVector& GetPos() const; //004C73D0
     void Kill(bool); //004C9B80
     template<class T> __forceinline bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
@@ -265,7 +265,7 @@ void CCreatureAction_SummonerFlameSlice::Initialise(){
  {CCharString name("STRIKE_FLAME_SLICE",-1);SetAnimationName(name);}
  CCombatActionBase::Initialise();
  CTCPhysicsBase* physics=PCreature->PhysicsTC;
- {CIntelligentPointer<CThing> obstruction(CreatePhysicalObstruction(PCreature->GetPosition(),PCreature->GetPosition(),physics->Radius*2.0f));CThing* created=obstruction;PObstruction.SetPItem(created);}
+ {CIntelligentPointer<CThing> obstruction(CreatePhysicalObstruction(PCreature->GetPos(),PCreature->GetPos(),physics->Radius*2.0f));CThing* created=obstruction;PObstruction.SetPItem(created);}
  CTCDPhysicalObstruction* driver;CThing* object=PObstruction;
  if(object->UsingComponents[7]&0x2000)driver=static_cast<CTCDPhysicalObstruction*>(object->PTCDriver);
  {CIntelligentPointer<CThing> actor(PCreature);driver->ThingsToIgnoreObstruction.PushBack(actor);}

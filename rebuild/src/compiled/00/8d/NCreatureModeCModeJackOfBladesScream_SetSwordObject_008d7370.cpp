@@ -2,7 +2,7 @@
 // Leaf: SetSwordObject
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D7370, 109 bytes (`ret 4`).
 // Callees: CBaseIntelligentPointer: ctor 0x00A01B10, SetPItem 0x00A01B90, GetPItem 0x00A01B50, ~ 0x00A01C10;
-// CThing::GetPosition @ 0x004C73D0.
+// CThing::GetPos @ 0x004C73D0.
 // Layout: Ego_r.pdb CModeJackOfBladesScream (offsets equal retail): Filter +0x68, PSword +0x74 (CIntelligentPointer<CThing>,
 // vtable 0x01238C6C), InitialSwordRHS +0x7c, SwordFalling +0x94, SwordFallTimer +0x98, PEmitter +0x9c,
 // SwordFallPos +0xa4, InitialSwordPos +0xb0.
@@ -11,7 +11,7 @@
 class C3DVector { public: float x, y, z; };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0 (CThing::GetPosition, GOTCHAS chunk 141)
+    const C3DVector& GetPos() const;          // 0x004C73D0 (CThing::GetPos, GOTCHAS chunk 141)
 };
 class CThingCreatureBase : public CThing { public: };
 
@@ -59,7 +59,7 @@ class CModeJackOfBladesScream : public CModeStandBase { public:
 void CModeJackOfBladesScream::SetSwordObject(CThing* sword)
 {
     PSword = CIntelligentPointer<CThing>(sword);
-    InitialSwordPos = PSword->GetPosition();
+    InitialSwordPos = PSword->GetPos();
 }
 
 }

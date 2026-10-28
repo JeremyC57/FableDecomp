@@ -13,9 +13,10 @@
 //        _M_empty_initialize (red colour byte, null root, leftmost = rightmost = header,
 //        each through a re-read of the header pointer).
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
-struct CBase {                                       // root base (CBaseClassNonCopyable)
-    virtual ~CBase();
-    CBase();                                         // 0x0099A2F0
+class CBaseClassNonCopyable {                        // root base
+protected:
+    virtual ~CBaseClassNonCopyable();                // ??1CBaseClassNonCopyable@@MAE@XZ (protected virtual)
+    CBaseClassNonCopyable();                         // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ (protected)
 };
 class CCharString {
 public:
@@ -59,6 +60,7 @@ template <class K, class V, class C> struct _Rb_tree : _Rb_tree_base<V> {
     unsigned int _M_node_count;                      // +0x04
     C            _M_key_compare;                     // +0x08
     _Rb_tree() : _M_node_count(0) { _M_empty_initialize(); }
+    private:
     void _M_empty_initialize()
     {
         this->_M_header->_M_color = false;
@@ -66,13 +68,14 @@ template <class K, class V, class C> struct _Rb_tree : _Rb_tree_base<V> {
         this->_M_header->_M_left = this->_M_header;
         this->_M_header->_M_right = this->_M_header;
     }
+    public:
 };
 template <class K, class T, class C = less<K> > struct map {
     _Rb_tree<K, pair<K, T>, C> _M_t;
 };
 }
 namespace NBankFileManager {
-class CRetailBank : public CBase {                   // vtable 0x0129B010
+class CRetailBank : public CBaseClassNonCopyable {                   // vtable 0x0129B010
 public:
     CCountedPointer<CDiskFileWin32>                       DiskFile;        // +0x04
     CCountedPointer<CThreadedFile>                        ThreadedFile;    // +0x0c

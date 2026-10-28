@@ -138,6 +138,7 @@ public:
     typedef unsigned int size_type;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
 #pragma auto_inline(off)
+    protected:
     __declspec(noinline) void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&,
                                                  size_type __fill_len, bool __atend = false)             // 0x0081C990
     {
@@ -157,6 +158,7 @@ public:
         _M_clear();
         _M_set(__new_start, __new_finish, __new_start + __len);
     }
+    public:
 #pragma auto_inline(on)
     void _M_fill_insert(iterator __position, size_type __n, const _Tp& __x);
 protected:

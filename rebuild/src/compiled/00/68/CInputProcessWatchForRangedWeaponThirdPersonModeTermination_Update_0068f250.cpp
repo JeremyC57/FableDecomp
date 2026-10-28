@@ -7,8 +7,9 @@ struct CThing_Retail {
     unsigned char m_91_0 : 1;                      // +0x91 bit 0
     unsigned char m_91_1 : 7;
 };
+class CThingPlayerCreature : public CThing_Retail { };
 class CPlayer { public:
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
     void RemoveMode(long mode);                    // 0x00634190
 };
 bool __fastcall IsThingToKeepStrafing_0068eb20(CThing_Retail* thing);   // 0x0068EB20
@@ -24,7 +25,7 @@ class CInputProcessWatchForRangedWeaponThirdPersonModeTermination { public:
 
 void CInputProcessWatchForRangedWeaponThirdPersonModeTermination::Update(CProcessedInput& processed)
 {
-    CThing_Retail* hero = m_pPlayer->GetHeroCreature();
+    CThing_Retail* hero = m_pPlayer->GetPControlledCreature();
     if (hero && !hero->m_91_0) {
         if (IsThingToKeepStrafing_0068eb20(hero)) {
             m_countdown = 5;

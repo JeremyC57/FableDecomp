@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0065F056, 164 bytes (`ret 4`). Size-optimised TU with a frame pointer: `#pragma optimize("y",
 //   off)` + `#pragma optimize("s", on)` (GOTCHAS: a frame-pointer body ending in `leave` that still uses esi freely).
 // Callees: CBaseIntelligentPointer::GetPItem() 0x00A01B50 (three times), CThingBuilding::PeekPSimDefinition() 0x0082D2D0
-//   (CDefPointer returned through the hidden pointer; GOTCHAS: not PeekPMaterial), CThing::GetPosition() 0x004C73D0; the def's
+//   (CDefPointer returned through the hidden pointer; GOTCHAS: not PeekPMaterial), CThing::GetPos() 0x004C73D0; the def's
 //   virtual slot 1 (+4) when the temporary pointer drops the last reference.
 // Layout = Ego_r.pdb CNearestBuildingWithProperty (24 bytes): BuildingProperty +0 (ESimBuildingProperty bit mask), Pos +4,
 //   NearestBuilding +0x10, BestDistanceSquared +0x14; the sim def's property bits at +0x3c, its reference count at +4.
@@ -38,7 +38,7 @@ template <class T> class CDefPointer { public:
 };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 class CThingBuilding : public CThing {
 public:
@@ -74,7 +74,7 @@ void CNearestBuildingWithProperty::operator()(const CIntelligentPointer<CThing>&
     CDefPointer<CBuildingSimDefinition> def = ((CThingBuilding*)thing.GetPItem())->PeekPSimDefinition();
     if (def.Object) {
         if (def->BuildingProperties & BuildingProperty) {
-            float distanceSquared = (thing.GetPItem()->GetPosition() - Pos).GetLengthSquared();
+            float distanceSquared = (thing.GetPItem()->GetPos() - Pos).GetLengthSquared();
             if (NearestBuilding == 0 || distanceSquared < BestDistanceSquared) {
                 NearestBuilding = (CThingBuilding*)thing.GetPItem();
                 BestDistanceSquared = distanceSquared;

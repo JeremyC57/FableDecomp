@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00663BA0, 151 bytes (`ret 8`).
 // Callees: CInterfaceMap::LowerBound @ 0x004365B0, CTCCreatureModeManager::GetCurrentMode @ 0x0073A6E0 (label
-//   "CPixelShader::CountReferences" propagated), CThing::GetPosition @ 0x004C73D0 (label "CVertexBufferWin32::DoSizeof"
+//   "CPixelShader::CountReferences" propagated), CThing::GetPos @ 0x004C73D0 (label "CVertexBufferWin32::DoSizeof"
 //   propagated), CTCPhysicsBase::GetFacing slot 70 (+0x118, C3DVector by hidden pointer),
 //   CTCCreatureModeManager::CModeBase virtual slot 7 (+0x1c; vtable 0x012673CC, 0x00739E70 for the base).
 // Layout: retail CThing: interface bitset +0x20 (TC 0x31 = CTCCreatureModeManager: word +0x24 bit 17), CVectorMap +0x44,
@@ -54,7 +54,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
         long type = interfaceType;
@@ -84,7 +84,7 @@ class CThingCreatureBase : public CThing { public:
 float CThingCreatureBase::GetMovementSpeedFromCreatureMode(const C3DVector& target, long movementType)
 {
     CModeBase* mode = GetModeManager()->GetCurrentMode();
-    C3DVector offset = target - GetPosition();
+    C3DVector offset = target - GetPos();
     C3DVector facing = PhysicsTC->GetFacing();
     return mode->GetMovementSpeed(offset, facing, movementType);
 }

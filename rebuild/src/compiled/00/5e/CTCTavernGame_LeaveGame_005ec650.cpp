@@ -2,9 +2,9 @@
 // Leaf: ?LeaveGame@CTCTavernGame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EC650, 362 bytes (plain `ret`); CTCTavernGame vtable 0x012560BC slot 30.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50; CTCBase::GetWorld 0x00686A70 (manifest "CViewBase::
-//          GetDisplayEngine" is propagated); CThing::GetPosition() const 0x004C73D0; CMessageEventManager::AddMessage
+//          GetDisplayEngine" is propagated); CThing::GetPos() const 0x004C73D0; CMessageEventManager::AddMessage
 //          0x00687540 (on the world's manager at +0x60); CPlayerManager::GetMainPlayer 0x00449970; CPlayer::RemoveMode
-//          0x00634190; CPlayer::GetHeroThing 0x00487DC0; the hero's virtual slot 28 (+0x70); CThing::SetInLimbo(bool)
+//          0x00634190; CPlayer::GetPControlledCreature 0x00487DC0; the hero's virtual slot 28 (+0x70); CThing::SetInLimbo(bool)
 //          0x004C8CF0; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (interface 0xD0 = word 6 bit 16);
 //          CTCGamePlayer::SetGame(CTCTavernGame*) 0x005EDC00; CPlayerGui::Open 0x004374B0 (manifest "Open" is
 //          propagated); CTCTavernGame::GetHeroStats 0x005EB4B0; CTCHeroStats::SetMoney(long, bool) 0x0057A774;
@@ -56,9 +56,10 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     void SetInLimbo(bool inLimbo);              // 0x004C8CF0
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointer
     virtual void v00();
@@ -86,7 +87,7 @@ class CTCHeroStats { public:
 };
 class CPlayer { public:
     void RemoveMode(long mode);                 // 0x00634190
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -158,12 +159,12 @@ void CTCTavernGame::LeaveGame()
         CThing* gameMaster = PGameMaster.Get();
         long framesPerSecond = g_framesPerSecond;
         CMessageEventManager* messages = GetWorld().m_pMessages;
-        messages->AddMessage(0x40, framesPerSecond * 5, (C3DVector*)&gameMaster->GetPosition(),
+        messages->AddMessage(0x40, framesPerSecond * 5, (C3DVector*)&gameMaster->GetPos(),
                                        PGameMaster.Get(), 0, 0.0f, 0.0f, 0);
     }
     CPlayer* player = g_pMainGameComponent->PlayerManager->GetMainPlayer();
     player->RemoveMode(0x1a);
-    CThing* hero = player->GetHeroThing();
+    CThing* hero = player->GetPControlledCreature();
     hero->SetVisible(true);
     hero->SetInLimbo(false);
     {

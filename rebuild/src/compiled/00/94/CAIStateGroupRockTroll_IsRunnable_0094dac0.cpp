@@ -219,7 +219,7 @@ inline CTCEnemyTracker* GetEnemyTracker(CThing* thing)
     return tracker;
 }
 class CThingPhysical : public CThing { public:
-    const C3DVector& GetPhysicsPosition();      // 0x006A4D00 (the +0x60 physics sub-object's position)
+    const C3DVector& PeekPos() const;      // 0x006A4D00 (the +0x60 physics sub-object's position)
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
     virtual void v00();
@@ -246,8 +246,8 @@ bool CAIStateGroup_RockTroll::IsRunnable()
     CThing* enemy = GetEnemyTracker(PBrain->PCreature)->GetEnemy();
     if (enemy && !(enemy->m_flags91 & 1)) {
         CThingPhysical* creature = (CThingPhysical*)PBrain->PCreature;
-        const C3DVector& enemyPos = ((CThingPhysical*)enemy)->GetPhysicsPosition();
-        const C3DVector& creaturePos = creature->GetPhysicsPosition();
+        const C3DVector& enemyPos = ((CThingPhysical*)enemy)->PeekPos();
+        const C3DVector& creaturePos = creature->PeekPos();
         C2DVector delta;
         delta.x = creaturePos.x - enemyPos.x;
         delta.y = creaturePos.y - enemyPos.y;

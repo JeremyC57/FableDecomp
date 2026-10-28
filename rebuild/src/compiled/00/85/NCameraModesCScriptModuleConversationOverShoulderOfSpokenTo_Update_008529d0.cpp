@@ -20,11 +20,11 @@ class CThing {
 public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* PTCGraphicAppearance;      // +0x64 (retail)
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
     CTCGraphicAppearance* GetPTCGraphicAppearance() const { return PTCGraphicAppearance; }
     C3DVector GetXYDirectionTo(const C3DVector& pos) const
     {
-        const C3DVector& here = GetPosition();
+        const C3DVector& here = GetPos();
         return C3DVector(here.X - pos.X, here.Y - pos.Y, 0.0f);
     }
 };
@@ -74,10 +74,10 @@ struct CScriptModuleConversationOverShoulderOfSpokenTo : CScriptModuleConversati
 void CScriptModuleConversationOverShoulderOfSpokenTo::Update()
 {
     if (IsThingsOk()) {
-        C3DVector direction = PSpeaker->GetXYDirectionTo(PSpokenTo->GetPosition());
+        C3DVector direction = PSpeaker->GetXYDirectionTo(PSpokenTo->GetPos());
         direction.AccurateNormalise();
         C3DVector side(direction.Y, -direction.X, 0.0f);
-        C3DVector spokenToPos = PSpokenTo->GetPosition();
+        C3DVector spokenToPos = PSpokenTo->GetPos();
         float scale = RandomDirection * 2.0f;
         C3DVector focal = PSpeaker->GetPTCGraphicAppearance()->GetCameraFocalPos(1.0f);
         POwner->Position = spokenToPos - direction * 2.0f + side * scale + C3DVector(0.0f, 0.0f, 4.0f);

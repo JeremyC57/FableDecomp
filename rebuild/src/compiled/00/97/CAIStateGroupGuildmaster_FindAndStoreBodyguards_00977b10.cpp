@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00977B10, 298 bytes (`ret`). Ego_r.pdb: ?FindAndStoreBodyguards@CAIStateGroup_Guildmaster@@IAEXXZ.
 // Callees: CCharString(const char*, long) 0x0099EBF0 ("CREATURE_GUILDMASTER_BODYGUARD" 0x01285C70) / ~CCharString
 // 0x0099EAE0, CGameDefinitionManager::Get 0x0044C6B0 (`__fastcall`; the string argument of the following call is pushed
-// first), CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, CThing::GetPosition 0x004C73D0, __ftol2 0x00BFEA70,
+// first), CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, CThing::GetPos 0x004C73D0, __ftol2 0x00BFEA70,
 // CAIStateGroupBase::PeekThingSearchTools() const 0x008FD000, CThingSearchTools::GetAllThingsInRoughArea<CThingAICreature,
 // vector<CThingAICreature*>, CThingFilter_HasDefGlobalIndex>(const C2DBoxI&, const filter&, vector&) const 0x008E3EB0
 // (Ego_r.pdb names this instantiation; its body tests the creature type bits and calls the filter 0x006A70B0),
@@ -68,7 +68,7 @@ class CThing { public:
         else sel = map->last;
         return sel;
     }
-    const class C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 
 struct CBaseIntelligentPointer {
@@ -204,7 +204,7 @@ void CAIStateGroup_Guildmaster::FindAndStoreBodyguards()
     long bodyguardDef = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_GUILDMASTER_BODYGUARD");
     {
         CThingFilter_HasDefGlobalIndex filter(bodyguardDef);
-        const C3DVector& pos = PBrain->PCreature->GetPosition();
+        const C3DVector& pos = PBrain->PCreature->GetPos();
         C2DCoordI centre((long)pos.X, (long)pos.Y);
         PeekThingSearchTools().GetAllThingsInRoughArea(C2DBoxI(centre.X - 55, centre.Y - 55, centre.X + 55, centre.Y + 55), filter, bodyguards);
     }

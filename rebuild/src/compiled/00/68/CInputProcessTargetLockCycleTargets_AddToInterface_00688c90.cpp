@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH -- the def local is a separate holder type whose destructor releases with a direct `if (--m_count == 0) Destroy();` (retail `dec [edi+4] ; jne`) while the getter's CDefPointer temporary keeps the ReleaseTemporary long form; the holder's assignment from CDefPointer is CDefPointer's own operator= (add-ref, old object known null)
 // Leaf: AddToInterface
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00688C90, 169 bytes, `ret 4`.
-// Callees: CPlayer::GetControlledCreature @ 0x00487DD0, the thing's hero-combat def getter @ 0x00663340 (CDefPointer by
+// Callees: CPlayer::PeekPControlledCreature @ 0x00487DD0, the thing's hero-combat def getter @ 0x00663340 (CDefPointer by
 //   hidden pointer; the label "CEventKilledCreature" is propagated -- landed callers 0x00789C20 / 0x006D6EE0 name it),
 //   the def's slot 1 (Destroy) on release, CInputProcessGameBase::AddToInterface @ 0x00687A70.
 // Globals: the pulses-only setting byte @ 0x013BA8B0.
@@ -66,9 +66,10 @@ class CThing { public:
     unsigned char _bits91 : 7;
     CDefPointer<CHeroCombatDef> GetHeroCombatDef() const;   // 0x00663340
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetControlledCreature();               // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;               // 0x00487DD0
 };
 extern bool g_targetLockAllowPulsesOnly;           // 0x013BA8B0
 class CInputProcessManager;
@@ -120,7 +121,7 @@ bool CInputProcessTargetLockCycleTargets::AddToInterface(CInputProcessManager& m
     ClickAcceptancePulseTimer = -1;
     AllowPulsesOnly = g_targetLockAllowPulsesOnly;
     CHeroCombatDefHolder def;
-    CThing* creature = MyPlayer->GetControlledCreature();
+    const CThing* creature = MyPlayer->PeekPControlledCreature();
     if (creature && !creature->Dead) {
         def = creature->GetHeroCombatDef();
         ButtonPressureThresholdForClick = def->ClickPressureThreshold;

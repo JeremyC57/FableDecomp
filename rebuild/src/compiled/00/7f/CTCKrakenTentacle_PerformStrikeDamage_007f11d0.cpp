@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F11D0, 575 bytes, plain `ret`.
 // Callees: CBaseIntelligentPointer @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10 (CIntelligentPointer<CThing> vtable
 //   0x01238C6C), LowerBound @ 0x0040F020 (interface 0xE2 = CTCKraken), the physics TC's GetFacingVector (slot 70, +0x118,
-//   C3DVector by value), CThing::GetPosition @ 0x004C73D0, C3DVector::RotateXY @ 0x00A14040, CCharString
+//   C3DVector by value), CThing::GetPos @ 0x004C73D0, C3DVector::RotateXY @ 0x00A14040, CCharString
 //   @ 0x0099EBF0/0x0099EAE0, CTCBase::GetDefinitions @ 0x006869D0, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410,
 //   CTCDExplosion::Create @ 0x0080C460 (__fastcall), CTCKraken::AddStrikeExplosion @ 0x007FBA20, CTCKrakenTentacle::
 //   RemoveObstruction @ 0x007F0810, CTCDPhysicalObstruction::Create @ 0x007FD4B0 (__fastcall).
@@ -111,7 +111,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 template<class T> inline bool IS_THING_ALIVE(T* const& p)
 {
@@ -206,11 +206,11 @@ void CTCKrakenTentacle::PerformStrikeDamage()
         CThing* target = kraken->PTarget.GetPItem();
         if (IS_THING_ALIVE(target)) {
             C3DVector facing = ParentThing->m_pPhysics->GetFacingVector();
-            C3DVector pos = ParentThing->GetPosition();
+            C3DVector pos = ParentThing->GetPos();
             const CKrakenTentacleDef* def = PTentacleDef;
             facing.RotateXY(def->TentacleExplosionBodgeAngle * 0.0027777778f);
             C3DVector origin(pos.X, pos.Y, 0.0f);
-            origin.Z = target->GetPosition().Z;
+            origin.Z = target->GetPos().Z;
             C3DVector obstructionStart = facing * def->TentacleObstructionRadiusMin + origin;
             C3DVector obstructionEnd = facing * def->TentacleObstructionRadiusMax + origin;
             C3DVector explosionPos = facing * def->TentacleExplosionRadius + origin;

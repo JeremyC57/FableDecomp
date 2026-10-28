@@ -1,7 +1,7 @@
 // CTCCoopSpirit::SetAppearanceParticle(const CCharString& particleThingName) -- kill the current appearance particle when it is still alive, create the named particle thing at the spirit's position as the new one and, when it lives, attach its emitter to the spirit (bone 0x88, scale 1.1)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006705F0, 282 bytes (+ int3 padding), `ret 4`.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x7) / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 (x2) / dtor @
-//   0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C), CThing::Kill(bool) @ 0x004C9B80, CThing::GetPosition @
+//   0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C), CThing::Kill(bool) @ 0x004C9B80, CThing::GetPos @
 //   0x004C73D0, the global Create(const CCharString&, const C3DVector&, bool) @ 0x006E0970 (`__fastcall`),
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (interface 0x4b), CCharString(const char*, long) @
 //   0x0099EBF0 ("" @ 0x0122D70E), CTCDParticleEmitter::AttachToThing(CThing*, long, const CCharString&, long, float) @
@@ -38,7 +38,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
     void Kill(bool immediately);                            // 0x004C9B80
 };
 class CCharString { public:
@@ -101,7 +101,7 @@ void CTCCoopSpirit::SetAppearanceParticle(const CCharString& particleThingName)
 {
     if (IS_THING_ALIVE(PAppearanceParticle))
         PAppearanceParticle.GetPItem()->Kill(true);
-    PAppearanceParticle = CIntelligentPointer<CThing>(Create(particleThingName, ParentThing->GetPosition(), false));
+    PAppearanceParticle = CIntelligentPointer<CThing>(Create(particleThingName, ParentThing->GetPos(), false));
     if (IS_THING_ALIVE(PAppearanceParticle)) {
         CTCDParticleEmitter* emitter = GetParticleEmitter(PAppearanceParticle.GetPItem());
         {

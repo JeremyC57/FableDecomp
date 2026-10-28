@@ -13,9 +13,11 @@
 // built in a local and the member assigned last.
 #include <stdlib.h>
 
-struct CEngineRoot_0099a2f0 {
+struct CBaseClassNonCopyable {
     virtual void v00();
-    CEngineRoot_0099a2f0();                     // 0x0099A2F0
+protected:
+    CBaseClassNonCopyable();                     // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ (protected)
+public:
 };
 
 class CEngineComponent { public:                       // vtable 0x012A2544
@@ -48,7 +50,7 @@ struct CRetailSTLportList {                     // STLport list: the sentinel no
     }
 };
 
-class CEnginePrimitiveAttachmentManager : public CEngineRoot_0099a2f0, public CEngineComponent { public:
+class CEnginePrimitiveAttachmentManager : public CBaseClassNonCopyable, public CEngineComponent { public:
     CRetailSTLportList<CEngineInternalAttachedPrimitiveInfo> AttachedPrimitives;   // +0x10
     virtual void v01();
     CEnginePrimitiveAttachmentManager();

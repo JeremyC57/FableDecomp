@@ -1,6 +1,6 @@
 // CTCExplodingObject::Explode() -- spawn the def's explosion thing at the parent's position, hand its driver component the radius / damage values, then kill the parent thing
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00750DD0, length 79 bytes.
-// Callees: CThing::GetPosition() @ 0x004C73D0 (`&[this+60h]->+0Ch`), CreateThing(long defIndex, const C3DVector&)
+// Callees: CThing::GetPos() @ 0x004C73D0 (`&[this+60h]->+0Ch`), CreateThing(long defIndex, const C3DVector&)
 // @ 0x0080C460 (`__fastcall`: index in ecx, position in edx), CThing::Kill(bool) @ 0x004C9B80.
 // Layout: PDB CTCExplodingObject over CTCBase: MaxDamage +0xc, Radius +0x10, FireDamage +0x14, PDef +0x24 (the def's
 // explosion type at +0x2c). The spawned thing's driver component is cached at +0x5c behind bit 1 of the flag byte
@@ -26,7 +26,7 @@ class CThing { public:
     unsigned char     m_driverFlags;               // +0x28 bit 1: the driver component is cached
     unsigned char     _pad1[0x5c - 0x29];
     CExplosionDriver* m_pDriver;                   // +0x5c
-    const C3DVector& GetPosition();                // 0x004C73D0
+    const C3DVector& GetPos() const;                // 0x004C73D0
     void Kill(bool immediately);                   // 0x004C9B80
     bool GetTCDriver(CExplosionDriver** out)
     {
@@ -62,7 +62,7 @@ class CTCExplodingObject : public CTCBase { public:
 void CTCExplodingObject::Explode()
 {
     CExplodingObjectDef* def = PDef;
-    CThing* explosion = CTCDExplosion::Create(def->ExplosionType, ParentThing->GetPosition());
+    CThing* explosion = CTCDExplosion::Create(def->ExplosionType, ParentThing->GetPos());
     CExplosionDriver* driver;
     explosion->GetTCDriver(&driver);
     driver->m_innerRadius = Radius;

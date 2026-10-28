@@ -23,7 +23,7 @@ class C3DVector { public:
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                 // 0x004C73D0
+    const C3DVector& GetPos() const;                 // 0x004C73D0
 };
 
 // C2DVector (Ego_r.pdb: X +0, Y +4) with the engine's memberwise user copy constructor.
@@ -40,7 +40,7 @@ public:
     C2DVector Dir;                                        // +0x08 the unit XY direction it wants to move in
     float GetScore(CThing* thing) const
     {
-        const C3DVector& p = thing->GetPosition();
+        const C3DVector& p = thing->GetPos();
         float dx = p.X - Pos.X;
         float dy = p.Y - Pos.Y;
         float dist = (float)sqrt(dx * dx + dy * dy);

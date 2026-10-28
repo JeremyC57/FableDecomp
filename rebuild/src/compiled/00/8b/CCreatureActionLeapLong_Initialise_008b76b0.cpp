@@ -4,7 +4,7 @@
 // Leaf: ?Initialise@CCreatureAction_LeapLong
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B76B0, length 624 bytes, plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound (const copy) 0x004365B0, interface 2's
-//   GetFacing (slot 70, +0x118, C3DVector by hidden pointer), CThing::GetPosition 0x004C73D0,
+//   GetFacing (slot 70, +0x118, C3DVector by hidden pointer), CThing::GetPos 0x004C73D0,
 //   CTCCreatureNavigation::IsPosNavLineOfSightTo 0x006CBA20 (interface 7), CCharString 0x0099EBF0 / ~ 0x0099EAE0,
 //   CCombatActionBase::SetAnimationName 0x008574D0 / Initialise 0x00857520, CThing::AddTC 0x004C9D60,
 //   CTCSolidToThing::AddThingNotSolidTo 0x00770FA0.
@@ -49,7 +49,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     CTCSolidToThing* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType) const
     {
@@ -100,7 +100,7 @@ void CCreatureAction_LeapLong::Initialise()
     CTCFacing* facingTC;
     GetCreature()->GetInterface(&facingTC, 2);
     C3DVector facing = facingTC->GetFacing();
-    C3DVector target = GetCreature()->GetPosition() - facing * 3.0f;
+    C3DVector target = GetCreature()->GetPos() - facing * 3.0f;
     CTCCreatureNavigation* nav;
     GetCreature()->GetInterface(&nav, 7);
     if (nav->IsPosNavLineOfSightTo(target)) {
@@ -109,7 +109,7 @@ void CCreatureAction_LeapLong::Initialise()
         CCombatActionBase::Initialise();
         return;
     }
-    target = facing * 3.0f + GetCreature()->GetPosition();
+    target = facing * 3.0f + GetCreature()->GetPos();
     if (nav->IsPosNavLineOfSightTo(target)) {
         SetAnimationName("MOVEMENT_LONG_FORWARD");
         NoRoom = false;

@@ -8,7 +8,7 @@
 //   this body (see NOTES).
 // Callees: CThing::SetInLimbo(bool) @ 0x004C8CF0, CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10 /
 //   0x00A01B50 / 0x00A01B90 / 0x00A01C10 (CIntelligentPointer<CThingObject> vtable 0x0125A858), the item list's
-//   out-of-line insert(iterator, const value_type&) @ 0x007CBBC0, CThing::GetPosition @ 0x004C73D0,
+//   out-of-line insert(iterator, const value_type&) @ 0x007CBBC0, CThing::GetPos @ 0x004C73D0,
 //   CTCHeroReceiveItems::PrepareToShowItems(const C3DVector&) @ 0x007CA670.
 // Layout / shape: the landed GiveItems model (1-aligned intelligent pointer and pair, so the locals sit at odd frame
 //   offsets; push_back = insert(end(), x) with the iterator built in its argument slot).
@@ -20,7 +20,7 @@ class C3DVector { public: float X, Y, Z; };
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void SetInLimbo(bool inLimbo);                      // 0x004C8CF0
 };
 class CThingObject : public CThing { };
@@ -77,5 +77,5 @@ void CTCHeroReceiveItems::GiveItem(CThingObject& item, bool persist)
 {
     item.SetInLimbo(true);
     Items.push_back(SItemEntry(CIntelligentPointer<CThingObject>(&item), persist));
-    PrepareToShowItems(item.GetPosition());
+    PrepareToShowItems(item.GetPos());
 }

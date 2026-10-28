@@ -1,5 +1,5 @@
-// CBrainBehaviourSet_00887330::Init(long name) -- one default behaviour, named, priority 1.0, then the set's state cleared
-// Leaf: Init
+// NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::SetOnlyTheme(long themeID) -- one zeroed theme weight, its id set, weight 1.0, then the entry's state cleared
+// Leaf: SetOnlyTheme
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00887330, length 73 bytes (+ int3 padding).
 // Callees: vector<CBrainBehaviour>::resize(unsigned long, const CBrainBehaviour&) @ 0x00889440 on
 // the retail vector at +0x08 (first/last/end).
@@ -13,35 +13,39 @@
 
 #include <string.h>
 
-class CBrainBehaviour { public:
-    long  Name;                                 // +0x00 CDefString
-    float Priority;                             // +0x04
-    long  ScriptAIPriority;                     // +0x08
-    CBrainBehaviour() { memset(this, 0, sizeof(*this)); }
+namespace std {
+template <class T> class allocator { };
+template <class T, class A = allocator<T> > class vector {        // STLport, 12 bytes
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    void resize(unsigned int __new_size, const T& __x);           // 0x00889440 ?resize@?$vector@UCThemeWeight@...@std@@QAEXIABU...@@Z
 };
-
-struct CRetailVector_CBrainBehaviour {          // VC6-era Dinkumware vector: first / last / end
-    CBrainBehaviour* first;
-    CBrainBehaviour* last;
-    CBrainBehaviour* end;
-    void resize(unsigned long count, const CBrainBehaviour& value);   // 0x00889440
+}
+namespace NEnvironmentInternal {
+class CEnvironmentThemePriorityStackEntry { public:
+    struct CThemeWeight {                                        // Ego_r.pdb, 12 bytes
+        long  ThemeID;                                           // +0x00
+        float Weight;                                            // +0x04
+        bool  LockWeight;                                        // +0x08
+        CThemeWeight() { memset(this, 0, sizeof(*this)); }
+    };
+    long                       m_current;                        // +0x00
+    long                       m_04;                             // +0x04
+    std::vector<CThemeWeight>  Themes;                           // +0x08 (Ego_r.pdb CArray<CThemeWeight> Themes)
+    unsigned char              _pad[8];                          // +0x14..+0x1b
+    bool                       m_dirty;                          // +0x1c
+    void SetOnlyTheme(long themeID);
 };
+}
 
-struct CBrainBehaviourSet_00887330 {
-    long                           m_current;   // +0x00
-    long                           m_04;        // +0x04
-    CRetailVector_CBrainBehaviour  m_behaviours;// +0x08
-    unsigned char                  _pad[8];     // +0x14..+0x1b
-    bool                           m_dirty;     // +0x1c
-    void Init(long name);
-};
-
-void CBrainBehaviourSet_00887330::Init(long name)
+void NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::SetOnlyTheme(long themeID)
 {
-    CBrainBehaviour value;
-    m_behaviours.resize(1, value);
-    m_behaviours.first->Name = name;
-    m_behaviours.first->Priority = 1.0f;
+    CThemeWeight value;
+    Themes.resize(1, value);
+    Themes._M_start->ThemeID = themeID;
+    Themes._M_start->Weight = 1.0f;
     m_current = 0;
     m_dirty = false;
 }

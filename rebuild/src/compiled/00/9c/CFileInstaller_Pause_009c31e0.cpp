@@ -13,19 +13,19 @@
 extern "C" __declspec(dllimport) int __stdcall SetEvent(void* event);                                            // IAT 0x0143FDE0
 extern "C" __declspec(dllimport) unsigned long __stdcall WaitForSingleObjectEx(void* handle, unsigned long ms, int alertable);   // IAT 0x0143FE08
 
-struct CRITICAL_SECTION_Fable { unsigned char _body[0x18]; };
+struct _RTL_CRITICAL_SECTION { unsigned char _body[0x18]; };
 
-struct CCriticalSectionLock_Retail {              // 8 bytes on the stack
-    CRITICAL_SECTION_Fable* CriticalSection;       // +0x00
+struct CCriticalSectionLock {              // 8 bytes on the stack
+    _RTL_CRITICAL_SECTION* CriticalSection;       // +0x00
     bool                    Locked;                // +0x04
-    CCriticalSectionLock_Retail(CRITICAL_SECTION_Fable* section, bool tryOnly);   // 0x00A62920
-    ~CCriticalSectionLock_Retail();                                               // 0x00A629A0
+    CCriticalSectionLock(_RTL_CRITICAL_SECTION& section, bool tryOnly);   // 0x00A62920 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z
+    ~CCriticalSectionLock();                                               // 0x00A629A0
     void Unlock();                                                                // 0x00A62960
 };
 
 class CFileInstaller { public:
     unsigned char          _pad[4];
-    CRITICAL_SECTION_Fable CriticalSection;              // +0x04
+    _RTL_CRITICAL_SECTION CriticalSection;              // +0x04
     unsigned char          _pad1c[0x5f];
     volatile bool          Running;              // +0x7b
     volatile unsigned long Paused;           // +0x7c
@@ -39,7 +39,7 @@ class CFileInstaller { public:
 
 void CFileInstaller::Pause()
 {
-    CCriticalSectionLock_Retail lock(&CriticalSection, false);
+    CCriticalSectionLock lock(CriticalSection, false);
     ++Paused;
     if (Running && !(Paused > 1) && !DirtyDiscError) {
         lock.Unlock();

@@ -108,13 +108,17 @@ public:
     typedef __false_type _IsPODType;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
+    protected:
     void _M_clear();                                        // 0x0070B1C0
+    public:
+    protected:
     pointer _M_allocate_and_copy(size_type __n, const_pointer __first, const_pointer __last)
     {
         pointer __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, _IsPODType());
         return __result;
     }
+    public:
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);
 };
 

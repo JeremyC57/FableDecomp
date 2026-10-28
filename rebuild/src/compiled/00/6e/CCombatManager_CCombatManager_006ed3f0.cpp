@@ -50,6 +50,7 @@ public:
     unsigned int _M_node_count;
     Compare      _M_key_compare;
     _Rb_tree() : _Rb_tree_base<V, A>(A()), _M_node_count(0) { _M_empty_initialize(); }
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;          // red
@@ -57,6 +58,7 @@ public:
         this->_M_header._M_data->_M_left = this->_M_header._M_data;
         this->_M_header._M_data->_M_right = this->_M_header._M_data;
     }
+    public:
 };
 template <class T1, class T2> struct pair {
     T1 first;
@@ -89,7 +91,9 @@ public:
 
 class CBaseClassNonCopyable {
 protected:
-    CBaseClassNonCopyable();                                // 0x0099A2F0 (stores vtable 0x0129A7C4)
+protected:
+    CBaseClassNonCopyable();                                // 0x0099A2F0 (stores vtable 0x0129A7C4) ??0CBaseClassNonCopyable@@IAE@XZ (protected)
+public:
 public:
     virtual ~CBaseClassNonCopyable();
 };

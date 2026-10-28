@@ -15,7 +15,7 @@
 class C3DVector { public: float X, Y, Z; };
 
 class CThing { public:
-    C3DVector* GetPosition();                   // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
 class CBaseObject;
@@ -56,7 +56,7 @@ bool CAIStateGroup_JackDragon::IsTargetOnATower()
 {
     CThing* pMarker = PLandedMarker.GetPItem();
     CThing* pEnemy = PEnemy.GetPItem();
-    if (pEnemy->GetPosition()->Z > pMarker->GetPosition()->Z + 1.5f)
+    if (pEnemy->GetPos().Z > pMarker->GetPos().Z + 1.5f)
         return true;
     return false;
 }

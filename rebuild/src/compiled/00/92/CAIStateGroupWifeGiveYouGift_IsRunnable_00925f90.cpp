@@ -3,8 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00925F90, length 199 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined out-parameter GetInterface, 0xD7 = bit 23 of +0x38; a miss
 // returns false), the state group's player-manager accessor @ 0x008FCF90 (manifest "CPixelShader::CountReferences"
-// is propagated), CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0 (landed names),
-// CThing::GetPosition @ 0x004C73D0 (twice). Float 1600.0f @ 0x01291740.
+// is propagated), CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0 (landed names),
+// CThing::GetPos @ 0x004C73D0 (twice). Float 1600.0f @ 0x01291740.
 // Shape: the gift def read from the component (+0x74) is stored before its `> 0` test; inline dead-bit test on the
 // hero; the squared distance accumulated in retail's order (`s = z*z; s += x*x; s += y*y`, chunk-177 lesson) and
 // compared `s < 1600.0f` (`test ah,5 ; jp`). PDB names from the engine header (GiftToGiveDef +0x18); local model.
@@ -25,7 +25,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -40,6 +40,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -47,7 +48,7 @@ class CAIBrain { public:
 };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 
 class CPlayerManager { public:
@@ -85,10 +86,10 @@ bool CAIStateGroup_WifeGiveYouGift::IsRunnable()
     if (PBrain->PCreature->GetInterface(&spouse, 0xD7)) {
         GiftToGiveDef = spouse->GiftDefToGive;
         if (GiftToGiveDef > 0) {
-            CThing* hero = GetPPlayerManager()->GetMainPlayer().GetHeroThing();
+            CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
             if (hero != 0 && !(hero->m_flags91 & 1)) {
-                const C3DVector& pos = PBrain->PCreature->GetPosition();
-                const C3DVector& heroPos = hero->GetPosition();
+                const C3DVector& pos = PBrain->PCreature->GetPos();
+                const C3DVector& heroPos = hero->GetPos();
                 float dx = heroPos.X - pos.X;
                 float dy = heroPos.Y - pos.Y;
                 float dz = heroPos.Z - pos.Z;

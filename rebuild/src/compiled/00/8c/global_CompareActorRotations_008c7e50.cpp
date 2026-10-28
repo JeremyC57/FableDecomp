@@ -5,7 +5,7 @@
 // Identity: callers 0x008C80C4, 0x008C811A, 0x008C816A (the landed IsToCauseRecoil overrides of the bandit-king attack /
 //   stuck / unstuck actions 0x008C8080 / 0x008C80E0 / 0x008C8130) and 0x008C932B; they declare it
 //   `bool __fastcall CompareActorRotations(CThingCreatureBase*, CThing*)` (manifest name; no PDB symbol -- descriptive).
-// Callees: CThing::GetPosition() const @ 0x004C73D0 (twice), the physics body's (+0x60) virtual slot 63 (+0xFC,
+// Callees: CThing::GetPos() const @ 0x004C73D0 (twice), the physics body's (+0x60) virtual slot 63 (+0xFC,
 //   GetFacingAngleXY, descriptive), AngleDifference(float, float) @ 0x00A441E0 (`__stdcall`), _CIfmod @ 0x00BFEB28.
 // Constants: 1/(2*pi) float 0x01237F08, 0.0f 0x0122DEDC, 1.0f 0x0122DED8, 1.0 double 0x01237F00, 70/360 float 0x012817F0.
 // Shape: the bearing is `(float)atan2(dx, dy) * INV_TWO_PI` (fpatan, then a float `fmul dword`; a double product
@@ -40,7 +40,7 @@ class CThing {
 public:
     unsigned char _pad00[0x60];
     CPhysicsBody* m_pBody;                              // +0x60
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     CPhysicsBody* GetBody() const { return m_pBody; }
 };
 
@@ -66,8 +66,8 @@ inline float WrapTurnFraction(float angle)
 
 bool __fastcall CompareActorRotations(CThingCreatureBase* creature, CThing* target)
 {
-    const C3DVector& from = creature->GetPosition();
-    const C3DVector& to = target->GetPosition();
+    const C3DVector& from = creature->GetPos();
+    const C3DVector& to = target->GetPos();
     CPhysicsBody* body = creature->GetBody();
     float angle = (float)atan2(to.X - from.X, to.Y - from.Y) * INV_TWO_PI;
     angle = WrapTurnFraction(angle);

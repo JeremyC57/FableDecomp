@@ -1,5 +1,5 @@
 // std::vector<std::pair<unsigned long, CSkeletalMorphs::CEntry>>::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
-// Leaf: ?_M_fill_insert@?$vector@U?$pair@KVCEntry@CSkeletalMorphs@@@std@@V?$allocator@U?$pair@KVCEntry@CSkeletalMorphs@@@std@@@2@@std@@IAEXPAU?$pair@KVCEntry@CSkeletalMorphs@@@2@IABU32@@Z
+// Leaf: ?_M_fill_insert@?$vector@U?$pair@KVCEntry@CSkeletalMorphs@@@std@@V?$allocator@U?$pair@KVCEntry@CSkeletalMorphs@@@std@@@2@@std@@QAEXPAU?$pair@KVCEntry@CSkeletalMorphs@@@2@IABU32@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0081ce50, 311 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): its caller resize 0x0081D9F0 is bound ?resize@?$vector@U?$pair@KVCEntry@CSkeletalMorphs@@@std@@...@QAEXIABU?$pair@KVCEntry@CSkeletalMorphs@@@2@@Z (Ego_r.pdb CSkeletalMorphs::Morphs, CVectorMap<unsigned long, CSkeletalMorphs::CEntry>); 12-byte element; the landed helpers name it pair<unsigned long, CSoundPair> / SPayload8 stand-ins.
 // Callees: __uninitialized_copy 0x0081A330, __copy_backward 0x00819720, fill 0x008192B0, uninitialized_fill_n 0x0081A590 (all __fastcall),
@@ -77,7 +77,9 @@ public:
 protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                                             // 0x0081CA90
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
+    protected:
 };
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, const _Tp& __x)

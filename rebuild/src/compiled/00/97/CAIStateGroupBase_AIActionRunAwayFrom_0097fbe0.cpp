@@ -1,7 +1,7 @@
 // CAIStateGroupBase::AIAction_RunAwayFrom(CIntelligentPointer<const CThing>, CCreatureActionBase*) -- while the creature is aware of the living creature threat, move to a nearby position directed away from it (or wander off when it is inside personal space), otherwise idle
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0097FBE0, 704 bytes (ret 0Ch; aligned frame from the 8-byte intelligent pointer local).
 // Callees: CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10,
-//   IsAwareOfThingImplementation 0x00864700 (__fastcall), CThing::GetPosition 0x004C73D0, CVectorMap::LowerBound 0x0040F020
+//   IsAwareOfThingImplementation 0x00864700 (__fastcall), CThing::GetPos 0x004C73D0, CVectorMap::LowerBound 0x0040F020
 //   (same-TU stand-in; inlined GetInterface 7 = CTCCreatureNavigation), CTCCreatureNavigation::GetNearbyDirectedPosition
 //   0x006CB780 / GetNearbyWanderPosition 0x006CB6E0, CThingCreatureBase::GetPersonalSpaceRadius 0x00661CC0 (static),
 //   CAIStateGroupBase::AIAction_MoveToPos 0x0097EC00 / AIAction_DoNothing 0x0097E200.
@@ -48,7 +48,7 @@ class CTCCreatureNavigation { public:                  // interface type 7
     bool GetNearbyWanderPosition(const C3DVector& from, float radius, C3DVector* out, bool flag);   // 0x006CB6E0
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -88,7 +88,7 @@ class CThing { public:
 };
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    static float GetPersonalSpaceRadius();      // 0x00661CC0
+    static float __fastcall GetPersonalSpaceRadius();   // 0x00661CC0 ?GetPersonalSpaceRadius@CThingCreatureBase@@SIMXZ (Ego_r.pdb; donor 0x0053CA80 in the CThingCreatureBase run)
 };
 
 struct CBaseIntelligentPointer {
@@ -145,27 +145,27 @@ EAIActionReturn CAIStateGroupBase::AIAction_RunAwayFrom(CIntelligentPointerConst
     for (;;) {
         if (!IS_THING_ALIVE(enemy) || !IsAwareOfThingImplementation(GetCreature(), enemy.GetPItem(), false))
             return AI_ACTION_DONE;
-        C3DVector away = GetCreature()->GetPosition() - enemy.GetPItem()->GetPosition();
+        C3DVector away = GetCreature()->GetPos() - enemy.GetPItem()->GetPos();
         CThingCreatureBase* creature = GetCreature();
         CTCCreatureNavigation* nav;
         bool moving;
         creature->GetInterfaceR(&nav, 7, moving);
         C3DVector dest;
         EAIActionReturn result;
-        if (nav->GetNearbyDirectedPosition(creature->GetPosition(), 5.0f, away, 0.25277778f, &dest)) {
+        if (nav->GetNearbyDirectedPosition(creature->GetPos(), 5.0f, away, 0.25277778f, &dest)) {
             result = AIAction_MoveToPos(AI_ACTION_REPEAT_POLL, dest, moving, MOVEMENT_RUN, true, true, 0, true, 0.0f);
         } else {
             const CThing* threatThing = enemy.GetPItem();
             CThingCreatureBase* me = GetCreature();
             float radius = CThingCreatureBase::GetPersonalSpaceRadius();
-            const C3DVector& from = threatThing->GetPosition();
-            const C3DVector& to = me->GetPosition();
+            const C3DVector& from = threatThing->GetPos();
+            const C3DVector& to = me->GetPos();
             float dx = to.X - from.X;
             float dy = to.Y - from.Y;
             float distanceSquared = dy * dy + dx * dx;
             float radiusSquared = radius * radius;
             if (distanceSquared < radiusSquared
-                && nav->GetNearbyWanderPosition(enemy.GetPItem()->GetPosition(), 5.0f, &dest, false)) {
+                && nav->GetNearbyWanderPosition(enemy.GetPItem()->GetPos(), 5.0f, &dest, false)) {
                     result = AIAction_MoveToPos(AI_ACTION_REPEAT_UNTIL_DONE, dest, moving, MOVEMENT_RUN, true, true, 0, true, 0.0f);
                 if (result == AI_ACTION_DONE)
                     continue;

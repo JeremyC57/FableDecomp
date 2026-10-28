@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F2410, length 208 bytes (+ int3 padding); speed TU (no frame pointer).
 // Callees: CDefClassBase::GetSubDef<CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) @ 0x00669580, CCharString(const char*, long)
 // @ 0x0099EBF0 ("LIGHTNING_ORB_HIT" 0x01271D48) and ~CCharString @ 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&,
-// long&) const @ 0x00669D30 (catalog "CCRC::CalcAndLookup"), CThing::GetPosition @ 0x004C73D0, CreateEffectThing(long, const C3DVector*,
+// long&) const @ 0x00669D30 (catalog "CCRC::CalcAndLookup"), CThing::GetPos @ 0x004C73D0, CreateEffectThing(long, const C3DVector*,
 // bool) @ 0x006E0880 (`__fastcall`), the defs' virtual slot 1 on release. CThing::PDef +0x70; ParentThing +0x04.
 // Shape: the thing's definition taken by value (CThing::GetPDef: the copy's addref and its release at the end of the condition) and
 // the `&&` string temporary; the effects sub-def is a zeroed out slot released by hand (null-tested) after the spawn. GetSubDef and
@@ -77,7 +77,7 @@ class CThing { public:
     unsigned char _pad00[0x70];
     CDefPointer<CDefClassBase> PDef;             // +0x70
     CDefPointer<CDefClassBase> GetPDef() const { return PDef; }
-    const C3DVector& GetPosition() const;        // 0x004C73D0
+    const C3DVector& GetPos() const;        // 0x004C73D0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
@@ -92,6 +92,6 @@ void CTCLightningOrb::OnDie()
     long effectType = 0;
     bool found = ParentThing->GetPDef()->GetSubDef(effectsSlot) && effectsSlot.m_p->GetEffectFromString("LIGHTNING_ORB_HIT", effectType);
     if (found)
-        CreateEffectThing(effectType, &ParentThing->GetPosition(), false);
+        CreateEffectThing(effectType, &ParentThing->GetPos(), false);
     ReleaseDef(effectsSlot.m_p);
 }

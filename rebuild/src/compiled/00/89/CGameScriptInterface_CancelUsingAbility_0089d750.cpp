@@ -1,6 +1,6 @@
 // CGameScriptInterface::CancelUsingAbility(long ability) const -- cancel the live hero creature's use of an ability through its special-abilities component (kind 0xa7)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089D750, length 97 bytes.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, the component-map LowerBound @ 0x0040F020,
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the component-map LowerBound @ 0x0040F020,
 //          CTCSpecialAbilities::CancelUsingAbility @ 0x0072ACF0 (bool result ignored).
 // Shape: the out-parameter component lookup (`mov eax,[eax+4] ; push ; mov ecx,eax`).
 // Leaf: ?CancelUsingAbility@CGameScriptInterface@@UBEXJ@Z
@@ -42,6 +42,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
+class CThingPlayerCreature : public CThing_Retail { };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
@@ -60,8 +61,8 @@ class CScriptThing { public:
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
 class CPlayer { public:
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -119,7 +120,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::CancelUsingAbility(long ability) const
 {
-    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCSpecialAbilities_Retail* abilities;
     if (hero && !hero->m_dead && GetTCOut(hero, 0xa7, &abilities))
         abilities->CancelUsingAbility(ability);

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DAE10, 541 bytes (`ret`).
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CThingAnimatable::SetSuspendAnimation @ 0x00833A10,
 //   CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580, CCRC::CalcAndLookup @ 0x00669D30, CCharString(const char*, long)
-//   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPosition @ 0x004C73D0, the special-effect Create(long, const C3DVector&,
+//   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPos @ 0x004C73D0, the special-effect Create(long, const C3DVector&,
 //   bool) @ 0x006E0880 (__fastcall), CBaseIntelligentPointer() @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 /
 //   ~CBaseIntelligentPointer @ 0x00A01C10, CTCDParticleEmitter::AttachToThing @ 0x006E0BE0, CThing::AddTC @ 0x004C9D60, __ftol2.
 // Data: "LIGHTNING_ORB_CHARGE" 0x01285B2C, "LIGHTNING_ORB_FOCUS" 0x01282C4C, "LIGHTNING_CHARGE" 0x01285B18,
@@ -93,7 +93,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     void SetSuspendAnimation(bool suspend, NCreatureMode::CModeBase* mode);   // 0x00833A10
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -166,7 +166,7 @@ void CModeSummonerLightningOrb::OnActivate()
     if (m_pThing->GetDef()->GetSubDef(&effects)) {
         long effect;
         if (effects->CalcAndLookup("LIGHTNING_ORB_CHARGE", &effect)) {
-            POrbChargeEffect = CIntelligentPointer<CThing>(CreateSpecialEffect(effect, m_pThing->GetPosition(), false));
+            POrbChargeEffect = CIntelligentPointer<CThing>(CreateSpecialEffect(effect, m_pThing->GetPos(), false));
             if (IS_THING_ALIVE(POrbChargeEffect)) {
                 CTCDParticleEmitter* emitter;
                 CThing* orb = POrbChargeEffect.GetPItem();
@@ -176,7 +176,7 @@ void CModeSummonerLightningOrb::OnActivate()
             }
         }
         if (effects->CalcAndLookup("LIGHTNING_CHARGE", &effect))
-            PChargeEffect = CIntelligentPointer<CThing>(CreateSpecialEffect(effect, m_pThing->GetPosition(), false));
+            PChargeEffect = CIntelligentPointer<CThing>(CreateSpecialEffect(effect, m_pThing->GetPos(), false));
     }
     m_pThing->AddTC("CTCElectrocuteOnTouch", true, 0);
     Timer = (long)(g_LightningOrbChargeSeconds * g_FramesPerSecond_0122ded4);

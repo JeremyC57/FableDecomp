@@ -1,6 +1,6 @@
 // CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money) -- unless the hero's buy-house tutorial takes over, ask the hero to buy the house (or tell him he cannot afford it) or to sell it
 // Retail 0x0072E940, 512 bytes (`ret 8`). Callees: the player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer
-// @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020
+// @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020
 // (inlined GetInterface, CTCHero = 0x29), CTCHero::GiveTutorialForCategory(ETutorialCategory, bool) @ 0x006C9FA0,
 // CWideString() @ 0x0099AED0, CTCBuyableHouse::GetPrice @ 0x006C0120, CCharString(const char*, long) @ 0x0099EBF0,
 // CDataBank::GetTextBySymbol @ 0x009C95E0 (g_pMainGameComponent 0x013B86A0 -> +0x14), CWideString::operator+= @ 0x0099B8D0,
@@ -41,8 +41,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
@@ -108,7 +109,7 @@ public:
 
 void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero && !hero->Dead) {
         CTCHero* heroTC;
         if (hero->GetInterface(&heroTC, 0x29) && heroTC->GiveTutorialForCategory(0x23, false))

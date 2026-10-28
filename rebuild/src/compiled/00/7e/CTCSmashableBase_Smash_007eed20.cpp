@@ -2,7 +2,7 @@
 // Leaf: Smash
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007EED20, 275 bytes (plain `ret`).
 // Callees: the physics body's GetRHSet (slot 72, +0x120, const CRightHandedSet&), CCharString(const char*, long) @ 0x0099EBF0
-//   ("" @ 0x0122D70E), CThing::GetPosition() const @ 0x004C73D0, Create(long, const C3DVector*, long, const CRightHandedSet*,
+//   ("" @ 0x0122D70E), CThing::GetPos() const @ 0x004C73D0, Create(long, const C3DVector*, long, const CRightHandedSet*,
 //   unsigned long, const CCharString&) @ 0x00703210 (`__fastcall`), ~CCharString @ 0x0099EAE0, CVectorMap::LowerBound
 //   @ 0x0040F020 (interface 0x4E), CThing::Kill(bool) @ 0x004C9B80; the def's virtual slot 1 on the last release.
 // Layout: Ego_r.pdb CTCSmashableBase (the landed OnInitialActivate 0x007EECF0 model): LastWorldFrameHit +0x0C, Definition
@@ -53,7 +53,7 @@ public:
     unsigned char   _pad64[0x90 - 0x64];
     signed char     MapLevel;                           // +0x90
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
     __forceinline unsigned long HasTC(long type) { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline bool GetInterface(T** out, long type)
@@ -116,7 +116,7 @@ void CTCSmashableBase::Smash()
             CCharString scriptName("", -1);
             CThing* thing = ParentThing;
             long objectDef = GetDef()->ReplacementObject;
-            object = Create(objectDef, &thing->GetPosition(), thing->MapLevel, &orientation, 0, scriptName);
+            object = Create(objectDef, &thing->GetPos(), thing->MapLevel, &orientation, 0, scriptName);
         }
         CTCSmashableComponent* smashable;
         if (object && !(object->m_flags91 & 1) && object->GetInterface(&smashable, 0x4e))

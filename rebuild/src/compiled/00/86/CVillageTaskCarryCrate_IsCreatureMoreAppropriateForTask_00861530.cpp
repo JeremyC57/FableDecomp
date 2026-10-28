@@ -5,7 +5,7 @@
 // Identity: labelled "CVillageTaskHorn::IsCreatureMoreAppropriateForTask" (propagated); it reads Pickup at +0x18 and
 //   calls the CarryCrate validity test 0x008614B0, after CarryCrate IsValid 0x00861430 by address.
 // Callees: CVillageTaskCarryCrate::IsCreatureValidForTask 0x008614B0, CBaseIntelligentPointer::GetPItem 0x00A01B50
-//   (x2), CThing::GetPosition 0x004C73D0 (x3). Constant 2.25f 0x0125B2D4 (a literal, both uses).
+//   (x2), CThing::GetPos 0x004C73D0 (x3). Constant 2.25f 0x0125B2D4 (a literal, both uses).
 // Layout (Ego_r.pdb = retail): CreatureAssignedToTask +0x08, PCrateStack +0x10, Pickup +0x18, Priority +0x1C.
 // Shape: the Torch/Horn twins' distance code with the assigned distance a named float (stored into the dead `creature`
 //   slot) and the candidate distance kept on the x87 stack; Pickup is re-read after the validity call, so both arms of
@@ -26,7 +26,7 @@ class C3DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 class CThing : public CBaseObject { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vptr + item
     virtual void v00();
@@ -49,9 +49,9 @@ bool CVillageTaskCarryCrate::IsCreatureMoreAppropriateForTask(const CThing& crea
     if (!Pickup)
         return false;
     if (IsCreatureValidForTask(creature)) {
-        C3DVector crate = static_cast<const CThing*>(PCrateStack.GetPItem())->GetPosition();
-        C3DVector assigned = static_cast<const CThing*>(CreatureAssignedToTask.GetPItem())->GetPosition();
-        C3DVector position = creature.GetPosition();
+        C3DVector crate = static_cast<const CThing*>(PCrateStack.GetPItem())->GetPos();
+        C3DVector assigned = static_cast<const CThing*>(CreatureAssignedToTask.GetPItem())->GetPos();
+        C3DVector position = creature.GetPos();
         float assignedDistance = (crate - assigned).GetLengthSquared();
         float creatureDistance = (crate - position).GetLengthSquared();
         if (Pickup)

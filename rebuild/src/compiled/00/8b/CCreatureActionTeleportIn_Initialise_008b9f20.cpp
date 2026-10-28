@@ -4,7 +4,7 @@
 // (PCreature +8, twice), CDefClassBase::GetSubDef<CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580 on the
 // thing's definition (+0x70), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 // CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30 (the name's CRC looked up in the def's
-// SpecialEffectsMap at +0x28; landed as CCRC::CalcAndLookup), CThing::GetPosition 0x004C73D0, __fastcall
+// SpecialEffectsMap at +0x28; landed as CCRC::CalcAndLookup), CThing::GetPos 0x004C73D0, __fastcall
 // CreateEffectThing(long, const C3DVector*, bool) 0x006E0880.
 // Layout: retail CreateEffects +0x114 (PDB header +0x12C: the debug base is 0x18 larger), so a local model.
 // Shape: the GetSubDef out-slot is a plain counted-pointer slot (no destructor); the caller copies the def into a named
@@ -47,7 +47,7 @@ class CDefClassBase : public CDefBase { public:
 class CThing { public:
     unsigned char  _pad0[0x70];
     CDefClassBase* m_pDef;                      // +0x70
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
@@ -93,7 +93,7 @@ void CCreatureAction_TeleportIn::Initialise()
         bool found = def->GetSubDef(effectsSlot);
         CSpecialEffectsDef* effects = effectsSlot.m_p;
         if (found && effects->GetEffectFromString("TELEPORT_IN", effectType))
-            CreateEffectThing(effectType, &PCreature.GetPItem()->GetPosition(), false);
+            CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
         ReleaseDef(effects);
     }
 }

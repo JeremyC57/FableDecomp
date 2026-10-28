@@ -57,7 +57,8 @@ public:
         return false;
     }
 };
-class CPlayer { public: CThing* GetHeroCreature(); };                      // 0x00487DC0
+class CThingPlayerCreature : public CThing { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                      // 0x00487DC0
 struct CTCInventoryBase;
 long __fastcall GetInventoryCategory_005d99d0(long defIndex);       // 0x005D99D0
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };          // 0x00449960
@@ -143,7 +144,7 @@ void CTCInventoryTrade::BuyHighlightedItem()
             CTCShop* shop = 0;
             owner->GetInterface(&shop, 0x53);
             long price = shop->GetCurrentBuyPrice_007743b0(item, 1);
-            CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->GetHeroCreature();
+            CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->GetPControlledCreature();
             CTCHeroStats* stats = 0;
             hero->GetInterface(&stats, 4);
             if (stats->Money >= price) {

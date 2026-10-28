@@ -97,7 +97,7 @@ public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     void UnsheatheMeleeWeapon_00666820();                      // 0x00666820 (CThingCreatureBase)
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -177,5 +177,5 @@ void CCreatureAction_BriarRoseConcentrateInto::Initialise()
     bool found = CDefClassReference(GetCreature()->m_pDef)->GetSubDef(effects) &&
                  effects.m_p->GetEffectFromString("TELEPORT_INTO", effectType);
     if (found)
-        CreateEffectThing(effectType, &GetCreature()->GetPosition(), false);
+        CreateEffectThing(effectType, &GetCreature()->GetPos(), false);
 }

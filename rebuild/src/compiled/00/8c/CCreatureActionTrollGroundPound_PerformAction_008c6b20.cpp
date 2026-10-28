@@ -86,7 +86,7 @@ public:
     unsigned char  _pad74[0x90 - 0x74];
     char           PlayerNumber;                      // +0x90
     CDefClassBase* GetDef() const { return Def; }
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -159,7 +159,7 @@ void CCreatureAction_TrollGroundPound::PerformAction()
     CDefPointer<CTrollGroundPoundDef> def;
     if (GetCreature()->GetDef()->GetSubDef(&def)) {
         if (def.Object->TrapDefIndex) {
-            C3DVector position = GetCreature()->GetPosition();
+            C3DVector position = GetCreature()->GetPos();
             CThing* trap = CreateThingObject(def.Object->TrapDefIndex, position, GetCreature(), "");
             CTCTrapBase* trapBase;
             trap->GetInterface(&trapBase, 0x7d);
@@ -167,14 +167,14 @@ void CCreatureAction_TrollGroundPound::PerformAction()
             trapBase->ManualTrigger();
         }
         if (def.Object->ObjectDefIndex) {
-            C3DVector position = GetCreature()->GetPosition();
+            C3DVector position = GetCreature()->GetPos();
             CThing* object = CreateThing(def.Object->ObjectDefIndex, &position);
             CTCDriver41* driver;
             object->GetDriver(&driver, 0x41);
             driver->SetOwner(GetCreature());
         }
         if (def.Object->ObstructionRadius > 0.0001f) {
-            C3DVector position = GetCreature()->GetPosition();
+            C3DVector position = GetCreature()->GetPos();
             CThing* obstruction = CreateObstruction(&position, &position, def.Object->ObstructionRadius);
             if (obstruction) {
                 CTCDriverED* driver;

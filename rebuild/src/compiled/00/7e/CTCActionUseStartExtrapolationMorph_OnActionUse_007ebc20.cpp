@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007EBC20, 145 bytes (`ret 4`). Slot 28 of vtable 0x0123F6FC =
 //   CTCActionUseStartExtrapolationMorph (rtti-vtables.tsv; modelled non-virtual, hence the QAE leaf); FableWin.pdb `?OnActionUse@CTCActionUseStartExtrapolationMorph
 //   @@UAEXAAVCThing@@@Z`. Catalog label `CTCAppearance_SetFacing` was descriptive.
-// Callees: CTCActionUseBase::OnActionUse @ 0x007EAB90 (empty `ret 4`, called non-virtually), CThing::GetPosition @
+// Callees: CTCActionUseBase::OnActionUse @ 0x007EAB90 (empty `ret 4`, called non-virtually), CThing::GetPos @
 //   0x004C73D0, _CIfmod @ 0x00BFEB28, the physics component's SetFacingAngle (slot 66, +0x108) through CThing +0x60.
 // Constants: 1/(2pi) 0x01237F08, 0.0f 0x0122DEDC, 1.0f 0x0122DED8, the double 1.0 0x01237F00, 0.5f 0x0122F59C.
 // Shape: the parent is read before the user's position; atan2(dx, dy) of parent - user (intrinsic fpatan), scaled to a
@@ -27,7 +27,7 @@ class CThing {
 public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* m_pPhysics;                                 // +0x60
-    const C3DVector& GetPosition() const;                       // 0x004C73D0
+    const C3DVector& GetPos() const;                       // 0x004C73D0
 };
 
 __forceinline float WrapAngle(float angle)
@@ -56,8 +56,8 @@ void CTCActionUseStartExtrapolationMorph::OnActionUse(CThing& user)
 {
     CTCActionUseBase::OnActionUse(user);
     CThing* parent = ParentThing;
-    const C3DVector& from = user.GetPosition();
-    const C3DVector& to = parent->GetPosition();
+    const C3DVector& from = user.GetPos();
+    const C3DVector& to = parent->GetPos();
     float angle = (float)atan2(to.X - from.X, to.Y - from.Y) * 0.15915494f;
     angle = WrapAngle(angle);
     user.m_pPhysics->SetFacingAngle(angle + 0.5f);

@@ -2,9 +2,14 @@
 #if defined(_MSC_VER)
 #include "engine/CAIStateGroupBase.h"
 #include "engine/CAIBrain.h"
-#include "engine/CThingAICreature.h"
+#define CThingAICreature CThingAICreaturePdb
+#include "engine/CThingAICreature.h"              // layout only (sizeof); the local class below carries the CThing accessor
+#undef CThingAICreature
 #include "engine/CPlayerManager.h"
 #include "fable_string.h"
+class C3DVector;
+class CThing { public: const C3DVector& GetPos() const; };   // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
+class CThingAICreature : public CThing { public: unsigned char storage[sizeof(CThingAICreaturePdb)]; };
 #else
 #define __fastcall
 class CCharString { public:
@@ -12,7 +17,9 @@ class CCharString { public:
     CCharString(const char*, long);
     ~CCharString();
 };
-class CThingAICreature { public: unsigned char storage[0x100]; };
+class C3DVector;
+class CThing { public: const C3DVector& GetPos() const; };   // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
+class CThingAICreature : public CThing { public: unsigned char storage[0x100]; };
 class CPlayer;
 class CPlayerManager { public: long MainPlayer; };
 class CAIBrain { public: CThingAICreature* Creature; CPlayerManager* PlayerManager; };
@@ -49,7 +56,6 @@ CGameDefinitionManager* __fastcall GetGameDefinitionManager(); // 0x0044c6b0
 CThingObject* __fastcall CreateObject(long definition, C3DVector* position, long playerID,
                                       float* orientation, unsigned long flags,
                                       const CCharString& name); // 0x00703210
-C3DVector* __fastcall GetPosition(CThingAICreature*); // 0x004c73d0
 
 void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharString* itemName)
 {
@@ -65,7 +71,7 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
         CTCCarrying* carry = (CTCCarrying*)entry->value;
 
         long playerID = ((CPlayerManagerAccess*)brain->PlayerManager)->GetMainPlayer();
-        C3DVector position = *GetPosition(PBrain->Creature);
+        C3DVector position = PBrain->Creature->GetPos();
         float orientation[6] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
 
         long definition = GetGameDefinitionManager()->GetDefGlobalIndexFromName(definitionName);

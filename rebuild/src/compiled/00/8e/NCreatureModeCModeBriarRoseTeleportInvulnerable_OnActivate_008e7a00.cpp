@@ -3,7 +3,7 @@
 // Shape: GetEffectFromString (0x00669D30) gets a same-TU out-type-only stand-in body (the 0x008D9740 idiom), so the effect
 //   type does not escape and the CIntelligentPointer temp overlays its word as retail; `out` declared before `effectType`
 //   (zero-store order).
-// Callees: CModeStandBase::OnActivate 0x008621A0, __ftol2 0x00BFEA70, SetSuspendAnimation 0x00833A10, LowerBound 0x0040F020, CTCBoss::IsReadyForPhaseChange 0x007AEE90 / IncrementBossPhase 0x007AED20, GetSubDef 0x00669580, CCharString 0x0099EBF0/~ 0x0099EAE0, GetEffectFromString 0x00669D30, GetPosition 0x004C73D0, CreateEffectThing 0x006E0880, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10.
+// Callees: CModeStandBase::OnActivate 0x008621A0, __ftol2 0x00BFEA70, SetSuspendAnimation 0x00833A10, LowerBound 0x0040F020, CTCBoss::IsReadyForPhaseChange 0x007AEE90 / IncrementBossPhase 0x007AED20, GetSubDef 0x00669580, CCharString 0x0099EBF0/~ 0x0099EAE0, GetEffectFromString 0x00669D30, GetPos 0x004C73D0, CreateEffectThing 0x006E0880, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10.
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* m_pData;
@@ -120,7 +120,7 @@ class CThing { public:
         return false;
     }
     void SetSuspendAnimation(bool suspend, CModeBase* mode);   // 0x00833A10
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CTCBoss { public:
     bool IsReadyForPhaseChange();               // 0x007AEE90
@@ -184,7 +184,7 @@ void CModeBriarRoseTeleportInvulnerable::OnActivate()
         && out.Object->GetEffectFromString("TELEPORT_CHARGE", &effectType);
     CDefHolder<CSpecialEffectsDef> effects(out.Object);
     if (found) {
-        CThing* effect = CreateEffectThing(effectType, &GetParent()->GetPosition(), false);
+        CThing* effect = CreateEffectThing(effectType, &GetParent()->GetPos(), false);
         if (effect && !(effect->m_flags91 & 1))
             PEffect = CIntelligentPointer<CThing>(effect);
     }

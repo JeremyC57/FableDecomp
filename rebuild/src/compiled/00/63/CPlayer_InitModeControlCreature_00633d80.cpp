@@ -5,14 +5,16 @@
 // Callees: CAInputProcess::AddToInterface(CGamePlayerInterface*) (virtual slot 1, eighteen processes),
 // CBaseIntelligentPointer::GetPItem 0x00A01B50, operator new 0x00BFEA1A (0x9C bytes),
 // NDisplayView::CView3DThirdPerson::CView3DThirdPerson 0x0069E940, CDisplayViewManager::SetView(CViewBase*) 0x00640050
-// (g_pMainGameComponent 0x013B86A0 -> display engine +0x28 -> view manager +0xE0), CPlayer::GetControlledCreature
-// 0x00487DD0, CPlayer::GetHeroThing 0x00487DC0, the physics component's slot 67 (+0x10C, SetFacingAngleYZ(float)).
+// (g_pMainGameComponent 0x013B86A0 -> display engine +0x28 -> view manager +0xE0), CPlayer::PeekPControlledCreature
+// 0x00487DD0, CPlayer::GetPControlledCreature 0x00487DC0, the physics component's slot 67 (+0x10C, SetFacingAngleYZ(float)).
 // Layout: engine/CPlayer.h (the scoped_ptr<CInputProcess*> members, PlayerInterface +0x0C, PlayerCharacter +0x34) through
-// the lane's CPlayer_Methods carrier; the player creature's ControlledMovementType at retail +0x17C (PDB +0x1A4),
+// the lane's CPlayer carrier; the player creature's ControlledMovementType at retail +0x17C (PDB +0x1A4),
 // CThing PhysicsTC +0x60, dead bit +0x91 & 1 -- the same model as the landed InitModeBoastUI (0x00633F10).
 // Shape: one AddToInterface per process in source order with PlayerInterface re-read each time; `&PlayerCharacter`
 // stays in edi for both GetPItem calls; the new-expression's null test selects 0 for SetView.
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 
 typedef long EPlayerMode;
 typedef long EControlledMovementType;
@@ -90,14 +92,14 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
 
-struct CPlayer_Methods : CPlayer {
+class CPlayer : public CPlayerPdb { public:
     CIntelligentPointer<CThingPlayerCreature>& PlayerCharacterPointer() { return *reinterpret_cast<CIntelligentPointer<CThingPlayerCreature>*>(PlayerCharacter); }
-    CThing* GetHeroThing();                             // 0x00487DC0
-    CThing* GetControlledCreature();                    // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
     void InitModeControlCreature(EPlayerMode mode, CProcessedInput* input);
 };
 
-void CPlayer_Methods::InitModeControlCreature(EPlayerMode mode, CProcessedInput* input)
+void CPlayer::InitModeControlCreature(EPlayerMode mode, CProcessedInput* input)
 {
     (void)mode; (void)input;
     reinterpret_cast<CAInputProcess*>(InputProcessControlCreature_ptr)->AddToInterface(PlayerInterface);
@@ -121,7 +123,7 @@ void CPlayer_Methods::InitModeControlCreature(EPlayerMode mode, CProcessedInput*
     if (PlayerCharacterPointer().GetPItem()) {
         g_pMainGameComponent->DisplayEngine->ViewManager->SetView(new NDisplayView::CView3DThirdPerson);
         PlayerCharacterPointer().GetPItem()->ControlledMovementType = 1;
-        if (IsThingAlive(GetControlledCreature()))
-            GetHeroThing()->GetPhysicsTC()->SetFacingAngleYZ(0.0f);
+        if (IsThingAlive(PeekPControlledCreature()))
+            GetPControlledCreature()->GetPhysicsTC()->SetFacingAngleYZ(0.0f);
     }
 }

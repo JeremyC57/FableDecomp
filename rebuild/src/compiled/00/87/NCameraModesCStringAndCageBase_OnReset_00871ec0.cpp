@@ -1,7 +1,7 @@
 // NCameraModes::CStringAndCageBase::OnReset() -- snap the string-and-cage camera: put it behind the observed thing (the thing's position less its flattened, normalised facing times the desired string length, raised by the desired height offset) and look at the thing's camera focal point
 // Leaf: OnReset
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00871EC0, 270 bytes (+2 int3 padding), `ret`.
-// Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CThing::GetPosition() const 0x004C73D0
+// Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CThing::GetPos() const 0x004C73D0
 //   (const C3DVector&), the thing physics' virtual slot 70 (+0x118, GetFacingVector, C3DVector by hidden pointer),
 //   C3DVector::AccurateNormalise @ 0x00A14440, CTCGraphicAppearance::GetCameraFocalPos(float) const 0x004C12D0 (thing +0x64).
 //   Float pool 0x0122DEDC = 0.0f.
@@ -41,7 +41,7 @@ public:
     unsigned char         _pad00[0x60];
     CThingPhysics*        m_pPhysics;                        // +0x60
     CTCGraphicAppearance* m_pGraphicAppearance;              // +0x64
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
     CThingPhysics* GetPhysics() const { return m_pPhysics; }
 };
 class CThingGameObject : public CThing { };
@@ -67,7 +67,7 @@ public:
 };
 void CStringAndCageBase::OnReset()
 {
-    C3DVector thingPos = GetObservedThing()->GetPosition();
+    C3DVector thingPos = GetObservedThing()->GetPos();
     C3DVector facing = GetObservedThing()->GetPhysics()->GetFacingVector();
     facing.Z = 0.0f;
     facing.AccurateNormalise();

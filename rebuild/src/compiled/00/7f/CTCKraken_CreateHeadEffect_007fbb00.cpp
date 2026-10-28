@@ -3,7 +3,7 @@
 // ?CreateHeadEffect@CTCKraken@@AAEXABVCCharString@@@Z (private).
 // Callees: CTCKraken @ 0x007FB150 (no arguments, called first: drops the previous head effect; name descriptive),
 // CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580, CSpecialEffectsDef::GetEffectFromString @ 0x00669D30 (result
-// unused), CThing::GetPosition @ 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool) @ 0x006E0880,
+// unused), CThing::GetPos @ 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool) @ 0x006E0880,
 // CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10 (CIntelligentPointer<CThing>
 // vtable 0x01238C6C), the component-map LowerBound @ 0x0040F020, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0 ("EFFECT_WATER"
 // @ 0x01271CF0), CTCDParticleEmitter::AttachToThing(CThing*, long, const CCharString&, long, float) @ 0x006E0BE0.
@@ -94,7 +94,7 @@ class CThing { public:
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
@@ -155,7 +155,7 @@ void CTCKraken::CreateHeadEffect(const CCharString& name)
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (found)
         effects->GetEffectFromString(name, effectType);
-    PHeadEffect = CIntelligentPointer<CThing>(CreateEffectThing(effectType, &ParentThing->GetPosition(), false));
+    PHeadEffect = CIntelligentPointer<CThing>(CreateEffectThing(effectType, &ParentThing->GetPos(), false));
     if (IS_THING_ALIVE(PHeadEffect)) {
         CTCDParticleEmitter* emitter = 0;
         CThing* effect = PHeadEffect.GetPItem();

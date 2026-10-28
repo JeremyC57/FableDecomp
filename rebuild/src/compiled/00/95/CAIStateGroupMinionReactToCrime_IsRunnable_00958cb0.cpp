@@ -4,7 +4,7 @@
 //          ternary picks into ecx) / non-const @ 0x0040F020 (0x51 = CTCHeroOpinionDeedLog on the hero, bit 17 of +0x28),
 //          CTCVillageMember::GetPVillage @ 0x007EE540, CTCCreatureOpinionOfHero::FindMostRecentDeed<
 //          COpinionDeedFilter_IsCrimeToRunAndFindAGuard> @ 0x006610C7, GetPPlayerManager @ 0x008FCF90 / GetMainPlayer
-//          @ 0x00449970 / GetPCharacter @ 0x00487DC0, CTCHeroOpinionDeedLog::GetDeedFromHandle @ 0x006C58F0 and the deed
+//          @ 0x00449970 / GetPControlledCreature @ 0x00487DC0, CTCHeroOpinionDeedLog::GetDeedFromHandle @ 0x006C58F0 and the deed
 //          removal @ 0x006C59E0, IsGuardOnLevel @ 0x00958C00, the village's deed test @ 0x0065914B (manifest
 //          "CBankFileAsyncData::StartRead" is wrong), GetSomeoneElseGettingHelpMessage @ 0x00958770.
 // Shape: nested success path; both villager lookups are const one-ternary picks; the village pointer is a named local
@@ -50,6 +50,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class COpinionDeed { public:
     long Type;                                  // +0x00 (descriptive)
     long Data;                                  // +0x04 (descriptive)
@@ -74,7 +75,7 @@ class CTCVillageMember { public:                       // interface 0x23
     CVillage* GetPVillage() const;              // 0x007EE540
 };
 class CPlayer { public:
-    CThing* GetPCharacter();                    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -105,7 +106,7 @@ bool CAIStateGroupMinionReactToCrimeMethods::IsRunnable()
                                                             &OpinionDeedHandle, true);
             if (deed) {
                 if (deed->Type == 0x35) {
-                    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPCharacter();
+                    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
                     if (hero) {
                         CTCHeroOpinionDeedLog* log;
                         hero->GetInterface(&log, 0x51);

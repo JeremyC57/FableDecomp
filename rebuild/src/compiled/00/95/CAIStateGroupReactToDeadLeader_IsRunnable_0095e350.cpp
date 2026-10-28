@@ -25,7 +25,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -68,6 +70,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual bool IsStillValid();                // slot 5  (+0x14)
@@ -108,8 +113,7 @@ class C2DVector { public:
     float GetMagnitudeSquared() const { return X * X + Y * Y; }
 };
 
-struct CThingCreaturePos {
-    const C3DVector& GetPosition();             // 0x004C73D0
+struct CThingCreaturePos : public CThing {
 };
 struct CThingState {
     unsigned char _pad[0x6c];
@@ -138,7 +142,6 @@ class CWorld { public:
 struct CAIStateGroup_ReactToDeadLeader : CAIStateGroupBase {
     CIntelligentPointerThing PEnemy;            // +0x14 CIntelligentPointer<CThingCreatureBase>
     long FramesRunning;                         // +0x1c
-    CWorld* GetPWorldA();                       // 0x008FCFA0
     virtual bool IsRunnable();
 };
 
@@ -147,10 +150,10 @@ bool CAIStateGroup_ReactToDeadLeader::IsRunnable()
     CMessageEvent* message;
     {
         CMessageEventFilter_IsLeaderDeath filter(PBrain->PCreature);
-        message = GetPWorldA()->GetMessageEventManager()->FindMostRecentMessage(filter);
+        message = PeekWorld().GetMessageEventManager()->FindMostRecentMessage(filter);
     }
     if (message != 0) {
-        const C3DVector& pos = ((CThingCreaturePos*)PBrain->PCreature)->GetPosition();
+        const C3DVector& pos = ((CThingCreaturePos*)PBrain->PCreature)->GetPos();
         if (C2DVector(message->Pos.X - pos.X, message->Pos.Y - pos.Y).GetMagnitudeSquared() < 400.0f) {
             CBaseIntelligentPointerCtor& killer = message->PKiller;
             if (killer.GetPItem() != 0 && (~((CThingState*)killer.GetPItem())->StateFlags & 0xf) == 0) {

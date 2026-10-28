@@ -196,12 +196,14 @@ public:
     iterator begin() { return iterator(this->_M_node._M_data->_M_next); }
     iterator end() { return iterator(this->_M_node._M_data); }
     unsigned int size() { return distance(begin(), end()); }
+    protected:
     _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __p = (_Node*)malloc(sizeof(_Node));
         _Construct(&__p->_M_data, __x);
         return __p;
     }
+    public:
     iterator insert(iterator __position, const _Tp& __x)
     {
         _Node* __tmp = _M_create_node(__x);

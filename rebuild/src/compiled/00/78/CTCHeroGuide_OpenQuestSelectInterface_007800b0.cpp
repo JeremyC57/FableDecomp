@@ -3,7 +3,7 @@
 // player, otherwise show "TEXT_GUI_QUESTS_NO_AVAILABLE" as a subtitle
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007800B0, 466 bytes (plain `ret`, /GS cookie 0x0139C8A8).
-// Callees: CTCBase::GetPlayerManager const 0x00686D50, CPlayerManager::GetMainPlayer 0x00449960, CPlayer::GetHeroThing
+// Callees: CTCBase::GetPlayerManager const 0x00686D50, CPlayerManager::GetMainPlayer 0x00449960, CPlayer::GetPControlledCreature
 // 0x00487DC0, the const interface LowerBound 0x004365B0 and the non-const one 0x0040F020, CBaseIntelligentPointer::GetPItem
 // 0x00A01B50, CTCBase::GetWorld 0x00686A80 (+0xDA a bool), CTCHeroCentre::GetQuestCards 0x0077DBC0, CMemoryBuffer::Copy
 // 0x009F1760, the second player-manager getter 0x00686D40, CPlayerManager::GetMainPlayerNumber 0x00449700,
@@ -93,6 +93,7 @@ class CThing { public:
         return result;
     }
 };
+class CThingPlayerCreature : public CThing { };
 struct CTCCentreOwner {                                 // interface 0x33
     unsigned char _pad00[0x0d];
     CBaseIntelligentPointer HeroCentre;                 // +0x0D
@@ -112,7 +113,7 @@ struct CTCQuestSelect {                                 // the hero's interface 
     bool QuestSelectPending;                            // +0x14D
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
@@ -172,7 +173,7 @@ class CTCHeroGuide : public CTCBase { public:
 
 void CTCHeroGuide::OpenQuestSelectInterface()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     const CThing* parent = ParentThing;
     const CThing* centre;
     if (parent->HasTC(0x33))

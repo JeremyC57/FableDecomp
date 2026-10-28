@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089B210, length 150 bytes.
 // Callees: this's virtuals EndLetterBox (slot 378, +0x5e8), ResumeAbilitiesForCutscene (slot 397, +0x634),
 //          CameraDefault (slot 416, +0x680), CameraResetToViewBehindHero (slot 417, +0x684); World->PCurrentGameCamera (+0x34)
-//          slot 14 (+0x38); CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0,
+//          slot 14 (+0x38); CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 //          the component-map LowerBound @ 0x0040F020, CTCBoastUI::AllowUIToOpen @ 0x0056A930.
 // Leaf: InternalEndMovieSequence
 struct CTCBase_Retail;
@@ -43,6 +43,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
+class CThingPlayerCreature : public CThing_Retail { };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
@@ -61,8 +62,8 @@ class CScriptThing { public:
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
 class CPlayer { public:
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -199,7 +200,7 @@ void CGameScriptInterface::InternalEndMovieSequence()
     ResumeAbilitiesForCutscene();
     CameraResetToViewBehindHero(false);
     CameraDefault();
-    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCBoastUI* boast;
     if (hero && !hero->m_dead && GetTCOut(hero, 0xe8, &boast))
         boast->AllowUIToOpen(true);

@@ -98,12 +98,14 @@ public:
     {
         _M_insert_dispatch(__pos, __first, __last, __false_type());
     }
+    protected:
     _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __p = this->_M_node.allocate(1);
         _Construct(&__p->_M_data, __x);
         return __p;
     }
+    public:
     iterator insert(iterator __position, const _Tp& __x)
     {
         _Node* __tmp = _M_create_node(__x);

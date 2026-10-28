@@ -60,8 +60,10 @@ public:
     iterator begin() { return this->_M_start; }
     iterator end() { return this->_M_finish; }
 
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __true_type&, size_type __fill_len,
                             bool __atend = false);          // 0x00485DBC
+    public:
 
     iterator insert(iterator __position, const _Tp& __x)
     {

@@ -1,7 +1,7 @@
 // CAIStateGroup_GameMaster::OfferPlayerAGame() -- play OFFER_GAME, speak the table game's banter at the hero until it finishes, then schedule the next reaction 5..14 seconds ahead
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094CE60, length 437 bytes.
 // Leaf: OfferPlayerAGame@CAIStateGroup_GameMaster
-// Callees: GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0,
+// Callees: GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 //          CBaseIntelligentPointer GetPItem @ 0x00A01B50 / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90, CVectorMap::LowerBound
 //          @ 0x0040F020 (interface 0xcf), CTCTavernGame::GetBanter @ 0x005EA3C0, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0,
 //          CCreatureAction_PlayAnimation @ 0x008424F0, ~CCreatureActionBase @ 0x00693EF0 (manifest "CPhysicsMeshInfo" is
@@ -44,6 +44,7 @@ class CThing { public:
         return has;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CThingCreatureBase;
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -89,7 +90,7 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
-class CPlayer { public: CThing* GetHeroThing(); };                     // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                     // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };            // 0x00449970
 class CTCTavernGame { public: long GetBanter(); };                     // 0x005EA3C0 (interface 0xcf)
 class CAIBrain { public:
@@ -132,7 +133,7 @@ struct CAIStateGroup_GameMaster : CAIStateGroupBase {
 
 bool CAIStateGroup_GameMaster::OfferPlayerAGame()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero == 0 || !IS_THING_ALIVE(PTable))
         return false;
     CTCTavernGame* game;

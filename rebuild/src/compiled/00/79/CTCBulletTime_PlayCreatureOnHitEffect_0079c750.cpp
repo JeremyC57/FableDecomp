@@ -5,7 +5,7 @@
 //   (CIntelligentPointer<CThing> vtable 0x01238C6C), CTCBase::GetWorld() 0x00686A70 (twice), the radial-blur manager's
 //   add (0x006B8550: two zero words, threshold colour, length, intensity colour, fade, range, twist; returns the key) and
 //   fade-out (0x006B82E0: fade seconds, key) members (descriptive names; manifest labels _Ucopy/_Cons_val are
-//   propagated), CThing::GetPosition() const 0x004C73D0, CEnvironmentSpellEffectInterface::SetRadialBlurCenterWorldPos
+//   propagated), CThing::GetPos() const 0x004C73D0, CEnvironmentSpellEffectInterface::SetRadialBlurCenterWorldPos
 //   (const C3DVector&, bool) 0x00885110.
 // Layout: engine/CTCBulletTime.h (PDef +0x20, HitCreatureBlur +0x44, RadialBlurKey +0x4c; retail = PDB);
 //   CSpecialAbilitiesBulletTimeDef at PDB - 4: the RadialBlur* block +0xD4..+0xFC and the DamageRadialBlur* block
@@ -18,7 +18,7 @@ class C3DVector { public: float X, Y, Z; };
 class CBaseObject;
 class CThing {
 public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -109,5 +109,5 @@ void CTCBulletTime::PlayCreatureOnHitEffect(CThing* creature)
                                              PDef->RadialBlur.Range, PDef->RadialBlur.Twist);
         blurs->FadeOutRadialBlur(PDef->RadialBlur.FadeTimeSecs, RadialBlurKey);
     }
-    spellEffects->SetRadialBlurCenterWorldPos(HitCreatureBlur.GetPItem()->GetPosition(), true);
+    spellEffects->SetRadialBlurCenterWorldPos(HitCreatureBlur.GetPItem()->GetPos(), true);
 }

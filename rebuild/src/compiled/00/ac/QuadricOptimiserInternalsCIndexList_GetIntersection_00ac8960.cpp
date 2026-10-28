@@ -101,13 +101,20 @@ public:
     unsigned int _M_node_count;                         // +0x04
     _Compare     _M_key_compare;                        // +0x08
 
+    protected:
     _Link_type& _M_root() const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Link_type& _M_leftmost() const { return (_Link_type&)this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Link_type& _M_rightmost() const { return (_Link_type&)this->_M_header._M_data->_M_right; }
+    public:
 
     _Rb_tree() : _Rb_tree_base<_Value, _Alloc>(_Alloc()), _M_node_count(0) { _M_empty_initialize(); }
     _Rb_tree(const _Rb_tree& __x);                      // 0x00AD3A10 for set<unsigned long>
     ~_Rb_tree() { clear(); }
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;      // red: tells the header from the root in operator++
@@ -115,6 +122,7 @@ public:
         _M_leftmost() = (_Link_type)this->_M_header._M_data;
         _M_rightmost() = (_Link_type)this->_M_header._M_data;
     }
+    public:
 private:
     void _M_erase(_Link_type __x);                      // 0x004CF810 for set<unsigned long>
 public:

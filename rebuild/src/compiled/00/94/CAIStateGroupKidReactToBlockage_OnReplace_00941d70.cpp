@@ -1,7 +1,7 @@
 // CAIStateGroup_KidReactToBlockage::OnReplace() -- on replacement re-stamp the current frame and pick a new random minimum re-activation interval of 5..15 seconds
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941D70, length 130 bytes (+ int3 padding). Vtable slot 10 of
 // CAIStateGroup_KidReactToBlockage (0x0128BBCC); the InitStateGroup twin (0x00941CF0) with the frame read through
-// the world: `GetPThingWorld()->GetCurrentFrame()` still calls the accessor although the getter is static.
+// the world: `PeekWorld().GetCurrentFrame()` still calls the accessor although the getter is static.
 // Callees: CAIStateGroupBase::GetPThingWorld @ 0x008FCFA0 (PBrain->+0x1c->+0x24), CWorld::GetCurrentFrame
 // @ 0x0049D870 (static, the frame global), CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0,
 // __ftol2 @ 0x00BFEA70 (x2), GFROR13 @ 0x00497890 (__fastcall). Globals: the frame-rate long @ 0x01375550; float
@@ -27,7 +27,9 @@ class CAIStateGroupBase { public:
     void* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     unsigned long RandomFramesWithin(float seconds)
     {
         long framesPerSecond = g_framesPerSecond;
@@ -57,6 +59,6 @@ struct CAIStateGroup_KidReactToBlockage : CAIStateGroupBase {
 
 void CAIStateGroup_KidReactToBlockage::OnReplace()
 {
-    LastEndState = GetPThingWorld()->GetCurrentFrame();
+    LastEndState = PeekWorld().GetCurrentFrame();
     CurrentActivationMinInterval = (long)(g_framesPerSecond * 5.0f + (float)RandomFramesWithin(10.0f));
 }

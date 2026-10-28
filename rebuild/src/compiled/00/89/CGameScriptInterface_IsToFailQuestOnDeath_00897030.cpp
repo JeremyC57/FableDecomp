@@ -58,7 +58,7 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature*       GetPControlledCreature() const;    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;    // 0x00487DC0
     const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
 class CPlayerManager {

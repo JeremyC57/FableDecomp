@@ -1,6 +1,6 @@
 // CGameScriptInterface::GetHeroHasMarried() const -- whether the hero has ever married (non-empty marriage list); false when there is no live hero
 // Leaf: GetHeroHasMarried@CGameScriptInterface
-// Retail: Fable.exe @ 0x00897AA0, 100 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPPlayerCharacter 0x00487DC0,
+// Retail: Fable.exe @ 0x00897AA0, 100 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0,
 // then CThing::PeekTC<CTCHeroStats> (Ego_r.pdb bool/out-pointer form; const Components lower_bound 0x004365B0).
 // Layout: CGameScriptInterface per engine/CGameScriptInterface.h (+0x14 PlayerManager); CThing retail (UsingComponents +0x20,
 // Components +0x44, Dead +0x91 bit 0).
@@ -58,8 +58,8 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
-    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
 };
 class CPlayerManager {
 public:
@@ -128,7 +128,7 @@ public:
 
 bool CGameScriptInterface::GetHeroHasMarried() const
 {
-    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     const CTCHeroStats* stats;
     if (hero && !hero->IsDead() && hero->PeekTC(&stats))
         return !stats->Marriages.empty();

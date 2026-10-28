@@ -19,8 +19,9 @@
 #include "fable_string.h"
 class CThing;
 class CTCParamsBase;
-class CTCSolidToThing { public:void AddThingNotSolidTo(CThing*);}; //00770FA0
-class CPlayer { public:CThing* GetPlayerThing() const;}; //00487DD0, native intelligent pointer+2c
+class CThingPlayerCreature;
+class CTCSolidToThing { public:void AddThingNotSolidTo(const CThing*);}; //00770FA0 (Ego_r.pdb: PBVCThing)
+class CPlayer { public:const CThingPlayerCreature* PeekPControlledCreature() const;}; //00487DD0, native intelligent pointer+2c
 class CPlayerManager { public:public:
     CPlayer& GetMainPlayer();   // 0x00449970
 }; //00449970 selects player ID at+1c
@@ -37,6 +38,7 @@ class CThing { public:
  CInterfaceMap Components;
  CTCSolidToThing* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
 };
+class CThingPlayerCreature : public CThing { };
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer(); //00A01C10
  void* PData;
@@ -75,5 +77,5 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
   CCharString name("CTCSolidToThing",-1);
   solid=PCreature.GetPItem()->AddTC(name,false,0);
  }
- if(solid)solid->AddThingNotSolidTo(g_Game->PPlayerManager->GetMainPlayer().GetPlayerThing());
+ if(solid)solid->AddThingNotSolidTo(g_Game->PPlayerManager->GetMainPlayer().PeekPControlledCreature());
 }

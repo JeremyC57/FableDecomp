@@ -141,8 +141,10 @@ protected:
         this->_M_end_of_storage._M_data = __e;
     }
 public:                                                         // the bound (public) spelling of 0x00A4AC60
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
 };
 
 template <class _Tp, class _Alloc>

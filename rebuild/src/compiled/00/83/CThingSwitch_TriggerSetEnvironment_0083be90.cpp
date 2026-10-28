@@ -1,14 +1,14 @@
 // CThingSwitch::TriggerSetEnvironment() -- when the living hero stands inside the switch's trigger square, transition the environment to the switch's theme def
 // Leaf: TriggerSetEnvironment
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083BE90, length 252 bytes (+ int3 padding).
-// Callees: CThing::GetPosition() const @ 0x006A4D00 (this TU's out-of-line copy, four times), the player-manager
-// accessor @ 0x004C7A00, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0,
+// Callees: CThing::PeekPos() const @ 0x006A4D00 (this TU's out-of-line copy, four times), the player-manager
+// accessor @ 0x004C7A00, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDefGlobalIndexFromName(const CCharString&)
 // @ 0x009AD410, CThing::PeekWorld @ 0x004C7AA0, CEnvironment::TransitionToTheme(long, float) @ 0x006B37A0 on the
 // world's PEnvironment (+0x18).
 // Layout (retail, as the landed CThingSwitch::ConstructFromParams 0x0083BD80): TriggerRadius +0xd0, EnvironmentDef
 // +0xd4, TimeToChangeEnvironmentDef +0xd8; CThing PhysicsTC +0x60 (position at +0x0c), Dead bit +0x91.
-// Shape: the trigger square is a C2DBoxF filled member by member (TL first, one GetPosition() call per component);
+// Shape: the trigger square is a C2DBoxF filled member by member (TL first, one PeekPos() call per component);
 // the hero position is a C2DVector converted from the physics position (only Y lands in the frame, X stays on the
 // x87 stack) and tested by the half-open ContainsPoint inlined here (the sibling TriggerSetPlayerAreaName 0x0083C990
 // calls the out-of-line copy 0x00535CD0); the world is a named local so PeekWorld runs before the argument pushes.
@@ -56,22 +56,25 @@ public:
 protected:
     CPlayerManager& GetPlayerManager();   // 0x004C7A00
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                                 // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                                 // 0x00487DC0
 };
 class CPlayerManager {
 public:
 public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };
-class CThingSwitch : public CThing {
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;                      // 0x006A4D00
+};
+class CThingSwitch : public CThingPhysical {
 public:
     unsigned char _pad94[0xd0 - 0x94];
     float         TriggerRadius;                               // +0xd0
     CCharString   EnvironmentDef;                              // +0xd4
     float         TimeToChangeEnvironmentDef;                  // +0xd8
-    const C3DVector& GetPosition() const;                      // 0x006A4D00
     CWorld* PeekWorld();                                       // 0x004C7AA0
     void TriggerSetEnvironment();
 };
@@ -79,11 +82,11 @@ public:
 void CThingSwitch::TriggerSetEnvironment()
 {
     C2DBoxF area;
-    area.TLX = GetPosition().X - TriggerRadius;
-    area.TLY = GetPosition().Y - TriggerRadius;
-    area.BRX = GetPosition().X + TriggerRadius;
-    area.BRY = GetPosition().Y + TriggerRadius;
-    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroCreature();
+    area.TLX = PeekPos().X - TriggerRadius;
+    area.TLY = PeekPos().Y - TriggerRadius;
+    area.BRX = PeekPos().X + TriggerRadius;
+    area.BRY = PeekPos().Y + TriggerRadius;
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->GetPhysicsPosition()))) {
         long theme = PeekDefinitionManager().GetDefGlobalIndexFromName(EnvironmentDef);
         if (theme) {

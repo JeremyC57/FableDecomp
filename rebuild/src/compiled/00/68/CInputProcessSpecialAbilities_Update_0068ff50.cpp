@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0068FF50, 210 bytes, `ret 4`.
 // Callees: CPlayerGui::SetSpecialAbilityButtonsAsDisplaying(bool, bool) @ 0x00437580 on g_pPlayerGui (0x013B8790),
 //   CInputProcessGameBase::IsGameActionEventInQueue(long action, long buttonEventType) @ 0x00687D50 (landed name),
-//   CPlayer::GetHeroThing @ 0x00487DC0, the const component-map LowerBound @ 0x004365B0, the kind-0xf6 menu component's
+//   CPlayer::GetPControlledCreature @ 0x00487DC0, the const component-map LowerBound @ 0x004365B0, the kind-0xf6 menu component's
 //   IsActive() @ 0x00625930 (+0x0c; label "GetCanItemBeQuickAssigned" is propagated).
 // Layout: engine/CInputProcessGameBase.h (MyPlayer +0x18), local model (the class carries virtuals); CPlayer (Ego_r.pdb,
 //   the PlayerModes list 4 bytes in retail): RightTriggerTargetLocked +0x20c, SpellMode +0x218; retail CThing component
@@ -51,9 +51,10 @@ class CThing { public:
     unsigned char  _bits91 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer : public CPlayerDonor {
 public:
-    CThing* GetHeroThing();                        // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -84,7 +85,7 @@ void CInputProcessSpecialAbilities::Update(CProcessedInput& input)
         MyPlayer->RightTriggerTargetLocked = true;
         return;
     }
-    CThing* hero = MyPlayer->GetHeroThing();
+    CThing* hero = MyPlayer->GetPControlledCreature();
     if (hero && !hero->Dead) {
         CTCMenu* menu = 0;
         if (hero->HasTC(0xf6))

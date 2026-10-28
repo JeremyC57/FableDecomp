@@ -1,8 +1,8 @@
 // CTCWife::OnGreet() -- once married, a greeting from the living hero posts opinion deed 0x50 at the wife's position
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CFC00, 140 bytes (+4 int3). __fastcall, `ret`.
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetMainPlayer()
-//          0x00449970; CPlayer::GetHeroThing() 0x00487DC0; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020;
-//          CThing::GetPosition() 0x004C73D0; CTCHeroOpinionDeedLog::PostDeed(EOpinionDeedType, const C3DVector*, CThing*,
+//          0x00449970; CPlayer::GetPControlledCreature() 0x00487DC0; CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020;
+//          CThing::GetPos() 0x004C73D0; CTCHeroOpinionDeedLog::PostDeed(EOpinionDeedType, const C3DVector*, CThing*,
 //          CThingAICreature*, EOpinionPostDeedType, bool, bool, CFaction*, bool, long) 0x006C6990.
 // Shape: FrameGotMarriedToThePlayer (+0x20) must not be in the future; the hero's interface 0x51 (CTCHeroOpinionDeedLog,
 //        bitset word 2 bit 17: `test dword ptr [eax+28h],20000h`) is fetched into a named local (esi) and, when the wife's
@@ -28,7 +28,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     unsigned char _pad92[0x1c9 - 0x92];
     unsigned char Flags1C9;                     // +0x1c9 (CThingCreatureBase flag byte; bit 3 tested, descriptive)
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -43,8 +43,9 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroThing() const;               // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
@@ -77,12 +78,12 @@ void CTCWife::OnGreet()
 {
     if (FrameGotMarriedToThePlayer > CWorld::GetWorldFrame())
         return;
-    CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
     if (!hero || (hero->Flags91 & 1))
         return;
     CTCHeroOpinionDeedLog* deedLog;
     if (hero->GetInterface(&deedLog, 0x51)) {
         if (ParentThing->Flags6C & 0x10)
-            deedLog->PostDeed(0x50, &ParentThing->GetPosition(), ParentThing, ParentThing, 1, false, false, 0, false, 0);
+            deedLog->PostDeed(0x50, &ParentThing->GetPos(), ParentThing, ParentThing, 1, false, false, 0, false, 0);
     }
 }

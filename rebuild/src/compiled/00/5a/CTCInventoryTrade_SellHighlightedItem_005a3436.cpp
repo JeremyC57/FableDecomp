@@ -6,12 +6,12 @@
 //   @ 0x005BC9B0, CTCBase owner getter @ 0x005BC4C4, std::bitset<>::test @ 0x00410DE0 and CVectorMap LowerBound
 //   @ 0x0040F020 (inlined GetInterface, types 0x53 and 4), CTCShop::GetCurrentBuyPrice(long, long) @ 0x007742C0 and
 //   its sale record @ 0x00774D20, CPlayerManager::GetMainPlayer @ 0x00449960 (engine 0x013B86A0 +0x1C),
-//   CPlayer::GetHeroCreature @ 0x00487DC0, CTCHeroStats::AddMoney(long, bool) @ 0x0057B327, this's virtual slot 79
+//   CPlayer::GetPControlledCreature @ 0x00487DC0, CTCHeroStats::AddMoney(long, bool) @ 0x0057B327, this's virtual slot 79
 //   (+0x13C, (item, 1)), the trade-list reset @ 0x0059D9AD (label "CMemoryAllocator::ClearPerformanceStats" is
 //   propagated), InitialiseBuyableItems(vector<pair<long, long> >&) @ 0x005A30A1, InitialiseSellableItems
 //   @ 0x0059D820, GetHighlightedItem @ 0x005BCAE3, ResetInventoryAnim(long) @ 0x005BCD2D,
 //   SetNumberOfSelectedItemOwned(long) @ 0x005BE284, the CRT free thunk @ 0x00BFEA14.
-// Shape: the hero is fetched before its stats pointer is zeroed (`and [ebp-8],0` after GetHeroCreature); both lookups are the out-parameter GetInterface with the bool ignored into a pointer initialised to 0 (the
+// Shape: the hero is fetched before its stats pointer is zeroed (`and [ebp-8],0` after GetPControlledCreature); both lookups are the out-parameter GetInterface with the bool ignored into a pointer initialised to 0 (the
 //   shop pointer lives in edi; the stats pointer shares the frame word of the 0x04 lookup key, as 0x00789E60).
 // Layout: retail CTCInventoryTrade CategoryIdent +0x170 (as InitialiseSellableItems 0x0059D820); CCategory highlighted
 //   slot index +0x24.
@@ -47,7 +47,8 @@ public:
         return false;
     }
 };
-class CPlayer { public: CThing* GetHeroCreature(); };                      // 0x00487DC0
+class CThingPlayerCreature : public CThing { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                      // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };          // 0x00449960
 class CEngine { public:
     unsigned char _pad00[0x1c];
@@ -128,7 +129,7 @@ void CTCInventoryTrade::SellHighlightedItem()
             GetOwner()->GetInterface(&shop, 0x53);
             long price = shop->GetCurrentBuyPrice(item, 1);
             shop->SellHighlightedItem(item);
-            CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->GetHeroCreature();
+            CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->GetPControlledCreature();
             CTCHeroStats* stats = 0;
             hero->GetInterface(&stats, 4);
             stats->AddMoney(price, true);

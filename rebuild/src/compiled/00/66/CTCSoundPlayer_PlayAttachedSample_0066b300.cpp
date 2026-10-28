@@ -13,7 +13,7 @@ class CSoundPair { public:
     long Min;                                   // +0x00
     long Max;                                   // +0x04
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);            // 0x00497890 ?GFROR13@@YIJK@Z
 struct CRandomGenerator {
     unsigned long Seed;
     __forceinline unsigned long Next() { Seed = Seed * 0x24a1 + 0x24df; Seed = GFROR13(Seed); return Seed; }

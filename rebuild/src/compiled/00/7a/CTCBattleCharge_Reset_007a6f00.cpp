@@ -1,7 +1,7 @@
 // CTCBattleCharge::Reset() -- reset the charge: remember the start position, forget the collided thing and the target, clear the flags, take the dash distance and radius of effect for the spell level and convert the def's pose and charge delays to frames
 // Leaf: ?Reset@CTCBattleCharge
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007A6F00, 241 bytes (+15 int3 padding), `ret`.
-// Callees: CThing::GetPosition() const 0x004C73D0, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
+// Callees: CThing::GetPos() const 0x004C73D0, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 /
 //   GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C), __ftol2 0x00BFEA70.
 //   Global g_framesPerSecond 0x01375550.
 // Layout: Ego_r.pdb CTCBattleCharge (retail = PDB up to the 12-byte PeopleHit vector at +0x70, then 4 below):
@@ -18,7 +18,7 @@ class CThing {
 public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                 // +0x91 (bit 0: dead)
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     void Kill(bool immediately);                // 0x004C9B80
 };
 #pragma pack(push, 1)
@@ -94,7 +94,7 @@ public:
 
 void CTCBattleCharge::Reset()
 {
-    PositionStartedFrom = ParentThing->GetPosition();
+    PositionStartedFrom = ParentThing->GetPos();
     CollidedThing = CIntelligentPointer<CThing>(0);
     StartedMoving = false;
     JustReleased = true;

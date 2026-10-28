@@ -14,10 +14,11 @@ struct CFontBank_009e2b40 {
 struct CFontBankB_009e2b40 {
     CFontEntry_009e2b40* GetEntry(long index);     // 0x00A5F0A0
 };
+class CCharString;
 class CSymbolMap { public:
     unsigned char _body[0x8];
-    bool FindSymbol(long key);                     // 0x009E51C0
-    long Lookup(long key);                         // 0x009E5120
+    bool SymbolExists(const CCharString& key) const;   // 0x009E51C0 ?SymbolExists@CSymbolMap@@QBE_NABVCCharString@@@Z
+    long GetSymbolSLONG(const CCharString& key) const; // 0x009E5120 ?GetSymbolSLONG@CSymbolMap@@QBEJABVCCharString@@@Z
 };
 
 class CFontManager { public:
@@ -29,16 +30,16 @@ class CFontManager { public:
     CSymbolMap*          m_pStaticMap;             // +0x14
     long                 m_18;
     CSymbolMap*          m_pStreamingMap;          // +0x1c
-    void ReleaseFont(long key);
+    void ReleaseFont(const CCharString& key);      // ?ReleaseFont@CFontManager@@QAEXABVCCharString@@@Z
 };
 
-void CFontManager::ReleaseFont(long key)
+void CFontManager::ReleaseFont(const CCharString& key)
 {
     CFontEntry_009e2b40* entry;
-    if (m_pStaticMap->FindSymbol(key))
-        entry = m_pStaticBank->GetEntry(m_pStaticMap->Lookup(key));
-    else if (m_pStreamingMap->FindSymbol(key))
-        entry = m_pStreamingBank->GetEntry(m_pStreamingMap->Lookup(key));
+    if (m_pStaticMap->SymbolExists(key))
+        entry = m_pStaticBank->GetEntry(m_pStaticMap->GetSymbolSLONG(key));
+    else if (m_pStreamingMap->SymbolExists(key))
+        entry = m_pStreamingBank->GetEntry(m_pStreamingMap->GetSymbolSLONG(key));
     else
         return;
     if (entry->CanRelease())

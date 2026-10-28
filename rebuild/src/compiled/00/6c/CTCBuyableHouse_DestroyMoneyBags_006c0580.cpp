@@ -3,7 +3,7 @@
 // Retail 0x006C0580, 336 bytes, `ret 4`.
 // Callees: CVectorMap::LowerBound 0x0040F020 (interfaces 0x21 thing list, 0xCC gold, 4 hero stats), CBaseIntelligentPointer::
 // GetPItem 0x00A01B50, the TC's player-manager accessor 0x00686D40, CPlayerManager::GetMainPlayer 0x00449970,
-// CPlayer::GetHeroThing 0x00487DC0, CTCGold::GetGold 0x007CBDC0, CTCHeroStats::AddMoney(long, bool) 0x0057B327,
+// CPlayer::GetPControlledCreature 0x00487DC0, CTCGold::GetGold 0x007CBDC0, CTCHeroStats::AddMoney(long, bool) 0x0057B327,
 // CThing::Kill(bool) 0x004C9B80.
 // Layout: CTCBase ParentThing +4; interface-0x21 component list header +0x0C (landed CountMoneyBags 0x006C04D0 model);
 // CThing bitset +0x20, map +0x44, dead flag +0x91.
@@ -98,6 +98,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCGold { public:
     long GetGold();                                     // 0x007CBDC0
 };
@@ -105,7 +106,7 @@ class CTCHeroStats { public:
     void AddMoney(long amount, bool b);                 // 0x0057B327
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -136,7 +137,7 @@ void CTCBuyableHouse::DestroyMoneyBags(bool giveToHero)
         for (SThingNode* node = list->m_head->next; node != list->m_head; node = node->next) {
             CTCGold* gold;
             if (IsThingAlive(node->thing) && node->thing.Get()->GetInterface(&gold, 0xcc)) {
-                CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+                CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
                 if (hero && !(hero->m_stateFlags & 1) && giveToHero && hero->HasInterface(4))
                     hero->GetTC<CTCHeroStats>(4)->AddMoney(gold->GetGold(), true);
                 node->thing.Get()->Kill(true);

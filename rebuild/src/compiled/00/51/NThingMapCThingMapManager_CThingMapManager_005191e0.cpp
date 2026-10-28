@@ -15,7 +15,9 @@
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
 struct CBaseClassNonCopyable {                              // vtable 0x0129A7C4
-    CBaseClassNonCopyable();                                // 0x0099A2F0
+protected:
+    CBaseClassNonCopyable();                                // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ (protected)
+public:
     virtual void v00();
 };
 

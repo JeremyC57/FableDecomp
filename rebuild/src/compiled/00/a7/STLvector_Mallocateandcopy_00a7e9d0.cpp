@@ -67,6 +67,7 @@ public:
     typedef unsigned int size_type;
     typedef _Tp* pointer;
     typedef __false_type _IsPODType;
+    protected:
     template <class _ForwardIterator>
     pointer _M_allocate_and_copy(size_type __n, _ForwardIterator __first, _ForwardIterator __last)
     {
@@ -74,6 +75,7 @@ public:
         __uninitialized_copy(__first, __last, __result, _IsPODType());
         return __result;
     }
+    public:
 };
 }
 

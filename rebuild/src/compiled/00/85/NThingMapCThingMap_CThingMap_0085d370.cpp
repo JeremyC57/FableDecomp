@@ -16,7 +16,9 @@ struct C2DBoxI {
     C2DBoxI(const C2DBoxI& other) : X0(other.X0), Y0(other.Y0), X1(other.X1), Y1(other.Y1) { }
 };
 struct CBaseClassNonCopyable {
-    CBaseClassNonCopyable();                       // 0x0099A2F0
+protected:
+    CBaseClassNonCopyable();                       // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ (protected)
+public:
     virtual void v00();
 };
 template<class T> struct CRetailVector {

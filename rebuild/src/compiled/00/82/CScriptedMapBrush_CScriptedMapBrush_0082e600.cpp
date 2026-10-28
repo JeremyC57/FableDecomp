@@ -104,10 +104,17 @@ public:
     typedef _Rb_tree_iterator<_Value> iterator;
     unsigned int _M_node_count;                             // +0x04
     _Compare     _M_key_compare;                            // +0x08
+    protected:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
     static bool& _S_color(_Link_type x) { return x->_M_color; }
+    private:
     void _M_empty_initialize()
     {
         _S_color(this->_M_header._M_data) = false;          // _S_rb_tree_red
@@ -115,13 +122,16 @@ public:
         _M_leftmost() = this->_M_header._M_data;
         _M_rightmost() = this->_M_header._M_data;
     }
+    public:
     _Rb_tree(const _Compare& comp, const _Alloc& a)
         : _Rb_tree_base<_Value, _Alloc>(a), _M_node_count(0), _M_key_compare(comp)
     {
         _M_empty_initialize();
     }
     iterator end() { return iterator(this->_M_header._M_data); }
+    private:
     _Link_type _M_find(const _Key& k) const;                // 0x0082EEB0 (map) / 0x0082EF20 (set): the node in eax
+    public:
     iterator find(const _Key& k) { return iterator(_M_find(k)); }
     void erase(iterator position)
     {

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00961B90, 177 bytes (+ int3 padding to 192), plain `ret`. Anonymous-namespace
 //   __fastcall (Ego_r.pdb ?IsThingInRangeOfPound@?A0x9e6dcc01@@YI_NABVCThing@@0@Z): creature in ecx, target in edx.
 // Callees: CDefClassBase::GetSubDef<CSnowTrollDef> @ 0x008C7A70, the def class's and the def's virtual slot 1 (count
-//   release), GetPredictedTargetPosForThing @ 0x00961AB0 (same anonymous namespace; not inlined), CThing::GetPosition
+//   release), GetPredictedTargetPosForThing @ 0x00961AB0 (same anonymous namespace; not inlined), CThing::GetPos
 //   @ 0x004C73D0.
 // Shape: the range is a float local preset to 6.0f (`mov [esp+10h],40C00000h`) and overwritten from the def with an
 //   integer move; the predicted position is a NAMED C3DVector local passed by hidden pointer (`lea ecx,[esp+1Ch]`);
@@ -56,7 +56,7 @@ class CThing { public:
     unsigned char _pad64[0x0c];
     CDefClassPointer PDefClass;                 // +0x70
     CDefClassPointer GetPDefClass() const { return PDefClass; }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 #pragma auto_inline(off)
@@ -87,7 +87,7 @@ bool __fastcall IsThingInRangeOfPound(const CThing& creature, const CThing& targ
     if (creature.GetPDefClass()->GetSubDef(&def))
         range = def->DistancePoundGroundRange;
     C3DVector predicted = GetPredictedTargetPosForThing(creature, target);
-    const C3DVector& me = creature.GetPosition();
+    const C3DVector& me = creature.GetPos();
     float dx = me.X - predicted.X;
     float dy = me.Y - predicted.Y;
     return dx * dx + dy * dy < range * range;

@@ -1,7 +1,7 @@
 // CTCTavernGame::GetHeroStats(CTCHeroStats** out) -- hands out the living hero creature's hero-stats component (interface 4), leaving *out untouched otherwise
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EB4B0, length 92 bytes (ret 4). Name and signature: Ego_r.pdb
 // `?GetHeroStats@CTCTavernGame@@QAEXPAPAVCTCHeroStats@@@Z`.
-// Callees: CPlayerManager::GetMainPlayer() @ 0x00449960 and CPlayer::GetPlayerCreature() @ 0x00487DC0 (landed naming,
+// Callees: CPlayerManager::GetMainPlayer() @ 0x00449960 and CPlayer::GetPControlledCreature() @ 0x00487DC0 (landed naming,
 // 0x007B1EB0), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (another out-of-line copy of the interface
 // map search). The player manager is the member at +0x1c of the global world object @ 0x013B86A0.
 // Layout: the hero's dead bit is bit 0 of +0x91 (landed 0x00836BE0 / 0x007B1EB0); the interface-present bitset is at +0x20
@@ -40,9 +40,10 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
-    CThing* GetPlayerCreature();             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;             // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                // 0x00449960
@@ -59,7 +60,7 @@ class CTCTavernGame { public:
 
 void CTCTavernGame::GetHeroStats(CTCHeroStats** out)
 {
-    CThing* hero = g_pWorld->PPlayerManager->GetMainPlayer()->GetPlayerCreature();
+    CThing* hero = g_pWorld->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
     if (hero && !hero->IsDead())
         hero->GetInterface(out, 4);
 }

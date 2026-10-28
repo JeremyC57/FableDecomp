@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091D510, 724 bytes (ret 18h). Sibling of CAIStateGroupBase::AIAction_MoveToPosProximity 0x0097E890.
 // Callees: IsStopping 0x008FD010, CTCCreatureNavigation::GetNextNavPosOnRoute 0x006CBAC0 (CCreatureNavOutput by hidden
 //   pointer), CThingCreatureBase::IsPerformingAnyAction 0x006622A0, CBrainOutput::CBrainOutput 0x00835620,
-//   CThingCreatureBase::GetPosition 0x006A4D00, CAIBrain::SetBrainOutput 0x0088B8F0, ~CBaseIntelligentPointer 0x00A01C10,
+//   CThingCreatureBase::PeekPos 0x006A4D00, CAIBrain::SetBrainOutput 0x0088B8F0, ~CBaseIntelligentPointer 0x00A01C10,
 //   operator delete 0x00BFE9BC, the brain's virtual slot 2 (+8, yield). Epsilon 0.0001f @ 0x0129BA3C.
 // Layout: CBrainOutput per the landed 0x0097DF60 / 0x0097E890 model (Types +0, LookFlags +4, NavigationInput +8, PAction
 // +0x20, MoveToPos +0x28, LookAtPos +0x34, LookAtThing +0x40); creature interface bitset +0x20, interface map +0x44.
@@ -77,7 +77,10 @@ struct CCreatureActionVirtuals {
     virtual bool BlocksMovement();              // slot 49 (+0xc4)
 };
 
-class CThingCreatureBase { public:
+class CThingPhysical { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -112,7 +115,6 @@ class CThingCreatureBase { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;       // 0x006A4D00
 public:
     bool IsPerformingAnyAction() const;   // 0x006622A0
 };
@@ -227,7 +229,7 @@ EAIActionReturn CAIStateGroup_HoverMovementBase::AIAction_MoveToPosProximityAndF
             case 2:
                 if (output.Offset.GetLengthSquared() > EPSILON * EPSILON) {
                     CBrainOutput brainOutput;
-                    brainOutput.SetAsMoveToPos(output.Offset + GetCreature()->GetPosition(), input);
+                    brainOutput.SetAsMoveToPos(output.Offset + GetCreature()->PeekPos(), input);
                     brainOutput.SetAsLookAtPos(facePos, 0x11);
                     PBrain->SetBrainOutput(brainOutput);
                 }

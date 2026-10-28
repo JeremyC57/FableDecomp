@@ -74,6 +74,7 @@ public:
     // 0x00AB4540 (landed): STLport 4.6 _M_insert_overflow. Its body is in this TU in retail; compiling it here as a
     // noinline member that never reads its tag parameter lets VC7.1 home the push_back's tag temporary on the flag's
     // argument slot like retail (GOTCHAS: STLport tag on a live argument slot).
+    protected:
     __declspec(noinline) void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fillLen, bool atEnd = false)
     {
         const unsigned int oldSize = (unsigned int)(this->_M_finish - this->_M_start);
@@ -95,6 +96,7 @@ public:
         this->_M_finish = newFinish;
         this->_M_end_of_storage._M_data = newStart + len;
     }
+    public:
     void push_back(const T& x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

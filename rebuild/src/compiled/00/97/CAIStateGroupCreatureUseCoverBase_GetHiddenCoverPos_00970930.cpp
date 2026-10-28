@@ -1,7 +1,7 @@
 // CAIStateGroup_CreatureUseCoverBase::GetHiddenCoverPos(C3DVector&, CThing*) -- with a live enemy, aim behind the cover (away from the enemy, 0.75 of twice the cover radius, at least 1.5) and ask the creature's navigation for a nearby wander position it can reach
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00970930, length 384 bytes (`ret 8`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound const @ 0x004365B0 (interface 7 =
-//          CTCCreatureNavigation, bit 7 of +0x20), CThing::GetPosition @ 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440
+//          CTCCreatureNavigation, bit 7 of +0x20), CThing::GetPos @ 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440
 //          (manifest "GetScaled" is wrong: in place, no args), CTCCreatureNavigation::GetNearbyWanderPosition @ 0x006CB6E0,
 //          CTCCreatureNavigation::IsAbleToNavigateFromPosToPos @ 0x006CB620.
 // Globals: 1.5f @ 0x0125AADC, 0.75f @ 0x01238174, 0.15f @ 0x012786A8.
@@ -39,7 +39,7 @@ class CThing { public:
     CBoundsInfo* PBounds;                       // +0x60 (descriptive)
     unsigned char _pad2[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline T* GetTC(long interfaceType) const
     {
         long type = interfaceType;
@@ -96,17 +96,17 @@ bool CAIStateGroupCreatureUseCoverBaseMethods::GetHiddenCoverPos(C3DVector& resu
     CThing* creature = GetCreature();
     if (creature->m_presentBits[0] & 0x80)
         navigation = creature->GetTC<CTCCreatureNavigation>(7);
-    const C3DVector& enemyPos = Enemy().GetPItem()->GetPosition();
-    const C3DVector& coverPos = cover->GetPosition();
+    const C3DVector& enemyPos = Enemy().GetPItem()->GetPos();
+    const C3DVector& coverPos = cover->GetPos();
     C3DVector away(coverPos.X - enemyPos.X, coverPos.Y - enemyPos.Y, 0.0f);
     away.AccurateNormalise();
     float radius = cover->PBounds->Radius * 2.0f;
     if (radius < 1.5f)
         radius = 1.5f;
     C3DVector offset(away.X * (radius * 0.75f), away.Y * (radius * 0.75f), away.Z * (radius * 0.75f));
-    C3DVector target = cover->GetPosition() + offset;
+    C3DVector target = cover->GetPos() + offset;
     if (navigation->GetNearbyWanderPosition(&target, radius * 0.15f, &result, false)
-        && navigation->IsAbleToNavigateFromPosToPos(&GetCreature()->GetPosition(), &result, 2.0f))
+        && navigation->IsAbleToNavigateFromPosToPos(&GetCreature()->GetPos(), &result, 2.0f))
         return true;
     return false;
 }

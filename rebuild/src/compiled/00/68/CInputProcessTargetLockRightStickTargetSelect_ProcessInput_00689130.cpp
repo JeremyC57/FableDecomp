@@ -3,7 +3,9 @@
 #include "engine/CInputProcessTargetLockRightStickTargetSelect.h"
 #include "engine/CInputProcessGameBase.h"
 #include "engine/CAInputProcess.h"
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 #include "engine/CProcessedInput.h"
 #include "engine/_quarantine/CThing.h"
 #include "engine/CTCTargetingPlayer.h"
@@ -23,10 +25,13 @@ struct ComponentMap {
 };
 // Retail CThing: component bitset36 vs donor40, vector map16 vs20, list8 vs12.
 struct ThingPlayerCreature {unsigned char Prefix[0x20];unsigned int ComponentBits[9];ComponentMap Components;unsigned char RemainingState[0x3d];unsigned char LifeFlags;};
-struct Player:CPlayer {ThingPlayerCreature* GetPControlledCreature()const;};
+}
+class CThingPlayerCreature : public NativeInput::ThingPlayerCreature { };
+class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
+namespace NativeInput {
 // Field/method projection of the actual flattened owner header (no engine construction claimed).
 struct TargetSelect:CAInputProcess {
- CWorld* World;Player* MyPlayer;CGameDefinitionManager* DefinitionManager;CMainGameComponent* Component;CGamePlayerInterface* PGamePlayerInterface;
+ CWorld* World;CPlayer* MyPlayer;CGameDefinitionManager* DefinitionManager;CMainGameComponent* Component;CGamePlayerInterface* PGamePlayerInterface;
  bool ChangedTargetRight,ChangedTargetLeft;
  void ProcessInput(const InputEvent&,ProcessedInput&);
 };

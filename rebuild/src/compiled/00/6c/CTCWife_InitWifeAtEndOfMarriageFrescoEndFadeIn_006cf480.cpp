@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CF480, 163 bytes (+13 int3). __fastcall, `ret`.
 // Callees: CDefClassBase::GetSubDef<CWifeDef>(CDefPointer<const CWifeDef>*) 0x006D3DC0 (manifest label names the
 //          CAICreatureWillPowerIndicatorDef instantiation; propagated), CTCBase::GetPlayerManager() 0x00686D40,
-//          CPlayerManager::GetMainPlayer() 0x00449970, CPlayer::GetHeroThing() 0x00487DC0, LowerBound 0x0040F020,
+//          CPlayerManager::GetMainPlayer() 0x00449970, CPlayer::GetPControlledCreature() 0x00487DC0, LowerBound 0x0040F020,
 //          CTCHeroStats::AddMoney(long, bool) 0x0057B327, the sub-def's slot 1 on release.
 // Shape: the owner's def pointer (CThing PDef +0x70) is read into a local and null-tested first; the sub-def pointer is
 //        zeroed between that load and its test (`mov [esp+4],0`); GetSubDef is a same-TU noinline stand-in body that fills
@@ -66,8 +66,9 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroThing() const;               // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -94,7 +95,7 @@ void CTCWife::InitWifeAtEndOfMarriageFrescoEndFadeIn()
     CWifeDef* def = 0;
     if (thingDef) {
         if (thingDef->GetSubDef(&def) && def->Dowry > 0) {
-            CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+            CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
             if (hero && !(hero->Flags91 & 1)) {
                 CTCHeroStats* stats;
                 if (hero->GetInterface(&stats, 4))

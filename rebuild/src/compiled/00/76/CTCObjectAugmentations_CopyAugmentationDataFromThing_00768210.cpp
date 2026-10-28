@@ -189,8 +189,10 @@ public:
     ~vector();
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);      // 0x0076B1E0 (ParticleAndEndPoints)
     void reserve(size_type __n);                                          // 0x00721240 (the slot defs)
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                        // 0x005B3275
+    public:
     void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

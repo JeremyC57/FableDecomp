@@ -2,7 +2,7 @@
 // Leaf: EARemoveCurrentMode
 // Flags: /GS
 // Retail: Fable.exe @ 0x0062C4B0, 189 bytes (/GS cookie 0x0139C8A8). PDB ?EARemoveCurrentMode@CWorld@@QAEXPBVCGameEvent@@@Z
-// Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetHeroThing 0x00487DC0,
+// Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetPControlledCreature 0x00487DC0,
 // CGameEvent::GetData 0x009F17A0 (label "CEventPacket::CopyToBuffer"), CMemoryBuffer::Read(unsigned long, void*)
 // 0x009F18F0 (label "CircularBuffer_Read"), CPlayer::RemoveMode(EPlayerMode) 0x00634190, CInterfaceMap::LowerBound
 // 0x0040F020, CTCHeroRangedAttacks::ResetProjectileWeaponMode 0x00789B30, __security_check_cookie 0x00BFE9F9.
@@ -58,13 +58,14 @@ class CThing { public:
         return (T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 enum EPlayerMode { PLAYER_MODE_NONE = 0 };
 class CTCHeroRangedAttacks { public:
     void ResetProjectileWeaponMode();              // 0x00789B30
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                        // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
     void RemoveMode(EPlayerMode mode);             // 0x00634190
 };
 
@@ -76,7 +77,7 @@ class CWorld { public:
 void CWorld::EARemoveCurrentMode(const CGameEvent* event)
 {
     CPlayer* player = GetPlayer(event->Player);
-    CThing* hero = player->GetHeroThing();
+    CThing* hero = player->GetPControlledCreature();
     {
         CMemoryBuffer buffer;
         event->GetData(buffer);

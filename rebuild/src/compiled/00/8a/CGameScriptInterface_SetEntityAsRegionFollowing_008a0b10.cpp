@@ -10,7 +10,8 @@
 class C3DVector{ public:float X,Y,Z;};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
-struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char AfterComponents[0x45];unsigned char Dead:1;unsigned char OtherLifeFlags:7;const C3DVector& GetPosition()const;ScriptMethods GetScriptThing()const;}; //004C73D0,004C7E50
+class CThing { public: const C3DVector& GetPos() const; };
+struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; unsigned char AfterComponents[0x45]; unsigned char Dead:1; unsigned char OtherLifeFlags:7; ScriptMethods GetScriptThing()const; }; //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
 // Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}

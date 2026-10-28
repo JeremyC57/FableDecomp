@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C8DE0, 485 bytes (+ int3 padding), `ret`.
 // Leaf: ProcessLevellingUpFX
 // Callees: GetSubDef<CSpecialEffectsDef> 0x00669580, CSpecialEffectsDef::GetEffectFromString 0x00669D30 (catalog "CCRC::CalcAndLookup"),
-// CThing::GetPosition 0x004C73D0, CreateParticleEffect 0x0072AB70 (__fastcall), LowerBound 0x0040F020 (0x4b emitter, 0x10 sound
+// CThing::GetPos 0x004C73D0, CreateParticleEffect 0x0072AB70 (__fastcall), LowerBound 0x0040F020 (0x4b emitter, 0x10 sound
 // player), CTCDParticleEmitter::AttachToThing 0x006E0BE0, CTCSoundPlayer::PlaySound 0x0066BD00, MakeNoise 0x00662110, CCharString
 // 0x0099EBF0 / ~ 0x0099EAE0.
 // Shape: the CTCLightningOrb::OnDie (0x007F2410) `bool found = GetSubDef && GetEffectFromString("...")` with the literal converted
@@ -89,7 +89,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline unsigned long HasTC(long kind) const { return m_presentBits[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCBase_Retail* FindTC(long kind)
     {
@@ -159,7 +159,7 @@ void CTCFireballSpell::ProcessLevellingUpFX()
     long effectType = 0;
     bool found = PDef->GetSubDef(effects) && effects->GetEffectFromString("POWERUP_EFFECT", effectType);
     if (found) {
-        CThing* effect = CreateParticleEffect(effectType, parent->GetPosition());
+        CThing* effect = CreateParticleEffect(effectType, parent->GetPos());
         if (effect && !(effect->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter;
             if (effect->HasTC(0x4b))

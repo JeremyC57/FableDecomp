@@ -82,15 +82,21 @@ public:
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
 
     vector(const vector<_Tp, _Alloc>& __x);                 // out of line (0x0086B2A0 for the texture-morph array)
+    protected:
     void _M_clear();                                        // out of line (0x0086E110 for the mesh texture sets)
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
     void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

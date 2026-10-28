@@ -3,20 +3,20 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009614A0, length 169 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970,
 // CPlayer::GetHeroThing @ 0x00487DC0, CAIStateGroup_BanditKingLunge::CanLungeAtPlayer(CThing*) @ 0x009613A0,
-// CThing::GetPosition @ 0x004C73D0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10.
+// CThing::GetPos @ 0x004C73D0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10.
 // Shape: `dist2 < R` gives `fcomp ; test ah,5 ; jp`; PTargetThing = CIntelligentPointer<..>(hero) (vtable 0x01231C4C).
 class C3DVector { public: float X, Y, Z; };
 
-class CThing
-{ public:
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
+    const C3DVector& GetPos() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer
 { public:
-    CThing* GetHeroThing();                         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 
 class CPlayerManager
@@ -68,9 +68,9 @@ struct CAIStateGroup_BanditKingLunge
 
 bool CAIStateGroup_BanditKingLunge::IsRunnable()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (CanLungeAtPlayer(hero)
-        && GetDistanceSquaredXY(hero->GetPosition(), PBrain->Creature->GetPosition()) < 16.0f)
+        && GetDistanceSquaredXY(hero->GetPos(), PBrain->Creature->GetPos()) < 16.0f)
     {
         PTargetThing.SetPItem(CIntelligentPointerThing(hero).GetPItem());
         return true;

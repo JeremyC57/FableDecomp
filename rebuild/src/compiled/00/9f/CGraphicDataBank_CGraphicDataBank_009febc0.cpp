@@ -6,7 +6,9 @@
 #include "engine/CBankFile.h"
 #include "engine/CResourceList.h"
 #include "engine/CGraphicBankStateBlock.h"
+#define CTexture CTexturePdb
 #include "engine/CTexture.h"
+#undef CTexture
 #include "engine/CPixelFormat.h"
 #include "fable_string.h"
 #include <stdlib.h>
@@ -55,7 +57,7 @@ struct FrameArray {GraphicInfoFrame*First,*Last,*End;FrameArray():First(0),Last(
 // Newer PDB FW0312A980/0312AE40 confirms vector erase(range), but has newer checked iterator classes.
 struct BankState {BankState();virtual ~BankState(){}virtual void GetDefault(BankState&)=0;virtual void Set(const BankState*)=0;virtual unsigned long CreateCRC()=0;}; // genuine defaultFW02D6BDA0; native VT129C82C four slots
 struct GraphicBankState:BankState {GraphicBankState();virtual ~GraphicBankState(){}virtual void GetDefault(BankState&);virtual void Set(const BankState*);virtual unsigned long CreateCRC();unsigned char State[96];}; // ctorFW02D8ACE0; VT129C888[A00920,9FCEF0,A00940,9FD020]
-struct NativeTexture {NativeTexture();~NativeTexture();void*Texture;fable_u32 Flags;}; // CTexture actual defaultFW018BB0B0,dtor9F9F70/FW018B3DE0;8
+struct CTexture:CTexturePdb {CTexture();void Uninitialise();~CTexture(){Uninitialise();}}; // CTexture actual defaultFW018BB0B0, Uninitialise 9F9F70 (?Uninitialise@CTexture@@QAEXXZ);8
 struct PointerInfo {fable_u32 ReferenceCount;void(__fastcall*DeleteFunction)(void*);void*Data;};
 struct TextureManagerPointer {void*Data;PointerInfo*Info;TextureManagerPointer():Data(0),Info(0){}~TextureManagerPointer(){if(Info){--Info->ReferenceCount;if(Info->ReferenceCount==0){Info->DeleteFunction(Info->Data);delete Info;}}Data=0;Info=0;}};
 class CGraphicDataBank:public CBankFileAsync,public CResourceBank { public:CGraphicDataBank();void CloseGraphics(){GraphicList.clear();GraphicFrameBuffer.clear();CBankFileNative::Close();}
@@ -72,6 +74,6 @@ class CGraphicDataBank:public CBankFileAsync,public CResourceBank { public:CGrap
 
  GraphicArray GraphicList;FrameArray GraphicFrameBuffer;bool Initialised;GraphicBankState StateBlock;
  fable_i32 TextureSizeWarningMaxWidth,TextureSizeWarningMaxHeight;fable_u32 UnloadFrameDelay,ReduceSizeFrameDelay,TexturePointersValidForFrames;fable_i32 MinAvailablePreloadMemory,AvailableMemory;bool FreezeGraphics;
- TextureManagerPointer TextureManager;fable_i32 PixelFormats[11];NativeTexture BlankTextures[11];
+ TextureManagerPointer TextureManager;fable_i32 PixelFormats[11];CTexture BlankTextures[11];
 };
 CGraphicDataBank::~CGraphicDataBank(){CloseGraphics();}

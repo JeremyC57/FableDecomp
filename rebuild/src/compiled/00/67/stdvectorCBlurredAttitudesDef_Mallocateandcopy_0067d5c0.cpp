@@ -55,6 +55,7 @@ public:
 
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
+    protected:
     template <class _ForwardIterator>
     _Tp* _M_allocate_and_copy(unsigned int __n, _ForwardIterator __first, _ForwardIterator __last)
     {
@@ -62,6 +63,7 @@ public:
         __uninitialized_copy(__first, __last, __result, __false_type());
         return __result;
     }
+    public:
 };
 
 template CBlurredAttitudesDef* vector<CBlurredAttitudesDef>::_M_allocate_and_copy<const CBlurredAttitudesDef*>(

@@ -1,7 +1,7 @@
 // CSubtitleRenderer::IsInInteractiveState() -- whether the subtitle box is waiting on the player: forced/click flags, a text-complete click-past outside cutscenes, an active casting/fishing-style hero component (0xFC) or a quest-card/gui state
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00490A22, 446 bytes, plain `ret`; /Os frame-pointer TU like the landed siblings 0x00490927/0x0048DB46.
 // Callees: CSubtitleRenderer::IsTextFullyShown? 0x0048E072 (name unconfirmed), IsWaitingForClickPast 0x0048DB46, CPlayerManager::GetMainPlayer 0x00449970,
-//   CPlayer::GetControlledCreature 0x00487DD0 / GetHeroCreature 0x00487DC0, IS_THING_ALIVE<CThing*> 0x0043DBF0, bitset::test 0x00410DE0,
+//   CPlayer::PeekPControlledCreature 0x00487DD0 / GetPControlledCreature 0x00487DC0, IS_THING_ALIVE<CThing*> 0x0043DBF0, bitset::test 0x00410DE0,
 //   LowerBound const 0x004365B0 / non-const 0x0040F020, front-end predicate 0x00434D60 on g_pMainGameComponent+0x28, CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -79,7 +79,7 @@ public:
 
 
 class CTCBase;
-struct CPresenceBits { bool test(long bit); };     // 0x00410DE0
+struct CPresenceBits { bool test(long bit) const; };     // 0x00410DE0
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
     SEntry* first;
@@ -127,7 +127,7 @@ class CThing { public:
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
-    bool HasInterface(long type) { return m_present.test(type); }
+    bool HasInterface(long type) const { return m_present.test(type); }
     template <class T> __forceinline T* GetInterfaceConst(long type) const
     {
         long key = type;
@@ -150,13 +150,17 @@ class CThing { public:
         *out = (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBF0
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 struct CTCA { unsigned char _pad[0xc]; unsigned char m_c; unsigned char m_d; unsigned char _p2[0xe]; unsigned char m_1c; unsigned char _p3[0xa3]; unsigned char m_c0; };
 struct CTCB { unsigned char _pad[0xc]; unsigned char m_c; };
 class CThingCreatureBase : public CThing { public:};
+class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer { public:
-    CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
-    CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
 struct CFrontEnd { bool IsActive(); };             // 0x00434D60
@@ -183,20 +187,20 @@ bool CSubtitleRenderer::IsInInteractiveState()
                     return false;
             }
         } else {
-            CThingCreatureBase* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetControlledCreature();
+            const CThingPlayerCreature* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->PeekPControlledCreature();
             bool busy = false;
-            if (IS_THING_ALIVE<CThing*>(hero) && hero->HasInterface(0xfc)) {
+            if (IS_THING_ALIVE(hero) && hero->HasInterface(0xfc)) {
                 CTCA* c = hero->GetInterfaceConst<CTCA>(0xfc);
                 if (c->m_c && !c->m_1c && !c->m_c0)
                     busy = true;
             }
             if (!busy) {
                 CTCA* a = 0;
-                CThingCreatureBase* h2 = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetHeroCreature();
+                CThingCreatureBase* h2 = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
                 if (h2->HasInterface(0xfc))
                     a = h2->GetTC<CTCA>(0xfc);
                 CTCB* b = 0;
-                CThingCreatureBase* h3 = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetHeroCreature();
+                CThingCreatureBase* h3 = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
                 if (h3->HasInterface(0xc6))
                     b = h3->GetTC<CTCB>(0xc6);
                 return g_pMainGameComponent->m_pFrontEnd->IsActive() || (a && a->m_d) || (b && b->m_c)

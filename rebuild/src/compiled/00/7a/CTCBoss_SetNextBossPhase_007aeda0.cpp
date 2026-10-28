@@ -1,18 +1,17 @@
 // CTCBoss::SetNextBossPhase(long phase, bool force) -- when phase changes are enabled (or forced) store the new phase and remember the boss's position as the phase start
 //
-// Retail 0x007AEDA0, 56 bytes (`ret 8`). Callee: CThing::GetPosition() const @ 0x004C73D0 (returns a
+// Retail 0x007AEDA0, 56 bytes (`ret 8`). Callee: CThing::GetPos() const @ 0x004C73D0 (returns a
 // const C3DVector&; the manifest label "CVertexBufferWin32::DoSizeof" is propagated).
 // Layout (Ego_r.pdb CTCBoss, offsets confirmed by the bytes): currentBossPhase +0x18,
 // EnablePhaseChanges +0x21, PhaseStartPos +0x22 -- an UNALIGNED C3DVector, the thing-component
 // hierarchy is byte packed. Shape: `EnablePhaseChanges || force` tests the member byte first and
-// the bool argument second; the phase store is scheduled before the GetPosition call and the
+// the bool argument second; the phase store is scheduled before the GetPos call and the
 // 12-byte vector is copied through `add esi,22h` (a plain struct copy).
 
 class C3DVector { public: float X, Y, Z; };
 
-class CThing
-{ public:
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 #pragma pack(push, 1)
@@ -39,6 +38,6 @@ void CTCBoss::SetNextBossPhase(long phase, bool force)
     if (EnablePhaseChanges || force)
     {
         currentBossPhase = phase;
-        PhaseStartPos = ParentThing->GetPosition();
+        PhaseStartPos = ParentThing->GetPos();
     }
 }

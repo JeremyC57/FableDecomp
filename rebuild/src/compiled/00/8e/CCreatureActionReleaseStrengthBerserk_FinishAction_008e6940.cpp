@@ -64,7 +64,7 @@ class CThing:public CBaseObject { public:
     CDefLookup* PBaseDef;
     unsigned char LaterState[0x1d];
     unsigned char DeadFlags;
-    const C3DVector& GetPosition()const; //004C73D0
+    const C3DVector& GetPos() const; //004C73D0
     void Kill(bool); //004C9B80
     template<class T> __forceinline bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {

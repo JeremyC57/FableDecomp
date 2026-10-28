@@ -1,7 +1,7 @@
 // CCreatureActionBase::UpdateActionMoveToPos() -- when the action uses animation movement (virtual slot 57), set the next movement position to the creature's position plus the animation movement step (stamped with the world frame); otherwise defer to virtual slot 58
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692B30, length 130 bytes (+ int3 padding). Protected virtual (`MAE`).
 // Callees: this action's virtual slots 57 (+0xe4, bool) and 58 (+0xe8, the `else` tail jump), CBaseIntelligentPointer::GetPItem
-// @ 0x00A01B50 (PCreature at +8, twice), CThing::GetPosition @ 0x004C73D0 (`[this+60h]+0Ch`; manifest "CVertexBufferWin32::DoSizeof"
+// @ 0x00A01B50 (PCreature at +8, twice), CThing::GetPos @ 0x004C73D0 (`[this+60h]+0Ch`; manifest "CVertexBufferWin32::DoSizeof"
 // is propagated), CThing::GetWorld @ 0x004C7AB0 (reads a global; "CViewBase::GetDisplayEngine" is propagated), the world-frame
 // getter @ 0x0049D870 (a static of the world class: the GetWorld call is still emitted, GOTCHAS wave 25).
 // Shape: the sum is built component by component into a 12-byte frame temporary (`fld step ; fadd [pos]` -- the step is the
@@ -20,7 +20,7 @@ class CWorld { public:
     static long GetFrame();                 // 0x0049D870 (returns the global @ 0x013B89BC)
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     CWorld* GetWorld() const;               // 0x004C7AB0
 };
 class CBaseObject;
@@ -72,7 +72,7 @@ class CCreatureActionBase { public:                // retail sizeof 0xa8
 void CCreatureActionBase::UpdateActionMoveToPos()
 {
     if (IsUsingAnimationMovement())
-        SetMoveToPos(AnimMovementStep + PCreature.GetPItem()->GetPosition());
+        SetMoveToPos(AnimMovementStep + PCreature.GetPItem()->GetPos());
     else
         UpdateActionForcedMovement();
 }

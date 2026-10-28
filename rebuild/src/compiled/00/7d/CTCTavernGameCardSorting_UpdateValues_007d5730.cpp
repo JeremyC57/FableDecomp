@@ -4,7 +4,7 @@
 // Callees: CTCTavernGame::UpdateValues() 0x005EA010 (non-virtual base call); CTCTavernGame::GetHeroStats(CTCHeroStats**)
 //          0x005EB4B0; CTCTavernGame::GetDef(CDefPointer<CTavernGameDef>*) 0x005EA000 (out of line);
 //          CTCTavernGame::GivePrize() 0x005EB590; CPlayerManager::GetMainPlayer() const 0x00449960;
-//          CPlayer::GetHeroThing() 0x00487DC0; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020;
+//          CPlayer::GetPControlledCreature() 0x00487DC0; CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020;
 //          CTCHeroOnlineScoreboard::UpdateScoreForActivity(long, float, bool) 0x0055F3B0; the def's slot 1.
 // Layout (retail CTCTavernGame, as the landed 0x005EA010 / 0x007DAB60): GameWon +0x21, Score +0x2c,
 //          NumConsecutiveRoundsWon +0xa4; CTavernGameDef PrizeScores +0x174 (0x30-byte entries, Score +0x28);
@@ -36,12 +36,13 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                  // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;          // 0x00449960
@@ -110,7 +111,7 @@ bool CTCTavernGameCardSorting::UpdateValues()
             stats->SortingPrizeWon = true;
             GivePrize();
         }
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         hero->GetInterface(&scoreboard, 0x10d);
         scoreboard->UpdateScoreForActivity(0x13, Score, true);

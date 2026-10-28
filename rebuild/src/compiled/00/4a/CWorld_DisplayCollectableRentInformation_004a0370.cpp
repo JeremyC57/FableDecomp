@@ -6,7 +6,7 @@
 // Callees: CThingSearchTools::GetAllLeafThings(filter, vector&) 0x004AD780 (the buyable-house instantiation; the
 //   manifest names the CThingAICreature copy), the const CVectorMap::LowerBound 0x004365B0 (inlined GetInterface on a
 //   const thing) and the non-const 0x0040F020 (hero), CTCBuyableHouse::GetCurrentCollectableRentValue 0x006C0160 /
-//   GetMaxCollectableRentValue 0x006C0270, CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetHeroCreature
+//   GetMaxCollectableRentValue 0x006C0270, CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature
 //   0x00487DC0, CCharString(const char*, long) 0x0099EBF0 / ~ 0x0099EAE0, CDataBank::GetTextBySymbol 0x009C95E0 on
 //   the main game component's text bank (+0x14), the __fastcall ConstructString(CWideString&, long, long) 0x009C7B80,
 //   CWideString::operator= 0x0099B7D0 / ~CWideString 0x0099B510, free 0x00BFEA14 (vector storage).
@@ -82,6 +82,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 inline bool IsThingAlive(const CThing* thing) { return thing && !(thing->Flags91 & 1); }
 class CTCBuyableHouse { public:
     unsigned char _pad00[0x12];
@@ -94,7 +95,7 @@ class CTCRegionDisplay { public:
     CWideString   CurrentAreaNameExtra;                // +0x10
 };
 class CPlayer { public:
-    CThing* GetHeroCreature();                         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                         // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -145,7 +146,7 @@ void CWorld::DisplayCollectableRentInformation()
         }
     }
     if (collectableRent > 0) {
-        CThing* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
+        CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
         if (IsThingAlive(hero)) {
             CTCRegionDisplay* display;
             if (hero->GetInterface(&display, 0x8e) && display) {

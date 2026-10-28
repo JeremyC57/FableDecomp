@@ -5,7 +5,8 @@
 #include "engine/CAIStateGroup_HoverHornetQueen.h"
 #endif
 class C3DVector { public:float X,Y,Z;};
-struct CQueenThing {const C3DVector& GetPosition();}; //004c73d0
+class CThing { public: const C3DVector& GetPos() const; };
+struct CQueenThing : public CThing { public:  }; //004c73d0
 struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;CQueenThing* GetPItem()const;}; //00a01b50
 struct CQueenNative {
 virtual ~CQueenNative();
@@ -44,10 +45,10 @@ long CQueenNative::GotoCirclePoint(long index,float tolerance){
 if((unsigned long)(last-first)==0)return 3;
 if(!IsStillRunnable()){Terminate();return 2;}
 CQueenPointer* markers=first;
-C3DVector point=markers[index].GetPItem()->GetPosition();
+C3DVector point=markers[index].GetPItem()->GetPos();
 long result;bool blocked;bool arrived;
 do{
-result=MoveTo(2,point,target.GetPItem()->GetPosition(),&arrived,tolerance);
+result=MoveTo(2,point,target.GetPItem()->GetPos(),&arrived,tolerance);
 if(!IsStillRunnable()){Terminate();return 2;}
 blocked=IsRouteToPosBlockedByTarget(index);
 }while(result==4&&!blocked);

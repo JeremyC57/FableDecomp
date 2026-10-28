@@ -1,12 +1,12 @@
 // CPlayer::Update() -- per-frame player tick: set up the initial player mode once loading has finished, count the respawn delay down, and keep the world map's record of this player's position in step with the controlled creature
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00488AB0, length 111 bytes.
 // Callees: the component loader's IsLoading @ 0x004349E0, CPlayer::SetupInitialPlayerMode @ 0x004887C0,
-// CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), CThing::GetPosition @ 0x006A4D00, the world's GetWorldMap
+// CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (twice), CThing::PeekPos @ 0x006A4D00, the world's GetWorldMap
 // (vtable slot 12, +0x30), CWorldMap::SetPlayerPos(long, const C3DVector&, ELoadType) @ 0x005063E0.
 // Layout: engine/CPlayer.h (Component +0x14, World +0x1C, Number +0x28, ControlledCreature +0x2C,
 // PlayerRespawnDelay +0x3C); InitialPlayerModeSet is retail +0x216 (PDB +0x21E: PlayerModes is 8 bytes narrower).
 // Shape: the landed CPlayer::InitialiseIfUninitialised body (0x00488A80) inlined first; the position update is
-// `World->GetWorldMap()->SetPlayerPos(Number, creature->GetPosition(), 0)` (world in edi, its vtable read after the
+// `World->GetWorldMap()->SetPlayerPos(Number, creature->PeekPos(), 0)` (world in edi, its vtable read after the
 // argument pushes).
 #include "engine/CPlayer.h"
 
@@ -20,8 +20,10 @@ struct CMainGameComponentCalls {
 };
 
 class C3DVector;
-struct CThingCalls {
-    const C3DVector& GetPosition() const;                   // 0x006A4D00
+class CThingPhysical { public:
+    const C3DVector& PeekPos() const;                   // 0x006A4D00
+};
+struct CThingCalls : public CThingPhysical {
 };
 
 class CBaseObject;
@@ -69,5 +71,5 @@ void CPlayer_Methods::Update()
     if (PlayerRespawnDelay > 0)
         --PlayerRespawnDelay;
     if (ControlledCreaturePointer().GetPItem())
-        reinterpret_cast<CWorldCalls*>(World)->GetWorldMap()->SetPlayerPos(Number, ((CThingCalls*)ControlledCreaturePointer().GetPItem())->GetPosition(), 0);
+        reinterpret_cast<CWorldCalls*>(World)->GetWorldMap()->SetPlayerPos(Number, ((CThingCalls*)ControlledCreaturePointer().GetPItem())->PeekPos(), 0);
 }

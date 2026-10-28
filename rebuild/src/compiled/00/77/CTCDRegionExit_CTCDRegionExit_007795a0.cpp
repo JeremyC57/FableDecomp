@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007795A0, 167 bytes (plain `ret`). Vtable 0x0126AB54.
 // Callees: CTCBase::PeekWorld() const @ 0x00686A80, CDisplayEngine::EndLetterBox @ 0x004349D0 on the main game component's +0x28 (the landed
 // body 0x004349D0 clears its +0x7c/+0x7d flags; Ego_r.pdb puts PDisplayEngine at +0x28), CTCBase::GetPlayerManager() @ 0x00686D40,
-// CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::
+// CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::
 // LowerBound @ 0x0040F020, CTCRegionDisplay::FinishShowingRegionName @ 0x00639930, ~CBaseIntelligentPointer @ 0x00A01C10,
 // ~CTCBase @ 0x00686830. Global: g_pMainGameComponent @ 0x013B86A0.
 // Layout: Ego_r.pdb CTCDRegionExit: InLetterBoxMode +0x0d, PEntranceConnectedTo +0x2a (unaligned: the pointer classes are
@@ -38,12 +38,13 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 inline bool IsThingAlive(const CThing* thing) { return thing && !(thing->Flags91 & 1); }
 class CTCRegionDisplay { public:
     void FinishShowingRegionName();                     // 0x00639930
 };
 class CPlayer { public:
-    CThing* GetHeroCreature();                          // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -107,7 +108,7 @@ CTCDRegionExit::~CTCDRegionExit()
 {
     if (InLetterBoxMode && PeekWorld().LetterBoxShown) {
         g_pMainGameComponent->PDisplayEngine->EndLetterBox();
-        CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroCreature();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (IsThingAlive(hero)) {
             CTCRegionDisplay* display;
             hero->GetInterface(&display, 0x8e);

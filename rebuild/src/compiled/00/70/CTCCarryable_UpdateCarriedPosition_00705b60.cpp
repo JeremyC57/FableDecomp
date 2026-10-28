@@ -1,7 +1,7 @@
 // CTCCarryable::UpdateCarriedPosition(bool forceUpdate) -- move a carried (live) thing to where its carrier holds it: face it along the carried orientation and, when the carried position is on the map and differs from the current one by more than the epsilon on any axis, set the physics position
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00705B60, 197 bytes (`ret 4`, 0x24-byte frame: the position and the 24-byte CRightHandedSet).
 // Callees: CTCCarryable::GetCarriedPositionInfo(C3DVector*, CRightHandedSet*, bool, float) @ 0x007055D0 (time 1.0f),
-// CTCBase::PeekWorldMap() const @ 0x00686D20, CWorldMap::IsPosInMap(const C3DVector&) @ 0x004FC600, CThing::GetPosition()
+// CTCBase::PeekWorldMap() const @ 0x00686D20, CWorldMap::IsPosInMap(const C3DVector&) @ 0x004FC600, CThing::GetPos()
 // @ 0x004C73D0, the physics TC's virtual slots 75 SetFacingAnglesFromRHSet (+0x12c) and 30 SetPosition (+0x78);
 // g_epsilon_0129ba3c @ 0x0129BA3C (1e-4f).
 // Layout: CThing PhysicsTC +0x60 (retail; PDB +0x70), dead bit +0x91.
@@ -30,7 +30,7 @@ class CThing { public:
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   Dead : 1;                           // +0x91 bit 0
     unsigned char   _91_1 : 7;
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 class CWorldMap { public:
     bool IsPosInMap(const C3DVector& position) const;   // 0x004FC600
@@ -60,7 +60,7 @@ void CTCCarryable::UpdateCarriedPosition(bool forceUpdate)
     ParentThing->PhysicsTC->SetFacingAnglesFromRHSet(orientation);
     if (!PeekWorldMap().IsPosInMap(position))
         return;
-    const C3DVector& current = ParentThing->GetPosition();
+    const C3DVector& current = ParentThing->GetPos();
     if ((float)fabs(current.X - position.X) > g_epsilon_0129ba3c
      || (float)fabs(current.Y - position.Y) > g_epsilon_0129ba3c
      || (float)fabs(current.Z - position.Z) > g_epsilon_0129ba3c)

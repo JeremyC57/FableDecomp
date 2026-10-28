@@ -2,13 +2,13 @@
 // Leaf: GiveItems
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CA9E0, 334 bytes (+ int3 padding), `ret 0Ch`, `and esp,-8` frame.
 //   Ego_r.pdb: `?GiveItems@CTCHeroReceiveItems@@QAEXABV?$vector@U?$pair@JVCCharString@@@std@@...@std@@AAVCThing@@_N@Z`.
-// Callees: CThing::GetPosition @ 0x004C73D0, CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*,
+// Callees: CThing::GetPos @ 0x004C73D0, CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*,
 //   unsigned long, const CCharString&) @ 0x00703210 (static __fastcall), CThing::SetInLimbo(bool) @ 0x004C8CF0, the item
 //   list's out-of-line insert(iterator, const value_type&) @ 0x007CBBC0 (manifest "Inventory_AddItemNode"), the
 //   CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor @ 0x00A01B10 / 0x00A01B50 / 0x00A01B90 / 0x00A01C10
 //   (CIntelligentPointer<CThingObject> vtable 0x0125A858, CIntelligentPointer<CThing> 0x01238C6C),
 //   CTCHeroReceiveItems::PrepareToShowItems @ 0x007CA670.
-// Shape: Create's stack arguments are pushed before the GetPosition call that feeds edx; the queued element is
+// Shape: Create's stack arguments are pushed before the GetPos call that feeds edx; the queued element is
 //   `push_back(value_type(CIntelligentPointer<CThingObject>(item), false))` (temporary pointer, pair built by the
 //   pointer's copy ctor, inline push_back = insert(end(), x) with the iterator built in its argument slot -- the
 //   iterator needs a user copy ctor for that `push ecx ; mov eax,esp ; mov [eax],edx` shape); the
@@ -31,7 +31,7 @@ class CThing {
 public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void SetInLimbo(bool inLimbo);                      // 0x004C8CF0
 };
 class CThingObject : public CThing {
@@ -115,7 +115,7 @@ void CTCHeroReceiveItems::GiveItems(const CGiveItemVector& items, CThing& contai
 {
     for (unsigned int i = 0; i < items.size(); ++i) {
         if (items[i].DefIndex > 0) {
-            CThingObject* item = CThingObject::Create(items[i].DefIndex, ParentThing->GetPosition(), 5, 0, 0,
+            CThingObject* item = CThingObject::Create(items[i].DefIndex, ParentThing->GetPos(), 5, 0, 0,
                                                       items[i].ScriptName);
             if (item && !(item->m_flags91 & 1)) {
                 item->SetInLimbo(true);
@@ -125,5 +125,5 @@ void CTCHeroReceiveItems::GiveItems(const CGiveItemVector& items, CThing& contai
     }
     SendMessage = sendMessage;
     PContainer = CIntelligentPointer<CThing>(&container);
-    PrepareToShowItems(PContainer.GetPItem()->GetPosition());
+    PrepareToShowItems(PContainer.GetPItem()->GetPos());
 }

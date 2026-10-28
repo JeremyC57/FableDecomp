@@ -27,7 +27,11 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
-class CThing { public:
+class C3DVector;
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;   // 0x006A4D00 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order; byte twin of CThing::GetPos 0x004C73D0)
+};
+class CThing : public CThingPhysical { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -48,7 +52,6 @@ class CThing { public:
         }
         return false;
     }
-    const class C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00 (this TU's out-of-line copy; 0x004C73D0 elsewhere)
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
     __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
@@ -135,8 +138,8 @@ bool CAIStateGroup_EarthTroll::IsRunnable()
     CThing* enemy = source->GetEnemy();
     if (enemy != 0 && !(enemy->m_flags91 & 1)) {
         CThing* creature = PBrain->PCreature;
-        const C3DVector& enemyPos = enemy->GetPosition_006a4d00();
-        const C3DVector& pos = creature->GetPosition_006a4d00();
+        const C3DVector& enemyPos = enemy->PeekPos();
+        const C3DVector& pos = creature->PeekPos();
         float dx = pos.X - enemyPos.X;
         float dy = pos.Y - enemyPos.Y;
         if ((float)sqrt(dx * dx + dy * dy) < AttackRange) {

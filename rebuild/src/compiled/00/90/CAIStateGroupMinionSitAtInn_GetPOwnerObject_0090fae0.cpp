@@ -24,7 +24,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -96,8 +98,7 @@ long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPr
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class C3DVector;
-struct CThingPos {
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+struct CThingPos : public CThing {
 };
 
 struct CTCVillager;
@@ -142,7 +143,7 @@ bool CAIStateGroup_MinionSitAtInn::GetPOwnerObject(CThing** ppOwner)
     if (((CThingB*)PBrain->PCreature)->GetInterface(&villager, 0x23)) {
         CTCVillage* village = GFGetPVillageInterface(villager);
         if (village != 0) {
-            CThing* inn = village->FindNearestBuildingWithProperty(((CThingPos*)PBrain->PCreature)->GetPosition(), 0x20);
+            CThing* inn = village->FindNearestBuildingWithProperty(((CThingPos*)PBrain->PCreature)->GetPos(), 0x20);
             if (inn != 0) {
                 *ppOwner = inn;
                 return true;

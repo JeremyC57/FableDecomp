@@ -24,7 +24,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -213,7 +215,6 @@ class CCombatManager { public:
 };
 class CThingCreatureBase : public CThing { public:
     CCombatManager* GetCombatManager();         // 0x00661ED0
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
     virtual void v00();
@@ -246,7 +247,7 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::Update()
     long result;
     do {
         result = AIAction_ProjectileAttackAndStrafeToPos(2,
-            ((CThingCreatureBase*)PFirePoint.GetPItem())->GetPosition(), PEnemy, &reached, 5, true);
+            ((CThingCreatureBase*)PFirePoint.GetPItem())->GetPos(), PEnemy, &reached, 5, true);
     } while (result == 4);
     if (result != 2) {
         Terminate();

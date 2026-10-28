@@ -216,7 +216,7 @@ inline CTCEnemyTracker* GetEnemyTracker(CThing* thing)
     return tracker;
 }
 class CThingPhysical : public CThing { public:
-    const C3DVector& GetPhysicsPosition();      // 0x006A4D00 (the +0x60 physics sub-object's position)
+    const C3DVector& PeekPos() const;      // 0x006A4D00 (the +0x60 physics sub-object's position)
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
     virtual void v00();

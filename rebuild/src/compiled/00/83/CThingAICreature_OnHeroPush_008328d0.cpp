@@ -2,7 +2,7 @@
 // Leaf: OnHeroPush
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008328D0, 218 bytes (+6 int3). `ret 0Ch`.
 // Callees: CThing::GetPlayerManager() 0x004C7A00 (manifest "CViewBase::GetDisplayEngine" propagated: g_pThingManager->PlayerManager),
-//          CPlayerManager::GetMainPlayer() 0x00449970, CPlayer::GetHeroThing() 0x00487DC0, CVectorMap::LowerBound(const long*)
+//          CPlayerManager::GetMainPlayer() 0x00449970, CPlayer::GetPControlledCreature() 0x00487DC0, CVectorMap::LowerBound(const long*)
 //          0x0040F020, CCharString::CCharString(const char*, long) 0x0099EBF0 ("CTCOnHeroPush" @ 0x0123CBB0), CThing::AddTC
 //          (const CCharString&, bool, CTCParamsBase*) 0x004C9D60, ~CCharString 0x0099EAE0.
 // Shape: the hero's two id words are compared against the pusher's; the pusher's 0x51 bit is word +0x28 bit 17 and the
@@ -78,8 +78,9 @@ public:
 protected:
     CPlayerManager& GetPlayerManager();   // 0x004C7A00
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroThing() const;                    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -90,7 +91,7 @@ class CThingAICreature : public CThing { public:
 };
 void CThingAICreature::OnHeroPush(CThing* pusher, float distance, const C3DVector& direction)
 {
-    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead && hero->UniqueID == pusher->UniqueID && pusher->HasTC(0x51)) {
         CTCOnHeroPush* push;
         if (!GetInterface(&push, 0xc4)) {

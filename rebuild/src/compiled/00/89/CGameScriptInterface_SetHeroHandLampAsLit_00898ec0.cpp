@@ -1,6 +1,6 @@
 // CGameScriptInterface::SetHeroHandLampAsLit(bool lit) const -- switch the live hero creature's hand-lamp light component (kind 0x27) on or off
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00898EC0, length 114 bytes.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, the component-map
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the component-map
 //          LowerBound @ 0x0040F020, CTCLight::SetActive @ 0x006412B0.
 // Shape: the component accessor leaves its result unset when the mask bit is clear (retail reads a dead slot), so the call is duplicated.
 // Leaf: ?SetHeroHandLampAsLit@CGameScriptInterface@@UBEX_N@Z
@@ -42,6 +42,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
+class CThingPlayerCreature : public CThing_Retail { };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
@@ -60,8 +61,8 @@ class CScriptThing { public:
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
 class CPlayer { public:
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 class CPlayerManager { public:
 public:
@@ -121,7 +122,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::SetHeroHandLampAsLit(bool lit) const
 {
-    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetHeroCreature();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->m_dead)
         ((CTCLight*)GetTCIfPresent(hero, 0x27))->SetActive(lit);
 }

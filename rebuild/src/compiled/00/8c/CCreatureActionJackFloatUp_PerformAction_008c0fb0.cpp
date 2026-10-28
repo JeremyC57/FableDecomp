@@ -96,7 +96,7 @@ public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                         // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     float GetAnimDuration(long animation);            // 0x006627F0 (CThingCreatureBase)
     __forceinline bool HasTC(long type) const
     {
@@ -167,9 +167,9 @@ void CCreatureAction_JackFloatUp::PerformAction()
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
         if (effects->GetEffectFromString("RISE_EFFECT", effectType))
-            CreateEffectThing(effectType, &GetCreature()->GetPosition(), false);
+            CreateEffectThing(effectType, &GetCreature()->GetPos(), false);
         if (effects->GetEffectFromString("FLOAT_EFFECT", effectType)) {
-            CThing* effect = CreateEffectThing(effectType, &GetCreature()->GetPosition(), false);
+            CThing* effect = CreateEffectThing(effectType, &GetCreature()->GetPos(), false);
             if (effect && !(effect->m_flags91 & 1)) {
                 CTCAD* dependents = 0;
                 GetCreature()->GetInterface(&dependents, 0xad);

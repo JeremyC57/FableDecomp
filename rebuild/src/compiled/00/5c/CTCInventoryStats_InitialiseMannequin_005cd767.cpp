@@ -1,7 +1,7 @@
 // CTCInventoryStats::InitialiseMannequin() -- creates the stats-screen mannequin from the hero def's mannequin def at the hero's position, copies the hero's appearance components onto it, adds an animation component and starts its DEFAULT animation, then gives it an editable frame update
 // Leaf: InitialiseMannequin@CTCInventoryStats
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CD767, 745 bytes, plain `ret`. Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CThing::GetPosition 0x004C73D0, the thing-create helper 0x00835A20 (`__fastcall` def index / position, stack bool),
+// Callees: CThing::GetPos 0x004C73D0, the thing-create helper 0x00835A20 (`__fastcall` def index / position, stack bool),
 //   CThing::AddAndCopyTC 0x004C9F60, CThing::AddTC(const CCharString&, bool, bool) 0x004C9D60, bitset test 0x00410DE0,
 //   LowerBound 0x0040F020 (non-const), CDefClassBase::GetSubDef<CAppearanceDef> 0x0042B0A2, animation-set lookup 0x005DC340
 //   (CAnimFilterNoGroup temporary, vtables 0x0122FFDC / 0x0122FFCC), CAnimationEntry::GetAnimateThingFlags 0x005DC390,
@@ -119,7 +119,7 @@ class CThing { public:
     CTCBase*       Clothing;                            // +0x64
     unsigned char  _pad68[0x70 - 0x68];
     CDefClassBase* PBaseDef;                            // +0x70
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void AddAndCopyTC(CTCBase* tc, bool b);             // 0x004C9F60
     void AddTC(const CCharString& name, bool a, bool b);   // 0x004C9D60
     template<class T> __forceinline bool GetInterface(T** out, long kind)
@@ -156,7 +156,7 @@ void CTCInventoryStats::InitialiseMannequin()
         return;
     }
     CThing* parent = ParentThing;
-    Mannequin = CreateThing(CDefRef<CHeroDef>(HeroDef)->MannequinDef, parent->GetPosition(), true);
+    Mannequin = CreateThing(CDefRef<CHeroDef>(HeroDef)->MannequinDef, parent->GetPos(), true);
     Mannequin->AddAndCopyTC(ParentThing->Clothing, false);
     CTCBase* tc;
     if (ParentThing->GetInterface(&tc, 0x5e))

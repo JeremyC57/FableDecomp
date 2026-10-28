@@ -3,10 +3,10 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00665E90, 241 bytes (+15 int3), `ret`, bool in al.
 // Callees: CDefClassBase::GetSubDef<CCreatureDef>(CDefPointer<const CCreatureDef>*) @ 0x00485815 (manifest names a propagated
 //   CAbilityDef instantiation), CThing::GetPlayerManager @ 0x004C79F0 (`[g_0x013B8A1C]+0x30`), CPlayerManager::GetMainPlayer
-//   @ 0x00449960, CPlayer::GetPlayerCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0
+//   @ 0x00449960, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0
 //   (the inlined GetInterface for CTCPerceiveThing, type 0x34 = bit 20 of the interface bitset word at +0x24),
 //   CTCPerceiveThing::GetPerceivedThing @ 0x007446A0, CTCPerceiveThing::CanSeeOrSmellPerceivedThing @ 0x00661600 (landed),
-//   CThing::GetPosition @ 0x004C73D0, GFWorld3DDistanceSmallerThan(const C3DVector&, const C3DVector&, float) @ 0x006614F0
+//   CThing::GetPos @ 0x004C73D0, GFWorld3DDistanceSmallerThan(const C3DVector&, const C3DVector&, float) @ 0x006614F0
 //   (`__fastcall`), the def's virtual slot 1 (+4) at a zero count.
 // Layout: retail CThing PBaseDef +0x70, dead flag +0x91 bit 0, interface bitset +0x20, interface map +0x44; CCreatureDef
 //   PickPocketable +0xCA (PDB +0xDA).
@@ -58,8 +58,9 @@ struct CInterfaceMap {                      // a thing's sorted {type, component
     SEntry* LowerBound(const long* type) const;   // 0x004365B0
 };
 class CThing;
+class CThingPlayerCreature;
 class CPlayer { public:
-    CThing* GetPlayerCreature();            // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;            // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;               // 0x00449960
@@ -72,7 +73,7 @@ class CThing { public:
     CDefClassBase* PBaseDef;                // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_statusFlags;           // +0x91 (bit 0: dead)
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -89,6 +90,7 @@ class CThing { public:
 protected:
     const CPlayerManager& PeekPlayerManager() const;   // 0x004C79F0
 };
+class CThingPlayerCreature : public CThing { };
 class CTCPerceiveThing { public:
     CThing* GetPerceivedThing() const;          // 0x007446A0
     bool CanSeeOrSmellPerceivedThing() const;   // 0x00661600
@@ -104,11 +106,11 @@ bool CThingCreatureBase::IsPickPocketable()
     CCreatureDef* def = out.m_pObject;
     if (def) {
         if (def->PickPocketable) {
-            CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPlayerCreature();
+            CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
             CTCPerceiveThing* perceive;
             if (hero && !(hero->m_statusFlags & 1) && GetInterface(&perceive, 0x34)) {
                 if (perceive->GetPerceivedThing() != hero || !perceive->CanSeeOrSmellPerceivedThing()) {
-                    if (GFWorld3DDistanceSmallerThan(GetPosition(), hero->GetPosition(), 2.0f)) {
+                    if (GFWorld3DDistanceSmallerThan(GetPos(), hero->GetPos(), 2.0f)) {
                         def->ReleaseDef();
                         return true;
                     }

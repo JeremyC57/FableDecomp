@@ -1,6 +1,6 @@
 // CFirePoint::SetAsBurning() -- mark the point burning; when it has a fire effect type, create that effect thing at the parent's position, and if it is alive attach its particle emitter to the parent's helper and keep it in PEffect
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00780540, length 144 bytes.
-// Callees: CThing::GetPosition @ 0x004C73D0 (`[ecx+60h] + 0Ch`; manifest label "CVertexBufferWin32::DoSizeof" is propagated),
+// Callees: CThing::GetPos @ 0x004C73D0 (`[ecx+60h] + 0Ch`; manifest label "CVertexBufferWin32::DoSizeof" is propagated),
 // the global __fastcall effect factory Create(long, const C3DVector*, bool) @ 0x006E0880, CTCDParticleEmitter::AttachToThing(CThing*, long,
 // const CCharString&, long, float) @ 0x006E0BE0, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 (x2) / GetPItem @ 0x00A01B50
 // / dtor @ 0x00A01C10; vtable 0x01238C6C = CIntelligentPointer<CThing>.
@@ -28,7 +28,7 @@ class CThing { public:
     CTCDParticleEmitter* m_pParticleEmitter;        // +0x5c
     unsigned char        _pad60[0x31];
     unsigned char        m_statusFlags;             // +0x91 (bit 0: dead)
-    const C3DVector& GetPosition();                 // 0x004C73D0
+    const C3DVector& GetPos() const;                 // 0x004C73D0
     CTCDParticleEmitter* GetParticleEmitter()
     {
         CTCDParticleEmitter* emitter = 0;
@@ -79,7 +79,7 @@ void CFirePoint::SetAsBurning()
 {
     Burning = true;
     if (EffectIndex) {
-        CThing* effect = CreateEffectThing(EffectIndex, &PParentThing->GetPosition(), false);
+        CThing* effect = CreateEffectThing(EffectIndex, &PParentThing->GetPos(), false);
         if (effect && !(effect->m_statusFlags & 1)) {
             effect->GetParticleEmitter()->AttachToThing(PParentThing, 0xc, HelperName, HelperIndex, 0.0f);
             PEffect = CIntelligentPointer<CThing>(effect);

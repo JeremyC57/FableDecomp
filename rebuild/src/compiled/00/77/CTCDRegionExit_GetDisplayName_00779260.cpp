@@ -3,7 +3,7 @@
 // Retail 0x00779260, 100 bytes (plain `ret`; the region call is a tail `jmp`). Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50
 // (called twice: the null test, then the position), CTCBase's world-map accessor @ 0x00686D20
 // (`[g_pMainGameComponent]+0x28`; manifest "CViewBase::GetDisplayEngine" is propagated), CThing::
-// GetPosition @ 0x004C73D0, the world map's virtual slot 16 (+0x40, map number at a position),
+// GetPos @ 0x004C73D0, the world map's virtual slot 16 (+0x40, map number at a position),
 // CWorldMap::GetRegionNumberMapIsIn(long) @ 0x004FC190, CWorldMap::GetRegion(long) @ 0x004FC180
 // (0x58-byte regions), CRegion::GetDisplayName() const @ 0x006BBF20 (tail-jumped). The null result is the shared empty name 0x013BD804.
 // Layout = Ego_r.pdb CTCDRegionExit: PEntranceConnectedTo (CIntelligentPointer<CThing>, pack 1) +0x2a.
@@ -17,7 +17,7 @@ class CCharString { public: void* m_pData; };
 extern CCharString g_EmptyName;                // 0x013BD804
 
 class CThing { public:
-    const C3DVector& GetPosition() const;      // 0x004C73D0
+    const C3DVector& GetPos() const;      // 0x004C73D0
 };
 
 #pragma pack(push, 1)
@@ -81,7 +81,7 @@ const CCharString& CTCDRegionExit::GetDisplayName() const
     if (PEntranceConnectedTo.GetPItem())
     {
         const CWorldMap& worldMap = PeekWorldMap();
-        long mapNumber = worldMap.GetMapNumberAtPosition(PEntranceConnectedTo->GetPosition());
+        long mapNumber = worldMap.GetMapNumberAtPosition(PEntranceConnectedTo->GetPos());
         return PeekWorldMap().GetRegion(PeekWorldMap().GetRegionNumberMapIsIn(mapNumber)).GetDisplayName();
     }
     return g_EmptyName;

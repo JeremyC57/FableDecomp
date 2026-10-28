@@ -63,7 +63,9 @@ public:
             insert(end(), __new_size - size(), __x);
     }
 protected:
+    public:
     void _M_fill_insert(iterator __pos, size_type __n, const _Tp& __x);   // out of line
+    protected:
 };
 } // namespace std
 namespace NEnvironmentInternal {

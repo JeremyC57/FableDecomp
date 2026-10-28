@@ -12,8 +12,10 @@
 
 class C3DVector { public: float X, Y, Z; };
 
-class CThingAICreature { public:
-    C3DVector* GetPosition();                   // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
+};
+class CThingAICreature : public CThing { public:
 };
 
 class CAIBrain { public:
@@ -44,7 +46,7 @@ struct CAIStateGroup_HoverKeepInArea : CAIStateGroup_EnemyCreatureBase {
 
 bool CAIStateGroup_HoverKeepInArea::IsRunnable()
 {
-    C3DVector* pPos = PBrain->PCreature->GetPosition();
+    C3DVector* pPos = (C3DVector*)&PBrain->PCreature->GetPos();
     float dx = pPos->X - StartPos.X;
     float dy = pPos->Y - StartPos.Y;
     if ((float)sqrt(dy * dy + dx * dx) > 20.0f)

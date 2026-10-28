@@ -33,12 +33,14 @@ public:
 };
 template <class T, class A = allocator<T> > class vector : protected _Vector_base<T, A> {
 public:
+    protected:
     T* _M_allocate_and_copy(unsigned int n, const T* first, const T* last)
     {
         T* result = this->_M_end_of_storage.allocate(n);
         __uninitialized_copy(first, last, result, __false_type());
         return result;
     }
+    public:
 };
 template std::pair<long, EHeroAbility>* vector<std::pair<long, EHeroAbility> >::_M_allocate_and_copy(unsigned int, const std::pair<long, EHeroAbility>*, const std::pair<long, EHeroAbility>*);
 }   // namespace std

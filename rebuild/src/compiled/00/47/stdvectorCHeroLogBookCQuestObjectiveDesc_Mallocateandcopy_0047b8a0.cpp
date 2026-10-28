@@ -1,5 +1,5 @@
 // std::vector<CHeroLogBook::CQuestObjectiveDesc>::_M_allocate_and_copy(unsigned int __n, const_iterator __first, const_iterator __last) -- STLport: allocate n elements and uninitialized-copy [first, last) into them
-// Leaf: ?_M_allocate_and_copy@?$vector@VCQuestObjectiveDesc@CHeroLogBook@@V?$allocator@VCQuestObjectiveDesc@CHeroLogBook@@@std@@@std@@QAEPAVCQuestObjectiveDesc@CHeroLogBook@@IPBV34@0@Z
+// Leaf: ?_M_allocate_and_copy@?$vector@VCQuestObjectiveDesc@CHeroLogBook@@V?$allocator@VCQuestObjectiveDesc@CHeroLogBook@@@std@@@std@@IAEPAVCQuestObjectiveDesc@CHeroLogBook@@IPBV34@0@Z
 // Retail: Fable.exe @ 0x0047B8A0, 55 bytes, __fastcall `ret 0Ch` (this unused); the __false_type tag is homed in n's dead
 // argument slot.
 // Identity (probable): calls the bound std::__uninitialized_copy<const CQuestObjectiveDesc*, CQuestObjectiveDesc*>
@@ -52,12 +52,14 @@ public:
     typedef _Tp* pointer;
     typedef const _Tp* const_iterator;
     typedef __false_type _IsPODType;                       // __type_traits<_Tp>::is_POD_type of a class element
+    protected:
     pointer _M_allocate_and_copy(unsigned int __n, const_iterator __first, const_iterator __last)
     {
         pointer __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, _IsPODType());
         return __result;
     }
+    public:
 };
 }
 template class std::vector<CHeroLogBook::CQuestObjectiveDesc>;

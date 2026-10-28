@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009474F0, length 647 bytes (aligned `and esp,-8` frame for the
 //   intelligent-pointer temporary, virtual slot 12).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (interface 0x53 CTCShop,
-//   ternary pick), CTCShop::AddShopper @ 0x00773DC0, CThing::GetPosition @ 0x004C73D0, AIAction_MoveToPosProximity
+//   ternary pick), CTCShop::AddShopper @ 0x00773DC0, CThing::GetPos @ 0x004C73D0, AIAction_MoveToPosProximity
 //   @ 0x0097E890, AIAction_LookAtPos @ 0x0097D580 (x2), GetPWorldSeed @ 0x008FCFD0, GFRandom @ 0x004CDAE0 (__fastcall),
 //   ftol @ 0x00BFEA70, GFGetCurrentFrame @ 0x0049D870, the pretty-thing finder @ 0x00947110 (manifest
 //   "CAIStateGroup_WanderAroundShops_FindRandomNPC"), CIntelligentPointer<CThing>(CThing*) @ 0x004A96F0 / operator=
@@ -33,7 +33,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -127,7 +127,7 @@ void CAIStateGroup_WanderAroundShops::Update()
                 }
                 bool arrived;
                 CThing* pretty = PrettyThing.GetPItem();
-                result = AIAction_MoveToPosProximity(2, pretty->GetPosition(), g_ShopBrowseRadius, &arrived,
+                result = AIAction_MoveToPosProximity(2, pretty->GetPos(), g_ShopBrowseRadius, &arrived,
                     3, true, false, true, 0, true, 0.0f);
             } while (result == 4);
             if (result != 2)
@@ -138,7 +138,7 @@ void CAIStateGroup_WanderAroundShops::Update()
                     return;
                 }
                 CThing* pretty = PrettyThing.GetPItem();
-                result = AIAction_LookAtPos(2, pretty->GetPosition(), 0x11, 0.0027777f);
+                result = AIAction_LookAtPos(2, pretty->GetPos(), 0x11, 0.0027777f);
             } while (result == 4);
             if (result != 2)
                 break;
@@ -150,7 +150,7 @@ void CAIStateGroup_WanderAroundShops::Update()
                     return;
                 }
                 CThing* pretty = PrettyThing.GetPItem();
-                result = AIAction_LookAtPos(2, pretty->GetPosition(), 0x11, 0.0027777f);
+                result = AIAction_LookAtPos(2, pretty->GetPos(), 0x11, 0.0027777f);
                 if (result != 4)
                     break;
                 if (CWorld::GetFrame() >= endFrame) {

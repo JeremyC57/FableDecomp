@@ -1,7 +1,7 @@
 // CTCSummonSpell::FrameUpdate() -- on the frame after the cast, create the summoned minion at the owner's position plus its summon offset; afterwards, while the minion lives, keep it on the hero's faction and fade it (and everything it carries) in over the fade frames; once the minion is gone remove this component (TC 0x91) from the owner
 // Retail: Fable.exe @ 0x0079B9D0, 494 bytes (plain `ret`, no EH frame).
 // Shape: the carried-things loop reads First then Last into named locals before the loop (retail's ecx/eax order, end kept in ebp); the minion test is the nested `if (GetPItem()) { if (!Dead) {...; return;} }` form with the RemoveTC tail last; the faction name is passed as `const char*` (built before the push).
-// Callees: owner frame vslot 70 (+0x118), CThing::GetPosition 0x004C73D0, CTCSummonSpell::CreateMinion 0x0079ACC0, GetPItem 0x00A01B50,
+// Callees: owner frame vslot 70 (+0x118), CThing::GetPos 0x004C73D0, CTCSummonSpell::CreateMinion 0x0079ACC0, GetPItem 0x00A01B50,
 //   LowerBound 0x0040F020, CCharString ctor/dtor, CTCEnemy::SetFaction 0x0076C810, __ftol2, CTCGraphicAppearance::SetAlpha 0x004BFAC0,
 //   CTCCarrying::CollectCarrySlots 0x006A2220, free 0x00BFEA14, CThing::RemoveTC 0x004C9840
 extern "C" void free(void* p);
@@ -50,7 +50,7 @@ public:
     CTCGraphicAppearance* Appearance;                   // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Dead : 1;                             // +0x91 bit0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void RemoveTC(long type);                           // 0x004C9840
     template<class T> __forceinline void GetInterface(long interfaceType, T** out)
     {
@@ -110,7 +110,7 @@ void CTCSummonSpell::FrameUpdate()
     if (PendingCreate) {
         C3DVector offset;
         thing->Frame->GetSummonOffset(&offset);
-        CreateMinion(offset + thing->GetPosition(), 0);
+        CreateMinion(offset + thing->GetPos(), 0);
         PendingCreate = false;
         return;
     }

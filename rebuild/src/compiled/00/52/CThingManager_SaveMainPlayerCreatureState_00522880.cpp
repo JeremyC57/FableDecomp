@@ -1,6 +1,6 @@
 // CThingManager::SaveMainPlayerCreatureState(CCharString& script) -- collect the hero plus every persisted inventory item the hero owns on the hero's map and write them as a thing list
 // Leaf: SaveMainPlayerCreatureState
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, vector<CThing*> grow @ 0x00436AC0,
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, vector<CThing*> grow @ 0x00436AC0,
 // CThing::IsGameStatePersisted @ 0x004C8280, CThing::IsLevelLess @ 0x004C7930, CThing::SetCurrentMapNumber @ 0x004C7580,
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (non-const copy), CTCInventoryItem::GetInventoryOwner @ 0x005D8E90, thing-list writer @ 0x00521EB0,
 // ~CCharString @ 0x0099EAE0, free @ 0x00BFEA14.
@@ -97,7 +97,8 @@ class CTCInventoryItem { public:
     CThing* GetInventoryOwner();                        // 0x005D8E90
 };
 class CThingCreature : public CThing { };
-class CPlayer { public: CThingCreature* GetHeroCreature(); };          // 0x00487DC0
+class CThingPlayerCreature : public CThingCreature { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
 
 struct SThingListNode {
@@ -134,7 +135,7 @@ __declspec(noinline) void CThingManager::SaveThingList(CCharString& script, long
 void CThingManager::SaveMainPlayerCreatureState(CCharString& script)
 {
     Saving = true;
-    CThingCreature* hero = PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThingCreature* hero = PlayerManager->GetMainPlayer()->GetPControlledCreature();
     long map = hero->CurrentMapNumber;
     CRetailPtrVector<CThing*> things;
     things.push_back(hero);

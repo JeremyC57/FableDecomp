@@ -30,7 +30,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    C3DVector* GetPosition();                   // 0x004C73D0 (`[this+60h]+0Ch`)
+    const C3DVector& GetPos() const;    // 0x004C73D0 (`[this+60h]+0Ch`)
     bool HasTC(long interfaceType) const
     {
         return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0;
@@ -92,7 +92,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFA0 (PBrain->+0x1c->+0x24)
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0 (PBrain->+0x1c->+0x24)
+public:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0 (world random seed)
     void Terminate();                           // 0x008FCF40 (Terminated = true)
     bool IsStopping();                          // 0x008FD010

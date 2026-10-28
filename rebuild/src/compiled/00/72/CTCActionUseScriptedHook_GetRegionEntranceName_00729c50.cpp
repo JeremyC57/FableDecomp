@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00729C50, length 72 bytes.
 // Leaf: GetRegionEntranceName
 // Callees: CTCBase's world-map accessor @ 0x00686D20 (`[g_pMainGameComponent]+0x28`, called three times; the manifest's
-// "CViewBase::GetDisplayEngine" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @
+// "CViewBase::GetDisplayEngine" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @
 // 0x004C73D0 (`[this+60h]+0Ch`, the physics component's position, as the landed 0x00943AE0 names it), the world map's
 // virtual slot 16 (+0x40, map number at a position), CWorldMap::GetRegionNumberMapIsIn(long) @ 0x004FC190 and
 // CWorldMap::GetRegion(long) @ 0x004FC180 (0x58-byte regions). Ego_r.pdb: `?GetRegionEntranceName@CTCActionUseScriptedHook
@@ -15,7 +15,7 @@ class C3DVector { public: float X, Y, Z; };
 class CCharString { public: void* m_pData; };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;      // 0x004C73D0
+    const C3DVector& GetPos() const;      // 0x004C73D0
 };
 
 struct CBaseIntelligentPointer {
@@ -61,6 +61,6 @@ class CTCActionUseScriptedHook : public CTCBase { public:
 const CCharString& CTCActionUseScriptedHook::GetRegionEntranceName() const
 {
     const CWorldMap& worldMap = PeekWorldMap();
-    long mapNumber = worldMap.GetMapNumberAtPosition(PEntranceConnectedTo->GetPosition());
+    long mapNumber = worldMap.GetMapNumberAtPosition(PEntranceConnectedTo->GetPos());
     return PeekWorldMap().GetRegion(PeekWorldMap().GetRegionNumberMapIsIn(mapNumber)).Name;
 }

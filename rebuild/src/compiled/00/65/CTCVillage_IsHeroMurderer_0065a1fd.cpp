@@ -2,7 +2,7 @@
 // CTCVillage::IsHeroMurderer() -- true when the hero's deed log holds, for any of the village's recorded crime handles, a murder deed (type 9) with its flag at +0x23 set
 // Leaf: IsHeroMurderer
 // Retail: Fable.exe @ 0x0065A1FD, 146 bytes; size TU (unaligned entry, `push 51h ; pop edi`): `optimize("s",on)`.
-// Callees: CWorld::GetCurrentPlayer() 0x0049D9D0 (on g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetCharacterThing()
+// Callees: CWorld::GetCurrentPlayer() 0x0049D9D0 (on g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
 //          0x00487DC0; std::bitset<>::test(size_t) const 0x00410DE0 (interface 81); CVectorMap<ETCInterfaceType,CTCBase*>::
 //          LowerBound 0x0040F020 (inlined GetTC); CTCHeroOpinionDeedLog::GetDeedFromHandle(long) 0x006C58F0; STLport
 //          _Rb_global<bool>::_M_increment 0x004292C0 (__cdecl, manifest "CMemoryAllocatorVariableSize::GetNoAllocatedAreas"
@@ -44,9 +44,10 @@ public:
         return m_interfaces.find(&type, interfaceType)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
-    CThing* GetCharacterThing();                // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
@@ -85,7 +86,7 @@ class CTCVillage { public:
 
 bool CTCVillage::IsHeroMurderer()
 {
-    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetCharacterThing();
+    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
     if (hero && hero->HasTC(81)) {
         CTCHeroOpinionDeedLog* log = (CTCHeroOpinionDeedLog*)hero->GetTC(81);
         SRbNode* end = PlayersCrimes;

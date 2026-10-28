@@ -71,7 +71,7 @@ public:
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class C2DVector { public:
     float X, Y;
@@ -121,7 +121,7 @@ class CApplyAdditionalPlayerImpulseIfTooClose { public:   // 0x14 bytes
 
 void CApplyAdditionalPlayerImpulseIfTooClose::operator()(CThingCreatureBase* other)
 {
-    const C3DVector& pos = other->GetPosition();
+    const C3DVector& pos = other->GetPos();
     float dz = pos.Z - Position.Z;
     C3DVector offset(pos.X - Position.X, pos.Y - Position.Y, 0.0f);
     float radii = other->PhysicsTC->Radius + Radius;

@@ -2,7 +2,7 @@
 // Leaf: ?OnActivate@CModeScorpionKingTailPlunge
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008D9E30, 689 bytes (`ret`).
 // Callees: CDefClassBase::GetSubDef(CDefPointer<CScorpionKingBattleDef>*) 0x008C5A50 (manifest "GetSubDef<CAICreatureWillPowerIndicatorDef>"
-//   is a byte-twin label), __ftol2 0x00BFEA70, CModeBase::OnActivate 0x0073AAC0, CThing::GetPosition 0x004C73D0,
+//   is a byte-twin label), __ftol2 0x00BFEA70, CModeBase::OnActivate 0x0073AAC0, CThing::GetPos 0x004C73D0,
 //   CTCGraphicAppearance::GetDummyObject 0x004C08C0, CCharString 0x0099EBF0 / ~ 0x0099EAE0, GetSubDef<CSpecialEffectsDef>
 //   0x00669580, CSpecialEffectsDef::GetEffectFromString 0x00669D30, CreateEffectThing 0x006E0880 (__fastcall),
 //   CBaseIntelligentPointer 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / ~ 0x00A01C10, CVectorMap::LowerBound
@@ -118,7 +118,7 @@ class CThing { public:
     CDefClassBase* PDef;                        // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
@@ -198,10 +198,10 @@ void CModeScorpionKingTailPlunge::OnActivate()
     SpikeTime = (long)(RecoveryCount - g_framesPerSecond * def.m_p->SpikeTime);
     SpikeDecisionTime = (long)(RecoveryCount - g_framesPerSecond * def.m_p->SpikeDecisionTime);
     CModeBase::OnActivate();
-    C3DVector pos = ParentThing->GetPosition();
+    C3DVector pos = ParentThing->GetPos();
     CRightHandedSet axes;
     PCreature->Graphic->GetDummyObject("EMITTER_TAIL", 0, 0, &pos, &axes, 1.0f);
-    pos.Z = ParentThing->GetPosition().Z;
+    pos.Z = ParentThing->GetPos().Z;
     TailPos = pos;
     CDefPointer<CSpecialEffectsDef> effectsSlot;
     long effectType = 0;

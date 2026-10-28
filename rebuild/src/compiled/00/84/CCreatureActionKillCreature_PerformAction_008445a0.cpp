@@ -8,10 +8,12 @@
 // PTargetCreature (engine-header name, PDB +0xb4) is at +0xa8 and `this` is modelled locally.
 class C3DVector;
 
-class CThing { public:                             // engine/CThing.h exists but is not used: only the dead bit and the calls are modelled
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;   // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:                             // engine/CThing.h exists but is not used: only the dead bit and the calls are modelled
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00
     bool IsInRange(const C3DVector& position, float range);   // 0x006A4DF0
     void Kill(bool silent);                 // 0x004C9B80
 };
@@ -57,7 +59,7 @@ void CCreatureAction_KillCreature::PerformAction()
     if (IS_THING_ALIVE(PTargetCreature)) {
         CThing* pTarget = PTargetCreature.GetPItem();
         CThing* pCreature = PCreature.GetPItem();   // named: fetched before the 2.0f immediate is pushed
-        if (pTarget->IsInRange(pCreature->GetPosition_006a4d00(), 2.0f))
+        if (pTarget->IsInRange(pCreature->PeekPos(), 2.0f))
             pTarget->Kill(true);
     }
 }

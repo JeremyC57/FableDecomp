@@ -150,14 +150,20 @@ public:
     _Tp* begin() const { return this->_M_start; }
     _Tp* end() const { return this->_M_finish; }
     unsigned int size() const { return (unsigned int)(end() - begin()); }
+    protected:
     void _M_clear();                                // 0x0070B1C0
+    public:
+    protected:
     void _M_set(_Tp* __s, _Tp* __f, _Tp* __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
+    protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len, bool __atend);   // 0x0070B240
+    public:
     _Tp* erase(_Tp* __first, _Tp* __last);          // 0x0070B150
     void clear() { erase(begin(), end()); }
     void push_back(const _Tp& __x)

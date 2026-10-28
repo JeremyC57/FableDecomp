@@ -1,6 +1,6 @@
 // CTCDParticleEmitter::GetEmitterPosition() const -- the live emitter's current position (the translation of its transform), or the parent thing's position when no emitter exists yet
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0620, length 100 bytes (+ int3 padding); returns C3DVector through the hidden pointer.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), CThing::GetPosition @ 0x004C73D0.
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), CThing::GetPos @ 0x004C73D0.
 // Layout: the retail NParticleEngine::CParticleEmitter keeps a 3x4 transform at +0xB0 whose translation row is at +0xD4 (+0x24 in
 // the matrix); CTCDParticleEmitter as in the landed SetAlwaysUpdate 0x006E0590 (PEmitter +0x14).
 // Shape: the emitter's inline by-value getter returns `C3DVector(t.X, t.Y, t.Z)` (arguments evaluated right to left: Z and Y on
@@ -22,11 +22,11 @@ namespace NParticleEngine {
 class CParticleEmitter { public:
     unsigned char _pad00[0xb0];
     CMatrix34 Transform;                        // +0xb0
-    C3DVector GetPosition() const { return Transform.GetTranslation(); }
+    C3DVector GetPos() const { return Transform.GetTranslation(); }
 };
 }
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -57,6 +57,6 @@ class CTCDParticleEmitter { public:
 C3DVector CTCDParticleEmitter::GetEmitterPosition() const
 {
     if (PEmitter.GetPItem())
-        return PEmitter.GetPItem()->GetPosition();
-    return ParentThing->GetPosition();
+        return PEmitter.GetPItem()->GetPos();
+    return ParentThing->GetPos();
 }

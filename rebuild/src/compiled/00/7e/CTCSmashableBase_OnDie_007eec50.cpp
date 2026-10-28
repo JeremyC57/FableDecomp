@@ -9,7 +9,7 @@ class C3DVector { public: float X, Y, Z; };
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                // 0x004C73D0
+    const C3DVector& GetPos() const;                // 0x004C73D0
 };
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880

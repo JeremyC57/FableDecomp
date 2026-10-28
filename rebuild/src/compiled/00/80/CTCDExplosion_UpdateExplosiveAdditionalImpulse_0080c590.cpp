@@ -1,6 +1,6 @@
 // CTCDExplosion::UpdateExplosiveAdditionalImpulse() -- push the things the explosion has hit: for a ringed (dynamic) explosion the ones between the current ring's inner and outer radius, otherwise along the start/end line
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080C590, 305 bytes (+ int3 padding), plain `ret`.
-// Callees: CThing::GetPosition @ 0x004C73D0, the hit-thing transform into a local vector<CThing*> @ 0x0080EBE0, the ring
+// Callees: CThing::GetPos @ 0x004C73D0, the hit-thing transform into a local vector<CThing*> @ 0x0080EBE0, the ring
 //   impulse for_each @ 0x0080E530 and the line impulse for_each @ 0x0080E5D0 (all three with first/last in ecx/edx and the
 //   functor by value on the stack: modelled `__fastcall`), free @ 0x00BFEA14. Constant 0.0f @ 0x0122DEDC.
 // Layout: Ego_r.pdb CTCDExplosion (retail 12-byte vectors): ParentThing +0x04, DamageRadius +0x0c, StartPos +0x20, EndPos +0x2c,
@@ -11,7 +11,7 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
-class CThing { public: const C3DVector& GetPosition() const; };    // 0x004C73D0
+class CThing { public: const C3DVector& GetPos() const; };    // 0x004C73D0
 struct CThingVector {
     CThing** _M_start;
     CThing** _M_finish;
@@ -74,7 +74,7 @@ class CTCDExplosion { public:
 void CTCDExplosion::UpdateExplosiveAdditionalImpulse()
 {
     float damageRadius = DamageRadius;
-    const C3DVector& pos = ParentThing->GetPosition();
+    const C3DVector& pos = ParentThing->GetPos();
     CThingVector things;
     TransformHitThings(HitThings_first, HitThings_last, CBackInserter(things), CGetPItem());
     const CExplosionDef* def = PExplosionDef;

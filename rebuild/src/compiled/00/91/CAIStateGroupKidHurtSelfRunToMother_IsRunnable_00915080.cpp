@@ -19,7 +19,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -139,7 +141,6 @@ struct CThingOffsetSource {                     // the creature's +0x60 sub-obje
 };
 struct CThingCreature : CThing {                // the brain's creature (+0x60: the offset source)
     CThingOffsetSource* GetOffsetSource() { return (CThingOffsetSource*)m_pSub60; }
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CThingCreatureV {                        // the creature seen through its vtable
     V16(a) V16(b) V16(c) V16(d) V16(e)
@@ -162,7 +163,7 @@ bool CAIStateGroup_KidHurtSelfRunToMother::IsRunnable()
     moved.y = movement->m_posY - movement->m_lastY;
     CThingCreature* creature = (CThingCreature*)brain->PCreature;
     CThingOffsetSource* const& offsetSource = creature->GetOffsetSource();
-    C3DVector pos = creature->GetPosition() + offsetSource->GetOffset();
+    C3DVector pos = creature->GetPos() + offsetSource->GetOffset();
     float length = moved.GetLengthXY();
     if (length / ((CThingCreatureV*)PBrain->PCreature)->GetDistanceMeasure(pos) > 0.8f)
         return Random(100) < 1;

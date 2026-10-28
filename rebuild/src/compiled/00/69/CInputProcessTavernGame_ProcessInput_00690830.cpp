@@ -2,7 +2,7 @@
 // Leaf: ProcessInput
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690830, length 359 bytes, `ret 8`.
 // Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (player manager at CMainGameComponent +0x1C, the component
-//   global @ 0x013B86A0), CPlayer::GetHeroCreature @ 0x00487DC0, the component map's LowerBound @ 0x0040F020,
+//   global @ 0x013B86A0), CPlayer::GetPControlledCreature @ 0x00487DC0, the component map's LowerBound @ 0x0040F020,
 //   CTCGamePlayer::GetGame @ 0x005EDC90 (called twice: test, then use), the tavern game's virtual slot 28 (+0x70)
 //   ProcessInput(event, processed, process), CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90,
 //   IsEventButtonHeld @ 0x00687BD0, IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance
@@ -68,8 +68,9 @@ class CThing { public:
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCGamePlayer* GetTC(long kind) { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -90,7 +91,7 @@ public:
 
 void CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCGamePlayer* player = 0;
     if (hero->HasTC(0xd0))
         player = hero->GetTC(0xd0);

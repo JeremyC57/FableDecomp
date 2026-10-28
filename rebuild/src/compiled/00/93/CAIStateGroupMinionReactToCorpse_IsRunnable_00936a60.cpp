@@ -22,7 +22,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -198,10 +200,9 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class C3DVector { public: float x, y, z; };
 class CThingPhysical : public CThing { public:
-    const C3DVector& GetPhysicsPosition();      // 0x006A4D00
+    const C3DVector& PeekPos() const;      // 0x006A4D00
 };
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CThingCreatureLook : CThing {
     bool CanSeePosition(const C3DVector& pos, bool checkLineOfSight);  // 0x00665260
@@ -252,7 +253,7 @@ bool CAIStateGroup_MinionReactToCorpse::IsRunnable()
 {
     CThingDeadCreature* corpse = 0;
     if (PeekThingSearchTools()->GetPBestLeafThing(CThingFilter_None(),
-            CThingCompare_Nearest(((CThingPhysical*)PBrain->PCreature)->GetPhysicsPosition()), &corpse)) {
+            CThingCompare_Nearest(((CThingPhysical*)PBrain->PCreature)->PeekPos()), &corpse)) {
         PCorpse = CIntelligentPointerDead((CThing*)corpse);
         if (IS_THING_ALIVE(PCorpse)) {
             CThing* dead = PCorpse.GetPItem();
@@ -261,7 +262,7 @@ bool CAIStateGroup_MinionReactToCorpse::IsRunnable()
                 CThing* creature = PBrain->PCreature;
                 if (AreThingsAllies(creature, PCorpse.GetPItem())) {
                     CThingCreatureLook* looker = (CThingCreatureLook*)PBrain->PCreature;
-                    return looker->CanSeePosition(((CThingPos*)PCorpse.GetPItem())->GetPosition(), true);
+                    return looker->CanSeePosition(((CThingPos*)PCorpse.GetPItem())->GetPos(), true);
                 }
             }
         }

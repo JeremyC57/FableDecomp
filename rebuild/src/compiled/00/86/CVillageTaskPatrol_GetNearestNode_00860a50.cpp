@@ -1,7 +1,7 @@
 // CVillageTaskPatrol::GetNearestNode(const C3DVector& position) -- walk the patrol track from PatrolStart (following NextNode until the end node) and return the node nearest to `position` (0 without a track)
 // Leaf: ?GetNearestNode@CVillageTaskPatrol@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00860A50, length 125 bytes (padded to 128), `ret 4`.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (on PatrolStart +0x08), CThing::GetPosition @ 0x004C73D0.
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (on PatrolStart +0x08), CThing::GetPos @ 0x004C73D0.
 // Layout: engine/CVillageTaskPatrol.h (PatrolStart CIntelligentPointer<const CThingTrackNode> +0x08); CThingTrackNode retail
 // NextNode +0xd0 and IsEnd +0xed (Ego_r.pdb +0xe8 / +0x105: the thing base is 0x18 bytes smaller in retail).
 // Shape: the best distance starts at FLT_MAX (0x7F7FFFFF) in the frame; `dist < best` is `fcom ; test ah,5 ; jp`; the
@@ -10,7 +10,7 @@ class C3DVector { public:
     float X, Y, Z;
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 class CThingTrackNode : public CThing { public:
     unsigned char    _pad[0xd0];
@@ -49,7 +49,7 @@ const CThingTrackNode* CVillageTaskPatrol::GetNearestNode(const C3DVector& posit
     if (node) {
         float best = 3.40282347e+38f;
         do {
-            const C3DVector& p = node->GetPosition();
+            const C3DVector& p = node->GetPos();
             float dx = p.X - position.X;
             float dy = p.Y - position.Y;
             float dz = p.Z - position.Z;

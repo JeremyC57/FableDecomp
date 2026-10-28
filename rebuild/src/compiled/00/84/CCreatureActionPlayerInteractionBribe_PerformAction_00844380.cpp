@@ -4,7 +4,7 @@
 // Identity (proven): vtable 0x01259664 (RTTI .?AVCCreatureAction_PlayerInteractionBribe@@) slot 3, the slot holding the landed CCreatureAction_PlayerInteractionGreet::PerformAction 0x00845900 in Greet's vtable 0x012592D4; Ego_r.pdb ?PerformAction@CCreatureAction_PlayerInteractionBribe@@UAEXXZ.
 // Callees: CBaseIntelligentPointer::GetPItem() const 0x00A01B50 (PCreature +0x08, PTarget +0xA8), CCreatureActionBase::GetWorld()
 //   0x00692940 (Ego_r.pdb IAE, a CWorld&), CThing::GetPosition() const 0x006A4D00 (the second retail copy, catalog spelling
-//   GetPosition_006a4d00 per GOTCHAS), CMessageEventManager::AddMessage(EMessageEventType, unsigned long, const C3DVector&, CThing*,
+//   PeekPos per GOTCHAS), CMessageEventManager::AddMessage(EMessageEventType, unsigned long, const C3DVector&, CThing*,
 //   CThing*, float, float, long) 0x00687540 (the world's PMessageEventManager +0x60).
 // Shape (family L075): the landed Greet 0x00845900 message tail -- the creature fetched twice into named locals, the manager into a
 //   third before the arguments; IS_THING_ALIVE (non-null, Dead bit 0 of +0x91 clear) on both pointers.
@@ -25,11 +25,13 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
-class CThing {
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThing : public CThingPhysical {
 public:
     unsigned char _pad00[0x91];                          // (members not touched here)
     unsigned char Flags91;                               // +0x91 bit 0: dead
-    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
 };
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 {
@@ -66,6 +68,6 @@ void CCreatureAction_PlayerInteractionBribe::PerformAction()
         CThing* pCreatureThing = PCreature.GetPItem();
         CThing* pCreature = PCreature.GetPItem();
         CMessageEventManager* pManager = GetWorld().PMessageEventManager_Data;
-        pManager->AddMessage((EMessageEventType)0x14, 0x10, pCreature->GetPosition_006a4d00(), pCreatureThing, PTarget.GetPItem(), 0.0f, 0.0f, 3);
+        pManager->AddMessage((EMessageEventType)0x14, 0x10, pCreature->PeekPos(), pCreatureThing, PTarget.GetPItem(), 0.0f, 0.0f, 3);
     }
 }

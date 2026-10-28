@@ -28,8 +28,10 @@ extern float g_Epsilon;                     // 0x0129BA3C (1e-4f)
 extern long g_framesPerSecond;              // 0x01375550
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
-class CThingCreatureBase { public:
-    const C3DVector& GetPosition_004c73d0() const;   // 0x004C73D0 (CThing::GetPosition)
+class CThing { public:
+    const C3DVector& GetPos() const;   // 0x004C73D0 (CThing::GetPosition)
+};
+class CThingCreatureBase : public CThing { public:
 };
 class CWorld { public:
     unsigned long* GetRandomSeed();         // 0x0049D810
@@ -56,10 +58,10 @@ void CCombatWheel::ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCo
 {
     C3DVector dolly;
     if (position) {
-        dolly = *position - defender->Parent->GetPosition_004c73d0();
+        dolly = *position - defender->Parent->GetPos();
         dolly.Z = 0.0f;
     } else {
-        dolly = attacker->Parent->GetPosition_004c73d0() - defender->Parent->GetPosition_004c73d0();
+        dolly = attacker->Parent->GetPos() - defender->Parent->GetPos();
         dolly.Z = 0.0f;
         if (dolly.GetLengthSquared() > g_Epsilon * g_Epsilon)
             dolly.Rotate(C3DVector(0.0f, 0.0f, 1.0f), GFFloatRandom(0.5f, world->GetRandomSeed()) + 0.25f);

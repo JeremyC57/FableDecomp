@@ -1,9 +1,9 @@
 // CInputProcessZTarget::DeactivateZTarget(CProcessedInput& processed) -- queue game event 0x3e (deactivate Z-target) and, when the live hero is in ranged third-person mode, game event 0x3a as well
-// Grade: DIFFER(149v149) -- /GS lane gap: `processed` is loaded into edi before the GetHeroCreature call (parameter shadowing); retail loads it after the call
+// Grade: DIFFER(149v149) -- /GS lane gap: `processed` is loaded into edi before the GetPControlledCreature call (parameter shadowing); retail loads it after the call
 // Leaf: DeactivateZTarget
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00688BA0, length 149 bytes.
-// Callees: CPlayer::GetHeroCreature @ 0x00487DC0 (MyPlayer +0x18), the hero test @ 0x0068EB20 (component kind 0x46 lookup),
+// Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the hero test @ 0x0068EB20 (component kind 0x46 lookup),
 // CProcessedInput::AddGameEvent @ 0x00A0D340, __security_check_cookie @ 0x00BFE9F9.
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes); two event
 // locals (0x50-byte frame + cookie).
@@ -29,9 +29,10 @@ class CThingCreatureBase { public:
     unsigned char m_91_1 : 7;
     bool IsInThirdPersonRangedMode();              // 0x0068EB20
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer {
 public:
-    CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -54,7 +55,7 @@ public:
 
 void CInputProcessZTarget::DeactivateZTarget(CProcessedInput& processed)
 {
-    CThingCreatureBase* hero = MyPlayer->GetHeroCreature();
+    CThingCreatureBase* hero = MyPlayer->GetPControlledCreature();
     CGameEvent deactivate(0x3e);
     processed.AddGameEvent(deactivate);
     if (hero && !hero->m_dead && hero->IsInThirdPersonRangedMode()) {

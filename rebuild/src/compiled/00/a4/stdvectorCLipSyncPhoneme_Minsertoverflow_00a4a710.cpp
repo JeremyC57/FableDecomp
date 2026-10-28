@@ -1,5 +1,5 @@
 // std::vector<CLipSyncPhoneme>::_M_insert_overflow(CLipSyncPhoneme* position, const CLipSyncPhoneme& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport vector growth: move into a size + max(size, fill_len) block with x inserted fill_len times at position
-// Leaf: ?_M_insert_overflow@?$vector@VCLipSyncPhoneme@@V?$allocator@VCLipSyncPhoneme@@@std@@@std@@QAEXPAVCLipSyncPhoneme@@ABV3@ABU__false_type@2@I_N@Z
+// Leaf: ?_M_insert_overflow@?$vector@VCLipSyncPhoneme@@V?$allocator@VCLipSyncPhoneme@@@std@@@std@@IAEXPAVCLipSyncPhoneme@@ABV3@ABU__false_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A4A710, 267 bytes, thiscall `ret 14h` (a /Gr TU: the helpers are __fastcall).
 // Identity: reloc_bindings spells it `?_M_insert_overflow@?$vector@VCLipSyncPhoneme@@V?$allocator@...@std@@@std@@QAEX...`
 //   from the caller 0x00A4A8C0; the element is Ego_r.pdb CLipSyncPhoneme (12 bytes: CCharString Symbol, ulong ID,
@@ -88,19 +88,25 @@ public:
     typedef unsigned int size_type;
     typedef _Tp* pointer;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
 };
 
 template <class _Tp, class _Alloc>

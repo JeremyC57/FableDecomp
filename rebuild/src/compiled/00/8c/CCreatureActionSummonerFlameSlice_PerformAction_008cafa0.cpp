@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CAFA0, length 188 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::Kill(bool) @ 0x004C9B80, CCharString::CCharString(const char*,
 // long) @ 0x0099EBF0, CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall), CDefinitionManager::GetDefGlobalIndexFromName
-// @ 0x009AD410, CCharString::~CCharString @ 0x0099EAE0, CThing::GetPosition @ 0x004C73D0, CreateThing(long, const C3DVector&)
+// @ 0x009AD410, CCharString::~CCharString @ 0x0099EAE0, CThing::GetPos @ 0x004C73D0, CreateThing(long, const C3DVector&)
 // @ 0x0080C460 (`__fastcall`), the explosion driver's exclusion add @ 0x0080CBF0 (manifest "AddDependentThing" is propagated).
 // Shape: the landed CCreatureAction_ScorpionTailPlunge::PerformAction (0x008C4810) preceded by the obstruction kill
 // (present / not dead, thing byte +0x91 bit 0) and with the explosion's own dead test; the driver lookup is unchecked
@@ -20,7 +20,7 @@ class CThing { public:
     CExplosionDriver* m_pDriver;            // +0x5c
     unsigned char     _pad2[0x91 - 0x60];
     unsigned char     m_flags91;            // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     void Kill(bool silent);                 // 0x004C9B80
     bool GetTCDriver(CExplosionDriver** out)
     {
@@ -79,7 +79,7 @@ void CCreatureAction_SummonerFlameSlice::PerformAction()
         CCharString name("THING_EXPLOSION_SUMMONER_FLAME_SLICE_SPHERICAL", -1);
         explosionIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
     }
-    CThing* explosion = CreateThing(explosionIndex, PCreature.GetPItem()->GetPosition());
+    CThing* explosion = CreateThing(explosionIndex, PCreature.GetPItem()->GetPos());
     if (explosion && !(explosion->m_flags91 & 1)) {
         CExplosionDriver* driver;
         explosion->GetTCDriver(&driver);

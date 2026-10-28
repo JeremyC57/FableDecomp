@@ -44,10 +44,12 @@ class CTCPhysicsBase { public:
     virtual const CRightHandedSet& GetOrientation() const;   // slot 72 (+0x120)
     void GetBoundingInfo(C3DVector* centre, float* radius);   // 0x006AF640
 };
-class CThingGameObject { public:
+class CThing { public:
+    const C3DVector& GetPos() const;             // 0x004C73D0
+};
+class CThingGameObject : public CThing { public:
     unsigned char _00[0x60];
     CTCPhysicsBase* m_pPhysics;                 // +0x60
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 class CThing;
 class CThingCreatureBase;

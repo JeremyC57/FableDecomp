@@ -12,8 +12,10 @@
 // only CAIStateGroupBase's layout (PBrain at +4) is modelled, with the brain's creature pointer at +0x18.
 class C3DVector;
 
-class CThingGameObject { public:
-    C3DVector* GetPosition();                   // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
+};
+class CThingGameObject : public CThing { public:
 };
 
 class CThingAICreature { public:
@@ -55,7 +57,7 @@ bool CAIStateGroup_GazeAtWork::InitCreaturePosition()
     if (IsRunnable()) {
         CThingGameObject* pGazePos = FindFreeGazePos();
         CThingAICreature* pCreature = PBrain->PCreature;
-        return pCreature->AutoPlaceNear(pGazePos->GetPosition(), 1.0f);
+        return pCreature->AutoPlaceNear((C3DVector*)&pGazePos->GetPos(), 1.0f);
     }
     return false;
 }

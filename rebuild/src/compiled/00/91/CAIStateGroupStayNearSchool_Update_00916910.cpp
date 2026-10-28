@@ -22,7 +22,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;            // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -224,10 +226,8 @@ class CDefPointer { public:
 };
 class CThingBuilding : public CThing { public:
     CDefPointer<CMaterialDef> PeekPMaterial();  // 0x0082D2D0
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCVillager;
 class CTCVillage;
@@ -239,8 +239,8 @@ struct CThingSchoolKid : CThing {
 // the kid is within 20 units (XY) of the school: the delta kept on the FPU, squared length against 400
 __forceinline bool IsNearSchool(CThingBuilding* school, CThingPos* kid)
 {
-    const C3DVector& schoolPos = school->GetPosition();
-    const C3DVector& kidPos = kid->GetPosition();
+    const C3DVector& schoolPos = school->GetPos();
+    const C3DVector& kidPos = kid->GetPos();
     C2DVector delta;
     delta.x = kidPos.x - schoolPos.x;
     delta.y = kidPos.y - schoolPos.y;

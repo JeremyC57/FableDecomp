@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CA310, length 387 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8), CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580 on the
 // thing's definition (+0x70), CCharString ctor/dtor @ 0x0099EBF0 / 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&,
-// long&) @ 0x00669D30, CThing::GetPosition @ 0x004C73D0, CreateEffectThing(long, const C3DVector*, bool) @ 0x006E0880 (`__fastcall`),
+// long&) @ 0x00669D30, CThing::GetPos @ 0x004C73D0, CreateEffectThing(long, const C3DVector*, bool) @ 0x006E0880 (`__fastcall`),
 // CVectorMap::LowerBound @ 0x0040F020 (inlined lookups: 0x4B = CTCDParticleEmitter, bit 11 of +0x28, `p = 0; if (HasTC) p = GetTC`;
 // 0xF5 = CTCNymph, bit 21 of +0x3c, tested), CTCDParticleEmitter::AttachToThing(CThing*, long, const CCharString&, long, float)
 // @ 0x006E0BE0, CTCNymph::StartFlyingAround(long) @ 0x0080F5E0.
@@ -82,7 +82,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                      // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
         long type = interfaceType;
@@ -152,7 +152,7 @@ void CCreatureAction_NymphGetHit::PerformAction()
     CDefClassBase* def = PCreature.GetPItem()->m_pDef;
     bool found = def->GetSubDef(effectsSlot);
     if (found && effectsSlot.m_p->GetEffectFromString("TELEPORT_POS", effectType)) {
-        CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPosition(), false);
+        CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
         if (effect && !(effect->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = 0;
             if (effect->HasTC(0x4b))

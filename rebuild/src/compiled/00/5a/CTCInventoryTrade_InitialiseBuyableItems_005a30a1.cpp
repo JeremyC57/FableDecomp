@@ -154,7 +154,8 @@ class CThing { public:
         return false;
     }
 };
-class CPlayer { public: CThing* GetControlledCreature();       // 0x00487DD0
+class CThingPlayerCreature : public CThing { };
+class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
 class CPlayerManager { public: CPlayer* GetMainPlayer() const;       // 0x00449960
 };
@@ -195,7 +196,7 @@ void CTCInventoryTrade::InitialiseBuyableItems(CItemVector& items)
     GetShopThing()->GetInterface(&shop, 0x53);
     CLongMap stock = shop->GetStockMap();
     CTCInventoryItem* inventory = 0;
-    static_cast<const CThing*>(g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetControlledCreature())->GetInterface(&inventory, 0x11);
+    static_cast<const CThing*>(g_pMainGameComponent->PlayerManager->GetMainPlayer()->PeekPControlledCreature())->GetInterface(&inventory, 0x11);
     CItemVector heroItems;
     inventory->GetAllItems(heroItems);
     for (unsigned int i = 0; i < heroItems.size(); ++i) {

@@ -1,7 +1,7 @@
 // CTCCameraPointScripted::GetEndPos(const C3DVector* origin, const CRightHandedSet* axes) const -- the scripted camera's end position: (parent position + EndPos) transformed into the given frame
 // Leaf: GetEndPos
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x000075CD90, length 81 bytes (`ret 0Ch`: hidden result + two pointers).
-// Callees: CThing::GetPosition() const @ 0x004C73D0 (const C3DVector&), CTCCameraPointDefinitionBase::TransformPosition(const
+// Callees: CThing::GetPos() const @ 0x004C73D0 (const C3DVector&), CTCCameraPointDefinitionBase::TransformPosition(const
 //   C3DVector&, const C3DVector*, const CRightHandedSet*) const @ 0x0075C420 (landed; returns through this function's own
 //   hidden result pointer).
 // Label: Ego_r.pdb names the adjacent pair ?GetStartPos / ?GetEndPos@CTCCameraPointScripted@@QBE?AVC3DVector@@PBV2@PBVCRightHandedSet@@@Z
@@ -28,7 +28,7 @@ inline C3DVector operator+(const C3DVector& a, const C3DVector& b)
 class CRightHandedSet;
 
 class CThing { public:
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 #pragma pack(push, 1)
@@ -52,5 +52,5 @@ public:
 
 C3DVector CTCCameraPointScripted::GetEndPos(const C3DVector* origin, const CRightHandedSet* axes) const
 {
-    return TransformPosition(GetParentThing()->GetPosition() + EndPos, origin, axes);
+    return TransformPosition(GetParentThing()->GetPos() + EndPos, origin, axes);
 }

@@ -6,7 +6,8 @@
 class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
 struct ScriptMethods;
-struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;const C3DVector& GetPosition() const;}; //004C73D0,004C7E50
+class CThing { public: const C3DVector& GetPos() const; };
+struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; }; //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
 // Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
@@ -113,7 +114,7 @@ bool CGameScriptInterfaceMethods::CanThingBe_Heard_ByOtherThing(const ScriptMeth
  ComponentMap* map=&other->Components;ComponentEntry* it=map->LowerBound(52);ComponentEntry* end=map->Finish;
  PerceiveMethods* tc=static_cast<PerceiveMethods*>((it==end||it->Type>52?end:it)->Component);
  const CThingNative* perceived=tc->GetPerceivedThing();if(perceived&&perceived==thing)return tc->Heard;
- float radius=tc->GetSoundRadius();const C3DVector& a=other->GetPosition();const C3DVector& b=thing->GetPosition();
+ float radius=tc->GetSoundRadius();const C3DVector& a=other->GetPos();const C3DVector& b=thing->GetPos();
  float x=b.X-a.X,y=b.Y-a.Y,z=b.Z-a.Z;if(z*z+y*y+x*x<=radius*radius)return true;
  }return false;
 }

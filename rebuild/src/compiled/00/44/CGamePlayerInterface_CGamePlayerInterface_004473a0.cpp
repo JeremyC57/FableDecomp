@@ -1,7 +1,7 @@
 // CGamePlayerInterface::CGamePlayerInterface(CMainGameComponent* component, CPlayerManager* playerManager) -- build the input process manager base, the packet file, the saved input event, empty control containers and the processed-input block, then (outside front-end compilation) select the control scheme from the definitions
 // Leaf: ??0CGamePlayerInterface
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004473A0, length 324 bytes (`ret 8`). Vtable 0x01231BDC.
-// Callees: CInputProcessManager ctor @ 0x00A0D4A0 (base), CBase ctor @ 0x0099A2F0 (the packet file's root; file vtable
+// Callees: CInputProcessManager ctor @ 0x00A0D4A0 (base), CBaseClassNonCopyable ctor @ 0x0099A2F0 (the packet file's root; file vtable
 //   0x0122D06C), CWideString ctor @ 0x0099AED0, CSavedInputEvent part ctor @ 0x00A04410, CProcessedInput part ctor
 //   @ 0x00A0D300, CEngine::PeekDefinitionManager @ 0x00415FBC, CGamePlayerInterface::SetControlScheme(long) @ 0x00446EF0;
 //   the front-end compile flag 0x013B8648.
@@ -11,8 +11,8 @@
 //   +0x704, InputEventIsLoaded +0x720, Suspended +0x79C, Controls +0x7A8 .. CurrentQueuedProcessedInputNo +0x7DC,
 //   CurrentProcessedInput +0x7E0); the engine header's PDB containers are larger, so a local model.
 class CWideString { public: void* PStringData; CWideString(); };   // 0x0099AED0
-struct CBase { CBase(); virtual void v00(); };          // 0x0099A2F0
-class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C, 0x1C bytes
+class CBaseClassNonCopyable { protected: CBaseClassNonCopyable(); public: virtual void v00(); };   // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ (protected ctor; slot 0 is the protected virtual dtor)
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                         // vtable 0x0122D06C, 0x1C bytes
     unsigned char _pad04[0x10];
     bool          Open;                                 // +0x14
     CWideString   FileName;                             // +0x18
@@ -39,7 +39,7 @@ class CProcessedInput { public:                                // 0xB0 bytes
     unsigned char  _pad00[8];
     CGameEventSlot Events[4];                           // +0x08
     unsigned char  _padA8[8];
-    void Reset();                                       // 0x00A0D300 (manifest "CGameEventPackage" ctor label propagated)
+    void Clear();                                       // 0x00A0D300 ?Clear@CProcessedInput@@QAEXXZ
 };
 template<class T> struct CRetailVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -96,7 +96,7 @@ CGamePlayerInterface::CGamePlayerInterface(CMainGameComponent* component, CPlaye
     PacketSave = false;
     PacketLoad = false;
     InputEventIsLoaded = false;
-    CurrentProcessedInput.Reset();
+    CurrentProcessedInput.Clear();
     Suspended = false;
     Unknown894 = false;
     ControlsDefIndex = 0;

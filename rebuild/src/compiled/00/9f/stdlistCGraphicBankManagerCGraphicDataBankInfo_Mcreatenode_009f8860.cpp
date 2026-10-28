@@ -64,12 +64,14 @@ namespace std {
     template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_base<_Tp, _Alloc> {
     public:
         typedef _List_node<_Tp> _Node;
+        protected:
         _Node* _M_create_node(const _Tp& __x)
         {
             _Node* __p = this->_M_node.allocate(1);
             _Construct(&__p->_M_data, __x);
             return __p;
         }
+        public:
     };
 
     template class list<CGraphicBankManager::CGraphicDataBankInfo>;

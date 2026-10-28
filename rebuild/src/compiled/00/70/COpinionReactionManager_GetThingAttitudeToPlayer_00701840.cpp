@@ -1,7 +1,7 @@
 // COpinionReactionManager::GetThingAttitudeToPlayer(const CThing* thing) const -- the thing's attitude towards the player: GetAttitudeOrReactionType in attitude mode, with the player creature's opinion-source component (if any) and the manager's attitude mask
 // Leaf: GetThingAttitudeToPlayer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00701840, length 103 bytes (padded to 112).
-// Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::GetControlledCreature @ 0x00487DD0,
+// Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature @ 0x00487DD0,
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0,
 //          COpinionReactionManager::GetAttitudeOrReactionType(const CThing*, bool, bool*, CTCOpinionSource*) @ 0x00701010.
 // Layout: PDef +0, World +4; AttitudeMask (bool[79]) retail +0x554 (PDB +0x55C, the retail manager is 8 bytes smaller
@@ -22,18 +22,19 @@ class CThing { public:
     unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present
     CInterfaceMap m_interfaces;             // +0x44
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
-    __forceinline CTCBase* GetTC(long interfaceType)
+    __forceinline CTCBase* GetTC(long interfaceType) const
     {
         long type = interfaceType;
-        CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         if (it == map->last || interfaceType < it->type)
             it = map->last;
         return it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature();        // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer();            // 0x0049D9D0
@@ -53,7 +54,7 @@ public:
 
 long COpinionReactionManager::GetThingAttitudeToPlayer(const CThing* thing)
 {
-    CThing* creature = World->GetCurrentPlayer()->GetControlledCreature();
+    const CThing* creature = World->GetCurrentPlayer()->PeekPControlledCreature();
     CTCOpinionSource* source = 0;
     if (creature && creature->HasTC(TC_OPINION_SOURCE))
         source = (CTCOpinionSource*)creature->GetTC(TC_OPINION_SOURCE);

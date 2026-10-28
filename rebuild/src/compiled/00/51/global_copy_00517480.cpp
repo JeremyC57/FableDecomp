@@ -64,12 +64,14 @@ public:
     typedef T value_type;
     typedef _List_node<T> _Node;
     _List_iterator end() { return _List_iterator(this->_M_node._M_data); }
+    protected:
     _Node* _M_create_node(const T& x)
     {
         _Node* p = this->_M_node.allocate(1);
         _Construct(&p->_M_data, x);
         return p;
     }
+    public:
     _List_iterator insert(_List_iterator position, const T& x)
     {
         _Node* tmp = _M_create_node(x);

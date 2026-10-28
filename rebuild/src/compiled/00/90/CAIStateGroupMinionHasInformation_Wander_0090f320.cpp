@@ -25,7 +25,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -228,7 +230,6 @@ class C2DVector { public:
     float GetLengthSquared() const { return x * x + y * y; }
 };
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCInformation {                         // interface 0xAA
     unsigned char _pad[0x14];
@@ -266,7 +267,7 @@ bool CAIStateGroup_MinionHasInformation::Wander()
     }
     C3DVector spot = info->m_spot;
     float radius = info->m_radius;
-    const C3DVector& pos = ((CThingPos*)PBrain->PCreature)->GetPosition();
+    const C3DVector& pos = ((CThingPos*)PBrain->PCreature)->GetPos();
     C2DVector delta;
     delta.x = pos.x - spot.x;
     delta.y = pos.y - spot.y;

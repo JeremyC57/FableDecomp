@@ -1,7 +1,7 @@
 // CTCTurncoat::ModifyTurncoatedness(float) -- while below its resistance, add to the creature's turncoatedness (clamped to [0, resistance], restarting the recovery delay); on reaching the resistance play the activate effect, attach the turncoated effect, kill the stage effects and play the turncoat chant
 // Leaf: ?ModifyTurncoatedness@CTCTurncoat
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007C7A00, 572 bytes (+ int3 padding), `ret 4`.
-// Callees: CThing::GetPosition() const 0x004C73D0; CreateParticleEffect(long, const C3DVector*) 0x0072AB70 (`__fastcall`);
+// Callees: CThing::GetPos() const 0x004C73D0; CreateParticleEffect(long, const C3DVector*) 0x0072AB70 (`__fastcall`);
 //   CIntelligentPointer<CThing>(CThing*) 0x004A96F0 / ~CBaseIntelligentPointer 0x00A01C10 / GetPItem 0x00A01B50 / SetPItem
 //   0x00A01B90; IS_THING_ALIVE<CIntelligentPointer<...> > 0x004CC340 (`__fastcall`, out of line); LowerBound 0x0040F020
 //   (interfaces 0x4B particle emitter, 0x10 sound player); CTCDParticleEmitter::AttachToThing 0x006E0BE0; CThing::Kill(bool)
@@ -46,7 +46,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
 };
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector* pos);   // 0x0072AB70
@@ -127,12 +127,12 @@ void CTCTurncoat::ModifyTurncoatedness(float amount)
         CurrentTurncoatedness = 0.0f;
     if (CurrentTurncoatedness >= CreatureTurncoatResistance) {
         if (PDef->TurncoatActivateEffect)
-            CreateParticleEffect(PDef->TurncoatActivateEffect, &ParentThing->GetPosition());
+            CreateParticleEffect(PDef->TurncoatActivateEffect, &ParentThing->GetPos());
         if (!IsThingAlive(TurncoatedEffect)) {
             long effect = PDef->TurncoatedEffect;
             if (effect) {
                 {
-                    CIntelligentPointer created(CreateParticleEffect(effect, &ParentThing->GetPosition()));
+                    CIntelligentPointer created(CreateParticleEffect(effect, &ParentThing->GetPos()));
                     TurncoatedEffect.SetPItem(created.GetPItem());
                 }
                 if (IS_THING_ALIVE(&TurncoatedEffect)) {

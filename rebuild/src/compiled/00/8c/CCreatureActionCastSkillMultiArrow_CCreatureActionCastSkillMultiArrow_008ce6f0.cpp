@@ -125,7 +125,7 @@ public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     bool IsDead() const { return (m_flags91 & 1) != 0; }
     bool HasTC(long interfaceType) const { return (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) != 0; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -203,7 +203,7 @@ CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingC
     long effectType = 0;
     if (def->GetSubDef(effects)) {
         if (effects->GetEffectFromString("CAST_EFFECT", effectType)) {
-            CThing* effect = CreateParticleEffect(effectType, &GetCreature()->GetPosition());
+            CThing* effect = CreateParticleEffect(effectType, &GetCreature()->GetPos());
             CTCDParticleEmitter* emitter;
             if (effect && !effect->IsDead() && effect->GetInterface(&emitter, 0x4b))
                 emitter->AttachToThing(GetCreature(), 10, g_LeftHandAttachmentName, 0, 0);

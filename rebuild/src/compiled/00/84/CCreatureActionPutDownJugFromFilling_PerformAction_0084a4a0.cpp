@@ -124,7 +124,7 @@ class CThing { public:
     unsigned char _pad74[0x90 - 0x74];
     signed char m_player;                             // +0x90
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

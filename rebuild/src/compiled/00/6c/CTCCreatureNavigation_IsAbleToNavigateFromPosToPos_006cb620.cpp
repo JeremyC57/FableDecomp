@@ -1,10 +1,10 @@
 // CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) -- ask the active navigator whether the route is possible, telling it whether the start is the creature's own position
 // Grade: RELOCATION_MATCH -- the squared distance is accumulated in statements (`r = dz*dz; r += dx*dx; r += dy*dy;`), which fixes the x87 square order to dz, dx, dy as retail; a single-expression sum reorders it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CB620, length 114 bytes (+ int3 padding).
-// Callees: CThing::GetPosition @ 0x004C73D0, CNavigatorBase slot 9 (+0x24).
+// Callees: CThing::GetPos @ 0x004C73D0, CNavigatorBase slot 9 (+0x24).
 // Shape: the bool local is set true first and cleared when the start is farther than the tolerance from the parent's position
 // (`fcompp ; test ah,5 ; jp`); the difference vector stays on the x87 stack.
-// Layout: Ego_r.pdb CTCCreatureNavigation: PNavigator +0xC (the active CNavigatorBase). Retail CThing::GetPosition @ 0x004C73D0.
+// Layout: Ego_r.pdb CTCCreatureNavigation: PNavigator +0xC (the active CNavigatorBase). Retail CThing::GetPos @ 0x004C73D0.
 // Globals: the 1e-4f tolerance @ 0x0129BA3C is an extern float variable (`fld [g] ; fmul [g]` squares it).
 class C3DVector { public:
     float X, Y, Z;
@@ -35,7 +35,7 @@ inline float XYDistanceSquared(const C3DVector& a, const C3DVector& b)
 }
 extern float g_fTolerance;                      // 0x0129BA3C (1e-4f)
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CWorldMap { public:
     bool IsPosInMap(const C3DVector& pos);      // 0x004FC600
@@ -62,7 +62,7 @@ class CTCCreatureNavigation { public:
 bool CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity)
 {
     bool fromCurrentPos = true;
-    if (DistanceSquared(from, ParentThing->GetPosition()) > g_fTolerance * g_fTolerance)
+    if (DistanceSquared(from, ParentThing->GetPos()) > g_fTolerance * g_fTolerance)
         fromCurrentPos = false;
     return PNavigator->IsAbleToNavigate(from, to, proximity, fromCurrentPos);
 }

@@ -9,7 +9,7 @@
 class C3DVector { public: float X, Y, Z; };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;   // 0x004C73D0 (PhysicsTC +0x60, position at +0x0c)
+    const C3DVector& GetPos() const;   // 0x004C73D0 (PhysicsTC +0x60, position at +0x0c)
 };
 
 class CNavigatorExternalInterface { public:

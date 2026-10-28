@@ -189,7 +189,9 @@ public:
     typedef _Rb_tree_iterator<_Value, _Const_traits<_Value> > const_iterator;
     unsigned int _M_node_count;                        // +0x04
     _Compare _M_key_compare;                           // +0x08 (empty)
+    private:
     _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;          // 0x007ACC90 (out of line)
+    public:
     iterator begin() { return iterator(this->_M_header._M_data->_M_left); }
     iterator end() { return iterator(this->_M_header._M_data); }
     iterator find(const _Key& __k) { return iterator(_M_find(__k)); }

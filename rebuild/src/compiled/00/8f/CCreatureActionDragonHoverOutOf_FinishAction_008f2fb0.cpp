@@ -1,6 +1,6 @@
 // CCreatureAction_DragonHoverOutOf::FinishAction() -- put the dragon back at its position raised by a fixed height, remove its interface-0x4d component, then the base FinishAction
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F2FB0, length 99 bytes, plain `ret`.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::GetPosition @ 0x004C73D0,
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CThing::GetPos @ 0x004C73D0,
 //          CTCPhysicsBase::ResetPosition(const C3DVector&) (virtual slot 31, `call [eax+7Ch]`, rtti-vtables slot 31 =
 //          0x006B01D0 ResetPosition) on the thing's physics TC at +0x60, CThing::RemoveTC(long) @ 0x004C9840,
 //          CCombatActionBase::FinishAction @ 0x00859A20.
@@ -25,7 +25,7 @@ class CTCPhysicsBase { public:                     // the thing's physics TC; on
 class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;              // +0x60
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     void RemoveTC(long interfaceType);      // 0x004C9840
 };
 
@@ -60,7 +60,7 @@ class CCreatureAction_DragonHoverOutOf : public CCombatActionBase { public:
 
 void CCreatureAction_DragonHoverOutOf::FinishAction()
 {
-    const C3DVector& current = PCreature.GetPItem()->GetPosition();
+    const C3DVector& current = PCreature.GetPItem()->GetPos();
     C3DVector position;
     position.X = current.X;
     position.Y = current.Y;

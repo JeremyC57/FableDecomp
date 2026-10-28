@@ -1,6 +1,6 @@
 // CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- with abilities enabled and a live hero holding the abilities component: an assignable special-move button triggers the assigned ability, game action 0x39 cycles the assigned abilities (mouse-wheel steps of 120 or a held button) and action 0x5e cycles forward; then hero state 0xb queues game event 0x40 (outside mode 0x28) and state 0x10 with a named state queues game event 0x3b (outside modes 0x23 and 2)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00690030, 805 bytes, `ret 8`, /GS (cookie 0x0139C8A8, __security_check_cookie 0x00BFE9F9).
-// Callees: CPlayer::GetHeroCreature 0x00487DC0 / GetControlledCreature 0x00487DD0 / GetCurrentMode 0x00633BE0, LowerBound
+// Callees: CPlayer::GetPControlledCreature 0x00487DC0 / PeekPControlledCreature 0x00487DD0 / GetCurrentMode 0x00633BE0, LowerBound
 //   0x0040F020 (non-const, interface 0x6f) and 0x004365B0 (const, interface 0xa7), CInputProcessGameBase 0x00687A90/0x00687BD0/
 //   0x00687C70/0x00687CF0/0x00687D40, GetAssignableSpecialMoveIndexForEvent 0x00445FA0, TriggerSpecialAbility 0x005EED4C,
 //   CycleAssignedAbilities 0x005F64DD, CheckTermination 0x0072A860, GetName 0x0072B870, CCharString operator!= 0x0099E960 / dtor
@@ -78,6 +78,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCInventoryAbilities { public:
     void TriggerSpecialAbility(long index);        // 0x005EED4C (label)
     void CycleAssignedAbilities(bool forward);     // 0x005F64DD
@@ -94,8 +95,8 @@ public:
     signed char   PlayerNumber;                    // +0x28 (descriptive)
     unsigned char _pad29[0x218 - 0x29];
     bool          AbilitiesEnabled;                // +0x218 (descriptive)
-    CThing* GetHeroCreature();                     // 0x00487DC0
-    CThing* GetControlledCreature();               // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;               // 0x00487DD0
     long GetCurrentMode() const;                   // 0x00633BE0
 };
 class CGamePlayerInterface { public:
@@ -124,7 +125,7 @@ public:
 
 void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* hero = MyPlayer->GetHeroCreature();
+    CThing* hero = MyPlayer->GetPControlledCreature();
     if (MyPlayer->AbilitiesEnabled && hero && !hero->Dead && (hero->m_presentBits[3] & 0x8000)) {
         CTCInventoryAbilities* abilities = hero->GetInterfaceUnchecked<CTCInventoryAbilities>(0x6f);
         CTCHeroState* state = 0;
@@ -163,7 +164,7 @@ void CInputProcessSpecialAbilities::ProcessInput(const CInputEvent& event, CProc
             processed.SetHandled();
         }
     }
-    CThing* creature = MyPlayer->GetControlledCreature();
+    const CThing* creature = MyPlayer->PeekPControlledCreature();
     CTCHeroState* heroState;
     if (creature->GetInterface(&heroState, 0xa7)) {
         switch (heroState->State) {

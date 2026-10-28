@@ -6,7 +6,7 @@
 //   user copy constructor from the operator* temporary (the x87 sequence: three products, Z parked, X/Y/Z added in
 //   place with popping `fadd [m] ; fstp [m]`; adding the operator* temporary directly keeps the Y product live --
 //   `fld [Y] ; fadd st(1) ; fstp ; fstp st(0)`).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, CCharString @ 0x0099EBF0 /
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, CCharString @ 0x0099EBF0 /
 //          @ 0x0099EAE0, CTCGraphicAppearance::GetDummyObject @ 0x004C08C0, physics slot 70 (+0x118) facing, obstruction
 //          create @ 0x007FD4B0 (__fastcall), driver SetValue @ 0x007FD3D0, intelligent pointer @ 0x00A01B10 / 0x00A01B90 /
 //          0x00A01C10, push_back @ 0x004AD520, CGameDefinitionManager::Get @ 0x0044C6B0, GetDefGlobalIndexFromName
@@ -46,7 +46,7 @@ public:
     CPhysicsBody*  PhysicsBody;                       // +0x60
     CTCGraphicAppearance* GraphicAppearance;          // +0x64
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     bool GetDummyObject(const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
     {
         return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
@@ -102,13 +102,13 @@ class CCreatureAction_SnapDragonFast : public CCreatureActionBase { public:
 
 void CCreatureAction_SnapDragonFast::PerformAction()
 {
-    C3DVector mouth = GetCreature()->GetPosition();
+    C3DVector mouth = GetCreature()->GetPos();
     CRightHandedSet orientation;
     GetCreature()->GetDummyObject("DRAGON_MOUTH_DUMMY", &mouth, &orientation);
-    mouth.Z = GetCreature()->GetPosition().Z;
+    mouth.Z = GetCreature()->GetPos().Z;
     C3DVector offset = GetCreature()->GetPhysics()->GetFacing() * 1.5f;
     mouth += offset;
-    CThing* obstruction = CreateObstruction(&mouth, &GetCreature()->GetPosition(), 1.5f);
+    CThing* obstruction = CreateObstruction(&mouth, &GetCreature()->GetPos(), 1.5f);
     if (obstruction) {
         CTCDriverED* driver = 0;
         if (obstruction->HasTC(0xed))
@@ -118,7 +118,7 @@ void CCreatureAction_SnapDragonFast::PerformAction()
     }
     long explosion = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("THING_EXPLOSION_JACK_DRAGON_BITE");
     C3DVector position = mouth - GetCreature()->GetPhysics()->GetFacing() * 2.5f;
-    CThing* bite = CreateThing(explosion, &position, &GetCreature()->GetPosition());
+    CThing* bite = CreateThing(explosion, &position, &GetCreature()->GetPos());
     if (bite) {
         CTCDriver41* driver;
         if (bite->HasTC(0x41))

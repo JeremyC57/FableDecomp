@@ -1,7 +1,7 @@
 // CTCWife::IsCourtableAndNotBlockingIt() const -- true when courting is not blocked, the wife's attitude allows it, and the living hero is free
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006CF810, 124 bytes (+4 int3). __fastcall, returns bool in al.
 // Callees: CTCBase::PeekPlayerManager() const 0x00686D50 (catalog "CViewBase::GetDisplayEngine" twin of 0x00686D40);
-//          CPlayerManager::GetMainPlayer() const 0x00449960; CPlayer::GetHeroThing() 0x00487DC0;
+//          CPlayerManager::GetMainPlayer() const 0x00449960; CPlayer::GetPControlledCreature() 0x00487DC0;
 //          CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x004365B0.
 // Shape: early-out tests on CourtingBlocked (+0x15), OpinionAttitude (+0x10) == 4 and bit 3 of the parent thing's +0x1C9
 //        byte; the hero (not dead) must carry interface 4 (bitset byte +0x20 bit 4) whose pointer at +0x114 is null.
@@ -37,8 +37,9 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroThing() const;               // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
@@ -70,7 +71,7 @@ class CTCWife : public CTCBase { public:
 bool CTCWife::IsCourtableAndNotBlockingIt() const
 {
     if (!CourtingBlocked && OpinionAttitude != 4 && (ParentThing->Flags1C9 & 8)) {
-        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroThing();
+        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
         if (hero && !(hero->Flags91 & 1)) {
             CHeroInterface4* component;
             if (hero->GetInterface(&component, 4)) {

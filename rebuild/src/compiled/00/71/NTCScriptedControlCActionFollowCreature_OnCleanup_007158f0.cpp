@@ -1,7 +1,7 @@
 // NTCScriptedControl::CActionFollowCreature::OnCleanup() -- restore the creature's original physics component (re-added at the current position/orientation, then the saved component deleted), stop sneaking, restore hero-pushability when dynamic obstacles were not avoided, and clear the navigation's ignored thing
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007158F0, length 372 bytes (plain `ret`).
-// Callees: the physics component's virtual slot 72 (+0x120, the current right-handed set), CBase::CBase @ 0x0099A2F0 /
-//          ~CBase @ 0x0099A300 (CTCParamsPhysicsBase, vtable 0x0125C818, inline ctor), the saved component's virtual slot 22
+// Callees: the physics component's virtual slot 72 (+0x120, the current right-handed set), CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 /
+//          ~CBaseClassNonCopyable @ 0x0099A300 (CTCParamsPhysicsBase, vtable 0x0125C818, inline ctor), the saved component's virtual slot 22
 //          (+0x58, its name by value) and deleting destructor (slot 0), CThing::AddTC @ 0x004C9D60, ~CCharString @ 0x0099EAE0,
 //          CActionFollowCreature::SetAsSneaking @ 0x00713D50, the physics component's slot 84 (+0x150, pushable-by-hero
 //          flag as a long), CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, 7 = CTCCreatureNavigation, the masked
@@ -29,12 +29,12 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                                   // 0x0099EAE0
 };
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    CBase();                                          // 0x0099A2F0
-    ~CBase();                                         // 0x0099A300
-}; } using N_0099a300::CBase;
-class CTCParamsBase : public CBase { public: };
+struct CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                          // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ
+    virtual ~CBaseClassNonCopyable();                 // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ
+};
+class CTCParamsBase : public CBaseClassNonCopyable { public: };
 class CTCParamsPhysicsBase : public CTCParamsBase { public:         // vtable 0x0125C818, 0x28 bytes
     C3DVector       Position;                         // +0x04
     CRightHandedSet Rhs;                              // +0x10

@@ -1,5 +1,5 @@
 // std::vector<CEngineLocalDetailObjectDef>::_M_clear() -- STLport vector storage release for the detail-object def vector: destroy the elements (out-of-line range destroy), then deallocate the block (free when non-null)
-// Leaf: ?_M_clear@?$vector@VCEngineLocalDetailObjectDef@@V?$allocator@VCEngineLocalDetailObjectDef@@@std@@@std@@QAEXXZ
+// Leaf: ?_M_clear@?$vector@VCEngineLocalDetailObjectDef@@V?$allocator@VCEngineLocalDetailObjectDef@@@std@@@std@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00477BFC, 28 bytes, thiscall, plain `ret` (size-optimised def TU: unaligned, pop ecx).
 // Identity: the only caller is std::vector<CEngineLocalDetailObjectDef>::operator= 0x00477AB7 (STLport's `_M_clear()` slot
 //   between _M_allocate_and_copy 0x00477C18 and the `_M_start = tmp` store; that row binds
@@ -42,7 +42,9 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : public _Vector_base<_Tp, _Alloc> {
 public:
+    protected:
     void _M_clear();
+    public:
 };
 
 template <class _Tp, class _Alloc>

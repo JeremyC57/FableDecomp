@@ -65,6 +65,7 @@ public:
     typedef _Tp* pointer;
     typedef const _Tp* const_pointer;
     typedef size_t size_type;
+    protected:
     template <class _ForwardIterator>
     pointer _M_allocate_and_copy(size_type __n, _ForwardIterator __first, _ForwardIterator __last)
     {
@@ -72,6 +73,7 @@ public:
         __uninitialized_copy(__first, __last, __result, __false_type());
         return __result;
     }
+    public:
 };
 
 template _D3DVERTEXELEMENT9* vector<_D3DVERTEXELEMENT9>::_M_allocate_and_copy(size_t, const _D3DVERTEXELEMENT9*,

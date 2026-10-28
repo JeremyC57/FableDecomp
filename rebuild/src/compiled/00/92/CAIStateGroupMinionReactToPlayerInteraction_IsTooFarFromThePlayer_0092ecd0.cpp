@@ -25,7 +25,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -103,8 +105,7 @@ class C3DVector { public:
     float MagnitudeSquared() const { return X * X + Y * Y + Z * Z; }
 };
 
-struct CThingPos {
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+struct CThingPos : public CThing {
 };
 
 const float TOO_FAR_FROM_PLAYER_DISTANCE = 3.0f;
@@ -116,8 +117,8 @@ struct CAIStateGroup_MinionReactToPlayerInteraction : CAIStateGroupBase {
 bool CAIStateGroup_MinionReactToPlayerInteraction::IsTooFarFromThePlayer(const CThing* player)
 {
     static const float s_tooFarDistanceSquared = TOO_FAR_FROM_PLAYER_DISTANCE * TOO_FAR_FROM_PLAYER_DISTANCE;    // 0x013BB6B8
-    const C3DVector& creaturePos = ((CThingPos*)PBrain->PCreature)->GetPosition();
-    if ((((const CThingPos*)player)->GetPosition() - creaturePos).MagnitudeSquared() > s_tooFarDistanceSquared)
+    const C3DVector& creaturePos = ((CThingPos*)PBrain->PCreature)->GetPos();
+    if ((((const CThingPos*)player)->GetPos() - creaturePos).MagnitudeSquared() > s_tooFarDistanceSquared)
         return true;
     return false;
 }

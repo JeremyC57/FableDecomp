@@ -3,8 +3,8 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0062ABA0, 491 bytes (+ int3 padding), `ret 4`, /GS (cookie 0x0139C8A8).
 //   PDB ?EAUseQuickAccessItem@CWorld@@QAEXPBVCGameEvent@@@Z.
-// Callees: CWorld::GetPlayer(long) 0x0049D850 (x2), CPlayer::HasMode 0x00634160, CPlayer::GetControlledCreature
-//   0x00487DD0 (x2), CPlayer::GetHeroCreature 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0
+// Callees: CWorld::GetPlayer(long) 0x0049D850 (x2), CPlayer::HasMode 0x00634160, CPlayer::PeekPControlledCreature
+//   0x00487DD0 (x2), CPlayer::GetPControlledCreature 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x004365B0
 //   (interface 0xA7) and 0x0040F020 (interface 0x11 = CTCInventory) -- distinct retail copies, CGameEvent::GetData
 //   0x009F17A0, CMemoryBuffer::Read 0x009F18F0, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0
 //   ("OBJECT_GUILD_SEAL_1" 0x01251B4C), CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410,
@@ -45,7 +45,7 @@ struct CInterfaceMap {                             // CVectorMap<ETCInterfaceTyp
     SEntry* first;
     SEntry* last;
     SEntry* LowerBound(const long* type);          // 0x0040F020
-    SEntry* LowerBound2(const long* type);         // 0x004365B0 (a second retail copy)
+    SEntry* LowerBound2(const long* type) const;   // 0x004365B0 (the const LowerBound copy)
 };
 #pragma auto_inline(off)
 __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
@@ -116,10 +116,10 @@ class CThingCreatureBase { public:
             it = map->last;
         return (T*)it->component;
     }
-    template<class T> __forceinline T* GetTC2(long interfaceType)
+    template<class T> __forceinline T* GetTC2(long interfaceType) const
     {
         long type = interfaceType;
-        CInterfaceMap* map = &Components;
+        const CInterfaceMap* map = &Components;
         CInterfaceMap::SEntry* it = map->LowerBound2(&type);
         if (it == map->last || interfaceType < it->type)
             it = map->last;
@@ -128,6 +128,7 @@ class CThingCreatureBase { public:
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionBase* PCurrentAction;           // +0x100 CCountedPointer<CCreatureActionBase>::Data
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 
 class CGamePlayerInterface { public:
     unsigned long GetNumContextSensitiveSlots() const;   // 0x00445960
@@ -137,8 +138,8 @@ class CPlayer { public:
     unsigned char _pad00[0xc];
     CGamePlayerInterface* PlayerInterface;         // +0xC
     bool HasMode(EPlayerMode mode);                // 0x00634160
-    CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
-    CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
 class CDefinitionManager { public:
 public:
@@ -157,15 +158,15 @@ void CWorld::EAUseQuickAccessItem(const CGameEvent* event)
     if (eventPlayer->HasMode(PLAYER_MODE_0x2F))
         return;
     CPlayer* controller = GetPlayer(event->Player);
-    CThingCreatureBase* controlled = controller->GetControlledCreature();
+    const CThingCreatureBase* controlled = controller->PeekPControlledCreature();
     if (controlled && !controlled->Dead) {
-        CThingCreatureBase* creature = controller->GetControlledCreature();
+        const CThingCreatureBase* creature = controller->PeekPControlledCreature();
         if (creature->HasTC(0xA7) && creature->GetTC2<CTCInterfaceA7>(0xA7)->Blocking)
             return;
     }
     long number = event->Player;
     CPlayer* player = GetPlayer(number);
-    CThingCreatureBase* hero = player->GetHeroCreature();
+    CThingCreatureBase* hero = player->GetPControlledCreature();
     if (!hero || hero->Dead)
         return;
     if (hero->PCurrentAction && hero->PCurrentAction->BlocksQuickAccess())

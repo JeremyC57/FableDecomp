@@ -16,7 +16,7 @@ class C3DVector { public:
     C3DVector() { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator-(const C3DVector& o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
-    float GetLength() const;                // 0x00A14480
+    float GetMagnitudeAndNormalise();                // 0x00A14480 ?GetMagnitudeAndNormalise@C3DVector@@QAEMXZ (normalises in place, returns the old magnitude)
 };
 class CRightHandedSet { public:
     C3DVector Up;
@@ -26,13 +26,15 @@ struct CThingPlacement {
     unsigned char _pad00[0x34];
     float Radius;                           // +0x34
 };
-class CThing { public:
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;   // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:
     unsigned char _pad00[0x60];
     CThingPlacement* m_pPlacement;          // +0x60
     CThingPlacement* GetPlacement() const { return m_pPlacement; }
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00
     void OnKicked();                        // 0x00661EE0 (name unconfirmed)
     bool IsKickable();                      // 0x00838A30 (name unconfirmed)
 };
@@ -76,10 +78,10 @@ void CCreatureAction_KickCreature::PerformAction()
 {
     if (IS_THING_ALIVE(PTargetCreature)) {
         CThing* target = PTargetCreature.GetPItem();
-        C3DVector delta = target->GetPosition_006a4d00() - PCreature.GetPItem()->GetPosition_006a4d00();
+        C3DVector delta = target->PeekPos() - PCreature.GetPItem()->PeekPos();
         float creatureRadius = PCreature.GetPItem()->GetPlacement()->Radius;
         float targetRadius = PTargetCreature.GetPItem()->GetPlacement()->Radius;
-        if (delta.GetLength() < creatureRadius + targetRadius + 1.5f) {
+        if (delta.GetMagnitudeAndNormalise() < creatureRadius + targetRadius + 1.5f) {
             PTargetCreature.GetPItem()->OnKicked();
             if (PTargetCreature.GetPItem()->IsKickable()) {
                 C3DVector position;

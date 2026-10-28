@@ -44,8 +44,9 @@ class CThing { public:
     void SetInLimbo(bool inLimbo);                       // 0x004C8CF0
     void SetAsGameStatePersisted(bool persisted);        // 0x004C7880
     CDefString GetDefName();                             // 0x004C7CC0
-    const C3DVector& GetPosition() const;                // 0x004C73D0
+    const C3DVector& GetPos() const;                // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 
 class CQuestCardDef { public:
     virtual void v00();
@@ -109,7 +110,7 @@ CThing* __fastcall CreateThingObject(long defIndex, const C3DVector& position, l
 class CPlayer { public:
     unsigned char _pad00[0x28];
     long          PlayerNumber;                          // +0x28
-    CThing* GetHeroCreature();                           // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                           // 0x00487DC0
     long GetPlayerNumber() const { return PlayerNumber; }
 };
 class CPlayerManager { public:
@@ -148,11 +149,11 @@ class CQuestManager { public:
 bool CQuestManager::ActivateTestQuestCard(const CCharString& questName, const CCharString& cardDefName)
 {
     CPlayer* player = g_pMainGameComponent->GetPlayerManager()->GetMainPlayer();
-    CThing* hero = player->GetHeroCreature();
+    CThing* hero = player->GetPControlledCreature();
     if (hero && !hero->Dead) {
         long defIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(cardDefName);
         if (defIndex > 0) {
-            CThing* card = CreateThingObject(defIndex, hero->GetPosition(), player->GetPlayerNumber(), 0, 0, "");
+            CThing* card = CreateThingObject(defIndex, hero->GetPos(), player->GetPlayerNumber(), 0, 0, "");
             if (card && card->HasTC(0x6c)) {
                 CTCQuestCard* tc = (CTCQuestCard*)card->GetTC(0x6c);
                 if (tc) {

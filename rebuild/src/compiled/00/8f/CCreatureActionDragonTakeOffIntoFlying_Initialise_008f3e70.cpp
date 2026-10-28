@@ -4,8 +4,8 @@
 // ~CCharString @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 // SetThingIsAbleToBeLifted(CThing*, bool) @ 0x007E4330 (`__fastcall`: ecx thing, dl flag), CVectorMap::LowerBound @ 0x0040F020
 // (inlined GetInterface for types 9 and 0x4D), CPlayerManager::GetMainPlayer @ 0x00449970 (g_pMainGameComponent +0x1c),
-// CPlayer::GetHeroCreature @ 0x00487DC0, CThing::AddTC(const CCharString&, bool, CTCParamsBase*) @ 0x004C9D60,
-// CTCSolidToThing::AddThingNotSolidTo(CThing*) @ 0x00770FA0, CThing::GetPosition @ 0x004C73D0.
+// CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::AddTC(const CCharString&, bool, CTCParamsBase*) @ 0x004C9D60,
+// CTCSolidToThing::AddThingNotSolidTo(CThing*) @ 0x00770FA0, CThing::GetPos @ 0x004C73D0.
 // Shape: the interface-9 lookup is untested (the absent arm reads the dead out word `mov eax,[esp+0Ch]`); the hero's
 // CTCSolidToThing is fetched with HasTC/GetTC else added by name (string temporary dies before the null test); the
 // destination is a C3DVector temporary (X, Y, Z + 35.148f) built in the frame and copied memberwise. Retail
@@ -28,7 +28,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     CTCSolidToThing* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -57,6 +57,7 @@ class CThing { public:
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CCharString { public:                        // one pointer; the defaulted length lets the literal convert implicitly
     void* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -86,7 +87,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CPlayer { public:
-    CThing* GetHeroCreature();              // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();               // 0x00449970
@@ -120,7 +121,7 @@ void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
     CTCCreatureFlags9* pFlags;
     PCreature.GetPItem()->GetInterface(&pFlags, 9);
     pFlags->m_canBeTargeted = 0;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
     CTCSolidToThing* pSolid;
     if (hero->HasTC(0x4d))
         pSolid = hero->GetTC<CTCSolidToThing>(0x4d);
@@ -128,6 +129,6 @@ void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
         pSolid = hero->AddTC("CTCSolidToThing", false, 0);
     if (pSolid)
         pSolid->AddThingNotSolidTo(PCreature.GetPItem());
-    const C3DVector& pos = PCreature.GetPItem()->GetPosition();
+    const C3DVector& pos = PCreature.GetPItem()->GetPos();
     Dest = C3DVector(pos.X, pos.Y, pos.Z + 35.14837646484375f);
 }

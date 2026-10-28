@@ -31,10 +31,12 @@ struct PhysicsView:CTCPhysicsBase {__forceinline void SetFacingAngleXY(const flo
 class CTCStealth { public:C3DVector GetPositionToMoveToForStabOn(Creature& target,float& angle)const;}; //00746EC0
 struct InterfaceEntry {long Type;CTCStealth* Component;};
 struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* type)const;}; //004365B0 const lower_bound
-struct Creature {
+class CThing { public:
+    const C3DVector& GetPos() const; //004C73D0
+};
+struct Creature : public CThing {
  unsigned char _beforeFlags[0x20];unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforePhysics[0x14];PhysicsView* Physics;unsigned char _beforeDead[0x2d];unsigned char DeadFlags;
  __forceinline PhysicsView* GetPhysics()const{return Physics;}
- const C3DVector& GetPosition()const; //004C73D0
  __forceinline bool GetInterface(CTCStealth** out,long type)const{if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;const InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;*out=p->Component;return true;}return false;}
 };
 struct CBaseObjectPointer{void* object;unsigned long refcount;};
@@ -48,5 +50,5 @@ C3DVector CCombatAction_StabThing::GetNextPos()const{
   float angle;C3DVector position=stealth->GetPositionToMoveToForStabOn(*PTarget.GetPItem(),angle);
   PCreature.GetPItem()->GetPhysics()->SetFacingAngleXY(angle);return position;
  }}
- return PCreature.GetPItem()->GetPosition();
+ return PCreature.GetPItem()->GetPos();
 }

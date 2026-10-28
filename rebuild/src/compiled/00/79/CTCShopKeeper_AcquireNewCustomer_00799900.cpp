@@ -1,7 +1,7 @@
 // CTCShopKeeper::AcquireNewCustomer() -- look for the nearest potential customer in the 30m square around the keeper (nearest to the shop); latch it as the current customer and remember it, else when nobody (not even an existing shopper) is around, empty the customer list
 // Leaf: ?AcquireNewCustomer@CTCShopKeeper
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799900, 351 bytes (plain `ret`).
-// Callees: CTCShopKeeper::GetShopTC 0x00798F50; CThing::GetPosition 0x004C73D0 (x2); __ftol2 0x00BFEA70 (x2);
+// Callees: CTCShopKeeper::GetShopTC 0x00798F50; CThing::GetPos 0x004C73D0 (x2); __ftol2 0x00BFEA70 (x2);
 //          CThingFilter_IsPotentialCustomer(CTCShopKeeper*, bool) 0x00799D80 (x2); CTCBase::GetThingSearchTools 0x00686D90;
 //          CThingSearchTools::GetPBestThingInRoughArea<CThingFilter_IsPotentialCustomer, CThingCompare_Nearest,
 //          CThingCreatureBase> 0x0079A050; CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_IsPotentialCustomer,
@@ -19,7 +19,7 @@ class C3DVector { public:
 };
 class CBaseObject;
 class CThing { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 class CThingCreatureBase;
 class C2DBoxI { public:
@@ -79,8 +79,8 @@ void CTCShopKeeper::AcquireNewCustomer()
     CTCShop* shop = GetShopTC();
     if (!shop)
         return;
-    C3DVector shopPos = shop->ParentThing->GetPosition();
-    const C3DVector& pos = ParentThing->GetPosition();
+    C3DVector shopPos = shop->ParentThing->GetPos();
+    const C3DVector& pos = ParentThing->GetPos();
     long x = (long)pos.X;
     long y = (long)pos.Y;
     C2DBoxI area(x - 15, y - 15, x + 15, y + 15);

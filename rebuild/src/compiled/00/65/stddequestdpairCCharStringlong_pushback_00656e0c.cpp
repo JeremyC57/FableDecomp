@@ -66,8 +66,12 @@ template <class _Tp> struct _Deque_base {
 
 template <class _Tp> struct deque : public _Deque_base<_Tp> {
     typedef _Tp value_type;
+    protected:
     void _M_reserve_map_at_back(size_t __nodes_to_add = 1);            // 0x0065676F (out of line in retail)
+    public:
+    protected:
     void _M_push_back_aux_v(const value_type& __t);                    // 0x006569DA
+    public:
     void push_back(const value_type& __t)
     {
         if (this->_M_finish._M_cur != this->_M_finish._M_last - 1) {

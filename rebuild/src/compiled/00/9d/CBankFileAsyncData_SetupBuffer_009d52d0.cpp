@@ -2,14 +2,16 @@
 // Retail: Fable.exe 0x009D52D0, 310 bytes. Callees include CCriticalSectionLock @ 0x00A62920 / 0x00A629A0, CBankFile::Align @ 0x009CBB90, CMovableResourceMemoryPool::AllocateResource @ 0x00A62E40, CHandleBasedMemoryPool::GetPointerFromHandle @ 0x00A026B0, and CMemoryAllocator::InternalAllocate @ 0x009F2A40.
 // The input-stream object has no generated header; its +0x00 primary view, +0x04 CMovableResource secondary base, +0x10 length, +0x14 skipped bytes, +0x1c pool, +0x20 handle, +0x24 internal allocation size, and +0x28 bank follow landed CBankFileAsyncData siblings. Shared engine headers describe the actual pool, movable resource, CBankFile, and lock layouts.
 #include "engine/CBankFile.h"
+#define CCriticalSectionLock CCriticalSectionLockPdb
 #include "engine/CCriticalSectionLock.h"
+#undef CCriticalSectionLock
 #include "engine/CHandleBasedMemoryPool.h"
 #include "engine/CMovableResource.h"
 #include "engine/CMovableResourceMemoryPool.h"
 struct _RTL_CRITICAL_SECTION { unsigned char bytes[0x18]; };
-struct CCriticalSectionLockCalls : CCriticalSectionLock {
-    CCriticalSectionLockCalls(_RTL_CRITICAL_SECTION* section, bool tryOnly); // 0x00A62920
-    ~CCriticalSectionLockCalls(); // 0x00A629A0
+struct CCriticalSectionLock : CCriticalSectionLockPdb {
+    CCriticalSectionLock(_RTL_CRITICAL_SECTION& section, bool tryOnly); // 0x00A62920 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z
+    ~CCriticalSectionLock(); // 0x00A629A0
 };
 struct CBankFileAlign : CBankFile {
     unsigned long Align(unsigned long size); // 0x009CBB90
@@ -52,7 +54,7 @@ class CBankFileAsyncData { public:
 };
 bool CBankFileAsyncData::SetupBuffer(bool allocate)
 {
-    CCriticalSectionLockCalls lock(&BankFile->CriticalSection, !allocate);
+    CCriticalSectionLock lock(BankFile->CriticalSection, !allocate);
     if (!lock.Locked)
         return false;
     if (Buffer)

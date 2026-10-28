@@ -1,14 +1,17 @@
 // CGPUScratchBufferTextureManager::BeginShutdown() -- detach GPU textures, dispose resources, and release non-restorable pages once.
 // Retail00f37170 length305. Manager header unavailable; native arrays12 vs donor16,
 // resource entries44, pages28 vs donor32, ShutdownFlag40 vs donor54.
+#define CTexture CTexturePdb
 #include "engine/CTexture.h"
+#undef CTexture
+struct CTexture : CTexturePdb { void Uninitialise(); };   // 0x009f9f70 ?Uninitialise@CTexture@@QAEXXZ
 #define CSurface CSurfaceDonorLayout
 #include "engine/CSurface.h"
 #undef CSurface
 #include "engine/CRenderManagerCore.h"
 #include "engine/CPixelFormat.h"
 #include <new>
-struct CScratchTexture:CTexture {void Uninitialise();~CScratchTexture(){Uninitialise();}}; //009f9f70
+struct CScratchTexture:CTexture {~CScratchTexture(){Uninitialise();}};
 // Actual surface layout with its real virtual destructor restored. Retail VT122F84C
 // slot0 scalar destructor41C9C0 calls Uninitialise9F2E20 and optionally scalar delete.
 struct CScratchSurface {virtual ~CScratchSurface();IDirect3DSurface9* PD3DSurface;unsigned AllocationSource;void* PAllocatedMemory;};

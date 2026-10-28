@@ -80,6 +80,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -97,7 +100,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 };
 
 
@@ -150,7 +155,6 @@ class CWorld { public:
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
 // ---- CDefClassBase::GetSubDef<CJackDragonDef> (0x008E3300, landed body) compiled in this TU ----
@@ -316,7 +320,7 @@ long CAIStateGroup_JackDragon::ChooseIntoGroundState()
     CTCBoss* boss;
     PBrain->PCreature->GetInterface(&boss, 0xad);
     if (boss->GetBossPhase() >= 2) {
-        if ((float)WorldRandomRange(*((CWorldSeed*)GetPWorld())->GetPRandomSeed(), 100) < def.m_p->ChanceIntoGround)
+        if ((float)WorldRandomRange(*((CWorldSeed*)&GetWorld())->GetPRandomSeed(), 100) < def.m_p->ChanceIntoGround)
             return 5;
     }
     return 0;

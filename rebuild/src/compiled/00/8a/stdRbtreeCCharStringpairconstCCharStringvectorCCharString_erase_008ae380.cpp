@@ -133,9 +133,15 @@ public:
     unsigned int _M_node_count;                             // +0x04
     _Compare     _M_key_compare;                            // +0x08
 
+    protected:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
     iterator begin() { return iterator(_M_leftmost()); }
     iterator end() { return iterator(this->_M_header._M_data); }
 

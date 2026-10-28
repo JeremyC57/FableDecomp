@@ -25,7 +25,7 @@ class CThing { public:
     unsigned char _pad4c[0x60 - 0x4c];
     CPhysicsBody* PhysicsBody;                        // +0x60
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     void RemoveTC(long interfaceType);                // 0x004C9840
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {

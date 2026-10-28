@@ -33,10 +33,12 @@ class CCharString { public:
 
 /* --- engine callees modeled as real (__fastcall) member functions --- */
 struct ObjContainer { int  CountObjects(int objDefId); };            /* 0x11d130 */
-struct World        { void* GetWorldAccessor(); };                   /* 0xffbb9690 */
-struct Accessor     { void* GetHero(); };                            /* 0xffbf7ae0 */
+class CPlayer;
+struct World        { CPlayer* GetWorldAccessor(); };                /* 0x00449970 */
 struct Hero         { unsigned char Give(int count, int quantity,
                                          int suppressFlag, CCharString* name); }; /* 0xffe1bf20 */
+class CThingPlayerCreature : public Hero { };
+class CPlayer      { public: CThingPlayerCreature* GetPControlledCreature() const; };   /* 0x00487DC0 */
 struct Str          { void ctor(const char* cstr, int len);          /* 0x10e910 */
                       void dtor(); };                                /* 0x10e800 */
 
@@ -51,8 +53,8 @@ void __fastcall CGameScriptInterface_GiveHeroObject(void* thisptr, unsigned long
         return;
 
     /* mov ecx,[edi+0x14]; call 9690 ; mov ecx,eax; call 7ae0 */
-    void* accessor = ((World*)(*(void**)((char*)self + 0x14)))->GetWorldAccessor();
-    void* hero = ((Accessor*)accessor)->GetHero();          /* esi */
+    CPlayer* accessor = ((World*)(*(void**)((char*)self + 0x14)))->GetWorldAccessor();
+    Hero* hero = accessor->GetPControlledCreature();         /* esi */
     if (hero == 0)                                           /* test esi,esi; je */
         return;
 

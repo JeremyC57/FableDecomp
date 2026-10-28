@@ -59,7 +59,7 @@ template <class T> struct CDefPointerMember {
 class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefPointerMember<CThingDef> PDef;               // +0x70 CDefPointer<const CThingDef>
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
     void Kill(bool immediately);                     // 0x004C9B80
     void UpdateGraphicAppearance(long reason);       // 0x004C7590
 };

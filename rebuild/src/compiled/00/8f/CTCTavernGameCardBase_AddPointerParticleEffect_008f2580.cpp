@@ -2,7 +2,7 @@
 // Leaf: AddPointerParticleEffect
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F2580, 218 bytes (`ret 4`). Ego_r.pdb
 // `?AddPointerParticleEffect@CTCTavernGameCardBase@@QAEXJ@Z`.
-// Callees: CThing::GetPosition() const 0x004C73D0; CreateEffectThing(long, const C3DVector*, bool) 0x006E0880
+// Callees: CThing::GetPos() const 0x004C73D0; CreateEffectThing(long, const C3DVector*, bool) 0x006E0880
 //          (`__fastcall`, landed spelling; manifest "Create"); CBaseIntelligentPointer() 0x00A01B10 (then the
 //          CIntelligentPointer<CThing> vtable 0x01238C6C), ::SetPItem 0x00A01B90, ::~CBaseIntelligentPointer 0x00A01C10;
 //          vector<CIntelligentPointer<CThing> >::push_back(const T&) 0x004AD520; CVectorMap<ETCInterfaceType, CTCBase*>::
@@ -44,7 +44,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CThingObject : public CThing { public: };
 
@@ -102,7 +102,7 @@ struct CTCTavernGameCardBase : CTCTavernGame {  // vtable 0x01288294
 
 void CTCTavernGameCardBase::AddPointerParticleEffect(long particleDef)
 {
-    CThing* effect = CreateEffectThing(particleDef, &Pointer->GetPosition(), false);
+    CThing* effect = CreateEffectThing(particleDef, &Pointer->GetPos(), false);
     if (effect && !effect->IsDead()) {
         ParticleEffects.push_back(CIntelligentPointer<CThing>(effect));
         CTCDParticleEmitter* emitter = GetParticleEmitter(effect);

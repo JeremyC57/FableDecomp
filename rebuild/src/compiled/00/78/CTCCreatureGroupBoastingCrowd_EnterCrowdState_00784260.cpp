@@ -8,7 +8,7 @@
 // ClearOpinionSource @ 0x007008C0 / AddOpinionSource @ 0x00700780, CVectorMap::LowerBound @ 0x0040F020 (the hero's deed
 // log 0x51), CTCHeroOpinionDeedLog::RemoveDeed @ 0x006C5920 / AddDeed @ 0x006C6990, CCharString(const char*, long)
 // @ 0x0099EBF0 / operator=(const char*) @ 0x0099EFE0 / operator!=(const char*) @ 0x0099E960 / dtor @ 0x0099EAE0,
-// CThing::Kill(bool) @ 0x004C9B80, CThing::GetPosition @ 0x004C73D0.
+// CThing::Kill(bool) @ 0x004C9B80, CThing::GetPos @ 0x004C73D0.
 // Layout: as the landed FrameUpdate (0x00784500): PHero +0x24, CrowdState +0x2c, CurrentOpinionDeedHandle +0x38,
 // HeroOpinionSourcesPushed +0x3c; CWorld opinion reaction manager +0x74.
 class C3DVector { public: float X, Y, Z; };
@@ -34,7 +34,7 @@ class CThing { public:
     unsigned char Flags91;                                   // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                             // 0x004C9B80
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -172,7 +172,7 @@ void CTCCreatureGroupBoastingCrowd::EnterCrowdState(long state)
     if (deedType) {
         CTCHeroOpinionDeedLog* log;
         if (PHero.GetPItem() && !PHero.GetPItem()->IsDead() && PHero.GetPItem()->GetInterface(&log, 0x51))
-            CurrentOpinionDeedHandle = log->AddDeed(deedType, PHero.GetPItem()->GetPosition(), 0, 0, 2, 0, 1, 0, 0, 0);
+            CurrentOpinionDeedHandle = log->AddDeed(deedType, PHero.GetPItem()->GetPos(), 0, 0, 2, 0, 1, 0, 0, 0);
     }
     CrowdState = state;
 }

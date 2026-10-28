@@ -68,12 +68,14 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class list : public _List_b
 public:
     typedef _List_node<_Tp> _Node;
     typedef _List_iterator<_Tp> iterator;
+    protected:
     _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __p = this->_M_node.allocate(1);
         _Construct(&__p->_M_data, __x);
         return __p;
     }
+    public:
     iterator end() { return this->_M_node._M_data; }
     iterator insert(iterator __position, const _Tp& __x)
     {

@@ -3,7 +3,7 @@
 // Callees: GetPBestTargetToFaceForCreature 0x0097E140 (__fastcall), CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem
 //   0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10, CAIStateGroupBase::AIAction_MoveToThingProximity 0x0097E380 /
 //   AIAction_LookAtThing 0x0097D6F0 / AIAction_MoveToPos 0x0097EC00 / AIAction_PerformAction 0x0097D8B0,
-//   CThingCreatureBase::IsPerformingAnyAction 0x006622A0 / GetPosition 0x006A4D00, CVectorMap::LowerBound 0x0040F020
+//   CThingCreatureBase::IsPerformingAnyAction 0x006622A0 / PeekPos 0x006A4D00, CVectorMap::LowerBound 0x0040F020
 //   (same-TU stand-in; inlined GetInterface 7 = CTCCreatureNavigation), CTCCreatureNavigation::GetNearbyDirectedPosition
 //   0x006CB780, EPSILON 0x0129BA3C.
 // Layout: the state group follows engine/CAIStateGroupBase.h (PBrain +4), modelled locally to declare the members; the
@@ -85,8 +85,10 @@ class CThing { public:
     }
 };
 class CCreatureActionBase;
-class CThingCreatureBase : public CThing { public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
 };
 
@@ -183,12 +185,12 @@ EAIActionReturn CAIStateGroupBase::AIAction_FleeToThingProximity(CIntelligentPoi
             CTCCreatureNavigation* nav;
             bool found;
             creature->GetInterfaceR(&nav, 7, found);
-            C3DVector toward = threat.GetPCreature()->GetPosition() - creature->GetPosition();
+            C3DVector toward = threat.GetPCreature()->PeekPos() - creature->PeekPos();
             C3DVector dest;
-            if (nav->GetNearbyDirectedPosition(GetCreature()->GetPosition(), 5.0f, toward, 0.25277778f, &dest)) {
+            if (nav->GetNearbyDirectedPosition(GetCreature()->PeekPos(), 5.0f, toward, 0.25277778f, &dest)) {
                 CThingCreatureBase* me = GetCreature();
                 float tolerance = EPSILON;
-                const C3DVector& pos = me->GetPosition();
+                const C3DVector& pos = me->PeekPos();
                 float dx = pos.X - dest.X;
                 float dy = pos.Y - dest.Y;
                 float distanceSquared = dy * dy + dx * dx;

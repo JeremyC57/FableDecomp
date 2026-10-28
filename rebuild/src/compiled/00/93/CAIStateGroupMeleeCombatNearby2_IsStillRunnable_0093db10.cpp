@@ -2,11 +2,11 @@
 // and the creature stand on the same navigation region (the region lookup takes each thing's position).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093DB10, length 94 bytes (+ int3 padding), `ret 4`.
 // Callees: CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(bool) @ 0x0093D800 (the argument forwarded),
-// CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy at +0x14, twice), CThing::GetPosition @ 0x004C73D0
+// CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy at +0x14, twice), CThing::GetPos @ 0x004C73D0
 // (const C3DVector&), the creature's region-of-position query @ 0x00661D20 (manifest "CFrontEndManager::
 // CreateComponent" is a propagated label: it takes a C3DVector* and returns a long, called on both things).
 // Shape: `if (Base(arg)) { enemy = GetPItem(); creature = PBrain->Creature; a = enemy->Region(GetPItem()->
-// GetPosition()); b = creature->Region(creature->GetPosition()); if (a == b) return true; } return false;` --
+// GetPos()); b = creature->Region(creature->GetPos()); if (a == b) return true; } return false;` --
 // the nested-if form gives the single shared `xor al,al` tail that both misses jump to (an early `return
 // false` guard emits its own epilogue, and `if (a != b) return false; return true;` becomes a `sete`); the
 // named enemy/creature locals land in ebx/edi, the first region in esi. Member names from the engine header (PEnemy +0x14, Archer +0x1c); the header
@@ -14,7 +14,7 @@
 class C3DVector;
 
 class CThing { public:
-    const C3DVector& GetPosition();         // 0x004C73D0
+    const C3DVector& GetPos() const;         // 0x004C73D0
     long GetRegionAtPosition(const C3DVector& pos);   // 0x00661D20
 };
 
@@ -61,8 +61,8 @@ bool CAIStateGroup_MeleeCombatNearby2::IsStillRunnable(bool checkEnemy)
     if (CAIStateGroup_MeleeCombatNearbyBase::IsStillRunnable(checkEnemy)) {
         CThing* enemy = PEnemy.GetPItem();
         CThing* creature = PBrain->Creature;
-        long enemyRegion = enemy->GetRegionAtPosition(PEnemy.GetPItem()->GetPosition());
-        long creatureRegion = creature->GetRegionAtPosition(creature->GetPosition());
+        long enemyRegion = enemy->GetRegionAtPosition(PEnemy.GetPItem()->GetPos());
+        long creatureRegion = creature->GetRegionAtPosition(creature->GetPos());
         if (enemyRegion == creatureRegion)
             return true;
     }

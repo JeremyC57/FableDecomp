@@ -1,5 +1,5 @@
 // std::vector::_M_clear() -- (vector<CQuickDrawTriInfo >) destroy every element and free the block
-// Leaf: ?_M_clear@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@QAEXXZ
+// Leaf: ?_M_clear@?$vector@VCQuickDrawTriInfo@@V?$allocator@VCQuickDrawTriInfo@@@std@@@std@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009E1650, 58 bytes, thiscall, plain `ret`.
 // Identity (proven): called by vector<CQuickDrawTriInfo>::_M_insert_overflow 0x009E1750 (catalogued so); 0x3C-byte elements destroying CTexture UploadedTexture +0x18 (0x009F9F70, bound ??1CTexture@@QAE@XZ) then CWideString String +0x14 -- Ego_r.pdb CQuickDrawTriInfo.
 // Callees: the element's member destructors 0x009F9F70 / 0x0099B510 (inline implicit element destructor), free 0x00BFEA14.
@@ -49,11 +49,13 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
 };
 template void vector<CQuickDrawTriInfo >::_M_clear();
 }

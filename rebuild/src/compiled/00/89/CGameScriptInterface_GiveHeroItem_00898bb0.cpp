@@ -33,6 +33,8 @@ struct HeroThing {
     unsigned char pad_48[0x91 - 0x44 - 4];
     unsigned char flags91;       // +0x91
 };
+class CThingPlayerCreature : public HeroThing { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 // A red-black tree node as MSVC lays it out for the lower_bound epilogue.
 //   node[0x0] == key (int),  node[0x4] == mapped value (pointer)
@@ -74,8 +76,7 @@ struct GiveTarget {
 
 // ---- engine helpers / globals (relocation-masked: extern only) --------------
 
-extern void*    __fastcall GiveHeroItem_HelperA(void* thisA);            // 0xffbb0dc0
-extern HeroThing* __fastcall GiveHeroItem_HelperB(void* thisB);          // 0xffbef210
+extern CPlayer* __fastcall GiveHeroItem_HelperA(void* thisA);            // 0x00449970
 
 // ---- the function ----------------------------------------------------------
 
@@ -88,8 +89,8 @@ void __fastcall CGameScriptInterface_GiveHeroItem(void* thisPtr, unsigned long /
         return;
 
     // mov ecx,[esi+0x14] ; call HelperA ; mov ecx,eax ; call HelperB
-    void* a = GiveHeroItem_HelperA(*(void**)((unsigned char*)thisPtr + 0x14));
-    HeroThing* h = GiveHeroItem_HelperB(a);
+    CPlayer* a = GiveHeroItem_HelperA(*(void**)((unsigned char*)thisPtr + 0x14));
+    HeroThing* h = a->GetPControlledCreature();
 
     // test eax,eax ; je ret
     if (h == 0)

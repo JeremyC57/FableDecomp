@@ -7,7 +7,7 @@
 // creature's life-state getter @ 0x00662010, AIAction_LookAtThing @ 0x0097D6F0, CCreatureAction_AlertToPlayer ctor
 // @ 0x009110F0 / ~CCreatureActionBase @ 0x00693EF0, AIAction_PerformActionAndWait @ 0x0097DB70, CCharString(const
 // char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, GetPDefinitionManager @ 0x008FCFB0, CDefinitionManager::
-// GetDef<CMessageEventDef> @ 0x007923C0, CThing::GetPosition @ 0x004C73D0, AIAction_FindAGuardAndGiveMessage
+// GetDef<CMessageEventDef> @ 0x007923C0, CThing::GetPos @ 0x004C73D0, AIAction_FindAGuardAndGiveMessage
 // @ 0x009810B0 (def and position by value), Terminate @ 0x008FCF40.
 // Data: "STANDARD_MESSAGE_EVENT_FOUND_UNCONSCIOUS_PERSON" @ 0x01292318; 0.0027777f look speed (immediate).
 // Layout: engine/CAIStateGroup_MinionReactToUnconsciousPerson.h flattens the base, so the model is local (PBrain +4,
@@ -33,7 +33,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     bool HasTC(long interfaceType) const
     {
         unsigned long word = m_presentBits[interfaceType >> 5];
@@ -158,7 +158,7 @@ void CAIStateGroup_MinionReactToUnconsciousPerson::Update()
                 CMessageEventDef* p = def.m_p;
                 if (found) {
                     CThing* person = PPerson.GetPItem();
-                    AIAction_FindAGuardAndGiveMessage(CDefPointer(p), person->GetPosition(), 0);
+                    AIAction_FindAGuardAndGiveMessage(CDefPointer(p), person->GetPos(), 0);
                 }
                 if (p) {
                     if (--p->m_count == 0)

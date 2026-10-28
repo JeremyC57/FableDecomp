@@ -2,7 +2,7 @@
 // Leaf: FindMostRecentDeed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0092E630, 283 bytes (+ padding), `ret 10h`.
 // Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
-// CPlayer::GetControlledCreature @ 0x00487DD0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0,
+// CPlayer::PeekPControlledCreature @ 0x00487DD0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const @ 0x004365B0,
 // CTCHeroOpinionDeedLog::GetDeedFromHandle(long) @ 0x006C58F0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the deed's target).
 // Layout: as the landed IsStillHappening instantiation 0x0093A3C0: PendingDeeds (list<long>) +0x54, KnownDeeds (list<long>[92])
 // +0x1c8; COpinionDeed (Ego_r.pdb): DeedType +0, PTarget (CIntelligentPointer<CThing>) +0x18 (descriptive), IsStillHappening
@@ -42,8 +42,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature();                    // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
@@ -120,7 +121,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
 template <class TFilter>
 const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(long deedType, const TFilter& filter, long* outHandle, bool includePending) const
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetControlledCreature();
+    const CThing* hero = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
     if (hero) {
         const CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

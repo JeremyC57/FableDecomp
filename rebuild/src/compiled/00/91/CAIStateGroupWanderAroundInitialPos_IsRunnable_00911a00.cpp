@@ -23,7 +23,9 @@ struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, 
     SEntry* LowerBound(const long* type) const;       // 0x004365B0 (a second, byte-identical instantiation)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -81,7 +83,6 @@ class CThingAICreature : public CThing { public:
     unsigned char _pad2[0xe8 - sizeof(CThing)];
     float InitialPosX;                          // +0xe8 (descriptive: the wander centre)
     float InitialPosY;                          // +0xec
-    C3DVector* GetPosition();                   // 0x004C73D0
 };
 
 struct CAIBrainCreature {
@@ -108,7 +109,7 @@ bool CAIStateGroup_WanderAroundInitialPos::IsRunnable()
     CTCWanderControl* control;
     if (PBrain->PCreature->GetInterface(&control, 8) && control->IsEnabled()) {
         CThingAICreature* creature = PBrain->PCreature;
-        C3DVector* position = creature->GetPosition();
+        C3DVector* position = (C3DVector*)&creature->GetPos();
         float dx = creature->InitialPosX - position->X;
         float dy = creature->InitialPosY - position->Y;
         float distanceSq = dx * dx;

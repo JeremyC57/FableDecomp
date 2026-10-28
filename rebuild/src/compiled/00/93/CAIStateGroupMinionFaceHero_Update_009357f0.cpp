@@ -3,7 +3,7 @@
 // Callees: GFGetCurrentFrame @ 0x0049D870 (__fastcall, no object), CBaseIntelligentPointer ctor/GetPItem/SetPItem
 //          (PHero +0x14), CAIStateGroupBase::AIAction_LookAtThing @ 0x0097D6F0 (CIntelligentPointer<const CThing> by
 //          value, vtable 0x01237F1C), the inlined STLport lower_bound of the interface map (0x34 = CTCPerceiveThing, bit 20
-//          of +0x24), CTCPerceiveThing::IsPlayerExtendedLineOfSight @ 0x00744830, CThing::GetPosition @ 0x004C73D0,
+//          of +0x24), CTCPerceiveThing::IsPlayerExtendedLineOfSight @ 0x00744830, CThing::GetPos @ 0x004C73D0,
 //          AIAction_DoNothing @ 0x0097E200, Terminate @ 0x008FCF40.
 // Globals: FramesPerSecond @ 0x01375550, 4.84f (2.2 squared) @ 0x012922D4.
 // Shape: FramesPerSecond is read into a named local at the top of each pass (before the frame call) and the elapsed
@@ -46,7 +46,7 @@ class CThing { public:
     unsigned char _pad1[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -126,8 +126,8 @@ void CAIStateGroup_MinionFaceHero::Update()
         if (GetCreature()->GetInterface(&perceive, 0x34) && perceive->IsPlayerExtendedLineOfSight()
             && IS_THING_ALIVE(PHero)) {
             CThing* creature = GetCreature();
-            const C3DVector& hero = PHero.GetPItem()->GetPosition();
-            const C3DVector& me = creature->GetPosition();
+            const C3DVector& hero = PHero.GetPItem()->GetPos();
+            const C3DVector& me = creature->GetPos();
             float dx = me.X - hero.X;
             float dy = me.Y - hero.Y;
             float dz = me.Z - hero.Z;

@@ -33,6 +33,8 @@ struct CThingOverlay
     unsigned char m_Pad4C[0x45];
     unsigned char m_Flags91;        // 0x91
 };
+class CThingPlayerCreature : public CThingOverlay { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 struct CPicklockMoralityDefinition
 {
@@ -47,8 +49,7 @@ struct CDefinitionManagerOverlay
 };
 
 
-extern "C" void* __fastcall Sub_ResolveA(void* self);
-extern "C" CThingOverlay* __fastcall Sub_ResolveB(void* obj);
+extern "C" CPlayer* __fastcall Sub_ResolveA(void* self);
 extern "C" CDefinitionManagerOverlay* __cdecl Sub_GetDefinitionManager();
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)4;
@@ -56,7 +57,7 @@ const ETCInterfaceType kTargetType = (ETCInterfaceType)4;
 void __fastcall CGameScriptInterface_ChangeHeroMoralityDueToPicklock(
     const CGameScriptInterface* self)
 {
-    CThingOverlay* pThing = Sub_ResolveB(Sub_ResolveA(self->PlayerManager));
+    CThingOverlay* pThing = Sub_ResolveA(self->PlayerManager)->GetPControlledCreature();
     if (pThing != 0 &&
         (pThing->m_Flags91 & 0x01) == 0 &&
         (pThing->m_Flags20 & 0x10) != 0)

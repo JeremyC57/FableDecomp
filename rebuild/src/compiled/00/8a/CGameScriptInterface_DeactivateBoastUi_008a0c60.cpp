@@ -1,6 +1,6 @@
-// CGameScriptInterface::DeactivateBoastUi() const -- deactivate the hero's boast-UI component (kind 0xe8, CTCBoastUI::Deactivate @ 0x0056A880); the hero through PlayerManager->GetMainPlayer()->GetHeroCreature() with no null or dead test
+// CGameScriptInterface::DeactivateBoastUi() const -- deactivate the hero's boast-UI component (kind 0xe8, CTCBoastUI::Deactivate @ 0x0056A880); the hero through PlayerManager->GetMainPlayer()->GetPControlledCreature() with no null or dead test
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A0C60, length 80 bytes.
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature @ 0x00487DC0, the component map LowerBound @ 0x0040F020 (kind 0xe8 by address), CTCBoastUI::Deactivate @ 0x0056A880.
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the component map LowerBound @ 0x0040F020 (kind 0xe8 by address), CTCBoastUI::Deactivate @ 0x0056A880.
 // Shape: a one-word frame for the kind temporary, the mask test folded to `test ch,1` on +0x3c, the inlined `find` tail, the component loaded straight into ecx.
 struct CTCBase_Retail;
 struct CTCBase_Retail;
@@ -41,6 +41,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word (a bool return would materialise `shr ; and 1`)
 };
+class CThingPlayerCreature : public CThing_Retail { };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }          // free inline: the pointer comes back in eax
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CTCBoastUI { public:
@@ -62,8 +63,8 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
 class CPlayer { public:
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0 (the manifest label "_Cons_val<...>" is propagated)
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0 (the manifest label "_Cons_val<...>" is propagated)
 };
 class CPlayerManager { public:
 public:
@@ -84,7 +85,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::DeactivateBoastUi() const
 {
-    CThing_Retail* t = PlayerManager->GetMainPlayer().GetHeroCreature();
+    CThing_Retail* t = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (t->HasTC(0xe8))
         ((CTCBoastUI*)GetTC(t, 0xe8))->Deactivate();
 }

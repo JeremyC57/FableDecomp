@@ -5,14 +5,14 @@
 // Callees: CWorld virtual slots 5 GetCurrentRenderCamera(const CInterpolationInfo&) const (0x0049DA00) and 6
 //   GetCurrentRenderCamera() const (0x0049DA60) (rtti-vtables 0x012390F0; overloads in reverse declaration order),
 //   g_pMainGameComponent 0x013B86A0 slot 9 IsEditorActive (0x004197B0), CPlayerManager::GetMainPlayer 0x00449970,
-//   CPlayer::GetFreeCamera(float) const 0x00487180, CPlayer::GetHeroThing 0x00487DC0 (x2), the current game camera
+//   CPlayer::GetFreeCamera(float) const 0x00487180, CPlayer::GetPControlledCreature 0x00487DC0 (x2), the current game camera
 //   (+0x34) slots 10 (+0x28, its camera manager by out reference) and 1 (+0x04, the camera at a fraction),
 //   CGameCameraManager::IsUsingScriptedCameraMode 0x00697AE0, CTCPhysicsBase::GetInterpolatedPosition(float) 0x0049D150
 //   (landed), CCamera::CCamera(const CCamera&) 0x0049D380 (landed).
 // Data: 0x013B86E0, a global pointer tested for null (named g_pSoundManager descriptively).
 // Layout: CPlayer UsingFreeCamera +0x220 (chunk 178), CThing physics component +0x60, CInterpolationInfo fraction +4;
 //   CWorld PlayerManager +0x0C, PCurrentGameCamera +0x34 (engine/CWorld.h).
-// Shape: the fraction is read first into the dead `info` slot; the physics pointer is a named local so GetHeroThing and
+// Shape: the fraction is read first into the dead `info` slot; the physics pointer is a named local so GetPControlledCreature and
 //   the +0x60 load come before the argument pushes; the camera returned with its position replaced is a named local
 //   copied out through the copy ctor (no NRVO).
 // Layout (supersedes any local-model note above): engine/CPlayer.h now has the retail STLport 4.6 offsets, so the data
@@ -47,10 +47,11 @@ class CThing { public:
     unsigned char   _pad[0x60];
     CTCPhysicsBase* PPhysics;                 // +0x60
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer : public CPlayerDonor {
  public:
     CCamera GetFreeCamera(float t) const;     // 0x00487180
-    CThing* GetHeroThing();                   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                   // 0x00487DC0
 };
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
 class CGameCameraManager { public: bool IsUsingScriptedCameraMode() const; };   // 0x00697AE0
@@ -89,9 +90,9 @@ CCamera CWorld::GetCurrentSoundCamera(const CInterpolationInfo& info) const
     if (player->UsingFreeCamera)
         return player->GetFreeCamera(t);
     CGameCameraManager* manager;
-    if (PCurrentGameCamera->GetCameraManager(manager) && !manager->IsUsingScriptedCameraMode() && player->GetHeroThing()) {
+    if (PCurrentGameCamera->GetCameraManager(manager) && !manager->IsUsingScriptedCameraMode() && player->GetPControlledCreature()) {
         CCamera camera = PCurrentGameCamera->GetCamera(t);
-        const CTCPhysicsBase* physics = player->GetHeroThing()->PPhysics;
+        const CTCPhysicsBase* physics = player->GetPControlledCreature()->PPhysics;
         camera.WorldPosition = physics->GetInterpolatedPosition(t);
         return camera;
     }

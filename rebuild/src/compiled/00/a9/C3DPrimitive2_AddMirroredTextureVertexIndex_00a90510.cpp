@@ -33,7 +33,9 @@ template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vect
 public:
     typedef unsigned int size_type;
     typedef typename __type_traits<_Tp>::is_POD_type _IsPODType;
+    protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __true_type&, size_type __fill_len, bool __atend);   // 0x00464ACE
+    public:
     void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

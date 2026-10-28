@@ -1,6 +1,6 @@
 // CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses(const CScriptThing& thing, long deedType, const CScriptThing& target) const -- post an opinion deed (post type 7, keep searching for witnesses) from the thing's deed log (kind 0x51) at its position; deed types 3..10 are flagged; -1 when the thing has no log
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089C7B0, length 147 bytes.
-// Callees: the script things' slot 11 (+0x2c), the component-map LowerBound @ 0x0040F020, CThing::GetPosition @ 0x004C73D0,
+// Callees: the script things' slot 11 (+0x2c), the component-map LowerBound @ 0x0040F020, CThing::GetPos @ 0x004C73D0,
 //          CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990.
 // Shape: the target's GetThing is evaluated inside the argument list (after the constant pushes); the flag lives in the dead argument slot.
 // Leaf: EntityPostOpinionDeedKeepSearchingForWitnesses
@@ -42,6 +42,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word
 };
+class CThingPlayerCreature : public CThing_Retail { };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 class CScriptThing { public:
@@ -59,12 +60,12 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
-struct CPlayer_Retail {
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0
+struct CPlayer {
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970
+    CPlayer* GetMainPlayer();               // 0x00449970
 };
 class CCharString;
 struct CDefinitionManager_Retail {
@@ -107,8 +108,10 @@ __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists
 class C3DVector;
 class CThingAICreature;
 class CFaction;
-struct CThingPos_Retail : CThing_Retail {
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+class CThing : public CThing_Retail { public:
+    const C3DVector& GetPos() const;          // 0x004C73D0
+};
+struct CThingPos_Retail : public CThing {
 };
 struct CTCHeroOpinionDeedLog_Retail {
     long PostDeed(long deedType, const C3DVector& position, CThing_Retail* target, CThingAICreature* victim, long postType,
@@ -131,7 +134,7 @@ long CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses(const 
     if (t && t->HasTC(0x51)) {
         CTCHeroOpinionDeedLog_Retail* log = (CTCHeroOpinionDeedLog_Retail*)GetTC(t, 0x51);
         bool flagged = deedType >= 3 && deedType <= 10;
-        return log->PostDeed(deedType, t->GetPosition(), target.GetThing(), 0, 7, flagged, true, 0, false, 0);
+        return log->PostDeed(deedType, t->GetPos(), target.GetThing(), 0, 7, flagged, true, 0, false, 0);
     }
     return -1;
 }

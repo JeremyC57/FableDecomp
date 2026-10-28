@@ -1,6 +1,6 @@
 // CAIStateGroup_HoverHornetQueen::GotoSafestCirclePoint(long movementType) -- with no circle markers return 3; otherwise compare the direction to the target with the directions to the next and previous circle markers and fly to the one facing away from the target
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095AD20, 754 bytes, `ret 4`.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, GotoCirclePoint @ 0x0095A6C0;
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, GotoCirclePoint @ 0x0095A6C0;
 //          g_InvSqrtMantissaTable @ 0x013CE558 (the inline fast inverse square root's mantissa table).
 // Layout: retail STLport vectors are 12 bytes, so CurrentCirclePoint is +0x4c and CircleMarkers +0x50 (the PDB header says +0x50/+0x54).
 // Shape: three inline fast normalises (`*this *= FastInvSqrt(len)` through a const float& operator*=); the circle-marker
@@ -27,10 +27,10 @@ class CThing;
 __forceinline C3DVector Direction(const CThing* to, const CThing* from);
 __forceinline float Dot(const C3DVector& a, const C3DVector& b) { return a.Z * b.Z + a.Y * b.Y + a.X * b.X; }
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { public: };
-__forceinline C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPosition() - from->GetPosition(); }
+__forceinline C3DVector Direction(const CThing* to, const CThing* from) { return to->GetPos() - from->GetPos(); }
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)

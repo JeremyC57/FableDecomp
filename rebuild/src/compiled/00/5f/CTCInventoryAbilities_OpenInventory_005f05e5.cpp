@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005F05E5, 410 bytes, plain `ret` (frame pointer, `leave`).
 // Leaf: OpenInventory@CTCInventoryAbilities
 // Callees: AddAbilityToCorrectList @ 0x005EEFB7, CGameDefinitionManager::Get @ 0x0044C6B0, GetDefGlobalIndexFromName
-// @ 0x009AD410, GetNumberOfItemsOfTypeInInventory @ 0x005BDF08, CThing::GetPosition @ 0x004C73D0, the thing factory
+// @ 0x009AD410, GetNumberOfItemsOfTypeInInventory @ 0x005BDF08, CThing::GetPos @ 0x004C73D0, the thing factory
 // @ 0x00835A20 (__fastcall (def index, position, bool)), bitset::test 0x00410DE0 / LowerBound 0x0040F020 (interface 0x1A),
 // CTCInventoryItem::AddToInventory @ 0x005D8D50, the inventory's slot 79 (+0x13C), CTCInventoryBase::OpenInventory
 // @ 0x005BD4EA, SetInventoryAnimRenderBox @ 0x005BC58F, NUISystem::CManager::GetInstance @ 0x0041E5F2 and its slot 19
@@ -31,7 +31,7 @@ public:
     CPresenceBits present;                                  // +0x20 std::bitset of interface types
     unsigned char _pad21[0x44 - 0x21];
     CInterfaceMap m_interfaces;                             // +0x44
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
     __forceinline bool HasTC(long type) { return present.test(type); }
     template<class T> __forceinline T* FindTC(long interfaceType)
     {
@@ -138,7 +138,7 @@ void CTCInventoryAbilities::OpenInventory()
     for (CCharString* it = toGive.begin(); it != toGive.end(); ++it) {
         long defIndex = defs.GetDefGlobalIndexFromName(*it);
         if (defIndex && GetNumberOfItemsOfTypeInInventory(defIndex) == 0) {
-            CThing* item = CreateThing(defIndex, ParentThing->GetPosition(), true);
+            CThing* item = CreateThing(defIndex, ParentThing->GetPos(), true);
             if (item) {
                 CTCInventoryItem* inventoryItem;
                 if (item->HasTC(0x1a))

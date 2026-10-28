@@ -3,7 +3,7 @@
 // Callees: CTCInventoryBase::GetTradingThing() @ 0x005BC4C4 (the shop's thing; the catalog label "CWorld::DrawGetEnvironment" is propagated),
 // std::bitset::test @ 0x00410DE0 and CVectorMap::LowerBound @ 0x0040F020 (the inline GetInterface, types 0x53 -- CTCShop -- and 4),
 // CTCShop::GetCurrentBuyPrice(long, long) @ 0x007743B0, CPlayerManager::GetMainPlayer() const @ 0x00449960 (g_pMainGameComponent
-// 0x013B86A0 +0x1C), CPlayer::GetHeroThing @ 0x00487DC0. The gold sits at +0x3C of the hero's type-4 component.
+// 0x013B86A0 +0x1C), CPlayer::GetPControlledCreature @ 0x00487DC0. The gold sits at +0x3C of the hero's type-4 component.
 // Shape: the shop component is not initialised (a miss leaves ecx = the count slot), the gold owner is (`xor ebx,ebx`); the
 // price overwrites the dead itemType slot, the second lookup key the dead count slot; the result is `setge` on `gold >= price`.
 #pragma optimize("y", off)
@@ -35,6 +35,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCShop { public:                                     // interface type 0x53
     long GetCurrentBuyPrice(long itemType, long count);   // 0x007743B0
 };
@@ -43,7 +44,7 @@ struct CTCGoldOwner {                                // interface type 4: the he
     long Gold;                                       // +0x3c
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                          // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                  // 0x00449960 (const)
@@ -64,7 +65,7 @@ bool CTCInventoryTrade::IsItemAffordable(long itemType, long count)
     CTCShop* shop;
     GetTradingThing()->GetInterface(&shop, 0x53);
     long price = shop->GetCurrentBuyPrice(itemType, count);
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
     CTCGoldOwner* purse = 0;
     hero->GetInterface(&purse, 4);
     bool affordable = purse->Gold >= price;      // a NAMED bool: `return a >= b` zero-extends (xor eax,eax ; setge al)

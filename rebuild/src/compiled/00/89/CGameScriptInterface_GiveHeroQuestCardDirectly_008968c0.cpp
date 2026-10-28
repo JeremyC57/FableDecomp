@@ -1,9 +1,9 @@
 // CGameScriptInterface::GiveHeroQuestCardDirectly(const CCharString& cardDefName, const CCharString& questName, bool silent) const -- create the named quest-card object at the hero, name its quest and activate it; tell the hero through the guild master unless silent or a vignette; kill the card when it cannot be activated
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008968C0, length 364 bytes (`ret 0Ch`).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0,
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 //   CQuestManager::IsQuestCardActive(const CCharString&) @ 0x004AF560 and ActivateQuestCard(CThing*, bool) @ 0x004B4AA0
 //   on g_pQuestManager (0x013B89FC), CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall),
-//   CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CThing::GetPosition @ 0x004C73D0,
+//   CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CThing::GetPos @ 0x004C73D0,
 //   CThingObject::Create @ 0x00703210 (static __fastcall), the component map LowerBound @ 0x0040F020,
 //   CCharString ctor/dtor/operator= @ 0x0099EBF0 / 0x0099EAE0 / 0x0099EFB0, CTCQuestCard::IsVignette @ 0x007022E0,
 //   CThing::Kill(bool) @ 0x004C9B80, own virtual slot 274 HeroReceiveMessageFromGuildMaster (0x008918C0).
@@ -41,9 +41,10 @@ class CThing { public:
     unsigned char  _pad50[0x40];
     signed char    m_player;                            // +0x90
     unsigned char  m_deadFlags;                         // +0x91
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool silent);                             // 0x004C9B80
 };
+class CThingPlayerCreature : public CThing { };
 class CThingObject : public CThing { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                            const CRightHandedSet* orientation, unsigned long uid,
@@ -54,7 +55,7 @@ class CTCQuestCard { public:
     CCharString QuestName;                              // +0x28
     bool IsVignette() const;                            // 0x007022E0
 };
-class CPlayer { public: CThing* GetHeroThing(); };             // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };             // 0x00487DC0
 class CPlayerManager { public: public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };    // 0x00449970
@@ -96,7 +97,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::GiveHeroQuestCardDirectly(const CCharString& cardDefName, const CCharString& questName, bool silent) const
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || (hero->m_deadFlags & 1))
         return;
     if (g_pQuestManager->IsQuestCardActive(cardDefName))
@@ -107,7 +108,7 @@ void CGameScriptInterface::GiveHeroQuestCardDirectly(const CCharString& cardDefN
     CThingObject* card;
     {
         CCharString scriptName("");
-        card = CThingObject::Create(index, hero->GetPosition(), hero->m_player, 0, 0, scriptName);
+        card = CThingObject::Create(index, hero->GetPos(), hero->m_player, 0, 0, scriptName);
     }
     if (!card)
         return;

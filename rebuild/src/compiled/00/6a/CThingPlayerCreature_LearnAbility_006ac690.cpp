@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AC690, length 628 bytes (`ret 0x10`).
 // Callees: LowerBound @ 0x0040F020, CTCInventoryAbilities::IsAbilityAvailable @ 0x005EDF08 / GetAbilityPDef @ 0x005EDFD9
 //   (CDefPointer by value) / SetAbilityAsAvailable @ 0x005F6BD6, CCharString(const char*, long) @ 0x0099EBF0 / dtor
-//   @ 0x0099EAE0 ("" @ 0x0122D70E), CThing::GetPosition @ 0x004C73D0, the __fastcall thing factory @ 0x00703210,
+//   @ 0x0099EAE0 ("" @ 0x0122D70E), CThing::GetPos @ 0x004C73D0, the __fastcall thing factory @ 0x00703210,
 //   CTCInventoryItem::AddToInventory @ 0x005D8D50 / RemoveFromInventory @ 0x005D8E20, CTCInventory::
 //   GetQuickAccessNextFreeSlot @ 0x00582027 / SetThingAsQuickAccessItem @ 0x00584157, the inventory's virtual slot
 //   47 (+0xbc) finding the thing of a def.
@@ -81,7 +81,7 @@ public:
     unsigned char _pad8e[0x90 - 0x8e];
     signed char PlayerNumber;                           // +0x90
     unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -109,7 +109,7 @@ struct CTCInventoryFind : CTCInventory {
 };
 __forceinline CThing* CreateThingObject(long defIndex, const CThing* creature, const CCharString& name)
 {
-    return CreateThingObject(defIndex, &creature->GetPosition(), creature->PlayerNumber, 0, 0, name);
+    return CreateThingObject(defIndex, &creature->GetPos(), creature->PlayerNumber, 0, 0, name);
 }
 struct CTCInventoryVirtual {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

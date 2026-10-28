@@ -4,7 +4,7 @@
 // Callees: CVectorMap::LowerBound 0x004365B0 (inlined GetInterface, type 0xCE = bit 14 of the bitset dword +0x38),
 //   CPlayerManager::GetMainPlayer 0x00449970 (landed name; manifest "Catch@0040d959" is wrong) on the main game component
 //   0x013B86A0 +0x1c, CBaseIntelligentPointer::GetPItem 0x00A01B50 (the player's character pointer +0x34),
-//   AreThingsEnemies 0x0076D2F0 (__fastcall), CThing::GetPosition 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is
+//   AreThingsEnemies 0x0076D2F0 (__fastcall), CThing::GetPos 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is
 //   propagated); 8.0f @ 0x0125916C.
 // Layout: sequence owner +0x1c (landed sibling OnCreate rows); the component's active byte +0xc.
 // Shape: positive nesting puts the no-component / inactive returns at the end; the hero comes through an inline
@@ -33,7 +33,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -109,7 +109,7 @@ bool CCombatSequence_WillForcePush::IsValid()
         if (willPower->Active) {
             CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetCharacter().GetPItem();
             if (!AreThingsEnemies(hero, m_pOwner)) {
-                if ((hero->GetPosition() - m_pOwner->GetPosition()).GetLength() < 8.0f)
+                if ((hero->GetPos() - m_pOwner->GetPos()).GetLength() < 8.0f)
                     return false;
             }
             return true;

@@ -1,16 +1,18 @@
 // CPlayer::UninitModeLightning(EPlayerMode, CProcessedInput*) -- detach the lightning-mode input processes, take the hero's creature mode manager out of mode 25, clear Z-targeting and hand the camera back to automatic control
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006366B0, length 255 bytes, `ret 8` (a CPlayer::PlayerModeInfo UninitFunc,
 // table slot at 0x0121B7F0).
-// Callees: CAInputProcess::RemoveFromInterface 0x00A0D2D0 (x12), CPlayer::GetHeroThing 0x00487DC0,
+// Callees: CAInputProcess::RemoveFromInterface 0x00A0D2D0 (x12), CPlayer::GetPControlledCreature 0x00487DC0,
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (interface 0x31, bit 17 of +0x24),
 // CTCCreatureModeManager::RemoveMode(unsigned long) 0x0073ABA0, the world's +0x34 object's slot 9 (GetCameraManager
 // out-parameter, +0x24), CGameCameraManager::SetAutomaticCameraControl 0x00699090.
 // Layout: engine/CPlayer.h (scoped_ptr<CInputProcess*> members, World +0x1C, ZTargeting +0x20A) through the lane's
-// CPlayer_Methods carrier; CThing interface bitset +0x20, interface map +0x44.
+// CPlayer carrier; CThing interface bitset +0x20, interface map +0x44.
 // Shape: `T* p = 0; if (HasTC) p = GetTC;` (retail's `xor ecx,ecx` preload, edi pushed only around the map lookup; the
 // out-parameter GetInterface form keeps the manager in edi); the camera out pointer zeroed in its frame word as in the
 // landed CPlayer::InitModeFirstPersonTargeting (0x00635A50), the getter's bool guarding the call.
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 
 typedef long EPlayerMode;
 class CProcessedInput;
@@ -47,6 +49,7 @@ class CThing { public:
     __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     __forceinline CTCBase* GetTC(long type) { return Components.Find(type); }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCCreatureModeManager { public:                         // interface 0x31
     void RemoveMode(unsigned long mode);                // 0x0073ABA0
@@ -65,12 +68,12 @@ class CWorld { public:
     CCameraManagerSource* CameraSource;                 // +0x34
 };
 
-struct CPlayer_Methods : CPlayer {
-    CThing* GetHeroThing();                             // 0x00487DC0
+class CPlayer : public CPlayerPdb { public:
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
     void UninitModeLightning(EPlayerMode mode, CProcessedInput* input);
 };
 
-void CPlayer_Methods::UninitModeLightning(EPlayerMode mode, CProcessedInput* input)
+void CPlayer::UninitModeLightning(EPlayerMode mode, CProcessedInput* input)
 {
     (void)mode; (void)input;
     reinterpret_cast<CAInputProcess*>(InputProcessControlCreature_ptr)->RemoveFromInterface();
@@ -85,7 +88,7 @@ void CPlayer_Methods::UninitModeLightning(EPlayerMode mode, CProcessedInput* inp
     reinterpret_cast<CAInputProcess*>(InputProcessJumpingAndRolling_ptr)->RemoveFromInterface();
     reinterpret_cast<CAInputProcess*>(InputProcessTargetLockCycleTargets_ptr)->RemoveFromInterface();
     reinterpret_cast<CAInputProcess*>(InputProcessWatchForControlAngleChange_ptr)->RemoveFromInterface();
-    CThing* hero = GetHeroThing();
+    CThing* hero = GetPControlledCreature();
     CTCCreatureModeManager* modes = 0;
     if (hero->HasTC(0x31))
         modes = (CTCCreatureModeManager*)hero->GetTC(0x31);

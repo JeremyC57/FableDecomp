@@ -1,7 +1,7 @@
 // CThingFilter_MakesLineWithPosInDirectionOfLine::operator()(CThing* thing) -- true when (thing position - Pos) points along Line (dot product > 0)
 // Leaf: ??RCThingFilter_MakesLineWithPosInDirectionOfLine
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006A7AD0, length 72 bytes (+ int3 padding).
-// Callees: CThing::GetPosition @ 0x004C73D0 (out of line).
+// Callees: CThing::GetPos @ 0x004C73D0 (out of line).
 // Globals: the float zero @ 0x0122DEDC (`fcomp dword ptr [g]`; a literal would be `fldz`).
 // Layout: PDB CThingFilter_MakesLineWithPosInDirectionOfLine { C3DVector Pos; C3DVector Line; }.
 // Shape: the delta is a C3DVector local assigned member by member (three separate float locals are scheduled one
@@ -13,7 +13,7 @@ class C3DVector { public:
 extern const float g_fZero;                         // 0x0122DEDC
 
 class CThing { public:
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 class CThingFilter_MakesLineWithPosInDirectionOfLine { public:
@@ -24,7 +24,7 @@ class CThingFilter_MakesLineWithPosInDirectionOfLine { public:
 
 bool CThingFilter_MakesLineWithPosInDirectionOfLine::operator()(CThing* thing) const
 {
-    const C3DVector& pos = thing->GetPosition();
+    const C3DVector& pos = thing->GetPos();
     C3DVector delta;
     delta.x = pos.x - Pos.x;
     delta.y = pos.y - Pos.y;

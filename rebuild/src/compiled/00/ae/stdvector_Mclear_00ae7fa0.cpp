@@ -52,11 +52,13 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    protected:
     void _M_clear()                                             // protected in STLport 4.6; public as the landed bindings spell it
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
 };
 }
 template <class T> class CArray : public std::vector<T> { };     // retail CArray: an STLport vector (12 bytes)

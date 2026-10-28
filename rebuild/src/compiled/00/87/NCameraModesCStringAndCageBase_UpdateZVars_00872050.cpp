@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872050, 183 bytes (+ int3 padding), `ret`. Ego_r.pdb
 //   `?UpdateZVars@CStringAndCageBase@NCameraModes@@AAEXXZ` (private).
 // Leaf: UpdateZVars
-// Callees: NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0, CThing::GetPosition() const @ 0x004C73D0 (const C3DVector&),
+// Callees: NCameraModes::CBase::GetObservedThing() const @ 0x0084F1B0, CThing::GetPos() const @ 0x004C73D0 (const C3DVector&),
 //   NCameraModes::CBase::GetCamTools() const @ 0x0084D080 (result unused); float pool 10.0f @ 0x01237F0C, 3.0f @ 0x0122DED4,
 //   1.0f @ 0x0122DED8.
 // Shape: the thing's Z stays on the x87 stack while the target (z + DesiredHeightOffset) is formed; the world-height bounds are
@@ -21,7 +21,7 @@
 class C3DVector { public: float X, Y, Z; };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                  // 0x004C73D0
+    const C3DVector& GetPos() const;                  // 0x004C73D0
 };
 class CThingGameObject : public CThing { };
 class CGameCameraManager : public CGameCameraManagerDonor {
@@ -59,7 +59,7 @@ public:
 };
 void CStringAndCageBase::UpdateZVars()
 {
-    float z = GetObservedThing()->GetPosition().Z;
+    float z = GetObservedThing()->GetPos().Z;
     float target = z + DesiredHeightOffset;
     if (CameraManager->LimitMinMaxWorldHeight && !ViewOccluded) {
         float minHeight = CameraManager->MinWorldHeight;

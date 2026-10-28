@@ -4,7 +4,7 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00690C70, 162 bytes, `ret 8`.
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90 and IsEventGameAction @ 0x00687CF0 (the landed
-//   models' names), CPlayer::GetHeroThing @ 0x00487DC0, CMemoryBuffer::Copy @ 0x009F1760 (AddLong / AddUBYTE inlined),
+//   models' names), CPlayer::GetPControlledCreature @ 0x00487DC0, CMemoryBuffer::Copy @ 0x009F1760 (AddLong / AddUBYTE inlined),
 //   CProcessedInput::AddGameEvent(const CGameEvent&) @ 0x00A0D340, __security_check_cookie @ 0x00BFE9F9.
 // Layout: engine/CInputProcessGameBase.h (MyPlayer +0x18), modelled locally as in the landed 0x0068EA60 because the
 //   class carries the virtual ProcessInput; CGameEvent (Ego_r.pdb, 40 bytes) as in the landed 0x0068E3C0; the hero
@@ -47,9 +47,10 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroThing();                        // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -71,7 +72,7 @@ public:
 
 void CInputProcessDigging::ProcessInput(const CInputEvent& event, CProcessedInput& input)
 {
-    if (IsEventButtonPressed(event) && IsEventGameAction(3, event) && MyPlayer->GetHeroThing()->HasTC(0xc6)) {
+    if (IsEventButtonPressed(event) && IsEventGameAction(3, event) && MyPlayer->GetPControlledCreature()->HasTC(0xc6)) {
         input.AddGameEvent(0x1a, 0x17, 1);
     }
 }

@@ -1,6 +1,6 @@
 // CTCOracleMinigame::SetText(unsigned long text) -- when the text changes and the hero is alive, show the narrated text through the hero's region-display component and remember it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E6230, length 153 bytes (`ret 4`).
-// Callees: CTCBase::GetPlayerManager @ 0x00686D50, CPlayerManager::GetMainPlayer @ 0x00449960, CPlayer::GetHeroThing @ 0x00487DC0,
+// Callees: CTCBase::GetPlayerManager @ 0x00686D50, CPlayerManager::GetMainPlayer @ 0x00449960, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for CTCRegionDisplay, type 0x8E = bit 14 of
 // CThing+0x30), CTCOracleMinigame::GetTextWithNarrator(unsigned long) @ 0x007E5FF0 (CWideString by value),
 // CTCRegionDisplay::SetCurrentAreaName(const CWideString&, float, bool, bool, bool) @ 0x00639A90 (-1.0, false, false, true),
@@ -37,6 +37,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CWideString { public:
     void* PStringData;
     ~CWideString();                                 // 0x0099B510
@@ -45,7 +46,7 @@ class CTCRegionDisplay { public:
     void SetCurrentAreaName(const CWideString& name, float duration, bool a, bool b, bool c);   // 0x00639A90
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                         // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                       // 0x00449960
@@ -69,7 +70,7 @@ class CTCOracleMinigame : public CTCBase { public:
 void CTCOracleMinigame::SetText(unsigned long text)
 {
     if (CurrentText != text) {
-        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroThing();
+        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             CTCRegionDisplay* display = 0;
             hero->GetInterface(&display, 0x8e);

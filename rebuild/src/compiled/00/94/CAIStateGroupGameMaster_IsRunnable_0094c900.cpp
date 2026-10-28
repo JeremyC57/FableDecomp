@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094C900, length 384 bytes.
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10
 //          (CIntelligentPointer<CThingBuilding> vtable 0x01244344), CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90,
-//          CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CVectorMap::LowerBound const
+//          CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap::LowerBound const
 //          @ 0x004365B0 (interfaces 0xBC CTCFollowed, 0x7A CTCRegionFollower, 0x23 CTCVillageMember),
 //          CTCFollowed::IsAIFollower @ 0x006D4D70, CTCRegionFollower::IsRegionFollower @ 0x006AEB60, the group's virtual
 //          slots 14 (+0x38) and 10 (+0x28, result unused), CTCVillageMember::GetPVillage @ 0x007EE540.
@@ -74,6 +74,7 @@ class CThing { public:
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CThingAICreature : public CThing { public:
     unsigned char _pad2[0x170 - sizeof(CThing)];
     CBuildingPointer WorkBuilding;              // +0x170
@@ -89,7 +90,7 @@ class CTCVillageMember { public:                       // interface 0x23
     CVillage* GetPVillage();                    // 0x007EE540
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -131,7 +132,7 @@ struct CAIStateGroup_GameMaster : CAIStateGroupBase {
 bool CAIStateGroup_GameMaster::IsRunnable()
 {
     PTavern = CBuildingPointer(GetCreature()->WorkBuilding.GetPItem());
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero) {
         if (hero->HasTC(0xbc)) {
             CTCFollowed* followed = hero->GetTC<CTCFollowed>(0xbc);

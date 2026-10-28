@@ -3,8 +3,8 @@
 // Flags: /GS
 //
 // Retail 0x00779080, 359 bytes (plain `ret`, /GS cookie 0x0139C8A8 checked by __security_check_cookie @ 0x00BFE9F9).
-// Callees: CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0,
-// CTCBase::GetWorld @ 0x00686A70 (twice), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (four times), CThing::GetPosition @
+// Callees: CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
+// CTCBase::GetWorld @ 0x00686A70 (twice), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (four times), CThing::GetPos @
 // 0x004C73D0 (three times), the physics component's virtual GetAngleXY (slot 63, +0xfc; CTCPhysicsStandard's is an fpatan),
 // CMemoryBuffer::Copy @ 0x009F1760 (four floats, three bools), CWorld::HandleMoveHeroToRegionGameEvent @ 0x0049EAF0.
 // Shape: the landed CGameEvent model (0x0077FB00 / 0x0077D4B0): the event is built after the world flag store; every Add<T> is
@@ -35,9 +35,10 @@ public:
     unsigned char _pad64[0x90 - 0x64];
     signed char Player;                                 // +0x90
     unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     float GetAngleXY() const { return PhysicsTC->GetAngleXY(); }
 };
+class CThingPlayerCreature : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -57,7 +58,7 @@ public:
 };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
@@ -114,13 +115,13 @@ public:
 
 void CTCDRegionExit::MoveHeroThroughExit()
 {
-    CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
     if (hero && !hero->Dead) {
         GetWorld().HeroMovingThroughRegionExit = true;
         CGameEvent event(0x2c);
-        event.AddFLOAT(PEntranceConnectedTo.GetPItem()->GetPosition().X);
-        event.AddFLOAT(PEntranceConnectedTo.GetPItem()->GetPosition().Y);
-        event.AddFLOAT(PEntranceConnectedTo.GetPItem()->GetPosition().Z);
+        event.AddFLOAT(PEntranceConnectedTo.GetPItem()->GetPos().X);
+        event.AddFLOAT(PEntranceConnectedTo.GetPItem()->GetPos().Y);
+        event.AddFLOAT(PEntranceConnectedTo.GetPItem()->GetPos().Z);
         event.AddFLOAT(PEntranceConnectedTo.GetPItem()->GetAngleXY());
         event.AddBOOL(false);
         event.AddBOOL(false);

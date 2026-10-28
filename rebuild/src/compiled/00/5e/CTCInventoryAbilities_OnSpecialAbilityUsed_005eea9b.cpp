@@ -57,7 +57,7 @@ class CThing { public:
     CPresenceBits  m_present;                                  // +0x20
     unsigned char  _pad21[0x23];
     CInterfaceMap  m_interfaces;                               // +0x44
-    const C3DVector& GetPosition() const;                      // 0x004C73D0
+    const C3DVector& GetPos() const;                      // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
@@ -193,7 +193,7 @@ void CTCInventoryAbilities::OnSpecialAbilityUsed(EHeroAbility ability, bool from
             CThing* parent = ParentThing;
             long frames = g_FrameRate;
             CMessageEventManager* messages = GetWorld().PMessageEventManager;
-            messages->AddMessage(0x44, frames, &parent->GetPosition(), 0, 0, 0.0f, 0.0f, ability);
+            messages->AddMessage(0x44, frames, &parent->GetPos(), 0, 0, 0.0f, 0.0f, ability);
             stats->ModifyStaminaBy(cost);
             ++stats->AbilityUseCounts[ability];
             if (ability != 0xb && ability != 5 && ability != 0x12 && ability != 0x13) {

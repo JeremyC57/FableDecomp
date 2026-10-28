@@ -23,20 +23,22 @@ public:
     _STLP_alloc_proxy<_Tp*, _Tp, _Alloc> _M_end_of_storage;   // +0x08
 };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
+protected:
+    void _M_clear();                                   // protected, as in the source (STLport 4.6)
 public:
-    void _M_clear();
 };
 }
+template <class V> struct ClearAccess : public V { using V::_M_clear; };   // the test reaches the protected member
 int main()
 {
     std::vector<ENavigatorType> v;
     v._M_start = (ENavigatorType*)malloc(3 * sizeof(ENavigatorType));
     v._M_finish = v._M_start + 2; v._M_end_of_storage._M_data = v._M_start + 3;
     ENavigatorType* old = v._M_start;
-    v._M_clear();
+    static_cast<ClearAccess<std::vector<ENavigatorType> >&>(v)._M_clear();
     if (v._M_start != old) return 1;                   // _M_clear leaves the pointers to the caller
     std::vector<ENavigatorType> e; e._M_start = e._M_finish = e._M_end_of_storage._M_data = 0;
-    e._M_clear();
+    static_cast<ClearAccess<std::vector<ENavigatorType> >&>(e)._M_clear();
     puts("006715f0_TEST PASS");
     return 0;
 }

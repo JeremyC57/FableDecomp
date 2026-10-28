@@ -72,12 +72,16 @@ public:
     typedef const _Tp* const_pointer;
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
     unsigned int capacity() const { return (unsigned int)(this->_M_end_of_storage._M_data - this->_M_start); }
+    protected:
     pointer _M_allocate_and_copy(unsigned int __n, const_pointer __first, const_pointer __last);   // 0x005F8BD8
+    public:
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);
 };
 

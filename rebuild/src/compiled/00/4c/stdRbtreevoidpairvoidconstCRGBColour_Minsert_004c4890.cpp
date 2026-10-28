@@ -1,5 +1,5 @@
 // std::_Rb_tree<void*, pair<void* const, CRGBColour>, ...>::_M_insert(_Rb_tree_node_base* x, _Rb_tree_node_base* y, const value_type& v, _Rb_tree_node_base* w) -- STLport: link a new tint-colour node left or right of y, fix the header links, rebalance, count it
-// Leaf: ?_M_insert@?$_Rb_tree@PAXU?$pair@QAXVCRGBColour@@@std@@U?$_Select1st@U?$pair@QAXVCRGBColour@@@std@@@2@U?$less@PAX@2@U?$allocator@U?$pair@QAXVCRGBColour@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAXVCRGBColour@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAXVCRGBColour@@@2@0@Z
+// Leaf: ?_M_insert@?$_Rb_tree@PAXU?$pair@QAXVCRGBColour@@@std@@U?$_Select1st@U?$pair@QAXVCRGBColour@@@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXVCRGBColour@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@QAXVCRGBColour@@@std@@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@QAXVCRGBColour@@@2@0@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004C4890, length 208 bytes (194 + int3 padding), `ret 14h` (hidden iterator result, x, y, v, w).
 // Identity: the tree behind CTCGraphicAppearance::TintColours (+0x18, map<void*, CRGBColour>): the landed SetTintColour
 // 0x004C00B0 calls its operator[] 0x004C5890, which calls insert_unique(hint) 0x004C4D50, which calls this row (and
@@ -48,7 +48,7 @@ template <class T> struct _Rb_tree_iterator {
     _Rb_tree_iterator(_Rb_tree_node_base* x) : _M_node(x) {}
 };
 
-template <class T> struct allocator {};
+template <class T> class allocator {};
 template <class T> struct less {};
 template <class P> struct _Select1st {};
 

@@ -1,7 +1,7 @@
 // CThingFilter_IsWithinArea::operator()(CThing* thing) -- true when the thing lies within Radius (plus its own physics radius when IncludeThingRad) of the segment StartPos..EndPos in the XY plane
 // Leaf: ??RCThingFilter_IsWithinArea
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007FD830, length 116 bytes.
-// Callees: CThing::GetPosition @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is a propagated label),
+// Callees: CThing::GetPos @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is a propagated label),
 // GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector&, const C3DVector&, const C3DVector&) @ 0x008F5B50
 // (__fastcall returning C3DVector through a hidden pointer in ecx, so C3DVector is non-POD here).
 // Layout: PDB CThingFilter_IsWithinArea { C3DVector* StartPos (+0); C3DVector* EndPos (+4); float Radius (+8); bool IncludeThingRad (+0xc); };
@@ -20,7 +20,7 @@ class CTCPhysicsBase { public:
 class CThing { public:
     unsigned char   _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 C3DVector __fastcall GetLineOutFromClosestPointOnFiniteLineToPoint(const C3DVector& start, const C3DVector& end, const C3DVector& point);   // 0x008F5B50
 class CThingFilter_IsWithinArea { public:
@@ -36,7 +36,7 @@ bool CThingFilter_IsWithinArea::operator()(CThing* thing) const
     float thingRadius = 0.0f;
     if (IncludeThingRad)
         thingRadius = thing->PhysicsTC->m_radius;
-    C3DVector out = GetLineOutFromClosestPointOnFiniteLineToPoint(*StartPos, *EndPos, thing->GetPosition());
+    C3DVector out = GetLineOutFromClosestPointOnFiniteLineToPoint(*StartPos, *EndPos, thing->GetPos());
     float radius = thingRadius + Radius;
     return out.X * out.X + out.Y * out.Y < radius * radius;
 }

@@ -3,7 +3,7 @@
 // Retail 0x0078C4C0, 336 bytes, `ret`.
 // Callees: CDefClassBase::GetSubDef<T>(CDefPointer<T>*) 0x00669580, the sub-def's named-effect lookup (const CCharString&,
 // long*) 0x00669D30, CCharString(const char*, long) 0x0099EBF0 ("STARTUP_EFFECT" 0x0126BC64, "" 0x0122D70E), ~CCharString
-// 0x0099EAE0, CThing::GetPosition 0x004C73D0, CreateParticleEffect(long, const C3DVector&) 0x0072AB70 (`__fastcall`),
+// 0x0099EAE0, CThing::GetPos 0x004C73D0, CreateParticleEffect(long, const C3DVector&) 0x0072AB70 (`__fastcall`),
 // CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10 (vtable 0x01238C6C),
 // CVectorMap::LowerBound 0x0040F020 (interface 0x4B), CTCDParticleEmitter::AttachToThing 0x006E0BE0; the def's slot 1 release.
 // Layout: engine/CTCBerserk.h is the PDB layout with a 16-byte DependentThings vector; retail sits 4 lower after it
@@ -33,7 +33,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags;                              // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     bool IsDead() const { return (m_flags & 1) != 0; }
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -147,7 +147,7 @@ void CTCBerserk::CreateStartingEffect()
     long effect = 0;
     if (PDef->GetSubDef(&def)) {
         if (def->GetEffect("STARTUP_EFFECT", &effect)) {
-            StartUpEffect = CIntelligentPointer<CThing>(CreateParticleEffect(effect, ParentThing->GetPosition()));
+            StartUpEffect = CIntelligentPointer<CThing>(CreateParticleEffect(effect, ParentThing->GetPos()));
             if (IS_THING_ALIVE(StartUpEffect)) {
                 CTCDParticleEmitter* emitter;
                 StartUpEffect.GetPItem()->GetInterface(&emitter, 0x4b);

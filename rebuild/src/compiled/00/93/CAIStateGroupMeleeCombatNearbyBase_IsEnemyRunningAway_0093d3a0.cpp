@@ -2,10 +2,10 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093D3A0, length 480 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (inlined lookups: 0x34 = CTCPerceiveThing, 0xAA = CTCAIScratchpad),
 // CTCPerceiveThing::GetPerceivedThing @ 0x007446A0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy +0x14),
-// CThing::GetPosition @ 0x004C73D0, the physics body's virtual GetFacing (slot 70, +0x118), CTCPerceiveThing float getter
+// CThing::GetPos @ 0x004C73D0, the physics body's virtual GetFacing (slot 70, +0x118), CTCPerceiveThing float getter
 // @ 0x00744460 (manifest "CMap::DrawGetSeaLevel" is a propagated label; real name unknown).
 // Shape: the 0x34 lookup writes through an out pointer (the component goes to its frame word, not a register); naming the
-// perceived thing first fixes the call order; the velocity uses inline body GetPosition/GetPrevPosition accessors (the
+// perceived thing first fixes the call order; the velocity uses inline body GetPos/GetPrevPosition accessors (the
 // previous position folds into [edi+18h]); the facing goes through an inline CThing::GetFacing forwarder, which puts the
 // body in ecx before the vptr load; the scratchpad pointer is uninitialised on a miss (retail reads the frame word the
 // perceiver occupies, as VC packs both there); `bool b = false; if (..) b = true;` gives `xor bl,bl ; ... ; mov bl,1`.
@@ -33,7 +33,7 @@ struct CPhysicsBody {
     C3DVector Position;                         // +0x0c
     C3DVector PrevPosition;                     // +0x18
     const C3DVector& GetPrevPosition() const { return PrevPosition; }
-    const C3DVector& GetPosition() const { return Position; }
+    const C3DVector& GetPos() const { return Position; }
 };
 
 class CThing { public:
@@ -42,7 +42,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x14];
     CPhysicsBody* m_pBody;                      // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     C3DVector GetFacing() const { return m_pBody->GetFacing(); }
     __forceinline unsigned long HasTC(long interfaceType) const
     {
@@ -119,8 +119,8 @@ bool CAIStateGroup_MeleeCombatNearbyBase::IsEnemyRunningAway()
         if (PEnemy.GetPItem() == perceived) {
             const CThing* creature = PBrain->PCreature;
             const CThing* enemy = PEnemy.GetPItem();
-            C3DVector toEnemy = enemy->GetPosition() - creature->GetPosition();
-            if (Dot(PEnemy.GetPItem()->m_pBody->GetPosition() - PEnemy.GetPItem()->m_pBody->GetPrevPosition(), toEnemy) > 0.0f) {
+            C3DVector toEnemy = enemy->GetPos() - creature->GetPos();
+            if (Dot(PEnemy.GetPItem()->m_pBody->GetPos() - PEnemy.GetPItem()->m_pBody->GetPrevPosition(), toEnemy) > 0.0f) {
                 C3DVector facing = PEnemy.GetPItem()->GetFacing();
                 if (Dot(facing, toEnemy) > 0.0f) {
                     float distSq = Dot(toEnemy, toEnemy);

@@ -3,8 +3,9 @@
 // Leaf: ?Update@CInputProcessZTarget@@UAEXAAVCProcessedInput@@@Z
 // The labels "CTCShotDefinitionBase::CanBeHitByMeleeStrike" (0x00445B80) and "CPersistContext::Transfer" (0x00687D50) are propagated. Shape: `test eax,eax ; jl ; dec eax`, `ret 4`.
 struct CThing_Retail;
+class CThingPlayerCreature;
 class CPlayer { public:
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
 };
 struct CTarget_00445b80 {
     bool IsValid();                                // 0x00445B80
@@ -25,7 +26,7 @@ class CInputProcessZTarget { public:
 
 void CInputProcessZTarget::Update(CProcessedInput& processed)
 {
-    m_pPlayer->GetHeroCreature();
+    m_pPlayer->GetPControlledCreature();
     if (m_lockTimer >= 0)
         m_lockTimer = m_lockTimer - 1;
     if (!m_pTarget->IsValid() && !IsButtonHeld(1, 2))

@@ -12,10 +12,12 @@ class C3DVector { public:
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-class CThing { public:
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;         // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition_006a4d00();         // 0x006A4D00
 };
 
 class CThingCreatureBase { public:
@@ -47,7 +49,7 @@ bool CAIStateGroup_MinionCuriosity::FindNewCuriosityPos()
 {
     CThing* thing = PBrain->Creature->GetCuriosityThing();
     if (thing && !(thing->m_flags91 & 1)) {
-        CuriosityPos = thing->GetPosition_006a4d00();
+        CuriosityPos = thing->PeekPos();
         return true;
     }
     return false;

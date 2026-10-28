@@ -2,7 +2,7 @@
 // Leaf: ?Update@CAIStateGroup_TellStory
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00942EE0, length 767 bytes (0x68 frame, virtual slot 12).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 ("STORY_PLACE_MARKER") / ~CCharString @ 0x0099EAE0,
-//   CGameDefinitionManager::Get @ 0x0044C6B0 / GetDefGlobalIndexFromName @ 0x009AD410, CThing::GetPosition @ 0x004C73D0,
+//   CGameDefinitionManager::Get @ 0x0044C6B0 / GetDefGlobalIndexFromName @ 0x009AD410, CThing::GetPos @ 0x004C73D0,
 //   PeekThingSearchTools @ 0x008FD000, GetPBestThing<HasDefGlobalIndex, Nearest> @ 0x009107B0 and the creature-filter
 //   FindThings @ 0x00943830 (both same-TU templates: noinline stand-ins here), the marker body's virtual slot 70 (+0x118,
 //   C3DVector by hidden pointer), CVectorMap::LowerBound const @ 0x004365B0 (interface 0x23), GFGetPVillageInterface
@@ -51,7 +51,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     CThingBody* PBody;                          // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     bool TestTC(long interfaceType) const
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
@@ -182,7 +182,7 @@ void CAIStateGroup_TellStory::Update()
     }
     CThing* marker;
     {
-        CThingCompare_Nearest compare(GetCreature()->GetPosition());
+        CThingCompare_Nearest compare(GetCreature()->GetPos());
         CThingFilter_HasDefGlobalIndex filter(index);
         PeekThingSearchTools()->GetPBestThing(filter, compare, &marker);
     }
@@ -214,7 +214,7 @@ void CAIStateGroup_TellStory::Update()
         long count = listeners._M_finish - start;
         C3DVector facePos;
         if (count != 0)
-            facePos = start[Random(count)]->GetPosition();
+            facePos = start[Random(count)]->GetPos();
         else
             facePos = forward + markerPos;
         MoveAndFace(markerPos, 0.0f, facePos);

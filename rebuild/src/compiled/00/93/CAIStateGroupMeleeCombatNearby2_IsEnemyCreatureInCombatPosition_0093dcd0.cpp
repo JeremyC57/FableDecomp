@@ -12,9 +12,11 @@ class C3DVector { public:
 inline float GroundDistanceSquared(const C3DVector& a,const C3DVector& b) {
  return (a-b).GetLengthSquared2D();
 }
-struct CCreatureCombatView {
+class CThing { public:
+    const C3DVector& GetPos() const; // 004C73D0
+};
+struct CCreatureCombatView : public CThing {
  bool IsRegisteredCombatant(); // 00662410 (propagated AddCombinationBlend label is incompatible with this call)
- const C3DVector& GetPosition() const; // 004C73D0
 };
 struct CCombatPositionMethods {
  bool CheckRingRangeToTarget(CThingAICreature*); // 006E94D0
@@ -45,7 +47,7 @@ bool CCombatStateMethods::IsEnemyCreatureInCombatPosition() {
   if(combat->IsCreatureWithValidMeleeCombatSequence(creature)) return true;
   creature=PBrain->Creature;
   combat=(CCombatPositionMethods*)GetPWorld()->PThingCombatManager_ptr;
-  const C3DVector& position=((CCreatureCombatView*)creature)->GetPosition();
+  const C3DVector& position=((CCreatureCombatView*)creature)->GetPos();
   if(GroundDistanceSquared(combat->GetPreferredPos(creature),position)<2.25f) return true;
  }
  return false;

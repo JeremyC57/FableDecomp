@@ -116,6 +116,7 @@ public:
     {
         _M_empty_initialize();
     }
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;
@@ -123,6 +124,7 @@ public:
         this->_M_header._M_data->_M_left = this->_M_header._M_data;
         this->_M_header._M_data->_M_right = this->_M_header._M_data;
     }
+    public:
     unsigned int _M_node_count;
     _Compare _M_key_compare;
 };

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00953FE0, length 84 bytes (+ int3 padding), `ret 14h`.
 // Callees: CAIStateGroupBase::Initialise @ 0x008FCEC0 (five arguments forwarded), CAIStateGroupBase::GetPWorld
 // @ 0x008FCFC0 with its result DROPPED (`GetPWorld()->GetFrameCount()`, a static GetFrameCount), GFGetCurrentFrame
-// @ 0x0049D870, CThing::GetPosition @ 0x004C73D0 (returns a const C3DVector& into the creature; manifest
+// @ 0x0049D870, CThing::GetPos @ 0x004C73D0 (returns a const C3DVector& into the creature; manifest
 // "CVertexBufferWin32::DoSizeof" is a propagated label).
 // Shape: FrameOfLastTeleport (+0x20) stored between the position call's argument load and the call; the
 // C3DVector assignment at +0x24 is the IMPLICIT operator= of a class with a user copy constructor (three dword
@@ -20,8 +20,10 @@ class C3DVector { public:
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
 
-class CThingCreatureBase { public:
-    const C3DVector& GetPosition();         // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;         // 0x004C73D0
+};
+class CThingCreatureBase : public CThing { public:
 };
 
 long __fastcall GFGetCurrentFrame();        // 0x0049D870
@@ -54,5 +56,5 @@ void CAIStateGroup_MazeTutorialBattleTeleport::Initialise(CAIBrain& brain, CThin
 {
     CAIStateGroupBase::Initialise(brain, creature, id, priority, name);
     FrameOfLastTeleport = GetPWorld()->GetFrameCount();
-    LastTeleportPos = PBrain->Creature->GetPosition();
+    LastTeleportPos = PBrain->Creature->GetPos();
 }

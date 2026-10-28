@@ -71,12 +71,14 @@ public:
     _Tp& operator[](unsigned int __n) { return *(begin() + __n); }
 #pragma auto_inline(off)
     // 0x008F7390. Same-TU noinline STAND-IN body (only its call matters): it reads `x` and never writes it.
+    protected:
     __declspec(noinline) void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&,
                                                  unsigned int __fill_len, bool __atend)
     {
         if (__atend && __fill_len == 1 && __position == this->_M_finish)
             _Construct(this->_M_start, __x);
     }
+    public:
 #pragma auto_inline(on)
     void push_back(const _Tp& __x)
     {

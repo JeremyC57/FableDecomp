@@ -67,9 +67,16 @@ template <class K, class V>
 struct _Rb_tree : _Rb_tree_base<V> {
     unsigned int _M_node_count;
     less<K>      _M_key_compare;
+    protected:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;          // _S_rb_tree_red
@@ -77,6 +84,7 @@ struct _Rb_tree : _Rb_tree_base<V> {
         _M_leftmost() = this->_M_header._M_data;
         _M_rightmost() = this->_M_header._M_data;
     }
+    public:
     _Rb_tree() : _Rb_tree_base<V>(allocator<V>()), _M_node_count(0), _M_key_compare() { _M_empty_initialize(); }
 };
 

@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B74D0, 262 bytes (272 with padding), virtual Initialise.
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("GENERATE_DROP" 0x0127A5AC / "GENERATE" 0x0127A5A0), CCombatActionBase::SetAnimationName
 //   0x008574D0, CCombatActionBase::Initialise 0x00857520, CBaseIntelligentPointer::GetPItem 0x00A01B50,
-//   CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CCRC::CalcAndLookup 0x00669D30, CThing::GetPosition
+//   CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CCRC::CalcAndLookup 0x00669D30, CThing::GetPos
 //   0x004C73D0, the special-effect Create 0x006E0880 (__fastcall).
 // Shape: the JackDeathInto 0x008C0EA0 model with the lookup in one `&&` expression: the thing's def is a by-value
 //   CDefPointer temporary and the name an implicit conversion, both destroyed at the end of the full expression under
@@ -72,7 +72,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x70 - 0x4c];
     CDefClassBase* m_pDef;                            // +0x70
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CTCBase* GetTC(long interfaceType)
     {
@@ -154,7 +154,7 @@ void CCreatureAction_OnGenerate::Initialise()
     }
     CSpecialEffectsDef* const effectsCopy = effects;
     if (found)
-        CreateSpecialEffect(effect, &PCreature.GetPItem()->GetPosition(), false);
+        CreateSpecialEffect(effect, &PCreature.GetPItem()->GetPos(), false);
     if (effectsCopy && DecRefToZero(effectsCopy->RefCount))
         effectsCopy->Destroy();
 }

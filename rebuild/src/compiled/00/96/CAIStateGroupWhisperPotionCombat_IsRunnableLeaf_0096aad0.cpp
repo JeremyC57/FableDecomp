@@ -38,7 +38,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector* GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     CCombatTypeDef* GetCombatTypeDef();         // 0x00666D10 (CThingCreatureBase)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -128,8 +128,8 @@ __forceinline bool CAIStateGroup_WhisperPotionCombat::RestampAndCheckRange()
     unsigned long* seed = GetPWorld()->GetPRandomSeed();
     FrameLastRun += WorldRandomRange(*seed, rate * 5);
     CThing* creature = PBrain->PCreature;
-    const C3DVector* targetPos = PTarget.GetPItem()->GetPosition();
-    const C3DVector* pos = creature->GetPosition();
+    const C3DVector* targetPos = &PTarget.GetPItem()->GetPos();
+    const C3DVector* pos = &creature->GetPos();
     float dx = pos->X - targetPos->X;
     float dy = pos->Y - targetPos->Y;
     float distance = (float)sqrt(dx * dx + dy * dy);

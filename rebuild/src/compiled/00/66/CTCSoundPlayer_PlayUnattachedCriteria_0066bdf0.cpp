@@ -3,9 +3,9 @@
 // Leaf: ?PlayUnattachedCriteria@CTCSoundPlayer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0066BDF0, 223 bytes (+ int3 padding to 224), thiscall `ret 10h`.
 //   Name: Ego_r.pdb `?PlayUnattachedCriteria@CTCSoundPlayer@@QAEKABVCCharString@@ABVC3DVector@@_N2@Z`; the position
-//   argument is never read in retail (each candidate plays at the owner's CThing::GetPosition()). Callers: 0x004A595F,
+//   argument is never read in retail (each candidate plays at the owner's CThing::GetPos()). Callers: 0x004A595F,
 //   0x0057C497, 0x007A00B3, 0x007A23C3.
-// Callees: CThing::GetSampleBank() const @ 0x004C7A80, GetPotentialCriteriaStrings @ 0x0066BC10, CThing::GetPosition()
+// Callees: CThing::GetSampleBank() const @ 0x004C7A80, GetPotentialCriteriaStrings @ 0x0066BC10, CThing::GetPos()
 //   const @ 0x004C73D0 (out of line here), InternalPlaySoundEventAtPos @ 0x0066A920, ~CCharString @ 0x0099EAE0, free
 //   @ 0x00BFEA14, vector<CCharString>::~vector @ 0x00414EA0 (the found-handle exit). Globals: the sound-enabled byte
 //   @ 0x0137E974, the game state @ 0x013B8394, the invalid sound handle @ 0x0129D25C.
@@ -52,7 +52,7 @@ class CASoundBank;
 class CThing {
 public:
     CASoundBank& GetSampleBank() const;                // 0x004C7A80
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
 };
 extern bool          g_bSoundEnabled;                  // 0x0137E974
 extern void*         g_pGameState;                     // 0x013B8394
@@ -87,7 +87,7 @@ unsigned long CTCSoundPlayer::PlayUnattachedCriteria(const CCharString& criteria
         std::vector<CCharString> names;
         GetPotentialCriteriaStrings(criteria, names);
         for (std::vector<CCharString>::iterator it = names.begin(); it != names.end(); ++it) {
-            unsigned long handle = InternalPlaySoundEventAtPos(bank, ParentThing->GetPosition(), *it, loop, attached);
+            unsigned long handle = InternalPlaySoundEventAtPos(bank, ParentThing->GetPos(), *it, loop, attached);
             if (handle != g_InvalidSoundHandle) {
 #pragma inline_depth(0)
                 return handle;

@@ -4,9 +4,9 @@
 // Callees: CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CCombatActionBase::SetAnimationName @ 0x008574D0 / Initialise
 //          @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, CThing::Kill(bool) @ 0x004C9B80, CDefClassBase::GetSubDef
-//          <CSummonerDef> @ 0x008CBFF0 (same TU) / <CSpecialEffectsDef> @ 0x00669580, CThing::GetPosition @ 0x004C73D0,
+//          <CSummonerDef> @ 0x008CBFF0 (same TU) / <CSpecialEffectsDef> @ 0x00669580, CThing::GetPos @ 0x004C73D0,
 //          CreateThing(long, const C3DVector&) @ 0x0080C460 (__fastcall), CCreatureActionBase::GetWorld @ 0x00692950,
-//          CWorld::GetMainPlayer @ 0x0049D9D0, CPlayer::GetHeroThing @ 0x00487DC0, the driver's SetOwner @ 0x0080CBF0,
+//          CWorld::GetMainPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0, the driver's SetOwner @ 0x0080CBF0,
 //          CSpecialEffectsDef::GetEffectFromString @ 0x00669D30, CreateEffectThing @ 0x006E0880 (__fastcall).
 // Layout: thing interface bitset +0x20, map +0x44, PTCDriver +0x5c, def +0x70, flags +0x91; CSummonerDef death object
 //   +0x4c; the world's loading flag +0xe1 (name descriptive). Models: the landed CCreatureAction_JackFloatUp::PerformAction
@@ -96,7 +96,7 @@ public:
     CDefClassBase* m_pDef;                                   // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                                // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
     void Kill(bool immediately);                             // 0x004C9B80
     __forceinline bool HasTC(long type) const
     {
@@ -116,6 +116,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector& position);              // 0x0080C460
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 struct CTCDriver41 {
@@ -125,7 +126,7 @@ class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);                     // 0x0073ABA0
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                                  // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                                  // 0x00487DC0
 };
 class CWorld { public:
     unsigned char _pad00[0xe1];
@@ -172,18 +173,18 @@ void CCreatureAction_SummonerDead::Initialise()
     GetCreature()->Kill(true);
     CDefPointer<CSummonerDef> summonerDef;
     if (CDefClassReference(GetCreature()->m_pDef)->GetSubDef(&summonerDef) && summonerDef->DeathObjectDefIndex > 0) {
-        CThing* deathObject = CreateThing(summonerDef->DeathObjectDefIndex, GetCreature()->GetPosition());
+        CThing* deathObject = CreateThing(summonerDef->DeathObjectDefIndex, GetCreature()->GetPos());
         if (deathObject && !(deathObject->m_flags91 & 1) && !GetWorld()->Loading) {
             CTCDriver41* driver;
             if (deathObject->HasTC(0x41))
                 driver = (CTCDriver41*)deathObject->PTCDriver;
-            CThing* hero = GetWorld()->GetMainPlayer()->GetHeroThing();
+            CThing* hero = GetWorld()->GetMainPlayer()->GetPControlledCreature();
             if (hero && !(hero->m_flags91 & 1))
-                driver->SetOwner(GetWorld()->GetMainPlayer()->GetHeroThing());
+                driver->SetOwner(GetWorld()->GetMainPlayer()->GetPControlledCreature());
         }
     }
     CDefPointer<CSpecialEffectsDef> effects;
     long effectType = 0;
     if (CDefClassReference(GetCreature()->m_pDef)->GetSubDef(&effects) && effects->GetEffectFromString("MESH_EXPLODE", effectType))
-        CreateEffectThing(effectType, &GetCreature()->GetPosition(), false);
+        CreateEffectThing(effectType, &GetCreature()->GetPos(), false);
 }

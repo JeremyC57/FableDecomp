@@ -2,7 +2,7 @@
 // Leaf: CancelQuickAccessCharge
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068E3C0, length 141 bytes.
-// Callees: CPlayer::GetControlledCreature @ 0x00487DD0 (MyPlayer +0x18), CMemoryBuffer::Copy(unsigned long, const void*)
+// Callees: CPlayer::PeekPControlledCreature @ 0x00487DD0 (MyPlayer +0x18), CMemoryBuffer::Copy(unsigned long, const void*)
 // @ 0x009F1760 (landed), CMainGameComponent::AddGameEvent(const CGameEvent&) @ 0x0041649C on the global component
 // @ 0x013B86A0, __security_check_cookie @ 0x00BFE9F9. Global 0x0137EE78 = the quick-access slot being charged.
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes, over an empty
@@ -33,9 +33,10 @@ class CThingCreatureBase { public:
     unsigned char m_dead : 1;                      // +0x91 bit 0
     unsigned char m_91_1 : 7;
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer {
 public:
-    CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
 class CWorld; class CGameDefinitionManager; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -55,7 +56,7 @@ public:
 
 void CInputProcessQuickAccessItems::CancelQuickAccessCharge()
 {
-    CThingCreatureBase* creature = MyPlayer->GetControlledCreature();
+    const CThingCreatureBase* creature = MyPlayer->PeekPControlledCreature();
     if (creature && !creature->m_dead) {
         CGameEvent gameEvent(0x29);
         gameEvent.Player = creature->m_playerNumber;

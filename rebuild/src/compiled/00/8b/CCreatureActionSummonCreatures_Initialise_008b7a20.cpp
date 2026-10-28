@@ -3,7 +3,7 @@
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation(const
 // CCharString&) 0x008574D0, CCombatActionBase::Initialise 0x00857520 (direct base call), CBaseIntelligentPointer::GetPItem
 // 0x00A01B50, CVectorMap::LowerBound 0x0040F020 (inline GetInterface 0xFA = CTCAISummon, bit 26 of the present-bits dword
-// +0x3C), CThing::GetPosition 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool) 0x006E0880,
+// +0x3C), CThing::GetPos 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool) 0x006E0880,
 // CTCAISummon::SummonCreatures(const C3DVector*) 0x007FE040 (result dropped).
 // Layout: CTCAISummon PSummonDef +0x0C (PDB); the CSummonDef effect read is retail +0x44 = PDB SummoneeEffect +0x48 (def
 // layouts sit 4 bytes lower in retail; if the def base matches the PDB it is SummonEffect); SpawnOnTarget retail +0x114
@@ -34,7 +34,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_deleteFlags;                // +0x91 bit 0: being deleted
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -106,9 +106,9 @@ void CCreatureAction_SummonCreatures::Initialise()
     PCreature.GetPItem()->GetInterface(&summon, 0xfa);
     long effect = summon->PSummonDef->SummoneeEffect;
     if (effect > 0)
-        CreateEffectThing(effect, &PCreature.GetPItem()->GetPosition(), false);
+        CreateEffectThing(effect, &PCreature.GetPItem()->GetPos(), false);
     if (SpawnOnTarget && PTarget.GetPItem() && !(PTarget.GetPItem()->m_deleteFlags & 1))
-        summon->SummonCreatures(&PTarget.GetPItem()->GetPosition());
+        summon->SummonCreatures(&PTarget.GetPItem()->GetPos());
     else
         summon->SummonCreatures(0);
 }

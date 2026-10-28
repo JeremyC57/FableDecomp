@@ -2,7 +2,7 @@
 // Leaf: TeleportHero
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DFCF0, 295 bytes (plain `ret`, /GS cookie 0x0139C8A8).
-// Callees: CTCBase::GetWorld() 0x00686A70 (x2); CThing::GetPosition() const 0x004C73D0 (x3, one per component);
+// Callees: CTCBase::GetWorld() 0x00686A70 (x2); CThing::GetPos() const 0x004C73D0 (x3, one per component);
 //          CMemoryBuffer::Copy(unsigned long, const void*) 0x009F1760 (x7); the physics component's GetFacingAngleXY (slot
 //          63, `call [edx+0FCh]`); CTCBase::PeekPlayerManager() const 0x00686D50; CPlayerManager::GetMainPlayerNumber()
 //          0x00449700; CWorld::HandleMoveHeroToRegionGameEvent(CGameEvent*) 0x0049EAF0; __security_check_cookie 0x00BFE9F9.
@@ -37,7 +37,7 @@ class CThing {
 public:
     unsigned char   _pad_0x00[0x60];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 struct CMemoryBuffer {
@@ -82,9 +82,9 @@ void CTCTeleporter::TeleportHero()
 {
     GetWorld().DisplayMiniMapOnRegionLoad = true;
     CGameEvent event(0x2c);
-    event.AddFloat(ParentThing->GetPosition().X);
-    event.AddFloat(ParentThing->GetPosition().Y);
-    event.AddFloat(ParentThing->GetPosition().Z);
+    event.AddFloat(ParentThing->GetPos().X);
+    event.AddFloat(ParentThing->GetPos().Y);
+    event.AddFloat(ParentThing->GetPos().Z);
     event.AddFloat(ParentThing->PhysicsTC->GetFacingAngleXY());
     event.AddBool(true);
     event.AddBool(false);

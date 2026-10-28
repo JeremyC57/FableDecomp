@@ -2,7 +2,7 @@
 // Leaf: GetCompareValueForThing
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007F6BF0, length 179 bytes, `ret 4`, float in st0. Byte-identical to
 //   the sibling instantiation at 0x007F6CB0.
-// Callees: CThing::GetPosition @ 0x004C73D0, CThingCreatureBase::IsPlayer (vtable slot 77, +0x134),
+// Callees: CThing::GetPos @ 0x004C73D0, CThingCreatureBase::IsPlayer (vtable slot 77, +0x134),
 //   CThingCreatureBase::IsInMeleeAsAttacked @ 0x00662430 (asks the world's combat manager; manifest label
 //   "C3DAnimationBlendState::AddCombinationBlend" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50.
 // Float pool: 0x0122DED8 = 1.0f (both the `fadd` and the `fdivr`).
@@ -43,7 +43,7 @@ class C2DVector { public:
 class CThing : public CBaseObject { public:
     unsigned char _pad04[0x6c - 0x04];
     unsigned long ThingTypeFlags;                               // +0x6c
-    const C3DVector& GetPosition() const;                       // 0x004C73D0
+    const C3DVector& GetPos() const;                       // 0x004C73D0
 };
 
 template<class T> inline bool IsThingOfType(const CThing* const& thing)
@@ -89,8 +89,8 @@ template<class T> float CThingCompare_BestCreatureToAttack::GetCompareValueForTh
     CThingAICreature* creature = 0;
     if (IsThingOfType<CThingAICreature>(thing))
         creature = (CThingAICreature*)thing;
-    const C3DVector& targeterPos = Targeter->GetPosition();
-    const C3DVector& thingPos = thing->GetPosition();
+    const C3DVector& targeterPos = Targeter->GetPos();
+    const C3DVector& thingPos = thing->GetPos();
     C2DVector delta(thingPos.X - targeterPos.X, thingPos.Y - targeterPos.Y);
     float distance = delta.GetLength();
     float value = 1.0f / ((float)sqrt(distance) + 1.0f);

@@ -1,6 +1,6 @@
 // CAIStateGroup_PerformAction::Update() -- scripted "perform action": while the perceived thing lives and the scratchpad says FaceHeroForAction, keep looking at it; then loop on the scratchpad's scripting state group (1: play the scratchpad's Action as a combat animation at the hero, 2: speak to the hero) while the action is still running; mark the group fired and terminate (state 0 terminates at once)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009352C0, length 572 bytes (+ int3 padding), plain `ret` (virtual).
-// Callees: the player-manager accessor @ 0x008FCF80, GetPMainPlayer @ 0x00449960, CPlayer::GetHeroCreature @ 0x00487DC0,
+// Callees: the player-manager accessor @ 0x008FCF80, GetPMainPlayer @ 0x00449960, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface 0x34 = CTCPerceiveThing, bit 20 of +0x24) and
 // non-const @ 0x0040F020 (GetInterface 0xAA = CTCAIScratchpad, bit 10 of +0x34), CTCPerceiveThing::GetPerceivedThing
 // @ 0x007446A0, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 (by-value CIntelligentPointer<const
@@ -66,6 +66,7 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public: };
+class CThingPlayerCreature : public CThingCreatureBase { };
 __forceinline bool IsAlive(const CThing* thing)
 {
     if (thing != 0 && !(thing->m_flags91 & 1))
@@ -113,7 +114,7 @@ class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:
         bool flag);                             // 0x008B7F80
 };
 class CPlayer { public:
-    CThingCreatureBase* GetHeroCreature();      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;      // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetPMainPlayer();                  // 0x00449960
@@ -143,7 +144,7 @@ struct CAIStateGroup_PerformAction : CAIStateGroup_ScriptingBase {
 
 void CAIStateGroup_PerformAction::Update()
 {
-    CThingCreatureBase* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetHeroCreature();
+    CThingCreatureBase* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->GetPControlledCreature();
     CThingCreatureBase* creature = GetCreature();
     CTCPerceiveThing* perceive;
     static_cast<const CThing*>(creature)->GetInterface(&perceive, 0x34);

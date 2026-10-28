@@ -17,7 +17,7 @@ class C3DVector { public:
 };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                 // 0x004C73D0
+    const C3DVector& GetPos() const;                 // 0x004C73D0
 };
 // Ego_r.pdb CThingCompare_NearestToPos: 12 bytes, Pos (C3DVector) +0x00, a bool "a is nearer" predicate.
 class CThingCompare_NearestToPos { public:
@@ -31,8 +31,8 @@ template <class T> bool CThingCompare_NearestToPos::operator()(T* a, T* b) const
         return false;
     if (!b)
         return true;
-    C3DVector deltaA = a->GetPosition() - Pos;
-    C3DVector deltaB = b->GetPosition() - Pos;
+    C3DVector deltaA = a->GetPos() - Pos;
+    C3DVector deltaB = b->GetPos() - Pos;
     if (deltaA.GetLengthSquared() < deltaB.GetLengthSquared())
         return true;
     return false;

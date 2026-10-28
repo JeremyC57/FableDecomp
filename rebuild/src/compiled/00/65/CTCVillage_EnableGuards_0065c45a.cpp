@@ -6,7 +6,7 @@
 //   IS_THING_ALIVE 0x004A88F0 and IS_THING_ALIVE(const CIntelligentPointer<CThingAICreature>&) 0x004AB8F0 (all
 //   `__fastcall`); std::bitset<>::test 0x00410DE0 (interfaces 0xD6 and 0x4F); CVectorMap LowerBound 0x0040F020 (inlined
 //   GetTC); the dummy villager's enable switch 0x0072F0E0 (manifest "EnableNavigator"); CThing::Kill(bool) 0x004C9B80;
-//   CThing::GetPosition 0x004C73D0; CTCDummyVillager::CreateVillager 0x0072F750; the village crime reset 0x0065C2D0
+//   CThing::GetPos 0x004C73D0; CTCDummyVillager::CreateVillager 0x0072F750; the village crime reset 0x0065C2D0
 //   (landed spellings ProcessCrimeDeeds / OnAllFinesPaid; most likely the PDB's `?ClearCrimes@CTCVillage@@QAEXXZ`);
 //   CTCCreatureOpinionOfHero::DecriminaliseAllKnownCrimes 0x00684050 (interface 0x4F).
 // Layout: CTCBase ParentThing +0x04; retail CTCVillage VillagePeople +0x2c, VillageDummies +0x74 (4-byte STLport lists,
@@ -62,7 +62,7 @@ class CBaseObject { public:
     }
 };
 class CThing : public CBaseObject { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     void Kill(bool silent);                     // 0x004C9B80
 };
 class CThingAICreature : public CThing { public: };
@@ -146,7 +146,7 @@ void CTCVillage::EnableGuards(bool enable)
                     if (IS_THING_ALIVE(villager->PVillager.GetPItem()))
                         villager->PVillager.GetPItem()->Kill(false);
                 } else if (!IS_THING_ALIVE(villager->PVillager.GetPItem()))
-                    villager->CreateVillager(this, ParentThing->GetPosition(), false);
+                    villager->CreateVillager(this, ParentThing->GetPos(), false);
             }
         }
     }

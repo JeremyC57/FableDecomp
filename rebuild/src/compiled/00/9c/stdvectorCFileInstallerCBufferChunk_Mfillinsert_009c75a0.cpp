@@ -101,8 +101,10 @@ public:
     typedef _Tp* iterator;
     typedef __false_type _IsPODType;
     typedef __false_type _TrivialAss;
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                              // 0x009C73E0
+    public:
     void _M_fill_insert(iterator __position, size_type __n, const _Tp& __x);
 };
 

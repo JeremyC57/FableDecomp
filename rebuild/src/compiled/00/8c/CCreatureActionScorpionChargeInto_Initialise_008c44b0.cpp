@@ -69,7 +69,7 @@ class CThing { public:
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
     CDefClassBase* GetDef() const { return Def; }
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -150,7 +150,7 @@ void CCreatureAction_ScorpionChargeInto::Initialise()
     CDefPointer<CAICreatureWillPowerIndicatorDef> def;
     GetCreature()->GetDef()->GetSubDef(&def);
     C3DVector offset = GetCreature()->GetPhysics()->GetFacing() * (def.Object->Radius + 0.2f);
-    CThing* obstruction = CreateObstruction(GetCreature()->GetPosition() + offset, GetCreature()->GetPosition() + offset,
+    CThing* obstruction = CreateObstruction(GetCreature()->GetPos() + offset, GetCreature()->GetPos() + offset,
                                             def.Object->Radius);
     if (obstruction)
         PObstruction = CIntelligentPointer<CThing>(obstruction);

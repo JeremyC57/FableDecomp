@@ -16,7 +16,7 @@
 class C3DVector { public: float X, Y, Z; };
 
 class CThing { public:
-    const C3DVector* GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
 class CAIBrain { public:
@@ -64,8 +64,8 @@ int CAIStateGroupBehaviourBase::IsTargetSeenWithinCloseRange()
 {
     if (PTCPerception->AwarenessTimer != 0.0f && PTCPerception->GetDirectAwareness() && PTCPerception->LineOfSight) {
         CThing* creature = PBrain->Creature;
-        const C3DVector* targetPos = PTargetThing.GetPItem()->GetPosition();
-        const C3DVector* creaturePos = creature->GetPosition();
+        const C3DVector* targetPos = &PTargetThing.GetPItem()->GetPos();
+        const C3DVector* creaturePos = &creature->GetPos();
         float dx = creaturePos->X - targetPos->X;
         float dy = creaturePos->Y - targetPos->Y;
         float distSq = dx * dx;

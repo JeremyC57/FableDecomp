@@ -3,7 +3,7 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00629B10, 298 bytes (304 with padding), `ret 4`, /GS (cookie 0x0139C8A8).
 //   PDB ?EAChargeQuickAccessItem@CWorld@@QAEXPBVCGameEvent@@@Z.
-// Callees: CWorld::GetPlayer(long) 0x0049D850 (x2), CPlayer::HasMode 0x00634160, CPlayer::GetHeroCreature 0x00487DC0,
+// Callees: CWorld::GetPlayer(long) 0x0049D850 (x2), CPlayer::HasMode 0x00634160, CPlayer::GetPControlledCreature 0x00487DC0,
 //   CThingCreatureBase::IsPerformingAnyAction 0x006622A0, CGameEvent::GetData 0x009F17A0, CMemoryBuffer::Read 0x009F18F0,
 //   CPlayerGui::ToggleQuickAccessCharge(long, bool) 0x00437A10 and IsOpen() const 0x004374F0 on g_pPlayerGui 0x013B8790,
 //   CPlayer::GetCurrentMode 0x00633BE0, AddMode(EPlayerMode, bool) 0x006345C0, RemoveMode 0x00634190,
@@ -36,10 +36,11 @@ class CThingCreatureBase { public:
 public:
     bool IsPerformingAnyAction() const;   // 0x006622A0
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 enum EPlayerMode { PLAYER_MODE_CHARGING_QUICK_ACCESS = 0x1c, PLAYER_MODE_0x2F = 0x2f };
 class CPlayer { public:
     bool HasMode(EPlayerMode mode);                // 0x00634160
-    CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
     EPlayerMode GetCurrentMode() const;            // 0x00633BE0
     void AddMode(EPlayerMode mode, bool b);        // 0x006345C0
     void RemoveMode(EPlayerMode mode);             // 0x00634190
@@ -59,7 +60,7 @@ void CWorld::EAChargeQuickAccessItem(const CGameEvent* event)
     if (eventPlayer->HasMode(PLAYER_MODE_0x2F))
         return;
     CPlayer* player = GetPlayer(event->Player);
-    CThingCreatureBase* hero = player->GetHeroCreature();
+    CThingCreatureBase* hero = player->GetPControlledCreature();
     if (!hero || hero->Dead || hero->IsPerformingAnyAction())
         return;
     CMemoryBuffer buffer;

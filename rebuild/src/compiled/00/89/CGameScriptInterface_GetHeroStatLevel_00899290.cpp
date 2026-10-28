@@ -1,6 +1,6 @@
 // CGameScriptInterface::GetHeroStatLevel(EHeroTrainableStatType) const -- the hero's level in a trainable stat; -1 when there is no live hero
 // Leaf: GetHeroStatLevel@CGameScriptInterface
-// Retail: Fable.exe @ 0x00899290, 122 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::PeekPPlayerCharacter 0x00487DD0,
+// Retail: Fable.exe @ 0x00899290, 122 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::PeekPControlledCreature 0x00487DD0,
 // then CThing::PeekTC (Ego_r.pdb bool/out-pointer form; const Components lower_bound 0x004365B0); CTCHeroExperience::GetTrainableStatLevel 0x006D6520 (catalogued as CTCInventoryAbilities::GetAbilityLevel).
 // Shape: PeekTC's result is not tested -- without the TC bit retail reads through the uninitialised out pointer.
 // Layout: CGameScriptInterface per engine/CGameScriptInterface.h (+0x14 PlayerManager); CThing retail (UsingComponents +0x20,
@@ -57,8 +57,8 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
-    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
 };
 class CPlayerManager {
 public:
@@ -90,7 +90,7 @@ public:
 
 long CGameScriptInterface::GetHeroStatLevel(EHeroTrainableStatType stat) const
 {
-    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPPlayerCharacter();
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
     if (hero && !hero->IsDead())
     {
         const CTCHeroExperience* tc;

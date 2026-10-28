@@ -78,18 +78,24 @@ template <class T, class A = allocator<T> > class vector : protected _Vector_bas
 public:
     typedef T* pointer;
     unsigned int size() const { return (unsigned int)(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer s, pointer f, pointer e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
+    protected:
     void _M_insert_overflow(pointer position, const T& x, const __false_type&, unsigned int fill_len, bool atend);
+    public:
 };
 
 template <class T, class A>

@@ -1,5 +1,5 @@
 // std::vector<std::set<unsigned long>>::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
-// Leaf: ?_M_fill_insert@?$vector@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@V?$allocator@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@2@@std@@IAEXPAV?$set@KU?$less@K@std@@V?$allocator@K@2@@2@IABV32@@Z
+// Leaf: ?_M_fill_insert@?$vector@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@V?$allocator@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@2@@std@@QAEXPAV?$set@KU?$less@K@std@@V?$allocator@K@2@@2@IABV32@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051c920, 300 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): bound ?_M_fill_insert@?$vector@V?$set@KU?$less@K@std@@...@Z in reloc_bindings; landed caller vector<set<unsigned long> >::resize(n, x) 0x0051D030; overflow callee the landed vector<set<unsigned long> >::_M_insert_overflow 0x0051C470.
 // Callees: set<unsigned long>::set(const set&) 0x00513700 (bound), _Rb_tree<unsigned long, ...>::~_Rb_tree 0x00517850 (the inline ~set's member destructor; landed under a CRetailTree stand-in), __uninitialized_copy 0x00518F30 (bound), __copy_backward 0x00517430, uninitialized_fill_n 0x00518F80, fill 0x00517060 (landed), _M_insert_overflow 0x0051C470 (landed).
@@ -78,7 +78,9 @@ public:
 protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                                             // 0x0051C470
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
+    protected:
 };
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, const _Tp& __x)

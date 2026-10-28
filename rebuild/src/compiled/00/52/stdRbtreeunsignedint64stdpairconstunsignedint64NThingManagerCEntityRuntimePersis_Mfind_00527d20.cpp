@@ -1,5 +1,5 @@
 // std::_Rb_tree<unsigned __int64, std::pair<const unsigned __int64, NThingManager::CEntityRuntimePersistence::CPersistedDeadEntity>, ...>::_M_find(const unsigned __int64& k) const -- STLport map lookup: walk to the first node whose key is not less than k, return it if k is not less than its key, else the header (end)
-// Leaf: ?_M_find@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Select1st@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@AB_K@Z
+// Leaf: ?_M_find@?$_Rb_tree@_KU?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@U?$_Select1st@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CB_KVCPersistedDeadEntity@CEntityRuntimePersistence@NThingManager@@@std@@@2@AB_K@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00527d20, 84 bytes, thiscall, `ret 4`.
 // Identity (proven): caller 0x0051EFA0 looks the key up in the map at this+0x18 = Ego_r.pdb NThingManager::CEntityRuntimePersistence map member (two 12-byte CArrays before it: PDB +32 less 8), map<unsigned __int64, CPersistedDeadEntity>; other callers CEntityRuntimePersistence::SaveToGameStateScript 0x0051EDA0 and CThingManager::LoadSingleThing 0x0051FD80.
 // Callees: none.
@@ -72,8 +72,12 @@ public:
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
+    private:
     _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

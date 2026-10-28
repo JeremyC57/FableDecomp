@@ -22,9 +22,11 @@ class CCamera { public:
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual C3DVector GetPosition() const;      // slot 8 (+0x20)
 };
-class CThing { public:
-    virtual void v00();
-    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    virtual void v00();  // moved from CThing: the inserted base owns the vptr (vtable order unchanged)
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:
     CCamera* GetCamera() const;                 // 0x004C7AA0
     void WorldUpdateBulletTime();               // 0x004C8BA0 (slot 20)
 };
@@ -41,6 +43,6 @@ void CThingAICreature::WorldUpdateBulletTime()
     UpdateAction();
     CThing::WorldUpdateBulletTime();
     CCamera* camera = GetCamera();
-    const C3DVector& pos = GetPosition_006a4d00();
+    const C3DVector& pos = PeekPos();
     UpdateAnimation((camera->GetPosition() - pos).GetLength());
 }

@@ -51,8 +51,10 @@ public:
     typedef typename __type_traits<_Tp>::is_POD_type _IsPODType;
     vector(const vector<_Tp, _Alloc>& __x);                                      // <C2DVector>: 0x004EBE1A
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);              // <C2DVector>: 0x0046EABD
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                               // 0x004F9FA3
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
 };
 }

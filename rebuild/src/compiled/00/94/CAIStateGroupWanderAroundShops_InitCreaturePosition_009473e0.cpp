@@ -4,7 +4,7 @@
 // Callees: CAIStateGroup_WorkBase::IsInWorkHours @ 0x0091A6F0, GetPWorldSeed @ 0x008FCFD0 + GFROR13 @ 0x00497890 (the
 //          landed CAIStateGroupBase::Random step), the shop picker @ 0x00946F90 (manifest
 //          "CAIStateGroup_WanderAroundShops_SelectRandomEnemy"), CBaseIntelligentPointer ctor 0x00A01B10 / GetPItem
-//          0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10, CThing::GetPosition 0x004C73D0,
+//          0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10, CThing::GetPos 0x004C73D0,
 //          CThingCreatureBase::AutoPlaceNearBuilding 0x00666EF0 / AutoPlaceNear 0x00665DF0; data: the chance 0x0138CE34.
 // Layout: engine/CAIStateGroup_WanderAroundShops.h (Shop +0x14, PrettyThing +0x1c, NextFrameBuy +0x24) over the landed
 //          CAIStateGroupBase model; the shop's +0x6c bit 6 marks a building.
@@ -15,10 +15,12 @@
 class CThing;
 class C3DVector { public: float x, y, z; };
 class CThingBuilding;
-class CThingPhysical { public:
+class CThing { public:
+    const C3DVector& GetPos() const;             // 0x004C73D0
+};
+class CThingPhysical : public CThing { public:
     unsigned char _pad[0x6c];
     unsigned char m_flags6c;                    // +0x6c bit 6: a building
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -83,7 +85,7 @@ bool CAIStateGroup_WanderAroundShops::InitCreaturePosition()
             return creature->AutoPlaceNearBuilding((CThingBuilding*)Shop.GetPItem(), 5.0f);
         }
         CThingCreatureBase* creature = PBrain->PCreature;
-        return creature->AutoPlaceNear(Shop.GetPItem()->GetPosition(), 5.0f);
+        return creature->AutoPlaceNear(Shop.GetPItem()->GetPos(), 5.0f);
     }
     return false;
 }

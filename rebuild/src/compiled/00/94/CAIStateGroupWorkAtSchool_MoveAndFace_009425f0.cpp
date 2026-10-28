@@ -2,7 +2,7 @@
 // more units away) to within `radius` of pos, repeating while the move is in progress, then turn to look at facePos
 // the same way; true when both actions finish (2).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009425F0, length 218 bytes (+ int3 padding), `ret 1Ch`.
-// Callees: CThing::GetPosition @ 0x004C73D0, CAIStateGroupBase::AIAction_MoveToPosProximity @ 0x0097E890 (2, pos by
+// Callees: CThing::GetPos @ 0x004C73D0, CAIStateGroupBase::AIAction_MoveToPosProximity @ 0x0097E890 (2, pos by
 // value, radius, &reached, movement type, true, false, true, no leader, true, 0.0f), AIAction_LookAtPos @ 0x0097D580
 // (2, facePos by value, 0x11, 0.0027777f). Float 10.0f @ 0x01292A1C.
 // Shape: the distance is the inline C3DVector difference (components built z-first, constructor arguments
@@ -25,8 +25,10 @@ class C3DVector { public:
     float GetLength() const { float s = X * X + Y * Y + Z * Z; return (float)sqrt(s); }
 };
 
-struct CThingPos {
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;       // 0x004C73D0
+};
+struct CThingPos : public CThing {
 };
 
 class CAIBrain { public:
@@ -65,7 +67,7 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
 
 bool CAIStateGroup_WorkAtSchool::MoveAndFace(C3DVector pos, float radius, C3DVector facePos)
 {
-    long movementType = (pos - PBrain->PCreature->GetPosition()).GetLength() < 10.0f ? 3 : 5;
+    long movementType = (pos - PBrain->PCreature->GetPos()).GetLength() < 10.0f ? 3 : 5;
     bool reached;
     long result;
     do {

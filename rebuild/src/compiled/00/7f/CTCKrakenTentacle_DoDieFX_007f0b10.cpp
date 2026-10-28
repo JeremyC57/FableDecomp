@@ -8,7 +8,7 @@
 // Callees: CTCKrakenTentacle::KillRippleFX @ 0x007F07A0 (label "CTCKraken::EndHeadEffects" is propagated),
 //   CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580 (label names the CAICreatureWillPowerIndicatorDef
 //   instantiation: byte-identical COMDAT), CSpecialEffectsDef::GetEffectFromString(const CCharString&, long*)
-//   @ 0x00669D30, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPosition
+//   @ 0x00669D30, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPos
 //   @ 0x004C73D0, CTCDParticleEmitter::Create(long, const C3DVector&, bool) @ 0x006E0880 (static `__fastcall`),
 //   CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10
 //   (CIntelligentPointer<CThing> vtable 0x01238C6C), CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface, the
@@ -115,7 +115,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 // Same-TU stand-in for the GetSubDef<T> COMDAT (as the landed 0x00801A50): with the body visible VC7.1 sees that the out
 // pointer does not escape and keeps the def object in ebp through to its release, as retail.
@@ -175,7 +175,7 @@ void CTCKrakenTentacle::DoDieFX()
     long effect = 0;
     const CDefClassBase* thingDef = ParentThing->PDef;
     thingDef->GetSubDef(&effects) && effects->GetEffectFromString("ON_DIE", &effect);
-    PRippleEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, ParentThing->GetPosition(), false));
+    PRippleEffect = CIntelligentPointer<CThing>(CTCDParticleEmitter::Create(effect, ParentThing->GetPos(), false));
     if (PRippleEffect.IsAlive()) {
         CTCDParticleEmitter* emitter = 0;
         PRippleEffect.GetPItem()->GetInterface(&emitter, 0x4b);

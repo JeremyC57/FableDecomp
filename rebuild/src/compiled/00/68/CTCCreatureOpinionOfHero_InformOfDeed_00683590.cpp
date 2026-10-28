@@ -1,7 +1,7 @@
 // CTCCreatureOpinionOfHero::InformOfDeed(long deedHandle, bool flag) -- look the hero's logged deed up by handle and react to it (its type, the handle, the deed type's effects def)
 // Leaf: ?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJ_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00683590, 179 bytes (`ret 8`).
-// Callees: CTCBase::GetPlayerManager() @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroCreature
+// Callees: CTCBase::GetPlayerManager() @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature
 // @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CTCHeroOpinionDeedLog::GetDeedFromHandle(long)
 // @ 0x006C58F0, the deed log's effects-def getter @ 0x006C5630 (CDefPointer by hidden pointer; manifest "CThingBuilding::
 // GetFloorMaterial" is propagated, named descriptively), CTCCreatureOpinionOfHero::InformOfDeed(EOpinionDeedType, long,
@@ -40,8 +40,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                          // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
@@ -94,7 +95,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
 
 void CTCCreatureOpinionOfHero::InformOfDeed(long deedHandle, bool flag)
 {
-    CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

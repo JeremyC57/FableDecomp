@@ -4,7 +4,7 @@
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const 0x00437CD0 (global player GUI 0x013B8790),
 // NHeroInformationScreens::CManager::RegisterScreen(const CBase*) 0x0066EB11, CDefClassBase::GetSubDef<T> 0x00485815,
 // CTCInventoryBase::SetPDef(long) 0x005BDB4D, CTCInventoryBase::OnCreate 0x005C0121, this's slot 86 (+0x158, the
-// starting item def list; name descriptive), CThing::GetPosition() const 0x004C73D0, the thing factory 0x007FF7D0
+// starting item def list; name descriptive), CThing::GetPos() const 0x004C73D0, the thing factory 0x007FF7D0
 // (__fastcall (def index, const C3DVector&); manifest "Create"), std::bitset::test 0x00410DE0 + CVectorMap::LowerBound
 // 0x0040F020 (inline GetInterface for the inventory-item component 0x1A), CTCInventoryItem::AddToInventory(
 // CTCInventoryBase*, bool, bool, long, bool, bool) 0x005D8D50, the defs' slot 1 on release.
@@ -12,7 +12,7 @@
 // around GetSubDef into a zeroed out slot); the starting list is walked by index with the size re-read every pass;
 // each created item is flagged (+0x20) and added silently; the sub-def is released at the end straight from its slot.
 // Per pass the owner's position is fetched first (a named reference) and the def index is read from the list start
-// cached by the size test (`_M_start[i]`): CThing::GetPosition is LTCG-known to write nothing, so the start stays in
+// cached by the size test (`_M_start[i]`): CThing::GetPos is LTCG-known to write nothing, so the start stays in
 // edi across it. GetSubDef is a template instantiation in retail's TU, so the def slot does not escape and the final
 // release is `dec [ecx+4] ; jne`. Same-TU stand-ins for both reproduce that.
 // Layout (retail): NHeroInformationScreens::CBase secondary base +0x130; the clothing def's inventory-def index +0x7C;
@@ -69,7 +69,7 @@ class CThing { public:
     struct CPlacement { unsigned char _pad00[0xc]; C3DVector Position; }* PPlacement;   // +0x60
     unsigned char _pad64[0x70 - 0x64];
     CDefPointer<CDefClassBase> PDef;            // +0x70
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
@@ -83,9 +83,9 @@ class CThing { public:
     }
 };
 CThing* __fastcall CreateThing_007ff7d0(long defIndex, const C3DVector& position);   // 0x007FF7D0
-// Stand-in for CThing::GetPosition() const @ 0x004C73D0 (the retail body; same TU so the caller sees it writes nothing).
+// Stand-in for CThing::GetPos() const @ 0x004C73D0 (the retail body; same TU so the caller sees it writes nothing).
 #pragma auto_inline(off)
-__declspec(noinline) const C3DVector& CThing::GetPosition() const
+__declspec(noinline) const C3DVector& CThing::GetPos() const
 {
     return PPlacement->Position;
 }
@@ -233,7 +233,7 @@ void CTCInventoryClothing::OnCreate()
     CTCInventoryBase_Clothing::OnCreate();
     const CLongVector& startingItems = GetStartingItems();
     for (unsigned long i = 0; i < startingItems.size(); ++i) {
-        const C3DVector& pos = ParentThing->GetPosition();
+        const C3DVector& pos = ParentThing->GetPos();
         CThing* thing = CreateThing_007ff7d0(startingItems._M_start[i], pos);
         if (thing) {
             CTCInventoryItem* item;

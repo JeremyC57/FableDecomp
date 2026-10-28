@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DAB60, length 163 bytes (plain `ret`); CTCTavernGameCardBlackjack vtable
 // 0x0126F8F4 slot 40 (the catalog's "vfunc_40"). Name from Ego_r.pdb `?UpdateValues@CTCTavernGameCardBlackjack@@UAE_NXZ`
 // (Ego_r's source order: ... HasPlayerDrawnHand, LeaveGame, EndRound, UpdateValues; retail EndRound is 0x007DAAE0).
-// Callees: CPlayerManager::GetMainPlayer() const @ 0x00449960, CPlayer::GetHeroThing() @ 0x00487DC0,
+// Callees: CPlayerManager::GetMainPlayer() const @ 0x00449960, CPlayer::GetPControlledCreature() @ 0x00487DC0,
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CTCHeroOnlineScoreboard::UpdateScoreForActivity(
 // EOnlineScoreboardActivity, float, bool) @ 0x0055F3B0 (activities 0x18 and 0x20). Global: g_pMainGameComponent
 // @ 0x013B86A0 (player manager at +0x1c).
@@ -41,12 +41,13 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                  // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;          // 0x00449960 (const)
@@ -73,7 +74,7 @@ struct CTCTavernGameCardBlackjack {         // vptr +0x00 (CTCBase)
 bool CTCTavernGameCardBlackjack::UpdateValues()
 {
     if (GameWon) {
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         hero->GetInterface(&scoreboard, 0x10d);
         long winnings = TotalWinnings;

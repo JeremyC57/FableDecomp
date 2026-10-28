@@ -119,13 +119,7 @@ struct CThing_Retail {
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
-struct CPlayer_Retail {
-    CThing_Retail* GetHeroThing();                  // 0x00487DC0 (label propagated)
-    CThing_Retail* GetControlledThing();            // 0x00487DD0 (label propagated)
-};
-struct CPlayerManager_Retail {
-    CPlayer_Retail* GetPlayer();                    // 0x00449970 (labelled "Catch@0040d959", propagated)
-};
+class CThingPlayerCreature : public CThing_Retail { };
 struct CAIGameCameraBase_Retail {
     virtual void c000(); virtual void c001(); virtual void c002(); virtual void c003(); virtual void c004(); virtual void c005(); virtual void c006(); virtual void c007();
     virtual void c008(); virtual void c009(); virtual void c010(); virtual void c011(); virtual void c012(); virtual void c013();
@@ -136,7 +130,7 @@ class CWorld { public:
     CAIGameCameraBase_Retail* PCurrentGameCamera;   // +0x34 (engine/CWorld.h)
 };
 class CPlayer { public:
-    CThing_Retail* GetControlledCreature();         // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
 class CPlayerManager { public:
     void UnfreezePlayerControls(long player);       // 0x00449A50
@@ -211,7 +205,7 @@ class CGameScriptInterface { public:
     long                     CurrentPlayer;         // +0x1c
     void UnfreezeControls()                         // 0x006E73E0 (inlined at the qualified call)
     {
-        CThing_Retail* creature = PlayerManager->GetMainPlayer().GetControlledCreature();
+        const CThingPlayerCreature* creature = PlayerManager->GetMainPlayer().PeekPControlledCreature();
         if (creature && !creature->m_dead)
             PlayerManager->UnfreezePlayerControls(CurrentPlayer);
     }

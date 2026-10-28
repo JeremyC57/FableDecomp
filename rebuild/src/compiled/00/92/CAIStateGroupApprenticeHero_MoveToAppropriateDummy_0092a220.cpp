@@ -26,7 +26,6 @@ class C3DVector { public:
     C3DVector() {}
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {}
 };
-class CThingGameObject { public: const C3DVector& GetPosition() const; };   // CThing::GetPosition 0x004C73D0
 class CTCBase;
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -49,6 +48,7 @@ struct CInterfaceMap {
     }
 };
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -64,6 +64,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingGameObject : public CThing { };
 struct CTCInformation;                          // interface 0xaa
 class CCharString { public:
     void* m_pData;
@@ -102,7 +103,7 @@ bool CAIStateGroupApprenticeHeroMethods::MoveToAppropriateDummy()
     float proximity;
     switch (Action) {
     case 0:
-        position = PDummy->GetPosition();
+        position = PDummy->GetPos();
         proximity = GFFloatRandom(0.5f, GetPWorldSeed()) + 1.0f;
         break;
     case 1: {
@@ -113,12 +114,12 @@ bool CAIStateGroupApprenticeHeroMethods::MoveToAppropriateDummy()
         }
         if (!target)
             return false;
-        position = target->GetPosition();
+        position = target->GetPos();
         proximity = 0.0f;
         break;
     }
     case 2:
-        position = PDummy->GetPosition();
+        position = PDummy->GetPos();
         proximity = GFFloatRandom(1.0f, GetPWorldSeed()) + 2.0f;
         break;
     default:

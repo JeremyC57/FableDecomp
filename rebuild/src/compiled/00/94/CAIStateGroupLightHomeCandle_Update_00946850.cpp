@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00946850, length 653 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10, CVectorMap::LowerBound @ 0x0040F020,
 // CTCUserActionPointBase::GetNumberOfActionPointsInUse @ 0x007FEC10 / GetFreeActionPoint @ 0x007FEDE0 / FreeActionPoint
-// @ 0x007FEF40, IsCandleInNeedOfChanging @ 0x00946730, AIAction_MoveToPos @ 0x0097EC00, CThing::GetPosition @ 0x004C73D0,
+// @ 0x007FEF40, IsCandleInNeedOfChanging @ 0x00946730, AIAction_MoveToPos @ 0x0097EC00, CThing::GetPos @ 0x004C73D0,
 // AIAction_LookAtPos @ 0x0097D580, CCreatureAction_UseObject ctor @ 0x0069F230 / dtor @ 0x006290E0,
 // AIAction_PerformActionAndWait @ 0x0097DB70, CIntelligentPointer<CThing> ctor @ 0x004A96F0 / operator= @ 0x004A9760,
 // Terminate @ 0x008FCF40.
@@ -27,7 +27,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     bool HasTC(long t) const { return (m_presentBits[t >> 5] >> (t & 31)) & 1; }
     template<class T> __forceinline void GetTC(T** ppOut, long interfaceType)
     {
@@ -127,7 +127,7 @@ void CAIStateGroup_LightHomeCandle::Update()
         Terminate();
         return;
     }
-    C3DVector candlePos = PCandle.GetPItem()->GetPosition();
+    C3DVector candlePos = PCandle.GetPItem()->GetPos();
     do {
         if (PCandle.GetPItem() == 0 || !IsCandleInNeedOfChanging(PCandle.GetPItem())) {
             points->FreeActionPoint(index);

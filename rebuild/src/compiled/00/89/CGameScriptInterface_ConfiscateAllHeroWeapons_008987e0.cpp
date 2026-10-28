@@ -2,15 +2,16 @@
 struct Node { int key; void* val; };
 struct Container { char pad[4]; Node* endp; Node* LowerBound(int* key); };
 struct Obj { char pad20[0x20]; unsigned int flags20; char pad24[0x44-0x24]; Container c44; char padmid[0x91-0x4c]; unsigned char flag91; };
+class CThingPlayerCreature : public Obj { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
-extern void* __fastcall GetSub(void* self);
-extern Obj* __fastcall GetObj(void* self);
+extern CPlayer* __fastcall GetSub(void* self);
 extern void __fastcall DoIt(void* self);
 
 void __fastcall CGameScriptInterface_ConfiscateAllHeroWeapons(CGameScriptInterface* self)
 {
-    void* a = GetSub(self->PlayerManager);
-    Obj* o = GetObj(a);
+    CPlayer* a = GetSub(self->PlayerManager);
+    Obj* o = a->GetPControlledCreature();
     if (!o) return;
     if (o->flag91 & 1) return;
     if (!(o->flags20 & 0x80000)) return;

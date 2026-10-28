@@ -50,7 +50,9 @@ public:
     iterator end() { return this->_M_finish; }
     size_t size() const { return size_t(this->_M_finish - this->_M_start); }
     T& operator[](size_t n) { return *(begin() + n); }
+    protected:
     __declspec(noinline) void _M_insert_overflow(T* position, const T& x, const __true_type&, size_t fillLen, bool atEnd = false);   // 0x00440990
+    public:
     void push_back(const T& x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

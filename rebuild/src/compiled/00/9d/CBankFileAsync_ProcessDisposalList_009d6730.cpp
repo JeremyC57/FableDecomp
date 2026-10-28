@@ -8,13 +8,13 @@
 // Layout: retail CBankFileAsync (see the ctor 0x009D5F80): DisposalList +0x144, CriticalSection +0x14c.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CRITICAL_SECTION_Fable {                    // Win32 RTL_CRITICAL_SECTION, 24 bytes (dword aligned)
+struct _RTL_CRITICAL_SECTION {                    // Win32 RTL_CRITICAL_SECTION, 24 bytes (dword aligned)
     void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount;
 };
 struct CCriticalSectionLock {                      // 8 bytes on the stack
-    CRITICAL_SECTION_Fable* m_pSection;            // +0x00
+    _RTL_CRITICAL_SECTION* m_pSection;            // +0x00
     bool                    m_locked;              // +0x04
-    CCriticalSectionLock(CRITICAL_SECTION_Fable* section, bool tryOnly);   // 0x00A62920
+    CCriticalSectionLock(_RTL_CRITICAL_SECTION& section, bool tryOnly);   // 0x00A62920 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z
     ~CCriticalSectionLock();                       // 0x00A629A0
 };
 struct SCountBlock {
@@ -93,14 +93,14 @@ public:
     CDisposalList DisposalList;                    // +0x144
     bool NonCached;                                // +0x148
     bool DisableAsync;                             // +0x149
-    CRITICAL_SECTION_Fable CriticalSection;        // +0x14c
+    _RTL_CRITICAL_SECTION CriticalSection;        // +0x14c
     void ProcessDisposalList();                    // 0x009D6730
     void DiscardAsyncData(CAsyncDataPointer& data);
 };
 
 void CBankFileAsync::ProcessDisposalList()
 {
-    CCriticalSectionLock lock(&CriticalSection, false);
+    CCriticalSectionLock lock(CriticalSection, false);
     while (DisposalList.size() != 0 && DisposalList.front().Data->Abort())
         DisposalList.pop_front();
 }

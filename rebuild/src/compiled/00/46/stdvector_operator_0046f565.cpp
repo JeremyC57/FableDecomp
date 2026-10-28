@@ -63,7 +63,9 @@ public:
     unsigned int size() const { return unsigned int(this->_M_finish - this->_M_start); }
     unsigned int capacity() const { return unsigned int(this->_M_end_of_storage._M_data - this->_M_start); }
     vector& operator=(const vector& __x);
+    protected:
     void _M_clear();
+    public:
 protected:
     template <class _ForwardIterator> _Tp* _M_allocate_and_copy(unsigned int __n, _ForwardIterator __first, _ForwardIterator __last);
 };

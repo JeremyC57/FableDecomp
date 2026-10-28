@@ -3,7 +3,7 @@
 // frame for the 8-byte intelligent pointer.
 // Callees: CAIStateGroup_LookAtInterestingThings::FindInterestingThing @ 0x00919240, CBaseIntelligentPointer ctor @ 0x00A01B10 /
 // SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
-// CDefClassBase::GetSubDef<CCreatureNavigationDef> @ 0x006CD2F0 (on the creature's +0x70), CThing::GetPosition @ 0x004C73D0,
+// CDefClassBase::GetSubDef<CCreatureNavigationDef> @ 0x006CD2F0 (on the creature's +0x70), CThing::GetPos @ 0x004C73D0,
 // CAIStateGroupBase::AIAction_MoveToPosProximity @ 0x0097E890 / AIAction_LookAtPos @ 0x0097D580 / Terminate @ 0x008FCF40,
 // CThing::RemoveTC @ 0x004C9840, the def's virtual slot 1 (release).
 // Prototypes: FableWin.pdb ?AIAction_MoveToPosProximity@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@
@@ -48,7 +48,7 @@ class CThing { public:
     CDefClassBase* PhysicsTC;                   // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: Dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     void RemoveTC(long interfaceType);          // 0x004C9840
 };
 class CBaseObject;
@@ -106,7 +106,7 @@ void CAIStateGroup_LookAtInterestingThings::Update()
             return;
         }
         CThing* target = thing.GetPItem();
-        long result = AIAction_MoveToPosProximity(2, target->GetPosition(), 6.0f, arrived, 3, true, false,
+        long result = AIAction_MoveToPosProximity(2, target->GetPos(), 6.0f, arrived, 3, true, false,
                                                   navigationDef->AvoidDynamicObstacles, 0, true, 0.0f);
         if (result == 4)
             continue;
@@ -117,7 +117,7 @@ void CAIStateGroup_LookAtInterestingThings::Update()
                     return;
                 }
                 CThing* target = thing.GetPItem();
-                if (AIAction_LookAtPos(2, target->GetPosition(), 0x11, 0.0027777f) == 4)
+                if (AIAction_LookAtPos(2, target->GetPos(), 0x11, 0.0027777f) == 4)
                     continue;
                 break;
             }

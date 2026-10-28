@@ -4,7 +4,7 @@
 // Callees: CCharString(const CCharString&) @ 0x0099EC30 / ~CCharString @ 0x0099EAE0 (the filter's name),
 //          CTCBase::PeekThingSearchTools() const @ 0x00686D90,
 //          CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, CThing>(const F&, CThing**) const @ 0x0056D050,
-//          CThing::GetPosition @ 0x004C73D0, the physics component's SetPosition(const C3DVector&) (slot 30, +0x78),
+//          CThing::GetPos @ 0x004C73D0, the physics component's SetPosition(const C3DVector&) (slot 30, +0x78),
 //          CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970,
 //          CPlayer::GetCurrentMode @ 0x00633BE0, CPlayer::AddMode(EPlayerMode, bool) @ 0x006345C0.
 //          Globals: the marker script-name table CCharString[4][4] @ 0x013BAEB0, g_pPlayerGui @ 0x013B8790.
@@ -57,7 +57,7 @@ class CThing {
 public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                      // +0x60
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 class CPlayer {
@@ -115,7 +115,7 @@ void CTCFireheartMinigame::PlayGame()
     XPos = 0;
     YPos = 3;
     CTCPhysicsBase* physics = ParentThing->PhysicsTC;
-    physics->SetPosition(Markers[0][3]->GetPosition());
+    physics->SetPosition(Markers[0][3]->GetPos());
     CPlayer* player = GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() != 0x2a)
         player->AddMode(0x2a, false);

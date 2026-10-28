@@ -34,8 +34,10 @@ class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CDefPointer& def);   // 0x007923C0
 };
 
-class CThing { public:
-    const C3DVector& GetPosition_006a4d00() const;   // 0x006A4D00
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+    const C3DVector& PeekPos() const;   // 0x006A4D00
+};
+class CThing : public CThingPhysical { public:
 };
 
 class CMessageEventManager { public:
@@ -91,7 +93,7 @@ void CCreatureAction_CallSpouseHome::PerformAction()
         CThing* pCreatureThing = PCreature.GetPItem();   // fetched but unused: retail keeps the dead call
         CThing* pCreature = PCreature.GetPItem();
         CMessageEventManager* pManager = GetPWorld()->m_pMessageEventManager;   // named: resolved before the arguments
-        pManager->AddMessage(p, &pCreature->GetPosition_006a4d00(), PCreature.GetPItem(), 0, 0);
+        pManager->AddMessage(p, &pCreature->PeekPos(), PCreature.GetPItem(), 0, 0);
     }
     if (p) {
         if (--p->m_count == 0)

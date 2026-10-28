@@ -7,7 +7,7 @@
 //          CTCHeroStats::GetMaxDrunkenness() @ 0x0057A89D, CTCBase::GetPRandomSeed() @ 0x00686DA0,
 //          GFRandom(range, seed) @ 0x004CDAE0 (__fastcall), GFGetCurrentFrame() @ 0x0049D870, CTCHeroStats::Vomit()
 //          @ 0x0057B783, CTCBase::GetPlayerManager() @ 0x00686D50, CPlayerManager::GetMainPlayer() @ 0x00449960,
-//          CPlayer::GetPPlayerCharacter() @ 0x00487DC0, std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound
+//          CPlayer::GetPControlledCreature() @ 0x00487DC0, std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound
 //          @ 0x0040F020, CTCHeroOpinionDeedLog::RemoveDeedStillSearchingForWitnesses(long) @ 0x006C5920.
 // Globals: g_DrunkennessSoberRate @ 0x0137CBD8 (a 1.0f data float), g_framesPerSecond @ 0x01375550, 24.0f @ 0x0123822C,
 //          0.0f @ 0x0122DEDC.
@@ -84,7 +84,7 @@ public:
 
 class CThingPlayerCreature : public CThing { public:};
 class CPlayer { public:
-    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -168,7 +168,7 @@ void CTCHeroStats::ProcessDrunkenness()
     if (DeedHandle != -1 && CWorld::GetFrame() > FrameEndVomit) {
         DeedHandle = -1;
         FrameEndVomit = 0;
-        CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer().GetPPlayerCharacter();
+        CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
         if (hero) {
             CTCHeroOpinionDeedLog* log;
             if (hero->GetInterface(&log, 0x51))

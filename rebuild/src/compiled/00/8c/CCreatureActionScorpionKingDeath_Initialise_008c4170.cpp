@@ -4,7 +4,7 @@
 // CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580,
 // CCRC-style CalcAndLookup(const CCharString&, long*) @ 0x00669D30 (on the special-effects def),
-// CThing::GetPosition @ 0x004C73D0, Create(long defIndex, const C3DVector&, long) @ 0x006E0880 (__fastcall).
+// CThing::GetPos @ 0x004C73D0, Create(long defIndex, const C3DVector&, long) @ 0x006E0880 (__fastcall).
 // Shape: the owner's def (+0x70 of the thing behind the CIntelligentPointer at +8) is copied into a by-value holder
 // (null-tested add-ref, null-tested release through slot 1) only around the GetSubDef call; the out CDefPointer and
 // the looked-up index are zeroed in the frame first; the sub-def is copied out of the out slot into a holder kept in
@@ -84,7 +84,7 @@ template <class T> struct CDefCopy {                   // by-value CDefPointer c
 class CThing { public:
     unsigned char  _pad00[0x70];
     CDefClassBase* PDef;                               // +0x70
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
 };
 
 CThing* __fastcall Create(long defIndex, const C3DVector& position, long flags);   // 0x006E0880
@@ -128,6 +128,6 @@ void CCreatureAction_ScorpionKingDeath::Initialise()
             found = effects->CalcAndLookup(name, &effectIndex);
         }
         if (found)
-            Create(effectIndex, GetOwner()->GetPosition(), 0);
+            Create(effectIndex, GetOwner()->GetPos(), 0);
     }
 }

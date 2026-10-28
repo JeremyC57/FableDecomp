@@ -1,16 +1,16 @@
 // CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea() -- for each of the four players whose player object is initialised, if its living hero stands inside the switch's trigger square, count the trigger and queue a CEventTriggered for the hero on the switch's entity-events component (0x42)
 // Leaf: SwitchTriggerPlayerOnlyMultipleTimesInArea
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083C690, length 361 bytes (plain `ret`).
-// Callees: CThing::GetPosition() const @ 0x006A4D00 (this TU's out-of-line copy; declared on CThingPhysical so it does
+// Callees: CThing::PeekPos() const @ 0x006A4D00 (this TU's out-of-line copy; declared on CThingPhysical so it does
 //   not share a symbol with the 0x004C73D0 copy), the const/non-const player-manager accessors @ 0x004C79F0 / 0x004C7A00
 //   (byte twins, `[[0x013B8A1C]+0x30]`), CPlayerManager::GetPlayer(long) const @ 0x00449910 and non-const @ 0x004498C0
-//   (byte twins), CInitBaseClass::IsInitialised() const @ 0x0099A330, CPlayer::GetHeroCreature @ 0x00487DC0,
+//   (byte twins), CInitBaseClass::IsInitialised() const @ 0x0099A330, CPlayer::GetPControlledCreature @ 0x00487DC0,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A,
 //   NEntityEvents::CEventTriggered(CThing*) @ 0x0083CF20, CTCEntityEvents::AddEvent @ 0x008113C0.
 // Layout (retail, as the landed CThingSwitch rows 0x0083BE90 / 0x0083C230): interface bitset +0x20, interface map
 //   +0x44, Dead bit +0x91, TriggerRadius +0xd0, TimesTriggered +0xe4 (Ego_r.pdb +0xfc, CThingPhysical 0x18 lower).
-// Shape: the trigger square is a C2DBoxF filled member by member (one GetPosition() call per component); the hero's
-//   point is a C2DVector built from two GetPosition() calls (Y first: arguments are evaluated right to left) and tested
+// Shape: the trigger square is a C2DBoxF filled member by member (one PeekPos() call per component); the hero's
+//   point is a C2DVector built from two PeekPos() calls (Y first: arguments are evaluated right to left) and tested
 //   with the half-open ContainsPoint inlined. The const query chain is reached through a `const CThing*`.
 class CTCBase;
 class C3DVector { public: float X, Y, Z; };
@@ -43,9 +43,10 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
+class CThingPlayerCreature;
 class CPlayer { public:
     bool IsInitialised() const;                         // 0x0099A330 (CInitBaseClass)
-    CThing* GetHeroCreature();                          // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetPlayer(long number);                    // 0x004498C0
@@ -77,8 +78,9 @@ class CThing { public:
 };
 
 class CThingPhysical : public CThing { public:
-    const C3DVector& GetPosition() const;               // 0x006A4D00
+    const C3DVector& PeekPos() const;               // 0x006A4D00
 };
+class CThingPlayerCreature : public CThingPhysical { };
 
 class CThingSwitch : public CThingPhysical { public:
     unsigned char _pad94[0xd0 - 0x94];
@@ -91,15 +93,15 @@ class CThingSwitch : public CThingPhysical { public:
 void CThingSwitch::SwitchTriggerPlayerOnlyMultipleTimesInArea()
 {
     C2DBoxF area;
-    area.TLX = GetPosition().X - TriggerRadius;
-    area.TLY = GetPosition().Y - TriggerRadius;
-    area.BRX = GetPosition().X + TriggerRadius;
-    area.BRY = GetPosition().Y + TriggerRadius;
+    area.TLX = PeekPos().X - TriggerRadius;
+    area.TLY = PeekPos().Y - TriggerRadius;
+    area.BRX = PeekPos().X + TriggerRadius;
+    area.BRY = PeekPos().Y + TriggerRadius;
     for (long i = 0; i < 4; ++i) {
         const CThing* self = this;
         if (self->GetPlayerManager()->GetPlayer(i)->IsInitialised()) {
-            CThingPhysical* hero = static_cast<CThingPhysical*>(GetPlayerManager()->GetPlayer(i)->GetHeroCreature());
-            if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->GetPosition().X, hero->GetPosition().Y))) {
+            CThingPhysical* hero = static_cast<CThingPhysical*>(GetPlayerManager()->GetPlayer(i)->GetPControlledCreature());
+            if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->PeekPos().X, hero->PeekPos().Y))) {
                 ++TimesTriggered;
                 if (HasTC(0x42)) {
                     CTCEntityEvents* events = (CTCEntityEvents*)GetTC(0x42);

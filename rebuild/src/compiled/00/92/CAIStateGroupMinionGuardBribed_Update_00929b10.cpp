@@ -4,7 +4,7 @@
 // Callees: GetPPlayerManager @ 0x008FCF80, CPlayerManager::GetMainPlayer const @ 0x00449960, CBaseIntelligentPointer ctor
 // @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, GetPWorld @ 0x008FCFC0, GetPWorldSeed
 // @ 0x008FCFD0, GFROR13 @ 0x00497890 (__fastcall), CWorld::GetWorldFrame @ 0x0049D870 (static), the state's virtual slot 11
-// (+0x2c, still valid), CThing::GetPosition @ 0x004C73D0, AIAction_LookAtPos @ 0x0097D580, AIAction_DoNothing @ 0x0097E200,
+// (+0x2c, still valid), CThing::GetPos @ 0x004C73D0, AIAction_LookAtPos @ 0x0097D580, AIAction_DoNothing @ 0x0097E200,
 // CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, the sound component's PlaySound @ 0x0066BD00 /
 // StopSample @ 0x0066ADD0, CVectorMap::LowerBound @ 0x0040F020, CTCVillageMember::GetPVillage @ 0x007EE540, Terminate @ 0x008FCF40.
 // Data: whistle delay ranges @ 0x0138CB98/0x0138CB9C (first) and 0x0138CBA0/0x0138CBA4 (repeat); g_InvalidSoundHandle @ 0x0129D25C;
@@ -54,7 +54,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
@@ -161,8 +161,8 @@ void CAIStateGroup_MinionGuardBribed::Update()
     long nextWhistle = CWorld::GetWorldFrame() + g_BribedWhistleFirstMin + delay;
     unsigned long sample = g_InvalidSoundHandle;
     while (IsStillValid() && IS_THING_ALIVE(hero)) {
-        C3DVector heroPos = hero.GetPItem()->GetPosition();
-        const C3DVector& here = GetCreature()->GetPosition();
+        C3DVector heroPos = hero.GetPItem()->GetPos();
+        const C3DVector& here = GetCreature()->GetPos();
         C3DVector lookPos = here * 2.0f - heroPos;
         if (AIAction_LookAtPos(1, lookPos, 0x11, 0.0027777f) != 2)
             break;

@@ -3,7 +3,7 @@
 // Shape: the sub-def GetSubDef is a same-TU auto_inline(off) stand-in (def stays in edi, release without re-reading); the linked-things lookup is a const GetInterface (LowerBound 0x4365B0); the cover frame comes from vslot 72 on the thing's +0x60 object.
 // Callees: CTCTavernGame::OnInitialActivate 0x005EA650, CDefClassBase::GetSubDef<T> 0x007D9A80, LowerBound 0x0040F020 / 0x004365B0 (const),
 //   CCharString ctor 0x0099EBF0, CTCNamedUserActionPoints::GetFreeNamedActionPoint 0x007FF190, CTCTavernGame::CreateGamePiece 0x005EA9B0,
-//   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0, 0x00686D60 (game view), PositionCover 0x007D7F10
+//   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, 0x00686D60 (game view), PositionCover 0x007D7F10
 class CTCBase;
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector Forward; C3DVector Up; };
@@ -56,7 +56,7 @@ public:
     unsigned short DefIndex;                            // +0x8c
     unsigned char _pad8e[0x91 - 0x8e];
     unsigned char Dead : 1;                             // +0x91 bit0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -169,7 +169,7 @@ void CTCTavernGameSpotTheAddition::OnInitialActivate()
             CThing* t = node->Item.GetPItem();
             if (t && !t->Dead && t->DefIndex == def->CoverThingType) {
                 Cover = t;
-                CoverPosition = t->GetPosition();
+                CoverPosition = t->GetPos();
                 CoverRHSet = t->Frame->GetRHSet();
                 if (!GetGameView()->IsShowing())
                     PositionCover(1.0f);

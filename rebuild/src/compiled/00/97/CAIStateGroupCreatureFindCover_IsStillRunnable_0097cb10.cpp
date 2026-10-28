@@ -72,7 +72,7 @@ class CThing
     __forceinline CPhysicsBody* GetPhysicsBody() const { return PhysicsBody; }
     unsigned char _pad_0x64[0x91 - 0x64];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector* GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 
     __forceinline bool HasTC(long type) const
     {
@@ -157,7 +157,7 @@ bool CAIStateGroup_CreatureFindCover::IsStillRunnable()
             CTCWeapon* tcWeapon;
             if (weapon->GetInterface(0x48, &tcWeapon) && tcWeapon->IsProjectileWeapon()) {
                 CThing* creature = PBrain->Creature;
-                C3DVector toMe = *creature->GetPosition() - *PEnemy.GetPItem()->GetPosition();
+                C3DVector toMe = creature->GetPos() - PEnemy.GetPItem()->GetPos();
                 toMe.Normalise();
                 if (Dot(toMe, PEnemy.GetPItem()->GetPhysicsBody()->GetFacing()) > 0.0f)
                     return true;

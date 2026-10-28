@@ -93,7 +93,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad08[0x0c];
     CThingAICreature* GetCreature() const { return PBrain->PCreature; }
     bool IsStopping();                          // 0x008FD010
-    CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
     EAIActionReturn AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
     EAIActionReturn AIAction_MinionIdle();
@@ -116,7 +118,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_MinionIdle()
         if (afterSleep > 2400)
             afterSleep = 30;
         CAnimationEntry* animation;
-        if ((GetPWorld_008fcfa0()->GetPTime()->IsTimeOfDayInRange(sleepTime, afterSleep) || GetPWorld_008fcfa0()->GetPTime()->IsTimeOfDayInRange(beforeWake, wakeTime))
+        if ((PeekWorld().GetPTime()->IsTimeOfDayInRange(sleepTime, afterSleep) || PeekWorld().GetPTime()->IsTimeOfDayInRange(beforeWake, wakeTime))
             && WorldRandomRange(*GetPWorldSeed(), 100) < 9)
             animation = GetCreature()->GetRandomLoadedAnimFromName("STANDARD_YAWN", true);
         else

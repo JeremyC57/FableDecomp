@@ -1,6 +1,6 @@
 // CInputProcessHeroAbilitiesScreen::Init() -- look the player's creature up for its type-0x6f component (the inlined bitset + sorted-map GetInterface) and keep it in PInventory; then reset the screen state words
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068AD90, length 71 bytes (+ int3 padding). Vtable 0x01237E24 slot 2.
-// Callees: CPlayer::GetPlayerCreature @ 0x00487DC0 (MyPlayer +0x18; `add ecx,2Ch ; jmp CBaseIntelligentPointer::GetPItem`), CVectorMap::LowerBound @ 0x0040F020
+// Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18; `add ecx,2Ch ; jmp CBaseIntelligentPointer::GetPItem`), CVectorMap::LowerBound @ 0x0040F020
 // (the thing's {type, component} map at +0x44; type 0x6f is bit 15 of dword 3 (+0x2c, tested as the sign of ch) of the bitset at +0x20: the landed GetInterface template of 0x008CDCF0).
 // Layout: Ego_r.pdb CInputProcessHeroAbilitiesScreen (60 bytes: PInventory +0x34, AwaitingAssignableButtonPress +0x38); CInputProcessGameBase::MyPlayer +0x18 (engine header), modelled locally with the base names.
 // Shape: one `push ecx` frame slot for the lookup key, the map pointer advanced into esi once, the member itself is the out pointer of the
@@ -31,7 +31,7 @@ class CThingPlayerCreature { public:
     }
 };
 class CPlayer { public:
-    CThingPlayerCreature* GetPlayerCreature();      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;      // 0x00487DC0
 };
 class CTCInventoryAbilities;
 class CInputProcessHeroAbilitiesScreen { public:                                         // vtable 0x01237E24
@@ -50,6 +50,6 @@ class CInputProcessHeroAbilitiesScreen { public:                                
 
 void CInputProcessHeroAbilitiesScreen::Init()
 {
-    MyPlayer->GetPlayerCreature()->GetInterface(&PInventory, 0x6f);
+    MyPlayer->GetPControlledCreature()->GetInterface(&PInventory, 0x6f);
     AwaitingAssignableButtonPress = false;
 }

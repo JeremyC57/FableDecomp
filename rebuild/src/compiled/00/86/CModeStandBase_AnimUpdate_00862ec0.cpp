@@ -5,14 +5,14 @@
 // Callees: CModeBase::GetGlobalComponents() const @ 0x0073A680 (reads [0x013B8A1C]+0x24, as the landed CModeStrafe rows) and its
 //   virtual slot 4 (+0x10, the game state: two "suspend idling" bytes +0x54/+0x55), CModeStandBase::UpdateIdleAnim @ 0x00862780,
 //   UpdateWalkingAnim @ 0x00862AA0, the movement component's (+0x60) virtual slot 70 (+0x118, a C3DVector by value),
-//   CThing::GetPosition @ 0x004C73D0, the creature's virtual slot 79 GetMaxJoggingSpeed(const C3DVector&) (+0x13c,
+//   CThing::GetPos @ 0x004C73D0, the creature's virtual slot 79 GetMaxJoggingSpeed(const C3DVector&) (+0x13c,
 //   CThingAICreature 0x00830000), virtual GetModeType (slot 1), CModeBase::GetNoFramesBeforePlayingCombinationIdleAnims(EMode)
 //   @ 0x0073A6F0, the random generator accessor @ 0x0049D810 and GFROR13 @ 0x00497890 (as the landed 0x008EE720),
 //   AddCombinationIdles(CThingCreatureBase*, CAnimateThing&) @ 0x008619C0 (`__fastcall`).
 // Globals: epsilon 0.0001f @ 0x0129BA3C.
 // Layout: engine/CModeStandBase.h: IdleCounter +0x1c, FramesToKeepUpdatingMovement +0x20 (the header's vptr is a plain pointer, so
 //   the class is restated with its virtual slots). The creature's planar velocity X/Y at +0x10c/+0x110.
-// Shape: the planar speed is sqrt(X*X + Y*Y); the walk branch tests `GetMaxJoggingSpeed(GetPosition() + GetVelocity()) >= speed`
+// Shape: the planar speed is sqrt(X*X + Y*Y); the walk branch tests `GetMaxJoggingSpeed(GetPos() + GetVelocity()) >= speed`
 //   (member operator+ on the position: the argument call runs first and VC loads the velocity operand first); the random
 //   step is the inlined generator `seed = GFROR13(seed * 0x24A1 + 0x24DF)` taken `% 3`.
 #include <math.h>
@@ -81,7 +81,7 @@ public:
     unsigned char       _pad64[0xa8];
     float               VelocityX;              // +0x10c
     float               VelocityY;              // +0x110
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CThingCreatureBase : public CThing {
 };
@@ -121,7 +121,7 @@ void CModeStandBase::AnimUpdate(CAnimateThing& anim)
         ++IdleCounter;
     if (speed > 0.0001f || FramesToKeepUpdatingMovement > 0) {
         UpdateWalkingAnim(anim);
-        if (creature->GetMaxJoggingSpeed(creature->GetPosition() + creature->Movement->GetVelocity()) >= speed) {
+        if (creature->GetMaxJoggingSpeed(creature->GetPos() + creature->Movement->GetVelocity()) >= speed) {
             if (IdleCounter > GetNoFramesBeforePlayingCombinationIdleAnims(GetModeType())) {
                 if (GetGlobalComponents()->GetRandomGenerator()->Next() % 3 == 0) {
                     AddCombinationIdles(creature, anim);

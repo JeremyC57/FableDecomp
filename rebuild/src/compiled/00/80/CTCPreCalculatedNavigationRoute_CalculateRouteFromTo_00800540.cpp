@@ -4,7 +4,7 @@
 // Callees: CTCBase accessors 0x00686D60 (`[0x013B8A1C]+0x1c`, its virtual slot 9 gates the body) and 0x00686D20 (world map,
 //          `[0x013B8A1C]+0x28`); CWorldMap::GetMapNumberAt (virtual slot 16, +0x40); CWorldMap::GetRegionNumberMapIsIn 0x004FC190;
 //          CCharString ctor 0x0099EBF0 / copy 0x0099EC30 / dtor 0x0099EAE0; CGameDefinitionManager::Get 0x0044C6B0;
-//          CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410; CThing::GetPosition 0x004C73D0;
+//          CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410; CThing::GetPos 0x004C73D0;
 //          CThingAICreature::Create 0x00833800 (__fastcall); CVectorMap::LowerBound const 0x004365B0 (interface 7); the
 //          component's route call 0x006CB9B0 (catalog "CScriptThing::operator==", a byte twin; descriptive name); CThing::Kill 0x004C9B80.
 // Layout: CThingAICreatureInit as the PDB (0x1c, landed ctor 0x004FACD0, here inlined); CThing interface bitset +0x20, map +0x44.
@@ -64,7 +64,7 @@ public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool silent);                             // 0x004C9B80
 };
 class CThingAICreature : public CThing {
@@ -117,7 +117,7 @@ void CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from
     {
         CCharString brain("");
         CCharString script("");
-        creature = CThingAICreature::Create(defIndex, ParentThing->GetPosition(), 4,
+        creature = CThingAICreature::Create(defIndex, ParentThing->GetPos(), 4,
             CThingAICreatureInit(0, 0, false, script, brain, true));
     }
     CTCNavigationBase* navigation;

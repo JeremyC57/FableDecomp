@@ -5,7 +5,7 @@
 // Callees: CTCFollowed::IsAIFollower @ 0x006D4DB0, list<CIntelligentPointer<CThingAICreature>>::remove @ 0x0065DE48 and
 // list<CIntelligentPointer<CThing>>::remove @ 0x0065DE8A (catalog "SetScriptBrushThingsToMove", propagated), CBaseIntelligentPointer
 // ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10, the component-map LowerBound @ 0x0040F020
-// (kinds 0x7a and 0x51), the 0x7a component's follower handler @ 0x006AEBA0, CThing::GetPosition @ 0x004C73D0,
+// (kinds 0x7a and 0x51), the 0x7a component's follower handler @ 0x006AEBA0, CThing::GetPos @ 0x004C73D0,
 // CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990 (deed 0x31), CTCFollowed::RemoveEmoteIcon @ 0x006D5050, CThing::SetAsGameStatePersisted
 // @ 0x004C7880.
 // Layout: Ego_r.pdb CTCFollowed Followers +0x0c, AIFollowers +0x10 (retail one-pointer lists); CThingAICreature HomeBuilding +0x168,
@@ -64,7 +64,7 @@ public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
     void SetAsGameStatePersisted(bool persisted);           // 0x004C7880
 };
 class C3DVector { public: float X, Y, Z; };
@@ -137,7 +137,7 @@ void CTCFollowed::QuitAIFollower(CThingAICreature* creature)
         CThing* thing = ParentThing;
         CTCHeroOpinionDeedLog* deeds;
         thing->GetInterface(&deeds, 0x51);
-        deeds->PostDeed(0x31, thing->GetPosition(), creature, creature, 1, false, false, 0, false, 0);
+        deeds->PostDeed(0x31, thing->GetPos(), creature, creature, 1, false, false, 0, false, 0);
         RemoveEmoteIcon(creature);
         if (!IsAlive(creature->HomeBuilding.GetPItem()) && !IsAlive(creature->WorkBuilding.GetPItem())) {
             creature->SetAsGameStatePersisted(false);

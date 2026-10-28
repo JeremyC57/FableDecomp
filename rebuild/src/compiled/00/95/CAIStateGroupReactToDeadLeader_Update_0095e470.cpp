@@ -1,8 +1,8 @@
 // CAIStateGroup_ReactToDeadLeader::Update() -- while the enemy lives: ask the creature's navigation component for the nearest flee position 20 units from the enemy, run there (re-issuing while the move is pending, the state is not stopping, the enemy lives and the frame budget lasts), forget the enemy when the move did not succeed or once it is more than 20 units away; then Terminate()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095E470, length 608 bytes (+ int3 padding), plain `ret` (virtual), `and esp,-8` frame.
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
-// CThingCreatureBase::GetPosition @ 0x006A4D00, CTCCreatureNavigation::GetNearestFleePosition @ 0x006CB840,
-// AIAction_MoveToPosProximity @ 0x0097E890, IsStopping @ 0x008FD010, CThing::GetPosition @ 0x004C73D0, Terminate @ 0x008FCF40.
+// CThingCreatureBase::PeekPos @ 0x006A4D00, CTCCreatureNavigation::GetNearestFleePosition @ 0x006CB840,
+// AIAction_MoveToPosProximity @ 0x0097E890, IsStopping @ 0x008FD010, CThing::PeekPos @ 0x004C73D0, Terminate @ 0x008FCF40.
 // Data: the frame budget g_scaled_013bb738 @ 0x013BB738; 400.0f @ 0x0125D824; 20.0f / 1.0f immediates.
 // Layout: local model (PBrain +4; brain PCreature +0x18; PEnemy +0x14 CIntelligentPointer<CThingCreatureBase>, FramesRunning +0x1c;
 // thing presence bits +0x20, interface map +0x44; interface 7 = CTCCreatureNavigation).
@@ -44,7 +44,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     bool HasTC(long interfaceType) const
     {
         unsigned long word = m_presentBits[interfaceType >> 5];
@@ -61,8 +61,10 @@ class CThing { public:
         return present != 0;
     }
 };
-class CThingCreatureBase : public CThing { public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
 };
 class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);   // 0x006CB840
@@ -124,7 +126,7 @@ void CAIStateGroup_ReactToDeadLeader::Update()
         CTCCreatureNavigation* navigation;
         GetCreature()->GetInterface(&navigation, 7);
         C3DVector fleePos;
-        if (!navigation->GetNearestFleePosition(PEnemy.GetPCreature()->GetPosition(), 20.0f, &fleePos))
+        if (!navigation->GetNearestFleePosition(PEnemy.GetPCreature()->PeekPos(), 20.0f, &fleePos))
             break;
         long result;
         {
@@ -139,7 +141,7 @@ void CAIStateGroup_ReactToDeadLeader::Update()
         if (!IsStopping() && IS_THING_ALIVE(PEnemy) && FramesRunning < g_scaled_013bb738) {
             const CThing* creature = GetCreature();
             const CThing* enemy = PEnemy.GetPItem();
-            if ((enemy->GetPosition() - creature->GetPosition()).GetMagnitudeSquared() > 400.0f)
+            if ((enemy->GetPos() - creature->GetPos()).GetMagnitudeSquared() > 400.0f)
                 PEnemy = CIntelligentPointer<CThingCreatureBase>(0);
         }
     }

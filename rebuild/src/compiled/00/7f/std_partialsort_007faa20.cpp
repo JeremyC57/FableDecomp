@@ -6,7 +6,7 @@
 //   0x007FAC00 (landed) and its callees the landed make_heap 0x007FA890, __pop_heap 0x007FA680 and sort_heap
 //   0x007FA980 of the same pair. The catalog's "std_Sort_IntroHeap_Things" is descriptive.
 // Callees: make_heap 0x007FA890, CThingCompare_BestForTargeting2::GetThingCompareMultiplier 0x007F9E70, CThing::
-//   GetPosition 0x004C73D0, CVectorCompare_BestForTargeting::GetCompareValueForPoint 0x007F9660 (the landed
+//   GetPos 0x004C73D0, CVectorCompare_BestForTargeting::GetCompareValueForPoint 0x007F9660 (the landed
 //   operator() 0x007F9F00 inlined), __pop_heap(first, last, result, val, comp, int*) 0x007FA680, sort_heap 0x007FA980.
 // Shape: STLport `make_heap(first, middle, comp); for (i = middle; i < last; ++i) if (comp(*i, *first))
 //   __pop_heap(first, middle, i, _Tp(*i), comp, (int*)0); sort_heap(first, middle, comp);` -- the comparator runs
@@ -46,7 +46,7 @@ public:
     CInterfaceMap m_interfaces;                                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                                     // +0x91 bit 0
-    const C3DVector& GetPosition();                             // 0x004C73D0
+    const C3DVector& GetPos() const;                             // 0x004C73D0
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -86,8 +86,8 @@ public:
     {
         float multiplierA = GetThingCompareMultiplier(a);
         float multiplierB = GetThingCompareMultiplier(b);
-        const C3DVector& posB = b->GetPosition();
-        const C3DVector& posA = a->GetPosition();
+        const C3DVector& posB = b->GetPos();
+        const C3DVector& posA = a->GetPos();
         float valueA = VectorCompare.GetCompareValueForPoint(posA);
         float valueB = VectorCompare.GetCompareValueForPoint(posB);
         if (valueA > valueB)

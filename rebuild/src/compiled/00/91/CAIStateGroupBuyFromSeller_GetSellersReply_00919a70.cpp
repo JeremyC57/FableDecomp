@@ -21,9 +21,9 @@ class CMessageEventFilter_IsOfType { public:
     CMessageEventFilter_IsOfType(long type) : m_type(type) { }
 };
 
-struct CMessageEventFilter_IsForThing {
+class CMessageEventFilter_IsTargettedAtThing { public:
     long m_handle[2];
-    CMessageEventFilter_IsForThing(CThing* thing);              // 0x006AF290
+    CMessageEventFilter_IsTargettedAtThing(const CThing& thing);   // 0x006AF290 ??0CMessageEventFilter_IsTargettedAtThing@@QAE@ABVCThing@@@Z
 };
 
 class CMessageEventFilter_IsOriginatedByThing { public:
@@ -48,7 +48,7 @@ template<class A, class B, class C> class CFilter_Bind3 { public:
 template<class A, class B> inline CFilter_Bind2<A, B> operator&&(const A& a, const B& b) { return CFilter_Bind2<A, B>(a, b); }
 template<class A, class B, class C> inline CFilter_Bind3<A, B, C> operator&&(const CFilter_Bind2<A, B>& ab, const C& c) { return CFilter_Bind3<A, B, C>(ab, c); }
 
-typedef CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing, CMessageEventFilter_IsForThing> CReplyFilter;
+typedef CFilter_Bind3<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing, CMessageEventFilter_IsTargettedAtThing> CReplyFilter;
 
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -96,7 +96,7 @@ CMessageEvent* CAIStateGroup_BuyFromSeller::GetSellersReply(CThingCreatureBase* 
     CMessageEvent* reply;
     long status = AIAction_WaitForMessage(AI_ACTION_REPEAT_2,
         CReplyFilter(CMessageEventFilter_IsOfType(0x10), CMessageEventFilter_IsOriginatedByThing((CThing*)seller),
-            CMessageEventFilter_IsForThing(creature)),
+            CMessageEventFilter_IsTargettedAtThing(*creature)),
         &reply);
     if (status == 2)
         return reply;

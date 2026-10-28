@@ -3,7 +3,7 @@
 // Leaf: BuildingContainsPlayer
 // Retail: Fable.exe @ 0x0065AC0E, 117 bytes (`ret 4`); size TU (unaligned entry): `optimize("s",on)`.
 // Callees: CTCBase::GetPlayerManager() 0x00686D40; CPlayerManager::GetMainPlayer() 0x00449970; CPlayer::
-//          GetCharacterThing() 0x00487DC0; IS_THING_ALIVE<CThing*>(CThing* const&) 0x0043DBD0 (__fastcall); std::bitset<>::
+//          GetPControlledCreature() 0x00487DC0; IS_THING_ALIVE<CThing*>(CThing* const&) 0x0043DBD0 (__fastcall); std::bitset<>::
 //          test(size_t) const 0x00410DE0 (interface 117); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020
 //          (inlined GetTC, key in the hero's frame slot); CBaseIntelligentPointer::GetPItem 0x00A01B50.
 // Layout: the interface-117 component holds the building as a CIntelligentPointer<CThing> at +0x0c (as
@@ -40,7 +40,10 @@ public:
         return it->component;
     }
 };
-bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -64,8 +67,9 @@ struct CTCBuildingLocation {                    // the hero's interface-117 comp
 };
 
 class CThingCreatureBase : public CThing {};
+class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer { public:
-    CThingCreatureBase* GetCharacterThing();    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;    // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -86,8 +90,8 @@ class CTCVillage : public CTCBase { public:
 
 bool CTCVillage::BuildingContainsPlayer(CThing* building)
 {
-    CThingCreatureBase* hero = GetPlayerManager().GetMainPlayer().GetCharacterThing();
-    if (IS_THING_ALIVE_0043dbd0(hero) && hero->HasTC(117)) {
+    CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
+    if (IS_THING_ALIVE(hero) && hero->HasTC(117)) {
         if (((CTCBuildingLocation*)hero->GetTC(117))->PBuilding.GetPItem() == building)
             return true;
     }

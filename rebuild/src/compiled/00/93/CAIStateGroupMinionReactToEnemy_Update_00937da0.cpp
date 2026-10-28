@@ -1,7 +1,7 @@
 // CAIStateGroup_MinionReactToEnemy::Update() -- while the enemy is alive and still a target to attack: back off (to 2.4 units beyond the creature, away from the enemy) when the enemy is within 5 units in XY, then keep looking at the enemy; terminate when the enemy dies, stops being a target, or a move or look fails
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00937DA0, length 450 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy), IsToAttackTarget(CThingAICreature*, CThingCreatureBase*)
-// @ 0x00864D00 (__fastcall), CThing::GetPosition @ 0x004C73D0 (the XY distance helper), CThingCreatureBase::GetPosition
+// @ 0x00864D00 (__fastcall), CThing::PeekPos @ 0x004C73D0 (the XY distance helper), CThingCreatureBase::PeekPos
 // @ 0x006A4D00, C3DVector::AccurateNormalise @ 0x00A14440, AIAction_MoveToPosProximity @ 0x0097E890, CBaseIntelligentPointer ctor
 // @ 0x00A01B10 / SetPItem @ 0x00A01B90 (CIntelligentPointer<const CThing> vtable 0x01237F1C, by value),
 // AIAction_LookAtThing @ 0x0097D6F0, Terminate @ 0x008FCF40.
@@ -26,17 +26,19 @@ class C3DVector { public:
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
-class CThingCreatureBase : public CThing { public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingAICreature : public CThingCreatureBase { public: };
 bool __fastcall IsToAttackTarget(CThingAICreature* creature, CThingCreatureBase* target);   // 0x00864D00
 inline float GetDistanceSquaredXY(const CThing* a, const CThing* b)
 {
-    const C3DVector& posB = b->GetPosition();
-    const C3DVector& posA = a->GetPosition();
+    const C3DVector& posB = b->GetPos();
+    const C3DVector& posA = a->GetPos();
     float dx = posA.X - posB.X;
     float dy = posA.Y - posB.Y;
     return dx * dx + dy * dy;
@@ -85,11 +87,11 @@ void CAIStateGroup_MinionReactToEnemy::Update()
             break;
         float distanceSquared = GetDistanceSquaredXY(GetCreature(), PEnemy.GetPItem());
         if (distanceSquared < 25.0f) {
-            C3DVector away = GetCreature()->GetPosition() - PEnemy.GetPItem()->GetPosition();
+            C3DVector away = GetCreature()->PeekPos() - PEnemy.GetPItem()->PeekPos();
             away.AccurateNormalise();
             away *= 2.4f;
             bool arrived;
-            if (AIAction_MoveToPosProximity(1, GetCreature()->GetPosition() + away, 0.5f, arrived, 3, true, false, true, 0,
+            if (AIAction_MoveToPosProximity(1, GetCreature()->PeekPos() + away, 0.5f, arrived, 3, true, false, true, 0,
                                             true, 0.0f) != 2)
                 break;
         }

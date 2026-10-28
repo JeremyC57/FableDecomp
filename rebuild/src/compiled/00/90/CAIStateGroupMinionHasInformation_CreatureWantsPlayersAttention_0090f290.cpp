@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F290, length 136 bytes (+ int3 padding).
 // Callees on PBrain->PCreature: the +0x1C8 flag getters @ 0x008300D0 (bit 2) and @ 0x00830100 (bit 5) (manifest
 // "CanCollideWithLandscape" is propagated); the hero chain: the brain's player manager @ 0x008FCF80
-// (PBrain->+0x20), CPlayerManager::GetCurrentPlayer @ 0x00449960, CPlayer::GetPHero @ 0x00487DC0 (the
+// (PBrain->+0x20), CPlayerManager::GetCurrentPlayer @ 0x00449960, CPlayer::GetPControlledCreature @ 0x00487DC0 (the
 // intelligent pointer at +0x2c, tail-jumps to GetPItem); CVectorMap::LowerBound @ 0x004365B0 (inlined
 // GetInterface, type 0x34 = CTCPerceiveThing, bit 20 of the bitset dword at +0x24), CTCPerceiveThing::
 // IsPlayerExtendedLineOfSight @ 0x00744830 (its bool returned as is).
@@ -53,6 +53,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -106,7 +107,7 @@ struct CThingCreatureFlags {                    // the creature's physics flag b
 };
 
 class CPlayer { public:
-    CThing* GetPHero();                         // 0x00487DC0 (+0x2c intelligent pointer -> GetPItem)
+    CThingPlayerCreature* GetPControlledCreature() const;                         // 0x00487DC0 (+0x2c intelligent pointer -> GetPItem)
 };
 class CPlayerManager { public:
     CPlayer* GetCurrentPlayer_00449960();                // 0x00449960
@@ -158,7 +159,7 @@ bool CAIStateGroup_MinionHasInformation::CreatureWantsPlayersAttention()
 {
     if (((CThingCreatureFlags*)PBrain->PCreature)->HasInformationFlag()) {
         if (!((CThingCreatureFlags*)PBrain->PCreature)->InformationGivenFlag()) {
-            CThing* hero = GetPPlayerManager()->GetCurrentPlayer_00449960()->GetPHero();
+            CThing* hero = GetPPlayerManager()->GetCurrentPlayer_00449960()->GetPControlledCreature();
             if (hero != 0 && !(hero->m_flags91 & 1)) {
                 CThingB* creature = (CThingB*)PBrain->PCreature;
                 if (creature->HasTC(0x34))

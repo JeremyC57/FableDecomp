@@ -21,7 +21,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x004365B0
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -101,8 +103,7 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }
 };
-struct CThingCreaturePos {
-    const C3DVector& GetPosition();             // 0x004C73D0
+struct CThingCreaturePos : public CThing {
 };
 class CThingObject;
 
@@ -165,6 +166,6 @@ CThingObject* CAIStateGroup_RecoverStealableItem::FindPStealableItemOutsideTarge
     PeekThingSearchTools()->GetPBestThing(
         CFilter_Bind4(CThingFilter_ObjectHasProperty(0x8000000), CThingFilter_HasFreeActionPoint(), CThingFilter_HasTC(0x47),
                       CThingFilter_NotIn3DRange(CThingFilter_In3DRange(targetPoint, range))),
-        CThingCompare_Nearest(((CThingCreaturePos*)PBrain->PCreature)->GetPosition()), &item);
+        CThingCompare_Nearest(((CThingCreaturePos*)PBrain->PCreature)->GetPos()), &item);
     return item;
 }

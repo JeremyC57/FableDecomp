@@ -7,7 +7,7 @@
 // Callees: CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10,
 //   CVectorMap::LowerBound 0x0040F020, the CTCTrophy member 0x006DE8B0 taking the showing creature (descriptive name),
 //   CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CSpecialEffectsDef::GetEffectFromString 0x00669D30,
-//   CThing::GetPosition 0x004C73D0, CTCGraphicAppearance::GetDummyObject 0x004C08C0, CreateEffectThing 0x006E0880,
+//   CThing::GetPos 0x004C73D0, CTCGraphicAppearance::GetDummyObject 0x004C08C0, CreateEffectThing 0x006E0880,
 //   CTCDParticleEmitter::AttachToThing 0x006E0BE0, g_RightHandAttachmentName 0x013BAC30,
 //   CCreatureActionBase::Initialise 0x00694D10, CCharString 0x0099EBF0 / ~ 0x0099EAE0.
 // Layout: Ego_r.pdb PTrophyBeingShown +0xb4, PEmitter +0xc1 (packed); retail CCreatureActionBase is 0xa8, so the members
@@ -100,7 +100,7 @@ class CThing { public:
     CDefPointer<CDefClassBase> PDef;            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     CDefPointer<CDefClassBase> GetDef() const { return PDef; }
     bool GetDummyObject(const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
     {
@@ -169,7 +169,7 @@ void CCreatureAction_ShowTrophy::Initialise()
     long effectType = 0;
     if (GetCreature() && GetCreature()->GetDef()->GetSubDef(&effects)
         && effects->GetEffectFromString("SHOW_TROPHY_BUILDUP", effectType)) {
-        C3DVector position = GetCreature()->GetPosition();
+        C3DVector position = GetCreature()->GetPos();
         CRightHandedSet orientation;
         GetCreature()->GetDummyObject("WEAPON_FOCUS_01", &position, &orientation);
         CThing* effect = CreateEffectThing(effectType, &position, false);

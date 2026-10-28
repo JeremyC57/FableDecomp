@@ -5,7 +5,7 @@
 //          CTCCreatureOpinionOfHero::IsWillingToContinueFollowingHero @ 0x006818F0, follower-registry remove @ 0x0065DE8A,
 //          CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10, notify @ 0x004378C0 on the global
 //          at 0x013B8790, TC 0x7A AddDependentThing-style call @ 0x006AEBA0, CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990,
-//          OnFollowerLeft @ 0x006D5050, CThing::GetPosition @ 0x004C73D0, GetRandom @ 0x00686DA0, list size @ 0x0065F17B,
+//          OnFollowerLeft @ 0x006D5050, CThing::GetPos @ 0x004C73D0, GetRandom @ 0x00686DA0, list size @ 0x0065F17B,
 //          GFRandom @ 0x004CDAE0 (__fastcall range, rng), free @ 0x00BFEA14. Frames-per-second global 0x01375550.
 // Layout: CTCFollowed registry +0x0C, Followers (STLport list, node pointer only) +0x10, FrameLastIdleReaction +0x14,
 //         FramesSincePlayerMoved +0x18, LastPlayerPosition +0x1C; CThing UID +0x18, TC present bits +0x20, TC map +0x44.
@@ -62,7 +62,7 @@ public:
     unsigned long PresentBits[9];                       // +0x20
     CTCMap TCs;                                         // +0x44
     __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 class CTCCreatureOpinionOfHero {
 public:
@@ -165,14 +165,14 @@ void CTCFollowed::FrameUpdate()
                 if (Thing->HasTC(0x7a))
                     dependents = (CTCDependents*)Thing->TCs.Find(0x7a);
                 dependents->AddDependentThing(follower);
-                deeds->PostDeed(0x31, Thing->GetPosition(), follower, follower, true, 0, 0, 0, 0, 0);
+                deeds->PostDeed(0x31, Thing->GetPos(), follower, follower, true, 0, 0, 0, 0, 0);
                 OnFollowerLeft(follower);
             }
-            const C3DVector& pos = Thing->GetPosition();
+            const C3DVector& pos = Thing->GetPos();
             float dx = pos.X - LastPlayerPosition.X;
             float dy = pos.Y - LastPlayerPosition.Y;
             if (dx * dx + dy * dy > 9.0f) {
-                LastPlayerPosition = Thing->GetPosition();
+                LastPlayerPosition = Thing->GetPos();
                 FramesSincePlayerMoved = 0;
             } else if (FramesSincePlayerMoved > g_FramesPerSecond * 5.0f) {
                 CWorld* world = GetWorld();
@@ -185,7 +185,7 @@ void CTCFollowed::FrameUpdate()
                             CIntelligentPointer<CThing>& p = node->_M_data;
                             CThing* follower = p.Get();
                             CThing* thing = Thing;
-                            deeds->PostDeed(0x34, thing->GetPosition(), follower, p.Get(), true, 0, 0, 0, 0, 0);
+                            deeds->PostDeed(0x34, thing->GetPos(), follower, p.Get(), true, 0, 0, 0, 0, 0);
                             FrameLastIdleReaction = GetWorld()->GetFrame();
                             break;
                         }

@@ -3,7 +3,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (GetInterface 0x23 = CTCVillageMember, bit 3 of +0x24, unchecked),
 // CTCVillageMember::GetPVillage @ 0x007EE540, CTCVillage::GetSchoolTimes @ 0x00658ACB, GetPThingWorld @ 0x008FCFA0,
 // GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890 (__fastcall), CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
-// CThing::GetPosition @ 0x004C73D0, CAIStateGroup_UsesSeat::MoveToSeat @ 0x009385F0 / SitInSeat @ 0x00938380 / the get-up
+// CThing::GetPos @ 0x004C73D0, CAIStateGroup_UsesSeat::MoveToSeat @ 0x009385F0 / SitInSeat @ 0x00938380 / the get-up
 // @ 0x00938A10, CWorld::GetWorldFrame @ 0x0049D870, AIAction_DoNothing @ 0x0097E200, CCharString(const char*, long) @ 0x0099EBF0
 // / ~CCharString @ 0x0099EAE0, CCreatureAction_PlayAnimation ctor @ 0x008424F0 / ~CCreatureActionBase @ 0x00693EF0,
 // AIAction_PerformActionAndWait @ 0x0097DB70, Terminate @ 0x008FCF40.
@@ -48,7 +48,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
@@ -76,9 +76,10 @@ struct CTimeOfDay {
     unsigned char _pad0c[4];
     float StaggerStep;                          // +0x10
 };
-struct CThingWorld {
+class CWorld { public:
     unsigned char _pad[0x1c];
     CTimeOfDay* PTimeOfDay;                     // +0x1c
+    static long GetWorldFrame();                // 0x0049D870
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -107,9 +108,6 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
-class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
-};
 extern long g_framesPerSecond;                  // 0x01375550
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -120,7 +118,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CThingWorld* GetPThingWorld();              // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     void Terminate();                           // 0x008FCF40
     long AIAction_DoNothing();                  // 0x0097E200
@@ -152,12 +152,12 @@ void CAIStateGroup_MinionSitAtSchool::Update()
     float startTime;
     float endTime;
     member->GetPVillage()->GetSchoolTimes(&startTime, &endTime);
-    float now = GetPThingWorld()->PTimeOfDay->Now;
+    float now = PeekWorld().PTimeOfDay->Now;
     unsigned long* seed = GetPWorldSeed();
     *seed = *seed * 0x24A1U + 0x24DFU;
     *seed = GFROR13(*seed);
     unsigned long stagger = *seed & 3;
-    endTime = (float)stagger * GetPThingWorld()->PTimeOfDay->StaggerStep + endTime;
+    endTime = (float)stagger * PeekWorld().PTimeOfDay->StaggerStep + endTime;
     if (endTime > 1.0f)
         endTime = endTime - 1.0f;
     long movement = 5;
@@ -165,13 +165,13 @@ void CAIStateGroup_MinionSitAtSchool::Update()
     if (seat && !(seat->m_flags91 & 1)) {
         const CThing* creature = GetCreature();
         const CThing* item = PSeat.GetPItem();
-        if ((item->GetPosition() - creature->GetPosition()).GetMagnitude() < 10.0f)
+        if ((item->GetPos() - creature->GetPos()).GetMagnitude() < 10.0f)
             movement = 3;
     }
     if (MoveToSeat(movement) && SitInSeat()) {
         long nextHand = CWorld::GetWorldFrame() + RandomFrames(40);
         while (AIAction_DoNothing() == 4) {
-            float time = GetPThingWorld()->PTimeOfDay->Now;
+            float time = PeekWorld().PTimeOfDay->Now;
             bool over;
             if (endTime > now)
                 over = time > endTime || time < now;

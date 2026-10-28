@@ -4,7 +4,7 @@
 // Callees: as CCreatureAction_BanditKingStuck::Initialise (0x008C8380): CCharString ctor/dtor 0x0099EBF0/0x0099EAE0,
 //   SetAnimationName 0x008574D0, GetPItem 0x00A01B50, CBaseIntelligentPointer() 0x00A01B10 / SetPItem 0x00A01B90 /
 //   ~CBaseIntelligentPointer 0x00A01C10, GetSubDef<CSpecialEffectsDef> 0x00669580, CCRC::CalcAndLookup 0x00669D30,
-//   CThing::GetPosition 0x004C73D0, Create 0x006E0880 (__fastcall), LowerBound 0x0040F020 (GetInterface 0x4B),
+//   CThing::GetPos 0x004C73D0, Create 0x006E0880 (__fastcall), LowerBound 0x0040F020 (GetInterface 0x4B),
 //   CTCDParticleEmitter::AttachToThing 0x006E0BE0, CCombatActionBase::Initialise 0x00857520.
 // Data: "STUCK_GET_HIT" 0x01281AF8, "STUCKLOOP" 0x01281A94, "" 0x0122D70E; CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Layout (retail, local model): CCombatActionBase is 0x114 bytes (PCreature +0x08); PStuckEffect +0x114 (PDB +0x12C).
@@ -63,7 +63,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -124,7 +124,7 @@ void CCreatureAction_BanditKingStuckGetHit::Initialise()
         long effect = 0;
         found = PCreature.GetPItem()->GetDef()->GetSubDef(&effects) && effects.Object->CalcAndLookup("STUCKLOOP", &effect);
         if (found) {
-            CThing* created = CreateSpecialEffect(effect, PCreature.GetPItem()->GetPosition(), false);
+            CThing* created = CreateSpecialEffect(effect, PCreature.GetPItem()->GetPos(), false);
             PStuckEffect = CIntelligentPointerThing(created);
         }
     }

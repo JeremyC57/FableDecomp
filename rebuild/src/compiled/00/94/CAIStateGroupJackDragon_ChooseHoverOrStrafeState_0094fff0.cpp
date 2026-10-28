@@ -25,7 +25,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -81,6 +83,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -98,7 +103,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 };
 
 
@@ -151,7 +158,6 @@ class CWorld { public:
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
 // ---- CDefClassBase::GetSubDef<CJackDragonDef> (0x008E3300, landed body) compiled in this TU ----
@@ -276,8 +282,7 @@ class C2DVector { public:
     float Length() const { return (float)sqrt(x * x + y * y); }
 };
 
-struct CThingPositioned {
-    const C3DVector& GetPosition();             // 0x004C73D0
+struct CThingPositioned : public CThing {
 };
 
 struct CThingAICreatureDef {
@@ -307,8 +312,8 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
 long CAIStateGroup_JackDragon::ChooseHoverOrStrafeState()
 {
     CThingPositioned* enemy = (CThingPositioned*)PEnemy.GetPItem();
-    const C3DVector& landed = ((CThingPositioned*)PLandedMarker.GetPItem())->GetPosition();
-    const C3DVector& target = enemy->GetPosition();
+    const C3DVector& landed = ((CThingPositioned*)PLandedMarker.GetPItem())->GetPos();
+    const C3DVector& target = enemy->GetPos();
     C2DVector delta;
     delta.x = target.x - landed.x;
     delta.y = target.y - landed.y;

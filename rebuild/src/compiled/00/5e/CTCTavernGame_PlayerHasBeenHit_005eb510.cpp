@@ -1,7 +1,7 @@
 // CTCTavernGame::PlayerHasBeenHit() -- true when the main player's hero is alive and its entity-events component holds a hit-by event this frame
 // Leaf: PlayerHasBeenHit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EB510, length 116 bytes (padded row 128).
-// Callees: CTCBase::GetPlayerManager @ 0x00686D40 (`[[0x13B8A1C]+0x30]`), CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing
+// Callees: CTCBase::GetPlayerManager @ 0x00686D40 (`[[0x13B8A1C]+0x30]`), CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature
 // @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const @ 0x004365B0 (inlined GetInterface for CTCEntityEvents, interface
 // 0x42 = bit 2 of CThing+0x28), CTCEntityEvents::GetEvent<const NEntityEvents::CEventHitBy, NEntityEvents::CEventFilter_None>(const CEventHitBy**,
 // const CEventFilter_None&) @ 0x005ED5A0.
@@ -36,6 +36,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 static inline bool IsThingAlive(const CThing* thing)
 {
     return thing && !(thing->m_flags91 & 1);
@@ -48,7 +49,7 @@ class CTCEntityEvents { public:
     bool GetEvent(const NEntityEvents::CEventHitBy** out, const NEntityEvents::CEventFilter_None& filter);   // 0x005ED5A0
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
 public:
@@ -66,7 +67,7 @@ class CTCTavernGame : public CTCBase { public:
 
 bool CTCTavernGame::PlayerHasBeenHit()
 {
-    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     CTCEntityEvents* events;
     if (IsThingAlive(hero) && hero->GetInterface(&events, 0x42)) {
         const NEntityEvents::CEventHitBy* event;

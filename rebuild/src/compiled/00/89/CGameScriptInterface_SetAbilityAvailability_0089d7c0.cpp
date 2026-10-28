@@ -1,6 +1,6 @@
 // CGameScriptInterface::SetAbilityAvailability(EHeroAbility, bool) const -- makes a hero special ability available or not
 // Leaf: SetAbilityAvailability@CGameScriptInterface
-// Retail: Fable.exe @ 0x0089D7C0, 99 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPPlayerCharacter 0x00487DC0,
+// Retail: Fable.exe @ 0x0089D7C0, 99 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0,
 // then CThing::GetTC<CTCSpecialAbilities> (Ego_r.pdb bool/out-pointer form; Components lower_bound 0x0040F020).
 // Layout: CGameScriptInterface per engine/CGameScriptInterface.h (+0x14 PlayerManager); CThing retail (UsingComponents +0x20,
 // Components +0x44, Dead +0x91 bit 0).
@@ -57,8 +57,8 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
-    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
 };
 class CPlayerManager {
 public:
@@ -88,7 +88,7 @@ public:
 
 void CGameScriptInterface::SetAbilityAvailability(EHeroAbility ability, bool available) const
 {
-    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCSpecialAbilities* tc;
     if (hero && !hero->IsDead() && hero->GetTC(&tc))
         tc->SetAbilityAvailable(ability, available);

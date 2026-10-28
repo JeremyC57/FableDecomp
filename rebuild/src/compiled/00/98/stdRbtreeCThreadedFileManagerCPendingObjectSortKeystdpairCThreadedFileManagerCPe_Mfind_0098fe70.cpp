@@ -112,12 +112,16 @@ public:
     typedef _Rb_tree_node<_Value>* _Link_type;
     unsigned int _M_node_count;                // +0x04
     _Compare     _M_key_compare;               // +0x08
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
     static _Link_type _S_left(_Base_ptr __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Base_ptr __x) { return (_Link_type)__x->_M_right; }
     static _Value& _S_value(_Base_ptr __x) { return ((_Link_type)__x)->_M_value_field; }
     static const _Key& _S_key(_Base_ptr __x) { return _KeyOfValue()(_S_value(__x)); }
+    private:
     _Base_ptr _M_find(const _Key& __k) const;
+    public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

@@ -2,7 +2,7 @@
 //   the bound operands (*ab.PF1, *ab.PF2, c); together they hoist the &type store above the IsOriginatedByThing ctor as in retail
 // CAIStateGroup_MinionKidGroupTag::IsRunnable() -- after seven seconds out of the game: join the nearest kid tag group whose nearest member is within 8, else answer a nearby tag invitation (0x2e) by creating a marker-light group and joining it as the initiator, else post the creature's own invitation unless one is queued
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00934920, length 853 bytes (+ int3 padding), plain `ret`, frame 0x30.
-// Callees: GFGetCurrentFrame @ 0x0049D870, CThing::GetPosition @ 0x004C73D0, CThingCreatureBase::GetPosition @ 0x006A4D00,
+// Callees: GFGetCurrentFrame @ 0x0049D870, CThing::PeekPos @ 0x004C73D0, CThingCreatureBase::PeekPos @ 0x006A4D00,
 // CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000 / GetPWorld @ 0x008FCFC0, CThingSearchTools::GetPBestThing<HasDefGlobalIndex,
 // Nearest> @ 0x00935040, CVectorMap::LowerBound @ 0x0040F020 (interface 0xA4 = CTCCreatureGroupTag), CTCCreatureGroup::GetNearestMember
 // @ 0x008128F0, the group's virtual slot 28 (+0x70, add member), CMessageEventManager::FindMostRecentMessage @ 0x00934E50 /
@@ -46,7 +46,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool flag, CTCParamsBase* params);   // 0x004C9D60
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -60,8 +60,10 @@ class CThing { public:
         return false;
     }
 };
-class CThingCreatureBase : public CThing { public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingAICreature : public CThingCreatureBase { public: };
 CThing* __fastcall Create(long defGlobalIndex, const C3DVector& pos);   // 0x00870BB0
@@ -107,7 +109,7 @@ struct CThingFilter_IsNotThing {
 class CThingFilter_In2DRange { public:
     C3DVector Pos;
     float Range;
-    __forceinline CThingFilter_In2DRange(const CThing* thing, float range) : Pos(thing->GetPosition()), Range(range) { }
+    __forceinline CThingFilter_In2DRange(const CThing* thing, float range) : Pos(thing->GetPos()), Range(range) { }
 };
 template<class F> class CMessageEventFilter_ThingSearchFilter { public:
     const F* Filter;
@@ -210,13 +212,13 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
     {
     CThing* group;
     if (PeekThingSearchTools()->GetPBestThing_00935040(CThingFilter_HasDefGlobalIndex(0xa4),
-                                              CThingCompare_Nearest(GetCreature()->CThing::GetPosition()), &group)) {
+                                              CThingCompare_Nearest(GetCreature()->GetPos()), &group)) {
         group->GetInterface(&PTCGroupTag, 0xa4);
         CTCCreatureGroupTag* tag = PTCGroupTag;
-        CThing* nearest = tag->GetNearestMember(GetCreature()->CThing::GetPosition());
-        if (nearest && GetDistance(nearest->GetPosition(), GetCreature()->CThing::GetPosition()) < 8.0f
+        CThing* nearest = tag->GetNearestMember(GetCreature()->GetPos());
+        if (nearest && GetDistance(nearest->GetPos(), GetCreature()->GetPos()) < 8.0f
                 && PTCGroupTag->AddMember(GetCreature())) {
-            InitialTagPos = GetCreature()->GetPosition();
+            InitialTagPos = GetCreature()->PeekPos();
             return true;
         }
     }
@@ -231,14 +233,14 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
                 CCharString markerName("INTERNAL_MARKER_LIGHT");
                 markerIndex = GetPWorld()->GetPDefinitionManager()->GetDefGlobalIndexFromName(markerName);
             }
-            CThing* marker = Create(markerIndex, GetCreature()->CThing::GetPosition());
+            CThing* marker = Create(markerIndex, GetCreature()->GetPos());
             {
                 CCharString componentName("CTCCreatureGroupTag");
                 PTCGroupTag = (CTCCreatureGroupTag*)marker->AddTC(componentName, false, 0);
             }
             if (PTCGroupTag && PTCGroupTag->AddMember(GetCreature())) {
                 GetPWorld()->GetPMessageManager()->RemoveMessage(invitation);
-                InitialTagPos = GetCreature()->GetPosition();
+                InitialTagPos = GetCreature()->PeekPos();
                 InitiatedTag = true;
                 return true;
             }
@@ -250,7 +252,7 @@ bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
         CThingAICreature* creature = GetCreature();
         long fps = g_FramesPerSecond;
         CMessageEventManager* manager = GetPWorld()->PMessageEventManager;
-        manager->AddMessage(0x2e, (long)(fps * 4.0f), &creature->GetPosition(), creature, 0, 8.0f, 8.0f, 0);
+        manager->AddMessage(0x2e, (long)(fps * 4.0f), &creature->PeekPos(), creature, 0, 8.0f, 8.0f, 0);
     }
     return false;
 }

@@ -5,7 +5,7 @@
 // Identity: Ego_r.pdb name set `?GetFirstAttackerAlignedWithPlacementVector@?A0xd8b789b9@@YIPBVCThingCreatureBase@@ABV?$list@
 //   PBVCThingCreatureBase@@...@std@@ABVC3DVector@@1@Z` (anonymous namespace of the combat-manager TU). No direct call
 //   site in the image (an inlined/dead helper kept out of line). The catalog name is the PDB name.
-// Callees: C3DVector::AccurateNormalise @ 0x00A14440 (in place, twice per attacker), CThing::GetPosition() const @ 0x004C73D0.
+// Callees: C3DVector::AccurateNormalise @ 0x00A14440 (in place, twice per attacker), CThing::GetPos() const @ 0x004C73D0.
 // Globals: the double 1.0471976 (60 degrees, `fld qword ; fcos`) @ 0x01261DC8.
 // Layout: STLport list<const CThingCreatureBase*> (4 bytes: the sentinel node; node {next, prev, data +8}).
 // Shape: `(float)cos(60 degrees)` through the cos intrinsic into a float local; inside the loop the attacker is read
@@ -24,7 +24,7 @@ inline float operator*(const C3DVector& a, const C3DVector& b) { return a.Z * b.
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { };
 
@@ -62,7 +62,7 @@ const CThingCreatureBase* __fastcall GetFirstAttackerAlignedWithPlacementVector(
         const CThingCreatureBase* attacker = *it;
         C3DVector flatPlacement(placementVector.X, placementVector.Y, 0.0f);
         flatPlacement.AccurateNormalise();
-        const C3DVector& attackerPos = attacker->GetPosition();
+        const C3DVector& attackerPos = attacker->GetPos();
         C3DVector toAttacker(attackerPos.X - defenderPos.X, attackerPos.Y - defenderPos.Y, 0.0f);
         toAttacker.AccurateNormalise();
         if (toAttacker * flatPlacement > minDot)

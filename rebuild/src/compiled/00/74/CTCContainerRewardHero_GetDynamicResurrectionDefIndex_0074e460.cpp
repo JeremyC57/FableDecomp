@@ -2,7 +2,7 @@
 //
 // Retail 0x0074E460, 151 bytes (plain `ret`). Callees: CTCBase::GetPlayerManager @ 0x00686D50
 // (`[0x013B8A1C]+0x30`; manifest "CViewBase::GetDisplayEngine", propagated), CPlayerManager::
-// GetMainPlayer @ 0x00449960, CPlayer::GetControlledCreature @ 0x00487DD0 (label propagated),
+// GetMainPlayer @ 0x00449960, CPlayer::PeekPControlledCreature @ 0x00487DD0 (label propagated),
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0, CCharString::CCharString(const
 // char*, long) @ 0x0099EBF0, CGameDefinitionManager::Get() @ 0x0044C6B0, CDefinitionManager::
 // GetDefGlobalIndexFromName(const CCharString&) @ 0x009AD410, ~CCharString @ 0x0099EAE0,
@@ -28,16 +28,17 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_stateFlags;                             // +0x91 (bit 0 = dead)
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    CTCBase* GetInterface(long interfaceType)
+    CTCBase* GetInterface(long interfaceType) const
     {
         long type = interfaceType;
-        CInterfaceMap* map = &m_interfaces;
+        const CInterfaceMap* map = &m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         if (it == map->last || interfaceType < it->type)
             it = map->last;
         return it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 inline bool IsThingAlive(const CThing* thing)
 {
@@ -63,7 +64,7 @@ struct CTCInventoryBase {
 };
 
 class CPlayer { public:
-    CThing* GetControlledCreature();                        // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;                        // 0x00487DD0
 };
 
 class CPlayerManager { public:
@@ -89,7 +90,7 @@ class CTCContainerRewardHero : public CTCContainer { public:
 
 long CTCContainerRewardHero::GetDynamicResurrectionDefIndex()
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetControlledCreature();
+    const CThing* hero = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
     if (IsThingAlive(hero) && hero->HasInterface(0x11))
     {
         CTCInventoryBase* inventory = (CTCInventoryBase*)hero->GetInterface(0x11);

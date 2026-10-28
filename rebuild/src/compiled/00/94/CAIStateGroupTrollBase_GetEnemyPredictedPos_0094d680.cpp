@@ -23,7 +23,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -224,7 +226,6 @@ class C3DVector { public:
     C3DVector operator*(float f) const { return C3DVector(x * f, y * f, z * f); }
 };
 struct CThingPos : CThing {
-    const C3DVector& GetPosition();             // 0x004C73D0
 };
 struct CTCPhysicsPos {                          // the enemy's +0x60 physics sub-object
     unsigned char _pad[0x18];
@@ -273,7 +274,7 @@ struct CAIStateGroup_TrollBase : CAIStateGroupBase {
 C3DVector CAIStateGroup_TrollBase::GetEnemyPredictedPos()
 {
     CTCPhysicsPos* physics = (CTCPhysicsPos*)PEnemy.GetPItem()->m_pSub60;
-    const C3DVector& enemyPos = ((CThingPos*)PEnemy.GetPItem())->GetPosition();
+    const C3DVector& enemyPos = ((CThingPos*)PEnemy.GetPItem())->GetPos();
     C3DVector movement = physics->m_position - enemyPos;
     float leadTime = 0.0f;
     CDefPointer<CTrollThrowDef> holder;
@@ -282,5 +283,5 @@ C3DVector CAIStateGroup_TrollBase::GetEnemyPredictedPos()
     if (found)
         leadTime = def.Object->LeadTime;
     C3DVector offset = movement * 10.0f * leadTime;
-    return offset + ((CThingPos*)PEnemy.GetPItem())->GetPosition();
+    return offset + ((CThingPos*)PEnemy.GetPItem())->GetPos();
 }

@@ -44,6 +44,7 @@ public:
 
 template <class T, class A = allocator<T> > class vector : protected _Vector_base<T, A> {
 public:
+    protected:
     template <class ForwardIter>
     T* _M_allocate_and_copy(unsigned int n, ForwardIter first, ForwardIter last)
     {
@@ -51,6 +52,7 @@ public:
         __uninitialized_copy(first, last, result, __true_type());
         return result;
     }
+    public:
 };
 
 template long* vector<long>::_M_allocate_and_copy<long*>(unsigned int, long*, long*);

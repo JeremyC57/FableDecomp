@@ -6,7 +6,7 @@
 // Leaf: ?FrameUpdate@CModeScorpionKingTailPlunge
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008E0D20, 953 bytes (`ret`).
 // Callees: CModeBase::FrameUpdate 0x0073AC50, CVectorMap::LowerBound 0x0040F020 (inline GetTC 0x5a, unchecked miss path),
-//   CTCAnimationComplex::GetAnimation 0x0070B460, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0,
+//   CTCAnimationComplex::GetAnimation 0x0070B460, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0,
 //   CThing::Kill 0x004C9B80, Spike 0x008DA0F0, Recover 0x008DF510 (makes TAIL_DUST_EFFECT), driver slots 30 (MoveTo) / 70 (GetForward).
 // Data: the FastInvSqrt mantissa table 0x013CE558, floats 6.0 0x0125A2A0, 3.0 0x0122DED4, 0.5 0x0122F59C, 8.0 0x0125916C, 1.0 0x0122DED8.
 // Layout: Ego_r.pdb CModeScorpionKingTailPlunge (packed, as the landed Spike 0x008DA0F0 / OnActivate 0x008D9E30); thing driver +0x60,
@@ -83,7 +83,7 @@ class CThing { public:
     CTCDriverBase* PTCDriver;                   // +0x60
     unsigned char  _pad64[0x91 - 0x64];
     unsigned char  m_flags91;                   // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     void Kill(bool immediately);
     __forceinline CTCDriverBase* GetDriver() const { return PTCDriver; }                // 0x004C9B80
     __forceinline bool HasTC(long interfaceType) const
@@ -156,14 +156,14 @@ void CModeScorpionKingTailPlunge::FrameUpdate()
         --RecoveryCount;
     if (RecoveryCount == SpikeDecisionTime) {
         if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1)) {
-            TargetPos = PTarget.GetPItem()->GetPosition();
-            C3DVector delta = TargetPos - ParentThing->GetPosition();
+            TargetPos = PTarget.GetPItem()->GetPos();
+            C3DVector delta = TargetPos - ParentThing->GetPos();
             if (delta.GetLength2D() < 6.0f) {
                 delta.Normalise();
-                TargetPos = ParentThing->GetPosition() + delta * 6.0f;
+                TargetPos = ParentThing->GetPos() + delta * 6.0f;
             }
         } else {
-            TargetPos = ParentThing->GetPosition() + ParentThing->PTCDriver->GetForward() * 8.0f;
+            TargetPos = ParentThing->GetPos() + ParentThing->PTCDriver->GetForward() * 8.0f;
         }
         DustEffectCounter = 0;
     } else if (RecoveryCount == SpikeTime) {
@@ -179,7 +179,7 @@ void CModeScorpionKingTailPlunge::FrameUpdate()
     if (RecoveryCount < SpikeDecisionTime && RecoveryCount > SpikeTime &&
         PDustTrailEmitter.GetPItem() && !(PDustTrailEmitter.GetPItem()->m_flags91 & 1)) {
         C3DVector step = (TargetPos - TailPos) / (float)(SpikeDecisionTime - SpikeTime);
-        C3DVector position = PDustTrailEmitter.GetPItem()->GetPosition() + step;
+        C3DVector position = PDustTrailEmitter.GetPItem()->GetPos() + step;
         PDustTrailEmitter.GetPItem()->GetDriver()->MoveTo(position);
     }
 }

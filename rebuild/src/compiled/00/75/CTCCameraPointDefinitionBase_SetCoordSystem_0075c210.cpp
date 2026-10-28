@@ -1,6 +1,6 @@
 // CTCCameraPointDefinitionBase::SetCoordSystem(CThing* thing) -- take the thing's position as CoordBase and its orientation as CoordAxis, each only when the camera point uses relative coordinates / orientation
 //
-// Retail 0x0075C210, 101 bytes (`ret 4`). Callees: CThing::GetPosition() const @ 0x004C73D0 (returns
+// Retail 0x0075C210, 101 bytes (`ret 4`). Callees: CThing::GetPos() const @ 0x004C73D0 (returns
 // const C3DVector&), virtual slot 72 (+0x120) of the thing's +0x60 object (returns the orientation
 // as a const CRightHandedSet&).
 // Layout: PDB CTCCameraPointDefinitionBase (packed; same model as the landed ctor 0x0075C180):
@@ -22,7 +22,7 @@ struct CPhysics;
 class CThing { public:
     unsigned char        _pad_0x00[0x60];
     CPhysics*            m_pPhysics;                 // +0x60
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 struct CPhysics {
@@ -66,7 +66,7 @@ class CTCCameraPointDefinitionBase { public:
 void CTCCameraPointDefinitionBase::SetCoordSystem(CThing* thing)
 {
     if (UsingRelativeCoords)
-        CoordBase = thing->GetPosition();
+        CoordBase = thing->GetPos();
     if (UsingRelativeOrientation)
         CoordAxis = thing->m_pPhysics->GetOrientation();
 }

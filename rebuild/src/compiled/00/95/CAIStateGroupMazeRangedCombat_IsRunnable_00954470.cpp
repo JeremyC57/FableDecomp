@@ -5,11 +5,11 @@
 // propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
 // CIntelligentPointer<CThing>(CThing*) @ 0x004A96F0 (twice), CIntelligentPointer<CThing>::operator= @ 0x004A9760 (out of
 // line the first time, inlined the second), CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90,
-// CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CThing::GetPosition @ 0x004C73D0 (twice).
+// CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0 (twice).
 // Globals: 50.0f @ 0x012944BC, 8.0f @ 0x012944C4.
 // Shape: the boss lookup is the out-pointer GetInterface (its miss path passes the never-written word); operator= is a
 // plain in-class inline, which VC calls out of line for the first assignment and inlines for the second; the creature
-// and target are named before the two GetPosition calls.
+// and target are named before the two GetPos calls.
 // Layout: Ego_r.pdb CAIStateGroup_MazeRangedCombat (LastCompletedPhase +0x20); the target pointer +0x14 is the inherited
 // ranged-combat member (local model, the engine header flattens the base); CTCTargetingAI's enemy pointer sits at the
 // unaligned +0x1d (pack(1), as the landed rows read it).
@@ -32,7 +32,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
@@ -56,6 +56,7 @@ class CThing { public:
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
@@ -86,7 +87,7 @@ class CTCBoss { public:                                // interface 0xAD
 };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -126,12 +127,12 @@ bool CAIStateGroup_MazeRangedCombat::IsRunnable()
                 PTarget = targeting->PEnemy.GetPItem();
         }
         if (PTarget.GetPItem() == 0 || (PTarget.GetPItem()->m_flags91 & 1))
-            PTarget = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+            PTarget = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
         if (PTarget.GetPItem() != 0 && !(PTarget.GetPItem()->m_flags91 & 1)) {
             const CThing* self = PBrain->PCreature;
             const CThing* target = PTarget.GetPItem();
-            const C3DVector& me = self->GetPosition();
-            const C3DVector& him = target->GetPosition();
+            const C3DVector& me = self->GetPos();
+            const C3DVector& him = target->GetPos();
             float dx = him.X - me.X;
             float dy = him.Y - me.Y;
             float dist = (float)sqrt(dx * dx + dy * dy);

@@ -6,7 +6,7 @@
 // manager), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440 / RemoveThingFromPrimarySlot @ 0x006A1E00,
 // CTCPhysicsBase::SetAsMoving @ 0x006B0130, CCharString(const char*, long) @ 0x0099EBF0 / dtor @ 0x0099EAE0,
 // CThing::AddTC @ 0x004C9D60, CTCSolidToThing::AddThingNotSolidTo @ 0x00770FA0, CAIStateGroupBase::GetPPlayerManager
-// @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0,
+// @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // CTCCreatureModeManager::RemoveMode @ 0x0073ABA0.
 // Layout: engine/CAIStateGroup_MoveGoodsBase.h (DroppingGoods +0x14, PickUpGoodsActionID +0x18) over the landed local
 // CAIStateGroupBase model (the generated header flattens the vptr); thing/creature members as the landed AI bodies.
@@ -64,6 +64,7 @@ class CThing { public:
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
     CTCBase* AddTC(const CCharString& name, bool b, CTCParamsBase* params);   // 0x004C9D60
 };
+class CThingPlayerCreature : public CThing { };
 struct CActionBase {
     unsigned char _pad[0x28];
     long ID;                                    // +0x28
@@ -89,7 +90,7 @@ class CTCSolidToThing { public:
 class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
-class CPlayer { public: CThing* GetHeroThing(); };     // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };     // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -137,7 +138,7 @@ void CAIStateGroup_MoveGoodsBase::Cleanup()
         }
         if (solid) {
             solid->AddThingNotSolidTo(PBrain->PCreature);
-            solid->AddThingNotSolidTo(GetPPlayerManager()->GetMainPlayer()->GetHeroThing());
+            solid->AddThingNotSolidTo(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
         }
         carrying->RemoveThingFromPrimarySlot(false);
         CTCCreatureModeManager* modes;

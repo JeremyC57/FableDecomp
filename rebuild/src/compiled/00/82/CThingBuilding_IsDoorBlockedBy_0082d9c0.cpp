@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082D9C0, 306 bytes (+14 int3), `ret 4`, bool in al.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (two inlined GetInterface lookups: type 0x21 on
 //   the building = bit 1 of bitset word +0x24, type 0x26 on the occupant = bit 6 of +0x24), CBaseIntelligentPointer::
-//   GetPItem @ 0x00A01B50 (four times per occupant), CThing::GetPosition @ 0x004C73D0.
+//   GetPItem @ 0x00A01B50 (four times per occupant), CThing::GetPos @ 0x004C73D0.
 // Globals: 2.25f 0x0125B2D4 (1.5 squared: the inline GFWorld3DDistanceSmallerThan(a, b, 1.5f); its out-of-line copy is
 //   0x006614F0).
 // Layout: CThing interface bitset +0x20, map +0x44, dead flag bit 0 of +0x91; the type-0x21 component keeps an STLport
@@ -36,7 +36,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;             // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_statusFlags;            // +0x91 (bit 0: dead)
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     __forceinline unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
@@ -109,7 +109,7 @@ bool CThingBuilding::IsDoorBlockedBy(CThing* thing)
                 && occupant.GetPItem()->GetInterface(&state, 0x26)) {
                 if (state->StateB || state->StateC || state->StateA) {
                     CThing* occupantThing = occupant.GetPItem();
-                    if (GFWorld3DDistanceSmallerThan(occupantThing->GetPosition(), thing->GetPosition(), 1.5f))
+                    if (GFWorld3DDistanceSmallerThan(occupantThing->GetPos(), thing->GetPos(), 1.5f))
                         return true;
                 }
             }

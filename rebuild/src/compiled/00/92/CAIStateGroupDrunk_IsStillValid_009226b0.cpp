@@ -91,6 +91,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -108,7 +111,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 };
 
 
@@ -157,11 +162,10 @@ class CMessageEventManager;
 class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
-    CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+    CMessageEventManager* GetPMessageManager() const { return m_pMessageManager; }
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld() const;             // 0x008FCFA0
 };
 
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsOriginatedByThing> CDrunkFilter;
@@ -198,7 +202,7 @@ struct CAIStateGroup_Drunk : CAIStateGroupBaseW {
 bool CAIStateGroup_Drunk::IsStillValid() const
 {
     CThing* creature = PBrain->PCreature;
-    CMessageEvent* message = GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage(
+    CMessageEvent* message = PeekWorld().GetPMessageManager()->FindMostRecentMessage(
             CMessageEventFilter_IsOfType(0x14) && CMessageEventFilter_IsOriginatedByThing(creature));
     CTCDrunk* drunk;
     PBrain->PCreature->GetInterface(&drunk, 0xc3);

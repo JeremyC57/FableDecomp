@@ -4,7 +4,7 @@
 // Shape: the null test of the vector argument straddles the vtable store (init-list member after the base), the three floats are copied one register each.
 class CThingCreatureBase;
 class C3DVector { public: float x, y, z; };
-struct CThingCalls { const C3DVector* GetPosition(); };   // 0x004C73D0
+class CThing { public: const C3DVector& GetPos() const; };   // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
 class CSoundPair { public:                         // two sound ids, zeroed by the inline constructor (register-zeroed stack stores)
     long FirstSound;
     long LastSound;
@@ -24,6 +24,6 @@ class CCreatureAction_NymphTeleportOutOfLimbo : public CCombatActionBase { publi
 
 CCreatureAction_NymphTeleportOutOfLimbo::CCreatureAction_NymphTeleportOutOfLimbo(CThingCreatureBase* owner, const C3DVector* destination)
     : CCombatActionBase(owner, 150, CSoundPair())
-    , m_destination(*(destination ? destination : ((CThingCalls*)owner)->GetPosition()))
+    , m_destination(*(destination ? destination : &((CThing*)owner)->GetPos()))
 {
 }

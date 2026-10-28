@@ -2,7 +2,7 @@
 // Leaf: ?AcquireSeller@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091A9B0, 471 bytes (+ int3 padding), plain `ret`.
 // Ego_r.pdb: ?AcquireSeller@?$CAIStateGroup_WorkBase@VCAIStateGroupBase@@@@IAEXXZ.
-// Callees: CThing::GetPosition @ 0x004C73D0, malloc @ 0x00BFEA0E / free @ 0x00BFEA14 (STLport list nodes), __ftol2 @ 0x00BFEA70,
+// Callees: CThing::GetPos @ 0x004C73D0, malloc @ 0x00BFEA0E / free @ 0x00BFEA14 (STLport list nodes), __ftol2 @ 0x00BFEA70,
 //   CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, CThingSearchTools::FindThingsInRoughArea<CFilter_Bind2<CThingFilter_HasTC,
 //   CThingFilter_In2DRange>, CThingCreatureBase> @ 0x0091A750, CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890,
 //   CThingCreatureBase::RemoveFromCreatureInteraction @ 0x006629B0 / NewCreatureInteraction @ 0x00662970 /
@@ -96,11 +96,13 @@ class CCreatureInteraction;
 struct CCountedPointerCreatureInteraction {            // CCountedPointer<CCreatureInteraction>
     CCreatureInteraction* Data;
 };
-class CThingCreatureBase {
+class CThing { public:
+    const C3DVector& GetPos() const;                    // CThing::GetPos 0x004C73D0
+};
+class CThingCreatureBase : public CThing {
 public:
     unsigned char _pad00[0x12c];
     CCountedPointerCreatureInteraction PCreatureInteraction;   // +0x12C
-    const C3DVector& GetPosition();                    // CThing::GetPosition 0x004C73D0
     void RemoveFromCreatureInteraction();              // 0x006629B0
     void NewCreatureInteraction(long type);            // 0x00662970 (ECreatureInteractionType)
     void AddToCreatureInteraction(const CCountedPointerCreatureInteraction& interaction);   // 0x00662550
@@ -171,7 +173,7 @@ public:
 
 template <class Base> void CAIStateGroup_WorkBase<Base>::AcquireSeller()
 {
-    C3DVector pos = this->PBrain->PCreature->GetPosition();
+    C3DVector pos = this->PBrain->PCreature->GetPos();
     CThingCreatureBase* seller = 0;
     std::list<CThingCreatureBase*> sellers;
     long x = (long)pos.X;

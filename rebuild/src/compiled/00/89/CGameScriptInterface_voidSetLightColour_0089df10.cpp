@@ -43,6 +43,7 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }   // the masked word (a bool return would materialise `shr ; and 1`)
 };
+class CThingPlayerCreature : public CThing_Retail { };
 __forceinline CTCBase_Retail* GetTC(CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }          // free inline: the pointer comes back in eax
 __forceinline CTCBase_Retail* GetTCConst(const CThing_Retail* thing, long kind) { return thing->m_tcs.Find(kind); }
 struct CTCLight_Retail {                           // the component (no vtable modelled: the bytes before the first used member are padding)
@@ -64,12 +65,12 @@ class CScriptThing { public:
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
-struct CPlayer_Retail {
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0 (the manifest label "_Cons_val<...>" is propagated)
+struct CPlayer {
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0 (the manifest label "_Cons_val<...>" is propagated)
 };
 struct CPlayerManager_Retail {
-    CPlayer_Retail* GetMainPlayer();               // 0x00449970 (labelled "Catch@0040d959", propagated)
+    CPlayer* GetMainPlayer();               // 0x00449970 (labelled "Catch@0040d959", propagated)
 };
 struct CDisplayEngine_Retail; class CWorld;
 class CGameScriptInterface { public:

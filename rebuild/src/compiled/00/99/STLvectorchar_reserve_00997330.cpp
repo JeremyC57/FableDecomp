@@ -46,22 +46,28 @@ template <class T, class Alloc = allocator<T> > class vector : public _Vector_ba
 public:
     size_t size() const { return size_t(this->_M_finish - this->_M_start); }
     size_t capacity() const { return size_t(this->_M_end_of_storage._M_data - this->_M_start); }
+    protected:
     T* _M_allocate_and_copy(size_t n, const T* first, const T* last)
     {
         T* result = this->_M_end_of_storage.allocate(n);
         __copy_trivial(first, last, result);
         return result;
     }
+    public:
+    protected:
     void _M_clear()
     {
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(T* s, T* f, T* e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
     void reserve(size_t n);
 };
 

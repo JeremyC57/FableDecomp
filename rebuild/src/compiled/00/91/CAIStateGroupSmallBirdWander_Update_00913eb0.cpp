@@ -1,6 +1,6 @@
 // CAIStateGroup_SmallBirdWander::Update() -- pick a random flight position near the bird, fly there, and finish
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00913EB0, length 65 bytes (+ int3 padding).
-// Callees: CThingPhysical::GetPosition @ 0x004C73D0 (on PBrain->Creature),
+// Callees: CThingPhysical::GetPos @ 0x004C73D0 (on PBrain->Creature),
 // CAIStateGroup_FlyingThingBase::GetRandomFlightPos(const C3DVector&, float, C3DVector*, bool)
 // @ 0x00912700, CAIStateGroup_FlyingThingBase::ExecuteFlyingPath(const C3DVector&) @ 0x009130D0,
 // CAIStateGroupBase::Terminate @ 0x008FCF40 (sets Terminated at +0x10).
@@ -14,8 +14,10 @@ class C3DVector { public:
     float X, Y, Z;
 };
 
-class CThingAICreature { public:
-    const C3DVector& GetPosition();             // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;             // 0x004C73D0
+};
+class CThingAICreature : public CThing { public:
 };
 
 class CAIBrain { public:
@@ -48,7 +50,7 @@ void CAIStateGroup_SmallBirdWander::Update()
 {
     C3DVector target;
     CThingAICreature* creature = PBrain->Creature;
-    if (!GetRandomFlightPos(creature->GetPosition(), 15.0f, &target, true)) {
+    if (!GetRandomFlightPos(creature->GetPos(), 15.0f, &target, true)) {
         Terminate();
         return;
     }

@@ -4,7 +4,7 @@
 // Retail 0x00783380, 768 bytes, `ret 0xc`. Callees: LowerBound 0x0040F020 (interfaces 0x22 village, 2 placement),
 // GetSubDef<crowd def> 0x00512FE0, CTCBase::GetRandomSeed 0x00686DA0, GFROR13 0x00497890, GFFloatRandom 0x004978A0,
 // CCharString 0x0099EBF0 / copy 0x0099EC30 / dtor 0x0099EAE0 / operator= 0x0099EFB0, CThingAICreature::Create 0x00833800
-// (__fastcall), CThing::GetPosition 0x004C73D0, CThingCreatureBase::AutoPlaceNear 0x00665DF0, CTCVillage::AddThingToVillage
+// (__fastcall), CThing::GetPos 0x004C73D0, CThingCreatureBase::AutoPlaceNear 0x00665DF0, CTCVillage::AddThingToVillage
 // 0x0065B854, CThingAICreature::AutoSetupSexuality 0x008330D0, CThing::SetAsGameStatePersisted 0x004C7880, _CIfmod
 // 0x00BFEB28, the placement TC's slot 66 (+0x108) facing setter. Globals: crowd script name 0x013BADE8, "" 0x0122D70E,
 // 0.5f 0x0122F59C, 5.0f 0x0126B388, 1/(2pi) 0x01237F08.
@@ -139,7 +139,7 @@ class CThing { public:
     unsigned char  NoLOD : 1;                           // +0x1c9 bit 0
     unsigned char  _flag1c9_1 : 7;
     CDefClassBase* GetDef() const { return m_pDef; }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline void* GetTC(long kind) { return m_tcs.Find(kind); }
@@ -198,14 +198,14 @@ bool CTCBoastingCrowdControl::SpawnCrowdMember(CThing* lookAt, CThing* spawnPoin
             init.ScriptName = g_CrowdMemberScriptName;
             init.EnableCreatureAutoPlacing = false;
             CThingAICreature* creature = CThingAICreature::Create(female ? def->FemaleDef : def->MaleDef,
-                                                                  spawnPoint->GetPosition(), 4, &init);
+                                                                  spawnPoint->GetPos(), 4, &init);
             if (creature) {
-                creature->AutoPlaceNear(spawnPoint->GetPosition(), (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * 5.0f);
+                creature->AutoPlaceNear(spawnPoint->GetPos(), (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * 5.0f);
                 CTCPlacement* placement;
                 if (creature->HasTC(2))
                     placement = (CTCPlacement*)creature->GetTC(2);
-                const C3DVector& from = creature->GetPosition();
-                const C3DVector& to = lookAt->GetPosition();
+                const C3DVector& from = creature->GetPos();
+                const C3DVector& to = lookAt->GetPos();
                 placement->SetFacingAngleXY(WrapAngle((float)atan2(to.X - from.X, to.Y - from.Y) * 0.15915494f));
                 tcVillage->AddThingToVillage(creature);
                 creature->AutoSetupSexuality(def->MaleChance);

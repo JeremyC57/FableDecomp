@@ -3,7 +3,7 @@
 // Leaf: ShowParticleEffects
 //
 // Retail 0x008ECA50, 100 bytes (`ret 4`). Ego_r.pdb `?ShowParticleEffects@CTCDegradableBase@@AAEXJ@Z`.
-// Callees: CThing::GetPosition() const @ 0x004C73D0, the global Create(long, const C3DVector&, bool)
+// Callees: CThing::GetPos() const @ 0x004C73D0, the global Create(long, const C3DVector&, bool)
 // @ 0x006E0880 (`__fastcall`, the bool on the stack, pushed first), CCharString::CCharString(const
 // char*, long) @ 0x0099EBF0 (the empty string 0x0122D70E), CTCDParticleEmitter::AttachToThing(CThing*,
 // long, const CCharString&, long, float) @ 0x006E0BE0, ~CCharString @ 0x0099EAE0.
@@ -20,7 +20,7 @@ class CThing { public:
     unsigned char _pad44[0x5c - 0x44];
     class CTCDParticleEmitter* PParticleEmitter;           // +0x5c
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 
 class CCharString { public:
@@ -46,7 +46,7 @@ void CTCDegradableBase::ShowParticleEffects(long particleDefIndex)
 {
     if (particleDefIndex > 0)
     {
-        CThing* particle = Create(particleDefIndex, GetParentThing()->GetPosition(), false);
+        CThing* particle = Create(particleDefIndex, GetParentThing()->GetPos(), false);
         if (particle)
         {
             CTCDParticleEmitter* emitter = 0;

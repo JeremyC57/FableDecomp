@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E62D0, 369 bytes (plain `ret`).
 // Callees: CTCBase::GetPlayerManager 0x00686D40 (byte twin of the 0x00686D50 the landed SetText calls; manifest
 //          "CViewBase::GetDisplayEngine" is propagated); CPlayerManager::GetMainPlayer 0x00449970 / its twin 0x00449960;
-//          CPlayer::GetCurrentMode 0x00633BE0, ::RemoveMode 0x00634190, ::GetHeroThing 0x00487DC0; free 0x00BFEA14 (list
+//          CPlayer::GetCurrentMode 0x00633BE0, ::RemoveMode 0x00634190, ::GetPControlledCreature 0x00487DC0; free 0x00BFEA14 (list
 //          nodes); CWorld::GetWorldFrame 0x0049D870; __ftol2 0x00BFEA70; CDrawQuestInfo::DisplayMiniGameInfo 0x00654593;
 //          CCharString(const char*, long) 0x0099EBF0 ("" 0x0122D70E) / ~CCharString 0x0099EAE0;
 //          CSubtitleRenderer::SetButton2OverrideText 0x0048F881; CTCOracleMinigame::SetText 0x007E6230;
@@ -42,13 +42,14 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCHeroOnlineScoreboard { public:
     void UpdateScoreForActivity(long activity, float score, bool onlyIfBetter);   // 0x0055F3B0
 };
 class CPlayer { public:
     long GetCurrentMode();                      // 0x00633BE0
     void RemoveMode(long mode);                 // 0x00634190
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -151,7 +152,7 @@ void CTCOracleMinigame::Quit()
         SetText(PDef->WinText);
     else
         SetText(PDef->LoseText);
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
     CTCHeroOnlineScoreboard* scoreboard;
     hero->GetInterface(&scoreboard, 0x10d);
     scoreboard->UpdateScoreForActivity(0x15, (float)Level, false);

@@ -1,7 +1,7 @@
 // CAIStateGroup_MeleeCombatNearbyBase::RequestMoney() -- when the enemy is the living hero and its fine dialogue is allowed, show the fine for the creature's village's current crimes (with the hero's interface-4 amount), then yield the brain, refresh the best enemy and terminate unless still runnable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093D580, length 408 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970,
-// CPlayer::GetHeroThing @ 0x00487DC0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy +0x14), CVectorMap::LowerBound
+// CPlayer::GetPControlledCreature @ 0x00487DC0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PEnemy +0x14), CVectorMap::LowerBound
 // @ 0x0040F020 (inlined lookups: 0xF3 = CTCFineDialogue on the hero, 0x23 = CTCVillager, interface 4 on the hero,
 // 8 = CTCTargetingAI), CTCFineDialogue::IsAllowed @ 0x007E2790, GFGetPVillageInterface @ 0x007EE540 (twice; manifest
 // "IS_THING_ALIVE<..>" propagated), CTCVillage::GetFineAmountForCurrentCrimes @ 0x0065A41C, CTCFineDialogue::Show @ 0x007E27F0,
@@ -51,6 +51,7 @@ class CThing { public:
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -70,7 +71,7 @@ public:
 };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -125,7 +126,7 @@ struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
 
 void CAIStateGroup_MeleeCombatNearbyBase::RequestMoney()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     CTCFineDialogue* fine;
     if (hero != 0 && !(hero->m_flags91 & 1) && hero == PEnemy.GetPItem() && hero->GetInterface(&fine, 0xf3)) {
         if (fine->IsAllowed()) {

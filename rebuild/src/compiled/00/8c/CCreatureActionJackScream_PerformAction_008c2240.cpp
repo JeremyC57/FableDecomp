@@ -2,7 +2,7 @@
 // Leaf: ?PerformAction@CCreatureAction_JackScream
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C2240, length 587 bytes, plain `ret` (virtual).
 // Callees: CCharString @ 0x0099EBF0 / copy @ 0x0099EC30 / ~ @ 0x0099EAE0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
-//          CThing::GetPosition @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CCreatureActionBase::GetThingSearchTools @ 0x00692990,
+//          CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CCreatureActionBase::GetThingSearchTools @ 0x00692990,
 //          CThingSearchTools::GetPFirstThingInRoughArea<HasTrackName> @ 0x007FD110, CCreatureActionBase::GetWorldMap
 //          @ 0x00692C10, CWorldMap::GetHeightZBelowPos @ 0x0063E480, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCCarrying::GetThingInPrimarySlot @ 0x006A1440 / RemoveThingFromPrimarySlot(bool) @ 0x006A1E00,
@@ -64,7 +64,7 @@ public:
     CTCGraphicAppearance* GraphicAppearance;                 // +0x64
     unsigned char  _pad68[0x91 - 0x68];
     unsigned char  ThingFlags;                               // +0x91 (bit 0: dead/removed)
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
     bool GetDummyObject(const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
     {
         return GraphicAppearance->GetDummyObject(name, 0, 0, position, orientation, 1.0f);
@@ -137,15 +137,15 @@ void CCreatureAction_JackScream::PerformAction()
         {
             CCharString name("SwordDropMarker");
             CThingFilter_HasTrackName filter(name);
-            const C3DVector& pos = GetCreature()->GetPosition();
+            const C3DVector& pos = GetCreature()->GetPos();
             long x = (long)pos.X;
             long y = (long)pos.Y;
             GetThingSearchTools()->GetPFirstThingInRoughArea(C2DBoxI(x - 20, y - 20, x + 20, y + 20), filter, &marker);
         }
         if (marker && !(marker->ThingFlags & 1))
-            target = marker->GetPosition();
+            target = marker->GetPos();
         else {
-            const C3DVector& pos = GetCreature()->GetPosition();
+            const C3DVector& pos = GetCreature()->GetPos();
             target = C3DVector(pos.X - 2.0f, pos.Y - 2.0f, pos.Z);
             target.Z = GetWorldMap()->GetHeightZBelowPos(target);
         }

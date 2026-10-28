@@ -12,7 +12,9 @@
 // Shape: an 8-byte stack lock (no EH frame: the module is built without exceptions), `push 0 ; push &cs`; the
 // dllimport GlobalFree used twice is loaded into edi once (between the first test and its branch); each buffer is
 // cleared inside its own `if`; the lock destructor runs last; `ret`.
+#define CCriticalSectionLock CCriticalSectionLockPdb
 #include "engine/CCriticalSectionLock.h"
+#undef CCriticalSectionLock
 
 struct _RTL_CRITICAL_SECTION {                     // Win32 RTL_CRITICAL_SECTION, 24 bytes
     unsigned char _body[0x18];
@@ -22,9 +24,9 @@ extern "C" __declspec(dllimport) void* __stdcall GlobalFree(void* hMem);   // im
 
 // The stack lock: engine/CCriticalSectionLock.h (CriticalSection +0, Locked +4, 8 bytes) with its out-of-line
 // constructor and destructor.
-struct CCriticalSectionLock_Scoped : CCriticalSectionLock {
-    CCriticalSectionLock_Scoped(_RTL_CRITICAL_SECTION* section, bool tryOnly);   // 0x00A62920
-    ~CCriticalSectionLock_Scoped();                                              // 0x00A629A0
+struct CCriticalSectionLock : CCriticalSectionLockPdb {
+    CCriticalSectionLock(_RTL_CRITICAL_SECTION& section, bool tryOnly);   // 0x00A62920 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z
+    ~CCriticalSectionLock();                                              // 0x00A629A0
 };
 
 struct CBufferChunkArray {                         // retail CArray<CFileInstaller::CBufferChunk>: first / last / end
@@ -45,7 +47,7 @@ class CFileInstaller { public:                            // vtable 0x0129B43C
 
 void CFileInstaller::FreeBuffers()
 {
-    CCriticalSectionLock_Scoped lock(&CriticalSection, false);
+    CCriticalSectionLock lock(CriticalSection, false);
     BufferChunks.DeallocateMemory();
     if (PReadBuffer) {
         GlobalFree(PReadBuffer);

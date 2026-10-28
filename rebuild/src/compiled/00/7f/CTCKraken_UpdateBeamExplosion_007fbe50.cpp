@@ -1,6 +1,6 @@
 // CTCKraken::UpdateBeamExplosion() -- while the target and the beam effect live and the kraken's beam-explosion interval has passed, spawns KRAKEN_BEAM_EXPLOSION along the beam from the mouth dummy (or the effect's own facing) and, when the beam has no line of sight to its end, a BEAM_HIT effect at the hit point
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FBE50, 955 bytes (+ int3 padding), plain `ret`, speed TU (no pragmas, no frame pointer).
-// Callees: GFGetCurrentFrame 0x0049D870, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0,
+// Callees: GFGetCurrentFrame 0x0049D870, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0,
 //   CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CTCGraphicAppearance::GetDummyObject 0x004C08C0, physics slot 70 (+0x118)
 //   GetFacing, CTCBase GetDefinitionManager 0x006869D0, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, CreateThing
 //   0x0080C500 (`__fastcall`), CExplosionDriver::AddExcludedThing 0x0080CBF0, CTCKraken::AddStrikeExplosion 0x007FBA20,
@@ -106,7 +106,7 @@ public:
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
     CTCGraphicAppearance* GetGraphicAppearance() const { return PGraphicAppearance; }
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     bool GetTCDriver(CExplosionDriver** out)
     {
         if ((m_presentBits[2] & 2) != 0) {
@@ -205,12 +205,12 @@ void CTCKraken::UpdateBeamExplosion()
         range = PKrakenDef->BeamRangeMode4;
     else
         range = PKrakenDef->BeamRange;
-    C3DVector start = PBeamWeaponEffect.GetPItem()->GetPosition();
+    C3DVector start = PBeamWeaponEffect.GetPItem()->GetPos();
     C3DVector dir;
     CRightHandedSet orientation;
     if (!ParentThing->GetGraphicAppearance()->GetDummyObject("MOUTH_DUMMY", 0, 0, &start, &orientation, 1.0f)) {
         dir = PBeamWeaponEffect.GetPItem()->GetPhysics()->GetFacing();
-        start = PBeamWeaponEffect.GetPItem()->GetPosition();
+        start = PBeamWeaponEffect.GetPItem()->GetPos();
     } else {
         dir = orientation.Up * -1.0f;
     }

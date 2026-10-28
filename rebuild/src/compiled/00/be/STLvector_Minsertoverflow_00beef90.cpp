@@ -138,25 +138,33 @@ public:
     typedef unsigned int size_type;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer s, pointer f, pointer e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
+    protected:
     pointer _M_allocate_and_copy(size_type n, const_pointer first, const_pointer last)
     {
         pointer result = this->_M_end_of_storage.allocate(n);
         __uninitialized_copy(first, last, result, __false_type());
         return result;
     }
+    public:
     void reserve(size_type n);
+    protected:
     void _M_insert_overflow(pointer position, const T& x, const __false_type&, size_type fill_len, bool atend);
+    public:
     void push_back(const T& x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

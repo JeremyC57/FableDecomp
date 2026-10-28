@@ -10,6 +10,8 @@ struct CRumbleTarget {
     unsigned char _pad_0x04[0x91 - 4];
     unsigned char StateFlags;
 };
+class CThingPlayerCreature : public CRumbleTarget { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 struct CRumbleTableEntry {
     CRumbleTarget* Target;
@@ -21,14 +23,13 @@ struct CRumbleManager {
 };
 
 extern CRumbleManager* g_manager;
-extern void* __fastcall GetA(void* playerManager);
-extern CRumbleTarget* __fastcall GetObj(void* value);
+extern CPlayer* __fastcall GetA(void* playerManager);
 extern int __fastcall GetIndex(CRumbleTarget* target);
 
 void __fastcall CGameScriptInterface_ClearAllRumbles(CGameScriptInterface* self)
 {
-    void* value = GetA(self->PlayerManager);
-    CRumbleTarget* target = GetObj(value);
+    CPlayer* value = GetA(self->PlayerManager);
+    CRumbleTarget* target = value->GetPControlledCreature();
     if (target == 0)
         return;
     if (target->StateFlags & 1)

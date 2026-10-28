@@ -26,7 +26,7 @@ class CThing { public:
     unsigned char _pad4c[0x60 - 0x4c];
     CPhysicsBody* PhysicsBody;                        // +0x60
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     void RemoveTC(long interfaceType);                // 0x004C9840
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -42,10 +42,11 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 struct CTC4D {                                        // interface 0x4D on the hero
     void RemoveThing(CThing* thing);                  // 0x00770F20
 };
-class CPlayer { public: CThing* GetHeroCreature(); };        // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };        // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };  // 0x00449970
 class CMainGameComponent { public:
     unsigned char _pad[0x1c];
@@ -133,11 +134,11 @@ void CCreatureAction_DragonTakeOffIntoFlying::FinishAction()
 {
     PCreature.GetPItem()->GetPhysics()->SetFlying(true);
     PCreature.GetPItem()->RemoveTC(0x4d);
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
     CTC4D* list;
     if (hero->GetInterface(&list, 0x4d))
         list->RemoveThing(PCreature.GetPItem());
-    const C3DVector& position = PCreature.GetPItem()->GetPosition();
+    const C3DVector& position = PCreature.GetPItem()->GetPos();
     C3DVector lifted;
     lifted.X = position.X;
     lifted.Y = position.Y;

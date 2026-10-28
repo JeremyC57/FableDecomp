@@ -4,7 +4,7 @@
 // Retail 0x0077F970, 395 bytes (+5 int3 padding). Called from CTCHeroCentreDoorMarker::FrameUpdate @ 0x0077FB00 for door type 1.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CTCBase::PeekWorld @ 0x00686A80 (twice, one per arm), CThing::Kill(bool)
 // @ 0x004C9B80, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, CCharString(const char*, long)
-// @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPosition @ 0x004C73D0, the `__fastcall` effect factory
+// @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPos @ 0x004C73D0, the `__fastcall` effect factory
 // Create(const CCharString&, const C3DVector&, bool) @ 0x006E0970, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020
 // (inline GetTC for the particle emitter, interface 0x4b), CTCDParticleEmitter::AttachToThing @ 0x006E0BE0.
 // Shape: two arms on IS_THING_ALIVE(PParticle); `PParticle = CIntelligentPointer<CThing>(x);` builds/assigns/destroys a frame
@@ -32,7 +32,7 @@ public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                             // +0x91 bit 0
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool b);                                  // 0x004C9B80
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template<class T> __forceinline T* GetTC(long type)
@@ -106,7 +106,7 @@ void CTCHeroCentreDoorMarker::UpdateParticleExperience()
             PParticle = CIntelligentPointer<CThing>(0);
         }
     } else if (PeekWorld().ExperienceSpendingEnabled) {
-        PParticle = CIntelligentPointer<CThing>(Create("EXPERIENCE_SPEND", ParentThing->GetPosition(), false));
+        PParticle = CIntelligentPointer<CThing>(Create("EXPERIENCE_SPEND", ParentThing->GetPos(), false));
         if (IS_THING_ALIVE(PParticle)) {
             CTCDParticleEmitter* emitter = 0;
             CThing* particle = PParticle.GetPItem();

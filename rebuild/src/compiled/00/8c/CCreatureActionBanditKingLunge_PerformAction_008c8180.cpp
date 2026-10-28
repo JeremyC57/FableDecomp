@@ -103,7 +103,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
     __forceinline bool HasTC(long type) const
@@ -171,7 +171,7 @@ void CCreatureAction_BanditKingLunge::PerformAction()
     long index = GetPDefinitionManager()->GetDefGlobalIndexFromName("THING_EXPLOSION_TWINBLADE_POUND");
     if (index > 0) {
         C3DVector offset = GetCreature()->GetPhysics()->GetFacing() * 1.5f;
-        C3DVector position = GetCreature()->GetPosition() + offset;
+        C3DVector position = GetCreature()->GetPos() + offset;
         CThing* explosion = CTCDExplosion::Create(index, position);
         if (explosion) {
             CTCDriver41* driver;
@@ -187,7 +187,7 @@ void CCreatureAction_BanditKingLunge::PerformAction()
         long effect = 0;
         found = GetCreature()->GetDef()->GetSubDef(&effects) && effects.Object->CalcAndLookup("STUCK", &effect);
         if (found)
-            created = CreateSpecialEffect(effect, GetCreature()->GetPosition(), false);
+            created = CreateSpecialEffect(effect, GetCreature()->GetPos(), false);
     }
     if (found) {
         if (created && !(created->m_flags91 & 1)) {

@@ -3,7 +3,7 @@
 // Retail 0x008F7E70, 0xD4 bytes, __fastcall (creature in ecx, effect type in edx; direction and the optional helper
 //   name on the stack, `ret 8`). Manifest name matches the FableWin PDB name set
 //   (`?CreateEffect@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@JABVC3DVector@@PBVCCharString@@@Z`).
-// Extra callees: CThing::GetPosition @ 0x004C73D0 (spawn at the creature), CTCDParticleEmitter::AttachToThing @
+// Extra callees: CThing::GetPos @ 0x004C73D0 (spawn at the creature), CTCDParticleEmitter::AttachToThing @
 //   0x006E0BE0 (creature, attach type 12 = helper point, *helperName, 0, 0) when a helper name is given.
 // Callees: CreateEffectThing __fastcall @ 0x006E0880 (type, position, false), CRC Calc @ 0x004014A0 ("DIRECTION" @
 //   0x01272FC0, 9 bytes), CBaseClass ctor @ 0x0099A2D0, vector<pair<unsigned long, C3DVector>>::push_back @ 0x0076B120,
@@ -88,7 +88,7 @@ CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool 
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];           // +0x20
     unsigned char   _pad44[0x5c - 0x44];
@@ -105,7 +105,7 @@ void __fastcall CreateEffect(CThingCreatureBase& creature, long effectType, cons
 {
     if (!effectType)
         return;
-    CThing* effect = CreateEffectThing(effectType, &creature.GetPosition(), false);
+    CThing* effect = CreateEffectThing(effectType, &creature.GetPos(), false);
     if (!effect)
         return;
     CTCDParticleEmitter* emitter = 0;

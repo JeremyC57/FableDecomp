@@ -4,7 +4,7 @@
 // Callees: CThingGameObject::OnCollision @ 0x00839080 (landed), CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const
 // @ 0x004365B0 (the inlined GetTC of kind 0x47 = bit 7 of CThing+0x28), CThing virtual slot 54 (+0xd8, bool),
 // CThing::Kill(bool) @ 0x004C9B80, CDefClassBase::GetSubDef<T> @ 0x005CC10E on the base def (+0x70),
-// CThing::GetPosition() const @ 0x004C73D0, the thing factory @ 0x006E0880 (`__fastcall`, (long, const C3DVector*, bool)
+// CThing::GetPos() const @ 0x004C73D0, the thing factory @ 0x006E0880 (`__fastcall`, (long, const C3DVector*, bool)
 // as the landed CTCResurrectionItem::OnItemUsed 0x007F04C0), the sub-def's virtual slot 1 (destroy) on the last release.
 // Layout (retail CThing, local model): component bits +0x20, interface map +0x44, the other thing's component +0x60
 // (flag bit 0 of +0x3c), PBaseDef +0x70, Dead bit +0x91; the kind-0x47 component's +0x0c byte and +0x10 word.
@@ -163,7 +163,7 @@ public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                      // 0x004C73D0
+    const C3DVector& GetPos() const;                      // 0x004C73D0
     void Kill(bool immediately);                               // 0x004C9B80
 };
 class CThingGameObject : public CThing {
@@ -200,5 +200,5 @@ void CThingObject::OnCollision(ECollideType type, const C3DVector& position, con
         return;
     CDefPointer<CDebrisDef> def;
     if (PBaseDef->GetSubDef(&def) && def->DebrisThingDef)
-        CreateThing(def->DebrisThingDef, &GetPosition(), false);
+        CreateThing(def->DebrisThingDef, &GetPos(), false);
 }

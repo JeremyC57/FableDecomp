@@ -1,7 +1,7 @@
 // CTCSleep::GetFastTrack() -- the fast-track flag stays set only while the thing has not moved (each axis within 0.0001 of PosAtFastTrackSetting); returns the flag
 // Leaf: GetFastTrack
 // Retail: Fable.exe 0x0092C3B0, 99 bytes (plain `ret`).
-// Callees: CThing::GetPosition() const @ 0x004C73D0 (const C3DVector&). Global 0.0001f @ 0x0129BA3C.
+// Callees: CThing::GetPos() const @ 0x004C73D0 (const C3DVector&). Global 0.0001f @ 0x0129BA3C.
 // Layout = Ego_r.pdb CTCSleep (0x20): IsReadyToSleep +0x0C, FastTrack +0x0D, LastFrameWokeUp +0x10,
 // PosAtFastTrackSetting +0x14.
 // Shape: FastTrack = a three-way `(float)fabs(a - b) <= eps` && chain as `? true : false` (the bool in al, stored on both arms; VC
@@ -10,7 +10,7 @@
 class C3DVector { public: float X, Y, Z; };
 extern const float g_fastTrackEpsilon;              // 0x0129BA3C (0.0001f)
 class CThing { public:
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 class CTCSleep { public:
     virtual void v00();
@@ -28,7 +28,7 @@ class CTCSleep { public:
 bool CTCSleep::GetFastTrack()
 {
     if (FastTrack) {
-        const C3DVector& pos = ParentThing->GetPosition();
+        const C3DVector& pos = ParentThing->GetPos();
         FastTrack = ((float)fabs(PosAtFastTrackSetting.X - pos.X) <= g_fastTrackEpsilon
             && (float)fabs(PosAtFastTrackSetting.Y - pos.Y) <= g_fastTrackEpsilon
             && (float)fabs(PosAtFastTrackSetting.Z - pos.Z) <= g_fastTrackEpsilon) ? true : false;

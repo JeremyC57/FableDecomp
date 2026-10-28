@@ -17,9 +17,10 @@ class C3DVector { public:
     float X, Y, Z;
 };
 
-class CThingAICreature { public:
-    C3DVector* GetPosition_006a4d00();                   // 0x006A4D00
+class CThingPhysical { public:
+    const C3DVector& PeekPos() const;                    // 0x006A4D00 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order Kill/PeekPos/PeekLastPos/OnCreate)
 };
+class CThingAICreature : public CThingPhysical { };
 
 class CAIStateGroupBase { public:
     virtual void v00();
@@ -48,7 +49,7 @@ struct CAIStateGroup_FireflyWander : CAIStateGroup_FlyingThingBase {
 
 void CAIStateGroup_FireflyWander::Initialise(CAIBrain& brain, CThingAICreature& creature, long priority, EScriptAIPriority scriptPriority, const CCharString& name)
 {
-    m_wanderCentre = *creature.GetPosition_006a4d00();
+    m_wanderCentre = creature.PeekPos();
     m_frameLastChangedDirection = 0;
     m_heightAboveGround = 0.7f;
     m_minHeight = 2.5f;

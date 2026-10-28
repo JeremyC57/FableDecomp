@@ -22,7 +22,7 @@ class C3DVector { public:
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    C3DVector* GetPosition();                   // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 class CThingCreatureBase;
 class CBaseObject;
@@ -81,7 +81,7 @@ void CAIStateGroup_KidReactToBlockage::Update()
 {
     if (IS_THING_ALIVE(PThingCreature.GetPItem())) {
         CThing* thing = PThingCreature.GetPItem();
-        if (AIAction_LookAtPos(1, *thing->GetPosition(), 1, 0.013888889f) == 1) {
+        if (AIAction_LookAtPos(1, thing->GetPos(), 1, 0.013888889f) == 1) {
             Terminate();
             return;
         }

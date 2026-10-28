@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094EF90, length 111 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90 (PBrain->+0x20; the manifest's
 // CPixelShader::CountReferences label is propagated), CPlayerManager::GetMainPlayer @ 0x00449970 (landed name),
-// CPlayer::GetPlayerCreature @ 0x00487DC0 (landed name), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor
+// CPlayer::GetPControlledCreature @ 0x00487DC0 (landed name), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor
 // @ 0x00A01B10/90/50/0x00A01C10.
 // Shape: the chained getters into a named local (esi), `hero && !dead` (bit 0 of +0x91) as nested ifs, then
 // `PThingToFollow = CIntelligentPointer<..>(hero)` -- a frame temporary through the inline converting constructor
@@ -15,7 +15,7 @@ class CThing { public:
 class CThingPlayerCreature;
 
 class CPlayer { public:
-    CThingPlayerCreature* GetPlayerCreature();      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;      // 0x00487DC0
 };
 
 class CPlayerManager { public:
@@ -56,7 +56,7 @@ struct CAIStateGroup_FollowPlayer : CAIStateGroupBase {
 
 bool CAIStateGroup_FollowPlayer::IsRunnable()
 {
-    CThing* hero = (CThing*)GetPPlayerManager()->GetMainPlayer()->GetPlayerCreature();
+    CThing* hero = (CThing*)GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero != 0 && !(hero->m_flags91 & 1)) {
         PThingToFollow = CIntelligentPointerThing(hero);
         return true;

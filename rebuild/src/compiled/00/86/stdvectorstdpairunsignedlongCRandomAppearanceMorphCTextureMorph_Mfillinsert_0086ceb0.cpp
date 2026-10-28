@@ -1,5 +1,5 @@
 // std::vector<std::pair<unsigned long, CRandomAppearanceMorph::CTextureMorph>>::_M_fill_insert(pointer position, size_type n, const value_type& x) -- STLport fill insert: with room, shift the tail by n (copy the last n into raw storage, copy_backward the rest, assign x) or fill the raw part first; without room, grow through _M_insert_overflow
-// Leaf: ?_M_fill_insert@?$vector@U?$pair@KVCTextureMorph@CRandomAppearanceMorph@@@std@@V?$allocator@U?$pair@KVCTextureMorph@CRandomAppearanceMorph@@@std@@@2@@std@@IAEXPAU?$pair@KVCTextureMorph@CRandomAppearanceMorph@@@2@IABU32@@Z
+// Leaf: ?_M_fill_insert@?$vector@U?$pair@KVCTextureMorph@CRandomAppearanceMorph@@@std@@V?$allocator@U?$pair@KVCTextureMorph@CRandomAppearanceMorph@@@std@@@2@@std@@QAEXPAU?$pair@KVCTextureMorph@CRandomAppearanceMorph@@@2@IABU32@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0086ceb0, 311 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): its __copy_backward 0x0086A5C0 is bound ??$__copy_backward@PAU?$pair@KVCTextureMorph@CRandomAppearanceMorph@@@std@@... and its grow callee 0x0086CB30 ?_M_insert_overflow@?$vector@U?$pair@KVCTextureMorph@CRandomAppearanceMorph@@@std@@...; callers the insert 0x0086D4E0 (tail jump) and resize 0x0086D900 (CVectorMap<unsigned long, CTextureMorph>).
 // Callees: __uninitialized_copy 0x0086AB80, __copy_backward 0x0086A5C0, fill 0x0086A4F0, uninitialized_fill_n 0x0086ADC0 (all __fastcall),
@@ -77,7 +77,9 @@ public:
 protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                                             // 0x0086CB30
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
+    protected:
 };
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::_M_fill_insert(pointer __position, size_type __n, const _Tp& __x)

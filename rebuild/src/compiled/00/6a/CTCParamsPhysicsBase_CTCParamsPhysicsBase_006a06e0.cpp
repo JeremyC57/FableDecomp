@@ -12,12 +12,14 @@ class C3DVector { public:
 };
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 
-struct CBase_006a06e0 {
+struct CBaseClassNonCopyable {
     virtual void v00();
-    CBase_006a06e0();                               // 0x0099A2F0
+protected:
+    CBaseClassNonCopyable();                               // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ (protected)
+public:
 };
 
-class CTCParamsPhysicsBase : public CBase_006a06e0 { public:
+class CTCParamsPhysicsBase : public CBaseClassNonCopyable { public:
     C3DVector       Position;                       // +0x04
     CRightHandedSet Rhs;                            // +0x10
     CTCParamsPhysicsBase(const C3DVector& position, const CRightHandedSet& rhs);

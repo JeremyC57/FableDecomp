@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, twice), CDefClassBase::GetSubDef<
 // CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580 on the thing's definition (+0x70), CCharString(const char*,
 // long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30
-// (landed as CCRC::CalcAndLookup), CThing::GetPosition 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool)
+// (landed as CCRC::CalcAndLookup), CThing::GetPos 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool)
 // 0x006E0880, CCombatActionBase::OnAnimationLoaded 0x00859EF0 (direct base
 // call, after the effect).
 // Shape: the TeleportIn/TeleportOut lookup (0x008B9F20) without the CreateEffects gate: the def from the plain out-slot is
@@ -11,7 +11,7 @@
 // condition with the implicitly converted string temporary keeps its construction flag in ebx (zeroed at entry) and the
 // condition in a frame byte. GetEffectFromString is a same-TU noinline stand-in (retry B's lever, FIXES.md) whose body
 // only writes the effect type. VC7.1 then knows the effect-type word's address does not escape the call, which gives
-// retail's registers (`this` in edi, &PCreature in esi) and keeps `push 0` ahead of the GetPItem/GetPosition calls.
+// retail's registers (`this` in edi, &PCreature in esi) and keeps `push 0` ahead of the GetPItem/GetPos calls.
 class C3DVector { public: float X, Y, Z; };
 
 class CCharString { public:
@@ -61,7 +61,7 @@ struct CThingAnimatable {
 class CThing : public CThingAnimatable { public:
     unsigned char  _pad0[0x70];
     CDefClassBase* m_pDef;                      // +0x70
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
@@ -105,7 +105,7 @@ void CCreatureAction_UndeadRiseUp::OnAnimationLoaded()
     bool found = def->GetSubDef(effectsSlot);
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (found && effects->GetEffectFromString("RISE", effectType))
-        CreateEffectThing(effectType, &PCreature.GetPItem()->GetPosition(), false);
+        CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
     CCombatActionBase::OnAnimationLoaded();
     ReleaseDef(effects);
 }

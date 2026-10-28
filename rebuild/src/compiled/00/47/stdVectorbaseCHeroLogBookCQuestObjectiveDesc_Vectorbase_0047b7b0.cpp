@@ -52,12 +52,14 @@ public:
     typedef _Tp* pointer;
     typedef const _Tp* const_iterator;
     typedef __false_type _IsPODType;                       // __type_traits<_Tp>::is_POD_type of a class element
+    protected:
     pointer _M_allocate_and_copy(unsigned int __n, const_iterator __first, const_iterator __last)
     {
         pointer __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, _IsPODType());
         return __result;
     }
+    public:
 };
 }
 template class std::_Vector_base<CHeroLogBook::CQuestObjectiveDesc, std::allocator<CHeroLogBook::CQuestObjectiveDesc> >;

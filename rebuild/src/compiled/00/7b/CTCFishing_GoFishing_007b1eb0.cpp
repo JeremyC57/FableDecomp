@@ -1,7 +1,7 @@
 // CTCFishing::GoFishing(bool arg) -- when the hero creature exists, is alive and a fish could be created, put the hero's player into fishing mode (0x1d) and move the minigame to stage 1
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B1EB0, length 92 bytes.
 // Callees: CTCBase::GetPlayerManager() @ 0x00686D50 (`[g_0x013B8A1C]+0x30`), CPlayerManager::GetMainPlayer() @ 0x00449960
-// (`GetPlayer(MainPlayer)`, a byte-identical copy of the landed 0x00449970), CPlayer::GetPlayerCreature() @ 0x00487DC0
+// (`GetPlayer(MainPlayer)`, a byte-identical copy of the landed 0x00449970), CPlayer::GetPControlledCreature() @ 0x00487DC0
 // (landed naming), CTCFishing::CreateFish(bool) @ 0x007B1A30, CThing::GetPlayer() @ 0x004C7A30, CPlayer::AddMode(EPlayerMode,
 // bool) @ 0x006345C0.
 // Layout: PDB CTCFishing (100 bytes) over CTCBase (engine/CTCBase.h): PFish +0xc (CIntelligentPointer<CThing>),
@@ -11,22 +11,23 @@
 // change is an inline SetStage (`cmp [esi+14h],1 ; je` then the two stores).
 #include "engine/CTCBase.h"
 
-struct CPlayer_007b1eb0;
+struct CPlayer;
 
 class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags;                         // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags & 1) != 0; }
-    CPlayer_007b1eb0* GetPlayer();                 // 0x004C7A30
+    CPlayer* GetPlayer();                 // 0x004C7A30
 };
+class CThingPlayerCreature : public CThing { };
 
-struct CPlayer_007b1eb0 {
-    CThing* GetPlayerCreature();                   // 0x00487DC0
+struct CPlayer {
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
     void AddMode(long mode, bool flag);            // 0x006345C0
 };
 
 struct CPlayerManager_007b1eb0 {
-    CPlayer_007b1eb0* GetMainPlayer();             // 0x00449960
+    CPlayer* GetMainPlayer();             // 0x00449960
 };
 
 class CTCFishing : public CTCBase { public:
@@ -47,7 +48,7 @@ class CTCFishing : public CTCBase { public:
 
 void CTCFishing::GoFishing(bool arg)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPlayerCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero && !hero->IsDead() && CreateFish(arg)) {
         hero->GetPlayer()->AddMode(0x1d, false);
         SetStage(1);

@@ -6,7 +6,7 @@
 //          CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface: 0x21 CTCThingOwner = bit 1 of +0x24, 0x2D
 //          CTCUserActionPointBase = bit 13 of +0x24), list<CIntelligentPointer<CThing>> copy ctor @ 0x00618DA0 and clear
 //          @ 0x004B8050 (+ free @ 0x00BFEA14 of the sentinel: the inlined list destructor), CThing::GetProperties (virtual
-//          slot 48, +0xC0), CTCUserActionPointBase::IsActionPointFree @ 0x007FEBF0, CThing::GetPosition @ 0x004C73D0 (x2).
+//          slot 48, +0xC0), CTCUserActionPointBase::IsActionPointFree @ 0x007FEBF0, CThing::GetPos @ 0x004C73D0 (x2).
 // Layout: Ego_r.pdb CAIStateGroup_WorkHammerAnvil (packed: TookActionPoint +0x14, PAnvil +0x15, ActionPointPos +0x1d,
 //          ActionPointRHSet +0x29, ActionPointIndex +0x44, NextFrameHammer +0x48) over the landed CAIStateGroupBase model
 //          (the generated header flattens the vptr); CTCThingOwner::ObjectList +0x0c (PDB); retail list = one sentinel
@@ -60,7 +60,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -198,7 +198,7 @@ bool CAIStateGroup_WorkHammerAnvil::IsRunnable()
                     && (unsigned char)(anvil->GetProperties() >> 6) & 1 && anvil->GetInterface(&point, 0x2d)
                     && point->IsActionPointFree()) {
                     CThing* creature = PBrain->PCreature;
-                    float distance = (creature->GetPosition() - anvil->GetPosition()).GetLengthSquared();
+                    float distance = (creature->GetPos() - anvil->GetPos()).GetLengthSquared();
                     if (best == 0 || distance < bestDistance) {
                         bestDistance = distance;
                         best = anvil;

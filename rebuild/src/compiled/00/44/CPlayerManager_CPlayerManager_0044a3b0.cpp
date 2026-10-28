@@ -42,7 +42,9 @@ public:
 template <class T, class Alloc = allocator<T> > class vector : public _Vector_base<T, Alloc> {
 public:
     vector() : _Vector_base<T, Alloc>(Alloc()) { }
+    protected:
     void _M_insert_overflow(T* pos, const T& x, const __false_type&, unsigned int fillLen, bool atEnd);   // 0x00433530
+    public:
     void push_back(const T& x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {
@@ -67,7 +69,7 @@ template <> __declspec(noinline) void vector<CCharString, allocator<CCharString>
 }
 
 class CBaseClassNonCopyable {
-public:
+protected:                                         // ctor and virtual dtor are protected (IAE / MAE)
     CBaseClassNonCopyable();                             // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();                    // 0x0099A300
 };

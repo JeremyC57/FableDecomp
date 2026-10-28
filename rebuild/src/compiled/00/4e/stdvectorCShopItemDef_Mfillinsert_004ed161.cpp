@@ -117,8 +117,10 @@ public:
     typedef _Tp* pointer;
     typedef typename __type_traits<_Tp>::has_trivial_assignment_operator _TrivialAss;
     typedef typename __type_traits<_Tp>::is_POD_type _IsPODType;
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                               // 0x004ED353
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
 };
 

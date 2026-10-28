@@ -7,7 +7,7 @@
 //   CWorld::GetWorldFrame() @ 0x0049D870 (static, the inline IsUpdatingThisFrame of the landed 0x007443F0), GetPItem @ 0x00A01B50,
 //   ResetPerceptionVariables @ 0x00744DB0, UpdateDistanceFromPerceivedThing @ 0x007447E0, UpdatePerception @ 0x00745730,
 //   CTCBase::PeekWorld() const @ 0x00686A80, CWorld::PeekMyPlayer() const @ 0x0049D9D0 (landed callers say GetCurrentPlayer; PDB
-//   ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ), CPlayer::GetControlledCreature @ 0x00487DD0, SetThingToPerceive(const CThing*)
+//   ?PeekMyPlayer@CWorld@@QBEPBVCPlayer@@XZ), CPlayer::PeekPControlledCreature @ 0x00487DD0, SetThingToPerceive(const CThing*)
 //   @ 0x007447A0 (manifest "DeleteData" is propagated; the body stores Perceiving = true and the thing).
 // Layout: engine/CTCPerceiveThing.h (Ego_r.pdb, PDB = retail): PerceivedThing +0x0c, FramesSinceDirectlyPerceivedThing +0x1c,
 //   Perceiving +0x2c, SearchingForThingToPerceive +0x33, PDef +0x34, UpdateOffset +0x38, PerceptionCombat +0x50; the header
@@ -45,11 +45,12 @@ class CThing { public:
         return it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCCombat { public:
     bool IsInMelee() const;                             // 0x00733190 (forwards to its creature +0x24, 0x00661E80)
 };
 class CPlayer { public:
-    CThing* GetControlledCreature() const;              // 0x00487DD0 (PDB GetPControlledCreature)
+    const CThingPlayerCreature* PeekPControlledCreature() const;              // 0x00487DD0 (PDB GetPControlledCreature)
 };
 class CWorld { public:
     static long GetWorldFrame();                        // 0x0049D870
@@ -136,6 +137,6 @@ void CTCPerceiveThing::FrameUpdate()
             }
         }
     } else if (SearchingForThingToPerceive && PDef->Type == 0)
-        SetThingToPerceive(PeekWorld().PeekMyPlayer()->GetControlledCreature());
+        SetThingToPerceive(PeekWorld().PeekMyPlayer()->PeekPControlledCreature());
     PerceptionCombat = inMelee;
 }

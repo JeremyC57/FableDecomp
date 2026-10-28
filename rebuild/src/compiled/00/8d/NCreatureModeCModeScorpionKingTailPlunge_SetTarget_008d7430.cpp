@@ -5,12 +5,12 @@
 // 0x0123E7D8 (CIntelligentPointer<CThingCreatureBase>) and the byte-packed offsets +0xa1 / +0x89 are
 // CModeScorpionKingTailPlunge's PTarget and TargetPos (Ego_r.pdb), so the name is descriptive.
 // Callees: CBaseIntelligentPointer: ctor 0x00A01B10, SetPItem 0x00A01B90, GetPItem 0x00A01B50, ~ 0x00A01C10;
-// CThing::GetPosition @ 0x004C73D0.
+// CThing::GetPos @ 0x004C73D0.
 // Shape: as 0x008D7370 (temporary + inline operator= with the item in a local, position copied word by word), members under `#pragma pack(1)`.
 class C3DVector { public: float x, y, z; };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0 (CThing::GetPosition, GOTCHAS chunk 141)
+    const C3DVector& GetPos() const;          // 0x004C73D0 (CThing::GetPos, GOTCHAS chunk 141)
 };
 class CThingCreatureBase : public CThing { public: };
 
@@ -62,7 +62,7 @@ class CModeScorpionKingTailPlunge : public CModeStandBase { public:
 void CModeScorpionKingTailPlunge::SetTarget(CThingCreatureBase* target)
 {
     PTarget = CIntelligentPointer<CThingCreatureBase>(target);
-    TargetPos = PTarget->GetPosition();
+    TargetPos = PTarget->GetPos();
 }
 
 }

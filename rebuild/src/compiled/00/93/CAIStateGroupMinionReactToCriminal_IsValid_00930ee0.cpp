@@ -180,6 +180,9 @@ long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -234,15 +237,14 @@ class CTCCreatureOpinionOfHero { public:               // interface 0x4F
 class COpinionReactionManager { public:
     long GetThingAttitudeToPlayer(CThing* thing);   // 0x00701840
 };
-struct CWorldO {
+class CWorld { public:
     unsigned char _pad[0x74];
     COpinionReactionManager* m_pOpinionReactionManager;   // +0x74
-    COpinionReactionManager* GetPOpinionReactionManager() { return m_pOpinionReactionManager; }
+    COpinionReactionManager* GetPOpinionReactionManager() const { return m_pOpinionReactionManager; }
 };
 
 struct CAIStateGroup_MinionReactToCriminal : CAIStateGroupBase {
     CBaseIntelligentPointer PHero;              // +0x14 CIntelligentPointer<CThingPlayerCreature>
-    CWorldO* GetPThingWorld();                  // 0x008FCFA0
     bool IsValid();
 };
 
@@ -259,7 +261,7 @@ bool CAIStateGroup_MinionReactToCriminal::IsValid()
                     if (village->m_crimeReported || !village->m_pGuardPost
                             || opinion->FindMostRecentDeed(COpinionDeedFilter_IsCrimeToRunAndFindAGuard(), &deedIndex, false)) {
                         CThing* self = PBrain->PCreature;
-                        long attitude = GetPThingWorld()->GetPOpinionReactionManager()->GetThingAttitudeToPlayer(self);
+                        long attitude = PeekWorld().GetPOpinionReactionManager()->GetThingAttitudeToPlayer(self);
                         return attitude == 4 || (attitude == 2 && (village->m_crimeReported || deedIndex >= 0));
                     }
                 }

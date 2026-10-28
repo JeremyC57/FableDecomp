@@ -5,7 +5,7 @@
 //   LowerBound 0x0040F020 (inlined lookup of 0x31 = CTCCreatureModeManager, bit 17 of +0x24), CTCCreatureModeManager::
 //   IsModeActive 0x0073A8A0 / RemoveMode 0x0073ABA0 / AddMode 0x0073AE10, CDefClassBase::GetSubDef<CSpecialEffectsDef>
 //   0x00669580, CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("DEATH" 0x01277C9C), CCRC::CalcAndLookup(const
-//   CCharString&, long*) 0x00669D30 (on the def), CThing::GetPosition 0x004C73D0, the special-effect Create(long, const
+//   CCharString&, long*) 0x00669D30 (on the def), CThing::GetPos 0x004C73D0, the special-effect Create(long, const
 //   C3DVector*, bool) 0x006E0880 (__fastcall).
 // Shape: the mode manager is a zero-initialised out variable of the landed out-parameter GetInterface (one GetPItem, the
 //   `xor esi,esi` preload; the result is not tested); the thing's def is
@@ -93,7 +93,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x70 - 0x4c];
     CDefClassBase* m_pDef;                            // +0x70
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CTCBase* GetTC(long interfaceType)
     {
@@ -173,7 +173,7 @@ void CCreatureAction_JackDeathInto::Initialise()
             found = effects->CalcAndLookup(name, &effect);
         }
         if (found)
-            CreateSpecialEffect(effect, &PCreature.GetPItem()->GetPosition(), false);
+            CreateSpecialEffect(effect, &PCreature.GetPItem()->GetPos(), false);
     }
     }
 }

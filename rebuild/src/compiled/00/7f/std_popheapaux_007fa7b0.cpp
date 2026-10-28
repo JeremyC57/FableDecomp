@@ -17,7 +17,7 @@ class C3DVector { public: float X, Y, Z; C3DVector(const C3DVector& o) : X(o.X),
 
 class CThing {
 public:
-    const C3DVector& GetPosition();                             // 0x004C73D0
+    const C3DVector& GetPos() const;                             // 0x004C73D0
 };
 
 class CVectorCompare_BestForTargeting { public:                        // Ego_r.pdb, 44 bytes
@@ -41,8 +41,8 @@ public:
     {
         float multiplierA = GetThingCompareMultiplier(a);
         float multiplierB = GetThingCompareMultiplier(b);
-        const C3DVector& posB = b->GetPosition();
-        const C3DVector& posA = a->GetPosition();
+        const C3DVector& posB = b->GetPos();
+        const C3DVector& posA = a->GetPos();
         float valueA = VectorCompare.GetCompareValueForPoint(posA);
         float valueB = VectorCompare.GetCompareValueForPoint(posB);
         if (valueA > valueB)

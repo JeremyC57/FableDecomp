@@ -75,8 +75,10 @@ public:
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);   // vector<unsigned long>: 0x0045BC09
     typedef __false_type _IsPODType;
     void push_back(const _Tp& __x);
+    protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
                             bool __atend = false);   // pair<unsigned long, CDefClassInfo>: 0x009B8DD0
+    public:
 };
 
 template <class _T1, class _T2> struct pair {

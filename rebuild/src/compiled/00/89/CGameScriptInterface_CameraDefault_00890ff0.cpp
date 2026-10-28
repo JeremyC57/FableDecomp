@@ -10,6 +10,8 @@ struct CameraTarget
     unsigned char unused00[0x91];
     unsigned char flags91;
 };
+class CThingPlayerCreature : public CameraTarget { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 struct CameraProvider
 {
     virtual void unused00();
@@ -35,8 +37,7 @@ struct GlobalOverlay
 };
 
 extern GlobalOverlay* gCameraGlobal;
-extern void* __fastcall GetCameraContext(void* cameraOwner);
-extern CameraTarget* __fastcall GetCameraTarget(void* cameraContext);
+extern CPlayer* __fastcall GetCameraContext(void* cameraOwner);
 
 class CGameScriptInterface
 {
@@ -57,8 +58,8 @@ public:
 
 void CGameScriptInterface::CameraDefault()
 {
-    void* context = GetCameraContext(gCameraGlobal->cameraOwner);
-    CameraTarget* target = GetCameraTarget(context);
+    CPlayer* context = GetCameraContext(gCameraGlobal->cameraOwner);
+    CameraTarget* target = context->GetPControlledCreature();
     if (target != 0 && (target->flags91 & 1) == 0)
     {
         CGameCameraManager* cameraManager;

@@ -1,7 +1,7 @@
 // CAIStateGroup_UsesSeat::IsStillValid() -- the seat state stays valid while the creature (when seated) is
 // within sqrt(0.1) of its seat position and its mode component (interface 0x42) is in neither mode 1 nor mode 6.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00938960, length 168 bytes (+ int3 padding).
-// Callees: CThing::GetPosition @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated),
+// Callees: CThing::GetPos @ 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated),
 // CVectorMap::LowerBound @ 0x004365B0 (inlined out-parameter GetInterface, 0x42 = bit 2 of +0x28; the miss path
 // reads the never-written slot), the component's HasMode(long) @ 0x00811340 (twice). Float 0.1f @ 0x0122EE58.
 // Shape: the seat delta stays on the x87 stack; the squared length is accumulated in retail's order
@@ -22,7 +22,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -69,7 +69,7 @@ struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
 bool CAIStateGroup_UsesSeat::IsStillValid()
 {
     if (m_seated) {
-        const C3DVector& pos = PBrain->PCreature->GetPosition();
+        const C3DVector& pos = PBrain->PCreature->GetPos();
         float dx = m_seatPos.X - pos.X;
         float dy = m_seatPos.Y - pos.Y;
         float dz = m_seatPos.Z - pos.Z;

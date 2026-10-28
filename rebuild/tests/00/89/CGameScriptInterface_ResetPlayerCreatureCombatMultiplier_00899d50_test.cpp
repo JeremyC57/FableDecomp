@@ -45,10 +45,11 @@ extern "C" void* __fastcall Sub_ResolveA(void* self)
     return (void*)0xAAAA;
 }
 
-extern "C" void* __fastcall Sub_ResolveB(void* obj)
+class CThingPlayerCreature;
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // the retail accessor 0x00487DC0 the source binds (Ego_r.pdb spelling)
+CThingPlayerCreature* CPlayer::GetPControlledCreature() const
 {
-    (void)obj;
-    return g_thing;
+    return (CThingPlayerCreature*)g_thing;
 }
 
 extern "C" void __fastcall Sub_ResetExperiencePickUpMultiplier(void* iface)

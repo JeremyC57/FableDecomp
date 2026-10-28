@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F04C0, 203 bytes (`ret 4`; PDB ?OnItemUsed@CTCResurrectionItem@@QAEXAAVCThingCreatureBase@@@Z).
 // Callees: CThingCreatureBase::FinishCurrentAction() @ 0x00662650, CCombatAction_GenericStrikeResponseKnockdownRecoverBase(
 //   CThingCreatureBase*, bool) @ 0x00867AF0 (then the RecoverFromDeath vtable 0x01271A64, rtti-vtables.tsv), SetCurrentAction(const
-//   CCombatActionBase&) @ 0x006644F0, ~CCombatActionBase @ 0x0062E900, CThing::GetPosition() const @ 0x004C73D0, CreateEffectThing(
+//   CCombatActionBase&) @ 0x006644F0, ~CCombatActionBase @ 0x0062E900, CThing::GetPos() const @ 0x004C73D0, CreateEffectThing(
 //   long, const C3DVector*, bool) @ 0x006E0880 (`__fastcall`), CCharString(const char*, long) @ 0x0099EBF0 / ~ @ 0x0099EAE0,
 //   CTCDParticleEmitter::AttachToThing(CThing*, long, const CCharString&, long, float) @ 0x006E0BE0, CThing::Kill(bool) @ 0x004C9B80.
 // Layout: Ego_r.pdb CTCResurrectionItem PDef +0x0c, CResurrectionItemDef OnUseParticleEffect +0x28; CThingPhysical MaxHealth +0xb0
@@ -29,7 +29,7 @@ public:
     unsigned char  _pad92[0xb0 - 0x92];
     float          MaxHealth;                          // +0xb0 CThingPhysical (PDB +0xc8)
     float          Health;                             // +0xb4
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     void Kill(bool immediately);                       // 0x004C9B80
     __forceinline bool HasTC(long type) const
     {
@@ -83,7 +83,7 @@ void CTCResurrectionItem::OnItemUsed(CThingCreatureBase& creature)
     creature.SetCurrentAction(CCombatAction_GenericStrikeResponseKnockdownRecoverFromDeath(&creature));
     const CResurrectionItemDef* def = PDef;
     if (def && def->OnUseParticleEffect > 0) {
-        CThing* effect = CreateEffectThing(def->OnUseParticleEffect, &creature.GetPosition(), false);
+        CThing* effect = CreateEffectThing(def->OnUseParticleEffect, &creature.GetPos(), false);
         if (effect && !(effect->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = 0;
             if (effect->HasTC(0x4b))

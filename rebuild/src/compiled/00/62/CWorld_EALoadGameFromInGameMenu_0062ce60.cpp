@@ -6,7 +6,7 @@
 //   the donor build orders it EATempWorldEventForWhateverYouWant -> EALoadGameFromInGameMenu -> EACreatureBlock, and the
 //   retail neighbour 0x0062CF90 has the block shape (HasMode 0x2F, weapon interfaces 0x30/0x46/0x48/0x84). The static
 //   event table stores it at 0x013BA188 (initialiser 0x0121D36B). Catalog label "CWorld_LoadGameState_Handler" is descriptive.
-// Callees: CWorld::GetPlayer(long) 0x0049D850, CPlayer::GetHeroCreature 0x00487DC0, CVectorMap LowerBound 0x0040F020
+// Callees: CWorld::GetPlayer(long) 0x0049D850, CPlayer::GetPControlledCreature 0x00487DC0, CVectorMap LowerBound 0x0040F020
 //   (interface 0xC6), the interface's name-list getter 0x0047E186 (`*names = list at +0x28` through vector::operator=
 //   0x00433DF0; label "AddLearnedExpression" is propagated and wrong), CGameEvent::GetData 0x009F17A0,
 //   CMemoryBuffer::Read 0x009F18F0, CWideString copy ctor 0x0099B720 / ~CWideString 0x0099B510,
@@ -128,10 +128,11 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 
 class CPlayer {
 public:
-    CThingCreatureBase* GetHeroCreature();             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;             // 0x00487DC0
 };
 class CWorld {
 public:
@@ -142,7 +143,7 @@ public:
 
 void CWorld::EALoadGameFromInGameMenu(const CGameEvent* event)
 {
-    CThingCreatureBase* hero = GetPlayer(event->Player)->GetHeroCreature();
+    CThingCreatureBase* hero = GetPlayer(event->Player)->GetPControlledCreature();
     if (!hero || hero->Dead)
         return;
     CTCHeroSaveGames* saveGames;

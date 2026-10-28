@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00490927, 251 bytes, `ret 4`; `this` is never read.
 // Callees: a CWorld mode predicate 0x0048DB13 (`mode != 0 && mode != 9` on +0x104; emitted in this TU; manifest label
 //   CPersistContext::IsBinary is propagated), CPlayerGui::GetPHeroInfoScreensManager() const 0x00437CD0,
-//   CWorld::GetCurrentPlayer() const 0x0049D9D0, CPlayer::GetControlledCreature 0x00487DD0,
+//   CWorld::GetCurrentPlayer() const 0x0049D9D0, CPlayer::PeekPControlledCreature 0x00487DD0,
 //   IS_THING_ALIVE<CThing*> 0x0043DBF0 (__fastcall), std::bitset::test 0x00410DE0,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound const 0x004365B0.
 // Globals: g_pMainGameComponent 0x013B86A0 (+0x24 PWorld, +0x28 a front-end object with a blocking byte at +0xBC, a
@@ -20,7 +20,7 @@
 //   `return true`: that lays `mov al,1 ; jmp` before the shared `xor al,al` (two inline ifs put the false exit first).
 class CTCBase;
 struct CPresenceBits {
-    bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
+    bool test(long bit) const;                           // 0x00410DE0 (std::bitset::test)
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -33,8 +33,8 @@ class CThing { public:
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
-    bool HasInterface(long type) { return m_present.test(type); }
-    template <class T> __forceinline T* GetInterfaceUnchecked(long type)
+    bool HasInterface(long type) const { return m_present.test(type); }
+    template <class T> __forceinline T* GetInterfaceUnchecked(long type) const
     {
         long key = type;
         const CInterfaceMap* map = &m_interfaces;
@@ -42,8 +42,11 @@ class CThing { public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
-template <class T> __forceinline bool IsComponentActive(CThing* thing, long type)
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBF0
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
+template <class T> __forceinline bool IsComponentActive(const CThing* thing, long type)
 {
     if (thing->HasInterface(type)) {
         T* component = thing->GetInterfaceUnchecked<T>(type);
@@ -62,8 +65,9 @@ struct CTCActiveStateB {                           // interface 0xC6
 };
 class CThingCreatureBase : public CThing { public:
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer { public:
-    CThingCreatureBase* GetControlledCreature();   // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
 class CWorld { public:
     bool IsInSpecialMode();                        // 0x0048DB13
@@ -108,8 +112,8 @@ bool CSubtitleRenderer::IsAllowedToSetText(bool force)
             break;
         if (g_pPlayerGui->GetPHeroInfoScreensManager()->m_open != 0)
             break;
-        CThingCreatureBase* hero = world->GetCurrentPlayer()->GetControlledCreature();
-        if (!IS_THING_ALIVE<CThing*>(hero))
+        const CThingPlayerCreature* hero = world->GetCurrentPlayer()->PeekPControlledCreature();
+        if (!IS_THING_ALIVE(hero))
             break;
         if (IsComponentActive<CTCActiveStateA>(hero, 0xfc) || IsComponentActive<CTCActiveStateB>(hero, 0xc6))
             break;

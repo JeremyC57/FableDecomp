@@ -2,7 +2,7 @@
 // boss is in phase 3 or 6, a hit event was found and the queen's +0x1c8 bit 6 is clear.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095AA60, length 204 bytes (+ int3 padding). Vtable slot 11.
 // Callees: the brain's player-manager accessor @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970,
-// CPlayer::GetPCharacter @ 0x00487DC0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor, CVectorMap::LowerBound
+// CPlayer::GetPControlledCreature @ 0x00487DC0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor, CVectorMap::LowerBound
 // @ 0x0040F020 (inlined GetInterface, 0xad = bit 13 of +0x34), CTCBoss::GetBossPhase @ 0x007AED10,
 // CAIStateGroup_HoverHornetQueenTakeDamage::FindHitEvent @ 0x0095A7D0.
 // Shape: `PTarget = CIntelligentPointer<CThingCreatureBase>(player)` through a frame temporary (vtable 0x0123E7D8);
@@ -48,6 +48,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -80,6 +81,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -97,7 +101,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 };
 
 
@@ -150,11 +156,10 @@ class CWorld { public:
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
 };
 
 class CPlayer { public:
-    CThing* GetPCharacter();                    // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -184,7 +189,7 @@ struct CAIStateGroup_HoverHornetQueenTakeDamage : CAIStateGroupBase {
 
 bool CAIStateGroup_HoverHornetQueenTakeDamage::IsRunnable()
 {
-    PTarget = CIntelligentPointerCreature(GetPPlayerManager()->GetMainPlayer()->GetPCharacter());
+    PTarget = CIntelligentPointerCreature(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
     CTCBoss* boss;
     PBrain->PCreature->GetInterface(&boss, 0xad);
     long phase = boss->GetBossPhase();

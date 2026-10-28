@@ -2,7 +2,7 @@
 // Leaf: AddWantedItemToList@CTCInventoryTrade
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059CB90, 953 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CFrontEndManager::GetInstance 0x0041E5F2, CManager::CreateMenuEntryComponent 0x00428494, CCountedPointer<CComponent>
-//   Reset 0x00429C6F / dtor 0x004291DE, CPlayerManager::GetMainPlayer 0x00449960 + GetHeroThing 0x00487DC0 (result unused),
+//   Reset 0x00429C6F / dtor 0x004291DE, CPlayerManager::GetMainPlayer 0x00449960 + GetPControlledCreature 0x00487DC0 (result unused),
 //   CWideString 0x0099B6B0 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0, operator new 0x00BFEA1A, CAction 0x0042BE50,
 //   CCountedPointer<CAction> 0x0042AA29 / ~ 0x00429160, param-list push_back 0x0042B646 (same-TU noinline stand-in),
 //   CAction::AddParam(CActionParam*, CCountedPointer<CAction>&) 0x0053FDE0, CActionParamString(CWideString&) 0x0054DAE0;
@@ -23,7 +23,8 @@ class CWideString { public:
     ~CWideString();                                     // 0x0099B510
 };
 class CThing;
-class CPlayer { public: CThing* GetHeroThing(); };           // 0x00487DC0
+class CThingPlayerCreature;
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };           // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
 class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
@@ -162,7 +163,7 @@ void CTCInventoryTrade::AddWantedItemToList(long defIndex, CList* list, CViewpor
 {
     CFrontEndManager* fe = CFrontEndManager::GetInstance();
     CCountedPointer<CComponent> entry;
-    g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroThing();
+    g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
     entry.Reset(fe->CreateMenuEntryComponent(L"INVALID NAME", 0.0f, 1.0f, "UI_WEAPON_MENU_ENTRY_TEMPLATE_NEW",
                                              0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     CComponent* comp = entry.m_pObject;

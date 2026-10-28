@@ -55,12 +55,14 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : public _Vector_base<_Tp, _Alloc> {
 public:
+    protected:
     _Tp* _M_allocate_and_copy(unsigned int __n, const _Tp* __first, const _Tp* __last)
     {
         _Tp* __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, __false_type());
         return __result;
     }
+    public:
 };
 
 template C3DTriangle2* vector<C3DTriangle2>::_M_allocate_and_copy(unsigned int, const C3DTriangle2*, const C3DTriangle2*);

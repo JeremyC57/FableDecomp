@@ -62,6 +62,7 @@ class CThingBuilding;
 
 #include "engine/CWorld.h"                            // PThingCombatManager_ptr +0x4C, PMessageEventManager_Data +0x60
 class CThingSearchTools;
+class CWorld;
 class CAIStateGroupBase : public CBaseClass {
 public:
     CAIBrain*     PBrain;                               // +0x04
@@ -72,8 +73,12 @@ public:
     bool          Enabled;                              // +0x12
     void Terminate();                                   // 0x008FCF40
 protected:
-    const CWorld& PeekWorld() const;                    // 0x008FCFA0
-    CWorld& GetWorld() const;                           // 0x008FCFC0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0
+public:
     unsigned long* GetPWorldSeed() const;               // 0x008FCFD0
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000
     bool IsStopping() const;                            // 0x008FD010

@@ -2,7 +2,7 @@
 // Leaf: ProcessInput
 // SW2 sweep (advisor/007e5230/probe/t1.cpp).
 // Retail 0x007E5230, 832 bytes, `ret 0xc`. Callees: CPlayerManager::GetMainPlayer 0x00449960 (g_pMainGameComponent +0x1c),
-// CPlayer::GetHeroCreature 0x00487DC0, LowerBound 0x0040F020, GetSubDef<CBettingDef> 0x007E5820,
+// CPlayer::GetPControlledCreature 0x00487DC0, LowerBound 0x0040F020, GetSubDef<CBettingDef> 0x007E5820,
 // CInputProcessGameBase::GetEventGameActionVector 0x00687D00 / IsEventButtonPressed 0x00687A90 / IsEventGameAction
 // 0x00687CF0, CMainGameComponent::GetFrame 0x00416225, CInputEvent::GetEventType 0x00A03B40, CCharString 0x0099EBF0 /
 // dtor 0x0099EAE0, CTCBetting::PlaySound 0x007E51D0, CProcessedInput::SetHandled 0x00A0D390, CSubtitleRenderer::Clear
@@ -60,8 +60,9 @@ class CThing { public:
     unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCHeroStats* GetTC(long kind) { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                          // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                           // 0x00449960
@@ -148,7 +149,7 @@ __declspec(noinline) STCEntry* CTCMap::LowerBound(const unsigned long& kind)
 void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& processed, CInputProcessGameBase* input)
 {
     CTCHeroStats* stats = 0;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetHeroCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
     if (hero->HasTC(4))
         stats = hero->GetTC(4);
     CDefPointer<CBettingDef> def;

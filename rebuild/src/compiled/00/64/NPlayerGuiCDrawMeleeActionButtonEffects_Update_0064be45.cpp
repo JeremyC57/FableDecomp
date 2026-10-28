@@ -1,7 +1,7 @@
 // NPlayerGui::CDrawMeleeActionButtonEffects::Update() -- pick the hero's current melee ability def (the flourish ability when a flourish is valid, else the base ability when the combat component says so), restart the flash timers when it changes, clear the effects when there is none, and count the timers down
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064BE45, length 373 bytes (frame pointer, `ret`).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::PeekPControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0
 // (`__fastcall`, by reference), std::bitset::test @ 0x00410DE0, the interface map LowerBound const @ 0x004365B0, CTCCombat::
 // IsMeleeFlourishValid @ 0x00733EE0, ::GetPMeleeFlourishAbility @ 0x00733480 (CDefPointer by hidden pointer), CTCCombat @ 0x00733290
 // (a bool query; the manifest label "CThingFilter_IsUnconscious::operator()" is propagated), the base-ability getter @ 0x007334B0
@@ -108,6 +108,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
 bool IsThingAliveImpl(const void* thing);          // stand-in callee of the stand-in body below
 #pragma auto_inline(off)
@@ -117,7 +118,7 @@ template <class T> bool __fastcall IS_THING_ALIVE(const T& thing)
 }
 #pragma auto_inline(on)
 class CPlayer { public:
-    CThing* GetControlledCreature();               // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;               // 0x00487DD0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
@@ -147,7 +148,7 @@ struct CDrawMeleeActionButtonEffects {
 
 void CDrawMeleeActionButtonEffects::Update()
 {
-    CThing* hero = PlayerManager->GetMainPlayer()->GetControlledCreature();
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->PeekPControlledCreature();
     CDefPointer<CAbilityDef> ability;
     if (IS_THING_ALIVE(hero)) {
         CTCCombat* combat;

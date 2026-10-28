@@ -1,6 +1,6 @@
 // CTCCoopSpirit::AddAppearanceParticle(const CCharString& particleThingName) -- create the named particle thing at the spirit's position and attach its emitter to the spirit (bone 0x88, scale 1.1)
 //
-// Retail 0x00670560, 141 bytes (`ret 4`). Callees: CThing::GetPosition() const @ 0x004C73D0, the
+// Retail 0x00670560, 141 bytes (`ret 4`). Callees: CThing::GetPos() const @ 0x004C73D0, the
 // global Create(const CCharString&, const C3DVector&, bool) @ 0x006E0970 (`__fastcall`),
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CCharString::CCharString(const
 // char*, long) @ 0x0099EBF0 (the empty string 0x0122D70E), CTCDParticleEmitter::AttachToThing
@@ -37,7 +37,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 
 class CCharString { public:
@@ -67,7 +67,7 @@ class CTCCoopSpirit { public:
 
 void CTCCoopSpirit::AddAppearanceParticle(const CCharString& particleThingName)
 {
-    CThing* particle = Create(particleThingName, ParentThing->GetPosition(), false);
+    CThing* particle = Create(particleThingName, ParentThing->GetPos(), false);
     if (particle)
     {
         CTCDParticleEmitter* emitter = GetParticleEmitter(particle);

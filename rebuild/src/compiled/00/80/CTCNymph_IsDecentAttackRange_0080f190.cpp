@@ -1,6 +1,6 @@
 // CTCNymph::IsDecentAttackRange(const C3DVector& target) -- the nymph is a decent attack position when it is more than 0.5 above the target and its horizontal distance lies strictly between MinAttackRange and CircleRange
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080F190, length 122 bytes (`ret 4`).
-// Callees: CThing::GetPosition @ 0x004C73D0 (catalog "CVertexBufferWin32::DoSizeof" is a byte twin).
+// Callees: CThing::GetPos @ 0x004C73D0 (catalog "CVertexBufferWin32::DoSizeof" is a byte twin).
 // Layout: PDB CTCNymph PDef +0x0C (CNymphDef: MinAttackRange +0x28, CircleRange +0x34); 0.5f @ 0x0122F59C.
 // Shape: the delta `pos - target` is built on the x87 stack (all three differences kept), the squared ranges compared with
 // `!(a <= b)` style tests (`test ah,41h ; jne`) and the upper bound strict (`test ah,5 ; jp`); nested ifs, one false exit.
@@ -12,7 +12,7 @@ class C3DVector { public:
     C3DVector operator-(const C3DVector& v) const { return C3DVector(X - v.X, Y - v.Y, Z - v.Z); }
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CNymphDef { public:
     unsigned char _pad00[0x28];
@@ -35,7 +35,7 @@ class CTCNymph { public:
 
 bool CTCNymph::IsDecentAttackRange(const C3DVector& target)
 {
-    C3DVector delta = ParentThing->GetPosition() - target;
+    C3DVector delta = ParentThing->GetPos() - target;
     if (delta.Z > 0.5f) {
         float distanceSq = delta.X * delta.X + delta.Y * delta.Y;
         if (distanceSq > PDef->MinAttackRange * PDef->MinAttackRange) {

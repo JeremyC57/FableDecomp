@@ -5,7 +5,7 @@
 //   Name and signature from Ego_r.pdb (`?OnCollision@CThingPlayerCreature@@UAEXW4ECollideType@@ABVC3DVector@@1PAVCThing@@@Z`).
 // Callees: CThingCreatureBase::OnCollision @ 0x00667310, CThingPlayerCreature::OnCollisionWithObject @ 0x006ACA30,
 //   CThing::GetTCDriver<CTCDExperienceOrb>(CTCDExperienceOrb**) @ 0x006AE5C0, CThing::GetPlayerManager @ 0x004C7A00,
-//   CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, LowerBound @ 0x0040F020,
+//   CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, LowerBound @ 0x0040F020,
 //   CTCHeroExperience::AddExperience(long) @ 0x006D77C0, CPlayerManager @ 0x00449700 (the main player's number;
 //   manifest "CWorld::DrawGetEnvironment", propagated), CTCCoopSpirit::AddExperience(long) @ 0x0066FB00,
 //   CTCDExperienceOrb::OnCollected(CThing*) @ 0x0077A180.
@@ -51,7 +51,8 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 
 class CPlayerManager;
 class CThing;
-class CPlayer { public: CThing* GetHeroThing(); };             // 0x00487DC0
+class CThingPlayerCreature;
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };             // 0x00487DC0
 class CPlayerManager { public:
     long GetMainPlayerNumber();                         // 0x00449700
 public:
@@ -163,5 +164,5 @@ void CThingPlayerCreature::OnCollision(ECollideType type, const C3DVector& posit
     CTCDExperienceOrb* orb;
     if (!thing->HasTC(0x69) || !thing->GetTCDriver(&orb))
         return;
-    CollectExperienceOrb(orb, GetPlayerManager().GetMainPlayer().GetHeroThing());
+    CollectExperienceOrb(orb, GetPlayerManager().GetMainPlayer().GetPControlledCreature());
 }

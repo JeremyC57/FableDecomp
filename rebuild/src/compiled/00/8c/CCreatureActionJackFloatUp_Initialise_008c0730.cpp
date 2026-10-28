@@ -7,15 +7,14 @@
 // Shape: the landed Initialise family, then two zero stores through the shared zero register (Moving first, so FloatSpeed
 // is written as an integer zero: a float literal would be an immediate) and StartHeight copied from the vector's Z (+8)
 // with a register move. Member names from the engine header (PDB +0x12c..; retail CCombatActionBase is 0x114 bytes).
-struct CPosition {                          // the physics component's position vector (X, Y, Z)
-    long X;
-    long Y;
-    long Z;                                 // +0x08 (float in the engine; copied as a dword)
+class C3DVector { public:
+    float X, Y, Z;
 };
 
-class CThingCreatureBase_Calls { public:           // engine/CThingCreatureBase.h exists but is not used: only this call is modelled
-    const CPosition& GetPosition() const;   // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;        // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
 };
+class CThingCreatureBase : public CThing { };
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -41,7 +40,7 @@ class CCombatActionBase { public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void Initialise();              // slot 12, 0x00857520
     unsigned char _pad04[4];                // +0x04
-    CIntelligentPointer<CThingCreatureBase_Calls> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
+    CIntelligentPointer<CThingCreatureBase> PCreature;            // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
 public:
     void SetCombatAnimation(const CCharString&);   // 0x008574D0
@@ -51,7 +50,7 @@ class CCreatureAction_JackFloatUp : public CCombatActionBase { public:   // vtab
     long          FloatHeight;              // +0x114 (PDB +0x12c, float; untouched here)
     long          FloatSpeed;               // +0x118 (PDB +0x130, float; cleared through the zero register)
     unsigned char Moving;                   // +0x11c (PDB +0x134, bool)
-    long          StartHeight;              // +0x120 (PDB +0x138, float; copied as a dword)
+    float         StartHeight;              // +0x120 (PDB +0x138)
     virtual void Initialise();
 };
 
@@ -64,5 +63,5 @@ void CCreatureAction_JackFloatUp::Initialise()
     CCombatActionBase::Initialise();
     Moving = 0;
     FloatSpeed = 0;
-    StartHeight = PCreature.GetPItem()->GetPosition().Z;
+    StartHeight = PCreature.GetPItem()->GetPos().Z;
 }

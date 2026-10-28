@@ -33,7 +33,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                // 0x004C9B80
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -48,6 +48,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CBaseObject;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
@@ -76,7 +77,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes)
 };
 class CBossDef;
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0 (CPlayer::GetHeroThing)
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0 (CPlayer::GetPControlledCreature)
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970

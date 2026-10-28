@@ -4,7 +4,7 @@
 // Leaf: IsBetterThan
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00861670, 327 bytes (padded to 329+), `ret 8`.
 //   PDB ?IsBetterThan@CVillageTaskCarryCrate@@QBE_NPBV1@ABVCThing@@@Z (non-virtual).
-// Callees: IsCreatureValidForTask 0x008614B0, CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2), CThing::GetPosition
+// Callees: IsCreatureValidForTask 0x008614B0, CBaseIntelligentPointer::GetPItem 0x00A01B50 (x2), CThing::GetPos
 //   0x004C73D0 (x3), IsTaskAvailable (virtual slot 4, +0x10), IsCreatureMoreAppropriateForTask 0x00861530.
 // Layout: rebuild/include/engine/CVillageTaskCarryCrate.h (Ego_r.pdb = retail): PCrateStack +0x10, Pickup +0x18,
 //   Priority +0x1c; modelled with the intelligent-pointer accessors as the landed IsCreatureMoreAppropriateForTask
@@ -28,7 +28,7 @@ class C3DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 class CThing : public CBaseObject { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<T>: vptr + item (8 bytes)
     void*        __vftable;                        // +0x00
@@ -59,9 +59,9 @@ bool CVillageTaskCarryCrate::IsBetterThan(const CVillageTaskCarryCrate* other, c
     if (other) {
         if (Priority == other->Priority) {
             {
-                C3DVector crate = static_cast<const CThing*>(PCrateStack.GetPItem())->GetPosition();
-                C3DVector rivalCrate = static_cast<const CThing*>(other->PCrateStack.GetPItem())->GetPosition();
-                C3DVector position = creature.GetPosition();
+                C3DVector crate = static_cast<const CThing*>(PCrateStack.GetPItem())->GetPos();
+                C3DVector rivalCrate = static_cast<const CThing*>(other->PCrateStack.GetPItem())->GetPos();
+                C3DVector position = creature.GetPos();
                 myDistance = (crate - position).GetLengthSquared();
                 rivalDistance = (rivalCrate - position).GetLengthSquared();
             }

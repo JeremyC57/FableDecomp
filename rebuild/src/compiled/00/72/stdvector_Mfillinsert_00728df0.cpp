@@ -50,10 +50,14 @@ public:
     vector(const vector<_Tp, _Alloc>& __x);                                    // 0x005BBDF1 (CEngineTextureMorph)
     ~vector();                                                                 // 0x005BC0D3 (CEngineTextureMorph)
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);            // 0x00728830 (CEngineTextureMorph)
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                              // 0x00728D10
+    public:
 protected:
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
+    protected:
 };
 }
 

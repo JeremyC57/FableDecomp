@@ -25,7 +25,7 @@ class C3DVector { public:
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                 // 0x004C73D0
+    const C3DVector& GetPos() const;                 // 0x004C73D0
 };
 
 // C2DVector (Ego_r.pdb: X +0, Y +4) with the engine's memberwise user copy constructor: the by-value comparator

@@ -5,7 +5,7 @@
 // Callees: CInputEvent ctor 0x00A04410 / dtor 0x00A03B30 / GetType 0x00A03B40 (an unused 0x34-byte frame local, as the landed
 //   CTCAssassinRush::UpdateDirectionOverride 0x007A9960); CInputProcessGameBase::IsEventGameAction 0x00687CF0 /
 //   IsEventButtonPressed 0x00687A90 / GetMouseMovement 0x00687D20 (C2DVector by hidden pointer; it forwards to
-//   CGamePlayerInterface::GetMouseMovement 0x004458F0); CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetHeroCreature
+//   CGamePlayerInterface::GetMouseMovement 0x004458F0); CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetPControlledCreature
 //   0x00487DC0; the component map LowerBound 0x0040F020; GetAsyncKeyState (import 0x014402CC);
 //   CTCPhotojournalCapture::TakeQuickScreenshotNoHud 0x0055D490 / TakeQuickScreenshot 0x0055D180; operator new 0x00BFEA1A,
 //   CConsole ctor 0x009ECD80, CCountedPointer<CConsole>::Reset 0x00413520, CConsole::Get 0x00414C90, CConsole::ProcessInput
@@ -55,8 +55,9 @@ class CThing { public:
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCPhotojournalCapture* GetTC(long kind) { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
@@ -113,7 +114,7 @@ void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& 
         CWorld* world = g_pMainGameComponent->PWorld;
         if ((world->RegionLoadStatus == 0 || world->RegionLoadStatus == 9) && world->SaveGameLoadStatus == 0
             && !g_bAutoSaveProgressShown) {
-            CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetHeroCreature();
+            CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
             if (hero->HasTC(0x10e)) {
                 CTCPhotojournalCapture* capture = hero->GetTC(0x10e);
                 if (GetAsyncKeyState(0x10) < 0) {

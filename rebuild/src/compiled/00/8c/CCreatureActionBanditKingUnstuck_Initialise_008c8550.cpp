@@ -5,7 +5,7 @@
 //   0x008574D0, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020 (inline interface lookups
 //   0x31 CTCCreatureModeManager, 0x7F CTCHitLocations, 0x4B CTCDParticleEmitter), CTCCreatureModeManager::RemoveMode
 //   0x0073ABA0, CTCHitLocations::GetPHitLocationFromName 0x00815820, CHitLocation::SetEnabled 0x00816390,
-//   CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CCRC::CalcAndLookup 0x00669D30, CThing::GetPosition 0x004C73D0,
+//   CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CCRC::CalcAndLookup 0x00669D30, CThing::GetPos 0x004C73D0,
 //   the special-effect Create(long, const C3DVector&, bool) 0x006E0880 (__fastcall),
 //   CTCDParticleEmitter::AttachToThing 0x006E0BE0, CCombatActionBase::Initialise 0x00857520.
 // Data: "BK_UNSTUCK" 0x01281AEC, "HIT_LOCATION_TWINBLADE_STUCK" 0x01281ACC, "HIT_LOCATION_TWINBLADE" 0x01281AB4,
@@ -102,7 +102,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     CDefClassBase* GetDef() const { return m_pDef; }
     __forceinline bool HasTC(long interfaceType) const
     {
@@ -201,7 +201,7 @@ void CCreatureAction_BanditKingUnstuck::Initialise()
     CDefPointer<CSpecialEffectsDef> effects;
     long effect = 0;
     if (PCreature.GetPItem()->GetDef()->GetSubDef(&effects) && effects->CalcAndLookup("UNSTUCK", &effect)) {
-        CThing* created = CreateSpecialEffect(effect, PCreature.GetPItem()->GetPosition(), false);
+        CThing* created = CreateSpecialEffect(effect, PCreature.GetPItem()->GetPos(), false);
         if (created && !(created->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = created->GetTCIfPresent<CTCDParticleEmitter>(0x4b);
             emitter->AttachToThing(PCreature.GetPItem(), 0x2a, "", 0, 0);

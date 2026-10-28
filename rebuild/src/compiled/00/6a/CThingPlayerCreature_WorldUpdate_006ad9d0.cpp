@@ -2,7 +2,7 @@
 // Leaf: WorldUpdate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006AD9D0, length 284 bytes.
 // Callees: CThingCreatureBase::UpdateAction @ 0x006643C0, CThingCreatureBase::WorldUpdate @ 0x006666A0 (called
-// non-virtually, result dropped), the last-position getter @ 0x006A4D10 and CThing::GetPosition() const @ 0x006A4D00
+// non-virtually, result dropped), the last-position getter @ 0x006A4D10 and CThing::PeekPos() const @ 0x006A4D00
 // (this TU's out-of-line copies; catalog "CVertexBufferWin32::DoSizeof" is a propagated twin), CVectorMap::LowerBound
 // @ 0x0040F020 (interfaces 0x43 = CTCLook, bit 3 of +0x28, and 0x4c = CTCWeaponTrail, bit 12 of +0x28),
 // CTCLook::TrackNearestInterestingThing(bool) @ 0x00753840, CThingPlayerCreature::UpdatePlayerControl @ 0x006AD970,
@@ -10,7 +10,7 @@
 // Layout (retail): CThing interface bitset +0x20, map +0x44; CThingCreatureBase MovementVector +0x10c, the update flags
 // byte +0x15d (bit 1: a last position exists); CThingPlayerCreature CollidedWithThing +0x1cc, LastThingCollisionNormal
 // +0x1cd, LastThingCollisionPosition +0x1d9 (Ego_r.pdb - 0x2c; the two vectors are byte-packed in the PDB as well).
-// Shape: `MovementVector = GetPosition() - GetLastPosition()` through a frame temporary copied dword by dword (the right
+// Shape: `MovementVector = PeekPos() - PeekLastPos()` through a frame temporary copied dword by dword (the right
 // operand's getter runs first); the animation step is a literal 0.0f pushed from the zero register; the collision
 // vectors are cleared with chained `X = Y = Z = 0.0f` (Z first; a C3DVector temporary goes through the frame), which
 // is what makes VC7.1 keep 0 (and the flag mask 2) in ebx; the look component comes through the out-parameter
@@ -37,9 +37,13 @@ public:
     void UpdateWeaponTrails();                                 // 0x0076EFA0
 };
 #pragma pack(push, 1)
-class CThingCreatureBase {
+class CThingPhysical { public:
+    const C3DVector& PeekLastPos() const;    // 0x006A4D10 ?PeekLastPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order Kill/PeekPos/PeekLastPos/OnCreate)
+    virtual void v00();  // moved from CThingCreatureBase: the inserted base owns the vptr (vtable order unchanged)
+    const C3DVector& PeekPos() const;                      // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical {
 public:
-    virtual void v00();
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                            // +0x20
     CInterfaceMap m_interfaces;                                // +0x44
@@ -69,8 +73,6 @@ public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                      // 0x006A4D00
-    const C3DVector& GetLastPosition() const;                  // 0x006A4D10
     void UpdateAction();                                       // 0x006643C0
     bool WorldUpdate();                                        // 0x006666A0
     void UpdateAnimation(float step);                          // 0x00665860
@@ -90,7 +92,7 @@ bool CThingPlayerCreature::WorldUpdate()
     UpdateAction();
     CThingCreatureBase::WorldUpdate();
     if (m_updateFlags & 2)
-        MovementVector = GetPosition() - GetLastPosition();
+        MovementVector = PeekPos() - PeekLastPos();
     m_updateFlags |= 2;
     CTCLook* look;
     if (GetInterface(&look, 0x43))

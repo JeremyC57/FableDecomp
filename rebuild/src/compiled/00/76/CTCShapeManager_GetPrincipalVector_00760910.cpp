@@ -1,7 +1,7 @@
 // CTCShapeManager::GetPrincipalVector(C3DVector& out) const -- when a shape is selected and has points, out = the thing's position minus the shape's first point; returns whether it was set
 // Leaf: GetPrincipalVector
 // Retail: Fable.exe 0x00760910, 121 bytes (`ret 4`).
-// Callees: CThing::GetPosition() const @ 0x004C73D0 (returns const C3DVector&; manifest "CVertexBufferWin32::DoSizeof"
+// Callees: CThing::GetPos() const @ 0x004C73D0 (returns const C3DVector&; manifest "CVertexBufferWin32::DoSizeof"
 // is propagated).
 // Layout: retail CTCShapeManager: PersistantShapes (vector<CCountedPointer<NShape::CShape>>) +0x0C (_M_finish +0x10),
 // SelectedShape (vector iterator) +0x18; NShape::CShape (0x28): Owner +0x04, Points (vector<C3DVector>) +0x08.
@@ -15,7 +15,7 @@ class C3DVector { public:
     C3DVector operator-(C3DVector o) const { return C3DVector(X - o.X, Y - o.Y, Z - o.Z); }
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 class CTCShapeManager;
 namespace NShape {
@@ -51,7 +51,7 @@ bool CTCShapeManager::GetPrincipalVector(C3DVector& out) const
 {
     if (SelectedShape != PersistantShapes_last) {
         if (!(*SelectedShape)->Points.empty()) {
-            out = ParentThing->GetPosition() - (*SelectedShape)->Points.front();
+            out = ParentThing->GetPos() - (*SelectedShape)->Points.front();
             return true;
         }
     }

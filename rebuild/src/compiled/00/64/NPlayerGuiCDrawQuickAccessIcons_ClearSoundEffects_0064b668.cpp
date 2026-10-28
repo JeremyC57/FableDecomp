@@ -2,7 +2,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawQuickAccessIcons::ClearSoundEffects() -- stop the charging sound on the hero's sound component (interface 0x10) and forget its ID
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064B668, length 114 bytes.
-// Callees: CPlayerManager::GetMainPlayer() @ 0x00449970 and CPlayer::GetCharacterThing() @ 0x00487DC0 (manifest labels on both are
+// Callees: CPlayerManager::GetMainPlayer() @ 0x00449970 and CPlayer::GetPControlledCreature() @ 0x00487DC0 (manifest labels on both are
 // propagated junk), IS_THING_ALIVE<CThing*>(CThing* const&) @ 0x0043DBD0 (`__fastcall`, by reference), std::bitset::test @ 0x00410DE0
 // and CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020 (the inlined GetInterface, as the landed 0x007BEA08 family),
 // the component's StopSound(unsigned long) @ 0x0066AD90 (manifest "CGameScriptThing::SetToKillOnLevelUnload" is propagated).
@@ -43,12 +43,16 @@ class CThing { public:
     }
 };
 
-template <class T> bool __fastcall IS_THING_ALIVE_0043dbd0(const T& thing);   // 0x0043DBD0 (CThing*)
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 
 class CThingCreatureBase : public CThing { public: };
+class CThingPlayerCreature : public CThingCreatureBase { };
 
 class CPlayer { public:
-    CThingCreatureBase* GetCharacterThing();       // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
 };
 
 class CPlayerManager { public:
@@ -76,8 +80,8 @@ class CDrawQuickAccessIcons { public:
 void CDrawQuickAccessIcons::ClearSoundEffects()
 {
     if (ChargingSoundID > 0) {
-        CThingCreatureBase* hero = PlayerManager->GetMainPlayer().GetCharacterThing();
-        if (IS_THING_ALIVE_0043dbd0<CThing*>(hero)) {
+        CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
+        if (IS_THING_ALIVE(hero)) {
             if (hero->HasInterface(TC_SOUND)) {
                 hero->GetInterfaceUnchecked<CTCSound>(TC_SOUND)->StopSound(ChargingSoundID);
                 ChargingSoundID = 0;

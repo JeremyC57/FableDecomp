@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, three times), CDefClassBase::GetSubDef<
 // CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580 on the thing's definition (+0x70), CCharString(const char*,
 // long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30
-// (landed as CCRC::CalcAndLookup), CThing::GetPosition 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool)
+// (landed as CCRC::CalcAndLookup), CThing::GetPos 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool)
 // 0x006E0880, CThingAICreature::SetSuspendAnimation(bool, long) 0x00833A10, CCombatActionBase::Initialise 0x00857520 (direct
 // base call, after the effect).
 // Shape: the TeleportIn/TeleportOut lookup (0x008B9F20) without the CreateEffects gate: the def from the plain out-slot is
@@ -50,7 +50,7 @@ public:
 class CThing : public CThingAICreature { public:
     unsigned char  _pad0[0x70];
     CDefClassBase* m_pDef;                      // +0x70
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
@@ -93,7 +93,7 @@ void CCreatureAction_UndeadReturnToEarth::Initialise()
     bool found = def->GetSubDef(effectsSlot);
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (found && effects->GetEffectFromString("SINK", effectType))
-        CreateEffectThing(effectType, &PCreature.GetPItem()->GetPosition(), false);
+        CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
     CThing* sinking = PCreature.GetPItem();
     sinking->SuspendAI(true, 0);
     CCombatActionBase::Initialise();

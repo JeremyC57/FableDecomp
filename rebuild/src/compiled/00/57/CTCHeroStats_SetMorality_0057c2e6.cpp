@@ -7,7 +7,7 @@
 //          CTCHero::GiveTutorialForCategory(ETutorialCategory, bool) @ 0x006C9FA0, CPlayerGui::AddMoralityChange(long)
 //          @ 0x00437930 (g_pPlayerGui 0x013B8790), CThingCreatureBase::IsChild() @ 0x00661F70, operator new @ 0x00BFEA1A,
 //          CTCEntityEvents::AddEvent(CEventBase*) @ 0x008113C0, CTCHeroStats::CheckForNewExpressions() @ 0x0057BE71,
-//          CCharString @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPosition() @ 0x004C73D0,
+//          CCharString @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPos() @ 0x004C73D0,
 //          CTCSoundPlayer::PlayUnattachedCriteria @ 0x0066BDF0, CTCHeroStats::GetMoralityPercentage() @ 0x0057A690,
 //          CTCHeroMorph::SetMorality(float) @ 0x0071C000.
 // Shape: the clamp is an inline by-reference limit over named bounds (min = -max; `v > hi` order); children re-clamp
@@ -40,7 +40,7 @@ class CThing { public:
     CPresenceBits m_present;                         // +0x20
     unsigned char _pad_0x21[0x23];
     CInterfaceMap m_interfaces;                      // +0x44
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
@@ -188,7 +188,7 @@ void CTCHeroStats::SetMorality(long morality)
             CheckForNewExpressions();
             CTCSoundPlayer* sound;
             if (ParentThing->GetInterfaceAlt(&sound, 0x10))
-                sound->PlayUnattachedCriteria("MORALITY_CHANGE", ParentThing->GetPosition(), true, false);
+                sound->PlayUnattachedCriteria("MORALITY_CHANGE", ParentThing->GetPos(), true, false);
         }
     }
     CTCHeroMorph* morph;

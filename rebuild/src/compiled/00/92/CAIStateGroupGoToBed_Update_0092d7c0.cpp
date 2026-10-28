@@ -3,8 +3,8 @@
 // Callees: FindFreeBed(bool) @ 0x0092D1F0, FindFreeBanditBed @ 0x0092C8A0, CCharString(const char*, long) @ 0x0099EBF0 /
 // ~CCharString @ 0x0099EAE0 ("STANDARD_YAWN"), CThingCreatureBase::HasAnim @ 0x00662C70 (CAnimFilterAnyGroup 0x0127261C /
 // CAnimFilterBase 0x0122FFCC), CCreatureAction_PlayAnimation @ 0x008424F0 / ~CCreatureActionBase @ 0x00693EF0,
-// AIAction_PerformAction @ 0x0097D8B0, CThingCreatureBase::GetCreatureType @ 0x00662000, CThing::GetPosition @ 0x004C73D0,
-// AIAction_MoveToPos @ 0x0097EC00, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThingCreatureBase::GetPosition
+// AIAction_PerformAction @ 0x0097D8B0, CThingCreatureBase::GetCreatureType @ 0x00662000, CThing::PeekPos @ 0x004C73D0,
+// AIAction_MoveToPos @ 0x0097EC00, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThingCreatureBase::PeekPos
 // @ 0x006A4D00, AIAction_LookAtPos @ 0x0097D580, CVectorMap::LowerBound @ 0x0040F020, Terminate @ 0x008FCF40.
 // Shape: the yawn is `failed = HasAnim(...) && PerformAction(&PlayAnimation(...)) != 2` with conditional temporaries
 // (ebx flag mask 3 / 0xF); the name goes through an inline (name, filter) wrapper (landed 0x00970610).
@@ -61,7 +61,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                        // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                           // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     __forceinline unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
@@ -74,10 +74,12 @@ class CThing { public:
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
-class CThingCreatureBase : public CThing { public:
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;              // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
     bool HasAnim(const CCharString& name, const CAnimFilterBase& filter) const;   // 0x00662C70
     long GetCreatureType() const;                      // 0x00662000
-    const C3DVector& GetPosition() const;              // 0x006A4D00
 };
 
 class CCreatureActionBase { public:
@@ -152,7 +154,7 @@ void CAIStateGroup_GoToBed::Update()
                    false, true, false, 0, 0)) != 2;
         if (!failed) {
             long movement = 3;
-            if (GetCreature()->GetCreatureType() == 1 && (BedPos - GetCreature()->CThing::GetPosition()).Magnitude() > 15.0f)
+            if (GetCreature()->GetCreatureType() == 1 && (BedPos - GetCreature()->GetPos()).Magnitude() > 15.0f)
                 movement = 5;
             arrived = false;
             long result;
@@ -160,7 +162,7 @@ void CAIStateGroup_GoToBed::Update()
                 result = AIAction_MoveToPos(2, BedPos, &arrived, movement, true, true, 0, true, 0.0f);
             } while (result == 4);
             if (result == 2 && PBed.GetPItem() != 0 && !(PBed.GetPItem()->m_flags91 & 1)
-                && AIAction_LookAtPos(1, GetCreature()->GetPosition() + Rhset.Forward, 0x11, 0.01f) == 2
+                && AIAction_LookAtPos(1, GetCreature()->PeekPos() + Rhset.Forward, 0x11, 0.01f) == 2
                 && GetCreature()->HasTC(0xd4))
                 GetCreature()->GetTC<CTCSleep>(0xd4)->IsReadyToSleep = true;
         }

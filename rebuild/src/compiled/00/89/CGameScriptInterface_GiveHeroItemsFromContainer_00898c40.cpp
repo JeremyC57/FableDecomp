@@ -1,7 +1,7 @@
 // CGameScriptInterface::GiveHeroItemsFromContainer(const CScriptThing& container, bool addToInventory) const -- with a live hero and a valid container: either move the container's items into the inventory (CTCContainer::AddItemsToInventory), or, when the container component is a CTCContainerRewardHero, reward the hero with them and let two script frames pass
 // Leaf: ?GiveHeroItemsFromContainer@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00898C40, length 353 bytes (`ret 8`, bool in al).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, the script thing's slots 75
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the script thing's slots 75
 //   (+0x12C IsValid) and 11 (+0x2C GetThing), the component-map LowerBound @ 0x0040F020 (TC 0x3C, the container), the
 //   component's virtual slot 22 (+0x58, class name as a CCharString by value), CCharString ctor/dtor @ 0x0099EBF0 /
 //   0x0099EAE0, the string compare @ 0x00411570 (`__fastcall`), CTCContainerRewardHero::RewardHeroWithItems @ 0x0074EE90,
@@ -85,6 +85,7 @@ struct CThing_Retail {
         return it->component;
     }
 };
+class CThingPlayerCreature : public CThing_Retail { };
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -99,7 +100,7 @@ class CScriptThing { public:
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
-class CPlayer { public: CThing_Retail* GetHeroThing(); };      // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
 struct CScriptRunner;
 extern CScriptRunner* g_pScriptRunner;                  // 0x013D2838
@@ -116,7 +117,7 @@ class CGameScriptInterface { public:
 
 bool CGameScriptInterface::GiveHeroItemsFromContainer(const CScriptThing& container, bool addToInventory) const
 {
-    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetPControlledCreature();
     if (hero && !hero->m_dead && container.IsValid()) {
         if (!addToInventory) {
             CThing_Retail* thing = container.GetThing();

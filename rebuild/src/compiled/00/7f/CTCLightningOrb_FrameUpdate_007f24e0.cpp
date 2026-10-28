@@ -56,7 +56,7 @@ public:
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
     bool IsDead() const { return (m_flags91 & 1) != 0; }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
     __forceinline bool HasTC(long interfaceType) const
     {
@@ -133,13 +133,13 @@ void CTCLightningOrb::FrameUpdate()
     if (IS_THING_ALIVE(PTarget) && PTarget.GetPItem()->GetInterface(&hitLocations, 0x7f)) {
         float range = PDef->ExplosionRange;
         hitLocations->GetBoundingSphere(&centre, &radius, true);
-        if ((centre - ParentThing->GetPosition()).GetLengthSquared() < range * range)
+        if ((centre - ParentThing->GetPos()).GetLengthSquared() < range * range)
             hit = true;
     }
     if ((LifeTime >= 0 && Timer > LifeTime) || hit) {
         const CLightningOrbDef* def = PDef;
         if (def->ExplosionDefIndex > 0)
-            CreateExplosion(def->ExplosionDefIndex, &ParentThing->GetPosition());
+            CreateExplosion(def->ExplosionDefIndex, &ParentThing->GetPos());
         ParentThing->Kill(true);
         return;
     }

@@ -2,7 +2,7 @@
 // Leaf: OnInit
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872630, 647 bytes, `ret`. Callees: virtual slots 26 (+0x68, base reset), 14 (+0x38,
 //   IsStringAndCage on the camera manager's current mode) and 29 (+0x74, GetAutoGoBehindTime); NCameraModes::CBase::
-//   GetObservedThing 0x0084F1B0, CThing::GetPosition 0x004C73D0, the physics' GetFacingVector (slot 70, +0x118),
+//   GetObservedThing 0x0084F1B0, CThing::GetPos 0x004C73D0, the physics' GetFacingVector (slot 70, +0x118),
 //   CTCGraphicAppearance::GetCameraFocalPos 0x004C12D0, GetWorldFrame 0x0049D870 (manifest "GFGetPreMainMemoryUsed"), __ftol2.
 //   Globals: frames-per-second long 0x01375550; float pool 0.5f 0x0122F59C.
 // Layout: as the landed UpdateZVars 0x00872050 / OnReset 0x00871EC0 (retail = Ego_r.pdb - 0x24): Desired{HeightOffset,
@@ -44,7 +44,7 @@ public:
     unsigned char         _pad00[0x60];
     CThingPhysics*        m_pPhysics;                        // +0x60
     CTCGraphicAppearance* m_pGraphicAppearance;              // +0x64
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
 };
 class CThingGameObject : public CThing { };
 extern long g_framesPerSecond;                               // 0x01375550
@@ -97,7 +97,7 @@ public:
 void CStringAndCageBase::OnInit()
 {
     ResetBase();
-    float thingZ = GetObservedThing()->GetPosition().Z;
+    float thingZ = GetObservedThing()->GetPos().Z;
     CBase* current = CameraManager->CurrentMode;
     if (current) {
         if (current->IsStringAndCage()) {
@@ -116,7 +116,7 @@ void CStringAndCageBase::OnInit()
                 CurrentHeightOffset = DesiredHeightOffset;
                 CurrentCageRadius = DesiredCageRadius;
             } else {
-                C3DVector pos = GetObservedThing()->GetPosition();
+                C3DVector pos = GetObservedThing()->GetPos();
                 C3DVector delta = goTo - pos;
                 float length = sqrtf(delta.X * delta.X + delta.Y * delta.Y);
                 CurrentStringLength = length;
@@ -131,7 +131,7 @@ void CStringAndCageBase::OnInit()
         const CThingGameObject* thing = GetObservedThing();
         CThingPhysics* physics = thing->m_pPhysics;
         C3DVector up(0.0f, 0.0f, CurrentHeightOffset);
-        C3DVector goTo = GetObservedThing()->GetPosition() - physics->GetFacingVector() * (CurrentCageRadius + CurrentStringLength) * 0.5f + up;
+        C3DVector goTo = GetObservedThing()->GetPos() - physics->GetFacingVector() * (CurrentCageRadius + CurrentStringLength) * 0.5f + up;
         const CThingGameObject* observed = GetObservedThing();
         C3DVector focal = observed->m_pGraphicAppearance->GetCameraFocalPos(1.0f);
         Position = goTo;

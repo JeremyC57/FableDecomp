@@ -1,6 +1,6 @@
 // CTCKraken::GetClosestTentacleToTarget(list<CIntelligentPointer<CThing> >::iterator& closest) -- picks the live tentacle whose facing (kraken heading plus the tentacle's angle offset) is nearest the bearing from the kraken to its target, within one tentacle's share of a turn; true when one was found and its scripted-hook component is not in mode 0x54, otherwise the iterator is set to the end
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FB270, 554 bytes, `ret 4`. Speed TU (no pragmas, no frame pointer).
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPosition 0x004C73D0, the physics TC slot 63 (+0xFC)
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, the physics TC slot 63 (+0xFC)
 //   GetFacingAngleXY, _CIfmod 0x00BFEB28, AngleDifference 0x00A441E0 (`__stdcall`), LowerBound 0x0040F020,
 //   HasMode 0x0073A8A0 on interface 0x31.
 // Layout: local view -- CTCKraken: ParentThing +0x04, kraken body pointer +0x18, target pointer +0x20, tentacle list
@@ -66,7 +66,7 @@ public:
     CPhysicsTC*   PhysicsTC;                          // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char Flags91;                            // +0x91
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return PresentBits[type >> 5] & (1UL << (type & 31)); }
     template<class T> __forceinline bool GetInterface(T** out, long kind)
     {
@@ -131,8 +131,8 @@ class CTCKraken { public:
 bool CTCKraken::GetClosestTentacleToTarget(CTentacleIterator& closest)
 {
     if (Target.GetPItem() && !(Target.GetPItem()->Flags91 & 1) && Tentacles.size() > 0) {
-        C3DVector targetPos(Target.GetPItem()->GetPosition());
-        C3DVector bodyPos(Body.GetPItem()->GetPosition());
+        C3DVector targetPos(Target.GetPItem()->GetPos());
+        C3DVector bodyPos(Body.GetPItem()->GetPos());
         float heading = ParentThing->PhysicsTC->GetFacingAngleXY();
         float bearing = (float)atan2(targetPos.X - bodyPos.X, targetPos.Y - bodyPos.Y) * 0.15915493667125702f;
         if (bearing < 0.0f || bearing >= 1.0f) {

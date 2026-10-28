@@ -15,8 +15,10 @@ class C3DVector { public:
     float X, Y, Z;
 };
 
-struct CThingCreature {
-    const C3DVector* GetPosition() const;           // 0x004C73D0 (CThing)
+class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0 (CThing)
+};
+struct CThingCreature : public CThing {
 };
 
 class CBaseObject;
@@ -69,6 +71,6 @@ struct CAIStateGroup_CreatureSeekEnemyUnderground : CAIStateGroup_CreatureIdleUn
 void CAIStateGroup_CreatureSeekEnemyUnderground::OnActivate()
 {
     PEnemy = CIntelligentPointer<const CThing>(0);
-    RisePos = *PBrain->Creature->GetPosition();
+    RisePos = PBrain->Creature->GetPos();
     CAIStateGroup_CreatureIdleUnderground::OnActivate();
 }

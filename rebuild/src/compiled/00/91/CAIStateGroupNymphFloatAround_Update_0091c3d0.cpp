@@ -4,7 +4,7 @@
 // ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, CCreatureAction_NymphTeleportIntoLimbo
 // ctor @ 0x008CA800 / ~CCombatActionBase @ 0x0062E900, AIAction_PerformActionAndWait @ 0x0097DB70, CTCNymph::StartFlyingAround
 // @ 0x0080F5E0 / CheckIfCanAttack @ 0x0080F210 / StopFlyingAround @ 0x0080F870, GetPWorld @ 0x008FCFC0, CWorld::GetWorldFrame
-// @ 0x0049D870, IsStopping @ 0x008FD010, the brain's virtual slot 2 (yield), CThing::GetPosition @ 0x004C73D0, the physics
+// @ 0x0049D870, IsStopping @ 0x008FD010, the brain's virtual slot 2 (yield), CThing::GetPos @ 0x004C73D0, the physics
 // body's virtual slot 74 (+0x128, set orientation), Terminate @ 0x008FCF40.
 // Data: the reciprocal-square-root mantissa table @ 0x013CE558; 1.0f / 3.0f / 0.5f / 0.0f @ 0x0122DED8 / 0x0122DED4 /
 // 0x0122F59C / 0x0122DEDC.
@@ -60,7 +60,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     CPhysicsBody* PPhysics;                     // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) {
@@ -178,8 +178,8 @@ void CAIStateGroup_NymphFloatAround::Update()
     if (nymph->PTarget.GetPItem()) {
         const CThing* creature = GetCreature();
         const CThing* target = nymph->PTarget.GetPItem();
-        const C3DVector& from = creature->GetPosition();
-        const C3DVector& to = target->GetPosition();
+        const C3DVector& from = creature->GetPos();
+        const C3DVector& to = target->GetPos();
         C3DVector direction(to.X - from.X, to.Y - from.Y, 0.0f);
         if (direction.GetLengthSquared2D() > 1.0f) {
             direction.Normalise();

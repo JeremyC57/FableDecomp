@@ -1,8 +1,8 @@
 // CCreatureAction_TrollThrowProjectile::CCreatureAction_TrollThrowProjectile(CThingCreatureBase*, CThing*) -- base CCombatActionBase(owner, thing, 150, zeroed CSoundPair), own vtable, an empty projectile pointer, then the target thing's current position with the position flag clear
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C7400, length 123 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30, CBaseIntelligentPointer::CBaseIntelligentPointer
-// @ 0x00A01B10 (the member at +0x114, then the inline CIntelligentPointer vtable 0x01238C6C), CThing::GetPosition @ 0x004C73D0. Own vtable 0x01281694.
-// Shape: `ret 8`; the thing argument is kept in ebp for GetPosition; the sound pair is zeroed with immediates; TargetPos (a whole-vector BODY
+// @ 0x00A01B10 (the member at +0x114, then the inline CIntelligentPointer vtable 0x01238C6C), CThing::GetPos @ 0x004C73D0. Own vtable 0x01281694.
+// Shape: `ret 8`; the thing argument is kept in ebp for GetPos; the sound pair is zeroed with immediates; TargetPos (a whole-vector BODY
 // assignment through `lea edx,[esi+11Ch]`) and the cleared flag byte follow, as in the three-argument overload 0x008C7390.
 // Leaf: ??0CCreatureAction_TrollThrowProjectile@@QAE@PAVCThingCreatureBase@@PAVCThing@@@Z
 // The PDB header (CCreatureAction_TrollThrowProjectile.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
@@ -13,7 +13,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& other) : X(other.X), Y(other.Y), Z(other.Z) { }   // memberwise copy constructor (fixed-offset moves);
 };                                                                                 // assignment stays implicit (re-based through `lea`)
 class CThing { public:
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 class CSoundPair { public:
     long m_first;
@@ -58,6 +58,6 @@ class CCreatureAction_TrollThrowProjectile : public CCombatActionBase { public: 
 CCreatureAction_TrollThrowProjectile::CCreatureAction_TrollThrowProjectile(CThingCreatureBase* owner, CThing* thing)
     : CCombatActionBase(owner, thing, 150, CSoundPair())
 {
-    TargetPos = thing->GetPosition();
+    TargetPos = thing->GetPos();
     TargetIsPosition = false;
 }

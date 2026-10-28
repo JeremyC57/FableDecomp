@@ -74,6 +74,9 @@ class CAIBrain { public:
 };
 
 class CAIStateGroupBase { public:
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08();
@@ -91,7 +94,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
@@ -153,7 +158,7 @@ class CMessageEventManager;
 class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
-    CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+    CMessageEventManager* GetPMessageManager() const { return m_pMessageManager; }
 };
 
 typedef CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_HasExtraData> CWarningFilter;
@@ -168,7 +173,6 @@ struct CThingUID {                              // CThing's 64-bit UID at +0x18 
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
-    CWorld* GetPThingWorld();               // 0x008FCFA0
 };
 
 struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBaseW {
@@ -180,7 +184,7 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBaseW {
 
 bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsAnotherGuardAdmonishingPlayer()
 {
-    CMessageEvent* event = GetPThingWorld()->GetPMessageManager()->FindMostRecentMessage(
+    CMessageEvent* event = PeekWorld().GetPMessageManager()->FindMostRecentMessage(
         CMessageEventFilter_IsOfType(0x1b) && CMessageEventFilter_HasExtraData());
     if (event) {
         CThingUID* creature = (CThingUID*)PBrain->PCreature;

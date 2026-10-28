@@ -1,6 +1,6 @@
 // CTCCoopSpirit::GetFocalPos() const -- the parent thing's position raised by 0.2 on Z, returned by value
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0066FFD0, length 39 bytes (+ int3 padding).
-// Callees: CThing::GetPosition @ 0x004C73D0 (returns a const C3DVector&; the manifest label
+// Callees: CThing::GetPos @ 0x004C73D0 (returns a const C3DVector&; the manifest label
 // "CVertexBufferWin32::DoSizeof" is propagated). Float pool: 0.2f @ 0x012305A0.
 // Layout = Ego_r.pdb CTCCoopSpirit: CTCBase::ParentThing +4.
 // Shape: C3DVector has a memberwise user copy constructor, so it returns through the hidden pointer
@@ -13,7 +13,7 @@ class C3DVector { public:
 };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 
 class CTCCoopSpirit { public:
@@ -24,7 +24,7 @@ class CTCCoopSpirit { public:
 
 C3DVector CTCCoopSpirit::GetFocalPos() const
 {
-    const C3DVector& position = ParentThing->GetPosition();
+    const C3DVector& position = ParentThing->GetPos();
     C3DVector focal;
     focal.X = position.X;
     focal.Y = position.Y;

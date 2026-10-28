@@ -4,7 +4,7 @@
 // Body: if !thing.IsValid() (CScriptThing slot 75, +0x12c) return; OpenDoor(thing) (slot 425, +0x6a4); JamDoor(thing)
 // (slot 429, +0x6b4); door = thing.GetThing() (slot 11, +0x2c); World->PMessageEventManager->AddMessage(0x46, 50,
 // C3DVector(0, 0, 0), 0, 0, 0.0f, 0.0f, door) (0x00687540); hero = PlayerManager->GetMainPlayer() (0x00449970)
-// .GetPPlayerCharacter() (0x00487DC0); if hero, hero alive (Dead +0x91 bit 0) and door->GetTC<CTCEntityEvents>(&events)
+// .GetPControlledCreature() (0x00487DC0); if hero, hero alive (Dead +0x91 bit 0) and door->GetTC<CTCEntityEvents>(&events)
 // (TC 0x42: UsingComponents bit test, Components lower_bound 0x0040F020): events->AddEvent(new
 // NEntityEvents::CEventItemUsed(*hero)) (operator new 0x10, ctor 0x006A0750, AddEvent 0x008113C0; a null new passes 0).
 // Names: OpenDoor / JamDoor are the RTTI vtable's PDB names for slots 425 / 429; AddMessage / CEventItemUsed(CThing&) /
@@ -56,7 +56,7 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager {
 public:
@@ -199,7 +199,7 @@ void CGameScriptInterface::EntitySetAsPickLocked(const CScriptThing& thing) cons
     JamDoor(thing);
     CThing* door = thing.GetThing();
     World->PMessageEventManager->AddMessage(MESSAGE_EVENT_0x46, 50, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, door);
-    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCEntityEvents* events;
     if (hero && !hero->IsDead() && door->GetTC(&events))
         events->AddEvent(new NEntityEvents::CEventItemUsed(*hero));

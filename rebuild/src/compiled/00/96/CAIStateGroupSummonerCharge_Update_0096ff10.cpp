@@ -7,7 +7,7 @@
 //          SetCurrentAction @ 0x006644F0 / IsPerformingAnyAction @ 0x006622A0 / StopCurrentAction @ 0x00662650,
 //          CAIStateGroupBase::GetPWorld @ 0x008FCFC0 / Terminate @ 0x008FCF40 / AIAction_DoNothing @ 0x0097E200 /
 //          AIAction_CombatPerformActionAndWait @ 0x0097DA40, CWorld::GetWorldFrame @ 0x0049D870, CCurrentAction::GetActionCode
-//          @ 0x00692620, CThing::GetPosition @ 0x004C73D0, CCreatureAction_SummonerChargeOutOf ctors @ 0x00970420 /
+//          @ 0x00692620, CThing::GetPos @ 0x004C73D0, CCreatureAction_SummonerChargeOutOf ctors @ 0x00970420 /
 //          0x00970370, g_FramesPerSecond @ 0x01375550.
 // Layout: CAIStateGroupBase PBrain +0x04; CAIStateGroup_SummonerCharge PTarget +0x14, PDef +0x1c, NextFrameToCharge +0x20;
 //          CAIBrain PCreature +0x18; CThing PBody +0x60 (Radius +0x34), interface bitset +0x20, map +0x44, flags +0x91;
@@ -40,7 +40,7 @@ class CThing { public:
     CThingPhysicsBody* PBody;                   // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -175,8 +175,8 @@ void CAIStateGroup_SummonerCharge::Update()
             } else {
                 CThingCreatureBase* creature = GetCreature();
                 CThing* target = PTarget.GetPItem();
-                const C3DVector& from = creature->GetPosition();
-                const C3DVector& to = target->GetPosition();
+                const C3DVector& from = creature->GetPos();
+                const C3DVector& to = target->GetPos();
                 float distanceSquared = C2DVector(to.x - from.x, to.y - from.y).GetLengthSquared();
                 if (distanceSquared < reach * reach) {
                     reached = true;

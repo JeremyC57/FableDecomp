@@ -74,12 +74,10 @@ struct KickOffCreditsScreenResolvedOverlay
     unsigned char m_Pad41[0x03];
     KickOffCreditsScreenInterfaceMap m_InterfaceMap44;
 };
+class CThingPlayerCreature : public KickOffCreditsScreenResolvedOverlay { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
-typedef void* (__fastcall* Helper00449970Fn)(void*);
-typedef KickOffCreditsScreenResolvedOverlay* (__fastcall* Helper00487DC0Fn)(void*);
-
-extern "C" void* __fastcall Helper00449970(void* value);
-extern "C" KickOffCreditsScreenResolvedOverlay* __fastcall Helper00487DC0(void* value);
+extern "C" CPlayer* __fastcall Helper00449970(void* value);
 
 void CGameScriptInterface::KickOffCreditsScreen(
     CCharString& screenName)
@@ -88,7 +86,7 @@ void CGameScriptInterface::KickOffCreditsScreen(
         (const CGameScriptInterfaceOverlay*)this;
     CTCCreditsUI* creditsUI = 0;
     KickOffCreditsScreenResolvedOverlay* resolved =
-        Helper00487DC0(Helper00449970(self->m_Field14));
+        Helper00449970(self->m_Field14)->GetPControlledCreature();
 
     if ((resolved->m_Flags40 & 0x02) != 0)
     {

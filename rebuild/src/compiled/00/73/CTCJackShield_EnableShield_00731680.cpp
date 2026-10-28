@@ -7,7 +7,7 @@
 //   GetInterface), the interface-0x79 component's (bool) method @ 0x00787580 (label "CTCSwitchableNavigation::
 //   InitialActivate" is propagated: that is a no-argument slot, this body is `ret 4`), CBaseIntelligentPointer::GetPItem
 //   @ 0x00A01B50 / ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10 (CIntelligentPointer<CThing> vtable
-//   0x01238C6C), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPosition
+//   0x01238C6C), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPos
 //   @ 0x004C73D0 (label "CVertexBufferWin32::DoSizeof" is propagated: `mov eax,[ecx+60h] ; add eax,0Ch`),
 //   CTCDParticleEmitter::Create(const CCharString&, const C3DVector&, bool) @ 0x006E0970 (static `__fastcall`),
 //   CThing::Kill(bool) @ 0x004C9B80.
@@ -68,7 +68,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
     void Kill(bool silent);                                 // 0x004C9B80
 };
 class CTCSwitchableNavigation { public:
@@ -123,7 +123,7 @@ void CTCJackShield::EnableShield(bool enable)
     if (enable) {
         if (!PEmitter.IsAlive()) {
             CThing* emitter = CTCDParticleEmitter::Create("JACK_OF_BLADES_SHIELD_01",
-                                                          ParentThing->GetPosition(), false);
+                                                          ParentThing->GetPos(), false);
             if (emitter)
                 PEmitter = CIntelligentPointer<CThing>(emitter);
         }

@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007CC2B0, 352 bytes (+ int3 padding), `ret`. Speed TU (esp frame).
 // Callees: CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580, the special-effects def's
 //   CalcAndLookup(const CCharString&, long*) @ 0x00669D30 (label "CCRC::CalcAndLookup" is propagated; as the landed
-//   0x008C4170), CCharString(const char*, long = -1) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPosition
+//   0x008C4170), CCharString(const char*, long = -1) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CThing::GetPos
 //   @ 0x004C73D0, CreateParticleEffect(long, const C3DVector&) @ 0x0072AB70 (`__fastcall`), CBaseIntelligentPointer
 //   ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for CTCDParticleEmitter, type
@@ -111,7 +111,7 @@ public:
     CInterfaceMap m_interfaces;                        // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                           // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     bool IsDead() const { return (m_flags91 & 1) != 0; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -187,7 +187,7 @@ void CTCMultiArrow::CreateAmmoEffect()
     long effectIndex = 0;
     if (PDef->GetSubDef(&effects)) {
         if (effects->CalcAndLookup("AMMO_EFFECT", &effectIndex)) {
-            CIntelligentPointer<CThing> effect(CreateParticleEffect(effectIndex, ParentThing->GetPosition()));
+            CIntelligentPointer<CThing> effect(CreateParticleEffect(effectIndex, ParentThing->GetPos()));
             if (IS_THING_ALIVE(effect)) {
                 CTCDParticleEmitter* emitter;
                 effect.GetPItem()->GetInterface(&emitter, 0x4b);

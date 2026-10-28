@@ -1,6 +1,6 @@
 // CTCLook::UpdateHeadPos() -- refresh the cached head position from the parent creature, except while the cache timer runs and the thing is more than 8 units from the camera; restart the timer when the head barely moved
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752000, length 280 bytes (+ int3 padding), plain `ret`.
-// Callees: CTCBase::GetWorld() @ 0x00686A70, CThing::GetPosition() const @ 0x004C73D0, the world's virtual slot 8 (+0x20,
+// Callees: CTCBase::GetWorld() @ 0x00686A70, CThing::GetPos() const @ 0x004C73D0, the world's virtual slot 8 (+0x20,
 // a C3DVector by hidden pointer: the camera position; name descriptive), CTCLook::ShouldGetExactHeadPos() @ 0x00751BC0
 // (name descriptive: the bool handed to the creature), CThingCreatureBase::GetHeadPos(bool) @ 0x00661B40.
 // Globals: 64.0f 0x0126973C (8 units squared), the .data tunables 0x013826A0 (float tolerance) and 0x01375550 (long frame
@@ -24,7 +24,7 @@ class CWorld { public:
     virtual C3DVector GetCameraPosition();     // slot 8 (+0x20)
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;      // 0x004C73D0
+    const C3DVector& GetPos() const;      // 0x004C73D0
 };
 class CThingCreatureBase { public:
 public:
@@ -68,7 +68,7 @@ void CTCLook::UpdateHeadPos()
 {
     if (!PDef->AlwaysUpdateHeadPos) {
         CWorld* world = (&GetWorld());
-        const C3DVector& thingPos = ParentThing->GetPosition();
+        const C3DVector& thingPos = ParentThing->GetPos();
         C3DVector toCamera = world->GetCameraPosition() - thingPos;
         if (HeadCacheTimer > 0 && toCamera.MagnitudeSquared() > 64.0f) {
             --HeadCacheTimer;

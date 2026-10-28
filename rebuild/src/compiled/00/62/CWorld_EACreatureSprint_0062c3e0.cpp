@@ -4,7 +4,7 @@
 // Retail: Fable.exe @ 0x0062C3E0, 208 bytes (/GS cookie 0x0139C8A8). PDB ?EACreatureSprint@CWorld@@QAEXPBVCGameEvent@@@Z
 // Callees: CGameEvent::GetData 0x009F17A0 (label "CEventPacket::CopyToBuffer"), CMemoryBuffer::Read(unsigned long,
 // void*) 0x009F18F0 (label "CircularBuffer_Read"), CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"),
-// CPlayer::GetHeroThing 0x00487DC0, CInterfaceMap::LowerBound 0x0040F020, CTCHeroSpecialMovement::SetSprinting(bool)
+// CPlayer::GetPControlledCreature 0x00487DC0, CInterfaceMap::LowerBound 0x0040F020, CTCHeroSpecialMovement::SetSprinting(bool)
 // 0x007E0670, __security_check_cookie 0x00BFE9F9.
 // Layout (retail CThing): interface bitset +0x20 (TC 0xDF = CTCHeroSpecialMovement, word +0x38 bit 31 -> sign test),
 // interface map +0x44, Dead +0x91 bit 0; CTCHeroSpecialMovement::Sprinting +0x0C (PDB).
@@ -58,6 +58,7 @@ class CThing { public:
         return (T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCHeroSpecialMovement { public:
     unsigned char _pad00[0x0c];
@@ -65,7 +66,7 @@ class CTCHeroSpecialMovement { public:
     bool          Running;                         // +0x0D
     void SetSprinting(bool sprinting);             // 0x007E0670
 };
-class CPlayer { public: CThing* GetHeroThing(); };          // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 
 class CWorld { public:
     CPlayer* GetPlayer(long number);               // 0x0049D850
@@ -82,7 +83,7 @@ void CWorld::EACreatureSprint(const CGameEvent* event)
         buffer.Read(4, &value);
         sprint = value != 0;
     }
-    CThing* hero = GetPlayer(event->Player)->GetHeroThing();
+    CThing* hero = GetPlayer(event->Player)->GetPControlledCreature();
     if (hero && !hero->Dead && hero->HasTC(0xDF))
     {
         CTCHeroSpecialMovement* movement = hero->GetTC<CTCHeroSpecialMovement>(0xDF);

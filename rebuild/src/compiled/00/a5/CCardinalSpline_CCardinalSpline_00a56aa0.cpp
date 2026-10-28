@@ -50,7 +50,9 @@ public:
     typedef Alloc allocator_type;
     typedef unsigned int size_type;
     explicit vector(const allocator_type& a = allocator_type()) : _Vector_base<T, Alloc>(a) { }
+    protected:
     void _M_insert_overflow(T* position, const T& x, const __false_type&, size_type fill_len, bool atend);   // 0x0066E370
+    public:
     void push_back(const T& x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B2E20, length 432 bytes (thiscall, `ret 4`; 0x1AB bytes + int3).
 // Identity: Ego_r.pdb ?ReportAllPendingCrimes@CTCGuard@@QAEXPAVCTCVillage@@@Z. The catalog label
 //   "CTCVillage_ProcessDeedReports" is descriptive. Same TU as the landed CTCGuard::WitnessedCrime 0x007B2FD0.
-// Callees: CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetHeroCreature 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::
+// Callees: CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetPControlledCreature 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::
 //   LowerBound 0x0040F020 (interfaces 0x51 hero deed log, 0x4F creature opinion of hero), CTCVillage::ReportCrime(long)
 //   0x0065CB6B, CTCCreatureOpinionOfHero::KnowsOfDeed(long, EOpinionDeedType, bool) const 0x00681AE0,
 //   CTCCreatureOpinionOfHero::InformOfDeed(long, bool) 0x00683590, CTCHeroOpinionDeedLog::GetDeedEffectsDef(long)
@@ -44,8 +44,9 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetHeroCreature();                          // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CWorld { public:
     CPlayer* PeekMyPlayer() const;                      // 0x0049D9D0
@@ -191,7 +192,7 @@ public:
 void CTCGuard::ReportAllPendingCrimes(CTCVillage* village)
 {
     if (village) {
-        CThing* hero = g_pMainGameComponent->World->PeekMyPlayer()->GetHeroCreature();
+        CThing* hero = g_pMainGameComponent->World->PeekMyPlayer()->GetPControlledCreature();
         CTCHeroOpinionDeedLog* log = 0;
         if (hero)
             hero->GetInterface(&log, 0x51);

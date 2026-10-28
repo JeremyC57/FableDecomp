@@ -2,7 +2,7 @@
 // Leaf: ?Initialise@CCombatAction_KickThingOnGround
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087E860, 880 bytes, plain `ret` (virtual, vtable 0x01277D3C).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CCharString ctor/dtor 0x0099EBF0 /
-//   0x0099EAE0, CCombatActionBase::SetAnimationName 0x008574D0 and Initialise 0x00857520, CThing::GetPosition 0x004C73D0,
+//   0x0099EAE0, CCombatActionBase::SetAnimationName 0x008574D0 and Initialise 0x00857520, CThing::GetPos 0x004C73D0,
 //   the physics virtual slot 70 GetFacing (+0x118), CThingAICreature::SetSuspendAnimation 0x00833A10, CThing::AddTC
 //   0x004C9D60 ("CTCSolidToThing"), CTCSolidToThing::AddThingNotSolidTo 0x00770FA0, the interface-map LowerBound
 //   0x004365B0 (interface 0x7F), its component's hit-location getter 0x00814BF0 (`mov eax,[ecx+18h]`),
@@ -68,7 +68,7 @@ class CThing { public:
     CTCPhysicsBase* m_pPhysics;                         // +0x60
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     CTCSolidToThing* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     CTCPhysicsBase* GetPhysics() const { return m_pPhysics; }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -147,7 +147,7 @@ void CCombatAction_KickThingOnGround::Initialise()
         side = 0.1f;
     }
     CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysics();
-    C3DVector position = PCreature.GetPItem()->GetPosition();
+    C3DVector position = PCreature.GetPItem()->GetPos();
     C3DVector facing = physics->GetFacing();
     C3DVector direction = -facing;
     if (IS_THING_ALIVE(PTarget)) {
@@ -167,15 +167,15 @@ void CCombatAction_KickThingOnGround::Initialise()
         }
         targetSolid->AddThingNotSolidTo(PCreature.GetPItem());
         creatureSolid->AddThingNotSolidTo(PTarget.GetPItem());
-        position = PTarget.GetPItem()->GetPosition();
+        position = PTarget.GetPItem()->GetPos();
         CTCHitLocations* hitLocations;
         if (PTarget.GetPItem()->GetInterface(&hitLocations, 0x7f)) {
             CHitLocation* location = hitLocations->GetHitLocation();
             if (location)
-                position = location->GetClosestPointToPos2D(PCreature.GetPItem()->GetPosition(), direction);
+                position = location->GetClosestPointToPos2D(PCreature.GetPItem()->GetPos(), direction);
         }
     }
-    position.Z = PCreature.GetPItem()->GetPosition().Z;
+    position.Z = PCreature.GetPItem()->GetPos().Z;
     MoveToPos = position;
     direction.Z = 0.0f;
     if (direction.X * direction.X + direction.Y * direction.Y > g_epsilon_0129ba3c * g_epsilon_0129ba3c) {

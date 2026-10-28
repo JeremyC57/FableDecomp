@@ -52,7 +52,9 @@ template <class T, class A = allocator<T> > class list : public _List_base<T, A>
 public:
     typedef _List_node<T> _Node;
     typedef _List_iterator<T> iterator;
+    protected:
     _Node* _M_create_node(const T& x);                      // 0x00DA0200
+    public:
     iterator end() { return iterator(this->_M_node._M_data); }
     iterator insert(iterator position, const T& x)
     {

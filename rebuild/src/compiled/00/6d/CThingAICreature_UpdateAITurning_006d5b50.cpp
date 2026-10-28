@@ -1,7 +1,7 @@
 // CThingAICreature::UpdateAITurning(const C3DVector& movement) -- pick the creature's look target from its AI turn state (a fixed position, a live target thing's head helper / helper point / position, or its own position plus the movement when that is long enough) and hand it to the look component (TC 0x43)
 // Leaf: UpdateAITurning
 // Callees: GetPItem 0xA01B50, 0x661E80 (byte-identical to the landed CText::GetAlignment; here a CThingAICreature flag query), CTCGraphicAppearance 0x4C10E0 / 0x4C1060(1.0f) (by-value C3DVector),
-//   CThing::GetPosition 0x4C73D0, LowerBound 0x40F020, CTCLook::LookAtPos 0x753E90.
+//   CThing::GetPos 0x4C73D0, LowerBound 0x40F020, CTCLook::LookAtPos 0x753E90.
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
@@ -35,7 +35,7 @@ class CThing { public:
     CTCGraphicAppearance* PGraphicAppearance;               // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Dead : 1;                                 // +0x91
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     __forceinline CTCBase* GetTC(long interfaceType)
     {
@@ -82,10 +82,10 @@ void CThingAICreature::UpdateAITurning(const C3DVector& movement)
                 target = app->GetHelperPointOrCentre(1.0f);
             }
         } else {
-            target = PTurnState->GetThing()->GetPosition();
+            target = PTurnState->GetThing()->GetPos();
         }
     } else if (PTurnState->IsFacingMovement() && GetLengthSquared(movement) > 0.0001f) {
-        target = GetPosition() + movement;
+        target = GetPos() + movement;
     } else {
         return;
     }

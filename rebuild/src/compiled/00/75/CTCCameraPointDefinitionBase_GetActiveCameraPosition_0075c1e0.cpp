@@ -9,7 +9,7 @@
 //   GetActiveCameraPosition); Ego_r.pdb has exactly two out-of-line GetActiveCameraPosition bodies,
 //   `?GetActiveCameraPosition@CTCCameraPointDefinitionBase@@MBE?AVC3DVector@@XZ` (protected virtual const) and the
 //   CTCCameraPointTrack override -- this is the base one (no GetTrackPosition member exists in either PDB).
-// Callees: CThing::GetPosition() const @ 0x004C73D0 (a reference to the physics position).
+// Callees: CThing::GetPos() const @ 0x004C73D0 (a reference to the physics position).
 // Shape: the vector comes back through the hidden pointer (`ret 4`, eax = result). The copy is three dword moves
 //   alternating edx/eax with the result pointer loaded once into ecx: a MEMBERWISE user copy constructor over dword
 //   members (an implicit POD copy pulls in esi; float members would go through the x87), so the engine's float X/Y/Z
@@ -27,7 +27,7 @@ public:
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 class CTCBase {
@@ -45,5 +45,5 @@ protected:
 
 C3DVector CTCCameraPointDefinitionBase::GetActiveCameraPosition() const
 {
-    return ParentThing->GetPosition();
+    return ParentThing->GetPos();
 }

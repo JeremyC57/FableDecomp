@@ -22,7 +22,7 @@ public:
 };
 
 class CBaseClassNonCopyable {
-public:
+protected:                                         // ctor and virtual dtor are protected (IAE / MAE)
     CBaseClassNonCopyable();                       // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };
@@ -57,8 +57,10 @@ class vector : protected _Vector_base<_Tp, _Alloc> {
 public:
     typedef _Alloc allocator_type;
     vector() : _Vector_base<_Tp, _Alloc>(allocator_type()) { }
+    protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&, unsigned int __fill_len,
                             bool __atend = false);                       // 0x00433530
+    public:
     void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

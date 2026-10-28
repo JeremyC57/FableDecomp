@@ -1,6 +1,6 @@
 // CGameScriptInterface::RemoveHeroHairstyle() const -- removes the hero's hairstyle appearance modifiers
 // Leaf: RemoveHeroHairstyle@CGameScriptInterface
-// Retail: Fable.exe @ 0x0089B4D0, 91 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPPlayerCharacter 0x00487DC0,
+// Retail: Fable.exe @ 0x0089B4D0, 91 bytes. Calls CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0,
 // then CThing::GetTC<CTCHeroAttachableAppearanceModifiers> (Ego_r.pdb bool/out-pointer form; Components lower_bound 0x0040F020); CTCHeroAttachableAppearanceModifiers::RemoveAllAppearanceModifiers 0x00706640.
 // Layout: CGameScriptInterface per engine/CGameScriptInterface.h (+0x14 PlayerManager); CThing retail (UsingComponents +0x20,
 // Components +0x44, Dead +0x91 bit 0).
@@ -55,8 +55,8 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature*       GetPPlayerCharacter() const;       // 0x00487DC0
-    const CThingPlayerCreature* PeekPPlayerCharacter() const;      // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
 };
 class CPlayerManager {
 public:
@@ -80,7 +80,7 @@ public:
 
 void CGameScriptInterface::RemoveHeroHairstyle() const
 {
-    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroAttachableAppearanceModifiers* tc;
     if (hero && !hero->IsDead() && hero->GetTC(&tc))
         tc->RemoveAllAppearanceModifiers(HERO_APPEARANCE_MODIFIER_HAIRSTYLE);

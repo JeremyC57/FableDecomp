@@ -1,7 +1,7 @@
 // CAIStateGroup_BoastingCrowdMember::IsRunnable() -- the live hero runs a boasting crowd (interface 0x73) whose current group is active (state not 0 or 10) and accepts this creature: target the group's boaster
 // Retry 10b (combined getter sweep, FIXES B-15): the player manager and the brain's creature are read through inline getters (`g_pEngine->GetPlayerManager()`, `PBrain->GetCreature()`); plain member reads give the parked register difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095E790, length 209 bytes (+ int3 padding).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970 on the singleton 0x013B86A0's +0x1c, CPlayer::GetHeroThing @ 0x00487DC0,
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970 on the singleton 0x013B86A0's +0x1c, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (type 0x73 = word 3 bit 19),
 // CTCBoastingCrowdControl::GetCrowdGroup(CThing*, CCrowdGroup**) @ 0x00783730, the group's virtual slot 28 (+0x70),
 // CIntelligentPointer<..>::CIntelligentPointer(CThing*) @ 0x004A96F0 and ::operator= @ 0x004A9760 (out of line in this TU),
@@ -41,8 +41,9 @@ class CThing
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
-class CPlayer { public: CThing* GetHeroThing(); };                     // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                     // 0x00487DC0
 class CPlayerManager { public: public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };            // 0x00449970
@@ -104,7 +105,7 @@ struct CAIStateGroup_BoastingCrowdMember
 
 bool CAIStateGroup_BoastingCrowdMember::IsRunnable()
 {
-    CThing* hero = g_pEngine->GetPlayerManager()->GetMainPlayer().GetHeroThing();
+    CThing* hero = g_pEngine->GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     CCrowdGroup* group;
     CTCBoastingCrowdControl* crowd;
     if (hero && !(hero->m_flags91 & 1) && hero->GetInterface(0x73, &crowd))

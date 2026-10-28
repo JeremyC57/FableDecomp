@@ -4,7 +4,7 @@
 // CGameScriptThingManager::FrameUpdate 0x007047D0, CQuestManager::IsQuestActive(const CCharString&) 0x004AF610
 // (propagated label "CQuest_Array_FindByName"), CQuestManager::DeactivateQuest(const CCharString&, unsigned long)
 // 0x004B43D0, ~CCharString 0x0099EAE0 and free 0x00BFEA14 (the inline list clear), CScriptBase::UpdateScript
-// 0x00CB8220 (propagated label "_Dest_val<...>"), CPlayer::GetHeroThing 0x00487DC0, ResetPositionOfAllQuestCards
+// 0x00CB8220 (propagated label "_Dest_val<...>"), CPlayer::GetPControlledCreature 0x00487DC0, ResetPositionOfAllQuestCards
 // 0x004AFCA0.
 // Layout (retail, Ego_r.pdb with 12-byte vectors and 4-byte lists): PGameScriptThingManager +0x04, ActiveQuests
 // (list<CCountedPointer<CActiveQuest>>, head pointer) +0x38, PendingQuestsToDeactivate (list<pair<CCharString, unsigned
@@ -21,10 +21,11 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 
+class CThingPlayerCreature;
 class CPlayer { public:
     unsigned char _pad0[0x28];
     long          PlayerID;                            // +0x28
-    class CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                          // 0x00449970
@@ -41,6 +42,7 @@ class CThing { public:
     unsigned char _pad90;
     unsigned char Dead : 1;                            // +0x91 bit 0
 };
+class CThingPlayerCreature : public CThing { };
 
 class CGameScriptThingManager { public:
     void FrameUpdate();                                // 0x007047D0
@@ -134,7 +136,7 @@ void CQuestManager::Update()
             PQuestCurrentlyRunning = 0;
         }
     }
-    CThing* hero = player->GetHeroThing();
+    CThing* hero = player->GetPControlledCreature();
     if (hero != 0 && !hero->Dead && hero->MapNumber != HeroMapNumber) {
         ResetPositionOfAllQuestCards();
         HeroMapNumber = hero->MapNumber;

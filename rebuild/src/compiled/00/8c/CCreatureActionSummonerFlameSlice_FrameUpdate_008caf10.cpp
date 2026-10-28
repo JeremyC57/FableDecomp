@@ -1,7 +1,7 @@
 // CCreatureAction_SummonerFlameSlice::FrameUpdate() -- base FrameUpdate, then while the flame-slice thing is alive and carries its obstruction (interface type 0xed), stretch the obstruction over the summoner (start, end, twice the summoner's radius)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CAF10, length 130 bytes (+ int3 padding).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the slice thing at +0x114
-// three times, PCreature at +8 three times), CThing::GetPosition @ 0x004C73D0 (const C3DVector&, twice), the obstruction shape setter @ 0x007FD3F0
+// three times, PCreature at +8 three times), CThing::GetPos @ 0x004C73D0 (const C3DVector&, twice), the obstruction shape setter @ 0x007FD3F0
 // (start -> +0x0c, end -> +0x18, width -> +0x28; the manifest "CInputManager::UpdateChecksum" label is propagated).
 // Shape: the landed IS_THING_ALIVE idiom, then the slice thing held from its third fetch: the inlined HasTC probe (`mov ecx,[eax+3Ch] ; test ch,20h`
 // = type 0xed) and its obstruction pointer (+0x5c) read straight away into edi. The setter is reached through an inline forwarder whose by-value
@@ -21,14 +21,14 @@ class CThing { public:
     CTCPlacement* m_pPlacement;             // +0x60
     unsigned char _pad64[0x91 - 0x64];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
 struct CObstructionShape {
     void Set(const C3DVector& start, const C3DVector& end, float width);   // 0x007FD3F0
     void SetBetween(CThing* start, CThing* end, CTCPlacement* placement)
     {
-        Set(start->GetPosition(), end->GetPosition(), placement->m_radius * 2.0f);
+        Set(start->GetPos(), end->GetPos(), placement->m_radius * 2.0f);
     }
 };
 struct CBaseIntelligentPointer {

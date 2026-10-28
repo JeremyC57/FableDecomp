@@ -96,8 +96,12 @@ public:
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
 
+    protected:
     pointer _M_allocate_and_copy(size_type n, const_pointer first, const_pointer last);   // 0x0043212B
+    public:
+    protected:
     void _M_clear();                                                                     // 0x0043211D
+    public:
 
     vector<T, A>& operator=(const vector<T, A>& x);
 };

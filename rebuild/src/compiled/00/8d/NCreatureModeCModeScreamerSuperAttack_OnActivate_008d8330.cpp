@@ -4,7 +4,7 @@
 //   long) 0x00833A10, CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget +0x74, twice), CDefClassBase::GetSubDef<
 //   CSpecialEffectsDef>(CDefPointer<CSpecialEffectsDef>&) 0x00669580, CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30 (result
-//   ignored), CThing::GetPosition 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool) 0x006E0880,
+//   ignored), CThing::GetPos 0x004C73D0, __fastcall CreateEffectThing(long, const C3DVector*, bool) 0x006E0880,
 //   CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / dtor 0x00A01C10.
 // Layout: Ego_r.pdb CModeScreamerSuperAttack (0x84): PTarget +0x74, PLightningBeamParticleEmitter +0x7C; CModeStandBase
 //   ParentThing +0x04. Thing (retail offsets): state byte +0x10, PBaseDef +0x70, Dead bit 0 of +0x91.
@@ -77,7 +77,7 @@ class CThing : public CThingAnimatable { public:
     CDefClassBase* PBaseDef;                    // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  Dead : 1;                    // +0x91 bit 0
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     void GetSpecialEffectsDef(CDefPointer<CSpecialEffectsDef>& out) const
     {
         CDefClassBase* def = PBaseDef;
@@ -134,7 +134,7 @@ void CModeScreamerSuperAttack::OnActivate()
     CDefPointer<CSpecialEffectsDef> slot;
     ParentThing->GetSpecialEffectsDef(slot);
     slot.m_p->GetEffectFromString("SUPER_ATTACK_BEAM", effectType);
-    CThing* beam = CreateEffectThing(effectType, &ParentThing->GetPosition(), false);
+    CThing* beam = CreateEffectThing(effectType, &ParentThing->GetPos(), false);
     if (beam && !beam->Dead)
         PLightningBeamParticleEmitter = CIntelligentPointerThing(beam);
 }

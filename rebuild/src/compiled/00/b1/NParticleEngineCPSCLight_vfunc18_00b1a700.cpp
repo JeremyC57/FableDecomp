@@ -1,10 +1,25 @@
-// 00B1A700 NParticleEngine::CPSCLight::vfunc_18, 361 retail bytes.
+// NParticleEngine::CPSCLight::DatabaseCopy(const CPSCBase& other) -- copy the light's database fields; retail 0x00B1A700, 361 bytes (vtable slot 18).
+// Leaf: DatabaseCopy
 // The vtable maps this entry to CPSCLight slot 18. No generated CPSCLight header is
 // present, so this local model follows struct_layouts_egor.tsv (112-byte CPSCLight).
 // The copy order and bit units are confirmed by adjacent DatabaseCopy code and retail
 // loads. LightUserPointsArray is the PDB CArray<C3DVector>, a 12-byte STLport vector;
 // its reserve is 0x00920FF0 and resize is 0x0075C040. Timer state, primitive handle,
 // and StartedTimer are intentionally not copied.
+class C3DVector { public: float X, Y, Z; C3DVector() {} };   // retail class key V (Ego_r.pdb VC3DVector@@)
+namespace std {
+template <class T> class allocator { };
+template <class T, class A = allocator<T> > class vector {      // STLport vector (12 bytes)
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
+    T& operator[](unsigned int n) const { return _M_start[n]; }
+    void reserve(unsigned int count);                           // 0x00920FF0 ?reserve@?$vector@VC3DVector@@...@std@@QAEXI@Z
+    void resize(unsigned int newSize, const T& value = T());    // 0x0075C040 ?resize@?$vector@VC3DVector@@...@std@@QAEXIABVC3DVector@@@Z
+};
+}
 namespace NParticleEngine {
 class CParticleSystem;
 class CPSCBase { public:
@@ -14,16 +29,6 @@ class CPSCBase { public:
     bool Initialised : 1;
 };
 struct CRGBColour { unsigned int Colour; };
-struct C3DVector { float X, Y, Z; C3DVector() {} };
-struct CVector3D {
-    C3DVector* _M_start;
-    C3DVector* _M_finish;
-    C3DVector* _M_end_of_storage;
-    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
-    void reserve(unsigned int count);
-    void resize(unsigned int count, const C3DVector& value = C3DVector());
-    C3DVector& operator[](unsigned int i) const { return _M_start[i]; }
-};
 class CPSCLight : public CPSCBase { public:
     long LightLifeTimer;
     long LightRespawnDelayTimer;
@@ -56,7 +61,7 @@ class CPSCLight : public CPSCBase { public:
     CRGBColour LightEndColour;
     unsigned int PrimHandleData;
     unsigned int PrimHandleInfo;
-    CVector3D LightUserPointsArray;
+    std::vector<C3DVector> LightUserPointsArray;
     void DatabaseCopy(const CPSCBase& other);
 };
 void CPSCLight::DatabaseCopy(const CPSCBase& other)

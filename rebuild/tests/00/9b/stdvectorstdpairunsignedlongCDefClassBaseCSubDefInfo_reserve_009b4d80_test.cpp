@@ -19,7 +19,9 @@ template <class _T1, class _T2> struct pair {
 template <class T, class A = allocator<T> > class vector {
 public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
+protected:                                         // protected, as in the source (STLport 4.6)
     template <class ForwardIter> T* _M_allocate_and_copy(unsigned int n, ForwardIter first, ForwardIter last);
+public:
     void reserve(unsigned int n);
 };
 template <class T, class A> template <class ForwardIter>

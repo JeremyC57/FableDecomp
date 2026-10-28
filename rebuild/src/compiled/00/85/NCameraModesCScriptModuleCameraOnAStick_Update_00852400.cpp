@@ -1,7 +1,7 @@
 // NCameraModes::CScriptModuleCameraOnAStick::Update() -- look at the thing's position plus LocalRel and put the owning camera RelVector away from that point
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852400, length 144 bytes (133 + int3 padding).
-// Callees: CThing::GetPosition @ 0x004C73D0 (out of line here; returns `[this+60h]+0Ch`).
+// Callees: CThing::GetPos @ 0x004C73D0 (out of line here; returns `[this+60h]+0Ch`).
 // Shape: the look-at point is a named local filled field by field from the position reference
 // (`pos.X + LocalRel.X` loads the right operand first, straight into the frame -- `pos + LocalRel`
 // through operator+ adds a temporary copy); the camera position is `RelVector + lookAt` through the
@@ -23,7 +23,7 @@ class C3DVector { public:
 };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
 };
 
 struct CCameraState {
@@ -48,7 +48,7 @@ struct CScriptModuleCameraOnAStick {
 
 void CScriptModuleCameraOnAStick::Update()
 {
-    const C3DVector& pos = PThing->GetPosition();
+    const C3DVector& pos = PThing->GetPos();
     C3DVector lookAt;
     lookAt.X = pos.X + LocalRel.X;
     lookAt.Y = pos.Y + LocalRel.Y;

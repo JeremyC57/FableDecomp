@@ -1,7 +1,7 @@
 // COpinionReactionManager::GetHeroStatsInOpinionFormat(EOpinion opinion) const -- the controlled hero's stat that feeds an opinion type, as a float: 0 morality (scaled by the morality maximum, plus appearance goodness, limited to -1..1), 1 renown level fraction, 2 scariness, 3 agreeableness, 4 attractiveness; 0 without a hero or hero stats
 // Leaf: GetHeroStatsInOpinionFormat
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007009D0, 249 bytes + a 5-entry jump table (0x00700ACC), `ret 4`.
-// Callees: CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::GetControlledCreature 0x00487DD0, CVectorMap<ETCInterfaceType,
+// Callees: CWorld::PeekMyPlayer 0x0049D9D0, CPlayer::PeekPControlledCreature 0x00487DD0, CVectorMap<ETCInterfaceType,
 //   CTCBase*>::LowerBound 0x004365B0 (const; inlined HasTC + GetTC for CTCHeroStats, type 4), CTCHeroStats::GetMoralityMax
 //   0x0057A67E, `__fastcall` GFLimitReturn<float>(const float&, const float&, const float&) 0x0057EF86 (returns a reference).
 // Globals: the 0.0f constant 0x0122DEDC.
@@ -36,8 +36,9 @@ class CThing { public:
         return (const T*)sel->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature() const; // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
 };
 class CWorld { public:
 public:
@@ -71,7 +72,7 @@ class COpinionReactionManager { public:
 
 float COpinionReactionManager::GetHeroStatsInOpinionFormat(EOpinion opinion) const
 {
-    CThing* hero = World->PeekMyPlayer()->GetControlledCreature();
+    const CThing* hero = World->PeekMyPlayer()->PeekPControlledCreature();
     if (hero && hero->HasTC(4)) {
         const CTCHeroStats* stats = hero->GetTC<CTCHeroStats>(4);
         switch (opinion) {

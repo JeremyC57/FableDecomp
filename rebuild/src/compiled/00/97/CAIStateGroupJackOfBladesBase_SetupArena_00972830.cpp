@@ -1,7 +1,7 @@
 // CAIStateGroup_JackOfBladesBase::SetupArena() -- find the "FrescoCentre" thing within 50m (rough area) of the creature, latch it as the arena centre, and switch the camera manager to the CAMERA_MANAGER_SET_DEFAULT camera set
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00972830, length 352 bytes (+ int3 padding).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / CCharString(const CCharString&) @ 0x0099EC30 / ~CCharString
-//          @ 0x0099EAE0, CThing::GetPosition @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CAIStateGroupBase::PeekThingSearchTools
+//          @ 0x0099EAE0, CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CAIStateGroupBase::PeekThingSearchTools
 //          @ 0x008FD000, CThingSearchTools::GetPFirstThingInRoughArea<CThingFilter_HasDefGlobalIndex, CThing> @ 0x007FD110,
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable 0x01238C6C), CAIStateGroupBase::GetPWorld
 //          @ 0x008FCFC0, the world's +0x34 object virtual slot 9 (+0x24, camera manager out pointer),
@@ -38,7 +38,7 @@ class C2DBoxI { public:
 };
 
 class CThing { public:
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
 };
 class CThingFilter_HasDefGlobalIndex { public:
     CCharString DefName;
@@ -127,7 +127,7 @@ void CAIStateGroupJackOfBladesBaseMethods::SetupArena()
     {
         CThing* centre = 0;
         PeekThingSearchTools()->GetPFirstThingInRoughArea(
-            C2DBoxI(GetCreature()->GetPosition(), 50),
+            C2DBoxI(GetCreature()->GetPos(), 50),
             CThingFilter_HasDefGlobalIndex("FrescoCentre"), &centre);
         ArenaCentre() = CIntelligentPointer<CThing>(centre);
     }

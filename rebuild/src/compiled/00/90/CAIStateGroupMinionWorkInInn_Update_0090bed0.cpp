@@ -1,7 +1,7 @@
 // CAIStateGroup_MinionWorkInInn::Update() -- with a workplace: one time in five (Random(100) < 21) clean a bench; otherwise walk to a random point 0..6m from the workplace position (random heading), retrying while the move is in progress, and idle on arrival; terminate otherwise
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090BED0, length 400 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the creature's workplace pointer at +0x170),
-//          CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CleanBench @ 0x0090BD40, CThing::GetPosition
+//          CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CleanBench @ 0x0090BD40, CThing::GetPos
 //          @ 0x004C73D0, GFFloatRandom(float, unsigned long*) @ 0x004978A0 (__fastcall: the seed in ecx),
 //          C3DVector::RotateAboutZ @ 0x00A14260, CAIStateGroupBase::AIAction_MoveToPosProximity @ 0x0097E890 (C3DVector by
 //          value), AIAction_MinionIdle @ 0x0097FA00, Terminate @ 0x008FCF40.
@@ -20,7 +20,7 @@ class C3DVector { public:
     void RotateAboutZ(float angle, bool flag);  // 0x00A14260
 };
 class CThing { public:
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -89,7 +89,7 @@ void CAIStateGroup_MinionWorkInInn::Update()
         CleanBench();
         return;
     }
-    C3DVector workplace = GetCreature()->GetPWorkplace()->GetPosition();
+    C3DVector workplace = GetCreature()->GetPWorkplace()->GetPos();
     C3DVector offset(GFFloatRandom(6.0f, GetPWorldSeed()) + 0.0001f, 0.0f, 0.0f);
     offset.RotateAboutZ(GFFloatRandom(1.0f, GetPWorldSeed()), false);
     C3DVector target = offset + workplace;

@@ -1,9 +1,9 @@
 // CThingSwitch::TriggerPlayerResetWhenLeaves() -- re-arming area switch: if an initialised player's living hero is inside the trigger square and the switch is not already triggered, count the trigger and queue a CEventTriggered (component 0x42); the triggered flag ends up as "some hero is inside", so the switch re-arms once every hero has left
 // Leaf: TriggerPlayerResetWhenLeaves
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0083C800, length 388 bytes (plain `ret`).
-// Callees: as the sibling SwitchTriggerPlayerOnlyMultipleTimesInArea 0x0083C690 (same TU): CThing::GetPosition() const
+// Callees: as the sibling SwitchTriggerPlayerOnlyMultipleTimesInArea 0x0083C690 (same TU): CThing::PeekPos() const
 //   @ 0x006A4D00, player-manager accessors @ 0x004C79F0 (const) / 0x004C7A00, CPlayerManager::GetPlayer(long) const
-//   @ 0x00449910 / non-const @ 0x004498C0, CInitBaseClass::IsInitialised() const @ 0x0099A330, CPlayer::GetHeroCreature
+//   @ 0x00449910 / non-const @ 0x004498C0, CInitBaseClass::IsInitialised() const @ 0x0099A330, CPlayer::GetPControlledCreature
 //   @ 0x00487DC0, LowerBound @ 0x0040F020, operator new @ 0x00BFEA1A, NEntityEvents::CEventTriggered(CThing*)
 //   @ 0x0083CF20, CTCEntityEvents::AddEvent @ 0x008113C0.
 // Layout (retail): as the sibling, plus Triggered +0xdc (Ego_r.pdb +0xf4, CThingPhysical 0x18 lower).
@@ -40,9 +40,10 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);               // 0x0040F020
 };
 
+class CThingPlayerCreature;
 class CPlayer { public:
     bool IsInitialised() const;                         // 0x0099A330 (CInitBaseClass)
-    CThing* GetHeroCreature();                          // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetPlayer(long number);                    // 0x004498C0
@@ -74,8 +75,9 @@ class CThing { public:
 };
 
 class CThingPhysical : public CThing { public:
-    const C3DVector& GetPosition() const;               // 0x006A4D00
+    const C3DVector& PeekPos() const;               // 0x006A4D00
 };
+class CThingPlayerCreature : public CThingPhysical { };
 
 class CThingSwitch : public CThingPhysical { public:
     unsigned char _pad94[0xd0 - 0x94];
@@ -90,16 +92,16 @@ class CThingSwitch : public CThingPhysical { public:
 void CThingSwitch::TriggerPlayerResetWhenLeaves()
 {
     C2DBoxF area;
-    area.TLX = GetPosition().X - TriggerRadius;
-    area.TLY = GetPosition().Y - TriggerRadius;
-    area.BRX = GetPosition().X + TriggerRadius;
-    area.BRY = GetPosition().Y + TriggerRadius;
+    area.TLX = PeekPos().X - TriggerRadius;
+    area.TLY = PeekPos().Y - TriggerRadius;
+    area.BRX = PeekPos().X + TriggerRadius;
+    area.BRY = PeekPos().Y + TriggerRadius;
     bool inArea = false;
     for (long i = 0; i < 4; ++i) {
         const CThing* self = this;
         if (self->GetPlayerManager()->GetPlayer(i)->IsInitialised()) {
-            CThingPhysical* hero = static_cast<CThingPhysical*>(GetPlayerManager()->GetPlayer(i)->GetHeroCreature());
-            if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->GetPosition().X, hero->GetPosition().Y))) {
+            CThingPhysical* hero = static_cast<CThingPhysical*>(GetPlayerManager()->GetPlayer(i)->GetPControlledCreature());
+            if (hero && !hero->Dead && area.ContainsPoint(C2DVector(hero->PeekPos().X, hero->PeekPos().Y))) {
                 inArea = true;
                 if (!Triggered) {
                     ++TimesTriggered;

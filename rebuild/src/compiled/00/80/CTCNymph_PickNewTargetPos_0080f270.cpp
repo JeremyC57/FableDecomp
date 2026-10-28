@@ -1,13 +1,13 @@
 // CTCNymph::PickNewTargetPos() -- rebuild the five-point flight spline: from the last spline point (or the effect's position) through the effect's position to a point above the target (or the fly-around point), then two random valid positions around it raised to at least the target's height, each lifted to the ground height below plus a random flight height; restamp the target tick
 // Leaf: PickNewTargetPos
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080F270, 878 bytes, plain `ret`.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, CTCBase::GetWorld @ 0x00686A70,
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, CTCBase::GetWorld @ 0x00686A70,
 //   CTCBase::GetWorldMap @ 0x00686D30, NCreatureHiding::GetValidPositions @ 0x0074A5D0 (__fastcall),
 //   CWorldMap::GetHeightZBelowPos @ 0x0063E480, CTCNymph::GetRandomFlightHeight @ 0x0080F130, CWorld::GetPRandomSeed
 //   @ 0x0049D810, GFROR13 @ 0x00497890 (__fastcall), CWorld::GetWorldFrame @ 0x0049D870, free @ 0x00BFEA14 (vector storage).
 // Layout: as the landed CTCNymph::OnInitialActivate 0x0080FD90 (FlightSpline.ControlPoints +0x2C, HasSpline +0x5C,
 //   LastTargetTick +0x54); PTarget +0x68; CNymphDef CircleRange +0x34 (Ego_r.pdb); CWorld PThingSearchTools +0x20.
-// Shape: the effect position is a ternary of two GetPosition calls (VC merges the call); the def pointer is a named local
+// Shape: the effect position is a ternary of two GetPos calls (VC merges the call); the def pointer is a named local
 //   so it is held in edi across the GetWorld call; the search tools are a named reference; the first positions.size() is
 //   written twice (no named count) so the inlined random range keeps its zero test as retail.
 #include <stdlib.h>
@@ -134,7 +134,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 // Same-TU stand-in for the GetSubDef<T> COMDAT (as the landed 0x00801A50): with the body visible VC7.1 sees that the out
 // pointer does not escape and keeps the def object in ebp through to its release, as retail.
@@ -292,9 +292,9 @@ class CTCNymph : public CTCBaseFrame { public:
 
 void CTCNymph::PickNewTargetPos()
 {
-    C3DVector effectPos = PEffect.IsAlive() ? PEffect.GetPItem()->GetPosition() : ParentThing->GetPosition();
+    C3DVector effectPos = PEffect.IsAlive() ? PEffect.GetPItem()->GetPos() : ParentThing->GetPos();
     CPositionVector positions;
-    C3DVector targetPos = PTarget.IsAlive() ? PTarget.GetPItem()->GetPosition() : PointToFlyAround;
+    C3DVector targetPos = PTarget.IsAlive() ? PTarget.GetPItem()->GetPos() : PointToFlyAround;
     const CNymphDef* def = PDef;
     const CThingSearchTools& search = *GetWorld().PThingSearchTools;
     GetValidPositions(positions, GetWorldMap(), search, targetPos, def->CircleRange, false, 0);

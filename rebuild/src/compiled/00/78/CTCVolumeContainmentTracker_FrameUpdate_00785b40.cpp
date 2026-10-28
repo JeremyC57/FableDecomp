@@ -1,7 +1,7 @@
 // CTCVolumeContainmentTracker::FrameUpdate() -- while tracking is enabled and the tracked volume is active, re-runs the containment Update every 5 seconds' worth of frames (every 0.8 s when the camera is within 10 units of the thing), staggered by the thing's UID; immediately when the def says so or the tracker is not yet updated
 // Leaf: ?FrameUpdate@CTCVolumeContainmentTracker
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00785B40, 318 bytes (plain `ret`, ebp frame).
-// Callees: CTCBase::GetWorld() 0x00686A70; CThing::GetPosition() const 0x004C73D0; the world's slot 8 (+0x20) camera
+// Callees: CTCBase::GetWorld() 0x00686A70; CThing::GetPos() const 0x004C73D0; the world's slot 8 (+0x20) camera
 //          position getter (C3DVector by hidden pointer); GFGetCurrentFrame 0x0049D870; __allrem 0x00BFEC30;
 //          CTCVolumeContainmentTracker::Update() 0x00785620.
 // Globals: the tracking-enabled byte 0x01375757, g_framesPerSecond 0x01375550; constants 5.0f 0x0126B664, 0.8f 0x0126B660,
@@ -31,7 +31,7 @@ class CThing {
 public:
     unsigned char    _pad_0x00[0x18];
     unsigned __int64 UID;                       // +0x18
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 struct CVolumeContainmentTrackerDef {
     unsigned char _pad_0x00[0x25];
@@ -83,7 +83,7 @@ void CTCVolumeContainmentTracker::FrameUpdate()
     if (!PDef->AlwaysUpdate && PreviouslyUpdated) {
         long interval = CeilToLong(g_framesPerSecond * 5.0f);
         CWorldView* world = GetWorld();
-        const C3DVector& pos = ParentThing->GetPosition();
+        const C3DVector& pos = ParentThing->GetPos();
         if ((world->GetCameraPosition() - pos).GetMagnitudeSquared() < 100.0f)
             interval = CeilToLong(g_framesPerSecond * 0.8f);
         unsigned __int64 uid = ParentThing->UID;

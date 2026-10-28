@@ -1,7 +1,7 @@
 // CTCAssassinRush::SetupCameraOnStick() -- read the hero's camera-stick helper point; store it relative to the hero (LocalRelativeVectorForCamera) and the camera relative to it (RelativeVectorForCamera), then hand over to the camera setup
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007A9C80, length 221 bytes (+ int3 padding).
 // Callees: CTCGraphicAppearance::GetHelperPoint(const CCharString&, long, unsigned long, C3DVector*, float) @ 0x004C0560 (on
-// ParentThing+0x64, the helper-name CCharString global 0x013BAC4C), CThing::GetPosition @ 0x004C73D0, CTCBase::GetWorld
+// ParentThing+0x64, the helper-name CCharString global 0x013BAC4C), CThing::GetPos @ 0x004C73D0, CTCBase::GetWorld
 // @ 0x00686A70, CGameCameraManager::PeekCurrentPos (virtual slot 11, +0x2C, C3DVector by hidden pointer; world +0x34), and the next
 // member @ 0x007A9B10 (manifest "CCreatureAction_ReleasePhysicalShieldSpell::FinishAction" is propagated; it is called on
 // `this`, name unproven).
@@ -32,7 +32,7 @@ struct CTCGraphicAppearance {
 class CThing { public:
     unsigned char _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CGameCameraManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -70,7 +70,7 @@ void CTCAssassinRush::SetupCameraOnStick()
     C3DVector stick;
     if (!appearance->GetHelperPoint(g_CameraStickHelperName, 0, 0, &stick, 1.0f))
         return;
-    C3DVector heroPosition = ParentThing->GetPosition();
+    C3DVector heroPosition = ParentThing->GetPos();
     LocalRelativeVectorForCamera = stick - heroPosition;
     RelativeVectorForCamera = GetWorld().GetCameraManager()->PeekCurrentPos() - stick;
     SetupCameraFromStick_007a9b10();

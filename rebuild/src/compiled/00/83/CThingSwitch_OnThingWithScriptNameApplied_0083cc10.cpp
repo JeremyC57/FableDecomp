@@ -5,7 +5,7 @@
 //   the catalog calls it "CThingSwitch::vfunc_71".
 // Callees: CThing::GetDefinitionManager @ 0x004C7990, CDefinitionManager::GetDef<CThingSwitchDef>(long, CDefPointer&)
 //   @ 0x0083CFA0 (manifest "GetDef<CThingPhysicalSwitchDef>", propagated), the def's virtual slot 1 on the last release,
-//   Compare(const char*, const char*) @ 0x00411570 (`__fastcall`, the inlined CCharString equality), CThing::GetPosition()
+//   Compare(const char*, const char*) @ 0x00411570 (`__fastcall`, the inlined CCharString equality), CThing::PeekPos()
 //   const @ 0x006A4D00, the switch's virtual GetTriggerRadius (slot 62, +0xf8), LowerBound @ 0x0040F020, operator new
 //   @ 0x00BFEA1A, NEntityEvents::CEventTriggered(CThing*) @ 0x0083CF20, CTCEntityEvents::AddEvent @ 0x008113C0.
 // Layout (retail): interface bitset +0x20, interface map +0x44, def global index +0x8c, Triggered +0xdc,
@@ -135,7 +135,7 @@ class CThingCreatureBase : public CThing { public:
 };
 
 class CThingPhysical : public CThing { public:
-    const C3DVector& GetPosition() const;               // 0x006A4D00
+    const C3DVector& PeekPos() const;               // 0x006A4D00
 };
 
 #include <math.h>
@@ -160,7 +160,7 @@ void CThingSwitch::OnThingWithScriptNameApplied(const CCharString& name, const C
 {
     long triggerType = PeekDefinition()->TriggerType;
     if (triggerType == 6 && !Triggered && TriggerableObjectScriptName == name) {
-        const C3DVector& here = GetPosition();
+        const C3DVector& here = PeekPos();
         float dx = here.X - position.X;
         float dy = here.Y - position.Y;
         float distance = (float)fabs(sqrt(dx * dx + dy * dy));

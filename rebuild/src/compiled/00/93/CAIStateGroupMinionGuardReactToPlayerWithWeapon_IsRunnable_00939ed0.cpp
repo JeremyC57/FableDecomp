@@ -3,10 +3,10 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined lookups: 0x23 = CTCVillager, 0x34 = CTCPerceiveThing),
 // GFGetPVillageInterface @ 0x007EE540 (manifest "IS_THING_ALIVE<..>" propagated), CBaseIntelligentPointer ctor @ 0x00A01B10 /
 // GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10, CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90,
-// CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, CAIStateGroupBase::GetPWorld @ 0x008FCFC0,
+// CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CAIStateGroupBase::GetPWorld @ 0x008FCFC0,
 // CAIStateGroupBase::GetPThingWorld @ 0x008FCFA0 (both only feed the static CWorld::GetWorldFrame @ 0x0049D870; the manifest's
 // "CPlayer::GetCurrentMode" on both is propagated), IsPlayerCarryingWeapon @ 0x00939E70 (this class),
-// CTCPerceiveThing::IsPlayerExtendedLineOfSight @ 0x00744830, CThing::GetPosition @ 0x004C73D0 (twice).
+// CTCPerceiveThing::IsPlayerExtendedLineOfSight @ 0x00744830, CThing::GetPos @ 0x004C73D0 (twice).
 // Globals: g_framesPerSecond @ 0x01375550; 225.0f @ 0x012922C0; CIntelligentPointer<CThingPlayerCreature> vtable 0x01231C4C.
 // Shape: nested ifs with one shared false exit; the world pointer and the frames-per-second value are named locals ahead of
 // the static frame read (fps is loaded before the call, into edi); the hero goes through the implicit
@@ -29,7 +29,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline unsigned long HasTC(long interfaceType) const
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
@@ -42,6 +42,7 @@ class CThing { public:
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CThingPlayerCreature;
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
@@ -60,7 +61,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -91,8 +92,12 @@ class CAIStateGroupBase { public:
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
     CPlayerManager* GetPPlayerManager();        // 0x008FCF90
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0
+public:
 };
 
 struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
@@ -100,7 +105,9 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
     unsigned long FrameLastToldPlayer;          // +0x18
     unsigned long LastMessageHeard;             // +0x1c
     CIntelligentPointer Player;                 // +0x20
-    bool IsPlayerCarryingWeapon() const;        // 0x00939E70
+private:
+    bool IsPlayerCarryingWeapon() const;        // 0x00939E70 ?IsPlayerCarryingWeapon@...@@ABE_NXZ (private)
+public:
     bool IsRunnable();
 };
 
@@ -111,21 +118,21 @@ bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable()
         if (Player.GetPItem() == 0) {
             NumberOfTimesPlayerTold = 0;
             FrameLastToldPlayer = 0;
-            Player = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+            Player = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
         } else if (NumberOfTimesPlayerTold > 0) {
-            CWorld* world = GetPWorld();
+            const CWorld& world = GetWorld();
             long fps = g_framesPerSecond;
-            if (world->GetWorldFrame() - FrameLastToldPlayer > (unsigned long)(fps * 120)) {
+            if (world.GetWorldFrame() - FrameLastToldPlayer > (unsigned long)(fps * 120)) {
                 --NumberOfTimesPlayerTold;
-                FrameLastToldPlayer = GetPThingWorld()->GetWorldFrame();
+                FrameLastToldPlayer = PeekWorld().GetWorldFrame();
             }
         }
         if (Player.GetPItem() != 0 && !(Player.GetPItem()->m_flags91 & 1) && IsPlayerCarryingWeapon()) {
             CThing* self = PBrain->PCreature;
             if (self->HasTC(0x34) && self->GetTC<CTCPerceiveThing>(0x34)->IsPlayerExtendedLineOfSight()) {
                 CThing* me = PBrain->PCreature;
-                const C3DVector& player = Player.GetPItem()->GetPosition();
-                const C3DVector& mine = me->GetPosition();
+                const C3DVector& player = Player.GetPItem()->GetPos();
+                const C3DVector& mine = me->GetPos();
                 float dx = mine.X - player.X;
                 float dy = mine.Y - player.Y;
                 if (dx * dx + dy * dy < 225.0f)

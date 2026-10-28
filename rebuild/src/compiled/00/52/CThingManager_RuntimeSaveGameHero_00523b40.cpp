@@ -4,7 +4,7 @@
 //   (0x0052434C, the runtime game save).
 // Identity: Ego_r.pdb ?RuntimeSaveGameHero@CThingManager@@AAEX_N@Z (the bool picks binary); the catalog's
 //   "CThingManager_SavePersistentEntityData" is descriptive.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970 (the main game component 0x013B86A0 +0x1C), CPlayer::GetHeroThing
+// Callees: CPlayerManager::GetMainPlayer 0x00449970 (the main game component 0x013B86A0 +0x1C), CPlayer::GetPControlledCreature
 //   0x00487DC0, vector<CThing*>::_M_insert_overflow 0x00436AC0, CMemoryDataOutputStream() 0x00996AF0 / ~ 0x00996B30 /
 //   ReserveSize 0x00996BC0 / GetSize 0x00994B40 / PeekData 0x00995E70, CThingManager::SaveEntitiesBinary 0x00522160,
 //   CThingManager::SaveEntitiesToScript 0x00521EB0, CEntityRuntimePersistence::SetGamePersistentSaveData 0x00523860,
@@ -48,10 +48,11 @@ public:
     unsigned char _pad_0x00[0x91];
     unsigned char Dead : 1;                                                            // +0x91 bit 0
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer {
 public:
-    CThing* GetHeroThing();                                                            // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                                                            // 0x00487DC0
 };
 class CPlayerManager {
 public:
@@ -129,10 +130,14 @@ public:
         else
             _M_insert_overflow(this->_M_finish, __x, _IsPODType(), 1UL, true);
     }
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __true_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
 };
 
 template <class _Tp, class _Alloc>
@@ -232,7 +237,7 @@ __declspec(noinline) void CThingManager::SaveEntitiesBinary(CMemoryDataOutputStr
 
 void CThingManager::RuntimeSaveGameHero(bool binary)
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero != 0 && !hero->Dead) {
         std::vector<CThing*> things;
         things.push_back(hero);

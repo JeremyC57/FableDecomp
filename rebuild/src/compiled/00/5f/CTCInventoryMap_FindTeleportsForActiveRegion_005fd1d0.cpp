@@ -4,7 +4,7 @@
 // Callees: CTCBase::GetWorld() const 0x00686A80, CWorld slot 13 (+0x34) PeekWorldMap, CWorldMap::GetRegion 0x004FC180,
 //   malloc 0x00BFEA0E / free 0x00BFEA14 (STLport list), CThingSearchTools::GetAllThings<CThing, list,
 //   CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>> 0x00617780 (same-TU stand-in), LowerBound const 0x004365B0,
-//   CThing::GetPosition 0x004C73D0, __ftol2 0x00BFEA70, CWorldMap::ConvertWorldMapCoordsToLocalCoords 0x004FC3C0,
+//   CThing::GetPos 0x004C73D0, __ftol2 0x00BFEA70, CWorldMap::ConvertWorldMapCoordsToLocalCoords 0x004FC3C0,
 //   vector<C2DCoordI>::_M_insert_overflow 0x00618550.
 // Layout: local view -- CTCInventoryMap teleport positions vector<C2DCoordI> +0x1E8 (12 bytes), ActiveRegionIndex +0x238
 //   (landed sibling FindQuestsForActiveRegion 0x005FD0F0); CWorld +0x20 thing search tools (engine/CWorld.h); CRegion's
@@ -134,7 +134,7 @@ public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                   // +0x20 bitset of interface types
     CInterfaceMap m_interfaces;                       // +0x44
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     __forceinline CTCBase* GetTC(long kind) const
     {
@@ -237,7 +237,7 @@ void CTCInventoryMap::FindTeleportsForActiveRegion()
                 CThing* thing = node->_M_data;
                 CTCTeleporter* teleporter = thing->PeekTC<CTCTeleporter>(0xdd);
                 if (teleporter->Enabled) {
-                    const C3DVector& pos = thing->GetPosition();
+                    const C3DVector& pos = thing->GetPos();
                     C2DCoordI coord((long)pos.X, (long)pos.Y);
                     C2DCoordI local = worldMap->ConvertWorldMapCoordsToLocalCoords(region.LinkedMapsStart[i], coord);
                     ActiveRegionTeleportPositions.push_back(local);

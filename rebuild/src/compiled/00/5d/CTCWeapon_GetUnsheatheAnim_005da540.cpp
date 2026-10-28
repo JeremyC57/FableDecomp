@@ -1,11 +1,11 @@
 // CTCWeapon::GetUnsheatheAnim() const -- pick the unsheathe animation name: the "normal" one while the owner is moving, the "combat" one when it stands still
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005DA540, length 96 bytes.
-// Callees: CThing::GetPosition() const @ 0x004C73D0 (`&[this+0x60]->+0xc`; manifest "CVertexBufferWin32::DoSizeof" is
+// Callees: CThing::GetPos() const @ 0x004C73D0 (`&[this+0x60]->+0xc`; manifest "CVertexBufferWin32::DoSizeof" is
 // propagated). Float 0x0129BA3C = 1e-4f (loaded and multiplied by itself: a global, not a folded constant).
 // Ego_r.pdb: ?GetUnsheatheAnim@CTCWeapon@@QBEABVCCharString@@XZ. Layout: engine/CTCWeapon.h (WeaponDef +0x0c); the four
 // CWeaponDef animation strings sit 0x10 below Ego_r.pdb in retail (+0xd4 .. +0xe0); this one returns 0xd8 / 0xd4.
 // The owner's right-handed set (CThing +0x60) keeps the previous frame's position at +0x18.
-// Shape: the reference to the old position is taken before the GetPosition call (esi), the difference is a
+// Shape: the reference to the old position is taken before the GetPos call (esi), the difference is a
 // C3DVector temporary kept on the x87 stack (three `fstp st(0)` after the compare), its squared length summed
 // z*z + y*y + x*x by VC; `len2 > e*e` gives `fcompp ; test ah,5 ; jp` with the moving case falling through.
 #include "engine/CTCWeapon.h"
@@ -27,7 +27,7 @@ class CRightHandedSet { public:
 class CThing { public:
     unsigned char    _pad_00[0x60];
     CRightHandedSet* m_pRHSet;                              // +0x60
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 
 class CDefPointeeBase { public: void* __vftable; long RefCount; };
@@ -52,7 +52,7 @@ const CCharString& CTCWeapon_Anims::GetUnsheatheAnim() const
 {
     CThing* thing = GetParentThing();
     const C3DVector& last = thing->m_pRHSet->m_lastPosition;
-    if ((thing->GetPosition() - last).GetLengthSquared() > g_MovingEpsilon * g_MovingEpsilon)
+    if ((thing->GetPos() - last).GetLengthSquared() > g_MovingEpsilon * g_MovingEpsilon)
         return GetDef()->UnsheatheToNormalAnim;
     return GetDef()->UnsheatheToCombatAnim;
 }

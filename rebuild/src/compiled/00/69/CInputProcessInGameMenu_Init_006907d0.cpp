@@ -1,6 +1,6 @@
 // CInputProcessInGameMenu::Init() -- look the player's creature up for its type-0xc6 component (the inlined bitset + sorted-map GetInterface) and keep it in PInGameMenu; then reset the screen state words
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006907D0, length 80 bytes. Vtable 0x01237D20 slot 2.
-// Callees: CPlayer::GetPlayerCreature @ 0x00487DC0 (MyPlayer +0x18; `add ecx,2Ch ; jmp CBaseIntelligentPointer::GetPItem`), CVectorMap::LowerBound @ 0x0040F020
+// Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18; `add ecx,2Ch ; jmp CBaseIntelligentPointer::GetPItem`), CVectorMap::LowerBound @ 0x0040F020
 // (the thing's {type, component} map at +0x44; type 0xc6 is bit 6 of dword 6 (+0x38, `test byte ptr [eax+38h],40h`) of the bitset at +0x20: the landed GetInterface template of 0x008CDCF0).
 // Layout: Ego_r.pdb CInputProcessInGameMenu (56 bytes: PInGameMenu +0x28, FrameSinceLastMovement +0x2c, CurrentMovement +0x30, StartedRepeatingMovement +0x34); CInputProcessGameBase::MyPlayer +0x18 (engine header), modelled locally with the base names.
 // Shape: one `push ecx` frame slot for the lookup key, the map pointer advanced into esi once, the member itself is the out pointer of the
@@ -31,7 +31,7 @@ class CThingPlayerCreature { public:
     }
 };
 class CPlayer { public:
-    CThingPlayerCreature* GetPlayerCreature();      // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;      // 0x00487DC0
 };
 class CTCInGameMenu;
 class CInputProcessInGameMenu { public:                                         // vtable 0x01237D20
@@ -51,7 +51,7 @@ class CInputProcessInGameMenu { public:                                         
 
 void CInputProcessInGameMenu::Init()
 {
-    MyPlayer->GetPlayerCreature()->GetInterface(&PInGameMenu, 0xc6);
+    MyPlayer->GetPControlledCreature()->GetInterface(&PInGameMenu, 0xc6);
     FrameSinceLastMovement = 0;
     CurrentMovement = 0;
     StartedRepeatingMovement = false;

@@ -1,6 +1,8 @@
 // CAIStateGroupBase::AIAction_WaitForMessage(EMessageEventType, CThingCreatureBase*, long) -- yield until stop, a matching event, or strict timeout; retail 0x0097d360, 293 bytes. Callees: IsStopping 0x008fd010, GetPWorld 0x008fcfa0, GetGameTick 0x0049d870 (global 0x013b89bc), Yield through CAIBrain slot 2, originator filter constructor 0x006af290, type predicate 0x006af1c0, FindMostRecentMessage 0x008d46d0.
 #include <new>
-#include "engine/CAIStateGroupBase.h"
+#define CAIStateGroupBase CAIStateGroupBasePdb
+#include "engine/CAIStateGroupBase.h"              // layout only; the local class below carries the protected accessors (PDB: IBE)
+#undef CAIStateGroupBase
 #include "engine/CAIBrain.h"
 #include "engine/CThingCreatureBase.h"
 #include "engine/CWorld.h"
@@ -42,42 +44,44 @@ class CMessageEventFilter_IsOfType { public:
     fable_i32 Type;
     bool operator()(CMessageEvent* event) const;               // 0x006af1c0
 };
-class CMessageEventFilter_IsOriginatedByThing { public:
+class CThing;
+class CMessageEventFilter_IsTargettedAtThing { public:
     fable_u32 UID[2];
-    CMessageEventFilter_IsOriginatedByThing(const CThingCreatureBase* thing); // 0x006af290
+    CMessageEventFilter_IsTargettedAtThing(const CThing& thing); // 0x006af290 ??0CMessageEventFilter_IsTargettedAtThing@@QAE@ABVCThing@@@Z
     bool operator()(CMessageEvent* event) const;
 };
-struct COwnMessageFilter {
-    const CMessageEventFilter_IsOfType* TypeFilter;
-    const CMessageEventFilter_IsOriginatedByThing* OriginatorFilter;
+template <class A, class B> struct CFilter_Bind2 {         // the bound filter holds pointers to its operands
+    const A* TypeFilter;
+    const B* OriginatorFilter;
 
 };
 class CMessageEventManager { public:
     CWorld* World;
     SMessageNode* Messages;                                    // +0x04 sentinel
-    CMessageEvent* FindMostRecentMessage(const COwnMessageFilter& filter); // 0x008d46d0
+    template <class TFilter> const CMessageEvent* FindMostRecentMessage(const TFilter& filter) const; // 0x008d46d0 ??$FindMostRecentMessage@V?$CFilter_Bind2@VCMessageEventFilter_IsOfType@@VCMessageEventFilter_IsTargettedAtThing@@@@@CMessageEventManager@@QBEPBVCMessageEvent@@ABV?$CFilter_Bind2@...@@@Z
 };
 
 typedef void (FABLE_NATIVE_THISCALL *CAIBrainYieldFunction)(CAIBrain*);
 long FABLE_FASTCALL GetGameTick();                        // 0x0049d870, global 0x013b89bc
 
-struct CAIStateGroupBaseAccess : CAIStateGroupBase {
-    bool IsStopping();                                          // 0x008fd010
-    CWorld* GetPWorld();                                        // 0x008fcfa0
+class CAIStateGroupBase : public CAIStateGroupBasePdb {
+protected:
+    bool IsStopping() const;                                    // 0x008fd010 (PDB ?IsStopping@CAIStateGroupBase@@IBE_NXZ)
+    const CWorld& PeekWorld() const;                            // 0x008fcfa0 (PDB IBEABVCWorld)
     EAIActionReturn AIAction_WaitForMessage(EMessageEventType messageType,
-                                             CThingCreatureBase* originator,
-                                             long timeout);
+                                             const CThingCreatureBase* originator,
+                                             long timeout);     // PDB ?AIAction_WaitForMessage@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EMessageEventType@@PBVCThingCreatureBase@@J@Z
 };
 
-EAIActionReturn CAIStateGroupBaseAccess::AIAction_WaitForMessage(
-    EMessageEventType messageType, CThingCreatureBase* originator, long timeout)
+EAIActionReturn CAIStateGroupBase::AIAction_WaitForMessage(
+    EMessageEventType messageType, const CThingCreatureBase* originator, long timeout)
 {
     if (IsStopping())
         return AI_ACTION_RETURN_ONE;
 
-    GetPWorld();
+    PeekWorld();
     long deadline = GetGameTick() + timeout;
-    while ((GetPWorld(), GetGameTick()) <= deadline) {
+    while ((PeekWorld(), GetGameTick()) <= deadline) {
         CAIBrain* brain = PBrain;
         void** slots = (void**)brain->__vftable;
         ((CAIBrainYieldFunction)slots[2])(brain);
@@ -86,22 +90,22 @@ EAIActionReturn CAIStateGroupBaseAccess::AIAction_WaitForMessage(
 
         if (originator) {
             CMessageEventFilter_IsOfType typeFilter = { (fable_i32)messageType };
-            COwnMessageFilter filter;
+            CFilter_Bind2<CMessageEventFilter_IsOfType, CMessageEventFilter_IsTargettedAtThing> filter;
             filter.TypeFilter = &typeFilter;
             // The native constructor returns its stack object in EAX. Placement
             // construction in aligned automatic storage expresses that result in
             // valid C++98; the filter is trivial and dies before the next iteration.
             union OriginatorStorage {
                 fable_u32 Alignment;
-                char Bytes[sizeof(CMessageEventFilter_IsOriginatedByThing)];
+                char Bytes[sizeof(CMessageEventFilter_IsTargettedAtThing)];
             } originatorStorage;
-            filter.OriginatorFilter = new (originatorStorage.Bytes) CMessageEventFilter_IsOriginatedByThing(originator);
-            CMessageEventManager* boundManager = GetPWorld()->PMessageEventManager_Data;
+            filter.OriginatorFilter = new (originatorStorage.Bytes) CMessageEventFilter_IsTargettedAtThing(*reinterpret_cast<const CThing*>(originator))   /* the flattened engine header has no CThing base */;
+            CMessageEventManager* boundManager = PeekWorld().PMessageEventManager_Data;
             if (boundManager->FindMostRecentMessage(filter))
                 return AI_ACTION_RETURN_TWO;
         } else {
             CMessageEventFilter_IsOfType typeFilter = { (fable_i32)messageType };
-            CMessageEventManager* manager = GetPWorld()->PMessageEventManager_Data;
+            CMessageEventManager* manager = PeekWorld().PMessageEventManager_Data;
             CMessageEvent* found = 0;
             SMessageNode* head = manager->Messages;
             SMessageNode* node = head->next;

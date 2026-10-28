@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D9740, 293 bytes, plain `ret` (virtual).
 // Callees: CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, CSpecialEffectsDef::GetEffectFromString(const CCharString&, long&) 0x00669D30,
-//   CThing::GetPosition 0x004C73D0, __fastcall CreateEffectThing 0x006E0880, CBaseIntelligentPointer ctor 0x00A01B10 /
+//   CThing::GetPos 0x004C73D0, __fastcall CreateEffectThing 0x006E0880, CBaseIntelligentPointer ctor 0x00A01B10 /
 //   SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10, CTCDParticleEmitter::AttachToThing 0x006E0BE0.
 // Layout: PEmitter2 +0x7C (CIntelligentPointer<CThing>); the creature (+0x04) definition +0x70, particle emitter +0x5C.
 // Shape: GetSubDef and GetEffectFromString both have same-TU out-slot-only stand-in bodies, so neither the sub-def slot
@@ -86,7 +86,7 @@ class CThing { public:
     {
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CBaseObject;
@@ -128,7 +128,7 @@ void CModeJackOfBladesFloat::OnActivate()
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
         if (effects->GetEffectFromString("FLOAT_POWER", effectType)) {
-            CThing* effect = CreateEffectThing(effectType, &PCreature->GetPosition(), false);
+            CThing* effect = CreateEffectThing(effectType, &PCreature->GetPos(), false);
             if (effect && !(effect->m_flags91 & 1)) {
                 PEmitter2 = effect;
                 if (effect->HasTC(0x4b)) {

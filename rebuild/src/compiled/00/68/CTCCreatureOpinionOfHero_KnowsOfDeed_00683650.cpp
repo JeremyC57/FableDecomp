@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the interface lookup written as the ternary entry pick (`((it == last || type < it->type) ? last : it)->component`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Leaf: ?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJ_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00683650, length 125 bytes (`ret 8`).
-// Callees: CTCBase::GetPlayerManager @ 0x00686D50, CPlayerManager::GetMainPlayer @ 0x00449960, CPlayer::GetHeroThing @ 0x00487DC0,
+// Callees: CTCBase::GetPlayerManager @ 0x00686D50, CPlayerManager::GetMainPlayer @ 0x00449960, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for type 0x51 = CTCHeroOpinionDeedLog,
 // word 2 bit 17), CTCHeroOpinionDeedLog::GetDeedFromHandle(long) @ 0x006C58F0, the three-argument
 // KnowsOfDeed(long, EOpinionDeedType, bool) @ 0x00681AE0 (landed).
@@ -40,6 +40,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCVillage { public:
     bool GetIsHeroEnemyOfGuards();              // 0x00658604
 };
@@ -53,7 +54,7 @@ class CTCHeroOpinionDeedLog { public:                  // interface 0x51
     COpinionDeed* GetDeedFromHandle(long handle);   // 0x006C58F0
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0 (the manifest's "_Cons_val<...>" is propagated)
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0 (the manifest's "_Cons_val<...>" is propagated)
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                   // 0x00449960
@@ -89,7 +90,7 @@ static __forceinline CTCHeroOpinionDeedLog* GetDeedLog(CThing* thing)
 
 bool CTCCreatureOpinionOfHero::KnowsOfDeed(long deedHandle, bool includePending)
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroThing();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
     if (hero) {
         COpinionDeed* deed = GetDeedLog(hero)->GetDeedFromHandle(deedHandle);
         if (deed)

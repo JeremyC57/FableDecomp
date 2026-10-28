@@ -1,5 +1,5 @@
 // std::vector::_M_insert_overflow(CDefPointer<const CCameraModeDef>* __position, const CDefPointer<const CCameraModeDef>& __x, const __false_type&, unsigned int __fill_len, bool __atend) -- (vector<CDefPointer<const CCameraModeDef> >) STLport grow path: allocate size + max(size, fill_len), copy the head, construct fill_len copies of x, copy the tail unless atend, destroy and free the old block, adopt the new one
-// Leaf: ?_M_insert_overflow@?$vector@V?$CDefPointer@$$CBVCCameraModeDef@@@@V?$allocator@V?$CDefPointer@$$CBVCCameraModeDef@@@@@std@@@std@@QAEXPAV?$CDefPointer@$$CBVCCameraModeDef@@@@ABV3@ABU__false_type@2@I_N@Z
+// Leaf: ?_M_insert_overflow@?$vector@V?$CDefPointer@$$CBVCCameraModeDef@@@@V?$allocator@V?$CDefPointer@$$CBVCCameraModeDef@@@@@std@@@std@@IAEXPAV?$CDefPointer@$$CBVCCameraModeDef@@@@ABV3@ABU__false_type@2@I_N@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069DBB0, 245 bytes, thiscall, `ret 14h`.
 // Identity (proven): its __destroy_aux 0x0069D2B0 is bound ??$__destroy_aux@PAV?$CDefPointer@$$CBVCCameraModeDef@@@@@std@@...; its callers are the landed CGameCameraManager::InitManualCameraList 0x0069A010 / InitSpecialCameraList 0x0069A1A0 (which name it vector<CDefPointer<const CCameraModeDef> >::_M_insert_overflow) and SetSnapToFirstCamPointMode 0x0069E5D0.
 // Callees: malloc 0x00BFEA0E, __uninitialized_copy<T*, T*>(first, last, result, const __false_type&) 0x0069BFC0 (the tail),
@@ -79,18 +79,24 @@ public:
     typedef unsigned int size_type;
     typedef _Tp* pointer;
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len, bool __atend = false);
+    public:
 };
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::_M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&,

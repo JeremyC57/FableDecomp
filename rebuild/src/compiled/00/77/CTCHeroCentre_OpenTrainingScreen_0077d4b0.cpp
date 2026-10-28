@@ -4,7 +4,7 @@
 //
 // Retail 0x0077D4B0, 256 bytes incl. padding (plain `ret`, /GS cookie 0x0139C8A8). Ego_r.pdb `?OpenTrainingScreen@CTCHeroCentre@@...`.
 // Callees: CTCBase::PeekPlayerManager const @ 0x00686D50 (twice), CPlayerManager::GetMainPlayer const @ 0x00449960,
-// CPlayer::GetHeroThing @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for
+// CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for
 // CTCHero, type 0x29 = bit 9 of the bitset word +0x24, the component null-tested in ecx), CTCHero::GiveTutorialForCategory
 // (ETutorialCategory, bool) @ 0x006C9FA0 (category 0xf), CMemoryBuffer::Copy @ 0x009F1760, CPlayerManager::GetMainPlayerNumber
 // @ 0x00449700, CMainGameComponent::AddGameEvent @ 0x0041649C on g_pMainGameComponent 0x013B86A0, __security_check_cookie
@@ -41,11 +41,12 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0 (ETutorialCategory)
 };
 class CPlayer { public:
-    CThing* GetHeroThing();                             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
@@ -89,7 +90,7 @@ class CTCHeroCentre : public CTCBase { public:
 
 void CTCHeroCentre::OpenTrainingScreen()
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetHeroThing();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1)) {
         CTCHero* heroTC;
         if (hero->GetInterface(&heroTC, 0x29) && heroTC && heroTC->GiveTutorialForCategory(0xf, false)) {

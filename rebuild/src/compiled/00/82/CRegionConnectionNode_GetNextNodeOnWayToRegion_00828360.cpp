@@ -106,12 +106,14 @@ public:
     iterator end() { return iterator((_Node*)this->_M_node._M_data); }
     bool empty() const { return this->_M_node._M_data->_M_next == this->_M_node._M_data; }
     _Tp& front() { return *begin(); }
+    protected:
     _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __p = this->_M_node.allocate(1);
         new (&__p->_M_data) _Tp(__x);
         return __p;
     }
+    public:
     iterator insert(iterator __position, const _Tp& __x)
     {
         _Node* __tmp = _M_create_node(__x);

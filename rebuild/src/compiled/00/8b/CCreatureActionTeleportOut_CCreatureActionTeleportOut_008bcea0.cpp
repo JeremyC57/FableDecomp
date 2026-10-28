@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BCEA0, length 127 bytes (+ int3 padding).
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0 (literal 0x0127E488 "ST_TELEPORT"), CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0, CCharString::~CCharString @ 0x0099EAE0,
-// CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CThing::GetPosition @ 0x004C73D0. Own vtable 0x0127E344 (rtti-vtables.tsv).
+// CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8), CThing::GetPos @ 0x004C73D0. Own vtable 0x0127E344 (rtti-vtables.tsv).
 // Shape: `ret 4`; the landed 0x008CBCF0 constructor shape (sound pair zeroed from eax, scoped named CCharString in the 8-byte frame), then a body
 // assignment of the whole C3DVector (TargetPos +0x114 addressed through `lea ecx,[esi+114h]`: a struct assignment).
 // The PDB header (CCreatureAction_TeleportOut.h) flattens the base; modelled locally (CCombatActionBase is 0x114 bytes in retail).
@@ -10,7 +10,7 @@
 class CThingCreatureBase;
 class C3DVector { public: float X, Y, Z; };
 class CThing { public:
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 class CSoundPair { public:
     long m_first;
@@ -58,5 +58,5 @@ CCreatureAction_TeleportOut::CCreatureAction_TeleportOut(CThingCreatureBase* own
         CCharString name("ST_TELEPORT", -1);   // scoped named local (a bare temporary would reuse eax, GOTCHAS)
         SetCombatAnimation(name);
     }
-    TargetPos = PCreature.GetPItem()->GetPosition();
+    TargetPos = PCreature.GetPItem()->GetPos();
 }

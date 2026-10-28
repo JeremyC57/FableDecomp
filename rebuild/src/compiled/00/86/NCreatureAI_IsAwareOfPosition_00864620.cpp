@@ -3,13 +3,13 @@
 // Retail 0x00864620, 0xE0 bytes, __fastcall (creature in ecx, position in edx). PDB (Ego_r):
 // ?IsAwareOfPosition@NCreatureAI@@YI_NPBVCThingCreatureBase@@ABVC3DVector@@@Z. Callers 0x006C0BBE, 0x006C0C1C.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (twice), CTCPerceiveThing::GetExtendedSightRadius()
-// const @ 0x007448F0, CThing::GetPosition() const @ 0x004C73D0 (twice), CThingCreatureBase::IsPosInFOV(const C3DVector&, bool)
+// const @ 0x007448F0, CThing::GetPos() const @ 0x004C73D0 (twice), CThingCreatureBase::IsPosInFOV(const C3DVector&, bool)
 // const @ 0x00665260, CTCCreatureNavigation::IsPosNavLineOfSightToPos(const C3DVector&, const C3DVector&) const @ 0x006CB610
 // (manifest labels "ComputeAngleBetweenPositions"/"CScriptThing::operator==" are propagations; the Ego_r names fit the
 // argument shapes).
 // Interface types (GetInterfaceType, vtable slot 21): 0x34 = CTCPerceiveThing (bitset word 1 bit 20), 7 = CTCCreatureNavigation
 // (word 0 bit 7: `mov al,[edi+20h] ; test al,al ; jns`).
-// Shape: null + HasTC(0x34) guard; the radius is spilled to the lookup key's slot across GetPosition; the 2D offset stays on
+// Shape: null + HasTC(0x34) guard; the radius is spilled to the lookup key's slot across GetPos; the 2D offset stays on
 // the x87 stack until after `fcompp` (`lengthSq < radius * radius`); the navigation component comes from the GetInterface
 // out-pointer template WITHOUT a check of its result, so the not-present path reads the uninitialised out local from its
 // frame slot (`mov esi,[esp+0Ch]`).
@@ -42,14 +42,13 @@ public:
     bool IsPosNavLineOfSightToPos(const C3DVector& from, const C3DVector& to) const;   // 0x006CB610
 };
 
-class CThing
-{
+class CThing {
 public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                  // +0x20 UsingComponents bitset<274>
     CInterfaceMap m_interfaces;                      // +0x44 Components
 
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
 
     bool HasTC(long type) const
     {
@@ -104,14 +103,14 @@ bool __fastcall NCreatureAI::IsAwareOfPosition(const CThingCreatureBase* creatur
     if (creature && creature->HasTC(0x34))
     {
         float radius = ((const CTCPerceiveThing*)creature->FindEntry(0x34)->component)->GetExtendedSightRadius();
-        const C3DVector& here = creature->GetPosition();
+        const C3DVector& here = creature->GetPos();
         float dx = here.X - pos.X;
         float dy = here.Y - pos.Y;
         if (dx * dx + dy * dy < radius * radius && creature->IsPosInFOV(pos, true))
         {
             const CTCCreatureNavigation* navigation;
             creature->GetInterface(7, &navigation);
-            if (navigation->IsPosNavLineOfSightToPos(creature->GetPosition(), pos))
+            if (navigation->IsPosNavLineOfSightToPos(creature->GetPos(), pos))
                 return true;
         }
     }

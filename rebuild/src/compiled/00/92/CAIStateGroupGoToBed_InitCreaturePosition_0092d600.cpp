@@ -45,7 +45,9 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 }
 #pragma auto_inline(on)
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -109,7 +111,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
+public:
 };
 
 
@@ -176,8 +180,7 @@ struct CAIStateGroupBaseW : CAIStateGroupBase {
 
 class C3DVector { public: float x, y, z; };
 
-struct CThingPositioned {
-    const C3DVector& GetPosition();             // 0x004C73D0
+struct CThingPositioned : public CThing {
 };
 
 class CThingAICreature { public:
@@ -213,7 +216,7 @@ struct CAIStateGroup_GoToBed : CAIStateGroupBaseW {
     // CAIStateGroup_GoToBed::IsInSleepTime @ 0x0092C4E0, inlined here
     bool IsInSleepTime()
     {
-        CGameTime* pTime = GetPWorld()->m_pTime;
+        CGameTime* pTime = GetWorld().m_pTime;
         long sleepEnd;
         long sleepStart;
         ((CThingAICreature*)PBrain->PCreature)->GetSleepTimes(&sleepStart, &sleepEnd);
@@ -230,7 +233,7 @@ bool CAIStateGroup_GoToBed::InitCreaturePosition()
             && (FindFreeBed(true) || FindFreeBanditBed())) {
             CAIStateGroup_GoToBed::OnReplace();
             sleeper->m_inBed = true;
-            sleeper->m_wakePos = sleeper->Owner->GetPosition();
+            sleeper->m_wakePos = sleeper->Owner->GetPos();
             sleeper->m_hasWakePos = true;
             return true;
         }

@@ -2,7 +2,7 @@
 // Leaf: ?ProcessInput@CInputProcessStrafe@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00688A80, length 283 bytes (+ int3 padding), `ret 8`.
-// Callees: CPlayer::GetControlledCreature @ 0x00487DD0, CInputProcessGameBase::GetEventGameActionVector(long, const
+// Callees: CPlayer::PeekPControlledCreature @ 0x00487DD0, CInputProcessGameBase::GetEventGameActionVector(long, const
 //   CInputEvent&, C2DVector*) @ 0x00687D00 and IsEventButtonReleased @ 0x00687B30 (landed names), CInputEvent::
 //   GetDeviceType @ 0x00A03B50 / GetKey @ 0x00A03B70, CMemoryBuffer::Copy @ 0x009F1760, CProcessedInput::AddGameEvent
 //   @ 0x00A0D340, __security_check_cookie @ 0x00BFE9F9.
@@ -41,9 +41,10 @@ class CThing { public:
     unsigned char    _pad20[0x91 - 0x20];
     unsigned char    Dead : 1;                     // +0x91 bit 0
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetControlledCreature() const;         // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;         // 0x00487DD0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -65,7 +66,7 @@ public:
 
 void CInputProcessStrafe::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing* creature = MyPlayer->GetControlledCreature();
+    const CThing* creature = MyPlayer->PeekPControlledCreature();
     C2DVector strafe;
     if (!GetEventGameActionVector(0x3c, event, &strafe))
         return;

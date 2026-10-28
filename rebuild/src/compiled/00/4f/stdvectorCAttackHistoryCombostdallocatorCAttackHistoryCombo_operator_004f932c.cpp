@@ -111,9 +111,13 @@ public:
     unsigned int capacity() const { return (unsigned int)(this->_M_end_of_storage._M_data - this->_M_start); }
     vector(const vector& x);                             // pair vector: 0x004F9408
     ~vector();                                           // pair vector (frees the block)
+    protected:
     template <class ForwardIter>
     T* _M_allocate_and_copy(unsigned int n, ForwardIter first, ForwardIter last);   // 0x004F9484
+    public:
+    protected:
     void _M_clear();                                     // 0x004F963D
+    public:
     vector<T, A>& operator=(const vector<T, A>& x);
 };
 

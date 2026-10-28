@@ -3,22 +3,22 @@
 // Retry 10b (getsw sweep, FIXES B-15): the creature is read through an inline getter `GetCreature()`; the plain member read gives the parked register/scheduling difference.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009612F0, length 174 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970,
-// CPlayer::GetHeroThing @ 0x00487DC0, CThing::GetPosition @ 0x004C73D0 (creature, then hero),
+// CPlayer::GetHeroThing @ 0x00487DC0, CThing::GetPos @ 0x004C73D0 (creature, then hero),
 // CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10.
 // Shape: `dist2 > R` gives `fcomp ; test ah,41h ; jne`; the inline distance helper keeps both differences on the FPU;
 // PTargetThing = CIntelligentPointer<..>(hero) (inline ctor, vtable 0x01231C4C).
 class C3DVector { public: float X, Y, Z; };
 
-class CThing
-{ public:
+class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
+    const C3DVector& GetPos() const;           // 0x004C73D0 (manifest "CVertexBufferWin32::DoSizeof" is propagated)
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer
 { public:
-    CThing* GetHeroThing();                         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 
 class CPlayerManager
@@ -70,9 +70,9 @@ struct CAIStateGroup_BanditKingCharge
 
 bool CAIStateGroup_BanditKingCharge::IsRunnable()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1)
-        && GetDistanceSquaredXY(hero->GetPosition(), PBrain->GetCreature()->GetPosition()) > 49.0f)
+        && GetDistanceSquaredXY(hero->GetPos(), PBrain->GetCreature()->GetPos()) > 49.0f)
     {
         PTargetThing.SetPItem(CIntelligentPointerThing(hero).GetPItem());
         return true;

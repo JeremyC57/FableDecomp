@@ -6,7 +6,7 @@
 //   global 0x013B866C (the start holy site name), CCharString copy 0x0099EC30 / default 0x0099E4B0 / dtor 0x0099EAE0 /
 //   Format 0x0099F1F0 ("*** WARNING : failed to find a holy site with ScriptName %S" 0x01238074), SGI __find_if 0x0048CC60
 //   (/Gr: first ecx, last edx, the binder by value, the iterator tag), the bound predicate 0x0048BC70
-//   (`bool __fastcall(CThing*, CCharString)`: strcmp of the thing's ScriptName +0x74), CThing::GetPosition 0x004C73D0,
+//   (`bool __fastcall(CThing*, CCharString)`: strcmp of the thing's ScriptName +0x74), CThing::GetPos 0x004C73D0,
 //   free 0x00BFEA14 (vector storage).
 // Shape: vector<CThing*> sites filled from ThingManager(+0x20)->(+4)->list(+0x8c); without a respawn point (RespawnInfo
 //   +0xE8 pos, +0xF4 flag) find_if(bind2nd(ptr_fun(fn), CCharString(name))) through an inline find_if wrapper (the binder is
@@ -43,7 +43,7 @@ class C3DVector { public:
 };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 
 template <class T>
@@ -207,7 +207,7 @@ bool CPlayer::LocateCharacterStartHolySite(CThing** site)
     float bestDistance = 1e10f;
     for (CThing** it = sites.begin(); it != sites.end(); ++it) {
         CThing* thing = *it;
-        float distance = (thing->GetPosition() - RespawnPos).MagSquared();
+        float distance = (thing->GetPos() - RespawnPos).MagSquared();
         if (distance < bestDistance) {
             bestDistance = distance;
             best = thing;

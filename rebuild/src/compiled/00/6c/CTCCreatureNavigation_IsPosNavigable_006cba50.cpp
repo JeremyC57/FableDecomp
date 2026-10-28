@@ -1,7 +1,7 @@
 // CTCCreatureNavigation::IsPosNavigable(const C3DVector& pos) -- can the current navigator route from the thing's position to pos
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CBA50, length 38 bytes (+10 int3). Twin of the landed IsPosNavLineOfSightTo
 // (0x006CBA20, slot 10).
-// Callees: CThing::GetPosition @ 0x004C73D0, CNavigatorBase::CanNavigateToPos (virtual slot 9, `call [edi+24h]`) with
+// Callees: CThing::GetPos @ 0x004C73D0, CNavigatorBase::CanNavigateToPos (virtual slot 9, `call [edi+24h]`) with
 // proximity 0.0f (`push 0`) and `false`.
 // Shape: the navigator's vtable is fetched before the position call (edi) and the object reloaded into ecx after it;
 // the thing is reached through an inline GetParentThing() accessor -- with the plain member VC7.1 loads pos after the
@@ -13,7 +13,7 @@
 class C3DVector { public: float X, Y, Z; };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;   // 0x004C73D0 (PhysicsTC +0x60, position at +0x0c)
+    const C3DVector& GetPos() const;   // 0x004C73D0 (PhysicsTC +0x60, position at +0x0c)
 };
 
 class CNavigatorExternalInterface { public:
@@ -55,5 +55,5 @@ class CTCCreatureNavigation { public:
 
 bool CTCCreatureNavigation::IsPosNavigable(const C3DVector& pos) const
 {
-    return PNavigator->CanNavigateToPos(GetParentThing()->GetPosition(), pos);
+    return PNavigator->CanNavigateToPos(GetParentThing()->GetPos(), pos);
 }

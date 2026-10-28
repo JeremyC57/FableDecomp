@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049B9E0, length 64 bytes.
 // Callees: CalculateSmoothedTime @ 0x0049B9A0 (on `this`). Shape: both ring advances through `inc ; cdq ; idiv`, the double argument narrowed with `fld qword ;
 // fstp dword`, the count incremented in memory before the index store, `ret 8`. No size pragma: `optimize("s")` makes the lane copy the double through `fld st(0)`.
-struct CFrameRateSmoother {
+class CFrameRateSmoother { public:
     unsigned char _pad[8];
     float*        m_pSamples;                      // +0x08
     long          m_c;
@@ -13,7 +13,9 @@ struct CFrameRateSmoother {
     long          m_start;                         // +0x20
     long          m_next;                          // +0x24
     double        m_smoothedTime;                  // +0x28
-    void CalculateSmoothedTime();                  // 0x0049B9A0
+private:
+    void CalculateSmoothedTime();                  // 0x0049B9A0 ?CalculateSmoothedTime@CFrameRateSmoother@@AAEXXZ (private)
+public:
     void AddFrameTime(double time);
 };
 

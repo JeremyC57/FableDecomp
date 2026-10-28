@@ -3,7 +3,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0xd3 idle scheduler = bit 19 of +0x38, 0x34
 // perceive-thing = bit 20 of +0x24), CTCIdleScheduler::IsPreferredIdle @ 0x00801BE0, CTCPerceiveThing::GetSightRadius
 // @ 0x007448F0, CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10
-// (CIntelligentPointer<CThingBuilding> vtable 0x01244344), CThing::GetPosition @ 0x004C73D0 (twice),
+// (CIntelligentPointer<CThingBuilding> vtable 0x01244344), CThing::GetPos @ 0x004C73D0 (twice),
 // CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000, CThingSearchTools::GetPBestLeafThing<CFilter_Bind2<filter,
 // CThingFilter_In2DRange>, CThingCompare_Nearest, CThingBuilding> @ 0x00936070 (same TU; the manifest's In2DRange /
 // IsValidAttackTargetForCreature label is propagated -- the first filter is the empty building-on-fire test 0x006A8A80).
@@ -28,7 +28,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -141,8 +141,8 @@ bool CAIStateGroup_MinionWatchFires::IsRunnable()
         CThingBuilding* building = 0;
         PBuildingOnFire = CIntelligentPointerBuilding(0);
         float radius = perceive->GetSightRadius();
-        CThingCompare_Nearest nearest(PBrain->PCreature->GetPosition());
-        CThingFilter_In2DRange inRange(PBrain->PCreature->GetPosition(), radius);
+        CThingCompare_Nearest nearest(PBrain->PCreature->GetPos());
+        CThingFilter_In2DRange inRange(PBrain->PCreature->GetPos(), radius);
         if (PeekThingSearchTools()->GetPBestLeafThing(CThingFilter_OnFire() && inRange, nearest, &building)) {
             PBuildingOnFire = CIntelligentPointerBuilding(building);
             if (IS_THING_ALIVE(PBuildingOnFire))

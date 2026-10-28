@@ -24,10 +24,11 @@ struct CThingOverlay
     unsigned char m_Pad4C[0x45];
     unsigned char m_Flags91;        // 0x91
 };
+class CThingPlayerCreature : public CThingOverlay { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 
-extern "C" void* __fastcall Sub_ResolveA(void* self);
-extern "C" void* __fastcall Sub_ResolveB(void* obj);
+extern "C" CPlayer* __fastcall Sub_ResolveA(void* self);
 extern "C" bool __fastcall Sub_IsMeleeFlourishValid(void* iface);
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)0x30;
@@ -35,8 +36,8 @@ const ETCInterfaceType kTargetType = (ETCInterfaceType)0x30;
 bool __fastcall CGameScriptInterface_IsPlayerCreatureFlourishEnabled(
     const CGameScriptInterface* self)
 {
-    void* a = Sub_ResolveA(self->PlayerManager);
-    CThingOverlay* pThing = (CThingOverlay*)Sub_ResolveB(a);
+    CPlayer* a = Sub_ResolveA(self->PlayerManager);
+    CThingOverlay* pThing = a->GetPControlledCreature();
     if (pThing != 0 &&
         (pThing->m_Flags91 & 0x01) == 0 &&
         (pThing->m_Flags24 & 0x10000) != 0)

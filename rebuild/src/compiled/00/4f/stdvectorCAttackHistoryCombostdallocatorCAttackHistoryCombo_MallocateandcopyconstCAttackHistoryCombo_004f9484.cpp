@@ -65,6 +65,7 @@ public:
 template <class T, class A = allocator<T> > class vector : protected _Vector_base<T, A> {
 public:
     vector(const vector& x);                             // pair vector: 0x004F9408
+    protected:
     template <class ForwardIter>
     T* _M_allocate_and_copy(unsigned int n, ForwardIter first, ForwardIter last)
     {
@@ -72,6 +73,7 @@ public:
         __uninitialized_copy(first, last, result, __false_type());
         return result;
     }
+    public:
 };
 
 }

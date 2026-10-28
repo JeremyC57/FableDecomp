@@ -2,7 +2,7 @@
 // Leaf: ?RemoveCrime@CTCVillage
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065C146, 182 bytes (`ret 4`, `leave`): frame-pointer size TU,
 // `#pragma optimize("y", off)` + `#pragma optimize("s", on)`. Ego_r.pdb `?RemoveCrime@CTCVillage@@QAEXJ@Z`.
-// Callees: CWorld::GetCurrentPlayer() const 0x0049D9D0 (g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetHeroThing()
+// Callees: CWorld::GetCurrentPlayer() const 0x0049D9D0 (g_pMainGameComponent 0x013B86A0 +0x24); CPlayer::GetPControlledCreature()
 //          0x00487DC0; std::bitset<>::test(size_t) const 0x00410DE0 (interface 0x51); CVectorMap<ETCInterfaceType,
 //          CTCBase*>::LowerBound 0x0040F020; CTCHeroOpinionDeedLog::GetDeedFromHandle(long) 0x006C58F0,
 //          ::RemoveDeedStillSearchingForWitnesses(long) 0x006C5920, ::RemoveDeed(long) 0x006C59E0 (landed spellings),
@@ -50,9 +50,10 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
@@ -100,7 +101,7 @@ unsigned long CCrimeSet::erase(const long&)
 #pragma auto_inline(on)
 void CTCVillage::RemoveCrime(long deedHandle)
 {
-    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetHeroThing();
+    CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
     if (hero) {
         long handle = deedHandle;
         CTCHeroOpinionDeedLog* log;

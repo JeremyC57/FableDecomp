@@ -2,7 +2,7 @@
 // Leaf: DatabaseCopy
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B18060, 170 bytes (+ int3 padding; `ret 4`).
 // Callees: vector<C3DVector>::reserve(size_type) 0x00920FF0 (manifest "vector_reserve") and resize(size_type, const C3DVector&)
-//   0x0075C040 (landed as CVector3D::resize in CTCNymph::OnInitialActivate 0x0080FD90; default, uninitialised C3DVector fill).
+//   0x0075C040 (landed as std::vector<C3DVector>::resize in CTCNymph::OnInitialActivate 0x0080FD90; default, uninitialised C3DVector fill).
 // Layout = Ego_r.pdb CPSCAttractor (52 bytes; the user point CArray is a 12-byte STLport vector in retail): AttractorEnabled /
 //   AttractorUseParamPosition bits 0/1 of +0x0c, AttractorInfluenceFallOff +0x10, AttractorPositionParam +0x14,
 //   AttractorPositionParamName +0x18, AttractorInfluenceRadius +0x1c, AttractorInfluenceForce +0x20,
@@ -16,15 +16,19 @@ class C3DVector { public:
     float X, Y, Z;
     C3DVector() {}
 };
-struct CVector3D {                                 // STLport vector<C3DVector> (12 bytes)
-    C3DVector* _M_start;
-    C3DVector* _M_finish;
-    C3DVector* _M_end_of_storage;
-    unsigned int size() const { return _M_finish - _M_start; }
-    C3DVector& operator[](unsigned int n) const { return _M_start[n]; }
-    void reserve(unsigned int count);              // 0x00920FF0
-    void resize(unsigned int newSize, const C3DVector& value = C3DVector());   // 0x0075C040
+namespace std {
+template <class T> class allocator { };
+template <class T, class A = allocator<T> > class vector {      // STLport vector (12 bytes)
+public:
+    T* _M_start;
+    T* _M_finish;
+    T* _M_end_of_storage;
+    unsigned int size() const { return (unsigned int)(_M_finish - _M_start); }
+    T& operator[](unsigned int n) const { return _M_start[n]; }
+    void reserve(unsigned int count);                           // 0x00920FF0 ?reserve@?$vector@VC3DVector@@...@std@@QAEXI@Z
+    void resize(unsigned int newSize, const T& value = T());    // 0x0075C040 ?resize@?$vector@VC3DVector@@...@std@@QAEXIABVC3DVector@@@Z
 };
+}
 class CPSCAttractor {
 public:
     void*         __vftable;                       // +0x00
@@ -36,7 +40,7 @@ public:
     unsigned long AttractorPositionParamName;      // +0x18
     float         AttractorInfluenceRadius;        // +0x1c
     float         AttractorInfluenceForce;         // +0x20
-    CVector3D     AttractorUserPointsArray;        // +0x24
+    std::vector<C3DVector>     AttractorUserPointsArray;        // +0x24
     void DatabaseCopy(const CPSCAttractor& other);
 };
 

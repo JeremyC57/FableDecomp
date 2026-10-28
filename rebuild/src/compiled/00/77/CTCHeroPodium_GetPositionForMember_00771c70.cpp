@@ -5,7 +5,7 @@
 //   CTCHeroPodium::OnInitialActivate 0x00771BD0 and GetCrowdPos 0x00771D50 (both CTCHeroPodium) and has no direct call
 //   site left (its users inline it). Label correction: catalog "CVertexBufferWin32_ComputeTransformedPosition" ->
 //   CTCHeroPodium::GetPositionForMember.
-// Callees: CThing::GetPosition() const 0x004C73D0.
+// Callees: CThing::GetPos() const 0x004C73D0.
 // Constants: 0.125f 0x0123095C, 0.5f 0x0122F59C, 0.25f 0x0123078C, the double 6.2831854820251465 (2 * (float)pi)
 //   0x0124F2B8, 4.0f 0x0126A890.
 // Layout (Ego_r.pdb CTCHeroPodium with the 12-byte retail vector): NumberOfCrowdOccupants +0x0c, CrowdOccupation +0x10,
@@ -30,7 +30,7 @@ public:
 
 class CThing {
 public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 
 class CTCHeroPodium {
@@ -53,5 +53,5 @@ C3DVector CTCHeroPodium::GetPositionForMember(long member) const
     float fraction = (float)member / 8.0f;
     float angle = (fraction * 0.5f - 0.25f) * (2.0 * PI);
     C3DVector offset = (E_Y * (float)cos(angle) + E_X * (float)sin(angle)) * 4.0f;
-    return offset + GetParent()->GetPosition();
+    return offset + GetParent()->GetPos();
 }

@@ -3,7 +3,7 @@
 // Leaf: Update
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068FEE0, length 98 bytes.
-// Callees: CPlayer::GetControlledCreature @ 0x00487DD0 (MyPlayer +0x18), CProcessedInput::AddGameEvent @ 0x00A0D340,
+// Callees: CPlayer::PeekPControlledCreature @ 0x00487DD0 (MyPlayer +0x18), CProcessedInput::AddGameEvent @ 0x00A0D340,
 // __security_check_cookie @ 0x00BFE9F9.
 // Model: CGameEvent as the landed CTCInventoryBase::AddCloseInventoryEvent 0x005BC527 (Ego_r.pdb, 40 bytes); the thing's
 // presence bitset at +0x20 (kind 0x94 = bit 20 of the word at +0x30) and dead bit +0x91 as the landed
@@ -35,9 +35,10 @@ struct CThing_Retail {
     unsigned char  m_91_1 : 7;
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
+class CThingPlayerCreature : public CThing_Retail { };
 class CPlayer {
 public:
-    CThing_Retail* GetControlledCreature();        // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -60,7 +61,7 @@ public:
 
 void CInputProcessLightning::Update(CProcessedInput& processed)
 {
-    CThing_Retail* creature = MyPlayer->GetControlledCreature();
+    const CThing_Retail* creature = MyPlayer->PeekPControlledCreature();
     if (creature == 0 || creature->m_dead || !creature->HasTC(0x94)) {
         CGameEvent gameEvent(0x41);
         processed.AddGameEvent(gameEvent);

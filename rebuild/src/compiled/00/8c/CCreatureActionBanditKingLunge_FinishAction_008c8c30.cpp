@@ -6,7 +6,7 @@
 //   bit 31 of +0x2c, 0xAD CTCBoss bit 13 of +0x34, 0xED CTCDPhysicalObstruction bit 13 of +0x3c), CTCCreatureModeManager::AddMode
 //   @ 0x0073AE10, CTCHitLocations::GetPHitLocationFromName @ 0x00815820 ("HIT_LOCATION_TWINBLADE_STUCK" 0x01281ACC,
 //   "HIT_LOCATION_TWINBLADE" 0x01281AB4; implicit temporaries), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CHitLocation::SetEnabled
-//   @ 0x00816390, CThing::GetPosition @ 0x004C73D0, the physics TC's slot 70 GetFacing (+0x118, hidden result), the `__fastcall`
+//   @ 0x00816390, CThing::GetPos @ 0x004C73D0, the physics TC's slot 70 GetFacing (+0x118, hidden result), the `__fastcall`
 //   CTCDPhysicalObstruction::Create @ 0x007FD4B0 (start and end both the offset position), SetThingToIgnoreObstruction @ 0x007898A3
 //   (manifest "CTCTrapBase::SetThingAsImmune" is a folded twin), CCreatureAction_BanditKingStuck ctor @ 0x008C94D0,
 //   CThingCreatureBase::SetCurrentAction @ 0x006644F0, CThing::Kill(bool) @ 0x004C9B80, CCombatActionBase(owner, long, const
@@ -58,7 +58,7 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                          // +0x60
     unsigned char   _pad64[0x91 - 0x64];
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     void Kill(bool flag);                               // 0x004C9B80
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -180,7 +180,7 @@ void CCreatureAction_BanditKingLunge::FinishAction()
         CTCBoss* boss;
         if (PCreature.GetPItem()->GetInterface(&boss, 0xad))
             stuckLoops = boss->PBossDef->TwinBladeStuckLoops;
-        C3DVector position = PCreature.GetPItem()->GetPosition();
+        C3DVector position = PCreature.GetPItem()->GetPos();
         position += PCreature.GetPItem()->GetPhysics()->GetFacing() * 0.5f;
         CThing* obstruction = CTCDPhysicalObstruction::Create(position, position, 1.5f);
         if (obstruction && !(obstruction->m_flags91 & 1)) {

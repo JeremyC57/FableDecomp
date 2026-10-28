@@ -1,5 +1,5 @@
 // std::vector<CBrainUpdateZone>::_M_clear() -- STLport vector storage release for the brain def's update-zone vector: destroy the (trivial) elements, then deallocate the block (free when non-null)
-// Leaf: ?_M_clear@?$vector@VCBrainUpdateZone@@V?$allocator@VCBrainUpdateZone@@@std@@@std@@QAEXXZ
+// Leaf: ?_M_clear@?$vector@VCBrainUpdateZone@@V?$allocator@VCBrainUpdateZone@@@std@@@std@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00462E04, 14 bytes, thiscall (size-optimised def TU: pop ecx).
 // Identity (sweep2, 2026-10-25): the only caller is std::vector<CBrainUpdateZone>::operator= 0x00462CB0 (call 0x00462CF9,
 //   between _M_allocate_and_copy 0x00462DC1 and the `_M_start = tmp` store: STLport's `_M_clear()` slot), whose element
@@ -48,7 +48,9 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> >
 class vector : protected _Vector_base<_Tp, _Alloc> {
 public:
+    protected:
     void _M_clear();
+    public:
 };
 
 template <class _Tp, class _Alloc>

@@ -1,6 +1,6 @@
 // CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe() -- gather the things in the 10x10 square around the shot (excluding the living shooter); the first living creature that can hear it and has the AI TC plays a random ARROW_FLY_BY sound from the shot's sound def, and the shot remembers it made its sound
 // Retail: Fable.exe @ 0x007C04A0, 496 bytes (plain `ret`).
-// Callees: CThing::GetPosition 0x004C73D0, __ftol2 0x00BFEA70, CBaseIntelligentPointer::GetPItem 0x00A01B50,
+// Callees: CThing::GetPos 0x004C73D0, __ftol2 0x00BFEA70, CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   CTCBase::GetThingSearchTools 0x00686D90, CThingSearchTools::GetAllThingsInRoughArea<IsNot> 0x00725F10 / <all> 0x007197C0,
 //   LowerBound 0x0040F020, CDefClassBase::GetSubDef 0x0065F604, CCharString(const char*, long) 0x0099EBF0 / ~ 0x0099EAE0,
 //   sound-group lookup 0x0065FBA4, CSoundInit() 0x0041C930, CTCBase::GetWorld 0x00686A70, CWorld::GetRandomSeed 0x0049D810,
@@ -146,7 +146,7 @@ class CThing { public:
     CDefClassBase* DefClass;                        // +0x70
     unsigned char _pad74[0x1d];
     unsigned char Dead : 1;                         // +0x91 bit 0
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
     template <class T> __forceinline bool GetInterface(long type, T** out)
     {
         if (TCBits[type >> 5] & (1UL << (type & 31))) {
@@ -191,7 +191,7 @@ struct CTCShotDefinitionBase {
 void CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe()
 {
     CThingVector things;
-    const C3DVector& pos = ParentThing->GetPosition();
+    const C3DVector& pos = ParentThing->GetPos();
     long x = (long)pos.X;
     long y = (long)pos.Y;
     C2DBoxI area(x - 5, y - 5, x + 5, y + 5);

@@ -3,7 +3,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0x31 =
 // CTCCreatureModeManager, bit 17 of +0x24), CTCCreatureModeManager::RemoveMode(unsigned long) @ 0x0073ABA0,
 // CCharString::CCharString(const char*, long) @ 0x0099EBF0, CGameDefinitionManager::Get @ 0x0044C6B0 (static __fastcall),
-// CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CCharString::~CCharString @ 0x0099EAE0, CThing::GetPosition
+// CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CCharString::~CCharString @ 0x0099EAE0, CThing::GetPos
 // @ 0x004C73D0, CreateThing(long, const C3DVector&) @ 0x0080C460 (`__fastcall`), the explosion driver's exclusion add
 // @ 0x0080CBF0.
 // Shape: the landed CCreatureAction_ScorpionTailPlunge::PerformAction (0x008C4810) without the explosion null test,
@@ -30,7 +30,7 @@ class CThing { public:
     CInterfaceMap     m_interfaces;         // +0x44
     unsigned char     _pad1[0x5c - 0x4c];
     CExplosionDriver* m_pDriver;            // +0x5c
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -101,7 +101,7 @@ void CCreatureAction_SummonerLightningOrbOutOfGroundSmash::PerformAction()
         CCharString name("THING_EXPLOSION_SUMMONER_LIGHTNING_GROUND_SMASH", -1);
         explosionIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
     }
-    CThing* explosion = CreateThing(explosionIndex, PCreature.GetPItem()->GetPosition());
+    CThing* explosion = CreateThing(explosionIndex, PCreature.GetPItem()->GetPos());
     CExplosionDriver* driver;
     explosion->GetTCDriver(&driver);
     driver->AddExcludedThing(PCreature.GetPItem());

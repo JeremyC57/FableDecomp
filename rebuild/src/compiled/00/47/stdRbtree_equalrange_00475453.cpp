@@ -65,8 +65,12 @@ public:
     typedef _Rb_tree_iterator<_Value, _Nonconst_traits<_Value> > iterator;
     unsigned int _M_node_count;
     _Compare _M_key_compare;
+    private:
     _Rb_tree_node_base* _M_lower_bound(const key_type& __k) const;   // 0x0047547D (own COMDAT)
+    public:
+    private:
     _Rb_tree_node_base* _M_upper_bound(const key_type& __k) const;   // 0x004754C6 (own COMDAT)
+    public:
     iterator lower_bound(const key_type& __x) { return iterator(_M_lower_bound(__x)); }
     iterator upper_bound(const key_type& __x) { return iterator(_M_upper_bound(__x)); }
     pair<iterator, iterator> equal_range(const key_type& __x)

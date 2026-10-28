@@ -31,7 +31,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector* GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     void UnsheatheMeleeWeapon();                // 0x006649C0 (CThingCreatureBase)
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -124,8 +124,8 @@ void CAIStateGroup_WhisperRetreat::Update()
             stealth->SetAsInDanger(PBrain->PCreature, 3);
         CThing* creature = PBrain->PCreature;
         CThing* target = PTarget.GetPItem();
-        const C3DVector* pos = creature->GetPosition();
-        const C3DVector* targetPos = target->GetPosition();
+        const C3DVector* pos = &creature->GetPos();
+        const C3DVector* targetPos = &target->GetPos();
         float dx = targetPos->X - pos->X;
         float dy = targetPos->Y - pos->Y;
         if ((float)sqrt(dx * dx + dy * dy) < 3.0f)

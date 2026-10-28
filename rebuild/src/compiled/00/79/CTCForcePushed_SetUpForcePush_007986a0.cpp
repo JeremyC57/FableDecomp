@@ -1,7 +1,7 @@
 // CTCForcePushed::SetUpForcePush(const C3DVector& direction, float distance, CThing& pusher) -- arm the push: remember where it started, how far and along which per-frame step it goes and who pushed; an AI creature being pushed has its animation suspended and its current action finished
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007986A0, length 202 bytes (+ int3 padding). __fastcall, `ret 0Ch`.
 //         Ego_r.pdb: `?SetUpForcePush@CTCForcePushed@@QAEXABVC3DVector@@MAAVCThing@@@Z`.
-// Callees: CThing::GetPosition @ 0x004C73D0; CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/
+// Callees: CThing::GetPos @ 0x004C73D0; CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/
 //          0x00A01B50/0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C); CThingAnimatable::SetSuspendAnimation(bool,
 //          long) @ 0x00833A10; CThingCreatureBase::FinishCurrentAction @ 0x00662650.
 // Shape: the two vector members are implicit C3DVector copies (destination through a `lea` register); the per-frame
@@ -56,7 +56,7 @@ class CThing {
 public:
     unsigned char _pad00[0x10];
     unsigned char ThingClass;                       // +0x10 (1: AI creature)
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 class CThingAnimatable : public CThing {
 public:
@@ -85,7 +85,7 @@ public:
 
 void CTCForcePushed::SetUpForcePush(const C3DVector& direction, float distance, CThing& pusher)
 {
-    PositionForcePushStarted = ParentThing->GetPosition();
+    PositionForcePushStarted = ParentThing->GetPos();
     DistanceBeingPushed = distance;
     DirectionBeingPushed = direction;
     double length = direction.GetLength();

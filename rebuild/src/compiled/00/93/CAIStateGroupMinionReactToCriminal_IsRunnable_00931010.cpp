@@ -1,7 +1,7 @@
 // CAIStateGroup_MinionReactToCriminal::IsRunnable() -- refresh the hero and home pointers (an open, non-stall shopkeeper's home is its work building), stay out while the home holds a living thing with interface 0xAB, then defer to IsValid when the creature is aware of the hero or left the group less than ten seconds ago
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00931010, length 485 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970,
-// CPlayer::GetHeroThing @ 0x00487DC0, CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @
+// CPlayer::GetPControlledCreature @ 0x00487DC0, CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @
 // 0x00A01B90 / dtor @ 0x00A01C10, CVectorMap::LowerBound @ 0x0040F020 (inlined lookup 0x90 = CTCShopKeeper),
 // CTCShopKeeper::GetShopTC @ 0x00798F50 (three times), CIntelligentPointer<CThingBuilding>(CThingBuilding*) @ 0x0050F380
 // (out of line the second time), IsAwareOfThingImplementation @ 0x00864700 (anonymous-namespace register call; retail
@@ -42,6 +42,7 @@ class CThing { public:
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
@@ -70,7 +71,7 @@ class CThingAICreature : public CThing { public:
 bool __fastcall IsAwareOfThingImplementation(const CThingAICreature* creature, const CThing* thing, bool flag);  // 0x00864700
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -115,7 +116,7 @@ struct CAIStateGroup_MinionReactToCriminal : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionReactToCriminal::IsRunnable()
 {
-    PHero = GetPPlayerManager()->GetMainPlayer()->GetHeroThing();
+    PHero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     const CThingAICreature* me = PBrain->PCreature;
     PHome = me->HomeBuilding.GetPItem();
     CThingAICreature* creature = PBrain->PCreature;

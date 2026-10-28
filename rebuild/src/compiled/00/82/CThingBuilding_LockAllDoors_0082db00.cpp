@@ -77,9 +77,10 @@ class CPlayerManager { public:
     const CPlayer* GetMainPlayer() const;            // 0x00449960
     CPlayer* GetMainPlayer();                        // 0x00449970
 };
+class CThingPlayerCreature;
 class CPlayer { public:
-    const CThingCreatureBase* GetCharacter() const;  // 0x00487DD0
-    CThingCreatureBase* GetCharacter();              // 0x00487DC0
+    const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -89,7 +90,7 @@ class CThing { public:
     unsigned char Dead : 1;                          // +0x91 bit 0
     const CPlayerManager* GetPlayerManager() const;  // 0x004C79F0
     CPlayerManager* GetPlayerManager();              // 0x004C7A00
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
@@ -118,6 +119,7 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public:};
+class CThingPlayerCreature : public CThingCreatureBase { };
 extern const float G_DoorPlayerRadiusSq;             // 0x0125D108
 class CThingBuilding : public CThing { public:
     void LockAllDoors(bool lock, bool checkBlocking);
@@ -133,10 +135,10 @@ void CThingBuilding::LockAllDoors(bool lock, bool checkBlocking)
                 && door.GetPItem()->GetInterface(&tc, 0x26)) {
                 if (!tc->IsLockableByOwner())
                     continue;
-                const CThingCreatureBase* hero = static_cast<const CThingBuilding*>(this)->GetPlayerManager()->GetMainPlayer()->GetCharacter();
+                const CThingCreatureBase* hero = static_cast<const CThingBuilding*>(this)->GetPlayerManager()->GetMainPlayer()->PeekPControlledCreature();
                 if (hero && !hero->Dead && lock && tc->OwnerLock) {
-                    const C3DVector& a = door.GetPItem()->GetPosition();
-                    const C3DVector& b = hero->GetPosition();
+                    const C3DVector& a = door.GetPItem()->GetPos();
+                    const C3DVector& b = hero->GetPos();
                     float dx = b.X - a.X;
                     float dy = b.Y - a.Y;
                     float dz = b.Z - a.Z;
@@ -148,9 +150,9 @@ void CThingBuilding::LockAllDoors(bool lock, bool checkBlocking)
                     tc->OwnerLock = 0;
                 }
                 if (!tc->IsClosed() && lock && checkBlocking) {
-                    CThingCreatureBase* player = GetPlayerManager()->GetMainPlayer()->GetCharacter();
+                    CThingCreatureBase* player = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
                     CTCSwitchableNavigation* nav;
-                    if (door.GetPItem()->GetInterface(&nav, 0x79) && nav->WouldBlockPos(player->GetPosition()))
+                    if (door.GetPItem()->GetInterface(&nav, 0x79) && nav->WouldBlockPos(player->GetPos()))
                         continue;
                 }
                 tc->ScriptTriggerOpen(!lock);

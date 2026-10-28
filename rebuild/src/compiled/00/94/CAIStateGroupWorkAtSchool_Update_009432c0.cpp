@@ -5,7 +5,7 @@
 // 0x00658ACB, GetPThingWorld @ 0x008FCFA0, GetDummyObject @ 0x004C08C0, GetDummyObjectRecursive @ 0x00942B30 (__fastcall),
 // GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, GFRandom @ 0x004CDAE0, GetRandomFreeSeatInBuilding @ 0x009431E0,
 // AIAction_DoNothing @ 0x0097E200, AIAction_LookAtPos @ 0x0097D580, MoveAndFace @ 0x009425F0, talk helpers @ 0x009428A0 /
-// 0x00942C70 / 0x00942820, GetPosition @ 0x004C73D0, Terminate @ 0x008FCF40. Data: 2^32 @ 0x0122DCB4, 3.0f @ 0x01292A20.
+// 0x00942C70 / 0x00942820, GetPos @ 0x004C73D0, Terminate @ 0x008FCF40. Data: 2^32 @ 0x0122DCB4, 3.0f @ 0x01292A20.
 // Layout: local model (PBrain +4; brain PCreature +0x18; creature workplace pointer +0x170; thing graphic appearance +0x64;
 // village lesson flag +0xBC; time of day now +0x08).
 // Shape: the time-of-day pointer goes through a named local (fixes the eax/ecx rotation of every following lea); the dummy
@@ -44,7 +44,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x64 - 0x4c];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         bool found = (m_presentBits[interfaceType >> 5] & (1u << (interfaceType & 31))) != 0;
@@ -86,7 +86,7 @@ struct CTimeOfDay {
     unsigned char _pad[0x08];
     float Now;                                  // +0x08
 };
-struct CThingWorld {
+class CWorld { public:
     unsigned char _pad[0x1c];
     CTimeOfDay* PTimeOfDay;                     // +0x1c
 };
@@ -101,7 +101,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CThingWorld* GetPThingWorld();              // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     void Terminate();                           // 0x008FCF40
     long AIAction_DoNothing();                  // 0x0097E200
@@ -130,7 +132,7 @@ void CAIStateGroup_WorkAtSchool::Update()
     float startTime;
     float endTime;
     member->GetPVillage()->GetSchoolTimes(&startTime, &endTime);
-    CTimeOfDay* tod = GetPThingWorld()->PTimeOfDay;
+    CTimeOfDay* tod = PeekWorld().PTimeOfDay;
     float now = tod->Now;
     C3DVector boardPos;
     CRightHandedSet boardSet;
@@ -169,7 +171,7 @@ void CAIStateGroup_WorkAtSchool::Update()
                 return;
             }
         }
-        CTimeOfDay* tod2 = GetPThingWorld()->PTimeOfDay;
+        CTimeOfDay* tod2 = PeekWorld().PTimeOfDay;
         float time = tod2->Now;
         if (!school.GetPItem())
             break;
@@ -184,7 +186,7 @@ void CAIStateGroup_WorkAtSchool::Update()
             CThing* pupil = GetRandomFreeSeatInBuilding(school.GetPItem());
             if (!pupil)
                 break;
-            while (AIAction_LookAtPos(2, pupil->GetPosition(), 0x11, 0.0027777f) == 4)
+            while (AIAction_LookAtPos(2, pupil->GetPos(), 0x11, 0.0027777f) == 4)
                 ;
             bool ok;
             if (atBoard)
@@ -199,7 +201,7 @@ void CAIStateGroup_WorkAtSchool::Update()
         CThing* seat = GetRandomFreeSeatInBuilding(school.GetPItem());
         if (!seat)
             continue;
-        if (!MoveAndFace(seat->GetPosition(), 1.0f, seat->GetPosition()))
+        if (!MoveAndFace(seat->GetPos(), 1.0f, seat->GetPos()))
             break;
         unsigned long* seed2 = GetPWorldSeed();
         *seed2 = *seed2 * 0x24A1U + 0x24DFU;

@@ -13,15 +13,16 @@ struct Map {
     MapNode* LowerBound(int* keyPtr); // thiscall: this in ecx, keyPtr on stack
 };
 
-extern void* __fastcall GetSubObject(void* self);
-extern void* __fastcall Resolve(void* self);
+class CThingPlayerCreature;
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
+extern CPlayer* __fastcall GetSubObject(void* self);
 extern void __fastcall Consume(void* value);
 
 
 void __fastcall CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault(CGameScriptInterface* self)
 {
-    void* a = GetSubObject(self->PlayerManager);
-    unsigned char* eax = (unsigned char*)Resolve(a);
+    CPlayer* a = GetSubObject(self->PlayerManager);
+    unsigned char* eax = (unsigned char*)a->GetPControlledCreature();
     if (!eax) return;
     if (eax[0x91] & 0x1) return;
     if (!(eax[0x20] & 0x10)) return;

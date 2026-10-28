@@ -6,7 +6,8 @@
 class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
 struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const long&);}; //0040F020 lower_bound
 struct ScriptMethods;
-struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();const C3DVector& GetPosition()const;class CTCBase* AddTC(const CCharString&,bool,class CTCParamsBase*);}; //004C7E50 //004C73D0,004C7E50
+class CThing { public: const C3DVector& GetPos() const; };
+struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; unsigned char Rest[0x41]; unsigned char DeletedFlags; ScriptMethods GetScriptThing(); class CTCBase* AddTC(const CCharString&,bool,class CTCParamsBase*); }; //004C7E50 //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
 // Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
@@ -113,7 +114,7 @@ struct OpinionSourceMethods:CTCBase{void PostDeed(long,float);}; //007712F0: Dee
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void EntityPostOpinionDeedToAll(const ScriptMethods&,long)const;};
 void CGameScriptInterfaceMethods::EntityPostOpinionDeedToAll(const ScriptMethods& script,long deed)const{
  CThingNative* thing=script.GetPThing();if(thing){
- if(thing->UsingComponents[2]&0x20000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(81);ComponentEntry* end=map->Finish;HeroDeedLogMethods* log=static_cast<HeroDeedLogMethods*>((it==end||it->Type>81?end:it)->Component);bool positive=deed>=3&&deed<=10;log->PostDeed(deed,thing->GetPosition(),0,0,7,positive,false,0,false,0);}
+ if(thing->UsingComponents[2]&0x20000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(81);ComponentEntry* end=map->Finish;HeroDeedLogMethods* log=static_cast<HeroDeedLogMethods*>((it==end||it->Type>81?end:it)->Component);bool positive=deed>=3&&deed<=10;log->PostDeed(deed,thing->GetPos(),0,0,7,positive,false,0,false,0);}
  else{OpinionSourceMethods* source;if(thing->UsingComponents[2]&0x10000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(80);ComponentEntry* end=map->Finish;source=static_cast<OpinionSourceMethods*>((it==end||it->Type>80?end:it)->Component);}else{CCharString componentName("CTCOpinionSource",-1);source=static_cast<OpinionSourceMethods*>(thing->AddTC(componentName,false,0));}source->PostDeed(deed,5.0f);}
  }
 }

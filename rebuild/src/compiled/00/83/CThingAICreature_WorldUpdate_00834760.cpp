@@ -51,9 +51,13 @@ void __fastcall CombatStressTestDebug(CThingAICreature& creature, const CThingSe
 extern bool g_CombatStressTestEnabled;                         // 0x013B86D5
 
 #pragma pack(push, 1)
-class CThingCreatureBase {
+class CThingPhysical { public:
+    virtual void v00();  // moved from CThingCreatureBase: the base owns the vptr (vtable order unchanged)
+    const C3DVector& PeekPos() const;                          // 0x006A4D00 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order Kill/PeekPos/PeekLastPos/OnCreate)
+    const C3DVector& PeekLastPos() const;                      // 0x006A4D10 ?PeekLastPos@CThingPhysical@@QBEABVC3DVector@@XZ
+};
+class CThingCreatureBase : public CThingPhysical {
 public:
-    virtual void v00();
     unsigned char _pad04[0x20 - 0x04];
     unsigned long m_presentBits[9];                            // +0x20
     CInterfaceMap m_interfaces;                                // +0x44
@@ -79,8 +83,6 @@ public:
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    const C3DVector& GetPosition() const;                      // 0x006A4D00
-    const C3DVector& GetLastPosition() const;                  // 0x006A4D10
     CCamera* GetCamera() const;                                // 0x004C7AA0
     const CThingSearchTools& PeekThingSearchTools() const;     // 0x004C7A60
     unsigned long* GetRandomSeed();                            // 0x004C7AE0
@@ -103,10 +105,10 @@ bool CThingAICreature::WorldUpdate()
     UpdateAction();
     CThingCreatureBase::WorldUpdate();
     if (m_updateFlags & 2)
-        MovementVector = GetPosition() - GetLastPosition();
+        MovementVector = PeekPos() - PeekLastPos();
     m_updateFlags |= 2;
     CCamera* camera = GetCamera();
-    const C3DVector& pos = GetPosition();
+    const C3DVector& pos = PeekPos();
     float distance = (camera->GetPosition() - pos).GetLength();
     if (!IsDead()) {
         UpdateMovement(distance);

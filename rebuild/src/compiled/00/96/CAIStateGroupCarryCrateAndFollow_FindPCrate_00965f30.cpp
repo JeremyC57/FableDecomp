@@ -19,7 +19,7 @@ class C3DVector { public:
 };
 
 class CThing { public:
-    const C3DVector* GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
 class CThingFilter_ObjectHasProperty { public:
@@ -108,6 +108,6 @@ CThingObject* CAIStateGroup_CarryCrateAndFollow::FindPCrate()
     CThingObject* crate;
     PeekThingSearchTools()->GetPBestThing(
         CThingFilter_ObjectHasProperty(0x08000000) && CThingFilter_HasFreeActionPoint() && CThingFilter_HasTC(0x47),
-        CThingCompare_Nearest(*PBrain->Creature->GetPosition()), &crate);
+        CThingCompare_Nearest(PBrain->Creature->GetPos()), &crate);
     return crate;
 }

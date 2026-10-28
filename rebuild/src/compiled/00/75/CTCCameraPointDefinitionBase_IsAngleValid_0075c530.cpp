@@ -3,8 +3,8 @@
 // Leaf: IsAngleValid
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C530, length 192 bytes
 // (?IsAngleValid@CTCCameraPointDefinitionBase@@ABE_NXZ).
-// Callees: CTCBase::GetWorld() const @ 0x00686A80, CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::GetControlledCreature
-// @ 0x00487DD0, the camera manager's (world +0x34) virtual slot 11 (+0x2C, C3DVector by hidden pointer), CThing::GetPosition
+// Callees: CTCBase::GetWorld() const @ 0x00686A80, CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature
+// @ 0x00487DD0, the camera manager's (world +0x34) virtual slot 11 (+0x2C, C3DVector by hidden pointer), CThing::GetPos
 // @ 0x004C73D0, the point's own virtual GetActiveCameraPosition (slot 35, +0x8C, C3DVector by hidden pointer); 0.0f @ 0x0122DEDC.
 // Layout = Ego_r.pdb CTCCameraPointDefinitionBase: TestAngleBeforeActivation +0x0E.
 // Shape: the camera direction from the hero is a 3D local with only x and y filled (its unused z keeps a frame word) built
@@ -22,10 +22,11 @@ class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature();            // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
 };
 class CGameCameraManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -66,10 +67,10 @@ public:
 bool CTCCameraPointDefinitionBase::IsAngleValid() const
 {
     if (TestAngleBeforeActivation) {
-        CThing* hero = GetWorld()->GetCurrentPlayer()->GetControlledCreature();
+        const CThing* hero = GetWorld()->GetCurrentPlayer()->PeekPControlledCreature();
         if (hero && !hero->IsDead()) {
             C3DVector camera = GetWorld()->GetCameraManager()->PeekCurrentPos();
-            const C3DVector& heroPosition = hero->GetPosition();
+            const C3DVector& heroPosition = hero->GetPos();
             C3DVector toCamera;
             toCamera.X = camera.X - heroPosition.X;
             toCamera.Y = camera.Y - heroPosition.Y;

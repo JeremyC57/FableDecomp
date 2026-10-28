@@ -11,7 +11,9 @@
 // Shape: /O2 (16-aligned entry); the PeekTC out-pointer form, with the end-or-mismatch choice written as one ternary
 // whose ->component is stored (`*out = ((it == last || 8 < it->type) ? last : it)->component`): the if/assign form puts
 // the component in eax and copies it to ecx (142 bytes); the ternary loads it straight into ecx as retail does.
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 class CTCBase;
 class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
@@ -79,12 +81,12 @@ public:
     virtual CThing* GetTarget() const;                   // slot 33 (+0x84, name not confirmed)
 };
 class CThingPlayerCreature : public CThing { };
-struct CPlayer_Methods : CPlayer {
+class CPlayer : public CPlayerPdb { public:
     CThingPlayerCreature* GetPControlledCreature() const; // 0x00487DC0
 };
 class CPlayerManager {
 public:
-    CPlayer_Methods& GetMainPlayer();                    // 0x00449970
+    CPlayer& GetMainPlayer();                    // 0x00449970
 };
 class CGameScriptInterface {
 public:
@@ -97,7 +99,7 @@ public:
 };
 bool CGameScriptInterface::IsPlayerZTargetingThing(const CScriptThing& thing) const
 {
-    CPlayer_Methods& player = PlayerManager->GetMainPlayer();
+    CPlayer& player = PlayerManager->GetMainPlayer();
     CThing* target = thing.GetPThing();
     if (player.ZTargeting && target && !target->IsDead())
     {

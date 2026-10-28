@@ -4,10 +4,10 @@
 //   TU is size-optimised with a frame pointer: `optimize("y", off)` + `("s", on)` (`push ebp ; mov ebp,esp`, `and [esi+68h],0`,
 //   `leave`), as the landed TriggerTrap (0x00787CA5) and CTCMeleeTrap::UpdateAnimation (0x00788555).
 // Callees: IS_THING_ALIVE<CIntelligentPointer> @ 0x004CC340 (`__fastcall`, twice), CTCBase::GetPlayerManager @ 0x00686D40,
-//   CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, IS_THING_ALIVE<CThing*> @ 0x0040DCE0
+//   CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, IS_THING_ALIVE<CThing*> @ 0x0040DCE0
 //   (`__fastcall`, by const reference), CIntelligentPointer(CThing*) @ 0x004A96F0, CIntelligentPointer::operator= @ 0x004A9760,
 //   ~CBaseIntelligentPointer @ 0x00A01C10, std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020 (interface
-//   0x43 = CTCLook), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, CTCLook::LookAtPos(const
+//   0x43 = CTCLook), CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, CTCLook::LookAtPos(const
 //   C3DVector&, long) @ 0x00753E90, __ftol2 @ 0x00BFEA70, virtual TriggerTrap (slot 30, +0x78). g_framesPerSecond @ 0x01375550.
 // Layout: Ego_r.pdb CTCTrapBase with 12-byte retail vectors (PTrapDef +0x54, Active +0x58, Triggered +0x59), CTCProjectileTrap
 //   ShotTimer +0x60, IdleTimer +0x64, NumShotsThisRound +0x68, PTarget +0x6C (PDB -0xC); CTrapDef NumShotsToFireBeforeIdle +0x58,
@@ -52,8 +52,9 @@ public:
     unsigned char    _pad00[0x20];
     CComponentBitset UsingComponents;                   // +0x20
     CInterfaceMap    m_interfaces;                      // +0x44
-    const C3DVector& GetPosition();                     // 0x004C73D0
+    const C3DVector& GetPos() const;                     // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CTCLook { public:
     void LookAtPos(const C3DVector& position, long priority);   // 0x00753E90
 };
@@ -66,7 +67,7 @@ __declspec(noinline) void CTCLook::LookAtPos(const C3DVector& position, long pri
 }
 #pragma auto_inline(on)
 class CPlayer { public:
-    CThing* GetHeroThing();                             // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                           // 0x00449970
@@ -148,7 +149,7 @@ void CTCProjectileTrap::UpdateTrap()
     if (!Triggered || !Active)
         return;
     if (!IS_THING_ALIVE(&PTarget)) {
-        CThing* hero = GetPlayerManager().GetMainPlayer()->GetHeroThing();
+        CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
         if (IS_THING_ALIVE(hero))
             PTarget = hero;
     }
@@ -160,7 +161,7 @@ void CTCProjectileTrap::UpdateTrap()
         CInterfaceMap* map = &thing->m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&key);
         CTCLook* look = (CTCLook*)((it == map->last || 0x43 < it->type) ? map->last : it)->component;
-        look->LookAtPos(PTarget.GetPItem()->GetPosition(), 0x17);
+        look->LookAtPos(PTarget.GetPItem()->GetPos(), 0x17);
     }
     if (IdleTimer > 0) {
         --IdleTimer;

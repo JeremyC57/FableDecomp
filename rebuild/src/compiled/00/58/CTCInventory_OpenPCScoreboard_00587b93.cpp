@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00587B93, 108 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`).
 // Callees: DeleteMenuComponents() @ 0x00587A41, CPlayerManager::GetMainPlayer() @ 0x00449960 on the engine
-//          globals' player manager (0x013B86A0 +0x1C), CPlayer::GetCharacterThing() @ 0x00487DC0,
+//          globals' player manager (0x013B86A0 +0x1C), CPlayer::GetPControlledCreature() @ 0x00487DC0,
 //          std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCHeroOnlineScoreboard::ShowScoreboard() @ 0x00563130.
 // Shape: the screen member's address is a reference local (esi, `lea esi,[ecx+21Ch]`) and the constant 8 lives in
@@ -45,13 +45,14 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 class CTCHeroOnlineScoreboard { public:                     // interface type 0x10D
     void ShowScoreboard();                           // 0x00563130
 };
 
 class CPlayer { public:
-    CThing* GetCharacterThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 
 class CPlayerManager { public:
@@ -83,7 +84,7 @@ void CTCInventory::OpenPCScoreboard()
     if (screen != PC_SCREEN_SCOREBOARD) {
         DeleteMenuComponents();
         screen = PC_SCREEN_SCOREBOARD;
-        CThing* hero = g_pEngineGlobals->PlayerManager->GetMainPlayer()->GetCharacterThing();
+        CThing* hero = g_pEngineGlobals->PlayerManager->GetMainPlayer()->GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         if (hero->GetInterface(&scoreboard, 0x10D))
             scoreboard->ShowScoreboard();

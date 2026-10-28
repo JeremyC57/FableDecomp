@@ -77,12 +77,14 @@ public:
     typedef _List_node<_Tp> _Node;
     typedef _List_iterator<_Tp> iterator;
     iterator begin() { return iterator((_Node*)(this->_M_node._M_data->_M_next)); }
+    protected:
     _Node* _M_create_node(const _Tp& __x)
     {
         _Node* __p = this->_M_node.allocate(1);
         _Construct(&__p->_M_data, __x);
         return __p;
     }
+    public:
     iterator insert(iterator __position, const _Tp& __x)
     {
         _Node* __tmp = _M_create_node(__x);

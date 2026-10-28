@@ -29,7 +29,7 @@ public:
     CTCPhysicsBase* PhysicsTC;   // +0x60
     unsigned char _pad64[0x6c - 0x64];
     unsigned long ThingTypeFlags; // +0x6c
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 class CThingCreatureBase : public CThing {
 public:
@@ -45,7 +45,7 @@ bool CIsCreatureIsIntersecting::operator()(CThing* thing) const
     bool result = false;
     CTCPhysicsBase* phys = thing->PhysicsTC;
     if (thing->ThingTypeFlags & 8) {
-        const C3DVector& pos = Owner->GetPosition();
+        const C3DVector& pos = Owner->GetPos();
         float dx = pos.X - phys->Position.X;
         float dy = pos.Y - phys->Position.Y;
         float dz = pos.Z - phys->Position.Z;

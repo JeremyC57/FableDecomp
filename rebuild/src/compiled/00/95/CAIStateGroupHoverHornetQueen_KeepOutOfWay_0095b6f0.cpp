@@ -12,7 +12,8 @@ class CAIBrain { public:char prefix[24];void* Creature;};
 class CCharString { public:void* storage_;CCharString(const char*,long);~CCharString();};
 #endif
 class C3DVector { public:float X,Y,Z;};
-struct CQueenThing {const C3DVector& GetPosition();}; //004c73d0
+class CThing { public: const C3DVector& GetPos() const; };
+struct CQueenThing : public CThing { public:  }; //004c73d0
 struct CQueenPointer {virtual ~CQueenPointer();CQueenThing* item;CQueenThing* GetPItem()const;}; //00a01b50
 struct CAnimationSound {long first,last;CAnimationSound():first(0),last(0){}};
 struct CActionNative {virtual ~CActionNative();char state[0xa4];}; //00693ef0
@@ -33,8 +34,8 @@ long CQueenNative::KeepOutOfWay(){
 if(!IsStillRunnable()){Terminate();return 1;}
 TimingCritical=true;
 CQueenThing* creature=GetCreature();
-const C3DVector& enemy=target.GetPItem()->GetPosition();
-const C3DVector& owner=creature->GetPosition();
+const C3DVector& enemy=target.GetPItem()->GetPos();
+const C3DVector& owner=creature->GetPos();
 float dx=owner.X-enemy.X,dy=owner.Y-enemy.Y;
 long result;
 if((float)sqrt(dx*dx+dy*dy)<15.0f){

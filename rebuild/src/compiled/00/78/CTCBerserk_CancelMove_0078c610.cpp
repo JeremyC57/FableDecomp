@@ -4,7 +4,7 @@
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (interface 0xA7), CBaseIntelligentPointer::GetPItem
 // 0x00A01B50, CThing::Kill(bool) 0x004C9B80, CDefClassBase::GetSubDef<T> 0x00669580, the effects def's named lookup
 // 0x00669D30, CCharString(const char*, long) 0x0099EBF0 ("BERSERK_EXIT_EFFECT" 0x0126BC74), ~CCharString 0x0099EAE0,
-// CThing::GetPosition 0x004C73D0, CreateParticleEffect 0x0072AB70 (`__fastcall`), CThing::RemoveTC(long) 0x004C9840,
+// CThing::GetPos 0x004C73D0, CreateParticleEffect 0x0072AB70 (`__fastcall`), CThing::RemoveTC(long) 0x004C9840,
 // __ftol2 0x00BFEA70; the def's slot 1 release.
 // Layout: retail CTCBerserk (local model, see CreateStartingEffect): Timer +0x0C, ReleasedAnimationTimer +0x1C (float),
 // AnimTimer +0x20, AbilityInitialised +0x49, StartUpEffect +0x58, PDef +0x68 (max timer +0x40); the 0xA7 component's
@@ -35,7 +35,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                         // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags;                              // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
     void RemoveTC(long type);                           // 0x004C9840
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -193,7 +193,7 @@ void CTCBerserk::CancelMove()
         CDefPointer<CBerserkEffectsDef> def;
         long effect = 0;
         if (berserkDef->GetSubDef(&def) && def->GetEffect("BERSERK_EXIT_EFFECT", &effect))
-            CreateParticleEffect(effect, thing->GetPosition());
+            CreateParticleEffect(effect, thing->GetPos());
         thing->RemoveTC(0x84);
     } else {
         float animTimer = (float)AnimTimer;

@@ -50,11 +50,13 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
 };
 }
 template std::vector<CUnprovenElement_00cdb960>::~vector();

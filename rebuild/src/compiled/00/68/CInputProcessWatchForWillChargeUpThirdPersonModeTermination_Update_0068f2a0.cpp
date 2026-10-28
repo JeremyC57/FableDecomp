@@ -1,7 +1,7 @@
 // CInputProcessWatchForWillChargeUpThirdPersonModeTermination::Update(CProcessedInput& processed) -- while the live hero's will-charge component (kind 0xa7) still runs, hold the quit timer at 5; once it has ended, count the timer down and leave player mode 0x23 when it runs out
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068F2A0, length 120 bytes.
-// Callees: CPlayer::GetHeroCreature @ 0x00487DC0 (MyPlayer +0x18), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound (const)
+// Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound (const)
 // @ 0x004365B0, the component's running test @ 0x0072A860 (`Running != 0` at +0xc; manifest CASuspendableProcess::
 // CheckTermination), CPlayer::RemoveMode @ 0x00634190.
 // Model: engine/CInputProcessWatchForWillChargeUpThirdPersonModeTermination.h (QuitModeTimer +0x28) over the
@@ -40,12 +40,13 @@ struct CThing_Retail {
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCBase_Retail* GetTC(long kind) const { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing_Retail { };
 class CASuspendableProcess { public:
     bool CheckTermination();                       // 0x0072A860
 };
 class CPlayer {
 public:
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
     void RemoveMode(long mode);                    // 0x00634190
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
@@ -67,7 +68,7 @@ public:
 
 void CInputProcessWatchForWillChargeUpThirdPersonModeTermination::Update(CProcessedInput& processed)
 {
-    CThing_Retail* hero = MyPlayer->GetHeroCreature();
+    CThing_Retail* hero = MyPlayer->GetPControlledCreature();
     if (hero && !hero->m_dead) {
         CASuspendableProcess* charge = 0;
         if (hero->HasTC(0xa7))

@@ -67,6 +67,7 @@ public:
         return (T*)(it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CTCFireheartMinigame { public:
     unsigned char _pad00[0x88];
     bool          Quitting;                        // +0x88 (descriptive)
@@ -76,7 +77,7 @@ class CTCFireheartMinigame { public:
 };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CInputProcessFireheartMinigame : public CInputProcessGameBase {
 public:
@@ -90,7 +91,7 @@ void CInputProcessFireheartMinigame::ProcessInput(const CInputEvent& event, CPro
 {
     if (IsEventGameAction(0x3c, event)) {
         CTCFireheartMinigame* minigame = 0;
-        MyPlayer->GetHeroCreature()->GetInterface(&minigame, 0x108);
+        MyPlayer->GetPControlledCreature()->GetInterface(&minigame, 0x108);
         C2DVector stick;
         if (GetEventGameActionVector(0x3c, event, stick)) {
             if (stick.Y > 0.5) {
@@ -110,7 +111,7 @@ void CInputProcessFireheartMinigame::ProcessInput(const CInputEvent& event, CPro
     }
     if (!IsEventButtonPressed(event))
         return;
-    CThing* hero = MyPlayer->GetHeroCreature();
+    CThing* hero = MyPlayer->GetPControlledCreature();
     CTCFireheartMinigame* minigame = hero->GetInterface<CTCFireheartMinigame>(0x108);
     if (IsEventGameAction(0x2c, event) && !minigame->Quitting) {
         minigame->DelayedQuit();

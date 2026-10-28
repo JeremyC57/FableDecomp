@@ -172,9 +172,16 @@ public:
         _M_empty_initialize();
     }
     ~_Rb_tree() { clear(); }
+    protected:
     _Rb_tree_node_base*& _M_root() const { return this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_leftmost() const { return this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Rb_tree_node_base*& _M_rightmost() const { return this->_M_header._M_data->_M_right; }
+    public:
+    private:
     void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;
@@ -182,6 +189,7 @@ public:
         _M_leftmost() = this->_M_header._M_data;
         _M_rightmost() = this->_M_header._M_data;
     }
+    public:
     iterator begin() const { return iterator(_M_leftmost()); }
     iterator end() const { return iterator(this->_M_header._M_data); }
     unsigned int size() const { return _M_node_count; }

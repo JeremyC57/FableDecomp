@@ -6,7 +6,7 @@
 // Retail 0x0074A260, 630 bytes (`ret 8`, 8-aligned frame).
 // Callees: CVectorMap::LowerBound const @ 0x004365B0 (CTCCreatureNavigation 7), CTCBase::GetWorld @ 0x00686A70, CWorld::
 // GetPRandomSeed @ 0x0049D810, GFROR13 @ 0x00497890 (__fastcall), the physics' slot 70 (+0x118, the forward vector by value),
-// C3DVector::RotateXY @ 0x00A14040, CThing::GetPosition @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CWorld slot 12 (+0x30, the
+// C3DVector::RotateXY @ 0x00A14040, CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CWorld slot 12 (+0x30, the
 // world map), CWorldMap::IsPosInMap @ 0x004FC5B0 / IsPosPassable @ 0x004FCBD0 / GetHeightZBelowPos @ 0x0063E480,
 // CTCShapeManager::IsPosInAnyShape @ 0x00760870, CTCCreatureNavigation::IsAbleToNavigateFromPosToPos @ 0x006CB620.
 // Constants: 1.5f 0x0125AADC, 0.01f 0x01230A5C, 2^32 0x0122DCB4, 0.2f 0x012305A0, 1.0f 0x0122DED8, 0.5f 0x0122F59C.
@@ -62,7 +62,7 @@ class CThing { public:
     CInterfaceMap   m_interfaces;                            // +0x44
     unsigned char   _pad4c[0x60 - 0x4c];
     CTCPhysicsBase* PhysicsTC;                               // +0x60
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTCConst(long type) const
     {
@@ -105,7 +105,7 @@ bool CTCCreatureGenerator::GetUndeadGenerationPoint(CThing* creature, C3DVector*
         float angle = (float)(GFRandom(GetWorld().GetPRandomSeed()) % 10) * 0.2f - 1.0f;
         *out = distance * creature->PhysicsTC->GetForward();
         out->RotateXY(angle * angle * 0.5f);
-        const C3DVector& position = creature->GetPosition();
+        const C3DVector& position = creature->GetPos();
         out->X = position.X + out->X;
         out->Y = position.Y + out->Y;
         out->Z = position.Z + out->Z;
@@ -121,11 +121,11 @@ bool CTCCreatureGenerator::GetUndeadGenerationPoint(CThing* creature, C3DVector*
         out->Z += 1.0f;
         float height = GetWorld().GetWorldMap().GetHeightZBelowPos(*out);
         out->Z = height;
-        if (!((float)fabs(height - creature->GetPosition().Z) < 1.0f))
+        if (!((float)fabs(height - creature->GetPos().Z) < 1.0f))
             continue;
         if (!navigation)
             return true;
-        if (navigation->IsAbleToNavigateFromPosToPos(creature->GetPosition(), *out, 0.0f))
+        if (navigation->IsAbleToNavigateFromPosToPos(creature->GetPos(), *out, 0.0f))
             return true;
     }
     return false;

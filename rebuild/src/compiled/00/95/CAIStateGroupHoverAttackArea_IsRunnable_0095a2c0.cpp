@@ -32,7 +32,7 @@ class C2DVector { public:
 };
 
 class CThing { public:
-    const C3DVector* GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
 struct CBaseIntelligentPointer {
@@ -87,7 +87,7 @@ bool CAIStateGroup_HoverAttackArea::IsRunnable()
     if (enemy) {
         PTargetThing = enemy;
         if (IsEnemyValid()) {
-            const C3DVector* pos = PTargetThing.GetPItem()->GetPosition();
+            const C3DVector* pos = &PTargetThing.GetPItem()->GetPos();
             C2DVector delta(pos->X - StartPos.X, pos->Y - StartPos.Y);
             if (!(delta.Length() > 20.0f))
                 return true;

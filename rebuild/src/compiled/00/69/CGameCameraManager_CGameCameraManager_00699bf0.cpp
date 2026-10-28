@@ -207,9 +207,15 @@ public:
     typedef _Node* _Link_type;
     unsigned int _M_node_count;
     _Compare _M_key_compare;
+    protected:
     _Link_type& _M_root() const { return (_Link_type&)this->_M_header._M_data->_M_parent; }
+    public:
+    protected:
     _Link_type& _M_leftmost() const { return (_Link_type&)this->_M_header._M_data->_M_left; }
+    public:
+    protected:
     _Link_type& _M_rightmost() const { return (_Link_type&)this->_M_header._M_data->_M_right; }
+    public:
 private:
     void _M_erase(_Link_type __x);                     // 0x0069D3D0
 public:

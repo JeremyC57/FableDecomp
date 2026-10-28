@@ -34,12 +34,12 @@ class CThingObjectDef { public:
 class CThing {
 public:
     unsigned long* GetRandomSeed_004c7ae0();    // 0x004C7AE0
-    const C3DVector& GetPosition_006a4d00() const;       // 0x006A4D00
     void SetSpin_006a4dc0(const C3DVector* spin);   // 0x006A4DC0
 };
 
 class CThingPhysical : public CThing {
 public:
+    const C3DVector& PeekPos() const;    // 0x006A4D00
     void OnDie();                               // 0x006A4CF0 (slot 11)
 };
 
@@ -58,7 +58,7 @@ void CThingObject::OnDie()
         spin.X = 0.1f - GFFloatRandom(0.2f, GetRandomSeed_004c7ae0());
         spin.Y = 0.1f - GFFloatRandom(0.2f, GetRandomSeed_004c7ae0());
         spin.Z = GFFloatRandom(0.3f, GetRandomSeed_004c7ae0()) + 0.2f;
-        CThingObject* created = CreateObject(def->OnDeathObject, const_cast<C3DVector*>(&GetPosition_006a4d00()), -1, 0, 0, "");
+        CThingObject* created = CreateObject(def->OnDeathObject, const_cast<C3DVector*>(&PeekPos()), -1, 0, 0, "");
         if (created)
             created->SetSpin_006a4dc0(&spin);
     }

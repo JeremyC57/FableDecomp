@@ -70,8 +70,10 @@ public:
     typedef unsigned int size_type;
     typedef _Tp* pointer;
     typedef __false_type _IsPODType;
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                                             // 0x006BF1A0
+    public:
 };
 
 }

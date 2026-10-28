@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0080FAD0, 593 bytes, plain `ret`.
 // Callees: CTCBase::GetWorld @ 0x00686A70, CWorld::GetWorldFrame @ 0x0049D870, CCardinalSpline::GetSplinePosition @ 0x00A567A0,
 //   the physics body's slot 30 (+0x78), CTCNymph::PickNewTargetPos @ 0x0080F270, IsDecentAttackRange @ 0x0080F190,
-//   CThing::GetPosition @ 0x004C73D0, LowerBound @ 0x0040F020 (interface 8), the targeting component's slot 29 (+0x74),
+//   CThing::GetPos @ 0x004C73D0, LowerBound @ 0x0040F020 (interface 8), the targeting component's slot 29 (+0x74),
 //   CIntelligentPointer<const CThing>(const CThing*) @ 0x00668B60 and operator= @ 0x00668B80 (both out of line),
 //   CTCGraphicAppearance::SetAlpha @ 0x004BFAC0, __ftol2 @ 0x00BFEA70, the owner's slot 28, CThing::Kill @ 0x004C9B80,
 //   CBaseIntelligentPointer @ 0x00A01B10/0x00A01B50/0x00A01B90/0x00A01C10, CTCBase::FrameUpdate @ 0x006868A0.
@@ -130,7 +130,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 // Same-TU stand-in for the GetSubDef<T> COMDAT (as the landed 0x00801A50): with the body visible VC7.1 sees that the out
 // pointer does not escape and keeps the def object in ebp through to its release, as retail.
@@ -270,7 +270,7 @@ void CTCNymph::FrameUpdate()
                 PickNewTargetPos();
             if (PTarget.IsAlive()) {
                 if (CanAttack)
-                    ReadyToAttack = IsDecentAttackRange(PTarget.GetPItem()->GetPosition());
+                    ReadyToAttack = IsDecentAttackRange(PTarget.GetPItem()->GetPos());
             } else {
                 ReadyToAttack = false;
                 CTCTargeting* targeting;

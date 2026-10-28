@@ -15,7 +15,7 @@
 //   (has information) / 0x008300F0 (wave with information), CModeBase::GetNoFramesBeforePlayingWaveAnims 0x0073A7D0 /
 //   GetNoFramesBeforePlayingIdleAnims 0x0073A760 (manifest: both "GetNoFramesBeforePlayingCombinationIdleAnims", propagated from
 //   0x0073A6F0), CPlayerManager::GetMainPlayer 0x00449970 (g_pMainGameComponent 0x013B86A0 +0x1c), GetPItem 0x00A01B50,
-//   CThing::GetPosition 0x004C73D0 (both hero and creature, so the creature model declares no GetPosition of its own),
+//   CThing::GetPos 0x004C73D0 (both hero and creature, so the creature model declares no GetPos of its own),
 //   CThingCreatureBase::IsPerformingAnyAction 0x006622A0 / GetRandomLoadedAnimFromName 0x00662FA0, CAnimationEntry
 //   GetAnimationTransitionInTime 0x005DC1F0 / GetTimeToBlendIn 0x005DC230 / GetAnimateThingFlags 0x005DC390, the out-of-line
 //   CAnimInit(7 args) constructor 0x005B33F4 (landed as "CRumbleEffect_005b33f4::Initialise"; member zeroing then Set is a
@@ -92,7 +92,7 @@ class CThing { public:
     unsigned char Flags6c;                              // +0x6c (bit 4: has information to give)
     unsigned char _pad6d[0x91 - 0x6d];
     unsigned char Flags91;                              // +0x91 (bit 0: dead)
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     __forceinline unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline const T* GetConstTC(long interfaceType) const
     {
@@ -230,8 +230,8 @@ void CModeStandBase::UpdateIdleAnim(CAnimateThing& anim)
         && IdleCounter > GetNoFramesBeforePlayingWaveAnims(GetModeType())) {
         CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPCharacterThing();
         if (hero && !(hero->Flags91 & 1)) {
-            const C3DVector& heroPos = hero->GetPosition();
-            const C3DVector& pos = creature->GetPosition();
+            const C3DVector& heroPos = hero->GetPos();
+            const C3DVector& pos = creature->GetPos();
             float dx = pos.X - heroPos.X;
             float dy = pos.Y - heroPos.Y;
             if (!(dy * dy + dx * dx < 9.0f)) {

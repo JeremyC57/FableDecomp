@@ -2,10 +2,10 @@
 // Leaf: DoStopRunning
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0077CCA0, 117 bytes; default /O2 TU, no frame.
 // Callees: CBaseIntelligentPointer::GetPItem() @ 0x00A01B50 (twice), CThing::Kill(bool) @ 0x004C9B80,
-//          CThingDef::GetSubDef<CHighlightItemDef> @ 0x0077D080, CThing::GetPosition() @ 0x004C73D0,
+//          CThingDef::GetSubDef<CHighlightItemDef> @ 0x0077D080, CThing::GetPos() @ 0x004C73D0,
 //          the __fastcall thing factory @ 0x006E0880 (def index in ecx, position in edx, flags pushed).
 // Shape: the emitter is null-tested through one GetPItem call and killed through a second; the def is used without
-// a null test; the factory's trailing 0 is pushed before GetPosition (right-to-left).
+// a null test; the factory's trailing 0 is pushed before GetPos (right-to-left).
 // Layout: CTCHighlightItem (PDB, matches retail): StartRunning +0x0C, Running +0x0D, LifeTimer +0x10, StartPos +0x14,
 // PParticleEmitter +0x20 (CIntelligentPointer<CThing>); CTCBase ParentThing +0x04; retail CThing def object +0x70.
 // The def pointer is read once into edi after GetSubDef and released by hand (`dec [edi+4] ; jne ; call [vtbl+4]`).
@@ -56,7 +56,7 @@ template <class T> struct CDefPointerMember {
 class CThing { public:
     unsigned char _pad_0x00[0x70];
     CDefPointerMember<CThingDef> PDef;               // +0x70 CDefPointer<const CThingDef>
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
     void Kill(bool immediately);                     // 0x004C9B80
     void UpdateGraphicAppearance(long reason);       // 0x004C7590
 };
@@ -118,7 +118,7 @@ void CTCHighlightItem::DoStopRunning()
         thingDef->GetSubDef(&pdef);
         const CHighlightItemDef* def = pdef.Object;
         if (def->EndEffectDef)
-            CreateThing(def->EndEffectDef, ParentThing->GetPosition(), 0);
+            CreateThing(def->EndEffectDef, ParentThing->GetPos(), 0);
         Running = false;
         if (--((CHighlightItemDef*)def)->RefCount == 0)
             ((CHighlightItemDef*)def)->Destroy();

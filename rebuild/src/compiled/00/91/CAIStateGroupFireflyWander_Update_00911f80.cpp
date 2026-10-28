@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00911F80, 594 bytes. ?Update@CAIStateGroup_FireflyWander@@UAEXXZ (Ego_r.pdb).
 // Callees: CAIStateGroupBase::GetPWorld 0x008FCFA0 / GetPPlayerManager 0x008FCF90 / GetPWorldSeed 0x008FCFD0 /
 //   Terminate 0x008FCF40, the environment's day test 0x006BB2C0, CPlayerManager::GetMainPlayer 0x00449970,
-//   CPlayer::GetHeroCreature 0x00487DC0, CThing::GetPosition 0x004C73D0, GFROR13 0x00497890, LowerBound 0x0040F020,
+//   CPlayer::GetHeroCreature 0x00487DC0, CThing::GetPos 0x004C73D0, GFROR13 0x00497890, LowerBound 0x0040F020,
 //   CTCLight::SetActive 0x006412B0, GetRandomFlightPos 0x00912700, ExecuteFlyingPath 0x009130D0, the creature's
 //   virtual slots 27 (+0x6c, shown test) and 28 (+0x70, show/hide). Constants 196.0f @ 0x0128F99C, 100.0f @ 0x01230A08.
 // Layout: StartPos +0x24 (Ego_r.pdb); creature home position +0xe8 (descriptive: read as the 2D anchor), world
@@ -67,7 +67,7 @@ class CThing { public:
     virtual void v18(); virtual void v19(); virtual void v1a();
     virtual bool IsShown();                     // slot 27 (+0x6c)
     virtual void SetShown(bool shown);          // slot 28 (+0x70)
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     unsigned char _pad04[0x20 - 4];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
@@ -101,6 +101,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CThingAICreature : public CThing { public:
     unsigned char _pad94[0xe8 - 0x94];
     C3DVector InitialPos;                       // +0xe8
@@ -108,7 +109,7 @@ class CThingAICreature : public CThing { public:
 class CTCLight { public:
     void SetActive(bool active);                // 0x006412B0
 };
-class CPlayer { public: CThing* GetHeroCreature();     // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const;     // 0x00487DC0
 };
 class CPlayerManager { public: // 0x00449970
 public:
@@ -130,7 +131,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad08[0x0c];
     CThingAICreature* GetCreature() const { return PBrain->Creature; }
     CPlayerManager* GetPPlayerManager() const;  // 0x008FCF90
-    CWorld* GetPWorld_008fcfa0() const;                  // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
     void Terminate();                           // 0x008FCF40
     unsigned long Random(unsigned long range) const
@@ -157,18 +160,18 @@ struct CAIStateGroup_FireflyWander : CAIStateGroup_FlyingThingBase {
 
 void CAIStateGroup_FireflyWander::Update()
 {
-    if (!GetPWorld_008fcfa0()->PEnvironment->IsDaytime()) {
+    if (!PeekWorld().PEnvironment->IsDaytime()) {
         C3DVector target = StartPos;
-        CThing* hero = GetPPlayerManager()->GetMainPlayer().GetHeroCreature();
+        CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             CThingAICreature* me = GetCreature();
-            C3DVector toHero = me->InitialPos - hero->GetPosition();
+            C3DVector toHero = me->InitialPos - hero->GetPos();
             CThingAICreature* self = GetCreature();
-            C3DVector toHome = self->InitialPos - self->GetPosition();
+            C3DVector toHome = self->InitialPos - self->GetPos();
             if (toHome.Get2DLengthSquared() > 196.0f)
                 target = StartPos;
             else if (toHero.Get2DLengthSquared() < 100.0f)
-                target = hero->GetPosition();
+                target = hero->GetPos();
         }
         C3DVector destination;
         if (!GetRandomFlightPos(target, 6.0f, destination, true)) {

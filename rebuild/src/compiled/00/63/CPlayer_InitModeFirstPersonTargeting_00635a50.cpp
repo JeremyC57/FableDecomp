@@ -2,17 +2,19 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00635A50, length 224 bytes (+ int3 padding), `ret 8`.
 // Identity: Ego_r.pdb `?InitModeFirstPersonTargeting@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z` (a
 // CPlayer::PlayerModeInfo InitFunc; UninitModeFirstPersonTargeting is 0x00635B30).
-// Callees: CAInputProcess::AddToInterface(CGamePlayerInterface*) (virtual slot 1, four processes), CPlayer::GetHeroThing
+// Callees: CAInputProcess::AddToInterface(CGamePlayerInterface*) (virtual slot 1, four processes), CPlayer::GetPControlledCreature
 // 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inline GetInterface, type 0x31 = the
 // creature mode manager, bit 17 of +0x24), CTCCreatureModeManager::GetCurrentMode 0x0073A6E0 (the mode's type is
 // virtual slot 1), CTCCreatureModeManager::AddMode(unsigned long) 0x0073AE10, the world's +0x34 object's slot 9
 // (GetCameraManager out-parameter, +0x24), CGameCameraManager::PushSpecialCameraMode 0x00698F50.
 // Layout: engine/CPlayer.h (scoped_ptr<CInputProcess*> members, PlayerInterface +0x0C, World +0x1C) through the lane's
-// CPlayer_Methods carrier; CThing interface bitset +0x20, interface map +0x44, dead bit +0x91 & 1.
+// CPlayer carrier; CThing interface bitset +0x20, interface map +0x44, dead bit +0x91 & 1.
 // Shape: the mode manager is zero-initialised and filled by the out-parameter GetInterface (`xor edi,edi` before the
 // bitset test, the component left in edi); the camera manager out pointer is zero-initialised in its frame word and
 // the getter's bool guards the push.
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 
 typedef long EPlayerMode;
 class CProcessedInput;
@@ -50,6 +52,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 inline bool IsThingAlive(const CThing* thing)
 {
@@ -78,19 +81,19 @@ class CWorld { public:
     CCameraManagerSource* CameraSource;                 // +0x34
 };
 
-struct CPlayer_Methods : CPlayer {
-    CThing* GetHeroThing();                             // 0x00487DC0
+class CPlayer : public CPlayerPdb { public:
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
     void InitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* input);
 };
 
-void CPlayer_Methods::InitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* input)
+void CPlayer::InitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* input)
 {
     (void)mode; (void)input;
     reinterpret_cast<CAInputProcess*>(InputProcessControlCreatureActivateZTarget_ptr)->AddToInterface(PlayerInterface);
     reinterpret_cast<CAInputProcess*>(InputProcessFirstPersonTargeting_ptr)->AddToInterface(PlayerInterface);
     reinterpret_cast<CAInputProcess*>(InputProcessUseRangedWeapon_ptr)->AddToInterface(PlayerInterface);
     reinterpret_cast<CAInputProcess*>(InputProcessLeftStickLookAround_ptr)->AddToInterface(PlayerInterface);
-    CThing* hero = GetHeroThing();
+    CThing* hero = GetPControlledCreature();
     if (IsThingAlive(hero)) {
         CTCCreatureModeManager* modes = 0;
         hero->GetInterface(&modes, 0x31);

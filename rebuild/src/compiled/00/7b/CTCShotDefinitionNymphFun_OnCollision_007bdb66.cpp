@@ -1,7 +1,7 @@
 // CTCShotDefinitionNymphFun::OnCollision(ECollideType type, const C3DVector& pos, const C3DVector& normal, CThing* other) -- on the first hit by a live shooter with the trap-spawner component (TC 0xF5), spawn its trap object at the hit point (on a live terrain-snapping thing: at that thing, raised one unit and dropped onto the ground below), make the shooter and its summons immune to the trap, trigger it, and mark the shot spent; then the base collision
 // Retail: Fable.exe @ 0x007BDB66, 406 bytes (frame-pointer, `leave ; ret 0x10`; unaligned entry = /Os TU).
-// Shape: /Os frame-pointer TU (`optimize("y",off)` + `("s",on)`); C3DVector has a user copy ctor and the implicit operator= (the pos copy goes through registers, the GetPosition assignment through movsd); the empty name and the shooter's team are named locals in their own block so the team is read before the Create pushes; the trap component is left uninitialised when TC 0x7D is absent.
-// Callees: GetPItem 0x00A01B50, IS_THING_ALIVE 0x0040DCE0 (__fastcall), std::bitset::test 0x00410DE0, LowerBound 0x0040F020, CThing::GetPosition 0x004C73D0,
+// Shape: /Os frame-pointer TU (`optimize("y",off)` + `("s",on)`); C3DVector has a user copy ctor and the implicit operator= (the pos copy goes through registers, the GetPos assignment through movsd); the empty name and the shooter's team are named locals in their own block so the team is read before the Create pushes; the trap component is left uninitialised when TC 0x7D is absent.
+// Callees: GetPItem 0x00A01B50, IS_THING_ALIVE 0x0040DCE0 (__fastcall), std::bitset::test 0x00410DE0, LowerBound 0x0040F020, CThing::GetPos 0x004C73D0,
 //   CTCBase::GetWorldMap 0x00686D30, CWorldMap::GetHeightZBelowPos 0x0063E480, CCharString ctor/dtor, CThingObject::Create 0x00703210 (__fastcall),
 //   CTCTrapBase::SetThingAsImmune 0x0078839A / ManualTrigger 0x00788388, MakeSummonedCreaturesImmuneToTrap 0x0080F240 (__fastcall), base OnCollision 0x007BF510
 #pragma optimize("y", off)
@@ -37,7 +37,7 @@ public:
     unsigned char Flags6c;                              // +0x6c (bit 3: snaps to terrain)
     unsigned char _pad6d[0x90 - 0x6d];
     signed char Team;                                   // +0x90
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     __forceinline CTCBase* GetTC(long type)
     {
         long key = type;
@@ -105,7 +105,7 @@ void CTCShotDefinitionNymphFun::OnCollision(long type, const C3DVector& pos, con
                 if (trapType > 0) {
                     C3DVector at = pos;
                     if (IS_THING_ALIVE(other) && (other->Flags6c & 8)) {
-                        at = other->GetPosition();
+                        at = other->GetPos();
                         at.Z += 1.0f;
                         at.Z = GetWorldMap().GetHeightZBelowPos(at);
                     }

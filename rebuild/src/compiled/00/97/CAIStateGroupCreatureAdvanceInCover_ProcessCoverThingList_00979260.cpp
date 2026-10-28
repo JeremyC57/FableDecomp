@@ -31,7 +31,7 @@ public:
 };
 
 class CThing { public:
-    const C3DVector* GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
 struct CCoverThingCompare {                         // the sort predicate: origin + unit direction
@@ -95,8 +95,8 @@ void CAIStateGroup_CreatureAdvanceInCover::ProcessCoverThingList(CThingVector& c
 {
     CThing* creature = PBrain->Creature;
     CThing* threat = PThreat.GetPItem();
-    const C3DVector* creaturePos = creature->GetPosition();
-    const C3DVector* threatPos = threat->GetPosition();
+    const C3DVector* creaturePos = &creature->GetPos();
+    const C3DVector* threatPos = &threat->GetPos();
     C3DVector direction = *threatPos - *creaturePos;
-    SortCoverThings(coverThings.begin(), coverThings.end(), CCoverThingCompare(*PBrain->Creature->GetPosition(), direction));
+    SortCoverThings(coverThings.begin(), coverThings.end(), CCoverThingCompare(PBrain->Creature->GetPos(), direction));
 }

@@ -6,10 +6,10 @@
 //   called together by 0x006AF150. Interface 0x34 is CTCPerceiveThing (its radius getters). The catalog label
 //   "CVertexBufferWin32_DistanceCheck" is propagated.
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x004365B0 (the inline GetTC), CTCPerceiveThing::GetSightRadius @ 0x007448F0,
-//   CThing::GetPosition @ 0x004C73D0.
+//   CThing::GetPos @ 0x004C73D0.
 // Layout: retail CThing interface bitset +0x20 (interface 0x34 = +0x24 bit 20), interface map +0x44 (as the landed
 //   GetSleepTimes 0x00833390); Ego_r.pdb CMessageEvent Pos +0x0c, SightRadius +0x18, HearingRadius +0x1c.
-// Shape: `if (HasTC(0x34)) { float radius = min(GetTC(0x34)->GetSightRadius(), event.SightRadius); if ((GetPosition() -
+// Shape: `if (HasTC(0x34)) { float radius = min(GetTC(0x34)->GetSightRadius(), event.SightRadius); if ((GetPos() -
 //   event.Pos).GetLengthSquared() < radius * radius) return true; } return false;` -- STLport min (`b < a ? b : a`,
 //   the component radius in the dead type-key slot, the result homed on the dead `event` slot), the difference vector
 //   kept on the x87 stack. Lever: the squared length sums Z*Z, then Y*Y, then X*X (the landed GetNearestMember
@@ -69,7 +69,7 @@ public:
         const CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 
 class CThingAICreature : public CThing {
@@ -82,7 +82,7 @@ bool CThingAICreature::IsMessageEventWithinSightRange(const CMessageEvent& event
 {
     if (HasTC(0x34)) {
         float radius = std::min(GetTC<CTCPerceiveThing>(0x34)->GetSightRadius(), event.SightRadius);
-        if ((GetPosition() - event.Pos).GetLengthSquared() < radius * radius)
+        if ((GetPos() - event.Pos).GetLengthSquared() < radius * radius)
             return true;
     }
     return false;

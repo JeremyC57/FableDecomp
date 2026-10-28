@@ -1,7 +1,7 @@
 // CCreatureAction_Ambush::Initialise() -- picks the left/right ambush animation from the side the target is on, says the ambush speech, turns the creature to face along the side vector, then runs the base Initialise
 // Leaf: ?Initialise@CCreatureAction_Ambush
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008BEEE0, 528 bytes, plain `ret`; virtual Initialise of CCreatureAction_Ambush.
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CThing::GetPosition 0x004C73D0,
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CThing::GetPos 0x004C73D0,
 //   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0,
 //   CCombatActionBase::GetCombatManager 0x00856B10, CombatDialogueManager::SaySpeech 0x008AFC40, the physics component's
 //   virtual slot 66 (+0x108, the facing fraction), _CIfmod 0x00BFEB28 (fmod intrinsic), CCombatActionBase::Initialise 0x00857520.
@@ -60,7 +60,7 @@ class CTCPhysicsBase { public:
 class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* m_pPhysics;             // +0x60
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 class CThingCreatureBase;
 class CCharString { public:
@@ -130,10 +130,10 @@ class CCreatureAction_Ambush : public CCombatActionBase { public:
 
 void CCreatureAction_Ambush::Initialise()
 {
-    C3DVector dir(C2DVector(JumpDest - PCreature.GetPItem()->GetPosition()));
+    C3DVector dir(C2DVector(JumpDest - PCreature.GetPItem()->GetPos()));
     dir.Normalise();
     C3DVector side(dir.Y, -dir.X, 0.0f);
-    const C3DVector& target = PTarget.GetPItem()->GetPosition();
+    const C3DVector& target = PTarget.GetPItem()->GetPos();
     if (side.X * target.Y - side.Y * target.X > 0.0f) {
         SetCombatAnimation("GENERATE_AMBUSH_LEFT");
     } else {

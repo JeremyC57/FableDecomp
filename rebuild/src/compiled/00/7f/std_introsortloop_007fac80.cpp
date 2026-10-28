@@ -46,7 +46,7 @@ public:
     CInterfaceMap m_interfaces;                                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                                     // +0x91 bit 0
-    const C3DVector& GetPosition();                             // 0x004C73D0
+    const C3DVector& GetPos() const;                             // 0x004C73D0
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -86,8 +86,8 @@ public:
     {
         float multiplierA = GetThingCompareMultiplier(a);
         float multiplierB = GetThingCompareMultiplier(b);
-        const C3DVector& posB = b->GetPosition();
-        const C3DVector& posA = a->GetPosition();
+        const C3DVector& posB = b->GetPos();
+        const C3DVector& posA = a->GetPos();
         float valueA = VectorCompare.GetCompareValueForPoint(posA);
         float valueB = VectorCompare.GetCompareValueForPoint(posB);
         if (valueA > valueB)

@@ -1,6 +1,6 @@
 // CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bool& speed, EMovementType anim, const CAIFilterBase& condition, bool extra) -- walk to the route thing, then (on arrival) along its precalculated route to the destination, polling the condition each step
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0097F690, length 226 bytes (`ret 14h`).
-// Callees: CThing::GetPosition @ 0x004C73D0, CAIStateGroupBase::AIAction_MoveToPos @ 0x0097EC00 (mode 2, C3DVector by
+// Callees: CThing::GetPos @ 0x004C73D0, CAIStateGroupBase::AIAction_MoveToPos @ 0x0097EC00 (mode 2, C3DVector by
 // value, then 1,0,1,0), the condition's virtual slot 0, CAIStateGroupBase::SetUpPreCalcNav @ 0x0097F5B0.
 // Shape: two `do { r = MoveToPos(...); if (!condition) return 3; } while (r == 4);` loops; the first returns any
 // result other than 2; the POD vector argument is copied into the argument area dword by dword.
@@ -14,9 +14,8 @@ class C3DVector
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }   // user copy ctor: the by-value argument is built in place
 };
 
-class CThing
-{ public:
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 enum EMovementType { MOVEMENT_DEFAULT };
@@ -43,7 +42,7 @@ long CAIStateGroupBase::AIAction_MoveToPreCalcRoute(const CThing& routeThing, bo
     long result;
     do
     {
-        result = AIAction_MoveToPos(2, routeThing.GetPosition(), speed, anim, extra, true, 0, true, 0.0f);
+        result = AIAction_MoveToPos(2, routeThing.GetPos(), speed, anim, extra, true, 0, true, 0.0f);
         if (!condition.IsStillValid())
             return AI_ACTION_ABORTED;
     } while (result == AI_ACTION_RUNNING);

@@ -119,7 +119,7 @@ public:
     CDefClassBase*        PDef;                              // +0x70
     unsigned char         _pad74[0x90 - 0x74];
     signed char           Player;                            // +0x90
-    const C3DVector* GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -205,7 +205,7 @@ void CCreatureAction_TrollThrowProjectile::Initialise()
         CCharString name("");
         CThing* owner = GetCreature();
         CThing* creature = GetCreature();
-        thing = CThingObject::Create(projectileDef->DefIndex, creature->GetPosition(), owner->Player, 0, 0, name);
+        thing = CThingObject::Create(projectileDef->DefIndex, &creature->GetPos(), owner->Player, 0, 0, name);
     }
     if (thing) {
         {

@@ -104,14 +104,20 @@ public:
     ~vector() { }
     vector& operator=(const vector& x);             // 0x006CADE0
     // the decal entry vector's growth path
+    protected:
     void _M_clear();                                // 0x00BEF580 (out of line)
+    public:
+    protected:
     void _M_set(T* s, T* f, T* e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
+    protected:
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fill_len, bool atend);
+    public:
 };
 }   // namespace std
 

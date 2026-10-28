@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00956FE0, length 389 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10, Terminate @ 0x008FCF40 (manifest "CXMVPlaybackInfo"),
 //          CDefClassBase::GetSubDef<CBriarRoseDef> @ 0x008E7790 (landed; same-TU stand-in below), the def's slot 1 release,
-//          CThing::GetPosition @ 0x004C73D0, CCreatureAction_BriarRoseForcePush(creature, target) @ 0x009572A0 (vtable 0x01294CD4),
+//          CThing::GetPos @ 0x004C73D0, CCreatureAction_BriarRoseForcePush(creature, target) @ 0x009572A0 (vtable 0x01294CD4),
 //          CCreatureAction_BriarRoseShotFarInto(creature, target) @ 0x00957170 (landed), AIAction_PerformActionAndWait @ 0x0097DB70,
 //          the combat action base dtor @ 0x0062E900, GetPWorld @ 0x008FCFC0, the static frame counter @ 0x0049D870, __ftol2.
 // Globals: frames per second @ 0x01375550 (int 15).
@@ -76,7 +76,7 @@ class CThing { public:
     CDefClassBase* PDef;                        // +0x70
     unsigned char _74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
 };
 
 inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
@@ -143,8 +143,8 @@ void CAIStateGroupBriarRoseWillUseMethods::Update()
         CThing* enemy = Enemy().GetPItem();
         CThing* creature = Brain()->PCreature;
         CThing* target = Enemy().GetPItem();
-        const C3DVector& enemyPos = creature->GetPosition();
-        const C3DVector& pos = target->GetPosition();
+        const C3DVector& enemyPos = creature->GetPos();
+        const C3DVector& pos = target->GetPos();
         C2DVector delta;
         delta.x = pos.x - enemyPos.x;
         delta.y = pos.y - enemyPos.y;

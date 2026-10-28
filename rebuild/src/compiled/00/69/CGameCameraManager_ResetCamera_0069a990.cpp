@@ -1,8 +1,8 @@
 // CGameCameraManager::ResetCamera() -- re-target the camera on the hero, reset the world height band around the hero, clear the camera flags and the hero's projectile aiming mode, drop the current mode and both script modules, clear the earthquakes, snapshot the camera, push the manual mode, and tell the renderer the camera moved (not in fast mode)
 // Leaf: ResetCamera
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069A990, 488 bytes, `ret`.
-// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetHeroThing 0x00487DC0, own virtual slots 27/28,
-//   CThing::GetPosition 0x004C73D0, ResetFlags 0x00699130, the component-map LowerBound 0x0040F020 (TC 0x81),
+// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0, own virtual slots 27/28,
+//   CThing::GetPos 0x004C73D0, ResetFlags 0x00699130, the component-map LowerBound 0x0040F020 (TC 0x81),
 //   ResetProjectileWeaponMode 0x00789B30, operator delete 0x00BFE9BC, vector<CQuake>::erase 0x0069D180,
 //   PushCurrentManualMode 0x006988B0, the mode refresh 0x0069A2A0, CCharString(const char*, long) 0x0099EBF0 /
 //   operator+=(const char*) 0x0099F100 / dtor 0x0099EAE0; the renderer's virtual slots 56 and 58; 10.0f 0x01237F0C.
@@ -35,12 +35,13 @@ class CThing { public:
     unsigned char  Base[0x20];
     unsigned long  UsingComponents[9];                   // +0x20
     ComponentMap   Components;                           // +0x44
-    const C3DVector& GetPosition() const;                // 0x004C73D0
+    const C3DVector& GetPos() const;                // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CTCHeroRangedAttacks { public: public:
     void ResetProjectileWeaponMode();   // 0x00789B30
 };   // 0x00789B30
-class CPlayer { public: CThing* GetHeroThing(); };              // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };              // 0x00487DC0
 class CPlayerManager { public: public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };     // 0x00449970
@@ -145,10 +146,10 @@ template <class T, long TYPE> __forceinline T* GetComponent(CThing* thing)
 
 void CGameCameraManager::ResetCamera()
 {
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     SetThingToFollow(hero);
     SetThingToLookAt(hero);
-    MinWorldHeight = hero->GetPosition().Z;
+    MinWorldHeight = hero->GetPos().Z;
     MaxWorldHeight = MinWorldHeight + 10.0f;
     ResetFlags();
     if (hero->UsingComponents[4] & 2)

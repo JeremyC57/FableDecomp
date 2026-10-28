@@ -1,7 +1,7 @@
 // CAIStateGroup_BoastingCrowdMember::Update() -- while the boasting hero is alive, stand in the crowd: when the hero moves more than 2.5 away (or on the first pass, unless the crowd is off the podium) pick a directed spot facing the hero and wander near it, otherwise look at the hero
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0095E900, 752 bytes.
 // Callees: CBaseIntelligentPointer GetPItem 0x00A01B50 / ctor 0x00A01B10 / SetPItem 0x00A01B90 (CIntelligentPointer<const
-//   CThing> vtable 0x01237F1C), CVectorMap::LowerBound 0x0040F020 / const 0x004365B0, CThing::GetPosition 0x004C73D0,
+//   CThing> vtable 0x01237F1C), CVectorMap::LowerBound 0x0040F020 / const 0x004365B0, CThing::GetPos 0x004C73D0,
 //   CTCCreatureGroupBoastingCrowd::CurrentStateIsOffPodiumType 0x007841C0, CTCCreatureNavigation GetNearbyDirectedPosition
 //   0x006CB780 / GetNearbyWanderPosition 0x006CB6E0, GetPWorldSeed 0x008FCFD0, GFFloatRandom 0x004978A0, AIAction_LookAtThing
 //   0x0097D6F0, AIAction_MoveToPosProximity 0x0097E890, Terminate 0x008FCF40. Floats 2.5 @ 0x0129532C, 4.0 @ 0x0123088C,
@@ -50,7 +50,7 @@ class CThing { public:
     CInterfaceMap Components;                   // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     bool TestTC(long type) const { return ((UsingComponents[type >> 5] >> (type & 31)) & 1) != 0; }
     template<class T> __forceinline void GetInterface(T** ppOut, long interfaceType, bool* has)
     {
@@ -124,12 +124,12 @@ void CAIStateGroup_BoastingCrowdMember::Update()
         if (hero && !(hero->m_flags91 & 1)) {
             bool moving = false;
             bool first = true;
-            C3DVector heroPos = hero->GetPosition();
+            C3DVector heroPos = hero->GetPos();
             C3DVector dest;
             for (;;) {
                 EAIActionReturn result;
                 if (first || !crowd->CurrentStateIsOffPodiumType()) {
-                    C3DVector delta = hero->GetPosition() - heroPos;
+                    C3DVector delta = hero->GetPos() - heroPos;
                     if (first || delta.Get2DLength() > 2.5f) {
                         first = false;
                         CTCCreatureNavigation* nav = 0;
@@ -137,11 +137,11 @@ void CAIStateGroup_BoastingCrowdMember::Update()
                         CAIBrain* brain = PBrain;
                         brain->Creature->GetInterfaceC(&nav, 7, &hasNav);
                         CThingCreatureBase* creature = brain->Creature;
-                        C3DVector away = creature->GetPosition() - hero->GetPosition();
+                        C3DVector away = creature->GetPos() - hero->GetPos();
                         C3DVector directed;
-                        if (nav->GetNearbyDirectedPosition(hero->GetPosition(), 7.0f, away, 0.33333334f, &directed)) {
-                            heroPos = hero->GetPosition();
-                            if ((GetCreature()->GetPosition() - directed).GetLength() > 4.0f
+                        if (nav->GetNearbyDirectedPosition(hero->GetPos(), 7.0f, away, 0.33333334f, &directed)) {
+                            heroPos = hero->GetPos();
+                            if ((GetCreature()->GetPos() - directed).GetLength() > 4.0f
                                 && nav->GetNearbyWanderPosition(directed,
                                        (GFFloatRandom(0.7f, GetPWorldSeed()) + 0.3f) * 3.0f, &dest, false))
                                 moving = true;

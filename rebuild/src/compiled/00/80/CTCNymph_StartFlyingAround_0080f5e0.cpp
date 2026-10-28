@@ -111,7 +111,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 // Same-TU stand-in for the GetSubDef<T> COMDAT (as the landed 0x00801A50): with the body visible VC7.1 sees that the out
 // pointer does not escape and keeps the def object in ebp through to its release, as retail.
@@ -203,10 +203,10 @@ void CTCNymph::StartFlyingAround(long fadeTime)
         CRightHandedSet orientation;
         bool notFound = !ParentThing->GetGraphicAppearance()->GetDummyObject("DUMMY_CENTRE", 0, 0, &InitialPos, &orientation, 1.0f);
         if (notFound)
-            InitialPos = ParentThing->GetPosition();
+            InitialPos = ParentThing->GetPos();
     }
     PointToFlyAround = InitialPos;
-    EffectHeightOffset = InitialPos.Z - ParentThing->GetPosition().Z;
+    EffectHeightOffset = InitialPos.Z - ParentThing->GetPos().Z;
     if (PEffect.IsAlive()) {
         PEffect.GetPItem()->Kill(true);
         PEffect = CIntelligentPointer<CThing>(0);

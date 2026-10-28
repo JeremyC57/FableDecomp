@@ -1,16 +1,17 @@
 // CGameScriptInterface::IsPlayerCreatureBlocking @ 00899ba0
 struct Node { int key; void* val; };
 
-extern void* __fastcall GetManagerA(void* self);
-extern void* __fastcall GetPlayerEnt(void* mgr);
+class CThingPlayerCreature;
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
+extern CPlayer* __fastcall GetManagerA(void* self);
 struct KeyArg { int* p; };
 extern Node* __fastcall LowerBound(void* tree, KeyArg k);
 extern char  __fastcall CheckBlocking(void* obj);
 
 bool __fastcall CGameScriptInterface_IsPlayerCreatureBlocking(void* self)
 {
-    void* mgr = GetManagerA(*(void**)((char*)self + 0x14));
-    void* e = GetPlayerEnt(mgr);
+    CPlayer* mgr = GetManagerA(*(void**)((char*)self + 0x14));
+    CThingPlayerCreature* e = mgr->GetPControlledCreature();
     if (e && !(*(unsigned char*)((char*)e + 0x91) & 1)
           && (*(unsigned int*)((char*)e + 0x24) & 0x10000))
     {

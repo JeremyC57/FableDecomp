@@ -64,7 +64,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
 };
 
 struct CAIStateGroup_BirdGroundWander : CAIStateGroupBase {
@@ -79,7 +81,7 @@ bool CAIStateGroup_BirdGroundWander::IsRunnable()
     if (modes->GetCurrentModeType() == g_groundWanderMode) {
         if (FrameLastFinishedWalking == 0)
             return true;
-        long framesPerSecond = GetPWorld_008fcfa0()->GetFramesPerSecond();
+        long framesPerSecond = PeekWorld().GetFramesPerSecond();
         if (GFGetCurrentFrame() - FrameLastFinishedWalking > (unsigned long)(framesPerSecond * 2))
             return true;
     }

@@ -4,7 +4,7 @@
 // Leaf: UpdateUndead
 //
 // Retail 0x0074ACE0, 624 bytes, plain `ret` (0x498-byte frame: four 0x114-byte action temporaries).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, NCreatureMode::IsUnderground
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, NCreatureMode::IsUnderground
 // @ 0x0085F120 (__fastcall), CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase*, CThing*) @ 0x0074DAC0,
 // CCharString @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CCombatActionBase::SetAnimationName @ 0x008574D0,
 // CThingCreatureBase::IsFreeToPerformAction @ 0x00662210 / SetCurrentAction @ 0x006644F0, ~CCreatureActionBase @ 0x0062E900,
@@ -58,7 +58,7 @@ class CTCPhysicsBase { public:
 class CThing { public:
     unsigned char   _pad0[0x60];
     CTCPhysicsBase* PhysicsTC;                               // +0x60
-    const C3DVector& GetPosition() const;                    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { public:
     bool IsFreeToPerformAction(const CCreatureActionBase& action);   // 0x00662210
@@ -108,8 +108,8 @@ void CTCCreatureGenerator::UpdateUndead()
         CThingCreatureBase* triggerer = it->GetPItem();
         for (SListNode* node = CreatedCreatures->next; node != CreatedCreatures; node = node->next) {
             CThingCreatureBase* creature = node->data.GetPItem();
-            const C3DVector& creaturePos = creature->GetPosition();
-            const C3DVector& triggererPos = triggerer->GetPosition();
+            const C3DVector& creaturePos = creature->GetPos();
+            const C3DVector& triggererPos = triggerer->GetPos();
             C3DVector delta;
             delta.X = triggererPos.X - creaturePos.X;
             delta.Y = triggererPos.Y - creaturePos.Y;

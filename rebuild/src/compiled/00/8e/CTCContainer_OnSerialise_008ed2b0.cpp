@@ -111,12 +111,14 @@ public:
 #pragma auto_inline(off)
     // CCharString 0x00433530, pair<long, CCharString> 0x0074FCE0. Same-TU noinline STAND-IN body (only its call
     // matters): it reads `x` and never touches the empty tag, so VC7.1 homes the tag on the live temporary's slot.
+    protected:
     __declspec(noinline) void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __false_type&,
                                                  unsigned int __fill_len, bool __atend)
     {
         if (__atend && __fill_len == 1 && __position == this->_M_finish)
             _Construct(this->_M_start, __x);
     }
+    public:
 #pragma auto_inline(on)
     void push_back(const _Tp& __x)
     {

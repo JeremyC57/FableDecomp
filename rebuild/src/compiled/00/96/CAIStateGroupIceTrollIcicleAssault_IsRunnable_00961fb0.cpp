@@ -4,7 +4,7 @@
 // slot 29 (+0x74, the current target), CTCBoss::IsReadyForPhaseChange @ 0x007AEE90, CIntelligentPointer<CThing>(CThing*) @
 // 0x004A96F0 (twice), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
 // CDefClassBase::GetSubDef<CSnowTrollDef> @ 0x008C7A70, the def class's and the def's virtual slot 1 (count release),
-// CThing::GetPosition @ 0x004C73D0 (twice).
+// CThing::GetPos @ 0x004C73D0 (twice).
 // Globals: 0.0f @ 0x0122DEDC.
 // Shape: the targeting lookup is the zero-preloaded out pointer (the dead zero store stays at entry); the def class is a
 // by-value counted temporary released after the `&&`; GetSubDef is a same-TU auto_inline(off) stand-in (accepted precedent
@@ -58,7 +58,7 @@ class CThing { public:
     CDefClassPointer PDefClass;                 // +0x70
     unsigned char _pad74[0x1d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     CDefClassPointer GetPDefClass() const { return PDefClass; }
     __forceinline unsigned long HasTC(long interfaceType) const
     {
@@ -155,8 +155,8 @@ bool CAIStateGroup_IceTrollIcicleAssault::IsRunnable()
             CDefPointerSnowTroll def;
             bool hasLimit = PBrain->PCreature->GetPDefClass()->GetSubDef(&def) && def->IceTrailDistanceLimit > 0.0f;
             if (hasLimit) {
-                const C3DVector& me = PBrain->PCreature->GetPosition();
-                const C3DVector& him = target->GetPosition();
+                const C3DVector& me = PBrain->PCreature->GetPos();
+                const C3DVector& him = target->GetPos();
                 float dx = him.X - me.X;
                 float dy = him.Y - me.Y;
                 float limit = def->IceTrailDistanceLimit;

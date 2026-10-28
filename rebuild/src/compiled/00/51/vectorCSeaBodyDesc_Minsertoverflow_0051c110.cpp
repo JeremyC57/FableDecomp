@@ -84,18 +84,24 @@ template <class T> class vector : public _Vector_base<T> {
 public:
     vector(const vector<T>& x);                // 0x00514160 for T = long (out of line here)
     unsigned int size() const { return unsigned int(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(T* s, T* f, T* e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
+    protected:
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fill_len, bool atend);
+    public:
 };
 
 template <class T>

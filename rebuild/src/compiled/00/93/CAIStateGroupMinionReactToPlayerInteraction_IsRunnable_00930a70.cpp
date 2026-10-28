@@ -1,6 +1,6 @@
 // CAIStateGroup_MinionReactToPlayerInteraction::IsRunnable() -- react to the live hero's pending interaction event: a villager in a guarded village (guards on duty) who knows of an unhandled crime only reacts when married to the hero; a type-5 interaction is runnable when the hero is too far or too near (reaction 5); otherwise pick the first reaction slot whose next-reaction frame has passed (slot 2 always, the others only while the 0xC3 component's flag is set) and test the interaction; a failure calls InteractionFailed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00930A70, length 559 bytes (+ int3 padding), plain `ret` (virtual).
-// Callees: GetPWorld @ 0x008FCFC0, CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::GetPCharacter @ 0x00487DC0,
+// Callees: GetPWorld @ 0x008FCFC0, CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0,
 // FindPlayerInteractionEvent @ 0x0092EDC0, CVectorMap::LowerBound const @ 0x004365B0 (inlined GetInterface 0x23
 // CTCVillageMember, 0x4F CTCCreatureOpinionOfHero, 0xD7 CTCWife, 0xC3), CTCVillageMember::GetPVillage @ 0x007EE540 (manifest
 // "IS_THING_ALIVE" is wrong), CTCCreatureOpinionOfHero::FindMostRecentDeed<COpinionDeedFilter_IsCrimeToRunAndFindAGuard> @
@@ -55,6 +55,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class COpinionDeed { public:
     long Type;                                          // +0x00
     unsigned char _pad04[0x24 - 0x04];
@@ -96,7 +97,7 @@ struct CTCInteractionState {                            // interface 0xc3 (descr
     bool Active;                                        // +0x0c
 };
 class CPlayer { public:
-    CThing* GetPCharacter();                            // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                            // 0x00487DC0
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;                  // 0x0049D9D0
@@ -130,7 +131,7 @@ struct CAIStateGroup_MinionReactToPlayerInteraction : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionReactToPlayerInteraction::IsRunnable()
 {
-    CThing* player = GetPWorld()->GetCurrentPlayer()->GetPCharacter();
+    CThing* player = GetPWorld()->GetCurrentPlayer()->GetPControlledCreature();
     if (!player || (player->m_flags91 & 1))
         return false;
     CMessageEvent* event = FindPlayerInteractionEvent();

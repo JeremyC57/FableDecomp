@@ -54,6 +54,7 @@ template <class K, class V, class C, class A> struct _Rb_tree : _Rb_tree_base<V,
     {
         _M_empty_initialize();
     }
+    private:
     __forceinline void _M_empty_initialize()
     {
         this->_M_header._M_data->_M_color = false;      // _S_rb_tree_red
@@ -61,6 +62,7 @@ template <class K, class V, class C, class A> struct _Rb_tree : _Rb_tree_base<V,
         this->_M_header._M_data->_M_left = this->_M_header._M_data;
         this->_M_header._M_data->_M_right = this->_M_header._M_data;
     }
+    public:
 };
 
 template <class K, class C = less<K>, class A = allocator<K> > class set {

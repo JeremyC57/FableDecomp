@@ -1,6 +1,6 @@
 // NPlayerGui::CDrawAbilityButtonsPC::DrawExpressionList(CEnginePrimitivePrepareInfo*, float) -- draw the hero's expression grid: for a live hero with the expression component, scale by 0.75, fetch the expression list, and starting at the row after the scroll row draw every row that holds at least one expression, then wrap round to the rows before the scroll row, numbering the drawn rows consecutively
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00657D90, length 653 bytes (`ret 8`).
-// Callees: GetPlayer 0x00643D7C, CPlayer::GetCharacterThing 0x00487DD0, slot-offset fill 0x00657BA0 (same-TU stand-in body below),
+// Callees: GetPlayer 0x00643D7C, CPlayer::PeekPControlledCreature 0x00487DD0, slot-offset fill 0x00657BA0 (same-TU stand-in body below),
 //   LowerBound 0x004365B0 (const), CTCHeroExpressions::GetExpressions 0x005EED8C, DrawExpressionButton (virtual slot 9, 0x00658020),
 //   CRT free 0x00BFEA14.
 // Layout: as DrawExpressionButton 0x00658020 (Columns +0x28; hero component bits +0x20, map +0x44, life flags +0x91); the
@@ -22,7 +22,8 @@ struct CThingNative {
     void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components;
     unsigned char State[0x45]; unsigned char LifeFlags;
 };
-class CPlayer { public: CThingNative* GetCharacterThing(); };          // 0x00487DD0
+class CThingPlayerCreature : public CThingNative { };
+class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };          // 0x00487DD0
 class CPlayerManager;
 struct LongVector {
     long *Start, *Finish, *End;
@@ -75,7 +76,7 @@ __declspec(noinline) void CDrawAbilityButtonsPC::GetExpressionSlotOffsets(LongVe
 }
 void CDrawAbilityButtonsPC::DrawExpressionList(CEnginePrimitivePrepareInfo* info, float scale)
 {
-    CThingNative* hero = GetPlayer()->GetCharacterThing();
+    const CThingNative* hero = GetPlayer()->PeekPControlledCreature();
     if (hero == 0 || (hero->LifeFlags & 1))
         return;
     LongVector offsets;

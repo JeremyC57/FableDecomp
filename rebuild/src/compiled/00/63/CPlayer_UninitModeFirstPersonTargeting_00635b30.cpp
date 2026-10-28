@@ -2,19 +2,21 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00635B30, length 192 bytes (+ int3 padding), `ret 8`.
 // Identity: Ego_r.pdb `?UninitModeFirstPersonTargeting@CPlayer@@AAEXW4EPlayerMode@@PAVCProcessedInput@@@Z` (a
 // CPlayer::PlayerModeInfo UninitFunc; InitModeFirstPersonTargeting is 0x00635A50).
-// Callees: CAInputProcess::RemoveFromInterface 0x00A0D2D0 (four processes), CPlayer::GetHeroThing 0x00487DC0,
+// Callees: CAInputProcess::RemoveFromInterface 0x00A0D2D0 (four processes), CPlayer::GetPControlledCreature 0x00487DC0,
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020 (inline GetInterface, type 0x31 = the creature mode
 // manager, bit 17 of +0x24), CTCCreatureModeManager::RemoveMode(unsigned long) 0x0073ABA0, the world's +0x34 object's
 // slot 9 (GetCameraManager out-parameter, +0x24), CGameCameraManager::PushCurrentManualMode 0x006988B0,
 // CPlayer::RemoveMode(EPlayerMode) 0x00634190.
 // Layout: engine/CPlayer.h (scoped_ptr<CInputProcess*> members, PlayerInterface +0x0C, World +0x1C) through the lane's
-// CPlayer_Methods carrier; CThing interface bitset +0x20, interface map +0x44, dead bit +0x91 & 1.
+// CPlayer carrier; CThing interface bitset +0x20, interface map +0x44, dead bit +0x91 & 1.
 // Shape: the mode manager is zero-initialised and filled by the out-parameter GetInterface (`xor ecx,ecx` before the
 // bitset test, the component loaded straight into ecx for its one use); the camera manager out pointer is
 // zero-initialised in its frame word and the getter's bool guards the push; RemoveMode(22) runs on every path.
 // GetInterface: the inline out-parameter lookup picks the entry with the end/hit ternary (`*out = (it == last || k <
 //   it->type ? last : it)->component`), which loads the component straight into the register retail uses.
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 
 typedef long EPlayerMode;
 class CProcessedInput;
@@ -49,6 +51,7 @@ class CThing { public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 
 inline bool IsThingAlive(const CThing* thing)
 {
@@ -72,20 +75,20 @@ class CWorld { public:
     CCameraManagerSource* CameraSource;                 // +0x34
 };
 
-struct CPlayer_Methods : CPlayer {
-    CThing* GetHeroThing();                             // 0x00487DC0
+class CPlayer : public CPlayerPdb { public:
+    CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
     void RemoveMode(EPlayerMode mode);                  // 0x00634190
     void UninitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* input);
 };
 
-void CPlayer_Methods::UninitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* input)
+void CPlayer::UninitModeFirstPersonTargeting(EPlayerMode mode, CProcessedInput* input)
 {
     (void)mode; (void)input;
     reinterpret_cast<CAInputProcess*>(InputProcessControlCreatureActivateZTarget_ptr)->RemoveFromInterface();
     reinterpret_cast<CAInputProcess*>(InputProcessFirstPersonTargeting_ptr)->RemoveFromInterface();
     reinterpret_cast<CAInputProcess*>(InputProcessUseRangedWeapon_ptr)->RemoveFromInterface();
     reinterpret_cast<CAInputProcess*>(InputProcessLeftStickLookAround_ptr)->RemoveFromInterface();
-    CThing* hero = GetHeroThing();
+    CThing* hero = GetPControlledCreature();
     if (IsThingAlive(hero)) {
         CTCCreatureModeManager* modes = 0;
         hero->GetInterface(&modes, 0x31);

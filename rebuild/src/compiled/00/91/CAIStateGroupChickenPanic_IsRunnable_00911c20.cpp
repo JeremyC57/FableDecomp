@@ -1,6 +1,6 @@
 // CAIStateGroup_ChickenPanic::IsRunnable() -- panic when an attacker is within 8 units and attacked recently, or when hit by an air-guitar expression
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00911C20, length 361 bytes (same TU as Update 0x00911D90).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0, CAIStateGroupBase::GetPFrameWorld
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::PeekPos @ 0x004C73D0, CAIStateGroupBase::GetPFrameWorld
 //          @ 0x008FCFC0 (only evaluated for the static frame call), GFGetCurrentFrame @ 0x0049D870, CVectorMap::LowerBound const
 //          @ 0x004365B0, CTCEntityEvents::GetEvent<const CEventHitBy, CEventFilter_None> @ 0x008AF0A0, the hit def's virtual slot
 //          10 (+0x28, CDefString by value), CDefString::operator==(const char*) const @ 0x005B3440 ("EXPRESSION_AIR_GUITAR"
@@ -91,7 +91,9 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-class CThing { public:
+class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; modelled as its base here (empty insertion, layout unchanged) so CThing-typed callers resolve the call
+};
+class CThing : public CThingPhysical { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -110,8 +112,7 @@ class CThing { public:
         CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    const C3DVector& GetPosition();             // 0x004C73D0
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& GetPos() const;    // 0x004C73D0
     bool TestTC(long interfaceType) const
     {
         return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0;
@@ -212,8 +213,8 @@ bool CAIStateGroup_ChickenPanic::IsRunnable()
 {
     if (PBrain->GetPCreature()->LastAttacker.GetPItem()) {
         CThing* creature = PBrain->PCreature;
-        const C3DVector& attackerPos = creature->LastAttacker.GetPItem()->GetPosition();
-        const C3DVector& pos = creature->GetPosition();
+        const C3DVector& attackerPos = creature->LastAttacker.GetPItem()->GetPos();
+        const C3DVector& pos = creature->GetPos();
         C2DVector delta;
         delta.x = pos.x - attackerPos.x;
         delta.y = pos.y - attackerPos.y;

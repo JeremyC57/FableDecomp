@@ -72,19 +72,25 @@ class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     unsigned int size() const { return unsigned int(this->_M_finish - this->_M_start); }
     unsigned int capacity() const { return unsigned int(this->_M_end_of_storage._M_data - this->_M_start); }
+    protected:
     void _M_clear();                                 // 0x006FBE60
+    public:
+    protected:
     void _M_set(_Tp* __s, _Tp* __f, _Tp* __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
+    protected:
     _Tp* _M_allocate_and_copy(unsigned int __n, const _Tp* __first, const _Tp* __last)
     {
         _Tp* __result = this->_M_end_of_storage.allocate(__n);
         __uninitialized_copy(__first, __last, __result, __false_type());
         return __result;
     }
+    public:
     void reserve(unsigned int __n);
 };
 

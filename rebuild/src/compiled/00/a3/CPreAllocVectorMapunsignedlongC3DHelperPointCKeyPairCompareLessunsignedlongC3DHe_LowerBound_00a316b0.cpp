@@ -8,10 +8,12 @@
 //   compare is `cmp [mid],key ; jae` (mid->first < key moves right), and the right step is `len = len - half - 1` (`or reg,-1 ; sub ; add`).
 //   Declaring `len` before `first` gives retail's registers (len in esi, first in edi); with `first` declared first VC7.1
 //   swaps them for this 0x14-byte element (the 0x38-byte twins 0x00A31790/0x00A317E0 match either way round).
+namespace std {
 template <class K, class V> struct pair {
     K first;
     V second;
 };
+}
 
 class C3DVector { public: float X, Y, Z; };
 class C3DHelperPoint { public:                 // Ego_r.pdb, 16 bytes
@@ -21,21 +23,21 @@ class C3DHelperPoint { public:                 // Ego_r.pdb, 16 bytes
 
 template <class K, class V> class CKeyPairCompareLess { public: };
 
-template <class K, class V, class C> struct CPreAllocVectorMap {
+template <class K, class V, class C> class CPreAllocVectorMap { public:
     C              Compare;             // +0x00
-    pair<K, V>*    Elements;            // +0x04
+    std::pair<K, V>*    Elements;            // +0x04
     unsigned long  Size;                // +0x08
     bool           Dirty;               // +0x0C
-    pair<K, V>* LowerBound(const K& key) const;
+    const std::pair<K, V>* LowerBound(const K& key) const;   // ?LowerBound@?$CPreAllocVectorMap@KVC3DHelperPoint@@V?$CKeyPairCompareLess@KVC3DHelperPoint@@@@@@QBEPBU?$pair@KVC3DHelperPoint@@@std@@ABK@Z
 };
 
-template <class K, class V, class C> pair<K, V>* CPreAllocVectorMap<K, V, C>::LowerBound(const K& key) const
+template <class K, class V, class C> const std::pair<K, V>* CPreAllocVectorMap<K, V, C>::LowerBound(const K& key) const
 {
     long len = Size;
-    pair<K, V>* first = Elements;
+    std::pair<K, V>* first = Elements;
     while (len > 0) {
         long half = len / 2;
-        pair<K, V>* mid = first + half;
+        std::pair<K, V>* mid = first + half;
         if (mid->first < key) {
             first = mid + 1;
             len = len - half - 1;
@@ -46,4 +48,4 @@ template <class K, class V, class C> pair<K, V>* CPreAllocVectorMap<K, V, C>::Lo
     return first;
 }
 
-template pair<unsigned long, C3DHelperPoint>* CPreAllocVectorMap<unsigned long, C3DHelperPoint, CKeyPairCompareLess<unsigned long, C3DHelperPoint> >::LowerBound(const unsigned long& key) const;
+template const std::pair<unsigned long, C3DHelperPoint>* CPreAllocVectorMap<unsigned long, C3DHelperPoint, CKeyPairCompareLess<unsigned long, C3DHelperPoint> >::LowerBound(const unsigned long& key) const;

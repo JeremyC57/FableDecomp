@@ -1,6 +1,6 @@
 // CTCDivineWrath::OnCreate() -- raise a physical barrier around the caster (its physics radius, at its position); a live barrier ignores the caster and is kept as the spell's obstruction
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0078F4D0, 193 bytes (plain `ret`).
-// Callees: CThing::GetPosition @ 0x004C73D0, CreatePhysicalBarrierThing(const C3DVector&, const C3DVector&, float) @ 0x007FD4B0
+// Callees: CThing::GetPos @ 0x004C73D0, CreatePhysicalBarrierThing(const C3DVector&, const C3DVector&, float) @ 0x007FD4B0
 // (`__fastcall`; landed name), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / GetPItem @ 0x00A01B50 / dtor
 // @ 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C), vector<CIntelligentPointer<CThing>>::push_back @ 0x004AD520 (out of
 // line; manifest "Vector_PushBack_IntelligentPointer").
@@ -34,7 +34,7 @@ class CThing { public:
             driver = PTCDriver;
         return driver;
     }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 CThing* __fastcall CreatePhysicalBarrierThing(const C3DVector& start, const C3DVector& end, float radius);   // 0x007FD4B0
 struct CBaseIntelligentPointer {
@@ -71,7 +71,7 @@ class CTCDivineWrath { public:
 
 void CTCDivineWrath::OnCreate()
 {
-    const C3DVector& position = ParentThing->GetPosition();
+    const C3DVector& position = ParentThing->GetPos();
     CThing* barrier = CreatePhysicalBarrierThing(position, position, GetPhysics()->Radius);
     if (barrier && !(barrier->Flags91 & 1)) {
         CTCDPhysicalObstruction* driver = barrier->GetObstructionDriver();

@@ -27,7 +27,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;            // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -115,9 +117,11 @@ class C2DVector { public:
     float MagnitudeSquared() const { return X * X + Y * Y; }
 };
 
-struct CThingPos {
+class C3DVector : public C2DVector { public:    // the X/Y head is the C2DVector base, so the 2D arithmetic below binds the position directly
+    float Z;
+};
+struct CThingPos : CThing {
     bool CanAttackNow();                        // 0x00662410
-    const C2DVector& GetPosition() const;       // 0x004C73D0 (the X/Y head of the C3DVector)
 };
 
 extern const float g_firePointToleranceSquared;    // 0x0129531C (0.0025f)
@@ -136,8 +140,8 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBaseC {
     __forceinline bool IsAwayFromFirePoint()
     {
         CThingPos* creature = (CThingPos*)GetCreature();
-        const C2DVector& firePos = ((CThingPos*)PFirePoint.GetPItem())->GetPosition();
-        return (creature->GetPosition() - firePos).MagnitudeSquared() > g_firePointToleranceSquared;
+        const C2DVector& firePos = ((CThingPos*)PFirePoint.GetPItem())->GetPos();
+        return (creature->GetPos() - firePos).MagnitudeSquared() > g_firePointToleranceSquared;
     }
 };
 

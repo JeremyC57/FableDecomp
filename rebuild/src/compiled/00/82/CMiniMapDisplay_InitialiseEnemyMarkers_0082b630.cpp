@@ -1,7 +1,7 @@
 // CMiniMapDisplay::InitialiseEnemyMarkers() -- when a region is loaded and the hero is alive, add a minimap marker (graphics[8].Primary) for every creature in the current region that is the hero's enemy, is not a guild sparrow, is not underground and is not hidden from the minimap
 // Leaf: InitialiseEnemyMarkers
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0082B630, 278 bytes (+ int3 padding).
-// Callees: CPlayerManager::GetPlayer 0x00449970 / CPlayer::GetHeroThing 0x00487DC0 (the game 0x013B86A0 +0x1c), the world's
+// Callees: CPlayerManager::GetPlayer 0x00449970 / CPlayer::GetPControlledCreature 0x00487DC0 (the game 0x013B86A0 +0x1c), the world's
 //   slots 4 (+0x10) and 13 (+0x34), CWorldMap::GetRegionNumberMapIsIn 0x004FC190 / GetCurrentRegionNumber 0x004FB150,
 //   AreThingsEnemies 0x0076D2F0 (__fastcall), CThing::GetDefName 0x004C7CC0 (CDefString by hidden pointer),
 //   CDefString::operator!=(const char*) 0x005FA740 ("CREATURE_BIRD_GUILD_SPARROW"), IsUnderground 0x0085F120 (__fastcall),
@@ -48,6 +48,7 @@ class CThing { public:
         return (const T*)it->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 template <class T> struct _List_node {
     _List_node* _M_next;
     _List_node* _M_prev;
@@ -77,7 +78,7 @@ CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
 bool __fastcall IsUnderground(const CThing* thing);                  // 0x0085F120
 class CPlayer { public:
-    CThing* GetHeroThing();                        // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                        // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetPlayer();                          // 0x00449970
@@ -115,7 +116,7 @@ class CMiniMapDisplay { public:
 void CMiniMapDisplay::InitialiseEnemyMarkers()
 {
     if (m_pRegion) {
-        CThing* hero = g_pMainGameComponent->PPlayerManager->GetPlayer()->GetHeroThing();
+        CThing* hero = g_pMainGameComponent->PPlayerManager->GetPlayer()->GetPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             CWorld* world = g_pMainGameComponent->PWorld;
             CWorldMap* worldMap = world->GetWorldMap();

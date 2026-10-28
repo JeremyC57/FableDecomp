@@ -35,10 +35,11 @@ class CThingCreatureBase { public:
 public:
     bool IsBlocking() const;   // 0x00664D00
 };
+class CThingPlayerCreature : public CThingCreatureBase { };
 enum EPlayerMode { PLAYER_MODE_0x2F = 0x2f };
 class CPlayer { public:
     bool HasMode(EPlayerMode mode);                // 0x00634160
-    CThingCreatureBase* GetHeroCreature();         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CPlayerManager { public:
     long GetMainPlayerNumber();                    // 0x00449700
@@ -64,7 +65,7 @@ void CWorld::EAControlledCreatureUseAbility(const CGameEvent* event)
     if (player->HasMode(PLAYER_MODE_0x2F))
         return;
     player = GetPlayer(event->Player);
-    CThingCreatureBase* creature = player->GetHeroCreature();
+    CThingCreatureBase* creature = player->GetPControlledCreature();
     if (!creature || creature->Dead || creature->IsBlocking())
         return;
     signed char playerNumber = event->Player;

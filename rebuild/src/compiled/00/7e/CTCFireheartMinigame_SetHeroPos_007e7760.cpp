@@ -3,7 +3,7 @@
 // Leaf: SetHeroPos
 //
 // Retail 0x007E7760, 288 bytes incl. padding (`ret 0Ch`). Ego_r.pdb `?SetHeroPos@CTCFireheartMinigame@@...`.
-// Callees: CThing::GetPosition @ 0x004C73D0 (twice), the physics component's SetPosition(const C3DVector&) (slot 30, +0x78),
+// Callees: CThing::GetPos @ 0x004C73D0 (twice), the physics component's SetPosition(const C3DVector&) (slot 30, +0x78),
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (inlined GetInterface for CTCScriptedControl, type 0x1F =
 // bit 31 of the bitset word +0x20, `test ecx,ecx ; jns`; unchecked: the miss path uses the never-written slot),
 // CTCBase::GetWorld @ 0x00686A70, CThing::GetScriptThing @ 0x004C7E50 (by value), CGameScriptInterface::StartScriptingEntity
@@ -12,7 +12,7 @@
 // Global: the script runner @ 0x013D2838 (only tested for null).
 // Layout = Ego_r.pdb CTCFireheartMinigame: Markers[4][4] +0x0C, XPos +0x68, YPos +0x6C, Moving +0x70, ScriptData +0x78
 // (CScriptGameResourceObjectScriptedThingBase); CWorld PGameScriptInterface +0x38 (scoped_ptr); retail CThing PhysicsTC +0x60.
-// Shape: the physics component is a named local whose vtable VC parks in the dead `instantly` slot across GetPosition; the
+// Shape: the physics component is a named local whose vtable VC parks in the dead `instantly` slot across GetPos; the
 // interface key and the out pointer also live in that slot; the CGameScriptInterface pointer is a named local (fetched with
 // its vtable before the pushes), the CScriptThing an unnamed temporary; `new` keeps its null test.
 class CThing;
@@ -48,7 +48,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     CTCPhysicsBase* PhysicsTC;                  // +0x60
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     CScriptThing GetScriptThing();              // 0x004C7E50
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -137,13 +137,13 @@ void CTCFireheartMinigame::SetHeroPos(long x, long y, bool instantly)
     YPos = y;
     if (instantly) {
         CTCPhysicsBase* physics = GetParentThing()->PhysicsTC;
-        physics->SetPosition(Markers[x][y]->GetPosition());
+        physics->SetPosition(Markers[x][y]->GetPos());
         return;
     }
     CTCScriptedControl* control = GetParentThing()->GetScriptedControl();
     if (g_pScriptRunner) {
         GetWorld().PGameScriptInterface->StartScriptingEntity(GetParentThing()->GetScriptThing(), ScriptData, 4);
     }
-    control->AddAction((CActionBase*)new CActionMoveTo(Markers[x][y]->GetPosition(), 3, 0.0f, true, false));
+    control->AddAction((CActionBase*)new CActionMoveTo(Markers[x][y]->GetPos(), 3, 0.0f, true, false));
     Moving = true;
 }

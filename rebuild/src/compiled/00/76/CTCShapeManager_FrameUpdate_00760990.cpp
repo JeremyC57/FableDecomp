@@ -1,7 +1,7 @@
 // CTCShapeManager::FrameUpdate() -- find the persistent closed shape the hero stands in (inside the closed-shape bounds first) and select it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00760990, 219 bytes (plain `ret`).
 // Callees: CTCBase::GetWorld @ 0x00686A70, CWorld::GetCurrentPlayer @ 0x0049D9D0 (PlayerManager +0xc -> GetMainPlayer),
-// CPlayer::GetControlledCreature @ 0x00487DD0, CThing::GetPosition() const @ 0x004C73D0 (returns const C3DVector&);
+// CPlayer::PeekPControlledCreature @ 0x00487DD0, CThing::GetPos() const @ 0x004C73D0 (returns const C3DVector&);
 // NShape::CShape virtual slot 1 GetShapeType (+0x4: 0 for CClosedShapeBase 0x00765040, 1 for CTrack 0x007650C0; the name
 // of the landed EditUpdateDelete 0x00762D80) and slot 4 IsPosInShape(const C3DVector&) (+0x10, CBasicShape 0x007611C0).
 // Layout (retail; the PDB's 16-byte vector is 12 here, as the landed GetPrincipalVector 0x00760910): PersistantShapes
@@ -15,10 +15,11 @@ class C2DBoxF { public: C2DVector TopLeft; C2DVector BottomRight; };
 class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char Flags91;                              // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CThing* GetControlledCreature();                    // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer();                        // 0x0049D9D0
@@ -63,9 +64,9 @@ void CTCShapeManager::FrameUpdate()
 {
     NewShapeActivated = false;
     LeavingShape = false;
-    CThing* hero = GetWorld().GetCurrentPlayer()->GetControlledCreature();
+    const CThing* hero = GetWorld().GetCurrentPlayer()->PeekPControlledCreature();
     if (hero && !(hero->Flags91 & 1)) {
-        C3DVector pos = hero->GetPosition();
+        C3DVector pos = hero->GetPos();
         if (pos.X >= ClosedShapeBounds.TopLeft.X && pos.X < ClosedShapeBounds.BottomRight.X &&
             pos.Y >= ClosedShapeBounds.TopLeft.Y && pos.Y < ClosedShapeBounds.BottomRight.Y) {
             for (CShapePointer* it = PersistantShapes_first; it != PersistantShapes_last; ++it) {

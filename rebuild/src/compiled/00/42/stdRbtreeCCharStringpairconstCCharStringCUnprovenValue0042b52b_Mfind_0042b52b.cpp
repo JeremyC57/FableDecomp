@@ -1,5 +1,5 @@
 // std::_Rb_tree<CCharString, pair<const CCharString, CUnprovenValue_0042b52b>, ...>::_M_find(const CCharString& k) const -- STLport exact-key lookup: the last node whose key is not less than k, unless it is the header or k is less than its key (then the header)
-// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@UCUnprovenValue_0042b52b@@
+// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@ECUnprovenValue_0042b52b@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0042B52B, 92 bytes, thiscall `ret 4`, frame pointer (size TU); returns the node.
 // Identity (descriptive): a CCharString-keyed tree of this TU (callers 0x00428494 NUISystem::CManager::CreateMenuEntryComponent and 0x0042B945); the mapped type is not recoverable.
 // Callees: std::less<CCharString>::operator() 0x0042AAB3 (out of line in this TU, `this` = the tree's comparator at +8).
@@ -58,8 +58,12 @@ public:
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
+    private:
     _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

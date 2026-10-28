@@ -5,7 +5,7 @@
 //   (inline GetInterface 0x79 / 0x83 over the bitset words +0x2C / +0x30), CTCSwitchableNavigation 0x00787580 (manifest
 //   "InitialActivate"; takes the bool), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
 //   CTCAnimatingObject::PlayAnimation @ 0x007F90B0, CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580,
-//   CSpecialEffectsDef::GetEffectFromString @ 0x00669D30, CThing::GetPosition @ 0x004C73D0, CreateEffectThing @ 0x006E0880
+//   CSpecialEffectsDef::GetEffectFromString @ 0x00669D30, CThing::GetPos @ 0x004C73D0, CreateEffectThing @ 0x006E0880
 //   (`__fastcall`), the thing's slot 28 (+0x70), the main game component's slot 9 (+0x24) (engine 0x013B86A0).
 // Shape: the navigation lookup is the out-parameter GetInterface (one bitset test); the animating component is a named local
 //   taken from GetTC before the "RISE" temporary (miss path reads the dead key slot); GetSubDef / GetEffectFromString are the
@@ -97,7 +97,7 @@ public:
     CPhysics*      PPhysics;                          // +0x60
     unsigned char  _pad64[0x70 - 0x64];
     CDefClassBase* m_pDef;                            // +0x70
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -165,7 +165,7 @@ void CTCJackPillar::Enable(bool enable)
         if (effects) {
             effects->GetEffectFromString("RISE_UP_EFFECT", effectType);
             if (effectType)
-                CreateEffectThing(effectType, &ParentThing->GetPosition(), false);
+                CreateEffectThing(effectType, &ParentThing->GetPos(), false);
         }
         ParentThing->SetVisible(true);
         if (effects && --effects->m_refCount == 0)

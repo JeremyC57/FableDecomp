@@ -187,19 +187,30 @@ public:
     void clear();                                                                        // 0x00A0EA90
 
     void _M_fill_insert(iterator __pos, size_type __n, const value_type& __x);          // 0x00A0FAA0
+    protected:
     void _M_push_front_aux_v(const value_type& __t);                                     // 0x00A0F3B0
+    public:
+    protected:
     void _M_pop_back_aux();
+    public:
+    protected:
     void _M_reallocate_map(size_type __nodes_to_add, bool __add_at_front);              // 0x00A0EE50
+    public:
+    protected:
     void _M_reserve_map_at_back(size_type __nodes_to_add = 1)
     {
         if (__nodes_to_add + 1 > this->_M_map_size._M_data - (this->_M_finish._M_node - this->_M_map._M_data))
             _M_reallocate_map(__nodes_to_add, false);
     }
+    public:
+    protected:
     void _M_reserve_map_at_front(size_type __nodes_to_add = 1)
     {
         if (__nodes_to_add > size_type(this->_M_start._M_node - this->_M_map._M_data))
             _M_reallocate_map(__nodes_to_add, true);
     }
+    public:
+    protected:
     iterator _M_reserve_elements_at_front(size_type __n)
     {
         size_type __vacancies = this->_M_start._M_cur - this->_M_start._M_first;
@@ -207,6 +218,8 @@ public:
             _M_new_elements_at_front(__n - __vacancies);
         return this->_M_start - difference_type(__n);
     }
+    public:
+    protected:
     iterator _M_reserve_elements_at_back(size_type __n)
     {
         size_type __vacancies = (this->_M_finish._M_last - this->_M_finish._M_cur) - 1;
@@ -214,9 +227,16 @@ public:
             _M_new_elements_at_back(__n - __vacancies);
         return this->_M_finish + difference_type(__n);
     }
+    public:
+    protected:
     void _M_insert_aux(iterator __pos, size_type __n, const value_type& __x);          // 0x00A0F4B0
+    public:
+    protected:
     void _M_new_elements_at_front(size_type __new_elements);                            // 0x00A0F300
+    public:
+    protected:
     void _M_new_elements_at_back(size_type __new_elements);                             // 0x00A0F350
+    public:
 };
 
 template <class _ForwardIterator>

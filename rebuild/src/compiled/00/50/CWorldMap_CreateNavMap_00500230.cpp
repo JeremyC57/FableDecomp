@@ -32,9 +32,12 @@ class CWideString { public:
 };
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 
-class CAFile { public:
-    CAFile();                                                    // 0x0099A2F0
-    virtual ~CAFile();                                           // slot 0 (body 0x0099A300)
+class CBaseClassNonCopyable { protected:
+    CBaseClassNonCopyable();                                     // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ
+    virtual ~CBaseClassNonCopyable();                            // slot 0 (body 0x0099A300)
+};
+class __declspec(novtable) CAFile : public CBaseClassNonCopyable { public:
+    CAFile() { }                                                 // the base constructor stores the vtable
     virtual void Slot01(); virtual void Slot02(); virtual void Slot03(); virtual void Slot04();
     virtual void Seek(long position);                            // slot 5 (+0x14)
     virtual void Slot06();

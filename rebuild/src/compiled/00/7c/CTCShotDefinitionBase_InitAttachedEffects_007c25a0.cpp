@@ -1,6 +1,6 @@
 // CTCShotDefinitionBase::InitAttachedEffects() -- create the shot def's attached continuous effect at the shot, keep it as the shot's effect thing, attach its particle emitter to the shot (at the SHOT_CREATION_DUMMY dummy, else the weapon_pos_a helper, else the default attach type; end-timeline flag 0x10) and hand it the shot's direction as MOVE_DIRECTION
 // Retail: Fable.exe @ 0x007C25A0, 452 bytes (plain `ret`).
-// Callees: CThing::GetPosition 0x004C73D0, CreateEffectThing 0x006E0880 (__fastcall), CBaseIntelligentPointer ctor 0x00A01B10 /
+// Callees: CThing::GetPos 0x004C73D0, CreateEffectThing 0x006E0880 (__fastcall), CBaseIntelligentPointer ctor 0x00A01B10 /
 //   SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
 //   CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / operator=(const CCharString&) 0x0099EFB0 /
 //   operator=(const char*) 0x0099EFE0 / ~ 0x0099EAE0, CThingAppearance::HasDummyObject 0x004BE2C0 / HasHelperPoint 0x004BE170,
@@ -162,7 +162,7 @@ class CThingShotDef { public:
 };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     unsigned char   _pad00[0x20];
     unsigned long   m_presentBits[9];                   // +0x20
     unsigned char   _pad44[0x5c - 0x44];
@@ -218,7 +218,7 @@ void CTCShotDefinitionBase::InitAttachedEffects()
     long effectType = PShotDef->AttachedContinuousEffect;
     if (!effectType)
         return;
-    CThing* effect = CreateEffectThing(effectType, &ParentThing->GetPosition(), false);
+    CThing* effect = CreateEffectThing(effectType, &ParentThing->GetPos(), false);
     if (!effect || (effect->m_flags91 & 1))
         return;
     {

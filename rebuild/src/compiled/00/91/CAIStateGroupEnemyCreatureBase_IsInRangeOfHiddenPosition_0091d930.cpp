@@ -1,7 +1,7 @@
 // CAIStateGroup_EnemyCreatureBase::IsInRangeOfHiddenPosition(C3DVector*, bool) -- pick the valid hiding position furthest from the creature (optionally only ones on the same side of the target as the creature)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0091D930, 544 bytes (ret 8).
 // Callees: CAIStateGroupBase::PeekWorldMap 0x008FCFF0 / PeekThingSearchTools 0x008FD000, the state group's virtual slot 18
-//   (+0x48, hiding range), GetValidPositions 0x0074A5D0 (__fastcall), CThing::GetPosition 0x004C73D0,
+//   (+0x48, hiding range), GetValidPositions 0x0074A5D0 (__fastcall), CThing::GetPos 0x004C73D0,
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50, free 0x00BFEA14 (STLport vector storage).
 // Layout: CAIStateGroupBase (engine header, 0x14); CAIStateGroup_EnemyCreatureBase::PTargetThing +0x14 (Ego_r.pdb).
 // Shape: C3DVector has a user copy ctor so the candidate and the target position are frame copies; the furthest
@@ -28,7 +28,7 @@ class CTCShapeManager;
 void __fastcall GetValidPositions(CPositionVector& positions, const CWorldMap& map, const CThingSearchTools& search,
                                   const C3DVector& pos, float radius, bool flag, const CTCShapeManager* shapes);   // 0x0074A5D0
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
@@ -70,11 +70,11 @@ struct CAIStateGroup_EnemyCreatureBase : CAIStateGroupBase {
 bool CAIStateGroup_EnemyCreatureBase::IsInRangeOfHiddenPosition(C3DVector* out, bool sameSideOfTarget)
 {
     CPositionVector positions;
-    GetValidPositions(positions, *PeekWorldMap(), *PeekThingSearchTools(), GetCreature()->GetPosition(), GetHidingRange(),
+    GetValidPositions(positions, *PeekWorldMap(), *PeekThingSearchTools(), GetCreature()->GetPos(), GetHidingRange(),
                       true, 0);
     bool found = false;
     if (!positions.empty()) {
-        C3DVector myPos = GetCreature()->GetPosition();
+        C3DVector myPos = GetCreature()->GetPos();
         float bestDistanceSquared = 0.0f;
         C3DVector bestPos;
         for (C3DVector* it = positions.begin(); it != positions.end(); ++it) {
@@ -89,7 +89,7 @@ bool CAIStateGroup_EnemyCreatureBase::IsInRangeOfHiddenPosition(C3DVector* out, 
                     bestPos = candidate;
                     found = true;
                 } else {
-                    C3DVector targetPos = PTargetThing.GetPItem()->GetPosition();
+                    C3DVector targetPos = PTargetThing.GetPItem()->GetPos();
                     C3DVector toMe;
                     toMe.X = myPos.X - targetPos.X;
                     toMe.Y = myPos.Y - targetPos.Y;

@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C9FE0, 296 bytes (304 with padding).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +0x08), CDefClassBase::GetSubDef<CSpecialEffectsDef>
 //   0x00669580, CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("TELEPORT_POS" 0x012821D0, "DUMMY_CENTRE" 0x0126F110),
-//   CCRC::CalcAndLookup 0x00669D30, CThing::GetPosition 0x004C73D0, the special-effect Create(long, const C3DVector*, bool)
+//   CCRC::CalcAndLookup 0x00669D30, CThing::GetPos 0x004C73D0, the special-effect Create(long, const C3DVector*, bool)
 //   0x006E0880 (__fastcall, returns the effect thing), CVectorMap::LowerBound 0x0040F020 (inlined lookup of 0x4B =
 //   CTCDParticleEmitter, bit 11 of +0x28), CTCDParticleEmitter::AttachToThing(CThing*, long, const CCharString&, long, float)
 //   0x006E0BE0.
@@ -92,7 +92,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CTCBase* GetTC(long interfaceType)
     {
@@ -187,7 +187,7 @@ void CCreatureAction_NymphTeleportLimboBase::DoEffect()
     CDefClassBase* thingDef = PCreature.GetPItem()->m_pDef;
     bool found = thingDef->GetSubDef(&effects) && effects->CalcAndLookup("TELEPORT_POS", &effect);
     if (found) {
-        CThing* fx = CreateSpecialEffect(effect, &PCreature.GetPItem()->GetPosition(), false);
+        CThing* fx = CreateSpecialEffect(effect, &PCreature.GetPItem()->GetPos(), false);
         if (fx && !(fx->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = fx->FindInterface<CTCDParticleEmitter>(0x4B);
             emitter->AttachToThing(PCreature.GetPItem(), 10, "DUMMY_CENTRE", 0, 0);

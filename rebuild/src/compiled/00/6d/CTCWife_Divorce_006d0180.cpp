@@ -4,7 +4,7 @@
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCWife::Unmarry(bool) 0x006CFF10; LowerBound 0x0040F020;
 //   CTCCreatureOpinionOfHero::SetOpinionReactionMask 0x00681E30 / SetOpinionDeedMask 0x006822E0 / SetPersonalityOverride
 //   0x006820E0 / ClearAllKnownDeeds 0x00681A70 / ApplyOpinionTransientOffset 0x00682140; CTCBase world/player-manager
-//   getters 0x00686A70 / 0x00686D40; CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetHeroThing 0x00487DC0;
+//   getters 0x00686A70 / 0x00686D40; CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetPControlledCreature 0x00487DC0;
 //   CTCHeroStats::SetMarriageState 0x0057BC6E / GetMoralityMax 0x0057A67E / SetMorality 0x0057C2E6; the home's
 //   occupant getter 0x007EE540; the player GUI refresh 0x004378C0 on g_pPlayerGui 0x013B8790; CCharString 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0; frame rate 0x01375550.
@@ -60,6 +60,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -69,7 +70,7 @@ class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
 class CPlayer { public:
-    CThing* GetHeroThing() const;               // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -150,7 +151,7 @@ void CTCWife::Divorce()
     }
     ParentThing->Flags1C9 &= ~8;
     LoveAttitudeValue = 0.0f;
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
+    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
     if (hero && !(hero->Flags91 & 1)) {
         CTCHeroStats* stats;
         hero->GetInterface(&stats, 4);

@@ -33,9 +33,9 @@ static unsigned long PrimitiveFlags(CEngineInternalPrimitiveBase& p){return p.En
 // PDB CEnginePrimitiveRendererSharedData CurrentOcclusionLayer+78; no shared header exists.
 struct CEnginePrimitiveRendererSharedData {unsigned char InterpolationAndLoadState[0x78];long CurrentOcclusionLayer;};
 extern CEnginePrimitiveRendererSharedData* g_pPrimitiveRendererSharedData; //01436e78
-struct CSubBase {virtual ~CSubBase();CSubBase();}; //0099a2f0
+struct CBaseClassNonCopyable {virtual ~CBaseClassNonCopyable();protected:CBaseClassNonCopyable();}; //0099a2f0 ??0CBaseClassNonCopyable@@IAE@XZ
 struct CEngineSubPrimitiveBoundingBox;
-struct __declspec(novtable) CSubPrimitiveBase:CSubBase {
+struct __declspec(novtable) CSubPrimitiveBase:CBaseClassNonCopyable {
  unsigned long RenderFlags;unsigned char Alpha;CEngineInternalPrimitiveBase* Parent;CSubPrimitiveBase* NextSubPrimitive;CEnginePrimitiveOcclusionGroupManager* Manager;
  CSubPrimitiveBase(CEngineInternalPrimitiveBase& p):Parent(&p),NextSubPrimitive(0){}
  static void* __fastcall operator new(size_t); //00beb540

@@ -75,7 +75,7 @@ public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x90 - 0x4c];
     char          PlayerNumber;                       // +0x90
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -100,7 +100,7 @@ CThingObject* __fastcall CreateThingObject(long defIndex, const C3DVector* posit
                                            unsigned long flags, const CCharString& name);   // 0x00703210
 __forceinline CThingObject* CreateThingObject(long defIndex, const CThing* owner, const CThing* at, const CCharString& name)
 {
-    return CreateThingObject(defIndex, &at->GetPosition(), owner->PlayerNumber, 0, 0, name);
+    return CreateThingObject(defIndex, &at->GetPos(), owner->PlayerNumber, 0, 0, name);
 }
 class CTCWeapon { public:                                    // interface 0x48
     bool IsAnalogueLoading_005da8f0();                         // 0x005DA8F0

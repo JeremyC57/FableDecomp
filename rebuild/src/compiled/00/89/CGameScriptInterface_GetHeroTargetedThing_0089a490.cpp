@@ -1,7 +1,7 @@
 // CGameScriptInterface::GetHeroTargetedThing() const -- the hero creature's current target as a script thing, or a null script thing
 // Leaf: ?GetHeroTargetedThing@CGameScriptInterface@@UBE?AVCScriptThing@@XZ
 // Retail: Fable.exe @ 0x0089A490, 124 bytes, `ret 4` (hidden result); Ego_r.pdb same symbol.
-// Body: hero = PlayerManager (+0x14)->GetMainPlayer() (0x00449970)->GetPPlayerCharacter() (0x00487DC0, `add ecx,2Ch; jmp` = CPlayer::ControlledCreature +0x2c); if hero: PeekTC of
+// Body: hero = PlayerManager (+0x14)->GetMainPlayer() (0x00449970)->GetPControlledCreature() (0x00487DC0, `add ecx,2Ch; jmp` = CPlayer::ControlledCreature +0x2c); if hero: PeekTC of
 // interface 8 (const LowerBound 0x004365B0, key in the frame) with its bool result IGNORED -- when the hero lacks the
 // interface the component pointer is uninitialised, and VC7.1 reuses the hidden-result load for it (`mov ecx,[esp+0xc]`);
 // target = component->slot 33 (+0x84); if target, return target->GetScriptThing() (0x004C7E50, labelled GFPredicateAnd by
@@ -86,7 +86,7 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager {
 public:
@@ -103,7 +103,7 @@ public:
 };
 CScriptThing CGameScriptInterface::GetHeroTargetedThing() const
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero)
     {
         const CTCTargetingBase* tc;

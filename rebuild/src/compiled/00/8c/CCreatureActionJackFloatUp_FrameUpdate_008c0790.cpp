@@ -1,7 +1,7 @@
 // CCreatureAction_JackFloatUp::FrameUpdate() -- base FrameUpdate; while moving, raise the creature by FloatSpeed per frame, clamped to StartHeight + FloatHeight
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C0790, length 140 bytes (+ int3 padding).
 // Callees: CCombatActionBase::FrameUpdate @ 0x00859D80 (direct base call, first), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8,
-// twice), CThing::GetPosition @ 0x004C73D0 (`[this+60h]+0Ch`, a const C3DVector&), the physics component's virtual slot 31 (`call [edx+7Ch]`
+// twice), CThing::GetPos @ 0x004C73D0 (`[this+60h]+0Ch`, a const C3DVector&), the physics component's virtual slot 31 (`call [edx+7Ch]`
 // on thing+0x60, SetPosition(const C3DVector&)). Global: the integer frame rate @ 0x01375550 (`fild`).
 // Shape: the per-frame rise is a C3DVector(0, 0, FloatSpeed / (float)frameRate) built before the PCreature fetch: only its Z is
 // read, so the two zero stores are dead and dropped but the vector keeps its three frame words (frame 0x1c, rise Z at [esp+20h]; a
@@ -25,7 +25,7 @@ struct CPhysicsComponent {
 class CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsComponent* m_pPhysics;          // +0x60
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     CPhysicsComponent* GetPhysics() const { return m_pPhysics; }
 };
 
@@ -69,7 +69,7 @@ void CCreatureAction_JackFloatUp::FrameUpdate()
     CCombatActionBase::FrameUpdate();
     if (Moving) {
         C3DVector rise(0.0f, 0.0f, FloatSpeed / (float)g_frameRate);
-        const C3DVector& position = PCreature.GetPItem()->GetPosition();
+        const C3DVector& position = PCreature.GetPItem()->GetPos();
         C3DVector target(position.X, position.Y, position.Z + rise.Z);
         float limit = FloatHeight + StartHeight;
         if (target.Z > limit)

@@ -7,7 +7,7 @@
 //   byte-identical twin 0x008C0900 (only the dummy-name literal differs: "DRAGON_MOUTH_DUMMY" @ 0x01285B4C).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CDefClassBase::GetSubDef<CWeaponDef> @ 0x0042B1A6 (same-TU out-only
 //   stand-in here), CCreatureActionBase::GetPWorld @ 0x00692940, CDefinitionManager::GetDef<T> @ 0x0078B230 (same-TU out-only
-//   stand-in), CThing::GetPosition @ 0x004C73D0, CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString
+//   stand-in), CThing::GetPos @ 0x004C73D0, CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString
 //   @ 0x0099EAE0, CTCGraphicAppearance::GetDummyObject @ 0x004C08C0, the `__fastcall` thing factory Create @ 0x00703210,
 //   CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10,
 //   CThingCreatureBase::GetShotAccuracyPercentage @ 0x00663B10, CDefStringTable::GetString @ 0x009D49B0 on g_DefStringTable
@@ -132,7 +132,7 @@ class CThing { public:
     CDefClassBase*        PDef;                        // +0x70
     unsigned char         _pad74[0x90 - 0x74];
     signed char           PlayerNumber;                // +0x90
-    const C3DVector& GetPosition() const;              // 0x004C73D0
+    const C3DVector& GetPos() const;              // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool init, CTCParamsBase* params);   // 0x004C9D60
 };
 __forceinline bool GetDummyObject(const CThing* thing, const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
@@ -197,7 +197,7 @@ void CCreatureAction_DragonLandFireball::PerformAction()
         manager->GetDef(weaponDef->Shot, &out);
         shotDef = out;
     }
-    C3DVector position = PCreature.GetPItem()->GetPosition();
+    C3DVector position = PCreature.GetPItem()->GetPos();
     CRightHandedSet orientation;
     GetDummyObject(PCreature.GetPItem(), "DRAGON_MOUTH_DUMMY", &position, &orientation);
     CThing* thing = CreateThingObject(shotDef->Thing, position, PCreature.GetPItem(), "");

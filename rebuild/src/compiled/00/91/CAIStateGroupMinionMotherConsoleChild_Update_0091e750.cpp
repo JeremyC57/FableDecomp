@@ -7,7 +7,7 @@
 // CTCEntityEvents::GetEvent<NEntityEvents::CEventChildHurtGoToMother, NEntityEvents::CIsEventOfType> @ 0x00915760,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the event's child at +8), ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90
 // (CIntelligentPointer<const CThing> vtable 0x01237F1C, by value), AIAction_LookAtThing @ 0x0097D6F0,
-// CThingCreatureBase::GetPosition @ 0x006A4D00, CThing::GetPosition @ 0x004C73D0, CCharString(const char*, long)
+// CThingCreatureBase::PeekPos @ 0x006A4D00, CThing::PeekPos @ 0x004C73D0, CCharString(const char*, long)
 // @ 0x0099EBF0 ("ST_BLOW_KISS_LOOP" @ 0x0128FFB0) / ~CCharString @ 0x0099EAE0, CCreatureAction_PlayAnimation ctor
 // @ 0x008424F0, AIAction_PerformAction @ 0x0097D8B0, ~CCreatureActionBase @ 0x00693EF0, Terminate @ 0x008FCF40.
 // Data: 9.0f @ 0x0125EF98, 1/360 immediate.
@@ -37,7 +37,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
     bool HasTC(long interfaceType) const { return ((m_presentBits[interfaceType >> 5] >> (interfaceType & 31)) & 1) != 0; }
     template<class T> bool GetInterface(T** ppOut, long interfaceType) const
     {
@@ -51,8 +51,10 @@ class CThing { public:
         return present;
     }
 };
-class CThingCreatureBase : public CThing { public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
 };
 
 struct CBaseIntelligentPointer {
@@ -143,7 +145,7 @@ void CAIStateGroup_MinionMotherConsoleChild::Update()
                     return;
                 }
                 if (!(child->m_flags91 & 1) &&
-                    (child->GetPosition() - GetCreature()->GetPosition()).GetLengthSquared() > 9.0f)
+                    (child->GetPos() - GetCreature()->PeekPos()).GetLengthSquared() > 9.0f)
                     break;
             }
             result = AIAction_PerformAction(&CCreatureAction_PlayAnimation(GetCreature(), "ST_BLOW_KISS_LOOP",

@@ -1,7 +1,7 @@
 // CCreatureAction_ScreamerDrainAttack::Initialise() -- pick the drain-life cast animation: ST_CAST_DRAIN_LIFE_ADVANCE when the live target is farther (in the ground plane) than the creature's combat-type front-near limit, else ST_CAST_DRAIN_LIFE; then the combat-action Initialise
 // Retry 10b (chain-split sweep, FIXES B-16): the creature is a named local (`CThing* creature = PCreature.GetPItem();`) before its position is taken: retail keeps `this` in ebp and the target in ebx (the chained call swaps them).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008B8BC0, length 240 bytes (plain `ret`, virtual).
-// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget +0xA8 three times, PCreature +8 twice), CThing::GetPosition
+// Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PTarget +0xA8 three times, PCreature +8 twice), CThing::GetPos
 // 0x004C73D0 (creature first, then target), CThingCreatureBase::GetCombatTypeDef 0x00666D10, CCharString(const char*, long)
 // 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation(const CCharString&) 0x008574D0,
 // CCombatActionBase::Initialise 0x00857520 (direct base call, last).
@@ -29,7 +29,7 @@ class CCombatTypeDef { public:
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_deleteFlags;                // +0x91 bit 0: being deleted
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     CCombatTypeDef* GetCombatTypeDef();         // 0x00666D10 (CThingCreatureBase)
 };
 
@@ -73,8 +73,8 @@ void CCreatureAction_ScreamerDrainAttack::Initialise()
     if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_deleteFlags & 1)) {
         CThing* target = PTarget.GetPItem();
         CThing* creature = PCreature.GetPItem();
-        const C3DVector& from = creature->GetPosition();
-        const C3DVector& to = target->GetPosition();
+        const C3DVector& from = creature->GetPos();
+        const C3DVector& to = target->GetPos();
         delta.X = to.X - from.X;
         delta.Y = to.Y - from.Y;
         float limit = PCreature.GetPItem()->GetCombatTypeDef()->FrontNearLimit;

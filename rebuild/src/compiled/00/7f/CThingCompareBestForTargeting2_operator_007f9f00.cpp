@@ -2,7 +2,7 @@
 // Leaf: ??RCThingCompare_BestForTargeting2
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007F9F00, 94 bytes (+ int3 padding).
 // Callees: CThingCompare_BestForTargeting2::GetThingCompareMultiplier(CThing*) @ 0x007F9E70 (x2, results discarded:
-//          `fstp st(0)`), CThing::GetPosition @ 0x004C73D0 (x2: b first, then a), CVectorCompare_BestForTargeting::
+//          `fstp st(0)`), CThing::GetPos @ 0x004C73D0 (x2: b first, then a), CVectorCompare_BestForTargeting::
 //          GetCompareValueForPoint(const C3DVector&) @ 0x007F9660 (x2, on the comparator member at +4).
 // Identity: PDB CThingCompare_BestForTargeting2 (Hero +0, VectorCompare +4, EnemyPreferenceFactor +0x30); the six
 //   callers (0x007F9F71..0x007FA243) are the sort helpers of the targeting candidate list.
@@ -14,7 +14,7 @@
 class C3DVector;
 
 class CThing { public:
-    const C3DVector& GetPosition();     // 0x004C73D0
+    const C3DVector& GetPos() const;     // 0x004C73D0
 };
 
 class CVectorCompare_BestForTargeting { public:
@@ -35,8 +35,8 @@ bool CThingCompare_BestForTargeting2::operator()(CThing* a, CThing* b)
 {
     float multiplierA = GetThingCompareMultiplier(a);
     float multiplierB = GetThingCompareMultiplier(b);
-    const C3DVector& posB = b->GetPosition();
-    const C3DVector& posA = a->GetPosition();
+    const C3DVector& posB = b->GetPos();
+    const C3DVector& posA = a->GetPos();
     float valueA = VectorCompare.GetCompareValueForPoint(posA);
     float valueB = VectorCompare.GetCompareValueForPoint(posB);
     if (valueA > valueB)

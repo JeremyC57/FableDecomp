@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DDD70, 565 bytes (`ret`).
 // Callees: CModeStandBase::OnActivate @ 0x008621A0, CThingAnimatable::SetSuspendAnimation @ 0x00833A10, CCharString(const char*, long)
 //   @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CGameDefinitionManager::Get @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName
-//   @ 0x009AD410, CThing::GetPosition @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CModeBase::GetWorld @ 0x0073A680 (labelled
+//   @ 0x009AD410, CThing::GetPos @ 0x004C73D0, __ftol2 @ 0x00BFEA70, CModeBase::GetWorld @ 0x0073A680 (labelled
 //   "CViewBase::GetDisplayEngine"), CThingSearchTools::GetAllThingsInRoughArea<..., CThingFilter_HasDefGlobalIndex> @ 0x008E3EB0,
 //   CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580, CCRC::CalcAndLookup @ 0x00669D30, the special-effect Create @ 0x006E0880,
 //   CTCDParticleEmitter::AttachToThing @ 0x006E0BE0, CThing::AddTC @ 0x004C9D60, CTCHealLife state setter @ 0x007C3EA0 (`[ecx+18h] = arg`;
@@ -109,7 +109,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     void SetSuspendAnimation(bool suspend, NCreatureMode::CModeBase* mode);   // 0x00833A10
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
@@ -222,7 +222,7 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
     long bodyguardDef = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("CREATURE_GUILDMASTER_BODYGUARD");
     {
         CThingFilter_HasDefGlobalIndex filter(bodyguardDef);
-        const C3DVector& pos = m_pThing->GetPosition();
+        const C3DVector& pos = m_pThing->GetPos();
         C2DCoordI centre((long)pos.X, (long)pos.Y);
         C2DBoxI area(centre.X - 20, centre.Y - 20, centre.X + 20, centre.Y + 20);
         CWorld* world = GetWorld();
@@ -241,7 +241,7 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
                     found = effects->CalcAndLookup(name, &effect);
                 }
                 if (found) {
-                    CThing* healEffect = CreateSpecialEffect(effect, m_pThing->GetPosition(), false);
+                    CThing* healEffect = CreateSpecialEffect(effect, m_pThing->GetPos(), false);
                     if (healEffect && !(healEffect->m_flags91 & 1) && healEffect->HasTC(0x4b)) {
                         CTCDParticleEmitter* emitter = (CTCDParticleEmitter*)healEffect->PTCDriver;
                         emitter->AttachToThing(m_pThing, 10, "", 0, 0.0f);

@@ -4,7 +4,7 @@
 // Identity (proven): CGameScriptInterface::SetHeroAsHavingHadGaySex; evidence: retail CGameScriptInterface vtable 0x01260F0C slot 221 holds this body, and that slot is ?SetHeroAsHavingHadGaySex@CGameScriptInterface@@UBEX_N@Z in ghidra_out/cgsi_slots_aligned.tsv (the Ego_r.pdb CGameScriptInterface virtual order aligned to the retail table); the body tests interface 0x4 and stores a bool at +0x159, which is CTCHeroStats::HadScriptedGaySex (Ego_r.pdb +0x16D), set through FableWin.pdb ?SetAsHavingScriptedGaySex@CTCHeroStats@@QAEX_N@Z.
 // Label: the manifest's "CGameScriptInterface::SetHeroAsHavingHadGaySex" is propagated across family H029 (seven hero-component setters that differ only in the
 //   component's interface bit, the stored field and its width).
-// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPPlayerCharacter 0x00487DC0,
+// Callees: CPlayerManager::GetMainPlayer 0x00449970, CPlayer::GetPControlledCreature 0x00487DC0,
 //   CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (CThing::GetTC<CTCHeroStats> inlined, interface 0x4).
 // Model: the landed CGameScriptInterface::SetHeroAbleToGainExperience 0x00899060 (same shape, other component). Layout:
 //   CGameScriptInterface +0x14 PlayerManager; CThing retail UsingComponents +0x20, Components +0x44, Dead +0x91 bit 0;
@@ -49,7 +49,7 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager {
 public:
@@ -74,7 +74,7 @@ public:
 
 void CGameScriptInterface::SetHeroAsHavingHadGaySex(bool value) const
 {
-    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroStats* tc;
     if (hero && !hero->IsDead() && hero->GetTC(&tc))
         tc->SetAsHavingScriptedGaySex(value);

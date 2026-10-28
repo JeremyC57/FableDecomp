@@ -52,13 +52,15 @@ struct CTCHover {                               // the interface-9 component
     bool          m_bFlag10;                    // +0x10
 };
 
-class CThingCreatureBase { public:
+class CThing { public:
+    const C3DVector& GetPos() const;       // 0x004C73D0 (CThing)
+};
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x60 - 0x4c];
     CPhysicsBody* m_pBody;                      // +0x60
-    const C3DVector& GetPosition_004c73d0() const;       // 0x004C73D0 (CThing)
     void ResetPosition(const C3DVector& position) { m_pBody->ResetPosition(position); }
     C3DVector GetFacing() const { return m_pBody->GetFacing(); }
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -115,7 +117,7 @@ void CCreatureAction_DragonHoverInto::Initialise()
         SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
-    const C3DVector& pos = PCreature.GetPItem()->GetPosition_004c73d0();
+    const C3DVector& pos = PCreature.GetPItem()->GetPos();
     C3DVector lowered;
     lowered.X = pos.X;
     lowered.Y = pos.Y;

@@ -4,7 +4,7 @@
 // catalog = CTCBase::OnInitialActivate).
 // Callees: CThing::SetAsDrawable(bool) (virtual slot 28, +0x70), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020
 // (inlined GetTC for the interface-9 component, `test ch,2`), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString
-// @ 0x0099EAE0, CTCGraphicAppearance::GetHelperPoint @ 0x004C0560 (on ParentThing+0x64), CThing::GetPosition @ 0x004C73D0.
+// @ 0x0099EAE0, CTCGraphicAppearance::GetHelperPoint @ 0x004C0560 (on ParentThing+0x64), CThing::GetPos @ 0x004C73D0.
 // Literals: "PODIUM_ORB_CREATION_DUMMY" 0x0126B2C0, 1.7f 0x0126B2BC.
 // Layout = Ego_r.pdb CTCBoastingPosition: OrbPosition +0x14 (no containers before it, so PDB = retail).
 // Shape: the checked out-parameter GetInterface keeps the component in eax for the byte store; the helper result is negated as
@@ -43,7 +43,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44 Components
     unsigned char _pad4c[0x64 - 0x4c];
     CTCGraphicAppearance* PGraphicAppearance;   // +0x64
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -83,7 +83,7 @@ void CTCBoastingPosition::OnInitialActivate()
             missing = appearance->GetHelperPoint(name, 0, 0, &OrbPosition, 1.0f) ? false : true;
         }
         if (missing) {
-            const C3DVector& position = ParentThing->GetPosition();
+            const C3DVector& position = ParentThing->GetPos();
             C3DVector orb;
             orb.X = position.X;
             orb.Y = position.Y;

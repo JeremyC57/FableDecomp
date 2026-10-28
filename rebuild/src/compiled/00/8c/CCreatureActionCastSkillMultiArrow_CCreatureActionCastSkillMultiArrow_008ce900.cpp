@@ -119,7 +119,7 @@ public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                   // +0x20
     CInterfaceMap m_interfaces;                       // +0x44
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -191,6 +191,6 @@ CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingC
     long effectType = 0;
     if (def->GetSubDef(effects)) {
         if (effects->GetEffectFromString("CAST_EFFECT", effectType))
-            CreateParticleEffect(effectType, &GetCreature()->GetPosition());
+            CreateParticleEffect(effectType, &GetCreature()->GetPos());
     }
 }

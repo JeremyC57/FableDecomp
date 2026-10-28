@@ -3,21 +3,19 @@ class CCharString;
 class CThingPlayerCreature
 {
 public:
-    bool IsExpressionAvailable(const CCharString& expression);
+    bool IsExpressionAvailable(const CCharString& expression) const;   // Ego_r.pdb: ?IsExpressionAvailable@CThingPlayerCreature@@QBE_NABVCCharString@@@Z
 };
 
-class HeroResolverStage2;
+class CPlayer
+{
+public:
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
+};
 
 class HeroResolverStage1
 {
 public:
-    HeroResolverStage2* ResolveStage2();
-};
-
-class HeroResolverStage2
-{
-public:
-    CThingPlayerCreature* ResolveHero();
+    CPlayer* ResolveStage2();
 };
 
 class CGameScriptInterface
@@ -42,7 +40,7 @@ bool CGameScriptInterface::HeroHasExpression(
     const CCharString& expression) const
 {
     const InterfaceOverlay* self = (const InterfaceOverlay*)this;
-    CThingPlayerCreature* hero = self->field14->ResolveStage2()->ResolveHero();
+    CThingPlayerCreature* hero = self->field14->ResolveStage2()->GetPControlledCreature();
     if (hero != 0 && (((const HeroOverlay*)hero)->flags91 & 1) == 0)
     {
         return hero->IsExpressionAvailable(expression);

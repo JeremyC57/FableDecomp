@@ -1,7 +1,7 @@
 // CInputProcessCreditsUI::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- while the hero's credits-UI component (kind 0x101) is active and not already quitting, a press of game action 0x22 starts quitting the credits
 // Leaf: ProcessInput
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00691470, length 121 bytes.
-// Callees: CPlayer::GetHeroCreature @ 0x00487DC0 (MyPlayer +0x18), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
+// Callees: CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // @ 0x0040F020 (the thing's component map at +0x44, key by address), CInputProcessGameBase::IsEventButtonPressed
 // @ 0x00687A90 (manifest "IsEventButtonHeld"), IsEventGameAction @ 0x00687CF0, CTCCreditsUI::Quit @ 0x007E49C0
 // (`if (Active) Quitting = true`; manifest label "Deactivate").
@@ -37,6 +37,7 @@ struct CThing_Retail {
     CTCMap_Retail  m_tcs;                          // +0x44
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
 };
+class CThingPlayerCreature : public CThing_Retail { };
 class CTCCreditsUI {
 public:
     unsigned char _base00[0xc];                    // CTCBase (vptr, ParentThing, flags)
@@ -48,7 +49,7 @@ public:
 };
 class CPlayer {
 public:
-    CThing_Retail* GetHeroCreature();              // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
 };
 class CWorld; class CGameDefinitionManager; class CMainGameComponent; class CGamePlayerInterface;
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -70,7 +71,7 @@ public:
 
 void CInputProcessCreditsUI::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    CThing_Retail* hero = MyPlayer->GetHeroCreature();
+    CThing_Retail* hero = MyPlayer->GetPControlledCreature();
     if (hero->HasTC(0x101)) {
         CTCCreditsUI* credits = (CTCCreditsUI*)hero->m_tcs.Find(0x101);
         if (credits->Active && !credits->Quitting

@@ -2,11 +2,11 @@
 // Leaf: ?FrameUpdate@CTCTeleporter
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007E00D0, 858 bytes, plain `ret`.
 // Callees: CTCBase getters 0x00686A80 (world) / 0x00686D30 (world map) / 0x00686D20 / 0x00686D40 / 0x00686D50 (labels
-//   "CViewBase::GetDisplayEngine" are propagated); CPlayerManager getters 0x00449960 / 0x00449970; CPlayer::GetHeroThing
+//   "CViewBase::GetDisplayEngine" are propagated); CPlayerManager getters 0x00449960 / 0x00449970; CPlayer::GetPControlledCreature
 //   0x00487DC0; CTCTeleporter::StartTeleporting 0x007DFF90; CWorldMap::GetRegionNumberMapIsIn 0x004FC190 / the current
 //   region 0x004FB150; CCharString::operator!= 0x0099E960; the player GUI refresh 0x004378C0 on g_pPlayerGui 0x013B8790;
 //   IS_THING_ALIVE<CThingPlayerCreature*> 0x0043DBD0 / IS_THING_ALIVE<CIntelligentPointer<CThing> > 0x004CC340 (`__fastcall`);
-//   CThing::GetPosition 0x004C73D0 / Kill 0x004C9B80; LowerBound 0x0040F020 (interfaces 0x29 hero, 0x4B emitter);
+//   CThing::GetPos 0x004C73D0 / Kill 0x004C9B80; LowerBound 0x0040F020 (interfaces 0x29 hero, 0x4B emitter);
 //   CTCHero::GiveTutorialForCategory 0x006C9FA0; particle Create 0x006E0880 (`__fastcall`); CIntelligentPointer<CThing>
 //   (CThing*) 0x004A96F0 / operator= 0x004A9760 / ~ 0x00A01C10 / GetPItem 0x00A01B50; CTCDParticleEmitter::AttachToThing
 //   0x006E0BE0 / SetAlwaysUpdate 0x006E0590; CCharString 0x0099EBF0 / ~ 0x0099EAE0.
@@ -66,11 +66,14 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
 };
 class CThingPlayerCreature : public CThing { public: };
-bool __fastcall IS_THING_ALIVE_0043dbd0(CThing* const& thing);   // 0x0043DBD0
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBD0 (T = CThingPlayerCreature*: fed by GetPControlledCreature 0x00487DC0 at 25 of 32 retail call sites)
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 
 #pragma pack(push, 1)
 struct CBaseIntelligentPointer {
@@ -84,7 +87,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
 #pragma pack(pop)
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer* p);   // 0x004CC340
+bool __fastcall IS_THING_ALIVE(const CIntelligentPointer& p);   // 0x004CC340 IS_THING_ALIVE<CIntelligentPointer<CThing> >
 CThing* __fastcall CreateParticle(long effect, const C3DVector* pos, bool attach);   // 0x006E0880
 
 class CTCDParticleEmitter { public:                            // interface 0x4B
@@ -95,7 +98,7 @@ class CTCHero { public:                                        // interface 0x29
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
 class CPlayer { public:
-    CThingPlayerCreature* GetHeroThing() const;         // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer* GetPlayer_00449960();                               // 0x00449960
@@ -159,7 +162,7 @@ void CTCTeleporter::FrameUpdate()
         if (g_pPlayerGui->TutorialShowing || GetWorld()->Paused)
             return;
         WaitingForTutorialToFinish = false;
-        CThingPlayerCreature* hero = GetPlayerManager2()->GetPlayer_00449960()->GetHeroThing();
+        CThingPlayerCreature* hero = GetPlayerManager2()->GetPlayer_00449960()->GetPControlledCreature();
         if (hero && !(hero->m_flags & 1))
             StartTeleporting(hero);
         return;
@@ -182,10 +185,10 @@ void CTCTeleporter::FrameUpdate()
     if (!GetRegionManager()->IsMapLoaded(ParentThing->RegionMapIndex))
         return;
     if (GetWorld()->TeleportingEnabled) {
-    CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer()->GetHeroThing();
-    if (IS_THING_ALIVE_0043dbd0(hero)) {
-        const C3DVector& myPos = ParentThing->GetPosition();
-        const C3DVector& heroPos = hero->GetPosition();
+    CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    if (IS_THING_ALIVE(hero)) {
+        const C3DVector& myPos = ParentThing->GetPos();
+        const C3DVector& heroPos = hero->GetPos();
         float dx = heroPos.X - myPos.X;
         float dy = heroPos.Y - myPos.Y;
         float radius = PDef->Radius;
@@ -219,7 +222,7 @@ void CTCTeleporter::FrameUpdate()
     if (PParticle.GetPItem())
         return;
     {
-        CIntelligentPointer particle(CreateParticle(PDef->ParticleEffect, &ParentThing->GetPosition(), false));
+        CIntelligentPointer particle(CreateParticle(PDef->ParticleEffect, &ParentThing->GetPos(), false));
         PParticle = particle;
     }
     if (!PParticle.GetPItem())
@@ -229,7 +232,7 @@ void CTCTeleporter::FrameUpdate()
     emitter->AttachToThing(ParentThing, 1, "", 0, 0.0f);
     emitter->SetAlwaysUpdate(true);
     } else {
-        if (IS_THING_ALIVE(&PParticle)) {
+        if (IS_THING_ALIVE(PParticle)) {
             PParticle.GetPItem()->Kill(true);
             CIntelligentPointer none(0);
             PParticle = none;

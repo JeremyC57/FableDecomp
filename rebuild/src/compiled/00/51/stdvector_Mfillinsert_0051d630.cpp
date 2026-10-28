@@ -1,5 +1,5 @@
 // std::vector::_M_fill_insert(CNavigationAreaUpdate::CNavigationLayerUpdate* __position, unsigned int __n, const CNavigationAreaUpdate::CNavigationLayerUpdate& __x) -- (vector<CNavigationAreaUpdate::CNavigationLayerUpdate>) STLport fill-insert of n copies of a navigation-layer update: shift in place when the capacity suffices (x copied first), else grow through _M_insert_overflow
-// Leaf: ?_M_fill_insert@?$vector@VCNavigationLayerUpdate@CNavigationAreaUpdate@@V?$allocator@VCNavigationLayerUpdate@CNavigationAreaUpdate@@@std@@@std@@IAEXPAVCNavigationLayerUpdate@CNavigationAreaUpdate@@IABV34@@Z
+// Leaf: ?_M_fill_insert@?$vector@VCNavigationLayerUpdate@CNavigationAreaUpdate@@V?$allocator@VCNavigationLayerUpdate@CNavigationAreaUpdate@@@std@@@std@@QAEXPAVCNavigationLayerUpdate@CNavigationAreaUpdate@@IABV34@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0051D630, 356 bytes, thiscall, `ret 0Ch`.
 // Identity (proven): the landed resize(n, x) 0x0051D800 of vector<CNavigationAreaUpdate::CNavigationLayerUpdate> calls this
 //   row as insert(end(), n, x) (its reloc binding is the spelling used here, protected); every helper it calls is a
@@ -79,7 +79,9 @@ public:
 protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                                             // 0x0051D400
+    public:
     void _M_fill_insert(iterator __pos, size_type __n, const _Tp& __x);
+    protected:
 };
 } // namespace std
 

@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_lower_bound(const CCharString& k) const -- (map<CCharString, unsigned long >) STLport lower bound: the first node whose key does not sort before k, the header when none; the key compare is the out-of-line less<CCharString>
-// Leaf: ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@QBEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z
+// Leaf: ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@ABEPAU_Rb_tree_node_base@2@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0042AD34, 56 bytes, thiscall `ret 4`, the node pointer in eax (a size-optimised /Os module: unaligned entry).
 // Identity (proven): std::_Rb_tree<CCharString, pair<const CCharString, unsigned long>, _Select1st<...>, less<CCharString>, allocator<...> >::_M_lower_bound(const CCharString&) const; evidence: its callers are the landed map<CCharString, unsigned long>::operator[] 0x0042D131 (0x0042D13D; CCodeSectionManager::RegisterSection's ShortNameToHandle / LongNameToHandle, Ego_r.pdb map<CCharString, unsigned long>), the tree's copy constructor path 0x0042B7EE and CBankFile::FindIndexByFilename 0x009CCDF0
 // Label: the manifest's "StdMap_LowerBound" is a descriptive placeholder (family J042: five byte-identical lower bounds over CCharString keys, each its
@@ -54,12 +54,16 @@ public:
     typedef _Rb_tree_node<_Value>* _Link_type;
     unsigned int _M_node_count;                            // +0x04
     _Compare     _M_key_compare;                           // +0x08
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
     static _Link_type _S_left(_Base_ptr __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Base_ptr __x) { return (_Link_type)__x->_M_right; }
     static _Value& _S_value(_Base_ptr __x) { return ((_Link_type)__x)->_M_value_field; }
     static const _Key& _S_key(_Base_ptr __x) { return _KeyOfValue()(_S_value(__x)); }
+    private:
     _Base_ptr _M_lower_bound(const _Key& __k) const;
+    public:
 };
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
 _Rb_tree_node_base* _Rb_tree<_Key, _Value, _KeyOfValue, _Compare, _Alloc>::_M_lower_bound(const _Key& __k) const

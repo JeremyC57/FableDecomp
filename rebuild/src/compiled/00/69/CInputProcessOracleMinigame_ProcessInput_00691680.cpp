@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00691680, length 370 bytes, `ret 8` (/GS cookie 0x0139C8A8,
 //   __security_check_cookie @ 0x00BFE9F9).
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
-//   CPlayer::GetHeroCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020,
+//   CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020,
 //   CTCOracleMinigame::PushSymbolToQueue(long) @ 0x007E5F70 and Quit() @ 0x007E62D0, CMemoryBuffer::Copy @ 0x009F1760,
 //   CProcessedInput::AddGameEvent(const CGameEvent&) @ 0x00A0D340 / SetHandled @ 0x00A0D390.
 // Layout: `this` is engine/CInputProcessGameBase.h (MyPlayer +0x18); CThing component bitset +0x20..+0x43 (0x107 = word 8
@@ -59,9 +59,10 @@ class CThing { public:
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCOracleMinigame* GetTC(long kind) { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CInputProcessOracleMinigame : public CInputProcessGameBase {
 public:
@@ -74,7 +75,7 @@ void CInputProcessOracleMinigame::ProcessInput(const CInputEvent& event, CProces
 {
     if (!IsEventButtonPressed(event))
         return;
-    CThing* hero = MyPlayer->GetHeroCreature();
+    CThing* hero = MyPlayer->GetPControlledCreature();
     CTCOracleMinigame* oracle = 0;
     if (hero->HasTC(0x107))
         oracle = hero->GetTC(0x107);

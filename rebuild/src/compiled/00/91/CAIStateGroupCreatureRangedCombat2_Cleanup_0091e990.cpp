@@ -80,7 +80,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                                 // +0x11
     unsigned char Enabled;                                  // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld();                                    // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0
+public:
     CThingAICreature* GetCreature() const { return PBrain->Creature; }
 };
 
@@ -92,7 +94,7 @@ struct CAIStateGroup_CreatureRangedCombat2 : CAIStateGroupBase {
 
 void CAIStateGroup_CreatureRangedCombat2::Cleanup()
 {
-    if (GetPWorld()->GetGameState()->m_bShuttingDown) {
+    if (GetWorld().GetGameState()->m_bShuttingDown) {
         CleanupRangedWeapon((CThing*)PBrain->Creature);
     } else {
         CTCBase* fireOnLeaving = GetCreature()->AddTC("CTCFireRangedWeaponOnLeavingStateGroup", false, 0);

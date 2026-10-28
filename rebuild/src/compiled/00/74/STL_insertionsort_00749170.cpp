@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00749170, 113 bytes, `ret 4` (link-time __fastcall: first in ecx, last in
 //   edx, the comparator on the stack).
 // Callees: CCompare_FurthestFromInitPos2D::operator()(CThing*, CThing*) const @ 0x007483E0 (landed; its body is repeated
-//   below as the same-TU definition, with CThing::GetPosition @ 0x004C73D0), memmove @ 0x00BFEAE6
+//   below as the same-TU definition, with CThing::GetPos @ 0x004C73D0), memmove @ 0x00BFEAE6
 //   (MSVCR71 import thunk), __unguarded_linear_insert(last, val, comp) @ 0x00748810 (__fastcall, out of line, `ret 4`).
 // Callers: the landed sort 0x00749740 (its inlined __final_insertion_sort calls this address).
 // Label: the manifest's "Vector_InsertSorted" is descriptive; the body is SGI/STLport `__insertion_sort` (3-argument form).
@@ -33,7 +33,7 @@ class CThing { public:
     unsigned char m_flags6c;                    // +0x6c bit 3: creature
     unsigned char _pad6d[0x91 - 0x6d];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 
 class CThingCreatureBase : public CThing { public:
@@ -42,7 +42,7 @@ class CThingCreatureBase : public CThing { public:
     float InitialPosY;                          // +0xec
     C2DVector GetOffsetFromInitialPos2D() const
     {
-        const C3DVector& position = GetPosition();
+        const C3DVector& position = GetPos();
         return C2DVector(InitialPosX - position.X, InitialPosY - position.Y);
     }
 };

@@ -8,7 +8,7 @@
 // found; otherwise the prong is blocked and the extrapolated position returned.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006EA770, 799 bytes, `ret 8` (hidden C3DVector result + creature).
 // Callees: CThingCreatureBase::IsInMeleeAsAttacker 0x00662410 (FINDINGS chunk 407; was "IsRegisteredCombatant"), combatant map find 0x006F0250 (twice, unchecked),
-//   CThing::GetPosition 0x004C73D0, CCombatWheel::ComputeAttackVector 0x006E89B0, CInterfaceMap::LowerBound (const) 0x004365B0,
+//   CThing::GetPos 0x004C73D0, CCombatWheel::ComputeAttackVector 0x006E89B0, CInterfaceMap::LowerBound (const) 0x004365B0,
 //   CThing::GetThingStandingOn (vtable +0x98), CThingCreatureBase::GetNavigationLevelAt 0x00661D20,
 //   CThingFindNavigationLayerAt::operator() 0x0063EFB0, CTCCreatureNavigation::IsAbleToNavigateFromPosToPos 0x006CB620,
 //   CDefendingCombatantInfo::CCombatWheel::SetAttackerProngAsBlocked 0x006E9200 (Ego_r.pdb ?SetAttackerProngAsBlocked@
@@ -69,7 +69,7 @@ class CThing { public:
     unsigned char _pad64[0x6c - 0x64];
     unsigned char m_flags6c;                          // +0x6c
     unsigned __int64 GetUID() const { return UniqueID; }
-    const C3DVector& GetPosition() const;             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     template<class T> __forceinline T* GetTCIfPresent(long type) const
     {
         T* component = 0;
@@ -159,7 +159,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
         const CThingCreatureBase* attacked = info.AttackerInfo.Attacked;
         const CCombatantInfo& attackedInfo = GetCombatantInfo(attacked->GetUID());
         CPhysicsObject* physics = attacked->PPhysics;
-        C3DVector predicted = (physics->Pos - physics->LastPos) * 7.0f + attacked->GetPosition();
+        C3DVector predicted = (physics->Pos - physics->LastPos) * 7.0f + attacked->GetPos();
         if (info.AttackerInfo.CombatWheelRingIndex >= 0) {
             const CCombatWheel& wheel = attackedInfo.CombatWheel;
             C3DVector direction = wheel.ComputeAttackVector(creature, *attacked, info.AttackerInfo.CombatWheelRingIndex);
@@ -169,7 +169,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
             CThing* standingOn = 0;
             if (attacked->GetThingStandingOn() && (attacked->GetThingStandingOn()->m_flags6c & 2))
                 standingOn = attacked->GetThingStandingOn();
-            long region = attacked->GetNavigationLevelAt(attacked->GetPosition());
+            long region = attacked->GetNavigationLevelAt(attacked->GetPos());
             C3DVector candidate;
             do {
                 candidate = predicted + direction * distance;
@@ -179,7 +179,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
                     finder(standingOn);
                     sameLayer = (float)finder.Layer == (float)region;
                 }
-                if (sameLayer && navigation->IsAbleToNavigateFromPosToPos(&creature.GetPosition(), &candidate, 0.5f))
+                if (sameLayer && navigation->IsAbleToNavigateFromPosToPos(&creature.GetPos(), &candidate, 0.5f))
                     return candidate;
                 distance -= 0.25f;
                 if (distance < 0.0f)
@@ -188,7 +188,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
             const_cast<CCombatWheel&>(wheel).SetAttackerProngAsBlocked(creature, const_cast<CAttackingCombatantInfo&>(info.AttackerInfo));
             return predicted;
         }
-        return creature.GetPosition();
+        return creature.GetPos();
     }
-    return creature.GetPosition();
+    return creature.GetPos();
 }

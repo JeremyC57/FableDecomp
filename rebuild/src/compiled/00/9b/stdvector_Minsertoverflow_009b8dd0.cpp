@@ -82,15 +82,21 @@ public:
     }
     ~vector() {}
     vector<_Tp, _Alloc>& operator=(const vector<_Tp, _Alloc>& __x);
+    protected:
     void _M_clear();
+    public:
+    protected:
     void _M_set(pointer __s, pointer __f, pointer __e)
     {
         this->_M_start = __s;
         this->_M_finish = __f;
         this->_M_end_of_storage._M_data = __e;
     }
+    public:
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);
+    public:
 };
 
 template <class _T1, class _T2> struct pair {

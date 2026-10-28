@@ -11,11 +11,11 @@
 //   leftmost, else climb while we are our parent's right child; the end test reloads the header. Each restarted read gets a
 //   fresh UID from the bank's threaded file for its stored load descriptor. The set's clear() is inline too: _M_erase(root)
 //   only when the count is non-zero, then the header is re-linked to itself (leftmost, root 0, rightmost) and the count zeroed.
-struct RTL_CRITICAL_SECTION_ { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
+struct _RTL_CRITICAL_SECTION { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 struct CCriticalSectionLock {                      // 8 bytes on the stack
-    RTL_CRITICAL_SECTION_* Section;
+    _RTL_CRITICAL_SECTION* Section;
     bool Locked;
-    CCriticalSectionLock(RTL_CRITICAL_SECTION_* section, bool tryOnly);   // 0x00A62920
+    CCriticalSectionLock(_RTL_CRITICAL_SECTION& section, bool tryOnly);   // 0x00A62920 ??0CCriticalSectionLock@@QAE@AAU_RTL_CRITICAL_SECTION@@_N@Z
     ~CCriticalSectionLock();                                              // 0x00A629A0
 };
 class CThreadedFileObjectDesc { public: unsigned char _body[0x18]; };
@@ -106,13 +106,13 @@ class CBankFileAsync { public:                            // retail layout (PDB 
     void* DisposalList;                            // +0x144
     bool NonCached;                                // +0x148
     bool DisableAsync;                             // +0x149
-    RTL_CRITICAL_SECTION_ CriticalSection;         // +0x14c
+    _RTL_CRITICAL_SECTION CriticalSection;         // +0x14c
     void RestartReads();
 };
 
 void CBankFileAsync::RestartReads()
 {
-    CCriticalSectionLock lock(&CriticalSection, false);
+    CCriticalSectionLock lock(CriticalSection, false);
     for (CPointerSetIterator it = ReadsToRestart.begin(); it != ReadsToRestart.end(); ++it) {
         CBankFileAsyncData* data = *it;
         data->ThreadedFileUID = data->BankFile->ThreadedFile->AddObject(&data->LoadDesc);

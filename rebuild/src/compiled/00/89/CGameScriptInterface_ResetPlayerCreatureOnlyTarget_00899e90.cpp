@@ -1,7 +1,7 @@
 // CGameScriptInterface::ResetPlayerCreatureOnlyTarget() const -- clear the hero creature's only-target (interface 8 component)
 // Leaf: ?ResetPlayerCreatureOnlyTarget@CGameScriptInterface@@UBEXXZ
 // Retail: Fable.exe @ 0x00899E90, 93 bytes, plain `ret`; Ego_r.pdb ?ResetPlayerCreatureOnlyTarget@CGameScriptInterface@@UBEXXZ.
-// Body: hero = Component (+0x08)->PPlayerManager (+0x1c)->GetMainPlayer() (0x00449970)->GetPPlayerCharacter() (0x00487DC0);
+// Body: hero = Component (+0x08)->PPlayerManager (+0x1c)->GetMainPlayer() (0x00449970)->GetPControlledCreature() (0x00487DC0);
 // if hero, not dead (bit 0 of +0x91) and holding interface 8 (bit 8 of UsingComponents +0x20), the component from the
 // Components map (LowerBound 0x0040F020, key in the `push ecx` slot) gets 0x008ABC90(NULL).
 // Layout: CThing as the matched 0x0089AFF0 / 0x00897AA0 rows; CMainGameComponent PPlayerManager +0x1c (Ego_r.pdb, retail
@@ -66,7 +66,7 @@ public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThingPlayerCreature* GetPPlayerCharacter() const;   // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager {
 public:
@@ -85,7 +85,7 @@ public:
 };
 void CGameScriptInterface::ResetPlayerCreatureOnlyTarget() const
 {
-    CThing* hero = Component->PPlayerManager->GetMainPlayer().GetPPlayerCharacter();
+    CThing* hero = Component->PPlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead())
     {
         CTCTargetingBase* tc;

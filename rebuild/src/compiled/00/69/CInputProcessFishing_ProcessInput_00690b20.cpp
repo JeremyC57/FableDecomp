@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00690B20, length 325 bytes, `ret 8` (/GS cookie 0x0139C8A8,
 //   __security_check_cookie @ 0x00BFE9F9).
 // Callees: CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventGameAction @ 0x00687CF0,
-//   CPlayer::GetHeroCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020,
+//   CPlayer::GetPControlledCreature @ 0x00487DC0 (MyPlayer +0x18), the component map's LowerBound @ 0x0040F020,
 //   CTCFishing::ReelInButtonPressed @ 0x007B0BA0 and the fishing component's 0x007B0CC0 (a one-line `Xxx(0)` forwarder
 //   to 0x007B0950; manifest label "_Dest_val<..CFlash>" is propagated, named CastButtonPressed here),
 //   CProcessedInput::SetHandled @ 0x00A0D390 / AddGameEvent(const CGameEvent&) @ 0x00A0D340, CMemoryBuffer::Copy
@@ -62,9 +62,10 @@ class CThing { public:
     __forceinline unsigned long HasTC(long kind) const { return m_tcMask[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCFishing* GetTC(long kind) { return m_tcs.Find(kind); }
 };
+class CThingPlayerCreature : public CThing { };
 class CPlayer {
 public:
-    CThing* GetHeroCreature();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CInputProcessFishing : public CInputProcessGameBase {
 public:
@@ -77,7 +78,7 @@ void CInputProcessFishing::ProcessInput(const CInputEvent& event, CProcessedInpu
 {
     if (!IsEventButtonPressed(event))
         return;
-    CThing* hero = MyPlayer->GetHeroCreature();
+    CThing* hero = MyPlayer->GetPControlledCreature();
     CTCFishing* fishing = 0;
     if (hero->HasTC(0xb1))
         fishing = hero->GetTC(0xb1);

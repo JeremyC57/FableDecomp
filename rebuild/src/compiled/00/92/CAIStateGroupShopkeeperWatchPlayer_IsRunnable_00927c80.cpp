@@ -4,7 +4,9 @@
 #include "engine/CAIBrain.h"
 #include "engine/CThingAICreature.h"
 #include "engine/CPlayerManager.h"
+#define CPlayer CPlayerPdb
 #include "engine/CPlayer.h"
+#undef CPlayer
 #include "engine/CTCBase.h"
 #include "engine/_quarantine/CThing.h"
 
@@ -28,9 +30,9 @@ struct CThingLifeStateRetailView {
     unsigned char _nativePrefix[0x91];
     unsigned char AliveFlags;
 };
+class CThingPlayerCreature : public CThing { };
+class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 struct CPlayerManagerView : CPlayerManager { CPlayer* GetMainPlayer(); // 0x00449970
-};
-struct CPlayerView : CPlayer { CThing* GetHeroThing(); // 0x00487dc0
 };
 struct CWorldView;
 extern float ShopkeeperWatchRadius; // 0x0138cb60
@@ -59,7 +61,7 @@ bool CAIStateGroup_ShopkeeperWatchPlayer::IsRunnable()
                 open = 0;
 
             CPlayer* mainPlayer = ((CPlayerManagerView*)GetPPlayerManager())->GetMainPlayer();
-            CThing* hero = ((CPlayerView*)mainPlayer)->GetHeroThing();
+            CThing* hero = mainPlayer->GetPControlledCreature();
             if (open) {
                 if (hero != 0 && (((CThingLifeStateRetailView*)hero)->AliveFlags & 1) == 0) {
                     CTCShop* shop = keeper->GetShopTC();

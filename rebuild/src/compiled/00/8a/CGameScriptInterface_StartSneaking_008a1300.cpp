@@ -14,18 +14,19 @@ struct Obj {
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char flags;       // +0x91
 };
+class CThingPlayerCreature : public Obj { };
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 
 struct M14 { char d; };
 
-extern Obj* __fastcall Resolve1(M14* self);          // ecx = member14
-extern Obj* __fastcall Resolve2(Obj* p);             // ecx = eax
+extern CPlayer* __fastcall Resolve1(M14* self);      // ecx = member14
 extern void __fastcall FinalCall(void* p);           // ecx
 
 void __fastcall CGameScriptInterface_StartSneaking(CGameScriptInterface* self)
 {
-    Obj* a = Resolve1((M14*)self->PlayerManager);
-    Obj* o = Resolve2(a);
+    CPlayer* a = Resolve1((M14*)self->PlayerManager);
+    Obj* o = a->GetPControlledCreature();
     if (!o) return;
     if (o->flags & 1) return;
     if (!(o->field24 & 0x400000)) return;

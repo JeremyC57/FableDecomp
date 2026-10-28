@@ -1,7 +1,7 @@
 // CTCContainer::AddItemsToInventory() -- create every pending container item (def index > 0) at the container's position, add it to the inventory, then clear the item list; false when there was nothing to add
 // Retry 10b (accessor sweep, FIXES B-4/B-5): the parent thing is read through an inline accessor; the plain member read gives the parked register difference.
 //
-// Retail 0x008ED170, 122 bytes (plain `ret`). Callees: CThing::GetPosition() const @ 0x004C73D0,
+// Retail 0x008ED170, 122 bytes (plain `ret`). Callees: CThing::GetPos() const @ 0x004C73D0,
 // CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*, unsigned long,
 // const CCharString&) @ 0x00703210 (`__fastcall`), CTCContainer::AddItemToInventory(CThing*)
 // @ 0x008ED090, vector<pair<long,CCharString>>::erase(iterator, iterator) @ 0x0074FB20 (out of line;
@@ -10,14 +10,14 @@
 // +0x0c, the retail STLport {first, last, end}; ParentThing +0x04.
 // Shape: an empty() early return (separate `xor al,al` exit); an unsigned index loop `i < size()`
 // (`sar ecx,3`, recomputed) over `*(begin() + i)` (element address in esi); Create's arguments are
-// evaluated right to left, so GetPosition runs after the constant pushes; the inline clear() is
+// evaluated right to left, so GetPos runs after the constant pushes; the inline clear() is
 // erase(begin(), end()) with the vector's address formed once in edi.
 class C3DVector;
 class CRightHandedSet;
 class CCharString { public: void* PStringData; };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;           // 0x004C73D0
+    const C3DVector& GetPos() const;           // 0x004C73D0
 };
 
 class CThingObject;
@@ -62,7 +62,7 @@ bool CTCContainer::AddItemsToInventory()
             SContainerItem& item = ContainerItems[i];
             if (item.first > 0)
             {
-                CThing* created = (CThing*)Create(item.first, GetParentThing()->GetPosition(), 5, 0, 0, item.second);
+                CThing* created = (CThing*)Create(item.first, GetParentThing()->GetPos(), 5, 0, 0, item.second);
                 if (created)
                     AddItemToInventory(created);
             }

@@ -1,9 +1,9 @@
 // NCreatureAction::CActionEventCameraShake::Dispatch(const CActionEventContext&) -- starts a camera shake at the context thing's (bone) position unless the thing is gone or flagged dead
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00871250, length 59 bytes.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (on the intelligent pointer at +8 of the
-// context), CThing::GetBonePosition @ 0x004C73D0 (__fastcall(long bone, unsigned char flag), pointer
-// result; the "CVertexBufferWin32::DoSizeof" label is propagated), CreateCameraShake @ 0x007F1B70
-// (__fastcall(position, strength); labelled "Create").
+// context), CThing::GetPos @ 0x004C73D0 (Ego_r.pdb; the "CVertexBufferWin32::DoSizeof" label is propagated),
+// CreateCameraShake @ 0x007F1B70 (__fastcall(position, strength, bone, flag): `ret 8`, so the bone and flag pushes are
+// its two stack parameters, evaluated before the register pair; labelled "Create").
 // Shape: the thing is fetched, null-tested and its one-bit flag at +0x91 tested (a branch on a
 // bitfield); the byte member at +0x1c is zero-extended (`xor ecx,ecx ; mov cl`) for an unsigned char
 // parameter and pushed first (last argument), the long at +0x18 second; the position result feeds
@@ -13,7 +13,7 @@ class C3DVector;
 class CThing { public:
     unsigned char _pad[0x91];
     unsigned char m_isDead : 1;                         // +0x91 bit 0
-    C3DVector* GetBonePosition(long bone, unsigned char flag);    // 0x004C73D0
+    const C3DVector& GetPos() const;                    // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb; the two pushes belong to the __fastcall creator below)
 };
 
 class CBaseObject;
@@ -38,7 +38,7 @@ struct CActionEventContext {
     CIntelligentPointer<CThing> m_pThing;                       // +0x08
 };
 
-void __fastcall CreateCameraShake(C3DVector* position, long strength);   // 0x007F1B70
+void __fastcall CreateCameraShake(const C3DVector& position, long strength, long bone, unsigned char flag);   // 0x007F1B70 (`ret 8`: two stack parameters after the ecx/edx pair)
 
 struct CActionEventCameraShake {
     virtual void v00();
@@ -53,5 +53,5 @@ void CActionEventCameraShake::Dispatch(const CActionEventContext& context)
 {
     CThing* thing = const_cast<CIntelligentPointer<CThing>&>(context.m_pThing).GetPItem();
     if (thing && !thing->m_isDead)
-        CreateCameraShake(thing->GetBonePosition(m_bone, m_boneFlag), m_strength);
+        CreateCameraShake(thing->GetPos(), m_strength, m_bone, m_boneFlag);
 }

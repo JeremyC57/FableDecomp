@@ -4,7 +4,7 @@
 // heightParam). Ego_r.pdb `?GetLookDirectionFromParams@CProjectileWeapon@NCameraModes@@ABE?AVC3DVector@@MM@Z` (private const);
 // the catalog label "CProjectileWeapon_CalculatePitch" is descriptive only. Callers: four sites in CProjectileWeapon's TU.
 // Callees: CProjectileWeapon::GetPosFromParams(float, float) const 0x00878BE0, NCameraModes::CBase::GetObservedThing() const
-//          0x0084F1B0, CThing::GetPosition() const 0x004C73D0, CProjectileWeapon::GetLookDirectionXYFromParams(float, float)
+//          0x0084F1B0, CThing::GetPos() const 0x004C73D0, CProjectileWeapon::GetLookDirectionXYFromParams(float, float)
 //          const 0x00878B60 (landed), _CIfmod 0x00BFEB28 (the fmod intrinsic), C3DVector::Rotate(const C3DVector&, float)
 //          0x00A13C60.
 // Pools: 1.6f 0x012777F0, 1/(2*pi) 0x01237F08, 0.0f 0x0122DEDC, 1.0f 0x0122DED8, 1.0 (double) 0x01237F00.
@@ -29,7 +29,7 @@ class C3DVector { public:
 };
 class CThing {
 public:
-    const C3DVector& GetPosition() const;                     // 0x004C73D0
+    const C3DVector& GetPos() const;                     // 0x004C73D0
 };
 __forceinline float PitchFraction(const C3DVector& v)
 {
@@ -59,7 +59,7 @@ public:
 C3DVector NCameraModes::CProjectileWeapon::GetLookDirectionFromParams(float phi, float heightParam) const
 {
     C3DVector camera = GetPosFromParams(phi, heightParam);
-    const C3DVector& thing = GetObservedThing()->GetPosition();
+    const C3DVector& thing = GetObservedThing()->GetPos();
     C3DVector toTarget = C3DVector(thing.X, thing.Y, thing.Z + 1.6f) - camera;
     C3DVector look = GetLookDirectionXYFromParams(phi, heightParam);
     C3DVector side(look.Y, -look.X, 0.0f);

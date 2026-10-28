@@ -1,7 +1,7 @@
 // CTCCreatureGenerator::UpdateCreatureTrigger(long frame) -- self-triggering: (re)arms the activation frame while waiting for the last batch to die, gives up when no triggers are left, then walks the triggerer creatures; a creature that enters the self-trigger radius (2D) fires a generation if the reset interval has passed since the last activation, and an external trigger fires on the interval alone; firing stamps the activation frame, spends one trigger, creates the creatures and latches ExternalTrigger to UndeadTriggered
 // Leaf: UpdateCreatureTrigger
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0074BAA0, 384 bytes (`ret 4`).
-// Callees: CIntelligentPointer<CThingCreatureBase>::GetPItem() @ 0x00A01B50, CThing::GetPosition() @ 0x004C73D0,
+// Callees: CIntelligentPointer<CThingCreatureBase>::GetPItem() @ 0x00A01B50, CThing::GetPos() @ 0x004C73D0,
 // DivideByGameSpeed(float) @ 0x00415FD3 (float / frames-per-second), _ftol @ 0x00BFEA70,
 // CTCCreatureGenerator::CreateCreatures(CThingCreatureBase*) @ 0x0074B2B0.
 // Layout: local model as the landed OnCreate 0x00749EA0 (engine/CTCCreatureGenerator.h is the Ego_r.pdb layout, 0x10 high
@@ -17,7 +17,7 @@ class C2DVector { public:
     C2DVector(const C3DVector& v) : X(v.X), Y(v.Y) { }
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { public:
 };
@@ -84,8 +84,8 @@ void CTCCreatureGenerator::UpdateCreatureTrigger(long frame)
         CThingCreatureBase* creature = it->GetPItem();
         bool spaceTrigger = true;
         bool timeTrigger = true;
-        C3DVector creaturePos(creature->GetPosition());
-        C3DVector myPos(ParentThing->GetPosition());
+        C3DVector creaturePos(creature->GetPos());
+        C3DVector myPos(ParentThing->GetPos());
         if ((long)DivideByGameSpeed((float)(frame - ActivationFrame)) < SelfTriggerResetInterval)
             timeTrigger = false;
         if (!UndeadTriggered) {

@@ -1,12 +1,12 @@
 // CAIStateGroup_HoverHornetQueen::IsRouteToPosBlockedByTarget(long circlePoint) -- true when the target and the circle marker are alive, the direction to the marker is within 60 degrees of the direction to the target (dot > 0.5) and the target is within 3 units in XY
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095A490, length 558 bytes (+ int3 padding), `ret 4`.
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0.
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0.
 // Globals: inverse-square-root mantissa table @ 0x013CE558; 3.0f @ 0x0122DED4, 0.5f @ 0x0122F59C.
 // Shape: both directions use the inline table-driven Normalise written as `*this *= FastInvSqrt(lenSq)` with
 // `operator*=(const float&)`: the const-reference binding to the inline temporary spills the reciprocal
 // (`fstp [r] ; fxch ; fmul [r]` x3) as retail does (chunk 278's lesson; a plain `X *= r` keeps it on the x87 stack);
 // the XY distance shares the X*X/Y*Y products with the normalise length (VC CSE). The thing pointers are named
-// before their GetPosition calls.
+// before their GetPos calls.
 // Layout: Ego_r.pdb CAIStateGroup_HoverMovementBase target pointer +0x14; HoverHornetQueen CircleMarkers +0x50 in
 // retail (PDB +0x54: the STLport vector Things at +0x40 is 12 bytes, not 16).
 #include <math.h>
@@ -33,7 +33,7 @@ inline float Dot(const C3DVector& a, const C3DVector& b) { return a.X * b.X + a.
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -96,12 +96,12 @@ bool CAIStateGroup_HoverHornetQueen::IsRouteToPosBlockedByTarget(long circlePoin
     if (IsAlive(PTarget) && IsAlive(CircleMarkers[circlePoint])) {
         const CThing* creature = GetCreature();
         const CThing* target = PTarget.GetPItem();
-        C3DVector toTarget = target->GetPosition() - creature->GetPosition();
+        C3DVector toTarget = target->GetPos() - creature->GetPos();
         float distanceXY = toTarget.GetXYMagnitude();
         toTarget.Normalise();
         const CThing* me = GetCreature();
         const CThing* marker = CircleMarkers[circlePoint].GetPItem();
-        C3DVector toMarker = marker->GetPosition() - me->GetPosition();
+        C3DVector toMarker = marker->GetPos() - me->GetPos();
         toMarker.Normalise();
         if (Dot(toMarker, toTarget) > 0.5f && distanceXY < 3.0f)
             return true;

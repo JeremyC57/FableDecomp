@@ -2,7 +2,7 @@
 // Leaf: IsBetterThan
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00860430, 204 bytes (padded to 208), `ret 8`.
 //   PDB name ?IsBetterThan@CVillageTaskSecuritySweep@@QBE_NPBV1@ABVCThing@@@Z.
-// Callees: virtual IsTaskAvailable (slot 4, +0x10 of vtable 0x0125A868), CThing::GetPosition 0x004C73D0.
+// Callees: virtual IsTaskAvailable (slot 4, +0x10 of vtable 0x0125A868), CThing::GetPos 0x004C73D0.
 // Layout (engine/CVillageTaskSecuritySweep.h): CreatureAssignedToTask +0x08, PositionToGoTo +0x10.
 // Shape: the thing's position is a by-value copy (X/Y kept on the x87 stack, Z copied through ecx); the two deltas
 //   are named locals (this one spilled, the rival's mostly on the stack); `myDist < rivalDist` evaluates left first
@@ -23,7 +23,7 @@ class C3DVector { public:
     float GetLengthSquared() const { return X * X + Y * Y + Z * Z; }
 };
 class CThing : public CBaseObject { public:
-    const C3DVector& GetPosition() const;          // 0x004C73D0
+    const C3DVector& GetPos() const;          // 0x004C73D0
 };
 struct CBaseIntelligentPointer {                   // CIntelligentPointer<const CThing>: vptr + item
     virtual void v00();
@@ -49,7 +49,7 @@ class CVillageTaskSecuritySweep { public:                 // vtable 0x0125A868
 bool CVillageTaskSecuritySweep::IsBetterThan(const CVillageTaskSecuritySweep* other, const CThing& thing) const
 {
     if (other && IsTaskAvailable()) {
-        C3DVector position = thing.GetPosition();
+        C3DVector position = thing.GetPos();
         C3DVector myDelta = PositionToGoTo - position;
         C3DVector rivalDelta = other->PositionToGoTo - position;
         return myDelta.GetLengthSquared() < rivalDelta.GetLengthSquared();

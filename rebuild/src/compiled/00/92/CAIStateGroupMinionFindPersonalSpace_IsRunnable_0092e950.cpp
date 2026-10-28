@@ -29,7 +29,9 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type);       // 0x0040F020 / 0x004365B0 (per-TU copies)
 };
 
+class C3DVector;
 class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
@@ -155,12 +157,11 @@ extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 class C3DVector { public: float x, y, z; };
 class CThingCreatureBase;
-struct CPersonalSpaceInfo {
-    static float GetPersonalSpaceRadius();      // 0x00661CC0
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;           // 0x006A4D00 ?PeekPos@CThingPhysical@@QBEABVC3DVector@@XZ (Ego_r donor order Kill/PeekPos/PeekLastPos/OnCreate)
 };
-class CThingCreatureBase : public CThing { public:
-    CPersonalSpaceInfo* GetPersonalSpaceInfo(); // 0x006A4D00
-    const C3DVector& GetPosition();             // 0x004C73D0
+class CThingCreatureBase : public CThingPhysical { public:
+    static float __fastcall GetPersonalSpaceRadius();   // 0x00661CC0 ?GetPersonalSpaceRadius@CThingCreatureBase@@SIMXZ (Ego_r.pdb, donor 0x0053CA80 in the CThingCreatureBase run before GetPHeroCombatDef/IsPosInFOV)
 };
 class C2DCoordI { public:
     long X, Y;
@@ -219,11 +220,12 @@ __declspec(noinline) bool CThingSearchTools::GetThingsInRoughArea(const C2DBoxI&
 bool CAIStateGroup_MinionFindPersonalSpace::IsRunnable()
 {
     if (IsSpaceInvader(GetCreature())) {
-        float radius = GetCreature()->GetPersonalSpaceInfo()->GetPersonalSpaceRadius();
+        GetCreature()->PeekPos();                   // retail evaluates the position (result unused) before the static radius getter
+        float radius = CThingCreatureBase::GetPersonalSpaceRadius();
         CCreatureVector found;
         {
             CThingFilter_IsNot notSelf(GetCreature());
-            const C3DVector& pos = GetCreature()->GetPosition();
+            const C3DVector& pos = GetCreature()->GetPos();
             long x = (long)pos.x;
             long y = (long)pos.y;
             C2DBoxI box(C2DCoordI(x, y), (long)radius);

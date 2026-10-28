@@ -2,7 +2,7 @@
 // Leaf: ?FrameUpdate@CModeDragonLanded
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008DB240, 543 bytes (`ret`).
 // Callees: CModeBase::FrameUpdate 0x0073AC50, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020
-//   (inline TC lookup 0x43), CThing::GetPosition 0x004C73D0, CTCLook::LookAtPos(const C3DVector*, long) 0x00753E90; the driver
+//   (inline TC lookup 0x43), CThing::GetPos 0x004C73D0, CTCLook::LookAtPos(const C3DVector*, long) 0x00753E90; the driver
 //   TC's virtual slot 70 (forward vector, returned by value).
 // Data: fast inverse-sqrt table 0x013CE558, 3.0f 0x0122DED4, 0.5f 0x0122F59C, 12.5f 0x01285B48, 0.96f 0x01285B44, 0.0f 0x0122DEDC,
 //   1.0f 0x0122DED8, 50.0f 0x0124E7F8.
@@ -57,7 +57,7 @@ class CThing { public:
     CTCDriverBase* PTCDriver;                   // +0x60
     unsigned char  _pad64[0x91 - 0x64];
     unsigned char  Killed;                      // +0x91 (bit 0)
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     __forceinline bool HasTC(long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)))
@@ -103,16 +103,16 @@ void CModeDragonLanded::FrameUpdate()
     CTCLook* look = owner->GetTC<CTCLook>(0x43);
     bool facing = false;
     CThing* target = PTarget.GetPItem();
-    C3DVector delta = target->GetPosition() - owner->GetPosition();
+    C3DVector delta = target->GetPos() - owner->GetPos();
     float invLength = FastInvSqrt(delta.X * delta.X + delta.Y * delta.Y + delta.Z * delta.Z);
     C3DVector direction = ScaleRef(delta, invLength);
     if (delta.GetLength2D() < 12.5f && direction.Dot(C3DVector(0.0f, -1.0f, 0.0f)) > 0.96f)
         facing = true;
     if (UseHeadTurning && !facing) {
-        look->LookAtPos(&PTarget.GetPItem()->GetPosition(), 10);
+        look->LookAtPos(&PTarget.GetPItem()->GetPos(), 10);
     } else {
         C3DVector ahead = Owner->PTCDriver->GetForward() * 50.0f;
-        C3DVector position = Owner->GetPosition() + ahead;
+        C3DVector position = Owner->GetPos() + ahead;
         look->LookAtPos(&position, 10);
     }
 }

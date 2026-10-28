@@ -2,7 +2,7 @@
 // Leaf: ??0CTCBoss
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AEFD0, length 114 bytes (+14 int3 padding). `ret 4`. Vtable 0x0126D494.
 // Callees: CTCBase::CTCBase(CThing*) @ 0x00686800, CDefClassBase::GetSubDef(CDefPointer<const CBossDef>*) @ 0x007AFA90 (catalog:
-// the <CAICreatureWillPowerIndicatorDef> byte-twin), CThing::GetPosition @ 0x004C73D0, CTCBoss::ClearEffects @ 0x007AEF60.
+// the <CAICreatureWillPowerIndicatorDef> byte-twin), CThing::GetPos @ 0x004C73D0, CTCBoss::ClearEffects @ 0x007AEF60.
 // Shape: the member ctors (def pointer, two vectors modelled as STLport _Vector_base + _STLP_alloc_proxy, which places the
 // `lea ecx,[esi+0Ch]` before the last zero store) zero through one eax after the vtable store; the scalars are body
 // assignments (currentBossPhase, StrikesSinceHit, BCountStrikes, GenericCounter, EnablePhaseChanges; `true` through dl),
@@ -35,7 +35,7 @@ public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     bool IsDead() const { return (Flags91 & 1) != 0; }
     void Kill(bool immediately);                // 0x004C9B80
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -50,6 +50,7 @@ public:
         return false;
     }
 };
+class CThingPlayerCreature : public CThing { };
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;
@@ -71,7 +72,7 @@ template <class T> struct CRetailVector {       // STLport vector (12 bytes): _V
 };
 class CBossDef;
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0 (CPlayer::GetHeroThing)
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0 (CPlayer::GetPControlledCreature)
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
@@ -121,6 +122,6 @@ CTCBoss::CTCBoss(CThing* owner)
     GenericCounter = 0;
     EnablePhaseChanges = true;
     ParentThing->PBaseDef->GetSubDef(&PBossDef);
-    PhaseStartPos = ParentThing->GetPosition();
+    PhaseStartPos = ParentThing->GetPos();
     ClearEffects();
 }

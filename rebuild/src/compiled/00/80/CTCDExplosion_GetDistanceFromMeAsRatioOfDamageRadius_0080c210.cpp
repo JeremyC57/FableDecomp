@@ -1,7 +1,7 @@
 // CTCDExplosion::GetDistanceFromMeAsRatioOfDamageRadius(const CThing* thing) -- distance from the explosion's start-end
 // segment to the thing, as a fraction of the damage radius
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0080C210, length 31 bytes.
-// Callees: CThing::GetPosition() const @ 0x004C73D0, the __fastcall Geometry_DistancePointToLineSegment @ 0x008F5BA0
+// Callees: CThing::GetPos() const @ 0x004C73D0, the __fastcall Geometry_DistancePointToLineSegment @ 0x008F5BA0
 // (segment start in ecx, segment end in edx, the point on the stack; result in st0).
 // Shape: VC evaluates the arguments right to left, so the thing's position is fetched first (`mov ecx,[esp+8]`, its
 // reference pushed), then the two member addresses go to edx/ecx; the float result is divided in place by DamageRadius
@@ -10,7 +10,7 @@
 class C3DVector { public: float X, Y, Z; };
 
 class CThing { public:
-    const C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
 };
 
 float __fastcall Geometry_DistancePointToLineSegment(const C3DVector& lineStart, const C3DVector& lineEnd,
@@ -33,5 +33,5 @@ class CTCDExplosion { public:
 
 float CTCDExplosion::GetDistanceFromMeAsRatioOfDamageRadius(const CThing* thing) const
 {
-    return Geometry_DistancePointToLineSegment(StartPos, EndPos, thing->GetPosition()) / DamageRadius;
+    return Geometry_DistancePointToLineSegment(StartPos, EndPos, thing->GetPos()) / DamageRadius;
 }

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008718B0, length 339 bytes (`ret 4`; the action argument is unused).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 70 = bit 6 of the bitset dword at +0x28 =
 //          CTCCarrying), CPlayerManager::GetMainPlayerNumber @ 0x00449700 (manifest "CWorld::DrawGetEnvironment" is
-//          propagated; g_pMainGameComponent @ 0x013B86A0 +0x1c), CThing::GetPosition @ 0x004C73D0, CGameDefinitionManager::Get
+//          propagated; g_pMainGameComponent @ 0x013B86A0 +0x1c), CThing::GetPos @ 0x004C73D0, CGameDefinitionManager::Get
 //          @ 0x0044C6B0, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410 (x2), CCharString(const char*, long)
 //          @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("" @ 0x0122D70E, "CTCDestroyThingOnActionFinish" @ 0x0123E144), the
 //          thing-object creator @ 0x00703210 (__fastcall: def in ecx, position in edx; player, orientation, flags, name on the
@@ -48,7 +48,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad1[0x45];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
     CTCBase* AddTC(const CCharString& name, bool activate, void* params);   // 0x004C9D60
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
@@ -122,7 +122,7 @@ void CActionEventAddObject::Dispatch(const CCreatureActionBase& action)
     CTCCarrying* carrying;
     if (GetThing()->GetInterface(&carrying, 70)) {
         long player = g_pMainGameComponent->GetPlayerManager()->GetMainPlayerNumber();
-        C3DVector position = GetThing()->GetPosition();
+        C3DVector position = GetThing()->GetPos();
         CRightHandedSet orientation;
         long slot = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(Hand);
         if (slot > 0)

@@ -4,14 +4,14 @@
 // PDB (Ego_r): ?IsThingRunningAwayFromThing@NCreatureAI@@YI_NABVCThing@@0ABVC3DVector@@@Z. Callers 0x0092F1CC, 0x00932EEA,
 // 0x00933796.
 // Callees: CTCPhysicsBase vtable slot 70 (+0x118) = virtual C3DVector GetFacingVector() const (hidden result pointer;
-// CTCPhysicsStandard's slot-70 body returns the RHSet forward vector), CThing::GetPosition() const @ 0x004C73D0 (three
+// CTCPhysicsStandard's slot-70 body returns the RHSet forward vector), CThing::GetPos() const @ 0x004C73D0 (three
 // times), C2DVector::Normalise() @ 0x00A14540 (twice). Constants: 4.0f @ 0x01276DF8, the facing-away dot threshold is the
 // global float @ 0x013BAF94 (.data).
-// Layout (retail CThing): PhysicsTC +0x60 (Ego_r CThing::PhysicsTC; GetPosition reads [PhysicsTC]+0x0C).
+// Layout (retail CThing): PhysicsTC +0x60 (Ego_r CThing::PhysicsTC; GetPos reads [PhysicsTC]+0x0C).
 // Shape: the facing vector's 2D part comes from an inline `C3DVector::Get2D()` returning C2DVector(X, Y) -- arguments
 // right to left give retail's `fld [eax+4] ; mov eax,[eax]` (the conversion constructor copies both as dwords); the
-// direction to the other thing is `C2DVector(other.GetPosition() - thing.GetPosition())` through the inline C3DVector
-// operator- (right operand's GetPosition first, X difference first, dead Z dropped); both are normalised in that order.
+// direction to the other thing is `C2DVector(other.GetPos() - thing.GetPos())` through the inline C3DVector
+// operator- (right operand's GetPos first, X difference first, dead Z dropped); both are normalised in that order.
 // The distance and dot tests are two bool locals (`mov cl,1 / xor cl,cl`, `mov al,1 / xor al,al`) combined by
 // `if (a && b) return true; return false;` (a `return a && b;` widens to eax). The dot product is C2DVector::DotProduct's
 // `Y * o.Y + X * o.X` order (as the landed C3DVector::DotProduct, last component first).
@@ -62,13 +62,12 @@ public:
     virtual C3DVector GetFacingVector() const;      // slot 70 (+0x118)
 };
 
-class CThing
-{
+class CThing {
 public:
     unsigned char   _pad0[0x60];
     CTCPhysicsBase* PhysicsTC;                       // +0x60
 
-    const C3DVector& GetPosition() const;            // 0x004C73D0
+    const C3DVector& GetPos() const;            // 0x004C73D0
 };
 
 namespace NCreatureAI
@@ -79,10 +78,10 @@ namespace NCreatureAI
 bool __fastcall NCreatureAI::IsThingRunningAwayFromThing(const CThing& thing, const CThing& other, const C3DVector& pos)
 {
     C2DVector facing(thing.PhysicsTC->GetFacingVector().Get2D());
-    C2DVector toOther(other.GetPosition() - thing.GetPosition());
+    C2DVector toOther(other.GetPos() - thing.GetPos());
     facing.Normalise();
     toOther.Normalise();
-    const C3DVector& now = thing.GetPosition();
+    const C3DVector& now = thing.GetPos();
     float dx = now.X - pos.X;
     float dy = now.Y - pos.Y;
     bool farEnough = (float)sqrt(dx * dx + dy * dy) > 4.0f;

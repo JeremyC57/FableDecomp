@@ -1,5 +1,5 @@
 // std::_Rb_tree::_M_find(const key_type& k) const -- (map<CCharString, CIVCountedPointer<CAnimComponentBase> >) STLport exact-key lookup over CCharString keys: walk from the root keeping the last node whose key is not less than k, then return it unless it is the header or k is less than its key (then the header, i.e. end())
-// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@3@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@2@ABVCCharString@@@Z
+// Leaf: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@V?$CIVCountedPointer@VCAnimComponentBase@@@@@std@@@2@ABVCCharString@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005E04B0, 112 bytes (+ int3 padding), thiscall, `ret 4`; returns the node pointer.
 // Identity: `map<CCharString, CIVCountedPointer<CAnimComponentBase> >`; evidence: every caller runs it on the global map at 0x013B8C1C, which 0x005DD670 fills with name -> intrusive counted pointer pairs (it news a CAnimComponentFlags, RTTI .?AVCAnimComponentFlags@@, bumps the count at +4 and inserts it under "Flags", then pushes the same pointer into the EAnimComponent vector maps CAnimComponentMap holds as CIVCountedPointer<CAnimComponentBase>); 0x005DCAE0 calls the found value's virtual slot 4; Ego_r has exactly one map<CCharString, CIVCountedPointer<CAnimComponentBase> >.
 //   Family F012 (17 byte-identical bodies, one COMDAT per tree type): the manifest label "sub_005e04b0" is behavioural.
@@ -121,8 +121,12 @@ public:
     static const _Key& _S_key(_Link_type __x) { return _KeyOfValue()(__x->_M_value_field); }
     static _Link_type _S_left(_Link_type __x) { return (_Link_type)__x->_M_left; }
     static _Link_type _S_right(_Link_type __x) { return (_Link_type)__x->_M_right; }
+    protected:
     _Link_type _M_root() const { return (_Link_type)this->_M_header._M_data->_M_parent; }
+    public:
+    private:
     _Rb_tree_node<_Value>* _M_find(const _Key& __k) const;
+    public:
 };
 
 template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>

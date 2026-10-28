@@ -2,7 +2,7 @@
 // Leaf: UpdateActionMoveToPos
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00856D30, 155 bytes of code (protected virtual).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, twice through one `lea edi,[esi+8]`),
-//          CThingPhysical::GetPosition @ 0x004C73D0 (const C3DVector&), virtual GetAnimationIndex (slot 7, +0x1c),
+//          CThingPhysical::GetPos @ 0x004C73D0 (const C3DVector&), virtual GetAnimationIndex (slot 7, +0x1c),
 //          the creature's anim-movement length for an anim id @ 0x006627A0 (float: |movement| * k, 0.0 for anim 0;
 //          manifest "CTCAnimationComplex::GetAnimDuration" is propagated from 0x006627F0), CCreatureActionBase::
 //          IsUsingActionMovement @ 0x00692A50, virtual GetNextPos (slot 70, +0x118, C3DVector by hidden pointer),
@@ -18,8 +18,10 @@ class C3DVector { public:
     float Z;
 };
 
-class CThingCreatureBase { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+class CThing { public:
+    const C3DVector& GetPos() const;       // 0x004C73D0
+};
+class CThingCreatureBase : public CThing { public:
 public:
     float GetAnimMovementDistance(long) const;   // 0x006627A0
 };
@@ -68,7 +70,7 @@ class CCombatActionBase { public:
 
 void CCombatActionBase::UpdateActionMoveToPos()
 {
-    C3DVector pos = PCreature.GetPItem()->GetPosition();
+    C3DVector pos = PCreature.GetPItem()->GetPos();
     CThingCreatureBase* creature = PCreature.GetPItem();
     if (creature->GetAnimMovementDistance(GetAnimationIndex()) > 0.0001f || IsUsingActionMovement() || PreferredFinalPosSet)
         pos = GetNextPos();

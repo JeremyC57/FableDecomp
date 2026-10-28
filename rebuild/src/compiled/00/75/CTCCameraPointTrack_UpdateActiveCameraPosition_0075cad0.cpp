@@ -2,7 +2,7 @@
 // Leaf: UpdateActiveCameraPosition
 // Retail 0x0075CAD0, 400 bytes, `ret`.
 // Callees: the TC's game accessor 0x00686A70, its player-manager accessor 0x0049D9D0, the main hero accessor 0x00487DD0,
-// CThing::GetPosition 0x004C73D0. Pools: 0.0f 0x0122DEDC, 1.0f 0x0122DED8.
+// CThing::GetPos 0x004C73D0. Pools: 0.0f 0x0122DEDC, 1.0f 0x0122DED8.
 // Layout = Ego_r.pdb CTCCameraPointTrack: CameraStringLength +0x40, CameraCageRadius +0x44, DragCamPos +0x48.
 // Shape: the hero position is copied into a local; the offset is an XY C3DVector (Z = 0) and its squared XY length is
 // `X*X + Y*Y` (VC7.1 squares Y first); the new position is `hero - offset * radius / sqrt(lengthSq)` with C3DVector's
@@ -20,13 +20,14 @@ class C3DVector { public:
     C3DVector operator/(float s) const { float inv = 1.0f / s; return C3DVector(X * inv, Y * inv, Z * inv); }
 };
 class CThing { public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
-class CPlayerManager { public:
-    CThing* GetMainHero();                              // 0x00487DD0
+class CThingPlayerCreature : public CThing { };
+class CPlayer { public:
+    const CThingPlayerCreature* PeekPControlledCreature() const;                              // 0x00487DD0
 };
 class CWorld { public:
-    CPlayerManager* GetPlayerManager();                 // 0x0049D9D0
+    CPlayer* GetPlayerManager();                 // 0x0049D9D0
 };
 class CTCBase
 {
@@ -54,7 +55,7 @@ public:
 
 void CTCCameraPointTrack::UpdateActiveCameraPosition()
 {
-    C3DVector heroPos = GetWorld().GetPlayerManager()->GetMainHero()->GetPosition();
+    C3DVector heroPos = GetWorld().GetPlayerManager()->PeekPControlledCreature()->GetPos();
     const C3DVector& cam = DragCamPos;
     C3DVector offset(heroPos.X - cam.X, heroPos.Y - cam.Y, 0.0f);
     float lengthSq = offset.GetLengthSquared2D();

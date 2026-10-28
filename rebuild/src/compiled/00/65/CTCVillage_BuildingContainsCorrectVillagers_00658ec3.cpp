@@ -24,11 +24,13 @@ template <class T> class CIntelligentPointer { public:   // 8 bytes: vptr + item
     T* GetPItem() const;                        // 0x00A01B50 (CBaseIntelligentPointer::GetPItem)
 };
 
-class CThingAICreature {
+class CThing { public:
+    const C3DVector& GetPos() const;    // 0x004C73D0 (CThing)
+};
+class CThingAICreature : public CThing {
 public:
     unsigned char _pad_0x00[0x168];
     CIntelligentPointer<CThingBuilding> PHome;  // +0x168
-    C3DVector* GetPosition();                   // 0x004C73D0 (CThing)
     CThingBuilding* GetHome() const { return PHome.GetPItem(); }
 };
 class CThingBuilding {
@@ -98,7 +100,7 @@ bool CTCVillage::BuildingContainsCorrectVillagers(CThingBuilding* building)
         CIntelligentPointer<CThingAICreature>& villager = node->_M_data;
         if (IS_THING_ALIVE(villager)) {
             CThingBuilding* home = villager.GetPItem()->GetHome();
-            bool inside = building->IsPointInside(*villager.GetPItem()->GetPosition());
+            bool inside = building->IsPointInside(villager.GetPItem()->GetPos());
             if (home == building) {
                 if (!inside)
                     return false;

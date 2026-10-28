@@ -1,7 +1,7 @@
 // NCameraModes::CZTargetNew::InitialiseTransitionVariables() -- measure the camera's current offset from the observed thing (XY distance, height, signed angle to the X axis) and set up the per-frame deltas that move it to the def's Z-target offsets over the transition
 // Leaf: InitialiseTransitionVariables
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00872490, 405 bytes (+ int3 padding), plain `ret`.
-// Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CThing::GetPosition 0x004C73D0 (const C3DVector&),
+// Callees: NCameraModes::CBase::GetObservedThing() const 0x0084F1B0, CThing::GetPos 0x004C73D0 (const C3DVector&),
 //   C3DVector::AccurateNormalise @ 0x00A14440, _CIacos 0x00BFEBA2 (acos intrinsic); constants 1e-4f @ 0x0129BA3C (squared at run
 //   time), 0.0f @ 0x0122DEDC, -1.0f @ 0x0122DEE0, 1.0f @ 0x0122DED8, 1/(2*pi) @ 0x01237F08.
 // Layout (retail NCameraModes::CBase is 0xA4 bytes, PDB 0xC8; as the landed OnInit 0x00872A20 / Update 0x00873030):
@@ -30,7 +30,7 @@ class C3DVector { public:
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 
 class CThing { public:
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 
 class CCameraModeDef { public:
@@ -86,7 +86,7 @@ public:
 void NCameraModes::CZTargetNew::InitialiseTransitionVariables()
 {
     FramesForTransition = PCameraModeDef->TransitionInFrames;
-    C3DVector offset = GoTo.Position - GetObservedThing()->GetPosition();
+    C3DVector offset = GoTo.Position - GetObservedThing()->GetPos();
     BaseHeightOffset = offset.Z;
     float lengthSquaredXY = offset.X * offset.X;
     lengthSquaredXY += offset.Y * offset.Y;

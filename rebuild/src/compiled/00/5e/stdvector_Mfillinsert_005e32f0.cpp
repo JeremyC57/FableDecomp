@@ -144,8 +144,10 @@ public:
     typedef _Tp* pointer;
     typedef __false_type _TrivialAss;
     typedef __false_type _IsPODType;
+    protected:
     void _M_insert_overflow(pointer __position, const _Tp& __x, const __false_type&, size_type __fill_len,
                             bool __atend = false);                               // 0x005E31F0
+    public:
     void _M_fill_insert(pointer __position, size_type __n, const _Tp& __x);
 };
 

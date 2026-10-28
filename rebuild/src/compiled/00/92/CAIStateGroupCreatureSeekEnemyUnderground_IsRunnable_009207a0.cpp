@@ -1,7 +1,7 @@
 // CAIStateGroup_CreatureSeekEnemyUnderground::IsRunnable() -- seek a live enemy underground while it is beyond half the creature's surfacing range (XY distance); true when there is nothing to seek
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009207A0, 308 bytes (virtual, `ret`). Ego_r.pdb: ?IsRunnable@CAIStateGroup_CreatureSeekEnemyUnderground@@MAE_NXZ.
 // Callees: CVectorMap::LowerBound 0x004365B0 (const; inlined GetInterface types 8 and 0x34), the enemy source's virtual
-// slot 29 (+0x74), CThing::GetPosition 0x004C73D0 (creature first), the 0x34 component's range getter 0x007448F0, the
+// slot 29 (+0x74), CThing::GetPos 0x004C73D0 (creature first), the 0x34 component's range getter 0x007448F0, the
 // converting CIntelligentPointer temporary (vtable 0x01237F1C: ctor 0x00A01B10, SetPItem 0x00A01B90 x2, GetPItem 0x00A01B50,
 // dtor 0x00A01C10); 0.5f pool 0x0122F59C.
 // Shape: the landed AI state-group models (0x00937F70; one-ternary GetInterface select); `sqrt(dx*dx + dy*dy)` of
@@ -23,6 +23,7 @@ struct CInterfaceMap {
     SEntry* LowerBound(const long* type) const;       // 0x004365B0
 };
 
+class C3DVector;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
@@ -44,7 +45,7 @@ class CThing { public:
         }
         return false;
     }
-    const class C3DVector& GetPosition() const;   // 0x004C73D0
+    const C3DVector& GetPos() const;   // 0x004C73D0
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
     __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
@@ -136,7 +137,7 @@ bool CAIStateGroup_CreatureSeekEnemyUnderground::IsRunnable()
         CThing* creature = PBrain->PCreature;
         CTCUndergroundMover* mover;
         if (creature->GetInterface(&mover, 0x34)) {
-            if (XYDistance(enemy->GetPosition(), creature->GetPosition()) > mover->GetSurfaceRange() * 0.5f) {
+            if (XYDistance(enemy->GetPos(), creature->GetPos()) > mover->GetSurfaceRange() * 0.5f) {
                 PEnemy = enemy;
                 return true;
             }

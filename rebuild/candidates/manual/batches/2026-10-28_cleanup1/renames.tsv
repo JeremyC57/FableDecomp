@@ -1,0 +1,27 @@
+old	new
+IsThingAlive_ptr_0043dbd0	IS_THING_ALIVE<CThingPlayerCreature*>
+IsThingAlive_ptr_0043dbf0	IS_THING_ALIVE<const CThingPlayerCreature*>
+IsThingAlive_ptr_0040dce0	IS_THING_ALIVE<CThing*>
+IsThingAlive_ptr_005c05c0	IS_THING_ALIVE<CThingCreatureBase*>
+CThing::GetPosition (0x004C73D0, all spellings)	CThing::GetPos
+CThingCreatureBase::GetPosition / CThing::GetPosition_006a4d00 / CThingPhysical::GetPosition (0x006A4D00, all spellings)	CThingPhysical::PeekPos
+CThingCreatureBase::GetLastPosition (0x006A4D10)	CThingPhysical::PeekLastPos
+CPersonalSpaceInfo::GetPersonalSpaceRadius / GetCombatMinDistance / CThingCreatureBase::GetPersonalSpaceRadius (cdecl) (0x00661CC0)	CThingCreatureBase::GetPersonalSpaceRadius (static __fastcall)
+CNavHelper::Compute (0x006A4D00 in 006cba20)	CThingPhysical::PeekPos (model unchanged, see NOTES)
+CThing::GetBonePosition (0x004C73D0 in 00871250)	CThing::GetPos (+ CreateCameraShake 4-parameter __fastcall)
+CEnvironmentThemePriorityStackEntry::Reset (0x00887330)	NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::SetOnlyTheme
+std::vector<CBrainBehaviour>::resize (0x00889440)	std::vector<NEnvironmentInternal::CEnvironmentThemePriorityStackEntry::CThemeWeight>::resize
+CThingFilter_IsInFaction::operator() (0x006A8880)	CThingFilter_IsRelatedTo::operator()
+NParticleEngine::CPSCLight::vfunc_18 (0x00B1A700)	NParticleEngine::CPSCLight::DatabaseCopy
+NCreatureMode::{C3DVector,CThing} (008d6860 model namespace)	::C3DVector, ::CThing (class key)
+NCondition00935160::* (00935160 model namespace)	global scope (CThing, C3DVector class key)
+X_006637d0::* (006637d0 model namespace)	global scope (engine types as classes)
+Find_00a7d0e0	std::__find
+FindMostRecentMessage_Sink / GetPBestThing_Sink (chunk 517 held rows)	real callee bodies (0x008D46D0 / 0x00911240 / 0x00959040 / 0x00916F30 / 0x00916FC0 / 0x00965180)
+CAIStateGroupBase::GetPWorld / GetPThingWorld / GetPFrameWorld / ... (0x008FCFA0, ~25 pointer-returning spellings)	CAIStateGroupBase::PeekWorld (protected, const CWorld&)
+CAIStateGroupBase::GetPWorld / GetPWorld_008fcfc0 / ... (0x008FCFC0)	CAIStateGroupBase::GetWorld (protected, CWorld&)
+CAIStateGroupBaseAccess::* (0097d360 stand-in; IsStopping, AIAction_WaitForMessage)	CAIStateGroupBase::IsStopping const (0x008FD010, IBE) / CAIStateGroupBase::AIAction_WaitForMessage(EMessageEventType, const CThingCreatureBase*, long) (protected, PDB)
+CAIStateGroupBase_Methods::PeekThingSearchTools (0x008FD000 in 00914c60)	CAIStateGroupBase::PeekThingSearchTools const (IBEABVCThingSearchTools)
+CGSISheatheHeroWeapons_LookupResult::ResolveTarget / Sub_ResolveB / GSI_GiveHeroExpression_Helper_B / Helper00487DC1 (0x00487DC0 test stubs)	CPlayer::GetPControlledCreature const (tests relinked)
+CThingWorld / CWorldO (world stand-ins returned by the 0x008FCFA0 accessor)	CWorld
+CWorld::GetPRandomSeed (0x0049D810, non-const, in 00943ae0)	CWorld::GetPRandomSeed const (called on the const PeekWorld result; 17 landed spellings remain -- leftover)

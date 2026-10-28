@@ -60,7 +60,7 @@ class CThing { public:
 
 class C3DVector { public: float X, Y, Z; };
 class CThingPhysical : public CThing { public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+    const C3DVector& PeekPos() const;       // 0x006A4D00
 };
 
 class CCharString { public:
@@ -134,7 +134,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
 };
@@ -155,23 +157,23 @@ bool CAIStateGroup_BirdFlyToFood::IsRunnable()
     if (modes->GetCurrentModeType() == g_flyingMode) {
         long framesPerSecond;
         if ((FrameLastAte == 0
-             || (framesPerSecond = GetPWorld_008fcfa0()->GetFramesPerSecond(),
+             || (framesPerSecond = PeekWorld().GetFramesPerSecond(),
                  GFGetCurrentFrame() - FrameLastAte > (unsigned long)(framesPerSecond * 20)))
             && WorldRandomRange(*GetPWorldSeed(), 100) < 74) {
             if (WorldRandomRange(*GetPWorldSeed(), 100) < 64) {
                 CThingPhysical* creature = PBrain->Creature;
                 CThingPhysical* corpse = 0;
-                if (PeekThingSearchTools()->GetPBestThing(CThingFilter_None(), CThingCompare_Nearest(creature->GetPosition()), &corpse)
-                    && GetRandomFlightPos(corpse->GetPosition(), 0.5f, &FlightPos, true))
+                if (PeekThingSearchTools()->GetPBestThing(CThingFilter_None(), CThingCompare_Nearest(creature->PeekPos()), &corpse)
+                    && GetRandomFlightPos(corpse->PeekPos(), 0.5f, &FlightPos, true))
                     return true;
             }
             CThingPhysical* food = 0;
             bool found;
             {
                 CCharString name("BIRD_FOOD");
-                found = PeekThingSearchTools()->GetPBestThing(CThingFilter_DefName(name), CThingCompare_Nearest(PBrain->Creature->GetPosition()), &food);
+                found = PeekThingSearchTools()->GetPBestThing(CThingFilter_DefName(name), CThingCompare_Nearest(PBrain->Creature->PeekPos()), &food);
             }
-            if (found && GetRandomFlightPos(food->GetPosition(), 1.5f, &FlightPos, true))
+            if (found && GetRandomFlightPos(food->PeekPos(), 1.5f, &FlightPos, true))
                 return true;
         }
     }

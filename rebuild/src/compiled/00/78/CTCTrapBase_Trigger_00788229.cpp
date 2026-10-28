@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00788229, length 351 bytes (`leave`, plain `ret`): frame-pointer size TU,
 //   `#pragma optimize("y", off)` + `#pragma optimize("s", on)` as the landed siblings UpdateTriggerOnProximity 0x007887BE
 //   and SetThingAsImmune 0x007898A3. Ego_r.pdb `?Trigger@CTCTrapBase@@IAEXXZ`.
-// Callees: CThing::GetPosition() const 0x004C73D0; CTCDExplosion::Create(long, const C3DVector&) 0x0080C460 and
+// Callees: CThing::GetPos() const 0x004C73D0; CTCDExplosion::Create(long, const C3DVector&) 0x0080C460 and
 //   CTCDPhysicalObstruction::Create(const C3DVector&, const C3DVector&, float) 0x007FD4B0 (static __fastcall; Ego_r.pdb
 //   `?Create@CTCDExplosion@@SIPAVCThing@@JABVC3DVector@@@Z` / `?Create@CTCDPhysicalObstruction@@SIPAVCThing@@ABVC3DVector@@0M@Z`,
 //   egor_signatures; catalog "GetFOVToBeInToBeTargetable" propagated); IS_THING_ALIVE(CThing* const&) 0x0040DCE0 and
@@ -72,7 +72,7 @@ public:
     void*          PTCDriver;                           // +0x5c
     unsigned char  _pad60[0x91 - 0x60];
     unsigned char  m_flags;                             // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     bool GetTCDriver(CTCDExplosion** out);              // 0x007512C0
     bool GetTCDriver(CTCDPhysicalObstruction** out);    // 0x007890EA
 };
@@ -140,7 +140,7 @@ void CTCTrapBase::Trigger()
 {
     const CTrapDef* def = PTrapDef;
     if (def->ExplosionDefIndex >= 0) {
-        CThing* explosion = CTCDExplosion::Create(def->ExplosionDefIndex, ParentThing->GetPosition());
+        CThing* explosion = CTCDExplosion::Create(def->ExplosionDefIndex, ParentThing->GetPos());
         if (IS_THING_ALIVE(explosion)) {
             CTCDExplosion* explosionDriver;
             explosion->GetTCDriver(&explosionDriver);
@@ -153,7 +153,7 @@ void CTCTrapBase::Trigger()
                     explosionDriver->SetThingAsImmune(*(ImmuneThings.begin() + i)->GetPItem());
             if (PTrapDef->PhysicalObstructionDefIndex >= 0) {
                 float radius = explosionDriver->PhysicsRadius;
-                const C3DVector& position = ParentThing->GetPosition();
+                const C3DVector& position = ParentThing->GetPos();
                 CThing* obstruction = CTCDPhysicalObstruction::Create(position, position, radius);
                 if (IS_THING_ALIVE(obstruction)) {
                     PObstruction = obstruction;

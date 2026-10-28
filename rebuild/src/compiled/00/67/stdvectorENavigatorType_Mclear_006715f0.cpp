@@ -32,7 +32,9 @@ public:
 };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
+    protected:
     void _M_clear();
+    public:
 };
 
 template <class _Tp, class _Alloc>

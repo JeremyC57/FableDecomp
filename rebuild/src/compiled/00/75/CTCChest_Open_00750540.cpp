@@ -3,7 +3,7 @@
 // Retail 0x00750540, 384 bytes, `ret`.
 // Callees: CWideString() 0x0099AED0 / ~CWideString 0x0099B510 (an unused local), CDefClassBase::GetSubDef<CChestDef>
 // 0x0074F7D0 (same TU: a stand-in body is given), CThing::SetForceFrameUpdate(bool) 0x004C7C60,
-// CThing::SetAsGameStatePersisted(bool) 0x004C7880, CThing::GetPosition 0x004C73D0, CreateEffectThing(long, const C3DVector*,
+// CThing::SetAsGameStatePersisted(bool) 0x004C7880, CThing::GetPos 0x004C73D0, CreateEffectThing(long, const C3DVector*,
 // bool) 0x006E0880 (`__fastcall`), CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/0x00A01B50/0x00A01B90/
 // 0x00A01C10 (vtable 0x01238C6C), CCharString(const char*, long) 0x0099EBF0 ("" 0x0122D70E) / ~ 0x0099EAE0,
 // CTCDParticleEmitter::AttachToThing 0x006E0BE0 / SetAlwaysUpdate(bool) 0x006E0590 / SetEmitterOrientation 0x006E0480,
@@ -92,7 +92,7 @@ public:
     unsigned char        _pad74[0x91 - 0x74];
     unsigned char        m_flags91;                     // +0x91 bit 0: dead
     unsigned char        m_flags92;                     // +0x92 bit 4: persisted
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
     void SetForceFrameUpdate(bool force);               // 0x004C7C60
     void SetAsGameStatePersisted(bool persisted);       // 0x004C7880
     bool IsDead() const { return (m_flags91 & 1) != 0; }
@@ -174,7 +174,7 @@ void CTCChest::Open()
             ParentThing->SetAsGameStatePersisted(true);
         }
         if (def->OpenParticleEffect > 0) {
-            POpenParticle = CIntelligentPointer<CThing>(CreateEffectThing(def->OpenParticleEffect, &ParentThing->GetPosition(), false));
+            POpenParticle = CIntelligentPointer<CThing>(CreateEffectThing(def->OpenParticleEffect, &ParentThing->GetPos(), false));
             if (IS_THING_ALIVE(POpenParticle)) {
                 CTCDParticleEmitter* emitter = 0;
                 CThing* effect = POpenParticle.GetPItem();

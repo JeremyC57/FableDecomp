@@ -1,5 +1,5 @@
 // std::vector::_M_clear() -- (vector<std::pair<long, CMusicManager::CRegisteredMusicEntry> >) destroy every element and free the block
-// Leaf: ?_M_clear@?$vector@U?$pair@JVCRegisteredMusicEntry@CMusicManager@@@std@@V?$allocator@U?$pair@JVCRegisteredMusicEntry@CMusicManager@@@std@@@2@@std@@QAEXXZ
+// Leaf: ?_M_clear@?$vector@U?$pair@JVCRegisteredMusicEntry@CMusicManager@@@std@@V?$allocator@U?$pair@JVCRegisteredMusicEntry@CMusicManager@@@std@@@2@@std@@IAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006BEFE0, 58 bytes, thiscall, plain `ret`.
 // Identity (proven): called by vector<pair<long, CMusicManager::CRegisteredMusicEntry> >::_M_insert_overflow 0x006BF1A0 (catalogued so) and bound ?_M_clear@?$vector@U?$pair@JVCRegisteredMusicEntry@CMusicManager@@@std@@@std@@QAEXXZ; 24-byte pairs, CWideStrings at +8/+4.
 // Callees: the element's member destructors 0x0099B510 / 0x0099B510 (inline implicit element destructor), free 0x00BFEA14.
@@ -48,11 +48,13 @@ public:
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector : public _Vector_base<_Tp, _Alloc> {
 public:
     ~vector() { _Destroy(this->_M_start, this->_M_finish); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
 };
 template void vector<std::pair<long, CMusicManager::CRegisteredMusicEntry> >::_M_clear();
 }

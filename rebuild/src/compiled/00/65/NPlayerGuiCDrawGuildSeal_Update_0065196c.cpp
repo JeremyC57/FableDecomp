@@ -3,7 +3,7 @@
 // NPlayerGui::CDrawGuildSeal::Update() -- track the hero's ready-to-level-up state (an adult hero with an experience component; a rising edge queues the guild-seal message) and, once the current message has run out, show the next queued message unless the GUI or the display blocks it
 // Leaf: Update
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0065196C, length 274 bytes (frame pointer, `push ecx` frame).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::PeekPControlledCreature @ 0x00487DD0, IS_THING_ALIVE @ 0x0043DBF0
 // (`__fastcall`, the instantiation next to the CThing* one), CThingCreatureBase::IsChild @ 0x00661F70, std::bitset::test @ 0x00410DE0,
 // the interface map LowerBound const @ 0x004365B0, CTCHeroExperience::IsReadyToLevelUp @ 0x006D7CB0, PeekGuiDef @ 0x00438570
 // (`__fastcall`), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CDrawGuildSeal::AddMessage(const
@@ -20,7 +20,7 @@
 class CTCBase;
 
 struct CPresenceBits {
-    bool test(long bit);                           // 0x00410DE0 (std::bitset::test)
+    bool test(long bit) const;                           // 0x00410DE0 (std::bitset::test)
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };
@@ -33,7 +33,7 @@ class CThing { public:
     CPresenceBits m_present;                       // +0x20
     unsigned char _pad1[0x23];
     CInterfaceMap m_interfaces;                    // +0x44
-    bool HasInterface(long type) { return m_present.test(type); }
+    bool HasInterface(long type) const { return m_present.test(type); }
     template <class T> __forceinline T* GetInterfaceUncheckedConst(long type) const
     {
         long key = type;
@@ -43,12 +43,15 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public:
-    bool IsChild();                                // 0x00661F70
+    bool IsChild() const;                                // 0x00661F70
 };
 class CThingPlayerCreature : public CThingCreatureBase { public: };
-template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
+template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& thing)   // 0x0043DBF0
+{
+    return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
+}
 class CPlayer { public:
-    CThingPlayerCreature* GetControlledCreature(); // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                      // 0x00449970
@@ -184,8 +187,8 @@ class CDrawGuildSeal { public:
 void CDrawGuildSeal::Update()
 {
     if (World->FlagD6 && World->FlagD5) {
-        CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->GetControlledCreature();
-        if (IS_THING_ALIVE<CThingCreatureBase*>(hero) && !hero->IsChild() && hero->HasInterface(0x68)) {
+        const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->PeekPControlledCreature();
+        if (IS_THING_ALIVE(hero) && !hero->IsChild() && hero->HasInterface(0x68)) {
             CTCHeroExperience* experience = hero->GetInterfaceUncheckedConst<CTCHeroExperience>(0x68);
             if (experience) {
                 bool ready = experience->IsReadyToLevelUp();

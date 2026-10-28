@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C93B0, 444 bytes (+ int3 padding), `ret` (vtable 0x0126E964 slot 9).
 // Leaf: ?FrameUpdate@CTCFireballSpell
 // Callees: CWillButtonHelperTimer::FrameUpdate 0x008EDDD0, GetSubDef<CSpecialEffectsDef> 0x00669580, GetEffectFromString 0x00669D30,
-// GetPosition 0x004C73D0, CreateParticleEffect 0x0072AB70, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10, LowerBound 0x0040F020,
+// GetPos 0x004C73D0, CreateParticleEffect 0x0072AB70, CBaseIntelligentPointer 0x00A01B10/B90/B50/C10, LowerBound 0x0040F020,
 // AttachToThing 0x006E0BE0, ProcessLevellingUpFX 0x007C8DE0, the held-state helper 0x007C9180, CThing::RemoveTC 0x004C9840.
 // Shape: the Kraken/OnDie def lookup (out slot read once into a named pointer released by hand), an implicit-literal `&&` temp,
 // the effect through an intelligent-pointer temporary + operator=, an uninitialised emitter local; first try.
@@ -85,7 +85,7 @@ class CThing { public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
     void RemoveTC(long interfaceType);          // 0x004C9840
     __forceinline unsigned long HasTC(long kind) const { return m_presentBits[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCBase_Retail* FindTC(long kind)
@@ -195,7 +195,7 @@ void CTCFireballSpell::FrameUpdate()
         bool found = PDef->GetSubDef(effectsSlot) && effectsSlot.m_p->GetEffectFromString("BUILDUP_EFFECT", effectType);
         CSpecialEffectsDef* effects = effectsSlot.m_p;
         if (found) {
-            FireballBuildUpEffect = CIntelligentPointer<CThing>(CreateParticleEffect(effectType, parent->GetPosition()));
+            FireballBuildUpEffect = CIntelligentPointer<CThing>(CreateParticleEffect(effectType, parent->GetPos()));
             if (IS_THING_ALIVE(FireballBuildUpEffect)) {
                 CTCDParticleEmitter* emitter;
                 CThing* effect = FireballBuildUpEffect.GetPItem();

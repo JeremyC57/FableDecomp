@@ -43,10 +43,12 @@ struct CPhysicsBody {                           // the creature's physics body a
 
 enum ECombatAnimationHandedness { COMBAT_ANIM_LEFT_HANDED = 0, COMBAT_ANIM_RIGHT_HANDED = 1 };
 
-class CThingCreatureBase { public:
+class CThing { public:
+    const C3DVector& GetPos() const;       // 0x004C73D0 (CThing)
+};
+class CThingCreatureBase : public CThing { public:
     unsigned char _pad00[0x60];
     CPhysicsBody* m_pBody;                      // +0x60
-    const C3DVector& GetPosition_004c73d0() const;       // 0x004C73D0 (CThing)
     C3DVector GetFacing() const { return m_pBody->GetFacing(); }   // inline forwarder
     void SetLastActionHandedness(ECombatAnimationHandedness handedness);   // 0x006619F0
 };
@@ -87,7 +89,7 @@ class CCreatureAction_BodgeSideStrike : public CCombatActionBase { public:
 void CCreatureAction_BodgeSideStrike::Initialise()
 {
     CThingCreatureBase* target = Target.GetPItem();
-    C3DVector delta = target->GetPosition_004c73d0() - Owner.GetPItem()->GetPosition_004c73d0();
+    C3DVector delta = target->GetPos() - Owner.GetPItem()->GetPos();
     C3DVector facing = Owner.GetPItem()->GetFacing();
     facing.Z = 0.0f;
     float side = delta.X * facing.Y - delta.Y * facing.X;

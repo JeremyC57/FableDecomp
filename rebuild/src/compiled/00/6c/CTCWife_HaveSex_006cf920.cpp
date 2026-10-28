@@ -7,7 +7,7 @@
 //   GetCurrentPlayer() 0x0049D9D0; CMemoryBuffer::Copy 0x009F1760; CMainGameComponent::AddGameEvent 0x0041649C (the
 //   landed SendPauseEvent(true) inlined, as the landed InitiateDivorce 0x006CEF20); CTCBase::GetPlayerManager()
 //   0x00686D40 (manifest "GetDisplayEngine" propagated); CPlayerManager::GetMainPlayer() 0x00449970; CPlayer::
-//   GetHeroThing() 0x00487DC0 (as the landed CTCWallMountEffects::DoEffect 0x007DF6A0); CVectorMap LowerBound 0x0040F020
+//   GetPControlledCreature() 0x00487DC0 (as the landed CTCWallMountEffects::DoEffect 0x007DF6A0); CVectorMap LowerBound 0x0040F020
 //   (interfaces 4 and 0x10D); CThingPhysical::ModifyHealth(float, bool) slot 59 (+0xec); CTCHeroOnlineScoreboard::
 //   UpdateScoreForActivity(EOnlineScoreboardActivity, float, bool) 0x0055F3B0; __security_check_cookie 0x00BFE9F9.
 // Layout: engine/CTCWife.h (PDB = retail; local model as the landed InitiateDivorce): PHeroMarriageDef +0x0c, WaitingForFadeOut +0x27, WaitingForSex +0x2c;
@@ -95,6 +95,7 @@ class CThing { public:
         return (it == map->last || interfaceType < it->type ? map->last : it)->component;
     }
 };
+class CThingPlayerCreature : public CThing { };
 class CThingPhysical : public CThing { public:
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
@@ -120,7 +121,7 @@ class CTCHeroOnlineScoreboard { public:                            // interface 
 class CPlayer { public:
     unsigned char _pad_0x00[0x28];
     signed char   m_playerNumber;                           // +0x28
-    CThing* GetHeroThing();                                 // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                                 // 0x00487DC0
 };
 class CPlayerManager { public:
     CPlayer& GetMainPlayer();                               // 0x00449970
@@ -169,7 +170,7 @@ void CTCWife::HaveSex()
     g_pMainGameComponent->AddGameEvent(gameEvent);
     WaitingForFadeOut = true;
     WaitingForSex = true;
-    CThing* hero = GetPlayerManager().GetMainPlayer().GetHeroThing();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead()) {
         CTCHeroStats* stats = 0;
         if (hero->HasTC(4))

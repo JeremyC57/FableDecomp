@@ -14,30 +14,29 @@
 class C3DVector { public: float X, Y, Z; };
 class C3DHelperPoint { public: C3DVector Position; long BoneIndex; };
 
-struct SHelperPointEntry {                 // pair<unsigned long, C3DHelperPoint>, 20 bytes
-    unsigned long  first;
-    C3DHelperPoint second;
-};
-
-struct CHelperPointMap {                   // CPreAllocVectorMap<unsigned long, C3DHelperPoint>
-    bool               Compare;            // +0  (CKeyPairCompareLess)
-    SHelperPointEntry* Elements;           // +4
+namespace std { template <class K, class V> struct pair { K first; V second; }; }
+template <class K, class V> class CKeyPairCompareLess { public: };
+template <class K, class V, class C> class CPreAllocVectorMap { public:   // Ego_r.pdb CPreAllocVectorMap<unsigned long, C3DHelperPoint, CKeyPairCompareLess<...> >
+    C                  Compare;            // +0  (CKeyPairCompareLess)
+    std::pair<K, V>*   Elements;           // +4
     unsigned long      Size;               // +8
     bool               Dirty;              // +0xC
-    SHelperPointEntry* LowerBound(const unsigned long& key);   // 0x00A316B0
-    SHelperPointEntry* End() { return Elements + Size; }
+    const std::pair<K, V>* LowerBound(const K& key) const;   // 0x00A316B0 ?LowerBound@?$CPreAllocVectorMap@KVC3DHelperPoint@@...@@QBEPBU?$pair@KVC3DHelperPoint@@@std@@ABK@Z
+    const std::pair<K, V>* End() const { return Elements + Size; }
 };
+typedef CPreAllocVectorMap<unsigned long, C3DHelperPoint, CKeyPairCompareLess<unsigned long, C3DHelperPoint> > CHelperPointMap;
+typedef std::pair<unsigned long, C3DHelperPoint> SHelperPointEntry;
 
 class C3DMeshStats { public:
     virtual void v00();
     unsigned char   _pad_0x04[0x38 - 0x04];
     CHelperPointMap HelperPoints;          // +0x38
-    C3DHelperPoint* GetHelperPoint(unsigned long key, unsigned long index);
+    const C3DHelperPoint* GetHelperPoint(unsigned long key, unsigned long index) const;   // ?GetHelperPoint@C3DMeshStats@@QBEPBVC3DHelperPoint@@KK@Z
 };
 
-C3DHelperPoint* C3DMeshStats::GetHelperPoint(unsigned long key, unsigned long index)
+const C3DHelperPoint* C3DMeshStats::GetHelperPoint(unsigned long key, unsigned long index) const
 {
-    SHelperPointEntry* it = HelperPoints.LowerBound(key);
+    const SHelperPointEntry* it = HelperPoints.LowerBound(key);
     if (it != HelperPoints.End() && it->first == key)
         return &it[index].second;
     return 0;

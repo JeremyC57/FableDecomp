@@ -1,7 +1,7 @@
 // CThingManager::DeleteAllThings() -- kills the main player's hero (if alive) and every other living thing, processes the deaths and empties the dead list
 // Leaf: DeleteAllThings
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0051FBA0, length 125 bytes (+ int3 padding).
-// Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (manifest "Catch@0040d959" is a propagated label), CPlayer::GetHeroThing @ 0x00487DC0
+// Callees: CPlayerManager::GetMainPlayer @ 0x00449970 (manifest "Catch@0040d959" is a propagated label), CPlayer::GetPControlledCreature @ 0x00487DC0
 // (manifest "_Cons_val<...>" propagated; `add ecx,2Ch ; jmp GetPItem`), CThing::Kill(bool) @ 0x004C9B80 (false),
 // CThingManager::UpdateDeaths @ 0x0051F070, memmove @ 0x00BFEAE6 (the inline STLport clear).
 // Layout (retail, local model): CThingManager all-things list (STLport list<CThing*>, node data at +8) at +0x18, PlayerManager at
@@ -46,9 +46,10 @@ public:
     void Kill(bool immediately);                // 0x004C9B80
     bool IsAlive() const { return m_dead ? false : true; }   // IS_THING_ALIVE: `not al ; test al,1`
 };
+class CThingPlayerCreature : public CThing { };
 class CThingPlayerCreature;
 class CPlayer { public:
-    CThing* GetHeroThing() const;               // 0x00487DC0 (CIntelligentPointer at +0x2c)
+    CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0 (CIntelligentPointer at +0x2c)
 };
 class CPlayerManager { public:
 public:
@@ -87,7 +88,7 @@ class CThingManager { public:
 
 void CThingManager::DeleteAllThings()
 {
-    CThing* hero = PlayerManager->GetMainPlayer().GetHeroThing();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->m_dead)
         hero->Kill(false);
     for (SThingListNode* node = Things->_M_next; node != Things; node = node->_M_next) {

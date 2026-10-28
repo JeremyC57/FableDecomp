@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00449F90, length 224 bytes, `ret 4`.
 // Identity: Ego_r.pdb `?SaveGameState@CPlayerManager@@QAEXAAVCPersistContext@@@Z`.
 // Callees: CPlayerManager::GetPlayer(long) 0x004498C0, CBaseIntelligentPointer::GetPItem 0x00A01B50, CCharString default
-// ctor 0x0099E4B0 / copy ctor 0x0099EC30 / operator= 0x0099EFB0 / dtor 0x0099EAE0, CThing::GetPosition 0x004C73D0,
+// ctor 0x0099E4B0 / copy ctor 0x0099EC30 / operator= 0x0099EFB0 / dtor 0x0099EAE0, CThing::GetPos 0x004C73D0,
 // CWorld::PeekWorldMap (slot 13, +0x34), CWorldMap::GetMapNumberAt(const C3DVector&) (slot 16, +0x40),
 // CWorldMap::GetRegionNumberMapIsIn(long) 0x004FC190, CWorldMap::GetRegion(long) 0x004FC180,
 // CPersistContext::Transfer(const char*, unsigned __int64&, const unsigned __int64&) 0x0044BB00 and
@@ -37,7 +37,7 @@ class CPersistContext { public:
 class CThing { public:
     unsigned char    _pad00[0x18];
     unsigned __int64 UniqueID;                          // +0x18
-    const C3DVector& GetPosition() const;               // 0x004C73D0
+    const C3DVector& GetPos() const;               // 0x004C73D0
 };
 class CBaseObject;
 class CBaseIntelligentPointer {
@@ -105,7 +105,7 @@ void CPlayerManager::SaveGameState(CPersistContext& context)
     CThing* character = GetPlayer(MainPlayer)->GetPlayerCharacter();
     NPlayerManager::CPlayerSave save;
     save.CharacterUID = character->UniqueID;
-    const C3DVector& position = character->GetPosition();
+    const C3DVector& position = character->GetPos();
     CWorldMap* worldMap = Component->PWorld->PeekWorldMap();
     save.RegionName = worldMap->GetRegion(worldMap->GetRegionNumberMapIsIn(worldMap->GetMapNumberAt(position))).Name;
     context.Transfer("PlayerCharacterUID", save.CharacterUID, 0);

@@ -5,7 +5,7 @@
 // removal @ 0x00939DD0 (manifest "CheckAndRemove"), AIAction_LookAtThing @ 0x0097D6F0, AIAction_MoveToThingProximity
 // @ 0x0097E380 (its pointer argument built by the out-of-line ctor @ 0x00930D20), CAIStateGroupBase::GetPThingWorld
 // @ 0x008FCFA0 / GetPWorld @ 0x008FCFC0 / Terminate @ 0x008FCF40, GFGetCurrentFrame @ 0x0049D870,
-// CThingCreatureBase::GetPosition @ 0x006A4D00, CThing::GetPosition @ 0x004C73D0, CMessageEventManager::AddMessage
+// CThingCreatureBase::PeekPos @ 0x006A4D00, CThing::PeekPos @ 0x004C73D0, CMessageEventManager::AddMessage
 // @ 0x00687540, CCreatureAction_DeclarePlayerACriminal ctor @ 0x00910C30 / dtor @ 0x00910B20, AIAction_PerformActionAndWait
 // @ 0x0097DB70.
 // Layout: local model (PBrain +4; WarningCount +0x14, FrameOfLastWarning +0x18, PPlayer +0x20; world message manager +0x60;
@@ -24,10 +24,12 @@ class C3DVector { public:
 class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;    // 0x004C73D0
 };
-class CThingCreatureBase : public CThing { public:
-    const C3DVector& GetPosition() const;       // 0x006A4D00
+class CThingPhysical : public CThing { public:
+    const C3DVector& PeekPos() const;       // 0x006A4D00
+};
+class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingAICreature : public CThingCreatureBase { public: };
 class CThingPlayerCreature : public CThingCreatureBase { public: };
@@ -76,8 +78,12 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingAICreature* GetCreature() const { return PBrain->Creature; }
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0
+public:
     void Terminate();                           // 0x008FCF40
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
     long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
@@ -92,12 +98,14 @@ struct CAIStateGroup_MinionGuardReactToPlayerWithWeapon : CAIStateGroupBase {
     bool IsAnotherGuardAdmonishingPlayer();     // 0x00939D00
     bool CheckForOtherGuardsNewWarning();       // 0x00939D70
     void RemoveMyWarningMessage();              // 0x00939DD0
-    bool IsPlayerCarryingWeapon();              // 0x00939E70
+private:
+    bool IsPlayerCarryingWeapon() const;        // 0x00939E70 ?IsPlayerCarryingWeapon@...@@ABE_NXZ (private)
+public:
     __forceinline bool IsWithinWarningTime()
     {
-        CWorld* world = GetPThingWorld();
+        const CWorld& world = PeekWorld();
         long framesPerSecond = g_FramesPerSecond;
-        return world->GetWorldFrame() - FrameOfLastWarning < (unsigned long)(framesPerSecond * 4);
+        return world.GetWorldFrame() - FrameOfLastWarning < (unsigned long)(framesPerSecond * 4);
     }
     void Update();
 };
@@ -112,12 +120,12 @@ void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
                 ++WarningCount;
                 CThingPlayerCreature* player = PPlayer.GetPItem();
                 CThingAICreature* creature = GetCreature();
-                CMessageEventManager* manager = GetPWorld()->PMessageEventManager;
-                manager->AddMessage(0x1b, 300, &creature->GetPosition(), creature, player, 0.0f, 0.0f, WarningCount);
+                CMessageEventManager* manager = GetWorld().PMessageEventManager;
+                manager->AddMessage(0x1b, 300, &creature->PeekPos(), creature, player, 0.0f, 0.0f, WarningCount);
                 bool justWarning = false;
                 if (WarningCount == 1 || WarningCount == 2)
                     justWarning = true;
-                FrameOfLastWarning = GetPThingWorld()->GetWorldFrame();
+                FrameOfLastWarning = PeekWorld().GetWorldFrame();
                 while (IsWithinWarningTime()) {
                     if (!IsThingAlive(PPlayer)) {
                         Terminate();
@@ -128,7 +136,7 @@ void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
                         Terminate();
                         return;
                     }
-                    if ((PPlayer.GetPItem()->CThing::GetPosition() - GetCreature()->CThing::GetPosition()).GetLengthSquared() > 25.0f) {
+                    if ((PPlayer.GetPItem()->GetPos() - GetCreature()->GetPos()).GetLengthSquared() > 25.0f) {
                         bool arrived;
                         AIAction_MoveToThingProximity(1, PPlayer, 5.0f, &arrived, 5, true, false, true, true, 0.0f);
                     }

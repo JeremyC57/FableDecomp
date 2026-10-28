@@ -4,9 +4,9 @@
 //   0x0065A5BB.
 // Callees: the CTCBase global-manager getters 0x00686D30 (+0x28 of 0x013B8A1C, the world map), 0x00686D60 (+0x1C, the
 //   definition manager) and 0x00686A70 (+0x24, the world) -- all propagated "CViewBase::GetDisplayEngine"; CThing::
-//   GetPosition 0x004C73D0; the world map's slot 16 (+0x40, the map index at a position); GetRegionNumberMapIsIn
+//   GetPos 0x004C73D0; the world map's slot 16 (+0x40, the map index at a position); GetRegionNumberMapIsIn
 //   0x004FC190 and the region-by-number getter 0x004FB490 (propagated "CTCInventoryBase::GetCategoryWithIndex");
-//   CWorld::GetCurrentPlayer 0x0049D9D0; CPlayer::GetHeroThing 0x00487DC0; std::bitset<>::test 0x00410DE0;
+//   CWorld::GetCurrentPlayer 0x0049D9D0; CPlayer::GetPControlledCreature 0x00487DC0; std::bitset<>::test 0x00410DE0;
 //   CVectorMap LowerBound 0x0040F020; CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 / GetDeedEffectsDef
 //   0x006C5630; STLport tree Successor 0x004292C0; the current-frame function 0x0049D870; g_framesPerSecond 0x01375550.
 // Layout: retail CTCVillage PlayersCrimes +0x64 and FramePlayerLastSeenByGuard +0x80 (PDB +0xDC/+0x10C less the 4-byte
@@ -47,11 +47,12 @@ class CThing { public:
             it = map->last;
         return it->component;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
-    CThing* GetHeroThing();                     // 0x00487DC0
+    CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
@@ -159,12 +160,12 @@ class CTCVillage { public:
 
 float CTCVillage::GetNormalisedTimeLeftOnFines()
 {
-    CRegion* region = GetWorldMap()->GetRegionWithIndex(GetWorldMap()->GetRegionNumberMapIsIn(GetWorldMap()->GetMapAtPos(Owner->GetPosition())));
+    CRegion* region = GetWorldMap()->GetRegionWithIndex(GetWorldMap()->GetRegionNumberMapIsIn(GetWorldMap()->GetMapAtPos(Owner->GetPos())));
     CDefPointer<CRegionDef> def = region->PDef;
     if (def.Object && def->HasFines) {
         long longest = 0;
         long life = 1;
-        CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetHeroThing();
+        CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
         if (hero) {
             CTCHeroOpinionDeedLog* log;
             if (hero->HasTC(0x51))

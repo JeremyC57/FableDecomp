@@ -32,7 +32,9 @@ public:
     typedef _Tp* iterator;
     iterator begin() { return this->_M_start; }
     iterator end() { return this->_M_finish; }
+    protected:
     void _M_insert_overflow(_Tp* __position, const _Tp& __x, const __true_type&, unsigned int __fill_len, bool __atend);   // 0x006F25A0
+    public:
     void push_back(const _Tp& __x)
     {
         if (this->_M_finish != this->_M_end_of_storage._M_data) {

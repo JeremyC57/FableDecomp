@@ -1,5 +1,5 @@
 // std::vector<CNavigationAreaUpdate::CSwitchableBlockage>::_M_insert_overflow(value_type* position, const value_type& x, const __false_type&, unsigned int fill_len, bool atend) -- STLport non-POD vector growth for a navigation layer update's switchable blockages (UniqueID, line list): allocate old + max(old, n), copy the head, construct the n new copies, copy the tail, destroy and free the old block
-// Leaf: ?_M_insert_overflow@?$vector@VCSwitchableBlockage@CNavigationAreaUpdate@@V?$allocator@VCSwitchableBlockage@CNavigationAreaUpdate@@@std@@@std@@QAEXPAVCSwitchableBlockage@CNavigationAreaUpdate@@ABV34@ABU__false_type@2@I_N@Z
+// Leaf: ?_M_insert_overflow@?$vector@VCSwitchableBlockage@CNavigationAreaUpdate@@V?$allocator@VCSwitchableBlockage@CNavigationAreaUpdate@@@std@@@std@@IAEXPAVCSwitchableBlockage@CNavigationAreaUpdate@@ABV34@ABU__false_type@2@I_N@Z
 //
 // Retail 0x0051C1F0, 208 bytes, thiscall `ret 14h`.  Callees: 0x00BFEA0E malloc, 0x0051A810 __uninitialized_copy (twice),
 //   0x005199E0 CSwitchableBlockage copy constructor (the fill_len == 1 _Construct), 0x0051A880 __uninitialized_fill_n,
@@ -120,18 +120,24 @@ template <class T, class _Alloc = allocator<T> > class list : public _List_base<
 template <class T, class _Alloc = allocator<T> > class vector : public _Vector_base<T, _Alloc> {
 public:
     unsigned int size() const { return unsigned int(this->_M_finish - this->_M_start); }
+    protected:
     void _M_clear()
     {
         _Destroy(this->_M_start, this->_M_finish);
         this->_M_end_of_storage.deallocate(this->_M_start, this->_M_end_of_storage._M_data - this->_M_start);
     }
+    public:
+    protected:
     void _M_set(T* s, T* f, T* e)
     {
         this->_M_start = s;
         this->_M_finish = f;
         this->_M_end_of_storage._M_data = e;
     }
+    public:
+    protected:
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fill_len, bool atend);
+    public:
 };
 
 template <class T, class _Alloc>

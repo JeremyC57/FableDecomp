@@ -17,9 +17,10 @@ class CThing { public:
     unsigned char _pad_0x00[0x91];
     unsigned char m_flags;                    // +0x91, bit 0: dead
 };
+class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public:
-    CThing* GetCharacterThing_00487dd0();              // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;              // 0x00487DD0
 };
 
 class CPlayerManager { public:
@@ -40,7 +41,7 @@ class CTCInventoryMap { public:
 
 void CTCInventoryMap::TeleportHeroToRegionTeleporter(long regionIndex)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetCharacterThing_00487dd0();
+    const CThing* hero = GetPlayerManager()->GetMainPlayer()->PeekPControlledCreature();
     if (hero && !(hero->m_flags & 1)) {
         CThing* teleporter = GetRegionTeleporter(&GetWorldMap()->GetRegion(regionIndex));
         if (teleporter && !(teleporter->m_flags & 1))

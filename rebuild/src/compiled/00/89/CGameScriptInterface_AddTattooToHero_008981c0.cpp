@@ -3,8 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008981C0, length 382 bytes (`ret 4`).
 // Callees: CEngine::PeekDefinitionManager @ 0x00415FBC (a jmp thunk; manifest "GFGetPreMainMemoryUsed") on the engine
 //   singleton 0x013B86A0, CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CPlayerManager::GetMainPlayer
-//   @ 0x00449970, CPlayer::GetHeroThing @ 0x00487DC0, the hero physics' slot 70 (+0x118, a C3DVector by value),
-//   CThing::GetPosition @ 0x004C73D0, CCharString ctor/dtor @ 0x0099EBF0 / 0x0099EAE0, CThingObject::Create @ 0x00703210
+//   @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, the hero physics' slot 70 (+0x118, a C3DVector by value),
+//   CThing::GetPos @ 0x004C73D0, CCharString ctor/dtor @ 0x0099EBF0 / 0x0099EAE0, CThingObject::Create @ 0x00703210
 //   (static __fastcall), the component-map LowerBound @ 0x0040F020, CTCHeroMorph::AddTattoo(CThing*) @ 0x0071D7C0,
 //   CTCAppearanceMorphBase::UploadTextureMorphsToEngine(CIEngine*, set<long>*, bool, float) @ 0x006CA7F0, CThing::Kill
 //   @ 0x004C9B80.
@@ -56,7 +56,10 @@ struct CInterfaceMap_Retail {
     SEntry* last;
     SEntry* LowerBound(const long* type);   // 0x0040F020
 };
-struct CThing_Retail {
+class CThing { public:
+    const C3DVector& GetPos() const;               // 0x004C73D0
+};
+struct CThing_Retail : public CThing {
     unsigned char         _pad00[0x20];
     unsigned long         m_presentBits[9];         // +0x20
     CInterfaceMap_Retail  m_interfaces;             // +0x44
@@ -84,9 +87,9 @@ struct CThing_Retail {
         }
         return false;
     }
-    const C3DVector& GetPosition() const;               // 0x004C73D0
     void Kill(bool silent);                             // 0x004C9B80
 };
+class CThingPlayerCreature : public CThing_Retail { };
 class CThingObject : public CThing_Retail { public:
     static CThingObject* __fastcall Create(long defIndex, const C3DVector& position, long player,
                                            const CRightHandedSet* orientation, unsigned long uid,
@@ -97,7 +100,7 @@ class CTCHeroMorph { public:
     void AddTattoo(CThing_Retail* tattoo);              // 0x0071D7C0
     void UploadTextureMorphsToEngine(CIEngine* engine, CLongSet* morphs, bool b, float f);   // 0x006CA7F0
 };
-class CPlayer { public: CThing_Retail* GetHeroThing(); };      // 0x00487DC0
+class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
 class CGameScriptInterface { public:
     virtual void AddTattooToHero(const CCharString& tattooDefName) const;
@@ -113,11 +116,11 @@ void CGameScriptInterface::AddTattooToHero(const CCharString& tattooDefName) con
     long index = g_pEngine->PeekDefinitionManager().GetDefGlobalIndexFromName(tattooDefName);
     if (index <= 0)
         return;
-    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetHeroThing();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetPControlledCreature();
     if (!hero || hero->m_dead)
         return;
     C3DVector offset = hero->m_pPhysics->GetFacingVector() * 2.0f;
-    C3DVector position = hero->GetPosition() + offset;
+    C3DVector position = hero->GetPos() + offset;
     CThingObject* tattoo;
     {
         CCharString scriptName("");

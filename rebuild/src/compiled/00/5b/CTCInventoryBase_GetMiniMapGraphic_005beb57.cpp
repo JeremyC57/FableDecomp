@@ -4,8 +4,8 @@
 // @ 0x0042B467 (STLport node: key +0x10, value +0x14; end() is the header at +0), CCharString(const char*, long) @ 0x0099EBF0 and
 // ~CCharString @ 0x0099EAE0 ("MINIMAP_PRISONCOURTYARD1" 0x01253D5C, "MINIMAP_EXECUTIONTREE" 0x01253D44, "MINIMAP_PRISONCOURTYARD2"
 // 0x01253D24), CTCBase::GetPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
-// CPlayer::GetControlledCreature @ 0x00487DD0, IS_THING_ALIVE<T> @ 0x0043DBF0 (`__fastcall`, the pointer by reference), CThing::
-// GetPosition @ 0x004C73D0; the float 0x01253D40 (51.0) is the landed g_mapEdgeZ. CRegion::MiniMapGraphic at retail +0x28.
+// CPlayer::PeekPControlledCreature @ 0x00487DD0, IS_THING_ALIVE<T> @ 0x0043DBF0 (`__fastcall`, the pointer by reference), CThing::
+// GetPos @ 0x004C73D0; the float 0x01253D40 (51.0) is the landed g_mapEdgeZ. CRegion::MiniMapGraphic at retail +0x28.
 // Shape: the landed CMiniMapDisplay::InitialiseOnRegionLoad idiom -- each lookup key is a block-scoped CCharString local whose
 // find result is read after the block (`mov esi,eax ; dtor ; mov edi,[esi+14h]`); the first and third keys and the hero pointer share
 // the dead argument slot ([ebp+8]) because their scopes are disjoint (the hero lives in its own block), the "MINIMAP_EXECUTIONTREE"
@@ -56,17 +56,18 @@ class CRegion { public:
 };
 class C3DVector { public: float X, Y, Z; };
 class CThing { public:
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
+class CThingPlayerCreature : public CThing { };
 class CThingPlayerCreature;
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);   // 0x0043DBF0
 bool IsThingPointerAlive(const void* thing);
 #pragma auto_inline(off)
-// Same-TU stand-in for the IS_THING_ALIVE<CThing*> template 0x0043DBF0: reads the pointer through its const reference.
+// Same-TU stand-in for the IS_THING_ALIVE<const CThingPlayerCreature*> template 0x0043DBF0: reads the pointer through its const reference.
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing) { return thing != 0 && IsThingPointerAlive(thing); }
 #pragma auto_inline(on)
 class CPlayer { public:
-    CThing* GetControlledCreature();            // 0x00487DD0
+    const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
@@ -103,8 +104,8 @@ long CTCInventoryBase::GetMiniMapGraphic(const CRegion* region)
             isPrisonCourtyard = true;
     }
     {
-        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetControlledCreature();
-        if (IS_THING_ALIVE(hero) && isPrisonCourtyard && hero->GetPosition().Z > g_mapEdgeZ) {
+        const CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
+        if (IS_THING_ALIVE(hero) && isPrisonCourtyard && hero->GetPos().Z > g_mapEdgeZ) {
             SGraphicNode* upperCourtyard;
             {
                 CCharString name("MINIMAP_PRISONCOURTYARD2");

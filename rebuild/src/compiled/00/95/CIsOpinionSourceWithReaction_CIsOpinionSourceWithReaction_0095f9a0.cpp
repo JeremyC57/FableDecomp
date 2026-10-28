@@ -51,20 +51,23 @@ class CTCCreatureOpinionOfHero { public:
     bool          AwareOfPlayer;                    // +0x2f
     CThing* GetTargetThing();                       // 0x007446A0
 };
-struct CPlayerCharacter {
-    CThing* GetThing();                             // 0x00487DC0
-};
+class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
-    CPlayerCharacter* GetCharacter();               // 0x0049D9D0
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 struct CCreatureInfo {
     unsigned char     _pad00[0x18];
     CThingAICreature* Creature;                     // +0x18
 };
+class CWorld;
+class CIsOpinionSourceWithReaction;
 class CAIStateGroup_OpinionReactionRoot { public:
     void*          __vftable;
     CCreatureInfo* Info;                            // +0x04
-    CPlayer* GetPlayer();                           // 0x008FCFC0
+protected:
+    CWorld& GetWorld() const;                       // 0x008FCFC0 CAIStateGroupBase::GetWorld (Ego_r.pdb IBEAAVCWorld; the donor run PeekWorld/PeekDefinitionManager/GetWorld/GetPWorldSeed is retail 0x8FCFA0/B0/C0/D0)
+    friend class CIsOpinionSourceWithReaction;      // the filter ctor calls the protected accessor in retail
+public:
     CThingAICreature* GetCreature() { return Info->Creature; }
 };
 class COpinionReactionManager;
@@ -75,6 +78,7 @@ struct CWorldOpinion {
 class CWorld { public:
     unsigned char  _pad00[0x24];
     CWorldOpinion* Opinion;                         // +0x24
+    CPlayer* GetCurrentPlayer() const;              // 0x0049D9D0 (PlayerManager +0xc -> GetMainPlayer 0x00449970)
 };
 extern CWorld* g_pWorld;                            // 0x013B86A0
 
@@ -92,8 +96,8 @@ CIsOpinionSourceWithReaction::CIsOpinionSourceWithReaction(CAIStateGroup_Opinion
     : PStateGroup(group), PTCOpinion(0), ReactionManager(g_pWorld->Opinion->ReactionManager)
 {
     CThing* hero;
-    if (group->GetPlayer()->GetCharacter())
-        hero = group->GetPlayer()->GetCharacter()->GetThing();
+    if (group->GetWorld().GetCurrentPlayer())
+        hero = group->GetWorld().GetCurrentPlayer()->GetPControlledCreature();
     else
         hero = 0;
     CTCFollowed* followed;

@@ -1,16 +1,16 @@
 // CAIStateGroup_SitForMeal::InitCreaturePosition() -- place the creature next to the cooking pot when the meal is runnable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00945CB0, length 66 bytes.
 // Callees: virtual slot 11 (+0x2c, IsRunnable) on this, GetPCookingPot @ 0x00945A90,
-// CThingPhysical::GetPosition @ 0x004C73D0 (reference into the physics block),
+// CThingPhysical::GetPos @ 0x004C73D0 (reference into the physics block),
 // CThingCreatureBase::AutoPlaceNear(const C3DVector&, float) @ 0x00665DF0.
 // Shape: `if (!IsRunnable()) return false;` returns the virtual's own zero al (bare `pop esi ; ret`),
-// then `pot != 0 && creature->AutoPlaceNear(pot->GetPosition(), 3.0f)` materialises as the
+// then `pot != 0 && creature->AutoPlaceNear(pot->GetPos(), 3.0f)` materialises as the
 // full-register `mov eax,1` / `xor eax,eax` form of an int-typed `&&` expression. The creature is
 // read into a named local (esi) before the radius push so retail's load pair stays ahead of the call.
 class C3DVector;
 
 class CThing { public:
-    const C3DVector& GetPosition();             // 0x004C73D0
+    const C3DVector& GetPos() const;             // 0x004C73D0
 };
 
 class CThingCreatureBase
@@ -47,7 +47,7 @@ struct CAIStateGroup_SitForMeal : CAIStateGroupBase {
     __forceinline bool PlaceCreatureNear(CThing* pot)
     {
         CThingAICreature* creature = PBrain->Creature;
-        return creature->AutoPlaceNear(pot->GetPosition(), 3.0f);
+        return creature->AutoPlaceNear(pot->GetPos(), 3.0f);
     }
 };
 

@@ -81,8 +81,12 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPThingWorld();                   // 0x008FCFA0
-    CWorld* GetPWorld();                        // 0x008FCFC0
+protected:
+    const CWorld& PeekWorld() const;    // 0x008FCFA0
+public:
+protected:
+    CWorld& GetWorld() const;    // 0x008FCFC0
+public:
 };
 
 struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase {
@@ -94,7 +98,7 @@ struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
 {
-    if (GetPWorld()->GetWorldFrame() < NextHawkFrame)
+    if (GetWorld().GetWorldFrame() < NextHawkFrame)
         return false;
     CThing* creature = GetCreature();
     if (creature->HasTC(0x90)) {
@@ -106,7 +110,7 @@ bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
                 if (!PStall.GetPItem() && shop->OnTheSpot) {
                     PStall = GetCreature();
                     CThing* self = GetCreature();
-                    long attitude = GetPThingWorld()->GetOpinionReactionManager()->GetThingAttitudeToPlayer(self);
+                    long attitude = PeekWorld().GetOpinionReactionManager()->GetThingAttitudeToPlayer(self);
                     if (attitude == 3 || attitude == 4 || attitude == 8)
                         PStall = (CThing*)0;
                 }

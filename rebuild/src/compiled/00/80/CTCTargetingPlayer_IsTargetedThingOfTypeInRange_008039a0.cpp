@@ -7,7 +7,7 @@
 //          bool +0x20a; names descriptive); CDefClassBase::GetSubDef<CTargetingDef> 0x007EA960 (manifest twin label
 //          "<CAICreatureWillPowerIndicatorDef>"); CTCCarrying::GetThingInPrimarySlot 0x006A1440;
 //          GetTargetingRangeForTargetType(unsigned long, const CTargetingDef*, CThing*, CThing*) 0x008028D0 (__fastcall);
-//          CThing::GetPosition 0x004C73D0 (x2); the def's slot 1 (destroy).
+//          CThing::GetPos 0x004C73D0 (x2); the def's slot 1 (destroy).
 // Layout: CTCTargeted::TargetingFlags +0x0c (engine/CTCTargeted.h, as the landed IsTargetedThingOfType 0x007F5A70); retail
 //          CThing interface bitset +0x20, map +0x44, the def class +0x70 (descriptive).
 // Shape: both interface lookups are the out-pointer GetInterface without a test, its entry pick a ternary (component lands in ecx); the
@@ -81,7 +81,7 @@ public:
         }
         return false;
     }
-    const C3DVector& GetPosition() const;       // 0x004C73D0
+    const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CTCTargeted { public:
     unsigned char _pad00[0x0c];
@@ -139,8 +139,8 @@ bool CTCTargetingPlayer::vfunc_38(unsigned long typeMask)
     ParentThing->GetInterface(&carrying, 0x46);
     float range = GetTargetingRangeForTargetType(typeMask, def.Object, ParentThing, carrying->GetThingInPrimarySlot());
     CThing* owner = ParentThing;
-    const C3DVector& targetPos = GetPTargetedThing()->GetPosition();
-    const C3DVector& ownerPos = owner->GetPosition();
+    const C3DVector& targetPos = GetPTargetedThing()->GetPos();
+    const C3DVector& ownerPos = owner->GetPos();
     C3DVector offset(ownerPos.X - targetPos.X, ownerPos.Y - targetPos.Y, ownerPos.Z - targetPos.Z);
     bool inRange = offset.Y * offset.Y + offset.X * offset.X + offset.Z * offset.Z <= range * range;
     return inRange;

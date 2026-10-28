@@ -8,7 +8,7 @@
 //   (predicate 0x00643B3B) and IsToAttackTarget 0x00864D00 (IsAwareOfThing inlined).
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0, CTCPerceiveThing::GetPerceivedThing()
 //   const 0x007446A0, the predicate through the member pointer, CThingCreatureBase::IsThingInFOV(const CThing&, bool)
-//   const 0x00665190, CTCPerceiveThing::GetSightRadius() const 0x007448F0, CThing::GetPosition() const 0x004C73D0,
+//   const 0x00665190, CTCPerceiveThing::GetSightRadius() const 0x007448F0, CThing::GetPos() const 0x004C73D0,
 //   CTCCreatureNavigation::IsPosNavLineOfSightToPos(const C3DVector&, const C3DVector&) const 0x006CB610 (PDB name by
 //   signature: TC 7's only const CTC method of that shape; catalog "CScriptThing::operator==" is propagated).
 // Layout: CThing interface bitset +0x20 (0x34 = CTCPerceiveThing: word 1 bit 20; 7 = CTCCreatureNavigation: word 0
@@ -42,7 +42,7 @@ public:
     unsigned char Dead : 1;                                 // +0x91 bit 0
     unsigned char CreatedByOwnerThingCreation : 1;
 
-    const C3DVector& GetPosition() const;                   // 0x004C73D0
+    const C3DVector& GetPos() const;                   // 0x004C73D0
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -108,8 +108,8 @@ bool __fastcall IsAwareOfThingImplementation(const CThingAICreature* creature, c
         return true;
     if (creature->IsThingInFOV(*thing, true)) {
         float sight_radius = perceive->GetSightRadius();
-        const C3DVector& thing_pos = thing->GetPosition();
-        const C3DVector& creature_pos = creature->GetPosition();
+        const C3DVector& thing_pos = thing->GetPos();
+        const C3DVector& creature_pos = creature->GetPos();
         float dx = creature_pos.X - thing_pos.X;
         float dy = creature_pos.Y - thing_pos.Y;
         if (dx * dx + dy * dy < sight_radius * sight_radius) {
@@ -118,7 +118,7 @@ bool __fastcall IsAwareOfThingImplementation(const CThingAICreature* creature, c
             const CTCCreatureNavigation* navigation;
             if (creature->HasTC(7))
                 navigation = (const CTCCreatureNavigation*)creature->PeekTC(7);
-            if (navigation->IsPosNavLineOfSightToPos(creature->GetPosition(), thing->GetPosition()))
+            if (navigation->IsPosNavLineOfSightToPos(creature->GetPos(), thing->GetPos()))
                 return true;
         }
     }
