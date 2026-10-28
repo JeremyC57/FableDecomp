@@ -33,5 +33,5 @@ unsigned long>, as every other landed binding in it already said, and its `__cop
 twin; the K `_M_fill_insert` 0x00AE7340 calls it too. 0x006D3610 is the long twin: it is called by
 GFSerialiseVectorBinaryOut<pair<CCharString,long>> and this row (CPersistContext's TransferVector<pair<CCharString,long>>, FableWin.pdb).
 Respelled and rechecked (verify_twinfix.log): 0x009B5990 and 0x009B47F0 (long -> unsigned long), and 0x006D4AA0 (its
-invented `SNamedLongVector` is std::vector<std::pair<CCharString, long>>). `_M_fill_insert` is spelled public (QAE), as 54 of
-63 landed bindings do; the access specifier is the one detail the bytes cannot show (probable).
+invented `SNamedLongVector` is std::vector<std::pair<CCharString, long>>). `_M_fill_insert` is public (QAE): STLport 4.6 / 4.6.2
+`stlport/stl/_vector.h` (identical in both) declares it at line 370, inside the public section that runs from line 171 to 491.
