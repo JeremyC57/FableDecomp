@@ -759,3 +759,5 @@ Chunk 522 (agent522, re-queue 161-495 bytes; batch 2026-10-27_linux_hand522): 9 
 Chunk 523 (agent523, re-queue 166-476 bytes; batch 2026-10-27_linux_hand523): 15 of 20 landed (RELOCATION_MATCH), 5 parked on inlining / register / x87-scheduling residues. 62 NAME_FIXES deferred to the naming pass (queue now 181).
 
 Chunk 524 (agent524, re-queue 161-421 bytes; batch 2026-10-27_linux_hand524): 13 of 20 landed (RELOCATION_MATCH), 7 parked (register / scheduling; 0x00816AC0 has most room). 44 NAME_FIXES deferred (queue now 225), headed by 0x0049D870 CWorld::GetFrame with ~50 wrong bound spellings.
+
+Chunk 525 (agent525, re-queue 161-357 bytes; batch 2026-10-27_linux_hand525): 19 of 20 landed (1 MATCH, 18 RELOCATION_MATCH), 1 parked (0x0084E420, final 8 instructions). 26 NAME_FIXES deferred (queue now 251).

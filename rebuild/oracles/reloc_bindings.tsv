@@ -35032,3 +35032,15 @@ _local_book_besterror@8	00ca02b0	00ca0620
 ??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@_N2JABVCSoundPair@@222JJ@Z	00842df0	00843940
 ?IsAbortingCurrentAction@CThingCreatureBase@@QBE_NXZ	00661e70	00843940
 ?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z	00845ce0	00845fe0
+??0CEventExpressionPerformedTo@NEntityEvents@@QAE@PAVCThingCreatureBase@@JABV?$CDefPointer@$$CBVCExpressionDef@@@@JJ@Z	0084b010	00847470
+?GetFramesRunning@CCreatureActionBase@@QBEJXZ	006925c0	00847470
+??$GetSubDef@VCBonusItemDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCBonusItemDef@@@@@Z	007e1d30	00847be0
+?g_PutGoodsDownZOffset_013baf54@@3MA	013baf54	00848850
+?GetCarrySlotActive@CTCCarryable@@QBEJXZ	00705cc0	00849d90
+?PutThingInCarrySlot@CTCCarrying@@QAEXAAVCThing@@J_N@Z	006a1f80	00849d90
+?CreateDustEffectForCreature@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@ABVCWorldMap@@ABVCGameDefinitionManager@@ABVC3DVector@@PAV?$vector@PAVCThing@@V?$allocator@PAVCThing@@@std@@@std@@@Z	008f7950	0087ca30
+?GetWorldMap@CCreatureActionBase@@IAEAAVCWorldMap@@XZ	00692c10	0087ca30
+??0CModeChargeForcePush@NCreatureMode@@QAE@AAVCThing@@_N@Z	008bd7f0	008b9ff0
+??1CCreatureAction_UnsheatheItemFromInventory@@UAE@XZ	005cc091	008ba140
+?FinishAction@CCombatActionBase@@MAEXXZ	00859a20	008ba140
+?SetAiming@CTCWeapon@@QAEXXZ	005da4d0	008bf740

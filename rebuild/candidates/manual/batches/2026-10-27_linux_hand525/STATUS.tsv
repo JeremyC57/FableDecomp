@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00847470	RELOCATION_MATCH	169v169	PASS	CCreatureAction_PerformExpressionExtended::PerformAction; common model
+00847990	RELOCATION_MATCH	203v203	PASS	CCreatureAction_LearnExpression::PerformAction; PeekTC const CTCExpression, inline CDefString::GetString
+00847be0	RELOCATION_MATCH	164v164	PASS	CCreatureAction_Drink::PerformAction; same-TU GetSubDef<CBonusItemDef> specialization
+00848850	RELOCATION_MATCH	222v222	PASS	CCreatureAction_PutGoodsDown::PerformAction; named const-ref position + C3DVector local
+00848f10	RELOCATION_MATCH	189v189	PASS	CCreatureAction_GetOutOfBed::PerformAction; unchecked GetTC for the mode manager
+00849d90	RELOCATION_MATCH	238v238	PASS	CCreatureAction_GetItemOutOfPocket::PerformAction; named slot local
+00849e80	RELOCATION_MATCH	238v238	PASS	CCreatureAction_PutItemIntoPocket::PerformAction (byte twin of 00849d90; identity by PDB order/size; catalog says GetItemOutOfPocket)
+0084a0a0	RELOCATION_MATCH	223v223	PASS	CCreatureAction_PutDownThingAtTable::PerformAction; CTCPhysicsBase::EnablePhysics slot 36
+0084e420	DIFFER	357v357	-	NCameraModes::CBase::CBase (catalog CActionParam_Constructor wrong); 4 grades used; residue: tail only, retail reuses bl for the two CullPhysics=true stores after pop edi
+0087ca30	RELOCATION_MATCH	210v210	PASS	CCreatureAction_GeneralInterruptedAttack::Initialise; IsPlayerCharacter slot 77, AddRumble slot 17, inline CThing::GetPhysicsTC
+0087cdf0	RELOCATION_MATCH	201v201	PASS	CCreatureAction_InterruptableMidAttackAutoTurn ctor (target); C3DVector user copy ctor
+0087cec0	RELOCATION_MATCH	196v196	PASS	CCreatureAction_InterruptableMidAttackAutoTurn ctor (no target)
+008ab5d0	MATCH	265v265	PASS	std::__find<CScriptThing*, CScriptThing> (catalog std::lower_bound_with_vtable wrong); STLport unrolled random-access find, /Gr
+008b8260	RELOCATION_MATCH	171v171	PASS	CCreatureAction_ProjectileCrouch ctor (bool); implicit const char* -> CCharString temporaries
+008b8310	RELOCATION_MATCH	161v161	PASS	CCreatureAction_ProjectileCrouch ctor (const C3DVector&); FacePos +0x115 (C3DVector alignment 1)
+008b9ff0	RELOCATION_MATCH	178v178	PASS	CCreatureAction_ForcePushInto::Initialise
+008ba140	RELOCATION_MATCH	219v219	PASS	CCreatureAction_FinishWillForceSpell::FinishAction
+008ba6b0	RELOCATION_MATCH	219v219	PASS	CCreatureAction_ReleaseWillEnflameSpell::FinishAction
+008baa90	RELOCATION_MATCH	221v221	PASS	CCreatureAction_ReleaseWillLightningSpell::FinishAction; named CAnimateThing& local
+008bf740	RELOCATION_MATCH	191v191	PASS	CCreatureAction_GenericAimProjectileWeapon::Initialise

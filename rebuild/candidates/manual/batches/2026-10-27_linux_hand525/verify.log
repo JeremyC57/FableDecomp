@@ -1,0 +1,108 @@
+addr       parity           behav  name
+00847470   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00847470   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00847470   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+00847470   WARN RELOC_NAME: ?GetFramesRunning@CCreatureActionBase@@QBEJXZ -> 006925c0 labelled '_global::GetMember_dword0x1c_006925c0'
+00847470   RELOCATION_MATCH PASS   PerformAction
+00847990   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00847990   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00847990   RELOCATION_MATCH PASS   PerformAction
+00847be0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00847be0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00847be0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00847be0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00847be0   RELOCATION_MATCH PASS   PerformAction
+00848850   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00848850   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00848850   WARN SHARED_HEADER_AVAILABLE CTCBase
+00848850   RELOCATION_MATCH PASS   PerformAction
+00848f10   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00848f10   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00848f10   RELOCATION_MATCH PASS   PerformAction
+00849d90   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00849d90   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00849d90   RELOCATION_MATCH PASS   PerformAction
+00849e80   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00849e80   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00849e80   RELOCATION_MATCH PASS   PerformAction
+0084a0a0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0084a0a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0084a0a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0084a0a0   RELOCATION_MATCH PASS   PerformAction
+0087ca30   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0087ca30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0087ca30   WARN SHARED_HEADER_AVAILABLE CTCBase
+0087ca30   WARN SHARED_HEADER_AVAILABLE CJoystick
+0087ca30   WARN RELOC_NAME: ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::GetPDefinitionManager'
+0087ca30   RELOCATION_MATCH PASS   Initialise
+0087cdf0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0087cdf0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0087cdf0   RELOCATION_MATCH PASS   CCreatureAction_InterruptableMidAttackAutoTurn
+0087cec0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0087cec0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0087cec0   RELOCATION_MATCH PASS   CCreatureAction_InterruptableMidAttackAutoTurn
+008ab5d0   MATCH            PASS   __find<CScriptThing*, CScriptThing>
+008b8260   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+008b8260   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008b8260   RELOCATION_MATCH PASS   CCreatureAction_ProjectileCrouch
+008b8310   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+008b8310   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008b8310   RELOCATION_MATCH PASS   CCreatureAction_ProjectileCrouch
+008b9ff0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+008b9ff0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008b9ff0   RELOCATION_MATCH PASS   Initialise
+008ba140   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+008ba140   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008ba140   RELOCATION_MATCH PASS   FinishAction
+008ba6b0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+008ba6b0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008ba6b0   RELOCATION_MATCH PASS   FinishAction
+008baa90   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+008baa90   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008baa90   RELOCATION_MATCH PASS   FinishAction
+008bf740   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+008bf740   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008bf740   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+008bf740   RELOCATION_MATCH PASS   Initialise
+
+WINS: 19
+  00847470 RELOCATION_MATCH CCreatureAction_PerformExpressionExtended::?PerformAction@CCreatureAction_PerformExpressionExtended@@UAEXXZ
+  00847990 RELOCATION_MATCH CCreatureAction_LearnExpression::?PerformAction@CCreatureAction_LearnExpression@@UAEXXZ
+  00847be0 RELOCATION_MATCH CCreatureAction_Drink::?PerformAction@CCreatureAction_Drink@@UAEXXZ
+  00848850 RELOCATION_MATCH CCreatureAction_PutGoodsDown::?PerformAction@CCreatureAction_PutGoodsDown@@UAEXXZ
+  00848f10 RELOCATION_MATCH CCreatureAction_GetOutOfBed::?PerformAction@CCreatureAction_GetOutOfBed@@UAEXXZ
+  00849d90 RELOCATION_MATCH CCreatureAction_GetItemOutOfPocket::?PerformAction@CCreatureAction_GetItemOutOfPocket@@UAEXXZ
+  00849e80 RELOCATION_MATCH CCreatureAction_PutItemIntoPocket::?PerformAction@CCreatureAction_PutItemIntoPocket@@UAEXXZ
+  0084a0a0 RELOCATION_MATCH CCreatureAction_PutDownThingAtTable::?PerformAction@CCreatureAction_PutDownThingAtTable@@UAEXXZ
+  0087ca30 RELOCATION_MATCH CCreatureAction_GeneralInterruptedAttack::?Initialise@CCreatureAction_GeneralInterruptedAttack@@UAEXXZ
+  0087cdf0 RELOCATION_MATCH CCreatureAction_InterruptableMidAttackAutoTurn::??0CCreatureAction_InterruptableMidAttackAutoTurn@@QAE@AAVCThingCreatureBase@@AAVCThing@@PBV2@ABVC3DVector@@ABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z
+  0087cec0 RELOCATION_MATCH CCreatureAction_InterruptableMidAttackAutoTurn::??0CCreatureAction_InterruptableMidAttackAutoTurn@@QAE@AAVCThingCreatureBase@@PBVCThing@@ABVC3DVector@@ABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z
+  008ab5d0 MATCH std::??$__find@PAVCScriptThing@@V1@@std@@YIPAVCScriptThing@@PAV1@0ABV1@ABUrandom_access_iterator_tag@0@@Z
+  008b8260 RELOCATION_MATCH CCreatureAction_ProjectileCrouch::??0CCreatureAction_ProjectileCrouch@@QAE@AAVCThingCreatureBase@@0_N@Z
+  008b8310 RELOCATION_MATCH CCreatureAction_ProjectileCrouch::??0CCreatureAction_ProjectileCrouch@@QAE@AAVCThingCreatureBase@@0ABVC3DVector@@@Z
+  008b9ff0 RELOCATION_MATCH CCreatureAction_ForcePushInto::?Initialise@CCreatureAction_ForcePushInto@@UAEXXZ
+  008ba140 RELOCATION_MATCH CCreatureAction_FinishWillForceSpell::?FinishAction@CCreatureAction_FinishWillForceSpell@@UAEXXZ
+  008ba6b0 RELOCATION_MATCH CCreatureAction_ReleaseWillEnflameSpell::?FinishAction@CCreatureAction_ReleaseWillEnflameSpell@@UAEXXZ
+  008baa90 RELOCATION_MATCH CCreatureAction_ReleaseWillLightningSpell::?FinishAction@CCreatureAction_ReleaseWillLightningSpell@@UAEXXZ
+  008bf740 RELOCATION_MATCH CCreatureAction_GenericAimProjectileWeapon::?Initialise@CCreatureAction_GenericAimProjectileWeapon@@UAEXXZ
+
+LANDED 19 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionPerformExpressionExtended_PerformAction_00847470
+  CCreatureActionLearnExpression_PerformAction_00847990
+  CCreatureActionDrink_PerformAction_00847be0
+  CCreatureActionPutGoodsDown_PerformAction_00848850
+  CCreatureActionGetOutOfBed_PerformAction_00848f10
+  CCreatureActionGetItemOutOfPocket_PerformAction_00849d90
+  CCreatureActionPutItemIntoPocket_PerformAction_00849e80
+  CCreatureActionPutDownThingAtTable_PerformAction_0084a0a0
+  CCreatureActionGeneralInterruptedAttack_Initialise_0087ca30
+  CCreatureActionInterruptableMidAttackAutoTurn_CCreatureActionInterruptableMidAttackAutoTurn_0087cdf0
+  CCreatureActionInterruptableMidAttackAutoTurn_CCreatureActionInterruptableMidAttackAutoTurn_0087cec0
+  std_findCScriptThingCScriptThing_008ab5d0
+  CCreatureActionProjectileCrouch_CCreatureActionProjectileCrouch_008b8260
+  CCreatureActionProjectileCrouch_CCreatureActionProjectileCrouch_008b8310
+  CCreatureActionForcePushInto_Initialise_008b9ff0
+  CCreatureActionFinishWillForceSpell_FinishAction_008ba140
+  CCreatureActionReleaseWillEnflameSpell_FinishAction_008ba6b0
+  CCreatureActionReleaseWillLightningSpell_FinishAction_008baa90
+  CCreatureActionGenericAimProjectileWeapon_Initialise_008bf740
