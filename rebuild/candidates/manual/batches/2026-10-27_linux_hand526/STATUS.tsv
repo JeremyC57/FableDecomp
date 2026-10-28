@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+008c6ce0	RELOCATION_MATCH	194v194	PASS	CCreatureAction_RockTrollShakeAndExplode::FinishAction; same-TU GetSubDef<CTrollBattleDef> body + if(bit) HasTC form (grade 3); file also RELOCATION_MATCHes 0x008C78F0
+008c9a40	DIFFER	342v342	-	anonymous-namespace AttachEffectToStaff (Ego_r ?A0x13e2aa0e, __fastcall): only the "SHOT_CREATION_DUMMY" CCharString's frame slot differs ([esp+18h] v retail [esp+14h], the dead effect-index slot)
+008c9ba0	RELOCATION_MATCH	220v220	PASS	CCreatureAction_HobbeSpellcasterAim::Initialise (slot 12 of vtable 0x01263CF4)
+008c9e60	RELOCATION_MATCH	222v222	PASS	CCreatureAction_NymphGetHit::FrameUpdate (slot 56 of 0x01263F84); Ego_r inline accessors GetTCGraphicAppearance()/GetPhysicsTC() give retail's evaluation order
+008ca170	RELOCATION_MATCH	176v176	PASS	CCreatureAction_NymphTeleportOutOfLimbo::Initialise (slot 12 of 0x01282A04)
+008ca220	RELOCATION_MATCH	238v238	PASS	CCreatureAction_NymphGetHit::Initialise (slot 12 of 0x01263F84)
+008d5020	RELOCATION_MATCH	225v225	PASS	CCreatureAction_FireMissileWeapon nine-argument ctor (vtable 0x01285424, ret 24h)
+008d5110	RELOCATION_MATCH	192v192	PASS	CCreatureAction_FireMissileWeapon(CThingCreatureBase&, const CThing*) ctor (ret 8)
+0091b010	RELOCATION_MATCH	351v351	PASS	CAIStateGroup_HandyMan::AcquireWorkSpot (Ego_r donor order); same-TU noinline search/remove/~list bodies, box named local, empty()+size(), user C3DVector copy ctor (grade 4)
+00924520	DIFFER	336v334	-	anonymous-namespace CCreatureAction_KrakenLowAttackLoop::FinishAction: the inline GetInterface key gets its own frame slot (0x124 v 0x120) and the dead test keeps eax/al where retail keeps eax/cl
+00929fc0	DIFFER	265v242	-	CAIStateGroup_ApprenticeHero::GetObjectWithScriptName: VC7.1 inlines the found path's list destructor (retail calls 0x006FE660 out of line); GFRandom folds to xor edx/div where retail branches into ecx
+0092e300	RELOCATION_MATCH	177v177	PASS	CCreatureAction_GetInBed ctor (vtable 0x01291BFC); CDefString -> CCharString through g_DefStringTable
+00938a10	RELOCATION_MATCH	363v363	PASS	CAIStateGroup_UsesSeat::GetUpFromSeat (protected, bool); inline CCreatureAction_GetUpFromSitting ctor (vtable 0x01276C2C); ternary GetInterface keeps the component in ecx (grade 2)
+00946f90	RELOCATION_MATCH	373v373	PASS	CAIStateGroup_WanderAroundShops::FindASimplyDelightfulShop; same-TU noinline GetAllLeafThings / _M_insert_overflow stand-ins (grade 2)
+00947110	DIFFER	354v354	-	CAIStateGroup_WanderAroundShops::FindPrettyThingInShop: frame 0x18 v 0x14, the pushed item temporary gets its own slot where retail homes it in the dead `shop` argument slot
+00947eb0	DIFFER	265v242	-	CAIStateGroup_GoToPub::GetObjectWithScriptName: twin of 0x00929FC0, same residue (retail ~list 0x00792240 out of line on the found path)
+00995210	RELOCATION_MATCH	299v299	PASS	CDataInputStream::Read3DAngles (Ego_r reader order 2DVector/3DVector/3DAngles/Matrix3x4); manifest CPersistTraits label propagated
+0099c7e0	SKIP	306v334	-	row covers two functions: STLport basic_string<wchar_t>::append<const wchar_t*>(first, last, forward_iterator_tag) is 306 bytes, then int3 padding + 0x0099C920; differ/0099c7e0.cpp RELOCATION_MATCHes the true extent
+0099d660	RELOCATION_MATCH	363v363	PASS	_HyperlinkProc (FableWin.pdb, __stdcall), Neal Stublen's hyperlink procedure with Fable's hover flag
+009a01c0	DIFFER	312v316	-	CBasicString<char>::ExtendData: register allocation only (new length in ebp and buffer spilled to the argument slot; retail the other way round)

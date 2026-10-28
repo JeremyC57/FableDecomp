@@ -1,0 +1,13 @@
+address	name	evidence
+008c6ce0	CCreatureAction_RockTrollShakeAndExplode::FinishAction	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+008c9ba0	CCreatureAction_HobbeSpellcasterAim::Initialise	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+008c9e60	CCreatureAction_NymphGetHit::FrameUpdate	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+008ca170	CCreatureAction_NymphTeleportOutOfLimbo::Initialise	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+008ca220	CCreatureAction_NymphGetHit::Initialise	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+008d5020	CCreatureAction_FireMissileWeapon nine-argument ctor	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+008d5110	CCreatureAction_FireMissileWeapon(CThingCreatureBase&, const CThing*) ctor	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+0091b010	CAIStateGroup_HandyMan::AcquireWorkSpot	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+0092e300	CCreatureAction_GetInBed ctor	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+00938a10	CAIStateGroup_UsesSeat::GetUpFromSeat	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+00995210	CDataInputStream::Read3DAngles	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)
+0099d660	_HyperlinkProc	proven per batch 2026-10-27_linux_hand526 NOTES.md (chunk 526)

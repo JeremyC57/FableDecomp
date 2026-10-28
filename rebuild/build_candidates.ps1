@@ -361469,6 +361469,90 @@ $catalog = @(
         TestSource = '00/8b/CCreatureActionGenericAimProjectileWeapon_Initialise_008bf740_test.cpp'
         PassPattern = '008bf740_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008c6ce0'
+        Module = 'CCreatureAction_RockTrollShakeAndExplode'
+        Source = '00/8c/CCreatureActionRockTrollShakeAndExplode_FinishAction_008c6ce0.cpp'
+        TestSource = '00/8c/CCreatureActionRockTrollShakeAndExplode_FinishAction_008c6ce0_test.cpp'
+        PassPattern = '008c6ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c9ba0'
+        Module = 'CCreatureAction_HobbeSpellcasterAim'
+        Source = '00/8c/CCreatureActionHobbeSpellcasterAim_Initialise_008c9ba0.cpp'
+        TestSource = '00/8c/CCreatureActionHobbeSpellcasterAim_Initialise_008c9ba0_test.cpp'
+        PassPattern = '008c9ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c9e60'
+        Module = 'CCreatureAction_NymphGetHit'
+        Source = '00/8c/CCreatureActionNymphGetHit_FrameUpdate_008c9e60.cpp'
+        TestSource = '00/8c/CCreatureActionNymphGetHit_FrameUpdate_008c9e60_test.cpp'
+        PassPattern = '008c9e60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ca170'
+        Module = 'CCreatureAction_NymphTeleportOutOfLimbo'
+        Source = '00/8c/CCreatureActionNymphTeleportOutOfLimbo_Initialise_008ca170.cpp'
+        TestSource = '00/8c/CCreatureActionNymphTeleportOutOfLimbo_Initialise_008ca170_test.cpp'
+        PassPattern = '008ca170_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008ca220'
+        Module = 'CCreatureAction_NymphGetHit'
+        Source = '00/8c/CCreatureActionNymphGetHit_Initialise_008ca220.cpp'
+        TestSource = '00/8c/CCreatureActionNymphGetHit_Initialise_008ca220_test.cpp'
+        PassPattern = '008ca220_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d5020'
+        Module = 'CCreatureAction_FireMissileWeapon'
+        Source = '00/8d/CCreatureActionFireMissileWeapon_CCreatureActionFireMissileWeapon_008d5020.cpp'
+        TestSource = '00/8d/CCreatureActionFireMissileWeapon_CCreatureActionFireMissileWeapon_008d5020_test.cpp'
+        PassPattern = '008d5020_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008d5110'
+        Module = 'CCreatureAction_FireMissileWeapon'
+        Source = '00/8d/CCreatureActionFireMissileWeapon_CCreatureActionFireMissileWeapon_008d5110.cpp'
+        TestSource = '00/8d/CCreatureActionFireMissileWeapon_CCreatureActionFireMissileWeapon_008d5110_test.cpp'
+        PassPattern = '008d5110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0091b010'
+        Module = 'CAIStateGroup_HandyMan'
+        Source = '00/91/CAIStateGroupHandyMan_AcquireWorkSpot_0091b010.cpp'
+        TestSource = '00/91/CAIStateGroupHandyMan_AcquireWorkSpot_0091b010_test.cpp'
+        PassPattern = '0091b010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0092e300'
+        Module = 'CCreatureAction_GetInBed'
+        Source = '00/92/CCreatureActionGetInBed_CCreatureActionGetInBed_0092e300.cpp'
+        TestSource = '00/92/CCreatureActionGetInBed_CCreatureActionGetInBed_0092e300_test.cpp'
+        PassPattern = '0092e300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00938a10'
+        Module = 'CAIStateGroup_UsesSeat'
+        Source = '00/93/CAIStateGroupUsesSeat_GetUpFromSeat_00938a10.cpp'
+        TestSource = '00/93/CAIStateGroupUsesSeat_GetUpFromSeat_00938a10_test.cpp'
+        PassPattern = '00938a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00995210'
+        Module = 'CDataInputStream'
+        Source = '00/99/CDataInputStream_Read3DAngles_00995210.cpp'
+        TestSource = '00/99/CDataInputStream_Read3DAngles_00995210_test.cpp'
+        PassPattern = '00995210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099d660'
+        Module = '_global'
+        Source = '00/99/global_HyperlinkProc_0099d660.cpp'
+        TestSource = '00/99/global_HyperlinkProc_0099d660_test.cpp'
+        PassPattern = '0099d660_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+008c9a40	DIFFER	342v342	-	anonymous-namespace AttachEffectToStaff (Ego_r ?A0x13e2aa0e, __fastcall): only the "SHOT_CREATION_DUMMY" CCharString's frame slot differs ([esp+18h] v retail [esp+14h], the dead effect-index slot)
+00924520	DIFFER	336v334	-	anonymous-namespace CCreatureAction_KrakenLowAttackLoop::FinishAction: the inline GetInterface key gets its own frame slot (0x124 v 0x120) and the dead test keeps eax/al where retail keeps eax/cl
+00929fc0	DIFFER	265v242	-	CAIStateGroup_ApprenticeHero::GetObjectWithScriptName: VC7.1 inlines the found path's list destructor (retail calls 0x006FE660 out of line); GFRandom folds to xor edx/div where retail branches into ecx
+00947110	DIFFER	354v354	-	CAIStateGroup_WanderAroundShops::FindPrettyThingInShop: frame 0x18 v 0x14, the pushed item temporary gets its own slot where retail homes it in the dead `shop` argument slot
+00947eb0	DIFFER	265v242	-	CAIStateGroup_GoToPub::GetObjectWithScriptName: twin of 0x00929FC0, same residue (retail ~list 0x00792240 out of line on the found path)
+0099c7e0	SKIP	306v334	-	row covers two functions: STLport basic_string<wchar_t>::append<const wchar_t*>(first, last, forward_iterator_tag) is 306 bytes, then int3 padding + 0x0099C920; differ/0099c7e0.cpp RELOCATION_MATCHes the true extent
+009a01c0	DIFFER	312v316	-	CBasicString<char>::ExtendData: register allocation only (new length in ebp and buffer spilled to the argument slot; retail the other way round)

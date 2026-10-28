@@ -1,0 +1,63 @@
+addr       parity           behav  name
+008c6ce0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c6ce0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008c6ce0   RELOCATION_MATCH PASS   FinishAction
+008c9ba0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008c9ba0   RELOCATION_MATCH PASS   Initialise
+008c9e60   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008c9e60   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008c9e60   RELOCATION_MATCH PASS   FrameUpdate
+008ca170   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008ca170   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008ca170   RELOCATION_MATCH PASS   Initialise
+008ca220   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008ca220   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008ca220   RELOCATION_MATCH PASS   Initialise
+008d5020   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008d5020   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008d5020   RELOCATION_MATCH PASS   CCreatureAction_FireMissileWeapon
+008d5110   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+008d5110   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008d5110   RELOCATION_MATCH PASS   CCreatureAction_FireMissileWeapon
+0091b010   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0091b010   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0091b010   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0091b010   WARN RELOC_NAME: ??1?$_List_base@PAVCThingObject@@V?$allocator@PAVCThingObject@@@std@@@std@@QAE@XZ -> 00792240 labelled 'std::list::~list'
+0091b010   RELOCATION_MATCH PASS   AcquireWorkSpot
+0092e300   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0092e300   RELOCATION_MATCH PASS   CCreatureAction_GetInBed
+00938a10   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00938a10   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00938a10   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+00938a10   WARN RELOC_NAME: ?SetActionPointAsFree@CTCUserActionPointBase@@QAEXJ@Z -> 007fef40 labelled 'CTCUserActionPointBase::FreeActionPoint'
+00938a10   RELOCATION_MATCH PASS   GetUpFromSeat
+00995210   RELOCATION_MATCH PASS   Read3DAngles
+0099d660   RELOCATION_MATCH PASS   _HyperlinkProc
+
+WINS: 12
+  008c6ce0 RELOCATION_MATCH CCreatureAction_RockTrollShakeAndExplode::?FinishAction@CCreatureAction_RockTrollShakeAndExplode@@UAEXXZ
+  008c9ba0 RELOCATION_MATCH CCreatureAction_HobbeSpellcasterAim::?Initialise@CCreatureAction_HobbeSpellcasterAim@@UAEXXZ
+  008c9e60 RELOCATION_MATCH CCreatureAction_NymphGetHit::?FrameUpdate@CCreatureAction_NymphGetHit@@UAEXXZ
+  008ca170 RELOCATION_MATCH CCreatureAction_NymphTeleportOutOfLimbo::?Initialise@CCreatureAction_NymphTeleportOutOfLimbo@@UAEXXZ
+  008ca220 RELOCATION_MATCH CCreatureAction_NymphGetHit::?Initialise@CCreatureAction_NymphGetHit@@UAEXXZ
+  008d5020 RELOCATION_MATCH CCreatureAction_FireMissileWeapon::??0CCreatureAction_FireMissileWeapon@@QAE@AAVCThingCreatureBase@@PBVCThing@@MMM_NV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@JJ@Z
+  008d5110 RELOCATION_MATCH CCreatureAction_FireMissileWeapon::??0CCreatureAction_FireMissileWeapon@@QAE@AAVCThingCreatureBase@@PBVCThing@@@Z
+  0091b010 RELOCATION_MATCH CAIStateGroup_HandyMan::?AcquireWorkSpot@CAIStateGroup_HandyMan@@AAE_NXZ
+  0092e300 RELOCATION_MATCH CCreatureAction_GetInBed::??0CCreatureAction_GetInBed@@QAE@AAVCThingCreatureBase@@AAVCThing@@ABVCAnimationEntry@@ABVCCharString@@JJ@Z
+  00938a10 RELOCATION_MATCH CAIStateGroup_UsesSeat::?GetUpFromSeat@CAIStateGroup_UsesSeat@@IAE_NXZ
+  00995210 RELOCATION_MATCH CDataInputStream::?Read3DAngles@CDataInputStream@@QAE?AVC3DAngles@@XZ
+  0099d660 RELOCATION_MATCH _global::?_HyperlinkProc@@YGJPAUHWND__@@IIJ@Z
+
+LANDED 12 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionRockTrollShakeAndExplode_FinishAction_008c6ce0
+  CCreatureActionHobbeSpellcasterAim_Initialise_008c9ba0
+  CCreatureActionNymphGetHit_FrameUpdate_008c9e60
+  CCreatureActionNymphTeleportOutOfLimbo_Initialise_008ca170
+  CCreatureActionNymphGetHit_Initialise_008ca220
+  CCreatureActionFireMissileWeapon_CCreatureActionFireMissileWeapon_008d5020
+  CCreatureActionFireMissileWeapon_CCreatureActionFireMissileWeapon_008d5110
+  CAIStateGroupHandyMan_AcquireWorkSpot_0091b010
+  CCreatureActionGetInBed_CCreatureActionGetInBed_0092e300
+  CAIStateGroupUsesSeat_GetUpFromSeat_00938a10
+  CDataInputStream_Read3DAngles_00995210
+  global_HyperlinkProc_0099d660
