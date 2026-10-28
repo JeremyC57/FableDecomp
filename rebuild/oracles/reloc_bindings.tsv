@@ -21830,9 +21830,9 @@ __imp_??0exception@@QAE@XZ	0143fff8	00c13840
 ?insert_unique@?$map@KV?$CCountedPointer@VC3DAnimation2@@@@U?$less@K@std@@V?$allocator@U?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@std@@@3@@std@@QAE?AUiterator@12@U312@ABU?$pair@$$CBKV?$CCountedPointer@VC3DAnimation2@@@@@2@@Z	00a2ccf0	00a2d810
 ?_M_insert_overflow@?$vector@U?$pair@KJ@std@@V?$allocator@U?$pair@KJ@std@@@2@@std@@QAEXPAU?$pair@KJ@2@ABU32@ABU__true_type@2@I_N@Z	009b61f0	00a385a0
 ?insert@?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@QAE?AU?$pair@U_Rb_tree_iterator@std@@_N@2@ABK@Z	00514c10	00a385a0
-?DeallocateMemory@?$CArray@USElement12@@@@QAEXXZ	00a71f40	00a725d0
-?_M_range_insert@?$vector@USElement12@@V?$allocator@USElement12@@@std@@@std@@QAEXPAUSElement12@@PBU3@1ABUforward_iterator_tag@2@@Z	00a70cb0	00a725d0
-?reserve@?$vector@USElement12@@V?$allocator@USElement12@@@std@@@std@@QAEXI@Z	00920ff0	00a725d0
+?DeallocateMemory@?$CArray@VC3DVector@@@@QAEXXZ	00a71f40	00a725d0
+??$_M_range_insert@PAVC3DVector@@@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@00ABUforward_iterator_tag@1@@Z	00a70cb0	00a725d0
+?reserve@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXI@Z	00920ff0	00a725d0
 ?InternalAllocate@CHandleBasedMemoryPool@@QAEHPAJJ@Z	00c28b80	00c28c20
 ?PartialDefragment@CHandleBasedMemoryPool@@QAEHJ@Z	00c28870	00c28c20
 ?AddGroup@CSteeringGroupList@@QAEXPAUCSteeringGroup@@@Z	00c222b0	00c29ee0
@@ -27614,7 +27614,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?GetPrincipalVector@CTCShapeManager@@QBE_NAAVC3DVector@@@Z	00760910	0075db90
 ?GetTrackPosNearest@CTrack@NShape@@QBEXABVC3DVector@@AAV3@AAM@Z	00760da0	0075dc60
 ??0SLipSyncSample_0075e460@@QAE@PBUSSampleSource_0075e460@@PBVC3DVector@@JJMMJ@Z	0075f180	0075e460
-?__copy@std@@YIPAVC3DVector@@PAV2@00ABUrandom_access_iterator_tag@1@PAH@Z	0074ca20	0075f4e0
+??$__copy@PAVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	0074ca20	0075f4e0
 ?GetTrackPosAtLengthFraction@CTrack@NShape@@QAE?AVC3DVector@@M@Z	00760c40	00760da0
 ?GetMinDistanceToTrack@CTrack@NShape@@QBE_NABVC3DVector@@AAM@Z	00760e70	00761740
 ?EditorDrawCross@@YIXPAVCEnginePrimitivePrepareInfo@@ABVC3DVector@@M@Z	008764e0	007617a0
@@ -28728,7 +28728,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?SetTarget@CModeJackOfBladesFlash@@QAEXPAVCThing@@@Z	008d7320	008c0c00
 ?SetSwordObject@CModeJackOfBladesScream@@QAEXPAVCThing@@@Z	008d7370	008c0d10
 ?CreateSpecialEffect@@YIXJPBVC3DVector@@_N@Z	006e0880	008c0ea0
-?CopyPositions@@YIPAVC3DVector@@PBV1@0PAV1@ABUCEmptyTag@@PAJ@Z	0074ca20	008c1600
+??$__copy@PAVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	0074ca20	008c1600
 ?GetSubDef@CDefClassBase@@QAE_NPAV?$CDefPointer@VCJackOfBladesBattleDef@@@@@Z	008c33e0	008c1600
 ?IsAbleToNavigateFromPosToPos@CTCCreatureNavigation@@QAE_NABVC3DVector@@0M@Z	006cb620	008c1600
 ?RemoveIf@@YIPAVC3DVector@@PAV1@0UCDistancePredicate@@@Z	008ac060	008c1600
@@ -30405,7 +30405,7 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?Write3DVector@CDataOutputStream_Methods@@QAEXABVC3DVector@@@Z	00993fd0	00b17f70
 ?WriteColour@CDataOutputStream_Methods@@QAEXABVCRGBColour@@@Z	00993f30	00b18950
 ?AddToBounds@C3DBoundingSphere@@QAEXABVC3DVector@@M@Z	00addd80	00b18af0
-?Copy_SElement12@@YIPAVC3DVector@@PAV1@00ABUSRandomAccessIteratorTag@@PAJ@Z	0074ca20	00b1a640
+??$__copy@PAVC3DVector@@PAV1@H@std@@YIPAVC3DVector@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z	0074ca20	00b1a640
 ?InterpolateTo@CPSCSplineBase@NParticleEngine@@QAEXPBVCPSCBase@2@M@Z	00b22310	00b1af50
 ?DatabaseCopy@CPSCSplineBase@NParticleEngine@@QAEXPBVCPSCBase@2@@Z	00b22530	00b1afc0
 ?WriteBinary@CPSCSplineBase@NParticleEngine@@QAEXPAVCDataOutputStream@@@Z	00b21630	00b1aff0

@@ -23,17 +23,20 @@ class C3DVector { public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
 };
-struct CEmptyTag { CEmptyTag() { } };
-C3DVector* __fastcall CopyPositions(const C3DVector* first, const C3DVector* last, C3DVector* dest, const CEmptyTag& tag, long* distance);   // 0x0074CA20
+namespace std {
+struct random_access_iterator_tag { random_access_iterator_tag() { } };
 #pragma auto_inline(off)
-__declspec(noinline) C3DVector* __fastcall CopyPositions(const C3DVector* first, const C3DVector* last, C3DVector* dest, const CEmptyTag&, long*)
+template <class _RandomAccessIter, class _OutputIter, class _Distance>   // 0x0074CA20 <C3DVector*, C3DVector*, int>
+__declspec(noinline) _OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+                                                   const random_access_iterator_tag&, _Distance*)
 {
-    for (long n = last - first; n > 0; --n) {
-        *dest = *first;
-        ++first;
-        ++dest;
+    for (_Distance __n = __last - __first; __n > 0; --__n) {
+        *__result = *__first;
+        ++__first;
+        ++__result;
     }
-    return dest;
+    return __result;
+}
 }
 #pragma auto_inline(on)
 struct CPositionVector {                                // STLport vector<C3DVector> (12 bytes)
@@ -48,14 +51,14 @@ struct CPositionVector {                                // STLport vector<C3DVec
     C3DVector& operator[](long i) { return *(begin() + i); }
     C3DVector* erase(C3DVector* first, C3DVector* last)
     {
-        C3DVector* newFinish = CopyPositions(last, _M_finish, first, CEmptyTag(), 0);
+        C3DVector* newFinish = std::__copy(last, _M_finish, first, std::random_access_iterator_tag(), (int*)0);
         _M_finish = newFinish;
         return first;
     }
     C3DVector* erase(C3DVector* pos)
     {
         if (pos + 1 != _M_finish)
-            CopyPositions(pos + 1, _M_finish, pos, CEmptyTag(), 0);
+            std::__copy(pos + 1, _M_finish, pos, std::random_access_iterator_tag(), (int*)0);
         --_M_finish;
         return pos;
     }

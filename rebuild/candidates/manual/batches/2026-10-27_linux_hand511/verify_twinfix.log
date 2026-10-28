@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00a70cb0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DVector@@PAV1@@std@@YIPAVC3DVector@@PAV1@00ABU__false_type@0@@Z -> 0066ddf0 labelled '_global::UninitCopy_0066ddf0'
+00a70cb0   RELOCATION_MATCH PASS   vector<C3DVector>::_M_range_insert<C3DVector*>
+
+WINS: 1
+  00a70cb0 RELOCATION_MATCH std::??$_M_range_insert@PAVC3DVector@@@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@00ABUforward_iterator_tag@1@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  std_MrangeinsertC3DVector_00a70cb0
+addr       parity           behav  name
+0075f4e0   RELOCATION_MATCH PASS   0075f4e0
+008c1600   WARN SHARED_HEADER_AVAILABLE CWorld
+008c1600   WARN RELOC_NAME: ?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ -> 00692940 labelled 'CCreatureActionBase::GetWorld'
+008c1600   RELOCATION_MATCH PASS   008c1600
+00b1a640   RELOCATION_MATCH PASS   00b1a640
+00a71f40   RELOCATION_MATCH PASS   00a71f40
+00a725d0   WARN RELOC_NAME: ??$_M_range_insert@PAVC3DVector@@@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@00ABUforward_iterator_tag@1@@Z -> 00a70cb0 labelled 'Vector_InsertRange_PreallocatedElements'
+00a725d0   RELOCATION_MATCH PASS   00a725d0
+
+WINS: 5
+  0075f4e0 RELOCATION_MATCH m::?erase@?$vector@VC3DVector
+  008c1600 RELOCATION_MATCH m::?GetValidRushPosition@CCombatAction_StrikeResponseJackOfBladesIntoRush
+  00b1a640 RELOCATION_MATCH m::??0CPSCLight
+  00a71f40 RELOCATION_MATCH m::?DeallocateMemory@?$CArray@VC3DVector@@@@QAEXXZ
+  00a725d0 RELOCATION_MATCH m::?DeallocateUnusedMemory@?$CArray@VC3DVector@@@@QAEXXZ

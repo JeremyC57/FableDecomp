@@ -16,8 +16,9 @@ namespace std {
 struct random_access_iterator_tag {
     random_access_iterator_tag() {}
 };
-C3DVector* __fastcall __copy(C3DVector* first, C3DVector* last, C3DVector* result,
-                             const random_access_iterator_tag& tag, int* distance);   // 0x0074CA20
+template <class _RandomAccessIter, class _OutputIter, class _Distance>
+_OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+                              const random_access_iterator_tag&, _Distance*);   // 0x0074CA20 <C3DVector*, C3DVector*, int>
 template <class T> struct allocator { };
 template <class T, class A = allocator<T> > struct vector {
     T* _M_start;

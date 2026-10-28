@@ -1,15 +1,17 @@
-// CArray::DeallocateUnusedMemory() -- shrink the array to fit: when it has spare capacity, copy the elements into an exactly reserved temporary, release the old storage and adopt the temporary's
-// Leaf: ?DeallocateUnusedMemory@
+// CArray<C3DVector>::DeallocateUnusedMemory() -- shrink the array to fit: when it has spare capacity, copy the elements into an exactly reserved temporary, release the old storage and adopt the temporary's
+// Leaf: ?DeallocateUnusedMemory@?$CArray@VC3DVector@@@@QAEXXZ
 // Grade: RELOCATION_MATCH (agent902) -- the agent422 recipe (0x00A74EA0): STLport vector base + `CArray<T> temp;
 //   temp.reserve(size()); temp.insert(temp.begin(), begin(), end()); DeallocateMemory(); swap(temp);` with same-TU noinline
 //   bodies for reserve, the forward _M_range_insert (tag never touched) and the out-of-line DeallocateMemory: VC7.1 then
 //   treats the temporary as uncaptured and folds swap + ~_Vector_base into "load the old start, take the temporary's three
 //   words, free the old start" (retail's order; the Exchange hand-over loaded the temporary's start first).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A725D0, length 153 bytes (+ int3 padding); called from CPhysicsMesh::GetMeshDataFromFileData (0x00A6CFEB); DeallocateMemory 0x00A71F40 is the
-// landed CArray<SElement12> body (`imul 2AAAAAABh ; sar 1` = 12-byte stride).
-// Callees: vector::reserve 0x00920FF0 (on the temporary), vector::_M_range_insert(pos, first, last, forward_iterator_tag)
+// landed CArray<C3DVector> body (`imul 2AAAAAABh ; sar 1` = 12-byte stride).
+// Identity: CArray<C3DVector> (FableWin.pdb names CArray<C3DVector>::DeallocateUnusedMemory): the caller passes
+//   CPhysicsMesh::TotalPoints (`add ecx,3Ch`; retail layout: 16-byte header, two 0x10 CVectorMaps, TotalFaceIndices 0xC).
+// Callees: vector<C3DVector>::reserve 0x00920FF0 (on the temporary), vector<C3DVector>::_M_range_insert<C3DVector*>(pos, first, last, forward_iterator_tag)
 // 0x00A70CB0, CArray::DeallocateMemory 0x00A71F40, free 0x00BFEA14.
-struct SElement12 { unsigned char _body[0xc]; };   // 12-byte trivially destructible record (as landed 0x00A71F40)
+class C3DVector { public: float X, Y, Z; };          // CPhysicsMesh::TotalPoints element (12 bytes)
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 inline void* operator new(unsigned int, void* p) { return p; }
@@ -55,8 +57,10 @@ public:
     size_type size() const { return size_type(this->_M_finish - this->_M_start); }
     size_type capacity() const { return size_type(this->_M_end_of_storage._M_data - this->_M_start); }
     void reserve(size_type __n);
-    void _M_range_insert(iterator __pos, const_iterator __first, const_iterator __last, const forward_iterator_tag&);
-    void insert(iterator __pos, const_iterator __first, const_iterator __last)
+    template <class _ForwardIterator>
+    void _M_range_insert(iterator __pos, _ForwardIterator __first, _ForwardIterator __last, const forward_iterator_tag&);
+    template <class _InputIterator>
+    void insert(iterator __pos, _InputIterator __first, _InputIterator __last)
     {
         _M_range_insert(__pos, __first, __last, forward_iterator_tag());
     }
@@ -86,8 +90,8 @@ __declspec(noinline) void vector<_Tp, _Alloc>::reserve(size_type __n)
 }
 // vector::_M_range_insert(pos, first, last, forward_iterator_tag) -- same-TU noinline stand-in (append into the reserved
 // room; never touches the tag).
-template <class _Tp, class _Alloc>
-__declspec(noinline) void vector<_Tp, _Alloc>::_M_range_insert(iterator __pos, const_iterator __first, const_iterator __last, const forward_iterator_tag&)
+template <class _Tp, class _Alloc> template <class _ForwardIterator>
+__declspec(noinline) void vector<_Tp, _Alloc>::_M_range_insert(iterator __pos, _ForwardIterator __first, _ForwardIterator __last, const forward_iterator_tag&)
 {
     for (; __first != __last; ++__first, ++this->_M_finish)
         new (this->_M_finish) _Tp(*__first);
@@ -127,4 +131,4 @@ template <class T> void CArray<T>::DeallocateUnusedMemory()
         this->swap(temp);
     }
 }
-template class CArray<SElement12>;
+template class CArray<C3DVector>;

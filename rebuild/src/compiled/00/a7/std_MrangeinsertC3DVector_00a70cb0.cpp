@@ -1,11 +1,13 @@
-// std::vector<C3DVector>::_M_range_insert(C3DVector* pos, const C3DVector* first, const C3DVector* last, const forward_iterator_tag&) -- STLport vector insert(pos, first, last) of 12-byte vectors: shift the tail in place when capacity allows, else reallocate to size + max(size, n) and copy prefix, range and suffix
-// Leaf: ??$_M_range_insert@PBVC3DVector@@@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@PBV2@1ABUforward_iterator_tag@1@@Z
+// std::vector<C3DVector>::_M_range_insert<C3DVector*>(C3DVector* pos, C3DVector* first, C3DVector* last, const forward_iterator_tag&) -- STLport vector insert(pos, first, last) of 12-byte vectors: shift the tail in place when capacity allows, else reallocate to size + max(size, n) and copy prefix, range and suffix
+// Leaf: ??$_M_range_insert@PAVC3DVector@@@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEXPAVC3DVector@@00ABUforward_iterator_tag@1@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A70CB0, 461 bytes, thiscall `ret 10h` (pos, first, last, the tag reference).
 // Identity: the one caller is the landed CArray::DeallocateUnusedMemory 0x00A725D0, called from
 //   CPhysicsMesh::GetMeshDataFromFileData at 0x00A6CFEB on this+0x3C = CPhysicsMesh::TotalPoints (Ego_r.pdb
 //   CArray<C3DVector>; retail offset with STLport's 0x10 CVectorMap and 0xC CArray); 12-byte stride (`0x2AAAAAAB ; sar 1`);
-//   the copy callee 0x0074CA20 is catalogued as __copy<C3DVector*,C3DVector*>. reloc_bindings' current spelling
-//   (vector<SElement12>, non-template _M_range_insert) is a stand-in. Catalog label
+//   the copy callee 0x0074CA20 is __copy<C3DVector*,C3DVector*,int>. Template argument (proven): _ForwardIterator =
+//   C3DVector*. Retail calls one __uninitialized_copy target (0x0066DDF0) from all five placement copies and one __copy
+//   target (0x0074CA20) from both range copies; STLport 4.6 produces that only when the range iterator is the vector's
+//   own pointer (the caller inserts a non-const CArray's begin()/end()), and retail does not fold identical code. Catalog label
 //   "Vector_InsertRange_PreallocatedElements" is descriptive.
 // Callees (COMDATs the linker kept from other TUs of the same instantiation; __fastcall): __uninitialized_copy(.., const
 //   __false_type&) 0x0066DDF0 (x5), __copy_backward(.., const random_access_iterator_tag&, int*) 0x0075B5B0,
@@ -190,6 +192,6 @@ public:
     }
 };
 
-template void vector<C3DVector>::_M_range_insert<const C3DVector*>(C3DVector*, const C3DVector*, const C3DVector*,
-                                                                   const forward_iterator_tag&);
+template void vector<C3DVector>::_M_range_insert<C3DVector*>(C3DVector*, C3DVector*, C3DVector*,
+                                                             const forward_iterator_tag&);
 }

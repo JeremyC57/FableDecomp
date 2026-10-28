@@ -39,15 +39,17 @@ class CRGBColour { public:                               // B,G,R,A bytes over a
 
 class C3DVector { public: float X, Y, Z; };
 
-struct SRandomAccessIteratorTag { SRandomAccessIteratorTag() { } };
-
-C3DVector* __fastcall Copy_SElement12(C3DVector* first, C3DVector* last, C3DVector* result,
-                                      const SRandomAccessIteratorTag& category, long* distance);   // 0x0074CA20
+namespace std {
+struct random_access_iterator_tag { random_access_iterator_tag() { } };
+template <class _RandomAccessIter, class _OutputIter, class _Distance>
+_OutputIter __fastcall __copy(_RandomAccessIter __first, _RandomAccessIter __last, _OutputIter __result,
+                              const random_access_iterator_tag&, _Distance*);   // 0x0074CA20 <C3DVector*, C3DVector*, int>
+}
 
 template<class T> struct SAllocProxy { T* _M_data; SAllocProxy(T* p) : _M_data(p) { } };
 template<class T> class CArray { public:                  // the engine's 12-byte vector
     T* first; T* last; SAllocProxy<T> end_of_storage;
-    void erase(T* f, T* l) { last = Copy_SElement12(l, last, f, SRandomAccessIteratorTag(), (long*)0); }
+    void erase(T* f, T* l) { last = std::__copy(l, last, f, std::random_access_iterator_tag(), (int*)0); }
     void clear() { erase(first, last); }
     CArray() : first(0), last(0), end_of_storage(0) { }
 };

@@ -1,4 +1,4 @@
-# Chunk 511 (agent511, 2026-10-28): 14 of 20 single functions landed (256-512 bytes), 1 held
+# Chunk 511 (agent511, 2026-10-28): 14 of 20 single functions landed (256-512 bytes), 1 held, landed 2026-10-28
 
 Single functions of 256-512 bytes (20 rows, address order, 0x009C75A0..0x00A72CC0): STLport instantiations and engine
 maths, texture and resource code. One Opus 5.5 agent at high effort.
@@ -26,3 +26,15 @@ CBusyResourceManager's ctor, ClearAllQueries and dtor. Review: 0x00A67460 Releas
 form has none); the stand-ins SSkeletalMorphEntry / SNamedChunk / SElement12 and allocator-less vector spellings in
 landed bindings are wrong; FableWin user copy ctors for C3DVector / C3DHelperPoint / C3DMeshVolume belong in the engine
 headers.
+
+**2026-10-28: the held row landed.** 0x00A70CB0 is `vector<C3DVector>::_M_range_insert<C3DVector*>`. Proof: retail calls
+one `__uninitialized_copy` target (0x0066DDF0) from all five placement copies and one `__copy` target (0x0074CA20) from both
+range copies, which STLport 4.6 produces only for the vector's own pointer type (retail does not fold identical code).
+The caller 0x00A725D0 is CArray<C3DVector>::DeallocateUnusedMemory (FableWin.pdb), run on CPhysicsMesh::TotalPoints
+(`add ecx,3Ch`; retail layout: 16-byte header, two 0x10 CVectorMaps, the 0xC TotalFaceIndices), and it inserts its own
+non-const begin()/end(). 0x0074CA20 is then `__copy<C3DVector*, C3DVector*, int>` and 0x0075B560, called only from the
+const_pointer-cast operator= and allocate-and-copy, is the const twin. Respelled and rechecked (verify_twinfix.log, all
+RELOCATION_MATCH PASS): 0x0075F4E0 (non-template `__copy`), 0x008C1600 (invented `CopyPositions`), 0x00B1A640 (invented
+`Copy_SElement12`), 0x00A71F40 (now CArray<C3DVector>::DeallocateMemory, was the SElement12 stand-in) and 0x00A725D0 (C3DVector,
+member-template insert). Still open: reserve 0x00920FF0 and resize 0x0075C040 are also bound under the invented
+`CVector3D` (no PDB has that class) by the particle rows 0x00B18060 / 0x00B1A700 and others.
