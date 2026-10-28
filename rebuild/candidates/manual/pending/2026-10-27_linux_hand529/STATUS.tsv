@@ -1,0 +1,7 @@
+address	status	bytes	test	note
+00a56670	DIFFER	295	-	GFGetHermiteSplinePosition; DIFFER(295v295) final result-copy scheduling; differ/00a56670.cpp
+00a82be0	DIFFER	258	-	std::__adjust_heap<pair<unsigned __int64, list<C2DLineF> >*, ...>; DIFFER(258v258) val-copy scheduling; differ/00a82be0.cpp
+00a90d60	DIFFER	413	-	N3DPrimitive::CDeviceIndependent::RemapBoneIndices; DIFFER(445v413) elided temporary dtor + ebp/edi; differ/00a90d60.cpp
+00b27d90	DIFFER	325	-	CEngine::Render; DIFFER(328v325) shader-enable bytes read as a word; differ/00b27d90.cpp
+00b3bc90	DIFFER	371	-	CEngineResourceManager::SetupEditorAnimation (label was CEngine::GetEditorAnimation); DIFFER(384v371) frame slots + ebx/edi; differ/00b3bc90.cpp
+00b41c30	DIFFER	377	-	CEngineMap::PeekInterpolatedWaterDepth; DIFFER(377v377) register scheduling; differ/00b41c30.cpp

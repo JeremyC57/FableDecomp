@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00a46b50	RELOCATION_MATCH	347	PASS	std::vector<C3DSkeletalBoneMorph>::insert (STLport 4.6 _vector.h, same-TU noinline __copy_backward)
+00a46e00	RELOCATION_MATCH	303	PASS	std::__introsort_loop<C3DSkeletalBoneMorph*, ..., CompareCRCs> (STLport 4.6 _algo.c)
+00a54cb0	RELOCATION_MATCH	268	PASS	std::vector<C3DAnimationSequenceData::C3DVectorWord>::operator=
+00a56670	DIFFER	295	-	GFGetHermiteSplinePosition; DIFFER(295v295) final result-copy scheduling; differ/00a56670.cpp
+00a6d550	RELOCATION_MATCH	273	PASS	CPhysicsMesh::~CPhysicsMesh (label was C3DMeshVolume_Destructor)
+00a82be0	DIFFER	258	-	std::__adjust_heap<pair<unsigned __int64, list<C2DLineF> >*, ...>; DIFFER(258v258) val-copy scheduling; differ/00a82be0.cpp
+00a86cd0	RELOCATION_MATCH	331	PASS	CIPhysicsFacesSegmentBase::Create; same-TU Calculate is a STAND-IN body (Review at landing)
+00a90d60	DIFFER	413	-	N3DPrimitive::CDeviceIndependent::RemapBoneIndices; DIFFER(445v413) elided temporary dtor + ebp/edi; differ/00a90d60.cpp
+00aa3390	RELOCATION_MATCH	462	PASS	retail_asm: CQuaternion::CalculateSlerpWeights (inline fistp dword FloatToLong); retail_asm/00aa3390.cpp
+00aa3560	RELOCATION_MATCH	447	PASS	retail_asm: CQuaternion::SetSlerpFromIdentity; retail_asm/00aa3560.cpp
+00ad4620	RELOCATION_MATCH	241	PASS	std::_Rb_tree<pair<long,long>, ... CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> ...>::_M_insert (label was BTree_InsertPair)
+00ae8c30	RELOCATION_MATCH	275	PASS	NParticleEngine::CParticleEmitterDatabase::CreateEmitterTemplate (/Gr; label was CParticleEmitterManager_EmplaceEmitter)
+00b05620	RELOCATION_MATCH	495	PASS	retail_asm: NParticleEngine::CParticle::GetInterpolatedOrientation; retail_asm/00b05620.cpp
+00b24150	RELOCATION_MATCH	327	PASS	CEngine::ClipSphere(const C3DBoundingSphere&) const
+00b24500	RELOCATION_MATCH	399	PASS	CEngine::SmartRestoreComponentVideoMemory
+00b25950	RELOCATION_MATCH	365	PASS	CEngine::RenderFrame
+00b27d90	DIFFER	325	-	CEngine::Render; DIFFER(328v325) shader-enable bytes read as a word; differ/00b27d90.cpp
+00b30480	MATCH	397	PASS	CEngineCamera::ClipSphere(const C3DVector&, float, unsigned long*) const
+00b3bc90	DIFFER	371	-	CEngineResourceManager::SetupEditorAnimation (label was CEngine::GetEditorAnimation); DIFFER(384v371) frame slots + ebx/edi; differ/00b3bc90.cpp
+00b41c30	DIFFER	377	-	CEngineMap::PeekInterpolatedWaterDepth; DIFFER(377v377) register scheduling; differ/00b41c30.cpp

@@ -1,0 +1,12 @@
+address	name	evidence
+00a6d550	CPhysicsMesh::~CPhysicsMesh	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00a86cd0	CIPhysicsFacesSegmentBase::Create	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00aa3390	retail_asm: CQuaternion::CalculateSlerpWeights	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00aa3560	retail_asm: CQuaternion::SetSlerpFromIdentity	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00ad4620	std::_Rb_tree<pair<long,long>, ... CCountedPointer<QuadricOptimiserInternals::CVertexPairContraction> ...>::_M_insert	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00ae8c30	NParticleEngine::CParticleEmitterDatabase::CreateEmitterTemplate	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00b05620	retail_asm: NParticleEngine::CParticle::GetInterpolatedOrientation	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00b24150	CEngine::ClipSphere(const C3DBoundingSphere&) const	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00b24500	CEngine::SmartRestoreComponentVideoMemory	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00b25950	CEngine::RenderFrame	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)
+00b30480	CEngineCamera::ClipSphere(const C3DVector&, float, unsigned long*) const	proven per batch 2026-10-27_linux_hand529 NOTES.md (chunk 529)

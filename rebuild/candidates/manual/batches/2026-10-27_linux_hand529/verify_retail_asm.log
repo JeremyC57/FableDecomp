@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00aa3390   RELOCATION_MATCH PASS   CalculateSlerpWeights
+00aa3560   RELOCATION_MATCH PASS   SetSlerpFromIdentity
+00b05620   RELOCATION_MATCH PASS   GetInterpolatedOrientation
+
+WINS: 3
+  00aa3390 RELOCATION_MATCH CQuaternion::?CalculateSlerpWeights@CQuaternion@@SIXAAV1@ABV1@1M@Z
+  00aa3560 RELOCATION_MATCH CQuaternion::?SetSlerpFromIdentity@CQuaternion@@QAEXABV1@M@Z
+  00b05620 RELOCATION_MATCH NParticleEngine::CParticle::?GetInterpolatedOrientation@CParticle@NParticleEngine@@QBE?AVCQuaternion@@M@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CQuaternion_CalculateSlerpWeights_00aa3390
+  CQuaternion_SetSlerpFromIdentity_00aa3560
+  NParticleEngineCParticle_GetInterpolatedOrientation_00b05620

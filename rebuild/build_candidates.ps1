@@ -361764,6 +361764,105 @@ $catalog = @(
         TestSource = '00/a4/std_introsortloop_00a41ea0_test.cpp'
         PassPattern = '00a41ea0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a46b50'
+        Module = 'std::vector'
+        Source = '00/a4/stdvector_insert_00a46b50.cpp'
+        TestSource = '00/a4/stdvector_insert_00a46b50_test.cpp'
+        PassPattern = '00a46b50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a46e00'
+        Module = 'std'
+        Source = '00/a4/std_introsortloop_00a46e00.cpp'
+        TestSource = '00/a4/std_introsortloop_00a46e00_test.cpp'
+        PassPattern = '00a46e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a54cb0'
+        Module = 'std::vector'
+        Source = '00/a5/stdvector_operator_00a54cb0.cpp'
+        TestSource = '00/a5/stdvector_operator_00a54cb0_test.cpp'
+        PassPattern = '00a54cb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a6d550'
+        Module = 'CPhysicsMesh'
+        Source = '00/a6/CPhysicsMesh_CPhysicsMesh_00a6d550.cpp'
+        TestSource = '00/a6/CPhysicsMesh_CPhysicsMesh_00a6d550_test.cpp'
+        PassPattern = '00a6d550_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a86cd0'
+        Module = 'CIPhysicsFacesSegmentBase'
+        Source = '00/a8/CIPhysicsFacesSegmentBase_Create_00a86cd0.cpp'
+        TestSource = '00/a8/CIPhysicsFacesSegmentBase_Create_00a86cd0_test.cpp'
+        PassPattern = '00a86cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ad4620'
+        Module = 'std::_Rb_tree'
+        Source = '00/ad/stdRbtree_Minsert_00ad4620.cpp'
+        TestSource = '00/ad/stdRbtree_Minsert_00ad4620_test.cpp'
+        PassPattern = '00ad4620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ae8c30'
+        Module = 'NParticleEngine::CParticleEmitterDatabase'
+        Source = '00/ae/NParticleEngineCParticleEmitterDatabase_CreateEmitterTemplate_00ae8c30.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterDatabase_CreateEmitterTemplate_00ae8c30_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ae8c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b24150'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_ClipSphere_00b24150.cpp'
+        TestSource = '00/b2/CEngine_ClipSphere_00b24150_test.cpp'
+        PassPattern = '00b24150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b24500'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_SmartRestoreComponentVideoMemory_00b24500.cpp'
+        TestSource = '00/b2/CEngine_SmartRestoreComponentVideoMemory_00b24500_test.cpp'
+        PassPattern = '00b24500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b25950'
+        Module = 'CEngine'
+        Source = '00/b2/CEngine_RenderFrame_00b25950.cpp'
+        TestSource = '00/b2/CEngine_RenderFrame_00b25950_test.cpp'
+        PassPattern = '00b25950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b30480'
+        Module = 'CEngineCamera'
+        Source = '00/b3/CEngineCamera_ClipSphere_00b30480.cpp'
+        TestSource = '00/b3/CEngineCamera_ClipSphere_00b30480_test.cpp'
+        PassPattern = '00b30480_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa3390'
+        Module = 'CQuaternion'
+        Source = '00/aa/CQuaternion_CalculateSlerpWeights_00aa3390.cpp'
+        TestSource = '00/aa/CQuaternion_CalculateSlerpWeights_00aa3390_test.cpp'
+        PassPattern = '00aa3390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aa3560'
+        Module = 'CQuaternion'
+        Source = '00/aa/CQuaternion_SetSlerpFromIdentity_00aa3560.cpp'
+        TestSource = '00/aa/CQuaternion_SetSlerpFromIdentity_00aa3560_test.cpp'
+        PassPattern = '00aa3560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b05620'
+        Module = 'NParticleEngine::CParticle'
+        Source = '00/b0/NParticleEngineCParticle_GetInterpolatedOrientation_00b05620.cpp'
+        TestSource = '00/b0/NParticleEngineCParticle_GetInterpolatedOrientation_00b05620_test.cpp'
+        PassPattern = '00b05620_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
