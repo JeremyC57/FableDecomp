@@ -8,7 +8,7 @@ class CCharString { public:
     CCharString(const char* s) { p = (char*)std::malloc(std::strlen(s) + 1); std::strcpy(p, s); ++g_live; }
     CCharString(const CCharString& o) { p = (char*)std::malloc(std::strlen(o.p) + 1); std::strcpy(p, o.p); ++g_live; }
     ~CCharString() { std::free(p); --g_live; }
-    CCharString& operator=(const CCharString& o)
+    const CCharString& operator=(const CCharString& o)
     {
         if (this != &o) { char* n = (char*)std::malloc(std::strlen(o.p) + 1); std::strcpy(n, o.p); std::free(p); p = n; }
         return *this;

@@ -13,7 +13,7 @@ public:
     CCharString() : PStringData("") { }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++gCopies; }   // stand-in
     ~CCharString() { }
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
     bool FastCompare(const CCharString& other) const { return strcmp(PStringData, other.PStringData) < 0; }   // stand-in
 };
 class CMatrix3x4 { public: float M[12]; };

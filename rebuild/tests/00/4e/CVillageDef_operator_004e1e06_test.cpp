@@ -38,7 +38,7 @@ struct CLongVector {                    // retail std::vector<long> (12 bytes)
 
 class CCharString { public:                    // ref-counted string handle (4 bytes)
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CVillageDef : public CDefClassBase { public:                                // vtable 0x01241DDC
@@ -140,7 +140,7 @@ CVillageDef& CVillageDef::operator=(const CVillageDef& other)
 CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other) { std::memcpy(_body, other._body, sizeof(_body)); return *this; }
 CVillageTaskTypeVector& CVillageTaskTypeVector::operator=(const CVillageTaskTypeVector& other) { m_first = other.m_first; m_last = other.m_last; m_end = other.m_end; return *this; }
 CLongVector& CLongVector::operator=(const CLongVector& other) { m_first = other.m_first; m_last = other.m_last; m_end = other.m_end; return *this; }
-CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
 
 int main()
 {

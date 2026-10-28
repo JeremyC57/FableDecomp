@@ -24,7 +24,7 @@ class CWideString { public:
     long GetLength() const;                              // 0x0099B220
     operator const unsigned short*() const;              // 0x0099AF10
     void SetAsSubString(const unsigned short* text, long length);   // 0x0099B770
-    CWideString& operator=(const CWideString& other);    // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
 };
 
 struct CInterfaceMap {

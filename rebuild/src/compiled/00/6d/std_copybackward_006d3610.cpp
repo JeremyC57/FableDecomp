@@ -4,7 +4,7 @@
 class CCharString {
 public:
     char* Data;
-    CCharString& operator=(const CCharString&);
+    const CCharString& operator=(const CCharString&);
 };
 class CSoundBankLH;
 namespace std {

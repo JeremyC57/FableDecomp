@@ -56,7 +56,7 @@ public:
 class CWideString
 {
 public:
-    CWideString& operator=(const CWideString& rhs);
+    const CWideString& operator=(const CWideString& rhs);
 
 private:
     void Release();             // 0x0099B7D0-adjacent helper; masked callee
@@ -64,7 +64,7 @@ private:
     CWideStringData* data;      // +0x00
 };
 
-CWideString& CWideString::operator=(const CWideString& rhs)
+const CWideString& CWideString::operator=(const CWideString& rhs)
 {
     if (&rhs != this)
     {

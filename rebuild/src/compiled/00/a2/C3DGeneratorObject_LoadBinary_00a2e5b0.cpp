@@ -16,7 +16,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 class CCharString { public:
     char* m_pString;
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator=(const CCharString& other); // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other); // 0x0099EFB0
 };
 
 class CMatrix3x4 { public: float M[12]; };                    // 48 bytes: three axis vectors and the position

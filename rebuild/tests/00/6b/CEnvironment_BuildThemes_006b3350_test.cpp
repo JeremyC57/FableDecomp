@@ -17,7 +17,7 @@ class CWideString { public:
  CWideString(const CWideString&); //0099b720
  ~CWideString(); //0099b510
  const CWideString& operator+=(const CWideString&); //0099b8d0
- CWideString& operator=(const CWideString&); //0099b7d0
+ const CWideString& operator=(const CWideString&); //0099b7d0
 };
 class CCharString { public: void* Data; CWideString ToWideString() const; }; //0099e480
 #endif
@@ -81,7 +81,7 @@ static CWideStringData* New(const wchar_t* t) {
 CWideString::CWideString(const wchar_t* t) {Set(this,New(t));}
 CWideString::CWideString(const CWideString& x) {Set(this,New(Get(&x)->text));}
 CWideString::~CWideString() {CWideStringData* d=Get(this);delete[] d->text;delete d;--live;}
-CWideString& CWideString::operator=(const CWideString& x) {
+const CWideString& CWideString::operator=(const CWideString& x) {
  CWideStringData* d=New(Get(&x)->text);CWideStringData* old=Get(this);delete[] old->text;delete old;--live;Set(this,d);return *this;
 }
 const CWideString& CWideString::operator+=(const CWideString& x) {

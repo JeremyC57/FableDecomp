@@ -6,7 +6,7 @@ class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
-    CCharString& operator=(const char* text);      // 0x0099EFE0
+    const CCharString& operator=(const char* text);      // 0x0099EFE0
 };
 class CScriptThing { public: unsigned char m_body[0xc]; };
 struct CGameCalls_00db0600 {

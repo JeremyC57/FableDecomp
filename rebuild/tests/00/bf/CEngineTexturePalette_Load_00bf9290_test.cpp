@@ -24,7 +24,7 @@ class CCharString {
 public:
     void* PStringData;
     ~CCharString();                                 // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CDataInputStream {
@@ -108,7 +108,7 @@ void CEngineTexturePalette::Load(CDataInputStream& stream)
 // ---- stubs ----
 static int g_nextName = 100; static int g_assigns = 0, g_dtors = 0, g_overflow = 0, g_resizeN = -1, g_resizes = 0;
 CCharString::~CCharString() { ++g_dtors; }
-CCharString& CCharString::operator=(const CCharString& other) { ++g_assigns; PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { ++g_assigns; PStringData = other.PStringData; return *this; }
 void CDataInputStream::v00() {} void CDataInputStream::v01() {} void CDataInputStream::v02() {}
 void CDataInputStream::v03() {} void CDataInputStream::v04() {} void CDataInputStream::v05() {}
 CCharString CDataInputStream::ReadString() { CCharString s; s.PStringData = (void*)(long)(g_nextName++); return s; }

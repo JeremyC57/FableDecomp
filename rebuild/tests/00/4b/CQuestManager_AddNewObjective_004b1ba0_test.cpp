@@ -17,7 +17,7 @@ public:
     CWideString() : PStringData(0) { }
     CWideString(const CWideString& other) : PStringData(other.PStringData) { }
     ~CWideString() { }
-    CWideString& operator=(const CWideString& other) { PStringData = other.PStringData; return *this; }
+    const CWideString& operator=(const CWideString& other) { PStringData = other.PStringData; return *this; }
 };
 class CCharString {
 public:

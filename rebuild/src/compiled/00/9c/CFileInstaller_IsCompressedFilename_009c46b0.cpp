@@ -11,7 +11,7 @@
 #undef CCharString
 class CWideString;
 class CCharString:public CCharStringCore { public:CCharString();CCharString(const char*,long);~CCharString();CCharString ToLower() const;CWideString ToWideString() const;};
-class CWideString:public CWideStringCore { public:CWideString();~CWideString();CCharString ConvertToCharString() const;CWideString& operator=(const CWideString&);};
+class CWideString:public CWideStringCore { public:CWideString();~CWideString();CCharString ConvertToCharString() const;const CWideString& operator=(const CWideString&);};
 CWideString __fastcall operator+(const CWideString&,const CWideString&);
 struct CExtensionNode {unsigned char TreeLinks[0x10];CCharString first,second;};
 struct CExtensionTree { CExtensionNode* Head;CExtensionNode* Find(const CCharString&); };

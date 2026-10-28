@@ -10,7 +10,7 @@
 
 static int g_live = 0;
 class CCharString { public: const char* m_p; CCharString(const char* p) : m_p(p) { ++g_live; } CCharString(const CCharString& o) : m_p(o.m_p) { ++g_live; } ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& o) { m_p = o.m_p; return *this; } };
+    const CCharString& operator=(const CCharString& o) { m_p = o.m_p; return *this; } };
 class CStaticMapBankFile { public: int x; };
 class CEngineWaterRenderer { public: unsigned char _pad0[0x5a8]; CStaticMapBankFile* StaticMapBankFile; CCharString StaticMapSeaEntryPrefix;
     CEngineWaterRenderer() : StaticMapSeaEntryPrefix("") { }

@@ -1,7 +1,7 @@
 // Behaviour test for 0x00A455A0 C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget&)
 #include <cstdio>
 #include <cstring>
-class CCharString { public: char t[16]; CCharString() { t[0] = 0; } CCharString& operator=(const CCharString& o) { std::strcpy(t, o.t); return *this; } };
+class CCharString { public: char t[16]; CCharString() { t[0] = 0; } const CCharString& operator=(const CCharString& o) { std::strcpy(t, o.t); return *this; } };
 template<class T> class CArray { public:
     T* b; T* e; T* c;
     CArray() : b(0), e(0), c(0) {}

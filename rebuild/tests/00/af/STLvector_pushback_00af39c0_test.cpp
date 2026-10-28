@@ -11,7 +11,7 @@ class CCharString { public:                                     // shared, refer
     SStrData* Data;
     CCharString(const char* s) : Data((SStrData*)Alloc(sizeof(SStrData))) { Data->RefCount = 1; std::strcpy(Data->Text, s); }
     CCharString(const CCharString& o) : Data(o.Data) { ++Data->RefCount; }
-    CCharString& operator=(const CCharString& o) { ++o.Data->RefCount; Release(); Data = o.Data; return *this; }
+    const CCharString& operator=(const CCharString& o) { ++o.Data->RefCount; Release(); Data = o.Data; return *this; }
     ~CCharString() { Release(); }
     void Release() { if (--Data->RefCount == 0) Free(Data); }
     bool Is(const char* s) const { return std::strcmp(Data->Text, s) == 0; }

@@ -7,7 +7,7 @@ class CCharString { public:
     int Data;
     CCharString() : Data(0) { }
     CCharString(const CCharString& o) : Data(o.Data) { }
-    CCharString& operator=(const CCharString& o) { Data = o.Data; return *this; }
+    const CCharString& operator=(const CCharString& o) { Data = o.Data; return *this; }
     ~CCharString() { ++g_strDtors; }
 };
 template<class T> class CArray { public:

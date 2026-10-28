@@ -6,11 +6,11 @@ class CCharString { public:
     const char* text;
     CCharString(const char* t) : text(t) {}
     CCharString(const CCharString& o) : text(o.text) {}
-    CCharString& operator=(const CCharString& o) { text = o.text; return *this; }
+    const CCharString& operator=(const CCharString& o) { text = o.text; return *this; }
 };
 class CWideString { public:
     const wchar_t* text;
-    CWideString& operator=(const CWideString& o) { text = o.text; return *this; }
+    const CWideString& operator=(const CWideString& o) { text = o.text; return *this; }
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

@@ -2,7 +2,7 @@
 #include <cstdio>
 static int g_base = 0, g_ops = 0;
 class CDefClassBase { public: unsigned char _body[0x25]; CDefClassBase& operator=(const CDefClassBase& o) { ++g_base; for (int i = 0; i < 0x25; ++i) _body[i] = o._body[i]; return *this; } };
-class CCharString { public: void* m_pStringData; CCharString& operator=(const CCharString& o) { ++g_ops; m_pStringData = o.m_pStringData; return *this; } }; class CDefString { public: long TablePos; };
+class CCharString { public: void* m_pStringData; const CCharString& operator=(const CCharString& o) { ++g_ops; m_pStringData = o.m_pStringData; return *this; } }; class CDefString { public: long TablePos; };
 class CTrophyDef : public CDefClassBase { public:
     float MinigameInitialTimerSecs;
     float TimeBonusPerWitness;

@@ -13,7 +13,7 @@ class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class C3DDummyObject { public:                                 // 0x34-byte POD (position/orientation record)
     unsigned long m_words[13];

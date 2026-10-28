@@ -15,7 +15,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 extern "C" int __cdecl rand();                     // 0x00BFEB16
 CCharString __fastcall GFIntToCharString(long value);                              // 0x0099F830

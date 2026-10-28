@@ -19,7 +19,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class CCRC {
 public:

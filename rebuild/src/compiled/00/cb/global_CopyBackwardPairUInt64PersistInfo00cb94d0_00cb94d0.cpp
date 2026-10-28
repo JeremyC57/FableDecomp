@@ -11,7 +11,7 @@
 // in ebx. Backward twin of 0x00CB9C80.
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 namespace NScript {

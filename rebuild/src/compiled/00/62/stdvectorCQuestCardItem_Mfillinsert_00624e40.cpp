@@ -15,7 +15,7 @@ typedef __SIZE_TYPE__ PlacementSize;
 typedef unsigned int PlacementSize;
 #endif
 inline void* __cdecl operator new(PlacementSize,void* p){return p;}
-class CWideStringData;class CWideString{public:CWideStringData* PStringData;CWideString();CWideString(const CWideString&);~CWideString();CWideString& operator=(const CWideString&);};
+class CWideStringData;class CWideString{public:CWideStringData* PStringData;CWideString();CWideString(const CWideString&);~CWideString();const CWideString& operator=(const CWideString&);};
 class CQuestCardItem{public:long ItemIndex;CWideString ItemText;};
 namespace std{
 struct __false_type{__false_type(){}};struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{};

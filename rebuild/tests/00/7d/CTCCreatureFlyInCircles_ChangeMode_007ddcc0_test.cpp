@@ -7,7 +7,7 @@ class CCharString { public:
     const char* PStringData;
     CCharString() : PStringData("") { }
     ~CCharString() { ++g_strDtors; }
-    CCharString& operator=(const char* text) { PStringData = text; return *this; }
+    const CCharString& operator=(const char* text) { PStringData = text; return *this; }
 };
 class CThingCreatureBase;
 static long g_duration = 10;

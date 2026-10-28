@@ -5,7 +5,7 @@ class CCharString { public:
     char text[16];
     CCharString(const char* t) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { ++g_copies; std::strcpy(text, o.text); }
-    CCharString& operator=(const CCharString& o) { ++g_assigns; std::strcpy(text, o.text); return *this; }
+    const CCharString& operator=(const CCharString& o) { ++g_assigns; std::strcpy(text, o.text); return *this; }
 };
 class CTestQuest { public:
     CCharString QuestName, HSPName; long ColourIndex; CCharString DisplayName, IniFile, OutiFile, QuestCardDefName;

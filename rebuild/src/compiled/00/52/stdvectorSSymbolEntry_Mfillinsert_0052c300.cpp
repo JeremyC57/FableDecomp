@@ -18,7 +18,7 @@ class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 namespace N_005290e0 { struct CLongVector {                                       // vector<POD> (12 bytes)
     long* _M_start;

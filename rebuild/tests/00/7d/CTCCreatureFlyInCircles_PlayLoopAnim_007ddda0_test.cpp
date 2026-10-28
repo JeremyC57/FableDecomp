@@ -51,7 +51,7 @@ class CCharString { public:
     void* PStringData;
     CCharString();                                         // 0x0099E4B0
     ~CCharString();                                        // 0x0099EAE0
-    CCharString& operator=(const char* text);              // 0x0099EFE0
+    const CCharString& operator=(const char* text);              // 0x0099EFE0
 };
 
 struct CPhysicsBody {                                      // the thing's physics body at +0x60
@@ -155,7 +155,7 @@ static void Log(const char* s) { char b[64]; _snprintf(b, sizeof b, "%d:%s;", ++
 static int g_strings = 0;
 CCharString::CCharString() { PStringData = 0; ++g_strings; }
 CCharString::~CCharString() { --g_strings; }
-CCharString& CCharString::operator=(const char* text) { PStringData = (void*)text; return *this; }
+const CCharString& CCharString::operator=(const char* text) { PStringData = (void*)text; return *this; }
 
 static C3DVector g_facing;
 struct CTestBody : CPhysicsBody { virtual C3DVector GetFacing() { Log("GetFacing"); return g_facing; } };

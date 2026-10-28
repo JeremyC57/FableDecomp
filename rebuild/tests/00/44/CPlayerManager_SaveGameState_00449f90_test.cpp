@@ -16,7 +16,7 @@ class CCharString { public:
     CCharString();                                      // 0x0099E4B0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 inline CCharString EmptyString()
 {
@@ -113,7 +113,7 @@ static int g_live = 0;
 CCharString::CCharString() : PStringData((void*)"") { ++g_live; }
 CCharString::CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_live; }
 CCharString::~CCharString() { --g_live; }
-CCharString& CCharString::operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
 class C3DVector { public: float X, Y, Z; };
 static const char* g_names[2]; static unsigned __int64 g_uid = 0; static unsigned __int64 g_uidDefault = 1; static const char* g_region = 0;
 static int g_regionDefaultEmpty = 0; static int g_transfers = 0;

@@ -16,7 +16,7 @@ class CWideString { public:
     CWideString();                                 // 0x0099AED0
     CWideString(const unsigned short* text);       // 0x0099B6B0
     ~CWideString();                                // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     operator unsigned short*() const;              // 0x0099AF10
 };
 extern "C" unsigned short* __cdecl _wcsupr(unsigned short* text);   // 0x00F3FB8A

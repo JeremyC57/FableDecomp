@@ -6,7 +6,7 @@ class CCharString { public:
     CCharString() : s(0) {}
     CCharString(const CCharString& o) : s(o.s) {}
     ~CCharString() { ++g_strDtors; }
-    CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
+    const CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
 };
 class C3DVector { public: float X, Y, Z; C3DVector() : X(0), Y(0), Z(0) {} C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {} };
 class C3DHelperPoint { public: C3DVector Position; int BoneIndex; }; struct Elem { CCharString first; C3DHelperPoint second; };

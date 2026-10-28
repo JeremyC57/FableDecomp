@@ -16,7 +16,7 @@ public:
     CCharString(const char* s) { Set(s); ++g_live; }
     CCharString(const CCharString& other) { Set(other.m_text); ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& other) { if (this != &other) Set(other.m_text); return *this; }
+    const CCharString& operator=(const CCharString& other) { if (this != &other) Set(other.m_text); return *this; }
     void Set(const char* s) { int i = 0; for (; s[i] && i < 15; ++i) m_text[i] = s[i]; m_text[i] = 0; }
     const char* c_str() const { return m_text; }
 };

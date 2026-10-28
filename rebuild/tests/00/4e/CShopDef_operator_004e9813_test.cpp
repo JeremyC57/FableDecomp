@@ -18,7 +18,7 @@ class CDefClassBase { public:
 };
 class CCharString { public:
     void* m_pStringData;
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 struct CShopItemDefVector {                                 // vector<CShopItemDef> (12 bytes)
     void* m_first; void* m_last; void* m_end;
@@ -115,7 +115,7 @@ CShopDef& CShopDef::operator=(const CShopDef& other)
 
 static int g_base = 0, g_str = 0, g_vec = 0, g_map = 0;
 CDefClassBase& CDefClassBase::operator=(const CDefClassBase& o) { for (int i = 0; i < 0x28; ++i) _body[i] = o._body[i]; ++g_base; return *this; }
-CCharString& CCharString::operator=(const CCharString& o) { m_pStringData = o.m_pStringData; ++g_str; return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { m_pStringData = o.m_pStringData; ++g_str; return *this; }
 CShopItemDefVector& CShopItemDefVector::operator=(const CShopItemDefVector& o) { m_last = o.m_last; ++g_vec; return *this; }
 CAttitudeFloatMap& CAttitudeFloatMap::operator=(const CAttitudeFloatMap& o) { size = o.size; ++g_map; return *this; }
 #include <cstdio>

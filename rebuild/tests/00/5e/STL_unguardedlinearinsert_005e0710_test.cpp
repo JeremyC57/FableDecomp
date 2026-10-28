@@ -41,7 +41,7 @@ class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
     bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
@@ -74,7 +74,7 @@ void __fastcall __unguarded_linear_insert(CCharString* last, CCharString val, le
 static int g_live = 0;                                     // CCharString copies alive: copy ctor +1, dtor -1
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_live; }
 CCharString::~CCharString() { --g_live; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
 
 static char g_text[64][4];
 static CBasicStringChar g_payload[64];

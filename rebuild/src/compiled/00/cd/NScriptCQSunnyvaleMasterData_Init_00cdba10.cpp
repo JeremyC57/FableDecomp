@@ -13,7 +13,7 @@
 //   3-step loop, which VC turns into a word + byte store from a fresh xor eax (an explicit memset adds `lea ecx`).
 class CCharString { public:
     void* Data;
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 namespace NScript {
 class CQ_SunnyvaleMasterData { public:

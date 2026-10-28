@@ -79,7 +79,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -115,7 +115,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -477,7 +477,7 @@ CWideString::operator const wchar_t*() const
 {
     return storage_ ? storage_->text : L"";
 }
-CWideString& CWideString::operator=(const CWideString& other)
+const CWideString& CWideString::operator=(const CWideString& other)
 {
     if (storage_ != other.storage_) {
         release_wide(storage_); storage_ = other.storage_;

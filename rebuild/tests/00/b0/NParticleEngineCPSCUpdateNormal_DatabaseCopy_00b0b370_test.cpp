@@ -4,7 +4,7 @@
 #include <cstring>
 class CCharString { public:
     int m_id;
-    CCharString& operator=(const CCharString& other) { m_id = other.m_id; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_id = other.m_id; return *this; }
 };
 class C3DVector { public:
     float X, Y, Z;

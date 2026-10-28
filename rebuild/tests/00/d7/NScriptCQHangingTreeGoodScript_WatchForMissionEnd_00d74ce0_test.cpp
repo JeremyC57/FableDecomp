@@ -2,7 +2,7 @@
 // set and MissionFailed (unless terminating); frames pumped until termination.
 #include <cstdio>
 #include <cstring>
-class CCharString { public: const char* m_text; int assigns; CCharString& operator=(const char* t) { m_text = t; ++assigns; return *this; } };
+class CCharString { public: const char* m_text; int assigns; const CCharString& operator=(const char* t) { m_text = t; ++assigns; return *this; } };
 struct CScript;
 struct CInterface { CScript* s; int frames; int terminateAt; int killAt; void NewScriptFrame(); };
 struct CScript {

@@ -17,7 +17,7 @@ class CWideString { public:
     CWideString(const wchar_t* s) : PStringData(s) { }
     CWideString(const CWideString& other) : PStringData(other.PStringData) { }
     ~CWideString() { ++g_destroyed; }
-    CWideString& operator=(const CWideString& other) { ++g_assigns; PStringData = other.PStringData; return *this; }
+    const CWideString& operator=(const CWideString& other) { ++g_assigns; PStringData = other.PStringData; return *this; }
     operator const wchar_t*() const { return PStringData; }
 };
 struct CCaseInsensitiveStringCompare {

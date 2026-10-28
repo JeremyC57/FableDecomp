@@ -8,7 +8,7 @@ class CWideString { public:
     char text[16];
     CWideString(const char* t) { std::strcpy(text, t); ++g_live; }
     CWideString(const CWideString& o) { std::strcpy(text, o.text); ++g_live; }
-    CWideString& operator=(const CWideString& o) { std::strcpy(text, o.text); return *this; }
+    const CWideString& operator=(const CWideString& o) { std::strcpy(text, o.text); return *this; }
     ~CWideString() { --g_live; }
 };
 

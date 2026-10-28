@@ -17,7 +17,7 @@ public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
     const CCharString& operator+=(const char* text);    // 0x0099F100
 };
 class CWideString {

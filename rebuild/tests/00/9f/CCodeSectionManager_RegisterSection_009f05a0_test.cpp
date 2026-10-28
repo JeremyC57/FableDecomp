@@ -23,7 +23,7 @@ class CCharString { public:
     CCharString();                                     // 0x0099E4B0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
 template <class K, class V> struct CRetailMap {        // STLport map: header node, count, compare (12 bytes)
@@ -86,7 +86,7 @@ static unsigned long g_loadHandle = 0, g_unloadHandle = 0;
 CCharString::CCharString() { PStringData = 0; ++g_strCtors; }
 CCharString::CCharString(const CCharString& other) { PStringData = other.PStringData; ++g_strCtors; }
 CCharString::~CCharString() { ++g_strDtors; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
 // tiny fixed-capacity maps keyed by the string's data pointer / the handle
 static CRetailMap<CCharString, unsigned long>::Node g_strNodes[2][8]; static int g_strCount[2];
 static CRetailMap<unsigned long, CCodeSectionManager::CSectionDesc>::Node g_secNodes[8]; static int g_secCount;

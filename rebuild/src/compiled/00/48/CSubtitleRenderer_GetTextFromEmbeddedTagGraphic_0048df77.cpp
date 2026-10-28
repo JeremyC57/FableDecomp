@@ -20,7 +20,7 @@ public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
-    CCharString& operator=(const char* text);      // 0x0099EFE0
+    const CCharString& operator=(const char* text);      // 0x0099EFE0
     bool operator!=(const char* text) const;       // 0x0099E960
 };
 namespace NGameText {

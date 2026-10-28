@@ -15,7 +15,7 @@ class CDefClassBase { public:
 };
 class CCharString { public:
     void* m_pStringData;
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 class CDefString { public:
     long TablePos;                      // index into the def string table (trivially copied)

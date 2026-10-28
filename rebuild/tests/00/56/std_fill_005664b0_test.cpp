@@ -6,7 +6,7 @@
 static int g_stringCopies = 0, g_stringAssigns = 0;
 class CCharString { public:
     void* m_pStringData;                        // +0x00
-    CCharString& operator=(const CCharString& other) { m_pStringData = other.m_pStringData; ++g_stringAssigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pStringData = other.m_pStringData; ++g_stringAssigns; return *this; }
 };
 struct SQuestStringRecord {                     // 16 bytes
     CCharString Name;                           // +0x00

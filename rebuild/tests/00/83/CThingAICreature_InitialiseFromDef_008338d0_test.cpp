@@ -9,7 +9,7 @@ class CCharStringData { public:
 };
 class CCharString { public:
     CCharStringData* PData;
-    CCharString& operator=(const char* text);   // 0x0099EFE0
+    const CCharString& operator=(const char* text);   // 0x0099EFE0
     bool IsEmpty() const { return PData == 0 || PData->Length == 0; }
 };
 bool g_bForceStandAroundBrain = false;
@@ -122,7 +122,7 @@ void CThingAICreature::InitialiseFromDef()
 }
 // ---- test doubles ----
 static CCharStringData g_moron = { (char*)"BRAIN_STAND_AROUND_LIKE_A_MORON", 31 };
-CCharString& CCharString::operator=(const char* text) { if (std::strcmp(text, g_moron.Text) == 0) PData = &g_moron; return *this; }
+const CCharString& CCharString::operator=(const char* text) { if (std::strcmp(text, g_moron.Text) == 0) PData = &g_moron; return *this; }
 void CBrainDef::v00() {} void CBrainDef::Destroy() {}
 struct CTestBrainDef : CBrainDef { int destroyed; virtual void Destroy() { ++destroyed; } };
 static CTestBrainDef g_byIndex, g_byName; static bool g_indexOk = true;

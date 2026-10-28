@@ -87,7 +87,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -123,7 +123,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -534,7 +534,7 @@ static CCharStringData Pool[128];static int Used;
 CCharString::CCharString():storage_(0){}
 CCharString::~CCharString(){}
 const CCharString& CCharString::operator=(const char* text){CCharStringData* p=&Pool[Used++];p->text=const_cast<char*>(text);storage_=p;return *this;}
-CCharString& CCharString::operator=(const CCharString& other){storage_=other.storage_;return *this;}
+const CCharString& CCharString::operator=(const CCharString& other){storage_=other.storage_;return *this;}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
 EventBase::EventBase():WorldFrame(0){}
 EventBase::~EventBase(){}

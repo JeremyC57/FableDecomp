@@ -1,7 +1,7 @@
 // behaviour test for 0x0075CDF0 CTCCameraPointScripted validity check
 #include <cstdio>
 #include <cstring>
-class CCharString { public: const char* s; CCharString& operator=(const char* p) { s = p; return *this; } };
+class CCharString { public: const char* s; const CCharString& operator=(const char* p) { s = p; return *this; } };
 static float g_eps = 0.0001f;
 struct SP {
     unsigned long long ThingUID; float TransitionTime; bool LookDirSet, StartPosSet, EndPosSet;

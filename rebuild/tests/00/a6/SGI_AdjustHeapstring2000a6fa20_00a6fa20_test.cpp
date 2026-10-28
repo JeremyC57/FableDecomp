@@ -5,7 +5,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: AdjustHeap
 // Layout: no engine CCharString header exists; retail holds one data pointer, ctor 0099ec30, assignment 0099efb0, dtor 0099eae0.
-class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);bool FastCompare(const CCharString&)const;};
+class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);bool FastCompare(const CCharString&)const;};
 struct Payload_00a6fa20 {int data[4];Payload_00a6fa20(){}__forceinline Payload_00a6fa20(const Payload_00a6fa20& o){data[0]=o.data[0];data[1]=o.data[1];data[2]=o.data[2];data[3]=o.data[3];}};
 template<class K,class V> struct Pair_00a6fa20 { K first;V second;Pair_00a6fa20(){}Pair_00a6fa20(const Pair_00a6fa20& p):first(p.first),second(p.second){} };
 typedef Pair_00a6fa20<CCharString,Payload_00a6fa20> Record_00a6fa20;
@@ -39,7 +39,7 @@ template void AdjustHeap<Record_00a6fa20,Compare_00a6fa20>(Record_00a6fa20*,int,
 struct TestString {unsigned int key;};
 struct TestStringData {TestString* text;unsigned int size;};
 bool CCharString::FastCompare(const CCharString& b)const{const TestStringData* x=(const TestStringData*)data;const TestStringData* y=(const TestStringData*)b.data;if(x==y)return false;if(!x)return true;if(!y)return false;if(x->size!=y->size)return x->size<y->size;for(unsigned int i=0;i<x->size;i+=4){unsigned int l=*(const unsigned int*)((const char*)x->text+i),r=*(const unsigned int*)((const char*)y->text+i);if(l!=r)return l<r;}return false;}
-CCharString::CCharString(const CCharString& p):data(p.data){} CCharString::~CCharString(){} CCharString& CCharString::operator=(const CCharString& p){data=p.data;return *this;}
+CCharString::CCharString(const CCharString& p):data(p.data){} CCharString::~CCharString(){} const CCharString& CCharString::operator=(const CCharString& p){data=p.data;return *this;}
 
 int main(){const int n=5;int keys[n]={7,5,6,3,4};TestString items[n];TestStringData text[n];Record_00a6fa20 v[n];Compare_00a6fa20 comp;comp.state=0;int i;
 for(i=0;i<n;++i){items[i].key=keys[i];text[i].text=&items[i];text[i].size=4;v[i].first.data=&text[i];for(int j=0;j<4;++j)v[i].second.data[j]=keys[i]*10+j;}

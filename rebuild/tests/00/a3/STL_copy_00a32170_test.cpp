@@ -10,7 +10,7 @@ public:
     CCharString() : Id(0) { }
     explicit CCharString(int id) : Id(id) { }
     CCharString(const CCharString& o) : Id(o.Id) { ++g_copies; }
-    CCharString& operator=(const CCharString& o) { Id = o.Id; ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& o) { Id = o.Id; ++g_assigns; return *this; }
 };
 class CMatrix3x4 { public: float M[12]; };
 class C3DDummyObject { public: CMatrix3x4 Transform; int BoneIndex; };

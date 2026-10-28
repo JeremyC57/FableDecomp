@@ -10,7 +10,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC50 (a user copy: by-value arguments are built in place)
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
     struct SData { long Refs; long Length; };
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : ((SData*)m_pStringData)->Length; }
 };

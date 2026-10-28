@@ -7,7 +7,7 @@ class CCharString { public:
     char text[64];
     CCharString(const char* t, long length = -1) { std::strcpy(text, t); (void)length; }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }
-    CCharString& operator=(const char* t) { std::strcpy(text, t); return *this; }
+    const CCharString& operator=(const char* t) { std::strcpy(text, t); return *this; }
 };
 static CCharString GFIntToCharString(long v) { CCharString r(""); std::sprintf(r.text, "%ld", v); return r; }
 static CCharString operator+(const char* l, const CCharString& r) { CCharString s(l); std::strcat(s.text, r.text); return s; }

@@ -21,7 +21,7 @@ class CDefClassBase { public:
 };
 class CCharString { public:
     void* m_pStringData;
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 class CObjectAugmentationParticleSet { public:                     // retail 0x2C bytes
     unsigned char _body[0x2c];
@@ -122,7 +122,7 @@ CWeaponDef& CWeaponDef::operator=(const CWeaponDef& other)
 
 static int g_base = 0, g_str = 0, g_particles = 0, g_trails = 0, g_arrows = 0;
 CDefClassBase& CDefClassBase::operator=(const CDefClassBase& o) { for (int i = 0; i < 0x28; ++i) _body[i] = o._body[i]; ++g_base; return *this; }
-CCharString& CCharString::operator=(const CCharString& o) { m_pStringData = o.m_pStringData; ++g_str; return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { m_pStringData = o.m_pStringData; ++g_str; return *this; }
 CObjectAugmentationParticleSet& CObjectAugmentationParticleSet::operator=(const CObjectAugmentationParticleSet& o) { _body[0] = o._body[0]; ++g_particles; return *this; }
 CWeaponTrailMap& CWeaponTrailMap::operator=(const CWeaponTrailMap& o) { size = o.size; ++g_trails; return *this; }
 CArrowTrailMap& CArrowTrailMap::operator=(const CArrowTrailMap& o) { size = o.size; ++g_arrows; return *this; }

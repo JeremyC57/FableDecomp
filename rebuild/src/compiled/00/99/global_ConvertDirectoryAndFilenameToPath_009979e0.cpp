@@ -2,7 +2,7 @@
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: ConvertDirectoryAndFilenameToPath
 // Layout: string object is one pointer; retail stack locals +8 and +12.
-class CWideString { public:void* data;CWideString();CWideString(const CWideString&);~CWideString();const unsigned short* GetAsCharArray()const;long GetLength()const;void SetAsSubString(const unsigned short*,long);CWideString& operator=(const CWideString&);};
+class CWideString { public:void* data;CWideString();CWideString(const CWideString&);~CWideString();const unsigned short* GetAsCharArray()const;long GetLength()const;void SetAsSubString(const unsigned short*,long);const CWideString& operator=(const CWideString&);};
 CWideString __fastcall operator+(const CWideString&,const unsigned short*);
 CWideString __fastcall operator+(const CWideString&,const CWideString&);
 extern const unsigned short g_Slash_0122de78[];

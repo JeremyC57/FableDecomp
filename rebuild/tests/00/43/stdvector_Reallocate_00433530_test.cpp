@@ -8,7 +8,7 @@ extern "C" void* __cdecl malloc(unsigned int);
 extern "C" void __cdecl free(void*);
 inline void* __cdecl operator_new_place(unsigned int,void* p) {return p;}
 struct __false_type { __false_type() {} };
-class CCharStringData;class CCharString { public:CCharStringData* PStringData;CCharString();CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharStringData;class CCharString { public:CCharStringData* PStringData;CCharString();CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 __forceinline void CopyConstruct(CCharString* p,const CCharString& x) { new(p) CCharString(x); }
 void* __cdecl Place(unsigned int,void*);
 __forceinline void Construct(CCharString* p,const CCharString& x) { if(p) CopyConstruct(p,x); }
@@ -46,7 +46,7 @@ struct CCharStringData {unsigned int Value;unsigned char Padding[9];unsigned int
 static int liveStringBlocks,destroyedStringBlocks;
 CCharString::CCharString():PStringData(0){}CCharString::CCharString(const CCharString& o):PStringData(o.PStringData){if(PStringData)++PStringData->Refs;}
 CCharString::~CCharString(){if(PStringData&&--PStringData->Refs==0){delete PStringData;--liveStringBlocks;++destroyedStringBlocks;}}
-CCharString& CCharString::operator=(const CCharString& o){if(PStringData!=o.PStringData){if(o.PStringData)++o.PStringData->Refs;if(PStringData&&--PStringData->Refs==0){delete PStringData;--liveStringBlocks;++destroyedStringBlocks;}PStringData=o.PStringData;}return *this;}
+const CCharString& CCharString::operator=(const CCharString& o){if(PStringData!=o.PStringData){if(o.PStringData)++o.PStringData->Refs;if(PStringData&&--PStringData->Refs==0){delete PStringData;--liveStringBlocks;++destroyedStringBlocks;}PStringData=o.PStringData;}return *this;}
 void SetElement(CCharString& s,unsigned int value){CCharString t;t.PStringData=new CCharStringData;std::memset(t.PStringData,0,sizeof *t.PStringData);t.PStringData->Value=value;t.PStringData->Refs=1;++liveStringBlocks;s=t;}
 
 }

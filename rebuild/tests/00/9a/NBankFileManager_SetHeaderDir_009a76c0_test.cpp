@@ -5,7 +5,7 @@ class CWideString {
 public:
     wchar_t Data[64];
     CWideString() { Data[0] = 0; }
-    CWideString& operator=(const CWideString& o) { memcpy(Data, o.Data, sizeof(Data)); return *this; }
+    const CWideString& operator=(const CWideString& o) { memcpy(Data, o.Data, sizeof(Data)); return *this; }
 };
 static CWideString g_HeaderDir;
 namespace NBankFileManager { void SetHeaderDir(const CWideString& dir) { g_HeaderDir = dir; } }

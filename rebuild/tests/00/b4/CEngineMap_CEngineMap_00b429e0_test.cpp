@@ -33,7 +33,7 @@ class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
 class C3DVector { public: float X, Y, Z; };
@@ -124,7 +124,7 @@ extern "C" void* __cdecl TestMalloc(unsigned int size) { ++g_mallocs; g_size = s
 static int g_assigns = 0, g_dtors = 0;
 CCharString::CCharString() : PStringData(0) { }
 CCharString::~CCharString() { ++g_dtors; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
 int main()
 {
     static double raw[32];

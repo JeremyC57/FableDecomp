@@ -9,14 +9,14 @@ class CWideString {
 public:
     unsigned short* m_pData;
     CWideString(const CWideString& other);         // 0x0099B720
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 class CCharString {
 public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);         // 0x0099EC30
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 enum EConversationAttitude { ATTITUDE_NONE };
 struct CCameraTagRecord;                           // CSubtitledMessage::CCameraTag (opaque here)

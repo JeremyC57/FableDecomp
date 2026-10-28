@@ -22,7 +22,7 @@ class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
     ~CCharString();                                // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 struct SEntry {
     CCharString   m_name;
@@ -113,7 +113,7 @@ void CManager::AddQuestCardEntry(const CCharString& name, const CCharString& val
 static int g_ctor = 0, g_dtor = 0, g_assign = 0, g_alloc = 0;
 CCharString::CCharString() { ++g_ctor; m_pStringData = 0; }
 CCharString::~CCharString() { ++g_dtor; }
-CCharString& CCharString::operator=(const CCharString& o) { ++g_assign; m_pStringData = o.m_pStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { ++g_assign; m_pStringData = o.m_pStringData; return *this; }
 bool __fastcall SameString_s7(const void* a, const void* b) { return a == b; }
 void* NewListNode_s7(unsigned long size) { ++g_alloc; void* p = malloc(size); memset(p, 0, size); return p; }
 int main()

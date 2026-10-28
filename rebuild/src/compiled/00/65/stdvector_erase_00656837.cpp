@@ -16,7 +16,7 @@ class C3DVector { public: float X; float Y; float Z; };       // 12 bytes
 class CCharString {                                          // 4 bytes (Ego_r.pdb)
 public:
     void* PStringData;                                       // +0x0 CCharStringData*
-    CCharString& operator=(const CCharString& other);        // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
     ~CCharString();                                          // 0x0099EAE0
 };
 

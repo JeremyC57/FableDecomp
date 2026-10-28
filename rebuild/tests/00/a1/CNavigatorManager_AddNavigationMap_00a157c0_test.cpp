@@ -22,7 +22,7 @@ class C2DVector { public:
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class CAFile;
 class CASuspendableProcess;
@@ -102,7 +102,7 @@ void CNavigatorManager::AddNavigationMap(long mapIndex, const C2DBoxI& area, con
 // ---- stubs and driver ----
 
 #include <stdlib.h>
-CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
 static int g_trees = 0;
 CNavQuadTree::CNavQuadTree() { ++g_trees; }
 static bool g_loadOk = true; static long g_loadIndex; static const C2DBoxI* g_loadArea; static CAFile* g_loadFile; static CASuspendableProcess* g_loadProc;

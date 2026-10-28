@@ -3,7 +3,7 @@
 class CCharString { public:
     char m_text[32];
     CCharString(const char* t) { std::strcpy(m_text, t); }
-    CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
 };
 class CTCKrakenTentacle { public:
     float FacingAngle; CCharString DummyName; int returns; bool lastImmediate;

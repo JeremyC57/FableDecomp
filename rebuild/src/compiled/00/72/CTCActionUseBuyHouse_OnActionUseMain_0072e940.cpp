@@ -63,7 +63,7 @@ class CWideString { public:
     CWideString();                                           // 0x0099AED0
     ~CWideString();                                          // 0x0099B510
     const CWideString& operator+=(const CWideString& other); // 0x0099B8D0
-    CWideString& operator=(const CWideString& other);        // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);        // 0x0099B7D0
     bool operator!=(const wchar_t* text) const;              // 0x0099B150
 };
 bool __fastcall ConstructString(CWideString* text, long value);   // 0x009C7B70

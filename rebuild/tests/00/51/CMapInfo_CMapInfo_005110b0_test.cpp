@@ -7,7 +7,7 @@ class CCharString { public:
     const char* text;
     CCharString() : text("") { }
     CCharString(const CCharString& o) : text(o.text) { }
-    CCharString& operator=(const char* t) { text = t; return *this; }
+    const CCharString& operator=(const char* t) { text = t; return *this; }
 };
 class C2DBoxI { public: int TLX, TLY, BRX, BRY; };
 class CCPPointerInfo { public: unsigned int RefCount; void (*DeleteFunc)(void*); void* Data; };

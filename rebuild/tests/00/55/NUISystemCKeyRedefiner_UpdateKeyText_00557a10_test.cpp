@@ -19,7 +19,7 @@ class CWideString { public:
     CWideString() { m_text[0] = 0; ++g_live; }
     CWideString(const unsigned short* text) { int i = 0; while ((m_text[i] = text[i]) != 0) ++i; ++g_live; }
     ~CWideString() { --g_live; }
-    CWideString& operator=(const CWideString& other) { int i = 0; while ((m_text[i] = other.m_text[i]) != 0) ++i; return *this; }
+    const CWideString& operator=(const CWideString& other) { int i = 0; while ((m_text[i] = other.m_text[i]) != 0) ++i; return *this; }
     operator unsigned short*() const { return (unsigned short*)m_text; }
 };
 static unsigned short* _wcsupr_(unsigned short* text) { for (unsigned short* p = text; *p; ++p) if (*p >= 'a' && *p <= 'z') *p = (unsigned short)(*p - 32); return text; }

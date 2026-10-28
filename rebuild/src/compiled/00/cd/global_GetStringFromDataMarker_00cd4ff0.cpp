@@ -18,7 +18,7 @@ long __fastcall Compare_00411570(const char* a, const char* b);   // 0x00411570
 class CCharString {
 public:
     CCharStringData* PStringData;
-    CCharString& operator=(const CCharString& other);           // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);           // 0x0099EFB0
     // The inlined equality: the same block, or both present with equal lengths and Compare == 0
     // (`neg eax ; sbb al,al ; inc al`).
     bool operator==(const CCharString& other) const

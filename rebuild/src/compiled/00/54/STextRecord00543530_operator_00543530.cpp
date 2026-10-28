@@ -6,7 +6,7 @@
 // module is game code); the record is named by address.
 class CWideString { public:
     void* m_pData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
 struct STriple_00543530 { long m_x, m_y, m_z; };

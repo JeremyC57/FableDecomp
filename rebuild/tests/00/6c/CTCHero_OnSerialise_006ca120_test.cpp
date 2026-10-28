@@ -13,7 +13,7 @@ public:
     CCharString(const char* s, long = -1) { strcpy(Buf, s); ++g_strings; }
     CCharString(const CCharString& o) { strcpy(Buf, o.Buf); ++g_strings; }
     ~CCharString() { --g_strings; }
-    CCharString& operator=(const CCharString& o) { strcpy(Buf, o.Buf); return *this; }
+    const CCharString& operator=(const CCharString& o) { strcpy(Buf, o.Buf); return *this; }
 };
 inline CCharString EmptyString()
 {

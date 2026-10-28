@@ -38,7 +38,7 @@ public:
     CWideString();                                    // 0x0099AED0
     CWideString(const CWideString& other);            // 0x0099B720
     ~CWideString();                                   // 0x0099B510
-    CWideString& operator=(const CWideString& other); // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other); // 0x0099B7D0
     CCharString ConvertToCharString() const;          // 0x0099B2C0
 };
 CCharString __fastcall GFIntToCharString(long value); // 0x0099F830

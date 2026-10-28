@@ -8,7 +8,7 @@ class CCharString { public:
     const char* p;
     CCharString() : p(0) {}
     CCharString(const char* t, long = -1) : p(t) {}
-    CCharString& operator=(const CCharString& o) { p = o.p; return *this; }
+    const CCharString& operator=(const CCharString& o) { p = o.p; return *this; }
     unsigned long GetLength() const { return p ? (unsigned long)std::strlen(p) : 0; }
     const char* GetPString() const { return p ? p : ""; }
 };

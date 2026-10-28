@@ -7,7 +7,7 @@ class CCharString { public:
     char Text[16];
     CCharString() { Text[0] = 0; }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); }
-    CCharString& operator=(const CCharString& o) { ++g_assigns; std::strcpy(Text, o.Text); return *this; }
+    const CCharString& operator=(const CCharString& o) { ++g_assigns; std::strcpy(Text, o.Text); return *this; }
 };
 struct TeleportData {
     CCharString defName;

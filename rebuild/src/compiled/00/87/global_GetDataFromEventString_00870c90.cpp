@@ -19,7 +19,7 @@ class CCharString
 public:
     CCharStringData* PStringData;                    // +0x00
     ~CCharString();                                  // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);                              // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);                              // 0x0099EFB0
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->m_length; }
     long FindCharPos(char c) const;                                                 // 0x0099E5A0
     CCharString GetSubString(unsigned long start, unsigned long length) const;      // 0x0099EC70

@@ -11,7 +11,7 @@
 // the floats, the string through its operator=), then the three stores in source order.
 class CCharString { public:
     void* m_pStringData;
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
 struct TGenerationParameters {                              // 0x24 bytes

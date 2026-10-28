@@ -21,7 +21,7 @@ class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 namespace N_006e7b40 { struct CScriptThing {                                   // 12 bytes, vtable 0x01238C8C
     void* _vfptr;

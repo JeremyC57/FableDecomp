@@ -9,7 +9,7 @@ class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);         // 0x0099EC30
     CCharString(const char* text, long length);    // 0x0099EBF0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 class CWorldMap { public:

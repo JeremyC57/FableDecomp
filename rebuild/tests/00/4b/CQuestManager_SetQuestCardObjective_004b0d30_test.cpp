@@ -12,7 +12,7 @@ class CCharString { public:
     ~CCharString() { --g_live; }
     bool operator!=(const CCharString& o) const { return std::strcmp(Text, o.Text) != 0; }
     bool operator!=(const char* t) const { return std::strcmp(Text, t) != 0; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
 };
 class CTCBase { public: int dummy; };
 struct CTCEntry { long Type; CTCBase* TC; };

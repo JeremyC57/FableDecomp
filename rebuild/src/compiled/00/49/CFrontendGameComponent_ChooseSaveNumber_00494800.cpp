@@ -10,7 +10,7 @@
 class CWideString {
 public:
     void* PData;
-    CWideString& operator=(const CWideString& s);        // 0x0099B7D0
+    const CWideString& operator=(const CWideString& s);        // 0x0099B7D0
 };
 namespace std {
 template <class T> class vector {

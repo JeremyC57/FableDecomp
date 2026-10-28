@@ -23,7 +23,7 @@ class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                     // 0x0099AED0
     ~CWideString();                                    // 0x0099B510
-    CWideString& operator=(const CWideString& other);  // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);  // 0x0099B7D0
     long GetLength() const;                            // 0x0099B220
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70

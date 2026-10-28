@@ -90,7 +90,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -126,7 +126,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -176,7 +176,7 @@ CCharString::CCharString():storage_(0){++Live;}
 CCharString::~CCharString(){if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}--Live;}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
 const CCharString& CCharString::operator=(const char*s){if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}storage_=0;if(s&&*s){storage_=new CCharStringData;storage_->text=new char[strlen(s)+1];strcpy(storage_->text,s);storage_->owners=1;}return *this;}
-CCharString& CCharString::operator=(const CCharString&s){++Assigns;if(s.storage_)++s.storage_->owners;if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}storage_=s.storage_;return *this;}
+const CCharString& CCharString::operator=(const CCharString&s){++Assigns;if(s.storage_)++s.storage_->owners;if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}storage_=s.storage_;return *this;}
 // Genuine native copy stub: implicit base bit copy, then shared-owner retain; no invented engine ctor.
 NativeStringCopy::NativeStringCopy(const CCharString&s):CCharString(s){++Live;++Copies;CCharStringData*d=*reinterpret_cast<CCharStringData**>(this);if(d)++d->owners;}
 void __cdecl Format(CCharString*out,const char*fmt,...){++Formats;va_list ap;va_start(ap,fmt);if(!strcmp(fmt,"%d")){long n=va_arg(ap,long);sprintf(Formatted,"%ld",n);}else if(!strcmp(fmt,"%f")){double d=va_arg(ap,double);LastFloat=d;sprintf(Formatted,"%f",d);}else Bad=true;va_end(ap);*out=Formatted;}

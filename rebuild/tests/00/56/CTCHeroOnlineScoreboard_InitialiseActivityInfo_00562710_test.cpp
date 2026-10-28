@@ -7,7 +7,7 @@
 class CCharString { public:
     const char* text;
     CCharString() : text(0) { }
-    CCharString& operator=(const char* t) { text = t; return *this; }
+    const CCharString& operator=(const char* t) { text = t; return *this; }
 };
 struct CActivity {
     CCharString   Name;

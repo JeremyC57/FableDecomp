@@ -22,7 +22,7 @@ class CCharString { public:
     CCharString();                                           // 0x0099E4B0
     CCharString(const char* text, long length);              // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);        // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600

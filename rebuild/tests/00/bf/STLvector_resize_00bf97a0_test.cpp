@@ -12,7 +12,7 @@ public:
     CCharString(const char* s) { std::strncpy(Text, s, 15); Text[15] = 0; }
     CCharString(const CCharString& o) { std::memcpy(Text, o.Text, 16); ++g_copies; }
     ~CCharString() { ++g_dtors; }
-    CCharString& operator=(const CCharString& o) { std::memcpy(Text, o.Text, 16); ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& o) { std::memcpy(Text, o.Text, 16); ++g_assigns; return *this; }
     bool Is(const char* s) const { return std::strcmp(Text, s) == 0; }
 };
 

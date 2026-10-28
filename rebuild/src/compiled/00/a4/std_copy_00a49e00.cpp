@@ -46,7 +46,7 @@ public:
 class CCharString {
 public:
     void* m_pData;                                     // +0x00
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
 class CSpeechFrame;

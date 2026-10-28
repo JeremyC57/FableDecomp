@@ -2,7 +2,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: AdjustHeap
 // Layout: no engine CCharString header exists; retail holds one data pointer, ctor 0099ec30, assignment 0099efb0, dtor 0099eae0.
-class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 template<class K,class V> struct Pair_00cb9fa0 { K first;V second;Pair_00cb9fa0(){}Pair_00cb9fa0(const Pair_00cb9fa0& p):first(p.first),second(p.second){} };
 // Layout: measured pair stride24; UID at +0, three-word persist info at +8; final string at +16 has out-of-line assignment.
 struct Persist_00cb9fa0 {int a,b;CCharString name;};typedef Pair_00cb9fa0<unsigned __int64,Persist_00cb9fa0> Record_00cb9fa0;

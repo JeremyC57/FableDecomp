@@ -2,7 +2,7 @@
 class CWideString {
 public:
     void* PData;
-    CWideString& operator=(const CWideString& s);        // 0x0099B7D0
+    const CWideString& operator=(const CWideString& s);        // 0x0099B7D0
 };
 namespace std {
 template <class T> class vector {
@@ -38,7 +38,7 @@ void CFrontendGameComponent::ChooseSaveNumber(long number)
 }
 
 static int g_slot4 = 0;
-CWideString& CWideString::operator=(const CWideString& s) { PData = s.PData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& s) { PData = s.PData; return *this; }
 CFrontendGameComponent::~CFrontendGameComponent() {}
 void CFrontendGameComponent::_slot01() {} void CFrontendGameComponent::_slot02() {} void CFrontendGameComponent::_slot03() {}
 void CFrontendGameComponent::_slot04() { ++g_slot4; }

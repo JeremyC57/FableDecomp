@@ -15,7 +15,7 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 class CChunkedFileLoader;
 class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     void* m_pStringData;                                // CCharStringData*
 };
 // CDataInputStream (retail CMemoryDataInputStream layout, as in the landed 0x00701990 / 0x007AD7F0):

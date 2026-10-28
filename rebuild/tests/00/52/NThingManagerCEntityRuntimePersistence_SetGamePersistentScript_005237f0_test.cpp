@@ -7,7 +7,7 @@ static int g_assigns;
 class CCharString {
 public:
     int Id;
-    CCharString& operator=(const CCharString& other) { Id = other.Id; ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { Id = other.Id; ++g_assigns; return *this; }
 };
 
 // STLport vector view (start, finish, end of storage); CArray<T> derives from it.

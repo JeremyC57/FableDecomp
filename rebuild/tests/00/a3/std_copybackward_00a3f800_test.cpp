@@ -8,7 +8,7 @@
 class CCharString {
 public:
     char* Data;
-    CCharString& operator=(const CCharString&);
+    const CCharString& operator=(const CCharString&);
 };
 class CSoundBankLH;
 namespace std {
@@ -26,7 +26,7 @@ BidirectionalIterator __fastcall __copy_backward(RandomAccessIterator first, Ran
 template std::pair<CCharString, CSoundBankLH*> * __fastcall std::__copy_backward<std::pair<CCharString, CSoundBankLH*> *, std::pair<CCharString, CSoundBankLH*> *, int>(std::pair<CCharString, CSoundBankLH*> *, std::pair<CCharString, CSoundBankLH*> *, std::pair<CCharString, CSoundBankLH*> *, const std::random_access_iterator_tag&, int*);
 
 static int assignments;
-CCharString& CCharString::operator=(const CCharString& rhs) { ++assignments; Data=rhs.Data; return *this; }
+const CCharString& CCharString::operator=(const CCharString& rhs) { ++assignments; Data=rhs.Data; return *this; }
 int main() {
     typedef std::pair<CCharString, CSoundBankLH*>  Item;
     Item a[6]; char values[6];

@@ -9,7 +9,7 @@
 //   WorldMapOffset +0x44, NameGraphicOffset +0x4c, the three flags +0x54..+0x56.
 //   engine/CRegion.h carries the Ego_r 16-byte vectors (every member after Maps is 4..8 bytes late), so this row
 //   uses a local model. CDefPointer releases its pointee through virtual slot 1 when the count at +0x04 drops to 0.
-class CCharString { public: void* PStringData; CCharString& operator=(const CCharString&); };   // 0x0099EFB0
+class CCharString { public: void* PStringData; const CCharString& operator=(const CCharString&); };   // 0x0099EFB0
 class C2DVector { public: float X, Y; };
 template<class T> struct CRetailVector { T* m_first; T* m_last; T* m_end; CRetailVector& operator=(const CRetailVector&); };   // long: 0x00454886
 template<class K, class V> struct CRetailMap { void* m_header; unsigned long m_node_count; unsigned long m_compare; CRetailMap& operator=(const CRetailMap&); };   // 0x00517370

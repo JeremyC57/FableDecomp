@@ -23,7 +23,7 @@ class CCharString { public:
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
     bool operator!=(const char* text) const;                // 0x0099E960
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
     CCharString& operator+=(const char* text);              // 0x0099F100
     CWideString ToWideString() const;                       // 0x0099E480
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }

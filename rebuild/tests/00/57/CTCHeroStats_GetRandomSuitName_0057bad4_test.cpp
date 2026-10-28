@@ -13,7 +13,7 @@ class CCharString { public:
     const char* Text;
     CCharString() : Text(0) {}
     CCharString(const CCharString& other) : Text(other.Text) {}
-    CCharString& operator=(const char* text) { Text = text; if (g_assignCount < 16) g_lastAssigned[g_assignCount] = text; ++g_assignCount; return *this; }
+    const CCharString& operator=(const char* text) { Text = text; if (g_assignCount < 16) g_lastAssigned[g_assignCount] = text; ++g_assignCount; return *this; }
 };
 
 struct CCharStringVector {

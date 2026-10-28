@@ -9,7 +9,7 @@
 class CCharStringData;
 class CCharString {
 public:
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     ~CCharString();                                     // 0x0099EAE0
 private:
     CCharStringData* m_pData;

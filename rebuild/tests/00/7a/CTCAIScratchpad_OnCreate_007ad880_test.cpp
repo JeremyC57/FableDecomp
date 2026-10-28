@@ -6,7 +6,7 @@ class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     const char* text;
     int assigns;
-    CCharString& operator=(const CCharString& other) { text = other.text; ++assigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { text = other.text; ++assigns; return *this; }
 };
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE };
 

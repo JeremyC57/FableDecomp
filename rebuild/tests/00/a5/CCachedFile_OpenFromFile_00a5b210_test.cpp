@@ -5,7 +5,7 @@ class CWideString { public:
     void* m_pStringData;
     CWideString() : m_pStringData(0) {}
     CWideString(const CWideString& o) : m_pStringData(o.m_pStringData) {}
-    CWideString& operator=(const CWideString& other) { ++g_assign; g_assignedFrom = other.m_pStringData; m_pStringData = other.m_pStringData; return *this; }
+    const CWideString& operator=(const CWideString& other) { ++g_assign; g_assignedFrom = other.m_pStringData; m_pStringData = other.m_pStringData; return *this; }
     ~CWideString() { ++g_wdtors; }
 };
 class CAFile { public:

@@ -16,7 +16,7 @@ class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);
     ~CCharString();                                // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 CCharString __fastcall GFIntToCharString(long value);                         // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690

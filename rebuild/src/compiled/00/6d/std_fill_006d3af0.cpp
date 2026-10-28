@@ -12,7 +12,7 @@ void __fastcall fill(Iterator first, Iterator last, const T& value)
 class CCharString {
 public:
     char* Data;
-    CCharString& operator=(const CCharString&);
+    const CCharString& operator=(const CCharString&);
 };
 
 template void __fastcall std::fill<std::pair<CCharString, long> *, std::pair<CCharString, long>  >(std::pair<CCharString, long> *, std::pair<CCharString, long> *, const std::pair<CCharString, long> &);

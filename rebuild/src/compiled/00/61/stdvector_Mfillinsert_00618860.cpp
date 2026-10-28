@@ -20,7 +20,7 @@ public:
     void* m_pStringData;
     CCharString(const CCharString& other);                                       // 0x0099EC30
     ~CCharString();                                                              // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 
 class C2DVector { public:

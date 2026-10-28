@@ -10,7 +10,7 @@ static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) g_fail = 1; } while (0)
 class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
 class CMatrix3x4 { public: float M[12]; };
@@ -36,7 +36,7 @@ SDummyObjectEntry* __fastcall CopyBackward_DummyObjectEntry_00a31060(SDummyObjec
 }
 
 static int g_strAssign = 0;
-CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; ++g_strAssign; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; ++g_strAssign; return *this; }
 
 typedef SDummyObjectEntry T;
 #define KEY(E) (E).Index

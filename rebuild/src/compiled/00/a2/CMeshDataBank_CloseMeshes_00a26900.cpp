@@ -18,7 +18,7 @@ extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   
 class CCharString {
 public:
     void* PStringData;
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 
 class CMeshDataBankEntry;

@@ -13,7 +13,7 @@ class CCharString { public:
     CCharString(const char* t, long) : s(t) { }
     CCharString(const CCharString& o) : s(o.s) { }
     ~CCharString() { ++g_strDtors; }
-    CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
+    const CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
     bool operator==(const char* t) const { return std::strcmp(s, t) == 0; }
     bool operator!=(const char* t) const { return std::strcmp(s, t) != 0; }
     bool IsEmpty() const { return s[0] == 0; }

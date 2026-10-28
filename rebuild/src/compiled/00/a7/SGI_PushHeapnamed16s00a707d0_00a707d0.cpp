@@ -2,7 +2,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: PushHeap
 // Layout: no engine CCharString header exists; retail holds one data pointer, ctor 0099ec30, assignment 0099efb0, dtor 0099eae0.
-class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 // Layout: retail counted block has count +0, destroy callback +4 and object +8.
 struct CountBlock_00a707d0 { int references; void (__fastcall *Destroy)(void*); void* object; };
 template<class T> struct CountedPointer_00a707d0 {

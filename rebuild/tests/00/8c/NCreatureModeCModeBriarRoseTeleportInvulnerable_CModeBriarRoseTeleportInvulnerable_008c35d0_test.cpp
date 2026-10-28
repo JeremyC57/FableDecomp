@@ -28,7 +28,7 @@ class CCharString { public:
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (default argument: the literal converts implicitly)
     ~CCharString();                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
@@ -96,7 +96,7 @@ static CCharStringData g_datas[8]; static int g_ndata;
 CCharString::CCharString() : m_pData(0) { ++g_live; }
 CCharString::CCharString(const char* t, long) { ++g_live; CCharStringData* d = &g_datas[g_ndata++]; d->m_pData = t; d->m_length = (unsigned long)strlen(t); m_pData = d; }
 CCharString::~CCharString() { --g_live; }
-CCharString& CCharString::operator=(const CCharString& o) { m_pData = o.m_pData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { m_pData = o.m_pData; return *this; }
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length) {
     g_crc_text = (const char*)data; g_crc_len = length; unsigned long h = seed; for (unsigned long i = 0; i < length; ++i) h = h * 31 + ((const unsigned char*)data)[i]; return h; }
 void CAnimFilterOfGroup::v00() {}

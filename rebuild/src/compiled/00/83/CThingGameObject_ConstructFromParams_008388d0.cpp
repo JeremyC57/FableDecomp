@@ -15,7 +15,7 @@ struct CThingPhysicalArg;
 class CCharString { public:
     void* m_pStringData;
     bool operator!=(const char* text) const;        // 0x0099E960
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CThingPhysical { public:

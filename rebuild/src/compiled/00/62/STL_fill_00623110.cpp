@@ -13,7 +13,7 @@
 class CWideString {
 public:
     void* PStringData;
-    CWideString& operator=(const CWideString& other);    // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
 };
 namespace std {
 template <class _T1, class _T2> struct pair {

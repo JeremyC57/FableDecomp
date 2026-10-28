@@ -13,7 +13,7 @@
 #include "engine/CSpawnedFuncBase.h"
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     ~CCharString();                                     // 0x0099EAE0
 };
 class CDefString { public:

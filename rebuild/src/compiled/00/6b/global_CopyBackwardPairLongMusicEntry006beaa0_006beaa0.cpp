@@ -10,7 +10,7 @@
 // two file names, then Gain, Offset and CacheToHD.
 class CWideString { public:                         // one-word handle
     void* m_pData;                           // +0x00
-    CWideString& operator=(const CWideString& other);     // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);     // 0x0099B7D0
 };
 
 struct CRegisteredMusicEntry {               // CMusicManager::CRegisteredMusicEntry, 0x14 bytes

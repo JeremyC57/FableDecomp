@@ -1,7 +1,7 @@
 // Behaviour test for CKeyCamera::operator= @ 0x0075EF00.
 #include <cstdio>
 static int g_stringAssigns = 0;
-class CCharString { public: const char* p; CCharString& operator=(const CCharString& o) { p = o.p; ++g_stringAssigns; return *this; } };
+class CCharString { public: const char* p; const CCharString& operator=(const CCharString& o) { p = o.p; ++g_stringAssigns; return *this; } };
 class C3DVector { public: float X, Y, Z; };
 struct CKeyCamera {
     float DeltaIndex; C3DVector Pos, LookDirection; float FOV, Roll, ShuttleSpeed, Duration, PauseTime; CCharString EventName; float SpeedFraction;

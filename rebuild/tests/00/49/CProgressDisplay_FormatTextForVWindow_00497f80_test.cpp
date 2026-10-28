@@ -49,7 +49,7 @@ CWideString::~CWideString()
 {
 }
 
-CWideString& CWideString::operator=(const CWideString& other)
+const CWideString& CWideString::operator=(const CWideString& other)
 {
     storage_ = *reinterpret_cast<CWideStringData* const*>(&other);
     return *this;

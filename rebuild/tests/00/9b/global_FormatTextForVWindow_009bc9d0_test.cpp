@@ -8,7 +8,7 @@ public:
     CWideString(const unsigned short* text) { Assign(text); }
     CWideString(const CWideString& other) { Assign(other.Data); }
     ~CWideString() { ++Destroyed; }
-    CWideString& operator=(const CWideString& other) { Assign(other.Data); return *this; }
+    const CWideString& operator=(const CWideString& other) { Assign(other.Data); return *this; }
     bool Contains(const CWideString& text) const { return Find(text) >= 0; }
     void Replace(const CWideString& search, const CWideString& replacement)
     {

@@ -24,7 +24,7 @@ public:
     CCharString(const char* s) : PStringData(DupText(s)) { ++g_live; }
     CCharString(const CCharString& other) : PStringData(DupText(other.PStringData)) { ++g_live; }
     ~CCharString() { std::free(PStringData); --g_live; }
-    CCharString& operator=(const CCharString& other)
+    const CCharString& operator=(const CCharString& other)
     {
         if (this != &other) {
             char* d = DupText(other.PStringData);
@@ -50,7 +50,7 @@ public:
     CWideString(const char* s) : PStringData(DupText(s)) { ++g_live; }
     CWideString(const CWideString& other) : PStringData(DupText(other.PStringData)) { ++g_live; }
     ~CWideString() { std::free(PStringData); --g_live; }
-    CWideString& operator=(const CWideString& other)
+    const CWideString& operator=(const CWideString& other)
     {
         if (this != &other) {
             char* d = DupText(other.PStringData);

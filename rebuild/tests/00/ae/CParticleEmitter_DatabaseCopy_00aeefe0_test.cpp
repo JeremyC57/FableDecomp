@@ -4,7 +4,7 @@
 #include <cstdlib>
 class CCharString { public:
     int m_id;
-    CCharString& operator=(const CCharString& other) { m_id = other.m_id; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_id = other.m_id; return *this; }
 };
 struct SCountBlock {
     long  m_references;

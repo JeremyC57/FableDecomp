@@ -19,7 +19,7 @@ public:
     CCharStringData* PStringData;                   // +0x00
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CSymbolMap;
@@ -189,7 +189,7 @@ static char g_log[512];
 static void Log(const char* s) { strcat(g_log, s); strcat(g_log, ";"); }
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { }
 CCharString::~CCharString() { }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
 void CSymbolMap::v00() { }
 bool CPred_HasGroupName::operator()(const tstd::pair<CCharString, CSymbolMap::CSymbolInfo>& entry)
 {

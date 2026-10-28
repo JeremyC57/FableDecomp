@@ -5,7 +5,7 @@ class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData("") { }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { }
-    CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
     bool operator<(const CCharString& other) const { return std::strcmp(m_pData, other.m_pData) < 0; }
 };
 struct SValue0C {

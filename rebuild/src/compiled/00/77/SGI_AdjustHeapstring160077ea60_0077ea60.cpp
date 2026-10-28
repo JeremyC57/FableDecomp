@@ -2,7 +2,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: AdjustHeap
 // Layout: no engine CCharString header exists; retail holds one data pointer, ctor 0099ec30, assignment 0099efb0, dtor 0099eae0.
-class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 struct Payload_0077ea60 {int data[3];Payload_0077ea60(){}__forceinline Payload_0077ea60(const Payload_0077ea60& o){data[0]=o.data[0];data[1]=o.data[1];data[2]=o.data[2];}};
 template<class K,class V> struct Pair_0077ea60 { K first;V second;Pair_0077ea60(){}Pair_0077ea60(const Pair_0077ea60& p):first(p.first),second(p.second){} };
 typedef Pair_0077ea60<CCharString,Payload_0077ea60> Record_0077ea60;

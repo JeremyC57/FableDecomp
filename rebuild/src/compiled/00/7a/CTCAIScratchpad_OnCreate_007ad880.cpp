@@ -11,7 +11,7 @@
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);        // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE };
 

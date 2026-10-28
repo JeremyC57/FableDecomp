@@ -15,7 +15,7 @@ class CCharString { public:
     void* m_pData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 class CWorld { public:
     unsigned long* GetPRandomSeed();                    // 0x0049D810

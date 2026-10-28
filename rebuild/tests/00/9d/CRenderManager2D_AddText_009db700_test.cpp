@@ -40,7 +40,7 @@ class CWideString { public:
     void* m_pData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
 struct IDirect3DTexture9;
@@ -129,7 +129,7 @@ void CRenderManager2D::AddText(const C3DVector& position, float scale, const CWi
 static int g_strCtor = 0, g_strDtor = 0, g_uninit = 0, g_copies = 0, g_overflow = 0;
 CWideString::CWideString() { m_pData = 0; ++g_strCtor; }
 CWideString::~CWideString() { ++g_strDtor; }
-CWideString& CWideString::operator=(const CWideString& other) { m_pData = other.m_pData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { m_pData = other.m_pData; return *this; }
 void CTexture::Uninitialise() { ++g_uninit; }
 CQuickDrawTriInfo::CQuickDrawTriInfo(const CQuickDrawTriInfo& other)
 {

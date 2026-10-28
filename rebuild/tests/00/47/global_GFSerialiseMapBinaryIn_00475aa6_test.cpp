@@ -24,7 +24,7 @@ class CCharString { public:
     CCharString() { Text[0] = 0; }
     CCharString(const char* s) { std::strcpy(Text, s); }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); }
-    CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
     bool operator==(const CCharString& o) const { return std::strcmp(Text, o.Text) == 0; }
 };
 template <class T1, class T2> struct pair {

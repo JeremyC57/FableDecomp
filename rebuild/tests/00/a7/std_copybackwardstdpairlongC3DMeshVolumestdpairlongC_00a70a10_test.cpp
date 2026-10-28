@@ -5,7 +5,7 @@ void __cdecl operator delete(void* p);
 class CCharString {
 public:
     void* m_pData;                           // +0x00
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
 struct SCountBlock {
@@ -60,7 +60,7 @@ _BidirectionalIter2 __fastcall __copy_backward(_BidirectionalIter1 __first, _Bid
                                                const random_access_iterator_tag&, _Distance*);   // from the source object
 }
 static int g_assigns = 0, g_destroyed = 0;
-CCharString& CCharString::operator=(const CCharString& other) { ++g_assigns; m_pData = other.m_pData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { ++g_assigns; m_pData = other.m_pData; return *this; }
 static void __fastcall Destroy(void*) { ++g_destroyed; }
 typedef std::pair<long, C3DMeshVolume> Entry;
 int main()

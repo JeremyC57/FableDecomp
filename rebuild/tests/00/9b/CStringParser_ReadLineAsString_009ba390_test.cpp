@@ -36,7 +36,7 @@ public:
     CCharString(const CCharString& other);         // 0x0099EC30
     CCharString(const char* text, long length);    // 0x0099EBF0 (-1 = strlen)
     ~CCharString();                                // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     char* GetString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->PData; }
 };
 
@@ -125,7 +125,7 @@ CCharString::CCharString() : PStringData(0) { ++g_live; }
 CCharString::CCharString(const char* text, long length) : PStringData(0) { ++g_live; SetText(*this, text, length); }
 CCharString::CCharString(const CCharString& other) : PStringData(0) { ++g_live; SetText(*this, other.GetString(), -1); }
 CCharString::~CCharString() { --g_live; if (PStringData) { free(PStringData->PData); free(PStringData); } }
-CCharString& CCharString::operator=(const CCharString& other) { CCharString t(other); PStringData = t.PStringData; t.PStringData = 0; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { CCharString t(other); PStringData = t.PStringData; t.PStringData = 0; return *this; }
 int main()
 {
     CStringParser* parser = new CStringParser;

@@ -11,7 +11,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1) { Text = (char*)std::malloc(std::strlen(text) + 1); std::strcpy(Text, text); }
     CCharString(const CCharString& o) { Text = 0; if (o.Text) { Text = (char*)std::malloc(std::strlen(o.Text) + 1); std::strcpy(Text, o.Text); } }
     ~CCharString() { if (Text) std::free(Text); }
-    CCharString& operator=(const CCharString& o) { if (this != &o) { if (Text) std::free(Text); Text = 0; if (o.Text) { Text = (char*)std::malloc(std::strlen(o.Text) + 1); std::strcpy(Text, o.Text); } } return *this; }
+    const CCharString& operator=(const CCharString& o) { if (this != &o) { if (Text) std::free(Text); Text = 0; if (o.Text) { Text = (char*)std::malloc(std::strlen(o.Text) + 1); std::strcpy(Text, o.Text); } } return *this; }
     const char* GetString() const { return Text ? Text : ""; }
     CCharString& operator+=(const char* text) { char* n = (char*)std::malloc(std::strlen(GetString()) + std::strlen(text) + 1); std::strcpy(n, GetString()); std::strcat(n, text); if (Text) std::free(Text); Text = n; return *this; }
     bool operator==(const char* text) const { return std::strcmp(GetString(), text) == 0; }

@@ -26,7 +26,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
 struct CDefStringTable {
@@ -162,7 +162,7 @@ static CCharStringData pool[8];
 static int poolUsed;
 CCharString::CCharString() : PStringData(0) { ++strCtors; }
 CCharString::~CCharString() { ++strDtors; }
-CCharString& CCharString::operator=(const CCharString& other) { ++strAssigns; PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { ++strAssigns; PStringData = other.PStringData; return *this; }
 static unsigned long crcSeed, crcLength; static const void* crcData; static int crcCalls;
 unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length)
 {

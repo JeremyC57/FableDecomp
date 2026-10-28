@@ -36,7 +36,7 @@ class CWideString {
 public:
     void* PStringData;
     ~CWideString();                                      // 0x0099B510
-    CWideString& operator=(const CWideString& other);    // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
     CCharString ConvertToCharString() const;             // 0x0099B2C0
     long GetLength() const;                              // 0x0099B220
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0

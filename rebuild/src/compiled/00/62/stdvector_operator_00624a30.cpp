@@ -20,7 +20,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 class CTestQuest { public:                                  // 0x1C bytes (Ego_r.pdb)
     CCharString QuestName;                                  // +0x00

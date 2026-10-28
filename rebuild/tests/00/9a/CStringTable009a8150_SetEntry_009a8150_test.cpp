@@ -3,7 +3,7 @@
 class CCharString {
 public:
     char text[32];
-    CCharString& operator=(const CCharString& o) { std::memcpy(text, o.text, sizeof(text)); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::memcpy(text, o.text, sizeof(text)); return *this; }
 };
 struct CStringMap {                               // a tiny two-slot map keyed by text
     CCharString keys[2]; CCharString values[2]; int used;

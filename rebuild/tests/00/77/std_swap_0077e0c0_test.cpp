@@ -8,7 +8,7 @@ class CCharString { public:
     CCharString(const char* s) { std::strcpy(Text, s); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
 };
 class C3DVector { public:
     float X, Y, Z;

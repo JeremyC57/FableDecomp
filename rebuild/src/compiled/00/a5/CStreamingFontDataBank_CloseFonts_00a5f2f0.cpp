@@ -15,7 +15,7 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 
 class CStreamingFontDataBankEntry {                     // vtable 0x0129D5B4

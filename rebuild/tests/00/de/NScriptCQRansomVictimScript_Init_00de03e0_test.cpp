@@ -8,7 +8,7 @@ class CCharString { public:
     char Text[64];
     CCharString() { Text[0] = 0; }
     CCharString(const char* t) { std::strcpy(Text, t); }
-    CCharString& operator=(const char* t) { std::strcpy(Text, t); return *this; }
+    const CCharString& operator=(const char* t) { std::strcpy(Text, t); return *this; }
 };
 class CGameScriptInterface { public:
     void SetTimer(long timer, long seconds) { char b[64]; std::sprintf(b, "T:%ld:%ld", timer, seconds); Log(b); }

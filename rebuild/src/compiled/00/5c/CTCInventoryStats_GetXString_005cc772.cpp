@@ -32,7 +32,7 @@ public:
     CWideString(const wchar_t* text);                   // 0x0099B6B0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     CCharString ToCharString() const;                   // 0x0099B2C0
     void Replace(const CWideString& from, const CWideString& to);   // 0x0099C1E0
 };

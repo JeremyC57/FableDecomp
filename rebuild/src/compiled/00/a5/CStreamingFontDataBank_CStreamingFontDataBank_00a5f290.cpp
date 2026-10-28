@@ -46,7 +46,7 @@ template<class T> class CArray { public:                    // retail CArray is 
 class CCharString {
 public:
     CCharString();                                   // 0x0099E4B0
-    CCharString& operator=(const char* text);        // 0x0099EFE0
+    const CCharString& operator=(const char* text);        // 0x0099EFE0
     void* m_pStringData;
 };
 

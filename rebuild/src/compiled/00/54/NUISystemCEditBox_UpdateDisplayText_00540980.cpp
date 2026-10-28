@@ -9,7 +9,7 @@ class CWideString { public:
     CWideString(const CWideString& other);                  // 0x0099B720
     ~CWideString();                                         // 0x0099B510
     CWideString& operator=(const unsigned short* text);     // 0x0099B800
-    CWideString& operator=(const CWideString& other);       // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     CWideString& operator+=(const unsigned short* text);    // 0x0099B940
     CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
     operator const unsigned short*() const;                 // 0x0099AF10

@@ -7,7 +7,7 @@ class CCharString {
 public:
     char buf[64];
     CCharString(const char* t) { std::strcpy(buf, t); }
-    CCharString& operator=(const char* t) { std::strcpy(buf, t); return *this; }
+    const CCharString& operator=(const char* t) { std::strcpy(buf, t); return *this; }
     operator const char*() const { return buf; }
     long GetLength() const { return (long)std::strlen(buf); }
 };

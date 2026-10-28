@@ -15,14 +15,14 @@ class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
 };
 
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);                 // 0x0099B720
     ~CWideString();                                        // 0x0099B510
-    CWideString& operator=(const CWideString& other);      // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);      // 0x0099B7D0
 };
 
 class CQuestManager {
@@ -163,10 +163,10 @@ static int g_strCopies = 0, g_strDtors = 0, g_strAssigns = 0;
 static int g_wideCopies = 0, g_wideDtors = 0, g_wideAssigns = 0;
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_strCopies; }
 CCharString::~CCharString() { ++g_strDtors; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_strAssigns; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_strAssigns; return *this; }
 CWideString::CWideString(const CWideString& other) : PStringData(other.PStringData) { ++g_wideCopies; }
 CWideString::~CWideString() { ++g_wideDtors; }
-CWideString& CWideString::operator=(const CWideString& other) { PStringData = other.PStringData; ++g_wideAssigns; return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { PStringData = other.PStringData; ++g_wideAssigns; return *this; }
 static void ResetCounts() { g_strCopies = g_strDtors = g_strAssigns = g_wideCopies = g_wideDtors = g_wideAssigns = 0; }
 
 typedef CQuestManager::CBoast CBoast;

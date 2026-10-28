@@ -10,7 +10,7 @@ static int gArrayAssigns = 0;
 class CCharString {
 public:
     const char* PStringData;
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++gAssigns; return *this; }   // stand-in
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++gAssigns; return *this; }   // stand-in
 };
 template <class T> class CArray {
 public:

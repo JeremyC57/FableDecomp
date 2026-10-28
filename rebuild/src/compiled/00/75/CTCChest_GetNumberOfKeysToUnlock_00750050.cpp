@@ -15,8 +15,8 @@
 // operator= by its address) -- an unnamed temporary passes GetString's returned eax.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
     ~CCharString();                                     // 0x0099EAE0
 };
 class CDefString { public: long Index; };

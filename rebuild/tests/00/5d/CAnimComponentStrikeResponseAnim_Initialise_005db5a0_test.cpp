@@ -11,7 +11,7 @@ class CCharString { public:
     CCharString(const char* s) { PStringData = (CCharStringData*)std::malloc(sizeof(CCharStringData)); PStringData->Length = (long)std::strlen(s); std::strcpy(PStringData->text, s); ++g_live; }
     CCharString(const CCharString& o) : PStringData(0) { ++g_live; *this = o; }
     ~CCharString() { std::free(PStringData); --g_live; }
-    CCharString& operator=(const CCharString& o)
+    const CCharString& operator=(const CCharString& o)
     { std::free(PStringData); PStringData = 0; if (o.PStringData) { PStringData = (CCharStringData*)std::malloc(sizeof(CCharStringData)); *PStringData = *o.PStringData; } return *this; }
     CCharString GetSubString(unsigned long start, unsigned long count) const { char buf[32]; std::memcpy(buf, PStringData->text + start, count); buf[count] = 0; return CCharString(buf); }
     long GetLength() const { return PStringData ? PStringData->Length : 0; }

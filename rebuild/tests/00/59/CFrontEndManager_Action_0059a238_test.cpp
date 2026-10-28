@@ -46,7 +46,7 @@ class CWideString
 public:
     void* PStringData;
     ~CWideString();                                       // 0x0099B510
-    CWideString& operator=(const CWideString& other);     // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);     // 0x0099B7D0
     __forceinline bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)
@@ -448,7 +448,7 @@ static char* Keep(const char* a, const char* b = "")
 CCharString::CCharString(const char* text, long) : PStringData((void*)text) {}
 CCharString::~CCharString() {}
 CWideString::~CWideString() {}
-CWideString& CWideString::operator=(const CWideString& other) { PStringData = other.PStringData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { PStringData = other.PStringData; return *this; }
 bool __cdecl CWideString::Compare_Unsigned16Array(const void* a, const void* b) { return strcmp((const char*)a, (const char*)b) == 0; }
 static CWideString Wide(const char* s) { CWideString w; w.PStringData = (void*)s; return w; }
 CWideString __fastcall operator+(const CWideString& text, const char* suffix) { return Wide(Keep((const char*)text.PStringData, suffix)); }

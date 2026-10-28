@@ -17,11 +17,11 @@ class CTCBase;
 class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class CWideString { public:
     void* m_pData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 struct CInterfaceMap {
     struct SEntry { long type; CTCBase* component; };

@@ -1,0 +1,50 @@
+wrong_symbol	target	pdb_symbol	evidence
+??4CCharString@@QAEABV0@ABV0@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	PDB spelling (correct). Ego_r 00afa810 / FableWin 02f61830 ABV0@ABV0; retail bytes refcount inc at +0x0d (CCharStringData), cmp this==rhs, ret 4; catalog CCharString::operator=
+??4CCharString@@QAEABV0@PBD@Z	0099efe0	??4CCharString@@QAEABV0@PBD@Z	PDB spelling (correct). Ego_r 00afa840 / FableWin 02f61860 PBD; retail bytes test byte [text], alloc 0x11 CCharStringData; follows 0099efb0 (FableWin order ABV0,PBD,D)
+??4CCharString@@QAEABV0@D@Z	0099f040	??4CCharString@@QAEABV0@D@Z	PDB spelling (correct). Ego_r 00afa8c0 / FableWin 02f61890 D; retail bytes load byte arg [esp+8] into a {c,0} buffer, alloc 0x11; follows 0099efe0
+??4CWideString@@QAEABV0@ABV0@@Z	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	PDB spelling (correct). Ego_r 00b027e0 / FableWin 02f65c60 ABV0@ABV0; retail bytes = 0099efb0 shape with refcount at +0x0c (CWideStringData); catalog CWideString::operator=
+??4CWideString@@QAEABV0@PB_W@Z	0099b800	??4CWideString@@QAEABV0@PB_W@Z	PDB spelling (correct). Ego_r 00b02ce0 / FableWin 02f65c90 PB_W (0x30 after ABV0 in FableWin, as 0099b800-0099b7d0 in retail); retail bytes release via refcount +0x0c (CWideStringData), cmp word ptr [text],0 then AllocStringData(text,-1); forge label CCharString::AssignFromWide is wrong
+??4CWideString@@QAEABV0@_W@Z	0099b860	??4CWideString@@QAEABV0@_W@Z	PDB spelling (correct). Ego_r 00b02d70 / FableWin 02f65cc0 _W; retail bytes load word arg [esp+4] into a {c,0} buffer; follows 0099b800
+??4CCharString@@QAEAAV0@ABV0@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	non-const return AAV0 (retail ABV0); bound by landed row 00403c20
+?Load@CBank@@QAEXH@Z	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 0040bc50
+??4CWideString@@QAEAAV0@ABV0@@Z	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	non-const return AAV0 (retail ABV0); bound by landed row 0040d400
+??4MemberA@@QAEAAU0@ABU0@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 0047c600
+??4CCharString@@QAEAAV0@PBD@Z	0099efe0	??4CCharString@@QAEABV0@PBD@Z	non-const return AAV0 (retail ABV0); bound by landed row 0048df77
+?M@Sub@@QAEXPAH@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 0057a5a5
+??4FrontEndWideString_00594f36@@QAEAAU0@ABU0@@Z	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 00594f36
+?copyFrom@SubObj@@QAEXPAU1@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 005db4a0
+?AttachToScript@CScriptAttachmentComponent@@QAEXH@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 00890690
+?ctor@StrDest@@QAEXPBH@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 00890970
+?ctor@FableEffectResult_00908090@@QAEPAXPBD@Z	0099efe0	??4CCharString@@QAEABV0@PBD@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 00908090
+?ctor@FableEffectResult_00908140@@QAEPAXPBD@Z	0099efe0	??4CCharString@@QAEABV0@PBD@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 00908140
+?ctor@FableEffectResult_009081d0@@QAEPAXPBD@Z	0099efe0	??4CCharString@@QAEABV0@PBD@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 009081d0
+@FableWideStringAssign_0099B7D0@12	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 00999230
+??4SymbolString@@QAEAAU0@ABU0@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 009e6fa0
+?init@Sub@@QAEXPBD@Z	0099b800	??4CWideString@@QAEABV0@PB_W@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 009e90a0
+?CopyContents@ConBuffer@@QAEXPAU1@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 009ea620
+?Assign@CConBuf@@QAEXPAU1@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 009ea640
+??4CWideString@@QAEAAV0@ABV0@@Z	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	non-const return AAV0 (retail ABV0); bound by landed row 00b428e0
+?M@Sub@@QAEXPAX@Z	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 00bc6810
+?Report@SubObj@@QAEXPAX@Z	0099efe0	??4CCharString@@QAEABV0@PBD@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 00d732a0
+?Assign@CFrontendModePointer_00495fe0@@QAEXPBV1@@Z	0099b800	??4CWideString@@QAEABV0@PB_W@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 00495fe0
+??4CCharString@NParticleEngine@@QAEAAV01@ABV01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (class key V); bound by landed row 00af4ee0
+??4CWideString@N006bebf0@@QAEAAU01@ABU01@@Z	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 006bebf0
+??4CCharString@N00cb68c0@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 00cb68c0
+??4CCharString@N00cbac70@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 00cbac70
+??4CCharString@N00cbb4d0@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 00cbb4d0
+??4CCharString@X_004fe630@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 004fe630
+??4CCharString@CombatDebug@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 006eac50
+??4CCharString@CombatDebug@@QAEAAU01@PBD@Z	0099efe0	??4CCharString@@QAEABV0@PBD@Z	namespaced local model (struct key U); bound by landed row 006eac50
+??4CCharString@X_007565e0@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 007565e0
+??4CWideString@ExternalRetry_00999620@@QAEAAU01@PBG@Z	0099b800	??4CWideString@@QAEABV0@PB_W@Z	namespaced local model (struct key U); bound by landed row 00999620
+??4CCharString@X_00e54990@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 00e54990
+??4CWideString@AFileSupport@@QAEAAU01@PBG@Z	0099b800	??4CWideString@@QAEABV0@PB_W@Z	namespaced local model (struct key U); bound by landed row 009994a0
+??4CWideString@N006be9d0@@QAEAAU01@ABU01@@Z	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 006be9d0
+??4CCharString@N009b77b0@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 009b77b0
+??4CCharString@N00cb93e0@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 00cb93e0
+??4CCharString@std@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 004d0f80
+??4CWideString@@QAEABV0@PBG@Z	0099b800	??4CWideString@@QAEABV0@PB_W@Z	wchar_t as unsigned short (row built without /Zc:wchar_t); bound by landed row 00997620
+??4CWideString@@QAEAAV0@PBG@Z	0099b800	??4CWideString@@QAEABV0@PB_W@Z	wchar_t as unsigned short (row built without /Zc:wchar_t); non-const return AAV0; bound by landed row 009e93c0
+??4CCharString@X_007adbf0@@QAEAAU01@ABU01@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	namespaced local model (struct key U); bound by landed row 007adbf0
+?Assign@CCharString@@QAEXABV1@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	placeholder / descriptive stand-in name for this retail function; bound by landed row 007fefc0
+??4CCharString@@QAEPAV0@ABV0@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	pointer return PAV0 (retail ABV0); bound by landed row 00992630

@@ -14,7 +14,7 @@ public:
  void* PStringData;
  CWideString(const CWideString&);
  ~CWideString();                                     // 0x0099B510
- CWideString& operator=(const CWideString&);         // 0x0099B7D0
+ const CWideString& operator=(const CWideString&);         // 0x0099B7D0
  bool operator!=(const CWideString&) const;          // 0x0099B0F0
  CCharString ConvertToCharString() const;            // 0x0099B2C0
 };

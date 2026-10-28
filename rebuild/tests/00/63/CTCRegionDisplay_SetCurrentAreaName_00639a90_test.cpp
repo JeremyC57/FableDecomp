@@ -13,7 +13,7 @@ static bool SameText(const wchar_t* a, const wchar_t* b)
 class CWideString { public:
     const wchar_t* m_pData;
     bool operator!=(const wchar_t* text) const { return !SameText(m_pData, text); }
-    CWideString& operator=(const CWideString& other) { m_pData = other.m_pData; return *this; }
+    const CWideString& operator=(const CWideString& other) { m_pData = other.m_pData; return *this; }
     const CWideString& operator=(const wchar_t* text) { m_pData = text; return *this; }
 };
 static CWorld g_world;

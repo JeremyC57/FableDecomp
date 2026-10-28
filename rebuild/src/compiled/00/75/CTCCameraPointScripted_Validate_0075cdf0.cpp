@@ -10,7 +10,7 @@
 // `TransitionTime > eps` gives `fcomp ; test ah,41h ; jne`.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* s);          // 0x0099EFE0
+    const CCharString& operator=(const char* s);          // 0x0099EFE0
 };
 
 extern float g_CameraPointMinTransitionTime;        // 0x0129BA3C (0.0001f)

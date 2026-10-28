@@ -38,7 +38,7 @@ class CCharString {
 public:
     CCharString();                                           // 0x0099E4B0
     ~CCharString();
-    CCharString& operator=(const CCharString& other);        // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 private:
     CCharStringData* PStringData;
 };
@@ -137,7 +137,7 @@ static const CCharString* g_assignedFrom = 0;
 static const CCharString* g_assignedTo = 0;
 CCharString::CCharString() : PStringData(0) {}
 CCharString::~CCharString() {}
-CCharString& CCharString::operator=(const CCharString& other) { ++g_assigns; g_assignedFrom = &other; g_assignedTo = this; PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { ++g_assigns; g_assignedFrom = &other; g_assignedTo = this; PStringData = other.PStringData; return *this; }
 CBaseClass::~CBaseClass() {}
 CBaseClassNonCopyable::CBaseClassNonCopyable() {}
 CBaseClassNonCopyable::~CBaseClassNonCopyable() {}

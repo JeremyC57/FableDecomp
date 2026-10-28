@@ -18,7 +18,7 @@ public:
     CCharString(const CCharString&);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString&);
+    const CCharString& operator=(const CCharString&);
 private:
     void UnassignString();
     CCharStringData* AllocStringData(const char*, long);
@@ -62,7 +62,7 @@ CCharString::~CCharString()
 {
     if (storage_ && --storage_->owners == 0) { delete[] storage_->text; delete storage_; }
 }
-CCharString& CCharString::operator=(const CCharString& other)
+const CCharString& CCharString::operator=(const CCharString& other)
 {
     if (other.storage_) ++other.storage_->owners;
     if (storage_ && --storage_->owners == 0) { delete[] storage_->text; delete storage_; }

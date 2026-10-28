@@ -6,7 +6,7 @@ class CCharString { public:
     const char* Text;
     CCharString() : Text("") {}
     CCharString(const CCharString& o) : Text(o.Text) {}
-    CCharString& operator=(const char* t) { Text = t; return *this; }
+    const CCharString& operator=(const char* t) { Text = t; return *this; }
 };
 static int g_seq[4]; static int g_pos = 0;
 static int fake_rand() { return g_seq[g_pos++]; }

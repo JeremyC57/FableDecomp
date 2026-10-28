@@ -9,7 +9,7 @@
 // Grade: RELOCATION_MATCH -- verified behavior PASS under g++ and VC7.1.
 struct CCameraInfo { long refs; void (__fastcall *destroy)(void *); void *object; };
 struct CCountedPointer { void *data; CCameraInfo *info; };
-class CCharString { public: void *data; CCharString *operator=(CCharString const&); };
+class CCharString { public: void *data; const CCharString& operator=(CCharString const&); };
 class CCamera { public:
     CCountedPointer first;
     CCountedPointer second;
@@ -48,7 +48,7 @@ struct SharedText { long refs; char value[16]; };
 static int copyCount = 0;
 static int copyOrder[16];
 static CCharString *tracked[4];
-CCharString *CCharString::operator=(CCharString const& rhs)
+const CCharString& CCharString::operator=(CCharString const& rhs)
 {
     int slot = -1;
     for (int i=0; i<4; ++i) if (tracked[i] == this) slot = i;
@@ -60,7 +60,7 @@ CCharString *CCharString::operator=(CCharString const& rhs)
         SharedText *newText = static_cast<SharedText *>(data);
         if (newText) ++newText->refs;
     }
-    return this;
+    return *this;
 }
 static CCameraInfo *NewInfo(void *object) {
     CCameraInfo *p = new CCameraInfo;

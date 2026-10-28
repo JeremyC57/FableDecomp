@@ -43,7 +43,7 @@ public:
     CBasicString<char>* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
     __forceinline bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
@@ -103,7 +103,7 @@ template TEntry* __fastcall std::__unguarded_partition(TEntry*, TEntry*, TEntry,
 static int g_dtors = 0, g_swaps = 0;
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { }
 CCharString::~CCharString() { ++g_dtors; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
 namespace std {
 template <> void __fastcall iter_swap<TEntry*, TEntry*>(TEntry* a, TEntry* b)
 {

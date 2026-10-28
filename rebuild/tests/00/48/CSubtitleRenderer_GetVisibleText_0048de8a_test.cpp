@@ -16,7 +16,7 @@ class CWideString {
 public:
     void* PStringData;
     ~CWideString();                                      // 0x0099B510
-    CWideString& operator=(const CWideString& other);    // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
     CCharString ConvertToCharString() const;             // 0x0099B2C0
     long GetLength() const;                              // 0x0099B220
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
@@ -76,7 +76,7 @@ CCharString::CCharString(const char* text, long length)
 }
 CCharString::~CCharString() { }
 CWideString::~CWideString() { }
-CWideString& CWideString::operator=(const CWideString& o) { WData* w = (WData*)o.PStringData; PStringData = NewW(w->s, (int)std::strlen(w->s)); return *this; }
+const CWideString& CWideString::operator=(const CWideString& o) { WData* w = (WData*)o.PStringData; PStringData = NewW(w->s, (int)std::strlen(w->s)); return *this; }
 CCharString CWideString::ConvertToCharString() const { return CCharString(((WData*)PStringData)->s, -1); }
 long CWideString::GetLength() const { return (long)std::strlen(((WData*)PStringData)->s); }
 CWideString CWideString::GetSubString(unsigned long start, unsigned long end) const

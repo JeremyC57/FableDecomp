@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <cstring>
 class CCharString { public: char buf[300]; int assigns; CCharString() : assigns(0) { buf[0] = 0; }
-    CCharString& operator=(const char* t) { std::strcpy(buf, t); ++assigns; return *this; } };
+    const CCharString& operator=(const char* t) { std::strcpy(buf, t); ++assigns; return *this; } };
 static void FakeSplit(const char* path, char* drive, char* dir, char* fname, char* ext)
 {
     std::strncpy(drive, path, 2); drive[2] = 0;

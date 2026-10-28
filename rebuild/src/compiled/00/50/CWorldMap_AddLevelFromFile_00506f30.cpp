@@ -13,7 +13,7 @@
 //   translated so its top-left sits at the position.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 class C2DCoordI { public: long X, Y; };
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };

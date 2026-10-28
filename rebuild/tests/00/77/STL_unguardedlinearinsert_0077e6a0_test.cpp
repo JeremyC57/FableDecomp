@@ -32,7 +32,7 @@ class CCharString { public:
     CCharString(CBasicStringChar* p) : PStringData(p) { ++g_liveStrings; }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
     bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)

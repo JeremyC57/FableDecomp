@@ -17,7 +17,7 @@
 class CCharString { public:
     char* m_pString;
     CCharString();                                       // 0x0099E4B0
-    CCharString& operator=(const CCharString& other);    // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 class C3DSkeletalBoneMorph;
 struct SAllocator { SAllocator() {} };                   // empty allocator (user constructor: no zero fill of the temporary)

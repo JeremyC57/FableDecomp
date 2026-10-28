@@ -28,8 +28,8 @@ static int fails = 0;
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                                  // 0x0099EAE0
-    CCharString& operator=(const char* text);                        // 0x0099EFE0
-    CCharString& operator=(const CCharString& other);                // 0x0099EFB0
+    const CCharString& operator=(const char* text);                        // 0x0099EFE0
+    const CCharString& operator=(const CCharString& other);                // 0x0099EFB0
     CCharString& operator+=(const char* text);                       // 0x0099F100
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
@@ -187,8 +187,8 @@ static int g_strDtors = 0;
 static char* Dup(const char* a, const char* b) { size_t n = strlen(a), m = b ? strlen(b) : 0; char* p = (char*)malloc(n + m + 1); memcpy(p, a, n); if (b) memcpy(p + n, b, m); p[n + m] = 0; return p; }
 static const char* Text(const CCharString& s) { return s.PStringData ? (const char*)s.PStringData : ""; }
 CCharString::~CCharString() { ++g_strDtors; }
-CCharString& CCharString::operator=(const char* text) { PStringData = Dup(text, 0); return *this; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = Dup(Text(other), 0); return *this; }
+const CCharString& CCharString::operator=(const char* text) { PStringData = Dup(text, 0); return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = Dup(Text(other), 0); return *this; }
 CCharString& CCharString::operator+=(const char* text) { PStringData = Dup(Text(*this), text); return *this; }
 CCharString __fastcall operator+(const char* left, const CCharString& right) { CCharString r; r.PStringData = Dup(left, Text(right)); return r; }
 CDefStringTable g_DefStringTable;

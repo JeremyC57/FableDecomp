@@ -3,7 +3,7 @@
 
 class CCharString { public:
     const char* m_text;
-    CCharString& operator=(const CCharString& o) { m_text = o.m_text; return *this; }
+    const CCharString& operator=(const CCharString& o) { m_text = o.m_text; return *this; }
 };
 
 class CScriptDef { public: CCharString ExposeMayorEvidence; float ExposeMayorMaxFlashDistFromStables; };

@@ -17,14 +17,14 @@ class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
 };
 
 class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);                 // 0x0099B720
     ~CWideString();                                        // 0x0099B510
-    CWideString& operator=(const CWideString& other);      // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);      // 0x0099B7D0
 };
 
 class CQuestManager {

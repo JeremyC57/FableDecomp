@@ -23,7 +23,7 @@ public:
     void* PStringData;
     CCharString(const CCharString& other);
     ~CCharString();
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 
 class CSymbolMap {

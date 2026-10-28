@@ -17,7 +17,7 @@ class CCharString { public:
 };
 class CWideString { public:
     void* PStringData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                              // 0x0099B510
 };
 namespace NGameText {

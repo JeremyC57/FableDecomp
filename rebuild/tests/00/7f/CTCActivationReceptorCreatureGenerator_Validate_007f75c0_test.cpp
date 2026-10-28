@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <cstring>
 
-class CCharString { public: const char* m_text; CCharString& operator=(const char* t) { m_text = t; return *this; } };
+class CCharString { public: const char* m_text; const CCharString& operator=(const char* t) { m_text = t; return *this; } };
 struct CTCActivationReceptorCreatureGenerator {
     bool TriggerOnActivate, ActivateOnActivate;
     bool Validate(CCharString& error) const

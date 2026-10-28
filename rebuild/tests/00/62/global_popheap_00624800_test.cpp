@@ -8,7 +8,7 @@ class CCharString { public:
     CCharString(const char* s) : m_pData(s) {}
     CCharString(const CCharString& o) : m_pData(o.m_pData) {}
     ~CCharString() {}
-    CCharString& operator=(const CCharString& o) { m_pData = o.m_pData; return *this; }
+    const CCharString& operator=(const CCharString& o) { m_pData = o.m_pData; return *this; }
 };
 
 class CTestQuest {

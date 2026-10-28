@@ -7,7 +7,7 @@ class CCharString { public:
     CCharString(const char* s) { m_pData = new char[std::strlen(s) + 1]; std::strcpy(m_pData, s); ++g_live; }
     CCharString(const CCharString& o) { m_pData = new char[std::strlen(o.m_pData) + 1]; std::strcpy(m_pData, o.m_pData); ++g_live; }
     ~CCharString() { delete[] m_pData; --g_live; }
-    CCharString& operator=(const CCharString& o)
+    const CCharString& operator=(const CCharString& o)
     { if (this != &o) { char* p = new char[std::strlen(o.m_pData) + 1]; std::strcpy(p, o.m_pData); delete[] m_pData; m_pData = p; } return *this; }
 };
 class C3DDummyObject { public: unsigned int m_words[13]; };

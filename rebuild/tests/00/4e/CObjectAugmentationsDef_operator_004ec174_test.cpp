@@ -38,7 +38,7 @@ struct CRetailTree_004ec28c {
 
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& o) { m_pData = o.m_pData; g_order[g_calls++] = 5; return *this; }
+    const CCharString& operator=(const CCharString& o) { m_pData = o.m_pData; g_order[g_calls++] = 5; return *this; }
 };
 
 class CObjectAugmentationsDef : public CDefClassBase { public:

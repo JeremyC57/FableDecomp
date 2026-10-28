@@ -7,7 +7,7 @@ class CWideString { public:
     CWideString(int i) : id(i) {}
     CWideString(const CWideString& o) : id(o.id) {}
     ~CWideString() {}
-    CWideString& operator=(const CWideString& o) { id = o.id; return *this; }
+    const CWideString& operator=(const CWideString& o) { id = o.id; return *this; }
 };
 class CRGBColour { public:
     unsigned char B, G, R, A;

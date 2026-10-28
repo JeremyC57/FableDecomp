@@ -7,7 +7,7 @@ class CCharString { public:
     char text[96];
     CCharString(const char* t) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }
-    CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; }
     CCharString ToUpper() const { CCharString r(*this); for (char* p = r.text; *p; ++p) if (*p >= 'a' && *p <= 'z') *p = (char)(*p - 32); return r; }
 };
 static CCharString operator+(const char* l, const CCharString& r) { CCharString s(l); std::strcat(s.text, r.text); return s; }

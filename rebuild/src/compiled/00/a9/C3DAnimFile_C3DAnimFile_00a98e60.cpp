@@ -37,7 +37,7 @@ template<class T> class CCountedPointer { public:
 class CCharString { public:
     CCharString(const char* text, long length);     // 0x0099EBF0 (-1 = strlen)
     ~CCharString();                                 // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     void* m_pStringData;
 };
 

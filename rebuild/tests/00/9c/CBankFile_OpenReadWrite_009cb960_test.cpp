@@ -24,11 +24,11 @@ static int fails = 0;
 // keeps it in ebp for the whole body (the argument pushes follow the path call, as retail).
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class CWideString { public:
     void* m_pData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                                // 0x0099B510
 };
 class CBankFile;
@@ -92,8 +92,8 @@ void CBankFile::OpenReadWrite(const CCharString& bankHandle, unsigned long flags
 static int g_charAssigns = 0, g_wideAssigns = 0, g_wideDtors = 0, g_retailPaths = 0, g_diskPaths = 0, g_registers = 0;
 static CBankFile* g_registered = 0;
 static void* g_lastHandle = 0;
-CCharString& CCharString::operator=(const CCharString& other) { ++g_charAssigns; m_pData = other.m_pData; return *this; }
-CWideString& CWideString::operator=(const CWideString& other) { ++g_wideAssigns; m_pData = other.m_pData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { ++g_charAssigns; m_pData = other.m_pData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { ++g_wideAssigns; m_pData = other.m_pData; return *this; }
 static bool g_inStub = false;   // the stubs' own by-value return copies are not counted
 CWideString::~CWideString() { if (g_inStub) g_inStub = false; else ++g_wideDtors; }
 CWideString CBankFileManager::GetRetailBankPath(const CCharString& bankHandle)

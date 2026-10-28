@@ -9,7 +9,7 @@
 // manifest's `CTCSmokeGenerator::CGenerationPos` label is propagated (that record is 0x14 bytes, see 0x00722C90).
 class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
 class CBaseObject;

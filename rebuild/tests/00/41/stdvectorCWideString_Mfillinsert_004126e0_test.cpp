@@ -9,7 +9,7 @@ class CWideString {
 public:
     CWideString() : m_pData((unsigned short*)std::malloc(32)) { m_pData[0] = 0; ++g_live; }
     CWideString(const CWideString& o) : m_pData((unsigned short*)std::malloc(32)) { Copy(o); ++g_live; }
-    CWideString& operator=(const CWideString& o) { Copy(o); return *this; }
+    const CWideString& operator=(const CWideString& o) { Copy(o); return *this; }
     ~CWideString() { std::free(m_pData); --g_live; }
     void Set(int v) { for (int i = 0; i < 15; ++i) m_pData[i] = (unsigned short)(v * 7 + i); m_pData[15] = 0; }
     bool Same(const CWideString& o) const { for (int i = 0; i < 16; ++i) if (m_pData[i] != o.m_pData[i]) return false; return true; }

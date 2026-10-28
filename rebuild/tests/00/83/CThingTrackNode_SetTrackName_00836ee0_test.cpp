@@ -3,7 +3,7 @@
 class CCharString { public:
     char Text[16];
     CCharString(const char* t) { std::strcpy(Text, t); }
-    CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
     bool operator!=(const CCharString& o) const { return std::strcmp(Text, o.Text) != 0; }
 };
 static int g_sets = 0;

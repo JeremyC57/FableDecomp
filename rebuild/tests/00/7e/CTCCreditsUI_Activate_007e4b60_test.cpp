@@ -9,7 +9,7 @@ class CCharString { public:
     CCharString(const char* t) : m_pData(t) { }
     CCharString(const CCharString& o) : m_pData(o.m_pData) { }
     ~CCharString() { ++g_strDtors; }
-    CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
 };
 static char g_log[32];
 static void Log(char c) { size_t n = std::strlen(g_log); g_log[n] = c; g_log[n + 1] = 0; }

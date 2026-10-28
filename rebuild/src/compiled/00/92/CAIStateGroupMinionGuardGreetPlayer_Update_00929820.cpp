@@ -78,7 +78,7 @@ class CCharString { public:
     void* m_pData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
-    CCharString& operator=(const char* text);   // 0x0099EFE0
+    const CCharString& operator=(const char* text);   // 0x0099EFE0
 };
 unsigned long __fastcall CCharString_ComputeCRC32(const CCharString& text);    // 0x00404310
 struct CTagTable {

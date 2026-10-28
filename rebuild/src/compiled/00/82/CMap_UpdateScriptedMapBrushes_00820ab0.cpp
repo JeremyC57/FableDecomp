@@ -18,7 +18,7 @@
 class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 class CScriptedMapBrush : public CScriptedMapBrushDonor {
  public:

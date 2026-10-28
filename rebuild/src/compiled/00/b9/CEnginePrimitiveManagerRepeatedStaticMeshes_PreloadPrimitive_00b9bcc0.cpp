@@ -11,7 +11,7 @@ class CEngineInternalPrimitiveBase;
 class CEngineSubPrimitiveChain;
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099B7D0
+    const CCharString& operator=(const CCharString& other);   // 0x0099B7D0
 };
 class CRGBColour { public: unsigned char B, G, R, A; };
 

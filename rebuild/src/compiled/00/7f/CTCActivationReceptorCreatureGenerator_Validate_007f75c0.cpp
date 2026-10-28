@@ -8,7 +8,7 @@
 // on the A-and-T path and T is re-read at the second disjunct; the two `bool` returns are `mov al,1` / `xor al,al`.
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const char* text); // 0x0099EFE0
+    const CCharString& operator=(const char* text); // 0x0099EFE0
 };
 
 class CTCActivationReceptorBase { public:             // retail 0x2c bytes (see 0x007F7710)

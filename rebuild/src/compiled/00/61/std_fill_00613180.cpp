@@ -11,7 +11,7 @@
 // string's `this` is `lea ecx,[esi-4]`) and re-reads `last` from the frame word for the loop test.
 class CCharString { public:
     void* m_pStringData;                        // +0x00
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class C2DVector { public:
     float X;                                    // +0x00

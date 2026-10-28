@@ -8,7 +8,7 @@ public:
     CCharString() : PData("") {}
     CCharString(const char* s) : PData(s) {}
     CCharString(const CCharString& o) : PData(o.PData) {}
-    CCharString& operator=(const CCharString& o) { PData = o.PData; return *this; }
+    const CCharString& operator=(const CCharString& o) { PData = o.PData; return *this; }
 };
 
 static int g_baseCopies = 0;

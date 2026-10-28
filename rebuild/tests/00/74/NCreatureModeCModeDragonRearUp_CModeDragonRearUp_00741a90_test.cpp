@@ -20,7 +20,7 @@ class CCharString { public:
         m_pData->m_pData = text;
         m_pData->m_length = (unsigned int)(length < 0 ? std::strlen(text) : length);
     }
-    CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
 };
 class CAnimFilterOfGroup { public:
     CCharString  Group;

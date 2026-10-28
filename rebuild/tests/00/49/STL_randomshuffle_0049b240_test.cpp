@@ -35,7 +35,7 @@ class CCharString { public:
     CCharString(const char* s) : PStringData(s) { ++g_live; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
 };
 
 static void random_shuffle(CCharString* first, CCharString* last, RandFunc& rand)

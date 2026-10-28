@@ -34,7 +34,7 @@ public:
     explicit CCharString(int k) : PData(&gStrData[k]) { ++gLiveStrings; }
     CCharString(const CCharString& other) : PData(other.PData) { ++gLiveStrings; }
     ~CCharString() { --gLiveStrings; }
-    CCharString& operator=(const CCharString& other) { PData = other.PData; return *this; }
+    const CCharString& operator=(const CCharString& other) { PData = other.PData; return *this; }
     bool operator<(const CCharString& other) const
     {
         if (other.PData == PData)

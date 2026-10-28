@@ -22,7 +22,7 @@ class CCharString { public:
     CCharString();                                           // 0x0099E4B0
     CCharString(const CCharString& other);                   // 0x0099EC30
     ~CCharString();                                          // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);        // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
 
 template <class T> class CArray { public:                           // STLport vector (12 bytes)
@@ -181,7 +181,7 @@ static char* Dup(const char* s) { if (!s) return 0; char* d = (char*)std::malloc
 CCharString::CCharString() { PStringData = 0; }
 CCharString::CCharString(const CCharString& o) { PStringData = Dup((const char*)o.PStringData); }
 CCharString::~CCharString() { std::free(PStringData); }
-CCharString& CCharString::operator=(const CCharString& o) { if (this != &o) { std::free(PStringData); PStringData = Dup((const char*)o.PStringData); } return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { if (this != &o) { std::free(PStringData); PStringData = Dup((const char*)o.PStringData); } return *this; }
 CBaseClassNonCopyable::CBaseClassNonCopyable() {}
 CBaseClassNonCopyable::~CBaseClassNonCopyable() {}
 CShaderBankEntry::~CShaderBankEntry() {}

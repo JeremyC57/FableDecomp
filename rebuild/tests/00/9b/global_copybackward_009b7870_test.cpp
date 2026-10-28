@@ -8,7 +8,7 @@ static int g_arrayAssigns = 0;
 class CCharString {
 public:
     const char* PStringData;
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++g_stringAssigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++g_stringAssigns; return *this; }
 };
 template <class T> class CArray {
 public:

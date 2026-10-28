@@ -10,7 +10,7 @@ public:
     CCharString(const char* t) { std::strcpy(text, t); }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); }
     ~CCharString() {}
-    CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; }
 };
 class CGraphicDataBank {
 public:

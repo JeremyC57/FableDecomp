@@ -6,7 +6,7 @@ class CWideString { public:
     const char* m_pData;
     CWideString(const char* s) : m_pData(s) { ++g_live; }
     CWideString(const CWideString& o) : m_pData(o.m_pData) { ++g_live; }
-    CWideString& operator=(const CWideString& other) { m_pData = other.m_pData; return *this; }
+    const CWideString& operator=(const CWideString& other) { m_pData = other.m_pData; return *this; }
     ~CWideString() { --g_live; }
 };
 static CWideString GetItemDefDescription(long defIndex) { return CWideString(defIndex == 3 ? "A sturdy iron sword." : ""); }

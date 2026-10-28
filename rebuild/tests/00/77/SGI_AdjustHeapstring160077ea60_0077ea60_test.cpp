@@ -5,7 +5,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: AdjustHeap
 // Layout: no engine CCharString header exists; retail holds one data pointer, ctor 0099ec30, assignment 0099efb0, dtor 0099eae0.
-class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 struct Payload_0077ea60 {int data[3];Payload_0077ea60(){}__forceinline Payload_0077ea60(const Payload_0077ea60& o){data[0]=o.data[0];data[1]=o.data[1];data[2]=o.data[2];}};
 template<class K,class V> struct Pair_0077ea60 { K first;V second;Pair_0077ea60(){}Pair_0077ea60(const Pair_0077ea60& p):first(p.first),second(p.second){} };
 typedef Pair_0077ea60<CCharString,Payload_0077ea60> Record_0077ea60;
@@ -39,7 +39,7 @@ template void AdjustHeap<Record_0077ea60,Compare_0077ea60>(Record_0077ea60*,int,
 
 // END exact source snapshot
 template<class Char>bool CBasicString<Char>::operator<(const CBasicString& p)const{const signed char* a=(const signed char*)text;const signed char* b=(const signed char*)p.text;for(;*a || *b;++a,++b){if(*a!=*b)return *a<*b;}return false;}
-CCharString::CCharString(const CCharString& p):data(p.data){} CCharString::~CCharString(){} CCharString& CCharString::operator=(const CCharString& p){data=p.data;return *this;}
+CCharString::CCharString(const CCharString& p):data(p.data){} CCharString::~CCharString(){} const CCharString& CCharString::operator=(const CCharString& p){data=p.data;return *this;}
 
 int main(){const int n=5;int keys[n]={7,5,6,3,4};char letters[n][2];CBasicString<char> names[n];Record_0077ea60 v[n];Compare_0077ea60 comp;comp.state=0;int i;
 for(i=0;i<n;++i){letters[i][0]=char(keys[i]+'0');letters[i][1]=0;names[i].text=letters[i];v[i].first.data=&names[i];for(int j=0;j<3;++j)v[i].second.data[j]=keys[i]*10+j;}

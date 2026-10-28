@@ -11,7 +11,7 @@
 // of STL helpers, so the record stays descriptive.
 class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
 struct SStringStringVector {                 // 0x14 bytes

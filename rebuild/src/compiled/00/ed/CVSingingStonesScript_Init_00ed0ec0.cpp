@@ -10,7 +10,7 @@
 // DoorManIntroComplete +0x98, DoorManAttackedByHero +0x99, DoorManHasBribe +0x9a, DoorManComplete +0x9b.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* text);      // 0x0099EFE0
+    const CCharString& operator=(const char* text);      // 0x0099EFE0
 };
 struct CV_SingingStonesScript {
     unsigned char _base[0x48];                     // CScriptBase + interface/data pair

@@ -35,7 +35,7 @@ public:
     class CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
 // Method view over the shared engine header (Ego_r.pdb layout: position +4, chunkBase +0xC = current chunk read

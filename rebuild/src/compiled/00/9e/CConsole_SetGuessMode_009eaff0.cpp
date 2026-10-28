@@ -22,7 +22,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
     CCharString GetAsLowerCase() const;                           // 0x0099ED10
     const char* c_str() const { return PStringData == 0 ? "" : PStringData->Text; }
     unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }

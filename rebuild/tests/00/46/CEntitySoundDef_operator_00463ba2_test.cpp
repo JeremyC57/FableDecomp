@@ -24,7 +24,7 @@ class CSoundMap { public:                      // two CVectorMaps (SoundMap, Cri
 
 class CCharString { public:
     void* m_pStringData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CEntitySoundDef : public CDefClassBase { public:
@@ -47,7 +47,7 @@ CEntitySoundDef& CEntitySoundDef::operator=(const CEntitySoundDef& other)
 
 
 CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other) { for (int i = 4; i < 0x25; ++i) _body[i] = other._body[i]; return *this; }
-CCharString& CCharString::operator=(const CCharString& other) { m_pStringData = other.m_pStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pStringData = other.m_pStringData; return *this; }
 CSoundMap& CSoundMap::operator=(const CSoundMap& other) { for (int i = 0; i < 4; ++i) { m_soundMap[i] = other.m_soundMap[i]; m_criteriaMap[i] = other.m_criteriaMap[i]; } return *this; }
 
 int main()

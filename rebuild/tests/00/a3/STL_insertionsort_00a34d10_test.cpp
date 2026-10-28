@@ -10,7 +10,7 @@ public:
     explicit CCharString(int id) : Id(id) { ++g_strings; }
     CCharString(const CCharString& o) : Id(o.Id) { ++g_strings; }
     ~CCharString() { --g_strings; }
-    CCharString& operator=(const CCharString& o) { Id = o.Id; return *this; }
+    const CCharString& operator=(const CCharString& o) { Id = o.Id; return *this; }
 };
 class CCPPointerInfo { public:
     int   RefCount;

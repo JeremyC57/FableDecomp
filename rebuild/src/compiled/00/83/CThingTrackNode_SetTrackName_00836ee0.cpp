@@ -10,7 +10,7 @@
 // back to the top (`mov esi,[esi+0D0h] ; jmp`); each test is `node && name != node->TrackName`.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
     bool operator!=(const CCharString& other) const;        // 0x0099E900
 };
 

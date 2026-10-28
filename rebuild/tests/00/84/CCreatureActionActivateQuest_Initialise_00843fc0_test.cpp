@@ -21,7 +21,7 @@ class CDefString { public:
 class CCharString { public:
     void* PStringData;
     ~CCharString();                             // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 struct CDefStringTable {
@@ -94,7 +94,7 @@ static const CCharString* g_actName = 0;
 static bool g_actA2 = true, g_actLoad = false;
 CDefString& CDefString::operator=(const CDefString& other) { m_index = other.m_index; return *this; }
 CCharString::~CCharString() { --g_live; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
 CCharString CDefStringTable::GetString(CDefString name) { CCharString s; s.PStringData = (void*)g_strings[name.m_index & 3]; ++g_live; return s; }
 CDefStringTable g_DefStringTable;
 struct CThingImpl : CThing { long DefIndex; };

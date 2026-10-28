@@ -6,7 +6,7 @@
 // Leaf: _Adjust_heap
 // Layout: retail stride20: CCharString +0, scalar +4, vector +8. String copy99EC30 assign99EFB0 dtor99EAE0.
 struct StringStorage;
-class CCharString { public:StringStorage* data;CCharString();CCharString(const CCharString&);CCharString& operator=(const CCharString&);~CCharString();};
+class CCharString { public:StringStorage* data;CCharString();CCharString(const CCharString&);const CCharString& operator=(const CCharString&);~CCharString();};
 struct MorphVector {float x,y,z;};
 class C3DSkeletalBoneMorph { public:CCharString name;float weight;MorphVector displacement; C3DSkeletalBoneMorph(){} C3DSkeletalBoneMorph(const C3DSkeletalBoneMorph&b):name(b.name){weight=b.weight;displacement.x=b.displacement.x;displacement.y=b.displacement.y;displacement.z=b.displacement.z;}};
 typedef bool (__fastcall* MorphCompare)(const C3DSkeletalBoneMorph&,const C3DSkeletalBoneMorph&);
@@ -18,7 +18,7 @@ template void __fastcall _Adjust_heap(C3DSkeletalBoneMorph*,int,int,C3DSkeletalB
 struct StringStorage {int refs;int value;};
 CCharString::CCharString():data(0){}
 CCharString::CCharString(const CCharString&x):data(x.data){if(data)++data->refs;}
-CCharString& CCharString::operator=(const CCharString&x){if(&x!=this){if(data&&!--data->refs)delete data;data=x.data;if(data)++data->refs;}return *this;}
+const CCharString& CCharString::operator=(const CCharString&x){if(&x!=this){if(data&&!--data->refs)delete data;data=x.data;if(data)++data->refs;}return *this;}
 CCharString::~CCharString(){if(data&&!--data->refs)delete data;}
 bool __fastcall compare(const C3DSkeletalBoneMorph&a,const C3DSkeletalBoneMorph&b){return a.weight<b.weight;}
 int main(){C3DSkeletalBoneMorph a[5];int k[5]={1,9,8,7,6};for(int i=0;i<5;++i){a[i].weight=(float)k[i];a[i].name.data=new StringStorage;a[i].name.data->refs=1;a[i].name.data->value=k[i];a[i].displacement.x=(float)k[i];a[i].displacement.y=0.0f;a[i].displacement.z=0.0f;}_Adjust_heap(a,0,5,a[0],compare);assert(a[0].weight==9);for(int i=0;i<5;++i)assert(a[i].weight==a[i].name.data->value&&a[i].displacement.x==a[i].weight);_Adjust_heap(a,0,1,a[0],compare);assert(a[0].weight==9);puts("00a46040_TEST PASS");}

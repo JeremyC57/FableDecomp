@@ -20,7 +20,7 @@ public:
     CCharString();
     CCharString(const CCharString& other);
     ~CCharString();
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
 class CLipSyncPhoneme {                                     // Ego_r.pdb, 12 bytes

@@ -10,7 +10,7 @@
 class CCharString {
 public:
     void* PStringData;
-    CCharString& operator=(const char* text);          // 0x0099EFE0
+    const CCharString& operator=(const char* text);          // 0x0099EFE0
 };
 
 namespace std {

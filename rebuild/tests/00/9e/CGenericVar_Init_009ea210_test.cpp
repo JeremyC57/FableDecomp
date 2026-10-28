@@ -2,7 +2,7 @@
 
 class CCharString {
 public:
-    CCharString& operator=(const CCharString& other) {
+    const CCharString& operator=(const CCharString& other) {
         m_data = other.m_data;
         return *this;
     }

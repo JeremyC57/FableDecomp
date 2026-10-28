@@ -10,7 +10,7 @@ public:
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_live; if (PStringData) ++PStringData->NoRefs; }
     ~CCharString() { Release(); --g_live; }
     void Release() { if (PStringData && --PStringData->NoRefs == 0) delete PStringData; PStringData = 0; }
-    CCharString& operator=(const CCharString& o) { if (o.PStringData) ++o.PStringData->NoRefs; Release(); PStringData = o.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& o) { if (o.PStringData) ++o.PStringData->NoRefs; Release(); PStringData = o.PStringData; return *this; }
     bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData) return false;

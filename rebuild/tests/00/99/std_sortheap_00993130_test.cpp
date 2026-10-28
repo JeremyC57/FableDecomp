@@ -9,7 +9,7 @@ class CCharString { public:
     int v;
     CCharString(int x = 0) : v(x) { }
     CCharString(const CCharString& o) : v(o.v) { ++g_live; }
-    CCharString& operator=(const CCharString& o) { v = o.v; return *this; }
+    const CCharString& operator=(const CCharString& o) { v = o.v; return *this; }
     ~CCharString() { --g_live; }
 };
 struct CInfo { long RefCount; };

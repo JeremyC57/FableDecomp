@@ -14,7 +14,7 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* text);        // 0x0099EFE0
+    const CCharString& operator=(const char* text);        // 0x0099EFE0
 };
 
 class CArenaRoundDef;

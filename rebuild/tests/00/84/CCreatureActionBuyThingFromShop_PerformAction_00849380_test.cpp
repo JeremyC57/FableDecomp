@@ -22,7 +22,7 @@ class CCharString { public:
     CCharString() { m_text[0] = 0; ++g_liveStrings; }
     CCharString(const char* text, long = -1) { std::strcpy(m_text, text); ++g_liveStrings; }
     ~CCharString() { --g_liveStrings; }
-    CCharString& operator=(const char* text) { std::strcpy(m_text, text); return *this; }
+    const CCharString& operator=(const char* text) { std::strcpy(m_text, text); return *this; }
 };
 
 struct CInterfaceMap {

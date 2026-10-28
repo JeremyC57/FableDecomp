@@ -9,7 +9,7 @@ class CCharString {
 public:
     CCharString(const char* s) { std::strcpy(m_text, s); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_live; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
     ~CCharString() { --g_live; }
     const char* c_str() const { return m_text; }
 private:

@@ -10,7 +10,7 @@
 // Layout: real STLport map12/vector12, CCharString one pointer. Only static CTCAIScratchpad members are used.
 class CCharString {
 public:
-    CCharString& operator=(const CCharString&);
+    const CCharString& operator=(const CCharString&);
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
     bool operator<(const CCharString& other) const;

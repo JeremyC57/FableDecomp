@@ -12,7 +12,7 @@ public:
     CCharString() : m_tag(0) { ++g_live; }
     CCharString(const CCharString& other) : m_tag(other.m_tag) { ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& other) { m_tag = other.m_tag; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_tag = other.m_tag; return *this; }
 };
 struct CPersistInfo { u64 UID; CCharString PersistScript; };
 struct SPersistPair { u64 first; CPersistInfo second; };

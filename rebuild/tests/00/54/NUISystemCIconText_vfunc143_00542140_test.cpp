@@ -172,7 +172,7 @@ void CIconText::SetValue(unsigned long id){
 // END exact source snapshot
 #include <stdio.h>
 static int assignments,updates,getCalls,deletes;static bool exists=true,available=true;static CWideStringData data;
-CWideString::CWideString():storage_(0){}CWideString::CWideString(const CWideString& s):storage_(s.storage_){}CWideString::~CWideString(){}CWideString& CWideString::operator=(const CWideString& s){storage_=s.storage_;++assignments;return *this;}
+CWideString::CWideString():storage_(0){}CWideString::CWideString(const CWideString& s):storage_(s.storage_){}CWideString::~CWideString(){}const CWideString& CWideString::operator=(const CWideString& s){storage_=s.storage_;++assignments;return *this;}
 Game* Game_013b86a0;System* System_013b871c;CWideString Empty_013bca24;
 struct Resource:NGameText::CTextEntry {void Slot0(){}void Delete()const{++deletes;}}resource;
 CWideString NGameText::CTextEntry::GetText()const{CWideString s;return s;}const CDataBankTextEntry* CDataBank::GetTextInfo(unsigned long)const{return exists?(const CDataBankTextEntry*)1:0;}CIVTextPointer CDataBank::GetPTextEntry(unsigned long,bool)const{++getCalls;CIVTextPointer p;p.Object=available?&resource:0;if(p.Object)++p.Object->References;return p;}

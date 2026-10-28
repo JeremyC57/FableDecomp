@@ -3,7 +3,7 @@
 class CCharString { public:
     char m_text[32];
     bool operator!=(const CCharString& other) const { return std::strcmp(m_text, other.m_text) != 0; }
-    CCharString& operator=(const CCharString& other) { std::strcpy(m_text, other.m_text); return *this; }
+    const CCharString& operator=(const CCharString& other) { std::strcpy(m_text, other.m_text); return *this; }
 };
 static int g_refreshes = 0;
 static long g_lastFlag = -1;

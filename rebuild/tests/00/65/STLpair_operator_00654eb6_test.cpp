@@ -15,7 +15,7 @@ public:
     char Text[16];
     CCharString(const char* s) { std::strcpy(Text, s); }
     CCharString(const CCharString& other) { std::strcpy(Text, other.Text); }
-    CCharString& operator=(const CCharString& other) { std::strcpy(Text, other.Text); ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { std::strcpy(Text, other.Text); ++g_assigns; return *this; }
 };
 
 template <class _T1, class _T2> struct pair {

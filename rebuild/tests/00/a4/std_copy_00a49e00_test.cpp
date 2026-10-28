@@ -43,7 +43,7 @@ public:
 class CCharString {
 public:
     void* m_pData;                                     // +0x00
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
 class CSpeechFrame;
@@ -78,7 +78,7 @@ template CLipSyncPhonemeSample* __copy(CLipSyncPhonemeSample*, CLipSyncPhonemeSa
 }
 
 static int g_assigns = 0, g_deleted = 0;
-CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
 static void __fastcall DeleteFrame(void* data) { ++g_deleted; (void)data; }
 int main()
 {

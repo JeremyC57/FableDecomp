@@ -34,7 +34,7 @@ class CWideString { public:
     long FindCharPos(unsigned short c) const;               // 0x0099B070
     long GetLength() const;                                 // 0x0099B220
     void Assign(const unsigned short* text, long length);   // 0x0099B770
-    CWideString& operator=(const CWideString& other);       // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     CWideString& operator=(const unsigned short* text);     // 0x0099B800
     CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
 };
@@ -132,7 +132,7 @@ bool CWideString::Contains(const CWideString& t) const {
 long CWideString::FindCharPos(wch c) const { const wch* a = *this; for (long i = 0; a[i]; ++i) if (a[i] == c) return i; return -1; }
 long CWideString::GetLength() const { return wlen(*this); }
 void CWideString::Assign(const wch* t, long n) { std::free(PStringData); PStringData = wdup(t, n); }
-CWideString& CWideString::operator=(const CWideString& o) { if (this != &o) { std::free(PStringData); PStringData = wdup(o, o.GetLength()); } return *this; }
+const CWideString& CWideString::operator=(const CWideString& o) { if (this != &o) { std::free(PStringData); PStringData = wdup(o, o.GetLength()); } return *this; }
 CWideString& CWideString::operator=(const wch* t) { std::free(PStringData); PStringData = wdup(t, wlen(t)); return *this; }
 CWideString& CWideString::operator+=(const CWideString& o) {
     long na = GetLength(), nb = o.GetLength(); wch* d = (wch*)std::malloc((na + nb + 1) * sizeof(wch));

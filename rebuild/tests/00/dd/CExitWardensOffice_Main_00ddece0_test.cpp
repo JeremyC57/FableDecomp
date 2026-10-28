@@ -79,7 +79,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -115,7 +115,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -330,7 +330,7 @@ CCharString::CCharString() { storage_=0; ++constructed; }
 CCharString::CCharString(const char*s,long n) { storage_=(CCharStringData*)std::malloc(sizeof(CCharStringData)); storage_->text=duptext(s); allocations[allocated++]=storage_; ++constructed; }
 CCharString::~CCharString() { ++destructed; }
 CCharString::operator const char*() const {return storage_?storage_->text:"";}
-CCharString& CCharString::operator=(const CCharString&s) { storage_=s.storage_;return *this; }
+const CCharString& CCharString::operator=(const CCharString&s) { storage_=s.storage_;return *this; }
 
 static CExitWardensOffice* current;static InterfaceMethods* alternative;static int doneCalls,stopAt,frames,usedCalls,infoCalls,lockCalls;static bool useDoor;
 bool CExitWardensOffice::IsDone(){if(constructed!=destructed)std::abort();return ++doneCalls==stopAt||frames>=4;}

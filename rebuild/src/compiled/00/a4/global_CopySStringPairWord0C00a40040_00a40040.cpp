@@ -10,7 +10,7 @@
 // Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; the element is a {CCharString, CCharString, word} record (both assignments are CCharString::operator= @ 0x0099EFB0).
 class CCharString { public:                         // 4 bytes: the string-data pointer
     void* PStringData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 struct SStringPairWord0C {                       // 12 bytes; implicit memberwise operator=
     CCharString m_first;                    // +0x00

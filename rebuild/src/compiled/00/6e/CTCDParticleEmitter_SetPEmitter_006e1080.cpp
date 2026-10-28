@@ -10,7 +10,7 @@
 class CThing;
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 namespace NParticleEngine {
 class CParticleEmitter { public:

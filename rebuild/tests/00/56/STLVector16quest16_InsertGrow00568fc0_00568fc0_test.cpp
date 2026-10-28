@@ -10,7 +10,7 @@ extern "C" void __cdecl free(void*);
 inline void* operator new(unsigned int,void* p){return p;}
 struct Tag_00568fc0 {Tag_00568fc0(){}};
 // Layout: CCharString header absent; retail ctor0099ec30, dtor0099eae0, single pointer.
-class CCharString { public:void* data;CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharString { public:void* data;CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 struct Element_00568fc0{CCharString a,b,c;char x,y;Element_00568fc0(){}__forceinline Element_00568fc0(const Element_00568fc0& o):a(o.a),b(o.b),c(o.c),x(o.x),y(o.y){}};
 // Layout: retail STL vector object uses three contiguous pointer words at+0,+4,+8.
 template<class T> struct Vector_00568fc0 {
@@ -46,7 +46,7 @@ template<class T> void Vector_00568fc0<T>::InsertGrow(T* position,const T& value
 template void Vector_00568fc0<Element_00568fc0>::InsertGrow(Element_00568fc0*,const Element_00568fc0&,const Tag_00568fc0&,unsigned int,bool);
 
 // END exact source snapshot
-CCharString::CCharString(const CCharString& o):data(o.data){} CCharString::~CCharString(){} CCharString& CCharString::operator=(const CCharString& o){data=o.data;return *this;}
+CCharString::CCharString(const CCharString& o):data(o.data){} CCharString::~CCharString(){} const CCharString& CCharString::operator=(const CCharString& o){data=o.data;return *this;}
 template<class T> void Vector_00568fc0<T>::Clear(){for(T* p=start;p!=finish;++p)p->~T();if(start)free(start);}
 
 int main(){Vector_00568fc0<Element_00568fc0> v;v.start=(Element_00568fc0*)malloc(sizeof(Element_00568fc0));v.finish=v.start;v.end=v.start+1;Tag_00568fc0 tag;Element_00568fc0 value;int key=8;value.a.data=&key;value.b.data=&key;value.c.data=&key;value.x=1;value.y=2;

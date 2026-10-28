@@ -12,7 +12,7 @@ public:
     CCharString(const char* s) : PStringData(s) { ++g_live; }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
 };
 class CCPPointerInfo { public:
     unsigned long RefCount;

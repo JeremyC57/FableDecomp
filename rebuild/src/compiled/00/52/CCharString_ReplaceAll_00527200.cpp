@@ -29,7 +29,7 @@ public:
     CCharString();                              // 0x0099E4B0
     CCharString(const char* text, int length = -1);   // 0x0099EBF0
     ~CCharString();                             // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->m_pData; }
     void ReplaceAll(const CCharString& find, const CCharString& replacement);

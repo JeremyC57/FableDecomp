@@ -18,7 +18,7 @@
 // Shape: the base Initialise() == true guard wraps the once-only setup; the profile manager onward always runs.
 class CWideString { public:
     void* PStringData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                                      // 0x0099B510
 };
 struct CStringDataC { long RefCount; long Length; };

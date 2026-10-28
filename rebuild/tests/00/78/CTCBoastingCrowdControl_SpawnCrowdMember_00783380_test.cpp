@@ -11,7 +11,7 @@ class CCharString { public:
     const char* text;
     CCharString(const char* t, long length = -1) : text(t) { (void)length; }
     CCharString(const CCharString& o) : text(o.text) { }
-    CCharString& operator=(const CCharString& o) { text = o.text; return *this; }
+    const CCharString& operator=(const CCharString& o) { text = o.text; return *this; }
 };
 static CCharString g_CrowdMemberScriptName("CrowdMember");
 class C3DVector { public: float X, Y, Z; };

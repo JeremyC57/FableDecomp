@@ -9,7 +9,7 @@ class CCharString { public:
     CCharString(const char* s) : p(s) { ++g_strings; }
     CCharString(const CCharString& o) : p(o.p) { ++g_strings; }
     ~CCharString() { --g_strings; }
-    CCharString& operator=(const CCharString& o) { p = o.p; return *this; }
+    const CCharString& operator=(const CCharString& o) { p = o.p; return *this; }
 };
 
 class CTestQuest { public:

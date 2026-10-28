@@ -17,7 +17,7 @@ class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);           // 0x0099EC30
-    CCharString& operator=(const char* text);        // 0x0099EFE0
+    const CCharString& operator=(const char* text);        // 0x0099EFE0
 };
 
 struct CCharStringVector {                           // std::vector<CCharString> {first, last, end}

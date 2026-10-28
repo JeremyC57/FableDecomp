@@ -28,7 +28,7 @@ class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
@@ -441,7 +441,7 @@ CCharString::CCharString(const char* text, long) { PStringData = (void*)text; }
 CCharString::~CCharString() {}
 CWideString::CWideString() { PStringData = wdup(L""); }
 CWideString::~CWideString() { ++g_dtors; }
-CWideString& CWideString::operator=(const CWideString& other) { if (this != &other) PStringData = wdup((const wchar_t*)other.PStringData); return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { if (this != &other) PStringData = wdup((const wchar_t*)other.PStringData); return *this; }
 const CWideString& CWideString::operator+=(const CWideString& other)
 {
     wchar_t buf[256]; wcscpy(buf, (const wchar_t*)PStringData); wcscat(buf, (const wchar_t*)other.PStringData);

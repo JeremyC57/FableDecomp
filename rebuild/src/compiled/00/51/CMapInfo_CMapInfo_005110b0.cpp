@@ -10,7 +10,7 @@ class CCharString { public:
     void* m_pStringData;
     CCharString();                                 // 0x0099E4B0
     CCharString(const CCharString& other);         // 0x0099EC30
-    CCharString& operator=(const char* text);      // 0x0099EFE0
+    const CCharString& operator=(const char* text);      // 0x0099EFE0
 };
 class C2DBoxI { public:
     long TLX, TLY, BRX, BRY;

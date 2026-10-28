@@ -20,7 +20,7 @@ extern "C" void* __cdecl memcpy(void* dst, const void* src, unsigned int size);
 class CCharString {
 public:
     const char* PString;
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
 // STLport vector view (start, finish, end of storage); CArray<T> derives from it.

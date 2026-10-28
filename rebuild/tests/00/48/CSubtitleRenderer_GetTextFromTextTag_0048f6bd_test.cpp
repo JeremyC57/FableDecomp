@@ -7,7 +7,7 @@ class CWideString { public:
     char buf[32];
     CWideString() { buf[0] = 0; }
     CWideString(const char* t) { std::strcpy(buf, t); }
-    CWideString& operator=(const CWideString& o) { std::strcpy(buf, o.buf); return *this; }
+    const CWideString& operator=(const CWideString& o) { std::strcpy(buf, o.buf); return *this; }
 };
 struct CArray { long items[4]; unsigned long n; unsigned long size() const { return n; } };
 struct CGroupEntry { long RefCount; CArray Entries; };

@@ -2,7 +2,7 @@
 // Leaf: ??$__copy@PAU?$pair@VCCharString@@K@std@@PAU12@H@std@@YIPAU?$pair@VCCharString@@K@0@PAU10@00ABUrandom_access_iterator_tag@0@PAH@Z
 // Identity: proven; own erase00AE6A20, resize00AE7D10, CParticleProgram clear00AE3381 on ExportNames+0x88; hand952H009 and actual CCharString assignment0099EFB0.
 // Layout: no matching nested flash header; shared CCharString data header lacks assignment/destructor APIs, so actual four-byte PStringData view declares real methods. Flash uses actual namespace, node-list4+CreationFrame4; unknown sound value remains explicitly opaque.
-class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}~CCharString();CCharString& operator=(const CCharString&);};namespace std{template<class A,class B>struct pair{A first;B second;};}
+class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}~CCharString();const CCharString& operator=(const CCharString&);};namespace std{template<class A,class B>struct pair{A first;B second;};}
 #ifndef _MSC_VER
 #define __fastcall
 #endif

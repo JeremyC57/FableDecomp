@@ -12,7 +12,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) {}
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }
-    CCharString& operator=(const CCharString& other) { ++g_assigns; PStringData = other.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& other) { ++g_assigns; PStringData = other.PStringData; return *this; }
     unsigned int GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->PData; }
 };

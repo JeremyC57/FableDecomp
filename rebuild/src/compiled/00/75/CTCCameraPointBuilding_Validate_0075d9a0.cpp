@@ -17,7 +17,7 @@
 //   named bool tested in two ifs.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* s);      // 0x0099EFE0
+    const CCharString& operator=(const char* s);      // 0x0099EFE0
 };
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;

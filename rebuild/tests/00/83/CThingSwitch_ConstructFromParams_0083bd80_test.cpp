@@ -8,7 +8,7 @@ class CCharString { public:
     CCharString(const char* text, long = -1) { std::strcpy(Text, text); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
 };
 static bool g_baseOk = true;
 static char g_baseName[32];

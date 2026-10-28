@@ -9,7 +9,7 @@ public:
     static int s_assigns;
     CCharString(const char* s) : PData(s) {}
     CCharString(const CCharString& o) : PData(o.PData) { ++s_copies; }
-    CCharString& operator=(const CCharString& o) { PData = o.PData; ++s_assigns; return *this; }
+    const CCharString& operator=(const CCharString& o) { PData = o.PData; ++s_assigns; return *this; }
 };
 int CCharString::s_copies = 0;
 int CCharString::s_assigns = 0;

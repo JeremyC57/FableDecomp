@@ -17,7 +17,7 @@ class CWideString { public:
  CWideString(const CWideString&); //0099b720
  ~CWideString(); //0099b510
  const CWideString& operator+=(const CWideString&); //0099b8d0
- CWideString& operator=(const CWideString&); //0099b7d0
+ const CWideString& operator=(const CWideString&); //0099b7d0
 };
 class CCharString { public: void* Data; CWideString ToWideString() const; }; //0099e480
 #endif

@@ -21,7 +21,7 @@ class CWideString { public:
     CWideStringData* PStringData;
     CWideString(const CWideString& other);              // (declared: by-value arguments are built in place)
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
 class CRGBColour { public:                                     // B, G, R, A bytes

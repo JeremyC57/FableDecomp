@@ -22,7 +22,7 @@ inline void* operator new(unsigned int, void* where) { return where; }
 class CWideString {
 public:
     CWideString(const CWideString& other);                // 0x0099B720
-    CWideString& operator=(const CWideString& other);     // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);     // 0x0099B7D0
     ~CWideString();                                       // 0x0099B510
 private:
     void* m_pData;                                        // +0x00

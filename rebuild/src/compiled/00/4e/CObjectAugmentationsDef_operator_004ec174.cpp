@@ -47,7 +47,7 @@ struct CRetailTree_004ec28c {                                             // ret
 
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);                     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);                     // 0x0099EFB0
 };
 
 class CObjectAugmentationsDef : public CDefClassBase { public:                          // vtable 0x01243974

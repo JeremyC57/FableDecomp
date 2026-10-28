@@ -25,7 +25,7 @@ class CCharString { public:
     CCharString();                                           // 0x0099E4B0
     CCharString(const CCharString& other);                   // 0x0099EC30
     ~CCharString();                                          // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);        // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 class C2DCoordI { public: long X, Y; C2DCoordI() { } };
@@ -111,7 +111,7 @@ static int g_ctor = 0, g_copy = 0, g_assign = 0, g_dtor = 0;
 CCharString::CCharString() : PStringData(0) { ++g_ctor; }
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copy; }
 CCharString::~CCharString() { ++g_dtor; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assign; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assign; return *this; }
 int main()
 {
     static unsigned char infoStore[2 * sizeof(CMapInfo)];

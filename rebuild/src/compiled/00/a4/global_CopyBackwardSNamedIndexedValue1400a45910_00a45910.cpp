@@ -11,7 +11,7 @@
 // in the dead `result` argument slot. The manifest label pair<pair<long,long>, CEngineTextureDecal> is propagated.
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 struct SValue0C {                                // 12-byte trivially copyable value

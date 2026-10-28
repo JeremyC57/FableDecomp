@@ -21,7 +21,7 @@ extern "C" int __cdecl memcmp(const void*, const void*, unsigned int);
 void operator delete(void* p);                         // 0x00BFE9BC
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
     ~CCharString();                                    // 0x0099EAE0
 };
 class CCPPointerInfo { public:

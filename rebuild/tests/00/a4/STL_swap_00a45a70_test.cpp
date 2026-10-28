@@ -21,7 +21,7 @@ public:
     CCharString(const char* s) : m_pData(Dup(s)) { ++g_liveStrings; }
     CCharString(const CCharString& other) : m_pData(Dup(other.m_pData)) { ++g_liveStrings; }
     ~CCharString() { free(m_pData); --g_liveStrings; }
-    CCharString& operator=(const CCharString& other)
+    const CCharString& operator=(const CCharString& other)
     {
         if (this != &other) {
             char* p = Dup(other.m_pData);

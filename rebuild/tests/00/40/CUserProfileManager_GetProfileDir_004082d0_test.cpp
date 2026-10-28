@@ -8,7 +8,7 @@ public:
     char Text[96];
     explicit CWideString(const char* text) { std::strcpy(Text, text); }
     CWideString(const CWideString& other) { std::strcpy(Text, other.Text); }
-    CWideString& operator=(const CWideString& other) { std::strcpy(Text, other.Text); return *this; }
+    const CWideString& operator=(const CWideString& other) { std::strcpy(Text, other.Text); return *this; }
 };
 static CWideString g_ProfileFileName("Profile.bin");
 class CUserProfileManager {

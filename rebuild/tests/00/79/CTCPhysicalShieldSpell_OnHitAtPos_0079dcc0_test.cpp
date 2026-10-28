@@ -22,7 +22,7 @@ class CCharString { public:
     void* m_pData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 class CWorld { public:
     unsigned long* GetPRandomSeed();                    // 0x0049D810
@@ -114,7 +114,7 @@ void CDefVirtual::Destroy() { ++g_destroy; }
 void CTCBase::v00() {}
 CCharString::CCharString() { m_pData = 0; }
 CCharString::~CCharString() {}
-CCharString& CCharString::operator=(const char* text) { ++g_assign; m_pData = (void*)text; g_lastText = text; return *this; }
+const CCharString& CCharString::operator=(const char* text) { ++g_assign; m_pData = (void*)text; g_lastText = text; return *this; }
 unsigned long* CWorld::GetPRandomSeed() { return &g_seed; }
 CWorld* CTCBase::GetWorld() { return &g_world; }
 float __fastcall GFFloatRandom(float range, unsigned long* seed) { CHECK(range == 1.0f && seed == &g_seed); return g_random; }

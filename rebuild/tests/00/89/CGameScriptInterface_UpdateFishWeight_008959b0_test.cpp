@@ -87,7 +87,7 @@ class CCharString { public:
     CCharString() : m_pData(0) { }
     CCharString(const char* text, long length = -1) { ++g_strCtors; m_pData = &g_blocks[g_blockCount++ & 7]; m_pData->m_pData = text; m_pData->m_length = length < 0 ? (unsigned long)std::strlen(text) : (unsigned long)length; }
     ~CCharString() { ++g_strDtors; }
-    CCharString& operator=(const CCharString& o) { rec("="); m_pData = o.m_pData; return *this; }
+    const CCharString& operator=(const CCharString& o) { rec("="); m_pData = o.m_pData; return *this; }
     CWideString ToWideString() const { rec("w"); CWideString w; w.PStringData = m_pData ? m_pData->m_pData : ""; return w; }
     const char* GetString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }

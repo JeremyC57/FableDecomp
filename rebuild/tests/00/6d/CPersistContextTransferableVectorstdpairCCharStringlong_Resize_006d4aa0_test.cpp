@@ -12,7 +12,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1) : Text(text) { ++g_strings; }
     CCharString(const CCharString& other) : Text(other.Text) { ++g_strings; }
     ~CCharString() { --g_strings; }
-    CCharString& operator=(const CCharString& other) { Text = other.Text; return *this; }
+    const CCharString& operator=(const CCharString& other) { Text = other.Text; return *this; }
 };
 
 template <class T1, class T2>

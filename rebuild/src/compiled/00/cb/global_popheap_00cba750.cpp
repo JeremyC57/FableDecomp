@@ -16,7 +16,7 @@ public:
     void* PStringData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 struct CPersistInfo {                        // NScript::CRuntimeScriptedEntityPersist::CPersistInfo (0x10 bytes)

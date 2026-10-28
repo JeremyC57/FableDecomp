@@ -16,7 +16,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1) { (void)length; strcpy(m_Text, text); }
     CCharString(const CCharString& other) { strcpy(m_Text, other.m_Text); }
     ~CCharString() {}
-    CCharString& operator=(const CCharString& other) { strcpy(m_Text, other.m_Text); return *this; }
+    const CCharString& operator=(const CCharString& other) { strcpy(m_Text, other.m_Text); return *this; }
     CCharString ToLower() const
     {
         CCharString r(m_Text);
@@ -32,7 +32,7 @@ class CWideString { public:
     CWideString(const char* text) { strcpy(m_Text, text); }
     CWideString(const CWideString& other) { strcpy(m_Text, other.m_Text); }
     ~CWideString() {}
-    CWideString& operator=(const CWideString& other) { strcpy(m_Text, other.m_Text); return *this; }
+    const CWideString& operator=(const CWideString& other) { strcpy(m_Text, other.m_Text); return *this; }
     CCharString ConvertToCharString() const { return CCharString(m_Text); }
 };
 CWideString CCharString::ToWideString() const { return CWideString(m_Text); }

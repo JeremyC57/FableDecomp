@@ -27,7 +27,7 @@ class CCharString { public:
     CBasicStringChar* PStringData;
     CCharString(const CCharString& other);
     ~CCharString();                                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     __forceinline bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)

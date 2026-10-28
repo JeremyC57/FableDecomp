@@ -11,7 +11,7 @@ public:
     char* PStringData;
     CCharString(const char* s) { PStringData = new char[std::strlen(s) + 1]; std::strcpy(PStringData, s); }
     CCharString(const CCharString& o) { PStringData = new char[std::strlen(o.PStringData) + 1]; std::strcpy(PStringData, o.PStringData); }
-    CCharString& operator=(const CCharString& o) { if (this != &o) { delete[] PStringData; PStringData = new char[std::strlen(o.PStringData) + 1]; std::strcpy(PStringData, o.PStringData); } return *this; }
+    const CCharString& operator=(const CCharString& o) { if (this != &o) { delete[] PStringData; PStringData = new char[std::strlen(o.PStringData) + 1]; std::strcpy(PStringData, o.PStringData); } return *this; }
     ~CCharString() { delete[] PStringData; }
 };
 

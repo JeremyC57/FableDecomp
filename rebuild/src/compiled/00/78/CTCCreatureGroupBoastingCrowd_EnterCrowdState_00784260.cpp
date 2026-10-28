@@ -16,7 +16,7 @@ class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
-    CCharString& operator=(const char* text);                // 0x0099EFE0
+    const CCharString& operator=(const char* text);                // 0x0099EFE0
     bool operator!=(const char* text) const;                 // 0x0099E960
 };
 class CTCBase;

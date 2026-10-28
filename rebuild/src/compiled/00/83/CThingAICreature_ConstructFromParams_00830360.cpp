@@ -19,7 +19,7 @@ class CThingPhysical;
 class CThingBuilding;
 class CCharString { public:
     void* PData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 struct CBaseIntelligentPointer {
     virtual void v00();

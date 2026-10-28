@@ -8,7 +8,7 @@ public:
     CCharString(const char* t, long length = -1) { (void)length; std::strcpy(text, t); }
     CCharString(const CCharString& other) { std::strcpy(text, other.text); }
     ~CCharString() { text[0] = 0; }
-    CCharString& operator=(const char* t) { std::strcpy(text, t); return *this; }
+    const CCharString& operator=(const char* t) { std::strcpy(text, t); return *this; }
 };
 
 class CTCHealLife {

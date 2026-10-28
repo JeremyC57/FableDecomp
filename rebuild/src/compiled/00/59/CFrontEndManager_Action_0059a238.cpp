@@ -42,7 +42,7 @@ class CWideString
 public:
     void* PStringData;
     ~CWideString();                                       // 0x0099B510
-    CWideString& operator=(const CWideString& other);     // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);     // 0x0099B7D0
     __forceinline bool operator==(const CWideString& other) const
     {
         if (PStringData == other.PStringData)

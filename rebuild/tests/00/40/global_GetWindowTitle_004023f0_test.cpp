@@ -13,7 +13,7 @@ class CWideString { public:
     wchar_t s[64];
     CWideString(const wchar_t* t) { std::wcscpy(s, t); }
     CWideString(const CWideString& o) { std::wcscpy(s, o.s); }
-    CWideString& operator=(const CWideString& o) { std::wcscpy(s, o.s); return *this; }
+    const CWideString& operator=(const CWideString& o) { std::wcscpy(s, o.s); return *this; }
 };
 CWideString operator+(const CWideString& a, const wchar_t* b) { CWideString r(a); std::wcscat(r.s, b); return r; }
 class CCharString { public:

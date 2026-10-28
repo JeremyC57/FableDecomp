@@ -17,7 +17,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     bool operator!=(const char* text) const;           // 0x0099E960
-    CCharString& operator=(const char* text);          // 0x0099EFE0
+    const CCharString& operator=(const char* text);          // 0x0099EFE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 class CCPPointerInfo { public:

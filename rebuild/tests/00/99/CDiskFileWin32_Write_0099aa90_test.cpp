@@ -124,7 +124,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -160,7 +160,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -226,7 +226,7 @@ CCharString::CCharString():storage_(0){++LiveStrings;}
 CCharString::CCharString(const char* text,long length):storage_(new CCharStringData){if(length!=-1||!ExpectedMessage||strcmp(text,ExpectedMessage))Bad=true;storage_->text=const_cast<char*>(text);storage_->owners=1;ActiveBlock=storage_;++LiveStrings;++Blocks;}
 void CCharString::UnassignString(){if(storage_){if(!--storage_->owners){if(storage_==ActiveBlock)ActiveBlock=0;delete storage_;--Blocks;}storage_=0;}}
 CCharString::~CCharString(){UnassignString();--LiveStrings;}
-CCharString& CCharString::operator=(const CCharString& other){if(storage_!=other.storage_){UnassignString();storage_=other.storage_;if(storage_)++storage_->owners;}return *this;}
+const CCharString& CCharString::operator=(const CCharString& other){if(storage_!=other.storage_){UnassignString();storage_=other.storage_;if(storage_)++storage_->owners;}return *this;}
 CCharString::operator const char*()const{++Converts;if(!storage_||storage_->owners!=2||strcmp(storage_->text,ExpectedMessage))Bad=true;return storage_?storage_->text:"";}
 CStringFileArgument::CStringFileArgument(const CStringFileArgument& other):CCharString(){++Copies;CCharString::operator=(static_cast<const CCharString&>(other));}
 static int __stdcall WriteStub(void* handle,const void* buffer,unsigned long requested,unsigned long* written,void* overlapped){++Writes;if(handle!=ExpectedHandle||buffer!=ExpectedBuffer||requested!=ExpectedRequested||!written||overlapped)Bad=true;*written=ActualWritten;if(Mode==9){Current->Position=50;Current->Length=52;}return ReturnValue;}

@@ -14,7 +14,7 @@ class CWideStringData;
 class CWideString {                                      // 4 bytes: PStringData
 public:
     CWideString(const CWideString& other);               // 0x0099B720
-    CWideString& operator=(const CWideString& other);    // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
     ~CWideString();                                      // 0x0099B510
     CWideStringData* PStringData;
 };

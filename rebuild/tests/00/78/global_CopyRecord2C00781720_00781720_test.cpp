@@ -10,7 +10,7 @@ static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) g_fail = 1; } while (0)
 class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
 class CBaseObject;
@@ -54,7 +54,7 @@ SRecord2C* __fastcall Copy_Record2C_00781720(SRecord2C* first, SRecord2C* last, 
 }
 
 static int g_strAssign = 0;
-CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; ++g_strAssign; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; ++g_strAssign; return *this; }
 void CBaseIntelligentPointer::v00() { }
 CBaseObject* CBaseIntelligentPointer::GetPItem() const { return (CBaseObject*)PData; }
 void CBaseIntelligentPointer::SetPItem(CBaseObject* item) { PData = item; }

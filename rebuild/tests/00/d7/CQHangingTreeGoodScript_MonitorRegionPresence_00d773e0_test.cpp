@@ -43,7 +43,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
     __forceinline bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
@@ -284,7 +284,7 @@ CCharString::CCharString(const char* text, long length)
 }
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { }
 CCharString::~CCharString() { }
-CCharString& CCharString::operator=(const char* text) { CCharString t(text); PStringData = t.PStringData; return *this; }
+const CCharString& CCharString::operator=(const char* text) { CCharString t(text); PStringData = t.PStringData; return *this; }
 static int Is(const CCharString& s, const char* t) { return s.PStringData && Compare_00411570(s.PStringData->Data.PData, t) == 0; }
 CBaseClass::CBaseClass() { }
 CBaseClass::~CBaseClass() { }

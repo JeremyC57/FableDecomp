@@ -23,7 +23,7 @@ class CCharString {
 public:
     void* PStringData;                                      // +0x00
     ~CCharString();                                         // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
 namespace std {

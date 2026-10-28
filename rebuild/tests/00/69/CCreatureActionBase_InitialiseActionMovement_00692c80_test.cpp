@@ -1018,7 +1018,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -1054,7 +1054,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -1132,7 +1132,7 @@ CCharString::CCharString():storage_(0){++liveStrings;}
 CCharString::CCharString(const char* text,long length):storage_(0){if(length<0)length=(long)std::strlen(text);storage_=new CCharStringData;storage_->text=new char[length+1];std::memcpy(storage_->text,text,length);storage_->text[length]=0;storage_->unknown04=storage_->unknown08=0;storage_->flags0C=0;storage_->owners=1;++liveStrings;}
 CCharString::~CCharString(){if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}--liveStrings;}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
-CCharString& CCharString::operator=(const CCharString& other){if(other.storage_)++other.storage_->owners;if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}storage_=other.storage_;return *this;}
+const CCharString& CCharString::operator=(const CCharString& other){if(other.storage_)++other.storage_->owners;if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}storage_=other.storage_;return *this;}
 CRetailString::CRetailString(const char* s,long n):CCharString(s,n){}
 CRetailString::CRetailString(const CRetailString& s):CCharString(){CCharString::operator=(s);++stringCopies;check(!std::strcmp(s,scenario==3?"UNKNOWN":"ANIMATION_NAME"));}
 CRetailString CBankFile::GetEntrySymbol(unsigned long index)const{++symbolCalls;check(this==static_cast<CBankFile*>(bank)&&index==77&&peekCalls==1);return CRetailString("ANIMATION_NAME",-1);}

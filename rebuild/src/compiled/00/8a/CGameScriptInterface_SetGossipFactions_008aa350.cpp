@@ -10,7 +10,7 @@
 // Layout: active script header is flattened; genuine virtual declaration below preserves the PDB virtual API. No receiver fields accessed. Shared header retained as layout evidence.
 class CCharString {
 public:
-    CCharString& operator=(const CCharString&);
+    const CCharString& operator=(const CCharString&);
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
     bool operator<(const CCharString& other) const;

@@ -10,7 +10,7 @@ public:
     CCharString() : Id(0) { ++g_strings; }
     CCharString(const CCharString& o) : Id(o.Id) { ++g_strings; }
     ~CCharString() { --g_strings; }
-    CCharString& operator=(const CCharString& o) { Id = o.Id; return *this; }
+    const CCharString& operator=(const CCharString& o) { Id = o.Id; return *this; }
 };
 class C3DVector { public: float X, Y, Z; };
 class CMatrix3x4 { public:

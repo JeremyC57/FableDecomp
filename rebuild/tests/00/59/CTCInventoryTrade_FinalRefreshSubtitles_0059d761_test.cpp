@@ -15,7 +15,7 @@ class CWideString { public:
     CWideString() : PStringData(0) { text[0] = 0; ++g_wideCtors; }
     CWideString(const CWideString& o) : PStringData(o.PStringData) { strcpy(text, o.text); ++g_wideCtors; }
     ~CWideString() { ++g_wideDtors; }
-    CWideString& operator=(const CWideString& other) { strcpy(text, other.text); return *this; }
+    const CWideString& operator=(const CWideString& other) { strcpy(text, other.text); return *this; }
     const CWideString& operator+=(const CWideString& other) { strcat(text, other.text); return *this; }
 };
 CWideString __fastcall GetXString() { CWideString s; strcpy(s.text, " x"); return s; }

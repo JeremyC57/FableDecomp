@@ -15,7 +15,7 @@ class CCharString { public:
     CCharString(const CCharString& other);         // 0x0099EC30
     ~CCharString();                                // 0x0099EAE0
     bool operator!=(const char* text) const;       // 0x0099E960
-    CCharString& operator=(const char* text);      // 0x0099EFE0
+    const CCharString& operator=(const char* text);      // 0x0099EFE0
 };
 class CWorldMap { public:
     long GetRegionNumberFromName(const CCharString& name) const;   // 0x004FC210

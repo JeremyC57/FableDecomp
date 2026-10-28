@@ -10,7 +10,7 @@
 class CCharStringData;
 class CCharString { public:
     CCharStringData* m_pData;
-    CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
 };
 class C3DVector { public:
     float X, Y, Z;

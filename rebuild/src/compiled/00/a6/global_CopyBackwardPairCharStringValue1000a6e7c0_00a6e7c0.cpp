@@ -11,7 +11,7 @@
 // pair<pair<long,long>, CEngineTextureDecal> is propagated.
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 struct SValue10 {                                // 16-byte trivially copyable value

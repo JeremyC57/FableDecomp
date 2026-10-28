@@ -15,7 +15,7 @@ class CASuspendableProcess;
 class CWideString { public:
     CWideStringData* PStringData;
     ~CWideString();                                 // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
 class CAFile { public:

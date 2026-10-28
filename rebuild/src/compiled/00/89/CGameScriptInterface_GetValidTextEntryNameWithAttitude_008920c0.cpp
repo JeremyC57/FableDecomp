@@ -29,7 +29,7 @@ public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 CCharString __fastcall operator+(const CCharString& a, const char* b);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& a, const CCharString& b);   // 0x0099F570

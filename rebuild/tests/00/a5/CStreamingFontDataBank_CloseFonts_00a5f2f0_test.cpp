@@ -3,7 +3,7 @@
 #include <cstring>
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 
 class CStreamingFontDataBankEntry {                     // vtable 0x0129D5B4
@@ -64,7 +64,7 @@ void CStreamingFontDataBank::CloseFonts()
     Filename = "";
 }
 static int g_deleted = 0, g_unloaded = 0, g_canUnload = 0; static const char* g_name;
-CCharString& CCharString::operator=(const char* text) { g_name = text; PStringData = (void*)text; return *this; }
+const CCharString& CCharString::operator=(const char* text) { g_name = text; PStringData = (void*)text; return *this; }
 struct TestFont : CStreamingFontDataBankEntry {
     bool loaded;
     TestFont(bool l) : loaded(l) { }

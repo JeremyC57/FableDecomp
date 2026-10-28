@@ -5,7 +5,7 @@ static int g_assigns = 0, g_moves = 0;
 using std::memmove;
 class CCharString { public:
     const char* PStringData;
-    CCharString& operator=(const char* text) { ++g_assigns; PStringData = text; return *this; }
+    const CCharString& operator=(const char* text) { ++g_assigns; PStringData = text; return *this; }
 };
 inline void* __copy_trivial(const void* first, const void* last, void* result)
 {

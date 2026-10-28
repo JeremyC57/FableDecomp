@@ -100,7 +100,7 @@ class CCharString { public:                               // fable_string.h layo
     void* m_pData;
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 __forceinline bool IsThingAlive(const CScriptThing& thing)   // the thing exists and is not dead
 {

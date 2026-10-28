@@ -12,7 +12,7 @@ class CWideString { public:
     const char* Text;
     CWideString() : Text("") {}
     CWideString(const char* text) : Text(text) {}
-    CWideString& operator=(const CWideString& o) { Text = o.Text; return *this; }
+    const CWideString& operator=(const CWideString& o) { Text = o.Text; return *this; }
 };
 class CCharString { public:
     CCharStringData* PStringData;

@@ -25,7 +25,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
     bool operator!=(const CCharString& other) const;   // 0x0099E900
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
 struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>

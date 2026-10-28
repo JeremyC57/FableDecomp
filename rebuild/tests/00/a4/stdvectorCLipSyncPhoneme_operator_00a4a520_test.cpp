@@ -20,7 +20,7 @@ public:
     CCharString();
     CCharString(const CCharString& other);
     ~CCharString();
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
 class CLipSyncPhoneme {                                     // Ego_r.pdb, 12 bytes
@@ -127,7 +127,7 @@ template vector<CLipSyncPhoneme>& vector<CLipSyncPhoneme>::operator=(const vecto
 CCharString::CCharString() : PStringData(0) { }
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { }
 CCharString::~CCharString() { }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
 static int g_tags[16];
 static CLipSyncPhoneme make(int i)
 {

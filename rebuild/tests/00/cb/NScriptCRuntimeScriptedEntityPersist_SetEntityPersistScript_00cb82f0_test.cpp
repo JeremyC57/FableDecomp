@@ -12,7 +12,7 @@ public:
     const char* m_pText;
     CCharString(const char* text) : m_pText(text) { }
     CCharString(const CCharString& other) : m_pText(other.m_pText) { }
-    CCharString& operator=(const CCharString& other) { m_pText = other.m_pText; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pText = other.m_pText; return *this; }
 };
 namespace NScript {
 class CRuntimeScriptedEntityPersist {

@@ -10,7 +10,7 @@ public:
     CWideString() : Text(0) { }
     explicit CWideString(const unsigned short* t) : Text(t) { }
     CWideString(const CWideString& o) : Text(o.Text) { }
-    CWideString& operator=(const CWideString& o) { Text = o.Text; return *this; }
+    const CWideString& operator=(const CWideString& o) { Text = o.Text; return *this; }
     bool operator<(const CWideString& o) const
     {
         int i = 0;

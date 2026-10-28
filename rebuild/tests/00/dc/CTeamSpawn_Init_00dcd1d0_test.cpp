@@ -10,7 +10,7 @@ static int g_live = 0;
 class CCharString { public:
     std::string s;
     CCharString(const char* t = "", long = -1) : s(t) {}
-    CCharString& operator=(const char* t) { s = t; return *this; }
+    const CCharString& operator=(const char* t) { s = t; return *this; }
     bool operator==(const char* t) const { return s == t; }
 };
 class CScriptThing { public:

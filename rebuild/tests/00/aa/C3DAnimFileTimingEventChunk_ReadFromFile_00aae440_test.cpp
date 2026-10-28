@@ -2,7 +2,7 @@
 #include <cstring>
 class CCharString { public:
     char m_text[32];
-    CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
 };
 class CDataInputStream {
 public:

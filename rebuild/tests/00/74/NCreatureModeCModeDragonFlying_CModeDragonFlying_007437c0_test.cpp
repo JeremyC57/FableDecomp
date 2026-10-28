@@ -14,7 +14,7 @@ class CCharString { public:
     CCharString() : m_pData(0) { ++g_strDefault; }
     CCharString(const char* text, long length = -1) { ++g_strLiteral; g_lastLiteral = text; g_lastLength = length; m_pData = new CCharStringData; m_pData->m_pData = text; m_pData->m_length = (unsigned long)strlen(text); }
     ~CCharString() { ++g_strDtor; delete m_pData; m_pData = 0; }
-    CCharString& operator=(const CCharString& other) { ++g_strAssign; delete m_pData; m_pData = 0; if (other.m_pData) { m_pData = new CCharStringData; *m_pData = *other.m_pData; } return *this; }
+    const CCharString& operator=(const CCharString& other) { ++g_strAssign; delete m_pData; m_pData = 0; if (other.m_pData) { m_pData = new CCharStringData; *m_pData = *other.m_pData; } return *this; }
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
 };

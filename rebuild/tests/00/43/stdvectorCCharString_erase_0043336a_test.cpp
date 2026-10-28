@@ -6,7 +6,7 @@ static int g_destroyed = 0;
 class CCharString {
 public:
     CCharString() { text[0] = 0; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; }
     void Destroy() { ++g_destroyed; text[0] = '#'; text[1] = 0; }
     char text[16];
 };

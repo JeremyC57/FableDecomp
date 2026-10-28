@@ -12,7 +12,7 @@
 // the class is named by its base. One of 14 bodies of this shape.
 class CWideString { public:
     unsigned char _body[0x4];
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
 struct CWideString_Derived_004936ec : CWideString {

@@ -33,7 +33,7 @@ public:
     explicit CCharString(const char* s) : PStringData(0) { Attach(s); }
     CCharString(const CCharString& other) : PStringData(0) { if (other.PStringData) Attach(other.PStringData->m_pData); }
     ~CCharString() { Detach(); }
-    CCharString& operator=(const CCharString& other)
+    const CCharString& operator=(const CCharString& other)
     {
         if (this != &other) {
             char* s = other.PStringData ? other.PStringData->m_pData : 0;

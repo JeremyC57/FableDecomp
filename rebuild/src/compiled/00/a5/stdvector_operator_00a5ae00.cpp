@@ -10,7 +10,7 @@
 #endif
 inline void* operator new(size_t,void* p){return p;}
 class CThing;class CBaseObject;class CBaseObjectPointer;class CCPPointerInfo;class CContainmentVolume;
-class CCharString {public:void* PStringData;CCharString();CCharString(const CCharString&);CCharString& operator=(const CCharString&);~CCharString();};
+class CCharString {public:void* PStringData;CCharString();CCharString(const CCharString&);const CCharString& operator=(const CCharString&);~CCharString();};
 class CBaseIntelligentPointer {public:virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;};
 template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {public:CIntelligentPointer();CIntelligentPointer(const CIntelligentPointer&);CIntelligentPointer& operator=(const CIntelligentPointer&);};
 struct AttackParticleAndEndPoints {CCharString StartDummy,EndDummy;long ParticleType,PeriodicFrames;CIntelligentPointer<CThing> ParticleEffect;};

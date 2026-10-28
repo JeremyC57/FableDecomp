@@ -22,7 +22,7 @@ public:
     CCharStringData* PStringData;
     CCharString();                                              // 0x0099E4B0
     CCharString(const CCharString& other);                      // 0x0099EC30
-    CCharString& operator=(const CCharString& other);           // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);           // 0x0099EFB0
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = the shared empty literal 0x0129AAF4
 };

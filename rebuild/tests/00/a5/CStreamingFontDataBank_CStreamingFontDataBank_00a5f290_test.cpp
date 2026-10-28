@@ -35,7 +35,7 @@ template<class T> class CArray { public:
 class CCharString {
 public:
     CCharString() : m_pStringData(0) { ++g_strCtor; }
-    CCharString& operator=(const char* text) { ++g_strAssign; g_assigned = text; m_pStringData = (void*)text; return *this; }
+    const CCharString& operator=(const char* text) { ++g_strAssign; g_assigned = text; m_pStringData = (void*)text; return *this; }
     void* m_pStringData;
 };
 class CCPPointerInfo;

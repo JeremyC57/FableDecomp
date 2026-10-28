@@ -21,7 +21,7 @@ struct CDefVirtual {
 };
 class CWideString { public:
     void* PStringData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 struct CMovieDef : CDefVirtual, CRefCounted {
     unsigned char _pad_0x08[0x54 - 0x08];

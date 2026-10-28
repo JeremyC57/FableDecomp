@@ -24,7 +24,7 @@ public:
     long id;
     CWideString(long i) : id(i) {}
     CWideString(const CWideString& o) : id(o.id) {}
-    CWideString& operator=(const CWideString& o) { id = o.id; return *this; }
+    const CWideString& operator=(const CWideString& o) { id = o.id; return *this; }
 };
 static int g_destroyed = 0;
 namespace NGameText {

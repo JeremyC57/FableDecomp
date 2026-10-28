@@ -9,7 +9,7 @@ public:
     CWideString() { m_text[0] = 0; ++g_wlive; }
     CWideString(const CWideString& other) { Set(other.m_text); ++g_wlive; }
     ~CWideString() { --g_wlive; }
-    CWideString& operator=(const CWideString& other) { if (this != &other) Set(other.m_text); return *this; }
+    const CWideString& operator=(const CWideString& other) { if (this != &other) Set(other.m_text); return *this; }
     void Set(const wchar_t* s) { int i = 0; for (; s[i] && i < 15; ++i) m_text[i] = s[i]; m_text[i] = 0; }
     void SetNarrow(const char* s) { int i = 0; for (; s[i] && i < 15; ++i) m_text[i] = (wchar_t)s[i]; m_text[i] = 0; }
     bool Equals(const char* s) const { int i = 0; for (; s[i]; ++i) if (m_text[i] != (wchar_t)s[i]) return false; return m_text[i] == 0; }

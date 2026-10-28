@@ -87,7 +87,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -123,7 +123,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -183,7 +183,7 @@ CCharString::CCharString(const char* s,long n):storage_(0){++liveObjects;assert(
 void CCharString::UnassignString(){if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;--liveData;}storage_=0;}
 CCharString::~CCharString(){UnassignString();--liveObjects;}
 const CCharString& CCharString::operator=(const char* s){UnassignString();storage_=new CCharStringData;storage_->owners=1;storage_->unknown04=storage_->unknown08=0;storage_->flags0C=0;storage_->text=new char[strlen(s)+1];strcpy(storage_->text,s);++liveData;return *this;}
-CCharString& CCharString::operator=(const CCharString& s){if(storage_!=s.storage_){UnassignString();storage_=s.storage_;if(storage_)++storage_->owners;}return *this;}
+const CCharString& CCharString::operator=(const CCharString& s){if(storage_!=s.storage_){UnassignString();storage_=s.storage_;if(storage_)++storage_->owners;}return *this;}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
 CPrisonerSpeechString::CPrisonerSpeechString(const char*s,long n):CCharString(s,n){}
 CPrisonerSpeechString::CPrisonerSpeechString(const CPrisonerSpeechString&s):CCharString(){CCharString::operator=(s);}

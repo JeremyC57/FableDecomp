@@ -1,7 +1,7 @@
 class CCharString {
 public:
     CCharString() : data(0), len(0), capacity(0) {}
-    __declspec(noinline) CCharString& operator=(const CCharString& other) { data = other.data; len = other.len; capacity = other.capacity; return *this; }
+    __declspec(noinline) const CCharString& operator=(const CCharString& other) { data = other.data; len = other.len; capacity = other.capacity; return *this; }
     void* data;
     long len;
     long capacity;

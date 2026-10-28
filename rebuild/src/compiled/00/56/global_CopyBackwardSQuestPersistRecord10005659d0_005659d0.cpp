@@ -11,7 +11,7 @@
 // different, 16-byte record: the label is propagated; modelled as the label's three strings plus two flags.
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 struct SQuestPersistRecord10 {                   // 16 bytes

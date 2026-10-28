@@ -41,7 +41,7 @@ class CWideString { public:
     void* PStringData;
     CWideString();                                         // 0x0099AED0
     ~CWideString();                                        // 0x0099B510
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
 };
 struct CWideStringAllocator {                              // STLport allocator<CWideString> (empty)
     CWideStringAllocator() { }

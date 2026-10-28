@@ -8,7 +8,7 @@ class CCharString { public:
     const char* text;
     int assigns;
     CCharString() : text(""), assigns(0) {}
-    CCharString& operator=(const char* t) { text = t; ++assigns; return *this; }
+    const CCharString& operator=(const char* t) { text = t; ++assigns; return *this; }
 };
 struct CCharStringVector {
     CCharString* _M_start;

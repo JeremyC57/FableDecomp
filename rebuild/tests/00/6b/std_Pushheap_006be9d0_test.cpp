@@ -5,7 +5,7 @@ class CWideString { public:
     int Data;
     CWideString() : Data(0) { }
     CWideString(const CWideString& o) : Data(o.Data) { }
-    CWideString& operator=(const CWideString& o) { Data = o.Data; return *this; }
+    const CWideString& operator=(const CWideString& o) { Data = o.Data; return *this; }
     ~CWideString() { ++g_strDtors; }
 };
 struct CRegisteredMusicEntry {

@@ -27,7 +27,7 @@ public:
     CCharStringData* PStringData;
     CCharString();                              // 0x0099E4B0
     ~CCharString();                             // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     CCharString ToLower() const;                // 0x0099ED10
     const char* GetPString() const { return PStringData == 0 ? g_EmptyString : PStringData->PData; }
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }

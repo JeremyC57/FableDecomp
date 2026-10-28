@@ -5,7 +5,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: PushHeap
 // Layout: no engine CCharString header exists; retail holds one data pointer, ctor 0099ec30, assignment 0099efb0, dtor 0099eae0.
-class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 // Layout: retail counted block has count +0, destroy callback +4 and object +8.
 struct CountBlock_00a707d0 { int references; void (__fastcall *Destroy)(void*); void* object; };
 template<class T> struct CountedPointer_00a707d0 {
@@ -50,7 +50,7 @@ template<class T,class C> void SortHeap(T* first,T* last,C comp) {
 template void PushHeap<Record_00a707d0,Compare_00a707d0>(Record_00a707d0*,int,int,Record_00a707d0,Compare_00a707d0);
 
 // END exact source snapshot
-CCharString::CCharString(const CCharString& p):data(p.data){} CCharString::~CCharString(){} CCharString& CCharString::operator=(const CCharString& p){data=p.data;return *this;}
+CCharString::CCharString(const CCharString& p):data(p.data){} CCharString::~CCharString(){} const CCharString& CCharString::operator=(const CCharString& p){data=p.data;return *this;}
 
 static void __fastcall DestroyRecord(void* object){++*(int*)object;}
 int main(){CountBlock_00a707d0 blocks[6];for(int b=0;b<6;++b){blocks[b].references=100;blocks[b].Destroy=0;blocks[b].object=0;}const int n=5;int keys[n]={7,5,6,3,4};Record_00a707d0 v[n];Compare_00a707d0 comp;comp.state=0;int i;

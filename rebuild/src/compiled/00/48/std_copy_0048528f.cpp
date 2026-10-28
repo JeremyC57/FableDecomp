@@ -10,7 +10,7 @@
 class CCharString {                                        // 4 bytes: the shared string data pointer
 public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
 namespace std {

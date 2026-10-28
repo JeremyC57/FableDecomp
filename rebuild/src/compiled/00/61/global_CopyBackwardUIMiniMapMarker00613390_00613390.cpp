@@ -9,7 +9,7 @@
 // copies Region, calls CCharString::operator= @ 0x0099EFB0 for UIDefName, then the five plain words.
 class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
 class C2DVector { public:

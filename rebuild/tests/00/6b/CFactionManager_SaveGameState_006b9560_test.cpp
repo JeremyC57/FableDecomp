@@ -77,7 +77,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -113,7 +113,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -170,7 +170,7 @@ CCharString::CCharString() { storage_=0; ++constructed; }
 CCharString::CCharString(const char*s,long n) { storage_=(CCharStringData*)std::malloc(sizeof(CCharStringData)); storage_->text=duptext(s); allocations[allocated++]=storage_; ++constructed; }
 CCharString::~CCharString() { ++destructed; }
 CCharString::operator const char*() const {return storage_?storage_->text:"";}
-CCharString& CCharString::operator=(const CCharString&s) { storage_=s.storage_;return *this; }
+const CCharString& CCharString::operator=(const CCharString&s) { storage_=s.storage_;return *this; }
 CCharString __fastcall GFIntToCharString(long n) { char b[40];std::sprintf(b,"%ld",n);return CCharString(b,-1); }
 CCharString __fastcall operator+(const char*a,const CCharString& b) { char s[150];std::strcpy(s,a);std::strcat(s,(const char*)b);return CCharString(s,-1); }
 class CFaction { public: int id; };

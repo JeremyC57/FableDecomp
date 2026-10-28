@@ -12,7 +12,7 @@ public:
     explicit CWideString(const char* text) { std::strcpy(Text, text); ++g_live; }
     CWideString(const CWideString& other) { std::strcpy(Text, other.Text); ++g_live; }
     ~CWideString() { --g_live; }
-    CWideString& operator=(const CWideString& other) { std::strcpy(Text, other.Text); return *this; }
+    const CWideString& operator=(const CWideString& other) { std::strcpy(Text, other.Text); return *this; }
 };
 template <class T> class CRetailVector {
 public:

@@ -4,7 +4,7 @@
 class CCharString { public:
     char m_text[16];
     CCharString() { m_text[0] = 0; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
 };
 class CPlane { public: float A, B, C, D; };
 class CMovableResourceMemoryPool { public: int id; };

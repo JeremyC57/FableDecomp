@@ -17,7 +17,7 @@ class CChunkedFileLoader;
 class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                       // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 class CRGBColour { public:
     unsigned long m_value;                 // packed B, G, R, A bytes (dword aligned: Ambient sits at +0x34)

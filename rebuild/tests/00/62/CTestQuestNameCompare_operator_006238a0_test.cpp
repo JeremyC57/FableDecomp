@@ -59,7 +59,7 @@ public:
     CCharStringData* PStringData;               // +0x00
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     const char* GetPString() const { return PStringData == 0 ? "" : PStringData->Data.PData; }
     bool operator==(const char* text) const
     {
@@ -94,7 +94,7 @@ bool CTestQuestNameCompare::operator()(const CTestQuest* a, const CTestQuest* b)
 static int g_copies, g_dtors, g_assigns;
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }
 CCharString::~CCharString() { ++g_dtors; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
 static CCharStringData MakeData(char* text) { CCharStringData d; memset(&d, 0, sizeof(d)); d.Data.PData = text; d.Data.StringLength = (unsigned long)strlen(text); return d; }
 static CTestQuest* MakeQuest(long* raw, CCharStringData* quest, CCharStringData* display)
 {

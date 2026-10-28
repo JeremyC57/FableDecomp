@@ -9,7 +9,7 @@ static int gAssigns = 0;
 class CWideString {
 public:
     const char* PStringData;
-    CWideString& operator=(const CWideString& other) { PStringData = other.PStringData; ++gAssigns; return *this; }   // stand-in
+    const CWideString& operator=(const CWideString& other) { PStringData = other.PStringData; ++gAssigns; return *this; }   // stand-in
 };
 namespace std {
 template <class _T1, class _T2> struct pair {

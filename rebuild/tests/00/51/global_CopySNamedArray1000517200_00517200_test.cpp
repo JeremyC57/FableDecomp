@@ -5,7 +5,7 @@ static int g_assigns = 0;
 
 class CCharString { public:                         // 4 bytes: the string-data pointer
     void* PStringData;
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
 };
 struct SArray0C_00454886 {                       // 12 bytes, assigned out of line
     void* m_words[3];

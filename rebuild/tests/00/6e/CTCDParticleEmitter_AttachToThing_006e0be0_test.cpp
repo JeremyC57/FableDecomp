@@ -33,7 +33,7 @@ class CThing;
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                         // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
     bool operator!=(const char* text) const;                // 0x0099E960
     CCharString ToUpper() const;                            // 0x0099EE20
 };
@@ -237,7 +237,7 @@ static void SetStr(CCharString& s, const char* t) { char* b = (char*)malloc(size
 static const char* Str(const CCharString& s) { return s.PStringData ? (const char*)s.PStringData + sizeof(long) : ""; }
 static void Release(CCharString& s) { if (s.PStringData && --*(long*)s.PStringData == 0) { free(s.PStringData); --g_live; } s.PStringData = 0; }
 CCharString::~CCharString() { Release(*this); }
-CCharString& CCharString::operator=(const CCharString& o) { Log("assignName"); char t[128]; strcpy(t, Str(o)); Release(*this); SetStr(*this, t); return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { Log("assignName"); char t[128]; strcpy(t, Str(o)); Release(*this); SetStr(*this, t); return *this; }
 bool CCharString::operator!=(const char* t) const { return strcmp(Str(*this), t) != 0; }
 CCharString CCharString::ToUpper() const
 { CCharString r; SetStr(r, Str(*this)); for (char* q = (char*)r.PStringData + sizeof(long); *q; ++q) *q = (char)toupper(*q); ++*(long*)r.PStringData; return r; }

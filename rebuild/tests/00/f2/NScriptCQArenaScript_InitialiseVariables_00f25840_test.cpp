@@ -5,7 +5,7 @@
 
 class CCharString { public:
     const char* PStringData;
-    CCharString& operator=(const char* text) { PStringData = text; return *this; }
+    const CCharString& operator=(const char* text) { PStringData = text; return *this; }
 };
 class CArenaRoundDef { public: int v; };
 struct CArenaRoundVector {

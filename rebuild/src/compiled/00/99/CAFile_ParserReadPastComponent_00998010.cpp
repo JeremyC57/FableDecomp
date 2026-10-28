@@ -40,7 +40,7 @@ public:
     CCharStringData* PStringData;                       // +0x00
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
     CCharString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099EC70
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Data.StringLength; }
     const char* GetString() const { return PStringData == 0 ? g_emptyLiteral_0129aaf4 : PStringData->Data.PData; }

@@ -7,7 +7,7 @@
 //   assignment of the member at +4; returns the advanced result.
 class CCharString {
 public:
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
 private:
     void* PStringData;                                    // +0x00
 };

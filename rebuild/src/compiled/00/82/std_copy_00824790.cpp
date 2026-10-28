@@ -11,7 +11,7 @@
 class CCharString {                                  // 4 bytes: shared string block
 public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 class CMap {
 public:

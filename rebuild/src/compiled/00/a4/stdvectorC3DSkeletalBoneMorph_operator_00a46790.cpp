@@ -109,7 +109,7 @@ class CCharString {
 public:
     CCharString(const CCharString& other);
     ~CCharString();
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 private:
     void* PData;                                          // +0x00
 };

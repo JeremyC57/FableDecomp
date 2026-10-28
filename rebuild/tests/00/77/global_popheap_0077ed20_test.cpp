@@ -9,7 +9,7 @@ public:
     CCharString(const char* s) { std::strcpy(m_text, s); ++g_strings; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_strings; }
     ~CCharString() { --g_strings; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
 };
 class C3DVector { public:
     unsigned int X, Y, Z;

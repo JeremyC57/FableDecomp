@@ -11,14 +11,14 @@ class CCharString { public:
     void* m_pData;
     CCharString(const char* text, long length = -1);       // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
-    CCharString& operator=(const char* text);              // 0x0099EFE0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const char* text);              // 0x0099EFE0
     bool operator!=(const CCharString& other) const;       // 0x0099E900
 };
 class CWideString { public:
     void* m_pData;
     ~CWideString();                                        // 0x0099B510
-    CWideString& operator=(const CWideString& other);      // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);      // 0x0099B7D0
 };
 struct CDef { virtual void v00(); virtual void DeleteThis(); long RefCount;
     __forceinline void Release() { if (--RefCount == 0) DeleteThis(); } };

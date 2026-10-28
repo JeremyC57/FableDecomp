@@ -18,7 +18,7 @@
 // Leaf: Init
 class CWideString { public:
     void* m_pData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 struct IDirect3DDevice9;
 struct D3DCAPS9 { unsigned char _body[0x130]; };

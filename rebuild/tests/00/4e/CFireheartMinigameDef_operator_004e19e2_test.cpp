@@ -16,7 +16,7 @@ class CDefClassBase { public:
 
 class CCharString { public:
     void* m_pStringData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CFireheartMinigameDef : public CDefClassBase { public:
@@ -41,7 +41,7 @@ CFireheartMinigameDef& CFireheartMinigameDef::operator=(const CFireheartMinigame
 
 
 CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other) { for (int i = 4; i < 0x25; ++i) _body[i] = other._body[i]; return *this; }
-CCharString& CCharString::operator=(const CCharString& other) { m_pStringData = other.m_pStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pStringData = other.m_pStringData; return *this; }
 
 int main()
 {

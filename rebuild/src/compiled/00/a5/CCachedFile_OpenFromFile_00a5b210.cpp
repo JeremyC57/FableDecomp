@@ -11,7 +11,7 @@
 // into edi first); the file's vtable is re-read before every virtual call.
 class CWideString { public:
     void* m_pStringData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                             // 0x0099B510
 };
 

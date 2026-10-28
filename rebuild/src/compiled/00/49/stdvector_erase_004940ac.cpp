@@ -15,7 +15,7 @@
 class CWideString {                                          // 4 bytes (Ego_r.pdb)
 public:
     void* PStringData;                                       // +0x0 CWideStringData*
-    CWideString& operator=(const CWideString& other);        // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);        // 0x0099B7D0
     ~CWideString();                                          // 0x0099B510
 };
 class C2DVector { public: float X; float Y; };                // 8 bytes

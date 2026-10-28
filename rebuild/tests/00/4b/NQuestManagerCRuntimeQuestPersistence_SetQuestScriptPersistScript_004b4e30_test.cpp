@@ -10,7 +10,7 @@ class CCharString { public:
     CCharString(const char* s) { PStringData = &g_pool[g_used++]; std::strcpy(PStringData->text, s); }
     CCharString(const CCharString& o) { PStringData = &g_pool[g_used++]; *PStringData = *o.PStringData; }
     ~CCharString() {}
-    CCharString& operator=(const CCharString& o) { *PStringData = *o.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& o) { *PStringData = *o.PStringData; return *this; }
     bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData) return false;

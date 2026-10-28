@@ -24,7 +24,7 @@ class CCharString {
 public:
     CCharString();                                           // 0x0099E4B0
     ~CCharString();
-    CCharString& operator=(const CCharString& other);        // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 private:
     CCharStringData* PStringData;
 };

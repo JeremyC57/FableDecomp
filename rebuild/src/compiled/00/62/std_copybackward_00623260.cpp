@@ -11,7 +11,7 @@
 class CWideString {                                  // 4 bytes: shared string block
 public:
     void* PStringData;
-    CWideString& operator=(const CWideString& other);  // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);  // 0x0099B7D0
 };
 class CQuestCardItem {                               // 8 bytes (Ego_r.pdb)
 public:

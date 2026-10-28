@@ -6,7 +6,7 @@ struct CThingPhysicalArg { int x; };
 class CCharString { public:
     const char* m_text;
     bool operator!=(const char* text) const { return std::strcmp(m_text, text) != 0; }
-    CCharString& operator=(const CCharString& other) { m_text = other.m_text; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_text = other.m_text; return *this; }
 };
 class CThingPhysical { public:
     int m_baseCalls; bool m_baseResult; long m_lastIndex;

@@ -13,7 +13,7 @@
 class CCharStringData;
 class CCharString { public:
     CCharStringData* m_pData;
-    CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
 };
 void __cdecl operator delete(void* p);                                 // 0x00BFE9BC
 struct SCountBlock {

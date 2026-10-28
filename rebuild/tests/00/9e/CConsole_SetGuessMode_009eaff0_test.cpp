@@ -22,7 +22,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();                                         // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
     CCharString GetAsLowerCase() const;                           // 0x0099ED10
     const char* c_str() const { return PStringData == 0 ? "" : PStringData->Text; }
     unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
@@ -118,7 +118,7 @@ static void FreeData(CCharStringData* d)
 }
 CCharString::CCharString(const CCharString& other) : PStringData(MakeData(other.PStringData ? other.PStringData->Text : 0)) { }
 CCharString::~CCharString() { FreeData(PStringData); PStringData = 0; }
-CCharString& CCharString::operator=(const CCharString& other)
+const CCharString& CCharString::operator=(const CCharString& other)
 {
     if (this != &other) { CCharStringData* d = MakeData(other.PStringData ? other.PStringData->Text : 0); FreeData(PStringData); PStringData = d; }
     return *this;

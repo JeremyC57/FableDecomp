@@ -13,7 +13,7 @@
 class CWideString {                                      // Ego_r.pdb 4 bytes
 public:
     void* PStringData;                                   // +0x0 CWideStringData*
-    CWideString& operator=(const CWideString& other);    // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
 };
 class C2DVector {                                        // Ego_r.pdb 8 bytes
 public:

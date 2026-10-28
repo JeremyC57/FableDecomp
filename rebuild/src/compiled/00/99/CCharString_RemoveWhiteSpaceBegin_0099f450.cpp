@@ -31,7 +31,7 @@ public:
         UnassignString();
         --g_CCharStringInstanceCount;
     }
-    CCharString& operator=(const CCharString& other)   // 0x0099EFB0, inlined
+    const CCharString& operator=(const CCharString& other)   // 0x0099EFB0, inlined
     {
         if (&other != this) {
             if (PStringData != 0)

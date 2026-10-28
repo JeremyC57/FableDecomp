@@ -22,7 +22,7 @@ class CCharStringData { public:
 };
 class CCharString { public:
     CCharStringData* PData;
-    CCharString& operator=(const char* text);   // 0x0099EFE0
+    const CCharString& operator=(const char* text);   // 0x0099EFE0
     bool IsEmpty() const { return PData == 0 || PData->Length == 0; }
 };
 extern bool g_bForceStandAroundBrain;           // 0x013B86EA

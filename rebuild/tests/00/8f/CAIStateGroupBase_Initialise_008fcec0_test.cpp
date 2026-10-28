@@ -1,5 +1,5 @@
 #include <cstdio>
-class CCharString { public: void* m_pData; CCharString& operator=(const CCharString& o) { m_pData = o.m_pData; return *this; } };
+class CCharString { public: void* m_pData; const CCharString& operator=(const CCharString& o) { m_pData = o.m_pData; return *this; } };
 class CThingAICreature; struct CThingAIManager;
 class CThingManager { public: unsigned char _pad[0x24]; CThingAIManager* m_pAIManager; };
 class CAIBrain { public: void* __vftable; unsigned char _pad[0x18]; CThingManager* ThingManager; };

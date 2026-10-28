@@ -8,7 +8,7 @@
 //   operator= copies the first field, calls CCharString::operator= for the second and copies the third (byte move).
 class CCharString {
 public:
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
     void* PStringData;
 };
 class CHeroLogBook {

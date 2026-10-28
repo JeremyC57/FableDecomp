@@ -2,7 +2,7 @@
 // grows; the slot is filled, its box moved to the position, UID allocated and the map registered.
 #include <cstdio>
 #include <cstring>
-class CCharString { public: const char* Text; CCharString& operator=(const CCharString& o) { Text = o.Text; return *this; } };
+class CCharString { public: const char* Text; const CCharString& operator=(const CCharString& o) { Text = o.Text; return *this; } };
 class C2DCoordI { public: long X, Y; };
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 class CMapInfo { public: C2DBoxI Area; CCharString LevelName; unsigned long MapUID; bool Used, Placed; };

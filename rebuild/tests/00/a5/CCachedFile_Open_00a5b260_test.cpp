@@ -29,7 +29,7 @@ class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 CWideString __fastcall ConvertPathToFullPath(const CWideString& path);   // 0x00999110
@@ -105,7 +105,7 @@ CCharString __fastcall operator+(const CCharString& a, const CCharString& b)
 { strcpy(g_buf, (const char*)a.PStringData); strcat(g_buf, (const char*)b.PStringData); return CCharString(g_buf, -1); }
 CWideString::CWideString() : PStringData(0) {}
 CWideString::~CWideString() {}
-CWideString& CWideString::operator=(const CWideString& o) { PStringData = o.PStringData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& o) { PStringData = o.PStringData; return *this; }
 CCharString CWideString::ConvertToCharString() const { return CCharString("C:/full/path", -1); }
 static const void* g_fullOf = 0; static bool g_exists = true;
 CWideString __fastcall ConvertPathToFullPath(const CWideString& path) { g_fullOf = path.PStringData; CWideString r; r.PStringData = (void*)"FULL"; return r; }

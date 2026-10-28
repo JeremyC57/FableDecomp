@@ -14,7 +14,7 @@ public:
     CWideString(const CWideString& o) : len(o.len) { std::memcpy(buf, o.buf, sizeof(buf)); }
     operator const WCH*() const { return buf; }
     const CWideString& operator=(const WCH* t) { len = 0; while (t[len]) { buf[len] = t[len]; ++len; } buf[len] = 0; return *this; }
-    CWideString& operator=(const CWideString& o) { std::memcpy(buf, o.buf, sizeof(buf)); len = o.len; return *this; }
+    const CWideString& operator=(const CWideString& o) { std::memcpy(buf, o.buf, sizeof(buf)); len = o.len; return *this; }
     const CWideString& operator+=(const WCH* t) { while (*t) buf[len++] = *t++; buf[len] = 0; return *this; }
     const CWideString& operator+=(const CWideString& o) { return *this += o.buf; }
     void SetAsSubString(const WCH* t, long n) { for (len = 0; len < n; ++len) buf[len] = t[len]; buf[len] = 0; }

@@ -40,7 +40,7 @@ class CCountedPointer { public:
 
 class CCharString { public:
     void* m_pStringData;                        // +0x00
-    CCharString& operator=(const CCharString& other) { m_pStringData = other.m_pStringData; ++g_stringAssigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pStringData = other.m_pStringData; ++g_stringAssigns; return *this; }
 };
 
 class CContainmentVolume;

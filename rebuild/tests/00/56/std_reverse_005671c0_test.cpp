@@ -9,7 +9,7 @@ class CWideString { public:
     int* m_pData;
     explicit CWideString(int v) : m_pData((int*)std::malloc(sizeof(int))) { *m_pData = v; ++g_live; }
     CWideString(const CWideString& o) : m_pData((int*)std::malloc(sizeof(int))) { *m_pData = *o.m_pData; ++g_live; }
-    CWideString& operator=(const CWideString& o) { *m_pData = *o.m_pData; return *this; }
+    const CWideString& operator=(const CWideString& o) { *m_pData = *o.m_pData; return *this; }
     ~CWideString() { std::free(m_pData); --g_live; }
 };
 

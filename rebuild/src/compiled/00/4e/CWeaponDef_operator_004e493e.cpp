@@ -21,7 +21,7 @@ class CDefClassBase { public:
 };
 class CCharString { public:
     void* m_pStringData;
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 class CObjectAugmentationParticleSet { public:                     // retail 0x2C bytes
     unsigned char _body[0x2c];

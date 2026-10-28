@@ -3,7 +3,7 @@
 class CCharString { public:
     char Text[32];
     CCharString(const char* t, long = -1) { std::strcpy(Text, t); }
-    CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(Text, o.Text); return *this; }
 };
 CCharString operator+(const CCharString& l, const char* r) { CCharString s(l.Text); std::strcat(s.Text, r); return s; }
 class CRGBColour { public:

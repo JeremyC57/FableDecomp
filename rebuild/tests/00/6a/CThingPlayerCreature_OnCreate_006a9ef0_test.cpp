@@ -39,7 +39,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
 ~CCharString();
     CCharString() : m_pData(0) {}
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 struct CRefCounted {
     long m_count;
@@ -188,7 +188,7 @@ static int g_destroyed, g_weapons, g_persist; static bool g_baseOk = true, g_val
 static const char* g_lastName; static const char* g_lastDef;
 CCharString::CCharString(const char* t, long) : m_pData((void*)t) { g_lastDef = t; }
 CCharString::~CCharString() { }
-CCharString& CCharString::operator=(const char* t) { m_pData = (void*)t; g_lastName = t; return *this; }
+const CCharString& CCharString::operator=(const char* t) { m_pData = (void*)t; g_lastName = t; return *this; }
 void CDefVirtual::Destroy() { ++g_destroyed; }
 static CPlayerMovementDef g_move; static CHeroCombatDef g_combat;
 bool CDefinitionManager::GetDef(const CCharString&, CDefPointer<CPlayerMovementDef>& out) { out.Object = &g_move; ++g_move.m_count; return true; }

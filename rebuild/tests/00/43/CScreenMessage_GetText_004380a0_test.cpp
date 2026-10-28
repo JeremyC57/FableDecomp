@@ -34,7 +34,7 @@ class CWideString { public:                                 // stand-in: narrow 
     char buf[64];
     CWideString(const char* s) { std::strcpy(buf, s); }
     CWideString(const CWideString& o) { std::strcpy(buf, o.buf); }
-    CWideString& operator=(const CWideString& o) { std::strcpy(buf, o.buf); return *this; }
+    const CWideString& operator=(const CWideString& o) { std::strcpy(buf, o.buf); return *this; }
     long GetLength() const { return (long)std::strlen(buf); }
     void SetLength(long n) { buf[n] = 0; }
     CCharString ConvertToCharString() const { return CCharString(buf, -1); }

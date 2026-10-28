@@ -15,7 +15,7 @@ class C2DVector { public:
 class C2DBoxI { public: long TLX, TLY, BRX, BRY; };
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class CAFile;
 class CASuspendableProcess;

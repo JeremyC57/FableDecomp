@@ -19,7 +19,7 @@ public:
     void* PStringData;                                  // +0x00
     CCharString();                                      // 0x0099E4B0
     ~CCharString();
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 class CStateBlock { public: unsigned char _data[0xc]; };
 class CFontBankStateBlock {                             // vtable 0x0129DA5C

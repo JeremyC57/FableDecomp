@@ -9,7 +9,7 @@ __forceinline long ROUND(float value)
     return result;
 }
 static char g_names[8][32]; static int g_nameCount = 0; static long g_init[8]; static int g_initCount = 0; static long g_budgets[4]; static int g_budgetCount = 0;
-class CCharString { public: void* m_pData; CCharString(const char* text, long length = -1) : m_pData((void*)text) { } ~CCharString() { } CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; } };
+class CCharString { public: void* m_pData; CCharString(const char* text, long length = -1) : m_pData((void*)text) { } ~CCharString() { } const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; } };
 struct CMemoryPool { unsigned char _pad000[0x28]; long GrowSize; unsigned char _pad02c[0x34 - 0x2c]; void* Allocator; unsigned char _pad038[0x448 - 0x38]; CCharString Name; unsigned char _pad44c[0x464 - 0x44c];
     CMemoryPool() : Name("") { } void Initialise(long bytes, bool a, bool b) { g_init[g_initCount++] = bytes; } };
 struct CPoolAllocator { unsigned char _pad[0x28]; CPoolAllocator() { } };

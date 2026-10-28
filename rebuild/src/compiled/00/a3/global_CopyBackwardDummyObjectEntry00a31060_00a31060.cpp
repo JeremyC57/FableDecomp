@@ -11,7 +11,7 @@
 // descriptive. The count is kept in the `push ecx` frame word.
 class CCharString { public:                         // one-word handle
     void* m_pData;                           // +0x00
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
 class CMatrix3x4 { public: float M[12]; };

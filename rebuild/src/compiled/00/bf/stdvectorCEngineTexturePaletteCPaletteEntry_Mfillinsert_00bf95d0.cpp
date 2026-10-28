@@ -15,7 +15,7 @@ typedef __SIZE_TYPE__ PlacementSize;
 typedef unsigned int PlacementSize;
 #endif
 inline void* __cdecl operator new(PlacementSize,void* p){return p;}
-class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString();CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString();CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 class CEngineTexturePalette{public:struct CPaletteEntry{unsigned long Index;CCharString Name;};};
 namespace std{
 struct __false_type{__false_type(){}};struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{};

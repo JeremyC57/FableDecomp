@@ -6,7 +6,7 @@ class CCharString { public:
     char m_text[64];
     CCharString() { m_text[0] = 0; }
     CCharString(const char* text, long length = -1) { (void)length; std::strcpy(m_text, text); }
-    CCharString& operator=(const char* text) { std::strcpy(m_text, text); return *this; }
+    const CCharString& operator=(const char* text) { std::strcpy(m_text, text); return *this; }
 };
 
 class CGraphicDataBank { public:

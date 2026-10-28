@@ -33,7 +33,7 @@ public:
 
     CWideStringData* Raw() const { return data; }
 
-    CWideString& operator=(const CWideString& rhs);
+    const CWideString& operator=(const CWideString& rhs);
 
     void Release()
     {
@@ -49,7 +49,7 @@ private:
     CWideStringData* data;
 };
 
-CWideString& CWideString::operator=(const CWideString& rhs)
+const CWideString& CWideString::operator=(const CWideString& rhs)
 {
     if (&rhs != this)
     {

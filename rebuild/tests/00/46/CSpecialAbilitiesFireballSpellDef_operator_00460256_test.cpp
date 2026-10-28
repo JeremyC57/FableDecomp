@@ -30,7 +30,7 @@ struct CContainer {                             // a retail vector / map: assign
 class CCharString { public:
     long m_id;
     CCharString() : m_id(0) { }
-    CCharString& operator=(const CCharString& other)
+    const CCharString& operator=(const CCharString& other)
     {
         m_id = other.m_id;
         ++g_stringAssigns;

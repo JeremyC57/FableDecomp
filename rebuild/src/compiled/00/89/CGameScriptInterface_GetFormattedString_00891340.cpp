@@ -22,7 +22,7 @@ class CCharString { public:
     CCharStringData_Retail* m_pData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                 // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     CWideString ToWideString() const;               // 0x0099E480
     const char* GetString() const { return m_pData == 0 ? "" : m_pData->m_pData; }   // inline: "" @ 0x0129AAF4 without a data block (the null case falls through)
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }

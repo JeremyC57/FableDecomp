@@ -17,7 +17,7 @@ class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
     bool operator!=(const char* text) const;           // 0x0099E960
     const char* GetString() const;                     // 0x00404310
 };

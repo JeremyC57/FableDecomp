@@ -43,7 +43,7 @@ class CDefString { public:                         // a def-name table position 
 
 class CCharString { public:                        // retail ref-counted string (one pointer)
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CSpecialAbilitiesSummonSpellDef : public CParentDefClassBase { public: // vtable 0x01234674

@@ -12,7 +12,7 @@
 // Label: catalogued as `STL_CopyBackward_CCharString`.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
 };
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };

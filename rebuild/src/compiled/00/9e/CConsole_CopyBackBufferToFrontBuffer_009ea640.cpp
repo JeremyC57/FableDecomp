@@ -1,6 +1,6 @@
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 struct CConBuf {                                         // 12 bytes: implicit copy assignment
     CCharString text;                                    // +0

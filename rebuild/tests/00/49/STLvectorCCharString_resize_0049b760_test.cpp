@@ -12,7 +12,7 @@ class CCharString { public:
     CCharString(const char* s) : PStringData(s) { ++g_ctors; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_ctors; }
     ~CCharString() { ++g_dtors; }
-    CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
 };
 
 struct CCharStringVector {

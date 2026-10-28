@@ -15,7 +15,7 @@ class CCharStringData;
 
 class CCharString { public:
     CCharStringData* PStringData;
-    CCharString& operator=(const CCharString& other);    // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 
 #pragma pack(push, 1)
@@ -121,7 +121,7 @@ CHeroMarriageDef& CHeroMarriageDef::operator=(const CHeroMarriageDef& other)
 
 
 static int g_charAssigns = 0;
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_charAssigns; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_charAssigns; return *this; }
 void CDefClassBase::Copy(const CDefClassBase& other) { *this = other; }
 static int g_baseAssigns = 0;
 CDefClassBase& CDefClassBase::operator=(const CDefClassBase& other)

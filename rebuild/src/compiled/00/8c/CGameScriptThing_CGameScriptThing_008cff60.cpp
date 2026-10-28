@@ -44,7 +44,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 class CCharString { public:
     void* m_pData;
     CCharString();                                 // 0x0099E4B0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 extern CCharString g_CCharString_013bafcc;         // 0x013BAFCC (the default script-thing name)
 class C3DVector { public:

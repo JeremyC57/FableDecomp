@@ -40,7 +40,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -76,7 +76,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -167,7 +167,7 @@ CWideString::CWideString(const wchar_t* s) : storage_(wideData(s)) { ++wideLive;
 CWideString::CWideString(const CWideString& o) : storage_(wideData((const wchar_t*)o)) { ++wideLive; }
 CWideString::~CWideString() { delete[] storage_->text;delete storage_;--wideLive; }
 CWideString::operator const wchar_t*() const { return storage_->text; }
-CWideString& CWideString::operator=(const CWideString& o) { if(this!=&o) *this=(const wchar_t*)o;return *this; }
+const CWideString& CWideString::operator=(const CWideString& o) { if(this!=&o) *this=(const wchar_t*)o;return *this; }
 const CWideString& CWideString::operator=(const wchar_t* s) { CWideStringData* next=wideData(s);delete[] storage_->text;delete storage_;storage_=next;return *this; }
 const CWideString& CWideString::operator+=(const wchar_t* s) {
     wchar_t buffer[1024]; long n=wlength(storage_->text), m=wlength(s);

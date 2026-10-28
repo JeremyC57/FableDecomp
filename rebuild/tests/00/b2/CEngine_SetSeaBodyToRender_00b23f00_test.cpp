@@ -1,6 +1,6 @@
 #include <cstdio>
 static int g_copies = 0, g_dtors = 0, g_assigns = 0;
-class CCharString { public: const char* m_text; CCharString(const char* t) : m_text(t) { } CCharString(const CCharString& o) : m_text(o.m_text) { ++g_copies; } ~CCharString() { ++g_dtors; } CCharString& operator=(const CCharString& o) { m_text = o.m_text; ++g_assigns; return *this; } };
+class CCharString { public: const char* m_text; CCharString(const char* t) : m_text(t) { } CCharString(const CCharString& o) : m_text(o.m_text) { ++g_copies; } ~CCharString() { ++g_dtors; } const CCharString& operator=(const CCharString& o) { m_text = o.m_text; ++g_assigns; return *this; } };
 struct CSeaBodyManager { unsigned char _pad[0x27c]; CCharString m_bodyName; CSeaBodyManager() : m_bodyName("") { } void SetBodyName(CCharString n) { m_bodyName = n; } };
 static CSeaBodyManager g_mgr; static CSeaBodyManager* g_pSeaBodyManager = &g_mgr;
 class CEngine { public: void SetSeaBodyToRender(CCharString name) { g_pSeaBodyManager->SetBodyName(name); } };

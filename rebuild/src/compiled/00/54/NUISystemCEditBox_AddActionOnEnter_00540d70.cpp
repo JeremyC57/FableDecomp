@@ -14,7 +14,7 @@ class CCPPointerInfo;
 class CWideString {
 public:
     void* PStringData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     long GetLength() const;                        // 0x0099B220
 };
 namespace NUISystem { class CAction; }

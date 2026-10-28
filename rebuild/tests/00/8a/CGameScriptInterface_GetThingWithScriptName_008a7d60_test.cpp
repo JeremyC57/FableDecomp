@@ -10,7 +10,7 @@ class CCharString { public:
     CCharString(const char* s) : m_pData((void*)s) {}
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_strCopies; }
     ~CCharString() { ++g_strDtors; }
-    CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
 };
 class C3DVector { public: float x, y, z; };
 struct SCountBlock;

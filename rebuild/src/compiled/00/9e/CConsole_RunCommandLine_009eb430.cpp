@@ -26,7 +26,7 @@ class CCharString { public:
     CCharString(const CCharString& other);  // 0x0099EC30
     CCharString ToLower() const;            // 0x0099ED10
     ~CCharString();                         // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     const CCharString& operator=(const char* text);     // 0x0099EFE0
     const char* GetData() const
     {

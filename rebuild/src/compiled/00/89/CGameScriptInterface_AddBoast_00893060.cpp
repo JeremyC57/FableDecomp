@@ -10,7 +10,7 @@ public:
     CCharStringData* m_pData; // 0x00
 
     CCharString(const CCharString& other);
-    CCharString& operator=(const CCharString& rhs);
+    const CCharString& operator=(const CCharString& rhs);
     ~CCharString();
 };
 

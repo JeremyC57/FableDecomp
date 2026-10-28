@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <cstring>
-class CCharString { public: void* PStringData; CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; } };
+class CCharString { public: void* PStringData; const CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; } };
 static int g_base = 0;
 struct CDefBase { unsigned char _body[0x28]; CDefBase& Copy(const CDefBase& o) { std::memcpy(_body, o._body, 0x28); ++g_base; return *this; } };
 class CArenaCreatureDef : public CDefBase { public:

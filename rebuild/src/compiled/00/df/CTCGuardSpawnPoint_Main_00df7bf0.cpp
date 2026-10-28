@@ -941,7 +941,7 @@ class CCharString { public:
  void* PStringData;
  CCharString();                                     // 0x0099E4B0
  CCharString(const char* text, long length = -1);   // 0x0099EBF0
- CCharString& operator=(const char* text);          // 0x0099EFE0
+ const CCharString& operator=(const char* text);          // 0x0099EFE0
  ~CCharString();                                    // 0x0099EAE0
 };
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };

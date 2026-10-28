@@ -4,7 +4,7 @@ class CCharString { public:
     const char* s;
     CCharString() : s(0) {}
     CCharString(const CCharString& o) : s(o.s) {}
-    CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
+    const CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
 };
 struct Block { int refs; Block(int r) : refs(r) {} };
 struct CP {

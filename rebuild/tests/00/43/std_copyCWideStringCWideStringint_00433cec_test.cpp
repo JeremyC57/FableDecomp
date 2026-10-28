@@ -3,7 +3,7 @@
 class CWideString {
 public:
     void* PData;
-    CWideString& operator=(const CWideString& s);        // 0x0099B7D0
+    const CWideString& operator=(const CWideString& s);        // 0x0099B7D0
 };
 namespace std {
 struct random_access_iterator_tag {};
@@ -21,7 +21,7 @@ template CWideString* __fastcall __copy<CWideString*, CWideString*, int>(CWideSt
 }
 
 static int g_as;
-CWideString& CWideString::operator=(const CWideString& s) { PData = s.PData; ++g_as; return *this; }
+const CWideString& CWideString::operator=(const CWideString& s) { PData = s.PData; ++g_as; return *this; }
 int main()
 {
     CWideString src[3]; src[0].PData = (void*)1; src[1].PData = (void*)2; src[2].PData = (void*)3;

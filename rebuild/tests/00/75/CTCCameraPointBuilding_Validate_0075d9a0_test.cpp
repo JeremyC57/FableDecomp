@@ -24,7 +24,7 @@ static int fails = 0;
 //   named bool tested in two ifs.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* s);      // 0x0099EFE0
+    const CCharString& operator=(const char* s);      // 0x0099EFE0
 };
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
@@ -118,7 +118,7 @@ fail:
 
 // ---- stubs and driver ----
 static const char* g_lastError = 0; static int g_assigns = 0;
-CCharString& CCharString::operator=(const char* s) { g_lastError = s; ++g_assigns; return *this; }
+const CCharString& CCharString::operator=(const char* s) { g_lastError = s; ++g_assigns; return *this; }
 CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 {
     SEntry* it = first;

@@ -17,7 +17,7 @@ class CWideString {
 public:
     void* PStringData;
     bool operator!=(const wchar_t* text) const;     // 0x0099B150
-    CWideString& operator=(const CWideString& other);       // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     const CWideString& operator=(const wchar_t* text);      // 0x0099B800
 };
 

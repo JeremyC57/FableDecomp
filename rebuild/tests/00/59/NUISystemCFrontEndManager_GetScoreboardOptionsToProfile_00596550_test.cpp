@@ -12,7 +12,7 @@ class CWideString {
 public:
     CWideStringData* PStringData;
     ~CWideString();                                      // 0x0099B510
-    CWideString& operator=(const CWideString& other);    // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
     CCharString ConvertToCharString() const;             // 0x0099B2C0
 };
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
@@ -87,7 +87,7 @@ static int g_cctors, g_cdtors, g_wdtors, g_assigns, g_converts;
 CCharString::CCharString(const char* text, long length) : PStringData((CCharStringData*)text) { ++g_cctors; check(length == -1, "length -1"); }
 CCharString::~CCharString() { ++g_cdtors; }
 CWideString::~CWideString() { ++g_wdtors; }
-CWideString& CWideString::operator=(const CWideString& other) { ++g_assigns; PStringData = other.PStringData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { ++g_assigns; PStringData = other.PStringData; return *this; }
 struct Pod { void* p; };
 CCharString CWideString::ConvertToCharString() const
 {

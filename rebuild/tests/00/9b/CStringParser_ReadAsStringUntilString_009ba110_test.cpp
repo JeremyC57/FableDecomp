@@ -7,7 +7,7 @@ public:
     CCharString() : data(0) {}
     CCharString(const char* text, int length);
     ~CCharString();
-    CCharString& operator=(const CCharString& rhs);
+    const CCharString& operator=(const CCharString& rhs);
 
     void* data;
 };
@@ -32,7 +32,7 @@ CCharString::~CCharString()
     g_dtorCalls++;
 }
 
-CCharString& CCharString::operator=(const CCharString& rhs)
+const CCharString& CCharString::operator=(const CCharString& rhs)
 {
     g_assignCalls++;
     g_lastAssignRhsData = rhs.data;

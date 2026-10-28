@@ -10,7 +10,7 @@ class CCharString { public:
     CCharString() : PStringData(0) { buffer[0] = 0; }
     CCharString(const char* s) : PStringData(0) { Set(s); }
     CCharString(const CCharString& o) : PStringData(0) { if (o.PStringData) Set(o.PStringData); }
-    CCharString& operator=(const CCharString& o) { if (o.PStringData) Set(o.PStringData); else PStringData = 0; return *this; }
+    const CCharString& operator=(const CCharString& o) { if (o.PStringData) Set(o.PStringData); else PStringData = 0; return *this; }
     void Set(const char* s) { std::strcpy(buffer, s); PStringData = buffer; }
     bool operator==(const char* text) const
     {

@@ -12,7 +12,7 @@ class CWideString {
 public:
     void* PStringData;
     bool operator!=(const wchar_t* text) const;     // 0x0099B150
-    CWideString& operator=(const CWideString& other);       // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     const CWideString& operator=(const wchar_t* text);      // 0x0099B800
 };
 
@@ -86,7 +86,7 @@ void CTCEmoteIcon::SetEmoteText(long priority, const CWideString& text, float ac
 static int g_destroyed, g_lastReleased; static float g_timer = -1.0f;
 static const wchar_t g_empty[1] = { 0 };
 bool CWideString::operator!=(const wchar_t* text) const { const wchar_t* p = (const wchar_t*)PStringData; return !(p[0] == text[0]); }
-CWideString& CWideString::operator=(const CWideString& other) { PStringData = other.PStringData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { PStringData = other.PStringData; return *this; }
 const CWideString& CWideString::operator=(const wchar_t*) { PStringData = (void*)g_empty; return *this; }
 struct CTestPrim : CEnginePersistentPrimitiveBase {
     virtual void Destroy() { ++g_destroyed; }

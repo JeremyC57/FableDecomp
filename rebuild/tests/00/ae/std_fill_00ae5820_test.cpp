@@ -16,12 +16,12 @@ void __fastcall fill(Iterator first, Iterator last, const T& value)
 class CCharString {
 public:
     char* Data;
-    CCharString& operator=(const CCharString&);
+    const CCharString& operator=(const CCharString&);
 };
 
 template void __fastcall std::fill<std::pair<CCharString, unsigned long> *, std::pair<CCharString, unsigned long>  >(std::pair<CCharString, unsigned long> *, std::pair<CCharString, unsigned long> *, const std::pair<CCharString, unsigned long> &);
 static int assignments;
-CCharString& CCharString::operator=(const CCharString& rhs) { ++assignments;Data=rhs.Data;return *this; }
+const CCharString& CCharString::operator=(const CCharString& rhs) { ++assignments;Data=rhs.Data;return *this; }
 int main() {
     typedef std::pair<CCharString, unsigned long>  Item;
     Item a[5], value;char oldText[]="old",newText[]="new";

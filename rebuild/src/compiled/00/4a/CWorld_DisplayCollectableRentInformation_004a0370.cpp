@@ -26,7 +26,7 @@ class CCharString { public:
 };
 class CWideString { public:
     void* PStringData;
-    CWideString& operator=(const CWideString& other);  // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);  // 0x0099B7D0
     ~CWideString();                                    // 0x0099B510
 };
 bool __fastcall ConstructString(CWideString& text, long value0, long value1);   // 0x009C7B80

@@ -9,7 +9,7 @@ static int g_assigns = 0;
 class CCharString { public:
     const char* m_pData;
     CCharString() : m_pData("") { }
-    CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
 };
 static const char* g_text[8] = { "a", "b", "c", "d", "e", "f", "g", "h" };
 struct SRecord16 {

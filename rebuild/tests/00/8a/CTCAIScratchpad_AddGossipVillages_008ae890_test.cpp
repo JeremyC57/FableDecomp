@@ -11,7 +11,7 @@
 // Layout: real STLport map12/vector12, CCharString one pointer. Only static CTCAIScratchpad members are used.
 class CCharString {
 public:
-    CCharString& operator=(const CCharString&);
+    const CCharString& operator=(const CCharString&);
     CCharString():PStringData(0){}
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
@@ -88,7 +88,7 @@ void __fastcall CTCAIScratchpad::AddGossipVillages(CCharString name){std::map<CC
 static int live,copies,finds,lookups,bad;static const void* expectedKey;static bool found;
 CCharString::CCharString(const CCharString& other):PStringData(other.PStringData){++live;++copies;}
 CCharString::~CCharString(){--live;}
-CCharString& CCharString::operator=(const CCharString& other){PStringData=other.PStringData;return *this;}
+const CCharString& CCharString::operator=(const CCharString& other){PStringData=other.PStringData;return *this;}
 bool CCharString::operator<(const CCharString& other)const{return PStringData<other.PStringData;}
 static std::vector<CCharString> values;
 std::map<CCharString,std::vector<CCharString> > CTCAIScratchpad::GossipVillages;

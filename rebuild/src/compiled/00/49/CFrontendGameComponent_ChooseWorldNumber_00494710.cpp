@@ -18,7 +18,7 @@ class CWideString
 {
 public:
     void* PData;                         // +0x00
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                                     // 0x0099B510
 };
 

@@ -6,7 +6,7 @@ class CCharString { public:
     CCharString(const char* s) { std::strcpy(m_text, s); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(m_text, o.m_text); ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
     bool operator<(const CCharString& o) const { return std::strcmp(m_text, o.m_text) < 0; }
 };
 struct SEntry {

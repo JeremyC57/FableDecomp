@@ -52,7 +52,7 @@ public:
 class CWideString {
 public:
     void* m_pData;
-    CWideString& operator=(const CWideString& other);    // 0x0099B7D0 (returns const& in the PDB)
+    const CWideString& operator=(const CWideString& other);    // 0x0099B7D0 (returns const& in the PDB)
     ~CWideString();                                      // 0x0099B510
 };
 class CCharString {
@@ -181,7 +181,7 @@ static CInterfaceMap::SEntry g_entries[3];
 CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const { const SEntry* p = first; while (p != last && p->type < *type) ++p; return p; }
 static int g_assigns, g_wdtors, g_wides; static void* g_assigned; static CWideString* g_target;
-CWideString& CWideString::operator=(const CWideString& o) { ++g_assigns; m_pData = o.m_pData; g_target = this; return *this; }
+const CWideString& CWideString::operator=(const CWideString& o) { ++g_assigns; m_pData = o.m_pData; g_target = this; return *this; }
 CWideString::~CWideString() { ++g_wdtors; }
 CWideString CCharString::ToWideString() const { ++g_wides; CWideString w; w.m_pData = m_pData; return w; }
 int main()

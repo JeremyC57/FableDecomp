@@ -5,7 +5,7 @@ class CCharString { public:
     long PStringData;
     CCharString() : PStringData(0) { ++g_strings; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_strings; }
-    CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
     ~CCharString() { --g_strings; }
 };
 struct CRegisteredTCInfo { long m_type; long m_flags; CCharString m_name; };

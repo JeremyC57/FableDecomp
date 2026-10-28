@@ -37,7 +37,7 @@ struct CLongVector {                    // retail std::vector<long> (12 bytes)
 
 class CCharString { public:                    // ref-counted string handle (4 bytes)
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CVillageDef : public CDefClassBase { public:                                // vtable 0x01241DDC

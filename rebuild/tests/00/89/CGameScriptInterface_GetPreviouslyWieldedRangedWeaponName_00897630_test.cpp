@@ -491,7 +491,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -527,7 +527,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -602,7 +602,7 @@ CCharString::~CCharString(){UnassignString();--g_CCharStringInstanceCount_013BD8
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
 
 CCharString::CCharString():storage_(0){++g_CCharStringInstanceCount_013BD800;}
-CCharString& CCharString::operator=(const CCharString& other){++assignments;if(other.storage_)++other.storage_->owners;UnassignString();storage_=other.storage_;return *this;}
+const CCharString& CCharString::operator=(const CCharString& other){++assignments;if(other.storage_)++other.storage_->owners;UnassignString();storage_=other.storage_;return *this;}
 bool CCharStringMethods::operator!=(const char* other)const{++comparisons;check(g_CCharStringInstanceCount_013BD800==1);return strcmp((const char*)*this,other)!=0;}
 int main(){CGameScriptInterfaceMethods iface;iface.PlayerManager=&players;iface.DefinitionManager=reinterpret_cast<CGameDefinitionManager*>(1);
  ComponentEntry entries[2];entries[0].Type=19;entries[0].Component=&inventory;entries[1].Type=99;entries[1].Component=&inventory;hero.Components.Start=entries;hero.Components.Finish=entries+1;

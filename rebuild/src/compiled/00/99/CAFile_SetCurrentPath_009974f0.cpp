@@ -13,7 +13,7 @@ class CWideString
 {
 public:
     operator const wchar_t*() const;                        // 0x0099AF00
-    CWideString& operator=(const CWideString& other);       // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
 
 private:
     void* Data;

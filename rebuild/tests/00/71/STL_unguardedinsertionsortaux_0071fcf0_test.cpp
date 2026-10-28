@@ -9,7 +9,7 @@ class CCharString { public:                            // stands in for the engi
     explicit CCharString(int k) : m_pData(g_names[k]) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
     int Key() const { return m_pData[0] - 'a'; }
 };
 class C3DVector { public:                              // memberwise user copy constructor, as retail

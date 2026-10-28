@@ -8,7 +8,7 @@ class CCharString { public:
     char text[32];
     CCharString(const char* t, long = -1) { std::strcpy(text, t); }
     bool operator!=(const CCharString& o) const { return std::strcmp(text, o.text) != 0; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(text, o.text); return *this; }
 };
 class CThing { public: int id; };
 class CAnimInit { public:

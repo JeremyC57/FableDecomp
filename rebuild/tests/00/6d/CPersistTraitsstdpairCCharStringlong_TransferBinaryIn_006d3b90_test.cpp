@@ -17,7 +17,7 @@ class CCharString {
 public:
     char m_text[32];
     CCharString() { m_text[0] = 0; }
-    CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
+    const CCharString& operator=(const CCharString& o) { std::strcpy(m_text, o.m_text); return *this; }
 };
 // Copy of the candidate's inline CMemoryDataInputStream::Read model (member access only).
 struct CMemoryDataInputStreamBase {

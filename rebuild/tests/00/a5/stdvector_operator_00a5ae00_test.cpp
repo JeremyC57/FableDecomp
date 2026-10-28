@@ -11,7 +11,7 @@
 #endif
 inline void* operator new(size_t,void* p){return p;}
 class CThing;class CBaseObject;class CBaseObjectPointer;class CCPPointerInfo;class CContainmentVolume;
-class CCharString {public:void* PStringData;CCharString();CCharString(const CCharString&);CCharString& operator=(const CCharString&);~CCharString();};
+class CCharString {public:void* PStringData;CCharString();CCharString(const CCharString&);const CCharString& operator=(const CCharString&);~CCharString();};
 class CBaseIntelligentPointer {public:virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;};
 template<class T>class CIntelligentPointer:public CBaseIntelligentPointer {public:CIntelligentPointer();CIntelligentPointer(const CIntelligentPointer&);CIntelligentPointer& operator=(const CIntelligentPointer&);};
 struct AttackParticleAndEndPoints {CCharString StartDummy,EndDummy;long ParticleType,PeriodicFrames;CIntelligentPointer<CThing> ParticleEffect;};
@@ -54,7 +54,7 @@ template std::vector<Element>& std::vector<Element>::operator=(const std::vector
 static int copies,assigns,destroys;
 CCharString::CCharString():PStringData(0){}
 CCharString::CCharString(const CCharString& x):PStringData(x.PStringData){++copies;}
-CCharString& CCharString::operator=(const CCharString& x){++assigns;PStringData=x.PStringData;return *this;}
+const CCharString& CCharString::operator=(const CCharString& x){++assigns;PStringData=x.PStringData;return *this;}
 CCharString::~CCharString(){++destroys;}
 CBaseIntelligentPointer::~CBaseIntelligentPointer(){++destroys;}
 template<class T>CIntelligentPointer<T>::CIntelligentPointer(){PData=0;}

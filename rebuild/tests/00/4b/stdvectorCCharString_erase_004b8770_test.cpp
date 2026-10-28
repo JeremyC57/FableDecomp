@@ -7,7 +7,7 @@ static int g_assigns = 0, g_dtors = 0;
 class CCharString { public:
     int m_value;
     CCharString(int v) : m_value(v) {}
-    CCharString& operator=(const CCharString& o) { m_value = o.m_value; ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& o) { m_value = o.m_value; ++g_assigns; return *this; }
     ~CCharString() { ++g_dtors; m_value = -1; }
 };
 

@@ -36,7 +36,7 @@ class C2DBoxI { public:
 };
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class CAFile;
 class CASuspendableProcess;
@@ -118,7 +118,7 @@ void CNavigatorManager::AddNavigationMap(long mapIndex, CNavigationAreaInit& ini
 // ---- stubs and driver ----
 
 #include <stdlib.h>
-CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
 static int g_trees = 0;
 CNavQuadTree::CNavQuadTree() { ++g_trees; }
 static float g_ox, g_oy, g_w, g_h; static long g_setIndex; static int g_inits = 0; static CNavigationAreaInit* g_init;

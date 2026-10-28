@@ -28,7 +28,7 @@ struct CQuestScriptBase : CScriptBase {                     // retail 0x48 bytes
 
 class CCharString { public:
     char* m_pData;
-    CCharString& operator=(const char* text);               // 0x0099EFE0
+    const CCharString& operator=(const char* text);               // 0x0099EFE0
 };
 
 namespace NScript {

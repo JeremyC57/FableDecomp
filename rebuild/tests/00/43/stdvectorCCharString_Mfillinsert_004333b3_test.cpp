@@ -9,7 +9,7 @@ class CCharString {
 public:
     CCharString() : m_pData((char*)std::malloc(16)) { m_pData[0] = 0; ++g_live; }
     CCharString(const CCharString& o) : m_pData((char*)std::malloc(16)) { Copy(o); ++g_live; }
-    CCharString& operator=(const CCharString& o) { Copy(o); return *this; }
+    const CCharString& operator=(const CCharString& o) { Copy(o); return *this; }
     ~CCharString() { std::free(m_pData); --g_live; }
     void Set(int v) { std::sprintf(m_pData, "s%d", v); }
     bool Same(const CCharString& o) const { for (int i = 0; i < 16; ++i) { if (m_pData[i] != o.m_pData[i]) return false; if (!m_pData[i]) break; } return true; }

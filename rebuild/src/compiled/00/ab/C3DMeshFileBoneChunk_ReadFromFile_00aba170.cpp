@@ -17,7 +17,7 @@ class CChunkedFileLoader;
 class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                       // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
 };
 
 class CMatrix3x4 { public: float m_row[3][4]; };

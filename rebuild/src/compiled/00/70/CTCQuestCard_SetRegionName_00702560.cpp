@@ -13,7 +13,7 @@
 class CCharString { public:
     CCharStringData* PStringData;
     bool operator!=(const CCharString& other) const;        // 0x0099E900
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
 class CPlayerGui { public:

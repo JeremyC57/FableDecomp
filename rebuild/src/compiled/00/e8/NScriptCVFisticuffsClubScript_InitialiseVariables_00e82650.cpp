@@ -18,7 +18,7 @@
 class CCharString { public:                                     // 4 bytes: the shared string block pointer
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
-    CCharString& operator=(const char* text);            // 0x0099EFE0
+    const CCharString& operator=(const char* text);            // 0x0099EFE0
     ~CCharString();                                      // 0x0099EAE0
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)

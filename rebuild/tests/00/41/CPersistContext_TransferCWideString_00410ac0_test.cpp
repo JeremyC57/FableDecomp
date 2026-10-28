@@ -28,7 +28,7 @@ public:
     void* PData;
     CWideString();                                     // 0x0099AED0
     ~CWideString();                                    // 0x0099B510
-    CWideString& operator=(const CWideString& other);  // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);  // 0x0099B7D0
 };
 
 class CDataInputStream {
@@ -122,7 +122,7 @@ static int g_ctor = 0, g_dtor = 0, g_assign = 0, g_crc = 0, g_write = 0, g_read 
 static void* g_lastAssignFrom = 0; static const char* g_lastName = 0; static void* g_itemValue = 0;
 CWideString::CWideString() { PData = (void*)0; ++g_ctor; }
 CWideString::~CWideString() { ++g_dtor; }
-CWideString& CWideString::operator=(const CWideString& other) { ++g_assign; g_lastAssignFrom = other.PData; PData = other.PData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { ++g_assign; g_lastAssignFrom = other.PData; PData = other.PData; return *this; }
 CWideString CDataInputStream::ReadNullTerminatedWString() { ++g_read; CWideString s; s.PData = (void*)0x5555; return s; }
 void CDataOutputStream::WriteNullTerminatedWString(const CWideString& value) { ++g_write; g_lastAssignFrom = value.PData; }
 void CPersistContext_TransferableObjectBase::TransferIn() { }

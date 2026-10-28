@@ -15,7 +15,7 @@ public:
     void* PData;
     CWideString() : PData(0) {}
     CWideString(const CWideString& o) : PData(0) { *this = o; }
-    CWideString& operator=(const CWideString& other)
+    const CWideString& operator=(const CWideString& other)
     {
         if (this == &other) return *this;
         free(PData); PData = 0;

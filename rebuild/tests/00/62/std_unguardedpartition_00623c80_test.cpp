@@ -16,7 +16,7 @@ class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
 class CTestQuest {
@@ -76,7 +76,7 @@ template CTestQuest* __fastcall std::__unguarded_partition<CTestQuest*, CTestQue
 static int g_live = 0;
 CCharString::CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }
 CCharString::~CCharString() { --g_live; }
-CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
 bool CTestQuestNameCompare::operator()(const CTestQuest& a, const CTestQuest& b) const
 {
     return std::strcmp((const char*)a.QuestName.m_pData, (const char*)b.QuestName.m_pData) < 0;

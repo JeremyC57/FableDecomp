@@ -25,7 +25,7 @@ class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
-    CCharString& operator=(const char* text);            // 0x0099EFE0
+    const CCharString& operator=(const char* text);            // 0x0099EFE0
     bool operator!=(const char* text) const;             // 0x0099E960
 };
 struct CBaseIntelligentPointer {
@@ -173,7 +173,7 @@ done:
 // ---- stubs ----
 CCharString::CCharString(const char* text, long) { PStringData = (void*)text; }
 CCharString::~CCharString() {}
-CCharString& CCharString::operator=(const char* text) { PStringData = (void*)text; return *this; }
+const CCharString& CCharString::operator=(const char* text) { PStringData = (void*)text; return *this; }
 bool CCharString::operator!=(const char* text) const { return std::strcmp((const char*)PStringData, text) != 0; }
 void CBaseIntelligentPointer::v00() {}
 void CIntelligentPointerConstThing::v00() {}

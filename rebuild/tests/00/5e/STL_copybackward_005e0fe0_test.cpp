@@ -9,7 +9,7 @@
 
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
 };
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
@@ -29,7 +29,7 @@ CCharString* __fastcall copy_backward(CCharString* first, CCharString* last, CCh
 
 // ---- test bodies of the retail callees ----
 static int g_assigns = 0;
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
 int main()
 {
     static int tags[5];

@@ -37,7 +37,7 @@ public:
     CBasicString<char>* PStringData;                        // +0x0 the shared string block
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++gCopies; }                  // 0x0099EC30
     ~CCharString() { ++gDtors; }                                         // 0x0099EAE0
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }       // 0x0099EFB0
     bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)

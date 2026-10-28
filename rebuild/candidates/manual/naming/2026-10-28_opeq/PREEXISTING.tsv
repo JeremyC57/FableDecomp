@@ -1,0 +1,5 @@
+address	in_FILES	result_after	result_baseline	note
+0040d400	test only	RELOCATION_MATCH FAIL	RELOCATION_MATCH FAIL	includes fable_string.h; its test defines CWideString::operator= out of line so the test edit must travel with the header edit (unedited test + new header = TCC_FAIL). Code bytes identical to baseline.
+0040d2a0	no (header only)	RELOCATION_MATCH FAIL	RELOCATION_MATCH FAIL	code bytes identical to baseline
+004d9861	no (header only)	DIFFER(36v33) PASS	DIFFER(36v33) PASS	landed row that does not match in the lane today; code bytes identical to baseline
+009e1440	no (header only)	MATCH TCC_FAIL	MATCH TCC_FAIL	code bytes identical to baseline

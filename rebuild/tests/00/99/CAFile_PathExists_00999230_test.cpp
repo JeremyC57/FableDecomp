@@ -25,7 +25,7 @@ public:
         for (i = 0; i <= n; ++i) p[i] = (wchar16)(unsigned char)s[i];
         free(PData); PData = p;
     }
-    CWideString& operator=(const CWideString& other)
+    const CWideString& operator=(const CWideString& other)
     {
         if (this != &other) {
             const wchar16* q = (const wchar16*)other.PData;

@@ -14,7 +14,7 @@
 class CCharString {
 public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);    // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 template <class T> class CList {                         // STLport list, 4 bytes (node pointer)
 public:

@@ -24,7 +24,7 @@ public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
     const CCharString& operator+=(const char* text);    // 0x0099F100
 };
 class CWideString {
@@ -164,7 +164,7 @@ void CIMEFont::DrawTextW(const unsigned short* text)
 // ---- stubs ----
 CCharString::CCharString() { char* b = new char[64]; b[0] = 0; PStringData = b; }
 CCharString::~CCharString() { delete[] (char*)PStringData; }
-CCharString& CCharString::operator=(const char* text) { strcpy((char*)PStringData, text); return *this; }
+const CCharString& CCharString::operator=(const char* text) { strcpy((char*)PStringData, text); return *this; }
 const CCharString& CCharString::operator+=(const char* text) { strcat((char*)PStringData, text); return *this; }
 static int g_wctor, g_wcopy, g_wdtor;
 CWideString::CWideString(const unsigned short* text) { PStringData = (void*)text; ++g_wctor; }

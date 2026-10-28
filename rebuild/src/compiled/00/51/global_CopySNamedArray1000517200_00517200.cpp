@@ -10,7 +10,7 @@
 // Label correction: the catalog's `_Copy_impl<std::pair<CCharString,CCharString>*,...>` is propagated; the element is a {CCharString, 12-byte vector} pair (0x00454886 is a vector<4-byte>::operator= body; catalog "CActiveFile::operator=").
 class CCharString { public:                         // 4 bytes: the string-data pointer
     void* PStringData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 struct SArray0C_00454886 {                       // 12 bytes, assigned out of line
     void* m_words[3];

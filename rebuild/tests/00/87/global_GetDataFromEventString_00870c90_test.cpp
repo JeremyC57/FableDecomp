@@ -27,7 +27,7 @@ public:
         Clear();
         PStringData = d;
     }
-    CCharString& operator=(const CCharString& o)
+    const CCharString& operator=(const CCharString& o)
     {
         if (this != &o) { if (o.PStringData) Set(o.PStringData->m_pData, o.PStringData->m_length); else Clear(); }
         return *this;

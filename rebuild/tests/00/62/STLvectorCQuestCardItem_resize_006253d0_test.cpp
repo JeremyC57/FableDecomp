@@ -12,7 +12,7 @@ public:
     CWideString(const char* s) { std::strncpy(Text, s, 15); Text[15] = 0; }
     CWideString(const CWideString& o) { std::memcpy(Text, o.Text, 16); ++g_copies; }
     ~CWideString() { ++g_dtors; }
-    CWideString& operator=(const CWideString& o) { std::memcpy(Text, o.Text, 16); ++g_assigns; return *this; }
+    const CWideString& operator=(const CWideString& o) { std::memcpy(Text, o.Text, 16); ++g_assigns; return *this; }
     bool Is(const char* s) const { return std::strcmp(Text, s) == 0; }
 };
 

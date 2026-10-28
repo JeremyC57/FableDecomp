@@ -15,7 +15,7 @@ public:
     CCharString(const char* s, long len = -1);      // 0x0099EBF0
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 // The empty default comes from an inline by-value helper over a named local (no NRVO in VC7.1).
 inline CCharString EmptyString()

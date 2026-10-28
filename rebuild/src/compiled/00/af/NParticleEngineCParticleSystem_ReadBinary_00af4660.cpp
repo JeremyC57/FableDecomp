@@ -17,7 +17,7 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 class CCharStringData;
 class CCharString { public:
     CCharStringData* m_pData;
-    CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);                  // 0x0099EFB0
     ~CCharString();                                                    // 0x0099EAE0
 };
 class C3DVector { public:

@@ -19,7 +19,7 @@ class CThing;
 class CCharString { public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 class CWideString { public:
     void* PStringData;

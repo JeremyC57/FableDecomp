@@ -90,7 +90,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -126,7 +126,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -194,7 +194,7 @@ void operator delete(void* p) throw(){if(p==watched)++blockDeletes;free(p);}
 CCharString::CCharString():storage_(0){}
 CCharString::CCharString(const char* s,long):storage_((CCharStringData*)s){}
 CCharString::~CCharString(){}
-CCharString& CCharString::operator=(const CCharString& s){++assigns;storage_=s.storage_;return *this;}
+const CCharString& CCharString::operator=(const CCharString& s){++assigns;storage_=s.storage_;return *this;}
 CCharString::operator const char*()const{return (const char*)storage_;}
 class CMap { public: int id; };
 static CMap* expected;

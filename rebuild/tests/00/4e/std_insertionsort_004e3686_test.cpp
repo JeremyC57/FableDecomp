@@ -8,7 +8,7 @@ class CCharString { public:
     explicit CCharString(int k) : m_pData((void*)g_names[k]) { ++g_live; }
     CCharString(const CCharString& other) : m_pData(other.m_pData) { ++g_live; }   // stands in for 0x0099EC30
     ~CCharString() { --g_live; }                                                   // stands in for 0x0099EAE0
-    CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; return *this; }
     int Key() const { return ((const char*)m_pData)[0] - 'a'; }
 };
 struct SValue12 { long m_words[3]; };

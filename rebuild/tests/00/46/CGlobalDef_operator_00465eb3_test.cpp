@@ -4,7 +4,7 @@ class CParentDefClassBase { public:
     long m_base;
     CParentDefClassBase& operator=(const CParentDefClassBase& o) { m_base = o.m_base; ++g_calls; return *this; }
 };
-class CCharString { public: long v; CCharString& operator=(const CCharString& o) { v = o.v; ++g_calls; return *this; } };
+class CCharString { public: long v; const CCharString& operator=(const CCharString& o) { v = o.v; ++g_calls; return *this; } };
 class CEngineGraphic { public: unsigned long BankIndex; float AnimStep; float RenderSizeX; bool AdditiveAlpha; unsigned char Type; };
 struct CConversationCameraMap { long v; CConversationCameraMap& operator=(const CConversationCameraMap& o) { v = o.v; ++g_calls; return *this; } };
 struct CStringVector { long v; CStringVector& operator=(const CStringVector& o) { v = o.v; ++g_calls; return *this; } };

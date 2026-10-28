@@ -20,7 +20,7 @@ public:
     CCharString();
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 
 class CTCSkeletalMorph {
@@ -130,7 +130,7 @@ template vector<CTCSkeletalMorph::CSkeletalMorph>& vector<CTCSkeletalMorph::CSke
 CCharString::CCharString() : PStringData(0) { }
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { }
 CCharString::~CCharString() { }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
 static int g_tags[16];
 static CTCSkeletalMorph::CSkeletalMorph make(int i)
 {

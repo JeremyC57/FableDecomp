@@ -17,7 +17,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };
 }
 class CWideString {
 public:
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     ~CWideString();                                       // 0x0099B510
     void* PStringData;
 };

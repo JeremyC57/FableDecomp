@@ -9,7 +9,7 @@ class CCharString { public:
     CCharString() : PStringData(0) { ++g_CCharStringInstanceCount; }
     CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_CCharStringInstanceCount; if (PStringData) ++PStringData->NoRefs; }
     ~CCharString() { UnassignString(); --g_CCharStringInstanceCount; }
-    CCharString& operator=(const CCharString& other)
+    const CCharString& operator=(const CCharString& other)
     {
         if (&other != this) {
             if (PStringData != 0) UnassignString();

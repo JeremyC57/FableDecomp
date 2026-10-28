@@ -13,7 +13,7 @@ struct random_access_iterator_tag { random_access_iterator_tag() { } };   // emp
 
 class CCharString { public:                            // 4-byte counted string handle
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 struct SRecord28 {                              // 0x1c bytes, flat (a nested struct would add an induction pair)

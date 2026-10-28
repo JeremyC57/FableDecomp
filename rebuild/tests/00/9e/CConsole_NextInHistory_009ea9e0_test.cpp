@@ -4,7 +4,7 @@
 static int g_stringAssigns = 0, g_literalAssigns = 0;
 class CCharString { public:
     const char* PStringData;
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++g_stringAssigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; ++g_stringAssigns; return *this; }
     const CCharString& operator=(const char* text) { PStringData = text; ++g_literalAssigns; return *this; }
 };
 class CBaseClass { public: virtual void v00() { } };

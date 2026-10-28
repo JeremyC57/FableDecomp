@@ -11,7 +11,7 @@
 //   WorldMapOffset +0x44, NameGraphicOffset +0x4c, the three flags +0x54..+0x56.
 //   engine/CRegion.h carries the Ego_r 16-byte vectors (every member after Maps is 4..8 bytes late), so this row
 //   uses a local model. CDefPointer releases its pointee through virtual slot 1 when the count at +0x04 drops to 0.
-class CCharString { public: void* PStringData; CCharString& operator=(const CCharString&); };   // 0x0099EFB0
+class CCharString { public: void* PStringData; const CCharString& operator=(const CCharString&); };   // 0x0099EFB0
 class C2DVector { public: float X, Y; };
 template<class T> struct CRetailVector { T* m_first; T* m_last; T* m_end; CRetailVector& operator=(const CRetailVector&); };   // long: 0x00454886
 template<class K, class V> struct CRetailMap { void* m_header; unsigned long m_node_count; unsigned long m_compare; CRetailMap& operator=(const CRetailMap&); };   // 0x00517370
@@ -74,7 +74,7 @@ CRegion& CRegion::operator=(const CRegion& o) {
 #include <string.h>
 #include <stddef.h>
 static int g_vec, g_str, g_map, g_rel; static unsigned char* g_dst; static int g_stroff[8];
-CCharString& CCharString::operator=(const CCharString& o) { g_stroff[g_str++] = (int)((unsigned char*)this - g_dst); PStringData = o.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { g_stroff[g_str++] = (int)((unsigned char*)this - g_dst); PStringData = o.PStringData; return *this; }
 template<class T> CRetailVector<T>& CRetailVector<T>::operator=(const CRetailVector<T>& o) { ++g_vec; m_first = o.m_first; m_last = o.m_last; m_end = o.m_end; return *this; }
 template<class K, class V> CRetailMap<K, V>& CRetailMap<K, V>::operator=(const CRetailMap<K, V>& o) { ++g_map; m_header = o.m_header; m_node_count = o.m_node_count; return *this; }
 template struct CRetailVector<long>;

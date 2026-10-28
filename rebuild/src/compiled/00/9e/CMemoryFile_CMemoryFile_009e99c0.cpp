@@ -17,7 +17,7 @@ struct CBaseClassNonCopyable {
 class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                  // 0x0099AED0
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
 struct CArrayUChar {                                // CArray<unsigned char> (STLport vector)

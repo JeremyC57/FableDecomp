@@ -14,7 +14,7 @@ class CWideString { public:
 class CCharString { public:
     char s[64];
     CCharString() { s[0] = 0; }
-    CCharString& operator=(const char* t) { std::strcpy(s, t); return *this; }
+    const CCharString& operator=(const char* t) { std::strcpy(s, t); return *this; }
     bool operator!=(const char* t) const { return std::strcmp(s, t) != 0; }
 };
 static int g_bankPrefix;                               // 0: echo the tag, 1: unknown tag -> empty text

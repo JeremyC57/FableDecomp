@@ -10,7 +10,7 @@
 #pragma optimize("s", on)
 class CWideString { public:
     void* m_pData;
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     ~CWideString();                                    // 0x0099B510
 };
 struct CCategory_Retail {

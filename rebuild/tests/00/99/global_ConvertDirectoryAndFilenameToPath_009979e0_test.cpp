@@ -2,7 +2,7 @@
 // Flags: /O2 /Oy /W3 /Gr
 // Leaf: ConvertDirectoryAndFilenameToPath
 // Layout: string object is one pointer; retail stack locals +8 and +12.
-class CWideString { public:void* data;CWideString();CWideString(const CWideString&);~CWideString();const unsigned short* GetAsCharArray()const;long GetLength()const;void SetAsSubString(const unsigned short*,long);CWideString& operator=(const CWideString&);};
+class CWideString { public:void* data;CWideString();CWideString(const CWideString&);~CWideString();const unsigned short* GetAsCharArray()const;long GetLength()const;void SetAsSubString(const unsigned short*,long);const CWideString& operator=(const CWideString&);};
 CWideString __fastcall operator+(const CWideString&,const unsigned short*);
 CWideString __fastcall operator+(const CWideString&,const CWideString&);
 extern const unsigned short g_Slash_0122de78[];
@@ -30,7 +30,7 @@ CWideString::~CWideString(){Drop(data);data=0;}
 const unsigned short*CWideString::GetAsCharArray()const{return data?((Buffer*)data)->first:Empty;}
 long CWideString::GetLength()const{return data?((Buffer*)data)->last-((Buffer*)data)->first:0;}
 void CWideString::SetAsSubString(const unsigned short*p,long n){assert(n>=0);Buffer*b=0;if(p&&n){b=new Buffer;b->first=(unsigned short*)malloc((n+1)*2);memcpy(b->first,p,n*2);b->first[n]=0;b->last=b->first+n;b->limit=b->last+1;b->refs=1;++live;}Drop(data);data=b;}
-CWideString&CWideString::operator=(const CWideString&x){if(data!=x.data){Drop(data);data=x.data;if(data)++((Buffer*)data)->refs;}return *this;}
+const CWideString&CWideString::operator=(const CWideString&x){if(data!=x.data){Drop(data);data=x.data;if(data)++((Buffer*)data)->refs;}return *this;}
 CWideString __fastcall operator+(const CWideString&a,const unsigned short*b){unsigned short text[256];int n=a.GetLength();assert(n<128);memcpy(text,a.GetAsCharArray(),n*2);while(*b){assert(n<255);text[n++]=*b++;}CWideString out;out.SetAsSubString(text,n);return CWideString(out);}
 CWideString __fastcall operator+(const CWideString&a,const CWideString&b){return a+b.GetAsCharArray();}
 }

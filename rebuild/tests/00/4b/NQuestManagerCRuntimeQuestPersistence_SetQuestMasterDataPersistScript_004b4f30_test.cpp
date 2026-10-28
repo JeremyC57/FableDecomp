@@ -41,7 +41,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const CCharString& other);                // 0x0099EC30
     ~CCharString();                                       // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
     bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
@@ -138,7 +138,7 @@ static const char* Name(const CCharStringData* d) { static char bufs[4][16]; sta
 bool CCharStringData::operator<(const CCharStringData& other) const { return this < &other; }
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { char b[32]; _snprintf(b, sizeof b, "copy(%s)", Name(PStringData)); note(b); }
 CCharString::~CCharString() { char b[32]; _snprintf(b, sizeof b, "~(%s)", Name(PStringData)); note(b); }
-CCharString& CCharString::operator=(const CCharString& other) { char b[48]; _snprintf(b, sizeof b, "assign(%s<-%s)", Name(PStringData), Name(other.PStringData)); note(b); PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { char b[48]; _snprintf(b, sizeof b, "assign(%s<-%s)", Name(PStringData), Name(other.PStringData)); note(b); PStringData = other.PStringData; return *this; }
 CRuntimeQuestPersistence::SPair* CRuntimeQuestPersistence::CPersistMap::LowerBound(const CCharString& key)
 {
     SPair* it = m_pFirst;

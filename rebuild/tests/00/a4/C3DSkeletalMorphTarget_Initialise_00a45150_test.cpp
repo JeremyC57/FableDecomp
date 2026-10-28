@@ -12,7 +12,7 @@
 class CCharStringData { public:};
 class CCharString { CCharStringData* storage_; public:
  CCharString(); CCharString(const char*,long); ~CCharString();
- CCharString& operator=(const CCharString&);
+ const CCharString& operator=(const CCharString&);
  operator const char*() const;
 };
 
@@ -91,7 +91,7 @@ CCharString::CCharString(const char* p,long):storage_((CCharStringData*)p) {}
 CCharString::~CCharString() {}
 CCharString::operator const char*() const {return (const char*)storage_;}
 static int nameAssignments;
-CCharString& CCharString::operator=(const CCharString& x) { storage_=x.storage_;++nameAssignments;return *this; }
+const CCharString& CCharString::operator=(const CCharString& x) { storage_=x.storage_;++nameAssignments;return *this; }
 
 C3DSkeletalBoneMorph::C3DSkeletalBoneMorph(const C3DSkeletalBoneMorph& x)
  :BoneName(x.BoneName),BoneNameCRC(x.BoneNameCRC),XBits(x.XBits),YBits(x.YBits),ZBits(x.ZBits) {}

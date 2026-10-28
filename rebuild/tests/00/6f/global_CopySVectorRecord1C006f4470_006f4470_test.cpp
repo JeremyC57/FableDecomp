@@ -18,7 +18,7 @@ static const char* Name(int i)
 
 class CCharString { public:
     const char* m_pData;
-    CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
 };
 struct SWords3 {
     long m_words[3];

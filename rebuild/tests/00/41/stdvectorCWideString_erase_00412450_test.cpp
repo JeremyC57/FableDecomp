@@ -10,7 +10,7 @@ public:
     char Text[16];
     explicit CWideString(const char* text) { std::strcpy(Text, text); ++g_live; }
     ~CWideString() { --g_live; Text[0] = '#'; }
-    CWideString& operator=(const CWideString& other) { std::strcpy(Text, other.Text); return *this; }
+    const CWideString& operator=(const CWideString& other) { std::strcpy(Text, other.Text); return *this; }
 };
 template <class T> T* RetailCopy(T* first, T* last, T* result)
 {

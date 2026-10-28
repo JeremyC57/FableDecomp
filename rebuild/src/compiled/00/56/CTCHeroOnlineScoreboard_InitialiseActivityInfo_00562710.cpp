@@ -11,7 +11,7 @@
 class CCharStringData;
 class CCharString { public:
     CCharStringData* PStringData;
-    CCharString& operator=(const char* text);        // 0x0099EFE0
+    const CCharString& operator=(const char* text);        // 0x0099EFE0
 };
 struct CActivity {                                   // CTCHeroOnlineScoreboard::CActivity (16 bytes)
     CCharString   Name;                              // +0x00

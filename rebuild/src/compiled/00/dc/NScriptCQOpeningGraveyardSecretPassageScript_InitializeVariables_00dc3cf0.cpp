@@ -14,7 +14,7 @@
 class CCharString {
 public:
     void* PStringData;
-    CCharString& operator=(const char* text);      // 0x0099EFE0
+    const CCharString& operator=(const char* text);      // 0x0099EFE0
 };
 struct CQ_OpeningGraveyardSecretPassageData {      // the shared quest data the script holds at +0x44
     unsigned char _pad[0x11c];

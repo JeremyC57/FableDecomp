@@ -17,7 +17,7 @@ struct CFontEntryArray {
     CFontDataBankEntry*& back() { return *(m_pLast - 1); }
     void pop_back() { m_pLast = m_pLast - 1; }
 };
-class CCharString { public: const char* s; CCharString& operator=(const char* t) { s = t; return *this; } };
+class CCharString { public: const char* s; const CCharString& operator=(const char* t) { s = t; return *this; } };
 class CFontDataBank { public:
     CFontEntryArray Fonts; CCharString Filename;
     void CloseFonts()

@@ -18,7 +18,7 @@ public:
     void* m_pStringData;
     CCharString(const CCharString& other);                                       // 0x0099EC30
     ~CCharString();                                                              // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 
 class C2DVector { public:
@@ -151,7 +151,7 @@ template void vector<CTCInventoryMap::CUIMiniMapMarker>::_M_fill_insert(CTCInven
 static int g_live = 0, g_assigns = 0;
 CCharString::CCharString(const CCharString& other) : m_pStringData(other.m_pStringData) { ++g_live; }
 CCharString::~CCharString() { --g_live; }
-CCharString& CCharString::operator=(const CCharString& other) { m_pStringData = other.m_pStringData; ++g_assigns; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { m_pStringData = other.m_pStringData; ++g_assigns; return *this; }
 CTCInventoryMap::CUIMiniMapMarker::CUIMiniMapMarker(const CUIMiniMapMarker& other)
     : Region(other.Region), UIDefName(other.UIDefName), Position(other.Position), DefNameLength(other.DefNameLength),
       GraphicIndex(other.GraphicIndex), Angle(other.Angle) { }

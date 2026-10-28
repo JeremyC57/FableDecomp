@@ -6,8 +6,8 @@ class CCharString { public:
     const char* s;
     CCharString() : s("") { }
     CCharString(const char* t) : s(t) { }
-    CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
-    CCharString& operator=(const char* t) { s = t; return *this; }
+    const CCharString& operator=(const CCharString& o) { s = o.s; return *this; }
+    const CCharString& operator=(const char* t) { s = t; return *this; }
 };
 struct CMessageEvent_Retail { long m_extraData; };
 class CMessageEventFilter_IsOfType { public: long m_type; CMessageEventFilter_IsOfType(long type) : m_type(type) { } };

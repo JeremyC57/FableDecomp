@@ -24,7 +24,7 @@ struct CBaseClassNonCopyable {
 class CWideString { public:
     CWideStringData* PStringData;
     CWideString();                                  // 0x0099AED0
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 
 struct CArrayUChar {                                // CArray<unsigned char> (STLport vector)
@@ -101,7 +101,7 @@ static int g_base = 0, g_wctor = 0, g_wassign = 0, g_grow = 0;
 void CBaseClassNonCopyable::v00() {}
 CBaseClassNonCopyable::CBaseClassNonCopyable() { ++g_base; }
 CWideString::CWideString() { ++g_wctor; PStringData = 0; }
-CWideString& CWideString::operator=(const CWideString& o) { ++g_wassign; PStringData = o.PStringData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& o) { ++g_wassign; PStringData = o.PStringData; return *this; }
 void CMemoryFile::v00() {}
 void GrowByteVector_s7(CArrayUChar* b, unsigned char value)
 { ++g_grow; long n = b->m_finish - b->m_start; unsigned char* s = (unsigned char*)malloc(n * 2 + 1); if (n) memcpy(s, b->m_start, n); s[n] = value;

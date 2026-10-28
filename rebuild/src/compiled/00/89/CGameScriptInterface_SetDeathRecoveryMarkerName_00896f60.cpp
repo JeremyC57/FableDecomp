@@ -2,7 +2,7 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 class CCharString
 { public:
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 struct DeathRecoveryMarkerNameInterface
 {

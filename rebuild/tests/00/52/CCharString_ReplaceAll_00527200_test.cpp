@@ -23,7 +23,7 @@ public:
         PStringData = new CCharStringData; PStringData->m_pData = (char*)std::malloc(n + 1);
         std::memcpy(PStringData->m_pData, text, n); PStringData->m_pData[n] = 0; PStringData->m_length = n;
     }
-    CCharString& operator=(const CCharString& other)
+    const CCharString& operator=(const CCharString& other)
     {
         if (this != &other) { const char* t = other.GetString(); int n = (int)std::strlen(t); char* c = (char*)std::malloc(n + 1);
             std::memcpy(c, t, n + 1); Set(c, n); std::free(c); }

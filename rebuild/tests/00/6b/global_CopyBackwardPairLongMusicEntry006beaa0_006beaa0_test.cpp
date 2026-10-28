@@ -10,7 +10,7 @@ static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) g_fail = 1; } while (0)
 class CWideString { public:                         // one-word handle
     void* m_pData;                           // +0x00
-    CWideString& operator=(const CWideString& other);     // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);     // 0x0099B7D0
 };
 
 struct CRegisteredMusicEntry {               // CMusicManager::CRegisteredMusicEntry, 0x14 bytes
@@ -36,7 +36,7 @@ PairLongMusicEntry* __fastcall CopyBackward_PairLongMusicEntry_006beaa0(PairLong
 }
 
 static int g_strAssign = 0;
-CWideString& CWideString::operator=(const CWideString& other) { m_pData = other.m_pData; ++g_strAssign; return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { m_pData = other.m_pData; ++g_strAssign; return *this; }
 
 typedef PairLongMusicEntry T;
 #define KEY(E) (E).first

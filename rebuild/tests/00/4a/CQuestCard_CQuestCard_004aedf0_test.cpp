@@ -5,7 +5,7 @@ class CCharString { public:
     const char* m_data;
     CCharString() : m_data(0) { ++g_defaults; }
     CCharString(const char* text) : m_data(text) {}
-    CCharString& operator=(const CCharString& other) { m_data = other.m_data; ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_data = other.m_data; ++g_assigns; return *this; }
 };
 struct CQuestCard {
     CCharString DefName;

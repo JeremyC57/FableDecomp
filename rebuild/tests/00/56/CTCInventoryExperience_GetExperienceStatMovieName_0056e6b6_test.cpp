@@ -13,7 +13,7 @@ class CCharString { public:
     CCharString();                                      // 0x0099E4B0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 enum EHeroTrainableStatType { EHeroTrainableStatType_Force32 = 0x7fffffff };
 class CTCInventoryExperience { public:
@@ -38,7 +38,7 @@ static int g_live, g_assign;
 CCharString::CCharString() : PStringData(0) { ++g_live; }
 CCharString::CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_live; }
 CCharString::~CCharString() { --g_live; }
-CCharString& CCharString::operator=(const char* text) { ++g_assign; PStringData = (CCharStringData*)text; return *this; }
+const CCharString& CCharString::operator=(const char* text) { ++g_assign; PStringData = (CCharStringData*)text; return *this; }
 static int check(long stat, const char* expect) {
     CTCInventoryExperience e; g_assign = 0;
     int ok;

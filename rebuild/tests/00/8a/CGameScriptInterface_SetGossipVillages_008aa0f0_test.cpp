@@ -52,7 +52,7 @@ public:
 // Layout: active script header is flattened; genuine virtual declaration below preserves the PDB virtual API. No receiver fields accessed. Shared header retained as layout evidence.
 class CCharString {
 public:
-    CCharString& operator=(const CCharString&);
+    const CCharString& operator=(const CCharString&);
     CCharString():PStringData(0){}
     CCharString(const CCharString& other);               // 0x0099EC30
     ~CCharString();                                      // 0x0099EAE0
@@ -131,7 +131,7 @@ void CGameScriptInterface::SetGossipVillages(CCharString name,CCharString value,
 static int live,copies,assigns,calls,bad;
 CCharString::CCharString(const CCharString& other):PStringData(other.PStringData){++live;++copies;}
 CCharString::~CCharString(){--live;}
-CCharString& CCharString::operator=(const CCharString& other){++assigns;PStringData=other.PStringData;return *this;}
+const CCharString& CCharString::operator=(const CCharString& other){++assigns;PStringData=other.PStringData;return *this;}
 bool CCharString::operator<(const CCharString& other)const{return PStringData<other.PStringData;}
 static const void* expectedKey;static std::vector<CCharString> values;
 std::map<CCharString,std::vector<CCharString> > CTCAIScratchpad::GossipVillages;

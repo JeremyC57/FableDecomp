@@ -2,7 +2,7 @@
 #include <cstring>
 class CCharString { public:
     char m_text[16];
-    CCharString& operator=(const CCharString& other) { std::strcpy(m_text, other.m_text); return *this; }
+    const CCharString& operator=(const CCharString& other) { std::strcpy(m_text, other.m_text); return *this; }
 };
 struct TGenerationParameters {
     float GenerationRadius; float SelfTriggerRadius; bool SelfTrigger; long SelfTriggerResetInterval;

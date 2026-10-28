@@ -61,13 +61,13 @@ class CCharString { public:
     CCharString();
     CCharString(const char* text, long length = -1);
     ~CCharString();
-    CCharString& operator=(const char* text);
+    const CCharString& operator=(const char* text);
 };
 static int g_stringsAlive = 0;
 CCharString::CCharString() : m_pData(0) { ++g_stringsAlive; }
 CCharString::CCharString(const char* text, long) : m_pData((void*)text) { ++g_stringsAlive; }
 CCharString::~CCharString() { --g_stringsAlive; }
-CCharString& CCharString::operator=(const char* text) { m_pData = (void*)text; return *this; }
+const CCharString& CCharString::operator=(const char* text) { m_pData = (void*)text; return *this; }
 static const char* Text(const CCharString& s) { return s.m_pData ? (const char*)s.m_pData : ""; }
 
 struct CInterfaceMap {

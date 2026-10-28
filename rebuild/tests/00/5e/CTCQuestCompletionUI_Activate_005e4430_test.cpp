@@ -13,15 +13,15 @@ class CCharString { public:
     char Text[32];
     CCharString(const char* text = "", long = -1) { strcpy(Text, text); }
     ~CCharString() {}
-    CCharString& operator=(const CCharString& o) { strcpy(Text, o.Text); return *this; }
-    CCharString& operator=(const char* t) { strcpy(Text, t); return *this; }
+    const CCharString& operator=(const CCharString& o) { strcpy(Text, o.Text); return *this; }
+    const CCharString& operator=(const char* t) { strcpy(Text, t); return *this; }
     bool operator!=(const CCharString& o) const { return strcmp(Text, o.Text) != 0; }
 };
 class CWideString { public:
     int Id;
     CWideString(int id = 0) : Id(id) {}
     ~CWideString() {}
-    CWideString& operator=(const CWideString& o) { Id = o.Id; return *this; }
+    const CWideString& operator=(const CWideString& o) { Id = o.Id; return *this; }
 };
 static int g_deleted = 0;
 struct CDef { virtual void v00() {} virtual void DeleteThis() { ++g_deleted; } long RefCount;

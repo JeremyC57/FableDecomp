@@ -22,7 +22,7 @@ class CCharString { public:
     CCharString();                         // 0x0099E4B0
     CCharString(const char* text, long length = -1);   // 0x0099EBF0 (default argument: the literal converts implicitly)
     ~CCharString();                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 unsigned long __fastcall CCharString_ComputeCRC32(const CCharString& text);   // 0x00404310: CRC of the text (the out-of-line copy of the inline CRC accessor pair)

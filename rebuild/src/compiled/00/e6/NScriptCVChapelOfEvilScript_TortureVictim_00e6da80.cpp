@@ -19,7 +19,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E

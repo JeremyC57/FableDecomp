@@ -27,8 +27,8 @@ static int fails = 0;
 // operator= by its address) -- an unnamed temporary passes GetString's returned eax.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
     ~CCharString();                                     // 0x0099EAE0
 };
 class CDefString { public: long Index; };
@@ -128,8 +128,8 @@ static CTestChestDef* g_found;          // what the GetSubDef stand-in's extern 
 void* Find_CDefClassBase_GetSubDef(const void* owner) { logf("FindSubDef(%ld)", (long)(owner == (const void*)&g_def ? 1 : 0)); return g_found; }
 static CDefinitionManager g_manager;
 CDefStringTable g_DefStringTable;
-CCharString& CCharString::operator=(const CCharString& other) { logf("assign(str %ld)", (long)(size_t)other.PStringData); PStringData = other.PStringData; return *this; }
-CCharString& CCharString::operator=(const char* text) { logf("assign(\"%s\")", (long)(size_t)text); PStringData = (void*)text; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { logf("assign(str %ld)", (long)(size_t)other.PStringData); PStringData = other.PStringData; return *this; }
+const CCharString& CCharString::operator=(const char* text) { logf("assign(\"%s\")", (long)(size_t)text); PStringData = (void*)text; return *this; }
 CCharString::~CCharString() { logf("~CCharString(%ld)", (long)(size_t)PStringData); }
 static CCharString MakeString(long v) { void* p = (void*)(size_t)v; return *(CCharString*)&p; }
 CCharString CDefStringTable::GetString(long id) { logf("GetString(%ld,%ld)", id, (long)(this == &g_DefStringTable)); return MakeString(id * 100); }

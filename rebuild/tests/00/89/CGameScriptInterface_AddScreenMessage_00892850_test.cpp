@@ -24,7 +24,7 @@ class CWideString { public:
     void* PStringData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
     bool operator!=(const wchar_fable* text) const;     // 0x0099B150
 };
 CWideString __fastcall operator+(const wchar_fable* left, const CWideString& right);   // 0x0099BFF0
@@ -115,7 +115,7 @@ static const wchar_fable kParen[4] = { '(', 't', 'g', 0 };
 static int g_wdtors = 0;
 CWideString::CWideString() : PStringData(0) {}
 CWideString::~CWideString() { ++g_wdtors; }
-CWideString& CWideString::operator=(const CWideString& other) { PStringData = other.PStringData; return *this; }
+const CWideString& CWideString::operator=(const CWideString& other) { PStringData = other.PStringData; return *this; }
 bool CWideString::operator!=(const wchar_fable* text) const
 {
     const wchar_fable* s = PStringData ? (const wchar_fable*)PStringData : kEmpty;

@@ -7,7 +7,7 @@ class CCharString { public:
     unsigned long len;
     CCharString() : len(0) { buf[0] = 0; }
     CCharString& operator+=(char c) { buf[len++] = c; buf[len] = 0; return *this; }
-    CCharString& operator=(const CCharString& o) { std::memcpy(buf, o.buf, sizeof(buf)); len = o.len; return *this; }
+    const CCharString& operator=(const CCharString& o) { std::memcpy(buf, o.buf, sizeof(buf)); len = o.len; return *this; }
 };
 struct CCursorPos { bool InQuotes; unsigned long StringPos; unsigned long Line; };
 class CStringParser { public:

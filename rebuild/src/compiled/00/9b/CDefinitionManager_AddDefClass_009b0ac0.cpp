@@ -24,7 +24,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->Data; }
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
 };

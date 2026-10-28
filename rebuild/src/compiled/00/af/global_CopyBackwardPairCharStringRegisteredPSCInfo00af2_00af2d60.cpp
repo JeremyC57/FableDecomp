@@ -11,7 +11,7 @@
 // the strength-reduced src+0xC/dst+0xC pointers); the count is decremented in the dead `result` argument slot.
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 namespace NParticleEngine {

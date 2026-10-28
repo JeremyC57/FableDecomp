@@ -6,7 +6,7 @@ class CCharString { public:
     CCharStringData* m_pData;
     CCharString() : m_pData(0) { ++g_defaultCtors; }
     CCharString(CCharStringData* d) : m_pData(d) { }
-    CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pData = other.m_pData; ++g_assigns; return *this; }
     unsigned long GetLength() const { return m_pData == 0 ? 0 : m_pData->m_length; }
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
 };

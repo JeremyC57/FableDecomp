@@ -25,7 +25,7 @@ public:
     CStringData* m_pData;
     CCharString();                                              // 0x0099E4B0
     ~CCharString();                                             // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);           // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);           // 0x0099EFB0
     long FindCharPos(char c) const;                             // 0x0099E5A0
     CCharString GetSubString(unsigned long start, unsigned long count) const;   // 0x0099EC70
     operator const char*() const;                               // 0x0099E4C0

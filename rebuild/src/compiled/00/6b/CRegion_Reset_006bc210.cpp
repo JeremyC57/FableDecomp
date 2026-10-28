@@ -15,7 +15,7 @@
 extern "C" void* __cdecl memmove(void* dst, const void* src, unsigned int n);   // 0x00BFEAE6
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* text);      // 0x0099EFE0
+    const CCharString& operator=(const char* text);      // 0x0099EFE0
 };
 inline void* __copy_trivial(const void* first, const void* last, void* result)
 {

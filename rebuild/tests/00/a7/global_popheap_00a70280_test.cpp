@@ -6,7 +6,7 @@ class CCharString { public:
     CCharString(const char* t) : text(t) { ++g_live; }
     CCharString(const CCharString& o) : text(o.text) { ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& o) { text = o.text; return *this; }
+    const CCharString& operator=(const CCharString& o) { text = o.text; return *this; }
 };
 class C3DDummyObject { public: float Transform[12]; long BoneIndex; };
 struct SDummyPair { CCharString first; C3DDummyObject second; SDummyPair(const char* n, long b) : first(n) { second.BoneIndex = b; } };

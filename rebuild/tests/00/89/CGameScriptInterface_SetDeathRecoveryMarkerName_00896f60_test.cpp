@@ -9,7 +9,7 @@
 class CCharString
 { public:
     const char* text;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 struct DeathRecoveryMarkerNameInterface
 {
@@ -95,7 +95,7 @@ DeathRecoveryMarkerNameMap::lower_bound(const int* key)
     return g_lowerBoundResult;
 }
 
-CCharString& CCharString::operator=(const CCharString& other)
+const CCharString& CCharString::operator=(const CCharString& other)
 {
     g_assignmentThis = this;
     g_assignmentSource = &other;

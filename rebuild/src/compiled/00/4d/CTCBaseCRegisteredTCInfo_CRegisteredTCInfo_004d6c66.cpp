@@ -11,7 +11,7 @@ class CTCBase;
 class CCharString {                                       // 4 bytes (PStringData)
 public:
     CCharString(const CCharString& other);                // 0x0099EC30
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
     void* PStringData;
 };
 class CTCBase {

@@ -15,7 +15,7 @@ enum ESex { SEX_NONE = 0, SEX_MALE = 1, SEX_FEMALE = 2 };
 
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const char* text);            // 0x0099EFE0
+    const CCharString& operator=(const char* text);            // 0x0099EFE0
 };
 
 class CGameScriptInterface;

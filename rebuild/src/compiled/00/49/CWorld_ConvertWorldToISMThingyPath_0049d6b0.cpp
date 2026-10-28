@@ -17,7 +17,7 @@ class CWideString { public:
     CWideString();                                 // 0x0099AED0
     CWideString(const CWideString& other);         // 0x0099B720
     ~CWideString();                                // 0x0099B510
-    CWideString& operator=(const CWideString& other);   // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
 };
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& left, const wchar16* right);       // 0x0099BF30

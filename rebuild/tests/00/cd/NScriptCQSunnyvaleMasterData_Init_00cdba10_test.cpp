@@ -3,7 +3,7 @@
 // Behaviour test for NScript::CQ_SunnyvaleMasterData::Init (0x00CDBA10): every reset member/static gets its start value.
 class CCharString { public:
     char Text[16];
-    CCharString& operator=(const char* t) { std::strcpy(Text, t); return *this; }
+    const CCharString& operator=(const char* t) { std::strcpy(Text, t); return *this; }
 };
 namespace NScript {
 class CQ_SunnyvaleMasterData { public:

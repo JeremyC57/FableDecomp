@@ -15,7 +15,7 @@ public:
     CCharString() : Value(0) { ++g_strings; }
     CCharString(const CCharString& o) : Value(o.Value) { ++g_strings; }
     ~CCharString() { --g_strings; }
-    CCharString& operator=(const CCharString& o) { Value = o.Value; ++g_strAssign; return *this; }
+    const CCharString& operator=(const CCharString& o) { Value = o.Value; ++g_strAssign; return *this; }
 };
 
 namespace std {

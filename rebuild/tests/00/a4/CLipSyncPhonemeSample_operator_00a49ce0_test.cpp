@@ -3,7 +3,7 @@
 #include <cstring>
 struct CObj { }; static long g_destroyed = 0; static void DestroyObj(CObj*) { ++g_destroyed; } struct SCount { long m_references; void (*m_pfnDestroy)(CObj*); CObj* m_pObject; };
 struct CCountedPointer { CObj* m_pObject; SCount* m_pCount; CCountedPointer() : m_pObject(0), m_pCount(0) { } ~CCountedPointer() { if (m_pCount) { --m_pCount->m_references; if (m_pCount->m_references == 0) { m_pCount->m_pfnDestroy(m_pCount->m_pObject); delete m_pCount; } } m_pObject = 0; m_pCount = 0; } };
-class CCharString { public: void* m_p; CCharString() : m_p(0) { } CCharString& operator=(const CCharString& o) { m_p = o.m_p; return *this; } };
+class CCharString { public: void* m_p; CCharString() : m_p(0) { } const CCharString& operator=(const CCharString& o) { m_p = o.m_p; return *this; } };
 struct CSample { CCharString m_name; long m_4; CCountedPointer m_data; CSample() : m_4(0) { }
     CSample& operator=(const CSample& o) { m_name = o.m_name; m_4 = o.m_4; SCount* block = o.m_data.m_pCount; CObj* obj = o.m_data.m_pObject; if (m_data.m_pCount != block) { if (m_data.m_pCount) { --m_data.m_pCount->m_references; if (m_data.m_pCount->m_references == 0) { m_data.m_pCount->m_pfnDestroy(m_data.m_pCount->m_pObject); delete m_data.m_pCount; } } m_data.m_pObject = obj; m_data.m_pCount = block; if (block) ++block->m_references; } return *this; } };
 

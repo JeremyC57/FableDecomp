@@ -25,7 +25,7 @@ public:
     CCharString(int v) : PData(v) { }
     CCharString(const CCharString& other) : PData(other.PData) { ++g_strCopies; }
     ~CCharString() { ++g_strDtors; }
-    CCharString& operator=(const CCharString& other) { PData = other.PData; ++g_strAssigns; return *this; }   // stub for 0x0099EFB0
+    const CCharString& operator=(const CCharString& other) { PData = other.PData; ++g_strAssigns; return *this; }   // stub for 0x0099EFB0
 };
 struct __true_type { __true_type() { } };
 struct __false_type { __false_type() { } };

@@ -11,7 +11,7 @@ public:
     CCharStringData* PStringData;
     CCharString() : PStringData(0) {}
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_stringCopies; }
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
     char* GetString() const { return PStringData == 0 ? g_emptyLiteral : PStringData->PData; }
 };
 static int g_listCopies = 0;

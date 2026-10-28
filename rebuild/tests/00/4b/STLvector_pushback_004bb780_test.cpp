@@ -14,7 +14,7 @@ public:
     CCharString(const char* s) : PStringData(Dup(s)) { ++gLiveStrings; }
     CCharString(const CCharString& other) : PStringData(Dup(other.PStringData)) { ++gLiveStrings; }
     ~CCharString() { std::free(PStringData); --gLiveStrings; }
-    CCharString& operator=(const CCharString& other)
+    const CCharString& operator=(const CCharString& other)
     {
         if (this != &other) {
             char* p = Dup(other.PStringData);

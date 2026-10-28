@@ -9,7 +9,7 @@
 // Label correction: the catalog's `_Copy_backward<CSymbolMap::CSymbolInfo*>` is propagated; member names are descriptive.
 class CCharString { public:
     void* m_pData;                               // +0x00
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 struct SStringPair0C {                         // 12 bytes
     CCharString m_key;                           // +0x00

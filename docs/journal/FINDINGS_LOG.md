@@ -795,3 +795,5 @@ Retry 538 (agent538; batches/2026-10-27_linux_hand538): 5 of 8 parked rows land 
 Retry 540 (agent540; batches/2026-10-27_linux_hand540): 1 of 8 parked rows lands (0x005C0E81 CPersistTraits<NInventory::CItem>::TransferOut); 7 re-parked with frame-slot / scheduling residues. Retry tally 535-540: 13 of 60. 29 NAME_FIXES deferred (queue now 699).
 
 Retry 541 (agent541; batches/2026-10-27_linux_hand541): 1 of 8 lands (0x00663C40 CThingCreatureBase::DrawPreparePrimitivesForRendering); 7 re-parked. Retry tally 535-541: 14 of 68; retries stop here by owner choice (naming pass next). 44 NAME_FIXES deferred (queue now 742).
+
+Naming pass, operator= family (rebuild/candidates/manual/naming/2026-10-28_opeq): 2,107 files respelled to the PDB `const T&` return; 2,409 of 2,414 affected rows recheck clean (5 pre-existing failures: 00404720, 0040d400, 0040d2a0 test FAIL; 004d9861 DIFFER 36v33; 009e1440 TCC_FAIL). Sample recheck surfaced pre-existing RELOC_CONFLICTs for the naming pass: `_s_Default` (0x01238198 vs 0x0123817C), `??1CBase@@UAE@XZ` (0x0099A300 vs 0x0099A2E0), `??BCWideString@@QBEPBGXZ` (0x0099AF00 vs 0x0099AF10).

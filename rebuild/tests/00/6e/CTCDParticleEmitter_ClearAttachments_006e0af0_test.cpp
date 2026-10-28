@@ -36,7 +36,7 @@ struct CTCDependentThings {                             // interface 0xd8
 };
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* text) { PStringData = (void*)text; return *this; }
+    const CCharString& operator=(const char* text) { PStringData = (void*)text; return *this; }
 };
 struct CBaseIntelligentPointer {
     virtual void v00() { }

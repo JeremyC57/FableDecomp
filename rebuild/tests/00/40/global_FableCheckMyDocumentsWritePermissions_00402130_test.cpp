@@ -44,7 +44,7 @@ static CWideString operator+(const CWideString& a, const wchar_t* b) { CWideStri
 class CCharString { public:
     char s[128];
     CCharString() { s[0] = 0; }
-    CCharString& operator=(const char* t) { std::strcpy(s, t); return *this; }
+    const CCharString& operator=(const char* t) { std::strcpy(s, t); return *this; }
     bool operator!=(const char* t) const { return std::strcmp(s, t) != 0; }
 };
 static unsigned long crc(const char* p)

@@ -175,7 +175,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -211,7 +211,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -358,7 +358,7 @@ static int AssignCalls,LookupCalls,ThingCalls,Released,BaseDestroyed;static bool
 static const CCharString* AssignmentSource;static CCharString* AssignmentDestination;
 CCharString::CCharString():storage_(0){}
 CCharString::~CCharString(){if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}}
-CCharString& CCharString::operator=(const CCharString& other){++AssignCalls;AssignmentSource=&other;AssignmentDestination=this;if(other.storage_)++other.storage_->owners;if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}storage_=other.storage_;return *this;}
+const CCharString& CCharString::operator=(const CCharString& other){++AssignCalls;AssignmentSource=&other;AssignmentDestination=this;if(other.storage_)++other.storage_->owners;if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;}storage_=other.storage_;return *this;}
 const CCharString& CCharString::operator=(const char* text){CCharString tmp;tmp.storage_=new CCharStringData;tmp.storage_->owners=1;tmp.storage_->text=new char[strlen(text)+1];strcpy(tmp.storage_->text,text);*this=tmp;return *this;}
 CCharString::operator const char*() const{return storage_?storage_->text:"";}
 CBaseClassNative::CBaseClassNative(){}CBaseClassNative::~CBaseClassNative(){++BaseDestroyed;}

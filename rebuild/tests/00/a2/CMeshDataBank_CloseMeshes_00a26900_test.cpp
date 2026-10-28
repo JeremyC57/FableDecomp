@@ -10,7 +10,7 @@ static int g_outOfLineErases = 0;
 class CCharString {
 public:
     const char* Text;
-    CCharString& operator=(const char* text) { Text = text; g_assigned = text; return *this; }
+    const CCharString& operator=(const char* text) { Text = text; g_assigned = text; return *this; }
 };
 
 class CMeshDataBankEntry { public: int Id; };

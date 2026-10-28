@@ -21,7 +21,7 @@ class CParentDefClassBase { public:
 
 class CCharString { public:                    // 4-byte string handle
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 #pragma pack(push, 2)

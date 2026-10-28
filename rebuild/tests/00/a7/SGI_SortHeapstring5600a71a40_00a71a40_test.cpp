@@ -5,7 +5,7 @@
 // Flags: /O2 /Oy /Gr
 // Leaf: SortHeap
 // Layout: no engine CCharString header exists; retail holds one data pointer, ctor 0099ec30, assignment 0099efb0, dtor 0099eae0.
-class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharString {public: void* data; CCharString():data(0){} CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
 struct Payload_00a71a40 {int data[13];};
 template<class K,class V> struct Pair_00a71a40 { K first;V second;Pair_00a71a40(){}Pair_00a71a40(const Pair_00a71a40& p):first(p.first),second(p.second){} };
 typedef Pair_00a71a40<CCharString,Payload_00a71a40> Record_00a71a40;
@@ -37,7 +37,7 @@ template void SortHeap<Record_00a71a40,Compare_00a71a40>(Record_00a71a40*,Record
 
 // END exact source snapshot
 bool Compare_00a71a40::operator()(const Record_00a71a40&a,const Record_00a71a40&b)const{return *(int*)a.first.data<*(int*)b.first.data;}
-CCharString::CCharString(const CCharString& p):data(p.data){} CCharString::~CCharString(){} CCharString& CCharString::operator=(const CCharString& p){data=p.data;return *this;}
+CCharString::CCharString(const CCharString& p):data(p.data){} CCharString::~CCharString(){} const CCharString& CCharString::operator=(const CCharString& p){data=p.data;return *this;}
 
 int main(){const int n=5;int keys[n]={7,5,6,3,4};Record_00a71a40 v[n];Compare_00a71a40 comp;comp.state=0;int i;
 for(i=0;i<n;++i){v[i].first.data=&keys[i];for(int j=0;j<13;++j)v[i].second.data[j]=keys[i]*10+j;}

@@ -89,7 +89,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -125,7 +125,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -211,7 +211,7 @@ CCharString::CCharString():storage_(0){++Live;}
 CCharString::CCharString(const char*s,long n):storage_(0){++Live;if(n!=-1||strcmp(s,"\""))++Assignments;else ++DelimiterCreates;*this=s;}
 CCharString::~CCharString(){if(storage_&&!--storage_->owners)delete storage_;--Live;}
 const CCharString& CCharString::operator=(const char*s){if(storage_&&!--storage_->owners)delete storage_;storage_=0;if(s&&*s){storage_=new CCharStringData;storage_->text=const_cast<char*>(s);storage_->owners=1;}return *this;}
-CCharString& CCharString::operator=(const CCharString&s){++Assignments;if(s.storage_)++s.storage_->owners;if(storage_&&!--storage_->owners)delete storage_;storage_=s.storage_;return *this;}
+const CCharString& CCharString::operator=(const CCharString&s){++Assignments;if(s.storage_)++s.storage_->owners;if(storage_&&!--storage_->owners)delete storage_;storage_=s.storage_;return *this;}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
 bool StringDataMethods::Equals(const char*s)const{return strcmp(text,s)==0;}
 const CCharString& ParsedItem::GetAsToken()const{++TokenGets;return Text;}

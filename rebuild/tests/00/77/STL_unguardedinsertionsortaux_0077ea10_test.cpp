@@ -9,7 +9,7 @@ public:
     CCharString() : Text("") { }
     CCharString(const char* t) : Text(t) { }
     CCharString(const CCharString& o) : Text(o.Text) { }
-    CCharString& operator=(const CCharString& o) { Text = o.Text; return *this; }
+    const CCharString& operator=(const CCharString& o) { Text = o.Text; return *this; }
     bool operator<(const CCharString& o) const { return std::strcmp(Text, o.Text) < 0; }
 };
 

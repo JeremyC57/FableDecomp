@@ -17,7 +17,7 @@ class CCharString {
 public:
     const char* PString;
     CCharString(const CCharString& other);                  // 0x0099EC30
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
 namespace std {

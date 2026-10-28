@@ -27,7 +27,7 @@ class CCharString
     CCharString();                                  // 0x0099E4B0
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 extern "C" int __cdecl rand();                      // 0x00BFEB16 (MSVCR71)
@@ -117,7 +117,7 @@ static int g_live = 0;
 CCharString::CCharString() : PStringData((void*)"") { ++g_live; }
 CCharString::CCharString(const CCharString& o) : PStringData(o.PStringData) { ++g_live; }
 CCharString::~CCharString() { --g_live; }
-CCharString& CCharString::operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { PStringData = o.PStringData; return *this; }
 static int g_rolls[16]; static int g_nroll = 0;
 extern "C" int __cdecl rand() { return g_rolls[g_nroll++]; }
 static int g_frames = 0;

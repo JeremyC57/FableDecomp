@@ -21,7 +21,7 @@ class CWideString { public:
     ~CWideString();                                         // 0x0099B510
     unsigned long GetLength() const;                        // 0x0099B220
     CWideString& operator=(const unsigned short* text);     // 0x0099B800
-    CWideString& operator=(const CWideString& other);       // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     CWideString& operator+=(const unsigned short* text);    // 0x0099B940
     CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
     operator const unsigned short*() const;                 // 0x0099AF10
@@ -745,7 +745,7 @@ CWideString::CWideString(const CWideString& o) { const unsigned short* s = (cons
 CWideString::~CWideString() { free(m_pStringData); m_pStringData = 0; }
 unsigned long CWideString::GetLength() const { return wlen((const unsigned short*)m_pStringData); }
 CWideString& CWideString::operator=(const unsigned short* t) { free(m_pStringData); m_pStringData = wdup(t, wlen(t)); return *this; }
-CWideString& CWideString::operator=(const CWideString& o) { if (this != &o) { const unsigned short* s = (const unsigned short*)o.m_pStringData; void* d = wdup(s, wlen(s)); free(m_pStringData); m_pStringData = d; } return *this; }
+const CWideString& CWideString::operator=(const CWideString& o) { if (this != &o) { const unsigned short* s = (const unsigned short*)o.m_pStringData; void* d = wdup(s, wlen(s)); free(m_pStringData); m_pStringData = d; } return *this; }
 CWideString& CWideString::operator+=(const unsigned short* t) { const unsigned short* s = (const unsigned short*)m_pStringData; unsigned long a = wlen(s), b = wlen(t); unsigned short* d = (unsigned short*)malloc((a + b + 1) * 2); memcpy(d, s, a * 2); memcpy(d + a, t, b * 2); d[a + b] = 0; free(m_pStringData); m_pStringData = d; return *this; }
 CWideString& CWideString::operator+=(const CWideString& o) { return *this += (const unsigned short*)o.m_pStringData; }
 CWideString::operator const unsigned short*() const { return (const unsigned short*)m_pStringData; }

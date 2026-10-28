@@ -6,7 +6,7 @@ class CThingPhysical;
 class CThingBuilding : public CThing { public: };
 class CCharString { public:
     void* PData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -92,7 +92,7 @@ bool CThingAICreature::ConstructFromParams(long defIndex, const C3DVector& posit
     return false;
 }
 // ---- test doubles ----
-CCharString& CCharString::operator=(const CCharString& o) { PData = o.PData; return *this; }
+const CCharString& CCharString::operator=(const CCharString& o) { PData = o.PData; return *this; }
 static int g_ipLive = 0;
 void CBaseIntelligentPointer::v00() {}
 CBaseIntelligentPointer::CBaseIntelligentPointer() : PItem(0) { ++g_ipLive; }

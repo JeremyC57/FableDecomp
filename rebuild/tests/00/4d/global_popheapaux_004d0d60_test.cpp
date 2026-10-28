@@ -42,7 +42,7 @@ public:
     CCharString(const char* s) : PStringData((void*)s) { ++g_live; }
     CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
+    const CCharString& operator=(const CCharString& other) { PStringData = other.PStringData; return *this; }
     const char* c_str() const { return (const char*)PStringData; }
 };
 

@@ -16,7 +16,7 @@
 // the history holds no user entry.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);           // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);           // 0x0099EFB0
     const CCharString& operator=(const char* text);             // 0x0099EFE0
 };
 

@@ -62,7 +62,7 @@ public:
 class CWideString {
 public:
     void* m_pData;
-    CWideString& operator=(const CWideString& other);    // 0x0099B7D0 (returns const& in the PDB)
+    const CWideString& operator=(const CWideString& other);    // 0x0099B7D0 (returns const& in the PDB)
     ~CWideString();                                      // 0x0099B510
 };
 class CCharString {

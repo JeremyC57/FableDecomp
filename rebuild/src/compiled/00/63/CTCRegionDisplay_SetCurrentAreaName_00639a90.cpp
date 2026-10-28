@@ -17,7 +17,7 @@ extern long g_framesPerSecond;                              // 0x01375550
 class CWideString { public:
     void* m_pData;
     bool operator!=(const wchar_t* text) const;             // 0x0099B150
-    CWideString& operator=(const CWideString& other);       // 0x0099B7D0
+    const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     const CWideString& operator=(const wchar_t* text);      // 0x0099B800
 };
 class CTCBase { public:                                            // engine/CTCBase.h layout (0xc bytes)

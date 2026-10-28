@@ -1,0 +1,5 @@
+old_symbol	target	new_symbol	note
+??4CCharString@@QAEAAV0@ABV0@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	first_caller 00403c20 now emits the new spelling (objdump -t); new spelling already bound (0049b180)
+??4CCharString@@QAEPAV0@ABV0@@Z	0099efb0	??4CCharString@@QAEABV0@ABV0@@Z	first_caller 00992630 now emits the new spelling (PTR_RET fix)
+??4CCharString@@QAEAAV0@PBD@Z	0099efe0	??4CCharString@@QAEABV0@PBD@Z	first_caller 0048df77 now emits the new spelling; new spelling already bound (00404970)
+??4CWideString@@QAEAAV0@ABV0@@Z	0099b7d0	??4CWideString@@QAEABV0@ABV0@@Z	both bound rows (0040d400 via fable_string.h, 00b428e0) now emit the new spelling; new spelling already bound (00999140)

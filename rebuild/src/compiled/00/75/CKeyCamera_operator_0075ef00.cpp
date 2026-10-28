@@ -10,7 +10,7 @@
 // CCharString through its operator=, SpeedFraction last; returns *this.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class C3DVector { public:

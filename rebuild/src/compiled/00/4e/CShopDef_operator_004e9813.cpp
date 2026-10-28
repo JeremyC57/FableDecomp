@@ -18,7 +18,7 @@ class CDefClassBase { public:
 };
 class CCharString { public:
     void* m_pStringData;
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 struct CShopItemDefVector {                                 // vector<CShopItemDef> (12 bytes)
     void* m_first; void* m_last; void* m_end;

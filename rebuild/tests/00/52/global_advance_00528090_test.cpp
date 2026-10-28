@@ -14,7 +14,7 @@ public:
     int Id;
     CCharString() : Id(0) {}
     CCharString(const CCharString& other) : Id(other.Id) { ++g_copies; }
-    CCharString& operator=(const CCharString& other) { Id = other.Id; ++g_assigns; return *this; }
+    const CCharString& operator=(const CCharString& other) { Id = other.Id; ++g_assigns; return *this; }
 };
 
 namespace std {

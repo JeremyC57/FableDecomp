@@ -88,7 +88,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -124,7 +124,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -176,7 +176,7 @@ CCharString::CCharString(const char* text,long n):storage_(new CCharStringData){
 }
 CCharString::~CCharString(){--liveStrings;if(storage_&&--storage_->owners==0){delete[] storage_->text;delete storage_;}}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
-CCharString& CCharString::operator=(const CCharString& s){
+const CCharString& CCharString::operator=(const CCharString& s){
     ++assignments;strcpy(observed,(const char*)s);if(s.storage_)++s.storage_->owners;
     if(storage_&&--storage_->owners==0){delete[]storage_->text;delete storage_;}storage_=s.storage_;return *this;
 }

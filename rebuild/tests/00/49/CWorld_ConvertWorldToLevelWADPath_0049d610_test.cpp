@@ -11,7 +11,7 @@ class CWideString { public:
     CWideString(const char* p) { std::strcpy(s, p); ++g_live; }
     CWideString(const CWideString& o) { std::strcpy(s, o.s); ++g_live; }
     ~CWideString() { --g_live; }
-    CWideString& operator=(const CWideString& o) { std::strcpy(s, o.s); return *this; }
+    const CWideString& operator=(const CWideString& o) { std::strcpy(s, o.s); return *this; }
 };
 
 static CWideString operator+(const CWideString& a, const CWideString& b) { CWideString r(a); std::strcat(r.s, b.s); return r; }

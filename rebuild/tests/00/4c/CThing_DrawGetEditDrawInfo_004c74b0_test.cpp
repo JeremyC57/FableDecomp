@@ -3,7 +3,7 @@
 #include <cstring>
 class CCharString { public:
     const char* m_text;
-    CCharString& operator=(const char* text) { m_text = text; return *this; }
+    const CCharString& operator=(const char* text) { m_text = text; return *this; }
 };
 class CRGBColour { public:
     unsigned char B, G, R, A;

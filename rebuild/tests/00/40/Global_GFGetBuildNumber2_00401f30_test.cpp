@@ -16,7 +16,7 @@ class CCharString
 public:
     CCharString(CAFile* file, long length);
     ~CCharString();
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     void* PStringData;
 };
 class CBaseClassNonCopyable
@@ -109,7 +109,7 @@ CCharString::CCharString(CAFile* file, long length)
     Record(EVENT_FILE_CONSTRUCT, this, file, length, 0);
 }
 
-CCharString& CCharString::operator=(const CCharString& other)
+const CCharString& CCharString::operator=(const CCharString& other)
 {
     Record(EVENT_ASSIGN_STRING, this, &other, 0, 0);
     return *this;

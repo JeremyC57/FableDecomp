@@ -53,7 +53,7 @@ public:
     CCharStringData* PStringData;                   // +0x00
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     bool operator==(const CCharString& other) const
     {
         if (PStringData == other.PStringData)
@@ -107,7 +107,7 @@ namespace std {
 static int g_copies = 0, g_dtors = 0, g_assigns = 0;
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData) { ++g_copies; }
 CCharString::~CCharString() { ++g_dtors; }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; ++g_assigns; return *this; }
 static CCharStringData* D(const char* text)
 {
     CCharStringData* d = new CCharStringData; d->String.PData = (char*)text;

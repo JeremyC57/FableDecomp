@@ -7,7 +7,7 @@
 //   leading dword through eax and calls the member assignment with &value + 4 kept in ebp; stride 8.
 class CCharString {
 public:
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
 private:
     void* PStringData;                                    // +0x00
 };

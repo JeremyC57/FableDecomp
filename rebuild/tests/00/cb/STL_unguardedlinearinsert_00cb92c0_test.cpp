@@ -17,7 +17,7 @@ public:
     CCharString(const char* text) : m_pText(text) { }
     CCharString(const CCharString& other) : m_pText(other.m_pText) { ++g_stringCopies; }
     ~CCharString() { }
-    CCharString& operator=(const CCharString& other) { m_pText = other.m_pText; return *this; }
+    const CCharString& operator=(const CCharString& other) { m_pText = other.m_pText; return *this; }
     bool operator<(const CCharString& other) const { return std::strcmp(m_pText, other.m_pText) < 0; }
     bool FastCompare(const CCharString& other) const { return std::strcmp(m_pText, other.m_pText) < 0; }
 };

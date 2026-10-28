@@ -7,7 +7,7 @@
 // DeathScore +0x34 -- the members are copied in declaration order, exactly as the compiler-generated assignment would.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const CCharString& o);        // 0x0099EFB0
+    const CCharString& operator=(const CCharString& o);        // 0x0099EFB0
 };
 
 class CDefClassBase { public:

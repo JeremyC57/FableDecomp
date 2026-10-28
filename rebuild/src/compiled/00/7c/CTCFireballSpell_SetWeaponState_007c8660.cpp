@@ -10,7 +10,7 @@
 // (`mov [esp+4],offset g ; add ecx,6Ch ; jmp operator=`); case 0 selects the address with a ternary.
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 extern CCharString g_RightHandAttachmentName;      // 0x013BAC30

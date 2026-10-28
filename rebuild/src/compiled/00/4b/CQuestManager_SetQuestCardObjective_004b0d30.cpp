@@ -17,7 +17,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
     bool operator!=(const CCharString& other) const;   // 0x0099E900
     bool operator!=(const char* text) const;           // 0x0099E960
-    CCharString& operator=(const CCharString& other);  // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);  // 0x0099EFB0
 };
 
 class CTCBase;

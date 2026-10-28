@@ -8,7 +8,7 @@ public:
     CWideString(const wchar_t* s) { ++g_live; std::wcscpy(Text, s); }
     CWideString(const CWideString& o) { ++g_live; std::wcscpy(Text, o.Text); }
     ~CWideString() { --g_live; }
-    CWideString& operator=(const CWideString& o) { std::wcscpy(Text, o.Text); return *this; }
+    const CWideString& operator=(const CWideString& o) { std::wcscpy(Text, o.Text); return *this; }
     bool operator<(const CWideString& o) const { return std::wcscmp(Text, o.Text) < 0; }
 };
 template <class _Tp> struct less {

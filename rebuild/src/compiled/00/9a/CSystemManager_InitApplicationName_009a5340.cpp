@@ -24,7 +24,7 @@ extern "C" wchar_t* __cdecl wcscpy(wchar_t* dest, const wchar_t* src);          
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                          // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);        // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);        // 0x0099EFB0
 };
 class CWideString { public:
     void* PStringData;

@@ -9,7 +9,7 @@ class CCharString { public:
     CCharString() { m_text[0] = 0; ++g_live; }
     CCharString(const CCharString& other) { std::strcpy(m_text, other.m_text); ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator=(const char* text) { std::strcpy(m_text, text); return *this; }
+    const CCharString& operator=(const char* text) { std::strcpy(m_text, text); return *this; }
 };
 struct CV_RandomPopulationSimScript {
     unsigned long BanditCreatureGeneratorIndex;

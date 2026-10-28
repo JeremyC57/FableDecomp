@@ -8,7 +8,7 @@ class CCharString { public:
     char buf[64]; bool null;
     CCharString() : null(true) { buf[0] = 0; }
     CCharString(const char* s) : null(false) { std::strncpy(buf, s, 63); buf[63] = 0; }
-    CCharString& operator=(const CCharString& o) { std::memcpy(buf, o.buf, 64); null = o.null; return *this; }
+    const CCharString& operator=(const CCharString& o) { std::memcpy(buf, o.buf, 64); null = o.null; return *this; }
     CCharString ToLower() const { CCharString r(*this); for (char* p = r.buf; *p; ++p) *p = (char)std::tolower(*p); return r; }
     const char* GetPString() const { return null ? g_EmptyString : buf; }
     unsigned int GetLength() const { return null ? 0 : (unsigned int)std::strlen(buf); }

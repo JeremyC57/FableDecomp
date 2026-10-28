@@ -43,7 +43,7 @@ struct CTCDependentThings {                             // interface 0xd8
 };
 class CCharString { public:
     void* PStringData;
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
 };
 class CBaseObject;
 class CBaseObjectPointer;

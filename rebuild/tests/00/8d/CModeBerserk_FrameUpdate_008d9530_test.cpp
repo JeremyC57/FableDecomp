@@ -287,7 +287,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -323,7 +323,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -420,7 +420,7 @@ CCharString::CCharString(const char*s,long n):storage_(0){++liveStrings;if(n<0)n
 CCharString::~CCharString(){if(storage_){if(--storage_->owners==0){delete[]storage_->text;delete storage_;}}--liveStrings;}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
 const CCharString&CCharString::operator=(const char*s){if(storage_&&--storage_->owners==0){delete[]storage_->text;delete storage_;}storage_=0;long n=(long)strlen(s);if(n){storage_=new CCharStringData;storage_->text=new char[n+1];memcpy(storage_->text,s,n+1);storage_->unknown04=n;storage_->owners=1;}return*this;}
-CCharString&CCharString::operator=(const CCharString&s){if(this!=&s){if(storage_&&--storage_->owners==0){delete[]storage_->text;delete storage_;}storage_=s.storage_;if(storage_)++storage_->owners;}return*this;}
+const CCharString&CCharString::operator=(const CCharString&s){if(this!=&s){if(storage_&&--storage_->owners==0){delete[]storage_->text;delete storage_;}storage_=s.storage_;if(storage_)++storage_->owners;}return*this;}
 NativeStringValue::NativeStringValue(const NativeStringValue&s):CCharString((const char*)s,-1){}
 bool NativeStringValue::NotEqual(const CCharString&s)const{return strcmp((const char*)*this,(const char*)s)!=0;}
 void AnimationGroupFilter::SetAndHash(const CCharString&s){Group.CCharString::operator=(s);CRC=0x12345678;}

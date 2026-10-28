@@ -1,0 +1,6 @@
+path_or_address	reason
+00404720	CStringParser::CStringParser: behaviour test FAILs before and after (pre-existing; code bytes identical, RELOCATION_MATCH both ways). Its 2 files are left out of FILES.txt, so it keeps ??4CCharString@@QAEAAV0@ABV0@@Z until its test is fixed.
+rebuild/tests/00/54/CMovie_SetMovie_00548510_test.cpp	not referenced by any catalog TestSource (orphan); not edited
+rebuild/tests/00/9d/CDefStringTable_SetTablePath_009d4a40_test.cpp	not referenced by any catalog TestSource (orphan); not edited
+0099efb0	the CCharString::operator=(const CCharString&) row itself is a free __fastcall stand-in (@CCharString_operator_assign@12), not an operator= declaration: needs a hand rewrite to `const CCharString& CCharString::operator=(const CCharString&)` (see NAME_FIXES.tsv); out of this transform's scope
+(BLOCKED.tsv)	declarations left alone by rule (WCHAR_FLAG / STRUCT_KEY / NAMESPACED / MACRO_ALIAS / ACCESS_private / UNKNOWN_PARAM): see BLOCKED.tsv

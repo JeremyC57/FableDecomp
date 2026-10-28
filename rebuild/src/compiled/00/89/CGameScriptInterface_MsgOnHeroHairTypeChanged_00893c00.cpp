@@ -8,8 +8,8 @@
 //   tail; the IsOfType filter is homed in the dead area slot.
 class CCharString { public:
     void* m_pData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString& operator=(const char* text);           // 0x0099EFE0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const char* text);           // 0x0099EFE0
     ~CCharString();                                  // 0x0099EAE0
 };
 struct CMessageEvent_Retail {

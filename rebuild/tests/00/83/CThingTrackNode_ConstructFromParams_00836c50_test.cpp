@@ -20,7 +20,7 @@ public:
     void* PStringData;
     CCharString(const char* text, long length = -1);         // 0x0099EBF0
     ~CCharString();                                          // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);       // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
 class CThingGameObject {                                    // retail 0xd0 bytes
@@ -69,7 +69,7 @@ static void Log(const char* s) { strcat(g_log, s); strcat(g_log, ";"); }
 class C3DVector { public: float X, Y, Z; };
 CCharString::CCharString(const char* text, long length) : PStringData((void*)text) { char b[64]; sprintf(b, "ctor(%s,%ld)", text, length); Log(b); }
 CCharString::~CCharString() { char b[64]; sprintf(b, "dtor(%s)", (const char*)PStringData); Log(b); }
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; Log("assign"); return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; Log("assign"); return *this; }
 static bool g_result = true;
 bool CThingGameObject::ConstructFromParams(long defIndex, const C3DVector& position, long a3, unsigned long a4, const CCharString& scriptName,
                                            CThingPhysical* creator, CThingPhysical* originalCreator, bool a8)

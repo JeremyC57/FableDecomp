@@ -13,7 +13,7 @@
 class CCharString { public:
     char* m_pString;
     CCharString();                                       // 0x0099E4B0
-    CCharString& operator=(const CCharString& other);    // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 
 class CPlane { public: float A, B, C, D; };                     // 16 bytes

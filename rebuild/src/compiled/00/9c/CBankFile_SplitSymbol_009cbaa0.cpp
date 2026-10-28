@@ -15,8 +15,8 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
     long FindCharPos(char c) const;                // 0x0099E5A0
     CCharString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099EC70
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString& operator=(const char* text);      // 0x0099EFE0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const char* text);      // 0x0099EFE0
 };
 
 class CBankFile {

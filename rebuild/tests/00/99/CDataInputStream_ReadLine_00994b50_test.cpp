@@ -119,7 +119,7 @@ public:
     ~CWideString();
     operator const wchar_t*() const;
     long GetLength() const;
-    CWideString& operator=(const CWideString& other);
+    const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
     const CWideString& operator+=(const wchar_t* text);
@@ -155,7 +155,7 @@ public:
     CCharString(const char* text, long length);
     ~CCharString();
     operator const char*() const;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
@@ -246,7 +246,7 @@ CCharString::CCharString():storage_(0){++objects;}
 void CCharString::UnassignString(){if(storage_&&!--storage_->owners){free(storage_->text);free(storage_);--blocks;}storage_=0;}
 CCharString::~CCharString(){UnassignString();--objects;}
 CCharString::operator const char*() const{return storage_?storage_->text:"";}
-CCharString& CCharString::operator=(const CCharString& other){
+const CCharString& CCharString::operator=(const CCharString& other){
  if(storage_!=other.storage_){UnassignString();storage_=other.storage_;if(storage_)++storage_->owners;}return *this;
 }
 const CCharString& CCharString::operator=(const char* text){

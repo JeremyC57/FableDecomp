@@ -20,7 +20,7 @@ public:
     CCharString();
     CCharString(const CCharString& other);                  // 0x0099EC30
     ~CCharString();
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 };
 
 class CTCSkeletalMorph {

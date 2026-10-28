@@ -37,7 +37,7 @@ public:
     CCharStringData* PStringData;           // +0x00
     CCharString(const char* text, long length);         // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
     bool operator==(const char* text) const
     {
         if (PStringData == 0)
@@ -113,7 +113,7 @@ void CGameState_Retail::s004() { } void CGameState_Retail::s005() { } void CGame
 void CGameState_Retail::s008() { } CSoundPlayer_Retail* CGameState_Retail::GetSoundPlayer() { return 0; }
 CCharString::CCharString(const char*, long) : PStringData(0) { }
 CCharString::~CCharString() { }
-CCharString& CCharString::operator=(const CCharString&) { return *this; }
+const CCharString& CCharString::operator=(const CCharString&) { return *this; }
 bool CBasicStringChar::operator==(const char*) const { return false; }
 static long g_index = 0; static const CCharString* g_symbol = 0;
 long CASoundBank_Retail::GetSoundIndexFromSymbol(const CCharString& s) { g_symbol = &s; return g_index; }

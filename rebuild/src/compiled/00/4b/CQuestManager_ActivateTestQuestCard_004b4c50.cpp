@@ -4,7 +4,7 @@ class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);    // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);    // 0x0099EFB0
 };
 namespace N_00415dd0 { struct CDefString {
     long m_index;

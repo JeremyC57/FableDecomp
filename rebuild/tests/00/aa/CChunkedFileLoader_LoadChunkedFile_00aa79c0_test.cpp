@@ -13,7 +13,7 @@ static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { g_fail++; printf("FAIL line %d: %s\n", __LINE__, #c); } } while (0)
 class CCharString { public:
     const char* PStringData;
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
     ~CCharString();
 };
 class CCPPointerInfo { public:
@@ -104,7 +104,7 @@ void CChunkedFileLoader::LoadChunkedFile(CChunkedFile& chunk, CDataInputStream& 
 const char CHUNKED_FILE_ID[] = ">>>>";
 static int g_assigns = 0, g_strDtors = 0, g_overflow = 0, g_rootCalls = 0, g_rootDtors = 0, g_deletes = 0;
 static CDataInputStream* g_rootStream = 0; static unsigned long g_rootSize = 0; static CChunkedFileLoader* g_rootLoader = 0;
-CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; g_assigns++; return *this; }
+const CCharString& CCharString::operator=(const CCharString& other) { PStringData = other.PStringData; g_assigns++; return *this; }
 CCharString::~CCharString() { g_strDtors++; }
 CCharString CDataInputStream::ReadString() { CCharString s; s.PStringData = "a comment"; return s; }
 void CDataInputStream::ReadWithSrcChunkOverflow(unsigned char* buffer, long size)

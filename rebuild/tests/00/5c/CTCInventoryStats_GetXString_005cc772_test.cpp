@@ -14,7 +14,7 @@ class CWideString { public:
     CWideString(const unsigned short* text) { int i = 0; for (; text[i]; ++i) buf[i] = text[i]; buf[i] = 0; ++g_live; }
     CWideString(const CWideString& o) { std::memcpy(buf, o.buf, sizeof(buf)); ++g_live; }
     ~CWideString() { --g_live; }
-    CWideString& operator=(const CWideString& o) { std::memcpy(buf, o.buf, sizeof(buf)); return *this; }
+    const CWideString& operator=(const CWideString& o) { std::memcpy(buf, o.buf, sizeof(buf)); return *this; }
     CCharString ToCharString() const { char n[64]; int i = 0; for (; buf[i]; ++i) n[i] = (char)buf[i]; n[i] = 0; return CCharString(n); }
     void Replace(const CWideString& from, const CWideString& to)   /* single-character replace, as used here */
     {

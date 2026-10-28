@@ -18,7 +18,7 @@ namespace
     };
 }
 
-CWideString& CWideString::operator=(const CWideString& other)
+const CWideString& CWideString::operator=(const CWideString& other)
 {
     g_assignmentDestination = this;
     g_assignmentSource = &other;

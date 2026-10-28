@@ -3,7 +3,7 @@
 class CCharString {
 public:
     // out-of-line copy-assignment (real call target 0x99efb0)
-    CCharString& operator=(const CCharString& other);
+    const CCharString& operator=(const CCharString& other);
 private:
     char* m_data;
 };
