@@ -1,0 +1,19 @@
+address	status	bytes	test	note
+0049ed80	DIFFER	310	-	CWorld::ConsoleSetFreeCameraLookVector DIFFER(310v310): x87 operand order in the cross product (lane gap)
+0054f6e0	RELOCATION_MATCH	510	PASS	NUISystem::CText::~CText; CText vtable / LoadAndReturnDef / ReleaseFont / ~CBaseClass respelled
+0070d580	DIFFER	504	-	CAnimateThing::SetMainAnim DIFFER(504v504): register roles only (vector end via eax->ebp; IsValid Anims[1] through edx v ecx)
+0077c960	DIFFER	502	-	CTCHighlightItem::DoMovement DIFFER(502v502): bounding-box centre sum operand order
+00815420	DIFFER	498	-	CTCHitLocations::GetBoundingSphere DIFFER(498v498): first-element begin() kept in ebx in retail
+008c9a40	RELOCATION_MATCH	342	PASS	AttachEffectToStaff (anonymous namespace); real CVectorMap LowerBound 0x0040F020 model
+00910df0	DIFFER	500	-	CAIStateGroup_MinionGuardHeardYellForHelp::Update DIFFER(500v500): inlined GetPOriginator xor/not type test + brain load register
+00924520	RELOCATION_MATCH	334	PASS	CCreatureAction_KrakenLowAttackLoop::FinishAction (anonymous namespace); GetTC with the key as a temporary
+00929020	DIFFER	507	-	CAIStateGroup_BanditPlayDice::IsRunnable DIFFER(509v507): GetPVillage this loaded via eax then copied (2 bytes)
+00935c40	DIFFER	502	-	CAIStateGroup_MinionPutOutFires::GoToWell DIFFER(499v502): frame slot order
+0093ab70	DIFFER	504	-	CAIStateGroup_BanditSitRoundCampfire::GetPNearCampfire DIFFER(511v504): register roles in the campfire loop, frame 0x2c v 0x30
+00947110	DIFFER	354	-	CAIStateGroup_WanderAroundShops::FindPrettyThingInShop DIFFER(356v354): item temporary slot + HasTC shr/test form
+00b43720	DIFFER	324	-	CEngineMap::PeekThemeId DIFFER(313v324): mapY spill slot
+00b43870	DIFFER	324	-	CEngineMap::PeekThemeBlend DIFFER(313v324): mapY spill slot
+00b812f0	RELOCATION_MATCH	343	PASS	CEngineClothSimulationStaticMesh::Render
+00b9dfc0	RELOCATION_MATCH	341	PASS	CEngineInternalPrimitive2DStaticMesh::Update
+00b9e120	DIFFER	365	-	CEngineInternalPrimitive2DStaticMesh::Initialise DIFFER(365v365): WorldPos copy registers
+00c11d00	DIFFER	507	-	CSoundEventManager::CSoundEventManager DIFFER(507v507): vptr-store scheduling (lane gap)

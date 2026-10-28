@@ -1,0 +1,30 @@
+addr       parity           behav  name
+0054f6e0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0054f6e0   WARN SHARED_HEADER_AVAILABLE CObserver
+0054f6e0   RELOCATION_MATCH PASS   ~CText
+008c9a40   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c9a40   RELOCATION_MATCH PASS   AttachEffectToStaff
+00924520   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00924520   WARN RELOC_NAME: ?EndAttackBeam@CTCKraken@@QAEXXZ -> 007fc800 labelled '_global::Dtor_LinkedList_KillAllThingsBase_007fc800'
+00924520   RELOCATION_MATCH PASS   FinishAction
+00b812f0   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00b812f0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b812f0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveRenderer
+00b812f0   RELOCATION_MATCH PASS   Render
+00b9dfc0   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00b9dfc0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+00b9dfc0   RELOCATION_MATCH PASS   Update
+
+WINS: 5
+  0054f6e0 RELOCATION_MATCH NUISystem::CText::??1CText@NUISystem@@UAE@XZ
+  008c9a40 RELOCATION_MATCH _global::?AttachEffectToStaff@?A0x
+  00924520 RELOCATION_MATCH CCreatureAction_KrakenLowAttackLoop::?FinishAction@CCreatureAction_KrakenLowAttackLoop@?A0x
+  00b812f0 RELOCATION_MATCH CEngineClothSimulationStaticMesh::?Render@CEngineClothSimulationStaticMesh@@QAEXABVC3DPrimitive2@@ABVCEngineSubPrimitiveStaticMesh@@W4ERenderPassType@@@Z
+  00b9dfc0 RELOCATION_MATCH CEngineInternalPrimitive2DStaticMesh::?Update@CEngineInternalPrimitive2DStaticMesh@@UAEXABVCEnginePrimitive@@K@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  NUISystemCText_CText_0054f6e0
+  global_AttachEffectToStaff_008c9a40
+  CCreatureActionKrakenLowAttackLoop_FinishAction_00924520
+  CEngineClothSimulationStaticMesh_Render_00b812f0
+  CEngineInternalPrimitive2DStaticMesh_Update_00b9dfc0

@@ -35197,3 +35197,13 @@ _IID_IMediaControl	012aa094	00a3b9d0
 _IID_IMediaEvent	012aa084	00a3b9d0
 ?CalcByteLength@CVolumeTexture@@IAEXXZ	00a67ff0	00a68370
 ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ	00cdbfb0	00e12330
+??_7CText@NUISystem@@6BCActionParam@1@@	01249c9c	0054f6e0
+??_7CText@NUISystem@@6BCObserver@1@@	01249ca4	0054f6e0
+??_7CText@NUISystem@@6BCUIInterface@1@@	01249ccc	0054f6e0
+?LoadAndReturnDef@CComponent@NUISystem@@UBE?AV?$CDefPointer@$$CBVCUIDef@NUISystem@@@@XZ	00530ec0	0054f6e0
+?ReleaseFont@CFontManager@@QAEXABVCCharString@@@Z	009e2b40	0054f6e0
+??$GetSubDef@VCSpecialEffectsDef@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBVCSpecialEffectsDef@@@@@Z	00669580	008c9a40
+??0CCreatureAction_KrakenLowAttackLoop@?A0xfe44b52e@@QAE@AAVCThingCreatureBase@@AAVCThing@@J_N@Z	009255e0	00924520
+??0CCreatureAction_KrakenLowAttackOutOf@?A0xfe44b52e@@QAE@AAVCThingCreatureBase@@@Z	00925680	00924520
+?PrepareForRendering@CParticleProgram@@QAEXPAVC4DVector@@AAVCParticleSimulation@@MM@Z	00ae1600	00b812f0
+?PeekStaticMesh@CMeshDataBank@@QBEPBVC3DMeshInfo@@K@Z	00a24280	00b9dfc0

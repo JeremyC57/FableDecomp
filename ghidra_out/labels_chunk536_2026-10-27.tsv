@@ -1,0 +1,6 @@
+address	name	evidence
+0054f6e0	NUISystem::CText::~CText	proven per batch 2026-10-27_linux_hand536 NOTES.md (chunk 536)
+008c9a40	AttachEffectToStaff	proven per batch 2026-10-27_linux_hand536 NOTES.md (chunk 536)
+00924520	CCreatureAction_KrakenLowAttackLoop::FinishAction	proven per batch 2026-10-27_linux_hand536 NOTES.md (chunk 536)
+00b812f0	CEngineClothSimulationStaticMesh::Render	proven per batch 2026-10-27_linux_hand536 NOTES.md (chunk 536)
+00b9dfc0	CEngineInternalPrimitive2DStaticMesh::Update	proven per batch 2026-10-27_linux_hand536 NOTES.md (chunk 536)

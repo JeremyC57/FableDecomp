@@ -362089,6 +362089,41 @@ $catalog = @(
         TestSource = '00/e1/NScriptCQWaspBossScript_WatchForCutscene_00e12330_test.cpp'
         PassPattern = '00e12330_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0054f6e0'
+        Module = 'NUISystem::CText'
+        Source = '00/54/NUISystemCText_CText_0054f6e0.cpp'
+        TestSource = '00/54/NUISystemCText_CText_0054f6e0_test.cpp'
+        PassPattern = '0054f6e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c9a40'
+        Module = '_global'
+        Source = '00/8c/global_AttachEffectToStaff_008c9a40.cpp'
+        TestSource = '00/8c/global_AttachEffectToStaff_008c9a40_test.cpp'
+        PassPattern = '008c9a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00924520'
+        Module = 'CCreatureAction_KrakenLowAttackLoop'
+        Source = '00/92/CCreatureActionKrakenLowAttackLoop_FinishAction_00924520.cpp'
+        TestSource = '00/92/CCreatureActionKrakenLowAttackLoop_FinishAction_00924520_test.cpp'
+        PassPattern = '00924520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b812f0'
+        Module = 'CEngineClothSimulationStaticMesh'
+        Source = '00/b8/CEngineClothSimulationStaticMesh_Render_00b812f0.cpp'
+        TestSource = '00/b8/CEngineClothSimulationStaticMesh_Render_00b812f0_test.cpp'
+        PassPattern = '00b812f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b9dfc0'
+        Module = 'CEngineInternalPrimitive2DStaticMesh'
+        Source = '00/b9/CEngineInternalPrimitive2DStaticMesh_Update_00b9dfc0.cpp'
+        TestSource = '00/b9/CEngineInternalPrimitive2DStaticMesh_Update_00b9dfc0_test.cpp'
+        PassPattern = '00b9dfc0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
