@@ -950,7 +950,7 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
  long LastAnimStage;bool HitThing,HitCreature;long FrameUpdatePauseFrames;
  struct AnimationVector {CAnimationEntry** First;CAnimationEntry** Last;CAnimationEntry** End;} CombatAnimations;
  long ActiveStrikeEventIndex;CIntelligentPointer<CThing> LastWeaponUsedInStrike;C3DVector PreferredMovementVector;
- void SetAnimationName(const CCharString&); //008574D0
+ void SetCombatAnimation(const CCharString&); //008574D0
  CCombatActionBase(long); //00857E40
  CCombatActionBase(CThingCreatureBase*,CThing*,long,const CSoundPair&); //00857F30
  CCombatActionBase(CThingCreatureBase*,long,const CSoundPair&); //00858030

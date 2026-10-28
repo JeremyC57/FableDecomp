@@ -40,7 +40,7 @@ class CCombatActionBase { public:
     { g_base.owner = owner; g_base.target = 0; g_base.code = actionCode; g_base.first = sound.FirstSound; g_base.last = sound.LastSound; }
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound)
     { g_base.owner = owner; g_base.target = target; g_base.code = actionCode; g_base.first = sound.FirstSound; g_base.last = sound.LastSound; }
-    void SetAnimationName(const CCharString& name) { g_animName = name.m_text; }
+    void SetCombatAnimation(const CCharString& name) { g_animName = name.m_text; }
 };
 class CCreatureAction_BriarRoseShotFarOutof : public CCombatActionBase { public:
     CIntelligentPointer PShot;
@@ -50,7 +50,7 @@ CCreatureAction_BriarRoseShotFarOutof::CCreatureAction_BriarRoseShotFarOutof(CTh
     : CCombatActionBase(owner, target, 250, GetSoundPair(owner, "SWORD_SWING"))
     , PShot()
 {
-    SetAnimationName("STRIKE_SHOT_FAR_OUTOF");
+    SetCombatAnimation("STRIKE_SHOT_FAR_OUTOF");
 }
 int main()
 {

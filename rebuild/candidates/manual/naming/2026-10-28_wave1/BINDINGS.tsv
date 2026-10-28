@@ -1,0 +1,9 @@
+old_symbol	target	new_symbol	note
+?SetAnimationName@CCombatActionBase@@QAEXABVCCharString@@@Z	008574d0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	all 52 emitting rows respelled (baseline runs/orig1)
+?SetAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	008574d0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	emitters 008f3ad0, 008f40b0 respelled
+?SetPDef@CCombatActionBase@@QAEXABVCCharString@@@Z	008574d0	?SetCombatAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	emitter 0096af60 respelled
+?ReadWithSrcChunkOverflow@CMemoryDataInputStreamReader@@QAEXPAEJ@Z	00993ca0	?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z	all 71 emitting rows respelled (68 shape B + 3 shape D)
+?ReadWithSrcChunkOverflow@CInputStreamMethods@@QAEXPAEJ@Z	00993ca0	?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z	sole emitter 006dcfa0 respelled
+?ReadWithSrcChunkOverflow@CMemoryDataInputStream@@QAEXPAEJ@Z	00993ca0	?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z	173 rows respelled; STILL EMITTED by 006dc070 (includes engine/CDataInputStream.h, header has no such member): keep this binding until wave 2 fixes it
+??BCWideString@@QBEPBGXZ	0099af10	??BCWideString@@QBEPBGXZ	RETARGET to 0099af00 (operator const wchar_t*, the lane spelling without /Zc:wchar_t); first caller 0099cf10 now emits ?GetAsCharArray@CWideString@@QBEPBGXZ (already bound to 0099af10 by 009979e0)
+??1CBase@@UAE@XZ	0099a2e0	??1CBaseClass@@UAE@XZ	first caller 00cf8a70 respelled; KEEP until wave 2: other rows still emit it

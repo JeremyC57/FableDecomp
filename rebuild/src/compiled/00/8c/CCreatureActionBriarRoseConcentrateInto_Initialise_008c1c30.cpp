@@ -152,7 +152,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
@@ -168,7 +168,7 @@ void CCreatureAction_BriarRoseConcentrateInto::Initialise()
 {
     CTCCreatureModeManager* modes = 0;
     GetCreature()->UnsheatheMeleeWeapon_00666820();
-    SetAnimationName("POWER_UP_INTO");
+    SetCombatAnimation("POWER_UP_INTO");
     CCombatActionBase::Initialise();
     if (GetCreature()->GetInterface(&modes, 0x31) && IS_THING_ALIVE(PEnemy))
         modes->AddMode(CCountedModePointer(new CModeBriarRoseConcentrate(GetCreature(), PEnemy.GetCreature(), Imposter)));

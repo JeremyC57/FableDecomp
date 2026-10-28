@@ -47,14 +47,14 @@ struct CBaseIntelligentPointer {
 class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;
  CBaseIntelligentPointer PCreature;
- void SetAnimation(const CCharString&); //008574D0
+ void SetCombatAnimation(const CCharString&); //008574D0
  void Initialise(); //00857520
 };
 extern void FABLE_FASTCALL SetThingIsAbleToBeLifted(CThing*,bool); //007E4330
 class CCreatureAction_DragonHoverOutOf : public CCombatActionBase { public:void Initialise();};
 void CCreatureAction_DragonHoverOutOf::Initialise()
 {
- {CCharString animation("HOVER_OUT_OF",-1);SetAnimation(animation);}
+ {CCharString animation("HOVER_OUT_OF",-1);SetCombatAnimation(animation);}
  CCombatActionBase::Initialise();
  SetThingIsAbleToBeLifted(PCreature.GetPItem(),false);
  CThing* thing=PCreature.GetPItem();

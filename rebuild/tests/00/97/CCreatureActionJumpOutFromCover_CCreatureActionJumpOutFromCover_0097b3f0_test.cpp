@@ -8,7 +8,7 @@ class CCombatActionBase { public:
     void* owner; void* thing; int actionCode; CSoundPair sound; char animName[48];
     CCombatActionBase(void* o, int code, const CSoundPair& s) : owner(o), thing(0), actionCode(code), sound(s) { animName[0] = 0; }
     CCombatActionBase(void* o, void* t, int code, const CSoundPair& s) : owner(o), thing(t), actionCode(code), sound(s) { animName[0] = 0; }
-    void SetAnimationName(const char* n) { std::strcpy(animName, n); }
+    void SetCombatAnimation(const char* n) { std::strcpy(animName, n); }
 };
 static CSoundPair GetSoundPair(void* owner, const char* name)
 {

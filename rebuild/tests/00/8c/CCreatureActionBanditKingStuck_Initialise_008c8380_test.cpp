@@ -3,7 +3,7 @@
 // CCreatureAction_BanditKingStuck::Initialise() -- animation BK_STUCK; unless a live stuck effect exists, create the creature's STUCKLOOP special effect at its position, keep it in PStuckEffect and attach it to the creature through its particle emitter; then the base Initialise
 // Leaf: ?Initialise@CCreatureAction_BanditKingStuck
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C8380, 455 bytes (464 with padding), virtual Initialise.
-// Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetAnimationName
+// Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation
 //   0x008574D0, CBaseIntelligentPointer::GetPItem 0x00A01B50 / CBaseIntelligentPointer() 0x00A01B10 / SetPItem 0x00A01B90 /
 //   ~CBaseIntelligentPointer 0x00A01C10, CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CCRC::CalcAndLookup
 //   0x00669D30, CThing::GetPosition 0x004C73D0, the special-effect Create(long, const C3DVector&, bool) 0x006E0880
@@ -141,7 +141,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
 };
 class CCreatureAction_BanditKingStuck : public CCombatActionBase { public:
@@ -154,7 +154,7 @@ void CCreatureAction_BanditKingStuck::Initialise()
 {
     {
         CCharString name("BK_STUCK");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     if (PStuckEffect.GetPItem() == 0 || (PStuckEffect.GetPItem()->m_flags91 & 1)) {
         CDefPointer<CSpecialEffectsDef> effects;
@@ -206,7 +206,7 @@ void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCh
 { g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachName = (const char*)boneName.PStringData; g_attachA = a; g_attachB = b; g_attaches++; }
 static const char* g_anim; static int g_baseInits;
 void CCombatActionBase::v00() {}
-void CCombatActionBase::SetAnimationName(const CCharString& name) { g_anim = (const char*)name.PStringData; }
+void CCombatActionBase::SetCombatAnimation(const CCharString& name) { g_anim = (const char*)name.PStringData; }
 void CCombatActionBase::Initialise() { g_baseInits++; }
 
 static unsigned char g_creatureBuf[0x100], g_effectBuf[0x100], g_oldBuf[0x100];

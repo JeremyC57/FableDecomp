@@ -13,10 +13,10 @@ struct CBaseIntelligentPointer { CThing* PItem; CThing* GetPItem() const { retur
 class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
 class CCreatureAction_BriarRoseIntoInvulnerable { public:
     CBaseIntelligentPointer PCreature, PEnemy; const char* anim; int baseInit;
-    void SetAnimationName(const CCharString& n) { anim = n.t; }
+    void SetCombatAnimation(const CCharString& n) { anim = n.t; }
     void Initialise()
     {
-        { CCharString name("INVULNERABLE_INTO"); SetAnimationName(name); }
+        { CCharString name("INVULNERABLE_INTO"); SetCombatAnimation(name); }
         ++baseInit;
         CTCCreatureModeManager* modeManager;
         if (PCreature.GetPItem()->GetInterface(&modeManager, 0x31) && PEnemy.GetPItem() && !(PEnemy.GetPItem()->m_flags91 & 1))

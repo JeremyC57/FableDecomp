@@ -40,7 +40,7 @@ class CCombatActionBase { public:
     { g_base.owner = owner; g_base.target = 0; g_base.code = actionCode; g_base.first = sound.FirstSound; g_base.last = sound.LastSound; }
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound)
     { g_base.owner = owner; g_base.target = target; g_base.code = actionCode; g_base.first = sound.FirstSound; g_base.last = sound.LastSound; }
-    void SetAnimationName(const CCharString& name) { g_animName = name.m_text; }
+    void SetCombatAnimation(const CCharString& name) { g_animName = name.m_text; }
 };
 class CCreatureAction_ScorpionTailWithdraw : public CCombatActionBase { public:
     CCreatureAction_ScorpionTailWithdraw(CThingCreatureBase* owner, CThing* target);
@@ -49,7 +49,7 @@ CCreatureAction_ScorpionTailWithdraw::CCreatureAction_ScorpionTailWithdraw(CThin
     : CCombatActionBase(owner, target, 150, GetSoundPair(owner, "SWORD_SWING"))
 
 {
-    SetAnimationName("TAIL_PLUNGE_WITHDRAW");
+    SetCombatAnimation("TAIL_PLUNGE_WITHDRAW");
 }
 int main()
 {

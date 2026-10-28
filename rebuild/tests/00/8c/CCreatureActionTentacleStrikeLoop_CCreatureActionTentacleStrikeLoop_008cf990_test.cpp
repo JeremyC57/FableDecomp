@@ -13,7 +13,7 @@ class CCombatActionBase { public:
     { g_owner = owner; g_target = 0; g_code = actionCode; g_s0 = sound.FirstSound; g_s1 = sound.LastSound; std::memset(_body, 0, sizeof(_body)); }
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound)
     { g_owner = owner; g_target = target; g_code = actionCode; g_s0 = sound.FirstSound; g_s1 = sound.LastSound; std::memset(_body, 0, sizeof(_body)); }
-    void SetAnimationName(const CCharString& name) { g_anim = name.m_text; ++g_setCalls; }
+    void SetCombatAnimation(const CCharString& name) { g_anim = name.m_text; ++g_setCalls; }
 };
 
 class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:

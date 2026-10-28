@@ -2,7 +2,7 @@
 // Leaf: ?Initialise@CCombatAction_KickThingOnGround
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0087E860, 880 bytes, plain `ret` (virtual, vtable 0x01277D3C).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, PTarget +0xa8), CCharString ctor/dtor 0x0099EBF0 /
-//   0x0099EAE0, CCombatActionBase::SetAnimationName 0x008574D0 and Initialise 0x00857520, CThing::GetPos 0x004C73D0,
+//   0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0 and Initialise 0x00857520, CThing::GetPos 0x004C73D0,
 //   the physics virtual slot 70 GetFacing (+0x118), CThingAICreature::SetSuspendAnimation 0x00833A10, CThing::AddTC
 //   0x004C9D60 ("CTCSolidToThing"), CTCSolidToThing::AddThingNotSolidTo 0x00770FA0, the interface-map LowerBound
 //   0x004365B0 (interface 0x7F), its component's hit-location getter 0x00814BF0 (`mov eax,[ecx+18h]`),
@@ -117,7 +117,7 @@ public:
     unsigned char           _pad10[0xa8 - 0x10];
     CIntelligentPointer<CThing> PTarget;                    // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);     // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);     // 0x008574D0
 };
 class CCombatAction_KickThingOnGround : public CCombatActionBase {
 public:
@@ -134,14 +134,14 @@ void CCombatAction_KickThingOnGround::Initialise()
     if (IS_THING_ALIVE(PTarget) && PTarget.GetPItem()->ThingType == 13) {
         {
             CCharString name("STRIKE_STEALTH_KICK_THING_ON_GROUND");
-            SetAnimationName(name);
+            SetCombatAnimation(name);
         }
         forward = 1.0f;
         side = 0.15f;
     } else {
         {
             CCharString name("STRIKE_HARD_LOW_KICK");
-            SetAnimationName(name);
+            SetCombatAnimation(name);
         }
         forward = 0.0f;
         side = 0.1f;

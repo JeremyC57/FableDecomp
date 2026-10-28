@@ -14,6 +14,9 @@ extern void (__cdecl* g_pfnAssertionFailed)();               // 0x013BC9FC
 extern "C" int __cdecl LZSS_Decompress(const unsigned char* src, unsigned int srcLen, unsigned char* dst,
                                         unsigned int* dstLen, void* work);   // 0x00C069D0
 
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 class CMemoryDataInputStream {
 public:
     virtual void v00();
@@ -26,7 +29,6 @@ public:
     long                 SourceChunkBytesRemaining;          // +0x14
     const unsigned char* StreamSource;                       // +0x18
 
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -42,7 +44,7 @@ public:
             StreamPos += size;
         }
         else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
     __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
     __forceinline short ReadShort() { short value; Read(&value, sizeof(value)); return value; }

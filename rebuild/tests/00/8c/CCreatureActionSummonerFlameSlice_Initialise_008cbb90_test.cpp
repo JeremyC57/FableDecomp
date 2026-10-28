@@ -1012,7 +1012,7 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
  long LastAnimStage;bool HitThing,HitCreature;long FrameUpdatePauseFrames;
  struct AnimationVector {CAnimationEntry** First;CAnimationEntry** Last;CAnimationEntry** End;} CombatAnimations;
  long ActiveStrikeEventIndex;CIntelligentPointer<CThing> LastWeaponUsedInStrike;C3DVector PreferredMovementVector;
- void SetAnimationName(const CCharString&); //008574D0
+ void SetCombatAnimation(const CCharString&); //008574D0
  CCombatActionBase(CThingCreatureBase*,CThing*,long,const CSoundPair&); //00857F30
  CCombatActionBase(CThingCreatureBase*,long,const CSoundPair&); //00858030
 };
@@ -1031,7 +1031,7 @@ class CCreatureAction_SummonerFlameSlice:public CCombatActionBase { public:
  CCreatureAction_SummonerFlameSlice(CThingCreatureBase*,CThing*); //008CBCA0 base857F30 action150 sounds0
 };
 void CCreatureAction_SummonerFlameSlice::Initialise(){
- {CCharString name("STRIKE_FLAME_SLICE",-1);SetAnimationName(name);}
+ {CCharString name("STRIKE_FLAME_SLICE",-1);SetCombatAnimation(name);}
  CCombatActionBase::Initialise();
  CTCPhysicsBase* physics=PCreature->PhysicsTC;
  {CIntelligentPointer<CThing> obstruction(CreatePhysicalObstruction(PCreature->GetPosition(),PCreature->GetPosition(),physics->Radius*2.0f));CThing* created=obstruction;PObstruction.SetPItem(created);}
@@ -1184,7 +1184,7 @@ CCreatureActionBase::~CCreatureActionBase(){}
 CCombatActionBase::CCombatActionBase(CThingCreatureBase* actor,CThing* target,long action,const CSoundPair& sounds):CCreatureActionBase(actor,sounds,0,0){PTarget.SetPItem(target);if(action!=150||target||sounds.first||sounds.last)wrong=true;}
 CCombatActionBase::~CCombatActionBase(){}
 CCreatureAction_SummonerFlameSlice::CCreatureAction_SummonerFlameSlice(CThingCreatureBase* actor,CThing* target):CCombatActionBase(actor,target,150,CSoundPair()){}
-void CCombatActionBase::SetAnimationName(const CCharString& name){++sets;if(strcmp(name,"STRIKE_FLAME_SLICE")||strings!=1||bases)wrong=true;}
+void CCombatActionBase::SetCombatAnimation(const CCharString& name){++sets;if(strcmp(name,"STRIKE_FLAME_SLICE")||strings!=1||bases)wrong=true;}
 void CCombatActionBase::Initialise(){++bases;if(strings||sets!=1)wrong=true;}
 const C3DVector& CThing::GetPosition()const{++positions;if(this!=expectedActor||bases!=1||strings)wrong=true;return position;}
 CThing* __fastcall CreatePhysicalObstruction(const C3DVector& start,const C3DVector& end,float radius){++creates;if(&start!=&position||&end!=&position||radius!=expectedRadius||positions!=2||bases!=1)wrong=true;if(mode==3)expectedAction->PCreature.SetPItem(replacement);return expectedObstruction;}

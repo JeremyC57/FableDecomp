@@ -20,6 +20,9 @@ class CCharString { public:
 };
 class C3DVector { public: float X, Y, Z; };
 
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 class CMemoryDataInputStream { public:
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void Read(void* buffer, unsigned long size);  // slot 4 (+0x10)
@@ -31,7 +34,6 @@ class CMemoryDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;             // +0x10
     long m_remaining;                      // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void ReadInline(void* buffer, long size)
     {
@@ -45,7 +47,7 @@ class CMemoryDataInputStream { public:
             m_position += size;
         }
         else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
     __forceinline bool ReadBool() { unsigned char value; ReadInline(&value, sizeof(value)); return value != 0; }
     __forceinline unsigned long ReadULong() { unsigned long value; ReadInline(&value, sizeof(value)); return value; }

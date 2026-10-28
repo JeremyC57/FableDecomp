@@ -11,9 +11,9 @@ static int fails = 0;
 // Callees: CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) 0x00858030, CCharString ctor
 // 0x0099EBF0 / dtor 0x0099EAE0 ("SPECIAL_ABILITIES_MULTI_STRIKE_DEF" @ 0x01235A9C), CGameDefinitionManager::Get() 0x0044C6B0 (twice),
 // GetDefIndexFromName 0x009AD390, GetDef<CSpecialAbilitiesMultiStrikeDef> 0x007CD760, CDefStringTable::GetString 0x009D49B0 (global
-// table @ 0x013CA828), SetAnimationName 0x008574D0; the def's virtual slot 1 on the last release.
+// table @ 0x013CA828), SetCombatAnimation 0x008574D0; the def's virtual slot 1 on the last release.
 // Shape: as CCreatureAction_CastStrengthMultiStrikeProper::Initialise 0x008E6690 (named def-name block, function-scope CDefPointer);
-// the GetString result is a temporary argument of SetAnimationName; Animations[SpellLevel - 1] reads `[def+level*4+4Ch]`.
+// the GetString result is a temporary argument of SetCombatAnimation; Animations[SpellLevel - 1] reads `[def+level*4+4Ch]`.
 // Layout: SpellLevel at retail +0x114 (PDB +0x12c); Animations (CDefString[4]) at def +0x50 (Ego_r.pdb).
 class CTCBase;
 
@@ -82,7 +82,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_CastStrengthMultiStrikeProper : public CCombatActionBase { public:   // vtable 0x012877A4
@@ -105,7 +105,7 @@ CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMulti
     CGameDefinitionManager::Get().GetDef(index, &def);
     {
         CCharString animation = g_DefStringTable.GetString(def->Animations[SpellLevel - 1]);
-        SetAnimationName(animation);
+        SetCombatAnimation(animation);
     }
 }
 
@@ -126,7 +126,7 @@ long CGameDefinitionManager::GetDefIndexFromName(const CCharString& name, long c
 CCombatActionBase::CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound)
 { g_owner = owner; g_target = 0; g_code = actionCode; g_sound0 = sound.FirstSound; g_sound1 = sound.LastSound; }
 CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) {}
-void CCombatActionBase::SetAnimationName(const CCharString& name) { g_animSet = &name; strncpy(g_lastText, (const char*)name.PStringData, 63); }
+void CCombatActionBase::SetCombatAnimation(const CCharString& name) { g_animSet = &name; strncpy(g_lastText, (const char*)name.PStringData, 63); }
 void CCombatActionBase::v00() {}
 void CCreatureAction_CastStrengthMultiStrikeProper::v00() {}
 int main()

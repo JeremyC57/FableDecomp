@@ -1,6 +1,6 @@
 // CCreatureAction_DragonBurninateInto::Initialise() -- animation "INTO_BURNINATE", base Initialise, then push a new CModeDragonStrafeBurninate(owner, the movement points, previous point, burn start/stop, flame start/end) onto the owner's mode manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F4320, length 218 bytes, plain `ret` (virtual, no arguments).
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("INTO_BURNINATE" @ 0x012884F0), SetAnimationName 0x008574D0,
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("INTO_BURNINATE" @ 0x012884F0), SetCombatAnimation 0x008574D0,
 // CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020
 // (inlined GetInterface 0x31 = CTCCreatureModeManager), operator new 0x00BFEA1A (0xc8 bytes),
 // CModeDragonStrafeBurninate::CModeDragonStrafeBurninate(CThing*, const vector<C3DVector>&, const C3DVector&, float, float,
@@ -88,7 +88,7 @@ public:
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_DragonBurninateInto : public CCombatActionBase {
@@ -106,7 +106,7 @@ void CCreatureAction_DragonBurninateInto::Initialise()
 {
     {
         CCharString name("INTO_BURNINATE");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;

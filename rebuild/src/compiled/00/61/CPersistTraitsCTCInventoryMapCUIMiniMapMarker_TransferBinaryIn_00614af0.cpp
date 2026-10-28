@@ -22,6 +22,9 @@ class CDataInputStream
 {
 public:
     CCharString ReadString(unsigned long);   // 0x00996BE0
+private:
+    friend struct CMemoryDataInputStreamReader;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 class CMemoryDataInputStream : public CDataInputStream, public CMemoryDataInputStreamLayout
 {
@@ -41,7 +44,6 @@ public:
 // Method view over the shared engine header (Ego_r.pdb layout: position +4, chunkBase +0xC = current chunk read
 // pointer, chunkLength +0x14 = bytes left in the chunk); the overflow reader and ReadString are CDataInputStream's.
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

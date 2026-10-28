@@ -1,10 +1,10 @@
 // CCreatureAction_CastWillFireballSpell::CCreatureAction_CastWillFireballSpell(CThingCreatureBase*, long, bool, long) -- base CCombatActionBase(owner, 150, zeroed CSoundPair), LevelToCast (hoisted above the vtable store) and ImmediateCast from the arguments, own vtable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BCD60, length 80 bytes.
-// Callees: CCombatActionBase::CCombatActionBase @ 0x00858030, CCombatActionBase::SetAnimationName @ 0x008574D0 (propagated
+// Callees: CCombatActionBase::CCombatActionBase @ 0x00858030, CCombatActionBase::SetCombatAnimation @ 0x008574D0 (propagated
 // manifest label "CTCInGameMenu::SetPDef"; every call site of the landed family passes an animation name).
 // Vtable 0x0127DF4C (rtti-vtables.tsv). Retail CCombatActionBase is 0x114 bytes (PDB 0x12c), so this class's
 // members sit at +0x114.. (PDB +0x12c..) and `this` is modelled locally; member names are the Ego_r.pdb names.
-// `ret 10h`: four arguments; the fourth is never read (OneAnimCast stays untouched), so it is a placeholder here. No SetAnimationName call in this body.
+// `ret 10h`: four arguments; the fourth is never read (OneAnimCast stays untouched), so it is a placeholder here. No SetCombatAnimation call in this body.
 #include "fable_string.h"
 
 class CThingCreatureBase;
@@ -21,7 +21,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114 (the P
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0 (propagated manifest label; the landed family names it so)
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0 (Ego_r/FableWin PDB name)
 };
 
 class CCreatureAction_CastWillFireballSpell : public CCombatActionBase { public:   // vtable 0x0127DF4C

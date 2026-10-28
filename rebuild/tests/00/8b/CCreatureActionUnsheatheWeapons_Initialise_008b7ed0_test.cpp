@@ -61,7 +61,7 @@ class CCombatActionBase { public:
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_UnsheatheWeapons : public CCombatActionBase { public:
@@ -76,7 +76,7 @@ void CCreatureAction_UnsheatheWeapons::Initialise()
     ShouldPlayUnsheatheWeaponAction(PCreature, WeaponType, &canUnsheathe, &sheathe);
     {
         CCharString name(sheathe ? "STANDARD_SHEATHE" : "STANDARD_UNSHEATHE", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CTCCombat* combat;
     if (PCreature.GetPItem()->GetInterface(&combat, 0x30))
@@ -105,7 +105,7 @@ bool __fastcall ShouldPlayUnsheatheWeaponAction(CThing* creature, EUnsheatheWeap
 }
 void CCombatActionBase::v00() { }
 void CCombatActionBase::Initialise() { ++g_baseInit; }
-void CCombatActionBase::SetAnimationName(const CCharString& name) { g_lastName = (const char*)name.m_pData; }
+void CCombatActionBase::SetCombatAnimation(const CCharString& name) { g_lastName = (const char*)name.m_pData; }
 
 int main()
 {

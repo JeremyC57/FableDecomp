@@ -37,7 +37,7 @@ class CCombatActionBase { public:
     virtual void v00() { }
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long code, const CSoundPair& s)
         : m_owner(owner), m_target(target), m_code(code), m_sound(s) { }
-    void SetAnimationName(const CCharString& name) { std::strcpy(g_lastName, name.m_pData); }
+    void SetCombatAnimation(const CCharString& name) { std::strcpy(g_lastName, name.m_pData); }
 };
 class CCreatureAction_ScorpionCharge : public CCombatActionBase { public:
     float     ChargeDistance;
@@ -50,7 +50,7 @@ CCreatureAction_ScorpionCharge::CCreatureAction_ScorpionCharge(CThingCreatureBas
 {
     {
         CCharString name("CHARGE_LOOP", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     ChargeDistance = chargeDistance;
     StartPos = ((CThing*)owner)->GetPosition();

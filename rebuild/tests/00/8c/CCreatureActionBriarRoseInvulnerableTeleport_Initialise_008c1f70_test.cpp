@@ -201,7 +201,7 @@ public:
     CBaseIntelligentPointer PCreature;
     virtual ~CCombatActionBase() { }
     virtual void Initialise() { g_initOrder = ++g_order; }
-    void SetAnimationName(const CCharString& name) { g_animOrder = ++g_order; std::strcpy(g_anim, name.Text); }
+    void SetCombatAnimation(const CCharString& name) { g_animOrder = ++g_order; std::strcpy(g_anim, name.Text); }
 };
 class CCreatureAction_BriarRoseInvulnerableTeleport : public CCombatActionBase {
 public:
@@ -215,7 +215,7 @@ void CCreatureAction_BriarRoseInvulnerableTeleport::Initialise()
     CTCSoundPlayer* soundPlayer;
     {
         CCharString name("INVULNERABLE_OUT_OF");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;

@@ -1,0 +1,4 @@
+address	name	note
+008574d0	CCombatActionBase::SetCombatAnimation	manifest functions.tsv still says CTCInGameMenu::SetPDef; labels_* have SetAnimationName rows
+00993ca0	CDataInputStream::ReadWithSrcChunkOverflow	private member (AAE)
+0041e5f2	NUISystem::CManager::GetInstance	auto-re-candidates.tsv name is still NUISystem::CFrontEndManager::GetInstance (the row file is already NUISystemCManager_GetInstance_0041e5f2.cpp)

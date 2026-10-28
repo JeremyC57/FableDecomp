@@ -1,7 +1,7 @@
 // CCombatAction_GenericResponseToDrain::Initialise() -- GENERIC_RESPONSE_DRAIN animation; with a live drainer the creature is turned to face away from it (flat direction, up = Z) and given a CModeDrained(creature, drainer) through its mode manager; then the base Initialise
 // Leaf: ?Initialise@CCombatAction_GenericResponseToDrain@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008676A0, 379 bytes (384 with padding), virtual Initialise.
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("GENERIC_RESPONSE_DRAIN" 0x012771D0), SetAnimationName 0x008574D0,
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("GENERIC_RESPONSE_DRAIN" 0x012771D0), SetCombatAnimation 0x008574D0,
 //   CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0, C3DVector::AccurateNormalise @ 0x00A14440 (catalog
 //   label C3DVector::GetScaled), the physics virtual slot 32 (+0x80, orientation from a CRightHandedSet), CVectorMap::LowerBound
 //   0x0040F020 (inlined GetInterface 0x31; the absent arm reads the never-set out pointer from its shared frame word),
@@ -121,7 +121,7 @@ public:
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;            // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 class CCombatAction_GenericResponseToDrain : public CCombatActionBase {
 public:
@@ -132,7 +132,7 @@ void CCombatAction_GenericResponseToDrain::Initialise()
 {
     {
         CCharString name("GENERIC_RESPONSE_DRAIN");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1)) {
         CThing* creature = PCreature.GetPItem();

@@ -115,7 +115,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad44[0x74 - 0x44];
     CAnimationEntry* PAnimEntry;                      // +0x74
     unsigned char _pad78[0x114 - 0x78];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
@@ -134,7 +134,7 @@ void CCreatureAction_DragonFlyInto::Initialise()
 {
     {
         CCharString name("FLY_INTO");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     RunningTimeSeconds = GetStartRunningTimeSeconds();

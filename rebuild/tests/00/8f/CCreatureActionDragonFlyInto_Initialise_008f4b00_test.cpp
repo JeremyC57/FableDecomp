@@ -30,7 +30,7 @@ class CCombatActionBase { public:
     CPtr PCreature; long TotalTime; float RunningTimeSeconds; CAnimationEntry* PAnimEntry; long Delay; float StartRun;
     long GetAnimDelayTime() { return Delay; }
     float GetStartRunningTimeSeconds() { return StartRun; }
-    void SetAnimationName(const CCharString& n) { std::strcpy(g_anim, n.s); }
+    void SetCombatAnimation(const CCharString& n) { std::strcpy(g_anim, n.s); }
     void Initialise() { ++g_baseInit; }
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
@@ -43,7 +43,7 @@ void CCreatureAction_DragonFlyInto::Initialise()
 {
     {
         CCharString name("FLY_INTO");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     RunningTimeSeconds = GetStartRunningTimeSeconds();

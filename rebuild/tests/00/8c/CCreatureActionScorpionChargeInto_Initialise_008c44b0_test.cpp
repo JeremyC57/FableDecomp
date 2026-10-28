@@ -52,7 +52,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointerThing& p)
 class CCharString { public: const char* s; CCharString(const char* t) : s(t) {} };
 class CCombatActionBase { public:
     CIntelligentPointerThing PCreature, PTarget;
-    void SetAnimationName(const CCharString& n) { std::strcpy(g_anim, n.s); }
+    void SetCombatAnimation(const CCharString& n) { std::strcpy(g_anim, n.s); }
     void Initialise() { ++g_baseInit; }
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
@@ -60,7 +60,7 @@ class CCreatureAction_ScorpionChargeInto : public CCombatActionBase { public: fl
 
 void CCreatureAction_ScorpionChargeInto::Initialise()
 {
-    SetAnimationName("CHARGE_INTO");
+    SetCombatAnimation("CHARGE_INTO");
     CCombatActionBase::Initialise();
     CTC93* direction;
     if (IS_THING_ALIVE(PTarget) && PTarget.GetPItem()->GetInterface(&direction, 0x93))

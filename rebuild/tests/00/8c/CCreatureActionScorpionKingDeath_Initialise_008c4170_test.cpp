@@ -73,7 +73,7 @@ class CCombatActionBase { public:
     long                    _pad04;
     CBaseIntelligentPointer POwner;
     unsigned char           _body[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name) { ++g_setAnim; g_animName = (const char*)name.m_pData; }
+    void SetCombatAnimation(const CCharString& name) { ++g_setAnim; g_animName = (const char*)name.m_pData; }
     void Initialise() { ++g_baseInit; CHECK(g_setAnim == 1 + g_baseInit - 1); }
     CThing* GetOwner() const { return (CThing*)POwner.GetPItem(); }
     CSpecialEffectsDef* GetSpecialEffectsDef() const
@@ -89,7 +89,7 @@ class CCreatureAction_ScorpionKingDeath : public CCombatActionBase { public:
 };
 void CCreatureAction_ScorpionKingDeath::Initialise()
 {
-    SetAnimationName("FALL_TO_DEATH");
+    SetCombatAnimation("FALL_TO_DEATH");
     CCombatActionBase::Initialise();
     CDefPointer<CSpecialEffectsDef> out;
     long effectIndex = 0;

@@ -803,14 +803,14 @@ struct CBaseIntelligentPointer {
 class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;
  CBaseIntelligentPointer PCreature;
- void SetAnimation(const CCharString&); //008574D0
+ void SetCombatAnimation(const CCharString&); //008574D0
  void Initialise(); //00857520
 };
 extern void FABLE_FASTCALL SetThingIsAbleToBeLifted(CThing*,bool); //007E4330
 class CCreatureAction_DragonHoverOutOf : public CCombatActionBase { public:void Initialise();};
 void CCreatureAction_DragonHoverOutOf::Initialise()
 {
- {CCharString animation("HOVER_OUT_OF",-1);SetAnimation(animation);}
+ {CCharString animation("HOVER_OUT_OF",-1);SetCombatAnimation(animation);}
  CCombatActionBase::Initialise();
  SetThingIsAbleToBeLifted(PCreature.GetPItem(),false);
  CThing* thing=PCreature.GetPItem();
@@ -856,7 +856,7 @@ CCharString::CCharString(const char* text,long length):storage_(0){
 }
 CCharString::~CCharString(){if(storage_ && !--storage_->owners){delete[] storage_->text;delete storage_;}--g_strings;}
 CCharString::operator const char*() const{return storage_?storage_->text:"";}
-void CCombatActionBase::SetAnimation(const CCharString& s){if(g_step!=0 || std::strcmp(s,"HOVER_OUT_OF"))g_failed=1;g_step=1;}
+void CCombatActionBase::SetCombatAnimation(const CCharString& s){if(g_step!=0 || std::strcmp(s,"HOVER_OUT_OF"))g_failed=1;g_step=1;}
 void CCombatActionBase::Initialise(){if(g_step!=1 || g_strings)g_failed=2;g_step=2;}
 void FABLE_FASTCALL SetThingIsAbleToBeLifted(CThing* p,bool value){if(g_step!=2 || p!=g_owner || value)g_failed=3;g_step=3;}
 CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* type){

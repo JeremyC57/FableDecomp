@@ -13,6 +13,9 @@
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 class CMemoryDataInputStream { public:
     unsigned long StreamPos;                            // +0x04
     long StreamSize;                                    // +0x08
@@ -23,7 +26,6 @@ class CMemoryDataInputStream { public:
     virtual void v00();
     virtual void v01();
     virtual unsigned long GetPosition();                // slot 2
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     void SetPositionAssumeWithinSourceChunk(unsigned long position);  // 0x00993C10
     static __forceinline bool IsValidPosition(__int64 p) { return p >= 0 && p <= 0x7fffffff; }
     __forceinline void Read(void* dst, long size)
@@ -37,7 +39,7 @@ class CMemoryDataInputStream { public:
             SourceChunkBytesRemaining -= size;
             StreamPos += size;
         } else {
-            ReadWithSrcChunkOverflow((unsigned char*)dst, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)dst, size);
         }
     }
     __forceinline long ReadLong()

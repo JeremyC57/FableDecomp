@@ -6842,7 +6842,6 @@ _kName	012786ac	008b34d0
 ?g_dragonFlightScale@@3MA	0122f59c	008f2ae0
 ?gcf_helper@@YINPAUS@@@Z	008571c0	008f2c60
 ?GetTotalTime@CCombatActionBase@@QBEJXZ	006925b0	008f2e00
-?SetAnimation@CCombatActionBase@@QAEXABVCCharString@@@Z	008574d0	008f3ad0
 ?SetSuspendAnimation@CThing@@QAEX_NPBX@Z	00833a10	008f3ad0
 ?g_DragonLandingHeightDrop@@3MB	0128838c	008f3ad0
 ??_7CCreatureAction_DragonFlight@@6B@	01288544	008f4cb0
@@ -7752,7 +7751,7 @@ _wcschr	00bfed8e	0099b070
 ?UnassignString_0099b4d0@CCharString@@QAEXXZ	0099b4d0	0099bdb0
 _g_charStringRefTrace	013bca20	0099bdb0
 _g_emptyWideStringData	0129a8e0	0099bdb0
-??BCWideString@@QBEPBGXZ	0099af10	0099cf10
+??BCWideString@@QBEPBGXZ	0099af00	0099cf10
 __imp__RegCreateKeyExW@36	0143fbf8	0099cf10
 __imp__RegQueryValueExW@24	0143fc00	0099cf80
 __imp__RegSetValueExW@24	0143fbe8	0099d0c0
@@ -19182,7 +19181,6 @@ _lzo1x_999_compress	00c08130	00a99840
 ?Transfer@CPKSubRecordC@@QAE_NAAUPKSerialiseCParser@@@Z	00c2fc70	00c2ee80
 ?TransferVersion@PKSerialiseCParser@@QAE_NK@Z	00c31d40	00c2ee80
 ??_7?$CEntityScriptBinding@UCQ_EndGameFocalSitesScript@NScript@@@@6B@	012ecc98	00e95390
-?ReadWithSrcChunkOverflow@CMemoryDataInputStreamReader@@QAEXPAEJ@Z	00993ca0	004671ca
 ??1CCountedPointer_CPerItemData@@QAE@XZ	005c04bf	005c0e41
 ?__copy_aux@std@@YI?AU?$back_insert_iterator@U?$vector@K@std@@@1@U?$_Rb_tree_iterator@K@1@0U21@ABU__false_type@1@@Z	0066124b	00661287
 ?_M_fill_insert@COpinionDeedRecordVector@@QAEXPAUCOpinionDeedRecord@@KABU2@@Z	006c8610	006c9de0
@@ -23157,7 +23155,6 @@ _s_HeroStateExt	01236a74	004a05c0
 ??$uninitialized_fill_n@PAVCAttackHistoryCombo@@IV1@@std@@YIPAVCAttackHistoryCombo@@PAV1@IABV1@@Z	006dc670	006dccc0
 ?_M_insert_overflow@?$vector@VCAttackHistoryCombo@@V?$allocator@VCAttackHistoryCombo@@@std@@@std@@IAEXPAVCAttackHistoryCombo@@ABV3@ABU__false_type@2@I_N@Z	006dca50	006dccc0
 ??0?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@@std@@QAE@ABV01@@Z	004f97b3	006dcfa0
-?ReadWithSrcChunkOverflow@CInputStreamMethods@@QAEXPAEJ@Z	00993ca0	006dcfa0
 ?TransferBinaryIn@?$CPersistTraits@J@@QBEXAAUCInputStreamMethods@@PAJ@Z	0040fe60	006dcfa0
 ?TransferBinaryIn@?$CPersistTraits@VCComboMultiplierData@@@@QBEXAAUCInputStreamMethods@@PAVCComboMultiplierData@@@Z	006dbe00	006dcfa0
 ?_M_erase@?$map@JVCComboMultiplierData@@U?$less@J@std@@@std@@QAEXPAU_Rb_tree_node_base@2@@Z	004e6e0c	006dcfa0
@@ -29514,7 +29511,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?FindValidCombatPositions@CAIStateGroup_WhisperPotionCombat@@QAE_NPAVC3DVector@@@Z	0096a3c0	0096aad0
 ?GetCombatTypeDef@CThing@@QAEPAVCCombatTypeDef@@XZ	00666d10	0096aad0
 ??0CCreatureAction_WhisperLand@@QAE@PAVCThingCreatureBase@@@Z	008ccbd0	0096af60
-?SetPDef@CCombatActionBase@@QAEXABVCCharString@@@Z	008574d0	0096af60
 ??0CCreatureAction_ThunderLightningStorm@@QAE@PAVCThingCreatureBase@@@Z	0096c6e0	0096c4f0
 ?GetDefGlobalIndex@CGameDefinitionManager@@QAEJABVCCharString@@_N@Z	009ad390	0096c4f0
 ?AIAction_MoveToPos@CAIStateGroupBase@@QAEJJVC3DVector@@PA_NJ_N2PAVCThing@@2M@Z	0097ec00	0096c880
@@ -31151,7 +31147,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?SetInnerRadius@CTCLight@@QAEXM@Z	00640c40	0089faa0
 ?SetOuterRadius@CTCLight@@QAEXM@Z	00640c70	0089faa0
 ?SetOverridden@CTCLight@@QAEX_N@Z	00640df0	0089faa0
-?SetAnimationName@CCombatActionBase@@QAEXABVCCharString@@@Z	008574d0	008bc790
 ?PositionMesh@CTCTavernGame@@SIXPAVCThing@@ABVC3DVector@@ABVCRightHandedSet@@1MM@Z	005eabc0	008efa00
 ?IsPointInside@CThingBuilding@@QAE_NABVC3DVector@@@Z	0082d000	009175e0
 ?IsTalking@CTCTalk@@QAE_NXZ	006e28a0	00922750

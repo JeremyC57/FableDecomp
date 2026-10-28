@@ -1,7 +1,7 @@
 // CCreatureAction_WaspQueenLashOutAttack::Initialise() -- name the action's animation "STRIKE_MEDIUM_FRONT", run the base Initialise, remove the creature's hit-on-collision component (interface type 200) and add a fresh "CTCHitOnCollision", arming its object-hit byte
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4040, length 131 bytes (byte-identical to the other wasp-queen attack up to the relocations).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 and ~CCharString @ 0x0099EAE0 (fable_string.h), CCombatActionBase::
-// SetAnimationName(const CCharString&) @ 0x008574D0 (landed naming of the 63-body family), CCombatActionBase::Initialise @ 0x00857520
+// SetCombatAnimation(const CCharString&) @ 0x008574D0 (landed naming of the 63-body family), CCombatActionBase::Initialise @ 0x00857520
 // (direct base call), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8, twice), CThing::RemoveTC(long) @ 0x004C9840
 // (landed naming; manifest "CBaseObject::OnPropertyChanged" is propagated), CThing::AddTC(const CCharString&, bool, CTCParamsBase*)
 // @ 0x004C9D60.
@@ -41,7 +41,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;      // +8
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_WaspQueenLashOutAttack : public CCombatActionBase { public:
@@ -52,7 +52,7 @@ void CCreatureAction_WaspQueenLashOutAttack::Initialise()
 {
     {
         CCharString name("STRIKE_MEDIUM_FRONT", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     PCreature.GetPItem()->RemoveTC(200);

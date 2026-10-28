@@ -6,7 +6,7 @@
 // Retail 0x0074ACE0, 624 bytes, plain `ret` (0x498-byte frame: four 0x114-byte action temporaries).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPos @ 0x004C73D0, NCreatureMode::IsUnderground
 // @ 0x0085F120 (__fastcall), CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase*, CThing*) @ 0x0074DAC0,
-// CCharString @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CCombatActionBase::SetAnimationName @ 0x008574D0,
+// CCharString @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0,
 // CThingCreatureBase::IsFreeToPerformAction @ 0x00662210 / SetCurrentAction @ 0x006644F0, ~CCreatureActionBase @ 0x0062E900,
 // GetUndeadGenerationPoint @ 0x0074A260, physics slot 31 (+0x7c, set position), CCreatureAction_UndeadReturnToEarth
 // @ 0x008EC6A0. RiseUpStrike vtable 0x01268F44, name "RISE_UP_STRIKE" @ 0x01268F30.
@@ -27,7 +27,7 @@ namespace N_0062e900 { struct CCreatureActionBase {
     ~CCreatureActionBase();                                  // 0x0062E900
 }; } using N_0062e900::CCreatureActionBase;
 class CCombatActionBase : public CCreatureActionBase { public:
-    void SetAnimationName(const CCharString& name);          // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);          // 0x008574D0
 };
 class CCreatureAction_RiseUp : public CCombatActionBase { public:          // vtable 0x01268C9C
     bool m_hasTarget;                                        // +0x114
@@ -40,7 +40,7 @@ struct CCreatureAction_RiseUpStrike : CCreatureAction_RiseUp {   // vtable 0x012
     {
         {
             CCharString name("RISE_UP_STRIKE");
-            SetAnimationName(name);
+            SetCombatAnimation(name);
         }
         m_strike = true;
     }

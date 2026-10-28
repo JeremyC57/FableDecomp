@@ -44,14 +44,14 @@ struct CIntelligentPointerThing {
 };
 class CCombatActionBase { public:
     CIntelligentPointerThing PCreature; std::string Anim; bool BaseInit;
-    void SetAnimationName(const CCharString& n) { Anim = n.s; }
+    void SetCombatAnimation(const CCharString& n) { Anim = n.s; }
     void Initialise() { BaseInit = true; }
 };
 class CCreatureAction_BanditKingStuckGetHit : public CCombatActionBase { public: CIntelligentPointerThing PStuckEffect; void Initialise(); };
 
 void CCreatureAction_BanditKingStuckGetHit::Initialise()
 {
-    SetAnimationName("STUCK_GET_HIT");
+    SetCombatAnimation("STUCK_GET_HIT");
     CDefPointer<CSpecialEffectsDef> effects;
     bool found;
     {

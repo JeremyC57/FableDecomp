@@ -13,11 +13,11 @@ class CThing { public:
 struct CAction {
     CThing* m_creature;
     CThing* GetPItem() { return m_creature; }
-    void SetAnimationName(const char* n) { std::strcpy(g_anim, n); }
+    void SetCombatAnimation(const char* n) { std::strcpy(g_anim, n); }
     void BaseInitialise() { ++g_base; }
     void Initialise()
     {
-        SetAnimationName("STRIKE_MEDIUM_FRONT");
+        SetCombatAnimation("STRIKE_MEDIUM_FRONT");
         BaseInitialise();
         GetPItem()->RemoveTC(200);
         CHit* pHit = GetPItem()->AddTC("CTCHitOnCollision", false, 0);

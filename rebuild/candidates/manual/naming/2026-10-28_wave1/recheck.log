@@ -1,0 +1,1049 @@
+addr       parity           behav  name
+00404500   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00404500   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00404500   RELOCATION_MATCH PASS   CPersistContext::CheckCRC
+00405940   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00405940   RELOCATION_MATCH PASS   CPersistTraits<unsigned char>::TransferBinaryIn
+0040efb0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0040efb0   RELOCATION_MATCH PASS   CPersistTraits<float>::TransferBinaryIn
+0040f8a0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0040f8a0   RELOCATION_MATCH PASS   CPersistTraits<float>::TransferBinaryIn
+0040fe60   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0040fe60   RELOCATION_MATCH PASS   CPersistTraits<long>::TransferBinaryIn
+0040fef0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0040fef0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0040fef0
+00410120   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00410120   RELOCATION_MATCH PASS   CActionInputControl::TransferBinaryIn
+00412c70   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00412c70   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CActionInputControl>
+00412d20   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00412d20   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<unsigned long>
+004311df   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004311df   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004311df
+0043151d   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0043151d   WARN RELOC_NAME: ?clear@?$map@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAEXXZ -> 0043027a labelled 'CTCCarryable::OnKill'
+0043151d   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+00433273   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00433273   WARN RELOC_NAME: ?resize@?$vector@VCCharString@@@std@@QAEXIABVCCharString@@@Z -> 0043332c labelled 'CArray<std::pair<long,long>_>::push_back'
+00433273   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CCharString>
+0044b890   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0044b890   RELOCATION_MATCH PASS   CPersistTraits<unsigned __int64>::TransferBinaryIn
+0044fadc   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0044fadc   RELOCATION_MATCH PASS   CCombatAbilityData::TransferBinaryIn
+00451e9a   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00451e9a   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00451e9a
+00451f3e   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00451f3e   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00451f3e
+00451fe2   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00451fe2   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00451fe2
+004520c7   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004520c7   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004520c7
+004521f3   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004521f3   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004521f3
+00452335   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00452335   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00452335
+00452738   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00452738   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00452738
+0045294b   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045294b   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0045294b
+00452aa1   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00452aa1   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00452aa1
+00452d8e   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00452d8e   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00452d8e
+00452e42   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00452e42   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00452e42
+00454d3b   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00454d3b   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00454d3b
+00454e9c   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00454e9c   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00454e9c
+00455049   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00455049   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00455049
+00455639   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00455639   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00455639
+00455753   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00455753   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00455753
+004557f7   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004557f7   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004557f7
+00456b1a   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00456b1a   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00456b1a
+00456bbe   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00456bbe   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00456bbe
+00456c62   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00456c62   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00456c62
+0045872c   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045872c   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0045872c
+004587d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004587d0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004587d0
+00459083   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00459083   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00459083
+004593a4   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004593a4   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004593a4
+0045994c   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045994c   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0045994c
+004599f0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004599f0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004599f0
+0045db8f   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045db8f   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0045db8f
+0045df5e   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045df5e   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+0045e011   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045e011   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0045e011
+0045e37f   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045e37f   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+0045e8ed   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045e8ed   RELOCATION_MATCH PASS   COpinionPersonalityTraits::TransferBinaryIn
+0045ec72   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045ec72   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+0045ed25   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045ed25   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0045ed25
+0045f414   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0045f414   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0045f414
+004616d6   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004616d6   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>
+0046190a   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046190a   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>
+00463732   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00463732   WARN RELOC_NAME: ?clear@?$multimap@VCCharString@@JU?$less@VCCharString@@@std@@@std@@QAEXXZ -> 0043027a labelled 'CTCCarryable::OnKill'
+00463732   RELOCATION_MATCH PASS   _global::GFSerialiseMultiMapBinaryIn
+00463dcb   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00463dcb   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00463dcb
+00463f9c   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00463f9c   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+00464030   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00464030   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00464030
+004646d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004646d0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004646d0
+00464d23   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00464d23   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<float>
+00465852   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00465852   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CDefString>
+00466889   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00466889   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>
+00466beb   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00466beb   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CBrainUpdateZone>
+00466c8e   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00466c8e   RELOCATION_MATCH PASS   CPersistTraits<CBrainUpdateZone>::TransferBinaryIn
+0046712b   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046712b   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CBrainBehaviour>
+004671ca   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004671ca   RELOCATION_MATCH PASS   CPersistTraits<CBrainBehaviour>::TransferBinaryIn
+004675f6   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004675f6   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<bool>
+00468e51   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00468e51   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00468e51
+00468f15   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00468f15   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+00469381   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00469381   WARN RELOC_NAME: ??0?$pair@JVCBlendedParticleEffectSet@@@std@@QAE@XZ -> 00469435 labelled 'CVsyncCallbackTimerInfo::CVsyncCallbackTimerInfo'
+00469381   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+0046975a   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046975a   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+004697ee   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004697ee   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004697ee
+00469bcb   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00469bcb   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00469bcb
+00469cb2   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00469cb2   WARN RELOC_NAME: ?resize@?$vector@VCEntry@CTextureReplacementDef@@@std@@QAEXIABVCEntry@CTextureReplacementDef@@@Z -> 00469e00 labelled 'CArray<std::pair<long,long>_>::push_back'
+00469cb2   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+0046ab33   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046ab33   WARN RELOC_CONFLICT: ??0CSoundBankEntry@@QAE@XZ -> 0046abc4 here, 0046aade in landed 0046aa91
+0046ab33   WARN RELOC_NAME: ??0CSoundBankEntry@@QAE@XZ -> 0046abc4 labelled 'CIndexTriple_0046abc4::CIndexTriple_0046abc4'
+0046ab33   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+0046b03a   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046b03a   WARN RELOC_NAME: ?resize@?$vector@VCAtmosBankEntry@@@std@@QAEXIABVCAtmosBankEntry@@@Z -> 0046b144 labelled 'CArray<std::pair<long,long>_>::push_back'
+0046b03a   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+0046b0d6   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046b0d6   RELOCATION_MATCH PASS   CPersistTraits<std::pair<CDefIndex,CDefString> >::TransferBinaryIn
+0046b4ab   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046b4ab   WARN RELOC_CONFLICT: ?resize@?$vector@VCMusicEntry@@@std@@QAEXI@Z -> 0046b65a here, 004e9f20 in landed 004e9d71
+0046b4ab   WARN RELOC_CONFLICT: ?TransferBinaryIn@?$CPersistTraits@VCMusicEntry@@@@QBEXAAUCMemoryDataInputStreamReader@@PAVCMusicEntry@@@Z -> 0046b545 here, 004e9e0b in landed 004e9d71
+0046b4ab   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+0046b545   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046b545   RELOCATION_MATCH PASS   CPersistTraits<CMusicEntry>::TransferBinaryIn
+0046b9b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046b9b0   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+0046ba4b   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046ba4b   RELOCATION_MATCH PASS   CPersistTraits<CBrainUpdateZone>::TransferBinaryIn
+0046be89   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046be89   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+0046c31c   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046c31c   WARN RELOC_NAME: ?resize@?$vector@VCObjectFamilyEntry@@@std@@QAEXIABVCObjectFamilyEntry@@@Z -> 0046c430 labelled 'CArray<std::pair<long,long>_>::push_back'
+0046c31c   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+0046c7a1   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046c7a1   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046c7a1
+0046c845   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046c845   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046c845
+0046c8e9   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046c8e9   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046c8e9
+0046c98d   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046c98d   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046c98d
+0046ca31   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046ca31   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046ca31
+0046f293   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046f293   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046f293
+0046f337   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046f337   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046f337
+0046f3db   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046f3db   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046f3db
+0046f91b   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046f91b   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046f91b
+0046f9bf   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046f9bf   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046f9bf
+0046fd39   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046fd39   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046fd39
+0046fddd   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0046fddd   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0046fddd
+00472896   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00472896   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+00472a8d   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00472a8d   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00472a8d   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00472a8d   WARN RELOC_NAME: ?resize@?$vector@VCDialogueLayerDef@NSpeechGainManager@@@@QAEXJ@Z -> 00472b63 labelled 'NScript::CV_TourGuideScript::WaypointData::~WaypointData'
+00472a8d   RELOCATION_MATCH PASS   CPersistContext::TransferVectorOfSubComponents<NSpeechGainManager::CDialogueLayerDef>
+00473617   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00473617   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00473617
+00475aa6   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00475aa6   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+00475b93   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00475b93   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00475b93
+004791c8   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004791c8   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004791c8
+0047926c   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0047926c   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0047926c
+00479369   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00479369   WARN RELOC_NAME: ??0COpinionTransientOffset@@QAE@XZ -> 006815f0 labelled 'SRecord_006815f0::SRecord_006815f0'
+00479369   RELOCATION_MATCH PASS   CPersistTraits<std::list<COpinionTransientOffset> >::TransferBinaryIn
+0048f881   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0048f881   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+0048f881   RELOCATION_MATCH PASS   CSubtitleRenderer::SetButton2OverrideText
+004aa270   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004aa270   RELOCATION_MATCH PASS   CPersistTraits<float>::TransferBinaryIn
+004aa360   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004aa360   RELOCATION_MATCH PASS   CPersistTraits<double>::TransferBinaryIn
+004b6380   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+004b6380   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b6380   WARN RELOC_NAME: ??0CByteArray@N_00411910@@QAE@K@Z -> 00411910 labelled 'std::vector::vector'
+004b6380   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+004b6380   RELOCATION_MATCH PASS   CQuestManager::LoadGameState
+004b85d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004b85d0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004b85d0
+004cbc70   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004cbc70   RELOCATION_MATCH PASS   CPersistTraits<short>::TransferBinaryIn
+004cbd50   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004cbd50   RELOCATION_MATCH PASS   CPersistTraits<unsigned char>::TransferBinaryIn
+004ddc11   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004ddc11   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004ddc11
+004ddded   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004ddded   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004ddded
+004ddf0c   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004ddf0c   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004ddf0c
+004de05a   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004de05a   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004de05a
+004de5a7   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004de5a7   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004de5a7
+004dee1b   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004dee1b   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004dee1b
+004e44ef   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e44ef   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e44ef
+004e50c0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e50c0   RELOCATION_MATCH PASS   GFSerialiseMapBinaryIn<long,long,std::GFSerialiseMapBinaryIn<long,long,std::less<long>_>
+004e5a76   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e5a76   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+004e5de5   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e5de5   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e5de5
+004e5e89   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e5e89   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e5e89
+004e637d   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e637d   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e637d
+004e68b5   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e68b5   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e68b5
+004e6b50   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e6b50   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e6b50
+004e7b52   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e7b52   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e7b52
+004e854b   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e854b   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e854b
+004e860e   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e860e   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+004e86a2   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e86a2   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e86a2
+004e8f29   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e8f29   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004e8f29
+004e9156   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e9156   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+004e9642   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e9642   RELOCATION_MATCH PASS   CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryIn
+004e9d71   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e9d71   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+004e9e0b   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004e9e0b   RELOCATION_MATCH PASS   CPersistTraits<CMusicEntry>::TransferBinaryIn
+004eb219   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004eb219   WARN RELOC_NAME: ?resize@?$vector@VCExplosionRing@@@std@@QAEXIABVCExplosionRing@@@Z -> 004eb41f labelled 'CArray<std::pair<long::push_back'
+004eb219   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+004ec66c   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004ec66c   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+004f9ba4   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+004f9ba4   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_004f9ba4
+00569b30   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00569b30   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CQuestActivityRecord>
+00581404   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00581404   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CHeroMarriageInfo>
+005c2ad8   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005c2ad8   WARN RELOC_NAME: ??1?$CCountedPointer@VCPerItemData@NInventory@@@@QAE@XZ -> 005c04bf labelled '_global::CCountedPointer_Release_005c04bf'
+005c2ad8   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+005db8d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005db8d0   WARN SHARED_HEADER_AVAILABLE CAnimComponentFlags
+005db8d0   RELOCATION_MATCH PASS   CAnimComponentFlags::TransferBinaryIn
+005db960   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005db960   WARN SHARED_HEADER_AVAILABLE CAnimComponentTransitionInTime
+005db960   RELOCATION_MATCH PASS   CAnimComponentTransitionInTime::TransferBinaryIn
+005db9f0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005db9f0   WARN SHARED_HEADER_AVAILABLE CAnimComponentDelayTime
+005db9f0   RELOCATION_MATCH PASS   CAnimComponentDelayTime::TransferBinaryIn
+005dba80   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005dba80   RELOCATION_MATCH PASS   CAnimComponentCombatHandedness::TransferBinaryIn
+005dbb60   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005dbb60   RELOCATION_MATCH PASS   CAnimComponentCombatComboChain::TransferBinaryIn
+005dbc40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005dbc40   WARN SHARED_HEADER_AVAILABLE CAnimComponentCombatRecoil
+005dbc40   RELOCATION_MATCH PASS   CAnimComponentCombatRecoil::TransferBinaryIn
+005dbcd0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005dbcd0   RELOCATION_MATCH PASS   CAnimComponentCombatMisc::TransferBinaryIn
+005dbda0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005dbda0   RELOCATION_MATCH PASS   CAnimComponentCombatFlourishTargetOffset::TransferBinaryIn
+005dbe40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005dbe40   WARN SHARED_HEADER_AVAILABLE CAnimComponentSetCreatureMode
+005dbe40   RELOCATION_MATCH PASS   CAnimComponentSetCreatureMode::TransferBinaryIn
+005dd440   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+005dd440   RELOCATION_MATCH PASS   CAnimationSet::TransferBinaryIn
+006148a0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006148a0   RELOCATION_MATCH PASS   CPersistTraits<float>::TransferBinaryIn
+00614af0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00614af0   RELOCATION_MATCH PASS   CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>::TransferBinaryIn
+00614da0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00614da0   RELOCATION_MATCH PASS   CPersistTraits<CTCInventoryMap::CUIRegionInfo>::TransferBinaryIn
+00619130   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00619130   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<unsigned __int64>
+006194a0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006194a0   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn
+00619620   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00619620   WARN RELOC_CONFLICT: ?TransferBinaryIn@?$CPersistTraits@J@@QBEXAAUCMemoryDataInputStreamReader@@PAJ@Z -> 006148a0 here, 0040fe60 in landed 0043151d
+00619620   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<long>
+00625730   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00625730   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00625730
+006322b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006322b0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_006322b0
+00632390   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00632390   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00632390
+00632470   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00632470   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00632470
+00632550   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00632550   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00632550
+00632630   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00632630   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00632630
+00632710   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00632710   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00632710
+00632900   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00632900   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00632900
+00632e00   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00632e00   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00632e00   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00632e00   RELOCATION_MATCH PASS   CPersistContext::TransferVectorOfSubComponents<CUIStateDef>
+00671c60   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00671c60   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00671c60
+00671d40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00671d40   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00671d40
+00671e20   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00671e20   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00671e20
+00671f00   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00671f00   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00671f00
+00671fe0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00671fe0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00671fe0
+00672530   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00672530   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<ENavigatorType>
+006725d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006725d0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_006725d0
+006782b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006782b0   RELOCATION_MATCH PASS   CPersistTraits<list<CReactionMatch*>>::TransferBinaryIn
+0067aa40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0067aa40   RELOCATION_MATCH PASS   CPersistTraits<float>::TransferBinaryIn
+0067c020   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0067c020   WARN RELOC_NAME: ?_M_erase@?$map@W4EOpinionReactionType@@W4EOpinionAttitudeType@@U?$less@W4EOpinionReactionType@@@std@@@std@@QAEXPAU_Rb_tree_node_base@2@@Z -> 0067a7c0 labelled '_unattributed::FreeTree_CTreeOwner_0067a7c0'
+0067c020   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+0067c110   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0067c110   WARN RELOC_NAME: ?_M_erase@?$map@W4EOpinionReactionType@@W4EOpinionTargetingConditionType@@U?$less@W4EOpinionReactionType@@@std@@@std@@QAEXPAU_Rb_tree_node_base@2@@Z -> 0067a800 labelled '_unattributed::FreeTree_CTreeOwner_0067a800'
+0067c110   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+0067c200   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0067c200   WARN RELOC_NAME: ?_M_erase@?$map@W4EOpinionReactionType@@MU?$less@W4EOpinionReactionType@@@std@@@std@@QAEXPAU_Rb_tree_node_base@2@@Z -> 0067a840 labelled '_unattributed::FreeTree_CTreeOwner_0067a840'
+0067c200   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+0067d6b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0067d6b0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+0067d6b0   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+0067d6b0   RELOCATION_MATCH PASS   CPersistContext::TransferVectorOfSubComponents<CBlurredAttitudesDef>
+0067d830   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0067d830   RELOCATION_MATCH PASS   CPersistTraits<CEngineGraphic>::TransferBinaryIn
+0067df60   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0067df60   RELOCATION_MATCH PASS   CPersistTraits<CDegradableInfo>::TransferBinaryIn
+0067f430   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0067f430   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CDegradableInfo>
+00680950   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00680950   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+00680950   RELOCATION_MATCH PASS   CSimVoice::TransferBinaryIn
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006ba8b0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+006ba8b0   WARN RELOC_NAME: ??1CStringParserCommentList@@QAE@XZ -> 004046b0 labelled 'std::list<CStringParserCommentBoundaries>::~list'
+006ba8b0   RELOCATION_MATCH PASS   CPersistTraits<CFaction>::TransferBinaryIn
+006bc510   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006bc510   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006bc510   WARN SHARED_HEADER_AVAILABLE CRegion
+006bc510   RELOCATION_MATCH PASS   CRegion::LoadBinary
+006c88d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006c88d0   RELOCATION_MATCH PASS   CPersistTraits<COpinionDeed*>::TransferBinaryIn
+006c9e40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006c9e40   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<pair<long, COpinionDeed*> >
+006d3b90   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006d3b90   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+006d3b90   RELOCATION_MATCH PASS   CPersistTraits<std::pair<CCharString,long> >::TransferBinaryIn
+006d4b40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006d4b40   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<pair<CCharString, long> >
+006dba50   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006dba50   WARN RELOC_NAME: ?_M_erase@?$map@JVCDefString@@U?$less@J@std@@@std@@QAEXPAU_Rb_tree_node_base@2@@Z -> 004da27f labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dba50   RELOCATION_MATCH PASS   _global::RbTree_Clear_006dba50
+006dbe00   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006dbe00   RELOCATION_MATCH PASS   CPersistTraits<CComboMultiplierData>::TransferBinaryIn
+006dcfa0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006dcfa0   WARN RELOC_NAME: ?_M_erase@?$map@JVCComboMultiplierData@@U?$less@J@std@@@std@@QAEXPAU_Rb_tree_node_base@2@@Z -> 004e6e0c labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dcfa0   WARN RELOC_NAME: ??0?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@@std@@QAE@ABV01@@Z -> 004f97b3 labelled '_Rb_tree::_Rb_tree'
+006dcfa0   WARN RELOC_NAME: ?_M_erase@?$map@W4EDamageAttribute@@MU?$less@W4EDamageAttribute@@@std@@@std@@QAEXPAU_Rb_tree_node_base@2@@Z -> 00450903 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dcfa0   RELOCATION_MATCH PASS   _global::GFSerialiseMapBinaryIn
+006dd1c0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006dd1c0   WARN RELOC_NAME: ?Erase@CStatMapTree@@QAEXPAUSNode@@@Z -> 004e6e43 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dd1c0   WARN RELOC_NAME: ??0CStatTree@@QAE@ABU0@@Z -> 004f9960 labelled '_Rb_tree::_Rb_tree'
+006dd1c0   WARN RELOC_NAME: ?Erase@CStatTree@@QAEXPAUSNode@@@Z -> 004da252 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+006dd1c0   RELOCATION_MATCH PASS   CHeroExperienceDef::ReadFromStream
+006dd580   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006dd580   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CAttackHistoryCombo>
+006fefb0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006fefb0   RELOCATION_MATCH PASS   CReactionMatch::TransferBinaryIn
+006ff040   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006ff040   RELOCATION_MATCH PASS   CReactionMatch_SecondaryAxisMRShifted::TransferBinaryIn
+006ff2c0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006ff2c0   RELOCATION_MATCH PASS   CReactionMatch_SecondaryAxisCentredMRShifted::TransferBinaryIn
+006ff540   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006ff540   RELOCATION_MATCH PASS   CReactionMatch_AsymmetricPyramid::TransferBinaryIn
+006ff810   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006ff810   RELOCATION_MATCH PASS   CReactionMatch_MRPyramid::TransferBinaryIn
+006ffa40   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006ffa40   RELOCATION_MATCH PASS   CReactionFrequencyTraits_LinearTime::TransferBinaryIn
+006ffc30   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006ffc30   RELOCATION_MATCH PASS   CReactionFrequencyTraits_PeriodicFrequency::TransferBinaryIn
+006fff00   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+006fff00   RELOCATION_MATCH PASS   CReactionFrequencyTraits_ControlledCount::TransferBinaryIn
+00701990   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00701990   RELOCATION_MATCH PASS   CReactionMatch_Sphere::TransferBinaryIn
+007020d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+007020d0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+007020d0   RELOCATION_MATCH PASS   COpinionSet::TransferBinaryIn
+0074ace0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0074ace0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0074ace0   WARN SHARED_HEADER_AVAILABLE CTCCreatureGenerator
+0074ace0   WARN RELOC_NAME: ??1CCreatureActionBase@N_0062e900@@QAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+0074ace0   RELOCATION_MATCH PASS   CTCCreatureGenerator::UpdateUndead
+0074dac0   RELOCATION_MATCH PASS   CCreatureAction_RiseUp::CCreatureAction_RiseUp
+00755d00   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00755d00   RELOCATION_MATCH PASS   CPersistTraits<std::pair<long,long> >::TransferBinaryIn
+00757990   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00757990   WARN RELOC_NAME: ?SortEntries@@YIXPAUCEntryPair@CWoundMorphs@@0UCCompare@2@@Z -> 007597c0 labelled 'CWoundMorphs::SortMap'
+00757990   RELOCATION_MATCH PASS   CWoundMorphs::TransferBinaryIn
+0077fd10   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0077fd10   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_0077fd10
+007ad7f0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+007ad7f0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_007ad7f0
+007b42d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+007b42d0   RELOCATION_MATCH PASS   CPersistTraits<CCrimeWaitingForBribe>::TransferBinaryIn
+007b5370   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+007b5370   RELOCATION_MATCH PASS   _global::GFSerialiseVectorBinaryIn<CCrimeWaitingForBribe>
+007d2740   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+007d2740   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+007d2740   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+007d2740   RELOCATION_MATCH PASS   CPersistContext::TransferVectorOfSubComponents<CShoveHaPennyRegionDef>
+00815620   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00815620   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveSphere::TransferBinaryIn
+008156a0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+008156a0   RELOCATION_MATCH PASS   NHitLocations::CPhysicalPrimitiveCylinder::TransferBinaryIn
+0081aed0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0081aed0   RELOCATION_MATCH PASS   CSkeletalMorphs::TransferBinaryIn
+0081b300   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0081b300   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+0081b300   RELOCATION_MATCH PASS   CExpressionSet::TransferBinaryIn
+0081b510   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0081b510   WARN RELOC_NAME: ?SortEntries@@YIXPAVCEntry@CExpressionSet@@0V?$CKeyPairCompareLess@W4EExpressionType@@VCEntry@CExpressionSet@@@@@Z -> 0081e090 labelled '_global::Sort_SElement40_0081e090'
+0081b510   RELOCATION_MATCH PASS   CExpressionSet::TransferBinaryIn
+0085bb10   RELOCATION_MATCH PASS   CCreatureActionHero180RunningTurn::CCreatureActionHero180RunningTurn
+008676a0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008676a0   RELOCATION_MATCH PASS   CCombatAction_GenericResponseToDrain::Initialise
+0086deb0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0086deb0   RELOCATION_MATCH PASS   _global::GFReadVectorMapMemDump
+0086f680   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+0086f680   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+0086f680   WARN RELOC_CONFLICT: ?resize@CExpressionPairVector@@QAEXKABUSExpressionPair@@@Z -> 00870040 here, 0081d920 in landed 0081b300
+0086f680   WARN RELOC_CONFLICT: ?SortExpressionPairs@@YIXPAUSExpressionPair@@0USExpressionCompare@@@Z -> 008701d0 here, 0081e030 in landed 0081b300
+0086f680   RELOCATION_MATCH PASS   CExpressionSet::TransferBinaryIn
+008707a0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+008707a0   RELOCATION_MATCH PASS   CThingComponentSet::TransferBinaryIn
+0087e860   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0087e860   WARN RELOC_NAME: ?SetSuspendAnimation@CThingAICreature@@QAEX_NPAX@Z -> 00833a10 labelled 'CThingAICreature::SuspendAI'
+0087e860   RELOCATION_MATCH PASS   CCombatAction_KickThingOnGround::Initialise
+008b74d0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008b74d0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008b74d0   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008b74d0   RELOCATION_MATCH PASS   CCreatureAction_OnGenerate::Initialise
+008b76b0   RELOCATION_MATCH PASS   CCreatureAction_LeapLong::Initialise
+008b7ed0   WARN SHARED_HEADER_AVAILABLE CTCCombat
+008b7ed0   RELOCATION_MATCH PASS   CCreatureAction_UnsheatheWeapons::Initialise
+008b8110   RELOCATION_MATCH PASS   CCreatureAction_GoUnderground::CCreatureAction_GoUnderground
+008b8d30   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008b8d30   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008b8d30   RELOCATION_MATCH PASS   CCreatureAction_ScreamerDie::Initialise
+008b9110   RELOCATION_MATCH PASS   CCreatureAction_ScreamerDie::CCreatureAction_ScreamerDie
+008bc790   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008bc790   WARN RELOC_NAME: ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+008bc790   RELOCATION_MATCH PASS   CCreatureAction_CastWillLightningSpell::CCreatureAction_CastWillLightningSpell
+008bca00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008bca00   WARN RELOC_NAME: ?GetGlobalIndexFromClassIndex@CDefinitionManager@@QBEJABVCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+008bca00   WARN RELOC_NAME: ?PlaySound@CTCSound@@QAEKABVCCharString@@JJJJ@Z -> 0066bd00 labelled 'CTCSoundPlayer::PlayAttachedCriteria'
+008bca00   RELOCATION_MATCH PASS   CCreatureAction_CastWillLightningSpell::CCreatureAction_CastWillLightningSpell
+008bcd10   RELOCATION_MATCH PASS   CCreatureAction_CastWillFireballSpell::CCreatureAction_CastWillFireballSpell
+008bcd60   RELOCATION_MATCH PASS   CCreatureAction_CastWillFireballSpell::CCreatureAction_CastWillFireballSpell
+008bd880   RELOCATION_MATCH PASS   CCreatureAction_RiseUp::CCreatureAction_RiseUp
+008c0820   RELOCATION_MATCH PASS   CCreatureAction_WhisperSommersaultForward::Initialise
+008c1c30   WARN RELOC_NAME: ??0CCountedModePointer@@QAE@PAUCModeBase@@@Z -> 00718a00 labelled 'CCountedPointer_007180b0::CCountedPointer_007180b0'
+008c1c30   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseConcentrateInto::Initialise
+008c1e80   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseIntoInvulnerable::Initialise
+008c1f70   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c1f70   WARN RELOC_NAME: ?PlaySound@CTCSoundPlayer@@QAEKJABVCSoundInit@@JJ@Z -> 0066ace0 labelled 'CTCSoundPlayer::PlayUnattachedSample'
+008c1f70   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseInvulnerableTeleport::Initialise
+008c39a0   RELOCATION_MATCH PASS   CCreatureAction_BriarRoseShotFarOutof::CCreatureAction_BriarRoseShotFarOutof
+008c3f90   RELOCATION_MATCH PASS   CCreatureAction_WaspQueenPrimaryAttack::Initialise
+008c4040   RELOCATION_MATCH PASS   CCreatureAction_WaspQueenLashOutAttack::Initialise
+008c4170   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c4170   RELOCATION_MATCH PASS   CCreatureAction_ScorpionKingDeath::Initialise
+008c44b0   WARN SHARED_HEADER_AVAILABLE CAICreatureWillPowerIndicatorDef
+008c44b0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c44b0   WARN RELOC_NAME: ?SetDirection@CTC93@@QAEXPAVCThing@@_N@Z -> 0079e580 labelled 'CTCPhysicalShieldSpell::AllowReactionsOnHitFromAttacker'
+008c44b0   RELOCATION_MATCH PASS   CCreatureAction_ScorpionChargeInto::Initialise
+008c4cb0   RELOCATION_MATCH PASS   CCreatureAction_WaspQueenDeath::Initialise
+008c4e20   RELOCATION_MATCH PASS   CCreatureAction_ScorpionChargeInto::CCreatureAction_ScorpionChargeInto
+008c4ea0   RELOCATION_MATCH PASS   CCreatureAction_ScorpionCharge::CCreatureAction_ScorpionCharge
+008c64f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c64f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008c64f0   WARN SHARED_HEADER_AVAILABLE CWorld
+008c64f0   WARN RELOC_NAME: ?GetPWorld@CCombatActionBase@@QBEPAVCWorld@@XZ -> 00692940 labelled 'CCreatureActionBase::GetWorld'
+008c64f0   WARN RELOC_NAME: ??1CIntelligentPointerThing@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+008c64f0   WARN RELOC_NAME: ?GetWeaponHand@CCombatTC@@QAEXPAPAUSWeaponHand@@@Z -> 00669cb0 labelled 'CAnimationEntry::GetComponent'
+008c64f0   WARN RELOC_NAME: ?SetVisibleFlag@CTCGraphicAppearance@@QAEXE@Z -> 004bfac0 labelled 'NGraphicAppearance::CTCGraphicAppearance::SetAlpha'
+008c64f0   WARN RELOC_NAME: ?GetRandomSeed@CWorld@@QAEPAKXZ -> 0049d810 labelled 'CWorld::GetPRandomSeed'
+008c64f0   RELOCATION_MATCH PASS   CCreatureAction_TrollThrowProjectile::Initialise
+008c74f0   WARN RELOC_NAME: ?GetTrollBattle@CDefLookup@@QBE_NPAU?$DefPointer@VCTrollBattleDef@@@@@Z -> 008c78f0 labelled 'CDefClassBase::GetSubDef<CTrollBattleDef>'
+008c74f0   WARN RELOC_NAME: ?AddImmuneThing@CTCDExplosion@@QAEXPAVCThing@@@Z -> 0080cbf0 labelled 'CTCDExplosion::SetThingAsImmune'
+008c74f0   RELOCATION_MATCH PASS   CCreatureAction_RockTrollFallToDeath::FinishAction
+008c7600   RELOCATION_MATCH PASS   CCreatureAction_IceTrollIcicleAssaultInto::Initialise
+008c8380   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c8380   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c8380   RELOCATION_MATCH PASS   CCreatureAction_BanditKingStuck::Initialise
+008c8550   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c8550   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c8550   RELOCATION_MATCH PASS   CCreatureAction_BanditKingUnstuck::Initialise
+008c87a0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008c87a0   WARN RELOC_NAME: ?CalcAndLookup@CSpecialEffectsDef@@QAE_NABVCCharString@@PAJ@Z -> 00669d30 labelled 'CSpecialEffectsDef::GetEffectFromString'
+008c87a0   RELOCATION_MATCH PASS   CCreatureAction_BanditKingStuckGetHit::Initialise
+008c9410   RELOCATION_MATCH PASS   CCreatureAction_BanditKingAttack::CCreatureAction_BanditKingAttack
+008c95b0   RELOCATION_MATCH PASS   CCreatureAction_BanditKingUnstuck::CCreatureAction_BanditKingUnstuck
+008ca4a0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+008ca4a0   RELOCATION_MATCH PASS   CCreatureAction_NymphGetHitDie::Initialise
+008ca600   RELOCATION_MATCH PASS   CCreatureAction_NymphSummonOutOf::CCreatureAction_NymphSummonOutOf
+008cb940   WARN SHARED_HEADER_AVAILABLE CPlayer
+008cb940   WARN SHARED_HEADER_AVAILABLE CWorld
+008cb940   WARN RELOC_NAME: ?GetWorld@CCombatActionBase@@QBEPAVCWorld@@XZ -> 00692950 labelled 'std::_Dest_val<std::allocator<std::pair<long,CMusicManager::CRegisteredMusicEntry>_>,std::pair<long,CMusicManager::CRegisteredMusicEntry>_>'
+008cb940   WARN RELOC_NAME: ?GetMainPlayer@CWorld@@QAEPAVCPlayer@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+008cb940   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008cb940   WARN RELOC_NAME: ?SetOwner@CTCDriver41@@QAEXPAVCThing@@@Z -> 0080cbf0 labelled 'CTCDExplosion::SetThingAsImmune'
+008cb940   RELOCATION_MATCH PASS   CCreatureAction_SummonerDead::Initialise
+008cbb90   WARN RELOC_NAME: ??1?$CIntelligentPointer@VCThing@@@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+008cbb90   RELOCATION_MATCH PASS   CCreatureAction_SummonerFlameSlice::Initialise
+008cc8e0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+008cc8e0   RELOCATION_MATCH PASS   CCreatureAction_BalverineLungeAttack::Initialise
+008cc9c0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+008cc9c0   RELOCATION_MATCH PASS   CCreatureAction_BalverineCorneredJumpIntoSky::Initialise
+008cd5a0   RELOCATION_MATCH PASS   CCreatureAction_CastBattleCharge::Initialise
+008ce6f0   WARN RELOC_NAME: ?GetDefIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+008ce6f0   WARN RELOC_NAME: ?PlaySound@CTCSound@@QAEKABVCCharString@@JJJJ@Z -> 0066bd00 labelled 'CTCSoundPlayer::PlayAttachedCriteria'
+008ce6f0   RELOCATION_MATCH PASS   CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow
+008ce900   WARN RELOC_NAME: ?GetDefIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+008ce900   WARN RELOC_NAME: ?PlaySound@CTCSound@@QAEKABVCCharString@@JJJJ@Z -> 0066bd00 labelled 'CTCSoundPlayer::PlayAttachedCriteria'
+008ce900   RELOCATION_MATCH PASS   CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow
+008cf990   RELOCATION_MATCH PASS   CCreatureAction_TentacleStrikeLoop::CCreatureAction_TentacleStrikeLoop
+008e45b0   RELOCATION_MATCH PASS   CCreatureAction_ScorpionTailWithdraw::CCreatureAction_ScorpionTailWithdraw
+008e4640   RELOCATION_MATCH PASS   CCreatureAction_ScorpionTailPlunge::CCreatureAction_ScorpionTailPlunge
+008e4770   RELOCATION_MATCH PASS   CCreatureAction_ScorpionRecover::CCreatureAction_ScorpionRecover
+008e6940   WARN RELOC_NAME: ??1?$CIntelligentPointer@VCThing@@@@UAE@XZ -> 00a01c10 labelled 'CBaseIntelligentPointer::~CBaseIntelligentPointer'
+008e6940   RELOCATION_MATCH PASS   CCreatureAction_ReleaseStrengthBerserk::FinishAction
+008e6bb0   WARN RELOC_NAME: ?GetDefIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+008e6bb0   RELOCATION_MATCH PASS   CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMultiStrikeProper
+008e6c90   WARN RELOC_NAME: ?GetDefIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@J@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+008e6c90   RELOCATION_MATCH PASS   CCreatureAction_CastStrengthMultiStrikeProper::CCreatureAction_CastStrengthMultiStrikeProper
+008f39a0   RELOCATION_MATCH PASS   CCreatureAction_DragonRearUpInto::Initialise
+008f3ad0   WARN RELOC_NAME: ?SetSuspendAnimation@CThing@@QAEX_NPBX@Z -> 00833a10 labelled 'CThingAICreature::SuspendAI'
+008f3ad0   RELOCATION_MATCH PASS   CCreatureAction_DragonLand::Initialise
+008f3e70   WARN SHARED_HEADER_AVAILABLE CPlayer
+008f3e70   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+008f3e70   WARN RELOC_NAME: ?SetThingIsAbleToBeLifted@@YIXPAVCThing@@_N@Z -> 007e4330 labelled 'CTCWillResponse::SetThingIsEpicSpellable'
+008f3e70   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008f3e70   RELOCATION_MATCH PASS   CCreatureAction_DragonTakeOffIntoFlying::Initialise
+008f40b0   WARN RELOC_NAME: ?SetThingIsAbleToBeLifted@@YIXPAVCThing@@_N@Z -> 007e4330 labelled 'CTCWillResponse::SetThingIsEpicSpellable'
+008f40b0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+008f40b0   RELOCATION_MATCH PASS   CCreatureAction_DragonHoverOutOf::Initialise
+008f41d0   RELOCATION_MATCH PASS   CCreatureAction_DragonFireBeamInto::Initialise
+008f4320   RELOCATION_MATCH PASS   CCreatureAction_DragonBurninateInto::Initialise
+008f4480   RELOCATION_MATCH PASS   CCreatureAction_DragonStrafeInto::Initialise
+008f4b00   WARN RELOC_NAME: ??0CCountedModePointer@@QAE@PAUCModeBase@@@Z -> 00718a00 labelled 'CCountedPointer_007180b0::CCountedPointer_007180b0'
+008f4b00   RELOCATION_MATCH PASS   CCreatureAction_DragonFlyInto::Initialise
+00925780   RELOCATION_MATCH PASS   CCreatureAction_KrakenHighAttackLoop::CCreatureAction_KrakenHighAttackLoop
+009551a0   WARN RELOC_NAME: ?CanRun@MazeRangedMethods@@QAE_NXZ -> 00954220 labelled 'AIState_CheckCanReach'
+009551a0   WARN RELOC_NAME: ??0CCombatActionBaseRetail@@QAE@PAVCThingCreatureBase@@PAVCThing@@JABVCSoundPair@@@Z -> 00857f30 labelled 'CCombatActionBase::CCombatActionBase'
+009551a0   WARN RELOC_NAME: ??1CCombatActionBaseRetail@@UAE@XZ -> 0062e900 labelled 'CCombatActionBase::~CCombatActionBase'
+009551a0   WARN RELOC_NAME: ??0CCreatureAction_PlayCombatAnimationRetail@@QAE@PAVCThingCreatureBase@@ABVCCharString@@_N@Z -> 008b7ff0 labelled 'CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation'
+009551a0   RELOCATION_MATCH PASS   CAIStateGroup_MazeRangedCombat::Update
+0096af60   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0096af60   WARN SHARED_HEADER_AVAILABLE CAIBrain
+0096af60   WARN SHARED_HEADER_AVAILABLE CWorld
+0096af60   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0096af60   WARN RELOC_NAME: ?GetPWorld@CAIStateGroupBase@@QBEPAVCWorld@@XZ -> 008fcfc0 labelled 'CAIStateGroupBase::GetWorld'
+0096af60   WARN RELOC_NAME: ?GetWorldFrame@CWorld@@SAJXZ -> 0049d870 labelled 'CWorld::GetFrame'
+0096af60   WARN RELOC_NAME: ??0CCreatureAction_WhisperLand@@QAE@PAVCThingCreatureBase@@@Z -> 008ccbd0 labelled 'CCreatureAction_BalverineDropInFromSky::CCreatureAction_BalverineDropInFromSky'
+0096af60   RELOCATION_MATCH PASS   CAIStateGroup_WhisperPotionCombat::DisappearJump
+00976f30   RELOCATION_MATCH PASS   CCreatureAction_JackShotFloat::CCreatureAction_JackShotFloat
+00977100   RELOCATION_MATCH PASS   CCreatureAction_JackScream::CCreatureAction_JackScream
+0097b3f0   RELOCATION_MATCH PASS   CCreatureAction_JumpOutFromCover::CCreatureAction_JumpOutFromCover
+00995b10   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00995b10   RELOCATION_MATCH PASS   CMemoryDataInputStream::ReadCompressed
+0099cf10   RELOCATION_MATCH PASS   CSystemRegistry::CSystemRegistry
+00a2e5b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a2e5b0   RELOCATION_MATCH PASS   C3DGeneratorObject::LoadBinary
+00a2f2d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a2f2d0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+00a2f2d0   RELOCATION_MATCH PASS   C3DMeshStats::LoadBinary
+00a49240   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a49240   RELOCATION_MATCH PASS   CSpeechFrame::ReadFromFile
+00a5b260   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00a5b260   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00a5b260   RELOCATION_MATCH PASS   CCachedFile::Open
+00a62120   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a62120   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a62120   WARN RELOC_NAME: ??$_M_insert_overflow@U__false_type@@@?$CArray@VCCharString@@@@QAEXPAVCCharString@@ABV1@ABU__false_type@@K_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00a62120   WARN RELOC_NAME: ??1CMemoryDataInputStream@@QAE@XZ -> 00993b10 labelled 'CDataStream::~CDataStream'
+00a62120   RELOCATION_MATCH PASS   CShaderBankEntry::CShaderBankEntry
+00a8e8a0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a8e8a0   RELOCATION_MATCH PASS   CBaseBlock::LoadBinary
+00a8ea70   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a8ea70   RELOCATION_MATCH PASS   CStaticBlock::LoadBinary
+00a8eb10   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00a8eb10   RELOCATION_MATCH PASS   CAnimatedBlock::LoadBinary
+00abf100   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00abf100   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+00abf100   WARN SHARED_HEADER_AVAILABLE CBankFile
+00abf100   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00abf100   RELOCATION_MATCH PASS   C3DMeshMaterial::LoadBinary
+00b6d6e0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b6d6e0   RELOCATION_MATCH PASS   CWaterSeaStaticMapInfoBlock::Load
+00b6d940   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b6d940   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+00b6d940   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00b6d940   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00b6d940   WARN SHARED_HEADER_AVAILABLE CEngineWaterRenderer
+00b6d940   WARN RELOC_NAME: ?GetVertexBufferUsage@CEngineResourceManager@@QAEKXZ -> 00b3b030 labelled 'CEngineResourceManager::GetIndexBufferUsage'
+00b6d940   RELOCATION_MATCH PASS   CEngineWaterRenderer::LoadCompressedBuffer
+00b6daf0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00b6daf0   RELOCATION_MATCH PASS   CEngineWaterRenderer::LoadNonPatchData
+00bde680   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00bde680   RELOCATION_MATCH PASS   CObjectTypeCollection::Load
+00be91e0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00be91e0   WARN SHARED_HEADER_AVAILABLE CMemoryDataInputStream
+00be91e0   WARN SHARED_HEADER_AVAILABLE CVertexBufferWin32
+00be91e0   WARN SHARED_HEADER_AVAILABLE CIndexBuffer
+00be91e0   WARN SHARED_HEADER_AVAILABLE CEngineResourceManager
+00be91e0   WARN RELOC_NAME: ?Uninitialise@CIndexBuffer@@QAEXXZ -> 00ac1ee0 labelled 'CVolume::ReleaseVolume'
+00be91e0   WARN RELOC_NAME: ?GetVertexBufferUsage@CEngineResourceManager@@QAEKXZ -> 00b3b030 labelled 'CEngineResourceManager::GetIndexBufferUsage'
+00be91e0   WARN RELOC_NAME: ?GetIndexBufferPool@CEngineResourceManager@@QAEJXZ -> 00b3b0a0 labelled '_global::ReturnConst_1_00b3b0a0'
+00be91e0   RELOCATION_MATCH PASS   CWaterSeaGenerator::LoadSea
+00bfc600   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00bfc600   RELOCATION_MATCH PASS   CPatchTesselationEdgeStrip::Load
+00cdcb50   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00cdcb50   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00cdcb50
+00cdcd00   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00cdcd00   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00cdcd00
+00cdceb0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00cdceb0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00cdceb0
+00cf8a70   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00cf8a70   WARN RELOC_NAME: ??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00cf8a70   RELOCATION_MATCH PASS   CLadyGreyWifeManagerScript::Main
+00e1e040   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00e1e040   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00e1e040
+00e258a0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00e258a0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00e258a0
+00e38eb0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00e38eb0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00e38eb0
+00e75920   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00e75920   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00e75920
+00e75ad0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00e75ad0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00e75ad0
+00e9e350   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00e9e350   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00e9e350
+00eb6680   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00eb6680   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00eb6680
+00eb6830   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00eb6830   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00eb6830
+00f274d0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00f274d0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00f274d0   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00f274d0   WARN RELOC_NAME: ??0CCreatureEntry@@QAE@XZ -> 00f27650 labelled 'CHeroSoulsCreatureDef::CHeroSoulsCreatureDef'
+00f274d0   RELOCATION_MATCH PASS   CPersistContext::Transfer<CCreatureEntry>
+00f27ea0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00f27ea0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00f27ea0   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00f27ea0   RELOCATION_MATCH PASS   CPersistContext::Transfer<CWaveRecord3C>
+00f28610   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00f28610   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00f28610   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00f28610   RELOCATION_MATCH PASS   CPersistContext::Transfer<CWaveRecord38>
+00f2d5b0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00f2d5b0   RELOCATION_MATCH PASS   _unattributed::TransferBinaryIn_00f2d5b0
+00f33b90   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00f33b90   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00f33b90   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00f33b90   RELOCATION_MATCH PASS   CPersistContext::TransferVectorOfSubComponents<CFireHeartPatternDef>
+00f349f0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00f349f0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00f349f0   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00f349f0   RELOCATION_MATCH PASS   CPersistContext::TransferVectorOfSubComponents<CArenaRoundDef>
+00f351f0   WARN SHARED_HEADER_AVAILABLE CDataInputStream
+00f351f0   WARN SHARED_HEADER_AVAILABLE CDataOutputStream
+00f351f0   WARN RELOC_NAME: ?WriteLong@CDataOutputStream@@QAEXJ@Z -> 00993eb0 labelled 'CDataOutputStream::WriteSLONG'
+00f351f0   RELOCATION_MATCH PASS   CPersistContext::TransferVectorOfSubComponents<CHeroSoulsRoundDef>
+
+WINS: 315
+  00404500 RELOCATION_MATCH CPersistContext::CheckCRC
+  00405940 RELOCATION_MATCH CPersistTraits<unsigned char>::TransferBinaryIn
+  0040efb0 RELOCATION_MATCH CPersistTraits<float>::TransferBinaryIn
+  0040f8a0 RELOCATION_MATCH CPersistTraits<unsigned long>::?TransferBinaryIn@?$CPersistTraits@K@@QAEXAAVCMemoryDataInputStream@@AAK@Z
+  0040fe60 RELOCATION_MATCH CPersistTraits<long>::TransferBinaryIn
+  0040fef0 RELOCATION_MATCH _unattributed::TransferBinaryIn_0040fef0
+  00410120 RELOCATION_MATCH CActionInputControl::TransferBinaryIn
+  00412c70 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@VCActionInputControl@@
+  00412d20 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@K@@
+  004311df RELOCATION_MATCH _unattributed::TransferBinaryIn_004311df
+  0043151d RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  00433273 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  0044b890 RELOCATION_MATCH CPersistTraits<unsigned __int64>::TransferBinaryIn
+  0044fadc RELOCATION_MATCH CCombatAbilityData::?TransferBinaryIn@CCombatAbilityData
+  00451e9a RELOCATION_MATCH _unattributed::TransferBinaryIn_00451e9a
+  00451f3e RELOCATION_MATCH _unattributed::TransferBinaryIn_00451f3e
+  00451fe2 RELOCATION_MATCH _unattributed::TransferBinaryIn_00451fe2
+  004520c7 RELOCATION_MATCH _unattributed::TransferBinaryIn_004520c7
+  004521f3 RELOCATION_MATCH _unattributed::TransferBinaryIn_004521f3
+  00452335 RELOCATION_MATCH _unattributed::TransferBinaryIn_00452335
+  00452738 RELOCATION_MATCH _unattributed::TransferBinaryIn_00452738
+  0045294b RELOCATION_MATCH _unattributed::TransferBinaryIn_0045294b
+  00452aa1 RELOCATION_MATCH _unattributed::TransferBinaryIn_00452aa1
+  00452d8e RELOCATION_MATCH _unattributed::TransferBinaryIn_00452d8e
+  00452e42 RELOCATION_MATCH _unattributed::TransferBinaryIn_00452e42
+  00454d3b RELOCATION_MATCH _unattributed::TransferBinaryIn_00454d3b
+  00454e9c RELOCATION_MATCH _unattributed::TransferBinaryIn_00454e9c
+  00455049 RELOCATION_MATCH _unattributed::TransferBinaryIn_00455049
+  00455639 RELOCATION_MATCH _unattributed::TransferBinaryIn_00455639
+  00455753 RELOCATION_MATCH _unattributed::TransferBinaryIn_00455753
+  004557f7 RELOCATION_MATCH _unattributed::TransferBinaryIn_004557f7
+  00456b1a RELOCATION_MATCH _unattributed::TransferBinaryIn_00456b1a
+  00456bbe RELOCATION_MATCH _unattributed::TransferBinaryIn_00456bbe
+  00456c62 RELOCATION_MATCH _unattributed::TransferBinaryIn_00456c62
+  0045872c RELOCATION_MATCH _unattributed::TransferBinaryIn_0045872c
+  004587d0 RELOCATION_MATCH _unattributed::TransferBinaryIn_004587d0
+  00459083 RELOCATION_MATCH _unattributed::TransferBinaryIn_00459083
+  004593a4 RELOCATION_MATCH _unattributed::TransferBinaryIn_004593a4
+  0045994c RELOCATION_MATCH _unattributed::TransferBinaryIn_0045994c
+  004599f0 RELOCATION_MATCH _unattributed::TransferBinaryIn_004599f0
+  0045db8f RELOCATION_MATCH _unattributed::TransferBinaryIn_0045db8f
+  0045df5e RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  0045e011 RELOCATION_MATCH _unattributed::TransferBinaryIn_0045e011
+  0045e37f RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  0045e8ed RELOCATION_MATCH COpinionPersonalityTraits::?TransferBinaryIn@COpinionPersonalityTraits
+  0045ec72 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  0045ed25 RELOCATION_MATCH _unattributed::TransferBinaryIn_0045ed25
+  0045f414 RELOCATION_MATCH _unattributed::TransferBinaryIn_0045f414
+  004616d6 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@MW4EObjectAugmentationType@@
+  0046190a RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@MW4EDamageAttribute@@
+  00463732 RELOCATION_MATCH _global::GFSerialiseMultiMapBinaryIn
+  00463dcb RELOCATION_MATCH _unattributed::TransferBinaryIn_00463dcb
+  00463f9c RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@W4EWeaponClass@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@W4EWeaponClass@@V?$allocator@W4EWeaponClass@@@std@@@std@@@Z
+  00464030 RELOCATION_MATCH _unattributed::TransferBinaryIn_00464030
+  004646d0 RELOCATION_MATCH _unattributed::TransferBinaryIn_004646d0
+  00464d23 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@M@@YIXAAUCMemoryDataInputStreamReader@@AAV?$vector@M@std@@@Z
+  00465852 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@VCDefString@@@@
+  00466889 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@MW4EHeroTrainableStatType@@
+  00466beb RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@VCBrainUpdateZone@@@@
+  00466c8e RELOCATION_MATCH CPersistTraits<CBrainUpdateZone>::?TransferBinaryIn@?$CPersistTraits@VCBrainUpdateZone@@
+  0046712b RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@VCBrainBehaviour@@@@
+  004671ca RELOCATION_MATCH CPersistTraits<CBrainBehaviour>::TransferBinaryIn
+  004675f6 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@_N@@YIXAAUCMemoryDataInputStreamReader@@AAV?$vector@_N@std@@@Z
+  00468e51 RELOCATION_MATCH _unattributed::TransferBinaryIn_00468e51
+  00468f15 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  00469381 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  0046975a RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@W4ECreatureGeneratorGenerateType@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@W4ECreatureGeneratorGenerateType@@V?$allocator@W4ECreatureGeneratorGenerateType@@@std@@@std@@@Z
+  004697ee RELOCATION_MATCH _unattributed::TransferBinaryIn_004697ee
+  00469bcb RELOCATION_MATCH _unattributed::TransferBinaryIn_00469bcb
+  00469cb2 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  0046ab33 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  0046b03a RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  0046b0d6 RELOCATION_MATCH CPersistTraits<std::pair<CDefIndex,CDefString> >::TransferBinaryIn
+  0046b4ab RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  0046b545 RELOCATION_MATCH CPersistTraits<CMusicEntry>::?TransferBinaryIn@?$CPersistTraits@VCMusicEntry@@
+  0046b9b0 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  0046ba4b RELOCATION_MATCH CPersistTraits<CBrainUpdateZone>::?TransferBinaryIn@?$CPersistTraits@VCBrainUpdateZone@@
+  0046be89 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  0046c31c RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  0046c7a1 RELOCATION_MATCH _unattributed::TransferBinaryIn_0046c7a1
+  0046c845 RELOCATION_MATCH _unattributed::TransferBinaryIn_0046c845
+  0046c8e9 RELOCATION_MATCH _unattributed::TransferBinaryIn_0046c8e9
+  0046c98d RELOCATION_MATCH _unattributed::TransferBinaryIn_0046c98d
+  0046ca31 RELOCATION_MATCH _unattributed::TransferBinaryIn_0046ca31
+  0046f293 RELOCATION_MATCH _unattributed::TransferBinaryIn_0046f293
+  0046f337 RELOCATION_MATCH _unattributed::TransferBinaryIn_0046f337
+  0046f3db RELOCATION_MATCH _unattributed::TransferBinaryIn_0046f3db
+  0046f91b RELOCATION_MATCH _unattributed::TransferBinaryIn_0046f91b
+  0046f9bf RELOCATION_MATCH _unattributed::TransferBinaryIn_0046f9bf
+  0046fd39 RELOCATION_MATCH _unattributed::TransferBinaryIn_0046fd39
+  0046fddd RELOCATION_MATCH _unattributed::TransferBinaryIn_0046fddd
+  00472896 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  00472a8d RELOCATION_MATCH CPersistContext::TransferVectorOfSubComponents<NSpeechGainManager::TransferVectorOfSubComponents
+  00473617 RELOCATION_MATCH _unattributed::TransferBinaryIn_00473617
+  00475aa6 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  00475b93 RELOCATION_MATCH _unattributed::TransferBinaryIn_00475b93
+  004791c8 RELOCATION_MATCH _unattributed::TransferBinaryIn_004791c8
+  0047926c RELOCATION_MATCH _unattributed::TransferBinaryIn_0047926c
+  00479369 RELOCATION_MATCH CPersistTraits<std::list<COpinionTransientOffset> >::TransferBinaryIn
+  0048f881 RELOCATION_MATCH CSubtitleRenderer::SetButton2OverrideText
+  004aa270 RELOCATION_MATCH CPersistTraits<ESaveType>::?TransferBinaryIn@?$CPersistTraits@W4ESaveType@@@@QAEXAAVCMemoryDataInputStream@@AAW4ESaveType@@@Z
+  004aa360 RELOCATION_MATCH CPersistTraits<double>::TransferBinaryIn
+  004b6380 RELOCATION_MATCH CQuestManager::?LoadGameState@CQuestManager@@QAEXAAVCPersistContext
+  004b85d0 RELOCATION_MATCH _unattributed::TransferBinaryIn_004b85d0
+  004cbc70 RELOCATION_MATCH CPersistTraits<short>::TransferBinaryIn
+  004cbd50 RELOCATION_MATCH CPersistTraits<unsigned char>::TransferBinaryIn
+  004ddc11 RELOCATION_MATCH _unattributed::TransferBinaryIn_004ddc11
+  004ddded RELOCATION_MATCH _unattributed::TransferBinaryIn_004ddded
+  004ddf0c RELOCATION_MATCH _unattributed::TransferBinaryIn_004ddf0c
+  004de05a RELOCATION_MATCH _unattributed::TransferBinaryIn_004de05a
+  004de5a7 RELOCATION_MATCH _unattributed::TransferBinaryIn_004de5a7
+  004dee1b RELOCATION_MATCH _unattributed::TransferBinaryIn_004dee1b
+  004e44ef RELOCATION_MATCH _unattributed::TransferBinaryIn_004e44ef
+  004e50c0 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@MJ
+  004e5a76 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  004e5de5 RELOCATION_MATCH _unattributed::TransferBinaryIn_004e5de5
+  004e5e89 RELOCATION_MATCH _unattributed::TransferBinaryIn_004e5e89
+  004e637d RELOCATION_MATCH _unattributed::TransferBinaryIn_004e637d
+  004e68b5 RELOCATION_MATCH _unattributed::TransferBinaryIn_004e68b5
+  004e6b50 RELOCATION_MATCH _unattributed::TransferBinaryIn_004e6b50
+  004e7b52 RELOCATION_MATCH _unattributed::TransferBinaryIn_004e7b52
+  004e854b RELOCATION_MATCH _unattributed::TransferBinaryIn_004e854b
+  004e860e RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@W4EVillageTaskType@@@@YIXAAVCMemoryDataInputStream@@AAV?$vector@W4EVillageTaskType@@V?$allocator@W4EVillageTaskType@@@std@@@std@@@Z
+  004e86a2 RELOCATION_MATCH _unattributed::TransferBinaryIn_004e86a2
+  004e8f29 RELOCATION_MATCH _unattributed::TransferBinaryIn_004e8f29
+  004e9156 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  004e9642 RELOCATION_MATCH CPersistTraits<CObjectAugmentationParticleSet>::?TransferBinaryIn@?$CPersistTraits@VCObjectAugmentationParticleSet@@
+  004e9d71 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  004e9e0b RELOCATION_MATCH CPersistTraits<CMusicEntry>::?TransferBinaryIn@?$CPersistTraits@VCMusicEntry@@
+  004eb219 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  004ec66c RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  004f9ba4 RELOCATION_MATCH _unattributed::TransferBinaryIn_004f9ba4
+  00569b30 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn
+  00581404 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  005c2ad8 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  005db8d0 RELOCATION_MATCH CAnimComponentFlags::?TransferBinaryIn@CAnimComponentFlags@@UAEXAAVCMemoryDataInputStream@@@Z
+  005db960 RELOCATION_MATCH CAnimComponentTransitionInTime::?TransferBinaryIn@CAnimComponentTransitionInTime@@UAEXAAVCMemoryDataInputStream@@@Z
+  005db9f0 RELOCATION_MATCH CAnimComponentDelayTime::?TransferBinaryIn@CAnimComponentDelayTime@@UAEXAAVCMemoryDataInputStream@@@Z
+  005dba80 RELOCATION_MATCH CAnimComponentCombatHandedness::TransferBinaryIn
+  005dbb60 RELOCATION_MATCH CAnimComponentCombatComboChain::TransferBinaryIn
+  005dbc40 RELOCATION_MATCH CAnimComponentCombatRecoil::?TransferBinaryIn@CAnimComponentCombatRecoil@@UAEXAAVCMemoryDataInputStream@@@Z
+  005dbcd0 RELOCATION_MATCH CAnimComponentCombatMisc::TransferBinaryIn
+  005dbda0 RELOCATION_MATCH CAnimComponentCombatFlourishTargetOffset::TransferBinaryIn
+  005dbe40 RELOCATION_MATCH CAnimComponentSetCreatureMode::?TransferBinaryIn@CAnimComponentSetCreatureMode@@UAEXAAVCMemoryDataInputStream@@@Z
+  005dd440 RELOCATION_MATCH CAnimationSet::TransferBinaryIn
+  006148a0 RELOCATION_MATCH CPersistTraits<CHeroLogBook::CHeroLogBookEntry::ECategory>::?TransferBinaryIn@?$CPersistTraits@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@@QAEXAAVCMemoryDataInputStream@@AAW4ECategory@CHeroLogBookEntry@CHeroLogBook@@@Z
+  00614af0 RELOCATION_MATCH CPersistTraits<CTCInventoryMap::CUIMiniMapMarker>::?TransferBinaryIn@?$CPersistTraits@VCUIMiniMapMarker@CTCInventoryMap@@
+  00614da0 RELOCATION_MATCH CPersistTraits<CTCInventoryMap::CUIRegionInfo>::?TransferBinaryIn@?$CPersistTraits@VCUIRegionInfo@CTCInventoryMap@@
+  00619130 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@_K@@
+  006194a0 RELOCATION_MATCH _global::GFSerialiseVectorBinaryIn
+  00619620 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@J@@
+  00625730 RELOCATION_MATCH _unattributed::TransferBinaryIn_00625730
+  006322b0 RELOCATION_MATCH _unattributed::TransferBinaryIn_006322b0
+  00632390 RELOCATION_MATCH _unattributed::TransferBinaryIn_00632390
+  00632470 RELOCATION_MATCH _unattributed::TransferBinaryIn_00632470
+  00632550 RELOCATION_MATCH _unattributed::TransferBinaryIn_00632550
+  00632630 RELOCATION_MATCH _unattributed::TransferBinaryIn_00632630
+  00632710 RELOCATION_MATCH _unattributed::TransferBinaryIn_00632710
+  00632900 RELOCATION_MATCH _unattributed::TransferBinaryIn_00632900
+  00632e00 RELOCATION_MATCH CPersistContext::TransferVectorOfSubComponents
+  00671c60 RELOCATION_MATCH _unattributed::TransferBinaryIn_00671c60
+  00671d40 RELOCATION_MATCH _unattributed::TransferBinaryIn_00671d40
+  00671e20 RELOCATION_MATCH _unattributed::TransferBinaryIn_00671e20
+  00671f00 RELOCATION_MATCH _unattributed::TransferBinaryIn_00671f00
+  00671fe0 RELOCATION_MATCH _unattributed::TransferBinaryIn_00671fe0
+  00672530 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@W4ENavigatorType@@
+  006725d0 RELOCATION_MATCH _unattributed::TransferBinaryIn_006725d0
+  006782b0 RELOCATION_MATCH CPersistTraits<list<CReactionMatch*>>::?TransferBinaryIn@?$CPersistTraits@V?$list@PAVCReactionMatch@@
+  0067aa40 RELOCATION_MATCH CPersistTraits<EOpinionTargetingConditionType>::?TransferBinaryIn@?$CPersistTraits@W4EOpinionTargetingConditionType@@@@QAEXAAVCMemoryDataInputStream@@AAW4EOpinionTargetingConditionType@@@Z
+  0067c020 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  0067c110 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  0067c200 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  0067d6b0 RELOCATION_MATCH CPersistContext::TransferVectorOfSubComponents
+  0067d830 RELOCATION_MATCH CPersistTraits<CEngineGraphic>::?TransferBinaryIn@?$CPersistTraits@VCEngineGraphic@@
+  0067df60 RELOCATION_MATCH CPersistTraits<CDegradableInfo>::?TransferBinaryIn@?$CPersistTraits@VCDegradableInfo@@
+  0067f430 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@VCDegradableInfo@@
+  00680950 RELOCATION_MATCH CSimVoice::TransferBinaryIn@CSimVoice
+  006ba8b0 RELOCATION_MATCH CPersistTraits<CFaction>::?TransferBinaryIn@?$CPersistTraits@VCFaction@@
+  006bc510 RELOCATION_MATCH CRegion::LoadBinary
+  006c88d0 RELOCATION_MATCH CPersistTraits<COpinionDeed*>::?TransferBinaryIn@?$CPersistTraits@PAVCOpinionDeed@@
+  006c9e40 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@U?$pair@JPAVCOpinionDeed@@@std@@@@YIXAAUCMemoryDataInputStreamReader@@AAV?$vector@U?$pair@JPAVCOpinionDeed@@@std@@@std@@@Z
+  006d3b90 RELOCATION_MATCH CPersistTraits<std::pair<CCharString,long> >::TransferBinaryIn
+  006d4b40 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@
+  006dba50 RELOCATION_MATCH _global::GFSerialiseMapBinaryIn
+  006dbe00 RELOCATION_MATCH CPersistTraits<CComboMultiplierData>::?TransferBinaryIn@?$CPersistTraits@VCComboMultiplierData@@
+  006dcfa0 RELOCATION_MATCH _global::??$GFSerialiseMapBinaryIn@
+  006dd1c0 RELOCATION_MATCH CHeroExperienceDef::ReadFromStream
+  006dd580 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn
+  006fefb0 RELOCATION_MATCH CReactionMatch::?TransferBinaryIn@CReactionMatch@@UAEXAAVCMemoryDataInputStream@@@Z
+  006ff040 RELOCATION_MATCH CReactionMatch_SecondaryAxisMRShifted::TransferBinaryIn@CReactionMatch_SecondaryAxisMRShifted
+  006ff2c0 RELOCATION_MATCH CReactionMatch_SecondaryAxisCentredMRShifted::TransferBinaryIn@CReactionMatch_SecondaryAxisCentredMRShifted
+  006ff540 RELOCATION_MATCH CReactionMatch_AsymmetricPyramid::TransferBinaryIn@CReactionMatch_AsymmetricPyramid
+  006ff810 RELOCATION_MATCH CReactionMatch_MRPyramid::TransferBinaryIn@CReactionMatch_MRPyramid
+  006ffa40 RELOCATION_MATCH CReactionFrequencyTraits_LinearTime::TransferBinaryIn@CReactionFrequencyTraits_LinearTime
+  006ffc30 RELOCATION_MATCH CReactionFrequencyTraits_PeriodicFrequency::TransferBinaryIn@CReactionFrequencyTraits_PeriodicFrequency
+  006fff00 RELOCATION_MATCH CReactionFrequencyTraits_ControlledCount::TransferBinaryIn@CReactionFrequencyTraits_ControlledCount
+  00701990 RELOCATION_MATCH CReactionMatch_Sphere::TransferBinaryIn@CReactionMatch_Sphere
+  007020d0 RELOCATION_MATCH COpinionSet::TransferBinaryIn@COpinionSet
+  0074ace0 RELOCATION_MATCH CTCCreatureGenerator::UpdateUndead
+  0074dac0 RELOCATION_MATCH CCreatureAction_RiseUp::CCreatureAction_RiseUp
+  00755d00 RELOCATION_MATCH CPersistTraits<std::pair<long,long> >::TransferBinaryIn
+  00757990 RELOCATION_MATCH CWoundMorphs::TransferBinaryIn
+  0077fd10 RELOCATION_MATCH _unattributed::TransferBinaryIn_0077fd10
+  007ad7f0 RELOCATION_MATCH _unattributed::TransferBinaryIn_007ad7f0
+  007b42d0 RELOCATION_MATCH CPersistTraits<CCrimeWaitingForBribe>::TransferBinaryIn
+  007b5370 RELOCATION_MATCH _global::??$GFSerialiseVectorBinaryIn@
+  007d2740 RELOCATION_MATCH CPersistContext::TransferVectorOfSubComponents
+  00815620 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveSphere::TransferBinaryIn
+  008156a0 RELOCATION_MATCH NHitLocations::CPhysicalPrimitiveCylinder::?TransferBinaryIn@CPhysicalPrimitiveCylinder@
+  0081aed0 RELOCATION_MATCH CSkeletalMorphs::TransferBinaryIn
+  0081b300 RELOCATION_MATCH CExpressionSet::TransferBinaryIn
+  0081b510 RELOCATION_MATCH CExpressionSet::TransferBinaryIn
+  0085bb10 RELOCATION_MATCH CCreatureActionHero180RunningTurn::CCreatureActionHero180RunningTurn
+  008676a0 RELOCATION_MATCH CCombatAction_GenericResponseToDrain::?Initialise@CCombatAction_GenericResponseToDrain@@UAEXXZ
+  0086deb0 RELOCATION_MATCH _global::??$GFReadVectorMapMemDump@
+  0086f680 RELOCATION_MATCH CExpressionSet::TransferBinaryIn
+  008707a0 RELOCATION_MATCH CThingComponentSet::TransferBinaryIn
+  0087e860 RELOCATION_MATCH CCombatAction_KickThingOnGround::?Initialise@CCombatAction_KickThingOnGround
+  008b74d0 RELOCATION_MATCH CCreatureAction_OnGenerate::Initialise
+  008b76b0 RELOCATION_MATCH CCreatureAction_LeapLong::?Initialise@CCreatureAction_LeapLong
+  008b7ed0 RELOCATION_MATCH CCreatureAction_UnsheatheWeapons::Initialise
+  008b8110 RELOCATION_MATCH CCreatureAction_GoUnderground::CCreatureAction_GoUnderground
+  008b8d30 RELOCATION_MATCH CCreatureAction_ScreamerDie::?Initialise@CCreatureAction_ScreamerDie
+  008b9110 RELOCATION_MATCH CCreatureAction_ScreamerDie::CCreatureAction_ScreamerDie
+  008bc790 RELOCATION_MATCH CCreatureAction_CastWillLightningSpell::??0CCreatureAction_CastWillLightningSpell
+  008bca00 RELOCATION_MATCH CCreatureAction_CastWillLightningSpell::??0CCreatureAction_CastWillLightningSpell
+  008bcd10 RELOCATION_MATCH CCreatureAction_CastWillFireballSpell::CCreatureAction_CastWillFireballSpell
+  008bcd60 RELOCATION_MATCH CCreatureAction_CastWillFireballSpell::CCreatureAction_CastWillFireballSpell
+  008bd880 RELOCATION_MATCH CCreatureAction_RiseUp::CCreatureAction_RiseUp
+  008c0820 RELOCATION_MATCH CCreatureAction_WhisperSommersaultForward::Initialise
+  008c1c30 RELOCATION_MATCH CCreatureAction_BriarRoseConcentrateInto::?Initialise@CCreatureAction_BriarRoseConcentrateInto
+  008c1e80 RELOCATION_MATCH CCreatureAction_BriarRoseIntoInvulnerable::Initialise
+  008c1f70 RELOCATION_MATCH CCreatureAction_BriarRoseInvulnerableTeleport::?Initialise@CCreatureAction_BriarRoseInvulnerableTeleport
+  008c39a0 RELOCATION_MATCH CCreatureAction_BriarRoseShotFarOutof::CCreatureAction_BriarRoseShotFarOutof
+  008c3f90 RELOCATION_MATCH CCreatureAction_WaspQueenPrimaryAttack::Initialise
+  008c4040 RELOCATION_MATCH CCreatureAction_WaspQueenLashOutAttack::Initialise
+  008c4170 RELOCATION_MATCH CCreatureAction_ScorpionKingDeath::Initialise
+  008c44b0 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::?Initialise@CCreatureAction_ScorpionChargeInto
+  008c4cb0 RELOCATION_MATCH CCreatureAction_WaspQueenDeath::Initialise
+  008c4e20 RELOCATION_MATCH CCreatureAction_ScorpionChargeInto::CCreatureAction_ScorpionChargeInto
+  008c4ea0 RELOCATION_MATCH CCreatureAction_ScorpionCharge::CCreatureAction_ScorpionCharge
+  008c64f0 RELOCATION_MATCH CCreatureAction_TrollThrowProjectile::?Initialise@CCreatureAction_TrollThrowProjectile
+  008c74f0 RELOCATION_MATCH CCreatureAction_RockTrollFallToDeath::FinishAction
+  008c7600 RELOCATION_MATCH CCreatureAction_IceTrollIcicleAssaultInto::?Initialise@CCreatureAction_IceTrollIcicleAssaultInto
+  008c8380 RELOCATION_MATCH CCreatureAction_BanditKingStuck::?Initialise@CCreatureAction_BanditKingStuck
+  008c8550 RELOCATION_MATCH CCreatureAction_BanditKingUnstuck::?Initialise@CCreatureAction_BanditKingUnstuck
+  008c87a0 RELOCATION_MATCH CCreatureAction_BanditKingStuckGetHit::?Initialise@CCreatureAction_BanditKingStuckGetHit
+  008c9410 RELOCATION_MATCH CCreatureAction_BanditKingAttack::CCreatureAction_BanditKingAttack
+  008c95b0 RELOCATION_MATCH CCreatureAction_BanditKingUnstuck::CCreatureAction_BanditKingUnstuck
+  008ca4a0 RELOCATION_MATCH CCreatureAction_NymphGetHitDie::?Initialise@CCreatureAction_NymphGetHitDie
+  008ca600 RELOCATION_MATCH CCreatureAction_NymphSummonOutOf::CCreatureAction_NymphSummonOutOf
+  008cb940 RELOCATION_MATCH CCreatureAction_SummonerDead::?Initialise@CCreatureAction_SummonerDead
+  008cbb90 RELOCATION_MATCH CCreatureAction_SummonerFlameSlice::Initialise
+  008cc8e0 RELOCATION_MATCH CCreatureAction_BalverineLungeAttack::Initialise
+  008cc9c0 RELOCATION_MATCH CCreatureAction_BalverineCorneredJumpIntoSky::Initialise
+  008cd5a0 RELOCATION_MATCH CCreatureAction_CastBattleCharge::?Initialise@CCreatureAction_CastBattleCharge@@UAEXXZ
+  008ce6f0 RELOCATION_MATCH CCreatureAction_CastSkillMultiArrow::??0CCreatureAction_CastSkillMultiArrow
+  008ce900 RELOCATION_MATCH CCreatureAction_CastSkillMultiArrow::??0CCreatureAction_CastSkillMultiArrow
+  008cf990 RELOCATION_MATCH CCreatureAction_TentacleStrikeLoop::CCreatureAction_TentacleStrikeLoop
+  008e45b0 RELOCATION_MATCH CCreatureAction_ScorpionTailWithdraw::??0CCreatureAction_ScorpionTailWithdraw
+  008e4640 RELOCATION_MATCH CCreatureAction_ScorpionTailPlunge::??0CCreatureAction_ScorpionTailPlunge
+  008e4770 RELOCATION_MATCH CCreatureAction_ScorpionRecover::CCreatureAction_ScorpionRecover
+  008e6940 RELOCATION_MATCH CCreatureAction_ReleaseStrengthBerserk::FinishAction
+  008e6bb0 RELOCATION_MATCH CCreatureAction_CastStrengthMultiStrikeProper::??0CCreatureAction_CastStrengthMultiStrikeProper@@QAE@PAVCThingCreatureBase@@PAVCThing@@J@Z
+  008e6c90 RELOCATION_MATCH CCreatureAction_CastStrengthMultiStrikeProper::??0CCreatureAction_CastStrengthMultiStrikeProper@@QAE@PAVCThingCreatureBase@@J@Z
+  008f39a0 RELOCATION_MATCH CCreatureAction_DragonRearUpInto::Initialise
+  008f3ad0 RELOCATION_MATCH CCreatureAction_DragonLand::Initialise
+  008f3e70 RELOCATION_MATCH CCreatureAction_DragonTakeOffIntoFlying::Initialise
+  008f40b0 RELOCATION_MATCH CCreatureAction_DragonHoverOutOf::Initialise
+  008f41d0 RELOCATION_MATCH CCreatureAction_DragonFireBeamInto::Initialise
+  008f4320 RELOCATION_MATCH CCreatureAction_DragonBurninateInto::Initialise
+  008f4480 RELOCATION_MATCH CCreatureAction_DragonStrafeInto::Initialise
+  008f4b00 RELOCATION_MATCH CCreatureAction_DragonFlyInto::?Initialise@CCreatureAction_DragonFlyInto
+  00925780 RELOCATION_MATCH CCreatureAction_KrakenHighAttackLoop::??0CCreatureAction_KrakenHighAttackLoop@?A0x
+  009551a0 RELOCATION_MATCH CAIStateGroup_MazeRangedCombat::Update
+  0096af60 RELOCATION_MATCH CAIStateGroup_WhisperPotionCombat::DisappearJump
+  00976f30 RELOCATION_MATCH CCreatureAction_JackShotFloat::CCreatureAction_JackShotFloat
+  00977100 RELOCATION_MATCH CCreatureAction_JackScream::CCreatureAction_JackScream
+  0097b3f0 RELOCATION_MATCH CCreatureAction_JumpOutFromCover::CCreatureAction_JumpOutFromCover
+  00995b10 RELOCATION_MATCH CMemoryDataInputStream::?ReadCompressed@
+  0099cf10 RELOCATION_MATCH CSystemRegistry::??0CSystemRegistry
+  00a2e5b0 RELOCATION_MATCH C3DGeneratorObject::LoadBinary
+  00a2f2d0 RELOCATION_MATCH C3DMeshStats::LoadBinary
+  00a49240 RELOCATION_MATCH CSpeechFrame::ReadFromFile
+  00a5b260 RELOCATION_MATCH CCachedFile::?Open@CCachedFile
+  00a62120 RELOCATION_MATCH CShaderBankEntry::CShaderBankEntry
+  00a8e8a0 RELOCATION_MATCH CBaseBlock::LoadBinary
+  00a8ea70 RELOCATION_MATCH CStaticBlock::LoadBinary
+  00a8eb10 RELOCATION_MATCH CAnimatedBlock::LoadBinary
+  00abf100 RELOCATION_MATCH C3DMeshMaterial::LoadBinary
+  00b6d6e0 RELOCATION_MATCH CWaterSeaStaticMapInfoBlock::Load
+  00b6d940 RELOCATION_MATCH CEngineWaterRenderer::LoadCompressedBuffer
+  00b6daf0 RELOCATION_MATCH CEngineWaterRenderer::LoadNonPatchData
+  00bde680 RELOCATION_MATCH CObjectTypeCollection::?Load@CObjectTypeCollection
+  00be91e0 RELOCATION_MATCH CWaterSeaGenerator::LoadSea
+  00bfc600 RELOCATION_MATCH CPatchTesselationEdgeStrip::Load
+  00cdcb50 RELOCATION_MATCH _unattributed::TransferBinaryIn_00cdcb50
+  00cdcd00 RELOCATION_MATCH _unattributed::TransferBinaryIn_00cdcd00
+  00cdceb0 RELOCATION_MATCH _unattributed::TransferBinaryIn_00cdceb0
+  00cf8a70 RELOCATION_MATCH CLadyGreyWifeManagerScript::?Main@CLadyGreyWifeManagerScript@
+  00e1e040 RELOCATION_MATCH _unattributed::TransferBinaryIn_00e1e040
+  00e258a0 RELOCATION_MATCH _unattributed::TransferBinaryIn_00e258a0
+  00e38eb0 RELOCATION_MATCH _unattributed::TransferBinaryIn_00e38eb0
+  00e75920 RELOCATION_MATCH _unattributed::TransferBinaryIn_00e75920
+  00e75ad0 RELOCATION_MATCH _unattributed::TransferBinaryIn_00e75ad0
+  00e9e350 RELOCATION_MATCH _unattributed::TransferBinaryIn_00e9e350
+  00eb6680 RELOCATION_MATCH _unattributed::TransferBinaryIn_00eb6680
+  00eb6830 RELOCATION_MATCH _unattributed::TransferBinaryIn_00eb6830
+  00f274d0 RELOCATION_MATCH CPersistContext::Transfer
+  00f27ea0 RELOCATION_MATCH CPersistContext::Transfer
+  00f28610 RELOCATION_MATCH CPersistContext::Transfer
+  00f2d5b0 RELOCATION_MATCH _unattributed::TransferBinaryIn_00f2d5b0
+  00f33b90 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@
+  00f349f0 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@
+  00f351f0 RELOCATION_MATCH CPersistContext::??$TransferVectorOfSubComponents@

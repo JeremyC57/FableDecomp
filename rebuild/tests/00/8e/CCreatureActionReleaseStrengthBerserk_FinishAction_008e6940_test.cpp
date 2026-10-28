@@ -975,7 +975,7 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
  long LastAnimStage;bool HitThing,HitCreature;long FrameUpdatePauseFrames;
  struct AnimationVector {CAnimationEntry** First;CAnimationEntry** Last;CAnimationEntry** End;} CombatAnimations;
  long ActiveStrikeEventIndex;CIntelligentPointer<CThing> LastWeaponUsedInStrike;C3DVector PreferredMovementVector;
- void SetAnimationName(const CCharString&); //008574D0
+ void SetCombatAnimation(const CCharString&); //008574D0
  CCombatActionBase(CThingCreatureBase*,CThing*,long,const CSoundPair&); //00857F30
  CCombatActionBase(CThingCreatureBase*,long,const CSoundPair&); //00858030
 };
@@ -1151,8 +1151,8 @@ CCreatureActionBase::~CCreatureActionBase(){}
 
 CCombatActionBase::CCombatActionBase(CThingCreatureBase* actor,long action,const CSoundPair& sounds):CCreatureActionBase(actor,sounds,0,0){if(action!=145||sounds.first||sounds.last)wrong=true;}
 CCombatActionBase::~CCombatActionBase(){}
-CCreatureAction_ReleaseStrengthBerserk::CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase* actor):CCombatActionBase(actor,145,CSoundPair()){CCharString name("STRENGTH_CAST_BERSERK",-1);SetAnimationName(name);}
-void CCombatActionBase::SetAnimationName(const CCharString& name){if(strcmp(name,"STRENGTH_CAST_BERSERK"))wrong=true;}
+CCreatureAction_ReleaseStrengthBerserk::CCreatureAction_ReleaseStrengthBerserk(CThingCreatureBase* actor):CCombatActionBase(actor,145,CSoundPair()){CCharString name("STRENGTH_CAST_BERSERK",-1);SetCombatAnimation(name);}
+void CCombatActionBase::SetCombatAnimation(const CCharString& name){if(strcmp(name,"STRENGTH_CAST_BERSERK"))wrong=true;}
 CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* key){if(*key!=132&&*key!=167)wrong=true;return *key==132?Start:Start+1;}
 void IntelligentThingVector::PushBack(const CIntelligentPointer<CThing>& item){++pushes;if(this!=&expectedCombat->AlwaysBlockThings||finishes||Finish==End||!item.GetPItem())wrong=true;new(Finish)CIntelligentPointer<CThing>(static_cast<CThing*>(item.GetPItem()));++Finish;
  // Stress native end reload with an append that does not reallocate its storage.

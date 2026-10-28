@@ -123,12 +123,12 @@ class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _combat[0x114 - 0xa8];
     CCombatActionBase(CThingCreatureBase* creature, CThing* target, long action, const CSoundPair& sound);   // 0x00857F30
     virtual ~CCombatActionBase();                           // 0x0062E900
-    void SetPDef(const CCharString& name);          // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);          // 0x008574D0
 };
 class CCreatureAction_WhisperJumpIntoSky : public CCombatActionBase { public:   // vtable 0x012969E4
     virtual void v00();
     __forceinline CCreatureAction_WhisperJumpIntoSky(CThingCreatureBase* creature, CThing* target)
-        : CCombatActionBase(creature, target, 0x96, CSoundPair()) { SetPDef("JUMP_INTO_SKY"); }
+        : CCombatActionBase(creature, target, 0x96, CSoundPair()) { SetCombatAnimation("JUMP_INTO_SKY"); }
 };
 struct CCreatureAction_WhisperLand : CCombatActionBase {   // ctor 0x008CCBD0
     CCreatureAction_WhisperLand(CThingCreatureBase* creature);

@@ -161,7 +161,7 @@ public:
     unsigned char           _pad04[4];
     CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
 class CCreatureAction_CastSkillMultiArrow : public CCombatActionBase {
@@ -174,7 +174,7 @@ public:
 CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingCreatureBase* creature, long level)
     : CCombatActionBase(creature, 0x91, CSoundPair()), Level(level)
 {
-    SetAnimationName("ST_MULTI_ARROW_CAST");
+    SetCombatAnimation("ST_MULTI_ARROW_CAST");
     CDefPointer<CSpecialAbilitiesMultiArrowDef> def;
     long index;
     {

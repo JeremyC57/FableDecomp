@@ -130,7 +130,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad10[0xa8 - 0x10];
     CIntelligentPointer<CThing> PTarget;                 // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
@@ -142,7 +142,7 @@ class CCreatureAction_ScorpionChargeInto : public CCombatActionBase { public:
 
 void CCreatureAction_ScorpionChargeInto::Initialise()
 {
-    SetAnimationName("CHARGE_INTO");
+    SetCombatAnimation("CHARGE_INTO");
     CCombatActionBase::Initialise();
     CTC93* direction;
     if (IS_THING_ALIVE(PTarget) && PTarget.GetPItem()->GetInterface(&direction, 0x93))

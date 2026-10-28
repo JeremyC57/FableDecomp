@@ -14,7 +14,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     CCombatActionBase(long actionCode);                                                                         // 0x00857E40
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_BanditKingUnstuck : public CCombatActionBase { public:   // vtable 0x01281D9C

@@ -2,8 +2,8 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008E4770, length 119 bytes, `ret 4`. Vtable 0x01286724.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair (__fastcall) @ 0x008561A0,
 //          CCombatActionBase::CCombatActionBase(owner, actionCode, const CSoundPair&) @ 0x00858030,
-//          CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0
-//          (manifest label "CTCInGameMenu::SetPDef" is propagated; named as in the landed family 20).
+//          CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0
+//          (manifest label "CTCInGameMenu::SetPDef" is propagated; the name is the Ego_r/FableWin PDB one).
 // Shape: the "SWORD_SWING" literal converts implicitly to a CCharString temporary, the hidden-pointer CSoundPair
 //   feeds the base constructor, the string dies after it; then a scoped named CCharString for the animation (its
 //   constructor pushes are scheduled above the vtable store, GOTCHAS family wave) and the setter call.
@@ -29,7 +29,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);                                           // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);                                           // 0x008574D0
 };
 
 class CCreatureAction_ScorpionRecover : public CCombatActionBase { public:   // vtable 0x01286724
@@ -42,6 +42,6 @@ CCreatureAction_ScorpionRecover::CCreatureAction_ScorpionRecover(CThingCreatureB
 {
     {
         CCharString name("RECOVER", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
 }

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008BD880, length 121 bytes (+ int3 padding). Vtable 0x01268C9C.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair(CThingCreatureBase*, const CCharString&) @ 0x008561A0
 // (`__fastcall`, CSoundPair returned through the hidden pointer), CCombatActionBase::CCombatActionBase(CThingCreatureBase*, long,
-// const CSoundPair&) @ 0x00858030, CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::SetAnimationName @ 0x008574D0.
+// const CSoundPair&) @ 0x00858030, CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0.
 // Shape: the landed ScorpionChargeStrike shape (0x008C4F50) with a null sound name (`push -1 ; push 0`: the 0 converts implicitly
 // through the defaulted length) and action code 240 (0xF0); the name is a scoped named local; the flag byte at +0x114 is a body
 // assignment after the name. The two-argument overload (0x0074DAC0) sets it to 1.
@@ -24,7 +24,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 class CCreatureAction_RiseUp : public CCombatActionBase { public:   // vtable 0x01268C9C
     bool m_hasTarget;                       // +0x114 (descriptive: 1 from the (owner, thing) overload, 0 here)
@@ -37,7 +37,7 @@ CCreatureAction_RiseUp::CCreatureAction_RiseUp(CThingCreatureBase* owner)
 {
     {
         CCharString name("RISE_UP", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     m_hasTarget = false;
 }

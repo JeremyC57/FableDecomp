@@ -26,6 +26,9 @@ namespace N_00411910 { struct CByteArray {                                      
     unsigned char* GetData() { return m_end - m_begin != 0 ? m_begin : (unsigned char*)this; }
     unsigned char& operator[](long index) { return m_begin[index]; }
 }; } using N_00411910::CByteArray;
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 class CMemoryDataInputStream { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void ReadBuffer(void* buffer, long size);      // slot 4 (+0x10)
@@ -34,7 +37,6 @@ class CMemoryDataInputStream { public:
     void*         CurrentSourcePtr;                        // +0x0c
     unsigned long SourceChunkStreamPos;                    // +0x10
     long          SourceChunkBytesRemaining;               // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -50,7 +52,7 @@ class CMemoryDataInputStream { public:
             StreamPos += size;
         }
         else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
     __forceinline long ReadLong()
     {

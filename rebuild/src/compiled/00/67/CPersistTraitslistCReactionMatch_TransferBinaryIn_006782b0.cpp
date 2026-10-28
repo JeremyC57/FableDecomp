@@ -25,8 +25,10 @@ inline void* __cdecl operator new(unsigned int, void* where) { return where; }
 class CMemoryDataInputStream;
 // Method view over the shared engine header (Ego_r.pdb layout: position +4, chunkBase +0xC = current chunk read
 // pointer, chunkLength +0x14 = bytes left in the chunk); the overflow reader is CDataInputStream's.
+class CDataInputStream { friend struct CMemoryDataInputStreamReader;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -40,7 +42,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
             position += size;
         }
         else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
 

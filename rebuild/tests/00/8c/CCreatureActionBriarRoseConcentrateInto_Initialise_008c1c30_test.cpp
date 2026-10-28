@@ -56,7 +56,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 }
 class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature;
-    void SetAnimationName(const CCharString& n) { std::strcpy(g_anim, n.s); }
+    void SetCombatAnimation(const CCharString& n) { std::strcpy(g_anim, n.s); }
     void Initialise() { ++g_baseInit; }
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
@@ -66,7 +66,7 @@ void CCreatureAction_BriarRoseConcentrateInto::Initialise()
 {
     CTCCreatureModeManager* modes = 0;
     GetCreature()->UnsheatheMeleeWeapon_00666820();
-    SetAnimationName("POWER_UP_INTO");
+    SetCombatAnimation("POWER_UP_INTO");
     CCombatActionBase::Initialise();
     if (GetCreature()->GetInterface(&modes, 0x31) && IS_THING_ALIVE(PEnemy))
         modes->AddMode(CCountedModePointer(new CModeBriarRoseConcentrate(GetCreature(), PEnemy.GetCreature(), Imposter)));

@@ -1,7 +1,7 @@
 // CSystemRegistry::CSystemRegistry(const CWideString&, long) -- pick the root hive, then create/open the sub key
 // Leaf: ??0CSystemRegistry
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099CF10, length 96 bytes (+ int3 padding).
-// Callees: CWideString::operator const wchar_t* @ 0x0099AF10 (manifest "CCharString::operator const char*"
+// Callees: CWideString::GetAsCharArray @ 0x0099AF10 (manifest "CCharString::operator const char*"
 // is the byte-identical narrow twin), ADVAPI32!RegCreateKeyExW through the import slot 0x0143FBF8.
 // Mangled name (other build's symbol table): ??0CSystemRegistry@@QAE@ABVCWideString@@J@Z.
 //
@@ -15,7 +15,7 @@ struct HKEY__;
 
 class CWideString {
 public:
-    operator const unsigned short*() const;      // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;   // 0x0099AF10 (0x0099AF00 is the operator const wchar_t* twin)
 private:
     void* m_pData;
 };
@@ -46,6 +46,6 @@ CSystemRegistry::CSystemRegistry(const CWideString& subKey, long rootSelection)
         RootKey = (HKEY__*)0x80000002;           // HKEY_LOCAL_MACHINE
         break;
     }
-    if (RegCreateKeyExW(RootKey, subKey, 0, 0, 0, 0x2001F, 0, &OpenKey, 0) != 0)
+    if (RegCreateKeyExW(RootKey, subKey.GetAsCharArray(), 0, 0, 0, 0x2001F, 0, &OpenKey, 0) != 0)
         OpenKey = 0;
 }

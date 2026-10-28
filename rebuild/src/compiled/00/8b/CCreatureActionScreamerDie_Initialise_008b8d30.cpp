@@ -2,7 +2,7 @@
 // Leaf: ?Initialise@CCreatureAction_ScreamerDie
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B8D30, 499 bytes (512 with padding), virtual Initialise.
 // Callees: as CCreatureAction_BanditKingStuckGetHit::Initialise (0x008C87A0): CCharString ctor/dtor 0x0099EBF0/0x0099EAE0,
-//   SetAnimationName 0x008574D0, GetPItem 0x00A01B50, CBaseIntelligentPointer() 0x00A01B10 / SetPItem 0x00A01B90 /
+//   SetCombatAnimation 0x008574D0, GetPItem 0x00A01B50, CBaseIntelligentPointer() 0x00A01B10 / SetPItem 0x00A01B90 /
 //   ~CBaseIntelligentPointer 0x00A01C10, GetSubDef<CSpecialEffectsDef> 0x00669580, CCRC::CalcAndLookup 0x00669D30,
 //   CThing::GetPos 0x004C73D0, Create 0x006E0880 (__fastcall), LowerBound 0x0040F020 (GetInterface 9 and 0x4B),
 //   CTCDParticleEmitter::AttachToThing 0x006E0BE0, CCombatActionBase::Initialise 0x00857520.
@@ -109,7 +109,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
 };
 class CCreatureAction_ScreamerDie : public CCombatActionBase { public:
@@ -124,7 +124,7 @@ void CCreatureAction_ScreamerDie::Initialise()
         component->m_flag10 = false;
     {
         CCharString name("ST_DIE");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CDefPointer<CSpecialEffectsDef> effects;
     bool found;

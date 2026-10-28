@@ -25,6 +25,9 @@ class CDataInputStream
 {
 public:
     CRGBColour ReadColour();   // 0x009945E0
+private:
+    friend struct CMemoryDataInputStreamReader;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 class CMemoryDataInputStream : public CDataInputStream, public CMemoryDataInputStreamLayout
 {
@@ -38,7 +41,6 @@ class CRGBColour { public:
 };
 
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

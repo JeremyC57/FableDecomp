@@ -21,7 +21,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114 (the P
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                     // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);     // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0 (propagated manifest label; the landed family names it so)
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0 (Ego_r/FableWin PDB name)
 };
 
 class CCreatureAction_TentacleStrikeLoop : public CCombatActionBase { public:   // vtable 0x01284EF4

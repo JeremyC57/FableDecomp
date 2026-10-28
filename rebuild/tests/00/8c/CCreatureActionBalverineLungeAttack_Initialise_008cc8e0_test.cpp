@@ -10,7 +10,7 @@ static int fails = 0;
 // Leaf: Initialise
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CC8E0, 214 bytes (224 with padding), virtual Initialise.
 // Callees: CCharString::CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0 (fable_string.h),
-//   CCombatActionBase::SetAnimationName 0x008574D0, CBaseIntelligentPointer::GetPItem 0x00A01B50, the +0x60 object's virtual
+//   CCombatActionBase::SetCombatAnimation 0x008574D0, CBaseIntelligentPointer::GetPItem 0x00A01B50, the +0x60 object's virtual
 //   slot 84 (+0x150, 0), CThing::AddTC(const CCharString&, bool, CTCParamsBase*) 0x004C9D60, CDefClassBase::GetSubDef<T>
 //   0x008CD0D0 on the creature's def (+0x70), SetLungedThisFrame 0x009054F0 (__fastcall, no argument),
 //   CCombatActionBase::Initialise 0x00857520; the def is released through its vtable slot 1.
@@ -191,7 +191,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;          // +8
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_BalverineLungeAttack : public CCombatActionBase { public:
@@ -202,7 +202,7 @@ void CCreatureAction_BalverineLungeAttack::Initialise()
 {
     {
         CCharString name("STRIKE_MEDIUM_LUNGE", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     PCreature.GetPItem()->GetPhysics()->SetLunging(false);
     if (!(PCreature.GetPItem()->m_flags38 & 0x100)) {
@@ -329,7 +329,7 @@ void CBaseIntelligentPointer::v00() { }
 void __fastcall SetLungedThisFrame() { ++g_lungedFrame; }
 void CCombatActionBase::v00() { }
 void CCombatActionBase::Initialise() { ++g_baseInit; }
-void CCombatActionBase::SetAnimationName(const CCharString& name) { strcpy(g_lastAnim, (const char*)name); }
+void CCombatActionBase::SetCombatAnimation(const CCharString& name) { strcpy(g_lastAnim, (const char*)name); }
 int main()
 {
     CThingPhysics phys;

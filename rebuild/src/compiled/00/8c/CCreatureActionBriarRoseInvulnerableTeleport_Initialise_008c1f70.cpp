@@ -1,7 +1,7 @@
 // CCreatureAction_BriarRoseInvulnerableTeleport::Initialise() -- animation "INVULNERABLE_OUT_OF", base Initialise; push a teleport-intangible mode (living enemy); pop the TELEPORT_POP special effect at the creature and play its TELEPORT_AWAY_WANK sound
 // Leaf: ?Initialise@CCreatureAction_BriarRoseInvulnerableTeleport
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C1F70, 712 bytes (+ int3 padding), virtual Initialise, plain `ret`.
-// Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetAnimationName
+// Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation
 //   0x008574D0, CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature
 //   +8, PEnemy +0x114), CVectorMap::LowerBound 0x0040F020 (inlined GetInterface: 0x31 CTCCreatureModeManager bit 17 of
 //   +0x24, 0x10 CTCSoundPlayer bit 16 of +0x20), operator new 0x00BFEA1A (0x80 bytes), CModeBriarRoseTeleportIntangible
@@ -162,7 +162,7 @@ public:
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                  // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);     // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);     // 0x008574D0
 };
 class CCreatureAction_BriarRoseInvulnerableTeleport : public CCombatActionBase {
 public:
@@ -175,7 +175,7 @@ void CCreatureAction_BriarRoseInvulnerableTeleport::Initialise()
     CTCSoundPlayer* soundPlayer;
     {
         CCharString name("INVULNERABLE_OUT_OF");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;

@@ -1,6 +1,6 @@
 // CCreatureAction_DragonRearUpInto::Initialise() -- animation "REAR_UP_INTO", base Initialise, then (mode manager present) push a new CModeDragonRearUp(owner, Timer) onto the owner's mode manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F39A0, length 176 bytes, plain `ret` (virtual, no arguments).
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("REAR_UP_INTO" @ 0x01288464), SetAnimationName 0x008574D0,
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("REAR_UP_INTO" @ 0x01288464), SetCombatAnimation 0x008574D0,
 // CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020
 // (inlined GetInterface 0x31 = CTCCreatureModeManager), operator new 0x00BFEA1A (0x78 bytes),
 // CModeDragonRearUp::CModeDragonRearUp(CThing*, float) 0x008D84F0, CCountedPointer<CModeBase>::CCountedPointer(CModeBase*)
@@ -76,7 +76,7 @@ public:
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;            // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_DragonRearUpInto : public CCombatActionBase {
@@ -89,7 +89,7 @@ void CCreatureAction_DragonRearUpInto::Initialise()
 {
     {
         CCharString name("REAR_UP_INTO");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;

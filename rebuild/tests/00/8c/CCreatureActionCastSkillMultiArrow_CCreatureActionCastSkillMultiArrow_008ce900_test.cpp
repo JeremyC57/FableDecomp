@@ -152,7 +152,7 @@ public:
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
 class CCreatureAction_CastSkillMultiArrow : public CCombatActionBase {
@@ -165,7 +165,7 @@ public:
 CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingCreatureBase* creature, long level)
     : CCombatActionBase(creature, 0x91, CSoundPair()), Level(level)
 {
-    SetAnimationName("ST_MULTI_ARROW_CAST");
+    SetCombatAnimation("ST_MULTI_ARROW_CAST");
     CDefPointer<CSpecialAbilitiesMultiArrowDef> def;
     long index;
     {
@@ -214,7 +214,7 @@ CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 static long g_baseType; static long g_baseSounds;
 CCombatActionBase::CCombatActionBase(CThingCreatureBase* creature, long type, const CSoundPair& sounds) { PCreature.m_pItem = creature; g_baseType = type; g_baseSounds = sounds.First | sounds.Second; }
 void CCombatActionBase::v00() {}
-void CCombatActionBase::SetAnimationName(const CCharString& name) { g_anim = (const char*)name.PStringData; }
+void CCombatActionBase::SetCombatAnimation(const CCharString& name) { g_anim = (const char*)name.PStringData; }
 void CCreatureAction_CastSkillMultiArrow::v00() {}
 static void Reset() { g_strings = g_stringDtors = g_destroyed = g_plays = g_effects = g_lookups = 0; g_anim = g_defName = g_playName = g_lookupName = 0; g_effectPos = 0; g_effectType = -5; g_baseType = 0; g_baseSounds = -1; }
 struct SMultiArrowDefBuf { CSpecialAbilitiesMultiArrowDef d; };

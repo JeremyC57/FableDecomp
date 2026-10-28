@@ -14,10 +14,10 @@ class CThing { public:
 struct CPtr { CThing* item; CThing* GetPItem() const { return item; } };
 struct CAction {
     CPtr PCreature; CPtr PTarget; char anim[32]; int baseInit;
-    void SetAnimationName(const char* s) { std::strcpy(anim, s); }
+    void SetCombatAnimation(const char* s) { std::strcpy(anim, s); }
     void Initialise()
     {
-        SetAnimationName("ICICLE_ASSAULT_INTO");
+        SetCombatAnimation("ICICLE_ASSAULT_INTO");
         ++baseInit;
         CTCBoss* boss;
         if (PCreature.GetPItem()->GetBoss(&boss))

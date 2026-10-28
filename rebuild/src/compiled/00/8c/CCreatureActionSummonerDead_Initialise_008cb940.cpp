@@ -1,7 +1,7 @@
 // CCreatureAction_SummonerDead::Initialise() -- play FALL_TO_KNEES_OUT_OF, base Initialise, stop mode 0x5c and kill the summoner; when its CSummonerDef names a death object, create it at the summoner and (when it lives and the world is not loading) make the hero its owner; then spawn the summoner's MESH_EXPLODE effect at its position
 // Leaf: ?Initialise@CCreatureAction_SummonerDead
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CB940, length 580 bytes, plain `ret` (virtual).
-// Callees: CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CCombatActionBase::SetAnimationName @ 0x008574D0 / Initialise
+// Callees: CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0 / Initialise
 //          @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCCreatureModeManager::RemoveMode @ 0x0073ABA0, CThing::Kill(bool) @ 0x004C9B80, CDefClassBase::GetSubDef
 //          <CSummonerDef> @ 0x008CBFF0 (same TU) / <CSpecialEffectsDef> @ 0x00669580, CThing::GetPos @ 0x004C73D0,
@@ -157,7 +157,7 @@ class CCombatActionBase { public:                                   // retail si
     unsigned char           _pad10[0x114 - 0x10];
     CThing* GetCreature() const { return PCreature.GetPItem(); }
     CWorld* GetWorld() const;                                // 0x00692950
-    void SetAnimationName(const CCharString& name);          // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);          // 0x008574D0
 };
 class CCreatureAction_SummonerDead : public CCombatActionBase { public:
     virtual void Initialise();
@@ -165,7 +165,7 @@ class CCreatureAction_SummonerDead : public CCombatActionBase { public:
 
 void CCreatureAction_SummonerDead::Initialise()
 {
-    SetAnimationName("FALL_TO_KNEES_OUT_OF");
+    SetCombatAnimation("FALL_TO_KNEES_OUT_OF");
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
     GetCreature()->GetInterface(&modeManager, 0x31);

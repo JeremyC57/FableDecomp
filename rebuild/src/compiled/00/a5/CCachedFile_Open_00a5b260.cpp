@@ -45,11 +45,12 @@ public:
 };
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 class CAFile;
-struct CBase {                                          // the polymorphic root (vptr at +0)
-    CBase();                                            // 0x0099A2F0
-    virtual ~CBase();                                   // 0x0099A300
+class CBaseClassNonCopyable {                           // the polymorphic root (vptr at +0)
+protected:
+    CBaseClassNonCopyable();                            // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();                   // 0x0099A300
 };
-class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                         // vtable 0x0122D06C
     long        AccessType;                             // +0x04
     long        Position;                               // +0x08
     long        Length;                                 // +0x0c

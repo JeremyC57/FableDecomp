@@ -8,7 +8,7 @@ class CCombatActionBase { public:
     void* owner; void* thing; int actionCode; CSoundPair sound; char animName[48];
     CCombatActionBase(void* o, int code, const CSoundPair& s) : owner(o), thing(0), actionCode(code), sound(s) { animName[0] = 0; }
     CCombatActionBase(void* o, void* t, int code, const CSoundPair& s) : owner(o), thing(t), actionCode(code), sound(s) { animName[0] = 0; }
-    void SetAnimationName(const char* n) { std::strcpy(animName, n); }
+    void SetCombatAnimation(const char* n) { std::strcpy(animName, n); }
 };
 static CSoundPair GetSoundPair(void* owner, const char* name)
 {
@@ -16,7 +16,7 @@ static CSoundPair GetSoundPair(void* owner, const char* name)
 }
 
 struct CHigh : CCombatActionBase { bool flag; int value;
-    CHigh(void* owner, void* thing, int v, bool f) : CCombatActionBase(owner, thing, 150, CSoundPair()), flag(f), value(v) { SetAnimationName("ATTACK_HIGH_LOOP"); } };
+    CHigh(void* owner, void* thing, int v, bool f) : CCombatActionBase(owner, thing, 150, CSoundPair()), flag(f), value(v) { SetCombatAnimation("ATTACK_HIGH_LOOP"); } };
 int main()
 {
     int o, t; CHigh a(&o, &t, 9, true);

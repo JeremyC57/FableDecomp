@@ -1,6 +1,6 @@
 // CCreatureAction_DragonFireBeamInto::Initialise() -- animation "FIRE_BEAM_INTO", base Initialise, then (mode manager present) push a new CModeDragonFireBeam(owner, target, Timer) onto the owner's mode manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F41D0, length 199 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("FIRE_BEAM_INTO" @ 0x012884CC), SetAnimationName 0x008574D0,
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("FIRE_BEAM_INTO" @ 0x012884CC), SetCombatAnimation 0x008574D0,
 // CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020
 // (inlined GetInterface 0x31 = CTCCreatureModeManager), operator new 0x00BFEA1A (0x94 bytes),
 // CModeDragonFireBeam::CModeDragonFireBeam(CThing*, CThing*, float) 0x008D86E0, CCountedPointer<CModeBase>::CCountedPointer(CModeBase*)
@@ -77,7 +77,7 @@ public:
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;            // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_DragonFireBeamInto : public CCombatActionBase {
@@ -90,7 +90,7 @@ void CCreatureAction_DragonFireBeamInto::Initialise()
 {
     {
         CCharString name("FIRE_BEAM_INTO");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;

@@ -1,6 +1,6 @@
 // CCreatureAction_ScorpionKingDeath::Initialise() -- animation FALL_TO_DEATH, base Initialise, then look the "DEATH" effect up in the owner's CSpecialEffectsDef and create that effect thing at the owner's position
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4170, length 218 bytes (+ int3 padding).
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName @ 0x008574D0,
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0,
 // CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580,
 // CCRC-style CalcAndLookup(const CCharString&, long*) @ 0x00669D30 (on the special-effects def),
@@ -94,7 +94,7 @@ class CCombatActionBase { public:                             // retail sizeof 0
     long                    _pad04;
     CBaseIntelligentPointer POwner;                    // +0x08
     unsigned char           _body[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);    // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);    // 0x008574D0
     void Initialise();                                 // 0x00857520
     CThing* GetOwner() const { return (CThing*)POwner.GetPItem(); }
     __forceinline CSpecialEffectsDef* GetSpecialEffectsDef() const
@@ -112,7 +112,7 @@ class CCreatureAction_ScorpionKingDeath : public CCombatActionBase { public:
 
 void CCreatureAction_ScorpionKingDeath::Initialise()
 {
-    SetAnimationName("FALL_TO_DEATH");
+    SetCombatAnimation("FALL_TO_DEATH");
     CCombatActionBase::Initialise();
     CDefPointer<CSpecialEffectsDef> out;
     long effectIndex = 0;

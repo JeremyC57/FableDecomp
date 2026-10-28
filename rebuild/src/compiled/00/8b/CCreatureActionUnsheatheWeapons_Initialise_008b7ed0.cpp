@@ -3,7 +3,7 @@
 // CCreatureAction_SummonerUnsheatheStrike::Initialise @ 0x008CB620).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +8, twice), __fastcall ShouldPlayUnsheatheWeaponAction(
 // CThingCreatureBase*, EUnsheatheWeaponType, bool*, bool*) 0x008B7CF0 (result dropped), CCharString(const char*, long)
-// 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetAnimationName(const CCharString&) 0x008574D0,
+// 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation(const CCharString&) 0x008574D0,
 // CVectorMap::LowerBound 0x0040F020 (inline GetInterface 0x30: bit 16 of the present-bits dword +0x24),
 // CCombatActionBase::Initialise 0x00857520 (direct base call, last).
 // Layout: retail WeaponType +0x114 (the PDB header puts it at +0x12C: the debug base is 0x18 larger), so a local model; the
@@ -69,7 +69,7 @@ class CCombatActionBase { public:
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_UnsheatheWeapons : public CCombatActionBase { public:
@@ -84,7 +84,7 @@ void CCreatureAction_UnsheatheWeapons::Initialise()
     ShouldPlayUnsheatheWeaponAction(PCreature, WeaponType, &canUnsheathe, &sheathe);
     {
         CCharString name(sheathe ? "STANDARD_SHEATHE" : "STANDARD_UNSHEATHE", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CTCCombat* combat;
     if (PCreature.GetPItem()->GetInterface(&combat, 0x30))

@@ -13,10 +13,10 @@ struct CBaseIntelligentPointer { CThing* PItem; CThing* GetPItem() const { retur
 class CCharString { public: const char* t; CCharString(const char* s, long = -1) : t(s) {} };
 class CCreatureAction_DragonFireBeamInto { public:
     CBaseIntelligentPointer PCreature, PTarget; float Timer; const char* anim; int baseInit;
-    void SetAnimationName(const CCharString& n) { anim = n.t; }
+    void SetCombatAnimation(const CCharString& n) { anim = n.t; }
     void Initialise()
     {
-        { CCharString name("FIRE_BEAM_INTO"); SetAnimationName(name); }
+        { CCharString name("FIRE_BEAM_INTO"); SetCombatAnimation(name); }
         ++baseInit;
         CTCCreatureModeManager* modeManager;
         if (PCreature.GetPItem()->GetInterface(&modeManager, 0x31))

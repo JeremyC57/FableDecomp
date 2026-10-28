@@ -28,6 +28,9 @@ public:
     virtual CCharString ReadNullTerminatedString();    // slot 6 (+0x18), by value
 public:
     CMatrix3x4 ReadMatrix3x4();   // 0x00995340
+private:
+    friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
 };
 
 class CMemoryDataInputStream : public CDataInputStream { public:
@@ -36,7 +39,6 @@ class CMemoryDataInputStream : public CDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

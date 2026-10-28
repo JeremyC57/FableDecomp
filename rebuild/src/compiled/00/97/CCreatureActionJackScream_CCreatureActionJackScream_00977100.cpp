@@ -1,7 +1,7 @@
 // CCreatureAction_JackScream::CCreatureAction_JackScream(CThingCreatureBase*) -- base CCombatActionBase(owner, 250, GetSoundPair(owner, "SWORD_SWING")), an empty mode pointer, animation "SCREAM_INTO"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00977100, length 133 bytes (+ int3 padding). Vtable 0x01297CB4.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair @ 0x008561A0, CCombatActionBase::CCombatActionBase(
-// CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCharString::~CCharString @ 0x0099EAE0, SetAnimationName @ 0x008574D0.
+// CThingCreatureBase*, long, const CSoundPair&) @ 0x00858030, CCharString::~CCharString @ 0x0099EAE0, SetCombatAnimation @ 0x008574D0.
 // Shape: the one-argument combat-action family; after the vtable store the two words of PModeCountedPointer (CCountedPointer<CModeJackOfBladesScream>,
 // Data/Info, PDB +0x12c/+0x130 = retail +0x114/+0x118) are zeroed through one register by the member's inline constructor; the name is a scoped local.
 class CThingCreatureBase;
@@ -24,7 +24,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                  // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 struct CModeJackOfBladesScream;
 class CCPPointerInfo;
@@ -44,6 +44,6 @@ CCreatureAction_JackScream::CCreatureAction_JackScream(CThingCreatureBase* owner
 {
     {
         CCharString name("SCREAM_INTO", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
 }

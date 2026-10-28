@@ -9,7 +9,7 @@ static int fails = 0;
 // Leaf: Initialise
 // Grade: RELOCATION_MATCH -- GetSubDef<CSpecialEffectsDef> is an extern call (no same-TU body) whose plain out word is read once, right after the call, into a by-value local (ebp) through an inline helper, inside a block holding the out word, so the release uses the cached pointer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008B74D0, 262 bytes (272 with padding), virtual Initialise.
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("GENERATE_DROP" 0x0127A5AC / "GENERATE" 0x0127A5A0), CCombatActionBase::SetAnimationName
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("GENERATE_DROP" 0x0127A5AC / "GENERATE" 0x0127A5A0), CCombatActionBase::SetCombatAnimation
 //   0x008574D0, CCombatActionBase::Initialise 0x00857520, CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580, CCRC::CalcAndLookup 0x00669D30, CThing::GetPosition
 //   0x004C73D0, the special-effect Create 0x006E0880 (__fastcall).
@@ -118,7 +118,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
 };
 struct SEffectsOut { CSpecialEffectsDef* Object; };
@@ -136,7 +136,7 @@ void CCreatureAction_OnGenerate::Initialise()
 {
     {
         CCharString name("GENERATE_DROP");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CSpecialEffectsDef* effects;
@@ -192,7 +192,7 @@ CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 void __fastcall CreateSpecialEffect(long effect, const C3DVector* position, bool attached)
 { ++createCalls; createdEffect = effect; createdPos = position; createdFlag = attached; }
 void CCombatActionBase::v00() { }
-void CCombatActionBase::SetAnimationName(const CCharString& name) { ++setAnimCalls; strcpy(animName, (const char*)name.PStringData); }
+void CCombatActionBase::SetCombatAnimation(const CCharString& name) { ++setAnimCalls; strcpy(animName, (const char*)name.PStringData); }
 void CCombatActionBase::Initialise() { ++baseInitCalls; CHECK(setAnimCalls == 1); }
 static void reset() { strCtors = strDtors = setAnimCalls = baseInitCalls = createCalls = effectsDestroys = defDestroys = 0;
     subDefCalls = lookupCalls = 0; lookupName[0] = animName[0] = 0; createdFlag = true; createdEffect = -1; }

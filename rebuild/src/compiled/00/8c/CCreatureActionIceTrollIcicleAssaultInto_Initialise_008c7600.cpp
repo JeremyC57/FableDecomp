@@ -1,7 +1,7 @@
 // CCreatureAction_IceTrollIcicleAssaultInto::Initialise() -- animation "ICICLE_ASSAULT_INTO", base Initialise, bump the boss phase when the creature is a boss, then (mode manager present, target alive) push a new CModeIceTrollGroundSmashIcicleAssault(owner, target)
 // Leaf: ?Initialise@CCreatureAction_IceTrollIcicleAssaultInto
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C7600, 292 bytes, virtual Initialise.
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("ICICLE_ASSAULT_INTO" 0x012817DC), SetAnimationName 0x008574D0,
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("ICICLE_ASSAULT_INTO" 0x012817DC), SetCombatAnimation 0x008574D0,
 //   CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound
 //   0x0040F020 (inlined GetInterface: 0xAD = CTCBoss, bit 13 of +0x34; 0x31 = CTCCreatureModeManager, bit 17 of +0x24),
 //   CTCBoss::IncrementBossPhase 0x007AED20, operator new 0x00BFEA1A (0x9c bytes),
@@ -81,7 +81,7 @@ public:
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;            // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_IceTrollIcicleAssaultInto : public CCombatActionBase {
@@ -93,7 +93,7 @@ void CCreatureAction_IceTrollIcicleAssaultInto::Initialise()
 {
     {
         CCharString name("ICICLE_ASSAULT_INTO");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CTCBoss* boss;

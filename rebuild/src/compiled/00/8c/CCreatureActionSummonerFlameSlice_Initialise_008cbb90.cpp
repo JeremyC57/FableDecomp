@@ -243,7 +243,7 @@ struct __declspec(novtable) CCombatActionBase:CCreatureActionBase {
  long LastAnimStage;bool HitThing,HitCreature;long FrameUpdatePauseFrames;
  struct AnimationVector {CAnimationEntry** First;CAnimationEntry** Last;CAnimationEntry** End;} CombatAnimations;
  long ActiveStrikeEventIndex;CIntelligentPointer<CThing> LastWeaponUsedInStrike;C3DVector PreferredMovementVector;
- void SetAnimationName(const CCharString&); //008574D0
+ void SetCombatAnimation(const CCharString&); //008574D0
  CCombatActionBase(CThingCreatureBase*,CThing*,long,const CSoundPair&); //00857F30
  CCombatActionBase(CThingCreatureBase*,long,const CSoundPair&); //00858030
 };
@@ -262,7 +262,7 @@ class CCreatureAction_SummonerFlameSlice:public CCombatActionBase { public:
  CCreatureAction_SummonerFlameSlice(CThingCreatureBase*,CThing*); //008CBCA0 base857F30 action150 sounds0
 };
 void CCreatureAction_SummonerFlameSlice::Initialise(){
- {CCharString name("STRIKE_FLAME_SLICE",-1);SetAnimationName(name);}
+ {CCharString name("STRIKE_FLAME_SLICE",-1);SetCombatAnimation(name);}
  CCombatActionBase::Initialise();
  CTCPhysicsBase* physics=PCreature->PhysicsTC;
  {CIntelligentPointer<CThing> obstruction(CreatePhysicalObstruction(PCreature->GetPos(),PCreature->GetPos(),physics->Radius*2.0f));CThing* created=obstruction;PObstruction.SetPItem(created);}

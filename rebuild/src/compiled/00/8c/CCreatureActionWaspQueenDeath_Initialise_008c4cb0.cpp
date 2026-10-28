@@ -1,6 +1,6 @@
 // CCreatureAction_WaspQueenDeath::Initialise() -- names the "FALL_TO_DEATH" animation, runs the base Initialise, then when the creature definition's special-effects sub-def maps "DEATH" to an effect, spawns it at the creature, keeps it as PDeathEffect and attaches its particle emitter to the creature's "TARGET_CURSOR_POINT" helper
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4CB0, length 364 bytes (+ int3 padding).
-// Callees: CCharString ctor/dtor @ 0x0099EBF0 / 0x0099EAE0, CCombatActionBase::SetAnimationName @ 0x008574D0 and Initialise @ 0x00857520,
+// Callees: CCharString ctor/dtor @ 0x0099EBF0 / 0x0099EAE0, CCombatActionBase::SetCombatAnimation @ 0x008574D0 and Initialise @ 0x00857520,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature +8), CDefClassBase::GetSubDef<CSpecialEffectsDef> @ 0x00669580 on a by-value
 // copy of the thing's def (+0x70, add-ref / release around the call), CSpecialEffectsDef::GetEffectFromString @ 0x00669D30, CThing::
 // GetPos @ 0x004C73D0, CreateEffectThing @ 0x006E0880 (`__fastcall`), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem
@@ -124,7 +124,7 @@ class CCombatActionBase { public:                      // retail sizeof 0x114
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 class CCreatureAction_WaspQueenDeath : public CCombatActionBase { public:
     CIntelligentThingPointer PDeathEffect;      // +0x114
@@ -133,7 +133,7 @@ class CCreatureAction_WaspQueenDeath : public CCombatActionBase { public:
 
 void CCreatureAction_WaspQueenDeath::Initialise()
 {
-    SetAnimationName("FALL_TO_DEATH");
+    SetCombatAnimation("FALL_TO_DEATH");
     CCombatActionBase::Initialise();
     CDefSlot<CSpecialEffectsDef> effectsSlot;
     long effectType = 0;

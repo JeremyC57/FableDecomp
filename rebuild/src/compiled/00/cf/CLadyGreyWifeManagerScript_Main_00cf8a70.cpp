@@ -41,11 +41,11 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+struct CBaseClass {
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing() {}
     CScriptThing(const CScriptThing& other);            // 0x004ABE90

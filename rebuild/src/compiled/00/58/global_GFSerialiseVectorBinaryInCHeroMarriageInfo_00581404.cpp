@@ -19,8 +19,10 @@
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
+class CDataInputStream { friend struct CMemoryDataInputStreamReader;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -34,7 +36,7 @@ struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
             position += size;
         }
         else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
 namespace std {

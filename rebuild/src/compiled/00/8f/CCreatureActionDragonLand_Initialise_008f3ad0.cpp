@@ -37,14 +37,14 @@ class CThing : public CClass { public:
 };
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThing* GetPItem() const;}; //00A01C10/00A01B50
 class CCombatActionBase { public:void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
- void SetAnimation(const CCharString&); //008574D0
+ void SetCombatAnimation(const CCharString&); //008574D0
  void Initialise(); //00857520
 };
 extern const float g_DragonLandingHeightDrop; //0128838C =30.148378372192383
 class CCreatureAction_DragonLand : public CCombatActionBase { public:void Initialise();};
 FABLE_STATIC_ASSERT(offsetof(CThing,PPhysics)==0x60);
 void CCreatureAction_DragonLand::Initialise(){
- {CCharString animation("LAND",-1);SetAnimation(animation);}
+ {CCharString animation("LAND",-1);SetCombatAnimation(animation);}
  CCombatActionBase::Initialise();
  CThing* thing=PCreature.GetPItem();
  if(thing->UsingComponents[1]&0x4000000){

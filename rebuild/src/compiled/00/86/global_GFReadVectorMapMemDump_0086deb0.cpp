@@ -19,15 +19,17 @@
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 
+class CDataInputStream { friend struct CMemoryDataInputStreamReader;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 struct CMemoryDataInputStreamReader : CMemoryDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     __forceinline void Read(void* out, long size)
     {
         if (size > 0) {
             __int64 next = (__int64)(unsigned)(position + size);
             if (next < 0 || next > 0x7fffffff) return;
             if (size <= chunkLength) { memcpy(out, (const void*)chunkBase, size); chunkBase += size; chunkLength -= size; position += size; }
-            else ReadWithSrcChunkOverflow((unsigned char*)out, size);
+            else ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)out, size);
         }
     }
     __forceinline long ReadLong() { long v; Read(&v, 4); return v; }

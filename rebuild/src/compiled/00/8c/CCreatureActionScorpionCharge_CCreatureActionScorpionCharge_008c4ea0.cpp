@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C4EA0, length 163 bytes (+ int3 padding).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair @ 0x008561A0 (__fastcall, hidden
 // CSoundPair result), CCombatActionBase::CCombatActionBase @ 0x00857F30, CCharString::~CCharString @ 0x0099EAE0,
-// CCombatActionBase::SetAnimationName @ 0x008574D0, CThing::GetPos @ 0x004C73D0.
+// CCombatActionBase::SetCombatAnimation @ 0x008574D0, CThing::GetPos @ 0x004C73D0.
 // Shape: the ScorpionChargeStrike family constructor (landed 0x008C4F50) plus two body assignments after the
 // name setter: the float argument copied as an integer move to +0x114, then the owner's position copied through
 // `lea ecx,[esi+118h]` (C3DVector with a user copy constructor and the implicit assignment). `ret 0Ch`: three
@@ -40,7 +40,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, CThing* target, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_ScorpionCharge : public CCombatActionBase { public:   // vtable 0x01281024
@@ -55,7 +55,7 @@ CCreatureAction_ScorpionCharge::CCreatureAction_ScorpionCharge(CThingCreatureBas
 {
     {
         CCharString name("CHARGE_LOOP", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     ChargeDistance = chargeDistance;
     StartPos = ((CThing*)owner)->GetPos();

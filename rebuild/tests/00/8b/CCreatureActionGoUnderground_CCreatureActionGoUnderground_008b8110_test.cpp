@@ -27,12 +27,12 @@ class CCombatActionBase { public:
     CThingCreatureBase* m_owner; long m_code; CSoundPair m_sound; char m_anim[32]; int m_setCalls;
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound)
         : m_owner(owner), m_code(actionCode), m_sound(sound), m_setCalls(0) { m_anim[0] = 0; }
-    void SetAnimationName(const CCharString& name) { std::strcpy(m_anim, name.m_pData); ++m_setCalls; }
+    void SetCombatAnimation(const CCharString& name) { std::strcpy(m_anim, name.m_pData); ++m_setCalls; }
 };
 class CCreatureAction_GoUnderground : public CCombatActionBase { public:
     CCreatureAction_GoUnderground(CThingCreatureBase* owner) : CCombatActionBase(owner, 220, GetSoundPair(owner, (const char*)0))
     {
-        { CCharString name("GO_UNDERGROUND", -1); SetAnimationName(name); }
+        { CCharString name("GO_UNDERGROUND", -1); SetCombatAnimation(name); }
     }
 };
 

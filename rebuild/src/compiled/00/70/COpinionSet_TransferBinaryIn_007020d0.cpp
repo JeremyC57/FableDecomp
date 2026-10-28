@@ -16,6 +16,9 @@ extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes)
 class CChunkedFileLoader;
 // CMemoryDataInputStream (retail CMemoryDataInputStream layout, as in the landed 0x00701990 / 0x007AD7F0):
 // +4 read position, +0xC current chunk read pointer, +0x14 bytes left in the chunk.
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 class CMemoryDataInputStream { public:
     virtual void v0(); virtual void v1();
     virtual unsigned long GetPosition();               // slot 2 (+0x08)
@@ -24,7 +27,6 @@ class CMemoryDataInputStream { public:
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -38,7 +40,7 @@ class CMemoryDataInputStream { public:
             m_position += size;
         }
         else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
     __forceinline void ReadBlock(void* buffer, long size)
     {
@@ -54,7 +56,7 @@ class CMemoryDataInputStream { public:
             m_position += size;
         }
         else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
     // The typed readers return by value: their locals live in dead argument slots, and an unused result
     // (a skipped version word) loses its fast-path copy entirely.

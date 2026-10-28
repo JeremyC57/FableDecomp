@@ -1,7 +1,7 @@
 // CCreatureAction_BanditKingUnstuck::Initialise() -- clear Knockdown, animation BK_UNSTUCK, drop creature mode 0x53, close the twin-blade "stuck" hit location and reopen the twin-blade one, create the UNSTUCK special effect at the creature and attach it through its particle emitter, then the base Initialise
 // Leaf: ?Initialise@CCreatureAction_BanditKingUnstuck
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008C8550, 586 bytes (592 with padding), virtual Initialise, plain `ret`.
-// Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetAnimationName
+// Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCombatActionBase::SetCombatAnimation
 //   0x008574D0, CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020 (inline interface lookups
 //   0x31 CTCCreatureModeManager, 0x7F CTCHitLocations, 0x4B CTCDParticleEmitter), CTCCreatureModeManager::RemoveMode
 //   0x0073ABA0, CTCHitLocations::GetPHitLocationFromName 0x00815820, CHitLocation::SetEnabled 0x00816390,
@@ -171,7 +171,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
 };
 class CCreatureAction_BanditKingUnstuck : public CCombatActionBase { public:
@@ -185,7 +185,7 @@ void CCreatureAction_BanditKingUnstuck::Initialise()
     Knockdown = false;
     {
         CCharString name("BK_UNSTUCK");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CTCCreatureModeManager* modes;
     PCreature.GetPItem()->GetInterface(&modes, 0x31);

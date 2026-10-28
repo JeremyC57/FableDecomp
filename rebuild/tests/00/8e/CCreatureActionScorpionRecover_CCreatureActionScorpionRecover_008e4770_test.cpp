@@ -27,12 +27,12 @@ class CCombatActionBase { public:
     CThingCreatureBase* m_owner; long m_code; CSoundPair m_sound; char m_anim[32]; int m_setCalls;
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound)
         : m_owner(owner), m_code(actionCode), m_sound(sound), m_setCalls(0) { m_anim[0] = 0; }
-    void SetAnimationName(const CCharString& name) { std::strcpy(m_anim, name.m_pData); ++m_setCalls; }
+    void SetCombatAnimation(const CCharString& name) { std::strcpy(m_anim, name.m_pData); ++m_setCalls; }
 };
 class CCreatureAction_ScorpionRecover : public CCombatActionBase { public:
     CCreatureAction_ScorpionRecover(CThingCreatureBase* owner) : CCombatActionBase(owner, 150, GetSoundPair(owner, "SWORD_SWING"))
     {
-        { CCharString name("RECOVER", -1); SetAnimationName(name); }
+        { CCharString name("RECOVER", -1); SetCombatAnimation(name); }
     }
 };
 

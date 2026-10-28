@@ -1,6 +1,6 @@
 // CCreatureAction_BalverineCorneredJumpIntoSky::Initialise() -- names the animation "ATTACK_THEN_JUMP_INTO_SKY", runs the base Initialise, clears the byte at +0x10 of the creature's interface-9 component, calls the physics component's virtual slot 84 with 0 and marks the creature as not willable
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CC9C0, length 151 bytes (+ int3 padding).
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0,
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0,
 // CCharString::~CCharString @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520 (direct base call), CBaseIntelligentPointer::GetPItem
 // @ 0x00A01B50 (PCreature at +8, three times), CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 9 = bit 9 of
 // the bitset dword at +0x20, `test ch,2`), the physics component's virtual slot 84 (+0x150) with one argument, and
@@ -90,7 +90,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { public:
@@ -99,7 +99,7 @@ class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { 
 
 void CCreatureAction_BalverineCorneredJumpIntoSky::Initialise()
 {
-    SetAnimationName("ATTACK_THEN_JUMP_INTO_SKY");
+    SetCombatAnimation("ATTACK_THEN_JUMP_INTO_SKY");
     CCombatActionBase::Initialise();
     CTCCreatureFlags9* pFlags;
     if (PCreature.GetPItem()->GetInterface(&pFlags, 9))

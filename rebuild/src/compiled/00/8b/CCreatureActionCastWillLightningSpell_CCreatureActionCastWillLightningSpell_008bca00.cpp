@@ -5,7 +5,7 @@
 //   through a CIntelligentPointer<CThing> temporary: ctor 0x00A01B10, vtable 0x01238C6C, SetPItem 0x00A01B90, dtor 0x00A01C10).
 // Callees: CCombatActionBase(CThingCreatureBase*, long, const CSoundPair&) 0x00858030, CCharString(const char*, long)
 //   0x0099EBF0 ("WILL_CAST_LIGHTNING" 0x0127DC70, "SPECIAL_ABILITIES_LIGHTNING_SPELL_DEF" 0x01235B14), ~CCharString
-//   0x0099EAE0, CCombatActionBase::SetAnimationName 0x008574D0, CGameDefinitionManager::Get 0x0044C6B0 (__fastcall),
+//   0x0099EAE0, CCombatActionBase::SetCombatAnimation 0x008574D0, CGameDefinitionManager::Get 0x0044C6B0 (__fastcall),
 //   CDefinitionManager::GetGlobalIndexFromClassIndex 0x009AD390, GetDef<CSpecialAbilitiesLightningSpellDef> 0x007A35D0,
 //   CVectorMap::LowerBound 0x0040F020 (inlined GetInterface type 0x10), CDefStringTable::GetString 0x009D49B0 on
 //   g_DefStringTable 0x013CA828, CTCSound::PlaySound 0x0066BD00.
@@ -129,7 +129,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _padb0[0x114 - 0xb0];
     __forceinline void SetPTarget(CIntelligentPointerThing target) { PTarget.SetPItem(target.GetPItem()); }
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 class CCreatureAction_CastWillLightningSpell : public CCombatActionBase { public:   // vtable 0x0127DB2C
     long m_spellState;                                // +0x114
@@ -143,7 +143,7 @@ CCreatureAction_CastWillLightningSpell::CCreatureAction_CastWillLightningSpell(C
 {
     {
         CCharString animation("WILL_CAST_LIGHTNING");
-        SetAnimationName(animation);
+        SetCombatAnimation(animation);
     }
     CDefPointer<CSpecialAbilitiesLightningSpellDef> def;
     long index;

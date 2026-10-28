@@ -19,7 +19,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114 (the P
     virtual void v00();
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
-    void SetAnimationName(const CCharString& name);                                           // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);                                           // 0x008574D0
 };
 
 struct __declspec(novtable) CCreatureAction_CastSpellBase : CCombatActionBase {   // intermediate: flags only, no vtable store of its own

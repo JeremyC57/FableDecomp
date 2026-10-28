@@ -6,7 +6,7 @@ class CThingCreatureBase { public: int id; };
 static CThingCreatureBase* g_owner; static long g_code; static long g_s0, g_s1; static const char* g_anim;
 class CCombatActionBase { public: virtual void v00() {} unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound) { g_owner = owner; g_code = actionCode; g_s0 = sound.FirstSound; g_s1 = sound.LastSound; std::memset(_body, 0, sizeof(_body)); }
-    void SetAnimationName(const CCharString& name) { g_anim = name.m_pData; } };
+    void SetCombatAnimation(const CCharString& name) { g_anim = name.m_pData; } };
 
 struct CCreatureAction_CastSpellBase : CCombatActionBase { unsigned char ImmediateCast; unsigned char OneAnimCast;
     CCreatureAction_CastSpellBase(CThingCreatureBase* owner, long actionCode) : CCombatActionBase(owner, actionCode, CSoundPair()), ImmediateCast(0), OneAnimCast(0) { } };

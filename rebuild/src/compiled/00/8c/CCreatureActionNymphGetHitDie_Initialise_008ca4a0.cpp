@@ -1,7 +1,7 @@
 // CCreatureAction_NymphGetHitDie::Initialise() -- FALL_DEAD animation, reconfigure the nymph's physics, stop its flying, record its height above the ground, then the base Initialise
 // Leaf: ?Initialise@CCreatureAction_NymphGetHitDie
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CA4A0, 251 bytes (256 with padding), virtual Initialise.
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("FALL_DEAD" 0x012821F8), CCombatActionBase::SetAnimationName
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("FALL_DEAD" 0x012821F8), CCombatActionBase::SetCombatAnimation
 //   0x008574D0, CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +0x08), the physics component's virtual slots 36
 //   (+0x90, arg 1), 43 (+0xac, arg 2) and 80 (+0x140) (names unconfirmed), CVectorMap::LowerBound 0x0040F020 (inlined
 //   GetInterface 0xF5 = CTCNymph, bit 21 of +0x3c), CTCNymph::StopFlyingAround(long) 0x0080F870, CThing::GetPos
@@ -90,7 +90,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad04[4];
     CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
     CWorldMap* GetWorldMap();                         // 0x00692C10
 };
@@ -104,7 +104,7 @@ void CCreatureAction_NymphGetHitDie::Initialise()
 {
     {
         CCharString name("FALL_DEAD");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     PCreature.GetPItem()->GetPhysics()->SetMovementType(1);
     PCreature.GetPItem()->GetPhysics()->SetCollisionType(2);

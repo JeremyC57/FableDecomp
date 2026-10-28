@@ -26,7 +26,7 @@ class CThing { public: bool hasSound; CTCSound sound; bool GetInterface(CTCSound
 class CCombatActionBase { public:
     CThing* creature; long code; char anim[64];
     CCombatActionBase(CThing* owner, long actionCode) : creature(owner), code(actionCode) { anim[0] = 0; }
-    void SetAnimationName(const CCharString& s) { std::strcpy(anim, s.text); }
+    void SetCombatAnimation(const CCharString& s) { std::strcpy(anim, s.text); }
 };
 struct CAction : CCombatActionBase {
     long m_a, m_b;
@@ -34,7 +34,7 @@ struct CAction : CCombatActionBase {
 };
 CAction::CAction(CThing* owner) : CCombatActionBase(owner, 150), m_a(0), m_b(0)
 {
-    { CCharString animation("WILL_CAST_LIGHTNING"); SetAnimationName(animation); }
+    { CCharString animation("WILL_CAST_LIGHTNING"); SetCombatAnimation(animation); }
     CDefPointer def;
     long index;
     { CCharString name("SPECIAL_ABILITIES_LIGHTNING_SPELL_DEF"); index = CDefinitionManager::Get().GetGlobalIndexFromClassIndex(name, 1); }

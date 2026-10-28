@@ -1,6 +1,6 @@
 // CCreatureAction_BriarRoseIntoInvulnerable::Initialise() -- animation "INVULNERABLE_INTO", base Initialise, then (mode manager present, enemy alive) push a new CModeBriarRoseTeleportInvulnerable(owner, enemy) onto the owner's mode manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C1E80, length 225 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("INVULNERABLE_INTO" @ 0x0128033C), SetAnimationName 0x008574D0,
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("INVULNERABLE_INTO" @ 0x0128033C), SetCombatAnimation 0x008574D0,
 // CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020
 // (inlined GetInterface 0x31 = CTCCreatureModeManager, bit 17 of +0x24), operator new 0x00BFEA1A (0x88 bytes),
 // CModeBriarRoseTeleportInvulnerable::CModeBriarRoseTeleportInvulnerable(CThing*, CThingCreatureBase*) 0x008C35D0,
@@ -76,7 +76,7 @@ public:
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_BriarRoseIntoInvulnerable : public CCombatActionBase {
@@ -89,7 +89,7 @@ void CCreatureAction_BriarRoseIntoInvulnerable::Initialise()
 {
     {
         CCharString name("INVULNERABLE_INTO");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;

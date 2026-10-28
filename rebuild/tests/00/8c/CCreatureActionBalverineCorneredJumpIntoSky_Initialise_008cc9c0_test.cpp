@@ -73,14 +73,14 @@ class CCombatActionBase { public:
     virtual void Initialise() { Log(100); }
     virtual void FinishAction() { Log(101); }
     CBaseIntelligentPointer PCreature;
-    void SetAnimationName(const CCharString& name) { g_animName = name.m_text; Log(200); }
+    void SetCombatAnimation(const CCharString& name) { g_animName = name.m_text; Log(200); }
 };
 class CCreatureAction_BalverineCorneredJumpIntoSky : public CCombatActionBase { public:
     virtual void Initialise();
 };
 void CCreatureAction_BalverineCorneredJumpIntoSky::Initialise()
 {
-    SetAnimationName("ATTACK_THEN_JUMP_INTO_SKY");
+    SetCombatAnimation("ATTACK_THEN_JUMP_INTO_SKY");
     CCombatActionBase::Initialise();
     CTCCreatureFlags9* pFlags;
     if (PCreature.GetPItem()->GetInterface(&pFlags, 9))

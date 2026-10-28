@@ -9,11 +9,11 @@ static CSolid g_solid;
 class CThing { public: CSolid* AddTC(const char* n, bool, void*) { std::strcpy(g_added, n); return &g_solid; } };
 struct CAction {
     CThing* m_creature; CThing* m_target; bool Landed;
-    void SetAnimationName(const char* n) { std::strcpy(g_anim, n); }
+    void SetCombatAnimation(const char* n) { std::strcpy(g_anim, n); }
     void BaseInitialise() { ++g_base; }
     void Initialise()
     {
-        SetAnimationName("MOVEMENT_LONG_FORWARD");
+        SetCombatAnimation("MOVEMENT_LONG_FORWARD");
         BaseInitialise();
         Landed = false;
         CSolid* solid = m_creature->AddTC("CTCSolidToThing", false, 0);

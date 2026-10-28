@@ -18,14 +18,16 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 class C2DVector { public: float X, Y; };
-class CMemoryDataInputStream { public:
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
+class CMemoryDataInputStream : public CDataInputStream { public:
     void* m_pVtable;                       // +0
     unsigned long m_position;              // +4
     long StreamSize;
     const unsigned char* m_pData;          // +0xC
     long SourceChunkStreamPos;
     long m_remaining;                      // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     CCharString ReadPresizedString();                                  // 0x00996390
     void Read(C2DVector* vector);                                      // 0x00995030
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }

@@ -13,14 +13,16 @@ extern "C" void __cdecl free(void* p);
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
-class CMemoryDataInputStream { public:
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
+class CMemoryDataInputStream : public CDataInputStream { public:
     void* m_pVtable;
     unsigned long m_position;
     long StreamSize;
     const unsigned char* m_pData;
     long SourceChunkStreamPos;
     long m_remaining;
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     __forceinline void Read(void* buffer, long size)
     {
         __int64 newPosition = (__int64)(m_position + size);

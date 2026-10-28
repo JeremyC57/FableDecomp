@@ -16,10 +16,10 @@ struct CPtr { CThing* item; CThing* GetPItem() const { return item; } };
 struct CAction {
     CPtr PCreature; CWorldMap* map; char anim[16]; float HeightOnInit; int baseInit;
     CWorldMap* GetWorldMap() { return map; }
-    void SetAnimationName(const char* s) { std::strcpy(anim, s); }
+    void SetCombatAnimation(const char* s) { std::strcpy(anim, s); }
     void Initialise()
     {
-        SetAnimationName("FALL_DEAD");
+        SetCombatAnimation("FALL_DEAD");
         PCreature.GetPItem()->GetPhysics()->SetMovementType(1);
         PCreature.GetPItem()->GetPhysics()->SetCollisionType(2);
         PCreature.GetPItem()->GetPhysics()->ResetMovement();

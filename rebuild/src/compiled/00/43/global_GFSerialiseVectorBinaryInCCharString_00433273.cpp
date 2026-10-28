@@ -30,6 +30,9 @@ public:
     void* PStringData;
 };
 
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 class CMemoryDataInputStream {                           // vtable 0x0123675C, 0x1C bytes
 public:
     virtual ~CMemoryDataInputStream();                   // slot 0
@@ -42,7 +45,6 @@ public:
     long  chunkLength;                                   // +0x14
     void* StreamSource;                                  // +0x18
 
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -56,7 +58,7 @@ public:
             position += size;
         }
         else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
 

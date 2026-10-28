@@ -1,7 +1,7 @@
 // CCreatureAction_CastBattleCharge::Initialise() -- names the cast animation, runs the base Initialise, adds a CTCBattleCharge component to the owner and aims it at the action's target; an override sets the dash distance and turns the owner along the stored direction, an AI-state owner gets the cast level, and a live target thing is handed over
 // Leaf: ?Initialise@CCreatureAction_CastBattleCharge@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x008CD5A0, 400 bytes.
-// Callees: CCreatureActionBase::SetAnimationName 0x008574D0 ("..." literal 0x01283E30), CCombatActionBase::Initialise
+// Callees: CCreatureActionBase::SetCombatAnimation 0x008574D0 ("..." literal 0x01283E30), CCombatActionBase::Initialise
 //          0x00857520, CThing::AddTC 0x004C9D60 (literal 0x0123C4C0), the component's SetPTarget(CThing*, bool) 0x007A7150,
 //          physics vtable slot 74 SetFacingAnglesFromRHSet (the landed CastAssassinRush::Initialise 0x008CD470 model),
 //          CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor 0x00A01B10/B50/B90/C10 (CIntelligentPointer<CThing> vtable 0x01238C6C).
@@ -71,7 +71,7 @@ class CCombatActionBase { public:
     unsigned char _pad34[0xa8 - 0x34];
     CBaseIntelligentPointer PTarget;            // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     virtual void Initialise();                  // 0x00857520
 };
 #pragma pack(push, 1)
@@ -91,7 +91,7 @@ void CCreatureAction_CastBattleCharge::Initialise()
 {
     {
         CCharString name("ST_BATTLE_CHARGE_CAST", -1);
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CTCBattleCharge* tc = PCreature.GetPItem()->AddTC("CTCBattleCharge", true, 0);

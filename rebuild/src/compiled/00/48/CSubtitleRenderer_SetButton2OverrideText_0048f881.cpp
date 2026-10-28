@@ -63,7 +63,7 @@ public:
     void SetButton2OverrideText(const CCharString& text);
 };
 
-static const unsigned short s_Default[] = { 'T', 'E', 'X', 'T', '_', 'G', 'U', 'I', '_', 'S', 'K', 'I', 'P', '_', 'S', 'C', 'E', 'N', 'E', 0 };   // L"TEXT_GUI_SKIP_SCENE"
+static const unsigned short s_TextGuiSkipScene[] = { 'T', 'E', 'X', 'T', '_', 'G', 'U', 'I', '_', 'S', 'K', 'I', 'P', '_', 'S', 'C', 'E', 'N', 'E', 0 };   // L"TEXT_GUI_SKIP_SCENE"
 
 void CSubtitleRenderer::SetButton2OverrideText(const CCharString& text)
 {
@@ -77,6 +77,6 @@ void CSubtitleRenderer::SetButton2OverrideText(const CCharString& text)
     Button2TextOverridden = true;
     return;
 empty:
-    GetTextFromTextTag(s_Default, Button2OverrideText);
+    GetTextFromTextTag(s_TextGuiSkipScene, Button2OverrideText);
     Button2TextOverridden = false;
 }

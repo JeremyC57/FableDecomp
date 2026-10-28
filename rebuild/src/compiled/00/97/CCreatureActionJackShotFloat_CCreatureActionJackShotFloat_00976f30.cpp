@@ -3,7 +3,7 @@
 // Model: rebuild/include/engine/CCreatureAction_JackShotFloat.h is the flattened PDB layout and sits high against the bytes (CCombatActionBase is 0x12c bytes in the PDB, 0x114 in retail: retail containers are 12 bytes), so `this` is a local model with the retail offsets.
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, GetSoundPair @ 0x008561A0 (`__fastcall`, hidden-pointer CSoundPair),
 // CCombatActionBase::CCombatActionBase(CThingCreatureBase*, CThing*, long, const CSoundPair&) @ 0x00857F30, CCharString::~CCharString
-// @ 0x0099EAE0, CCombatActionBase::SetAnimationName(const CCharString&) @ 0x008574D0.
+// @ 0x0099EAE0, CCombatActionBase::SetCombatAnimation(const CCharString&) @ 0x008574D0.
 // Shape: the landed two-argument combat-action family (0x008C4F50): the literal converts implicitly (re-addressed with `lea`), the
 // string temporary dies after the base constructor, then the vtable store and the name reference forwarded to the setter (`ret 0Ch`).
 class CThingCreatureBase;
@@ -26,7 +26,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);                  // 0x00858030
     CCombatActionBase(CThingCreatureBase* owner, CThing* thing, long actionCode, const CSoundPair& sound);   // 0x00857F30
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 class CCreatureAction_JackShotFloat : public CCombatActionBase { public:   // vtable 0x012978A4
     virtual void v00();
@@ -36,5 +36,5 @@ class CCreatureAction_JackShotFloat : public CCombatActionBase { public:   // vt
 CCreatureAction_JackShotFloat::CCreatureAction_JackShotFloat(CThingCreatureBase* owner, CThing* thing, const CCharString& animationName)
     : CCombatActionBase(owner, thing, 250, GetSoundPair(owner, "SWORD_SWING"))
 {
-    SetAnimationName(animationName);
+    SetCombatAnimation(animationName);
 }

@@ -7,7 +7,7 @@ class CThingCreatureBase { public: int id; };
 static CThingCreatureBase* g_owner; static long g_code; static long g_s0, g_s1; static const char* g_anim;
 class CCombatActionBase { public: virtual void v00() {} unsigned char _body[0x114 - 4];
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound) { g_owner = owner; g_code = actionCode; g_s0 = sound.FirstSound; g_s1 = sound.LastSound; std::memset(_body, 0, sizeof(_body)); }
-    void SetAnimationName(const CCharString& name) { g_anim = name.m_pData; } };
+    void SetCombatAnimation(const CCharString& name) { g_anim = name.m_pData; } };
 
 class CCreatureActionHero180RunningTurn : public CCombatActionBase { public: C3DVector RequiredFacing; virtual void v00() {} CCreatureActionHero180RunningTurn(CThingCreatureBase* owner, const C3DVector& f); };
 CCreatureActionHero180RunningTurn::CCreatureActionHero180RunningTurn(CThingCreatureBase* owner, const C3DVector& f) : CCombatActionBase(owner, 1, CSoundPair()) , RequiredFacing(f) { }

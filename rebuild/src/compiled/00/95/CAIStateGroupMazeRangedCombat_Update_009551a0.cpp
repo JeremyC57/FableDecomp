@@ -56,7 +56,7 @@ struct CCombatActionBaseRetail : CCreatureActionBaseRetail {
     CCombatActionBaseRetail(CThingCreatureBase*, CThing*, long, const CSoundPair&); // 0x00857F30
     CCombatActionBaseRetail(CThingCreatureBase*, long, const CSoundPair&); // 0x00858030
     virtual ~CCombatActionBaseRetail(); // 0x0062E900
-    void SetAnimationName(const CCharString&);
+    void SetCombatAnimation(const CCharString&);
 };
 // CCreatureAction_ThrowShotObject ctor: 0x009566C0.
 struct CCreatureAction_ThrowShotObjectRetail : CCombatActionBaseRetail {

@@ -1,6 +1,6 @@
 // CCreatureAction_DragonTakeOffIntoFlying::Initialise() -- names the "TAKE_OFF" animation, runs the base Initialise, makes the dragon unliftable, clears the interface-9 byte, makes the dragon not solid to the hero (adding a CTCSolidToThing to the hero when missing) and records the take-off destination 35.148 units above the dragon
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F3E70, length 338 bytes (+ int3 padding).
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetAnimationName @ 0x008574D0,
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCombatActionBase::SetCombatAnimation @ 0x008574D0,
 // ~CCharString @ 0x0099EAE0, CCombatActionBase::Initialise @ 0x00857520, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
 // SetThingIsAbleToBeLifted(CThing*, bool) @ 0x007E4330 (`__fastcall`: ecx thing, dl flag), CVectorMap::LowerBound @ 0x0040F020
 // (inlined GetInterface for types 9 and 0x4D), CPlayerManager::GetMainPlayer @ 0x00449970 (g_pMainGameComponent +0x1c),
@@ -105,7 +105,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThing> PCreature;      // +0x08
     unsigned char _pad10[0x114 - 0x10];     // +0x10
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { public:
     unsigned char _pad114[0x120 - 0x114];   // +0x114
@@ -115,7 +115,7 @@ class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { publi
 
 void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
 {
-    SetAnimationName("TAKE_OFF");
+    SetCombatAnimation("TAKE_OFF");
     CCombatActionBase::Initialise();
     SetThingIsAbleToBeLifted(PCreature.GetPItem(), false);
     CTCCreatureFlags9* pFlags;

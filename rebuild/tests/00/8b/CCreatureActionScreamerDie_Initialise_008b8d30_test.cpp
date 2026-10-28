@@ -44,7 +44,7 @@ struct CIntelligentPointerThing {
 };
 class CCombatActionBase { public:
     CIntelligentPointerThing PCreature; std::string Anim; bool BaseInit;
-    void SetAnimationName(const CCharString& n) { Anim = n.s; }
+    void SetCombatAnimation(const CCharString& n) { Anim = n.s; }
     void Initialise() { BaseInit = true; }
 };
 class CCreatureAction_ScreamerDie : public CCombatActionBase { public: CIntelligentPointerThing PDieEffect; void Initialise(); };
@@ -54,7 +54,7 @@ void CCreatureAction_ScreamerDie::Initialise()
     CTCInterface9* component;
     if (PCreature.GetPItem()->GetInterface(&component, 9))
         component->m_flag10 = false;
-    SetAnimationName("ST_DIE");
+    SetCombatAnimation("ST_DIE");
     CDefPointer<CSpecialEffectsDef> effects;
     bool found;
     {

@@ -2,7 +2,7 @@
 // Leaf: ??0CCreatureAction_CastSkillMultiArrow
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008CE6F0, length 522 bytes (+ int3 padding), `ret 4`, no EH frame.
 // Callees: CCombatActionBase ctor 0x00858030, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
-//   CCombatActionBase::SetAnimationName 0x008574D0, CGameDefinitionManager::Get 0x0044C6B0 (__fastcall),
+//   CCombatActionBase::SetCombatAnimation 0x008574D0, CGameDefinitionManager::Get 0x0044C6B0 (__fastcall),
 //   GetDefIndexFromName 0x009AD390, GetDef<> 0x007CC8E0, CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound 0x0040F020, CDefStringTable::GetString 0x009D49B0 (g_DefStringTable
 //   0x013CA828), the sound component's PlaySound 0x0066BD00, CDefClassBase::GetSubDef<CSpecialEffectsDef> 0x00669580,
@@ -173,7 +173,7 @@ public:
     unsigned char           _pad04[4];
     CIntelligentPointer<CThing> PCreature;                // +0x08
     unsigned char           _pad10[0x114 - 0x10];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
 class CCreatureAction_CastSkillMultiArrow : public CCombatActionBase {
@@ -186,7 +186,7 @@ public:
 CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingCreatureBase* creature)
     : CCombatActionBase(creature, 0x91, CSoundPair()), Level(0)
 {
-    SetAnimationName("ST_MULTI_ARROW_CAST");
+    SetCombatAnimation("ST_MULTI_ARROW_CAST");
     CDefPointer<CSpecialAbilitiesMultiArrowDef> def;
     long index;
     {

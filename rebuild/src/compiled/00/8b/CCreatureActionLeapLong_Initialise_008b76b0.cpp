@@ -6,7 +6,7 @@
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound (const copy) 0x004365B0, interface 2's
 //   GetFacing (slot 70, +0x118, C3DVector by hidden pointer), CThing::GetPos 0x004C73D0,
 //   CTCCreatureNavigation::IsPosNavLineOfSightTo 0x006CBA20 (interface 7), CCharString 0x0099EBF0 / ~ 0x0099EAE0,
-//   CCombatActionBase::SetAnimationName 0x008574D0 / Initialise 0x00857520, CThing::AddTC 0x004C9D60,
+//   CCombatActionBase::SetCombatAnimation 0x008574D0 / Initialise 0x00857520, CThing::AddTC 0x004C9D60,
 //   CTCSolidToThing::AddThingNotSolidTo 0x00770FA0.
 // Layout: retail CCombatActionBase is 0x114 bytes (landed WhisperSommersaultForward::Initialise 0x008C0820); the flag
 //   at +0x114 is this class's first member; PTarget +0xa8; CThing interface bitset +0x20, map +0x44.
@@ -87,7 +87,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad10[0xa8 - 0x10];
     CIntelligentPointer<CThing> PTarget;                  // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     CThing* GetCreature() const { return PCreature.GetPItem(); }
 };
 class CCreatureAction_LeapLong : public CCombatActionBase { public:
@@ -104,21 +104,21 @@ void CCreatureAction_LeapLong::Initialise()
     CTCCreatureNavigation* nav;
     GetCreature()->GetInterface(&nav, 7);
     if (nav->IsPosNavLineOfSightTo(target)) {
-        SetAnimationName("MOVEMENT_LONG_BACK");
+        SetCombatAnimation("MOVEMENT_LONG_BACK");
         NoRoom = false;
         CCombatActionBase::Initialise();
         return;
     }
     target = facing * 3.0f + GetCreature()->GetPos();
     if (nav->IsPosNavLineOfSightTo(target)) {
-        SetAnimationName("MOVEMENT_LONG_FORWARD");
+        SetCombatAnimation("MOVEMENT_LONG_FORWARD");
         NoRoom = false;
         CTCSolidToThing* solid = GetCreature()->AddTC("CTCSolidToThing", false, 0);
         solid->AddThingNotSolidTo(PTarget.GetPItem());
         CCombatActionBase::Initialise();
         return;
     }
-    SetAnimationName("SPECIAL_IDLE");
+    SetCombatAnimation("SPECIAL_IDLE");
     NoRoom = true;
     CCombatActionBase::Initialise();
 }

@@ -106,7 +106,10 @@ struct CCharBuffer {                                         // CArray<char> bui
     char* GetData() { return size() != 0 ? _M_start : (char*)this; }
 };
 
-class CMemoryDataInputStream { public:
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
+class CMemoryDataInputStream : public CDataInputStream { public:
     void*                m_pVtable;                          // +0x00
     unsigned long        m_position;                         // +0x04
     long                 StreamSize;                         // +0x08
@@ -117,7 +120,6 @@ class CMemoryDataInputStream { public:
     CMemoryDataInputStream(void* data, unsigned long size);  // 0x00994930
     ~CMemoryDataInputStream();                               // 0x00993B10
     CCharString ReadNullTerminatedString();                  // 0x00995D30
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline unsigned long ReadULong()
     {

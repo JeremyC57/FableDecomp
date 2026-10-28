@@ -52,6 +52,9 @@ class CPersistContext { public:                           // retail 0x2c bytes, 
 };
 extern const char g_emptyString_0122d70e[];       // 0x0122D70E ("")
 
+class CDataInputStream { friend class CMemoryDataInputStream;
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0 (private: Ego_r ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z)
+};
 class CMemoryDataInputStream {
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
@@ -61,7 +64,6 @@ public:
     const unsigned char* chunkBase;                                   // +0x0C
     long                 chunkPosition;                               // +0x10
     long                 chunkLength;                                 // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);  // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -75,7 +77,7 @@ public:
             position += size;
         }
         else
-            ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
+            ((CDataInputStream*)this)->ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
 };
 

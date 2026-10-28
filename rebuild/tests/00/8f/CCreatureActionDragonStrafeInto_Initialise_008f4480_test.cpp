@@ -1,6 +1,6 @@
 // CCreatureAction_DragonStrafeInto::Initialise() -- animation "STRAFE_INTO", base Initialise, then (mode manager present) push a new CModeDragonStrafe(owner, Timer, Speed, Timer * 0.125, Timer * 0.75) onto the owner's mode manager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008F4480, length 233 bytes (+ int3 padding), plain `ret` (virtual, no arguments).
-// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("STRAFE_INTO" @ 0x01288514), SetAnimationName 0x008574D0,
+// Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0 ("STRAFE_INTO" @ 0x01288514), SetCombatAnimation 0x008574D0,
 // CCombatActionBase::Initialise 0x00857520 (direct), CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap::LowerBound 0x0040F020
 // (inlined GetInterface 0x31 = CTCCreatureModeManager), operator new 0x00BFEA1A (0x58 bytes),
 // CModeDragonStrafe::CModeDragonStrafe(CThing*, float, float, float, float) 0x008DDFB0, CCountedPointer<CModeBase>::CCountedPointer(CModeBase*)
@@ -77,7 +77,7 @@ public:
     unsigned char           _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;            // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    void SetAnimationName(const CCharString& name);   // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
 
 class CCreatureAction_DragonStrafeInto : public CCombatActionBase {
@@ -91,7 +91,7 @@ void CCreatureAction_DragonStrafeInto::Initialise()
 {
     {
         CCharString name("STRAFE_INTO");
-        SetAnimationName(name);
+        SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
@@ -111,7 +111,7 @@ static CModeBase* g_added = 0; static const void* g_managerThis = 0;
 static CThing* g_owner = 0; static float g_args[4];
 CCharString::CCharString(const char* text, long length) { PStringData = (void*)text; ++g_strings; (void)length; }
 CCharString::~CCharString() { --g_strings; }
-void CCombatActionBase::SetAnimationName(const CCharString& name) { strcpy(g_anim, (const char*)name.PStringData); }
+void CCombatActionBase::SetCombatAnimation(const CCharString& name) { strcpy(g_anim, (const char*)name.PStringData); }
 void CCombatActionBase::Initialise() { ++g_baseInits; }
 CThing* CBaseIntelligentPointer::GetPItem() const { ++g_pitems; return m_pItem; }
 template<> CCountedPointer<CModeBase>::CCountedPointer(CModeBase* object) { m_pObject = object; m_pCount = 0; }

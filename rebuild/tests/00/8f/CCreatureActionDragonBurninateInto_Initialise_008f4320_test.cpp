@@ -20,10 +20,10 @@ class CCharString { public: const char* t; CCharString(const char* s, long = -1)
 class CCreatureAction_DragonBurninateInto { public:
     CBaseIntelligentPointer PCreature; const char* anim; int baseInit;
     C3DVector PreviousPoint; CVectorC3DVector MovementPoints; float BurnStart, BurnStop; C3DVector FlameStartPos, FlameEndPos;
-    void SetAnimationName(const CCharString& n) { anim = n.t; }
+    void SetCombatAnimation(const CCharString& n) { anim = n.t; }
     void Initialise()
     {
-        { CCharString name("INTO_BURNINATE"); SetAnimationName(name); }
+        { CCharString name("INTO_BURNINATE"); SetCombatAnimation(name); }
         ++baseInit;
         CTCCreatureModeManager* modeManager;
         if (PCreature.GetPItem()->GetInterface(&modeManager, 0x31))

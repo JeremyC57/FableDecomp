@@ -587,14 +587,14 @@ class CThing : public CClass { public:
 };
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThing* GetPItem() const;}; //00A01C10/00A01B50
 class CCombatActionBase { public:void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
- void SetAnimation(const CCharString&); //008574D0
+ void SetCombatAnimation(const CCharString&); //008574D0
  void Initialise(); //00857520
 };
 extern const float g_DragonLandingHeightDrop; //0128838C =30.148378372192383
 class CCreatureAction_DragonLand : public CCombatActionBase { public:void Initialise();};
 FABLE_STATIC_ASSERT(offsetof(CThing,PPhysics)==0x60);
 void CCreatureAction_DragonLand::Initialise(){
- {CCharString animation("LAND",-1);SetAnimation(animation);}
+ {CCharString animation("LAND",-1);SetCombatAnimation(animation);}
  CCombatActionBase::Initialise();
  CThing* thing=PCreature.GetPItem();
  if(thing->UsingComponents[1]&0x4000000){
@@ -634,7 +634,7 @@ CCharString::CCharString(const char* text,long length):storage_(0){
 CCharString::~CCharString(){if(storage_ && !--storage_->owners){delete[] storage_->text;delete storage_;}--g_strings;}
 CCharString::operator const char*() const{return storage_?storage_->text:"";}
 
-void CCombatActionBase::SetAnimation(const CCharString& s){check(g_step==0&&g_strings==1&&!std::strcmp(s,"LAND"));g_step=1;}
+void CCombatActionBase::SetCombatAnimation(const CCharString& s){check(g_step==0&&g_strings==1&&!std::strcmp(s,"LAND"));g_step=1;}
 void CCombatActionBase::Initialise(){check(g_step==1&&g_strings==0);g_step=2;}
 CInterfaceMap::Entry* CInterfaceMap::LowerBound(const long* type){check(g_step==2);Entry* p=First;while(p!=Last&&p->Type<*type)++p;return p;}
 const C3DVector& CThing::GetPosition()const{check(this==g_owner&&g_step==2);return g_position;}

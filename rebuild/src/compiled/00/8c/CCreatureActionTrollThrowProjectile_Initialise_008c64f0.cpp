@@ -4,7 +4,7 @@
 //   then roll 0..99 against the creature's willpower-indicator def chance and copy its value into the TC 0x30
 // Leaf: ?Initialise@CCreatureAction_TrollThrowProjectile
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C64F0, length 688 bytes, plain `ret` (virtual).
-// Callees: SetAnimationName 0x008574D0, CCombatActionBase::Initialise 0x00857520, GetPItem 0x00A01B50, CDefClassBase
+// Callees: SetCombatAnimation 0x008574D0, CCombatActionBase::Initialise 0x00857520, GetPItem 0x00A01B50, CDefClassBase
 //   GetSubDef<CAbilityDef> 0x0042B1A6 / GetSubDef<CAICreatureWillPowerIndicatorDef> 0x008C78F0, GetPWorld 0x00692940,
 //   CDefinitionManager::GetDef<physical def> 0x0078B230, CThing::GetPosition 0x004C73D0, CThingObject::Create
 //   0x00703210 (__fastcall), CIntelligentPointer ctor 0x00A01B10 / Set 0x00A01B90 / dtor 0x00A01C10, LowerBound
@@ -174,7 +174,7 @@ class CCombatActionBase { public:
     CBaseIntelligentPointer PCreature;                       // +0x08
     unsigned char           _pad10[0x74 - 0x10];
     CCombatTC*              PCombat;                         // +0x74
-    void SetAnimationName(const CCharString& name);          // 0x008574D0
+    void SetCombatAnimation(const CCharString& name);          // 0x008574D0
     CThing* GetCreature() const { return PCreature.GetPItem(); }
     CDefinitionManager* GetPDefinitionManager() const;       // 0x00692910
     CWorld* GetPWorld() const;                               // 0x00692940
@@ -191,7 +191,7 @@ void CCreatureAction_TrollThrowProjectile::Initialise()
 {
     {
         CCharString animation("PROJECTILE_ATTACK_THROW_ROCK");
-        SetAnimationName(animation);
+        SetCombatAnimation(animation);
     }
     CCombatActionBase::Initialise();
     CDefPointer<CAbilityDef> ability;
