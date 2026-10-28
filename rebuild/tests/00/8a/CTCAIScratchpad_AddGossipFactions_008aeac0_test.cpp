@@ -1,0 +1,103 @@
+#include <stdio.h>
+// CTCAIScratchpad::AddGossipFactions(CCharString name) -- Create an empty category only if it is absent.
+// Leaf: ?AddGossipFactions@CTCAIScratchpad@@SIXVCCharString@@@Z
+// Identity: PDB single-string static overload; own map013bae5c and find008ac200/operator[]007aebe0/vector assignment00432ee9.
+#include <new>
+#include <stdlib.h>
+#ifndef _MSC_VER
+#define __fastcall
+#define __declspec(x)
+#endif
+// Layout: real STLport map12/vector12, CCharString one pointer. Only static CTCAIScratchpad members are used.
+class CCharString {
+public:
+    CCharString& operator=(const CCharString&);
+    CCharString():PStringData(0){}
+    CCharString(const CCharString& other);               // 0x0099EC30
+    ~CCharString();                                      // 0x0099EAE0
+    bool operator<(const CCharString& other) const;
+    void* PStringData;                                   // +0x00
+};
+namespace std {
+template <class _Tp> class allocator { public: allocator() { } };
+template <class _T1, class _T2> struct pair {
+    _T1 first;
+    _T2 second;
+};
+template <class _Tp> struct less {
+    bool operator()(const _Tp& __x, const _Tp& __y) const { return __x < __y; }
+};
+template <class _Pair> struct _Select1st { };
+template <class _Tp, class _Alloc> class _STLP_alloc_proxy : public _Alloc {
+public:
+    _Tp _M_data;
+};
+template<class T,class A>class _Vector_base {public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,A> _M_end_of_storage;_Vector_base():_M_start(0),_M_finish(0){_M_end_of_storage._M_data=0;}};
+template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A> {public:
+vector():_Vector_base<T,A>(){}
+~vector(){for(T* p=this->_M_start;p!=this->_M_finish;++p)p->~T();if(this->_M_start)free(this->_M_start);}
+unsigned int size()const{return (unsigned int)(this->_M_finish-this->_M_start);}
+unsigned int capacity()const{return (unsigned int)(this->_M_end_of_storage._M_data-this->_M_start);}
+__declspec(noinline) vector& operator=(const vector& other){if(this!=&other){unsigned int n=other.size();if(n>capacity()){T* p=n?(T*)malloc(n*sizeof(T)):0;for(unsigned int i=0;i<n;++i)new(p+i)T(other._M_start[i]);for(T* old=this->_M_start;old!=this->_M_finish;++old)old->~T();if(this->_M_start)free(this->_M_start);this->_M_start=p;this->_M_finish=p+n;this->_M_end_of_storage._M_data=p+n;}else{unsigned int oldSize=size();unsigned int commonSize=oldSize<n?oldSize:n;for(unsigned int i=0;i<commonSize;++i)this->_M_start[i]=other._M_start[i];if(n<oldSize){for(T* p=this->_M_start+n;p!=this->_M_finish;++p)p->~T();}else{for(unsigned int j=oldSize;j<n;++j)new(this->_M_start+j)T(other._M_start[j]);}this->_M_finish=this->_M_start+n;}}return *this;}
+};
+struct _Rb_tree_node_base {
+    bool _M_color;                                       // +0x00
+    _Rb_tree_node_base* _M_parent;                       // +0x04
+    _Rb_tree_node_base* _M_left;                         // +0x08
+    _Rb_tree_node_base* _M_right;                        // +0x0C
+};
+template <class _Value> struct _Rb_tree_node : public _Rb_tree_node_base {
+    _Value _M_value_field;                               // +0x10
+};
+struct _Rb_tree_base_iterator {
+    _Rb_tree_node_base* _M_node;
+};
+inline bool operator==(const _Rb_tree_base_iterator& __x, const _Rb_tree_base_iterator& __y) { return __x._M_node == __y._M_node; }
+template <class _Tp> struct _Nonconst_traits { };
+template <class _Value, class _Traits> struct _Rb_tree_iterator : public _Rb_tree_base_iterator {
+    _Rb_tree_iterator(_Rb_tree_node_base* __x) { _M_node = __x; }
+};
+template <class _Key, class _Value, class _KeyOfValue, class _Compare, class _Alloc>
+class _Rb_tree {
+public:
+    typedef _Rb_tree_node<_Value>* _Link_type;
+    typedef _Rb_tree_iterator<_Value, _Nonconst_traits<_Value> > iterator;
+    _STLP_alloc_proxy<_Link_type, allocator<_Rb_tree_node<_Value> > > _M_header;   // +0x00
+    unsigned int _M_node_count;                                                    // +0x04
+    _Compare _M_key_compare;                                                       // +0x08
+    iterator end() { return iterator(this->_M_header._M_data); }
+    iterator find(const _Key& __k) { return iterator(_M_find(__k)); }
+    _Link_type _M_find(const _Key& __k) const;                                     // 0x008AC200 for this tree
+};
+template <class _Key, class _Tp, class _Compare = less<_Key>, class _Alloc = allocator<pair<const _Key, _Tp> > >
+class map {
+public:
+    typedef pair<const _Key, _Tp> value_type;
+    typedef _Rb_tree<_Key, value_type, _Select1st<value_type>, _Compare, _Alloc> _Rep_type;
+    typedef typename _Rep_type::iterator iterator;
+    _Rep_type _M_t;
+    iterator end() { return _M_t.end(); }
+    iterator find(const _Key& __x) { return _M_t.find(__x); }
+    _Tp& operator[](const _Key& __k);                                              // 0x007AEBE0 for this map
+};
+}   // namespace std
+namespace std {template<> vector<CCharString>& map<CCharString,vector<CCharString> >::operator[](const CCharString&);}
+class CTCAIScratchpad {public:static std::map<CCharString,std::vector<CCharString> > GossipFactions;static void __fastcall AddGossipFactions(CCharString name);};
+void __fastcall CTCAIScratchpad::AddGossipFactions(CCharString name){std::map<CCharString,std::vector<CCharString> >::iterator it=GossipFactions.find(name);if(it==GossipFactions.end())GossipFactions[name]=std::vector<CCharString>();}
+
+static int live,copies,finds,lookups,bad;static const void* expectedKey;static bool found;
+CCharString::CCharString(const CCharString& other):PStringData(other.PStringData){++live;++copies;}
+CCharString::~CCharString(){--live;}
+CCharString& CCharString::operator=(const CCharString& other){PStringData=other.PStringData;return *this;}
+bool CCharString::operator<(const CCharString& other)const{return PStringData<other.PStringData;}
+static std::vector<CCharString> values;
+std::map<CCharString,std::vector<CCharString> > CTCAIScratchpad::GossipFactions;
+namespace std {
+template<class K,class V,class Sel,class Cmp,class A>typename _Rb_tree<K,V,Sel,Cmp,A>::_Link_type _Rb_tree<K,V,Sel,Cmp,A>::_M_find(const K& key)const{++finds;if(key.PStringData!=expectedKey)bad=1;return found?0:this->_M_header._M_data;}
+template<> vector<CCharString>& map<CCharString,vector<CCharString> >::operator[](const CCharString& key){++lookups;if(this!=&CTCAIScratchpad::GossipFactions || key.PStringData!=expectedKey)bad=1;return values;}}
+int main(){int token;int ok;typedef std::map<CCharString,std::vector<CCharString> > Map;std::_Rb_tree_node<Map::value_type>* sentinel=(std::_Rb_tree_node<Map::value_type>*)malloc(sizeof(std::_Rb_tree_node<Map::value_type>));CTCAIScratchpad::GossipFactions._M_t._M_header._M_data=sentinel;
+{CCharString key;live+=1;key.PStringData=&token;expectedKey=key.PStringData;values._M_start=(CCharString*)malloc(2*sizeof(CCharString));new(values._M_start)CCharString(key);new(values._M_start+1)CCharString(key);values._M_finish=values._M_start+2;values._M_end_of_storage._M_data=values._M_start+2;
+found=true;CTCAIScratchpad::AddGossipFactions(key);ok=!bad && finds==1 && !lookups && live==3 && values.size()==2;
+found=false;CTCAIScratchpad::AddGossipFactions(key);ok=ok && !bad && finds==2 && lookups==1 && live==1 && values.size()==0 && values.capacity()==2;
+CTCAIScratchpad::AddGossipFactions(key);ok=ok && !bad && finds==3 && lookups==2 && live==1 && values.size()==0;}
+free(sentinel);ok=ok && !live;puts(ok?"008aeac0_TEST PASS":"008aeac0_TEST FAIL");return ok?0:1;}

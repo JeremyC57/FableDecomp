@@ -1,0 +1,11 @@
+// CUnprovenComparisonAdapter_00C3AF40::LessValue(left,right) -- compare the unsigned key of middleware records.
+// Leaf: ?LessValue@CUnprovenComparisonAdapter_00C3AF40@@UAEHPBX0@Z
+// Identity: descriptive; Own concrete comparator table012b5530 slots0/1/2 are value equality/unsigned less/raw-key equality; four comparator slots then virtual deleting destructor. Original abstract table012b1ab0 has four pure slots and destructor00c09890 atslot4; destructor transitions prove genuine base. Actual getter00C3AB20 returns reference/pointer to record+4 and preservesEDX; same-TU visible noinline body retains its genuine effect. Constructors store collection pointer+4; record unusedprefix/complete extent and all library type/API names are explicit descriptive projections; original PDB names unavailable.
+// Layout: actual polymorphic comparator base and four operations plus destructor, collection pointer4; record prefix contains only observed word0/key4 and does not assert full original size. Same interface as PKCTRArray binary searches. No applicable shared engine header.
+class CUnprovenArrayComparator{public:virtual int EqualValue(const void*,const void*)=0;virtual int LessValue(const void*,const void*)=0;virtual int EqualKey(const void*,const void*)=0;virtual int LessKey(const void*,const void*)=0;virtual ~CUnprovenArrayComparator(){};};
+class CUnprovenComparisonRecord_00C3AB20{public:unsigned long UnprovenPrefix,Key;const unsigned long& KeyAtOffset4();};
+class CUnprovenComparisonAdapter_00C3AF40:public CUnprovenArrayComparator{public:void* Collection;virtual int EqualValue(const void*,const void*);virtual int LessValue(const void*,const void*);virtual int EqualKey(const void*,const void*);virtual int LessKey(const void*,const void*);virtual ~CUnprovenComparisonAdapter_00C3AF40(){};};
+#pragma auto_inline(off)
+const unsigned long& CUnprovenComparisonRecord_00C3AB20::KeyAtOffset4(){return Key;}
+#pragma auto_inline(on)
+int CUnprovenComparisonAdapter_00C3AF40::LessValue(const void* left,const void* right){return ((CUnprovenComparisonRecord_00C3AB20*)left)->KeyAtOffset4() < ((CUnprovenComparisonRecord_00C3AB20*)right)->KeyAtOffset4();}

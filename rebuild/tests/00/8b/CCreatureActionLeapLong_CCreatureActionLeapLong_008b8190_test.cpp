@@ -1,0 +1,7 @@
+#include <stdio.h>
+class CThing{};class CThingCreatureBase:public CThing{};class CSoundPair{public:long FirstSound,LastSound;CSoundPair():FirstSound(0),LastSound(0){}};
+class CBaseClass{public:virtual ~CBaseClass(){} };class CBaseObjectPointer;class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CCreatureActionBase:public CBaseObject{public:unsigned char _unmodeled08[0xa8-8];};class CCombatActionBase:public CCreatureActionBase{public:unsigned char _unmodeledA8[0x114-0xa8];CCombatActionBase(CThingCreatureBase&,CThing&,long,const CSoundPair&);};
+class CCreatureAction_LeapLong:public CCombatActionBase{public:bool Landed;CCreatureAction_LeapLong(CThingCreatureBase&,CThingCreatureBase&);};
+CCreatureAction_LeapLong::CCreatureAction_LeapLong(CThingCreatureBase& creature,CThingCreatureBase& enemy):CCombatActionBase(creature,enemy,50,CSoundPair()),Landed(false){}
+static CThingCreatureBase* expectedCreature;static CThing* expectedEnemy;static int calls,bad;static CCombatActionBase* baseThis;CCombatActionBase::CCombatActionBase(CThingCreatureBase& creature,CThing& enemy,long frames,const CSoundPair& sounds){++calls;baseThis=this;if(&creature!=expectedCreature || &enemy!=expectedEnemy || frames!=50 || sounds.FirstSound || sounds.LastSound)bad=1;}
+int main(){CThingCreatureBase creature,enemy;expectedCreature=&creature;expectedEnemy=&enemy;CCreatureAction_LeapLong action(creature,enemy);if(bad || calls!=1 || baseThis!=&action || action.Landed){puts("008b8190_TEST FAIL");return 1;}puts("008b8190_TEST PASS");return 0;}

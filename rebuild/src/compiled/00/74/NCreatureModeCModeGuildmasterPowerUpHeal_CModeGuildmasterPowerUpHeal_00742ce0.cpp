@@ -1,0 +1,20 @@
+// NCreatureMode::CModeGuildmasterPowerUpHeal::CModeGuildmasterPowerUpHeal(CThing&) -- Initialize original power-up mode filter, timer and vectors.
+// Leaf: ??0CModeGuildmasterPowerUpHeal@NCreatureMode@@QAE@AAVCThing@@@Z
+// Identity: proven original owner RTTI and constructor calls; base constructor00861e00, CRC004014a0.
+// Layout: corrected original ModeBase28 ->StandBase104 hierarchy and all named members; original AnimFilterBase operator/Clone/dtor slots0/1/2 and real STLport vector/base/proxy. Supersedes earlier flattened BaseState model.
+#define CModeStandBase CModeStandBase_HeaderEvidence
+#include "engine/CModeStandBase.h"
+#undef CModeStandBase
+#include <stdlib.h>
+#ifndef _MSC_VER
+#define __forceinline inline
+#define __fastcall
+#endif
+class CThing;class CThingAICreature;class CAnimationEntry;class CCharStringData{public:const char* PData;unsigned long StringLength;};class CCharString{public:CCharStringData* PStringData;CCharString();CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);const char* GetPString()const{return PStringData==0?"":PStringData->PData;}unsigned long GetLength()const{return PStringData==0?0:PStringData->StringLength;}};class CCRC{public:static unsigned long __fastcall Calc(unsigned long,const void*,unsigned long);};
+class CAnimFilterBase{public:virtual bool operator()(const CAnimationEntry&)const=0;virtual CAnimFilterBase* Clone()const=0;virtual __forceinline ~CAnimFilterBase(){}};class CAnimFilterOfGroup:public CAnimFilterBase{public:CCharString Group;unsigned long GroupCRC;CAnimFilterOfGroup(const CCharString& name){Group=name;GroupCRC=CCRC::Calc(0,name.GetPString(),name.GetLength());}virtual bool operator()(const CAnimationEntry&)const;virtual CAnimFilterBase* Clone()const;};
+class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer();CCountedPointer(const CCountedPointer&);~CCountedPointer();};namespace NAnimationEntryBodge{class CAnimEntryLite;}
+class CTCCreatureModeManager{public:class CModeBase{public:virtual ~CModeBase();CThing* ParentThing;CAnimFilterOfGroup WeaponBasedFilter;long FramesBeforeRemovingSelf;bool Active;CModeBase(CThing&);};};
+class CModeStandBase:public CTCCreatureModeManager::CModeBase{public:long IdleCounter,FramesToKeepUpdatingMovement;bool ForceAddNewAnims;float MaxRunSpeed,MaxJogSpeed,MaxWalkSpeed;CCharString PoseAnimName;CCountedPointer<NAnimationEntryBodge::CAnimEntryLite> PStandAnimation,PSlowWalkAnimation,PWalkAnimation,PJogAnimation,PRunAnimation,PSprintAnimation;CModeStandBase(CThing&);virtual ~CModeStandBase();};
+struct CBaseObjectPointer;class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};
+namespace std{template<class T>class allocator{};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;_STLP_alloc_proxy(const A& a,V p):A(a),_M_data(p){}};template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;_Vector_base(const A& a):_M_start(0),_M_finish(0),_M_end_of_storage(a,0){}__forceinline ~_Vector_base(){if(_M_start)free(_M_start);}};template<class T>__forceinline void _Destroy(T* first,T* last){for(;first!=last;++first)first->~T();}template<class T,class A=allocator<T> >class vector:protected _Vector_base<T,A>{public:vector(const A& a=A()):_Vector_base<T,A>(a){}__forceinline ~vector(){_Destroy(this->_M_start,this->_M_finish);}};}
+namespace NCreatureMode{class CModeGuildmasterPowerUpHeal:public CModeStandBase{public:CAnimFilterOfGroup Filter;long Timer;std::vector<CIntelligentPointer<CThing> > LightningBeamParticleEmitters;std::vector<CIntelligentPointer<CThingAICreature> > Guards;virtual ~CModeGuildmasterPowerUpHeal();CModeGuildmasterPowerUpHeal(CThing&);};CModeGuildmasterPowerUpHeal::CModeGuildmasterPowerUpHeal(CThing& thing):CModeStandBase(thing),Filter("POWER_UP"),Timer(0),LightningBeamParticleEmitters(),Guards(){}}

@@ -1,0 +1,6 @@
+// CUnprovenTransferVisitor_00C2ED90::CUnprovenTransferVisitor_00C2ED90(PKSerialiseCParser* archive) -- Initialize a record-transfer visitor.
+// Leaf: ??0CUnprovenTransferVisitor_00C2ED90@@QAE@PAVPKSerialiseCParser@@@Z
+// Identity: Own caller00c2f935, derived table012b497c Visit00C2ED90, record transfer00C3B850. Own destructor restores separate abstract visitor base table012b4964. Names descriptive and shared consistently with N200; no original class identity claimed.
+// Layout: no shared header. Abstract visitor base vptr0, archive pointer4, unsigned Failures8. Base slot0 pure Visit, slot1 destructor, derived overrides Visit. Own destructor and two tables prove inherited interface.
+class PKSerialiseCParser;class CUnprovenTransferRecord_00C3B850;class CUnprovenTransferVisitorBase_00C2ED90{public:virtual void Visit(CUnprovenTransferRecord_00C3B850*)=0;virtual ~CUnprovenTransferVisitorBase_00C2ED90(){}};class CUnprovenTransferVisitor_00C2ED90:public CUnprovenTransferVisitorBase_00C2ED90{public:virtual void Visit(CUnprovenTransferRecord_00C3B850*);virtual ~CUnprovenTransferVisitor_00C2ED90();PKSerialiseCParser* Archive;unsigned long Failures;CUnprovenTransferVisitor_00C2ED90(PKSerialiseCParser*);};
+CUnprovenTransferVisitor_00C2ED90::CUnprovenTransferVisitor_00C2ED90(PKSerialiseCParser* archive):Archive(archive),Failures(0){}

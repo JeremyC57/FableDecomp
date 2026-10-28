@@ -1,0 +1,15 @@
+// NCreatureMode::CModeGuildmasterPowerUpHeal::CModeGuildmasterPowerUpHeal(CThing& thing,float seconds) -- initialise the power-up filter, empty effect lists and duration.
+// Leaf: ??0CModeGuildmasterPowerUpHeal@NCreatureMode@@QAE@AAVCThing@@M@Z
+// Identity: proven; own RTTI 012685BC and exact PDB NCreatureMode ctor(CThing&,float); original GLOBAL CModeStandBase ctor00861E00 and nested CTCCreatureModeManager::CModeBase; CAnimFilterOfGroup vtable01267568/GroupCRC+112; POWER_UP literal, real CCRC::Calc004014A0; own FPS global01375550 descriptive existing name.
+// Layout: generated mode header flattens original virtual base chain and uses donor vectors; local actual nested mode-base28/global stand-base104, Filter12/Timer4, vectors12 each. No CAnimFilterOfGroup/CAnimFilterBase headers; real virtual filter plus named Group/GroupCRC. Only CCharStringData first two fields accessed, remaining counted storage external.
+#ifndef _MSC_VER
+#define __fastcall
+#define __forceinline inline
+#endif
+extern long g_FramesPerSecond_01375550;
+class CThing;class CThingAICreature;class CCharStringData{public:const char* PData;unsigned long StringLength;};class CCharString{public:CCharStringData* PStringData;CCharString();CCharString(const char*,int=-1);~CCharString();CCharString& operator=(const CCharString&);long GetLength()const{return PStringData==0?0:(long)PStringData->StringLength;}const char* GetAsCharArray()const{return PStringData==0?"":PStringData->PData;}};class CCRC{public:static unsigned long __fastcall Calc(unsigned long,const void*,unsigned long);};
+class CAnimFilterBase{public:virtual ~CAnimFilterBase(){} };class CAnimFilterOfGroup:public CAnimFilterBase{public:CCharString Group;unsigned long GroupCRC;__forceinline CAnimFilterOfGroup(const CCharString& name):Group(){Group=name;GroupCRC=CCRC::Calc(0,name.GetAsCharArray(),name.GetLength());}};
+class CTCCreatureModeManager{public:class CModeBase{public:virtual ~CModeBase(){}CThing* ParentThing;unsigned char _unmodeled08[0x1c-8];};};class CModeStandBase:public CTCCreatureModeManager::CModeBase{public:unsigned char _unmodeled1C[0x68-0x1c];CModeStandBase(CThing&);};
+namespace std{template<class T>class allocator{};template<class V,class T,class Al>class _STLP_alloc_proxy:public Al{public:V _M_data;};template<class T,class Al>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,Al> _M_end_of_storage;_Vector_base():_M_start(0),_M_finish(0){_M_end_of_storage._M_data=0;}};template<class T,class Al=allocator<T> >class vector:public _Vector_base<T,Al>{public:vector(){}};}
+template<class T>class CIntelligentPointer;
+namespace NCreatureMode{class CModeGuildmasterPowerUpHeal:public CModeStandBase{public:CAnimFilterOfGroup Filter;long Timer;std::vector<CIntelligentPointer<CThing> > LightningBeamParticleEmitters;std::vector<CIntelligentPointer<CThingAICreature> > Guards;CModeGuildmasterPowerUpHeal(CThing&,float);};CModeGuildmasterPowerUpHeal::CModeGuildmasterPowerUpHeal(CThing& thing,float seconds):CModeStandBase(thing),Filter("POWER_UP"){Timer=(long)(g_FramesPerSecond_01375550*seconds);}}

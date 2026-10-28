@@ -1,0 +1,14 @@
+// PKCOneShotQueue<CUnprovenOneShotValue_00C3A540>::Put(value) -- fill the one-shot value, reporting an already-full queue.
+// Leaf: ?Put@?$PKCOneShotQueue@VCUnprovenOneShotValue_00C3A540@@@@UAEXABVCUnprovenOneShotValue_00C3A540@@@Z
+// Flags: /EHsc
+// Identity: probable original template owner from exact assertion filename; Own diagnostic filename PKCOneShotQueue.h line35 and exact Already filled this queue! message. Own four-slot table012b54c4 is Take/Put/HasValue/Count with no virtual destructor; constructors initialize full32-bit Filled after4/12-byte trivial Value, not bool. Take returns T by value using native hidden class-return pointer (EAX preserved); it has no explicit output reference. Own EAX tail proves returned buffer identity and explains the copy scheduling. Target reports invalid state using actual CString chain before CDebugBreak then still performs operation; no original element identity recoverable. Distinct descriptive trivial unsigned-word projections preserve own observed copy width without claiming recovered scalar/vector source types.
+// Layout: source-proven polymorphic queue Value+4, full32-bit Filled+8; no unsupported base or destructor invented. Actual CString/assert-hook/debug-break family reused, preserving EH lifetime and callback effects. No shared middleware header available. Element projections are explicit original-identity uncertainty allowed by owner rules.
+#ifndef _MSC_VER
+#define __fastcall
+#endif
+extern char* _afxPchNil;typedef void(__fastcall* AssertHook)(const char*);extern AssertHook g_pfnAssertHook;
+class CString{public:char* m_pchData;CString():m_pchData(_afxPchNil){}~CString();CString& __fastcall operator<<(const char*);CString& __fastcall operator<<(long);};struct CDebugBreak{CDebugBreak();};
+class CUnprovenOneShotValue_00C3A540{public:unsigned int Words[1];};
+template<class T>class PKCOneShotQueue{public:T Value;int Filled;virtual T Take();virtual void Put(const T&);virtual int HasValue(){return Filled!=0;}virtual int Count(){return Filled;}};
+template<class T>void PKCOneShotQueue<T>::Put(const T& input){if(Filled){{CString text;text << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCOneShotQueue.h" << "(" << (long)35 << ") : " << "Already filled this queue!" << "\n";if(g_pfnAssertHook)g_pfnAssertHook(text.m_pchData);}CDebugBreak();}Value=input;Filled=1;}
+template void PKCOneShotQueue<CUnprovenOneShotValue_00C3A540>::Put(const CUnprovenOneShotValue_00C3A540&);

@@ -1,0 +1,15 @@
+{
+  "total_rows": 979,
+  "counts": {
+    "VERIFIED_MATCH": 917,
+    "PARKED": 43,
+    "REVIEW_HELD_MATCH": 1,
+    "REVIEW_HELD": 8,
+    "BLOCKED": 10
+  },
+  "verified_functions": 917,
+  "ordinary_payload_rows": 912,
+  "retail_asm_payload_rows": 5,
+  "verified_bytes": 95068,
+  "authorized_bytes": 104121
+}

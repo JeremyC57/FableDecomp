@@ -1,0 +1,9 @@
+address	family	status	note
+00c5d150	N214	VERIFIED_MATCH	Pass8 original hand SIMD exception; separate retail_asm source/test and payload required.
+00c6e1f0	N214	VERIFIED_MATCH	Pass8 original hand SIMD exception; separate retail_asm source/test and payload required.
+00c6ecd0	N214	VERIFIED_MATCH	Pass8 original hand SIMD exception; separate retail_asm source/test and payload required.
+00c5d1f0	N215	BLOCKED	Custom ECX initial-gain ABI; closest explicit five-stack-argument candidate, not callable equivalence.
+00c6e290	N215	BLOCKED	Custom ECX initial-gain ABI; closest explicit five-stack-argument candidate, not callable equivalence.
+00c6ed70	N215	BLOCKED	Custom ECX initial-gain ABI; closest explicit five-stack-argument candidate, not callable equivalence.
+00c705b0	N324	VERIFIED_MATCH	Original retail FISTP32 exception with exact address/instruction evidence; RTM bytes, strict C++03, VC tests and unchanged dry PASS.
+00c70f80	N324	VERIFIED_MATCH	Original retail FISTP32 exception with exact address/instruction evidence; RTM bytes, strict C++03, VC tests and unchanged dry PASS.

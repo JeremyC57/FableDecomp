@@ -1,0 +1,12 @@
+// CUnprovenCollectionOwner_00C22260::ApplyFilter(argument) -- construct a stack visitor and apply it to the embedded collection.
+// Leaf: ?ApplyFilter@CUnprovenCollectionOwner_00C22260@@QAEXPAX@Z
+// Flags: /EHsc
+// Identity: descriptive; own stack8 polymorphic visitor built by original constructor00C22240 (actual complete same-TU body stores vtable012B3858 and Argument+4, no EDX clobber); own visitor virtual Visit00C21F00 slot0/deletingdtor slot1; true abstract base proven by actual dtor storingbasevtable012B380C. Owner embeddedcollection+0x2e8 Apply slot10 receives visitorreference. No original visitor/owner/collection/API/record spelling proven; source uses explicit unique descriptive names and void-pointer argument/node ABI projections.
+// Layout: actual original abstract visitor hierarchy under descriptive names, typed argument member and original two-slot visitor interface. Exact original constructor body compiled noinline above target conveys real clobber facts; no empty stand-in. Collection unknown slots0-9 explicitly descriptive; only slot10 used. Owner unknown prefix is not claimed as a recovered class/base. No shared libpk header.
+#ifdef _MSC_VER
+#define NOINLINE __declspec(noinline)
+#else
+#define NOINLINE __attribute__((noinline))
+#endif
+class CUnprovenVisitAdapterBase_012B380C{public:virtual void Visit(void*)=0;virtual ~CUnprovenVisitAdapterBase_012B380C(){}};class CUnprovenVisitAdapter_00C22240:public CUnprovenVisitAdapterBase_012B380C{public:void* Argument;NOINLINE CUnprovenVisitAdapter_00C22240(void*);virtual void Visit(void*);};CUnprovenVisitAdapter_00C22240::CUnprovenVisitAdapter_00C22240(void* p){Argument=p;}
+class CUnprovenVisitorCollection_00C22260{public:virtual void UnknownSlot0(){}virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void UnknownSlot7(){}virtual void UnknownSlot8(){}virtual void UnknownSlot9(){} virtual void Apply(CUnprovenVisitAdapterBase_012B380C&);};class CUnprovenCollectionOwner_00C22260{public:unsigned char _unmodeled00[744];CUnprovenVisitorCollection_00C22260 Collection;void ApplyFilter(void*);};void CUnprovenCollectionOwner_00C22260::ApplyFilter(void* argument){CUnprovenVisitAdapter_00C22240 visitor(argument);Collection.Apply(visitor);}

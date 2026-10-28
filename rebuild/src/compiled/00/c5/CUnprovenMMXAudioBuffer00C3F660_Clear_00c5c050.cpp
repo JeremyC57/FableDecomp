@@ -1,0 +1,18 @@
+// CUnprovenMMXAudioBuffer_00C3F660::Clear() -- zero the active planar audio blocks.
+// Leaf: ?Clear@CUnprovenMMXAudioBuffer_00C3F660@@UAEXXZ
+// Identity: descriptive; Own base constructor00c591f0 vtable012b8f38 and destructor00c57ef0 resetting original virtual-object base012b5868. Base table has destructor0/Reset1/Clear2/MixShortGain3/MixIntGain4/MixInt5/MixFloatGain6/MixFloatQ15Gain7/MixFloat8/Route9/Output10; adjacent012b8f64 is another class destructor, not slot11. Original base typed six planar int buffers+4..18, OutputShift1c, ChannelCount20 and unaligned raw storage24..C33; ctor rounds storage upward to16-byte alignment and sets six512-byte channel pointers. Actual filtered constructor00c3efa0 calls base and constructs six380-byte filters atC34; inactive derived suffix omitted without asserting derived size. MMX constructor00c3f660 and SSE00c3f7b0 call common filtered constructor and install012b5d40/012b5de0. Proven shared primary prefix modeled; any further MMX/SSE inheritance relationship is unproven, not recovered. All class/API/field names are descriptive projections, no library PDB identity claimed; original engine headers do not apply; own Clear targetslot2 and memset intrinsic zeroes ChannelCount*512 bytes from first planar buffer. No actual unknown helper or additional memory operation invented.
+// Layout: complete proven original buffer base chain and typed prefix/raw storage; omitted inactive filtered suffix explicit.
+#ifndef _MSC_VER
+#define __cdecl
+#endif
+class CUnprovenLibraryObject_012B5868{public:virtual ~CUnprovenLibraryObject_012B5868();};
+class CUnprovenAudioBuffer_00C591F0:public CUnprovenLibraryObject_012B5868{public:int* Buffers[6];unsigned int OutputShift,ChannelCount;unsigned char UnalignedStorage[6*512+16];virtual ~CUnprovenAudioBuffer_00C591F0();virtual void Reset();virtual void Clear();virtual void MixShortGain(const short*,int*,unsigned short);virtual void MixIntGain(const int*,int*,unsigned short);virtual void MixInt(const int*,int*);virtual void MixFloatGain(const float*,int*,float);virtual void MixFloatQ15Gain(const float*,int*,unsigned short);virtual void MixFloat(const float*,int*);virtual void Route(unsigned int,const void*);virtual void Output(short*,unsigned int);void RouteFloat4(const float*);void RouteInt4(const int*);};
+class CUnprovenFilteredAudioBuffer_00C3EFA0:public CUnprovenAudioBuffer_00C591F0{public:virtual ~CUnprovenFilteredAudioBuffer_00C3EFA0();};
+class CUnprovenMMXAudioBuffer_00C3F660:public CUnprovenFilteredAudioBuffer_00C3EFA0{public:virtual ~CUnprovenMMXAudioBuffer_00C3F660();virtual void Clear();virtual void MixShortGain(const short*,int*,unsigned short);};
+class CUnprovenSSEAudioBuffer_00C3F7B0:public CUnprovenFilteredAudioBuffer_00C3EFA0{public:virtual ~CUnprovenSSEAudioBuffer_00C3F7B0();virtual void MixShortGain(const short*,int*,unsigned short);};
+#ifdef _MSC_VER
+typedef char ExactBufferSize[sizeof(CUnprovenAudioBuffer_00C591F0)==0xC34?1:-1];
+#endif
+extern "C" void* __cdecl memset(void*,int,unsigned int);
+#pragma intrinsic(memset)
+void CUnprovenMMXAudioBuffer_00C3F660::Clear(){memset(Buffers[0],0,ChannelCount<<9);}

@@ -1,0 +1,20 @@
+#include <stdio.h>
+// SContext_00c62500::ClearTriggers() -- Remove each ambient record, release its live handle, and delete it.
+// Leaf: ?ClearTriggers@SContext_00c62500@@QAEXXZ
+// Identity: own destructor caller00c4741f, real PKCTRList virtual Head11/Remove8, item release00c62500 and destructor00c62340. Descriptive ambient emitter/source identities; helper spellings reused where available.
+#include <new>
+class CPKEmitter;struct SContext_00c62500;
+class CPKVoiceHandle{public:unsigned long SoundId,Time;bool Unscaled;long Handle;void Release(CPKEmitter*);~CPKVoiceHandle();};
+struct CHandleOwner_00c62500{unsigned long SoundId,Time;long Handle;float Offset[3];void RemoveHandle(SContext_00c62500*);~CHandleOwner_00c62500();};
+struct CHandleOwner_00c62180{unsigned long SoundId;long Handle;void ReleaseHandle(SContext_00c62500*);~CHandleOwner_00c62180();};
+class CPKList{public:virtual ~CPKList();virtual void Unused1(){}virtual void Unused2(){}virtual void Unused3(){}virtual void Unused4(){}virtual void Unused5(){}virtual void Unused6(){}virtual void Unused7(){}virtual void Remove(void*);virtual void Add(void*){}virtual void Unused10(){}virtual void* GetHead();void* Impl;};
+template<class T>class PKCTRList:public CPKList{public:unsigned char UnmodeledImpl[40];T* GetFirst(){return (T*)GetHead();}void RemoveItem(T* p){Remove(p);}};
+// Layout: genuine libpk PKCTRList48 (CPKList vptr/implementation8 plus40-byte member implementation). Emitter list32; source triggers8 and channels56. No shared headers. Existing helper owner/record spellings retained for stable symbols, roles identified by own constructors/callers. Empty record destructors16/24/8 remain real out-of-line calls.
+class CPKEmitter{public:unsigned char Unmodeled00[32];PKCTRList<CPKVoiceHandle> Events;void ClearEvents();};
+struct SContext_00c62500{unsigned char Unmodeled00[8];PKCTRList<CHandleOwner_00c62500> Triggers;PKCTRList<CHandleOwner_00c62180> Channels;void ClearTriggers();void ClearChannels();};
+void SContext_00c62500::ClearTriggers(){while(CHandleOwner_00c62500* item=Triggers.GetFirst()){Triggers.RemoveItem(item);item->RemoveHandle(this);delete item;}}
+
+struct State{void* items[3];int count,index;};static State* active;static int removed,released,destroyed,errors;static void* expectedOwner;
+CPKList::~CPKList(){}void* CPKList::GetHead(){State* state=(State*)Impl;return state->index<state->count?state->items[state->index]:0;}void CPKList::Remove(void* p){State* state=(State*)Impl;if(state!=active||p!=state->items[state->index])++errors;++state->index;++removed;}
+CHandleOwner_00c62500::~CHandleOwner_00c62500(){if(released!=destroyed+1)++errors;++destroyed;}void CHandleOwner_00c62500::RemoveHandle(SContext_00c62500* owner){if(owner!=expectedOwner||removed!=released+1||this!=active->items[released])++errors;++released;}
+int main(){SContext_00c62500 owner;expectedOwner=&owner;State state;state.count=0;state.index=0;active=&state;owner.Triggers.Impl=&state;owner.ClearTriggers();bool ok=!removed&&!released&&!destroyed;state.count=2;state.items[0]=new CHandleOwner_00c62500;state.items[1]=new CHandleOwner_00c62500;owner.ClearTriggers();ok=ok&&removed==2&&released==2&&destroyed==2&&state.index==2&&!errors;owner.ClearTriggers();ok=ok&&destroyed==2;puts(ok?"00c47170_TEST PASS":"00c47170_TEST FAIL");return ok?0:1;}

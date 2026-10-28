@@ -1,0 +1,28 @@
+// std::vector::resize(unsigned int n, const T& value) -- Resize a counted-pointer vector with explicit destruction on shrink.
+// Leaf: ?resize@?$vector@V?$CCountedPointer@VCParticleSimulation@@@@V?$allocator@V?$CCountedPointer@VCParticleSimulation@@@@@std@@@std@@QAEXIABV?$CCountedPointer@VCParticleSimulation@@@@@Z
+// Identity: Own erase00b83d30/reserve00b83970 use the exact CParticleSimulation counted-pointer helpers.
+// Layout: original pointer wrapper is8bytes; STLport vector is12bytes.
+#ifndef _MSC_VER
+#define __fastcall
+#define __forceinline inline
+#endif
+class CThingBaseDef;class CParticleSimulation;class CEngineSceneGrid;class CCPPointerInfo;
+template<class T>class CDefPointer{public:T* Object;~CDefPointer();};
+template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;~CCountedPointer();};
+namespace std {
+struct __false_type{__false_type(){}};
+struct input_iterator_tag{};struct forward_iterator_tag:input_iterator_tag{};struct bidirectional_iterator_tag:forward_iterator_tag{};struct random_access_iterator_tag:bidirectional_iterator_tag{random_access_iterator_tag(){}};
+template<class Input,class Output,class Distance>Output __fastcall __copy(Input,Input,Output,const random_access_iterator_tag&,Distance*);
+template<class Iter>void __fastcall __destroy_aux(Iter,Iter,const __false_type&);
+template<class T>class allocator{};
+template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
+template<class T,class A=allocator<T> >class vector {
+public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;
+    unsigned int size()const{return (unsigned int)(_M_finish-_M_start);}
+    __forceinline T* erase(T* first,T* last){T* result=__copy(last,_M_finish,first,random_access_iterator_tag(),(int*)0);__destroy_aux(result,_M_finish,__false_type());_M_finish=result;return first;}
+    void resize(unsigned int n,const T& value){if(n<size())erase(_M_start+n,_M_finish);else _M_fill_insert(_M_finish,n-size(),value);}
+protected:void _M_fill_insert(T*,unsigned int,const T&);
+};
+}
+typedef CCountedPointer<CParticleSimulation> Element;
+template void std::vector<Element>::resize(unsigned int,const Element&);

@@ -1,0 +1,12 @@
+// StaticDestruction::Destroy_DEFAULT_CAMERA_MODE_DEF() -- Release the cached definition at shutdown.
+// Leaf: _$E2
+// Identity: proven. Actual atexit registration and body identify static CDefPointer cleanup for global013ba8d8. Original CDefPointer stores CDefPointeeBase*, count is unsigned long, Release() const returns long and dispatches Delete() const at slot1. Both PDB sets name anonymous-namespace DEFAULT_CAMERA_MODE_DEF initializer/destructor; camera manager consumers00699970/0069e460 corroborate CCameraModeDef. Global declared in anonymous namespace, no invented external binding.
+// Layout: actual Resource28/CIV8 hierarchy, Object pointer and original unsigned reference count. Pointee type is forward declared because no derived field is used. ENullDef enumerator spelling descriptive; no engine this receiver.
+#ifndef _MSC_VER
+#define __forceinline inline
+#endif
+class CIVCountedPointeeBase{public:CIVCountedPointeeBase():IVRefCount(1){}virtual ~CIVCountedPointeeBase(){}virtual void Delete()const;mutable unsigned long IVRefCount;void AddRef()const{++IVRefCount;}long GetRefCount()const{return (long)IVRefCount;}long Release()const{long result=(long)--IVRefCount;if(result==0)Delete();return result;}};
+class CResourceList;class CResource:public CIVCountedPointeeBase{public:CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;CResource():ResourceList(0),PrevResource(0),NextResource(0),ResourceSize(0),LastUsedFrame(0){}virtual ~CResource();};class CDefPointeeBase:public CResource{public:virtual void Delete()const;};enum ENullDef{ENullDef_DescriptiveNull=0};
+template<class T>class CDefPointer{public:CDefPointeeBase* Object;CDefPointer(ENullDef=ENullDef_DescriptiveNull):Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)Object->AddRef();}CDefPointer(T* object):Object((CDefPointeeBase*)object){if(Object)Object->AddRef();}__forceinline ~CDefPointer(){if(Object){Object->Release();Object=0;}}CDefPointer& operator=(const CDefPointer& other){if(Object!=other.Object){if(Object){Object->Release();Object=0;}Object=other.Object;if(Object)Object->AddRef();}return *this;}T* operator->()const{return (T*)Object;}};
+class CCameraModeDef;
+namespace { CDefPointer<const CCameraModeDef> DEFAULT_CAMERA_MODE_DEF; }

@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+static int constructed,destroyed,bad;static void CheckLifetime();struct RegisterCheck{RegisterCheck(){atexit(CheckLifetime);}};static RegisterCheck registerCheck;
+class CUnprovenMapKey_00CD3640;class CUnprovenMapValue_00CD3640;
+namespace std{template<class T>class allocator{};template<class A,class B>struct pair{typedef A first_type;typedef B second_type;A first;B second;};template<class T>struct less{bool operator()(const T&,const T&)const;};template<class Pair>struct _Select1st{};typedef bool _Rb_tree_Color_type;struct _Rb_tree_node_base{_Rb_tree_Color_type _M_color;_Rb_tree_node_base* _M_parent;_Rb_tree_node_base* _M_left;_Rb_tree_node_base* _M_right;};template<class T>struct _Rb_tree_node:public _Rb_tree_node_base{T _M_value_field;};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class T,class A>class _Rb_tree_base{public:typedef _Rb_tree_node<T> _Node;typedef allocator<_Node> _NodeAlloc;_STLP_alloc_proxy<_Node*,_Node,_NodeAlloc> _M_header;};template<class K,class V,class S,class C,class A>class _Rb_tree:public _Rb_tree_base<V,A>{public:unsigned int _M_node_count;C _M_key_compare;~_Rb_tree();};template<class K,class V,class C=less<K>,class A=allocator<pair<const K,V> > >class map{public:typedef _Rb_tree<K,pair<const K,V>,_Select1st<pair<const K,V> >,C,A> _Rep_type;_Rep_type _M_t;public:map();};}
+std::map<CUnprovenMapKey_00CD3640,CUnprovenMapValue_00CD3640> g_UnprovenMap_0143E910;
+#ifdef _MSC_VER
+typedef char ActualMapSize[sizeof(g_UnprovenMap_0143E910)==12?1:-1];
+#endif
+// Fixture-only completions permit host template diagnostics; no candidate element layout is supplied or asserted.
+class CUnprovenMapKey_00CD3640{unsigned int FixtureOnlyWord;};class CUnprovenMapValue_00CD3640{unsigned int FixtureOnlyWord;};
+static std::_Rb_tree_node_base header;
+namespace std{template<class K,class V,class C,class A>map<K,V,C,A>::map(){if(this!=(void*)&g_UnprovenMap_0143E910)bad=1;++constructed;_M_t._M_header._M_data=reinterpret_cast<_Rb_tree_node<pair<const K,V> >*>(&header);_M_t._M_node_count=0;header._M_color=false;header._M_parent=0;header._M_left=header._M_right=&header;}template<class K,class V,class S,class C,class A>_Rb_tree<K,V,S,C,A>::~_Rb_tree(){++destroyed;if(this!=(void*)&g_UnprovenMap_0143E910||_M_node_count||this->_M_header._M_data!=(void*)&header||header._M_color||header._M_parent||header._M_left!=&header||header._M_right!=&header)bad=1;}}
+static void CheckLifetime(){puts(!bad&&constructed==1&&destroyed==1?"01224c6d_TEST PASS":"01224c6d_TEST FAIL");}int main(){return constructed==1&&!destroyed&&!bad?0:1;}

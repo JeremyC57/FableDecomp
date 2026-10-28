@@ -1,0 +1,980 @@
+address	status	bytes	test	note
+0069f700	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N001 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+0069f7b0	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N001 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+0069f860	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N001 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006a2a10	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N002 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006be5e0	VERIFIED_MATCH	83	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N002 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+00827b60	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N002 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006a7c20	VERIFIED_MATCH	57	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N003 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006a7e30	VERIFIED_MATCH	57	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N003 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006a7e70	VERIFIED_MATCH	57	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N003 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006b7af0	VERIFIED_MATCH	58	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N004 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+00781370	VERIFIED_MATCH	58	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N004 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+008f6740	VERIFIED_MATCH	58	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N004 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006b9e00	VERIFIED_MATCH	178	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N005 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+0099a1f0	VERIFIED_MATCH	178	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N005 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+00ad6140	VERIFIED_MATCH	178	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N005 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006bbac0	VERIFIED_MATCH	102	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N006 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006bbb30	VERIFIED_MATCH	102	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N006 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+00e3bb00	VERIFIED_MATCH	102	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N006 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006bde50	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N007 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006bdf40	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N007 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006bdfe0	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N007 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006bdef0	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N008 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006bdf90	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N008 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006be030	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N008 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006c2b10	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N009 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+009de940	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N009 grades=2 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+00ad7930	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N009 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006c7b50	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N010 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+009b27e0	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N010 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+00a39330	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N010 grades=1 g++=PASS leaf=True; independent main dryPASS; frozen_N001_N010/NOTES.md
+006cb0d0	VERIFIED_MATCH	155	GPP_PASS;VC71_PASS;VLAND_PASS	N011; source grades=1; dry verification=1; identity=proven; see gen/N011_ids.tsv
+0070aa50	VERIFIED_MATCH	155	GPP_PASS;VC71_PASS;VLAND_PASS	N011; source grades=1; dry verification=1; identity=proven; see gen/N011_ids.tsv
+0077b700	VERIFIED_MATCH	155	GPP_PASS;VC71_PASS;VLAND_PASS	N011; source grades=1; dry verification=1; identity=proven; see gen/N011_ids.tsv
+006cb470	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	N012; source grades=2; dry verification=1; identity=proven; see gen/N012_ids.tsv
+0070b350	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	N012; source grades=1; dry verification=1; identity=proven; see gen/N012_ids.tsv
+00721740	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	N012; source grades=2; dry verification=1; identity=proven; see gen/N012_ids.tsv
+006d3610	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;VLAND_PASS	N013; source grades=1; dry verification=1; identity=proven; see gen/N013_ids.tsv
+009b1e20	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;VLAND_PASS	N013; source grades=1; dry verification=1; identity=probable; see gen/N013_ids.tsv
+00a3f800	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;VLAND_PASS	N013; source grades=1; dry verification=1; identity=descriptive; see gen/N013_ids.tsv
+006d3af0	VERIFIED_MATCH	43	GPP_PASS;VC71_PASS;VLAND_PASS	N014; source grades=1; dry verification=1; identity=probable; see gen/N014_ids.tsv
+006dbd20	VERIFIED_MATCH	43	GPP_PASS;VC71_PASS;VLAND_PASS	N014; source grades=1; dry verification=1; identity=proven; see gen/N014_ids.tsv
+00ae5820	VERIFIED_MATCH	43	GPP_PASS;VC71_PASS;VLAND_PASS	N014; source grades=1; dry verification=1; identity=probable; see gen/N014_ids.tsv
+006d4a20	VERIFIED_MATCH	116	GPP_PASS;VC71_PASS;VLAND_PASS	N015; source grades=1; dry verification=1; identity=proven; see gen/N015_ids.tsv
+00739b40	VERIFIED_MATCH	116	GPP_PASS;VC71_PASS;VLAND_PASS	N015; source grades=2; dry verification=1; identity=proven; see gen/N015_ids.tsv
+007b00c0	VERIFIED_MATCH	116	GPP_PASS;VC71_PASS;VLAND_PASS	N015; source grades=2; dry verification=1; identity=proven; see gen/N015_ids.tsv
+006da200	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;VLAND_PASS	N016; source grades=1; dry verification=1; identity=descriptive; see gen/N016_ids.tsv
+006ef560	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;VLAND_PASS	N016; source grades=1; dry verification=1; identity=descriptive; see gen/N016_ids.tsv
+00ad0a70	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;VLAND_PASS	N016; source grades=1; dry verification=1; identity=descriptive; see gen/N016_ids.tsv
+006f2110	VERIFIED_MATCH	238	GPP_PASS;VC71_PASS;VLAND_PASS	N017; source grades=2; dry verification=1; identity=descriptive; see gen/N017_ids.tsv
+007acf70	VERIFIED_MATCH	238	GPP_PASS;VC71_PASS;VLAND_PASS	N017; source grades=2; dry verification=1; identity=proven; see gen/N017_ids.tsv
+00a546d0	VERIFIED_MATCH	238	GPP_PASS;VC71_PASS;VLAND_PASS	N017; source grades=2; dry verification=1; identity=probable; see gen/N017_ids.tsv
+006f8210	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;VLAND_PASS	N018; source grades=1; dry verification=1; identity=proven; see gen/N018_ids.tsv
+007f0660	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;VLAND_PASS	N018; source grades=1; dry verification=1; identity=proven; see gen/N018_ids.tsv
+008ae330	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;VLAND_PASS	N018; source grades=1; dry verification=1; identity=proven; see gen/N018_ids.tsv
+006fc2d0	VERIFIED_MATCH	224	GPP_PASS;VC71_PASS;VLAND_PASS	N019; source grades=2; dry verification=1; identity=proven; see gen/N019_ids.tsv
+008292d0	VERIFIED_MATCH	224	GPP_PASS;VC71_PASS;VLAND_PASS	N019; source grades=2; dry verification=1; identity=proven; see gen/N019_ids.tsv
+00a85a60	VERIFIED_MATCH	226	GPP_PASS;VC71_PASS;VLAND_PASS	N019; source grades=2; dry verification=1; identity=proven; see gen/N019_ids.tsv
+006fe5b0	VERIFIED_MATCH	131	GPP_PASS;VC71_PASS;VLAND_PASS	N020; source grades=2; dry verification=1; identity=probable; see gen/N020_ids.tsv
+00877eb0	VERIFIED_MATCH	131	GPP_PASS;VC71_PASS;VLAND_PASS	N020; source grades=1; dry verification=1; identity=descriptive; see gen/N020_ids.tsv
+00877f40	VERIFIED_MATCH	131	GPP_PASS;VC71_PASS;VLAND_PASS	N020; source grades=1; dry verification=1; identity=descriptive; see gen/N020_ids.tsv
+00702d10	PARKED	240	GPP_PASS;VC71_PASS;BYTE_DIFFER	Frozen_N021_N040 best candidate; see PARKS.json and full history; representative cap respected
+0083b3e0	PARKED	240	GPP_PASS;VC71_PASS;BYTE_DIFFER	Selected original-model receipt park_receipt_N021_N241_v1; lifetimegrades4, selected4 DIFFER(240v240), bothcompilerPASS and independentmainstrictPASS. See 0083b3e0_SELECTED.json; previous source/test failures preserved.
+0083d710	PARKED	240	GPP_PASS;VC71_PASS;BYTE_DIFFER	Selected original-model receipt park_receipt_N021_N241_v1; lifetimegrades4, selected4 DIFFER(240v240), bothcompilerPASS and independentmainstrictPASS. See 0083d710_SELECTED.json; previous source/test failures preserved.
+00708540	VERIFIED_MATCH	78	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00a5dee0	VERIFIED_MATCH	78	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00ae5a30	VERIFIED_MATCH	78	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+007091a0	VERIFIED_MATCH	219	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+009d3580	VERIFIED_MATCH	219	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00adbd50	VERIFIED_MATCH	219	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00709350	VERIFIED_MATCH	50	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; outer CTCHeroAttachableAppearanceModifiers real CTCBase and NGraphicAppearance callback bases; nested record12 genuine types; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+009cabc0	VERIFIED_MATCH	50	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00a96990	VERIFIED_MATCH	50	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00710560	VERIFIED_MATCH	55	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; C3DAnimationTransitionState real C3DAnimationStateBase/CIV chain, typed StartState/EndState; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+007f3a90	VERIFIED_MATCH	55	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; CTCLightningNode real CTCBase chain and three typed intelligent pointers; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00ba8030	VERIFIED_MATCH	55	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; CEngineInternalPrimitiveMeshBase complete original primitive/occlusion chain, typed fields and actual virtualslot25; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00718cc0	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00a39460	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=probable; history preserved
+00a5df30	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+0071ea40	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+0071f380	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+009ca610	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+0071eae0	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=descriptive; history preserved
+0071f9f0	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=descriptive; history preserved
+009f8c60	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=probable; history preserved
+0071fa60	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00737cf0	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00a6b080	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00721240	VERIFIED_MATCH	129	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00721800	VERIFIED_MATCH	129	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+009cb2a0	VERIFIED_MATCH	129	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00721b10	VERIFIED_MATCH	245	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+007ca250	VERIFIED_MATCH	245	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00a97be0	VERIFIED_MATCH	245	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+007236c0	VERIFIED_MATCH	19	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00725040	VERIFIED_MATCH	19	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00726960	VERIFIED_MATCH	19	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00723b30	VERIFIED_MATCH	87	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00759a50	VERIFIED_MATCH	87	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00a0c380	VERIFIED_MATCH	87	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00723b90	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00759ab0	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00a0c3e0	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00725f10	PARKED	590	GPP_PASS;VC71_PASS;BYTE_DIFFER	Frozen_N021_N040 best candidate; see PARKS.json and full history; representative cap respected
+008ad950	VERIFIED_MATCH	590	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N035_original_map2_pedantic_v2; grades=4; independent main strict C++03 and RTM dryPASS; agent_sol/review_N035_original_map2_pedantic_v2
+008e3eb0	VERIFIED_MATCH	590	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N035_original_map2_pedantic_v2; grades=4; independent main strict C++03 and RTM dryPASS; agent_sol/review_N035_original_map2_pedantic_v2
+00727580	VERIFIED_MATCH	33	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; full original CTCBase hierarchy/API, real referenced Thing identity; typed counted definition members; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00732780	VERIFIED_MATCH	33	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; full original CTCBase hierarchy/API, real referenced Thing identity; typed counted definition members; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+007f5370	VERIFIED_MATCH	33	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=2; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; full original CTCBase hierarchy/API, real referenced Thing identity; typed counted definition members; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00727bf0	VERIFIED_MATCH	42	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+007e1590	VERIFIED_MATCH	42	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00b2f8b0	VERIFIED_MATCH	42	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved; Original CIV signedness/const Release signature/slot1 Delete correction audit pending; prior byte/test evidence preserved; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+007327f0	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=3; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; CDefClassBase/CDefPointeeBase/CResource chain; ResourceList/failed-handler manager hierarchy; real Thing/Object/Class and CTC OnCreate slot4; original long Release return; original declared GetDef/GetSubDef/definition-manager signatures; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00746860	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=3; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; CDefClassBase/CDefPointeeBase/CResource chain; ResourceList/failed-handler manager hierarchy; real Thing/Object/Class and CTC OnCreate slot4; original long Release return; original declared GetDef/GetSubDef/definition-manager signatures; FULL_MODEL_REVISION_PENDING; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+007b7b60	REVIEW_HELD_MATCH	82	GPP_PASS;VC71_PASS;VLAND_PASS	CAPPED_INACTIVE_DEFINITION_DEBT; byte match and both behavior/compiler passes retained; Old generic CIVCountedPointer<T>::Object declared T*; original donor template storage is CIVCountedPointeeBase*. Inactive generic definition in this CDefPointer-only OnCreate leaf; no fifth source grade or source overwrite.; complete model audit hold: CDefPointer base-pointer storage and ENullDef defaulted constructor; CIVCountedPointeeBase unsigned IVRefCount and original long Release() const; genuine STLport _Vector_base hierarchy and empty traits; all forward class keys/storage records; CDefClassBase/CDefPointeeBase/CResource chain; ResourceList/failed-handler manager hierarchy; real Thing/Object/Class and CTC OnCreate slot4; original long Release return; original declared GetDef/GetSubDef/definition-manager signatures; CAPPED_COMPLETE_MODEL_DEBT
+00734190	VERIFIED_MATCH	115	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+0074a1e0	VERIFIED_MATCH	115	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00770f20	VERIFIED_MATCH	115	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00737d50	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+0074cfe0	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+007b8460	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;VLAND_PASS	Main independent vland and g++ recheck; frozen_N021_N040; identity=proven; history preserved
+00739030	REVIEW_HELD	262	GPP_PASS;VC71_PASS;VLAND_PASS	N041; source grades=4; dry verification=1; identity=proven; see gen/N041_ids.tsv; CAPPED_COMPLETE_MODEL_DEBT: active multimap is flattened and iterator traits wrong; definition/reference chain and typed CTCCombat fields incomplete. Prior byte/test proofs preserved, no fifth grade.
+00739140	VERIFIED_MATCH	262	GPP_PASS;VC71_PASS;VLAND_PASS	N041Full; source grades=4; dry verification=1; identity=proven; see gen/N041Full_ids.tsv
+00739250	VERIFIED_MATCH	262	GPP_PASS;VC71_PASS;VLAND_PASS	N041Full; source grades=3; dry verification=1; identity=proven; see gen/N041Full_ids.tsv
+0073a6f0	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;VLAND_PASS	N042; source grades=3; dry verification=1; identity=proven; see gen/N042_ids.tsv
+0073a760	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;VLAND_PASS	N042; source grades=2; dry verification=1; identity=proven; see gen/N042_ids.tsv
+0073a7d0	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;VLAND_PASS	N042; source grades=2; dry verification=1; identity=proven; see gen/N042_ids.tsv
+0073cfc0	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;VLAND_PASS	N043; source grades=2; dry verification=1; identity=proven; see gen/N043_ids.tsv
+009b1aa0	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;VLAND_PASS	N043; source grades=2; dry verification=1; identity=proven; see gen/N043_ids.tsv
+00b84f40	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;VLAND_PASS	N043; source grades=2; dry verification=1; identity=proven; see gen/N043_ids.tsv
+0073d210	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;VLAND_PASS	N044; source grades=2; dry verification=1; identity=proven; see gen/N044_ids.tsv
+009b21f0	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;VLAND_PASS	N044; source grades=2; dry verification=1; identity=proven; see gen/N044_ids.tsv
+009d20d0	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;VLAND_PASS	N044; source grades=2; dry verification=1; identity=proven; see gen/N044_ids.tsv
+0073fea0	VERIFIED_MATCH	121	GPP_PASS;VC71_PASS;VLAND_PASS	N045; source grades=1; dry verification=1; identity=proven; see gen/N045_ids.tsv
+009380e0	VERIFIED_MATCH	121	GPP_PASS;VC71_PASS;VLAND_PASS	N045; source grades=1; dry verification=1; identity=proven; see gen/N045_ids.tsv
+009381b0	VERIFIED_MATCH	121	GPP_PASS;VC71_PASS;VLAND_PASS	N045; source grades=1; dry verification=1; identity=proven; see gen/N045_ids.tsv
+00742ce0	VERIFIED_MATCH	151	GPP_PASS;VC71_PASS;VLAND_PASS	N046; source grades=4; dry verification=1; identity=proven; see gen/N046_ids.tsv
+00742da0	VERIFIED_MATCH	151	GPP_PASS;VC71_PASS;VLAND_PASS	N046; source grades=4; dry verification=1; identity=proven; see gen/N046_ids.tsv
+00742e60	VERIFIED_MATCH	151	GPP_PASS;VC71_PASS;VLAND_PASS	N046; source grades=4; dry verification=1; identity=proven; see gen/N046_ids.tsv
+00744470	VERIFIED_MATCH	41	GPP_PASS;VC71_PASS;VLAND_PASS	N047; source grades=1; dry verification=1; identity=proven; see gen/N047_ids.tsv
+007444a0	VERIFIED_MATCH	41	GPP_PASS;VC71_PASS;VLAND_PASS	N047; source grades=1; dry verification=1; identity=proven; see gen/N047_ids.tsv
+007444d0	VERIFIED_MATCH	41	GPP_PASS;VC71_PASS;VLAND_PASS	N047; source grades=1; dry verification=1; identity=proven; see gen/N047_ids.tsv
+00744cb0	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;VLAND_PASS	N048; source grades=1; dry verification=1; identity=proven; see gen/N048_ids.tsv
+00744e30	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;VLAND_PASS	N048; source grades=1; dry verification=1; identity=probable; see gen/N048_ids.tsv
+00744e80	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;VLAND_PASS	N048; source grades=1; dry verification=1; identity=probable; see gen/N048_ids.tsv
+007462f0	VERIFIED_MATCH	43	GPP_PASS;VC71_PASS;VLAND_PASS	N049; source grades=1; dry verification=1; identity=proven; see gen/N049_ids.tsv
+00785d80	VERIFIED_MATCH	43	GPP_PASS;VC71_PASS;VLAND_PASS	N049; source grades=1; dry verification=1; identity=proven; see gen/N049_ids.tsv
+007e7030	VERIFIED_MATCH	52	GPP_PASS;VC71_PASS;VLAND_PASS	N049; source grades=1; dry verification=1; identity=proven; see gen/N049_ids.tsv
+007463e0	VERIFIED_MATCH	179	GPP_PASS;VC71_PASS;VLAND_PASS	N050; source grades=2; dry verification=1; identity=proven; see gen/N050_ids.tsv
+009b4030	VERIFIED_MATCH	179	GPP_PASS;VC71_PASS;VLAND_PASS	N050; source grades=2; dry verification=1; identity=proven; see gen/N050_ids.tsv
+009b4f30	VERIFIED_MATCH	179	GPP_PASS;VC71_PASS;VLAND_PASS	N050; source grades=2; dry verification=1; identity=proven; see gen/N050_ids.tsv
+00748810	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;VLAND_PASS	N051; source grades=2; dry verification=1; identity=proven; see gen/N051_ids.tsv
+007a3040	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;VLAND_PASS	N051; source grades=2; dry verification=1; identity=proven; see gen/N051_ids.tsv
+0091f810	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;VLAND_PASS	N051; source grades=2; dry verification=1; identity=proven; see gen/N051_ids.tsv
+0074da40	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;VLAND_PASS	N052; source grades=2; dry verification=1; identity=proven; see gen/N052_ids.tsv
+007b0000	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;VLAND_PASS	N052; source grades=2; dry verification=1; identity=proven; see gen/N052_ids.tsv
+007b7050	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;VLAND_PASS	N052; source grades=2; dry verification=1; identity=proven; see gen/N052_ids.tsv
+00758390	VERIFIED_MATCH	55	GPP_PASS;VC71_PASS;VLAND_PASS	N053; source grades=2; dry verification=1; identity=proven; see gen/N053_ids.tsv
+00817070	VERIFIED_MATCH	55	GPP_PASS;VC71_PASS;VLAND_PASS	N053; source grades=3; dry verification=1; identity=proven; see gen/N053_ids.tsv
+008199f0	VERIFIED_MATCH	55	GPP_PASS;VC71_PASS;VLAND_PASS	N053; source grades=2; dry verification=1; identity=proven; see gen/N053_ids.tsv
+007586e0	VERIFIED_MATCH	57	GPP_PASS;VC71_PASS;VLAND_PASS	N054; source grades=2; dry verification=1; identity=proven; see gen/N054_ids.tsv
+0081a270	VERIFIED_MATCH	57	GPP_PASS;VC71_PASS;VLAND_PASS	N054; source grades=2; dry verification=1; identity=proven; see gen/N054_ids.tsv
+00a32060	VERIFIED_MATCH	57	GPP_PASS;VC71_PASS;VLAND_PASS	N054; source grades=2; dry verification=1; identity=proven; see gen/N054_ids.tsv
+0075b470	VERIFIED_MATCH	46	GPP_PASS;VC71_PASS;VLAND_PASS	N055; source grades=2; dry verification=1; identity=proven; see gen/N055_ids.tsv
+0086adc0	VERIFIED_MATCH	46	GPP_PASS;VC71_PASS;VLAND_PASS	N055; source grades=2; dry verification=1; identity=proven; see gen/N055_ids.tsv
+0086f340	VERIFIED_MATCH	46	GPP_PASS;VC71_PASS;VLAND_PASS	N055; source grades=2; dry verification=1; identity=descriptive; see gen/N055_ids.tsv
+0075c040	VERIFIED_MATCH	87	GPP_PASS;VC71_PASS;VLAND_PASS	N056; source grades=2; dry verification=1; identity=proven; see gen/N056_ids.tsv
+0081d9f0	VERIFIED_MATCH	87	GPP_PASS;VC71_PASS;VLAND_PASS	N056; source grades=2; dry verification=1; identity=proven; see gen/N056_ids.tsv
+008f6e30	VERIFIED_MATCH	87	GPP_PASS;VC71_PASS;VLAND_PASS	N056; source grades=3; dry verification=1; identity=proven; see gen/N056_ids.tsv
+007664e0	VERIFIED_MATCH	109	GPP_PASS;VC71_PASS;VLAND_PASS	N057; source grades=4; dry verification=1; identity=proven; see gen/N057_ids.tsv
+007f07a0	VERIFIED_MATCH	109	GPP_PASS;VC71_PASS;VLAND_PASS	N057; source grades=4; dry verification=1; identity=proven; see gen/N057_ids.tsv
+007fb150	VERIFIED_MATCH	109	GPP_PASS;VC71_PASS;VLAND_PASS	N057; source grades=4; dry verification=1; identity=proven; see gen/N057_ids.tsv
+0076b120	VERIFIED_MATCH	70	GPP_PASS;VC71_PASS;VLAND_PASS	N058; source grades=2; dry verification=1; identity=proven; see gen/N058_ids.tsv
+007d9f10	VERIFIED_MATCH	70	GPP_PASS;VC71_PASS;VLAND_PASS	N058; source grades=2; dry verification=1; identity=proven; see gen/N058_ids.tsv
+00ad5ce0	VERIFIED_MATCH	70	GPP_PASS;VC71_PASS;VLAND_PASS	N058; source grades=2; dry verification=1; identity=proven; see gen/N058_ids.tsv
+0076b320	VERIFIED_MATCH	347	GPP_PASS;VC71_PASS;VLAND_PASS	N059; source grades=2; dry verification=1; identity=proven; see gen/N059_ids.tsv
+00a5ae00	VERIFIED_MATCH	343	GPP_PASS;VC71_PASS;VLAND_PASS	N059; source grades=2; dry verification=1; identity=proven; see gen/N059_ids.tsv
+00a5e9c0	VERIFIED_MATCH	347	GPP_PASS;VC71_PASS;VLAND_PASS	N059; source grades=2; dry verification=1; identity=proven; see gen/N059_ids.tsv
+0076bf80	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;VLAND_PASS	N060; source grades=2; dry verification=1; identity=proven; see gen/N060_ids.tsv
+00b83fc0	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;VLAND_PASS	N060; source grades=2; dry verification=1; identity=proven; see gen/N060_ids.tsv
+00b98170	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;VLAND_PASS	N060; source grades=2; dry verification=1; identity=proven; see gen/N060_ids.tsv
+00770e50	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N061; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00778ae0	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N061; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+008d7ca0	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N061; source grades=3; corrected CTCCreatureModeManager::CModeBase scope; amendment_N061_base_scope_v1 hashes+strict g++ and main dry-vland PASS; original histories preserved
+00772490	PARKED	127	AGENT_GPP_PASS;AGENT_VC71_PASS	Sol N062; source grades=4; best attempt=2; 138vs127: boolean/frame and counted-pointer release/null-clear lifetime residual; typed four-byte Object interface view documented; frozen_N061_N080/PARKS.json; not a verified match
+00772510	VERIFIED_MATCH	127	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N062_full_query2_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_N062_full_query2_v1
+00772590	VERIFIED_MATCH	127	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N062_full_query2_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_N062_full_query2_v1
+0077b250	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N063; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0077b9b0	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N063; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0077be40	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N063; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0077b2e0	VERIFIED_MATCH	108	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N064; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0077bc80	VERIFIED_MATCH	108	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N064; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007a6ab0	VERIFIED_MATCH	108	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N064; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00786140	VERIFIED_MATCH	547	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N065; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00961080	VERIFIED_MATCH	547	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N065; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+009697e0	VERIFIED_MATCH	547	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N065; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0078e300	VERIFIED_MATCH	47	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N066; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00793940	VERIFIED_MATCH	47	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N066; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00902fb9	VERIFIED_MATCH	47	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N066; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00792830	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N067; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+009f99c0	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N067; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+009f9ac0	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N067; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0079f610	VERIFIED_MATCH	108	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N068; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007c85f0	VERIFIED_MATCH	108	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N068; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007c86f0	VERIFIED_MATCH	108	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N068; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007a3410	VERIFIED_MATCH	130	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N069; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0091faa0	VERIFIED_MATCH	130	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N069; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0095cf50	VERIFIED_MATCH	130	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N069; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007a37b0	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N070; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0091fdb0	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N070; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0095d880	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N070; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007a3ac0	VERIFIED_MATCH	159	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N071; source grades=2; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+009200c0	VERIFIED_MATCH	159	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N071; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0095da90	VERIFIED_MATCH	159	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N071; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007a3f30	VERIFIED_MATCH	104	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N072; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00920480	VERIFIED_MATCH	104	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N072; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0095ddf0	VERIFIED_MATCH	104	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N072; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007a4140	VERIFIED_MATCH	206	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N073; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+009205d0	VERIFIED_MATCH	206	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N073; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0095df40	VERIFIED_MATCH	206	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N073; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007af6c0	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N074; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00810970	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N074; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00871cc0	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N074; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007b7c30	PARKED	74	AGENT_GPP_PASS;AGENT_VC71_PASS	Sol N075; source grades=4; best attempt=4; equal74bytes: five differing offsets11,12,13,14,19 are EDI spill scheduling around flag branch/float load; frozen_N061_N080/PARKS.json; not a verified match
+007b7c80	VERIFIED_MATCH	74	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N075_original_model2_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_N075_original_model2_v1
+007b7cd0	VERIFIED_MATCH	74	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N075_original_model2_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_N075_original_model2_v1
+007ce390	VERIFIED_MATCH	33	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N076; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007ce3c0	VERIFIED_MATCH	33	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N076; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007ce3f0	VERIFIED_MATCH	33	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N076; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+007d97e0	PARKED	81	AGENT_GPP_PASS;AGENT_VC71_PASS	Selected original-model receipt park_receipt_N077_final_v2; lifetimegrades4, selected3 DIFFER(71v81), bothcompilerPASS and independentmainstrictPASS. See 007d97e0_SELECTED.json; previous source/test failures preserved.
+007d9a00	PARKED	81	AGENT_GPP_PASS;AGENT_VC71_PASS	Sol N077; source grades=1; best attempt=1; 71vs81: unknown16-byte record/function role, plain copy promotes temporary words to registers while retail spills; no invented copy constructor; frozen_N061_N080/PARKS.json; not a verified match
+00806220	PARKED	81	AGENT_GPP_PASS;AGENT_VC71_PASS	Sol N077; source grades=1; best attempt=1; 71vs81: unknown16-byte record/function role, plain copy promotes temporary words to registers while retail spills; no invented copy constructor; frozen_N061_N080/PARKS.json; not a verified match
+008195e0	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N078; source grades=3; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0082f240	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N078; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00b3e390	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N078; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0081a6e0	VERIFIED_MATCH	47	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N079; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00ab13a0	VERIFIED_MATCH	47	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N079; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+00b7af30	VERIFIED_MATCH	47	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N079; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0081ac20	VERIFIED_MATCH	149	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N080; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0086afb0	VERIFIED_MATCH	149	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N080; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+009b2f30	VERIFIED_MATCH	149	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N080; source grades=1; independently checked source/test hashes, strict C++03 test and dry vland; frozen_N061_N080 plus amendment_N061_N080_v2 supersedes 008195e0 identity and00961080 test
+0081b880	VERIFIED_MATCH	120	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N081; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0086b320	VERIFIED_MATCH	120	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N081; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+009b3800	VERIFIED_MATCH	120	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N081; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0081ba10	VERIFIED_MATCH	62	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N082; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00a00460	VERIFIED_MATCH	62	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N082; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00f37d30	VERIFIED_MATCH	62	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N082; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0081bd10	VERIFIED_MATCH	86	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N083; source grades=3; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0086b630	VERIFIED_MATCH	86	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N083; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+009b3dc0	VERIFIED_MATCH	86	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N083; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0081c5f0	VERIFIED_MATCH	122	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N084; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0086c7b0	VERIFIED_MATCH	122	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N084; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+009b5670	VERIFIED_MATCH	122	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N084; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0081d580	VERIFIED_MATCH	160	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N085; source grades=4; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0086d0c0	VERIFIED_MATCH	160	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N085; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+009b6ad0	VERIFIED_MATCH	160	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N085; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0081d920	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N086; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0081daa0	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N086; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0085e870	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N086; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0081f3d0	VERIFIED_MATCH	50	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N087; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0081f4b0	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N087; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0081f630	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N087; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0082e860	PARKED	131	AGENT_GPP_PASS;AGENT_VC71_PASS	Sol N088; source grades=4; best attempt=2; 131vs131 representative: frame/register save order at prologue and epilogue; sibling128vs131. Saved tree-view model has library-template identity debt: replace _Rb_tree_view with genuine set/map/_Rb_tree before any acceptance. No matching row claimed.; frozen_N081_N100/PARKS.json; not verified match
+0082e910	VERIFIED_MATCH	131	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N088_original_storage2_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N088_original_storage2_v1
+0082e9c0	VERIFIED_MATCH	131	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N088_original_storage2_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N088_original_storage2_v1
+0082fed0	VERIFIED_MATCH	134	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N089; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0082ff70	VERIFIED_MATCH	134	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N089; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00830000	VERIFIED_MATCH	134	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N089; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+008435b0	VERIFIED_MATCH	83	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=2; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N090_base_chain_v1 supersedes frozen_N081_N100
+00843610	VERIFIED_MATCH	83	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=2; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N090_base_chain_v1 supersedes frozen_N081_N100
+00910c30	VERIFIED_MATCH	83	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=2; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N090_base_chain_v1 supersedes frozen_N081_N100
+0084a290	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=4; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N091_N093_original_bases_v1 supersedes frozen_N081_N100
+0084a2f0	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=4; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N091_N093_original_bases_v1 supersedes frozen_N081_N100
+008b75e0	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=4; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N091_N093_original_bases_v1 supersedes frozen_N081_N100
+0084e1a0	VERIFIED_MATCH	94	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N092; source grades=3; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0084e200	VERIFIED_MATCH	94	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N092; source grades=3; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0084e260	VERIFIED_MATCH	94	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N092; source grades=3; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00855880	REVIEW_HELD	78	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol component map amendment accepted; source grades=4; correct original ETCInterfaceType/CTCBase CVectorMap/CArray/stdvector, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N091_N093_component_map_v1 supersedes frozen_N081_N100; follow-up model audit: original CBaseObject/CBaseClass action inheritance represented only by same-size opaque word. Bytes and both tests PASS; main requests actual original base chain before full acceptance. Four have one remaining grade; two StartBlocking at cap4 retained unchanged for Claude.
+008558d0	REVIEW_HELD	78	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol component map amendment accepted; source grades=4; correct original ETCInterfaceType/CTCBase CVectorMap/CArray/stdvector, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N091_N093_component_map_v1 supersedes frozen_N081_N100; follow-up model audit: original CBaseObject/CBaseClass action inheritance represented only by same-size opaque word. Bytes and both tests PASS; main requests actual original base chain before full acceptance. Four have one remaining grade; two StartBlocking at cap4 retained unchanged for Claude.
+008cb8f0	VERIFIED_MATCH	78	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=4; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N091_N093_original_bases_v1 supersedes frozen_N081_N100
+0085ae20	PARKED	59	AGENT_GPP_PASS;AGENT_VC71_PASS	Sol N094; source grades=4; best attempt=1; 59vs59: compiler saves EDI within placement-construction branch, retail saves it before allocation; register-save scheduling shifts body. Next idea: proven original counted-pointer copy/allocator inline visibility.; frozen_N081_N100/PARKS.json; not verified match
+008ebf90	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N094_original_list2_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N094_original_list2_v1
+009c6bf0	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N094_original_list2_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N094_original_list2_v1
+0085c450	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N095; source grades=3; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+008735b0	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N095; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00878b40	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N095; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0085ed90	PARKED	36	AGENT_GPP_PASS;AGENT_VC71_PASS	N096 lifetime4 selected4; 63v36 cleanup remains. Correct original protected vector base, 3arg allocator proxy and CMapwhoNode field, visible actual resize; dualPASS. See 0085ed90_SELECTED.json.
+00af2200	PARKED	36	AGENT_GPP_PASS;AGENT_VC71_PASS	Sol N096; source grades=3; best attempt=3; 63vs36 vector/array,72vs36 emitter: const fill temporary still retains cleanup and schedules zero stores later; retail has no temporary cleanup. Next idea: prove original STLport default-value and same-TU readonly helper visibility; do not erase genuine destructor.; frozen_N081_N100/PARKS.json; not verified match
+00f3fb60	PARKED	36	AGENT_GPP_PASS;AGENT_VC71_PASS	Sol N096; source grades=3; best attempt=3; 63vs36 vector/array,72vs36 emitter: const fill temporary still retains cleanup and schedules zero stores later; retail has no temporary cleanup. Next idea: prove original STLport default-value and same-TU readonly helper visibility; do not erase genuine destructor.; frozen_N081_N100/PARKS.json; not verified match
+008610d0	VERIFIED_MATCH	284	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N097; source grades=4; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+008611f0	VERIFIED_MATCH	284	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N097; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00861310	VERIFIED_MATCH	284	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N097; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00865710	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N098; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00a3fcd0	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N098; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00ae5910	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N098; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00865d40	VERIFIED_MATCH	140	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N099; source grades=3; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+008ed6e0	VERIFIED_MATCH	140	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N099; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+008ed7a0	VERIFIED_MATCH	140	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N099; source grades=2; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0086b550	VERIFIED_MATCH	101	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N100; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+0086f930	VERIFIED_MATCH	101	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N100; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+009b3c00	VERIFIED_MATCH	101	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N100; source grades=1; independently reviewed frozen807hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N081_N100 selected source; field/name uncertainties retained
+00883530	VERIFIED_MATCH	272	GPP_PASS;VC71_PASS;VLAND_PASS	N101; source grades=1; dry verification=1; identity=proven; see gen/N101_ids.tsv
+00883640	VERIFIED_MATCH	272	GPP_PASS;VC71_PASS;VLAND_PASS	N101; source grades=1; dry verification=1; identity=proven; see gen/N101_ids.tsv
+00883750	VERIFIED_MATCH	272	GPP_PASS;VC71_PASS;VLAND_PASS	N101; source grades=1; dry verification=1; identity=proven; see gen/N101_ids.tsv
+00884e90	VERIFIED_MATCH	48	GPP_PASS;VC71_PASS;VLAND_PASS	N102; source grades=1; dry verification=1; identity=proven; see gen/N102_ids.tsv
+00884f60	VERIFIED_MATCH	48	GPP_PASS;VC71_PASS;VLAND_PASS	N102; source grades=1; dry verification=1; identity=proven; see gen/N102_ids.tsv
+00884fe0	VERIFIED_MATCH	48	GPP_PASS;VC71_PASS;VLAND_PASS	N102; source grades=1; dry verification=1; identity=proven; see gen/N102_ids.tsv
+00889010	VERIFIED_MATCH	219	GPP_PASS;VC71_PASS;VLAND_PASS	N103; source grades=2; dry verification=1; identity=proven; see gen/N103_ids.tsv
+008f6bb0	VERIFIED_MATCH	219	GPP_PASS;VC71_PASS;VLAND_PASS	N103; source grades=2; dry verification=1; identity=proven; see gen/N103_ids.tsv
+00ae6c70	VERIFIED_MATCH	219	GPP_PASS;VC71_PASS;VLAND_PASS	N103; source grades=2; dry verification=1; identity=descriptive; see gen/N103_ids.tsv
+0088ebc0	VERIFIED_MATCH	48	GPP_PASS;VC71_PASS;VLAND_PASS	N104; source grades=1; dry verification=1; identity=proven; see gen/N104_ids.tsv
+0088ebf0	VERIFIED_MATCH	48	GPP_PASS;VC71_PASS;VLAND_PASS	N104; source grades=1; dry verification=1; identity=proven; see gen/N104_ids.tsv
+0088f500	VERIFIED_MATCH	48	GPP_PASS;VC71_PASS;VLAND_PASS	N104; source grades=1; dry verification=1; identity=proven; see gen/N104_ids.tsv
+0088f9f0	VERIFIED_MATCH	41	GPP_PASS;VC71_PASS;VLAND_PASS	N105; source grades=1; dry verification=1; identity=proven; see gen/N105_ids.tsv
+0088fa20	VERIFIED_MATCH	41	GPP_PASS;VC71_PASS;VLAND_PASS	N105; source grades=1; dry verification=1; identity=proven; see gen/N105_ids.tsv
+0088fa50	VERIFIED_MATCH	41	GPP_PASS;VC71_PASS;VLAND_PASS	N105; source grades=1; dry verification=1; identity=proven; see gen/N105_ids.tsv
+00895650	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;VLAND_PASS	N106; source grades=2; dry verification=1; identity=proven; see gen/N106_ids.tsv
+008a05a0	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;VLAND_PASS	N106; source grades=2; dry verification=1; identity=proven; see gen/N106_ids.tsv
+008a0660	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;VLAND_PASS	N106; source grades=2; dry verification=1; identity=proven; see gen/N106_ids.tsv
+00895b60	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;VLAND_PASS	N107; source grades=1; dry verification=1; identity=proven; see gen/N107_ids.tsv
+0089d690	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;VLAND_PASS	N107; source grades=1; dry verification=1; identity=proven; see gen/N107_ids.tsv
+0089d6f0	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;VLAND_PASS	N107; source grades=1; dry verification=1; identity=proven; see gen/N107_ids.tsv
+00896660	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;VLAND_PASS	N108; source grades=1; dry verification=1; identity=proven; see gen/N108_ids.tsv
+00896730	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;VLAND_PASS	N108; source grades=1; dry verification=1; identity=proven; see gen/N108_ids.tsv
+0089ddf0	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;VLAND_PASS	N108; source grades=1; dry verification=1; identity=proven; see gen/N108_ids.tsv
+0089c000	VERIFIED_MATCH	113	GPP_PASS;VC71_PASS;VLAND_PASS	N109; source grades=1; dry verification=1; identity=proven; see gen/N109_ids.tsv
+0089c080	VERIFIED_MATCH	113	GPP_PASS;VC71_PASS;VLAND_PASS	N109; source grades=1; dry verification=1; identity=proven; see gen/N109_ids.tsv
+008a7ee0	VERIFIED_MATCH	113	GPP_PASS;VC71_PASS;VLAND_PASS	N109; source grades=1; dry verification=1; identity=proven; see gen/N109_ids.tsv
+0089c330	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;VLAND_PASS	N110; source grades=1; dry verification=1; identity=proven; see gen/N110_ids.tsv
+0089c380	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;VLAND_PASS	N110; source grades=1; dry verification=1; identity=proven; see gen/N110_ids.tsv
+0089c3d0	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;VLAND_PASS	N110; source grades=1; dry verification=1; identity=proven; see gen/N110_ids.tsv
+0089d420	VERIFIED_MATCH	145	GPP_PASS;VC71_PASS;VLAND_PASS	N111; source grades=1; dry verification=1; identity=proven; see gen/N111_ids.tsv
+0089d4c0	VERIFIED_MATCH	145	GPP_PASS;VC71_PASS;VLAND_PASS	N111; source grades=1; dry verification=1; identity=proven; see gen/N111_ids.tsv
+0089d560	VERIFIED_MATCH	145	GPP_PASS;VC71_PASS;VLAND_PASS	N111; source grades=1; dry verification=1; identity=proven; see gen/N111_ids.tsv
+0089e9c0	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;VLAND_PASS	N112; source grades=1; dry verification=1; identity=proven; see gen/N112_ids.tsv
+0089eb80	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;VLAND_PASS	N112; source grades=1; dry verification=1; identity=proven; see gen/N112_ids.tsv
+0089ebf0	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;VLAND_PASS	N112; source grades=1; dry verification=1; identity=proven; see gen/N112_ids.tsv
+008a9e90	VERIFIED_MATCH	105	GPP_PASS;VC71_PASS;VLAND_PASS	N113; source grades=1; dry verification=1; identity=proven; see gen/N113_ids.tsv
+008aa0f0	VERIFIED_MATCH	105	GPP_PASS;VC71_PASS;VLAND_PASS	N113; source grades=1; dry verification=1; identity=proven; see gen/N113_ids.tsv
+008aa350	VERIFIED_MATCH	105	GPP_PASS;VC71_PASS;VLAND_PASS	N113; source grades=1; dry verification=1; identity=proven; see gen/N113_ids.tsv
+008a9f00	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;VLAND_PASS	N114; source grades=1; dry verification=1; identity=proven; see gen/N114_ids.tsv
+008aa160	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;VLAND_PASS	N114; source grades=1; dry verification=1; identity=proven; see gen/N114_ids.tsv
+008aa3c0	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;VLAND_PASS	N114; source grades=1; dry verification=1; identity=proven; see gen/N114_ids.tsv
+008aa090	VERIFIED_MATCH	52	GPP_PASS;VC71_PASS;VLAND_PASS	N115; source grades=1; dry verification=1; identity=proven; see gen/N115_ids.tsv
+008aa2f0	VERIFIED_MATCH	52	GPP_PASS;VC71_PASS;VLAND_PASS	N115; source grades=1; dry verification=1; identity=proven; see gen/N115_ids.tsv
+008aa550	VERIFIED_MATCH	52	GPP_PASS;VC71_PASS;VLAND_PASS	N115; source grades=1; dry verification=1; identity=proven; see gen/N115_ids.tsv
+008ac660	VERIFIED_MATCH	146	GPP_PASS;VC71_PASS;VLAND_PASS	N116; source grades=1; dry verification=1; identity=proven; see gen/N116_ids.tsv
+008ac700	VERIFIED_MATCH	146	GPP_PASS;VC71_PASS;VLAND_PASS	N116; source grades=1; dry verification=1; identity=proven; see gen/N116_ids.tsv
+0094b490	VERIFIED_MATCH	146	GPP_PASS;VC71_PASS;VLAND_PASS	N116; source grades=1; dry verification=1; identity=proven; see gen/N116_ids.tsv
+008adfe0	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;VLAND_PASS	N117; source grades=1; dry verification=1; identity=proven; see gen/N117_ids.tsv
+008cc370	VERIFIED_MATCH	63	GPP_PASS;VC71_PASS;VLAND_PASS	N117; source grades=1; dry verification=1; identity=proven; see gen/N117_ids.tsv
+008e4800	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;VLAND_PASS	N117; source grades=1; dry verification=1; identity=proven; see gen/N117_ids.tsv
+008ae5e0	VERIFIED_MATCH	115	GPP_PASS;VC71_PASS;VLAND_PASS	N118; source grades=2; dry verification=1; identity=proven; see gen/N118_ids.tsv
+008ae810	VERIFIED_MATCH	115	GPP_PASS;VC71_PASS;VLAND_PASS	N118; source grades=2; dry verification=1; identity=proven; see gen/N118_ids.tsv
+008aea40	VERIFIED_MATCH	115	GPP_PASS;VC71_PASS;VLAND_PASS	N118; source grades=2; dry verification=1; identity=proven; see gen/N118_ids.tsv
+008ae660	VERIFIED_MATCH	81	GPP_PASS;VC71_PASS;VLAND_PASS	N119; source grades=2; dry verification=1; identity=proven; see gen/N119_ids.tsv
+008ae890	VERIFIED_MATCH	81	GPP_PASS;VC71_PASS;VLAND_PASS	N119; source grades=2; dry verification=1; identity=proven; see gen/N119_ids.tsv
+008aeac0	VERIFIED_MATCH	81	GPP_PASS;VC71_PASS;VLAND_PASS	N119; source grades=2; dry verification=1; identity=proven; see gen/N119_ids.tsv
+008af020	VERIFIED_MATCH	126	GPP_PASS;VC71_PASS;VLAND_PASS	N120; source grades=1; dry verification=1; identity=proven; see gen/N120_ids.tsv
+008af0a0	VERIFIED_MATCH	126	GPP_PASS;VC71_PASS;VLAND_PASS	N120; source grades=1; dry verification=1; identity=proven; see gen/N120_ids.tsv
+0091d0a0	VERIFIED_MATCH	126	GPP_PASS;VC71_PASS;VLAND_PASS	N120; source grades=1; dry verification=1; identity=proven; see gen/N120_ids.tsv
+008b0020	VERIFIED_MATCH	19	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008b0440	VERIFIED_MATCH	19	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008b04c0	VERIFIED_MATCH	19	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008b69f0	VERIFIED_MATCH	44	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=3; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N122_base_chain_v1 supersedes frozen_N121_N140
+008b6a60	VERIFIED_MATCH	44	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=2; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N122_base_chain_v1 supersedes frozen_N121_N140
+008ed770	VERIFIED_MATCH	44	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol action base chain amendment accepted; source grades=2; correct original CBaseClass/CBaseObject/CCreatureActionBase inheritance, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N122_base_chain_v1 supersedes frozen_N121_N140
+008b8190	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N123; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+0096bf10	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N123; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+0096bf90	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N123; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+008c1900	VERIFIED_MATCH	175	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=3; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008c1a10	VERIFIED_MATCH	175	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=3; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008c1b20	VERIFIED_MATCH	175	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=3; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008c3810	VERIFIED_MATCH	119	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+009771f0	VERIFIED_MATCH	119	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00977320	VERIFIED_MATCH	119	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008c5410	VERIFIED_MATCH	121	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008ca680	VERIFIED_MATCH	121	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008ca700	VERIFIED_MATCH	121	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008cc650	VERIFIED_MATCH	65	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N127; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+0094b6d0	VERIFIED_MATCH	65	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N127; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00968100	VERIFIED_MATCH	65	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N127; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+008cc6a0	VERIFIED_MATCH	65	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N128; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00923be0	VERIFIED_MATCH	65	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N128; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+0096d500	VERIFIED_MATCH	65	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N128; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+008db030	REVIEW_HELD	166	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Original CCharString constructor length is long/J, not old int/H alias. Byte/test passes retained; signature correction pending within cap; 008db030 already cap4 and must retain precise debt.
+008db0e0	VERIFIED_MATCH	166	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=3; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008db190	VERIFIED_MATCH	166	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=3; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+008e8c50	VERIFIED_MATCH	86	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N130; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00957210	VERIFIED_MATCH	86	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N130; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+009572a0	VERIFIED_MATCH	86	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N130; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+009000bc	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N131; source grades=4; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+009004e0	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N131; source grades=2; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00903216	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N131; source grades=2; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+009074c0	VERIFIED_MATCH	81	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=3; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+0097cff0	VERIFIED_MATCH	81	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=3; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+0097d050	VERIFIED_MATCH	81	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=3; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+0090c100	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N133; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00938e90	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N133; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00943990	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N133; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+0090e3d0	PARKED	208	GPP_PASS;VC71_PASS	N134 lifetimegrades4, selected3;208v208four independentreload operand differences; grade4 accidentalduplicate aftersetupfailed, notanactual/G7 trial. See history/0090e3d0/GRADE_04_CORRECTION.json. No fifthgrade.
+0090ebe0	PARKED	208	GPP_PASS;VC71_PASS	N134 lifetimegrades4; selected3;208v208fourindependent loop-back reloadoperanddifferences; actual/G7 grade4didnotfix. BothselectedtestsPASS.
+00934e50	PARKED	208	GPP_PASS;VC71_PASS	N134 lifetime4,selected3;208v208 four independentreloadoperanddifferences. Finalaliasremoval194v208regression retained; selected3 source/test restored exact fromhistory/verification. DualPASS; cap4.
+0090f770	PARKED	37	GPP_PASS;VC71_PASS	N135 lifetimegrades4, selected3; /G7 finaldistinctstrategy leftsame37v37 receiver ADD/LEA residue. Dualtests forselected3 PASS; capintact.
+0090f7a0	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	N135Visible; source grades=3; dry verification=1; identity=proven; see gen/N135Visible_ids.tsv
+00938ef0	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	N135Home; source grades=2; dry verification=1; identity=proven; see gen/N135Home_ids.tsv
+009107b0	VERIFIED_MATCH	124	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N136; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00922320	VERIFIED_MATCH	124	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N136; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00935040	VERIFIED_MATCH	124	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N136; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00916e30	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N137; source grades=3; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00916e90	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N137; source grades=2; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+0093b5e0	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N137; source grades=2; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00918230	VERIFIED_MATCH	124	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+009182d0	VERIFIED_MATCH	124	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00927c00	VERIFIED_MATCH	124	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00918350	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N139; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+0093b6f0	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N139; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+0093bea0	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N139; source grades=1; independently reviewed frozen643hashes, strictC++03test, actualVC71 dry-vland and identities; frozen_N121_N140 selected source; field/name uncertainties retained
+00922f50	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00947be0	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+0096c820	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CCharString original long/J signature correction accepted; grade=2; exact selected amendment_CCharString_ctor_accepted23_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00923aa0	VERIFIED_MATCH	96	GPP_PASS;VC71_PASS;VLAND_PASS	N141; source grades=3; dry verification=1; identity=proven; see gen/N141_ids.tsv
+00923b00	VERIFIED_MATCH	96	GPP_PASS;VC71_PASS;VLAND_PASS	N141; source grades=3; dry verification=1; identity=proven; see gen/N141_ids.tsv
+0096d200	VERIFIED_MATCH	96	GPP_PASS;VC71_PASS;VLAND_PASS	N141; source grades=3; dry verification=1; identity=proven; see gen/N141_ids.tsv
+009240c0	VERIFIED_MATCH	95	GPP_PASS;VC71_PASS;VLAND_PASS	N142; source grades=1; dry verification=1; identity=proven; see gen/N142_ids.tsv
+00924200	VERIFIED_MATCH	95	GPP_PASS;VC71_PASS;VLAND_PASS	N142; source grades=1; dry verification=1; identity=proven; see gen/N142_ids.tsv
+00924350	VERIFIED_MATCH	95	GPP_PASS;VC71_PASS;VLAND_PASS	N142; source grades=1; dry verification=1; identity=proven; see gen/N142_ids.tsv
+0093cfe0	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;VLAND_PASS	N143; source grades=2; dry verification=1; identity=proven; see gen/N143_ids.tsv
+00959ee0	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;VLAND_PASS	N143; source grades=2; dry verification=1; identity=proven; see gen/N143_ids.tsv
+0095a270	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;VLAND_PASS	N143; source grades=2; dry verification=1; identity=proven; see gen/N143_ids.tsv
+00950b20	VERIFIED_MATCH	132	GPP_PASS;VC71_PASS;VLAND_PASS	N144; source grades=1; dry verification=1; identity=proven; see gen/N144_ids.tsv
+0096c250	VERIFIED_MATCH	132	GPP_PASS;VC71_PASS;VLAND_PASS	N144; source grades=1; dry verification=1; identity=proven; see gen/N144_ids.tsv
+0097baa0	VERIFIED_MATCH	132	GPP_PASS;VC71_PASS;VLAND_PASS	N144; source grades=1; dry verification=1; identity=proven; see gen/N144_ids.tsv
+00953fa0	VERIFIED_MATCH	54	GPP_PASS;VC71_PASS;VLAND_PASS	N145; source grades=1; dry verification=1; identity=proven; see gen/N145_ids.tsv
+00954040	VERIFIED_MATCH	54	GPP_PASS;VC71_PASS;VLAND_PASS	N145; source grades=1; dry verification=1; identity=proven; see gen/N145_ids.tsv
+00954080	VERIFIED_MATCH	54	GPP_PASS;VC71_PASS;VLAND_PASS	N145; source grades=1; dry verification=1; identity=proven; see gen/N145_ids.tsv
+009540f0	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;VLAND_PASS	N146; source grades=2; dry verification=1; identity=proven; see gen/N146_ids.tsv
+00954150	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;VLAND_PASS	N146; source grades=2; dry verification=1; identity=proven; see gen/N146_ids.tsv
+009541e0	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;VLAND_PASS	N146; source grades=2; dry verification=1; identity=proven; see gen/N146_ids.tsv
+009670a0	VERIFIED_MATCH	99	GPP_PASS;VC71_PASS;VLAND_PASS	N147; source grades=2; dry verification=1; identity=proven; see gen/N147_ids.tsv
+00967110	VERIFIED_MATCH	99	GPP_PASS;VC71_PASS;VLAND_PASS	N147; source grades=2; dry verification=1; identity=proven; see gen/N147_ids.tsv
+00968950	VERIFIED_MATCH	99	GPP_PASS;VC71_PASS;VLAND_PASS	N147; source grades=2; dry verification=1; identity=proven; see gen/N147_ids.tsv
+0098bfb0	VERIFIED_MATCH	58	GPP_PASS;VC71_PASS;VLAND_PASS	N148; source grades=1; dry verification=1; identity=proven; see gen/N148_ids.tsv
+00a51c20	VERIFIED_MATCH	58	GPP_PASS;VC71_PASS;VLAND_PASS	N148; source grades=1; dry verification=1; identity=proven; see gen/N148_ids.tsv
+00bdb710	VERIFIED_MATCH	58	GPP_PASS;VC71_PASS;VLAND_PASS	N148; source grades=1; dry verification=1; identity=proven; see gen/N148_ids.tsv
+0098d240	VERIFIED_MATCH	207	GPP_PASS;VC71_PASS;VLAND_PASS	N149; source grades=1; dry verification=1; identity=proven; see gen/N149_ids.tsv
+00ad4d10	VERIFIED_MATCH	207	GPP_PASS;VC71_PASS;VLAND_PASS	N149; source grades=1; dry verification=1; identity=proven; see gen/N149_ids.tsv
+00bdb8e0	VERIFIED_MATCH	207	GPP_PASS;VC71_PASS;VLAND_PASS	N149; source grades=1; dry verification=1; identity=proven; see gen/N149_ids.tsv
+0099be70	PARKED	177	GPP_PASS;VC71_PASS	N150; source grades=4; selected grade=1; closest=184v177 shared-data caching/return-copy and release scheduling; representative four-grade cap exhausted; siblings same known residue; genuine operator+ and lifetimes; all attempts preserved
+0099bf30	PARKED	177	GPP_PASS;VC71_PASS	N150; lifetimegrades4; selected1 184v177; missing full append noescape proof; see 0099bf30_SELECTED.json
+0099c120	VERIFIED_MATCH	177	GPP_PASS;VC71_PASS;VLAND_PASS	N150Retry; source grades=3; dry verification=1; identity=proven; see gen/N150Retry_ids.tsv
+0099f570	PARKED	130	GPP_PASS;VC71_PASS	N151; source grades=4; selected grade=4; closest=126v130 first copy uses inc-memory instead of load/inc/store; return copy exact; representative four-grade cap exhausted; siblings same known residue; genuine operator+ and lifetimes; all attempts preserved
+0099f600	PARKED	130	GPP_PASS;VC71_PASS	N151; lifetimegrades4; selected4; 130v130 scratch-register operands at first data acquisition; see 0099f600_SELECTED.json
+0099f7a0	PARKED	130	GPP_PASS;VC71_PASS	N151; lifetimegrades4; selected4; 130v130 scratch-register operands at first data acquisition; see 0099f7a0_SELECTED.json
+009b6e00	VERIFIED_MATCH	135	GPP_PASS;VC71_PASS;VLAND_PASS	N152; source grades=1; dry verification=1; identity=proven; see gen/N152_ids.tsv
+009b7b10	VERIFIED_MATCH	135	GPP_PASS;VC71_PASS;VLAND_PASS	N152; source grades=1; dry verification=1; identity=proven; see gen/N152_ids.tsv
+00a39a00	VERIFIED_MATCH	135	GPP_PASS;VC71_PASS;VLAND_PASS	N152; source grades=1; dry verification=1; identity=proven; see gen/N152_ids.tsv
+009b71b0	VERIFIED_MATCH	248	GPP_PASS;VC71_PASS;VLAND_PASS	N153; source grades=2; dry verification=1; identity=proven; see gen/N153_ids.tsv
+00a2d3b0	VERIFIED_MATCH	248	GPP_PASS;VC71_PASS;VLAND_PASS	N153; source grades=2; dry verification=1; identity=proven; see gen/N153_ids.tsv
+00a41480	VERIFIED_MATCH	248	GPP_PASS;VC71_PASS;VLAND_PASS	N153; source grades=2; dry verification=1; identity=proven; see gen/N153_ids.tsv
+009ba330	VERIFIED_MATCH	81	GPP_PASS;VC71_PASS;VLAND_PASS	N154; source grades=1; dry verification=1; identity=proven; see gen/N154_ids.tsv
+009ba3e0	VERIFIED_MATCH	81	GPP_PASS;VC71_PASS;VLAND_PASS	N154; source grades=1; dry verification=1; identity=proven; see gen/N154_ids.tsv
+009ba440	VERIFIED_MATCH	81	GPP_PASS;VC71_PASS;VLAND_PASS	N154; source grades=1; dry verification=1; identity=proven; see gen/N154_ids.tsv
+009be830	VERIFIED_MATCH	63	GPP_PASS;VC71_PASS;VLAND_PASS	N155; source grades=2; dry verification=1; identity=proven; see gen/N155_ids.tsv
+009be870	VERIFIED_MATCH	63	GPP_PASS;VC71_PASS;VLAND_PASS	N155; source grades=2; dry verification=1; identity=proven; see gen/N155_ids.tsv
+009be8b0	VERIFIED_MATCH	63	GPP_PASS;VC71_PASS;VLAND_PASS	N155; source grades=2; dry verification=1; identity=proven; see gen/N155_ids.tsv
+009cb930	VERIFIED_MATCH	22	GPP_PASS;VC71_PASS;VLAND_PASS	N156; source grades=1; dry verification=1; identity=proven; see gen/N156_ids.tsv
+009cba40	VERIFIED_MATCH	25	GPP_PASS;VC71_PASS;VLAND_PASS	N156; source grades=1; dry verification=1; identity=proven; see gen/N156_ids.tsv
+00b38890	VERIFIED_MATCH	22	GPP_PASS;VC71_PASS;VLAND_PASS	N156; source grades=1; dry verification=1; identity=proven; see gen/N156_ids.tsv
+009d88d0	VERIFIED_MATCH	27	GPP_PASS;VC71_PASS;VLAND_PASS	N157; source grades=3; dry verification=1; identity=proven; see gen/N157_ids.tsv
+00b2fb30	VERIFIED_MATCH	27	GPP_PASS;VC71_PASS;VLAND_PASS	N157; source grades=3; dry verification=1; identity=proven; see gen/N157_ids.tsv
+00bcc340	VERIFIED_MATCH	27	GPP_PASS;VC71_PASS;VLAND_PASS	N157; source grades=3; dry verification=1; identity=proven; see gen/N157_ids.tsv
+009e41e0	VERIFIED_MATCH	62	GPP_PASS;VC71_PASS;VLAND_PASS	N158; source grades=1; dry verification=1; identity=proven; see gen/N158_ids.tsv
+00a66770	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;VLAND_PASS	N158; source grades=1; dry verification=1; identity=proven; see gen/N158_ids.tsv
+00a66b20	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;VLAND_PASS	N158; source grades=1; dry verification=1; identity=proven; see gen/N158_ids.tsv
+009e4280	VERIFIED_MATCH	54	GPP_PASS;VC71_PASS;VLAND_PASS	N159; source grades=1; dry verification=1; identity=proven; see gen/N159_ids.tsv
+00a66810	VERIFIED_MATCH	54	GPP_PASS;VC71_PASS;VLAND_PASS	N159; source grades=1; dry verification=1; identity=proven; see gen/N159_ids.tsv
+00a66bc0	VERIFIED_MATCH	54	GPP_PASS;VC71_PASS;VLAND_PASS	N159; source grades=1; dry verification=1; identity=proven; see gen/N159_ids.tsv
+009e5c60	VERIFIED_MATCH	33	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00a38fe0	VERIFIED_MATCH	33	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00cb8930	VERIFIED_MATCH	33	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+009e5fa0	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;VLAND_PASS	N161; source grades=2; dry verification=1; identity=proven; see gen/N161_ids.tsv
+00a3fbc0	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;VLAND_PASS	N161; source grades=2; dry verification=1; identity=proven; see gen/N161_ids.tsv
+00cd4e60	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;VLAND_PASS	N161; source grades=2; dry verification=1; identity=proven; see gen/N161_ids.tsv
+009e76f0	VERIFIED_MATCH	229	GPP_PASS;VC71_PASS;VLAND_PASS	N162; source grades=1; dry verification=1; identity=proven; see gen/N162_ids.tsv
+00a41390	VERIFIED_MATCH	229	GPP_PASS;VC71_PASS;VLAND_PASS	N162; source grades=1; dry verification=1; identity=proven; see gen/N162_ids.tsv
+00cdbdc0	VERIFIED_MATCH	229	GPP_PASS;VC71_PASS;VLAND_PASS	N162; source grades=1; dry verification=1; identity=proven; see gen/N162_ids.tsv
+009e7a50	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;VLAND_PASS	N163; source grades=1; dry verification=1; identity=proven; see gen/N163_ids.tsv
+00a41840	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;VLAND_PASS	N163; source grades=1; dry verification=1; identity=proven; see gen/N163_ids.tsv
+00cdbf10	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;VLAND_PASS	N163; source grades=1; dry verification=1; identity=proven; see gen/N163_ids.tsv
+009f2400	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;VLAND_PASS	N164; source grades=2; dry verification=1; identity=proven; see gen/N164_ids.tsv
+009f2500	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;VLAND_PASS	N164; source grades=1; dry verification=1; identity=proven; see gen/N164_ids.tsv
+009f2610	VERIFIED_MATCH	77	GPP_PASS;VC71_PASS;VLAND_PASS	N164; source grades=1; dry verification=1; identity=proven; see gen/N164_ids.tsv
+009fa100	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;VLAND_PASS	N165; source grades=1; dry verification=1; identity=proven; see gen/N165_ids.tsv
+009fa140	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;VLAND_PASS	N165; source grades=1; dry verification=1; identity=proven; see gen/N165_ids.tsv
+009fa180	VERIFIED_MATCH	51	GPP_PASS;VC71_PASS;VLAND_PASS	N165; source grades=1; dry verification=1; identity=proven; see gen/N165_ids.tsv
+00a00050	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;VLAND_PASS	N166; source grades=1; dry verification=1; identity=descriptive; see gen/N166_ids.tsv
+00ad0700	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;VLAND_PASS	N166; source grades=1; dry verification=1; identity=descriptive; see gen/N166_ids.tsv
+00b7abd0	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;VLAND_PASS	N166; source grades=1; dry verification=1; identity=descriptive; see gen/N166_ids.tsv
+00a013e0	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;VLAND_PASS	N167; source grades=1; dry verification=1; identity=proven; see gen/N167_ids.tsv
+00a01430	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;VLAND_PASS	N167; source grades=1; dry verification=1; identity=proven; see gen/N167_ids.tsv
+00a01480	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;VLAND_PASS	N167; source grades=1; dry verification=1; identity=proven; see gen/N167_ids.tsv
+00a03c80	VERIFIED_MATCH	42	GPP_PASS;VC71_PASS;VLAND_PASS	N168; source grades=1; dry verification=1; identity=proven; see gen/N168_ids.tsv
+00a03d90	VERIFIED_MATCH	42	GPP_PASS;VC71_PASS;VLAND_PASS	N168; source grades=1; dry verification=1; identity=proven; see gen/N168_ids.tsv
+00a03e40	VERIFIED_MATCH	42	GPP_PASS;VC71_PASS;VLAND_PASS	N168; source grades=1; dry verification=1; identity=proven; see gen/N168_ids.tsv
+00a03d10	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;VLAND_PASS	N169; source grades=1; dry verification=1; identity=proven; see gen/N169_ids.tsv
+00a03dc0	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;VLAND_PASS	N169; source grades=1; dry verification=1; identity=proven; see gen/N169_ids.tsv
+00a03e70	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;VLAND_PASS	N169; source grades=1; dry verification=1; identity=proven; see gen/N169_ids.tsv
+00a03d60	VERIFIED_MATCH	46	GPP_PASS;VC71_PASS;VLAND_PASS	N170; source grades=1; dry verification=1; identity=proven; see gen/N170_ids.tsv
+00a03e10	VERIFIED_MATCH	46	GPP_PASS;VC71_PASS;VLAND_PASS	N170; source grades=1; dry verification=1; identity=proven; see gen/N170_ids.tsv
+00a03ec0	VERIFIED_MATCH	46	GPP_PASS;VC71_PASS;VLAND_PASS	N170; source grades=1; dry verification=1; identity=proven; see gen/N170_ids.tsv
+00a2a8f0	VERIFIED_MATCH	119	GPP_PASS;VC71_PASS;VLAND_PASS	N171; source grades=1; dry verification=1; identity=proven; see gen/N171_ids.tsv
+00a95e10	VERIFIED_MATCH	119	GPP_PASS;VC71_PASS;VLAND_PASS	N171; source grades=1; dry verification=1; identity=proven; see gen/N171_ids.tsv
+00b96280	VERIFIED_MATCH	119	GPP_PASS;VC71_PASS;VLAND_PASS	N171; source grades=1; dry verification=1; identity=proven; see gen/N171_ids.tsv
+00a32af0	VERIFIED_MATCH	86	GPP_PASS;VC71_PASS;VLAND_PASS	N172; source grades=1; dry verification=1; identity=probable; see gen/N172_ids.tsv
+00a6f960	VERIFIED_MATCH	86	GPP_PASS;VC71_PASS;VLAND_PASS	N172; source grades=1; dry verification=1; identity=probable; see gen/N172_ids.tsv
+00ba9300	VERIFIED_MATCH	86	GPP_PASS;VC71_PASS;VLAND_PASS	N172; source grades=1; dry verification=1; identity=probable; see gen/N172_ids.tsv
+00a33720	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;VLAND_PASS	N173; source grades=1; dry verification=1; identity=proven; see gen/N173_ids.tsv
+00a70e80	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;VLAND_PASS	N173; source grades=1; dry verification=1; identity=proven; see gen/N173_ids.tsv
+00ba9fd0	VERIFIED_MATCH	85	GPP_PASS;VC71_PASS;VLAND_PASS	N173; source grades=1; dry verification=1; identity=proven; see gen/N173_ids.tsv
+00a5f0b0	VERIFIED_MATCH	63	GPP_PASS;VC71_PASS;VLAND_PASS	N174; source grades=1; dry verification=1; identity=proven; see gen/N174_ids.tsv
+00a61fc0	VERIFIED_MATCH	63	GPP_PASS;VC71_PASS;VLAND_PASS	N174; source grades=1; dry verification=1; identity=proven; see gen/N174_ids.tsv
+00a635f0	VERIFIED_MATCH	63	GPP_PASS;VC71_PASS;VLAND_PASS	N174; source grades=1; dry verification=1; identity=proven; see gen/N174_ids.tsv
+00a7dc60	VERIFIED_MATCH	89	GPP_PASS;VC71_PASS;VLAND_PASS	N175; source grades=1; dry verification=1; identity=proven; see gen/N175_ids.tsv
+00a84e80	VERIFIED_MATCH	89	GPP_PASS;VC71_PASS;VLAND_PASS	N175; source grades=1; dry verification=1; identity=proven; see gen/N175_ids.tsv
+00cb9840	VERIFIED_MATCH	89	GPP_PASS;VC71_PASS;VLAND_PASS	N175; source grades=2; dry verification=1; identity=proven; see gen/N175_ids.tsv
+00a8d580	VERIFIED_MATCH	50	GPP_PASS;VC71_PASS;VLAND_PASS	N176; source grades=1; dry verification=1; identity=descriptive; see gen/N176_ids.tsv
+00ad1650	VERIFIED_MATCH	50	GPP_PASS;VC71_PASS;VLAND_PASS	N176; source grades=1; dry verification=1; identity=descriptive; see gen/N176_ids.tsv
+00ad1740	VERIFIED_MATCH	50	GPP_PASS;VC71_PASS;VLAND_PASS	N176; source grades=1; dry verification=1; identity=descriptive; see gen/N176_ids.tsv
+00a97690	VERIFIED_MATCH	270	GPP_PASS;VC71_PASS;VLAND_PASS	N177; source grades=1; dry verification=1; identity=proven; see gen/N177_ids.tsv
+00aa9330	VERIFIED_MATCH	270	GPP_PASS;VC71_PASS;VLAND_PASS	N177; source grades=1; dry verification=1; identity=proven; see gen/N177_ids.tsv
+00ab30a0	VERIFIED_MATCH	270	GPP_PASS;VC71_PASS;VLAND_PASS	N177; source grades=1; dry verification=1; identity=proven; see gen/N177_ids.tsv
+00aa5a60	VERIFIED_MATCH	83	GPP_PASS;VC71_PASS;VLAND_PASS	N178; source grades=1; dry verification=1; identity=proven; see gen/N178_ids.tsv
+00abc8e0	VERIFIED_MATCH	83	GPP_PASS;VC71_PASS;VLAND_PASS	N178; source grades=1; dry verification=1; identity=proven; see gen/N178_ids.tsv
+00ac4fe0	VERIFIED_MATCH	83	GPP_PASS;VC71_PASS;VLAND_PASS	N178; source grades=1; dry verification=1; identity=proven; see gen/N178_ids.tsv
+00aadfc0	VERIFIED_MATCH	34	GPP_PASS;VC71_PASS;VLAND_PASS	N179; source grades=1; dry verification=1; identity=proven; see gen/N179_ids.tsv
+00ad5ed0	VERIFIED_MATCH	34	GPP_PASS;VC71_PASS;VLAND_PASS	N179; source grades=1; dry verification=1; identity=proven; see gen/N179_ids.tsv
+00b230e0	VERIFIED_MATCH	34	GPP_PASS;VC71_PASS;VLAND_PASS	N179; source grades=1; dry verification=1; identity=proven; see gen/N179_ids.tsv
+00ab01e0	VERIFIED_MATCH	128	GPP_PASS;VC71_PASS;VLAND_PASS	N180; source grades=3; dry verification=1; identity=proven; see gen/N180_ids.tsv
+00aba390	VERIFIED_MATCH	128	GPP_PASS;VC71_PASS;VLAND_PASS	N180; source grades=2; dry verification=1; identity=proven; see gen/N180_ids.tsv
+00abadd0	VERIFIED_MATCH	128	GPP_PASS;VC71_PASS;VLAND_PASS	N180; source grades=2; dry verification=1; identity=proven; see gen/N180_ids.tsv
+00ac8680	VERIFIED_MATCH	148	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N181/N192/N193 independently accepted; source grades=1; original typed models and actual callees verified, independent strictC++03 and actualVC71 dry-vland PASS; review_N181_N191_N192_N193_N200_v1 subset9 accepted; N191/N200 pending amendments
+00acd500	VERIFIED_MATCH	148	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N181/N192/N193 independently accepted; source grades=1; original typed models and actual callees verified, independent strictC++03 and actualVC71 dry-vland PASS; review_N181_N191_N192_N193_N200_v1 subset9 accepted; N191/N200 pending amendments
+00acdae0	VERIFIED_MATCH	148	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N181/N192/N193 independently accepted; source grades=1; original typed models and actual callees verified, independent strictC++03 and actualVC71 dry-vland PASS; review_N181_N191_N192_N193_N200_v1 subset9 accepted; N191/N200 pending amendments
+00ae04e0	VERIFIED_MATCH	95	GPP_PASS;VC71_PASS;VLAND_PASS	N182Retry; source grades=4; dry verification=1; identity=proven; see gen/N182Retry_ids.tsv
+00ae0540	VERIFIED_MATCH	95	GPP_PASS;VC71_PASS;VLAND_PASS	N182Siblings; source grades=3; dry verification=1; identity=proven; see gen/N182Siblings_ids.tsv
+00ae05a0	VERIFIED_MATCH	95	GPP_PASS;VC71_PASS;VLAND_PASS	N182Siblings; source grades=3; dry verification=1; identity=proven; see gen/N182Siblings_ids.tsv
+00af2250	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N183 particle original base amendment accepted; source grades=2; correct original CParticleSystem/CParticleUpdateParameters CBaseClass inheritance and typed original members, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N183_original_base_v1 supersedes review_N183_N190_v1 N183 rows
+00af22c0	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N183 particle original base amendment accepted; source grades=2; correct original CParticleSystem/CParticleUpdateParameters CBaseClass inheritance and typed original members, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N183_original_base_v1 supersedes review_N183_N190_v1 N183 rows
+00b05b10	VERIFIED_MATCH	110	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N183 particle original base amendment accepted; source grades=2; correct original CParticleSystem/CParticleUpdateParameters CBaseClass inheritance and typed original members, independent strictC++03 and actualVC71 dry-vland PASS; amendment_N183_original_base_v1 supersedes review_N183_N190_v1 N183 rows
+00af8680	PARKED	51	GPP_PASS;VC71_PASS	Sol N184 best=2 grades=4; Heap allocation branch placement/free-list caching scheduling;51vs51, representative capped4.; immutable frozen_N181_N200
+00af86c0	PARKED	51	GPP_PASS;VC71_PASS	N184 main originalmodel retry; lifetime4,selected4,51v51 failureexit position; bothcompilersPASS; allvariants retained inhistory and 00af86c0_SELECTED.json
+00af8b00	PARKED	51	GPP_PASS;VC71_PASS	N184 main originalmodel retry; lifetime3,selected3,51v51 failureexit position; bothcompilersPASS; allvariants retained inhistory and 00af8b00_SELECTED.json
+00afadc0	VERIFIED_MATCH	141	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=3; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; Original CIV signedness/const Release signature/slot1 Delete correction audit pending; prior byte/test evidence preserved; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00b01250	VERIFIED_MATCH	141	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=3; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; Original CIV signedness/const Release signature/slot1 Delete correction audit pending; prior byte/test evidence preserved; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00b1dbe0	VERIFIED_MATCH	141	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=3; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS; Original CIV signedness/const Release signature/slot1 Delete correction audit pending; prior byte/test evidence preserved; COMPLETE27 original-model correction independently accepted; exact selected amendment_complete_intrusive_accepted27_v1; prior snapshots retained
+00b48be0	PARKED	84	GPP_PASS;VC71_PASS	Sol N186 best=1 grades=3; Unrolled embedded free-list loop independent lea/store ordering; equal84/89/86 lengths and five operand/order offsets.; immutable frozen_N181_N200
+00b48cb0	PARKED	89	GPP_PASS;VC71_PASS	N186 lifetimegrades3,selected2;89v89independentLEA/storeordering. Genuinepure/privateRelease corrected. /G7grade3regressed91v89; restoredordinary2, dualtestsPASS.
+00b48d80	PARKED	86	GPP_PASS;VC71_PASS	N186 lifetimegrades2,selected2; original pure/private Release contract restored; actual per-iteration member stores preserved. Equal length but independent LEA/store scheduling remains. See 00b48d80_SELECTED.json.
+00b6df50	PARKED	54	GPP_PASS;VC71_PASS	Sol N187 best=2 grades=4; Compiler CSE removes retail second size/end/start reload;43vs54 best. Capped00B6DF50 still has explicit original CEngineComponent-base/source-storage debt; siblings corrected.; immutable frozen_N181_N200
+00b6df90	PARKED	54	GPP_PASS;VC71_PASS	Selected original-model receipt park_receipt_N077_N187_v1; lifetimegrades3, selected3 DIFFER(43v54), bothcompilerPASS and independentmainstrictPASS. See 00b6df90_SELECTED.json; previous source/test failures preserved.
+00b6dfd0	PARKED	54	GPP_PASS;VC71_PASS	Selected original-model receipt park_receipt_N077_N187_v1; lifetimegrades3, selected3 DIFFER(43v54), bothcompilerPASS and independentmainstrictPASS. See 00b6dfd0_SELECTED.json; previous source/test failures preserved.
+00bb8690	VERIFIED_MATCH	186	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=4; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00bc1420	VERIFIED_MATCH	186	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=3; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00bc4cd0	VERIFIED_MATCH	186	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=3; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00bda090	VERIFIED_MATCH	54	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=4; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00bda0d0	VERIFIED_MATCH	54	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=3; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00bda110	VERIFIED_MATCH	54	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=3; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00bdd910	VERIFIED_MATCH	17	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N190 independently accepted; source grades=1; correct original CMovableResource base/nested scopes/lock byte, independent strictC++03 and actualVC71 dry-vland PASS; review_N183_N190_v1 selected N190 only; N183 model revision pending
+00bdda10	VERIFIED_MATCH	17	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N190 independently accepted; source grades=1; correct original CMovableResource base/nested scopes/lock byte, independent strictC++03 and actualVC71 dry-vland PASS; review_N183_N190_v1 selected N190 only; N183 model revision pending
+00bf9a80	VERIFIED_MATCH	17	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N190 independently accepted; source grades=1; correct original CMovableResource base/nested scopes/lock byte, independent strictC++03 and actualVC71 dry-vland PASS; review_N183_N190_v1 selected N190 only; N183 model revision pending
+00be8e60	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=3; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00bfbd80	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=3; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00bfe900	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	CIV original storage correction accepted; grade=3; exact selected amendment_CIV_storage_accepted26_v1 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00bfcf00	VERIFIED_MATCH	135	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N181/N192/N193 independently accepted; source grades=1; original typed models and actual callees verified, independent strictC++03 and actualVC71 dry-vland PASS; review_N181_N191_N192_N193_N200_v1 subset9 accepted; N191/N200 pending amendments
+00bfcf90	VERIFIED_MATCH	135	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N181/N192/N193 independently accepted; source grades=1; original typed models and actual callees verified, independent strictC++03 and actualVC71 dry-vland PASS; review_N181_N191_N192_N193_N200_v1 subset9 accepted; N191/N200 pending amendments
+00bfd020	VERIFIED_MATCH	135	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N181/N192/N193 independently accepted; source grades=1; original typed models and actual callees verified, independent strictC++03 and actualVC71 dry-vland PASS; review_N181_N191_N192_N193_N200_v1 subset9 accepted; N191/N200 pending amendments
+00c0ddb0	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N181/N192/N193 independently accepted; source grades=2; original typed models and actual callees verified, independent strictC++03 and actualVC71 dry-vland PASS; review_N181_N191_N192_N193_N200_v1 subset9 accepted; N191/N200 pending amendments
+00c0de00	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N181/N192/N193 independently accepted; source grades=2; original typed models and actual callees verified, independent strictC++03 and actualVC71 dry-vland PASS; review_N181_N191_N192_N193_N200_v1 subset9 accepted; N191/N200 pending amendments
+00c0de50	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N181/N192/N193 independently accepted; source grades=2; original typed models and actual callees verified, independent strictC++03 and actualVC71 dry-vland PASS; review_N181_N191_N192_N193_N200_v1 subset9 accepted; N191/N200 pending amendments
+00c13fc0	VERIFIED_MATCH	42	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N194 descriptive element projection explicitly allowed EXTRA_RULES53-57; original element name unproven; main reviewed accepted; grade=2; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c13ff0	VERIFIED_MATCH	42	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N194 descriptive element projection explicitly allowed EXTRA_RULES53-57; original element name unproven; main reviewed accepted; grade=2; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c29580	VERIFIED_MATCH	42	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N194 descriptive element projection explicitly allowed EXTRA_RULES53-57; original element name unproven; main reviewed accepted; grade=2; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c17d90	VERIFIED_MATCH	201	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N191/N200/N195 accepted from review_N195_v1; source grades=2; independent strict C++03 and actual VC7.1 dry-vland PASS; original bases/class keys and canonical archive reviewed; descriptive libpk identities explicitly unproven
+00c181a0	VERIFIED_MATCH	201	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N191/N200/N195 accepted from review_N195_v1; source grades=2; independent strict C++03 and actual VC7.1 dry-vland PASS; original bases/class keys and canonical archive reviewed; descriptive libpk identities explicitly unproven
+00c184e0	VERIFIED_MATCH	201	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N191/N200/N195 accepted from review_N195_v1; source grades=2; independent strict C++03 and actual VC7.1 dry-vland PASS; original bases/class keys and canonical archive reviewed; descriptive libpk identities explicitly unproven
+00c1e640	VERIFIED_MATCH	90	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=1; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c1eb30	VERIFIED_MATCH	90	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=1; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c34d40	VERIFIED_MATCH	90	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=1; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c207a0	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	N197; source grades=2; dry verification=1; identity=descriptive; see gen/N197_ids.tsv
+00c20f20	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	N197; source grades=2; dry verification=1; identity=descriptive; see gen/N197_ids.tsv
+00c20f40	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	N197; source grades=2; dry verification=1; identity=descriptive; see gen/N197_ids.tsv
+00c22260	VERIFIED_MATCH	80	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=1; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c2a7f0	VERIFIED_MATCH	80	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=1; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c2a840	VERIFIED_MATCH	80	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=1; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c22840	VERIFIED_MATCH	222	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=2; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c22920	VERIFIED_MATCH	222	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=2; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c22a40	VERIFIED_MATCH	222	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol new18 original models reviewed accepted; grade=2; exact selected frozen_N181_N200 overlays prior snapshots; original histories preserved; independent strict C++03/RTM dry-vland PASS
+00c2ed90	VERIFIED_MATCH	34	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N191/N200/N195 accepted from amendment_N200_abstract_bases_v1; source grades=2; independent strict C++03 and actual VC7.1 dry-vland PASS; original bases/class keys and canonical archive reviewed; descriptive libpk identities explicitly unproven
+00c2edc0	VERIFIED_MATCH	34	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N191/N200/N195 accepted from amendment_N200_abstract_bases_v1; source grades=2; independent strict C++03 and actual VC7.1 dry-vland PASS; original bases/class keys and canonical archive reviewed; descriptive libpk identities explicitly unproven
+00c2edf0	VERIFIED_MATCH	34	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N191/N200/N195 accepted from amendment_N200_abstract_bases_v1; source grades=2; independent strict C++03 and actual VC7.1 dry-vland PASS; original bases/class keys and canonical archive reviewed; descriptive libpk identities explicitly unproven
+00c2ee20	VERIFIED_MATCH	25	GPP_PASS;VC71_PASS;VLAND_PASS	N201; source grades=4; dry verification=1; identity=descriptive; see gen/N201_ids.tsv
+00c2ee40	VERIFIED_MATCH	25	GPP_PASS;VC71_PASS;VLAND_PASS	N201; source grades=4; dry verification=1; identity=descriptive; see gen/N201_ids.tsv
+00c2ee60	VERIFIED_MATCH	25	GPP_PASS;VC71_PASS;VLAND_PASS	N201; source grades=4; dry verification=1; identity=descriptive; see gen/N201_ids.tsv
+00c2f030	VERIFIED_MATCH	35	GPP_PASS;VC71_PASS;VLAND_PASS	N202; source grades=1; dry verification=1; identity=descriptive; see gen/N202_ids.tsv
+00c2f150	VERIFIED_MATCH	35	GPP_PASS;VC71_PASS;VLAND_PASS	N202; source grades=1; dry verification=1; identity=descriptive; see gen/N202_ids.tsv
+00c2f270	VERIFIED_MATCH	35	GPP_PASS;VC71_PASS;VLAND_PASS	N202; source grades=1; dry verification=1; identity=descriptive; see gen/N202_ids.tsv
+00c2f7d0	VERIFIED_MATCH	410	GPP_PASS;VC71_PASS;VLAND_PASS	N203; source grades=3; dry verification=1; identity=descriptive; see gen/N203_ids.tsv
+00c2fa20	VERIFIED_MATCH	410	GPP_PASS;VC71_PASS;VLAND_PASS	N203; source grades=2; dry verification=1; identity=descriptive; see gen/N203_ids.tsv
+00c2fc70	VERIFIED_MATCH	410	GPP_PASS;VC71_PASS;VLAND_PASS	N203; source grades=2; dry verification=1; identity=descriptive; see gen/N203_ids.tsv
+00c33fd0	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;VLAND_PASS	N204; source grades=2; dry verification=1; identity=descriptive; see gen/N204_ids.tsv
+00c34010	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;VLAND_PASS	N204; source grades=1; dry verification=1; identity=descriptive; see gen/N204_ids.tsv
+00c34140	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;VLAND_PASS	N204; source grades=1; dry verification=1; identity=descriptive; see gen/N204_ids.tsv
+00c344d0	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;VLAND_PASS	N205; source grades=1; dry verification=1; identity=descriptive; see gen/N205_ids.tsv
+00c34500	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;VLAND_PASS	N205; source grades=1; dry verification=1; identity=descriptive; see gen/N205_ids.tsv
+00c34580	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;VLAND_PASS	N205; source grades=1; dry verification=1; identity=descriptive; see gen/N205_ids.tsv
+00c3d2f0	VERIFIED_MATCH	31	GPP_PASS;VC71_PASS;VLAND_PASS	N206; source grades=2; dry verification=1; identity=descriptive; see gen/N206_ids.tsv
+00c41550	VERIFIED_MATCH	31	GPP_PASS;VC71_PASS;VLAND_PASS	N206; source grades=1; dry verification=1; identity=descriptive; see gen/N206_ids.tsv
+00c415c0	VERIFIED_MATCH	31	GPP_PASS;VC71_PASS;VLAND_PASS	N206; source grades=1; dry verification=1; identity=descriptive; see gen/N206_ids.tsv
+00c3d440	VERIFIED_MATCH	23	GPP_PASS;VC71_PASS;VLAND_PASS	N207; source grades=3; dry verification=1; identity=descriptive; see gen/N207_ids.tsv
+00c43330	VERIFIED_MATCH	23	GPP_PASS;VC71_PASS;VLAND_PASS	N207; source grades=3; dry verification=1; identity=descriptive; see gen/N207_ids.tsv
+00c43350	VERIFIED_MATCH	23	GPP_PASS;VC71_PASS;VLAND_PASS	N207; source grades=3; dry verification=1; identity=descriptive; see gen/N207_ids.tsv
+00c408c0	VERIFIED_MATCH	30	GPP_PASS;VC71_PASS;VLAND_PASS	N208; source grades=3; dry verification=1; identity=descriptive; see gen/N208_ids.tsv
+00c408e0	VERIFIED_MATCH	30	GPP_PASS;VC71_PASS;VLAND_PASS	N208; source grades=3; dry verification=1; identity=descriptive; see gen/N208_ids.tsv
+00c40900	VERIFIED_MATCH	30	GPP_PASS;VC71_PASS;VLAND_PASS	N208; source grades=3; dry verification=1; identity=descriptive; see gen/N208_ids.tsv
+00c41320	VERIFIED_MATCH	96	GPP_PASS;VC71_PASS;VLAND_PASS	N209; source grades=3; dry verification=1; identity=descriptive; see gen/N209_ids.tsv
+00c41380	VERIFIED_MATCH	96	GPP_PASS;VC71_PASS;VLAND_PASS	N209; source grades=1; dry verification=1; identity=descriptive; see gen/N209_ids.tsv
+00c413e0	VERIFIED_MATCH	96	GPP_PASS;VC71_PASS;VLAND_PASS	N209; source grades=1; dry verification=1; identity=descriptive; see gen/N209_ids.tsv
+00c44d30	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	N210; source grades=1; dry verification=1; identity=descriptive; see gen/N210_ids.tsv
+00c47170	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	N210; source grades=1; dry verification=1; identity=descriptive; see gen/N210_ids.tsv
+00c471c0	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	N210; source grades=1; dry verification=1; identity=descriptive; see gen/N210_ids.tsv
+00c535c0	VERIFIED_MATCH	95	GPP_PASS;VC71_PASS;VLAND_PASS	N211; source grades=1; dry verification=1; identity=descriptive; see gen/N211_ids.tsv
+00c536b0	VERIFIED_MATCH	95	GPP_PASS;VC71_PASS;VLAND_PASS	N211; source grades=1; dry verification=1; identity=descriptive; see gen/N211_ids.tsv
+00c53a40	VERIFIED_MATCH	89	GPP_PASS;VC71_PASS;VLAND_PASS	N211; source grades=1; dry verification=1; identity=descriptive; see gen/N211_ids.tsv
+00c56150	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;VLAND_PASS	N212; source grades=1; dry verification=1; identity=descriptive; see gen/N212_ids.tsv
+00c561a0	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;VLAND_PASS	N212; source grades=1; dry verification=1; identity=descriptive; see gen/N212_ids.tsv
+00c725b0	VERIFIED_MATCH	69	GPP_PASS;VC71_PASS;VLAND_PASS	N212; source grades=1; dry verification=1; identity=descriptive; see gen/N212_ids.tsv
+00c575f0	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	N213; source grades=1; dry verification=1; identity=descriptive; see gen/N213_ids.tsv
+00c57640	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	N213; source grades=1; dry verification=1; identity=descriptive; see gen/N213_ids.tsv
+00c72560	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	N213; source grades=1; dry verification=1; identity=descriptive; see gen/N213_ids.tsv
+00c5d150	VERIFIED_MATCH	156	GPP_PASS;VC71_PASS;VLAND_PASS	N214; source grades=1; dry verification=1; identity=descriptive; see gen/N214_ids.tsv
+00c6e1f0	VERIFIED_MATCH	156	GPP_PASS;VC71_PASS;VLAND_PASS	N214; source grades=1; dry verification=1; identity=descriptive; see gen/N214_ids.tsv
+00c6ecd0	VERIFIED_MATCH	156	GPP_PASS;VC71_PASS;VLAND_PASS	N214; source grades=1; dry verification=1; identity=descriptive; see gen/N214_ids.tsv
+00c5d1f0	BLOCKED	240	GPP_PASS;VC71_PASS;ABI_NOT_EQUIVALENT	N215; source grades=1; closest240v240; custom ECX initial-gain parameter plus4caller-cleaned stack args; explicit fifth-stack-arg candidate has added gain load and shifted pre-loop scheduling; actual original hand SIMD preserved separately; no standard ABI equivalent
+00c6e290	BLOCKED	240	GPP_PASS;VC71_PASS;ABI_NOT_EQUIVALENT	N215; source grades=1; closest240v240; custom ECX initial-gain parameter plus4caller-cleaned stack args; explicit fifth-stack-arg candidate has added gain load and shifted pre-loop scheduling; actual original hand SIMD preserved separately; no standard ABI equivalent
+00c6ed70	BLOCKED	240	GPP_PASS;VC71_PASS;ABI_NOT_EQUIVALENT	N215; source grades=1; closest240v240; custom ECX initial-gain parameter plus4caller-cleaned stack args; explicit fifth-stack-arg candidate has added gain load and shifted pre-loop scheduling; actual original hand SIMD preserved separately; no standard ABI equivalent
+00c5e440	VERIFIED_MATCH	52	GPP_PASS;VC71_PASS;VLAND_PASS	N216; source grades=1; dry verification=1; identity=descriptive; see gen/N216_ids.tsv
+00c5e4a0	VERIFIED_MATCH	52	GPP_PASS;VC71_PASS;VLAND_PASS	N216; source grades=1; dry verification=1; identity=descriptive; see gen/N216_ids.tsv
+00c739c0	VERIFIED_MATCH	52	GPP_PASS;VC71_PASS;VLAND_PASS	N216; source grades=1; dry verification=1; identity=descriptive; see gen/N216_ids.tsv
+00c64a80	VERIFIED_MATCH	56	GPP_PASS;VC71_PASS;VLAND_PASS	N217; source grades=1; dry verification=1; identity=descriptive; see gen/N217_ids.tsv
+00c64b70	VERIFIED_MATCH	56	GPP_PASS;VC71_PASS;VLAND_PASS	N217; source grades=1; dry verification=1; identity=descriptive; see gen/N217_ids.tsv
+00c64cd0	VERIFIED_MATCH	56	GPP_PASS;VC71_PASS;VLAND_PASS	N217; source grades=1; dry verification=1; identity=descriptive; see gen/N217_ids.tsv
+00c6d120	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;VLAND_PASS	N218; source grades=1; dry verification=1; identity=descriptive; see gen/N218_ids.tsv
+00c6e020	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;VLAND_PASS	N218; source grades=1; dry verification=1; identity=descriptive; see gen/N218_ids.tsv
+00c6ec50	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;VLAND_PASS	N218; source grades=1; dry verification=1; identity=descriptive; see gen/N218_ids.tsv
+00c785d0	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;VLAND_PASS	N219; source grades=1; dry verification=1; identity=probable; see gen/N219_ids.tsv
+00c78600	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;VLAND_PASS	N219; source grades=1; dry verification=1; identity=probable; see gen/N219_ids.tsv
+00c787a0	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;VLAND_PASS	N219; source grades=1; dry verification=1; identity=probable; see gen/N219_ids.tsv
+00c7b7d0	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	N220; source grades=1; dry verification=1; identity=descriptive; see gen/N220_ids.tsv
+00c7b930	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	N220; source grades=1; dry verification=1; identity=descriptive; see gen/N220_ids.tsv
+00c7b970	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	N220; source grades=1; dry verification=1; identity=descriptive; see gen/N220_ids.tsv
+00c90d40	BLOCKED	29	GPP_PASS;VC71_PASS	N221; source grades=1; DIFFER(34v29); ABI_NOT_EQUIVALENT: original pointer EAX, ordinary candidate fastcall ECX. Arithmetic test only; original return precision/name unproven. Stop known custom-ABI gap.
+00c9dd40	BLOCKED	29	GPP_PASS;VC71_PASS	N221; source grades=1; DIFFER(34v29); ABI_NOT_EQUIVALENT: original pointer EAX, ordinary candidate fastcall ECX. Arithmetic test only; original return precision/name unproven. Stop known custom-ABI gap.
+00c9ef70	BLOCKED	29	GPP_PASS;VC71_PASS	N221; source grades=1; DIFFER(34v29); ABI_NOT_EQUIVALENT: original pointer EAX, ordinary candidate fastcall ECX. Arithmetic test only; original return precision/name unproven. Stop known custom-ABI gap.
+00ca92b0	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	N222; source grades=1; dry verification=1; identity=proven; see gen/N222_ids.tsv
+00ca9300	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	N222; source grades=1; dry verification=1; identity=proven; see gen/N222_ids.tsv
+00ca9350	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	N222; source grades=1; dry verification=1; identity=proven; see gen/N222_ids.tsv
+00cbedba	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;VLAND_PASS	N223; source grades=3; dry verification=1; identity=proven; see gen/N223_ids.tsv
+00cbee0c	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;VLAND_PASS	N223; source grades=1; dry verification=1; identity=proven; see gen/N223_ids.tsv
+00cbee5e	VERIFIED_MATCH	82	GPP_PASS;VC71_PASS;VLAND_PASS	N223; source grades=1; dry verification=1; identity=proven; see gen/N223_ids.tsv
+00cd4ac0	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;VLAND_PASS	N224; source grades=1; dry verification=1; identity=proven; see gen/N224_ids.tsv
+00cd4b20	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;VLAND_PASS	N224; source grades=1; dry verification=1; identity=proven; see gen/N224_ids.tsv
+00cd4b80	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;VLAND_PASS	N224; source grades=1; dry verification=1; identity=proven; see gen/N224_ids.tsv
+00cfbd90	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00da49d0	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00eb7aa0	VERIFIED_MATCH	59	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00cfcb50	VERIFIED_MATCH	126	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00cfddc0	VERIFIED_MATCH	126	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e03480	VERIFIED_MATCH	126	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d179b0	VERIFIED_MATCH	194	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e00ce0	VERIFIED_MATCH	194	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00ed4c50	VERIFIED_MATCH	194	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d2f710	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d78500	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00edec50	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d34410	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=4; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d83300	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e477a0	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d5ab40	VERIFIED_MATCH	133	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d5dd40	VERIFIED_MATCH	133	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e90830	VERIFIED_MATCH	133	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d5dc50	REVIEW_HELD	45	GPP_PASS;VC71_PASS;VLAND_PASS	Lifetime source grades=4; selected historical grade3 matching source/test retained. Storage amendment grade4 omitted existing vector/proxy constructors and regressed; original selected version still has container ancestry debt. REVIEW_HELD, no fifth grade. See 00d5dc50_SELECTED.json and storage_audit_root/REGRESSION.json.
+00dfa0b0	VERIFIED_MATCH	45	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageCtorFix; source grades=4; dry verification=1; identity=original_evidence_retained; see gen/NStorageCtorFix_ids.tsv
+00ea86f0	VERIFIED_MATCH	45	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageCtorFix; source grades=4; dry verification=1; identity=original_evidence_retained; see gen/NStorageCtorFix_ids.tsv
+00d61bb0	REVIEW_HELD	75	GPP_PASS;VC71_PASS;VLAND_PASS	Lifetime source grades=4; selected historical grade3 matching source/test retained. Storage amendment grade4 omitted existing vector/proxy constructors and regressed; original selected version still has container ancestry debt. REVIEW_HELD, no fifth grade. See 00d61bb0_SELECTED.json and storage_audit_root/REGRESSION.json.
+00e00610	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageCtorFix; source grades=4; dry verification=1; identity=original_evidence_retained; see gen/NStorageCtorFix_ids.tsv
+00eae890	VERIFIED_MATCH	75	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageCtorFix; source grades=4; dry verification=1; identity=original_evidence_retained; see gen/NStorageCtorFix_ids.tsv
+00d8fd20	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00da4300	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00ea3640	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d91da0	VERIFIED_MATCH	96	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00dd2c80	VERIFIED_MATCH	96	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e629a0	VERIFIED_MATCH	96	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00da30b0	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e57bb0	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e9c360	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00daab70	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e5d0b0	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e9fb40	VERIFIED_MATCH	88	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00dc4d00	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00dc5f10	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00dc7420	VERIFIED_MATCH	79	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e24760	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;VLAND_PASS	N238; source grades=1; dry verification=1; identity=proven; see gen/N238_ids.tsv
+00ef7b50	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;VLAND_PASS	N238; source grades=1; dry verification=1; identity=proven; see gen/N238_ids.tsv
+00ef8740	VERIFIED_MATCH	61	GPP_PASS;VC71_PASS;VLAND_PASS	N238; source grades=1; dry verification=1; identity=proven; see gen/N238_ids.tsv
+00e247a0	VERIFIED_MATCH	74	GPP_PASS;VC71_PASS;VLAND_PASS	N239; source grades=1; dry verification=1; identity=proven; see gen/N239_ids.tsv
+00ef7b90	VERIFIED_MATCH	74	GPP_PASS;VC71_PASS;VLAND_PASS	N239; source grades=1; dry verification=1; identity=proven; see gen/N239_ids.tsv
+00ef8780	VERIFIED_MATCH	74	GPP_PASS;VC71_PASS;VLAND_PASS	N239; source grades=1; dry verification=1; identity=proven; see gen/N239_ids.tsv
+00e2e400	REVIEW_HELD	57	GPP_PASS;VC71_PASS	N240 cap4 selected closest grade3 59v57; early EBX vtable load/extra push-pop. Siblings matched cache-only pointer plus direct rand CTimer assignment; representative not regraded beyond cap. See N240_SELECTED.json.; CAPPED_SCRIPT_STORAGE_DEBT; see storage_audit_root/PLAN.json
+00e337c0	VERIFIED_MATCH	57	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e53c70	VERIFIED_MATCH	57	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e64d10	PARKED	116	AGENT_GPP_PASS;AGENT_VC71_PASS;BYTE_DIFFER	Sol N241; lifetime4 source grades; selected1 DIFFER(104v116); frozen_N241_N260/PARKS.json
+00eb1f80	VERIFIED_MATCH	116	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N241_proven_info_ctor2_v1; grades=4; independent main strict C++03 and RTM dryPASS; agent_sol/review_N241_proven_info_ctor2_v1
+00ee0240	VERIFIED_MATCH	116	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N241_proven_info_ctor2_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_N241_proven_info_ctor2_v1
+00e730a0	VERIFIED_MATCH	326	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00e731f0	VERIFIED_MATCH	326	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eda490	VERIFIED_MATCH	326	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00e75790	VERIFIED_MATCH	169	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eb98a0	VERIFIED_MATCH	169	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00ecd7b0	VERIFIED_MATCH	169	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eadb60	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eae550	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eae620	VERIFIED_MATCH	66	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eae670	VERIFIED_MATCH	136	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eae700	VERIFIED_MATCH	136	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eae790	VERIFIED_MATCH	136	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00ee9f00	VERIFIED_MATCH	46	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eeb730	VERIFIED_MATCH	46	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eed060	VERIFIED_MATCH	46	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00eed360	VERIFIED_MATCH	345	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00efca00	VERIFIED_MATCH	345	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00efe4b0	VERIFIED_MATCH	345	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_storage20_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/amendment_script_storage20_v1
+00f25b00	VERIFIED_MATCH	43	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f26db0	VERIFIED_MATCH	43	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f26f00	VERIFIED_MATCH	43	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f26420	VERIFIED_MATCH	24	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f276a0	VERIFIED_MATCH	24	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f34510	VERIFIED_MATCH	24	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f26440	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f276c0	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f34530	VERIFIED_MATCH	38	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f26470	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f276f0	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f34560	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f268c0	VERIFIED_MATCH	45	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f27b60	VERIFIED_MATCH	45	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f33b60	VERIFIED_MATCH	45	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	N249-N252; original private CDefClassBase constructor correction; independently accepted snapshot amendment_N249_N252_private_ctor_v1; getter/Transfer grade2, setter/Resize grade3; exact leaves and original histories preserved
+00f268f0	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f271d0	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f27b90	VERIFIED_MATCH	37	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f27490	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f27e60	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f285d0	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f28990	PARKED	522	AGENT_GPP_PASS;AGENT_VC71_PASS;BYTE_DIFFER	Sol N255; lifetime4 source grades; selected3 DIFFER(522v522); frozen_N241_N260/PARKS.json
+00f34d70	VERIFIED_MATCH	522	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N255_copy_backward2_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_N255_copy_backward2_v1
+00f35570	VERIFIED_MATCH	522	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N255_copy_backward2_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N255_copy_backward2_v1
+00f28ba0	VERIFIED_MATCH	45	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f34f80	VERIFIED_MATCH	45	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f35780	VERIFIED_MATCH	45	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N248/N253/N254/N256 grade1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N248_N253_N254_N256_v1
+00f28bd0	VERIFIED_MATCH	340	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N242_N243_N247_N257_N259_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N242_N243_N247_N257_N259_v1
+00f34fb0	VERIFIED_MATCH	340	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N242_N243_N247_N257_N259_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N242_N243_N247_N257_N259_v1
+00f357b0	VERIFIED_MATCH	340	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N242_N243_N247_N257_N259_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N242_N243_N247_N257_N259_v1
+00f28d30	VERIFIED_MATCH	92	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N246_N258_N260_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N246_N258_N260_v1
+00f35110	VERIFIED_MATCH	92	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N246_N258_N260_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N246_N258_N260_v1
+00f35910	VERIFIED_MATCH	92	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N246_N258_N260_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N246_N258_N260_v1
+01224140	VERIFIED_MATCH	32	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N242_N243_N247_N257_N259_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N242_N243_N247_N257_N259_v1
+01224250	VERIFIED_MATCH	32	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N242_N243_N247_N257_N259_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N242_N243_N247_N257_N259_v1
+01224270	VERIFIED_MATCH	32	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N242_N243_N247_N257_N259_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N242_N243_N247_N257_N259_v1
+01224450	VERIFIED_MATCH	29	GPP_PASS;VC71_PASS;VLAND_PASS	N260Names; source grades=2; dry verification=1; identity=proven; see gen/N260Names_ids.tsv
+01224470	VERIFIED_MATCH	29	GPP_PASS;VC71_PASS;VLAND_PASS	N260Names; source grades=2; dry verification=1; identity=proven; see gen/N260Names_ids.tsv
+01224490	VERIFIED_MATCH	29	GPP_PASS;VC71_PASS;VLAND_PASS	N260Names; source grades=2; dry verification=1; identity=proven; see gen/N260Names_ids.tsv
+01224600	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	N261; source grades=2; dry verification=1; identity=descriptive; see gen/N261_ids.tsv
+01224830	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	N261; source grades=2; dry verification=1; identity=descriptive; see gen/N261_ids.tsv
+012248b0	VERIFIED_MATCH	21	GPP_PASS;VC71_PASS;VLAND_PASS	N261; source grades=2; dry verification=1; identity=descriptive; see gen/N261_ids.tsv
+012246e0	VERIFIED_MATCH	72	GPP_PASS;VC71_PASS;VLAND_PASS	N262; source grades=2; dry verification=1; identity=probable; see gen/N262_ids.tsv
+01224730	VERIFIED_MATCH	72	GPP_PASS;VC71_PASS;VLAND_PASS	N262; source grades=2; dry verification=1; identity=probable; see gen/N262_ids.tsv
+01224780	VERIFIED_MATCH	72	GPP_PASS;VC71_PASS;VLAND_PASS	N262; source grades=2; dry verification=1; identity=probable; see gen/N262_ids.tsv
+01229030	VERIFIED_MATCH	40	GPP_PASS;VC71_PASS;VLAND_PASS	N263; source grades=1; dry verification=1; identity=probable; see gen/N263_ids.tsv
+01229060	VERIFIED_MATCH	40	GPP_PASS;VC71_PASS;VLAND_PASS	N263; source grades=1; dry verification=1; identity=probable; see gen/N263_ids.tsv
+01229340	VERIFIED_MATCH	40	GPP_PASS;VC71_PASS;VLAND_PASS	N263; source grades=1; dry verification=1; identity=proven; see gen/N263_ids.tsv
+0041a780	VERIFIED_MATCH	13	GPP_PASS;VC71_PASS;VLAND_PASS	N264; source grades=1; dry verification=1; identity=descriptive; see gen/N264_ids.tsv
+00c71420	VERIFIED_MATCH	16	GPP_PASS;VC71_PASS;VLAND_PASS	N264; source grades=1; dry verification=1; identity=descriptive; see gen/N264_ids.tsv
+0042d4f7	VERIFIED_MATCH	15	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+009a76d0	VERIFIED_MATCH	10	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00434540	VERIFIED_MATCH	73	GPP_PASS;VC71_PASS;VLAND_PASS	N266; source grades=3; dry verification=1; identity=proven; see gen/N266_ids.tsv
+00f29fa0	VERIFIED_MATCH	73	GPP_PASS;VC71_PASS;VLAND_PASS	N266; source grades=3; dry verification=1; identity=proven; see gen/N266_ids.tsv
+0043d100	VERIFIED_MATCH	18	GPP_PASS;VC71_PASS;VLAND_PASS	N267; source grades=1; dry verification=1; identity=descriptive; see gen/N267_ids.tsv
+00754d00	VERIFIED_MATCH	18	GPP_PASS;VC71_PASS;VLAND_PASS	N267; source grades=1; dry verification=1; identity=descriptive; see gen/N267_ids.tsv
+00441800	VERIFIED_MATCH	99	GPP_PASS;VC71_PASS;VLAND_PASS	N268; source grades=1; dry verification=1; identity=proven; see gen/N268_ids.tsv
+00442280	VERIFIED_MATCH	99	GPP_PASS;VC71_PASS;VLAND_PASS	N268; source grades=1; dry verification=1; identity=proven; see gen/N268_ids.tsv
+00442d50	PARKED	78	GPP_PASS;VC71_PASS;BYTE_DIFFER	N269 cap4; closest attempt3; 40v78: member cleanup inlines, inherited vector destruction remains a call; see N269_SELECTED.json and immutable history
+004430f0	PARKED	78	GPP_PASS;VC71_PASS;BYTE_DIFFER	N269 cap4; closest attempt2; 87v78: entire cleanup inline but explicit owner destructor adds unwanted vptr store; see N269_SELECTED.json and immutable history
+00444d90	VERIFIED_MATCH	52	GPP_PASS;VC71_PASS;VLAND_PASS	N270; source grades=1; dry verification=1; identity=proven; see gen/N270_ids.tsv
+00444dd0	VERIFIED_MATCH	52	GPP_PASS;VC71_PASS;VLAND_PASS	N270; source grades=1; dry verification=1; identity=proven; see gen/N270_ids.tsv
+0044ebe4	VERIFIED_MATCH	20	GPP_PASS;VC71_PASS;VLAND_PASS	N271; source grades=1; dry verification=1; identity=descriptive; see gen/N271_ids.tsv
+004d6ed0	VERIFIED_MATCH	20	GPP_PASS;VC71_PASS;VLAND_PASS	N271; source grades=1; dry verification=1; identity=descriptive; see gen/N271_ids.tsv
+0047d0d5	VERIFIED_MATCH	215	GPP_PASS;VC71_PASS;VLAND_PASS	NTreeStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NTreeStorageAudit_ids.tsv
+0056e866	VERIFIED_MATCH	215	GPP_PASS;VC71_PASS;VLAND_PASS	NTreeStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NTreeStorageAudit_ids.tsv
+005129c0	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;VLAND_PASS	N273; source grades=1; dry verification=1; identity=proven; see gen/N273_ids.tsv
+00824ce0	VERIFIED_MATCH	67	GPP_PASS;VC71_PASS;VLAND_PASS	N273; source grades=1; dry verification=1; identity=proven; see gen/N273_ids.tsv
+00565030	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;VLAND_PASS	N274; source grades=1; dry verification=1; identity=descriptive; see gen/N274_ids.tsv
+00736f50	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;VLAND_PASS	N274; source grades=1; dry verification=1; identity=descriptive; see gen/N274_ids.tsv
+00624e40	VERIFIED_MATCH	280	GPP_PASS;VC71_PASS;VLAND_PASS	N275; source grades=1; dry verification=1; identity=proven; see gen/N275_ids.tsv
+00bf95d0	VERIFIED_MATCH	280	GPP_PASS;VC71_PASS;VLAND_PASS	N275; source grades=1; dry verification=1; identity=proven; see gen/N275_ids.tsv
+00633690	VERIFIED_MATCH	20	GPP_PASS;VC71_PASS;VLAND_PASS	N276; source grades=1; dry verification=1; identity=proven; see gen/N276_ids.tsv
+00633b70	VERIFIED_MATCH	20	GPP_PASS;VC71_PASS;VLAND_PASS	N276; source grades=1; dry verification=1; identity=proven; see gen/N276_ids.tsv
+006349b0	VERIFIED_MATCH	116	GPP_PASS;VC71_PASS;VLAND_PASS	N277; source grades=4; dry verification=1; identity=proven; see gen/N277_ids.tsv
+00636400	VERIFIED_MATCH	116	GPP_PASS;VC71_PASS;VLAND_PASS	N277; source grades=1; dry verification=1; identity=proven; see gen/N277_ids.tsv
+00723750	VERIFIED_MATCH	9	GPP_PASS;VC71_PASS;VLAND_PASS	N278; source grades=2; dry verification=1; identity=proven; see gen/N278_ids.tsv
+007599b0	VERIFIED_MATCH	9	GPP_PASS;VC71_PASS;VLAND_PASS	N278; source grades=2; dry verification=1; identity=proven; see gen/N278_ids.tsv
+00743530	VERIFIED_MATCH	121	GPP_PASS;VC71_PASS;VLAND_PASS	N279; source grades=2; dry verification=1; identity=proven; see gen/N279_ids.tsv
+007436d0	VERIFIED_MATCH	121	GPP_PASS;VC71_PASS;VLAND_PASS	N279; source grades=1; dry verification=1; identity=proven; see gen/N279_ids.tsv
+0075c0e0	VERIFIED_MATCH	8	GPP_PASS;VC71_PASS;VLAND_PASS	N280; source grades=1; dry verification=1; identity=descriptive; see gen/N280_ids.tsv
+00878a50	VERIFIED_MATCH	8	GPP_PASS;VC71_PASS;VLAND_PASS	N280; source grades=1; dry verification=1; identity=descriptive; see gen/N280_ids.tsv
+007ad160	VERIFIED_MATCH	22	GPP_PASS;VC71_PASS;VLAND_PASS	NMapIteratorAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NMapIteratorAudit_ids.tsv
+00a80500	VERIFIED_MATCH	22	GPP_PASS;VC71_PASS;VLAND_PASS	NMapIteratorAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NMapIteratorAudit_ids.tsv
+007cd930	VERIFIED_MATCH	78	GPP_PASS;VC71_PASS;VLAND_PASS	N282; source grades=1; dry verification=1; identity=proven; see gen/N282_ids.tsv
+007cf040	VERIFIED_MATCH	78	GPP_PASS;VC71_PASS;VLAND_PASS	N282; source grades=1; dry verification=1; identity=proven; see gen/N282_ids.tsv
+0084d790	VERIFIED_MATCH	13	GPP_PASS;VC71_PASS;VLAND_PASS	N283; source grades=1; dry verification=1; identity=proven; see gen/N283_ids.tsv
+00872480	VERIFIED_MATCH	13	GPP_PASS;VC71_PASS;VLAND_PASS	N283; source grades=1; dry verification=1; identity=proven; see gen/N283_ids.tsv
+0084f740	VERIFIED_MATCH	270	GPP_PASS;VC71_PASS;VLAND_PASS	N284; source grades=1; dry verification=1; identity=proven; see gen/N284_ids.tsv
+008b3180	VERIFIED_MATCH	270	GPP_PASS;VC71_PASS;VLAND_PASS	N284; source grades=1; dry verification=1; identity=proven; see gen/N284_ids.tsv
+00a6c5a0	VERIFIED_MATCH	78	GPP_PASS;VC71_PASS;VLAND_PASS	N285; source grades=2; dry verification=1; identity=proven; see gen/N285_ids.tsv
+00a6c5f0	VERIFIED_MATCH	78	GPP_PASS;VC71_PASS;VLAND_PASS	N285; source grades=1; dry verification=1; identity=proven; see gen/N285_ids.tsv
+00a6eae0	VERIFIED_MATCH	72	GPP_PASS;VC71_PASS;VLAND_PASS	N286; source grades=1; dry verification=1; identity=proven; see gen/N286_ids.tsv
+00a8d2e0	VERIFIED_MATCH	72	GPP_PASS;VC71_PASS;VLAND_PASS	N286; source grades=1; dry verification=1; identity=proven; see gen/N286_ids.tsv
+00a83ab0	VERIFIED_MATCH	256	GPP_PASS;VC71_PASS;VLAND_PASS	N287; source grades=3; dry verification=1; identity=proven; see gen/N287_ids.tsv
+00a83bc0	VERIFIED_MATCH	256	GPP_PASS;VC71_PASS;VLAND_PASS	N287; source grades=1; dry verification=1; identity=proven; see gen/N287_ids.tsv
+00aab570	VERIFIED_MATCH	316	GPP_PASS;VC71_PASS;VLAND_PASS	N288; source grades=1; dry verification=1; identity=proven; see gen/N288_ids.tsv
+00bcc080	VERIFIED_MATCH	316	GPP_PASS;VC71_PASS;VLAND_PASS	N288; source grades=1; dry verification=1; identity=proven; see gen/N288_ids.tsv
+00ad5630	VERIFIED_MATCH	642	GPP_PASS;VC71_PASS;VLAND_PASS	N289; source grades=2; dry verification=1; identity=proven; see gen/N289_ids.tsv
+00b2f240	VERIFIED_MATCH	642	GPP_PASS;VC71_PASS;VLAND_PASS	N289; source grades=1; dry verification=1; identity=proven; see gen/N289_ids.tsv
+00afe7c0	VERIFIED_MATCH	308	GPP_PASS;VC71_PASS;VLAND_PASS	N290; source grades=2; dry verification=1; identity=proven; see gen/N290_ids.tsv
+00f3f960	VERIFIED_MATCH	308	GPP_PASS;VC71_PASS;VLAND_PASS	N290; source grades=1; dry verification=1; identity=proven; see gen/N290_ids.tsv
+00c0af90	PARKED	193	GPP_PASS;VC71_PASS;BYTE_DIFFER	N291; lifetime4 grades; selected2 DIFFER193v193 qword-vs-dword float constants; immutablefloat ternary twin solution preserved ungraded_followups, no fifth grade
+00c0b060	VERIFIED_MATCH	193	GPP_PASS;VC71_PASS;VLAND_PASS	N291; source grades=2; dry verification=1; identity=descriptive; see gen/N291_ids.tsv
+00c14080	VERIFIED_MATCH	481	GPP_PASS;VC71_PASS;VLAND_PASS	N292; source grades=2; dry verification=1; identity=descriptive; see gen/N292_ids.tsv
+00c14270	VERIFIED_MATCH	481	GPP_PASS;VC71_PASS;VLAND_PASS	N292; source grades=1; dry verification=1; identity=descriptive; see gen/N292_ids.tsv
+00c1ba60	VERIFIED_MATCH	13	GPP_PASS;VC71_PASS;VLAND_PASS	N293; source grades=1; dry verification=1; identity=descriptive; see gen/N293_ids.tsv
+00c1ba70	VERIFIED_MATCH	13	GPP_PASS;VC71_PASS;VLAND_PASS	N293; source grades=1; dry verification=1; identity=descriptive; see gen/N293_ids.tsv
+00c265e0	VERIFIED_MATCH	17	GPP_PASS;VC71_PASS;VLAND_PASS	N294; source grades=1; dry verification=1; identity=descriptive; see gen/N294_ids.tsv
+00c26630	VERIFIED_MATCH	17	GPP_PASS;VC71_PASS;VLAND_PASS	N294; source grades=1; dry verification=1; identity=descriptive; see gen/N294_ids.tsv
+00c266b0	VERIFIED_MATCH	19	GPP_PASS;VC71_PASS;VLAND_PASS	N295; source grades=1; dry verification=1; identity=descriptive; see gen/N295_ids.tsv
+00c37a90	VERIFIED_MATCH	19	GPP_PASS;VC71_PASS;VLAND_PASS	N295; source grades=1; dry verification=1; identity=descriptive; see gen/N295_ids.tsv
+00c29d00	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;VLAND_PASS	N296; source grades=1; dry verification=1; identity=descriptive; see gen/N296_ids.tsv
+00c29d90	VERIFIED_MATCH	36	GPP_PASS;VC71_PASS;VLAND_PASS	N296; source grades=1; dry verification=1; identity=descriptive; see gen/N296_ids.tsv
+00c29d30	VERIFIED_MATCH	47	GPP_PASS;VC71_PASS;VLAND_PASS	N297; source grades=1; dry verification=1; identity=descriptive; see gen/N297_ids.tsv
+00c29d60	VERIFIED_MATCH	47	GPP_PASS;VC71_PASS;VLAND_PASS	N297; source grades=1; dry verification=1; identity=descriptive; see gen/N297_ids.tsv
+00c30210	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;VLAND_PASS	N298; source grades=3; dry verification=1; identity=descriptive; see gen/N298_ids.tsv
+00c30250	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;VLAND_PASS	N298; source grades=2; dry verification=1; identity=descriptive; see gen/N298_ids.tsv
+00c30230	VERIFIED_MATCH	27	GPP_PASS;VC71_PASS;VLAND_PASS	N299; source grades=3; dry verification=1; identity=descriptive; see gen/N299_ids.tsv
+00c30270	VERIFIED_MATCH	27	GPP_PASS;VC71_PASS;VLAND_PASS	N299; source grades=2; dry verification=1; identity=descriptive; see gen/N299_ids.tsv
+00c32470	VERIFIED_MATCH	49	GPP_PASS;VC71_PASS;VLAND_PASS	N300; source grades=2; dry verification=1; identity=descriptive; see gen/N300_ids.tsv
+00c324b0	VERIFIED_MATCH	49	GPP_PASS;VC71_PASS;VLAND_PASS	N300; source grades=2; dry verification=1; identity=descriptive; see gen/N300_ids.tsv
+00c33330	VERIFIED_MATCH	84	GPP_PASS;VC71_PASS;VLAND_PASS	NCommonAudioFree; source grades=4; dry verification=1; identity=descriptive; see gen/NCommonAudioFree_ids.tsv
+00c3d0f0	VERIFIED_MATCH	87	GPP_PASS;VC71_PASS;VLAND_PASS	NCommonAudioFree; source grades=4; dry verification=1; identity=descriptive; see gen/NCommonAudioFree_ids.tsv
+00c34df0	VERIFIED_MATCH	18	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N302_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N302_v1
+00c34e40	VERIFIED_MATCH	18	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N302_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N302_v1
+00c39d50	VERIFIED_MATCH	204	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol OneShot_return8_v1; grades=4; independent main strict C++03 and RTM dryPASS; agent_sol/review_OneShot_return8_v1
+00c3a540	VERIFIED_MATCH	204	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol OneShot_return8_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_OneShot_return8_v1
+00c39e20	VERIFIED_MATCH	204	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol OneShot_return8_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_OneShot_return8_v1
+00c3a610	VERIFIED_MATCH	204	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol OneShot_return8_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_OneShot_return8_v1
+00c39f30	VERIFIED_MATCH	220	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol OneShot_return8_v1; grades=4; independent main strict C++03 and RTM dryPASS; agent_sol/review_OneShot_return8_v1
+00c3a130	VERIFIED_MATCH	220	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol OneShot_return8_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_OneShot_return8_v1
+00c3a010	VERIFIED_MATCH	218	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol OneShot_return8_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_OneShot_return8_v1
+00c3a210	VERIFIED_MATCH	218	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol OneShot_return8_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_OneShot_return8_v1
+00c3af40	VERIFIED_MATCH	34	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N307_N309_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N307_N309_v1
+00c3b4d0	VERIFIED_MATCH	34	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N307_N309_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N307_N309_v1
+00c3af70	VERIFIED_MATCH	31	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N307_N309_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N307_N309_v1
+00c3b500	VERIFIED_MATCH	31	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N307_N309_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N307_N309_v1
+00c3af90	VERIFIED_MATCH	27	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N307_N309_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N307_N309_v1
+00c3b520	VERIFIED_MATCH	27	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N307_N309_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N307_N309_v1
+00c40970	VERIFIED_MATCH	172	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c40a70	VERIFIED_MATCH	172	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c40a20	VERIFIED_MATCH	22	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c40ca0	VERIFIED_MATCH	22	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c41880	VERIFIED_MATCH	31	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c418a0	VERIFIED_MATCH	31	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c418c0	VERIFIED_MATCH	35	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c448a0	VERIFIED_MATCH	35	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c44090	PARKED	99	GPP_PASS;VC71_PASS	N314; selectedgrade1; lifetimegrades=3;99v99 register scheduling; agent_sol/frozen_N301_N320/PARKS.json
+00c44100	PARKED	99	GPP_PASS;VC71_PASS	N314; selectedgrade1; lifetimegrades=1;99v99 register scheduling; agent_sol/frozen_N301_N320/PARKS.json
+00c44720	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c44760	VERIFIED_MATCH	64	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol complete_library_bases10_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_complete_library_bases10_v1
+00c49e30	VERIFIED_MATCH	224	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N304_N306_N316_N317_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N304_N306_N316_N317_v1
+00c4bb20	VERIFIED_MATCH	224	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N304_N306_N316_N317_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N304_N306_N316_N317_v1
+00c49f10	VERIFIED_MATCH	202	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N304_N306_N316_N317_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N304_N306_N316_N317_v1
+00c4beb0	VERIFIED_MATCH	202	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N304_N306_N316_N317_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N304_N306_N316_N317_v1
+00c57f00	VERIFIED_MATCH	30	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N318_N320_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N318_N320_v1
+00c5c050	VERIFIED_MATCH	30	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N318_N320_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N318_N320_v1
+00c58520	VERIFIED_MATCH	267	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N318_N320_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N318_N320_v1
+00c58630	VERIFIED_MATCH	267	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N318_N320_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N318_N320_v1
+00c5c070	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N318_N320_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N318_N320_v1
+00c5d510	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N318_N320_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N318_N320_v1
+00c5c090	BLOCKED	32	NOT_RUN	N321 researched; sourcegrades0; custom ECX+caller-cleanup helper00c5bef0; evidence blocked/00c5c090.json; no closest candidate fabricated
+00c5d530	BLOCKED	32	NOT_RUN	N321 researched; sourcegrades0; custom ECX+caller-cleanup helper00c5d1f0; evidence blocked/00c5d530.json; no closest candidate fabricated
+00c6e410	BLOCKED	533	NOT_RUN	N322 researched; sourcegrades0; custom ECX+caller-cleanup helper00c6e290; evidence blocked/00c6e410.json; no closest candidate fabricated
+00c6f990	BLOCKED	533	NOT_RUN	N322 researched; sourcegrades0; custom ECX+caller-cleanup helper00c6f800; evidence blocked/00c6f990.json; no closest candidate fabricated
+00c70480	VERIFIED_MATCH	294	GPP_PASS;VC71_PASS;VLAND_PASS	N323; source grades=1; dry verification=1; identity=descriptive; see gen/N323_ids.tsv
+00c70e50	VERIFIED_MATCH	294	GPP_PASS;VC71_PASS;VLAND_PASS	N323; source grades=1; dry verification=1; identity=descriptive; see gen/N323_ids.tsv
+00c705b0	VERIFIED_MATCH	415	GPP_PASS;VC71_PASS;VLAND_PASS	N324; source grades=4; dry verification=1; identity=descriptive; see gen/N324_ids.tsv
+00c70f80	VERIFIED_MATCH	415	GPP_PASS;VC71_PASS;VLAND_PASS	N324; source grades=2; dry verification=1; identity=descriptive; see gen/N324_ids.tsv
+00c70840	VERIFIED_MATCH	92	GPP_PASS;VC71_PASS;VLAND_PASS	N325; source grades=2; dry verification=1; identity=descriptive; see gen/N325_ids.tsv
+00c71210	VERIFIED_MATCH	92	GPP_PASS;VC71_PASS;VLAND_PASS	N325; source grades=2; dry verification=1; identity=descriptive; see gen/N325_ids.tsv
+00c708a0	VERIFIED_MATCH	397	GPP_PASS;VC71_PASS;VLAND_PASS	N326; source grades=4; dry verification=1; identity=descriptive; see gen/N326_ids.tsv
+00c71270	VERIFIED_MATCH	397	GPP_PASS;VC71_PASS;VLAND_PASS	N326; source grades=2; dry verification=1; identity=descriptive; see gen/N326_ids.tsv
+00c71e10	PARKED	126	GPP_PASS;VC71_PASS	N327; selectedgrade2; lifetimegrades=4;126v126 switch exit placement; see 00c71e10_SELECTED.json
+00c71e90	PARKED	126	GPP_PASS;VC71_PASS	N327 selectedgrade2; lifetimegrades4;126v126 return-layout residue; dualtestPASS forselectedversion; no fifthgrade.
+00ca1000	VERIFIED_MATCH	89	GPP_PASS;VC71_PASS;VLAND_PASS	N328; source grades=1; dry verification=1; identity=proven; see gen/N328_ids.tsv
+00ca12b0	VERIFIED_MATCH	89	GPP_PASS;VC71_PASS;VLAND_PASS	N328; source grades=1; dry verification=1; identity=proven; see gen/N328_ids.tsv
+00ca7a80	VERIFIED_MATCH	89	GPP_PASS;VC71_PASS;VLAND_PASS	N329; source grades=1; dry verification=1; identity=proven; see gen/N329_ids.tsv
+00ca7bb0	VERIFIED_MATCH	89	GPP_PASS;VC71_PASS;VLAND_PASS	N329; source grades=1; dry verification=1; identity=proven; see gen/N329_ids.tsv
+00cabed0	VERIFIED_MATCH	156	GPP_PASS;VC71_PASS;VLAND_PASS	N330; source grades=2; dry verification=1; identity=proven; see gen/N330_ids.tsv
+00cabfd0	VERIFIED_MATCH	156	GPP_PASS;VC71_PASS;VLAND_PASS	N330; source grades=2; dry verification=1; identity=proven; see gen/N330_ids.tsv
+00cad8f0	VERIFIED_MATCH	58	GPP_PASS;VC71_PASS;VLAND_PASS	N331; source grades=1; dry verification=1; identity=proven; see gen/N331_ids.tsv
+00cada00	VERIFIED_MATCH	58	GPP_PASS;VC71_PASS;VLAND_PASS	N331; source grades=1; dry verification=1; identity=proven; see gen/N331_ids.tsv
+00cadae0	VERIFIED_MATCH	53	GPP_PASS;VC71_PASS;VLAND_PASS	N332; source grades=1; dry verification=1; identity=proven; see gen/N332_ids.tsv
+00cadb50	VERIFIED_MATCH	53	GPP_PASS;VC71_PASS;VLAND_PASS	N332; source grades=1; dry verification=1; identity=proven; see gen/N332_ids.tsv
+00caf0e0	VERIFIED_MATCH	50	GPP_PASS;VC71_PASS;VLAND_PASS	N333; source grades=1; dry verification=1; identity=proven; see gen/N333_ids.tsv
+00caf120	VERIFIED_MATCH	50	GPP_PASS;VC71_PASS;VLAND_PASS	N333; source grades=1; dry verification=1; identity=proven; see gen/N333_ids.tsv
+00d16920	VERIFIED_MATCH	184	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d16d00	VERIFIED_MATCH	184	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=3; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d1cfc0	VERIFIED_MATCH	319	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00e57d20	VERIFIED_MATCH	319	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d41ca0	VERIFIED_MATCH	40	GPP_PASS;VC71_PASS;VLAND_PASS	N336; source grades=1; dry verification=1; identity=proven; see gen/N336_ids.tsv
+00d8f4a0	VERIFIED_MATCH	40	GPP_PASS;VC71_PASS;VLAND_PASS	N336; source grades=1; dry verification=1; identity=proven; see gen/N336_ids.tsv
+00d42ff0	VERIFIED_MATCH	31	GPP_PASS;VC71_PASS;VLAND_PASS	N337; source grades=1; dry verification=1; identity=proven; see gen/N337_ids.tsv
+00ec8210	VERIFIED_MATCH	31	GPP_PASS;VC71_PASS;VLAND_PASS	N337; source grades=1; dry verification=1; identity=proven; see gen/N337_ids.tsv
+00d63d80	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d66c60	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d64080	VERIFIED_MATCH	400	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d66f50	VERIFIED_MATCH	400	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d7d8d0	REVIEW_HELD	705	GPP_PASS;VC71_PASS;VLAND_PASS	N340; source grades=4; dry verification=1; identity=proven; see gen/N340_ids.tsv; CAPPED_SCRIPT_STORAGE_DEBT; see storage_audit_root/PLAN.json
+00d8f040	VERIFIED_MATCH	705	GPP_PASS;VC71_PASS;VLAND_PASS	NStorageAudit; source grades=2; dry verification=1; identity=original_evidence_retained; see gen/NStorageAudit_ids.tsv
+00d9b8a0	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00d9bf10	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00da4c30	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00da5d40	VERIFIED_MATCH	60	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00da5bf0	VERIFIED_MATCH	56	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00e38680	VERIFIED_MATCH	56	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00dc3ea0	PARKED	50	GPP_PASS;VC71_PASS	N344 lifetimegrades4; selected3;30v50 correct implicit owner destructor remains out of line; documented qualified destruction helpers also failed. See agent_sol/amendment_N344_final_park_receipt_v1.
+00dcc000	PARKED	50	GPP_PASS;VC71_PASS	N344 lifetimegrades4; selected3;30v50 correct implicit owner destructor remains out of line; documented qualified destruction helpers also failed. See agent_sol/amendment_N344_final_park_receipt_v1.
+00e19390	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00ec6860	VERIFIED_MATCH	28	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00e3b8f0	VERIFIED_MATCH	344	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N346_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N346_v1
+00e9e110	VERIFIED_MATCH	344	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N346_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N346_v1
+00e5f190	VERIFIED_MATCH	35	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N347_N352_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N347_N352_v1
+00e8d2a0	VERIFIED_MATCH	35	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N347_N352_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N347_N352_v1
+00e69f00	VERIFIED_MATCH	142	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N348_N351_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N348_N351_v1
+00edbc80	VERIFIED_MATCH	142	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N348_N351_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N348_N351_v1
+00ebcd70	VERIFIED_MATCH	241	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N349_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N349_v1
+00ec12e0	VERIFIED_MATCH	241	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N349_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N349_v1
+00ec4540	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00ed51e0	VERIFIED_MATCH	68	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol script_initializers10_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_script_initializers10_v1
+00ecbd50	VERIFIED_MATCH	148	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N351_callback_final2_v1; grades=4; independent main strict C++03 and RTM dryPASS; agent_sol/review_N351_callback_final2_v1
+00ecca30	VERIFIED_MATCH	148	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N351_callback_final2_v1; grades=4; independent main strict C++03 and RTM dryPASS; agent_sol/review_N351_callback_final2_v1
+00eef5d0	VERIFIED_MATCH	53	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N347_N352_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N347_N352_v1
+00eef760	VERIFIED_MATCH	53	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N347_N352_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N347_N352_v1
+00f25980	VERIFIED_MATCH	317	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N353_N355_v1; grades=3; independent main strict C++03 and RTM dryPASS; agent_sol/review_N353_N355_v1
+00f26c30	VERIFIED_MATCH	317	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N353_N355_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N353_N355_v1
+00f25f90	VERIFIED_MATCH	383	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N353_N355_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N353_N355_v1
+00f26920	VERIFIED_MATCH	383	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N353_N355_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N353_N355_v1
+00f27a10	VERIFIED_MATCH	325	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N353_N355_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N353_N355_v1
+00f34860	VERIFIED_MATCH	325	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N353_N355_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N353_N355_v1
+012242b0	VERIFIED_MATCH	18	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N356_N357_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N356_N357_v1
+01224430	VERIFIED_MATCH	18	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N356_N357_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N356_N357_v1
+012244f0	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N356_N357_v1; grades=4; independent main strict C++03 and RTM dryPASS; agent_sol/review_N356_N357_v1
+01224590	VERIFIED_MATCH	71	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N356_N357_v1; grades=2; independent main strict C++03 and RTM dryPASS; agent_sol/review_N356_N357_v1
+01224c6d	VERIFIED_MATCH	22	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N358_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N358_v1
+01224c83	VERIFIED_MATCH	22	GPP_PASS;VC71_PASS;MAIN_VLAND_PASS	Sol N358_v1; grades=1; independent main strict C++03 and RTM dryPASS; agent_sol/review_N358_v1

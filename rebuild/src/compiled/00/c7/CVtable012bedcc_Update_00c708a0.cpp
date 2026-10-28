@@ -1,0 +1,29 @@
+// CVtable_012bedcc::Update(float x,float y,float blend,float volume,const float* gains,bool crossfade,bool force) -- Select directional taps and update changed spatial gains.
+// Leaf: ?Update@CVtable_012bedcc@@UAEXMMMMPBM_N1@Z
+// Identity: descriptive. Own common base constructor00c6e6a0 initializes polymorphic lock at4, Win32 section8,volume32/crossfade36. Full destructor00c6e630 resets common object root012b5868 at00c6e64a; lock deleting destructor00c5d5b0 has no further base. Sibling derived constructor00c6d9d0 starts its own six gain/step pairs at40, proving base40 rather than168. Concrete constructors00c70120/00c70b00 round the scratch raw address168 upward to16-byte alignment and store pointer440. Derived scratch raw combines64short history+128short input+8short alignment slack at40; pointer440. Own block copy reads/writes128bytes of short history. Typed two voice pairs start444; constructor aligned coefficient pointers and SetupVoice stores prove voice fields, sizes292/676, and short coefficient data. Class/field names for this library remain descriptive; no library PDB identity claimed. Global0143bc2c installed at00c4d3af after allocating1d8 and calling ctor00c3e520. True ctor chain00c3e520->00c4d000 initializes base012b5b80 and four20byte pool objects at4/18/2c/40; pool ctor00c3c8a0 and full dtor00c3caa0 show true commonroot012b5868. Full base dtor00c3e2a0 resets root at00c3e308; master dtor00c3f380 chains base. Own ctor zeros TapTable1b8 and outputChannels1bc; inactive derived fields54..1b7 and1c0..1d7 explicitly unproven. Descriptive master name retained from existing library models, no original PDB identity claimed. Own Update slot4 resolves impulse pair via00c400d0 then computes angular front/rear gains and conditionally calls UpdateVoices00c70750. Helper Animation_ComputeFrameOffset is an existing descriptive placeholder for tap-pair lookup, not recovered original animation API. Input arguments x,y,blend,volume,gains,crossfade,force.
+// Layout: audited real mixer/master ancestry, typed short history and voice records, member taps and front/rear gains; original library names unproven.
+#include <stddef.h>
+class CUnprovenLibraryObject_012B5868{public:virtual ~CUnprovenLibraryObject_012B5868(){}};
+struct CRITICAL_SECTION{void* DebugInfo;long LockCount,RecursionCount;void* OwningThread;void* LockSemaphore;unsigned long SpinCount;};
+class CUnprovenLock_012B8FC8{public:virtual ~CUnprovenLock_012B8FC8(){}CRITICAL_SECTION Section;};
+class CVtable_012beda4:public CUnprovenLibraryObject_012B5868{public:virtual ~CVtable_012beda4(){}virtual void Clear(){}virtual void Process(const short*,long* const*){}virtual void SetParameters(float,const float*,bool)=0;virtual void Update(float,float,float,float,const float*,bool,bool){}CUnprovenLock_012B8FC8 Lock;float m_volume;bool m_crossfade;};
+struct SUnprovenHistoryScratch{short Raw[200];short* Aligned;};
+struct SResampleVoice{short Raw[136];short* Coefficients;unsigned long SampleDelay;long m_offset;unsigned long m_increment;bool m_muted,m_swapOutputs;unsigned short m_pan;};
+struct SFilteredVoice{short Raw[328];short* Coefficients;unsigned long SampleDelay;long m_offset;unsigned long m_increment;bool m_muted,m_swapOutputs;unsigned short m_pan;};
+template<class Voice>struct SUnprovenVoicePair{Voice A,B;};
+#ifdef _MSC_VER
+typedef char MixerBaseSize[sizeof(CVtable_012beda4)==40?1:-1];typedef char VoiceSize[sizeof(SResampleVoice)==0x124?1:-1];typedef char FilteredVoiceSize[sizeof(SFilteredVoice)==0x2a4?1:-1];
+#endif
+class CUnprovenPool_012B586C:public CUnprovenLibraryObject_012B5868{public:virtual ~CUnprovenPool_012B586C(){}void* Allocation;void* FreeHead;long Capacity;unsigned long Count;};
+class CUnprovenAudioMasterBase_012B5B80:public CUnprovenLibraryObject_012B5868{public:virtual ~CUnprovenAudioMasterBase_012B5B80(){}CUnprovenPool_012B586C Pools[4];};
+class CAudioMaster:public CUnprovenAudioMasterBase_012B5B80{public:unsigned char UnprovenFields54[356];void* TapTable;unsigned long m_outputChannels;unsigned char UnprovenTail1C0[24];};extern CAudioMaster* g_pAudioMaster;
+#ifdef _MSC_VER
+typedef char MasterBaseSize[sizeof(CUnprovenAudioMasterBase_012B5B80)==84?1:-1];typedef char MasterChannelsOffset[offsetof(CAudioMaster,m_outputChannels)==0x1bc?1:-1];typedef char MasterSize[sizeof(CAudioMaster)==0x1d8?1:-1];
+#endif
+#include <math.h>
+#ifdef _MSC_VER
+#pragma intrinsic(fabs)
+#endif
+void Animation_ComputeFrameOffset(void*,float,float,const void**,const void**);
+class CVtable_012bedcc:public CVtable_012beda4{public:SUnprovenHistoryScratch Scratch;SUnprovenVoicePair<SResampleVoice> Block0,Block1;SUnprovenVoicePair<SResampleVoice>* PFront;SUnprovenVoicePair<SResampleVoice>* PBack;float m_gains[2];float m_front,m_rear;const void* m_taps[2];virtual void SetParameters(float,const float*,bool);void UpdateVoices(bool);virtual void Update(float,float,float,float,const float*,bool,bool);};
+void CVtable_012bedcc::Update(float x,float y,float blend,float volume,const float* gains,bool crossfade,bool force){const void* first;const void* second;bool changed=false;Animation_ComputeFrameOffset(g_pAudioMaster->TapTable,x,y,&first,&second);if(force||m_taps[0]!=first){m_taps[0]=first;m_taps[1]=second;changed=true;}float front=((1.0f-(float)fabs(y)*(1.0f/90.0f))*((float)fabs(x)*(1.0f/90.0f)-1.0f)+1.0f)*0.5f;if(front<0.25f)front=0.25f;else if(front>0.75f)front=0.75f;if(blend<0.5f)front=(front-0.5f)*blend*2.0f+0.5f;front=(0.75f-front)*2.0f;if(force||m_volume!=volume||m_gains[0]!=gains[0]||m_gains[1]!=gains[1]||m_front!=front){m_volume=volume;m_gains[0]=gains[0];m_gains[1]=gains[1];m_front=front;m_rear=1.0f-front;changed=true;}if(changed)UpdateVoices(crossfade);}

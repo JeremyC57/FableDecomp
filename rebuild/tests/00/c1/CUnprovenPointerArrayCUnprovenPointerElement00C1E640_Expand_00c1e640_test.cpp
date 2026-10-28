@@ -1,0 +1,8 @@
+#include <stdio.h>
+#include <string.h>
+#ifdef _MSC_VER
+void* operator new[](unsigned int);void operator delete[](void*);
+#endif
+class CUnprovenPointerElement_00C1E640;template<class T>class CUnprovenPointerArray{public:T** Data;unsigned long AllocatedCount,Count;void Expand(unsigned long);};template<class T>void CUnprovenPointerArray<T>::Expand(unsigned long extra){T** data=new T*[AllocatedCount+extra];if(AllocatedCount){memcpy(data,Data,AllocatedCount*sizeof(T*));delete[] Data;}Data=data;AllocatedCount+=extra;}
+template void CUnprovenPointerArray<CUnprovenPointerElement_00C1E640>::Expand(unsigned long);
+int main(){CUnprovenPointerArray<CUnprovenPointerElement_00C1E640> array;unsigned char objects[3];array.Data=0;array.AllocatedCount=array.Count=0;array.Expand(2);if(!array.Data || array.AllocatedCount!=2 || array.Count)goto fail;array.Data[0]=(CUnprovenPointerElement_00C1E640*)&objects[0];array.Data[1]=(CUnprovenPointerElement_00C1E640*)&objects[1];array.Count=2;array.Expand(3);if(array.AllocatedCount!=5 || array.Count!=2 || array.Data[0]!=(CUnprovenPointerElement_00C1E640*)&objects[0] || array.Data[1]!=(CUnprovenPointerElement_00C1E640*)&objects[1])goto fail;array.Data[2]=(CUnprovenPointerElement_00C1E640*)&objects[2];array.Data[3]=0;array.Data[4]=0;array.Expand(0);if(array.AllocatedCount!=5 || array.Count!=2 || array.Data[0]!=(CUnprovenPointerElement_00C1E640*)&objects[0] || array.Data[1]!=(CUnprovenPointerElement_00C1E640*)&objects[1] || array.Data[2]!=(CUnprovenPointerElement_00C1E640*)&objects[2] || array.Data[3] || array.Data[4])goto fail;delete[] array.Data;puts("00c1e640_TEST PASS");return 0;fail:puts("00c1e640_TEST FAIL");return 1;}

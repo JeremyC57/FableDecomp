@@ -1,0 +1,10 @@
+// CUnprovenPointerArray<CUnprovenPointerElement_00C1E640>::Expand(extra) -- grow pointer storage by the requested number of entries.
+// Leaf: ?Expand@?$CUnprovenPointerArray@VCUnprovenPointerElement_00C1E640@@@@QAEXK@Z
+// Identity: descriptive; own Grow helper allocates4*(AllocatedCount+extra), copies exactly AllocatedCount DWORDs, deletes oldarray only when countnonzero, replaces Data and increments AllocatedCount; Count+8 belongs same three-word pointerarray based on own append callers 00C1E780 object pointer appended fromargument after method onobject+8,00C1E8D0 generic append. Original pointer element class and array template/method names unproven; distinct descriptive pointed types avoid repeated one original symbol across independent no-ICF instances. Genuine native pointer new[]/delete[] plus memcpy intrinsics, not STLport or Dinkumware vector fiction.
+// Layout: source-proven pointer elements and three-word Data/AllocatedCount/Count shape, no active header or exact original class/PDB identity. No pointed object fields or size accessed. Numeric capacity is not a fabricated vector finish pointer. Allocation byte count and copied extent preserve retail behavior, including zero additional growth.
+#include <string.h>
+#ifdef _MSC_VER
+void* operator new[](unsigned int);void operator delete[](void*);
+#endif
+class CUnprovenPointerElement_00C1E640;template<class T>class CUnprovenPointerArray{public:T** Data;unsigned long AllocatedCount,Count;void Expand(unsigned long);};template<class T>void CUnprovenPointerArray<T>::Expand(unsigned long extra){T** data=new T*[AllocatedCount+extra];if(AllocatedCount){memcpy(data,Data,AllocatedCount*sizeof(T*));delete[] Data;}Data=data;AllocatedCount+=extra;}
+template void CUnprovenPointerArray<CUnprovenPointerElement_00C1E640>::Expand(unsigned long);

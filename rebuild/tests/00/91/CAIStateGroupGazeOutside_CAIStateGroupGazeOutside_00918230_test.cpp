@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <string.h>
+class CDefinitionManager_HeaderFields{};
+#ifndef _MSC_VER
+#define __fastcall
+#endif
+class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString(const char*,long=-1);~CCharString();};class CDefinitionManager:public CDefinitionManager_HeaderFields{public:long GetDefGlobalIndexFromName(const CCharString&)const;};class CGameDefinitionManager:public CDefinitionManager{public:static CGameDefinitionManager& __fastcall Get();};
+class CBaseClass{public:virtual ~CBaseClass(){} };class CAIStateGroupBase:public CBaseClass{public:unsigned char _unmodeled04[16];};class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer(){}void* PData;};class CThingGameObject;template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};
+class CAIStateGroup_Gaze:public CAIStateGroupBase{public:CIntelligentPointer<CThingGameObject> GazeMarker;float ChanceOfRunning,MinJourneyForRunning,MaxDistanceForCreaturesToLookAt;long PrimaryMarkerDef,SecondaryMarkerDef;CAIStateGroup_Gaze();};class CAIStateGroup_GazeAtWork:public CAIStateGroup_Gaze{public:CAIStateGroup_GazeAtWork();};
+class CAIStateGroup_GazeOutside:public CAIStateGroup_Gaze{public:CAIStateGroup_GazeOutside();};
+CAIStateGroup_GazeOutside::CAIStateGroup_GazeOutside(){ChanceOfRunning=0.3f;MinJourneyForRunning=10.0f;PrimaryMarkerDef=CGameDefinitionManager::Get().GetDefGlobalIndexFromName("GAZE_OUT_OF_BUILDING_MARKER");SecondaryMarkerDef=CGameDefinitionManager::Get().GetDefGlobalIndexFromName("GAZE_OUT_OF_BUILDING_MARKER");}
+static CGameDefinitionManager manager;static int baseCalls,workCalls,lookups,constructed,destroyed,bad;CCharString::CCharString(const char* text,long n):PStringData((CCharStringData*)text){++constructed;if(n!=-1 || !text)bad=1;}CCharString::~CCharString(){++destroyed;}CGameDefinitionManager& __fastcall CGameDefinitionManager::Get(){return manager;}long CDefinitionManager::GetDefGlobalIndexFromName(const CCharString& name)const{++lookups;if(this!=&manager || !name.PStringData || strcmp((const char*)name.PStringData,lookups==1?"GAZE_OUT_OF_BUILDING_MARKER":"GAZE_OUT_OF_BUILDING_MARKER"))bad=1;return lookups==1?101:202;}CAIStateGroup_Gaze::CAIStateGroup_Gaze(){++baseCalls;ChanceOfRunning=0;MinJourneyForRunning=0;MaxDistanceForCreaturesToLookAt=37;PrimaryMarkerDef=SecondaryMarkerDef=-1;}
+int main(){CAIStateGroup_GazeOutside group;if(bad || baseCalls!=1 || workCalls!=0 || lookups!=2 || constructed!=2 || destroyed!=2 || group.ChanceOfRunning!=0.3f || group.MinJourneyForRunning!=10.0f || group.MaxDistanceForCreaturesToLookAt!=37 || group.PrimaryMarkerDef!=101 || group.SecondaryMarkerDef!=202){puts("00918230_TEST FAIL");return 1;}puts("00918230_TEST PASS");return 0;}

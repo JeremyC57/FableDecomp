@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <string.h>
+#ifndef _MSC_VER
+#define __fastcall
+#endif
+extern char* _afxPchNil;typedef void(__fastcall* AssertHook)(const char*);extern AssertHook g_pfnAssertHook;
+class CString{public:char* m_pchData;CString():m_pchData(_afxPchNil){}~CString();CString& __fastcall operator<<(const char*);CString& __fastcall operator<<(long);};struct CDebugBreak{CDebugBreak();};
+class CUnprovenOneShotValue_00C39D50{public:unsigned int Words[1];};
+template<class T>class PKCOneShotQueue{public:T Value;int Filled;virtual T Take();virtual void Put(const T&);virtual int HasValue(){return Filled!=0;}virtual int Count(){return Filled;}};
+template<class T>T PKCOneShotQueue<T>::Take(){if(!Filled){{CString text;text << "d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCOneShotQueue.h" << "(" << (long)28 << ") : " << "Nothing to return!" << "\n";if(g_pfnAssertHook)g_pfnAssertHook(text.m_pchData);}CDebugBreak();}Filled=0;return Value;}
+template CUnprovenOneShotValue_00C39D50 PKCOneShotQueue<CUnprovenOneShotValue_00C39D50>::Take();
+template<class T>void PKCOneShotQueue<T>::Put(const T&){}
+char* _afxPchNil=(char*)"";AssertHook g_pfnAssertHook;static int bad,logged,destroyed,broken;static char text[512];static PKCOneShotQueue<CUnprovenOneShotValue_00C39D50>* current;CString& CString::operator<<(const char* p){if(m_pchData==_afxPchNil)text[0]=0;strcat(text,p);m_pchData=text;return *this;}CString& CString::operator<<(long n){char b[32];sprintf(b,"%ld",n);return (*this)<<b;}CString::~CString(){++destroyed;}CDebugBreak::CDebugBreak(){if(destroyed!=broken+1)bad=1;++broken;for(int i=0;i<1;++i)current->Value.Words[i]=700+i;}static void __fastcall Log(const char* p){++logged;if(strcmp(p,"d:\\dev\\audio\\ver_fable_1.5_b\\libpk\\PKCOneShotQueue.h(28) : Nothing to return!\n"))bad=1;}int main(){PKCOneShotQueue<CUnprovenOneShotValue_00C39D50> queue;current=&queue;CUnprovenOneShotValue_00C39D50 value;for(int i=0;i<1;++i){queue.Value.Words[i]=100+i;value.Words[i]=900+i;}g_pfnAssertHook=Log;queue.Filled=1;value=queue.Take();if(logged||destroyed||broken||bad||queue.Filled!=0)goto fail;for(int i=0;i<1;++i)if(value.Words[i]!=100+i)goto fail;queue.Filled=0;value=queue.Take();if(logged!=1||destroyed!=1||broken!=1||bad)goto fail;for(int i=0;i<1;++i)if(value.Words[i]!=700+i)goto fail;g_pfnAssertHook=0;queue.Filled=0;value=queue.Take();if(logged!=1||destroyed!=2||broken!=2||bad)goto fail;puts("00c39d50_TEST PASS");return 0;fail:puts("00c39d50_TEST FAIL");return 1;}

@@ -1,0 +1,10 @@
+// CTCBoss::AddEffect(CThing& thing) -- append a tracked pointer to the thing.
+// Leaf: ?AddEffect@CTCBoss@@QAEXAAVCThing@@@Z
+// Identity: proven; own JackFloatUp/ScorpionKingVulnerable callers use TCinterface0xAD; RTTI CTCBoss GetInterfaceType0x7AFCD0, PDB AddEffect(CThing&) and Effects donor64->retail60 after earlier vector shrink; own vector<CIntelligentPointer<CThing>>::push_back0x4AD520.
+// Layout: CreatureActionBase shared data header reused unchanged under alias, typed view over named opaque vector. Other owners have no usable header and use minimal member views at proved offsets. Real tracked-pointer constructor/base destructor calls remain external.
+class CThing {}; class CBaseObject; class CBaseObjectPointer;
+class CBaseIntelligentPointer { public: CBaseIntelligentPointer(); virtual ~CBaseIntelligentPointer(); CBaseObjectPointer* PData; CBaseObject* GetPItem() const; void SetPItem(CBaseObject*); };
+template<class T> class CIntelligentPointer:public CBaseIntelligentPointer { public: CIntelligentPointer(T* item):CBaseIntelligentPointer() { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); } T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); } };
+namespace std { template<class T> class allocator {}; template<class V,class T,class Alloc> class _STLP_alloc_proxy:public Alloc { public: V _M_data; }; template<class T,class Alloc=allocator<T> > class vector { public: T* _M_start; T* _M_finish; _STLP_alloc_proxy<T*,T,Alloc> _M_end_of_storage; void push_back(const T&); }; }
+class CTCBoss { public: unsigned char _unmodeled00[60]; std::vector<CIntelligentPointer<CThing> > Effects; void AddEffect(CThing& thing); };
+void CTCBoss::AddEffect(CThing& thing) { reinterpret_cast<std::vector<CIntelligentPointer<CThing> >*>(&Effects)->push_back(CIntelligentPointer<CThing>(&thing)); }

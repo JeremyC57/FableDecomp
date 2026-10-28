@@ -1,0 +1,59 @@
+// NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan::OnPredicateFail() -- Count hero kills and record the fourth friendly victim.
+// Leaf: ?OnPredicateFail@CSecretPassageMan@CQ_OpeningGraveyardSecretPassageScript@NScript@@EAEXXZ
+// Identity: own named binding/factory00dc2ada->00dc4c40 stores vtable012da6a8 selected slot5. Original scoped names in FableWin name set; actual MsgIsKilledBy slot18. Own counter+108 and master flag+284 agree with original field names.
+// Layout: true script/entity/data bases and original typed fields. Master enum value spellings unspecified; EHeroNames retains donor field type and global-scope projection, no enumerator or enum scope recovery claim. Other enum scopes checked against original decorated Transfer names. Retail master size324 after STLport vector contraction. Shared handle headers aliased.
+#define CScriptThing CScriptThing_HeaderLayout
+#include "engine/CScriptThing.h"
+#undef CScriptThing
+#define CScriptGameResourceObjectScriptedThingBase CScriptGameResourceObjectScriptedThingBase_HeaderLayout
+#include "engine/CScriptGameResourceObjectScriptedThingBase.h"
+#undef CScriptGameResourceObjectScriptedThingBase
+#ifndef _MSC_VER
+#define __fastcall
+#define __forceinline inline
+typedef unsigned long RetailUID;
+#else
+typedef unsigned __int64 RetailUID;
+#endif
+class CBaseClass{public:virtual ~CBaseClass(){}};class CBaseClassNonCopyable:public CBaseClass{protected:CBaseClassNonCopyable(){}~CBaseClassNonCopyable(){}private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable& operator=(const CBaseClassNonCopyable&);};
+class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}CCharString(const char*,long=-1);~CCharString();bool FastCompare(const CCharString&)const;};
+class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
+class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
+namespace std{
+template<class T>class allocator{};template<class A,class B>struct pair{typedef A first_type;typedef B second_type;A first;B second;};
+template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};
+struct _List_node_base{_List_node_base* _M_next;_List_node_base* _M_prev;};template<class T>struct _List_node:public _List_node_base{T _M_data;};
+template<class T,class A>class _List_base{protected:typedef _List_node<T> _Node;typedef allocator<_Node> _NodeAlloc;_STLP_alloc_proxy<_Node*,_Node,_NodeAlloc> _M_node;};
+template<class T,class A=allocator<T> >class list:protected _List_base<T,A>{};
+template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};
+template<class T,class A=allocator<T> >class vector:protected _Vector_base<T,A>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};
+template<class Iter,class Compare>void __fastcall sort(Iter,Iter,Compare);
+}
+template<class T>class CArray:public std::vector<T>{};
+template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& a,const std::pair<K,V>& b)const{return a.first<b.first;}};
+template<class V>class CCompareString{public:bool operator()(const std::pair<CCharString,V>& a,const std::pair<CCharString,V>& b)const{return a.first.FastCompare(b.first);}};
+template<class K,class V,class Cmp=CKeyPairCompareLess<K,V> >class CVectorMap{public:CArray<std::pair<K,V> > Data;Cmp Compare;bool Dirty;__forceinline void Sort(){if(Dirty){std::sort(Data.begin(),Data.end(),Compare);Dirty=false;}}};
+
+class CPersistContext;class CBaseObjectPointer;
+class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};
+class CScriptGameResourceObjectBase:public CBaseObject{};
+class CScriptGameResourceObjectScriptedThingBase:public CScriptGameResourceObjectBase{public:CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;};
+class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void UnknownSlot7(){}virtual void UnknownSlot8(){}virtual void UnknownSlot9(){}virtual void UnknownSlot10(){}virtual void UnknownSlot11(){}virtual void UnknownSlot12(){}virtual void UnknownSlot13(){}virtual void UnknownSlot14(){}virtual void UnknownSlot15(){}virtual void UnknownSlot16(){}virtual void UnknownSlot17(){}virtual bool MsgIsKilledBy(const CCharString&)const;};
+namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
+class CScriptBase:public CBaseClassNonCopyable{public:
+std::list<CCountedPointer<CSpawnedFuncBase> > Threads;
+CVectorMap<RetailUID,CCountedPointer<CActiveEntityScriptBase> > EntityScripts;
+CVectorMap<CCharString,CCountedPointer<CEntityScriptBindingBase>,CCompareString<CCountedPointer<CEntityScriptBindingBase> > > EntityScriptBindings;
+unsigned long LastWorldUpdateFrame;CSpawnedFuncBase* PActiveThread;NScript::CRuntimeScriptedEntityPersist RuntimeScriptedEntityPersist;
+virtual void RegisterMain(){}virtual void Main(){}virtual void Init(){}virtual void OnPersist(CPersistContext&){}
+};
+class CGameScriptInterfaceBase;
+template<class T>class CLevelScriptBase:public CScriptBase{public:CGameScriptInterfaceBase* Game;T* MasterScriptData;};
+class CPersistContext{public:template<class T>void Transfer(const char*,T&,const T&);};class CTimer{public:long TimerIndex;};
+class CEntityScriptBase{public:virtual ~CEntityScriptBase(){}virtual void UnknownSlot1(){}virtual void Init(){}virtual void UnknownSlot3(){}virtual void OnPersist(CPersistContext&){}virtual void OnPredicateFail(){}CGameScriptInterfaceBase* Game;CScriptThing Me;};
+class CScriptDataBase:public CBaseClassNonCopyable{public:virtual void OnPersist(CPersistContext&)=0;virtual void Init()=0;};enum EGameflowPosition{UnspecifiedGameflowPosition=0};enum EPlaceInHeroSouls{UnspecifiedHeroSoulsPosition=0};enum EHeroNames{UnspecifiedHeroName=0};
+namespace NScript{class CQ_SunnyvaleMasterData:public CScriptDataBase{public:enum ArcheryOpenState{UnspecifiedArcheryState=0};EGameflowPosition PostSavePosition;long HenchmanCommentaryState;long HenchmanOverrideState;bool HenchmanSacrificedBodge;bool HauntedBarrowFieldsCompleted;long RandomEntityVillagerMax;long RandomEntityGuardMax;long RandomEntityBanditMax;long RandomEntityVillagerCount;long RandomEntityGuardCount;long RandomEntityBanditCount;float RandomEntityVillagerPercentage;float RandomEntityGuardPercentage;float RandomEntityBanditPercentage;bool RandomEntitySheriffAlive;bool RandomEntityLieutenantAlive;bool BanditCampTwinbladeKilled;ArcheryOpenState ArcheryStateCurrent;ArcheryOpenState ArcheryStateRequired;long ArcheryHighScore;bool FriendOfForeman;bool BridgeOpened;bool GrannyMemoryReturned;bool IsLunaHuman;bool CondemnedManDead;bool CondemnedManForgiven;bool CondemnedManMeetsBodyGuard;bool CondemnedManMeetsBodyGuardCutSceneStart;bool CondemnedManMeetsBodyGuardCutSceneFinished;CCharString TeddySolution;long OrchardFarmRaidLastCompleted;long OrchardFarmTraderEscortCounter;bool SeenAbbeyMotherAtGuild;bool DefeatedThunder;bool LostToThunder;bool KilledThunder;bool CollectedSoulFromArena;bool KilledBriar;bool CollectedSoulFromMother;bool KilledGM;bool CollectedSoulFromNostro;long DeliveredSoul;EPlaceInHeroSouls CurrentHeroSoulsPosition;bool WhisperKilledByHero;bool ArenaFinished;bool GatesRequireClosing;bool GatesRequireOpening;long HeroDrunkness;bool TrophyDealerHeroSpokenToDemonDoors;float VillagerAngryRating;bool MotherDodgingKraken;long JackBossBattleResult;bool JackBossBattleHeroGoodAtEnd;bool WifeLeavingYou;bool WifeLeftYou;long CurrentScene;bool StartNextScene;long CurrentChapter;bool ScorpionsDestroyed;bool ScorpionsDestroyedCutscenePlayed;bool SkillTrainingStarted;bool WillTrainingStarted;bool MovingDummiesNeeded;long SkillScore;long HighestSkillScore;long WillScore;bool MeleeApprenticeNeededForCutscene;long GlobalMeleeGrade;long GlobalSkillGrade;long GlobalWillGrade;bool GuildWarningOccuring;bool SkillTestOccuring;bool WillTestOccuring;bool SkillRepeating;bool SkillRepeatKnown;bool SkillDummyReset;bool HeroTakingGuildTest;bool SwordInTheStoneComplete;bool AmbushTradersAllGuardsDead;bool AmbushTradersAllTradersDead;long AmbushTradersKillCount;long AmbushTradersBanditHireCount;bool AmbushTradersSpyDead;bool StruckDealWithLadyGrey;bool HeroExposedLadyGrey;bool HeroMarriedLadyGrey;bool BountyHuntWithinTimeLimit;bool BountyHuntDecapitation;bool BountyHuntTimeLimitExceeded;unsigned long AchievementsWorthyOfSong;bool BreakSiegeFinished;bool WhiteBalverineFinished;bool MadBomberFinished;bool BodyGuardsMustStandAndWait;bool BodyGuardsInLimbo;bool WifeHeroFlirting;long PrisonRaceNumber;bool PrisonRaceWonByHero;bool WasPrisonRaceEverWonByHero;bool PrisonKeyStolenByHero;bool BooksPreviouslyOpened[3];bool PrisonTorturedBefore;bool PrisonGameDoneBefore;bool HeroDollsScriptUsingTeacher;long MaxChickenKickingScore;unsigned long StoryTellerSpecialStories;unsigned long StoryTellerToldSpecialStories;EHeroNames GHeroName;bool TimeAdvancePointTriggered;bool OFBRCratesStolen;bool OFBR_NoCratesWereStolen;bool DarkwoodAllTradersAlive;bool MadBomberNoBombsExplode;bool HobbeCavePerpertratorKilled;long HobbeCaveInnocentSacrificed;bool HobbeCaveBoyUnharmed;bool BanditCampKillNoBandits;bool BreakSiegeNoAssistance;bool BreakSiegeKilledLeader;bool OrchardFarmBanditKilled;bool OrchardFarmGuardKilled;bool BanditCampKillManyBandits;bool HobbeContestKillMoreHobbes;bool GraveyardKillAllInnocents;long DarkwoodPickpocketedAllTraders;bool HangingTreeBanditKilled;bool HangingTreeGuardKilled;bool TCGKillNoBandits;bool TCGMadeTimeLimit;bool TCEKeepBanditFollowerAlive;bool TCEMadeTimeLimit;bool RansomVictimVictimNoDamage;bool RansomVictimKidnappersKilled;bool RansomVictimSaveVictim;bool RansomVictimHaveVictimKilled;bool MinionCampBriarNoDamage;bool FireHeartFreeAllPrisoners;bool FireHeartKillAllPrisoners;bool TCETimeLimitBoastTaken;bool TCGTimeLimitBoastTaken;bool HeroWoreMask;std::vector<CCharString> BoastRegions;bool SingingStonesInSync;virtual void OnPersist(CPersistContext&);virtual void Init();};}
+namespace NScript{class CQ_OpeningGraveyardSecretPassageScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:class CSecretPassageMan;bool finished_quest,DoorChange,ZombieCamPlayed,skeleton_visited,doors_open,GravekeeperIntroduced,GravekeeperCutsceneStart,UndeadCutscenePlayed,UndeadCutsceneStarted,SkeletonStuff[4],MissionSucceeded,MissionFailed,DoorClosed;CCharString hero_object[4];bool LieutenantAround;long FriendliesKilled;bool VisitorsAttacked,QuestStartScreenShown,HaveOpenedDemonDoor;};class CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan:public CEntityScriptBase{public:CQ_OpeningGraveyardSecretPassageScript* ParentClass;CQ_SunnyvaleMasterData* PMasterData;bool AttackedByHero;private:virtual void OnPredicateFail();};void CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan::OnPredicateFail(){if(Me.MsgIsKilledBy("SCRIPT_NAME_HERO")){++ParentClass->FriendliesKilled;if(ParentClass->FriendliesKilled==4)PMasterData->GraveyardKillAllInnocents=true;}}}
+#ifdef _MSC_VER
+typedef char ExactOwnerSize[sizeof(NScript::CQ_OpeningGraveyardSecretPassageScript::CSecretPassageMan)==32?1:-1];typedef char ExactParentSize[sizeof(NScript::CQ_OpeningGraveyardSecretPassageScript)==116?1:-1];typedef char ExactMasterFlag[offsetof(NScript::CQ_SunnyvaleMasterData,GraveyardKillAllInnocents)==284?1:-1];typedef char ExactMasterSize[sizeof(NScript::CQ_SunnyvaleMasterData)==324?1:-1];
+#endif

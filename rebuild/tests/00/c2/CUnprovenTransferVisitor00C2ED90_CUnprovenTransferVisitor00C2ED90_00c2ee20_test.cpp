@@ -1,0 +1,11 @@
+#include <stdio.h>
+#include <new>
+#include <string.h>
+// CUnprovenTransferVisitor_00C2ED90::CUnprovenTransferVisitor_00C2ED90(PKSerialiseCParser* archive) -- Initialize a record-transfer visitor.
+// Leaf: ??0CUnprovenTransferVisitor_00C2ED90@@QAE@PAVPKSerialiseCParser@@@Z
+// Identity: Own caller00c2f935, derived table012b497c Visit00C2ED90, record transfer00C3B850. Own destructor restores separate abstract visitor base table012b4964. Names descriptive and shared consistently with N200; no original class identity claimed.
+// Layout: no shared header. Abstract visitor base vptr0, archive pointer4, unsigned Failures8. Base slot0 pure Visit, slot1 destructor, derived overrides Visit. Own destructor and two tables prove inherited interface.
+class PKSerialiseCParser;class CUnprovenTransferRecord_00C3B850;class CUnprovenTransferVisitorBase_00C2ED90{public:virtual void Visit(CUnprovenTransferRecord_00C3B850*)=0;virtual ~CUnprovenTransferVisitorBase_00C2ED90(){}};class CUnprovenTransferVisitor_00C2ED90:public CUnprovenTransferVisitorBase_00C2ED90{public:virtual void Visit(CUnprovenTransferRecord_00C3B850*);virtual ~CUnprovenTransferVisitor_00C2ED90();PKSerialiseCParser* Archive;unsigned long Failures;CUnprovenTransferVisitor_00C2ED90(PKSerialiseCParser*);};
+CUnprovenTransferVisitor_00C2ED90::CUnprovenTransferVisitor_00C2ED90(PKSerialiseCParser* archive):Archive(archive),Failures(0){}
+class PKSerialiseCParser{};static int visits,destructions;void CUnprovenTransferVisitor_00C2ED90::Visit(CUnprovenTransferRecord_00C3B850*){++visits;}CUnprovenTransferVisitor_00C2ED90::~CUnprovenTransferVisitor_00C2ED90(){++destructions;}
+int main(){union Storage{double align;unsigned char bytes[sizeof(CUnprovenTransferVisitor_00C2ED90)];}storage;PKSerialiseCParser archive;memset(storage.bytes,0x5a,sizeof(storage.bytes));CUnprovenTransferVisitor_00C2ED90* p=new(storage.bytes) CUnprovenTransferVisitor_00C2ED90(&archive);bool ok=p->Archive==&archive&&p->Failures==0;CUnprovenTransferVisitorBase_00C2ED90* base=p;base->Visit(0);ok=ok&&visits==1;p->~CUnprovenTransferVisitor_00C2ED90();memset(storage.bytes,0xa5,sizeof(storage.bytes));p=new(storage.bytes) CUnprovenTransferVisitor_00C2ED90(0);ok=ok&&p->Archive==0&&p->Failures==0;p->~CUnprovenTransferVisitor_00C2ED90();ok=ok&&destructions==2;puts(ok?"00c2ee20_TEST PASS":"00c2ee20_TEST FAIL");return ok?0:1;}

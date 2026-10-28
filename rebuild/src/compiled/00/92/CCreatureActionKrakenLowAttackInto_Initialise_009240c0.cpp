@@ -1,0 +1,19 @@
+// CCreatureAction_KrakenLowAttackInto::Initialise() -- Set head tracking before initialising the Kraken combat action.
+// Leaf: ?Initialise@CCreatureAction_KrakenLowAttackInto@?A0x
+// Identity: Own full anonymous RTTI01290b0c and vtable slot12; both PDB Initialise name; TC226 Kraken, HeadTrackTarget81, CCombatActionBase::Initialise00857520. Anonymous leaf uses documented unique prefix.
+#include "engine/CTCBase.h"
+#define CCreatureActionBase CCreatureActionBase_HeaderLayout
+#include "engine/CCreatureActionBase.h"
+#undef CCreatureActionBase
+namespace std{template<class K,class V>struct pair{K first;V second;};template<class T>class allocator{};template<class V,class T,class Al>class _STLP_alloc_proxy:public Al{public:V _M_data;};template<class T,class Al>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,Al> _M_end_of_storage;};template<class T,class Al=allocator<T> >class vector:public _Vector_base<T,Al>{public:T* begin(){return this->_M_start;}T* end(){return this->_M_finish;}};}
+template<class T>class CArray:public std::vector<T>{};
+enum ETCInterfaceType{TC_KRAKEN=226};
+template<class K,class V>class CKeyPairCompareLess{public:bool operator()(const std::pair<K,V>& entry,const K& key)const{return entry.first<key;}};
+template<class K,class V,class CompareType=CKeyPairCompareLess<K,V> >class CVectorMap{public:typedef std::pair<K,V> value_type;typedef value_type* iterator;CArray<value_type> Data;CompareType Compare;bool Dirty;iterator LowerBound(const K& key);iterator end(){return Data.end();}V& operator[](const K& key){K keyCopy=key;iterator p=LowerBound(keyCopy);if(p==end() || key<p->first)p=end();return p->second;}};
+class CThing{public:unsigned char _unmodeled00[0x20];unsigned int Interfaces[9];CVectorMap<ETCInterfaceType,CTCBase*> Components;template<class T>bool GetTC(T** out){if(Interfaces[T::InterfaceType/32]&(1U<<(T::InterfaceType%32))){*out=(T*)Components[(ETCInterfaceType)T::InterfaceType];return true;}return false;}};class CThingCreatureBase:public CThing{};
+class CBaseObjectPointer;class CBaseClass{public:virtual ~CBaseClass(){}};class CBaseObject:public CBaseClass{public:CBaseObjectPointer* IntelligentPointer;};class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer(){}CBaseObjectPointer* PData;CBaseObject* GetPItem()const;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{public:T* GetPItem()const{return (T*)CBaseIntelligentPointer::GetPItem();}};
+// Layout: Kraken active header quarantined; HeadTrackTarget+81 is donor97 minus two list8-byte reductions. Original action hierarchy has CBaseObject8, PCreature+8 and action base168. Target requires its Kraken component; absent-component out value remains unset as in retail.
+class CTCKraken:public CTCBase{public:enum{InterfaceType=226};unsigned char UnusedState[81-12];bool HeadTrackTarget;};
+class CCreatureActionBase:public CBaseObject{public:CIntelligentPointer<CThingCreatureBase> PCreature;unsigned char UnusedActionState[168-16];virtual void UnusedSlot01(){};virtual void UnusedSlot02(){};virtual void UnusedSlot03(){};virtual void UnusedSlot04(){};virtual void UnusedSlot05(){};virtual void UnusedSlot06(){};virtual void UnusedSlot07(){};virtual void UnusedSlot08(){};virtual void UnusedSlot09(){};virtual void UnusedSlot10(){};virtual void UnusedSlot11(){}; virtual void Initialise(){};};
+class CCombatActionBase:public CCreatureActionBase{public:unsigned char UnusedCombatState[276-168];virtual void Initialise();};
+namespace {class CCreatureAction_KrakenLowAttackInto:public CCombatActionBase{public:virtual void Initialise();};void CCreatureAction_KrakenLowAttackInto::Initialise(){CTCKraken* kraken;PCreature.GetPItem()->GetTC(&kraken);kraken->HeadTrackTarget=false;CCombatActionBase::Initialise();}}

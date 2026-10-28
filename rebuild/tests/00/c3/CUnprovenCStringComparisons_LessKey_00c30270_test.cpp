@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <string.h>
+// CUnprovenCStringComparisons::LessKey(const void*,const void*) -- Compare two stored strings through original CString comparison.
+// Leaf: ?LessKey@CUnprovenCStringComparisons@@UAEHPBX0@Z
+// Identity: descriptive. Own function entries in tables012b4b00 and012b4bd8 four comparison slots0/1/2/3, both equality/less pairs share CString::Compare(const char*)const00c0bce0. Second argument dereferenced at0 is original CString m_pchData; first is Compare receiver. this is unused. Original container/comparison-owner identity and method names unproven; descriptive shared four-slot interface preserves observed ABI. int32 return of normalized comparison bool is ABI-derived, not claimed PDB recovery. No collision between distinct target methods. Original abstract table012b1ab0 has four pure comparison slots followed by virtual destructor00c09890; concrete CString table012b4b00 slot4c30290 calls destructorc2fe10 resetting that exact base table. Full comparator inheritance and destructor slot now represented; names remain descriptive.
+// Layout: original CString data pointer0; unused comparer owner state omitted. No available target header.
+class CString{public:char* m_pchData;int Compare(const char*)const;operator const char*()const{return m_pchData;}};
+class CUnprovenArrayComparator{public:virtual int EqualValue(const void*,const void*)=0;virtual int LessValue(const void*,const void*)=0;virtual int EqualKey(const void*,const void*)=0;virtual int LessKey(const void*,const void*)=0;virtual ~CUnprovenArrayComparator(){}};
+class CUnprovenCStringComparisons:public CUnprovenArrayComparator{public:virtual int EqualValue(const void*,const void*);virtual int LessValue(const void*,const void*);virtual int EqualKey(const void*,const void*);virtual int LessKey(const void*,const void*);};
+int CUnprovenCStringComparisons::LessKey(const void* left,const void* right){const CString* first=(const CString*)left;const CString* second=(const CString*)right;bool result=first->Compare(*second)<0;return result;}
+
+static const CString* expectedFirst;static const char* expectedSecond;static int calls,bad;int CString::Compare(const char* text)const{if(this!=expectedFirst||text!=expectedSecond)bad=1;++calls;return strcmp(m_pchData,text);}
+int CUnprovenCStringComparisons::EqualValue(const void*,const void*){return 0;}
+int CUnprovenCStringComparisons::LessValue(const void*,const void*){return 0;}
+int CUnprovenCStringComparisons::EqualKey(const void*,const void*){return 0;}
+int main(){char a[]="alpha",b[]="beta",c[]="alpha",d[]="";char* words[]={a,b,c,d};CUnprovenCStringComparisons compare;bool ok=true;for(int i=0;i<4;++i)for(int j=0;j<4;++j){CString first,second;first.m_pchData=words[i];second.m_pchData=words[j];expectedFirst=&first;expectedSecond=second.m_pchData;int value=compare.LessKey(&first,&second);ok=ok&&!bad&&value==(strcmp(words[i],words[j])<0?1:0);}ok=ok&&calls==16;puts(ok?"00c30270_TEST PASS":"00c30270_TEST FAIL");return ok?0:1;}

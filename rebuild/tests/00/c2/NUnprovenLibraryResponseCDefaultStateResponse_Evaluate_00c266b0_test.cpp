@@ -1,0 +1,7 @@
+#include <stdio.h>
+// NUnprovenLibraryResponse::CDefaultStateResponse::Evaluate(void*,int*) -- Return the default response and its integer output.
+// Leaf: ?Evaluate@CDefaultStateResponse@NUnprovenLibraryResponse@@UAEMPAXPAH@Z
+// Identity: descriptive. Own virtual table012b3fdc slot9 identified by constructor vptr stores (00c266e0 or00c37cc0); target ignores receiver and first native-width argument, writes signed output 0 and returns float 0.0f. No original library PDB coverage; class/method/argument semantics remain descriptive ABI projections. Constant is actual compiler literal, not an invented external variable.
+// Layout: only virtual interface slots are projected; no instance data is accessed or size claimed. No applicable engine header.
+namespace NUnprovenLibraryResponse{class CDefaultStateResponse{public:virtual void UnknownSlot0(){}virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void UnknownSlot7(){}virtual void UnknownSlot8(){}virtual float Evaluate(void*,int*);};float CDefaultStateResponse::Evaluate(void*,int* out){*out=0;return 0.0f;}}
+int main(){NUnprovenLibraryResponse::CDefaultStateResponse instance;int output=123,marker=456;bool ok=instance.Evaluate(0,&output)==0.0f&&output==0;output=789;ok=ok&&instance.Evaluate(&marker,&output)==0.0f&&output==0&&marker==456;puts(ok?"00c266b0_TEST PASS":"00c266b0_TEST FAIL");return ok?0:1;}

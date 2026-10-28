@@ -1,0 +1,13 @@
+#include <stdio.h>
+// vorbis::res0_inverse(...) -- Compact active residue channels and decode their partitions.
+// Leaf: @res0_inverse@20
+// Identity: Xiph Vorbis1.0.1 res0.c original res0_inverse packs active channels then _01inverse with vorbis_book_decodevs_add. Own helper00ca0df0 matches setup/partition decode algorithm and returns20 stack bytes; callback00c96450 receives codebook/float in ecx/edx with remaining two stack args. Own wrapper uses normal fastcall. No owner layout accessed.
+#ifndef _MSC_VER
+#define __fastcall
+#define __stdcall
+#endif
+struct vorbis_block;typedef void vorbis_look_residue;struct codebook;struct oggpack_buffer;
+extern "C" long __fastcall vorbis_book_decodevs_add(codebook*,float*,oggpack_buffer*,int);
+extern "C" int __stdcall _01inverse(vorbis_block*,vorbis_look_residue*,float**,int,long(__fastcall*)(codebook*,float*,oggpack_buffer*,int));
+extern "C" int __fastcall res0_inverse(vorbis_block* vb,vorbis_look_residue* vl,float** in,int* nonzero,int ch){int i,used=0;for(i=0;i<ch;i++)if(nonzero[i])in[used++]=in[i];if(used)return _01inverse(vb,vl,in,used,vorbis_book_decodevs_add);else return 0;}
+static vorbis_block* expectedVB;static vorbis_look_residue* expectedLook;static float** expectedIn;static float* expectedChannels[5];static int expectedCount,result,calls,bad;extern "C" long __fastcall vorbis_book_decodevs_add(codebook*,float*,oggpack_buffer*,int){return 0;}extern "C" int __stdcall _01inverse(vorbis_block* vb,vorbis_look_residue* vl,float** in,int ch,long(__fastcall* fn)(codebook*,float*,oggpack_buffer*,int)){++calls;if(vb!=expectedVB||vl!=expectedLook||in!=expectedIn||ch!=expectedCount||fn!=vorbis_book_decodevs_add)++bad;for(int j=0;j<ch;++j)if(in[j]!=expectedChannels[j])++bad;return result;}int main(){int token=0,look=0;expectedVB=reinterpret_cast<vorbis_block*>(&token);expectedLook=&look;float data[5]={1,2,3,4,5};bool ok=true;for(int mask=0;mask<32;++mask){float* channels[5];int nonzero[5];expectedCount=0;for(int i=0;i<5;++i){channels[i]=&data[i];nonzero[i]=(mask&(1<<i))?(i%2?-3:7):0;if(nonzero[i])expectedChannels[expectedCount++]=channels[i];}expectedIn=channels;result=(mask%2)?-1:23;calls=bad=0;int got=res0_inverse(expectedVB,expectedLook,channels,nonzero,5);ok=ok&&!bad&&calls==(expectedCount?1:0)&&got==(expectedCount?result:0);for(int i=0;i<5;++i)ok=ok&&data[i]==float(i+1);}calls=bad=0;ok=ok&&res0_inverse(expectedVB,expectedLook,0,0,0)==0&&res0_inverse(expectedVB,expectedLook,0,0,-1)==0&&!calls&&!bad;puts(ok?"00ca1000_TEST PASS":"00ca1000_TEST FAIL");return ok?0:1;}

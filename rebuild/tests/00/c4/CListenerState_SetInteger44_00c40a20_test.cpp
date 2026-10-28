@@ -1,0 +1,12 @@
+#include <stdio.h>
+#include <string.h>
+class CUnprovenLibraryObject_012B5868{public:virtual ~CUnprovenLibraryObject_012B5868();};
+class CPooledNode:public CUnprovenLibraryObject_012B5868{public:CPooledNode* Prev;CPooledNode* Next;CPooledNode();virtual ~CPooledNode();};
+class CUnprovenFloat3_00C40970{public:float X,Y,Z;};
+class CListenerState:public CPooledNode{public:CUnprovenFloat3_00C40970 Vector0C,Vector18;int Integer24,Integer28,Integer2C;float Float30,Float34,Float38;int Integer3C;float Scalar40;int Integer44;float Scalar48,Scalar4C,Scalar50,Scalar54,Scalar58,Scalar5C,Scalar60,Scalar64;int Integer68,Integer6C;unsigned int UnprovenWord70;int Integer74;unsigned long DirtyFlags;void* EffectHandle;CListenerState();virtual ~CListenerState();void SetVector0C(const CUnprovenFloat3_00C40970*);void SetVector18(const CUnprovenFloat3_00C40970*);void SetInteger44(int);void SetInteger6C(int);static void operator delete(void*);static void operator delete[](void*);};
+#ifdef _MSC_VER
+typedef char NodeSize[sizeof(CPooledNode)==12?1:-1];typedef char ParameterSize[sizeof(CListenerState)==128?1:-1];
+#endif
+void CListenerState::SetInteger44(int value){if(Integer44!=value){Integer44=value;DirtyFlags|=512;}}
+CUnprovenLibraryObject_012B5868::~CUnprovenLibraryObject_012B5868(){}CPooledNode::CPooledNode():Prev(0),Next(0){}CPooledNode::~CPooledNode(){}CListenerState::CListenerState(){}CListenerState::~CListenerState(){}void CListenerState::operator delete(void*){}void CListenerState::operator delete[](void*){}
+int main(){CListenerState owner;unsigned char before[sizeof(owner)],expected[sizeof(owner)];memset(&owner.Vector0C,0,sizeof(owner)-((unsigned char*)&owner.Vector0C-(unsigned char*)&owner));int values[]={0,7,-9,2147483647,-2147483647-1};for(int i=0;i<5;++i){owner.Integer44=values[i];owner.DirtyFlags=0x40000000U;memcpy(before,&owner,sizeof(owner));owner.SetInteger44(values[i]);if(memcmp(before,&owner,sizeof(owner)))goto fail;int next=values[(i+1)%5];memcpy(expected,&owner,sizeof(owner));((CListenerState*)expected)->Integer44=next;((CListenerState*)expected)->DirtyFlags|=512;owner.SetInteger44(next);if(memcmp(expected,&owner,sizeof(owner)))goto fail;}puts("00c40a20_TEST PASS");return 0;fail:puts("00c40a20_TEST FAIL");return 1;}

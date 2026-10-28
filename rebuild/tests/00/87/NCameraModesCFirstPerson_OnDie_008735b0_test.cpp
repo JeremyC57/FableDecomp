@@ -1,0 +1,7 @@
+#include <stdio.h>
+#include <string.h>
+class C3DVector{public:float X,Y,Z;};class CRightHandedSet{public:C3DVector Up,Forward;};class CCamera{public:C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;unsigned long FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
+class CGameCameraManager{public:unsigned char _unmodeled00[4];CCamera Camera,OldCamera;unsigned char _unmodeled74[0xb0-0x74];bool SingleCut;};
+namespace NCameraModes{class CBase{public:virtual ~CBase(){}unsigned char _unmodeled04[0x40-4];CGameCameraManager* CameraManager;};class CFirstPerson:public CBase{public:virtual void OnDie();};}
+void NCameraModes::CFirstPerson::OnDie(){CGameCameraManager& manager=*CameraManager;manager.OldCamera=manager.Camera;manager.SingleCut=true;}
+int main(){CGameCameraManager m;memset(&m,0,sizeof(m));m.Camera.WorldPosition.X=17.5f;m.Camera.RHSet.Up.Z=-8.0f;m.Camera.HeightLocked=true;m.Camera.FOVFlags=9;m.Camera.Zoom=2.5f;NCameraModes::CFirstPerson mode;mode.CameraManager=&m;mode.OnDie();if(memcmp(&m.Camera,&m.OldCamera,sizeof(CCamera)) || !m.SingleCut)goto fail;m.Camera.Zoom=4.0f;mode.OnDie();if(m.OldCamera.Zoom!=4.0f)goto fail;puts("008735b0_TEST PASS");return 0;fail:puts("008735b0_TEST FAIL");return 1;}

@@ -1,0 +1,9 @@
+#include <stdio.h>
+#ifdef _MSC_VER
+#define NOINLINE __declspec(noinline)
+#else
+#define NOINLINE __attribute__((noinline))
+#endif
+class CUnprovenVisitAdapterBase_012B4160{public:virtual void Visit(void*)=0;virtual ~CUnprovenVisitAdapterBase_012B4160(){}};class CUnprovenVisitAdapter_00C2A690:public CUnprovenVisitAdapterBase_012B4160{public:void* Argument;NOINLINE CUnprovenVisitAdapter_00C2A690(void*);virtual void Visit(void*);};CUnprovenVisitAdapter_00C2A690::CUnprovenVisitAdapter_00C2A690(void* p){Argument=p;}
+class CUnprovenVisitorCollection_00C2A7F0{public:virtual void UnknownSlot0(){}virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void UnknownSlot7(){}virtual void UnknownSlot8(){}virtual void UnknownSlot9(){} virtual void Apply(CUnprovenVisitAdapterBase_012B4160&);};class CUnprovenCollectionOwner_00C2A7F0{public:unsigned char _unmodeled00[152];CUnprovenVisitorCollection_00C2A7F0 Collection;void ApplyFilter(void*);};void CUnprovenCollectionOwner_00C2A7F0::ApplyFilter(void* argument){CUnprovenVisitAdapter_00C2A690 visitor(argument);Collection.Apply(visitor);}
+static CUnprovenVisitorCollection_00C2A7F0* expected;static void* expectedArg;static int invoked,bad;void CUnprovenVisitAdapter_00C2A690::Visit(void* p){if(p!=expectedArg || Argument!=expectedArg)bad=1;++invoked;}void CUnprovenVisitorCollection_00C2A7F0::Apply(CUnprovenVisitAdapterBase_012B4160& visitor){if(this!=expected)bad=1;visitor.Visit(expectedArg);}int main(){CUnprovenCollectionOwner_00C2A7F0 object;int argument;expected=&object.Collection;expectedArg=&argument;object.ApplyFilter(&argument);if(invoked!=1 || bad)goto fail;expectedArg=0;object.ApplyFilter(0);if(invoked!=2 || bad)goto fail;puts("00c2a7f0_TEST PASS");return 0;fail:puts("00c2a7f0_TEST FAIL");return 1;}

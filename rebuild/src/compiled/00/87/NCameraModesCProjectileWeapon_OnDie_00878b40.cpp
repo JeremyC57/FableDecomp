@@ -1,0 +1,8 @@
+// NCameraModes::CProjectileWeapon::OnDie() -- preserve current camera as old camera and request a single cut.
+// Leaf: ?OnDie@CProjectileWeapon@NCameraModes@@UAEXXZ
+// Identity: proven; own camera mode RTTI virtual slot22 and both PDB OnDie declaration; reads CBase::CameraManager+0x40, copies Camera4 to OldCamera0x3C (56 bytes), sets SingleCut0xB0.
+// Layout: no mode/CCamera header. Shared CGameCameraManager header carries donor container offsets: SingleCut+0xBC instead of retail+0xB0 (vector/list differences); local named projection uses actual copy destinations. CBase header is an unrelated namesake; real scoped base fields proven by same-mode methods.
+class C3DVector{public:float X,Y,Z;};class CRightHandedSet{public:C3DVector Up,Forward;};class CCamera{public:C3DVector WorldPosition;CRightHandedSet RHSet;bool HeightLocked,ViewVecZLocked;unsigned long FOVFlags;float HorizontalFOV,VerticalFOV,Zoom;};
+class CGameCameraManager{public:unsigned char _unmodeled00[4];CCamera Camera,OldCamera;unsigned char _unmodeled74[0xb0-0x74];bool SingleCut;};
+namespace NCameraModes{class CBase{public:virtual ~CBase(){}unsigned char _unmodeled04[0x40-4];CGameCameraManager* CameraManager;};class CProjectileWeapon:public CBase{public:virtual void OnDie();};}
+void NCameraModes::CProjectileWeapon::OnDie(){CGameCameraManager& manager=*CameraManager;manager.OldCamera=manager.Camera;manager.SingleCut=true;}

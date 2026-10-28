@@ -1,0 +1,9 @@
+// CVtable_012bed90::SetVolume(float value,unsigned long unused,bool alternate) -- Rebuild mixer gain only when the volume changes.
+// Leaf: ?SetVolume@CVtable_012bed90@@UAEXMK_N@Z
+// Identity: own table012bed90 slot3 and inherited float32; actual helper00c6dea0 takes bool, stores flag36, rebuilds gain records under lock. Class and method names descriptive; unused parameter type unresolved.
+// Layout: original descriptive libpk CPKObject root (vtable012b5868) and CVtable_012beda4 base from constructor00c6e6a0/destructor00c6e630. Critical-section holder is a member with own vptr+4 and24 bytes at+8, volume32 and flag36; inherited base40. No shared headers. Slot3 has one float, an unused four-byte parameter of unknown original type, and bool consumed by actual rebuild helper. Unused parameter is represented as a word, no original signature claim.
+struct CPKObject{virtual ~CPKObject(){};};
+struct CCriticalSectionOwner_012B8FC8{virtual void UnusedSlot0(){}unsigned char CriticalSection[24];};
+struct CVtable_012beda4:CPKObject{CCriticalSectionOwner_012B8FC8 Lock;float Volume;unsigned char Alternate;virtual void UnusedSlot1(){}virtual void UnusedSlot2(){}virtual void SetVolume(float,unsigned long,bool)=0;};
+struct CVtable_012bed90:CVtable_012beda4{void RebuildGain(bool);virtual void SetVolume(float,unsigned long,bool);};
+void CVtable_012bed90::SetVolume(float value,unsigned long,bool alternate){if(Volume!=value){Volume=value;RebuildGain(alternate);}}

@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <new>
+static int clears,frees,baseDtors,deletes,bad;static void* expectedNode;static void* expectedOwner;static void* expectedList;static void TrackFree(void* p){if(p!=expectedNode||clears!=1||baseDtors)bad=1;++frees;free(p);}
+#define free TrackFree
+#define protected public
+// CCountedPointer<NPlayerGui::CCrimeStatBar>::DeleteData(void*) -- Destroy the owned stat bar and release its allocation.
+// Leaf: ?DeleteData@?$CCountedPointer@VCCrimeStatBar@NPlayerGui@@@@SIXPAX@Z
+// Identity: proven. Own caller Reset00445190/00445200 and CPlayerGui constructors0065431d/00654392 prove original counted owner; original PDB DeleteData static fastcall void(void*) symbol. Original StatBase72, StatBar104 with list ChangeTexts100, Crime112. List clear004407b0, base dtor00442280 and scalar operator delete00bfe9bc. No target owner header. Genuine STLport list/base/proxy and original CChangeText nested class. Original owner destructors remain implicit.
+// Layout: original named fields with 12-byte vectors and four-byte list; the base virtual identities are established by CStatBar overrides.
+#include <stdlib.h>
+#ifndef _MSC_VER
+#define __forceinline inline
+#endif
+class CBaseClass{public:virtual ~CBaseClass(){}};class CIVCountedPointeeBase;class CEnginePersistentPrimitiveBase;
+template<class T>class CIVCountedPointer{public:CIVCountedPointeeBase* Object;CIVCountedPointer():Object(0){}~CIVCountedPointer();};class CEnginePrimitiveHandle:public CBaseClass{public:CIVCountedPointer<CEnginePersistentPrimitiveBase> Data;virtual ~CEnginePrimitiveHandle();};
+struct CBaseObjectPointer;class CBaseIntelligentPointer{public:virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;};template<class T>class CIntelligentPointer:public CBaseIntelligentPointer{};namespace NParticleEngine{class CParticleEmitter;}
+namespace std{template<class T>class allocator{};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;_STLP_alloc_proxy(const A& a,V p):A(a),_M_data(p){}};template<class T,class A>class _Vector_base{protected:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;_Vector_base(const A& a):_M_start(0),_M_finish(0),_M_end_of_storage(a,0){}__forceinline ~_Vector_base(){if(_M_start)free(_M_start);}};template<class T>__forceinline void _Destroy(T* first,T* last){for(;first!=last;++first)first->~T();}template<class T,class A=allocator<T> >class vector:protected _Vector_base<T,A>{public:vector(const A& a=A()):_Vector_base<T,A>(a){}__forceinline ~vector(){_Destroy(this->_M_start,this->_M_finish);}};}
+class CPlayerGui;class CPlayerManager;class CWorld;class CMainGameComponent;class CGraphicDataBank;class CPlayerGuiDef;
+class CRGBColour{public:unsigned char R,G,B,A;};class CFadeInFadeOutBase{public:bool Active;float FadeInTime,FadeOutTime;bool Closing,Opening;float OpenTimer,CloseTimer;CRGBColour ToColour;};enum EPlayerGuiMode{EPlayerGuiMode_DescriptiveFixture};
+class CEnginePrimitivePrepareInfo;class C2DVector;class CWideString;
+namespace NPlayerGui{
+class CDrawBase{public:virtual void ClearPrimitivesIfNecessary();virtual void ClearPrimitives();CPlayerGui* PlayerGui;CPlayerManager* PlayerManager;CWorld* World;CMainGameComponent* Component;CGraphicDataBank* Bank;bool Drawing;std::vector<CEnginePrimitiveHandle> PrimitiveHandles;};
+class CDrawHealth:public CDrawBase{public:std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> > Effects;float PreviousHealth;CFadeInFadeOutBase HealthIncreaseFade;float HealthReduction,HealthReductionAlpha,HealthFlashTimer,LowHealthPulseScale,LowHealthPulseDirection;long PreviousEffect;};
+class CStatBase{public:virtual void DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,const C2DVector&,const CRGBColour&,unsigned char,bool)=0;virtual void ClearPrimitiveHandles()=0;protected:virtual void DrawStatBox(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,long,long,long,const CWideString&,unsigned char,bool,bool)=0;public:~CStatBase();CPlayerGuiDef* GuiDef;bool ValueInitialised;float CurrentValue,OldValue,LastOldValue,RecentMaxValue,OldRecentMaxValue;unsigned long FrameCurrentValueLastMoved,FrameFullyOpenedOn;EPlayerGuiMode GuiMode;float FadeInTimer;std::vector<CEnginePrimitiveHandle> PrimitiveHandles;std::vector<CIntelligentPointer<NParticleEngine::CParticleEmitter> > Effects;};
+}
+#ifndef _MSC_VER
+#define __fastcall
+#endif
+class CWideStringData;class CWideString{public:CWideStringData* PStringData;CWideString();~CWideString();};class C2DVector{public:float X,Y;};class CFontBank;
+namespace std{struct _List_node_base{_List_node_base* _M_next;_List_node_base* _M_prev;};template<class T>struct _List_node:public _List_node_base{T _M_data;};template<class T,class A>class _List_base{protected:_STLP_alloc_proxy<_List_node<T>*,_List_node<T>,allocator<_List_node<T> > > _M_node;_List_base(const A& a):_M_node(allocator<_List_node<T> >(),0){}void clear();__forceinline ~_List_base(){clear();if(_M_node._M_data)free(_M_node._M_data);}};template<class T,class A=allocator<T> >class list:protected _List_base<T,A>{public:list(const A& a=A()):_List_base<T,A>(a){}};}
+namespace NPlayerGui{class CStatBar:public CStatBase{public:class CChangeText{public:C2DVector OldOffset,Offset;CWideString Text;long Value;CRGBColour Colour;bool StartToEnd;float PercentageThrough;};unsigned long GraphicFrame,OldGraphicFrame;long GraphicIndex,BorderGraphicIndex,EffectIndex,OldEffectIndex;CFontBank* FontBank;std::list<CChangeText> ChangeTexts;virtual void DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,const C2DVector&,const CRGBColour&,unsigned char,bool);virtual void ClearPrimitiveHandles();protected:virtual void DrawStatBox(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,long,long,long,const CWideString&,unsigned char,bool,bool);public:};class CCrimeStatBar:public CStatBar{public:long CurrentFine;float NormalisedTimeLeft;};}
+class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer();CCountedPointer(const CCountedPointer&);~CCountedPointer();static void __fastcall DeleteData(void* p){delete static_cast<T*>(p);}};
+void DefineStatBarDestructor(NPlayerGui::CStatBar* p){p->CStatBar::~CStatBar();}
+void DefineOwnerDestructor(NPlayerGui::CCrimeStatBar* p){p->CCrimeStatBar::~CCrimeStatBar();}
+template void __fastcall CCountedPointer<NPlayerGui::CCrimeStatBar>::DeleteData(void*);
+
+#undef protected
+#undef free
+template<class T>CIVCountedPointer<T>::~CIVCountedPointer(){}CEnginePrimitiveHandle::~CEnginePrimitiveHandle(){}CBaseIntelligentPointer::~CBaseIntelligentPointer(){}void NPlayerGui::CDrawBase::ClearPrimitivesIfNecessary(){}void NPlayerGui::CDrawBase::ClearPrimitives(){}CWideString::CWideString():PStringData(0){}CWideString::~CWideString(){}
+template<class T,class A>void std::_List_base<T,A>::clear(){if(this!=expectedList)bad=1;++clears;}NPlayerGui::CStatBase::~CStatBase(){if(clears!=1||frees!=1)bad=1;++baseDtors;}
+void NPlayerGui::CStatBar::DrawStatBarOnLeft(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,const C2DVector&,const CRGBColour&,unsigned char,bool){}void NPlayerGui::CStatBar::ClearPrimitiveHandles(){}void NPlayerGui::CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo&,const CGraphicDataBank&,const C2DVector&,long,long,long,const CWideString&,unsigned char,bool,bool){}
+void operator delete(void* p)throw(){if(p!=expectedOwner||baseDtors!=1||frees!=1)bad=1;++deletes;free(p);}
+int main(){typedef NPlayerGui::CCrimeStatBar Owner;CCountedPointer<Owner>::DeleteData(0);bool ok=!bad&&!clears&&!frees&&!baseDtors&&!deletes;Owner* p=new Owner;expectedOwner=p;expectedList=&p->ChangeTexts;expectedNode=malloc(sizeof(std::_List_node<Owner::CChangeText>));p->ChangeTexts._M_node._M_data=(std::_List_node<Owner::CChangeText>*)expectedNode;CCountedPointer<Owner>::DeleteData(p);ok=ok&&!bad&&clears==1&&frees==1&&baseDtors==1&&deletes==1;CCountedPointer<Owner>::DeleteData(0);ok=ok&&deletes==1;puts(ok?"00444dd0_TEST PASS":"00444dd0_TEST FAIL");return ok?0:1;}

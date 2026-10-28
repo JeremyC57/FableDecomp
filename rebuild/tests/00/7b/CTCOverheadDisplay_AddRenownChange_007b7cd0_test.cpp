@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#ifdef _MSC_VER
+extern "C" void* __cdecl malloc(unsigned int);
+#else
+#include <stdlib.h>
+#endif
+#ifndef _MSC_VER
+#define __fastcall
+#define __cdecl
+#define __forceinline inline
+#define NOINLINE __attribute__((noinline))
+typedef __SIZE_TYPE__ PlacementSize;
+#else
+#define NOINLINE __declspec(noinline)
+typedef unsigned int PlacementSize;
+#endif
+inline void* operator new(PlacementSize,void* p){return p;}
+class CIVCountedPointeeBase{public:CIVCountedPointeeBase():IVRefCount(1){}virtual ~CIVCountedPointeeBase(){}virtual void Delete()const;mutable unsigned long IVRefCount;void AddRef()const{++IVRefCount;}long GetRefCount()const{return (long)IVRefCount;}long Release()const{long result=(long)--IVRefCount;if(result==0)Delete();return result;}};
+class CResourceList;class CResource:public CIVCountedPointeeBase{public:CResourceList* ResourceList;CResource* PrevResource;CResource* NextResource;unsigned long ResourceSize,LastUsedFrame;CResource():ResourceList(0),PrevResource(0),NextResource(0),ResourceSize(0),LastUsedFrame(0){}virtual ~CResource();};class CDefPointeeBase:public CResource{public:virtual void Delete()const;};enum ENullDef{ENullDef_DescriptiveNull=0};
+namespace std{template<class T>class allocator{};template<class V,class T,class A>class _STLP_alloc_proxy:public A{public:V _M_data;};template<class A,class B>struct pair{A first;B second;pair():first(),second(){}pair(const A&a,const B&b):first(a),second(b){}pair(const pair&x):first(x.first),second(x.second){}};template<class T>struct less{};template<class T>struct _Select1st{};template<class T>struct _Identity{};template<class T>struct _Nonconst_traits{typedef T& reference;typedef T* pointer;};template<class T>struct _Const_traits{typedef const T& reference;typedef const T* pointer;};
+struct _List_node_base{_List_node_base* _M_next;_List_node_base* _M_prev;void _M_hook(_List_node_base*position){_List_node_base* previous=position->_M_prev;_M_next=position;_M_prev=previous;previous->_M_next=this;position->_M_prev=this;}};template<class T>struct _List_node:public _List_node_base{T _M_data;};template<class T,class Traits>struct _List_iterator{_List_node_base* _M_node;_List_iterator(){}_List_iterator(_List_node_base*p):_M_node(p){}_List_iterator(const _List_iterator&x):_M_node(x._M_node){}};
+template<class T,class A>class _List_base{public:typedef _List_node<T> _Node;typedef allocator<_Node> _NodeAlloc;_STLP_alloc_proxy<_Node*,_Node,_NodeAlloc> _M_node;};template<class T,class A=allocator<T> >class list:public _List_base<T,A>{public:typedef _List_iterator<T,_Nonconst_traits<T> > iterator;iterator end(){return iterator(this->_M_node._M_data);}void push_back(const T&value){_M_insert(end(),value);}public:void _M_insert(iterator position,const T&value){_List_node<T>* node=(_List_node<T>*)malloc(sizeof(_List_node<T>));new((void*)&node->_M_data)T(value);node->_M_hook(position._M_node);}};
+template<class T,class A>class _Vector_base{public:T* _M_start;T* _M_finish;_STLP_alloc_proxy<T*,T,A> _M_end_of_storage;};template<class T,class A=allocator<T> >class vector:public _Vector_base<T,A>{};
+}
+class CPersistContext;class CDefinitionManager;class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString();CCharString(const CCharString&);CCharString(const char*,long=-1);~CCharString();CCharString& operator=(const CCharString&);};class CDefString{public:long TablePos;};
+#pragma pack(push,1)
+class CDefClassBase:public CDefPointeeBase{public:CDefinitionManager* PDefManager;unsigned long GlobalIndex;unsigned char Setup:1;unsigned char Template:1;unsigned char DefaultValsApplied:1;void SetDefaultValsApplied(bool value){DefaultValsApplied=value;}private:CDefClassBase();friend class CSubDefClassBase;public:CDefClassBase(const CDefClassBase&);CDefClassBase& operator=(const CDefClassBase&);virtual void UnknownDefinitionSlot2(){}virtual void UnknownDefinitionSlot3(){}virtual void UnknownDefinitionSlot4(){}virtual void UnknownDefinitionSlot5(){}virtual void UnknownDefinitionSlot6(){}virtual void UnknownDefinitionSlot7(){}virtual void UnknownDefinitionSlot8(){}virtual void UnknownDefinitionSlot9(){}virtual void UnknownDefinitionSlot10(){}virtual void UnknownDefinitionSlot11(){}virtual void UnknownDefinitionSlot12(){}virtual void UnknownDefinitionSlot13(){}virtual void UnknownDefinitionSlot14(){}virtual void UnknownDefinitionSlot15(){}virtual void UnknownDefinitionSlot16(){}virtual void UnknownDefinitionSlot17(){} virtual void Transfer(CPersistContext&);};
+#pragma pack(pop)
+class CSubDefClassBase:public CDefClassBase{};class COverheadDisplayDef:public CSubDefClassBase{public:bool DisplayDamage,DisplayRepair,DisplayRenown;};
+template<class T>class CDefPointer{public:CDefPointeeBase* Object;CDefPointer(ENullDef=ENullDef_DescriptiveNull):Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)Object->AddRef();}CDefPointer(T* object):Object((CDefPointeeBase*)object){if(Object)Object->AddRef();}__forceinline ~CDefPointer(){if(Object){Object->Release();Object=0;}}CDefPointer& operator=(const CDefPointer& other){if(Object!=other.Object){if(Object){Object->Release();Object=0;}Object=other.Object;if(Object)Object->AddRef();}return *this;}T* operator->()const{return (T*)Object;}};
+class CBaseClass{public:CBaseClass();virtual ~CBaseClass();};class CBaseClassNonCopyable:public CBaseClass{public:CBaseClassNonCopyable();virtual ~CBaseClassNonCopyable();private:CBaseClassNonCopyable(const CBaseClassNonCopyable&);CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&);};class CThing;class CTCBase:public CBaseClassNonCopyable{public:CThing* ParentThing;bool ToBeRemoved,IsInGlobalUpdateTCs;};class CEnginePrimitiveHandle;
+extern float g_OverheadValueExpiryFrames;class CTCOverheadDisplay:public CTCBase{public:std::list<std::pair<long,float> > DamageValues,RepairValues,RenownValues;CDefPointer<const COverheadDisplayDef> PDef;std::vector<CEnginePrimitiveHandle> PrimitiveHandles;void AddRenownChange(float);};void CTCOverheadDisplay::AddRenownChange(float value){if(!PDef->DisplayRenown)return;RenownValues.push_back(std::pair<long,float>((long)g_OverheadValueExpiryFrames,value));}
+#ifdef _MSC_VER
+typedef char DefinitionSize[sizeof(COverheadDisplayDef)==40?1:-1];typedef char DisplaySize[sizeof(CTCOverheadDisplay)==40?1:-1];
+#endif
+void CIVCountedPointeeBase::Delete()const{}CResource::~CResource(){}void CDefPointeeBase::Delete()const{}CDefClassBase::CDefClassBase(){PDefManager=0;GlobalIndex=0;Setup=Template=DefaultValsApplied=0;}void CDefClassBase::Transfer(CPersistContext&){}CCharString::CCharString():PStringData(0){}CCharString::CCharString(const CCharString& x):PStringData(x.PStringData){}CCharString::~CCharString(){}
+CBaseClass::CBaseClass(){}CBaseClass::~CBaseClass(){}CBaseClassNonCopyable::CBaseClassNonCopyable(){}CBaseClassNonCopyable::~CBaseClassNonCopyable(){}
+float g_OverheadValueExpiryFrames=18.75f;
+int main(){COverheadDisplayDef def;CTCOverheadDisplay object;object.PDef.Object=&def;def.IVRefCount=2;def.DisplayDamage=def.DisplayRepair=def.DisplayRenown=false;typedef std::_List_node<std::pair<long,float> > Node;Node roots[3];for(int i=0;i<3;++i)roots[i]._M_next=roots[i]._M_prev=&roots[i];object.DamageValues._M_node._M_data=&roots[0];object.RepairValues._M_node._M_data=&roots[1];object.RenownValues._M_node._M_data=&roots[2];object.AddRenownChange(3.5f);if(object.RenownValues._M_node._M_data->_M_next!=object.RenownValues._M_node._M_data)goto fail;def.DisplayRenown=true;object.AddRenownChange(3.5f);{std::_List_node_base*root=object.RenownValues._M_node._M_data;Node*first=(Node*)root->_M_next;if(first==root||first->_M_next!=root||first->_M_prev!=root||root->_M_prev!=first||first->_M_data.first!=18||first->_M_data.second!=3.5f)goto fail;g_OverheadValueExpiryFrames=-2.75f;object.AddRenownChange(-7.5f);Node*last=(Node*)root->_M_prev;if(last==first||last->_M_next!=root||last->_M_prev!=first||first->_M_next!=last||last->_M_data.first!=-2||last->_M_data.second!=-7.5f)goto fail;free(last);free(first);}puts("007b7cd0_TEST PASS");return 0;fail:puts("007b7cd0_TEST FAIL");return 1;}
