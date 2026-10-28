@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+008e2e40	MATCH	89v89	PASS	(anon)::CIsUsableIciclePoint::operator() (PDB); Y*Y+X*X squares X first; auto_inline(off)+external caller
+008f6f90	MATCH	42v42	PASS	CMap::FindUnusedThemePaletteEntryIndex (label correction from CMusicManager::ResetMusicEntriesOffsets)
+00903177	RELOCATION_MATCH	63v63	PASS	CAIStateGroup_ScorpionKing ctor (label correction from Guildmaster; vtable 0x0128D5B0)
+0090f7d0	RELOCATION_MATCH	96v96	PASS	MinionSitAtSchool::AllocChairSittingMode; inline GFRandom + switch
+009112a0	RELOCATION_MATCH	77v77	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- FindBodyFoundEvent; Bind3 + same-TU noinline FindMostRecentMessage stand-in
+00914600	RELOCATION_MATCH	65v65	PASS	BirdStartled::Update; 0x6A4D00 renamed to the landed GetPosition_006a4d00 (RELOC_CONFLICT fix)
+00917050	RELOCATION_MATCH	83v83	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- GetPNearestFreeLogPile (label correction from GetPNearestBonfire); GetPBestThing stand-in
+009170b0	RELOCATION_MATCH	83v83	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- GetPNearestBonfire; GetPBestThing stand-in
+0091c0d0	DIFFER	81v81	PASS	NymphFloatAround::IsRunnable; register choice (eax chains)
+00929f10	DIFFER	82v87	PASS	ApprenticeHero::IsRunnable; mov dl/mov cl,8/test cl,dl HasTC form + component load
+0092edc0	RELOCATION_MATCH	69v69	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- FindPlayerInteractionEvent; Bind2 + named filter/manager locals
+00939e70	RELOCATION_MATCH	90v90	PASS	IsPlayerCarryingWeapon; if-form HasTC + PeekTC
+0093dae0	DIFFER	48v48	PASS	MeleeCombatNearby2::IsCombatSequenceActionPending; register choice (edx vs ecx)
+00946330	DIFFER	77v76	PASS	PrepareMeal::IsStillRunnable; final-bool tail folding (lane gap)
+0094bfc0	RELOCATION_MATCH	69v69	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- SellToBuyer::GetBuyersOrder (label correction from FindPlayerInteractionEvent)
+0094c010	RELOCATION_MATCH	63v63	PASS	SellToBuyer::IsRunnable; CCountedPointer bound to const ref
+00958770	RELOCATION_MATCH	95v95	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- GetSomeoneElseGettingHelpMessage; Bind4 inline chain via MessageEventManagerOf
+00958f00	RELOCATION_MATCH	91v91	PASS	MinionReactToCrimeFromSleep::IsRunnable; 0x960F00 shape
+0095e430	DIFFER	63v64	PASS	ReactToDeadLeader::IsStillRunnable; final-bool tail folding (setl)
+009652c0	RELOCATION_MATCH	83v83	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- RecoverStealableItem::FindPTargetPoint; stand-in must read filter.Type
+00982890	MATCH	46v46	PASS	CIsRunnableModuleCarryingProjectileWeapon::IsSatisfied; CDefPointer copy released
+00994b10	DIFFER	46v45	PASS	CMemoryDataOutputStream::SetPosition; int3 after noreturn throw (46-byte span)
+00995a20	RELOCATION_MATCH	88v88	PASS	CDataOutputStream::WriteStringNewLine
+00995a80	RELOCATION_MATCH	86v86	PASS	CDataOutputStream::WritePresizedString; inline WriteULONG
+009972e0	RELOCATION_MATCH	68v68	PASS	CArray<char>::DeallocateMemory (label said unsigned_char)
+0099b0f0	RELOCATION_MATCH	88v88	PASS	CWideString::operator!= (label correction from CCharString::operator==)
+0099f2a0	RELOCATION_MATCH	58v58	PASS	CCharString::Truncate
+0099f3d0	RELOCATION_MATCH	42v42	PASS	HELD (calls an invented *_Sink stand-in body; needs the real retail callee body) -- CCharString::Insert; same-TU CBasicString<char>::Insert stand-in (review at landing)
+009ace90	DIFFER	68v68	PASS	CDefClassBase::UnloadResource; block placement only
+009b4ae0	RELOCATION_MATCH	68v68	PASS	CArray<unsigned char>::DeallocateMemory
+009b5fb0	RELOCATION_MATCH	90v90	PASS	CArray<pair<ulong,ulong> >::DeallocateMemory (label said unsigned_short)
+009c69c0	RELOCATION_MATCH	78v78	PASS	std::list<CPendingWrite>::_M_insert_dispatch<const_iterator>; landed 0x9C6F70 model + body
+009d5a30	DIFFER	92v89	PASS	CLoadingMemoryFailureHandler::UnregisterBank (label correction from CBankFile::PopLoadErrorQueue); _M_finish kept in edi
+009e2c80	RELOCATION_MATCH	91v91	PASS	CFontManager::GetFont (label correction from CMessageEventFilter_CanBeSeenOrHeard); three-return form
+009e2ce0	MATCH	31v31	PASS	CFontManager::GetFreeVertexBuffer
+009e4c70	RELOCATION_MATCH	53v53	PASS	CDriveManager::GetDriveFromPath; /GS /Zc:wchar_t
+009e9330	RELOCATION_MATCH	88v88	PASS	CMemoryFile::DumpToFile
+009e9390	RELOCATION_MATCH	46v46	PASS	CMemoryFile::Close
+009e9760	RELOCATION_MATCH	76v76	PASS	CMemoryFile::Copy
+009e97b0	RELOCATION_MATCH	61v61	PASS	CMemoryFile ctor

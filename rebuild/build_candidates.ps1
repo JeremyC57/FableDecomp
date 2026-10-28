@@ -353879,6 +353879,175 @@ $catalog = @(
         TestSource = '00/a1/C3DCoordI_operator_00a13c20_test.cpp'
         PassPattern = '00a13c20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '008e2e40'
+        Module = '(anonymous namespace)::CIsUsableIciclePoint'
+        Source = '00/8e/anonymousnamespaceCIsUsableIciclePoint_operator_008e2e40.cpp'
+        TestSource = '00/8e/anonymousnamespaceCIsUsableIciclePoint_operator_008e2e40_test.cpp'
+        PassPattern = '008e2e40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008f6f90'
+        Module = 'CMap'
+        Source = '00/8f/CMap_FindUnusedThemePaletteEntryIndex_008f6f90.cpp'
+        TestSource = '00/8f/CMap_FindUnusedThemePaletteEntryIndex_008f6f90_test.cpp'
+        PassPattern = '008f6f90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00903177'
+        Module = 'CAIStateGroup_ScorpionKing'
+        Source = '00/90/CAIStateGroupScorpionKing_CAIStateGroupScorpionKing_00903177.cpp'
+        TestSource = '00/90/CAIStateGroupScorpionKing_CAIStateGroupScorpionKing_00903177_test.cpp'
+        PassPattern = '00903177_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0090f7d0'
+        Module = 'CAIStateGroup_MinionSitAtSchool'
+        Source = '00/90/CAIStateGroupMinionSitAtSchool_AllocChairSittingMode_0090f7d0.cpp'
+        TestSource = '00/90/CAIStateGroupMinionSitAtSchool_AllocChairSittingMode_0090f7d0_test.cpp'
+        PassPattern = '0090f7d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00914600'
+        Module = 'CAIStateGroup_BirdStartled'
+        Source = '00/91/CAIStateGroupBirdStartled_Update_00914600.cpp'
+        TestSource = '00/91/CAIStateGroupBirdStartled_Update_00914600_test.cpp'
+        PassPattern = '00914600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00939e70'
+        Module = 'CAIStateGroup_MinionGuardReactToPlayerWithWeapon'
+        Source = '00/93/CAIStateGroupMinionGuardReactToPlayerWithWeapon_IsPlayerCarryingWeapon_00939e70.cpp'
+        TestSource = '00/93/CAIStateGroupMinionGuardReactToPlayerWithWeapon_IsPlayerCarryingWeapon_00939e70_test.cpp'
+        PassPattern = '00939e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0094c010'
+        Module = 'CAIStateGroup_SellToBuyer'
+        Source = '00/94/CAIStateGroupSellToBuyer_IsRunnable_0094c010.cpp'
+        TestSource = '00/94/CAIStateGroupSellToBuyer_IsRunnable_0094c010_test.cpp'
+        PassPattern = '0094c010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00958f00'
+        Module = 'CAIStateGroup_MinionReactToCrimeFromSleep'
+        Source = '00/95/CAIStateGroupMinionReactToCrimeFromSleep_IsRunnable_00958f00.cpp'
+        TestSource = '00/95/CAIStateGroupMinionReactToCrimeFromSleep_IsRunnable_00958f00_test.cpp'
+        PassPattern = '00958f00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00982890'
+        Module = 'NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon'
+        Source = '00/98/NCreatureAICIsRunnableModuleCarryingProjectileWeapon_IsSatisfied_00982890.cpp'
+        TestSource = '00/98/NCreatureAICIsRunnableModuleCarryingProjectileWeapon_IsSatisfied_00982890_test.cpp'
+        PassPattern = '00982890_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00995a20'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WriteStringNewLine_00995a20.cpp'
+        TestSource = '00/99/CDataOutputStream_WriteStringNewLine_00995a20_test.cpp'
+        PassPattern = '00995a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00995a80'
+        Module = 'CDataOutputStream'
+        Source = '00/99/CDataOutputStream_WritePresizedString_00995a80.cpp'
+        TestSource = '00/99/CDataOutputStream_WritePresizedString_00995a80_test.cpp'
+        PassPattern = '00995a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009972e0'
+        Module = 'CArray'
+        Source = '00/99/CArray_DeallocateMemory_009972e0.cpp'
+        TestSource = '00/99/CArray_DeallocateMemory_009972e0_test.cpp'
+        PassPattern = '009972e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099b0f0'
+        Module = 'CWideString'
+        Source = '00/99/CWideString_operator_0099b0f0.cpp'
+        TestSource = '00/99/CWideString_operator_0099b0f0_test.cpp'
+        PassPattern = '0099b0f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0099f2a0'
+        Module = 'CCharString'
+        Source = '00/99/CCharString_Truncate_0099f2a0.cpp'
+        TestSource = '00/99/CCharString_Truncate_0099f2a0_test.cpp'
+        PassPattern = '0099f2a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b4ae0'
+        Module = 'CArray'
+        Source = '00/9b/CArray_DeallocateMemory_009b4ae0.cpp'
+        TestSource = '00/9b/CArray_DeallocateMemory_009b4ae0_test.cpp'
+        PassPattern = '009b4ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009b5fb0'
+        Module = 'CArray'
+        Source = '00/9b/CArray_DeallocateMemory_009b5fb0.cpp'
+        TestSource = '00/9b/CArray_DeallocateMemory_009b5fb0_test.cpp'
+        PassPattern = '009b5fb0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009c69c0'
+        Module = 'std::list'
+        Source = '00/9c/stdlist_Minsertdispatch_009c69c0.cpp'
+        TestSource = '00/9c/stdlist_Minsertdispatch_009c69c0_test.cpp'
+        PassPattern = '009c69c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2c80'
+        Module = 'CFontManager'
+        Source = '00/9e/CFontManager_GetFont_009e2c80.cpp'
+        TestSource = '00/9e/CFontManager_GetFont_009e2c80_test.cpp'
+        PassPattern = '009e2c80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e2ce0'
+        Module = 'CFontManager'
+        Source = '00/9e/CFontManager_GetFreeVertexBuffer_009e2ce0.cpp'
+        TestSource = '00/9e/CFontManager_GetFreeVertexBuffer_009e2ce0_test.cpp'
+        PassPattern = '009e2ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e4c70'
+        Module = 'CDriveManager'
+        Source = '00/9e/CDriveManager_GetDriveFromPath_009e4c70.cpp'
+        TestSource = '00/9e/CDriveManager_GetDriveFromPath_009e4c70_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /GS /Zc:wchar_t'
+        PassPattern = '009e4c70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9330'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_DumpToFile_009e9330.cpp'
+        TestSource = '00/9e/CMemoryFile_DumpToFile_009e9330_test.cpp'
+        PassPattern = '009e9330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9390'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_Close_009e9390.cpp'
+        TestSource = '00/9e/CMemoryFile_Close_009e9390_test.cpp'
+        PassPattern = '009e9390_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e9760'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_Copy_009e9760.cpp'
+        TestSource = '00/9e/CMemoryFile_Copy_009e9760_test.cpp'
+        PassPattern = '009e9760_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009e97b0'
+        Module = 'CMemoryFile'
+        Source = '00/9e/CMemoryFile_CMemoryFile_009e97b0.cpp'
+        TestSource = '00/9e/CMemoryFile_CMemoryFile_009e97b0_test.cpp'
+        PassPattern = '009e97b0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

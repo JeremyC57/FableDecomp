@@ -1,0 +1,83 @@
+addr       parity           behav  name
+008e2e40   MATCH            PASS   operator
+008f6f90   MATCH            PASS   FindUnusedThemePaletteEntryIndex
+00903177   RELOCATION_MATCH PASS   CAIStateGroup_ScorpionKing
+0090f7d0   RELOCATION_MATCH PASS   AllocChairSittingMode
+00914600   WARN RELOC_NAME: ?AIAction_RandomFlyToPos@CAIStateGroup_FlyingThingBase@@IAE?AW4EAIActionReturn@@ABVC3DVector@@@Z -> 009130d0 labelled 'CAIStateGroup_FlyingThingBase::ExecuteFlyingPath'
+00914600   RELOCATION_MATCH PASS   Update
+00939e70   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+00939e70   RELOCATION_MATCH PASS   IsPlayerCarryingWeapon
+0094c010   RELOCATION_MATCH PASS   IsRunnable
+00958f00   RELOCATION_MATCH PASS   IsRunnable
+00982890   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00982890   MATCH            PASS   IsSatisfied
+00995a20   RELOCATION_MATCH PASS   WriteStringNewLine
+00995a80   RELOCATION_MATCH PASS   WritePresizedString
+009972e0   RELOCATION_MATCH PASS   DeallocateMemory
+0099b0f0   RELOCATION_MATCH PASS   operator!=
+0099f2a0   RELOCATION_MATCH PASS   Truncate
+009b4ae0   RELOCATION_MATCH PASS   DeallocateMemory
+009b5fb0   RELOCATION_MATCH PASS   DeallocateMemory
+009c69c0   RELOCATION_MATCH PASS   _M_insert_dispatch
+009e2c80   RELOCATION_MATCH PASS   GetFont
+009e2ce0   MATCH            PASS   GetFreeVertexBuffer
+009e4c70   WARN SHARED_HEADER_AVAILABLE CDriveManager
+009e4c70   WARN RELOC_ALIAS: __wsplitpath -> 00bfed4c is the import thunk 'MSVCR71.DLL::_wsplitpath'
+009e4c70   RELOCATION_MATCH PASS   GetDriveFromPath
+009e9330   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+009e9330   RELOCATION_MATCH PASS   DumpToFile
+009e9390   RELOCATION_MATCH PASS   Close
+009e9760   RELOCATION_MATCH PASS   Copy
+009e97b0   RELOCATION_MATCH PASS   CMemoryFile
+
+WINS: 24
+  008e2e40 MATCH (anonymous namespace)::CIsUsableIciclePoint::??RCIsUsableIciclePoint@?A0x
+  008f6f90 MATCH CMap::?FindUnusedThemePaletteEntryIndex@CMap@@IAEEXZ
+  00903177 RELOCATION_MATCH CAIStateGroup_ScorpionKing::??0CAIStateGroup_ScorpionKing@@QAE@XZ
+  0090f7d0 RELOCATION_MATCH CAIStateGroup_MinionSitAtSchool::?AllocChairSittingMode@CAIStateGroup_MinionSitAtSchool@@MBEPAVCModeSitBase@NCreatureMode@@XZ
+  00914600 RELOCATION_MATCH CAIStateGroup_BirdStartled::?Update@CAIStateGroup_BirdStartled@@UAEXXZ
+  00939e70 RELOCATION_MATCH CAIStateGroup_MinionGuardReactToPlayerWithWeapon::?IsPlayerCarryingWeapon@CAIStateGroup_MinionGuardReactToPlayerWithWeapon@@ABE_NXZ
+  0094c010 RELOCATION_MATCH CAIStateGroup_SellToBuyer::?IsRunnable@CAIStateGroup_SellToBuyer@@UAE_NXZ
+  00958f00 RELOCATION_MATCH CAIStateGroup_MinionReactToCrimeFromSleep::?IsRunnable@CAIStateGroup_MinionReactToCrimeFromSleep@@UAE_NXZ
+  00982890 MATCH NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon::?IsSatisfied@CIsRunnableModuleCarryingProjectileWeapon@NCreatureAI@@UAE_NXZ
+  00995a20 RELOCATION_MATCH CDataOutputStream::?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z
+  00995a80 RELOCATION_MATCH CDataOutputStream::?WritePresizedString@CDataOutputStream@@QAEXABVCCharString@@@Z
+  009972e0 RELOCATION_MATCH CArray::?DeallocateMemory@?$CArray@D@@QAEXXZ
+  0099b0f0 RELOCATION_MATCH CWideString::??9CWideString@@QBE_NABV0@@Z
+  0099f2a0 RELOCATION_MATCH CCharString::?Truncate@CCharString@@QAEXK@Z
+  009b4ae0 RELOCATION_MATCH CArray::?DeallocateMemory@?$CArray@E@@QAEXXZ
+  009b5fb0 RELOCATION_MATCH CArray::?DeallocateMemory@?$CArray@U?$pair@KK@std@@@@QAEXXZ
+  009c69c0 RELOCATION_MATCH std::list::??$_M_insert_dispatch@
+  009e2c80 RELOCATION_MATCH CFontManager::?GetFont@CFontManager@@QAE?AV?$CCountedPointer@VCFontBank@@@@ABVCCharString@@@Z
+  009e2ce0 MATCH CFontManager::?GetFreeVertexBuffer@CFontManager@@QAEAAVCVertexBufferWin32@@XZ
+  009e4c70 RELOCATION_MATCH CDriveManager::?GetDriveFromPath@CDriveManager@@AAE_WPB_W@Z
+  009e9330 RELOCATION_MATCH CMemoryFile::?DumpToFile@CMemoryFile@@QAEXXZ
+  009e9390 RELOCATION_MATCH CMemoryFile::?Close@CMemoryFile@@UAEXXZ
+  009e9760 RELOCATION_MATCH CMemoryFile::?Copy@CMemoryFile@@AAEXABV1@@Z
+  009e97b0 RELOCATION_MATCH CMemoryFile::??0CMemoryFile@@QAE@ABVCWideString@@W4FileAccessType@@K@Z
+
+LANDED 24 wins into src/compiled + tests + catalog + oracle
+  anonymousnamespaceCIsUsableIciclePoint_operator_008e2e40
+  CMap_FindUnusedThemePaletteEntryIndex_008f6f90
+  CAIStateGroupScorpionKing_CAIStateGroupScorpionKing_00903177
+  CAIStateGroupMinionSitAtSchool_AllocChairSittingMode_0090f7d0
+  CAIStateGroupBirdStartled_Update_00914600
+  CAIStateGroupMinionGuardReactToPlayerWithWeapon_IsPlayerCarryingWeapon_00939e70
+  CAIStateGroupSellToBuyer_IsRunnable_0094c010
+  CAIStateGroupMinionReactToCrimeFromSleep_IsRunnable_00958f00
+  NCreatureAICIsRunnableModuleCarryingProjectileWeapon_IsSatisfied_00982890
+  CDataOutputStream_WriteStringNewLine_00995a20
+  CDataOutputStream_WritePresizedString_00995a80
+  CArray_DeallocateMemory_009972e0
+  CWideString_operator_0099b0f0
+  CCharString_Truncate_0099f2a0
+  CArray_DeallocateMemory_009b4ae0
+  CArray_DeallocateMemory_009b5fb0
+  stdlist_Minsertdispatch_009c69c0
+  CFontManager_GetFont_009e2c80
+  CFontManager_GetFreeVertexBuffer_009e2ce0
+  CDriveManager_GetDriveFromPath_009e4c70
+  CMemoryFile_DumpToFile_009e9330
+  CMemoryFile_Close_009e9390
+  CMemoryFile_Copy_009e9760
+  CMemoryFile_CMemoryFile_009e97b0
