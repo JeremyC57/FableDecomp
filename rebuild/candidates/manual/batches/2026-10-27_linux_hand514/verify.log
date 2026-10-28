@@ -1,0 +1,142 @@
+addr       parity           behav  name
+00643e09   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00643e09   WARN SHARED_HEADER_AVAILABLE CDrawMiniMap
+00643e09   MATCH            PASS   IsActive
+00644334   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00644334   RELOCATION_MATCH PASS   Draw
+006443ac   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+006443ac   RELOCATION_MATCH PASS   Draw
+00644587   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00644587   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00644587   WARN RELOC_NAME: ?Open@CFadeInFadeOutBase@@QAEXMMVCRGBColour@@@Z -> 00434840 labelled 'CEngine::StartNewScene'
+00644587   RELOCATION_MATCH PASS   OnEventAttack
+0064a37b   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0064a37b   WARN RELOC_NAME: ?_M_find@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@J@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@J@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@J@std@@@3@@std@@QBEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@J@std@@@2@ABVCCharString@@@Z -> 0042b467 labelled '_global::StdMap_FindLE'
+0064a37b   RELOCATION_MATCH PASS   GetScriptSpriteBySymbol
+0064dd4d   WARN RELOC_NAME: ?resize@?$vector@V?$CIntelligentPointer@VCThing@@@@V?$allocator@V?$CIntelligentPointer@VCThing@@@@@std@@@std@@QAEXIABV?$CIntelligentPointer@VCThing@@@@@Z -> 00656d20 labelled 'CArray<std::pair<long,long>_>::push_back'
+0064dd4d   RELOCATION_MATCH PASS   CDrawSpiritTargetingCursor
+0064e0a1   RELOCATION_MATCH PASS   CDrawStatUpdates
+00654f80   RELOCATION_MATCH PASS   CChangeText
+0065564b   RELOCATION_MATCH PASS   CChangeText
+0065ffca   RELOCATION_MATCH PASS   find_if
+00663340   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00663340   RELOCATION_MATCH PASS   GetPHeroCombatDef
+00686f10   WARN SHARED_HEADER_AVAILABLE CTCBase
+00686f10   RELOCATION_MATCH PASS   AllocateTC
+00692a50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00692a50   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00692a50   RELOCATION_MATCH PASS   IsUsingActionMovement
+00692c30   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00692c30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00692c30   RELOCATION_MATCH PASS   GetActionSpeedParameter
+006ad220   RELOCATION_MATCH PASS   ResolveMovementBandType
+006af520   RELOCATION_MATCH PASS   GetPTarget<CThingCreatureBase>
+006b1900   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006b1900   RELOCATION_MATCH PASS   MixAtmos
+006b74e0   MATCH            PASS   GetAtmosBlend
+006bbfa0   WARN SHARED_HEADER_AVAILABLE CRegion
+006bbfa0   RELOCATION_MATCH PASS   IsMapIncluded
+006bd780   MATCH            PASS   GetDanger
+006bd840   MATCH            PASS   IsDangerMusicEnabled
+006cda10   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006cda10   RELOCATION_MATCH PASS   PeekNavigatorRadius
+006cdb50   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006cdb50   RELOCATION_MATCH PASS   GetMinPathCost
+006cdb90   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006cdb90   RELOCATION_MATCH PASS   GetMaxPathCost
+006e7690   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+006e7690   WARN RELOC_NAME: ?find@?$_Rb_tree@JU?$pair@$$CBJJ@std@@U?$_Select1st@U?$pair@$$CBJJ@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBJJ@std@@U?$_Nonconst_traits@U?$pair@$$CBJJ@std@@@2@@2@ABJ@Z -> 005937e1 labelled 'CRegion::SetMiniMapRegionExitTextOffsetX'
+006e7690   RELOCATION_MATCH PASS   DeregisterTimer
+006e8050   WARN SHARED_HEADER_AVAILABLE CCombatTypeDef
+006e8050   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+006e8050   RELOCATION_MATCH PASS   StretchRingThickness
+006eab00   RELOCATION_MATCH PASS   GetAllProngs
+006f4850   RELOCATION_MATCH PASS   CDefendingCombatantInfo
+006f4a00   RELOCATION_MATCH PASS   CCombatantInfo
+006f90d0   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo
+006f90d0   WARN SHARED_HEADER_AVAILABLE CMeshDataBank
+006f90d0   WARN SHARED_HEADER_AVAILABLE CManager
+006f90d0   RELOCATION_MATCH PASS   AnimHasEmbeddedEvent
+00710700   RELOCATION_MATCH PASS   vector
+00712b60   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00712b60   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00712b60   WARN RELOC_NAME: ?SetCurrentAction@CThingCreatureBase@@QAE_NABV?$CCountedPointer@VCCreatureActionBase@@@@@Z -> 00664670 labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+00712b60   RELOCATION_MATCH PASS   OnActivate
+
+WINS: 32
+  00643e09 MATCH NPlayerGui::CDrawMiniMap::?IsActive@CDrawMiniMap@NPlayerGui@@QBE_NXZ
+  00644334 RELOCATION_MATCH NPlayerGui::CDrawStatUpdates::?Draw@CDrawStatUpdates@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  006443ac RELOCATION_MATCH NPlayerGui::CDrawAutoPickups::?Draw@CDrawAutoPickups@NPlayerGui@@QAEXABVCEnginePrimitivePrepareInfo@@@Z
+  00644587 RELOCATION_MATCH NPlayerGui::CDrawTargetInfo::?OnEventAttack@CDrawTargetInfo@NPlayerGui@@QAEXXZ
+  0064a37b RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::?GetScriptSpriteBySymbol@CDrawQuestInfo@NPlayerGui@@QBEJABVCCharString@@@Z
+  0064dd4d RELOCATION_MATCH NPlayerGui::CDrawSpiritTargetingCursor::??0CDrawSpiritTargetingCursor@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z
+  0064e0a1 RELOCATION_MATCH NPlayerGui::CDrawStatUpdates::??0CDrawStatUpdates@NPlayerGui@@QAE@AAVCPlayerGui@@AAV?$vector@PAVCDrawBase@NPlayerGui@@V?$allocator@PAVCDrawBase@NPlayerGui@@@std@@@std@@@Z
+  00654f80 RELOCATION_MATCH NPlayerGui::CStatBar::CChangeText::??0CChangeText@CStatBar@NPlayerGui@@QAE@ABVC2DVector@@ABVCRGBColour@@ABVCWideString@@J_N@Z
+  0065564b RELOCATION_MATCH NPlayerGui::CStatBar::CChangeText::??0CChangeText@CStatBar@NPlayerGui@@QAE@ABV012@@Z
+  0065ffca RELOCATION_MATCH std::??$find_if@U?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@std@@VCIsHornTaskWithThisHorn@@@std@@YI?AU?$_List_iterator@V?$CCountedPointer@VCVillageTaskHorn@@@@U?$_Nonconst_traits@V?$CCountedPointer@VCVillageTaskHorn@@@@@std@@@0@U10@0VCIsHornTaskWithThisHorn@@@Z
+  00663340 RELOCATION_MATCH CThingCreatureBase::?GetPHeroCombatDef@CThingCreatureBase@@QBE?AV?$CDefPointer@$$CBVCHeroCombatDef@@@@XZ
+  00686f10 RELOCATION_MATCH CTCBase::?AllocateTC@CTCBase@@SIPAV1@ABVCCharString@@AAVCThing@@@Z
+  00692a50 RELOCATION_MATCH CCreatureActionBase::?IsUsingActionMovement@CCreatureActionBase@@QBE_NXZ
+  00692c30 RELOCATION_MATCH CCreatureActionBase::?GetActionSpeedParameter@CCreatureActionBase@@MBEMXZ
+  006ad220 RELOCATION_MATCH CThingPlayerCreature::?ResolveMovementBandType@CThingPlayerCreature@@IAEXXZ
+  006af520 RELOCATION_MATCH CMessageEvent::??$GetPTarget@VCThingCreatureBase@@@CMessageEvent@@QBEPAVCThingCreatureBase@@XZ
+  006b1900 RELOCATION_MATCH CAtmosProcess::?MixAtmos@CAtmosProcess@@QAEXABVCCharString@@0MM@Z
+  006b74e0 MATCH CGameMapCell::?GetAtmosBlend@CGameMapCell@@QBEEJ@Z
+  006bbfa0 RELOCATION_MATCH CRegion::?IsMapIncluded@CRegion@@QBE_NJ@Z
+  006bd780 MATCH CMusicManager::CState::?GetDanger@CState@CMusicManager@@QBE_NXZ
+  006bd840 MATCH CMusicManager::?IsDangerMusicEnabled@CMusicManager@@QBE_NXZ
+  006cda10 RELOCATION_MATCH CGroundNavigatorExternalInterface::?PeekNavigatorRadius@CGroundNavigatorExternalInterface@@UBEM_N@Z
+  006cdb50 RELOCATION_MATCH CGroundNavigatorExternalInterface::?GetMinPathCost@CGroundNavigatorExternalInterface@@UBEMXZ
+  006cdb90 RELOCATION_MATCH CGroundNavigatorExternalInterface::?GetMaxPathCost@CGroundNavigatorExternalInterface@@UBEMXZ
+  006e7690 RELOCATION_MATCH CGameScriptInterface::?DeregisterTimer@CGameScriptInterface@@UAEXJ@Z
+  006e8050 RELOCATION_MATCH CDefendingCombatantInfo::CCombatRing::?StretchRingThickness@CCombatRing@CDefendingCombatantInfo@@QAEXABVCThingCreatureBase@@0@Z
+  006eab00 RELOCATION_MATCH CDefendingCombatantInfo::CCombatRing::?GetAllProngs@CCombatRing@CDefendingCombatantInfo@@QAEXAAV?$vector@PAVCProng@CDefendingCombatantInfo@@V?$allocator@PAVCProng@CDefendingCombatantInfo@@@std@@@std@@@Z
+  006f4850 RELOCATION_MATCH CDefendingCombatantInfo::??0CDefendingCombatantInfo@@QAE@XZ
+  006f4a00 RELOCATION_MATCH CCombatantInfo::??0CCombatantInfo@@QAE@XZ
+  006f90d0 RELOCATION_MATCH NAnimationEvents::CManager::?AnimHasEmbeddedEvent@CManager@NAnimationEvents@@ABE_NKABVCCharString@@@Z
+  00710700 RELOCATION_MATCH std::vector::??0?$vector@FV?$allocator@F@std@@@std@@QAE@ABV01@@Z
+  00712b60 RELOCATION_MATCH NTCScriptedControl::CActionDoCreatureAction::?OnActivate@CActionDoCreatureAction@NTCScriptedControl@@UAEXXZ
+
+LANDED 32 wins into src/compiled + tests + catalog + oracle
+  NPlayerGuiCDrawMiniMap_IsActive_00643e09
+  NPlayerGuiCDrawStatUpdates_Draw_00644334
+  NPlayerGuiCDrawAutoPickups_Draw_006443ac
+  NPlayerGuiCDrawTargetInfo_OnEventAttack_00644587
+  NPlayerGuiCDrawQuestInfo_GetScriptSpriteBySymbol_0064a37b
+  NPlayerGuiCDrawSpiritTargetingCursor_CDrawSpiritTargetingCursor_0064dd4d
+  NPlayerGuiCDrawStatUpdates_CDrawStatUpdates_0064e0a1
+  NPlayerGuiCStatBarCChangeText_CChangeText_00654f80
+  NPlayerGuiCStatBarCChangeText_CChangeText_0065564b
+  std_findif_0065ffca
+  CThingCreatureBase_GetPHeroCombatDef_00663340
+  CTCBase_AllocateTC_00686f10
+  CCreatureActionBase_IsUsingActionMovement_00692a50
+  CCreatureActionBase_GetActionSpeedParameter_00692c30
+  CThingPlayerCreature_ResolveMovementBandType_006ad220
+  CMessageEvent_GetPTargetCThingCreatureBase_006af520
+  CAtmosProcess_MixAtmos_006b1900
+  CGameMapCell_GetAtmosBlend_006b74e0
+  CRegion_IsMapIncluded_006bbfa0
+  CMusicManagerCState_GetDanger_006bd780
+  CMusicManager_IsDangerMusicEnabled_006bd840
+  CGroundNavigatorExternalInterface_PeekNavigatorRadius_006cda10
+  CGroundNavigatorExternalInterface_GetMinPathCost_006cdb50
+  CGroundNavigatorExternalInterface_GetMaxPathCost_006cdb90
+  CGameScriptInterface_DeregisterTimer_006e7690
+  CDefendingCombatantInfoCCombatRing_StretchRingThickness_006e8050
+  CDefendingCombatantInfoCCombatRing_GetAllProngs_006eab00
+  CDefendingCombatantInfo_CDefendingCombatantInfo_006f4850
+  CCombatantInfo_CCombatantInfo_006f4a00
+  NAnimationEventsCManager_AnimHasEmbeddedEvent_006f90d0
+  stdvector_vector_00710700
+  NTCScriptedControlCActionDoCreatureAction_OnActivate_00712b60
+=== retail_asm payload ===
+addr       parity           behav  name
+006472b2   WARN RELOC_NAME: ?push_front@?$list@VSDamageValue@CDrawDamage@NPlayerGui@@V?$allocator@VSDamageValue@CDrawDamage@NPlayerGui@@@std@@@std@@QAEXABVSDamageValue@CDrawDamage@NPlayerGui@@@Z -> 00655eb4 labelled 'CChangeLog_AddDamageChange_Thunk'
+006472b2   RELOCATION_MATCH PASS   AddDamageChange
+
+WINS: 1
+  006472b2 RELOCATION_MATCH NPlayerGui::CDrawDamage::?AddDamageChange@CDrawDamage@NPlayerGui@@QAEXM_N@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NPlayerGuiCDrawDamage_AddDamageChange_006472b2

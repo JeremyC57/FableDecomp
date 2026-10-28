@@ -1,0 +1,10 @@
+addr       parity           behav  name
+00644526   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00644526   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+  WARN leaf '00644526' matches no symbol in 00644526.obj; graded the largest function
+  WARN leaf '00644526' matches no symbol in 00644526.obj; graded the largest function
+00644526   WARN RELOC_NAME: ?Open@CFadeInFadeOutBase@@QAEXMMVCRGBColour@@@Z -> 00434840 labelled 'CEngine::StartNewScene'
+00644526   RELOCATION_MATCH PASS   00644526
+
+WINS: 1
+  00644526 RELOCATION_MATCH m::00644526

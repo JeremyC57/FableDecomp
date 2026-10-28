@@ -1,4 +1,4 @@
-// Behaviour test for NPlayerGui::CDrawTargetInfo::OnEventAttack @ 0x00644526
+// Behaviour test for NPlayerGui::CDrawTargetInfo::OnEventUnsheatheWeapon @ 0x00644526
 #include <cstdio>
 class CRGBColour { public:
     unsigned char B, G, R, A;
@@ -15,7 +15,7 @@ class CFadeInFadeOutBase { public:
 };
 struct CDrawTargetInfo {
     CFadeInFadeOutBase AttackAlphaFade, BlockAlphaFade;
-    void OnEventAttack()
+    void OnEventUnsheatheWeapon()
     {
         AttackAlphaFade.Start(PeekGuiDef()->ABXYButtonFadeDurationSeconds, 0.0f, CRGBColour(0, 0, 0, 255));
         BlockAlphaFade.Start(PeekGuiDef()->ABXYButtonFadeDurationSeconds, 0.0f, CRGBColour(0, 0, 0, 255));
@@ -26,7 +26,7 @@ int main()
     g_def.ABXYButtonFadeDurationSeconds = 0.75f;
     CDrawTargetInfo d;
     d.AttackAlphaFade.Active = false; d.BlockAlphaFade.Active = false;
-    d.OnEventAttack();
+    d.OnEventUnsheatheWeapon();
     if (g_peeks != 2 || !d.AttackAlphaFade.Active || !d.BlockAlphaFade.Opening || d.AttackAlphaFade.FadeInTime != 0.75f ||
         d.BlockAlphaFade.FadeOutTime != 0.0f || d.AttackAlphaFade.ToA != 255 || d.BlockAlphaFade.ToR != 0) {
         std::printf("00644526_TEST FAIL\n"); return 1;

@@ -1,0 +1,2 @@
+address	name	evidence
+00644526	NPlayerGui::CDrawTargetInfo::OnEventUnsheatheWeapon	Ego_r.pdb 0x006875D6 (97 bytes, before OnEventAttack 0x00687637) and FableWin.pdb 0x020FD5A7 (before OnEventAttack 0x020FD627); retail 0x00644526 is 97 bytes and 0x00644587 follows it

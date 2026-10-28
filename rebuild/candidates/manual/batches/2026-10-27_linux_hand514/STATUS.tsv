@@ -1,0 +1,41 @@
+address	status	bytes	test	note
+00625160	DIFFER	70	-	NUISystem::CUIStateDef scalar deleting dtor (RTTI); DIFFER(30v70): implicit def destructors not inlined into ??_G, user-written ones add vptr stores
+00643e09	MATCH	37	PASS	NPlayerGui::CDrawMiniMap::IsActive() const (PDB donor order)
+00644334	RELOCATION_MATCH	95	PASS	NPlayerGui::CDrawStatUpdates::Draw (address order; catalog spelled both twins CDrawAutoPickups::Draw)
+006443ac	RELOCATION_MATCH	95	PASS	NPlayerGui::CDrawAutoPickups::Draw
+00644587	RELOCATION_MATCH	51	PASS	NPlayerGui::CDrawTargetInfo::OnEventAttack (donor sizes; landed 0x00644526 is really OnEventUnsheatheWeapon)
+006472b2	RELOCATION_MATCH	86	PASS	retail_asm: NPlayerGui::CDrawDamage::AddDamageChange (inline-asm ROUND fistp); in retail_asm/ + payload_retail_asm.json
+0064a2db	DIFFER	83	-	NPlayerGui::CDrawPerceivers::AddPerceivingThing; DIFFER(83v83): one store scheduled before the iterator copies
+0064a37b	RELOCATION_MATCH	38	PASS	NPlayerGui::CDrawQuestInfo::GetScriptSpriteBySymbol (probable)
+0064dd4d	RELOCATION_MATCH	77	PASS	NPlayerGui::CDrawSpiritTargetingCursor ctor (RTTI; label CDrawQuickAccessIconsPC wrong)
+0064e0a1	RELOCATION_MATCH	57	PASS	NPlayerGui::CDrawStatUpdates ctor (RTTI)
+00654f80	RELOCATION_MATCH	93	PASS	NPlayerGui::CStatBar::CChangeText ctor (PDB signature)
+0065564b	RELOCATION_MATCH	93	PASS	NPlayerGui::CStatBar::CChangeText copy ctor
+0065ffca	RELOCATION_MATCH	64	PASS	std::find_if<list<CCountedPointer<CVillageTaskHorn>>::iterator, CIsHornTaskWithThisHorn> (caller CTCVillage::UpdateHornTasks; label CGuiControlTree::SelectNextEntryByName wrong)
+00663340	RELOCATION_MATCH	82	PASS	CThingCreatureBase::GetPHeroCombatDef() const (donor order; label CEventKilledCreature ctor wrong)
+0067c520	DIFFER	70	-	CBlurredAttitudesDef scalar deleting dtor (RTTI); DIFFER(30v70) as twin 0x00625160
+00686f10	RELOCATION_MATCH	69	PASS	CTCBase::AllocateTC (donor order + caller CThing::AddTC; label CMeshVolumeMap::Find wrong)
+00692a50	RELOCATION_MATCH	75	PASS	CCreatureActionBase::IsUsingActionMovement() const
+00692c30	RELOCATION_MATCH	76	PASS	CCreatureActionBase::GetActionSpeedParameter() const
+006ad220	RELOCATION_MATCH	62	PASS	CThingPlayerCreature::ResolveMovementBandType (probable; label C3DVector::GetAccurateMagnitude is the inlined callee)
+006af4e0	DIFFER	52	-	CMessageEvent::GetPOriginator<CThing>; DIFFER(39v52): retail dead spill + constant-false test, lane gap
+006af520	RELOCATION_MATCH	48	PASS	CMessageEvent::GetPTarget<CThingCreatureBase>() const (probable; label CGameScriptThing::GetPThing wrong)
+006b1900	RELOCATION_MATCH	94	PASS	CAtmosProcess::MixAtmos (probable; label SetQuestInfoName wrong)
+006b74e0	MATCH	47	PASS	CGameMapCell::GetAtmosBlend(long) const
+006bb5b0	DIFFER	75	-	CGameTimeManager::IsTimeBetween; DIFFER(60v75): VC shares the time<end compare across the two windows
+006bbfa0	RELOCATION_MATCH	36	PASS	CRegion::IsMapIncluded(long) const (label CHitParameters::IsDivineWrathStrike wrong)
+006bd780	MATCH	41	PASS	CMusicManager::CState::GetDanger() const (probable; label IsDangerMusicEnabled propagated from twin)
+006bd840	MATCH	41	PASS	CMusicManager::IsDangerMusicEnabled() const
+006cda10	RELOCATION_MATCH	49	PASS	CGroundNavigatorExternalInterface::PeekNavigatorRadius(bool) const (vtable slot 6)
+006cdb50	RELOCATION_MATCH	52	PASS	CGroundNavigatorExternalInterface::GetMinPathCost() const (slot 18)
+006cdb90	RELOCATION_MATCH	52	PASS	CGroundNavigatorExternalInterface::GetMaxPathCost() const
+006d63a0	DIFFER	77	-	CTCHeroExperience::GetRunningNumHits() const; DIFFER(77v77): fld 1.0/fdiv vs retail fld [def+64h]/fdivr 1.0
+006e7690	RELOCATION_MATCH	74	PASS	CGameScriptInterface::DeregisterTimer(long)
+006e8050	RELOCATION_MATCH	73	PASS	CDefendingCombatantInfo::CCombatRing::StretchRingThickness
+006eab00	RELOCATION_MATCH	81	PASS	CDefendingCombatantInfo::CCombatRing::GetAllProngs (label CMusicManager::ResetMusicEntriesOffsets wrong)
+006f4850	RELOCATION_MATCH	75	PASS	CDefendingCombatantInfo ctor (label C3DAnimFileSequenceChunk wrong)
+006f4a00	RELOCATION_MATCH	89	PASS	CCombatantInfo ctor (label C3DMeshMaterial wrong)
+006f90d0	RELOCATION_MATCH	92	PASS	NAnimationEvents::CManager::AnimHasEmbeddedEvent (private const, PDB donor order)
+0070c4e0	DIFFER	81	-	CAnimateThing::GetFirstCombinationAnimFromType; DIFFER(82v81): find_if form re-reads end from memory
+00710700	RELOCATION_MATCH	90	PASS	std::vector<short> copy ctor (label CAnimSet::CopyConstruct_Shorts wrong)
+00712b60	RELOCATION_MATCH	70	PASS	NTCScriptedControl::CActionDoCreatureAction::OnActivate (vtable slot 2)

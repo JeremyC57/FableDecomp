@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+00625160	DIFFER	70	-	NUISystem::CUIStateDef scalar deleting dtor (RTTI); DIFFER(30v70): implicit def destructors not inlined into ??_G, user-written ones add vptr stores
+0064a2db	DIFFER	83	-	NPlayerGui::CDrawPerceivers::AddPerceivingThing; DIFFER(83v83): one store scheduled before the iterator copies
+0067c520	DIFFER	70	-	CBlurredAttitudesDef scalar deleting dtor (RTTI); DIFFER(30v70) as twin 0x00625160
+006af4e0	DIFFER	52	-	CMessageEvent::GetPOriginator<CThing>; DIFFER(39v52): retail dead spill + constant-false test, lane gap
+006bb5b0	DIFFER	75	-	CGameTimeManager::IsTimeBetween; DIFFER(60v75): VC shares the time<end compare across the two windows
+006d63a0	DIFFER	77	-	CTCHeroExperience::GetRunningNumHits() const; DIFFER(77v77): fld 1.0/fdiv vs retail fld [def+64h]/fdivr 1.0
+0070c4e0	DIFFER	81	-	CAnimateThing::GetFirstCombinationAnimFromType; DIFFER(82v81): find_if form re-reads end from memory
