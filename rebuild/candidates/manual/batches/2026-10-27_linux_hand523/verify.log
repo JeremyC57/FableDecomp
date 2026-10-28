@@ -1,0 +1,75 @@
+addr       parity           behav  name
+00679560   WARN SHARED_HEADER_AVAILABLE CResource
+00679560   RELOCATION_MATCH PASS   COpinionReactionManagerDef
+006c3ca0   WARN SHARED_HEADER_AVAILABLE CTCBase
+006c3ca0   RELOCATION_MATCH PASS   AddCarriedThingsOfThingToFadeList
+006c9900   WARN SHARED_HEADER_AVAILABLE CStringParser
+006c9900   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006c9900   WARN SHARED_HEADER_AVAILABLE CWorld
+006c9900   WARN RELOC_NAME: ?ReadAsUHUGE@CStringParser@@QAE_KXZ -> 009ba5b0 labelled 'CStringParser::ReadInt64'
+006c9900   RELOCATION_MATCH PASS   TransferIn
+006d72d0   WARN RELOC_NAME: ??E?$_Rb_tree_iterator@U?$pair@$$CBJVCComboMultiplierData@@@std@@U?$_Const_traits@U?$pair@$$CBJVCComboMultiplierData@@@std@@@2@@std@@QAE?AU01@H@Z -> 006da200 labelled '_global::BSTInterval_FindSuccessor'
+006d72d0   RELOCATION_MATCH PASS   GetActiveComboMultiplierData
+006ed030   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+006ed030   WARN RELOC_NAME: ?UpdateDefenderAttackPattern@CCombatManager@@AAEXAAUCCombatantInfo@@@Z -> 006ea0c0 labelled 'CDefendingCombatantInfo::InitializeDefenderFromCreature'
+006ed030   WARN RELOC_NAME: ?SetupDefenderPlacementWheel@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z -> 006ecea0 labelled 'CDefendingCombatantInfo::UpdateCombatState'
+006ed030   RELOCATION_MATCH PASS   UpdateAttackingCombatantsList
+006fc7a0   RELOCATION_MATCH PASS   _M_fill_insert
+006fc950   RELOCATION_MATCH PASS   _M_range_insert<pointer>
+00711230   WARN RELOC_NAME: ??$__merge_without_buffer@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@HVCAnimSetItPriorityLessThan@@@std@@YIXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@00HHVCAnimSetItPriorityLessThan@@@Z -> 00711230 labelled 'AdaptiveSortMerge_AnimSet'
+00711230   RELOCATION_MATCH PASS   __merge_without_buffer
+0072b940   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+0072b940   WARN RELOC_NAME: ?GetWeaponType@CTCWeapon@@QBE?AW4EWeaponType@@XZ -> 005da7d0 labelled 'NInventory::CCategory::GetCategoryIdentifier'
+0072b940   RELOCATION_MATCH PASS   CalculateWeaponState
+007653b0   RELOCATION_MATCH PASS   insert
+00766920   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00766920   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00766920   WARN SHARED_HEADER_AVAILABLE CTCBase
+00766920   RELOCATION_MATCH PASS   GetAugmentations
+0076cfe0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0076cfe0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0076cfe0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0076cfe0   RELOCATION_MATCH PASS   CalculateEnemyTC
+0078ae30   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+0078ae30   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0078ae30   RELOCATION_MATCH PASS   CCreatureAction_HeroLoadRangedWeapon
+007b47b0   WARN SHARED_HEADER_AVAILABLE CStringParser
+007b47b0   RELOCATION_MATCH PASS   TransferIn
+007c0e80   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007c0e80   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007c0e80   WARN SHARED_HEADER_AVAILABLE CTCWeapon
+007c0e80   RELOCATION_MATCH PASS   CreateShot
+
+WINS: 15
+  00679560 RELOCATION_MATCH COpinionReactionManagerDef::??0COpinionReactionManagerDef@@QAE@XZ
+  006c3ca0 RELOCATION_MATCH CTCFadeOutAndIn::?AddCarriedThingsOfThingToFadeList@CTCFadeOutAndIn@@AAEXABVCThing@@@Z
+  006c9900 RELOCATION_MATCH CPersistTraits<CIntelligentPointer<CThing> >::?TransferIn@?$CPersistTraits@V?$CIntelligentPointer@VCThing@@@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAV?$CIntelligentPointer@VCThing@@@@@Z
+  006d72d0 RELOCATION_MATCH CTCHeroExperience::?GetActiveComboMultiplierData@CTCHeroExperience@@ABEABVCComboMultiplierData@@XZ
+  006ed030 RELOCATION_MATCH CCombatManager::?UpdateAttackingCombatantsList@CCombatManager@@AAEXAAUCCombatantInfo@@_N@Z
+  006fc7a0 RELOCATION_MATCH std::vector<std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> > >::?_M_fill_insert@?$vector@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@V?$allocator@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@2@IABU32@@Z
+  006fc950 RELOCATION_MATCH std::vector<std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> > >::??$_M_range_insert@PAU?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@@?$vector@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@V?$allocator@U?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@std@@@2@@std@@QAEXPAU?$pair@KV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@@1@00ABUforward_iterator_tag@1@@Z
+  00711230 RELOCATION_MATCH std::??$__merge_without_buffer@PAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@std@@HVCAnimSetItPriorityLessThan@@@std@@YIXPAU?$_List_iterator@VCAnimSet@@U?$_Const_traits@VCAnimSet@@@std@@@0@00HHVCAnimSetItPriorityLessThan@@@Z
+  0072b940 RELOCATION_MATCH CTCSpecialAbilities::?CalculateWeaponState@CTCSpecialAbilities@@SI?AW4EWEAPON_STATE@1@AAVCThingCreatureBase@@@Z
+  007653b0 RELOCATION_MATCH std::vector<C3DVector>::?insert@?$vector@VC3DVector@@V?$allocator@VC3DVector@@@std@@@std@@QAEPAVC3DVector@@PAV3@ABV3@@Z
+  00766920 RELOCATION_MATCH CTCObjectAugmentations::?GetAugmentations@CTCObjectAugmentations@@QBEXAAV?$vector@JV?$allocator@J@std@@@std@@@Z
+  0076cfe0 RELOCATION_MATCH CTCEnemy::?CalculateEnemyTC@CTCEnemy@@CI_NABVCThing@@PAPBV1@AAPBV2@_N@Z
+  0078ae30 RELOCATION_MATCH CCreatureAction_HeroLoadRangedWeapon::??0CCreatureAction_HeroLoadRangedWeapon@@QAE@AAVCThingCreatureBase@@AAVCThing@@@Z
+  007b47b0 RELOCATION_MATCH CPersistTraits<CCrimeWaitingForBribe>::?TransferIn@?$CPersistTraits@VCCrimeWaitingForBribe@@@@QAEXAAVCPersistContext@@AAVCStringParser@@AAVCCrimeWaitingForBribe@@@Z
+  007c0e80 RELOCATION_MATCH NThingShot::?CreateShot@NThingShot@@YIPAVCThing@@AAV2@PAV2@1PBV2@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@J@Z
+
+LANDED 15 wins into src/compiled + tests + catalog + oracle
+  COpinionReactionManagerDef_COpinionReactionManagerDef_00679560
+  CTCFadeOutAndIn_AddCarriedThingsOfThingToFadeList_006c3ca0
+  CPersistTraitsCIntelligentPointerCThing_TransferIn_006c9900
+  CTCHeroExperience_GetActiveComboMultiplierData_006d72d0
+  CCombatManager_UpdateAttackingCombatantsList_006ed030
+  stdvectorstdpairunsignedlongCSmallVectorNAnimationEventsCEvent32_Mfillinsert_006fc7a0
+  stdvectorstdpairunsignedlongCSmallVectorNAnimationEventsCEvent32_Mrangeinsertpointer_006fc950
+  std_mergewithoutbuffer_00711230
+  CTCSpecialAbilities_CalculateWeaponState_0072b940
+  stdvectorC3DVector_insert_007653b0
+  CTCObjectAugmentations_GetAugmentations_00766920
+  CTCEnemy_CalculateEnemyTC_0076cfe0
+  CCreatureActionHeroLoadRangedWeapon_CCreatureActionHeroLoadRangedWeapon_0078ae30
+  CPersistTraitsCCrimeWaitingForBribe_TransferIn_007b47b0
+  NThingShot_CreateShot_007c0e80

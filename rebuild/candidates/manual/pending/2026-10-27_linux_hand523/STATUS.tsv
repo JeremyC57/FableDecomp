@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+006c9350	DIFFER(314v312)	312	-	CPersistTraits<std::pair<long,COpinionDeed*> >::TransferIn; parked: retail calls out-of-line CBasicString<char>::operator== 0x004115A0 at the "," test only; 4 grades used
+006e89b0	DIFFER(344v344)	344	-	CDefendingCombatantInfo::CCombatWheel::GetAttackerPlacementVector; parked: epilogue pop/x87 interleave only; 4 grades used
+00723110	DIFFER(300v300)	300	-	STLport vector<CTCSmokeGenerator::CGenerationPos>::_M_insert_overflow; parked: esi/edi swap only; 4 grades used
+00723e50	DIFFER(306v310)	310	-	CTCPhysicsStandard::SetRHSetAsFlushOnNormal(const C3DVector&); parked: x87 scheduling of cos(pitch) / cross product / stores; 4 grades used
+0076d2f0	DIFFER(369v356)	356	-	CTCEnemy::AreThingsEnemies(const CThing&, const CThing&); parked: ebx zero-hoist / bool in bl / 4-word frame; 4 grades used

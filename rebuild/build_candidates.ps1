@@ -361139,6 +361139,111 @@ $catalog = @(
         TestSource = '00/62/CCreatureActionGiveItemToThing_CCreatureActionGiveItemToThing_0062d9e0_test.cpp'
         PassPattern = '0062d9e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00679560'
+        Module = 'COpinionReactionManagerDef'
+        Source = '00/67/COpinionReactionManagerDef_COpinionReactionManagerDef_00679560.cpp'
+        TestSource = '00/67/COpinionReactionManagerDef_COpinionReactionManagerDef_00679560_test.cpp'
+        PassPattern = '00679560_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c3ca0'
+        Module = 'CTCFadeOutAndIn'
+        Source = '00/6c/CTCFadeOutAndIn_AddCarriedThingsOfThingToFadeList_006c3ca0.cpp'
+        TestSource = '00/6c/CTCFadeOutAndIn_AddCarriedThingsOfThingToFadeList_006c3ca0_test.cpp'
+        PassPattern = '006c3ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006c9900'
+        Module = 'CPersistTraits<CIntelligentPointer<CThing> >'
+        Source = '00/6c/CPersistTraitsCIntelligentPointerCThing_TransferIn_006c9900.cpp'
+        TestSource = '00/6c/CPersistTraitsCIntelligentPointerCThing_TransferIn_006c9900_test.cpp'
+        PassPattern = '006c9900_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006d72d0'
+        Module = 'CTCHeroExperience'
+        Source = '00/6d/CTCHeroExperience_GetActiveComboMultiplierData_006d72d0.cpp'
+        TestSource = '00/6d/CTCHeroExperience_GetActiveComboMultiplierData_006d72d0_test.cpp'
+        PassPattern = '006d72d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006ed030'
+        Module = 'CCombatManager'
+        Source = '00/6e/CCombatManager_UpdateAttackingCombatantsList_006ed030.cpp'
+        TestSource = '00/6e/CCombatManager_UpdateAttackingCombatantsList_006ed030_test.cpp'
+        PassPattern = '006ed030_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fc7a0'
+        Module = 'std::vector<std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> > >'
+        Source = '00/6f/stdvectorstdpairunsignedlongCSmallVectorNAnimationEventsCEvent32_Mfillinsert_006fc7a0.cpp'
+        TestSource = '00/6f/stdvectorstdpairunsignedlongCSmallVectorNAnimationEventsCEvent32_Mfillinsert_006fc7a0_test.cpp'
+        PassPattern = '006fc7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '006fc950'
+        Module = 'std::vector<std::pair<unsigned long, CSmallVector<NAnimationEvents::CEvent,32> > >'
+        Source = '00/6f/stdvectorstdpairunsignedlongCSmallVectorNAnimationEventsCEvent32_Mrangeinsertpointer_006fc950.cpp'
+        TestSource = '00/6f/stdvectorstdpairunsignedlongCSmallVectorNAnimationEventsCEvent32_Mrangeinsertpointer_006fc950_test.cpp'
+        PassPattern = '006fc950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00711230'
+        Module = 'std'
+        Source = '00/71/std_mergewithoutbuffer_00711230.cpp'
+        TestSource = '00/71/std_mergewithoutbuffer_00711230_test.cpp'
+        PassPattern = '00711230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0072b940'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_CalculateWeaponState_0072b940.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_CalculateWeaponState_0072b940_test.cpp'
+        PassPattern = '0072b940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007653b0'
+        Module = 'std::vector<C3DVector>'
+        Source = '00/76/stdvectorC3DVector_insert_007653b0.cpp'
+        TestSource = '00/76/stdvectorC3DVector_insert_007653b0_test.cpp'
+        PassPattern = '007653b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00766920'
+        Module = 'CTCObjectAugmentations'
+        Source = '00/76/CTCObjectAugmentations_GetAugmentations_00766920.cpp'
+        TestSource = '00/76/CTCObjectAugmentations_GetAugmentations_00766920_test.cpp'
+        PassPattern = '00766920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0076cfe0'
+        Module = 'CTCEnemy'
+        Source = '00/76/CTCEnemy_CalculateEnemyTC_0076cfe0.cpp'
+        TestSource = '00/76/CTCEnemy_CalculateEnemyTC_0076cfe0_test.cpp'
+        PassPattern = '0076cfe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078ae30'
+        Module = 'CCreatureAction_HeroLoadRangedWeapon'
+        Source = '00/78/CCreatureActionHeroLoadRangedWeapon_CCreatureActionHeroLoadRangedWeapon_0078ae30.cpp'
+        TestSource = '00/78/CCreatureActionHeroLoadRangedWeapon_CCreatureActionHeroLoadRangedWeapon_0078ae30_test.cpp'
+        PassPattern = '0078ae30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007b47b0'
+        Module = 'CPersistTraits<CCrimeWaitingForBribe>'
+        Source = '00/7b/CPersistTraitsCCrimeWaitingForBribe_TransferIn_007b47b0.cpp'
+        TestSource = '00/7b/CPersistTraitsCCrimeWaitingForBribe_TransferIn_007b47b0_test.cpp'
+        PassPattern = '007b47b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007c0e80'
+        Module = 'NThingShot'
+        Source = '00/7c/NThingShot_CreateShot_007c0e80.cpp'
+        TestSource = '00/7c/NThingShot_CreateShot_007c0e80_test.cpp'
+        PassPattern = '007c0e80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+00679560	RELOCATION_MATCH	472	PASS	COpinionReactionManagerDef::COpinionReactionManagerDef() (vtable 0x0125B7DC); label CResource_Constructor wrong
+006c3ca0	RELOCATION_MATCH	322	PASS	CTCFadeOutAndIn::AddCarriedThingsOfThingToFadeList(const CThing&); label COptimisedPrimitive_RemapAndFilter propagated
+006c9350	DIFFER(314v312)	312	-	CPersistTraits<std::pair<long,COpinionDeed*> >::TransferIn; parked: retail calls out-of-line CBasicString<char>::operator== 0x004115A0 at the "," test only; 4 grades used
+006c9900	RELOCATION_MATCH	241	PASS	CPersistTraits<CIntelligentPointer<CThing> >::TransferIn (text dummy-thing UID reader)
+006d72d0	RELOCATION_MATCH	243	PASS	CTCHeroExperience::GetActiveComboMultiplierData() const (private); label BSTInterval_FindNode wrong
+006e89b0	DIFFER(344v344)	344	-	CDefendingCombatantInfo::CCombatWheel::GetAttackerPlacementVector; parked: epilogue pop/x87 interleave only; 4 grades used
+006ed030	RELOCATION_MATCH	449	PASS	CCombatManager::UpdateAttackingCombatantsList(CCombatantInfo&, bool); label CCombatManager_UpdateDefenderState wrong
+006fc7a0	RELOCATION_MATCH	319	PASS	STLport vector<pair<unsigned long,CSmallVector<NAnimationEvents::CEvent,32> > >::_M_fill_insert
+006fc950	RELOCATION_MATCH	476	PASS	STLport vector<pair<unsigned long,CSmallVector<NAnimationEvents::CEvent,32> > >::_M_range_insert<pointer>
+00711230	RELOCATION_MATCH	262	PASS	STLport std::__merge_without_buffer over list<CAnimSet> iterators (CAnimSetItPriorityLessThan); label AdaptiveSortMerge_AnimSet wrong
+00723110	DIFFER(300v300)	300	-	STLport vector<CTCSmokeGenerator::CGenerationPos>::_M_insert_overflow; parked: esi/edi swap only; 4 grades used
+00723e50	DIFFER(306v310)	310	-	CTCPhysicsStandard::SetRHSetAsFlushOnNormal(const C3DVector&); parked: x87 scheduling of cos(pitch) / cross product / stores; 4 grades used
+0072b940	RELOCATION_MATCH	247	PASS	CTCSpecialAbilities::CalculateWeaponState(CThingCreatureBase&) (static __fastcall)
+007653b0	RELOCATION_MATCH	253	PASS	STLport vector<C3DVector>::insert(iterator, const C3DVector&)
+00766920	RELOCATION_MATCH	320	PASS	CTCObjectAugmentations::GetAugmentations(std::vector<long>&) const; label CParticleMorphs_InitFromDef propagated
+0076cfe0	RELOCATION_MATCH	454	PASS	CTCEnemy::CalculateEnemyTC (private static __fastcall)
+0076d2f0	DIFFER(369v356)	356	-	CTCEnemy::AreThingsEnemies(const CThing&, const CThing&); parked: ebx zero-hoist / bool in bl / 4-word frame; 4 grades used
+0078ae30	RELOCATION_MATCH	166	PASS	CCreatureAction_HeroLoadRangedWeapon::CCreatureAction_HeroLoadRangedWeapon(CThingCreatureBase&, CThing&)
+007b47b0	RELOCATION_MATCH	297	PASS	CPersistTraits<CCrimeWaitingForBribe>::TransferIn; label CPersistTraits<CAtmosBankEntry>::TransferIn propagated
+007c0e80	RELOCATION_MATCH	297	PASS	NThingShot::CreateShot(CThing&, CThing*, CThing*, const CThing*, float, float, float, const CDefPointer<const CMeleeCombatAbilityDef>&, long)
