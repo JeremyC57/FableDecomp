@@ -361244,6 +361244,98 @@ $catalog = @(
         TestSource = '00/7c/NThingShot_CreateShot_007c0e80_test.cpp'
         PassPattern = '007c0e80_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '007ed780'
+        Module = 'CCreatureAction_ShowItemToThing'
+        Source = '00/7e/CCreatureActionShowItemToThing_CCreatureActionShowItemToThing_007ed780.cpp'
+        TestSource = '00/7e/CCreatureActionShowItemToThing_CCreatureActionShowItemToThing_007ed780_test.cpp'
+        PassPattern = '007ed780_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007fa320'
+        Module = 'std'
+        Source = '00/7f/std_adjustheap_007fa320.cpp'
+        TestSource = '00/7f/std_adjustheap_007fa320_test.cpp'
+        PassPattern = '007fa320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008265c0'
+        Module = 'CReplaceSerialise<COldFileFormatHeightMapCell4,COldFileFormatHeightMapCell3>'
+        Source = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell4COldFileFormatHeightMapCell3_ConvertPreviousUnknownVersionUp_008265c0.cpp'
+        TestSource = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell4COldFileFormatHeightMapCell3_ConvertPreviousUnknownVersionUp_008265c0_test.cpp'
+        PassPattern = '008265c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00826f10'
+        Module = 'CReplaceSerialise<COldFileFormatHeightMapCell6,COldFileFormatHeightMapCell5>'
+        Source = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell6COldFileFormatHeightMapCell5_ConvertPreviousUnknownVersionUp_00826f10.cpp'
+        TestSource = '00/82/CReplaceSerialiseCOldFileFormatHeightMapCell6COldFileFormatHeightMapCell5_ConvertPreviousUnknownVersionUp_00826f10_test.cpp'
+        PassPattern = '00826f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008271e0'
+        Module = 'CReplaceSerialise<CFileFormatHeightMapCell,COldFileFormatHeightMapCell6>'
+        Source = '00/82/CReplaceSerialiseCFileFormatHeightMapCellCOldFileFormatHeightMapCell6_ConvertPreviousUnknownVersionUp_008271e0.cpp'
+        TestSource = '00/82/CReplaceSerialiseCFileFormatHeightMapCellCOldFileFormatHeightMapCell6_ConvertPreviousUnknownVersionUp_008271e0_test.cpp'
+        PassPattern = '008271e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0083ebd0'
+        Module = 'LHNetworkLib'
+        Source = '00/83/LHNetworkLib_toLowerCase_0083ebd0.cpp'
+        TestSource = '00/83/LHNetworkLib_toLowerCase_0083ebd0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '0083ebd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008427e0'
+        Module = 'CCreatureAction_PlayIntoLoopOutOfAnimation'
+        Source = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_008427e0.cpp'
+        TestSource = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_008427e0_test.cpp'
+        PassPattern = '008427e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008428b0'
+        Module = 'CCreatureAction_PlayIntoLoopOutOfAnimation'
+        Source = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_008428b0.cpp'
+        TestSource = '00/84/CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_008428b0_test.cpp'
+        PassPattern = '008428b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00842fd0'
+        Module = 'CCreatureAction_MagicBlast'
+        Source = '00/84/CCreatureActionMagicBlast_PerformAction_00842fd0.cpp'
+        TestSource = '00/84/CCreatureActionMagicBlast_PerformAction_00842fd0_test.cpp'
+        PassPattern = '00842fd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00843940'
+        Module = 'CCreatureAction_PlayAnimationWithLookTurning'
+        Source = '00/84/CCreatureActionPlayAnimationWithLookTurning_FinishAction_00843940.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimationWithLookTurning_FinishAction_00843940_test.cpp'
+        PassPattern = '00843940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00843a80'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_00843a80.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_00843a80_test.cpp'
+        PassPattern = '00843a80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00843b40'
+        Module = 'CCreatureAction_PlayAnimation'
+        Source = '00/84/CCreatureActionPlayAnimation_FinishAction_00843b40.cpp'
+        TestSource = '00/84/CCreatureActionPlayAnimation_FinishAction_00843b40_test.cpp'
+        PassPattern = '00843b40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00845fe0'
+        Module = 'CCreatureAction_DropWeapon'
+        Source = '00/84/CCreatureActionDropWeapon_PerformAction_00845fe0.cpp'
+        TestSource = '00/84/CCreatureActionDropWeapon_PerformAction_00845fe0_test.cpp'
+        PassPattern = '00845fe0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

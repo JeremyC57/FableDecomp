@@ -1,0 +1,21 @@
+address	status	bytes	test	note
+007ed780	RELOCATION_MATCH	161	PASS	CCreatureAction_ShowItemToThing ctor (catalog "GiveItemToThing" wrong: vtable 0x012714C4 RTTI + "STANDARD_SHOW_OBJECT")
+007fa320	RELOCATION_MATCH	297	PASS	std::__adjust_heap<CThing**,int,CThing*,CThingCompare_BestForTargeting2> (STLport 4.6)
+008082c0	DIFFER	317	-	__adjust_heap<pair<C3DVector,long>*,...,(anon)::CCompareTargetedPositionsForFirstPersonTargeting>; 317v317 scheduling (retail preloads two comparator words before sub esp)
+008100d0	DIFFER	280	-	CTCDExplosiveTrail::Create; 280v280 ebx/edi swap (position / driver pointer)
+00816ac0	DIFFER	421	-	CTCHitLocations::OnInitialActivate (catalog "CParticleMorphs_PopulateFromDefinitions" wrong); 520v421 def-pointer lifetimes
+00825e00	DIFFER	263	-	CReplaceSerialise<Cell3,Cell2>::ConvertPreviousUnknownVersionUp; 256v263 register allocation (retail shrink-wraps ebp)
+008265c0	RELOCATION_MATCH	276	PASS	CReplaceSerialise<Cell4,Cell3>::ConvertPreviousUnknownVersionUp (catalog "CAFile_*" wrong)
+00826c90	DIFFER	288	-	CReplaceSerialise<Cell5,Cell4>::ConvertPreviousUnknownVersionUp; 288v288 one load scheduled 2 instructions early
+00826f10	RELOCATION_MATCH	290	PASS	CReplaceSerialise<Cell6,Cell5>::ConvertPreviousUnknownVersionUp
+008271e0	RELOCATION_MATCH	298	PASS	CReplaceSerialise<CFileFormatHeightMapCell,Cell6>::ConvertPreviousUnknownVersionUp
+0083d460	DIFFER	247	-	CThingMarker::Create; 228v247 inline-ctor new select jump-threaded in ours
+0083ebd0	RELOCATION_MATCH	281	PASS	LHNetworkLib::toLowerCase (catalog "CString_ToLower" wrong); flags /Gr; same-TU reserve/_M_throw_length_error bodies
+008427e0	RELOCATION_MATCH	200	PASS	CCreatureAction_PlayIntoLoopOutOfAnimation public ctor (..., float, bool, long, long)
+008428b0	RELOCATION_MATCH	172	PASS	CCreatureAction_PlayIntoLoopOutOfAnimation private ctor (..., long, float, bool, long, long)
+00842fd0	RELOCATION_MATCH	188	PASS	CCreatureAction_MagicBlast::PerformAction
+00843940	RELOCATION_MATCH	208	PASS	CCreatureAction_PlayAnimationWithLookTurning::FinishAction
+00843a80	RELOCATION_MATCH	182	PASS	CCreatureAction_PlayAnimation ctor (name, transition seconds, ...)
+00843b40	RELOCATION_MATCH	208	PASS	CCreatureAction_PlayAnimation::FinishAction
+00844600	DIFFER	222	-	CCreatureAction_Read::PerformAction; 222v222 this/text-bank register swap (esi/edi)
+00845fe0	RELOCATION_MATCH	164	PASS	CCreatureAction_DropWeapon::PerformAction

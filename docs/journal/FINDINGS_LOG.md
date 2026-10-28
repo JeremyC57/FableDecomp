@@ -757,3 +757,5 @@ Chunk 521 (agent521, re-queue 128-369 bytes; batch 2026-10-27_linux_hand521): 10
 Chunk 522 (agent522, re-queue 161-495 bytes; batch 2026-10-27_linux_hand522): 9 of 20 landed (RELOCATION_MATCH), 11 parked on register / frame-slot residues. The landing's RELOC_CONFLICT (vector<CEnginePrimitiveHandle> dtor bound to 0x00440C40 and 0x00AF7210) was settled from Ego_r member types: 0x00AF7210 is CArray<CEnginePrimitiveHandle>::~CArray, respelled in 0x00BE25F0 and rechecked. 65 NAME_FIXES deferred to the naming pass (queue now 119).
 
 Chunk 523 (agent523, re-queue 166-476 bytes; batch 2026-10-27_linux_hand523): 15 of 20 landed (RELOCATION_MATCH), 5 parked on inlining / register / x87-scheduling residues. 62 NAME_FIXES deferred to the naming pass (queue now 181).
+
+Chunk 524 (agent524, re-queue 161-421 bytes; batch 2026-10-27_linux_hand524): 13 of 20 landed (RELOCATION_MATCH), 7 parked (register / scheduling; 0x00816AC0 has most room). 44 NAME_FIXES deferred (queue now 225), headed by 0x0049D870 CWorld::GetFrame with ~50 wrong bound spellings.

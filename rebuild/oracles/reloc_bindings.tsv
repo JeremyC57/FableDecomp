@@ -35018,3 +35018,17 @@ _local_book_besterror@8	00ca02b0	00ca0620
 ?GetCreatedShotDefGlobalIndex@CTCWeapon@@QBEJXZ	005da750	007c0e80
 ?Init@CTCShotDefinitionBase@NThingShot@@QAEXV?$CDefPointer@$$CBVCThingShotDef@@@@PAVCThing@@1PBV4@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@@Z	007c0690	007c0e80
 ?g_bShotsEnabled@@3_NA	0137573f	007c0e80
+??$__push_heap@PAPAVCThing@@HPAV1@VCThingCompare_BestForTargeting2@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_BestForTargeting2@@@Z	007fa160	007fa320
+?GetThingCompareMultiplier@CThingCompare_BestForTargeting2@@ABEMPBVCThing@@@Z	007f9e70	007fa320
+?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell3@@VCOldFileFormatHeightMapCell2@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell3@@@@PAX@Z	00825e00	008265c0
+?DeleteData@?$CCountedPointer@VCOldFileFormatHeightMapCell4@@@@SIXPAX@Z	00822d90	008265c0
+?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell5@@VCOldFileFormatHeightMapCell4@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell5@@@@PAX@Z	00826c90	00826f10
+?DeleteData@?$CCountedPointer@VCOldFileFormatHeightMapCell6@@@@SIXPAX@Z	00822ca0	00826f10
+?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell6@@VCOldFileFormatHeightMapCell5@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell6@@@@PAX@Z	00826f10	008271e0
+?DeleteData@?$CCountedPointer@VCFileFormatHeightMapCell@@@@SIXPAX@Z	00822bf0	008271e0
+?reserve@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEXI@Z	00777db0	0083ebd0
+?CreateShot@NThingShot@@YIPAVCThing@@JPAV2@0PBV2@MMMABV?$CDefPointer@$$CBVCMeleeCombatAbilityDef@@@@PBVC3DVector@@PBVCRightHandedSet@@@Z	007c0ad0	00842fd0
+?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ	00692910	00842fd0
+??0CCreatureAction_PlayAnimationWithLookTurning@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@_N2JABVCSoundPair@@222JJ@Z	00842df0	00843940
+?IsAbortingCurrentAction@CThingCreatureBase@@QBE_NXZ	00661e70	00843940
+?DropWeapon@CCreatureAction_DropWeapon@@SIXAAVCThing@@AAVCTCCarrying@@0@Z	00845ce0	00845fe0

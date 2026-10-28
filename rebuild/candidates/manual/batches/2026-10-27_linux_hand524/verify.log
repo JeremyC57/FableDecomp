@@ -1,0 +1,54 @@
+addr       parity           behav  name
+007ed780   RELOCATION_MATCH PASS   CCreatureAction_ShowItemToThing
+007fa320   RELOCATION_MATCH PASS   __adjust_heap
+008265c0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCOldFileFormatHeightMapCell4@@@@SIXPAX@Z -> 00822d90 labelled '_global::OperatorDelete_thunk_00822d90'
+008265c0   WARN RELOC_NAME: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell3@@VCOldFileFormatHeightMapCell2@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell3@@@@PAX@Z -> 00825e00 labelled 'CAFile_ReadPrimitive'
+008265c0   RELOCATION_MATCH PASS   ConvertPreviousUnknownVersionUp
+00826f10   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCOldFileFormatHeightMapCell6@@@@SIXPAX@Z -> 00822ca0 labelled '_global::OperatorDelete_thunk_00822ca0'
+00826f10   WARN RELOC_NAME: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell5@@VCOldFileFormatHeightMapCell4@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell5@@@@PAX@Z -> 00826c90 labelled 'CAFile_ConstructNavConnectorVertex'
+00826f10   RELOCATION_MATCH PASS   ConvertPreviousUnknownVersionUp
+008271e0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCFileFormatHeightMapCell@@@@SIXPAX@Z -> 00822bf0 labelled '_global::OperatorDelete_thunk_00822bf0'
+008271e0   WARN RELOC_NAME: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell6@@VCOldFileFormatHeightMapCell5@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell6@@@@PAX@Z -> 00826f10 labelled 'CAFile_ReadNavConnectorVertex'
+008271e0   RELOCATION_MATCH PASS   ConvertPreviousUnknownVersionUp
+0083ebd0   RELOCATION_MATCH PASS   toLowerCase
+008427e0   RELOCATION_MATCH PASS   CCreatureAction_PlayIntoLoopOutOfAnimation
+008428b0   RELOCATION_MATCH PASS   CCreatureAction_PlayIntoLoopOutOfAnimation
+00842fd0   WARN RELOC_NAME: ?PeekDefinitionManager@CCreatureActionBase@@IBEABVCGameDefinitionManager@@XZ -> 00692910 labelled 'CCreatureActionBase::GetPDefinitionManager'
+00842fd0   RELOCATION_MATCH PASS   PerformAction
+00843940   WARN RELOC_NAME: ?IsAbortingCurrentAction@CThingCreatureBase@@QBE_NXZ -> 00661e70 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00843940   RELOCATION_MATCH PASS   FinishAction
+00843a80   WARN RELOC_NAME: ??0CAnimationEntry@@QAE@ABV0@J@Z -> 005dec70 labelled '_global::CIVCountedPointer_Assign_005dec70'
+00843a80   RELOCATION_MATCH PASS   CCreatureAction_PlayAnimation
+00843b40   WARN RELOC_NAME: ?IsAbortingCurrentAction@CThingCreatureBase@@QBE_NXZ -> 00661e70 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00843b40   RELOCATION_MATCH PASS   FinishAction
+00845fe0   RELOCATION_MATCH PASS   PerformAction
+
+WINS: 13
+  007ed780 RELOCATION_MATCH CCreatureAction_ShowItemToThing::??0CCreatureAction_ShowItemToThing@@QAE@AAVCThingCreatureBase@@AAVCThing@@1@Z
+  007fa320 RELOCATION_MATCH std::??$__adjust_heap@PAPAVCThing@@HPAV1@VCThingCompare_BestForTargeting2@@@std@@YIXPAPAVCThing@@HHPAV1@VCThingCompare_BestForTargeting2@@@Z
+  008265c0 RELOCATION_MATCH CReplaceSerialise<COldFileFormatHeightMapCell4,COldFileFormatHeightMapCell3>::?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell4@@VCOldFileFormatHeightMapCell3@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell4@@@@PAX@Z
+  00826f10 RELOCATION_MATCH CReplaceSerialise<COldFileFormatHeightMapCell6,COldFileFormatHeightMapCell5>::?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatHeightMapCell6@@VCOldFileFormatHeightMapCell5@@@@SI?AV?$CCountedPointer@VCOldFileFormatHeightMapCell6@@@@PAX@Z
+  008271e0 RELOCATION_MATCH CReplaceSerialise<CFileFormatHeightMapCell,COldFileFormatHeightMapCell6>::?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCFileFormatHeightMapCell@@VCOldFileFormatHeightMapCell6@@@@SI?AV?$CCountedPointer@VCFileFormatHeightMapCell@@@@PAX@Z
+  0083ebd0 RELOCATION_MATCH LHNetworkLib::?toLowerCase@LHNetworkLib@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@@Z
+  008427e0 RELOCATION_MATCH CCreatureAction_PlayIntoLoopOutOfAnimation::??0CCreatureAction_PlayIntoLoopOutOfAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@11M_NJJ@Z
+  008428b0 RELOCATION_MATCH CCreatureAction_PlayIntoLoopOutOfAnimation::??0CCreatureAction_PlayIntoLoopOutOfAnimation@@AAE@AAVCThingCreatureBase@@ABVCCharString@@1JM_NJJ@Z
+  00842fd0 RELOCATION_MATCH CCreatureAction_MagicBlast::?PerformAction@CCreatureAction_MagicBlast@@UAEXXZ
+  00843940 RELOCATION_MATCH CCreatureAction_PlayAnimationWithLookTurning::?FinishAction@CCreatureAction_PlayAnimationWithLookTurning@@UAEXXZ
+  00843a80 RELOCATION_MATCH CCreatureAction_PlayAnimation::??0CCreatureAction_PlayAnimation@@QAE@AAVCThingCreatureBase@@ABVCCharString@@MABVCSoundPair@@_N33JJ@Z
+  00843b40 RELOCATION_MATCH CCreatureAction_PlayAnimation::?FinishAction@CCreatureAction_PlayAnimation@@UAEXXZ
+  00845fe0 RELOCATION_MATCH CCreatureAction_DropWeapon::?PerformAction@CCreatureAction_DropWeapon@@UAEXXZ
+
+LANDED 13 wins into src/compiled + tests + catalog + oracle
+  CCreatureActionShowItemToThing_CCreatureActionShowItemToThing_007ed780
+  std_adjustheap_007fa320
+  CReplaceSerialiseCOldFileFormatHeightMapCell4COldFileFormatHeightMapCell3_ConvertPreviousUnknownVersionUp_008265c0
+  CReplaceSerialiseCOldFileFormatHeightMapCell6COldFileFormatHeightMapCell5_ConvertPreviousUnknownVersionUp_00826f10
+  CReplaceSerialiseCFileFormatHeightMapCellCOldFileFormatHeightMapCell6_ConvertPreviousUnknownVersionUp_008271e0
+  LHNetworkLib_toLowerCase_0083ebd0
+  CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_008427e0
+  CCreatureActionPlayIntoLoopOutOfAnimation_CCreatureActionPlayIntoLoopOutOfAnimation_008428b0
+  CCreatureActionMagicBlast_PerformAction_00842fd0
+  CCreatureActionPlayAnimationWithLookTurning_FinishAction_00843940
+  CCreatureActionPlayAnimation_CCreatureActionPlayAnimation_00843a80
+  CCreatureActionPlayAnimation_FinishAction_00843b40
+  CCreatureActionDropWeapon_PerformAction_00845fe0

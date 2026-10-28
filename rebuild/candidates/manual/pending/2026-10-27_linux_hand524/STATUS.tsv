@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+008082c0	DIFFER	317	-	__adjust_heap<pair<C3DVector,long>*,...,(anon)::CCompareTargetedPositionsForFirstPersonTargeting>; 317v317 scheduling (retail preloads two comparator words before sub esp)
+008100d0	DIFFER	280	-	CTCDExplosiveTrail::Create; 280v280 ebx/edi swap (position / driver pointer)
+00816ac0	DIFFER	421	-	CTCHitLocations::OnInitialActivate (catalog "CParticleMorphs_PopulateFromDefinitions" wrong); 520v421 def-pointer lifetimes
+00825e00	DIFFER	263	-	CReplaceSerialise<Cell3,Cell2>::ConvertPreviousUnknownVersionUp; 256v263 register allocation (retail shrink-wraps ebp)
+00826c90	DIFFER	288	-	CReplaceSerialise<Cell5,Cell4>::ConvertPreviousUnknownVersionUp; 288v288 one load scheduled 2 instructions early
+0083d460	DIFFER	247	-	CThingMarker::Create; 228v247 inline-ctor new select jump-threaded in ours
+00844600	DIFFER	222	-	CCreatureAction_Read::PerformAction; 222v222 this/text-bank register swap (esi/edi)
