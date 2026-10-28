@@ -1,0 +1,48 @@
+addr       parity           behav  name
+00533bc0   RELOCATION_MATCH PASS   RemoveChild
+00535b10   WARN RELOC_NAME: ??4?$CCountedPointer@VCComponent@NUISystem@@@@QAEAAV0@ABV0@@Z -> 00429c58 labelled '_global::CCountedPointer_Assign_00429c58'
+00535b10   RELOCATION_MATCH PASS   insert
+00540620   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00540620   WARN SHARED_HEADER_AVAILABLE CObserver
+00540620   RELOCATION_MATCH PASS   Initialise
+005416b0   RELOCATION_MATCH PASS   ResetPositions
+0057846f   WARN RELOC_NAME: ??1?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAE@XZ -> 00579616 labelled 'std::list<T_00579616>::~list'
+0057846f   WARN RELOC_NAME: ??1?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAE@XZ -> 005796ab labelled 'std::list<T_005796ab>::~list'
+0057846f   WARN RELOC_NAME: ??1?$_List_base@VCSliderAnimator@@V?$allocator@VCSliderAnimator@@@std@@@std@@QAE@XZ -> 005792da labelled 'std::list<T_005792da>::~list'
+0057846f   WARN RELOC_CONFLICT: ??1?$vector@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAE@XZ -> 00440c40 here, 00af7210 in landed 00be25f0
+0057846f   WARN RELOC_NAME: ??1?$_Rb_tree@W4EHeroAbility@@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroAbility@@@3@V?$allocator@U?$pair@$$CBW4EHeroAbility@@USExpSpendUndo@@@std@@@3@@std@@QAE@XZ -> 00579fc1 labelled 'std::list<T_00579fc1>::~list'
+0057846f   WARN RELOC_NAME: ??1?$_Rb_tree@W4EHeroTrainableStatType@@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@U?$_Select1st@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@U?$less@W4EHeroTrainableStatType@@@3@V?$allocator@U?$pair@$$CBW4EHeroTrainableStatType@@USExpSpendUndo@@@std@@@3@@std@@QAE@XZ -> 00579faa labelled 'std::list<T_00579faa>::~list'
+0057846f   WARN RELOC_NAME: ??1?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@K@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@K@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@K@std@@@3@@std@@QAE@XZ -> 0057988c labelled 'std::list<T_0057988c>::~list'
+0057846f   RELOCATION_MATCH PASS   ~CTCInventoryExperience
+005d87b6   WARN RELOC_NAME: ?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z -> 004292c0 labelled 'std::_Rb_tree_base::_Rb_tree_increment'
+005d87b6   RELOCATION_MATCH PASS   insert_unique
+005d94b0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+005d94b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005d94b0   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+005d94b0   RELOCATION_MATCH PASS   CacheDef
+0061a500   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@PAVCThing@@U?$pair@QAVCThing@@PAVCComponent@NUISystem@@@std@@U?$_Select1st@U?$pair@QAVCThing@@PAVCComponent@NUISystem@@@std@@@3@U?$less@PAVCThing@@@3@V?$allocator@U?$pair@QAVCThing@@PAVCComponent@NUISystem@@@std@@@3@@std@@QAEXPAU?$_Rb_tree_node@U?$pair@QAVCThing@@PAVCComponent@NUISystem@@@std@@@2@@Z -> 00623560 labelled '_unattributed::FreeTree_CTreeOwner_00623560'
+0061a500   RELOCATION_MATCH PASS   ~CTCInventoryQuests
+0062d9e0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0062d9e0   RELOCATION_MATCH PASS   CCreatureAction_GiveItemToThing
+
+WINS: 9
+  00533bc0 RELOCATION_MATCH NUISystem::CComponent::?RemoveChild@CComponent@NUISystem@@UAEXK@Z
+  00535b10 RELOCATION_MATCH std::vector::?insert@?$vector@V?$CCountedPointer@VCComponent@NUISystem@@@@V?$allocator@V?$CCountedPointer@VCComponent@NUISystem@@@@@std@@@std@@QAEPAV?$CCountedPointer@VCComponent@NUISystem@@@@PAV3@ABV3@@Z
+  00540620 RELOCATION_MATCH NUISystem::CEditBox::?Initialise@CEditBox@NUISystem@@UAEXXZ
+  005416b0 RELOCATION_MATCH NUISystem::CDynamicList::?ResetPositions@CDynamicList@NUISystem@@UAEXXZ
+  0057846f RELOCATION_MATCH CTCInventoryExperience::??1CTCInventoryExperience@@UAE@XZ
+  005d87b6 RELOCATION_MATCH std::_Rb_tree::?insert_unique@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBKJ@std@@U?$_Nonconst_traits@U?$pair@$$CBKJ@std@@@2@@2@U32@ABU?$pair@$$CBKJ@2@@Z
+  005d94b0 RELOCATION_MATCH CTCInventoryItem::?CacheDef@CTCInventoryItem@@CI_NJ@Z
+  0061a500 RELOCATION_MATCH CTCInventoryQuests::??1CTCInventoryQuests@@UAE@XZ
+  0062d9e0 RELOCATION_MATCH CCreatureAction_GiveItemToThing::??0CCreatureAction_GiveItemToThing@@QAE@AAVCThingCreatureBase@@AAVCThing@@1@Z
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  NUISystemCComponent_RemoveChild_00533bc0
+  stdvector_insert_00535b10
+  NUISystemCEditBox_Initialise_00540620
+  NUISystemCDynamicList_ResetPositions_005416b0
+  CTCInventoryExperience_CTCInventoryExperience_0057846f
+  stdRbtree_insertunique_005d87b6
+  CTCInventoryItem_CacheDef_005d94b0
+  CTCInventoryQuests_CTCInventoryQuests_0061a500
+  CCreatureActionGiveItemToThing_CCreatureActionGiveItemToThing_0062d9e0

@@ -361076,6 +361076,69 @@ $catalog = @(
         TestSource = '00/4e/global_GFSerialiseMapBinaryInCObjectAugmentationParticl_004ec8c2_test.cpp'
         PassPattern = '004ec8c2_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00533bc0'
+        Module = 'NUISystem::CComponent'
+        Source = '00/53/NUISystemCComponent_RemoveChild_00533bc0.cpp'
+        TestSource = '00/53/NUISystemCComponent_RemoveChild_00533bc0_test.cpp'
+        PassPattern = '00533bc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00535b10'
+        Module = 'std::vector'
+        Source = '00/53/stdvector_insert_00535b10.cpp'
+        TestSource = '00/53/stdvector_insert_00535b10_test.cpp'
+        PassPattern = '00535b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00540620'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_Initialise_00540620.cpp'
+        TestSource = '00/54/NUISystemCEditBox_Initialise_00540620_test.cpp'
+        PassPattern = '00540620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005416b0'
+        Module = 'NUISystem::CDynamicList'
+        Source = '00/54/NUISystemCDynamicList_ResetPositions_005416b0.cpp'
+        TestSource = '00/54/NUISystemCDynamicList_ResetPositions_005416b0_test.cpp'
+        PassPattern = '005416b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0057846f'
+        Module = 'CTCInventoryExperience'
+        Source = '00/57/CTCInventoryExperience_CTCInventoryExperience_0057846f.cpp'
+        TestSource = '00/57/CTCInventoryExperience_CTCInventoryExperience_0057846f_test.cpp'
+        PassPattern = '0057846f_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d87b6'
+        Module = 'std::_Rb_tree'
+        Source = '00/5d/stdRbtree_insertunique_005d87b6.cpp'
+        TestSource = '00/5d/stdRbtree_insertunique_005d87b6_test.cpp'
+        PassPattern = '005d87b6_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d94b0'
+        Module = 'CTCInventoryItem'
+        Source = '00/5d/CTCInventoryItem_CacheDef_005d94b0.cpp'
+        TestSource = '00/5d/CTCInventoryItem_CacheDef_005d94b0_test.cpp'
+        PassPattern = '005d94b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0061a500'
+        Module = 'CTCInventoryQuests'
+        Source = '00/61/CTCInventoryQuests_CTCInventoryQuests_0061a500.cpp'
+        TestSource = '00/61/CTCInventoryQuests_CTCInventoryQuests_0061a500_test.cpp'
+        PassPattern = '0061a500_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0062d9e0'
+        Module = 'CCreatureAction_GiveItemToThing'
+        Source = '00/62/CCreatureActionGiveItemToThing_CCreatureActionGiveItemToThing_0062d9e0.cpp'
+        TestSource = '00/62/CCreatureActionGiveItemToThing_CCreatureActionGiveItemToThing_0062d9e0_test.cpp'
+        PassPattern = '0062d9e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

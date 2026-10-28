@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00be25f0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00be25f0   WARN RELOC_NAME: ??1?$CArray@VCEnginePrimitiveHandle@@@@QAE@XZ -> 00af7210 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+00be25f0   RELOCATION_MATCH PASS   CEngineInternalPrimitive2DViewport::`scalar deleting destructor'
+
+WINS: 1
+  00be25f0 RELOCATION_MATCH CEngineInternalPrimitive2DViewport::??_GCEngineInternalPrimitive2DViewport@@UAEPAXI@Z

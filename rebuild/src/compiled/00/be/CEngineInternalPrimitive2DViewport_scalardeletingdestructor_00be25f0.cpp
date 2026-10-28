@@ -6,7 +6,7 @@
 //   CIVCountedPointeeBase vtable 0x012354D0 (RTTI .?AVCIVCountedPointeeBase@@).
 // Label: the manifest's "`scalar_deleting_destructor'" is propagated (family H085: six deleting destructors of classes whose only non-trivial
 //   member is one object at +8 / +0x94; retail has no identical-code folding, so each address is its own class's ??_G).
-// Callees: vector<CEnginePrimitiveHandle>::~vector 0x00AF7210 on Primitives (each handle's virtual destructor, then the block), operator delete 0x00BFE9BC.
+// Callees: CArray<CEnginePrimitiveHandle>::~CArray 0x00AF7210 on Primitives (each handle's virtual destructor, then the block), operator delete 0x00BFE9BC.
 // Shape: CEngineInternalPrimitive2DViewport has no user-declared destructor (no own vtable store); CIVCountedPointeeBase's `virtual ~CIVCountedPointeeBase() { }` is inline
 //   and stores its vtable; the vtable (and so this ??_G) is emitted by the construction helper below. Local classes, Review at landing.
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
@@ -18,10 +18,17 @@ public:
     _Tp* _M_finish;
     _Tp* _M_end_of_storage;
     vector();
-    ~vector();                                              // 0x00AF7210 (vector<CEnginePrimitiveHandle>)
+    ~vector();
 };
 }
-template <class T> class CArray : public std::vector<T> { };     // retail CArray: an STLport vector (12 bytes)
+// 0x00AF7210 is the engine library's CArray<CEnginePrimitiveHandle> destructor (Ego_r.pdb: the engine members are
+//   CArray<CEnginePrimitiveHandle>, and ??1?$CArray@VCEnginePrimitiveHandle@@@@QAE@XZ is a PDB symbol); the game's
+//   byte-identical std::vector<CEnginePrimitiveHandle>::~vector is 0x00440C40 (CTCInventoryExperience members).
+//   Two retail addresses cannot share one COMDAT name, so the engine copy is the CArray destructor.
+template <class T> class CArray : public std::vector<T> {        // retail CArray: an STLport vector (12 bytes)
+public:
+    ~CArray();                                              // 0x00AF7210
+};
 class CEnginePrimitiveHandle;
 class CIVCountedPointeeBase {                               // vtable 0x012354D0
 public:
