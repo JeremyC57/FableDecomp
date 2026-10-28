@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+0058f649	DIFFER	883v883	-	CTCInventory::OpenPCInventory: front-end manager / name-temp frame slots swapped, PTop_Level_List address formed early, photojournal arrow store scheduled above the vtable load; scope / declaration-order variants inert; lane gap: frame-slot order
+0059fc17	DIFFER	715v716	-	CTCInventoryTrade::AlreadyHaveSpecial: PDB-named rewrite (private leaf, CTCInventoryItem getters, GetDef<CThingBaseDef>/GetSubDef<CHeroTitleDef>, CTCHero title); residue only the tattoo loop's register allocation (def in edi, no hoist of &def->BankIndex); lane gap
+005c71aa	DIFFER	680v680	-	CTCInventoryWeapons::ConstructWeaponDescriptionNoDamageNorWeight: PDB-named rewrite (681v680 -> 680v680); residue two scheduling swaps in the TEXT_GUI_MENU_NONE block; ~20 forms inert; lane gap: scheduling
+005cdd86	DIFFER	864v864	-	CTCInventoryStats::CreateExperienceSliders: PDB-named; first-slider value named + spacing+0x19 per slider -> same size (860v864 -> 864v864); residue pure frame-slot permutation; lane gap
+005d8978	DIFFER	754v754	-	CPersistContext::TransferMap<long,unsigned long> (catalog TransferMap<long,long> wrong): PDB-named rewrite; residue frame slots (insert result, traits objects in the dead map slot) + binary save/load case order; lane gap
+005f0dc5	DIFFER	996v996	-	CTCInventoryAbilities::AssignAbilityPC: old-contents name ternary is a register select (retail pushes in arms) + first use-param temp in the other dead arg slot; if/else, named param, scoped, by-value forms worse or inert
+005fb140	DIFFER	873v877	-	CTCInventoryMap::PanMap: region-scan loop register allocation (retail iterator in edi); STLport-spelled iterator + PDB names; every loop form inert; lane gap

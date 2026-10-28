@@ -362175,6 +362175,13 @@ $catalog = @(
         TestSource = '00/54/NUISystemCIconText_CIconText_005424b0_test.cpp'
         PassPattern = '005424b0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '005c0e81'
+        Module = 'CPersistTraits<NInventory::CItem>'
+        Source = '00/5c/CPersistTraitsNInventoryCItem_TransferOut_005c0e81.cpp'
+        TestSource = '00/5c/CPersistTraitsNInventoryCItem_TransferOut_005c0e81_test.cpp'
+        PassPattern = '005c0e81_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

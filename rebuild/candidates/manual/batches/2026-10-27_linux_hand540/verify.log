@@ -1,0 +1,9 @@
+addr       parity           behav  name
+005c0e81   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator_class_CCharString'
+005c0e81   RELOCATION_MATCH PASS   TransferOut
+
+WINS: 1
+  005c0e81 RELOCATION_MATCH CPersistTraits<NInventory::CItem>::?TransferOut@?$CPersistTraits@VCItem@NInventory@@@@QAEXAAVCPersistContext@@AAVCCharString@@ABVCItem@NInventory@@@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CPersistTraitsNInventoryCItem_TransferOut_005c0e81
