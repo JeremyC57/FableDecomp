@@ -1,0 +1,8 @@
+addr       parity           behav  name
+00a22590   RELOCATION_MATCH PASS   SetSlerp
+
+WINS: 1
+  00a22590 RELOCATION_MATCH CQuaternion::?SetSlerp@CQuaternion@@QAEXABV1@0M@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CQuaternion_SetSlerp_00a22590

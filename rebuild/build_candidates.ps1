@@ -362032,6 +362032,34 @@ $catalog = @(
         TestSource = '00/9e/stdRbtree_insertunique_009ef4d0_test.cpp'
         PassPattern = '009ef4d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a15140'
+        Module = 'CNavigatorManager'
+        Source = '00/a1/CNavigatorManager_GetNextNeighbour_00a15140.cpp'
+        TestSource = '00/a1/CNavigatorManager_GetNextNeighbour_00a15140_test.cpp'
+        PassPattern = '00a15140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a1c700'
+        Module = 'CSteeringAgent'
+        Source = '00/a1/CSteeringAgent_CSteeringAgent_00a1c700.cpp'
+        TestSource = '00/a1/CSteeringAgent_CSteeringAgent_00a1c700_test.cpp'
+        PassPattern = '00a1c700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a27350'
+        Module = 'CMeshDataBank'
+        Source = '00/a2/CMeshDataBank_CMeshDataBank_00a27350.cpp'
+        TestSource = '00/a2/CMeshDataBank_CMeshDataBank_00a27350_test.cpp'
+        PassPattern = '00a27350_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a22590'
+        Module = 'CQuaternion'
+        Source = '00/a2/CQuaternion_SetSlerp_00a22590.cpp'
+        TestSource = '00/a2/CQuaternion_SetSlerp_00a22590_test.cpp'
+        PassPattern = '00a22590_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

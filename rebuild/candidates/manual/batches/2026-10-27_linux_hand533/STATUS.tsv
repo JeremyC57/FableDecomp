@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+009f73c0	DIFFER	724v732	-	CVsyncCallbackTimer::OnPostSwapScreens (Ego_r); parked differ/009f73c0.cpp: frame 0x1b8 vs 0x1bc (++FrameCount address temp slot, size-local slot order)
+00a15140	RELOCATION_MATCH	731	test/00a15140.cpp	CNavigatorManager::GetNextNeighbour (Ego_r donor order + signature); label CNavigatorManager_FindValidNavNode wrong
+00a18b50	DIFFER	783v783	-	CPhysicsMesh::HasCollidedWithTriangleAt (FableWin name set + ret 1Ch + TotalPoints); parked: frame-slot order of step/to/edge locals only
+00a1a7e0	DIFFER	895v862	-	CNavigatorAStar::GetIntersectionPointsBetweenNodes (Ego_r + FableWin); parked: return construction (first point frame temp, second on x87, tail merge)
+00a1c700	RELOCATION_MATCH	582	test/00a1c700.cpp	CSteeringAgent::CSteeringAgent(const CNavigatorExternalInterface*, bool) (Ego_r + FableWin); label CNavigatorBase_Constructor is the caller's
+00a1ceb0	DIFFER	992v992	-	CNavigatorAStar::Initialise (Ego_r 0xB87CD0 + FableWin); parked: one fstp scheduled one instruction later
+00a22590	RELOCATION_MATCH	514	retail_asm/00a22590.test.cpp	retail_asm: CQuaternion::SetSlerp (FableWin, CRightHandedSet TU); inlined GFFastArcCos/GFFastSin dword fistp; label ApplyPartialAnimationAlpha wrong
+00a229e0	DIFFER	691v689	-	CRightHandedSet::CRightHandedSet(const C3DAngles&) (Ego_r); parked: frame 0x50 vs 0x4c (up.X homed in dead param slot), s*z order
+00a27350	RELOCATION_MATCH	886	test/00a27350.cpp	CMeshDataBank::~CMeshDataBank (Ego_r + vtable 0x0129CE94); label CGameWorld_Destructor wrong
+00a35b70	DIFFER	1012v1022	-	C3DMeshObject::GetRotationMatrixForTransformFromTo (Ego_r); parked: mem x mem operand order and inline SetInverse cofactor order

@@ -1,0 +1,5 @@
+address	name	evidence
+00a15140	CNavigatorManager::GetNextNeighbour	proven per batch 2026-10-27_linux_hand533 NOTES.md (chunk 533)
+00a1c700	CSteeringAgent::CSteeringAgent(const CNavigatorExternalInterface*, bool)	proven per batch 2026-10-27_linux_hand533 NOTES.md (chunk 533)
+00a22590	retail_asm: CQuaternion::SetSlerp	proven per batch 2026-10-27_linux_hand533 NOTES.md (chunk 533)
+00a27350	CMeshDataBank::~CMeshDataBank	proven per batch 2026-10-27_linux_hand533 NOTES.md (chunk 533)

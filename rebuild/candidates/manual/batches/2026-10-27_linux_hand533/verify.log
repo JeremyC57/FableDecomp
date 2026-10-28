@@ -1,0 +1,33 @@
+addr       parity           behav  name
+00a15140   WARN SHARED_HEADER_AVAILABLE CANavQuadTreeNode
+00a15140   WARN SHARED_HEADER_AVAILABLE CNavQuadTree
+00a15140   WARN SHARED_HEADER_AVAILABLE CNavigatorManager
+00a15140   WARN RELOC_NAME: ?GetSmallestNodeSize@CNavQuadTree@@SIMXZ -> 00a76320 labelled '_global::GetConstFloat_0_5_00a76320'
+00a15140   RELOCATION_MATCH PASS   GetNextNeighbour
+00a1c700   WARN SHARED_HEADER_AVAILABLE CSB
+00a1c700   RELOCATION_MATCH PASS   CSteeringAgent
+00a27350   WARN SHARED_HEADER_AVAILABLE CBankFile
+00a27350   WARN SHARED_HEADER_AVAILABLE C3DMeshInfo
+00a27350   WARN SHARED_HEADER_AVAILABLE C3DAnimationInfo
+00a27350   WARN RELOC_NAME: ?Uninitialise@C3DAnimationManager@@QAEXXZ -> 00a9d740 labelled '_global::SetMemberConst_00a9d740'
+00a27350   WARN RELOC_NAME: ??$__destroy_aux@PAV?$CCountedPointer@VCMeshDataBankEntry@@@@@std@@YIXPAV?$CCountedPointer@VCMeshDataBankEntry@@@@0ABU__false_type@0@@Z -> 00a2bd20 labelled '_global::DestroyRange_CountedPointer_00a2bd20'
+00a27350   RELOCATION_MATCH PASS   ~CMeshDataBank
+
+WINS: 3
+  00a15140 RELOCATION_MATCH CNavigatorManager::?GetNextNeighbour@CNavigatorManager@@QAEPBVCANavQuadTreeNode@@ABV2@PBV2@ABVC2DVector@@PA_N@Z
+  00a1c700 RELOCATION_MATCH CSteeringAgent::??0CSteeringAgent@@QAE@PBVCNavigatorExternalInterface@@_N@Z
+  00a27350 RELOCATION_MATCH CMeshDataBank::??1CMeshDataBank@@UAE@XZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  CNavigatorManager_GetNextNeighbour_00a15140
+  CSteeringAgent_CSteeringAgent_00a1c700
+  CMeshDataBank_CMeshDataBank_00a27350
+=== retail_asm payload ===
+addr       parity           behav  name
+00a22590   RELOCATION_MATCH PASS   SetSlerp
+
+WINS: 1
+  00a22590 RELOCATION_MATCH CQuaternion::?SetSlerp@CQuaternion@@QAEXABV1@0M@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CQuaternion_SetSlerp_00a22590

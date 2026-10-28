@@ -775,3 +775,5 @@ Chunk 531 (agent531, re-queue 228-505 bytes; batch 2026-10-27_linux_hand531): 11
 Chunk 530 (agent530, re-queue 321-397 bytes; batch 2026-10-27_linux_hand530): 10 of 20 landed (1 MATCH, 9 RELOCATION_MATCH), 10 parked. Applied at landing: 0x00B4A6A0 Layer2DToSortDistance / 0x00B4A6B0 Layer2DToDistance (both rows had carried one name) with 5 callers respelled and rechecked. Found: ??0CBase@@QAE@XZ bound to 0x0099A2F0 and 0x0099A2D0. 27 NAME_FIXES deferred (queue now 427).
 
 Chunk 532 (agent532, re-queue 520-637 bytes; batch 2026-10-27_linux_hand532): 3 of 10 landed (RELOCATION_MATCH), 7 parked (inline budget, LTCG, register/x87). Applied at landing: the crypto pair swap (0x0055F090 StdEncryptString, 0x0055F140 StdDecryptString; EncryptBuffer 0x0055E4F0, DecryptBuffer 0x0055E510), rechecked. Remaining NAME_FIXES deferred (queue now 447).
+
+Chunk 533 (agent533, re-queue 514-1022 bytes; batch 2026-10-27_linux_hand533): 4 of 10 landed (3 RELOCATION_MATCH + 0x00A22590 CQuaternion::SetSlerp retail_asm), 6 parked. 19 NAME_FIXES deferred (queue now 466); open: the STLport _Rb_tree template-argument count across landed _M_erase / _M_insert leaves.
