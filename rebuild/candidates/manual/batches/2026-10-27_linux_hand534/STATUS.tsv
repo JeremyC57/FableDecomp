@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+00a3a410	SKIP	920	none	0 grades. Proven CWADBank::AddFile(const CWideString&) (?AddFile@CWADBank@@QAEXABVCWideString@@@Z; Ego_r + FableWin, ret 4, CWADFile/CWADBankStateBlock TU); catalog CreateWorldLevelWad is CWorldMap 2-arg. ~25 bank/disk-file/stream callees and a 0x1a8 frame of library objects: not reachable in 4 grades
+00a3b9d0	RELOCATION_MATCH	592	PASS	3 grades. CVideoSys::Init; needs // Flags: /Zc:wchar_t
+00a3ef00	SKIP	561	none	0 grades. Descriptive: CSoundManagerLH constructor (stores vtable 0x0129D2C4, RTTI .?AVCSoundManagerLH@@ base CASoundManager); no PDB name for the class or its members, no header: every member type would be CUnproven
+00a614b0	DIFFER	634	PASS	4 grades. 634v634 one register choice in the end() arm; std::_Rb_tree<CWideString,pair<const CWideString,CChecksumCacheFile::CEntry>>::insert_unique(iterator,const value_type&)
+00a68370	RELOCATION_MATCH	613	PASS	2 grades. CVolumeTexture::Initialise (CreateTexture 0x00A68250 same-TU inline)
+00a68690	DIFFER	626	PASS	4 grades. 626v626 frame 0x60 vs 0x58 (retail overlaps C3DExtentsI with the scratch CTexture); CVolumeTexture::InitialiseSlicesFromTextureList
+00a868c0	DIFFER	585	PASS	4 grades. 585v652 VC inlines all three CArray<unsigned short>::push_back, retail only the first; CIPhysicsFacesSegmentBase::Calculate
+00ab1cc0	DIFFER	612	PASS	4 grades. 612v612 two empty tag temporaries homed on the bones slot instead of the mesh slot; C3DAnimationBuilder::BuildBoneInfoTree
+00b61dd0	DIFFER	532	PASS	4 grades. 521v532 vertex-counter placement + u/v product order; CEngineSkyRenderer::BuildCloudMesh
+00c400d0	SKIP	527	none	0 grades. Over-spanned row: the body ends at ret 0x00C4017F followed by its jump table (0x00C40180) and index bytes (0x00C40190); the row then runs past int3 padding into further functions (0x00C401E0 onwards). Catalog must re-split; descriptive only (64-way switch picking table 0x0143BC1C/0x0143BC20, 0x34-byte entries via 0x00C3FF90)
+00df9b80	RELOCATION_MATCH	639	PASS	4 grades. NScript::CQ_TraderConflictEvilScript::UpdateLiveEnemies
+00e12330	RELOCATION_MATCH	586	PASS	1 grade. NScript::CQ_WaspBossScript::WatchForCutscene

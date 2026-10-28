@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+00a614b0	DIFFER	634	PASS	4 grades. 634v634 one register choice in the end() arm; std::_Rb_tree<CWideString,pair<const CWideString,CChecksumCacheFile::CEntry>>::insert_unique(iterator,const value_type&)
+00a68690	DIFFER	626	PASS	4 grades. 626v626 frame 0x60 vs 0x58 (retail overlaps C3DExtentsI with the scratch CTexture); CVolumeTexture::InitialiseSlicesFromTextureList
+00a868c0	DIFFER	585	PASS	4 grades. 585v652 VC inlines all three CArray<unsigned short>::push_back, retail only the first; CIPhysicsFacesSegmentBase::Calculate
+00ab1cc0	DIFFER	612	PASS	4 grades. 612v612 two empty tag temporaries homed on the bones slot instead of the mesh slot; C3DAnimationBuilder::BuildBoneInfoTree
+00b61dd0	DIFFER	532	PASS	4 grades. 521v532 vertex-counter placement + u/v product order; CEngineSkyRenderer::BuildCloudMesh

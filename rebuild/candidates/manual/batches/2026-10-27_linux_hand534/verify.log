@@ -1,0 +1,25 @@
+addr       parity           behav  name
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/wine/vc71rtm/bin/cl.exe j /tmp/claude-0/-home-user-FableDecomp/40effb6c-294b-5111-9a88-ca0c32f095ec/scratchpad/lv534/00/a3/00a3b9d0/00a3b9d0.cpp
+00a3b9d0   WARN RELOC_NAME: ??BCWideString@@QBEPB_WXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+00a3b9d0   RELOCATION_MATCH["t"] PASS   Init
+00a68370   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+00a68370   RELOCATION_MATCH PASS   Initialise
+00df9b80   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00df9b80   RELOCATION_MATCH PASS   UpdateLiveEnemies
+00e12330   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00e12330   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e12330   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e12330   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e12330   RELOCATION_MATCH PASS   WatchForCutscene
+
+WINS: 4
+  00a3b9d0 RELOCATION_MATCH["t"] CVideoSys::?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z
+  00a68370 RELOCATION_MATCH CVolumeTexture::?Initialise@CVolumeTexture@@QAE_NABVC3DExtentsI@@JABVCPixelFormat@@KW4EVolumePool@@_N@Z
+  00df9b80 RELOCATION_MATCH NScript::CQ_TraderConflictEvilScript::?UpdateLiveEnemies@CQ_TraderConflictEvilScript@NScript@@QAEXXZ
+  00e12330 RELOCATION_MATCH NScript::CQ_WaspBossScript::?WatchForCutscene@CQ_WaspBossScript@NScript@@QAEXXZ
+
+LANDED 4 wins into src/compiled + tests + catalog + oracle
+  CVideoSys_Init_00a3b9d0
+  CVolumeTexture_Initialise_00a68370
+  NScriptCQTraderConflictEvilScript_UpdateLiveEnemies_00df9b80
+  NScriptCQWaspBossScript_WatchForCutscene_00e12330

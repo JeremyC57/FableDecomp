@@ -362060,6 +362060,35 @@ $catalog = @(
         TestSource = '00/a2/CQuaternion_SetSlerp_00a22590_test.cpp'
         PassPattern = '00a22590_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00a3b9d0'
+        Module = 'CVideoSys'
+        Source = '00/a3/CVideoSys_Init_00a3b9d0.cpp'
+        TestSource = '00/a3/CVideoSys_Init_00a3b9d0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        PassPattern = '00a3b9d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a68370'
+        Module = 'CVolumeTexture'
+        Source = '00/a6/CVolumeTexture_Initialise_00a68370.cpp'
+        TestSource = '00/a6/CVolumeTexture_Initialise_00a68370_test.cpp'
+        PassPattern = '00a68370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00df9b80'
+        Module = 'NScript::CQ_TraderConflictEvilScript'
+        Source = '00/df/NScriptCQTraderConflictEvilScript_UpdateLiveEnemies_00df9b80.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictEvilScript_UpdateLiveEnemies_00df9b80_test.cpp'
+        PassPattern = '00df9b80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e12330'
+        Module = 'NScript::CQ_WaspBossScript'
+        Source = '00/e1/NScriptCQWaspBossScript_WatchForCutscene_00e12330.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScript_WatchForCutscene_00e12330_test.cpp'
+        PassPattern = '00e12330_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
