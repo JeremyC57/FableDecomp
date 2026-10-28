@@ -1,0 +1,8 @@
+address	status	bytes	test	note
+005458a0	DIFFER	669v621	-	NUISystem::CSpellContainer::AssignSpell; DIFFER(669v621) VC inlining budget (CDeletion copy ctor 0x42CD84 / ~_List_base 0x42ABCA out of line in retail's first branch), slot ebp vs edi
+0055e2c0	DIFFER	545v549	-	(anon)::CryptoMatic; DIFFER(545v549) register/frame-slot permutation (strlen before prologue pushes, keyLength in esi) and key-word store order
+005fcbe0	DIFFER	649v637	-	CTCInventoryMap::ConstructPastQuestsList; DIFFER(649v637) CDefPointer release load/dec/store vs dec [ecx+4]; next try same-TU noinline GetDef 0x42B312
+00753630	DIFFER	532v528	-	CTCLook::InitialiseTurningViaAnimation; DIFFER(532v528) x87 operand order only (length test Y-first, dot Z term)
+007634e0	DIFFER	659v627	-	NShape::CBasicShape::UpdateSubdivisions; DIFFER(659v627) register allocation and frame packing (0x34 vs 0x30)
+0077dc40	DIFFER	591v626	-	CTCHeroCentre::OnInitialActivate; DIFFER(591v626) LTCG knowledge of _M_insert_dispatch (list header kept in esi)
+00834530	DIFFER	558v558	-	(anon)::CombatStressTestDebug; DIFFER(558v558) empty CThingFilter_None temporary gets its own frame slot (0x28 vs 0x24), size computed before empty test

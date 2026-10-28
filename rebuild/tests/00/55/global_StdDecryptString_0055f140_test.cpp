@@ -20,17 +20,17 @@ static void Check(bool ok, int line)
 
 static int g_cryptCalls = 0;
 static char g_lastMode = -1;
-static int CryptoMatic(const char* source, char* destination, int length, const char* key, char encrypt)   // stub for 0x0055E2C0
+static int CryptoMatic(const char* source, char* destination, int length, const char* key, char decrypt)   // stub for 0x0055E2C0
 {
     ++g_cryptCalls;
-    g_lastMode = encrypt;
+    g_lastMode = decrypt;
     int keyLength = (int)std::strlen(key);
     for (int i = 0; i < length; ++i)
         destination[i] = (char)(source[i] ^ key[i % keyLength]);
     return length;
 }
-static int DecryptBuffer(const char* source, char* destination, int length, const char* key) { return CryptoMatic(source, destination, length, key, 0); }
-static int EncryptBuffer(const char* source, char* destination, int length, const char* key) { return CryptoMatic(source, destination, length, key, 1); }
+static int EncryptBuffer(const char* source, char* destination, int length, const char* key) { return CryptoMatic(source, destination, length, key, 0); }
+static int DecryptBuffer(const char* source, char* destination, int length, const char* key) { return CryptoMatic(source, destination, length, key, 1); }
 struct string {                                          // STLport 12-byte string stand-in
     char* _M_start;
     char* _M_finish;
@@ -65,10 +65,10 @@ struct vector {                                          // vector<char>(n, val)
     ~vector() { if (_M_start) std::free(_M_start); }
     char& operator[](unsigned int n) { return *(_M_start + n); }
 };
-static string StdEncryptString(const string& text, const string& key)
+static string StdDecryptString(const string& text, const string& key)
 {
     vector buffer(text.size() , 0);
-    int length = EncryptBuffer(text.c_str(), &buffer[0], text.size(), key.c_str());
+    int length = DecryptBuffer(text.c_str(), &buffer[0], text.size(), key.c_str());
     string result(&buffer[0], &buffer[0] + length);
     return result;
 }
@@ -78,13 +78,13 @@ static void RunTest()
     const char k[] = "LH";
     string text(plain, plain + sizeof(plain) - 1);
     string key(k, k + 2);
-    string out = StdEncryptString(text, key);
+    string out = StdDecryptString(text, key);
     CHECK(g_cryptCalls == 1 && g_lastMode == 1 && g_vectorSize == (int)(sizeof(plain) - 1) );
     CHECK(out.size() == sizeof(plain) - 1);
     for (unsigned int i = 0; i < out.size(); ++i)
         CHECK(out.c_str()[i] == (char)(plain[i] ^ k[i % 2]));
     CHECK(out.c_str()[out.size()] == 0);
-    string back = StdEncryptString(out, key);                    // the XOR stand-in is its own inverse
+    string back = StdDecryptString(out, key);                    // the XOR stand-in is its own inverse
     CHECK(back.size() == sizeof(plain) - 1 && std::memcmp(back.c_str(), plain, back.size()) == 0);
 }
 

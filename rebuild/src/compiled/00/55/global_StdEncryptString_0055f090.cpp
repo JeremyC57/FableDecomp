@@ -1,22 +1,30 @@
-// StdEncryptString(const std::string& text, const std::string& key) -- (anonymous namespace) encrypt a narrow STL string: fill a zeroed char vector of size(), run EncryptBuffer (CryptoMatic mode 1) from the text into it with the key, and return the first `length` encrypted bytes as a new string
+// StdEncryptString(const std::string& text, const std::string& key) -- (anonymous namespace) encrypt a narrow STL string: fill a zeroed char vector of size()+32, run EncryptBuffer (CryptoMatic mode 0) from the text into it with the key, and return the first `length` encrypted bytes as a new string
 // Leaf: ?StdEncryptString@
-// Retail: Fable.exe (TLC, VC7.1) @ 0x0055F140, 170 bytes, `ret 4` (/Gr __fastcall: the hidden std::string result in
-//   ecx, &text in edx, &key on the stack). Byte twin of StdDecryptString 0x0055F090 (no +32, mode 1).
-// Callers: 0x0055F35D (the CCharString EncryptString front end 0x0055F2D0; not in the manifest), 0x00561204
-//   (CTCHeroOnlineScoreboard::ProcessLogin 0x00560D00).
-// Callees: std::vector<char>(n, const char&, const allocator&) 0x00567560, CryptoMatic 0x0055E2C0 (EncryptBuffer
-//   0x0055E510 inlined), basic_string::_M_range_initialize<char*>(f, l, const forward_iterator_tag&) 0x00567D00 (twice),
-//   free 0x00BFEA14.
-// Label correction: catalogued as "CryptoEncrypt_ToStruct"; Ego_r.pdb
-//   `?StdEncryptString@?A0xf010c0d0@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@0@Z`.
+// Retail: Fable.exe (TLC, VC7.1) @ 0x0055F090, 170 bytes (176 with padding), `ret 4` (/Gr __fastcall: the hidden
+//   std::string result in ecx, &text in edx, &key on the stack).
+// Identity (respelled 2026-10-28, chunk 532): Ego_r.pdb orders every crypto pair Encrypt before Decrypt (EncryptBuffer
+//   0x5D76E0 / DecryptBuffer 0x5D7700, StdEncryptString 0x5D8790 / StdDecryptString 0x5D8840, EncryptString 0x5D88F0 /
+//   DecryptString 0x5D8A00) and retail keeps the same order (0x0055E4F0 / 0x0055E510, 0x0055F090 / 0x0055F140, 0x0055F1F0 /
+//   0x0055F2D0); 0x0055F090 also sizes its output size()+32 (the cipher grows the text). The two rows had been landed swapped.
+// Callers: 0x0055F27D (the CCharString EncryptString front end 0x0055F1F0; not in the manifest), 0x00560FFD (CTCHeroOnlineScoreboard::ProcessLogin 0x00560D00).
+// Callees: std::vector<char>(n, const char&, const allocator&) 0x00567560 (catalogued "Vector_Fill_Byte"),
+//   CryptoMatic 0x0055E2C0 (EncryptBuffer 0x0055E4F0 inlined), basic_string::_M_range_initialize<char*>(f, l,
+//   const forward_iterator_tag&) 0x00567D00 (twice: the local, then the copy into the result), free 0x00BFEA14.
+// Label correction: catalogued as "CryptoDecrypt_ToStruct"; Ego_r.pdb
+//   `?StdEncryptString@?A0xf010c0d0@@YI?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@ABV23@0@Z`
+//   (the retail STLport build mangles into `std`; our anonymous-namespace hash differs, so the leaf is a prefix).
 // Instance: STLport 4.6's range constructor and `_M_range_initialize` are member templates and `char_traits` is a class:
 //   both strings are built from `char*` ranges (`&buffer[0]`, then the copy constructor's `__s._M_start`), so both calls
 //   are the `<char*>` instance 0x00567D00 (`??$_M_range_initialize@PAD@...`); `<const char*>` is 0x005672D0.
 // Layout: STLport 4.x 12-byte string / vector { _M_start, _M_finish, _STLP_alloc_proxy _M_end_of_storage }.
-// Same-TU stand-ins (as retail's whole-program view): the vector fill constructor (RELOCATION_MATCH against
-//   0x00567560), `_M_range_initialize` (the landed 0x00567D00 body) and `_M_throw_length_error` (landed 0x00565A30);
-//   they let the local string reuse the vector's frame slot and keep both start pointers in registers.
-// Shape: as StdDecryptString: `vector<char> buffer(size, 0)`, a named local string, `return result;`.
+// Same-TU stand-ins (as retail's whole-program view, GOTCHAS "same-TU auto_inline(off) stand-ins"): the vector fill
+//   constructor (grades RELOCATION_MATCH against 0x00567560 itself), `_M_range_initialize` (the landed 0x00567D00 body)
+//   and `_M_throw_length_error` (the landed 0x00565A30 puts + abort). With them VC7.1 knows neither local's address
+//   escapes: the vector's start stays in edi, the local string reuses the vector's frame slot, the result string's
+//   start stays in ebp for its destructor, and the allocator / iterator-tag temporaries are homed in the `key` slot.
+//   Without them the frame is 0x1c bytes and every field is re-read (174v170).
+// Shape: `vector<char> buffer(size + 32, 0)` (the char 0 temporary at esp+13h), a named local string from
+//   [&buffer[0], &buffer[0] + length), `return result;` (copy into the hidden result, then both destructors).
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 extern "C" void* __cdecl memset(void* dest, int value, unsigned int count);
@@ -120,19 +128,19 @@ public:
 }
 
 namespace {
-int __fastcall CryptoMatic(const char* source, char* destination, int length, const char* key, char encrypt);   // 0x0055E2C0
-int __fastcall DecryptBuffer(const char* source, char* destination, int length, const char* key)   // 0x0055E4F0
+int __fastcall CryptoMatic(const char* source, char* destination, int length, const char* key, char decrypt);   // 0x0055E2C0
+int __fastcall EncryptBuffer(const char* source, char* destination, int length, const char* key)   // 0x0055E4F0
 {
     return CryptoMatic(source, destination, length, key, 0);
 }
-int __fastcall EncryptBuffer(const char* source, char* destination, int length, const char* key)   // 0x0055E510
+int __fastcall DecryptBuffer(const char* source, char* destination, int length, const char* key)   // 0x0055E510
 {
     return CryptoMatic(source, destination, length, key, 1);
 }
 
 std::string __fastcall StdEncryptString(const std::string& text, const std::string& key)
 {
-    std::vector<char> buffer(text.size(), 0);
+    std::vector<char> buffer(text.size() + 32, 0);
     int length = EncryptBuffer(text.c_str(), &buffer[0], text.size(), key.c_str());
     std::string result(&buffer[0], &buffer[0] + length);
     return result;

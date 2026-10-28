@@ -35164,3 +35164,11 @@ __imp__SetCursor@4	014402f4	0099d660
 ?g_pPrimitiveRendererSharedData@@3PAVCEnginePrimitiveRendererSharedData@@A	01436e78	00bcf2e0
 ?Layer2DToSortDistance@CEnginePrimitiveRenderer2D@@QAEMW4EEngine2DLayer@@@Z	00b4a6a0	00be0cd0
 ?Layer2DToDistance@CEnginePrimitiveRenderer2D@@QAEMW4EEngine2DLayer@@@Z	00b4a6b0	00be0de0
+??E?$_Rb_tree_iterator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@QAEAAU01@XZ	00527480	0052a2d0
+?insert_unique@?$_Rb_tree@_KU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Select1st@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@_N@2@ABU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@2@@Z	005294b0	0052a2d0
+?GetNearestNavigablePosTo@CTCCreatureNavigation@@QBE_NABVC3DVector@@MAAV2@@Z	006cb8e0	008334f0
+?IsPosNavigable@CTCCreatureNavigation@@QBE_NABVC3DVector@@@Z	006cba50	008334f0
+??E?$_Rb_tree_iterator@U?$pair@$$CBDVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBDVCCharString@@@std@@@2@@std@@QAEAAU01@XZ	009ee1f0	009ef4d0
+??F?$_Rb_tree_iterator@U?$pair@$$CBDVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBDVCCharString@@@std@@@2@@std@@QAEAAU01@XZ	009ee910	009ef4d0
+?_M_insert@?$_Rb_tree@DU?$pair@$$CBDVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBDVCCharString@@@std@@@2@U?$less@D@2@V?$allocator@U?$pair@$$CBDVCCharString@@@std@@@2@@std@@AAE?AU?$_Rb_tree_iterator@U?$pair@$$CBDVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBDVCCharString@@@std@@@2@@2@PAU_Rb_tree_node_base@2@0ABU?$pair@$$CBDVCCharString@@@2@0@Z	009ef0d0	009ef4d0
+?insert_unique@?$_Rb_tree@DU?$pair@$$CBDVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBDVCCharString@@@std@@@2@U?$less@D@2@V?$allocator@U?$pair@$$CBDVCCharString@@@std@@@2@@std@@QAE?AU?$pair@U?$_Rb_tree_iterator@U?$pair@$$CBDVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBDVCCharString@@@std@@@2@@std@@_N@2@ABU?$pair@$$CBDVCCharString@@@2@@Z	009ef1a0	009ef4d0

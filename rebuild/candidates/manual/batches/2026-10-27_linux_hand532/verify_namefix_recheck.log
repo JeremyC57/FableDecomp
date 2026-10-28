@@ -1,0 +1,7 @@
+addr       parity           behav  name
+0055f090   RELOCATION_MATCH PASS   _global::StdEncryptString
+0055f140   RELOCATION_MATCH PASS   _global::StdDecryptString
+
+WINS: 2
+  0055f090 RELOCATION_MATCH _global::?StdEncryptString@
+  0055f140 RELOCATION_MATCH _global::?StdDecryptString@

@@ -1,0 +1,14 @@
+addr       parity           behav  name
+0052a2d0   RELOCATION_MATCH PASS   insert_unique
+008334f0   RELOCATION_MATCH PASS   GetGatherPosInBuilding
+009ef4d0   RELOCATION_MATCH PASS   insert_unique
+
+WINS: 3
+  0052a2d0 RELOCATION_MATCH std::_Rb_tree::?insert_unique@?$_Rb_tree@_KU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Select1st@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@std@@@2@@2@U32@ABU?$pair@$$CB_KU?$pair@VCCharString@@VCWideString@@@std@@@2@@Z
+  008334f0 RELOCATION_MATCH CThingAICreature::?GetGatherPosInBuilding@CThingAICreature@@QBE?AVC3DVector@@V?$CIntelligentPointer@$$CBVCThingBuilding@@@@@Z
+  009ef4d0 RELOCATION_MATCH std::_Rb_tree::?insert_unique@?$_Rb_tree@DU?$pair@$$CBDVCCharString@@@std@@U?$_Select1st@U?$pair@$$CBDVCCharString@@@std@@@2@U?$less@D@2@V?$allocator@U?$pair@$$CBDVCCharString@@@std@@@2@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBDVCCharString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBDVCCharString@@@std@@@2@@2@U32@ABU?$pair@$$CBDVCCharString@@@2@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  stdRbtree_insertunique_0052a2d0
+  CThingAICreature_GetGatherPosInBuilding_008334f0
+  stdRbtree_insertunique_009ef4d0

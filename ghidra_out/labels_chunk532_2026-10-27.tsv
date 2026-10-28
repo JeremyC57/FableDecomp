@@ -1,0 +1,4 @@
+address	name	evidence
+0052a2d0	std::_Rb_tree<u64,pair<const u64,pair<CCharString,CWideString>>>::insert_unique(iterator,const value_type&)	proven per batch 2026-10-27_linux_hand532 NOTES.md (chunk 532)
+008334f0	CThingAICreature::GetGatherPosInBuilding(CIntelligentPointer<const CThingBuilding>)	proven per batch 2026-10-27_linux_hand532 NOTES.md (chunk 532)
+009ef4d0	std::_Rb_tree<char,pair<const char,CCharString>>::insert_unique(iterator,const value_type&)	proven per batch 2026-10-27_linux_hand532 NOTES.md (chunk 532)

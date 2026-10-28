@@ -290843,15 +290843,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0055f090'
         Module = '_global'
-        Source = '00/55/global_StdDecryptString_0055f090.cpp'
-        TestSource = '00/55/global_StdDecryptString_0055f090_test.cpp'
+        Source = '00/55/global_StdEncryptString_0055f090.cpp'
+        TestSource = '00/55/global_StdEncryptString_0055f090_test.cpp'
         PassPattern = '0055f090_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0055f140'
         Module = '_global'
-        Source = '00/55/global_StdEncryptString_0055f140.cpp'
-        TestSource = '00/55/global_StdEncryptString_0055f140_test.cpp'
+        Source = '00/55/global_StdDecryptString_0055f140.cpp'
+        TestSource = '00/55/global_StdDecryptString_0055f140_test.cpp'
         PassPattern = '0055f140_TEST PASS'
     }
     [pscustomobject]@{
@@ -362010,6 +362010,27 @@ $catalog = @(
         Source = '00/bc/CEngineInternalPrimitiveAnimatedMesh_SetupMesh_00bcf2e0.cpp'
         TestSource = '00/bc/CEngineInternalPrimitiveAnimatedMesh_SetupMesh_00bcf2e0_test.cpp'
         PassPattern = '00bcf2e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0052a2d0'
+        Module = 'std::_Rb_tree'
+        Source = '00/52/stdRbtree_insertunique_0052a2d0.cpp'
+        TestSource = '00/52/stdRbtree_insertunique_0052a2d0_test.cpp'
+        PassPattern = '0052a2d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008334f0'
+        Module = 'CThingAICreature'
+        Source = '00/83/CThingAICreature_GetGatherPosInBuilding_008334f0.cpp'
+        TestSource = '00/83/CThingAICreature_GetGatherPosInBuilding_008334f0_test.cpp'
+        PassPattern = '008334f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009ef4d0'
+        Module = 'std::_Rb_tree'
+        Source = '00/9e/stdRbtree_insertunique_009ef4d0.cpp'
+        TestSource = '00/9e/stdRbtree_insertunique_009ef4d0_test.cpp'
+        PassPattern = '009ef4d0_TEST PASS'
     }
 )
 
