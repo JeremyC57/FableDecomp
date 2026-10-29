@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00d27050   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptGameResourceObjectScriptedThingBase@@@@QAEAAV0@ABV0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00d27050   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d27050   RELOCATION_MATCH PASS   PlayCutscene
+00e389e0   RELOCATION_MATCH PASS   Main
+00ed7830   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00ed7830   WARN RELOC_NAME: ?WatchForCompletedQuests@CV_TalentlessBardScript@NScript@@QAEXXZ -> 00ed7a40 labelled 'TalentlessBard_OnScript'
+00ed7830   RELOCATION_MATCH PASS   Main
+00ef7600   WARN RELOC_NAME: ??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z -> 00e24760 labelled 'CConsoleCommandParameters::CConsoleCommandParameters'
+00ef7600   RELOCATION_MATCH PASS   Main
+00f34160   RELOCATION_MATCH PASS   _M_insert_overflow
+00f36710   RELOCATION_MATCH PASS   GetFractalHeight
+00f37f60   WARN RELOC_NAME: ??$__uninitialized_copy@PAUCResourceEntry@CGPUScratchBufferTextureManager@@PAU12@@std@@YIPAUCResourceEntry@CGPUScratchBufferTextureManager@@PAU12@00ABU__false_type@0@@Z -> 00f37cc0 labelled '_global::UninitCopy_SRecord2C_00f37cc0'
+00f37f60   RELOCATION_MATCH PASS   _M_insert_overflow
+00f381f0   WARN RELOC_NAME: ??$__uninitialized_copy@PAUCResourceEntry@CGPUScratchBufferTextureManager@@PAU12@@std@@YIPAUCResourceEntry@CGPUScratchBufferTextureManager@@PAU12@00ABU__false_type@0@@Z -> 00f37cc0 labelled '_global::UninitCopy_SRecord2C_00f37cc0'
+00f381f0   WARN RELOC_NAME: ??$__copy_backward_ptrs@PAUCResourceEntry@CGPUScratchBufferTextureManager@@PAU12@@std@@YIPAUCResourceEntry@CGPUScratchBufferTextureManager@@PAU12@00ABU__false_type@0@@Z -> 00f37d30 labelled '_Copy_backward<std::pair<unsigned_long,C3DDummyObject>*,std::_Copy_backward<std::pair<unsigned_long,C3DDummyObject>*,std::pair<unsigned_long,class_C3DDummyObject>*>'
+00f381f0   WARN RELOC_NAME: ?_M_insert_overflow@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@std@@@std@@IAEXPAUCResourceEntry@CGPUScratchBufferTextureManager@@ABU34@ABU__false_type@2@I_N@Z -> 00f37f60 labelled 'Vector_Reallocate_CameraTag'
+00f381f0   RELOCATION_MATCH PASS   _M_fill_insert
+00f3ae50   RELOCATION_MATCH PASS   Compress
+
+WINS: 9
+  00d27050 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::?PlayCutscene@CQ_DragonBossFightScript@NScript@@QAEXVCCharString@@@Z
+  00e389e0 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::CAssassinChest::?Main@CAssassinChest@CV_AssassinAttacksScript@NScript@@EAEXXZ
+  00ed7830 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?Main@CV_TalentlessBardScript@NScript@@UAEXXZ
+  00ef7600 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CStealthGuard::?Main@CStealthGuard@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00f34160 RELOCATION_MATCH std::vector<CFireHeartPatternDef>::?_M_insert_overflow@?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@IAEXPAVCFireHeartPatternDef@@ABV3@ABU__false_type@2@I_N@Z
+  00f36710 RELOCATION_MATCH NFractal::CRidgedMultifractal::?GetFractalHeight@CRidgedMultifractal@NFractal@@UBENABVC2DVector@@@Z
+  00f37f60 RELOCATION_MATCH std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::?_M_insert_overflow@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@std@@@std@@IAEXPAUCResourceEntry@CGPUScratchBufferTextureManager@@ABU34@ABU__false_type@2@I_N@Z
+  00f381f0 RELOCATION_MATCH std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::?_M_fill_insert@?$vector@UCResourceEntry@CGPUScratchBufferTextureManager@@V?$allocator@UCResourceEntry@CGPUScratchBufferTextureManager@@@std@@@std@@QAEXPAUCResourceEntry@CGPUScratchBufferTextureManager@@IABU34@@Z
+  00f3ae50 RELOCATION_MATCH CRangeCompressor::?Compress@CRangeCompressor@@QAEJPBXJJPAEJ@Z
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  NScriptCQDragonBossFightScript_PlayCutscene_00d27050
+  NScriptCVAssassinAttacksScriptCAssassinChest_Main_00e389e0
+  NScriptCVTalentlessBardScript_Main_00ed7830
+  NScriptCPersonalScriptEmptyScriptCStealthGuard_Main_00ef7600
+  stdvectorCFireHeartPatternDef_Minsertoverflow_00f34160
+  NFractalCRidgedMultifractal_GetFractalHeight_00f36710
+  stdvectorCGPUScratchBufferTextureManagerCResourceEntry_Minsertoverflow_00f37f60
+  stdvectorCGPUScratchBufferTextureManagerCResourceEntry_Mfillinsert_00f381f0
+  CRangeCompressor_Compress_00f3ae50

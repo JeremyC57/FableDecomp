@@ -870,4 +870,5 @@ Chunk 574 (agent574; batches/2026-10-27_linux_hand574): 6 of 6 quest-script-rang
 - 2026-10-29 chunk 577: 10/10 quest-script rows (Init, OnPersist, DoMission, GetNearestCrateToMe, two vector operator=); all manifest labels wrong.
 - 2026-10-29 chunk 578: 9/10 quest-script rows; local CSpawnedFuncBase stand-ins replaced at landing by the new retail opt-in FABLE_RETAIL_SUSPENDABLE_PROCESS (shared headers); 0x00EB55D0 parked.
 - 2026-10-29 chunk 579: 10/10 quest-script rows (Init, Main, OnPredicateFail, Transfer, WatchForSpyDeath, two vector rows); all catalog labels wrong; first chunk written on the retail opt-in headers from the start.
+- 2026-10-29 chunk 580: 9/10 rows, five 0x00F3xxxx engine rows (STLport vectors, NFractal, CRangeCompressor) + four quest-script rows; 0x00F3D200 parked (285v284 regalloc, name probable).
 - 2026-10-29 naming wave 9: 456 rows respelled (0x0099EFB0 const& operator= settled, 5 renames, 95 bindings retired / 17 added); full recheck 456/456 pass.

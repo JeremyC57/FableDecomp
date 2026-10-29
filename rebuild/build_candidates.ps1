@@ -364331,6 +364331,69 @@ $catalog = @(
         TestSource = '00/f3/stdvectorCConversation_Mfillinsert_00f33810_test.cpp'
         PassPattern = '00f33810_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d27050'
+        Module = 'NScript::CQ_DragonBossFightScript'
+        Source = '00/d2/NScriptCQDragonBossFightScript_PlayCutscene_00d27050.cpp'
+        TestSource = '00/d2/NScriptCQDragonBossFightScript_PlayCutscene_00d27050_test.cpp'
+        PassPattern = '00d27050_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e389e0'
+        Module = 'NScript::CV_AssassinAttacksScript::CAssassinChest'
+        Source = '00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_Main_00e389e0.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScriptCAssassinChest_Main_00e389e0_test.cpp'
+        PassPattern = '00e389e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7830'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_Main_00ed7830.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_Main_00ed7830_test.cpp'
+        PassPattern = '00ed7830_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef7600'
+        Module = 'NScript::CPersonalScript_EmptyScript::CStealthGuard'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_Main_00ef7600.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_Main_00ef7600_test.cpp'
+        PassPattern = '00ef7600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f34160'
+        Module = 'std::vector<CFireHeartPatternDef>'
+        Source = '00/f3/stdvectorCFireHeartPatternDef_Minsertoverflow_00f34160.cpp'
+        TestSource = '00/f3/stdvectorCFireHeartPatternDef_Minsertoverflow_00f34160_test.cpp'
+        PassPattern = '00f34160_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f36710'
+        Module = 'NFractal::CRidgedMultifractal'
+        Source = '00/f3/NFractalCRidgedMultifractal_GetFractalHeight_00f36710.cpp'
+        TestSource = '00/f3/NFractalCRidgedMultifractal_GetFractalHeight_00f36710_test.cpp'
+        PassPattern = '00f36710_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f37f60'
+        Module = 'std::vector<CGPUScratchBufferTextureManager::CResourceEntry>'
+        Source = '00/f3/stdvectorCGPUScratchBufferTextureManagerCResourceEntry_Minsertoverflow_00f37f60.cpp'
+        TestSource = '00/f3/stdvectorCGPUScratchBufferTextureManagerCResourceEntry_Minsertoverflow_00f37f60_test.cpp'
+        PassPattern = '00f37f60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f381f0'
+        Module = 'std::vector<CGPUScratchBufferTextureManager::CResourceEntry>'
+        Source = '00/f3/stdvectorCGPUScratchBufferTextureManagerCResourceEntry_Mfillinsert_00f381f0.cpp'
+        TestSource = '00/f3/stdvectorCGPUScratchBufferTextureManagerCResourceEntry_Mfillinsert_00f381f0_test.cpp'
+        PassPattern = '00f381f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f3ae50'
+        Module = 'CRangeCompressor'
+        Source = '00/f3/CRangeCompressor_Compress_00f3ae50.cpp'
+        TestSource = '00/f3/CRangeCompressor_Compress_00f3ae50_test.cpp'
+        PassPattern = '00f3ae50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00f37f60	RELOCATION_MATCH	265	PASS	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_insert_overflow (proven: element stride/reciprocal, only caller _M_fill_insert 0x00F381F0)
+00f381f0	RELOCATION_MATCH	282	PASS	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_fill_insert (proven: reloc_bindings from landed resize 0x00F385A0)
+00f3d200	DIFFER	284	-	CTriangleStripifier2::CheckForReshadedVerts (PDB name set + donor order/size + signature); parked differ/00f3d200.cpp 285v284, register-allocation residue
+00f36710	RELOCATION_MATCH	327	PASS	NFractal::CRidgedMultifractal::GetFractalHeight (Ego_r donor order Ridged/Hybrid/Hetero = retail F36710/F36860/F36A30 + ridged algorithm)
+00f34160	RELOCATION_MATCH	330	PASS	std::vector<CFireHeartPatternDef>::_M_insert_overflow (proven: 0x34 stride, _Construct 0x00D34EC0, vtable 0x012CCC50)
+00f3ae50	RELOCATION_MATCH	353	PASS	CRangeCompressor::Compress(const void*, long, long, unsigned char*, long) (Ego_r donor order after CalcCompressionScript + 5-arg signature + callees)
+00e389e0	RELOCATION_MATCH	488	PASS	NScript::CV_AssassinAttacksScript::CAssassinChest::Main (entity vtable 0x012E3738 slot 1, landed Alloc 0x00E388F0)
+00d27050	RELOCATION_MATCH	489	PASS	NScript::CQ_DragonBossFightScript::PlayCutscene(CCharString) (PDB name + all 5 callers in DoMission 0x00D26190 + cs_flags offset)
+00ed7830	RELOCATION_MATCH	497	PASS	NScript::CV_TalentlessBardScript::Main (quest vtable 0x012F3428 slot 2, landed ctor 0x00ED76E0)
+00ef7600	RELOCATION_MATCH	500	PASS	NScript::CPersonalScript_EmptyScript::CStealthGuard::Main (entity vtable 0x012F6238 slot 1, landed Alloc 0x00EF2820)

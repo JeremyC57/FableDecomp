@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00f3d200	DIFFER	284	-	CTriangleStripifier2::CheckForReshadedVerts (PDB name set + donor order/size + signature); parked differ/00f3d200.cpp 285v284, register-allocation residue

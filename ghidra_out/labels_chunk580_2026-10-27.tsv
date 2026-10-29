@@ -1,0 +1,16 @@
+address	name	evidence
+00f34160	std::vector<CFireHeartPatternDef>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand580 NOTES.md (chunk 580)
+00f37f60	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand580 NOTES.md (chunk 580)
+00f381f0	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_fill_insert	proven per batch 2026-10-27_linux_hand580 NOTES.md (chunk 580)
+00f37f60	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_insert_overflow	chunk 580: 0x2C stride (reciprocal 0x2E8BA2E9); only caller _M_fill_insert 0x00F381F0; Ego_r CResourceEntry
+00f381f0	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_fill_insert	chunk 580: landed resize 0x00F385A0 binds this exact symbol; STLport 4.6 body
+00f36710	NFractal::CRidgedMultifractal::GetFractalHeight	chunk 580: Ego_r donor order Ridged/Hybrid/Hetero = retail 0xF36710/0xF36860/0xF36A30; Musgrave ridged multifractal body; CFractal layout matches
+00f34160	std::vector<CFireHeartPatternDef>::_M_insert_overflow	chunk 580: 0x34 stride, _Construct 0x00D34EC0, inline copy stores vtable 0x012CCC50
+00f3ae50	CRangeCompressor::Compress	chunk 580: public overload ?Compress@CRangeCompressor@@QAEJPBXJJPAEJ@Z (ret 14h); calls landed private Compress 0x00F3A2E0 and bound Decompress 0x00F39ED0
+00e389e0	NScript::CV_AssassinAttacksScript::CAssassinChest::Main	chunk 580: slot 1 of entity vtable 0x012E3738 stored by landed Alloc 0x00E388F0; Ego_r.pdb
+00d27050	NScript::CQ_DragonBossFightScript::PlayCutscene	chunk 580: PDB symbol (CCharString arg); all 5 callers inside DoMission 0x00D26190; catalog said DoMission_Setup
+00ed7830	NScript::CV_TalentlessBardScript::Main	chunk 580: slot 2 of quest vtable 0x012F3428 stored by landed ctor 0x00ED76E0; Ego_r.pdb
+00ef7600	NScript::CPersonalScript_EmptyScript::CStealthGuard::Main	chunk 580: slot 1 of entity vtable 0x012F6238 stored by landed Alloc 0x00EF2820; Ego_r.pdb
+00f3d200	CTriangleStripifier2::CheckForReshadedVerts	chunk 580 (parked DIFFER 285v284; name PROBABLE): Ego_r donor order before CalcSectionScore matches retail order before landed 0x00F3D830; signature fits (ret 4)
+00ed7a40	NScript::CV_TalentlessBardScript::WatchForCompletedQuests	chunk 580: Ego_r.pdb; thread spawn name
+00f35b30	NScript::CEntityScriptBase::IsActiveThreadTerminating	chunk 580: Ego_r.pdb (const); also chunk 576 NAME_FIXES
