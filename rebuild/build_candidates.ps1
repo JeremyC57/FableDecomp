@@ -362189,6 +362189,76 @@ $catalog = @(
         TestSource = '00/66/CThingCreatureBase_DrawPreparePrimitivesForRendering_00663c40_test.cpp'
         PassPattern = '00663c40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004045c0'
+        Module = 'CPersistContext'
+        Source = '00/40/CPersistContext_Transferbool_004045c0.cpp'
+        TestSource = '00/40/CPersistContext_Transferbool_004045c0_test.cpp'
+        PassPattern = '004045c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0040cca0'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_ApplyNewProfileValues_0040cca0.cpp'
+        TestSource = '00/40/CUserProfileManager_ApplyNewProfileValues_0040cca0_test.cpp'
+        PassPattern = '0040cca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00410620'
+        Module = 'CPersistContext'
+        Source = '00/41/CPersistContext_Transferfloat_00410620.cpp'
+        TestSource = '00/41/CPersistContext_Transferfloat_00410620_test.cpp'
+        PassPattern = '00410620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004106f0'
+        Module = 'CPersistContext'
+        Source = '00/41/CPersistContext_Transferunsignedlong_004106f0.cpp'
+        TestSource = '00/41/CPersistContext_Transferunsignedlong_004106f0_test.cpp'
+        PassPattern = '004106f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041ab40'
+        Module = 'NUISystem::CSprite'
+        Source = '00/41/NUISystemCSprite_CSprite_0041ab40.cpp'
+        TestSource = '00/41/NUISystemCSprite_CSprite_0041ab40_test.cpp'
+        PassPattern = '0041ab40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0041cd93'
+        Module = 'NUISystem::CManager'
+        Source = '00/41/NUISystemCManager_GetCorrectComponentInterface_0041cd93.cpp'
+        TestSource = '00/41/NUISystemCManager_GetCorrectComponentInterface_0041cd93_test.cpp'
+        PassPattern = '0041cd93_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00434cd0'
+        Module = 'CDisplayEngine'
+        Source = '00/43/CDisplayEngine_SetAboutToRun_00434cd0.cpp'
+        TestSource = '00/43/CDisplayEngine_SetAboutToRun_00434cd0_test.cpp'
+        PassPattern = '00434cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004a2f10'
+        Module = 'CWorld'
+        Source = '00/4a/CWorld_UpdateSaveGameLoad_004a2f10.cpp'
+        TestSource = '00/4a/CWorld_UpdateSaveGameLoad_004a2f10_test.cpp'
+        PassPattern = '004a2f10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004ab640'
+        Module = 'CPersistContext'
+        Source = '00/4a/CPersistContext_ESaveType_004ab640.cpp'
+        TestSource = '00/4a/CPersistContext_ESaveType_004ab640_test.cpp'
+        PassPattern = '004ab640_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '004c8310'
+        Module = 'CThing'
+        Source = '00/4c/CThing_CThing_004c8310.cpp'
+        TestSource = '00/4c/CThing_CThing_004c8310_test.cpp'
+        PassPattern = '004c8310_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

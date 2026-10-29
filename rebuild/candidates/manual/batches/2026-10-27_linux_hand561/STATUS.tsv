@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+004045c0	RELOCATION_MATCH	208v208	PASS	CPersistContext::Transfer<bool> (RTTI wrapper type); block-scoped traits per binary arm, __assume(0) default
+00405a60	DIFFER	208v308	-	Transfer<unsigned char>: over-spanned row; true 208-byte extent byte-exact with relocations masked; re-split and land differ/00405a60.cpp
+0040cca0	RELOCATION_MATCH	535v535	PASS	CUserProfileManager::ApplyNewProfileValues; inline SetX(XNewProfile,false) setters in retail order, final SetShowTargetingStatus(.., true) tail-jumps to Save
+00410620	RELOCATION_MATCH	208v208	PASS	CPersistContext::Transfer<float>; WriteFloat
+004106f0	RELOCATION_MATCH	208v208	PASS	CPersistContext::Transfer<unsigned long>; generic WriteSLONG
+0041ab40	RELOCATION_MATCH	218v218	PASS	NUISystem::CSprite::~CSprite; Handle.Clear() then member dtors, CText dtor model
+0041cd93	RELOCATION_MATCH	215v215	PASS	NUISystem::CManager::GetCorrectComponentInterface; separate case bodies + optimize("s")
+00434cd0	RELOCATION_MATCH	141v141	PASS	CDisplayEngine::SetAboutToRun; inline CFadeInFadeOutBase::Open store order
+0044bb00	DIFFER	224v261	-	Transfer<unsigned __int64>: over-spanned row; true 224-byte extent byte-exact with relocations masked; re-split and land differ/0044bb00.cpp
+004a2f10	RELOCATION_MATCH	752v752	PASS	CWorld::UpdateSaveGameLoad; CRGBColour user copy ctor, __forceinline GetTC<CTCRegionDisplay>
+004ab640	RELOCATION_MATCH	208v208	PASS	CPersistContext::Transfer<CWorld::ESaveType>
+004c8310	RELOCATION_MATCH	412v412	PASS	CThing::~CThing; implicit CClass dtor (no CClass vptr store), STLport bitset::reset range check, TCsToBeRemoved sweep

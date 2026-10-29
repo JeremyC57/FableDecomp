@@ -24679,3 +24679,15 @@ chunk	address	module	name	length
 561	004a2f10	CWorld	UpdateSaveGameLoad	752
 561	004ab640	CPersistContext	Transfer<signed_char>	208
 561	004c8310	CThing	~CThing	412
+562	004cc5c0	CPersistContext	Transfer<signed_char>	208
+562	0051fcc0	CThingManager	WorldUpdateThings	189
+562	005408f0	CEditBox	~CEditBox	137
+562	005483c0	CMovie	CMovie::~CMovie	289
+562	00550230	CMesh	~CMesh	163
+562	005541e0	CMorphingSprite	~CMorphingSprite	260
+562	00559520	CScrollableList	CScrollableList::VectorDtor	115
+562	00559a10	CScrollableListWithButton	CScrollableListWithButton::VectorDtor	115
+562	0056ac80	CTCBoastUI	~CTCBoastUI	185
+562	005e41e0	CTCQuestCompletionUI	~CTCQuestCompletionUI	587
+562	005e49e0	CTCQuestCompletionUI	CTCQuestCompletionUI::vfunc_12	497
+562	005eda50	CChunkedFileChunk	CChunkedFileChunk::DestructorCleanup	417

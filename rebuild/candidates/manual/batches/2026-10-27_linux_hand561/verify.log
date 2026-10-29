@@ -1,0 +1,39 @@
+addr       parity           behav  name
+004045c0   RELOCATION_MATCH PASS   Transfer<bool>
+0040cca0   RELOCATION_MATCH PASS   ApplyNewProfileValues
+00410620   RELOCATION_MATCH PASS   Transfer<float>
+004106f0   RELOCATION_MATCH PASS   Transfer<unsigned long>
+0041ab40   RELOCATION_MATCH PASS   ~CSprite
+0041cd93   RELOCATION_MATCH PASS   GetCorrectComponentInterface
+00434cd0   RELOCATION_MATCH PASS   SetAboutToRun
+004a2f10   WARN RELOC_NAME: ?GetLoadedRegion@CWorldMap@@QBEJXZ -> 004fb150 labelled '_global::GetMember_dword0x9c_004fb150'
+004a2f10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+004a2f10   WARN RELOC_NAME: ?g_pSoundSystem@@3PAVCSoundManagerLH@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+004a2f10   RELOCATION_MATCH PASS   UpdateSaveGameLoad
+004ab640   RELOCATION_MATCH PASS   Transfer<CWorld::ESaveType>
+004c8310   WARN RELOC_ALIAS: _puts -> 00bfeaf2 is the import thunk 'MSVCR71.DLL::puts'
+004c8310   RELOCATION_MATCH PASS   ~CThing
+
+WINS: 10
+  004045c0 RELOCATION_MATCH CPersistContext::??$Transfer@_N@CPersistContext@@QAEXPBDAA_NAB_N@Z
+  0040cca0 RELOCATION_MATCH CUserProfileManager::?ApplyNewProfileValues@CUserProfileManager@@QAEXXZ
+  00410620 RELOCATION_MATCH CPersistContext::??$Transfer@M@CPersistContext@@QAEXPBDAAMABM@Z
+  004106f0 RELOCATION_MATCH CPersistContext::??$Transfer@K@CPersistContext@@QAEXPBDAAKABK@Z
+  0041ab40 RELOCATION_MATCH NUISystem::CSprite::??1CSprite@NUISystem@@UAE@XZ
+  0041cd93 RELOCATION_MATCH NUISystem::CManager::?GetCorrectComponentInterface@CManager@NUISystem@@QAEPAVCComponent@2@PAV32@@Z
+  00434cd0 RELOCATION_MATCH CDisplayEngine::?SetAboutToRun@CDisplayEngine@@QAEXXZ
+  004a2f10 RELOCATION_MATCH CWorld::?UpdateSaveGameLoad@CWorld@@IAEXXZ
+  004ab640 RELOCATION_MATCH CPersistContext::??$Transfer@W4ESaveType@CWorld@@@CPersistContext@@QAEXPBDAAW4ESaveType@CWorld@@ABW412@@Z
+  004c8310 RELOCATION_MATCH CThing::??1CThing@@MAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CPersistContext_Transferbool_004045c0
+  CUserProfileManager_ApplyNewProfileValues_0040cca0
+  CPersistContext_Transferfloat_00410620
+  CPersistContext_Transferunsignedlong_004106f0
+  NUISystemCSprite_CSprite_0041ab40
+  NUISystemCManager_GetCorrectComponentInterface_0041cd93
+  CDisplayEngine_SetAboutToRun_00434cd0
+  CWorld_UpdateSaveGameLoad_004a2f10
+  CPersistContext_ESaveType_004ab640
+  CThing_CThing_004c8310
