@@ -1,0 +1,7 @@
+address	status	bytes	test	note
+00e04bd0	RELOCATION_MATCH	826v826	PASS	NScript::CQ_TraderEscortScript::CDarkwoodTrader::Init (label Script_Trader_Infection_State wrong); previous agent's draft, re-graded; placeholder virtual e00 replaced by the virtual dtor (byte-neutral); 1 grade + compile-only probe
+00e29b20	DIFFER	856v846	-	NScript::CQS_ScytheInfoScript::Main (gap-scan sub_); parked in differ/: one exit-block placement; 1 grade this session (+ previous agent's grades) + ~30 compile-only probes
+00e2ad50	RELOCATION_MATCH	819v819	PASS	NScript::CV_AmbushScamScript::OnPersist (gap-scan sub_); previous agent's draft, re-graded; 1 grade
+00e9c4b0	RELOCATION_MATCH	926v926	PASS	NScript::CV_IntroductionToTrophiesScript::Main (gap-scan sub_); new, matched on the first probe (RockTroll Main model); 1 grade
+00ee6e90	RELOCATION_MATCH	767v767	PASS	NScript::CV_TrophyDealerScript::Main (gap-scan sub_); new, matched on the first probe; 1 grade
+00f08590	RELOCATION_MATCH	839v839	PASS	NScript::CQ_AmbushTradersScript::WatchForEnemyDeath (label Script_Hero_Morphs_Thread wrong); previous agent's draft, re-graded; 1 grade

@@ -1,0 +1,26 @@
+addr       parity           behav  name
+00e04bd0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+00e04bd0   RELOCATION_MATCH PASS   Init
+00e2ad50   RELOCATION_MATCH PASS   OnPersist
+00e9c4b0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+00e9c4b0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00e9c4b0   RELOCATION_MATCH PASS   Main
+00ee6e90   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+00ee6e90   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00ee6e90   RELOCATION_MATCH PASS   Main
+00f08590   WARN RELOC_NAME: ?EntityCountDecrease@CQ_AmbushTradersScript@NScript@@QAEXVCCharString@@@Z -> 00f088e0 labelled 'CScriptBase_AmbushTradersFilter'
+00f08590   RELOCATION_MATCH PASS   WatchForEnemyDeath
+
+WINS: 5
+  00e04bd0 RELOCATION_MATCH NScript::CQ_TraderEscortScript::CDarkwoodTrader::?Init@CDarkwoodTrader@CQ_TraderEscortScript@NScript@@EAEXXZ
+  00e2ad50 RELOCATION_MATCH NScript::CV_AmbushScamScript::?OnPersist@CV_AmbushScamScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00e9c4b0 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::?Main@CV_IntroductionToTrophiesScript@NScript@@UAEXXZ
+  00ee6e90 RELOCATION_MATCH NScript::CV_TrophyDealerScript::?Main@CV_TrophyDealerScript@NScript@@UAEXXZ
+  00f08590 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  NScriptCQTraderEscortScriptCDarkwoodTrader_Init_00e04bd0
+  NScriptCVAmbushScamScript_OnPersist_00e2ad50
+  NScriptCVIntroductionToTrophiesScript_Main_00e9c4b0
+  NScriptCVTrophyDealerScript_Main_00ee6e90
+  NScriptCQAmbushTradersScript_WatchForEnemyDeath_00f08590

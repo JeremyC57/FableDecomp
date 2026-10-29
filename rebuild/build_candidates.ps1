@@ -363911,6 +363911,41 @@ $catalog = @(
         TestSource = '00/f0/NScriptCQAmbushTradersScriptCATSentry_Init_00f08e90_test.cpp'
         PassPattern = '00f08e90_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e04bd0'
+        Module = 'NScript::CQ_TraderEscortScript::CDarkwoodTrader'
+        Source = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_Init_00e04bd0.cpp'
+        TestSource = '00/e0/NScriptCQTraderEscortScriptCDarkwoodTrader_Init_00e04bd0_test.cpp'
+        PassPattern = '00e04bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e2ad50'
+        Module = 'NScript::CV_AmbushScamScript'
+        Source = '00/e2/NScriptCVAmbushScamScript_OnPersist_00e2ad50.cpp'
+        TestSource = '00/e2/NScriptCVAmbushScamScript_OnPersist_00e2ad50_test.cpp'
+        PassPattern = '00e2ad50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9c4b0'
+        Module = 'NScript::CV_IntroductionToTrophiesScript'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScript_Main_00e9c4b0.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScript_Main_00e9c4b0_test.cpp'
+        PassPattern = '00e9c4b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee6e90'
+        Module = 'NScript::CV_TrophyDealerScript'
+        Source = '00/ee/NScriptCVTrophyDealerScript_Main_00ee6e90.cpp'
+        TestSource = '00/ee/NScriptCVTrophyDealerScript_Main_00ee6e90_test.cpp'
+        PassPattern = '00ee6e90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f08590'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/f0/NScriptCQAmbushTradersScript_WatchForEnemyDeath_00f08590.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScript_WatchForEnemyDeath_00f08590_test.cpp'
+        PassPattern = '00f08590_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

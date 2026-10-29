@@ -1,0 +1,8 @@
+address	name	evidence
+00e04bd0	NScript::CQ_TraderEscortScript::CDarkwoodTrader::Init	vtable 0x012DF424 slot 2 + Ego_r/FableWin; chunk 573
+00e2ad50	NScript::CV_AmbushScamScript::OnPersist	vtable 0x012E2428 slot 4 + both PDBs + persisted member strings; chunk 573
+00e9c4b0	NScript::CV_IntroductionToTrophiesScript::Main	vtable 0x012ED558 slot 2 (slots 1/3 landed RegisterMain/Init) + Ego_r; chunk 573
+00ee6e90	NScript::CV_TrophyDealerScript::Main	vtable 0x012F51F4 slot 2 + Ego_r; chunk 573
+00f08590	NScript::CQ_AmbushTradersScript::WatchForEnemyDeath	both PDBs + six CSpawnedFunc1 spawners named "WatchForEnemyDeath" + ret 0Ch; chunk 573
+00f088e0	NScript::CQ_AmbushTradersScript::EntityCountDecrease	only CCharString-by-value member; caller passes def name; chunk 573 (probable)
+00cb8930	CScriptBase::PostAddScriptedEntities	chunk 573 NOTES (Ghidra label CTCVillage::OnInitialActivate wrong)
