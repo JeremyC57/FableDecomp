@@ -12,7 +12,7 @@ public:
     long len;
     CWideString() : len(0) { buf[0] = 0; }
     CWideString(const CWideString& o) : len(o.len) { std::memcpy(buf, o.buf, sizeof(buf)); }
-    operator const WCH*() const { return buf; }
+    const WCH* GetAsCharArray() const { return buf; }
     const CWideString& operator=(const WCH* t) { len = 0; while (t[len]) { buf[len] = t[len]; ++len; } buf[len] = 0; return *this; }
     const CWideString& operator=(const CWideString& o) { std::memcpy(buf, o.buf, sizeof(buf)); len = o.len; return *this; }
     const CWideString& operator+=(const WCH* t) { while (*t) buf[len++] = *t++; buf[len] = 0; return *this; }
@@ -41,7 +41,7 @@ static const WCH* WordWrap_FindNextLineW(const WCH* text, unsigned long width, c
 static CWideString WordWrapText(const C2DBoxF& box, void* font, const CWideString& text)
 {
     CWideString wrapped;
-    const WCH* line = text;
+    const WCH* line = text.GetAsCharArray();
     const WCH* next;
     do {
         float left = box.TLX;
@@ -53,7 +53,7 @@ static CWideString WordWrapText(const C2DBoxF& box, void* font, const CWideStrin
             lineText.SetAsSubString(line, next - line);
         else
             lineText = line;
-        if (*(const WCH*)lineText == ',') {
+        if (*lineText.GetAsCharArray() == ',') {
             wrapped.SetLength(wrapped.GetLength() - 1);
             static const WCH commaNl[] = { ',', '\n', 0 };
             wrapped += commaNl;

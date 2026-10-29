@@ -5,7 +5,7 @@
 
 class CWideString { public:
     const unsigned short* Text;
-    CWideString& operator=(const unsigned short* text) { Text = text; return *this; }
+    const CWideString& operator=(const unsigned short* text) { Text = text; return *this; }
 };
 static const unsigned short kEmpty[1] = { 0 };
 

@@ -4,7 +4,7 @@
 // ?GetVStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@@Z. Catalog label GetVStringWidth is wrong: the width-only
 // inline copy is 0x0043E4D0 (`ret 4`, returns float); this one stores both floats through the return pointer.
 // Body: the virtual GetStringExtents (slot 1, after ??_E) on the
-// raw wide characters (CWideString::operator const wchar_t* 0x0099AF10) with no wrap, then GFAXToVX (0x009E1DA0) on the
+// raw wide characters (CWideString::GetAsCharArray() 0x0099AF10) with no wrap, then GFAXToVX (0x009E1DA0) on the
 // width and GFAYToVY (0x009E1DD0) on the height; both are stored to the result.
 // Shape: the converted width written back into the extents local, the height converted inside the return constructor.
 // Layout: CFontBank (Ego_r.pdb, 0x10) declared with its virtuals so the slot call compiles; the generated header models
@@ -13,7 +13,7 @@
 class CWideString {
 public:
     void* PStringData;
-    operator const wchar_t*() const;                     // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10
 };
 class C2DExtentsF {
 public:
@@ -37,7 +37,7 @@ public:
 };
 C2DExtentsF CFontBank::GetVStringExtents(const CWideString& text) const
 {
-    C2DExtentsF extents = GetStringExtents(text, false);
+    C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);
     extents.Width = GFAXToVX(extents.Width);
     return C2DExtentsF(extents.Width, GFAYToVY_009e1dd0(extents.Height));
 }

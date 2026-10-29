@@ -1,6 +1,6 @@
 // CSubtitleRenderer::Clear(bool keepText) -- drop every primitive handle; unless keeping the text, reset the captions and overrides, end the player mode it added, release the hero's item display, post the "text finished" messages its flags ask for, unpause the game, and show the next queued text
 // Leaf: ?Clear@CSubtitleRenderer@@QAEX_N@Z
-// Flags: /GS /Zc:wchar_t
+// Flags: /GS (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
 #define CSubtitleRenderer CSubtitleRendererLayout
 #include "engine/CSubtitleRenderer.h"
 #undef CSubtitleRenderer

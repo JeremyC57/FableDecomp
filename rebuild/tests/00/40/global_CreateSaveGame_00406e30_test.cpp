@@ -4,7 +4,7 @@
 #include <wchar.h>
 extern "C" int __cdecl _wchdir(const wchar_t*);
 class CCharString;
-class CWideString{ public:void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*();};
+class CWideString{ public:void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*() const;};
 // ABI: GetValidProfileName 0x00406350 forwards EDX to the CWideString copy ctor 0x0099b720; callers pass profile+0x8 wrapper.
 CWideString __fastcall GetValidProfileName(const CWideString&);
 namespace NResourceDirectoryNames{CWideString __fastcall GetSaveDir();}
@@ -31,7 +31,7 @@ class CCharString{ public:int unused;};static CCharString none;static int live,c
 CWideString::CWideString(const wchar_t*s):PStringData(0){if(s&&*s){WideData*d=new WideData;d->length=wcslen(s);d->capacity=d->length+1;d->text=(wchar_t*)malloc(d->capacity*sizeof(wchar_t));wcscpy(d->text,s);d->refs=1;PStringData=d;++live;}}
 CWideString::CWideString(const CWideString&w):PStringData(w.PStringData){if(PStringData)++((WideData*)PStringData)->refs;}
 CWideString::~CWideString(){if(PStringData){WideData*d=(WideData*)PStringData;assert(d->refs>0);if(!--d->refs){free(d->text);delete d;--live;}PStringData=0;}}
-CWideString::operator const wchar_t*(){return PStringData?((WideData*)PStringData)->text:L"";}
+CWideString::operator const wchar_t*() const{return PStringData?((WideData*)PStringData)->text:L"";}
 CWideString __fastcall GetValidProfileName(const CWideString&s){assert(&s==expectedProfile);CWideString shared(s);assert(shared.PStringData==s.PStringData);wchar_t text[128];wcscpy(text,shared);bool different=false;for(unsigned i=0;text[i];++i)if(wcschr(L"\\/:*?\"<>|",text[i])){text[i]=L'_';different=true;}if(different)return CWideString(text);return CWideString(shared);}
 namespace NResourceDirectoryNames{CWideString __fastcall GetSaveDir(){return CWideString(L"root/");}}
 CWideString __fastcall operator+(const CWideString&a,const CWideString&b){wchar_t text[256];wcscpy(text,const_cast<CWideString&>(a));wcscat(text,const_cast<CWideString&>(b));return CWideString(text);}

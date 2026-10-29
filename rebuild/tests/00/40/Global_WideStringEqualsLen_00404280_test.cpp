@@ -2,9 +2,14 @@
 struct WideStringRange { unsigned short* begin; unsigned short* end; };
 int __cdecl WideString_EqualsLen(const WideStringRange*,const unsigned short*);
 static int g_compareCalls;
-int __cdecl MemCmp_Unsigned16(const unsigned short* a,const unsigned short* b,unsigned long n)
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
+template <> int __cdecl std::__char_traits_base<unsigned short, unsigned short>::compare(const unsigned short* a,const unsigned short* b,unsigned int n)
 {
-    ++g_compareCalls; for(unsigned long i=0;i<n;++i)if(a[i]!=b[i])return a[i]<b[i]?-1:1; return 0;
+    ++g_compareCalls; for(unsigned int i=0;i<n;++i)if(a[i]!=b[i])return a[i]<b[i]?-1:1; return 0;
 }
 int main()
 {

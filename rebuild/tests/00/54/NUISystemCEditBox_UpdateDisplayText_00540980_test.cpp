@@ -20,16 +20,16 @@ class CWideString { public:
     CWideString(const CWideString& other);                  // 0x0099B720
     ~CWideString();                                         // 0x0099B510
     unsigned long GetLength() const;                        // 0x0099B220
-    CWideString& operator=(const unsigned short* text);     // 0x0099B800
+    const CWideString& operator=(const unsigned short* text);     // 0x0099B800
     const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
-    CWideString& operator+=(const unsigned short* text);    // 0x0099B940
-    CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
-    operator const unsigned short*() const;                 // 0x0099AF10
-    unsigned short operator[](long i) const { return ((const unsigned short*)*this)[i]; }
+    const CWideString& operator+=(const unsigned short* text);    // 0x0099B940
+    const CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
+    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10
+    unsigned short operator[](long i) const { return GetAsCharArray()[i]; }
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
 #ifndef _MSC_VER
-    CWideString& operator=(const wchar_t* text);
-    CWideString& operator+=(const wchar_t* text);
+    const CWideString& operator=(const wchar_t* text);
+    const CWideString& operator+=(const wchar_t* text);
 #endif
 };
 unsigned long __fastcall GetCharWidthW(unsigned short c);   // 0x0054F4B0
@@ -402,7 +402,7 @@ void CEditBox::UpdateDisplayText()
         if (UsesIME) {
             C2DVector position = GetTextComponent()->GetScreenPosition();
             C2DVector size;
-            position.X += text->GetFont()->GetStringSizeOut(size, line, 0).X * text->GetScale().X;
+            position.X += text->GetFont()->GetStringSizeOut(size, line.GetAsCharArray(), 0).X * text->GetScale().X;
             GFGetIME()->SetCompositionPosition((long)(position.X + 3.0f), (long)(position.Y + 3.0f));
         }
         line += L"|";
@@ -744,19 +744,19 @@ CWideString::CWideString() { m_pStringData = wdup(g_empty, 0); }
 CWideString::CWideString(const CWideString& o) { const unsigned short* s = (const unsigned short*)o.m_pStringData; m_pStringData = wdup(s, wlen(s)); }
 CWideString::~CWideString() { free(m_pStringData); m_pStringData = 0; }
 unsigned long CWideString::GetLength() const { return wlen((const unsigned short*)m_pStringData); }
-CWideString& CWideString::operator=(const unsigned short* t) { free(m_pStringData); m_pStringData = wdup(t, wlen(t)); return *this; }
+const CWideString& CWideString::operator=(const unsigned short* t) { free(m_pStringData); m_pStringData = wdup(t, wlen(t)); return *this; }
 const CWideString& CWideString::operator=(const CWideString& o) { if (this != &o) { const unsigned short* s = (const unsigned short*)o.m_pStringData; void* d = wdup(s, wlen(s)); free(m_pStringData); m_pStringData = d; } return *this; }
-CWideString& CWideString::operator+=(const unsigned short* t) { const unsigned short* s = (const unsigned short*)m_pStringData; unsigned long a = wlen(s), b = wlen(t); unsigned short* d = (unsigned short*)malloc((a + b + 1) * 2); memcpy(d, s, a * 2); memcpy(d + a, t, b * 2); d[a + b] = 0; free(m_pStringData); m_pStringData = d; return *this; }
-CWideString& CWideString::operator+=(const CWideString& o) { return *this += (const unsigned short*)o.m_pStringData; }
-CWideString::operator const unsigned short*() const { return (const unsigned short*)m_pStringData; }
+const CWideString& CWideString::operator+=(const unsigned short* t) { const unsigned short* s = (const unsigned short*)m_pStringData; unsigned long a = wlen(s), b = wlen(t); unsigned short* d = (unsigned short*)malloc((a + b + 1) * 2); memcpy(d, s, a * 2); memcpy(d + a, t, b * 2); d[a + b] = 0; free(m_pStringData); m_pStringData = d; return *this; }
+const CWideString& CWideString::operator+=(const CWideString& o) { return *this += (const unsigned short*)o.m_pStringData; }
+const unsigned short* CWideString::GetAsCharArray() const { return (const unsigned short*)m_pStringData; }
 CWideString CWideString::GetSubString(unsigned long start, unsigned long end) const { CWideString r; const unsigned short* s = (const unsigned short*)m_pStringData; unsigned long n = wlen(s); if (end > n) end = n; if (start > end) start = end; free(r.m_pStringData); r.m_pStringData = wdup(s + start, end - start); return r; }
 #ifndef _MSC_VER
 static unsigned short* narrow(const wchar_t* w) { static unsigned short buf[64]; int i = 0; while (w[i] && i < 63) { buf[i] = (unsigned short)w[i]; ++i; } buf[i] = 0; return buf; }
-CWideString& CWideString::operator=(const wchar_t* t) { return *this = (const unsigned short*)narrow(t); }
-CWideString& CWideString::operator+=(const wchar_t* t) { return *this += (const unsigned short*)narrow(t); }
+const CWideString& CWideString::operator=(const wchar_t* t) { return *this = (const unsigned short*)narrow(t); }
+const CWideString& CWideString::operator+=(const wchar_t* t) { return *this += (const unsigned short*)narrow(t); }
 #endif
 static CWideString fromAscii(const char* a) { unsigned short buf[64]; int i = 0; for (; a[i] && i < 63; ++i) buf[i] = (unsigned short)a[i]; buf[i] = 0; CWideString r; r = buf; return r; }
-static bool equalsAscii(const CWideString& w, const char* a) { const unsigned short* s = w; unsigned long i = 0; for (; a[i]; ++i) if (s[i] != (unsigned short)a[i]) return false; return s[i] == 0; }
+static bool equalsAscii(const CWideString& w, const char* a) { const unsigned short* s = w.GetAsCharArray(); unsigned long i = 0; for (; a[i]; ++i) if (s[i] != (unsigned short)a[i]) return false; return s[i] == 0; }
 static unsigned long g_charWidth = 10;
 unsigned long __fastcall GetCharWidthW(unsigned short c) { return c == (unsigned short)'w' ? 20 : g_charWidth; }
 static bool g_imeOn = false; static long g_compX = -1, g_compY = -1; static CIME g_ime;

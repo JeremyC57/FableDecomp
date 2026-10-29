@@ -2,7 +2,7 @@
 // Retail 0x00829A30, 498 bytes, `ret 0x10` (hidden CWideString return, path, map, index; `this` unused).
 // Callees: CWideString() 0x0099AED0 (manifest label "CCharString::CCharString" is wrong), ~CWideString 0x0099B510,
 //   CWideString(const CWideString&) 0x0099B720, operator= 0x0099B7D0, operator+=(const wchar_t*) 0x0099B940,
-//   operator+=(const CWideString&) 0x0099B8D0, the varargs (__cdecl) CWideString::Format 0x0099BA70 (label
+//   operator+=(const CWideString&) 0x0099B8D0, the varargs (__cdecl) CWideString::Sprintf 0x0099BA70 (label
 //   "CCharString::SetFromFormatV"), __fastcall operator+(const CWideString&, const CWideString&) 0x0099BE70, __fastcall
 //   ConvertPathToFullPath 0x00999110, __fastcall SplitPath 0x00997620 (file name only), CCharString(const CCharString&)
 //   0x0099EC30, ~CCharString 0x0099EAE0, CCharString::ToWideString 0x0099E480, CWorldMap's current-region index
@@ -18,7 +18,7 @@ class CWideString { public:
     const CWideString& operator=(const CWideString& other);         // 0x0099B7D0
     const CWideString& operator+=(const unsigned short* text);   // 0x0099B940
     const CWideString& operator+=(const CWideString& other);     // 0x0099B8D0
-    void Format(const unsigned short* format, ...);            // 0x0099BA70
+    void Sprintf(const unsigned short* format, ...);            // 0x0099BA70
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 class CAFile {
@@ -48,7 +48,7 @@ public:
 inline CWideString ToString(long value)
 {
     CWideString text;
-    text.Format(L"%d", value);
+    text.Sprintf(L"%d", value);
     return text;
 }
 

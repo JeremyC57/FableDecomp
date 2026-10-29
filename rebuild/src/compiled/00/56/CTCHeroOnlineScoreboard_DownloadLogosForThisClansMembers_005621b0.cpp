@@ -4,7 +4,7 @@
 // Byte-twin of DownloadMyClansLogos 0x00561980 except the cached-logo getter (GetCachedMemberLogosAsString 0x0055EA80) and the
 // command literal; same source shape.
 // Callees: as the landed DownloadMemberListForSelectedClan 0x00561DC0, plus GetCachedMemberLogosAsString 0x0055EA80, GetSaveDir
-// 0x0041A5B0, operator+(const CWideString&, const wchar16*) 0x0099BF30, CWideString() 0x0099AED0, FormatWideString 0x0099BA70
+// 0x0041A5B0, operator+(const CWideString&, const wchar16*) 0x0099BF30, CWideString() 0x0099AED0, CWideString::Sprintf 0x0099BA70
 // (cdecl varargs), CWideString::operator+= 0x0099B8D0 / 0x0099B940, CDiskFileWin32(path, access, flags) 0x0099AD80, Write
 // 0x0099AA90 and the inline ~CDiskFileWin32 (vtable 0x0122D06C, Close 0x0099A920, ~CBaseClassNonCopyable 0x0099A300).
 // Layout: as the landed UploadPlayerScores 0x00561450 (PHttp +0x0c, SessionID +0x34, TaskState +0x54).
@@ -38,6 +38,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
     const CWideString& operator+=(const wchar16* text);        // 0x0099B940
     CCharString ConvertToCharString() const;         // 0x0099B2C0
+    void __cdecl Sprintf(const wchar16* format, ...);       // 0x0099BA70
 };
 class CUserProfileManager { public:
     unsigned char _pad[0x110];
@@ -48,7 +49,6 @@ public:
 };
 CWideString __fastcall operator+(const CWideString& left, const wchar16* right);   // 0x0099BF30
 CWideString __fastcall GetSaveDir();                 // 0x0041A5B0
-void __cdecl FormatWideString(CWideString* text, const wchar16* format, ...);       // 0x0099BA70
 
 struct CStringAllocator { CStringAllocator() { } };
 struct LHString {                                    // PDB std::basic_string<char> (12 bytes, malloc-backed)
@@ -115,7 +115,7 @@ public:
 static inline CWideString IntToWideString(long value)
 {
     CWideString text;
-    FormatWideString(&text, L"%d", value);
+    text.Sprintf(L"%d", value);
     return text;
 }
 

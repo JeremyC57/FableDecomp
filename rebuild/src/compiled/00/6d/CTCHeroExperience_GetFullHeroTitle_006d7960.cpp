@@ -6,8 +6,8 @@ public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     bool operator!=(const unsigned short* text) const;         // 0x0099B150
-    CWideString& operator+=(const unsigned short* text);       // 0x0099B940
-    CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
+    const CWideString& operator+=(const unsigned short* text);       // 0x0099B940
+    const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
 };
 template<class T> class CDefPointer;
 class CTitleDef;

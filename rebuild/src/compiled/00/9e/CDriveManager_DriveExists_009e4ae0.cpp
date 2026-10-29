@@ -16,7 +16,7 @@ extern "C" int __cdecl _wchdir(const wchar16* path);   // 0x00BFEAFE
 
 class CWideString { public:
     wchar16* m_pchData;
-    operator const wchar16*();               // 0x0099AF00
+    operator const wchar16*() const;         // 0x0099AF00
     ~CWideString();                          // 0x0099B510
 };
 class CAFile {

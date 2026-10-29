@@ -4,7 +4,7 @@
 // Retail: Fable.exe @ 0x005955AB, 556 bytes, `ret 4`, /GS cookie (0x0139C8A8, __security_check_cookie 0x00BFE9F9) in a
 // biased frame (`lea ebp,[esp-3D0h]`).
 // Body: names.erase(begin, end) (0x00412450); pattern = NResourceDirectoryNames::GetSaveDir() (0x0041A540, __fastcall hidden
-// result) + L"*" (operator+ 0x0099BF30); FindFirstFile / FindNextFile (0x00999760 / 0x00999850, __fastcall) over pattern:
+// result) + L"*" (operator+ 0x0099BF30); CAFile::StartFileScan / ScanNextFile (0x00999760 / 0x00999850, __fastcall) over pattern:
 // fileName(data name) (0x0099B6B0); skip when fileName.ConvertToCharString() (0x0099B2C0) ends with "." (inline length
 // difference + inline strcmp) or IsPathFile(pattern) (0x00999A30); else fileName += L"\\" (0x0099B940), SplitPath(fileName,
 // 0, &dir, 0, 0) (0x00997620), files = CWideString(fileName) (copy 0x0099B720) + L"*.bin" and an inner find loop whose
@@ -12,7 +12,7 @@
 // Names: Ego_r.pdb CFrontEndManager member; GetSaveDir / IsPathFile / SplitPath / Find* as the landed
 // CUserProfileManager::DeleteProfile (0x00407040) and CFrontendGameComponent::GetWorldNames (0x00495890) models.
 // Layout: find handle 8 bytes, find data 0x20C; CCharString data block { char* Text; long Length; }.
-// Shape: each loop keeps its own `found` flag assigned by FindNextFile inside the body (the loop locals die after the
+// Shape: each loop keeps its own `found` flag assigned by ScanNextFile inside the body (the loop locals die after the
 // call, `mov bl,al` before the destructor).
 // Opt: size TU (`#pragma optimize("s", on)`: the biased /GS frame).
 #pragma optimize("s", on)
@@ -24,7 +24,7 @@ class CWideString { public:
     CWideString(const unsigned short* text);    // 0x0099B6B0
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
-    CWideString& operator+=(const unsigned short* text);   // 0x0099B940
+    const CWideString& operator+=(const unsigned short* text);   // 0x0099B940
     class CCharString ConvertToCharString() const;          // 0x0099B2C0
 };
 class CCharStringData { public:
@@ -49,18 +49,20 @@ public:
 CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);       // 0x0099BF30
 class CAFile {
 public:
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                   // +0x00
+        long SearchHandle;                              // +0x04
+    };
     static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, unsigned short* firstFile);   // 0x00999760
+    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, unsigned short* nextFile);     // 0x00999850
 };   // 0x00997620
 bool __fastcall IsPathFile(const CWideString& path);   // 0x00999A30
 struct CFindFileData {
     unsigned short FileName[260];
     unsigned long  Attributes;
 };
-struct CFindFileHandle {
-    long _body[2];
-};
-bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
-bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850
 namespace NResourceDirectoryNames {
 CWideString __fastcall GetSaveDir();            // 0x0041A540
 }
@@ -86,9 +88,9 @@ void CFrontEndManager::GetProfileNames(std::vector<CWideString>& names)
 {
     names.clear();
     CWideString pattern = NResourceDirectoryNames::GetSaveDir() + (const unsigned short*)L"*";
-    CFindFileHandle handle;
+    CAFile::CFileScanInfo handle;
     CFindFileData data;
-    bool found = FindFirstFile(pattern, handle, data);
+    bool found = CAFile::StartFileScan(pattern, handle, data.FileName);
     while (found) {
         CWideString fileName(data.FileName);
         bool dots;
@@ -101,9 +103,9 @@ void CFrontEndManager::GetProfileNames(std::vector<CWideString>& names)
             CWideString dir;
             CAFile::SplitPath(fileName, 0, &dir, 0, 0);
             CWideString files = CWideString(fileName) + (const unsigned short*)L"*.bin";
-            CFindFileHandle fileHandle;
+            CAFile::CFileScanInfo fileHandle;
             CFindFileData fileData;
-            bool fileFound = FindFirstFile(files, fileHandle, fileData);
+            bool fileFound = CAFile::StartFileScan(files, fileHandle, fileData.FileName);
             while (fileFound) {
                 CWideString name;
                 {
@@ -111,10 +113,10 @@ void CFrontEndManager::GetProfileNames(std::vector<CWideString>& names)
                     CAFile::SplitPath(entry, 0, 0, &name, 0);
                 }
                 names.push_back(name);
-                fileFound = FindNextFile(files, fileHandle, fileData);
+                fileFound = CAFile::ScanNextFile(files, fileHandle, fileData.FileName);
             }
         }
-        found = FindNextFile(pattern, handle, data);
+        found = CAFile::ScanNextFile(pattern, handle, data.FileName);
     }
 }
 }

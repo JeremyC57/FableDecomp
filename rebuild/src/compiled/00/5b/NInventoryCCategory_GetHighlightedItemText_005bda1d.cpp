@@ -37,13 +37,18 @@ public:
     unsigned long GetCRC() const { return Calc(0, GetString(), GetLength()); }   // out-of-line copy 0x00404310
 };
 namespace std {
-class wstring {                                         // STLport basic_string<wchar_t> (the CWideString data block)
+template <class _CharT> class char_traits { };       // STLport 4.6 class templates (mangle V)
+template <class _Tp> class allocator { };
+template <class _CharT, class _Traits = char_traits<_CharT>, class _Alloc = allocator<_CharT> >
+class basic_string {                                    // STLport basic_string<wchar_t> (the CWideString data block)
 public:
-    wchar_t* _M_start;
-    wchar_t* _M_finish;
-    wchar_t* _M_end_of_storage;
+    _CharT* _M_start;
+    _CharT* _M_finish;
+    _CharT* _M_end_of_storage;
 };
-bool __cdecl operator==(const wstring& s, const wchar_t* text);     // 0x00404280
+typedef basic_string<wchar_t> wstring;
+template <class _CharT, class _Traits, class _Alloc>
+bool __cdecl operator==(const basic_string<_CharT, _Traits, _Alloc>& __s, const _CharT* __t);   // 0x00404280 (out of line)
 }
 class CWideString {
 public:

@@ -1,7 +1,7 @@
 #pragma optimize("t",on)
 // CVideoSys::Init(const CWideString& filename, CTexture* texture, bool render_source_pin) -- build the DirectShow graph for a movie: filter graph, the texture renderer filter, then RenderFile (.wmv/.asf) or source filter + pin connection, the control interfaces, the critical section and the render event
 // Leaf: ?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z
-// Flags: /Zc:wchar_t
+// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A3B9D0, 592 bytes, thiscall `ret 0Ch`, returns the HRESULT.
 // Identity: Ego_r.pdb / FableWin.pdb `?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z` (the manifest row agrees);
 //   the body is the DirectX 9 SDK Texture3D9 sample's InitDShowTextureRenderer moved into CVideoSys (CLSID_FilterGraph,
@@ -18,7 +18,7 @@
 //   bytes, pTextBank +4). The renderer's IBaseFilter subobject is at +0xC (landed CTextureRenderer ctor model).
 // Shape: the IBaseFilter pointer is a named local (`IBaseFilter* renderer_filter = TexRenderer;`, the null-checked
 //   upcast kept in edi for AddFilter and the later FindPin); the source output pin and the renderer input pin live in
-//   the dead filename / bool argument slots; /Zc:wchar_t gives the PDB's `_W` spellings.
+//   the dead filename / bool argument slots; the PDB's `_W` spellings land in the G form.
 #define CVideoSys CVideoSysLayout
 #include "engine/CVideoSys.h"
 #undef CVideoSys

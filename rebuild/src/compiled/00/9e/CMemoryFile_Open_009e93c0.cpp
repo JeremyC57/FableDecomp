@@ -17,7 +17,7 @@
 class CWideString {
 public:
     void* PStringData;
-    CWideString& operator=(const unsigned short* text);     // 0x0099B800
+    const CWideString& operator=(const unsigned short* text);     // 0x0099B800
 };
 
 template <class T> struct vector {                      // STLport vector, 12 bytes

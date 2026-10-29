@@ -1,6 +1,6 @@
 // CSubtitleRenderer::GetCharWidthW(wchar_t character) -- word-wrap callback: the width of one character in the word-wrap font, in whole virtual units
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0048E012, 80 bytes, plain `ret`.
-// Callees: CWideString::CWideString() @ 0x0099AED0, FormatWideString(CWideString*, const wchar_t*, ...) @ 0x0099BA70
+// Callees: CWideString::CWideString() @ 0x0099AED0, CWideString::Sprintf(const wchar_t*, ...) @ 0x0099BA70
 // (cdecl varargs, format L"%c" @ 0x01238154), CFontBank::GetVStringExtents(const CWideString&) const @ 0x00437210
 // (C2DExtentsF by hidden pointer), __ftol2 @ 0x00BFEA70, CWideString::~CWideString @ 0x0099B510.
 // Global: the word-wrap font g_pWordWrapFont @ 0x013B87AC.
@@ -23,6 +23,7 @@ public:
     void* PStringData;
     CWideString();                                          // 0x0099AED0
     ~CWideString();                                         // 0x0099B510
+    void __cdecl Sprintf(const wchar_t16* format, ...);   // 0x0099BA70
 };
 
 class C2DExtentsF {
@@ -38,7 +39,6 @@ public:
 };
 extern const CFontBank* g_pWordWrapFont;                    // 0x013B87AC
 
-void __cdecl FormatWideString(CWideString* text, const wchar_t16* format, ...);   // 0x0099BA70
 
 class CSubtitleRenderer {
 public:
@@ -48,6 +48,6 @@ public:
 unsigned int __fastcall CSubtitleRenderer::GetCharWidthW(wchar_t16 character)
 {
     CWideString text;
-    FormatWideString(&text, L"%c", character);   // L"%c" @ 0x01238154
+    text.Sprintf(L"%c", character);   // L"%c" @ 0x01238154
     return (unsigned int)g_pWordWrapFont->GetVStringExtents(text).Width;
 }

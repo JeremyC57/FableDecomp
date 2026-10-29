@@ -7,7 +7,7 @@ public:
     CWideString(const CWideString& s);                   // 0x0099B720
     ~CWideString();                                      // 0x0099B510
     long GetLength() const;                              // 0x0099B220
-    operator const wchar_t*() const;                     // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10
     CWideString GetSubString(long start, long end) const; // 0x0099BDB0
 };
 struct CEditBox {
@@ -22,9 +22,9 @@ CWideString CVirtualKeyboard_Methods::GetProfileName()
     CWideString text = PEntryBox->GetText();
     long first = 0;
     long last = text.GetLength() - 1;
-    while (first < text.GetLength() && ((const wchar_t*)text)[first] == L' ')
+    while (first < text.GetLength() && text.GetAsCharArray()[first] == L' ')
         ++first;
-    while (last > first && ((const wchar_t*)text)[last] == L' ')
+    while (last > first && text.GetAsCharArray()[last] == L' ')
         --last;
     return text.GetSubString(first, last + 1);
 }
@@ -178,7 +178,7 @@ static CWideStringData* NewData(const wchar_t* s, long n)
 CWideString::CWideString(const CWideString& s) { PStringData = NewData(s.PStringData->Buf, s.PStringData->Len); }
 CWideString::~CWideString() { --g_live; }
 long CWideString::GetLength() const { return PStringData->Len; }
-CWideString::operator const wchar_t*() const { return PStringData->Buf; }
+const wchar_t* CWideString::GetAsCharArray() const { return PStringData->Buf; }
 CWideString CWideString::GetSubString(long start, long end) const
 { CWideString r(*this); --g_live; r.PStringData = NewData(PStringData->Buf + start, end - start); return r; }
 static CWideString* g_src;
@@ -196,7 +196,7 @@ static bool Check(const wchar_t* in, const wchar_t* want)
         CWideString r = k.GetProfileName();
         long m = 0; while (want[m]) ++m;
         ok = r.GetLength() == m;
-        for (long i = 0; ok && i < m; ++i) ok = ((const wchar_t*)r)[i] == want[i];
+        for (long i = 0; ok && i < m; ++i) ok = r.GetAsCharArray()[i] == want[i];
     }
     return ok && g_live == live0;
 }

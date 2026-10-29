@@ -5,7 +5,7 @@
 //   `find(first, last, val)` front end 0x00567A40 (landed; it builds both iterators with the user copy ctor and
 //   passes the tag temporary) and the scoreboard code at 0x005642FA. The catalog label "DataList_FindEqualNode"
 //   is descriptive.
-// Callees: __char_traits_base<unsigned short>::compare @ 0x00403C60 (landed as MemCmp_Unsigned16: the
+// Callees: __char_traits_base<wchar_t, wint_t>::compare @ 0x00403C60 (wchar_t == wint_t == unsigned short) (landed as MemCmp_Unsigned16: the
 //   out-of-line static traits compare, `__cdecl`, tested against 0).
 // Layout: STLport list node {_M_next, _M_prev, _M_data}; CWideString = one CWideStringData* whose first 12
 //   bytes are an STLport basic_string<unsigned short> (start, finish, end of storage), NoRefs at +0xC.
@@ -18,10 +18,10 @@ namespace std {
 
 struct input_iterator_tag { };
 
-struct __char_traits_ushort {
-    static bool eq(const unsigned short& __c1, const unsigned short& __c2) { return __c1 == __c2; }
-    static bool lt(const unsigned short& __c1, const unsigned short& __c2) { return __c1 < __c2; }
-    static __declspec(noinline) int __cdecl compare(const unsigned short* __s1, const unsigned short* __s2,
+template <class _CharT, class _IntT> struct __char_traits_base {   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static bool eq(const _CharT& __c1, const _CharT& __c2) { return __c1 == __c2; }
+    static bool lt(const _CharT& __c1, const _CharT& __c2) { return __c1 < __c2; }
+    static __declspec(noinline) int __cdecl compare(const _CharT* __s1, const _CharT* __s2,
                                                     unsigned int __n)        // 0x00403C60
     {
         for (unsigned int __i = 0; __i < __n; ++__i)
@@ -59,7 +59,7 @@ public:
         unsigned int length = PStringData->Data._M_finish - begin;
         if (length != (unsigned int)(other.PStringData->Data._M_finish - otherBegin))
             return false;
-        if (std::__char_traits_ushort::compare(begin, otherBegin, length) != 0)
+        if (std::__char_traits_base<unsigned short, unsigned short>::compare(begin, otherBegin, length) != 0)
             return false;
         return true;
     }

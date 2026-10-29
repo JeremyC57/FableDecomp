@@ -1,0 +1,8 @@
+address	old_CompilerFlags	new_CompilerFlags	note
+00e68dc0	/O2 /Oy /W3 /Zc:wchar_t	/O2 /Oy /W3	drop /Zc:wchar_t (owner 2026-10-29: wide text is unsigned short, G form)
+009e4c70	/O2 /Oy /W3 /GS /Zc:wchar_t	/O2 /Oy /W3 /GS	drop /Zc:wchar_t (owner 2026-10-29: wide text is unsigned short, G form)
+0042d4f7	/O2 /Oy /W3 /Zc:wchar_t	/O2 /Oy /W3	drop /Zc:wchar_t (owner 2026-10-29: wide text is unsigned short, G form)
+00e81b40	/O2 /Oy /W3 /Zc:wchar_t	/O2 /Oy /W3	drop /Zc:wchar_t (owner 2026-10-29: wide text is unsigned short, G form)
+00a3b9d0	/O2 /Oy /W3 /Zc:wchar_t	/O2 /Oy /W3	drop /Zc:wchar_t (owner 2026-10-29: wide text is unsigned short, G form)
+00492bab	/O2 /Oy /W3 /GS /Zc:wchar_t	/O2 /Oy /W3 /GS	drop /Zc:wchar_t (owner 2026-10-29: wide text is unsigned short, G form)
+0049ef50	/O2 /Oy /W3 /GS /Zc:wchar_t	/O2 /Oy /W3 /GS	drop /Zc:wchar_t (owner 2026-10-29: wide text is unsigned short, G form)

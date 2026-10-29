@@ -20,7 +20,12 @@ typedef unsigned short wchar16;
 
 extern "C" int __cdecl wcscmp(const wchar16* a, const wchar16* b);   // 0x00BFE94C
 
-struct char_traits_w {
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
+struct char_traits_w : public std::__char_traits_base<wchar16, wchar16> {   // STLport char_traits<wchar_t>
     static unsigned long length(const wchar16* s)
     {
         const wchar16* p = s;
@@ -28,7 +33,6 @@ struct char_traits_w {
             ++p;
         return p - s;
     }
-    static int __cdecl compare(const wchar16* a, const wchar16* b, unsigned long n);   // 0x00403C60
 };
 
 struct CBasicStringW {                                  // STLport basic_string<wchar_t>, 12 bytes
@@ -84,7 +88,7 @@ static CWideStringData* g_nullPtr = 0;
 CWideString::CWideString(const CWideString& other) : PStringData(other.PStringData) { if (PStringData) ++PStringData->NoRefs; ++g_copies; }
 CWideString::~CWideString() { if (PStringData) --PStringData->NoRefs; }
 const CWideString& CWideString::operator=(const CWideString& other) { PStringData = other.PStringData; if (PStringData) ++PStringData->NoRefs; return *this; }
-int __cdecl char_traits_w::compare(const wchar16* a, const wchar16* b, unsigned long n)
+template <> int __cdecl std::__char_traits_base<wchar16, wchar16>::compare(const wchar16* a, const wchar16* b, unsigned int n)
 {
     ++g_compares;
     for (unsigned long i = 0; i < n; ++i) if (a[i] != b[i]) return a[i] < b[i] ? -1 : 1;

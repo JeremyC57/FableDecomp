@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009CEA70, 108 bytes (+4 int3), __fastcall, no arguments.
 // Callees: CDiskFile virtual slot 2 (Close), CBankFile::WriteFileInformation(bool) 0x009CE370,
 // CBankFile::GetRecoveryFilePath() const 0x009CBFE0 (CWideString by hidden pointer), PathExists(const
-// CWideString&) 0x00999230 (__fastcall, bool), CWideString::operator const wchar_t*() 0x0099AF10, kernel32
+// CWideString&) 0x00999230 (__fastcall, bool), CWideString::GetAsCharArray() 0x0099AF10, kernel32
 // DeleteFileW (IAT 0x0143FE34), CWideString::~CWideString 0x0099B510.
 // Layout: the retail CBankFile layout of the landed rows (engine/CBankFile.h is the PDB layout, 0x10 higher
 // from +0x38 on): BankFile_Data +0x7C, RetailMode +0x8C, Solid +0x8F, UpdatingFlag +0x95.
@@ -16,7 +16,7 @@ public:
     void* m_pData;
     CWideString(const CWideString& other);
     ~CWideString();                                 // 0x0099B510
-    operator const wchar16*() const;                // 0x0099AF10
+    const wchar16* GetAsCharArray() const;                // 0x0099AF10
 };
 
 class CAFile {
@@ -62,7 +62,7 @@ void CBankFile_Retail::EndUpdateEntries()
     {
         CWideString recoveryPath = GetRecoveryFilePath();
         if (CAFile::PathExists(recoveryPath))
-            DeleteFileW(recoveryPath);
+            DeleteFileW(recoveryPath.GetAsCharArray());
     }
     Solid = false;
     UpdatingFlag = false;

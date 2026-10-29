@@ -6,7 +6,7 @@ class CWideString { public:
     char s[64];
     CWideString() { s[0] = 0; }
     CWideString(const char* t) { std::strcpy(s, t); }
-    CWideString& operator+=(const CWideString& o) { std::strcat(s, o.s); return *this; }
+    const CWideString& operator+=(const CWideString& o) { std::strcat(s, o.s); return *this; }
 };
 static CWideString GetXString() { return CWideString(" x "); }
 static CWideString IntToWideString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CWideString(b); }

@@ -8,12 +8,12 @@ class CWideString { public:
     CWideString();                                          // 0x0099AED0
     CWideString(const CWideString& other);                  // 0x0099B720
     ~CWideString();                                         // 0x0099B510
-    CWideString& operator=(const unsigned short* text);     // 0x0099B800
+    const CWideString& operator=(const unsigned short* text);     // 0x0099B800
     const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
-    CWideString& operator+=(const unsigned short* text);    // 0x0099B940
-    CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
-    operator const unsigned short*() const;                 // 0x0099AF10
-    unsigned short operator[](long i) const { return ((const unsigned short*)*this)[i]; }
+    const CWideString& operator+=(const unsigned short* text);    // 0x0099B940
+    const CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
+    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10
+    unsigned short operator[](long i) const { return GetAsCharArray()[i]; }
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
 public:
     long GetLength() const;   // 0x0099B220
@@ -388,7 +388,7 @@ void CEditBox::UpdateDisplayText()
         if (UsesIME) {
             C2DVector position = GetTextComponent()->GetScreenPosition();
             C2DVector size;
-            position.X += text->GetFont()->GetStringSizeOut(size, line, 0).X * text->GetScale().X;
+            position.X += text->GetFont()->GetStringSizeOut(size, line.GetAsCharArray(), 0).X * text->GetScale().X;
             GFGetIME()->SetCompositionPosition((long)(position.X + 3.0f), (long)(position.Y + 3.0f));
         }
         line += L"|";

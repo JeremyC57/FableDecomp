@@ -15,8 +15,8 @@ public:
     CWideString(const CWideString& other) { memcpy(Data, other.Data, sizeof(Data)); }
     void Append(const wchar_t* t) { size_t n = wcslen(Data); while (*t && n < 127) Data[n++] = *t++; Data[n] = 0; }
     bool operator!=(const unsigned short* text) const { return wcscmp(Data, (const wchar_t*)text) != 0; }
-    CWideString& operator+=(const unsigned short* text) { Append((const wchar_t*)text); return *this; }
-    CWideString& operator+=(const CWideString& other) { Append(other.Data); return *this; }
+    const CWideString& operator+=(const unsigned short* text) { Append((const wchar_t*)text); return *this; }
+    const CWideString& operator+=(const CWideString& other) { Append(other.Data); return *this; }
 };
 
 template<class T> class CDefPointer;

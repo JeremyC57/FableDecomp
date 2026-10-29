@@ -30,8 +30,8 @@ class CWideString { public:
     CWideString(const CWideString& other);
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
-    CWideString& operator+=(const wchar_t* text);       // 0x0099B940
+    const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
+    const CWideString& operator+=(const wchar_t* text);       // 0x0099B940
 };
 CWideString __fastcall operator+(const CWideString& s, const wchar_t* text);   // 0x0099BF30
 class CCharString { public:

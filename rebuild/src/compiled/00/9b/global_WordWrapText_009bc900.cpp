@@ -3,7 +3,7 @@
 // ecx, the box in edx, font and text on the stack.
 // Identity: Ego_r.pdb `?WordWrapText@@YI?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV1@@Z` (the CProgressDisplay member
 // twin is 0x00497A60); the font is not read.
-// Callees: CWideString default ctor 0x0099AED0, operator const wchar_t* 0x0099AF10, __ftol2 0x00BFEA70,
+// Callees: CWideString default ctor 0x0099AED0, GetAsCharArray() 0x0099AF10, __ftol2 0x00BFEA70,
 // WordWrap_FindNextLineW(const wchar_t*, unsigned, const wchar_t**) 0x00A10390 (__fastcall),
 // CWideString::SetAsSubString(const wchar_t*, long) 0x0099B770, operator=(const wchar_t*) 0x0099B800,
 // operator+(const CWideString&, const wchar_t*) 0x0099BF30 (__fastcall, hidden result), operator+= 0x0099B8D0,
@@ -30,7 +30,7 @@ class CWideString { public:
     CWideString();                                      // 0x0099AED0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    operator const wchar_t*() const;                    // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10
     void SetAsSubString(const wchar_t* text, long length);   // 0x0099B770
     const CWideString& operator=(const wchar_t* text);  // 0x0099B800
     const CWideString& operator+=(const CWideString& other); // 0x0099B8D0
@@ -45,7 +45,7 @@ CWideString __fastcall WordWrapText(const C2DBoxF& box, const CFontBank& font, c
 {
     (void)font;
     CWideString wrapped;
-    const wchar_t* line = text;
+    const wchar_t* line = text.GetAsCharArray();
     const wchar_t* end;
     do {
         const wchar_t* next = 0;

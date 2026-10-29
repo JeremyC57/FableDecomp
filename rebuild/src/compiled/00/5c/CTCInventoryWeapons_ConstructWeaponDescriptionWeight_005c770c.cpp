@@ -23,7 +23,7 @@ class CCharString { public:
 };
 class CWideString { public:
     void* PStringData;
-    CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
+    const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
     ~CWideString();                                     // 0x0099B510
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70

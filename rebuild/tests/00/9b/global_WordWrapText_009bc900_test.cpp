@@ -29,7 +29,7 @@ class CWideString { public:
     CWideString();                                      // 0x0099AED0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    operator const wchar_t*() const;                    // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10
     void SetAsSubString(const wchar_t* text, long length);   // 0x0099B770
     const CWideString& operator=(const wchar_t* text);  // 0x0099B800
     const CWideString& operator+=(const CWideString& other); // 0x0099B8D0
@@ -44,7 +44,7 @@ CWideString __fastcall WordWrapText(const C2DBoxF& box, const CFontBank& font, c
 {
     (void)font;
     CWideString wrapped;
-    const wchar_t* line = text;
+    const wchar_t* line = text.GetAsCharArray();
     const wchar_t* end;
     do {
         const wchar_t* next = 0;
@@ -69,7 +69,7 @@ static int g_live = 0;
 CWideString::CWideString() : PStringData(NewBlock((const wchar_t*)L"\0\0", 0)) { ++g_live; }
 CWideString::CWideString(const CWideString& o) { SBlock* b = (SBlock*)o.PStringData; PStringData = NewBlock(b->text, b->len); ++g_live; }
 CWideString::~CWideString() { --g_live; }
-CWideString::operator const wchar_t*() const { return ((SBlock*)PStringData)->text; }
+const wchar_t* CWideString::GetAsCharArray() const { return ((SBlock*)PStringData)->text; }
 void CWideString::SetAsSubString(const wchar_t* t, long n) { PStringData = NewBlock(t, n); }
 const CWideString& CWideString::operator=(const wchar_t* t) { PStringData = NewBlock(t, Len(t)); return *this; }
 const CWideString& CWideString::operator+=(const CWideString& o)
@@ -90,7 +90,7 @@ const wchar_t* __fastcall WordWrap_FindNextLineW(const wchar_t* t, unsigned int 
 }
 static bool Same(const CWideString& s, const char* want)
 {
-    const wchar_t* t = s; long n = Len(t);
+    const wchar_t* t = s.GetAsCharArray(); long n = Len(t);
     if (n != (long)std::strlen(want)) return false;
     for (long i = 0; i < n; ++i) if (t[i] != (wchar_t)want[i]) return false;
     return true;

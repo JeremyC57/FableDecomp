@@ -8,7 +8,7 @@
 // (const CCharString&) 0x0099F0A0 / (const char*) 0x0099F100, ~CCharString 0x0099EAE0, GetSaveDir 0x0041A5B0 (__fastcall
 // hidden CWideString result), operator+(const CWideString&, const wchar_t*) 0x0099BF30, ~CWideString 0x0099B510,
 // CCharString::ToWideString 0x0099E480, CWideString::operator+= 0x0099B8D0 / 0x0099B940, CCharString(const char*, long)
-// 0x0099EBF0, FindFirstFile 0x00999760, CWideString(const wchar_t*) 0x0099B6B0, CWideString::GetLength 0x0099B220,
+// 0x0099EBF0, CAFile::StartFileScan 0x00999760, CWideString(const wchar_t*) 0x0099B6B0, CWideString::GetLength 0x0099B220,
 // CWideString::ConvertToCharString 0x0099B2C0, CCharString::GetSubString 0x0099EC70, CCharString::operator= 0x0099EFB0,
 // CCharString(const CCharString&) 0x0099EC30.
 // Layout: retail MyClans (STLport list, one node pointer) +0x38, ClanMembers +0x40, TaskState +0x54 (Ego_r.pdb +0x44 /
@@ -54,10 +54,15 @@ struct CFindFileData {
     wchar16       FileName[260];
     unsigned long Attributes;
 };
-struct CFindFileHandle {
-    long _body[2];
+class CAFile {
+public:
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                   // +0x00
+        long SearchHandle;                              // +0x04
+    };
+    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760
 };
-bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
 
 template <class T> struct SListNode {
     SListNode* _M_next;
@@ -104,9 +109,9 @@ CCharString CTCHeroOnlineScoreboard::GetCachedMemberLogosAsString()
         path += GFIntToCharString(it->_M_data.ID).ToWideString();
         path += (const wchar16*)L"\\logo.*";
         CCharString extension("0", -1);
-        CFindFileHandle handle;
+        CAFile::CFileScanInfo handle;
         CFindFileData data;
-        if (FindFirstFile(path, handle, data)) {
+        if (CAFile::StartFileScan(path, handle, data.FileName)) {
             CWideString name(data.FileName);
             long start = path.GetLength() - 1;
             CCharString file = name.ConvertToCharString().GetSubString(start, name.GetLength());

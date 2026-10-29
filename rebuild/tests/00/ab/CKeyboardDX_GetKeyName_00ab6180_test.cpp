@@ -23,7 +23,7 @@ struct IDirectInputDevice8_Retail {
 static int g_assigns = 0;
 class CWideString { public:
     void* PStringData;
-    CWideString& operator=(const unsigned short* text) { ++g_assigns; PStringData = (void*)text; return *this; }
+    const CWideString& operator=(const unsigned short* text) { ++g_assigns; PStringData = (void*)text; return *this; }
 };
 class CKeyboardDX {
 public:

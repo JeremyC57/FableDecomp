@@ -1,0 +1,3 @@
+rebuild/src/compiled/00/48/CSubtitleRenderer_WordWrapText_0048dc8b.cpp
+rebuild/src/compiled/00/54/NUISystemCText_FitInWindow_0054f8e0.cpp
+rebuild/tests/00/54/NUISystemCText_FitInWindow_0054f8e0_test.cpp

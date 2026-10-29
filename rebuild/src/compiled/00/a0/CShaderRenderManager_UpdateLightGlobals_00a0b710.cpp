@@ -10,7 +10,7 @@
 class CCharString { public: void* m_pData; };
 class CWideString { public:
     void* m_pData;
-    operator const unsigned short*() const;   // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;   // 0x0099AF10
     ~CWideString();                           // 0x0099B510
 };
 CWideString __fastcall ConvertPathToFullPath(const CCharString& path);   // 0x00999110
@@ -48,6 +48,6 @@ void CShaderRenderManager::UpdateLightGlobals(const CCharString& name)
         d.f2 = true;
         CWideString w = ConvertPathToFullPath(name);
         CDevice* dev = m_pOwner->m_pDevice;
-        m_handle = dev->Create(w, &d);
+        m_handle = dev->Create(w.GetAsCharArray(), &d);
     }
 }

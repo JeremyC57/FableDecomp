@@ -3,7 +3,7 @@
 class CWideString {
 public:
     void* PStringData;
-    operator const wchar_t*() const;                     // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10
 };
 class C2DExtentsF {
 public:
@@ -27,13 +27,13 @@ public:
 };
 C2DExtentsF CFontBank::GetVStringExtents(const CWideString& text) const
 {
-    C2DExtentsF extents = GetStringExtents(text, false);
+    C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);
     extents.Width = GFAXToVX(extents.Width);
     return C2DExtentsF(extents.Width, GFAYToVY_009e1dd0(extents.Height));
 }
 
 static const wchar_t g_empty[1] = {0};
-CWideString::operator const wchar_t*() const { return PStringData ? (const wchar_t*)PStringData : g_empty; }
+const wchar_t* CWideString::GetAsCharArray() const { return PStringData ? (const wchar_t*)PStringData : g_empty; }
 float __fastcall GFAXToVX(float x) { return x * 2.0f; }
 float __fastcall GFAYToVY_009e1dd0(float y) { return y * 3.0f; }
 CFontBank::~CFontBank() {}

@@ -5,7 +5,7 @@ static int g_converts = 0, g_destroyed = 0;
 class CWideString {
 public:
     const unsigned short* m_pData;
-    operator const unsigned short*() const { return m_pData; }
+    const unsigned short* GetAsCharArray() const { return m_pData; }
     ~CWideString() { ++g_destroyed; }
 };
 static unsigned short g_fullPath[] = { 'C', ':', '/', 'b', 0 };
@@ -60,7 +60,7 @@ void CSoundBankLH::Load(const CWideString& fileName)
         d.f4 = true;
         CWideString w = CAFile::ConvertPathToFullPath(fileName);
         CSoundEngineLH* engine = m_pSystem->m_pEngine;
-        m_pBank = engine->LoadBank(w, &d);
+        m_pBank = engine->LoadBank(w.GetAsCharArray(), &d);
     }
 }
 

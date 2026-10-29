@@ -2,7 +2,7 @@
 // Leaf: UpdateKeyText
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00557A10, 219 bytes; called from CancelSelection (0x00557BD0, landed).
 // Callees: CWideString::CWideString(const wchar_t*) @ 0x0099B6B0, CWideString() @ 0x0099AED0, GetActionName(const
-//   CActionInputControl&, CWideString&, bool) @ 0x00446720 (`__fastcall`), CWideString::operator const wchar_t* @
+//   CActionInputControl&, CWideString&, bool) @ 0x00446720 (`__fastcall`), CWideString::GetAsCharArray @
 //   0x0099AF10, _wcsupr @ 0x00F3FB8A (result unused: in place), CWideString::operator= @ 0x0099B7D0,
 //   CWideString::~CWideString @ 0x0099B510, the key text's slots 144 (+0x240, SetText(text, isTag, bool)) and 13 (+0x34,
 //   SetColour). Literal L"TEXT_GUI_KEY_UNDEFINED" @ 0x0124ABCC.
@@ -17,7 +17,7 @@ class CWideString { public:
     CWideString(const unsigned short* text);       // 0x0099B6B0
     ~CWideString();                                // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    operator unsigned short*() const;              // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;  // 0x0099AF10
 };
 extern "C" unsigned short* __cdecl _wcsupr(unsigned short* text);   // 0x00F3FB8A
 class CRGBColour { public:
@@ -83,7 +83,7 @@ void CKeyRedefiner::UpdateKeyText()
         CWideString keyName;
         if (GetActionName(Definition, keyName, false)) {
             isTag = false;
-            _wcsupr(keyName);
+            _wcsupr((unsigned short*)keyName.GetAsCharArray());
             text = keyName;
             colour = CRGBColour(0xff, 0xff, 0xff, 0xff);
         }

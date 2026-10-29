@@ -45,7 +45,7 @@ public:
     CWideString();                                             // 0x0099AED0
     ~CWideString();                                            // 0x0099B510
     const CWideString& operator=(const CWideString& other);          // 0x0099B7D0
-    const wchar_t* GetChars_0099af00() const;                  // 0x0099AF00 (retail's second operator const wchar_t* copy)
+    operator const wchar_t*() const;                           // 0x0099AF00 (Ego_r/FableWin ??BCWideString@@QBEPB_WXZ; G form)
     CCharString ConvertToCharString() const;                   // 0x0099B2C0
 };
 class CAFile {
@@ -93,7 +93,7 @@ bool CThreadedFile::Open(const CWideString& filename, bool unbuffered)
     unsigned long flags = 0x40000001;                          // FILE_FLAG_OVERLAPPED | FILE_ATTRIBUTE_READONLY
     if (unbuffered)
         flags = 0x60000001;                                    // ... | FILE_FLAG_NO_BUFFERING
-    FileHandle = CreateFileW(fullPath.GetChars_0099af00(), 0x80000000, 1, 0, 3, flags, 0);
+    FileHandle = CreateFileW((const wchar_t*)fullPath, 0x80000000, 1, 0, 3, flags, 0);
     if (FileHandle == (void*)-1)
         return false;
     Filename = filename;

@@ -1,0 +1,17 @@
+rebuild/src/compiled/00/54/NUISystemCText_FitInWindow_0054f8e0.cpp
+rebuild/src/compiled/00/54/NUISystemCEditBox_UpdateDisplayText_00540980.cpp
+rebuild/src/compiled/00/99/CAFile_IsRoomForFile_00999ab0.cpp
+rebuild/src/compiled/00/42/CNewFrontendGameComponent_CNewFrontendGameComponent_0042ea8f.cpp
+rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScript_Init_00dcc140.cpp
+rebuild/src/compiled/00/53/CEditBox_AddCharacter_0053fe50.cpp
+rebuild/src/compiled/00/49/CFrontendGameComponent_GetWorldNames_00495890.cpp
+rebuild/src/compiled/00/55/NUISystemCKeyRedefiner_GetActionText_00558170.cpp
+rebuild/src/compiled/00/44/global_GetActionName_00446720.cpp
+rebuild/src/compiled/00/ab/CKeyboardDX_GetKeyName_00ab6180.cpp
+rebuild/src/compiled/00/9e/CMemoryFile_Open_009e93c0.cpp
+rebuild/tests/00/54/NUISystemCEditBox_UpdateDisplayText_00540980_test.cpp
+rebuild/tests/00/54/NUISystemCText_FitInWindow_0054f8e0_test.cpp
+rebuild/tests/00/99/CAFile_SplitPath_00997620_test.cpp
+rebuild/tests/00/49/CFrontendGameComponent_GetWorldNames_00495890_test.cpp
+rebuild/tests/00/ab/CKeyboardDX_GetKeyName_00ab6180_test.cpp
+rebuild/tests/00/9e/CMemoryFile_Open_009e93c0_test.cpp

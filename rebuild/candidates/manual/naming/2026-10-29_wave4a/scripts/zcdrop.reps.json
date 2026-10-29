@@ -1,0 +1,68 @@
+{
+ "rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenSign_Init_00e68dc0.cpp": [
+  [
+   "// Flags: /Zc:wchar_t\n",
+   "// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)\n"
+  ],
+  [
+   "//   (/Zc:wchar_t keeps wchar_t native, as FableWin.pdb spells the operator: PB_W).\n",
+   "//   (wchar_t is the unsigned short typedef, so the operator mangles PBG; FableWin.pdb spells it PB_W).\n#include <stddef.h>\n"
+  ],
+  [
+   "    const CWideString& operator=(const wchar_t* text);  // 0x0099B800 (FableWin.pdb ??4CWideString@@QAEABV0@PB_W@Z)\n",
+   "    const CWideString& operator=(const wchar_t* text);  // 0x0099B800 (FableWin.pdb ??4CWideString@@QAEABV0@PB_W@Z, G form)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/42/NUISystemCManager_SetKeyPressed_0042d4f7.cpp": [
+  [
+   "// Leaf: ?SetKeyPressed@CManager@NUISystem@@UAEX_W@Z\n// Flags: /Zc:wchar_t\n",
+   "// Leaf: ?SetKeyPressed@CManager@NUISystem@@UAEXG@Z\n// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_GetBiggestFishWeight_00e81b40.cpp": [
+  [
+   "// Flags: /Zc:wchar_t\n",
+   "// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)\n"
+  ],
+  [
+   "    const CWideString& operator=(const wchar_t* text);   // 0x0099B800 (Ego_r ??4CWideString@@QAEABV0@PB_W@Z; /Zc:wchar_t)\n",
+   "    const CWideString& operator=(const wchar_t* text);   // 0x0099B800 (Ego_r ??4CWideString@@QAEABV0@PB_W@Z, G form)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/CWorld_GetPathNameForFileName_0049ef50.cpp": [
+  [
+   "// Flags: /GS /Zc:wchar_t\n",
+   "// Flags: /GS (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)\n"
+  ],
+  [
+   "//   ?GetPathNameForFileName@CWorld@@QBE?AVCWideString@@ABV2@@Z (/Zc:wchar_t gives the PDB's `_W` spellings).\n",
+   "//   ?GetPathNameForFileName@CWorld@@QBE?AVCWideString@@ABV2@@Z (the PDB's `_W` spellings land in the G form).\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/CSubtitleRenderer_Clear_00492bab.cpp": [
+  [
+   "// Flags: /GS /Zc:wchar_t\n",
+   "// Flags: /GS (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/a3/CVideoSys_Init_00a3b9d0.cpp": [
+  [
+   "// Flags: /Zc:wchar_t\n",
+   "// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)\n"
+  ],
+  [
+   "//   the dead filename / bool argument slots; /Zc:wchar_t gives the PDB's `_W` spellings.\n",
+   "//   the dead filename / bool argument slots; the PDB's `_W` spellings land in the G form.\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/9e/CDriveManager_GetDriveFromPath_009e4c70.cpp": [
+  [
+   "// Leaf: ?GetDriveFromPath@CDriveManager@@AAE_WPB_W@Z\n// Flags: /GS /Zc:wchar_t\n",
+   "// Leaf: ?GetDriveFromPath@CDriveManager@@AAEGPBG@Z\n// Flags: /GS (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)\n"
+  ],
+  [
+   "// Shape: a 3-character drive buffer below the cookie (`sub esp,0Ch`); dir/fname/ext are null. The PDB `_W` needs\n//   native wchar_t (/Zc:wchar_t).\n",
+   "// Shape: a 3-character drive buffer below the cookie (`sub esp,0Ch`); dir/fname/ext are null. The PDB `_W` lands in the\n//   G form (wchar_t is the unsigned short typedef).\n#include <stddef.h>\n"
+  ]
+ ]
+}

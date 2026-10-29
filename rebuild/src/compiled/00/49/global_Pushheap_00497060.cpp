@@ -2,7 +2,7 @@
 // Leaf: _Push_heap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00497060, 124 bytes, `ret 0xc`.
 // Called by the landed _Adjust_heap @ 0x00497160 (same instantiation; its model is reused here).
-// Callees: 0x0099AF10 CWideString::operator const wchar_t*, 0x00F3FB84 _wcsicmp (CRT, __cdecl),
+// Callees: 0x0099AF10 CWideString::GetAsCharArray(), 0x00F3FB84 _wcsicmp (CRT, __cdecl),
 // 0x0099B7D0 CWideString::operator=, 0x0099B510 ~CWideString.
 // Link-time __fastcall (/Gr algorithm TU): first in ecx, hole in edx, then top, the 4-byte string by
 // value and the empty comparator (4 + 4 + 4 = 0xc); the callee destroys its by-value string at the
@@ -17,13 +17,13 @@ class CWideString { public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    operator const wchar_t*() const;                    // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10
 };
 
 namespace NGameComponentHelpers {
 class CCaseInsensitiveStringCompare { public:
     char m_tag;
-    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }
+    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }
 };
 }
 

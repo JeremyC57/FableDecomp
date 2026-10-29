@@ -2,7 +2,7 @@
 // Leaf: GetBet
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EA1A0, 166 bytes (`ret 4`: the CWideString result's hidden pointer).
 // Callees: CDefClassBase::GetSubDef_005ed4a0(CDefPointer&) @ 0x005ED4A0 ('CTavernGameDef'; result ignored), CWideString()
-// @ 0x0099AED0, FormatWideString(CWideString*, const wchar_t*, ...) @ 0x0099BA70 (L"%d" @ 0x0122DE44), CWideString(const
+// @ 0x0099AED0, CWideString::Sprintf(const wchar_t*, ...) @ 0x0099BA70 (L"%d" @ 0x0122DE44), CWideString(const
 // CWideString&) @ 0x0099B720, ~CWideString @ 0x0099B510, CTCTavernGame::GetText(unsigned long) @ 0x005E9E70, operator+(const
 // CWideString&, const CWideString&) @ 0x0099BE70 (__fastcall); the def's virtual slot 1.
 // Layout (retail, not engine/CTCTavernGame.h: the PDB header's 0x14-byte UIComponents vector is 12 bytes in retail, as the landed
@@ -18,13 +18,13 @@ public:
     CWideString();                                      // 0x0099AED0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
+    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70
 };
-void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 __forceinline CWideString __fastcall IntToWideString(long value)    // the body of 0x00405F00, inlined here
 {
     CWideString text;
-    FormatWideString(&text, L"%d", value);
+    text.Sprintf(L"%d", value);
     return text;
 }
 struct CDefBase {
@@ -93,8 +93,8 @@ static int g_live = 0, g_destroyed = 0, g_getText = 0, g_formats = 0;
 CWideString::CWideString() : m_pStringData(0) { ++g_live; }
 CWideString::CWideString(const CWideString& other) : m_pStringData(other.m_pStringData) { ++g_live; }
 CWideString::~CWideString() { --g_live; }
-void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...)
-{
+void __cdecl CWideString::Sprintf(const wchar_t* format, ...)
+{ CWideString* text = this;
     va_list args; va_start(args, format);
     long value = va_arg(args, long);
     va_end(args);

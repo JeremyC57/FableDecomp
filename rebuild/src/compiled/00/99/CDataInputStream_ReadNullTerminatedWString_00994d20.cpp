@@ -21,7 +21,7 @@ public:
     CWideString();                                  // 0x0099AED0
     CWideString(const CWideString& other);          // 0x0099B720
     ~CWideString();                                 // 0x0099B510
-    CWideString& operator+=(unsigned short c);      // 0x0099B9A0
+    const CWideString& operator+=(unsigned short c);      // 0x0099B9A0
 };
 
 struct CDataInputStreamReader : CDataInputStream {   // the engine layout plus the retail member functions

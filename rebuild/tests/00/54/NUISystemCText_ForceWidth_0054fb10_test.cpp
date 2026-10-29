@@ -10,16 +10,16 @@ public:
     CWideString() : m_length(0) { ++g_strings; PStringData = new unsigned short[64]; PStringData[0] = 0; }
     ~CWideString() { --g_strings; delete[] PStringData; }
     unsigned long GetLength() const { return m_length; }
-    operator const unsigned short*() const { return PStringData; }
-    CWideString& operator+=(unsigned short c) { PStringData[m_length++] = c; PStringData[m_length] = 0; return *this; }
-    unsigned short operator[](unsigned long i) const { return ((const unsigned short*)*this)[i]; }
+    const unsigned short* GetAsCharArray() const { return PStringData; }
+    const CWideString& operator+=(unsigned short c) { PStringData[m_length++] = c; PStringData[m_length] = 0; return *this; }
+    unsigned short operator[](unsigned long i) const { return GetAsCharArray()[i]; }
 };
 static unsigned long GetCharWidthW(unsigned short c) { return c == 'W' ? 20 : c == 'i' ? 4 : 10; }
 static int g_sets = 0; static unsigned short g_set[64]; static unsigned long g_setLength = 0; static bool g_setA = false, g_setB = false;
 namespace NUISystem {
 class CText {
 public:
-    virtual void SetValue(const CWideString& value, bool a, bool b) { ++g_sets; g_setLength = value.GetLength(); std::memcpy(g_set, (const unsigned short*)value, (g_setLength + 1) * 2); g_setA = a; g_setB = b; }
+    virtual void SetValue(const CWideString& value, bool a, bool b) { ++g_sets; g_setLength = value.GetLength(); std::memcpy(g_set, value.GetAsCharArray(), (g_setLength + 1) * 2); g_setA = a; g_setB = b; }
     unsigned char _pad04[0x15c - 0x04];
     CWideString   Value;
     void ForceWidth(float width);

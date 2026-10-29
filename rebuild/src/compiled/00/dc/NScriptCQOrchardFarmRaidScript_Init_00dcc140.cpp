@@ -22,7 +22,7 @@ class CCharString { public:
 };
 class CWideString { public:
     void* PStringData;
-    CWideString& operator=(const unsigned short* text);        // 0x0099B800
+    const CWideString& operator=(const unsigned short* text);        // 0x0099B800
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 class CBaseClass {

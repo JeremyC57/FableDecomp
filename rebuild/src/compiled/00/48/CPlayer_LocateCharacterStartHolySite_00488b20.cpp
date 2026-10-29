@@ -2,7 +2,7 @@
 // Leaf: ?LocateCharacterStartHolySite@CPlayer@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00488B20, 494 bytes, `ret 4`.
 // Callees: the /Gr (__fastcall) template copy 0x0048D5C0 (hidden result in ecx; copies the list's things whose +0xD4 flag
-//   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / operator const wchar_t* 0x0099AF10 on the
+//   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / GetAsCharArray() 0x0099AF10 on the
 //   global 0x013B866C (the start holy site name), CCharString copy 0x0099EC30 / default 0x0099E4B0 / dtor 0x0099EAE0 /
 //   Format 0x0099F1F0 ("*** WARNING : failed to find a holy site with ScriptName %S" 0x01238074), SGI __find_if 0x0048CC60
 //   (/Gr: first ecx, last edx, the binder by value, the iterator tag), the bound predicate 0x0048BC70
@@ -30,7 +30,7 @@ public:
 class CWideString { public:
     void* PStringData;
     CCharString ConvertToCharString() const;       // 0x0099B2C0
-    operator const unsigned short*() const;               // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;               // 0x0099AF10
 };
 extern CWideString g_CWideString_013b866c;         // 0x013B866C (the character start holy site name)
 
@@ -200,7 +200,7 @@ bool CPlayer::LocateCharacterStartHolySite(CThing** site)
             return true;
         }
         CCharString message;
-        message.Sprintf("*** WARNING : failed to find a holy site with ScriptName %S", (const unsigned short*)g_CWideString_013b866c);
+        message.Sprintf("*** WARNING : failed to find a holy site with ScriptName %S", g_CWideString_013b866c.GetAsCharArray());
         RespawnPos = C3DVector(0.0f, 0.0f, 0.0f);
     }
     CThing* best = 0;

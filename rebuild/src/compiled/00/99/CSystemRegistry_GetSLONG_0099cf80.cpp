@@ -1,7 +1,7 @@
 // CSystemRegistry::GetSLONG(const CWideString&, long) -- read a REG_DWORD value, or return the default
 // Leaf: GetSLONG
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099CF80, length 86 bytes (+ int3 padding).
-// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, ADVAPI32!RegQueryValueExW through the import
+// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, ADVAPI32!RegQueryValueExW through the import
 // slot 0x0143FC00.
 // Identity: the manifest calls this "GetBOOL", but GetBOOL is the next function (0x0099CFE0), which calls
 // this one and returns `result != 0` as an int; this is GetSLONG (other build's symbol table:
@@ -15,7 +15,7 @@ struct HKEY__;
 
 class CWideString {
 public:
-    operator const unsigned short*() const;      // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;      // 0x0099AF10
 private:
     void* m_pData;
 };
@@ -38,7 +38,7 @@ long CSystemRegistry::GetSLONG(const CWideString& valueName, long defaultValue) 
         unsigned long type = 0;
         long value = 0;
         unsigned long size = 4;
-        if (RegQueryValueExW(OpenKey, valueName, 0, &type, (unsigned char*)&value, &size) == 0)
+        if (RegQueryValueExW(OpenKey, valueName.GetAsCharArray(), 0, &type, (unsigned char*)&value, &size) == 0)
             return value;
     }
     return defaultValue;

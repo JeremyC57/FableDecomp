@@ -11,9 +11,9 @@
 // NUISystem::CText::FitInWindow(CWideString& text, const C2DBoxF& window) -- word-wrap the text to the window width line by line, rebuilding it with explicit newlines, and return the wrapped height in font lines (one font height when the window is empty)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054F8E0, length 560 bytes, `ret 8`.
 //   FableWin.pdb: ?FitInWindow@CText@NUISystem@@IAEJAAVCWideString@@ABVC2DBoxF@@@Z.
-// Callees: CWideString ctor() 0x0099AED0 (catalog "CCharString" is a byte twin), operator const unsigned short*
+// Callees: CWideString ctor() 0x0099AED0 (catalog "CCharString" is a byte twin), GetAsCharArray()
 //          0x0099AF10, Contains 0x0099AF20, FindCharPos 0x0099B070, GetLength 0x0099B220, ~CWideString 0x0099B510,
-//          ctor(const unsigned short*) 0x0099B6B0, Assign(text, length) 0x0099B770 (catalog "CCharString_Replace"),
+//          ctor(const unsigned short*) 0x0099B6B0, SetAsSubString(text, length) 0x0099B770 (PDB ?SetAsSubString@CWideString@@QAEXPB_WJ@Z; catalog "CCharString_Replace"),
 //          operator=(const CWideString&) 0x0099B7D0, operator=(const unsigned short*) 0x0099B800, operator+= 0x0099B8D0,
 //          operator+(const CWideString&, const unsigned short*) 0x0099BF30 (__fastcall, hidden result first);
 //          the word-wrap helpers SetOption 0x00A0FDB0, SetCallback 0x00A0FD90, FindNextLineW 0x00A10390 (__fastcall),
@@ -29,21 +29,22 @@ class CWideString { public:
     CWideString();                                          // 0x0099AED0
     CWideString(const unsigned short* text);                // 0x0099B6B0
     ~CWideString();                                         // 0x0099B510
-    operator const unsigned short*() const;                 // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10
     bool Contains(const CWideString& text) const;           // 0x0099AF20
     long FindCharPos(unsigned short c) const;               // 0x0099B070
     long GetLength() const;                                 // 0x0099B220
-    void Assign(const unsigned short* text, long length);   // 0x0099B770
+    void SetAsSubString(const unsigned short* text, long length);   // 0x0099B770
     const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
-    CWideString& operator=(const unsigned short* text);     // 0x0099B800
-    CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
+    const CWideString& operator=(const unsigned short* text);     // 0x0099B800
+    const CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
 };
 CWideString __fastcall operator+(const CWideString& left, const unsigned short* right);   // 0x0099BF30
 
-typedef long (__fastcall* TWordWrapWidthCallback)(const unsigned short* text, long length);
+typedef unsigned int (__fastcall* TWordWrapCharWidthCallback)(unsigned short c);
+typedef unsigned int (__fastcall* TWordWrapCallback2)();
 void __fastcall WordWrap_SetOption(long option, long value);                            // 0x00A0FDB0
-void __fastcall WordWrap_SetCallback(TWordWrapWidthCallback callback, long user);       // 0x00A0FD90
-const unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, long width, long* lineWidth);   // 0x00A10390
+void __fastcall WordWrap_SetCallback(TWordWrapCharWidthCallback charWidth, TWordWrapCallback2 callback2);   // 0x00A0FD90
+const unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, unsigned int width, const unsigned short** lineEnd);   // 0x00A10390
 
 static const unsigned short kNL[2] = { 10, 0 };
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
@@ -76,7 +77,7 @@ class CText : public CDraggableInto { public:
     CWideString            Value;                  // +0x15c
     CCountedPointer<CFontBank> PFont;              // +0x160
     virtual void v000() { }
-    static long __fastcall MeasureText(const unsigned short* text, long length);   // 0x0054F4B0
+    static unsigned int __fastcall GetCharWidthW(unsigned short c);   // 0x0054F4B0
     long FitInWindow(CWideString& text, const C2DBoxF& window);
 };
 
@@ -84,19 +85,19 @@ long CText::FitInWindow(CWideString& text, const C2DBoxF& window)
 {
     long height = 0;
     CWideString result;
-    const unsigned short* start = text;
+    const unsigned short* start = text.GetAsCharArray();
     if (window.BRX - window.TLX <= 0.0f && window.BRY - window.TLY <= 0.0f)
         return PFont->Height;
     WordWrap_SetOption(0, 1);
-    WordWrap_SetCallback(MeasureText, 0);
+    WordWrap_SetCallback(GetCharWidthW, 0);
     const unsigned short* next;
     do {
         float left = window.TLX;
-        long lineWidth = 0;
-        next = WordWrap_FindNextLineW(start, (long)(window.BRX - left), &lineWidth);
+        const unsigned short* lineEnd = 0;
+        next = WordWrap_FindNextLineW(start, (long)(window.BRX - left), &lineEnd);
         CWideString line;
         if (next)
-            line.Assign(start, next - start);
+            line.SetAsSubString(start, next - start);
         else
             line = start;
         if (!line.Contains(kNL) && next)
@@ -123,30 +124,30 @@ static const wch kEmpty[1] = { 0 };
 CWideString::CWideString() : PStringData(wdup(kEmpty, 0)) { }
 CWideString::CWideString(const wch* t) : PStringData(wdup(t, wlen(t))) { }
 CWideString::~CWideString() { std::free(PStringData); }
-CWideString::operator const wch*() const { return (const wch*)PStringData; }
+const wch* CWideString::GetAsCharArray() const { return (const wch*)PStringData; }
 bool CWideString::Contains(const CWideString& t) const {
-    const wch* a = *this; const wch* b = t; long na = wlen(a), nb = wlen(b);
+    const wch* a = GetAsCharArray(); const wch* b = t.GetAsCharArray(); long na = wlen(a), nb = wlen(b);
     for (long i = 0; i + nb <= na; ++i) { long j = 0; while (j < nb && a[i + j] == b[j]) ++j; if (j == nb) return true; }
     return false;
 }
-long CWideString::FindCharPos(wch c) const { const wch* a = *this; for (long i = 0; a[i]; ++i) if (a[i] == c) return i; return -1; }
-long CWideString::GetLength() const { return wlen(*this); }
-void CWideString::Assign(const wch* t, long n) { std::free(PStringData); PStringData = wdup(t, n); }
-const CWideString& CWideString::operator=(const CWideString& o) { if (this != &o) { std::free(PStringData); PStringData = wdup(o, o.GetLength()); } return *this; }
-CWideString& CWideString::operator=(const wch* t) { std::free(PStringData); PStringData = wdup(t, wlen(t)); return *this; }
-CWideString& CWideString::operator+=(const CWideString& o) {
+long CWideString::FindCharPos(wch c) const { const wch* a = GetAsCharArray(); for (long i = 0; a[i]; ++i) if (a[i] == c) return i; return -1; }
+long CWideString::GetLength() const { return wlen(GetAsCharArray()); }
+void CWideString::SetAsSubString(const wch* t, long n) { std::free(PStringData); PStringData = wdup(t, n); }
+const CWideString& CWideString::operator=(const CWideString& o) { if (this != &o) { std::free(PStringData); PStringData = wdup(o.GetAsCharArray(), o.GetLength()); } return *this; }
+const CWideString& CWideString::operator=(const wch* t) { std::free(PStringData); PStringData = wdup(t, wlen(t)); return *this; }
+const CWideString& CWideString::operator+=(const CWideString& o) {
     long na = GetLength(), nb = o.GetLength(); wch* d = (wch*)std::malloc((na + nb + 1) * sizeof(wch));
-    const wch* a = *this; const wch* b = o;
+    const wch* a = GetAsCharArray(); const wch* b = o.GetAsCharArray();
     for (long i = 0; i < na; ++i) d[i] = a[i]; for (long i = 0; i < nb; ++i) d[na + i] = b[i]; d[na + nb] = 0;
     std::free(PStringData); PStringData = d; return *this;
 }
 CWideString __fastcall operator+(const CWideString& l, const wch* r) { CWideString t; t = l; CWideString rr(r); t += rr; return t; }
 static int g_opt, g_cb;
 void __fastcall WordWrap_SetOption(long, long) { ++g_opt; }
-void __fastcall WordWrap_SetCallback(TWordWrapWidthCallback, long) { ++g_cb; }
-const wch* __fastcall WordWrap_FindNextLineW(const wch* t, long width, long* lw) { *lw = width; return wlen(t) > width ? t + width : 0; }
-long __fastcall NUISystem::CText::MeasureText(const wch*, long n) { return n; }
-static bool eq(const CWideString& s, const char* c) { const wch* a = s; long i = 0; for (; c[i]; ++i) if (a[i] != (wch)c[i]) return false; return a[i] == 0; }
+void __fastcall WordWrap_SetCallback(TWordWrapCharWidthCallback, TWordWrapCallback2) { ++g_cb; }
+const wch* __fastcall WordWrap_FindNextLineW(const wch* t, unsigned int width, const wch** end) { const wch* n = wlen(t) > (long)width ? t + width : 0; *end = n; return n; }
+unsigned int __fastcall NUISystem::CText::GetCharWidthW(unsigned short) { return 1; }
+static bool eq(const CWideString& s, const char* c) { const wch* a = s.GetAsCharArray(); long i = 0; for (; c[i]; ++i) if (a[i] != (wch)c[i]) return false; return a[i] == 0; }
 static wch* W(const char* c) { long n = 0; while (c[n]) ++n; wch* d = (wch*)std::malloc((n + 1) * sizeof(wch)); for (long i = 0; i <= n; ++i) d[i] = (wch)c[i]; return d; }
 
 int main()

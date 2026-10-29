@@ -8,18 +8,19 @@
 //   3 GetParentScript, 4 OnPersist, 5 OnPredicateFail, 6 OnInterrupted.
 // Layout: Ego_r.pdb CChickenSign (entity offsets equal retail): ParentClass +0x14, PMasterData +0x18, members from +0x1c;
 //   the parent level script's members sit at Ego_r offset - 0x14 (retail CScriptBase is 0x40).
-// Flags: /Zc:wchar_t
+// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
 // Callees: std::vector<CWideString>::resize(size_type, const CWideString&) 0x00412B20 through STLport's inline
 //   resize(n) (the CWideString() 0x0099AED0 temporary, ~CWideString 0x0099B510), CWideString::operator=(const wchar_t*)
 //   0x0099B800 eight times (wide literals TEXT_QST_B17_SIGN_WON_*). The manifest label of 0x00412B20
 //   (vector<pair<CCharString,long> >::resize) is wrong: its body strides 4-byte elements (`sar edi,2`).
-//   (/Zc:wchar_t keeps wchar_t native, as FableWin.pdb spells the operator: PB_W).
+//   (wchar_t is the unsigned short typedef, so the operator mangles PBG; FableWin.pdb spells it PB_W).
+#include <stddef.h>
 class CWideString {                                     // 4 bytes (Ego_r.pdb)
 public:
     void* PData;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
-    const CWideString& operator=(const wchar_t* text);  // 0x0099B800 (FableWin.pdb ??4CWideString@@QAEABV0@PB_W@Z)
+    const CWideString& operator=(const wchar_t* text);  // 0x0099B800 (FableWin.pdb ??4CWideString@@QAEABV0@PB_W@Z, G form)
 };
 namespace std {
 template <class T> class allocator { };

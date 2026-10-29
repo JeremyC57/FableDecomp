@@ -10,7 +10,7 @@ class CWideString { public:
     char buf[64];
     CWideString() { buf[0] = 0; }
     CWideString(const char* s) { std::strcpy(buf, s); }
-    CWideString& operator+=(const CWideString& o) { std::strcat(buf, o.buf); return *this; }
+    const CWideString& operator+=(const CWideString& o) { std::strcat(buf, o.buf); return *this; }
     bool operator!=(const char* s) const { return std::strcmp(buf, s) != 0; }
 };
 static CWideString GetTextBySymbol(const char* s) { return CWideString(s); }

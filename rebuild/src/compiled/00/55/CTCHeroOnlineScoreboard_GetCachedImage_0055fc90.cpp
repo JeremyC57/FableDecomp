@@ -6,7 +6,7 @@
 // Callees: map<long,CTexturePointer>::find 0x00566F00 (iterator by hidden pointer) / operator[] 0x005698A0,
 // GetSaveDir 0x0041A5B0, operator+(const CWideString&, const CWideString&) 0x0099BE70 / (const CWideString&, const
 // wchar_t*) 0x0099BF30, ~CWideString 0x0099B510, GFIntToCharString 0x0099F830, CCharString::ToWideString 0x0099E480,
-// ~CCharString 0x0099EAE0, CWideString::operator+= 0x0099B8D0 / 0x0099B940, FindFirstFile 0x00999760, CWideString(const
+// ~CCharString 0x0099EAE0, CWideString::operator+= 0x0099B8D0 / 0x0099B940, CAFile::StartFileScan 0x00999760, CWideString(const
 // wchar_t*) 0x0099B6B0, operator new 0x00BFEA1A, CTexturePointer::Reset 0x005669C0, CPixelFormat::Initialise
 // 0x009E3790, CTexture::Initialise 0x009FA280, CTexture::GetSurface 0x009F9E00, CSurface::LoadFromBitmapFileTo
 // PreallocatedSurface 0x009F2DD0, CSurface::Uninitialise 0x009F2E20 (inline ~CSurface, vtable 0x0122F84C), the count
@@ -40,10 +40,15 @@ struct CFindFileData {
     wchar16       FileName[260];
     unsigned long Attributes;
 };
-struct CFindFileHandle {
-    long _body[2];
+class CAFile {
+public:
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                   // +0x00
+        long SearchHandle;                              // +0x04
+    };
+    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760
 };
-bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
 
 class C2DExtentsI { public:
     long X, Y;
@@ -194,9 +199,9 @@ CTexturePointer CTCHeroOnlineScoreboard::GetCachedImage(const CWideString& folde
         CWideString path = GetSaveDir() + folder + (const wchar16*)L"\\";
         path += GFIntToCharString(id).ToWideString();
         path += (const wchar16*)L"\\logo.*";
-        CFindFileHandle handle;
+        CAFile::CFileScanInfo handle;
         CFindFileData data;
-        if (FindFirstFile(path, handle, data)) {
+        if (CAFile::StartFileScan(path, handle, data.FileName)) {
             CWideString name(data.FileName);
             texture.Reset(new CTexture);
             CPixelFormat format;

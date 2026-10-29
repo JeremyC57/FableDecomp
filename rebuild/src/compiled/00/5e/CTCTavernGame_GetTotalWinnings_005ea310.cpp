@@ -7,7 +7,7 @@
 // (`?GetTotalWinnings@CTCTavernGame@@UAE?AVCWideString@@XZ`).
 // Callees: CDefClassBase::GetSubDef<CTavernGameDef> 0x005ED4A0 (landed as GetSubDef_005ed4a0), reached through the
 //          inline CTCTavernGame::GetDef (its out-of-line copy is 0x005EA000); CWideString() 0x0099AED0; the wide
-//          formatter 0x0099BA70 (`__cdecl (CWideString*, const wchar_t*, ...)`, L"%d" @ 0x0122DE44);
+//          formatter 0x0099BA70 (`__cdecl` CWideString::Sprintf(const wchar_t*, ...), `this` pushed first, L"%d" @ 0x0122DE44);
 //          CWideString(const CWideString&) 0x0099B720; ~CWideString 0x0099B510 (x3); CTCTavernGame::GetText(unsigned
 //          long) 0x005E9E70; operator+(const CWideString&, const CWideString&) 0x0099BE70 (__fastcall); the def's slot 1.
 // Layout (retail CTCTavernGame; engine/CTCTavernGame.h carries Ego_r.pdb offsets, 8 bytes high from LastRenderTime
@@ -27,14 +27,14 @@ class CWideString { public:
     CWideString();                              // 0x0099AED0
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
+    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70
 };
-void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
 
 inline CWideString IntToWideString(long value)
 {
     CWideString text;
-    FormatWideString(&text, L"%d", value);      // 0x0122DE44
+    text.Sprintf(L"%d", value);      // 0x0122DE44
     return text;
 }
 

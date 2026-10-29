@@ -3,8 +3,8 @@
 // Flags: /Gr
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00402130, 372 bytes (+12 int3), plain `ret`; the path by reference in ecx (/Gr
 // link-time __fastcall).  Replaces the landed asm_bake bootstrap with compiler-emitted C++.
-// Callees: CCharString() 0x0099E4B0, CWideString::GetSubString(0, 2) 0x0099BDB0, wcscmp 0x00BFE94C, char_traits<wchar_t>::compare
-// 0x00403C60 (cdecl, landed MemCmp_Unsigned16), ~CWideString 0x0099B510, CCharString::operator=(const char*) 0x0099EFE0,
+// Callees: CCharString() 0x0099E4B0, CWideString::GetSubString(0, 2) 0x0099BDB0, wcscmp 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare
+// 0x00403C60 (cdecl, inherited by char_traits<wchar_t>; landed before as MemCmp_Unsigned16), ~CWideString 0x0099B510, CCharString::operator=(const char*) 0x0099EFE0,
 // operator+(const CWideString&, const wchar_t*) 0x0099BF30, CWideString::GetAsCharArray 0x0099AF10 (x3), CreateFileW /
 // CloseHandle / DeleteFileW through the IAT (0x0143FE2C/30/34), _wfopen 0x00BFEA26 (L"w+"), fclose 0x00BFEA20,
 // CCharString::operator!=(const char*) 0x0099E960, CCRC::Calc 0x004014A0, ~CCharString 0x0099EAE0.
@@ -26,14 +26,18 @@ extern "C" __declspec(dllimport) void* __stdcall CreateFileW(const wchar16* name
 extern "C" __declspec(dllimport) int __stdcall CloseHandle(void* handle);             // [0x0143FE30]
 extern "C" __declspec(dllimport) int __stdcall DeleteFileW(const wchar16* name);      // [0x0143FE34]
 
-struct char_traits_w {
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
+struct char_traits_w : public std::__char_traits_base<wchar16, wchar16> {   // STLport char_traits<wchar_t>
     static unsigned long length(const wchar16* s)
     {
         unsigned long i = 0;
         for (; s[i] != 0; ++i) { }
         return i;
     }
-    static int __cdecl compare(const wchar16* a, const wchar16* b, unsigned long n);   // 0x00403C60
 };
 struct CBasicStringW {                                  // STLport basic_string<wchar_t>, 12 bytes
     wchar16* _M_start;                                  // +0x00

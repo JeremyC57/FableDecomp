@@ -1,7 +1,7 @@
 // CSystemRegistry::WriteBinary(const CWideString&, void*, unsigned long) -- store a REG_BINARY block under the open key
 // Leaf: WriteBinary
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099D180, length 48 bytes.
-// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import
+// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import
 // slot 0x0143FBE8.
 // Identity: ?WriteBinary@CSystemRegistry@@QBEXABVCWideString@@PAXK@Z (value type 3 = REG_BINARY).
 //
@@ -12,7 +12,7 @@ struct HKEY__;
 
 class CWideString {
 public:
-    operator const unsigned short*() const;      // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;      // 0x0099AF10
 private:
     void* m_pData;
 };
@@ -32,5 +32,5 @@ private:
 void CSystemRegistry::WriteBinary(const CWideString& valueName, void* data, unsigned long size) const
 {
     if (OpenKey != 0)
-        RegSetValueExW(OpenKey, valueName, 0, 3, (const unsigned char*)data, size);   // REG_BINARY
+        RegSetValueExW(OpenKey, valueName.GetAsCharArray(), 0, 3, (const unsigned char*)data, size);   // REG_BINARY
 }

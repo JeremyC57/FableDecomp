@@ -8,7 +8,7 @@
 //          ~ @ 0x0099B510, CAFile::SplitPath @ 0x00997620 (static `__fastcall`),
 //          NResourceDirectoryNames::GetSaveDirWithoutTrailingBlackslash @ 0x0041A4F0 (`__fastcall`; manifest "GetSaveDir"
 //          is the neighbour 0x0041A540), operator+(const wchar_t*, const CWideString&) @ 0x0099BFF0, CWideString::GetLength
-//          @ 0x0099B220, operator const wchar_t* @ 0x0099AF10, GetSubString @ 0x0099BDB0, wcsncmp @ 0x00BFEB0A,
+//          @ 0x0099B220, GetAsCharArray() @ 0x0099AF10, GetSubString @ 0x0099BDB0, wcsncmp @ 0x00BFEB0A,
 //          __security_check_cookie @ 0x00BFE9F9. Signatures from FableWin.pdb.
 // Layout: Ego_r.pdb CUserProfileManager: ProfileName (CWideString) +0x08.
 // Shape: the open result is a named bool (neg/sbb/inc) that outlives the key string and the success path is nested (the
@@ -27,7 +27,7 @@ class CWideString { public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     long GetLength() const;                             // 0x0099B220
-    operator const unsigned short*() const;             // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;             // 0x0099AF10
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
 };
 CWideString __fastcall operator+(const unsigned short* left, const CWideString& right);   // 0x0099BFF0
@@ -58,7 +58,7 @@ CWideString CUserProfileManager::GetDirectoryNameFromProfileName() const
         CWideString directory;
         CAFile::SplitPath(CWideString(path), 0, &directory, 0, 0);
         CWideString prefix = (const unsigned short*)L".\\" + NResourceDirectoryNames::GetSaveDirWithoutTrailingBlackslash();
-        if (wcsncmp(directory, prefix, prefix.GetLength()) == 0) {
+        if (wcsncmp(directory.GetAsCharArray(), prefix.GetAsCharArray(), prefix.GetLength()) == 0) {
             CWideString name = directory.GetSubString(7, directory.GetLength());
             return name;
         }

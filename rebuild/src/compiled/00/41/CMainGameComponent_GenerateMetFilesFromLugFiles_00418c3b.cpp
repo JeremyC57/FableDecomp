@@ -18,17 +18,19 @@ CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
 class CAFile {
 public:
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                   // +0x00
+        long SearchHandle;                              // +0x04
+    };
     static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar_t* firstFile);   // 0x00999760
+    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, wchar_t* nextFile);     // 0x00999850
 };   // 0x00997620
 struct CFindFileData {
     wchar_t       FileName[260];
     unsigned long Attributes;
 };
-struct CFindFileHandle {
-    long _body[2];
-};
-bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
-bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850
 CWideString __fastcall GetSoundDirectory();     // 0x0041A2B0 (L"Data\\Sound\\")
 enum FileAccessType { FILE_ACCESS_2 = 2 };
 class CMemoryFile { public:                            // retail 0x24 bytes (PDB 0x28: the CArray is 12 bytes in retail)
@@ -66,9 +68,9 @@ class CMainGameComponent { public:
 void CMainGameComponent::GenerateMetFilesFromLugFiles()
 {
     CWideString pattern = GetSoundDirectory() + L"*.lug";
-    CFindFileHandle handle;
+    CAFile::CFileScanInfo handle;
     CFindFileData data;
-    if (FindFirstFile(pattern, handle, data)) {
+    if (CAFile::StartFileScan(pattern, handle, data.FileName)) {
         bool more;
         do {
             CWideString name;
@@ -81,7 +83,7 @@ void CMainGameComponent::GenerateMetFilesFromLugFiles()
             CBinaryFileDataWriter writer(&file);
             GFGetSystemManager()->Sound->CompileLugFile(GetSoundDirectory() + name + extension, &writer);
             file.DumpToFile();
-            more = FindNextFile(pattern, handle, data);
+            more = CAFile::ScanNextFile(pattern, handle, data.FileName);
         } while (more);
     }
 }

@@ -14,7 +14,7 @@ public:
     CWideString(const unsigned short* text) : m_pData(dup(text)) { ++g_textCtors; }       // 0x0099B6B0
     CWideString(const CWideString& other) : m_pData(dup(other.m_pData)) { ++g_copyCtors; } // 0x0099B720
     ~CWideString() { delete[] m_pData; }
-    operator const unsigned short*() const { return m_pData; }                             // 0x0099AF10
+    const unsigned short* GetAsCharArray() const { return m_pData; }                             // 0x0099AF10
 private:
     static unsigned short* dup(const unsigned short* s)
     { long n = 0; while (s[n]) ++n; unsigned short* p = new unsigned short[n + 1]; std::memcpy(p, s, (n + 1) * 2); return p; }
@@ -57,7 +57,7 @@ CWideString CSystemRegistry::GetString(const CWideString& valueName, const CWide
         unsigned short buffer[512];
         unsigned long type = 0;
         unsigned long size = 0x200;
-        if (RegQueryValueExW(OpenKey, valueName, 0, &type, (unsigned char*)buffer, &size) == 0)
+        if (RegQueryValueExW(OpenKey, valueName.GetAsCharArray(), 0, &type, (unsigned char*)buffer, &size) == 0)
             return CWideString(buffer);
     }
     return CWideString(defaultValue);
@@ -71,22 +71,22 @@ int main()
     g_textCtors = g_copyCtors = 0; g_result = 0;
     {
         CWideString s = r.GetString(name, def);
-        CHECK(same(s, kVal) && g_calls == 1 && g_lastKey == &g_key && same(g_lastName, kName) && g_lastSize == 0x200);
+        CHECK(same(s.GetAsCharArray(), kVal) && g_calls == 1 && g_lastKey == &g_key && same(g_lastName, kName) && g_lastSize == 0x200);
         CHECK(g_textCtors == 1);
-        CHECK((const unsigned short*)s != (const unsigned short*)def);
+        CHECK(s.GetAsCharArray() != def.GetAsCharArray());
     }
 
     g_textCtors = g_copyCtors = 0; g_result = 2;      // ERROR_FILE_NOT_FOUND
     {
         CWideString s = r.GetString(name, def);
-        CHECK(same(s, kDef) && g_calls == 2 && g_textCtors == 0 && g_copyCtors >= 1);
-        CHECK((const unsigned short*)s != (const unsigned short*)def);
+        CHECK(same(s.GetAsCharArray(), kDef) && g_calls == 2 && g_textCtors == 0 && g_copyCtors >= 1);
+        CHECK(s.GetAsCharArray() != def.GetAsCharArray());
     }
 
     r.OpenKey = 0; g_textCtors = g_copyCtors = 0; g_result = 0;
     {
         CWideString s = r.GetString(name, def);
-        CHECK(same(s, kDef) && g_calls == 2 && g_textCtors == 0 && g_copyCtors >= 1);
+        CHECK(same(s.GetAsCharArray(), kDef) && g_calls == 2 && g_textCtors == 0 && g_copyCtors >= 1);
     }
 
     if (g_fail) { std::printf("0099d000_TEST FAIL\n"); return 1; }

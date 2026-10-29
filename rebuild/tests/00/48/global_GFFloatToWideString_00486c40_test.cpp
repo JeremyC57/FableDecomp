@@ -8,7 +8,7 @@ struct CWideStringModel {
     wchar_t16 m_buf[64];
     long m_len;
     CWideStringModel() : m_len(0) { m_buf[0] = 0; }
-    operator const wchar_t16*() const { return m_buf; }
+    const wchar_t16* GetAsCharArray() const { return m_buf; }
     long GetLength() const { return m_len; }
     void SetLength(long n) { m_len = n; m_buf[n] = 0; }
     CWideStringModel& operator+=(wchar_t16 c) { m_buf[m_len++] = c; m_buf[m_len] = 0; return *this; }
@@ -27,9 +27,9 @@ static CWideStringModel GFFloatToWideStringModel(double value)
     CWideStringModel text;
     FormatF(&text, value);
     for (long i = 0; i < text.GetLength(); ++i) {
-        if (((const wchar_t16*)text)[i] == '.') {
+        if (text.GetAsCharArray()[i] == '.') {
             while (text.GetLength() > 0) {
-                wchar_t16 last = ((const wchar_t16*)text)[text.GetLength() - 1];
+                wchar_t16 last = text.GetAsCharArray()[text.GetLength() - 1];
                 if (last == '.') {
                     text += '0';
                     break;

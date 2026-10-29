@@ -1,0 +1,274 @@
+{
+ "rebuild/src/compiled/00/4a/CWorld_LoadGameState_004a3200.cpp": [
+  [
+   "//   FindFirstFile 0x00999760, CWorld::GetPathNameForFileName 0x0049EF50, IsHeroStateFileValid 0x0049D4E0,\n",
+   "//   CAFile::StartFileScan 0x00999760, CWorld::GetPathNameForFileName 0x0049EF50, IsHeroStateFileValid 0x0049D4E0,\n"
+  ],
+  [
+   "public:\n    static bool __fastcall PathExists(const CWideString&);   // 0x00999230\n",
+   "public:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static bool __fastcall PathExists(const CWideString&);   // 0x00999230\n"
+  ],
+  [
+   "    static bool __fastcall PathExists(const CWideString&);   // 0x00999230\n};   // 0x00999230\n",
+   "    static bool __fastcall PathExists(const CWideString&);   // 0x00999230\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760\n};   // 0x00999230\n"
+  ],
+  [
+   "struct CFileFinder { void* Handle; unsigned long Flags; };\nbool __fastcall FindFirstFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);   // 0x00999760\n",
+   ""
+  ],
+  [
+   "        CFileFinder finder;\n",
+   "        CAFile::CFileScanInfo finder;\n"
+  ],
+  [
+   "        if (FindFirstFile(pattern, &finder, fileName))\n",
+   "        if (CAFile::StartFileScan(pattern, finder, fileName))\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/CFrontendGameComponent_GetWorldNames_00495890.cpp": [
+  [
+   "// (operator+ 0x0099BF30, literal 0x0123877C); FindFirstFile / FindNextFile (0x00999760 / 0x00999850) loop: fileName(data\n",
+   "// (operator+ 0x0099BF30, literal 0x0123877C); CAFile::StartFileScan / ScanNextFile (0x00999760 / 0x00999850) loop: fileName(data\n"
+  ],
+  [
+   "public:\n    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n",
+   "public:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n"
+  ],
+  [
+   "    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n};   // 0x00997620\n",
+   "    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar_t* firstFile);   // 0x00999760\n    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, wchar_t* nextFile);     // 0x00999850\n};   // 0x00997620\n"
+  ],
+  [
+   "struct CFindFileHandle {\n    long _body[2];\n};\nbool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760\nbool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850\n",
+   ""
+  ],
+  [
+   "    CFindFileHandle handle;\n",
+   "    CAFile::CFileScanInfo handle;\n"
+  ],
+  [
+   "    if (FindFirstFile(pattern, handle, data)) {\n",
+   "    if (CAFile::StartFileScan(pattern, handle, data.FileName)) {\n"
+  ],
+  [
+   "        } while (FindNextFile(pattern, handle, data));\n",
+   "        } while (CAFile::ScanNextFile(pattern, handle, data.FileName));\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/55/CTCHeroOnlineScoreboard_GetCachedMemberLogosAsString_0055ea80.cpp": [
+  [
+   "// 0x0099EBF0, FindFirstFile 0x00999760, CWideString(const wchar_t*) 0x0099B6B0, CWideString::GetLength 0x0099B220,\n",
+   "// 0x0099EBF0, CAFile::StartFileScan 0x00999760, CWideString(const wchar_t*) 0x0099B6B0, CWideString::GetLength 0x0099B220,\n"
+  ],
+  [
+   "struct CFindFileHandle {\n    long _body[2];\n",
+   "class CAFile {\npublic:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760\n"
+  ],
+  [
+   "bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760\n",
+   ""
+  ],
+  [
+   "        CFindFileHandle handle;\n",
+   "        CAFile::CFileScanInfo handle;\n"
+  ],
+  [
+   "        if (FindFirstFile(path, handle, data)) {\n",
+   "        if (CAFile::StartFileScan(path, handle, data.FileName)) {\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/55/CTCHeroOnlineScoreboard_GetCachedClanLogosAsString_0055e850.cpp": [
+  [
+   "// 0x0099EBF0, FindFirstFile 0x00999760, CWideString(const wchar_t*) 0x0099B6B0, CWideString::GetLength 0x0099B220,\n",
+   "// 0x0099EBF0, CAFile::StartFileScan 0x00999760, CWideString(const wchar_t*) 0x0099B6B0, CWideString::GetLength 0x0099B220,\n"
+  ],
+  [
+   "struct CFindFileHandle {\n    long _body[2];\n",
+   "class CAFile {\npublic:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760\n"
+  ],
+  [
+   "bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760\n",
+   ""
+  ],
+  [
+   "        CFindFileHandle handle;\n",
+   "        CAFile::CFileScanInfo handle;\n"
+  ],
+  [
+   "        if (FindFirstFile(path, handle, data)) {\n",
+   "        if (CAFile::StartFileScan(path, handle, data.FileName)) {\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/55/CTCHeroOnlineScoreboard_GetCachedImage_0055fc90.cpp": [
+  [
+   "// ~CCharString 0x0099EAE0, CWideString::operator+= 0x0099B8D0 / 0x0099B940, FindFirstFile 0x00999760, CWideString(const\n",
+   "// ~CCharString 0x0099EAE0, CWideString::operator+= 0x0099B8D0 / 0x0099B940, CAFile::StartFileScan 0x00999760, CWideString(const\n"
+  ],
+  [
+   "struct CFindFileHandle {\n    long _body[2];\n",
+   "class CAFile {\npublic:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760\n"
+  ],
+  [
+   "bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760\n",
+   ""
+  ],
+  [
+   "        CFindFileHandle handle;\n",
+   "        CAFile::CFileScanInfo handle;\n"
+  ],
+  [
+   "        if (FindFirstFile(path, handle, data)) {\n",
+   "        if (CAFile::StartFileScan(path, handle, data.FileName)) {\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/6c/CSkeletalMorphResourceManager_PreloadBoneConfigs_006c37d0.cpp": [
+  [
+   "// CWideString::ConvertToCharString 0x0099B2C0, ~CCharString 0x0099EAE0, FindFirstFile 0x00999760 / FindNextFile\n",
+   "// CWideString::ConvertToCharString 0x0099B2C0, ~CCharString 0x0099EAE0, CAFile::StartFileScan 0x00999760 / ScanNextFile\n"
+  ],
+  [
+   "struct CFileFinder { void* Handle; unsigned long Flags; };\nbool __fastcall FindFirstFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);   // 0x00999760\nbool __fastcall FindNextFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);    // 0x00999850\n",
+   "class CAFile {\npublic:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760\n    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, wchar16* nextFile);     // 0x00999850\n};\n"
+  ],
+  [
+   "    CFileFinder finder;\n",
+   "    CAFile::CFileScanInfo finder;\n"
+  ],
+  [
+   "    if (FindFirstFile(pattern, &finder, fileName)) {\n",
+   "    if (CAFile::StartFileScan(pattern, finder, fileName)) {\n"
+  ],
+  [
+   "        } while (FindNextFile(pattern, &finder, fileName));\n",
+   "        } while (CAFile::ScanNextFile(pattern, finder, fileName));\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/59/NUISystemCFrontEndManager_GetProfileNames_005955ab.cpp": [
+  [
+   "// result) + L\"*\" (operator+ 0x0099BF30); FindFirstFile / FindNextFile (0x00999760 / 0x00999850, __fastcall) over pattern:\n",
+   "// result) + L\"*\" (operator+ 0x0099BF30); CAFile::StartFileScan / ScanNextFile (0x00999760 / 0x00999850, __fastcall) over pattern:\n"
+  ],
+  [
+   "// Shape: each loop keeps its own `found` flag assigned by FindNextFile inside the body (the loop locals die after the\n",
+   "// Shape: each loop keeps its own `found` flag assigned by ScanNextFile inside the body (the loop locals die after the\n"
+  ],
+  [
+   "public:\n    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n",
+   "public:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n"
+  ],
+  [
+   "    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n};   // 0x00997620\n",
+   "    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, unsigned short* firstFile);   // 0x00999760\n    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, unsigned short* nextFile);     // 0x00999850\n};   // 0x00997620\n"
+  ],
+  [
+   "struct CFindFileHandle {\n    long _body[2];\n};\nbool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760\nbool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850\n",
+   ""
+  ],
+  [
+   "    CFindFileHandle handle;\n",
+   "    CAFile::CFileScanInfo handle;\n"
+  ],
+  [
+   "    bool found = FindFirstFile(pattern, handle, data);\n",
+   "    bool found = CAFile::StartFileScan(pattern, handle, data.FileName);\n"
+  ],
+  [
+   "            CFindFileHandle fileHandle;\n",
+   "            CAFile::CFileScanInfo fileHandle;\n"
+  ],
+  [
+   "            bool fileFound = FindFirstFile(files, fileHandle, fileData);\n",
+   "            bool fileFound = CAFile::StartFileScan(files, fileHandle, fileData.FileName);\n"
+  ],
+  [
+   "                fileFound = FindNextFile(files, fileHandle, fileData);\n",
+   "                fileFound = CAFile::ScanNextFile(files, fileHandle, fileData.FileName);\n"
+  ],
+  [
+   "        found = FindNextFile(pattern, handle, data);\n",
+   "        found = CAFile::ScanNextFile(pattern, handle, data.FileName);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/41/CMainGameComponent_GenerateMetFilesFromLugFiles_00418c3b.cpp": [
+  [
+   "public:\n    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n",
+   "public:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n"
+  ],
+  [
+   "    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n};   // 0x00997620\n",
+   "    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar_t* firstFile);   // 0x00999760\n    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, wchar_t* nextFile);     // 0x00999850\n};   // 0x00997620\n"
+  ],
+  [
+   "struct CFindFileHandle {\n    long _body[2];\n};\nbool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760\nbool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850\n",
+   ""
+  ],
+  [
+   "    CFindFileHandle handle;\n",
+   "    CAFile::CFileScanInfo handle;\n"
+  ],
+  [
+   "    if (FindFirstFile(pattern, handle, data)) {\n",
+   "    if (CAFile::StartFileScan(pattern, handle, data.FileName)) {\n"
+  ],
+  [
+   "            more = FindNextFile(pattern, handle, data);\n",
+   "            more = CAFile::ScanNextFile(pattern, handle, data.FileName);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/40/CUserProfileManager_LoadFileList_004091c0.cpp": [
+  [
+   "//   operator+(const CWideString&, const wchar_t*) 0x0099BF30, FindFirstFile / FindNextFile 0x00999760 / 0x00999850,\n",
+   "//   operator+(const CWideString&, const wchar_t*) 0x0099BF30, CAFile::StartFileScan / ScanNextFile 0x00999760 / 0x00999850,\n"
+  ],
+  [
+   "public:\n    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n",
+   "public:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n"
+  ],
+  [
+   "    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n};   // 0x00997620\n",
+   "    static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar_t* firstFile);   // 0x00999760\n    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, wchar_t* nextFile);     // 0x00999850\n};   // 0x00997620\n"
+  ],
+  [
+   "struct CFindFileHandle {\n    long _body[2];\n};\nbool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760\nbool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850\n",
+   ""
+  ],
+  [
+   "    CFindFileHandle handle;\n",
+   "    CAFile::CFileScanInfo handle;\n"
+  ],
+  [
+   "    bool more = FindFirstFile(pattern, handle, data);\n",
+   "    bool more = CAFile::StartFileScan(pattern, handle, data.FileName);\n"
+  ],
+  [
+   "        more = FindNextFile(pattern, handle, data);\n",
+   "        more = CAFile::ScanNextFile(pattern, handle, data.FileName);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/40/CUserProfileManager_DeleteProfile_00407040.cpp": [
+  [
+   "struct CFindFileHandle {\n    long _body[2];\n};\nbool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760\nbool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850\n",
+   ""
+  ],
+  [
+   "public:\n    static bool __fastcall PathExists(const CWideString&);   // 0x00999230\n",
+   "public:\n    class CFileScanInfo {\n    public:\n        bool Stopped;                                   // +0x00\n        long SearchHandle;                              // +0x04\n    };\n    static bool __fastcall PathExists(const CWideString&);   // 0x00999230\n"
+  ],
+  [
+   "    static bool __fastcall PathExists(const CWideString&);   // 0x00999230\n};                                 // 0x00999230\n",
+   "    static bool __fastcall PathExists(const CWideString&);   // 0x00999230\n    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, unsigned short* firstFile);   // 0x00999760\n    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, unsigned short* nextFile);     // 0x00999850\n};                                 // 0x00999230\n"
+  ],
+  [
+   "    CFindFileHandle handle;\n",
+   "    CAFile::CFileScanInfo handle;\n"
+  ],
+  [
+   "    if (FindFirstFile(pattern, handle, data)) {\n",
+   "    if (CAFile::StartFileScan(pattern, handle, data.FileName)) {\n"
+  ],
+  [
+   "        } while (FindNextFile(pattern, handle, data));\n",
+   "        } while (CAFile::ScanNextFile(pattern, handle, data.FileName));\n"
+  ]
+ ]
+}

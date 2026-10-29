@@ -11,10 +11,10 @@ class CCharString { public:
 };
 class CWideString { public:
     void* PStringData;
-    CWideString(const char* text);                      // 0x0099B6B0
+    CWideString(const wchar_t* text);                   // 0x0099B6B0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
+    const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
     static CWideString __fastcall CreateFromCharString(const CCharString& text);   // 0x0099B6A0
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
@@ -92,10 +92,10 @@ CWideString CTCInventoryBase::GetPrerequisitesString(CTCQuestCard* card)
         SNode* node = GetDef(card)->Prerequisites.begin();
         while (node != GetDef(card)->Prerequisites.end()) {
             if (node->first == 0) {
-                result += GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_RENOWN") + CWideString(":") + IntToWideString(node->second) + CWideString(" ");
+                result += GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_RENOWN") + CWideString(L":") + IntToWideString(node->second) + CWideString(L" ");
                 CTCHeroStats* stats;
                 if (ParentThing->GetInterface(&stats, 4) && stats)
-                    result += CWideString("(") + GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_CURRENT_LEVEL") + IntToWideString(stats->GetRenownLevel()) + CWideString(")");
+                    result += CWideString(L"(") + GetTextBank()->GetTextBySymbol("TEXT_GUI_MENU_CURRENT_LEVEL") + IntToWideString(stats->GetRenownLevel()) + CWideString(L")");
             }
             node = Successor(node);
         }

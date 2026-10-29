@@ -7,7 +7,7 @@ class CWideString { public:
     CWideString(const unsigned short* text);    // 0x0099B6B0
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
-    CWideString& operator+=(const unsigned short* text);   // 0x0099B940
+    const CWideString& operator+=(const unsigned short* text);   // 0x0099B940
     class CCharString ConvertToCharString() const;          // 0x0099B2C0
 };
 class CCharStringData { public:
@@ -113,7 +113,7 @@ CWideString::CWideString() { PStringData = new CWideStringData; PStringData->s[0
 CWideString::CWideString(const unsigned short* t) { PStringData = new CWideStringData; wset(PStringData->s, t); ++g_live; }
 CWideString::CWideString(const CWideString& o) { PStringData = new CWideStringData; wset(PStringData->s, o.PStringData->s); ++g_live; }
 CWideString::~CWideString() { delete PStringData; --g_live; }
-CWideString& CWideString::operator+=(const unsigned short* t) { wcat(PStringData->s, t); return *this; }
+const CWideString& CWideString::operator+=(const unsigned short* t) { wcat(PStringData->s, t); return *this; }
 static int g_clive;
 CCharString::CCharString(const char* text, long length)
 {

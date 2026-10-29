@@ -8,7 +8,7 @@ class CWideString { public:
     CWideString(const wchar_t* text);           // 0x0099B6B0
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
-    CWideString& operator=(const wchar_t* text);   // 0x0099B800
+    const CWideString& operator=(const wchar_t* text);   // 0x0099B800
 };
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
 void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name, CWideString* extension);   // 0x00997620
@@ -89,7 +89,7 @@ CWideString::CWideString() : PStringData(0) { ++g_live; }
 CWideString::CWideString(const wchar_t* text) : PStringData((CWideStringData*)Dup(text)) { ++g_live; }
 CWideString::CWideString(const CWideString& other) : PStringData((CWideStringData*)Dup(W(other))) { ++g_live; }
 CWideString::~CWideString() { free(PStringData); PStringData = 0; --g_live; }
-CWideString& CWideString::operator=(const wchar_t* text) { free(PStringData); PStringData = (CWideStringData*)Dup(text); return *this; }
+const CWideString& CWideString::operator=(const wchar_t* text) { free(PStringData); PStringData = (CWideStringData*)Dup(text); return *this; }
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b)
 {
     wchar_t buf[300]; wcscpy(buf, W(a)); wcscat(buf, b); return CWideString(buf);

@@ -28,7 +28,7 @@ struct IDirectInputDevice8_Retail {                // COM: __stdcall methods, `t
 };
 class CWideString { public:
     void* PStringData;
-    CWideString& operator=(const unsigned short* text);   // 0x0099B800
+    const CWideString& operator=(const unsigned short* text);   // 0x0099B800
 };
 struct SDIPropHeader {                             // DIPROPHEADER
     unsigned long dwSize;

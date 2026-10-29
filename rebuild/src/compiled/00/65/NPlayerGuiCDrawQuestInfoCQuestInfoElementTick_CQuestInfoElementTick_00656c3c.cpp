@@ -11,13 +11,13 @@
 // the derived vtable and the Graphic store, the text constructor, then the flag byte; `ret 0Ch`.
 #include <stddef.h>
 
-namespace NPlayerGui {
-
 class CWideString {
 public:
     void* PStringData;
     CWideString(const wchar_t* text);              // 0x0099B6B0
 };
+
+namespace NPlayerGui {
 
 struct CQuestInfoElement {
     virtual void v00();

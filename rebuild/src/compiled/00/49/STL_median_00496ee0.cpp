@@ -3,7 +3,7 @@
 // Leaf: __median
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00496EE0, 175 bytes, `ret 8` (__fastcall: a in ecx -> edi, b in edx -> esi,
 //   c on the stack -> ebx, then the empty comparator's 4-byte slot; the STLport algorithm TUs are /Gr).
-// Callees: 0x0099AF10 CWideString::operator const wchar_t* (byte twin of the CCharString accessor, label propagated),
+// Callees: 0x0099AF10 CWideString::GetAsCharArray() (byte twin of the CCharString accessor, label propagated),
 //   0x00F3FB84 _wcsicmp (CRT, __cdecl). Same models as the landed _Adjust_heap 0x00497160 / __unguarded_linear_insert
 //   0x00496FD0 of this sort instantiation.
 // Shape: the five compares of STLport's `__median` in source order, each `_wcsicmp(x, y) < 0` converting the SECOND string
@@ -17,13 +17,13 @@ class CWideString { public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    operator const wchar_t*() const;                    // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10
 };
 
 namespace NGameComponentHelpers {
 class CCaseInsensitiveStringCompare { public:
     char m_tag;
-    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }
+    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }
 };
 }
 

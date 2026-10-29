@@ -12,7 +12,7 @@ static int FakeChdir(const wchar16* path)
 }
 class CWideString { public:
     wchar16 m_data[8];
-    operator const wchar16*() { return m_data; }
+    operator const wchar16*() const { return m_data; }
 };
 static CWideString GetCurrentWorkingDirectory() { CWideString s; int i = 0; while ((s.m_data[i] = g_cwd[i]) != 0) ++i; return s; }
 class CDriveManager { public:

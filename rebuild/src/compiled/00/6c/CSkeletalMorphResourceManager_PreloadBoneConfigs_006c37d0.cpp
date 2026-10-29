@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006C37D0, length 459 bytes (/GS cookie, no EH frame, `and esp,-8`).
 // Callees: the L"Data\\Bones\\" fastcall getter 0x0041A290 (manifest "GetAutoSaveFileName", propagated),
 // operator+(CWideString, const wchar16*) 0x0099BF30, CWideString(const wchar16*) 0x0099B6B0, ~CWideString 0x0099B510,
-// CWideString::ConvertToCharString 0x0099B2C0, ~CCharString 0x0099EAE0, FindFirstFile 0x00999760 / FindNextFile
+// CWideString::ConvertToCharString 0x0099B2C0, ~CCharString 0x0099EAE0, CAFile::StartFileScan 0x00999760 / ScanNextFile
 // 0x00999850 (__fastcall pattern, finder, name buffer), the map's find 0x006C31B0 / insert 0x006C3410,
 // CDiskFileWin32(path, 1, 2) 0x0099AD80 (inline dtor: Close 0x0099A920, ~CBaseClassNonCopyable 0x0099A300), operator new
 // 0x00BFEA1A, C3DSkeletalMorphTarget() 0x00A44E60, CCountedPointer::Reset 0x006C3AC0,
@@ -28,9 +28,16 @@ class CCharString { public:
 };
 CWideString __fastcall GetBonesDirectory();        // 0x0041A290 (L"Data\\Bones\\")
 CWideString __fastcall operator+(const CWideString& a, const wchar16* b);      // 0x0099BF30
-struct CFileFinder { void* Handle; unsigned long Flags; };
-bool __fastcall FindFirstFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);   // 0x00999760
-bool __fastcall FindNextFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);    // 0x00999850
+class CAFile {
+public:
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                   // +0x00
+        long SearchHandle;                              // +0x04
+    };
+    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760
+    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, wchar16* nextFile);     // 0x00999850
+};
 class CBaseClassNonCopyable {
 protected:
     virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
@@ -107,9 +114,9 @@ class CSkeletalMorphResourceManager { public:
 void CSkeletalMorphResourceManager::PreloadBoneConfigs()
 {
     CWideString pattern = GetBonesDirectory() + L"*.bncfg";
-    CFileFinder finder;
+    CAFile::CFileScanInfo finder;
     wchar16 fileName[264];
-    if (FindFirstFile(pattern, &finder, fileName)) {
+    if (CAFile::StartFileScan(pattern, finder, fileName)) {
         do {
             CWideString name(fileName);
             CMorphNode* node = Morphs.find(name.ConvertToCharString());
@@ -120,6 +127,6 @@ void CSkeletalMorphResourceManager::PreloadBoneConfigs()
                 node->Value.Reset(new C3DSkeletalMorphTarget);
                 GFLoadSkeletalMorphTargetFromFile(&file, node->Value.Data);
             }
-        } while (FindNextFile(pattern, &finder, fileName));
+        } while (CAFile::ScanNextFile(pattern, finder, fileName));
     }
 }

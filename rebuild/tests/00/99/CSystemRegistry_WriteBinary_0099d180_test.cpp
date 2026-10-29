@@ -9,7 +9,7 @@ class CWideString {
 public:
     explicit CWideString(const unsigned short* p) : m_pData(p) {}
     long GetLength() const { long n = 0; while (m_pData[n]) ++n; return n; }
-    operator const unsigned short*() const { return m_pData; }
+    const unsigned short* GetAsCharArray() const { return m_pData; }
 private:
     const unsigned short* m_pData;
 };
@@ -38,7 +38,7 @@ public:
     void WriteBinary(const CWideString& valueName, void* data, unsigned long size) const
     {
         if (OpenKey != 0)
-            RegSetValueExWStub(OpenKey, valueName, 0, 3, (const unsigned char*)data, size);
+            RegSetValueExWStub(OpenKey, valueName.GetAsCharArray(), 0, 3, (const unsigned char*)data, size);
     }
 };
 

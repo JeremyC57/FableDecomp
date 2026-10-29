@@ -1,0 +1,13 @@
+rebuild/src/compiled/00/40/global_CreateSaveGame_00406e30.cpp
+rebuild/src/compiled/00/55/NUISystemCKeyRedefiner_UpdateKeyText_00557a10.cpp
+rebuild/src/compiled/00/59/CFrontEndManager_Update_00599e3f.cpp
+rebuild/src/compiled/00/98/CThreadedFile_Open_0098e1e0.cpp
+rebuild/src/compiled/00/99/CDataOutputStream_WriteNullTerminatedWString_00993f00.cpp
+rebuild/src/compiled/00/9e/CDriveManager_DeleteDirectory_009e4b70.cpp
+rebuild/src/compiled/00/9e/CDriveManager_DeleteFile_009e4bc0.cpp
+rebuild/src/compiled/00/9e/CDriveManager_DriveExists_009e4ae0.cpp
+rebuild/tests/00/40/global_CreateSaveGame_00406e30_test.cpp
+rebuild/tests/00/55/NUISystemCKeyRedefiner_UpdateKeyText_00557a10_test.cpp
+rebuild/tests/00/9e/CDriveManager_DeleteDirectory_009e4b70_test.cpp
+rebuild/tests/00/9e/CDriveManager_DeleteFile_009e4bc0_test.cpp
+rebuild/tests/00/9e/CDriveManager_DriveExists_009e4ae0_test.cpp

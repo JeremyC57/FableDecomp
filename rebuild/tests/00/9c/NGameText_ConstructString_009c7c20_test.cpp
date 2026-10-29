@@ -23,7 +23,7 @@ public:
             Assign(out);
         }
     }
-    void Format(const unsigned short* fmt, int value)     // "%d"-only stand-in
+    void Sprintf(const unsigned short* fmt, int value)     // "%d"-only stand-in
     {
         (void)fmt;
         char digits[16];
@@ -102,7 +102,7 @@ const unsigned short g_NumberFormat[] = { '%', 'd', 0 };
 inline CWideString FormatIndex(int index)
 {
     CWideString number;
-    number.Format(g_NumberFormat, index);
+    number.Sprintf(g_NumberFormat, index);
     return number;
 }
 

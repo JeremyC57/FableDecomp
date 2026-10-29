@@ -9,9 +9,11 @@ class CWideString { public:
     CWideString() { m_text[0] = 0; ++g_live; }
     CWideString(const CWideString& other) { std::memcpy(m_text, other.m_text, sizeof(m_text)); ++g_live; }
     ~CWideString() { --g_live; }
+    void Sprintf(const wchar_retail* format, long value);   // "%d" only stand-in for CWideString::Sprintf
 };
-static void FormatWideString(CWideString* text, const wchar_retail* format, long value)   // "%d" only
+void CWideString::Sprintf(const wchar_retail* format, long value)
 {
+    CWideString* text = this;
     if (format[0] != '%' || format[1] != 'd') { text->m_text[0] = 0; return; }
     char buffer[16]; std::sprintf(buffer, "%ld", value);
     int i = 0; for (; buffer[i]; ++i) text->m_text[i] = (wchar_retail)buffer[i]; text->m_text[i] = 0;
@@ -20,7 +22,7 @@ static CWideString IntToWideString(long value)
 {
     CWideString text;
     wchar_retail format[3]; format[0] = '%'; format[1] = 'd'; format[2] = 0;
-    FormatWideString(&text, format, value);
+    text.Sprintf(format, value);
     return text;
 }
 static bool Run()

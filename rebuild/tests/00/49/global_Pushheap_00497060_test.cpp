@@ -14,11 +14,11 @@ class CWideString { public:
     wch text[16];
     CWideString() { text[0] = 0; }
     CWideString(const char* s) { int i = 0; for (; s[i]; ++i) text[i] = (wch)s[i]; text[i] = 0; }
-    operator const wch*() const { return text; }
+    const wch* GetAsCharArray() const { return text; }
 };
 struct CCaseInsensitiveStringCompare {
     char m_tag;
-    bool operator()(const CWideString& a, const CWideString& b) const { return my_wcsicmp(a, b) < 0; }
+    bool operator()(const CWideString& a, const CWideString& b) const { return my_wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }
 };
 static void _Push_heap(CWideString* first, long hole, long top, CWideString value, CCaseInsensitiveStringCompare comp)
 {
@@ -41,7 +41,7 @@ int main()
             if (c(heap[(k - 1) / 2], heap[k])) { std::printf("00497060_TEST FAIL\n"); return 1; }
     }
     // case-insensitive maximum is "EVE"
-    if (my_wcsicmp(heap[0], CWideString("eve")) != 0) { std::printf("00497060_TEST FAIL\n"); return 1; }
+    if (my_wcsicmp(heap[0].GetAsCharArray(), CWideString("eve").GetAsCharArray()) != 0) { std::printf("00497060_TEST FAIL\n"); return 1; }
     std::printf("00497060_TEST PASS\n");
     return 0;
 }

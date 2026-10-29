@@ -6,13 +6,13 @@ public:
     CWideString();                                       // 0x0099AED0
     CWideString(const CWideString& other);               // 0x0099B720
     ~CWideString();                                      // 0x0099B510
-    void __cdecl Format(const wchar_t* format, ...);     // 0x0099BA70
+    void __cdecl Sprintf(const wchar_t* format, ...);     // 0x0099BA70
 };
 CWideString __fastcall operator+(const wchar_t* left, const CWideString& right);   // 0x0099BFF0
 inline CWideString NumberToWideString(long number)
 {
     CWideString text;
-    text.Format(L"%d", number);
+    text.Sprintf(L"%d", number);
     return text;
 }
 class CUserProfileManager {
@@ -57,7 +57,7 @@ struct WData { wchar_t s[64]; };
 CWideString::CWideString() { WData* d = new WData; d->s[0] = 0; PStringData = d; ++g_live; }
 CWideString::CWideString(const CWideString& o) { WData* d = new WData; *d = *(WData*)o.PStringData; PStringData = d; ++g_live; }
 CWideString::~CWideString() { delete (WData*)PStringData; --g_live; }
-void __cdecl CWideString::Format(const wchar_t* f, ...) { va_list a; va_start(a, f); _vsnwprintf(((WData*)PStringData)->s, 63, f, a); va_end(a); }
+void __cdecl CWideString::Sprintf(const wchar_t* f, ...) { va_list a; va_start(a, f); _vsnwprintf(((WData*)PStringData)->s, 63, f, a); va_end(a); }
 CWideString __fastcall operator+(const wchar_t* l, const CWideString& r)
 { CWideString x; wcscpy(((WData*)x.PStringData)->s, l); wcscat(((WData*)x.PStringData)->s, ((WData*)r.PStringData)->s); return x; }
 static wchar_t g_dir[64], g_set[64]; static bool g_create, g_load; static int g_saves, g_order[8], g_n;

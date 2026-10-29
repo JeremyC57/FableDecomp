@@ -9,7 +9,7 @@ class CWideString {
 public:
     explicit CWideString(const unsigned short* p) : m_pData(p) {}
     long GetLength() const { long n = 0; while (m_pData[n]) ++n; return n; }
-    operator const unsigned short*() const { return m_pData; }
+    const unsigned short* GetAsCharArray() const { return m_pData; }
 private:
     const unsigned short* m_pData;
 };
@@ -52,7 +52,7 @@ public:
             unsigned long type = 0;
             long value = 0;
             unsigned long size = 4;
-            if (RegQueryValueExWStub(OpenKey, valueName, 0, &type, (unsigned char*)&value, &size) == 0)
+            if (RegQueryValueExWStub(OpenKey, valueName.GetAsCharArray(), 0, &type, (unsigned char*)&value, &size) == 0)
                 return value;
         }
         return defaultValue;

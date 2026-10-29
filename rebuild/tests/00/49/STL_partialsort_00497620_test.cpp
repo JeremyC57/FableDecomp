@@ -22,13 +22,13 @@ class CWideString { public:
     CWideString(const CWideString& other) : PStringData(other.PStringData) {}
     ~CWideString() {}
     const CWideString& operator=(const CWideString& other) { PStringData = other.PStringData; return *this; }
-    operator const char*() const { return PStringData; }
+    const char* GetAsCharArray() const { return PStringData; }
 };
 
 struct TCompare {
     char m_tag;
     TCompare() : m_tag(0) {}
-    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a, b) < 0; }
+    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }
 };
 
 static const CWideString& __median(const CWideString& a, const CWideString& b, const CWideString& c, TCompare comp)
@@ -209,7 +209,7 @@ static void Fill(CWideString* a, int n)
 
 static bool IsSorted(const CWideString* a, int n)
 {
-    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i], a[i - 1]) < 0) return false;
+    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i].GetAsCharArray(), (a[i - 1]).GetAsCharArray()) < 0) return false;
     return true;
 }
 
@@ -236,7 +236,7 @@ int main()
         __partial_sort(a, a + m, a + n, (CWideString*)0, comp);
         if (!IsSorted(a, m) || !SamePointers(a, orig, n)) { std::printf("00497620_TEST FAIL\n"); return 1; }
         for (int i = 0; i < m; ++i)   // the first m are the m smallest, in order
-            if (Wcsicmp(a[i], ref[i]) != 0) { std::printf("00497620_TEST FAIL\n"); return 1; }
+            if (Wcsicmp(a[i].GetAsCharArray(), ref[i].GetAsCharArray()) != 0) { std::printf("00497620_TEST FAIL\n"); return 1; }
     }
     std::printf("00497620_TEST PASS\n");
     return 0;

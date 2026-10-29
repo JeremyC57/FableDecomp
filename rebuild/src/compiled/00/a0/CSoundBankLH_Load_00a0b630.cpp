@@ -1,7 +1,7 @@
 // CSoundBankLH::Load(const CWideString& fileName) -- unless a bank is already loaded and provided the sound system has an engine, convert the name to a full path and load the bank through the engine with a fixed 16-byte descriptor, keeping the handle
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0B630, length 130 bytes (`ret 4`, + int3 padding).
 // Vtable 0x0129C9DC (CSoundBankLH, rtti-vtables.tsv) slot 1. Callees: CAFile::ConvertPathToFullPath @ 0x00999110 (`__fastcall`,
-// hidden result in ecx, path in edx), CWideString::operator const wchar_t* @ 0x0099AF10, ~CWideString @ 0x0099B510, the
+// hidden result in ecx, path in edx), CWideString::GetAsCharArray() @ 0x0099AF10, ~CWideString @ 0x0099B510, the
 // engine's virtual slot 10 (+0x28). Name: the landed callers 0x0042E17C and 0x00A3E430 call this slot `Load`.
 // Leaf: ?Load@CSoundBankLH
 // Layout: as the landed constructor 0x00A0BAC0 / sibling 0x00A0B710 -- the sound system at +0x0c (its engine object at
@@ -16,7 +16,7 @@
 class CWideString {
 public:
     void* m_pData;
-    operator const unsigned short*() const;   // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;   // 0x0099AF10
     ~CWideString();                           // 0x0099B510
 };
 class CAFile {
@@ -55,6 +55,6 @@ void CSoundBankLH::Load(const CWideString& fileName)
         d.f4 = true;
         CWideString w = CAFile::ConvertPathToFullPath(fileName);
         CSoundEngineLH* engine = m_pSystem->m_pEngine;
-        m_pBank = engine->LoadBank(w, &d);
+        m_pBank = engine->LoadBank(w.GetAsCharArray(), &d);
     }
 }

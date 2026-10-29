@@ -1,6 +1,6 @@
 // NUISystem::CManager::SetKeyPressed() -- Store the requested input state.
-// Leaf: ?SetKeyPressed@CManager@NUISystem@@UAEX_W@Z
-// Flags: /Zc:wchar_t
+// Leaf: ?SetKeyPressed@CManager@NUISystem@@UAEXG@Z
+// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
 // Corrected interface: actual CObservable has eleven original virtuals and a nonvirtual destructor; CManager adds its virtual destructor at slot11 before SetKeyPressed12. Manager vtable01230134/base01230044 and original PDB signatures prove this.
 // Identity: Own CManager vtable01230134 slot12 and original PDB SetKeyPressed(wchar_t), member KeyPressed+192. RTTI proves CObservable direct base, original lists4 and maps12 explain donor drift.
 // Layout: original class keys, actual bases and typed STLport containers/counting handles. CManager header renamed to restore actual inheritance/types; enum value spellings unspecified. Bank owner declaration is a prefix through UsingRetailBanks only. Unused virtual slots explicitly descriptive.

@@ -14,9 +14,9 @@ class CWideString { public:
     CWideString();                                          // 0x0099AED0
     CWideString(const unsigned short* text);                       // 0x0099B6B0
     ~CWideString();                                         // 0x0099B510
-    CWideString& operator+=(unsigned short c);              // 0x0099B9A0
+    const CWideString& operator+=(unsigned short c);              // 0x0099B9A0
     bool Contains(const CWideString& text) const;           // 0x0099AF20
-    CWideString& operator=(const unsigned short* text);            // 0x0099B800
+    const CWideString& operator=(const unsigned short* text);            // 0x0099B800
     const CWideString& operator=(const CWideString& other);       // 0x0099B7D0
     CWideString GetSubString(unsigned long start, unsigned long end) const;   // 0x0099BDB0
 public:

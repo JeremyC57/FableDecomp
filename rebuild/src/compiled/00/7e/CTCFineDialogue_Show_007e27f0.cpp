@@ -25,8 +25,8 @@ public:
     void* Data;
     CWideString();                                      // 0x0099AED0
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator+=(const unsigned short* text);    // 0x0099B940
-    CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
+    const CWideString& operator+=(const unsigned short* text);    // 0x0099B940
+    const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
 };
 CWideString __fastcall operator+(const CWideString& left, const unsigned short* right);   // 0x0099BF30
 namespace NGameText {

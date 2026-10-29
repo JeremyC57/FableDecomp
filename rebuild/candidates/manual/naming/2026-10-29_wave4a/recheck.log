@@ -1,0 +1,439 @@
+addr       parity           behav  name
+00402130   WARN RELOC_CHECK_ERROR: invalid literal for int() with base 16: '-'
+00402130   RELOCATION_MATCH PASS   _global::FableCheckMyDocumentsWritePermissions
+  WARN leaf '?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z (STLport 4.6 char_traits.h: char_traits<wchar_t> inherits the static' matches no symbol in 00403c60.obj; graded the largest function
+  WARN leaf '?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z (STLport 4.6 char_traits.h: char_traits<wchar_t> inherits the static' matches no symbol in 00403c60.obj; graded the largest function
+00403c60   MATCH            PASS   MemCmp_Unsigned16
+00404280   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+00404280   RELOCATION_MATCH PASS   WideString_EqualsLen
+00405f00   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00405f00   RELOCATION_MATCH PASS   _global::IntToWideString
+00406e30   WARN SHARED_HEADER_AVAILABLE CDriveManager
+00406e30   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+00406e30   RELOCATION_MATCH PASS   _global::CreateSaveGame
+00407040   WARN SHARED_HEADER_AVAILABLE CDriveManager
+00407040   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+00407040   RELOCATION_MATCH PASS   CUserProfileManager::DeleteProfile
+004071c0   RELOCATION_MATCH PASS   CUserProfileManager::GetDirectoryNameFromProfileName
+00407e10   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+00407e10   RELOCATION_MATCH PASS   CUserProfileManager::GetSaveDisplayNameFromFileName
+004091c0   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+004091c0   RELOCATION_MATCH PASS   CUserProfileManager::LoadFileList
+0040f0a0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0040f0a0   RELOCATION_MATCH PASS   Compare_Unsigned16Array
+00418c3b   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+00418c3b   RELOCATION_MATCH PASS   CMainGameComponent::GenerateMetFilesFromLugFiles
+0042d4f7   MATCH            PASS   NUISystem::CManager::NUISystem::CManager::vfunc_12
+0042ea8f   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+0042ea8f   RELOCATION_MATCH PASS   CNewFrontendGameComponent::CNewFrontendGameComponent
+00437210   WARN SHARED_HEADER_AVAILABLE CFontBank
+00437210   RELOCATION_MATCH PASS   CFontBank::GetVStringWidth
+0043e4d0   WARN SHARED_HEADER_AVAILABLE CFontBank
+0043e4d0   RELOCATION_MATCH PASS   CFontBank::GetVStringWidth
+00446720   WARN SHARED_HEADER_AVAILABLE CKeyboard
+00446720   WARN RELOC_NAME: ??9CWideString@@QBE_NPBG@Z -> 0099b150 labelled 'CWideString::NotEqual'
+00446720   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00446720   RELOCATION_MATCH PASS   _global::GetActionName
+0047eee4   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0047eee4   WARN SHARED_HEADER_AVAILABLE CBankFile
+0047eee4   WARN SHARED_HEADER_AVAILABLE CManager
+0047eee4   WARN SHARED_HEADER_AVAILABLE CTCBase
+0047eee4   WARN RELOC_NAME: ?VerifySignatureCached@CTCInGameMenu@@QAE_NABVCWideString@@@Z -> 0047ed0a labelled 'CUserProfileManager::ValidateSaveFile'
+0047eee4   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+0047eee4   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+0047eee4   WARN RELOC_NAME: ?SubstituteFileName@@YIXAAVCWideString@@ABV1@@Z -> 009c7980 labelled 'NGameText::ConstructString'
+0047eee4   RELOCATION_MATCH PASS   CTCInGameMenu::ConstructSaveGameFileDescription
+00486c40   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00486c40   RELOCATION_MATCH PASS   _global::GFFloatToWideString
+00488b20   WARN SHARED_HEADER_AVAILABLE CPlayer
+00488b20   WARN RELOC_NAME: ??$CopyHolySites@USThingListIterator@@U?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@@@YI?AU?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@USThingListIterator@@0U0@@Z -> 0048d5c0 labelled '_global::CopyFlaggedThings'
+00488b20   RELOCATION_MATCH PASS   CPlayer::LocateCharacterStartHolySite
+0048dbf9   RELOCATION_MATCH PASS   _global::GetNumberOfCharactersOfTypeInString
+0048dc8b   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0048dc8b   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+0048dc8b   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+0048dc8b   RELOCATION_MATCH PASS   CSubtitleRenderer::WordWrapText
+0048e012   WARN SHARED_HEADER_AVAILABLE CFontBank
+0048e012   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0048e012   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+0048e012   WARN RELOC_NAME: ?GetVStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@@Z -> 00437210 labelled 'CFontBank::GetVStringWidth'
+0048e012   RELOCATION_MATCH PASS   CSubtitleRenderer::GetCharWidthW
+0048f939   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'WideString_EqualsLen'
+0048f939   RELOCATION_MATCH PASS   CSubtitleRenderer::InitPlayerMode
+00492bab   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00492bab   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00492bab   RELOCATION_MATCH PASS   CSubtitleRenderer::Clear
+  WARN leaf '?CreateNewProfile@CFrontendGameComponent@@QAE?AVCWideString@@XZ (Ego_r.pdb AAE, private; modelled public)' matches no symbol in 004945b0.obj; graded the largest function
+  WARN leaf '?CreateNewProfile@CFrontendGameComponent@@QAE?AVCWideString@@XZ (Ego_r.pdb AAE, private; modelled public)' matches no symbol in 004945b0.obj; graded the largest function
+004945b0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+004945b0   RELOCATION_MATCH PASS   CFrontendGameComponent::CreateNewProfile
+  WARN leaf '?GetWorldNames@CFrontendGameComponent@@AAEXXZ (Ego_r.pdb, private; modelled public)' matches no symbol in 00495890.obj; graded the largest function
+  WARN leaf '?GetWorldNames@CFrontendGameComponent@@AAEXXZ (Ego_r.pdb, private; modelled public)' matches no symbol in 00495890.obj; graded the largest function
+00495890   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00495890   WARN RELOC_NAME: ?GetLevelsDirectory@@YI?AVCWideString@@XZ -> 0041a060 labelled 'NResourceDirectoryNames::GetLevelDir'
+00495890   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+00495890   RELOCATION_MATCH PASS   NEditGui::CBrushLibraryDialog::FillInListBox
+00496ee0   RELOCATION_MATCH PASS   std::__median
+00496fd0   RELOCATION_MATCH PASS   std::__unguarded_linear_insert
+00497060   RELOCATION_MATCH PASS   _global::_Push_heap
+00497160   RELOCATION_MATCH PASS   _global::_Adjust_heap
+00497200   RELOCATION_MATCH PASS   std::__unguarded_partition
+00497500   RELOCATION_MATCH PASS   std::__linear_insert
+00497620   RELOCATION_MATCH PASS   std::__partial_sort
+00497a60   WARN SHARED_HEADER_AVAILABLE CFontBank
+00497a60   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00497a60   RELOCATION_MATCH PASS   CProgressDisplay::WordWrapText
+0049ef50   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0049ef50   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+0049ef50   RELOCATION_MATCH PASS   CWorld::GetPathNameForFileName
+004a05c0   WARN SHARED_HEADER_AVAILABLE CDriveManager
+004a05c0   WARN SHARED_HEADER_AVAILABLE CHandleBasedMemoryPool
+004a05c0   WARN SHARED_HEADER_AVAILABLE CWorld
+004a05c0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+004a05c0   WARN RELOC_NAME: ??9CWideString@@QBE_NPBG@Z -> 0099b150 labelled 'CWideString::NotEqual'
+004a05c0   RELOCATION_MATCH PASS   CWorld::SaveGameState
+004a2d70   WARN SHARED_HEADER_AVAILABLE CDriveManager
+  WARN leaf '?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z (Ego_r.pdb, protected)' matches no symbol in 004a2d70.obj; graded the largest function
+  WARN leaf '?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z (Ego_r.pdb, protected)' matches no symbol in 004a2d70.obj; graded the largest function
+004a2d70   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+004a2d70   RELOCATION_MATCH PASS   CWorld::LoadHeroStateInternal
+004a3200   WARN SHARED_HEADER_AVAILABLE CWorld
+004a3200   WARN RELOC_NAME: ??9CWideString@@QBE_NPBG@Z -> 0099b150 labelled 'CWideString::NotEqual'
+004a3200   WARN RELOC_NAME: ?GetProfileDirectory@@YI?AVCWideString@@XZ -> 0041a1a0 labelled 'NResourceDirectoryNames::GetDebugSaveDir'
+004a3200   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+004a3200   RELOCATION_MATCH PASS   CWorld::LoadGameState
+004fdab0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+004fdab0   RELOCATION_MATCH PASS   CWorldMap::SetAsUsingWAD
+0053fe50   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+0053fe50   WARN RELOC_NAME: ??H@YI?AVCWideString@@ABV0@G@Z -> 0099c120 labelled 'CCharString::CCharString::InsertCharWith'
+0053fe50   RELOCATION_MATCH PASS   CEditBox::AddCharacter
+00540980   WARN SHARED_HEADER_AVAILABLE CText
+00540980   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00540980   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+00540980   WARN RELOC_NAME: ?GFGetIME@@YAPAUCIME@@XZ -> 00404a80 labelled 'CIME::GetInstance'
+00540980   WARN RELOC_NAME: ?IsOn@CIME@@QAE_NXZ -> 00404ba0 labelled 'CNetworkClient::GetGameEventPackageSet'
+00540980   WARN RELOC_NAME: ?SetCompositionPosition@CIME@@QAEXJJ@Z -> 00404b80 labelled 'NUISystem::CIME::FinaliseString'
+00540980   RELOCATION_MATCH PASS   NUISystem::CEditBox::UpdateDisplayText
+0054f4b0   WARN SHARED_HEADER_AVAILABLE CFontBank
+0054f4b0   WARN SHARED_HEADER_AVAILABLE CText
+0054f4b0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+0054f4b0   RELOCATION_MATCH PASS   NUISystem::CText::GetCharWidthW
+0054f8e0   WARN SHARED_HEADER_AVAILABLE CFontBank
+0054f8e0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+0054f8e0   RELOCATION_MATCH PASS   NUISystem::CText::FitInWindow
+0054fb10   WARN SHARED_HEADER_AVAILABLE CText
+0054fb10   RELOCATION_MATCH PASS   NUISystem::CText::ForceWidth
+00557a10   WARN SHARED_HEADER_AVAILABLE CText
+00557a10   RELOCATION_MATCH PASS   NUISystem::CKeyRedefiner::UpdateKeyText
+00558170   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+00558170   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00558170   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+00558170   RELOCATION_MATCH PASS   NUISystem::CKeyRedefiner::GetActionText
+0055e850   WARN SHARED_HEADER_AVAILABLE CList
+0055e850   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+0055e850   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+0055e850   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard::GetCachedClanLogosAsString
+0055ea80   WARN SHARED_HEADER_AVAILABLE CList
+0055ea80   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+0055ea80   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+0055ea80   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard::GetCachedMemberLogosAsString
+0055fc90   WARN SHARED_HEADER_AVAILABLE CPixelFormat
+0055fc90   WARN SHARED_HEADER_AVAILABLE CSurface
+0055fc90   WARN SHARED_HEADER_AVAILABLE CTexture
+0055fc90   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+0055fc90   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+0055fc90   WARN RELOC_NAME: ??ACPictureMap@@QAEAAUCTexturePointer@@ABJ@Z -> 005698a0 labelled 'RBTree_SearchOrCreate'
+0055fc90   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard::GetCachedImage
+00561980   WARN SHARED_HEADER_AVAILABLE LHHttp2
+00561980   WARN RELOC_NAME: ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z -> 005672d0 labelled 'std::basic_string<char>::_M_range_initialize<const char*>'
+00561980   WARN RELOC_NAME: ??1LHStringVector@@QAE@XZ -> 00569940 labelled 'std::vector<std::string>::~vector'
+00561980   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00561980   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+00561980   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+00561980   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard::DownloadMyClansLogos
+005621b0   WARN SHARED_HEADER_AVAILABLE LHHttp2
+005621b0   WARN RELOC_NAME: ?Initialise@LHString@@QAEXPBD0ABUCStringAllocator@@@Z -> 005672d0 labelled 'std::basic_string<char>::_M_range_initialize<const char*>'
+005621b0   WARN RELOC_NAME: ??1LHStringVector@@QAE@XZ -> 00569940 labelled 'std::vector<std::string>::~vector'
+005621b0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+005621b0   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+005621b0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+005621b0   RELOCATION_MATCH PASS   CTCHeroOnlineScoreboard::DownloadLogosForThisClansMembers
+00567240   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+00567240   RELOCATION_MATCH PASS   std::__find
+005955ab   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+005955ab   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+005955ab   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+005955ab   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::GetProfileNames
+00599e3f   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard
+00599e3f   WARN RELOC_NAME: ?EnableInput@CFrontEndManager@@QAEX_N@Z -> 00594fa9 labelled 'NUISystem::CFrontEndManager::DestroyVirtualKeyboard'
+00599e3f   WARN RELOC_NAME: __Rb_increment -> 004292c0 labelled 'std::_Rb_tree_base::_Rb_tree_increment'
+00599e3f   RELOCATION_MATCH PASS   CFrontEndManager::Update
+0059a238   WARN SHARED_HEADER_AVAILABLE CVirtualKeyboard
+0059a238   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0059a238   WARN RELOC_NAME: ?RestartAttractModeTimer@CNewFrontendGameComponent@@QAEXXZ -> 0042dbee labelled 'std::_Cons_val<std::allocator<std::pair<EHeroMorphType,CParticleMorphs::CEntry>_>,std::pair<EHeroMorphType,CParticleMorphs::CEntry>,std::pair<enum_EHeroMorphType,class_CParticleMorphs::CEntry>_const&>'
+0059a238   RELOCATION_MATCH PASS   NUISystem::CFrontEndManager::Action
+0059ca95   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059ca95   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshNameAndTitlePC
+0059cfbd   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059cfbd   RELOCATION_MATCH PASS   CTCInventoryTrade::RefreshNameAndTitle
+0059d0b8   WARN SHARED_HEADER_AVAILABLE CManager
+0059d0b8   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059d0b8   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled '_global::CCountedPointer_Release_004291de'
+0059d0b8   RELOCATION_MATCH PASS   CTCInventoryTrade::FinalConstructSubtitles
+0059d65a   WARN SHARED_HEADER_AVAILABLE CManager
+0059d65a   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059d65a   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled '_global::CCountedPointer_Release_004291de'
+0059d65a   RELOCATION_MATCH PASS   CTCInventoryTrade::FinalConstructSubtitlesPC
+005bda1d   WARN SHARED_HEADER_AVAILABLE CCategory
+005bda1d   WARN RELOC_NAME: ??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z -> 00404280 labelled 'WideString_EqualsLen'
+005bda1d   WARN RELOC_NAME: ?GetCRC@CCharString@@QBEKXZ -> 00404310 labelled 'CCharString_ComputeCRC32'
+005bda1d   RELOCATION_MATCH PASS   NInventory::CCategory::GetHighlightedItemText
+005be3b1   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+005be3b1   WARN RELOC_NAME: ?CreateFromCharString@CWideString@@SI?AV1@ABVCCharString@@@Z -> 0099b6a0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+005be3b1   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_tree_base::_Rb_tree_increment'
+005be3b1   RELOCATION_MATCH PASS   _global::CIVCountedPointer_Assign_005be3b1
+005be62c   WARN RELOC_NAME: ?CreateFromCharString@CWideString@@SI?AV1@ABVCCharString@@@Z -> 0099b6a0 labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+005be62c   WARN RELOC_NAME: ?Successor@@YAPAUSNode@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_tree_base::_Rb_tree_increment'
+005be62c   RELOCATION_MATCH PASS   NInventory::CTCInventoryBase::GetPrerequisitesString
+005c770c   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005c770c   WARN RELOC_NAME: ?GetDefGlobalIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@_N@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+005c770c   RELOCATION_MATCH PASS   CTCInventoryWeapons::ConstructWeaponDescriptionWeight
+005ea1a0   WARN RELOC_NAME: ?GetSubDef_005ed4a0@CDefClassBase@@QAE_NAAV?$CDefPointer@VCTavernGameDef@@@@@Z -> 005ed4a0 labelled 'CDefClassBase::GetSubDef<CTavernGameDef>'
+005ea1a0   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+005ea1a0   RELOCATION_MATCH PASS   CTCTavernGame::GetBet
+005ea250   WARN RELOC_NAME: ?GetSubDef_005ed4a0@CDefClassBase@@QAE_NAAV?$CDefPointer@VCTavernGameDef@@@@@Z -> 005ed4a0 labelled 'CDefClassBase::GetSubDef<CTavernGameDef>'
+005ea250   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+005ea250   RELOCATION_MATCH PASS   CTCTavernGame::GetPlayersMoney
+005ea310   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005ea310   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+005ea310   WARN RELOC_NAME: ?GetSubDef_005ed4a0@CDefClassBase@@QAE_NAAUCDefPointer@@@Z -> 005ed4a0 labelled 'CDefClassBase::GetSubDef<CTavernGameDef>'
+005ea310   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+005ea310   RELOCATION_MATCH PASS   CTCTavernGame::GetTotalWinnings
+00639ba0   WARN SHARED_HEADER_AVAILABLE CBankFile
+00639ba0   WARN SHARED_HEADER_AVAILABLE CWorld
+00639ba0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00639ba0   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+00639ba0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+00639ba0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00639ba0   RELOCATION_MATCH PASS   CTCRegionDisplay::SetCurrentAreaName
+00656c3c   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::CQuestInfoElementTick
+006c37d0   WARN RELOC_NAME: ?GetBonesDirectory@@YI?AVCWideString@@XZ -> 0041a290 labelled 'NResourceDirectoryNames::GetBoneConfigDir'
+006c37d0   WARN RELOC_NAME: ??1CBaseClassNonCopyable@@MAE@XZ -> 0099a300 labelled 'CBaseClass::~CBaseClass'
+006c37d0   WARN RELOC_NAME: ?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z -> 00999850 labelled 'CAFile::FindNextFileSequential'
+006c37d0   RELOCATION_MATCH PASS   CSkeletalMorphResourceManager::PreloadBoneConfigs
+006d7960   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+006d7960   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+006d7960   WARN SHARED_HEADER_AVAILABLE CTCBase
+006d7960   WARN RELOC_NAME: ?GetDefinitions@CTCBase@@QBEPAVCDefinitionManager@@XZ -> 006869d0 labelled 'CTCBase::GetDefinitionManager'
+006d7960   WARN RELOC_NAME: ??9CWideString@@QBE_NPBG@Z -> 0099b150 labelled 'CWideString::NotEqual'
+006d7960   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+006d7960   RELOCATION_MATCH PASS   CTCHeroExperience::GetFullHeroTitle
+00717450   WARN RELOC_NAME: ?GetCurrentMessageText@CActionTalkBase@NTCScriptedControl@@QAE?AVCWideString@@XZ -> 00713290 labelled 'NInventory::CCategory::GetHighlightedItemCountInCategory'
+00717450   RELOCATION_MATCH PASS   NTCScriptedControl::CActionOverheadTalkToThing::Update
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayer
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+0072e940   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0072e940   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0072e940   WARN RELOC_NAME: ??9CWideString@@QBE_NPBG@Z -> 0099b150 labelled 'CWideString::NotEqual'
+0072e940   RELOCATION_MATCH PASS   CTCActionUseBuyHouse::OnActionUseMain
+007e27f0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e27f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e27f0   WARN SHARED_HEADER_AVAILABLE CRegion
+007e27f0   WARN SHARED_HEADER_AVAILABLE CWorld
+007e27f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e27f0   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+007e27f0   WARN RELOC_NAME: ?GetWorld@CTCBase@@QAEPAVCWorld@@XZ -> 00686d20 labelled 'CTCBase::PeekWorldMap'
+007e27f0   WARN RELOC_NAME: ?GetCurrentRegionIndex@CWorld@@QAEJXZ -> 004fb150 labelled '_global::GetMember_dword0x9c_004fb150'
+007e27f0   WARN RELOC_NAME: ?AddToGlobalUpdateList@CTCBase@@QAEXXZ -> 00686ed0 labelled 'CTCBase::AddToGlobalTCs'
+007e27f0   RELOCATION_MATCH PASS   CTCFineDialogue::Show
+00829a30   WARN SHARED_HEADER_AVAILABLE CRegion
+00829a30   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00829a30   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay
+00829a30   WARN RELOC_NAME: ?GetCurrentRegionIndex@CWorldMap@@QBEJXZ -> 004fb150 labelled '_global::GetMember_dword0x9c_004fb150'
+00829a30   WARN RELOC_NAME: ??YCWideString@@QAEABV0@PBG@Z -> 0099b940 labelled 'CCharString::SetFromUnicodeString'
+00829a30   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+00829a30   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+00829a30   RELOCATION_MATCH PASS   CMiniMapDisplay::ConstructMinimapFilename
+  WARN leaf '?GetProfileName@CVirtualKeyboard@@QAE?AVCWideString@@XZ' matches no symbol in 00851890.obj; graded the largest function
+  WARN leaf '?GetProfileName@CVirtualKeyboard@@QAE?AVCWideString@@XZ' matches no symbol in 00851890.obj; graded the largest function
+00851890   RELOCATION_MATCH PASS   CVirtualKeyboard::GetProfileName
+0098e1e0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+0098e1e0   RELOCATION_MATCH PASS   CThreadedFile::Open
+00993f00   RELOCATION_MATCH PASS   CDataOutputStream::WriteNullTerminatedWString
+00994d20   RELOCATION_MATCH PASS   CDataInputStream::ReadNullTerminatedWString
+00997620   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+00997620   WARN RELOC_ALIAS: __wsplitpath -> 00bfed4c is the import thunk 'MSVCR71.DLL::_wsplitpath'
+00997620   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00997620   RELOCATION_MATCH PASS   CAFile::SplitPath
+00997f80   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+00997f80   WARN RELOC_NAME: ?GetWorkingDirectory@CAFile@@SI?AVCWideString@@XZ -> 009974a0 labelled 'NFile::CalcCurrentPath'
+00997f80   RELOCATION_MATCH PASS   CAFile::GetCurrentPath
+00999ab0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+00999ab0   WARN RELOC_ALIAS: __wsplitpath -> 00bfed4c is the import thunk 'MSVCR71.DLL::_wsplitpath'
+00999ab0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00999ab0   RELOCATION_MATCH PASS   CAFile::IsRoomForFile
+0099b0f0   WARN RELOC_NAME: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0099b0f0   RELOCATION_MATCH PASS   CWideString::operator!=
+0099cf80   RELOCATION_MATCH PASS   CSystemRegistry::GetSLONG
+0099d000   RELOCATION_MATCH PASS   CSystemRegistry::GetString
+0099d0c0   RELOCATION_MATCH PASS   CSystemRegistry::WriteSLONG
+0099d100   RELOCATION_MATCH PASS   CSystemRegistry::WriteBOOL
+0099d140   RELOCATION_MATCH PASS   CSystemRegistry::WriteString
+0099d180   RELOCATION_MATCH PASS   CSystemRegistry::WriteBinary
+0099d1e0   RELOCATION_MATCH PASS   CSystemRegistry::DeleteValue
+009a4ed0   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+009a4ed0   RELOCATION_MATCH PASS   CSystemManager::DisplayCriticalMessage
+009bc900   WARN SHARED_HEADER_AVAILABLE CFontBank
+009bc900   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+009bc900   RELOCATION_MATCH PASS   _global::WordWrapText
+009c7c20   WARN RELOC_NAME: ?Sprintf@CWideString@@QAAXPBGZZ -> 0099ba70 labelled 'CWideString::Format'
+009c7c20   RELOCATION_MATCH PASS   NGameText::ConstructString
+009cbe10   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+009cbe10   RELOCATION_MATCH PASS   CBankFile::ConvertPathToFilename
+009cea70   RELOCATION_MATCH PASS   CBankFile::EndUpdateEntries
+009e4ae0   WARN SHARED_HEADER_AVAILABLE CDriveManager
+009e4ae0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+009e4ae0   RELOCATION_MATCH PASS   CDriveManager::DriveExists
+009e4b70   WARN SHARED_HEADER_AVAILABLE CDriveManager
+009e4b70   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+009e4b70   RELOCATION_MATCH PASS   CDriveManager::DeleteDirectory
+009e4bc0   WARN SHARED_HEADER_AVAILABLE CDriveManager
+009e4bc0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+009e4bc0   RELOCATION_MATCH PASS   CDriveManager::DeleteFile
+009e4c70   WARN SHARED_HEADER_AVAILABLE CDriveManager
+009e4c70   WARN RELOC_ALIAS: __wsplitpath -> 00bfed4c is the import thunk 'MSVCR71.DLL::_wsplitpath'
+009e4c70   RELOCATION_MATCH PASS   CDriveManager::GetDriveFromPath
+009e93c0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+009e93c0   RELOCATION_MATCH PASS   CMemoryFile::Open
+00a0b630   RELOCATION_MATCH PASS   CSoundBankLH::Load
+00a0b710   RELOCATION_MATCH PASS   CShaderRenderManager::UpdateLightGlobals
+00a3b9d0   WARN RELOC_NAME: ??BCWideString@@QBEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+00a3b9d0   RELOCATION_MATCH PASS   CVideoSys::Init
+00ab6180   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00ab6180   RELOCATION_MATCH PASS   CKeyboardDX::GetKeyName
+00dcc140   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00dcc140   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00dcc140   RELOCATION_MATCH PASS   NScript::CQ_OrchardFarmRaidScript::Init
+00e0c350   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e0c350   RELOCATION_MATCH PASS   CV_LostTraderScript::WatchForQuestFailureState
+00e15500   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e15500   WARN RELOC_NAME: ??1Handle@Row00e15500@@QAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00e15500   RELOCATION_MATCH PASS   _global::CScriptGameResourceObjectScriptedThingBase_HandleWhiteBalverineQuestObjective
+00e68dc0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00e68dc0   RELOCATION_MATCH PASS   NScript::CV_ChickenKickingScript::CChickenSign::Init
+00e81b40   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00e81b40   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00e81b40   WARN RELOC_NAME: ?PlayCutscene@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEXVCCharString@@@Z -> 00e80d60 labelled '_global::CTCCarryable_Initialize'
+00e81b40   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00e81b40   RELOCATION_MATCH PASS   NScript::CV_FishingCompetitionScript::CFishCompOrganiser::GetBiggestFishWeight
+
+WINS: 108
+  00402130 RELOCATION_MATCH _global::?FableCheckMyDocumentsWritePermissions@@
+  00403c60 MATCH _global::?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z (STLport 4.6 char_traits.h: char_traits<wchar_t> inherits the static
+  00404280 RELOCATION_MATCH _global::WideString_EqualsLen
+  00405f00 RELOCATION_MATCH _global::IntToWideString
+  00406e30 RELOCATION_MATCH _global::CreateSaveGame
+  00407040 RELOCATION_MATCH CUserProfileManager::DeleteProfile
+  004071c0 RELOCATION_MATCH CUserProfileManager::GetDirectoryNameFromProfileName
+  00407e10 RELOCATION_MATCH CUserProfileManager::GetSaveDisplayNameFromFileName
+  004091c0 RELOCATION_MATCH CUserProfileManager::LoadFileList
+  0040f0a0 RELOCATION_MATCH _global::Compare_Unsigned16Array
+  00418c3b RELOCATION_MATCH CMainGameComponent::GenerateMetFilesFromLugFiles
+  0042d4f7 MATCH NUISystem::CManager::?SetKeyPressed@CManager@NUISystem@@UAEXG@Z
+  0042ea8f RELOCATION_MATCH CNewFrontendGameComponent::??0CNewFrontendGameComponent
+  00437210 RELOCATION_MATCH CFontBank::?GetVStringExtents@CFontBank@@QBE?AVC2DExtentsF@@ABVCWideString@@@Z
+  0043e4d0 RELOCATION_MATCH CFontBank::?GetVStringWidth@CFontBank@@QBEMABVCWideString@@@Z
+  00446720 RELOCATION_MATCH _global::?GetActionName@@
+  0047eee4 RELOCATION_MATCH CTCInGameMenu::?ConstructSaveGameFileDescription@CTCInGameMenu
+  00486c40 RELOCATION_MATCH _global::GFFloatToWideString
+  00488b20 RELOCATION_MATCH CPlayer::?LocateCharacterStartHolySite@CPlayer@@
+  0048dbf9 RELOCATION_MATCH _global::GetNumberOfCharactersOfTypeInString
+  0048dc8b RELOCATION_MATCH CSubtitleRenderer::WordWrapText
+  0048e012 RELOCATION_MATCH CSubtitleRenderer::GetCharWidthW
+  0048f939 RELOCATION_MATCH CSubtitleRenderer::?InitPlayerMode@CSubtitleRenderer@@AAEXXZ
+  00492bab RELOCATION_MATCH CSubtitleRenderer::?Clear@CSubtitleRenderer@@QAEX_N@Z
+  004945b0 RELOCATION_MATCH CFrontendGameComponent::?CreateNewProfile@CFrontendGameComponent@@QAE?AVCWideString@@XZ (Ego_r.pdb AAE, private; modelled public)
+  00495890 RELOCATION_MATCH CFrontendGameComponent::?GetWorldNames@CFrontendGameComponent@@AAEXXZ (Ego_r.pdb, private; modelled public)
+  00496ee0 RELOCATION_MATCH std::__median
+  00496fd0 RELOCATION_MATCH std::__unguarded_linear_insert
+  00497060 RELOCATION_MATCH _global::_Push_heap
+  00497160 RELOCATION_MATCH _global::_Adjust_heap
+  00497200 RELOCATION_MATCH std::__unguarded_partition
+  00497500 RELOCATION_MATCH std::__linear_insert
+  00497620 RELOCATION_MATCH std::__partial_sort
+  00497a60 RELOCATION_MATCH CProgressDisplay::WordWrapText
+  0049ef50 RELOCATION_MATCH CWorld::?GetPathNameForFileName@CWorld@@QBE?AVCWideString@@ABV2@@Z
+  004a05c0 RELOCATION_MATCH CWorld::?SaveGameState@CWorld@@
+  004a2d70 RELOCATION_MATCH CWorld::?LoadHeroStateInternal@CWorld@@IAE_NABVCWideString@@@Z (Ego_r.pdb, protected)
+  004a3200 RELOCATION_MATCH CWorld::?LoadGameState@CWorld@
+  004fdab0 RELOCATION_MATCH CWorldMap::SetAsUsingWAD
+  0053fe50 RELOCATION_MATCH CEditBox::AddCharacter
+  00540980 RELOCATION_MATCH NUISystem::CEditBox::UpdateDisplayText
+  0054f4b0 RELOCATION_MATCH NUISystem::CText::?GetCharWidthW@
+  0054f8e0 RELOCATION_MATCH NUISystem::CText::?FitInWindow@CText@NUISystem
+  0054fb10 RELOCATION_MATCH NUISystem::CText::ForceWidth
+  00557a10 RELOCATION_MATCH NUISystem::CKeyRedefiner::UpdateKeyText
+  00558170 RELOCATION_MATCH NUISystem::CKeyRedefiner::?GetActionText@CKeyRedefiner@NUISystem@@
+  0055e850 RELOCATION_MATCH CTCHeroOnlineScoreboard::GetCachedClanLogosAsString
+  0055ea80 RELOCATION_MATCH CTCHeroOnlineScoreboard::GetCachedMemberLogosAsString
+  0055fc90 RELOCATION_MATCH CTCHeroOnlineScoreboard::GetCachedImage
+  00561980 RELOCATION_MATCH CTCHeroOnlineScoreboard::DownloadMyClansLogos
+  005621b0 RELOCATION_MATCH CTCHeroOnlineScoreboard::DownloadLogosForThisClansMembers
+  00567240 RELOCATION_MATCH std::??$__find
+  005955ab RELOCATION_MATCH NUISystem::CFrontEndManager::?GetProfileNames@CFrontEndManager@NUISystem@@
+  00599e3f RELOCATION_MATCH CFrontEndManager::?Update@CFrontEndManager
+  0059a238 RELOCATION_MATCH CFrontEndManager::?Action@CFrontEndManager@NUISystem
+  0059ca95 RELOCATION_MATCH CTCInventoryTrade::RefreshNameAndTitlePC
+  0059cfbd RELOCATION_MATCH CTCInventoryTrade::RefreshNameAndTitle
+  0059d0b8 RELOCATION_MATCH CTCInventoryTrade::FinalConstructSubtitles
+  0059d65a RELOCATION_MATCH CTCInventoryTrade::FinalConstructSubtitlesPC
+  005bda1d RELOCATION_MATCH NInventory::CCategory::?GetHighlightedItemText@CCategory@NInventory@@
+  005be3b1 RELOCATION_MATCH _global::GetPrerequisitesString
+  005be62c RELOCATION_MATCH NInventory::CTCInventoryBase::GetPrerequisitesString
+  005c770c RELOCATION_MATCH CTCInventoryWeapons::ConstructWeaponDescriptionWeight
+  005ea1a0 RELOCATION_MATCH CTCTavernGame::GetBet
+  005ea250 RELOCATION_MATCH CTCTavernGame::GetPlayersMoney
+  005ea310 RELOCATION_MATCH CTCTavernGame::?GetTotalWinnings@CTCTavernGame
+  00639ba0 RELOCATION_MATCH CTCRegionDisplay::SetCurrentAreaName
+  00656c3c RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CQuestInfoElementTick::CQuestInfoElementTick
+  006c37d0 RELOCATION_MATCH CSkeletalMorphResourceManager::PreloadBoneConfigs
+  006d7960 RELOCATION_MATCH CTCHeroExperience::GetFullHeroTitle
+  00717450 RELOCATION_MATCH NTCScriptedControl::CActionOverheadTalkToThing::Update
+  0072e940 RELOCATION_MATCH CTCActionUseBuyHouse::OnActionUseMain
+  007e27f0 RELOCATION_MATCH CTCFineDialogue::Show
+  00829a30 RELOCATION_MATCH CMiniMapDisplay::ConstructMinimapFilename
+  00851890 RELOCATION_MATCH CVirtualKeyboard::?GetProfileName@CVirtualKeyboard@@QAE?AVCWideString@@XZ
+  0098e1e0 RELOCATION_MATCH CThreadedFile::Open
+  00993f00 RELOCATION_MATCH CDataOutputStream::WriteNullTerminatedWString
+  00994d20 RELOCATION_MATCH CDataInputStream::ReadNullTerminatedWString
+  00997620 RELOCATION_MATCH CAFile::?SplitPath@CAFile@@SIXABVCWideString@@PAV2@111@Z
+  00997f80 RELOCATION_MATCH CAFile::?GetCurrentPath@CAFile
+  00999ab0 RELOCATION_MATCH CAFile::?IsRoomForFile@CAFile@@
+  0099b0f0 RELOCATION_MATCH CWideString::??9CWideString@@QBE_NABV0@@Z
+  0099cf80 RELOCATION_MATCH CSystemRegistry::GetSLONG
+  0099d000 RELOCATION_MATCH CSystemRegistry::GetString
+  0099d0c0 RELOCATION_MATCH CSystemRegistry::WriteSLONG
+  0099d100 RELOCATION_MATCH CSystemRegistry::WriteBOOL
+  0099d140 RELOCATION_MATCH CSystemRegistry::WriteString
+  0099d180 RELOCATION_MATCH CSystemRegistry::WriteBinary
+  0099d1e0 RELOCATION_MATCH CSystemRegistry::DeleteValue
+  009a4ed0 RELOCATION_MATCH CSystemManager::DisplayCriticalMessage
+  009bc900 RELOCATION_MATCH _global::WordWrapText
+  009c7c20 RELOCATION_MATCH NGameText::?ConstructString@NGameText@@YI_NAAVCWideString@@ABV?$vector@
+  009cbe10 RELOCATION_MATCH CBankFile::ConvertPathToFilename
+  009cea70 RELOCATION_MATCH CBankFile::EndUpdateEntries
+  009e4ae0 RELOCATION_MATCH CDriveManager::DriveExists
+  009e4b70 RELOCATION_MATCH CDriveManager::DeleteDirectory
+  009e4bc0 RELOCATION_MATCH CDriveManager::DeleteFile
+  009e4c70 RELOCATION_MATCH CDriveManager::?GetDriveFromPath@CDriveManager@@AAEGPBG@Z
+  009e93c0 RELOCATION_MATCH CMemoryFile::?Open@CMemoryFile@@QAEXPAXJ@Z
+  00a0b630 RELOCATION_MATCH CSoundBankLH::?Load@CSoundBankLH
+  00a0b710 RELOCATION_MATCH CShaderRenderManager::UpdateLightGlobals
+  00a3b9d0 RELOCATION_MATCH CVideoSys::?Init@CVideoSys@@QAEJABVCWideString@@PAVCTexture@@_N@Z
+  00ab6180 RELOCATION_MATCH CKeyboardDX::GetKeyName
+  00dcc140 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::Init
+  00e0c350 RELOCATION_MATCH CV_LostTraderScript::WatchForQuestFailureState
+  00e15500 RELOCATION_MATCH _global::HandleWhiteBalverineQuestObjective
+  00e68dc0 RELOCATION_MATCH NScript::CV_ChickenKickingScript::CChickenSign::?Init@CChickenSign@CV_ChickenKickingScript@NScript@@EAEXXZ
+  00e81b40 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::CFishCompOrganiser::?GetBiggestFishWeight@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEMXZ

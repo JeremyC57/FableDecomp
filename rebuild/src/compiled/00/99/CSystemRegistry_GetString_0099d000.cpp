@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH with cl 13.10.3077 (RTM); the DDK 13.10.4035 build emits a different /GS prologue for this body.
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099D000, length 177 bytes (+ int3 padding).
-// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, CWideString(const wchar_t*) @ 0x0099B6B0,
+// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, CWideString(const wchar_t*) @ 0x0099B6B0,
 // CWideString(const CWideString&) @ 0x0099B720, ADVAPI32!RegQueryValueExW through the import slot 0x0143FC00.
 //
 // Shape: the 512-character buffer makes this a /GS function (cookie 0x0139C8A8, check 0x00BFE9F9 before
@@ -16,7 +16,7 @@ class CWideString {
 public:
     CWideString(const unsigned short* text);         // 0x0099B6B0
     CWideString(const CWideString& other);           // 0x0099B720
-    operator const unsigned short*() const;          // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;          // 0x0099AF10
 private:
     void* m_pData;
 };
@@ -39,7 +39,7 @@ CWideString CSystemRegistry::GetString(const CWideString& valueName, const CWide
         unsigned short buffer[512];
         unsigned long type = 0;
         unsigned long size = 0x200;
-        if (RegQueryValueExW(OpenKey, valueName, 0, &type, (unsigned char*)buffer, &size) == 0)
+        if (RegQueryValueExW(OpenKey, valueName.GetAsCharArray(), 0, &type, (unsigned char*)buffer, &size) == 0)
             return CWideString(buffer);
     }
     return CWideString(defaultValue);

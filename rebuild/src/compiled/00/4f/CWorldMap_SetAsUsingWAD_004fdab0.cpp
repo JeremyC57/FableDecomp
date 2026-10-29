@@ -4,7 +4,7 @@
 //   PDB: ?SetAsUsingWAD@CWorldMap@@QAEXABVCWideString@@@Z.
 // Label correction: catalogued as CPhysicsFacesSegment::LoadPhysicsData; the caller passes CWorld+0x14 (PWorldMap) and the
 //   members are CWorldMap's LevelWADBank / UseLevelWADBank.
-// Callees: wcscmp 0x00BFE94C, MemCmp_Unsigned16 0x00403C60 (the STLport wide char_traits compare), operator new 0x00BFEA1A,
+// Callees: wcscmp 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60 (the STLport wide char_traits compare), operator new 0x00BFEA1A,
 //   CBankFileAsync::CBankFileAsync() 0x009D5F80 (the CWADBank base), CCountedPointer<CWADBank>::Reset(CWADBank*) 0x0050F2B0
 //   (catalogued for CIPhysicsFacesSegmentBase), CWADBank virtual slot 3 (+0x0C, open by name with flags 0x102; descriptive),
 //   operator delete 0x00BFE9BC. L"" is 0x0122D70C. CWADBank vtable 0x012442DC (0x164 bytes).
@@ -15,7 +15,11 @@
 //   STLport size + compare of the block) that `goto` the empty arm (the GOTCHAS retry-9 form); the counted pointer's inline
 //   Clear zeroes Info then Data.
 extern "C" int __cdecl wcscmp(const unsigned short* a, const unsigned short* b);   // 0x00BFE94C
-int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 
 static const unsigned short s_Empty[] = { 0 };          // L"" 0x0122D70C
@@ -82,7 +86,7 @@ void CWorldMap::SetAsUsingWAD(const CWideString& wadName)
             goto empty;
     }
     else if ((unsigned long)(wadName.PStringData->_M_finish - wadName.PStringData->_M_start) == 0
-             && MemCmp_Unsigned16(wadName.PStringData->_M_start, s_Empty, 0) == 0)
+             && std::__char_traits_base<unsigned short, unsigned short>::compare(wadName.PStringData->_M_start, s_Empty, 0) == 0)
         goto empty;
     UseLevelWADBank = true;
     LevelWADBank.Reset(new CWADBank);

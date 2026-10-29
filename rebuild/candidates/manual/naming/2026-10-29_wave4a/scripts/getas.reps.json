@@ -1,0 +1,898 @@
+{
+ "rebuild/src/compiled/00/54/NUISystemCText_FitInWindow_0054f8e0.cpp": [
+  [
+   "// Callees: CWideString ctor() 0x0099AED0 (catalog \"CCharString\" is a byte twin), operator const unsigned short*\n",
+   "// Callees: CWideString ctor() 0x0099AED0 (catalog \"CCharString\" is a byte twin), GetAsCharArray()\n"
+  ],
+  [
+   "    operator const unsigned short*() const;                 // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10\n"
+  ],
+  [
+   "    const unsigned short* start = text;\n",
+   "    const unsigned short* start = text.GetAsCharArray();\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/54/NUISystemCText_GetCharWidthW_0054f4b0.cpp": [
+  [
+   "//   0x0099EAE0, CWideString::operator const wchar_t* 0x0099AF10, the bank's slot 1 GetTextExtent (C2DVector by hidden\n",
+   "//   0x0099EAE0, CWideString::GetAsCharArray() 0x0099AF10, the bank's slot 1 GetTextExtent (C2DVector by hidden\n"
+  ],
+  [
+   "    operator const unsigned short*() const;                 // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10\n"
+  ],
+  [
+   "    return (unsigned int)bank->GetTextExtent(text, 0).X;\n",
+   "    return (unsigned int)bank->GetTextExtent(text.GetAsCharArray(), 0).X;\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/54/NUISystemCEditBox_UpdateDisplayText_00540980.cpp": [
+  [
+   "    operator const unsigned short*() const;                 // 0x0099AF10\n    unsigned short operator[](long i) const { return ((const unsigned short*)*this)[i]; }\n",
+   "    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10\n    unsigned short operator[](long i) const { return GetAsCharArray()[i]; }\n"
+  ],
+  [
+   "            position.X += text->GetFont()->GetStringSizeOut(size, line, 0).X * text->GetScale().X;\n",
+   "            position.X += text->GetFont()->GetStringSizeOut(size, line.GetAsCharArray(), 0).X * text->GetScale().X;\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/54/NUISystemCText_ForceWidth_0054fb10.cpp": [
+  [
+   "// Callees: CWideString::CWideString() 0x0099AED0, CWideString::GetLength() 0x0099B220, CWideString::operator const\n//          unsigned short*() 0x0099AF10, GetCharWidthW(unsigned short) 0x0054F4B0 (`__fastcall`, unsigned result: the\n",
+   "// Callees: CWideString::CWideString() 0x0099AED0, CWideString::GetLength() 0x0099B220, CWideString::GetAsCharArray()\n//          0x0099AF10, GetCharWidthW(unsigned short) 0x0054F4B0 (`__fastcall`, unsigned result: the\n"
+  ],
+  [
+   "    operator const unsigned short*() const;                 // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10\n"
+  ],
+  [
+   "    unsigned short operator[](unsigned long i) const { return ((const unsigned short*)*this)[i]; }   // inline: the character is a temporary before the register argument\n",
+   "    unsigned short operator[](unsigned long i) const { return GetAsCharArray()[i]; }   // inline: the character is a temporary before the register argument\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/99/CSystemRegistry_WriteBOOL_0099d100.cpp": [
+  [
+   "// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import\n",
+   "// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import\n"
+  ],
+  [
+   "    operator const unsigned short*() const;      // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;      // 0x0099AF10\n"
+  ],
+  [
+   "        RegSetValueExW(OpenKey, valueName, 0, 4, (const unsigned char*)&stored, 4);   // REG_DWORD\n",
+   "        RegSetValueExW(OpenKey, valueName.GetAsCharArray(), 0, 4, (const unsigned char*)&stored, 4);   // REG_DWORD\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/99/CSystemRegistry_WriteSLONG_0099d0c0.cpp": [
+  [
+   "// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import\n",
+   "// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import\n"
+  ],
+  [
+   "    operator const unsigned short*() const;      // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;      // 0x0099AF10\n"
+  ],
+  [
+   "        RegSetValueExW(OpenKey, valueName, 0, 4, (const unsigned char*)&stored, 4);   // REG_DWORD\n",
+   "        RegSetValueExW(OpenKey, valueName.GetAsCharArray(), 0, 4, (const unsigned char*)&stored, 4);   // REG_DWORD\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/99/CSystemRegistry_WriteBinary_0099d180.cpp": [
+  [
+   "// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import\n",
+   "// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import\n"
+  ],
+  [
+   "    operator const unsigned short*() const;      // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;      // 0x0099AF10\n"
+  ],
+  [
+   "        RegSetValueExW(OpenKey, valueName, 0, 3, (const unsigned char*)data, size);   // REG_BINARY\n",
+   "        RegSetValueExW(OpenKey, valueName.GetAsCharArray(), 0, 3, (const unsigned char*)data, size);   // REG_BINARY\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/99/CSystemRegistry_WriteString_0099d140.cpp": [
+  [
+   "// Callees: CWideString::GetLength @ 0x0099B220 and CWideString::operator const wchar_t* @ 0x0099AF10\n",
+   "// Callees: CWideString::GetLength @ 0x0099B220 and CWideString::GetAsCharArray() @ 0x0099AF10\n"
+  ],
+  [
+   "    operator const unsigned short*() const;      // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;      // 0x0099AF10\n"
+  ],
+  [
+   "        RegSetValueExW(OpenKey, valueName, 0, 1,                         // REG_SZ\n                       (const unsigned char*)(const unsigned short*)value, value.GetLength() + 1);\n",
+   "        RegSetValueExW(OpenKey, valueName.GetAsCharArray(), 0, 1,                         // REG_SZ\n                       (const unsigned char*)value.GetAsCharArray(), value.GetLength() + 1);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/99/CSystemRegistry_GetString_0099d000.cpp": [
+  [
+   "// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, CWideString(const wchar_t*) @ 0x0099B6B0,\n",
+   "// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, CWideString(const wchar_t*) @ 0x0099B6B0,\n"
+  ],
+  [
+   "    operator const unsigned short*() const;          // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;          // 0x0099AF10\n"
+  ],
+  [
+   "        if (RegQueryValueExW(OpenKey, valueName, 0, &type, (unsigned char*)buffer, &size) == 0)\n",
+   "        if (RegQueryValueExW(OpenKey, valueName.GetAsCharArray(), 0, &type, (unsigned char*)buffer, &size) == 0)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/99/CSystemRegistry_GetSLONG_0099cf80.cpp": [
+  [
+   "// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, ADVAPI32!RegQueryValueExW through the import\n",
+   "// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, ADVAPI32!RegQueryValueExW through the import\n"
+  ],
+  [
+   "    operator const unsigned short*() const;      // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;      // 0x0099AF10\n"
+  ],
+  [
+   "        if (RegQueryValueExW(OpenKey, valueName, 0, &type, (unsigned char*)&value, &size) == 0)\n",
+   "        if (RegQueryValueExW(OpenKey, valueName.GetAsCharArray(), 0, &type, (unsigned char*)&value, &size) == 0)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/99/CSystemRegistry_DeleteValue_0099d1e0.cpp": [
+  [
+   "// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, ADVAPI32!RegDeleteValueW through the import\n",
+   "// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, ADVAPI32!RegDeleteValueW through the import\n"
+  ],
+  [
+   "    operator const unsigned short*() const;      // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;      // 0x0099AF10\n"
+  ],
+  [
+   "    RegDeleteValueW(OpenKey, valueName);\n",
+   "    RegDeleteValueW(OpenKey, valueName.GetAsCharArray());\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/71/NTCScriptedControlCActionOverheadTalkToThing_Update_00717450.cpp": [
+  [
+   "//          propagated), CWideString::GetLength @ 0x0099B220 (manifest \"CCharString::GetLength\", byte twin), operator const\n//          unsigned short*() @ 0x0099AF10, CWideString::SetAsSubString @ 0x0099B770, CWideString::operator= @ 0x0099B7D0,\n",
+   "//          propagated), CWideString::GetLength @ 0x0099B220 (manifest \"CCharString::GetLength\", byte twin), GetAsCharArray()\n//          @ 0x0099AF10, CWideString::SetAsSubString @ 0x0099B770, CWideString::operator= @ 0x0099B7D0,\n"
+  ],
+  [
+   "    operator const unsigned short*() const;              // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;              // 0x0099AF10\n"
+  ],
+  [
+   "            text.SetAsSubString((const unsigned short*)GetCurrentMessageText() + shown, 24);\n",
+   "            text.SetAsSubString(GetCurrentMessageText().GetAsCharArray() + shown, 24);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/48/CPlayer_LocateCharacterStartHolySite_00488b20.cpp": [
+  [
+   "//   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / operator const wchar_t* 0x0099AF10 on the\n",
+   "//   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / GetAsCharArray() 0x0099AF10 on the\n"
+  ],
+  [
+   "    operator const unsigned short*() const;               // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;               // 0x0099AF10\n"
+  ],
+  [
+   "        message.Sprintf(\"*** WARNING : failed to find a holy site with ScriptName %S\", (const unsigned short*)g_CWideString_013b866c);\n",
+   "        message.Sprintf(\"*** WARNING : failed to find a holy site with ScriptName %S\", g_CWideString_013b866c.GetAsCharArray());\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/48/CSubtitleRenderer_WordWrapText_0048dc8b.cpp": [
+  [
+   "// Callees: CWideString::CWideString() 0x0099AED0, CWideString::operator const wchar_t* 0x0099AF10,\n",
+   "// Callees: CWideString::CWideString() 0x0099AED0, CWideString::GetAsCharArray() 0x0099AF10,\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                     // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10\n"
+  ],
+  [
+   "    const wchar_t* line = text;\n",
+   "    const wchar_t* line = text.GetAsCharArray();\n"
+  ],
+  [
+   "        if (*(const wchar_t*)lineText == L',') {\n",
+   "        if (*lineText.GetAsCharArray() == L',') {\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/48/global_GetNumberOfCharactersOfTypeInString_0048dbf9.cpp": [
+  [
+   "// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, CWideString::GetLength @ 0x0099B220.\n",
+   "// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, CWideString::GetLength @ 0x0099B220.\n"
+  ],
+  [
+   "    operator const wchar_t16*() const;          // 0x0099AF10\n",
+   "    const wchar_t16* GetAsCharArray() const;          // 0x0099AF10\n"
+  ],
+  [
+   "    const wchar_t16* data = text;\n",
+   "    const wchar_t16* data = text.GetAsCharArray();\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/48/global_GFFloatToWideString_00486c40.cpp": [
+  [
+   "// format L\"%f\" @ 0x01237EF4), GetLength @ 0x0099B220, operator const wchar_t* @ 0x0099AF10, SetLength @ 0x0099BC50,\n",
+   "// format L\"%f\" @ 0x01237EF4), GetLength @ 0x0099B220, GetAsCharArray() @ 0x0099AF10, SetLength @ 0x0099BC50,\n"
+  ],
+  [
+   "    operator const wchar_t16*() const;                      // 0x0099AF10\n",
+   "    const wchar_t16* GetAsCharArray() const;                      // 0x0099AF10\n"
+  ],
+  [
+   "        if (((const wchar_t16*)text)[i] == '.') {\n",
+   "        if (text.GetAsCharArray()[i] == '.') {\n"
+  ],
+  [
+   "                wchar_t16 last = ((const wchar_t16*)text)[text.GetLength() - 1];\n",
+   "                wchar_t16 last = text.GetAsCharArray()[text.GetLength() - 1];\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/85/CVirtualKeyboard_GetProfileName_00851890.cpp": [
+  [
+   "// last = GetLength() - 1 (0x0099B220); skip leading L' ' through operator const wchar_t* (0x0099AF10) while first <\n",
+   "// last = GetLength() - 1 (0x0099B220); skip leading L' ' through GetAsCharArray() (0x0099AF10) while first <\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                     // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10\n"
+  ],
+  [
+   "    while (first < text.GetLength() && ((const wchar_t*)text)[first] == L' ')\n",
+   "    while (first < text.GetLength() && text.GetAsCharArray()[first] == L' ')\n"
+  ],
+  [
+   "    while (last > first && ((const wchar_t*)text)[last] == L' ')\n",
+   "    while (last > first && text.GetAsCharArray()[last] == L' ')\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/9b/global_WordWrapText_009bc900.cpp": [
+  [
+   "// Callees: CWideString default ctor 0x0099AED0, operator const wchar_t* 0x0099AF10, __ftol2 0x00BFEA70,\n",
+   "// Callees: CWideString default ctor 0x0099AED0, GetAsCharArray() 0x0099AF10, __ftol2 0x00BFEA70,\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    const wchar_t* line = text;\n",
+   "    const wchar_t* line = text.GetAsCharArray();\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/9a/CSystemManager_DisplayCriticalMessage_009a4ed0.cpp": [
+  [
+   "// (hidden CWideString result pushed), CWideString::operator const wchar_t* @ 0x0099AF10, user32!MessageBoxW\n",
+   "// (hidden CWideString result pushed), CWideString::GetAsCharArray() @ 0x0099AF10, user32!MessageBoxW\n"
+  ],
+  [
+   "    operator const unsigned short*() const;        // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;        // 0x0099AF10\n"
+  ],
+  [
+   "    MessageBoxW(0, text.ToWideString(), L\"Application Error\", 0);   // caption 0x0129AB70, MB_OK\n",
+   "    MessageBoxW(0, text.ToWideString().GetAsCharArray(), L\"Application Error\", 0);   // caption 0x0129AB70, MB_OK\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/global_Pushheap_00497060.cpp": [
+  [
+   "// Callees: 0x0099AF10 CWideString::operator const wchar_t*, 0x00F3FB84 _wcsicmp (CRT, __cdecl),\n",
+   "// Callees: 0x0099AF10 CWideString::GetAsCharArray(), 0x00F3FB84 _wcsicmp (CRT, __cdecl),\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/STL_linearinsert_00497500.cpp": [
+  [
+   "// Callees: 0x0099AF10 CWideString::operator const wchar_t*, 0x00F3FB84 _wcsicmp (CRT), 0x00497460 copy_backward\n",
+   "// Callees: 0x0099AF10 CWideString::GetAsCharArray(), 0x00F3FB84 _wcsicmp (CRT), 0x00497460 copy_backward\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/STL_partialsort_00497620.cpp": [
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/CProgressDisplay_WordWrapText_00497a60.cpp": [
+  [
+   "// Callees: CWideString default ctor 0x0099AED0, operator const wchar_t* 0x0099AF10, __ftol2 0x00BFEA70,\n",
+   "// Callees: CWideString default ctor 0x0099AED0, GetAsCharArray() 0x0099AF10, __ftol2 0x00BFEA70,\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    const wchar_t* line = text;\n",
+   "    const wchar_t* line = text.GetAsCharArray();\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/STL_unguardedlinearinsert_00496fd0.cpp": [
+  [
+   "// Callees: 0x0099AF10 CWideString::operator const wchar_t* (byte twin of the CCharString accessor, label propagated),\n",
+   "// Callees: 0x0099AF10 CWideString::GetAsCharArray() (byte twin of the CCharString accessor, label propagated),\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/STL_median_00496ee0.cpp": [
+  [
+   "// Callees: 0x0099AF10 CWideString::operator const wchar_t* (byte twin of the CCharString accessor, label propagated),\n",
+   "// Callees: 0x0099AF10 CWideString::GetAsCharArray() (byte twin of the CCharString accessor, label propagated),\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/global_Adjustheap_00497160.cpp": [
+  [
+   "// Callees: 0x0099AF10 CWideString::operator const wchar_t* (byte twin of the CCharString accessor,\n",
+   "// Callees: 0x0099AF10 CWideString::GetAsCharArray() (byte twin of the CCharString accessor,\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/STL_unguardedpartition_00497200.cpp": [
+  [
+   "// Callees: 0x0099AF10 CWideString::operator const wchar_t* (byte twin of the CCharString accessor, label propagated),\n",
+   "// Callees: 0x0099AF10 CWideString::GetAsCharArray() (byte twin of the CCharString accessor, label propagated),\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/9c/CBankFile_EndUpdateEntries_009cea70.cpp": [
+  [
+   "// CWideString&) 0x00999230 (__fastcall, bool), CWideString::operator const wchar_t*() 0x0099AF10, kernel32\n",
+   "// CWideString&) 0x00999230 (__fastcall, bool), CWideString::GetAsCharArray() 0x0099AF10, kernel32\n"
+  ],
+  [
+   "    operator const wchar16*() const;                // 0x0099AF10\n",
+   "    const wchar16* GetAsCharArray() const;                // 0x0099AF10\n"
+  ],
+  [
+   "            DeleteFileW(recoveryPath);\n",
+   "            DeleteFileW(recoveryPath.GetAsCharArray());\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/a0/CSoundBankLH_Load_00a0b630.cpp": [
+  [
+   "// hidden result in ecx, path in edx), CWideString::operator const wchar_t* @ 0x0099AF10, ~CWideString @ 0x0099B510, the\n",
+   "// hidden result in ecx, path in edx), CWideString::GetAsCharArray() @ 0x0099AF10, ~CWideString @ 0x0099B510, the\n"
+  ],
+  [
+   "    operator const unsigned short*() const;   // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;   // 0x0099AF10\n"
+  ],
+  [
+   "        m_pBank = engine->LoadBank(w, &d);\n",
+   "        m_pBank = engine->LoadBank(w.GetAsCharArray(), &d);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/a0/CShaderRenderManager_UpdateLightGlobals_00a0b710.cpp": [
+  [
+   "    operator const unsigned short*() const;   // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;   // 0x0099AF10\n"
+  ],
+  [
+   "        m_handle = dev->Create(w, &d);\n",
+   "        m_handle = dev->Create(w.GetAsCharArray(), &d);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/43/CFontBank_GetVStringExtents_00437210.cpp": [
+  [
+   "// raw wide characters (CWideString::operator const wchar_t* 0x0099AF10) with no wrap, then GFAXToVX (0x009E1DA0) on the\n",
+   "// raw wide characters (CWideString::GetAsCharArray() 0x0099AF10) with no wrap, then GFAXToVX (0x009E1DA0) on the\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                     // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10\n"
+  ],
+  [
+   "    C2DExtentsF extents = GetStringExtents(text, false);\n",
+   "    C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/43/CFontBank_GetVStringWidth_0043e4d0.cpp": [
+  [
+   "// raw wide characters (CWideString::operator const wchar_t* 0x0099AF10) with no wrap, then GFAXToVX (0x009E1DA0) on the\n",
+   "// raw wide characters (CWideString::GetAsCharArray() 0x0099AF10) with no wrap, then GFAXToVX (0x009E1DA0) on the\n"
+  ],
+  [
+   "    operator const wchar_t*() const;                     // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10\n"
+  ],
+  [
+   "        C2DExtentsF extents = GetStringExtents(text, false);\n",
+   "        C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/40/CUserProfileManager_GetDirectoryNameFromProfileName_004071c0.cpp": [
+  [
+   "//          @ 0x0099B220, operator const wchar_t* @ 0x0099AF10, GetSubString @ 0x0099BDB0, wcsncmp @ 0x00BFEB0A,\n",
+   "//          @ 0x0099B220, GetAsCharArray() @ 0x0099AF10, GetSubString @ 0x0099BDB0, wcsncmp @ 0x00BFEB0A,\n"
+  ],
+  [
+   "    operator const unsigned short*() const;             // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;             // 0x0099AF10\n"
+  ],
+  [
+   "        if (wcsncmp(directory, prefix, prefix.GetLength()) == 0) {\n",
+   "        if (wcsncmp(directory.GetAsCharArray(), prefix.GetAsCharArray(), prefix.GetLength()) == 0) {\n"
+  ]
+ ],
+ "rebuild/tests/00/54/NUISystemCEditBox_UpdateDisplayText_00540980_test.cpp": [
+  [
+   "    operator const unsigned short*() const;                 // 0x0099AF10\n    unsigned short operator[](long i) const { return ((const unsigned short*)*this)[i]; }\n",
+   "    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10\n    unsigned short operator[](long i) const { return GetAsCharArray()[i]; }\n"
+  ],
+  [
+   "            position.X += text->GetFont()->GetStringSizeOut(size, line, 0).X * text->GetScale().X;\n",
+   "            position.X += text->GetFont()->GetStringSizeOut(size, line.GetAsCharArray(), 0).X * text->GetScale().X;\n"
+  ],
+  [
+   "CWideString::operator const unsigned short*() const { return (const unsigned short*)m_pStringData; }\n",
+   "const unsigned short* CWideString::GetAsCharArray() const { return (const unsigned short*)m_pStringData; }\n"
+  ],
+  [
+   "static bool equalsAscii(const CWideString& w, const char* a) { const unsigned short* s = w; unsigned long i = 0; for (; a[i]; ++i) if (s[i] != (unsigned short)a[i]) return false; return s[i] == 0; }\n",
+   "static bool equalsAscii(const CWideString& w, const char* a) { const unsigned short* s = w.GetAsCharArray(); unsigned long i = 0; for (; a[i]; ++i) if (s[i] != (unsigned short)a[i]) return false; return s[i] == 0; }\n"
+  ]
+ ],
+ "rebuild/tests/00/54/NUISystemCText_FitInWindow_0054f8e0_test.cpp": [
+  [
+   "// Callees: CWideString ctor() 0x0099AED0 (catalog \"CCharString\" is a byte twin), operator const unsigned short*\n",
+   "// Callees: CWideString ctor() 0x0099AED0 (catalog \"CCharString\" is a byte twin), GetAsCharArray()\n"
+  ],
+  [
+   "    operator const unsigned short*() const;                 // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10\n"
+  ],
+  [
+   "    const unsigned short* start = text;\n",
+   "    const unsigned short* start = text.GetAsCharArray();\n"
+  ],
+  [
+   "CWideString::operator const wch*() const { return (const wch*)PStringData; }\n",
+   "const wch* CWideString::GetAsCharArray() const { return (const wch*)PStringData; }\n"
+  ],
+  [
+   "    const wch* a = *this; const wch* b = t; long na = wlen(a), nb = wlen(b);\n",
+   "    const wch* a = GetAsCharArray(); const wch* b = t.GetAsCharArray(); long na = wlen(a), nb = wlen(b);\n"
+  ],
+  [
+   "long CWideString::FindCharPos(wch c) const { const wch* a = *this; for (long i = 0; a[i]; ++i) if (a[i] == c) return i; return -1; }\nlong CWideString::GetLength() const { return wlen(*this); }\n",
+   "long CWideString::FindCharPos(wch c) const { const wch* a = GetAsCharArray(); for (long i = 0; a[i]; ++i) if (a[i] == c) return i; return -1; }\nlong CWideString::GetLength() const { return wlen(GetAsCharArray()); }\n"
+  ],
+  [
+   "const CWideString& CWideString::operator=(const CWideString& o) { if (this != &o) { std::free(PStringData); PStringData = wdup(o, o.GetLength()); } return *this; }\n",
+   "const CWideString& CWideString::operator=(const CWideString& o) { if (this != &o) { std::free(PStringData); PStringData = wdup(o.GetAsCharArray(), o.GetLength()); } return *this; }\n"
+  ],
+  [
+   "    const wch* a = *this; const wch* b = o;\n",
+   "    const wch* a = GetAsCharArray(); const wch* b = o.GetAsCharArray();\n"
+  ],
+  [
+   "static bool eq(const CWideString& s, const char* c) { const wch* a = s; long i = 0; for (; c[i]; ++i) if (a[i] != (wch)c[i]) return false; return a[i] == 0; }\n",
+   "static bool eq(const CWideString& s, const char* c) { const wch* a = s.GetAsCharArray(); long i = 0; for (; c[i]; ++i) if (a[i] != (wch)c[i]) return false; return a[i] == 0; }\n"
+  ]
+ ],
+ "rebuild/tests/00/54/NUISystemCText_GetCharWidthW_0054f4b0_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return Text; }\n",
+   "    const unsigned short* GetAsCharArray() const { return Text; }\n"
+  ],
+  [
+   "        return (unsigned int)bank->GetTextExtent(text, 0).X;\n",
+   "        return (unsigned int)bank->GetTextExtent(text.GetAsCharArray(), 0).X;\n"
+  ]
+ ],
+ "rebuild/tests/00/54/NUISystemCText_ForceWidth_0054fb10_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return PStringData; }\n",
+   "    const unsigned short* GetAsCharArray() const { return PStringData; }\n"
+  ],
+  [
+   "    unsigned short operator[](unsigned long i) const { return ((const unsigned short*)*this)[i]; }\n",
+   "    unsigned short operator[](unsigned long i) const { return GetAsCharArray()[i]; }\n"
+  ],
+  [
+   "    virtual void SetValue(const CWideString& value, bool a, bool b) { ++g_sets; g_setLength = value.GetLength(); std::memcpy(g_set, (const unsigned short*)value, (g_setLength + 1) * 2); g_setA = a; g_setB = b; }\n",
+   "    virtual void SetValue(const CWideString& value, bool a, bool b) { ++g_sets; g_setLength = value.GetLength(); std::memcpy(g_set, value.GetAsCharArray(), (g_setLength + 1) * 2); g_setA = a; g_setB = b; }\n"
+  ]
+ ],
+ "rebuild/tests/00/99/CSystemRegistry_DeleteValue_0099d1e0_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return m_pData; }\n",
+   "    const unsigned short* GetAsCharArray() const { return m_pData; }\n"
+  ],
+  [
+   "    void DeleteValue(const CWideString& valueName) const { RegDeleteValueWStub(OpenKey, valueName); }\n",
+   "    void DeleteValue(const CWideString& valueName) const { RegDeleteValueWStub(OpenKey, valueName.GetAsCharArray()); }\n"
+  ]
+ ],
+ "rebuild/tests/00/99/CSystemRegistry_GetString_0099d000_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return m_pData; }                             // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const { return m_pData; }                             // 0x0099AF10\n"
+  ],
+  [
+   "        if (RegQueryValueExW(OpenKey, valueName, 0, &type, (unsigned char*)buffer, &size) == 0)\n",
+   "        if (RegQueryValueExW(OpenKey, valueName.GetAsCharArray(), 0, &type, (unsigned char*)buffer, &size) == 0)\n"
+  ],
+  [
+   "        CHECK(same(s, kVal) && g_calls == 1 && g_lastKey == &g_key && same(g_lastName, kName) && g_lastSize == 0x200);\n",
+   "        CHECK(same(s.GetAsCharArray(), kVal) && g_calls == 1 && g_lastKey == &g_key && same(g_lastName, kName) && g_lastSize == 0x200);\n"
+  ],
+  [
+   "        CHECK(g_textCtors == 1);\n        CHECK((const unsigned short*)s != (const unsigned short*)def);\n    }\n",
+   "        CHECK(g_textCtors == 1);\n        CHECK(s.GetAsCharArray() != def.GetAsCharArray());\n    }\n"
+  ],
+  [
+   "        CHECK(same(s, kDef) && g_calls == 2 && g_textCtors == 0 && g_copyCtors >= 1);\n        CHECK((const unsigned short*)s != (const unsigned short*)def);\n",
+   "        CHECK(same(s.GetAsCharArray(), kDef) && g_calls == 2 && g_textCtors == 0 && g_copyCtors >= 1);\n        CHECK(s.GetAsCharArray() != def.GetAsCharArray());\n"
+  ],
+  [
+   "        CWideString s = r.GetString(name, def);\n        CHECK(same(s, kDef) && g_calls == 2 && g_textCtors == 0 && g_copyCtors >= 1);\n    }\n",
+   "        CWideString s = r.GetString(name, def);\n        CHECK(same(s.GetAsCharArray(), kDef) && g_calls == 2 && g_textCtors == 0 && g_copyCtors >= 1);\n    }\n"
+  ]
+ ],
+ "rebuild/tests/00/99/CSystemRegistry_WriteString_0099d140_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return m_pData; }\n",
+   "    const unsigned short* GetAsCharArray() const { return m_pData; }\n"
+  ],
+  [
+   "            RegSetValueExWStub(OpenKey, valueName, 0, 1,\n                               (const unsigned char*)(const unsigned short*)value, value.GetLength() + 1);\n",
+   "            RegSetValueExWStub(OpenKey, valueName.GetAsCharArray(), 0, 1,\n                               (const unsigned char*)value.GetAsCharArray(), value.GetLength() + 1);\n"
+  ]
+ ],
+ "rebuild/tests/00/99/CSystemRegistry_WriteBinary_0099d180_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return m_pData; }\n",
+   "    const unsigned short* GetAsCharArray() const { return m_pData; }\n"
+  ],
+  [
+   "            RegSetValueExWStub(OpenKey, valueName, 0, 3, (const unsigned char*)data, size);\n",
+   "            RegSetValueExWStub(OpenKey, valueName.GetAsCharArray(), 0, 3, (const unsigned char*)data, size);\n"
+  ]
+ ],
+ "rebuild/tests/00/99/CSystemRegistry_WriteSLONG_0099d0c0_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return m_pData; }\n",
+   "    const unsigned short* GetAsCharArray() const { return m_pData; }\n"
+  ],
+  [
+   "            RegSetValueExWStub(OpenKey, valueName, 0, 4, (const unsigned char*)&stored, 4);\n",
+   "            RegSetValueExWStub(OpenKey, valueName.GetAsCharArray(), 0, 4, (const unsigned char*)&stored, 4);\n"
+  ]
+ ],
+ "rebuild/tests/00/99/CSystemRegistry_WriteBOOL_0099d100_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return m_pData; }\n",
+   "    const unsigned short* GetAsCharArray() const { return m_pData; }\n"
+  ],
+  [
+   "            RegSetValueExWStub(OpenKey, valueName, 0, 4, (const unsigned char*)&stored, 4);\n",
+   "            RegSetValueExWStub(OpenKey, valueName.GetAsCharArray(), 0, 4, (const unsigned char*)&stored, 4);\n"
+  ]
+ ],
+ "rebuild/tests/00/99/CSystemRegistry_GetSLONG_0099cf80_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return m_pData; }\n",
+   "    const unsigned short* GetAsCharArray() const { return m_pData; }\n"
+  ],
+  [
+   "            if (RegQueryValueExWStub(OpenKey, valueName, 0, &type, (unsigned char*)&value, &size) == 0)\n",
+   "            if (RegQueryValueExWStub(OpenKey, valueName.GetAsCharArray(), 0, &type, (unsigned char*)&value, &size) == 0)\n"
+  ]
+ ],
+ "rebuild/tests/00/48/CSubtitleRenderer_WordWrapText_0048dc8b_test.cpp": [
+  [
+   "    operator const WCH*() const { return buf; }\n",
+   "    const WCH* GetAsCharArray() const { return buf; }\n"
+  ],
+  [
+   "    const WCH* line = text;\n",
+   "    const WCH* line = text.GetAsCharArray();\n"
+  ],
+  [
+   "        if (*(const WCH*)lineText == ',') {\n",
+   "        if (*lineText.GetAsCharArray() == ',') {\n"
+  ]
+ ],
+ "rebuild/tests/00/48/global_GetNumberOfCharactersOfTypeInString_0048dbf9_test.cpp": [
+  [
+   "    operator const wchar_t16*() const { return m_text; }\n",
+   "    const wchar_t16* GetAsCharArray() const { return m_text; }\n"
+  ],
+  [
+   "    const wchar_t16* data = text;\n",
+   "    const wchar_t16* data = text.GetAsCharArray();\n"
+  ]
+ ],
+ "rebuild/tests/00/48/CPlayer_LocateCharacterStartHolySite_00488b20_test.cpp": [
+  [
+   "//   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / operator const wchar_t* 0x0099AF10 on the\n",
+   "//   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / GetAsCharArray() 0x0099AF10 on the\n"
+  ],
+  [
+   "    operator const unsigned short*() const;               // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;               // 0x0099AF10\n"
+  ],
+  [
+   "        message.Format(\"*** WARNING : failed to find a holy site with ScriptName %S\", (const unsigned short*)g_CWideString_013b866c);\n",
+   "        message.Format(\"*** WARNING : failed to find a holy site with ScriptName %S\", g_CWideString_013b866c.GetAsCharArray());\n"
+  ],
+  [
+   "CWideString::operator const unsigned short*() const { return g_wide; }\n",
+   "const unsigned short* CWideString::GetAsCharArray() const { return g_wide; }\n"
+  ]
+ ],
+ "rebuild/tests/00/48/global_GFFloatToWideString_00486c40_test.cpp": [
+  [
+   "    operator const wchar_t16*() const { return m_buf; }\n",
+   "    const wchar_t16* GetAsCharArray() const { return m_buf; }\n"
+  ],
+  [
+   "        if (((const wchar_t16*)text)[i] == '.') {\n",
+   "        if (text.GetAsCharArray()[i] == '.') {\n"
+  ],
+  [
+   "                wchar_t16 last = ((const wchar_t16*)text)[text.GetLength() - 1];\n",
+   "                wchar_t16 last = text.GetAsCharArray()[text.GetLength() - 1];\n"
+  ]
+ ],
+ "rebuild/tests/00/85/CVirtualKeyboard_GetProfileName_00851890_test.cpp": [
+  [
+   "    operator const wchar_t*() const;                     // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10\n"
+  ],
+  [
+   "    while (first < text.GetLength() && ((const wchar_t*)text)[first] == L' ')\n",
+   "    while (first < text.GetLength() && text.GetAsCharArray()[first] == L' ')\n"
+  ],
+  [
+   "    while (last > first && ((const wchar_t*)text)[last] == L' ')\n",
+   "    while (last > first && text.GetAsCharArray()[last] == L' ')\n"
+  ],
+  [
+   "CWideString::operator const wchar_t*() const { return PStringData->Buf; }\n",
+   "const wchar_t* CWideString::GetAsCharArray() const { return PStringData->Buf; }\n"
+  ],
+  [
+   "        for (long i = 0; ok && i < m; ++i) ok = ((const wchar_t*)r)[i] == want[i];\n",
+   "        for (long i = 0; ok && i < m; ++i) ok = r.GetAsCharArray()[i] == want[i];\n"
+  ]
+ ],
+ "rebuild/tests/00/9b/global_WordWrapText_009bc900_test.cpp": [
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    const wchar_t* line = text;\n",
+   "    const wchar_t* line = text.GetAsCharArray();\n"
+  ],
+  [
+   "CWideString::operator const wchar_t*() const { return ((SBlock*)PStringData)->text; }\n",
+   "const wchar_t* CWideString::GetAsCharArray() const { return ((SBlock*)PStringData)->text; }\n"
+  ],
+  [
+   "    const wchar_t* t = s; long n = Len(t);\n",
+   "    const wchar_t* t = s.GetAsCharArray(); long n = Len(t);\n"
+  ]
+ ],
+ "rebuild/tests/00/9a/CSystemManager_DisplayCriticalMessage_009a4ed0_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return m_data; }\n",
+   "    const unsigned short* GetAsCharArray() const { return m_data; }\n"
+  ],
+  [
+   "        MessageBoxW(0, text.ToWideString(), g_caption_lit, 0);\n",
+   "        MessageBoxW(0, text.ToWideString().GetAsCharArray(), g_caption_lit, 0);\n"
+  ]
+ ],
+ "rebuild/tests/00/49/STL_median_00496ee0_test.cpp": [
+  [
+   "    operator const char*() const { return PStringData; }\n",
+   "    const char* GetAsCharArray() const { return PStringData; }\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ],
+  [
+   "    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i], a[i - 1]) < 0) return false;\n",
+   "    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i].GetAsCharArray(), (a[i - 1]).GetAsCharArray()) < 0) return false;\n"
+  ]
+ ],
+ "rebuild/tests/00/49/STL_unguardedlinearinsert_00496fd0_test.cpp": [
+  [
+   "    operator const wchar_t*() const { return PStringData; }\n",
+   "    const wchar_t* GetAsCharArray() const { return PStringData; }\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return icmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return icmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ],
+  [
+   "    if (icmp(a[0], L\"alpha\") || icmp(a[1], L\"bravo\") || icmp(a[2], L\"bridge\") || icmp(a[3], L\"charlie\") || icmp(a[4], L\"delta\"))\n",
+   "    if (icmp(a[0].GetAsCharArray(), L\"alpha\") || icmp(a[1].GetAsCharArray(), L\"bravo\") || icmp(a[2].GetAsCharArray(), L\"bridge\") || icmp(a[3].GetAsCharArray(), L\"charlie\") || icmp(a[4].GetAsCharArray(), L\"delta\"))\n"
+  ],
+  [
+   "    if (g_assigns != 1 || icmp(a[4], L\"DELTA\")) { std::printf(\"00496fd0_TEST FAIL\\n\"); return 1; }\n",
+   "    if (g_assigns != 1 || icmp(a[4].GetAsCharArray(), L\"DELTA\")) { std::printf(\"00496fd0_TEST FAIL\\n\"); return 1; }\n"
+  ]
+ ],
+ "rebuild/tests/00/49/global_Pushheap_00497060_test.cpp": [
+  [
+   "    operator const wch*() const { return text; }\n",
+   "    const wch* GetAsCharArray() const { return text; }\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return my_wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return my_wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ],
+  [
+   "    if (my_wcsicmp(heap[0], CWideString(\"eve\")) != 0) { std::printf(\"00497060_TEST FAIL\\n\"); return 1; }\n",
+   "    if (my_wcsicmp(heap[0].GetAsCharArray(), CWideString(\"eve\").GetAsCharArray()) != 0) { std::printf(\"00497060_TEST FAIL\\n\"); return 1; }\n"
+  ]
+ ],
+ "rebuild/tests/00/49/STL_partialsort_00497620_test.cpp": [
+  [
+   "    operator const char*() const { return PStringData; }\n",
+   "    const char* GetAsCharArray() const { return PStringData; }\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ],
+  [
+   "    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i], a[i - 1]) < 0) return false;\n",
+   "    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i].GetAsCharArray(), (a[i - 1]).GetAsCharArray()) < 0) return false;\n"
+  ],
+  [
+   "            if (Wcsicmp(a[i], ref[i]) != 0) { std::printf(\"00497620_TEST FAIL\\n\"); return 1; }\n",
+   "            if (Wcsicmp(a[i].GetAsCharArray(), ref[i].GetAsCharArray()) != 0) { std::printf(\"00497620_TEST FAIL\\n\"); return 1; }\n"
+  ]
+ ],
+ "rebuild/tests/00/49/CProgressDisplay_WordWrapText_00497a60_test.cpp": [
+  [
+   "    operator const wchar_t*() const;                    // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10\n"
+  ],
+  [
+   "    const wchar_t* line = text;\n",
+   "    const wchar_t* line = text.GetAsCharArray();\n"
+  ],
+  [
+   "CWideString::operator const wchar_t*() const { return ((SBlock*)PStringData)->text; }\n",
+   "const wchar_t* CWideString::GetAsCharArray() const { return ((SBlock*)PStringData)->text; }\n"
+  ],
+  [
+   "    const wchar_t* t = s; long n = Len(t);\n",
+   "    const wchar_t* t = s.GetAsCharArray(); long n = Len(t);\n"
+  ]
+ ],
+ "rebuild/tests/00/49/STL_linearinsert_00497500_test.cpp": [
+  [
+   "    operator const char*() const { return PStringData; }\n",
+   "    const char* GetAsCharArray() const { return PStringData; }\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ],
+  [
+   "    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i], a[i - 1]) < 0) return false;\n",
+   "    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i].GetAsCharArray(), (a[i - 1]).GetAsCharArray()) < 0) return false;\n"
+  ],
+  [
+   "    if (Wcsicmp(b[0], \"a\") != 0 || Wcsicmp(b[3], \"d\") != 0) { std::printf(\"00497500_TEST FAIL\\n\"); return 1; }\n",
+   "    if (Wcsicmp(b[0].GetAsCharArray(), \"a\") != 0 || Wcsicmp(b[3].GetAsCharArray(), \"d\") != 0) { std::printf(\"00497500_TEST FAIL\\n\"); return 1; }\n"
+  ]
+ ],
+ "rebuild/tests/00/49/STL_unguardedpartition_00497200_test.cpp": [
+  [
+   "    operator const char*() const { return PStringData; }\n",
+   "    const char* GetAsCharArray() const { return PStringData; }\n"
+  ],
+  [
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a, b) < 0; }\n",
+   "    bool operator()(const CWideString& a, const CWideString& b) const { return Wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }\n"
+  ],
+  [
+   "    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i], a[i - 1]) < 0) return false;\n",
+   "    for (int i = 1; i < n; ++i) if (Wcsicmp(a[i].GetAsCharArray(), (a[i - 1]).GetAsCharArray()) < 0) return false;\n"
+  ]
+ ],
+ "rebuild/tests/00/a0/CSoundBankLH_Load_00a0b630_test.cpp": [
+  [
+   "    operator const unsigned short*() const { return m_pData; }\n",
+   "    const unsigned short* GetAsCharArray() const { return m_pData; }\n"
+  ],
+  [
+   "        m_pBank = engine->LoadBank(w, &d);\n",
+   "        m_pBank = engine->LoadBank(w.GetAsCharArray(), &d);\n"
+  ]
+ ],
+ "rebuild/tests/00/43/CFontBank_GetVStringWidth_0043e4d0_test.cpp": [
+  [
+   "    operator const wchar_t*() const;                     // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10\n"
+  ],
+  [
+   "        C2DExtentsF extents = GetStringExtents(text, false);\n",
+   "        C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);\n"
+  ],
+  [
+   "CWideString::operator const wchar_t*() const { return PStringData ? (const wchar_t*)PStringData : g_empty; }\n",
+   "const wchar_t* CWideString::GetAsCharArray() const { return PStringData ? (const wchar_t*)PStringData : g_empty; }\n"
+  ]
+ ],
+ "rebuild/tests/00/43/CFontBank_GetVStringExtents_00437210_test.cpp": [
+  [
+   "    operator const wchar_t*() const;                     // 0x0099AF10\n",
+   "    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10\n"
+  ],
+  [
+   "    C2DExtentsF extents = GetStringExtents(text, false);\n",
+   "    C2DExtentsF extents = GetStringExtents(text.GetAsCharArray(), false);\n"
+  ],
+  [
+   "CWideString::operator const wchar_t*() const { return PStringData ? (const wchar_t*)PStringData : g_empty; }\n",
+   "const wchar_t* CWideString::GetAsCharArray() const { return PStringData ? (const wchar_t*)PStringData : g_empty; }\n"
+  ]
+ ],
+ "rebuild/tests/00/40/CUserProfileManager_GetDirectoryNameFromProfileName_004071c0_test.cpp": [
+  [
+   "    operator const char*() const { return s; }\n",
+   "    const char* GetAsCharArray() const { return s; }\n"
+  ],
+  [
+   "            if (std::strncmp(directory, prefix, prefix.GetLength()) == 0) {\n",
+   "            if (std::strncmp(directory.GetAsCharArray(), prefix.GetAsCharArray(), prefix.GetLength()) == 0) {\n"
+  ]
+ ]
+}

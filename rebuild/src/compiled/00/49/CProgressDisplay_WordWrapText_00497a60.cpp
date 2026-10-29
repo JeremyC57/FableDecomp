@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00497A60, length 202 bytes (+ int3 padding), `ret 10h` (hidden result + 3).
 // Identity: Ego_r.pdb `?WordWrapText@CProgressDisplay@@ABE?AVCWideString@@ABVC2DBoxF@@ABVCFontBank@@ABV2@@Z` (the free
 // __fastcall twin `?WordWrapText@@YI...` is 0x009BC900); the font is not read.
-// Callees: CWideString default ctor 0x0099AED0, operator const wchar_t* 0x0099AF10, __ftol2 0x00BFEA70,
+// Callees: CWideString default ctor 0x0099AED0, GetAsCharArray() 0x0099AF10, __ftol2 0x00BFEA70,
 // WordWrap_FindNextLineW(const wchar_t*, unsigned, const wchar_t**) 0x00A10390 (__fastcall),
 // CWideString::SetAsSubString(const wchar_t*, long) 0x0099B770, operator=(const wchar_t*) 0x0099B800,
 // operator+(const CWideString&, const wchar_t*) 0x0099BF30 (__fastcall, hidden result), operator+= 0x0099B8D0,
@@ -28,7 +28,7 @@ class CWideString { public:
     CWideString();                                      // 0x0099AED0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    operator const wchar_t*() const;                    // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10
     void SetAsSubString(const wchar_t* text, long length);   // 0x0099B770
     const CWideString& operator=(const wchar_t* text);  // 0x0099B800
     const CWideString& operator+=(const CWideString& other); // 0x0099B8D0
@@ -47,7 +47,7 @@ CWideString CProgressDisplay::WordWrapText(const C2DBoxF& box, const CFontBank& 
 {
     (void)font;
     CWideString wrapped;
-    const wchar_t* line = text;
+    const wchar_t* line = text.GetAsCharArray();
     const wchar_t* end;
     do {
         const wchar_t* next = 0;

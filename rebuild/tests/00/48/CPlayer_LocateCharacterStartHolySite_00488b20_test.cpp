@@ -10,7 +10,7 @@ static int fails = 0;
 // CPlayer::LocateCharacterStartHolySite(CThing** site) -- picks the holy site the character starts at: the one script-named by the start holy site name when no respawn point is set, else the site nearest the respawn position
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00488B20, 494 bytes, `ret 4`.
 // Callees: the /Gr (__fastcall) template copy 0x0048D5C0 (hidden result in ecx; copies the list's things whose +0xD4 flag
-//   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / operator const wchar_t* 0x0099AF10 on the
+//   is set onto back_inserter(sites)), CWideString::ConvertToCharString 0x0099B2C0 / GetAsCharArray() 0x0099AF10 on the
 //   global 0x013B866C (the start holy site name), CCharString copy 0x0099EC30 / default 0x0099E4B0 / dtor 0x0099EAE0 /
 //   Format 0x0099F1F0 ("*** WARNING : failed to find a holy site with ScriptName %S" 0x01238074), SGI __find_if 0x0048CC60
 //   (/Gr: first ecx, last edx, the binder by value, the iterator tag), the bound predicate 0x0048BC70
@@ -36,7 +36,7 @@ class CCharString { public:
 class CWideString { public:
     void* PStringData;
     CCharString ConvertToCharString() const;       // 0x0099B2C0
-    operator const unsigned short*() const;               // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;               // 0x0099AF10
 };
 extern CWideString g_CWideString_013b866c;         // 0x013B866C (the character start holy site name)
 
@@ -176,7 +176,7 @@ bool CPlayer::LocateCharacterStartHolySite(CThing** site)
             return true;
         }
         CCharString message;
-        message.Format("*** WARNING : failed to find a holy site with ScriptName %S", (const unsigned short*)g_CWideString_013b866c);
+        message.Format("*** WARNING : failed to find a holy site with ScriptName %S", g_CWideString_013b866c.GetAsCharArray());
         RespawnPos = C3DVector(0.0f, 0.0f, 0.0f);
     }
     CThing* best = 0;
@@ -209,7 +209,7 @@ void CCharString::Format(const char* format, ...)
 static const char* g_startName = "HS_Start";
 static const unsigned short g_wide[] = { 'H', 'S', 0 };
 CCharString CWideString::ConvertToCharString() const { CCharString r; r.PStringData = (void*)g_startName; return r; }
-CWideString::operator const unsigned short*() const { return g_wide; }
+const unsigned short* CWideString::GetAsCharArray() const { return g_wide; }
 CWideString g_CWideString_013b866c;
 static CThing g_things[8]; static const char* g_names[8]; static C3DVector g_pos[8]; static int g_named;
 const C3DVector& CThing::GetPosition() const { return g_pos[this - g_things]; }

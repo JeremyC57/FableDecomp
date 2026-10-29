@@ -1,0 +1,55 @@
+old_symbol	target	new_symbol	note	rows
+?MemCmp_Unsigned16@@YAHKKH@Z	00403c60	?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z	NEW: not yet bound in reloc_bindings.tsv; defined by landed row 00403c60; RETIRE old	0040f0a0
+?MemCmp_Unsigned16@@YAHPBG0K@Z	00403c60	?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z	NEW: not yet bound in reloc_bindings.tsv; RETIRE old	00403c60,00404280,00407e10,004a05c0,004a2d70,004fdab0,00639ba0,0099b0f0
+?compare@?$__char_traits_base@_WG@std@@SAHPB_W0I@Z	00403c60	?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z	NEW: not yet bound in reloc_bindings.tsv; defined by landed row 00403c60; RETIRE old	0049ef50
+?compare@?$char_traits@G@std@@SAHPBG0I@Z	00403c60	?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z	NEW: not yet bound in reloc_bindings.tsv; defined by landed row 00403c60; RETIRE old	00558170
+?compare@__char_traits_ushort@std@@SAHPBG0I@Z	00403c60	?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z	NEW: not yet bound in reloc_bindings.tsv; defined by landed row 00403c60; RETIRE old	00567240
+?compare@char_traits_w@@SAHPBG0K@Z	00403c60	?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z	NEW: not yet bound in reloc_bindings.tsv; defined by landed row 00403c60; RETIRE old	00402130,00997f80
+-	00404280	??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z	NEW: not yet bound in reloc_bindings.tsv	0049ef50
+??$?8GU?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GU?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z	00404280	??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z	NEW: not yet bound in reloc_bindings.tsv; defined by landed row 0049ef50; RETIRE old	0048f939
+??8std@@YA_NABVwstring@0@PBG@Z	00404280	??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@PBG@Z	NEW: not yet bound in reloc_bindings.tsv; defined by landed row 0049ef50; RETIRE old	005bda1d
+?MeasureText@CText@NUISystem@@SIJPBGJ@Z	0054f4b0	-	RETIRE old	0054f8e0
+?FindFirstFile@@YI_NABVCWideString@@AAUCFindFileHandle@@AAUCFindFileData@@@Z	00999760	?StartFileScan@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z	already-bound; RETIRE old	00407040,004091c0,00418c3b,00495890,0055e850,0055ea80,0055fc90,005955ab
+?FindFirstFile@@YI_NABVCWideString@@PAUCFileFinder@@PAG@Z	00999760	?StartFileScan@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z	already-bound; RETIRE old	004a3200,006c37d0
+?StartFileScan@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PA_W@Z	00999760	?StartFileScan@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z	already-bound; RETIRE old	0049ef50
+?FindNextFile@@YI_NABVCWideString@@AAUCFindFileHandle@@AAUCFindFileData@@@Z	00999850	?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z	already-bound; RETIRE old	00407040,004091c0,00418c3b,00495890,005955ab
+?FindNextFile@@YI_NABVCWideString@@PAUCFileFinder@@PAG@Z	00999850	?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z	already-bound; RETIRE old	006c37d0
+?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PA_W@Z	00999850	?ScanNextFile@CAFile@@SI_NABVCWideString@@AAVCFileScanInfo@1@PAG@Z	already-bound; RETIRE old	0049ef50
+??BCWideString@@QAEPBGXZ	0099af00	??BCWideString@@QBEPBGXZ	already-bound; RETIRE old	00406e30,009e4ae0,009e4b70,009e4bc0
+??BCWideString@@QBEPB_WXZ	0099af00	??BCWideString@@QBEPBGXZ	already-bound; RETIRE old	00a3b9d0
+?GetChars_0099af00@CWideString@@QBEPBGXZ	0099af00	??BCWideString@@QBEPBGXZ	already-bound; RETIRE old	0098e1e0
+??BCWideString@@QBEPBGXZ	0099af10	?GetAsCharArray@CWideString@@QBEPBGXZ	already-bound; KEEP old: it is the right spelling of 0x0099AF00 and reloc_bindings.tsv binds it there only (these rows used it for a retail call to 0x0099AF10, the verifier paired it by address)	004071c0,00437210,0043e4d0,00486c40,00488b20,0048dbf9,0048dc8b,00496ee0,00496fd0,00497060,00497160,00497200,00497500,00497620,00497a60,00540980,0054f4b0,0054f8e0,0054fb10,00717450,00851890,0099cf80,0099d000,0099d0c0,0099d100,0099d140,0099d180,0099d1e0,009a4ed0,009bc900,009cea70,00a0b630,00a0b710
+??BCWideString@@QBEPAGXZ	0099af10	?GetAsCharArray@CWideString@@QBEPBGXZ	already-bound; RETIRE old	00557a10
+?GetAsCharArray@CWideString@@QBEPB_WXZ	0099af10	?GetAsCharArray@CWideString@@QBEPBGXZ	already-bound; RETIRE old	00a3b9d0
+?GetText@CWideStringCalls@@QAEPBGXZ	0099af10	?GetAsCharArray@CWideString@@QBEPBGXZ	already-bound; RETIRE old	00993f00
+?c_str@CWideString@@QBEPBGXZ	0099af10	?GetAsCharArray@CWideString@@QBEPBGXZ	already-bound; RETIRE old	00599e3f
+?GetLength@CWideStringCalls@@QAEJXZ	0099b220	?GetLength@CWideString@@QBEJXZ	already-bound; RETIRE old	00993f00
+??1CWideString@Row00e15500@@QAE@XZ	0099b510	??1CWideString@@QAE@XZ	already-bound; RETIRE old	00e15500
+??0CWideString@@QAE@PBD@Z	0099b6b0	??0CWideString@@QAE@PBG@Z	already-bound; RETIRE old	005be3b1,005be62c,00e0c350
+??0CWideString@@QAE@PB_W@Z	0099b6b0	??0CWideString@@QAE@PBG@Z	already-bound; RETIRE old	00492bab,0049ef50
+??0CWideString@NPlayerGui@@QAE@PBG@Z	0099b6b0	??0CWideString@@QAE@PBG@Z	already-bound; RETIRE old	00656c3c
+??0CWideString@Row00e15500@@QAE@PBG@Z	0099b6b0	??0CWideString@@QAE@PBG@Z	already-bound; RETIRE old	00e15500
+?Assign@CWideString@@QAEXPBGJ@Z	0099b770	?SetAsSubString@CWideString@@QAEXPBGJ@Z	already-bound; RETIRE old	0054f8e0
+??4CWideString@@QAEAAV0@PBG@Z	0099b800	??4CWideString@@QAEABV0@PBG@Z	already-bound; RETIRE old	0042ea8f,00446720,00495890,0053fe50,00540980,0054f8e0,00558170,00999ab0,009e93c0,00ab6180,00dcc140
+??4CWideString@@QAEABV0@PB_W@Z	0099b800	??4CWideString@@QAEABV0@PBG@Z	already-bound; RETIRE old	00492bab,00e68dc0,00e81b40
+??YCWideString@@QAEAAV0@ABV0@@Z	0099b8d0	??YCWideString@@QAEABV0@ABV0@@Z	already-bound; RETIRE old	0047eee4,00540980,0054f8e0,00558170,005be3b1,005be62c,005c770c,006d7960,007e27f0
+??YCWideString@@QAEAAV0@PBG@Z	0099b940	??YCWideString@@QAEABV0@PBG@Z	already-bound; RETIRE old	0047eee4,00540980,005955ab,006d7960,007e27f0
+??YCWideString@@QAEAAV0@G@Z	0099b9a0	??YCWideString@@QAEABV0@G@Z	already-bound; RETIRE old	0053fe50,0054fb10,00994d20
+?Format@CWideString@@QAAXPBGZZ	0099ba70	?Sprintf@CWideString@@QAAXPBGZZ	NEW: not yet bound in reloc_bindings.tsv; RETIRE old	004945b0,00829a30,009c7c20
+?FormatWideString@@YAXPAVCWideString@@PBGZZ	0099ba70	?Sprintf@CWideString@@QAAXPBGZZ	NEW: not yet bound in reloc_bindings.tsv; KEEP old (still emitted by 1 other landed rows: 0055e6b0)	00405f00,00486c40,0048e012,0054f4b0,00561980,005621b0,005ea1a0,005ea250,005ea310
+??H@YI?AVCWideString@@ABV0@PBD@Z	0099bf30	??H@YI?AVCWideString@@ABV0@PBG@Z	already-bound; RETIRE old	0059a238
+??H@YI?AVCWideString@@ABV0@PB_W@Z	0099bf30	??H@YI?AVCWideString@@ABV0@PBG@Z	already-bound; RETIRE old	0049ef50
+?WordWrap_SetCallback@@YIXP6IJPBGJ@ZJ@Z	00a0fd90	?WordWrap_SetCallback@@YIXP6IIG@ZP6IIXZ@Z	already-bound; RETIRE old	0054f8e0
+?WordWrap_FindNextLineW@@YIPBGPBGJPAJ@Z	00a10390	?WordWrap_FindNextLineW@@YIPBGPBGIPAPBG@Z	already-bound; RETIRE old	0054f8e0
+?WordWrap_FindNextLineW@@YIPBGPBGKPAPBG@Z	00a10390	?WordWrap_FindNextLineW@@YIPBGPBGIPAPBG@Z	already-bound; RETIRE old	0048dc8b
+-	-	??$?8GV?$char_traits@G@std@@V?$allocator@G@1@@std@@YA_NABV?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@0@0@Z	G form of the row's former _W STLport inline (zcdrop rows); NEW: not yet bound in reloc_bindings.tsv	0049ef50
+-	-	??8CWideString@@QBE_NPBG@Z	G form of a zcdrop row's former PB_W spelling; NEW: not yet bound in reloc_bindings.tsv; defined by landed row 00402130	0049ef50
+-	0054f4b0	?GetCharWidthW@CText@NUISystem@@SIIG@Z	NEW: not yet bound in reloc_bindings.tsv; defined by landed row 0054f4b0	0054f8e0
+-	-	?GetDriveFromPath@CDriveManager@@AAEGPBG@Z	own definition of 009e4c70 (G form of PDB ?GetDriveFromPath@CDriveManager@@AAE_WPB_W@Z, zcdrop); NEW: not yet bound in reloc_bindings.tsv	009e4c70
+-	-	?SetKeyPressed@CManager@NUISystem@@UAEXG@Z	own definition of 0042d4f7 (G form, zcdrop); NEW: not yet bound in reloc_bindings.tsv	0042d4f7
+-	-	?WriteNullTerminatedWString@CDataOutputStream_Methods@@QAEXPAVCWideString@@@Z	own definition of 00993f00 (argument class respelled; own class deferred); NEW: not yet bound in reloc_bindings.tsv	00993f00
+-	-	?data@?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@std@@QBEPBGXZ	NEW: not yet bound in reloc_bindings.tsv	0049ef50
+-	-	?eq@?$__char_traits_base@GG@std@@SA_NABG0@Z	NEW: not yet bound in reloc_bindings.tsv	00567240
+-	-	?length@?$__char_traits_base@GG@std@@SAIPBG@Z	NEW: not yet bound in reloc_bindings.tsv	0049ef50
+-	-	?lt@?$__char_traits_base@GG@std@@SA_NABG0@Z	NEW: not yet bound in reloc_bindings.tsv	00567240
+-	-	?size@?$basic_string@GV?$char_traits@G@std@@V?$allocator@G@2@@std@@QBEIXZ	NEW: not yet bound in reloc_bindings.tsv	0049ef50

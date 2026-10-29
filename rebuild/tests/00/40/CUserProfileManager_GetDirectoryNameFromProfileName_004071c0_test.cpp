@@ -8,7 +8,7 @@ class CWideString { public:
     CWideString() { s[0] = 0; }
     CWideString(const char* t) { std::strcpy(s, t); }
     long GetLength() const { return (long)std::strlen(s); }
-    operator const char*() const { return s; }
+    const char* GetAsCharArray() const { return s; }
     CWideString GetSubString(unsigned long start, unsigned long end) const
     {
         CWideString r; unsigned long n = 0;
@@ -41,7 +41,7 @@ struct Manager {
             CWideString directory;
             SplitPath(CWideString(path), 0, &directory, 0, 0);
             CWideString prefix = "./" + GetSaveDirWithoutTrailingBlackslash();
-            if (std::strncmp(directory, prefix, prefix.GetLength()) == 0) {
+            if (std::strncmp(directory.GetAsCharArray(), prefix.GetAsCharArray(), prefix.GetLength()) == 0) {
                 CWideString name = directory.GetSubString(7, directory.GetLength());
                 return name;
             }

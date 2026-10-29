@@ -6,14 +6,14 @@ typedef unsigned short wchar_t16;
 struct CWideStringModel {
     const wchar_t16* m_text;
     long m_length;
-    operator const wchar_t16*() const { return m_text; }
+    const wchar_t16* GetAsCharArray() const { return m_text; }
     long GetLength() const { return m_length; }
 };
 
 static long CountModel(const CWideStringModel& text, wchar_t16 character)
 {
     long count = 0;
-    const wchar_t16* data = text;
+    const wchar_t16* data = text.GetAsCharArray();
     for (long i = 0; i < text.GetLength(); ++i) {
         if (data[i] == character)
             ++count;

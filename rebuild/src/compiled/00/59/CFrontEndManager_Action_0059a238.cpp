@@ -53,7 +53,7 @@ public:
     }
     static bool __cdecl Compare_Unsigned16Array(const void* a, const void* b);   // 0x0040F0A0
 };
-CWideString __fastcall operator+(const CWideString& text, const char* suffix);         // 0x0099BF30
+CWideString __fastcall operator+(const CWideString& text, const unsigned short* suffix);   // 0x0099BF30
 CWideString __fastcall operator+(const CWideString& text, const CWideString& suffix);  // 0x0099BE70
 bool __fastcall ConstructString(CWideString& text, const CWideString& parameter);     // 0x009C7980
 
@@ -354,7 +354,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
             if (title)
             {
                 CWideString text = g_pNewFrontendGameComponent->m_pTextBank->GetTextBySymbol("TEXT_GUI_MENU_DELETE_PROFILE");
-                title->SetText(text + " " + parameter->Value, true, true);
+                title->SetText(text + L" " + parameter->Value, true, true);
             }
             GotoNextScreen(m_mapScreens[(FRONTEND_SCREEN)0x0a], false);
         }

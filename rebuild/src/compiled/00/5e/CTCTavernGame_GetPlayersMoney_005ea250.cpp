@@ -19,13 +19,13 @@ public:
     CWideString();                                      // 0x0099AED0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
+    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70
 };
-void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);   // 0x0099BE70
 __forceinline CWideString __fastcall IntToWideString(long value)    // the body of 0x00405F00, inlined here
 {
     CWideString text;
-    FormatWideString(&text, L"%d", value);
+    text.Sprintf(L"%d", value);
     return text;
 }
 struct CDefBase {

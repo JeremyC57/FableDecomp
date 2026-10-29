@@ -3,8 +3,8 @@
 // Callees: CActionTalkBase::Update @ 0x00716DE0, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 69 = bit 5 of
 //          the bitset dword at +0x28 = CTCEmoteIcon), CWideString() @ 0x0099AED0 / ~CWideString @ 0x0099B510, the current-line
 //          text getter @ 0x00713290 (CWideString by value; manifest "CCategory::GetHighlightedItemCountInCategory" is
-//          propagated), CWideString::GetLength @ 0x0099B220 (manifest "CCharString::GetLength", byte twin), operator const
-//          unsigned short*() @ 0x0099AF10, CWideString::SetAsSubString @ 0x0099B770, CWideString::operator= @ 0x0099B7D0,
+//          propagated), CWideString::GetLength @ 0x0099B220 (manifest "CCharString::GetLength", byte twin), GetAsCharArray()
+//          @ 0x0099AF10, CWideString::SetAsSubString @ 0x0099B770, CWideString::operator= @ 0x0099B7D0,
 //          CTCEmoteIcon::SetEmoteText @ 0x0071AC70; data: the frame rate @ 0x01375550, 0.3f @ 0x3E99999A (immediate).
 // Shape: three byte tests then the out-parameter lookup; the shown-character count is a signed `/ 10` (`imul 66666667h`)
 //          and an inline `max(const long&, const long&)` returning a reference (the `lea` select) in their own block; the text
@@ -22,7 +22,7 @@ class CWideString { public:
     CWideString();                                       // 0x0099AED0
     ~CWideString();                                      // 0x0099B510
     long GetLength() const;                              // 0x0099B220
-    operator const unsigned short*() const;              // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;              // 0x0099AF10
     void SetAsSubString(const unsigned short* text, long length);   // 0x0099B770
     const CWideString& operator=(const CWideString& other);    // 0x0099B7D0
 };
@@ -110,7 +110,7 @@ void CActionOverheadTalkToThing::Update()
         CWideString text;
         bool partial = shown < GetCurrentMessageText().GetLength();
         if (partial)
-            text.SetAsSubString((const unsigned short*)GetCurrentMessageText() + shown, 24);
+            text.SetAsSubString(GetCurrentMessageText().GetAsCharArray() + shown, 24);
         else
             text = GetCurrentMessageText();
         bool finished = shown > GetCurrentMessageText().GetLength() - 25;

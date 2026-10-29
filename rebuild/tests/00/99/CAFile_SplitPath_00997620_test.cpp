@@ -9,7 +9,7 @@ static const wchar_t* LastOf(const wchar_t* s, wchar_t c)
     return found;
 }
 class CWideString { public: wchar_t buf[300]; int assigns; CWideString() : assigns(0) { buf[0] = 0; }
-    CWideString& operator=(const wchar_t* t) { std::wcscpy(buf, t); ++assigns; return *this; } };
+    const CWideString& operator=(const wchar_t* t) { std::wcscpy(buf, t); ++assigns; return *this; } };
 static void FakeSplit(const wchar_t* path, wchar_t* drive, wchar_t* dir, wchar_t* fname, wchar_t* ext)
 {
     // "C:\dir\name.ext" only

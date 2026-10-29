@@ -2,7 +2,7 @@
 // Leaf: ?GetProfileName@CVirtualKeyboard@@QAE?AVCWideString@@XZ
 // Retail: Fable.exe @ 0x00851890, 137 bytes, `ret 4` (hidden return buffer); callers 0x00599F39, 0x0085193E.
 // Body: text = PEntryBox->GetText() (CEditBox slot 142, 0x00540CF0: copy of the CWideString at +0x164); first = 0,
-// last = GetLength() - 1 (0x0099B220); skip leading L' ' through operator const wchar_t* (0x0099AF10) while first <
+// last = GetLength() - 1 (0x0099B220); skip leading L' ' through GetAsCharArray() (0x0099AF10) while first <
 // GetLength() (re-read each pass); trim trailing L' ' while last > first; return GetSubString(first, last + 1)
 // (0x0099BDB0, half-open range) and destroy the temporary (~CWideString 0x0099B510).
 // Layout: engine/CVirtualKeyboard.h (PEntryBox +0x0c).
@@ -16,7 +16,7 @@ public:
     CWideString(const CWideString& s);                   // 0x0099B720
     ~CWideString();                                      // 0x0099B510
     long GetLength() const;                              // 0x0099B220
-    operator const wchar_t*() const;                     // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                     // 0x0099AF10
 public:
     CWideString GetSubString(unsigned long, unsigned long) const;   // 0x0099BDB0
 };
@@ -32,9 +32,9 @@ CWideString CVirtualKeyboard_Methods::GetProfileName()
     CWideString text = PEntryBox->GetText();
     long first = 0;
     long last = text.GetLength() - 1;
-    while (first < text.GetLength() && ((const wchar_t*)text)[first] == L' ')
+    while (first < text.GetLength() && text.GetAsCharArray()[first] == L' ')
         ++first;
-    while (last > first && ((const wchar_t*)text)[last] == L' ')
+    while (last > first && text.GetAsCharArray()[last] == L' ')
         --last;
     return text.GetSubString(first, last + 1);
 }

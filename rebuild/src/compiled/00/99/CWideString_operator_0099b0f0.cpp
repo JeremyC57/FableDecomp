@@ -6,7 +6,7 @@
 //   0x0099B1D0); the result is the negation of an equality (identical blocks -> false), and the PDBs' three ??9CWideString
 //   overloads are (const CWideString&), (const wchar_t*), (wchar_t): this is the CWideString& one, ??9CWideString@@QBE_NABV0@@Z.
 // Label correction: the catalog's "CCharString::operator==" is wrong (wide string; inequality).
-// Callees: the wide character compare 0x00403C60 (cdecl; landed as MemCmp_Unsigned16 -- STLport's
+// Callees: the wide character compare 0x00403C60 (cdecl; landed before as MemCmp_Unsigned16 -- STLport's
 //   __char_traits_base<wchar_t, wint_t>::compare, called from basic_string's operator==).
 // Shape: `return !(*this == other);` over an inline operator== (same block -> true; either block null -> false; else
 //   CWideStringData::operator== = the STLport basic_string equality `size() == other.size() && compare(...) == 0`), the
@@ -14,7 +14,11 @@
 //   inline operators need __forceinline: plain inline left CWideStringData::operator== out of line.
 // Layout: CWideString is one CWideStringData* (Ego_r); CWideStringData is the STLport basic_string<wchar_t> (start, finish,
 //   end of storage: 12 bytes in retail) then NoRefs. Characters are modelled as unsigned short (no /Zc:wchar_t needed here).
-int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
 
 class CWideStringData {
 public:
@@ -25,7 +29,7 @@ public:
     unsigned int size() const { return unsigned int(DataFinish - DataStart); }
     __forceinline bool operator==(const CWideStringData& other) const
     {
-        return size() == other.size() && MemCmp_Unsigned16(DataStart, other.DataStart, size()) == 0;
+        return size() == other.size() && std::__char_traits_base<unsigned short, unsigned short>::compare(DataStart, other.DataStart, size()) == 0;
     }
 };
 

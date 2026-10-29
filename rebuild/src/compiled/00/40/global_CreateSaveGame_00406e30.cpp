@@ -4,7 +4,7 @@
 #include <wchar.h>
 extern "C" int __cdecl _wchdir(const wchar_t*);
 class CCharString;
-class CWideString{ public:void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*();};
+class CWideString{ public:void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*() const;};
 // ABI: GetValidProfileName 0x00406350 forwards EDX to the CWideString copy ctor 0x0099b720; callers pass profile+0x8 wrapper.
 CWideString __fastcall GetValidProfileName(const CWideString&);
 namespace NResourceDirectoryNames{CWideString __fastcall GetSaveDir();}

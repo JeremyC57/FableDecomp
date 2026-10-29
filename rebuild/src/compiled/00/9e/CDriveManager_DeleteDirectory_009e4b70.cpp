@@ -12,7 +12,7 @@ extern "C" __declspec(dllimport) unsigned long __stdcall GetLastError();        
 
 class CWideString { public:
     wchar_t* m_pchData;
-    operator const wchar_t*();                     // 0x0099AF00
+    operator const wchar_t*() const;               // 0x0099AF00
     ~CWideString();                                // 0x0099B510
 };
 class CAFile {

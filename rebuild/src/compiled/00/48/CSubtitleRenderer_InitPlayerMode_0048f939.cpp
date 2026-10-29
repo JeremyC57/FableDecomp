@@ -38,7 +38,7 @@ typedef unsigned short wchar_t;                         // VC7.1 without /Zc:wch
 extern "C" int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);   // 0x00BFE94C
 
 namespace std {
-template <class _CharT> struct char_traits { };
+template <class _CharT> class char_traits { };       // STLport 4.6: a class template (mangles V)
 template <class _Tp> class allocator { };
 template <class _CharT, class _Traits = char_traits<_CharT>, class _Alloc = allocator<_CharT> >
 class basic_string {                                    // STLport 4.6 (the CWideString data block)

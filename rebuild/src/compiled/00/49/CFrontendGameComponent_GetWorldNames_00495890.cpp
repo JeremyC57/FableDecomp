@@ -4,7 +4,7 @@
 // Retail: Fable.exe @ 0x00495890, 323 bytes, plain `ret`, /GS cookie.
 // Body: WorldToLoad = L"" (CWideString::operator=(const wchar_t*) 0x0099B800, L"" 0x0122D70C); WorldNames.erase(begin, end)
 // (0x00412450); pattern = GetLevelsDirectory() (0x0041A060, __fastcall hidden result, L"Data\\Levels\\") + L"*.wld"
-// (operator+ 0x0099BF30, literal 0x0123877C); FindFirstFile / FindNextFile (0x00999760 / 0x00999850) loop: fileName(data
+// (operator+ 0x0099BF30, literal 0x0123877C); CAFile::StartFileScan / ScanNextFile (0x00999760 / 0x00999850) loop: fileName(data
 // name) (0x0099B6B0), name() (0x0099AED0), SplitPath(fileName, 0, 0, &name, 0) (0x00997620), WorldNames.push_back(name)
 // (inline STLport: copy ctor 0x0099B720 or _M_insert_overflow 0x00412330); sort(begin, end, less) (0x004977D0, LTCG
 // __fastcall); WorldNamesOffset = 0.
@@ -25,22 +25,24 @@ class CWideString { public:
     CWideString(const wchar_t* text);           // 0x0099B6B0
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
-    CWideString& operator=(const wchar_t* text);   // 0x0099B800
+    const CWideString& operator=(const wchar_t* text);   // 0x0099B800
 };
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
 class CAFile {
 public:
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                   // +0x00
+        long SearchHandle;                              // +0x04
+    };
     static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar_t* firstFile);   // 0x00999760
+    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, wchar_t* nextFile);     // 0x00999850
 };   // 0x00997620
 struct CFindFileData {
     wchar_t       FileName[260];
     unsigned long Attributes;
 };
-struct CFindFileHandle {
-    long _body[2];
-};
-bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
-bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850
 CWideString __fastcall GetLevelsDirectory();    // 0x0041A060 (L"Data\\Levels\\")
 
 namespace std {
@@ -85,15 +87,15 @@ void CFrontendGameComponent::GetWorldNames()
     WorldToLoad = L"";
     WorldNames.clear();
     CWideString pattern = GetLevelsDirectory() + L"*.wld";
-    CFindFileHandle handle;
+    CAFile::CFileScanInfo handle;
     CFindFileData data;
-    if (FindFirstFile(pattern, handle, data)) {
+    if (CAFile::StartFileScan(pattern, handle, data.FileName)) {
         do {
             CWideString fileName(data.FileName);
             CWideString name;
             CAFile::SplitPath(fileName, 0, 0, &name, 0);
             WorldNames.push_back(name);
-        } while (FindNextFile(pattern, handle, data));
+        } while (CAFile::ScanNextFile(pattern, handle, data.FileName));
     }
     std::sort(WorldNames.begin(), WorldNames.end(), std::less<CWideString>());
     WorldNamesOffset = 0;

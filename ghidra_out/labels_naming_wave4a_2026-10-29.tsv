@@ -1,0 +1,11 @@
+address	name	evidence
+00403c60	std::__char_traits_base<wchar_t,unsigned short>::compare	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)
+00404280	std::operator==<wchar_t,std::char_traits<wchar_t>,std::allocator<wchar_t> >	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)
+0099af00	CWideString::operator wchar_t const *	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)
+0099af10	CWideString::GetAsCharArray	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)
+0099ba70	CWideString::Sprintf	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)
+00999760	CAFile::StartFileScan	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)
+00999850	CAFile::ScanNextFile	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)
+0099b770	CWideString::SetAsSubString	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)
+0099b6b0	CWideString::CWideString	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)
+00a10390	WordWrap_FindNextLineW	naming wave 4A (rebuild/candidates/manual/naming/2026-10-29_wave4a/LABELS.tsv)

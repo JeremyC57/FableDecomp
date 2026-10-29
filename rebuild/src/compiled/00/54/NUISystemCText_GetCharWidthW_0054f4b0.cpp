@@ -2,10 +2,10 @@
 // Leaf: ?GetCharWidthW@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054F4B0, 200 bytes, plain `ret` (Ego_r.pdb `?GetCharWidthW@CText@NUISystem@@SII_W@Z`:
 //   static __fastcall, the character in cx, unsigned result; wchar_t is modelled as `unsigned short`, no /Zc:wchar_t).
-// Callees: CWideString() 0x0099AED0, FormatWideString(CWideString*, const wchar_t*, ...) 0x0099BA70 (__cdecl, L"%c"
+// Callees: CWideString() 0x0099AED0, CWideString::Sprintf(const wchar_t*, ...) 0x0099BA70 (__cdecl, L"%c"
 //   0x01238154), CCharString(const char*, long = -1) 0x0099EBF0 ("ENG_ARIAL_16" 0x01231168), GFGetSystemManager
 //   0x009A4EC0, CFontManager::GetFont(const CCharString&) 0x009E2C80 (counted pointer by hidden pointer), ~CCharString
-//   0x0099EAE0, CWideString::operator const wchar_t* 0x0099AF10, the bank's slot 1 GetTextExtent (C2DVector by hidden
+//   0x0099EAE0, CWideString::GetAsCharArray() 0x0099AF10, the bank's slot 1 GetTextExtent (C2DVector by hidden
 //   pointer, flags 0), __ftol2 0x00BFEA70, the count block's destroy (+4) and operator delete 0x00BFE9BC, ~CWideString
 //   0x0099B510.
 // Callers: NUISystem::CEditBox::KeyPressed 0x00540320 (call 0x00540541) and UpdateDisplayText 0x00540980 (0x00540BE1,
@@ -34,9 +34,9 @@ public:
     void* PStringData;
     CWideString();                                          // 0x0099AED0
     ~CWideString();                                         // 0x0099B510
-    operator const unsigned short*() const;                 // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10
+    void __cdecl Sprintf(const unsigned short* format, ...);   // 0x0099BA70
 };
-void __cdecl FormatWideString(CWideString* text, const unsigned short* format, ...);   // 0x0099BA70
 
 class CCPPointerInfo { public:
     long  References;                                       // +0x00
@@ -92,9 +92,9 @@ public:
 unsigned int __fastcall CText::GetCharWidthW(unsigned short c)
 {
     CWideString text;
-    FormatWideString(&text, L"%c", c);
+    text.Sprintf(L"%c", c);
     CCountedPointer<CFontBank> font = GFGetSystemManager()->GetFontManager()->GetFont("ENG_ARIAL_16");
     CFontBank* bank = font.Data;
-    return (unsigned int)bank->GetTextExtent(text, 0).X;
+    return (unsigned int)bank->GetTextExtent(text.GetAsCharArray(), 0).X;
 }
 }

@@ -2,7 +2,7 @@
 // Leaf: GetSaveDisplayNameFromFileName
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00407E10, 437 bytes (448 with padding), hidden result, `ret 0Ch`.
 // Callees: CWideString(const wchar_t*) 0x0099B6B0 / (const CWideString&) 0x0099B720 / ~CWideString 0x0099B510,
-//   MemCmp_Unsigned16 0x00403C60 (the inline ==), CWideString::ToCharString 0x0099B2C0, ~CCharString 0x0099EAE0,
+//   __char_traits_base<wchar_t, wint_t>::compare 0x00403C60 (the inline ==), CWideString::ToCharString 0x0099B2C0, ~CCharString 0x0099EAE0,
 //   strncmp 0x00BFEAF8, operator+(const wchar_t*, const CWideString&) 0x0099BFF0 (`__fastcall`), CWideString::Contains
 //   0x0099AF20, CUserProfileManager::GetAutoSaveDisplayName 0x00406C20 / GetManualSaveDisplayName(long) 0x00406AE0.
 //   The empty narrow string 0x0129AAF4.
@@ -31,7 +31,11 @@ class CCharString { public:
     }
     __forceinline bool StartsWith(const CCharString& prefix) const { return strncmp(*this, prefix, prefix.GetLength()) == 0; }
 };
-int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
 class CWideStringData { public:                                // STLport basic_string<wchar_t> + NoRefs
     unsigned short* _M_start;
     unsigned short* _M_finish;
@@ -55,7 +59,7 @@ class CWideString { public:
         const unsigned short* otherStart = other.PStringData->_M_start;
         const unsigned short* start = PStringData->_M_start;
         long length = PStringData->_M_finish - start;
-        return length == other.PStringData->_M_finish - otherStart && MemCmp_Unsigned16(start, otherStart, length) == 0;
+        return length == other.PStringData->_M_finish - otherStart && std::__char_traits_base<unsigned short, unsigned short>::compare(start, otherStart, length) == 0;
     }
 };
 CWideString __fastcall operator+(const unsigned short* left, const CWideString& right);      // 0x0099BFF0

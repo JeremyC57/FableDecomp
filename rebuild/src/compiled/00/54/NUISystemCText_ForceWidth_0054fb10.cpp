@@ -1,8 +1,8 @@
 // NUISystem::CText::ForceWidth(float width) -- rebuilds the text value from its own characters, keeping only the leading run whose accumulated glyph widths stay within the given width, and sets it back through the virtual setter
 // Leaf: ForceWidth
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054FB10, 173 bytes (+3 int3). `ret 4`.
-// Callees: CWideString::CWideString() 0x0099AED0, CWideString::GetLength() 0x0099B220, CWideString::operator const
-//          unsigned short*() 0x0099AF10, GetCharWidthW(unsigned short) 0x0054F4B0 (`__fastcall`, unsigned result: the
+// Callees: CWideString::CWideString() 0x0099AED0, CWideString::GetLength() 0x0099B220, CWideString::GetAsCharArray()
+//          0x0099AF10, GetCharWidthW(unsigned short) 0x0054F4B0 (`__fastcall`, unsigned result: the
 //          `fild` + 2^32 fix-up @ 0x0122DCB4), CWideString::operator+=(unsigned short) 0x0099B9A0, own slot 144 (+0x240)
 //          SetValue(const CWideString&, bool, bool), ~CWideString 0x0099B510.
 // Shape: the local string is built first (frame +4), the accumulator (frame +0) zeroed and the index (esi) cleared; the
@@ -15,9 +15,9 @@ public:
     void* PStringData;
     CWideString();                                          // 0x0099AED0
     ~CWideString();                                         // 0x0099B510
-    operator const unsigned short*() const;                 // 0x0099AF10
-    CWideString& operator+=(unsigned short c);              // 0x0099B9A0
-    unsigned short operator[](unsigned long i) const { return ((const unsigned short*)*this)[i]; }   // inline: the character is a temporary before the register argument
+    const unsigned short* GetAsCharArray() const;                 // 0x0099AF10
+    const CWideString& operator+=(unsigned short c);              // 0x0099B9A0
+    unsigned short operator[](unsigned long i) const { return GetAsCharArray()[i]; }   // inline: the character is a temporary before the register argument
 public:
     long GetLength() const;   // 0x0099B220
 };

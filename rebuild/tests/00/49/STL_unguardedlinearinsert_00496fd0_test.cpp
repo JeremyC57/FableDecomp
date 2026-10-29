@@ -18,10 +18,10 @@ class CWideString { public:
     CWideString(const CWideString& other) : PStringData(other.PStringData) { }
     ~CWideString() { ++g_destroyed; }
     const CWideString& operator=(const CWideString& other) { ++g_assigns; PStringData = other.PStringData; return *this; }
-    operator const wchar_t*() const { return PStringData; }
+    const wchar_t* GetAsCharArray() const { return PStringData; }
 };
 struct CCaseInsensitiveStringCompare {
-    bool operator()(const CWideString& a, const CWideString& b) const { return icmp(a, b) < 0; }
+    bool operator()(const CWideString& a, const CWideString& b) const { return icmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }
 };
 static void __unguarded_linear_insert(CWideString* last, CWideString val, CCaseInsensitiveStringCompare comp)
 {
@@ -41,12 +41,12 @@ int main()
     CCaseInsensitiveStringCompare comp;
     g_assigns = 0; g_destroyed = 0;
     __unguarded_linear_insert(a + 4, a[4], comp);   // "Bridge" sinks below delta and CHARLIE, stops above bravo
-    if (icmp(a[0], L"alpha") || icmp(a[1], L"bravo") || icmp(a[2], L"bridge") || icmp(a[3], L"charlie") || icmp(a[4], L"delta"))
+    if (icmp(a[0].GetAsCharArray(), L"alpha") || icmp(a[1].GetAsCharArray(), L"bravo") || icmp(a[2].GetAsCharArray(), L"bridge") || icmp(a[3].GetAsCharArray(), L"charlie") || icmp(a[4].GetAsCharArray(), L"delta"))
         { std::printf("00496fd0_TEST FAIL\n"); return 1; }
     if (g_assigns != 3 || g_destroyed != 1) { std::printf("00496fd0_TEST FAIL\n"); return 1; }   // two shifts + the final store; the by-value copy dies
     g_assigns = 0;
     __unguarded_linear_insert(a + 4, a[4], comp);   // already in place: one store
-    if (g_assigns != 1 || icmp(a[4], L"DELTA")) { std::printf("00496fd0_TEST FAIL\n"); return 1; }
+    if (g_assigns != 1 || icmp(a[4].GetAsCharArray(), L"DELTA")) { std::printf("00496fd0_TEST FAIL\n"); return 1; }
     std::printf("00496fd0_TEST PASS\n");
     return 0;
 }

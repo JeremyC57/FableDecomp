@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C7C20, 211 bytes (+ int3 padding), __fastcall (output in ecx, the
 // vector in edx, plain `ret`).
 // Name: FableWin.pdb `?ConstructString@NGameText@@YI_NAAVCWideString@@ABV?$vector@VCWideString@@...@Z`.
-// Callees: CWideString::CWideString() @ 0x0099AED0, CWideString::Format(const unsigned short*, ...) @ 0x0099BA70
+// Callees: CWideString::CWideString() @ 0x0099AED0, CWideString::Sprintf(const unsigned short*, ...) @ 0x0099BA70
 // (__cdecl, L"%d" @ 0x0122DE44), CWideString::CWideString(const CWideString&) @ 0x0099B720,
 // CWideString::~CWideString @ 0x0099B510, operator+(const unsigned short*, const CWideString&) @ 0x0099BFF0
 // (__fastcall, hidden result in ecx, L"%" @ 0x0129B470), CWideString::Contains @ 0x0099AF20,
@@ -19,7 +19,7 @@ public:
     CWideString();                                                              // 0x0099AED0
     CWideString(const CWideString& other);                                      // 0x0099B720
     ~CWideString();                                                             // 0x0099B510
-    void __cdecl Format(const unsigned short* format, ...);                     // 0x0099BA70
+    void __cdecl Sprintf(const unsigned short* format, ...);                     // 0x0099BA70
     bool Contains(const CWideString& text) const;                               // 0x0099AF20
     void Replace(const CWideString& search, const CWideString& replacement);    // 0x0099C1E0
 private:
@@ -56,7 +56,7 @@ extern const unsigned short g_NumberFormat[];          // L"%d" @ 0x0122DE44
 __forceinline CWideString FormatIndex(int index)
 {
     CWideString number;
-    number.Format(g_NumberFormat, index);
+    number.Sprintf(g_NumberFormat, index);
     return number;
 }
 

@@ -5,7 +5,7 @@
 // (0x0040D2A0).GetPathNameFromFileName(file, false) (0x00408120); !PathExists(path) (__fastcall 0x00999230) -> true.
 // Else SerialisingHeroState = true; loaded = LoadGameStateInternal(path, false) (0x004A21F0); latch false; if loaded:
 // autosave = Get().GetAutoSaveRegionLeavingPathName() (0x004080B0, builds "AutoSave" + ".rl") + L".hs"; inline
-// CWideString == (same block, null tests, STLport size compare, MemCmp_Unsigned16 0x00403C60); equal ->
+// CWideString == (same block, null tests, STLport size compare, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60); equal ->
 // g_pDriveManager->DeleteFile(autosave) (0x009E4BC0, static counted pointer 0x013CAA28). ~CWideString 0x0099B510.
 // Layout: CWorld SerialisingHeroState +0x102 (PDB +0x10E), as the landed SaveHeroStateInternal 0x004A00E0.
 // Names: 0x004080B0 is GetAutoSaveRegionLeavingPathName (".rl" literal 0x0122DEC0); the landed 0x004A00E0 header calls it
@@ -21,7 +21,11 @@
 #undef CWorld
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
 class CWideStringData { public:                                // STLport basic_string<wchar_t> + NoRefs
     unsigned short* _M_start;
     unsigned short* _M_finish;
@@ -39,7 +43,7 @@ class CWideString { public:
         if (PStringData == 0 || other.PStringData == 0)
             return false;
         return PStringData->size() == other.PStringData->size()
-            && MemCmp_Unsigned16(PStringData->_M_start, other.PStringData->_M_start, PStringData->size()) == 0;
+            && std::__char_traits_base<unsigned short, unsigned short>::compare(PStringData->_M_start, other.PStringData->_M_start, PStringData->size()) == 0;
     }
 };
 CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);   // 0x0099BF30

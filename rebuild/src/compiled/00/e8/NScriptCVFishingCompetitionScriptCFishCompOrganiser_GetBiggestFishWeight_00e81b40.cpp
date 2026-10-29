@@ -1,5 +1,5 @@
 // NScript::CV_FishingCompetitionScript::CFishCompOrganiser::GetBiggestFishWeight() -- the heaviest best weight among the competition fish types the hero carries (-1 when none; the heaviest becomes CompetitionEntry), shown to two decimals in TEXT_QST_B15_FISHSIZE through the CS_FISHCOMP_CHECKFISH_OUTPUTSIZE cut-scene
-// Flags: /Zc:wchar_t
+// Flags: default (no /Zc:wchar_t: retail's wchar_t is the <stddef.h> unsigned short typedef, owner 2026-10-29)
 // Leaf: ?GetBiggestFishWeight@CFishCompOrganiser@CV_FishingCompetitionScript@NScript@@AAEMXZ
 // Retail-asm: 0x00E81C05 `fld dword ptr [esp+1Ch]` + 0x00E81C09 `fistp dword ptr [esp+20h]` -- the engine's inline-assembly float-to-long helper inside the two-decimal rounding (the scaled weight stored to the helper's by-value slot and reloaded for a bare dword fistp, then fild / fdiv by the power-of-ten); VC7.1 C++ `(long)x` calls __ftol2 and /QIfist emits `fistp qword`; same helper as the landed NParticleEngine::CPSCEmitterGeneric::GetRandomRadius 0x00B102C0.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E81B40, 459 bytes, thiscall, plain `ret`, float on the x87 stack.
@@ -29,7 +29,7 @@ public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0 (Ego_r ??4CWideString@@QAEABV0@ABV0@@Z)
-    const CWideString& operator=(const wchar_t* text);   // 0x0099B800 (Ego_r ??4CWideString@@QAEABV0@PB_W@Z; /Zc:wchar_t)
+    const CWideString& operator=(const wchar_t* text);   // 0x0099B800 (Ego_r ??4CWideString@@QAEABV0@PB_W@Z, G form)
 };
 CWideString __fastcall GFFloatToWideString(double value);   // 0x00486C40
 extern CWideString g_UnprovenWideString_0143E908;       // 0x0143E908 (landed descriptive spelling)

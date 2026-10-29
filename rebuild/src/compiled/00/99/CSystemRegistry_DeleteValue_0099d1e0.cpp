@@ -1,7 +1,7 @@
 // CSystemRegistry::DeleteValue(const CWideString&) -- delete a named value under the open key
 // Leaf: DeleteValue
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099D1E0, length 27 bytes.
-// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, ADVAPI32!RegDeleteValueW through the import
+// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, ADVAPI32!RegDeleteValueW through the import
 // slot 0x0143FC04.
 //
 // Shape: unlike the writers there is no open-key test; the name conversion runs first (it is the last
@@ -11,7 +11,7 @@ struct HKEY__;
 
 class CWideString {
 public:
-    operator const unsigned short*() const;      // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;      // 0x0099AF10
 private:
     void* m_pData;
 };
@@ -29,5 +29,5 @@ private:
 
 void CSystemRegistry::DeleteValue(const CWideString& valueName) const
 {
-    RegDeleteValueW(OpenKey, valueName);
+    RegDeleteValueW(OpenKey, valueName.GetAsCharArray());
 }

@@ -1,7 +1,7 @@
 // CSystemRegistry::WriteSLONG(const CWideString&, long) -- store a 4-byte REG_DWORD value under the open key
 // Leaf: WriteSLONG
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099D0C0, length 53 bytes (+ int3 padding).
-// Callees: CWideString::operator const wchar_t* @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import
+// Callees: CWideString::GetAsCharArray() @ 0x0099AF10, ADVAPI32!RegSetValueExW through the import
 // slot 0x0143FBE8.
 // Identity: the manifest calls both 0x0099D0C0 and 0x0099D100 "WriteBOOL"; the two bodies are identical
 // (REG_DWORD, 4 bytes). The class's source order (other build's symbol table: GetSLONG, GetBOOL, GetString,
@@ -19,7 +19,7 @@ struct HKEY__;
 
 class CWideString {
 public:
-    operator const unsigned short*() const;      // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;      // 0x0099AF10
 private:
     void* m_pData;
 };
@@ -40,6 +40,6 @@ void CSystemRegistry::WriteSLONG(const CWideString& valueName, long value) const
 {
     if (OpenKey != 0) {
         long stored = value;
-        RegSetValueExW(OpenKey, valueName, 0, 4, (const unsigned char*)&stored, 4);   // REG_DWORD
+        RegSetValueExW(OpenKey, valueName.GetAsCharArray(), 0, 4, (const unsigned char*)&stored, 4);   // REG_DWORD
     }
 }

@@ -16,14 +16,14 @@ class CWideString { public:
     CWideString();                              // 0x0099AED0
     CWideString(const CWideString& other);      // 0x0099B720
     ~CWideString();                             // 0x0099B510
+    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70
 };
-void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
 
 inline CWideString IntToWideString(long value)
 {
     CWideString text;
-    FormatWideString(&text, L"%d", value);      // 0x0122DE44
+    text.Sprintf(L"%d", value);      // 0x0122DE44
     return text;
 }
 
@@ -100,8 +100,8 @@ static char* Alloc(const char* s) { int n = (int)std::strlen(s) + 1; char* p = g
 CWideString::CWideString() { m_data = Alloc(""); }
 CWideString::CWideString(const CWideString& other) { m_data = Alloc((const char*)other.m_data); }
 CWideString::~CWideString() {}
-void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...)
-{ va_list ap; va_start(ap, format); long v = va_arg(ap, long); va_end(ap); char b[32]; std::sprintf(b, "%ld", v); text->m_data = Alloc(b); }
+void __cdecl CWideString::Sprintf(const wchar_t* format, ...)
+{ CWideString* text = this; va_list ap; va_start(ap, format); long v = va_arg(ap, long); va_end(ap); char b[32]; std::sprintf(b, "%ld", v); text->m_data = Alloc(b); }
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b)
 { char t[256]; std::strcpy(t, (const char*)a.m_data); std::strcat(t, (const char*)b.m_data); CWideString w; w.m_data = Alloc(t); return w; }
 static int g_destroyed;

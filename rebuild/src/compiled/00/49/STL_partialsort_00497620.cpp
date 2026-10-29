@@ -18,13 +18,13 @@ class CWideString { public:
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
     const CWideString& operator=(const CWideString& other);   // 0x0099B7D0
-    operator const wchar_t*() const;                    // 0x0099AF10
+    const wchar_t* GetAsCharArray() const;                    // 0x0099AF10
 };
 
 namespace NGameComponentHelpers {
 class CCaseInsensitiveStringCompare { public:
     char m_tag;
-    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a, b) < 0; }
+    bool operator()(const CWideString& a, const CWideString& b) const { return _wcsicmp(a.GetAsCharArray(), b.GetAsCharArray()) < 0; }
 };
 }
 

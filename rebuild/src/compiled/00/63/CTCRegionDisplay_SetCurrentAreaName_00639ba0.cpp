@@ -6,7 +6,7 @@
 //   CDataBank::LookupValue 0x009CC410, CBankFile::GetEntryDataType 0x009CC210, NGameText::CDataBank::GetPGroupEntry
 //   0x009C9070 (the text entry), CDataBank::GetPGroupEntry 0x009C8890 (the group), the entry's text getter 0x009C7A40,
 //   CCharString::ToWideString 0x0099E480, CWideString::operator=(const CWideString&) 0x0099B7D0, operator=(const wchar_t*)
-//   0x0099B800, ~CWideString 0x0099B510, MemCmp_Unsigned16 0x00403C60, CTCBase::GetWorld 0x00686A70, CWorld::GetWorldFrame
+//   0x0099B800, ~CWideString 0x0099B510, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60, CTCBase::GetWorld 0x00686A70, CWorld::GetWorldFrame
 //   0x0049D870 (static, called through GetWorld()).
 // Layout: Ego_r.pdb CTCRegionDisplay as the landed 0x00639A90; the world's data bank at +0x14 of 0x013B86A0.
 #include <stddef.h>
@@ -21,7 +21,11 @@ class CCharString { public:
     long GetLength() const { return !PStringData ? 0 : PStringData->Length; }
     const char* GetData() const { return !PStringData ? "" : PStringData->Chars; }
 };
-int __cdecl MemCmp_Unsigned16(const unsigned short* a, const unsigned short* b, unsigned long count);   // 0x00403C60
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
 class CWideStringData { public:
     unsigned short* Begin;                                  // +0x00
     unsigned short* End;                                    // +0x04
@@ -43,7 +47,7 @@ class CWideString { public:
         long length = m_pData->End - begin;
         if (length != other.m_pData->End - otherBegin)
             return false;
-        if (MemCmp_Unsigned16(begin, otherBegin, length) != 0)
+        if (std::__char_traits_base<unsigned short, unsigned short>::compare(begin, otherBegin, length) != 0)
             return false;
         return true;
     }

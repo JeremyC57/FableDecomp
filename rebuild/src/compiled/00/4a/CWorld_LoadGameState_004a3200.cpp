@@ -6,7 +6,7 @@
 //   0x0099B150, CWideString() 0x0099AED0, ~CWideString 0x0099B510, operator=(const CWideString&) 0x0099B7D0,
 //   operator=(const wchar16*) 0x0099B800, the profile-directory getter 0x0041A1A0 (__fastcall, wraps 0x00406780),
 //   operator+(const CWideString&, const CWideString&) 0x0099BE70, PathExists 0x00999230, IsPathFile 0x00999A30,
-//   FindFirstFile 0x00999760, CWorld::GetPathNameForFileName 0x0049EF50, IsHeroStateFileValid 0x0049D4E0,
+//   CAFile::StartFileScan 0x00999760, CWorld::GetPathNameForFileName 0x0049EF50, IsHeroStateFileValid 0x0049D4E0,
 //   LoadGameStateInternal 0x004A21F0, LoadHeroStateInternal 0x004A2D70; the console flag byte 0x013B8646; L"" 0x0122D70C.
 // Layout: retail CWorld is 0xc below the Ego_r.pdb view here (as the landed LoadHeroStateInternal 0x004A2D70):
 //   SaveGameLoadStatus +0xf8 (PDB +0x104), SaveGamePathName +0xfc (+0x108), SerialisingAboutToLoadHeroState +0x101 (+0x10d).
@@ -27,11 +27,15 @@ CWideString __fastcall operator+(const CWideString& left, const CWideString& rig
 CWideString __fastcall GetProfileDirectory();          // 0x0041A1A0
 class CAFile {
 public:
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                   // +0x00
+        long SearchHandle;                              // +0x04
+    };
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar16* firstFile);   // 0x00999760
 };   // 0x00999230
 bool __fastcall IsPathFile(const CWideString& path);   // 0x00999A30
-struct CFileFinder { void* Handle; unsigned long Flags; };
-bool __fastcall FindFirstFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);   // 0x00999760
 class CUserProfileManager { public:
     static CUserProfileManager& __fastcall Get();       // 0x0040D2A0
     CWideString GetPathNameFromFileName(const CWideString& file, bool b) const;   // 0x00408120
@@ -88,9 +92,9 @@ bool CWorld::LoadGameState(const CWideString& name, bool loadNow)
         }
         CWideString fullPath;
         CWideString pattern = GetProfileDirectory() + name;
-        CFileFinder finder;
+        CAFile::CFileScanInfo finder;
         wchar16 fileName[262];
-        if (FindFirstFile(pattern, &finder, fileName))
+        if (CAFile::StartFileScan(pattern, finder, fileName))
             fullPath = fileName;
         else
             fullPath = GetPathNameForFileName(name);

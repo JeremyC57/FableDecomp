@@ -1,0 +1,244 @@
+{
+ "rebuild/src/compiled/00/56/std_find_00567240.cpp": [
+  [
+   "// Callees: __char_traits_base<unsigned short>::compare @ 0x00403C60 (landed as MemCmp_Unsigned16: the\n",
+   "// Callees: __char_traits_base<wchar_t, wint_t>::compare @ 0x00403C60 (wchar_t == wint_t == unsigned short) (landed as MemCmp_Unsigned16: the\n"
+  ],
+  [
+   "struct __char_traits_ushort {\n    static bool eq(const unsigned short& __c1, const unsigned short& __c2) { return __c1 == __c2; }\n    static bool lt(const unsigned short& __c1, const unsigned short& __c2) { return __c1 < __c2; }\n    static __declspec(noinline) int __cdecl compare(const unsigned short* __s1, const unsigned short* __s2,\n",
+   "template <class _CharT, class _IntT> struct __char_traits_base {   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static bool eq(const _CharT& __c1, const _CharT& __c2) { return __c1 == __c2; }\n    static bool lt(const _CharT& __c1, const _CharT& __c2) { return __c1 < __c2; }\n    static __declspec(noinline) int __cdecl compare(const _CharT* __s1, const _CharT* __s2,\n"
+  ],
+  [
+   "        if (std::__char_traits_ushort::compare(begin, otherBegin, length) != 0)\n",
+   "        if (std::__char_traits_base<unsigned short, unsigned short>::compare(begin, otherBegin, length) != 0)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/99/CWideString_operator_0099b0f0.cpp": [
+  [
+   "// Callees: the wide character compare 0x00403C60 (cdecl; landed as MemCmp_Unsigned16 -- STLport's\n",
+   "// Callees: the wide character compare 0x00403C60 (cdecl; landed before as MemCmp_Unsigned16 -- STLport's\n"
+  ],
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\n"
+  ],
+  [
+   "        return size() == other.size() && MemCmp_Unsigned16(DataStart, other.DataStart, size()) == 0;\n",
+   "        return size() == other.size() && std::__char_traits_base<unsigned short, unsigned short>::compare(DataStart, other.DataStart, size()) == 0;\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/99/CAFile_GetCurrentPath_00997f80.cpp": [
+  [
+   "// Callees: wcscmp @ 0x00BFE94C, char_traits<wchar_t>::compare @ 0x00403C60 (cdecl, manifest \"MemCmp_Unsigned16\"),\n",
+   "// Callees: wcscmp @ 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare @ 0x00403C60 (cdecl, inherited by char_traits<wchar_t>; manifest \"MemCmp_Unsigned16\"),\n"
+  ],
+  [
+   "struct char_traits_w {\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\nstruct char_traits_w : public std::__char_traits_base<wchar16, wchar16> {   // STLport char_traits<wchar_t>\n"
+  ],
+  [
+   "    static int __cdecl compare(const wchar16* a, const wchar16* b, unsigned long n);   // 0x00403C60\n",
+   ""
+  ]
+ ],
+ "rebuild/src/compiled/00/5b/NInventoryCCategory_GetHighlightedItemText_005bda1d.cpp": [
+  [
+   "class wstring {                                         // STLport basic_string<wchar_t> (the CWideString data block)\n",
+   "template <class _CharT> class char_traits { };       // STLport 4.6 class templates (mangle V)\ntemplate <class _Tp> class allocator { };\ntemplate <class _CharT, class _Traits = char_traits<_CharT>, class _Alloc = allocator<_CharT> >\nclass basic_string {                                    // STLport basic_string<wchar_t> (the CWideString data block)\n"
+  ],
+  [
+   "    wchar_t* _M_start;\n    wchar_t* _M_finish;\n    wchar_t* _M_end_of_storage;\n",
+   "    _CharT* _M_start;\n    _CharT* _M_finish;\n    _CharT* _M_end_of_storage;\n"
+  ],
+  [
+   "bool __cdecl operator==(const wstring& s, const wchar_t* text);     // 0x00404280\n",
+   "typedef basic_string<wchar_t> wstring;\ntemplate <class _CharT, class _Traits, class _Alloc>\nbool __cdecl operator==(const basic_string<_CharT, _Traits, _Alloc>& __s, const _CharT* __t);   // 0x00404280 (out of line)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/4f/CWorldMap_SetAsUsingWAD_004fdab0.cpp": [
+  [
+   "// Callees: wcscmp 0x00BFE94C, MemCmp_Unsigned16 0x00403C60 (the STLport wide char_traits compare), operator new 0x00BFEA1A,\n",
+   "// Callees: wcscmp 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60 (the STLport wide char_traits compare), operator new 0x00BFEA1A,\n"
+  ],
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\n"
+  ],
+  [
+   "             && MemCmp_Unsigned16(wadName.PStringData->_M_start, s_Empty, 0) == 0)\n",
+   "             && std::__char_traits_base<unsigned short, unsigned short>::compare(wadName.PStringData->_M_start, s_Empty, 0) == 0)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/4a/CWorld_SaveGameState_004a05c0.cpp": [
+  [
+   "//   0x0099AED0, SplitPath 0x00997620 (__fastcall), wcscmp 0x00BFE94C, MemCmp_Unsigned16 0x00403C60, CUserProfileManager::Get\n",
+   "//   0x0099AED0, SplitPath 0x00997620 (__fastcall), wcscmp 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60, CUserProfileManager::Get\n"
+  ],
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\n"
+  ],
+  [
+   "        || MemCmp_Unsigned16(directory.PStringData->_M_start, s_Empty, 0) != 0)\n",
+   "        || std::__char_traits_base<unsigned short, unsigned short>::compare(directory.PStringData->_M_start, s_Empty, 0) != 0)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/4a/CWorld_LoadHeroStateInternal_004a2d70.cpp": [
+  [
+   "// CWideString == (same block, null tests, STLport size compare, MemCmp_Unsigned16 0x00403C60); equal ->\n",
+   "// CWideString == (same block, null tests, STLport size compare, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60); equal ->\n"
+  ],
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\n"
+  ],
+  [
+   "            && MemCmp_Unsigned16(PStringData->_M_start, other.PStringData->_M_start, PStringData->size()) == 0;\n",
+   "            && std::__char_traits_base<unsigned short, unsigned short>::compare(PStringData->_M_start, other.PStringData->_M_start, PStringData->size()) == 0;\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/63/CTCRegionDisplay_SetCurrentAreaName_00639ba0.cpp": [
+  [
+   "//   0x0099B800, ~CWideString 0x0099B510, MemCmp_Unsigned16 0x00403C60, CTCBase::GetWorld 0x00686A70, CWorld::GetWorldFrame\n",
+   "//   0x0099B800, ~CWideString 0x0099B510, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60, CTCBase::GetWorld 0x00686A70, CWorld::GetWorldFrame\n"
+  ],
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short* a, const unsigned short* b, unsigned long count);   // 0x00403C60\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\n"
+  ],
+  [
+   "        if (MemCmp_Unsigned16(begin, otherBegin, length) != 0)\n",
+   "        if (std::__char_traits_base<unsigned short, unsigned short>::compare(begin, otherBegin, length) != 0)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/48/CSubtitleRenderer_InitPlayerMode_0048f939.cpp": [
+  [
+   "template <class _CharT> struct char_traits { };\n",
+   "template <class _CharT> class char_traits { };       // STLport 4.6: a class template (mangles V)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/55/NUISystemCKeyRedefiner_GetActionText_00558170.cpp": [
+  [
+   "//   char_traits<wchar_t>::compare 0x00403C60 (cdecl). Literals: L\"\" 0x0122D70C, L\" \" 0x0122D820, the four\n",
+   "//   __char_traits_base<wchar_t, wint_t>::compare 0x00403C60 (inherited by char_traits<wchar_t>) (cdecl). Literals: L\"\" 0x0122D70C, L\" \" 0x0122D820, the four\n"
+  ],
+  [
+   "namespace std {\ntemplate <class _CharT> struct char_traits;\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\ntemplate <class _CharT> struct char_traits;\n"
+  ],
+  [
+   "template <> struct char_traits<wchar_t> {\n    static int __cdecl compare(const wchar_t* s1, const wchar_t* s2, unsigned int n);  // 0x00403C60\n",
+   "template <> struct char_traits<wchar_t> : public __char_traits_base<wchar_t, unsigned short> {\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/40/CUserProfileManager_GetSaveDisplayNameFromFileName_00407e10.cpp": [
+  [
+   "//   MemCmp_Unsigned16 0x00403C60 (the inline ==), CWideString::ToCharString 0x0099B2C0, ~CCharString 0x0099EAE0,\n",
+   "//   __char_traits_base<wchar_t, wint_t>::compare 0x00403C60 (the inline ==), CWideString::ToCharString 0x0099B2C0, ~CCharString 0x0099EAE0,\n"
+  ],
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\n"
+  ],
+  [
+   "        return length == other.PStringData->_M_finish - otherStart && MemCmp_Unsigned16(start, otherStart, length) == 0;\n",
+   "        return length == other.PStringData->_M_finish - otherStart && std::__char_traits_base<unsigned short, unsigned short>::compare(start, otherStart, length) == 0;\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/40/Global_MemCmpUnsigned16_00403c60.cpp": [
+  [
+   "// MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count) -- compare two runs of 16-bit characters, memcmp-style\n",
+   "// std::__char_traits_base<wchar_t, wint_t>::compare(const wchar_t* lhs, const wchar_t* rhs, size_t count) -- compare two runs of 16-bit characters, memcmp-style\n// Leaf: ?compare@?$__char_traits_base@GG@std@@SAHPBG0I@Z (STLport 4.6 char_traits.h: char_traits<wchar_t> inherits the static\n//   __cdecl compare from __char_traits_base<wchar_t, wint_t>; wchar_t == wint_t == unsigned short without /Zc:wchar_t;\n//   catalogued as MemCmp_Unsigned16)\n"
+  ],
+  [
+   "int __cdecl MemCmp_Unsigned16(\n    const unsigned short* lhs, const unsigned short* rhs, unsigned long count)\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base {\npublic:\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);\n};\n}\n\ntemplate <> int __cdecl std::__char_traits_base<unsigned short, unsigned short>::compare(\n    const unsigned short* lhs, const unsigned short* rhs, unsigned int count)\n"
+  ],
+  [
+   "    unsigned long index;\n",
+   "    unsigned int index;\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/40/global_FableCheckMyDocumentsWritePermissions_00402130.cpp": [
+  [
+   "// Callees: CCharString() 0x0099E4B0, CWideString::GetSubString(0, 2) 0x0099BDB0, wcscmp 0x00BFE94C, char_traits<wchar_t>::compare\n// 0x00403C60 (cdecl, landed MemCmp_Unsigned16), ~CWideString 0x0099B510, CCharString::operator=(const char*) 0x0099EFE0,\n",
+   "// Callees: CCharString() 0x0099E4B0, CWideString::GetSubString(0, 2) 0x0099BDB0, wcscmp 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare\n// 0x00403C60 (cdecl, inherited by char_traits<wchar_t>; landed before as MemCmp_Unsigned16), ~CWideString 0x0099B510, CCharString::operator=(const char*) 0x0099EFE0,\n"
+  ],
+  [
+   "struct char_traits_w {\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\nstruct char_traits_w : public std::__char_traits_base<wchar16, wchar16> {   // STLport char_traits<wchar_t>\n"
+  ],
+  [
+   "    static int __cdecl compare(const wchar16* a, const wchar16* b, unsigned long n);   // 0x00403C60\n",
+   ""
+  ]
+ ],
+ "rebuild/src/compiled/00/40/global_CompareUnsigned16Array_0040f0a0.cpp": [
+  [
+   "int __cdecl MemCmp_Unsigned16(unsigned long lhs, unsigned long rhs, int count);\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\n"
+  ],
+  [
+   "        count = MemCmp_Unsigned16(lhs->begin, rhs->begin, count);\n",
+   "        count = std::__char_traits_base<unsigned short, unsigned short>::compare((const unsigned short*)lhs->begin, (const unsigned short*)rhs->begin, count);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/40/Global_WideStringEqualsLen_00404280.cpp": [
+  [
+   "extern int __cdecl MemCmp_Unsigned16(\n    const unsigned short* lhs, const unsigned short* rhs, unsigned long count);\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\n"
+  ],
+  [
+   "        (length = MemCmp_Unsigned16(wideString->begin, text, length)) == 0)\n",
+   "        (length = std::__char_traits_base<unsigned short, unsigned short>::compare(wideString->begin, text, length)) == 0)\n"
+  ]
+ ],
+ "rebuild/tests/00/99/CAFile_GetCurrentPath_00997f80_test.cpp": [
+  [
+   "struct char_traits_w {\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\nstruct char_traits_w : public std::__char_traits_base<wchar16, wchar16> {   // STLport char_traits<wchar_t>\n"
+  ],
+  [
+   "    static int __cdecl compare(const wchar16* a, const wchar16* b, unsigned long n);   // 0x00403C60\n",
+   ""
+  ],
+  [
+   "int __cdecl char_traits_w::compare(const wchar16* a, const wchar16* b, unsigned long n)\n",
+   "template <> int __cdecl std::__char_traits_base<wchar16, wchar16>::compare(const wchar16* a, const wchar16* b, unsigned int n)\n"
+  ]
+ ],
+ "rebuild/tests/00/4a/CWorld_LoadHeroStateInternal_004a2d70_test.cpp": [
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\n"
+  ],
+  [
+   "            && MemCmp_Unsigned16(PStringData->_M_start, other.PStringData->_M_start, PStringData->size()) == 0;\n",
+   "            && std::__char_traits_base<unsigned short, unsigned short>::compare(PStringData->_M_start, other.PStringData->_M_start, PStringData->size()) == 0;\n"
+  ],
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count)\n",
+   "template <> int __cdecl std::__char_traits_base<unsigned short, unsigned short>::compare(const unsigned short* lhs, const unsigned short* rhs, unsigned int count)\n"
+  ]
+ ],
+ "rebuild/tests/00/40/Global_MemCmpUnsigned16_00403c60_test.cpp": [
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short*,const unsigned short*,unsigned long);\n",
+   "namespace std { template <class _CharT, class _IntT> class __char_traits_base { public:\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n); }; }\ntemplate <> int __cdecl std::__char_traits_base<unsigned short, unsigned short>::compare(const unsigned short*, const unsigned short*, unsigned int);\ntypedef std::__char_traits_base<unsigned short, unsigned short> wtraits;\n"
+  ],
+  [
+   "    if(MemCmp_Unsigned16(a,b,0)!=0 || MemCmp_Unsigned16(a,b,4)!=0)return 1;\n    b[2]=9; if(MemCmp_Unsigned16(a,b,4)!=-1)return 2;\n    b[2]=0; if(MemCmp_Unsigned16(a,b,4)!=1)return 3;\n",
+   "    if(wtraits::compare(a,b,0)!=0 || wtraits::compare(a,b,4)!=0)return 1;\n    b[2]=9; if(wtraits::compare(a,b,4)!=-1)return 2;\n    b[2]=0; if(wtraits::compare(a,b,4)!=1)return 3;\n"
+  ]
+ ],
+ "rebuild/tests/00/40/Global_WideStringEqualsLen_00404280_test.cpp": [
+  [
+   "int __cdecl MemCmp_Unsigned16(const unsigned short* a,const unsigned short* b,unsigned long n)\n",
+   "namespace std {\ntemplate <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short\n    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60\n};\n}\ntemplate <> int __cdecl std::__char_traits_base<unsigned short, unsigned short>::compare(const unsigned short* a,const unsigned short* b,unsigned int n)\n"
+  ],
+  [
+   "    ++g_compareCalls; for(unsigned long i=0;i<n;++i)if(a[i]!=b[i])return a[i]<b[i]?-1:1; return 0;\n",
+   "    ++g_compareCalls; for(unsigned int i=0;i<n;++i)if(a[i]!=b[i])return a[i]<b[i]?-1:1; return 0;\n"
+  ]
+ ]
+}

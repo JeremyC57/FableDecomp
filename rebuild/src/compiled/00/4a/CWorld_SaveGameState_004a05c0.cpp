@@ -2,7 +2,7 @@
 // Leaf: ?SaveGameState@CWorld@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004A05C0, 448 bytes, `ret 0Ch` (FableWin.pdb ?SaveGameState@CWorld@@QAEXABVCWideString@@_N1@Z).
 // Callees: GFGetTime 0x009E1BC0 (__fastcall double, discarded), CWideString(const CWideString&) 0x0099B720, CWideString()
-//   0x0099AED0, SplitPath 0x00997620 (__fastcall), wcscmp 0x00BFE94C, MemCmp_Unsigned16 0x00403C60, CUserProfileManager::Get
+//   0x0099AED0, SplitPath 0x00997620 (__fastcall), wcscmp 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare 0x00403C60, CUserProfileManager::Get
 //   0x0040D2A0 + GetPathNameFromFileName 0x00408120, operator!=(const wchar16*) 0x0099B150, operator= 0x0099B7D0, the engine
 //   memory-pool getter (virtual slot 72, +0x120), CHandleBasedMemoryPool::BeginShutdown(float) 0x00A02220 / EndShutdown
 //   0x00A02370, CWorld::SaveGameStateInternal 0x0049F4C0, SaveHeroStateInternal 0x004A00E0, operator+(const CWideString&,
@@ -11,7 +11,11 @@
 // Globals: two file-static save flags 0x013B89D0 / 0x013B89D1 (read by SaveGameStateInternal; descriptive names).
 typedef unsigned short wchar16;
 extern "C" int __cdecl wcscmp(const unsigned short* a, const unsigned short* b);   // 0x00BFE94C
-int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
 double __fastcall GFGetTime();                          // 0x009E1BC0
 
 static const unsigned short s_Empty[] = { 0 };          // L"" 0x0122D70C
@@ -104,7 +108,7 @@ void CWorld::SaveGameState(const CWideString& name, bool questScreens, bool flag
         goto resolved;
     }
     if ((unsigned long)(directory.PStringData->_M_finish - directory.PStringData->_M_start) != 0
-        || MemCmp_Unsigned16(directory.PStringData->_M_start, s_Empty, 0) != 0)
+        || std::__char_traits_base<unsigned short, unsigned short>::compare(directory.PStringData->_M_start, s_Empty, 0) != 0)
         goto resolved;
 empty:
     {

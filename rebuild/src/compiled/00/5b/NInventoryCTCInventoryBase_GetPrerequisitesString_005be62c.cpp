@@ -14,10 +14,10 @@ class CCharString { public:
 };
 class CWideString { public:
     void* PStringData;
-    CWideString(const char* text);                      // 0x0099B6B0
+    CWideString(const wchar_t* text);                   // 0x0099B6B0
     CWideString(const CWideString& other);              // 0x0099B720
     ~CWideString();                                     // 0x0099B510
-    CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
+    const CWideString& operator+=(const CWideString& other);  // 0x0099B8D0
     static CWideString __fastcall CreateFromCharString(const CCharString& text);   // 0x0099B6A0
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
@@ -93,7 +93,7 @@ CWideString CTCInventoryBase::GetPrerequisitesString(CDefPointer<const CQuestCar
                 CTCHeroStats* stats;
                 if (ParentThing->GetInterface(&stats, 4) && stats) {
                     long renown = stats->RenownLevel;
-                    result += CWideString("(") + IntToWideString(renown) + CWideString(")");
+                    result += CWideString(L"(") + IntToWideString(renown) + CWideString(L")");
                 }
             }
         }

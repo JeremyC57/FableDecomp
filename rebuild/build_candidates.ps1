@@ -352109,7 +352109,7 @@ $catalog = @(
         Module = 'NScript::CV_ChickenKickingScript::CChickenSign'
         Source = '00/e6/NScriptCVChickenKickingScriptCChickenSign_Init_00e68dc0.cpp'
         TestSource = '00/e6/NScriptCVChickenKickingScriptCChickenSign_Init_00e68dc0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '00e68dc0_TEST PASS'
     }
     [pscustomobject]@{
@@ -354017,7 +354017,7 @@ $catalog = @(
         Module = 'CDriveManager'
         Source = '00/9e/CDriveManager_GetDriveFromPath_009e4c70.cpp'
         TestSource = '00/9e/CDriveManager_GetDriveFromPath_009e4c70_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /GS /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '009e4c70_TEST PASS'
     }
     [pscustomobject]@{
@@ -359273,7 +359273,7 @@ $catalog = @(
         Module = 'NUISystem::CManager'
         Source = '00/42/NUISystemCManager_SetKeyPressed_0042d4f7.cpp'
         TestSource = '00/42/NUISystemCManager_SetKeyPressed_0042d4f7_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '0042d4f7_TEST PASS'
     }
     [pscustomobject]@{
@@ -361938,7 +361938,7 @@ $catalog = @(
         Module = 'NScript::CV_FishingCompetitionScript::CFishCompOrganiser'
         Source = '00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_GetBiggestFishWeight_00e81b40.cpp'
         TestSource = '00/e8/NScriptCVFishingCompetitionScriptCFishCompOrganiser_GetBiggestFishWeight_00e81b40_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '00e81b40_TEST PASS'
     }
     [pscustomobject]@{
@@ -362065,7 +362065,7 @@ $catalog = @(
         Module = 'CVideoSys'
         Source = '00/a3/CVideoSys_Init_00a3b9d0.cpp'
         TestSource = '00/a3/CVideoSys_Init_00a3b9d0_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3'
         PassPattern = '00a3b9d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -362129,7 +362129,7 @@ $catalog = @(
         Module = 'CSubtitleRenderer'
         Source = '00/49/CSubtitleRenderer_Clear_00492bab.cpp'
         TestSource = '00/49/CSubtitleRenderer_Clear_00492bab_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /GS /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00492bab_TEST PASS'
     }
     [pscustomobject]@{
@@ -362137,7 +362137,7 @@ $catalog = @(
         Module = 'CWorld'
         Source = '00/49/CWorld_GetPathNameForFileName_0049ef50.cpp'
         TestSource = '00/49/CWorld_GetPathNameForFileName_0049ef50_test.cpp'
-        CompilerFlags = '/O2 /Oy /W3 /GS /Zc:wchar_t'
+        CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '0049ef50_TEST PASS'
     }
     [pscustomobject]@{

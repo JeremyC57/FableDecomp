@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004091C0, length 534 bytes, /GS cookie frame (0x250), `ret 8`.
 // Callees: vector<CWideString>::erase(first, last) 0x00412450, the 28-byte __copy(first, last, result, random_access_iterator_tag,
 //   ptrdiff_t*) 0x0040E350 (__fastcall), CUserProfileManager::GetPathNameFromFileName(const CWideString&, bool) 0x00408120,
-//   operator+(const CWideString&, const wchar_t*) 0x0099BF30, FindFirstFile / FindNextFile 0x00999760 / 0x00999850,
+//   operator+(const CWideString&, const wchar_t*) 0x0099BF30, CAFile::StartFileScan / ScanNextFile 0x00999760 / 0x00999850,
 //   SplitPath 0x00997620, CWideString::operator!= 0x0099B0F0, GetFileModifiedTime 0x009992A0, the vectors' _M_insert_overflow
 //   0x00412330 (CWideString) / 0x004125A0 (CDateAndTime), CWideString() 0x0099AED0 / (const wchar_t*) 0x0099B6B0 / copy
 //   0x0099B720 / dtor 0x0099B510, wcscmp 0x00BFE94C. Strings: L"" 0x0122D70C, L"*" 0x0122DE6C.
@@ -40,17 +40,19 @@ class CWideString { public:
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);       // 0x0099BF30
 class CAFile {
 public:
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                   // +0x00
+        long SearchHandle;                              // +0x04
+    };
     static void __fastcall SplitPath(const CWideString&, CWideString*, CWideString*, CWideString*, CWideString*);   // 0x00997620
+    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, wchar_t* firstFile);   // 0x00999760
+    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, wchar_t* nextFile);     // 0x00999850
 };   // 0x00997620
 struct CFindFileData {
     wchar_t       FileName[260];
     unsigned long Attributes;
 };
-struct CFindFileHandle {
-    long _body[2];
-};
-bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
-bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850
 class CDateAndTime { public:
     long Fields[7];
     CDateAndTime(long year = 0, long month = 0, long day = 0, long hour = 0, long minute = 0, long second = 0,
@@ -116,9 +118,9 @@ void CUserProfileManager::LoadFileList(std::CWideStringVector& names, std::CDate
     names.clear();
     times.clear();
     CWideString pattern = GetPathNameFromFileName(L"", false) + L"*";
-    CFindFileHandle handle;
+    CAFile::CFileScanInfo handle;
     CFindFileData data;
-    bool more = FindFirstFile(pattern, handle, data);
+    bool more = CAFile::StartFileScan(pattern, handle, data.FileName);
     while (more) {
         CWideString name;
         CWideString extension;
@@ -128,6 +130,6 @@ void CUserProfileManager::LoadFileList(std::CWideStringVector& names, std::CDate
             CWideString path(data.FileName);
             times.push_back(GetFileModifiedTime(path));
         }
-        more = FindNextFile(pattern, handle, data);
+        more = CAFile::ScanNextFile(pattern, handle, data.FileName);
     }
 }

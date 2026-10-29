@@ -15,7 +15,7 @@ public:
     CWideString(const char* s) { int i = 0; for (; s[i] && i < 63; ++i) m_data[i] = (unsigned short)s[i]; m_data[i] = 0; ++g_wideAlive; }
     CWideString(const CWideString& o) { std::memcpy(m_data, o.m_data, sizeof(m_data)); ++g_wideAlive; }
     ~CWideString() { --g_wideAlive; }
-    operator const unsigned short*() const { return m_data; }
+    const unsigned short* GetAsCharArray() const { return m_data; }
 };
 class CCharString {
 public:
@@ -29,7 +29,7 @@ class CSystemManager { public:
     void DisplayCriticalMessage(const char* message)
     {
         CCharString text(message);
-        MessageBoxW(0, text.ToWideString(), g_caption_lit, 0);
+        MessageBoxW(0, text.ToWideString().GetAsCharArray(), g_caption_lit, 0);
     }
 };
 int main()

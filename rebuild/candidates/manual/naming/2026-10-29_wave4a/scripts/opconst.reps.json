@@ -1,0 +1,120 @@
+{
+ "rebuild/src/compiled/00/99/CDataOutputStream_WriteNullTerminatedWString_00993f00.cpp": [
+  [
+   "// the wide-string text accessor (0x0099AF10) and length (0x0099B220); their manifest labels name\n",
+   "// CWideString::GetAsCharArray (0x0099AF10) and GetLength (0x0099B220); their manifest labels name\n"
+  ],
+  [
+   "struct CWideStringCalls {\n    const wchar_t* GetText();       // 0x0099AF10\n    long           GetLength();     // 0x0099B220\n",
+   "class CWideString { public:\n    const wchar_t* GetAsCharArray() const;   // 0x0099AF10\n    long           GetLength() const;        // 0x0099B220\n"
+  ],
+  [
+   "    void WriteNullTerminatedWString(CWideStringCalls* text);\n",
+   "    void WriteNullTerminatedWString(CWideString* text);\n"
+  ],
+  [
+   "void CDataOutputStream_Methods::WriteNullTerminatedWString(CWideStringCalls* text)\n",
+   "void CDataOutputStream_Methods::WriteNullTerminatedWString(CWideString* text)\n"
+  ],
+  [
+   "    const wchar_t* characters = text->GetText();\n",
+   "    const wchar_t* characters = text->GetAsCharArray();\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/98/CThreadedFile_Open_0098e1e0.cpp": [
+  [
+   "    const wchar_t* GetChars_0099af00() const;                  // 0x0099AF00 (retail's second operator const wchar_t* copy)\n",
+   "    operator const wchar_t*() const;                           // 0x0099AF00 (Ego_r/FableWin ??BCWideString@@QBEPB_WXZ; G form)\n"
+  ],
+  [
+   "    FileHandle = CreateFileW(fullPath.GetChars_0099af00(), 0x80000000, 1, 0, 3, flags, 0);\n",
+   "    FileHandle = CreateFileW((const wchar_t*)fullPath, 0x80000000, 1, 0, 3, flags, 0);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/55/NUISystemCKeyRedefiner_UpdateKeyText_00557a10.cpp": [
+  [
+   "//   CActionInputControl&, CWideString&, bool) @ 0x00446720 (`__fastcall`), CWideString::operator const wchar_t* @\n",
+   "//   CActionInputControl&, CWideString&, bool) @ 0x00446720 (`__fastcall`), CWideString::GetAsCharArray @\n"
+  ],
+  [
+   "    operator unsigned short*() const;              // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;  // 0x0099AF10\n"
+  ],
+  [
+   "            _wcsupr(keyName);\n",
+   "            _wcsupr((unsigned short*)keyName.GetAsCharArray());\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/59/CFrontEndManager_Update_00599e3f.cpp": [
+  [
+   "    const unsigned short* c_str() const;                   // 0x0099AF10\n",
+   "    const unsigned short* GetAsCharArray() const;          // 0x0099AF10\n"
+  ],
+  [
+   "                if (_wcsicmp(it->c_str(), name.c_str()) == 0)\n",
+   "                if (_wcsicmp(it->GetAsCharArray(), name.GetAsCharArray()) == 0)\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/40/global_CreateSaveGame_00406e30.cpp": [
+  [
+   "class CWideString{ public:void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*();};\n",
+   "class CWideString{ public:void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*() const;};\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/9e/CDriveManager_DriveExists_009e4ae0.cpp": [
+  [
+   "    operator const wchar16*();               // 0x0099AF00\n",
+   "    operator const wchar16*() const;         // 0x0099AF00\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/9e/CDriveManager_DeleteDirectory_009e4b70.cpp": [
+  [
+   "    operator const wchar_t*();                     // 0x0099AF00\n",
+   "    operator const wchar_t*() const;               // 0x0099AF00\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/9e/CDriveManager_DeleteFile_009e4bc0.cpp": [
+  [
+   "    operator const wchar_t*();                     // 0x0099AF00\n",
+   "    operator const wchar_t*() const;               // 0x0099AF00\n"
+  ]
+ ],
+ "rebuild/tests/00/55/NUISystemCKeyRedefiner_UpdateKeyText_00557a10_test.cpp": [
+  [
+   "    operator unsigned short*() const { return (unsigned short*)m_text; }\n",
+   "    const unsigned short* GetAsCharArray() const { return (const unsigned short*)m_text; }\n"
+  ],
+  [
+   "            _wcsupr(keyName);\n",
+   "            _wcsupr((unsigned short*)keyName.GetAsCharArray());\n"
+  ]
+ ],
+ "rebuild/tests/00/40/global_CreateSaveGame_00406e30_test.cpp": [
+  [
+   "class CWideString{ public:void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*();};\n",
+   "class CWideString{ public:void*PStringData;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();operator const wchar_t*() const;};\n"
+  ],
+  [
+   "CWideString::operator const wchar_t*(){return PStringData?((WideData*)PStringData)->text:L\"\";}\n",
+   "CWideString::operator const wchar_t*() const{return PStringData?((WideData*)PStringData)->text:L\"\";}\n"
+  ]
+ ],
+ "rebuild/tests/00/9e/CDriveManager_DeleteFile_009e4bc0_test.cpp": [
+  [
+   "class CWideString { public: wchar_t16* m_pchData; operator const wchar_t16*() { return m_pchData; } ~CWideString() { g_dtors++; } };\n",
+   "class CWideString { public: wchar_t16* m_pchData; operator const wchar_t16*() const { return m_pchData; } ~CWideString() { g_dtors++; } };\n"
+  ]
+ ],
+ "rebuild/tests/00/9e/CDriveManager_DriveExists_009e4ae0_test.cpp": [
+  [
+   "    operator const wchar16*() { return m_data; }\n",
+   "    operator const wchar16*() const { return m_data; }\n"
+  ]
+ ],
+ "rebuild/tests/00/9e/CDriveManager_DeleteDirectory_009e4b70_test.cpp": [
+  [
+   "class CWideString { public: wchar_t16* m_pchData; operator const wchar_t16*() { return m_pchData; } ~CWideString() { g_dtors++; } };\n",
+   "class CWideString { public: wchar_t16* m_pchData; operator const wchar_t16*() const { return m_pchData; } ~CWideString() { g_dtors++; } };\n"
+  ]
+ ]
+}

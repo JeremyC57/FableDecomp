@@ -3,7 +3,7 @@
 // a static `__fastcall` returning CWideString by value (hidden result pointer in ecx), plain `ret`.
 // Label: the manifest's "CInputProcessMain_GetCameraPath" is propagated; the landed callers (PathExists 0x00999230,
 // ScanNextFile 0x00999850) name it GetCurrentPath / GetCurrentWorkingDirectory.
-// Callees: wcscmp @ 0x00BFE94C, char_traits<wchar_t>::compare @ 0x00403C60 (cdecl, manifest "MemCmp_Unsigned16"),
+// Callees: wcscmp @ 0x00BFE94C, __char_traits_base<wchar_t, wint_t>::compare @ 0x00403C60 (cdecl, inherited by char_traits<wchar_t>; manifest "MemCmp_Unsigned16"),
 // the working-directory reader @ 0x009974A0 (static `__fastcall`, `_wgetcwd` into a MAX_PATH buffer -> CWideString;
 // descriptive name GetWorkingDirectory), CWideString::operator=(const CWideString&) @ 0x0099B7D0, ~CWideString @
 // 0x0099B510, CWideString(const CWideString&) @ 0x0099B720.
@@ -20,7 +20,12 @@ typedef unsigned short wchar16;          // wchar_t is not a built-in type under
 
 extern "C" int __cdecl wcscmp(const wchar16* a, const wchar16* b);   // 0x00BFE94C
 
-struct char_traits_w {
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
+struct char_traits_w : public std::__char_traits_base<wchar16, wchar16> {   // STLport char_traits<wchar_t>
     static unsigned long length(const wchar16* s)
     {
         const wchar16* p = s;
@@ -28,7 +33,6 @@ struct char_traits_w {
             ++p;
         return p - s;
     }
-    static int __cdecl compare(const wchar16* a, const wchar16* b, unsigned long n);   // 0x00403C60
 };
 
 struct CBasicStringW {                                  // STLport basic_string<wchar_t>, 12 bytes

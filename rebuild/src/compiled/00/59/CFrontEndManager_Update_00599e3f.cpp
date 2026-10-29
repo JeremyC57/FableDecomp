@@ -7,7 +7,7 @@ class CWideString { public:
     void* PStringData;
     CWideString(const CWideString& other);                 // 0x0099B720
     ~CWideString();                                        // 0x0099B510
-    const unsigned short* c_str() const;                   // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;          // 0x0099AF10
 };
 extern "C" int __cdecl _wcsicmp(const unsigned short* a, const unsigned short* b);   // 0x00F3FB84
 double __fastcall GFGetTime();                             // 0x009E1BC0
@@ -267,7 +267,7 @@ void CFrontEndManager::Update(float dt)
             GetProfileNames(&names);
             CWideString* it = names._M_start;
             for (; it != names._M_finish; ++it)
-                if (_wcsicmp(it->c_str(), name.c_str()) == 0)
+                if (_wcsicmp(it->GetAsCharArray(), name.GetAsCharArray()) == 0)
                     break;
             if (it != names._M_finish) {
                 EnableInput(false);

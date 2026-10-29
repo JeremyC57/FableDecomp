@@ -23,10 +23,12 @@ class CWideString {
 public:
     unsigned short Text[8];
     CWideString() { Text[0] = 0; }
-    operator const unsigned short*() const { return Text; }
+    const unsigned short* GetAsCharArray() const { return Text; }
+    void Sprintf(const char* format, unsigned short c);   // stub for CWideString::Sprintf
 };
-static void FormatWideString(CWideString* out, const char* format, unsigned short c)   // stub for the formatter
+void CWideString::Sprintf(const char* format, unsigned short c)
 {
+    CWideString* out = this;
     ++g_formats;
     CHECK(format[0] == '%' && format[1] == 'c' && format[2] == 0);
     out->Text[0] = c;
@@ -105,10 +107,10 @@ public:
     static unsigned int GetCharWidthW(unsigned short c)
     {
         CWideString text;
-        FormatWideString(&text, "%c", c);
+        text.Sprintf("%c", c);
         CCountedPointer<CFontBank> font = GFGetSystemManager()->GetFontManager()->GetFont("ENG_ARIAL_16");
         CFontBank* bank = font.Data;
-        return (unsigned int)bank->GetTextExtent(text, 0).X;
+        return (unsigned int)bank->GetTextExtent(text.GetAsCharArray(), 0).X;
     }
 };
 static void RunTest()

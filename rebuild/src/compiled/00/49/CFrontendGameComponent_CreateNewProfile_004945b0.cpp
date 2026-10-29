@@ -18,13 +18,13 @@ public:
     CWideString();                                       // 0x0099AED0
     CWideString(const CWideString& other);               // 0x0099B720
     ~CWideString();                                      // 0x0099B510
-    void __cdecl Format(const wchar_t* format, ...);     // 0x0099BA70
+    void __cdecl Sprintf(const wchar_t* format, ...);     // 0x0099BA70
 };
 CWideString __fastcall operator+(const wchar_t* left, const CWideString& right);   // 0x0099BFF0
 inline CWideString NumberToWideString(long number)
 {
     CWideString text;
-    text.Format(L"%d", number);
+    text.Sprintf(L"%d", number);
     return text;
 }
 class CUserProfileManager {

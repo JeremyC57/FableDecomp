@@ -1,0 +1,92 @@
+{
+ "rebuild/src/compiled/00/54/NUISystemCText_FitInWindow_0054f8e0.cpp": [
+  [
+   "//          ctor(const unsigned short*) 0x0099B6B0, Assign(text, length) 0x0099B770 (catalog \"CCharString_Replace\"),\n",
+   "//          ctor(const unsigned short*) 0x0099B6B0, SetAsSubString(text, length) 0x0099B770 (PDB ?SetAsSubString@CWideString@@QAEXPB_WJ@Z; catalog \"CCharString_Replace\"),\n"
+  ],
+  [
+   "//          __ftol2 0x00BFEA70; the width callback NUISystem::CText measure function 0x0054F4B0.\n",
+   "//          __ftol2 0x00BFEA70; the width callback NUISystem::CText::GetCharWidthW 0x0054F4B0 (FableWin.pdb\n//          ?WordWrap_SetCallback@@YIXP6II_W@ZP6IIXZ@Z, ?WordWrap_FindNextLineW@@YIPB_WPB_WIPAPB_W@Z,\n//          ?GetCharWidthW@CText@NUISystem@@SII_W@Z; wchar_t modelled as unsigned short).\n"
+  ],
+  [
+   "    void Assign(const unsigned short* text, long length);   // 0x0099B770\n",
+   "    void SetAsSubString(const unsigned short* text, long length);   // 0x0099B770\n"
+  ],
+  [
+   "typedef long (__fastcall* TWordWrapWidthCallback)(const unsigned short* text, long length);\n",
+   "typedef unsigned int (__fastcall* TWordWrapCharWidthCallback)(unsigned short c);\ntypedef unsigned int (__fastcall* TWordWrapCallback2)();\n"
+  ],
+  [
+   "void __fastcall WordWrap_SetCallback(TWordWrapWidthCallback callback, long user);       // 0x00A0FD90\nconst unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, long width, long* lineWidth);   // 0x00A10390\n",
+   "void __fastcall WordWrap_SetCallback(TWordWrapCharWidthCallback charWidth, TWordWrapCallback2 callback2);   // 0x00A0FD90\nconst unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, unsigned int width, const unsigned short** lineEnd);   // 0x00A10390\n"
+  ],
+  [
+   "    static long __fastcall MeasureText(const unsigned short* text, long length);   // 0x0054F4B0\n",
+   "    static unsigned int __fastcall GetCharWidthW(unsigned short c);   // 0x0054F4B0\n"
+  ],
+  [
+   "    WordWrap_SetCallback(MeasureText, 0);\n",
+   "    WordWrap_SetCallback(GetCharWidthW, 0);\n"
+  ],
+  [
+   "        long lineWidth = 0;\n        next = WordWrap_FindNextLineW(start, (long)(window.BRX - left), &lineWidth);\n",
+   "        const unsigned short* lineEnd = 0;\n        next = WordWrap_FindNextLineW(start, (long)(window.BRX - left), &lineEnd);\n"
+  ],
+  [
+   "            line.Assign(start, next - start);\n",
+   "            line.SetAsSubString(start, next - start);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/48/CSubtitleRenderer_WordWrapText_0048dc8b.cpp": [
+  [
+   "//   _ftol2 0x00BFEA70, WordWrap_FindNextLineW(const wchar_t*, unsigned long, const wchar_t**) 0x00A10390 (__fastcall),\n",
+   "//   _ftol2 0x00BFEA70, WordWrap_FindNextLineW(const wchar_t*, unsigned int, const wchar_t**) 0x00A10390 (__fastcall),\n"
+  ],
+  [
+   "const wchar_t* __fastcall WordWrap_FindNextLineW(const wchar_t* text, unsigned long width, const wchar_t** lineEnd);   // 0x00A10390\n",
+   "const wchar_t* __fastcall WordWrap_FindNextLineW(const wchar_t* text, unsigned int width, const wchar_t** lineEnd);   // 0x00A10390\n"
+  ]
+ ],
+ "rebuild/tests/00/54/NUISystemCText_FitInWindow_0054f8e0_test.cpp": [
+  [
+   "//          ctor(const unsigned short*) 0x0099B6B0, Assign(text, length) 0x0099B770 (catalog \"CCharString_Replace\"),\n",
+   "//          ctor(const unsigned short*) 0x0099B6B0, SetAsSubString(text, length) 0x0099B770 (PDB ?SetAsSubString@CWideString@@QAEXPB_WJ@Z; catalog \"CCharString_Replace\"),\n"
+  ],
+  [
+   "    void Assign(const unsigned short* text, long length);   // 0x0099B770\n",
+   "    void SetAsSubString(const unsigned short* text, long length);   // 0x0099B770\n"
+  ],
+  [
+   "typedef long (__fastcall* TWordWrapWidthCallback)(const unsigned short* text, long length);\n",
+   "typedef unsigned int (__fastcall* TWordWrapCharWidthCallback)(unsigned short c);\ntypedef unsigned int (__fastcall* TWordWrapCallback2)();\n"
+  ],
+  [
+   "void __fastcall WordWrap_SetCallback(TWordWrapWidthCallback callback, long user);       // 0x00A0FD90\nconst unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, long width, long* lineWidth);   // 0x00A10390\n",
+   "void __fastcall WordWrap_SetCallback(TWordWrapCharWidthCallback charWidth, TWordWrapCallback2 callback2);   // 0x00A0FD90\nconst unsigned short* __fastcall WordWrap_FindNextLineW(const unsigned short* text, unsigned int width, const unsigned short** lineEnd);   // 0x00A10390\n"
+  ],
+  [
+   "    static long __fastcall MeasureText(const unsigned short* text, long length);   // 0x0054F4B0\n",
+   "    static unsigned int __fastcall GetCharWidthW(unsigned short c);   // 0x0054F4B0\n"
+  ],
+  [
+   "    WordWrap_SetCallback(MeasureText, 0);\n",
+   "    WordWrap_SetCallback(GetCharWidthW, 0);\n"
+  ],
+  [
+   "        long lineWidth = 0;\n        next = WordWrap_FindNextLineW(start, (long)(window.BRX - left), &lineWidth);\n",
+   "        const unsigned short* lineEnd = 0;\n        next = WordWrap_FindNextLineW(start, (long)(window.BRX - left), &lineEnd);\n"
+  ],
+  [
+   "            line.Assign(start, next - start);\n",
+   "            line.SetAsSubString(start, next - start);\n"
+  ],
+  [
+   "void CWideString::Assign(const wch* t, long n) { std::free(PStringData); PStringData = wdup(t, n); }\n",
+   "void CWideString::SetAsSubString(const wch* t, long n) { std::free(PStringData); PStringData = wdup(t, n); }\n"
+  ],
+  [
+   "void __fastcall WordWrap_SetCallback(TWordWrapWidthCallback, long) { ++g_cb; }\nconst wch* __fastcall WordWrap_FindNextLineW(const wch* t, long width, long* lw) { *lw = width; return wlen(t) > width ? t + width : 0; }\nlong __fastcall NUISystem::CText::MeasureText(const wch*, long n) { return n; }\n",
+   "void __fastcall WordWrap_SetCallback(TWordWrapCharWidthCallback, TWordWrapCallback2) { ++g_cb; }\nconst wch* __fastcall WordWrap_FindNextLineW(const wch* t, unsigned int width, const wch** end) { const wch* n = wlen(t) > (long)width ? t + width : 0; *end = n; return n; }\nunsigned int __fastcall NUISystem::CText::GetCharWidthW(unsigned short) { return 1; }\n"
+  ]
+ ]
+}

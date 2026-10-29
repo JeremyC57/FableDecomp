@@ -1,5 +1,8 @@
-extern int __cdecl MemCmp_Unsigned16(
-    const unsigned short* lhs, const unsigned short* rhs, unsigned long count);
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
 
 struct WideStringRange
 {
@@ -20,7 +23,7 @@ int __cdecl WideString_EqualsLen(
     const long byteSpan = reinterpret_cast<const char*>(wideString->end) -
                           reinterpret_cast<const char*>(wideString->begin);
     if ((byteSpan >> 1) == length &&
-        (length = MemCmp_Unsigned16(wideString->begin, text, length)) == 0)
+        (length = std::__char_traits_base<unsigned short, unsigned short>::compare(wideString->begin, text, length)) == 0)
         return 1;
     return 0;
 }

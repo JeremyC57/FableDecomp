@@ -1,7 +1,11 @@
 #include <cstdio>
 #include <stddef.h>   // wchar_t = unsigned short under VC7.1 without /Zc:wchar_t
 
-int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count);   // 0x00403C60
+namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
+}
 class CWideStringData { public:                                // STLport basic_string<wchar_t> + NoRefs
     unsigned short* _M_start;
     unsigned short* _M_finish;
@@ -19,7 +23,7 @@ class CWideString { public:
         if (PStringData == 0 || other.PStringData == 0)
             return false;
         return PStringData->size() == other.PStringData->size()
-            && MemCmp_Unsigned16(PStringData->_M_start, other.PStringData->_M_start, PStringData->size()) == 0;
+            && std::__char_traits_base<unsigned short, unsigned short>::compare(PStringData->_M_start, other.PStringData->_M_start, PStringData->size()) == 0;
     }
 };
 CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);   // 0x0099BF30
@@ -103,7 +107,7 @@ static bool g_exists = true, g_loadResult = true, g_latchDuringLoad = false;
 static const char* g_autosave = "P/AutoSave.rl";
 static char g_deleted[128];
 CWideString::~CWideString() { ++g_dtors; }
-int __cdecl MemCmp_Unsigned16(const unsigned short* lhs, const unsigned short* rhs, unsigned long count)
+template <> int __cdecl std::__char_traits_base<unsigned short, unsigned short>::compare(const unsigned short* lhs, const unsigned short* rhs, unsigned int count)
 {
     ++g_memcmp;
     for (unsigned long i = 0; i < count; ++i) if (lhs[i] != rhs[i]) return lhs[i] < rhs[i] ? -1 : 1;

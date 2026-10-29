@@ -3,7 +3,7 @@
 // the Q_SecretPassage card, otherwise fail it; then deactivate the active quest
 // Leaf: WatchForQuestFailureState
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E0C350, 342 bytes (padded to 352), plain `ret` (no handle parameter).
-// Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~ @ 0x0099EAE0, CWideString(const char*) @ 0x0099B6B0 / ~
+// Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~ @ 0x0099EAE0, CWideString(const wchar_t*) @ 0x0099B6B0 / ~
 //          @ 0x0099B510, CScriptBase::IsActiveThreadTerminating @ 0x00CB7940; CGameScriptInterface slots 7
 //          NewScriptFrame (+0x1c), 281 DeactivateQuestLater (+0x464), 288 SetQuestAsCompleted (+0x480), 289
 //          SetQuestAsFailed (+0x484), 295 GiveHeroQuestCardDirectly (+0x49c), 655 GetActiveQuestName (+0xa3c).
@@ -16,7 +16,7 @@ class CCharString { public:                                     // 4 bytes: the 
 };
 class CWideString { public:                                     // 4 bytes
     void* PStringData;
-    CWideString(const char* text);                       // 0x0099B6B0
+    CWideString(const unsigned short* text);             // 0x0099B6B0
     ~CWideString();                                      // 0x0099B510
 };
 void operator delete(void* p);                           // 0x00BFE9BC (MSVCR71)
@@ -177,7 +177,7 @@ void CV_LostTraderScript::WatchForQuestFailureState()
     } else {
         if (IsActiveThreadTerminating())
             return;
-        GSI->SetQuestAsFailed(GSI->GetActiveQuestName(), false, "", true);
+        GSI->SetQuestAsFailed(GSI->GetActiveQuestName(), false, L"", true);
     }
     GSI->DeactivateQuestLater(GSI->GetActiveQuestName(), 0);
 }

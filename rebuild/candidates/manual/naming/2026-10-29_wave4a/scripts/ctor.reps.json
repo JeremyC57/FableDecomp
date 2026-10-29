@@ -1,0 +1,70 @@
+{
+ "rebuild/src/compiled/00/e0/CVLostTraderScript_WatchForQuestFailureState_00e0c350.cpp": [
+  [
+   "// Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~ @ 0x0099EAE0, CWideString(const char*) @ 0x0099B6B0 / ~\n",
+   "// Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~ @ 0x0099EAE0, CWideString(const wchar_t*) @ 0x0099B6B0 / ~\n"
+  ],
+  [
+   "    CWideString(const char* text);                       // 0x0099B6B0\n",
+   "    CWideString(const unsigned short* text);             // 0x0099B6B0\n"
+  ],
+  [
+   "        GSI->SetQuestAsFailed(GSI->GetActiveQuestName(), false, \"\", true);\n",
+   "        GSI->SetQuestAsFailed(GSI->GetActiveQuestName(), false, L\"\", true);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/5b/NInventoryCTCInventoryBase_GetPrerequisitesString_005be3b1.cpp": [
+  [
+   "    CWideString(const char* text);                      // 0x0099B6B0\n",
+   "    CWideString(const wchar_t* text);                   // 0x0099B6B0\n"
+  ],
+  [
+   "                result += GetTextBank()->GetTextBySymbol(\"TEXT_GUI_MENU_RENOWN\") + CWideString(\":\") + IntToWideString(node->second) + CWideString(\" \");\n",
+   "                result += GetTextBank()->GetTextBySymbol(\"TEXT_GUI_MENU_RENOWN\") + CWideString(L\":\") + IntToWideString(node->second) + CWideString(L\" \");\n"
+  ],
+  [
+   "                    result += CWideString(\"(\") + GetTextBank()->GetTextBySymbol(\"TEXT_GUI_MENU_CURRENT_LEVEL\") + IntToWideString(stats->GetRenownLevel()) + CWideString(\")\");\n",
+   "                    result += CWideString(L\"(\") + GetTextBank()->GetTextBySymbol(\"TEXT_GUI_MENU_CURRENT_LEVEL\") + IntToWideString(stats->GetRenownLevel()) + CWideString(L\")\");\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/5b/NInventoryCTCInventoryBase_GetPrerequisitesString_005be62c.cpp": [
+  [
+   "    CWideString(const char* text);                      // 0x0099B6B0\n",
+   "    CWideString(const wchar_t* text);                   // 0x0099B6B0\n"
+  ],
+  [
+   "                    result += CWideString(\"(\") + IntToWideString(renown) + CWideString(\")\");\n",
+   "                    result += CWideString(L\"(\") + IntToWideString(renown) + CWideString(L\")\");\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/e1/global_CScriptGameResourceObjectScriptedThingBaseHandle_00e15500.cpp": [
+  [
+   "#include \"engine/CScriptThing.h\"\nnamespace Row00e15500 {\n",
+   "#include \"engine/CScriptThing.h\"\nclass CWideString{public:const wchar_t*p;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();};   // global class (Ego_r ??0CWideString@@QAE@PB_W@Z)\nnamespace Row00e15500 {\n"
+  ],
+  [
+   "struct CCharString{const char*p;CCharString(const char*,int=-1);CCharString(const CCharString&);~CCharString();};struct CWideString{const wchar_t*p;CWideString(const wchar_t*);CWideString(const CWideString&);~CWideString();};struct Handle:CScriptThing{Handle();Handle(const Handle&);~Handle();};\n",
+   "struct CCharString{const char*p;CCharString(const char*,int=-1);CCharString(const CCharString&);~CCharString();};struct Handle:CScriptThing{Handle();Handle(const Handle&);~Handle();};\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/65/NPlayerGuiCDrawQuestInfoCQuestInfoElementTick_CQuestInfoElementTick_00656c3c.cpp": [
+  [
+   "namespace NPlayerGui {\n\n",
+   ""
+  ],
+  [
+   "    CWideString(const wchar_t* text);              // 0x0099B6B0\n};\n\nstruct CQuestInfoElement {\n",
+   "    CWideString(const wchar_t* text);              // 0x0099B6B0\n};\n\nnamespace NPlayerGui {\n\nstruct CQuestInfoElement {\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/59/CFrontEndManager_Action_0059a238.cpp": [
+  [
+   "CWideString __fastcall operator+(const CWideString& text, const char* suffix);         // 0x0099BF30\n",
+   "CWideString __fastcall operator+(const CWideString& text, const unsigned short* suffix);   // 0x0099BF30\n"
+  ],
+  [
+   "                title->SetText(text + \" \" + parameter->Value, true, true);\n",
+   "                title->SetText(text + L\" \" + parameter->Value, true, true);\n"
+  ]
+ ]
+}

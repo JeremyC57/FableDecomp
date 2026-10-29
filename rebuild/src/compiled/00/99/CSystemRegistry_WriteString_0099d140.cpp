@@ -1,7 +1,7 @@
 // CSystemRegistry::WriteString(const CWideString&, const CWideString&) -- store a REG_SZ value under the open key
 // Leaf: WriteString
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0099D140, length 61 bytes (+ int3 padding).
-// Callees: CWideString::GetLength @ 0x0099B220 and CWideString::operator const wchar_t* @ 0x0099AF10
+// Callees: CWideString::GetLength @ 0x0099B220 and CWideString::GetAsCharArray() @ 0x0099AF10
 // (manifest labels are the byte-identical CCharString twins), ADVAPI32!RegSetValueExW through the
 // import slot 0x0143FBE8.
 // Identity: the manifest calls this "WriteBinary", but the value type is 1 (REG_SZ) and the data is a
@@ -16,7 +16,7 @@ struct HKEY__;
 class CWideString {
 public:
     long GetLength() const;                      // 0x0099B220
-    operator const unsigned short*() const;      // 0x0099AF10
+    const unsigned short* GetAsCharArray() const;      // 0x0099AF10
 private:
     void* m_pData;
 };
@@ -36,6 +36,6 @@ private:
 void CSystemRegistry::WriteString(const CWideString& valueName, const CWideString& value) const
 {
     if (OpenKey != 0)
-        RegSetValueExW(OpenKey, valueName, 0, 1,                         // REG_SZ
-                       (const unsigned char*)(const unsigned short*)value, value.GetLength() + 1);
+        RegSetValueExW(OpenKey, valueName.GetAsCharArray(), 0, 1,                         // REG_SZ
+                       (const unsigned char*)value.GetAsCharArray(), value.GetLength() + 1);
 }

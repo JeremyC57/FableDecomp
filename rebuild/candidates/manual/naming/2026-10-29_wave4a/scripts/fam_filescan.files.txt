@@ -1,0 +1,10 @@
+rebuild/src/compiled/00/40/CUserProfileManager_DeleteProfile_00407040.cpp
+rebuild/src/compiled/00/40/CUserProfileManager_LoadFileList_004091c0.cpp
+rebuild/src/compiled/00/41/CMainGameComponent_GenerateMetFilesFromLugFiles_00418c3b.cpp
+rebuild/src/compiled/00/49/CFrontendGameComponent_GetWorldNames_00495890.cpp
+rebuild/src/compiled/00/4a/CWorld_LoadGameState_004a3200.cpp
+rebuild/src/compiled/00/55/CTCHeroOnlineScoreboard_GetCachedClanLogosAsString_0055e850.cpp
+rebuild/src/compiled/00/55/CTCHeroOnlineScoreboard_GetCachedImage_0055fc90.cpp
+rebuild/src/compiled/00/55/CTCHeroOnlineScoreboard_GetCachedMemberLogosAsString_0055ea80.cpp
+rebuild/src/compiled/00/59/NUISystemCFrontEndManager_GetProfileNames_005955ab.cpp
+rebuild/src/compiled/00/6c/CSkeletalMorphResourceManager_PreloadBoneConfigs_006c37d0.cpp

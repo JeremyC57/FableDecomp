@@ -1,0 +1,308 @@
+{
+ "rebuild/src/compiled/00/56/CTCHeroOnlineScoreboard_DownloadLogosForThisClansMembers_005621b0.cpp": [
+  [
+   "// 0x0041A5B0, operator+(const CWideString&, const wchar16*) 0x0099BF30, CWideString() 0x0099AED0, FormatWideString 0x0099BA70\n",
+   "// 0x0041A5B0, operator+(const CWideString&, const wchar16*) 0x0099BF30, CWideString() 0x0099AED0, CWideString::Sprintf 0x0099BA70\n"
+  ],
+  [
+   "    CCharString ConvertToCharString() const;         // 0x0099B2C0\n};\n",
+   "    CCharString ConvertToCharString() const;         // 0x0099B2C0\n    void __cdecl Sprintf(const wchar16* format, ...);       // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar16* format, ...);       // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%d\", value);\n",
+   "    text.Sprintf(L\"%d\", value);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/56/CTCHeroOnlineScoreboard_DownloadMyClansLogos_00561980.cpp": [
+  [
+   "// 0x0041A5B0, operator+(const CWideString&, const wchar16*) 0x0099BF30, CWideString() 0x0099AED0, FormatWideString 0x0099BA70\n",
+   "// 0x0041A5B0, operator+(const CWideString&, const wchar16*) 0x0099BF30, CWideString() 0x0099AED0, CWideString::Sprintf 0x0099BA70\n"
+  ],
+  [
+   "    CCharString ConvertToCharString() const;         // 0x0099B2C0\n};\n",
+   "    CCharString ConvertToCharString() const;         // 0x0099B2C0\n    void __cdecl Sprintf(const wchar16* format, ...);       // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar16* format, ...);       // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%d\", value);\n",
+   "    text.Sprintf(L\"%d\", value);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/54/NUISystemCText_GetCharWidthW_0054f4b0.cpp": [
+  [
+   "// Callees: CWideString() 0x0099AED0, FormatWideString(CWideString*, const wchar_t*, ...) 0x0099BA70 (__cdecl, L\"%c\"\n",
+   "// Callees: CWideString() 0x0099AED0, CWideString::Sprintf(const wchar_t*, ...) 0x0099BA70 (__cdecl, L\"%c\"\n"
+  ],
+  [
+   "};\nvoid __cdecl FormatWideString(CWideString* text, const unsigned short* format, ...);   // 0x0099BA70\n",
+   "    void __cdecl Sprintf(const unsigned short* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "    FormatWideString(&text, L\"%c\", c);\n",
+   "    text.Sprintf(L\"%c\", c);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/48/CSubtitleRenderer_GetCharWidthW_0048e012.cpp": [
+  [
+   "// Callees: CWideString::CWideString() @ 0x0099AED0, FormatWideString(CWideString*, const wchar_t*, ...) @ 0x0099BA70\n",
+   "// Callees: CWideString::CWideString() @ 0x0099AED0, CWideString::Sprintf(const wchar_t*, ...) @ 0x0099BA70\n"
+  ],
+  [
+   "    ~CWideString();                                         // 0x0099B510\n};\n",
+   "    ~CWideString();                                         // 0x0099B510\n    void __cdecl Sprintf(const wchar_t16* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t16* format, ...);   // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%c\", character);   // L\"%c\" @ 0x01238154\n",
+   "    text.Sprintf(L\"%c\", character);   // L\"%c\" @ 0x01238154\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/48/global_GFFloatToWideString_00486c40.cpp": [
+  [
+   "// Callees: CWideString() @ 0x0099AED0, FormatWideString(CWideString*, const wchar_t*, ...) @ 0x0099BA70 (cdecl,\n",
+   "// Callees: CWideString() @ 0x0099AED0, CWideString::Sprintf(const wchar_t*, ...) @ 0x0099BA70 (cdecl,\n"
+  ],
+  [
+   "    const CWideString& operator+=(wchar_t16 c);             // 0x0099B9A0\n};\n",
+   "    const CWideString& operator+=(wchar_t16 c);             // 0x0099B9A0\n    void __cdecl Sprintf(const wchar_t16* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t16* format, ...);   // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%f\", value);\n",
+   "    text.Sprintf(L\"%f\", value);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/49/CFrontendGameComponent_CreateNewProfile_004945b0.cpp": [
+  [
+   "    void __cdecl Format(const wchar_t* format, ...);     // 0x0099BA70\n",
+   "    void __cdecl Sprintf(const wchar_t* format, ...);     // 0x0099BA70\n"
+  ],
+  [
+   "    text.Format(L\"%d\", number);\n",
+   "    text.Sprintf(L\"%d\", number);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/9c/NGameText_ConstructString_009c7c20.cpp": [
+  [
+   "// Callees: CWideString::CWideString() @ 0x0099AED0, CWideString::Format(const unsigned short*, ...) @ 0x0099BA70\n",
+   "// Callees: CWideString::CWideString() @ 0x0099AED0, CWideString::Sprintf(const unsigned short*, ...) @ 0x0099BA70\n"
+  ],
+  [
+   "    void __cdecl Format(const unsigned short* format, ...);                     // 0x0099BA70\n",
+   "    void __cdecl Sprintf(const unsigned short* format, ...);                     // 0x0099BA70\n"
+  ],
+  [
+   "    number.Format(g_NumberFormat, index);\n",
+   "    number.Sprintf(g_NumberFormat, index);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/5e/CTCTavernGame_GetTotalWinnings_005ea310.cpp": [
+  [
+   "//          formatter 0x0099BA70 (`__cdecl (CWideString*, const wchar_t*, ...)`, L\"%d\" @ 0x0122DE44);\n",
+   "//          formatter 0x0099BA70 (`__cdecl` CWideString::Sprintf(const wchar_t*, ...), `this` pushed first, L\"%d\" @ 0x0122DE44);\n"
+  ],
+  [
+   "    ~CWideString();                             // 0x0099B510\n};\n",
+   "    ~CWideString();                             // 0x0099B510\n    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%d\", value);      // 0x0122DE44\n",
+   "    text.Sprintf(L\"%d\", value);      // 0x0122DE44\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/5e/CTCTavernGame_GetBet_005ea1a0.cpp": [
+  [
+   "// @ 0x0099AED0, FormatWideString(CWideString*, const wchar_t*, ...) @ 0x0099BA70 (L\"%d\" @ 0x0122DE44), CWideString(const\n",
+   "// @ 0x0099AED0, CWideString::Sprintf(const wchar_t*, ...) @ 0x0099BA70 (L\"%d\" @ 0x0122DE44), CWideString(const\n"
+  ],
+  [
+   "    ~CWideString();                                     // 0x0099B510\n};\n",
+   "    ~CWideString();                                     // 0x0099B510\n    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%d\", value);\n",
+   "    text.Sprintf(L\"%d\", value);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/5e/CTCTavernGame_GetPlayersMoney_005ea250.cpp": [
+  [
+   "    ~CWideString();                                     // 0x0099B510\n};\n",
+   "    ~CWideString();                                     // 0x0099B510\n    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%d\", value);\n",
+   "    text.Sprintf(L\"%d\", value);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/40/global_IntToWideString_00405f00.cpp": [
+  [
+   "// Callees: CWideString::CWideString() @ 0x0099AED0 (the folded default constructor shared with CCharString), the wide formatter @ 0x0099BA70 (`__cdecl (CWideString*, const wchar_t*, ...)`,\n",
+   "// Callees: CWideString::CWideString() @ 0x0099AED0 (the folded default constructor shared with CCharString), the wide formatter @ 0x0099BA70 (`__cdecl` CWideString::Sprintf(const wchar_t*, ...), `this` pushed first,\n"
+  ],
+  [
+   "    ~CWideString();                                // 0x0099B510\n};\n",
+   "    ~CWideString();                                // 0x0099B510\n    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%d\", value);\n",
+   "    text.Sprintf(L\"%d\", value);\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/82/CMiniMapDisplay_ConstructMinimapFilename_00829a30.cpp": [
+  [
+   "//   operator+=(const CWideString&) 0x0099B8D0, the varargs (__cdecl) CWideString::Format 0x0099BA70 (label\n",
+   "//   operator+=(const CWideString&) 0x0099B8D0, the varargs (__cdecl) CWideString::Sprintf 0x0099BA70 (label\n"
+  ],
+  [
+   "    void Format(const unsigned short* format, ...);            // 0x0099BA70\n",
+   "    void Sprintf(const unsigned short* format, ...);            // 0x0099BA70\n"
+  ],
+  [
+   "    text.Format(L\"%d\", value);\n",
+   "    text.Sprintf(L\"%d\", value);\n"
+  ]
+ ],
+ "rebuild/tests/00/54/NUISystemCText_GetCharWidthW_0054f4b0_test.cpp": [
+  [
+   "};\nstatic void FormatWideString(CWideString* out, const char* format, unsigned short c)   // stub for the formatter\n",
+   "    void Sprintf(const char* format, unsigned short c);   // stub for CWideString::Sprintf\n};\nvoid CWideString::Sprintf(const char* format, unsigned short c)\n"
+  ],
+  [
+   "{\n    ++g_formats;\n",
+   "{\n    CWideString* out = this;\n    ++g_formats;\n"
+  ],
+  [
+   "        FormatWideString(&text, \"%c\", c);\n",
+   "        text.Sprintf(\"%c\", c);\n"
+  ]
+ ],
+ "rebuild/tests/00/49/CFrontendGameComponent_CreateNewProfile_004945b0_test.cpp": [
+  [
+   "    void __cdecl Format(const wchar_t* format, ...);     // 0x0099BA70\n",
+   "    void __cdecl Sprintf(const wchar_t* format, ...);     // 0x0099BA70\n"
+  ],
+  [
+   "    text.Format(L\"%d\", number);\n",
+   "    text.Sprintf(L\"%d\", number);\n"
+  ],
+  [
+   "void __cdecl CWideString::Format(const wchar_t* f, ...) { va_list a; va_start(a, f); _vsnwprintf(((WData*)PStringData)->s, 63, f, a); va_end(a); }\n",
+   "void __cdecl CWideString::Sprintf(const wchar_t* f, ...) { va_list a; va_start(a, f); _vsnwprintf(((WData*)PStringData)->s, 63, f, a); va_end(a); }\n"
+  ]
+ ],
+ "rebuild/tests/00/9c/NGameText_ConstructString_009c7c20_test.cpp": [
+  [
+   "    void Format(const unsigned short* fmt, int value)     // \"%d\"-only stand-in\n",
+   "    void Sprintf(const unsigned short* fmt, int value)     // \"%d\"-only stand-in\n"
+  ],
+  [
+   "    number.Format(g_NumberFormat, index);\n",
+   "    number.Sprintf(g_NumberFormat, index);\n"
+  ]
+ ],
+ "rebuild/tests/00/5e/CTCTavernGame_GetPlayersMoney_005ea250_test.cpp": [
+  [
+   "    ~CWideString();                                     // 0x0099B510\n};\n",
+   "    ~CWideString();                                     // 0x0099B510\n    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%d\", value);\n",
+   "    text.Sprintf(L\"%d\", value);\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...)\n{\n",
+   "void __cdecl CWideString::Sprintf(const wchar_t* format, ...)\n{ CWideString* text = this;\n"
+  ]
+ ],
+ "rebuild/tests/00/5e/CTCTavernGame_GetBet_005ea1a0_test.cpp": [
+  [
+   "// @ 0x0099AED0, FormatWideString(CWideString*, const wchar_t*, ...) @ 0x0099BA70 (L\"%d\" @ 0x0122DE44), CWideString(const\n",
+   "// @ 0x0099AED0, CWideString::Sprintf(const wchar_t*, ...) @ 0x0099BA70 (L\"%d\" @ 0x0122DE44), CWideString(const\n"
+  ],
+  [
+   "    ~CWideString();                                     // 0x0099B510\n};\n",
+   "    ~CWideString();                                     // 0x0099B510\n    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%d\", value);\n",
+   "    text.Sprintf(L\"%d\", value);\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...)\n{\n",
+   "void __cdecl CWideString::Sprintf(const wchar_t* format, ...)\n{ CWideString* text = this;\n"
+  ]
+ ],
+ "rebuild/tests/00/5e/CTCTavernGame_GetTotalWinnings_005ea310_test.cpp": [
+  [
+   "    ~CWideString();                             // 0x0099B510\n};\n",
+   "    ~CWideString();                             // 0x0099B510\n    void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70\n};\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...);   // 0x0099BA70\n",
+   ""
+  ],
+  [
+   "    FormatWideString(&text, L\"%d\", value);      // 0x0122DE44\n",
+   "    text.Sprintf(L\"%d\", value);      // 0x0122DE44\n"
+  ],
+  [
+   "void __cdecl FormatWideString(CWideString* text, const wchar_t* format, ...)\n{ va_list ap; va_start(ap, format); long v = va_arg(ap, long); va_end(ap); char b[32]; std::sprintf(b, \"%ld\", v); text->m_data = Alloc(b); }\n",
+   "void __cdecl CWideString::Sprintf(const wchar_t* format, ...)\n{ CWideString* text = this; va_list ap; va_start(ap, format); long v = va_arg(ap, long); va_end(ap); char b[32]; std::sprintf(b, \"%ld\", v); text->m_data = Alloc(b); }\n"
+  ]
+ ],
+ "rebuild/tests/00/40/global_IntToWideString_00405f00_test.cpp": [
+  [
+   "    ~CWideString() { --g_live; }\n};\n",
+   "    ~CWideString() { --g_live; }\n    void Sprintf(const wchar_retail* format, long value);   // \"%d\" only stand-in for CWideString::Sprintf\n};\n"
+  ],
+  [
+   "static void FormatWideString(CWideString* text, const wchar_retail* format, long value)   // \"%d\" only\n",
+   "void CWideString::Sprintf(const wchar_retail* format, long value)\n"
+  ],
+  [
+   "{\n    if (format[0] != '%' || format[1] != 'd') { text->m_text[0] = 0; return; }\n",
+   "{\n    CWideString* text = this;\n    if (format[0] != '%' || format[1] != 'd') { text->m_text[0] = 0; return; }\n"
+  ],
+  [
+   "    FormatWideString(&text, format, value);\n",
+   "    text.Sprintf(format, value);\n"
+  ]
+ ]
+}

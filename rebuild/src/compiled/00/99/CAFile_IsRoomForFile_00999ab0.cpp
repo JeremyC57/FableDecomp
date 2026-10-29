@@ -24,7 +24,7 @@ public:
     CWideString();                                              // 0x0099AED0
     CWideString(const wchar* text);                             // 0x0099B6B0
     ~CWideString();                                             // 0x0099B510
-    CWideString& operator=(const wchar* text);                  // 0x0099B800
+    const CWideString& operator=(const wchar* text);                  // 0x0099B800
     operator const wchar*() const;                              // 0x0099AF00
 };
 

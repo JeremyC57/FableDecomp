@@ -1,0 +1,6 @@
+rebuild/src/compiled/00/59/CFrontEndManager_Action_0059a238.cpp
+rebuild/src/compiled/00/5b/NInventoryCTCInventoryBase_GetPrerequisitesString_005be3b1.cpp
+rebuild/src/compiled/00/5b/NInventoryCTCInventoryBase_GetPrerequisitesString_005be62c.cpp
+rebuild/src/compiled/00/65/NPlayerGuiCDrawQuestInfoCQuestInfoElementTick_CQuestInfoElementTick_00656c3c.cpp
+rebuild/src/compiled/00/e0/CVLostTraderScript_WatchForQuestFailureState_00e0c350.cpp
+rebuild/src/compiled/00/e1/global_CScriptGameResourceObjectScriptedThingBaseHandle_00e15500.cpp

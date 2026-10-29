@@ -8,7 +8,7 @@
 //   0x0099EAE0, CCharString::ToWideString 0x0099E480, CWideString::operator=(const CWideString&) 0x0099B7D0 /
 //   operator=(const wchar_t*) 0x0099B800 / operator+= 0x0099B8D0, ~CWideString 0x0099B510, operator+(const wchar_t*,
 //   const CWideString&) 0x0099BFF0 (__fastcall), GFIntToWideString 0x00405F00 (__fastcall), wcscmp 0x00BFE94C,
-//   char_traits<wchar_t>::compare 0x00403C60 (cdecl). Literals: L"" 0x0122D70C, L" " 0x0122D820, the four
+//   __char_traits_base<wchar_t, wint_t>::compare 0x00403C60 (inherited by char_traits<wchar_t>) (cdecl). Literals: L"" 0x0122D70C, L" " 0x0122D820, the four
 //   "TEXT_GUI_ACTION_MOVE_*" tags (narrow and wide), L"Invalid Movement!!" 0x0124AC14.
 // Globals: g_pMainGameComponent 0x013B86A0 (game-text bank +0x14), else g_pNewFrontendGameComponent 0x013B871C (+0x60),
 //   as the landed NUISystem::CText::SetValue 0x0054F410.
@@ -26,9 +26,11 @@ typedef unsigned short wchar_t;                                                 
 extern "C" int __cdecl wcscmp(const wchar_t* a, const wchar_t* b);                    // 0x00BFE94C
 
 namespace std {
+template <class _CharT, class _IntT> class __char_traits_base { public:   // STLport 4.6 char_traits.h; wint_t == unsigned short
+    static int __cdecl compare(const _CharT* __s1, const _CharT* __s2, unsigned int __n);   // 0x00403C60
+};
 template <class _CharT> struct char_traits;
-template <> struct char_traits<wchar_t> {
-    static int __cdecl compare(const wchar_t* s1, const wchar_t* s2, unsigned int n);  // 0x00403C60
+template <> struct char_traits<wchar_t> : public __char_traits_base<wchar_t, unsigned short> {
     static unsigned int length(const wchar_t* s)
     {
         unsigned int i;
@@ -57,8 +59,8 @@ public:
     std::wstring* PStringData;
     ~CWideString();                                                                    // 0x0099B510
     const CWideString& operator=(const CWideString& other);                                  // 0x0099B7D0
-    CWideString& operator=(const wchar_t* text);                                       // 0x0099B800
-    CWideString& operator+=(const CWideString& other);                                 // 0x0099B8D0
+    const CWideString& operator=(const wchar_t* text);                                       // 0x0099B800
+    const CWideString& operator+=(const CWideString& other);                                 // 0x0099B8D0
     __forceinline bool operator==(const wchar_t* text) const
     {
         if (PStringData == 0)

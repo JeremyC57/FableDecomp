@@ -46,7 +46,7 @@ template <class T> class CDefPointer { public:
 class CWideString { public:
     void* PStringData;
     CWideString(const unsigned short* text);               // 0x0099B6B0
-    CWideString& operator=(const unsigned short* text);    // 0x0099B800
+    const CWideString& operator=(const unsigned short* text);    // 0x0099B800
 };
 class CMainGameComponentInit { public:
     CWideString   StartLevel;                              // +0x00

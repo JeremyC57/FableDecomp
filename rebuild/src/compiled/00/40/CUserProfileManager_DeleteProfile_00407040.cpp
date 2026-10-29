@@ -29,14 +29,16 @@ struct CFindFileData {
     unsigned short FileName[260];
     unsigned long  Attributes;
 };
-struct CFindFileHandle {
-    long _body[2];
-};
-bool __fastcall FindFirstFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);   // 0x00999760
-bool __fastcall FindNextFile(const CWideString& pattern, CFindFileHandle& handle, CFindFileData& data);    // 0x00999850
 class CAFile {
 public:
+    class CFileScanInfo {
+    public:
+        bool Stopped;                                   // +0x00
+        long SearchHandle;                              // +0x04
+    };
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
+    static bool __fastcall StartFileScan(const CWideString& pattern, CFileScanInfo& info, unsigned short* firstFile);   // 0x00999760
+    static bool __fastcall ScanNextFile(const CWideString& pattern, CFileScanInfo& info, unsigned short* nextFile);     // 0x00999850
 };                                 // 0x00999230
 bool __fastcall IsPathFile(const CWideString& path);                                 // 0x00999A30
 
@@ -63,14 +65,14 @@ void CUserProfileManager::DeleteProfile(const CWideString& profileName)
 {
     CWideString directory = NResourceDirectoryNames::GetSaveDir() + GetValidProfileName(profileName) + (const unsigned short*)L"\\";
     CWideString pattern = directory + (const unsigned short*)L"*";
-    CFindFileHandle handle;
+    CAFile::CFileScanInfo handle;
     CFindFileData data;
-    if (FindFirstFile(pattern, handle, data)) {
+    if (CAFile::StartFileScan(pattern, handle, data.FileName)) {
         do {
             bool isFile = CAFile::PathExists(data.FileName) && IsPathFile(data.FileName);
             if (isFile)
                 g_pDriveManager->DeleteFile(data.FileName);
-        } while (FindNextFile(pattern, handle, data));
+        } while (CAFile::ScanNextFile(pattern, handle, data.FileName));
     }
     g_pDriveManager->DeleteDirectory(directory);
 }
