@@ -1,0 +1,550 @@
+addr       parity           behav  name
+0042bf06   WARN RELOC_NAME: ??0?$_List_base@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV?$allocator@PAVCComponent@NUISystem@@@1@@Z -> 0042abaf labelled 'std::list<NUISystem::CComponent*>::list'
+0042bf06   RELOCATION_MATCH PASS   list<NUISystem::CComponent *,std::allocator<NUISystem::CComponent *> >
+0042fc86   WARN RELOC_NAME: ??1?$CCountedPointer@VCMeshDataBank@@@@QAE@XZ -> 0042918c labelled 'CCountedPointer<CMeshDataBank>::Release'
+0042fc86   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCMeshDataBank@@@@SIXPAX@Z -> 00428ae7 labelled '_global::DeleteViaVtable0_00428ae7'
+0042fc86   RELOCATION_MATCH PASS   Reset
+00434c00   RELOCATION_MATCH PASS   StartScreenFadeOut
+00441020   RELOCATION_MATCH PASS   _M_fill_insert
+004917b5   WARN RELOC_NAME: ??9CWideString@@QBE_NPB_W@Z -> 0099b150 labelled 'CWideString::NotEqual'
+004917b5   RELOCATION_MATCH PASS   FormatTextWithGameActionNames
+004c3bf0   RELOCATION_MATCH PASS   __pop_heap_aux<NGraphicAppearance::CMeshInfo *,NGraphicAppearance::CMeshInfo,CSortPrimaryMeshesFirst>
+004c3c60   RELOCATION_MATCH PASS   __pop_heap_aux<NGraphicAppearance::CMeshInfo *,NGraphicAppearance::CMeshInfo,CSortPrimaryMeshesLast>
+004c4430   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@QAXVCRGBColour@@@std@@U?$_Nonconst_traits@U?$pair@QAXVCRGBColour@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@QAXVCRGBColour@@@std@@U?$_Nonconst_traits@U?$pair@QAXVCRGBColour@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 004c1d40 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_004c1d40,CUnprovenTraits_004c1d40<CUnprovenValue_004c1d40> > >'
+004c4430   RELOCATION_MATCH PASS   erase
+004c6b60   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@U?$_Nonconst_traits@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@U?$_Nonconst_traits@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 004c65d0 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_004c65d0,CUnprovenTraits_004c65d0<CUnprovenValue_004c65d0> > >'
+004c6b60   RELOCATION_MATCH PASS   erase
+004cea60   RELOCATION_MATCH PASS   GetMessageFromTextIndex
+00516010   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCOldFileFormatMapHeader3@@@@SIXPAX@Z -> 0050d180 labelled '_global::OperatorDelete_thunk_0050d180'
+00516010   WARN RELOC_NAME: ?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatMapHeader2@@VCOldFileFormatMapHeader1@@@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader2@@@@PAX@Z -> 005148d0 labelled 'CEngineWorldMap_MoveConstructor'
+00516010   RELOCATION_MATCH PASS   ConvertPreviousUnknownVersionUp
+0051b4c0   RELOCATION_MATCH PASS   vector<CNavigationAreaUpdate::CSwitchableBlockage,std::allocator<CNavigationAreaUpdate::CSwitchableBlockage> >
+0051b880   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 00511ce0 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_00511ce0,CUnprovenTraits_00511ce0<CUnprovenValue_00511ce0> > >'
+0051b880   RELOCATION_MATCH PASS   erase
+0051d0a0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCRegion@@PAV1@@std@@YIPAVCRegion@@PAV1@00ABU__false_type@0@@Z -> 0051b420 labelled '_global::UninitCopy_CRegion_0051b420'
+0051d0a0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCRegion@@IV1@@std@@YIPAVCRegion@@PAV1@IABV1@@Z -> 0051ba50 labelled '_global::UninitFillN_CRegion_0051ba50'
+0051d0a0   RELOCATION_MATCH PASS   _M_fill_insert
+00520390   RELOCATION_MATCH PASS   ClearPersistenceDataForSection
+0052afb0   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@$$CB_KPAVCThing@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@$$CB_KPAVCThing@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KPAVCThing@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 00527e60 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_00527e60,CUnprovenTraits_00527e60<CUnprovenValue_00527e60> > >'
+0052afb0   RELOCATION_MATCH PASS   erase
+00543910   RELOCATION_MATCH PASS   CEnginePrimitive2DText
+0056a8c0   WARN SHARED_HEADER_AVAILABLE CObserver
+0056a8c0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+0056a8c0   MATCH            PASS   DrawPreparePrimitivesForRendering
+005791e5   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429160 labelled '_global::CCountedPointer_Release_00429160'
+005791e5   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCAction@NUISystem@@@@SIXPAX@Z -> 00429f43 labelled 'CTCMapwho::OnDie'
+005791e5   RELOCATION_MATCH PASS   Reset
+00579a1c   WARN RELOC_NAME: ??0?$_List_base@JV?$allocator@J@std@@@std@@QAE@ABV?$allocator@J@1@@Z -> 0042ab58 labelled '_global::StdList_Ctor_0042ab58'
+00579a1c   RELOCATION_MATCH PASS   list<long,std::allocator<long> >
+00594481   WARN RELOC_NAME: ?_M_increment@?$_Rb_global@_N@std@@SAPAU_Rb_tree_node_base@2@PAU32@@Z -> 004292c0 labelled 'std::_Rb_tree_base::_Rb_tree_increment'
+00594481   RELOCATION_MATCH PASS   insert_unique
+0059afd7   WARN RELOC_NAME: ?_M_subtract@?$_Deque_iterator_base@PAVCComponent@NUISystem@@@std@@QBEHABU12@@Z -> 0059a8f3 labelled 'NThingMap::CThingMapManager::GetMemoryFootprint'
+0059afd7   WARN RELOC_NAME: ?_M_increment@?$_Deque_iterator_base@PAVCComponent@NUISystem@@@std@@QAEXXZ -> 0059aaf9 labelled 'CTCInventoryExperience::IncrementStatIndicator'
+0059afd7   RELOCATION_MATCH PASS   __copy<std::_Deque_iterator<NUISystem::CComponent *,std::_Nonconst_traits<NUISystem::CComponent *> >,std::_Deque_iterator<NUISystem::CComponent *,std::_Nonconst_traits<NUISystem::CComponent *> >,int>
+005b1b20   MATCH            PASS   _Construct<std::pair<NUISystem::CComponent * const,std::pair<long,long> >,std::pair<NUISystem::CComponent * const,std::pair<long,long> > >
+005bc1b0   RELOCATION_MATCH PASS   CEnginePrimitive2DMorphedAnimatingMesh
+00618de0   RELOCATION_MATCH PASS   operator[]
+00619a10   WARN RELOC_NAME: ?_M_copy@?$_Rb_tree@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@5@U?$less@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@5@V?$allocator@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@5@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@2@PAU32@0@Z -> 00619a10 labelled 'TreeNode_Clone'
+00619a10   WARN RELOC_NAME: ??$__uninitialized_copy@PBVCHeroLogBookEntry@CHeroLogBook@@PAV12@@std@@YIPAVCHeroLogBookEntry@CHeroLogBook@@PBV12@0PAV12@ABU__false_type@0@@Z -> 0047b710 labelled 'std::_Uninit_copy<std::_Vector_const_iterator<std::_Vector_val<unsigned_int,std::allocator<unsigned_int>_>_>,unsigned_int*,std::allocator<unsigned_int>_>'
+00619a10   RELOCATION_MATCH PASS   _M_copy
+00639590   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@JU?$_Nonconst_traits@J@std@@@std@@@std@@YAHABU?$_Rb_tree_iterator@JU?$_Nonconst_traits@J@std@@@0@0ABUinput_iterator_tag@0@@Z -> 00638c30 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_00638c30,CUnprovenTraits_00638c30<CUnprovenValue_00638c30> > >'
+00639590   RELOCATION_MATCH PASS   erase
+0064a2db   WARN RELOC_NAME: ??$find@U?$_List_iterator@V?$CIntelligentPointer@$$CBVCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@std@@PAVCThing@@@std@@YI?AU?$_List_iterator@V?$CIntelligentPointer@$$CBVCThing@@@@U?$_Nonconst_traits@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@0@U10@0ABQAVCThing@@@Z -> 00655cdc labelled '_unattributed::CVector_00655cdc'
+0064a2db   WARN RELOC_CONFLICT: ??0?$CIntelligentPointer@$$CBVCThing@@@@QAE@PBVCThing@@@Z -> 0056c860 here, 004a96f0 in landed 0072cba0
+0064a2db   WARN RELOC_NAME: ?push_back@?$list@V?$CIntelligentPointer@$$CBVCThing@@@@V?$allocator@V?$CIntelligentPointer@$$CBVCThing@@@@@std@@@std@@QAEXABV?$CIntelligentPointer@$$CBVCThing@@@@@Z -> 0065617d labelled 'Lua_CreateCClosure'
+0064a2db   RELOCATION_MATCH PASS   AddPerceivingThing
+00658d07   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00658d07   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+00658d07   RELOCATION_MATCH PASS   IsNightTime
+00658d5d   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00658d5d   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+00658d5d   RELOCATION_MATCH PASS   IsSociableTime
+00658db3   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00658db3   WARN RELOC_NAME: ?IsTimeBetween@CGameTimeManager@@QBE_NJJ@Z -> 006bb390 labelled '`anonymousnamespace'::Game_IsTimeOfDayInRange'
+00658db3   RELOCATION_MATCH PASS   IsCurfewTime
+0065dce8   RELOCATION_MATCH PASS   CVillageTaskSecuritySweep
+006726b0   RELOCATION_MATCH PASS   _M_fill_insert
+00680840   RELOCATION_MATCH PASS   GetRandomSampleIndexVariation
+006bb5b0   MATCH            PASS   IsTimeBetween
+006c9220   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 006c51a0 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_006c51a0,CUnprovenTraits_006c51a0<CUnprovenValue_006c51a0> > >'
+006c9220   RELOCATION_MATCH PASS   erase
+006d8bf0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+006d8bf0   RELOCATION_MATCH PASS   GetOnHitSound
+006e7f00   RELOCATION_MATCH PASS   GetAttackerProngSelectionCompareValue
+006f3200   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 006f0300 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_006f0300,CUnprovenTraits_006f0300<CUnprovenValue_006f0300> > >'
+006f3200   RELOCATION_MATCH PASS   erase
+006f3340   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@U?$_Nonconst_traits@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 006f03a0 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_006f03a0,CUnprovenTraits_006f03a0<CUnprovenValue_006f03a0> > >'
+006f3340   RELOCATION_MATCH PASS   erase
+006f95a0   RELOCATION_MATCH PASS   GetExtraEventsBetweenTimes
+006f96c0   RELOCATION_MATCH PASS   GetExtraEventTime
+0070c900   RELOCATION_MATCH PASS   GetMeshAnim
+0071a2f0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCSubtitledMessage@@PAV1@@std@@YIPAVCSubtitledMessage@@PAV1@00ABU__false_type@0@@Z -> 004d2100 labelled '_global::UninitCopy_CElement68_004d1fe0_004d2100'
+0071a2f0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCSubtitledMessage@@IV1@@std@@YIPAVCSubtitledMessage@@PAV1@IABV1@@Z -> 00719e50 labelled '_global::UninitFillN_CElement68_004d1fe0_00719e50'
+0071a2f0   RELOCATION_MATCH PASS   _M_fill_insert
+0071a850   RELOCATION_MATCH PASS   OnSetInLimbo
+007212d0   RELOCATION_MATCH PASS   __insertion_sort<std::pair<CSkeletalMorphs::CEntry,float> *,CIsSkeletalMorphLowerPriorityThan>
+00756c60   WARN RELOC_NAME: ?_M_lower_bound@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@ABEPAU?$_Rb_tree_node@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@2@ABVCCharString@@@Z -> 00756100 labelled 'std::_Tree<std::_Tmap_traits<CCharString,float,std::less<CCharString>,std::allocator<std::pair<CCharString_const_,float>_>,1>_>::_Lbound'
+00756c60   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 00755cb0 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_00755cb0,CUnprovenTraits_00755cb0<CUnprovenValue_00755cb0> > >'
+00756c60   RELOCATION_MATCH PASS   erase
+00777b30   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@$$CBJVCShopItem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@$$CBJVCShopItem@@@std@@U?$_Nonconst_traits@U?$pair@$$CBJVCShopItem@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 00776cf0 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_00776cf0,CUnprovenTraits_00776cf0<CUnprovenValue_00776cf0> > >'
+00777b30   RELOCATION_MATCH PASS   erase
+007e9d80   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@QAVCThing@@M@std@@U?$_Nonconst_traits@U?$pair@QAVCThing@@M@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@QAVCThing@@M@std@@U?$_Nonconst_traits@U?$pair@QAVCThing@@M@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 007e9070 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_007e9070,CUnprovenTraits_007e9070<CUnprovenValue_007e9070> > >'
+007e9d80   RELOCATION_MATCH PASS   erase
+008091a0   RELOCATION_MATCH PASS   operator()
+00813640   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Nonconst_traits@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 008127f0 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_008127f0,CUnprovenTraits_008127f0<CUnprovenValue_008127f0> > >'
+00813640   RELOCATION_MATCH PASS   erase
+0081b0a0   RELOCATION_MATCH PASS   GetAllMorphsOfType
+0082d0d0   RELOCATION_MATCH PASS   DrawGetEditDrawInfo
+0082f5c0   MATCH            PASS   __default_constructed<CScriptedMapBrush::CThingPosAndOrientation>
+00830150   RELOCATION_MATCH PASS   DrawGetEditDrawInfo
+00835960   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@PAXU?$_Nonconst_traits@PAX@std@@@std@@@std@@YAHABU?$_Rb_tree_iterator@PAXU?$_Nonconst_traits@PAX@std@@@0@0ABUinput_iterator_tag@0@@Z -> 00835060 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_00835060,CUnprovenTraits_00835060<CUnprovenValue_00835060> > >'
+00835960   RELOCATION_MATCH PASS   erase
+00884710   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$_Nonconst_traits@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@std@@@std@@YAHABU?$_Rb_tree_iterator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@U?$_Nonconst_traits@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@@0@0ABUinput_iterator_tag@0@@Z -> 00882ef0 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_00882ef0,CUnprovenTraits_00882ef0<CUnprovenValue_00882ef0> > >'
+00884710   RELOCATION_MATCH PASS   erase
+008852e0   MATCH            PASS   CEnvironmentSpellEffectInterface
+008d9ca0   WARN RELOC_NAME: ?GetPHitLocationWithDefName@CTCHitLocations@@QAEPAVCHitLocation@NHitLocations@@ABVCCharString@@@Z -> 00815820 labelled 'CTCHitLocations::GetPHitLocationFromName'
+008d9ca0   RELOCATION_MATCH PASS   OnDeactivate
+008de700   WARN RELOC_NAME: ?ForceAIReset@CThingAICreature@@QAEXXZ -> 006d5ab0 labelled '_global::Forward_ForceResetWithOutput_via0x1a8_006d5ab0'
+008de700   RELOCATION_MATCH PASS   Recover
+008e72d0   RELOCATION_MATCH PASS   CModeIntangible
+008ea8a0   RELOCATION_MATCH PASS   GetMovementSpeed
+008ea930   RELOCATION_MATCH PASS   GetBestHoverState
+008f8a80   RELOCATION_MATCH PASS   LSocket
+0090df60   RELOCATION_MATCH PASS   operator
+0090dfb0   RELOCATION_MATCH PASS   operator
+00917380   RELOCATION_MATCH PASS   Update
+00929650   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00929650   RELOCATION_MATCH PASS   IsRunnable
+00939180   RELOCATION_MATCH PASS   IsRunnable
+00990d60   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@std@@@std@@YAHABU?$_Rb_tree_iterator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Nonconst_traits@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@0@0ABUinput_iterator_tag@0@@Z -> 0098ffa0 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_0098ffa0,CUnprovenTraits_0098ffa0<CUnprovenValue_0098ffa0> > >'
+00990d60   RELOCATION_MATCH PASS   erase
+0099b150   WARN RELOC_NAME: ?compare@?$__char_traits_base@_WG@std@@SAHPB_W0I@Z -> 00403c60 labelled 'MemCmp_Unsigned16'
+0099b150   RELOCATION_MATCH PASS   operator!=
+0099f2e0   RELOCATION_MATCH PASS   LoadFromFile
+009b99c0   RELOCATION_MATCH PASS   ReadNextSymbol
+009b9ce0   RELOCATION_MATCH PASS   SkipUntilWhitespace
+009bf5a0   RELOCATION_MATCH PASS   RemoveDeviceResetCallback
+009d7f40   WARN RELOC_NAME: ??$__distance@U?$_Rb_tree_iterator@PAVCBankFileAsyncData@@U?$_Nonconst_traits@PAVCBankFileAsyncData@@@std@@@std@@@std@@YAHABU?$_Rb_tree_iterator@PAVCBankFileAsyncData@@U?$_Nonconst_traits@PAVCBankFileAsyncData@@@std@@@0@0ABUinput_iterator_tag@0@@Z -> 009d7550 labelled 'std::__distance<std::_Rb_tree_iterator<CUnprovenValue_009d7550,CUnprovenTraits_009d7550<CUnprovenValue_009d7550> > >'
+009d7f40   RELOCATION_MATCH PASS   erase
+009eaf80   WARN RELOC_NAME: ?ResetHistory@CConsole@@AAEXXZ -> 009eac80 labelled 'CConsole::ScrollToHistoryBeginning'
+009eaf80   RELOCATION_MATCH PASS   AddCommandLineToHistory
+009f33e0   MATCH            PASS   Lock
+009f5390   RELOCATION_MATCH PASS   EmptyEventStore
+009f83d0   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCGraphicDataBank@@@@SIXPAX@Z -> 00419036 labelled '_global::DeleteViaVtable0_00419036'
+009f83d0   RELOCATION_MATCH PASS   OpenGraphicBank
+009fa450   WARN RELOC_NAME: ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z -> 00a0aa70 labelled '_global::Nop_ret8_00a0aa70'
+009fa450   RELOCATION_MATCH PASS   Lock
+009fd9b0   WARN RELOC_CONFLICT: ?GetData@CBankFileAsyncData@@QAEPAXXZ -> 009d5530 here, 009d5580 in landed 00be04c0
+009fd9b0   WARN RELOC_NAME: ?GetData@CBankFileAsyncData@@QAEPAXXZ -> 009d5530 labelled 'CBankFileAsyncData::PeekData'
+009fd9b0   WARN RELOC_NAME: ?Swizzle@CVolume@@QAEXAAVCVolumeLockedBox@@@Z -> 00a67440 labelled '_global::Nop_ret4_00a67440'
+009fd9b0   WARN RELOC_NAME: ?Uninitialise@CVolume@@QAEX_N@Z -> 00a67460 labelled 'CVolume::ReleaseVolume'
+009fd9b0   RELOCATION_MATCH PASS   LoadVolumeGraphic
+00a09f20   WARN RELOC_NAME: ?DeleteData@?$CCountedPointer@VCMeshDataBank@@@@SIXPAX@Z -> 00428ae7 labelled '_global::DeleteViaVtable0_00428ae7'
+00a09f20   RELOCATION_MATCH PASS   OpenMeshBank
+00a0ca20   MATCH            PASS   InitAsInteger
+00a0d300   MATCH            PASS   Clear
+00a48b50   RELOCATION_MATCH PASS   WriteToFile
+00a4e250   RELOCATION_MATCH PASS   GetRotationAtTime
+00a50bf0   RELOCATION_MATCH PASS   GetAllEvents
+00a67530   MATCH            PASS   ReadOnlyLock
+00a677d0   MATCH            PASS   Lock
+00a685e0   WARN RELOC_NAME: ?WaitWhileResourceIsBusy@CRenderManagerCore@@QAEXPAUIDirect3DResource9@@M@Z -> 00a0aa70 labelled '_global::Nop_ret8_00a0aa70'
+00a685e0   RELOCATION_MATCH PASS   Lock
+00a6ee90   RELOCATION_MATCH PASS   __uninitialized_fill_n<std::pair<CCharString,C3DDummyObject> *,unsigned int,std::pair<CCharString,C3DDummyObject> >
+00a76c30   RELOCATION_MATCH PASS   IsNeighbourOf
+00a76c70   RELOCATION_MATCH PASS   IsNeighbourOf
+00a77420   RELOCATION_MATCH PASS   Unlock
+00ab37b0   RELOCATION_MATCH PASS   CalculateVertexSize
+00ab3810   RELOCATION_MATCH PASS   AddDataElement
+00ac2160   WARN RELOC_NAME: ??_GC3DMeshPartitionElement@@QAEPAXI@Z -> 00ac37b0 labelled 'C3DMeshPartitionElement::ScalarDeletingDestructor'
+00ac2160   RELOCATION_MATCH PASS   BuildSubElement
+00ac6d50   MATCH            PASS   EvaluateError
+00aca0c0   WARN SHARED_HEADER_AVAILABLE COptimisedPrimitive
+00aca0c0   WARN RELOC_NAME: ?GetAsLowerCase@CCharString@@QBE?AV1@XZ -> 0099ed10 labelled 'CCharString::ToLower'
+00aca0c0   RELOCATION_MATCH PASS   RemoveBones
+00ad4100   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCOptimisedFace@QuadricOptimiserInternals@@PAV12@@std@@YIPAVCOptimisedFace@QuadricOptimiserInternals@@PAV12@00ABU__false_type@0@@Z -> 00ad1990 labelled '_global::UninitCopy_CElement72_00ad0100_00ad1990'
+00ad4100   RELOCATION_MATCH PASS   _M_insert_overflow
+00ad59d0   RELOCATION_MATCH PASS   __set_intersection<std::_Rb_tree_iterator<unsigned long,std::_Const_traits<unsigned long> >,std::_Rb_tree_iterator<unsigned long,std::_Const_traits<unsigned long> >,std::insert_iterator<std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> > >,std::less<unsigned long> >
+00ad6bc0   RELOCATION_MATCH PASS   __set_union<std::_Rb_tree_iterator<unsigned long,std::_Const_traits<unsigned long> >,std::_Rb_tree_iterator<unsigned long,std::_Const_traits<unsigned long> >,std::insert_iterator<std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> > >,std::less<unsigned long> >
+00ad6d70   RELOCATION_MATCH PASS   __set_symmetric_difference<std::_Rb_tree_iterator<unsigned long,std::_Const_traits<unsigned long> >,std::_Rb_tree_iterator<unsigned long,std::_Const_traits<unsigned long> >,std::insert_iterator<std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> > >,std::less<unsigned long> >
+00ad7c70   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCUniqueVertex@QuadricOptimiserInternals@@PAV12@@std@@YIPAVCUniqueVertex@QuadricOptimiserInternals@@PAV12@00ABU__false_type@0@@Z -> 00ad6ae0 labelled '_global::UninitCopy_FlagSetPair_00ad6ae0'
+00ad7c70   WARN RELOC_NAME: ??0?$_Rb_tree@KKU?$_Identity@K@std@@U?$less@K@2@V?$allocator@K@2@@std@@QAE@ABV01@@Z -> 00ad3a10 labelled 'std::set::set'
+00ad7c70   WARN RELOC_NAME: ??1CUniqueVertex@QuadricOptimiserInternals@@QAE@XZ -> 00ad4a70 labelled 'CTwoLongSets::~CTwoLongSets'
+00ad7c70   RELOCATION_MATCH PASS   _M_insert_overflow
+00ad81f0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@@std@@YIPAVCOptimisedVertex@QuadricOptimiserInternals@@PAV12@00ABU__false_type@0@@Z -> 00ad7b50 labelled '_global::UninitCopy_COptimisedVertex_00ad7b50'
+00ad81f0   WARN RELOC_NAME: ??1COptimisedVertex@QuadricOptimiserInternals@@QAE@XZ -> 00ad7400 labelled 'CWound::Kill'
+00ad81f0   RELOCATION_MATCH PASS   _M_insert_overflow
+00ad94f0   WARN RELOC_NAME: ??0?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@QAE@ABV01@@Z -> 00a96e40 labelled 'std::map::map'
+00ad94f0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@KU?$pair@$$CBKJ@std@@U?$_Select1st@U?$pair@$$CBKJ@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKJ@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBKJ@std@@@2@@Z -> 004507a1 labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00ad94f0   RELOCATION_MATCH PASS   FindBestStartingBlock
+00adb4d0   RELOCATION_MATCH PASS   __pop_heap_aux<CVertexGroupBlockOptimiser::CBlockInfo *,CVertexGroupBlockOptimiser::CBlockInfo,std::less<CVertexGroupBlockOptimiser::CBlockInfo> >
+00aed180   RELOCATION_MATCH PASS   DeleteAllParticles
+00af7b60   RELOCATION_MATCH PASS   ~CParticle
+00bde080   RELOCATION_MATCH PASS   ValidationTest
+00c01f90   RELOCATION_MATCH PASS   z_deflateInit2_
+00c03b80   MATCH            PASS   z_inflateCopy
+00c03cb0   MATCH            PASS   z_adler32
+00c06b90   MATCH            PASS   lzo1x_decompress
+00c08170   MATCH            PASS   lzo1x_decompress_safe
+00c8d170   RELOCATION_MATCH PASS   ogg_stream_flush
+00c8d510   RELOCATION_MATCH PASS   ogg_sync_pageseek
+00c8d9c0   RELOCATION_MATCH PASS   ogg_stream_reset_serialno
+00c8dfb0   RELOCATION_MATCH PASS   vorbis_info_clear
+00c8eda0   RELOCATION_MATCH PASS   vorbis_synthesis
+00c8f650   RELOCATION_MATCH PASS   vorbis_dsp_clear
+00c8fba0   RELOCATION_MATCH PASS   vorbis_analysis_blockout
+00c90950   MATCH            PASS   vorbis_synthesis_lapout
+00c92f10   RELOCATION_MATCH PASS   seed_chase
+00c93b30   RELOCATION_MATCH PASS   vp_remove_floor
+00c93c40   WARN RELOC_NAME: _bark_noise_hybridmp@24 -> 00c931d0 labelled 'FFT_ComputeMagnitudes'
+00c93c40   RELOCATION_MATCH PASS   vp_noisemask
+00c93f60   MATCH            PASS   vp_offset_and_mix
+00c941e0   RELOCATION_MATCH PASS   couple_lossless
+00c94490   RELOCATION_MATCH PASS   vp_quantize_couple_memo
+00c94600   RELOCATION_MATCH PASS   vp_quantize_couple_sort
+00c94810   RELOCATION_MATCH PASS   vp_noise_normalize
+00c94fd0   RELOCATION_MATCH PASS   make_words
+00c951b0   RELOCATION_MATCH PASS   book_unquantize
+00c95ca0   RELOCATION_MATCH PASS   vorbis_staticbook_pack
+00c95ee0   RELOCATION_MATCH PASS   vorbis_staticbook_unpack
+00c96450   WARN RELOC_NAME: _decode_packed_entry_number@8 -> 00c96320 labelled 'PropertyDef_LookupByClass'
+00c96450   RELOCATION_MATCH PASS   vorbis_book_decodevs_add
+00c96800   RELOCATION_MATCH PASS   drfti1
+00c9bcd0   RELOCATION_MATCH PASS   mdct_init
+00c9db40   RELOCATION_MATCH PASS   ve_envelope_init
+00c9e5d0   RELOCATION_MATCH PASS   vorbis_lpc_from_data
+00c9e8f0   RELOCATION_MATCH PASS   vorbis_lpc_predict
+00c9ea80   RELOCATION_MATCH PASS   vorbis_apply_window
+00c9ec40   RELOCATION_MATCH PASS   mapping0_pack
+00c9ed80   RELOCATION_MATCH PASS   mapping0_unpack
+00c9fea0   RELOCATION_MATCH PASS   res0_pack
+00c9ff80   RELOCATION_MATCH PASS   res0_unpack
+00ca00e0   RELOCATION_MATCH PASS   res0_look
+00ca0680   RELOCATION_MATCH PASS   01class
+00ca0df0   RELOCATION_MATCH PASS   01inverse
+00ca15c0   RELOCATION_MATCH PASS   res2_inverse
+00ca17c0   RELOCATION_MATCH PASS   floor1_pack
+00ca1970   RELOCATION_MATCH PASS   floor1_unpack
+00ca1be0   RELOCATION_MATCH PASS   floor1_look
+00ca2280   RELOCATION_MATCH PASS   fit_line
+00ca3890   RELOCATION_MATCH PASS   floor0_inverse1
+00cdd0a0   WARN RELOC_CONFLICT: ?resize@?$vector@_NV?$allocator@_N@std@@@std@@QAEXIAB_N@Z -> 00467686 here, 006860f0 in landed 006821e0
+00cdd0a0   RELOCATION_MATCH PASS   Resize
+
+WINS: 157
+  0042bf06 RELOCATION_MATCH std::list<NUISystem::CComponent *,std::allocator<NUISystem::CComponent *> >::??0?$list@PAVCComponent@NUISystem@@V?$allocator@PAVCComponent@NUISystem@@@std@@@std@@QAE@ABV01@@Z
+  0042fc86 RELOCATION_MATCH CCountedPointer<CMeshDataBank>::?Reset@?$CCountedPointer@VCMeshDataBank@@@@QAEXPAVCMeshDataBank@@@Z
+  00434c00 RELOCATION_MATCH CDisplayEngine::?StartScreenFadeOut@CDisplayEngine@@QAEXMMVCRGBColour@@M@Z
+  00441020 RELOCATION_MATCH std::vector<float,std::allocator<float> >::?_M_fill_insert@?$vector@MV?$allocator@M@std@@@std@@QAEXPAMIABM@Z
+  004917b5 RELOCATION_MATCH CSubtitleRenderer::?FormatTextWithGameActionNames@CSubtitleRenderer@@SI?AVCWideString@@ABV2@PAV?$vector@VCWideString@@V?$allocator@VCWideString@@@std@@@std@@@Z
+  004c3bf0 RELOCATION_MATCH std::??$__pop_heap_aux@PAVCMeshInfo@NGraphicAppearance@@V12@VCSortPrimaryMeshesFirst@@@std@@YIXPAVCMeshInfo@NGraphicAppearance@@00VCSortPrimaryMeshesFirst@@@Z
+  004c3c60 RELOCATION_MATCH std::??$__pop_heap_aux@PAVCMeshInfo@NGraphicAppearance@@V12@VCSortPrimaryMeshesLast@@@std@@YIXPAVCMeshInfo@NGraphicAppearance@@00VCSortPrimaryMeshesLast@@@Z
+  004c4430 RELOCATION_MATCH std::_Rb_tree<void *,std::pair<void * const,CRGBColour>,std::_Select1st<std::pair<void * const,CRGBColour> >,std::less<void *>,std::allocator<std::pair<void * const,CRGBColour> > >::?erase@?$_Rb_tree@PAXU?$pair@QAXVCRGBColour@@@std@@U?$_Select1st@U?$pair@QAXVCRGBColour@@@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXVCRGBColour@@@std@@@2@@std@@QAEIABQAX@Z
+  004c6b60 RELOCATION_MATCH std::_Rb_tree<void *,std::pair<void * const,CBulletTimeManager::CBulletTimeInfo>,std::_Select1st<std::pair<void * const,CBulletTimeManager::CBulletTimeInfo> >,std::less<void *>,std::allocator<std::pair<void * const,CBulletTimeManager::CBulletTimeInfo> > >::?erase@?$_Rb_tree@PAXU?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@U?$_Select1st@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@@2@U?$less@PAX@2@V?$allocator@U?$pair@QAXVCBulletTimeInfo@CBulletTimeManager@@@std@@@2@@std@@QAEIABQAX@Z
+  004cea60 RELOCATION_MATCH CSubtitledMessage::?GetMessageFromTextIndex@CSubtitledMessage@@SI?AV1@KPBD@Z
+  00516010 RELOCATION_MATCH CReplaceSerialise<COldFileFormatMapHeader3,COldFileFormatMapHeader2>::?ConvertPreviousUnknownVersionUp@?$CReplaceSerialise@VCOldFileFormatMapHeader3@@VCOldFileFormatMapHeader2@@@@SI?AV?$CCountedPointer@VCOldFileFormatMapHeader3@@@@PAX@Z
+  0051b4c0 RELOCATION_MATCH std::vector<CNavigationAreaUpdate::CSwitchableBlockage,std::allocator<CNavigationAreaUpdate::CSwitchableBlockage> >::??0?$vector@VCSwitchableBlockage@CNavigationAreaUpdate@@V?$allocator@VCSwitchableBlockage@CNavigationAreaUpdate@@@std@@@std@@QAE@ABV01@@Z
+  0051b880 RELOCATION_MATCH std::_Rb_tree<CThingBuilding *,std::pair<CThingBuilding * const,std::list<CThingAICreature *,std::allocator<CThingAICreature *> > >,std::_Select1st<std::pair<CThingBuilding * const,std::list<CThingAICreature *,std::allocator<CThingAICreature *> > > >,std::less<CThingBuilding *>,std::allocator<std::pair<CThingBuilding * const,std::list<CThingAICreature *,std::allocator<CThingAICreature *> > > > >::?erase@?$_Rb_tree@PAVCThingBuilding@@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@U?$_Select1st@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAEIABQAVCThingBuilding@@@Z
+  0051d0a0 RELOCATION_MATCH std::vector<CRegion,std::allocator<CRegion> >::?_M_fill_insert@?$vector@VCRegion@@V?$allocator@VCRegion@@@std@@@std@@QAEXPAVCRegion@@IABV3@@Z
+  00520390 RELOCATION_MATCH NThingManager::CEntityRuntimePersistence::?ClearPersistenceDataForSection@CEntityRuntimePersistence@NThingManager@@QAEXABVCCharString@@@Z
+  0052afb0 RELOCATION_MATCH std::_Rb_tree<unsigned __int64,std::pair<unsigned __int64 const,CThing *>,std::_Select1st<std::pair<unsigned __int64 const,CThing *> >,std::less<unsigned __int64>,std::allocator<std::pair<unsigned __int64 const,CThing *> > >::?erase@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThing@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThing@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThing@@@std@@@2@@std@@QAEIAB_K@Z
+  00543910 RELOCATION_MATCH CEnginePrimitive2DText::??0CEnginePrimitive2DText@@QAE@_KABVC2DVector@@W4EEngine2DLayer@@MABVCWideString@@ABVCFontBank@@ABVCRGBColour@@W4EEngineInterpolationSet@@@Z
+  0056a8c0 MATCH CTCBoastUI::?DrawPreparePrimitivesForRendering@CTCBoastUI@@UAEXABVCEnginePrimitivePrepareInfo@@@Z
+  005791e5 RELOCATION_MATCH CCountedPointer<NUISystem::CAction>::?Reset@?$CCountedPointer@VCAction@NUISystem@@@@QAEXPAVCAction@NUISystem@@@Z
+  00579a1c RELOCATION_MATCH std::list<long,std::allocator<long> >::??0?$list@JV?$allocator@J@std@@@std@@QAE@ABV01@@Z
+  00594481 RELOCATION_MATCH std::_Rb_tree<CDateAndTime,std::pair<CDateAndTime const,CWideString>,std::_Select1st<std::pair<CDateAndTime const,CWideString> >,std::less<CDateAndTime>,std::allocator<std::pair<CDateAndTime const,CWideString> > >::?insert_unique@?$_Rb_tree@VCDateAndTime@@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@U?$_Select1st@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@@3@U?$less@VCDateAndTime@@@3@V?$allocator@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@@3@@std@@QAE?AU?$_Rb_tree_iterator@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@U?$_Nonconst_traits@U?$pair@$$CBVCDateAndTime@@VCWideString@@@std@@@2@@2@U32@ABU?$pair@$$CBVCDateAndTime@@VCWideString@@@2@@Z
+  0059afd7 RELOCATION_MATCH std::??$__copy@U?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@std@@U12@H@std@@YI?AU?$_Deque_iterator@PAVCComponent@NUISystem@@U?$_Nonconst_traits@PAVCComponent@NUISystem@@@std@@@0@U10@00ABUrandom_access_iterator_tag@0@PAH@Z
+  005b1b20 MATCH std::??$_Construct@U?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@std@@U12@@std@@YIXPAU?$pair@QAVCComponent@NUISystem@@U?$pair@JJ@std@@@0@ABU10@@Z
+  005bc1b0 RELOCATION_MATCH CEnginePrimitive2DMorphedAnimatingMesh::??0CEnginePrimitive2DMorphedAnimatingMesh@@QAE@_KKABV?$vector@VCEngineTextureMorph@@V?$allocator@VCEngineTextureMorph@@@std@@@std@@ABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@2@ABVC3DAnimationBlendState@@ABVC2DBoxF@@ABVC3DBoundingSphere@@ABVC3DOrientationInterpolator@@W4EEngineInterpolationSet@@EVCRGBColour@@@Z
+  00618de0 RELOCATION_MATCH std::map<long,std::pair<long,long>,std::less<long>,std::allocator<std::pair<long const,std::pair<long,long> > > >::??A?$map@JU?$pair@JJ@std@@U?$less@J@2@V?$allocator@U?$pair@$$CBJU?$pair@JJ@std@@@std@@@2@@std@@QAEAAU?$pair@JJ@1@ABJ@Z
+  00619a10 RELOCATION_MATCH std::_Rb_tree<CHeroLogBook::CHeroLogBookEntry::ECategory,std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const,std::vector<CHeroLogBook::CHeroLogBookEntry,std::allocator<CHeroLogBook::CHeroLogBookEntry> > >,std::_Select1st<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const,std::vector<CHeroLogBook::CHeroLogBookEntry,std::allocator<CHeroLogBook::CHeroLogBookEntry> > > >,std::less<CHeroLogBook::CHeroLogBookEntry::ECategory>,std::allocator<std::pair<CHeroLogBook::CHeroLogBookEntry::ECategory const,std::vector<CHeroLogBook::CHeroLogBookEntry,std::allocator<CHeroLogBook::CHeroLogBookEntry> > > > >::?_M_copy@?$_Rb_tree@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@U?$_Select1st@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@5@U?$less@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@@5@V?$allocator@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@5@@std@@AAEPAU?$_Rb_tree_node@U?$pair@$$CBW4ECategory@CHeroLogBookEntry@CHeroLogBook@@V?$vector@VCHeroLogBookEntry@CHeroLogBook@@V?$allocator@VCHeroLogBookEntry@CHeroLogBook@@@std@@@std@@@std@@@2@PAU32@0@Z
+  00639590 RELOCATION_MATCH std::_Rb_tree<long,long,std::_Identity<long>,std::less<long>,std::allocator<long> >::?erase@?$_Rb_tree@JJU?$_Identity@J@std@@U?$less@J@2@V?$allocator@J@2@@std@@QAEIABJ@Z
+  0064a2db RELOCATION_MATCH NPlayerGui::CDrawPerceivers::?AddPerceivingThing@CDrawPerceivers@NPlayerGui@@QAEXAAVCThing@@@Z
+  00658d07 RELOCATION_MATCH CTCVillage::?IsNightTime@CTCVillage@@QBE_NXZ
+  00658d5d RELOCATION_MATCH CTCVillage::?IsSociableTime@CTCVillage@@QBE_NXZ
+  00658db3 RELOCATION_MATCH CTCVillage::?IsCurfewTime@CTCVillage@@QBE_NXZ
+  0065dce8 RELOCATION_MATCH CVillageTaskSecuritySweep::??0CVillageTaskSecuritySweep@@QAE@ABVC3DVector@@M0M@Z
+  006726b0 RELOCATION_MATCH std::vector<ENavigatorType,std::allocator<ENavigatorType> >::?_M_fill_insert@?$vector@W4ENavigatorType@@V?$allocator@W4ENavigatorType@@@std@@@std@@QAEXPAW4ENavigatorType@@IABW43@@Z
+  00680840 RELOCATION_MATCH CSimVoice::?GetRandomSampleIndexVariation@CSimVoice@@QBEJW4EReactionSpeechType@@AAK@Z
+  006bb5b0 MATCH CGameTimeManager::?IsTimeBetween@CGameTimeManager@@ABE_NMMM@Z
+  006c9220 RELOCATION_MATCH std::_Rb_tree<long,std::pair<long const,COpinionDeed *>,std::_Select1st<std::pair<long const,COpinionDeed *> >,std::less<long>,std::allocator<std::pair<long const,COpinionDeed *> > >::?erase@?$_Rb_tree@JU?$pair@$$CBJPAVCOpinionDeed@@@std@@U?$_Select1st@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJPAVCOpinionDeed@@@std@@@2@@std@@QAEIABJ@Z
+  006d8bf0 RELOCATION_MATCH CTCHeroExperience::?GetOnHitSound@CTCHeroExperience@@QBE?AVCCharString@@XZ
+  006e7f00 RELOCATION_MATCH _global::?GetAttackerProngSelectionCompareValue@?A0x
+  006f3200 RELOCATION_MATCH std::_Rb_tree<unsigned __int64,std::pair<unsigned __int64 const,CThingCreatureBase *>,std::_Select1st<std::pair<unsigned __int64 const,CThingCreatureBase *> >,std::less<unsigned __int64>,std::allocator<std::pair<unsigned __int64 const,CThingCreatureBase *> > >::?erase@?$_Rb_tree@_KU?$pair@$$CB_KPAVCThingCreatureBase@@@std@@U?$_Select1st@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KPAVCThingCreatureBase@@@std@@@2@@std@@QAEIAB_K@Z
+  006f3340 RELOCATION_MATCH std::_Rb_tree<CThingCreatureBase *,std::pair<CThingCreatureBase * const,CAttackingCombatantInfo *>,std::_Select1st<std::pair<CThingCreatureBase * const,CAttackingCombatantInfo *> >,std::less<CThingCreatureBase *>,std::allocator<std::pair<CThingCreatureBase * const,CAttackingCombatantInfo *> > >::?erase@?$_Rb_tree@PAVCThingCreatureBase@@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@U?$_Select1st@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@3@U?$less@PAVCThingCreatureBase@@@3@V?$allocator@U?$pair@QAVCThingCreatureBase@@PAVCAttackingCombatantInfo@@@std@@@3@@std@@QAEIABQAVCThingCreatureBase@@@Z
+  006f95a0 RELOCATION_MATCH NAnimationEvents::CManager::?GetExtraEventsBetweenTimes@CManager@NAnimationEvents@@ABE_NKAAV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@MM@Z
+  006f96c0 RELOCATION_MATCH NAnimationEvents::CManager::?GetExtraEventTime@CManager@NAnimationEvents@@ABEMKABVCCharString@@@Z
+  0070c900 RELOCATION_MATCH CAnimSet::?GetMeshAnim@CAnimSet@@QBE?AV?$CIVCountedPointer@VC3DAnimationStateBase@@@@M@Z
+  0071a2f0 RELOCATION_MATCH std::vector<CSubtitledMessage,std::allocator<CSubtitledMessage> >::?_M_fill_insert@?$vector@VCSubtitledMessage@@V?$allocator@VCSubtitledMessage@@@std@@@std@@QAEXPAVCSubtitledMessage@@IABV3@@Z
+  0071a850 RELOCATION_MATCH CTCParticleAttachmentTracker::?OnSetInLimbo@CTCParticleAttachmentTracker@@UAEX_N@Z
+  007212d0 RELOCATION_MATCH std::??$__insertion_sort@PAU?$pair@VCEntry@CSkeletalMorphs@@M@std@@VCIsSkeletalMorphLowerPriorityThan@@@std@@YIXPAU?$pair@VCEntry@CSkeletalMorphs@@M@0@0VCIsSkeletalMorphLowerPriorityThan@@@Z
+  00756c60 RELOCATION_MATCH std::_Rb_tree<CCharString,std::pair<CCharString const,std::pair<long,long> >,std::_Select1st<std::pair<CCharString const,std::pair<long,long> > >,std::less<CCharString>,std::allocator<std::pair<CCharString const,std::pair<long,long> > > >::?erase@?$_Rb_tree@VCCharString@@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@U?$_Select1st@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@U?$less@VCCharString@@@3@V?$allocator@U?$pair@$$CBVCCharString@@U?$pair@JJ@std@@@std@@@3@@std@@QAEIABVCCharString@@@Z
+  00777b30 RELOCATION_MATCH std::_Rb_tree<long,std::pair<long const,CShopItem>,std::_Select1st<std::pair<long const,CShopItem> >,std::less<long>,std::allocator<std::pair<long const,CShopItem> > >::?erase@?$_Rb_tree@JU?$pair@$$CBJVCShopItem@@@std@@U?$_Select1st@U?$pair@$$CBJVCShopItem@@@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJVCShopItem@@@std@@@2@@std@@QAEIABJ@Z
+  007e9d80 RELOCATION_MATCH std::_Rb_tree<CThing *,std::pair<CThing * const,float>,std::_Select1st<std::pair<CThing * const,float> >,std::less<CThing *>,std::allocator<std::pair<CThing * const,float> > >::?erase@?$_Rb_tree@PAVCThing@@U?$pair@QAVCThing@@M@std@@U?$_Select1st@U?$pair@QAVCThing@@M@std@@@3@U?$less@PAVCThing@@@3@V?$allocator@U?$pair@QAVCThing@@M@std@@@3@@std@@QAEIABQAVCThing@@@Z
+  008091a0 RELOCATION_MATCH CThingFilter_IsTargetableBehind::??RCThingFilter_IsTargetableBehind@?A0x
+  00813640 RELOCATION_MATCH std::_Rb_tree<unsigned __int64,std::pair<unsigned __int64 const,CGroupMemberData>,std::_Select1st<std::pair<unsigned __int64 const,CGroupMemberData> >,std::less<unsigned __int64>,std::allocator<std::pair<unsigned __int64 const,CGroupMemberData> > >::?erase@?$_Rb_tree@_KU?$pair@$$CB_KVCGroupMemberData@@@std@@U?$_Select1st@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@U?$less@_K@2@V?$allocator@U?$pair@$$CB_KVCGroupMemberData@@@std@@@2@@std@@QAEIAB_K@Z
+  0081b0a0 RELOCATION_MATCH CTextureMorphs::?GetAllMorphsOfType@CTextureMorphs@@QBE_NW4EHeroMorphType@@AAV?$vector@VCTextureMorphEntry@@V?$allocator@VCTextureMorphEntry@@@std@@@std@@@Z
+  0082d0d0 RELOCATION_MATCH CThingBuilding::?DrawGetEditDrawInfo@CThingBuilding@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+  0082f5c0 MATCH std::??$__default_constructed@VCThingPosAndOrientation@CScriptedMapBrush@@@std@@YI?AVCThingPosAndOrientation@CScriptedMapBrush@@PAV12@@Z
+  00830150 RELOCATION_MATCH CThingAICreature::?DrawGetEditDrawInfo@CThingAICreature@@UBE_NMPAVCEditEngineDrawInfo@@@Z
+  00835960 RELOCATION_MATCH std::_Rb_tree<void *,void *,std::_Identity<void *>,std::less<void *>,std::allocator<void *> >::?erase@?$_Rb_tree@PAXPAXU?$_Identity@PAX@std@@U?$less@PAX@2@V?$allocator@PAX@2@@std@@QAEIABQAX@Z
+  00884710 RELOCATION_MATCH std::_Rb_tree<NScreenEffect::CScreenEffectPriorityStack::CStackEntry *,NScreenEffect::CScreenEffectPriorityStack::CStackEntry *,std::_Identity<NScreenEffect::CScreenEffectPriorityStack::CStackEntry *>,std::less<NScreenEffect::CScreenEffectPriorityStack::CStackEntry *>,std::allocator<NScreenEffect::CScreenEffectPriorityStack::CStackEntry *> >::?erase@?$_Rb_tree@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@PAU123@U?$_Identity@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@std@@U?$less@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@V?$allocator@PAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@5@@std@@QAEIABQAUCStackEntry@CScreenEffectPriorityStack@NScreenEffect@@@Z
+  008852e0 MATCH CEnvironmentSpellEffectInterface::??0CEnvironmentSpellEffectInterface@@QAE@PAVCEnvironment@@@Z
+  008d9ca0 RELOCATION_MATCH NCreatureMode::CModeScorpionKingVulnerable::?OnDeactivate@CModeScorpionKingVulnerable@NCreatureMode@@UAEXXZ
+  008de700 RELOCATION_MATCH NCreatureMode::CModeRockTrollVulnerable::?Recover@CModeRockTrollVulnerable@NCreatureMode@@AAEXXZ
+  008e72d0 RELOCATION_MATCH NCreatureMode::CModeIntangible::??0CModeIntangible@NCreatureMode@@QAE@AAVCThing@@MPAVCCreatureActionBase@@@Z
+  008ea8a0 RELOCATION_MATCH NCreatureMode::CModeHoverBase::?GetMovementSpeed@CModeHoverBase@NCreatureMode@@UBEMABVC3DVector@@0W4EMovementType@@@Z
+  008ea930 RELOCATION_MATCH NCreatureMode::CModeHoverBase::?GetBestHoverState@CModeHoverBase@NCreatureMode@@ABEPBVCHoverState@12@ABVC3DVector@@0@Z
+  008f8a80 RELOCATION_MATCH LHNetworkLib::LSocket::??0LSocket@LHNetworkLib@@QAE@XZ
+  0090df60 RELOCATION_MATCH CMessageEventFilter_ThingSearchFilter<CThingFilter_In2DRange>::??R?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_In2DRange@@@@QBE_NABVCMessageEvent@@@Z
+  0090dfb0 RELOCATION_MATCH CMessageEventFilter_ThingSearchFilter<CThingFilter_IsNavLineOfSightToThing>::??R?$CMessageEventFilter_ThingSearchFilter@VCThingFilter_IsNavLineOfSightToThing@@@@QBE_NABVCMessageEvent@@@Z
+  00917380 RELOCATION_MATCH CAIStateGroup_IdleAtHome::?Update@CAIStateGroup_IdleAtHome@@MAEXXZ
+  00929650 RELOCATION_MATCH CAIStateGroup_MinionGuardGreetPlayer::?IsRunnable@CAIStateGroup_MinionGuardGreetPlayer@@UAE_NXZ
+  00939180 RELOCATION_MATCH CAIStateGroup_MinionSitAtHome::?IsRunnable@CAIStateGroup_MinionSitAtHome@@MAE_NXZ
+  00990d60 RELOCATION_MATCH std::_Rb_tree<unsigned long,std::pair<unsigned long const,CThreadedFileManager::CFileObject *>,std::_Select1st<std::pair<unsigned long const,CThreadedFileManager::CFileObject *> >,std::less<unsigned long>,std::allocator<std::pair<unsigned long const,CThreadedFileManager::CFileObject *> > >::?erase@?$_Rb_tree@KU?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@U?$_Select1st@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@U?$less@K@2@V?$allocator@U?$pair@$$CBKPAVCFileObject@CThreadedFileManager@@@std@@@2@@std@@QAEIABK@Z
+  0099b150 RELOCATION_MATCH CWideString::??9CWideString@@QBE_NPB_W@Z
+  0099f2e0 RELOCATION_MATCH CCharString::?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z
+  009b99c0 RELOCATION_MATCH CStringParser::?ReadNextSymbol@CStringParser@@IAE_NAAVCParsedItem@@@Z
+  009b9ce0 RELOCATION_MATCH CStringParser::?SkipUntilWhitespace@CStringParser@@QAEJXZ
+  009bf5a0 RELOCATION_MATCH CDisplayManager::?RemoveDeviceResetCallback@CDisplayManager@@QAEXPAVCDeviceResetCallback@@@Z
+  009d7f40 RELOCATION_MATCH std::_Rb_tree<CBankFileAsyncData *,CBankFileAsyncData *,std::_Identity<CBankFileAsyncData *>,std::less<CBankFileAsyncData *>,std::allocator<CBankFileAsyncData *> >::?erase@?$_Rb_tree@PAVCBankFileAsyncData@@PAV1@U?$_Identity@PAVCBankFileAsyncData@@@std@@U?$less@PAVCBankFileAsyncData@@@3@V?$allocator@PAVCBankFileAsyncData@@@3@@std@@QAEIABQAVCBankFileAsyncData@@@Z
+  009eaf80 RELOCATION_MATCH CConsole::?AddCommandLineToHistory@CConsole@@AAEXABVCConsoleCommandLine@@@Z
+  009f33e0 MATCH CSurface::?Lock@CSurface@@QAE?AVCSurfaceLockedRect@@K@Z
+  009f5390 RELOCATION_MATCH CInputManager::?EmptyEventStore@CInputManager@@IAEXXZ
+  009f83d0 RELOCATION_MATCH CGraphicBankManager::?OpenGraphicBank@CGraphicBankManager@@QAE?AV?$CCountedPointer@VCGraphicDataBank@@@@ABVCCharString@@ABVCGraphicDataBankInit@@_N2@Z
+  009fa450 RELOCATION_MATCH CTexture::?Lock@CTexture@@QAE?AVCSurfaceLockedRect@@KK@Z
+  009fd9b0 RELOCATION_MATCH CGraphicDataBank::?LoadVolumeGraphic@CGraphicDataBank@@AAE_NAAVCManagedTexture@@AAVCBankFileAsyncData@@ABVCGraphicHeader@1@_NK3@Z
+  00a09f20 RELOCATION_MATCH CMeshBankManager::?OpenMeshBank@CMeshBankManager@@QAE?AV?$CCountedPointer@VCMeshDataBank@@@@ABVCCharString@@_N@Z
+  00a0ca20 MATCH CWParsedItem::?InitAsInteger@CWParsedItem@@QAEXPB_WK@Z
+  00a0d300 MATCH CProcessedInput::?Clear@CProcessedInput@@QAEXXZ
+  00a48b50 RELOCATION_MATCH CLipSyncPhonemeSample::?WriteToFile@CLipSyncPhonemeSample@@QBEXAAVCDataOutputStream@@@Z
+  00a4e250 RELOCATION_MATCH C3DAnimation2::?GetRotationAtTime@C3DAnimation2@@UBE?AVCQuaternion@@M@Z
+  00a50bf0 RELOCATION_MATCH C3DAnimationStats::?GetAllEvents@C3DAnimationStats@@QBEXAAV?$vector@U?$pair@VCCharString@@M@std@@V?$allocator@U?$pair@VCCharString@@M@std@@@2@@std@@@Z
+  00a67530 MATCH CVolume::?ReadOnlyLock@CVolume@@QBE?AVCVolumeLockedBox@@K@Z
+  00a677d0 MATCH CVolume::?Lock@CVolume@@QAE?AVCVolumeLockedBox@@K@Z
+  00a685e0 RELOCATION_MATCH CVolumeTexture::?Lock@CVolumeTexture@@QAE?AVCVolumeLockedBox@@KK@Z
+  00a6ee90 RELOCATION_MATCH std::??$__uninitialized_fill_n@PAU?$pair@VCCharString@@VC3DDummyObject@@@std@@IU12@@std@@YIPAU?$pair@VCCharString@@VC3DDummyObject@@@0@PAU10@IABU10@ABU__false_type@0@@Z
+  00a76c30 RELOCATION_MATCH CNavNavigableLeafNode::?IsNeighbourOf@CNavNavigableLeafNode@@UBE_NPBVCANavQuadTreeNode@@@Z
+  00a76c70 RELOCATION_MATCH CNavSwitchableLeafNode::?IsNeighbourOf@CNavSwitchableLeafNode@@UBE_NPBVCANavQuadTreeNode@@@Z
+  00a77420 RELOCATION_MATCH CNavSwitchableLeafNode::?Unlock@CNavSwitchableLeafNode@@AAEXPBVCNavRegion@@@Z
+  00ab37b0 RELOCATION_MATCH CVertexStreamFormat::?CalculateVertexSize@CVertexStreamFormat@@QBEKXZ
+  00ab3810 RELOCATION_MATCH CVertexStreamFormat::?AddDataElement@CVertexStreamFormat@@QAEXKW4EVertexStreamDataType@@@Z
+  00ac2160 RELOCATION_MATCH C3DMeshPartitionElement::?BuildSubElement@C3DMeshPartitionElement@@QAEPAV1@J@Z
+  00ac6d50 MATCH QuadricOptimiserInternals::CQuadric::?EvaluateError@CQuadric@QuadricOptimiserInternals@@QBENABVC3DVector@@@Z
+  00aca0c0 RELOCATION_MATCH QuadricOptimiserInternals::COptimisedMesh::?RemoveBones@COptimisedMesh@QuadricOptimiserInternals@@UAEXABV?$set@VCCharString@@U?$less@VCCharString@@@std@@V?$allocator@VCCharString@@@3@@std@@@Z
+  00ad4100 RELOCATION_MATCH std::vector<QuadricOptimiserInternals::COptimisedFace,std::allocator<QuadricOptimiserInternals::COptimisedFace> >::?_M_insert_overflow@?$vector@VCOptimisedFace@QuadricOptimiserInternals@@V?$allocator@VCOptimisedFace@QuadricOptimiserInternals@@@std@@@std@@IAEXPAVCOptimisedFace@QuadricOptimiserInternals@@ABV34@ABU__false_type@2@I_N@Z
+  00ad59d0 RELOCATION_MATCH std::??$__set_intersection@U?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@std@@U12@V?$insert_iterator@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@2@U?$less@K@2@@std@@YI?AV?$insert_iterator@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@0@U?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@0@000V10@U?$less@K@0@@Z
+  00ad6bc0 RELOCATION_MATCH std::??$__set_union@U?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@std@@U12@V?$insert_iterator@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@2@U?$less@K@2@@std@@YI?AV?$insert_iterator@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@0@U?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@0@000V10@U?$less@K@0@@Z
+  00ad6d70 RELOCATION_MATCH std::??$__set_symmetric_difference@U?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@std@@U12@V?$insert_iterator@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@2@U?$less@K@2@@std@@YI?AV?$insert_iterator@V?$set@KU?$less@K@std@@V?$allocator@K@2@@std@@@0@U?$_Rb_tree_iterator@KU?$_Const_traits@K@std@@@0@000V10@U?$less@K@0@@Z
+  00ad7c70 RELOCATION_MATCH std::vector<QuadricOptimiserInternals::CUniqueVertex,std::allocator<QuadricOptimiserInternals::CUniqueVertex> >::?_M_insert_overflow@?$vector@VCUniqueVertex@QuadricOptimiserInternals@@V?$allocator@VCUniqueVertex@QuadricOptimiserInternals@@@std@@@std@@IAEXPAVCUniqueVertex@QuadricOptimiserInternals@@ABV34@ABU__false_type@2@I_N@Z
+  00ad81f0 RELOCATION_MATCH std::vector<QuadricOptimiserInternals::COptimisedVertex,std::allocator<QuadricOptimiserInternals::COptimisedVertex> >::?_M_insert_overflow@?$vector@VCOptimisedVertex@QuadricOptimiserInternals@@V?$allocator@VCOptimisedVertex@QuadricOptimiserInternals@@@std@@@std@@IAEXPAVCOptimisedVertex@QuadricOptimiserInternals@@ABV34@ABU__false_type@2@I_N@Z
+  00ad94f0 RELOCATION_MATCH CVertexGroupBlockOptimiser::?FindBestStartingBlock@CVertexGroupBlockOptimiser@@AAEKXZ
+  00adb4d0 RELOCATION_MATCH std::??$__pop_heap_aux@PAVCBlockInfo@CVertexGroupBlockOptimiser@@V12@U?$less@VCBlockInfo@CVertexGroupBlockOptimiser@@@std@@@std@@YIXPAVCBlockInfo@CVertexGroupBlockOptimiser@@00U?$less@VCBlockInfo@CVertexGroupBlockOptimiser@@@0@@Z
+  00aed180 RELOCATION_MATCH NParticleEngine::CParticleEmitter::?DeleteAllParticles@CParticleEmitter@NParticleEngine@@QAEXPAVCIEngine@@@Z
+  00af7b60 RELOCATION_MATCH NParticleEngine::CParticle::??1CParticle@NParticleEngine@@UAE@XZ
+  00bde080 RELOCATION_MATCH CLocalDetailCacheMap::CQuadTreeElement::?ValidationTest@CQuadTreeElement@CLocalDetailCacheMap@@QAEXXZ
+  00c01f90 RELOCATION_MATCH _global::_z_deflateInit2_
+  00c03b80 MATCH _global::_z_inflateCopy
+  00c03cb0 MATCH _global::_z_adler32
+  00c06b90 MATCH _global::_lzo1x_decompress
+  00c08170 MATCH _global::_lzo1x_decompress_safe
+  00c8d170 RELOCATION_MATCH _global::@ogg_stream_flush@8
+  00c8d510 RELOCATION_MATCH _global::@ogg_sync_pageseek@8
+  00c8d9c0 RELOCATION_MATCH _global::@ogg_stream_reset_serialno@8
+  00c8dfb0 RELOCATION_MATCH _global::@vorbis_info_clear@4
+  00c8eda0 RELOCATION_MATCH _global::@vorbis_synthesis@8
+  00c8f650 RELOCATION_MATCH _global::@vorbis_dsp_clear@4
+  00c8fba0 RELOCATION_MATCH _global::@vorbis_analysis_blockout@8
+  00c90950 MATCH _global::@vorbis_synthesis_lapout@8
+  00c92f10 RELOCATION_MATCH _global::_seed_chase@12
+  00c93b30 RELOCATION_MATCH _global::@_vp_remove_floor@20
+  00c93c40 RELOCATION_MATCH _global::@_vp_noisemask@12
+  00c93f60 MATCH _global::@_vp_offset_and_mix@20
+  00c941e0 RELOCATION_MATCH _global::@couple_lossless@16
+  00c94490 RELOCATION_MATCH _global::@_vp_quantize_couple_memo@20
+  00c94600 RELOCATION_MATCH _global::@_vp_quantize_couple_sort@16
+  00c94810 RELOCATION_MATCH _global::@_vp_noise_normalize@16
+  00c94fd0 RELOCATION_MATCH _global::@_make_words@12
+  00c951b0 RELOCATION_MATCH _global::@_book_unquantize@12
+  00c95ca0 RELOCATION_MATCH _global::@vorbis_staticbook_pack@8
+  00c95ee0 RELOCATION_MATCH _global::@vorbis_staticbook_unpack@8
+  00c96450 RELOCATION_MATCH _global::@vorbis_book_decodevs_add@16
+  00c96800 RELOCATION_MATCH _global::_drfti1@12
+  00c9bcd0 RELOCATION_MATCH _global::@mdct_init@8
+  00c9db40 RELOCATION_MATCH _global::@_ve_envelope_init@8
+  00c9e5d0 RELOCATION_MATCH _global::@vorbis_lpc_from_data@16
+  00c9e8f0 RELOCATION_MATCH _global::@vorbis_lpc_predict@20
+  00c9ea80 RELOCATION_MATCH _global::@_vorbis_apply_window@24
+  00c9ec40 RELOCATION_MATCH _global::@mapping0_pack@12
+  00c9ed80 RELOCATION_MATCH _global::@mapping0_unpack@8
+  00c9fea0 RELOCATION_MATCH _global::@res0_pack@8
+  00c9ff80 RELOCATION_MATCH _global::@res0_unpack@8
+  00ca00e0 RELOCATION_MATCH _global::@res0_look@8
+  00ca0680 RELOCATION_MATCH _global::__01class@16
+  00ca0df0 RELOCATION_MATCH _global::__01inverse@20
+  00ca15c0 RELOCATION_MATCH _global::@res2_inverse@20
+  00ca17c0 RELOCATION_MATCH _global::@floor1_pack@8
+  00ca1970 RELOCATION_MATCH _global::@floor1_unpack@8
+  00ca1be0 RELOCATION_MATCH _global::@floor1_look@8
+  00ca2280 RELOCATION_MATCH _global::_fit_line@16
+  00ca3890 RELOCATION_MATCH _global::@floor0_inverse1@8
+  00cdd0a0 RELOCATION_MATCH CPersistContext_TransferableVector<bool>::?Resize@?$CPersistContext_TransferableVector@_N@@EAEXJ@Z
+
+LANDED 157 wins into src/compiled + tests + catalog + oracle
+  stdlistNUISystemCComponentstdallocatorNUISystemCComponent_CComponent_0042bf06
+  CCountedPointerCMeshDataBank_Reset_0042fc86
+  CDisplayEngine_StartScreenFadeOut_00434c00
+  stdvectorfloatstdallocatorfloat_Mfillinsert_00441020
+  CSubtitleRenderer_FormatTextWithGameActionNames_004917b5
+  std_CMeshInfoCSortPrimaryMeshesFirst_004c3bf0
+  std_CMeshInfoCSortPrimaryMeshesLast_004c3c60
+  stdRbtreevoidstdpairvoidconstCRGBColourstdSelect1ststdpairvoidconstCRGBColourstd_erase_004c4430
+  stdRbtreevoidstdpairvoidconstCBulletTimeManagerCBulletTimeInfostdSelect1ststdpai_erase_004c6b60
+  CSubtitledMessage_GetMessageFromTextIndex_004cea60
+  CReplaceSerialiseCOldFileFormatMapHeader3COldFileFormatMapHeader2_ConvertPreviousUnknownVersionUp_00516010
+  stdvectorCNavigationAreaUpdateCSwitchableBlockagestdallocatorCNavigationAreaUpda_CSwitchableBlockage_0051b4c0
+  stdRbtreeCThingBuildingstdpairCThingBuildingconststdlistCThingAICreaturestdalloc_erase_0051b880
+  stdvectorCRegionstdallocatorCRegion_Mfillinsert_0051d0a0
+  NThingManagerCEntityRuntimePersistence_ClearPersistenceDataForSection_00520390
+  stdRbtreeunsignedint64stdpairunsignedint64constCThingstdSelect1ststdpairunsigned_erase_0052afb0
+  CEnginePrimitive2DText_CEnginePrimitive2DText_00543910
+  CTCBoastUI_DrawPreparePrimitivesForRendering_0056a8c0
+  CCountedPointerNUISystemCAction_Reset_005791e5
+  stdlistlongstdallocatorlong_allocatorlong_00579a1c
+  stdRbtreeCDateAndTimestdpairCDateAndTimeconstCWideStringstdSelect1ststdpairCDate_insertunique_00594481
+  std_CComponentint_0059afd7
+  std_pairlonglong_005b1b20
+  CEnginePrimitive2DMorphedAnimatingMesh_CEnginePrimitive2DMorphedAnimatingMesh_005bc1b0
+  stdmaplongstdpairlonglongstdlesslongstdallocatorstdpairlongconststdpairlonglong_operator_00618de0
+  stdRbtreeCHeroLogBookCHeroLogBookEntryECategorystdpairCHeroLogBookCHeroLogBookEn_Mcopy_00619a10
+  stdRbtreelonglongstdIdentitylongstdlesslongstdallocatorlong_erase_00639590
+  NPlayerGuiCDrawPerceivers_AddPerceivingThing_0064a2db
+  CTCVillage_IsNightTime_00658d07
+  CTCVillage_IsSociableTime_00658d5d
+  CTCVillage_IsCurfewTime_00658db3
+  CVillageTaskSecuritySweep_CVillageTaskSecuritySweep_0065dce8
+  stdvectorENavigatorTypestdallocatorENavigatorType_Mfillinsert_006726b0
+  CSimVoice_GetRandomSampleIndexVariation_00680840
+  CGameTimeManager_IsTimeBetween_006bb5b0
+  stdRbtreelongstdpairlongconstCOpinionDeedstdSelect1ststdpairlongconstCOpinionDee_erase_006c9220
+  CTCHeroExperience_GetOnHitSound_006d8bf0
+  global_GetAttackerProngSelectionCompareValue_006e7f00
+  stdRbtreeunsignedint64stdpairunsignedint64constCThingCreatureBasestdSelect1ststd_erase_006f3200
+  stdRbtreeCThingCreatureBasestdpairCThingCreatureBaseconstCAttackingCombatantInfo_erase_006f3340
+  NAnimationEventsCManager_GetExtraEventsBetweenTimes_006f95a0
+  NAnimationEventsCManager_GetExtraEventTime_006f96c0
+  CAnimSet_GetMeshAnim_0070c900
+  stdvectorCSubtitledMessagestdallocatorCSubtitledMessage_Mfillinsert_0071a2f0
+  CTCParticleAttachmentTracker_OnSetInLimbo_0071a850
+  std_CEntryfloatCIsSkeletalMorphLowerPriorityThan_007212d0
+  stdRbtreeCCharStringstdpairCCharStringconststdpairlonglongstdSelect1ststdpairCCh_erase_00756c60
+  stdRbtreelongstdpairlongconstCShopItemstdSelect1ststdpairlongconstCShopItemstdle_erase_00777b30
+  stdRbtreeCThingstdpairCThingconstfloatstdSelect1ststdpairCThingconstfloatstdless_erase_007e9d80
+  CThingFilterIsTargetableBehind_operator_008091a0
+  stdRbtreeunsignedint64stdpairunsignedint64constCGroupMemberDatastdSelect1ststdpa_erase_00813640
+  CTextureMorphs_GetAllMorphsOfType_0081b0a0
+  CThingBuilding_DrawGetEditDrawInfo_0082d0d0
+  std_CThingPosAndOrientation_0082f5c0
+  CThingAICreature_DrawGetEditDrawInfo_00830150
+  stdRbtreevoidvoidstdIdentityvoidstdlessvoidstdallocatorvoid_erase_00835960
+  stdRbtreeNScreenEffectCScreenEffectPriorityStackCStackEntryNScreenEffectCScreenE_erase_00884710
+  CEnvironmentSpellEffectInterface_CEnvironmentSpellEffectInterface_008852e0
+  NCreatureModeCModeScorpionKingVulnerable_OnDeactivate_008d9ca0
+  NCreatureModeCModeRockTrollVulnerable_Recover_008de700
+  NCreatureModeCModeIntangible_CModeIntangible_008e72d0
+  NCreatureModeCModeHoverBase_GetMovementSpeed_008ea8a0
+  NCreatureModeCModeHoverBase_GetBestHoverState_008ea930
+  LHNetworkLibLSocket_LSocket_008f8a80
+  CMessageEventFilterThingSearchFilterCThingFilterIn2DRange_operator_0090df60
+  CMessageEventFilterThingSearchFilterCThingFilterIsNavLineOfSightToThing_operator_0090dfb0
+  CAIStateGroupIdleAtHome_Update_00917380
+  CAIStateGroupMinionGuardGreetPlayer_IsRunnable_00929650
+  CAIStateGroupMinionSitAtHome_IsRunnable_00939180
+  stdRbtreeunsignedlongstdpairunsignedlongconstCThreadedFileManagerCFileObjectstdS_erase_00990d60
+  CWideString_operator_0099b150
+  CCharString_LoadFromFile_0099f2e0
+  CStringParser_ReadNextSymbol_009b99c0
+  CStringParser_SkipUntilWhitespace_009b9ce0
+  CDisplayManager_RemoveDeviceResetCallback_009bf5a0
+  stdRbtreeCBankFileAsyncDataCBankFileAsyncDatastdIdentityCBankFileAsyncDatastdles_erase_009d7f40
+  CConsole_AddCommandLineToHistory_009eaf80
+  CSurface_Lock_009f33e0
+  CInputManager_EmptyEventStore_009f5390
+  CGraphicBankManager_OpenGraphicBank_009f83d0
+  CTexture_Lock_009fa450
+  CGraphicDataBank_LoadVolumeGraphic_009fd9b0
+  CMeshBankManager_OpenMeshBank_00a09f20
+  CWParsedItem_InitAsInteger_00a0ca20
+  CProcessedInput_Clear_00a0d300
+  CLipSyncPhonemeSample_WriteToFile_00a48b50
+  C3DAnimation2_GetRotationAtTime_00a4e250
+  C3DAnimationStats_GetAllEvents_00a50bf0
+  CVolume_ReadOnlyLock_00a67530
+  CVolume_Lock_00a677d0
+  CVolumeTexture_Lock_00a685e0
+  std_pairCCharStringC3DDummyObject_00a6ee90
+  CNavNavigableLeafNode_IsNeighbourOf_00a76c30
+  CNavSwitchableLeafNode_IsNeighbourOf_00a76c70
+  CNavSwitchableLeafNode_Unlock_00a77420
+  CVertexStreamFormat_CalculateVertexSize_00ab37b0
+  CVertexStreamFormat_AddDataElement_00ab3810
+  C3DMeshPartitionElement_BuildSubElement_00ac2160
+  QuadricOptimiserInternalsCQuadric_EvaluateError_00ac6d50
+  QuadricOptimiserInternalsCOptimisedMesh_RemoveBones_00aca0c0
+  stdvectorQuadricOptimiserInternalsCOptimisedFacestdallocatorQuadricOptimiserInte_Minsertoverflow_00ad4100
+  std_lessunsignedlong_00ad59d0
+  std_lessunsignedlong_00ad6bc0
+  std_lessunsignedlong_00ad6d70
+  stdvectorQuadricOptimiserInternalsCUniqueVertexstdallocatorQuadricOptimiserInter_Minsertoverflow_00ad7c70
+  stdvectorQuadricOptimiserInternalsCOptimisedVertexstdallocatorQuadricOptimiserIn_Minsertoverflow_00ad81f0
+  CVertexGroupBlockOptimiser_FindBestStartingBlock_00ad94f0
+  std_CBlockInfo_00adb4d0
+  NParticleEngineCParticleEmitter_DeleteAllParticles_00aed180
+  NParticleEngineCParticle_CParticle_00af7b60
+  CLocalDetailCacheMapCQuadTreeElement_ValidationTest_00bde080
+  global_zdeflateInit2_00c01f90
+  global_zinflateCopy_00c03b80
+  global_zadler32_00c03cb0
+  global_lzo1xdecompress_00c06b90
+  global_lzo1xdecompresssafe_00c08170
+  global_oggstreamflush_00c8d170
+  global_oggsyncpageseek_00c8d510
+  global_oggstreamresetserialno_00c8d9c0
+  global_vorbisinfoclear_00c8dfb0
+  global_vorbissynthesis_00c8eda0
+  global_vorbisdspclear_00c8f650
+  global_vorbisanalysisblockout_00c8fba0
+  global_vorbissynthesislapout_00c90950
+  global_seedchase_00c92f10
+  global_vpremovefloor_00c93b30
+  global_vpnoisemask_00c93c40
+  global_vpoffsetandmix_00c93f60
+  global_couplelossless_00c941e0
+  global_vpquantizecouplememo_00c94490
+  global_vpquantizecouplesort_00c94600
+  global_vpnoisenormalize_00c94810
+  global_makewords_00c94fd0
+  global_bookunquantize_00c951b0
+  global_vorbisstaticbookpack_00c95ca0
+  global_vorbisstaticbookunpack_00c95ee0
+  global_vorbisbookdecodevsadd_00c96450
+  global_drfti1_00c96800
+  global_mdctinit_00c9bcd0
+  global_veenvelopeinit_00c9db40
+  global_vorbislpcfromdata_00c9e5d0
+  global_vorbislpcpredict_00c9e8f0
+  global_vorbisapplywindow_00c9ea80
+  global_mapping0pack_00c9ec40
+  global_mapping0unpack_00c9ed80
+  global_res0pack_00c9fea0
+  global_res0unpack_00c9ff80
+  global_res0look_00ca00e0
+  global_01class_00ca0680
+  global_01inverse_00ca0df0
+  global_res2inverse_00ca15c0
+  global_floor1pack_00ca17c0
+  global_floor1unpack_00ca1970
+  global_floor1look_00ca1be0
+  global_fitline_00ca2280
+  global_floor0inverse1_00ca3890
+  CPersistContextTransferableVectorbool_Resize_00cdd0a0

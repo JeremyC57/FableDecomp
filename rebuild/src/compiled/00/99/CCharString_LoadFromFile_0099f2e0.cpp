@@ -1,115 +1,49 @@
-#include "rebuild_abi.h"
-
-struct FableCharString_0099F2E0
-{
-    void* storage;
+// 0099f2e0 CCharString::LoadFromFile
+// Flags:
+// Leaf: ?LoadFromFile@CCharString@@QAEXAAVCAFile@@PAVCASuspendableProcess@@J@Z
+#include <new>
+#define CCharString Pass9CharStringStorage
+#define CCharStringData Pass9CharStringDataStorage
+#define CAFile Pass9FileStaticDeclaration
+#include "fable_filesystem.h"
+#undef CAFile
+#undef CCharStringData
+#undef CCharString
+#ifndef _MSC_VER
+#define __forceinline inline
+#define __cdecl
+#endif
+class CASuspendableProcess;
+class CBaseClass{public:virtual~CBaseClass();};
+class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};
+enum FileAccessType{};
+// Layout: actual RTTI CAFile primary CBaseClassNonCopyable4. Original virtual
+// order from CDiskFileWin32 vtable0122d06c, slots1..9 match donor overrides.
+class CAFile:public CBaseClassNonCopyable{public:
+ virtual~CAFile();virtual void Open(const CWideString&,FileAccessType,unsigned long)=0;
+ virtual void Close()=0;virtual void Read(void*,long,CASuspendableProcess*)=0;
+ virtual void Write(const void*,long,CASuspendableProcess*)=0;
+ virtual void SetPosition(long)=0;virtual void MovePosition(long)=0;
+ virtual long GetPosition()const=0;virtual void SetLength(long)=0;virtual long GetLength()const=0;
 };
-
-extern "C" void FABLE_FASTCALL
-FableCharStringRelease_0099E9B0(
-    FableCharString_0099F2E0* self,
-    void*);
-extern "C" void* FABLE_CDECL
-FableCharStringAllocate_00BFEA1A(unsigned long size);
-extern "C" void FABLE_FASTCALL
-FableCharStringStorageInitialise_009A0390(
-    void* storage,
-    void*,
-    long length,
-    unsigned long growth);
-
-// CCharString::LoadFromFile(
-//     CAFile&,
-//     CASuspendableProcess*,
-//     long) @ 0x0099F2E0.
-//
-// A length of -1 means "from the current file position to EOF". Retail
-// replaces any prior string allocation, creates a 17-byte shared string
-// descriptor, initializes its buffer with growth 0x20, then requests exactly
-// the selected byte count from CAFile.
-extern "C" __declspec(naked) void FABLE_FASTCALL
-FableCharStringLoadFromFile_0099F2E0(
-    FableCharString_0099F2E0* self,
-    void*,
-    void* file,
-    void* suspendableProcess,
-    long length)
-{
-    __asm
-    {
-        push ecx
-        push ebx
-        mov ebx, ecx
-        cmp dword ptr [ebx], 0
-        push ebp
-        push esi
-        push edi
-        mov dword ptr [esp + 10h], ebx
-        je noOldString
-        call FableCharStringRelease_0099E9B0
-
-noOldString:
-        mov edi, dword ptr [esp + 20h]
-        cmp edi, -1
-        mov ebp, dword ptr [esp + 18h]
-        jne haveLength
-        mov eax, dword ptr [ebp]
-        mov ecx, ebp
-        call dword ptr [eax + 24h]
-        mov edx, dword ptr [ebp]
-        mov ecx, ebp
-        mov edi, eax
-        call dword ptr [edx + 1Ch]
-        sub edi, eax
-
-haveLength:
-        push 11h
-        call FableCharStringAllocate_00BFEA1A
-        mov esi, eax
-        add esp, 4
-        test esi, esi
-        je allocationFailed
-        mov ebx, dword ptr [esi + 8]
-        mov dl, byte ptr [esi + 0Ch]
-        and ebx, 80000000h
-        mov dword ptr [esi + 8], ebx
-        mov ebx, 1
-        push 20h
-        or dl, bl
-        push edi
-        mov ecx, esi
-        mov dword ptr [esi], 0
-        mov dword ptr [esi + 4], 0
-        mov byte ptr [esi + 0Ch], dl
-        call FableCharStringStorageInitialise_009A0390
-        mov dword ptr [esi + 0Dh], ebx
-        mov ebx, dword ptr [esp + 10h]
-        jmp publishStorage
-
-allocationFailed:
-        xor esi, esi
-
-publishStorage:
-        test esi, esi
-        mov dword ptr [ebx], esi
-        je done
-        test edi, edi
-        jle done
-        mov ecx, dword ptr [esp + 1Ch]
-        mov edx, dword ptr [esi]
-        mov eax, dword ptr [ebp]
-        push ecx
-        push edi
-        push edx
-        mov ecx, ebp
-        call dword ptr [eax + 0Ch]
-
-done:
-        pop edi
-        pop esi
-        pop ebp
-        pop ebx
-        pop ecx
-        ret 0Ch
-    }
+// Layout: original CBasicString<char> is13 packed bytes and NoRefs is13.
+#pragma pack(push,1)
+template<class T>class CBasicString{public:
+ T*PData;unsigned long StringLength;unsigned long DataLength:31;bool UseFastExtend:1;
+ __forceinline CBasicString(unsigned long n,T c):PData(0),StringLength(0),DataLength(0),UseFastExtend(true){SetString(n,c);}
+protected:void SetString(unsigned long,T);
+};
+class CCharStringData{public:CBasicString<char>Data;long NoRefs;
+ __forceinline CCharStringData(long n,char c):Data(n,c),NoRefs(1){}
+};
+#pragma pack(pop)
+class CCharString{public:CCharStringData*PStringData;
+ void LoadFromFile(CAFile&,CASuspendableProcess*,long);
+protected:void UnassignString();
+};
+void CCharString::LoadFromFile(CAFile&file,CASuspendableProcess*process,long length){
+ if(PStringData)UnassignString();
+ if(length==-1)length=file.GetLength()-file.GetPosition();
+ PStringData=new CCharStringData(length,' ');
+ if(PStringData&&length>0)file.Read(PStringData->Data.PData,length,process);
 }

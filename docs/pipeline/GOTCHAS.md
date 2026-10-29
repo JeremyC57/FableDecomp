@@ -1596,3 +1596,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-10-29) A TC's interface type is its vtable slot 21 getter, size-optimised as `push N ; pop eax ; ret` (searching for `mov eax,N` finds only dead copies) (chunk 565).
 - (2026-10-29) objdump splits a switch function at its `$L` case labels: a tool pairing relocations with a function must merge those blocks or it misses every call after the first case (chunk 565).
 - (2026-10-29) `rebuild/manifest/status.json` / `compile-gate/retail-parity.json` are the Windows pipeline's snapshot (2026-09-07) and never see Linux-lane landings: report landing progress from `tools/landed_metrics.py` (run by write_decomp_dashboard.py), never from those files.
+- (2026-10-29) ChatGPT pass payloads carry module `Pass9` and template-stripped names: take module/name from the exact leaf and the package's undecorator output before landing.

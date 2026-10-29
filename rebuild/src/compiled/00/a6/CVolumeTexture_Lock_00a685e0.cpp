@@ -1,0 +1,27 @@
+// 00a685e0 CVolumeTexture::Lock
+// Leaf: ?Lock@CVolumeTexture@@QAE?AVCVolumeLockedBox@@KK@Z
+// Flags:
+#include <string.h>
+#include "rebuild_abi.h"
+struct _GUID;struct IDirect3DDevice9;
+enum _D3DFORMAT{D3DFMT_UNKNOWN=0};enum _D3DRESOURCETYPE{D3DRTYPE_VOLUME=2};enum _D3DPOOL{D3DPOOL_DEFAULT=0};enum _D3DTEXTUREFILTERTYPE{D3DTEXF_NONE=0};
+struct _D3DVOLUME_DESC{_D3DFORMAT Format;_D3DRESOURCETYPE Type;unsigned long Usage;_D3DPOOL Pool;unsigned int Width,Height,Depth;};struct _D3DBOX{unsigned int Left,Top,Right,Bottom,Front,Back;};struct _D3DLOCKED_BOX{int RowPitch,SlicePitch;void*pBits;};
+struct IUnknown{virtual long __stdcall QueryInterface(const _GUID&,void**)=0;virtual unsigned long __stdcall AddRef()=0;virtual unsigned long __stdcall Release()=0;};
+struct IDirect3DResource9:public IUnknown{virtual long __stdcall GetDevice(IDirect3DDevice9**)=0;virtual long __stdcall SetPrivateData(const _GUID&,const void*,unsigned long,unsigned long)=0;virtual long __stdcall GetPrivateData(const _GUID&,void*,unsigned long*)=0;virtual long __stdcall FreePrivateData(const _GUID&)=0;virtual unsigned long __stdcall SetPriority(unsigned long)=0;virtual unsigned long __stdcall GetPriority()=0;virtual void __stdcall PreLoad()=0;virtual _D3DRESOURCETYPE __stdcall GetType()=0;};
+struct IDirect3DBaseTexture9:public IDirect3DResource9{virtual unsigned long __stdcall SetLOD(unsigned long)=0;virtual unsigned long __stdcall GetLOD()=0;virtual unsigned long __stdcall GetLevelCount()=0;virtual long __stdcall SetAutoGenFilterType(_D3DTEXTUREFILTERTYPE)=0;virtual _D3DTEXTUREFILTERTYPE __stdcall GetAutoGenFilterType()=0;virtual void __stdcall GenerateMipSubLevels()=0;};
+struct IDirect3DVolume9;struct IDirect3DVolumeTexture9:public IDirect3DBaseTexture9{virtual long __stdcall GetLevelDesc(unsigned int,_D3DVOLUME_DESC*)=0;virtual long __stdcall GetVolumeLevel(unsigned int,IDirect3DVolume9**)=0;virtual long __stdcall LockBox(unsigned int,_D3DLOCKED_BOX*,const _D3DBOX*,unsigned long)=0;virtual long __stdcall UnlockBox(unsigned int)=0;virtual long __stdcall AddDirtyBox(const _D3DBOX*)=0;};
+#define CRenderStateManager CRenderStateManagerFields
+#include "engine/CRenderStateManager.h"
+#undef CRenderStateManager
+class CBaseClass{public:virtual~CBaseClass();};class CBaseClassNonCopyable:public CBaseClass{protected:virtual~CBaseClassNonCopyable();};class CInitBaseClass:public CBaseClass{public:bool Valid;};
+// Layout: receiver-only render declarations restore true primary bases; unread render-state storage is opaque and checked against its existing header.
+class CRenderStateManager:public CBaseClassNonCopyable{unsigned char unread[0x3a38];};class CRenderManagerCore:public CRenderStateManager{public:void WaitWhileResourceIsBusy(IDirect3DResource9*,float);};class CRenderManager2D:public CRenderManagerCore{};class CRenderManager:public CRenderManager2D{};
+namespace boost{template<class T>class scoped_ptr{T*ptr;public:T*operator->()const{return ptr;}};}
+class CSystemManager;class CDisplayManager:public CBaseClassNonCopyable{public:CSystemManager*SystemManager;boost::scoped_ptr<CRenderManager>PRenderManager;};class CCPPointerInfo;template<class T>class CCountedPointer{public:T*Data;CCPPointerInfo*Info;};
+class CSystemManager:public CInitBaseClass{unsigned char unread[0x58];public:CCountedPointer<CDisplayManager>PDisplayManager;};CSystemManager*__fastcall GFGetSystemManager();
+// Layout: the original nonpolymorphic parent of C3DExtentsI is unproved. Keep its first eight bytes opaque; SDK Width/Height words are implementation-only physical projections, not invented members or base classes.
+class C3DExtentsI{public:unsigned char prefix[8];long Z;C3DExtentsI(){}C3DExtentsI(long x,long y,long z){memcpy(prefix,&x,4);memcpy(prefix+4,&y,4);Z=z;}C3DExtentsI(const C3DExtentsI&o){memcpy(prefix,o.prefix,8);Z=o.Z;}};
+class CVolumeLockedBox{public:C3DExtentsI Dimensions;long RowPitch,SlicePitch;unsigned char*PMem;CVolumeLockedBox(){}CVolumeLockedBox(const CVolumeLockedBox&o):Dimensions(o.Dimensions),RowPitch(o.RowPitch),SlicePitch(o.SlicePitch),PMem(o.PMem){}};
+class CVolumeTexture:public CBaseClass{public:IDirect3DVolumeTexture9*PD3DVolumeTexture;long ByteLength;void*PData;virtual~CVolumeTexture();C3DExtentsI GetDimensions(unsigned long level)const{_D3DVOLUME_DESC desc;PD3DVolumeTexture->GetLevelDesc(level,&desc);return C3DExtentsI(desc.Width,desc.Height,desc.Depth);}CVolumeLockedBox Lock(unsigned long,unsigned long);};
+CVolumeLockedBox CVolumeTexture::Lock(unsigned long level,unsigned long flags){C3DExtentsI dimensions=GetDimensions(level);_D3DBOX box;box.Front=0;box.Top=0;box.Left=0;box.Bottom=reinterpret_cast<const long*>(dimensions.prefix)[1];box.Right=reinterpret_cast<const long*>(dimensions.prefix)[0];box.Back=dimensions.Z;CSystemManager*system=GFGetSystemManager();system->PDisplayManager.Data->PRenderManager->WaitWhileResourceIsBusy(PD3DVolumeTexture,1.0f);_D3DLOCKED_BOX locked;if(PD3DVolumeTexture->LockBox(level,&locked,&box,flags)>=0){CVolumeLockedBox result;result.Dimensions=dimensions;result.RowPitch=locked.RowPitch;result.SlicePitch=locked.SlicePitch;result.PMem=(unsigned char*)locked.pBits;return result;}return CVolumeLockedBox();}
+FABLE_STATIC_ASSERT(sizeof(CVolumeTexture)==16);FABLE_STATIC_ASSERT(sizeof(CRenderStateManager)==sizeof(CRenderStateManagerFields));FABLE_STATIC_ASSERT(sizeof(CVolumeLockedBox)==24);

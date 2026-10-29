@@ -91,3 +91,7 @@ joined them 2026-10-24 when chunk 339 landed both as genuine C++.
 - CBasicRetailBankManager_SetNavigatorEnabled_009a76d0.cpp moved here 2026-10-24 when the address landed as genuine C++.
 - CPersistContext_TransferSignedChar_004045c0_test.cpp moved here 2026-10-29 when the address landed as genuine C++ (chunk 561, as Transfer<bool>).
 - CPersistContext_TransferSignedChar_004045c0.cpp moved here 2026-10-29 when the address landed as genuine C++ (chunk 561, as Transfer<bool>).
+- CWideString_NotEqualWide_0099b150.cpp moved here 2026-10-29 when the address landed as genuine C++ (ChatGPT pass 9).
+- CWideString_NotEqualWide_0099b150_test.cpp moved here 2026-10-29 when the address landed as genuine C++ (ChatGPT pass 9).
+- CCharString_LoadFromFile_0099f2e0_test.cpp moved here 2026-10-29 when the address landed as genuine C++ (ChatGPT pass 9).
+- CCharString_LoadFromFile_0099f2e0.cpp moved here 2026-10-29 when the address landed as genuine C++ (ChatGPT pass 9).
