@@ -7,6 +7,7 @@ Superseded inputs: `docs/journal/2026-09/{PLAN_pre-roadmap,BACKLOG_pre-roadmap,A
 
 ## Current focus (2026-09)
 
+- [x] 2026-10-29 Chunks 561-573 + naming waves 5-8 + ChatGPT pass 9 (157 rows) landed; coverage 51,636 / 57,267 known (90.2%); resume from `docs/journal/2026-10/2026-10-29_HANDOFF.md`. Next: large-row chunks from the released pass 9 pool (quest-script rows 14/15), naming wave 9 (135 queued fixes), near misses 0x00919AE0 / 0x00E29B20.
 - [x] 2026-10-13 Grade batches `rebuild/candidates/manual/batches/2026-10-13_linux_b1/` `_b2/`, `_b3/` and `_b4/` with `verify_and_land.py`: 118/122 landed byte-exact under the Wine lane — `docs/journal/2026-10/LINUX_CONTAINER_LANE_2026-10-13.md`
 - [x] 2026-10-13 Batch 5 compile-as-you-go in the Linux lane: 58/71 landed (`rebuild/candidates/manual/batches/2026-10-13_linux_b5/README.md`); 13 instruction-order DIFFERs ledgered
 - [x] 2026-10-13 Family landing in the Linux lane: 2,800/2,832 rows from 67 opcode-skeleton families (`rebuild/candidates/manual/batches/2026-10-13_linux_f*/`, tooling `tools/decomp_pipeline/families/`); plus the 179-row CCharString-literal family (`_b6n/`). Catalog 21,786 byte-exact entries (44.0%)
