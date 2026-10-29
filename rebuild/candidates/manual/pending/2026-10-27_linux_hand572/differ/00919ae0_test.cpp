@@ -103,7 +103,7 @@ struct CAIStateGroup_BuyFromSeller {
         const CMessageEvent* reply;
         while ((reply = GetSellersReply(seller)) == 0) {
             if (!IsInWorkHours() || !IS_THING_ALIVE(seller)) { RemoveMessage(request); Terminate(); return; }
-            if (timeout < g_frame) break;
+            if (timeout < g_frame) { RemoveMessage(request); break; }
             if (IsFurtherThan(*seller, *Creature, g_proximity)) {
                 do {
                     if (!IsInWorkHours() || !IS_THING_ALIVE(seller)) { Terminate(); return; }
@@ -116,7 +116,7 @@ struct CAIStateGroup_BuyFromSeller {
             }
         }
         if (reply) { RemoveMessage(reply); accepted = reply->ExtraData != 0; }
-        else { RemoveMessage(request); accepted = false; }
+        else accepted = false;
         unsigned long reaction = accepted ? ThankingPhrase : IgnoringPhrase;
         do {
             if (!IsInWorkHours() || !IS_THING_ALIVE(seller)) { Terminate(); return; }

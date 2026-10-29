@@ -20,6 +20,6 @@ Fresh container: lane setup in `docs/pipeline/FRESH_SESSION_HANDOFF.md`; coordin
 1. Large-row chunks from `rebuild/candidates/manual/pending/2026-10-29_chatgpt_pass9/UNTOUCHED_RESERVED.tsv` (quest-script
    range first); at most two agents at a time.
 2. Naming wave 9: `naming/NAME_FIXES_QUEUE.tsv` chunks 566-574 (145 rows) + wave 8's 267 open decisions.
-3. Near misses: 0x00919AE0 (2217v2220), 0x00E29B20 (856v846), 0x00BEB6C0, 0x00F3E6B0; seven catalog rows to re-split.
+3. Near misses: 0x00919AE0 (2220v2220, two register choices), 0x00E29B20 (856v846), 0x00BEB6C0, 0x00F3E6B0; seven catalog rows to re-split.
 4. Older open work (one-address-one-name remainder, CRetailTree remainder, recheck sweep, retail_asm candidates):
    `docs/ROADMAP.md`.

@@ -1,5 +1,5 @@
 // CAIStateGroup_BuyFromSeller::Update() -- find the seller in our trade interaction, walk to him, pick a random stock item from his shop, ask for it, wait for his reply, say thanks or ignore, then leave the interaction
-// Grade: DIFFER(2217v2220) -- same 95 calls in retail order, same frame, same shared free tail; residue is register choice and one block placement: (1) participant loop loads *it straight into ebx (retail: mov ecx,[esi+8]; cmp ecx,eax; je; mov ebx,ecx = the 3 missing bytes, then the loop-align pads after it shift); (2) stock-filter loop has node/element in ebx/ebp, retail ebp/ebx; (3) the AIAction_DoNothing()==1 exit (RemoveMessage(request); jmp to the clear tail) sits after the reply path, retail puts it after the scratchpad GetTC has-path
+// Grade: DIFFER(2220v2220) -- same length, same 95 calls in retail order, same frame, same block layout and shared free tail; residue is two register choices of the global allocator: (1) participant loop loads *it straight into ebx (retail: mov ecx,[esi+8]; cmp ecx,eax; je; mov ebx,ecx, 3 bytes, so the two loop-align pads after it shift by 3 and one nop moves); (2) stock-filter loop has node/element in ebx/ebp, retail ebp/ebx (38 diff lines, all register renames)
 // Leaf: ?Update@CAIStateGroup_BuyFromSeller@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00919AE0, 2,220 bytes, ends at ret 0x0091A38B, no EH frame, ebp frame with and esp,-8.
 // Identity (proven): vtable 0x0128FF0C (RTTI CAIStateGroup_BuyFromSeller) slot 12 = this row (slot 11 IsRunnable 0x0091A390,
@@ -30,7 +30,12 @@
 //   clear and push_back, which let VC keep the list sentinel in esi / its spill slot [esp+18h]. (c) CWorld::GetMessageEventManager()
 //   (FableWin.pdb name) gives GetWorld before the argument push. (d) one `bool arrived` per move loop gives the [esp+12h] /
 //   [esp+13h] swap between the two loops. (e) the stock-item test is a named bool (stored to [esp+13h] like GetTC's has).
-//   (f) list::size() is STLport 4.6's distance(begin(), end()).
+//   (f) list::size() is STLport 4.6's distance(begin(), end()). (g) the wait loop's timeout branch removes the request INSIDE
+//   the loop (`RemoveMessage(request); break;`) and the post-loop `else` only sets `accepted = false`: that gives retail's
+//   block order [reply path ; jmp][timeout path falls into the scratchpad GetTC][has-path ; jmp][DoNothing exit][no-has]
+//   (VC7.1 flushes one deferred cold block per chain break in source order: the in-loop timeout block is flushed at the
+//   reply path's jmp, the DoNothing exit at the has-path's jmp). With the RemoveMessage in the post-loop else, the
+//   DoNothing exit is flushed first and lands between the reply and timeout paths (the 2217-byte round-1/2 shape).
 #include "engine/CAIBrain.h"
 #include "engine/CTCBase.h"                            // vptr +0, ParentThing +4 (flat generated header)
 #include <stddef.h>
@@ -503,8 +508,10 @@ void CAIStateGroup_BuyFromSeller::Update()
                 Terminate();
                 return;
             }
-            if (timeout < CWorld::GetFrame())
+            if (timeout < CWorld::GetFrame()) {
+                GetWorld().GetMessageEventManager().RemoveMessage(request);
                 break;
+            }
             if (IsFurtherThan(*seller, GetCreature(), g_BuyFromSellerProximity)) {
                 do {
                     if (!IsInWorkHours() || !IS_THING_ALIVE(seller)) {
@@ -528,10 +535,8 @@ void CAIStateGroup_BuyFromSeller::Update()
         if (reply) {
             GetWorld().GetMessageEventManager().RemoveMessage(reply);
             accepted = reply->ExtraData != 0;
-        } else {
-            GetWorld().GetMessageEventManager().RemoveMessage(request);
+        } else
             accepted = false;
-        }
     }
     CTCAIScratchpad* scratchpad;
     GetCreature().GetTC(&scratchpad);
