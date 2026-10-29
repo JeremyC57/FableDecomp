@@ -24715,3 +24715,15 @@ chunk	address	module	name	length
 564	00798620	CTCTurncoat	~CTCTurncoat	120
 564	007a0770	CLightningBeam	~CLightningBeam	126
 564	007a73f0	CTCActionUseBed	~CTCActionUseBed	161
+565	007a8be0	CTCBattleCharge	FrameUpdate	617
+565	007a9d60	CTCAssassinRush	~CTCAssassinRush	221
+565	007bf2b0	CTCShotDefinitionBase	~CTCShotDefinitionBase	153
+565	007c3f10	CTCActionUseBuyHouse	~CTCActionUseBuyHouse	146
+565	007c5db0	CTCGhostSword	MakeSwordsAppear	752
+565	007c7960	CTCTurncoat	~CTCTurncoat	149
+565	007c89f0	CTCFireballSpell	CastFireball	1000
+565	007ca8e0	CTCHeroReceiveItems	~CTCHeroReceiveItems	249
+565	007cbf60	CTCMultiArrow	~CTCMultiArrow	241
+565	007cdc20	CTCBurntEffect	~CTCBurntEffect	225
+565	007e39d0	CPersistContext	Transfer<signed_char>	200
+565	008320c0	CTCTavernGame	~CTCTavernGame	414
