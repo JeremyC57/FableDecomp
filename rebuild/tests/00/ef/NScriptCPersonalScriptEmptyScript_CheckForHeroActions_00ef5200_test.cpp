@@ -11,8 +11,8 @@ class CCharString { public:
     std::string s;
     CCharString() { }
     CCharString(const char* text) : s(text) { }
-    CCharString& operator+=(const CCharString& other) { s += other.s; return *this; }
-    CCharString& operator+=(const char* text) { s += text; return *this; }
+    const CCharString& operator+=(const CCharString& other) { s += other.s; return *this; }
+    const CCharString& operator+=(const char* text) { s += text; return *this; }
 };
 CCharString operator+(const char* left, const CCharString& right) { CCharString r(left); r.s += right.s; return r; }
 CCharString operator+(const CCharString& left, const char* right) { CCharString r = left; r.s += right; return r; }

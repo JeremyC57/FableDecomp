@@ -27,7 +27,7 @@ class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
     unsigned char m_dead : 1;                      // +0x91 bit 0
     unsigned char m_91_1 : 7;
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CThingPlayerCreature : public CThingCreatureBase { };
 class CPlayer {
@@ -59,7 +59,7 @@ void CInputProcessParalysed::ProcessInput(const CInputEvent& event, CProcessedIn
         if (++m_pressCount > 10) {
             CThingCreatureBase* hero = MyPlayer->GetPControlledCreature();
             if (hero && !hero->m_dead)
-                hero->SetCurrentAction(&CCombatAction_GenericBreakOffDrain(hero));
+                hero->SetCurrentAction(CCombatAction_GenericBreakOffDrain(hero));
         }
     }
 }

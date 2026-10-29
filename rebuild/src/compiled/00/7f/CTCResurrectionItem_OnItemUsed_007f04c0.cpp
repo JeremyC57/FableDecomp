@@ -40,7 +40,7 @@ public:
 };
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CCombatActionBase { public:                             // retail sizeof 0x114
@@ -88,7 +88,7 @@ void CTCResurrectionItem::OnItemUsed(CThingCreatureBase& creature)
             CTCDParticleEmitter* emitter = 0;
             if (effect->HasTC(0x4b))
                 emitter = effect->PTCDriver;
-            emitter->AttachToThing(&creature, 8, "", 0, 0.0f);
+            emitter->AttachToThing(creature, 8, "", 0, 0.0f);
         }
     }
     ParentThing->Kill(true);

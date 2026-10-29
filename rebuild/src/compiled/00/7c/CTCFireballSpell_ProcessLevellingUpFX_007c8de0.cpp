@@ -110,7 +110,7 @@ class CThingCreatureBase : public CThing { public:
 };
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position);   // 0x0072AB70
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCSoundPlayer { public:                         // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
@@ -170,7 +170,7 @@ void CTCFireballSpell::ProcessLevellingUpFX()
             CTCDParticleEmitter* emitter;
             if (effect->HasTC(0x4b))
                 emitter = (CTCDParticleEmitter*)effect->FindTC(0x4b);
-            emitter->AttachToThing(parent, 10, FireballAttachmentName, 0, 0.0f);
+            emitter->AttachToThing(*parent, 10, FireballAttachmentName, 0, 0.0f);
         }
     }
     CTCSoundPlayer* sound;

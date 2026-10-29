@@ -87,7 +87,7 @@ struct CEffectVector {                                  // vector<CIntelligentPo
 };
 
 class CTCDParticleEmitter { public:                            // interface 0x4B
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCSoundPlayer { public:                                 // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
@@ -145,7 +145,7 @@ void CTCTurncoat::ModifyTurncoatedness(float amount)
                 if (IS_THING_ALIVE(&TurncoatedEffect)) {
                     CTCDParticleEmitter* emitter;
                     TurncoatedEffect.GetPItem()->GetInterface(&emitter, 0x4b);
-                    emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
+                    emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
                 }
             }
         }
@@ -180,7 +180,7 @@ void CBaseIntelligentPointer::SetPItem(CThing* t) { m_pData = t; }
 CIntelligentPointer::CIntelligentPointer(CThing* t) { m_pData = t; }
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer* p) { return IsThingAlive(*p); }
 CIntelligentPointer* CEffectVector::erase(CIntelligentPointer* f, CIntelligentPointer* l) { ++g_erase; _M_finish = f; return f; }
-void CTCDParticleEmitter::AttachToThing(CThing*, long, const CCharString&, long, float) { ++g_attach; }
+void CTCDParticleEmitter::AttachToThing(CThing&, long, const CCharString&, long, float) { ++g_attach; }
 unsigned long CTCSoundPlayer::PlaySound(const CCharString&, long, long, long, long) { ++g_sound; return 0; }
 void CTCTurncoat::v00() {}
 int main()

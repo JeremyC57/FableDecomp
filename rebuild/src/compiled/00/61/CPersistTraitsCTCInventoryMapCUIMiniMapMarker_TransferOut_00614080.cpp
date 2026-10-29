@@ -20,8 +20,8 @@ public:
     CCharString();                                     // 0x0099E4B0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator+=(const char* text);         // 0x0099F100
-    CCharString& operator+=(const CCharString& other); // 0x0099F0A0
+    const CCharString& operator+=(const char* text);         // 0x0099F100
+    const CCharString& operator+=(const CCharString& other); // 0x0099F0A0
     static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560

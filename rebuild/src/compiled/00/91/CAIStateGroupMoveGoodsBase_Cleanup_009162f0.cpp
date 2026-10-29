@@ -67,7 +67,7 @@ class CThing { public:
         return 0;
     }
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
-    CTCBase* AddTC(const CCharString& name, bool b, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool b, const CTCParamsBase* params);   // 0x004C9D60
 };
 class CThingPlayerCreature : public CThing { };
 struct CActionBase {
@@ -113,7 +113,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
 };
 struct CAIStateGroup_MoveGoodsBase : CAIStateGroupBase {
     bool DroppingGoods;                         // +0x14
@@ -143,7 +145,7 @@ void CAIStateGroup_MoveGoodsBase::Cleanup()
         }
         if (solid) {
             solid->AddThingNotSolidTo(PBrain->PCreature);
-            solid->AddThingNotSolidTo(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
+            solid->AddThingNotSolidTo(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
         }
         carrying->RemoveThingFromPrimarySlot(false);
         CTCCreatureModeManager* modes;

@@ -188,7 +188,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
     unsigned long Random(unsigned long range)
     {

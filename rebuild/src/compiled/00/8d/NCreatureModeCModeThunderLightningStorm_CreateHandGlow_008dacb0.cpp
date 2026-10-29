@@ -107,7 +107,7 @@ class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CBaseObjectPointer;
@@ -157,7 +157,7 @@ void CModeThunderLightningStorm::CreateHandGlow()
             PHandGlow = CIntelligentPointer<CThing>(glow);
             CTCDParticleEmitter* emitter;
             if (glow->GetInterface(&emitter, 0x4b) && emitter)
-                emitter->AttachToThing(ParentThing, 10, "WEAPON_FOCUS_01", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 10, "WEAPON_FOCUS_01", 0, 0.0f);
         }
     }
 }

@@ -110,7 +110,7 @@ class CThing { public:
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCNymph { public:
     void StartFlyingAround(long frames);        // 0x0080F5E0
@@ -146,7 +146,7 @@ void CCreatureAction_NymphGetHit::PerformAction()
             CTCDParticleEmitter* emitter = 0;
             if (effect->HasTC(0x4b))
                 emitter = effect->GetTC<CTCDParticleEmitter>(0x4b);
-            emitter->AttachToThing(PCreature.GetPItem(), 10, "DUMMY_CENTRE", 0, 0.0f);
+            emitter->AttachToThing(*PCreature.GetPItem(), 10, "DUMMY_CENTRE", 0, 0.0f);
         }
     }
     CThing* creature = PCreature.GetPItem();
@@ -201,8 +201,8 @@ CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool 
     CHECK(position == &g_pos && !flag);
     return g_effectThing;
 }
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset)
-{
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long attachType, const CCharString& helperName, long helperIndex, float offset)
+{ CThing* thing = &thing_ref;
     ++g_attaches; g_lastAttachThing = thing; g_lastAttachType = attachType;
     strcpy(g_helper, (const char*)helperName.m_pData);
     CHECK(helperIndex == 0 && offset == 0.0f);

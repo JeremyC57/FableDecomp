@@ -139,7 +139,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
     return false;
 }
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
 class CTCKraken { public:
@@ -169,7 +169,7 @@ void CTCKraken::CreateHeadEffect(const CCharString& name)
             emitter = (CTCDParticleEmitter*)effect->m_tcs.Find(0x4b);
         {
         CCharString boneName("EFFECT_WATER");
-        emitter->AttachToThing(ParentThing, 0x4a, boneName, 0, 0.0f);
+        emitter->AttachToThing(*ParentThing, 0x4a, boneName, 0, 0.0f);
         }
     }
     ReleaseDef(effects);

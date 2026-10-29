@@ -125,7 +125,7 @@ class CPlayerGuiDef { public:
     C2DVector     ScriptTextLineStep;               // +0x8fc
     long          ScriptTextMaxLines;               // +0x904
 };
-extern CPlayerGuiDef* __fastcall PeekGuiDef();      // 0x00438570
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };      // 0x00438570
 struct CGuiResources {
     unsigned char _pad[0x1614c];
     CFontBank*    DefaultFont;                      // +0x1614c
@@ -159,7 +159,7 @@ void CDrawScriptScreenText::Draw(CEnginePrimitivePrepareInfo* info)
     }
     CList<SScriptLineNode>& lines = PlayerGui->ScriptLines;
     if (!lines.empty()) {
-        CPlayerGuiDef* def = PeekGuiDef();
+        const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
         CFontBank* font = g_pFontBankManager->GetFont(def->ScriptTextFont).m_pObject;
         C2DVector pos;
         GFACoordToVCoord(&def->ScriptTextPos, &pos);

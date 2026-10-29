@@ -22,7 +22,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
-CWideString __fastcall IntToWideString(long value);     // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);     // 0x00405F00
 template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
@@ -140,7 +140,7 @@ void CTCInventoryTrade::FinalConstructSubtitlesPC(NUISystem::CComponent* compone
         text = found->Text;
         if (found->Count > 0) {
             text += GetXString();
-            text += IntToWideString(found->Count);
+            text += GFIntToWideString(found->Count);
         }
     }
     CCountedPointer<NUISystem::CComponent> subtitle(manager->CreateComponent("PC_SUBTITLE", false));

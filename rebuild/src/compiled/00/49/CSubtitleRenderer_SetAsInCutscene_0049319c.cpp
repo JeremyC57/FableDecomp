@@ -32,7 +32,6 @@ class CPlayerGuiDef { public:
     unsigned char _pad[0x2c4];
     float         TextBoxCutsceneSecondsBeforeSkip;   // +0x2c4 (retail)
 };
-extern CPlayerGuiDef* __fastcall PeekGuiDef();          // 0x00438570
 class CFadeInFadeOutBase { public:                            // landed layout (0x00644526)
     bool       Active;                                  // +0x00
     float      FadeInTime;                              // +0x04
@@ -52,6 +51,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CPlayerGui { public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();          // 0x00438570
     unsigned char _pad[0x2bc];
     bool          NotInCutscene;                        // +0x2bc
 };
@@ -126,7 +126,7 @@ void CSubtitleRenderer::SetAsInCutscene(bool inCutscene)
     CutsceneSkipped = false;
     g_pPlayerGui->NotInCutscene = !inCutscene;
     if (InCutscene) {
-        const CPlayerGuiDef* gui = PeekGuiDef();
+        const CPlayerGuiDef* gui = &CPlayerGui::PeekGuiDef();
         SkipCutsceneTimer.Start(gui->TextBoxCutsceneSecondsBeforeSkip, 0.0f, CRGBColour(0, 0, 0, 255));
         SetButton1OverrideText("");
         SetButton2OverrideText("");

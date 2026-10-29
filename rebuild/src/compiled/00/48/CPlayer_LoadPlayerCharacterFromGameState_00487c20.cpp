@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00487C20, 192 bytes (+ int3 padding), `ret 4`.
 // Callees: the world's GetWorldMap (vtable slot 12, +0x30, three times) and GetThingManager (slot 3, +0xC),
 //   CWorldMap::GetRegionNumberFromName(const CCharString&) 0x004FC210, CWorldMap::LoadRegion 0x00500540,
-//   CThingManager::GetThingWithUID(__int64) 0x0051ED80 (catalogued "CStopWatch::GetTicks"), CThing::GetPos 0x004C73D0
+//   CThingManager::GetPThingWithUID(__int64) 0x0051ED80 (catalogued "CStopWatch::GetTicks"), CThing::GetPos 0x004C73D0
 //   (catalogued "CVertexBufferWin32::DoSizeof"), CWorldMap::SetPlayerPos(long, const C3DVector&, ELoadType) 0x005063E0,
 //   CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10.
 // Shape: CPlayerSave (Ego_r.pdb: CharacterUID ulong64 +0, RegionName CCharString +8). Every world-map call goes back
@@ -31,7 +31,7 @@ class CThing { public:
 };
 class CThingPlayerCreature;
 class CThingManager { public:
-    CThing* GetThingWithUID(__int64 uid);                   // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);                   // 0x0051ED80
 };
 
 typedef long ELoadType;
@@ -76,7 +76,7 @@ bool CPlayer_Methods::LoadPlayerCharacterFromGameState(const CPlayerSave& save)
     long region = GetWorld()->GetWorldMap()->GetRegionNumberFromName(save.RegionName);
     if (region != 0) {
         GetWorld()->GetWorldMap()->LoadRegion(region, false, true);
-        CThing* thing = GetWorld()->GetThingManager()->GetThingWithUID(save.CharacterUID);
+        CThing* thing = GetWorld()->GetThingManager()->GetPThingWithUID(save.CharacterUID);
         if (thing != 0) {
             GetWorld()->GetWorldMap()->SetPlayerPos(Number, thing->GetPos(), 0);
             PlayerCharacterPointer() = CIntelligentPointer<CThingPlayerCreature>((CThingPlayerCreature*)thing);

@@ -115,7 +115,7 @@ class CThing { public:
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCNymph { public:
     void StartFlyingAround(long frames);        // 0x0080F5E0
@@ -162,7 +162,7 @@ void CCreatureAction_NymphGetHit::PerformAction()
             CTCDParticleEmitter* emitter = 0;
             if (effect->HasTC(0x4b))
                 emitter = effect->GetTC<CTCDParticleEmitter>(0x4b);
-            emitter->AttachToThing(PCreature.GetPItem(), 10, "DUMMY_CENTRE", 0, 0.0f);
+            emitter->AttachToThing(*PCreature.GetPItem(), 10, "DUMMY_CENTRE", 0, 0.0f);
         }
     }
     CThing* creature = PCreature.GetPItem();

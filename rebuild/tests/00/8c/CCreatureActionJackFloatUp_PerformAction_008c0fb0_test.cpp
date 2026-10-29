@@ -33,7 +33,7 @@ struct CDefClassReference {
     CDefClassBase* operator->() const { return m_p; }
 };
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* t, long type, const CCharString& h, long, float) { g_attachTo = t; g_attachType = type; std::strcpy(g_helper, h.s); ++g_attaches; }
+    void AttachToThing(CThing& t_ref, long type, const CCharString& h, long, float) { CThing* t = &t_ref; g_attachTo = t; g_attachType = type; std::strcpy(g_helper, h.s); ++g_attaches; }
 };
 struct CTCAD { void AddDependentThing(CThing* t) { g_dep = t; ++g_deps; } };
 class CThing { public:
@@ -72,7 +72,7 @@ void CCreatureAction_JackFloatUp::PerformAction()
                 dependents->AddDependentThing(effect);
                 if (effect->HasTC(0x4b)) {
                     CTCDParticleEmitter* emitter = effect->PTCDriver;
-                    emitter->AttachToThing(GetCreature(), 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
+                    emitter->AttachToThing(*GetCreature(), 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
                 }
             }
         }

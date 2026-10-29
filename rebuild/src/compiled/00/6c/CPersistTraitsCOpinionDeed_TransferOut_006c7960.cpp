@@ -21,7 +21,7 @@ class CThing;
 class CCharString {
 public:
     class CCharStringData* PStringData;
-    CCharString& operator+=(const char* text);         // 0x0099F100
+    const CCharString& operator+=(const char* text);         // 0x0099F100
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 class CWorld {

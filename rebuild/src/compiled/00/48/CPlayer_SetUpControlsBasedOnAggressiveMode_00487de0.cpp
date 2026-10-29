@@ -20,7 +20,7 @@ class CThing { public:
 };
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(CCreatureActionBase* action); // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action); // 0x006644F0
 };
 class CThingPlayerCreature : public CThingCreatureBase { public: };
 
@@ -98,5 +98,5 @@ void CPlayer::SetUpControlsBasedOnAggressiveMode()
     CDefPointer<CGlobalDef> globalDef = DefinitionManager->GlobalDef;
     PlayerInterface->SetControlScheme(AggressiveMode ? globalDef->ControlSchemePCAggressive : globalDef->ControlSchemePC);
     if (!AggressiveMode && IsThingAlive(ControlledCreature.GetPItem()) && IsThingCarryingWeapon(ControlledCreature.GetPItem()))
-        ControlledCreature.GetPItem()->SetCurrentAction(&CCreatureAction_SheatheItemToInventory(ControlledCreature.GetPItem(), 0, 100));
+        ControlledCreature.GetPItem()->SetCurrentAction(CCreatureAction_SheatheItemToInventory(ControlledCreature.GetPItem(), 0, 100));
 }

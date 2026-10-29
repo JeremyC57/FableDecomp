@@ -7,7 +7,7 @@ class CThingCreatureBase;
 class CThingCreatureBase
 {
 public:
-    bool SetCurrentAction(CCreatureActionBase* pAction);
+    bool SetCurrentAction(const CCreatureActionBase& pAction);
 };
 
 class CGameScriptInterface
@@ -68,7 +68,7 @@ bool CGameScriptInterface::EntityCastForcePush(
             }
 
             const bool result =
-                pCreature->SetCurrentAction(reinterpret_cast<CCreatureActionBase*>(&action));
+                pCreature->SetCurrentAction(reinterpret_cast<const CCreatureActionBase&>(action));
 
             action.Destruct();
             return result;
@@ -87,8 +87,8 @@ static CCreatureActionBase* g_setActionArg = 0;
 static bool g_setActionResult = true;
 static CThingCreatureBase* g_ctorCreatureArg = 0;
 
-bool CThingCreatureBase::SetCurrentAction(CCreatureActionBase* pAction)
-{
+bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& pAction_ref)
+{ CCreatureActionBase* pAction = const_cast<CCreatureActionBase*>(&pAction_ref);
     g_setActionArg = pAction;
     g_actionFieldAtSet =
         reinterpret_cast<CCreatureAction_SheatheWeapons_Overlay*>(pAction)->m_Field110;

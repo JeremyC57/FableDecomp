@@ -6,7 +6,7 @@
 //   0x006C5688, 0x006C56A6, 0x006C56F6 (the landed CTCHeroOpinionDeedLog::OnInitialActivate 0x006C5680 among them).
 // Callees: CBaseIntelligentPointer::GetPItem() const @ 0x00A01B50 (three times), CVectorMap<ETCInterfaceType, CTCBase*>
 //   ::LowerBound @ 0x0040F020 (same-TU stand-in below), CThing::Kill(bool) @ 0x004C9B80,
-//   CThingManager::GetThingWithUID(__int64) @ 0x0051ED80 on the global at 0x013B8A1C, the CIntelligentPointer<CThing>
+//   CThingManager::GetPThingWithUID(__int64) @ 0x0051ED80 on the global at 0x013B8A1C, the CIntelligentPointer<CThing>
 //   temporary: CBaseIntelligentPointer() @ 0x00A01B10, SetPItem @ 0x00A01B90, ~CBaseIntelligentPointer @ 0x00A01C10;
 //   vtable 0x01238C6C.
 // Layout: CThing interface bitset +0x20 (type 0xEB = bit 11 of the word at +0x3C), interface map +0x44, dead bit +0x91;
@@ -73,7 +73,7 @@ public:
 
 class CThingManager {
 public:
-    CThing* GetThingWithUID(__int64 uid);               // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);               // 0x0051ED80
 };
 extern CThingManager* g_pThingManager;                  // 0x013B8A1C
 
@@ -112,6 +112,6 @@ void __fastcall GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>& po
     if (IsThingAlive((CThing*)pointer.GetPItem()) && pointer->GetInterface(&remap, TC_THING_UID_REMAP)) {
         unsigned __int64 uid = remap->RemapUID;
         pointer->Kill(false);
-        pointer = CIntelligentPointer<CThing>(g_pThingManager->GetThingWithUID(uid));
+        pointer = CIntelligentPointer<CThing>(g_pThingManager->GetPThingWithUID(uid));
     }
 }

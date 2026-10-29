@@ -22,7 +22,7 @@ class CWideString { public:
 };
 CWideString __fastcall operator+(const CWideString& a, const CWideString& b);  // 0x0099BE70
 CWideString __fastcall operator+(const CWideString& a, const wchar_t* b);      // 0x0099BF30
-CWideString __fastcall IntToWideString(long value);                            // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);                            // 0x00405F00
 
 namespace NGameText {
 class CDataBank { public:
@@ -95,11 +95,11 @@ CWideString CTCInventoryBase::GetPrerequisitesString(CDefPointer<const CQuestCar
         result += bank->GetTextBySymbol("TEXT_GUI_MENU_PREREQUISITES") + L":";
         for (SNode* node = def->Prerequisites.header->left; node != def->Prerequisites.header; node = Successor(node)) {
             if (node->first == 0) {
-                result += bank->GetTextBySymbol("TEXT_GUI_MENU_RENOWN") + L":" + IntToWideString(node->second);
+                result += bank->GetTextBySymbol("TEXT_GUI_MENU_RENOWN") + L":" + GFIntToWideString(node->second);
                 CTCHeroStats* stats;
                 if (ParentThing->GetInterface(&stats, 4) && stats) {
                     long renown = stats->RenownLevel;
-                    result += CWideString(L"(") + IntToWideString(renown) + CWideString(L")");
+                    result += CWideString(L"(") + GFIntToWideString(renown) + CWideString(L")");
                 }
             }
         }

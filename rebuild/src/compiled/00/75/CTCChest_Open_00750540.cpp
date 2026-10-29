@@ -105,7 +105,7 @@ public:
 };
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
     void SetAlwaysUpdate(bool always);                  // 0x006E0590
     void SetEmitterOrientation(CRightHandedSet* orientation);   // 0x006E0480
 };
@@ -180,7 +180,7 @@ void CTCChest::Open()
                 CThing* effect = ((CThing*)POpenParticle.GetPItem());
                 if (effect->HasTC(0x4b))
                     emitter = effect->PTCDriver;
-                emitter->AttachToThing(ParentThing, 1, "", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 1, "", 0, 0.0f);
                 emitter->SetAlwaysUpdate(true);
                 emitter->SetEmitterOrientation(ParentThing->Physics->GetOrientation());
             }

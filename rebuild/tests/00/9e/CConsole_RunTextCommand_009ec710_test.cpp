@@ -7,8 +7,8 @@ class CCharString { public:
     char Buf[128];
     CCharString(const char* s = "") { std::strcpy(Buf, s); }
     unsigned long GetLength() const { return (unsigned long)std::strlen(Buf); }
-    CCharString& operator+=(const CCharString& o) { std::strcat(Buf, o.Buf); return *this; }
-    CCharString& operator+=(const char* t) { std::strcat(Buf, t); return *this; }
+    const CCharString& operator+=(const CCharString& o) { std::strcat(Buf, o.Buf); return *this; }
+    const CCharString& operator+=(const char* t) { std::strcat(Buf, t); return *this; }
 };
 struct CCursorPos { bool InQuotes; };
 class CParsedItem { public: CCharString String; const CCharString& GetString() { return String; } };

@@ -74,7 +74,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
+    protected:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
+    public:
     unsigned long Random(unsigned long range) const
     {
         unsigned long* seed = GetPWorldSeed();

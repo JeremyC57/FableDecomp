@@ -42,7 +42,7 @@ public:
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
 };
 static CThing* g_lookup = 0; static int64_t_ g_askedUID = 0;
-class CThingManager { public: CThing* GetThingWithUID(int64_t_ uid) { g_askedUID = uid; return g_lookup; } };
+class CThingManager { public: CThing* GetPThingWithUID(int64_t_ uid) { g_askedUID = uid; return g_lookup; } };
 static CThingManager g_manager;
 struct CBaseIntelligentPointer {
     virtual void v00() {}
@@ -89,7 +89,7 @@ void CTCWallMount::OnInitialActivate()
 {
     if (TrophyID == 0)
         return;
-    Trophy = CIntelligentPointer<CThing>(GetThingManager()->GetThingWithUID(TrophyID));
+    Trophy = CIntelligentPointer<CThing>(GetThingManager()->GetPThingWithUID(TrophyID));
     if (IS_THING_ALIVE(Trophy)) {
         if (Trophy.GetPItem()->GetPhysicsTC())
             Trophy.GetPItem()->GetPhysicsTC()->SetPhysicsActive(false);

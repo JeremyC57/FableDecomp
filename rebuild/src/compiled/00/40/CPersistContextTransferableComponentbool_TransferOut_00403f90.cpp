@@ -16,7 +16,7 @@ class CPersistContext;
 
 class CCharString { public:
     char* m_pData;
-    CCharString& operator+=(const char* text);   // append a C string (0x0099F100)
+    const CCharString& operator+=(const char* text);   // append a C string (0x0099F100)
 };
 
 struct CPersistContext_TransferableComponent {

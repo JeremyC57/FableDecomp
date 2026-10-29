@@ -6,7 +6,7 @@ static CThing* g_lookup = 0; static long g_currentRegion = 5;
 struct CIntelligentPointer { CThing* item; CThing* GetPItem() const { return item; } };
 static bool IS_THING_ALIVE(const CIntelligentPointer* p) { return p->item && !(p->item->Flags91 & 1); }
 static bool IS_THING_ALIVE_RAW(CThing* const* p) { return *p && !((*p)->Flags91 & 1); }
-class CThingManager { public: CThing* GetThingWithUID(unsigned long long) { return g_lookup; } };
+class CThingManager { public: CThing* GetPThingWithUID(unsigned long long) { return g_lookup; } };
 class CWorldMap { public: long GetRegionNumberMapIsIn(long map) { return map / 10; } long GetCurrentRegionNumber() { return g_currentRegion; } };
 class CWorld { public: CThingManager tm; CWorldMap wm; CThingManager* GetThingManager() { return &tm; } CWorldMap* GetWorldMap() { return &wm; } };
 class CRGBColour { public: unsigned char B, G, R, A; };
@@ -35,7 +35,7 @@ bool CQuestInfoElementBar::Update()
     } else if (ThingValid && ThingUID && ThingMapNumber) {
         CWorldMap* map = world->GetWorldMap();
         if (map->GetCurrentRegionNumber() == map->GetRegionNumberMapIsIn(ThingMapNumber)) {
-            CThing* thing = world->GetThingManager()->GetThingWithUID(ThingUID);
+            CThing* thing = world->GetThingManager()->GetPThingWithUID(ThingUID);
             if (IS_THING_ALIVE_RAW(&thing)) {
                 CIntelligentPointer found = { thing };
                 PThing = found;

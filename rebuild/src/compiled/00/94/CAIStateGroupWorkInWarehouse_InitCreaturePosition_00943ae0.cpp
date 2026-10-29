@@ -3,7 +3,7 @@
 // Callees: virtual slot 11 (+0x2c, IsRunnable) on this, CBaseIntelligentPointer::GetPItem
 // @ 0x00A01B50 twice (PCrate at +0x1c, then the crate's owner pointer at +0x10 through the inline
 // accessor), CAIStateGroupBase::GetPWorld @ 0x008FCFA0 (the second copy of the PBrain -> +0x1c ->
-// +0x24 getter), CWorld::GetPRandomSeed @ 0x0049D810 (`[world+8] + 1613Ch`), GFFloatRandom
+// +0x24 getter), CWorld::GetWorldSeed @ 0x0049D810 (`[world+8] + 1613Ch`), GFFloatRandom
 // (float, unsigned long*) @ 0x004978A0 (__fastcall: the float on the stack, the seed in ecx),
 // CThingPhysical::GetPos @ 0x004C73D0, CThingCreatureBase::AutoPlaceNear(const C3DVector&,
 // float) @ 0x00665DF0 whose byte result is returned as is.
@@ -57,7 +57,7 @@ class CGame { public:
 class CWorld { public:
     unsigned char _pad[8];
     CGame* m_pGame;                             // +0x08
-    unsigned long* GetPRandomSeed() const;            // 0x0049D810
+    unsigned long* GetWorldSeed() const;            // 0x0049D810
 };
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978A0
@@ -95,7 +95,7 @@ bool CAIStateGroup_WorkInWarehouse::InitCreaturePosition()
     if (IsRunnable()) {
         CThing* warehouse = static_cast<CThingCrate*>(PCrate.GetPItem())->GetPWarehouse();
         CThingAICreature* creature = PBrain->Creature;
-        return creature->AutoPlaceNear(warehouse->GetPos(), GFFloatRandom(30.0f, PeekWorld().GetPRandomSeed()));
+        return creature->AutoPlaceNear(warehouse->GetPos(), GFFloatRandom(30.0f, PeekWorld().GetWorldSeed()));
     }
     return false;
 }

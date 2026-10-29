@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0064499C, length 838 bytes (biased ebp frame `lea ebp,[esp-0x74]`, `ret 4`).
 // Callees: CGameUI 0x00437860 (shows perceivers) / 0x00437880 (perceiver alpha) / Draw2DText 0x00438010, PeekGuiDef 0x00438570,
 //   GFAnchorToTopRight 0x00643CA1, _ftol 0x00BFEA70, faded alpha 0x00643D5D, CEnginePrimitive2DSprite 0x00493AC2, renderer slot 23,
-//   IntToWideString 0x00405F00 (__fastcall), CFontBank::GetStringWidth 0x0048DA62, GFACoordToVCoord 0x009E21D0, CWideString dtor
+//   GFIntToWideString 0x00405F00 (__fastcall), CFontBank::GetStringWidth 0x0048DA62, GFACoordToVCoord 0x009E21D0, CWideString dtor
 //   0x0099B510. Constants 0.5f 0x0122F59C, 1.0f 0x0122DED8, 2^32 0x0122DCB4.
 // Layout: retail CDrawPerceivers is the PDB minus 4 (State +0x28, Allegiance +0x2c, FrameInterp +0x30, ThrobScale +0x34, ThingCount
 //   +0x38); draw base Resources +0x10, Drawing +0x18, handle vector +0x1c; gui def +0x138..+0x16c (names descriptive). Modelled locally.
@@ -30,7 +30,7 @@ public:
     void* m_pStringData;
     ~CWideString();                                 // 0x0099B510
 };
-CWideString __fastcall IntToWideString(long value);  // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);  // 0x00405F00
 class CFontBank {
 public:
     float GetStringWidth(const CWideString& text);  // 0x0048DA62
@@ -76,7 +76,7 @@ class CPlayerGuiDef { public:
     float         ThrobTime;                        // +0x168
     float         MaxThrobScale;                    // +0x16c
 };
-extern CPlayerGuiDef* __fastcall PeekGuiDef();      // 0x00438570
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };      // 0x00438570
 struct CGameUI {
     bool IsShowingPerceivers();                     // 0x00437860
     unsigned char GetPerceiverAlpha();              // 0x00437880
@@ -119,7 +119,7 @@ void CDrawPerceivers::Draw(CEnginePrimitivePrepareInfo* info)
     if (alpha <= 0)
         return;
     Drawing = true;
-    CPlayerGuiDef* def = PeekGuiDef();
+    const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
     float target = (float)State;
     if (FrameInterp != target) {
         if (FrameInterp < target) {
@@ -155,7 +155,7 @@ void CDrawPerceivers::Draw(CEnginePrimitivePrepareInfo* info)
                                        0xff, 0xff, 2, C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
     info->Renderer->AddPrimitive(&Handles.Start[1], eyeSprite, 0xc0);
     if (ThingCount > 0) {
-        CWideString text = IntToWideString(Min(ThingCount, 99L));
+        CWideString text = GFIntToWideString(Min(ThingCount, 99L));
         C2DVector textPos = pos + def->CountOffset;
         textPos.X -= GetFont()->GetStringWidth(text) * 0.5f;
         C2DVector screen;

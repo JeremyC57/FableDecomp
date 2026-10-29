@@ -1,5 +1,7 @@
-// CBankFileAsyncData::PeekData() -- lock the pool handle on first access and return the data pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009D5530, oracle length 77 bytes (0x009D5530 and 0x009D5580 are byte-identical bodies).
+// CBankFileAsyncData::PeekData() const -- lock the pool handle on first access and return the data pointer
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009D5580, oracle length 77 bytes (0x009D5530 and 0x009D5580 are byte-identical bodies).
+// Name: Ego_r CBankFileAsyncData order IsFinished, GetData, PeekData, CanRelocateData (FableWin: GetData, PeekData) =
+//       retail 0x009D54E0, 0x009D5530, 0x009D5580, 0x009D55D0: this is the const PeekData (QBEPBXXZ).
 // Callees: CCriticalSectionLock ctor @ 0x00A62920 / dtor @ 0x00A629A0, CHandleBasedMemoryPool::Lock @ 0x00A026F0.
 //
 // Retail bytes:  sub esp,8 ; push esi ; mov esi,ecx ; mov eax,[esi+28h] ; push 0 ; add eax,14Ch ; push eax ; lea ecx,[esp+0Ch] ; call CCriticalSectionLock ;
@@ -52,12 +54,12 @@ class CBankFileAsyncData { public:
     bool                        m_relocating;     // +0x41
     unsigned char               _pad42[2];
     bool                        m_finished;       // +0x44
-    bool                        m_dataLocked;     // +0x45
+    mutable bool                m_dataLocked;     // +0x45 (set by the const PeekData)
     bool                        m_completionPending; // +0x46
-    void* PeekData();     // 0x009D5530 / 0x009D5580
+    const void* PeekData() const;                   // 0x009D5580
 };
 
-void* CBankFileAsyncData::PeekData()
+const void* CBankFileAsyncData::PeekData() const
 {
     CCriticalSectionLock_Retail lock(&m_pBank->m_section, false);
     if (m_pPool != 0 && m_handle != -1 && !m_dataLocked) {

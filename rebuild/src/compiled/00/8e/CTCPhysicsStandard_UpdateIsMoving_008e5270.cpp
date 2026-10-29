@@ -62,6 +62,7 @@ struct CTCPhysicsStandard : CTCPhysicsBase {
     bool PushableByHero : 1;                    //       bit 5
     bool ExcludingCreatures : 1;                //       bit 6
     bool Impassable : 1;                        //       bit 7
+protected:
     void UpdateIsMoving();
 };
 

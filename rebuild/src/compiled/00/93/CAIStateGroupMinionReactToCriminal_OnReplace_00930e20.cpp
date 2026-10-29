@@ -117,7 +117,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 
 class CTCCreatureModeManager { public:
-    void RemoveMode(long mode);                 // 0x0073ABA0
+    void RemoveMode(unsigned long mode);                 // 0x0073ABA0
 };
 struct CThingBuildingLock {
     unsigned char _pad[0xd4];

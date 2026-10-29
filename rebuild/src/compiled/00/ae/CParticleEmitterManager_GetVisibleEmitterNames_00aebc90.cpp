@@ -16,7 +16,7 @@ extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (MSVCR71)
 
 class CCharString { public:
     void* PStringData;
-    CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
     ~CCharString();                                     // 0x0099EAE0
 };
 CCharString __fastcall GFIntToCharString(long);                              // 0x0099F830

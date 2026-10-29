@@ -54,7 +54,7 @@ class CThing { public:
     }
 };
 class CTCCreatureNavigation { public:                  // interface 7
-    bool IsAbleToNavigateFromPosToPos(const C3DVector* from, const C3DVector* to, float tolerance);   // 0x006CB620
+    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance) const;   // 0x006CB620
     bool GetNearbyWanderPosition(const C3DVector* centre, float radius, C3DVector* result, bool flag); // 0x006CB6E0
 };
 class CBaseObject;
@@ -111,7 +111,7 @@ bool CAIStateGroupCreatureUseCoverBaseMethods::GetHiddenCoverPos(C3DVector& resu
     C3DVector offset(away.X * (radius * 0.75f), away.Y * (radius * 0.75f), away.Z * (radius * 0.75f));
     C3DVector target = cover->GetPos() + offset;
     if (navigation->GetNearbyWanderPosition(&target, radius * 0.15f, &result, false)
-        && navigation->IsAbleToNavigateFromPosToPos(&GetCreature()->GetPos(), &result, 2.0f))
+        && navigation->IsAbleToNavigateFromPosToPos(GetCreature()->GetPos(), result, 2.0f))
         return true;
     return false;
 }

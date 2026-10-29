@@ -10,7 +10,7 @@ class CCreatureActionBase;
 
 class CThingCreatureBase { public:
     void FinishCurrentAction();                             // 0x00662650
-    bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);     // 0x006644F0
 };
 
 struct SCountBlock;
@@ -33,7 +33,7 @@ void CTCAssassinRush::FinishMove(CThingCreatureBase* creature)
 {
     creature->FinishCurrentAction();
     if (FinalAction.m_pObject)
-        creature->SetCurrentAction(FinalAction.m_pObject);
+        creature->SetCurrentAction(*FinalAction.m_pObject);
     StartTrailDelay = true;
     CleanUpEffects();
 }

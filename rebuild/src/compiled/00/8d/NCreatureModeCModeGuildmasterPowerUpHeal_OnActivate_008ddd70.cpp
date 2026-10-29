@@ -111,14 +111,14 @@ class CThing { public:
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
     void SetSuspendAnimation(bool suspend, NCreatureMode::CModeBase* mode);   // 0x00833A10
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return CDefPointer<CDefClassBase>(m_pDef); }
 };
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
 struct CBaseIntelligentPointer {
@@ -244,7 +244,7 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
                     CThing* healEffect = CreateSpecialEffect(effect, m_pThing->GetPos(), false);
                     if (healEffect && !(healEffect->m_flags91 & 1) && healEffect->HasTC(0x4b)) {
                         CTCDParticleEmitter* emitter = (CTCDParticleEmitter*)healEffect->PTCDriver;
-                        emitter->AttachToThing(m_pThing, 10, "", 0, 0.0f);
+                        emitter->AttachToThing(*m_pThing, 10, "", 0, 0.0f);
                     }
                 }
             }

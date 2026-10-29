@@ -126,7 +126,9 @@ class CAIStateGroupBase { public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
 public:
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     void Terminate();                           // 0x008FCF40
     long AIAction_DoNothing();                  // 0x0097E200
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70

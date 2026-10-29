@@ -11,7 +11,7 @@ class CCharString { public:
     CCharString() : len(0) { text[0] = 0; }
     CCharString(const CCharString& o) : len(o.len) { std::memcpy(text, o.text, sizeof(text)); }
     ~CCharString() {}
-    CCharString& operator+=(char c) { text[len++] = c; text[len] = 0; return *this; }
+    const CCharString& operator+=(char c) { text[len++] = c; text[len] = 0; return *this; }
 };
 // a memory stream split into two source chunks so the overflow path is exercised
 class CDataInputStream { public:

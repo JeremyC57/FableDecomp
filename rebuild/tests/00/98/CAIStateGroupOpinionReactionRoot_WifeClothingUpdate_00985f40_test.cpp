@@ -111,7 +111,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 class CCharString { public:
     void* PStringData;
     CCharString(const CCharString& other);      // 0x0099EC30
-    CCharString& operator+=(const CCharString& other);   // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);   // 0x0099F0A0
     ~CCharString();                             // 0x0099EAE0
 };
 
@@ -154,7 +154,7 @@ bool CAIStateGroup_OpinionReactionRoot::WifeClothingUpdate(EOpinionAttitudeType 
 #include <stdlib.h>
 static int g_live = 0;
 CCharString::CCharString(const CCharString& other) { const char* s = (const char*)other.PStringData; char* p = (char*)malloc(strlen(s) + 1); strcpy(p, s); PStringData = p; ++g_live; }
-CCharString& CCharString::operator+=(const CCharString& other)
+const CCharString& CCharString::operator+=(const CCharString& other)
 {
     const char* a = (const char*)PStringData; const char* b = (const char*)other.PStringData;
     char* p = (char*)malloc(strlen(a) + strlen(b) + 1); strcpy(p, a); strcat(p, b); free(PStringData); PStringData = p; return *this;

@@ -6,8 +6,8 @@ class CCharString { public:
     char text[256];
     CCharString() { text[0] = 0; }
     CCharString(const char* s) { std::strcpy(text, s); }
-    CCharString& operator+=(const CCharString& other) { std::strcat(text, other.text); return *this; }
-    CCharString& operator+=(const char* s) { std::strcat(text, s); return *this; }
+    const CCharString& operator+=(const CCharString& other) { std::strcat(text, other.text); return *this; }
+    const CCharString& operator+=(const char* s) { std::strcat(text, s); return *this; }
 };
 CCharString operator+(const char* left, const CCharString& right) { CCharString r(left); r += right; return r; }
 CCharString operator+(const CCharString& left, const char* right) { CCharString r(left); r += right; return r; }

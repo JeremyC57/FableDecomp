@@ -11,8 +11,8 @@ public:
     CCharString(const char* t, long = -1) { std::strcpy(Text, t); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator+=(const char* t) { std::strcat(Text, t); return *this; }
-    CCharString& operator+=(const CCharString& o) { std::strcat(Text, o.Text); return *this; }
+    const CCharString& operator+=(const char* t) { std::strcat(Text, t); return *this; }
+    const CCharString& operator+=(const CCharString& o) { std::strcat(Text, o.Text); return *this; }
 };
 static CCharString GFIntToCharString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CCharString(b); }
 static int g_rand = 0;

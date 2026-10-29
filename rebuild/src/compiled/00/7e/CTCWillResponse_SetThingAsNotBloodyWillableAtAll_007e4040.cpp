@@ -52,7 +52,7 @@ public:
         STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
         return (T*)((it == map->m_pLast || T::INTERFACE_TYPE < it->first) ? map->m_pLast : it)->second;
     }
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     void RemoveTC(long kind);                   // 0x004C9840
 };
 

@@ -38,7 +38,7 @@ class CThing { public:
         return false;
     }
 };
-class CThingManager { public: CThing* things[8]; CThing* GetThingWithUID(int64_model uid) { return uid >= 0 && uid < 8 ? things[(long)uid] : 0; } };
+class CThingManager { public: CThing* things[8]; CThing* GetPThingWithUID(int64_model uid) { return uid >= 0 && uid < 8 ? things[(long)uid] : 0; } };
 class CTCTeleporter { public: long activations; bool lastActive; void SetAsActive(bool active) { ++activations; lastActive = active; } };
 struct CTCInventoryBase_Map {
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
@@ -58,7 +58,7 @@ void CTCInventoryMap::OnInitialActivate()
     if (uids) {
         for (int64_model* it = uids->_M_start; it != uids->_M_finish; ++it) {
             int64_model uid = *it;
-            CThing* thing = GetThingManager()->GetThingWithUID(uid);
+            CThing* thing = GetThingManager()->GetPThingWithUID(uid);
             if (thing && !thing->IsDead) {
                 CTCTeleporter* teleporter;
                 if (thing->GetInterface(&teleporter, 0xDD))

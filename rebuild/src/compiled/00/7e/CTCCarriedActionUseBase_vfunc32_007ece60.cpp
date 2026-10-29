@@ -12,7 +12,7 @@
 class CCreatureActionBase;
 
 class CThingCreatureBase { public:
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 struct SCountBlock {                        // the shared count block of a CCountedPointer
@@ -54,5 +54,5 @@ class CTCCarriedActionUseBase { public:
 
 void CTCCarriedActionUseBase::vfunc_32(CThingCreatureBase* user)
 {
-    user->SetCurrentAction(&CCreatureAction_SheatheItemToInventory(user, 0, 100));
+    user->SetCurrentAction(CCreatureAction_SheatheItemToInventory(user, 0, 100));
 }

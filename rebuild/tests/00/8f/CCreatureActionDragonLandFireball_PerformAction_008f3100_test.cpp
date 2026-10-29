@@ -102,7 +102,7 @@ class CThing { public:
     C3DVector             m_pos;
     CTCBase*              m_tc;
     const C3DVector& GetPosition() const { return m_pos; }
-    CTCBase* AddTC(const CCharString& name, bool init, CTCParamsBase* params)
+    CTCBase* AddTC(const CCharString& name, bool init, const CTCParamsBase* params)
     {
         std::strcpy(g_tcName, name.m_text); g_tcInit = init && params == 0; return m_tc;
     }

@@ -42,7 +42,7 @@ class CCreatureActionBase { public: int kind; void* target; };
 static int g_actions = 0; static void* g_target = 0; static int g_effectsUsed = 0; static int g_base = 0;
 class CThingCreatureBase : public CThing {
 public:
-    bool SetCurrentAction(CCreatureActionBase* action) { ++g_actions; g_target = action->target; return true; }
+    bool SetCurrentAction(const CCreatureActionBase& action_ref) { CCreatureActionBase* action = const_cast<CCreatureActionBase*>(&action_ref); ++g_actions; g_target = action->target; return true; }
 };
 inline bool IsThingAlive(const CThing* thing) { return thing && !(thing->m_stateFlags & 1); }
 class CTCWallMount : public CTCBase { public: CThing* mounted; CThing* GetMountedThing() { return mounted; } };
@@ -74,7 +74,7 @@ public:
                 }
             }
             CCreatureAction_UseWallMount action(user, ParentThing);
-            user->SetCurrentAction(&action);
+            user->SetCurrentAction(action);
         }
     }
 };

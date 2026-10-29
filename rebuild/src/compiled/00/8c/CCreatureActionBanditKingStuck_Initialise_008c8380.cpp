@@ -132,7 +132,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
 };
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
 class CCombatActionBase { public:                            // retail sizeof 0x114
@@ -169,7 +169,7 @@ void CCreatureAction_BanditKingStuck::Initialise()
             if (((CThing*)PStuckEffect.GetPItem()) && !(((CThing*)PStuckEffect.GetPItem())->m_flags91 & 1)) {
                 CTCDParticleEmitter* emitter = 0;
                 ((CThing*)PStuckEffect.GetPItem())->GetInterface(&emitter, 0x4b);
-                emitter->AttachToThing(((CThing*)PCreature.GetPItem()), 0x2a, "", 0, 0);
+                emitter->AttachToThing(*(((CThing*)PCreature.GetPItem())), 0x2a, "", 0, 0);
             }
         }
     }

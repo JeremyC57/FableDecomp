@@ -158,7 +158,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
     void Terminate();                           // 0x008FCF40
     bool IsStopping();                          // 0x008FD010
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
     unsigned long Random(unsigned long range)
     {

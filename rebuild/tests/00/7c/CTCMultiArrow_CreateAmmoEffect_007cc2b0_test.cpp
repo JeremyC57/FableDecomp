@@ -131,7 +131,7 @@ CThing* __fastcall CreateParticleEffect(long type, const C3DVector& position);  
 
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 
 #pragma pack(push, 1)
@@ -194,7 +194,7 @@ void CTCMultiArrow::CreateAmmoEffect()
                 CTCDParticleEmitter* emitter;
                 effect.GetPItem()->GetInterface(&emitter, 0x4b);
                 if (emitter)
-                    emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
+                    emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
             }
             AmmoEffects.push_back(effect);
         }
@@ -218,8 +218,8 @@ const C3DVector& CThing::GetPosition() const { return g_pos; }
 static CThing* g_created; static long g_createdType; static const C3DVector* g_createdPos; static int g_creates;
 CThing* __fastcall CreateParticleEffect(long type, const C3DVector& position) { g_createdType = type; g_createdPos = &position; g_creates++; return g_created; }
 static void* g_attachThis; static CThing* g_attachThing; static long g_attachType, g_attachIndex; static float g_attachOff; static const char* g_attachName; static int g_attaches;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long attachType, const CCharString&, long helperIndex, float offset)
-{ g_attachThis = this; g_attachThing = thing; g_attachType = attachType; g_attachIndex = helperIndex; g_attachOff = offset; g_attachName = g_lastText; g_attaches++; }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long attachType, const CCharString&, long helperIndex, float offset)
+{ CThing* thing = &thing_ref; g_attachThis = this; g_attachThing = thing; g_attachType = attachType; g_attachIndex = helperIndex; g_attachOff = offset; g_attachName = g_lastText; g_attaches++; }
 void CBaseIntelligentPointer::v00() {}
 CBaseIntelligentPointer::CBaseIntelligentPointer() { m_pItem = 0; }
 CBaseIntelligentPointer::~CBaseIntelligentPointer() {}

@@ -13,7 +13,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1) { std::strcpy(Buf, text); ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Buf, o.Buf); ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator+=(const CCharString& other) { std::strcat(Buf, other.Buf); return *this; }
+    const CCharString& operator+=(const CCharString& other) { std::strcat(Buf, other.Buf); return *this; }
 };
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right) { CCharString r(left); std::strcat(r.Buf, right.Buf); return r; }
 CCharString __fastcall operator+(const CCharString& left, const char* right) { CCharString r(left); std::strcat(r.Buf, right); return r; }

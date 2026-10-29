@@ -6,8 +6,8 @@ class CCharString { public:
     CCharString(const char* text, long = -1) { std::strcpy(Text, text); }
     CCharString(const CCharString& o) { std::strcpy(Text, o.Text); }
     ~CCharString() {}
-    CCharString& operator+=(const char* text) { std::strcat(Text, text); return *this; }
-    CCharString& operator+=(const CCharString& other) { std::strcat(Text, other.Text); return *this; }
+    const CCharString& operator+=(const char* text) { std::strcat(Text, text); return *this; }
+    const CCharString& operator+=(const CCharString& other) { std::strcat(Text, other.Text); return *this; }
 };
 CCharString GFIntToCharString(long value) { char b[16]; std::sprintf(b, "%ld", value); return CCharString(b); }
 CCharString operator+(const CCharString& left, const char* right) { CCharString r(left); r += right; return r; }

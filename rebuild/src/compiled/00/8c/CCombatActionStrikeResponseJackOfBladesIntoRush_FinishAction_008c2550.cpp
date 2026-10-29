@@ -132,7 +132,7 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 struct CBaseIntelligentPointer {
@@ -232,7 +232,7 @@ void CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction()
         CThingCreatureBase* creature = PCreature.GetPItem();
         CCombatAction_GenericStrikeResponseBase::FinishAction();
         CCountedPointer_CCreatureActionBase finalAction(new CCreatureAction_PlayCombatAnimation(creature, "RUSH_OUTOF", true));
-        GetCreature()->SetCurrentAction(&CCreatureAction_CastAssassinRush(creature, direction, distance, false, 0, finalAction));
+        GetCreature()->SetCurrentAction(CCreatureAction_CastAssassinRush(creature, direction, distance, false, 0, finalAction));
     } else
         CCombatAction_GenericStrikeResponseBase::FinishAction();
 }

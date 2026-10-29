@@ -149,7 +149,7 @@ public:
 };
 class CThingCreatureBase : public CThing {};
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 extern CCharString g_LeftHandAttachmentName;          // 0x013BAC34
 CThing* __fastcall CreateParticleEffect(long type, const C3DVector* position);   // 0x0072AB70
@@ -202,7 +202,7 @@ CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingC
             CThing* effect = CreateParticleEffect(effectType, &GetCreature()->GetPosition());
             CTCDParticleEmitter* emitter;
             if (effect && !effect->IsDead() && effect->GetInterface(&emitter, 0x4b))
-                emitter->AttachToThing(GetCreature(), 10, g_LeftHandAttachmentName, 0, 0);
+                emitter->AttachToThing(*GetCreature(), 10, g_LeftHandAttachmentName, 0, 0);
         }
     }
 }
@@ -229,7 +229,7 @@ CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { return g_mgr;
 long CGameDefinitionManager::GetDefIndexFromName(const CCharString& name, long column) { g_defName = (const char*)name.PStringData; g_defColumn = column; return 1234; }
 void* FindDef_CGameDefinitionManager_GetDef(long index) { g_getDefIndex = index; return g_defObj; }
 unsigned long CTCSound::PlaySound(const CCharString& name, long a, long b, long c, long d) { g_plays++; g_playThis = this; g_playName = (const char*)name.PStringData; g_playArgs[0] = a; g_playArgs[1] = b; g_playArgs[2] = c; g_playArgs[3] = d; return 1; }
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b) { g_attaches++; g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachName = &boneName; g_attachA = a; g_attachB = b; }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long boneIndex, const CCharString& boneName, long a, float b) { CThing* thing = &thing_ref; g_attaches++; g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachName = &boneName; g_attachA = a; g_attachB = b; }
 static C3DVector g_pos = { 1.0f, 2.0f, 3.0f };
 const C3DVector& CThing::GetPosition() const { return g_pos; }
 CThing* __fastcall CreateParticleEffect(long type, const C3DVector* position) { g_effects++; g_effectType = type; g_effectPos = position; return g_spawned; }

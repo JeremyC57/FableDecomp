@@ -81,7 +81,7 @@ struct CDefPointer {                            // CDefPointer<const CDefClassBa
 };
 class CThing;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing { public:
     unsigned char _pad0[0x28];
@@ -152,7 +152,7 @@ void CCreatureAction_WaspQueenDeath::Initialise()
                 CTCDParticleEmitter* emitter;
                 if (effect->GetTCParticleEmitter(&emitter)) {
                     CCharString helper("TARGET_CURSOR_POINT");
-                    emitter->AttachToThing(PCreature.GetPItem(), 0xc, helper, 0, 0.0f);
+                    emitter->AttachToThing(*PCreature.GetPItem(), 0xc, helper, 0, 0.0f);
                 }
             }
         }
@@ -197,8 +197,8 @@ CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool 
     CHECK(position == &g_pos && !flag);
     return g_effectThing;
 }
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset)
-{
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long attachType, const CCharString& helperName, long helperIndex, float offset)
+{ CThing* thing = &thing_ref;
     ++g_attaches; g_lastAttachThing = thing; g_lastAttachType = attachType;
     strcpy(g_helper, (const char*)helperName.m_pData);
     CHECK(helperIndex == 0 && offset == 0.0f);

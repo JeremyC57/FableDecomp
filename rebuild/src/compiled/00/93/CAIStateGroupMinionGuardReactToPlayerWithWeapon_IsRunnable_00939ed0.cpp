@@ -97,11 +97,11 @@ class CAIStateGroupBase { public:
     long ScriptAIPriority;                      // +0x08
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
-public:
-protected:
     CWorld& GetWorld() const;    // 0x008FCFC0
 public:
 };
@@ -124,7 +124,7 @@ bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable()
         if (((CThing*)Player.GetPItem()) == 0) {
             NumberOfTimesPlayerTold = 0;
             FrameLastToldPlayer = 0;
-            Player = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+            Player = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         } else if (NumberOfTimesPlayerTold > 0) {
             const CWorld& world = GetWorld();
             long fps = g_framesPerSecond;

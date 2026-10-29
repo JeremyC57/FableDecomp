@@ -5,7 +5,7 @@
 
 class CCharString { public: const char* text; CCharString(const char* t) : text(t) {} };
 class CWideString { public: long value; };
-static CWideString LongToWideString(long v) { CWideString w; w.value = v; return w; }
+static CWideString GFIntToWideString(long v) { CWideString w; w.value = v; return w; }
 class C2DCoordI { public: long X, Y; };
 class CRGBColour { public:
     unsigned char B, G, R, A;
@@ -50,7 +50,7 @@ CComponent* CManager::CreateLevelSlider(const CWideString& text, const C2DCoordI
         caption->SetText(text, true, true);
     CComponent* number = slider->FindChild(CCharString("UI_LEVEL_SLIDER_NUMBER"));
     if (number)
-        number->SetText(LongToWideString(level), true, true);
+        number->SetText(GFIntToWideString(level), true, true);
     CComponent* fill = slider->FindChild(CCharString("UI_LEVEL_SLIDER_FILL_SPRITE"));
     if (fill) {
         CStateMap& fillStates = fill->GetStateMap();

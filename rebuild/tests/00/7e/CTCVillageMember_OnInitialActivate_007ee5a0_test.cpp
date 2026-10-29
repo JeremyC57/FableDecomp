@@ -43,7 +43,7 @@ class CTCVillage { public:
     void AddThingToVillage(CThing& thing);      // 0x0065B854
 };
 class CThingManager { public:
-    CThing* GetThingWithUID(unsigned __int64 uid);   // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);   // 0x0051ED80
 };
 class CThingFilter_HasTC { public:
     long Type;                                  // ETCInterfaceType
@@ -75,7 +75,7 @@ class CTCVillageMember { public:
 void CTCVillageMember::OnInitialActivate()
 {
     if (VillageUID != 0) {
-        CThing* villageThing = GetThingManager()->GetThingWithUID(VillageUID);
+        CThing* villageThing = GetThingManager()->GetPThingWithUID(VillageUID);
         if (villageThing) {
             CTCVillage* village;
             villageThing->GetInterface(&village, 0x22);
@@ -97,7 +97,7 @@ static CThing* g_added; static int g_adds;
 static CTCVillage g_village;
 void CTCVillage::AddThingToVillage(CThing& thing) { if (this == &g_village) ++g_adds; g_added = &thing; }
 static CThing g_villageThing; static unsigned __int64 g_askedUID;
-CThing* CThingManager::GetThingWithUID(unsigned __int64 uid) { g_askedUID = uid; return uid == 0x100000002ULL ? &g_villageThing : 0; }
+CThing* CThingManager::GetPThingWithUID(unsigned __int64 uid) { g_askedUID = uid; return uid == 0x100000002ULL ? &g_villageThing : 0; }
 static int g_searches; static long g_searchType;
 template <class TFilter, class TThing> bool CThingSearchTools::GetPFirstThing(const TFilter& filter, TThing** out) const
 { ++g_searches; g_searchType = filter.Type; *out = 0; return false; }

@@ -1,5 +1,7 @@
 // CBankFileAsyncData::GetData() -- lock the pool handle on first access and return the data pointer
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x009D5580, oracle length 77 bytes (0x009D5530 and 0x009D5580 are byte-identical bodies).
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x009D5530, oracle length 77 bytes (0x009D5530 and 0x009D5580 are byte-identical bodies).
+// Name: Ego_r CBankFileAsyncData order IsFinished, GetData, PeekData, CanRelocateData (FableWin: GetData, PeekData) =
+//       retail 0x009D54E0, 0x009D5530, 0x009D5580, 0x009D55D0: this is GetData (QAEPAXXZ); PeekData is the const twin.
 // Callees: CCriticalSectionLock ctor @ 0x00A62920 / dtor @ 0x00A629A0, CHandleBasedMemoryPool::Lock @ 0x00A026F0.
 //
 // Retail bytes:  sub esp,8 ; push esi ; mov esi,ecx ; mov eax,[esi+28h] ; push 0 ; add eax,14Ch ; push eax ; lea ecx,[esp+0Ch] ; call CCriticalSectionLock ;
@@ -54,7 +56,7 @@ class CBankFileAsyncData { public:
     bool                        m_finished;       // +0x44
     bool                        m_dataLocked;     // +0x45
     bool                        m_completionPending; // +0x46
-    void* GetData();     // 0x009D5530 / 0x009D5580
+    void* GetData();                                // 0x009D5530
 };
 
 void* CBankFileAsyncData::GetData()

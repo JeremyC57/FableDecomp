@@ -18,7 +18,7 @@ class CCharString { public:
     CCharString() : m_tag(0) {}
     explicit CCharString(UInt64 value) : m_tag(3) { g_formatted = value; }
     ~CCharString() { ++g_destroyed; }
-    CCharString& operator+=(const CCharString& other) { m_tag += other.m_tag; ++g_appended; return *this; }
+    const CCharString& operator+=(const CCharString& other) { m_tag += other.m_tag; ++g_appended; return *this; }
 };
 struct CPersistContext_TransferableComponent {
     virtual void TransferOut(CPersistContext* context, CCharString* out);

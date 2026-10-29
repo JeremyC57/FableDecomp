@@ -61,8 +61,8 @@ class CThingCreatureBase { public:
             it = map->last;
         return it->component;
     }
-    bool SetCurrentAction(CCreatureActionBase* action)
-    {
+    bool SetCurrentAction(const CCreatureActionBase& action_ref)
+    { CCreatureActionBase* action = const_cast<CCreatureActionBase*>(&action_ref);
         CCreatureAction_ActivateQuest* a = (CCreatureAction_ActivateQuest*)action;
         ActionName = a->ScriptName.m_pData; ActionLoad = a->LoadResources; ActionObject = a->PObjectToUse.m_pItem; ActionOwner = a->Owner;
         Log('S');
@@ -89,7 +89,7 @@ void CTCCarriedActionUseSpade::vfunc_28(CThingCreatureBase* user)
     CTCCarriedActionUseBase::OnUseBase(user);
     if (IsThingAbleToDig(user)) {
         CCharString name("Expression_Dig", -1);
-        user->SetCurrentAction(AddressOf(CCreatureAction_ActivateQuest(user, 0, name, false)));
+        user->SetCurrentAction(*(AddressOf(CCreatureAction_ActivateQuest(user, 0, name, false))));
     }
     if (ParentThing->HasTC(0x1a))
         ((CTCShowableItem*)ParentThing->GetTC(0x1a))->OnShowEnded();

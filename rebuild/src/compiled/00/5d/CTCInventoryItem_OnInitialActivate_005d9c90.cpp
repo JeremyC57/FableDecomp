@@ -1,6 +1,6 @@
 // CTCInventoryItem::OnInitialActivate() -- an item created outside an inventory but tagged with an inventory owner's UID attaches itself: finds the live owner thing, looks up its inventory component of the def's InventoryType and adds the item to it; then the CTCBase hook
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005D9C90, length 215 bytes; speed TU (no frame pointer). CTCInventoryItem vtable 0x01240004 slot 6 (OnInitialActivate).
-// Callees: CTCBase::GetThingManager() @ 0x00686AE0, CThingManager::GetThingWithUID(unsigned __int64) @ 0x0051ED80 (manifest "CStopWatch::GetTicks"
+// Callees: CTCBase::GetThingManager() @ 0x00686AE0, CThingManager::GetPThingWithUID(unsigned __int64) @ 0x0051ED80 (manifest "CStopWatch::GetTicks"
 // is propagated), the inlined std::bitset<274>::test with its range check (`puts("bitset")` @ 0x00BFEAF2 then `abort` @ 0x00BFEAEC, the
 // exception-less STLport throw) over the thing's presence words at +0x20, CVectorMap::LowerBound @ 0x0040F020 on the interface map at
 // +0x44, CTCInventoryItem::AddToInventory(CTCInventoryBase*, bool, bool, long, bool, bool) @ 0x005D8D50, CTCBase::OnInitialActivate
@@ -74,7 +74,7 @@ class CThing { public:
     }
 };
 class CThingManager { public:
-    CThing* GetThingWithUID(unsigned __int64 uid);   // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);   // 0x0051ED80
 };
 struct CTCInventoryBase;
 class CTCBase { public:
@@ -102,7 +102,7 @@ void CTCInventoryItem::OnInitialActivate()
     CThing* owner;
     long inventoryType;
     if (PInventory == 0 && InventoryUIDToAttachTo > 0) {
-        owner = GetThingManager().GetThingWithUID(InventoryUIDToAttachTo);
+        owner = GetThingManager().GetPThingWithUID(InventoryUIDToAttachTo);
         if (owner && !owner->Dead) {
             inventoryType = GetPDef()->InventoryType;
             CTCInventoryBase* inventory;

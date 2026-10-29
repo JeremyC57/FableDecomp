@@ -54,7 +54,7 @@ public:
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float delay);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float delay);   // 0x006E0BE0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -103,7 +103,7 @@ void CFirePoint::Reset()
             CTCDParticleEmitter* emitter = 0;
             if (effect->HasTC(0x4b))
                 emitter = effect->GetTC<CTCDParticleEmitter>(0x4b);
-            emitter->AttachToThing(PParentThing, 0x1c, HelperName, HelperIndex, 0.0f);
+            emitter->AttachToThing(*PParentThing, 0x1c, HelperName, HelperIndex, 0.0f);
         }
     }
     Burning = false;

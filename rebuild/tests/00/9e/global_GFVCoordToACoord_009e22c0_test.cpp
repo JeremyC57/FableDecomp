@@ -7,7 +7,7 @@ class CDisplayManager
 {
 public:
     long m_width, m_height;
-    C2DExtentsI GetRenderTargetDimensions() const { C2DExtentsI e; e.X = m_width; e.Y = m_height; return e; }
+    const C2DExtentsI GetRenderTargetDimensions() { C2DExtentsI e; e.X = m_width; e.Y = m_height; return e; }
 };
 
 class CSystemManager

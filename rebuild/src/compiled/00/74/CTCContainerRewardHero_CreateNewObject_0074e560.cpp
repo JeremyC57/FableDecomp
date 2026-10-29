@@ -5,7 +5,7 @@
 // (static `__fastcall`, Ego_r.pdb), CTCPhysicsBase::ApplyAcceleration(const C3DVector&) 0x006B0210, CTCBase::PeekWorld() const 0x00686A80 and the world's
 // random-seed accessor 0x0049D810, GFFloatRandom(float, ulong*) 0x004978A0 (`__fastcall`), the physics' slot 66 (+0x108,
 // float spin), CCharString(const char*, long) 0x0099EBF0 ("CTCSolidToThing" 0x0123B47C, "CTCLifeTimer" 0x0123E424) / ~
-// 0x0099EAE0, CThing::AddTC(const CCharString&, bool, CTCParamsBase*) 0x004C9D60, CTCSolidToThing::AddThingNotSolidTo
+// 0x0099EAE0, CThing::AddTC(const CCharString&, bool, const CTCParamsBase*) 0x004C9D60, CTCSolidToThing::AddThingNotSolidTo
 // 0x00770FA0, CTCGraphicAppearance::SetLightingChannel 0x004BFB40 / SetAsChanged 0x004BF9E0, CVectorMap::LowerBound
 // 0x0040F020 (interface 0x103), the life timer's setter 0x007E5950 (90.0f).
 // Layout: Ego_r.pdb CTCContainerRewardHero - 4: CreateObjectsThatTimeOut +0x19, ParentThing +4; CThing physics +0x60,
@@ -79,7 +79,7 @@ class CThing { public:
     CTCGraphicAppearance* Graphic;                      // +0x64
     unsigned char         _pad68[0x91 - 0x68];
     unsigned char         m_flags;                      // +0x91 bit 0: dead
-    CTCBase* AddTC(const CCharString& name, bool flag, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool flag, const CTCParamsBase* params);   // 0x004C9D60
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
@@ -95,7 +95,7 @@ class CThingObject : public CThing { public:
 };
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 class CWorld { public:
-    unsigned long* GetPRandomSeed() const;              // 0x0049D810
+    unsigned long* GetWorldSeed() const;              // 0x0049D810
 };
 class CTCBase { protected:
     const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
@@ -125,7 +125,7 @@ CThing* CTCContainerRewardHero::CreateNewObject(long def, const C3DVector& posit
     CThing* thing = CThingObject::Create(def, position, 5, 0, 0, scriptName);
     if (thing && !(thing->m_flags & 1)) {
         thing->Physics->ApplyAcceleration(acceleration);
-        float spin = GFFloatRandom(1.0f, PeekWorld().GetPRandomSeed());
+        float spin = GFFloatRandom(1.0f, PeekWorld().GetWorldSeed());
         thing->Physics->SetSpin(spin);
         CTCSolidToThing* solid = (CTCSolidToThing*)thing->AddTC("CTCSolidToThing", false, 0);
         solid->AddThingNotSolidTo(ParentThing);

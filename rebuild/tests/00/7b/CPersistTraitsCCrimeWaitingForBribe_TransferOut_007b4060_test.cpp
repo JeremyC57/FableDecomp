@@ -13,8 +13,8 @@ class CCharString { public:
     CCharString() { Buf[0] = 0; ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(Buf, o.Buf); ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator+=(const char* text) { std::strcat(Buf, text); return *this; }
-    CCharString& operator+=(const CCharString& other) { std::strcat(Buf, other.Buf); return *this; }
+    const CCharString& operator+=(const char* text) { std::strcat(Buf, text); return *this; }
+    const CCharString& operator+=(const CCharString& other) { std::strcat(Buf, other.Buf); return *this; }
 };
 CCharString __fastcall GFIntToCharString(long value) { CCharString r; std::sprintf(r.Buf, "%ld", value); return r; }
 

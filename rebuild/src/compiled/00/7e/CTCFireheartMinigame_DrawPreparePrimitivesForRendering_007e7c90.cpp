@@ -38,7 +38,7 @@ class C2DExtentsI { public: long X, Y; };
 
 class CDisplayManager {
 public:
-    C2DExtentsI GetRenderTargetDimensions() const;  // 0x009BEDC0
+    const C2DExtentsI GetRenderTargetDimensions();  // 0x009BEDC0
 };
 extern CDisplayManager* g_pDisplayDevice;           // 0x013B8390
 

@@ -18,7 +18,7 @@ class CStringParser;
 class CCharString { public:
     struct SBlock* m_pBlock;
     ~CCharString();                                              // 0x0099EAE0
-    CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
     static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
 

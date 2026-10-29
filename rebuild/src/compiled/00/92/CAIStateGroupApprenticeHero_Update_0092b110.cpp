@@ -92,7 +92,9 @@ class CAIStateGroupBase { public:
             tc = GetPCreature()->GetTC<CTCVillageMember>(0x23);
         return tc;
     }
-    unsigned long* GetPWorldSeed();                  // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;                  // 0x008FCFD0
+    public:
     bool IsStopping();                               // 0x008FD010
     void Terminate();                                // 0x008FCF40
     unsigned long Random(unsigned long range)

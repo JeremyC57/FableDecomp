@@ -8,7 +8,7 @@
 // 0x0123046C), NUISystem::CComponent virtual slots 4 (+0x10) and 8 (+0x20) (child lookups by name, CCharString by value) and
 // 144 (+0x240, SetText(const CWideString&, bool, bool)), CWideString() @ 0x0099AED0 / operator= @ 0x0099B7D0 / operator+=
 // @ 0x0099B8D0 / ~ @ 0x0099B510, GetDescription(long) @ 0x005D95C0 (`__fastcall`, CWideString by hidden pointer; manifest
-// name), CTCInventoryTrade::IsSpecialCase(long) @ 0x0059C983, IntToWideString(long) @ 0x00405F00, GetXString() @ 0x005CC772,
+// name), CTCInventoryTrade::IsSpecialCase(long) @ 0x0059C983, GFIntToWideString(long) @ 0x00405F00, GetXString() @ 0x005CC772,
 // operator+(const CWideString&, const CWideString&) @ 0x0099BE70 (`__fastcall`, hidden result).
 // Shape: the landed FinalRefreshSubtitles (0x0059D761) model: the lookup names are implicit conversions built in place
 // (`push ecx ; mov ecx,esp`, `this` parked in [ebp-8]); the name local lives in the dead `entry` slot and the count arm's
@@ -28,7 +28,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
-CWideString __fastcall IntToWideString(long value);     // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);     // 0x00405F00
 CWideString __fastcall operator+(const CWideString& left, const CWideString& right);   // 0x0099BE70
 CWideString __fastcall GetDescription(long defIndex);   // 0x005D95C0
 namespace NUISystem {
@@ -106,7 +106,7 @@ void CTCInventoryTrade::RefreshNameAndTitlePC(NUISystem::CComponent* entry, long
     if (text || subtitle) {
         name = GetDescription(defIndex);
         if (count > 1 && !IsSpecialCase(defIndex))
-            name += GetXString() + IntToWideString(count);
+            name += GetXString() + GFIntToWideString(count);
         if (text)
             text->SetText(name, true, true);
         if (subtitle)

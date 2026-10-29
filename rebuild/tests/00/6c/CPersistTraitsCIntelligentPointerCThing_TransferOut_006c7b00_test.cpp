@@ -8,7 +8,7 @@ class CCharString { public:
     unsigned long long v;
     explicit CCharString(unsigned long long value) : v(value) { ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator+=(const CCharString& other) { g_appended[g_n++] = other.v; return *this; }
+    const CCharString& operator+=(const CCharString& other) { g_appended[g_n++] = other.v; return *this; }
 };
 class CThing {
 public:

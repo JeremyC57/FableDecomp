@@ -49,7 +49,7 @@ class C2DBoxF { public:
 
 class CDisplayManager {
 public:
-    C2DExtentsI GetRenderTargetDimensions() const;          // 0x009BEDC0
+    const C2DExtentsI GetRenderTargetDimensions();          // 0x009BEDC0
 };
 class CSystemManager {
 public:

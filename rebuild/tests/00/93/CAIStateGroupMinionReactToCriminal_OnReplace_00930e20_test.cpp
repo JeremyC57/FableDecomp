@@ -115,7 +115,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 
 class CTCCreatureModeManager { public:
-    void RemoveMode(long mode);                 // 0x0073ABA0
+    void RemoveMode(unsigned long mode);                 // 0x0073ABA0
 };
 struct CThingBuildingLock {
     unsigned char _pad[0xd4];
@@ -163,7 +163,7 @@ void CBaseIntelligentPointerCtor::SetPItem(CThing* item) { m_pItem = item; }
 CBaseIntelligentPointerCtor::~CBaseIntelligentPointerCtor() { }
 void CBaseIntelligentPointerCtor::v00() { }
 static long g_removed; static int g_removeCalls;
-void CTCCreatureModeManager::RemoveMode(long mode) { g_removed = mode; g_removeCalls++; g_lastMgr = this; }
+void CTCCreatureModeManager::RemoveMode(unsigned long mode) { g_removed = mode; g_removeCalls++; g_lastMgr = this; }
 static long g_frame = 100;
 long CWorld::GetFrame() { return g_frame; }
 CAIStateGroupBase::~CAIStateGroupBase() { }

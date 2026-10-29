@@ -69,7 +69,7 @@ class CCreatureAction_BattleChargeImpact : public CCombatActionBase { public:
 };
 class CThingCreatureBase : public CThing {
 public:
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 class CTCBattleCharge {
@@ -96,8 +96,8 @@ void CTCBattleCharge::FinishMove(CThingCreatureBase* creature, bool hitSomething
     HitSomething = hitSomething;
     if (IS_THING_ALIVE(PItemRemoved)) {
         CCharString animation("ST_ABILITY_FAST_UNSHEATHE_TO_COMBAT_POSE", -1);
-        creature->SetCurrentAction(&CCreatureAction_UnsheatheItemFromInventory(creature, animation, ((CThing*)PItemRemoved.GetPItem()), 100, 250, 0));
+        creature->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(creature, animation, ((CThing*)PItemRemoved.GetPItem()), 100, 250, 0));
     }
     if (hitSomething)
-        creature->SetCurrentAction(&CCreatureAction_BattleChargeImpact(creature, LeftFeetEffect, RightFeetEffect));
+        creature->SetCurrentAction(CCreatureAction_BattleChargeImpact(creature, LeftFeetEffect, RightFeetEffect));
 }

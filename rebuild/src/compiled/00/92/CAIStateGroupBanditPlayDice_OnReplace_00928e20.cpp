@@ -161,7 +161,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
+    protected:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
+    public:
 };
 struct CAIStateGroup_BanditPlayDice : CAIStateGroupBase {
     CTCExclusiveUse* DiceGamePosition;          // +0x14

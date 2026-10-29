@@ -65,7 +65,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     long AIAction_DoNothing();                  // 0x0097E200
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70

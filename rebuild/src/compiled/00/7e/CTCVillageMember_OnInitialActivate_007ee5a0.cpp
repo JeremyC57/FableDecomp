@@ -2,7 +2,7 @@
 // Leaf: ?OnInitialActivate@CTCVillageMember
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007EE5A0, 182 bytes (plain `ret`); CTCVillageMember vtable 0x0124007C slot 6
 // (CTCBase::OnInitialActivate). Ego_r.pdb `?OnInitialActivate@CTCVillageMember@@UAEXXZ`.
-// Callees: CTCBase::GetThingManager() 0x00686AE0; CThingManager::GetThingWithUID(unsigned __int64) 0x0051ED80; CVectorMap<
+// Callees: CTCBase::GetThingManager() 0x00686AE0; CThingManager::GetPThingWithUID(unsigned __int64) 0x0051ED80; CVectorMap<
 //          ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (inlined GetInterface, interface 0x22 = word 1 bit 2);
 //          CTCVillageMember::GetPVillage() const 0x007EE540 (Ego_r.pdb name; most landed callers spell it as the global
 //          `__fastcall` GFGetPVillageInterface); CTCVillage::AddThingToVillage(CThing&) 0x0065B854 (Ego_r.pdb signature);
@@ -52,7 +52,7 @@ class CTCVillage { public:
     void AddThingToVillage(CThing& thing);      // 0x0065B854
 };
 class CThingManager { public:
-    CThing* GetThingWithUID(unsigned __int64 uid);   // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);   // 0x0051ED80
 };
 class CThingFilter_HasTC { public:
     long Type;                                  // ETCInterfaceType
@@ -89,7 +89,7 @@ class CTCVillageMember : public CTCBase { public:
 void CTCVillageMember::OnInitialActivate()
 {
     if (VillageUID != 0) {
-        CThing* villageThing = GetThingManager().GetThingWithUID(VillageUID);
+        CThing* villageThing = GetThingManager().GetPThingWithUID(VillageUID);
         if (villageThing) {
             CTCVillage* village;
             villageThing->GetInterface(&village, 0x22);

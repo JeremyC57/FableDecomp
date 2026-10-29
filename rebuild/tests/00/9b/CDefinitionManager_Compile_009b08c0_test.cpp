@@ -32,7 +32,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-bool __fastcall PathExists(const CWideString& path);     // 0x00999230
+class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };     // 0x00999230
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
 // Layout: engine/CDiskFileWin32.h (vptr 0x0122D06C, Opened +0x14, Pathname +0x18), as in CDefStringTable::LoadTable.
@@ -84,7 +84,7 @@ void CDefinitionManager::Compile()
     GFGetTime();
     CheckDependencies(GetSymbolPathList());
     GFGetTime();
-    if (g_bLoadBinaryDefinitions && PathExists(GetCompiledFileName())) {
+    if (g_bLoadBinaryDefinitions && CAFile::PathExists(GetCompiledFileName())) {
         CDiskFileWin32 file;
         file.Open(GetCompiledFileName(), FILE_ACCESS_READ, 4);
         CFileDataInputStream stream(&file, 0x4000);
@@ -127,7 +127,7 @@ CWideString::CWideString() : PStringData(0) {}
 CWideString::~CWideString() {}
 CCharString::CCharString(const char* text, long length) : PStringData((void*)text) { if (length == -1 && text[0] == 0) Log("s"); }
 CCharString::~CCharString() { Log("~s"); }
-bool __fastcall PathExists(const CWideString&) { Log("E"); return g_exists; }
+bool __fastcall CAFile::PathExists(const CWideString&) { Log("E"); return g_exists; }
 void CDiskFileWin32::Open(const CWideString&, FileAccessType access, unsigned long flags) { Log(access == FILE_ACCESS_READ && flags == 4 ? "Or" : (access == FILE_ACCESS_WRITE && flags == 4 ? "Ow" : "O?")); Opened = true; }
 void CDiskFileWin32::Close() { if (Opened) Log("C"); Opened = false; }
 void CDiskFileWin32::Write(const void* data, long size, CASuspendableProcess* process) { Log(data == (const void*)0x1234 && size == 7 && !process ? "W" : "W?"); }

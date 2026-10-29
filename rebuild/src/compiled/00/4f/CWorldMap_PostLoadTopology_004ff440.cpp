@@ -58,7 +58,9 @@ public:
     unsigned char    _pad04[0x1c];
     CArray<CMapInfo> Maps;                      // +0x20 (PDB +0x24)
     void InitPassabilityFromThemesIfNecessary(const C2DBoxI& area);    // 0x0063E2E0
+protected:
     void UpdateAllEdges();                      // 0x0063DFD0
+public:
 };
 
 void CWorldMap::PostLoadTopology(long map)

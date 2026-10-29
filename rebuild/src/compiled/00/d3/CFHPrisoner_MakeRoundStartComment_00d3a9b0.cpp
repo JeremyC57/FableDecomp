@@ -13,7 +13,7 @@ class CScriptThing { public: unsigned char _body[12]; };
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator+=(const char* text);          // 0x0099F100
+    const CCharString& operator+=(const char* text);          // 0x0099F100
 };
 CCharString __fastcall GFIntToCharString(long value);                          // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690

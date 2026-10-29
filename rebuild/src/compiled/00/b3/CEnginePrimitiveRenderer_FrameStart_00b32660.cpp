@@ -41,7 +41,7 @@ extern CTexturePoolOwner* g_pTexturePoolOwner_01436eb0;        // 0x01436EB0
 
 class C2DExtentsI { public: long Width; long Height; };
 class CDisplayManager { public:
-    C2DExtentsI GetRenderTargetDimensions() const;   // 0x009BEDC0
+    const C2DExtentsI GetRenderTargetDimensions();   // 0x009BEDC0
 };
 extern CDisplayManager* g_pDisplayManager_01436e1c;         // 0x01436E1C
 struct CCamera_01436ea0 { unsigned char _pad[0xd4]; float Zoom; };

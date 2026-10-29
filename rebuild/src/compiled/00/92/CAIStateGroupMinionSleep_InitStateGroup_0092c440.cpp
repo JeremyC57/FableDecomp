@@ -24,7 +24,9 @@ inline unsigned long WorldRandomStep(unsigned long& seed)
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // +0x4..+0x13
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
 };
 
 struct CAIStateGroup_MinionSleep : CAIStateGroupBase {

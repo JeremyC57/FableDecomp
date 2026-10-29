@@ -98,7 +98,7 @@ class CThing { public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char _flags91;                             // +0x91
     const C3DVector& GetPos() const;               // 0x004C73D0
-    CTCBase* AddTC(const CCharString& name, bool flag, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool flag, const CTCParamsBase* params);   // 0x004C9D60
     template <class T>
     __forceinline void GetInterface(long type, T** out)
     {

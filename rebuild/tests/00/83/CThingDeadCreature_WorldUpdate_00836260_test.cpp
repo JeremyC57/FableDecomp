@@ -95,7 +95,7 @@ class CTCFadeOutAndIn { public:
 };
 class CThing;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThingBodyReorienter { public:
     bool IsUpdateNeeded();                              // 0x00863250
@@ -202,7 +202,7 @@ bool CThingDeadCreature::WorldUpdate()
                     if (effect && !effect->Dead) {
                         CTCDParticleEmitter* emitter = 0;
                         effect->GetTCDriver(&emitter);
-                        emitter->AttachToThing(this, 0x30, "", 0, 0.0f);
+                        emitter->AttachToThing(*this, 0x30, "", 0, 0.0f);
                     }
                 }
                 CTCFadeOutAndIn* fade;
@@ -248,8 +248,8 @@ const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
 static float g_fadeTime = 0.0f; static int g_fadeIn = -1; static int g_fadeCalls = 0;
 void CTCFadeOutAndIn::Fade(float time, bool fadeIn) { g_fadeTime = time; g_fadeIn = fadeIn ? 1 : 0; ++g_fadeCalls; }
 static int g_attach = 0; static long g_attachType = 0; static CThing* g_attachThing = 0;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset)
-{
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long attachType, const CCharString& helperName, long helperIndex, float offset)
+{ CThing* thing = &thing_ref;
     g_attach++; g_attachType = attachType; g_attachThing = thing;
     if (std::strcmp((const char*)helperName.m_pData, "") != 0 || helperIndex != 0 || offset != 0.0f) g_attach += 100;
 }

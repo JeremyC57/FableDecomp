@@ -81,7 +81,7 @@ public:
     unsigned char  _pad4c[0x70 - 0x4c];
     CDefClassBase* m_pDef;                            // +0x70
     CDefPointer<const CHeroStatsDef> GetHeroStatsDef();   // 0x00663340
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     template <class T> __forceinline bool GetInterface(const T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

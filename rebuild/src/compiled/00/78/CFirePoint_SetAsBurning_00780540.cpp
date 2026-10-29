@@ -18,7 +18,7 @@ class CCharString { public:
 };
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 
 class CThing { public:
@@ -81,7 +81,7 @@ void CFirePoint::SetAsBurning()
     if (EffectIndex) {
         CThing* effect = CreateEffectThing(EffectIndex, &PParentThing->GetPos(), false);
         if (effect && !(effect->m_statusFlags & 1)) {
-            effect->GetParticleEmitter()->AttachToThing(PParentThing, 0xc, HelperName, HelperIndex, 0.0f);
+            effect->GetParticleEmitter()->AttachToThing(*PParentThing, 0xc, HelperName, HelperIndex, 0.0f);
             PEffect = CIntelligentPointer<CThing>(effect);
         }
     }

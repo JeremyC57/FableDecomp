@@ -27,7 +27,9 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 class CBaseObject { public:                           // CBaseIntelligentPointer root (vtable 0x0129A7D8 stored by its ctor)
     virtual void v00();
     void* m_pIntelligentPointer;               // +0x04
+protected:
     CBaseObject();                             // 0x0099A380
+public:
 };
 struct CBaseObjectDtor {                       // destructor-only view of CBaseObject
     void* m_pIntelligentPointer;

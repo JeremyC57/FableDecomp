@@ -29,7 +29,7 @@ public:
             std::memcpy(c, t, n + 1); Set(c, n); std::free(c); }
         return *this;
     }
-    CCharString& operator+=(const CCharString& other)
+    const CCharString& operator+=(const CCharString& other)
     {
         const char* a = GetString(); const char* b = other.GetString();
         int na = (int)std::strlen(a), nb = (int)std::strlen(b);

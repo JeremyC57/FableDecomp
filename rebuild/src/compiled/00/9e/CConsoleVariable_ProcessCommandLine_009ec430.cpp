@@ -14,7 +14,7 @@ class CCharString { public:
     CCharString();                                    // 0x0099E4B0
     CCharString(const char* text, long length = -1);  // 0x0099EBF0
     ~CCharString();                                   // 0x0099EAE0
-    CCharString& operator+=(const char* text);        // 0x0099F100
+    const CCharString& operator+=(const char* text);        // 0x0099F100
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570

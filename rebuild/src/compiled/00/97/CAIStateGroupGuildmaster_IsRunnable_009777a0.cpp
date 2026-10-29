@@ -78,7 +78,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
     CWorld* GetPWorld();                        // 0x008FCFC0
 protected:
     virtual bool IsRunnable();
@@ -93,7 +95,7 @@ protected:
 
 bool CAIStateGroup_Guildmaster::IsRunnable()
 {
-    PEnemy = CIntelligentPointer<CThingCreatureBase>(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
+    PEnemy = CIntelligentPointer<CThingCreatureBase>(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
     CThingCreatureBase* creature = PBrain->PCreature;
     CCombatManager* combat = GetPWorld()->m_pCombatManager;
     combat->RegisterCombatant(creature, PEnemy.GetPItem(), true);

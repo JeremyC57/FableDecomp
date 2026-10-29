@@ -14,7 +14,7 @@ class CMovableResourceMemoryPool { public: CRITICAL_SECTION_Fable m_section; };
 class CBankFileAsyncData { public:
     void* m_pAllocation; void* m_pData; void* m_pReadBuffer; unsigned long m_bytesPending;
     CHandleBasedMemoryPool* m_pPool; long m_handle; CMovableResourceMemoryPool* m_pMovablePool; CBankFileAsync* m_pBank;
-    bool m_relocatable, m_relocating, m_finished, m_dataLocked, m_completionPending; bool m_setupResult;
+    bool m_relocatable, m_relocating, m_finished; mutable bool m_dataLocked; bool m_completionPending; bool m_setupResult;
     bool SetupBuffer(bool) { return m_setupResult; }
     bool OnFileReadBegin(void** ppBuffer, unsigned long)
     {
@@ -34,7 +34,7 @@ class CBankFileAsyncData { public:
         if (m_finished) { m_completionPending = false; return true; }
         return false;
     }
-    void* GetData()
+    const void* PeekData() const
     {
         CCriticalSectionLock lock(&m_pBank->m_section, false);
         if (m_pPool != 0 && m_handle != -1 && !m_dataLocked) { m_pPool->Lock(m_handle); m_dataLocked = true; }
@@ -69,11 +69,11 @@ static bool Balanced(const CRITICAL_SECTION_Fable& s, int n) { return s.m_entere
 static bool Check()
 {
     CBankFileAsyncData d = Make();
-    if (d.GetData() != (void*)0x200 || g_pool.m_locked != 5 || !d.m_dataLocked || !Balanced(g_bank.m_section, 1)) return false;
+    if (d.PeekData() != (void*)0x200 || g_pool.m_locked != 5 || !d.m_dataLocked || !Balanced(g_bank.m_section, 1)) return false;
     g_pool.m_locked = 0;
-    if (d.GetData() != (void*)0x200 || g_pool.m_locked != 0) return false;        // already pinned
+    if (d.PeekData() != (void*)0x200 || g_pool.m_locked != 0) return false;        // already pinned
     CBankFileAsyncData e = Make(); e.m_handle = -1;
-    return e.GetData() == (void*)0x200 && g_pool.m_locked == 0 && !e.m_dataLocked;
+    return e.PeekData() == (void*)0x200 && g_pool.m_locked == 0 && !e.m_dataLocked;
 }
 int main()
 {

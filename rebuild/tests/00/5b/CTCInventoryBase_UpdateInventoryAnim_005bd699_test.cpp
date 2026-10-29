@@ -18,7 +18,7 @@ static int g_rotateCalls = 0; static const C3DVector* g_rotateAxis[8]; static fl
 class CRightHandedSet { public:
     C3DVector Forward;
     C3DVector Up;
-    void RotateAboutAxis(const C3DVector& axis, float angle)
+    void Rotate(const C3DVector& axis, float angle)
     {
         if (g_rotateCalls < 8) { g_rotateAxis[g_rotateCalls] = &axis; g_rotateAngle[g_rotateCalls] = angle; }
         g_rotateCalls++;
@@ -87,9 +87,9 @@ void CTCInventoryBase::UpdateInventoryAnim()
     float x = InventoryAnimXRotationAngleGain / (g_FramesPerSecond * GetPDef()->InventoryAnimXRotationSeconds);
     float y = 1.0f / (g_FramesPerSecond * GetPDef()->InventoryAnimYRotationSeconds);
     float z = InventoryAnimZRotationAngleGain / (g_FramesPerSecond * GetPDef()->InventoryAnimZRotationSeconds);
-    InventoryAnimCurrentRHSet.RotateAboutAxis(g_XAxis, -x);
-    InventoryAnimCurrentRHSet.RotateAboutAxis(g_YAxis, -y);
-    InventoryAnimCurrentRHSet.RotateAboutAxis(g_ZAxis, -z);
+    InventoryAnimCurrentRHSet.Rotate(g_XAxis, -x);
+    InventoryAnimCurrentRHSet.Rotate(g_YAxis, -y);
+    InventoryAnimCurrentRHSet.Rotate(g_ZAxis, -z);
     x += InventoryAnimCurrentXRotationAngle;
     InventoryAnimCurrentXRotationAngle = x;
     y += InventoryAnimCurrentYRotationAngle;

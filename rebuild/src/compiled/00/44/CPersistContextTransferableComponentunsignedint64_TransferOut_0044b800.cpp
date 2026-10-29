@@ -14,7 +14,7 @@ class CCharString { public:
     struct SBlock* m_pBlock;
     explicit CCharString(unsigned __int64 value);                // 0x0099F930
     ~CCharString();                                              // 0x0099EAE0
-    CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);           // 0x0099F0A0
 };
 
 struct CPersistContext_TransferableComponent {

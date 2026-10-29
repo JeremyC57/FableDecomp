@@ -32,8 +32,10 @@ public:
 };         // 0x00999230
 
 class CWorld { public:
+protected:
     void CopyFileInternal(const CWideString& source, const CWideString& destination) const;   // 0x0049DD50
     bool SaveHeroStateInternal(const CWideString& name, bool b);                            // 0x004A00E0
+public:
     bool AutoSaveRegionLeaving();
 };
 

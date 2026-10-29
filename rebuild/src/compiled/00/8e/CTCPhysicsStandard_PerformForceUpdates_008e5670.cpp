@@ -47,6 +47,7 @@ class CTCPhysicsBase { public:
     void ApplyAcceleration(const C3DVector& acceleration);   // 0x006B0210
 };
 struct CTCPhysicsStandard : CTCPhysicsBase {
+protected:
     void PerformForceUpdates();
 };
 

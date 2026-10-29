@@ -124,7 +124,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                        // 0x008FCFC0
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     unsigned long Random(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();
@@ -193,7 +195,7 @@ template class CIntelligentPointer<CThingCreatureBase>;
 static CWorld g_world;
 CWorld* CAIStateGroupBase::GetPWorld() { return &g_world; }
 static unsigned long g_seed;
-unsigned long* CAIStateGroupBase::GetPWorldSeed() { return &g_seed; }
+unsigned long* CAIStateGroupBase::GetPWorldSeed() const { return &g_seed; }
 static long g_moveResult; static int g_moves; static CThing* g_moveTarget; static float g_moveProx;
 static long g_moveArgs[4];
 long CAIStateGroupBase::AIAction_MoveToThingProximity(long repeat, CIntelligentPointer<const CThing> target, float proximity,

@@ -39,7 +39,7 @@ class CCharString { public:
 CThing* __fastcall Create(long defIndex, const C3DVector& position, bool flag);   // 0x006E0880
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
 class CTCDegradableBase { public:
@@ -61,7 +61,7 @@ void CTCDegradableBase::ShowParticleEffects(long particleDefIndex)
                 emitter = particle->PParticleEmitter;
             {
                 CCharString noBone("", -1);
-                emitter->AttachToThing(ParentThing, 8, noBone, 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 8, noBone, 0, 0.0f);
             }
         }
     }
@@ -77,8 +77,8 @@ CCharString::CCharString(const char* text, long) : PStringData((void*)text) { ++
 CCharString::~CCharString() { ++g_stringDtors; }
 static int g_attaches = 0; static CThing* g_attachThing = 0; static long g_bone = -1; static long g_flags = -1; static float g_scale = -1; static CTCDParticleEmitter* g_pEmitterThis = 0;
 static const char* g_boneName = 0;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale)
-{ ++g_attaches; g_pEmitterThis = this; g_attachThing = thing; g_bone = boneIndex; g_boneName = (const char*)boneName.PStringData; g_flags = flags; g_scale = scale; }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long boneIndex, const CCharString& boneName, long flags, float scale)
+{ CThing* thing = &thing_ref; ++g_attaches; g_pEmitterThis = this; g_attachThing = thing; g_bone = boneIndex; g_boneName = (const char*)boneName.PStringData; g_flags = flags; g_scale = scale; }
 void CTCDegradableBase::v00() {}
 int main()
 {

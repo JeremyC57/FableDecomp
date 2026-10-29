@@ -147,9 +147,13 @@ class CAIStateGroupBase { public:
     virtual bool IsStillValid();                // slot 11 (+0x2c)
     CAIBrain* PBrain;                           // +0x04
     CThing* GetCreature() const { return PBrain->PCreature; }
-    const CPlayerManager* GetPPlayerManager() const;    // 0x008FCF80
+    protected:
+    const CPlayerManager& PeekPlayerManager() const;    // 0x008FCF80
+    public:
     CWorld* GetPWorld();                        // 0x008FCFC0
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
     long AIAction_DoNothing();                  // 0x0097E200
@@ -160,7 +164,7 @@ struct CAIStateGroup_MinionGuardBribed : CAIStateGroupBase {
 
 void CAIStateGroup_MinionGuardBribed::Update()
 {
-    CIntelligentPointerPlayerCreature hero(GetPPlayerManager()->GetMainPlayer().GetPCharacter().GetPItem());
+    CIntelligentPointerPlayerCreature hero(PeekPlayerManager().GetMainPlayer().GetPCharacter().GetPItem());
     unsigned long delay = GetPWorld()->Random(g_BribedWhistleFirstMax - g_BribedWhistleFirstMin, GetPWorldSeed());
     long nextWhistle = CWorld::GetFrame() + g_BribedWhistleFirstMin + delay;
     unsigned long sample = g_InvalidSoundHandle;
@@ -231,10 +235,10 @@ CVillage* CTCVillageMember::GetPVillage() { return g_hasVillage ? &g_village : 0
 static double playerBuf[0x10];
 static CPlayerManager g_pm;
 const CPlayer& CPlayerManager::GetMainPlayer() const { return *(const CPlayer*)playerBuf; }
-const CPlayerManager* CAIStateGroupBase::GetPPlayerManager() const { return &g_pm; }
+const CPlayerManager& CAIStateGroupBase::PeekPlayerManager() const { return g_pm; }
 static CWorld g_world; static unsigned long g_seed;
 CWorld* CAIStateGroupBase::GetPWorld() { return &g_world; }
-unsigned long* CAIStateGroupBase::GetPWorldSeed() { return &g_seed; }
+unsigned long* CAIStateGroupBase::GetPWorldSeed() const { return &g_seed; }
 unsigned long __fastcall GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
 static long g_frame;
 long CWorld::GetFrame() { return g_frame; }

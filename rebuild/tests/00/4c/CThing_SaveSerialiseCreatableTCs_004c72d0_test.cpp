@@ -12,7 +12,7 @@ public:
     CCharString(const char* text) { ++g_strings; PStringData = new std::string(text); }
     CCharString(const CCharString& o) { ++g_strings; PStringData = new std::string(*o.PStringData); }
     ~CCharString() { --g_strings; delete PStringData; }
-    CCharString& operator+=(const CCharString& other) { *PStringData += *other.PStringData; return *this; }
+    const CCharString& operator+=(const CCharString& other) { *PStringData += *other.PStringData; return *this; }
 };
 CCharString operator+(const char* left, const CCharString& right) { CCharString r(left); r += right; return r; }
 CCharString operator+(const CCharString& left, const char* right) { CCharString r(left); CCharString t(right); r += t; return r; }

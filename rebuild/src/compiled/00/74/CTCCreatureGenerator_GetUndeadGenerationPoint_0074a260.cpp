@@ -78,7 +78,7 @@ class CThing { public:
     }
 };
 class CTCCreatureNavigation { public:
-    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance);   // 0x006CB620
+    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance) const;   // 0x006CB620
 };
 class CTCShapeManager { public:
     bool IsPosInAnyShape(const C3DVector& pos) const;        // 0x00760870

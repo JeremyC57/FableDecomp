@@ -34,7 +34,9 @@ template <class T> struct CCountedPointer {        // object + count block
 
 }
 
+class CPlayerGuiDef;
 class CPlayerGui { public:                                // retail offsets (PDB Alpha +0x2b4, PMoney +0x2e0: the shipped build drops the
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();     // 0x00438570
     unsigned char _pad[0x2a0];                     // ulong64 alignment gap and the vectors are 12 bytes)
     float         Alpha;                           // +0x2a0
     unsigned char _pad2a4[0x2cc - 0x2a4];
@@ -64,7 +66,6 @@ class CPlayerGuiDef { public:
     CRetailLongVector StatUpdateGraphics;          // +0x54c
 };
 
-extern CPlayerGuiDef* __fastcall PeekGuiDef();     // 0x00438570
 
 namespace NPlayerGui {
 
@@ -82,7 +83,7 @@ class CDrawRenown { public:
 void CDrawRenown::Draw(CEnginePrimitivePrepareInfo* info)
 {
     Drawing = true;
-    CPlayerGuiDef* def = PeekGuiDef();
+    const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
     CStatBar* bar = PlayerGui->PRenown.operator->();
     bar->GraphicIndex = def->StatUpdateGraphics[4];
     bar->Draw(info, Bank, def->StatUpdateRenownPos, def->MoneyTextRightOffset, def->MoneyTextColour,

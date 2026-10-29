@@ -85,7 +85,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 class CTCDParticleEmitter { public:                    // interface 0x4B
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 
 class CTCWillLightning { public:
@@ -129,11 +129,11 @@ void CTCWillLightning::StartHandEffects()
     if (IS_THING_ALIVE(m_tpRightHandEffect)) {
         CTCDParticleEmitter* emitter = ((CThing*)m_tpRightHandEffect.GetPItem())->GetInterface<CTCDParticleEmitter>(0x4b);
         if (emitter)
-            emitter->AttachToThing(((CThing*)m_cbpPlayer.GetPItem()), 10, g_RightHandAttachmentName, 0, 0.0f);
+            emitter->AttachToThing(*(((CThing*)m_cbpPlayer.GetPItem())), 10, g_RightHandAttachmentName, 0, 0.0f);
     }
     if (IS_THING_ALIVE(m_tpLeftHandEffect)) {
         CTCDParticleEmitter* emitter = 0;
         ((CThing*)m_tpLeftHandEffect.GetPItem())->GetInterface(&emitter, 0x4b);
-        emitter->AttachToThing(((CThing*)m_cbpPlayer.GetPItem()), 10, g_LeftHandAttachmentName, 0, 0.0f);
+        emitter->AttachToThing(*(((CThing*)m_cbpPlayer.GetPItem())), 10, g_LeftHandAttachmentName, 0, 0.0f);
     }
 }

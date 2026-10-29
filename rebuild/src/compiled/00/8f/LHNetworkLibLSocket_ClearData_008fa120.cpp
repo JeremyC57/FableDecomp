@@ -223,7 +223,9 @@ public:
     unsigned long     NrLastDataReceived;          // +0x94
     void*             _DEBUGFP;                    // +0x98
     LSocket();
+private:
     void ClearData();
+public:
 };
 
 } // namespace LHNetworkLib

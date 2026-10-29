@@ -37,13 +37,13 @@ class CTCTargetingAI { public:
     CBaseIntelligentPointer PScriptTargetOverride;          // +0x40
     CThingPointerList       ThingsToNotAttack;              // +0x48
     bool IsThingAttackable(const CThing* thing) const;      // 0x007F6170
-    void AddThingToNotAttack(CThing* thing);
+    void AddThingToNotAttack(CThing& thing);
 };
 
-void CTCTargetingAI::AddThingToNotAttack(CThing* thing)
+void CTCTargetingAI::AddThingToNotAttack(CThing& thing)
 {
-    if (IsThingAttackable(thing)) {
-        CIntelligentPointer pointer(thing);
+    if (IsThingAttackable(&thing)) {
+        CIntelligentPointer pointer(&thing);
         ThingsToNotAttack.push_back(pointer);
     }
 }

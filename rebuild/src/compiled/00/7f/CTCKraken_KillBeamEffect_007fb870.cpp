@@ -84,7 +84,7 @@ struct CTCGraphicAppearance {
 };
 class CThing;
 class CTCDParticleEmitter { public:                          // interface 0x4B
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing {
 public:
@@ -174,7 +174,7 @@ void CTCKraken::KillBeamEffect()
             if (fade != 0 && !fade->IsDead()) {
                 CTCDParticleEmitter* emitter;
                 if (fade->GetInterface(&emitter, 0x4b))
-                    emitter->AttachToThing(ParentThing, 0x2a, "MOUTH_DUMMY", 0, 0.0f);
+                    emitter->AttachToThing(*ParentThing, 0x2a, "MOUTH_DUMMY", 0, 0.0f);
             }
         }
     }

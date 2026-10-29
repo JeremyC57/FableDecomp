@@ -4,7 +4,7 @@
 // CTCTavernGameCoinBase::AddNewCoin (0x008EFA00).
 // Callees: CTCBase::PeekPlayerManager @ 0x00686D50, CPlayerManager::GetMainPlayerNumber @ 0x00449700 (Ego_r.pdb; catalog "DrawGetEnvironment"),
 // CThing::GetPos @ 0x004C73D0, CThingObject::Create (static __fastcall, Ego_r.pdb) @ 0x00703210, CCharString(const char*, long)
-// @ 0x0099EBF0 / ~ 0x0099EAE0, CThing::AddTC(const CCharString&, bool, CTCParamsBase*) @ 0x004C9D60,
+// @ 0x0099EBF0 / ~ 0x0099EAE0, CThing::AddTC(const CCharString&, bool, const CTCParamsBase*) @ 0x004C9D60,
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem
 // 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10, CTCOwnedEntity::SetPOwner @ 0x007E8590.
 // Layout: retail CThing interface bitset +0x20 / map +0x44, the bitfield byte +0x91 and graphic +0x60; the
@@ -86,7 +86,7 @@ class CThing { public:
     unsigned char _pad64[0x91 - 0x64];
     unsigned char _flags91;                             // +0x91
     const C3DVector& GetPos() const;               // 0x004C73D0
-    CTCBase* AddTC(const CCharString& name, bool flag, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool flag, const CTCParamsBase* params);   // 0x004C9D60
     template <class T>
     __forceinline void GetInterface(long type, T** out)
     {

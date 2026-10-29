@@ -22,7 +22,7 @@ class CCharString { public:
     CCharStringData* PStringData;
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
-    CCharString& operator+=(const char* text);           // 0x0099F100
+    const CCharString& operator+=(const char* text);           // 0x0099F100
 };
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;

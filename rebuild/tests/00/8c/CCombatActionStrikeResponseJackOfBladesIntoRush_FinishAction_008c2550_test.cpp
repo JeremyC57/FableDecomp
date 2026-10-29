@@ -75,7 +75,7 @@ class CThingCreatureBase { public:
     const C3DVector& GetPosition() const { return Position; }
     void GetInterface(CTCRushCounter** out, long type) { if (type == 0xad) *out = Counter; }
     bool GetSubDef(CDefPointer_CJackOfBladesBattleDef* out) const { ++Def->RefCount; out->Data = Def; return true; }
-    bool SetCurrentAction(CCreatureActionBase* action);
+    bool SetCurrentAction(const CCreatureActionBase& action);
 };
 
 struct CBaseIntelligentPointer {
@@ -151,8 +151,8 @@ class CCreatureAction_CastAssassinRush : public CCreatureActionBase { public:
         PCreature.m_pItem = owner;
     }
 };
-bool CThingCreatureBase::SetCurrentAction(CCreatureActionBase* action)
-{
+bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action_ref)
+{ CCreatureActionBase* action = const_cast<CCreatureActionBase*>(&action_ref);
     CCreatureAction_CastAssassinRush* rush = static_cast<CCreatureAction_CastAssassinRush*>(action);
     ++g_rushes;
     g_rushOwner = rush->PCreature.GetPItem();
@@ -200,7 +200,7 @@ void CCombatAction_StrikeResponseJackOfBladesIntoRush::FinishAction()
         CCombatAction_GenericStrikeResponseBase::FinishAction();
         CCountedPointer_CCreatureActionBase finalAction(new CCreatureAction_PlayCombatAnimation(creature, "RUSH_OUTOF", true));
         CCreatureAction_CastAssassinRush rush(creature, direction, distance, false, 0, finalAction);
-        GetCreature()->SetCurrentAction(&rush);
+        GetCreature()->SetCurrentAction(rush);
     } else
         CCombatAction_GenericStrikeResponseBase::FinishAction();
 }

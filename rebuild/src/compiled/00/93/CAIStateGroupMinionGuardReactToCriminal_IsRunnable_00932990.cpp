@@ -139,7 +139,9 @@ class CAIStateGroupBase { public:
     long ScriptAIPriority;                      // +0x08
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
 };
 
 struct CAIStateGroup_MinionGuardReactToCriminal : CAIStateGroupBase {
@@ -156,7 +158,7 @@ bool CAIStateGroup_MinionGuardReactToCriminal::IsRunnable()
         const CThing* creature = PBrain->PCreature;
         if (creature->HasTC(0x34)) {
             CTCPerceiveThing* perceive = creature->GetTC<CTCPerceiveThing>(0x34);
-            PHero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+            PHero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
             if (((CThing*)PHero.GetPItem()) != 0 && perceive->GetPerceivedThing() != 0
                 && perceive->GetPerceivedThing() == PHero && perceive->CanSeeOrSmellPerceivedThing()) {
                 bool isFine;

@@ -7,7 +7,7 @@ static int gWidth = 640, gHeight = 480, gCalls = 0;
 
 class CDisplayManager
 { public:
-    C2DExtentsI GetRenderTargetDimensions() const { ++gCalls; C2DExtentsI e; e.X = gWidth; e.Y = gHeight; return e; }
+    const C2DExtentsI GetRenderTargetDimensions() { ++gCalls; C2DExtentsI e; e.X = gWidth; e.Y = gHeight; return e; }
 };
 
 class CSystemManager { public: CDisplayManager* DisplayManager; };

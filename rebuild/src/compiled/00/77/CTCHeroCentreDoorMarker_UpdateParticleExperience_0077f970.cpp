@@ -56,7 +56,7 @@ class CCharString { public:
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -117,7 +117,7 @@ void CTCHeroCentreDoorMarker::UpdateParticleExperience()
             CThing* particle = PParticle.GetPItem();
             if (particle->HasTC(0x4b))
                 emitter = particle->GetTC<CTCDParticleEmitter>(0x4b);
-            emitter->AttachToThing(ParentThing, 0x20, "", 0, 0.0f);
+            emitter->AttachToThing(*ParentThing, 0x20, "", 0, 0.0f);
         }
     }
 }

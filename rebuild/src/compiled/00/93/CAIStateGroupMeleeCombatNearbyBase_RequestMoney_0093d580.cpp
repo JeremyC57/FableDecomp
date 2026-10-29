@@ -120,7 +120,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
     void Terminate();                           // 0x008FCF40
 };
 
@@ -131,7 +133,7 @@ struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
 
 void CAIStateGroup_MeleeCombatNearbyBase::RequestMoney()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     CTCFineDialogue* fine;
     if (hero != 0 && !(hero->m_flags91 & 1) && hero == PEnemy.GetPItem() && hero->GetInterface(&fine, 0xf3)) {
         if (fine->IsAllowed()) {

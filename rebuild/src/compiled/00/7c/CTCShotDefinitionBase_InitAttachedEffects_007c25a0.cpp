@@ -73,7 +73,7 @@ class CCharString { public:
 };
 extern CCharString g_CCharString_013bacb4;              // 0x013BACB4 "SHOT_CREATION_DUMMY"
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, long flags);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float flags);   // 0x006E0BE0
     void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters& parameters);   // 0x006E11A0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
@@ -242,7 +242,7 @@ void CTCShotDefinitionBase::InitAttachedEffects()
         attachType = 0x28;
     if (PShotDef->UseEndTimeLineOnContinousEffect)
         attachType |= 0x10;
-    emitter->AttachToThing(ParentThing, attachType, helperName, 0, 0);
+    emitter->AttachToThing(*ParentThing, attachType, helperName, 0, 0);
     unsigned long key = CCRC::Calc(0, "MOVE_DIRECTION", 14);
     NParticleEngine::SVectorParam moveDirection(key, ParentThing->PhysicsTC->GetDirection());
     NParticleEngine::CParticleUpdateParameters parameters;

@@ -11,7 +11,7 @@ struct CTCInterface9 { bool m_flag10; };
 class CThing;
 static std::string g_attachBone; static CThing* g_attachThing = 0; static long g_attachIndex = -1; static int g_attaches = 0;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long index, const CCharString& bone, long, long) { g_attachThing = thing; g_attachIndex = index; g_attachBone = bone.s; ++g_attaches; }
+    void AttachToThing(CThing& thing_ref, long index, const CCharString& bone, long, float) { CThing* thing = &thing_ref; g_attachThing = thing; g_attachIndex = index; g_attachBone = bone.s; ++g_attaches; }
 };
 class CSpecialEffectsDef { public:
     long RefCount; bool Destroyed; const char* Known; long KnownValue;
@@ -66,7 +66,7 @@ void CCreatureAction_ScreamerDie::Initialise()
     if (found && PDieEffect.GetPItem() && !PDieEffect.GetPItem()->Dead) {
         CTCDParticleEmitter* emitter = 0;
         PDieEffect.GetPItem()->GetInterface(&emitter, 0x4b);
-        emitter->AttachToThing(PCreature.GetPItem(), 0xa, "DUMMY_CENTRE", 0, 0);
+        emitter->AttachToThing(*PCreature.GetPItem(), 0xa, "DUMMY_CENTRE", 0, 0);
     }
     CCombatActionBase::Initialise();
 }

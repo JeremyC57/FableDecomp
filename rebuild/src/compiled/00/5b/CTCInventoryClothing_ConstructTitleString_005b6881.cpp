@@ -3,7 +3,7 @@
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 on
 // "TEXT_GUI_MENU_CLOTHING_TOTAL_ARMOUR" @ 0x01253A48, CDataBank::GetTextBySymbol @ 0x009C95E0 (engine globals
 // @ 0x013B86A0 +0x14), CWideString::operator+= @ 0x0099B8D0, CWideString(const wchar_t*) @ 0x0099B6B0 on L" " @ 0x0122D820,
-// ~CWideString @ 0x0099B510, GetCurrentTotalArmorValue() @ 0x005B4A95, IntToWideString(long) @ 0x00405F00 (__fastcall,
+// ~CWideString @ 0x0099B510, GetCurrentTotalArmorValue() @ 0x005B4A95, GFIntToWideString(long) @ 0x00405F00 (__fastcall,
 // hidden result in ecx, value in edx; manifest "CGuiControlNumber::SetSLongValue" is propagated).
 // Shape: three `title += <temporary>` statements; the symbol is a named CCharString in its own block and the text bank a
 // named local read AFTER it (retail loads the globals between the string constructor and the argument pushes); the looked-up
@@ -23,7 +23,7 @@ class CWideString { public:
     ~CWideString();                                               // 0x0099B510
     const CWideString& operator+=(const CWideString& other);      // 0x0099B8D0
 };
-CWideString __fastcall IntToWideString(long value);               // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);               // 0x00405F00
 namespace NGameText {
 class CDataBank { public:
     const CWideString GetTextBySymbol(const CCharString& symbol) const;       // 0x009C95E0
@@ -49,5 +49,5 @@ void CTCInventoryClothing_Retail::ConstructTitleString(CWideString& title)
         title += textBank->GetTextBySymbol(symbol);
     }
     title += CWideString(L" ");
-    title += IntToWideString(GetCurrentTotalArmorValue());
+    title += GFIntToWideString(GetCurrentTotalArmorValue());
 }

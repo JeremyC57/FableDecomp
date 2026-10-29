@@ -23,7 +23,7 @@ class CCharString { public:
     ~CCharString();                                                  // 0x0099EAE0
     const CCharString& operator=(const char* text);                        // 0x0099EFE0
     const CCharString& operator=(const CCharString& other);                // 0x0099EFB0
-    CCharString& operator+=(const char* text);                       // 0x0099F100
+    const CCharString& operator+=(const char* text);                       // 0x0099F100
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 struct CDefStringTable {

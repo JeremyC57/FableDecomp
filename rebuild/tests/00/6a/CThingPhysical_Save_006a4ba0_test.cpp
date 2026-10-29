@@ -24,7 +24,7 @@
 class CCharString { public:
     void* m_pStringData;
     ~CCharString();                                                             // 0x0099EAE0
-    CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
     static CCharString __fastcall FormatDouble(long digits, double value);      // 0x009A08B0
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
@@ -60,7 +60,7 @@ static char* Dup(const char* a, const char* b)
 static CCharString Make(char* text) { CCharString s; s.m_pStringData = text; return s; }
 static int g_live = 0;
 CCharString::~CCharString() { ++g_live; }   // leaks on purpose: VC7.1 has no NRVO, a freeing dtor would free returned copies
-CCharString& CCharString::operator+=(const CCharString& other)
+const CCharString& CCharString::operator+=(const CCharString& other)
 { char* p = Dup((const char*)m_pStringData, (const char*)other.m_pStringData); std::free(m_pStringData); m_pStringData = p; return *this; }
 CCharString __fastcall CCharString::FormatDouble(long digits, double value)
 { char buf[64]; std::sprintf(buf, "%.*f", (int)digits, value); return Make(Dup(buf, "")); }

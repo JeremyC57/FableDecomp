@@ -191805,15 +191805,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '009d5530'
         Module = 'CBankFileAsyncData'
-        Source = '00/9d/CBankFileAsyncData_PeekData_009d5530.cpp'
-        TestSource = '00/9d/CBankFileAsyncData_PeekData_009d5530_test.cpp'
+        Source = '00/9d/CBankFileAsyncData_GetData_009d5530.cpp'
+        TestSource = '00/9d/CBankFileAsyncData_GetData_009d5530_test.cpp'
         PassPattern = '009d5530_TEST PASS'
     }
     [pscustomobject]@{
         Address = '009d5580'
         Module = 'CBankFileAsyncData'
-        Source = '00/9d/CBankFileAsyncData_GetData_009d5580.cpp'
-        TestSource = '00/9d/CBankFileAsyncData_GetData_009d5580_test.cpp'
+        Source = '00/9d/CBankFileAsyncData_PeekData_009d5580.cpp'
+        TestSource = '00/9d/CBankFileAsyncData_PeekData_009d5580_test.cpp'
         PassPattern = '009d5580_TEST PASS'
     }
     [pscustomobject]@{

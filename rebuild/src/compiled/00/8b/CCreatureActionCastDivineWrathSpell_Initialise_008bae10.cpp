@@ -55,7 +55,7 @@ class CThing { public:
     CInterfaceMap m_interfaces;                       // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {

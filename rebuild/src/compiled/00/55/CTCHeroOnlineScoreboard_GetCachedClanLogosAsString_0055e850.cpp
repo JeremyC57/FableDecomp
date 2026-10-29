@@ -29,8 +29,8 @@ class CCharString { public:
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();                                  // 0x0099EAE0
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
-    CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
-    CCharString& operator+=(const char* text);       // 0x0099F100
+    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
+    const CCharString& operator+=(const char* text);       // 0x0099F100
     CWideString ToWideString() const;                // 0x0099E480
     CCharString GetSubString(unsigned long start, unsigned long count) const;   // 0x0099EC70
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }

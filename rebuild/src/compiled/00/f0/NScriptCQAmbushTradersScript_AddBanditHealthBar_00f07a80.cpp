@@ -16,8 +16,8 @@ public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator+=(const char* text);         // 0x0099F100
-    CCharString& operator+=(const CCharString& other); // 0x0099F0A0
+    const CCharString& operator+=(const char* text);         // 0x0099F100
+    const CCharString& operator+=(const CCharString& other); // 0x0099F0A0
 };
 CCharString __fastcall GFIntToCharString(long value);  // 0x0099F830 (hidden result in ecx)
 extern "C" int __cdecl rand();                         // 0x00BFEB16 (MSVCR71)

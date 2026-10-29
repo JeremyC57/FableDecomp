@@ -81,7 +81,7 @@ struct CDefPointer {                            // CDefPointer<const CDefClassBa
 };
 class CThing;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing { public:
     unsigned char _pad0[0x28];
@@ -153,7 +153,7 @@ void CCreatureAction_WaspQueenDeath::Initialise()
                 CTCDParticleEmitter* emitter;
                 if (effect->GetTCParticleEmitter(&emitter)) {
                     CCharString helper("TARGET_CURSOR_POINT");
-                    emitter->AttachToThing(((CThing*)PCreature.GetPItem()), 0xc, helper, 0, 0.0f);
+                    emitter->AttachToThing(*(((CThing*)PCreature.GetPItem())), 0xc, helper, 0, 0.0f);
                 }
             }
         }

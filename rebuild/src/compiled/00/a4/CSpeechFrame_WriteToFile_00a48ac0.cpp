@@ -25,17 +25,17 @@ class CSpeechFrame { public:
     float MedianFrequency;                          // +0x10
     float BaseFrequency;                            // +0x14
     float FrequencyVariance;                        // +0x18
-    void WriteToFile(CDataOutputStream* stream) const;
+    void WriteToFile(CDataOutputStream& stream) const;
 };
 
-void CSpeechFrame::WriteToFile(CDataOutputStream* stream) const
+void CSpeechFrame::WriteToFile(CDataOutputStream& stream) const
 {
-    stream->WriteULONG(0x0ff7da7a);
-    stream->WriteULONG(Frequencies.Size());
+    stream.WriteULONG(0x0ff7da7a);
+    stream.WriteULONG(Frequencies.Size());
     for (unsigned long i = 0; i < Frequencies.Size(); ++i)
-        stream->WriteFloat(Frequencies[i].Real);
-    stream->WriteFloat(Amplitude);
-    stream->WriteFloat(MedianFrequency);
-    stream->WriteFloat(BaseFrequency);
-    stream->WriteFloat(FrequencyVariance);
+        stream.WriteFloat(Frequencies[i].Real);
+    stream.WriteFloat(Amplitude);
+    stream.WriteFloat(MedianFrequency);
+    stream.WriteFloat(BaseFrequency);
+    stream.WriteFloat(FrequencyVariance);
 }

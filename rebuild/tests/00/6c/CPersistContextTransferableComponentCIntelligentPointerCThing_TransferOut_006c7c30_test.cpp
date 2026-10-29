@@ -8,7 +8,7 @@ static int g_n = 0;
 class CCharString { public:
     unsigned long long v;
     explicit CCharString(unsigned long long value) : v(value) {}
-    CCharString& operator+=(const CCharString& other) { g_appended[g_n++] = other.v; return *this; }
+    const CCharString& operator+=(const CCharString& other) { g_appended[g_n++] = other.v; return *this; }
 };
 class CThing { public: unsigned char _pad00[0x18]; unsigned long long UniqueID; };
 static int g_ipLive = 0;

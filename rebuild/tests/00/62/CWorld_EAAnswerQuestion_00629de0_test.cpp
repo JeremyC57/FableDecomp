@@ -51,7 +51,6 @@ public:
     CCharString   TextBoxButtonASoundCriteria;        // +0x5E8 (PDB +0x624)
     CCharString   TextBoxButtonBSoundCriteria;        // +0x5EC (PDB +0x628)
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();                // 0x00438570
 class CSubtitleRenderer {
 public:
     unsigned char _pad[0xe5];
@@ -60,6 +59,7 @@ public:
 };
 class CPlayerGui {
 public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();                // 0x00438570
     unsigned char     _pad[0x18];
     CSubtitleRenderer SubtitleRenderer;                // +0x18
 };
@@ -104,7 +104,7 @@ void CWorld::EAAnswerQuestion(const CGameEvent* event)
     PMessageEventManager->AddMessage(0x10, 0x32, C3DVector(0.0f, 0.0f, 0.0f), 0, 0, 0.0f, 0.0f, answer);
     CSubtitleRenderer& subtitles = g_pPlayerGui->SubtitleRenderer;
     if (subtitles.DisplayingText) {
-        CPlayerGuiDef* def = PeekGuiDef();
+        const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
         CSoundInit init;
         init.GainFaderBits = 0x8010;
         if (answer == 1)
@@ -143,7 +143,7 @@ void* CMessageEventManager::AddMessage(long type, unsigned long delay, const C3D
 
 static CPlayerGuiDef g_def;
 static int g_peeks = 0;
-CPlayerGuiDef* __fastcall PeekGuiDef() { ++g_peeks; return &g_def; }
+const CPlayerGuiDef& __fastcall CPlayerGui::PeekGuiDef() { ++g_peeks; return g_def; }
 
 static int g_clears = 0;
 static bool g_clearAll = true;

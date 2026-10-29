@@ -1,4 +1,4 @@
-// CMouseDX::CMouseDX(CInputManagerDX*, bool) -- DirectInput mouse: CMouse base, no device yet, unit mouse step, input enabled and cursor drawn, event buffers cleared, Windows cursor shown unless exclusive, engine cursor enabled, then SetExclusiveMode
+// CMouseDX::CMouseDX(CInputManagerDX&, bool) -- DirectInput mouse: CMouse base, no device yet, unit mouse step, input enabled and cursor drawn, event buffers cleared, Windows cursor shown unless exclusive, engine cursor enabled, then SetExclusiveMode
 // Leaf: ??0CMouseDX
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AB5D00, 188 bytes (`ret 8`). Vtable 0x0129EA14 (CMouseDX).
 // Callees: CMouse::CMouse(CInputManagerDX*, bool) 0x00A66F20; CMouse::ClearStoredEvents 0x00A66B10 (zeroes NoStoredEvents;
@@ -13,7 +13,8 @@
 // LMBOn/MMBOn/RMBOn/Filtering +0x4848, LastUpdateMovement +0x484c, CursorGraphic +0x4858 (CCountedPointer<CSurface>).
 // Shape: only InputManagerDX and the CursorGraphic counted pointer are initialisers (stored right after the vptr);
 // the remaining fields are body assignments in retail's store order around the ClearStoredEvents call.
-class CInputManagerDX;
+class CInputManager { public: };
+class CInputManagerDX : public CInputManager { public: };
 class CSurface;
 
 extern "C" __declspec(dllimport) int __stdcall ShowCursor(int show);   // USER32, IAT 0x01440350
@@ -72,7 +73,7 @@ class CMouse { public:                            // vtable 0x0129DBC4, retail 0
     long          NoEventScansRunning;     // +0x3408
     void*         MaintainedEventsList;    // +0x340c (STLport list sentinel)
     long          InputManager;            // +0x3410
-    CMouse(CInputManagerDX* manager, bool exclusiveMode);   // 0x00A66F20
+    CMouse(CInputManager& manager, bool exclusiveMode);     // 0x00A66F20
     void ClearStoredEvents();              // 0x00A66B10
 };
 
@@ -103,13 +104,13 @@ struct CMouseDX : CMouse {                 // vtable 0x0129EA14
     C3DVector              LastUpdateMovement;             // +0x484c
     CCountedPointer<CSurface> CursorGraphic;               // +0x4858
     virtual void v00();
-    CMouseDX(CInputManagerDX* manager, bool exclusiveMode);
+    CMouseDX(CInputManagerDX& manager, bool exclusiveMode);
     bool SetExclusiveMode(bool exclusiveMode);             // 0x00AB5710
 };
 
-CMouseDX::CMouseDX(CInputManagerDX* manager, bool exclusiveMode)
+CMouseDX::CMouseDX(CInputManagerDX& manager, bool exclusiveMode)
     : CMouse(manager, exclusiveMode)
-    , InputManagerDX(manager)
+    , InputManagerDX(&manager)
 {
     DMouse = 0;
     MouseStep = 1.0f;

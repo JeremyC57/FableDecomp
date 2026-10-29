@@ -71,7 +71,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefSlot<T
 #pragma auto_inline(on)
 class CThing;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float delay);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float delay);   // 0x006E0BE0
 };
 class CThing { public:
     unsigned char        _pad00[0x20];
@@ -133,7 +133,7 @@ void CModeJackOfBladesFloat::OnActivate()
                 PEmitter2 = effect;
                 if (effect->HasTC(0x4b)) {
                     CTCDParticleEmitter* emitter = effect->m_pParticleEmitter;
-                    emitter->AttachToThing(PCreature, 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
+                    emitter->AttachToThing(*PCreature, 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
                 }
             }
         }

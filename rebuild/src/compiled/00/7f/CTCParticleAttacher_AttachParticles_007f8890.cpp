@@ -57,7 +57,7 @@ class CBaseObject;
 
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
     static CThing* __fastcall Create(long particleIndex, const C3DVector& position, bool flag);   // 0x006E0880
 };
 
@@ -180,7 +180,7 @@ void CTCParticleAttacher::AttachParticles()
                 long attachType = 1;
                 if (oriented)
                     attachType = 9;
-                emitter->AttachToThing(ParentThing, attachType | 2, "", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, attachType | 2, "", 0, 0.0f);
             }
         } else {
             if (count > 0)
@@ -197,7 +197,7 @@ void CTCParticleAttacher::AttachParticles()
                     long attachType = 1;
                 if (oriented)
                     attachType = 9;
-                    emitter->AttachToThing(ParentThing, attachType | (info->DummyObject ? 2 : 4), name, i, 0.0f);
+                    emitter->AttachToThing(*ParentThing, attachType | (info->DummyObject ? 2 : 4), name, i, 0.0f);
                 }
             }
         }

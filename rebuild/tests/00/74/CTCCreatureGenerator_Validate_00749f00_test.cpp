@@ -30,7 +30,7 @@ class CCharString { public:
     ~CCharString();                                                  // 0x0099EAE0
     const CCharString& operator=(const char* text);                        // 0x0099EFE0
     const CCharString& operator=(const CCharString& other);                // 0x0099EFB0
-    CCharString& operator+=(const char* text);                       // 0x0099F100
+    const CCharString& operator+=(const char* text);                       // 0x0099F100
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 struct CDefStringTable {
@@ -189,7 +189,7 @@ static const char* Text(const CCharString& s) { return s.PStringData ? (const ch
 CCharString::~CCharString() { ++g_strDtors; }
 const CCharString& CCharString::operator=(const char* text) { PStringData = Dup(text, 0); return *this; }
 const CCharString& CCharString::operator=(const CCharString& other) { PStringData = Dup(Text(other), 0); return *this; }
-CCharString& CCharString::operator+=(const char* text) { PStringData = Dup(Text(*this), text); return *this; }
+const CCharString& CCharString::operator+=(const char* text) { PStringData = Dup(Text(*this), text); return *this; }
 CCharString __fastcall operator+(const char* left, const CCharString& right) { CCharString r; r.PStringData = Dup(left, Text(right)); return r; }
 CDefStringTable g_DefStringTable;
 static const char* g_names[] = { "Bandits", "Wolves", "Hobbes" };

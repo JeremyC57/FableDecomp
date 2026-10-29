@@ -24,7 +24,6 @@ class CPlayerGuiDef { public:
     float MouseCursorScaleY;                       // +0xa9c
     long MouseCursorGraphic;                       // +0xaa0
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
 struct CGraphicBank {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -33,6 +32,7 @@ struct CGraphicBank {
     virtual unsigned long GetGraphicWidth(long graphic);   // slot 23 (+0x5c)
 };
 class CPlayerGui { public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();            // 0x00438570
     unsigned char _pad[0x14];
     CGraphicBank* Bank;                            // +0x14
 };
@@ -60,7 +60,7 @@ class CDrawMouseCursor { public:
 
 void CDrawMouseCursor::MoveCursor(const C2DVector& delta)
 {
-    CPlayerGuiDef* def = PeekGuiDef();
+    const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
     float width = (float)g_pPlayerGui->Bank->GetGraphicWidth(def->MouseCursorGraphic);
     Pos.X += delta.X * def->MouseCursorScaleX;
     Pos.Y -= delta.Y * def->MouseCursorScaleY;

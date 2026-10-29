@@ -138,7 +138,9 @@ class CAIStateGroupBase { public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
 public:
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
 };
 struct CAIStateGroup_FlyingThingBase : CAIStateGroupBase {

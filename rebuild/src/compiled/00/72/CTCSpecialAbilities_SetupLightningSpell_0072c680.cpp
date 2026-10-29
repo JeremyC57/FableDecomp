@@ -46,7 +46,7 @@ class CThing {
 public:
     unsigned char _pad00[0x20];
     std::bitset<274> UsingComponents;                       // +0x20 (Ego_r.pdb `bitset<274> UsingComponents`)
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     bool HasTC(ETCInterfaceType type) const { return UsingComponents.test(type); }
 };
 class CThingCreatureBase : public CThing { public: };

@@ -22,7 +22,7 @@ extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 (MSVCR71)
 
 class CCharString { public:
     void* PStringData;
-    CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
     ~CCharString();                                     // 0x0099EAE0
 };
 CCharString __fastcall IntToCharString(long value);                              // 0x0099F830
@@ -198,7 +198,7 @@ static CCharString Make(const char* a, const char* b)
     p[la + lb] = 0;
     CCharString r; r.PStringData = p; return r;
 }
-CCharString& CCharString::operator+=(const CCharString& other) { CCharString t = Make(Txt(*this), Txt(other)); PStringData = t.PStringData; return *this; }
+const CCharString& CCharString::operator+=(const CCharString& other) { CCharString t = Make(Txt(*this), Txt(other)); PStringData = t.PStringData; return *this; }
 CCharString::~CCharString() { ++g_dtors; }
 CCharString __fastcall IntToCharString(long value)
 {

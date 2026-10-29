@@ -7,7 +7,7 @@ class CWideString { public:
     CWideString(const CWideString& other) { std::strcpy(m_text, other.m_text); }
     ~CWideString() {}
 };
-static CWideString IntToWideString(long value) { char b[32]; std::sprintf(b, "%ld", value); return CWideString(b); }
+static CWideString GFIntToWideString(long value) { char b[32]; std::sprintf(b, "%ld", value); return CWideString(b); }
 static CWideString GetXString() { return CWideString("x"); }
 static CWideString operator+(const CWideString& left, const CWideString& right)
 {
@@ -20,7 +20,7 @@ CWideString CTCInventoryExperience::GetXString(long count)
 {
     if (count == 0)
         return CWideString("");
-    return ::GetXString() + IntToWideString(count);
+    return ::GetXString() + GFIntToWideString(count);
 }
 int main()
 {

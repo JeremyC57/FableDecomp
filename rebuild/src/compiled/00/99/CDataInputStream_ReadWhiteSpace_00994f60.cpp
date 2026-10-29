@@ -21,7 +21,7 @@ class CCharString { public:
     CCharString();                          // 0x0099E4B0
     CCharString(const CCharString& other);  // 0x0099EC30
     ~CCharString();                         // 0x0099EAE0
-    CCharString& operator+=(char c);        // 0x0099F180
+    const CCharString& operator+=(char c);        // 0x0099F180
 };
 
 class CBaseClass { public: virtual ~CBaseClass(); };

@@ -9,7 +9,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& o) { std::strcat(s, o.s); return *this; }
 };
 static CWideString GetXString() { return CWideString(" x "); }
-static CWideString IntToWideString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CWideString(b); }
+static CWideString GFIntToWideString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CWideString(b); }
 
 struct CComponent {
     char Def[32];
@@ -40,7 +40,7 @@ static void Construct(CComponent* component, CSubtitleMap& subtitles, CComponent
         text = found->Text;
         if (found->Count > 0) {
             text += GetXString();
-            text += IntToWideString(found->Count);
+            text += GFIntToWideString(found->Count);
         }
     }
     CComponent* subtitle = CreateComponent("PC_SUBTITLE");

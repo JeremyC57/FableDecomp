@@ -23,7 +23,9 @@ class CScriptThing { public:                                   // vtable 0x01238
     virtual ~CScriptThing();                                    // 0x004AA840
 };
 class CBaseObject { public:                                    // vtable 0x0129A7D8
+protected:
     CBaseObject();                                      // 0x0099A380
+public:
     virtual ~CBaseObject();                             // 0x0099A430
     void* IntelligentPointer;                           // +0x04
 };

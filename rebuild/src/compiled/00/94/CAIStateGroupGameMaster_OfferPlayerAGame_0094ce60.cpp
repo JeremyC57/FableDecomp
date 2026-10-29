@@ -121,9 +121,13 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
     void Terminate();                           // 0x008FCF40
+    protected:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
+    public:
     EAIActionReturn AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
     EAIActionReturn AIAction_SpeakAISpeechToTarget(EAIActionRepeat repeat, CIntelligentPointerCreature speaker,
         CIntelligentPointerConstThing target, unsigned long speech, bool interrupt, long priority);   // 0x009812C0
@@ -139,7 +143,7 @@ struct CAIStateGroup_GameMaster : CAIStateGroupBase {
 
 bool CAIStateGroup_GameMaster::OfferPlayerAGame()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || !IS_THING_ALIVE(PTable))
         return false;
     CTCTavernGame* game;

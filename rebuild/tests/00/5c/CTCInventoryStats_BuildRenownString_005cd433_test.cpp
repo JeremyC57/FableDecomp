@@ -4,7 +4,7 @@
 class CCharString { public:
     char buf[64];
     CCharString(const char* t) { std::strcpy(buf, t); }
-    CCharString& operator+=(const CCharString& o) { std::strcat(buf, o.buf); return *this; }
+    const CCharString& operator+=(const CCharString& o) { std::strcat(buf, o.buf); return *this; }
 };
 static CCharString GFIntToCharString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CCharString(b); }
 struct CDataBank { CCharString GetTextBySymbol(const CCharString& s) { CCharString r("<"); r += s; r += CCharString(">"); return r; } };

@@ -74,12 +74,13 @@ struct CArray_MarkerGraphics {                     // CArray<SMarkerGraphics>: b
     SMarkerGraphics* m_pBegin;
     SMarkerGraphics* m_pEnd;
     SMarkerGraphics& operator[](unsigned long i) { return m_pBegin[i]; }
+    const SMarkerGraphics& operator[](unsigned long i) const { return m_pBegin[i]; }
 };
 class CPlayerGuiDef { public:
     unsigned char _pad00[0x958];
     CArray_MarkerGraphics MiniMapMarkerGraphics;           // +0x958
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };            // 0x00438570
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
 bool __fastcall IsUnderground(const CThing* thing);                  // 0x0085F120
 class CPlayer { public:
@@ -133,7 +134,7 @@ void CMiniMapDisplay::InitialiseEnemyMarkers()
                     && thing->GetDefName() != "CREATURE_BIRD_GUILD_SPARROW"
                     && !IsUnderground(thing)
                     && !thing->HiddenFromMiniMap)
-                    AddMarker(thing, PeekGuiDef()->MiniMapMarkerGraphics[8].Primary);
+                    AddMarker(thing, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[8].Primary);
             }
         }
     }

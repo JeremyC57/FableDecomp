@@ -24,7 +24,7 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
     bool operator!=(const char* text) const;                // 0x0099E960
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
-    CCharString& operator+=(const char* text);              // 0x0099F100
+    const CCharString& operator+=(const char* text);              // 0x0099F100
     CWideString ToWideString() const;                       // 0x0099E480
     long GetLength() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }   // "" = 0x0129AAF4
@@ -44,12 +44,13 @@ template <class T> struct vector {                          // STLport vector: {
     T* _M_finish;
     T* _M_end_of_storage;
     T& operator[](unsigned int i) { return _M_start[i]; }
+    const T& operator[](unsigned int i) const { return _M_start[i]; }
 };
 class CPlayerGuiDef { public:
     unsigned char       _pad000[0x91c];
     vector<CCharString> TutorialText;                       // +0x91c
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();                     // 0x00438570
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };                     // 0x00438570
 class CHeroLogBook { public:
     void AddLogEntry(const CWideString& title, const CWideString& heading, const CWideString& text, long category, bool given);   // 0x0047A9F0
 };
@@ -92,7 +93,7 @@ class CUserProfileManager { public:
 
 void CUserProfileManager::SetAllTutorialsAsGiven()
 {
-    CPlayerGuiDef* def = PeekGuiDef();
+    const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
     CHeroLogBook* logBook = g_pMainGameComponent->PlayerManager->GetMainPlayer().PHeroLogBook;
     for (long i = 0; i < 95; ++i) {
         if (i > 0) {

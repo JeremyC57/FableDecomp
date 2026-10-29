@@ -43,7 +43,7 @@ public:
 }
 
 class C2DExtentsI { public: long Width, Height; };
-class CDisplayManager { public: C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
+class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
 extern CDisplayManager* g_pDisplayManager;                              // 0x013B8390
 
 void __fastcall GFACoordToVCoord(const C2DVector& in, C2DVector& out);  // 0x009E21D0

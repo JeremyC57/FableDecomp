@@ -53,8 +53,10 @@ class CScriptThing : public CBase { public:                           // vtable 
 class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
     void* m_pIntelligentPointer;                        // +0x04
+protected:
     CBaseObject();                                      // 0x0099A380
     CBaseObject& operator=(const CBaseObject& other);   // 0x0099A3B0
+public:
 };
 struct CBaseObjectDtor {                                // destructor-only view of CBaseObject
     void* m_pIntelligentPointer;

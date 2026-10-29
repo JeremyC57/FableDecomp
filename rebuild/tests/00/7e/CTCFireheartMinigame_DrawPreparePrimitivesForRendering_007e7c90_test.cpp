@@ -31,7 +31,7 @@ class C2DExtentsI { public: long X, Y; };
 static int g_dims = 0;
 class CDisplayManager {
 public:
-    C2DExtentsI GetRenderTargetDimensions() const { ++g_dims; C2DExtentsI e; e.X = 640; e.Y = 480; return e; }
+    const C2DExtentsI GetRenderTargetDimensions() { ++g_dims; C2DExtentsI e; e.X = 640; e.Y = 480; return e; }
 };
 static CDisplayManager g_display;
 CDisplayManager* g_pDisplayDevice = &g_display;

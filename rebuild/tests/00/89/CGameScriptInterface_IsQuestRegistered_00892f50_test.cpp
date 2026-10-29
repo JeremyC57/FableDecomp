@@ -14,7 +14,7 @@ public:
 class CQuestManager
 {
 public:
-    bool IsQuestRegistered(const CCharString& questName);
+    bool IsQuestRegistered(const CCharString& questName) const;
 };
 
 class CGameScriptInterface
@@ -28,7 +28,7 @@ static const CCharString* g_ObservedQuestName;
 static unsigned long g_CallCount;
 static bool g_Result;
 
-bool CQuestManager::IsQuestRegistered(const CCharString& questName)
+bool CQuestManager::IsQuestRegistered(const CCharString& questName) const
 {
     g_ObservedQuestName = &questName;
     ++g_CallCount;

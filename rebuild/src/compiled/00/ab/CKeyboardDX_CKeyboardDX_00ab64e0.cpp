@@ -1,4 +1,4 @@
-// CKeyboardDX::CKeyboardDX(CInputManagerDX* manager, bool exclusive) -- build the DirectInput keyboard: CKeyboard base, remember the input manager, clear the key states, create the system-keyboard device, set its cooperative level, data format and a 256-entry buffer and acquire it, then fill the engine-key -> DIK scan-code table
+// CKeyboardDX::CKeyboardDX(CInputManagerDX& manager, bool exclusive) -- build the DirectInput keyboard: CKeyboard base, remember the input manager, clear the key states, create the system-keyboard device, set its cooperative level, data format and a 256-entry buffer and acquire it, then fill the engine-key -> DIK scan-code table
 // Leaf: ??0CKeyboardDX
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB64E0, length 1293 bytes, `ret 8`.
 // Callees: CKeyboard::CKeyboard(CInputManager*, bool) @ 0x00A66930 (manifest label "NHeroInformationScreens_Keyboard_Constructor"
@@ -52,13 +52,13 @@ class CInputManagerDX : public CInputManager { public:
     IDirectInput8_Retail* DInput;                  // +0x80
 };
 class CKeyboard { public:                                 // retail layout 0x3414 bytes (vtable 0x0129DBA8)
-    CKeyboard(CInputManager* manager, bool exclusive);   // 0x00A66930
+    CKeyboard(CInputManager& manager, bool exclusive);   // 0x00A66930
     virtual ~CKeyboard();
     unsigned char _body[0x3414 - 4];
 };
 class CKeyboardDX : public CKeyboard {
 public:
-    CKeyboardDX(CInputManagerDX* manager, bool exclusive);
+    CKeyboardDX(CInputManagerDX& manager, bool exclusive);
     virtual ~CKeyboardDX();
     bool SetExclusiveMode(bool exclusive);         // 0x00AB6450
     CInputManagerDX*            InputManagerDX;    // +0x3414
@@ -68,11 +68,11 @@ public:
     bool                        Acquired;          // +0x3610
 };
 
-CKeyboardDX::CKeyboardDX(CInputManagerDX* manager, bool exclusive)
-    : CKeyboard(manager, exclusive), InputManagerDX(manager)
+CKeyboardDX::CKeyboardDX(CInputManagerDX& manager, bool exclusive)
+    : CKeyboard(manager, exclusive), InputManagerDX(&manager)
 {
     memset(KeyStates, 0, sizeof(KeyStates));
-    if (manager->DInput->CreateDevice(GUID_SysKeyboard, &DKeyboard, 0) == 0
+    if (manager.DInput->CreateDevice(GUID_SysKeyboard, &DKeyboard, 0) == 0
         && SetExclusiveMode(exclusive)
         && DKeyboard->SetDataFormat(c_dfDIKeyboard) == 0) {
         DIPROPDWORD_Retail prop;

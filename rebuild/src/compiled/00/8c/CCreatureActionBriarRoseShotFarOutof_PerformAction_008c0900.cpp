@@ -137,7 +137,7 @@ class CThing { public:
     unsigned char         _pad74[0x90 - 0x74];
     signed char           PlayerNumber;                // +0x90
     const C3DVector& GetPos() const;              // 0x004C73D0
-    CTCBase* AddTC(const CCharString& name, bool init, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool init, const CTCParamsBase* params);   // 0x004C9D60
 };
 __forceinline bool GetDummyObject(const CThing* thing, const CCharString& name, C3DVector* position, CRightHandedSet* orientation)
 {

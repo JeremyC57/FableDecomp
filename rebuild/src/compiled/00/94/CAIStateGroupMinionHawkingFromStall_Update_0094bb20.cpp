@@ -127,7 +127,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                        // 0x008FCFC0
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     unsigned long Random(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();

@@ -56,7 +56,7 @@ extern CEngineCamera* g_pEngineCamera_01436ea0;   // 0x01436EA0
 class CDisplayManager { public:
     unsigned char _pad000[0x1f4];
     C2DBoxI       Viewport;                           // +0x1f4
-    C2DExtentsI GetRenderTargetDimensions();          // 0x009BEDC0
+    const C2DExtentsI GetRenderTargetDimensions();          // 0x009BEDC0
     void SetViewport(const C2DBoxF& box);             // 0x009BF490
     void SetViewport(const C2DBoxI& box);             // 0x009BEF80
 };

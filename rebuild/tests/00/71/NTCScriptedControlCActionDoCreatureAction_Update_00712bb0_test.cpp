@@ -11,7 +11,7 @@ struct CCreatureActionQueue {
 class CThingCreatureBase { public:
     CCreatureActionQueue* PActionQueue; bool busy; CCreatureActionBase* given;
     bool IsPerformingAnyAction() { return busy; }
-    bool SetCurrentAction(CCreatureActionBase* a) { given = a; busy = true; PActionQueue->current = a->id; return true; }
+    bool SetCurrentAction(const CCreatureActionBase& a_ref) { CCreatureActionBase* a = const_cast<CCreatureActionBase*>(&a_ref); given = a; busy = true; PActionQueue->current = a->id; return true; }
 };
 
 class CTCScriptedControl { public: CThingCreatureBase* PThing; };
@@ -28,7 +28,7 @@ struct CActionDoCreatureAction {
                     return;
                 Terminated = true;
             }
-            creature->SetCurrentAction(Action_Data);
+            creature->SetCurrentAction(*Action_Data);
             ActionID = creature->PActionQueue->GetCurrentActionID();
             ActionSet = true;
         } else {

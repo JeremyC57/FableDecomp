@@ -25,7 +25,7 @@ class CCharString { public:
     void* m_pData;
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
 };
 CCharString __fastcall GFIntToCharString(long value);                           // 0x0099F830
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
@@ -177,7 +177,7 @@ static const char* Text(const CCharString& s) { return ((SData*)s.m_pData)->text
 static CCharString Make(const char* text) { CCharString* s = (CCharString*)malloc(sizeof(CCharString)); s->m_pData = NewData(text); CCharString r(*s); Release(s->m_pData); free(s); return r; }
 CCharString::CCharString(const CCharString& other) { m_pData = other.m_pData; ++((SData*)m_pData)->refs; }
 CCharString::~CCharString() { Release(m_pData); }
-CCharString& CCharString::operator+=(const CCharString& other)
+const CCharString& CCharString::operator+=(const CCharString& other)
 {
     char buf[60]; strcpy(buf, Text(*this)); strcat(buf, Text(other));
     Release(m_pData); m_pData = NewData(buf); return *this;

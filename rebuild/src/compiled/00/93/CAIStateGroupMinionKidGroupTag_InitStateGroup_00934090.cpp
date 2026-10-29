@@ -25,7 +25,9 @@ extern long g_framesPerSecond;              // 0x01375550
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];               // +0x04..+0x13
-    unsigned long* GetPWorldSeed();         // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;         // 0x008FCFD0
+    public:
     // a random frame count within `seconds`: the frame rate is read BEFORE the seed pointer is fetched (retail
     // loads the global first and multiplies after the call), the seed step is the landed GetRandomObject one
     unsigned long RandomFramesWithin(long seconds)

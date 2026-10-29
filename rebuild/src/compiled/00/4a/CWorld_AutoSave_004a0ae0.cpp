@@ -36,7 +36,9 @@ class CWorld { public:
     long          MostRecentSaveType;                         // +0x134 ESaveType (PDB +0x144)
     long          MostRecentSaveTypeBeforeManualSave;         // +0x138 ESaveType (PDB +0x148)
 
+protected:
     void CopyFileInternal(const CWideString& source, const CWideString& destination) const;   // 0x0049DD50
+public:
     void StartAutoSaveProgress();                                                           // 0x0049E7C0
     void StopAutoSaveProgress();                                                            // 0x0049E8C0
     bool AutoSaveInternal(const CWideString& name, bool b);                                 // 0x004A0850

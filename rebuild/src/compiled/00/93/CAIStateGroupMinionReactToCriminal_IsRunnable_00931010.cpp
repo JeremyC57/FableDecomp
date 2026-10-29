@@ -109,7 +109,9 @@ class CAIStateGroupBase { public:
     long ScriptAIPriority;                      // +0x08
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
 };
 
 struct CAIStateGroup_MinionReactToCriminal : CAIStateGroupBase {
@@ -122,7 +124,7 @@ struct CAIStateGroup_MinionReactToCriminal : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionReactToCriminal::IsRunnable()
 {
-    PHero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    PHero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     const CThingAICreature* me = PBrain->PCreature;
     PHome = ((CThing*)me->HomeBuilding.GetPItem());
     CThingAICreature* creature = PBrain->PCreature;

@@ -47,7 +47,7 @@ class CThingCreatureBase { public:
             it = map->last;
         return it->second;
     }
-    bool SetCurrentAction(CCreatureActionBase* action);     // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);     // 0x006644F0
 };
 
 inline bool IsThingAlive(const CThingCreatureBase* thing)
@@ -99,7 +99,7 @@ void CTCCarriedActionUseWallMount::vfunc_28(CThingCreatureBase* user)
     if (IsThingAlive(user))
     {
         CThingCreatureBase* holder = ParentThing;
-        user->SetCurrentAction(&CCreatureAction_DeclarePlayerACriminal(user, (CThingPlayerCreature*)holder));
+        user->SetCurrentAction(CCreatureAction_DeclarePlayerACriminal(user, (CThingPlayerCreature*)holder));
     }
     else if (ParentThing->HasInterface(0x1a))
         ((CTCInterface1A*)ParentThing->GetInterface(0x1a))->Notify();

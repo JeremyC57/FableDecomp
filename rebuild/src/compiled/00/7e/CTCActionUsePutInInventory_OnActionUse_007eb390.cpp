@@ -54,7 +54,7 @@ class CCreatureAction_AddRealObjectToInventory : public CCreatureActionBase { pu
 };
 
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 class CTCBase { public:                               // engine/CTCBase.h layout, modelled polymorphic
@@ -78,5 +78,5 @@ void CTCActionUsePutInInventory::OnActionUse(CThing& user)
     CTCActionUseBase::OnActionUse(user);
     CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(&user);
     if (creature && !creature->Dead && ParentThing->m_type == 5)
-        creature->SetCurrentAction(&CCreatureAction_AddRealObjectToInventory(creature, static_cast<CThingObject*>(ParentThing)));
+        creature->SetCurrentAction(CCreatureAction_AddRealObjectToInventory(creature, static_cast<CThingObject*>(ParentThing)));
 }

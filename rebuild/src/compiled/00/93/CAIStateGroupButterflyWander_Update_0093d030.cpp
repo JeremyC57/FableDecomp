@@ -55,7 +55,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad[0x0c];                      // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
-    unsigned long* GetPWorldSeed();                // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;                // 0x008FCFD0
+    public:
     void Terminate();                              // 0x008FCF40
 };
 

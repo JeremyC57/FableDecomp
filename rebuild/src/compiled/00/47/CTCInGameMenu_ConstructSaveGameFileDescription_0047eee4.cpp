@@ -42,7 +42,7 @@ class CCharString { public:
     unsigned long ComputeCRC32() const;                 // 0x00404310
     CWideString ToWideString() const;                   // 0x0099E480
 };
-bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };   // 0x00999230
 struct _FILETIME { unsigned long dwLowDateTime, dwHighDateTime; };
 class CDateAndTime { public:
     long _body[7];
@@ -167,7 +167,7 @@ void CTCInGameMenu::ConstructSaveGameFileDescription(CWideString& description, l
     CWideString companion = CUserProfileManager::Get().GetPathNameFromFileName(FileNames[index], false) + L".";
     bool hasCompanion = false;
     CManager* manager = 0;
-    if (PathExists(companion))
+    if (CAFile::PathExists(companion))
         hasCompanion = true;
     bool valid = VerifySignatureCached(CUserProfileManager::Get().GetPathNameFromFileName(FileNames[index], false)) &&
                  (!hasCompanion || VerifySignatureCached(companion));

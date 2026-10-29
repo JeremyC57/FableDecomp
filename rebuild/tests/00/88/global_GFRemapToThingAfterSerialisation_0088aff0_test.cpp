@@ -56,7 +56,7 @@ class CThingManager {
 public:
     CThing* Things;
     int     Count;
-    CThing* GetThingWithUID(u64 uid) { return (int)uid < Count ? &Things[(int)uid] : 0; }
+    CThing* GetPThingWithUID(u64 uid) { return (int)uid < Count ? &Things[(int)uid] : 0; }
 };
 static CThingManager* g_pThingManager = 0;
 class CBaseIntelligentPointer {
@@ -89,7 +89,7 @@ void __fastcall GFRemapToThingAfterSerialisation(CIntelligentPointer<CThing>& po
     if (IsThingAlive((CThing*)pointer.GetPItem()) && pointer->GetInterface(&remap, TC_THING_UID_REMAP)) {
         u64 uid = remap->RemapUID;
         pointer->Kill(false);
-        pointer = CIntelligentPointer<CThing>(g_pThingManager->GetThingWithUID(uid));
+        pointer = CIntelligentPointer<CThing>(g_pThingManager->GetPThingWithUID(uid));
     }
 }
 static void InitThing(CThing& t, CInterfaceMap::SEntry* entries, int count)

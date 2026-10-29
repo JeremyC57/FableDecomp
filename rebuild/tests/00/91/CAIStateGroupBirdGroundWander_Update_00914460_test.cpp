@@ -122,7 +122,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
     CThing* GetCreatureThing() const { return PBrain->PCreature; }
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     unsigned long Random(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();
@@ -207,7 +209,7 @@ static unsigned long g_rorResult = 0;
 unsigned long __fastcall GFROR13(unsigned long value) { return g_rorResult; }
 CAIStateGroupBase::~CAIStateGroupBase() { }
 static unsigned long g_seed = 1;
-unsigned long* CAIStateGroupBase::GetPWorldSeed() { return &g_seed; }
+unsigned long* CAIStateGroupBase::GetPWorldSeed() const { return &g_seed; }
 static const long* g_moveSeq; static int g_moveCalls = 0; static float g_lastTargetX = 0; static bool g_moveArgsOk = true;
 long CAIStateGroupBase::AIAction_MoveToPos(long repeat, C3DVector pos, bool* reached, long movement, bool a, bool b,
     CThing* avoid, bool c, float speed)

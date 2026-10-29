@@ -68,7 +68,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
 
 class CThing;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
 class CThing { public:
@@ -157,7 +157,7 @@ void CModeJackOfBladesScream::OnActivate()
                 PEmitter = CIntelligentPointer<CThing>(effect);
                 if (effect->HasTC(0x4b)) {
                     CTCDParticleEmitter* emitter = (CTCDParticleEmitter*)effect->PTCDriver;
-                    emitter->AttachToThing(ParentThing, 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
+                    emitter->AttachToThing(*ParentThing, 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
                 }
             }
         }

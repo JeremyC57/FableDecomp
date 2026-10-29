@@ -2,7 +2,7 @@
 // Leaf: BuildText
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C8FB0, length 190 bytes (+ int3 padding), `ret`.
 // Callees: CResource::ListRemove @ 0x009FBFB0, CResource::ListInsert(prev, next) @ 0x009FBF90,
-// CBankFileAsyncData::IsFinished @ 0x009D54E0, ::WaitUntilFinished @ 0x009D5B60, ::PeekData @ 0x009D5530 (byte-twin of GetData 0x009D5580, named apart for relocation identity),
+// CBankFileAsyncData::IsFinished @ 0x009D54E0, ::WaitUntilFinished @ 0x009D5B60, ::GetData @ 0x009D5530 (Ego_r / FableWin order GetData, PeekData; byte-twin of the const PeekData 0x009D5580),
 // CMemoryDataInputStream::CMemoryDataInputStream(void*, long) @ 0x00994930, its destructor @ 0x00993B10,
 // NGameText::CTextEntry::ReadFromDataStream(CDataInputStream*) @ 0x009C8DE0, operator delete @ 0x00BFE9BC
 // (the count block; the object is destroyed through the block's stored deleter).
@@ -39,7 +39,7 @@ class CBankFileAsyncData { public:
     long DataSize;                     // +0x10
     long GetDataSize() const { return DataSize; }
     bool WaitUntilFinished();          // 0x009D5B60
-    const void* PeekData() const;      // 0x009D5530 (byte-identical to GetData 0x009D5580)
+    void* GetData();                   // 0x009D5530 (byte-identical to the const PeekData 0x009D5580)
 public:
     bool IsFinished() const;   // 0x009D54E0
 };
@@ -102,7 +102,7 @@ void NGameText::CDataBankTextEntry::BuildText() const
     if (PText->PFileData.Object) {
         if (!PText->PFileData->IsFinished())
             PText->PFileData->WaitUntilFinished();
-        CMemoryDataInputStream stream(PText->PFileData->PeekData(), PText->PFileData->GetDataSize());
+        CMemoryDataInputStream stream(PText->PFileData->GetData(), PText->PFileData->GetDataSize());
         PText->ReadFromDataStream(&stream);
         PText->PFileData.Clear();
     }

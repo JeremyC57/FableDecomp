@@ -14,7 +14,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& o) { std::strcat(Text, o.Text); return *this; }
     const CWideString& operator+=(const char* t) { std::strcat(Text, t); return *this; }
 };
-static CWideString IntToWideString(long v) { CWideString s; std::sprintf(s.Text, "%ld", v); return s; }
+static CWideString GFIntToWideString(long v) { CWideString s; std::sprintf(s.Text, "%ld", v); return s; }
 static CWideString operator+(const char* l, const CWideString& r) { CWideString s; std::strcpy(s.Text, l); std::strcat(s.Text, r.Text); return s; }
 class CTCCoopSpirit { public: long Score; long GetScore() const { return Score; } };
 class CThing { public: bool hasSpirit; CTCCoopSpirit* spirit;
@@ -33,12 +33,12 @@ bool CPlayerManager::DrawGetEnvironmentInfo(long playerNumber, CWideString& text
     CThing* hero = player->GetHeroThing();
     if (player->IsMainPlayer() || hero == 0)
         return false;
-    text += "P" + IntToWideString(player->GetJoystickDeviceNumber() + 1);
+    text += "P" + GFIntToWideString(player->GetJoystickDeviceNumber() + 1);
     text += ":";
     CTCCoopSpirit* spirit = 0;
     if (hero->HasTC(0xc7))
         spirit = (CTCCoopSpirit*)hero->GetTC(0xc7);
-    text += IntToWideString(spirit->GetScore());
+    text += GFIntToWideString(spirit->GetScore());
     text += "  ";
     return true;
 }

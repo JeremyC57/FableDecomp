@@ -47,7 +47,7 @@ struct CWStringParser {
     CWideString ReadAsStringUntilCharacter(wchar stop)
     { wstr r; while (String[StringPos] && String[StringPos] != stop) r += String[StringPos++]; return CWideString(r); }
 };
-class CDisplayManager { public: C2DExtentsI GetRenderTargetDimensions() const { C2DExtentsI e = { 1280, 720 }; return e; } };
+class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions() { C2DExtentsI e = { 1280, 720 }; return e; } };
 static CDisplayManager g_dm; static CDisplayManager* g_pDisplayManager = &g_dm;
 class CPlayerGuiDef { public: float TextBoxMaxWidth, TextBoxMinWidth; };
 static CPlayerGuiDef g_gui = { 50.0f, 10.0f };

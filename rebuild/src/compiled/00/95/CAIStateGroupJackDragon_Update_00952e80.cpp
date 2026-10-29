@@ -104,7 +104,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
     bool IsStopping();                          // 0x008FD010
     void Terminate();                           // 0x008FCF40
 };
@@ -133,7 +135,7 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
 
 void CAIStateGroup_JackDragon::Update()
 {
-    PEnemy = CIntelligentPointerCreature(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
+    PEnemy = CIntelligentPointerCreature(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
     CTCBoss* boss;
     while (IS_THING_ALIVE(PEnemy) && !IsStopping()) {
         GetCreature()->GetInterface(&boss, 0xad);

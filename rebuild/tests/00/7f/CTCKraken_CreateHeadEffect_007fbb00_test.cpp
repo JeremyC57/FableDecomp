@@ -132,7 +132,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
 class CTCKraken { public:
@@ -162,7 +162,7 @@ void CTCKraken::CreateHeadEffect(const CCharString& name)
             emitter = (CTCDParticleEmitter*)effect->m_tcs.Find(0x4b);
         {
         CCharString boneName("EFFECT_WATER");
-        emitter->AttachToThing(ParentThing, 0x4a, boneName, 0, 0.0f);
+        emitter->AttachToThing(*ParentThing, 0x4a, boneName, 0, 0.0f);
         }
     }
     ReleaseDef(effects);
@@ -191,8 +191,8 @@ CBaseIntelligentPointer::CBaseIntelligentPointer() { m_pItem = 0; }
 CBaseIntelligentPointer::~CBaseIntelligentPointer() { ++g_ipDtor; }
 CThing* CBaseIntelligentPointer::GetPItem() const { return (CThing*)m_pItem; }
 void CBaseIntelligentPointer::SetPItem(CThing* item) { m_pItem = (CBaseObject*)item; }
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale)
-{ ++g_attach; g_attachThis = this; g_attachThing = thing; g_attachType = boneIndex; strcpy(g_attachName, (const char*)boneName.m_pData);
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long boneIndex, const CCharString& boneName, long flags, float scale)
+{ CThing* thing = &thing_ref; ++g_attach; g_attachThis = this; g_attachThing = thing; g_attachType = boneIndex; strcpy(g_attachName, (const char*)boneName.m_pData);
   g_attachFlags = flags; g_attachScale = scale; }
 void CTCKraken::RemoveHeadEffect() { ++g_remove; }
 static void reset() { g_strCtor = g_strDtor = g_destroyed = g_ipDtor = g_attach = g_create = g_remove = 0; g_lastName[0] = 0;

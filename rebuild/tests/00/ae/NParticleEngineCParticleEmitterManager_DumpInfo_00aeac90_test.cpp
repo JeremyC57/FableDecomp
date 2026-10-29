@@ -14,8 +14,8 @@ class CCharString { public:
     std::string s;
     CCharString() { }
     CCharString(const char* text) : s(text) { }
-    CCharString& operator+=(const CCharString& other) { s += other.s; return *this; }
-    CCharString& operator+=(const char* text) { s += text; return *this; }
+    const CCharString& operator+=(const CCharString& other) { s += other.s; return *this; }
+    const CCharString& operator+=(const char* text) { s += text; return *this; }
     void SaveToFile(CAFile& file) const { file.saved = s; ++file.saves; g_lastFile = file; }
     static CCharString FormatDouble(int digits, double value)
     {

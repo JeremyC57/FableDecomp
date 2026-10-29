@@ -40,8 +40,8 @@ class CCharString { public:
             return 0;
         return PStringData->StringLength;
     }
-    CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
-    CCharString& operator+=(const char* text);          // 0x0099F100
+    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
+    const CCharString& operator+=(const char* text);          // 0x0099F100
 };
 
 class CBaseClass { public:

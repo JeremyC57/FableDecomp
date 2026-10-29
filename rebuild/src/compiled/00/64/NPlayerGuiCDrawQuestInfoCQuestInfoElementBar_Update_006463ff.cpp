@@ -3,7 +3,7 @@
 // Retail 0x006463FF, 360 bytes, size-optimised TU (#pragma optimize("s"): ebp frame, `leave`, unaligned entry).
 // Callees: IS_THING_ALIVE<CIntelligentPointer<CThingPhysical const> > 0x00655D04 (__fastcall), GetPItem 0x00A01B50,
 // the game global 0x013B86A0 (+0x24 world: GetWorldMap slot 13, GetThingManager slot 3), CWorldMap::
-// GetRegionNumberMapIsIn 0x004FC190, the current region 0x004FB150, CThingManager::GetThingWithUID 0x0051ED80,
+// GetRegionNumberMapIsIn 0x004FC190, the current region 0x004FB150, CThingManager::GetPThingWithUID 0x0051ED80,
 // IS_THING_ALIVE<CThing*> 0x0040DCE0 (__fastcall), CIntelligentPointer(CThing*) 0x00655145, operator= 0x00655180,
 // ~CBaseIntelligentPointer 0x00A01C10. Pool: 1.0f 0x0122DED8, 255.0f 0x01230014.
 // Layout: Ego_r.pdb CQuestInfoElementBar shifted by -4 up to ThingUID: Value +0x1C, MaxValue +0x20, MinValue +0x24,
@@ -50,7 +50,7 @@ bool __fastcall IS_THING_ALIVE_RAW(CThing* const* p)                            
 }
 #pragma auto_inline(on)
 class CThingManager { public:
-    CThing* GetThingWithUID(unsigned __int64 uid);  // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);  // 0x0051ED80
 };
 class CWorldMap { public:
     long GetLoadedRegion() const;                  // 0x004FB150
@@ -108,7 +108,7 @@ bool CQuestInfoElementBar::Update()
         CWorld* world = g_pGame->World;
         CWorldMap* map = world->GetWorldMap();
         if (map->GetLoadedRegion() == map->GetRegionNumberMapIsIn(ThingMapNumber)) {
-            CThing* thing = world->GetThingManager()->GetThingWithUID(ThingUID);
+            CThing* thing = world->GetThingManager()->GetPThingWithUID(ThingUID);
             if (IS_THING_ALIVE_RAW(&thing)) {
                 CIntelligentPointer<CThingPhysical> found(thing);
                 PThing = found;

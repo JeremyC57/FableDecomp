@@ -146,7 +146,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 class CTCInventoryAbilities { public: long GetAbilityMaximumLevel(long ability); };   // 0x005EDEA3 (interface 0x6F)
 class CTCDParticleEmitter { public:                            // interface 0x4B
     void SetAlwaysUpdate(bool on);                      // 0x006E0590
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CEnvironmentSpellEffects {
     void* RadialBlurFadeTo(float strength, long mode, float a, float b, float c, float d, float e, float f);   // 0x006B8730
@@ -201,7 +201,7 @@ void CTCAssassinRush::CreateTrailingEffect()
                 CTCDParticleEmitter* emitter = 0;
                 AssassinTrail.GetPItem()->GetInterface(&emitter, 0x4b);
                 emitter->SetAlwaysUpdate(true);
-                emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
             }
         }
         long displacement = 0;
@@ -210,7 +210,7 @@ void CTCAssassinRush::CreateTrailingEffect()
             if (IS_THING_ALIVE(AssassinDisplacementTrail)) {
                 CTCDParticleEmitter* emitter = 0;
                 AssassinDisplacementTrail.GetPItem()->GetInterface(&emitter, 0x4b);
-                emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
                 emitter->SetAlwaysUpdate(true);
             }
         }

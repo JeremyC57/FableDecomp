@@ -44,8 +44,8 @@ static CThing* Create(const CCharString& defName, const C3DVector& position, boo
 static int g_attached; static CThing* g_attachThing; static long g_attachType, g_attachIndex; static const char* g_attachName;
 class CTCDParticleEmitter { public:
     int id;
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float delay)
-    { ++g_attached; g_attachThing = thing; g_attachType = attachType; g_attachName = helperName.p; g_attachIndex = helperIndex; if (delay != 0.0f) g_attached = 100; }
+    void AttachToThing(CThing& thing_ref, long attachType, const CCharString& helperName, long helperIndex, float delay)
+    { CThing* thing = &thing_ref; ++g_attached; g_attachThing = thing; g_attachType = attachType; g_attachName = helperName.p; g_attachIndex = helperIndex; if (delay != 0.0f) g_attached = 100; }
 };
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
@@ -68,7 +68,7 @@ struct CFirePoint {
             if (effect && !effect->IsDead()) {
                 CTCDParticleEmitter* emitter = 0;
                 if (effect->HasTC(0x4b)) emitter = effect->GetTC<CTCDParticleEmitter>(0x4b);
-                emitter->AttachToThing(PParentThing, 0x1c, HelperName, HelperIndex, 0.0f);
+                emitter->AttachToThing(*PParentThing, 0x1c, HelperName, HelperIndex, 0.0f);
             }
         }
         Burning = false;

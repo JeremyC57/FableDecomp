@@ -56,7 +56,7 @@ class CThing { public:
 };
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position);   // 0x0072AB70
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -156,7 +156,7 @@ void CTCBerserk::CreateStartingEffect()
             if (IS_THING_ALIVE(StartUpEffect)) {
                 CTCDParticleEmitter* emitter;
                 ((CThing*)StartUpEffect.GetPItem())->GetInterface(&emitter, 0x4b);
-                emitter->AttachToThing(ParentThing, 0x28, "", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 0x28, "", 0, 0.0f);
             }
         }
     }

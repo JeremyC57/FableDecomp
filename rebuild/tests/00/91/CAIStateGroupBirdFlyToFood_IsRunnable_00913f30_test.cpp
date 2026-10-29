@@ -138,7 +138,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CWorld* GetPWorld_008fcfa0();                        // 0x008FCFA0
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     CThingSearchTools* PeekThingSearchTools();  // 0x008FD000
 };
 struct CAIStateGroup_FlyingThingBase : CAIStateGroupBase {
@@ -213,7 +215,7 @@ CThingPhysical* FindBest_00914330(CThingSearchTools* tools, const CThingFilter_D
 CAIStateGroupBase::~CAIStateGroupBase() {}
 static CWorld g_world; static unsigned long g_seed; static CThingSearchTools g_tools;
 CWorld* CAIStateGroupBase::GetPWorld_008fcfa0() { return &g_world; }
-unsigned long* CAIStateGroupBase::GetPWorldSeed() { return &g_seed; }
+unsigned long* CAIStateGroupBase::GetPWorldSeed() const { return &g_seed; }
 CThingSearchTools* CAIStateGroupBase::PeekThingSearchTools() { return &g_tools; }
 static bool g_flightOk[4]; static int g_flights; static C3DVector g_flightFrom[4]; static float g_flightRadius[4]; static C3DVector* g_flightOut[4]; static bool g_flightGround[4];
 bool CAIStateGroup_FlyingThingBase::GetRandomFlightPos(const C3DVector& from, float radius, C3DVector* out, bool allowGround)

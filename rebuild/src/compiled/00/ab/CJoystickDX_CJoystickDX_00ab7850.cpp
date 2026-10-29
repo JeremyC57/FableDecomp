@@ -1,4 +1,4 @@
-// CJoystickDX::CJoystickDX(CInputManagerDX* inputManager, bool exclusiveMode) -- DirectInput joystick constructor: the CJoystick base, zeroed axes, the default axis ranges (0x5556..0xaaaa), no device yet, the owning DX input manager, then SetExclusiveMode
+// CJoystickDX::CJoystickDX(CInputManagerDX& inputManager, bool exclusiveMode) -- DirectInput joystick constructor: the CJoystick base, zeroed axes, the default axis ranges (0x5556..0xaaaa), no device yet, the owning DX input manager, then SetExclusiveMode
 // Leaf: ??0CJoystickDX
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AB7850, length 114 bytes.
 // Callees: CJoystick::CJoystick(CInputManager*, bool) @ 0x009E43B0, CJoystickDX::SetExclusiveMode(bool) @ 0x00AB6DE0 (a virtual
@@ -16,7 +16,7 @@ class CJoystick {
 public:
     virtual void v00();
     unsigned char _base04[0xd18 - 4];              // EventStore .. NoEventScansRunning
-    CJoystick(CInputManager* inputManager, bool exclusiveMode);   // 0x009E43B0
+    CJoystick(CInputManager& inputManager, bool exclusiveMode);   // 0x009E43B0
 };
 class CJoystickDX : public CJoystick {
 public:
@@ -31,14 +31,14 @@ public:
     IDirectInputDevice8W* DJoystick;               // +0xd38
     bool                  Acquired;                // +0xd3c
     CInputManagerDX*      InputManagerDX;          // +0xd40
-    CJoystickDX(CInputManagerDX* inputManager, bool exclusiveMode);
+    CJoystickDX(CInputManagerDX& inputManager, bool exclusiveMode);
     virtual bool SetExclusiveMode(bool exclusive); // 0x00AB6DE0
 };
 
-CJoystickDX::CJoystickDX(CInputManagerDX* inputManager, bool exclusiveMode)
-    : CJoystick((CInputManager*)inputManager, exclusiveMode)
+CJoystickDX::CJoystickDX(CInputManagerDX& inputManager, bool exclusiveMode)
+    : CJoystick((CInputManager&)inputManager, exclusiveMode)
 {
-    InputManagerDX = inputManager;
+    InputManagerDX = &inputManager;
     DJoystick = 0;
     XAxisMin = 0x5556;
     XAxisMax = 0xaaaa;

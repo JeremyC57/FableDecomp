@@ -5,7 +5,7 @@
 //   PDB ?EAOpenHeroCentreDoor@CWorld@@QAEXPBVCGameEvent@@@Z.
 // Callees: CWorld::GetPlayer(long) 0x0049D850, CPlayer::GetPControlledCreature 0x00487DC0, the const interface-map LowerBound
 //   0x004365B0 (the hero is a const CThing*), CGameEvent::GetData 0x009F17A0, CMemoryBuffer::Read 0x009F18F0, CWorld
-//   virtual slot 3 GetThingManager, CThingManager::GetThingWithUID(__int64) 0x0051ED80, the non-const LowerBound
+//   virtual slot 3 GetThingManager, CThingManager::GetPThingWithUID(__int64) 0x0051ED80, the non-const LowerBound
 //   0x0040F020, CTCHeroCentre::OnHeroWalkedThroughDoor(EHeroCentreDoorType) 0x0077DB90, __security_check_cookie 0x00BFE9F9.
 // Layout (retail CThing): interface bitset +0x20 (TC 0x11 CTCInventoryBase -> word 0 bit 17; TC 0x6A CTCHeroCentre ->
 //   word +0x2C bit 10), interface map +0x44, Dead +0x91 bit 0; CTCInventoryBase InventoryOpen +0x58.
@@ -100,7 +100,7 @@ class CTCHeroCentre { public:                             // TC 0x6A
     void OnHeroWalkedThroughDoor(EHeroCentreDoorType door);   // 0x0077DB90
 };
 class CThingManager { public:
-    CThing* GetThingWithUID(__int64 uid);          // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);          // 0x0051ED80
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 
@@ -126,7 +126,7 @@ void CWorld::EAOpenHeroCentreDoor(const CGameEvent* event)
             buffer.Read(4, &door);
             __int64 uid;
             buffer.Read(8, &uid);
-            CThing* thing = GetThingManager()->GetThingWithUID(uid);
+            CThing* thing = GetThingManager()->GetPThingWithUID(uid);
             if (thing)
                 thing->PeekTC<CTCHeroCentre>(0x6A)->OnHeroWalkedThroughDoor(door);
         }

@@ -144,9 +144,13 @@ class CAIStateGroupBase { public:
     virtual bool IsStillValid();                // slot 11 (+0x2c)
     CAIBrain* PBrain;                           // +0x04
     CThing* GetCreature() const { return PBrain->PCreature; }
-    const CPlayerManager* GetPPlayerManager() const;    // 0x008FCF80
+    protected:
+    const CPlayerManager& PeekPlayerManager() const;    // 0x008FCF80
+    public:
     CWorld* GetPWorld();                        // 0x008FCFC0
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
     long AIAction_DoNothing();                  // 0x0097E200
@@ -157,7 +161,7 @@ struct CAIStateGroup_MinionGuardBribed : CAIStateGroupBase {
 
 void CAIStateGroup_MinionGuardBribed::Update()
 {
-    CIntelligentPointerPlayerCreature hero(((CThing*)GetPPlayerManager()->GetMainPlayer().GetPCharacter().GetPItem()));
+    CIntelligentPointerPlayerCreature hero(((CThing*)PeekPlayerManager().GetMainPlayer().GetPCharacter().GetPItem()));
     unsigned long delay = GetPWorld()->Random(g_BribedWhistleFirstMax - g_BribedWhistleFirstMin, GetPWorldSeed());
     long nextWhistle = CWorld::GetFrame() + g_BribedWhistleFirstMin + delay;
     unsigned long sample = g_InvalidSoundHandle;

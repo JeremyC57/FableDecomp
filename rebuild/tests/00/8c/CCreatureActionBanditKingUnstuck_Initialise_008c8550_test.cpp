@@ -151,7 +151,7 @@ struct CBaseIntelligentPointer {
     CThing* GetPItem() const;                         // 0x00A01B50
 };
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 class CTCCreatureModeManager { public:                       // interface type 0x31
     void RemoveMode(unsigned long mode);              // 0x0073ABA0
@@ -200,7 +200,7 @@ void CCreatureAction_BanditKingUnstuck::Initialise()
         CThing* created = CreateSpecialEffect(effect, PCreature.GetPItem()->GetPosition(), false);
         if (created && !(created->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = created->GetTCIfPresent<CTCDParticleEmitter>(0x4b);
-            emitter->AttachToThing(PCreature.GetPItem(), 0x2a, "", 0, 0);
+            emitter->AttachToThing(*PCreature.GetPItem(), 0x2a, "", 0, 0);
         }
     }
     CCombatActionBase::Initialise();
@@ -227,8 +227,8 @@ CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, b
 void CBaseIntelligentPointer::v00() {}
 CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 static void* g_attachThis; static CThing* g_attachThing; static long g_attachBone, g_attachA, g_attachB; static const char* g_attachName; static int g_attaches;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b)
-{ g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachName = (const char*)boneName.PStringData; g_attachA = a; g_attachB = b; g_attaches++; }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long boneIndex, const CCharString& boneName, long a, float b)
+{ CThing* thing = &thing_ref; g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachName = (const char*)boneName.PStringData; g_attachA = a; g_attachB = b; g_attaches++; }
 static void* g_modeThis; static unsigned long g_removed; static int g_removes;
 void CTCCreatureModeManager::RemoveMode(unsigned long mode) { g_modeThis = this; g_removed = mode; g_removes++; }
 static CHitLocation g_stuckLoc, g_bladeLoc; static int g_stuckOn = -1, g_bladeOn = -1; static void* g_hitThis;

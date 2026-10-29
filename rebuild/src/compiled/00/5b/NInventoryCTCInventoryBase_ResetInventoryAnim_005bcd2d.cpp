@@ -3,7 +3,7 @@
 // Retail 0x005BCD2D, 258 bytes, `ret 4`; size TU with an esp frame (`#pragma optimize("s", on)`: `push 6 ; pop ecx ;
 // rep movsd` copies).
 // Callees: GetStartingRightHandedSet(long) 0x005D9730 (__fastcall: hidden CRightHandedSet result in ecx, the def index
-// in edx), CRightHandedSet::RotateAboutAxis(const C3DVector&, float) 0x00A22F80 (manifest "CMatrix3x3::
+// in edx), CRightHandedSet::Rotate(const C3DVector&, float) 0x00A22F80 (manifest "CMatrix3x3::
 // MultiplyByQuaternionRotation"; six calls). Globals: the three axis vectors 0x0137CDFC / 0x0137CDF0 / 0x0137CE08
 // (used with the X / Y / Z angles; named from that use).
 // Shape: a non-positive index clears both indices; a new positive index copies the starting set into the last and the
@@ -21,7 +21,7 @@ class CRightHandedSet { public:                           // 24 bytes: Up, Forwa
     C3DVector Up;
     C3DVector Forward;
     CRightHandedSet() {}
-    void RotateAboutAxis(const C3DVector& axis, float angle);   // 0x00A22F80
+    void Rotate(const C3DVector& axis, float angle);   // 0x00A22F80
 };
 CRightHandedSet __fastcall GetStartingRightHandedSet(long defIndex);   // 0x005D9730
 extern C3DVector g_InventoryAnimXAxis;             // 0x0137CDFC
@@ -55,12 +55,12 @@ void CTCInventoryBase::ResetInventoryAnim(long defIndex)
     if (defIndex > 0) {
         if (defIndex != RHSetInvItemDefIndex) {
             ResetRHSets(GetStartingRightHandedSet(defIndex));
-            InventoryAnimLastRHSet.RotateAboutAxis(g_InventoryAnimXAxis, -InventoryAnimLastXRotationAngle);
-            InventoryAnimLastRHSet.RotateAboutAxis(g_InventoryAnimYAxis, -InventoryAnimLastYRotationAngle);
-            InventoryAnimLastRHSet.RotateAboutAxis(g_InventoryAnimZAxis, -InventoryAnimLastZRotationAngle);
-            InventoryAnimCurrentRHSet.RotateAboutAxis(g_InventoryAnimXAxis, -InventoryAnimCurrentXRotationAngle);
-            InventoryAnimCurrentRHSet.RotateAboutAxis(g_InventoryAnimYAxis, -InventoryAnimCurrentYRotationAngle);
-            InventoryAnimCurrentRHSet.RotateAboutAxis(g_InventoryAnimZAxis, -InventoryAnimCurrentZRotationAngle);
+            InventoryAnimLastRHSet.Rotate(g_InventoryAnimXAxis, -InventoryAnimLastXRotationAngle);
+            InventoryAnimLastRHSet.Rotate(g_InventoryAnimYAxis, -InventoryAnimLastYRotationAngle);
+            InventoryAnimLastRHSet.Rotate(g_InventoryAnimZAxis, -InventoryAnimLastZRotationAngle);
+            InventoryAnimCurrentRHSet.Rotate(g_InventoryAnimXAxis, -InventoryAnimCurrentXRotationAngle);
+            InventoryAnimCurrentRHSet.Rotate(g_InventoryAnimYAxis, -InventoryAnimCurrentYRotationAngle);
+            InventoryAnimCurrentRHSet.Rotate(g_InventoryAnimZAxis, -InventoryAnimCurrentZRotationAngle);
             InventoryAnimThingDefIndex = defIndex;
             RHSetInvItemDefIndex = 0;
         }

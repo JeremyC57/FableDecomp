@@ -53,8 +53,8 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);          // 0x0099EC30
     ~CCharString();                                 // 0x0099EAE0
-    CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
-    CCharString& operator+=(const char* text);      // 0x0099F100
+    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
+    const CCharString& operator+=(const char* text);      // 0x0099F100
 };
 CCharString __fastcall GFIntToCharString(long value);   // 0x0099F830
 struct CBaseIntelligentPointer {
@@ -146,8 +146,8 @@ CCharString::CCharString() { PStringData = 0; }
 CCharString::CCharString(const char* text, long) { char* p = (char*)std::malloc(64); std::strcpy(p, text); PStringData = p; }
 CCharString::CCharString(const CCharString& other) { char* p = (char*)std::malloc(64); std::strcpy(p, other.PStringData ? (const char*)other.PStringData : ""); PStringData = p; }
 CCharString::~CCharString() { std::free(PStringData); }
-CCharString& CCharString::operator+=(const CCharString& other) { std::strcat((char*)PStringData, (const char*)other.PStringData); return *this; }
-CCharString& CCharString::operator+=(const char* text) { std::strcat((char*)PStringData, text); return *this; }
+const CCharString& CCharString::operator+=(const CCharString& other) { std::strcat((char*)PStringData, (const char*)other.PStringData); return *this; }
+const CCharString& CCharString::operator+=(const char* text) { std::strcat((char*)PStringData, text); return *this; }
 CCharString __fastcall GFIntToCharString(long value) { char b[16]; std::sprintf(b, "%ld", value); return CCharString(b); }
 CBaseIntelligentPointer::~CBaseIntelligentPointer() { }
 CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }

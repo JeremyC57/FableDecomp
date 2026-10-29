@@ -3,7 +3,7 @@
 #include <cstring>
 static char g_text[128]; static bool g_fast = false; static long g_flag = 0; static int g_dtor = 0;
 static const char g_text_0125c2c0[] = "telling engine that the camera has moved and"; static const char g_text_01258c1c[] = " "; static const char g_text_0125c2b8[] = " not "; static const char g_text_0125c2a8[] = "using fast mode";
-class CCharString { public: char* m_pData; CCharString(const char* t, long) { m_pData = g_text; std::strcpy(g_text, t); } CCharString& operator+=(const char* t) { std::strcat(g_text, t); return *this; } ~CCharString() { ++g_dtor; } };
+class CCharString { public: char* m_pData; CCharString(const char* t, long) { m_pData = g_text; std::strcpy(g_text, t); } const CCharString& operator+=(const char* t) { std::strcat(g_text, t); return *this; } ~CCharString() { ++g_dtor; } };
 struct CRenderer_00697860 { virtual void SetCameraMoved(bool f, long fl) { g_fast = f; g_flag = fl; } };
 struct CEngineDevice_00697860 { unsigned char _pad[0x2c]; CRenderer_00697860* m_pRenderer; };
 struct CEngine_00697860 { unsigned char _pad[0x28]; CEngineDevice_00697860* m_pDevice; };

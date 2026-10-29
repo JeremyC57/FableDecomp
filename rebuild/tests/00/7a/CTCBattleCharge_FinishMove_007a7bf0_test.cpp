@@ -33,8 +33,8 @@ class CCreatureAction_BattleChargeImpact : public CCreatureActionBase { public:
 static int g_kinds[4]; static int g_count = 0; static const char* g_anim = 0; static CThing* g_left = 0; static CThing* g_item = 0;
 class CThingCreatureBase : public CThing {
 public:
-    bool SetCurrentAction(CCreatureActionBase* a)
-    {
+    bool SetCurrentAction(const CCreatureActionBase& a_ref)
+    { CCreatureActionBase* a = const_cast<CCreatureActionBase*>(&a_ref);
         g_kinds[g_count++] = a->kind;
         if (a->kind == 1) { g_anim = ((CCreatureAction_UnsheatheItemFromInventory*)a)->anim; g_item = ((CCreatureAction_UnsheatheItemFromInventory*)a)->item; }
         if (a->kind == 2) g_left = ((CCreatureAction_BattleChargeImpact*)a)->left;
@@ -55,11 +55,11 @@ public:
         if (IS_THING_ALIVE(PItemRemoved)) {
             CCharString animation("ST_ABILITY_FAST_UNSHEATHE_TO_COMBAT_POSE", -1);
             CCreatureAction_UnsheatheItemFromInventory a(creature, animation, PItemRemoved.GetPItem(), 100, 250, 0);
-            creature->SetCurrentAction(&a);
+            creature->SetCurrentAction(a);
         }
         if (hitSomething) {
             CCreatureAction_BattleChargeImpact a(creature, LeftFeetEffect, RightFeetEffect);
-            creature->SetCurrentAction(&a);
+            creature->SetCurrentAction(a);
         }
     }
 };

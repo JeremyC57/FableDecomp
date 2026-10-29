@@ -68,8 +68,8 @@ struct CTCBaseX { int _x; };
 static int g_attaches;
 static CThing* g_attachThing[3]; static long g_attachType[3]; static const char* g_attachHelper[3]; static void* g_attachEmitter[3];
 class CTCDParticleEmitter : public CTCBaseX { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset)
-    {
+    void AttachToThing(CThing& thing_ref, long attachType, const CCharString& helperName, long helperIndex, float offset)
+    { CThing* thing = &thing_ref;
         g_attachThing[g_attaches] = thing; g_attachType[g_attaches] = attachType; g_attachHelper[g_attaches] = helperName.Text;
         g_attachEmitter[g_attaches] = this; ++g_attaches;
         (void)helperIndex; (void)offset;
@@ -154,19 +154,19 @@ void CTCBurntEffect::Reset()
         if (effectA) {
             CTCDParticleEmitter* emitter = effectA->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
-                emitter->AttachToThing(ParentThing, 10, g_BurntHelperA, 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 10, g_BurntHelperA, 0, 0.0f);
         }
         CThing* effectB = CreateEffectThing(type, &position, false);
         if (effectB) {
             CTCDParticleEmitter* emitter = effectB->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
-                emitter->AttachToThing(ParentThing, 10, g_BurntHelperB, 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 10, g_BurntHelperB, 0, 0.0f);
         }
         CThing* effectC = CreateEffectThing(type, &position, false);
         if (effectC) {
             CTCDParticleEmitter* emitter = effectC->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
-                emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
         }
         Effects.push_back(CIntelligentPointer<CThing>(effectA));
         Effects.push_back(CIntelligentPointer<CThing>(effectB));

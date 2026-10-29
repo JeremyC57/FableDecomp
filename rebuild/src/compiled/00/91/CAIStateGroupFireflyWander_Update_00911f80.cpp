@@ -130,11 +130,15 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingAICreature* GetCreature() const { return PBrain->Creature; }
-    CPlayerManager* GetPPlayerManager() const;  // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;  // 0x008FCF90
+    public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
 public:
+    protected:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
+    public:
     void Terminate();                           // 0x008FCF40
     unsigned long Random(unsigned long range) const
     {
@@ -162,7 +166,7 @@ void CAIStateGroup_FireflyWander::Update()
 {
     if (!PeekWorld().PEnvironment->IsDaytime()) {
         C3DVector target = StartPos;
-        CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             CThingAICreature* me = GetCreature();
             C3DVector toHero = me->InitialPos - hero->GetPos();

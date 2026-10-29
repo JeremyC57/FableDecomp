@@ -17,7 +17,7 @@ class C3DVector { public:
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
-    void RotateAboutAxis(const C3DVector& axis, float angle);   // 0x00A22F80
+    void Rotate(const C3DVector& axis, float angle);   // 0x00A22F80
 };
 
 namespace NUISystem {
@@ -39,6 +39,6 @@ public:
 void CMesh::Update(float deltaTime)
 {
     CChangingStateComponent::Update(deltaTime);
-    Orientation.RotateAboutAxis(RotationAxis, RotationSpeed * deltaTime);
+    Orientation.Rotate(RotationAxis, RotationSpeed * deltaTime);
 }
 }

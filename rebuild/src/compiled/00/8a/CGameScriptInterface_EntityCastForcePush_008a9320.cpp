@@ -5,7 +5,7 @@ class CThingCreatureBase;
 class CThingCreatureBase
 {
 public:
-    bool SetCurrentAction(CCreatureActionBase* pAction);
+    bool SetCurrentAction(const CCreatureActionBase& pAction);
 };
 
 class CGameScriptInterface
@@ -66,7 +66,7 @@ bool CGameScriptInterface::EntityCastForcePush(
             }
 
             const bool result =
-                pCreature->SetCurrentAction(reinterpret_cast<CCreatureActionBase*>(&action));
+                pCreature->SetCurrentAction(reinterpret_cast<const CCreatureActionBase&>(action));
 
             action.Destruct();
             return result;

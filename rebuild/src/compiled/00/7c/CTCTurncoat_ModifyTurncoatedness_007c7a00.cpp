@@ -86,7 +86,7 @@ struct CEffectVector {                                  // vector<CIntelligentPo
 };
 
 class CTCDParticleEmitter { public:                            // interface 0x4B
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCSoundPlayer { public:                                 // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
@@ -144,7 +144,7 @@ void CTCTurncoat::ModifyTurncoatedness(float amount)
                 if (IS_THING_ALIVE(&TurncoatedEffect)) {
                     CTCDParticleEmitter* emitter;
                     ((CThing*)TurncoatedEffect.GetPItem())->GetInterface(&emitter, 0x4b);
-                    emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
+                    emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
                 }
             }
         }

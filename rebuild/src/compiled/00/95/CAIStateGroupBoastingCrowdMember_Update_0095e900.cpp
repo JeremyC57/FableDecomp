@@ -107,7 +107,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
+    protected:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
+    public:
     void Terminate();                           // 0x008FCF40
     EAIActionReturn AIAction_LookAtThing(EAIActionRepeat repeat, CIntelligentPointer<const CThing> thing, long frames,
                                          float speed);   // 0x0097D6F0

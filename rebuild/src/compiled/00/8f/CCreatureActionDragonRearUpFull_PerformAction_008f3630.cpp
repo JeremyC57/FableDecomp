@@ -187,7 +187,7 @@ class CThing { public:
     __forceinline CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     CDefClassBase* GetDef() const { return PDef; }
     long GetPlayerNumber() const { return PlayerNumber; }
-    CTCBase* AddTC(const CCharString& name, bool init, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool init, const CTCParamsBase* params);   // 0x004C9D60
 };
 class CThingCreatureBase : public CThing { public:
     long GetShotAccuracyPercentage();                  // 0x00663B10

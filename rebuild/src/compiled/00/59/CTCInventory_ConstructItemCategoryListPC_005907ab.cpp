@@ -5,7 +5,7 @@
 //   (the catalog label "CTCInventoryAbilities::ConstructPCExpressionCategoryList" is propagated).
 // Callees: CManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
 //   CCountedPointer<CComponent>(T*) 0x00429C15 / Reset 0x00429C6F / dtor 0x004291DE, CTCInventory::CreateMenuDescPC 0x00582673
-//   (CCountedPointer by hidden pointer), GetXString 0x005CC772, IntToWideString 0x00405F00, CWideString copy 0x0099B720 /
+//   (CCountedPointer by hidden pointer), GetXString 0x005CC772, GFIntToWideString 0x00405F00, CWideString copy 0x0099B720 /
 //   += 0x0099B8D0 / += (const wchar*) 0x0099B940 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0 / != 0x0099E960,
 //   map<long,long> ctor 0x004DF86C / find 0x00592F92 / insert 0x004E539F / dtor 0x004DD2B1, std::bitset::test 0x00410DE0 +
 //   const CVectorMap::LowerBound 0x004365B0 (the parent thing's interface 8), IS_THING_ALIVE 0x0040DCE0 (`__fastcall`,
@@ -35,7 +35,7 @@ class CWideString { public:
     const CWideString& operator+=(const unsigned short* text);      // 0x0099B940
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
-CWideString __fastcall IntToWideString(long value);     // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);     // 0x00405F00
 struct CDataBank {
     CWideString GetTextBySymbol(const CCharString& symbol);   // 0x009C95E0
 };
@@ -253,7 +253,7 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, 
         long total = 0;
         for (unsigned long i = 0; i < items.size(); ++i)
             total += items[i].second;
-        caption += IntToWideString(total);
+        caption += GFIntToWideString(total);
     }
     subtitle.Reset(fe->CreateComponent("PC_SUBTITLE", false));
     subtitle->SetText(caption, true, true);

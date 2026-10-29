@@ -65,7 +65,9 @@ class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     unsigned long Random(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();
@@ -100,7 +102,7 @@ static unsigned long g_seed = 12345;
 static int g_chosen = 0; static CTCIdleScheduler* g_chosenThis = 0;
 long __fastcall GFGetCurrentFrame() { return 1000; }
 unsigned long __fastcall GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
-unsigned long* CAIStateGroupBase::GetPWorldSeed() { return &g_seed; }
+unsigned long* CAIStateGroupBase::GetPWorldSeed() const { return &g_seed; }
 CAIStateGroupBase::~CAIStateGroupBase() {}
 void CAIStateGroupBase::OnReplace() {}
 void CTCIdleScheduler::ChooseNewIdle() { ++g_chosen; g_chosenThis = this; }

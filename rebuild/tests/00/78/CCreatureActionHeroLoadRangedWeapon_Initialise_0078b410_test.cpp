@@ -45,7 +45,7 @@ class CTCCarrying;
 class CThing { public:
     CDefClassBase* m_pDef; const CTCHeroExperience* Experience; const CTCCarrying* Carrying; CTCHaste* Haste; const CHeroStatsDef* Stats;
     CDefPointer<const CHeroStatsDef> GetHeroStatsDef() { CDefPointer<const CHeroStatsDef> p; p.Object = Stats; if (Stats) ++Stats->m_refCount; return p; }
-    CTCBase* AddTC(const CCharString& n, bool activate, CTCParamsBase*) { std::strcpy(g_addName, n.s); g_addActivate = activate; ++g_addTC; return (CTCBase*)&g_addedHaste; }
+    CTCBase* AddTC(const CCharString& n, bool activate, const CTCParamsBase*) { std::strcpy(g_addName, n.s); g_addActivate = activate; ++g_addTC; return (CTCBase*)&g_addedHaste; }
     bool GetInterface(const CTCHeroExperience** o, long) const { if (!Experience) return false; *o = Experience; return true; }
     bool GetInterface(const CTCCarrying** o, long) const { if (!Carrying) return false; *o = Carrying; return true; }
     bool GetInterface(CTCHaste** o, long) { if (!Haste) return false; *o = Haste; return true; }

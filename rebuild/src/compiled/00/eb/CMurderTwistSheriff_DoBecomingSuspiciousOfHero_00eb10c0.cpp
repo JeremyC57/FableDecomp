@@ -41,7 +41,9 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
 class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
     void* m_pIntelligentPointer;                        // +0x04
+protected:
     CBaseObject();                                      // 0x0099A380
+public:
 };
 struct CBaseObjectDtor {                                // destructor-only view of CBaseObject
     void* m_pIntelligentPointer;

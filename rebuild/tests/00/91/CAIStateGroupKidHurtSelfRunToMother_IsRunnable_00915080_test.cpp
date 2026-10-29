@@ -106,7 +106,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     // the landed GetRandomObject random step: seed = ror13(seed*0x24A1 + 0x24DF), r = seed % range
     unsigned long Random(unsigned long range)
     {
@@ -190,7 +192,7 @@ CAIStateGroupBase::~CAIStateGroupBase() {}
 void CAIStateGroupBase::Cleanup() {} void CAIStateGroupBase::OnReplace() {} bool CAIStateGroupBase::IsRunnable() { return false; }
 void CAIStateGroupBase::Update() {} long CAIStateGroupBase::GetTimeToInitiate() { return 0; }
 static unsigned long g_seed = 0;
-unsigned long* CAIStateGroupBase::GetPWorldSeed() { return &g_seed; }
+unsigned long* CAIStateGroupBase::GetPWorldSeed() const { return &g_seed; }
 long __fastcall GFGetCurrentFrame() { return 0; }
 static unsigned long g_rot = 0;
 unsigned long __fastcall GFROR13(unsigned long) { return g_rot; }

@@ -14,7 +14,7 @@ class CCharString { public:                     // one CCharStringData pointer
     CCharStringData* PStringData;
     CCharString();                       // 0x0099E4B0
     ~CCharString();                      // 0x0099EAE0
-    CCharString& operator+=(char c);     // 0x0099F180
+    const CCharString& operator+=(char c);     // 0x0099F180
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 struct CCursorPos {                      // PDB: InQuotes / StringPos / Line (12 bytes)

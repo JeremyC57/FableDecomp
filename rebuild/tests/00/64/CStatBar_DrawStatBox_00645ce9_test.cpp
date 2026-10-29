@@ -36,7 +36,7 @@ class CWideString;
 class CEnginePrimitivePrepareInfo;
 class CEnginePrimitiveHandle { public: unsigned long m_handle; };
 class C2DExtentsI { public: long Width, Height; };
-class CDisplayManager { public: C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
+class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions(); };   // 0x009BEDC0
 extern CDisplayManager* g_pDisplayManager_013b8390;                    // 0x013B8390
 class CFontBank { public: float GetStringWidth(const CWideString& text); };    // 0x0048DA62
 struct CGameUI { unsigned char _pad[0x138]; CFontBank* Font; };        // +0x138
@@ -149,7 +149,7 @@ void CStatBar::DrawStatBox(const CEnginePrimitivePrepareInfo& info, const CGraph
 
 // ---- test stubs ----
 CRightHandedSet::CRightHandedSet(const C3DVector& u, const C3DVector& f) : Up(u), Forward(f) {}
-C2DExtentsI CDisplayManager::GetRenderTargetDimensions() { C2DExtentsI e; e.Width = 640; e.Height = 480; return e; }
+const C2DExtentsI CDisplayManager::GetRenderTargetDimensions() { C2DExtentsI e; e.Width = 640; e.Height = 480; return e; }
 static CDisplayManager g_dm;
 CDisplayManager* g_pDisplayManager_013b8390 = &g_dm;
 float CFontBank::GetStringWidth(const CWideString&) { return 0.0f; }

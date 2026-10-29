@@ -19,7 +19,7 @@ public:
     CCharString() { m_text[0] = 0; ++s_live; }
     ~CCharString() { --s_live; }
     CCharString(const char* t) { std::strcpy(m_text, t); }
-    CCharString& operator+=(const char* text) { std::strcat(m_text, text); return *this; }
+    const CCharString& operator+=(const char* text) { std::strcat(m_text, text); return *this; }
 };
 int CCharString::s_live = 0;
 

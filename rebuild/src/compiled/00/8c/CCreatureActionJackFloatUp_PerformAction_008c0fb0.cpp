@@ -83,7 +83,7 @@ struct CDefClassReference {                           // a counted CDefClassBase
 };
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(class CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(class CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing {
 public:
@@ -176,7 +176,7 @@ void CCreatureAction_JackFloatUp::PerformAction()
                 dependents->AddDependentThing(effect);
                 if (effect->HasTC(0x4b)) {
                     CTCDParticleEmitter* emitter = effect->PTCDriver;
-                    emitter->AttachToThing(GetCreature(), 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
+                    emitter->AttachToThing(*GetCreature(), 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
                 }
             }
         }

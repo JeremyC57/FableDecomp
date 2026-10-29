@@ -37,7 +37,7 @@ class CCharString { public:
 };
 CCharString __fastcall operator+(const CCharString& a, const char* b);   // 0x0099F600
 
-bool __fastcall PathExists(const CWideString& path);                     // 0x00999230
+class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };                     // 0x00999230
 void __fastcall CreateDirectory(const CWideString& path);                // 0x009994A0
 
 class CDateAndTime { public:
@@ -98,9 +98,9 @@ void CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(const CWorldRegion* re
                                                           bool regenerate)
 {
     RegionMinimap.Initialise();
-    if (!PathExists(g_MiniMapDataDirectory))
+    if (!CAFile::PathExists(g_MiniMapDataDirectory))
         CreateDirectory(g_MiniMapDataDirectory);
-    if (!PathExists(g_MiniMapCacheDirectory))
+    if (!CAFile::PathExists(g_MiniMapCacheDirectory))
         CreateDirectory(g_MiniMapCacheDirectory);
     CWorldMap* worldMap = g_pMainGameComponent->World->GetWorldMap();
     RegionMinimap.InitialiseRegionMinimapSize(worldMap, region);
@@ -111,13 +111,13 @@ void CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(const CWorldRegion* re
     CDateAndTime dataTime;
     CWideString levelsDir(L"Data\\Levels\\");
     CDateAndTime wldTime = GetFileModifiedTime(levelsDir + levelName.ToWideString() + L".wld");
-    if (PathExists(dataPath)) {
+    if (CAFile::PathExists(dataPath)) {
         dataTime = GetFileModifiedTime(dataPath);
         if (regenerate && wldTime > dataTime)
             RegionMinimap.GenerateAndSave(worldMap, cachePath);
         else
             RegionMinimap.LoadRegionMinimapTGAFile(dataPath);
-    } else if (PathExists(cachePath)) {
+    } else if (CAFile::PathExists(cachePath)) {
         cacheTime = GetFileModifiedTime(cachePath);
         if (regenerate && wldTime > cacheTime)
             RegionMinimap.GenerateAndSave(worldMap, cachePath);

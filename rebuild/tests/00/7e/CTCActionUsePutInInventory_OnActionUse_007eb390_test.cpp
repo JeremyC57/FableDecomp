@@ -12,7 +12,7 @@ class CCreatureAction_AddRealObjectToInventory : public CCreatureActionBase { pu
     CIntelligentPointer PObject;
     CCreatureAction_AddRealObjectToInventory(CThingCreatureBase*, CThingObject* object) { kind = 5; g_object = object; }
 };
-class CThingCreatureBase : public CThing { public: bool SetCurrentAction(CCreatureActionBase* a) { if (a->kind == 5) ++g_actions; return true; } };
+class CThingCreatureBase : public CThing { public: bool SetCurrentAction(const CCreatureActionBase& a_ref) { CCreatureActionBase* a = const_cast<CCreatureActionBase*>(&a_ref); if (a->kind == 5) ++g_actions; return true; } };
 class CTCActionUseBase { public: CThing* ParentThing; void OnActionUse(CThing&) { ++g_baseUses; } };
 struct CTCActionUsePutInInventory : CTCActionUseBase {
     void OnActionUse(CThing& user)
@@ -21,7 +21,7 @@ struct CTCActionUsePutInInventory : CTCActionUseBase {
         CThingCreatureBase* creature = static_cast<CThingCreatureBase*>(&user);
         if (creature && !creature->Dead && ParentThing->m_type == 5) {
             CCreatureAction_AddRealObjectToInventory action(creature, static_cast<CThingObject*>(ParentThing));
-            creature->SetCurrentAction(&action);
+            creature->SetCurrentAction(action);
         }
     }
 };

@@ -50,7 +50,7 @@ class CThing { public:
     }
 };
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CBaseIntelligentPointer {
     void*        __vftable;
@@ -84,10 +84,10 @@ void CTCBattleCharge::CleanUpEffects()
     CTCDParticleEmitter* emitter;
     if (IS_THING_ALIVE(LeftFeetEffect)) {
         ((CThing*)LeftFeetEffect.GetPItem())->GetInterface(&emitter, 0x4b);
-        emitter->AttachToThing(owner, 1, "", 0, 0.0f);
+        emitter->AttachToThing(*owner, 1, "", 0, 0.0f);
     }
     if (IS_THING_ALIVE(RightFeetEffect)) {
         ((CThing*)RightFeetEffect.GetPItem())->GetInterface(&emitter, 0x4b);
-        emitter->AttachToThing(owner, 1, "", 0, 0.0f);
+        emitter->AttachToThing(*owner, 1, "", 0, 0.0f);
     }
 }

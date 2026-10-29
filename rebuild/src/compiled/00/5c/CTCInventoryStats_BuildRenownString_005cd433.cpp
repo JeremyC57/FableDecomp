@@ -56,7 +56,7 @@ class CCharString { public:
     void* m_pStringData;
     CCharString(const char* text, long length = -1);              // 0x0099EBF0
     ~CCharString();                                               // 0x0099EAE0
-    CCharString& operator+=(const CCharString& other);            // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);            // 0x0099F0A0
 };
 CCharString __fastcall GFIntToCharString(long value);             // 0x0099F830
 class CWideString { public:

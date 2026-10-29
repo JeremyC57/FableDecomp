@@ -228,7 +228,7 @@ class CTCPhysicsBase { public:
     virtual C3DVector GetFacing() { return Facing; }
 };
 class CThing;
-struct AddTCRecord { CThing* thing; const char* name; bool init; CTCParamsBase* params; int calls; };
+struct AddTCRecord { CThing* thing; const char* name; bool init; const CTCParamsBase* params; int calls; };
 static AddTCRecord g_addTC;
 struct CTCShotDefinitionBase;
 static CTCShotDefinitionBase* g_shotTCResult = 0;
@@ -241,7 +241,7 @@ class CThing { public:
     CTCPhysicsBase* GetPhysics() const { return PhysicsTC; }
     CDefClassBase* GetDef() const { return PDef; }
     long GetPlayerNumber() const { return PlayerNumber; }
-    CTCBase* AddTC(const CCharString& name, bool init, CTCParamsBase* params)
+    CTCBase* AddTC(const CCharString& name, bool init, const CTCParamsBase* params)
     {
         g_addTC.thing = this;
         g_addTC.name = name.m_pData;

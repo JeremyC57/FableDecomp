@@ -148,7 +148,7 @@ inline bool CThing::GetDummyObject(const CCharString& name, C3DVector* position,
 }
 class CTCDParticleEmitter { public:
     static CThing* __fastcall Create(long effect, const C3DVector& position, bool attached);   // 0x006E0880
-    void AttachToThing(CThing* thing, long mode, const CCharString& bone, long flags, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long mode, const CCharString& bone, long flags, float offset);   // 0x006E0BE0
 };
 
 #pragma pack(push, 1)
@@ -231,7 +231,7 @@ void CTCNymph::StopFlyingAround(long fadeTime)
     if (PEffect.IsAlive()) {
         CTCDParticleEmitter* emitter = 0;
         PEffect.GetPItem()->GetInterface(&emitter, 0x4b);
-        emitter->AttachToThing(ParentThing, 0xa, "DUMMY_CENTRE", 0, 0.0f);
+        emitter->AttachToThing(*ParentThing, 0xa, "DUMMY_CENTRE", 0, 0.0f);
         FlyingAround = false;
         BeenHit = false;
         if (fadeTime == -1)

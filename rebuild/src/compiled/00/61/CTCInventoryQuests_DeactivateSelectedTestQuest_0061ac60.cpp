@@ -30,7 +30,7 @@ class CCharString { public:
     CWideString ToWideString() const;              // 0x0099E480
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
-bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };   // 0x00999230
 
 class CTestQuest { public:                                // 28 bytes (Ego_r.pdb)
     CCharString QuestName;                         // +0x00
@@ -107,7 +107,7 @@ void CTCInventoryQuests::DeactivateSelectedTestQuest()
     g_pQuestManager->DeactivateQuest(quest.QuestName, 0);
     if (quest.OutiFile != "") {
         CWideString path = ("Data\\Levels\\Ini\\" + quest.OutiFile).ToWideString();
-        if (PathExists(path))
+        if (CAFile::PathExists(path))
             CConsole::Get()->ExecuteConfigFile(path);
     }
 }

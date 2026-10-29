@@ -3,7 +3,7 @@
 #include <cstring>
 class CThing;
 struct Emitter { CThing* attachedTo; long bone; const char* boneName; long flags; float scale;
-    void AttachToThing(CThing* t, long b, const char* n, long f, float s) { attachedTo = t; bone = b; boneName = n; flags = f; scale = s; } };
+    void AttachToThing(CThing& t_ref, long b, const char* n, long f, float s) { CThing* t = &t_ref; attachedTo = t; bone = b; boneName = n; flags = f; scale = s; } };
 class CThing { public:
     unsigned int bits[9]; Emitter* em; float pos;
     template<class T> bool GetInterface(T** out, long type) { if (bits[type >> 5] & (1u << (type & 31))) { *out = em; return true; } return false; }
@@ -19,7 +19,7 @@ struct Spirit {
         if (particle) {
             Emitter* emitter = 0;
             particle->GetInterface(&emitter, 0x4b);
-            emitter->AttachToThing(ParentThing, 0x88, "", 0, 1.1f);
+            emitter->AttachToThing(*ParentThing, 0x88, "", 0, 1.1f);
         }
     }
 };

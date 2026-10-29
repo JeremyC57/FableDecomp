@@ -27,7 +27,6 @@ class CPlayerGuiDef { public:
     float         StatChangeTextSpeed;                  // +0x4e8 (descriptive)
     float         StatChangeTextTime;                   // +0x4ec (descriptive)
 };
-extern CPlayerGuiDef* __fastcall PeekGuiDef();          // 0x00438570
 
 namespace NPlayerGui {
 class CStatBar { public:                                       // CStatBase + CStatBar (retail offsets)
@@ -55,6 +54,7 @@ class CDrawStatUpdates { public:
 inline long SignOf(float value) { return value < 0.0f ? -1 : 1; }
 
 class CPlayerGui { public:                                     // retail-offset view (see Layout)
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();          // 0x00438570
     unsigned char                   _pad000[8];
     CPlayerManager*                 PlayerManager;      // +0x08
     unsigned char                   _pad00c[0x1a8 - 0xc];
@@ -77,7 +77,7 @@ void CPlayerGui::UpdateMorality()
         if (steps < 1)
             steps = 1;
         value = (float)change;
-        UpdateStat(value, 0.01f, (float)steps, PeekGuiDef()->StatChangeTextSpeed, PeekGuiDef()->StatChangeTextTime, PMorality);
+        UpdateStat(value, 0.01f, (float)steps, CPlayerGui::PeekGuiDef().StatChangeTextSpeed, CPlayerGui::PeekGuiDef().StatChangeTextTime, PMorality);
         PMorality->OldGraphicFrame = PMorality->GraphicFrame;
         ++PMorality->GraphicFrame;
     } else {

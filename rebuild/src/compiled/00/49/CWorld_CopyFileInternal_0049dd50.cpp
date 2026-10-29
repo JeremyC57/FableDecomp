@@ -35,7 +35,9 @@ class CDiskFileWin32 : public CAFile { public:                 // vtable 0x0122D
 void __fastcall CopyFile(CAFile& source, CAFile& destination);   // 0x00998E70
 
 class CWorld { public:
+protected:
     void CopyFileInternal(const CWideString& source, const CWideString& destination) const;
+public:
 };
 
 void CWorld::CopyFileInternal(const CWideString& source, const CWideString& destination) const

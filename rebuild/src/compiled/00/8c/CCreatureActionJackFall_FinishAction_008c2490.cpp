@@ -69,7 +69,7 @@ class CCreatureActionBase { public:
     unsigned char _pad10[0xa8 - 0x10];      // +0x10
 };
 class CThingCreatureBase { public:
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CCombatActionBase : public CCreatureActionBase { public:          // retail sizeof 0x114
     unsigned char _combat[0x114 - 0xa8];    // +0xa8
@@ -92,5 +92,5 @@ void CCreatureAction_JackFall::FinishAction()
         modes->RemoveMode(0x33);
     CThingCreatureBase* creature = GetCreature();
     CCombatActionBase::FinishAction();
-    GetCreature()->SetCurrentAction(&CCreatureAction_GoUnderground(creature));
+    GetCreature()->SetCurrentAction(CCreatureAction_GoUnderground(creature));
 }

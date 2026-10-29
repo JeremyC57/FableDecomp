@@ -60,11 +60,11 @@ class CTCBoss
     CRetailVector<CIntelligentPointer<CThingAICreature> > HelperCreatures;   // +0x30
     CRetailVector<CIntelligentPointer<CThing> >           Effects;           // +0x3c
 
-    long CountEffects() const;
+    long CountEffects();
 };
 #pragma pack(pop)
 
-long CTCBoss::CountEffects() const
+long CTCBoss::CountEffects()
 {
     long count = 0;
     for (unsigned int i = 0; i < Effects.size(); ++i)

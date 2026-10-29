@@ -145,7 +145,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
 };
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
 class CDefinitionManager { public:
@@ -195,7 +195,7 @@ void CCreatureAction_BanditKingLunge::PerformAction()
         if (created && !(created->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = 0;
             created->GetInterface(&emitter, 0x4b);
-            emitter->AttachToThing(GetCreature(), 0x2a, "", 0, 0);
+            emitter->AttachToThing(*GetCreature(), 0x2a, "", 0, 0);
         }
     }
 }
@@ -224,7 +224,7 @@ static CThing* g_created; static long g_createdEffect; static C3DVector g_create
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached) { g_createdEffect = effect; g_createdPos = position; g_createdAttached = attached; L("effect"); return g_created; }
 CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 static void* g_attachThis; static CThing* g_attachThing; static long g_attachBone; static const char* g_attachName;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCharString& name, long, long) { g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachName = (const char*)name.PStringData; L("attach"); }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long boneIndex, const CCharString& name, long, float) { CThing* thing = &thing_ref; g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachName = (const char*)name.PStringData; L("attach"); }
 static long g_defIndex; static const char* g_defName;
 long CDefinitionManager::GetDefGlobalIndexFromName(const CCharString& name) { g_defName = (const char*)name.PStringData; L("defindex"); return g_defIndex; }
 static CDefinitionManager g_defMgr;

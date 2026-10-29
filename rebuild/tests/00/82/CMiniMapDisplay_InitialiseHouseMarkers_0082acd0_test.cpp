@@ -51,10 +51,12 @@ struct CArray_MarkerGraphics {
     SMarkerGraphics* m_pBegin;
     SMarkerGraphics* m_pEnd;
     SMarkerGraphics& operator[](unsigned long i) { return m_pBegin[i]; }
+    const SMarkerGraphics& operator[](unsigned long i) const { return m_pBegin[i]; }
 };
 class CPlayerGuiDef { public: unsigned char _pad00[0x958]; CArray_MarkerGraphics MiniMapMarkerGraphics; };
 static CPlayerGuiDef g_guiDef; static SMarkerGraphics g_graphics[8];
-CPlayerGuiDef* __fastcall PeekGuiDef() { return &g_guiDef; }
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };
+const CPlayerGuiDef& __fastcall CPlayerGui::PeekGuiDef() { return g_guiDef; }
 static int g_forSaleCalls = 0;
 class CTCBuyableHouse : public CTCBase { public:
     unsigned char _pad00[0x11];
@@ -94,9 +96,9 @@ void CMiniMapDisplay::InitialiseHouseMarkers()
             if (worldMap->GetCurrentRegionNumber() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex()) && thing->HasTC(0xd5)) {
                 const CTCBuyableHouse* house = thing->GetTC<CTCBuyableHouse>(0xd5);
                 if (house->OwnedByHero)
-                    AddMarker(thing, PeekGuiDef()->MiniMapMarkerGraphics[4].Primary);
+                    AddMarker(thing, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[4].Primary);
                 else if (house->IsForSale())
-                    AddMarker(thing, PeekGuiDef()->MiniMapMarkerGraphics[4].Secondary);
+                    AddMarker(thing, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[4].Secondary);
             }
         }
     }

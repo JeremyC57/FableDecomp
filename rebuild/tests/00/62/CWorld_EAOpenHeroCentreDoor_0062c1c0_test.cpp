@@ -20,7 +20,7 @@ class CThing { public:
 template<> const CTCInventoryBase* CThing::PeekTC<CTCInventoryBase>(long t) const { return t == 0x11 ? Inventory : 0; }
 template<> CTCHeroCentre* CThing::PeekTC<CTCHeroCentre>(long t) { return t == 0x6A ? Centre : 0; }
 static CThing* g_door_thing; static long long g_uid_asked;
-class CThingManager { public: CThing* GetThingWithUID(long long uid) { g_uid_asked = uid; return uid == 77 ? g_door_thing : 0; } };
+class CThingManager { public: CThing* GetPThingWithUID(long long uid) { g_uid_asked = uid; return uid == 77 ? g_door_thing : 0; } };
 static CThingManager g_tm;
 class CPlayer { public: CThing* Hero; CThing* GetHeroThing() { return Hero; } };
 class CWorld { public:
@@ -40,7 +40,7 @@ class CWorld { public:
                 buffer.Read(4, &door);
                 long long uid;
                 buffer.Read(8, &uid);
-                CThing* thing = GetThingManager()->GetThingWithUID(uid);
+                CThing* thing = GetThingManager()->GetPThingWithUID(uid);
                 if (thing)
                     thing->PeekTC<CTCHeroCentre>(0x6A)->OnHeroWalkedThroughDoor((EHeroCentreDoorType)door);
             }

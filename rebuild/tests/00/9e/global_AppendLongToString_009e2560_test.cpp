@@ -6,7 +6,7 @@ class CCharString { public:
     CCharString() { text[0] = 0; ++g_live; }
     CCharString(const CCharString& o) { std::strcpy(text, o.text); ++g_live; }
     ~CCharString() { --g_live; }
-    CCharString& operator+=(const CCharString& other) { std::strcat(text, other.text); return *this; }
+    const CCharString& operator+=(const CCharString& other) { std::strcat(text, other.text); return *this; }
 };
 CCharString GFIntToCharString(long value) { CCharString s; std::sprintf(s.text, "%ld", value); return s; }
 void AppendLongToString(void* context, CCharString& text, const long& value)

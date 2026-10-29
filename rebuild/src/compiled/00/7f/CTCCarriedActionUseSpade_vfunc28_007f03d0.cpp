@@ -76,7 +76,7 @@ class CThingCreatureBase { public:
             it = map->last;
         return it->second;
     }
-    bool SetCurrentAction(CCreatureActionBase* action); // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action); // 0x006644F0
 };
 bool __fastcall IsThingAbleToDig(CThingCreatureBase* thing);   // 0x007F0300
 struct CTCShowableItem {
@@ -96,7 +96,7 @@ void CTCCarriedActionUseSpade::vfunc_28(CThingCreatureBase* user)
     CTCCarriedActionUseBase::OnUseBase(user);
     if (IsThingAbleToDig(user)) {
         CCharString name("Expression_Dig", -1);
-        user->SetCurrentAction(&CCreatureAction_ActivateQuest(user, 0, name, false));
+        user->SetCurrentAction(CCreatureAction_ActivateQuest(user, 0, name, false));
     }
     if (ParentThing->HasTC(0x1a))
         ((CTCShowableItem*)ParentThing->GetTC(0x1a))->OnShowEnded();

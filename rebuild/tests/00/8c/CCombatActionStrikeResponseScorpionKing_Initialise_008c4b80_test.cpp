@@ -88,7 +88,7 @@ struct CPhysicsBody {                           // the thing's physics body at +
 };
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(class CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(class CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing {
 public:
@@ -143,7 +143,7 @@ void CCombatAction_StrikeResponseScorpionKing::Initialise()
             CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPosition(), false);
             if (effect && !(effect->m_flags91 & 1) && effect->HasTC(0x4b)) {
                 CTCDParticleEmitter* emitter = effect->PTCDriver;
-                emitter->AttachToThing(PCreature.GetPItem(), 10, "EMITTER_EYE", 0, 0.0f);
+                emitter->AttachToThing(*PCreature.GetPItem(), 10, "EMITTER_EYE", 0, 0.0f);
             }
         }
         if (--effects->m_refCount == 0)
@@ -174,8 +174,8 @@ void* Find_CDefClassBase_GetSubDef(const void* owner)
 const C3DVector& CThing::GetPosition() const { g_posThis = this; return g_pos; }
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag)
 { ++g_create; g_createType = type; g_createPos = position; g_createFlag = flag; return g_effect; }
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset)
-{ ++g_attach; g_attachThis = this; g_attachThing = thing; g_attachType = attachType;
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long attachType, const CCharString& helperName, long helperIndex, float offset)
+{ CThing* thing = &thing_ref; ++g_attach; g_attachThis = this; g_attachThing = thing; g_attachType = attachType;
   strcpy(g_attachName, (const char*)helperName.PStringData); g_attachIndex = helperIndex; g_attachOffset = offset; }
 CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 void CCombatAction_GenericStrikeResponseBase::Initialise() { ++g_baseInit; g_facingAtBase = g_facing; g_facing = 99.0f; }

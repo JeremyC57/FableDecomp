@@ -32,7 +32,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);     // 0x0099EBF0
     ~CCharString();                                      // 0x0099EAE0
 };
-bool __fastcall PathExists(const CWideString& path);     // 0x00999230
+class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };     // 0x00999230
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
 // Layout: engine/CDiskFileWin32.h (vptr 0x0122D06C, Opened +0x14, Pathname +0x18), as in CDefStringTable::LoadTable.
@@ -84,7 +84,7 @@ void CDefinitionManager::Compile()
     GFGetTime();
     CheckDependencies(GetSymbolPathList());
     GFGetTime();
-    if (g_bLoadBinaryDefinitions && PathExists(GetCompiledFileName())) {
+    if (g_bLoadBinaryDefinitions && CAFile::PathExists(GetCompiledFileName())) {
         CDiskFileWin32 file;
         file.Open(GetCompiledFileName(), FILE_ACCESS_READ, 4);
         CFileDataInputStream stream(&file, 0x4000);

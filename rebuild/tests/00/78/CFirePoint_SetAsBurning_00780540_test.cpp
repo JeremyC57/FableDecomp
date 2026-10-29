@@ -6,8 +6,8 @@ class CCharString { public: const char* s; };
 static int g_attaches = 0; static CThing* g_attachTo = 0; static int g_attachType = 0, g_attachIndex = 0;
 static const CCharString* g_attachName = 0;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* t, int type, const CCharString& name, int index, float)
-    { ++g_attaches; g_attachTo = t; g_attachType = type; g_attachName = &name; g_attachIndex = index; }
+    void AttachToThing(CThing& t_ref, int type, const CCharString& name, int index, float)
+    { CThing* t = &t_ref; ++g_attaches; g_attachTo = t; g_attachType = type; g_attachName = &name; g_attachIndex = index; }
 };
 class CThing { public:
     unsigned int m_interfaceFlags; CTCDParticleEmitter* m_pParticleEmitter; unsigned char m_statusFlags; C3DVector m_pos;
@@ -32,7 +32,7 @@ struct CFirePoint {
         if (EffectIndex) {
             CThing* effect = CreateEffectThing(EffectIndex, &PParentThing->GetPosition(), false);
             if (effect && !(effect->m_statusFlags & 1)) {
-                effect->GetParticleEmitter()->AttachToThing(PParentThing, 0xc, HelperName, HelperIndex, 0.0f);
+                effect->GetParticleEmitter()->AttachToThing(*PParentThing, 0xc, HelperName, HelperIndex, 0.0f);
                 PEffect = CIntelligentPointer(effect);
             }
         }

@@ -1,6 +1,6 @@
 // CTCCreatureGeneratorCreator::OnInitialActivate() -- resolve the saved generator UID into the generator pointer (then forget the UID and the generated flag); a generator that is still alive is killed and the pointer cleared
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007C9920, 204 bytes (plain `ret`; 8-byte frame = the intelligent-pointer temporary).
-// Callees: CTCBase::GetThingManager() @ 0x00686AE0, CThingManager::GetThingWithUID(__int64) @ 0x0051ED80, CBaseIntelligentPointer
+// Callees: CTCBase::GetThingManager() @ 0x00686AE0, CThingManager::GetPThingWithUID(__int64) @ 0x0051ED80, CBaseIntelligentPointer
 // ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10 (CIntelligentPointer<CThing> vtable
 // 0x01238C6C), CTCCreatureGeneratorCreator::IsGeneratorAlive() @ 0x007C98A0 (landed), CThing::Kill(bool) @ 0x004C9B80.
 // Layout: as the landed IsGeneratorAlive (Ego_r.pdb): Generated +0x10, PGenerator +0x11 (unaligned: the intelligent-pointer
@@ -12,7 +12,7 @@ class CThing { public:
     void Kill(bool immediately);                        // 0x004C9B80
 };
 class CThingManager { public:
-    CThing* GetThingWithUID(__int64 uid);               // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);               // 0x0051ED80
 };
 #pragma pack(push, 1)
 class CBaseObject;
@@ -55,7 +55,7 @@ struct CTCCreatureGeneratorCreator : CTCBase {
 void CTCCreatureGeneratorCreator::OnInitialActivate()
 {
     if (GeneratorUID > 0) {
-        PGenerator = CIntelligentPointer<CThing>(GetThingManager().GetThingWithUID(GeneratorUID));
+        PGenerator = CIntelligentPointer<CThing>(GetThingManager().GetPThingWithUID(GeneratorUID));
         GeneratorUID = 0;
         Generated = false;
         if (IsGeneratorAlive()) {

@@ -15,7 +15,7 @@ static CThing g_thing;
 static i64 g_uidWanted;
 static char g_log[256];
 static void LOG(const char* s) { std::strcat(g_log, s); std::strcat(g_log, ";"); }
-class CThingManager { public: CThing* GetThingWithUID(i64 uid) { LOG("uid"); return uid == g_uidWanted ? &g_thing : 0; } };
+class CThingManager { public: CThing* GetPThingWithUID(i64 uid) { LOG("uid"); return uid == g_uidWanted ? &g_thing : 0; } };
 class CWorldMap { public:
     long region, loaded, player; const C3DVector* pos;
     long GetRegionNumberFromName(const CCharString& name) const { return std::strcmp(name.Text, "Oakvale") == 0 ? 7 : 0; }
@@ -53,7 +53,7 @@ class CPlayer { public:
         long region = GetWorld()->GetWorldMap()->GetRegionNumberFromName(save.RegionName);
         if (region != 0) {
             GetWorld()->GetWorldMap()->LoadRegion(region, false, true);
-            CThing* thing = GetWorld()->GetThingManager()->GetThingWithUID(uid);
+            CThing* thing = GetWorld()->GetThingManager()->GetPThingWithUID(uid);
             if (thing != 0) {
                 GetWorld()->GetWorldMap()->SetPlayerPos(Number, thing->GetPosition(), 0);
                 PlayerCharacterPointer() = CIntelligentPointer<CThingPlayerCreature>((CThingPlayerCreature*)thing);

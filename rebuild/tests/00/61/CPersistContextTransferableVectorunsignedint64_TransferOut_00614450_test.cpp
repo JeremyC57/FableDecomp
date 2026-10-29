@@ -18,7 +18,7 @@ class CCharString { public:
     CCharString() : m_tag(0) {}
     explicit CCharString(UInt64 value) : m_tag(4) { g_formatted = value; }
     ~CCharString() { ++g_destroyed; }
-    CCharString& operator+=(const CCharString& other) { m_tag += other.m_tag; return *this; }
+    const CCharString& operator+=(const CCharString& other) { m_tag += other.m_tag; return *this; }
 };
 template <class T> struct CRetailVector { T* m_pFirst; T* m_pLast; T* m_pEnd; };
 struct CPersistContext_TransferableVector {

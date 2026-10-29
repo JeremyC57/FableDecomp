@@ -3,7 +3,7 @@ class C3DVector { public: float X, Y, Z; };
 static const C3DVector* g_axis = 0; static float g_angle = 0.0f; static float g_baseDt = 0.0f;
 class CRightHandedSet { public:
     C3DVector Up, Forward;
-    void RotateAboutAxis(const C3DVector& axis, float angle) { g_axis = &axis; g_angle = angle; }
+    void Rotate(const C3DVector& axis, float angle) { g_axis = &axis; g_angle = angle; }
 };
 struct CChangingStateComponent {
     virtual ~CChangingStateComponent() {}
@@ -11,7 +11,7 @@ struct CChangingStateComponent {
 };
 struct CMesh : CChangingStateComponent {
     CRightHandedSet Orientation; C3DVector RotationAxis; float RotationSpeed;
-    virtual void Update(float dt) { CChangingStateComponent::Update(dt); Orientation.RotateAboutAxis(RotationAxis, RotationSpeed * dt); }
+    virtual void Update(float dt) { CChangingStateComponent::Update(dt); Orientation.Rotate(RotationAxis, RotationSpeed * dt); }
 };
 int main()
 {

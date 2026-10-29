@@ -4,7 +4,7 @@
 // PlayerModes list); its manifest label "CWorld::DrawGetEnvironment" and the landed "GetPlayerNumber" are wrong.
 // Callees: CWideString::operator=(const wchar_t*) 0x0099B800, CPlayerManager::GetPlayer(long) 0x00449910,
 // CPlayer::GetPControlledCreature 0x00487DC0, CPlayer::IsMainPlayer 0x00487520, CPlayer::GetJoystickDeviceNumber 0x00487510,
-// IntToWideString(long) 0x00405F00 and operator+(const wchar_t*, const CWideString&) 0x0099BFF0 (both `__fastcall`,
+// GFIntToWideString(long) 0x00405F00 and operator+(const wchar_t*, const CWideString&) 0x0099BFF0 (both `__fastcall`,
 // hidden result in ecx), CWideString::operator+=(const CWideString&) 0x0099B8D0 / operator+=(const wchar_t*) 0x0099B940,
 // ~CWideString 0x0099B510, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0 (TC 0xc7, the co-op
 // spirit), CTCCoopSpirit::GetScore 0x0066FB20 (Ego_r.pdb Score +0x10). Literals L"" 0x0122D70C, L"P" 0x01231CDC,
@@ -20,7 +20,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
     const CWideString& operator+=(const wchar_t* text);        // 0x0099B940
 };
-CWideString __fastcall IntToWideString(long value);                            // 0x00405F00 (hidden result in ecx)
+CWideString __fastcall GFIntToWideString(long value);                            // 0x00405F00 (hidden result in ecx)
 CWideString __fastcall operator+(const wchar_t* left, const CWideString& right);   // 0x0099BFF0 (hidden result in ecx)
 
 class CTCBase;
@@ -74,12 +74,12 @@ bool CPlayerManager::DrawGetEnvironmentInfo(long playerNumber, CWideString& text
     CThing* hero = player->GetPControlledCreature();
     if (player->IsMainPlayer() || hero == 0)
         return false;
-    text += L"P" + IntToWideString(player->GetJoystickDeviceNumber() + 1);
+    text += L"P" + GFIntToWideString(player->GetJoystickDeviceNumber() + 1);
     text += L":";
     CTCCoopSpirit* spirit;
     if (hero->HasTC(0xc7))
         spirit = (CTCCoopSpirit*)hero->GetTC(0xc7);
-    text += IntToWideString(spirit->GetScore());
+    text += GFIntToWideString(spirit->GetScore());
     text += L"  ";
     return true;
 }

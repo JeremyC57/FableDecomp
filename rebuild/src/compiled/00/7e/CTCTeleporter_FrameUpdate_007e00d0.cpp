@@ -97,7 +97,7 @@ bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThing>& p);   // 0x004
 CThing* __fastcall CreateParticle(long effect, const C3DVector* pos, bool attach);   // 0x006E0880
 
 class CTCDParticleEmitter { public:                            // interface 0x4B
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
     void SetAlwaysUpdate(bool always);                  // 0x006E0590
 };
 class CTCHero { public:                                        // interface 0x29
@@ -235,7 +235,7 @@ void CTCTeleporter::FrameUpdate()
         return;
     CTCDParticleEmitter* emitter = 0;
     ((CThing*)PParticle.GetPItem())->GetInterface(&emitter, 0x4b);
-    emitter->AttachToThing(ParentThing, 1, "", 0, 0.0f);
+    emitter->AttachToThing(*ParentThing, 1, "", 0, 0.0f);
     emitter->SetAlwaysUpdate(true);
     } else {
         if (IS_THING_ALIVE(PParticle)) {

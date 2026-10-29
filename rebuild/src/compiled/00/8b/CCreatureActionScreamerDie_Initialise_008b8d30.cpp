@@ -107,7 +107,7 @@ struct CTCInterface9 {                                // interface 9 component
     bool          m_flag10;                            // +0x10
 };
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
 class CCombatActionBase { public:                            // retail sizeof 0x114
@@ -146,7 +146,7 @@ void CCreatureAction_ScreamerDie::Initialise()
         if (((CThing*)PDieEffect.GetPItem()) && !(((CThing*)PDieEffect.GetPItem())->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = 0;
             ((CThing*)PDieEffect.GetPItem())->GetInterface(&emitter, 0x4b);
-            emitter->AttachToThing(((CThing*)PCreature.GetPItem()), 0xa, "DUMMY_CENTRE", 0, 0);
+            emitter->AttachToThing(*(((CThing*)PCreature.GetPItem())), 0xa, "DUMMY_CENTRE", 0, 0);
         }
     }
     CCombatActionBase::Initialise();

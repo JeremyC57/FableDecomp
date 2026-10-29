@@ -1598,3 +1598,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-10-29) `rebuild/manifest/status.json` / `compile-gate/retail-parity.json` are the Windows pipeline's snapshot (2026-09-07) and never see Linux-lane landings: report landing progress from `tools/landed_metrics.py` (run by write_decomp_dashboard.py), never from those files.
 - (2026-10-29) ChatGPT pass payloads carry module `Pass9` and template-stripped names: take module/name from the exact leaf and the package's undecorator output before landing.
 - (2026-10-29) RELOCATION_MATCH masks float-constant addresses: read each referenced .rdata constant and check it is the value the source assumes (chunk 566).
+- Naming waves: a swap of two rows' names (GetData/PeekData) needs a three-step git mv through a temporary name, and the build_candidates.ps1 Source/TestSource swap done the same way (wave 8).

@@ -3,7 +3,7 @@ class CCharString;
 class CQuestManager
 {
 public:
-    bool IsQuestRegistered(const CCharString& questName);
+    bool IsQuestRegistered(const CCharString& questName) const;
 };
 
 class CGameScriptInterface

@@ -136,7 +136,9 @@ public:
     C2DCoordI ConvertWorldMapCoordsToLocalCoords(long map, const C2DCoordI& pos) const; // 0x004FC3C0
     C3DVector ConvertWorldMapCoordsToLocalCoords(long map, const C3DVector& pos) const; // 0x004FC2A0
 
+protected:
     void UpdateAllEdges();
+public:
 };
 
 void CWorldMap::UpdateAllEdges()

@@ -4,7 +4,7 @@
 // ("s",on). FableWin.pdb ?FinalConstructSubtitles@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@...@std@@@Z.
 // Callees: NUISystem::CManager::GetInstance() @ 0x0041E5F2 (first), map<CComponent*, pair<CWideString,long> >::find
 // @ 0x005B1A8D, CWideString() @ 0x0099AED0 / operator= @ 0x0099B7D0 / operator+= @ 0x0099B8D0 / ~ @ 0x0099B510, GetXString()
-// @ 0x005CC772, IntToWideString(long) @ 0x00405F00, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0 ("UI_ONE_OFF_SUBTITLE" @
+// @ 0x005CC772, GFIntToWideString(long) @ 0x00405F00, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0 ("UI_ONE_OFF_SUBTITLE" @
 // 0x0124E72C), CManager::CreateComponent(const CCharString&, bool) @ 0x0041DB1D, CCountedPointer<CComponent>(CComponent*) @
 // 0x00429C15 / ~ @ 0x004291DE, component virtual slots 9 (+0x24), 142 (+0x238), 144 (+0x240 SetText) and 59 (+0xEC AddChild).
 // Shape: the landed FinalRefreshSubtitles (0x0059D761) text logic and stand-in `find` (same-TU noinline body, as accepted
@@ -26,7 +26,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
-CWideString __fastcall IntToWideString(long value);     // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);     // 0x00405F00
 template<class T> class CCountedPointer { public:
     T*    m_pObject;
     void* m_pCount;
@@ -142,7 +142,7 @@ void CTCInventoryTrade::FinalConstructSubtitles(NUISystem::CComponent* component
         text = found->Text;
         if (found->Count > 0) {
             text += GetXString();
-            text += IntToWideString(found->Count);
+            text += GFIntToWideString(found->Count);
         }
     }
     CCountedPointer<NUISystem::CComponent> subtitle(manager->CreateComponent("UI_ONE_OFF_SUBTITLE", false));

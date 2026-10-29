@@ -20,8 +20,8 @@ static const CCharString* g_attachHelper = 0;
 class CTCDParticleEmitter {
 public:
     int attached;
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset)
-    {
+    void AttachToThing(CThing& thing_ref, long attachType, const CCharString& helperName, long helperIndex, float offset)
+    { CThing* thing = &thing_ref;
         ++attached; ++g_attachCalls; g_attachThing = thing; g_attachType = attachType; g_attachHelper = &helperName;
         g_lastHelperIndex = helperIndex; (void)offset;
     }
@@ -45,7 +45,7 @@ public:
     CTCBase*             createdTC;
     CTCBase*             ownedTC;
     const C3DVector& GetPosition() const { return pos; }
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params)
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params)
     {
         (void)activate; (void)params;
         if (!std::strcmp(name.m_text, "CTCCreatedEntity")) return createdTC;
@@ -121,7 +121,7 @@ void CTCMeshAutomaticEntityCreator::CreateParticle(const CCharString& dummyName,
             CTCDParticleEmitter* emitter = 0;
             if (particle->HasTC(0x4b))
                 emitter = particle->PTCDriver;
-            emitter->AttachToThing(m_pThing, 10, dummyName, i, 0.0f);
+            emitter->AttachToThing(*m_pThing, 10, dummyName, i, 0.0f);
             particle->m_flags91 |= 2;
             CTCCreatedEntity* created = (CTCCreatedEntity*)particle->AddTC("CTCCreatedEntity", false, 0);
             created->PCreator = CIntelligentPointer<const CThing>(m_pThing);

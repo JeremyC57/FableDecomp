@@ -19,7 +19,7 @@ class CThingPlayerCreature;
 class CThingCreatureBase { public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                     // +0x91 (bit 0 = dead)
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 inline bool IsThingAlive(const CThingCreatureBase* thing)
@@ -74,12 +74,12 @@ void CTCCarriedActionUseFish::vfunc_32(CThingCreatureBase* user)
         if (IsThingAlive(user))
         {
             CThingCreatureBase* holder = ParentThing;
-            user->SetCurrentAction(&CCreatureAction_DeclarePlayerACriminal(user, (CThingPlayerCreature*)holder));
+            user->SetCurrentAction(CCreatureAction_DeclarePlayerACriminal(user, (CThingPlayerCreature*)holder));
         }
     }
     else
     {
         CThingCreatureBase* holder = ParentThing;
-        holder->SetCurrentAction(&CCreatureAction_SheatheItemToInventory(holder, 0, 100));
+        holder->SetCurrentAction(CCreatureAction_SheatheItemToInventory(holder, 0, 100));
     }
 }

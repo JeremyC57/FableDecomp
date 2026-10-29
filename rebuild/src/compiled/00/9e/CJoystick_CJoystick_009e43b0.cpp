@@ -1,4 +1,4 @@
-// CJoystick::CJoystick(CInputManager* inputManager, bool exclusiveMode) -- base joystick constructor: vtable, the 64 stored input events, the owning input manager, an empty STLport list of maintained events, zero event counters and the exclusive-mode flag
+// CJoystick::CJoystick(CInputManager& inputManager, bool exclusiveMode) -- base joystick constructor: vtable, the 64 stored input events, the owning input manager, an empty STLport list of maintained events, zero event counters and the exclusive-mode flag
 // Leaf: ??0CJoystick
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E43B0, length 101 bytes.
 // Label correction: the catalog's "CJoystickDX::Constructor" is the base class: the body stores CJoystick's vtable 0x0129C0EC
@@ -40,11 +40,11 @@ public:
     CMaintainedEventList MaintainedEventsList;     // +0xd0c
     long                 NoStoredEvents;           // +0xd10
     long                 NoEventScansRunning;      // +0xd14
-    CJoystick(CInputManager* inputManager, bool exclusiveMode);
+    CJoystick(CInputManager& inputManager, bool exclusiveMode);
 };
 
-CJoystick::CJoystick(CInputManager* inputManager, bool exclusiveMode)
-    : InputManager(inputManager), NoStoredEvents(0), NoEventScansRunning(0)
+CJoystick::CJoystick(CInputManager& inputManager, bool exclusiveMode)
+    : InputManager(&inputManager), NoStoredEvents(0), NoEventScansRunning(0)
 {
     ExclusiveMode = exclusiveMode;
 }

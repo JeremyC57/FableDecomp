@@ -149,7 +149,9 @@ public:
     CAIBrain* PBrain;                                  // +0x04
     unsigned char _pad08[0x0c];
     CThingSearchTools* PeekThingSearchTools();         // 0x008FD000
-    unsigned long* GetPWorldSeed();                    // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;                    // 0x008FCFD0
+    public:
     unsigned long GetRandomIndex(unsigned long range)
     {
         unsigned long* seed = GetPWorldSeed();

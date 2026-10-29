@@ -32,7 +32,7 @@ class CCharString { public:
 CThing* __fastcall Create(long defIndex, const C3DVector& position, bool flag);   // 0x006E0880
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
 class CTCDegradableBase { public:
@@ -54,7 +54,7 @@ void CTCDegradableBase::ShowParticleEffects(long particleDefIndex)
                 emitter = particle->PParticleEmitter;
             {
                 CCharString noBone("", -1);
-                emitter->AttachToThing(ParentThing, 8, noBone, 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 8, noBone, 0, 0.0f);
             }
         }
     }

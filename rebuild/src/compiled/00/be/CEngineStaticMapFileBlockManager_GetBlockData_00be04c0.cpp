@@ -1,9 +1,9 @@
 // CEngineStaticMapFileBlockManager::GetBlockData(long block) -- find the block's node in the set at +8 and return its async data's buffer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE04C0, length 32 bytes.
-// Callees: the set's find @ 0x00BE0930 (on +8: the node result by reference in the one-word frame, the key by reference), CBankFileAsyncData::GetData @ 0x009D5580 (on
+// Callees: the set's find @ 0x00BE0930 (on +8: the node result by reference in the one-word frame, the key by reference), CBankFileAsyncData::PeekData @ 0x009D5580 (const twin of GetData 0x009D5530; on
 // the data at +0x1c of the node). Shape: `push ecx` frame, `add ecx,8`, the result read back for the tail call's `this`.
 class CBankFileAsyncData { public:
-    void* GetData();                               // 0x009D5580
+    const void* PeekData() const;                  // 0x009D5580
 };
 struct SBlockNode_00be0400 {                        // the set node: the async data at +0x1c, the high-priority flag at +0x18, the pending count at +0x14
     unsigned char       _pad[0x14];
@@ -29,5 +29,5 @@ void* CEngineStaticMapFileBlockManager::GetBlockData(long block)
 {
     SBlockNode_00be0400* node;
     m_blocks.Find(node, block);
-    return node->m_pData->GetData();
+    return (void*)node->m_pData->PeekData();
 }

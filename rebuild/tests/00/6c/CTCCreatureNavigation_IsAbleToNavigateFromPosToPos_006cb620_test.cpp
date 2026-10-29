@@ -59,11 +59,11 @@ class CTCCreatureNavigation { public:
     bool    IsInGlobalUpdateTCs;
     CNavigatorBase* PNavigator;
     CWorldMap* GetWorldMap() const { return &g_map; }
-    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity);
+    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) const;
     bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool flag);
     bool GetNearestFleePosition(const C3DVector& centre, float radius, C3DVector* result);
 };
-bool CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity)
+bool CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float proximity) const
 {
     bool fromCurrentPos = true;
     if (DistanceSquared(from, ParentThing->GetPosition()) > g_fTolerance * g_fTolerance)

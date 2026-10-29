@@ -1,7 +1,7 @@
 // CTCInventoryMap::OnInitialActivate() -- after the base hook, re-activates every teleporter whose UID was serialised with the map screen (live, non-dead things carrying the teleporter component) and drops the serialised UID list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FCB10, length 208 bytes (+ int3 padding); speed TU (no frame pointer). CTCInventoryMap vtable
 // 0x01257A9C slot 6 (OnInitialActivate).
-// Callees: CTCInventoryBase::OnInitialActivate() @ 0x005BD1EB, CTCBase::GetThingManager() @ 0x00686AE0, CThingManager::GetThingWithUID(unsigned
+// Callees: CTCInventoryBase::OnInitialActivate() @ 0x005BD1EB, CTCBase::GetThingManager() @ 0x00686AE0, CThingManager::GetPThingWithUID(unsigned
 // __int64) @ 0x0051ED80 (manifest "CStopWatch::GetTicks" is propagated), CVectorMap::LowerBound @ 0x0040F020 (the inline CThing::GetInterface
 // for interface 0xDD = bit 29 of the bitset dword at +0x38), CTCTeleporter::SetAsActive(bool) @ 0x007DFEB0, the count block's destroy
 // pointer-to-function (`mov ecx,[eax+8] ; call [eax+4]`) and operator delete @ 0x00BFE9BC for the CCountedPointer reset.
@@ -69,7 +69,7 @@ class CThing { public:
     }
 };
 class CThingManager { public:
-    CThing* GetThingWithUID(__int64 uid);            // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);            // 0x0051ED80
 };
 class CTCTeleporter { public:                               // interface type 0xDD
     void SetAsActive(bool active);                   // 0x007DFEB0
@@ -99,7 +99,7 @@ void CTCInventoryMap::OnInitialActivate()
     if (uids) {
         for (unsigned __int64* it = uids->_M_start; it != uids->_M_finish; ++it) {
             __int64 uid = *it;
-            CThing* thing = GetThingManager().GetThingWithUID(uid);
+            CThing* thing = GetThingManager().GetPThingWithUID(uid);
             if (thing && !thing->IsDead) {
                 CTCTeleporter* teleporter;
                 if (thing->GetInterface(&teleporter, 0xDD))

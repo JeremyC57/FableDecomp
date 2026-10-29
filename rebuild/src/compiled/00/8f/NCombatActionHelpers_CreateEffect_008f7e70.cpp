@@ -80,7 +80,7 @@ class CThing;
 
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, long flags);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float flags);   // 0x006E0BE0
     void SetEmitterUpdateParameters(const NParticleEngine::CParticleUpdateParameters& parameters);   // 0x006E11A0
 };
 
@@ -112,7 +112,7 @@ void __fastcall CreateEffect(CThingCreatureBase& creature, long effectType, cons
     if (effect->HasTC(0x4b))
         emitter = (CTCDParticleEmitter*)effect->PTCDriver;
     if (helperName)
-        emitter->AttachToThing(&creature, 12, *helperName, 0, 0);
+        emitter->AttachToThing(creature, 12, *helperName, 0, 0);
     unsigned long key = CCRC::Calc(0, "DIRECTION", 9);
     NParticleEngine::SVectorParam directionParam(key, direction);
     NParticleEngine::CParticleUpdateParameters parameters;

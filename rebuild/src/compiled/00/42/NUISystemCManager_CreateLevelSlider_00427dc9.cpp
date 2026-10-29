@@ -28,7 +28,7 @@ class CWideString { public:
     void* m_pStringData;
     ~CWideString();                                     // 0x0099B510
 };
-CWideString __fastcall LongToWideString(long value);   // 0x00405F00 (hidden result in ecx, value in edx)
+CWideString __fastcall GFIntToWideString(long value);   // 0x00405F00 (hidden result in ecx, value in edx)
 class C2DCoordI { public:
     long X, Y;
 };
@@ -108,7 +108,7 @@ CComponent* CManager::CreateLevelSlider(const CWideString& text, const C2DCoordI
         caption->SetText(text, true, true);
     CComponent* number = slider->FindChild(CCharString("UI_LEVEL_SLIDER_NUMBER"));
     if (number)
-        number->SetText(LongToWideString(level), true, true);
+        number->SetText(GFIntToWideString(level), true, true);
     CComponent* fill = slider->FindChild(CCharString("UI_LEVEL_SLIDER_FILL_SPRITE"));
     if (fill) {
         CStateMap& fillStates = fill->GetStateMap();

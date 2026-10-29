@@ -89,7 +89,7 @@ class CTCFadeOutAndIn { public:
 };
 class CThing;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThingBodyReorienter { public:
     bool IsUpdateNeeded();                              // 0x00863250
@@ -196,7 +196,7 @@ bool CThingDeadCreature::WorldUpdate()
                     if (effect && !effect->Dead) {
                         CTCDParticleEmitter* emitter = 0;
                         effect->GetTCDriver(&emitter);
-                        emitter->AttachToThing(this, 0x30, "", 0, 0.0f);
+                        emitter->AttachToThing(*this, 0x30, "", 0, 0.0f);
                     }
                 }
                 CTCFadeOutAndIn* fade;

@@ -133,7 +133,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
 };
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
 class CCombatActionBase { public:                            // retail sizeof 0x114
@@ -170,7 +170,7 @@ void CCreatureAction_BanditKingStuck::Initialise()
             if (PStuckEffect.GetPItem() && !(PStuckEffect.GetPItem()->m_flags91 & 1)) {
                 CTCDParticleEmitter* emitter = 0;
                 PStuckEffect.GetPItem()->GetInterface(&emitter, 0x4b);
-                emitter->AttachToThing(PCreature.GetPItem(), 0x2a, "", 0, 0);
+                emitter->AttachToThing(*PCreature.GetPItem(), 0x2a, "", 0, 0);
             }
         }
     }
@@ -202,8 +202,8 @@ CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }
 void CBaseIntelligentPointer::SetPItem(CThing* item) { m_pItem = item; }
 void CIntelligentPointerThing::v00() {}
 static void* g_attachThis; static CThing* g_attachThing; static long g_attachBone, g_attachA, g_attachB; static const char* g_attachName; static int g_attaches;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b)
-{ g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachName = (const char*)boneName.PStringData; g_attachA = a; g_attachB = b; g_attaches++; }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long boneIndex, const CCharString& boneName, long a, float b)
+{ CThing* thing = &thing_ref; g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachName = (const char*)boneName.PStringData; g_attachA = a; g_attachB = b; g_attaches++; }
 static const char* g_anim; static int g_baseInits;
 void CCombatActionBase::v00() {}
 void CCombatActionBase::SetCombatAnimation(const CCharString& name) { g_anim = (const char*)name.PStringData; }

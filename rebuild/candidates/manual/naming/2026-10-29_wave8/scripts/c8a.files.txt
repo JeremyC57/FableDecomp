@@ -1,0 +1,11 @@
+rebuild/src/compiled/00/68/CTCCreatureOpinionOfHero_SetOpinionDeedMask_006821e0.cpp
+rebuild/src/compiled/00/71/CTCHeroMorph_UpdateIdleParticles_0071c9f0.cpp
+rebuild/src/compiled/00/72/CTCSpecialAbilities_SetupBerserk_0072cba0.cpp
+rebuild/src/compiled/00/9c/NGameTextCDataBankGroupEntry_BuildGroup_009c8700.cpp
+rebuild/src/compiled/00/9c/NGameTextCDataBankTextEntry_BuildText_009c8fb0.cpp
+rebuild/src/compiled/00/9d/CBankFileAsyncData_GetData_009d5580.cpp
+rebuild/src/compiled/00/9d/CBankFileAsyncData_PeekData_009d5530.cpp
+rebuild/src/compiled/00/be/CEngineStaticMapFileBlockManager_GetBlockData_00be04c0.cpp
+rebuild/tests/00/68/CTCCreatureOpinionOfHero_SetOpinionDeedMask_006821e0_test.cpp
+rebuild/tests/00/9d/CBankFileAsyncData_GetData_009d5580_test.cpp
+rebuild/tests/00/9d/CBankFileAsyncData_PeekData_009d5530_test.cpp

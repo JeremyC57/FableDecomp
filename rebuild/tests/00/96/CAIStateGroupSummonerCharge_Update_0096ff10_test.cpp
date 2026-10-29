@@ -55,7 +55,7 @@ struct CCurrentAction {
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad94[0x100 - 0x94];
     CCurrentAction* PCurrentAction;             // +0x100
-    bool SetCurrentAction(CCreatureActionBase* action);
+    bool SetCurrentAction(const CCreatureActionBase& action);
     bool IsPerformingAnyAction();
     void StopCurrentAction();
 };
@@ -146,7 +146,7 @@ void CAIStateGroup_SummonerCharge::Update()
     if (PTarget.GetPItem()->GetInterfaceX(&stealth, 0x36))
         stealth->SetAsInDanger(GetCreature(), 3);
     CThingCreatureBase* owner = GetCreature();
-    if (!GetCreature()->SetCurrentAction(&CCreatureAction_SummonerChargeInto(owner, PTarget.GetPItem()))) {
+    if (!GetCreature()->SetCurrentAction(CCreatureAction_SummonerChargeInto(owner, PTarget.GetPItem()))) {
         Terminate();
         return;
     }
@@ -209,7 +209,7 @@ static long g_codes[16]; static int g_codeCalls; static int g_killTargetAtCode =
 CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { g_lookups++; return *type == 0x36 ? &g_entries[0] : last; }
 const C3DVector& CThing::GetPosition() const { return this == &g_target ? g_targetPos : g_creaturePos; }
 long CCurrentAction::GetActionCode() { long c = g_codes[g_codeCalls]; if (g_codeCalls == g_killTargetAtCode) g_target.m_flags91 = 1; g_codeCalls++; return c; }
-bool CThingCreatureBase::SetCurrentAction(CCreatureActionBase* action) { g_setAction++; return g_setActionResult; }
+bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& action_ref) { CCreatureActionBase* action = const_cast<CCreatureActionBase*>(&action_ref); g_setAction++; return g_setActionResult; }
 bool CThingCreatureBase::IsPerformingAnyAction() { g_isPerforming++; return g_isPerforming == 1; }
 void CThingCreatureBase::StopCurrentAction() { g_stop++; }
 CThing* CBaseIntelligentPointer::GetPItem() const { return m_pItem; }

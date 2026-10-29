@@ -32,7 +32,9 @@ class CTexture { public:
 template<class T> struct CRetailVector {                // retail std::vector: three pointers
     T* m_first; T* m_last; T* m_end;
     T* begin() { return m_first; }
+    const T* begin() const { return m_first; }
     T& operator[](unsigned long n) { return *(begin() + n); }
+    const T& operator[](unsigned long n) const { return *(begin() + n); }
     void resize(unsigned long n, const T& value);       // 0x00468FA5 (vector<CRGBColour>)
 };
 
@@ -54,7 +56,7 @@ class CPlayerGuiDef { public:
     unsigned char             _pad9a0[0xc];
     CRetailVector<CRGBColour> RegionMinimapThemeColours;     // +0x9ac
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();                 // 0x00438570
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };                 // 0x00438570
 
 struct CRegionMinimap {
     long                                 RegionMinimapSize;              // +0x00
@@ -78,7 +80,7 @@ void CRegionMinimap::Initialise()
     RegionMinimapSurface.Uninitialise();
     RegionMinimapTexture.Uninitialise();
     IlluminationDirection = C3DVector(1.0f, 1.0f, 1.0f);
-    CPlayerGuiDef* def = PeekGuiDef();
+    const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
     MaxRegionMinimapThemeColours = def->NoRegionMinimapThemeColours;
     RegionMinimapThemeColour.resize(MaxRegionMinimapThemeColours, CRGBColour());
     for (unsigned long i = 0; i < MaxRegionMinimapThemeColours; ++i)

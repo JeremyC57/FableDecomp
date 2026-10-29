@@ -9,8 +9,8 @@ class CCharString { public:
     CCharString() { buf[0] = 0; }
     CCharString(const char* t, long = -1) { std::strcpy(buf, t); }
     CCharString(const CCharString& o) { std::strcpy(buf, o.buf); }
-    CCharString& operator+=(const char* t) { std::strcat(buf, t); return *this; }
-    CCharString& operator+=(const CCharString& o) { std::strcat(buf, o.buf); return *this; }
+    const CCharString& operator+=(const char* t) { std::strcat(buf, t); return *this; }
+    const CCharString& operator+=(const CCharString& o) { std::strcat(buf, o.buf); return *this; }
 };
 static CCharString GFIntToCharString(long v) { CCharString s; std::sprintf(s.buf, "%ld", v); return s; }
 static unsigned long GFROR13(unsigned long v) { v &= 0xffffffffUL; return ((v >> 13) | (v << 19)) & 0xffffffffUL; }

@@ -52,13 +52,13 @@ class CPlayerGuiDef { public:
     unsigned char _pad[0x5ec];
     CCharString   TextBoxButtonBSoundCriteria;    // +0x5EC
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
 class CSubtitleRenderer : public CSubtitleRendererDonor {
  public:
     bool IsCutsceneSkippable() const;              // 0x0048DE44
     void Clear(bool all);                          // 0x00492BAB
 };
 class CPlayerGui { public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();            // 0x00438570
     unsigned char     _pad[0x18];
     CSubtitleRenderer SubtitleRenderer;            // +0x18
 };
@@ -77,7 +77,7 @@ void CWorld::EASkipCutScene(const CGameEvent* event)
 {
     CSubtitleRenderer& subtitles = g_pPlayerGui->SubtitleRenderer;
     if (subtitles.InCutscene && subtitles.IsCutsceneSkippable()) {
-        CPlayerGuiDef* def = PeekGuiDef();
+        const CPlayerGuiDef* def = &CPlayerGui::PeekGuiDef();
         CSoundInit init;
         init.GainFaderBits = 0x8010;
         g_pSoundSystem->GetSoundPlayer()->PlaySoundEvent(GetSampleBank(), def->TextBoxButtonBSoundCriteria, true, init, false);

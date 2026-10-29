@@ -13,7 +13,7 @@ class CThing { public:
 };
 static CThing* g_lookup = 0; static s64 g_askedUID = 0;
 class CThingManager { public:
-    CThing* GetThingWithUID(s64 uid) { g_askedUID = uid; return g_lookup; }
+    CThing* GetPThingWithUID(s64 uid) { g_askedUID = uid; return g_lookup; }
 };
 static CThingManager g_tm;
 struct CBaseIntelligentPointer {
@@ -46,7 +46,7 @@ struct CTCCreatureGeneratorCreator : CTCBase {
 void CTCCreatureGeneratorCreator::OnInitialActivate()
 {
     if (GeneratorUID > 0) {
-        PGenerator = CIntelligentPointer(GetThingManager()->GetThingWithUID(GeneratorUID));
+        PGenerator = CIntelligentPointer(GetThingManager()->GetPThingWithUID(GeneratorUID));
         GeneratorUID = 0;
         Generated = false;
         if (IsGeneratorAlive()) {

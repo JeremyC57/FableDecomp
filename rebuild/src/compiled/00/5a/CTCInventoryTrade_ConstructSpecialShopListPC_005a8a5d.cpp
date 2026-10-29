@@ -7,7 +7,7 @@
 //   bitset::test 0x00410DE0 + LowerBound 0x004365B0 (inline GetInterface), IsItemAffordable 0x0059DA10, CanAddItem 0x005BF2ED,
 //   IsSpecialCase 0x0059C983, AlreadyHaveSpecial 0x0059FC17, component slots 3 (+0x0C) / 142 (+0x238) / 144 (+0x240),
 //   CWideString copy 0x0099B720 / operator= 0x0099B7D0 / += 0x0099B8D0 / ~ 0x0099B510, GetXString 0x005CC772,
-//   IntToWideString 0x00405F00.
+//   GFIntToWideString 0x00405F00.
 // Shape: the front-end manager goes through a named local so GetInstance is called before CreateComponent's pushes.
 #pragma optimize("y", off)
 #pragma optimize("s", on)
@@ -25,7 +25,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
-CWideString __fastcall IntToWideString(long value);     // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);     // 0x00405F00
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();
@@ -172,7 +172,7 @@ NUISystem::CComponent* CTCInventoryTrade::ConstructSpecialShopListPC(const std::
         SpecialItemString = text->GetText();
         CWideString price(SpecialItemString);
         price += GetXString();
-        price += IntToWideString(TotSpecialItemsToBuy);
+        price += GFIntToWideString(TotSpecialItemsToBuy);
         text->SetText(price, true, true);
     }
     return list;

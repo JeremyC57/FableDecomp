@@ -142,7 +142,7 @@ public:
 };
 class CThingCreatureBase : public CThing {};
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 extern CCharString g_LeftHandAttachmentName;          // 0x013BAC34
 CThing* __fastcall CreateParticleEffect(long type, const C3DVector* position);   // 0x0072AB70
@@ -206,7 +206,7 @@ CCreatureAction_CastSkillMultiArrow::CCreatureAction_CastSkillMultiArrow(CThingC
             CThing* effect = CreateParticleEffect(effectType, &GetCreature()->GetPos());
             CTCDParticleEmitter* emitter;
             if (effect && !effect->IsDead() && effect->GetInterface(&emitter, 0x4b))
-                emitter->AttachToThing(GetCreature(), 10, g_LeftHandAttachmentName, 0, 0);
+                emitter->AttachToThing(*GetCreature(), 10, g_LeftHandAttachmentName, 0, 0);
         }
     }
 }

@@ -95,7 +95,9 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                        // 0x008FCFC0 (PBrain->+0x1c->+0x24; manifest "CPlayer::GetCurrentMode" is propagated)
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0 (world random seed)
+    public:
 };
 
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)

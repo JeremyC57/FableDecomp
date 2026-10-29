@@ -28,7 +28,7 @@ class C3DVector { public: float X, Y, Z; };
 
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
     static CThing* __fastcall Create(const CCharString& name, const C3DVector& position, bool flag);   // 0x006E0970
 };
 
@@ -46,7 +46,7 @@ public:
     unsigned char        _pad60[0x91 - 0x60];
     unsigned char        m_flags91;                    // +0x91 bit 0 dead, bit 1 created by owner thing creation
     const C3DVector& GetPos() const;              // 0x004C73D0
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     __forceinline bool HasTC(long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
@@ -108,7 +108,7 @@ void CTCMeshAutomaticEntityCreator::CreateParticle(const CCharString& dummyName,
             CTCDParticleEmitter* emitter = 0;
             if (particle->HasTC(0x4b))
                 emitter = particle->PTCDriver;
-            emitter->AttachToThing(m_pThing, 10, dummyName, i, 0.0f);
+            emitter->AttachToThing(*m_pThing, 10, dummyName, i, 0.0f);
             particle->m_flags91 |= 2;
             CTCCreatedEntity* created = (CTCCreatedEntity*)particle->AddTC("CTCCreatedEntity", false, 0);
             created->PCreator = CIntelligentPointer<const CThing>(m_pThing);

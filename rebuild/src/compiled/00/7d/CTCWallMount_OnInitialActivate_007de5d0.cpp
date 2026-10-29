@@ -1,7 +1,7 @@
 // CTCWallMount::OnInitialActivate() -- re-links the mounted trophy from its saved UID; a live trophy gets its physics switched off, its interface-0x82 component emptied and removed, and its targetability cleared
 // Leaf: ?OnInitialActivate@CTCWallMount
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007DE5D0, 311 bytes (plain `ret`).
-// Callees: CTCBase::GetThingManager() 0x00686AE0; CThingManager::GetThingWithUID(__int64) 0x0051ED80 (label "CStopWatch::
+// Callees: CTCBase::GetThingManager() 0x00686AE0; CThingManager::GetPThingWithUID(__int64) 0x0051ED80 (label "CStopWatch::
 //          GetTicks" propagated); CBaseIntelligentPointer() 0x00A01B10 (then the CIntelligentPointer<CThing> vtable 0x01238C6C),
 //          SetPItem 0x00A01B90, GetPItem 0x00A01B50 (x8), ~CBaseIntelligentPointer 0x00A01C10; the physics component's
 //          SetPhysicsActive(bool) (slot 36, +0x90); CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020
@@ -61,7 +61,7 @@ public:
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
 };
 class CThingManager { public:
-    CThing* GetThingWithUID(__int64 uid);       // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);       // 0x0051ED80
 };
 
 class CBaseObjectPointer;
@@ -124,7 +124,7 @@ void CTCWallMount::OnInitialActivate()
 {
     if (TrophyID == 0)
         return;
-    Trophy = CIntelligentPointer<CThing>(GetThingManager().GetThingWithUID(TrophyID));
+    Trophy = CIntelligentPointer<CThing>(GetThingManager().GetPThingWithUID(TrophyID));
     if (IS_THING_ALIVE(Trophy)) {
         if (Trophy.GetPItem()->GetPhysicsTC())
             Trophy.GetPItem()->GetPhysicsTC()->SetPhysicsActive(false);

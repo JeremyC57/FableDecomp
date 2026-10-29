@@ -67,7 +67,7 @@ template <class T> struct CRetailVector {
 };
 struct CTCBaseX;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -154,19 +154,19 @@ void CTCBurntEffect::Reset()
         if (effectA) {
             CTCDParticleEmitter* emitter = effectA->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
-                emitter->AttachToThing(ParentThing, 10, g_BurntHelperA, 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 10, g_BurntHelperA, 0, 0.0f);
         }
         CThing* effectB = CreateEffectThing(type, &position, false);
         if (effectB) {
             CTCDParticleEmitter* emitter = effectB->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
-                emitter->AttachToThing(ParentThing, 10, g_BurntHelperB, 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 10, g_BurntHelperB, 0, 0.0f);
         }
         CThing* effectC = CreateEffectThing(type, &position, false);
         if (effectC) {
             CTCDParticleEmitter* emitter = effectC->GetTCDriver<CTCDParticleEmitter>(0x4b);
             if (emitter)
-                emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
         }
         Effects.push_back(CIntelligentPointer<CThing>(effectA));
         Effects.push_back(CIntelligentPointer<CThing>(effectB));

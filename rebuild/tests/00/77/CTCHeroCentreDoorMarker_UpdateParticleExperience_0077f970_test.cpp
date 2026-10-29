@@ -16,7 +16,7 @@ static CThing g_created; static char g_name[32]; static int g_creates = 0;
 static CThing* Create(const CCharString& name, const C3DVector&, bool) { ++g_creates; std::strcpy(g_name, name.s); return &g_created; }
 class CTCDParticleEmitter { public:
     CThing* attached; long type; const char* helper;
-    void AttachToThing(CThing* t, long a, const CCharString& h, long, float) { attached = t; type = a; helper = h.s; }
+    void AttachToThing(CThing& t_ref, long a, const CCharString& h, long, float) { CThing* t = &t_ref; attached = t; type = a; helper = h.s; }
 };
 struct CIntelligentPointer {
     CThing* p;
@@ -44,7 +44,7 @@ struct CTCHeroCentreDoorMarker {
                 CThing* particle = PParticle.GetPItem();
                 if (particle->HasTC(0x4b))
                     emitter = particle->GetTC<CTCDParticleEmitter>(0x4b);
-                emitter->AttachToThing(ParentThing, 0x20, "", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 0x20, "", 0, 0.0f);
             }
         }
     }

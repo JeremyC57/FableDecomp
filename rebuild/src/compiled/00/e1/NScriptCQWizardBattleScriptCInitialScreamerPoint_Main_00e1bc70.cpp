@@ -1065,7 +1065,9 @@ class CCharString { public:
 class CBaseObject { public:                                   // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
  virtual void b000();
  void* m_pIntelligentPointer;
+protected:
  CBaseObject();                                     // 0x0099A380
+public:
 };
 struct CBaseObjectDtor {                               // the same root, as its destructor sees it
  void* m_pIntelligentPointer;

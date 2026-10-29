@@ -80,7 +80,7 @@ struct CPhysicsBody {                           // the thing's physics body at +
 };
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(class CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(class CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing {
 public:
@@ -146,7 +146,7 @@ void CCombatAction_StrikeResponseScorpionKing::Initialise()
             CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
             if (effect && !(effect->m_flags91 & 1) && effect->HasTC(0x4b)) {
                 CTCDParticleEmitter* emitter = effect->PTCDriver;
-                emitter->AttachToThing(PCreature.GetPItem(), 10, "EMITTER_EYE", 0, 0.0f);
+                emitter->AttachToThing(*PCreature.GetPItem(), 10, "EMITTER_EYE", 0, 0.0f);
             }
         }
         if (--effects->m_refCount == 0)

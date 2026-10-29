@@ -55,7 +55,9 @@ static inline bool IsThingImpAlive(const CScriptThing& t)
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 class CBaseObject { public:
     void* m_pIntelligentPointer;
+protected:
     CBaseObject();                                      // 0x0099A380
+public:
     virtual ~CBaseObject();
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C

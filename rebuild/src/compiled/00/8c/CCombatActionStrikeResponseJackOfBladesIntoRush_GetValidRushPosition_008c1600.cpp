@@ -146,7 +146,7 @@ class CTCBoss { public:                                        // interface 0xAD
 };
 #pragma pack(pop)
 class CTCCreatureNavigation { public:                          // interface 7
-    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance);   // 0x006CB620
+    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance) const;   // 0x006CB620
 };
 class CThing { public:
     unsigned char   _pad0[0x20];

@@ -3,7 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006821E0, 256 bytes (241 without padding), thiscall `ret 4`. Ego_r.pdb
 //   `?SetOpinionDeedMask@CTCCreatureOpinionOfHero@@QAEXJ@Z`; callers 0x006822FE (the CCharString overload), 0x006845F2,
 //   0x0079976E, 0x00799BB7, 0x0089C2D4 (CGameScriptInterface::EntitySetOpinionDeedMask), 0x00958BF3.
-// Callees: vector<bool>::resize(size_type, const bool&) 0x006860F0 (catalog "std::vector_insert_value"), CTCBase::GetWorld
+// Callees: vector<bool>::_M_fill_assign(size_type, const bool&) 0x006860F0 (through the inline assign; landed STLport row;
+//   catalog "std::vector_insert_value"; resize is 0x00467686), CTCBase::GetWorld
 //   0x00686A70 (catalog "CViewBase::GetDisplayEngine"), CDefinitionManager::GetDefClassTypeNameFromGlobalIndex 0x009ACCE0
 //   (CDefString by hidden pointer), CDefString::operator==(const char*) 0x005B3440 ("OPINION_DEED_MASK" 0x01235D20),
 //   CDefinitionManager::GetDef<COpinionDeedMaskDef> 0x00685E00 (COMDAT-folded, catalog "GetDef<CThingPhysicalSwitchDef>"),
@@ -17,7 +18,7 @@
 //   iterator; GetDef and the iterator's operator++ are template members compiled in this TU -- same-TU noinline stand-ins keep
 //   both uncaptured, so the deed key stays in ecx across the byte stores. The deed key is a named local; the map end is a local
 //   read once (edi); the scratch "applied" vector is constructed with an inline zero fill (`rep stosd`, 0x17 dwords) after the
-//   std::fill and freed on the way out. The resize's `true` temporary is the high byte of the 4-byte frame word.
+//   std::fill and freed on the way out. The assign's `true` temporary is the high byte of the 4-byte frame word.
 extern "C" void* __cdecl malloc(unsigned int size);  // 0x00BFEA0E
 extern "C" void __cdecl free(void* p);               // 0x00BFEA14
 extern "C" void* __cdecl memset(void* d, int c, unsigned int n);
@@ -84,7 +85,8 @@ public:
     iterator begin() { return this->_M_start; }
     iterator end() { return this->_M_finish; }
     _Tp& operator[](size_type __n) { return *(this->_M_start + __n); }
-    void resize(size_type __new_size, const _Tp& __x);   // 0x006860F0 (vector<bool>)
+    void _M_fill_assign(size_type __n, const _Tp& __val);   // 0x006860F0 (vector<bool>)
+    void assign(size_type __n, const _Tp& __val) { _M_fill_assign(__n, __val); }
     __forceinline vector(size_type __n, const _Tp& __val)
     {
         this->_M_start = (_Tp*)malloc(__n * sizeof(_Tp));
@@ -206,7 +208,7 @@ public:
 
 void CTCCreatureOpinionOfHero::SetOpinionDeedMask(long defIndex)
 {
-    DeedMask.resize(OPINION_DEED_TYPE_COUNT, true);
+    DeedMask.assign(OPINION_DEED_TYPE_COUNT, true);
     if (defIndex) {
         CGameDefinitionManager* defManager = GetWorld().DefinitionManager;
         CDefPointer<const COpinionDeedMaskDef> def;

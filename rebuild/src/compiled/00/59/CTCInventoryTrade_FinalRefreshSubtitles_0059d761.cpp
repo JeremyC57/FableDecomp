@@ -3,7 +3,7 @@
 // A byte twin of 0x0059D1B1 (the UI_ONE_OFF_SUBTITLE child); the oracle labels both FinalRefreshSubtitles.
 // Callees: map<CComponent*,...>::find @ 0x005B1A8D (catalog "std::set_FindLE_Duplicate"; STLport node: key +0x10, text +0x14, count
 // +0x18; end() is the header at +0), CWideString::CWideString() @ 0x0099AED0, operator=(const CWideString&) @ 0x0099B7D0, operator+=
-// (const CWideString&) @ 0x0099B8D0, ~CWideString @ 0x0099B510, GetXString() @ 0x005CC772 and IntToWideString(long) @ 0x00405F00
+// (const CWideString&) @ 0x0099B8D0, ~CWideString @ 0x0099B510, GetXString() @ 0x005CC772 and GFIntToWideString(long) @ 0x00405F00
 // (`__fastcall`, CWideString by value through the hidden pointer in ecx), CCharString(const char*, long) @ 0x0099EBF0 ("PC_SUBTITLE"
 // 0x01230428), NUISystem::CComponent virtual slots 9 (+0x24, the typed child getter), 142 (+0x238, the child's text), 3 (+0x0C, FindChild
 // by name, CCharString by value) and 144 (+0x240, SetText(const CWideString&, bool, bool)).
@@ -25,7 +25,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
 CWideString __fastcall GetXString();                    // 0x005CC772
-CWideString __fastcall IntToWideString(long value);     // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);     // 0x00405F00
 namespace NUISystem {
 struct CTextSource {                                    // the typed child: only its text slot is used here
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -127,7 +127,7 @@ void CTCInventoryTrade::FinalRefreshSubtitles(NUISystem::CComponent* component, 
         text = found->Text;
         if (found->Count > 0) {
             text += GetXString();
-            text += IntToWideString(found->Count);
+            text += GFIntToWideString(found->Count);
         }
     }
     owner->FindChild("PC_SUBTITLE")->SetText(text, true, true);

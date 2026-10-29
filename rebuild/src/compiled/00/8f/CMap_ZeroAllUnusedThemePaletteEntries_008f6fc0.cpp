@@ -29,6 +29,7 @@ class CMap { public:
     vector<SThemePaletteEntry> m_ThemePalette;     // +0x1a6c
     void*                      m_pQuarterGrid;     // +0x1a78
     CGameMapGrid*              m_pGameMapGrid;     // +0x1a7c
+protected:
     void ZeroAllUnusedThemePaletteEntries();
 };
 

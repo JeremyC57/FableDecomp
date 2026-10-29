@@ -155,7 +155,7 @@ public:
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector* position, bool attached);   // 0x006E0880
 
 class CTCDParticleEmitter { public:                          // interface type 0x4B
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00();
@@ -178,8 +178,8 @@ bool CSpecialEffectsDef::CalcAndLookup(const CCharString& c0, long* out1)
 }
 #pragma auto_inline(on)
 #pragma auto_inline(off)
-void CTCDParticleEmitter::AttachToThing(CThing* out0, long, const CCharString& c2, long, float)
-{
+void CTCDParticleEmitter::AttachToThing(CThing& out0_ref, long, const CCharString& c2, long, float)
+{ CThing* out0 = &out0_ref;
     int hc = 0;
     { const unsigned char* b = (const unsigned char*)&c2; for (unsigned i = 0; i < sizeof(CCharString); ++i) hc += b[i]; }
     *(int*)out0 = StandInSink(hc, 3);
@@ -195,7 +195,7 @@ void CCreatureAction_NymphTeleportLimboBase::DoEffect()
         CThing* fx = CreateSpecialEffect(effect, &PCreature.GetPItem()->GetPos(), false);
         if (fx && !(fx->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = fx->FindInterface<CTCDParticleEmitter>(0x4B);
-            emitter->AttachToThing(PCreature.GetPItem(), 10, "DUMMY_CENTRE", 0, 0);
+            emitter->AttachToThing(*PCreature.GetPItem(), 10, "DUMMY_CENTRE", 0, 0);
         }
     }
 }

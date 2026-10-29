@@ -29,7 +29,7 @@ class CThing { public:
     }
 };
 static CThing g_door;
-class CThingManager { public: CThing* GetThingWithUID(long long uid) { return uid == 77 ? &g_door : 0; } };
+class CThingManager { public: CThing* GetPThingWithUID(long long uid) { return uid == 77 ? &g_door : 0; } };
 static CThingManager g_manager;
 static CThing* g_hero = 0;
 class CPlayer { public: CThing* GetHeroThing() { return g_hero; } };
@@ -50,7 +50,7 @@ void CWorld::EACloseHeroCentreDoor(const CGameEvent* event)
         event->GetData(buffer);
         long long uid;
         buffer.Read(8, &uid);
-        CThing* door = GetThingManager()->GetThingWithUID(uid);
+        CThing* door = GetThingManager()->GetPThingWithUID(uid);
         if (door)
             door->PeekTC<CTCHeroCentre>(0x6A)->OnHeroCloseDoor();
     }

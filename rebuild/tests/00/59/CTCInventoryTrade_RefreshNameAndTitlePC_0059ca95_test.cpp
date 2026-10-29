@@ -10,7 +10,7 @@ class CWideString { public:
 };
 CWideString operator+(const CWideString& a, const CWideString& b) { CWideString r(a.s); r += b; return r; }
 static CWideString GetXString() { return CWideString(" x "); }
-static CWideString IntToWideString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CWideString(b); }
+static CWideString GFIntToWideString(long v) { char b[16]; std::sprintf(b, "%ld", v); return CWideString(b); }
 static CWideString GetDescription(long defIndex) { return CWideString(defIndex == 7 ? "Apple" : "Key"); }
 
 struct CComponent {
@@ -31,7 +31,7 @@ class CTCInventoryTrade { public:
         if (text || subtitle) {
             name = GetDescription(defIndex);
             if (count > 1 && !IsSpecialCase(defIndex))
-                name += GetXString() + IntToWideString(count);
+                name += GetXString() + GFIntToWideString(count);
             if (text)
                 text->SetText(name, true, true);
             if (subtitle)

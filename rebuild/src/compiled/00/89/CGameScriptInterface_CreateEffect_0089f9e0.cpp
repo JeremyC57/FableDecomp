@@ -106,7 +106,7 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 CThingNative* __fastcall CreateParticle(const CCharString&,const C3DVector&,bool); //006E0970
 class CRightHandedSet;
 struct EmitterMethods{void AttachToThing(CThingNative*,long,const CCharString&,long,float);void SetAlwaysUpdate(bool);void SetEmitterOrientation(const CRightHandedSet&);}; //006E0BE0,006E0590
-class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}void RotateAboutAxis(const C3DVector&,float);__forceinline void RotateAboutUp(float angle){RotateAboutAxis(Up,angle);}}; //00A22F80
+class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}void Rotate(const C3DVector&,float);__forceinline void RotateAboutUp(float angle){Rotate(Up,angle);}}; //00A22F80
 void SetEmitterOrientationDeclaration();
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateEffect(const CCharString&,const C3DVector&,const CCharString&,float,bool,bool)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateEffect(const CCharString& name,const C3DVector& pos,const CCharString&,float angle,bool,bool always)const{

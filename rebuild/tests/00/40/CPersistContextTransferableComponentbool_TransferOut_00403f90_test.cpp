@@ -13,7 +13,7 @@ typedef unsigned __int64 UInt64;
 class CPersistContext;
 class CCharString { public:
     char m_text[16];
-    CCharString& operator+=(const char* text) { std::strcat(m_text, text); return *this; }
+    const CCharString& operator+=(const char* text) { std::strcat(m_text, text); return *this; }
 };
 struct CPersistContext_TransferableComponent {
     virtual void TransferOut(CPersistContext* context, CCharString* out);

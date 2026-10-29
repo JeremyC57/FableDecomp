@@ -67,7 +67,7 @@ struct CCurrentAction {
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad94[0x100 - 0x94];
     CCurrentAction* PCurrentAction;             // +0x100
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
     bool IsPerformingAnyAction();               // 0x006622A0
     void StopCurrentAction();                   // 0x00662650
 };
@@ -158,7 +158,7 @@ void CAIStateGroup_SummonerCharge::Update()
     if (((CThing*)PTarget.GetPItem())->GetInterfaceX(&stealth, 0x36))
         stealth->SetAsInDanger(GetCreature(), 3);
     CThingCreatureBase* owner = GetCreature();
-    if (!GetCreature()->SetCurrentAction(&CCreatureAction_SummonerChargeInto(owner, ((CThing*)PTarget.GetPItem())))) {
+    if (!GetCreature()->SetCurrentAction(CCreatureAction_SummonerChargeInto(owner, ((CThing*)PTarget.GetPItem())))) {
         Terminate();
         return;
     }

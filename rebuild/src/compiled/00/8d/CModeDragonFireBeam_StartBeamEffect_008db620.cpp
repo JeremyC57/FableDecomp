@@ -101,7 +101,7 @@ struct CDefClassReference {
 class CThing;
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing {
 public:
@@ -174,7 +174,7 @@ void CModeDragonFireBeam::StartBeamEffect()
         if (PBeamWeaponEffect.GetPItem() && !(PBeamWeaponEffect.GetPItem()->m_flags91 & 1)
             && PBeamWeaponEffect.GetPItem()->GetInterface(&emitter, 0x4b)) {
             CCharString name("DRAGON_MOUTH_DUMMY");
-            emitter->AttachToThing(Owner, 0x2a, name, 0, 0.0f);
+            emitter->AttachToThing(*Owner, 0x2a, name, 0, 0.0f);
         }
         BeamActive = true;
     }

@@ -30,7 +30,7 @@ public:
 class CDisplayManager
 {
 public:
-    C2DExtentsI GetRenderTargetDimensions() const;     // 0x009BEDC0
+    const C2DExtentsI GetRenderTargetDimensions();     // 0x009BEDC0
 };
 
 class CSystemManager
@@ -76,7 +76,7 @@ static CDisplayManager g_display;
 static CSystemManager g_system;
 static int g_systemCalls = 0, g_dimensionCalls = 0;
 CSystemManager* __fastcall GFGetSystemManager() { ++g_systemCalls; g_system.m_pDisplayManager = &g_display; return &g_system; }
-C2DExtentsI CDisplayManager::GetRenderTargetDimensions() const { ++g_dimensionCalls; C2DExtentsI e; e.X = 640; e.Y = 480; return e; }
+const C2DExtentsI CDisplayManager::GetRenderTargetDimensions() { ++g_dimensionCalls; C2DExtentsI e; e.X = 640; e.Y = 480; return e; }
 int main()
 {
     C2DCoordI a, v;

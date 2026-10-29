@@ -15,7 +15,7 @@ class CWideString { public:
     void* m_pStringData;
     ~CWideString();                                     // 0x0099B510
 };
-CWideString __fastcall LongToWideString(long value);   // 0x00405F00 (hidden result in ecx, value in edx)
+CWideString __fastcall GFIntToWideString(long value);   // 0x00405F00 (hidden result in ecx, value in edx)
 class C2DCoordI { public:
     long X, Y;
 };
@@ -122,7 +122,7 @@ CComponent* CManager::CreateStaticSlider(const CWideString& text, float value, c
         buttonStates[3].Position.X = x;
         CComponent* number = button->FindChild(CCharString("UI_STATIC_SLIDER_BUTTON_TEXT"));
         if (number)
-            number->SetText(LongToWideString((long)value), true, true);
+            number->SetText(GFIntToWideString((long)value), true, true);
     }
     return slider;
 }

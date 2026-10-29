@@ -78,7 +78,7 @@ class CTCTrophy { public:
     void SetShowingCreature(CThing* creature);  // 0x006DE8B0
 };
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
@@ -183,7 +183,7 @@ void CCreatureAction_ShowTrophy::Initialise()
             PEmitter = CIntelligentThingPointer(effect);
             CTCDParticleEmitter* emitter;
             if (((CThing*)PEmitter.GetPItem())->GetInterface(&emitter, 0x4b))
-                emitter->AttachToThing(GetCreature(), 10, g_RightHandAttachmentName, 0, 0.0f);
+                emitter->AttachToThing(*GetCreature(), 10, g_RightHandAttachmentName, 0, 0.0f);
         }
     }
     CCreatureActionBase::Initialise();

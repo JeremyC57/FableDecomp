@@ -46,7 +46,7 @@ class CThing { public:
         return false;
     }
 };
-class CThingManager { public: CThing* things[4]; CThing* GetThingWithUID(unsigned long long uid) { return uid < 4 ? things[(long)uid] : 0; } };
+class CThingManager { public: CThing* things[4]; CThing* GetPThingWithUID(unsigned long long uid) { return uid < 4 ? things[(long)uid] : 0; } };
 struct CTCInventoryBase { long id; };
 struct CTCBase_Item {
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
@@ -68,7 +68,7 @@ void CTCInventoryItem::OnInitialActivate()
     CThing* owner;
     long inventoryType;
     if (PInventory == 0 && InventoryUIDToAttachTo > 0) {
-        owner = GetThingManager()->GetThingWithUID(InventoryUIDToAttachTo);
+        owner = GetThingManager()->GetPThingWithUID(InventoryUIDToAttachTo);
         if (owner && !owner->Dead) {
             inventoryType = GetPDef()->InventoryType;
             CTCInventoryBase* inventory;

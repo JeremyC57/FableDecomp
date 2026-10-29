@@ -39,7 +39,7 @@ public:
 CWideString __fastcall operator+(const CWideString& left, const wchar16* right);   // 0x0099BF30
 void __fastcall SplitPath(const CWideString& path, CWideString* drive, CWideString* directory, CWideString* name,
                           CWideString* extension);  // 0x00997620
-bool __fastcall PathExists(const CWideString& path);   // 0x00999230
+class CAFile { public: static bool __fastcall PathExists(const CWideString& path); };   // 0x00999230
 
 class CUserProfileManager {
 public:
@@ -90,7 +90,9 @@ public:
     unsigned char       _pad04[4];
     CMainGameComponent* Component;                      // +0x08
     bool SaveGameStateInternal(const CWideString& path, bool flag);   // 0x0049F4C0
+protected:
     bool SaveHeroStateInternal(const CWideString& name, bool flag);   // 0x004A00E0
+public:
     void SaveGameState(const CWideString& name, bool questScreens, bool flag);
 };
 
@@ -131,7 +133,7 @@ resolved:
     }
     else {
         CWideString heroState = path + s_HeroStateExt;
-        if (PathExists(heroState))
+        if (CAFile::PathExists(heroState))
             g_pDriveManager->DeleteFile(heroState);
     }
     g_SavingHeroState = false;

@@ -5,7 +5,7 @@
 // Callees: CWorld::GetPlayer(long) 0x0049D850 (manifest "_Cons_val<...>"), CPlayer::GetPControlledCreature 0x00487DC0,
 // CGameEvent::GetData 0x009F17A0 (label "CEventPacket::CopyToBuffer"), CMemoryBuffer::Read(unsigned long, void*)
 // 0x009F18F0 (label "CircularBuffer_Read"), CWorld virtual slot 3 GetThingManager (vtable 0x012390F0 -> 0x0049E1B0),
-// CThingManager::GetThingWithUID(__int64) 0x0051ED80 (label "CStopWatch::GetTicks"), CInterfaceMap::LowerBound
+// CThingManager::GetPThingWithUID(__int64) 0x0051ED80 (label "CStopWatch::GetTicks"), CInterfaceMap::LowerBound
 // 0x0040F020, CTCHeroCentre::OnHeroCloseDoor 0x0077D3E0, __security_check_cookie 0x00BFE9F9.
 // Layout (retail CThing): interface bitset +0x20 (TC 0x6A = CTCHeroCentre, word +0x2C bit 10 -> `test ch,4`),
 // interface map +0x44, Dead +0x91 bit 0.
@@ -77,7 +77,7 @@ class CTCHeroCentre { public:
     void OnHeroCloseDoor();                        // 0x0077D3E0
 };
 class CThingManager { public:
-    CThing* GetThingWithUID(__int64 uid);          // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);          // 0x0051ED80
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
 
@@ -99,7 +99,7 @@ void CWorld::EACloseHeroCentreDoor(const CGameEvent* event)
         event->GetData(buffer);
         __int64 uid;
         buffer.Read(8, &uid);
-        CThing* door = GetThingManager()->GetThingWithUID(uid);
+        CThing* door = GetThingManager()->GetPThingWithUID(uid);
         if (door)
             door->PeekTC<CTCHeroCentre>(0x6A)->OnHeroCloseDoor();
     }

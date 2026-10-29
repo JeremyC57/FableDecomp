@@ -50,7 +50,7 @@ public:
 };
 class CThingCreatureBase : public CThing {
 public:
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 inline bool IsThingAlive(const CThing* thing)
 {
@@ -116,6 +116,6 @@ void CTCActionUseWallMount::OnActionUse(CThingCreatureBase* user)
                 }
             }
         }
-        user->SetCurrentAction(&CCreatureAction_UseWallMount(user, (CThingPlayerCreature*)ParentThing));
+        user->SetCurrentAction(CCreatureAction_UseWallMount(user, (CThingPlayerCreature*)ParentThing));
     }
 }

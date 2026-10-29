@@ -75,11 +75,11 @@ public:
 protected:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
-public:
-protected:
     CWorld& GetWorld() const;    // 0x008FCFC0
 public:
+    protected:
     unsigned long* GetPWorldSeed() const;               // 0x008FCFD0
+    public:
     const CThingSearchTools& PeekThingSearchTools() const;   // 0x008FD000
     bool IsStopping() const;                            // 0x008FD010
 };

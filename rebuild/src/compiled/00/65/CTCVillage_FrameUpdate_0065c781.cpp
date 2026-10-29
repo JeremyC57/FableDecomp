@@ -85,7 +85,7 @@ template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& 
     return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
 }
 class CASoundBank { public:
-    long GetSoundIndexFromSymbol(const CCharString& symbol);   // 0x00A01920
+    long GetSoundIndexFromSymbol(const CCharString& symbol) const;   // 0x00A01920
 };
 class CSoundInit { public:
     float Volume, Pitch, Pan;

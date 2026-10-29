@@ -103,7 +103,7 @@ struct CDefClassReference {
 class CThing;
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CThing {
 public:
@@ -170,7 +170,7 @@ void CModeDragonFireBeam::StartBeamEffect()
         if (PBeamWeaponEffect.GetPItem() && !(PBeamWeaponEffect.GetPItem()->m_flags91 & 1)
             && PBeamWeaponEffect.GetPItem()->GetInterface(&emitter, 0x4b)) {
             CCharString name("DRAGON_MOUTH_DUMMY");
-            emitter->AttachToThing(Owner, 0x2a, name, 0, 0.0f);
+            emitter->AttachToThing(*Owner, 0x2a, name, 0, 0.0f);
         }
         BeamActive = true;
     }
@@ -194,8 +194,8 @@ long Lookup_CSpecialEffectsDef_GetEffectFromString(const void*, const CCharStrin
 static void* g_subDef; static long g_ownerRefAtFind;
 void* FindDef_CDefClassBase_GetSubDef(const void* owner) { g_ownerRefAtFind = ((const CDefBase*)owner)->m_refCount; L("subdef"); return g_subDef; }
 static void* g_attachThis; static CThing* g_attachThing; static long g_attachType; static const char* g_attachName;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long attachType, const CCharString& name, long, float)
-{ g_attachThis = this; g_attachThing = thing; g_attachType = attachType; g_attachName = (const char*)name.PStringData; L("attach"); }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long attachType, const CCharString& name, long, float)
+{ CThing* thing = &thing_ref; g_attachThis = this; g_attachThing = thing; g_attachType = attachType; g_attachName = (const char*)name.PStringData; L("attach"); }
 static CThing* g_created; static long g_createdType; static C3DVector g_createdPos;
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool) { g_createdType = type; g_createdPos = *position; L("create"); return g_created; }
 CBaseIntelligentPointer::CBaseIntelligentPointer() { m_pItem = 0; }

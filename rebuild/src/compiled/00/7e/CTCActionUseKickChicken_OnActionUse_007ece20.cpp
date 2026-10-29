@@ -15,7 +15,7 @@ class CThing { public: unsigned char _body[0x10]; };
 class CCreatureActionBase { public: virtual void v00(); };
 
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 class CCombatAction_KickThingOnGround : public CCreatureActionBase { public:
@@ -44,5 +44,5 @@ struct CTCActionUseKickChicken : CTCActionUseBase {
 void CTCActionUseKickChicken::OnActionUse(CThing& user)
 {
     CThingCreatureBase& creature = static_cast<CThingCreatureBase&>(user);
-    creature.SetCurrentAction(&CCombatAction_KickThingOnGround(&creature, GetThing()));
+    creature.SetCurrentAction(CCombatAction_KickThingOnGround(&creature, GetThing()));
 }

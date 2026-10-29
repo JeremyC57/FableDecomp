@@ -1,7 +1,7 @@
 // CTCHero::OnInitialActivate() -- relink the last equipped weapon from its saved UID, then restore the hero title: the saved title object def, else the hero def's DefaultTitle
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CA4E0, length 185 bytes (+ int3 padding). __fastcall, `ret`.
 //         Ego_r.pdb: `?OnInitialActivate@CTCHero@@UAEXXZ`.
-// Callees: CTCBase::GetThingManager @ 0x00686AE0, CThingManager::GetThingWithUID(__int64) @ 0x0051ED80;
+// Callees: CTCBase::GetThingManager @ 0x00686AE0, CThingManager::GetPThingWithUID(__int64) @ 0x0051ED80;
 //          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01B50/0x00A01C10
 //          (CIntelligentPointer<CThing> vtable 0x01238C6C); CTCHero::SetTitle(long) @ 0x006CA400;
 //          CDefClassBase::GetSubDef<CHeroDef>(CDefPointer<const T>*) const @ 0x00580034; the def's virtual slot 1.
@@ -54,7 +54,7 @@ public:
 
 class CThingManager {
 public:
-    CThing* GetThingWithUID(__int64 uid);           // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);           // 0x0051ED80
 };
 
 class CThing {
@@ -92,7 +92,7 @@ public:
 void CTCHero::OnInitialActivate()
 {
     if (LastWeaponEquippedID != 0)
-        LastWeaponEquipped = CIntelligentPointer<CThing>(GetThingManager().GetThingWithUID(LastWeaponEquippedID));
+        LastWeaponEquipped = CIntelligentPointer<CThing>(GetThingManager().GetPThingWithUID(LastWeaponEquippedID));
     if (HeroTitleObjectDef) {
         SetTitle(HeroTitleObjectDef);
         return;

@@ -18,7 +18,6 @@ class CPlayerGuiDef { public:
     unsigned char _pad[0x2c4];
     float         TextBoxCutsceneSecondsBeforeSkip;   // +0x2c4 (retail)
 };
-extern CPlayerGuiDef* __fastcall PeekGuiDef();          // 0x00438570
 class CFadeInFadeOutBase { public:                            // landed layout (0x00644526)
     bool       Active;                                  // +0x00
     float      FadeInTime;                              // +0x04
@@ -38,6 +37,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CPlayerGui { public:
+    static const CPlayerGuiDef& __fastcall PeekGuiDef();          // 0x00438570
     unsigned char _pad[0x2bc];
     bool          NotInCutscene;                        // +0x2bc
 };
@@ -96,7 +96,7 @@ void CSubtitleRenderer::SetAsInCutscene(bool inCutscene)
     CutsceneSkipped = false;
     g_pPlayerGui->NotInCutscene = !inCutscene;
     if (InCutscene) {
-        const CPlayerGuiDef* gui = PeekGuiDef();
+        const CPlayerGuiDef* gui = &CPlayerGui::PeekGuiDef();
         SkipCutsceneTimer.Start(gui->TextBoxCutsceneSecondsBeforeSkip, 0.0f, CRGBColour(0, 0, 0, 255));
         SetButton1OverrideText("");
         SetButton2OverrideText("");
@@ -109,7 +109,7 @@ void CSubtitleRenderer::SetAsInCutscene(bool inCutscene)
     }
 }
 static CPlayerGuiDef g_def;
-CPlayerGuiDef* __fastcall PeekGuiDef() { return &g_def; }
+const CPlayerGuiDef& __fastcall CPlayerGui::PeekGuiDef() { return g_def; }
 static float g_in, g_out; static CRGBColour g_colour(1, 2, 3, 4); static int g_starts = 0, g_live = 0, g_b1 = 0, g_b2 = 0, g_clears = 0, g_pops = 0, g_notifies = 0;
 void CFadeInFadeOutBase::Start(float in, float out, CRGBColour c) { ++g_starts; g_in = in; g_out = out; g_colour = c; }
 CCharString::CCharString(const char* text, long) { ++g_live; PStringData = (void*)text; }

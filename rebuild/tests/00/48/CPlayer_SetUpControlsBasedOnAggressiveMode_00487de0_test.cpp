@@ -18,7 +18,7 @@ class CThing { public:
 };
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
-    bool SetCurrentAction(CCreatureActionBase* action); // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action); // 0x006644F0
 };
 class CThingPlayerCreature : public CThingCreatureBase { public: };
 
@@ -97,7 +97,7 @@ void CPlayer::SetUpControlsBasedOnAggressiveMode()
     CDefPointer<CGlobalDef> globalDef = DefinitionManager->GlobalDef;
     PlayerInterface->SetControlScheme(AggressiveMode ? globalDef->ControlSchemePCAggressive : globalDef->ControlSchemePC);
     if (!AggressiveMode && IsThingAlive(ControlledCreature.GetPItem()) && IsThingCarryingWeapon(ControlledCreature.GetPItem()))
-        ControlledCreature.GetPItem()->SetCurrentAction(AddressOfTemporary(CCreatureAction_SheatheItemToInventory(ControlledCreature.GetPItem(), 0, 100)));
+        ControlledCreature.GetPItem()->SetCurrentAction(*(AddressOfTemporary(CCreatureAction_SheatheItemToInventory(ControlledCreature.GetPItem(), 0, 100))));
 }
 
 // ---- test doubles and driver ----
@@ -113,7 +113,7 @@ void CCreatureActionBase::v00() {}
 bool __fastcall IsThingCarryingWeapon(const CThing*) { return g_carrying; }
 CCreatureAction_SheatheItemToInventory::CCreatureAction_SheatheItemToInventory(CThingCreatureBase* owner, CCreatureActionBase*, long kind) { g_actionOwner = owner; g_kind = kind; }
 CCreatureAction_SheatheItemToInventory::~CCreatureAction_SheatheItemToInventory() { ++g_dtors; }
-bool CThingCreatureBase::SetCurrentAction(CCreatureActionBase* a) { g_setOn = this; ++g_actions; return a != 0; }
+bool CThingCreatureBase::SetCurrentAction(const CCreatureActionBase& a_ref) { CCreatureActionBase* a = const_cast<CCreatureActionBase*>(&a_ref); g_setOn = this; ++g_actions; return a != 0; }
 int main()
 {
     static CGlobalDef def; def.RefCount = 1; def.ControlSchemePC = 7; def.ControlSchemePCAggressive = 9;

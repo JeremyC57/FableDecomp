@@ -65,12 +65,13 @@ struct CArray_MarkerGraphics {                     // CArray<SMarkerGraphics>: b
     SMarkerGraphics* m_pBegin;
     SMarkerGraphics* m_pEnd;
     SMarkerGraphics& operator[](unsigned long i) { return m_pBegin[i]; }
+    const SMarkerGraphics& operator[](unsigned long i) const { return m_pBegin[i]; }
 };
 class CPlayerGuiDef { public:
     unsigned char _pad00[0x958];
     CArray_MarkerGraphics MiniMapMarkerGraphics;           // +0x958
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };            // 0x00438570
 class CTCShop { public:
     bool IsShopKeeperAvailable() const;            // 0x00773AA0
 };
@@ -118,7 +119,7 @@ void CMiniMapDisplay::InitialiseTraderMarkers()
                     && thing->HasTC(0x53) && thing->HasTC(0x90)) {
                     const CTCShopKeeper* keeper = thing->GetTC<CTCShopKeeper>(0x90);
                     if (keeper->GetShopTC() && keeper->GetShopTC()->IsShopKeeperAvailable())
-                        AddMarker(thing, PeekGuiDef()->MiniMapMarkerGraphics[9].Primary);
+                        AddMarker(thing, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[9].Primary);
                 }
             }
         }

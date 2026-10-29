@@ -51,7 +51,7 @@ public:
 
 class CThingManager {
 public:
-    CThing* GetThingWithUID(__int64 uid);           // 0x0051ED80
+    CThing* GetPThingWithUID(unsigned __int64 uid);           // 0x0051ED80
 };
 
 class CThing {
@@ -84,7 +84,7 @@ public:
 void CTCHero::OnInitialActivate()
 {
     if (LastWeaponEquippedID != 0)
-        LastWeaponEquipped = CIntelligentPointer<CThing>(GetThingManager()->GetThingWithUID(LastWeaponEquippedID));
+        LastWeaponEquipped = CIntelligentPointer<CThing>(GetThingManager()->GetPThingWithUID(LastWeaponEquippedID));
     if (HeroTitleObjectDef) {
         SetTitle(HeroTitleObjectDef);
         return;
@@ -116,7 +116,7 @@ void CDefClassBase::v00() {}
 void CDefClassBase::Destroy() const { ++g_destroyed; }
 template<class T> bool CDefClassBase::GetSubDef(CDefPointer<const T>* out) const
 { if (!g_heroDef) return false; ++g_heroDef->RefCount; out->Object = (const T*)g_heroDef; return true; }
-CThing* CThingManager::GetThingWithUID(__int64 uid) { g_uid = uid; return g_found; }
+CThing* CThingManager::GetPThingWithUID(unsigned __int64 uid) { g_uid = uid; return g_found; }
 static CThingManager g_tm;
 CThingManager* CTCHero::GetThingManager() { return &g_tm; }
 void CTCHero::SetTitle(long t) { g_title = t; ++g_titles; }

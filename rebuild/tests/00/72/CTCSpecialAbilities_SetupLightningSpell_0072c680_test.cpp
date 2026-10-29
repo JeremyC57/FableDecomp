@@ -26,7 +26,7 @@ public:
 }
 class CTCParamsBase;
 static int g_ctorCalls = 0, g_dtorCalls = 0, g_addCalls = 0;
-static char g_lastName[64]; static bool g_lastActivate = false; static CTCParamsBase* g_lastParams = (CTCParamsBase*)1;
+static char g_lastName[64]; static bool g_lastActivate = false; static const CTCParamsBase* g_lastParams = (const CTCParamsBase*)1;
 class CCharString {
 public:
     CCharString(const char* text, long length = -1) { ++g_ctorCalls; m_pStringData = (void*)text; (void)length; }
@@ -40,7 +40,7 @@ class CThing {
 public:
     unsigned char _pad00[0x20];
     std::bitset<274> UsingComponents;
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params)
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params)
     {
         ++g_addCalls; strcpy(g_lastName, (const char*)name.m_pStringData); g_lastActivate = activate; g_lastParams = params;
         return &g_component;
@@ -91,7 +91,7 @@ static bool run(bool present, bool& result)
     memset(parent.UsingComponents._M_w, 0, sizeof(parent.UsingComponents._M_w));
     CTCSpecialAbilities sa; sa.ParentThing = &parent; sa.Creature = &creature; sa.CurrentAbility = 0;
     if (present) creature.UsingComponents.set(0x94);
-    g_ctorCalls = g_dtorCalls = g_addCalls = 0; g_lastName[0] = 0; g_lastActivate = false; g_lastParams = (CTCParamsBase*)1;
+    g_ctorCalls = g_dtorCalls = g_addCalls = 0; g_lastName[0] = 0; g_lastActivate = false; g_lastParams = (const CTCParamsBase*)1;
     result = sa.SetupLightningSpell();
     return true;
 }

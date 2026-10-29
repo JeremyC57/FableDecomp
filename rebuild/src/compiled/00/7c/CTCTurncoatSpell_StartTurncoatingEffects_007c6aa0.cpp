@@ -80,7 +80,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     return false;
 }
 class CTCDParticleEmitter { public:                            // interface 0x4B
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCSoundPlayer { public:                                 // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
@@ -157,7 +157,7 @@ void CTCTurncoatSpell::StartTurncoatingEffects()
                 if (IS_THING_ALIVE(TurncoatingEffectOnMe)) {
                     CTCDParticleEmitter* emitter;
                     ((CThing*)TurncoatingEffectOnMe.GetPItem())->GetInterface(&emitter, 0x4b);
-                    emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
+                    emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
                 }
             }
             if (table->Lookup("ENEMY_TURNCOATING_EFFECT", &effect)) {
@@ -165,7 +165,7 @@ void CTCTurncoatSpell::StartTurncoatingEffects()
                 if (IS_THING_ALIVE(TurncoatingEffectOnTarget)) {
                     CTCDParticleEmitter* emitter;
                     ((CThing*)TurncoatingEffectOnTarget.GetPItem())->GetInterface(&emitter, 0x4b);
-                    emitter->AttachToThing(((CThing*)PTarget.GetPItem()), 8, "", 0, 0.0f);
+                    emitter->AttachToThing(*(((CThing*)PTarget.GetPItem())), 8, "", 0, 0.0f);
                 }
             }
         }

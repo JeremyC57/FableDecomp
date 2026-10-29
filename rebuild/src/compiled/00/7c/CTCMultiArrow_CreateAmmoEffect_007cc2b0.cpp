@@ -129,7 +129,7 @@ CThing* __fastcall CreateParticleEffect(long type, const C3DVector& position);  
 
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 
 #pragma pack(push, 1)
@@ -192,7 +192,7 @@ void CTCMultiArrow::CreateAmmoEffect()
                 CTCDParticleEmitter* emitter;
                 ((CThing*)effect.GetPItem())->GetInterface(&emitter, 0x4b);
                 if (emitter)
-                    emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
+                    emitter->AttachToThing(*ParentThing, 8, "", 0, 0.0f);
             }
             AmmoEffects.push_back(effect);
         }

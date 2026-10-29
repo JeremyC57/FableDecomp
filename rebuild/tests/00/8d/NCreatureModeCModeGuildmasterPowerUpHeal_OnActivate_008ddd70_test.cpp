@@ -128,14 +128,14 @@ class CThing { public:
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPosition() const;             // 0x004C73D0
     void SetSuspendAnimation(bool suspend, NCreatureMode::CModeBase* mode);   // 0x00833A10
-    CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return CDefPointer<CDefClassBase>(m_pDef); }
 };
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
 struct CBaseIntelligentPointer {
@@ -261,7 +261,7 @@ void CModeGuildmasterPowerUpHeal::OnActivate()
                     CThing* healEffect = CreateSpecialEffect(effect, m_pThing->GetPosition(), false);
                     if (healEffect && !(healEffect->m_flags91 & 1) && healEffect->HasTC(0x4b)) {
                         CTCDParticleEmitter* emitter = (CTCDParticleEmitter*)healEffect->PTCDriver;
-                        emitter->AttachToThing(m_pThing, 10, "", 0, 0.0f);
+                        emitter->AttachToThing(*m_pThing, 10, "", 0, 0.0f);
                     }
                 }
             }
@@ -295,7 +295,7 @@ const C3DVector& CThing::GetPosition() const { return g_parentPos; }
 static int g_suspendCalls = 0; static bool g_suspendArg = false; static void* g_suspendMode = 0;
 void CThing::SetSuspendAnimation(bool suspend, NCreatureMode::CModeBase* mode) { ++g_suspendCalls; g_suspendArg = suspend; g_suspendMode = mode; }
 static int g_addTCCalls = 0; static char g_addTCName[64]; static bool g_addTCActivate = false; static CTCHealLife* g_heal = (CTCHealLife*)&g_subIndex;
-CTCBase* CThing::AddTC(const CCharString& name, bool activate, CTCParamsBase*)
+CTCBase* CThing::AddTC(const CCharString& name, bool activate, const CTCParamsBase*)
 {
     ++g_addTCCalls; std::strcpy(g_addTCName, (const char*)name.PStringData); g_addTCActivate = activate;
     m_presentBits[0x99 >> 5] |= 1UL << (0x99 & 31);
@@ -310,8 +310,8 @@ CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, b
     return &position == &g_parentPos ? &g_effectThing : 0;
 }
 static int g_attachCalls = 0; static CThing* g_attachThing = 0; static long g_attachBone = -1; static char g_attachName[16];
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long, float)
-{
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long boneIndex, const CCharString& boneName, long, float)
+{ CThing* thing = &thing_ref;
     ++g_attachCalls; g_attachThing = thing; g_attachBone = boneIndex; std::strcpy(g_attachName, (const char*)boneName.PStringData);
 }
 static CGameDefinitionManager g_gdm; static char g_defName[64];

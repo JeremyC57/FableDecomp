@@ -68,9 +68,9 @@ class CQuestManager { public:
     unsigned char _pad_0x00[0x2c];
     CCharString*  RegisteredQuestNames_start;      // +0x2c
     CCharString*  RegisteredQuestNames_finish;     // +0x30
-    bool IsQuestRegistered(const CCharString& name);
+    bool IsQuestRegistered(const CCharString& name) const;
 };
-bool CQuestManager::IsQuestRegistered(const CCharString& name)
+bool CQuestManager::IsQuestRegistered(const CCharString& name) const
 {
     CCharString questName = GetQuestNameFromSectionName(name);
     if (questName == "NULL")

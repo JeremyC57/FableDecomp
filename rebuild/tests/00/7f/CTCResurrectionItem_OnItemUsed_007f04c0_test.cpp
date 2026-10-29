@@ -31,8 +31,8 @@ public:
 static CThing* g_attachedTo = 0; static int g_attachOk = 0;
 class CTCDParticleEmitter {
 public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset)
-    { g_attachedTo = thing; g_attachOk = attachType == 8 && helperName.PStringData[0] == 0 && helperIndex == 0 && offset == 0.0f; }
+    void AttachToThing(CThing& thing_ref, long attachType, const CCharString& helperName, long helperIndex, float offset)
+    { CThing* thing = &thing_ref; g_attachedTo = thing; g_attachOk = attachType == 8 && helperName.PStringData[0] == 0 && helperIndex == 0 && offset == 0.0f; }
 };
 static CThing g_effect; static long g_effectType = 0; static const C3DVector* g_effectPos = 0;
 CThing* CreateEffectThing(long type, const C3DVector* position, bool flag) { g_effectType = type; g_effectPos = position; return flag ? 0 : &g_effect; }
@@ -75,7 +75,7 @@ void CTCResurrectionItem::OnItemUsed(CThingCreatureBase& creature)
             CTCDParticleEmitter* emitter = 0;
             if (effect->HasTC(0x4b))
                 emitter = effect->PTCDriver;
-            emitter->AttachToThing(&creature, 8, "", 0, 0.0f);
+            emitter->AttachToThing(creature, 8, "", 0, 0.0f);
         }
     }
     ParentThing->Kill(true);

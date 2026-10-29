@@ -52,7 +52,7 @@ class CCharString { public:
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
 __forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
@@ -103,7 +103,7 @@ void CTCTavernGameCardBase::AddPointerParticleEffect(long particleDef)
         CTCDParticleEmitter* emitter = GetParticleEmitter(effect);
         {
             CCharString noBone("", -1);
-            emitter->AttachToThing(Pointer, 0x28, noBone, 0, 0.0f);
+            emitter->AttachToThing(*Pointer, 0x28, noBone, 0, 0.0f);
         }
     }
 }
@@ -129,8 +129,8 @@ CCharString::CCharString(const char* text, long) { PStringData = (void*)text; }
 CCharString::~CCharString() {}
 static CTCDParticleEmitter g_emitter;
 static int g_attaches; static CThing* g_attachThing; static long g_bone = -1, g_flags = -1; static float g_scale = -1; static bool g_emptyName;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale)
-{ if (this == &g_emitter) ++g_attaches; g_attachThing = thing; g_bone = boneIndex; g_flags = flags; g_scale = scale; g_emptyName = *(const char*)boneName.PStringData == 0; }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long boneIndex, const CCharString& boneName, long flags, float scale)
+{ CThing* thing = &thing_ref; if (this == &g_emitter) ++g_attaches; g_attachThing = thing; g_bone = boneIndex; g_flags = flags; g_scale = scale; g_emptyName = *(const char*)boneName.PStringData == 0; }
 
 int main()
 {

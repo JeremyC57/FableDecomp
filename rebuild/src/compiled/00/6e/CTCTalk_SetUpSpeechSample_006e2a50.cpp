@@ -23,7 +23,7 @@ public:
 
 class CASoundBank {
 public:
-    long GetSoundIndexFromSymbol(const CCharString& symbol);    // 0x00A01920
+    long GetSoundIndexFromSymbol(const CCharString& symbol) const;    // 0x00A01920
 };
 
 class CLipSyncDataBank {

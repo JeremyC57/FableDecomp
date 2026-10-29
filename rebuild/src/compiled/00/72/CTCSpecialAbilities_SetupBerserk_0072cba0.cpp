@@ -4,7 +4,8 @@
 // Callees: CVectorMap::LowerBound const 0x004365B0 (CTCCarrying 0x46, interface 0x13); CTCCarrying::GetThingInPrimarySlot
 //          0x006A1440; CBaseIntelligentPointer::GetPItem 0x00A01B50; operator new 0x00BFEA1A; CCreatureAction_CastStrengthBerserk
 //          ctor 0x008E6880 (vtable 0x01287384; catalog "CCreatureAction_BattleChargeTurnLeft", a twin) and dtor 0x0062E900;
-//          CIntelligentPointer<const CThing>(CThing*) 0x004A96F0; the berserk action's item setter 0x0072D360 (by-value
+//          CIntelligentPointer<CThing>(CThing*) 0x004A96F0 (vtable 0x01238C6C, RTTI CIntelligentPointer<CThing>); the berserk
+//          action's item setter 0x0072D360 (by-value
 //          intelligent pointer; catalog "CTCInventoryBase::GetItemDescription", a twin; descriptive name);
 //          CCreatureAction_SheatheItemToInventory ctor 0x0069EF80 / dtor 0x0048C950 (catalog twin label); global CCharString
 //          0x013BAD30 (descriptive name); CThingCreatureBase::SetCurrentAction 0x006644F0.
@@ -51,7 +52,7 @@ public:
 };
 template <class T> class CIntelligentPointer { public:
     unsigned char _d[8];
-    CIntelligentPointer(T* item);                   // 0x004A96F0 (const CThing instantiation)
+    CIntelligentPointer(T* item);                   // 0x004A96F0 (CThing instantiation)
 };
 class CTCCarrying { public:
 public:
@@ -73,7 +74,7 @@ public:
     unsigned char _more[0x114 - 0xbc];
     CCreatureAction_CastStrengthBerserk(CThingCreatureBase* creature);   // 0x008E6880
     ~CCreatureAction_CastStrengthBerserk();         // 0x0062E900
-    void SetItem(CIntelligentPointer<const CThing> item);   // 0x0072D360
+    void SetItem(CIntelligentPointer<CThing> item); // 0x0072D360
 };
 class CCharString { public: void* m_pData; };
 extern const CCharString g_sheatheForAbilityName;   // 0x013BAD30

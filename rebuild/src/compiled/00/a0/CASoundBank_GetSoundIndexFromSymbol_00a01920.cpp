@@ -13,10 +13,10 @@ struct CSoundSymbolTable {
 class CASoundBank { public:
     void* __vftable;                            // +0x00
     CSoundSymbolTable* m_pSymbolTable;          // +0x04
-    long GetSoundIndexFromSymbol(const CCharString& symbol);
+    long GetSoundIndexFromSymbol(const CCharString& symbol) const;
 };
 
-long CASoundBank::GetSoundIndexFromSymbol(const CCharString& symbol)
+long CASoundBank::GetSoundIndexFromSymbol(const CCharString& symbol) const
 {
     long index = 0;
     if (m_pSymbolTable != 0)

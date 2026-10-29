@@ -109,7 +109,7 @@ class CThing { public:
     const C3DVector& GetPosition() const;       // 0x004C73D0
 };
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 struct CBaseIntelligentPointer {
@@ -154,7 +154,7 @@ void CModeThunderLightningStorm::CreateHandGlow()
             PHandGlow = CIntelligentPointerThing(glow);
             CTCDParticleEmitter* emitter;
             if (glow->GetInterface(&emitter, 0x4b) && emitter)
-                emitter->AttachToThing(ParentThing, 10, "WEAPON_FOCUS_01", 0, 0.0f);
+                emitter->AttachToThing(*ParentThing, 10, "WEAPON_FOCUS_01", 0, 0.0f);
         }
     }
 }
@@ -177,8 +177,8 @@ const C3DVector& CThing::GetPosition() const { return g_pos; }
 static CThing* g_created; static long g_createdType; static C3DVector g_createdPos; static int g_createdFlag, g_creates;
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag) { g_createdType = type; g_createdPos = *position; g_createdFlag = flag; g_creates++; return g_created; }
 static void* g_attachThis; static CThing* g_attachThing; static long g_attachBone, g_attachFlags; static float g_attachScale; static const char* g_attachName; static int g_attaches;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long boneIndex, const CCharString&, long flags, float scale)
-{ g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachFlags = flags; g_attachScale = scale; g_attachName = g_lastText; g_attaches++; }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long boneIndex, const CCharString&, long flags, float scale)
+{ CThing* thing = &thing_ref; g_attachThis = this; g_attachThing = thing; g_attachBone = boneIndex; g_attachFlags = flags; g_attachScale = scale; g_attachName = g_lastText; g_attaches++; }
 void CBaseIntelligentPointer::v00() {}
 CBaseIntelligentPointer::CBaseIntelligentPointer() { PItem = 0; }
 CBaseIntelligentPointer::~CBaseIntelligentPointer() {}

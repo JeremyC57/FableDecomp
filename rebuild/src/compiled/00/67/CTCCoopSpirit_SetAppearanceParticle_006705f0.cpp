@@ -53,7 +53,7 @@ class CCharString { public:
 };
 CThing* __fastcall Create(const CCharString& defName, const C3DVector& position, bool flag);   // 0x006E0970
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 __forceinline CTCDParticleEmitter* GetParticleEmitter(CThing* thing)
 {
@@ -111,7 +111,7 @@ void CTCCoopSpirit::SetAppearanceParticle(const CCharString& particleThingName)
         CTCDParticleEmitter* emitter = GetParticleEmitter(PAppearanceParticle.GetPItem());
         {
             CCharString noBone("", -1);
-            emitter->AttachToThing(ParentThing, 0x88, noBone, 0, 1.1f);
+            emitter->AttachToThing(*ParentThing, 0x88, noBone, 0, 1.1f);
         }
     }
 }

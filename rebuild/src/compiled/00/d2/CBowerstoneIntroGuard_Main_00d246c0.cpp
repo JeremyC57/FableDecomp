@@ -56,8 +56,10 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 class CBaseObject { public:
     virtual void b000();
     void* IntelligentPointer;
+protected:
     CBaseObject();                                     // 0x0099A380
     CBaseObject& operator=(const CBaseObject& other);  // 0x0099A3B0
+public:
 };
 struct CBaseObjectDtor {
     void* IntelligentPointer;

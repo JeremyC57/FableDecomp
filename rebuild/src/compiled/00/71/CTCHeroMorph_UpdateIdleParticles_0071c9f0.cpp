@@ -5,7 +5,7 @@
 //          @ 0x0081B160, GetMorphStrength @ 0x0071BA60, IS_THING_ALIVE @ 0x0040DCE0, CThing::GetTCDriver @ 0x004ACB50,
 //          CTCDParticleEmitter::Create / AttachToThing, CIntelligentPointer(T*) @ 0x004A96F0, KillIdleParticles @ 0x0071C1F0,
 //          free @ 0x00BFEA14. Idle delay global 0x013BAD24; epsilon 1e-4f @ 0x0129BA3C.
-// Layout: CTCHeroMorph IdleParticleEmitters +0x18 (STLport list of CIntelligentPointer<const CThing>), FrameHeroBecameIdle +0x38,
+// Layout: CTCHeroMorph IdleParticleEmitters +0x18 (STLport list of CIntelligentPointer<CThing>, Ego_r), FrameHeroBecameIdle +0x38,
 //         IdleParticlesAdded +0x3C; CHeroMorphDef IdleParticleMorphs +0x58; CMovement velocity +0x10C.
 // Shape: same GetSubDef stand-in and helper-name reference binding as AddParticles (0x0071C7C0); the emitter is held as a const
 //        CThing* and IS_THING_ALIVE takes an explicit (CThing*) cast so the temporary is stored before the call; the list item
@@ -35,24 +35,24 @@ public:
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer {
 public:
-    CIntelligentPointer(T* item);                       // 0x004A96F0 (const CThing instance)
+    CIntelligentPointer(T* item);                       // 0x004A96F0 (CThing instance: vtable 0x01238C6C)
 };
 class CThing;
 struct CIntelligentPointerList {
     struct _Node {
         _Node* _M_next;
         _Node* _M_prev;
-        CIntelligentPointer<const CThing> _M_data;
+        CIntelligentPointer<CThing> _M_data;
     };
     _Node* _M_node;
-    void push_back(const CIntelligentPointer<const CThing>& item);   // 0x004BA4E0
+    void push_back(const CIntelligentPointer<CThing>& item);   // 0x004BA4E0
     __forceinline _Node* erase(_Node* node)
     {
         _Node* next = node->_M_next;
         _Node* prev = node->_M_prev;
         prev->_M_next = next;
         next->_M_prev = prev;
-        node->_M_data.~CIntelligentPointer<const CThing>();
+        node->_M_data.~CIntelligentPointer<CThing>();
         free(node);
         return next;
     }
@@ -228,7 +228,7 @@ void CTCHeroMorph::UpdateIdleParticles()
                                 const CCharString& helper = entry->HelperName;
                                 emitter->AttachToThing(*Thing, 0xc, helper, entry->HelperIndex, 0.0f);
                             }
-                            CIntelligentPointer<const CThing> item(particle);
+                            CIntelligentPointer<CThing> item((CThing*)particle);
                             IdleParticleEmitters.push_back(item);
                         }
                     }

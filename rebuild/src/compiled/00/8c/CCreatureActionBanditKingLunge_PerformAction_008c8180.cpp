@@ -144,7 +144,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C
 };
 
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
 class CDefinitionManager { public:
@@ -194,7 +194,7 @@ void CCreatureAction_BanditKingLunge::PerformAction()
         if (created && !(created->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = 0;
             created->GetInterface(&emitter, 0x4b);
-            emitter->AttachToThing(GetCreature(), 0x2a, "", 0, 0);
+            emitter->AttachToThing(*GetCreature(), 0x2a, "", 0, 0);
         }
     }
 }

@@ -111,7 +111,7 @@ class CThingCreatureBase : public CThing { public:
 };
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position);   // 0x0072AB70
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long attachType, const CCharString& helperName, long helperIndex, float offset);   // 0x006E0BE0
 };
 class CTCSoundPlayer { public:                         // interface 0x10
     unsigned long PlaySound(const CCharString& name, long a, long b, long c, long d);   // 0x0066BD00
@@ -171,7 +171,7 @@ void CTCFireballSpell::ProcessLevellingUpFX()
             CTCDParticleEmitter* emitter;
             if (effect->HasTC(0x4b))
                 emitter = (CTCDParticleEmitter*)effect->FindTC(0x4b);
-            emitter->AttachToThing(parent, 10, FireballAttachmentName, 0, 0.0f);
+            emitter->AttachToThing(*parent, 10, FireballAttachmentName, 0, 0.0f);
         }
     }
     CTCSoundPlayer* sound;
@@ -211,7 +211,7 @@ void CThingCreatureBase::MakeNoise(const CCharString& noise) { g_noise = (const 
 static CThing g_effect; static long g_createdType = -1; static int g_effectNull = 0;
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector& position) { g_createdType = effect; if (&position != &g_pos) g_createdType = -99; return g_effectNull ? 0 : &g_effect; }
 static CThing* g_attachThing = 0; static long g_attachType = -1; static const CCharString* g_attachName = 0; static CTCDParticleEmitter* g_attachEmitter = 0;
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long attachType, const CCharString& helperName, long, float) { g_attachEmitter = this; g_attachThing = thing; g_attachType = attachType; g_attachName = &helperName; }
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long attachType, const CCharString& helperName, long, float) { CThing* thing = &thing_ref; g_attachEmitter = this; g_attachThing = thing; g_attachType = attachType; g_attachName = &helperName; }
 static const char* g_sound = 0;
 unsigned long CTCSoundPlayer::PlaySound(const CCharString& name, long a, long, long, long d) { g_sound = (a == 1 && d == -1) ? (const char*)name.m_pData : "bad"; return 7; }
 void CTCFireballSpell::v00() { }

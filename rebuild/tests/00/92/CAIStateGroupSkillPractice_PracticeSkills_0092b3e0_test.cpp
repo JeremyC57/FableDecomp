@@ -79,7 +79,9 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     long AIAction_DoNothing();                  // 0x0097E200
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
@@ -197,7 +199,7 @@ CCreatureAction_PlayCombatAnimation::CCreatureAction_PlayCombatAnimation(CThingC
 unsigned long __fastcall GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
 CAIStateGroupBase::~CAIStateGroupBase() {}
 static unsigned long g_seed;
-unsigned long* CAIStateGroupBase::GetPWorldSeed() { return &g_seed; }
+unsigned long* CAIStateGroupBase::GetPWorldSeed() const { return &g_seed; }
 static int g_nothing, g_look, g_lookFailAt, g_wander, g_perform;
 long CAIStateGroupBase::AIAction_DoNothing() { g_nothing++; return 2; }
 long CAIStateGroupBase::AIAction_LookAtThing(long, CIntelligentPointerConstThing p, long, float) { ++g_look; return g_look == g_lookFailAt ? 1 : 2; }

@@ -9,8 +9,8 @@ public:
     CCharString() { buf[0] = 0; }
     CCharString(const char* t) { std::strcpy(buf, t); }
     ~CCharString() { }
-    CCharString& operator+=(const CCharString& other) { std::strcat(buf, other.buf); return *this; }
-    CCharString& operator+=(const char* text) { std::strcat(buf, text); return *this; }
+    const CCharString& operator+=(const CCharString& other) { std::strcat(buf, other.buf); return *this; }
+    const CCharString& operator+=(const char* text) { std::strcat(buf, text); return *this; }
 };
 struct CDefBase {
     virtual void v00() { }

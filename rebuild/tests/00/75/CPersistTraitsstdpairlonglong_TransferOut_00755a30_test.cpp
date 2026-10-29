@@ -17,7 +17,7 @@ public:
     char m_text[64];
     CCharString() { m_text[0] = 0; }
     CCharString(const char* t) { std::strcpy(m_text, t); }
-    CCharString& operator+=(const char* text) { std::strcat(m_text, text); return *this; }
+    const CCharString& operator+=(const char* text) { std::strcat(m_text, text); return *this; }
 };
 
 class CPersistContext { public: int id; };

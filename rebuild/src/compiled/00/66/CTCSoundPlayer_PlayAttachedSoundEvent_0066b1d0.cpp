@@ -22,8 +22,8 @@ public:
     void* PStringData;
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
-    CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
-    CCharString& operator+=(const char* text);          // 0x0099F100
+    const CCharString& operator+=(const CCharString& other);  // 0x0099F0A0
+    const CCharString& operator+=(const char* text);          // 0x0099F100
 };
 struct CDefBase {
     virtual void v00();

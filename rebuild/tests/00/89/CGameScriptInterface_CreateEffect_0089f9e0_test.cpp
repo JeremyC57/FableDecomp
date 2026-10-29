@@ -333,7 +333,7 @@ FABLE_STATIC_ASSERT(offsetof(ScriptMethods,PImp)+offsetof(CountedScriptImp,Info)
 CThingNative* __fastcall CreateParticle(const CCharString&,const C3DVector&,bool); //006E0970
 class CRightHandedSet;
 struct EmitterMethods{void AttachToThing(CThingNative*,long,const CCharString&,long,float);void SetAlwaysUpdate(bool);void SetEmitterOrientation(const CRightHandedSet&);}; //006E0BE0,006E0590
-class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}void RotateAboutAxis(const C3DVector&,float);__forceinline void RotateAboutUp(float angle){RotateAboutAxis(Up,angle);}}; //00A22F80
+class CRightHandedSet{ public:C3DVector Up,Forward;CRightHandedSet(){Up.X=0;Up.Y=0;Up.Z=1;Forward.X=0;Forward.Y=1;Forward.Z=0;}void Rotate(const C3DVector&,float);__forceinline void RotateAboutUp(float angle){Rotate(Up,angle);}}; //00A22F80
 void SetEmitterOrientationDeclaration();
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateEffect(const CCharString&,const C3DVector&,const CCharString&,float,bool,bool)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateEffect(const CCharString& name,const C3DVector& pos,const CCharString&,float angle,bool,bool always)const{
@@ -439,7 +439,7 @@ static void __fastcall DeleteHandle(void* data){if(data!=&InternalHandle)BadDepe
 ScriptMethods CThingNative::GetScriptThing()const{++HandleCalls;if(this!=CreatedThing)BadDependency=true;ScriptMethods result;result.PImp.Data=&InternalHandle;result.PImp.Info=new CCPPointerInfo;result.PImp.Info->RefCount=1;result.PImp.Info->DeleteFunc=&DeleteHandle;result.PImp.Info->Data=&InternalHandle;return result;}
 
 static int RotationCalls,OrientationCalls;static float RotationAngle;static CRightHandedSet LastOrientation;
-void CRightHandedSet::RotateAboutAxis(const C3DVector& axis,float angle){++RotationCalls;if(ChangeEmitter)CreatedThing->ParticleEmitter=ReplacedEmitter;RotationAngle=angle;if(&axis!=&Up||Up.X!=0||Up.Y!=0||Up.Z!=1||Forward.X!=0||Forward.Y!=1||Forward.Z!=0)BadDependency=true;Up.X=angle;Forward.Z=angle+1;}
+void CRightHandedSet::Rotate(const C3DVector& axis,float angle){++RotationCalls;if(ChangeEmitter)CreatedThing->ParticleEmitter=ReplacedEmitter;RotationAngle=angle;if(&axis!=&Up||Up.X!=0||Up.Y!=0||Up.Z!=1||Forward.X!=0||Forward.Y!=1||Forward.Z!=0)BadDependency=true;Up.X=angle;Forward.Z=angle+1;}
 void EmitterMethods::SetEmitterOrientation(const CRightHandedSet& orientation){++OrientationCalls;UsedEmitter=this;LastOrientation=orientation;}
 static int Run(){
  CGameScriptInterfaceMethods api;CCharString name,unused;C3DVector position;position.X=3;position.Y=4;position.Z=5;CThingNative particle;memset(&particle,0,sizeof particle);EmitterMethods emitter;particle.ParticleEmitter=&emitter;

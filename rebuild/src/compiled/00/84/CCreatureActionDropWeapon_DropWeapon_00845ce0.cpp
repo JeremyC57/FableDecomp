@@ -237,7 +237,7 @@ class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing);           // 0x00770FA0
 };
 class CTCCreatureModeManager { public:
-    void RemoveMode(long mode);                       // 0x0073ABA0
+    void RemoveMode(unsigned long mode);                       // 0x0073ABA0
 };
 
 class CCreatureAction_DropWeapon {

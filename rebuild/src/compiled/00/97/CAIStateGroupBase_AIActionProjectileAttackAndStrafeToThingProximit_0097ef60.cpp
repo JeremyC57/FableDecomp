@@ -108,7 +108,7 @@ class CThing { public:
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
     CCombatTypeDef* GetCombatTypeDef();         // 0x00666D10
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 class CBaseObject;
@@ -198,7 +198,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProx
             modes->RemoveMode(0x19);
         if (IS_THING_ALIVE(target)) {
             CThingCreatureBase* creature = GetCreature();
-            creature->SetCurrentAction(&CCreatureAction_FireMissileWeapon(creature, ((CThing*)target.GetPItem())));
+            creature->SetCurrentAction(CCreatureAction_FireMissileWeapon(creature, ((CThing*)target.GetPItem())));
         }
     }
     if (indicator)

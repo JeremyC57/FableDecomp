@@ -17,7 +17,7 @@ static int g_destroyed = 0;
 class CCharString { public:
     long m_tag;
     ~CCharString() { ++g_destroyed; }
-    CCharString& operator+=(const CCharString& other) { m_tag += other.m_tag; ++g_appended; return *this; }
+    const CCharString& operator+=(const CCharString& other) { m_tag += other.m_tag; ++g_appended; return *this; }
     static CCharString FormatDouble(long digits, double value) { g_digits = digits; g_formatted = value; CCharString s; s.m_tag = 5; return s; }
 };
 struct CPersistContext_TransferableComponent {

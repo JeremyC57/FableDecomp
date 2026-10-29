@@ -128,7 +128,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     CThingWorld* GetPThingWorld();              // 0x008FCFA0
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     void Terminate();                           // 0x008FCF40
     long AIAction_DoNothing();                  // 0x0097E200
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
@@ -227,7 +229,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
 bool CVillage::GetSchoolTimes(float* start, float* end) { note("GetSchoolTimes"); *start = g_start; *end = g_end; return true; }
 CVillage* CTCVillageMember::GetPVillage() { note("GetPVillage"); return &g_village; }
 CThingWorld* CAIStateGroupBase::GetPThingWorld() { note("GetPThingWorld"); return &g_world; }
-unsigned long* CAIStateGroupBase::GetPWorldSeed() { note("GetPWorldSeed"); return &g_seed; }
+unsigned long* CAIStateGroupBase::GetPWorldSeed() const { note("GetPWorldSeed"); return &g_seed; }
 unsigned long __fastcall GFROR13(unsigned long value) { note("GFROR13"); return (value >> 13) | (value << 19); }
 CThing* CBaseIntelligentPointer::GetPItem() const { note("GetPItem"); return m_pItem; }
 const C3DVector& CThing::GetPosition() const { note(this == g_seat ? "GetPosition(seat)" : "GetPosition(creature)"); return this == g_seat ? g_seatPos : g_creaturePos; }

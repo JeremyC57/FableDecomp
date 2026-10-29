@@ -23,12 +23,13 @@ struct CArray_long {                               // CArray<long>: begin, end, 
     long* m_pBegin;
     long* m_pEnd;
     long& front() { return *m_pBegin; }
+    const long& front() const { return *m_pBegin; }
 };
 class CPlayerGuiDef { public:
     unsigned char _pad00[0x958];
     CArray_long   m_markerGraphics;                // +0x958
 };
-CPlayerGuiDef* __fastcall PeekGuiDef();            // 0x00438570
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };            // 0x00438570
 
 class CRegion;
 class CMiniMapDisplay { public:
@@ -44,6 +45,6 @@ void CMiniMapDisplay::UpdateMarkersInternal()
     if (m_pRegion) {
         CThing* hero = g_pGame->m_pPlayerManager->GetPlayer()->GetPControlledCreature();
         if (hero && !hero->m_dead)
-            AddMarker(hero, PeekGuiDef()->m_markerGraphics.front());
+            AddMarker(hero, CPlayerGui::PeekGuiDef().m_markerGraphics.front());
     }
 }

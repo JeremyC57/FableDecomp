@@ -60,7 +60,7 @@ struct CPhysicsObject {
     C3DVector LastPos;                                // +0x18
 };
 class CTCCreatureNavigation { public:
-    bool IsAbleToNavigateFromPosToPos(const C3DVector* from, const C3DVector* to, float tolerance);   // 0x006CB620
+    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance) const;   // 0x006CB620
 };
 #pragma pack(push, 4)
 class CThing { public:
@@ -185,7 +185,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
                     finder(standingOn);
                     sameLayer = (float)finder.Layer == (float)region;
                 }
-                if (sameLayer && navigation->IsAbleToNavigateFromPosToPos(&creature.GetPosition(), &candidate, 0.5f))
+                if (sameLayer && navigation->IsAbleToNavigateFromPosToPos(creature.GetPosition(), candidate, 0.5f))
                     return candidate;
                 distance -= 0.25f;
                 if (distance < 0.0f)
@@ -279,10 +279,10 @@ bool CThingFindNavigationLayerAt::operator()(CThing* thing)
     ++g_finderCalls; g_finderThing = thing; Layer = g_layer; strcat(g_log, "Finder;");
     return true;
 }
-bool CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector* from, const C3DVector* to, float tolerance)
+bool CTCCreatureNavigation::IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance) const
 {
-    if (g_navCalls < 16) g_navTo[g_navCalls] = *to;
-    g_navFrom = from; g_navTol = tolerance; strcat(g_log, "Nav;");
+    if (g_navCalls < 16) g_navTo[g_navCalls] = to;
+    g_navFrom = &from; g_navTol = tolerance; strcat(g_log, "Nav;");
     return g_navCalls++ == g_navOkAt;
 }
 static bool near_(float a, float b) { float d = a - b; if (d < 0) d = -d; return d < 2e-4f; }

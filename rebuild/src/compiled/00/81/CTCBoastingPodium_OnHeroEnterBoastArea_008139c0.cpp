@@ -5,7 +5,7 @@
 //   by-value argument slot), CCharString(const char*, long) 0x0099EBF0 ("TEXT_GUI_GOLD" 0x01255A38, "You do not have enough
 //   money to make this boast!" 0x01272420) / ~CCharString 0x0099EAE0, CCharString::GetCRC 0x00404310, NGameText::CDataBank::
 //   LookupValue 0x009CC410 / GetPGroupEntry 0x009C9070 (g_pMainGameComponent 0x013B86A0 +0x14), CGroupEntry::GetText
-//   0x009C7A40 (manifest "CBankFile::GetBankHandle"), IntToWideString 0x00405F00, operator+(const wchar_t*, const
+//   0x009C7A40 (manifest "CBankFile::GetBankHandle"), GFIntToWideString 0x00405F00, operator+(const wchar_t*, const
 //   CWideString&) 0x0099BFF0 (L": " 0x01236A50), CWideString::operator+= 0x0099B8D0, CWideString(const wchar_t*) 0x0099B6B0
 //   (L"" 0x0122D70C), ~CWideString 0x0099B510, CSubtitleRenderer::SetText 0x00492F69 (four wide texts) / 0x00492ED1
 //   (narrow text) on g_pPlayerGui 0x013B8790 +0x18 (font g_pMainGameComponent +0x1614C).
@@ -31,7 +31,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other);   // 0x0099B8D0
 };
 CWideString __fastcall operator+(const unsigned short* left, const CWideString& right);   // 0x0099BFF0
-CWideString __fastcall IntToWideString(long value);       // 0x00405F00
+CWideString __fastcall GFIntToWideString(long value);       // 0x00405F00
 
 struct CRefCounted {
     mutable unsigned long m_count;
@@ -121,7 +121,7 @@ void CTCBoastingPodium::OnHeroEnterBoastArea(long boastID, bool canAfford, CThin
         if (entry) {
             NGameText::CDataBank* bank = g_pMainGameComponent->TextBank;
             CWideString goldText = bank->GetPTextEntry(entry, true)->GetText();
-            goldText += L": " + IntToWideString(boast->Cost);
+            goldText += L": " + GFIntToWideString(boast->Cost);
             g_pPlayerGui->SubtitleRenderer.SetText(g_pMainGameComponent->Font, boast->Text, goldText, L"", L"", 0, 2.5f, false, true);
         }
     } else

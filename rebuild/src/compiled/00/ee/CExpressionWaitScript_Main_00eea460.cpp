@@ -40,7 +40,9 @@ struct CIsThingConscious {                                 // vtable 0x012C2FE8
 
 class CBaseObject { public:
     void* IntelligentPointer;                              // +0x04
+protected:
     CBaseObject();                                         // 0x0099A380
+public:
     virtual ~CBaseObject();                                // 0x0099A430
 };
 

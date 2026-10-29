@@ -75,7 +75,8 @@ public:
     iterator begin() { return this->_M_start; }
     iterator end() { return this->_M_finish; }
     _Tp& operator[](size_type __n) { return *(this->_M_start + __n); }
-    void resize(size_type __new_size, const _Tp& __x);   // 0x006860F0 (vector<bool>)
+    void _M_fill_assign(size_type __n, const _Tp& __val);   // 0x006860F0 (vector<bool>)
+    void assign(size_type __n, const _Tp& __val) { _M_fill_assign(__n, __val); }
     vector() { this->_M_start = this->_M_finish = this->_M_end_of_storage._M_data = 0; }   // test-only
     __forceinline vector(size_type __n, const _Tp& __val)
     {
@@ -186,7 +187,7 @@ public:
 
 void CTCCreatureOpinionOfHero::SetOpinionDeedMask(long defIndex)
 {
-    DeedMask.resize(OPINION_DEED_TYPE_COUNT, true);
+    DeedMask.assign(OPINION_DEED_TYPE_COUNT, true);
     if (defIndex) {
         CGameDefinitionManager* defManager = GetWorld()->DefinitionManager;
         CDefPointer<const COpinionDeedMaskDef> def;
@@ -223,19 +224,16 @@ void __fastcall fill<bool*, bool>(bool* __first, bool* __last, const bool& __val
         *__first = __val;
 }
 template <class _Tp, class _Alloc>
-void vector<_Tp, _Alloc>::resize(size_type __new_size, const _Tp& __x)
-{                                                          // test stand-in for 0x006860F0: erase or fill-insert at the end
+void vector<_Tp, _Alloc>::_M_fill_assign(size_type __n, const _Tp& __val)
+{                                                          // test stand-in for 0x006860F0: __n copies of __val
     ++g_resizes;
-    size_type __size = (size_type)(this->_M_finish - this->_M_start);
-    if (__new_size < __size) { this->_M_finish = this->_M_start + __new_size; return; }
-    if (this->_M_start + __new_size > this->_M_end_of_storage._M_data) {
-        _Tp* __p = (_Tp*)std::malloc(__new_size * sizeof(_Tp));
-        if (__size) std::memcpy(__p, this->_M_start, __size * sizeof(_Tp));
+    if (this->_M_start + __n > this->_M_end_of_storage._M_data) {
         if (this->_M_start) std::free(this->_M_start);
-        this->_M_start = __p; this->_M_finish = __p + __size; this->_M_end_of_storage._M_data = __p + __new_size;
+        this->_M_start = (_Tp*)std::malloc(__n * sizeof(_Tp));
+        this->_M_end_of_storage._M_data = this->_M_start + __n;
     }
-    for (; this->_M_finish != this->_M_start + __new_size; ++this->_M_finish)
-        *this->_M_finish = __x;
+    for (this->_M_finish = this->_M_start; this->_M_finish != this->_M_start + __n; ++this->_M_finish)
+        *this->_M_finish = __val;
 }
 }
 static COpinionDeedMaskDef* g_maskDef = 0;
@@ -283,8 +281,8 @@ int main()
     CHECK(opinion.DeedMask.end() - opinion.DeedMask.begin() == 0x5c && g_fills == 0);
     for (int i = 0; i < 0x5c; ++i) CHECK(opinion.DeedMask[i]);
     opinion.DeedMask[5] = false;
-    opinion.SetOpinionDeedMask(2);                             // a def of another class: mask untouched beyond the resize
-    CHECK(!opinion.DeedMask[5] && opinion.DeedMask[6] && g_fills == 0 && def.RefCount == 1);
+    opinion.SetOpinionDeedMask(2);                             // a def of another class: mask only reset to all enabled
+    CHECK(opinion.DeedMask[5] && opinion.DeedMask[6] && g_fills == 0 && def.RefCount == 1);
     opinion.SetOpinionDeedMask(1);                             // OPINION_DEED_MASK: default false, overrides 1, 3, 10
     CHECK(g_fills == 1 && def.RefCount == 1 && g_destroys == 0);
     for (int i = 0; i < 0x5c; ++i) CHECK(opinion.DeedMask[i] == (i == 1 || i == 10));

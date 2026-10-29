@@ -54,7 +54,7 @@ public:
     unsigned char        _pad00[0x100];
     CCreatureActionBase* PCurrentAction;           // +0x100 (retail)
     bool IsPerformingAnyAction();                  // 0x006622A0
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
@@ -113,7 +113,7 @@ void CActionFireProjectileWeapon::Update()
         return;
     if (creature->IsPerformingAnyAction() && !creature->PCurrentAction->Finished)
         return;
-    creature->SetCurrentAction(ActionList.front().Get());
+    creature->SetCurrentAction(*(ActionList.front().Get()));
     CurrentActionID = creature->PCurrentAction->GetActionID();
     ActionList.pop_front();
 }

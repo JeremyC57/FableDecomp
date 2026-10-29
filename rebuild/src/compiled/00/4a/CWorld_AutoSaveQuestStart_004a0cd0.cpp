@@ -31,7 +31,9 @@ class CWorld { public:
     unsigned char _pad13c[4];                                 // +0x13C MostRecentManualSaveName
     bool          AutoSaveCheckPointExists;                   // +0x140 (PDB +0x150)
 
+protected:
     void CopyFileInternal(const CWideString& source, const CWideString& destination) const;   // 0x0049DD50
+public:
     void StartAutoSaveProgress();                                                           // 0x0049E7C0
     void StopAutoSaveProgress();                                                            // 0x0049E8C0
     static void __fastcall DeleteCheckPointSave();                                          // 0x0049E740

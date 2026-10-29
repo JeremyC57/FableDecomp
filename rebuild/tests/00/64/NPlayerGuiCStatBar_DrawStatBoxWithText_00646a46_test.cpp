@@ -15,7 +15,7 @@ class CEnginePrimitivePrepareInfo { public: int Id; };
 class CEnginePrimitiveHandle { public: unsigned long m_handle; };
 struct CHandleVector { CEnginePrimitiveHandle* _M_start; CEnginePrimitiveHandle* _M_finish; CEnginePrimitiveHandle* _M_end_of_storage; };
 class C2DExtentsI { public: long Width, Height; };
-class CDisplayManager { public: C2DExtentsI GetRenderTargetDimensions() { C2DExtentsI e; e.Width = 640; e.Height = 480; return e; } };
+class CDisplayManager { public: const C2DExtentsI GetRenderTargetDimensions() { C2DExtentsI e; e.Width = 640; e.Height = 480; return e; } };
 static CDisplayManager g_display;
 static CDisplayManager* g_pDisplayManager = &g_display;
 void __fastcall GFACoordToVCoord(const C2DVector& in, C2DVector& out) { out.X = in.X * 2.0f; out.Y = in.Y * 2.0f; }

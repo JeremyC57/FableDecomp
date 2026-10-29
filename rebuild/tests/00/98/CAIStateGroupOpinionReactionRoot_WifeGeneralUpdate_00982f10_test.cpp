@@ -6,7 +6,7 @@ class CCharString {
 public:
     CCharString(const char* text, long) { std::strcpy(m_text, text); }
     ~CCharString() { }
-    CCharString& operator+=(const CCharString& other) { std::strcat(m_text, other.m_text); return *this; }
+    const CCharString& operator+=(const CCharString& other) { std::strcat(m_text, other.m_text); return *this; }
     char m_text[128];
 };
 static CCharString g_OpinionAttitudeNames[3] = { CCharString("LOVE", -1), CCharString("LIKE", -1), CCharString("NEUTRAL", -1) };

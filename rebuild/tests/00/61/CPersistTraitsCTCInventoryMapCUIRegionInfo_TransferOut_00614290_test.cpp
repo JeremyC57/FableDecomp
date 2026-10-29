@@ -7,7 +7,7 @@ class CCharString { public:
     char Text[256];
     CCharString() { Text[0] = 0; }
     CCharString(const char* s) { std::strcpy(Text, s); }
-    CCharString& operator+=(const char* s) { std::strcat(Text, s); return *this; }
+    const CCharString& operator+=(const char* s) { std::strcat(Text, s); return *this; }
     bool Equals(const char* s) const { return std::strcmp(Text, s) == 0; }
 };
 class CPersistContext { public: int Unused; };

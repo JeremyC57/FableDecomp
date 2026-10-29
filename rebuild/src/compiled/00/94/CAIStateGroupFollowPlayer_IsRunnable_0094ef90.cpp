@@ -47,7 +47,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                         // +0x11
     unsigned char Enabled;                          // +0x12
     unsigned char _pad_0x13;
-    CPlayerManager* GetPPlayerManager();            // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;            // 0x008FCF90
+    public:
 };
 
 struct CAIStateGroup_FollowPlayer : CAIStateGroupBase {
@@ -57,7 +59,7 @@ struct CAIStateGroup_FollowPlayer : CAIStateGroupBase {
 
 bool CAIStateGroup_FollowPlayer::IsRunnable()
 {
-    CThing* hero = (CThing*)GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = (CThing*)GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero != 0 && !(hero->m_flags91 & 1)) {
         PThingToFollow = CIntelligentPointerThing(hero);
         return true;

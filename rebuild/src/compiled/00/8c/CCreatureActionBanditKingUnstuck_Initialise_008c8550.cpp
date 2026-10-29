@@ -155,7 +155,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, long b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 class CTCCreatureModeManager { public:                       // interface type 0x31
     void RemoveMode(unsigned long mode);              // 0x0073ABA0
@@ -204,7 +204,7 @@ void CCreatureAction_BanditKingUnstuck::Initialise()
         CThing* created = CreateSpecialEffect(effect, PCreature.GetPItem()->GetPos(), false);
         if (created && !(created->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = created->GetTCIfPresent<CTCDParticleEmitter>(0x4b);
-            emitter->AttachToThing(PCreature.GetPItem(), 0x2a, "", 0, 0);
+            emitter->AttachToThing(*PCreature.GetPItem(), 0x2a, "", 0, 0);
         }
     }
     CCombatActionBase::Initialise();

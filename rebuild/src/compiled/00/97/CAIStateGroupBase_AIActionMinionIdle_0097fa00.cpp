@@ -101,9 +101,13 @@ class CAIStateGroupBase { public:
 protected:
     const CWorld& PeekWorld() const;    // 0x008FCFA0
 public:
+    protected:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0
+    public:
     EAIActionReturn AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
+protected:
     EAIActionReturn AIAction_MinionIdle();
+public:
 };
 
 EAIActionReturn CAIStateGroupBase::AIAction_MinionIdle()

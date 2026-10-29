@@ -29,7 +29,7 @@ class CCharString { public:
     CCharString() : PStringData(0) {}                                          // test only
     CCharString(const char* text, long length = -1);                           // 0x0099EBF0
     ~CCharString();                                                             // 0x0099EAE0
-    CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);                          // 0x0099F0A0
     static CCharString __fastcall FormatDouble(long digits, double value);      // 0x009A08B0
     __forceinline bool operator==(const char* text) const
     {
@@ -85,7 +85,7 @@ CCharString::CCharString(const char* text, long length) : PStringData(0)
     if (length < 0 && *text) PStringData = MakeData(text);
 }
 CCharString::~CCharString() {}
-CCharString& CCharString::operator+=(const CCharString& other)
+const CCharString& CCharString::operator+=(const CCharString& other)
 {
     char buffer[512];
     strcpy(buffer, Text(*this));

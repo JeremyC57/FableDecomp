@@ -17,7 +17,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1); // 0x0099EBF0
     CCharString(const CCharString& other);           // 0x0099EC30
     ~CCharString();                                  // 0x0099EAE0
-    CCharString& operator+=(const CCharString& other);   // 0x0099F0A0
+    const CCharString& operator+=(const CCharString& other);   // 0x0099F0A0
     static CCharString __fastcall FormatDouble(long digits, double value);   // 0x009A08B0
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600

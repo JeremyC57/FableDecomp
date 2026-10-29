@@ -27,7 +27,7 @@ public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
     CCharString ToLower() const;                        // 0x0099ED10
-    CCharString& operator+=(const char* text);          // 0x0099F100
+    const CCharString& operator+=(const char* text);          // 0x0099F100
     CWideString ToWideString() const;                   // 0x0099E480
     long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
     const char* c_str() const { return PStringData == 0 ? g_emptyString : PStringData->Text; }
@@ -109,7 +109,7 @@ CCharString CCharString::ToLower() const
     for (char* p = r.PStringData->Text; *p; ++p) if (*p >= 'A' && *p <= 'Z') *p = (char)(*p - 'A' + 'a');
     return r;
 }
-CCharString& CCharString::operator+=(const char* text)
+const CCharString& CCharString::operator+=(const char* text)
 {
     char buf[128]; strcpy(buf, c_str()); strcat(buf, text); PStringData = Make(buf); return *this;
 }

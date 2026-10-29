@@ -13,7 +13,7 @@ class C2DExtentsI { public: long Width, Height; };
 static int g_dimsCalls = 0;
 class CDisplayManager { public:
     long W, H;
-    C2DExtentsI GetRenderTargetDimensions() { ++g_dimsCalls; C2DExtentsI e; e.Width = W; e.Height = H; return e; }
+    const C2DExtentsI GetRenderTargetDimensions() { ++g_dimsCalls; C2DExtentsI e; e.Width = W; e.Height = H; return e; }
 };
 static CDisplayManager g_display = { 1280, 960 };
 static CDisplayManager* g_pDisplayManager = &g_display;

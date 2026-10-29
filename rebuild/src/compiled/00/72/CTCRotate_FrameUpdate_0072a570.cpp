@@ -13,7 +13,7 @@ class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public:
     C3DVector Up;
     C3DVector Forward;
-    void RotateAboutAxis(const C3DVector& axis, float angle);   // 0x00A22F80
+    void Rotate(const C3DVector& axis, float angle);   // 0x00A22F80
 };
 struct CThingPlacement {
     virtual void v00();
@@ -122,7 +122,7 @@ void CTCRotate::FrameUpdate()
     if (Rotating) {
         ParentThing->m_pDrawState->m_flags59 |= 2;
         CRightHandedSet rhs = ParentThing->m_pPlacement->GetOrientation();
-        rhs.RotateAboutAxis(RotationAxis, RotationSpeed * Timer);
+        rhs.Rotate(RotationAxis, RotationSpeed * Timer);
         ParentThing->m_pPlacement->SetOrientation(rhs);
         if (++Timer > TimerLimit)
             ParentThing->RemoveTC(0x2a);

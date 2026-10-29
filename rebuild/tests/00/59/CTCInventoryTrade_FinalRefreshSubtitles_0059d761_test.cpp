@@ -19,7 +19,7 @@ class CWideString { public:
     const CWideString& operator+=(const CWideString& other) { strcat(text, other.text); return *this; }
 };
 CWideString __fastcall GetXString() { CWideString s; strcpy(s.text, " x"); return s; }
-CWideString __fastcall IntToWideString(long value) { CWideString s; sprintf(s.text, "%ld", value); return s; }
+CWideString __fastcall GFIntToWideString(long value) { CWideString s; sprintf(s.text, "%ld", value); return s; }
 static int g_setText = 0; static char g_lastText[64]; static const char* g_findName = 0; static long g_childType = -1;
 namespace NUISystem {
 struct CTextSource {
@@ -62,7 +62,7 @@ void CTCInventoryTrade::FinalRefreshSubtitles(NUISystem::CComponent* component, 
         text = found->Text;
         if (found->Count > 0) {
             text += GetXString();
-            text += IntToWideString(found->Count);
+            text += GFIntToWideString(found->Count);
         }
     }
     owner->FindChild("PC_SUBTITLE")->SetText(text, true, true);

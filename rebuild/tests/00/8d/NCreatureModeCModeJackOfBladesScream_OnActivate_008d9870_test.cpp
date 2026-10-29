@@ -76,7 +76,7 @@ template <class T> __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointe
 
 class CThing;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long flags, float scale);   // 0x006E0BE0
 };
 
 class CThing { public:
@@ -160,7 +160,7 @@ void CModeJackOfBladesScream::OnActivate()
                 PEmitter = CIntelligentPointerThing(effect);
                 if (effect->HasTC(0x4b)) {
                     CTCDParticleEmitter* emitter = (CTCDParticleEmitter*)effect->PTCDriver;
-                    emitter->AttachToThing(ParentThing, 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
+                    emitter->AttachToThing(*ParentThing, 0xc, "TARGET_CURSOR_POINT", 0, 0.0f);
                 }
             }
         }
@@ -195,8 +195,8 @@ CThing* CBaseIntelligentPointer::GetPItem() const { return PItem; }
 void CBaseIntelligentPointer::SetPItem(CThing* item) { PItem = item; }
 void CBaseIntelligentPointer::v00() { }
 void CIntelligentPointerThing::v00() { }
-void CTCDParticleEmitter::AttachToThing(CThing* thing, long a, const CCharString& name, long idx, float delay)
-{ ++g_attach; g_attachThis = this; g_attachThing = thing; g_attachType = a; strcpy(g_attachName, (const char*)name.m_pData);
+void CTCDParticleEmitter::AttachToThing(CThing& thing_ref, long a, const CCharString& name, long idx, float delay)
+{ CThing* thing = &thing_ref; ++g_attach; g_attachThis = this; g_attachThing = thing; g_attachType = a; strcpy(g_attachName, (const char*)name.m_pData);
   g_attachIndex = idx; g_attachDelay = delay; }
 static void reset() { g_strCtor = g_strDtor = g_destroyed = g_ipDtor = g_attach = g_create = 0; g_lastName[0] = 0;
   g_attachName[0] = 0; g_findOwner = 0; g_createType = -1; g_createPos = 0; g_createFlag = true; g_attachThing = 0;

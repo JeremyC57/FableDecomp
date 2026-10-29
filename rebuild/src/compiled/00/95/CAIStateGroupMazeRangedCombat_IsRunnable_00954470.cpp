@@ -112,7 +112,9 @@ class CAIStateGroupBase { public:
     long ScriptAIPriority;                      // +0x08
     void* Name_PStringData;                     // +0x0c
     unsigned char Terminated, Priority, Enabled, _pad13;
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
 };
 
 struct CAIStateGroup_MazeRangedCombat : CAIStateGroupBase {
@@ -134,7 +136,7 @@ bool CAIStateGroup_MazeRangedCombat::IsRunnable()
                 PTarget = ((CThing*)targeting->PEnemy.GetPItem());
         }
         if (((CThing*)PTarget.GetPItem()) == 0 || (((CThing*)PTarget.GetPItem())->m_flags91 & 1))
-            PTarget = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+            PTarget = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (((CThing*)PTarget.GetPItem()) != 0 && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1)) {
             const CThing* self = PBrain->PCreature;
             const CThing* target = ((CThing*)PTarget.GetPItem());

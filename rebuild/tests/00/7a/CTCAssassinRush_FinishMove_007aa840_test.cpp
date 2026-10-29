@@ -9,7 +9,7 @@ static CCreatureActionBase* g_started;
 
 class CThingCreatureBase { public:
     void FinishCurrentAction() { g_log[g_n++] = 1; }
-    bool SetCurrentAction(CCreatureActionBase* action) { g_log[g_n++] = 2; g_started = action; return true; }
+    bool SetCurrentAction(const CCreatureActionBase& action_ref) { CCreatureActionBase* action = const_cast<CCreatureActionBase*>(&action_ref); g_log[g_n++] = 2; g_started = action; return true; }
 };
 struct CCountedActionPointer { CCreatureActionBase* m_pObject; void* m_pCount; };
 class CTCAssassinRush { public:
@@ -23,7 +23,7 @@ void CTCAssassinRush::FinishMove(CThingCreatureBase* creature)
 {
     creature->FinishCurrentAction();
     if (FinalAction.m_pObject)
-        creature->SetCurrentAction(FinalAction.m_pObject);
+        creature->SetCurrentAction(*FinalAction.m_pObject);
     StartTrailDelay = true;
     CleanUpEffects();
 }

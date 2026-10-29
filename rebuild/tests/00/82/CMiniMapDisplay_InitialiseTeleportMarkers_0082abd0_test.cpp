@@ -63,10 +63,12 @@ struct CArray_MarkerGraphics {
     SMarkerGraphics* m_pBegin;
     SMarkerGraphics* m_pEnd;
     SMarkerGraphics& operator[](unsigned long i) { return m_pBegin[i]; }
+    const SMarkerGraphics& operator[](unsigned long i) const { return m_pBegin[i]; }
 };
 class CPlayerGuiDef { public: unsigned char _pad00[0x958]; CArray_MarkerGraphics MiniMapMarkerGraphics; };
 static CPlayerGuiDef g_guiDef; static SMarkerGraphics g_graphics[8];
-CPlayerGuiDef* __fastcall PeekGuiDef() { return &g_guiDef; }
+class CPlayerGui { public: static const CPlayerGuiDef& __fastcall PeekGuiDef(); };
+const CPlayerGuiDef& __fastcall CPlayerGui::PeekGuiDef() { return g_guiDef; }
 class CTCTeleporter : public CTCBase { public: unsigned char _pad00[0x10]; bool Active; };
 struct CThingLists { unsigned char _pad00[0xdc]; list<CThing*> Teleporters; };
 class CThingManager { public: void* __vftable; CThingLists* Lists; };
@@ -100,9 +102,9 @@ void CMiniMapDisplay::InitialiseTeleportMarkers()
             const CTCTeleporter* teleporter;
             if (worldMap->GetCurrentRegionNumber() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex()) && thing->GetInterface(&teleporter, 0xdd)) {
                 if (teleporter->Active)
-                    AddMarker(thing, PeekGuiDef()->MiniMapMarkerGraphics[3].Primary);
+                    AddMarker(thing, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[3].Primary);
                 else
-                    AddMarker(thing, PeekGuiDef()->MiniMapMarkerGraphics[3].Secondary);
+                    AddMarker(thing, CPlayerGui::PeekGuiDef().MiniMapMarkerGraphics[3].Secondary);
             }
         }
     }

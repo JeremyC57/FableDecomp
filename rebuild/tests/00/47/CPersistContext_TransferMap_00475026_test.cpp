@@ -29,7 +29,7 @@ public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     CCharString(const CCharString& other);             // 0x0099EC30
     ~CCharString();                                    // 0x0099EAE0
-    CCharString& operator+=(const char* text);         // 0x0099F100
+    const CCharString& operator+=(const char* text);         // 0x0099F100
     __forceinline bool operator==(const char* text) const
     {
         if (PStringData == 0) {
@@ -191,7 +191,7 @@ CCharString::CCharString() : PStringData(0) { }
 CCharString::CCharString(const char* text, long) : PStringData(MakeData(text)) { }
 CCharString::CCharString(const CCharString& other) : PStringData(other.PStringData ? MakeData(other.PStringData->Data.PData) : 0) { }
 CCharString::~CCharString() { FreeData(PStringData); PStringData = 0; }
-CCharString& CCharString::operator+=(const char* text) {
+const CCharString& CCharString::operator+=(const char* text) {
     const char* old = Text(*this); char* buf = (char*)malloc(strlen(old) + strlen(text) + 1);
     strcpy(buf, old); strcat(buf, text); FreeData(PStringData); PStringData = MakeData(buf); free(buf); return *this;
 }

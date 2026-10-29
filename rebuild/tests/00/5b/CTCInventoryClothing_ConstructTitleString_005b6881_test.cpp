@@ -6,7 +6,7 @@ class CWideString { public:
     CWideString(const char* t) { std::strcpy(buf, t); }
     const CWideString& operator+=(const CWideString& o) { std::strcat(buf, o.buf); return *this; }
 };
-static CWideString IntToWideString(long v) { char b[32]; std::sprintf(b, "%ld", v); return CWideString(b); }
+static CWideString GFIntToWideString(long v) { char b[32]; std::sprintf(b, "%ld", v); return CWideString(b); }
 struct CDataBank { CWideString GetTextBySymbol(const char* s) { return CWideString(std::strcmp(s, "TEXT_GUI_MENU_CLOTHING_TOTAL_ARMOUR") == 0 ? "Total Armour" : "?"); } };
 static CDataBank g_bank;
 struct CClothing {
@@ -20,7 +20,7 @@ struct CClothing {
             title += textBank->GetTextBySymbol(symbol);
         }
         title += CWideString(" ");
-        title += IntToWideString(GetCurrentTotalArmorValue());
+        title += GFIntToWideString(GetCurrentTotalArmorValue());
     }
 };
 int main()

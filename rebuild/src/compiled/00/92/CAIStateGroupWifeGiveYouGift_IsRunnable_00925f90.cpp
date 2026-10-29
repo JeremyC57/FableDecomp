@@ -70,7 +70,9 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    CPlayerManager* GetPPlayerManager();        // 0x008FCF90
+    protected:
+    CPlayerManager& GetPlayerManager() const;        // 0x008FCF90
+    public:
 };
 
 struct CTCSpouse {                              // interface 0xD7
@@ -91,7 +93,7 @@ bool CAIStateGroup_WifeGiveYouGift::IsRunnable()
     if (PBrain->PCreature->GetInterface(&spouse, 0xD7)) {
         GiftToGiveDef = spouse->GiftDefToGive;
         if (GiftToGiveDef > 0) {
-            CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+            CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
             if (hero != 0 && !(hero->m_flags91 & 1)) {
                 const C3DVector& pos = PBrain->PCreature->GetPos();
                 const C3DVector& heroPos = hero->GetPos();

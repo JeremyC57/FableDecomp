@@ -30,7 +30,7 @@ public:
 
 class CASoundBank {
 public:
-    long GetSoundIndexFromSymbol(const CCharString& symbol);    // 0x00A01920
+    long GetSoundIndexFromSymbol(const CCharString& symbol) const;    // 0x00A01920
 };
 
 class CLipSyncDataBank {
@@ -110,7 +110,7 @@ void CTCTalk::SetUpSpeechSample()
 static CASoundBank g_defaultBank, g_soundBank; static CLipSyncDataBank g_lipSync;
 static bool g_mapHasLipSync = true, g_mapHasSound = true;
 static const CCharString* g_symbol = 0; static unsigned long g_loaded = 0xffffffff; static long g_durationFor = -1;
-long CASoundBank::GetSoundIndexFromSymbol(const CCharString& s) { g_symbol = &s; return 42; }
+long CASoundBank::GetSoundIndexFromSymbol(const CCharString& s) const { g_symbol = &s; return 42; }
 void CLipSyncDataBank::BeginLoadingEntry(unsigned long index) { g_loaded = index; }
 void* CSymbolMap::FindValueForSymbol(long symbol) { return (g_mapHasLipSync && symbol == (long)&g_defaultBank) ? &g_lipSync : 0; }
 void* CSymbolMap::FindFirstValue() { return g_mapHasLipSync ? &g_lipSync : 0; }

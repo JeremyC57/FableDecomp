@@ -52,7 +52,7 @@ struct CPhysicsObject {
     C3DVector LastPos;                                // +0x18
 };
 class CTCCreatureNavigation { public:
-    bool IsAbleToNavigateFromPosToPos(const C3DVector* from, const C3DVector* to, float tolerance);   // 0x006CB620
+    bool IsAbleToNavigateFromPosToPos(const C3DVector& from, const C3DVector& to, float tolerance) const;   // 0x006CB620
 };
 #pragma pack(push, 4)
 class CThing { public:
@@ -184,7 +184,7 @@ C3DVector CCombatManager::GetPreferredPos(const CThingCreatureBase& creature) co
                     finder(standingOn);
                     sameLayer = (float)finder.Layer == (float)region;
                 }
-                if (sameLayer && navigation->IsAbleToNavigateFromPosToPos(&creature.GetPos(), &candidate, 0.5f))
+                if (sameLayer && navigation->IsAbleToNavigateFromPosToPos(creature.GetPos(), candidate, 0.5f))
                     return candidate;
                 distance -= 0.25f;
                 if (distance < 0.0f)

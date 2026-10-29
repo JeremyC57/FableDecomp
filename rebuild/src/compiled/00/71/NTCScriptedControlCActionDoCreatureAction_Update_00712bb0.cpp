@@ -21,7 +21,7 @@ class CThingCreatureBase { public:
     unsigned char _pad[0x100];
     CCreatureActionBase* PActionQueue;         // +0x100
     bool IsPerformingAnyAction();               // 0x006622A0
-    bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action);   // 0x006644F0
 };
 
 class CTCScriptedControl { public:
@@ -44,7 +44,7 @@ void CActionDoCreatureAction_Methods::Update()
                 return;
             Terminated() = true;
         }
-        creature->SetCurrentAction(Action_Data);
+        creature->SetCurrentAction(*Action_Data);
         ActionID = creature->PActionQueue->GetActionID();
         ActionSet = true;
     } else {

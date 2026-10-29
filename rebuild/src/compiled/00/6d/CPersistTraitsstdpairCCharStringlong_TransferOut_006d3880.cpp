@@ -14,7 +14,7 @@ public:
     void* PStringData;
     CCharString();                                                    // 0x0099E4B0
     ~CCharString();                                                   // 0x0099EAE0
-    CCharString& operator+=(const char* text);                       // 0x0099F100
+    const CCharString& operator+=(const char* text);                       // 0x0099F100
 };
 void __fastcall TransferOutLong(CPersistContext* context, CCharString* out, long* value);   // 0x009E2560
 extern const char g_textOpenBracket_0122e028[];                       // 0x0122E028 "("

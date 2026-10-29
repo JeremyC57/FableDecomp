@@ -11,7 +11,7 @@ class CCharString { public:
     CCharString(const CCharString& o) { std::strcpy(s, o.s); }
     bool operator!=(const char* text) const { return std::strcmp(s, text) != 0; }
     const CCharString& operator=(const CCharString& o) { std::strcpy(s, o.s); return *this; }
-    CCharString& operator+=(const char* text) { std::strncat(s, text, 63 - std::strlen(s)); return *this; }
+    const CCharString& operator+=(const char* text) { std::strncat(s, text, 63 - std::strlen(s)); return *this; }
     CCharString GetSubString(long start, long length) const
     {
         CCharString r; std::strncpy(r.s, s + start, length); r.s[length] = 0; return r;

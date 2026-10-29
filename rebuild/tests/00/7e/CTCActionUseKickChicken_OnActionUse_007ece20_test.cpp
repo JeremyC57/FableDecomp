@@ -13,7 +13,7 @@ class CCombatAction_KickThingOnGround : public CCreatureActionBase { public:
 };
 class CThingCreatureBase : public CThing { public:
     int m_seenKind; int m_liveAtCall;
-    bool SetCurrentAction(CCreatureActionBase* action) { m_seenKind = action->kind; m_liveAtCall = g_live; return true; }
+    bool SetCurrentAction(const CCreatureActionBase& action_ref) { CCreatureActionBase* action = const_cast<CCreatureActionBase*>(&action_ref); m_seenKind = action->kind; m_liveAtCall = g_live; return true; }
 };
 class CTCBase { public: CThing* ParentThing; CThing* GetThing() const { return ParentThing; } };
 struct CTCActionUseKickChicken : CTCBase {
@@ -21,7 +21,7 @@ struct CTCActionUseKickChicken : CTCBase {
     {
         CThingCreatureBase& creature = static_cast<CThingCreatureBase&>(user);
         CCombatAction_KickThingOnGround action(&creature, GetThing());
-        creature.SetCurrentAction(&action);
+        creature.SetCurrentAction(action);
     }
 };
 int main()

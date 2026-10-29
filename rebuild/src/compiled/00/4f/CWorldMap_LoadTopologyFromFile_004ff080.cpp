@@ -130,7 +130,9 @@ class CWorldMap { public:
     CArray<CMapInfo> Maps;                                   // +0x20
     unsigned char    _pad2c[0x64];
     CLongVector      LoadedMaps;                             // +0x90 (PDB +0xAC)
+protected:
     void UpdateAllEdges();                                   // 0x0063DFD0
+public:
     const CGameDefinitionManager& WorldDefinitionManager() const { return *World->DefinitionManager; }
     void LoadTopologyFromFile(long map, CCountedPointer<CAFile> file, CASuspendableProcess& process);
 };

@@ -36,7 +36,7 @@ struct __declspec(novtable) CCreatureAction_DragonFlight : CCombatActionBase {
     CCreatureAction_DragonFlight(CThingCreatureBase* owner, const CCharString& animName);   // 0x008F4CB0
 };
 class CThingCreatureBase { public:
-    bool SetCurrentAction(CCreatureActionBase* action); // 0x006644F0
+    bool SetCurrentAction(const CCreatureActionBase& action); // 0x006644F0
 };
 struct CTCCreatureFlyInCircles {
     virtual void v00();
@@ -75,7 +75,7 @@ void CTCCreatureFlyInCircles::ChangeMode()
         break;
     }
     CCreatureAction_DragonFlight action(Creature, animation);
-    if (Creature->SetCurrentAction(&action)) {
+    if (Creature->SetCurrentAction(action)) {
         Transitioning = true;
         ModeChangeQueued = false;
         Mode = newMode;

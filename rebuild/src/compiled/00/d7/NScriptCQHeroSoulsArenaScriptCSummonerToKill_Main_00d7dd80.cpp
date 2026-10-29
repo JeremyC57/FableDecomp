@@ -36,7 +36,9 @@ struct CIsThingAlive {                             // vtable 0x012C32F0: a filte
 class CBaseObject { public:                               // CBaseIntelligentPointer root
     virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04
+protected:
     CBaseObject();                                 // 0x0099A380
+public:
 };
 struct CCountedPointerWords {
     void* Data;

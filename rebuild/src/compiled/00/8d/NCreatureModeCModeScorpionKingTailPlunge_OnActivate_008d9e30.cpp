@@ -102,7 +102,7 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 #pragma auto_inline(on)
 class CThing;
 class CTCDParticleEmitter { public:
-    void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
+    void AttachToThing(CThing& thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 struct CTCGraphicAppearance {
     bool GetDummyObject(const CCharString& name, long index, unsigned long flags, C3DVector* position,
@@ -220,7 +220,7 @@ void CModeScorpionKingTailPlunge::OnActivate()
             if (IS_THING_ALIVE(fx)) {
                 if (fx->HasTC(0x4b)) {
                     CTCDParticleEmitter* emitter = fx->GetTC<CTCDParticleEmitter>(0x4b);
-                    emitter->AttachToThing(fx, 10, "", 0, 0.0f);
+                    emitter->AttachToThing(*fx, 10, "", 0, 0.0f);
                 }
                 PDustTrailEmitter = CIntelligentPointer<CThing>(fx);
             }

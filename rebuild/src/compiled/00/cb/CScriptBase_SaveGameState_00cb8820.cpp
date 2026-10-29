@@ -11,7 +11,7 @@
 // Shape: the context is the whole 0x2C-byte frame (no destructor call); `out` is cached in esi after the loop.
 class CCharString { public:
     void* PStringData;
-    CCharString& operator+=(const char* text);       // 0x0099F100
+    const CCharString& operator+=(const char* text);       // 0x0099F100
 };
 
 class CPersistContext { public:

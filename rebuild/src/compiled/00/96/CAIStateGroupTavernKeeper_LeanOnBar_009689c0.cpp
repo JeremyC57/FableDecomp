@@ -102,7 +102,9 @@ class CAIStateGroupBase { public:
     void Terminate();                           // 0x008FCF40
     CThing* GetCreature() const { return PBrain->PCreature; }
     CThingCreatureBase* GetCreatureBase() const { return (CThingCreatureBase*)PBrain->PCreature; }
-    unsigned long* GetPWorldSeed();             // 0x008FCFD0
+    protected:
+    unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
+    public:
     void SetPushableByHero(bool pushable);      // 0x0097E330
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
 };

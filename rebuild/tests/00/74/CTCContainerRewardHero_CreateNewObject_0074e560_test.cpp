@@ -12,7 +12,7 @@ static int fails = 0;
 // (`__fastcall`), CTCPhysicsBase::ApplyAcceleration(const C3DVector&) 0x006B0210, the TC's game accessor 0x00686A80 and its
 // random-seed accessor 0x0049D810, GFFloatRandom(float, ulong*) 0x004978A0 (`__fastcall`), the physics' slot 66 (+0x108,
 // float spin), CCharString(const char*, long) 0x0099EBF0 ("CTCSolidToThing" 0x0123B47C, "CTCLifeTimer" 0x0123E424) / ~
-// 0x0099EAE0, CThing::AddTC(const CCharString&, bool, CTCParamsBase*) 0x004C9D60, CTCSolidToThing::AddThingNotSolidTo
+// 0x0099EAE0, CThing::AddTC(const CCharString&, bool, const CTCParamsBase*) 0x004C9D60, CTCSolidToThing::AddThingNotSolidTo
 // 0x00770FA0, CTCGraphicAppearance::SetLightingChannel 0x004BFB40 / SetAsChanged 0x004BF9E0, CVectorMap::LowerBound
 // 0x0040F020 (interface 0x103), the life timer's setter 0x007E5950 (90.0f).
 // Layout: Ego_r.pdb CTCContainerRewardHero - 4: CreateObjectsThatTimeOut +0x19, ParentThing +4; CThing physics +0x60,
@@ -86,7 +86,7 @@ class CThing { public:
     CTCGraphicAppearance* Graphic;                      // +0x64
     unsigned char         _pad68[0x91 - 0x68];
     unsigned char         m_flags;                      // +0x91 bit 0: dead
-    CTCBase* AddTC(const CCharString& name, bool flag, CTCParamsBase* params);   // 0x004C9D60
+    CTCBase* AddTC(const CCharString& name, bool flag, const CTCParamsBase* params);   // 0x004C9D60
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
@@ -235,9 +235,9 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed) { g_range = ran
 unsigned long* CGameComponents::GetRandomSeed() { return &g_seed; }
 static CGameComponents g_game; static CTCContainerRewardHero* g_gameThis;
 CGameComponents* CTCContainerRewardHero::GetGame() { g_gameThis = this; return &g_game; }
-static int g_adds; static const char* g_addName[4]; static CThing* g_addThing[4]; static bool g_addFlag; static CTCParamsBase* g_addParams;
+static int g_adds; static const char* g_addName[4]; static CThing* g_addThing[4]; static bool g_addFlag; static const CTCParamsBase* g_addParams;
 static CTCSolidToThing g_solid; static CTCLifeTimer g_newTimer;
-CTCBase* CThing::AddTC(const CCharString& name, bool flag, CTCParamsBase* params)
+CTCBase* CThing::AddTC(const CCharString& name, bool flag, const CTCParamsBase* params)
 {
     const char* n = (const char*)name.PStringData; g_addName[g_adds & 3] = n; g_addThing[g_adds & 3] = this; ++g_adds;
     g_addFlag = flag; g_addParams = params;
@@ -257,7 +257,7 @@ void CTCLifeTimer::SetLifeTime(float seconds) { g_life = seconds; g_lifeThis = t
 struct TestPhys : CTCPhysicsBase {};
 static void Reset()
 {
-    g_strs = 0; g_spin = 0; g_spinPhys = 0; g_spins = 0; g_acc = 0; g_accPhys = 0; g_adds = 0; g_addFlag = true; g_addParams = (CTCParamsBase*)1;
+    g_strs = 0; g_spin = 0; g_spinPhys = 0; g_spins = 0; g_acc = 0; g_accPhys = 0; g_adds = 0; g_addFlag = true; g_addParams = (const CTCParamsBase*)1;
     g_notSolid = 0; g_notSolidThis = 0; g_light = 0; g_lightCh = 0; g_lightThis = 0; g_changed = 0; g_changedThis = 0;
     g_life = 0; g_lifeThis = 0; g_lifes = 0; g_range = 0; g_seedArg = 0; g_gameThis = 0;
     memset(&g_newTimer, 0, sizeof g_newTimer);
