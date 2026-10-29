@@ -35165,3 +35165,8 @@ _icomp	00ca1bc0	00ca1be0
 ??0?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@VCIsThingAlive@NScript@@V12@@1@ABVCIsThingAlive@1@@Z	00ef5bc0	00ef87d0
 ??_7?$CSpawnedFunc1@VCPersonalScript_EmptyScript@NScript@@VCScriptThing@@@@6B@	012f6888	00ef87d0
 ?ChangeAlpha@CPersonalScript_EmptyScript@NScript@@QAEXVCScriptThing@@@Z	00ef8bc0	00ef87d0
+??4?$vector@VCVertexShaderConstant@@V?$allocator@VCVertexShaderConstant@@@std@@@std@@QAEAAV01@ABV01@@Z	00bdb9f0	00bdbb70
+??_7CEngineVSConstantLayoutBasic@@6B@	012a7d40	00bdbb70
+??A?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEAAVCCharString@@ABV2@@Z	009ac700	00ece460
+?GossipSetup@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@000@Z	00ee07e0	00ee3b20
+?WatchForHeroAttackOnSentry@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	00f09260	00f08e90

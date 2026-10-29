@@ -1,0 +1,7 @@
+address	name	evidence
+00bdbb70	CEngineVSConstantLayoutBasic::CEngineVSConstantLayoutBasic	RTTI vtable 0x012A7D40; derived ctors 0xBDB400/0xBDB080 call it; Ego_r+FableWin order before PeekName; chunk 571
+00d99a30	NScript::CQ_HobbeCaveScript::CheckIfGotTreasure	Ego_r.pdb; spawner 0xD9806F registers it as "CheckIfGotTreasure"; chunk 571
+00ece460	NScript::CV_SickChildScript::PlayCutscene	Ego_r + FableWin; ret 8; cast member offsets; chunk 571
+00ee3b20	NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze::Main	vtable 0x012F42CC slot 1 stored by landed Alloc 0xEE03E0; both PDBs; chunk 571
+00f08e90	NScript::CQ_AmbushTradersScript::CAT_Sentry::Init	vtable 0x012F7E30 slot 2 stored by landed Alloc 0xF04510; Ego_r + FableWin; chunk 571
+00e241b0	NScript::CIsThingAlive::~CIsThingAlive	chunk 571 NOTES (catalog label CScriptThingFunctor_00e241b0 wrong)

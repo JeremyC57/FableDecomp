@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00bdbb70   RELOCATION_MATCH PASS   CEngineVSConstantLayoutBasic
+00d99a30   RELOCATION_MATCH PASS   CheckIfGotTreasure
+00ece460   RELOCATION_MATCH PASS   PlayCutscene
+00ee3b20   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00ee3b20   RELOCATION_MATCH PASS   Main
+00f08e90   RELOCATION_MATCH PASS   Init
+
+WINS: 5
+  00bdbb70 RELOCATION_MATCH CEngineVSConstantLayoutBasic::??0CEngineVSConstantLayoutBasic@@QAE@XZ
+  00d99a30 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::?CheckIfGotTreasure@CQ_HobbeCaveScript@NScript@@QAEXXZ
+  00ece460 RELOCATION_MATCH NScript::CV_SickChildScript::?PlayCutscene@CV_SickChildScript@NScript@@QAEXVCCharString@@0@Z
+  00ee3b20 RELOCATION_MATCH NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze::?Main@CTH_Trigger_Guild_Maze@CV_TravellingHeroesScript@NScript@@EAEXXZ
+  00f08e90 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_Sentry::?Init@CAT_Sentry@CQ_AmbushTradersScript@NScript@@EAEXXZ
+
+LANDED 5 wins into src/compiled + tests + catalog + oracle
+  CEngineVSConstantLayoutBasic_CEngineVSConstantLayoutBasic_00bdbb70
+  NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30
+  NScriptCVSickChildScript_PlayCutscene_00ece460
+  NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Main_00ee3b20
+  NScriptCQAmbushTradersScriptCATSentry_Init_00f08e90

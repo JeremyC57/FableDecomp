@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+0x00BDBB70	RELOCATION_MATCH	909v909	PASS	CEngineVSConstantLayoutBasic::CEngineVSConstantLayoutBasic(); same-TU noinline vector::operator= keeps the preset CArray unaliased
+0x00D99A30	RELOCATION_MATCH	911v911	PASS	NScript::CQ_HobbeCaveScript::CheckIfGotTreasure(); inline_depth(0) around the chests out-of-line dtors
+0x00ECE460	RELOCATION_MATCH	908v908	PASS	NScript::CV_SickChildScript::PlayCutscene(CCharString, CCharString); __forceinline ScriptedThingBase operator=
+0x00EE3B20	RELOCATION_MATCH	952v952	PASS	NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze::Main(); first probe matched (CTH_Maze::Main model)
+0x00F08E90	RELOCATION_MATCH	961v961	PASS	NScript::CQ_AmbushTradersScript::CAT_Sentry::Init(); __forceinline CSpawnedFunc1 ctor + out-of-line ~CScriptThing

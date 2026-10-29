@@ -363876,6 +363876,41 @@ $catalog = @(
         CompilerFlags = '/O2 /Oy /W3 /Zi'
         PassPattern = '00a5bef0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00bdbb70'
+        Module = 'CEngineVSConstantLayoutBasic'
+        Source = '00/bd/CEngineVSConstantLayoutBasic_CEngineVSConstantLayoutBasic_00bdbb70.cpp'
+        TestSource = '00/bd/CEngineVSConstantLayoutBasic_CEngineVSConstantLayoutBasic_00bdbb70_test.cpp'
+        PassPattern = '00bdbb70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d99a30'
+        Module = 'NScript::CQ_HobbeCaveScript'
+        Source = '00/d9/NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30.cpp'
+        TestSource = '00/d9/NScriptCQHobbeCaveScript_CheckIfGotTreasure_00d99a30_test.cpp'
+        PassPattern = '00d99a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ece460'
+        Module = 'NScript::CV_SickChildScript'
+        Source = '00/ec/NScriptCVSickChildScript_PlayCutscene_00ece460.cpp'
+        TestSource = '00/ec/NScriptCVSickChildScript_PlayCutscene_00ece460_test.cpp'
+        PassPattern = '00ece460_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee3b20'
+        Module = 'NScript::CV_TravellingHeroesScript::CTH_Trigger_Guild_Maze'
+        Source = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Main_00ee3b20.cpp'
+        TestSource = '00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Main_00ee3b20_test.cpp'
+        PassPattern = '00ee3b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f08e90'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_Sentry'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATSentry_Init_00f08e90.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATSentry_Init_00f08e90_test.cpp'
+        PassPattern = '00f08e90_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

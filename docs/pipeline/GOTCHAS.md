@@ -1612,3 +1612,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `/Zi` changes codegen of an SSE `__asm` function: only with it does VC7.1 copy the return address into the ebx-realigned frame (0x00A5BEF0, chunk 570; not the chunk 511 lane gap).
 - VC7.1 compiles class-template member bodies at the end of the TU, so `#pragma inline_depth` around a template definition does nothing; put an explicit specialization of the member under `#pragma inline_depth(0)` instead (0x00EF87D0).
 - Quest-script `Main` rows need a polymorphic CScriptBase and a CGameScriptInterface model that keeps its padding virtuals; `cast["Hero"] = hero` needs both operator= `__forceinline` (chunk 570).
+- A local STLport vector passed to an out-of-line `vector::operator=` setter is treated as aliased unless that operator= has a same-TU noinline body (0x00BDBB70, chunk 571).
+- Entity-script Main/Init are `private virtual` (EAE); an implicit `CScriptGameResourceObjectScriptedThingBase::operator=` must be written `__forceinline`; inline `CCharString::operator!=` is `_stricmp` (0xBFEBA8) on GetAsCharArray (chunk 571).
