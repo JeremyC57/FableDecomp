@@ -24790,3 +24790,13 @@ chunk	address	module	name	length
 575	00d62140	global	Quest_GuildTrainingWoods_Departure_Init	280
 575	00d04260	global	CScriptBase_WaitForEntityAndExecuteTwoPair	305
 575	00efc300	global	Script_MarkerToFace_Thread	315
+576	00f088e0	global	CScriptBase_AmbushTradersFilter	325
+576	00d00440	global	sub_00d00440	327
+576	00e4f620	global	sub_00e4f620	257
+576	00d86a30	global	sub_00d86a30	258
+576	00dd8de0	global	sub_00dd8de0	259
+576	00e37520	global	sub_00e37520	269
+576	00e54880	global	sub_00e54880	269
+576	00eeec00	global	sub_00eeec00	274
+576	00da24f0	global	sub_00da24f0	276
+576	00e54450	global	sub_00e54450	282
