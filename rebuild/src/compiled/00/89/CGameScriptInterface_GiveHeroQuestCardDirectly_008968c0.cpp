@@ -21,18 +21,23 @@ class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet;
 
 class CTCBase;
-struct STCEntry { long m_kind; CTCBase* m_pTC; };
-struct CTCMap {
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind);   // 0x0040F020
+    STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
     __forceinline CTCBase* Find(long kind)
     {
-        STCEntry* it = LowerBound((unsigned long)kind);
-        return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
+        STCEntry* it = LowerBound((ETCInterfaceType)kind);
+        return ((it == m_pLast || kind < it->first) ? m_pLast : it)->second;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                         // +0x20 UsingComponents

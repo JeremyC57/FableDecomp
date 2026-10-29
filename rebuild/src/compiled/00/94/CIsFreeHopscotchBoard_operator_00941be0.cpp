@@ -2,23 +2,26 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00941BE0, length 96 bytes.
 // Shape: `shr eax,0Fh ; test al,1`, `test ah,20h`, the key temporary in the dead argument slot, the lower-bound tail with the end entry read, `ret 4`.
 struct CTCBase_Retail;
-struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long           m_kind;
-    CTCBase_Retail* m_pTC;
-};
-struct CTCMap_Retail {                             // the thing's component map at +0x44: a sorted vector of pairs
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // the thing's component map at +0x44: a sorted vector of pairs
     STCEntry_Retail* m_pFirst;
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0
+    const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
     __forceinline CTCBase_Retail* Find(long kind) const
     {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
+        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
+        if (it == m_pLast || kind < it->first)
             it = m_pLast;
-        return it->m_pTC;
+        return ((CTCBase_Retail*)it->second);
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 struct CTCUserActionPointBase {
     bool IsActionPointFree();                      // 0x007FEBF0
 };

@@ -8,7 +8,13 @@
 // Native bitset has9words/map44/life91 versus donor10words/map48/lifeA1; retain named native view below.
 #include "fable_string.h"
 class C3DVector{ public:float X,Y,Z;};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct ScriptMethods;
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; unsigned char AfterComponents[0x45]; unsigned char Dead:1; unsigned char OtherLifeFlags:7; ScriptMethods GetScriptThing()const; }; //004C73D0,004C7E50
@@ -115,7 +121,7 @@ CThingNative* __fastcall CreateExperienceOrbThing(long,const C3DVector&); //0077
 // Donor CTCDExperienceOrb fields, struct_layouts_egor.tsv83459..83468; no generated class header.
 struct ExperienceOrbMethods:CTCBase{CDefPointeeBase* PDef;long ExperiencePoints,CombinationImmunityTimer,LifeTimer;bool DecayOverTime,PickedUp;void SetExperiencePoints(long);}; //00779E10; DecayOverTime+1C
 FABLE_STATIC_ASSERT(offsetof(ExperienceOrbMethods,DecayOverTime)==28);
-static __forceinline void GetOrbInterface(CThingNative* thing,ExperienceOrbMethods** out){if(thing->UsingComponents[3]&0x200){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(105);ComponentEntry* end=map->Finish;*out=static_cast<ExperienceOrbMethods*>((it==end||it->Type>105?end:it)->Component);}}
+static __forceinline void GetOrbInterface(CThingNative* thing,ExperienceOrbMethods** out){if(thing->UsingComponents[3]&0x200){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)105);ComponentEntry* end=map->Finish;*out=static_cast<ExperienceOrbMethods*>(((void*)(it==end||it->first>105?end:it)->second));}}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateExperienceOrb(const C3DVector&,long)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateExperienceOrb(const C3DVector& position,long scale)const{
  long definition;{CCharString name("THING_EXPERIENCE_ORB",-1);definition=::CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);}

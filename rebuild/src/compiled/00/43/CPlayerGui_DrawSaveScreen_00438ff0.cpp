@@ -13,21 +13,24 @@ struct CTCBase_Retail {
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual void DrawSaveScreen(long prepareInfo);                  // slot 11 (+0x2c)
 };
-struct STCEntry_Retail {                                    // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long            m_kind;
-    CTCBase_Retail* m_pTC;
-};
-struct CTCMap_Retail {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     STCEntry_Retail* m_pFirst;
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const unsigned long& kind);         // 0x0040F020
+    STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020
     __forceinline CTCBase_Retail* Find(long kind)
     {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
+        STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
+        return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 struct CThing_Retail {
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                             // +0x20

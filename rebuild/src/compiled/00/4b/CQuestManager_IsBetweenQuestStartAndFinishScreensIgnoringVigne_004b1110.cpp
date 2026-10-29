@@ -9,23 +9,26 @@
 // Shape: `for (unsigned long i = 0; i < size(); ++i)` with size() recomputed (`sar 2`, unsigned compare) and the
 // element as `*(begin() + i)`; the three guards are one `&&` chain; the find's key temporary is the push-ecx frame word.
 struct CTCBase_Retail;
-struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long            m_kind;
-    CTCBase_Retail* m_pTC;
-};
-struct CTCMap_Retail {                             // the thing's component map at +0x44: a sorted vector of pairs
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // the thing's component map at +0x44: a sorted vector of pairs
     STCEntry_Retail* m_pFirst;
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation; key by address)
+    const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation; key by address)
     __forceinline CTCBase_Retail* Find(long kind) const               // the inlined map `find`: end entry when absent
     {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
+        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
+        if (it == m_pLast || kind < it->first)
             it = m_pLast;
-        return it->m_pTC;
+        return ((CTCBase_Retail*)it->second);
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                    // +0x20: which component kinds the thing holds

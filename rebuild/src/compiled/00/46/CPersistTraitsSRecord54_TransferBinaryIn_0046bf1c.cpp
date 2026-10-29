@@ -22,7 +22,9 @@ class CDataInputStream
     unsigned char* Cursor;                  // +0x0C
     long           Pad10;                   // +0x10
     long           RemainingInSourceChunk;  // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* destination, long size);   // 0x00993CA0
+private:
+    friend struct CPersistTraitsRecord54;
+    void ReadWithSrcChunkOverflow(unsigned char* destination, long size);   // 0x00993CA0 (private: AAE)
 };
 
 struct SRecord54

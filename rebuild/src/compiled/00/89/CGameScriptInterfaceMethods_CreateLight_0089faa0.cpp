@@ -4,7 +4,13 @@
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
 class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();}; //004C7E50 //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
@@ -121,7 +127,7 @@ struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateLigh
 ScriptMethods CGameScriptInterfaceMethods::CreateLight(const C3DVector& position,const CRGBColour& colour,const CCharString& name,float inner,float outer,bool flicker)const{
  long id;{CCharString markerName("MARKER_LIGHT",-1);id=DefinitionManager->GetDefGlobalIndexFromName(markerName);}
  if(id){CThingNative* marker=CreateMarker(id,position,name);if(marker){
- if(marker->UsingComponents[1]&0x80){ComponentMap* map=&marker->Components;ComponentEntry* it=map->LowerBound(39);ComponentEntry* end=map->Finish;CTCLight* light=static_cast<CTCLight*>((it==end||it->Type>39?end:it)->Component);if(light){light->SetOverridden(true);light->SetColour(colour);light->SetInnerRadius(inner);light->SetOuterRadius(outer);light->SetFlicker((float)(unsigned char)flicker);light->SetActive(true);}}
+ if(marker->UsingComponents[1]&0x80){ComponentMap* map=&marker->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)39);ComponentEntry* end=map->Finish;CTCLight* light=static_cast<CTCLight*>(((void*)(it==end||it->first>39?end:it)->second));if(light){light->SetOverridden(true);light->SetColour(colour);light->SetInnerRadius(inner);light->SetOuterRadius(outer);light->SetFlicker((float)(unsigned char)flicker);light->SetActive(true);}}
  return marker->GetScriptThing();}}
  return ScriptMethods();
 }

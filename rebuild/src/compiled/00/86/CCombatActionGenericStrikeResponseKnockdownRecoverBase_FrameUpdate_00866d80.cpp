@@ -18,8 +18,14 @@
 #endif
 class C3DVector { public: float X,Y,Z;float GetLength()const {return (float)sqrt(X*X+Y*Y+Z*Z);} };
 class CTCCreatureModeManager { public:void RemoveMode(unsigned long mode);}; //0x0073ABA0
-struct InterfaceEntry {long Type;CTCCreatureModeManager* Component;};
-struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* type);}; //0x0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> InterfaceEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const ETCInterfaceType& type);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > InterfaceMap; //0x0040F020
 class CThingCreatureDef { public:unsigned char _beforeRecoveryPercent[0x140];float RecoverEvadeHitsPercent;};
 struct Creature {
     unsigned char _beforeType[0x10];unsigned char ThingType;unsigned char _beforeFlags[0xf];
@@ -27,9 +33,9 @@ struct Creature {
     CThingCreatureDef* PThingCreatureDef;unsigned char _beforeMovement[0x14c];C3DVector RelativeMovementAcceleration;
     __forceinline bool GetInterface(CTCCreatureModeManager** out,long type){
         if(PresentBits[type>>5]&(1UL<<(type&31))){
-            long key=type;InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);
-            if(p==map->Last || type<p->Type)p=map->Last;
-            *out=p->Component;return true;
+            ETCInterfaceType key = (ETCInterfaceType)(type);InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(key);
+            if(p==map->Last || type<p->first)p=map->Last;
+            *out=((CTCCreatureModeManager*)p->second);return true;
         }return false;
     }
 };

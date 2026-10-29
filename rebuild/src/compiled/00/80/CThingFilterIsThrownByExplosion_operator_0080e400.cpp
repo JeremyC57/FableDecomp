@@ -12,16 +12,18 @@ class CTCBase {
 public:
     virtual ~CTCBase();
 };
-struct STCEntry {
-    long     m_kind;
-    CTCBase* m_pTC;
-};
-struct CTCMap {
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind) const;  // 0x004365B0 (const CVectorMap::LowerBound)
+    const STCEntry* LowerBound(const ETCInterfaceType& kind) const;  // 0x004365B0 (const CVectorMap::LowerBound)
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 namespace NCreatureMode {
 class CModeBase {
 public:
@@ -43,8 +45,8 @@ class CThing { public:
     __forceinline CTCBase* GetTC(long kind) const
     {
         const CTCMap* map = &m_tcs;
-        STCEntry* it = map->LowerBound((unsigned long)kind);
-        return (it == map->m_pLast || kind < it->m_kind ? map->m_pLast : it)->m_pTC;
+        const STCEntry* it = map->LowerBound((ETCInterfaceType)kind);
+        return (it == map->m_pLast || kind < it->first ? map->m_pLast : it)->second;
     }
 };
 

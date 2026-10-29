@@ -36,12 +36,17 @@ class CTCBase { public:
     virtual const CThing* GetTargetedThing() const;     // slot 36 (+0x90)
 };
 
-struct SInterfaceEntry { long type; CTCBase* component; };
-struct CInterfaceMap {                                  // CVectorMap<long, CTCBase*>, 12 bytes
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> SInterfaceEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<long, CTCBase*>, 12 bytes
     SInterfaceEntry* _M_start; SInterfaceEntry* _M_finish; SInterfaceEntry* _M_end_of_storage;
-    const SInterfaceEntry* LowerBound(const long& key) const;   // 0x004365B0
+    const SInterfaceEntry* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
     const SInterfaceEntry* end() const { return _M_finish; }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -54,11 +59,11 @@ class CThing { public:
     __forceinline unsigned long HasTC(long type) const { return TCFlags & (1 << type); }
     template<long TYPE> __forceinline CTCBase* GetTC() const
     {
-        long type = TYPE;
+        ETCInterfaceType type = (ETCInterfaceType)(TYPE);
         const CInterfaceMap* map = &Interfaces;
         const SInterfaceEntry* it = map->LowerBound(type);
         const SInterfaceEntry* last = map->end();
-        return (it == last || TYPE < it->type ? last : it)->component;
+        return (it == last || TYPE < it->first ? last : it)->second;
     }
 };
 

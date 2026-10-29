@@ -105,9 +105,10 @@ extern CDefStringTable g_DefStringTable;
 extern unsigned long g_InvalidSoundHandle;
 
 enum ETCInterfaceType {TC_SOUND_PLAYER=16};
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template<class K,class V> class CKeyPairCompareLess { public:};
 template<class K,class V,class Compare> class CVectorMap { public:
-    struct Entry {K first;V second;};
+    typedef std::pair<K,V> Entry;
     typedef Entry* iterator; //retail one-pointer iterator ABI: EAX, no hidden return
     Entry* First;Entry* Last;Entry* Limit;
     iterator LowerBound(const K&); //0040f020 ORIGINAL NONCONST specialization; const overload is004365b0

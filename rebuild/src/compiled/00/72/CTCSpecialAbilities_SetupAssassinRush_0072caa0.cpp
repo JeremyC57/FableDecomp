@@ -38,13 +38,17 @@ public:
 }
 class CTCBase;
 enum ETCInterfaceType { TC_NONE = 0 };
-class CInterfaceMap {                                   // CVectorMap<ETCInterfaceType, CTCBase*, ...>
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                   // CVectorMap<ETCInterfaceType, CTCBase*, ...>
 public:
-    struct SEntry { ETCInterfaceType type; CTCBase* component; };
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    const SEntry* LowerBound(const ETCInterfaceType* type) const;   // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CPlayer {
 public:
     unsigned char _pad00[0x20a];
@@ -76,8 +80,8 @@ public:
     {
         ETCInterfaceType key = type;
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(key);
+        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
     }
 };
 class CCreatureActionBase;

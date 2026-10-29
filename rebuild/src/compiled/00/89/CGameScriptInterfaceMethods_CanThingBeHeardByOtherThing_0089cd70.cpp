@@ -4,7 +4,13 @@
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
 class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct ScriptMethods;
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; }; //004C73D0,004C7E50
@@ -111,8 +117,8 @@ bool CGameScriptInterfaceMethods::CanThingBe_Heard_ByOtherThing(const ScriptMeth
  if(!source.IsAlive()||!listener.IsAlive())return false;
  CThingNative* other=listener.GetPThing();CThingNative* thing=source.GetPThing();
  if(other->UsingComponents[1]&0x100000){
- ComponentMap* map=&other->Components;ComponentEntry* it=map->LowerBound(52);ComponentEntry* end=map->Finish;
- PerceiveMethods* tc=static_cast<PerceiveMethods*>((it==end||it->Type>52?end:it)->Component);
+ ComponentMap* map=&other->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)52);ComponentEntry* end=map->Finish;
+ PerceiveMethods* tc=static_cast<PerceiveMethods*>(((void*)(it==end||it->first>52?end:it)->second));
  const CThingNative* perceived=tc->GetPerceivedThing();if(perceived&&perceived==thing)return tc->Heard;
  float radius=tc->GetSoundRadius();const C3DVector& a=other->GetPos();const C3DVector& b=thing->GetPos();
  float x=b.X-a.X,y=b.Y-a.Y,z=b.Z-a.Z;if(z*z+y*y+x*x<=radius*radius)return true;

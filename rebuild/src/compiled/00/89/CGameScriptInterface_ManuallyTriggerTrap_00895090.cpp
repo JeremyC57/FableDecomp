@@ -4,12 +4,18 @@ class CTCTrapBase {
 public:
     void ManualTrigger();   // 0x00788388
 };
-struct CTrapInterfaceEntry { int Key; void* Interface; };
-struct CTrapInterfaceMap {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CTrapInterfaceEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     CTrapInterfaceEntry* Begin;
     CTrapInterfaceEntry* End;
-    CTrapInterfaceEntry* LowerBound(const int* key);
+    CTrapInterfaceEntry* LowerBound(const ETCInterfaceType& key);
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTrapInterfaceMap;
 struct CTrapTargetView {
     unsigned char _pad_0x00[0x2c];
     unsigned int TypeFlags;
@@ -27,12 +33,12 @@ bool __stdcall CGameScriptInterface_ManuallyTriggerTrap(CGameScriptInterface* se
         ((CGameScriptInterfaceTrapVTable*)self->__vftable)->GetTarget(self);
     if (target && (target->TypeFlags & 0x20000000)) {
         CTrapInterfaceMap* map = &target->Interfaces;
-        int key = 0x7d;
-        CTrapInterfaceEntry* entry = map->LowerBound(&key);
+        ETCInterfaceType key = (ETCInterfaceType)(0x7d);
+        CTrapInterfaceEntry* entry = map->LowerBound(key);
         CTrapInterfaceEntry* end = map->End;
-        if (entry == end || entry->Key > 0x7d)
+        if (entry == end || entry->first > 0x7d)
             entry = end;
-        ((CTCTrapBase*)(entry->Interface))->ManualTrigger();
+        ((CTCTrapBase*)(((void*)entry->second)))->ManualTrigger();
         return true;
     }
     return false;

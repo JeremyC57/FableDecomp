@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0041A430, 141 bytes (row padded to 144). FableWin.pdb:
 // ?GetMyDocumentsDir@NResourceDirectoryNames@@YI?AVCWideString@@XZ (`__fastcall` free function: hidden result in ecx, `ret`).
 // Callees: the SHGetFolderPathW import thunk slot [0x01440280] (called through the IAT, `__stdcall`, five arguments),
-// CWideString(const wchar_t*) @ 0x0099B6B0, GetLength @ 0x0099B220, operator const wchar_t* @ 0x0099AF10,
+// CWideString(const wchar_t*) @ 0x0099B6B0, GetLength @ 0x0099B220, GetAsCharArray @ 0x0099AF10,
 // operator+=(const wchar_t*) @ 0x0099B940 (literal L"\\" @ 0x0122DE78), CWideString(const CWideString&) @ 0x0099B720,
 // ~CWideString @ 0x0099B510, __security_check_cookie @ 0x00BFE9F9 (cookie 0x0139C8A8).
 // Build: /GS (the TU is built with buffer-security checks: cookie stored above the 260-character path buffer).
@@ -23,7 +23,7 @@ CWideString __fastcall GetMyDocumentsDir()
     SHGetFolderPathW(0, 5, 0, 0, path);            // CSIDL_PERSONAL
     CWideString directory(path);
     long lastIndex = directory.GetLength() - 1;
-    const wchar_t* text = directory;
+    const wchar_t* text = directory.GetAsCharArray();
     if (text[lastIndex] != L'\\')
         directory += L"\\";
     return directory;

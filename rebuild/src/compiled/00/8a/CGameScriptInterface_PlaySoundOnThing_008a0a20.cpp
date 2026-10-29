@@ -8,7 +8,13 @@
 // Native bitset has9words/map44/life91 versus donor10words/map48/lifeA1; retain named native view below.
 #include "fable_string.h"
 class C3DVector{ public:float X,Y,Z;};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct ScriptMethods;
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; unsigned char AfterComponents[0x45]; unsigned char Dead:1; unsigned char OtherLifeFlags:7; ScriptMethods GetScriptThing()const; }; //004C73D0,004C7E50
@@ -118,6 +124,6 @@ struct CGameScriptInterfaceMethods:CGameScriptInterface{unsigned long PlaySoundO
 unsigned long CGameScriptInterfaceMethods::PlaySoundOnThing(const ScriptMethods& thing,const CCharString& symbol)const{
  if(thing.IsAlive()){
  CASoundBank* bank=g_MainGameComponent->PSampleBank;long sound=bank->GetSoundIndexFromSymbol(symbol);
- if(sound){CThingNative* owner=thing.GetPThing();if(owner->UsingComponents[0]&0x10000){ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound(16);ComponentEntry* end=map->Finish;CTCSoundPlayer* player=static_cast<CTCSoundPlayer*>((it==end||it->Type>16?end:it)->Component);
+ if(sound){CThingNative* owner=thing.GetPThing();if(owner->UsingComponents[0]&0x10000){ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)16);ComponentEntry* end=map->Finish;CTCSoundPlayer* player=static_cast<CTCSoundPlayer*>(((void*)(it==end||it->first>16?end:it)->second));
  CSoundInit init;init.GainFaderBits=0x8010;return player->PlayAttachedSample(CSoundPair(sound),init,true,false,false);
  }}}return g_InvalidSoundHandle;}

@@ -33,14 +33,15 @@ template <class _T1, class _T2> struct pair {
 };
 }
 
-template <class K, class V> class CVectorMap {
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare = CKeyPairCompareLess<K, V> > class CVectorMap {
 public:
     typedef std::pair<K, V> value_type;
     value_type* _M_start;                            // +0x00 (STLport vector)
     value_type* _M_finish;                           // +0x04
     value_type* _M_end_of_storage;                   // +0x08
     value_type* end() const { return _M_finish; }
-    value_type* LowerBound(const K& key) const;      // 0x004365B0
+    const value_type* LowerBound(const K& key) const;   // 0x004365B0
 };
 
 class CThing {

@@ -12,17 +12,19 @@
 //   component reads the never-written local (`mov eax,[esp+4]` on the absent arm, as GOTCHAS 24l's GetInterface rule).
 class CTCBase;
 
-struct STCEntry {
-    long     m_kind;
-    CTCBase* m_pTC;
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-struct CTCMap {
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    const STCEntry* LowerBound(const unsigned long& kind) const;   // 0x004365B0
+    const STCEntry* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing {
 public:
@@ -35,10 +37,10 @@ public:
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             const CTCMap* map = &m_tcs;
-            const STCEntry* it = map->LowerBound((unsigned long)T::INTERFACE_TYPE);
-            if (it == map->m_pLast || T::INTERFACE_TYPE < it->m_kind)
+            const STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
+            if (it == map->m_pLast || T::INTERFACE_TYPE < it->first)
                 it = map->m_pLast;
-            *out = (const T*)it->m_pTC;
+            *out = (const T*)it->second;
             return true;
         }
         return false;

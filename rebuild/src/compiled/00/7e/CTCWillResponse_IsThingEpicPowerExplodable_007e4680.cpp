@@ -14,17 +14,19 @@
 //   `shr al,5 ; and al,1`); the absent-component default `return true;` is the fall-out tail. Same TU shape as 0x007E44E0.
 class CTCBase;
 
-struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long     m_kind;
-    CTCBase* m_pTC;
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-struct CTCMap {                                 // the thing's sorted component map at +0x44
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                 // the thing's sorted component map at +0x44
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind) const;   // 0x004365B0
+    const STCEntry* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing {
 public:
@@ -37,10 +39,10 @@ public:
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             const CTCMap* map = &m_tcs;
-            const STCEntry* it = map->LowerBound((unsigned long)T::INTERFACE_TYPE);
-            if (it == map->m_pLast || T::INTERFACE_TYPE < it->m_kind)
+            const STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
+            if (it == map->m_pLast || T::INTERFACE_TYPE < it->first)
                 it = map->m_pLast;
-            *out = (const T*)it->m_pTC;
+            *out = (const T*)it->second;
             return true;
         }
         return false;

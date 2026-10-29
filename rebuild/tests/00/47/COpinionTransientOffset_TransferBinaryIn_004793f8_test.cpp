@@ -15,7 +15,9 @@ class CDataInputStream
     long           Pad10;                  // +0x10
     long           RemainingInSourceChunk; // +0x14
 
-    void ReadWithSrcChunkOverflow(unsigned char* destination, long size);
+private:
+    friend class COpinionTransientOffset;
+    void ReadWithSrcChunkOverflow(unsigned char* destination, long size);   // 0x00993CA0 (private: AAE)
 };
 
 class COpinionTransientOffset

@@ -32,12 +32,18 @@ class CCharString { public:
     CCharString(const CCharString& other);              // 0x0099EC30
     ~CCharString();                                     // 0x0099EAE0
 };
-struct ComponentEntry { long Type; void* Component; };
-struct ComponentMap {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     ComponentEntry* Start;
     ComponentEntry* Finish;
-    const ComponentEntry* LowerBound(const long& key) const;   // 0x004365B0
+    const ComponentEntry* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 struct CThingNative {
     void*          VTable;
     unsigned char  Base[0x1c];
@@ -109,9 +115,9 @@ bool CGameScriptThingMethods::MsgIsHitBy(const CCharString& attackerScriptName) 
         CThingNative* thing = p->GetPItem();
         if (thing->UsingComponents[2] & 4) {
             const ComponentMap* map = &thing->Components;
-            const ComponentEntry* it = map->LowerBound(0x42);
+            const ComponentEntry* it = map->LowerBound((ETCInterfaceType)0x42);
             const ComponentEntry* end = map->Finish;
-            const CTCEntityEventsNative* events = (const CTCEntityEventsNative*)((it == end || it->Type > 0x42) ? end : it)->Component;
+            const CTCEntityEventsNative* events = (const CTCEntityEventsNative*)((void*)((it == end || it->first > 0x42) ? end : it)->second);
             CEventHitBy* event;
             if (attackerScriptName.PStringData == 0) {
                 if (strcmp("", "") == 0)

@@ -18,15 +18,20 @@ unsigned long CTCSound::PlaySound(const CCharString& name, bool positional, long
     ++g_plays; g_played_id = (long)name.PStringData;
     return (!positional && a == 0 && b == 0 && c == -1) ? 42UL : 7UL;
 }
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type);
+    SEntry* LowerBound(const ETCInterfaceType& type);
 };
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const ETCInterfaceType& type)
 {
     SEntry* it = first;
-    while (it != last && it->type < *type) ++it;
+    while (it != last && it->first < type) ++it;
     return it;
 }
 class CThing { public: unsigned char _pad00[0x20]; unsigned long m_presentBits[9]; CInterfaceMap m_interfaces; };
@@ -41,7 +46,7 @@ int main()
 {
     static CSpecialAbilitiesLightningSpellDef def; def.LoopingSound = 9;
     CTCSound snd;
-    CInterfaceMap::SEntry e[1] = { { 16, (CTCBase*)&snd } };
+    CInterfaceMap::SEntry e[1] = { { (ETCInterfaceType)16, (CTCBase*)&snd } };
     CThing t; memset(&t, 0, sizeof(t));
     t.m_interfaces.first = e; t.m_interfaces.last = e + 1;
     CTCWillLightning w; memset(&w, 0, sizeof(w));

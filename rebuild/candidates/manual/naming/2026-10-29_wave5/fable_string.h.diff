@@ -1,0 +1,15 @@
+35a36
+>     const wchar_t* GetAsCharArray() const;                     // 0x0099AF10 ?GetAsCharArray@CWideString@@QBEPBGXZ
+36a38,40
+>     long FindCharPos(wchar_t c) const;                         // 0x0099B070 ?FindCharPos@CWideString@@QBEJG@Z
+>     void __cdecl Sprintf(const wchar_t* format, ...);          // 0x0099BA70 ?Sprintf@CWideString@@QAAXPBGZZ
+>     void SetLength(long length);                               // 0x0099BC50 ?SetLength@CWideString@@QAEXJ@Z
+49c53,55
+<     CWideStringData* AllocStringData(
+---
+> 
+> protected:
+>     CWideStringData* AllocStringData(                          // 0x0099B3C0 protected (Ego_r / FableWin: IAE)
+51a58,59
+> 
+> private:

@@ -23,18 +23,24 @@ class C3DVector { public:
     { X += other.X; Y += other.Y; Z += other.Z; return *this; }
 };
 struct CTCInterface { virtual void v0() {} };
-struct CTCMapEntry { long Type; CTCInterface* Component; };
-struct CTCMap {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CTCMapEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     CTCMapEntry* First;
     CTCMapEntry* Last;
-    CTCMapEntry* LowerBound(const long* type); // 0x0040F020
+    CTCMapEntry* LowerBound(const ETCInterfaceType& type); // 0x0040F020
     CTCMapEntry* Find(long interfaceType)
     {
-        long type = interfaceType;
-        CTCMapEntry* it = LowerBound(&type);
-        return (it == Last || interfaceType < it->Type ? Last : it);
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+        CTCMapEntry* it = LowerBound(type);
+        return (it == Last || interfaceType < it->first ? Last : it);
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 class CThing : public CBaseObject { public:
     unsigned char BeforeComponents[0x20-sizeof(CBaseObject)];
     unsigned long UsingComponents[9];
@@ -42,10 +48,10 @@ class CThing : public CBaseObject { public:
     unsigned long HasTC(long type) const { return UsingComponents[type >> 5] & (1UL << (type & 31)); }
     template<class T> T* GetTC(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CTCMap* map = &Interfaces;
-        CTCMapEntry* it = map->LowerBound(&type);
-        return (T*)(it == map->Last || interfaceType < it->Type ? map->Last : it)->Component;
+        CTCMapEntry* it = map->LowerBound(type);
+        return (T*)((CTCInterface*)(it == map->Last || interfaceType < it->first ? map->Last : it)->second);
     }
     const C3DVector& GetPos() const; // 0x004C73D0
 };

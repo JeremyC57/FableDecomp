@@ -23,16 +23,18 @@ class CCharString { public:
 };
 
 class CTCBase;
-struct CTCEntry {                                        // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long     Type;
-    CTCBase* TC;
-};
-struct CTCMap {                                          // CThing::Components: a sorted vector of pairs (12 bytes)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CTCEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                          // CThing::Components: a sorted vector of pairs (12 bytes)
     CTCEntry* _M_start;
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
-    CTCEntry* LowerBound(const unsigned long& type) const;   // 0x004365B0
+    const CTCEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 struct CTCBitset {                                       // std::bitset<274> CThing::UsingComponents
     unsigned long _M_w[9];
     bool test(long bit) const;                           // 0x00410DE0
@@ -44,12 +46,12 @@ class CThing { public:                                          // retail CThing
     template<class T> __forceinline bool GetInterface(T** out, long type) const
     {
         if (UsingComponents.test(type)) {
-            unsigned long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             const CTCMap* map = &Components;
-            CTCEntry* it = map->LowerBound(key);
-            if (it == map->_M_finish || type < it->Type)
+            const CTCEntry* it = map->LowerBound(key);
+            if (it == map->_M_finish || type < it->first)
                 it = map->_M_finish;
-            *out = (T*)it->TC;
+            *out = (T*)it->second;
             return true;
         }
         return false;

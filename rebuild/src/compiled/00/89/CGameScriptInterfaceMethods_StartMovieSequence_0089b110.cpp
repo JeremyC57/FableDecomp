@@ -7,7 +7,13 @@
 #undef CPlayer
 #include "engine/CTCHeroStats.h"
 #include "fable_string.h"
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;};
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
@@ -23,7 +29,7 @@ public:
     void AllowUIToOpen(bool);   // 0x0056A930
 };
 struct BoastMethods:CTCBoastUI{}; //0056A930
-__forceinline BoastMethods* GetBoast(CThingNative* hero){BoastMethods* result;if(hero->UsingComponents[7]&0x100){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound(232);ComponentEntry* end=map->Finish;result=static_cast<BoastMethods*>((it==end||it->Type>232?end:it)->Component);}return result;}
+__forceinline BoastMethods* GetBoast(CThingNative* hero){BoastMethods* result;if(hero->UsingComponents[7]&0x100){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)232);ComponentEntry* end=map->Finish;result=static_cast<BoastMethods*>(((void*)(it==end||it->first>232?end:it)->second));}return result;}
 struct MovieTransitionState{unsigned char Prefix[0xf4];bool Busy;};extern MovieTransitionState* g_MovieTransitionState; //013B8790
 extern long g_MovieCameraID; //01380C34
 extern long g_MovieState; //013BAD00

@@ -18,20 +18,26 @@ class CTCWeaponTrail;
 class C3DVector { public:float X,Y,Z;};
 class CThing;
 class CTCCarrying { public:CThing* GetThingInPrimarySlot()const;}; //0x006A1440
-struct CInterfaceMap {
- struct Entry {long Type;CTCCarrying* Component;};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+ typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
  Entry* First;Entry* Last;
- Entry* LowerBound(const long*) const; //0x004365B0
+ const Entry* LowerBound(const ETCInterfaceType& key) const; //0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingCreatureBase { public:
  unsigned char _nativeBeforeComponentFlags[0x20];
  unsigned long UsingComponents[9];
  CInterfaceMap Components;
  __forceinline bool GetCarrying(CTCCarrying** out){
-  if(UsingComponents[2]&0x40){CInterfaceMap* map=&Components;const long type=0x46;
-   CInterfaceMap::Entry* p=map->LowerBound(&type);
-   CInterfaceMap::Entry* selected=(p!=map->Last && p->Type<=type)?p:map->Last;
-   *out=selected->Component;return true;
+  if(UsingComponents[2]&0x40){CInterfaceMap* map=&Components;const ETCInterfaceType type = (ETCInterfaceType)(0x46);
+   const CInterfaceMap::Entry* p=map->LowerBound(type);
+   const CInterfaceMap::Entry* selected=(p!=map->Last && p->first<=type)?p:map->Last;
+   *out=((CTCCarrying*)selected->second);return true;
   }
   return false;
  }

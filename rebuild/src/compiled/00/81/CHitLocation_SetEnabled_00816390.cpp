@@ -9,23 +9,26 @@
 // (retail then reads the dead `enabled` argument slot, `mov eax,[esp+0Ch]`); the mask word test of kind 0x7f is the
 // sign test (`test ecx,ecx ; jns`).
 class CTCHitLocations;
-struct STCEntry {                                  // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long             m_kind;
-    CTCHitLocations* m_pTC;
-};
-struct CTCMap {                                    // the thing's component map at +0x44
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                    // the thing's component map at +0x44
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind);   // 0x0040F020
+    STCEntry* LowerBound(const ETCInterfaceType& kind);   // 0x0040F020
     __forceinline CTCHitLocations* Find(long kind)
     {
-        STCEntry* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
+        STCEntry* it = LowerBound((ETCInterfaceType)kind);
+        if (it == m_pLast || kind < it->first)
             it = m_pLast;
-        return it->m_pTC;
+        return ((CTCHitLocations*)it->second);
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_tcMask[8];                     // +0x20: which component kinds the thing holds

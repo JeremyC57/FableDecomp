@@ -12,24 +12,26 @@
 // sharing one `return false`, the true exit is the cold tail shared with the absent case.
 class CTCBase;
 
-struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long     m_kind;
-    CTCBase* m_pTC;
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-struct CTCMap {                                 // the thing's component map at +0x44: a sorted vector of pairs
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                 // the thing's component map at +0x44: a sorted vector of pairs
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
+    const STCEntry* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
     CTCBase* Find(long kind) const                 // the inlined map find: lower bound, then end when the key is absent
     {
-        STCEntry* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
+        const STCEntry* it = LowerBound((ETCInterfaceType)kind);
+        if (it == m_pLast || kind < it->first)
             it = m_pLast;
-        return it->m_pTC;
+        return it->second;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing { public:
     unsigned char  _pad00[0x20];

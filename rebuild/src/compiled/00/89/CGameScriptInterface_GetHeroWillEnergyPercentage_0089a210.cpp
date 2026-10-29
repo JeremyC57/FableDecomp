@@ -2,16 +2,19 @@
 // __fastcall, returns long, 0 params.
 
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct MapNode {
-    int key;        // +0x0
-    void* value;    // +0x4
-};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> MapNode;
 
-struct IFaceMap {
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     void* pad0;         // +0x0
     MapNode* end;       // +0x4
-    MapNode* LowerBound(int* key); // __fastcall: this in ecx, key on stack
+    const MapNode* LowerBound(const ETCInterfaceType& key) const; // __fastcall: this in ecx, key on stack
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > IFaceMap;
 
 struct Thing {
     unsigned char pad0[0x20];
@@ -34,16 +37,16 @@ long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(CGameScriptInte
 {
     Thing* thing = GetMgr(self->PlayerManager)->GetPControlledCreature();
     if (thing != 0 && !(thing->flags91 & 1) && (thing->field20 & 0x10)) {
-        int key = 4;
+        ETCInterfaceType key = (ETCInterfaceType)(4);
         IFaceMap* m = &thing->ifaces;
-        MapNode* it = m->LowerBound(&key);
+        const MapNode* it = m->LowerBound(key);
         MapNode* end = m->end;
-        if (it != end && it->key <= 4) {
+        if (it != end && it->first <= 4) {
             // use it
         } else {
             it = end;
         }
-        CalcPct(it->value);
+        CalcPct(((void*)it->second));
         return Finalize();
     }
     return 0;

@@ -4,24 +4,26 @@
 #include <string.h>
 class CTCBase;
 
-struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long     m_kind;
-    CTCBase* m_pTC;
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-struct CTCMap {                                 // the thing's component map at +0x44: a sorted vector of pairs
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                 // the thing's component map at +0x44: a sorted vector of pairs
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
+    const STCEntry* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (CVectorMap<ETCInterfaceType,...>::LowerBound)
     CTCBase* Find(long kind) const                 // the inlined map find: lower bound, then end when the key is absent
     {
-        STCEntry* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
+        const STCEntry* it = LowerBound((ETCInterfaceType)kind);
+        if (it == m_pLast || kind < it->first)
             it = m_pLast;
-        return it->m_pTC;
+        return it->second;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing {
 public:
@@ -46,23 +48,23 @@ public:
 
 struct SFlammable { long burning; };
 bool CTCFlammable::IsOnFire() const { return ((const SFlammable*)this)->burning != 0; }
-STCEntry* CTCMap::LowerBound(const unsigned long& kind) const
+const STCEntry* CTCMap::LowerBound(const ETCInterfaceType& kind) const
 {
     STCEntry* it = m_pFirst;
-    while (it != m_pLast && (unsigned long)it->m_kind < kind) ++it;
+    while (it != m_pLast && (unsigned long)it->first < kind) ++it;
     return it;
 }
 int main()
 {
     SFlammable on = { 1 }, off = { 0 }, endv = { 1 };
-    STCEntry e[2] = { { 0x6d, (CTCBase*)&on }, { 0, (CTCBase*)&endv } };
+    STCEntry e[2] = { { (ETCInterfaceType)0x6d, (CTCBase*)&on }, { (ETCInterfaceType)0, (CTCBase*)&endv } };
     CThing t; memset(&t, 0, sizeof t);
     t.m_tcs.m_pFirst = e; t.m_tcs.m_pLast = e + 1; t.m_tcs.m_pEnd = e + 2;
     CThingFilter_IsOnFire f;
     if (f(t)) return 1;                                         // no 0x6d bit
     t.m_tcMask[0x6d >> 5] |= 1UL << (0x6d & 31);
     if (!f(t)) return 2;                                        // burning
-    e[0].m_pTC = (CTCBase*)&off;
+    e[0].second = (CTCBase*)&off;
     if (f(t)) return 3;                                         // not burning
     puts("006a8a80_TEST PASS");
     return 0;

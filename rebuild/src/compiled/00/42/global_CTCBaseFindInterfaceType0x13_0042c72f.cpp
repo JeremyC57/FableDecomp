@@ -1,7 +1,13 @@
 #pragma optimize("s",on)
 
 struct CTCBitsRemaining { unsigned long words[9]; unsigned long Test(unsigned long bit); };
-struct CTCMapRemaining { int* begin; int* end; int* LowerBound(const int* key); };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public: typedef std::pair<ETCInterfaceType, CTCBase*> SEntry; SEntry* begin; SEntry* end; SEntry* LowerBound(const ETCInterfaceType& key); };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMapRemaining;
 
 #define CTC_LAYOUT(METHOD) \
     unsigned char unused00[0x20]; CTCBitsRemaining bits; CTCMapRemaining map; \
@@ -12,10 +18,10 @@ struct CLASS { CTC_LAYOUT(METHOD); }; \
 bool CLASS::METHOD(int* output) { \
     unsigned long tested = bits.Test(KEY); bool result; \
     if ((unsigned char)tested != 0) { \
-        int key = KEY; CTCMapRemaining* current_map = &(map); \
-        int* entry = current_map->LowerBound(&key); int* end = current_map->end; \
-        if (entry == end || *entry > KEY) entry = end; \
-        *output = entry[1]; result = true; \
+        ETCInterfaceType key = (ETCInterfaceType)(KEY); CTCMapRemaining* current_map = &(map); \
+        CTCMapRemaining::SEntry* entry = current_map->LowerBound(key); CTCMapRemaining::SEntry* end = current_map->end; \
+        if (entry == end || entry->first > KEY) entry = end; \
+        *output = (int)entry->second; result = true; \
     } else result = false; \
     return result; \
 }
@@ -25,10 +31,10 @@ struct CLASS { CTC_LAYOUT(METHOD); }; \
 bool CLASS::METHOD(int* output) { \
     register int key = KEY; unsigned long tested = bits.Test(key); bool result; \
     if ((unsigned char)tested != 0) { \
-        CTCMapRemaining* current_map = &(map); int local_key = key; \
-        int* entry = current_map->LowerBound(&local_key); int* end = current_map->end; \
-        if (entry == end || *entry > key) entry = end; \
-        *output = entry[1]; result = true; \
+        CTCMapRemaining* current_map = &(map); ETCInterfaceType local_key = (ETCInterfaceType)(key); \
+        CTCMapRemaining::SEntry* entry = current_map->LowerBound(local_key); CTCMapRemaining::SEntry* end = current_map->end; \
+        if (entry == end || entry->first > key) entry = end; \
+        *output = (int)entry->second; result = true; \
     } else result = false; \
     return result; \
 }

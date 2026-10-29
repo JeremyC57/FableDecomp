@@ -2,16 +2,19 @@
 // __fastcall, void, 1 param (this)
 
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct MapNode {
-    int key;      // +0x00
-    void* value;  // +0x04
-};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> MapNode;
 
-struct Map {
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     void* root;      // +0x00
     MapNode* header; // +0x04  (end sentinel)
-    MapNode* LowerBound(int* keyPtr); // thiscall: this in ecx, keyPtr on stack
+    MapNode* LowerBound(const ETCInterfaceType& keyPtr); // thiscall: this in ecx, keyPtr on stack
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Map;
 
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
@@ -28,12 +31,12 @@ void __fastcall CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault(CGa
     if (!(eax[0x20] & 0x10)) return;
 
     Map* map = (Map*)((char*)eax + 0x44);
-    int key = 4;
-    MapNode* node = map->LowerBound(&key);
+    ETCInterfaceType key = (ETCInterfaceType)(4);
+    MapNode* node = map->LowerBound(key);
     MapNode* endNode = map->header;
     MapNode* sel;
     if (node == endNode) sel = endNode;
-    else if (node->key <= 4) sel = node;
+    else if (node->first <= 4) sel = node;
     else sel = endNode;
-    Consume(sel->value);
+    Consume(((void*)sel->second));
 }

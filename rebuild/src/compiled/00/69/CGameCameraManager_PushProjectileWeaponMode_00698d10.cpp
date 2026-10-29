@@ -27,9 +27,15 @@ struct CCameraModeOwner {unsigned References;void(__fastcall* Destroy)(void*);vo
 struct CCameraModePointer {CCameraMode* Data;CCameraModeOwner* Info;CCameraModePointer(CCameraMode*);CCameraModePointer(const CCameraModePointer&);~CCameraModePointer();}; //56C050
 struct CCameraScript {void* Vtable;bool IsFinished()const{typedef bool(CCameraScript::*F)()const;return(this->*static_cast<const F*>(Vtable)[2])();}};
 struct CCameraScriptPointer {CCameraScript* Data;CCameraModeOwner* Info;};
-struct CCameraComponentEntry {int Key;CTCHeroRangedAttacks* Component;};
-struct CCameraComponentMap {CCameraComponentEntry* Begin;CCameraComponentEntry* End;CCameraComponentEntry* Capacity;CCameraComponentEntry* LowerBound(const int&)const;
- __forceinline CTCHeroRangedAttacks* Find()const{int key=0x81;CCameraComponentEntry* p=LowerBound(key);if(p==End||0x81<p->Key)p=End;return p->Component;}};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CCameraComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:CCameraComponentEntry* Begin;CCameraComponentEntry* End;CCameraComponentEntry* Capacity;const CCameraComponentEntry* LowerBound(const ETCInterfaceType& key) const;
+ __forceinline CTCHeroRangedAttacks* Find()const{ETCInterfaceType key = (ETCInterfaceType)(0x81);const CCameraComponentEntry* p=LowerBound(key);if(p==End||0x81<p->first)p=End;return ((CTCHeroRangedAttacks*)p->second);}};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CCameraComponentMap;
 class CThing { public:unsigned char Prefix[0x30];unsigned char RangedFlag;unsigned char ToMap[0x13];CCameraComponentMap Components;unsigned char BeforeDeleted[0x41];unsigned char Deleted;};
 struct CCameraRangedMethods:CTCHeroRangedAttacks {float GetProjectileWeaponFirstPersonTargetingModeZoomFOV()const;}; //789CC0
 struct CCameraObservedPointer {void* Vtable;void* Info;const CThing* GetPItem()const;}; //A01B50

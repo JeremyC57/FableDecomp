@@ -29,15 +29,21 @@ FABLE_STATIC_ASSERT(sizeof(PhysicsSlot)==4);
 #endif
 struct PhysicsView:CTCPhysicsBase {__forceinline void SetFacingAngleXY(const float& angle){(this->*reinterpret_cast<PhysicsSlot*>(__vftable)[66].SetFacingAngleXY)(angle);}}; //slot66=00723760 nativeCTCPhysicsStandard
 class CTCStealth { public:C3DVector GetPositionToMoveToForStabOn(Creature& target,float& angle)const;}; //00746EC0
-struct InterfaceEntry {long Type;CTCStealth* Component;};
-struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* type)const;}; //004365B0 const lower_bound
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> InterfaceEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:InterfaceEntry* First;InterfaceEntry* Last;const InterfaceEntry* LowerBound(const ETCInterfaceType& type) const;};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > InterfaceMap; //004365B0 const lower_bound
 class CThing { public:
     const C3DVector& GetPos() const; //004C73D0
 };
 struct Creature : public CThing {
  unsigned char _beforeFlags[0x20];unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforePhysics[0x14];PhysicsView* Physics;unsigned char _beforeDead[0x2d];unsigned char DeadFlags;
  __forceinline PhysicsView* GetPhysics()const{return Physics;}
- __forceinline bool GetInterface(CTCStealth** out,long type)const{if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;const InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;*out=p->Component;return true;}return false;}
+ __forceinline bool GetInterface(CTCStealth** out,long type)const{if(PresentBits[type>>5]&(1UL<<(type&31))){ETCInterfaceType key = (ETCInterfaceType)(type);const InterfaceMap* map=&Interfaces;const InterfaceEntry* p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;*out=((CTCStealth*)p->second);return true;}return false;}
 };
 struct CBaseObjectPointer{void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer{virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50

@@ -6,12 +6,13 @@ struct InterfaceBits
     unsigned long Test(unsigned long bit);
 };
 
-struct InterfaceMap
-{
-    int* begin;
-    int* end;
-    int* LowerBound(const int* key);
-};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public: typedef std::pair<ETCInterfaceType, CTCBase*> SEntry; SEntry* begin; SEntry* end; SEntry* LowerBound(const ETCInterfaceType& key); };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > InterfaceMap;
 
 struct InterfaceContainer
 {
@@ -27,14 +28,14 @@ bool InterfaceContainer::CTC_FindInterface_0x11(int* output)
     unsigned long tested = bits.Test(0x11);
     bool result;
     if ((unsigned char)tested != 0) {
-        int key = 0x11;
+        ETCInterfaceType key = (ETCInterfaceType)(0x11);
         InterfaceMap* current_map = &(map);
-        int* entry = current_map->LowerBound(&key);
-        int* end = current_map->end;
-        if (entry == end || *entry > 0x11) {
+        InterfaceMap::SEntry* entry = current_map->LowerBound(key);
+        InterfaceMap::SEntry* end = current_map->end;
+        if (entry == end || entry->first > 0x11) {
             entry = end;
         }
-        *output = entry[1];
+        *output = (int)entry->second;
         result = true;
     } else {
         result = false;

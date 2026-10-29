@@ -27,13 +27,18 @@ __forceinline long LastFrame(ActiveQuest* q) { return q && q->Script ? q->Script
 __forceinline long CurrentFrame(ActiveQuest* q) { return q && q->Script ? q->Script->PActiveThread->CurrentScriptFrame : 0; }
 
 class CTCBase;
-struct ComponentEntry { long Type; CTCBase* Component; };
-struct ComponentMap {
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     ComponentEntry* Start;
     ComponentEntry* Finish;
     ComponentEntry* Capacity;
-    const ComponentEntry* LowerBound(const long* type) const;   // 0x004365B0
+    const ComponentEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 struct CThingNative {
     void* VTable;
     unsigned char Base[0x1c];
@@ -44,12 +49,12 @@ struct CThingNative {
     bool HasTC(long type) const { if (UsingComponents[type >> 5] & (1UL << (type & 31))) return true; return false; }
     template <class T> __forceinline const T* GetTC(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const ComponentMap* map = &Components;
-        const ComponentEntry* it = map->LowerBound(&type);
-        if (it == map->Finish || interfaceType < it->Type)
+        const ComponentEntry* it = map->LowerBound(type);
+        if (it == map->Finish || interfaceType < it->first)
             it = map->Finish;
-        return (const T*)it->Component;
+        return (const T*)it->second;
     }
 };
 class CBaseObject;

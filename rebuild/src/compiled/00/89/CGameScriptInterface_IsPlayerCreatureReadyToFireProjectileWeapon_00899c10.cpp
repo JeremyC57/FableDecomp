@@ -26,20 +26,21 @@ class CThingPlayerCreature : public IsPCReady_Creature { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 /* std-style ordered map living at creature+0x44: begin at +0, end at +4. */
-struct IsPCReady_MapNode
-{
-    int    m_Key;    /* [node+0x00] : projectile-weapon type key */
-    void*  m_Value;  /* [node+0x04] : weapon object pointer       */
-};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> IsPCReady_MapNode;
 
-struct IsPCReady_Map
-{
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     IsPCReady_MapNode* m_Begin;  /* [+0x00] (unused by this fn) */
     IsPCReady_MapNode* m_End;    /* [+0x04] end sentinel        */
 
     /* __fastcall member: this(=map) in ecx, &key pushed on stack. */
-    IsPCReady_MapNode* LowerBound(int* key);   /* call ffb9c9a0 */
+    const IsPCReady_MapNode* LowerBound(const ETCInterfaceType& key) const;   /* call ffb9c9a0 */
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > IsPCReady_Map;
 
 /* --- engine callees / globals: relocation-masked, declared extern --- */
 extern CPlayer* __fastcall IsPCReady_GetSubsystem(void* thisField14);        /* 0x00449970 */
@@ -63,11 +64,11 @@ bool __fastcall CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon
 
     IsPCReady_Map* map = (IsPCReady_Map*)((char*)creature + 0x44);
 
-    int key = 0x81;
-    IsPCReady_MapNode* node = map->LowerBound(&key);
+    ETCInterfaceType key = (ETCInterfaceType)(0x81);
+    const IsPCReady_MapNode* node = map->LowerBound(key);
     IsPCReady_MapNode* end = map->m_End;
 
-    if (node != end && node->m_Key <= 0x81)
+    if (node != end && node->first <= 0x81)
     {
         /* found: keep node */
     }
@@ -76,7 +77,7 @@ bool __fastcall CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon
         node = end;
     }
 
-    float readiness = IsPCReady_GetReadiness(node->m_Value);
+    float readiness = IsPCReady_GetReadiness(((void*)node->second));
 
     /* fcom threshold; taken (return false) when readiness <= threshold */
     if (readiness > IsPCReady_ReadyThreshold)

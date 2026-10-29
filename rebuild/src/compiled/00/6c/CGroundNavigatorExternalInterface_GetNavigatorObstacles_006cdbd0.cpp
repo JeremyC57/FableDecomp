@@ -4,17 +4,19 @@
 // on +0x20, the inlined `find` tail, the record address by `add eax,40h` on both paths (the absent path reads the never-written local).
 // Model: the engine header for the interface (vptr, Creature at +4, Radius at +8); the creature, its physics body (+0x60) and its component map are local models (engine/CThingCreatureBase.h has no names at these offsets).
 struct CTCBase_Retail;
-struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long            m_kind;
-    CTCBase_Retail* m_pTC;
-};
-struct CTCMap_Retail {                             // the creature's component map at +0x44: a sorted vector of pairs
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // the creature's component map at +0x44: a sorted vector of pairs
     STCEntry_Retail* m_pFirst;
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound_004365b0(const long* kind);          // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound)
-    STCEntry_Retail* LowerBound_004365b0(const long* kind) const;    // 0x004365B0 (the second instantiation)
+    const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;    // 0x004365B0 (the second instantiation)
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 class C3DVector { public:
     float x, y, z;
     C3DVector() {}
@@ -73,23 +75,23 @@ class CThingCreatureBase { public:                        // the retail creature
     template<class T> __forceinline void GetInterface(T** ppOut, long kind)   // the inlined CThing::GetInterface (out-parameter form)
     {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
-            long type = kind;
+            ETCInterfaceType type = (ETCInterfaceType)(kind);
             CTCMap_Retail* map = &m_tcs;
-            STCEntry_Retail* it = map->LowerBound_004365b0(&type);
-            if (it == map->m_pLast || kind < it->m_kind)
+            const STCEntry_Retail* it = map->LowerBound(type);
+            if (it == map->m_pLast || kind < it->first)
                 it = map->m_pLast;
-            *ppOut = (T*)it->m_pTC;
+            *ppOut = (T*)((CTCBase_Retail*)it->second);
         }
     }
     template<class T> __forceinline void GetInterface(T** ppOut, long kind) const
     {
         if (m_presentBits[kind >> 5] & (1UL << (kind & 31))) {
-            long type = kind;
+            ETCInterfaceType type = (ETCInterfaceType)(kind);
             const CTCMap_Retail* map = &m_tcs;
-            STCEntry_Retail* it = map->LowerBound_004365b0(&type);
-            if (it == map->m_pLast || kind < it->m_kind)
+            const STCEntry_Retail* it = map->LowerBound(type);
+            if (it == map->m_pLast || kind < it->first)
                 it = map->m_pLast;
-            *ppOut = (T*)it->m_pTC;
+            *ppOut = (T*)((CTCBase_Retail*)it->second);
         }
     }
 };

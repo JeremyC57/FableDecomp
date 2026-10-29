@@ -65,19 +65,19 @@ class CScriptThing : public CBaseClass { public:             // 12 bytes, passed
     CThing* GetThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }
 };
 
-struct SPair {
-    long first;                            // ETCInterfaceType
-    CTCBase* second;
-};
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> SPair;
 
-struct CVectorMap {
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     SPair* first;                          // +0
     SPair* last;                           // +4
     SPair* end;                            // +8
-    SPair* LowerBound(const long& key);    // 0x0040F020
+    SPair* LowerBound(const ETCInterfaceType& key);    // 0x0040F020
     SPair* Find(ETCInterfaceType key)      // the enum converts to LowerBound's long reference through a frame temporary; the compare keeps the constant
     {
-        SPair* it = LowerBound(key);
+        SPair* it = LowerBound((ETCInterfaceType)(long)key);
         if (it == last || key < it->first)
             it = last;
         return it;
@@ -88,7 +88,7 @@ class CThing { public:
     unsigned char _pad[0x34];
     unsigned long m_34;                 // +0x34 flags
     unsigned char _pad2[0xc];
-    CVectorMap m_44;                    // +0x44 TC map
+    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > m_44;                    // +0x44 TC map
     CTCBase* GetTC(ETCInterfaceType type)
     {
         CTCBase* tc;                       // deliberately left unset when the map is absent (retail reads the dead slot)

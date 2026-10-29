@@ -11,7 +11,13 @@
 #undef CThing
 
 class C3DVector{ public:float X,Y,Z;};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components; unsigned char ComponentListsAndMetadata[0x45];unsigned char LifeFlags;}; //004C73D0,004C7E50
 FABLE_STATIC_ASSERT(offsetof(CThingNative,UsingComponents)==0x20);
@@ -138,6 +144,6 @@ void ThingSearchMethods::GetAllWithTC(const HasTC& filter,ThingVector& out)const
 #pragma auto_inline(on)
  //0048D400,filter006A80A0
 struct CTCBobNative:CTCBase{unsigned char Rhset[24];C3DVector Pos;bool ForceVisible;void SetForceVisible();}; //00787740
-__forceinline CTCBobNative* GetBob(CThingNative* thing){CTCBobNative* result;if(thing->UsingComponents[7]&0x40000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(242);ComponentEntry* end=map->Finish;result=static_cast<CTCBobNative*>((it==end||it->Type>242?end:it)->Component);}return result;}
+__forceinline CTCBobNative* GetBob(CThingNative* thing){CTCBobNative* result;if(thing->UsingComponents[7]&0x40000){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)242);ComponentEntry* end=map->Finish;result=static_cast<CTCBobNative*>(((void*)(it==end||it->first>242?end:it)->second));}return result;}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void ForceShipsVisible()const;};
 void CGameScriptInterfaceMethods::ForceShipsVisible()const{ThingVector things;reinterpret_cast<ThingSearchMethods*>(World->PThingSearchTools_ptr)->GetAllWithTC(HasTC(242),things);for(CThingNative** it=things.Start;it!=things.Finish;++it){CThingNative* thing=*it;if(thing&&!(thing->LifeFlags&1)&& (thing->UsingComponents[7]&0x40000))GetBob(thing)->SetForceVisible();}}

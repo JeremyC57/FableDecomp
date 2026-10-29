@@ -1,7 +1,7 @@
 // NUISystem::CText::CanScroll(bool down, const C2DBoxF& bounds) -- after the slot-135 refresh, reports how far the text could still scroll inside the bounds: scrolling down, the UI-scaled text height plus the text position measured against the bottom edge; otherwise the position against the top edge; zero when no room
 // Leaf: CanScroll
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054ECB0, 207 bytes (+13 int3). `ret 8`, float on the FPU stack.
-// Callees: own slot 135 (+0x21C) with the +0x148 word, CFrontEndManager::GetInstance 0x0041E5F2 (`__fastcall`),
+// Callees: own slot 135 (+0x21C) with the +0x148 word, NUISystem::CManager::GetInstance 0x0041E5F2 (`__fastcall`),
 //          NUISystem::CManager::GetUIScale 0x0041CF47 (C2DVector by hidden pointer), own slot 112 (+0x1C0) GetPosition
 //          (C2DVector by hidden pointer). Float pool: 0.0f @ 0x0122DEDC.
 // Shape: the hidden-result temporary is shared by GetUIScale and GetPosition (one `lea eax,[esp+10h] ; push eax` hoisted
@@ -19,11 +19,9 @@ extern const float g_zero;                                 // 0x0122DEDC
 namespace NUISystem {
 class CManager { public:
     C2DVector GetUIScale();                                // 0x0041CF47
+    static CManager* __fastcall GetInstance();                 // 0x0041E5F2
 };
 }
-struct CFrontEndManager {
-    static NUISystem::CManager* __fastcall GetInstance();  // 0x0041E5F2
-};
 namespace NUISystem {
 class CText {
 public:
@@ -59,7 +57,7 @@ float NUISystem::CText::CanScroll(bool down, const C2DBoxF& bounds)
     if (down) {
         C2DVector extent;                                  // only Y is ever set: the frame keeps the unused X word
         extent.Y = m_textHeight;
-        extent.Y *= CFrontEndManager::GetInstance()->GetUIScale().Y;
+        extent.Y *= NUISystem::CManager::GetInstance()->GetUIScale().Y;
         if (extent.Y + GetPosition().Y > bounds.BRY)
             return bounds.BRY - (extent.Y + GetPosition().Y);
     } else {

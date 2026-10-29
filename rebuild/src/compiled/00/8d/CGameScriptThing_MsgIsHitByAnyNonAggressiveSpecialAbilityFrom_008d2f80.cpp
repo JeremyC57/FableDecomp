@@ -88,11 +88,17 @@ class CScriptThing { public:                                   // vtable 0x01238
     void* PImp_Info;
 };
 
-struct ComponentEntry { long Type; void* Component; };
-struct ComponentMap {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     ComponentEntry *Start, *Finish, *Capacity;
-    const ComponentEntry* LowerBound(const long&) const;   // 0x004365B0
+    const ComponentEntry* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 struct CThingNative {
     void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components;
     unsigned char Metadata[0x41]; unsigned char LifeFlags;
@@ -101,9 +107,9 @@ struct CThingNative {
     {
 
         ComponentMap* map = &Components;
-        const ComponentEntry* it = map->LowerBound(66);
+        const ComponentEntry* it = map->LowerBound((ETCInterfaceType)66);
         const ComponentEntry* end = map->Finish;
-        return static_cast<CTCEntityEvents*>((it == end || it->Type > 66 ? end : it)->Component);
+        return static_cast<CTCEntityEvents*>(((void*)(it == end || it->first > 66 ? end : it)->second));
     }
 };
 class CBaseObject;

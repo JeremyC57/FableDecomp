@@ -37,11 +37,17 @@ class CTCCreatureModeManager { public:
  class CModeBase { public:virtual ~CModeBase();virtual unsigned long GetType()const=0;};
  CModeBase& GetCurrentMode()const; // 0x0073a6e0
 };
-struct InterfaceEntry {long Type;CTCCreatureModeManager* Component;};
-struct InterfaceMap {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> InterfaceEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
  InterfaceEntry* Start;InterfaceEntry* Finish;
- const InterfaceEntry* LowerBound(const long*)const; // 0x004365b0
+ const InterfaceEntry* LowerBound(const ETCInterfaceType& key) const; // 0x004365b0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > InterfaceMap;
 class CThing { public:
  unsigned char BeforeComponents[0x20];unsigned long UsingComponents[9];InterfaceMap Components;unsigned char BeforeType[0x6c-0x4c];unsigned long ThingTypeFlags;
  enum {ThingTypeMask=0};
@@ -105,10 +111,10 @@ class CThingFilter_IsWithinArea { public:C3DVector* StartPos;C3DVector* EndPos;f
 struct CThingFilter_IsAffectedByObstructions {
  __forceinline bool operator()(const CThing& thing)const{
   if(!(thing.UsingComponents[1]&(1UL<<17)))return true;
-  const long type=0x31;const InterfaceMap& map=thing.Components;
-  const InterfaceEntry* entry=map.LowerBound(&type);
-  if(entry==map.Finish || type<entry->Type)entry=map.Finish;
-  if(entry->Component->GetCurrentMode().GetType()==0x5f)return false;
+  const ETCInterfaceType type = (ETCInterfaceType)(0x31);const InterfaceMap& map=thing.Components;
+  const InterfaceEntry* entry=map.LowerBound(type);
+  if(entry==map.Finish || type<entry->first)entry=map.Finish;
+  if(((CTCCreatureModeManager*)entry->second)->GetCurrentMode().GetType()==0x5f)return false;
   return true;
  }
 };

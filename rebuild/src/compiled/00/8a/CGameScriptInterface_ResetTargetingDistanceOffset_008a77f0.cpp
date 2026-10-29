@@ -11,7 +11,13 @@
 #undef CThing
 
 class C3DVector{ public:float X,Y,Z;};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;}; //004C73D0,004C7E50
 FABLE_STATIC_ASSERT(offsetof(CThingNative,UsingComponents)==0x20);
@@ -133,7 +139,7 @@ FABLE_STATIC_ASSERT(offsetof(CTCAIScratchpadNative,Action)==72);
 FABLE_STATIC_ASSERT(offsetof(CTCAIScratchpadNative,PDef)==128);
 __forceinline CTCAIScratchpadNative* GetScratchpad(CThingNative* thing){
  CTCAIScratchpadNative* result;
- if(thing->UsingComponents[5]&0x400){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(170);ComponentEntry* end=map->Finish;result=static_cast<CTCAIScratchpadNative*>((it==end||it->Type>170?end:it)->Component);}
+ if(thing->UsingComponents[5]&0x400){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)170);ComponentEntry* end=map->Finish;result=static_cast<CTCAIScratchpadNative*>(((void*)(it==end||it->first>170?end:it)->second));}
  return result; // native requires the scratchpad component; no absent-component fallback is initialized.
 }
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void ResetTargetingDistanceOffset(ScriptMethods);};

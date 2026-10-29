@@ -1,11 +1,17 @@
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
 
-struct CTrapResetInterfaceEntry { int Key; void* Interface; };
-struct CTrapResetInterfaceMap {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CTrapResetInterfaceEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     CTrapResetInterfaceEntry* Begin;
     CTrapResetInterfaceEntry* End;
-    CTrapResetInterfaceEntry* LowerBound(const int* key);
+    CTrapResetInterfaceEntry* LowerBound(const ETCInterfaceType& key);
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTrapResetInterfaceMap;
 struct CTrapResetTargetView {
     unsigned char _pad_0x00[0x2c];
     unsigned int TypeFlags;
@@ -24,12 +30,12 @@ bool __stdcall CGameScriptInterface_ManuallyResetTrap(CGameScriptInterface* self
         ((CGameScriptInterfaceTrapResetVTable*)self->__vftable)->GetTarget(self);
     if (target && (target->TypeFlags & 0x20000000)) {
         CTrapResetInterfaceMap* map = &target->Interfaces;
-        int key = 0x7d;
-        CTrapResetInterfaceEntry* entry = map->LowerBound(&key);
+        ETCInterfaceType key = (ETCInterfaceType)(0x7d);
+        CTrapResetInterfaceEntry* entry = map->LowerBound(key);
         CTrapResetInterfaceEntry* end = map->End;
-        if (entry == end || entry->Key > 0x7d)
+        if (entry == end || entry->first > 0x7d)
             entry = end;
-        Iface_Do(entry->Interface);
+        Iface_Do(((void*)entry->second));
         return true;
     }
     return false;

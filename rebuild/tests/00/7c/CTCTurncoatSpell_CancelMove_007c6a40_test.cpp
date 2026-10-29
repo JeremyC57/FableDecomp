@@ -2,16 +2,21 @@
 #include <cstdio>
 #include <cstring>
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);
+    SEntry* LowerBound(const ETCInterfaceType& type);
 };
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const ETCInterfaceType& type)
 {
     SEntry* it = first;
-    while (it != last && it->type < *type) ++it;
+    while (it != last && it->first < type) ++it;
     return it;
 }
 class CThing {
@@ -31,7 +36,7 @@ static int fail(int n) { std::printf("007c6a40_TEST FAIL %d\n", n); return 1; }
 int main()
 {
     CTCSpecialAbilities ab; std::memset(&ab, 0, sizeof ab);
-    CInterfaceMap::SEntry e[2] = { { 0x9E, 0 }, { 0xA7, (CTCBase*)&ab } };
+    CInterfaceMap::SEntry e[2] = { { (ETCInterfaceType)0x9E, 0 }, { (ETCInterfaceType)0xA7, (CTCBase*)&ab } };
     CThing t; std::memset(&t, 0, sizeof t);
     t.Components.first = e; t.Components.last = e + 2;
     CTCTurncoatSpell s; std::memset(&s, 0, sizeof s); s.ParentThing = &t;

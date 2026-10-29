@@ -39,7 +39,11 @@ public:
     explicit CWideString(const wchar_t* text);
     ~CWideString();
     operator const wchar_t*() const;
+    const wchar_t* GetAsCharArray() const;
     long GetLength() const;
+    long FindCharPos(wchar_t c) const;
+    void __cdecl Sprintf(const wchar_t* format, ...);
+    void SetLength(long length);
     const CWideString& operator=(const CWideString& other);
     const CWideString& operator=(const wchar_t* text);
     const CWideString& operator+=(const CWideString& other);
@@ -103,25 +107,20 @@ extern wchar_t g_FableEmptyWideString_0129A8E0[1];
 // CActivity::GetScoreAsString(float) const -- format the score to its configured precision and append the localized unit.
 // Retail: 0x0055E6B0, 263 bytes. Leaf: GetScoreAsString
 // No CActivity header exists. PDB: Name+0, Description+4, UnitOfMeasurement+8,
-// NumDecPlacesToShow+c and LowerIsBetter+d. Shared fable_string.h supplies strings;
-// the method-only wide string view adds FindCharPos and SetLength omitted there.
+// NumDecPlacesToShow+c and LowerIsBetter+d. Shared fable_string.h supplies the strings
+// (CWideString::Sprintf, FindCharPos and SetLength are its members).
 // Calls: string ctor0099AED0/copy0099B720/dtor0099B510, assignment0099B7D0,
-// append0099B940/0099B8D0; formatter0099BA70; GFFloatToWideString00486C40;
+// append0099B940/0099B8D0; Sprintf0099BA70; GFFloatToWideString00486C40;
 // FindCharPos0099B070, SetLength0099BC50; GetTextBySymbol009C95E0.
 #ifndef FABLE_WIDE_STRING_HOST_TYPES
 #include "fable_string.h"
 #endif
-void __cdecl FormatWideString(CWideString*, const wchar_t*, ...); //0099BA70
 inline CWideString IntToWideString(long value) {
     CWideString text;
-    FormatWideString(&text,L"%d",value); //0122DE44
+    text.Sprintf(L"%d",value); //0099BA70 CWideString::Sprintf, L"%d" 0122DE44
     return text;
 }
 CWideString FABLE_FASTCALL GFFloatToWideString(double); //00486C40
-struct CWideStringOperations : CWideString {
-    long FindCharPos(wchar_t) const; //0099B070
-    void SetLength(long); //0099BC50
-};
 namespace NGameText { class CDataBank { public: CWideString GetTextBySymbol(const CCharString&); }; }
 class CMainGameComponent { public: unsigned char beforeTextBank[0x14]; NGameText::CDataBank* PTextBank; NGameText::CDataBank* GetTextBank() const { return PTextBank; } };
 extern CMainGameComponent* g_pMainGameComponent; //013B86A0
@@ -137,8 +136,7 @@ CWideString CActivity::GetScoreAsString(float score) const
     if (!NumDecPlacesToShow) result=IntToWideString((long)score);
     else {
         CWideString value=GFFloatToWideString(score);
-        CWideStringOperations& operations=reinterpret_cast<CWideStringOperations&>(value);
-        operations.SetLength(operations.FindCharPos(L'.')+1+NumDecPlacesToShow);
+        value.SetLength(value.FindCharPos(L'.')+1+NumDecPlacesToShow); //0099BC50, 0099B070
         result=value;
     }
     result+=L" "; //0122D820
@@ -180,17 +178,18 @@ CCharString::CCharString() { storage_=new CCharStringData;storage_->text=(char*)
 CCharString::CCharString(const char* s,long n) { if(n!=-1)++invalid;storage_=new CCharStringData;storage_->text=(char*)s;++charLive; }
 CCharString::~CCharString() { delete storage_;--charLive; }
 CCharString::operator const char*() const { return storage_->text; }
-void __cdecl FormatWideString(CWideString* result,const wchar_t* fmt,...) {
+void __cdecl CWideString::Sprintf(const wchar_t* fmt,...) {
+    CWideString* result=this;
     ++formatCalls;if(!wequal(fmt,L"%d"))++invalid;
     va_list ap;va_start(ap,fmt);formattedInteger=va_arg(ap,long);va_end(ap);
     char narrow[40];sprintf(narrow,"%ld",formattedInteger);wchar_t wide[40];long i=0;
     do {wide[i]=(unsigned char)narrow[i];}while(narrow[i++]); *result=wide;
 }
 CWideString FABLE_FASTCALL GFFloatToWideString(double value) { ++floatCalls;floatValue=value;return CWideString(floatText); }
-long CWideStringOperations::FindCharPos(wchar_t c) const {
+long CWideString::FindCharPos(wchar_t c) const {
     ++findCalls;if(c!=L'.')++invalid;const wchar_t* s=*this;for(long i=0;s[i];++i)if(s[i]==c)return i;return -1;
 }
-void CWideStringOperations::SetLength(long n) {
+void CWideString::SetLength(long n) {
     ++lengthCalls;lastLength=n;wchar_t buffer[1024];const wchar_t* s=*this;long old=wlength(s);
     if(n<0 || n>=1024) {++invalid;return;}
     for(long i=0;i<n;++i)buffer[i]=i<old?s[i]:0;buffer[n]=0;CWideString::operator=(buffer);

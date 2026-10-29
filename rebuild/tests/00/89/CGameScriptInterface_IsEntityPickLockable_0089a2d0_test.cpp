@@ -25,17 +25,16 @@ public:
     bool IsLockPickable();
 };
 
-struct CKeyPair
-{
-    ETCInterfaceType      m_Key;
-    CGSIPickLockableDoor* m_Value;
-};
+class CTCBase;
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CKeyPair;
 
-struct CVectorMap
-{
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     CKeyPair* m_pBegin;
     CKeyPair* m_pEnd;
-    CKeyPair* LowerBound(const ETCInterfaceType* pKey) const;
+    const CKeyPair* LowerBound(const ETCInterfaceType& pKey) const;
 };
 
 struct CThingOverlay
@@ -43,7 +42,7 @@ struct CThingOverlay
     unsigned char m_Pad00[0x24];
     unsigned int  m_Flags24;
     unsigned char m_Pad28[0x1c];
-    CVectorMap    m_InterfaceMap44;
+    CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >    m_InterfaceMap44;
 };
 
 
@@ -53,7 +52,7 @@ static unsigned long g_available_calls = 0;
 static unsigned long g_resolve_calls = 0;
 static CScriptThing* g_observed_script_thing = 0;
 static CKeyPair* g_lower_bound_result = 0;
-static CVectorMap* g_observed_map = 0;
+static CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >* g_observed_map = 0;
 static ETCInterfaceType g_observed_key = ETC_DUMMY;
 static bool g_pickable = false;
 static CGSIPickLockableDoor* g_observed_door = 0;
@@ -75,10 +74,10 @@ static CThingOverlay* __fastcall Resolve(CScriptThing* self)
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)0x26;
 
-CKeyPair* CVectorMap::LowerBound(const ETCInterfaceType* pKey) const
+const CKeyPair* CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >::LowerBound(const ETCInterfaceType& pKey) const
 {
-    g_observed_map = const_cast<CVectorMap*>(this);
-    g_observed_key = *pKey;
+    g_observed_map = const_cast<CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> >*>(this);
+    g_observed_key = pKey;
     return g_lower_bound_result;
 }
 
@@ -129,8 +128,8 @@ int main()
     scriptThing.m_pVTable = &vtable;
     g_thing = &thing;
     thing.m_InterfaceMap44.m_pEnd = &endEntry;
-    foundEntry.m_Value = &foundDoor;
-    endEntry.m_Value = &endDoor;
+    foundEntry.second = (CTCBase*) &foundDoor;
+    endEntry.second = (CTCBase*) &endDoor;
 
     ResetObservations();
     g_available = false;
@@ -153,7 +152,7 @@ int main()
 
     ResetObservations();
     thing.m_Flags24 = 0x40;
-    foundEntry.m_Key = (ETCInterfaceType)0x26;
+    foundEntry.first = (ETCInterfaceType)0x26;
     g_lower_bound_result = &foundEntry;
     g_pickable = true;
     if (!CGameScriptInterface_IsEntityPickLockable(
@@ -173,8 +172,8 @@ int main()
         return Fail("non-pickable door");
 
     ResetObservations();
-    greaterEntry.m_Key = (ETCInterfaceType)0x27;
-    greaterEntry.m_Value = &foundDoor;
+    greaterEntry.first = (ETCInterfaceType)0x27;
+    greaterEntry.second = (CTCBase*) &foundDoor;
     g_lower_bound_result = &greaterEntry;
     g_pickable = true;
     if (!CGameScriptInterface_IsEntityPickLockable(

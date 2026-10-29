@@ -44,12 +44,18 @@ class CPlayerGui { public: unsigned char Data[0x18]; CSubtitleRenderer Subtitles
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 class CMainGameComponent { public: unsigned char Data[0x1614c]; CFontBank* PFont; };
 class CTCBoastUI { public: void AllowUIToOpen(bool allow); };   // 0x0056A930
-struct ComponentEntry { long Type; void* Component; };
-struct ComponentMap {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     ComponentEntry* Start;
     ComponentEntry* Finish;
-    ComponentEntry* LowerBound(const long& key);         // 0x0040F020
+    ComponentEntry* LowerBound(const ETCInterfaceType& key);         // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 class CThing { public:
     void*          VTable;
     unsigned char  Base[0x1c];
@@ -138,9 +144,9 @@ void CGameScriptInterface::GiveHeroYesNoQuestion(const CCharString& question, co
         CThing* thing = hero.GetPItem();
         if (thing->UsingComponents[7] & 0x100) {
         ComponentMap* map = &thing->Components;
-        ComponentEntry* it = map->LowerBound(0xe8);
+        ComponentEntry* it = map->LowerBound((ETCInterfaceType)0xe8);
         ComponentEntry* end = map->Finish;
-        boastUI = (CTCBoastUI*)((it == end || it->Type > 0xe8) ? end : it)->Component;
+        boastUI = (CTCBoastUI*)((void*)((it == end || it->first > 0xe8) ? end : it)->second);
         boastUI->AllowUIToOpen(false);
         }
     }

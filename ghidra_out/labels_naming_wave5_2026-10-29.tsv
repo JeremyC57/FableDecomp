@@ -1,0 +1,7 @@
+address	name	evidence
+0099ba70	CWideString::Sprintf	proven, naming wave 5 (rebuild/candidates/manual/naming/2026-10-29_wave5/LABELS.tsv)
+0099af10	CWideString::GetAsCharArray	proven, naming wave 5 (rebuild/candidates/manual/naming/2026-10-29_wave5/LABELS.tsv)
+0041e5f2	NUISystem::CManager::GetInstance	proven, naming wave 5 (rebuild/candidates/manual/naming/2026-10-29_wave5/LABELS.tsv)
+00404280	std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >	proven, naming wave 5 (rebuild/candidates/manual/naming/2026-10-29_wave5/LABELS.tsv)
+0040f0a0	std::operator==<unsigned short,std::char_traits<unsigned short>,std::allocator<unsigned short> >	proven, naming wave 5 (rebuild/candidates/manual/naming/2026-10-29_wave5/LABELS.tsv)
+0099a300	CBaseClassNonCopyable::~CBaseClassNonCopyable	proven, naming wave 5 (rebuild/candidates/manual/naming/2026-10-29_wave5/LABELS.tsv)

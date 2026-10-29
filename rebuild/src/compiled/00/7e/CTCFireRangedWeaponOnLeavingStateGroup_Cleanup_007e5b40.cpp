@@ -14,17 +14,19 @@ class CTCBase;
 class CCombatManager;
 class CThingCreatureBase;
 
-struct STCEntry {
-    long     m_kind;
-    CTCBase* m_pTC;
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-struct CTCMap {
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind);            // 0x0040F020
+    STCEntry* LowerBound(const ETCInterfaceType& kind);            // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing {
 public:
@@ -37,10 +39,10 @@ public:
     {
         if (HasTC(T::INTERFACE_TYPE)) {
             CTCMap* map = &m_tcs;
-            STCEntry* it = map->LowerBound((unsigned long)T::INTERFACE_TYPE);
-            if (it == map->m_pLast || T::INTERFACE_TYPE < it->m_kind)
+            STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
+            if (it == map->m_pLast || T::INTERFACE_TYPE < it->first)
                 it = map->m_pLast;
-            *out = (T*)it->m_pTC;
+            *out = (T*)it->second;
             return true;
         }
         return false;

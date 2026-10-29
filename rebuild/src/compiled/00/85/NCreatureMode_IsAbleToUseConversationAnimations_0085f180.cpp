@@ -14,18 +14,20 @@
 //   RemoveMode 0x0073ABA0; the manifest labels "CPixelShader::CountReferences" / "CPlayer::HasMode" are propagated twins).
 //   A mode's vtable slot 1 (+4) returns its NCreatureMode::EMode number (read from each CMode*::vfunc_1 body).
 class CTCBase;
-struct CTCInterfaceEntry {
-    long     type;
-    CTCBase* component;
-};
-class CTCInterfaceMap {                                 // CVectorMap<ETCInterfaceType, CTCBase*> (retail vector: first/last/end)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CTCInterfaceEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                 // CVectorMap<ETCInterfaceType, CTCBase*> (retail vector: first/last/end)
 public:
     CTCInterfaceEntry* first;
     CTCInterfaceEntry* last;
     CTCInterfaceEntry* end;
-    CTCInterfaceEntry* LowerBound(const long& type) const;   // 0x004365B0
-    CTCInterfaceEntry* LowerBound(const long& type);         // 0x0040F020
+    const CTCInterfaceEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
+    CTCInterfaceEntry* LowerBound(const ETCInterfaceType& type);         // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCInterfaceMap;
 class CModeBase {                                       // CTCCreatureModeManager::CModeBase
 public:
     virtual void v00();
@@ -85,25 +87,25 @@ public:
     __forceinline unsigned long HasTC(long type) const { return m_tcPresent[type >> 5] & (1UL << (type & 31)); }
     __forceinline CTCBase* GetTC(long type) const
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         const CTCInterfaceMap* map = &m_tcs;
-        CTCInterfaceEntry* it = map->LowerBound(key);
-        return (it == map->last || type < it->type ? map->last : it)->component;
+        const CTCInterfaceEntry* it = map->LowerBound(key);
+        return (it == map->last || type < it->first ? map->last : it)->second;
     }
     __forceinline CTCBase* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CTCInterfaceMap* map = &m_tcs;
-        CTCInterfaceEntry* it = map->LowerBound(key);
-        return (it == map->last || type < it->type ? map->last : it)->component;
+        const CTCInterfaceEntry* it = map->LowerBound(key);
+        return (it == map->last || type < it->first ? map->last : it)->second;
     }
     template<class T> __forceinline bool GetInterface(T** ppOut, long type) const
     {
         if (HasTC(type)) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             const CTCInterfaceMap* map = &m_tcs;
-            CTCInterfaceEntry* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+            const CTCInterfaceEntry* it = map->LowerBound(key);
+            *ppOut = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
             return true;
         }
         return false;
@@ -112,10 +114,10 @@ public:
     template<class T> __forceinline bool GetInterface(T** ppOut, long type)
     {
         if (HasTC(type)) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             CTCInterfaceMap* map = &m_tcs;
-            CTCInterfaceEntry* it = map->LowerBound(key);
-            *ppOut = (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+            const CTCInterfaceEntry* it = map->LowerBound(key);
+            *ppOut = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
             return true;
         }
         return false;

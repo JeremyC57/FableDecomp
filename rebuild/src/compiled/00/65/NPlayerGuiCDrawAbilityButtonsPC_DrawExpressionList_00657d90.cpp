@@ -12,12 +12,18 @@
 #include <stdlib.h>
 class C2DVector { public: float X, Y; };
 void __fastcall GFAPositionToScreen(C2DVector* out, const C2DVector* in);   // 0x00643D0C
-struct ComponentEntry { long Type; void* Component; };
-struct ComponentMap {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     ComponentEntry *Start, *Finish;
-    ComponentEntry* LowerBound(const long& key);                 // 0x0040F020
-    const ComponentEntry* LowerBound(const long& key) const;     // 0x004365B0
+    ComponentEntry* LowerBound(const ETCInterfaceType& key);                 // 0x0040F020
+    const ComponentEntry* LowerBound(const ETCInterfaceType& key) const;     // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 struct CThingNative {
     void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components;
     unsigned char State[0x45]; unsigned char LifeFlags;
@@ -83,9 +89,9 @@ void CDrawAbilityButtonsPC::DrawExpressionList(CEnginePrimitivePrepareInfo* info
     GetExpressionSlotOffsets(offsets);
     if (hero->UsingComponents[3] & 0x8000) {
         const ComponentMap& map = hero->Components;
-        const ComponentEntry* it = map.LowerBound(0x6f);
+        const ComponentEntry* it = map.LowerBound((ETCInterfaceType)0x6f);
         const ComponentEntry* last = map.Finish;
-        CTCHeroExpressions* tc = (CTCHeroExpressions*)(it == last || 0x6f < it->Type ? last : it)->Component;
+        CTCHeroExpressions* tc = (CTCHeroExpressions*)((void*)(it == last || 0x6f < it->first ? last : it)->second);
         if (tc) {
             scale *= 0.75f;
             LongVector expressions;

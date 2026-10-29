@@ -4,8 +4,14 @@
 #include "engine/CScriptThing.h"
 #include "engine/CTCCombat.h"
 #include "fable_string.h"
-struct ComponentEntry{long Type;void* Component;};
-struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct CDefinitionManagerMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char State[0x45];unsigned char LifeFlags;CDefinitionManagerMethods* GetDefinitionManager();}; //004C7990 (folded getter; no explicit parameters)
 struct ScriptMethods:CScriptThing{};
@@ -21,8 +27,8 @@ void CGameScriptInterfaceMethods::EntitySetCombatType(const ScriptMethods& scrip
  CThingNative* thing=(script.*reinterpret_cast<ScriptSlot*>(script.__vftable)[11].GetThing)();
  DefPointer type;
  if(thing&&!(thing->LifeFlags&1)&&(thing->UsingComponents[1]&0x10000)){
- ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(48);ComponentEntry* end=map->Finish;
- CTCCombatMethods* combat=static_cast<CTCCombatMethods*>((it==end||it->Type>48?end:it)->Component);
+ ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)48);ComponentEntry* end=map->Finish;
+ CTCCombatMethods* combat=static_cast<CTCCombatMethods*>(((void*)(it==end||it->first>48?end:it)->second));
  if(thing->GetDefinitionManager()->GetCombatType(name,type))combat->SetCombatType(type);
  }
 }

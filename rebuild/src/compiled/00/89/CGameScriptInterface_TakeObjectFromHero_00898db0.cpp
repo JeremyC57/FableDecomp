@@ -8,7 +8,13 @@
 #include "engine/CPlayer.h"
 #undef CPlayer
 #include "fable_string.h"
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;};
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
@@ -22,7 +28,7 @@ void CGameScriptInterfaceMethods::TakeObjectFromHero(const CCharString& name)con
  long index=reinterpret_cast<DefinitionMethods*>(DefinitionManager)->GetDefGlobalIndexFromName(name);
  if(index>0){long category=GetInventoryCategory_005d99d0(index);if(category){CThingPlayerCreature* hero=static_cast<CPlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();InventoryMethods* inventory=0;
  if(static_cast<unsigned long>(category)>=274){puts("bitset");abort();}
- if(hero->UsingComponents[static_cast<unsigned long>(category)>>5]&(1U<<(category&31))){ComponentMap* map=&hero->Components;long key=category;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;inventory=static_cast<InventoryMethods*>((it==end||category<it->Type?end:it)->Component);}
+ if(hero->UsingComponents[static_cast<unsigned long>(category)>>5]&(1U<<(category&31))){ComponentMap* map=&hero->Components;ETCInterfaceType key = (ETCInterfaceType)(category);ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;inventory=static_cast<InventoryMethods*>(((void*)(it==end||category<it->first?end:it)->second));}
  if(inventory->GetNumberOfItemsOfTypeInInventory(index)>0)(inventory->*reinterpret_cast<InventorySlot*>(inventory->VTable)[79].RemoveItem)(index,1);
  }}
 }

@@ -4,16 +4,21 @@
 #include <stdio.h>
 #include <string.h>
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);
+    SEntry* LowerBound(const ETCInterfaceType& type);
 };
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const ETCInterfaceType& type)
 {
     SEntry* p = first;
-    while (p != last && p->type < *type) ++p;
+    while (p != last && p->first < type) ++p;
     return p;
 }
 class CTCCreatureModeManager { public: void RemoveMode(unsigned long mode); };
@@ -31,9 +36,9 @@ int main()
     memset(g_thing, 0, sizeof(g_thing));
     unsigned long bits = 1UL << (0x31 & 31);
     memcpy(g_thing + 0x24, &bits, 4);
-    g_entries[0].type = 0x10; g_entries[0].component = 0;
-    g_entries[1].type = 0x31; g_entries[1].component = (CTCBase*)&g_modes;
-    g_entries[2].type = 0x40; g_entries[2].component = 0;
+    g_entries[0].first = (ETCInterfaceType)0x10; g_entries[0].second = 0;
+    g_entries[1].first = (ETCInterfaceType)0x31; g_entries[1].second = (CTCBase*)&g_modes;
+    g_entries[2].first = (ETCInterfaceType)0x40; g_entries[2].second = 0;
     CInterfaceMap map; map.first = g_entries; map.last = g_entries + 3;
     memcpy(g_thing + 0x44, &map, sizeof(map));
     CTCCombat proto;                              // copy the vtable pointer

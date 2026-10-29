@@ -12,12 +12,18 @@ public:
     CTCVillage* GetPVillage() const;   // 0x007EE540
 };
 struct CTCVillager;
-struct CRetailInterfaceMap {
-    struct Entry { long Type; void* Component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
     Entry* First;
     Entry* Last;
-    Entry* LowerBound(const long*); // 0x0040F020
+    Entry* LowerBound(const ETCInterfaceType& key); // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CRetailInterfaceMap;
 // Retail CThing prefix: PDB UsingComponents name, compact component map; Dead is +0x91 vs donor +0xa1.
 struct CRetailThingView {
     unsigned char _prefix[0x20];
@@ -27,11 +33,11 @@ struct CRetailThingView {
     unsigned char Dead:1;
     template<class T> __forceinline bool GetInterface(T** out, long type) {
         if (UsingComponents[type >> 5] & (1UL << (type & 31))) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             CRetailInterfaceMap* map = &Components;
-            CRetailInterfaceMap::Entry* it = map->LowerBound(&key);
-            if (it == map->Last || type < it->Type) it = map->Last;
-            *out = (T*)it->Component;
+            CRetailInterfaceMap::Entry* it = map->LowerBound(key);
+            if (it == map->Last || type < it->first) it = map->Last;
+            *out = (T*)((void*)it->second);
             return true;
         }
         return false;

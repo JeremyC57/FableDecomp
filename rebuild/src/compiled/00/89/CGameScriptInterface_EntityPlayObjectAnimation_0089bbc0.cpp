@@ -6,27 +6,30 @@
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the map Find written as the ternary entry pick (`((it == last || kind < it->kind) ? last : it)->tc`, the landed 0x00584157 idiom): the component loads straight into ecx
 // Leaf: ?EntityPlayObjectAnimation@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@_N@Z
 struct CTCBase_Retail;
-struct STCEntry_Retail {                           // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long            m_kind;
-    CTCBase_Retail* m_pTC;
-};
-struct CTCMap_Retail {                             // the thing's component map at +0x44: a sorted vector of pairs
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // the thing's component map at +0x44: a sorted vector of pairs
     STCEntry_Retail* m_pFirst;
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const unsigned long& kind);         // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound; the key by address)
-    STCEntry_Retail* LowerBound(const unsigned long& kind) const;   // 0x004365B0 (the const instantiation)
+    STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020 (CVectorMap<ETCInterfaceType,...>::LowerBound; the key by address)
+    const STCEntry_Retail* LowerBound(const ETCInterfaceType& kind) const;   // 0x004365B0 (the const instantiation)
     __forceinline CTCBase_Retail* Find(long kind)          // the inlined map `find`: lower bound (the key in a stack temporary), end when the key is absent
     {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
+        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
+        return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
     }
     __forceinline CTCBase_Retail* Find(long kind) const
     {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        return ((it == m_pLast || kind < it->m_kind) ? m_pLast : it)->m_pTC;
+        const STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
+        return ((CTCBase_Retail*)((it == m_pLast || kind < it->first) ? m_pLast : it)->second);
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 struct CThing_Retail {
     unsigned char  _pad00[0x10];
     unsigned char  m_type;                         // +0x10 (1 = a creature)

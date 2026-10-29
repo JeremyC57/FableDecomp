@@ -11,7 +11,13 @@
 #undef CThing
 
 class C3DVector{ public:float X,Y,Z;};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components; unsigned char ComponentListsAndMetadata[0x45];unsigned char LifeFlags;}; //004C73D0,004C7E50
 FABLE_STATIC_ASSERT(offsetof(CThingNative,UsingComponents)==0x20);
@@ -127,7 +133,7 @@ public:
 struct DefinitionMethods:CDefinitionManager{}; //009AD410
 class CDefIndex{ public:long Index;CDefIndex(long index):Index(index){}};
 struct IndexVector{CDefIndex *Start,*Finish,*End;IndexVector():Start(0),Finish(0),End(0){}~IndexVector(){if(Start)free(Start);}void PushBack(const CDefIndex&);IndexVector& operator=(const IndexVector&);}; //007CA160,004E24BA
-__forceinline CTCCreatureGenerator* GetGenerator(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(61);ComponentEntry* end=map->Finish;return static_cast<CTCCreatureGenerator*>((it==end||it->Type>61?end:it)->Component);}
+__forceinline CTCCreatureGenerator* GetGenerator(CThingNative* thing){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)61);ComponentEntry* end=map->Finish;return static_cast<CTCCreatureGenerator*>(((void*)(it==end||it->first>61?end:it)->second));}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void CreatureGeneratorSetFamily(const ScriptMethods&,const CCharString&)const;};
 void CGameScriptInterfaceMethods::CreatureGeneratorSetFamily(const ScriptMethods& script,const CCharString& family)const{
  if(script.IsAlive()){

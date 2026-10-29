@@ -32,7 +32,9 @@ class CDataInputStream
 
     // General windowed reader (reloc-masked): __fastcall member on the stream,
     // this (ecx) = stream, two stack args (destination, size).
-    void ReadWithSrcChunkOverflow(unsigned char* destination, long size);
+private:
+    friend class COpinionTransientOffset;
+    void ReadWithSrcChunkOverflow(unsigned char* destination, long size);   // 0x00993CA0 (private: AAE)
 };
 
 class COpinionTransientOffset

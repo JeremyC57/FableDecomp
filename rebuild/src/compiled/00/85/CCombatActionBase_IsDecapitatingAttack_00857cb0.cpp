@@ -12,23 +12,24 @@
 class CTCBase;
 enum ETCInterfaceType { TC_INTERFACE_BERSERK = 0x84 };
 
-struct CInterfacePair {
-    ETCInterfaceType first;
-    CTCBase* second;
-};
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CInterfacePair;
 
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*>
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*>
     CInterfacePair* m_pFirst;                   // +0x00
     CInterfacePair* m_pLast;                    // +0x04
-    CInterfacePair* LowerBound(const long& key);            // 0x004365B0
-    __forceinline CInterfacePair* Find(ETCInterfaceType key)
+    const CInterfacePair* LowerBound(const ETCInterfaceType& key) const;            // 0x004365B0
+    __forceinline const CInterfacePair* Find(ETCInterfaceType key)
     {
-        CInterfacePair* it = LowerBound(key);
+        const CInterfacePair* it = LowerBound((ETCInterfaceType)(long)key);
         if (it == m_pLast || key < it->first)
             return m_pLast;
         return it;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CTCBerserk_Calls {              // engine/CTCBerserk.h exists but is not used: only its ShouldAttackDecapitate call is used
     bool ShouldAttackDecapitate();              // 0x0078BFC0

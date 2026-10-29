@@ -8,7 +8,13 @@
 #include "engine/CTCHeroStats.h"
 #include "fable_string.h"
 #include "engine/_quarantine/CTCInventoryBase.h"
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;};
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
@@ -30,8 +36,8 @@ struct CGameScriptInterfaceMethods:CGameScriptInterface{void SetQuestCardObjecti
 void CGameScriptInterfaceMethods::SetQuestCardObjective(const CCharString& quest,const CCharString& objective,const CCharString& region,const CCharString& extra)const{
  if(g_QuestManager->SetQuestCardObjective(quest,objective,region,extra)&&g_QuestManager->IsQuestCardActive(quest)){
  CThingNative* card=g_QuestManager->GetActiveQuestCardFromScriptName(quest);if(card&&!(card->DeletedFlags&1)&&(card->UsingComponents[3]&0x1000)){
- ComponentMap* map=&card->Components;ComponentEntry* it=map->LowerBound(108);ComponentEntry* end=map->Finish;QuestCardMethods* tc=static_cast<QuestCardMethods*>((it==end||it->Type>108?end:it)->Component);if(!tc->IsVignette()){
+ ComponentMap* map=&card->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)108);ComponentEntry* end=map->Finish;QuestCardMethods* tc=static_cast<QuestCardMethods*>(((void*)(it==end||it->first>108?end:it)->second));if(!tc->IsVignette()){
  CThingPlayerCreature* hero=static_cast<PlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();if(IS_THING_ALIVE(hero)&&(hero->UsingComponents[0]&0x10000)){
- ComponentMap* soundMap=&hero->Components;ComponentEntry* soundIt=soundMap->LowerBound(16);ComponentEntry* soundEnd=soundMap->Finish;SoundPlayerMethods* sound=static_cast<SoundPlayerMethods*>((soundIt==soundEnd||soundIt->Type>16?soundEnd:soundIt)->Component);PlayLogCue(sound);
+ ComponentMap* soundMap=&hero->Components;ComponentEntry* soundIt=soundMap->LowerBound((ETCInterfaceType)16);ComponentEntry* soundEnd=soundMap->Finish;SoundPlayerMethods* sound=static_cast<SoundPlayerMethods*>(((void*)(soundIt==soundEnd||soundIt->first>16?soundEnd:soundIt)->second));PlayLogCue(sound);
  }}}}
 }

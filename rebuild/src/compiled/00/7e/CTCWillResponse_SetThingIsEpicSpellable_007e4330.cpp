@@ -25,17 +25,19 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct STCEntry {
-    long     m_kind;
-    CTCBase* m_pTC;
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-struct CTCMap {
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind);    // 0x0040F020
+    STCEntry* LowerBound(const ETCInterfaceType& kind);    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 class CThing {
 public:
@@ -47,8 +49,8 @@ public:
     template <class T> __forceinline T* GetTC()
     {
         CTCMap* map = &m_tcs;
-        STCEntry* it = map->LowerBound((unsigned long)T::INTERFACE_TYPE);
-        return (T*)((it == map->m_pLast || T::INTERFACE_TYPE < it->m_kind) ? map->m_pLast : it)->m_pTC;
+        STCEntry* it = map->LowerBound((ETCInterfaceType)T::INTERFACE_TYPE);
+        return (T*)((it == map->m_pLast || T::INTERFACE_TYPE < it->first) ? map->m_pLast : it)->second;
     }
     CTCBase* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
     void RemoveTC(long kind);                   // 0x004C9840

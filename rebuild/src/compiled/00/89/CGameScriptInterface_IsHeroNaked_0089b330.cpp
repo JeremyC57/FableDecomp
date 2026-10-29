@@ -3,10 +3,12 @@
 typedef unsigned char u8;
 typedef unsigned int u32;
 
-struct TCEntry {
-    int   key;        // +0x00
-    void* iface;      // +0x04
-};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> TCEntry;
 
 struct HeroTarget {
     char  pad00[0x28];
@@ -20,9 +22,10 @@ struct HeroTarget {
 class CThingPlayerCreature : public HeroTarget { };
 
 
-struct TCMap {
-    TCEntry* LowerBound(int* key);   // __fastcall: this in ecx, key pushed
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    const TCEntry* LowerBound(const ETCInterfaceType& key) const;   // __fastcall: this in ecx, key pushed
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > TCMap;
 
 // engine callees (addresses reloc-masked)
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
@@ -38,12 +41,12 @@ bool __fastcall CGameScriptInterface_IsHeroNaked(const CGameScriptInterface* sel
         (target->field28 & 0x40000000) != 0)
     {
         char* base = (char*)target + 0x44;
-        int key = 0x5E;
-        TCEntry* e = ((TCMap*)base)->LowerBound(&key);
+        ETCInterfaceType key = (ETCInterfaceType)(0x5E);
+        const TCEntry* e = ((TCMap*)base)->LowerBound(key);
         TCEntry* end = *(TCEntry**)(base + 4);
-        if (e == end || e->key > 0x5E)
+        if (e == end || e->first > 0x5E)
             e = end;
-        return TCShop_GetName(e->iface);
+        return TCShop_GetName(((void*)e->second));
     }
     return false;
 }

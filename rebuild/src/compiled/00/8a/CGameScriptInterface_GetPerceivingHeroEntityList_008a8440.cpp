@@ -4,7 +4,13 @@
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
 class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const long&)const;}; //004365B0 (const lower_bound specialization)
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const ETCInterfaceType& key) const;};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //004365B0 (const lower_bound specialization)
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();}; //004C7E50 //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
@@ -122,7 +128,7 @@ struct CGameScriptInterfaceMethods:CGameScriptInterface{bool GetPerceivingHeroEn
 bool CGameScriptInterfaceMethods::GetPerceivingHeroEntityList(ScriptVector& output)const{
  bool found=false;output.Erase(output.Start,output.Finish);CThingPlayerCreature* hero=static_cast<PlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();if(hero&&!(hero->DeletedFlags&1)){
  ThingVector things;g_HeroPerceptionManager->GetPerceivingThings(things);for(CThingNative** it=things.Start;it!=things.Finish;++it){CThingNative* thing=*it;if(thing&&!(thing->DeletedFlags&1)&&(thing->UsingComponents[1]&0x100000)){
- const ComponentMap* map=&thing->Components;const ComponentEntry* entry=map->LowerBound(52);const ComponentEntry* end=map->Finish;const CTCPerceiveThing* perceive=static_cast<CTCPerceiveThing*>((entry==end||entry->Type>52?end:entry)->Component);if(perceive->LineOfSight||perceive->AwarenessTimer!=0.0f||perceive->ExtendedLineOfSight){output.PushBack(thing->GetScriptThing());found=true;}
+ const ComponentMap* map=&thing->Components;const ComponentEntry* entry=map->LowerBound((ETCInterfaceType)52);const ComponentEntry* end=map->Finish;const CTCPerceiveThing* perceive=static_cast<CTCPerceiveThing*>(((void*)(entry==end||entry->first>52?end:entry)->second));if(perceive->LineOfSight||perceive->AwarenessTimer!=0.0f||perceive->ExtendedLineOfSight){output.PushBack(thing->GetScriptThing());found=true;}
  }}
  }return found;
 }

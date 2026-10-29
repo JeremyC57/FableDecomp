@@ -18,8 +18,14 @@
 #include "engine/CParentDefClassBase.h"
 #undef CParentDefClassBase
 // Actual donor parent is0x3D with InstantiationName+25; retail native parent0x3C also has name+25 (getter004303B0) and smaller native map. Native21-slot hierarchy below is independently RTTI verified at ExpressionDef VT01233D1C.
-struct ComponentEntry{long Type;void* Component;};
-struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const long&)const;}; //004365B0
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const ETCInterfaceType& key) const;};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //004365B0
 // Quarantined CThing donor has Components+48, retail has+44; lifecycle+91 confirmed by native.
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Metadata[0x41];unsigned char LifeFlags;};
 struct IntelligentInfo{CThingNative* Object;long References;};
@@ -86,7 +92,7 @@ bool CGameScriptThingMethods::MsgExpressionPerformedTo(CCharString& name)const {
  CThingNative* thing=p->Get();
  if(thing->UsingComponents[2]&4) {
  CTCEntityEvents* events;
- {long key=66;ComponentMap* map=&thing->Components;const ComponentEntry*it=map->LowerBound(key);const ComponentEntry*end=map->Finish;events=static_cast<CTCEntityEvents*>((it==end||it->Type>66?end:it)->Component);}
+ {ETCInterfaceType key = (ETCInterfaceType)(66);ComponentMap* map=&thing->Components;const ComponentEntry*it=map->LowerBound(key);const ComponentEntry*end=map->Finish;events=static_cast<CTCEntityEvents*>(((void*)(it==end||it->first>66?end:it)->second));}
  for(EventNode* n=reinterpret_cast<EventList*>(events->Events)->Head->Next;n!=reinterpret_cast<EventList*>(events->Events)->Head;n=n->Next) {
  EventBase* e=n->Data;
  if(e->GetType()==3&&e->WorldFrame>last&&e->WorldFrame<=current) {

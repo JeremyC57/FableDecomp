@@ -141,9 +141,10 @@ class CBankFile { public:
 };
 class CShaderDataBank : public CBankFile { public:};
 
-struct CBaseClassNonCopyable {
-    CBaseClassNonCopyable();                                 // 0x0099A2F0
-    virtual ~CBaseClassNonCopyable();
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                                 // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ (protected)
+    virtual ~CBaseClassNonCopyable();                        // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (protected)
 };
 
 class CShaderBankEntry : public CBaseClassNonCopyable { public:

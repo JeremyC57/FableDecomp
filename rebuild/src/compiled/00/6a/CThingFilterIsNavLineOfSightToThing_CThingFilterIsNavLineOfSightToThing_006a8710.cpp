@@ -14,18 +14,22 @@ class CTCBase;
 class C3DVector { public: float X, Y, Z; };
 enum ETCInterfaceType { TC_CREATURE_NAVIGATION = 0x07 };
 
-struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    struct SEntry { ETCInterfaceType type; CTCBase* component; };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
     SEntry* end_of_storage;
-    SEntry* LowerBound(const ETCInterfaceType& type) const;     // 0x004365B0
-    __forceinline SEntry* Find(long type) const
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;     // 0x004365B0
+    __forceinline const SEntry* Find(long type) const
     {
-        SEntry* it = LowerBound((ETCInterfaceType)type);
-        return (it == last || type < it->type) ? last : it;
+        const SEntry* it = LowerBound((ETCInterfaceType)type);
+        return (it == last || type < it->first) ? last : it;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing {
 public:
@@ -42,7 +46,7 @@ public:
     template<class T> __forceinline bool PeekTC(T** pp) const
     {
         if (HasTC(T::StatGetInterfaceType())) {
-            *pp = (T*)Components.Find(T::StatGetInterfaceType())->component;
+            *pp = (T*)Components.Find(T::StatGetInterfaceType())->second;
             return true;
         }
         return false;

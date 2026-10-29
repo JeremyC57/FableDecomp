@@ -4,7 +4,13 @@
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
 class C3DVector{ public:float X,Y,Z;};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct ScriptMethods;
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; ScriptMethods GetScriptThing()const; }; //004C73D0,004C7E50
@@ -111,6 +117,6 @@ ScriptMethods CGameScriptInterfaceMethods::CreateEffect(const CCharString& name,
  if(parent.IsAlive()){
  CThingNative* owner=parent.GetPThing();
  CThingNative* particle=CreateParticle(name,owner->GetPos(),false);
- if(particle){if(particle->UsingComponents[2]&0x800){ComponentMap* map=&particle->Components;ComponentEntry* it=map->LowerBound(75);ComponentEntry* end=map->Finish;EmitterMethods* emitter=static_cast<EmitterMethods*>((it==end||it->Type>75?end:it)->Component);emitter->AttachToThing(owner,10,bone,0,0.0f);emitter->SetAlwaysUpdate(always);}return particle->GetScriptThing();}
+ if(particle){if(particle->UsingComponents[2]&0x800){ComponentMap* map=&particle->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)75);ComponentEntry* end=map->Finish;EmitterMethods* emitter=static_cast<EmitterMethods*>(((void*)(it==end||it->first>75?end:it)->second));emitter->AttachToThing(owner,10,bone,0,0.0f);emitter->SetAlwaysUpdate(always);}return particle->GetScriptThing();}
  }return ScriptMethods();
 }

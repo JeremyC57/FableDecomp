@@ -4,7 +4,13 @@
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
 class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const long&);}; //0040F020 lower_bound
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish,*Capacity;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020 lower_bound
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();}; //004C7E50 //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
@@ -114,7 +120,7 @@ struct EntityEventsMethods:CTCEntityEvents{void AddEvent(EventBase*);}; //008113
 struct CGameScriptInterfaceMethods:CGameScriptInterface{void SendEntityEvent(long,const ScriptMethods&,const ScriptMethods&,CThingNative*)const;};
 void CGameScriptInterfaceMethods::SendEntityEvent(long type,const ScriptMethods& recipient,const ScriptMethods& witness,CThingNative* thief)const{
 if(witness.IsAlive()&&recipient.IsAlive()){
- CThingNative* thing=recipient.GetPThing();if(thing->UsingComponents[2]&4){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(66);ComponentEntry* end=map->Finish;EntityEventsMethods* events=static_cast<EntityEventsMethods*>((it==end||it->Type>66?end:it)->Component);
+ CThingNative* thing=recipient.GetPThing();if(thing->UsingComponents[2]&4){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)66);ComponentEntry* end=map->Finish;EntityEventsMethods* events=static_cast<EntityEventsMethods*>(((void*)(it==end||it->first>66?end:it)->second));
  switch(type){case 19:events->AddEvent(new EventPickpocketing(thief,witness.GetPThing()));break;case 20:events->AddEvent(new EventPickingLock(thief,witness.GetPThing()));break;case 21:events->AddEvent(new EventStealing(thief,witness.GetPThing()));break;}
 }}
 }

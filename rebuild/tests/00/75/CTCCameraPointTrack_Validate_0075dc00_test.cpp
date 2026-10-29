@@ -10,15 +10,21 @@ namespace NShape { class CTrack { public: int id; }; }
 static NShape::CTrack g_track;
 class CTCShapeManager { public: bool has; bool GetBestTrack(const NShape::CTrack** out) const; };
 bool CTCShapeManager::GetBestTrack(const NShape::CTrack** out) const { if (!has) return false; *out = &g_track; return true; }
-struct CInterfaceMap {
-    struct SEntry { long type; CTCShapeManager* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long* type) const;
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;
 };
-CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) const
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+const CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const ETCInterfaceType& type) const
 {
     SEntry* it = first;
-    while (it != last && it->type < *type) ++it;
+    while (it != last && it->first < type) ++it;
     return it;
 }
 class CThing {
@@ -34,7 +40,7 @@ int main()
 {
     CThing t; memset(&t, 0, sizeof(t));
     CTCShapeManager sm; sm.has = true;
-    CInterfaceMap::SEntry e[2] = { { 0x10, 0 }, { 0x44, &sm } };
+    CInterfaceMap::SEntry e[2] = { { (ETCInterfaceType)0x10, 0 }, { (ETCInterfaceType)0x44, (CTCBase*)&sm } };
     t.m_interfaces.first = e; t.m_interfaces.last = e + 2;
     CTCCameraPointTrack tc; tc.ParentThing = &t;
     CCharString s;

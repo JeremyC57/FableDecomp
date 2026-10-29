@@ -1,18 +1,23 @@
 // CMiniMapDisplay::InitialiseHouseMarkers() -- add a minimap marker for every owned or for-sale house in the current region
 // Grade: see STATUS.tsv
 class CTCBase;
-struct CInterfaceMap {                             // a thing's sorted {type, component} vector
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                             // a thing's sorted {type, component} vector
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0 (the const copy)
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (the const copy)
     CTCBase* Find(long kind) const
     {
-        long key = kind;
-        const SEntry* it = LowerBound(&key);
-        return ((it == last || kind < it->type) ? last : it)->component;
+        ETCInterfaceType key = (ETCInterfaceType)(kind);
+        const SEntry* it = LowerBound(key);
+        return ((it == last || kind < it->first) ? last : it)->second;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types

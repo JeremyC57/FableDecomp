@@ -8,7 +8,13 @@
 // Native bitset has9words/map44/life91 versus donor10words/map48/lifeA1; retain named native view below.
 #include "fable_string.h"
 class C3DVector{ public:float X,Y,Z;};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //0040F020
 struct ScriptMethods;
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingNative : public CThing { public: void* VTable; unsigned char Base[0x1c]; unsigned int UsingComponents[9]; ComponentMap Components; unsigned char AfterComponents[0x45]; unsigned char Dead:1; unsigned char OtherLifeFlags:7; ScriptMethods GetScriptThing()const; }; //004C73D0,004C7E50
@@ -112,7 +118,7 @@ void CGameScriptInterfaceMethods::SetEntityAsRegionFollowing(const ScriptMethods
  if(leader.IsAlive()&&follower.IsAlive()){
  CThingNative* owner=leader.GetPThing();CThingNative* target=follower.GetPThing();
  if(owner&&!owner->Dead&&target&&!target->Dead&&(owner->UsingComponents[3]&0x4000000)){
- ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound(122);ComponentEntry* end=map->Finish;
- CTCRegionFollowerMethods* region=static_cast<CTCRegionFollowerMethods*>((it==end||it->Type>122?end:it)->Component);
+ ComponentMap* map=&owner->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)122);ComponentEntry* end=map->Finish;
+ CTCRegionFollowerMethods* region=static_cast<CTCRegionFollowerMethods*>(((void*)(it==end||it->first>122?end:it)->second));
  if(follow)region->AddFollower(*target);else region->RemoveFollower(*target);
  }}}

@@ -24,14 +24,20 @@ class CCreatureActionBase { public:void* __vftable;unsigned char NativeActionSta
 class CCreatureAction_BeStunned:public CCreatureActionBase { public:bool Flip;CCreatureAction_BeStunned(Creature&,bool);}; //00865940
 class CCreatureAction_AlertToPlayer:public CCreatureActionBase { public:CCreatureAction_AlertToPlayer(Creature&);}; //00865A00; PDB sizeB4 same as donor base.
 class CTCCreatureModeManager { public:class CModeBase { public:virtual ~CModeBase();virtual unsigned long GetType()const;};CModeBase& GetCurrentMode()const;}; //0073A6E0; GetType genuine mode slot1
-struct InterfaceEntry {long Type;CTCCreatureModeManager* Component;};
-struct InterfaceMap {InterfaceEntry* First;InterfaceEntry* Last;InterfaceEntry* LowerBound(const long* type)const;}; //004365B0
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> InterfaceEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:InterfaceEntry* First;InterfaceEntry* Last;const InterfaceEntry* LowerBound(const ETCInterfaceType& type) const;};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > InterfaceMap; //004365B0
 struct Creature {
  unsigned char _beforeFlags[0x20];unsigned long PresentBits[9];InterfaceMap Interfaces;unsigned char _beforeDead[0x45];unsigned char DeadFlags;
  unsigned char _beforeHealth[0x22];float Health;long CanComeBetweenCameraAndObservedThing;unsigned char PhysicalFlags;
  float GetDazedHealthThreshold()const; //00662090
  bool SetCurrentAction(const CCreatureActionBase&); //006644F0
- __forceinline bool GetInterface(CTCCreatureModeManager** out,long type)const {if(PresentBits[type>>5]&(1UL<<(type&31))){long key=type;const InterfaceMap* map=&Interfaces;InterfaceEntry* p=map->LowerBound(&key);if(p==map->Last||type<p->Type)p=map->Last;*out=p->Component;return true;}return false;}
+ __forceinline bool GetInterface(CTCCreatureModeManager** out,long type)const {if(PresentBits[type>>5]&(1UL<<(type&31))){ETCInterfaceType key = (ETCInterfaceType)(type);const InterfaceMap* map=&Interfaces;const InterfaceEntry* p=map->LowerBound(key);if(p==map->Last||type<p->first)p=map->Last;*out=((CTCCreatureModeManager*)p->second);return true;}return false;}
 };
 struct CBaseObjectPointer {void* object;unsigned long refcount;};
 struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();CBaseObjectPointer* PData;Creature* GetPItem()const;}; //00A01B50

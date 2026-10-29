@@ -22,23 +22,25 @@ class CAInputProcess { public:
     void RemoveFromInterface();                         // 0x00A0D2D0 (non-virtual)
 };
 
-struct CTCEntry {                                       // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long     Type;
-    CTCBase* TC;
-};
-struct CTCMap {                                         // CThing::Components: a sorted vector of pairs (12 bytes)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CTCEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                         // CThing::Components: a sorted vector of pairs (12 bytes)
     CTCEntry* _M_start;
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
-    CTCEntry* LowerBound(const unsigned long& type);    // 0x0040F020
+    CTCEntry* LowerBound(const ETCInterfaceType& type);    // 0x0040F020
     __forceinline CTCBase* Find(long type)
     {
-        CTCEntry* it = LowerBound((unsigned long)type);
-        if (it == _M_finish || type < it->Type)
+        CTCEntry* it = LowerBound((ETCInterfaceType)type);
+        if (it == _M_finish || type < it->first)
             it = _M_finish;
-        return it->TC;
+        return it->second;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                   // +0x20 which TC types the thing holds

@@ -11,24 +11,26 @@
 // as the landed CGameScriptInterface::IsThingTurncoated 0x008A19B0), then the qualified base call.
 class CTCBase;
 
-struct STCEntry {                               // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long     m_kind;
-    CTCBase* m_pTC;
-};
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry;
 
-struct CTCMap {                                 // the thing's component map: a sorted vector of pairs
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                 // the thing's component map: a sorted vector of pairs
     STCEntry* m_pFirst;
     STCEntry* m_pLast;
     STCEntry* m_pEnd;
-    STCEntry* LowerBound(const unsigned long& kind);        // 0x0040F020
+    STCEntry* LowerBound(const ETCInterfaceType& kind);        // 0x0040F020
     CTCBase* Find(long kind)                    // the inlined map find: lower bound, then end when the key is absent
     {
-        STCEntry* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
+        STCEntry* it = LowerBound((ETCInterfaceType)kind);
+        if (it == m_pLast || kind < it->first)
             it = m_pLast;
-        return it->m_pTC;
+        return it->second;
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 
 struct CTCPrimitiveOwner {                      // component kind 0x31
     void ClearAllChildPrimitives();             // 0x0073AE70

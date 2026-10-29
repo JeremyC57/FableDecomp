@@ -18,16 +18,18 @@
 class CCharString { public: class CCharStringData* PStringData; };
 
 class CTCBase;
-struct CTCEntry {                                        // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long     Type;
-    CTCBase* TC;
-};
-struct CTCMap {                                          // CThing::Components: a sorted vector of pairs (12 bytes)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CTCEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                          // CThing::Components: a sorted vector of pairs (12 bytes)
     CTCEntry* _M_start;
     CTCEntry* _M_finish;
     CTCEntry* _M_end_of_storage;
-    CTCEntry* LowerBound(const long& type);              // 0x0040F020 (the non-const instantiation)
+    CTCEntry* LowerBound(const ETCInterfaceType& type);              // 0x0040F020 (the non-const instantiation)
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap;
 class CThing { public:                                          // retail CThing (local model: offsets PDB -0x10 past the containers)
     unsigned char _pad00[0x20];
     unsigned long UsingComponents[8];                    // +0x20 which TC types the thing holds
@@ -40,11 +42,11 @@ class CThing { public:                                          // retail CThing
     __forceinline CTCBase* GetTC(long type)
     {
         CTCMap* map = &Components;
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CTCEntry* it = map->LowerBound(key);
-        if (it == map->_M_finish || type < it->Type)
+        if (it == map->_M_finish || type < it->first)
             it = map->_M_finish;
-        return it->TC;
+        return it->second;
     }
     void SetInLimbo(bool inLimbo);                       // 0x004C8CF0
     void SetAsGameStatePersisted(bool persisted);        // 0x004C7880

@@ -60,12 +60,18 @@ struct CStringSet {                                      // STLport set<CCharStr
 struct CTextDataBank {
     void GetAllTextEntriesForNarrator(const CCharString& narrator, CStringSet& entries, long language);   // 0x009C8990
 };
-struct ComponentEntry { long Type; void* Component; };
-struct ComponentMap {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     ComponentEntry* Start;
     ComponentEntry* Finish;
-    const ComponentEntry* LowerBound(const long& key) const;   // 0x004365B0
+    const ComponentEntry* LowerBound(const ETCInterfaceType& key) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 class CThing { public:
     void*          VTable;
     unsigned char  Base[0x1c];
@@ -102,9 +108,9 @@ extern long g_TextLanguage;                              // 0x013B86C0
 template <class T, long TYPE> __forceinline T* GetComponent(const CThing* thing)
 {
     const ComponentMap* map = &thing->Components;
-    const ComponentEntry* it = map->LowerBound(TYPE);
+    const ComponentEntry* it = map->LowerBound((ETCInterfaceType)TYPE);
     const ComponentEntry* end = map->Finish;
-    return (T*)((it == end || it->Type > TYPE) ? end : it)->Component;
+    return (T*)((void*)((it == end || it->first > TYPE) ? end : it)->second);
 }
 class CGameScriptInterface { public:
     virtual void v000();

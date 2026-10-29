@@ -12,10 +12,16 @@
 #include "fable_string.h"
 #include "engine/_quarantine/CTCQuestCompletionUI.h"
 struct CTCQuestCompletionUIMethods:CTCQuestCompletionUI {void Activate(long,const CCharString&,bool,const CWideString&,bool);};
-struct ComponentEntry {long Type;void* Component;};
-struct ComponentMap {ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const long&);};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish;ComponentEntry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 struct CThingNative {void* VTable;unsigned char Base[0x1c];unsigned long UsingComponents[9];ComponentMap Components;
- __forceinline bool GetQuestCompletionUI(CTCQuestCompletionUIMethods** out){if(UsingComponents[7]&0x10000000){long key=252;ComponentMap* map=&Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;*out=static_cast<CTCQuestCompletionUIMethods*>((it==end||it->Type>252?end:it)->Component);return true;}return false;}
+ __forceinline bool GetQuestCompletionUI(CTCQuestCompletionUIMethods** out){if(UsingComponents[7]&0x10000000){ETCInterfaceType key = (ETCInterfaceType)(252);ComponentMap* map=&Components;ComponentEntry* it=map->LowerBound(key);ComponentEntry* end=map->Finish;*out=static_cast<CTCQuestCompletionUIMethods*>(((void*)(it==end||it->first>252?end:it)->second));return true;}return false;}
 };
 class CThingPlayerCreature : public CThingNative { };
 class CPlayer : public CPlayerPdb { public: CThingPlayerCreature* GetPControlledCreature() const; }; //00487DC0
@@ -28,7 +34,7 @@ FABLE_STATIC_ASSERT(sizeof(ComponentMap)==8);
 FABLE_STATIC_ASSERT(offsetof(CTCQuestCompletionUIMethods,Active)==0x0c);
 void CGameScriptInterfaceMethods::KickOffDeathScreen()const{
  CTCQuestCompletionUIMethods* ui;CThingNative* hero=static_cast<CPlayerManagerMethods*>(PlayerManager)->GetMainPlayer()->GetPControlledCreature();
- if(hero->UsingComponents[7]&0x10000000){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound(252);ComponentEntry* end=map->Finish;ui=static_cast<CTCQuestCompletionUIMethods*>((it==end||it->Type>252?end:it)->Component);}
+ if(hero->UsingComponents[7]&0x10000000){ComponentMap* map=&hero->Components;ComponentEntry* it=map->LowerBound((ETCInterfaceType)252);ComponentEntry* end=map->Finish;ui=static_cast<CTCQuestCompletionUIMethods*>(((void*)(it==end||it->first>252?end:it)->second));}
  {CWideString summary(L"");CCharString name("",-1);ui->Activate(3,name,true,summary,true);}
  if((this->*reinterpret_cast<InterfaceSlot*>(__vftable)[394].IsHeroControlledByPlayer)())while(ui->Active)(this->*reinterpret_cast<InterfaceSlot*>(__vftable)[7].NewScriptFrame)();
 }

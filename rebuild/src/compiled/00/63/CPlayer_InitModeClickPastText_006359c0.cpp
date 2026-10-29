@@ -30,23 +30,26 @@ class CTCSpecialAbilities { public:
 public:
     void CancelCurrentMutexAbility();   // 0x0072B420
 };
-struct STCEntry_Retail {                                    // one CVectorMap<ETCInterfaceType, CTCBase*> element
-    long            m_kind;
-    CTCBase_Retail* m_pTC;
-};
-struct CTCMap_Retail {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> STCEntry_Retail;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     STCEntry_Retail* m_pFirst;
     STCEntry_Retail* m_pLast;
     STCEntry_Retail* m_pEnd;
-    STCEntry_Retail* LowerBound(const unsigned long& kind);         // 0x0040F020
+    STCEntry_Retail* LowerBound(const ETCInterfaceType& kind);         // 0x0040F020
     __forceinline CTCBase_Retail* Find(long kind)
     {
-        STCEntry_Retail* it = LowerBound((unsigned long)kind);
-        if (it == m_pLast || kind < it->m_kind)
+        STCEntry_Retail* it = LowerBound((ETCInterfaceType)kind);
+        if (it == m_pLast || kind < it->first)
             it = m_pLast;
-        return it->m_pTC;
+        return ((CTCBase_Retail*)it->second);
     }
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CTCMap_Retail;
 struct CThing_Retail {
     unsigned char  _pad00[0x20];
     unsigned long  m_tcMask[8];                             // +0x20: which component kinds the thing holds

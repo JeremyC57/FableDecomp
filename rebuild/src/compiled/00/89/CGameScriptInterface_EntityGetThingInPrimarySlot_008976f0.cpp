@@ -4,7 +4,13 @@
 #include "engine/CScriptThing.h"
 #include "fable_string.h"
 class C3DVector{ public:float X,Y,Z;C3DVector():X(0),Y(0),Z(0){}C3DVector(const C3DVector& o):X(o.X),Y(o.Y),Z(o.Z){}};
-struct ComponentEntry{long Type;void* Component;};struct ComponentMap{ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const long&)const;}; //004365B0 (const lower_bound specialization)
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> ComponentEntry;template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:ComponentEntry *Start,*Finish,*Capacity;const ComponentEntry* LowerBound(const ETCInterfaceType& key) const;};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap; //004365B0 (const lower_bound specialization)
 struct ScriptMethods;
 struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComponents[9];ComponentMap Components;unsigned char Rest[0x41];unsigned char DeletedFlags;ScriptMethods GetScriptThing();}; //004C7E50 //004C73D0,004C7E50
 // Complete native CScriptThing virtual interface: all slots0..78, PDB signatures mapped to actual retail RTTI table1238C8C.
@@ -109,6 +115,6 @@ struct CarryingMethods{CThingNative* GetPrimarySlotThing();}; //006A1440
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods EntityGetThingInPrimarySlot(const ScriptMethods&)const;};
 ScriptMethods CGameScriptInterfaceMethods::EntityGetThingInPrimarySlot(const ScriptMethods& script)const{
  ScriptMethods result;
- if(script.IsAlive()){CThingNative* thing=script.GetPThing();if(thing->UsingComponents[2]&0x40){ComponentMap* map=&thing->Components;const ComponentEntry* it=map->LowerBound(70);const ComponentEntry* end=map->Finish;CarryingMethods* carrying=static_cast<CarryingMethods*>((it==end||it->Type>70?end:it)->Component);CThingNative* carried=carrying->GetPrimarySlotThing();if(carried&&!(carried->DeletedFlags&1))result=carried->GetScriptThing();}}
+ if(script.IsAlive()){CThingNative* thing=script.GetPThing();if(thing->UsingComponents[2]&0x40){ComponentMap* map=&thing->Components;const ComponentEntry* it=map->LowerBound((ETCInterfaceType)70);const ComponentEntry* end=map->Finish;CarryingMethods* carrying=static_cast<CarryingMethods*>(((void*)(it==end||it->first>70?end:it)->second));CThingNative* carried=carrying->GetPrimarySlotThing();if(carried&&!(carried->DeletedFlags&1))result=carried->GetScriptThing();}}
  return result;
 }

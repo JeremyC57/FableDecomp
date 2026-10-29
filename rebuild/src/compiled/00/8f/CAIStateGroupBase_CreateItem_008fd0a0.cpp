@@ -45,14 +45,20 @@ struct CAIStateGroupBaseCreateItem : CAIStateGroupBase {
     void CreateItem(CCharString*, CCharString*);
 };
 
-struct CLongPointerPair { long key; void* value; };
-struct CVectorMapLong {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> CLongPointerPair;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     CLongPointerPair* first;
     CLongPointerPair* last;
     CLongPointerPair* capacity;
     unsigned long flags;
-    CLongPointerPair* LowerBound(const long& key); // 0x0040f020
+    CLongPointerPair* LowerBound(const ETCInterfaceType& key); // 0x0040f020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CVectorMapLong;
 
 CThingObject* __fastcall CreateObject(long definition, C3DVector* position, long playerID,
                                       float* orientation, unsigned long flags,
@@ -65,11 +71,11 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
     if ((*(unsigned char*)((char*)creature + 0x28) & 0x40) != 0)
     {
         CVectorMapLong* carries = (CVectorMapLong*)((char*)creature + 0x44);
-        long key = 0x46;
+        ETCInterfaceType key = (ETCInterfaceType)(0x46);
         CLongPointerPair* entry = carries->LowerBound(key);
-        if (entry == carries->last || entry->key > 0x46)
+        if (entry == carries->last || entry->first > 0x46)
             entry = carries->last;
-        CTCCarrying* carry = (CTCCarrying*)entry->value;
+        CTCCarrying* carry = (CTCCarrying*)((void*)entry->second);
 
         long playerID = ((CPlayerManagerAccess*)brain->PlayerManager)->GetMainPlayer();
         C3DVector position = PBrain->Creature->GetPos();

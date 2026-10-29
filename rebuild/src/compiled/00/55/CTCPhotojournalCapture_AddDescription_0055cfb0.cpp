@@ -5,7 +5,7 @@
 //   GetDescription 0x0055D070 (seek to end - 4, read the count, accept 0..0x200).
 // Callees: CBaseClassNonCopyable() 0x0099A2F0, CWideString() 0x0099AED0, CDiskFileWin32::Open 0x0099A6A0 /
 //   SetPosition 0x0099ABF0 / Write 0x0099AA90 / Close 0x0099A920 (direct calls: the local's dynamic type is known),
-//   CWideString::operator const wchar_t* 0x0099AF10, CWideString::GetLength 0x0099B220, ~CWideString 0x0099B510,
+//   CWideString::GetAsCharArray 0x0099AF10, CWideString::GetLength 0x0099B220, ~CWideString 0x0099B510,
 //   ~CBaseClassNonCopyable 0x0099A300.
 // Label correction: catalogued as unscoped "AddDescription"; Ego_r.pdb
 //   `?AddDescription@CTCPhotojournalCapture@@SIXABVCWideString@@0@Z` (static, __fastcall).
@@ -23,9 +23,10 @@ class CAFile;
 class CFileInformation;
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_READ_WRITE = 2, FILE_ACCESS_WRITE = 4 };
 
-struct CBaseClassNonCopyable {
-    CBaseClassNonCopyable();                 // 0x0099A2F0
-    virtual ~CBaseClassNonCopyable();        // 0x0099A300
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                 // 0x0099A2F0 (protected: IAE)
+    virtual ~CBaseClassNonCopyable();        // 0x0099A300 (protected virtual: MAE)
 };
 
 class CDiskFileWin32 : public CBaseClassNonCopyable { public:   // vtable 0x0122D06C, 0x1c bytes
@@ -65,7 +66,7 @@ void __fastcall CTCPhotojournalCapture::AddDescription(const CWideString& filena
     CDiskFileWin32 file;
     file.Open(filename, FILE_ACCESS_READ_WRITE, 2);
     file.SetPosition(file.GetLength());
-    const wchar_t* text = description;
+    const wchar_t* text = description.GetAsCharArray();
     file.Write(text, description.GetLength() * sizeof(wchar_t), 0);
     long length = description.GetLength();
     file.Write(&length, sizeof(length), 0);

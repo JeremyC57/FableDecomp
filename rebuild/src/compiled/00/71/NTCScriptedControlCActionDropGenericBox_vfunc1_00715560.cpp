@@ -5,8 +5,14 @@
 struct Creature;
 namespace Retail {struct ActionBase {unsigned char Data[0xa8];~ActionBase();long GetActionID()const;};struct DropGenericBox:ActionBase {DropGenericBox(Creature&);};}
 struct Thing;struct Component {};class CTCCarrying:public Component { public:Thing* RemoveThingFromPrimarySlot(bool);};class CTCCreatureModeManager:public Component { public:void RemoveMode(unsigned long);};
-struct Pair {int Key;Component* Value;};
-struct ComponentMap {Pair* First;Pair* Last;Pair* Limit;Pair* LowerBound(const int&);__forceinline void Get(int key,Component** result){int query=key;Pair* i=LowerBound(query);*result=(i==Last||key<i->Key?Last:i)->Value;}};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> Pair;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:Pair* First;Pair* Last;Pair* Limit;Pair* LowerBound(const ETCInterfaceType& key);__forceinline void Get(int key,Component** result){ETCInterfaceType query = (ETCInterfaceType)(key);Pair* i=LowerBound(query);*result=((Component*)(i==Last||key<i->first?Last:i)->second);}};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > ComponentMap;
 struct Creature {unsigned char ToFlags[0x24];unsigned int Flags24,Flags28;unsigned char ToMap[0x44-0x2c];ComponentMap Components;unsigned char ToAction[0x100-0x50];Retail::ActionBase* CurrentAction;bool IsPerformingAnyAction()const;bool SetCurrentAction(const Retail::ActionBase&);
  template<class T> __forceinline bool GetInterface(T** result,long key){if((key==0x46?(Flags28&0x40):(Flags24&0x20000))){Component* component;Components.Get(key,&component);*result=(T*)component;return true;}return false;}
 };

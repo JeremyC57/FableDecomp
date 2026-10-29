@@ -17,23 +17,18 @@ enum ETCInterfaceType
 template <typename TKey, typename TValue>
 class CKeyPairCompareLess;
 
-template <typename TKey, typename TValue>
-struct CKeyPair
-{
-    TKey m_Key;
-    TValue m_Value;
-};
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 
-typedef CKeyPair<ETCInterfaceType, CTCBase*> KickOffCreditsScreenPair;
+typedef std::pair<ETCInterfaceType, CTCBase*> KickOffCreditsScreenPair;
 
 template <typename TKey, typename TValue, typename TCompare>
 class CVectorMap
 {
 public:
-    CKeyPair<TKey, TValue>* m_pBegin;
-    CKeyPair<TKey, TValue>* m_pEnd;
+    std::pair<TKey, TValue>* m_pBegin;
+    std::pair<TKey, TValue>* m_pEnd;
 
-    CKeyPair<TKey, TValue>* LowerBound(const TKey* pKey);
+    std::pair<TKey, TValue>* LowerBound(const TKey& key);
 };
 
 class CTCCreditsUI
@@ -95,11 +90,11 @@ void CGameScriptInterface::KickOffCreditsScreen(
         KickOffCreditsScreenInterfaceMap* map =
             (KickOffCreditsScreenInterfaceMap*)&resolved->m_InterfaceMap44;
         KickOffCreditsScreenPair* entry =
-            map->LowerBound(&interfaceType);
+            map->LowerBound(interfaceType);
         if (entry == map->m_pEnd ||
-            (ETCInterfaceType)0x101 < entry->m_Key)
+            (ETCInterfaceType)0x101 < entry->first)
             entry = map->m_pEnd;
-        creditsUI = (CTCCreditsUI*)entry->m_Value;
+        creditsUI = (CTCCreditsUI*)entry->second;
     }
 
     creditsUI->Activate(CCharString(screenName));

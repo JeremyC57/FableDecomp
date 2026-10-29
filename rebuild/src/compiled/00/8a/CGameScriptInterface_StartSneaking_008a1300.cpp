@@ -1,10 +1,16 @@
 // CGameScriptInterface::StartSneaking @ 008a1300
 #include "engine/CGameScriptInterface.h"  // retyped onto the PDB layout; byte parity re-verified
-struct Node { int key; void* p4; };
-struct Container {
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+typedef std::pair<ETCInterfaceType, CTCBase*> Node;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
     Node* begin; Node* end_;
-    Node* LowerBound(int* key); // __fastcall: ecx=this, key on stack
+    Node* LowerBound(const ETCInterfaceType& key); // __fastcall: ecx=this, key on stack
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > Container;
 
 struct Obj {
     unsigned char _pad0[0x24];
@@ -32,13 +38,13 @@ void __fastcall CGameScriptInterface_StartSneaking(CGameScriptInterface* self)
     if (!(o->field24 & 0x400000)) return;
 
     Container* c = &o->cont;
-    int local = 0x36;
-    Node* r = c->LowerBound(&local);
+    ETCInterfaceType local = (ETCInterfaceType)(0x36);
+    Node* r = c->LowerBound(local);
     Node* e = c->end_;
-    if (r != e && r->key <= 0x36) {
+    if (r != e && r->first <= 0x36) {
         // keep r
     } else {
         r = e;
     }
-    FinalCall(r->p4);
+    FinalCall(((void*)r->second));
 }

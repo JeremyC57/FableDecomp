@@ -1,7 +1,7 @@
 // NUISystem::CScrollingViewport::ScrollChildren(bool) -- scroll the viewport's children one step: take the step from the front end's description offset (or the viewport's own speed), negated when scrolling up; build the on-screen window box; ask every active child how far it can still scroll and keep the largest; clamp the step to it (unless the front end says to skip the clamp) and move every active child by it
 // Leaf: ScrollChildren
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0053EDA0, length 880 bytes, ret 4 (virtual, ?ScrollChildren@CScrollingViewport@NUISystem@@UAEX_N@Z).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall); NUISystem::CManager GetDescriptionScrollingOffset 0x0041CF40,
+// Callees: NUISystem::CManager::GetInstance 0x0041E5F2 (__fastcall); NUISystem::CManager GetDescriptionScrollingOffset 0x0041CF40,
 // GetUIScale 0x0041CF47 (C2DVector by hidden pointer), the +0xc8 flag getter 0x0041CF2C; CComponent virtuals slot 25
 // (+0x64) GetRenderPosition, slot 33 (+0x84) ChangePositionDelta, slot 88 (+0x160) CanScroll, slot 98 (+0x188) IsActive.
 // Layout: Children vector<CCountedPointer<CComponent>> +0xb0 (8-byte elements), the second child list
@@ -19,11 +19,9 @@ class CManager { public:
     float GetDescriptionScrollingOffset();   // 0x0041CF40
     C2DVector GetUIScale();                  // 0x0041CF47
     bool IsScrollUnclamped();                // 0x0041CF2C (descriptive: the +0xc8 flag)
+    static CManager* __fastcall GetInstance();                 // 0x0041E5F2
 };
 }
-struct CFrontEndManager {
-    static NUISystem::CManager* __fastcall GetInstance();   // 0x0041E5F2
-};
 namespace NUISystem {
 class CComponent { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
@@ -82,8 +80,8 @@ class CScrollingViewport : public CComponent { public:
 void CScrollingViewport::ScrollChildren(bool up)
 {
     float delta;
-    if (CFrontEndManager::GetInstance()->GetDescriptionScrollingOffset() != -1.0f) {
-        delta = up ? -CFrontEndManager::GetInstance()->GetDescriptionScrollingOffset() : CFrontEndManager::GetInstance()->GetDescriptionScrollingOffset();
+    if (NUISystem::CManager::GetInstance()->GetDescriptionScrollingOffset() != -1.0f) {
+        delta = up ? -NUISystem::CManager::GetInstance()->GetDescriptionScrollingOffset() : NUISystem::CManager::GetInstance()->GetDescriptionScrollingOffset();
     } else if (up) {
         delta = -ScrollingSpeed;
     } else {
@@ -91,15 +89,15 @@ void CScrollingViewport::ScrollChildren(bool up)
     }
     C2DBoxF box;
     float x = Window.TLX;
-    box.TLX = x * CFrontEndManager::GetInstance()->GetUIScale().X + GetRenderPosition().X;
+    box.TLX = x * NUISystem::CManager::GetInstance()->GetUIScale().X + GetRenderPosition().X;
     float y = Window.TLY;
-    y *= CFrontEndManager::GetInstance()->GetUIScale().Y;
+    y *= NUISystem::CManager::GetInstance()->GetUIScale().Y;
     box.TLY = y + GetRenderPosition().Y;
     C2DVector size;
     size.X = Window.BRX - Window.TLX;
-    box.BRX = size.X * CFrontEndManager::GetInstance()->GetUIScale().X + box.TLX;
+    box.BRX = size.X * NUISystem::CManager::GetInstance()->GetUIScale().X + box.TLX;
     size.Y = Window.BRY - Window.TLY;
-    box.BRY = size.Y * CFrontEndManager::GetInstance()->GetUIScale().Y + box.TLY;
+    box.BRY = size.Y * NUISystem::CManager::GetInstance()->GetUIScale().Y + box.TLY;
     float scroll = 0.0f;
     unsigned int i;
     for (i = 0; i < Children.size(); ++i) {
@@ -119,7 +117,7 @@ void CScrollingViewport::ScrollChildren(bool up)
                 scroll = can;
         }
     }
-    if (!CFrontEndManager::GetInstance()->IsScrollUnclamped()) {
+    if (!NUISystem::CManager::GetInstance()->IsScrollUnclamped()) {
         if (fabs(scroll) > fabs(delta))
             scroll = delta;
     }

@@ -118,8 +118,8 @@ $catalog = @(
         TestSource = '00/40/Global_ListNodeCreateCircular_004046f0_test.cpp'; PassPattern = 'LIST_NODE_CREATE_CIRCULAR_TEST PASS'
     },
     [pscustomobject]@{
-        Address = '00404280'; Module = '_global'; Source = '00/40/Global_WideStringEqualsLen_00404280.cpp'
-        TestSource = '00/40/Global_WideStringEqualsLen_00404280_test.cpp'; PassPattern = 'WIDESTRING_EQUALS_LEN_TEST PASS'
+        Address = '00404280'; Module = 'std'; Source = '00/40/std_operator_00404280.cpp'
+        TestSource = '00/40/std_operator_00404280_test.cpp'; PassPattern = 'WIDESTRING_EQUALS_LEN_TEST PASS'
     },
     [pscustomobject]@{
         Address = '004012ce'
@@ -123417,9 +123417,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040f0a0'
-        Module = '_global'
-        Source = '00/40/global_CompareUnsigned16Array_0040f0a0.cpp'
-        TestSource = '00/40/global_CompareUnsigned16Array_0040f0a0_test.cpp'
+        Module = 'std'
+        Source = '00/40/std_operator_0040f0a0.cpp'
+        TestSource = '00/40/std_operator_0040f0a0_test.cpp'
         PassPattern = 'COMPARE_U16_PASS'
     }
     [pscustomobject]@{

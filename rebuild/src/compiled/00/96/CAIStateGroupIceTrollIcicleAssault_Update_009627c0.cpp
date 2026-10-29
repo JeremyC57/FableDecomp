@@ -14,10 +14,16 @@ struct CAIStateGroup_IceTrollIcicleAssault:CAIStateGroupBase{void* PTarget[2];};
 #endif
 struct CIceThing;
 struct CStealth {void SetAsInDanger(CIceThing*,long);}; //00747b80
-struct CIceMap{struct Entry{long type;void* component;};Entry* first;Entry* last;Entry* LowerBound(const long*);}; //0040f020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:typedef std::pair<ETCInterfaceType, CTCBase*> Entry;Entry* first;Entry* last;Entry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CIceMap; //0040f020
 struct CIceThing {char prefix[0x20];unsigned long components[9];CIceMap map;char beforeDead[0x45];unsigned char dead;
 bool IsPerformingAnyAction(); //006622a0
-__forceinline bool GetStealth(CStealth** out){if(components[1]&0x400000){long key=54;CIceMap* m=&map;CIceMap::Entry* it=m->LowerBound(&key);if(it==m->last||54<it->type)it=m->last;*out=(CStealth*)it->component;return true;}return false;}
+__forceinline bool GetStealth(CStealth** out){if(components[1]&0x400000){ETCInterfaceType key = (ETCInterfaceType)(54);CIceMap* m=&map;CIceMap::Entry* it=m->LowerBound(key);if(it==m->last||54<it->first)it=m->last;*out=(CStealth*)((void*)it->second);return true;}return false;}
 };
 struct CIcePointer {CIceThing* GetPItem()const;}; //00a01b50, methods view over opaque shared PTarget
 struct CIceCombatAction {virtual ~CIceCombatAction();char state[0x110];}; //0062e900
