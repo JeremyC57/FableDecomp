@@ -1,0 +1,18 @@
+address	name	evidence
+00e28de0	NScript::CQS_MeetSisterScript::Main	chunk 578: slot 2 of quest vtable 0x012E2194; Ego_r.pdb
+00e245e0	NScript::CQR_EscortTraderScript::TravellingWrongPath	chunk 578: Ego_r.pdb member; catalog said StringList_FindDuplicateEntry
+00ea7800	NScript::CV_MazeResearchScript::Main	chunk 578: Main slot of vtable 0x012EE444; Ego_r.pdb
+00e27920	NScript::CQS_GuardianTrophyDealerInfoScript::Main	chunk 578: Main slot of vtable 0x012E2018; Ego_r.pdb
+00f2d330	CFeatDef::Transfer	chunk 578: slot 18 (Transfer) of CFeatDef vtable 0x012FB778; ?Transfer@CFeatDef@@UAEXAAVCPersistContext@@@Z
+00f05f30	NScript::CQ_AmbushTradersScript::CAT_BanditAlly::Init	chunk 578: Init slot of entity vtable 0x012F7D88; Ego_r.pdb
+00e83a20	NScript::CV_FisticuffsClubScript::CFisticuffsMember::Init	chunk 578: Init slot of entity vtable 0x012EB0F8; Ego_r.pdb
+00e96c30	NScript::CV_HauntedHouseScript::SendBodyguardsToTheRightPlace	chunk 578: Ego_r.pdb (CCharString, CCharString) member; catalog said DoMission_BodyGuardSimple
+00f2d010	std::vector<CFeatDef>::operator=	chunk 578: callees are the vector<CFeatDef> helpers (0x64 stride); both PDBs
+00eb55d0	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard::Main	chunk 578 (parked DIFFER 362v370): Main slot of the guard's entity vtable; Ego_r.pdb
+00eb6200	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard::AttackHero	chunk 578: Ego_r.pdb; catalog said CMurderTwistSheriff::Init
+00f2d1c0	std::vector<CFeatDef>::_M_clear	chunk 578: destroy + free of the CFeatDef vector; catalog said ~CRetailVector_poly0x64
+00f2d4d0	Transfer<EFeatAttackType>	chunk 578: CFeatDef member type in both PDBs; catalog said Transfer<EKNAttackType>
+00cdd450	CSpawnedFuncBase::CSpawnedFuncBase	chunk 578 review: ??0CSpawnedFuncBase@@QAE@ABVCCharString@@K@Z; stores vtable 0x012C2F9C after the microthread base ctor
+0099a2e0	CBaseClass::~CBaseClass	chunk 578 review: ??1CBaseClass@@UAE@XZ; stores vtable 0x01231710 (RTTI .?AVCBaseClass@@), called by scalar deleting dtor 0x004371F0
+00a44740	CSuspendableProcessMicrothread::CSuspendableProcessMicrothread	chunk 578 review: ??0CSuspendableProcessMicrothread@@IAE@_NJM@Z (both PDBs); called by the CSpawnedFuncBase ctor with (1, 0x40, 0.1f)
+00a44620	CSuspendableProcessMicrothread::~CSuspendableProcessMicrothread	chunk 578 review: ??1CSuspendableProcessMicrothread@@MAE@XZ; the CSpawnedFuncBase dtor tail-jumps to it

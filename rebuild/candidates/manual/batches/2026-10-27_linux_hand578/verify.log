@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00e245e0   RELOCATION_MATCH PASS   TravellingWrongPath
+00e27920   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00e27920   RELOCATION_MATCH PASS   Main
+00e28de0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00e28de0   RELOCATION_MATCH PASS   Main
+00e83a20   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00e83a20   RELOCATION_MATCH PASS   Init
+00e96c30   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00e96c30   RELOCATION_MATCH PASS   SendBodyguardsToTheRightPlace
+00ea7800   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00ea7800   RELOCATION_MATCH PASS   Main
+00f05f30   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00f05f30   SRC_FAIL         PASS   Init
+00f2d010   WARN RELOC_NAME: ?_M_clear@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@IAEXXZ -> 00f2d1c0 labelled 'CRetailVector_poly0x64::~CRetailVector_poly0x64'
+00f2d010   RELOCATION_MATCH PASS   operator=
+00f2d330   RELOCATION_MATCH PASS   Transfer
+
+WINS: 8
+  00e245e0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::?TravellingWrongPath@CQR_EscortTraderScript@NScript@@QAE_NXZ
+  00e27920 RELOCATION_MATCH NScript::CQS_GuardianTrophyDealerInfoScript::?Main@CQS_GuardianTrophyDealerInfoScript@NScript@@UAEXXZ
+  00e28de0 RELOCATION_MATCH NScript::CQS_MeetSisterScript::?Main@CQS_MeetSisterScript@NScript@@UAEXXZ
+  00e83a20 RELOCATION_MATCH NScript::CV_FisticuffsClubScript::CFisticuffsMember::?Init@CFisticuffsMember@CV_FisticuffsClubScript@NScript@@EAEXXZ
+  00e96c30 RELOCATION_MATCH NScript::CV_HauntedHouseScript::?SendBodyguardsToTheRightPlace@CV_HauntedHouseScript@NScript@@QAEXVCCharString@@0@Z
+  00ea7800 RELOCATION_MATCH NScript::CV_MazeResearchScript::?Main@CV_MazeResearchScript@NScript@@UAEXXZ
+  00f2d010 RELOCATION_MATCH std::vector<CFeatDef>::??4?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00f2d330 RELOCATION_MATCH CFeatDef::?Transfer@CFeatDef@@UAEXAAVCPersistContext@@@Z
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  NScriptCQREscortTraderScript_TravellingWrongPath_00e245e0
+  NScriptCQSGuardianTrophyDealerInfoScript_Main_00e27920
+  NScriptCQSMeetSisterScript_Main_00e28de0
+  NScriptCVFisticuffsClubScriptCFisticuffsMember_Init_00e83a20
+  NScriptCVHauntedHouseScript_SendBodyguardsToTheRightPlace_00e96c30
+  NScriptCVMazeResearchScript_Main_00ea7800
+  stdvectorCFeatDef_operator_00f2d010
+  CFeatDef_Transfer_00f2d330

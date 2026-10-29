@@ -1,6 +1,6 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-10-29T21:01:34+00:00`
+Generated: `2026-10-29T21:12:26+00:00`
 
 ## Landed reconstruction (live)
 
@@ -8,12 +8,12 @@ From `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1`
 
 | Measure | Landed | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
-| Original catalog functions landed, genuine C++ | 44,682 | 49,568 | 90.143% | Byte-matching C++ (no hand-written asm bake) for the original analysis catalog |
-| All known functions landed, genuine C++ | 51,651 | 57,267 | 90.193% | Adds the gap-scan and boundary functions found later |
-| Retail function bytes reproduced, genuine C++ | 5,053,361 | 13,248,749 | 38.142% | Landed row lengths over landed + unlanded (unlanded sized to the next function start: an upper bound) |
-| Retail `.text` bytes reproduced, genuine C++ | 5,053,361 | 14,858,408 | 34.010% | Against the whole `.text` section (includes padding and inline data) |
-| Landed rows using retail inline asm (grade `retail_asm`) | 135 | 51,704 | — | Counted as genuine: retail itself ran the asm (owner rule 2026-10-24) |
-| Landed rows that are hand-written asm bakes | 21 | 51,704 | — | Byte-exact oracles, **not** reconstruction; excluded above |
+| Original catalog functions landed, genuine C++ | 44,685 | 49,568 | 90.149% | Byte-matching C++ (no hand-written asm bake) for the original analysis catalog |
+| All known functions landed, genuine C++ | 51,660 | 57,267 | 90.209% | Adds the gap-scan and boundary functions found later |
+| Retail function bytes reproduced, genuine C++ | 5,056,920 | 13,248,660 | 38.169% | Landed row lengths over landed + unlanded (unlanded sized to the next function start: an upper bound) |
+| Retail `.text` bytes reproduced, genuine C++ | 5,056,920 | 14,858,408 | 34.034% | Against the whole `.text` section (includes padding and inline data) |
+| Landed rows using retail inline asm (grade `retail_asm`) | 135 | 51,713 | — | Counted as genuine: retail itself ran the asm (owner rule 2026-10-24) |
+| Landed rows that are hand-written asm bakes | 21 | 51,713 | — | Byte-exact oracles, **not** reconstruction; excluded above |
 
 ## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-10-20)
 
@@ -47,7 +47,7 @@ Written by `tools/bootstrap_rebuild_tree.py` (the Windows pipeline). The Linux l
 
 ## Interpretation
 
-The reverse-engineering database is near complete. Landed byte-matching C++ covers 90.143% of the original catalog by function count but 38.142% by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
+The reverse-engineering database is near complete. Landed byte-matching C++ covers 90.149% of the original catalog by function count but 38.169% by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
 
 The clean-decompile sweep predates later function discovery, so its denominator is 49,082 while the current catalog contains 49,568 functions. The dashboard does not silently extrapolate the missing 486 measurements.
 

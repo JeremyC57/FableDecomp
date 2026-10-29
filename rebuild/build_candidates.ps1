@@ -364198,6 +364198,69 @@ $catalog = @(
         TestSource = '00/f0/NScriptCQAmbushTradersScript_WatchForAllGuardsDead_00f033f0_test.cpp'
         PassPattern = '00f033f0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e245e0'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e2/NScriptCQREscortTraderScript_TravellingWrongPath_00e245e0.cpp'
+        TestSource = '00/e2/NScriptCQREscortTraderScript_TravellingWrongPath_00e245e0_test.cpp'
+        PassPattern = '00e245e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e27920'
+        Module = 'NScript::CQS_GuardianTrophyDealerInfoScript'
+        Source = '00/e2/NScriptCQSGuardianTrophyDealerInfoScript_Main_00e27920.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianTrophyDealerInfoScript_Main_00e27920_test.cpp'
+        PassPattern = '00e27920_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e28de0'
+        Module = 'NScript::CQS_MeetSisterScript'
+        Source = '00/e2/NScriptCQSMeetSisterScript_Main_00e28de0.cpp'
+        TestSource = '00/e2/NScriptCQSMeetSisterScript_Main_00e28de0_test.cpp'
+        PassPattern = '00e28de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e83a20'
+        Module = 'NScript::CV_FisticuffsClubScript::CFisticuffsMember'
+        Source = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_Init_00e83a20.cpp'
+        TestSource = '00/e8/NScriptCVFisticuffsClubScriptCFisticuffsMember_Init_00e83a20_test.cpp'
+        PassPattern = '00e83a20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e96c30'
+        Module = 'NScript::CV_HauntedHouseScript'
+        Source = '00/e9/NScriptCVHauntedHouseScript_SendBodyguardsToTheRightPlace_00e96c30.cpp'
+        TestSource = '00/e9/NScriptCVHauntedHouseScript_SendBodyguardsToTheRightPlace_00e96c30_test.cpp'
+        PassPattern = '00e96c30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ea7800'
+        Module = 'NScript::CV_MazeResearchScript'
+        Source = '00/ea/NScriptCVMazeResearchScript_Main_00ea7800.cpp'
+        TestSource = '00/ea/NScriptCVMazeResearchScript_Main_00ea7800_test.cpp'
+        PassPattern = '00ea7800_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f2d010'
+        Module = 'std::vector<CFeatDef>'
+        Source = '00/f2/stdvectorCFeatDef_operator_00f2d010.cpp'
+        TestSource = '00/f2/stdvectorCFeatDef_operator_00f2d010_test.cpp'
+        PassPattern = '00f2d010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f2d330'
+        Module = 'CFeatDef'
+        Source = '00/f2/CFeatDef_Transfer_00f2d330.cpp'
+        TestSource = '00/f2/CFeatDef_Transfer_00f2d330_test.cpp'
+        PassPattern = '00f2d330_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f05f30'
+        Module = 'NScript::CQ_AmbushTradersScript::CAT_BanditAlly'
+        Source = '00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Init_00f05f30.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Init_00f05f30_test.cpp'
+        PassPattern = '00f05f30_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

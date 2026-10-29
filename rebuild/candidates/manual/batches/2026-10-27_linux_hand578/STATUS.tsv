@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00e28de0	RELOCATION_MATCH	370v370	PASS	NScript::CQS_MeetSisterScript::Main (quest vtable 0x012E2194 slot 2); 1 grade
+00eb55d0	DIFFER	362v370	-	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard::Main; dead dword-0 frame slot + dead mov bl,al; parked in differ/
+00e245e0	RELOCATION_MATCH	372v372	PASS	NScript::CQR_EscortTraderScript::TravellingWrongPath; Compare body in TU under auto_inline(off); 2 grades
+00ea7800	RELOCATION_MATCH	374v374	PASS	NScript::CV_MazeResearchScript::Main (vtable 0x012EE444 slot 2); 1 grade
+00e27920	RELOCATION_MATCH	390v390	PASS	NScript::CQS_GuardianTrophyDealerInfoScript::Main (vtable 0x012E2018 slot 2); 1 grade
+00f2d330	RELOCATION_MATCH	403v403	PASS	CFeatDef::Transfer (CFeatDef vtable 0x012FB778 slot 18); FABLE_RETAIL_DEF_CLASS_BASE; 1 grade
+00f05f30	RELOCATION_MATCH	409v409	PASS	NScript::CQ_AmbushTradersScript::CAT_BanditAlly::Init (vtable 0x012F7D88 slot 2); 1 grade
+00e83a20	RELOCATION_MATCH	411v411	PASS	NScript::CV_FisticuffsClubScript::CFisticuffsMember::Init (vtable 0x012EB0F8); rand()%3 switch with default = case 0; 2 grades
+00e96c30	RELOCATION_MATCH	413v413	PASS	NScript::CV_HauntedHouseScript::SendBodyguardsToTheRightPlace(CCharString, CCharString); 1 grade
+00f2d010	RELOCATION_MATCH	417v417	PASS	std::vector<CFeatDef>::operator= (CConversation 0x00E54AA0 model); 1 grade

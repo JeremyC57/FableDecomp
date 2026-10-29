@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00eb55d0	DIFFER	362v370	-	NScript::CV_MurderTwistFinalScript::CMurderTwistAssassinGuard::Main; dead dword-0 frame slot + dead mov bl,al; parked in differ/
