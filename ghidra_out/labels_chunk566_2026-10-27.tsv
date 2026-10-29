@@ -1,0 +1,12 @@
+address	name	evidence
+00835b10	CThingDeadCreature::~CThingDeadCreature	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+0085d0a0	NThingMap::CThingMap::~CThingMap	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+00878f50	NCameraModes::CProjectileWeapon::OnInit	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+0088bbe0	CAIBrain::~CAIBrain	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+008b7ba0	CCreatureAction_UnsheatheWeapons::PerformAction	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+008c40f0	CCreatureAction_WaspQueenDiveAttack::FinishAction	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+008cc7a0	CCreatureAction_BalverineCorneredJumpIntoSky::FrameUpdate	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+008cc820	CCreatureAction_BalverineDropInFromSky::FrameUpdate	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+00934870	CAIStateGroup_MinionKidGroupTag::Update	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+009536d0	CCreatureAction_DragonFireBlastBase::~CCreatureAction_DragonFireBlastBase	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed
+0098d710	CVertexShaderConstantLayout::~CVertexShaderConstantLayout	proven per batch 2026-10-27_linux_hand566 NOTES.md (chunk 566): PDB leaf + RTTI/caller, objdump-confirmed

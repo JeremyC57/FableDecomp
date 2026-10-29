@@ -1,0 +1,52 @@
+addr       parity           behav  name
+00835b10   RELOCATION_MATCH PASS   ~CThingDeadCreature
+0085d0a0   RELOCATION_MATCH PASS   ~CThingMap
+00878f50   RELOCATION_MATCH PASS   OnInit
+0088bbe0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0088bbe0   WARN SHARED_HEADER_AVAILABLE CAIStateGroupBase
+0088bbe0   RELOCATION_MATCH PASS   ~CAIBrain
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CTCBase
+008b7ba0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008b7ba0   WARN RELOC_NAME: ?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ -> 0073a840 labelled 'CTCCreatureModeManager::RestartCurrentMode'
+008b7ba0   RELOCATION_MATCH PASS   PerformAction
+008c40f0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008c40f0   RELOCATION_MATCH PASS   FinishAction
+008cc7a0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008cc7a0   WARN RELOC_NAME: ?GetPercentageComplete@CCreatureActionBase@@QBEMXZ -> 006925e0 labelled 'CInputTypeMouseMovementEvent::GetMovementRatio'
+008cc7a0   RELOCATION_MATCH PASS   FrameUpdate
+008cc820   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+008cc820   WARN RELOC_NAME: ?GetPercentageComplete@CCreatureActionBase@@QBEMXZ -> 006925e0 labelled 'CInputTypeMouseMovementEvent::GetMovementRatio'
+008cc820   RELOCATION_MATCH PASS   FrameUpdate
+00934870   WARN SHARED_HEADER_AVAILABLE CWorld
+00934870   WARN SHARED_HEADER_AVAILABLE CAIBrain
+00934870   RELOCATION_MATCH PASS   Update
+009536d0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+009536d0   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+009536d0   RELOCATION_MATCH PASS   ~CCreatureAction_DragonFireBlastBase
+0098d710   RELOCATION_MATCH PASS   ~CVertexShaderConstantLayout
+
+WINS: 11
+  00835b10 RELOCATION_MATCH CThingDeadCreature::??1CThingDeadCreature@@UAE@XZ
+  0085d0a0 RELOCATION_MATCH NThingMap::CThingMap::??1CThingMap@NThingMap@@UAE@XZ
+  00878f50 RELOCATION_MATCH NCameraModes::CProjectileWeapon::?OnInit@CProjectileWeapon@NCameraModes@@UAEXXZ
+  0088bbe0 RELOCATION_MATCH CAIBrain::??1CAIBrain@@UAE@XZ
+  008b7ba0 RELOCATION_MATCH CCreatureAction_UnsheatheWeapons::?PerformAction@CCreatureAction_UnsheatheWeapons@@UAEXXZ
+  008c40f0 RELOCATION_MATCH CCreatureAction_WaspQueenDiveAttack::?FinishAction@CCreatureAction_WaspQueenDiveAttack@@UAEXXZ
+  008cc7a0 RELOCATION_MATCH CCreatureAction_BalverineCorneredJumpIntoSky::?FrameUpdate@CCreatureAction_BalverineCorneredJumpIntoSky@@UAEXXZ
+  008cc820 RELOCATION_MATCH CCreatureAction_BalverineDropInFromSky::?FrameUpdate@CCreatureAction_BalverineDropInFromSky@@UAEXXZ
+  00934870 RELOCATION_MATCH CAIStateGroup_MinionKidGroupTag::?Update@CAIStateGroup_MinionKidGroupTag@@UAEXXZ
+  009536d0 RELOCATION_MATCH CCreatureAction_DragonFireBlastBase::??1CCreatureAction_DragonFireBlastBase@@UAE@XZ
+  0098d710 RELOCATION_MATCH CVertexShaderConstantLayout::??1CVertexShaderConstantLayout@@UAE@XZ
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  CThingDeadCreature_CThingDeadCreature_00835b10
+  NThingMapCThingMap_CThingMap_0085d0a0
+  NCameraModesCProjectileWeapon_OnInit_00878f50
+  CAIBrain_CAIBrain_0088bbe0
+  CCreatureActionUnsheatheWeapons_PerformAction_008b7ba0
+  CCreatureActionWaspQueenDiveAttack_FinishAction_008c40f0
+  CCreatureActionBalverineCorneredJumpIntoSky_FrameUpdate_008cc7a0
+  CCreatureActionBalverineDropInFromSky_FrameUpdate_008cc820
+  CAIStateGroupMinionKidGroupTag_Update_00934870
+  CCreatureActionDragonFireBlastBase_CCreatureActionDragonFireBlastBase_009536d0
+  CVertexShaderConstantLayout_CVertexShaderConstantLayout_0098d710

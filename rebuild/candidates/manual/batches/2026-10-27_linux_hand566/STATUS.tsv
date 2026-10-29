@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+00835b10	RELOCATION_MATCH	120v120	PASS	CThingDeadCreature::~CThingDeadCreature (vptr 0x01272B04); members reverse: body reorienter scoped_ptr, PKiller, PAnimFilter counted pointer; tail ~CThingGameObject
+0085d0a0	RELOCATION_MATCH	213v213	PASS	NThingMap::CThingMap::~CThingMap (catalog lacked the namespace); unlink every mapwho node, then STLport vector dtors
+00878f50	RELOCATION_MATCH	276v276	PASS	NCameraModes::CProjectileWeapon::OnInit (vtable 0x01277804 slot 21); inline SetSingleCut + GetCameraMode<T> template
+0088bbe0	RELOCATION_MATCH	199v199	PASS	CAIBrain::~CAIBrain; OnKill guard, delete state groups from the back; callee 0x0088B6F0 is OnKill (bound OnLevelUnload is wrong)
+008b7ba0	RELOCATION_MATCH	336v336	PASS	CCreatureAction_UnsheatheWeapons::PerformAction; 5-entry jump table checked entry by entry; block-scoped noise string (grade 2)
+008c40f0	RELOCATION_MATCH	119v119	PASS	CCreatureAction_WaspQueenDiveAttack::FinishAction; named float local + inline GetPhysicsTC (grade 2)
+008cc7a0	RELOCATION_MATCH	120v120	PASS	CCreatureAction_BalverineCorneredJumpIntoSky::FrameUpdate; retail alpha (1-2p)*255 is non-positive past half way (byte wraps), constant 1.0 read from .rdata
+008cc820	RELOCATION_MATCH	114v114	PASS	CCreatureAction_BalverineDropInFromSky::FrameUpdate; twin of 0x008CC7A0, fade in 2p*255
+00934870	RELOCATION_MATCH	169v169	PASS	CAIStateGroup_MinionKidGroupTag::Update; inline GFFloatRandom + inline GetCreature() reference accessor (grade 2)
+009536d0	RELOCATION_MATCH	119v119	PASS	implicit ~CCreatureAction_DragonFireBlastBase (no vptr store); Line1 handle Clear + PShot; tail ~CCombatActionBase 0x0062E900
+0097c5e0	DIFFER	308v383	PASS	CAIStateGroup_ScorpionKing::Update parked: true function is 308 bytes and byte-exact (pfx2 0 mismatches, 21 relocs, jump table matches); re-split at 0x0097C720 (row swallows ctor 0x0097C720, 0x0097C730, scalar dtor 0x0097C740)
+0098d710	RELOCATION_MATCH	270v270	PASS	implicit ~CVertexShaderConstantLayout (no vptr store); ReservedPresets free, 26 CShaderConstantRange members, tail ~CBaseClass

@@ -35132,3 +35132,17 @@ _icomp	00ca1bc0	00ca1be0
 ?GetArmourResponseAugmentationDamageMultiplier@?A0xdcdbd2fc@@YI_NJABUCArmourMap@@MAAM@Z	00868a80	00869020
 ?GetToughnessDamageReductionFactorForThing@?A0xdcdbd2fc@@YIMABVCThing@@@Z	00868b40	00869020
 ?GetArmourWeightsFromThing@?A0xdcdbd2fc@@YIXABVCThing@@AAUCArmourMap@@AAM@Z	00868e50	00869020
+?HasCameraMode@CGameCameraManager@@QBE_NW4EMode@NCameraModes@@@Z	00697ac0	00878f50
+?SetUpParams@CProjectileWeapon@NCameraModes@@AAEXXZ	00878ce0	00878f50
+??1CSuspendableProcessMicrothread@@MAE@XZ	00a44620	0088bbe0
+?OnKill@CAIBrain@@QAEXXZ	0088b6f0	0088bbe0
+?IsThingCarryingWeapon@CTCCarrying@@SI_NABVCThing@@@Z	006a1540	008b7ba0
+?RefreshCurrentMode@CTCCreatureModeManager@@QAEXXZ	0073a840	008b7ba0
+?SetupCombatStrikeEvents@CCombatActionBase@@IAEXXZ	00859a70	008b7ba0
+?UnsheatheAllWeapons@CThingCreatureBase@@QAEXXZ	00666830	008b7ba0
+?UnsheatheRangedWeapon@CThingCreatureBase@@QAEXXZ	00664a10	008b7ba0
+?GetPercentageComplete@CCreatureActionBase@@QBEMXZ	006925e0	008cc7a0
+?AIAction_DoNothing@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@XZ	0097e200	00934870
+?EvadeTarget@CAIStateGroup_MinionKidGroupTag@@AAEXXZ	00934410	00934870
+?GetTagger@CTCCreatureGroupTag@@QBEPBVCThingAICreature@@XZ	008138e0	00934870
+?TagTarget@CAIStateGroup_MinionKidGroupTag@@AAEXXZ	009341c0	00934870

@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+0097c5e0	DIFFER	308v383	PASS	CAIStateGroup_ScorpionKing::Update parked: true function is 308 bytes and byte-exact (pfx2 0 mismatches, 21 relocs, jump table matches); re-split at 0x0097C720 (row swallows ctor 0x0097C720, 0x0097C730, scalar dtor 0x0097C740)

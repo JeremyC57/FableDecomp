@@ -363728,6 +363728,83 @@ $catalog = @(
         TestSource = '00/cd/CPersistContextTransferableVectorbool_Resize_00cdd0a0_test.cpp'
         PassPattern = '00cdd0a0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00835b10'
+        Module = 'CThingDeadCreature'
+        Source = '00/83/CThingDeadCreature_CThingDeadCreature_00835b10.cpp'
+        TestSource = '00/83/CThingDeadCreature_CThingDeadCreature_00835b10_test.cpp'
+        PassPattern = '00835b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0085d0a0'
+        Module = 'NThingMap::CThingMap'
+        Source = '00/85/NThingMapCThingMap_CThingMap_0085d0a0.cpp'
+        TestSource = '00/85/NThingMapCThingMap_CThingMap_0085d0a0_test.cpp'
+        PassPattern = '0085d0a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00878f50'
+        Module = 'NCameraModes::CProjectileWeapon'
+        Source = '00/87/NCameraModesCProjectileWeapon_OnInit_00878f50.cpp'
+        TestSource = '00/87/NCameraModesCProjectileWeapon_OnInit_00878f50_test.cpp'
+        PassPattern = '00878f50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0088bbe0'
+        Module = 'CAIBrain'
+        Source = '00/88/CAIBrain_CAIBrain_0088bbe0.cpp'
+        TestSource = '00/88/CAIBrain_CAIBrain_0088bbe0_test.cpp'
+        PassPattern = '0088bbe0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008b7ba0'
+        Module = 'CCreatureAction_UnsheatheWeapons'
+        Source = '00/8b/CCreatureActionUnsheatheWeapons_PerformAction_008b7ba0.cpp'
+        TestSource = '00/8b/CCreatureActionUnsheatheWeapons_PerformAction_008b7ba0_test.cpp'
+        PassPattern = '008b7ba0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008c40f0'
+        Module = 'CCreatureAction_WaspQueenDiveAttack'
+        Source = '00/8c/CCreatureActionWaspQueenDiveAttack_FinishAction_008c40f0.cpp'
+        TestSource = '00/8c/CCreatureActionWaspQueenDiveAttack_FinishAction_008c40f0_test.cpp'
+        PassPattern = '008c40f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cc7a0'
+        Module = 'CCreatureAction_BalverineCorneredJumpIntoSky'
+        Source = '00/8c/CCreatureActionBalverineCorneredJumpIntoSky_FrameUpdate_008cc7a0.cpp'
+        TestSource = '00/8c/CCreatureActionBalverineCorneredJumpIntoSky_FrameUpdate_008cc7a0_test.cpp'
+        PassPattern = '008cc7a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '008cc820'
+        Module = 'CCreatureAction_BalverineDropInFromSky'
+        Source = '00/8c/CCreatureActionBalverineDropInFromSky_FrameUpdate_008cc820.cpp'
+        TestSource = '00/8c/CCreatureActionBalverineDropInFromSky_FrameUpdate_008cc820_test.cpp'
+        PassPattern = '008cc820_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00934870'
+        Module = 'CAIStateGroup_MinionKidGroupTag'
+        Source = '00/93/CAIStateGroupMinionKidGroupTag_Update_00934870.cpp'
+        TestSource = '00/93/CAIStateGroupMinionKidGroupTag_Update_00934870_test.cpp'
+        PassPattern = '00934870_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '009536d0'
+        Module = 'CCreatureAction_DragonFireBlastBase'
+        Source = '00/95/CCreatureActionDragonFireBlastBase_CCreatureActionDragonFireBlastBase_009536d0.cpp'
+        TestSource = '00/95/CCreatureActionDragonFireBlastBase_CCreatureActionDragonFireBlastBase_009536d0_test.cpp'
+        PassPattern = '009536d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0098d710'
+        Module = 'CVertexShaderConstantLayout'
+        Source = '00/98/CVertexShaderConstantLayout_CVertexShaderConstantLayout_0098d710.cpp'
+        TestSource = '00/98/CVertexShaderConstantLayout_CVertexShaderConstantLayout_0098d710_test.cpp'
+        PassPattern = '0098d710_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
