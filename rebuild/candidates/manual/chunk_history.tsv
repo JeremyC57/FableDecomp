@@ -24739,3 +24739,15 @@ chunk	address	module	name	length
 566	009536d0	CCreatureAction_DragonFireBlastBase	~CCreatureAction_DragonFireBlastBase	119
 566	0097c5e0	CAIStateGroup_ScorpionKing	CAIStateGroup_ScorpionKing::Update	383
 566	0098d710	CVertexShaderConstantLayout	~CVertexShaderConstantLayout	270
+567	004ca019	CThing	ConstructFromParams	428
+567	004cebb0	_global	GetMessagesFromTextName	771
+567	00502b00	_global	AddToRelevantBuilding	906
+567	005239cd	_global	CThingDeadCreature_SavePersistentState	366
+567	00537e70	_global	ContainerUI_HandleMouseInput	955
+567	0055a5d0	CDraggable	OnLeftClicked	697
+567	00564d5d	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics	_Copy_impl<CAppearanceModifierGraphics::CEntry*,CAppearanceModifierGraphics::CEntry*>	29
+567	005d64dd	CTCInventoryStats	AddHeroAbility	477
+567	005e9840	CPersistContext	Transfer<signed_char>	533
+567	005eadd6	CTCTavernGame	SetStateAfterYesNoAlt	332
+567	005eaf46	CTCTavernGame	SetStateAfterYesNoAlt	304
+567	005eb08d	CTCTavernGame	SetStateAfterOK	243
