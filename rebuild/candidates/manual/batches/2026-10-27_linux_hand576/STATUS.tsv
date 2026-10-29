@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00f088e0	RELOCATION_MATCH	325v325	PASS	NScript::CQ_AmbushTradersScript::EntityCountDecrease(CCharString); Compare body in the TU under auto_inline(off) (2 grades)
+00d00440	RELOCATION_MATCH	327v327	PASS	NScript::CQ_AwakeningTheOracleScript::CLostBayCutsceneTrigger::Main; first grade
+00e4f620	RELOCATION_MATCH	257v257	PASS	NScript::CV_BeardyBaldyScript::Init; first grade
+00d86a30	RELOCATION_MATCH	258v258	PASS	NScript::CQ_HeroSoulsGuildmasterScript::CHSG_DistanceChecker::Main; first grade
+00dd8de0	RELOCATION_MATCH	259v259	PASS	NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoorHero::Main; do-while used-by wait (4 grades)
+00e37520	RELOCATION_MATCH	269v269	PASS	NScript::CV_ArcheryCompetitionScript::OnPersist; first grade
+00e54880	RELOCATION_MATCH	269v269	PASS	NScript::CV_BookCollectingScript::OnPersist; first grade
+00eeec00	RELOCATION_MATCH	274v274	PASS	NScript::CTestTheInventoryScript::TestForLampOn; first grade
+00da24f0	RELOCATION_MATCH	276v276	PASS	NScript::CQ_MinionCampScript::RunChantTimer; `if (!ChantTimerPaused)` arm order (2 grades)
+00e54450	RELOCATION_MATCH	282v282	PASS	NScript::CV_BookCollectingScript::Main; first grade

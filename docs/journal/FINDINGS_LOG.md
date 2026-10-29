@@ -866,3 +866,4 @@ Chunk 574 (agent574; batches/2026-10-27_linux_hand574): 6 of 6 quest-script-rang
 
 0x00919AE0 round 3 (Fable-model agent; pending/2026-10-27_linux_hand572): BuyFromSeller::Update now DIFFER(2220v2220), identical instruction streams, two register-colouring differences left (participant-loop element copy, stock-filter ebx/ebp). Block-layout rule found with a reduced model (GOTCHAS). Tools kept in the pending dir.
 - 2026-10-29 chunk 575: 10/10 quest-script rows (7 WatchForTermination threads, MoveHeroTest, 2 TeleportData _M_insert_overflow); all catalog labels were invented.
+- 2026-10-29 chunk 576: 10/10 quest-script rows (entity Mains, OnPersist, Init, RunChantTimer, EntityCountDecrease); all manifest labels wrong.

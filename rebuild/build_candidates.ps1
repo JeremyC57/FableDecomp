@@ -364058,6 +364058,76 @@ $catalog = @(
         TestSource = '00/f0/stdvector_Minsertoverflow_00f0d4e0_test.cpp'
         PassPattern = '00f0d4e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d00440'
+        Module = 'NScript::CQ_AwakeningTheOracleScript::CLostBayCutsceneTrigger'
+        Source = '00/d0/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_Main_00d00440.cpp'
+        TestSource = '00/d0/NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_Main_00d00440_test.cpp'
+        PassPattern = '00d00440_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d86a30'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript::CHSG_DistanceChecker'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_Main_00d86a30.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_Main_00d86a30_test.cpp'
+        PassPattern = '00d86a30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00da24f0'
+        Module = 'NScript::CQ_MinionCampScript'
+        Source = '00/da/NScriptCQMinionCampScript_RunChantTimer_00da24f0.cpp'
+        TestSource = '00/da/NScriptCQMinionCampScript_RunChantTimer_00da24f0_test.cpp'
+        PassPattern = '00da24f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dd8de0'
+        Module = 'NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoorHero'
+        Source = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_Main_00dd8de0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_Main_00dd8de0_test.cpp'
+        PassPattern = '00dd8de0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e37520'
+        Module = 'NScript::CV_ArcheryCompetitionScript'
+        Source = '00/e3/NScriptCVArcheryCompetitionScript_OnPersist_00e37520.cpp'
+        TestSource = '00/e3/NScriptCVArcheryCompetitionScript_OnPersist_00e37520_test.cpp'
+        PassPattern = '00e37520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4f620'
+        Module = 'NScript::CV_BeardyBaldyScript'
+        Source = '00/e4/NScriptCVBeardyBaldyScript_Init_00e4f620.cpp'
+        TestSource = '00/e4/NScriptCVBeardyBaldyScript_Init_00e4f620_test.cpp'
+        PassPattern = '00e4f620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e54450'
+        Module = 'NScript::CV_BookCollectingScript'
+        Source = '00/e5/NScriptCVBookCollectingScript_Main_00e54450.cpp'
+        TestSource = '00/e5/NScriptCVBookCollectingScript_Main_00e54450_test.cpp'
+        PassPattern = '00e54450_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e54880'
+        Module = 'NScript::CV_BookCollectingScript'
+        Source = '00/e5/NScriptCVBookCollectingScript_OnPersist_00e54880.cpp'
+        TestSource = '00/e5/NScriptCVBookCollectingScript_OnPersist_00e54880_test.cpp'
+        PassPattern = '00e54880_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eeec00'
+        Module = 'NScript::CTestTheInventoryScript'
+        Source = '00/ee/NScriptCTestTheInventoryScript_TestForLampOn_00eeec00.cpp'
+        TestSource = '00/ee/NScriptCTestTheInventoryScript_TestForLampOn_00eeec00_test.cpp'
+        PassPattern = '00eeec00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f088e0'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/f0/NScriptCQAmbushTradersScript_EntityCountDecrease_00f088e0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScript_EntityCountDecrease_00f088e0_test.cpp'
+        PassPattern = '00f088e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

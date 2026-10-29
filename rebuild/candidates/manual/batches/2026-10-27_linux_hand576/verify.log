@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00d00440   RELOCATION_MATCH PASS   Main
+00d86a30   RELOCATION_MATCH PASS   Main
+00da24f0   RELOCATION_MATCH PASS   RunChantTimer
+00dd8de0   RELOCATION_MATCH PASS   Main
+00e37520   RELOCATION_MATCH PASS   OnPersist
+00e4f620   RELOCATION_MATCH PASS   Init
+00e54450   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00e54450   RELOCATION_MATCH PASS   Main
+00e54880   RELOCATION_MATCH PASS   OnPersist
+00eeec00   RELOCATION_MATCH PASS   TestForLampOn
+00f088e0   RELOCATION_MATCH PASS   EntityCountDecrease
+
+WINS: 10
+  00d00440 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CLostBayCutsceneTrigger::?Main@CLostBayCutsceneTrigger@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+  00d86a30 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CHSG_DistanceChecker::?Main@CHSG_DistanceChecker@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ
+  00da24f0 RELOCATION_MATCH NScript::CQ_MinionCampScript::?RunChantTimer@CQ_MinionCampScript@NScript@@QAEXXZ
+  00dd8de0 RELOCATION_MATCH NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoorHero::?Main@CCellDoorHero@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ
+  00e37520 RELOCATION_MATCH NScript::CV_ArcheryCompetitionScript::?OnPersist@CV_ArcheryCompetitionScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00e4f620 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::?Init@CV_BeardyBaldyScript@NScript@@UAEXXZ
+  00e54450 RELOCATION_MATCH NScript::CV_BookCollectingScript::?Main@CV_BookCollectingScript@NScript@@UAEXXZ
+  00e54880 RELOCATION_MATCH NScript::CV_BookCollectingScript::?OnPersist@CV_BookCollectingScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00eeec00 RELOCATION_MATCH NScript::CTestTheInventoryScript::?TestForLampOn@CTestTheInventoryScript@NScript@@QAEXXZ
+  00f088e0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?EntityCountDecrease@CQ_AmbushTradersScript@NScript@@QAEXVCCharString@@@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NScriptCQAwakeningTheOracleScriptCLostBayCutsceneTrigger_Main_00d00440
+  NScriptCQHeroSoulsGuildmasterScriptCHSGDistanceChecker_Main_00d86a30
+  NScriptCQMinionCampScript_RunChantTimer_00da24f0
+  NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_Main_00dd8de0
+  NScriptCVArcheryCompetitionScript_OnPersist_00e37520
+  NScriptCVBeardyBaldyScript_Init_00e4f620
+  NScriptCVBookCollectingScript_Main_00e54450
+  NScriptCVBookCollectingScript_OnPersist_00e54880
+  NScriptCTestTheInventoryScript_TestForLampOn_00eeec00
+  NScriptCQAmbushTradersScript_EntityCountDecrease_00f088e0

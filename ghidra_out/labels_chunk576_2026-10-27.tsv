@@ -1,0 +1,12 @@
+address	name	evidence
+00f088e0	NScript::CQ_AmbushTradersScript::EntityCountDecrease	chunk 576: only caller landed WatchForEnemyDeath; only by-value CCharString member; FableWin.pdb order
+00d00440	NScript::CQ_AwakeningTheOracleScript::CLostBayCutsceneTrigger::Main	chunk 576: entity vtable slot stored by a landed ctor; Ego_r.pdb
+00e4f620	NScript::CV_BeardyBaldyScript::Init	chunk 576: quest vtable slot 3; Ego_r.pdb
+00d86a30	NScript::CQ_HeroSoulsGuildmasterScript::CHSG_DistanceChecker::Main	chunk 576: entity vtable slot; Ego_r.pdb spelling
+00dd8de0	NScript::CQ_PrisonEscapeRescueMotherScript::CCellDoorHero::Main	chunk 576: entity vtable slot; Ego_r.pdb
+00e37520	NScript::CV_ArcheryCompetitionScript::OnPersist	chunk 576: quest vtable slot 4; Ego_r.pdb
+00e54880	NScript::CV_BookCollectingScript::OnPersist	chunk 576: quest vtable slot 4; Ego_r.pdb
+00eeec00	NScript::CTestTheInventoryScript::TestForLampOn	chunk 576: thread stored by landed Main 0x00EEEA90; On/Off pair in Ego_r order
+00da24f0	NScript::CQ_MinionCampScript::RunChantTimer	chunk 576: Ego_r PauseChantTimer then RunChantTimer; reads the two members PauseChantTimer writes
+00e54450	NScript::CV_BookCollectingScript::Main	chunk 576: quest vtable slot 2; Ego_r.pdb
+00cb8930	NScript::CScriptBase::PostAddScriptedEntities	chunk 576: catalog label CTCVillage::OnInitialActivate is wrong (RELOC_NAME); Ego_r.pdb

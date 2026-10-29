@@ -35194,3 +35194,7 @@ _icomp	00ca1bc0	00ca1be0
 ?Alloc@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eb1f80	00eaea20
 ?_M_clear@?$vector@UTeleportData@CQ_BountyHuntScript@NScript@@V?$allocator@UTeleportData@CQ_BountyHuntScript@NScript@@@std@@@std@@IAEXXZ	00d18dc0	00d18ca0
 ?_M_clear@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@IAEXXZ	00f0d600	00f0d4e0
+?PlayCutscene@CQ_AwakeningTheOracleScript@NScript@@QAEXVCCharString@@_N@Z	00cff9a0	00d00440
+??_7?$CEntityScriptBinding@VCV_BookCollectingScript@NScript@@@@6B@	012e5f2c	00e54450
+?Alloc@CBS_Teacher@CV_BookCollectingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e54580	00e54450
+?TestForLampOff@CTestTheInventoryScript@NScript@@QAEXXZ	00eeed20	00eeec00
