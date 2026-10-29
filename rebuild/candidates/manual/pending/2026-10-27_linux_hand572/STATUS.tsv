@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00919ae0	DIFFER	2217v2220	PASS	CAIStateGroup_BuyFromSeller::Update parked in differ/ (test differ/00919ae0_test.cpp passes g++ and VC7.1): same calls, frame and shared free tail; residue = 2 register choices + 1 block placement

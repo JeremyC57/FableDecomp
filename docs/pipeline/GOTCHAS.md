@@ -1614,3 +1614,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Quest-script `Main` rows need a polymorphic CScriptBase and a CGameScriptInterface model that keeps its padding virtuals; `cast["Hero"] = hero` needs both operator= `__forceinline` (chunk 570).
 - A local STLport vector passed to an out-of-line `vector::operator=` setter is treated as aliased unless that operator= has a same-TU noinline body (0x00BDBB70, chunk 571).
 - Entity-script Main/Init are `private virtual` (EAE); an implicit `CScriptGameResourceObjectScriptedThingBase::operator=` must be written `__forceinline`; inline `CCharString::operator!=` is `_stricmp` (0xBFEBA8) on GetAsCharArray (chunk 571).
+- VC7.1 merges list-scope exits into one free/epilogue tail only if every early return before the list scope is its own `if` (one `a || b` there gives each exit its own tail, +93 bytes) and `clear` / `push_back` have same-TU noinline bodies (0x00919AE0, chunk 572).
+- `list::size()` written as STLport 4.6's `distance(begin(), end())` gives retail's order; FableWin.pdb names inline accessors Ego_r.pdb inlines away -- look there for getter names (chunk 572).
