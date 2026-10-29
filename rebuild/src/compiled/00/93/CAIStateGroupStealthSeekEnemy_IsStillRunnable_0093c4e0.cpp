@@ -24,7 +24,8 @@ class CThing { public:
 };
 
 
-struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer(); void* Handle; CThing* GetPItem() const; };
+class CBaseObject;
+struct CBaseIntelligentPointer { virtual ~CBaseIntelligentPointer(); void* Handle; CBaseObject* GetPItem() const; };
 struct CTCPerceiveThingMethods : CTCPerceiveThing { CThing* GetPerceivedThing() const; };
 class CTCTargetingAI { public: bool IsThingAttackable(const CThing*) const; };
 bool __fastcall AreThingsEnemies(CThing*,CThing*);
@@ -32,17 +33,17 @@ bool __fastcall IsWillingToAttackTarget(CThing*,CThing*);
 struct CAIStateGroup_StealthSeekEnemy_Adapter : CAIStateGroup_StealthSeekEnemy {
  CAIBrain* Brain() { return *(CAIBrain**)&_pad_0x04[0]; }
  CBaseIntelligentPointer& Enemy() { return *(CBaseIntelligentPointer*)PEnemy; }
- __forceinline bool AreEnemies() { CThing* c=(CThing*)Brain()->Creature; return AreThingsEnemies(Enemy().GetPItem(),c); }
- __forceinline bool WillAttack() { CThing* c=(CThing*)Brain()->Creature; return IsWillingToAttackTarget(c,Enemy().GetPItem()); }
+ __forceinline bool AreEnemies() { CThing* c=(CThing*)Brain()->Creature; return AreThingsEnemies(((CThing*)Enemy().GetPItem()),c); }
+ __forceinline bool WillAttack() { CThing* c=(CThing*)Brain()->Creature; return IsWillingToAttackTarget(c,((CThing*)Enemy().GetPItem())); }
  bool IsStopping(); bool IsStillRunnable(CTCPerceiveThingMethods*);
 };
 bool CAIStateGroup_StealthSeekEnemy_Adapter::IsStillRunnable(CTCPerceiveThingMethods* perception) {
- if(Enemy().GetPItem() && !(Enemy().GetPItem()->dead&1) && !IsStopping()) {
+ if(Enemy().GetPItem() && !(((CThing*)Enemy().GetPItem())->dead&1) && !IsStopping()) {
   if(perception->ExtendedLineOfSight || perception->AwarenessTimer!=0.0f) {
-   CThing* enemy=Enemy().GetPItem();
+   CThing* enemy=((CThing*)Enemy().GetPItem());
    if(perception->GetPerceivedThing()==enemy) {
     CTCTargetingAI* targeting;
-    if(((CThing*)Brain()->Creature)->GetInterface(&targeting,8) && targeting->IsThingAttackable(Enemy().GetPItem())) {
+    if(((CThing*)Brain()->Creature)->GetInterface(&targeting,8) && targeting->IsThingAttackable(((CThing*)Enemy().GetPItem()))) {
      return AreEnemies() && WillAttack();
     }
    }

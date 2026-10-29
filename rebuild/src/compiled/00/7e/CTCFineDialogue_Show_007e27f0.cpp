@@ -3,8 +3,8 @@
 // Callees: CTCFineDialogue::IsAllowed @ 0x007E2790, CCharString(const char*, long) @ 0x0099EBF0 / copy @ 0x0099EC30 /
 //          dtor @ 0x0099EAE0, CDataBank::GetTextBySymbol @ 0x009C95E0, CWideString ctor @ 0x0099AED0 / += wchar_t* @ 0x0099B940 /
 //          += @ 0x0099B8D0 / dtor @ 0x0099B510, operator+(const CWideString&, const wchar_t*) @ 0x0099BF30,
-//          CVectorMap::LowerBound @ 0x0040F020, CTCVillage::UpdateMirroredCrimeData @ 0x0065C5BB, CTCBase::GetWorld @ 0x00686D20,
-//          CWorld::GetCurrentRegionIndex @ 0x004FB150, CWorld::GetRegion @ 0x004FC180, CTCHeroStats::GetCrimeReport @ 0x0057DC22,
+//          CVectorMap::LowerBound @ 0x0040F020, CTCVillage::UpdateMirroredCrimeData @ 0x0065C5BB, CTCBase::PeekWorldMap @ 0x00686D20,
+//          CWorldMap::GetLoadedRegion @ 0x004FB150, CWorldMap::GetRegion (const) @ 0x004FC180, CTCHeroStats::GetCrimeReport @ 0x0057DC22,
 //          CTCHeroStats::GetOutstandingFineAndFramesLeft @ 0x0057DAF5, NGameText::ConstructString @ 0x009C7B70,
 //          CSubtitleRenderer::SetText @ 0x00492E4B, global update-list registration @ 0x00686ED0 (manifest "list::push_back").
 //          Globals: game text @ 0x013B86A0 (data bank +0x14, font bank +0x1614C), player GUI @ 0x013B8790 (subtitles +0x18).
@@ -60,10 +60,10 @@ class CRegion { public:
     unsigned char _pad00[0x18];
     CCharString Name;                                   // +0x18
 };
-class CWorld {
+class CWorldMap {
 public:
-    long GetCurrentRegionIndex();                       // 0x004FB150
-    CRegion& GetRegion(long index);                     // 0x004FC180
+    long GetLoadedRegion() const;                       // 0x004FB150
+    const CRegion& GetRegion(long index) const;         // 0x004FC180
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -97,8 +97,9 @@ public:
     virtual void v00();
     CThing* Thing;                                      // +0x04
     unsigned char _pad08[4];
-    CWorld* GetWorld();                                 // 0x00686D20
     void AddToGlobalUpdateList();                       // 0x00686ED0
+protected:
+    const CWorldMap& PeekWorldMap() const;              // 0x00686D20
 };
 class CTCHeroStats : public CTCBase {
 public:
@@ -138,7 +139,7 @@ void CTCFineDialogue::Show(long fine, long money, CTCVillage* village)
     if (Thing->HasTC(4))
         stats = (CTCHeroStats*)Thing->GetTC(4);
     village->UpdateMirroredCrimeData();
-    CCharString region = GetWorld()->GetRegion(GetWorld()->GetCurrentRegionIndex()).Name;
+    CCharString region = PeekWorldMap().GetRegion(PeekWorldMap().GetLoadedRegion()).Name;
     stats->GetCrimeReport(region, report, false);
     text += report + (const unsigned short*)L"\n";
     long outstandingFine;

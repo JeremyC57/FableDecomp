@@ -2,7 +2,7 @@
 // Leaf: WasRenderedLastFrame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BD200, length 211 bytes (+ int3 padding). __fastcall, `ret`.
 //         Ego_r.pdb: `?WasRenderedLastFrame@CTCGraphicAppearance@NGraphicAppearance@@QBE_NXZ`.
-// Callees: CTCBase::GetWorld @ 0x00686A70 (twice), CGameScriptInterface::IsInMovieSequence() const (slot 395, +0x62C),
+// Callees: CTCBase::GetWorld() const @ 0x00686A70 (twice), CGameScriptInterface::IsInMovieSequence() const (slot 395, +0x62C),
 //          CWorld::GetWorldFrame (static) @ 0x0049D870 (twice), CTCGraphicAppearance::UpdateRenderedLastFrameFlag @ 0x004BC620,
 //          the def's virtual slot 1.
 // Shape: `forced = GetDef() && GetDef()->ForceRenderedLastFrameOverride` over a by-value CDefPointer getter: two
@@ -141,9 +141,13 @@ class CWorld { public:
     CGameScriptInterface* GetGameScriptInterface() const { return PGameScriptInterface; }
 };
 
+class CTCBase { protected:
+    CWorld& GetWorld() const;                       // 0x00686A70 (Ego_r.pdb CTCBase, protected)
+};
+
 namespace NGraphicAppearance {
 
-class CTCGraphicAppearance {
+class CTCGraphicAppearance : public ::CTCBase {
 public:
     void*         __vfptr;                          // +0x00
     CThing*       ParentThing;                      // +0x04 (CTCBase)
@@ -158,7 +162,6 @@ public:
     unsigned char CachedStaticFocalPos : 1;
     unsigned char RenderedLastFrame : 1;            // bit 6
     unsigned char PrimitivesDrawn : 1;
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void UpdateRenderedLastFrameFlag() const;       // 0x004BC620
     bool WasRenderedLastFrame() const;
 };
@@ -168,10 +171,10 @@ bool CTCGraphicAppearance::WasRenderedLastFrame() const
     bool forced = ParentThing->GetDef().Object && ParentThing->GetDef()->ForceRenderedLastFrameOverride;
     if (forced)
         return true;
-    if (const_cast<CTCGraphicAppearance*>(this)->GetWorld()->GetGameScriptInterface()->IsInMovieSequence())
+    if (GetWorld().GetGameScriptInterface()->IsInMovieSequence())
         return true;
     if (FrameUpdatedWasRenderedFlag < CWorld::GetFrame()) {
-        long lastRenderFrame = const_cast<CTCGraphicAppearance*>(this)->GetWorld()->LastRenderFrame;
+        long lastRenderFrame = GetWorld().LastRenderFrame;
         if (lastRenderFrame + 1 < CWorld::GetFrame())
             UpdateRenderedLastFrameFlag();
     }

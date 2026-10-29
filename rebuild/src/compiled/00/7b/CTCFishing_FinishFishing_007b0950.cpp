@@ -94,11 +94,12 @@ public:
 protected:
     const CPlayerManager& PeekPlayerManager() const;    // 0x00686D50
 public:
-    CWorld* GetWorld() const;                           // 0x00686A70
     __forceinline void PostMessage(long type, const C3DVector& pos, const CThing* thing)
     {
-        GetWorld()->PMessages->AddMessage(type, g_framesPerSecond, pos, 0, 0, 0, 0, thing);
+        GetWorld().PMessages->AddMessage(type, g_framesPerSecond, pos, 0, 0, 0, 0, thing);
     }
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
 };
 class CTCSoundEmitter : public CTCBase {
 public:
@@ -175,7 +176,7 @@ void CTCFishing::FinishFishing(bool caught)
         scoreboard->UpdateScoreForActivity(7, fishTC->Weight, false);
     }
     C3DVector zero(0.0f, 0.0f, 0.0f);
-    CWorld* world = GetWorld();
+    CWorld* world = &GetWorld();
     world->PMessages->AddMessage(0x3f, g_framesPerSecond, zero, 0, 0, 0, 0, fish);
     if (Stage) {
         Stage = 0;

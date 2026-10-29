@@ -128,8 +128,9 @@ public:
     CThing* ParentThing;                                // +0x04
     bool    ToBeRemoved;                                // +0x08
     bool    IsInGlobalUpdateTCs;                        // +0x09
-    const CWorld* GetWorld() const;                     // 0x00686A80
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
 };
 class CTCHeroMorph : public CTCBase {
 public:
@@ -176,7 +177,7 @@ void CTCHeroMorph::AddTattoo(long tattooDefIndex)
                 Tattoos.push_back(def);
             }
             Changed = true;
-            FrameTattoosChanged = GetWorld()->GetFrame();
+            FrameTattoosChanged = PeekWorld().GetFrame();
         }
     }
 }

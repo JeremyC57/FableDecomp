@@ -4,7 +4,7 @@
 //          (CIntelligentPointer<CThingBuilding> vtable 0x01244344), CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90,
 //          CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap::LowerBound const
 //          @ 0x004365B0 (interfaces 0xBC CTCFollowed, 0x7A CTCRegionFollower, 0x23 CTCVillageMember),
-//          CTCFollowed::IsAIFollower @ 0x006D4D70, CTCRegionFollower::IsRegionFollower @ 0x006AEB60, the group's virtual
+//          CTCFollowed::IsFollower @ 0x006D4D70, CTCRegionFollower::IsRegionFollower @ 0x006AEB60, the group's virtual
 //          slots 14 (+0x38) and 10 (+0x28, result unused), CTCVillageMember::GetPVillage @ 0x007EE540.
 // Shape: the tavern is the intelligent pointer's inline operator= from a temporary built from the raw work building;
 //          each interface is the masked-dword HasTC + one-ternary GetTC on the const map into a named component (fetched
@@ -80,7 +80,7 @@ class CThingAICreature : public CThing { public:
     CBuildingPointer WorkBuilding;              // +0x170
 };
 class CTCFollowed { public:                            // interface 0xbc
-    bool IsAIFollower(CThingAICreature* creature);   // 0x006D4D70
+    bool IsFollower(const CThing* thing) const;      // 0x006D4D70 (Ego_r.pdb)
 };
 class CTCRegionFollower { public:                      // interface 0x7a
     bool IsRegionFollower(CThing* thing);       // 0x006AEB60
@@ -136,7 +136,7 @@ bool CAIStateGroup_GameMaster::IsRunnable()
     if (hero) {
         if (hero->HasTC(0xbc)) {
             CTCFollowed* followed = hero->GetTC<CTCFollowed>(0xbc);
-            if (followed->IsAIFollower(GetCreature()))
+            if (followed->IsFollower(GetCreature()))
                 return false;
         }
         if (hero->HasTC(0x7a)) {

@@ -1,6 +1,6 @@
 // CTCAssassinRush::CancelMove() -- while the main player holds its cancel lock (+0x215) only schedule the cancel; otherwise clean up the effects, remove this TC (type 0xA9) from the parent thing and clear ScheduleForCancel
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007AA480, length 68 bytes (+ int3 padding).
-// Callees: the player-manager accessor @ 0x00686D40 (__cdecl, no arguments: the game singleton
+// Callees: CTCBase::GetPlayerManager @ 0x00686D40 (it ignores `this`: the game singleton
 // @ 0x013B8A1C, +0x30; manifest label "CViewBase::GetDisplayEngine" is propagated),
 // CPlayerManager::GetMainPlayer @ 0x00449970 (landed name; manifest "Catch@0040d959" is wrong),
 // CTCAssassinRush::CleanUpEffects @ 0x007AA370, CThing::RemoveTC(long) @ 0x004C9840 (landed name).
@@ -22,10 +22,12 @@ class CPlayerManager { public:
     CPlayer& GetMainPlayer();                               // 0x00449970
 };
 
-CPlayerManager* GetPlayerManager();                         // 0x00686D40
+class CTCBase { protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
+};
 
 #pragma pack(push, 1)
-class CTCAssassinRush { public:
+class CTCAssassinRush : public CTCBase { public:
     void*         __vftable;                                // +0x00
     CThing*       ParentThing;                              // +0x04 (CTCBase)
     unsigned char _pad08[0x9e - 0x08];
@@ -38,7 +40,7 @@ class CTCAssassinRush { public:
 void CTCAssassinRush::CancelMove()
 {
     CThing* parent = ParentThing;
-    if (!GetPlayerManager()->GetMainPlayer().m_bCancelLocked) {
+    if (!GetPlayerManager().GetMainPlayer().m_bCancelLocked) {
         CleanUpEffects();
         parent->RemoveTC(0xa9);
         ScheduleForCancel = false;

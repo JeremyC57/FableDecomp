@@ -53,7 +53,7 @@ template <class T> struct CDefHolder {                  // owns one reference ta
 };
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);         // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;         // 0x009AD410
     CDefString GetDefNameFromGlobalIndex(long index);                // 0x009ACCC0
     template <class T> bool GetDef(long index, CDefPointer<const T>* def);   // 0x0044BA90 (CPlayerDef)
 };

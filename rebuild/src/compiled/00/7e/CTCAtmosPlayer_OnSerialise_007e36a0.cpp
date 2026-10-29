@@ -22,7 +22,7 @@ class CDefString { public:                                     // 4-byte def-nam
 };
 class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 class CPersistContext { public:

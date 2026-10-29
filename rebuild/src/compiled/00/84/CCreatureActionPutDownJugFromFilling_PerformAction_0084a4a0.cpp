@@ -140,11 +140,12 @@ class CThing { public:
     }
 };
 class CThingObject : public CThing { public: };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
-    CThing* GetPItem() const;                         // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 class CTCCarrying { public:
     void RemoveThingInCarrySlot(long slot, bool immediately);   // 0x006A16A0
@@ -170,17 +171,17 @@ class CCreatureAction_PutDownJugFromFilling : public CCreatureActionBase { publi
 void CCreatureAction_PutDownJugFromFilling::PerformAction()
 {
     CTCCarrying* carrying;
-    PCreature.GetPItem()->GetInterface(&carrying, 0x46);
+    ((CThing*)PCreature.GetPItem())->GetInterface(&carrying, 0x46);
     CDefPointer<CCarryableDef> carryDef;
-    CThing* jug = PJug.GetPItem();                    // named: the GetPItem call runs before the out-pointer push
+    CThing* jug = ((CThing*)PJug.GetPItem());                    // named: the GetPItem call runs before the out-pointer push
     jug->m_pDef->GetSubDef(&carryDef);
     carrying->RemoveThingInCarrySlot(carryDef->FillCarrySlot, true);
-    if (PJug.GetPItem() && !(PJug.GetPItem()->m_flags91 & 1))
-        PJug.GetPItem()->GetPhysics()->SetMovementType(0);
+    if (PJug.GetPItem() && !(((CThing*)PJug.GetPItem())->m_flags91 & 1))
+        ((CThing*)PJug.GetPItem())->GetPhysics()->SetMovementType(0);
     CTCCreatureModeManager* modes;
-    PCreature.GetPItem()->GetInterface(&modes, 0x31);
+    ((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31);
     modes->RemoveMode(0x2b);
     CTCJugComponent* jugComponent;
-    PJug.GetPItem()->GetInterface(&jugComponent, 0xbb);
+    ((CThing*)PJug.GetPItem())->GetInterface(&jugComponent, 0xbb);
     jugComponent->Filled = 1;
 }

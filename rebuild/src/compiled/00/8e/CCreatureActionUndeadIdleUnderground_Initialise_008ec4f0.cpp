@@ -3,7 +3,7 @@
 // the creature's interface-9 component, set the "ST_IDLE" combat animation, then the base initialisation.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008EC4F0, length 432 bytes (0x1ae code + int3 pad).
 // Callees: 0x00A01B50 CBaseIntelligentPointer::GetPItem (PCreature +8); 0x0040F020 CVectorMap::LowerBound (inlined interface
-// lookups 0x31, 0x46, 0x4c, 9); 0x0073AE10 CTCCreatureModeManager::AddMode; 0x004378C0 CPlayerGui::Refresh on 0x013B8790
+// lookups 0x31, 0x46, 0x4c, 9); 0x0073AE10 CTCCreatureModeManager::AddMode; 0x004378C0 CPlayerGui::UpdateMiniMapMarkers on 0x013B8790
 // (landed 0x008C63C0 naming); creature virtual slot 28 (+0x70); 0x006A2220 CTCCarrying fill vector<CThing*> (landed
 // 0x007CDFE0 naming); 0x0076E150 CTCWeaponTrail::ClearAllWeaponTrails; 0x00BFEA14 free; 0x0099EBF0/0x0099EAE0 CCharString;
 // 0x008574D0 CCombatActionBase::SetCombatAnimation; 0x00857520 CCombatActionBase::Initialise (direct base call).
@@ -103,7 +103,7 @@ struct CTCType9 {                           // interface type 9
     bool m_flag10;                          // +0x10
 };
 class CPlayerGui { public:
-    void Refresh(long flag);                // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);   // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
@@ -127,7 +127,7 @@ void CCreatureAction_UndeadIdleUnderground::Initialise()
     if (creature->HasTC(0x31))
         pModes = creature->GetTC<CTCCreatureModeManager>(0x31);
     pModes->AddMode(0x1e);
-    g_pPlayerGui->Refresh(0);
+    g_pPlayerGui->UpdateMiniMapMarkers(false);
     PCreature.GetPItem()->Slot28(0);
     CTCCarrying* pCarrying;
     if (PCreature.GetPItem()->GetInterface(&pCarrying, 0x46)) {

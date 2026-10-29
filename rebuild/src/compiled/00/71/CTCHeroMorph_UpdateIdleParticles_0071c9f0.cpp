@@ -168,6 +168,7 @@ bool CThingDef::GetSubDef(CDefPointer<const CHeroMorphDef>* out) const
 }
 #pragma auto_inline(on)
 
+enum EHeroMorphType { };
 class CTCHeroMorph : public CTCBase {
 public:
     unsigned char _pad0c[0x18 - 0x0c];
@@ -175,7 +176,7 @@ public:
     unsigned char _pad1c[0x38 - 0x1c];
     long FrameHeroBecameIdle;                           // +0x38
     bool IdleParticlesAdded;                            // +0x3C
-    float GetMorphStrength(long type);                  // 0x0071BA60
+    float GetMorphStrength(EHeroMorphType type) const;  // 0x0071BA60 (Ego_r.pdb)
     void KillIdleParticles();                           // 0x0071C1F0
     void UpdateIdleParticles();
 };
@@ -202,7 +203,7 @@ void CTCHeroMorph::UpdateIdleParticles()
             Thing->PDef->GetSubDef(&def);
             vector<CParticleMorphEntry> entries;
             if (def->IdleParticleMorphs.GetAllMorphsOfType(7, entries)) {
-                float value = GetMorphStrength(7);
+                float value = GetMorphStrength((EHeroMorphType)7);
                 for (CParticleMorphEntry* entry = entries._M_start; entry != entries._M_finish; ++entry) {
                     if (entry->Min - g_fEpsilon <= value && g_fEpsilon + entry->Max >= value) {
                         const CThing* particle;

@@ -1,6 +1,6 @@
 // CTCBoastingArea::OnKill() -- when the hero was inside the area (state 2) and is still alive, run the leaving-area handling for the hero
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00782A90, length 58 bytes (+ int3 padding).
-// Callees: the player-manager accessor @ 0x00686D40 (__cdecl, no arguments: the game singleton
+// Callees: CTCBase::GetPlayerManager @ 0x00686D40 (it ignores `this`: the game singleton
 // @ 0x013B8A1C, +0x30; manifest "CViewBase::GetDisplayEngine" is propagated), CPlayerManager::
 // GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0 (landed names),
 // CTCBoastingArea::OnHeroLeavingArea(CThing*) @ 0x00782860.
@@ -23,11 +23,13 @@ public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };
 
-CPlayerManager* GetPlayerManager();                         // 0x00686D40
+class CTCBase { protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
+};
 
 enum EHeroWithinRadiusState { HERO_OUTSIDE = 0, HERO_WITHIN_ANTICIPATION = 1, HERO_WITHIN_RADIUS = 2 };
 
-struct CTCBoastingArea {
+struct CTCBoastingArea : public CTCBase {
     void*                  __vftable;                       // +0x00
     CThing*                ParentThing;                     // +0x04 (CTCBase)
     unsigned char          _pad08[0x4];
@@ -41,7 +43,7 @@ struct CTCBoastingArea {
 void CTCBoastingArea::OnKill()
 {
     if (HeroWithinRadiusState != HERO_OUTSIDE) {
-        CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero && !hero->m_dead && HeroWithinRadiusState == HERO_WITHIN_RADIUS)
             OnHeroLeavingArea(hero);
     }

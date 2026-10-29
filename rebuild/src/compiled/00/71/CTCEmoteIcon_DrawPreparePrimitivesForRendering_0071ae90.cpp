@@ -2,7 +2,7 @@
 // Leaf: DrawPreparePrimitivesForRendering
 //
 // Retail 0x0071AE90, 147 bytes (`ret 4`). Ego_r.pdb `?DrawPreparePrimitivesForRendering@CTCEmoteIcon@@UAEXABV
-// CEnginePrimitivePrepareInfo@@@Z`. Callees: the player GUI's 0x004374F0 (manifest
+// CEnginePrimitivePrepareInfo@@@Z`. Callees: CPlayerGui::IsOpen 0x004374F0 (Ego_r.pdb; manifest
 // "C3DMeshInfo::HasPhysicsMesh" is propagated; it returns `[this+294h] != 1`) on g_pPlayerGui @
 // 0x013B8790, the parent thing's virtual slot 27 (+0x6c, a bool), CTCEmoteIcon::DrawEmoteTypeIcon @
 // 0x0071AD20 and DrawEmoteTypeText @ 0x0071AB20; the primitive's virtual slots 3 and 1 in the release.
@@ -61,7 +61,7 @@ public:
 class CEnginePrimitivePrepareInfo;
 
 class CPlayerGui { public:
-    bool IsEmoteDrawingAllowed() const;            // 0x004374F0
+    bool IsOpen() const;                           // 0x004374F0
 };
 extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 
@@ -94,7 +94,7 @@ class CTCEmoteIcon : public CTCBase { public:
 
 void CTCEmoteIcon::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
 {
-    if (ActiveTimer != 0 && Enabled && g_pPlayerGui->IsEmoteDrawingAllowed() && ParentThing->IsDrawable())
+    if (ActiveTimer != 0 && Enabled && g_pPlayerGui->IsOpen() && ParentThing->IsDrawable())
     {
         if (EmoteType == 1)
         {

@@ -80,7 +80,7 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };    // 0x00487DD0
-class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
+class CPlayerManager { public: const CPlayer& GetMainPlayer() const; };   // 0x00449960
 class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 long __fastcall GetInventoryInterfaceType(long defIndex);   // 0x005D99D0
@@ -161,7 +161,7 @@ NUISystem::CComponent* CTCInventoryTrade::ConstructSpecialShopListPC(const std::
         for (const std::pair<long, long>* it = items.begin(); it != items.end(); ++it) {
             long defIndex = it->first;
             long count = it->second;
-            const CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->PeekPControlledCreature();
+            const CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().PeekPControlledCreature();
             CTCInventoryBase* inventory = 0;
             hero->GetInterface(&inventory, GetInventoryInterfaceType(defIndex));
             if (IsItemAffordable(defIndex, true) && (inventory->CanAddItem(defIndex) || IsSpecialCase(defIndex)) && count > 0

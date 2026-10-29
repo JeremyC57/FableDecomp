@@ -1,0 +1,11 @@
+rebuild/src/compiled/00/6e/CCombatRing_AssignAttackerToProng_006ebee0.cpp
+rebuild/src/compiled/00/7e/CTCFireRangedWeaponOnLeavingStateGroup_Cleanup_007e5b40.cpp
+rebuild/src/compiled/00/91/CAIStateGroupCreatureRangedCombat2_OnActivate_0091ea20.cpp
+rebuild/src/compiled/00/91/CAIStateGroupHoverAttack_Update_0091e050.cpp
+rebuild/src/compiled/00/92/CAIStateGroupApprenticeHero_PracticeSkills_0092a8a0.cpp
+rebuild/src/compiled/00/92/CAIStateGroupSkillPractice_PracticeSkills_0092b3e0.cpp
+rebuild/src/compiled/00/93/CAIStateGroupMeleeCombatNearbyAttackWhenVeryClose_Cleanup_0093e560.cpp
+rebuild/src/compiled/00/93/CAIStateGroupMeleeCombatNearbyBase_ShouldGoStraightIntoStrafe_0093d180.cpp
+rebuild/src/compiled/00/95/CAIStateGroupRangedCombatUsePreferredFirePoint_OnReplace_0095d3a0.cpp
+rebuild/src/compiled/00/95/CAIStateGroupRangedCombatUsePreferredFirePoint_Update_0095d200.cpp
+rebuild/src/compiled/00/96/CAIStateGroupSummonerCharge_IsRunnable_0096fa90.cpp

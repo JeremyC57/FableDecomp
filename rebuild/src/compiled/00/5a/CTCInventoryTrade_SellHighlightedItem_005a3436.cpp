@@ -54,7 +54,7 @@ public:
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                      // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer() const; };          // 0x00449960
+class CPlayerManager { public: const CPlayer& GetMainPlayer() const; };          // 0x00449960
 class CEngine { public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                          // +0x1C
@@ -134,7 +134,7 @@ void CTCInventoryTrade::SellHighlightedItem()
             GetOwner()->GetInterface(&shop, 0x53);
             long price = shop->GetCurrentBuyPrice(item, 1);
             shop->SellHighlightedItem(item);
-            CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+            CThing* hero = g_pEngine->PlayerManager->GetMainPlayer().GetPControlledCreature();
             CTCHeroStats* stats = 0;
             hero->GetInterface(&stats, 4);
             stats->AddMoney(price, true);

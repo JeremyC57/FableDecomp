@@ -61,7 +61,10 @@ class COpinionPersonalityDef { public:             // retail offsets (the def ro
 
 class CDefPointeeBase;
 
-class CTCCreatureOpinionOfHero { public:
+class CTCBase { protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+class CTCCreatureOpinionOfHero : public CTCBase { public:
     void* __vftable;                        // +0x00 (CTCBase)
     CThing* ParentThing;                    // +0x04
     bool ToBeRemoved;                       // +0x08
@@ -84,14 +87,13 @@ class CTCCreatureOpinionOfHero { public:
     bool InFindAGuardAndYellForHelp;        // +0x343
     CBaseIntelligentPointer PUnknownThreatOpinionSource;   // +0x344
     long FrameLastUpdatedUnknownThreat;     // +0x34c
-    CWorld* GetWorld() const;               // 0x00686A80
     bool IsWillingToContinueFollowingHero() const;
 };
 
 bool CTCCreatureOpinionOfHero::IsWillingToContinueFollowingHero() const
 {
     CThing* thing = ParentThing;
-    COpinionReactionManager* manager = GetWorld()->POpinionReactionManager;
+    COpinionReactionManager* manager = PeekWorld().POpinionReactionManager;
     switch (manager->GetThingAttitudeToPlayer(thing)) {
     case 0:
     case 1:

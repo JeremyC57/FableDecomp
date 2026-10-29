@@ -152,7 +152,8 @@ class CTCBase { public:
     bool    IsInGlobalUpdateTCs;                // +0x09
     CTCBase(CThing* thing);                     // 0x00686800
     CDefinitionManager* GetDefinitions() const; // 0x006869D0
-    CWorld* GetWorld();                         // 0x00686A70
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
 };
 class CTCShop : public CTCBase { public:                      // vtable 0x0126A94C
     long          StockState;                   // +0x0c
@@ -186,5 +187,5 @@ CTCShop::CTCShop(CThing* thing)
             item.Quantity = Max(item.Quantity, item.MaxStock);
         }
     }
-    DayLastChecked = GetWorld()->m_pGameTimeManager->m_day - 30;
+    DayLastChecked = GetWorld().m_pGameTimeManager->m_day - 30;
 }

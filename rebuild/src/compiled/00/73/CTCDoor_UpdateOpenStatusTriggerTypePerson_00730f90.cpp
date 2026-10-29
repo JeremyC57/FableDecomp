@@ -1,8 +1,8 @@
 // CTCDoor::UpdateOpenStatusTriggerTypePerson() -- a person-triggered door is open while a creature stands within the trigger radius (and within one unit of height); it closes one second after the last creature was seen; open/close the door when the state changed
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00730F90, 292 bytes (+ int3 padding), plain `ret`.
-// Callees: C2DBox::ToInteger @ 0x00A55A30 (manifest "CEditWorldMap::GetPenArea" is propagated), CTCBase::GetThingSearchTools
+// Callees: C2DBox::ToInteger @ 0x00A55A30 (manifest "CEditWorldMap::GetPenArea" is propagated), CTCBase::PeekThingSearchTools
 //   @ 0x00686D90, CThingSearchTools::GetPFirstThingInRoughArea<CFilter_Bind2<CThingFilter_InArea, CThingFilter_IsWithinZRange>,
-//   CThingCreatureBase> @ 0x007313B0, CTCBase::GetWorld const @ 0x00686A80, CWorld::GetFrame @ 0x0049D870 (static __fastcall),
+//   CThingCreatureBase> const @ 0x007313B0, CTCBase::PeekWorld const @ 0x00686A80, CWorld::GetFrame @ 0x0049D870 (static __fastcall),
 //   CTCDoor::Open(bool) @ 0x00730C00, CTCDoor::Close @ 0x00730DD0.
 // Globals: g_framesPerSecond @ 0x01375550.
 // Layout: engine/CTCDoor.h (retail offsets): CurrentOpen +0x10, OldOpen +0x11, LastCreatureFoundWF +0x14, PDef +0x20;
@@ -34,14 +34,15 @@ class CThingFilter_IsWithinZRange { public:
     float Range;
     CThingFilter_IsWithinZRange(float z, float range) : Z(z), Range(range) { }
 };
-struct CInAreaZRangeFilter {                    // CFilter_Bind2<CThingFilter_InArea, CThingFilter_IsWithinZRange>
-    const CThingFilter_InArea* First;
-    const CThingFilter_IsWithinZRange* Second;
-    CInAreaZRangeFilter(const CThingFilter_InArea& a, const CThingFilter_IsWithinZRange& b) : First(&a), Second(&b) { }
+template <class TFilter1, class TFilter2> class CFilter_Bind2 { public:
+    const TFilter1* First;
+    const TFilter2* Second;
+    CFilter_Bind2(const TFilter1& a, const TFilter2& b) : First(&a), Second(&b) { }
 };
 class CThingCreatureBase;
 class CThingSearchTools { public:
-    bool GetPFirstThingInRoughArea(const C2DBoxI& box, const CInAreaZRangeFilter& filter, CThingCreatureBase** out);   // 0x007313B0
+    template <class TFilter, class TThing>
+    bool GetPFirstThingInRoughArea(const C2DBoxI& box, const TFilter& filter, TThing** out) const;   // 0x007313B0 (Ego_r.pdb instance)
 };
 class CTCPhysicsBase { public:
     unsigned char _pad00[0x0c];
@@ -58,8 +59,13 @@ class CDoorDef { public:
     unsigned char _pad00[0x2c];
     float TriggerRadius;                        // +0x2c
 };
-class CTCDoor { public:
-    virtual void v00();
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+    const CThingSearchTools& PeekThingSearchTools() const;   // 0x00686D90 (Ego_r.pdb CTCBase, protected)
+};
+class CTCDoor : public CTCBase { public:
     CThing* ParentThing;                        // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];
     bool CurrentOpen;                           // +0x10
@@ -70,8 +76,6 @@ class CTCDoor { public:
     long UpdateID;                              // +0x18
     long TriggerType;                           // +0x1c
     const CDoorDef* PDef;                       // +0x20
-    CThingSearchTools* GetThingSearchTools() const; // 0x00686D90 (CTCBase)
-    const CWorld* GetWorld() const;             // 0x00686A80 (CTCBase)
     void Open(bool instant);                    // 0x00730C00
     void Close();                               // 0x00730DD0
     void UpdateOpenStatusTriggerTypePerson();
@@ -85,14 +89,14 @@ void CTCDoor::UpdateOpenStatusTriggerTypePerson()
     CThingCreatureBase* found;
     {
         CThingCreatureBase* creature = 0;
-        GetThingSearchTools()->GetPFirstThingInRoughArea(box.ToInteger(), CInAreaZRangeFilter(CThingFilter_InArea(box), CThingFilter_IsWithinZRange(pos.Z, 1.0f)), &creature);
+        PeekThingSearchTools().GetPFirstThingInRoughArea(box.ToInteger(), CFilter_Bind2<CThingFilter_InArea, CThingFilter_IsWithinZRange>(CThingFilter_InArea(box), CThingFilter_IsWithinZRange(pos.Z, 1.0f)), &creature);
         found = creature;
     }
     if (found) {
         CurrentOpen = true;
-        LastCreatureFoundWF = GetWorld()->GetFrame();
+        LastCreatureFoundWF = PeekWorld().GetFrame();
     } else {
-        const CWorld* world = GetWorld();
+        const CWorld* world = &PeekWorld();
         long framesPerSecond = g_framesPerSecond;
         long elapsed = world->GetFrame() - LastCreatureFoundWF;
         if ((float)elapsed > (float)framesPerSecond)

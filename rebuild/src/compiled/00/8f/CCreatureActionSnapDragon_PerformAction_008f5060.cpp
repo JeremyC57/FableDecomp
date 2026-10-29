@@ -79,7 +79,7 @@ struct CTCDriver41 {                                  // driver of interface 0x4
 CThing* __fastcall CreateObstruction(const C3DVector* a, const C3DVector* b, float radius);   // 0x007FD4B0
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, const C3DVector* lookAt);   // 0x0080C500
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();             // 0x0044C6B0

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006D77C0, 407 bytes (+ int3 padding), `ret 4`.
 // Callees: __ftol2 0x00BFEA70, CTCBase::GetDefinitionManager 0x006869D0 (twice: +0xDC hero-stats def, MaximumExpToSpend +0x60,
 // ExpToSpendAtWhichToDisplayTutorial +0x64 = PDB - 4), CQuestManager::IsBetweenQuestStartAndFinishScreens 0x004AF290 on the
-// singleton 0x013B89FC, CThingCreatureBase::IsIncapacitated 0x00661E80, CVectorMap::LowerBound 0x0040F020 (three inline
+// singleton 0x013B89FC, CThingCreatureBase::IsInMelee 0x00661E80 (Ego_r.pdb), CVectorMap::LowerBound 0x0040F020 (three inline
 // interface lookups: CTCHero 0x29, CTCHeroStats 4, CTCHeroOnlineScoreboard 0x10D), CTCHero::GiveTutorialForCategory
 // 0x006C9FA0, malloc 0x00BFEA0E (STLport list node), CTCHeroStats::AddHeroStatExperience 0x0057A8DA,
 // CTCHeroOnlineScoreboard::UpdateScoreForActivity 0x0055F3B0.
@@ -56,7 +56,9 @@ class CThing { public:
         }
         return false;
     }
-    bool IsIncapacitated();                     // 0x00661E80
+};
+class CThingCreatureBase : public CThing { public:
+    bool IsInMelee() const;                     // 0x00661E80
 };
 
 class CQuestManager { public: bool IsBetweenQuestStartAndFinishScreens() const; };   // 0x004AF290
@@ -172,7 +174,7 @@ void CTCHeroExperience::AddExperience(long amount)
     GFLimitHigh(ExperiencePointsAvailableToSpend, GetDefinitionManager().PHeroStatsDef->MaximumExpToSpend);
     if (ExperiencePointsAvailableToSpend > GetDefinitionManager().PHeroStatsDef->ExpToSpendAtWhichToDisplayTutorial
         && !g_pQuestManager->IsBetweenQuestStartAndFinishScreens()
-        && !ParentThing->IsIncapacitated()) {
+        && !((CThingCreatureBase*)ParentThing)->IsInMelee()) {
         CTCHero* hero;
         if (ParentThing->GetInterface(&hero, 0x29))
             hero->GiveTutorialForCategory(0x18, false);

@@ -65,7 +65,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                           // 0x00449960
+    const CPlayer& GetMainPlayer() const;                           // 0x00449960
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -149,7 +149,7 @@ __declspec(noinline) STCEntry* CTCMap::LowerBound(const unsigned long& kind)
 void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& processed, CInputProcessGameBase* input)
 {
     CTCHeroStats* stats = 0;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero->HasTC(4))
         stats = hero->GetTC(4);
     CDefPointer<CBettingDef> def;

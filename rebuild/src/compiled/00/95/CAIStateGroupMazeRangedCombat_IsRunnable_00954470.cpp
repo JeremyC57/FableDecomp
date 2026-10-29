@@ -72,7 +72,8 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee l
     void SetPItem(const CThing* item);          // 0x00A01B90
     CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(CThing* thing);         // 0x004A96F0
     CIntelligentPointer& operator=(const CIntelligentPointer& other)   // 0x004A9760
@@ -115,7 +116,7 @@ class CAIStateGroupBase { public:
 };
 
 struct CAIStateGroup_MazeRangedCombat : CAIStateGroupBase {
-    CIntelligentPointer PTarget;                // +0x14
+    CIntelligentPointer<CThing> PTarget;                // +0x14
     long _unk1c;                                // +0x1c
     long LastCompletedPhase;                    // +0x20
     bool IsRunnable();

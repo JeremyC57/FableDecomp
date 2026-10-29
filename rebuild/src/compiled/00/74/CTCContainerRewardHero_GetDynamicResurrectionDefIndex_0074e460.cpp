@@ -73,7 +73,7 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                               // 0x00449960
+    const CPlayer& GetMainPlayer() const;                               // 0x00449960
 };
 
 class CTCBase
@@ -95,7 +95,7 @@ class CTCContainerRewardHero : public CTCContainer { public:
 
 long CTCContainerRewardHero::GetDynamicResurrectionDefIndex()
 {
-    const CThing* hero = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
+    const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (IsThingAlive(hero) && hero->HasInterface(0x11))
     {
         CTCInventoryBase* inventory = (CTCInventoryBase*)hero->GetInterface(0x11);

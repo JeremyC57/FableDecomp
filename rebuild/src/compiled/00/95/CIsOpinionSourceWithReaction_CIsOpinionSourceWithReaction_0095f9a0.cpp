@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0095F9A0, length 416 bytes (`ret 4`).
 // Callees: the out-of-line accessors 0x008FCFC0 (group -> player, manifest label CPlayer::GetCurrentMode is a byte-twin),
 //   0x0049D9D0 (player -> player character), 0x00487DC0 (character -> thing, the handle at +0x2c), 0x007446A0 (opinion TC -> target
-//   thing, the handle at +0xc); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (const copy); CTCFollowed::IsAIFollower
+//   thing, the handle at +0xc); CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (const copy); CTCFollowed::IsFollower
 //   @ 0x006D4D70, CTCRegionFollower::IsRegionFollower @ 0x006AEB60. Data: the world @ 0x013B86A0 (+0x24 -> +0x74 reaction manager);
 //   float 0x0122DEDC 0.0f.
 // Layout: Ego_r.pdb CIsOpinionSourceWithReaction (0x14): PStateGroup +0, PTCOpinion +4, ReactionManager +8, IsFollowingPlayer +0xc,
@@ -44,7 +44,7 @@ public:
 };
 class CThingAICreature;
 class CTCFollowed { public:
-    bool IsAIFollower(CThingAICreature* creature);  // 0x006D4D70
+    bool IsFollower(const CThing* thing) const;     // 0x006D4D70 (Ego_r.pdb)
 };
 class CTCRegionFollower { public:
     bool IsRegionFollower(CThing* thing);           // 0x006AEB60
@@ -108,7 +108,7 @@ CIsOpinionSourceWithReaction::CIsOpinionSourceWithReaction(CAIStateGroup_Opinion
     CTCFollowed* followed;
     CTCRegionFollower* regionFollower;
     IsFollowingPlayer = hero
-        && ((hero->GetInterface(&followed, 0xbc) && followed->IsAIFollower(group->GetCreature()))
+        && ((hero->GetInterface(&followed, 0xbc) && followed->IsFollower((const CThing*)group->GetCreature()))
             || (hero->GetInterface(&regionFollower, 0x7a) && regionFollower->IsRegionFollower((CThing*)group->GetCreature())));
     CTCCreatureOpinionOfHero* opinion;
     IsAwareOfPlayerForReactions = PStateGroup && ((CThing*)PStateGroup->GetCreature())->GetInterface(&opinion, 0x34)

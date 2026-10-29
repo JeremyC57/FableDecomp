@@ -4,7 +4,7 @@
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020 (interface 0x45, CTCEmoteIcon: bit 5 of the bitset
 //          word +0x28); GFGetCurrentFrame 0x0049D870 (`__fastcall`, no arguments); CTCBase::GetDefinitionManager() 0x006869D0
 //          (x3); CTCEmoteIcon::SetEmoteIcon(EEmotePriority, long, float, float, unsigned char) 0x0071AAB0;
-//          CPlayerGui::Refresh(long) 0x004378C0 on g_pPlayerGui 0x013B8790.
+//          CPlayerGui::UpdateMiniMapMarkers(bool) 0x004378C0 on g_pPlayerGui 0x013B8790.
 // Layout: engine/CTCWife.h holds up to the GiftsReceived map, then retail sits 4 bytes below the PDB (as the landed
 //          IsWillingToMarry 0x006CFEC0): FrameGotMarriedToThePlayer +0x20, ReceivedWeddingRing +0x91 (PDB +0x95), so a
 //          local model; CTCEmoteIcon::EmoteIcon +0x14 (retail: CWideString EmoteText below it is 4 bytes, PDB offset
@@ -64,7 +64,7 @@ class CGameDefinitionManager { public:
     CWifeIconDefs* Defs;                        // +0xd0
 };
 class CPlayerGui { public:
-    void Refresh(long flag);                    // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);       // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
@@ -106,5 +106,5 @@ void CTCWife::SetAttractionIcon(bool show, float scale, unsigned char alpha)
         icon->SetEmoteIcon(married ? 3 : 4, 0, -1.0f, 1.0f, 0xff);
     }
     if (show != wasShowing)
-        g_pPlayerGui->Refresh(0);
+        g_pPlayerGui->UpdateMiniMapMarkers(false);
 }

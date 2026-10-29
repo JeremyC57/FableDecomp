@@ -122,15 +122,14 @@ class CTCBoss { public:                                // interface type 0xAD
     long GenericCounter;                        // +0x10
     long GetCurrentPhase();                     // 0x007AED10 (currentBossPhase +0x18)
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +4
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
-struct CCreaturePointer {                       // CIntelligentPointer<CThingCreatureBase>
-    virtual void v00();
-    CThingCreatureBase* m_pItem;                // +4
-    CThingCreatureBase* GetPItem() const;       // 0x00A01B50
+struct CCreaturePointer : CBaseIntelligentPointer {                       // CIntelligentPointer<CThingCreatureBase>
+    CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }   // inline over 0x00A01B50
 };
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
@@ -161,9 +160,9 @@ void CCombatAction_StrikeResponseMazeDoForcePush::FinishAction()
     CThingCreatureBase* creature = PCreature.GetPItem();
     CCombatAction_GenericStrikeResponseBase::FinishAction();
     long hits = boss->GenericCounter + 1;
-    if (PAttacker.GetPItem() && !(PAttacker.GetPItem()->m_flags91 & 1)) {
+    if (PAttacker.GetPItem() && !(((CThing*)PAttacker.GetPItem())->m_flags91 & 1)) {
         CThingCreatureBase* me = PCreature.GetPItem();
-        const C3DVector& attackerPosition = PAttacker.GetPItem()->GetPos();
+        const C3DVector& attackerPosition = ((CThing*)PAttacker.GetPItem())->GetPos();
         const C3DVector& position = me->GetPos();
         C3DVector offset(position.X - attackerPosition.X, position.Y - attackerPosition.Y, position.Z - attackerPosition.Z);
         if (boss->GetCurrentPhase() > 0 && offset.Get2DLength() < 4.0f) {

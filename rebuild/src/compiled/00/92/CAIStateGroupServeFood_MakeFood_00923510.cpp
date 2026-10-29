@@ -75,7 +75,7 @@ class CCharString { public:
 class C3DVector { public: float x, y, z; };
 class CRightHandedSet;
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;    // 0x009AD410
 };
 class CWorld { public:
     unsigned char _pad[0x10];

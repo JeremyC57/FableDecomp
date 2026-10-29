@@ -91,11 +91,12 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 class CCharString { public:
     void* PStringData;
@@ -139,20 +140,20 @@ void CCombatAction_GenericResponseToDrain::Initialise()
         CCharString name("GENERIC_RESPONSE_DRAIN");
         SetCombatAnimation(name);
     }
-    if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1)) {
-        CThing* creature = PCreature.GetPItem();
-        const C3DVector& drainerPosition = PTarget.GetPItem()->GetPos();
+    if (PTarget.GetPItem() && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1)) {
+        CThing* creature = ((CThing*)PCreature.GetPItem());
+        const C3DVector& drainerPosition = ((CThing*)PTarget.GetPItem())->GetPos();
         const C3DVector& position = creature->GetPos();
         C3DVector away(position.X - drainerPosition.X, position.Y - drainerPosition.Y, 0.0f);
         away.AccurateNormalise();
-        CTCPhysicsBase& physics = *PCreature.GetPItem()->GetPhysics();
+        CTCPhysicsBase& physics = *((CThing*)PCreature.GetPItem())->GetPhysics();
         CRightHandedSet set;
         set.Up.X = 0; set.Up.Y = 0; set.Up.Z = 1;
         set.Forward = away;
         physics.SetOrientation(set);
         CTCCreatureModeManager* modes;
-        PCreature.GetPItem()->GetInterface(&modes, 0x31);
-        modes->AddMode(CCountedPointer<NCreatureMode::CModeBase>(new NCreatureMode::CModeDrained(PCreature, PTarget.GetPItem())));
+        ((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31);
+        modes->AddMode(CCountedPointer<NCreatureMode::CModeBase>(new NCreatureMode::CModeDrained(PCreature, ((CThing*)PTarget.GetPItem()))));
     }
     CCombatActionBase::Initialise();
 }

@@ -148,7 +148,7 @@ template<class T> class CCountedPointer { public:
     T* operator->() const { return Data; }
     bool IsNull() const { return Data == 0; }
 };
-struct CRegion_Retail {                             // 0x58-byte world-map region record
+class CRegion { public:                             // 0x58-byte world-map region record
     unsigned char _pad00[0x18];
     CCharString   m_name;                           // +0x18
     unsigned char _pad1c[8];
@@ -156,11 +156,11 @@ struct CRegion_Retail {                             // 0x58-byte world-map regio
     unsigned char _pad28[0x2d];
     bool          m_creatureGenerationEnabled;      // +0x55
 };
-struct CWorldMap_Retail {
-    long GetCurrentRegionNumber();                  // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
-    CRegion_Retail& GetRegion(long region);         // 0x004FC180
-    CRegion_Retail& GetRegionEntry(long region);    // 0x004FB490 (same body as GetRegion; the label "CTCInventoryBase::GetCategoryWithIndex" is propagated)
-    long GetRegionNumberFromName(const CCharString& name);   // 0x004FC210
+class CWorldMap { public:
+    long GetLoadedRegion() const;                   // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
+    const CRegion& GetRegion(long region) const;    // 0x004FC180
+    CRegion& GetRegion(long region);                // 0x004FB490 (the non-const twin; the label "CTCInventoryBase::GetCategoryWithIndex" is propagated)
+    long GetRegionNumberFromName(const CCharString& name) const;   // 0x004FC210
 };
 struct CCombatManager_Retail {
     void CreatureUnsheathWeapon(CThing_Retail* creature, long mode);   // 0x006EBDD0
@@ -176,8 +176,8 @@ struct CMessageEventManager_Retail {
 class CWorld { public:
     virtual void w000(); virtual void w001(); virtual void w002(); virtual void w003(); virtual void w004(); virtual void w005(); virtual void w006(); virtual void w007();
     virtual void w008(); virtual void w009(); virtual void w010(); virtual void w011();
-    virtual CWorldMap_Retail* GetWorldMap();   // slot 12 (+0x30)
-    virtual CWorldMap_Retail* PeekWorldMap();   // slot 13 (+0x34)
+    virtual CWorldMap& GetWorldMap();   // slot 12 (+0x30)
+    virtual const CWorldMap& PeekWorldMap() const;   // slot 13 (+0x34)
     unsigned char                _pad04[0x48];
     CCombatManager_Retail*       m_pCombatManager;  // +0x4c
     unsigned char                _pad50[0x10];
@@ -206,9 +206,9 @@ bool CGameScriptInterface::IsCreatureGenerationEnabledForRegion(const CCharStrin
     if (!g_pQuestManager->IsCreatureGenerationAllowed())
         return false;
     if (regionName != "") {
-        long region = World->PeekWorldMap()->GetRegionNumberFromName(regionName);
+        long region = World->PeekWorldMap().GetRegionNumberFromName(regionName);
         if (region > 0)
-            return World->GetWorldMap()->GetRegionEntry(region).m_creatureGenerationEnabled;
+            return World->GetWorldMap().GetRegion(region).m_creatureGenerationEnabled;
         return false;
     }
     return true;

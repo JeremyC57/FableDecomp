@@ -26,7 +26,7 @@ class CThingCreatureBase { public:
     unsigned char _pad[0x60];
     SCollisionData* m_pCollision;          // +0x60
     CCombatTypeDef* GetCombatTypeDef();    // 0x00666D10
-    CCombatManager* GetCombatManager();    // 0x00661ED0
+    CCombatManager& GetCombatManager();    // 0x00661ED0
 };
 
 enum EUnsheatheWeaponType { UNSHEATHE_INNER_RING = 4, UNSHEATHE_OUTER_RING = 5 };
@@ -67,7 +67,7 @@ void CCombatRing::AssignAttackerToProng(CProng* prong, CThingCreatureBase* attac
             RingThickness = size;
     }
     if (outerRing)
-        attacker->GetCombatManager()->CreatureUnsheathWeapon(attacker, UNSHEATHE_OUTER_RING);
+        attacker->GetCombatManager().CreatureUnsheathWeapon(attacker, UNSHEATHE_OUTER_RING);
     else
-        attacker->GetCombatManager()->CreatureUnsheathWeapon(attacker, UNSHEATHE_INNER_RING);
+        attacker->GetCombatManager().CreatureUnsheathWeapon(attacker, UNSHEATHE_INNER_RING);
 }

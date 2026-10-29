@@ -147,16 +147,17 @@ __forceinline CThing* CreateThingAt(const CThing* item, const CThing* at, const 
     return CreateThingObject(defIndex, &at->GetPos(), owner->GetPlayer(), 0, 0, name);
 }
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                                    // +0x04
-    CThing* GetPItem() const;                           // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -185,7 +186,7 @@ class CTCInventoryItem { public:
 class CTCShop { public:
     unsigned char           _pad00[0x10];
     CBaseIntelligentPointer PShopKeeper;                // +0x10
-    CThing* GetShopKeeper() const { return PShopKeeper.GetPItem(); }
+    CThing* GetShopKeeper() const { return ((CThing*)PShopKeeper.GetPItem()); }
 };
 class CTCStockItem { public:
     unsigned char _pad00[0x10];
@@ -228,36 +229,36 @@ void CCreatureAction_BuyThingFromShop::PerformAction()
     if (IS_THING_ALIVE(PTarget)) {
         CSubtitleRenderer* subtitles = &g_pPlayerGui->SubtitleRenderer;
         CTCStockItem* stockItem;
-        static_cast<const CThing*>(PTarget.GetPItem())->GetInterface(&stockItem, 0x54);
+        static_cast<const CThing*>(((CThing*)PTarget.GetPItem()))->GetInterface(&stockItem, 0x54);
         CTCHeroStats* stats;
-        if (PCreature.GetPItem()->GetInterface(&stats, 4)) {
+        if (((CThing*)PCreature.GetPItem())->GetInterface(&stats, 4)) {
             CTCInventoryItem* inventoryItem;
-            static_cast<const CThing*>(PTarget.GetPItem())->GetInterface(&inventoryItem, 0x1a);
-            CThing* creature = PCreature.GetPItem();
+            static_cast<const CThing*>(((CThing*)PTarget.GetPItem()))->GetInterface(&inventoryItem, 0x1a);
+            CThing* creature = ((CThing*)PCreature.GetPItem());
             CTCInventoryBase* inventory;
             if (creature->GetCheckedInterface(&inventory, inventoryItem->GetInventoryType())) {
-                if (!inventory->CanAddItem(PTarget.GetPItem()->DefIndex)) {
+                if (!inventory->CanAddItem(((CThing*)PTarget.GetPItem())->DefIndex)) {
                     CCharString message;
                     if (inventoryItem->GetMaxNumberItems() == 1)
                         message = "You already have this item!";
                     else
                         message = "You don't have room in your inventory for this item!";
-                    CMainGameComponent* component = PCreature.GetPItem()->GetMainGameComponent();
+                    CMainGameComponent* component = ((CThing*)PCreature.GetPItem())->GetMainGameComponent();
                     subtitles->SetText(component->FontBank, message, 0, 3.0f, false, true);
                     return;
                 }
                 stats->AddMoney(-stockItem->Price, true);
-                CThing* item = CreateThingAt(PTarget.GetPItem(), PCreature.GetPItem(), PCreature.GetPItem(), "");
+                CThing* item = CreateThingAt(((CThing*)PTarget.GetPItem()), ((CThing*)PCreature.GetPItem()), ((CThing*)PCreature.GetPItem()), "");
                 CTCInventoryItem* newItem;
                 item->GetInterface(&newItem, 0x1a);
                 newItem->AddToInventory(inventory, false, true, stockItem->Price, false, false);
                 CThing* shopKeeper = stockItem->GetShopTC()->GetShopKeeper();
                 CTCEntityEvents* events;
                 if (shopKeeper && shopKeeper->GetInterface(&events, 0x42))
-                    events->AddEvent(new NEntityEvents::CEventSoldItem(PCreature, PTarget.GetPItem(), false));
-                CThing* buyer = PCreature.GetPItem();
+                    events->AddEvent(new NEntityEvents::CEventSoldItem(PCreature, ((CThing*)PTarget.GetPItem()), false));
+                CThing* buyer = ((CThing*)PCreature.GetPItem());
                 CMessageEventManager* manager = GetWorld()->MessageEventManager;
-                manager->AddMessage(0x13, 1000, buyer->GetPos(), PCreature.GetPItem(), 0, 0.0f, 0.0f, 0);
+                manager->AddMessage(0x13, 1000, buyer->GetPos(), ((CThing*)PCreature.GetPItem()), 0, 0.0f, 0.0f, 0);
             }
         }
     }

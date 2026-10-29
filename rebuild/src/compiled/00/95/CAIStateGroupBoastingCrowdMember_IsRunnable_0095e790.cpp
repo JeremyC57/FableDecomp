@@ -73,10 +73,10 @@ struct CBaseIntelligentPointer
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
 };
 
-struct CIntelligentPointerThing : CBaseIntelligentPointer
-{
-    CIntelligentPointerThing(CThing* item);                         // 0x004A96F0
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other);   // 0x004A9760
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:
+    CIntelligentPointer(CThing* item);                         // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
 
 struct CCrowdGroup
@@ -103,7 +103,7 @@ struct CAIStateGroup_BoastingCrowdMember
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
-    CIntelligentPointerThing PTargetThing;          // +0x14
+    CIntelligentPointer<CThing> PTargetThing;          // +0x14
     bool IsRunnable();
 };
 
@@ -117,7 +117,7 @@ bool CAIStateGroup_BoastingCrowdMember::IsRunnable()
         if (crowd->GetCrowdGroup(hero, &group) && group->State != 0 && group->State != 10
             && group->AcceptsMember(PBrain->GetCreature()))
         {
-            CIntelligentPointerThing boaster(group->Boaster);
+            CIntelligentPointer<CThing> boaster(group->Boaster);
             PTargetThing = boaster;
             return true;
         }

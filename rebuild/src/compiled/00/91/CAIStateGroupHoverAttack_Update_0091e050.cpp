@@ -21,7 +21,7 @@ class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CThingCreatureBase : public CThing { public:
-    CCombatManager* GetCombatManager();         // 0x00661ED0
+    CCombatManager& GetCombatManager();         // 0x00661ED0
 public:
     bool IsInMeleeAsAttacker() const;   // 0x00662410
 };
@@ -90,7 +90,7 @@ struct CAIStateGroup_HoverAttack : CAIStateGroup_HoverMovementBase {
 
 void CAIStateGroup_HoverAttack::Update()
 {
-    CCombatManager* combat = GetCreature()->GetCombatManager();
+    CCombatManager* combat = &GetCreature()->GetCombatManager();
     if (GetCreature()->IsInMeleeAsAttacker())
     {
         CThingCreatureBase* creature = GetCreature();

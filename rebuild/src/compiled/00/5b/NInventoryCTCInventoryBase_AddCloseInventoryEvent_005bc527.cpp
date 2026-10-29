@@ -6,8 +6,8 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BC527, length 95 bytes.
-// Callees: the player-manager getter @ 0x00686D50 (`mov eax,[0x013B8A1C] ; mov eax,[eax+30h]`; manifest label
-//          "CViewBase::GetDisplayEngine" is propagated) and its player-number accessor @ 0x00449700 (`mov eax,[ecx+1Ch]`),
+// Callees: CTCBase::PeekPlayerManager @ 0x00686D50 (`mov eax,[0x013B8A1C] ; mov eax,[eax+30h]`; manifest label
+//          "CViewBase::GetDisplayEngine" is propagated) and CPlayerManager::GetMainPlayerNumber() const @ 0x00449700 (`mov eax,[ecx+1Ch]`),
 //          CMemoryBuffer::Copy(unsigned long, const void*) @ 0x009F1760 (landed), CMainGameComponent::AddGameEvent
 //          (const CGameEvent&) @ 0x0041649C on the global component @ 0x013B86A0, __security_check_cookie @ 0x00BFE9F9.
 // GS note: /GS -- the event's 32-byte data array gets the cookie frame (cookie @ 0x0139C8A8 stored at [ebp-4]).
@@ -39,15 +39,19 @@ class CMainGameComponent { public:
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
 class CPlayerManager { public:
-    long GetMainPlayerNumber();                   // 0x00449700
+    long GetMainPlayerNumber() const;             // 0x00449700 (Ego_r.pdb)
 };
-CPlayerManager* GetPlayerManager_00686d50();               // 0x00686D50
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50 (Ego_r.pdb CTCBase, protected)
+};
 
 enum { GAME_EVENT_CLOSE_INVENTORY = 0x1B };
 
 namespace NInventory {
 
-class CTCInventoryBase {
+class CTCInventoryBase : public ::CTCBase {
 public:
     virtual ~CTCInventoryBase();                                  // slot 0
     virtual void _v01();
@@ -89,7 +93,7 @@ public:
 void NInventory::CTCInventoryBase::AddCloseInventoryEvent()
 {
     CGameEvent event(GAME_EVENT_CLOSE_INVENTORY);
-    event.Player = (signed char)GetPlayerManager_00686d50()->GetMainPlayerNumber();
+    event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
     event.AddUBYTE(0);
     g_pMainGameComponent->AddGameEvent(event);
 }

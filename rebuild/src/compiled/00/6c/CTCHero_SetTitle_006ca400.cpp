@@ -1,7 +1,7 @@
 // CTCHero::SetTitle(long titleObjectDef) -- take the hero title from a title object def's CHeroTitleDef (a hero thing whose type byte is not 2 and that lacks interface 0x50 also gets the RIVAL_HERO_TITLE opinion source); an unknown def clears the title
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CA400, length 214 bytes (+ int3 padding). __fastcall, `ret 4`.
 //         Ego_r.pdb: `?SetTitle@CTCHero@@QAEXJ@Z`.
-// Callees: CTCBase::GetDefinitions() const @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex(long) @ 0x009AD9E0
+// Callees: CTCBase::GetDefinitionManager() const @ 0x006869D0, CDefinitionManager::GetPDefFromGlobalIndex(long) @ 0x009AD9E0
 //          (CDefPointer by hidden pointer), CDefClassBase::GetSubDef<CHeroTitleDef>(CDefPointer<const T>*) const @ 0x005B1E5A
 //          (straight into the member), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0
 //          ("OPINION_SOURCE_RIVAL_HERO_TITLE" @ 0x0125EBF8), CTCBase::GetWorld @ 0x00686A70,
@@ -81,7 +81,7 @@ template <class T> class CDefPointer { public:                                //
 class CDefinitionManager { public:
     CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const; // 0x009AD9E0 (hidden result pointer)
 };
-struct CDefinitionHolder : CDefinitionManager { };
+class CGameDefinitionManager : public CDefinitionManager { };
 
 class CTCOpinionSource;
 class COpinionReactionManager { public:
@@ -106,7 +106,12 @@ public:
     }
 };
 
-class CTCHero {
+class CTCBase { protected:                         // Ego_r.pdb CTCBase protected accessors
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    CWorld& GetWorld() const;                      // 0x00686A70
+};
+
+class CTCHero : public CTCBase {
 public:
     void* __vfptr;                                  // +0x00
     CThing* ParentThing;                            // +0x04 (CTCBase)
@@ -114,14 +119,12 @@ public:
     long Title;                                     // +0x10 EHeroTitle
     long HeroTitleObjectDef;                        // +0x14
     CDefPointerT<const CHeroTitleDef> PHeroTitleSubDef;   // +0x18
-    CDefinitionHolder* GetDefinitions() const;      // 0x006869D0 (CTCBase)
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void SetTitle(long titleObjectDef);
 };
 
 void CTCHero::SetTitle(long titleObjectDef)
 {
-    CDefPointer<const CDefClassBase> def = GetDefinitions()->GetPDefFromGlobalIndex(titleObjectDef);
+    CDefPointer<const CDefClassBase> def = GetDefinitionManager().GetPDefFromGlobalIndex(titleObjectDef);
     if (def.m_p && def.m_p->GetSubDef(&PHeroTitleSubDef)) {
         Title = PHeroTitleSubDef->Title;
         HeroTitleObjectDef = titleObjectDef;
@@ -130,7 +133,7 @@ void CTCHero::SetTitle(long titleObjectDef)
                 CTCOpinionSource* source;
                 CCharString name("OPINION_SOURCE_RIVAL_HERO_TITLE", -1);
                 CThing* thing = ParentThing;
-                CWorld* world = GetWorld();
+                CWorld* world = &GetWorld();
                 world->OpinionReactionManager->AttachOpinionSource(thing, name, &source);
             }
         }

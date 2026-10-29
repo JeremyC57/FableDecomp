@@ -68,7 +68,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;            // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;               // 0x00449960
+    const CPlayer& GetMainPlayer() const;               // 0x00449960
 };
 class CThing { public:
     unsigned char  _pad0[0x20];
@@ -111,7 +111,7 @@ bool CThingCreatureBase::IsPickPocketable()
     CCreatureDef* def = out.m_pObject;
     if (def) {
         if (def->PickPocketable) {
-            CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
+            CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
             CTCPerceiveThing* perceive;
             if (hero && !(hero->m_statusFlags & 1) && GetInterface(&perceive, 0x34)) {
                 if (perceive->GetPerceivedThing() != hero || !perceive->CanSeeOrSmellPerceivedThing()) {

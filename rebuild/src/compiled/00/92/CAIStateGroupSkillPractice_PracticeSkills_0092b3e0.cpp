@@ -41,7 +41,7 @@ class CCombatManager { public:
     void CreatureUnsheathWeapon(CThingCreatureBase* creature, long mode);   // 0x006EBDD0
 };
 class CThingCreatureBase { public:
-    CCombatManager* GetCombatManager();         // 0x00661ED0
+    CCombatManager& GetCombatManager();         // 0x00661ED0
 };
 class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();
@@ -110,12 +110,12 @@ bool CAIStateGroup_SkillPractice::PracticeSkills()
     switch (DummyType) {
     case 0:
         firstAnim = "ST_TRAINEE_STRIKE_DUMMY";
-        GetCreature()->GetCombatManager()->CreatureUnsheathWeapon(GetCreature(), 4);
+        GetCreature()->GetCombatManager().CreatureUnsheathWeapon(GetCreature(), 4);
         break;
     case 1:
         firstAnim = "ST_TRAINEE_FIRE_BOW_LOAD";
         secondAnim = "ST_TRAINEE_FIRE_BOW_RELEASE";
-        GetCreature()->GetCombatManager()->CreatureUnsheathWeapon(GetCreature(), 5);
+        GetCreature()->GetCombatManager().CreatureUnsheathWeapon(GetCreature(), 5);
         break;
     case 2:
         firstAnim = "ST_TRAINEE_SPELLS";
@@ -162,6 +162,6 @@ failed:
     success = false;
 done:
     if (DummyType >= 0 && DummyType <= 1)
-        GetCreature()->GetCombatManager()->CreatureUnsheathWeapon(GetCreature(), 1);
+        GetCreature()->GetCombatManager().CreatureUnsheathWeapon(GetCreature(), 1);
     return success;
 }

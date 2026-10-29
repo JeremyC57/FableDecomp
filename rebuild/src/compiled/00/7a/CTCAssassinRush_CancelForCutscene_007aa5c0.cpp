@@ -42,12 +42,13 @@ public:
     }
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
-inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !p.GetPItem()->IsDead(); }
+inline bool IsThingAlive(const CBaseIntelligentPointer& p) { return p.GetPItem() && !((CThing*)p.GetPItem())->IsDead(); }
 class CIEngine;
 namespace NParticleEngine {
 class CParticleEmitter { public:
@@ -85,7 +86,7 @@ void CTCAssassinRush::CancelForCutscene()
 {
     if (IsThingAlive(AssassinTrail)) {
         CTCDParticleEmitter* trail = 0;
-        AssassinTrail.GetPItem()->GetInterface(&trail, 0x4b);
+        ((CThing*)AssassinTrail.GetPItem())->GetInterface(&trail, 0x4b);
         NParticleEngine::CParticleEmitter* emitter = trail->PEmitter.GetPItem();
         if (emitter) {
             emitter->ClearAllParticles(0);
@@ -94,7 +95,7 @@ void CTCAssassinRush::CancelForCutscene()
     }
     if (IsThingAlive(AssassinDisplacementTrail)) {
         CTCDParticleEmitter* trail = 0;
-        AssassinDisplacementTrail.GetPItem()->GetInterface(&trail, 0x4b);
+        ((CThing*)AssassinDisplacementTrail.GetPItem())->GetInterface(&trail, 0x4b);
         trail->PEmitter.GetPItem();
     }
 }

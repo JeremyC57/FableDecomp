@@ -40,7 +40,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                    // +0x04
     CBaseIntelligentPointer();                          // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0125B1B8
@@ -49,7 +49,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.CBaseIntelligentPointer::GetPItem();
+        CThing* item = ((CThing*)other.CBaseIntelligentPointer::GetPItem());
         SetPItem((CBaseObject*)item);
         return *this;
     }
@@ -71,7 +71,7 @@ class CTCSoundPlayer : public CTCBase { public:
 CThingSoundEmitter* CTCSoundPlayer::CreatePAttachedEmitter(bool unattached)
 {
     const C3DVector& position = ParentThing->PhysicsTC->Position;
-    CThing* current = PAttachedEmitter.CBaseIntelligentPointer::GetPItem();
+    CThing* current = ((CThing*)PAttachedEmitter.CBaseIntelligentPointer::GetPItem());
     if (!current || (current->m_flags91 & 1)) {
         if (GetWorld().GetWorldMap()->IsPosInMap(position)) {
             CThingSoundEmitter* emitter = CThingSoundEmitter::Create(position, ParentThing, unattached);

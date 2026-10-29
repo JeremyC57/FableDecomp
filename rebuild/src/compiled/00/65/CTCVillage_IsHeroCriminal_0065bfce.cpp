@@ -4,7 +4,7 @@
 // Grade: landed -- byte-exact (MATCH/RELOCATION_MATCH) and behaviour PASS under the Linux lane
 //        (Wine + DDK 13.10.4035 cl.exe, 2026-10-13); the lander's winning pragma, if any, heads the file.
 //
-// Retail bytes:  push ebx ; push esi ; mov esi,ecx ; call CTCVillage::GetFineAmountForCurrentCrimes ; test eax,eax ; setg bl ; add esi,0E4h ; cmp [esi],bl ; je S ; mov ecx,[g_pCriminalStatusObserver] ; push 0 ; call <notify> ; mov [esi],bl ; S: mov al,[esi] ; pop esi ; pop ebx ; ret
+// Retail bytes:  push ebx ; push esi ; mov esi,ecx ; call CTCVillage::GetFineAmountForCurrentCrimes ; test eax,eax ; setg bl ; add esi,0E4h ; cmp [esi],bl ; je S ; mov ecx,[g_pPlayerGui] ; push 0 ; call <notify> ; mov [esi],bl ; S: mov al,[esi] ; pop esi ; pop ebx ; ret
 // The hero is a criminal while a fine is outstanding. CurrentIsHeroCriminal (PDB +0x170, retail
 // +0xE4) caches the answer; when it changes, the global observer object at 0x013B8790 is told
 // (0x004378C0, __fastcall, one argument, called with 0; its manifest label is a propagated name)
@@ -33,17 +33,17 @@ class CTCVillage { public:
     bool IsHeroCriminal();
 };
 
-struct CCriminalStatusObserverCalls {
-    void OnHeroCriminalStatusChanged(long reason);    // 0x004378C0
+class CPlayerGui { public:
+    void UpdateMiniMapMarkers(bool reason);           // 0x004378C0
 };
 
-extern CCriminalStatusObserverCalls* g_pCriminalStatusObserver;   // 0x013B8790
+extern CPlayerGui* g_pPlayerGui;                                  // 0x013B8790
 
 bool CTCVillage::IsHeroCriminal()
 {
     bool criminal = GetFineAmountForCurrentCrimes() > 0;
     if (this->CurrentIsHeroCriminal != criminal) {
-        g_pCriminalStatusObserver->OnHeroCriminalStatusChanged(0);
+        g_pPlayerGui->UpdateMiniMapMarkers(false);
         this->CurrentIsHeroCriminal = criminal;
     }
     return this->CurrentIsHeroCriminal;

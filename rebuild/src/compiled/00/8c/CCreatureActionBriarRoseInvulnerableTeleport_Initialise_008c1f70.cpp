@@ -138,11 +138,12 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public: };
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                                    // +0x04
-    CThing* GetPItem() const;                           // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
@@ -184,14 +185,14 @@ void CCreatureAction_BriarRoseInvulnerableTeleport::Initialise()
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
-    if (PCreature.GetPItem()->GetInterface(&modeManager, 0x31) && PEnemy.GetPItem() && !(PEnemy.GetPItem()->m_flags91 & 1))
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&modeManager, 0x31) && PEnemy.GetPItem() && !(PEnemy.GetPItem()->m_flags91 & 1))
         modeManager->AddMode(CCountedPointer<CModeBase>(new CModeBriarRoseTeleportIntangible(PCreature, PEnemy.GetPItem())));
     CDefPointer<CSpecialEffectsDef> effects;
     long effect = 0;
-    if (CDefClassReference(PCreature.GetPItem()->m_pDef)->GetSubDef(&effects) && effects->CalcAndLookup("TELEPORT_POP", &effect))
-        CreateSpecialEffect(effect, PCreature.GetPItem()->GetPos(), false);
+    if (CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&effects) && effects->CalcAndLookup("TELEPORT_POP", &effect))
+        CreateSpecialEffect(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
     CDefPointer<CEntitySoundDef> sounds;
-    if (PCreature.GetPItem()->GetInterface(&soundPlayer, 0x10) && CDefClassReference(PCreature.GetPItem()->m_pDef)->GetSubDef(&sounds)) {
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&soundPlayer, 0x10) && CDefClassReference(((CThing*)PCreature.GetPItem())->m_pDef)->GetSubDef(&sounds)) {
         const long* sound = sounds->SoundMap.GetPSound("TELEPORT_AWAY_WANK");
         if (sound)
             soundPlayer->PlaySound(*sound, CSoundInit(), 0, 0);

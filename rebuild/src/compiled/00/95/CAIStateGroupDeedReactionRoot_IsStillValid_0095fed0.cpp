@@ -50,15 +50,16 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
-    const CThing* GetPItemConst() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
+    const CThing* GetPItemConst() const { return ((CThing*)GetPItem()); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    CThing* item = p.GetPItem();
+    CThing* item = ((CThing*)p.GetPItem());
     return item != 0 && !(item->m_flags91 & 1);
 }
 class CPlayer { public:
@@ -114,8 +115,8 @@ struct CAIStateGroup_DeedReactionRoot : CAIStateGroupBase {
 
 bool CAIStateGroup_DeedReactionRoot::IsStillValid() const
 {
-    CThing* hero = PeekWorld().PMainPlayer->GetCharacterThing().GetPItem();
-    if (IS_THING_ALIVE(Reactee) && (!OnlyReactToHero || hero == Reactee.GetPItem() || hero == 0)) {
+    CThing* hero = ((CThing*)PeekWorld().PMainPlayer->GetCharacterThing().GetPItem());
+    if (IS_THING_ALIVE(Reactee) && (!OnlyReactToHero || hero == ((CThing*)Reactee.GetPItem()) || hero == 0)) {
         CTCHeroOpinionDeedLog* reactions;
         if (Reactee.GetPItemConst()->GetInterface(&reactions, 0x51)) {
             CTCCreatureOpinionOfHero* opinion;

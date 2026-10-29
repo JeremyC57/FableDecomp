@@ -102,7 +102,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                  // 0x00449960
+    const CPlayer& GetMainPlayer() const;                  // 0x00449960
 };
 
 class CTCHeroOnlineScoreboard { public:
@@ -160,7 +160,7 @@ class CTCHeroStats : public CTCBase { public:
 
 void CTCHeroStats::Vomit()
 {
-    CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
+    CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     float seconds = (Drunkenness - 3.0f) / GetHeroStatsDef()->DrunkennessPerVomitSecond;
     if (GetHeroStatsDef()->MaxVomitSeconds < seconds)
         seconds = (float)GetHeroStatsDef()->MaxVomitSeconds;

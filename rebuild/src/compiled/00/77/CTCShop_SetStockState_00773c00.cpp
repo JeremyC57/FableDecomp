@@ -2,7 +2,7 @@
 // Leaf: SetStockState
 // Retail: Fable.exe 0x00773C00, 140 bytes (`ret 4`; the GUI refresh is a `mov [esp+4],0 ; jmp` tail call).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
-// @ 0x0040F020 (inline GetInterface), CTCShopKeeper::RepressOpinions(bool) @ 0x007996B0, CPlayerGui::Refresh(long)
+// @ 0x0040F020 (inline GetInterface), CTCShopKeeper::RepressOpinions(bool) @ 0x007996B0, CPlayerGui::UpdateMiniMapMarkers(bool)
 // @ 0x004378C0 (`mov ecx,[ecx+160h] ; jmp`; manifest "_Cons_val<...>" is propagated) on the global @ 0x013B8790.
 // Layout: retail CTCShop: StockState +0x0C, PShopKeeper +0x10; CThing presence bitset +0x20 (0x90 = bit 16 of +0x30),
 // interface map +0x44, dead flag +0x91 bit 0.
@@ -68,7 +68,7 @@ class CTCShopKeeper { public:
     void RepressOpinions(bool repress);             // 0x007996B0
 };
 class CPlayerGui { public:
-    void Refresh(long flag);                        // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);           // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 class CTCShop { public:
@@ -91,6 +91,6 @@ void CTCShop::SetStockState(long state)
             if (keeper->GetInterface(&shopKeeper, 0x90))
                 shopKeeper->RepressOpinions(state != 1);
         }
-        g_pPlayerGui->Refresh(0);
+        g_pPlayerGui->UpdateMiniMapMarkers(false);
     }
 }

@@ -70,7 +70,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                 // 0x00449960
+    const CPlayer& GetMainPlayer() const;                 // 0x00449960
 };
 struct CTCInventoryBase {
     long GetNumberOfItemsOfTypeInInventory(long defIndex);   // 0x005BDF08
@@ -99,7 +99,7 @@ class CTCContainerRewardHero : public CTCContainer { public:
 
 long CTCContainerRewardHero::GetDynamicPotionDefIndex()
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     CTCInventoryBase* inventory;
     if (!hero || hero->Dead || !hero->GetInterface(&inventory, 0x11))
         return 0;

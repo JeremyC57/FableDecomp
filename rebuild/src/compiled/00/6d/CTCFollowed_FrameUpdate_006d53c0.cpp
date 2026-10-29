@@ -76,11 +76,11 @@ class CTCDependents {
 public:
     void AddDependentThing(CThing* thing);              // 0x006AEBA0
 };
-class CFollowerNotify {
+class CPlayerGui {
 public:
-    void Notify(long value);                            // 0x004378C0
+    void UpdateMiniMapMarkers(bool value);              // 0x004378C0
 };
-extern CFollowerNotify* g_FollowerNotify;               // 0x013B8790
+extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 extern long g_FramesPerSecond;                          // 0x01375550
 class CWorld {
 public:
@@ -120,8 +120,9 @@ public:
     virtual void v00();
     CThing* Thing;                                      // +0x04
     unsigned char _pad08[4];
-    CWorld* GetWorld() const;                           // 0x00686A70
     CRandom* GetRandom() const;                         // 0x00686DA0
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
 };
 class CTCFollowed : public CTCBase {
 public:
@@ -135,7 +136,7 @@ public:
     void OnFollowerLeft(CThing* follower);              // 0x006D5050
     __forceinline bool IsTimeToUpdate() const
     {
-        CWorld* world = GetWorld();
+        CWorld* world = &GetWorld();
         unsigned __int64 uid = Thing->UID;
         return (world->GetFrame() + uid) % 10 == 0;
     }
@@ -160,7 +161,7 @@ void CTCFollowed::FrameUpdate()
                 }
                 node = Followers.erase(node);
                 Registry.Remove(CIntelligentPointer<CThing>(follower));
-                g_FollowerNotify->Notify(0);
+                g_pPlayerGui->UpdateMiniMapMarkers(false);
                 CTCDependents* dependents;
                 if (Thing->HasTC(0x7a))
                     dependents = (CTCDependents*)Thing->TCs.Find(0x7a);
@@ -175,7 +176,7 @@ void CTCFollowed::FrameUpdate()
                 LastPlayerPosition = Thing->GetPos();
                 FramesSincePlayerMoved = 0;
             } else if (FramesSincePlayerMoved > g_FramesPerSecond * 5.0f) {
-                CWorld* world = GetWorld();
+                CWorld* world = &GetWorld();
                 long fps = g_FramesPerSecond;
                 if (world->GetFrame() - FrameLastIdleReaction > fps * 10.0f) {
                     long pick = GFRandom(Followers.size(), GetRandom());
@@ -186,7 +187,7 @@ void CTCFollowed::FrameUpdate()
                             CThing* follower = p.Get();
                             CThing* thing = Thing;
                             deeds->PostDeed(0x34, thing->GetPos(), follower, p.Get(), true, 0, 0, 0, 0, 0);
-                            FrameLastIdleReaction = GetWorld()->GetFrame();
+                            FrameLastIdleReaction = GetWorld().GetFrame();
                             break;
                         }
                     }

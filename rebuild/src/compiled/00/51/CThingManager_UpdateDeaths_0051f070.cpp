@@ -77,7 +77,7 @@ class CThingManager { public:
     CPlayerManager* PlayerManager;              // +0x30 (PDB +0x3c)
     unsigned char   _pad34[0x48 - 0x34];
     CThingVector    DeadThingList;              // +0x48 (PDB +0x58)
-    void RemoveFromUpdateList(CThing* thing);   // 0x0051ECC0
+    void RemoveFromUpdateList(CThing& thing);   // 0x0051ECC0 (Ego_r.pdb / FableWin.pdb: CThing&)
     void UpdateDeaths();                        // 0x0051F070
     void DeleteAllThings();
     void DeleteThingsWithSectionName(const CCharString& sectionName);
@@ -87,7 +87,7 @@ void CThingManager::UpdateDeaths()
 {
     for (unsigned int i = 0; i < DeadThingList.size(); ++i) {
         CThing* thing = DeadThingList[i];
-        RemoveFromUpdateList(thing);
+        RemoveFromUpdateList(*thing);
         delete thing;
     }
     DeadThingList.clear();

@@ -10,7 +10,7 @@
 //          56 (+0xE0), CTCBase::GetWorld() @ 0x00686A70, CWorld::GetFrame() @ 0x0049D870, GFGetTime() @ 0x009E1BC0,
 //          the components' deleting destructors (slot 0), vector<CComponent*>::erase @ 0x00485AA7,
 //          NUISystem::CManager::GetInstance() @ 0x0041E5F2 (slots 6, 29, 37, 40 and 42), the UI list clear @ 0x004855A3 on
-//          0x013B8A98, CPlayerGui::Close() @ 0x004374B0 (g_pPlayerGui 0x013B8790), CTCBase::GetPlayerManager() @ 0x00686D40,
+//          0x013B8A98, CPlayerGui::Open() @ 0x004374B0 (g_pPlayerGui 0x013B8790), CTCBase::GetPlayerManager() @ 0x00686D40,
 //          CPlayerManager::GetMainPlayer() @ 0x00449970, CPlayer::GetPControlledCreature() @ 0x00487DC0,
 //          IS_THING_ALIVE<CThing*> @ 0x0043DBD0, CMemoryBuffer::Copy @ 0x009F1760, CMainGameComponent::AddGameEvent
 //          @ 0x0041649C, the static menu reset @ 0x0041D165 (descriptive name).
@@ -159,7 +159,7 @@ class CManager { public:
 }
 struct CGlobalList { void clear(); };                // 0x004855A3
 extern CGlobalList g_UIList;                         // 0x013B8A98
-class CPlayerGui { public: void Close(); };                 // 0x004374B0
+class CPlayerGui { public: void Open(); };                  // 0x004374B0 (Ego_r.pdb CPlayerGui::Open)
 extern CPlayerGui* g_pPlayerGui;                     // 0x013B8790
 
 struct CComponentVector {                            // retail 12-byte STLport vector<NUISystem::CComponent*>
@@ -220,7 +220,7 @@ void CTCInGameMenu::CloseInGameMenu()
     NUISystem::CManager::GetInstance()->ResetB();
     g_UIList.clear();
     NUISystem::CManager::GetInstance()->ResetC();
-    g_pPlayerGui->Close();
+    g_pPlayerGui->Open();
     InGameMenuOpen = false;
     NUISystem::CManager* owner = NUISystem::CManager::GetInstance();
     NUISystem::CManager::GetInstance()->PlayUISound_0041d0a8(owner->GetIconsDef()->CloseMenuSound_1a8, true);

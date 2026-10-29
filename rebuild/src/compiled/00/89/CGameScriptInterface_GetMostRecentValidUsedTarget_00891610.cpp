@@ -38,7 +38,7 @@ public:
 class CBaseIntelligentPointer
 {
 public:
-    CBaseObject* GetPItem();
+    CBaseObject* GetPItem() const;
 };
 
 class CVillageTaskCarryCrate

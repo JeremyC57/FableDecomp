@@ -58,7 +58,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;          // 0x00449960
+    const CPlayer& GetMainPlayer() const;          // 0x00449960
 };
 class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
@@ -123,7 +123,7 @@ bool CTCTavernGameCardPairs::UpdateValues()
             stats->PrizeGivenPairs = true;
             GivePrize();
         }
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         hero->GetInterface(&scoreboard, 0x10d);
         scoreboard->UpdateScoreForActivity(0x12, Counter, true);

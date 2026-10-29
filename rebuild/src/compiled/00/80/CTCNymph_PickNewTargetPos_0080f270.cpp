@@ -166,12 +166,13 @@ class CTCDParticleEmitter { public:
 };
 
 #pragma pack(push, 1)
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                                          // +0x04
     CBaseIntelligentPointer();                              // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
-    CThing* GetPItem() const;                               // 0x00A01B50
+    CBaseObject* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CThing* item);                            // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -183,7 +184,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
         SetPItem(item);
         return *this;
     }
-    __forceinline bool IsAlive() const { return GetPItem() && !(GetPItem()->Flags91 & 1); }
+    __forceinline bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
 };
 #pragma pack(pop)
 
@@ -230,7 +231,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item);              // 0x00668B60
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x00668B80
-    __forceinline bool IsAlive() const { return GetPItem() && !(GetPItem()->Flags91 & 1); }
+    __forceinline bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
 };
 #pragma pack(pop)
 struct CTCTargeting {
@@ -292,9 +293,9 @@ class CTCNymph : public CTCBaseFrame { public:
 
 void CTCNymph::PickNewTargetPos()
 {
-    C3DVector effectPos = PEffect.IsAlive() ? PEffect.GetPItem()->GetPos() : ParentThing->GetPos();
+    C3DVector effectPos = PEffect.IsAlive() ? ((CThing*)PEffect.GetPItem())->GetPos() : ParentThing->GetPos();
     CPositionVector positions;
-    C3DVector targetPos = PTarget.IsAlive() ? PTarget.GetPItem()->GetPos() : PointToFlyAround;
+    C3DVector targetPos = PTarget.IsAlive() ? ((CThing*)PTarget.GetPItem())->GetPos() : PointToFlyAround;
     const CNymphDef* def = PDef;
     const CThingSearchTools& search = *GetWorld().PThingSearchTools;
     GetValidPositions(positions, GetWorldMap(), search, targetPos, def->CircleRange, false, 0);

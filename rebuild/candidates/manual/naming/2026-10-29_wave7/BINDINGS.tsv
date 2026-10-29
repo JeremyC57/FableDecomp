@@ -1,0 +1,223 @@
+action	symbol	target	by_row	note
+KEEP	?GetRegion@CWorldMap@@QAEAAVCRegion@@J@Z	004fb490	00747110	conflict settled (0064e019): binding 0x004FB490 is right (non-const, through GetWorldMap); 0064e019 reached 0x004FC180 through PeekWorldMap (slot 13) and now calls ?GetRegion@CWorldMap@@QBEABVCRegion@@J@Z
+RETIRE	??4CIntelligentPointerCreature@@QAEAAU0@ABU0@@Z	0050f440	0065f01d	conflict settled: 0065f01d now emits ??4?$CIntelligentPointer@VCThingAICreature@@@@QAEAAV0@ABV0@@Z for 0x0050F440 and 00961550 ??4?$CIntelligentPointer@VCThingPlayerCreature@@@@QAEAAV0@ABV0@@Z for 0x0048BD20; no unedited row emits the stand-in (full.jsonl)
+KEEP	??4CIntelligentPointer@@QAEAAU0@ABU0@@Z	00c16950	00c49100	conflict settled: the four 0x004A9760 rows (00788229, 007e00d0, 008597a0, 00954470) now emit ??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z; the stand-in stays bound to 0x00C16950 by 00c49100 (left unedited: its pointee CThingCreatureBase has one source, DEFERRED)
+RETIRE	?Close@CPlayerGui@@QAEXXZ	004374b0	0047d78b	bound to 004374b0 by 0047d78b; was emitted by 0047d78b; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?Open@CPlayerGui@@QAEXXZ	004374b0	0047d78b	new spelling already bound by 0055d4d0; emitted by 0047d78b
+RETIRE	?Close@CPlayerGuiCalls@@QAEXXZ	004374b0	0056a980	bound to 004374b0 by 0056a980; was emitted by 0056a980; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?IsEmoteDrawingAllowed@CPlayerGui@@QBE_NXZ	004374f0	0071ae90	bound to 004374f0 by 0071ae90; was emitted by 0071ae90; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?IsOpen@CPlayerGui@@QBE_NXZ	004374f0	0071ae90	new spelling already bound by 0055d490; emitted by 0071ae90
+RETIRE	?Notify@CFollowerNotify@@QAEXJ@Z	004378c0	006d53c0	bound to 004378c0 by 006d53c0; was emitted by 006d53c0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z	004378c0	006d53c0	new spelling already bound by 004fc970; emitted by 006d53c0
+RETIRE	?OnHeroCriminalStatusChanged@CCriminalStatusObserverCalls@@QAEXJ@Z	004378c0	0065bfce	bound to 004378c0 by 0065bfce; was emitted by 0065bfce; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?Refresh@CMiniMapManager@@QAEXJ@Z	004378c0	006626a0	bound to 004378c0 by 006626a0; was emitted by 006626a0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?Refresh@CPlayerGui@@QAEXJ@Z	004378c0	00702560	bound to 004378c0 by 00702560; was emitted by 004b0aa0,004b1590,004b4aa0,004b4c50,006c17b0,006cfc90,006d0180,006d50c0,006d5180,006d5260,00702560,00773c00,00799000,007dfeb0,007e00d0,00830eb0,008c63c0,008ec4f0; RETIRE-candidate: all 18 rechecked emitting row(s) respelled
+RETIRE	?Refresh@CPlayerGui_006d4d40@@QAEXJ@Z	004378c0	006d4d40	bound to 004378c0 by 006d4d40; was emitted by 006d4d40; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?Refresh@CPlayerGui_Retail@@QAEXJ@Z	004378c0	0089eec0	bound to 004378c0 by 0089eec0; was emitted by 0089eec0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?Register@GlobalThing@@QAEXH@Z	004378c0	0076c830	bound to 004378c0 by 0076c830; was emitted by 0076c830; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetMainPlayerID@CPlayerManager@@QBEJXZ	00449700	005fad40	bound to 00449700 by 005fad40; was emitted by 005fad40; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetMainPlayerNumber@CPlayerManager@@QBEJXZ	00449700	005fad40	new spelling already bound by 00446220; emitted by 005fad40
+RETIRE	?GetMainPlayerNumber@CPlayerManager@@QAEJXZ	00449700	0055d770	bound to 00449700 by 0055d770; was emitted by 00407370,00438310,00487ef0,0055d6c0,0055d770,005bc527,00629c40,0066fb80,00670710,0068ae30,0068b2e0,0068b7c0,006ad580,00773b20,007800b0,008718b0; RETIRE-candidate: all 16 rechecked emitting row(s) respelled
+RETIRE	?GetMap@CWorld@@QAEPAVCMap@@XZ	00449700	005ea9b0	bound to 00449700 by 005ea9b0; was emitted by 005ea9b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetLevel@CWorldB@@QAEPAUCLevel@@XZ	00449960	007ba550	bound to 00449960 by 007ba550; was emitted by 007ba550; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ	00449960	007ba550	new spelling already bound by 007b0880; emitted by 007ba550
+KEEP	?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ	00449960	00702810	bound to 00449960 by 00702810; was emitted by 00435000,0057b783,00587b93,00590d32,0059cb90,0059d820,0059da10,005a30a1,005a3436,005a3581,005a8a5d,005beb57,005eb4b0,005fad40,006610c7,00665e90,00683650,00684050,00684210,00702810,0074e280,0074e460,00773b20,0077d4b0,007d0850,007d4410,007d5730,007d6f70,007d8ab0,007dab60,007e5230,007e6230,007e62d0,0092e630,0093a3c0; KEEP: still emitted by 7 unedited row(s) in full.jsonl and 2 edited row(s)
+RETIRE (not bound to this target)	?GetMainPlayer@CPlayerManager@@QBEPBVCPlayer@@XZ	00449960	-	not bound; was emitted by 0082db00; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetMainPlayer@CWorld@@QAEPAVCPlayer@@XZ	00449960	0068eca0	bound to 0049d9d0 by 0068eca0; was emitted by 005819f2,00581fd1; KEEP: still emitted by 1 unedited row(s) in full.jsonl and 1 edited row(s)
+KEEP	?GetMainPlayer@CPlayerManager@@QAEPAVCPlayer@@XZ	00449970	007e78e0	bound to 00449970 by 007e78e0; was emitted by 006cfc00,006d0020,007e62d0,0082db00; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+KEEP	?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ	00449970	006cfc00	new spelling already bound by 0069ad10; emitted by 006cfc00,006d0020,007e62d0,0082db00
+RETIRE (not bound to this target)	??0CIntelligentPointerCreature@@QAE@PAVCThing@@@Z	0048bd00	-	not bound; was emitted by 00961550; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+ADD	??0?$CIntelligentPointer@VCThingPlayerCreature@@@@QAE@PAVCThingPlayerCreature@@@Z	0048bd00	00961550	PDB spelling (Ego_r/FableWin), not yet bound; emitted by 00961550
+RETIRE (not bound to this target)	??4CIntelligentPointerCreature@@QAEAAU0@ABU0@@Z	0048bd20	0065f01d	bound to 0050f440 by 0065f01d; was emitted by 00961550; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+ADD	??4?$CIntelligentPointer@VCThingPlayerCreature@@@@QAEAAV0@ABV0@@Z	0048bd20	00961550	PDB spelling (Ego_r/FableWin), not yet bound; emitted by 00961550
+KEEP	?GetPRandomSeed@CWorld@@QAEPAKXZ	0049d810	-	not bound; was emitted by 0073a8e0,0078bfc0; KEEP: still emitted by 21 unedited row(s) in full.jsonl and 3 edited row(s)
+KEEP	?GetPRandomSeed@CWorld@@QBEPAKXZ	0049d810	0073a8e0	new spelling already bound by 00662040; emitted by 0073a8e0,0078bfc0
+RETIRE	?GetRandomSeed@CGameComponents@@QAEPAKXZ	0049d810	0074e560	bound to 0049d810 by 0074e560; was emitted by 0074e560; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetCurrentPlayer@CWorld@@QAEPAVCPlayer@@XZ	0049d9d0	0068ea10	bound to 0049d9d0 by 0068ea10; was emitted by 007dd990; KEEP: still emitted by 7 unedited row(s) in full.jsonl
+KEEP	?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ	0049d9d0	007dd990	new spelling already bound by 0095f9a0; emitted by 007dd990
+KEEP	??0CIntelligentPointer@@QAE@PAVCThing@@@Z	004a96f0	006592e2	bound to 004a96f0 by 006592e2; was emitted by 00788229,007e00d0,008597a0,00954470; KEEP: still emitted by 8 unedited row(s) in full.jsonl
+KEEP	??0?$CIntelligentPointer@VCThing@@@@QAE@PAVCThing@@@Z	004a96f0	00788229	new spelling already bound by 004e2250; emitted by 00788229,007e00d0,008597a0,00954470
+KEEP	??0CIntelligentPointerThing@@QAE@PAVCThing@@@Z	004a96f0	0095e790	bound to 004a96f0 by 0095e790; was emitted by 0095e790,0096f770,0096fa90; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+KEEP	??0CIntelligentPointer_CThing@@QAE@PAVCThing@@@Z	004a96f0	00787e12	bound to 004a96f0 by 00787e12; was emitted by 00646709,00787e12; KEEP: still emitted by 3 unedited row(s) in full.jsonl and 1 edited row(s)
+KEEP	??4CIntelligentPointer@@QAEAAU0@ABU0@@Z	004a9760	00c49100	bound to 00c16950 by 00c49100; was emitted by 00788229,007e00d0,008597a0,00954470; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+KEEP	??4?$CIntelligentPointer@VCThing@@@@QAEAAV0@ABV0@@Z	004a9760	00788229	new spelling already bound by 007c9180; emitted by 00788229,007e00d0,008597a0,00954470
+RETIRE	??4CIntelligentPointerThing@@QAEAAU0@ABU0@@Z	004a9760	0095e790	bound to 004a9760 by 0095e790; was emitted by 0095e790,0096f770,0096fa90; RETIRE-candidate: all 3 rechecked emitting row(s) respelled
+RETIRE	??4CIntelligentPointer_CThing@@QAEAAU0@ABU0@@Z	004a9760	00646709	bound to 004a9760 by 00646709; was emitted by 00646709,00787e12; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?UnregisterComponent@CTCGraphicAppearance@@QAEXPAVCAGraphicAppearanceComponent@NGraphicAppearance@@@Z	004c0000	0077b6b0	bound to 004c0000 by 0077b6b0; was emitted by 0077b6b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?UnregisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAVCAGraphicAppearanceComponent@2@@Z	004c0000	0077b6b0	new spelling already bound by 00727b40; emitted by 0077b6b0
+RETIRE	?UnregisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXPAVCAGraphicAppearanceComponent@2@@Z	004c0000	00640f80	bound to 004c0000 by 00640f80; was emitted by 00640f80,00706e00,0077bd20,0077c2a0,0077c7e0; RETIRE-candidate: all 5 rechecked emitting row(s) respelled
+KEEP	?GetPlayerManager@CThing@@QBEPBVCPlayerManager@@XZ	004c79f0	0083c690	bound to 004c79f0 by 0083c690; was emitted by 0082db00; KEEP: still emitted by 3 unedited row(s) in full.jsonl
+KEEP	?PeekPlayerManager@CThing@@IBEABVCPlayerManager@@XZ	004c79f0	0082db00	new spelling already bound by 00665e90; emitted by 0082db00
+KEEP	?GetPlayerManager@CThing@@QAEPAVCPlayerManager@@XZ	004c7a00	-	not bound; was emitted by 0082db00; KEEP: still emitted by 3 unedited row(s) in full.jsonl
+KEEP	?GetPlayerManager@CThing@@IAEAAVCPlayerManager@@XZ	004c7a00	0082db00	new spelling already bound by 0083be90; emitted by 0082db00
+KEEP	?IS_THING_ALIVE@@YI_NABUCIntelligentPointer@@@Z	004cc340	005c4769	bound to 004cc340 by 005c4769; was emitted by 007e00d0,008597a0; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+NO-BIND	?IS_THING_ALIVE@@YI_NABV?$CIntelligentPointer@VCThing@@@@@Z	004cc340	007e00d0	intermediate: stand-in spelling (not a PDB / settled name); emitted by 007e00d0,008597a0
+RETIRE	?IS_THING_ALIVE@@YI_NPAUCIntelligentPointer_CThing@@@Z	004cc340	00646709	bound to 004cc340 by 00646709; was emitted by 00646709; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+NO-BIND	?IS_THING_ALIVE@@YI_NPAV?$CIntelligentPointer@VCThing@@@@@Z	004cc340	00646709	intermediate: stand-in spelling (not a PDB / settled name); emitted by 00646709
+RETIRE	?IS_THING_ALIVE@@YI_NPBUCIntelligentPointer_CThing@@@Z	004cc340	00787e12	bound to 004cc340 by 00787e12; was emitted by 00787e12; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+NO-BIND	?IS_THING_ALIVE@@YI_NPBV?$CIntelligentPointer@VCThing@@@@@Z	004cc340	00787e12	intermediate: stand-in spelling (not a PDB / settled name); emitted by 00787e12
+RETIRE	?GetActiveRegionIndex@CWorldRegionMap@@QAEJXZ	004fb150	005faa30	bound to 004fb150 by 005faa30; was emitted by 005faa30; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetLoadedRegion@CWorldMap@@QBEJXZ	004fb150	005faa30	new spelling already bound by 0049ea40; emitted by 005faa30
+RETIRE	?GetCurrentRegionIndex@CWorld@@QAEJXZ	004fb150	007e27f0	bound to 004fb150 by 007e27f0; was emitted by 007e27f0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetCurrentRegionNumber@CWorldMap_Retail@@QAEJXZ	004fb150	0088e390	bound to 004fb150 by 0088e390; was emitted by 0088e390; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetNoRegions@CWorldMap@@QAEJXZ	004fb470	00602e30	bound to 004fb470 by 00602e30; was emitted by 00602e30; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetNoMaps@CWorldMap@@QBEJXZ	004fb470	00602e30	new spelling already bound by 0057cdb5; emitted by 00602e30
+RETIRE	?GetRegionEntry@CWorldMap_Retail@@QAEAAUCRegion_Retail@@J@Z	004fb490	00892d80	bound to 004fb490 by 00892d80; was emitted by 00892cf0,00892d80; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?GetRegionWithIndex@CWorldMap@@QAEPAVCRegion@@J@Z	004fb490	0065a28f	bound to 004fb490 by 0065a28f; was emitted by 0065a28f; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetRegion_004fb490@CWorldMap@@QAEAAVCRegion@@J@Z	004fb490	-	not bound; was emitted by 0057d990; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetRegion@CWorld@@QAEAAVCRegion@@J@Z	004fc180	007e27f0	bound to 004fc180 by 007e27f0; was emitted by 007e27f0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetRegion@CWorldMap@@QBEABVCRegion@@J@Z	004fc180	007e27f0	new spelling already bound by 00729c50; emitted by 007e27f0
+KEEP	?GetRegion@CWorldMap@@QAEAAVCRegion@@J@Z	004fc180	00747110	bound to 004fb490 by 00747110; was emitted by 0064e019; KEEP: still emitted by 4 unedited row(s) in full.jsonl and 4 edited row(s)
+RETIRE	?GetRegion@CWorldMap_Retail@@QAEPAUCRegion_Retail@@J@Z	004fc180	0088e390	bound to 004fc180 by 0088e390; was emitted by 0088e390; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetRegionNumberMapIsIn@CWorldMap@@QAEJJ@Z	004fc190	0082a9b0	bound to 004fc190 by 0082a9b0; was emitted by 0065a28f,00800540,0082a9b0,0082abd0,0082acd0,0082ae80,0082b520,0082b630,0089b780; KEEP: still emitted by 0 unedited row(s) in full.jsonl and 1 edited row(s)
+KEEP	?GetRegionNumberMapIsIn@CWorldMap@@QBEJJ@Z	004fc190	0065a28f	new spelling already bound by 00729c50; emitted by 0065a28f,00800540,0082a9b0,0082abd0,0082acd0,0082ae80,0082b520,0082b630,0089b780
+KEEP	?GetRegionNumberFromName@CWorldMap_Retail@@QAEJABVCCharString@@@Z	004fc210	00891e30	bound to 004fc210 by 00891e30; was emitted by 00892cf0,00892d80; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+KEEP	?GetRegionNumberFromName@CWorldMap@@QBEJABVCCharString@@@Z	004fc210	00892cf0	new spelling already bound by 00891ef0; emitted by 00892cf0,00892d80
+RETIRE (not bound to this target)	??0CIntelligentPointerCreature@N_0050f440@N_0050f3f0@@QAE@PAVCThing@@@Z	0050f3f0	-	not bound; was emitted by 0065f01d; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	??0?$CIntelligentPointer@VCThingAICreature@@@@QAE@PAVCThingAICreature@@@Z	0050f3f0	0065f01d	new spelling already bound by 0065890b; emitted by 0065f01d
+RETIRE (not bound to this target)	??4CIntelligentPointerCreature@N_0050f440@N_0050f3f0@@QAEAAU012@ABU012@@Z	0050f440	-	not bound; was emitted by 0065f01d; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+ADD	??4?$CIntelligentPointer@VCThingAICreature@@@@QAEAAV0@ABV0@@Z	0050f440	0065f01d	PDB spelling (Ego_r/FableWin), not yet bound; emitted by 0065f01d
+RETIRE	?RemoveFromUpdateList@CThingManager@@QAEXPAVCThing@@@Z	0051ecc0	0051f070	bound to 0051ecc0 by 0051f070; was emitted by 0051f070; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?RemoveFromUpdateList@CThingManager@@QAEXAAVCThing@@@Z	0051ecc0	0051f070	new spelling already bound by 0051fcc0; emitted by 0051f070
+RETIRE	?GetNavigationLayerAt@CWorldMap@@QAEJABVC3DVector@@PAVCThing@@@Z	0063e590	00787620	bound to 0063e590 by 00787620; was emitted by 00787620; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+NO-BIND	?GetNavigationLayerAt@CWorldMap@@QBEJABVC3DVector@@PAVCThing@@@Z	0063e590	00787620	intermediate: stand-in spelling (not a PDB / settled name); emitted by 00787620
+RETIRE	?ApplyRegion@CDrawMiniMap@@QAEXPAVCRegion@@@Z	0064dd9a	0064dfde	bound to 0064dd9a by 0064dfde; was emitted by 0064dfde; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+ADD	?UpdateRegionExitNames@CDrawMiniMap@NPlayerGui@@IAEXABVCRegion@@@Z	0064dd9a	0064dfde	PDB spelling (Ego_r/FableWin), not yet bound; emitted by 0064dfde
+RETIRE	?ApplyRegion@CDrawMiniMap@NPlayerGui@@QAEXPAVCRegion@@@Z	0064dd9a	0064e019	bound to 0064dd9a by 0064e019; was emitted by 0064e019; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?IsInCombatMode@CThingCreatureBase@@QBE_NXZ	00661e80	00752480	bound to 00661e80 by 00752480; was emitted by 00752480; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?IsInMelee@CThingCreatureBase@@QBE_NXZ	00661e80	00752480	new spelling already bound by 0097e140; emitted by 00752480
+RETIRE	?IsIncapacitated@CThing@@QAE_NXZ	00661e80	006d77c0	bound to 00661e80 by 006d77c0; was emitted by 006d77c0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?IsIncapacitated@CThingCreatureBase@@QAE_NXZ	00661e80	00978e60	bound to 00661e80 by 00978e60; was emitted by 00978e60,00978f10; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?LooksAtHeadHelper@CThingAICreature@@QBE_NXZ	00661e80	006d5b50	bound to 00661e80 by 006d5b50; was emitted by 006d5b50; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetCombatManager@CThingCreatureBase@@QAEPAVCCombatManager@@XZ	00661ed0	007e5b40	bound to 00661ed0 by 007e5b40; was emitted by 006ebee0,007e5b40,0091e050,0091ea20,0092b3e0,0093d180,0093e560,0095d200,0095d3a0,0096fa90; RETIRE-candidate: all 10 rechecked emitting row(s) respelled
+KEEP	?GetCombatManager@CThingCreatureBase@@QAEAAVCCombatManager@@XZ	00661ed0	006ebee0	new spelling already bound by 006aa230; emitted by 006ebee0,007e5b40,0091e050,0091ea20,0092b3e0,0093d180,0093e560,0095d200,0095d3a0,0096fa90
+RETIRE	?GetDefinitionManager@CTCKraken@@QAEPAVCDefinitionManager@@XZ	006869d0	007fbe50	bound to 006869d0 by 007fbe50; was emitted by 007fbe50; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ	006869d0	007fbe50	new spelling already bound by 0056fdc3; emitted by 007fbe50
+RETIRE	?GetDefinitions@CTCBase@@QAEPBVCDefinitionManager@@XZ	006869d0	007066a0	bound to 006869d0 by 007066a0; was emitted by 007066a0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetDefinitions@CTCHero@@QBEPAUCDefinitionHolder@@XZ	006869d0	006ca400	bound to 006869d0 by 006ca400; was emitted by 006ca400; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetDefinitions@CTCHeroAttachableAppearanceModifiers@@QBEPBVCDefinitionHolder@@XZ	006869d0	-	not bound; was emitted by 00706950; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetDefinitions@CTCHeroStats@@QBEPAUCDefinitionHolder@@XZ	006869d0	0057cb7e	bound to 006869d0 by 0057cb7e; was emitted by 0057cb7e; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+RETIRE	?GetDisplayEngine@CTCKraken@@QAEPAVCDisplayEngine@@XZ	00686a70	007fbe50	bound to 00686a70 by 007fbe50; was emitted by 007fbe50; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetWorld@CTCBase@@IBEAAVCWorld@@XZ	00686a70	007fbe50	new spelling already bound by 0047d78b; emitted by 007fbe50
+KEEP	?GetWorld@CTCBase@@QAEPAVCWorld@@XZ	00686a70	007e27f0	bound to 00686d20 by 007e27f0; was emitted by 007744a0,00787620,007e1f70; KEEP: still emitted by 2 unedited row(s) in full.jsonl
+RETIRE	?GetWorld@CTCBase@@QBEPAVCWorld@@XZ	00686a70	006d53c0	bound to 00686a70 by 006d53c0; was emitted by 006d53c0,007b0950; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCDegradableBase@@QAEPAVCWorld@@XZ	00686a70	008ecc80	bound to 00686a70 by 008ecc80; was emitted by 008ecc80; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCGraphicAppearance@NGraphicAppearance@@QAEPAVCWorld@@XZ	00686a70	004bd200	bound to 00686a70 by 004bd200; was emitted by 004bd200; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCHero@@QAEPAVCWorld@@XZ	00686a70	006ca400	bound to 00686a70 by 006ca400; was emitted by 006ca400; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCHeroAttachableAppearanceModifiers@@QAEPAVCWorld@@XZ	00686a70	00706950	bound to 00686a70 by 00706950; was emitted by 00706950; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCHeroExperience@@QAEPAVCWorld@@XZ	00686a70	006d8580	bound to 00686a70 by 006d8580; was emitted by 006d8580; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCHeroStats@@QAEPAVCWorld@@XZ	00686a70	0057cb7e	bound to 00686a70 by 0057cb7e; was emitted by 0057cb7e; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCHeroStats@@QBEPAVCWorld@@XZ	00686a70	0057d990	bound to 00686a70 by 0057d990; was emitted by 0057d990; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetWorld@CTCInventoryMap@@QAEPAVCWorld@@XZ	00686a70	-	not bound; was emitted by 005fad40; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetWorld@CTCShotDefinitionBase@@QAEPAVCWorld@@XZ	00686a70	-	not bound; was emitted by 007c04a0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCTavernBar@@QAEPAUCWorldA@@XZ	00686a70	007ba550	bound to 00686a70 by 007ba550; was emitted by 007ba550; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetWorld@CTCVillage@@QAEPAVCWorld@@XZ	00686a70	-	not bound; was emitted by 0065a28f; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+RETIRE	?GetWorld@CTCVolumeContainmentTracker@@QAEPAUCWorldView@@XZ	00686a70	00785b40	bound to 00686a70 by 00785b40; was emitted by 00785b40; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetGame@CTCContainerRewardHero@@QAEPAUCGameComponents@@XZ	00686a80	0074e560	bound to 00686a80 by 0074e560; was emitted by 0074e560; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?PeekWorld@CTCBase@@IBEABVCWorld@@XZ	00686a80	0074e560	new spelling already bound by 004bc750; emitted by 0074e560
+RETIRE	?GetPWorld@CTCPerceiveAlert@@QAEPAUCWorldEvents@@XZ	00686a80	00744d00	bound to 00686a80 by 00744d00; was emitted by 00744d00; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetWorld@CTCBase@@QBEPAVCWorld@@XZ	00686a80	006d53c0	bound to 00686a70 by 006d53c0; was emitted by 007800b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetWorld@CTCBase@@QBEPBVCWorld@@XZ	00686a80	-	not bound; was emitted by 0071da70; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCBerserk_Retail@@QAEPAVCWorld@@XZ	00686a80	0078bfc0	bound to 00686a80 by 0078bfc0; was emitted by 0078bfc0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCBuyableHouse@@QBEPAVCWorld@@XZ	00686a80	006c17b0	bound to 00686a80 by 006c17b0; was emitted by 006c17b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCCameraPointDefinitionBase@@QBEPAVCWorld@@XZ	00686a80	0075c530	bound to 00686a80 by 0075c530; was emitted by 0075c530; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCCreatureFlyInCircles@@QBEPAVCWorld@@XZ	00686a80	007dd990	bound to 00686a80 by 007dd990; was emitted by 007dd990; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCCreatureModeManager@@QBEPAVCWorld@@XZ	00686a80	0073a8e0	bound to 00686a80 by 0073a8e0; was emitted by 0073a8e0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetWorld@CTCDegradableBase@@QBEPBVCWorld@@XZ	00686a80	-	not bound; was emitted by 008ecc80; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCDoor@@QBEPBVCWorld@@XZ	00686a80	00730f90	bound to 00686a80 by 00730f90; was emitted by 00730f90; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetWorld@CTCHeroAttachableAppearanceModifiers@@QBEPAVCWorld@@XZ	00686a80	-	not bound; was emitted by 00706950; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCHeroExperience@@QBEPBVCWorld@@XZ	00686a80	006d8580	bound to 00686a80 by 006d8580; was emitted by 006d8580; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCHeroStats@@QBEPBVCWorld@@XZ	00686a80	0057cb7e	bound to 00686a80 by 0057cb7e; was emitted by 0057cb7e; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCInventoryBase@@QBEPAVCWorld@@XZ	00686a80	005faa30	bound to 00686a80 by 005faa30; was emitted by 005faa30; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCInventoryBase_Map@@QBEPAVCWorld@@XZ	00686a80	00602f30	bound to 00686a80 by 00602f30; was emitted by 00602e30,00602f30; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCInventoryMap@@QBEPAVCWorld@@XZ	00686a80	005fd1d0	bound to 00686a80 by 005fd1d0; was emitted by 005fc620,005fd1d0; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCInventoryMap@@QBEPBVCWorld@@XZ	00686a80	005fad40	bound to 00686a80 by 005fad40; was emitted by 005fad40; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@CTCPhysicsStandard@@QBEABVCWorld@@XZ	00686a80	00724010	bound to 00686a80 by 00724010; was emitted by 00724010; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorldTimeComponent@@YAPAUCWorldTimeComponent@@XZ	00686a80	00732730	bound to 00686a80 by 00732730; was emitted by 00732730; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetThingManager@CTCDRegionExit@@QAEPAVCThingManager@@XZ	00686ae0	00779340	bound to 00686ae0 by 00779340; was emitted by 00779340; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetThingManager@CTCBase@@IAEAAVCThingManager@@XZ	00686ae0	00779340	new spelling already bound by 006ca4e0; emitted by 00779340
+KEEP	?GetWorld@CTCBase@@QAEPAVCWorld@@XZ	00686d20	007e27f0	bound to 00686d20 by 007e27f0; was emitted by 007e27f0; KEEP: still emitted by 2 unedited row(s) in full.jsonl
+KEEP	?PeekWorldMap@CTCBase@@IBEABVCWorldMap@@XZ	00686d20	007e27f0	new spelling already bound by 006aebf0; emitted by 007e27f0
+RETIRE (not bound to this target)	?GetWorldMap@CTCBase@@QAEPAVCWorldMap@@XZ	00686d20	-	not bound; was emitted by 00787620,00800540; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?GetWorldMap@CTCHeroStats@@QBEPAVCWorldMap@@XZ	00686d20	0057a989	bound to 00686d20 by 0057a989; was emitted by 0057a989,0057d990; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?GetWorldMap@CTCDRegionExit@@QAEPAVCWorldMap@@XZ	00686d30	00779340	bound to 00686d30 by 00779340; was emitted by 00779340; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetWorldMap@CTCBase@@IAEAAVCWorldMap@@XZ	00686d30	00779340	new spelling already bound by 0057cdb5; emitted by 00779340
+RETIRE	?GetWorldMap@CTCVillage@@QAEPAVCWorldMap@@XZ	00686d30	0065a28f	bound to 00686d30 by 0065a28f; was emitted by 0065a28f; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetWorldMap_00686d30@CTCBase@@QAEPAVCWorldMap@@XZ	00686d30	-	not bound; was emitted by 00747480; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetPlayerManager2@CTCBase@@QBEPAVCPlayerManager@@XZ	00686d40	007800b0	bound to 00686d40 by 007800b0; was emitted by 007800b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ	00686d40	007800b0	new spelling already bound by 0047d21c; emitted by 007800b0
+RETIRE	?GetPlayerManager@@YAPAVCPlayerManager@@XZ	00686d40	007828e0	bound to 00686d40 by 007828e0; was emitted by 006c17b0,0072e940,007828e0,00782a90,007aa480; RETIRE-candidate: all 5 rechecked emitting row(s) respelled
+RETIRE	?GetPlayerManager@CTCInventoryBase@NInventory@@QBEPAVCPlayerManager@@XZ	00686d40	005bc5c6	bound to 00686d40 by 005bc5c6; was emitted by 005bc5c6; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetPlayerManager@CTCWife@@QAEPAVCPlayerManager@@XZ	00686d40	-	not bound; was emitted by 006d0180; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetPlayerManager@CTCBase@@QBEPAVCPlayerManager@@XZ	00686d50	00773b20	bound to 00686d50 by 00773b20; was emitted by 00773b20,007800b0; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+KEEP	?PeekPlayerManager@CTCBase@@IBEABVCPlayerManager@@XZ	00686d50	00773b20	new spelling already bound by 0057b783; emitted by 00773b20,007800b0
+RETIRE	?GetPlayerManager@CTCHeroStats@@QBEPAVCPlayerManager@@XZ	00686d50	0057cb7e	bound to 00686d50 by 0057cb7e; was emitted by 0057cb7e; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetPlayerManager@CTCInventory@@QBEPAVCPlayerManager@@XZ	00686d50	00590d32	bound to 00686d50 by 00590d32; was emitted by 00590d32; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE (not bound to this target)	?GetPlayerManager@CTCInventoryMap@@QBEPAVCPlayerManager@@XZ	00686d50	-	not bound; was emitted by 005fad40; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetPlayerManager_00686d50@@YAPAVCPlayerManager@@XZ	00686d50	005bc527	bound to 00686d50 by 005bc527; was emitted by 005bc527; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld@@YAPAVCWorld@@XZ	00686d50	005819f2	bound to 00686d50 by 005819f2; was emitted by 005819f2,00581fd1; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?GetWorldB@CTCTavernBar@@QAEPAUCWorldB@@XZ	00686d50	007ba550	bound to 00686d50 by 007ba550; was emitted by 007ba550; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetWorld_00686d50@CTCTavernGame@@QAEPAVCWorld@@XZ	00686d50	005ea9b0	bound to 00686d50 by 005ea9b0; was emitted by 005ea9b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetGameSubsystem@CTCBase@@QAEPAUCGameSubsystem@@XZ	00686d60	00773b20	bound to 00686d60 by 00773b20; was emitted by 00773b20; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?PeekComponent@CTCBase@@IBEABVCMainGameComponent@@XZ	00686d60	00773b20	new spelling already bound by 0071ab20; emitted by 00773b20
+RETIRE	?GetGameSubsystem@CTCDRegionExit@@QAEPAUCGameSubsystem@@XZ	00686d60	00779340	bound to 00686d60 by 00779340; was emitted by 00779340; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetThingSearchTools@CTCDoor@@QBEPAVCThingSearchTools@@XZ	00686d90	00730f90	bound to 00686d90 by 00730f90; was emitted by 00730f90; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ	00686d90	00730f90	new spelling already bound by 00684210; emitted by 00730f90
+RETIRE	?GetPRandomSeed@CTCHeroStats@@QAEPAKXZ	00686da0	0057cb7e	bound to 00686da0 by 0057cb7e; was emitted by 0057cb7e; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?GetPWorldSeed@CTCBase@@IBEPAKXZ	00686da0	0057cb7e	new spelling already bound by 0057b783; emitted by 0057cb7e
+RETIRE	?NeedsMainSignPost@CTCBuyableHouse@@QAE_NXZ	006bfb90	006c17b0	bound to 006bfb90 by 006c17b0; was emitted by 006c17b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?NeedsMainSignPost@CTCBuyableHouse@@AAE_NXZ	006bfb90	006c17b0	new spelling already bound by 006c1150; emitted by 006c17b0
+RETIRE	?CreateMainSignPost@CTCBuyableHouse@@QAEXXZ	006c0f00	006c17b0	bound to 006c0f00 by 006c17b0; was emitted by 006c17b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?CreateMainSignPost@CTCBuyableHouse@@AAEXXZ	006c0f00	006c17b0	new spelling already bound by 006c1150; emitted by 006c17b0
+RETIRE	?Evict@CTCBuyableHouse@@QAEXXZ	006c0fd0	006c17b0	bound to 006c0fd0 by 006c17b0; was emitted by 006c17b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?Evict@CTCBuyableHouse@@AAEXXZ	006c0fd0	006c17b0	new spelling already bound by 006c1150; emitted by 006c17b0
+RETIRE (not bound to this target)	?IsAIFollower@CTCFollowed@@QAE_NPAVCThingAICreature@@@Z	006d4d70	006d56e0	bound to 006d4db0 by 006d56e0; was emitted by 0094c900,0095f9a0; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+KEEP	?IsFollower@CTCFollowed@@QBE_NPBVCThing@@@Z	006d4d70	0094c900	new spelling already bound by 006d50c0; emitted by 0094c900,0095f9a0
+RETIRE	?IsAIFollower@CTCFollowed@@QAE_NPAVCThingAICreature@@@Z	006d4db0	006d56e0	bound to 006d4db0 by 006d56e0; was emitted by 006d56e0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+ADD	?IsAIFollower@CTCFollowed@@QBE_NPBVCThingAICreature@@@Z	006d4db0	006d56e0	PDB spelling (Ego_r/FableWin), not yet bound; emitted by 006d56e0
+RETIRE	?IsAIFollower@CTCFollowed@@QBE_NPBVCThing@@@Z	006d4db0	006d50c0	bound to 006d4db0 by 006d50c0; was emitted by 006d50c0,006d5180; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+RETIRE	?CreateThing@@YIPAVCThing@@JPBVC3DVector@@JPAVCRightHandedSet@@KPBVCCharString@@@Z	00703210	0074e560	bound to 00703210 by 0074e560; was emitted by 0074e560; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?Create@CThingObject@@SIPAV1@JABVC3DVector@@JPBVCRightHandedSet@@KABVCCharString@@@Z	00703210	0074e560	new spelling already bound by 007b2ab0; emitted by 0074e560
+RETIRE	?CreateThingObject@@YIPAVCThingObject@@JABVC3DVector@@PAVCMap@@ABVCRightHandedSet@@KABVCCharString@@@Z	00703210	005ea9b0	bound to 00703210 by 005ea9b0; was emitted by 005ea9b0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?CreateThingObject@@YIPAVCThingObject@@JABVC3DVector@@PAVCMap@@PBVCRightHandedSet@@KABVCCharString@@@Z	00703210	007ba550	bound to 00703210 by 007ba550; was emitted by 007ba550; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?GetMorphStrength@CTCHeroMorph@@QAEMJ@Z	0071ba60	0071c9f0	bound to 0071ba60 by 0071c9f0; was emitted by 0071c9f0,0071de80; RETIRE-candidate: all 2 rechecked emitting row(s) respelled
+ADD	?GetMorphStrength@CTCHeroMorph@@QBEMW4EHeroMorphType@@@Z	0071ba60	0071c9f0	PDB spelling (Ego_r/FableWin), not yet bound; emitted by 0071c9f0,0071de80
+RETIRE	?GetPFirstThingInRoughArea@CThingSearchTools@@QAE_NABVC2DBoxI@@ABUCInAreaZRangeFilter@@PAPAVCThingCreatureBase@@@Z	007313b0	00730f90	bound to 007313b0 by 00730f90; was emitted by 00730f90; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+ADD	??$GetPFirstThingInRoughArea@V?$CFilter_Bind2@VCThingFilter_InArea@@VCThingFilter_IsWithinZRange@@@@VCThingCreatureBase@@@CThingSearchTools@@QBE_NABVC2DBoxI@@ABV?$CFilter_Bind2@VCThingFilter_InArea@@VCThingFilter_IsWithinZRange@@@@PAPAVCThingCreatureBase@@@Z	007313b0	00730f90	PDB spelling (Ego_r/FableWin), not yet bound; emitted by 00730f90
+RETIRE	?InitialiseOnRegionLoad@CMiniMapDisplay@@QAEXPAX@Z	0082a180	0064dfde	bound to 0082a180 by 0064dfde; was emitted by 0064dfde; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+ADD	?InitialiseOnRegionLoad@CMiniMapDisplay@@QAEXABVCCharString@@@Z	0082a180	0064dfde	PDB spelling (Ego_r/FableWin), not yet bound; emitted by 0064dfde
+RETIRE	?SetRegionDisp@CMiniMapDisplay@@QAEXPAVCRegion@@@Z	0082ba00	0064dfde	bound to 0082ba00 by 0064dfde; was emitted by 0064dfde; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?InitialiseOnRegionLoad@CMiniMapDisplay@@QAEXABVCRegion@@@Z	0082ba00	0064dfde	new spelling already bound by 004fc8a0; emitted by 0064dfde
+RETARGET-HASH	?GetArmourThresholdValueFromArmourWeights@?A0xe6a79032@@YIMJABUCArmourMap@@M@Z	008686e0	-	not bound; was emitted by 00869020; RETARGET: anonymous-namespace hash follows the file text
+ADD-HASH	?GetArmourThresholdValueFromArmourWeights@?A0xdcdbd2fc@@YIMJABUCArmourMap@@M@Z	008686e0	00869020	anonymous-namespace hash of the edited file (follows the text); emitted by 00869020
+RETARGET-HASH	?GetArmourResponseDamageAttributeDamageMultiplier@?A0xe6a79032@@YI_NJABUCArmourMap@@MAAM@Z	008687a0	-	not bound; was emitted by 00869020; RETARGET: anonymous-namespace hash follows the file text
+ADD-HASH	?GetArmourResponseDamageAttributeDamageMultiplier@?A0xdcdbd2fc@@YI_NJABUCArmourMap@@MAAM@Z	008687a0	00869020	anonymous-namespace hash of the edited file (follows the text); emitted by 00869020
+RETARGET-HASH	?GetArmourResponseAugmentationDamageMultiplier@?A0xe6a79032@@YI_NJABUCArmourMap@@MAAM@Z	00868a80	-	not bound; was emitted by 00869020; RETARGET: anonymous-namespace hash follows the file text
+ADD-HASH	?GetArmourResponseAugmentationDamageMultiplier@?A0xdcdbd2fc@@YI_NJABUCArmourMap@@MAAM@Z	00868a80	00869020	anonymous-namespace hash of the edited file (follows the text); emitted by 00869020
+RETARGET-HASH	?GetToughnessDamageReductionFactorForThing@?A0xe6a79032@@YIMABVCThing@@@Z	00868b40	-	not bound; was emitted by 00869020; RETARGET: anonymous-namespace hash follows the file text
+ADD-HASH	?GetToughnessDamageReductionFactorForThing@?A0xdcdbd2fc@@YIMABVCThing@@@Z	00868b40	00869020	anonymous-namespace hash of the edited file (follows the text); emitted by 00869020
+RETARGET-HASH	?GetArmourWeightsFromThing@?A0xe6a79032@@YIXABVCThing@@AAUCArmourMap@@AAM@Z	00868e50	-	not bound; was emitted by 00869020; RETARGET: anonymous-namespace hash follows the file text
+ADD-HASH	?GetArmourWeightsFromThing@?A0xdcdbd2fc@@YIXABVCThing@@AAUCArmourMap@@AAM@Z	00868e50	00869020	anonymous-namespace hash of the edited file (follows the text); emitted by 00869020
+KEEP	?GetDefGlobalIndexFromName@CDefinitionManager@@QAEJABVCCharString@@@Z	009ad410	0056be00	bound to 009ad410 by 0056be00; was emitted by 00449d90,004af3f0,0056be00,00591a66,0068e8f0,0068eca0,0069a010,006bc1d0,006bc510,007ba550,007e36a0,007fbe50,008718b0,0088ff30,00890040,008c6430,008c8180,008f3630,008f5060,008f5220,00910100,00917130,00923510,00934920; KEEP: still emitted by 0 unedited row(s) in full.jsonl and 4 edited row(s)
+KEEP	?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z	009ad410	00449d90	new spelling already bound by 006ca120; emitted by 00449d90,004af3f0,0056be00,00591a66,0068e8f0,0068eca0,0069a010,006bc1d0,006bc510,007ba550,007e36a0,007fbe50,008718b0,0088ff30,00890040,008c6430,008c8180,008f3630,008f5060,008f5220,00910100,00917130,00923510,00934920
+RETIRE	?GetPItem@CBaseIntelligentPointer@@QAEPAVCBaseObject@@XZ	00a01b50	00891610	bound to 00a01b50 by 00891610; was emitted by 004ddab4,006624f0,006e9140,006f17a0,007a4350,007a7150,007a9ab0,007f39a0,007f39f0,007f3a40,007f3b10,007f3b60,007fcd00,00802650,008147d0,0084b1c0,0085ab00,00860560,00860750,00860c00,00860e20,00860fd0,008685f0,0087c390,00891610,008abba0,008abc90,008d7320,009106e0,00916640,00929550,00933280,0094b400,0094d430; RETIRE-candidate: all 34 rechecked emitting row(s) respelled
+KEEP	?GetPItem@CBaseIntelligentPointer@@QBEPAVCBaseObject@@XZ	00a01b50	004ddab4	new spelling already bound by 0065b598; emitted by 004ddab4,006624f0,006e9140,006f17a0,007a4350,007a7150,007a9ab0,007f39a0,007f39f0,007f3a40,007f3b10,007f3b60,007fcd00,00802650,008147d0,0084b1c0,0085ab00,00860560,00860750,00860c00,00860e20,00860fd0,008685f0,0087c390,00891610,008abba0,008abc90,008d7320,009106e0,00916640,00929550,00933280,0094b400,0094d430
+KEEP	?GetPItem@CBaseIntelligentPointer@@QBEPAVCThing@@XZ	00a01b50	0090cb80	bound to 00a01b50 by 0090cb80; was emitted by 0065fbe1,0066aef0,00692f30,007aa5c0,007ba1d0,007ba8c0,007cc190,007cc230,0080f270,0080fad0,00845270,00848730,00849380,0084a350,0084a4a0,008579d0,008676a0,00869020,008b7ed0,008ba3c0,008c1c30,008c1e80,008c1f70,008c2810,008c7600,008c8c30,008c8f70,008c91e0,008c92c0,008cb060,008cb1a0,008ccd70,008cd470,008f3020,008f39a0,008f3ad0,008f41d0,008f4320,008f4480,00937da0,0093a080,0093c4e0,009580e0,0095e260,0095fed0; KEEP: still emitted by 0 unedited row(s) in full.jsonl and 1 edited row(s)
+KEEP	?GetPItem@CCreaturePointer@@QBEPAVCThingCreatureBase@@XZ	00a01b50	008574d0	bound to 00a01b50 by 008574d0; was emitted by 008579d0,008c2810,008c8c30,008c8f70,008c91e0,008c92c0,008ccd70; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+RETIRE	?GetTarget@CIntelligentPointer@@QAEPAVCThingCreatureBase@@XZ	00a01b50	0048bd20	bound to 00a01b50 by 0048bd20; was emitted by 0048bd20,004a9760,0050f440,005ed300,00655180,0065533c,00668c70,0066c110,006892c0,0069c480,006a6ad0,006b2550,00718890,007b82c0,00861800,00918fb0,00936770,0093e830,0093ed60,0093fa50,00940550,009407a0,00943a60,00945d80; RETIRE-candidate: all 24 rechecked emitting row(s) respelled
+KEEP	?Assign@CIntelligentPointer@@QAEXPAVCThingCreatureBase@@@Z	00a01b90	0048bd20	bound to 00a01b90 by 0048bd20; was emitted by 0048bd20,004a9760,0050f440,005ed300,00655180,0065533c,00668c70,0066c110,006892c0,0069c480,006a6ad0,006b2550,00718890,007b82c0,00861800,00918fb0,00936770,0093e830,0093ed60,0093fa50,00940550,009407a0,00943a60,00945d80; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+KEEP	?SetPItem@CBaseIntelligentPointer@@QAEXPAVCBaseObject@@@Z	00a01b90	0048bd20	new spelling already bound by 006ca4e0; emitted by 0048bd20,004a9760,0050f440,005ed300,00655180,0065533c,00668c70,0066c110,006892c0,0069c480,006a6ad0,006b2550,00718890,007b82c0,00861800,00918fb0,00936770,0093e830,0093ed60,0093fa50,00940550,009407a0,00943a60,00945d80
+RETIRE	?g_FollowerNotify@@3PAVCFollowerNotify@@A	013b8790	006d53c0	bound to 013b8790 by 006d53c0; was emitted by 006d53c0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?g_pPlayerGui@@3PAVCPlayerGui@@A	013b8790	006d53c0	new spelling already bound by 007e76b0; emitted by 006d53c0
+RETIRE	?g_electroGlobal@@3PAUGlobalThing@@A	013b8790	0076c830	bound to 013b8790 by 0076c830; was emitted by 0076c830; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?g_pCriminalStatusObserver@@3PAUCCriminalStatusObserverCalls@@A	013b8790	0065bfce	bound to 013b8790 by 0065bfce; was emitted by 0065bfce; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?g_pMiniMapManager@@3PAUCMiniMapManager@@A	013b8790	006626a0	bound to 013b8790 by 006626a0; was emitted by 006626a0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?g_pPlayerGui@@3PAUCPlayerGuiCalls@@A	013b8790	0056a980	bound to 013b8790 by 0056a980; was emitted by 0056a980; KEEP: still emitted by 1 unedited row(s) in full.jsonl
+RETIRE	?g_pPlayerGui_013b8790@@3PAUCPlayerGui_006d4d40@@A	013b8790	006d4d40	bound to 013b8790 by 006d4d40; was emitted by 006d4d40; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?g_pPlayerGui_013b8790@@3PAUCPlayerGui_Retail@@A	013b8790	0089eec0	bound to 013b8790 by 0089eec0; was emitted by 0089eec0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?Engine@CMovie@NUISystem@@2PAVCIEngine@@A	013b8ab8	005482d0	bound to 013b8ab8 by 005482d0; was emitted by 005482d0; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?PEngine@CMovie@NUISystem@@2PAVCIEngine@@A	013b8ab8	005482d0	new spelling already bound by 00547b90; emitted by 005482d0
+RETIRE	?g_pRenderDevice@@3PAUCRenderDevice@@A	013b8ab8	00547c90	bound to 013b8ab8 by 00547c90; was emitted by 00547c90; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+RETIRE	?g_pMovieTexture@@3PAVCTexture@@A	013b8ac0	00547f60	bound to 013b8ac0 by 00547f60; was emitted by 00547f60; RETIRE-candidate: all 1 rechecked emitting row(s) respelled
+KEEP	?MovieTexture@CMovie@NUISystem@@2PAVCTexture@@A	013b8ac0	00547f60	new spelling already bound by 00547b90; emitted by 00547f60
+RETIRE	?g_pMovieTexture@@3PAXA	013b8ac0	00547c90	bound to 013b8ac0 by 00547c90; was emitted by 00547c90; RETIRE-candidate: all 1 rechecked emitting row(s) respelled

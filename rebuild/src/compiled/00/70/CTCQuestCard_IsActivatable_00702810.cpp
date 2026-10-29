@@ -149,7 +149,7 @@ public:
 
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer() const;                       // 0x00449960
+    const CPlayer& GetMainPlayer() const;                       // 0x00449960
 };
 
 class CTCBase {                                      // CTCBase: vtable +0x00, ParentThing +0x04, +0x08
@@ -172,7 +172,7 @@ bool CTCQuestCard::IsActivatable() const
     if (PDef.Object) {
         for (std::map<EQuestCardPrerequisite, long>::const_iterator it = PDef->Prerequisites.begin(); it != PDef->Prerequisites.end(); ++it) {
             if (it->first == QUEST_CARD_PREREQUISITE_RENOWN_LEVEL) {
-                CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
+                CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
                 if (hero && !hero->Dead) {
                     const CTCHeroStats* stats = 0;
                     hero->GetInterface(TC_HERO_STATS, &stats);

@@ -4,7 +4,7 @@
 // CTCLook::IsAbleToTurnViaAnimation() -- turning via animation is allowed when the def allows it (combat or normal flag by the creature's combat state), no current action forbids it, turning animations exist, turning via animation is not disabled and the thing can use turning animations
 // Grade: RELOCATION_MATCH -- IS_ALIVE as a template taking `T* const&` bound straight to the PParentCreature member: retail then loads it into eax for the null/dead tests and copies it to ecx for the call (`mov ecx,eax`, twice); a by-value pointer parameter loads straight into ecx
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00752480, length 137 bytes.
-// Callees: CThingCreatureBase combat-state query @ 0x00661E80 (bits 2/3 of the byte at +0x15C; catalog "CText::GetAlignment" is a
+// Callees: CThingCreatureBase::IsInMelee @ 0x00661E80 (Ego_r.pdb; bits 2/3 of the byte at +0x15C; catalog "CText::GetAlignment" is a
 // byte twin), CThingCreatureBase::IsPerformingAnyAction @ 0x006622A0, the current action's (+0x100) virtual slot 50 (+0xC8),
 // IsAbleToUseTurningAnimations(CThing*) @ 0x0085FCD0 (__fastcall).
 // Layout (retail, local model): ParentThing +0x04, PParentCreature +0x10, PDef +0x14 (CLookDef AllowTurningViaAnimation +0x40,
@@ -30,7 +30,7 @@ class CCreatureActionBase { public:
 class CThingCreatureBase : public CThing { public:
     unsigned char _pad92[0x100 - 0x92];
     CCreatureActionBase* PCurrentAction;             // +0x100
-    bool IsInCombatMode() const;                     // 0x00661E80
+    bool IsInMelee() const;                     // 0x00661E80
     bool IsPerformingAnyAction() const;              // 0x006622A0
 };
 template<class T> inline bool IS_ALIVE(T* const& p)
@@ -68,7 +68,7 @@ class CTCLook { public:
 bool CTCLook::IsAbleToTurnViaAnimation()
 {
     bool allowed;
-    if (IS_ALIVE(PParentCreature) && PParentCreature->IsInCombatMode())
+    if (IS_ALIVE(PParentCreature) && PParentCreature->IsInMelee())
         allowed = PDef->CombatAllowTurningViaAnimation;
     else
         allowed = PDef->AllowTurningViaAnimation;
@@ -89,7 +89,7 @@ static int fails = 0;
 static bool combat, performing, prevents, canUse;
 static int combatCalls, perfCalls, prevCalls, useCalls;
 static CThing* useArg;
-bool CThingCreatureBase::IsInCombatMode() const { ++combatCalls; return combat; }
+bool CThingCreatureBase::IsInMelee() const { ++combatCalls; return combat; }
 bool CThingCreatureBase::IsPerformingAnyAction() const { ++perfCalls; return performing; }
 void CCreatureActionBase::v00() {}
 void CCreatureActionBase::v01() {}

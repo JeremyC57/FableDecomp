@@ -24,7 +24,7 @@
 //   hit things are walked by iterator, the immune things by index against a size read once, addressed as
 //   `*(begin() + i)` (`lea ecx,[eax+ebx*8]`, i in ebx; an `operator[]` strength-reduces i*8 and spills i), then by
 //   iterator again for the obstruction; the radius is a named float local read before the position; the obstruction
-//   pointer is assigned straight from the thing (the implicit CIntelligentPointer temporary's address is re-taken).
+//   pointer is assigned straight from the thing (the implicit CIntelligentPointer<CThing> temporary's address is re-taken).
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class C3DVector { public: float X, Y, Z; };
@@ -35,12 +35,13 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
     CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:  // CIntelligentPointer<CThing>
     CIntelligentPointer(CThing* thing);                 // 0x004A96F0
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
 struct CHitThing {                                      // pair<CIntelligentPointer<CThing>, long>
-    CIntelligentPointer first;
+    CIntelligentPointer<CThing> first;
     long                second;
 };
 template <class T> struct CRetailVector {               // STLport vector (12 bytes)
@@ -127,8 +128,8 @@ public:
     CThing*                             ParentThing;    // +0x04
     unsigned char                       _pad08[4];
     CRetailVector<CHitThing>            HitThings;      // +0x0c
-    CRetailVector<CIntelligentPointer>  ImmuneThings;   // +0x18
-    CIntelligentPointer                 PObstruction;   // +0x24
+    CRetailVector<CIntelligentPointer<CThing> >  ImmuneThings;   // +0x18
+    CIntelligentPointer<CThing>                 PObstruction;   // +0x24
     unsigned char                       _pad2c[0x54 - 0x2c];
     const CTrapDef*                     PTrapDef;       // +0x54 CDefPointer<const CTrapDef>::Object
     bool                                Active;         // +0x58
@@ -160,7 +161,7 @@ void CTCTrapBase::Trigger()
                     CTCDPhysicalObstruction* obstructionDriver;
                     obstruction->GetTCDriver(&obstructionDriver);
                     obstructionDriver->SetLifeTimeSeconds(100.0f);
-                    for (CIntelligentPointer* it = ImmuneThings.begin(); it != ImmuneThings.end(); ++it) {
+                    for (CIntelligentPointer<CThing>* it = ImmuneThings.begin(); it != ImmuneThings.end(); ++it) {
                         CThing* thing = ((CThing*)it->GetPItem());
                         if (IS_THING_ALIVE(thing))
                             obstructionDriver->SetThingToIgnoreObstruction(thing);

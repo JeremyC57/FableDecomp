@@ -1,5 +1,5 @@
 // CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money) -- unless the hero's buy-house tutorial takes over, ask the hero to buy the house (or tell him he cannot afford it) or to sell it
-// Retail 0x0072E940, 512 bytes (`ret 8`). Callees: the player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer
+// Retail 0x0072E940, 512 bytes (`ret 8`). Callees: CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer
 // @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020
 // (inlined GetInterface, CTCHero = 0x29), CTCHero::GiveTutorialForCategory(ETutorialCategory, bool) @ 0x006C9FA0,
 // CWideString() @ 0x0099AED0, CTCBuyableHouse::GetPrice @ 0x006C0120, CCharString(const char*, long) @ 0x0099EBF0,
@@ -53,7 +53,9 @@ class CPlayer { public:
 class CPlayerManager { public:
     CPlayer& GetMainPlayer();                       // 0x00449970
 };
-CPlayerManager* GetPlayerManager();                 // 0x00686D40
+class CTCBase { protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
+};
 class CTCHero { public:
     bool GiveTutorialForCategory(long category, bool force);   // 0x006C9FA0
 };
@@ -102,7 +104,7 @@ struct CTCBuyableHouseCalls : CTCBuyableHouse {
 };
 
 enum EHouseQuestion { HOUSE_QUESTION_NONE = 0, HOUSE_QUESTION_BUY = 1, HOUSE_QUESTION_RENT = 2 };
-class CTCActionUseBuyHouse {
+class CTCActionUseBuyHouse : public CTCBase {
 public:
     void*          __vftable;                                // +0x00 (CTCBase)
     void*          ParentThing;                              // +0x04
@@ -114,7 +116,7 @@ public:
 
 void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead) {
         CTCHero* heroTC;
         if (hero->GetInterface(&heroTC, 0x29) && heroTC->GiveTutorialForCategory(0x23, false))

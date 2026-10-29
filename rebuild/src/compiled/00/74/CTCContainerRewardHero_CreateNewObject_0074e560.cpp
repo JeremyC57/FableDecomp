@@ -1,8 +1,8 @@
 // CTCContainerRewardHero::CreateNewObject(long def, const C3DVector& position, const C3DVector& acceleration, const CCharString& scriptName) -- spawn a reward object popping out of the container: push it, give it a random spin, make it not solid to the container, copy the container's lighting, and optionally give it a 90-second life timer
 // Leaf: CreateNewObject
 // Retail 0x0074E560, 336 bytes, `ret 10h`.
-// Callees: the thing factory Create(long, const C3DVector*, long, CRightHandedSet*, ulong, const CCharString*) 0x00703210
-// (`__fastcall`), CTCPhysicsBase::ApplyAcceleration(const C3DVector&) 0x006B0210, the TC's game accessor 0x00686A80 and its
+// Callees: CThingObject::Create(long, const C3DVector&, long, const CRightHandedSet*, ulong, const CCharString&) 0x00703210
+// (static `__fastcall`, Ego_r.pdb), CTCPhysicsBase::ApplyAcceleration(const C3DVector&) 0x006B0210, CTCBase::PeekWorld() const 0x00686A80 and the world's
 // random-seed accessor 0x0049D810, GFFloatRandom(float, ulong*) 0x004978A0 (`__fastcall`), the physics' slot 66 (+0x108,
 // float spin), CCharString(const char*, long) 0x0099EBF0 ("CTCSolidToThing" 0x0123B47C, "CTCLifeTimer" 0x0123E424) / ~
 // 0x0099EAE0, CThing::AddTC(const CCharString&, bool, CTCParamsBase*) 0x004C9D60, CTCSolidToThing::AddThingNotSolidTo
@@ -89,11 +89,16 @@ class CThing { public:
         return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
     }
 };
-CThing* __fastcall CreateThing(long def, const C3DVector* position, long kind, CRightHandedSet* orientation,
-                               unsigned long flags, const CCharString* scriptName);   // 0x00703210
+class CThingObject : public CThing { public:
+    static CThingObject* __fastcall Create(long def, const C3DVector& position, long kind, const CRightHandedSet* orientation,
+                                           unsigned long flags, const CCharString& scriptName);   // 0x00703210 (Ego_r.pdb)
+};
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-struct CGameComponents {
-    unsigned long* GetRandomSeed();                     // 0x0049D810
+class CWorld { public:
+    unsigned long* GetPRandomSeed() const;              // 0x0049D810
+};
+class CTCBase { protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
 };
 class CTCSolidToThing { public:
     void AddThingNotSolidTo(CThing* thing);             // 0x00770FA0
@@ -104,24 +109,23 @@ class CTCLifeTimer { public:
     bool          Expired;                              // +0x11
     void SetLifeTime(float seconds);                    // 0x007E5950
 };
-class CTCContainerRewardHero {
+class CTCContainerRewardHero : public CTCBase {
 public:
     void*         __vftable;                            // +0x00
     CThing*       ParentThing;                          // +0x04
     unsigned char _pad08[0x18 - 0x08];
     bool          Enabled;                              // +0x18
     bool          CreateObjectsThatTimeOut;             // +0x19
-    CGameComponents* GetGame();                         // 0x00686A80
     CThing* CreateNewObject(long def, const C3DVector& position, const C3DVector& acceleration, const CCharString& scriptName);
 };
 
 CThing* CTCContainerRewardHero::CreateNewObject(long def, const C3DVector& position, const C3DVector& acceleration,
                                                 const CCharString& scriptName)
 {
-    CThing* thing = CreateThing(def, &position, 5, 0, 0, &scriptName);
+    CThing* thing = CThingObject::Create(def, position, 5, 0, 0, scriptName);
     if (thing && !(thing->m_flags & 1)) {
         thing->Physics->ApplyAcceleration(acceleration);
-        float spin = GFFloatRandom(1.0f, GetGame()->GetRandomSeed());
+        float spin = GFFloatRandom(1.0f, PeekWorld().GetPRandomSeed());
         thing->Physics->SetSpin(spin);
         CTCSolidToThing* solid = (CTCSolidToThing*)thing->AddTC("CTCSolidToThing", false, 0);
         solid->AddThingNotSolidTo(ParentThing);

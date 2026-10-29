@@ -51,7 +51,7 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;                    // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                     // 0x00449960
+    const CPlayer& GetMainPlayer() const;                     // 0x00449960
 };
 class COpinionDeed { public:
     long          DeedType;                             // +0x00 EOpinionDeedType
@@ -94,7 +94,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
 template <class TFilter>
 const COpinionDeed* CTCCreatureOpinionOfHero::FindMostRecentDeed(EOpinionDeedType deedType, const TFilter& filter, long* outHandle, bool includePending) const
 {
-    const CThing* hero = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
+    const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (hero) {
         const CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

@@ -101,7 +101,7 @@ class CTCCarrying { public:                            // interface 0x46
     CThing* GetThingInPrimarySlot();            // 0x006A1440
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);    // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;    // 0x009AD410
 };
 struct CThingCreature : CThing {
     void* GetAnimFromName(const CCharString& name, long index); // 0x00662A00

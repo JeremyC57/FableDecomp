@@ -200,11 +200,12 @@ public:
 };
 inline bool IsAlive(const CThing* thing) { return thing && !thing->Dead; }
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* Ptr;
     long  Index;
-    CThing* GetPItem() const;                                  // 0x00A01B50
-    CThing* operator->() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                                  // 0x00A01B50
+    CThing* operator->() const { return ((CThing*)GetPItem()); }
 };
 
 // The armour helpers sit in this TU's anonymous namespace (Ego_r.pdb ?...@?A0x23f4dc30@@YI..., all taking the armour
@@ -314,7 +315,7 @@ void CHitParameters::SetAsModifiedByArmour(const CThing& thing, CArmourDefPointe
         float damage = ((CDamageNode*)it)->second;
         CRbNode* end = DamageMap._M_header;
         EDamageAttribute attribute = ((CDamageNode*)it)->first;
-        if (DamageMap.find(4) != end && IsAlive(PWeapon.GetPItem()) && PWeapon->IsRangedWeapon()) {
+        if (DamageMap.find(4) != end && IsAlive(((CThing*)PWeapon.GetPItem())) && PWeapon->IsRangedWeapon()) {
             if (GetArmourThresholdValueFromArmourWeights(attribute, armours, multiplier) > ShotBuildupTime)
                 HitNegated = true;
         }

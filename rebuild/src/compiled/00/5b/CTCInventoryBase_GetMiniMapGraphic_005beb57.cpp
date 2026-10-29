@@ -70,7 +70,7 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
+    const CPlayer& GetMainPlayer() const;             // 0x00449960 (const)
 };
 extern const float g_mapEdgeZ;                  // 0x01253D40 (51.0f)
 
@@ -104,7 +104,7 @@ long CTCInventoryBase::GetMiniMapGraphic(const CRegion* region)
             isPrisonCourtyard = true;
     }
     {
-        const CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
+        const CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
         if (IS_THING_ALIVE(hero) && isPrisonCourtyard && hero->GetPos().Z > g_mapEdgeZ) {
             SGraphicNode* upperCourtyard;
             {

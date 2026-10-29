@@ -20,21 +20,23 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 
-namespace N_0050f3f0 { namespace N_0050f440 { struct CIntelligentPointerCreature : CBaseIntelligentPointer {
-    CIntelligentPointerCreature(CThing* thing);   // 0x0050F3F0
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other);   // 0x0050F440
-}; } using N_0050f440::CIntelligentPointerCreature; } using N_0050f3f0::CIntelligentPointerCreature;
+class CThingAICreature;
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThingAICreature> : public CBaseIntelligentPointer { public:
+    CIntelligentPointer(CThingAICreature* item);   // 0x0050F3F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x0050F440
+};
 
 class CTCDummyVillager { public:
     void*                       __vftable;  // +0x00
     unsigned char               _pad_0x04[0x2C];   // +0x04 CTCBase, DefType, Home/WorkBuilding and their UIDs
-    CIntelligentPointerCreature Creature;   // +0x30
+    CIntelligentPointer<CThingAICreature> Creature;   // +0x30
     unsigned __int64            CreatureUID;    // +0x38
     void Evict();
 };
 
 void CTCDummyVillager::Evict()
 {
-    Creature = (CThing*)0;
+    Creature = (CThingAICreature*)0;
     CreatureUID = 0;
 }

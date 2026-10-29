@@ -108,15 +108,14 @@ class CThingCreatureBase { public:
     float GetAnimDuration(long animIndex);          // 0x006627F0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* m_pItem;
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
 };
-struct CCreaturePointer {
-    void* __vftable;
-    void* m_pItem;
-    CThingCreatureBase* GetPItem() const;           // 0x00A01B50
+struct CCreaturePointer : CBaseIntelligentPointer {
+    CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }   // inline over 0x00A01B50
 };
 
 extern long g_framesPerSecond;                      // 0x01375550
@@ -148,10 +147,10 @@ void CCombatActionBase::UpdateActionRunningTime()
     CGameCameraManager* cameraManager;
     if (GetPWorld()->GetCurrentGameCamera()->GetCameraManager(&cameraManager)
         && PCameraPoint.GetPItem() != 0
-        && !(PCameraPoint.GetPItem()->m_flags91 & 1)
+        && !(((CThing*)PCameraPoint.GetPItem())->m_flags91 & 1)
         && cameraManager->IsUsingScriptedCameraMode()) {
         CTCCameraPoint* point;
-        PCameraPoint.GetPItem()->GetInterface(0x3f, &point);
+        ((CThing*)PCameraPoint.GetPItem())->GetInterface(0x3f, &point);
         CTCCameraPoint* scripted;
         if (point->GetPointType() == 7)
             scripted = point;

@@ -51,7 +51,7 @@ public:
 
 class CThingCreatureBase : public CThing {
 public:
-    CCombatManager* GetCombatManager();                         // 0x00661ED0
+    CCombatManager& GetCombatManager();                         // 0x00661ED0
 };
 
 class CThingAICreature : public CThingCreatureBase {
@@ -75,7 +75,7 @@ public:
 
 void __fastcall CTCFireRangedWeaponOnLeavingStateGroup::Cleanup(CThingAICreature& creature)
 {
-    creature.GetCombatManager()->DeregisterCombatant(&creature);
+    creature.GetCombatManager().DeregisterCombatant(&creature);
     CTCCreatureModeManager* modes;
     if (creature.PeekTC(&modes))
         modes->RemoveMode(0x19);

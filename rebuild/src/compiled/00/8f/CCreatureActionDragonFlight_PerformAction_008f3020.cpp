@@ -71,11 +71,12 @@ class CThing { public:
 CThing* __fastcall CreateShot(long shotDef, CThing* owner, CThing* parent, CThing* target, float accuracy, float a, float b,
                               CDefPointerMelee* meleeDef, C3DVector* offset, CRightHandedSet* hands);   // 0x007C0AD0
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                             // +0x04
-    CThing* GetPItem() const;                    // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                    // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 
 class CCombatActionBase {
@@ -99,12 +100,12 @@ void CCreatureAction_DragonFlight::PerformAction()
 {
     if (PTarget.GetPItem()) {
         CDefPointerAbility ability;
-        CDefClassBase* defClass = PCreature.GetPItem()->PhysicsTC;
+        CDefClassBase* defClass = ((CThing*)PCreature.GetPItem())->PhysicsTC;
         if (defClass->GetSubDef(&ability)) {
             long shotDef = ability->ShotDefIndex;
-            long accuracy = PCreature.GetPItem()->GetShotAccuracyPercentage();
+            long accuracy = ((CThing*)PCreature.GetPItem())->GetShotAccuracyPercentage();
             CDefPointerMelee melee;
-            CreateShot(shotDef, PCreature, 0, PTarget.GetPItem(), (float)accuracy, 1.0f, 1.0f, &melee, 0, 0);
+            CreateShot(shotDef, PCreature, 0, ((CThing*)PTarget.GetPItem()), (float)accuracy, 1.0f, 1.0f, &melee, 0, 0);
         }
     }
 }

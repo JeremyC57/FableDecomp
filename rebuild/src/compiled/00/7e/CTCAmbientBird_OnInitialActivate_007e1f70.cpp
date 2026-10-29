@@ -28,8 +28,9 @@ class CTCBase { public:                               // engine/CTCBase.h layout
     CThing* ParentThing;                       // +0x04
     bool    ToBeRemoved;                       // +0x08
     bool    IsInGlobalUpdateTCs;               // +0x09
-    CWorld* GetWorld();                        // 0x00686A70 (main game component +0x24)
     CGameSubsystem* GetSubsystem();            // 0x00686D60 (main game component +0x1c)
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
 };
 
 struct CTCAmbientBird : CTCBase {
@@ -41,7 +42,7 @@ struct CTCAmbientBird : CTCBase {
 void CTCAmbientBird::OnInitialActivate()
 {
     if (!GetSubsystem()->IsSuppressed()) {
-        if (GFFloatRandom(1.0f, GetWorld()->GetPRandomSeed()) > 0.5f)
+        if (GFFloatRandom(1.0f, GetWorld().GetPRandomSeed()) > 0.5f)
             ParentThing->Kill(false);
     }
 }

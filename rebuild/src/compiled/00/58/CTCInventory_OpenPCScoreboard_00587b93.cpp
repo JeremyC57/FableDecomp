@@ -61,7 +61,7 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                        // 0x00449960
+    const CPlayer& GetMainPlayer() const;                        // 0x00449960
 };
 
 struct CEngineGlobals {
@@ -89,7 +89,7 @@ void CTCInventory::OpenPCScoreboard()
     if (screen != PC_SCREEN_SCOREBOARD) {
         DeleteMenuComponents();
         screen = PC_SCREEN_SCOREBOARD;
-        CThing* hero = g_pEngineGlobals->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+        CThing* hero = g_pEngineGlobals->PlayerManager->GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         if (hero->GetInterface(&scoreboard, 0x10D))
             scoreboard->ShowScoreboard();

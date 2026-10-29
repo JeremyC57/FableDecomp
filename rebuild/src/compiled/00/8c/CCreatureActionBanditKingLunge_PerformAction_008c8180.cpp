@@ -148,7 +148,7 @@ class CTCDParticleEmitter { public:
 };
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CTCDExplosion { public:
     static CThing* __fastcall Create(long defIndex, const C3DVector& position);   // 0x0080C460

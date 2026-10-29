@@ -16,7 +16,7 @@ class CBaseObject;
 struct CBaseIntelligentPointer {
     void* m_pItem;                               // +0x00
     void* m_pInfo;                               // +0x04
-    CBaseObject* GetPItem();                     // 0x00A01B50
+    CBaseObject* GetPItem() const;                     // 0x00A01B50
     void SetPItem(CBaseObject* item);            // 0x00A01B90
     ~CBaseIntelligentPointer();                  // 0x00A01C10
 };

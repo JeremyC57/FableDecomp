@@ -27,12 +27,13 @@ class CSoundPair { public:
     CSoundPair() : m_first(0), m_second(0) { }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +4
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 
@@ -41,16 +42,14 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
 
-struct CCreaturePointer {                       // CIntelligentPointer<CThingCreatureBase>
-    virtual void v00();
-    CThingCreatureBase* m_pItem;                // +4
-    CThingCreatureBase* GetPItem() const;       // 0x00A01B50
+struct CCreaturePointer : CBaseIntelligentPointer {                       // CIntelligentPointer<CThingCreatureBase>
+    CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }   // inline over 0x00A01B50
 };
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -87,9 +86,9 @@ void CCreatureAction_BanditKingStuckGetHit::FinishAction()
     CCombatActionBase::FinishAction();
     PCreature.GetPItem()->SetCurrentAction(CCreatureAction_BanditKingUnstuck(PCreature.GetPItem()));
     if (IS_THING_ALIVE(PStuckThing)) {
-        PStuckThing.GetPItem()->Kill(true);
+        ((CThing*)PStuckThing.GetPItem())->Kill(true);
         CIntelligentPointer none;
         none.SetPItem(0);
-        PStuckThing.SetPItem(none.GetPItem());
+        PStuckThing.SetPItem(((CThing*)none.GetPItem()));
     }
 }

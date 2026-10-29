@@ -2,7 +2,7 @@
 // Leaf: BoastTaken
 // Retail 0x0056A980, 656 bytes, `ret 4`. Callees: _Rb_tree_rebalance_for_erase 0x0042A34E (cdecl), ~CWideString
 // 0x0099B510, ~CCharString 0x0099EAE0, free 0x00BFEA14, CTCBoastingCrowdControl::OnHeroBoast 0x00783C50 and
-// DetachAll 0x00783680, SetAutomaticCameraControl 0x00699090, CPlayerGui::Close 0x004374B0, CCharString 0x0099EBF0,
+// DetachAll 0x00783680, SetAutomaticCameraControl 0x00699090, CPlayerGui::Open 0x004374B0, CCharString 0x0099EBF0,
 // CCreatureAction_PlayAnimation 0x00843A80, CThingCreatureBase::SetCurrentAction 0x006644F0, ~CCreatureActionBase 0x00693EF0.
 // Layout: retail CTCBoastUI (12-byte STLport map at +0xc, Active +0x18, Quitting +0x28, ActivationRequested +0x2a) as
 // the landed 0x0056AC10/0x0056A880; CBoast from Ego_r.pdb (ID +0, ScriptName +0xc, Text +0x10, Title +0x14,
@@ -314,10 +314,10 @@ struct CEngineCalls {
     CGameWorldCalls* m_pWorld;                          // +0x24
 };
 extern CEngineCalls* g_pEngine;                         // 0x013B86A0
-struct CPlayerGuiCalls {
-    void Close();                                       // 0x004374B0
+class CPlayerGui { public:
+    void Open();                                        // 0x004374B0 (Ego_r.pdb CPlayerGui::Open)
 };
-extern CPlayerGuiCalls* g_pPlayerGui;                   // 0x013B8790
+extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 
 struct SListNode { SListNode* _M_next; SListNode* _M_prev; };
 struct CBoastList {
@@ -347,7 +347,7 @@ class CTCBoastUI { public:
             if (Active) {
                 g_pEngine->m_pWorld->m_pCameraManager->SetAutomaticCameraControl();
                 Quitting = true;
-                g_pPlayerGui->Close();
+                g_pPlayerGui->Open();
             } else {
                 ActivationRequested = false;
             }

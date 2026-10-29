@@ -29,7 +29,7 @@ class CGameEvent : public CMemoryBuffer { public:
 };
 
 class CPlayerManager { public:
-    long GetMainPlayerNumber();                         // 0x00449700
+    long GetMainPlayerNumber() const;                         // 0x00449700
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];

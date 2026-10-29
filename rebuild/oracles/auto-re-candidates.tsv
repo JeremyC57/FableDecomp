@@ -5452,7 +5452,7 @@ address	name	length	bytes
 0065571a	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>	19	558bec8d450b50ff7508e837d1fbff5dc20400
 0065574c	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>	19	558bec8d450b50ff7508e8354ae5ff5dc20400
 0065e5a4	std::vector<EWeaponClass,std::allocator<EWeaponClass>_>::_Umove<EWeaponClass*>	19	558bec8d450b50ff7508e83bf4ffff5dc20400
-00661e80	NUISystem::CText::GetAlignment	19	8a815c010000a8047403b001c3c0e8032401c3
+00661e80	CThingCreatureBase::IsInMelee	19	8a815c010000a8047403b001c3c0e8032401c3
 006a2520	CTCCarrying::SetAllCarriedThingsAsBypassFilter	19	8b442404c6411c01894120e8b0feffffc20400
 006d6810	CTCHeroExperience::ModifyTrainableStatLevel	19	8b41248b4c24048b5424088d04880110c20800
 00765d20	_global::Dtor_CCharStringBase_00765d20	19	568bf18d4e04e8b58d23008bce5ee9ad8d2300
@@ -10644,7 +10644,7 @@ address	name	length	bytes
 00437830	_global::Forward_IsFinishedOpening_via0x160_00437830	11	8b8960010000e93ec92000
 00437860	_global::Forward_IsActive_via0x160_00437860	11	8b8960010000e99ec52000
 004378b0	_global::Forward_SetRegion_via0x160_004378b0	11	8b8960010000e923672100
-004378c0	CPlayerGui::Refresh	11	8b8960010000e9cfc52000
+004378c0	CPlayerGui::UpdateMiniMapMarkers	11	8b8960010000e9cfc52000
 004378d0	_global::Forward_ToggleCentering_via0x160_004378d0	11	8b8960010000e93e672100
 004378e0	_global::Forward_Init_via0x160_004378e0	11	8b8960010000e9b7c52000
 004378f0	_global::Forward_AddPerceivingThing_via0x1b8_004378f0	11	8b89b8010000e9e0292100
@@ -10939,7 +10939,7 @@ address	name	length	bytes
 00437650	CPlayerGui::AddMoralityChange	16	8b81200200008b4c2404894840c20400
 00437920	CPlayerGui::AddMoralityChange	16	8b81a80100008b4c2404894828c20400
 00437930	CPlayerGui::AddMoralityChange	16	8b81a80100008b4c240489482cc20400
-004374f0	C3DMeshInfo::HasPhysicsMesh	15	8b919402000033c083fa010f95c0c3
+004374f0	CPlayerGui::IsOpen	15	8b919402000033c083fa010f95c0c3
 0043211d	_unattributed::ReleaseFirstMember_0043211d	14	8b0185c0740750e8ebc87c0059c3
 004379f0	CPlayerGui::HideScreenshotMessage	14	8b8148020000c7402cffffffffc3
 0041c820	CPixelFormat::IsEquivalent	16	8b018b4c24042b01f7d81bc040c20400
@@ -10977,7 +10977,7 @@ address	name	length	bytes
 00445750	CInputTypeMouseWheelMovementEvent::IsInputTypeWithMouseButton	5	32c0c20400
 00445790	CInputTypeMouseWheelMovementUpEvent::IsInputTypeWithMouseButton	5	32c0c20400
 00447a10	CInputTypeKeyboardKeyEvent::IsInputTypeWithMouseButton	5	32c0c20400
-00449700	_global::GetMember_dword0x1c_00449700	4	8b411cc3
+00449700	CPlayerManager::GetMainPlayerNumber	4	8b411cc3
 004a8fb0	_global::Dtor_CCharStringBase_004a8fb0	19	568bf18d4e04e855254f008bce5ee94d254f00
 004abc00	_global::Dtor_CCharStringBase_004abc00	19	568bf18d4e04e805f94e008bce5ee9fdf84e00
 004af240	_global::Dtor_CCharStringBase_004af240	19	568bf18d4e04e895f84e008bce5ee98df84e00

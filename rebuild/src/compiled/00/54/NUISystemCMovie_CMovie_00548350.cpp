@@ -4,7 +4,7 @@
 // Callees: NUISystem::CDraggableInto::CDraggableInto(const CDraggableInto&) @ 0x0052CCA0, CBaseClass::CBaseClass() @ 0x0099A2D0,
 //   CWideString::CWideString() @ 0x0099AED0 (manifest label "CCharString" is a byte twin), CXMVPlaybackInfo::CXMVPlaybackInfo() @ 0x009BC7D0,
 //   NUISystem::CMovie::GetDataFromDef() @ 0x00547C10. Vtables 0x0124881C / 0x012487F4 / 0x012487EC (CMovie at +0, +4, +0x18),
-//   CEnginePrimitiveHandle 0x0122F598; the engine reference is kept in the global 0x013B8AB8.
+//   CEnginePrimitiveHandle 0x0122F598; the engine reference is kept in the class static PEngine 0x013B8AB8 (as FreeTextures 0x00547B90).
 // Retail layout: Ego_r.pdb minus 0x30 (the retail CDraggableInto is 0x15C bytes): Playing +0x15c, Handle +0x160, Width +0x168,
 //   Height +0x16c, PositionIsCenter +0x170, Movie +0x174, Playback +0x178, Angle +0x190, AttempToPlay +0x194.
 // Shape: three vtable stores, then the members in declaration order: the Playing flag, the handle (out-of-line CBaseClass ctor,
@@ -65,7 +65,7 @@ class CMovie : public CDraggableInto { public:
     CXMVPlaybackInfo       Playback;               // +0x178
     float                  Angle;                  // +0x190
     bool                   AttempToPlay;           // +0x194
-    static CIEngine*       Engine;                 // 0x013B8AB8
+    static CIEngine*       PEngine;                // 0x013B8AB8
     CMovie(CIEngine& engine, long id);
     CMovie(const CMovie& other);
     virtual void v000();

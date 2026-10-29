@@ -74,13 +74,13 @@ class CTCCarrying { public:                            // interface 70
 };
 
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
 class CPlayerManager { public:
-    long GetMainPlayerNumber();                 // 0x00449700
+    long GetMainPlayerNumber() const;                 // 0x00449700
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x1c];

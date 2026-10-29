@@ -70,11 +70,12 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
     CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>
     CIntelligentPointer(CThing* item);                 // 0x004A96F0
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer& thing);   // 0x004CC340
+bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThing>& thing);   // 0x004CC340
 
 struct CStrikeEvent {
     bool  Legacy;                                      // +0x00
@@ -131,7 +132,7 @@ class CCombatActionBase : public CCreatureActionBase { public:      // retail si
     bool             MovementEventInterruptActive;     // +0xdc
     unsigned char    _paddd[0xfc - 0xdd];
     long             ActiveStrikeEventIndex;           // +0xfc
-    CIntelligentPointer LastWeaponUsedInStrike;        // +0x100
+    CIntelligentPointer<CThing> LastWeaponUsedInStrike;        // +0x100
     unsigned char    _pad108[0x114 - 0x108];
     CStrikeEvent* GetFirstActiveStrikeEvent();         // 0x00856E50
     CThing* GetWeaponUsedInStrikeAction();             // 0x00857070

@@ -49,7 +49,8 @@ public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CWorld* GetWorld() const;                   // 0x00686A80
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
 };
 class CTCCreatureGroup : public CTCBase {
 public:

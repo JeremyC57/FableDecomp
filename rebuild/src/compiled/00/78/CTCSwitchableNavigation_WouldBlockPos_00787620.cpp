@@ -2,7 +2,7 @@
 // Retry 10b (accessor sweep, FIXES B-4/B-5): the parent's UID is read through an inline accessor (`GetParentUID()`), which gives retail's 64-bit argument loads; the plain `ParentThing->UID` read gives the parked difference.
 // Leaf: WouldBlockPos
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00787620, length 107 bytes (`ret 4`).
-// Callees: CTCBase::GetWorld @ 0x00686A70 (navigator manager at CWorld+0x48), CTCBase::GetWorldMap @ 0x00686D20,
+// Callees: CTCBase::GetWorld @ 0x00686A70 (navigator manager at CWorld+0x48), CTCBase::PeekWorldMap @ 0x00686D20,
 // CWorldMap::GetNavigationLayerAt(const C3DVector&, CThing*) @ 0x0063E590 (null thing), CNavigatorManager::GetNodeAt(const C2DVector&,
 // unsigned char layer) @ 0x00A14F70, the node's virtual slot 10 (+0x28) taking the owner's 64-bit UID (CThing+0x18/+0x1C).
 // Layout: CTCSwitchableNavigation MapIndex +0x0C (Ego_r.pdb, unused here). CThing UID __int64 at +0x18.
@@ -30,7 +30,7 @@ class CWorld { public:
     CNavigatorManager* NavigatorManager;        // +0x48
 };
 class CWorldMap { public:
-    long GetNavigationLayerAt(const C3DVector& pos, CThing* thing);   // 0x0063E590
+    long GetNavigationLayerAt(const C3DVector& pos, CThing* thing) const;   // 0x0063E590
 };
 class CTCBase { public:
     virtual void v00();
@@ -38,8 +38,9 @@ class CTCBase { public:
     __int64 GetParentUID() const { return ParentThing->UID; }
     bool ToBeRemoved;                           // +0x08
     bool IsInGlobalUpdateTCs;                   // +0x09
-    CWorld* GetWorld();                         // 0x00686A70
-    CWorldMap* GetWorldMap();                   // 0x00686D20
+protected:
+    CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20 (Ego_r.pdb CTCBase, protected)
 };
 class CTCSwitchableNavigation : public CTCBase { public:
     long MapIndex;                              // +0x0c
@@ -49,8 +50,8 @@ class CTCSwitchableNavigation : public CTCBase { public:
 bool CTCSwitchableNavigation::WouldBlockPos(const C3DVector& pos)
 {
     C2DVector p(pos.X, pos.Y);
-    CNavigatorManager* navigator = GetWorld()->NavigatorManager;
-    CANavQuadTreeNode* node = navigator->GetNodeAt(p, (unsigned char)GetWorldMap()->GetNavigationLayerAt(pos, 0));
+    CNavigatorManager* navigator = GetWorld().NavigatorManager;
+    CANavQuadTreeNode* node = navigator->GetNodeAt(p, (unsigned char)PeekWorldMap().GetNavigationLayerAt(pos, 0));
     if (node)
         return node->WouldBeBlockedBy(GetParentUID());
     return false;

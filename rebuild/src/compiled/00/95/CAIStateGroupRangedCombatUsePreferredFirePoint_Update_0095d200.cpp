@@ -217,7 +217,7 @@ class CCombatManager { public:
     void DeregisterCombatant(CThingCreatureBase* creature);   // 0x006ED9C0
 };
 class CThingCreatureBase : public CThing { public:
-    CCombatManager* GetCombatManager();         // 0x00661ED0
+    CCombatManager& GetCombatManager();         // 0x00661ED0
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
     virtual void v00();
@@ -245,7 +245,7 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::Update()
         return;
     }
     CThingCreatureBase* creature = GetCreature();
-    creature->GetCombatManager()->RegisterCombatant(creature, (CThingCreatureBase*)PEnemy.GetPItem(), false);
+    creature->GetCombatManager().RegisterCombatant(creature, (CThingCreatureBase*)PEnemy.GetPItem(), false);
     bool reached;
     long result;
     do {
@@ -271,5 +271,5 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::Update()
         Terminate();
         return;
     }
-    GetCreature()->GetCombatManager()->DeregisterCombatant(GetCreature());
+    GetCreature()->GetCombatManager().DeregisterCombatant(GetCreature());
 }

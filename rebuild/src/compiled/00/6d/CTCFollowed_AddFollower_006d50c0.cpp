@@ -5,7 +5,7 @@
 //          AddEmoteIcon(CThing&) @ 0x006D4FD0; CBaseIntelligentPointer ctor/SetPItem/dtor @ 0x00A01B10/0x00A01B90/0x00A01C10
 //          (CIntelligentPointer<CThing> vtable 0x01238C6C, CIntelligentPointer<CThingAICreature> vtable 0x0123E7E0);
 //          list<CIntelligentPointer<CThing>>::push_back @ 0x004BA4E0, list<CIntelligentPointer<CThingAICreature>>::push_back
-//          @ 0x006604EB; CPlayerGui::Refresh(long) @ 0x004378C0 on g_pPlayerGui @ 0x013B8790;
+//          @ 0x006604EB; CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on g_pPlayerGui @ 0x013B8790;
 //          CThing::SetAsGameStatePersisted(bool) @ 0x004C7880.
 // Shape: each list entry is a converting temporary (inline ctor: base ctor, vtable, SetPItem) passed by reference and
 //        destroyed through the base dtor; both temporaries share the 8-byte frame.
@@ -48,7 +48,7 @@ public:
 };
 
 class CPlayerGui { public:
-    void Refresh(long flag);                        // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);           // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
@@ -59,7 +59,7 @@ class CTCFollowed { public:
     CThingPointerList Followers;                    // +0x0C
     CAICreaturePointerList AIFollowers;             // +0x10
     bool IsFollower(const CThing* thing) const;     // 0x006D4D70
-    bool IsAIFollower(const CThing* thing) const;   // 0x006D4DB0
+    bool IsAIFollower(const CThingAICreature* creature) const;   // 0x006D4DB0 (Ego_r.pdb)
     void AddEmoteIcon(CThing& thing);               // 0x006D4FD0
     void AddFollower(CThing& follower, bool aiFollower);
 };
@@ -69,10 +69,10 @@ void CTCFollowed::AddFollower(CThing& follower, bool aiFollower)
     if (!IsFollower(&follower)) {
         Followers.push_back(CIntelligentPointer(&follower));
         AddEmoteIcon(follower);
-        g_pPlayerGui->Refresh(0);
+        g_pPlayerGui->UpdateMiniMapMarkers(false);
     }
     if (aiFollower && follower.ThingClass == 1) {
-        if (!IsAIFollower(&follower))
+        if (!IsAIFollower((const CThingAICreature*)&follower))
             AIFollowers.push_back(CIntelligentPointerAICreature((CThingAICreature*)&follower));
         follower.SetAsGameStatePersisted(true);
     }

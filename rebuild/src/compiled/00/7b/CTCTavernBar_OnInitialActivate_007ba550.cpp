@@ -2,8 +2,9 @@
 // Leaf: OnInitialActivate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007BA550, 865 bytes, 8-aligned ebp frame, `ret`.
 // Callees: LowerBound @ 0x0040F020 (the bar's interface 0x2e), CTCNamedUserActionPoints::GetFreeNamedActionPoint @ 0x007FF190,
-//   CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CTCBase::GetWorld @ 0x00686A70 / 0x00686D50, CDefinitionManager::
-//   GetDefGlobalIndexFromName @ 0x009AD410, the world's level getter @ 0x00449960, CThingObject::Create @ 0x00703210,
+//   CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CTCBase::GetWorld @ 0x00686A70, CTCBase::PeekPlayerManager @ 0x00686D50,
+//   CDefinitionManager::GetDefGlobalIndexFromName @ 0x009AD410, CPlayerManager::GetMainPlayer() const @ 0x00449960,
+//   CThingObject::Create (static __fastcall, Ego_r.pdb) @ 0x00703210,
 //   CBaseIntelligentPointer ctor/GetPItem/SetPItem/dtor, the Jugs vector reallocating insert @ 0x007B99E0, the graphic
 //   SetRHSet vslot +0x12c, CThing::AddTC @ 0x004C9D60, CTCOwnedEntity::SetPOwner @ 0x007E8590.
 // Layout: Ego_r.pdb CTCTavernBar Jugs +0x0c (12-byte retail vector of 8-byte intelligent pointers); the jug's interface
@@ -110,6 +111,8 @@ class CThing { public:
     }
 };
 class CThingObject : public CThing { public:
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& pos, long playerNumber, const CRightHandedSet* rh,
+                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r.pdb)
     template <class T>
     __forceinline void GetInterfaceFast(long type, T** out)
     {
@@ -147,16 +150,25 @@ struct CTCPlacedEntity {                                // interface 0xbb
 #pragma pack(pop)
 
 class CMap;
-class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& name); };   // 0x009AD410
-struct CWorldA {
+class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& name) const; };   // 0x009AD410 (Ego_r.pdb)
+class CGameDefinitionManager : public CDefinitionManager { };
+class CWorld { public:
     unsigned char _pad[0x10];
-    CDefinitionManager* DefinitionManager;
-    CDefinitionManager* GetDefinitionManager() const { return DefinitionManager; }
+    CGameDefinitionManager* DefinitionManager;   // +0x10 (Ego_r.pdb)
+    const CGameDefinitionManager& PeekDefinitionManager() const { return *DefinitionManager; }   // inline here (FableWin.pdb)
 };
-struct CLevel { unsigned char _pad[0x28]; CMap* Map; };
-struct CWorldB { CLevel* GetLevel(); };                 // 0x00449960
-CThingObject* __fastcall CreateThingObject(long defIndex, const C3DVector& pos, CMap* map, const CRightHandedSet* rh,
-                                           unsigned long flags, const CCharString& name);   // 0x00703210
+class CPlayer { public:
+    unsigned char _pad[0x28];
+    long Number;                                // +0x28 (Ego_r.pdb)
+    long GetNumber() const { return Number; }   // inline here (FableWin.pdb ?GetNumber@CPlayer@@QBEJXZ)
+};
+class CPlayerManager { public:
+    const CPlayer& GetMainPlayer() const;       // 0x00449960 (Ego_r.pdb)
+};
+class CTCBase { protected:                    // Ego_r.pdb CTCBase protected accessors
+    CWorld& GetWorld() const;                   // 0x00686A70
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50
+};
 struct SScalarTag { SScalarTag() { } };
 template <class T> struct CPtrVector {
     T* first;
@@ -190,13 +202,11 @@ __declspec(noinline) void CPtrVector<T>::InsertGrow(T* where, const T& value, co
 }
 #pragma auto_inline(on)
 
-class CTCTavernBar { public:
+class CTCTavernBar : public CTCBase { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[4];
     CPtrVector<CIntelligentPointerC<CThingObject> > Jugs;   // +0x0c
-    CWorldA* GetWorld();                                // 0x00686A70
-    CWorldB* GetWorldB();                               // 0x00686D50
     void OnInitialActivate();
 };
 
@@ -211,9 +221,9 @@ void CTCTavernBar::OnInitialActivate()
         CThing* parent = ParentThing;
         if (!points->GetFreeNamedActionPoint(parent, &pos, &rh, "ACTION_POINT_JUGEMPTY", &index, 0, true))
             break;
-        long defIndex = GetWorld()->GetDefinitionManager()->GetDefGlobalIndexFromName("OBJECT_VILLAGE_TAVERN_JUG");
-        CMap* map = GetWorldB()->GetLevel()->Map;
-        CThingObject* jug = CreateThingObject(defIndex, pos, map, 0, 0, "");
+        long defIndex = GetWorld().PeekDefinitionManager().GetDefGlobalIndexFromName("OBJECT_VILLAGE_TAVERN_JUG");
+        long player = PeekPlayerManager().GetMainPlayer().GetNumber();
+        CThingObject* jug = CThingObject::Create(defIndex, pos, player, 0, 0, "");
         Jugs.push_back(CIntelligentPointerC<CThingObject>(jug));
         jug->Graphic->SetRHSet(rh);
         CTCPlacedEntity* placed;

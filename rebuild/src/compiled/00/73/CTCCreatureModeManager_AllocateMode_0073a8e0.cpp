@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0073A8E0, 200 bytes (`ret 8`: the hidden result pointer and the type).
 // Callees: the registry's UpperBound @ 0x0073D250 and LowerBound @ 0x0073D210 (const) / @ 0x0073D0E0 (CVectorMap<unsigned long,
 // CTCCreatureModeManager::CRegisteredModeInfo> on the static registry @ 0x013BAD44; two labels carry other instantiations'
-// value types), CTCBase::GetWorld() const @ 0x00686A80, CWorld::GetPRandomSeed() @ 0x0049D810, GFROR13 @ 0x00497890, the
+// value types), CTCBase::PeekWorld() const @ 0x00686A80, CWorld::GetPRandomSeed() const @ 0x0049D810, GFROR13 @ 0x00497890, the
 // registered allocator (`__fastcall`, the thing in ecx), operator new @ 0x00BFEA1A (12-byte count block), the count block's
 // deleter 0x007180B0 (as the landed CCombatAction_FallStunned::Initialise 0x008ED950).
 // Layout: CTCBase ParentThing +0x04; registry entries are 8 bytes {mode type, allocator}.
@@ -57,24 +57,27 @@ struct CModeRegistry {                                  // CVectorMap<unsigned l
 };
 extern CModeRegistry g_CreatureModeRegistry;            // 0x013BAD44
 class CWorld { public:
-    unsigned long* GetPRandomSeed();                    // 0x0049D810
+    unsigned long* GetPRandomSeed() const;              // 0x0049D810
 };
 inline long CountRegisteredModes(const CModeRegistry& registry, const unsigned long& type)
 {
     const SRegisteredMode* last = registry.UpperBound(type);
     return last - registry.LowerBound(type);
 }
-class CTCCreatureModeManager { public:
-    virtual void v00();
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+class CTCCreatureModeManager : public CTCBase { public:
     CThing* ParentThing;                                // +0x04 (CTCBase)
-    CWorld* GetWorld() const;                           // 0x00686A80 (CTCBase)
     CCountedPointer<CModeBase> AllocateMode(unsigned long modeType);
 };
 
 CCountedPointer<CModeBase> CTCCreatureModeManager::AllocateMode(unsigned long modeType)
 {
     long count = CountRegisteredModes(g_CreatureModeRegistry, modeType);
-    unsigned long* seed = GetWorld()->GetPRandomSeed();
+    unsigned long* seed = PeekWorld().GetPRandomSeed();
     unsigned long index = WorldRandomRange(*seed, count);
     CThing* thing = ParentThing;
     return CCountedPointer<CModeBase>(g_CreatureModeRegistry.LowerBound(modeType)[index].Allocate(thing));

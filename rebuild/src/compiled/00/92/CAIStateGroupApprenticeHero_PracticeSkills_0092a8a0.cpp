@@ -30,7 +30,7 @@ class CCombatManager { public:
     void CreatureUnsheathWeapon(CThingCreatureBase* creature, long mode);   // 0x006EBDD0
 };
 class CThingCreatureBase { public:
-    CCombatManager* GetCombatManager();         // 0x00661ED0
+    CCombatManager& GetCombatManager();         // 0x00661ED0
 };
 class CCreatureActionBase { public:                    // retail sizeof 0xa8
     virtual void v00();

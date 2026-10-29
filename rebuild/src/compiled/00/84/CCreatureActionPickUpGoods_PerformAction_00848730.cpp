@@ -131,11 +131,12 @@ class CThing { public:
     }
 };
 class CThingObject : public CThing { public: };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
-    CThing* GetPItem() const;                         // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 class CTCCarrying { public:
     void PutThingInCarrySlot(CThingObject* thing, long slot, bool immediately);   // 0x006A1F80
@@ -167,15 +168,15 @@ class CCreatureAction_PickUpGoods : public CCreatureActionBase { public:
 
 void CCreatureAction_PickUpGoods::PerformAction()
 {
-    CThing* goods = PGoods.GetPItem();
+    CThing* goods = ((CThing*)PGoods.GetPItem());
     if (goods && !(goods->m_flags91 & 1)) {
         CTCCarrying* carrying;
-        PCreature.GetPItem()->GetInterface(&carrying, 0x46);
+        ((CThing*)PCreature.GetPItem())->GetInterface(&carrying, 0x46);
         CDefPointer<CCarryableDef> carryDef;
         goods->m_pDef->GetSubDef(&carryDef);
         carrying->PutThingInCarrySlot((CThingObject*)goods, carryDef->CarrySlot, true);
         CTCCreatureModeManager* modes;
-        PCreature.GetPItem()->GetInterface(&modes, 0x31);
+        ((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31);
         modes->AddMode(CCountedPointer<CModeBase>(new CModeCarryingGoodsStand(PCreature)));
     }
 }

@@ -137,7 +137,7 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CSpecialEffectsDef** out)
 }
 #pragma auto_inline(on)
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
     bool GetDefShot(long index, CThingShotDef** out);  // 0x0078B230
     __forceinline bool GetDef(long index, CThingShotDef** out) { return GetDefShot(index, out); }
 };

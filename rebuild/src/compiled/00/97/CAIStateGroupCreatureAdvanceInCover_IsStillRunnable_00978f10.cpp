@@ -1,6 +1,6 @@
-// CAIStateGroup_CreatureAdvanceInCover::IsStillRunnable() -- the target lives, is not incapacitated and holds a projectile weapon
+// CAIStateGroup_CreatureAdvanceInCover::IsStillRunnable() -- the target lives, is not in melee and holds a projectile weapon
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00978f10, length 187 bytes (+ int3 padding).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PTargetThing +0x14, IS_THING_ALIVE inlined), CThingCreatureBase::IsIncapacitated @ 0x00661E80,
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PTargetThing +0x14, IS_THING_ALIVE inlined), CThingCreatureBase::IsInMelee @ 0x00661E80 (Ego_r.pdb),
 // CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x004365B0 (twice: carrying 0x46 on the target, weapon 0x48 on the
 // primary-slot thing), CTCCarrying::GetThingInPrimarySlot @ 0x006A1440, CTCWeapon::IsProjectileWeapon @ 0x005DAA40.
 // Shape: one && chain with the shared `xor al,al` false exit; both lookups are the out-parameter GetInterface form
@@ -104,7 +104,7 @@ class CTCWeapon                                    // interface type 0x48 (word 
 
 class CThingCreatureBase : public CThing
 { public:
-    bool IsIncapacitated();                         // 0x00661E80 (flags byte +0x15c: bit 2, else bit 3; manifest "CText::GetAlignment" is propagated)
+    bool IsInMelee() const;                         // 0x00661E80 (flags byte +0x15c: bit 2, else bit 3; manifest "CText::GetAlignment" is propagated)
 };
 
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
@@ -132,7 +132,7 @@ struct CAIStateGroup_CreatureAdvanceInCover
 bool CAIStateGroup_CreatureAdvanceInCover::IsStillRunnable()
 {
     if (IS_THING_ALIVE(PTargetThing)
-        && !((CThingCreatureBase*)PTargetThing.GetPItem())->IsIncapacitated())
+        && !((CThingCreatureBase*)PTargetThing.GetPItem())->IsInMelee())
     {
         CTCCarrying* carrying;
         if (((CThing*)PTargetThing.GetPItem())->GetInterface(0x46, &carrying))

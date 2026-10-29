@@ -137,23 +137,24 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
-    operator CThing*() const { return GetPItem(); }
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -204,14 +205,14 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
 {
     CCombatActionBase::FinishAction();
     CIntelligentPointer item;
-    item.SetPItem(PItemRemoved.GetPItem());
+    item.SetPItem(((CThing*)PItemRemoved.GetPItem()));
     if (IS_THING_ALIVE(item)) {
         CTCCarrying* carrying;
-        PCreature.GetPItem()->GetInterface(&carrying, 0x46);
+        ((CThing*)PCreature.GetPItem())->GetInterface(&carrying, 0x46);
         if (!carrying->IsPrimarySlotEmpty()) {
             CThing* thing = carrying->GetThingInPrimarySlot();
             if (thing->HasTC(0x48))
-                DropWeapon(thing, carrying, PCreature.GetPItem());
+                DropWeapon(thing, carrying, ((CThing*)PCreature.GetPItem()));
             else
                 carrying->RemoveThing(thing);
             CTCShowableItem* showable;
@@ -222,25 +223,25 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
             if (!carrying->IsPrimarySlotEmpty())
                 carrying->RemoveThingFromPrimarySlot(false);
         }
-        if (carrying->IsCarryingThing(item.GetPItem()))
-            carrying->RemoveThing(item.GetPItem());
+        if (carrying->IsCarryingThing(((CThing*)item.GetPItem())))
+            carrying->RemoveThing(((CThing*)item.GetPItem()));
         CDefPointer<CCarryableDef> carryDef;
-        item.GetPItem()->GetDef()->GetSubDef(&carryDef);
+        ((CThing*)item.GetPItem())->GetDef()->GetSubDef(&carryDef);
         carrying->PutThingInCarrySlot(item, carryDef->CarrySlot, true);
         CTCInventoryWeapons* weapons;
-        if (PCreature.GetPItem()->GetInterface(&weapons, 0x13))
+        if (((CThing*)PCreature.GetPItem())->GetInterface(&weapons, 0x13))
             weapons->RefreshSheathedWeapons();
         CTCCombat* combat;
-        if (PCreature.GetPItem()->GetInterface(&combat, 0x30))
+        if (((CThing*)PCreature.GetPItem())->GetInterface(&combat, 0x30))
             combat->SetMeleeFlourishValid(false);
         CTCCreatureModeManager* modes;
-        PCreature.GetPItem()->GetInterface(&modes, 0x31);
+        ((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31);
         modes->UpdateFrontMode();
-        if (PCreature.GetPItem()->GetPlayer().IsMainPlayer())
-            PCreature.GetPItem()->GetPlayer().SetAggressiveMode(true);
+        if (((CThing*)PCreature.GetPItem())->GetPlayer().IsMainPlayer())
+            ((CThing*)PCreature.GetPItem())->GetPlayer().SetAggressiveMode(true);
     }
     CTCEnflame* enflame;
-    if (PCreature.GetPItem()->GetInterface(&enflame, 0x95)) {
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&enflame, 0x95)) {
         if (!enflame->Active)
             enflame->ResetState();
     }

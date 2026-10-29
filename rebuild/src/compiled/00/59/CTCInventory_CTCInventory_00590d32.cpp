@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00590D32, 471 bytes, `ret 4` (frame pointer, `leave`).
 // Leaf: ??0CTCInventory
 // Callees: NInventory::CTCInventoryBase::CTCInventoryBase(CThing*) @ 0x005BFF07, NHeroInformationScreens::CBase::CBase @ 0x0066E734,
-// list<CEditBox*>(const allocator&) @ 0x005931DA, map<long, CComponent*>() @ 0x00593ED0 (x2), CTCBase 0x00686D50 -> 0x00449960 ->
+// list<CEditBox*>(const allocator&) @ 0x005931DA, map<long, CComponent*>() @ 0x00593ED0 (x2), CTCBase::PeekPlayerManager 0x00686D50 -> CPlayerManager::GetMainPlayer() const 0x00449960 ->
 // +0x0C -> the quick-access (0x00445950) / context-sensitive (0x00445960) slot counts, vector<unsigned>::resize(n, const T&)
 // @ 0x004428F0 (x4), the handle vectors' 0x00443F90 (x2), 0x004433F0 and 0x00594DF4 (one-argument sizing calls).
 // Layout: as the landed destructor 0x00589C55 (Ego_r.pdb CTCInventory at retail offsets); vtables 0x01250DE4 / 0x01250DD0.
@@ -18,9 +18,15 @@
 
 class CThing;
 namespace NUISystem { class CComponent; }
+class CPlayerManager;
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50 (Ego_r.pdb CTCBase, protected)
+};
 
 namespace NInventory {
-class CTCInventoryBase {                                      // vtable 0x01253DBC, retail sizeof 0x130
+class CTCInventoryBase : public ::CTCBase {                                      // vtable 0x01253DBC, retail sizeof 0x130
 public:
     CTCInventoryBase(CThing* owner);                          // 0x005BFF07
     virtual ~CTCInventoryBase();                              // 0x005C00A0
@@ -80,7 +86,7 @@ class CPlayer { public:
     CGameProfile* PProfile;                                   // +0x0C
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                                 // 0x00449960
+    const CPlayer& GetMainPlayer() const;                           // 0x00449960 (Ego_r.pdb)
 };
 
 class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {   // vtables 0x01250DE4 / 0x01250DD0
@@ -115,7 +121,6 @@ public:
     NUISystem::CComponent*   PTop_Level_List;                 // +0x218
     long                     CurrentOpenMenu;                 // +0x21c
     float                    AccumFadeTime;                   // +0x220
-    CPlayerManager* GetPlayerManager() const;                 // 0x00686D50 (CTCBase)
     CTCInventory(CThing* owner);
     virtual ~CTCInventory();
 };
@@ -132,11 +137,11 @@ CTCInventory::CTCInventory(CThing* owner)
       ContextSensitiveUpdate(false),
       AccumFadeTime(0.0f)
 {
-    unsigned long quickAccessSlots = GetPlayerManager()->GetMainPlayer()->PProfile->GetNumQuickAccessSlots();
+    unsigned long quickAccessSlots = PeekPlayerManager().GetMainPlayer().PProfile->GetNumQuickAccessSlots();
     QuickAccessItems.resize(quickAccessSlots, 0);
     QuickAccessUnusableIconPrimitiveHandles.reserve(quickAccessSlots);
     QuickAccessPrimitiveHandles.reserve(quickAccessSlots * 2);
-    unsigned long contextSensitiveSlots = GetPlayerManager()->GetMainPlayer()->PProfile->GetNumContextSensitiveSlots();
+    unsigned long contextSensitiveSlots = PeekPlayerManager().GetMainPlayer().PProfile->GetNumContextSensitiveSlots();
     ContextSensitiveItems.reserve(contextSensitiveSlots);
     ContextSensitiveFadeTimes.reserve(contextSensitiveSlots);
     NumberOfCSOpinionExpressions.resize(6, 0);

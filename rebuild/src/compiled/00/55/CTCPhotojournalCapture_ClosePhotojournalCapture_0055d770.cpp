@@ -56,7 +56,7 @@ class CGameEvent : public CMemoryBuffer { public:
     CGameEvent(long type) : Type(type), Player(-1), EndPos(0), Valid(true), Replacement(false) { }
 };
 class CPlayerManager { public:
-    long GetMainPlayerNumber();                 // 0x00449700
+    long GetMainPlayerNumber() const;                 // 0x00449700
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];

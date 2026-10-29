@@ -98,7 +98,8 @@ public:
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
-    CPlayerManager* GetPlayerManager();         // 0x00686D40 (catalog "CViewBase::GetDisplayEngine")
+protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
 };
 class CTCBoss : public CTCBase {                // vtable 0x0126D494
 public:

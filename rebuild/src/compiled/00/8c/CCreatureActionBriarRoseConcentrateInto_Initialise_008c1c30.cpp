@@ -131,18 +131,19 @@ struct CModeBriarRoseConcentrate : CModeBase {
 class CTCCreatureModeManager { public:                       // interface 0x31
     bool AddMode(CCountedModePointer mode);           // 0x0073ACC0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
-    CThing* GetCreature() const { return GetPItem(); }
+    CThing* GetCreature() const { return ((CThing*)GetPItem()); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -154,7 +155,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad10[0x114 - 0x10];
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThing* GetCreature() const { return ((CThing*)PCreature.GetPItem()); }
 };
 #pragma pack(push, 1)
 class CCreatureAction_BriarRoseConcentrateInto : public CCombatActionBase { public:

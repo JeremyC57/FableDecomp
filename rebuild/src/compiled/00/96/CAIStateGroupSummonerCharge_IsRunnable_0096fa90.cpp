@@ -78,7 +78,7 @@ inline bool IS_THING_ALIVE(const CThing* thing)
 }
 class CCombatManager;
 class CThingCreatureBase : public CThing { public:
-    CCombatManager* GetCombatManager();         // 0x00661ED0
+    CCombatManager& GetCombatManager();         // 0x00661ED0
 };
 class CCombatManager { public:
     bool IsCreatureFightingThing(const CThingCreatureBase& creature, const CThing* thing) const;   // 0x006E9310
@@ -104,9 +104,10 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {
-    CIntelligentPointerThing(CThing* thing);    // 0x004A96F0
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other);   // 0x004A9760
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:
+    CIntelligentPointer(CThing* thing);    // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
 class CSummonerDef { public:
     unsigned char _pad[0x3c];
@@ -132,7 +133,7 @@ class CAIStateGroupBase { public:
     CWorld* GetPWorld();                        // 0x008FCFC0
 };
 struct CAIStateGroup_SummonerCharge : CAIStateGroupBase {
-    CIntelligentPointerThing PTarget;           // +0x14
+    CIntelligentPointer<CThing> PTarget;           // +0x14
     const CSummonerDef* PDef;                   // +0x1c CDefPointer<const CSummonerDef>
     long NextFrameToCharge;                     // +0x20
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
@@ -166,7 +167,7 @@ bool CAIStateGroup_SummonerCharge::IsRunnable()
                         return true;
                     }
                     if (enemy->ThingTypeFlags & 8) {
-                        CCombatManager* combat = GetCreature()->GetCombatManager();
+                        CCombatManager* combat = &GetCreature()->GetCombatManager();
                         if (combat->IsCreatureFightingThing(*GetCreature(), enemy) && combat->CheckSummonerChargeable(enemy)) {
                             PTarget = enemy;
                             return true;

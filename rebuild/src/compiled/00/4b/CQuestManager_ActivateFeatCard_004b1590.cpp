@@ -9,7 +9,7 @@
 // 0x004AF300 (landed), CIntelligentPointer<CThing>::CIntelligentPointer(CThing*) 0x004A96F0,
 // list<CIntelligentPointer<CThing>>::push_back 0x004BA4E0, ~CBaseIntelligentPointer 0x00A01C10, CThing::SetInLimbo
 // 0x004C8CF0, CThing::SetAsGameStatePersisted 0x004C7880, list<CQuestManager::CQuestCard>::remove_if<
-// CIsQuestCardWithFeatIndex> 0x004B91A0, CPlayerGui::Refresh(long) 0x004378C0 on g_pPlayerGui 0x013B8790.
+// CIsQuestCardWithFeatIndex> 0x004B91A0, CPlayerGui::UpdateMiniMapMarkers(bool) 0x004378C0 on g_pPlayerGui 0x013B8790.
 // Layout (retail, 4-byte STLport lists): AvailableQuestCardTypes +0x58, ActiveQuestCards +0x5c, Objectives +0x74,
 // QuestCardsNeedUpdating +0x8f (PDB +0x7c/+0x88/+0xc8/+0xeb); CThing Dead +0x91 bit 0; CTCQuestCard FeatIndex +0x14.
 // Shape: the TC lookup is the checked HasTC + GetTC pair whose key copy VC7.1 homes in the dead `card` argument slot;
@@ -94,7 +94,7 @@ struct CObjectiveList {                                  // STLport list<CQuestM
 };
 
 class CPlayerGui { public:
-    void Refresh(long flag);                             // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);                // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 
@@ -125,7 +125,7 @@ bool CQuestManager::ActivateFeatCard(CThing* card)
                 card->SetAsGameStatePersisted(true);
                 AvailableQuestCardTypes.remove_if(CIsQuestCardWithFeatIndex(tc->GetFeatIndex()));
                 QuestCardsNeedUpdating = true;
-                g_pPlayerGui->Refresh(0);
+                g_pPlayerGui->UpdateMiniMapMarkers(false);
                 return true;
             }
         }

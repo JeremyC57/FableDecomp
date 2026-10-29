@@ -1,4 +1,4 @@
-// CTCInventoryBase::GetRightStickPosition(C2DVector&) const -- stores the right analogue stick vector of the main player's pad when a stick event is queued, else (0, 0)
+// NInventory::CTCInventoryBase::GetRightStickPosition(C2DVector&) -- stores the right analogue stick vector of the main player's pad when a stick event is queued, else (0, 0)
 // Leaf: GetRightStickPosition
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BC5C6, 114 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 4`: a void member with an out reference (no
@@ -42,20 +42,23 @@ class CPlayerManager { public:
     CPlayer& GetMainPlayer();                        // 0x00449970
 };
 
+class CTCBase { protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
+};
+
 namespace NInventory {
 
-class CTCInventoryBase { public:
+class CTCInventoryBase : public ::CTCBase { public:
     void* __vftable;                                 // +0x00
     void* ParentThing;                               // +0x04 CTCBase
 
-    CPlayerManager* GetPlayerManager() const;        // 0x00686D40 (CTCBase)
-    void GetRightStickPosition(C2DVector& out) const;
+    void GetRightStickPosition(C2DVector& out);      // Ego_r.pdb / FableWin.pdb: non-const
 };
 
-void CTCInventoryBase::GetRightStickPosition(C2DVector& out) const
+void CTCInventoryBase::GetRightStickPosition(C2DVector& out)
 {
     CInputEvent event;
-    if (g_pInputManager->IsJoystickEventInQueue(0x12, 0, &event, GetPlayerManager()->GetMainPlayer().GetPlayerNumber()))
+    if (g_pInputManager->IsJoystickEventInQueue(0x12, 0, &event, GetPlayerManager().GetMainPlayer().GetPlayerNumber()))
         out = event.GetAnalogueVector();
     else {
         out.x = 0.0f;

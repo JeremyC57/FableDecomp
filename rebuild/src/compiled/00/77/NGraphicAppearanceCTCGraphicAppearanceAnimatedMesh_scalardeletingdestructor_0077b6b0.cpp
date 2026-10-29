@@ -1,6 +1,6 @@
 // NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh::`scalar deleting destructor'(unsigned int flags) -- unregister from the owner's graphic appearance unless the owner is dead, then the base destructors and the optional delete
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x0077B6B0, length 80 bytes. Callees: CTCGraphicAppearance::UnregisterComponent
-// @ 0x004C0000 (this chunk), CTCBase::~CTCBase @ 0x00686830 (manifest "~CChunkedFileChunk", propagated), operator delete
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0077B6B0, length 80 bytes. Callees: NGraphicAppearance::CTCGraphicAppearance::
+// UnregisterComponent(CAGraphicAppearanceComponent&) @ 0x004C0000, CTCBase::~CTCBase @ 0x00686830 (manifest "~CChunkedFileChunk", propagated), operator delete
 // @ 0x00BFE9BC.
 // Label correction: the manifest files this under CTCGraphicAppearanceStaticMesh; it is slot 0 of vtable 0x0126ACDC,
 // which rtti-vtables.tsv names NGraphicAppearance::CTCGraphicAppearanceAnimatedMesh (and the body stores 0x0126ACDC /
@@ -21,15 +21,15 @@ namespace NGraphicAppearance {
 class CAGraphicAppearanceComponent;
 class CPrimitive;
 
-}
-
-struct CTCGraphicAppearance {
-    void UnregisterComponent(NGraphicAppearance::CAGraphicAppearanceComponent* component);   // 0x004C0000
+class CTCGraphicAppearance { public:
+    void UnregisterComponent(CAGraphicAppearanceComponent& component);   // 0x004C0000
 };
+
+}
 
 class CThing { public:
     unsigned char         _pad_0x00[0x64];
-    CTCGraphicAppearance* PTCGraphicAppearance;         // +0x64 (retail)
+    NGraphicAppearance::CTCGraphicAppearance* PTCGraphicAppearance;   // +0x64 (retail)
     unsigned char         _pad_0x68[0x29];
     unsigned char         Dead : 1;                     // +0x91 bit 0 (retail)
 };
@@ -57,7 +57,7 @@ class CTCGraphicAppearanceAnimatedMesh : public CTCBase, public CAGraphicAppeara
     __forceinline virtual ~CTCGraphicAppearanceAnimatedMesh()
     {
         if (!ParentThing->Dead)
-            ParentThing->PTCGraphicAppearance->UnregisterComponent(this);
+            ParentThing->PTCGraphicAppearance->UnregisterComponent(*this);
     }
 };
 

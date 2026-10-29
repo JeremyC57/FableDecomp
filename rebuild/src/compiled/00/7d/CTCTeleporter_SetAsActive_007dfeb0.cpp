@@ -7,7 +7,7 @@
 //        so it becomes a tail jump that reuses the dead argument slot for its 0 argument
 //        (`mov [esp+4],0 ; jmp`).
 class CPlayerGui { public:
-    void Refresh(long flag);            // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag); // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;        // 0x013B8790
 
@@ -24,6 +24,6 @@ void CTCTeleporter::SetAsActive(bool active)
         m_teleportActive = active;
         if (active)
             m_teleportActivated = true;
-        g_pPlayerGui->Refresh(0);
+        g_pPlayerGui->UpdateMiniMapMarkers(false);
     }
 }

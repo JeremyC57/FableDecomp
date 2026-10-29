@@ -12,7 +12,7 @@
 // test ah,41h ; jp` on the false edge is `random <= chance`; `mov eax,1` / `xor eax,eax` is a full
 // register (long) result.
 class CWorld { public:
-    unsigned long* GetPRandomSeed();                        // 0x0049D810
+    unsigned long* GetPRandomSeed() const;                  // 0x0049D810 (bound const, 00662040)
 };
 
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
@@ -22,19 +22,21 @@ class CSpecialAbilitiesBerserkDef { public:
     float*        DecapitateChances;                        // +0x138 (per spell level)
 };
 
-struct CTCBerserk_Retail {
+class CTCBase { protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+struct CTCBerserk_Retail : public CTCBase {
     unsigned char                _pad00[0x44];
     long                         SpellLevel;                // +0x44
     unsigned char                _pad48[0x68 - 0x48];
     CSpecialAbilitiesBerserkDef* PDef;                      // +0x68 (PDB +0x6c)
-    CWorld* GetWorld();                                     // 0x00686A80 (a CTCBase member that ignores this)
     long ShouldAttackDecapitate();
 };
 
 long CTCBerserk_Retail::ShouldAttackDecapitate()
 {
     float* chance = &PDef->DecapitateChances[SpellLevel];
-    if (GFFloatRandom(1.0f, GetWorld()->GetPRandomSeed()) <= *chance)
+    if (GFFloatRandom(1.0f, PeekWorld().GetPRandomSeed()) <= *chance)
         return 1;
     return 0;
 }

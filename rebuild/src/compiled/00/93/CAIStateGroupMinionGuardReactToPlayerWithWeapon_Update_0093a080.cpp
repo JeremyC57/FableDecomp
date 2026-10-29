@@ -32,12 +32,13 @@ class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingAICreature : public CThingCreatureBase { public: };
 class CThingPlayerCreature : public CThingCreatureBase { public: };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
@@ -49,7 +50,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {    // the MoveToThin
     virtual void v00();
     CIntelligentPointerThing(const CBaseIntelligentPointer& other);   // 0x00930D20
 };
-__forceinline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
+__forceinline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(((CThing*)thing.GetPItem())->m_flags91 & 1); }
 class CMessageEventManager { public:
     void AddMessage(long type, unsigned long lifetime, const C3DVector* pos, CThing* from, CThing* to,
                     float range, float radius, long data);   // 0x00687540

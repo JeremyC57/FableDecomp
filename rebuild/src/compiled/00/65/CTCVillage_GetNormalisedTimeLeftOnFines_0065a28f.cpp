@@ -5,7 +5,7 @@
 // Callees: the CTCBase global-manager getters 0x00686D30 (+0x28 of 0x013B8A1C, the world map), 0x00686D60 (+0x1C, the
 //   definition manager) and 0x00686A70 (+0x24, the world) -- all propagated "CViewBase::GetDisplayEngine"; CThing::
 //   GetPos 0x004C73D0; the world map's slot 16 (+0x40, the map index at a position); GetRegionNumberMapIsIn
-//   0x004FC190 and the region-by-number getter 0x004FB490 (propagated "CTCInventoryBase::GetCategoryWithIndex");
+//   0x004FC190 and CWorldMap::GetRegion 0x004FB490 (propagated "CTCInventoryBase::GetCategoryWithIndex");
 //   CWorld::GetCurrentPlayer 0x0049D9D0; CPlayer::GetPControlledCreature 0x00487DC0; std::bitset<>::test 0x00410DE0;
 //   CVectorMap LowerBound 0x0040F020; CTCHeroOpinionDeedLog::GetDeedFromHandle 0x006C58F0 / GetDeedEffectsDef
 //   0x006C5630; STLport tree Successor 0x004292C0; the current-frame function 0x0049D870; g_framesPerSecond 0x01375550.
@@ -137,8 +137,8 @@ class CWorldMap { public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual long GetMapAtPos(const C3DVector& pos);     // slot 16 (+0x40)
-    long GetRegionNumberMapIsIn(long map);              // 0x004FC190
-    CRegion* GetRegionWithIndex(long region);           // 0x004FB490
+    long GetRegionNumberMapIsIn(long map) const;        // 0x004FC190
+    CRegion& GetRegion(long region);                    // 0x004FB490
 };
 
 struct SNode {
@@ -150,22 +150,24 @@ struct SNode {
 };
 SNode* __cdecl Successor(SNode* node);          // 0x004292C0
 
-class CTCVillage { public:
+class CTCBase { protected:
+    CWorldMap& GetWorldMap();   // 0x00686D30 (Ego_r.pdb CTCBase, protected)
+    CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
+};
+class CTCVillage : public CTCBase { public:
     void*         __vftable;                    // +0x00
     CThing*       Owner;                        // +0x04
     unsigned char _pad_0x08[0x5c];
     SNode*        PlayersCrimes;                // +0x64 set<long> header node
     unsigned char _pad_0x68[0x18];
     long          FramePlayerLastSeenByGuard;   // +0x80
-    CWorldMap*          GetWorldMap();          // 0x00686D30
     CDefinitionManager* GetDefinitionManager(); // 0x00686D60
-    CWorld*             GetWorld();             // 0x00686A70
     float GetNormalisedTimeLeftOnFines();
 };
 
 float CTCVillage::GetNormalisedTimeLeftOnFines()
 {
-    CRegion* region = GetWorldMap()->GetRegionWithIndex(GetWorldMap()->GetRegionNumberMapIsIn(GetWorldMap()->GetMapAtPos(Owner->GetPos())));
+    CRegion* region = &GetWorldMap().GetRegion(GetWorldMap().GetRegionNumberMapIsIn(GetWorldMap().GetMapAtPos(Owner->GetPos())));
     CDefPointer<CRegionDef> def = region->PDef;
     if (def.Object && def->HasFines) {
         long longest = 0;
@@ -181,7 +183,7 @@ float CTCVillage::GetNormalisedTimeLeftOnFines()
                 if (deed) {
                     CDefPointer<COpinionDeedEffectsDef> effects = log->GetDeedEffectsDef(deed->DeedType);
                     long knowledge = effects->KnowledgeLifeInSeconds * GetDefinitionManager()->FramesPerSecond();
-                    long left = knowledge - GetWorld()->GetFramesSince(FramePlayerLastSeenByGuard);
+                    long left = knowledge - GetWorld().GetFramesSince(FramePlayerLastSeenByGuard);
                     if (left >= longest) {
                         life = knowledge;
                         longest = left;

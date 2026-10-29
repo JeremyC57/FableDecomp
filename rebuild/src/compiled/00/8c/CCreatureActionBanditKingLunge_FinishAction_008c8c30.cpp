@@ -106,20 +106,19 @@ class CTCDPhysicalObstruction { public:                        // interface 0xED
     void SetThingToIgnoreObstruction(CThing* thing);    // 0x007898A3
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CThing* m_pItem;                                    // +0x04
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
-struct CCreaturePointer {                               // CIntelligentPointer<CThingCreatureBase>
-    void*               __vftable;
-    CThingCreatureBase* m_pItem;
-    CThingCreatureBase* GetPItem() const;               // 0x00A01B50
+struct CCreaturePointer : CBaseIntelligentPointer {                               // CIntelligentPointer<CThingCreatureBase>
+    CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }   // inline over 0x00A01B50
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -192,7 +191,7 @@ void CCreatureAction_BanditKingLunge::FinishAction()
             obstruction->GetInterface(&physicalObstruction, 0xed);
             physicalObstruction->SetThingToIgnoreObstruction(PCreature.GetPItem());
         }
-        CThing* target = PTarget.GetPItem();
+        CThing* target = ((CThing*)PTarget.GetPItem());
         CThingCreatureBase* owner = PCreature.GetPItem();
         CThingCreatureBase* self = PCreature.GetPItem();
         bool refused = !self->SetCurrentAction(CCreatureAction_BanditKingStuck(owner, target, stuckLoops, obstruction, 0));

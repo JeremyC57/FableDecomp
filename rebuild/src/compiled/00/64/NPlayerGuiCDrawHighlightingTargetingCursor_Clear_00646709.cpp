@@ -29,18 +29,19 @@ public:
     CBaseObject* GetPItem() const;   // 0x00A01B50
 };
 
-struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
-    CIntelligentPointer_CThing(CThing* thing);     // 0x004A96F0
-    CIntelligentPointer_CThing& operator=(const CIntelligentPointer_CThing& other);   // 0x004A9760
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:
+    CIntelligentPointer(CThing* thing);     // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
 
-bool __fastcall IS_THING_ALIVE(CIntelligentPointer_CThing* pointer);   // 0x004CC340
+bool __fastcall IS_THING_ALIVE(CIntelligentPointer<CThing>* pointer);   // 0x004CC340
 
 namespace NPlayerGui {
 
 class CDrawHighlightingTargetingCursor { public:
     unsigned char              _pad[0x28];
-    CIntelligentPointer_CThing PTargetedThing;     // +0x28
+    CIntelligentPointer<CThing> PTargetedThing;     // +0x28
     unsigned char              _pad30[0x14];       // +0x30 CurrentColour, widths, fade step, width
     long                       CursorType;         // +0x44
     void Clear();

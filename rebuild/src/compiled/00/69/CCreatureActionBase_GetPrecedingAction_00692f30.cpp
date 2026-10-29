@@ -53,7 +53,7 @@ struct CBaseIntelligentPointer {
  void* PData;
  CBaseIntelligentPointer(); //0x00A01B10
  void SetPItem(CThing*); //0x00A01B90
- CThing* GetPItem() const; //0x00A01B50
+ CBaseObject* GetPItem() const; //0x00A01B50
 };
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
  CIntelligentPointer_CThing() {}
@@ -204,7 +204,7 @@ void CCreatureActionBase::GetPrecedingAction(CCreatureActionBase*& result) const
   {
    CThing* heldThing=carrying->GetThingInPrimarySlot();
    CIntelligentPointer_CThing held(heldThing);
-   PItemRemoved.SetPItem(held.GetPItem());
+   PItemRemoved.SetPItem(((CThing*)held.GetPItem()));
   }
   void* storage=::operator new(sizeof(CCreatureAction_SheatheItemToInventory));
   CCreatureAction_SheatheItemToInventory* next;

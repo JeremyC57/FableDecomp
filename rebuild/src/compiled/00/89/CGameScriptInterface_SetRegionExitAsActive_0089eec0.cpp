@@ -50,10 +50,10 @@ struct CRegionExit_Retail {
     unsigned char _pad[0xc];
     bool m_active;                                 // +0x0c
 };
-struct CPlayerGui_Retail {
-    void Refresh(long flag);                       // 0x004378C0
+class CPlayerGui { public:
+    void UpdateMiniMapMarkers(bool flag);          // 0x004378C0
 };
-extern CPlayerGui_Retail* g_pPlayerGui_013b8790;   // 0x013B8790
+extern CPlayerGui* g_pPlayerGui;                   // 0x013B8790
 class CScriptThing { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010();
@@ -94,7 +94,7 @@ void CGameScriptInterface::SetRegionExitAsActive(const CScriptThing& thing, bool
         CThing_Retail* t = thing.GetThing();
         if (t->HasTC(100)) {
             ((CRegionExit_Retail*)t->m_pRegionLink)->m_active = active;
-            g_pPlayerGui_013b8790->Refresh(0);
+            g_pPlayerGui->UpdateMiniMapMarkers(false);
         }
     }
 }

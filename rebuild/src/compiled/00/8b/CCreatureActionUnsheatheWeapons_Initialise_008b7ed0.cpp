@@ -61,11 +61,12 @@ class CTCCombat { public:
     EUnsheatheWeaponType m_unsheatheWeaponType; // +0x6c
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 
 class CCombatActionBase { public:
@@ -92,7 +93,7 @@ void CCreatureAction_UnsheatheWeapons::Initialise()
         SetCombatAnimation(name);
     }
     CTCCombat* combat;
-    if (PCreature.GetPItem()->GetInterface(&combat, 0x30))
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&combat, 0x30))
         combat->m_unsheatheWeaponType = WeaponType;
     CCombatActionBase::Initialise();
 }

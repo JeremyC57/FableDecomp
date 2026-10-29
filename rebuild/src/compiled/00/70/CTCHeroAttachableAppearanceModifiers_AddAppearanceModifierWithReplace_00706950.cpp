@@ -3,13 +3,13 @@
 // leg areas; stamps the frame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00706950, 444 bytes (+ int3 padding), `ret 4`.
 // Leaf: AddAppearanceModifierWithReplace
-// Callees: as the landed twin AddAppearanceModifier (0x00706880) -- GetDefinitions 0x006869D0, GetDef<CThingObjectDef> 0x0042B040,
-// GetSubDef<CAppearanceModifierDef> 0x0057FF92, _M_insert_overflow 0x00708E40, GetWorld() const 0x00686A80, CWorld::GetFrame
+// Callees: as the landed twin AddAppearanceModifier (0x00706880) -- CTCBase::GetDefinitionManager 0x006869D0, GetDef<CThingObjectDef> 0x0042B040,
+// GetSubDef<CAppearanceModifierDef> 0x0057FF92, _M_insert_overflow 0x00708E40, PeekWorld() 0x00686A80, CWorld::GetFrame
 // 0x0049D870 -- plus RemoveAppearanceModifiersCoveringBodyArea 0x007066A0, GetWorld() 0x00686A70 and
 // CMessageEventManager::AddMessage 0x00687540; g_FramesPerSecond 0x01375550.
 // Shape: the twin's body (same-TU stand-ins, by-hand releases); each message is its own block with a named zero position and a
-// named `CWorld* world = GetWorld();` so the zero stores and the GetWorld call precede the argument pushes and the manager is
-// read `mov ecx,[eax+60h]` just before the call (an inline `GetWorld()->MessageEventManager->AddMessage(...)` pushes first).
+// named `CWorld* world = &GetWorld();` so the zero stores and the GetWorld call precede the argument pushes and the manager is
+// read `mov ecx,[eax+60h]` just before the call (an inline `GetWorld().MessageEventManager->AddMessage(...)` pushes first).
 // Layout: local model like the twin -- engine/CTCHeroAttachableAppearanceModifiers.h carries the 16-byte PDB containers;
 // retail CAppearanceModifierDef body-area bits +0x40, type +0x50.
 #include <new>
@@ -52,7 +52,7 @@ class CDefinitionManager {
 public:
     template<class T> bool GetDef(long index, CDefOutPointer<const T>* out) const;   // 0x0042B040 for CThingObjectDef
 };
-class CDefinitionHolder : public CDefinitionManager { };
+class CGameDefinitionManager : public CDefinitionManager { };
 
 class C3DVector { public:
     float X, Y, Z;
@@ -95,9 +95,15 @@ template <class T> struct CRetailVector {           // STLport vector (12 bytes)
 };
 
 class CThing;
-class CTCHeroAttachableAppearanceModifiers {
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb CTCBase, protected)
+    CWorld& GetWorld() const;                       // 0x00686A70 (Ego_r.pdb CTCBase, protected)
+    const CWorld& PeekWorld() const;                // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+class CTCHeroAttachableAppearanceModifiers : public CTCBase {
 public:
-    virtual void v00();
     CThing* ParentThing;                            // +0x04 (CTCBase)
     unsigned char _pad08[0x10 - 0x08];
     unsigned long FrameLastChanged;                 // +0x10
@@ -106,9 +112,6 @@ public:
     unsigned char AppearanceModifiersLoaded : 1;
     unsigned char _pad15[0x30 - 0x15];
     CRetailVector< CRetailVector<CModifierEntry> > AppearanceModifiers;   // +0x30
-    const CDefinitionHolder* GetDefinitions() const;   // 0x006869D0 (CTCBase)
-    CWorld* GetWorld() const;                       // 0x00686A80 (CTCBase)
-    CWorld* GetWorld();                             // 0x00686A70 (CTCBase)
     void RemoveAppearanceModifiersCoveringBodyArea(unsigned long bodyAreas, long type);   // 0x007066A0
     void AddAppearanceModifierWithReplace(long defIndex);
 };
@@ -157,7 +160,7 @@ void CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierWithReplace(long
 {
     CDefOutPointer<const CThingObjectDef> thingOut;
     CDefOutPointer<const CAppearanceModifierDef> appearanceOut;
-    if (GetDefinitions()->GetDef(defIndex, &thingOut) && thingOut.Object->GetSubDef(&appearanceOut)) {
+    if (GetDefinitionManager().GetDef(defIndex, &thingOut) && thingOut.Object->GetSubDef(&appearanceOut)) {
         const CAppearanceModifierDef* appearance = appearanceOut.Object;
         RemoveAppearanceModifiersCoveringBodyArea(appearance->BodyAreasCovered, appearance->Type);
         AppearanceModifiers._M_start[appearance->Type].push_back(CModifierEntry(defIndex, true));
@@ -165,22 +168,22 @@ void CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierWithReplace(long
         if (appearance->Type == 0) {
             if (appearance->BodyAreasCovered & 0x10) {
                 C3DVector position(0.0f, 0.0f, 0.0f);
-                CWorld* world = GetWorld();
+                CWorld* world = &GetWorld();
                 world->MessageEventManager->AddMessage(0x39, g_FramesPerSecond, position, 0, 0, 0, 0, defIndex);
             }
             if (appearance->BodyAreasCovered & 0x80) {
                 C3DVector position(0.0f, 0.0f, 0.0f);
-                CWorld* world = GetWorld();
+                CWorld* world = &GetWorld();
                 world->MessageEventManager->AddMessage(0x3a, g_FramesPerSecond, position, 0, 0, 0, 0, defIndex);
             }
             if (appearance->BodyAreasCovered & 0x100) {
                 C3DVector position(0.0f, 0.0f, 0.0f);
-                CWorld* world = GetWorld();
+                CWorld* world = &GetWorld();
                 world->MessageEventManager->AddMessage(0x3b, g_FramesPerSecond, position, 0, 0, 0, 0, defIndex);
             }
         }
     }
-    FrameLastChanged = ((const CTCHeroAttachableAppearanceModifiers*)this)->GetWorld()->GetFrame();
+    FrameLastChanged = PeekWorld().GetFrame();
     if (appearanceOut.Object && --appearanceOut.Object->RefCount == 0)
         appearanceOut.Object->Destroy();
     if (thingOut.Object && --thingOut.Object->RefCount == 0)

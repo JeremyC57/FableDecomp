@@ -29,22 +29,21 @@ class CCharString { public:
     ~CCharString();                                   // 0x0099EAE0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +4
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 
-struct CCreaturePointer {                       // CIntelligentPointer<CThingCreatureBase>
-    virtual void v00();
-    CThingCreatureBase* m_pItem;                // +4
-    CThingCreatureBase* GetPItem() const;       // 0x00A01B50
+struct CCreaturePointer : CBaseIntelligentPointer {                       // CIntelligentPointer<CThingCreatureBase>
+    CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }   // inline over 0x00A01B50
 };
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -78,10 +77,10 @@ class CCreatureAction_BanditKingGetHit : public CCombatAction_GenericStrikeRespo
 void CCreatureAction_BanditKingGetHit::FinishAction()
 {
     CCombatAction_GenericStrikeResponseBase::FinishAction();
-    if (IS_THING_ALIVE(PAttacker) && (PAttacker.GetPItem()->m_flags6c & 8)) {
-        CThing* attacker = PAttacker.GetPItem();
+    if (IS_THING_ALIVE(PAttacker) && (((CThing*)PAttacker.GetPItem())->m_flags6c & 8)) {
+        CThing* attacker = ((CThing*)PAttacker.GetPItem());
         CThingCreatureBase* creature = PCreature.GetPItem();
-        if (IsHitFromBehind(creature, PAttacker.GetPItem())) {
+        if (IsHitFromBehind(creature, ((CThing*)PAttacker.GetPItem()))) {
             CCharString animation("REAR_ATTACK");
             CThingCreatureBase* self = PCreature.GetPItem();
             self->SetCurrentAction(CCreatureAction_BanditKingAttack(PCreature.GetPItem(), attacker, animation, 0, 1));

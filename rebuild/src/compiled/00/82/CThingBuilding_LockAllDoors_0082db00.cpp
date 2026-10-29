@@ -74,8 +74,8 @@ class CTCSwitchableNavigation { public:                     // interface type 0x
 class CPlayer;
 class CThingCreatureBase;
 class CPlayerManager { public:
-    const CPlayer* GetMainPlayer() const;            // 0x00449960
-    CPlayer* GetMainPlayer();                        // 0x00449970
+    const CPlayer& GetMainPlayer() const;            // 0x00449960 (Ego_r.pdb)
+    CPlayer& GetMainPlayer();                        // 0x00449970 (Ego_r.pdb)
 };
 class CThingPlayerCreature;
 class CPlayer { public:
@@ -88,8 +88,10 @@ class CThing { public:
     CInterfaceMap m_interfaces;                      // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Dead : 1;                          // +0x91 bit 0
-    const CPlayerManager* GetPlayerManager() const;  // 0x004C79F0
-    CPlayerManager* GetPlayerManager();              // 0x004C7A00
+protected:                                           // Ego_r.pdb CThing protected accessors
+    const CPlayerManager& PeekPlayerManager() const; // 0x004C79F0
+    CPlayerManager& GetPlayerManager();              // 0x004C7A00
+public:
     const C3DVector& GetPos() const;            // 0x004C73D0
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
@@ -135,7 +137,7 @@ void CThingBuilding::LockAllDoors(bool lock, bool checkBlocking)
                 && door.GetPItem()->GetInterface(&tc, 0x26)) {
                 if (!tc->IsLockableByOwner())
                     continue;
-                const CThingCreatureBase* hero = static_cast<const CThingBuilding*>(this)->GetPlayerManager()->GetMainPlayer()->PeekPControlledCreature();
+                const CThingCreatureBase* hero = static_cast<const CThingBuilding*>(this)->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
                 if (hero && !hero->Dead && lock && tc->OwnerLock) {
                     const C3DVector& a = door.GetPItem()->GetPos();
                     const C3DVector& b = hero->GetPos();
@@ -150,7 +152,7 @@ void CThingBuilding::LockAllDoors(bool lock, bool checkBlocking)
                     tc->OwnerLock = 0;
                 }
                 if (!tc->IsClosed() && lock && checkBlocking) {
-                    CThingCreatureBase* player = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+                    CThingCreatureBase* player = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
                     CTCSwitchableNavigation* nav;
                     if (door.GetPItem()->GetInterface(&nav, 0x79) && nav->WouldBlockPos(player->GetPos()))
                         continue;

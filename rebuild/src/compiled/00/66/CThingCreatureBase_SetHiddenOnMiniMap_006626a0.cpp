@@ -6,10 +6,10 @@
 // engine/CThingCreatureBase.h, whose layout is wider than retail ahead of it).
 // Shape: a one-bit bool bitfield compared with the bool argument as bytes (`shr cl,7 ; cmp cl,dl`), stored with
 // `and al,7Fh ; shl dl,7 ; or al,dl`, then a void call as the last statement turns into the tail jump.
-struct CMiniMapManager {
-    void Refresh(long full);                    // 0x004378C0
+class CPlayerGui { public:
+    void UpdateMiniMapMarkers(bool full);       // 0x004378C0
 };
-extern CMiniMapManager* g_pMiniMapManager;      // 0x013B8790
+extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
 class CThingCreatureBase { public:
     unsigned char _pad00[0x15d];
@@ -22,6 +22,6 @@ void CThingCreatureBase::SetHiddenOnMiniMap(bool hidden)
 {
     if (m_hiddenOnMiniMap != hidden) {
         m_hiddenOnMiniMap = hidden;
-        g_pMiniMapManager->Refresh(0);
+        g_pPlayerGui->UpdateMiniMapMarkers(false);
     }
 }

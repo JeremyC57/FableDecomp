@@ -65,10 +65,12 @@ struct CAITurnState {
     C3DVector Position;                                     // +0x34
     CBaseIntelligentPointer Thing;                          // +0x40
 };
-class CThingAICreature : public CThing { public:
+class CThingCreatureBase : public CThing { public:
+    bool IsInMelee() const;                                 // 0x00661E80 (Ego_r.pdb)
+};
+class CThingAICreature : public CThingCreatureBase { public:
     unsigned char _pad94[0x1a0 - 0x94];
     CAITurnState* PTurnState;                               // +0x1a0
-    bool LooksAtHeadHelper() const;                         // 0x00661E80
     void UpdateAITurning(const C3DVector& movement);
 };
 
@@ -79,7 +81,7 @@ void CThingAICreature::UpdateAITurning(const C3DVector& movement)
         target = PTurnState->Position;
     } else if (PTurnState->IsFacingThing() && PTurnState->IsThingValid()) {
         if (PTurnState->GetThing()->PGraphicAppearance) {
-            if (LooksAtHeadHelper()) {
+            if (IsInMelee()) {
                 CTCGraphicAppearance* app = PTurnState->GetThing()->PGraphicAppearance;
                 target = app->GetHeadPosition();
             } else {

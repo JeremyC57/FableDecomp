@@ -41,11 +41,12 @@ class CThing { public:
     }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 
 struct CEventBase { };
@@ -77,11 +78,11 @@ public:
 
 void CCreatureAction_ShowItemToThing::PerformAction()
 {
-    if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_deleteFlags & 1)
-        && PItem.GetPItem() && !(PItem.GetPItem()->m_deleteFlags & 1)) {
+    if (PTarget.GetPItem() && !(((CThing*)PTarget.GetPItem())->m_deleteFlags & 1)
+        && PItem.GetPItem() && !(((CThing*)PItem.GetPItem())->m_deleteFlags & 1)) {
         CTCEntityEvents* events;
-        if (PTarget.GetPItem()->GetInterface(&events, 0x42)) {
-            events->AddEvent(new CEventShownItem(PCreature, PItem.GetPItem()));
+        if (((CThing*)PTarget.GetPItem())->GetInterface(&events, 0x42)) {
+            events->AddEvent(new CEventShownItem(PCreature, ((CThing*)PItem.GetPItem())));
         }
     }
 }

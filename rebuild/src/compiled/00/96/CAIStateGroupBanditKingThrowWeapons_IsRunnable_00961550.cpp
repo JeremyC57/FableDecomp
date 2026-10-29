@@ -4,7 +4,7 @@
 // Callees: CAIStateGroupBase::GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetHeroThing
 // @ 0x00487DC0, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (type 0xAD = word 5 bit 13),
 // CTCBoss::IsOnFinalPhase @ 0x007AEDE0, CTCBoss::IsReadyForPhaseChange @ 0x007AEE90, CThing::GetPos @ 0x004C73D0,
-// CIntelligentPointer<CThingCreatureBase>::CIntelligentPointer(CThingCreatureBase*) @ 0x0048BD00 and ::operator= @ 0x0048BD20
+// CIntelligentPointer<CThingPlayerCreature>::CIntelligentPointer(CThingPlayerCreature*) @ 0x0048BD00 and ::operator= @ 0x0048BD20
 // (both out of line in this TU), CBaseIntelligentPointer::~CBaseIntelligentPointer @ 0x00A01C10.
 // Shape: the boss component kept in esi (named local from the lookup); `d = dx*dx; d += dy*dy;` gives retail's X-term-first x87
 // order (a single sum puts the Y term first); the pointer is a named local (a temporary reuses the ctor's eax); `> R` gives `test ah,41h ; jne`.
@@ -45,10 +45,10 @@ class CAIBrain
 };
 
 
-struct CIntelligentPointerCreature : CBaseIntelligentPointer   // CIntelligentPointer<CThingCreatureBase>
-{
-    CIntelligentPointerCreature(CThing* item);                  // 0x0048BD00
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other);   // 0x0048BD20
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThingPlayerCreature> : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThingPlayerCreature> (Ego_r member type)
+    CIntelligentPointer(CThingPlayerCreature* item);    // 0x0048BD00
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x0048BD20
 };
 
 class CTCBase;
@@ -103,14 +103,14 @@ struct CAIStateGroup_BanditKingThrowWeapons
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
-    CIntelligentPointerCreature PTargetThing;       // +0x14
+    CIntelligentPointer<CThingPlayerCreature> PTargetThing;       // +0x14
     CPlayerManager* GetPPlayerManager();            // 0x008FCF90
     virtual bool IsRunnable();
 };
 
 bool CAIStateGroup_BanditKingThrowWeapons::IsRunnable()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThingPlayerCreature* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1))
     {
         CThingWithTCs* creature = (CThingWithTCs*)PBrain->Creature;
@@ -127,7 +127,7 @@ bool CAIStateGroup_BanditKingThrowWeapons::IsRunnable()
                 dist2 += dy * dy;
                 if (dist2 > 25.0f)
                 {
-                    CIntelligentPointerCreature target(hero);
+                    CIntelligentPointer<CThingPlayerCreature> target(hero);
                     PTargetThing = target;
                     return true;
                 }

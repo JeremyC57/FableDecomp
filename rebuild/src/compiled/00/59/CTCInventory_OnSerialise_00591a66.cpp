@@ -59,7 +59,7 @@ class CPersistContext { public:
 };
 class CDefinitionManager { public:
     CDefString GetDefNameFromGlobalIndex(long index);  // 0x009ACCC0
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 struct CTCInventoryBase_Retail {
     void OnSerialise(CPersistContext* context, bool inGameSave);   // 0x005BFD5E

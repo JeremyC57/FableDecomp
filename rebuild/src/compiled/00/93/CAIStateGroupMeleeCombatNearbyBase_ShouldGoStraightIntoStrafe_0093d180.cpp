@@ -180,7 +180,7 @@ struct CXYDelta {
 class CCombatManager;
 class CThingCreatureBase : public CThing { public:
     bool IsInCombatMode();                      // 0x006621A0
-    CCombatManager* GetCombatManager();         // 0x00661ED0
+    CCombatManager& GetCombatManager();         // 0x00661ED0
 };
 
 class CCombatManager { public:
@@ -199,7 +199,7 @@ bool CAIStateGroup_MeleeCombatNearbyBase::ShouldGoStraightIntoStrafe()
 {
     if (((CThingCreatureBase*)PBrain->PCreature)->IsInCombatMode() && IS_THING_ALIVE(PEnemy) && !IsStopping()) {
         CThingCreatureBase* self = (CThingCreatureBase*)PBrain->PCreature;
-        C3DVector preferred = self->GetCombatManager()->GetPreferredPos(self);
+        C3DVector preferred = self->GetCombatManager().GetPreferredPos(self);
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
         const C3DVector& enemyPos = GetPEnemy()->GetPos();
         const C3DVector& creaturePos = creature->GetPos();

@@ -3,7 +3,7 @@
 // Leaf: IsAngleValid
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0075C530, length 192 bytes
 // (?IsAngleValid@CTCCameraPointDefinitionBase@@ABE_NXZ).
-// Callees: CTCBase::GetWorld() const @ 0x00686A80, CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80, CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::PeekPControlledCreature
 // @ 0x00487DD0, the camera manager's (world +0x34) virtual slot 11 (+0x2C, C3DVector by hidden pointer), CThing::GetPos
 // @ 0x004C73D0, the point's own virtual GetActiveCameraPosition (slot 35, +0x8C, C3DVector by hidden pointer); 0.0f @ 0x0122DEDC.
 // Layout = Ego_r.pdb CTCCameraPointDefinitionBase: TestAngleBeforeActivation +0x0E.
@@ -46,10 +46,15 @@ inline C2DVector DeltaXY(const C3DVector& a, const C3DVector& b)
     d.Y = a.Y - b.Y;
     return d;
 }
-class CTCCameraPointDefinitionBase {
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+class CTCCameraPointDefinitionBase : public CTCBase {
 public:
 #define VF(n) virtual void v##n();
-    VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15)
+    VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09) VF(10) VF(11) VF(12) VF(13) VF(14) VF(15)
     VF(16) VF(17) VF(18) VF(19) VF(20) VF(21) VF(22) VF(23) VF(24) VF(25) VF(26) VF(27) VF(28) VF(29) VF(30) VF(31)
     VF(32) VF(33) VF(34)
     virtual C3DVector GetActiveCameraPosition() const;   // slot 35 (+0x8C)
@@ -60,16 +65,15 @@ public:
     bool    CutInto;                            // +0x0c
     bool    CutOutOf;                           // +0x0d
     bool    TestAngleBeforeActivation;          // +0x0e
-    CWorld* GetWorld() const;                   // 0x00686A80 (CTCBase)
     bool IsAngleValid() const;
 };
 
 bool CTCCameraPointDefinitionBase::IsAngleValid() const
 {
     if (TestAngleBeforeActivation) {
-        const CThing* hero = GetWorld()->GetCurrentPlayer()->PeekPControlledCreature();
+        const CThing* hero = PeekWorld().GetCurrentPlayer()->PeekPControlledCreature();
         if (hero && !hero->IsDead()) {
-            C3DVector camera = GetWorld()->GetCameraManager()->PeekCurrentPos();
+            C3DVector camera = PeekWorld().GetCameraManager()->PeekCurrentPos();
             const C3DVector& heroPosition = hero->GetPos();
             C3DVector toCamera;
             toCamera.X = camera.X - heroPosition.X;

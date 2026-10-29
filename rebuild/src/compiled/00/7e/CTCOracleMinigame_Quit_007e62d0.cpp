@@ -57,8 +57,8 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
-    CPlayer* GetMainPlayer() const;             // 0x00449960 (byte twin)
+    CPlayer& GetMainPlayer();                   // 0x00449970 (Ego_r.pdb)
+    const CPlayer& GetMainPlayer() const;       // 0x00449960 (Ego_r.pdb; byte twin)
 };
 class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
@@ -140,7 +140,7 @@ class CTCOracleMinigame : public CTCBase { public:
 void CTCOracleMinigame::Quit()
 {
     Stage = 5;
-    CPlayer* player = GetPlayerManager().GetMainPlayer();
+    CPlayer* player = &GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() == 0x29)
         player->RemoveMode(0x29);
     InputsPending.clear();
@@ -157,7 +157,7 @@ void CTCOracleMinigame::Quit()
         SetText(PDef->WinText);
     else
         SetText(PDef->LoseText);
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCHeroOnlineScoreboard* scoreboard;
     hero->GetInterface(&scoreboard, 0x10d);
     scoreboard->UpdateScoreForActivity(0x15, (float)Level, false);

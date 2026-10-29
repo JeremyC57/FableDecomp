@@ -54,7 +54,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                         // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                       // 0x00449960
+    const CPlayer& GetMainPlayer() const;                       // 0x00449960
 };
 class CTCBase
 {
@@ -75,7 +75,7 @@ class CTCOracleMinigame : public CTCBase { public:
 void CTCOracleMinigame::SetText(unsigned long text)
 {
     if (CurrentText != text) {
-        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
+        CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero && !(hero->m_flags91 & 1)) {
             CTCRegionDisplay* display = 0;
             hero->GetInterface(&display, 0x8e);

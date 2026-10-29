@@ -43,7 +43,8 @@ class CThing:public CClass { public:
  void RemoveTC(long); //004C9840
  CTCAssassinRush* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
 };
-struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThing* GetPItem()const;}; //00A01C10/00A01B50
+class CBaseObject;
+struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CBaseObject* GetPItem() const;}; //00A01C10/00A01B50
 class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  unsigned char _beforeTarget[0x98];CBaseIntelligentPointer PTarget;unsigned char _remainingBase[0x64];
@@ -58,15 +59,15 @@ FABLE_STATIC_ASSERT(offsetof(CThing,PPhysics)==0x60);
 FABLE_STATIC_ASSERT(offsetof(CCreatureAction_CastAssassinRush,Override)==0x114);
 FABLE_STATIC_ASSERT(offsetof(CTCAssassinRush,UseCollision)==0x9c);
 void CCreatureAction_CastAssassinRush::Initialise(){
- CCombatActionBase::Initialise();PCreature.GetPItem()->RemoveTC(0xa9);
+ CCombatActionBase::Initialise();((CThing*)PCreature.GetPItem())->RemoveTC(0xa9);
  CTCAssassinRush* rush;
- {CCharString name("CTCAssassinRush",-1);rush=PCreature.GetPItem()->AddTC(name,true,0);}
- CThing* target=PTarget.GetPItem();rush->SetPTarget(target,IsZTargetting);
+ {CCharString name("CTCAssassinRush",-1);rush=((CThing*)PCreature.GetPItem())->AddTC(name,true,0);}
+ CThing* target=((CThing*)PTarget.GetPItem());rush->SetPTarget(target,IsZTargetting);
  if(Override){
   rush->DashDistance=Distance;rush->UseCollision=UseCollision;
-  CPhysicsMethods& physics=*PCreature.GetPItem()->GetPhysics();
+  CPhysicsMethods& physics=*((CThing*)PCreature.GetPItem())->GetPhysics();
   CRightHandedSet orientation;orientation.Up.X=0;orientation.Up.Y=0;orientation.Up.Z=1;CopyDirection(orientation.Forward);physics.SetFacingAnglesFromRHSet(orientation);
  }
- if(PCreature.GetPItem()->Type==1)rush->SpellLevel=Level;
+ if(((CThing*)PCreature.GetPItem())->Type==1)rush->SpellLevel=Level;
  if(FinalAction.Data)rush->SetFinalAction(FinalAction);
 }

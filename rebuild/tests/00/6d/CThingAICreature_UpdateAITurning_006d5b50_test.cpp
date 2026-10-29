@@ -66,7 +66,7 @@ struct CAITurnState {
 class CThingAICreature : public CThing { public:
     unsigned char _pad94[0x1a0 - 0x94];
     CAITurnState* PTurnState;                               // +0x1a0
-    bool LooksAtHeadHelper() const;                         // 0x00661E80
+    bool IsInMelee() const;                         // 0x00661E80
     void UpdateAITurning(const C3DVector& movement);
 };
 
@@ -77,7 +77,7 @@ void CThingAICreature::UpdateAITurning(const C3DVector& movement)
         target = PTurnState->Position;
     } else if (PTurnState->IsFacingThing() && PTurnState->IsThingValid()) {
         if (PTurnState->GetThing()->PGraphicAppearance) {
-            if (LooksAtHeadHelper()) {
+            if (IsInMelee()) {
                 CTCGraphicAppearance* app = PTurnState->GetThing()->PGraphicAppearance;
                 target = app->GetHeadPosition();
             } else {
@@ -112,7 +112,7 @@ const C3DVector& CThing::GetPosition() const { return this == g_self ? g_selfPos
 static int g_lookCalls; static C3DVector g_lookPos; static long g_lookSpeed; static CTCLook* g_lookThis;
 void CTCLook::LookAtPos(const C3DVector& position, long speed) { ++g_lookCalls; g_lookPos = position; g_lookSpeed = speed; g_lookThis = this; }
 static bool g_headHelper;
-bool CThingAICreature::LooksAtHeadHelper() const { return g_headHelper; }
+bool CThingAICreature::IsInMelee() const { return g_headHelper; }
 
 static int g_fail = 0;
 #define CHECK(c) do { if (!(c)) { printf("FAIL line %d: %s\n", __LINE__, #c); ++g_fail; } } while (0)

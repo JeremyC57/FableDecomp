@@ -41,11 +41,12 @@ class CThing { public:
     }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 
 struct CModeBase { };
@@ -82,6 +83,6 @@ void CCreatureAction_SummonerSummonInto::FinishAction()
 {
     CCombatActionBase::FinishAction();
     CTCCreatureModeManager* modeManager;
-    if (PCreature.GetPItem()->GetInterface(&modeManager, 0x31) && PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1))
-        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeSummonerSummon(PCreature, PTarget.GetPItem())));
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&modeManager, 0x31) && PTarget.GetPItem() && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1))
+        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeSummonerSummon(PCreature, ((CThing*)PTarget.GetPItem()))));
 }

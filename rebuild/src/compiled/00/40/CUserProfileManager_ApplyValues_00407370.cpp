@@ -30,7 +30,7 @@ class CPlayer { public:
     CPlayerObject* Object;                                  // +0x0c
 };
 class CPlayerManager { public:
-    long GetMainPlayerNumber();                             // 0x00449700
+    long GetMainPlayerNumber() const;                             // 0x00449700
     bool IsPlayer(long number);                             // 0x00449880
 public:
     CPlayer& GetMainPlayer();   // 0x00449970

@@ -6,7 +6,7 @@
 // intelligent pointer at +0x2A are Ego_r.pdb CTCDRegionExit (EntranceConnectedToUID +0x20, PEntranceConnectedTo +0x2A).
 // Callees: CTCBase::GetThingManager @ 0x00686AE0, CThingManager::GetThingByUID(unsigned __int64) @ 0x0051ED80,
 // CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10 (the temporary's
-// vtable 0x01238C6C is CIntelligentPointer<CThing>), the CTCBase subsystem accessor @ 0x00686D60 (virtual slot 9, bool),
+// vtable 0x01238C6C is CIntelligentPointer<CThing>), CTCBase::PeekComponent @ 0x00686D60 (its virtual slot 9, bool),
 // __aullshr @ 0x00BFECF0, CTCBase::GetWorldMap @ 0x00686D30, CWorldMap::GetMapNumberFromMapUID @ 0x004FB920 and the
 // CWorldMap virtuals IsMapLoaded (slot 10, +0x28) / IsMapUsed (slot 11, +0x2C).
 // Shape: the shape of CTCActionUseScriptedHook::ResolveEntranceConnectedTo (0x00729BC0) with the member address formed
@@ -49,10 +49,10 @@ inline bool IsThingAlive(const CIntelligentPointer<CThing>& p) { return p.GetPIt
 class CThingManager { public:
     CThing* GetThingByUID(unsigned __int64 uid);   // 0x0051ED80
 };
-struct CGameSubsystem {                         // [0x013B8A1C]+0x1C, not identified (landed CTCCrateStack 0x007B6A80)
+class CMainGameComponent { public:             // [0x013B8A1C]+0x1C: CTCBase::PeekComponent's const CMainGameComponent& (Ego_r.pdb)
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08();
-    virtual bool IsSuppressed();                // slot 9 (+0x24)
+    virtual bool IsSuppressed() const;          // slot 9 (+0x24) (name from use)
 };
 class CWorldMap { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -62,12 +62,19 @@ class CWorldMap { public:
     long GetMapNumberFromMapUID(unsigned long uid) const;   // 0x004FB920
 };
 
-class CTCDRegionExit {
-public:
-    virtual void v00();
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
     CThing* ParentThing;                        // +0x04
     bool    ToBeRemoved;                        // +0x08
     bool    IsInGlobalUpdateTCs;                // +0x09
+protected:
+    CThingManager& GetThingManager();                    // 0x00686AE0 (Ego_r.pdb CTCBase, protected)
+    const CMainGameComponent& PeekComponent() const;     // 0x00686D60 (Ego_r.pdb CTCBase, protected)
+    CWorldMap& GetWorldMap();                            // 0x00686D30 (Ego_r.pdb CTCBase, protected)
+};
+
+class CTCDRegionExit : public CTCBase {
+public:
     bool    Active;                             // +0x0c
     bool    InLetterBoxMode;                    // +0x0d
     bool    WaitingForConfirmation;             // +0x0e
@@ -79,23 +86,20 @@ public:
     bool    ReversedOnMiniMap;                  // +0x28
     bool    HiddenOnMiniMap;                    // +0x29
     CIntelligentPointer<CThing> PEntranceConnectedTo;   // +0x2a
-    CThingManager*  GetThingManager();          // 0x00686AE0 (CTCBase)
-    CGameSubsystem* GetGameSubsystem();         // 0x00686D60 (CTCBase)
-    CWorldMap*      GetWorldMap();              // 0x00686D30 (CTCBase)
     void SetUpPEntranceConnectedToFromUID();
 };
 
 void CTCDRegionExit::SetUpPEntranceConnectedToFromUID()
 {
-    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager()->GetThingByUID(EntranceConnectedToUID));
+    PEntranceConnectedTo = CIntelligentPointer<CThing>(GetThingManager().GetThingByUID(EntranceConnectedToUID));
     if (IsThingAlive(PEntranceConnectedTo))
         return;
-    if (!GetGameSubsystem()->IsSuppressed())
+    if (!PeekComponent().IsSuppressed())
         return;
     unsigned __int64 mapUID = EntranceConnectedToUID >> 40;
-    long mapNumber = GetWorldMap()->GetMapNumberFromMapUID((unsigned long)mapUID);
+    long mapNumber = GetWorldMap().GetMapNumberFromMapUID((unsigned long)mapUID);
     if (mapNumber == 0)
         EntranceConnectedToUID = 0;
-    else if (!GetWorldMap()->IsMapUsed(mapNumber) || GetWorldMap()->IsMapLoaded(mapNumber))
+    else if (!GetWorldMap().IsMapUsed(mapNumber) || GetWorldMap().IsMapLoaded(mapNumber))
         EntranceConnectedToUID = 0;
 }

@@ -38,7 +38,7 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    long GetMainPlayerNumber();                 // 0x00449700
+    long GetMainPlayerNumber() const;                 // 0x00449700
     CPlayer* GetPlayer(long number);            // 0x004498C0
 };
 class CTCBase

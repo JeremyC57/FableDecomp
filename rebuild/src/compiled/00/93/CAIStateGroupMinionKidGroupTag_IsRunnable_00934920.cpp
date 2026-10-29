@@ -142,7 +142,7 @@ class CMessageEventManager { public:
                     float range, float radius, long data);                                 // 0x00687540
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CWorld { public:
     unsigned char _pad[0x10];

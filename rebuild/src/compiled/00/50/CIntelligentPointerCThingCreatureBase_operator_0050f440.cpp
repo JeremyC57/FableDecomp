@@ -1,25 +1,27 @@
-// CIntelligentPointer<CThingCreatureBase>::operator=
+// CIntelligentPointer<CThingAICreature>::operator= @ 0x0050F440 (instance settled in naming wave 7, DECISIONS_W7.tsv)
 // Leaf: ??4?$CIntelligentPointer@
-// Smart-pointer copy assignment: this->Assign( rhs->GetTarget() ); return this;
+// Smart-pointer copy assignment: SetPItem(other.GetPItem()); return *this;
 
-class CThingCreatureBase;
-
-class CIntelligentPointer
+class CBaseObject;
+class CBaseIntelligentPointer
 {
 public:
-    // 0xa01b50 : returns the held target pointer (getter used to source rhs)
-    CThingCreatureBase* GetTarget();
-    // 0xa01b90 : assigns/refs a target into this pointer
-    void Assign(CThingCreatureBase* p);
-
-    CIntelligentPointer* operator=(CIntelligentPointer* rhs);
-
-    CThingCreatureBase* m_ptr;
+    CBaseObject* GetPItem() const;          // 0x00A01B50 (Ego_r.pdb)
+    void SetPItem(CBaseObject* item);       // 0x00A01B90 (Ego_r.pdb)
 };
 
-// Out-of-line so the compiler emits the body into the .obj.
-CIntelligentPointer* CIntelligentPointer::operator=(CIntelligentPointer* rhs)
+class CThingAICreature;
+
+template <class T> class CIntelligentPointer : public CBaseIntelligentPointer
 {
-    this->Assign(rhs->GetTarget());
-    return this;
+public:
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);
+};
+
+template <class T> CIntelligentPointer<T>& CIntelligentPointer<T>::operator=(const CIntelligentPointer& other)
+{
+    SetPItem(other.GetPItem());
+    return *this;
 }
+
+template class CIntelligentPointer<CThingAICreature>;

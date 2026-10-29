@@ -46,7 +46,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                 // 0x00449960
+    const CPlayer& GetMainPlayer() const;                 // 0x00449960
 };
 struct CTCVillager;
 class CTCVillage;
@@ -126,7 +126,7 @@ void CTCCreatureOpinionOfHero::DecriminaliseAllKnownCrimes()
     if (!GFGetPVillageInterface(villager))
         return;
     CTCVillage* village = GFGetPVillageInterface(villager);
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (!hero)
         return;
     CTCHeroOpinionDeedLog* log;

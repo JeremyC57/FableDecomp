@@ -2,8 +2,8 @@
 // Leaf: CreateGamePiece
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005EA9B0, length 520 bytes, `ret 4`; called by the landed
 // CTCTavernGameCoinBase::AddNewCoin (0x008EFA00).
-// Callees: CTCBase::GetWorld @ 0x00686D50, CWorld::GetMap @ 0x00449700 (catalog label "DrawGetEnvironment"),
-// CThing::GetPos @ 0x004C73D0, CThingObject::Create (fastcall) @ 0x00703210, CCharString(const char*, long)
+// Callees: CTCBase::PeekPlayerManager @ 0x00686D50, CPlayerManager::GetMainPlayerNumber @ 0x00449700 (Ego_r.pdb; catalog "DrawGetEnvironment"),
+// CThing::GetPos @ 0x004C73D0, CThingObject::Create (static __fastcall, Ego_r.pdb) @ 0x00703210, CCharString(const char*, long)
 // @ 0x0099EBF0 / ~ 0x0099EAE0, CThing::AddTC(const CCharString&, bool, CTCParamsBase*) @ 0x004C9D60,
 // CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem
 // 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10, CTCOwnedEntity::SetPOwner @ 0x007E8590.
@@ -98,7 +98,10 @@ class CThing { public:
         }
     }
 };
-class CThingObject : public CThing { public: };
+class CThingObject : public CThing { public:
+    static CThingObject* __fastcall Create(long defIndex, const C3DVector& pos, long playerNumber, const CRightHandedSet* rh,
+                                           unsigned long flags, const CCharString& name);   // 0x00703210 (Ego_r.pdb)
+};
 
 struct CTCOwnedEntityA {                                // interface 0x32
     unsigned char _pad00[0x0c];
@@ -112,24 +115,23 @@ struct CTCInterface5B {                                 // interface 0x5b
     unsigned char Flags;                                // +0x59
 };
 
-class CMap;
-CThingObject* __fastcall CreateThingObject(long defIndex, const C3DVector& pos, CMap* map, const CRightHandedSet& rh,
-                                           unsigned long flags, const CCharString& name);   // 0x00703210
-class CWorld { public: CMap* GetMap(); };                      // 0x00449700
+class CPlayerManager { public: long GetMainPlayerNumber() const; };   // 0x00449700 (Ego_r.pdb)
+class CTCBase { protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50 (Ego_r.pdb CTCBase, protected)
+};
 
-class CTCTavernGame { public:
+class CTCTavernGame : public CTCBase { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
-    CWorld* GetWorld_00686d50();                                 // 0x00686D50
     CThingObject* CreateGamePiece(long defIndex);
 };
 
 CThingObject* CTCTavernGame::CreateGamePiece(long defIndex)
 {
-    CMap* map = GetWorld_00686d50()->GetMap();
+    long player = PeekPlayerManager().GetMainPlayerNumber();
     C3DVector pos = ParentThing->GetPos();
     CRightHandedSet rh(0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f);
-    CThingObject* piece = CreateThingObject(defIndex, pos, map, rh, 0, "");
+    CThingObject* piece = CThingObject::Create(defIndex, pos, player, &rh, 0, "");
     piece->Graphic->SetVisible(false);
     piece->_flags91 |= 2;
     piece->AddTC("TCOwnedEntityA", false, 0);

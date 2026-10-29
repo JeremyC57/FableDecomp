@@ -1,10 +1,10 @@
 #pragma optimize("s", on)
 // CTCInventory::GetQuickAccessItemButtonIndex(long item) -- slot index of the item among the quick-access items, -1 when absent
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00581FD1, length 86 bytes; size-optimised TU ("s").
-// Callees: GetWorld 0x00686D50 (free: `return g_pGame->m_30;`), CWorld::GetMainPlayer 0x00449960,
+// Callees: CTCBase::PeekPlayerManager 0x00686D50 (`return g_pGame->m_30;`), CPlayerManager::GetMainPlayer() const 0x00449960,
 //          CItemList::GetCount 0x00445950 (`(m_7c8 - m_7c4) >> 3`) -- the same dropped range-check chain as
 //          the landed CTCInventory::ValidateIndex (0x005819F2), whose model is reused here.
-// Ego_r PDB: ?GetQuickAccessItemButtonIndex@CTCInventory@@QAEJJ@Z.
+// Ego_r PDB: ?GetQuickAccessItemButtonIndex@CTCInventory@@QBEJJ@Z (const).
 // Retail layout: engine/CTCInventory.h is the wider Ego_r.pdb layout (QuickAccessItems at PDB +0x168, 16-byte
 // vectors); the shipped object keeps QuickAccessItems as a 12-byte {first,last,end} vector<long> at +0x148,
 // so `this` is modelled locally.
@@ -19,29 +19,31 @@ class CPlayer { public:
     CItemList*    m_pItems;                          // +0x0c
 };
 
-class CWorld { public:
-    CPlayer* GetMainPlayer();                        // 0x00449960
+class CPlayerManager { public:
+    const CPlayer& GetMainPlayer() const;                      // 0x00449960 (Ego_r.pdb const overload)
 };
 
-CWorld* GetWorld();                                  // 0x00686D50
+class CTCBase { protected:
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50 (Ego_r.pdb CTCBase, protected)
+};
 
 struct CLongVector {
     long* first;                                     // +0x00
     long* last;                                      // +0x04
     long* end_of_storage;                            // +0x08
     unsigned long size() const { return (unsigned long)(last - first); }
-    long& operator[](unsigned long n) { return first[n]; }
+    long& operator[](unsigned long n) const { return first[n]; }
 };
 
-class CTCInventory { public:
+class CTCInventory : public CTCBase { public:
     unsigned char _pad_0x000[0x148];
     CLongVector   QuickAccessItems;                  // +0x148 (PDB +0x168)
-    long GetQuickAccessItemButtonIndex(long item);
+    long GetQuickAccessItemButtonIndex(long item) const;
 };
 
-long CTCInventory::GetQuickAccessItemButtonIndex(long item)
+long CTCInventory::GetQuickAccessItemButtonIndex(long item) const
 {
-    GetWorld()->GetMainPlayer()->m_pItems->GetCount();
+    PeekPlayerManager().GetMainPlayer().m_pItems->GetCount();
     for (unsigned long i = 0; i < QuickAccessItems.size(); ++i) {
         if (QuickAccessItems[i] == item)
             return i;

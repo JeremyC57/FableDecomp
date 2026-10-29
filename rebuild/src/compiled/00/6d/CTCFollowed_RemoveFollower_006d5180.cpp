@@ -5,7 +5,7 @@
 //          (CIntelligentPointer<CThing> vtable 0x01238C6C, CIntelligentPointer<CThingAICreature> vtable 0x0123E7E0);
 //          list<CIntelligentPointer<CThing>>::remove @ 0x0065DE8A, list<CIntelligentPointer<CThingAICreature>>::remove
 //          @ 0x0065DE48; CTCFollowed::IsAIFollower @ 0x006D4DB0, RemoveEmoteIcon(CThing&) @ 0x006D5050;
-//          CThing::SetAsGameStatePersisted(bool) @ 0x004C7880; CPlayerGui::Refresh(long) @ 0x004378C0 on g_pPlayerGui.
+//          CThing::SetAsGameStatePersisted(bool) @ 0x004C7880; CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on g_pPlayerGui.
 // Shape: the list entries are converting temporaries passed by reference (the follower reference is read after the
 //        first base ctor); the persistence drop needs neither HomeBuilding nor WorkBuilding alive (two inlined
 //        single-fetch alive tests) and clears the LevelPersistent bit (`and byte ptr [esi+92h],0EFh`).
@@ -68,7 +68,7 @@ __forceinline bool IsThingAlive(const CBaseIntelligentPointer& p)   // one GetPI
 }
 
 class CPlayerGui { public:
-    void Refresh(long flag);                        // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);           // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                    // 0x013B8790
 
@@ -78,7 +78,7 @@ class CTCFollowed { public:
     unsigned char _pad08[4];
     CRetailList< CIntelligentPointer<CThing> > Followers;              // +0x0C
     CRetailList< CIntelligentPointer<CThingAICreature> > AIFollowers;  // +0x10
-    bool IsAIFollower(const CThing* thing) const;   // 0x006D4DB0
+    bool IsAIFollower(const CThingAICreature* creature) const;   // 0x006D4DB0 (Ego_r.pdb)
     void RemoveEmoteIcon(CThing& thing);            // 0x006D5050
     void RemoveFollower(CThing& follower);
 };
@@ -87,7 +87,7 @@ void CTCFollowed::RemoveFollower(CThing& follower)
 {
     Followers.remove(CIntelligentPointer<CThing>(&follower));
     if (follower.ThingClass == 1) {
-        if (IsAIFollower(&follower)) {
+        if (IsAIFollower((const CThingAICreature*)&follower)) {
             CThingAICreature& creature = (CThingAICreature&)follower;
             if (!IsThingAlive(creature.HomeBuilding) && !IsThingAlive(creature.WorkBuilding)) {
                 follower.SetAsGameStatePersisted(false);
@@ -97,5 +97,5 @@ void CTCFollowed::RemoveFollower(CThing& follower)
         AIFollowers.remove(CIntelligentPointer<CThingAICreature>((CThingAICreature*)&follower));
     }
     RemoveEmoteIcon(follower);
-    g_pPlayerGui->Refresh(0);
+    g_pPlayerGui->UpdateMiniMapMarkers(false);
 }

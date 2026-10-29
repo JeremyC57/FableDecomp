@@ -63,7 +63,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0 (the manifest's "_Cons_val<...>" is propagated)
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                   // 0x00449960
+    const CPlayer& GetMainPlayer() const;                   // 0x00449960
 };
 class CTCBase
 {
@@ -96,7 +96,7 @@ static __forceinline CTCHeroOpinionDeedLog* GetDeedLog(CThing* thing)
 
 bool CTCCreatureOpinionOfHero::KnowsOfDeed(long deedHandle, bool includePending)
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero) {
         COpinionDeed* deed = GetDeedLog(hero)->GetDeedFromHandle(deedHandle);
         if (deed)

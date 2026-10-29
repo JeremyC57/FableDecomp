@@ -52,7 +52,7 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;               // 0x00449960
+    const CPlayer& GetMainPlayer() const;               // 0x00449960
 };
 
 class CGameScriptInterface { public:
@@ -64,7 +64,7 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::GiveHeroGold(long amount)
 {
-    const CThing* hero = PlayerManager->GetMainPlayer()->PeekPControlledCreature();
+    const CThing* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
     if (hero && !(hero->m_statusFlags & 1)) {
         CTCHeroMoney* money;
         if (hero->GetInterface(&money, 0x8e))

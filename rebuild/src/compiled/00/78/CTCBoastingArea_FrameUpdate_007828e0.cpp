@@ -1,5 +1,5 @@
 // CTCBoastingArea::FrameUpdate() -- track the living hero against the area's anticipation and boasting radii and fire the enter/leave/approach notifications on each state change
-// Retail 0x007828E0, 432 bytes (plain `ret`). Callees: the player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer
+// Retail 0x007828E0, 432 bytes (plain `ret`). Callees: CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer
 // @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0, CThing::GetPos @ 0x004C73D0, CTCBoastingArea::OnHeroEnteringArea
 // @ 0x007827D0, OnHeroLeavingArea @ 0x00782860, CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface 0x73),
 // CTCBoastingCrowdControl::OnHeroApproachPodiumArea @ 0x00783BC0.
@@ -57,13 +57,15 @@ class CPlayerManager { public:
 public:
     CPlayer& GetMainPlayer();   // 0x00449970
 };
-CPlayerManager* GetPlayerManager();                 // 0x00686D40
+class CTCBase { protected:
+    CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
+};
 class CTCBoastingCrowdControl { public:
     void OnHeroApproachPodiumArea();                // 0x00783BC0
 };
 
 enum EHeroWithinRadiusState { HERO_OUTSIDE = 0, HERO_IN_ANTICIPATION = 1, HERO_IN_RADIUS = 2 };
-struct CTCBoastingArea {
+struct CTCBoastingArea : public CTCBase {
     void*   __vftable;                              // +0x00
     CThing* Thing;                                  // +0x04 CTCBase parent thing
     unsigned char _pad08[4];
@@ -78,7 +80,7 @@ struct CTCBoastingArea {
 
 void CTCBoastingArea::FrameUpdate()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (!hero || hero->Dead) {
         HeroWithinRadiusState = HERO_OUTSIDE;
         return;

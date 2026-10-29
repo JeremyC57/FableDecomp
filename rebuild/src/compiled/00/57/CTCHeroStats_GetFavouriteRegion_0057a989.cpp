@@ -2,7 +2,7 @@
 // Leaf: GetFavouriteRegion
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057A989, 146 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`), `ret 8` (hidden result + one argument).
-// Callees: CTCBase::GetWorldMap() @ 0x00686D20, CWorldMap::GetRegion(long) @ 0x004FC180, CRegion::GetDisplayName()
+// Callees: CTCBase::PeekWorldMap() @ 0x00686D20, CWorldMap::GetRegion(long) @ 0x004FC180, CRegion::GetDisplayName()
 //          @ 0x006BBF20 (returns a CCharString reference), CDataBank::GetTextBySymbol(const CCharString&) @ 0x009C95E0
 //          (by value through the hidden result pointer), CWideString::CWideString(const CWideString&) @ 0x0099B720.
 // Globals: the engine globals @ 0x013B86A0 (+0x14 the text bank), the empty CWideString @ 0x013BCA24.
@@ -60,13 +60,15 @@ struct CLongVector {                                 // std::vector<long> {first
     const long& operator[](unsigned long n) const { return *(begin() + n); }
 };
 
-class CTCHeroStats { public:
+class CTCBase { protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20 (Ego_r.pdb CTCBase, protected)
+};
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x00
     void*         ParentThing;                       // +0x04 CTCBase
     unsigned char _pad_0x08[0x11C];
     CLongVector   RegionTime;                        // +0x124 (PDB +0x130)
 
-    CWorldMap* GetWorldMap() const;                  // 0x00686D20 (CTCBase)
     CWideString GetFavouriteRegion(long& region) const;
 };
 
@@ -82,7 +84,7 @@ CWideString CTCHeroStats::GetFavouriteRegion(long& region) const
     }
     CDataBank* textBank = g_pEngineGlobals->TextBank;
     if (best != -1)
-        return textBank->GetTextBySymbol(GetWorldMap()->GetRegion(best).GetDisplayName());
+        return textBank->GetTextBySymbol(PeekWorldMap().GetRegion(best).GetDisplayName());
     region = -1;
     return g_EmptyWideString;
 }

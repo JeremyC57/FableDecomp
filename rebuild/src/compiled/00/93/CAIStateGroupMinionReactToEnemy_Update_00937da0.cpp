@@ -44,12 +44,13 @@ inline float GetDistanceSquaredXY(const CThing* a, const CThing* b)
     return dx * dx + dy * dy;
 }
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
@@ -57,7 +58,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     template<class U> CIntelligentPointer(const CIntelligentPointer<U>& other) { SetPItem(other.GetPItem()); }
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
-inline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(thing.GetPItem()->m_flags91 & 1); }
+inline bool IsThingAlive(const CBaseIntelligentPointer& thing) { return thing.GetPItem() != 0 && !(((CThing*)thing.GetPItem())->m_flags91 & 1); }
 
 class CAIBrain { public:
     unsigned char _pad[0x18];

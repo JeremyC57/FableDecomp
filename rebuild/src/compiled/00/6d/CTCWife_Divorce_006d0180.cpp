@@ -3,8 +3,8 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006D0180, 598 bytes (+ int3 padding), plain `ret`.
 // Callees: CWorld::GetWorldFrame() 0x0049D870 (static); CTCWife::Unmarry(bool) 0x006CFF10; LowerBound 0x0040F020;
 //   CTCCreatureOpinionOfHero::SetOpinionReactionMask 0x00681E30 / SetOpinionDeedMask 0x006822E0 / SetPersonalityOverride
-//   0x006820E0 / ClearAllKnownDeeds 0x00681A70 / ApplyOpinionTransientOffset 0x00682140; CTCBase world/player-manager
-//   getters 0x00686A70 / 0x00686D40; CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetPControlledCreature 0x00487DC0;
+//   0x006820E0 / ClearAllKnownDeeds 0x00681A70 / ApplyOpinionTransientOffset 0x00682140; CTCBase::GetWorld 0x00686A70 (on the opinion
+//   TC) / CTCBase::GetPlayerManager 0x00686D40; CPlayerManager::GetMainPlayer 0x00449970; CPlayer::GetPControlledCreature 0x00487DC0;
 //   CTCHeroStats::SetMarriageState 0x0057BC6E / GetMoralityMax 0x0057A67E / SetMorality 0x0057C2E6; the home's
 //   occupant getter 0x007EE540; the player GUI refresh 0x004378C0 on g_pPlayerGui 0x013B8790; CCharString 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0; frame rate 0x01375550.
@@ -102,7 +102,7 @@ struct CTCHome {
     CHomeOccupant* GetOccupant();               // 0x007EE540
 };
 class CPlayerGui { public:
-    void Refresh(long a);                       // 0x004378C0
+    void UpdateMiniMapMarkers(bool a);          // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 extern long g_FrameRate;                        // 0x01375550
@@ -110,8 +110,12 @@ class CHeroMarriageDef { public:
     unsigned char _pad00[0xac];
     float HeroStatMoralityInOpinionFormChangePerDivorce;   // +0xac
 };
-class CTCWife { public:
-    virtual void v00();
+class CTCBase { public:
+    virtual ~CTCBase();                         // slot 0 (0x00686830)
+protected:
+    CPlayerManager& GetPlayerManager();         // 0x00686D40 (Ego_r.pdb CTCBase, protected)
+};
+class CTCWife : public CTCBase { public:
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x0c - 0x08];
     CHeroMarriageDef* PHeroMarriageDef;         // +0x0c
@@ -120,7 +124,6 @@ class CTCWife { public:
     bool DivorcedHero;                          // +0x24
     unsigned char _pad25[0x8c - 0x25];
     float LoveAttitudeValue;                    // +0x8c
-    CPlayerManager* GetPlayerManager();         // 0x00686D40
     void Unmarry(bool notify);                  // 0x006CFF10
     void Divorce();
 };
@@ -151,7 +154,7 @@ void CTCWife::Divorce()
     }
     ParentThing->Flags1C9 &= ~8;
     LoveAttitudeValue = 0.0f;
-    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !(hero->Flags91 & 1)) {
         CTCHeroStats* stats;
         hero->GetInterface(&stats, 4);
@@ -171,5 +174,5 @@ void CTCWife::Divorce()
             }
         }
     }
-    g_pPlayerGui->Refresh(0);
+    g_pPlayerGui->UpdateMiniMapMarkers(false);
 }

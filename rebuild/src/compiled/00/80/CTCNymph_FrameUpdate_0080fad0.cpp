@@ -162,12 +162,13 @@ class CTCDParticleEmitter { public:
 };
 
 #pragma pack(push, 1)
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                                          // +0x04
     CBaseIntelligentPointer();                              // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
-    CThing* GetPItem() const;                               // 0x00A01B50
+    CBaseObject* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CThing* item);                            // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -175,11 +176,11 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem(item);
         return *this;
     }
-    __forceinline bool IsAlive() const { return GetPItem() && !(GetPItem()->Flags91 & 1); }
+    __forceinline bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
 };
 #pragma pack(pop)
 
@@ -198,7 +199,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     virtual void v00();
     CIntelligentPointerConstThing(const CThing* item);              // 0x00668B60
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other);   // 0x00668B80
-    __forceinline bool IsAlive() const { return GetPItem() && !(GetPItem()->Flags91 & 1); }
+    __forceinline bool IsAlive() const { return GetPItem() && !(((CThing*)GetPItem())->Flags91 & 1); }
 };
 #pragma pack(pop)
 struct CTCTargeting {
@@ -270,7 +271,7 @@ void CTCNymph::FrameUpdate()
                 PickNewTargetPos();
             if (PTarget.IsAlive()) {
                 if (CanAttack)
-                    ReadyToAttack = IsDecentAttackRange(PTarget.GetPItem()->GetPos());
+                    ReadyToAttack = IsDecentAttackRange(((CThing*)PTarget.GetPItem())->GetPos());
             } else {
                 ReadyToAttack = false;
                 CTCTargeting* targeting;
@@ -289,7 +290,7 @@ void CTCNymph::FrameUpdate()
         --FadeCounter;
         ParentThing->GraphicAppearance->SetAlpha((unsigned char)(long)((1.0f - (float)FadeCounter / TotalFadeTime) * 255.0f));
         if (FadeCounter == 0 && POldEffect.IsAlive()) {
-            POldEffect.GetPItem()->Kill(true);
+            ((CThing*)POldEffect.GetPItem())->Kill(true);
             CIntelligentPointer<CThing> none(0);
             POldEffect = none;
         }

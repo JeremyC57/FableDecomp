@@ -11,10 +11,11 @@
 // CThingFilter_HasBuildingAsHomeOrWork filter of 0x007BB660 tests work first); `mov al,1 ; jmp` / `xor al,al` tail.
 #pragma optimize("s", on)
 class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   VTable;
     CThing* PItem;
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     __forceinline T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
@@ -43,8 +44,8 @@ class HasBuildingAsHomeOrWork { public:
 bool HasBuildingAsHomeOrWork::operator()(const CIntelligentPointer<CThingAICreature>& creature) const
 {
     if (IS_THING_ALIVE(creature)) {
-        if (creature.GetPItem()->GetHomeBuilding().GetPItem() == Building ||
-            creature.GetPItem()->GetWorkBuilding().GetPItem() == Building)
+        if (((CThing*)creature.GetPItem()->GetHomeBuilding().GetPItem()) == Building ||
+            ((CThing*)creature.GetPItem()->GetWorkBuilding().GetPItem()) == Building)
             return true;
     }
     return false;

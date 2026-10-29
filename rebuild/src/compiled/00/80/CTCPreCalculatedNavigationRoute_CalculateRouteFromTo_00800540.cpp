@@ -92,14 +92,15 @@ class CWorldMap { public:
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
     virtual long GetMapNumberAt(const C3DVector& pos) const;   // slot 16 (+0x40)
-    long GetRegionNumberMapIsIn(long mapNumber);        // 0x004FC190
+    long GetRegionNumberMapIsIn(long mapNumber) const;        // 0x004FC190
 };
 class CTCBase {
 public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
     CGameRunState* GetRunState();                       // 0x00686D60
-    CWorldMap* GetWorldMap();                           // 0x00686D20
+protected:
+    const CWorldMap& PeekWorldMap() const;   // 0x00686D20 (Ego_r.pdb CTCBase, protected)
 };
 class CTCPreCalculatedNavigationRoute : public CTCBase {
 public:
@@ -110,8 +111,8 @@ void CTCPreCalculatedNavigationRoute::CalculateRouteFromTo(const C3DVector& from
 {
     if (!GetRunState()->IsRunning())
         return;
-    long fromRegion = GetWorldMap()->GetRegionNumberMapIsIn(GetWorldMap()->GetMapNumberAt(from));
-    if (fromRegion != GetWorldMap()->GetRegionNumberMapIsIn(GetWorldMap()->GetMapNumberAt(to)))
+    long fromRegion = PeekWorldMap().GetRegionNumberMapIsIn(PeekWorldMap().GetMapNumberAt(from));
+    if (fromRegion != PeekWorldMap().GetRegionNumberMapIsIn(PeekWorldMap().GetMapNumberAt(to)))
         return;
     long defIndex;
     {

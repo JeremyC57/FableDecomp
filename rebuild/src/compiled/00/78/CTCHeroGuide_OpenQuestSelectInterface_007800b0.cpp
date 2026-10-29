@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007800B0, 466 bytes (plain `ret`, /GS cookie 0x0139C8A8).
 // Callees: CTCBase::GetPlayerManager const 0x00686D50, CPlayerManager::GetMainPlayer 0x00449960, CPlayer::GetPControlledCreature
 // 0x00487DC0, the const interface LowerBound 0x004365B0 and the non-const one 0x0040F020, CBaseIntelligentPointer::GetPItem
-// 0x00A01B50, CTCBase::GetWorld 0x00686A80 (+0xDA a bool), CTCHeroCentre::GetQuestCards 0x0077DBC0, CMemoryBuffer::Copy
+// 0x00A01B50, CTCBase::PeekWorld 0x00686A80 (+0xDA a bool), CTCHeroCentre::GetQuestCards 0x0077DBC0, CMemoryBuffer::Copy
 // 0x009F1760, the second player-manager getter 0x00686D40, CPlayerManager::GetMainPlayerNumber 0x00449700,
 // CMainGameComponent::AddGameEvent 0x0041649C, CCharString 0x0099EBF0 / 0x0099EAE0, CTCBase::GetGameSubsystem 0x00686D60
 // (+0x1614C the font bank), CSubtitleRenderer::SetText 0x00492ED1 on the player GUI 0x013B8790 (+0x18),
@@ -118,7 +118,7 @@ class CPlayer { public:
 };
 class CPlayerManager { public:
     CPlayer* GetMainPlayer() const;                     // 0x00449960
-    long GetMainPlayerNumber();                         // 0x00449700
+    long GetMainPlayerNumber() const;                         // 0x00449700
 };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
@@ -163,10 +163,11 @@ class CWorld { public:
 class CTCBase { public:
     virtual void v00();
     CThing* ParentThing;                                // +0x04
-    CWorld* GetWorld() const;                           // 0x00686A80
-    CPlayerManager* GetPlayerManager2() const;          // 0x00686D40
-    CPlayerManager* GetPlayerManager() const;           // 0x00686D50
     CGameSubsystem* GetGameSubsystem() const;           // 0x00686D60
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+    CPlayerManager& GetPlayerManager();   // 0x00686D40 (Ego_r.pdb CTCBase, protected)
+    const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50 (Ego_r.pdb CTCBase, protected)
 };
 class CTCHeroGuide : public CTCBase { public:
     void OpenQuestSelectInterface();
@@ -174,21 +175,21 @@ class CTCHeroGuide : public CTCBase { public:
 
 void CTCHeroGuide::OpenQuestSelectInterface()
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
     const CThing* parent = ParentThing;
     const CThing* centre;
     if (parent->HasTC(0x33))
         centre = ((CThing*)parent->FindTC<CTCCentreOwner>(0x33)->HeroCentre.GetPItem());
     else
         centre = ((CThing*)parent->HeroCentre.GetPItem());
-    if (centre && GetWorld()->QuestCardsEnabled && centre->HasTC(0x6a)) {
+    if (centre && PeekWorld().QuestCardsEnabled && centre->HasTC(0x6a)) {
         const CTCHeroCentre* heroCentre = centre->FindTC<CTCHeroCentre>(0x6a);
         CThingVector cards;
         if (heroCentre->GetQuestCards(&cards)) {
             hero->GetTC<CTCQuestSelect>(0x19)->QuestSelectPending = false;
             CGameEvent event(0x1a);
             event.AddULONG(0xd);
-            event.Player = (signed char)GetPlayerManager2()->GetMainPlayerNumber();
+            event.Player = (signed char)GetPlayerManager().GetMainPlayerNumber();
             g_pMainGameComponent->AddGameEvent(event);
         } else {
             CCharString text("TEXT_GUI_QUESTS_NO_AVAILABLE", -1);

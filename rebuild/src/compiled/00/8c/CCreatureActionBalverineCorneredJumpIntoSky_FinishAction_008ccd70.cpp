@@ -132,22 +132,21 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public: };
 void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);   // 0x007E4040
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                                    // +0x04
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
-struct CCreaturePointer {
-    void*               __vftable;
-    CThingCreatureBase* m_pItem;
-    CThingCreatureBase* GetPItem() const;               // 0x00A01B50
+struct CCreaturePointer : CBaseIntelligentPointer {
+    CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }   // inline over 0x00A01B50
     operator CThingCreatureBase*() const { return GetPItem(); }
 };
 
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
     if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -206,7 +205,7 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
         if (IS_THING_ALIVE(PTarget)) {
             CTCPhysicsBase* physics = PCreature.GetPItem()->GetPhysics();
             physics->SetPosition(*EndPos);
-            CThing* target = PTarget.GetPItem();
+            CThing* target = ((CThing*)PTarget.GetPItem());
             const C3DVector& from = PCreature.GetPItem()->GetPos();
             const C3DVector& to = target->GetPos();
             C3DVector forward(to.X - from.X, to.Y - from.Y, 0.0f);
@@ -221,7 +220,7 @@ void CCreatureAction_BalverineCorneredJumpIntoSky::FinishAction()
                 time = def->IntangibleTime;
             CCreatureActionBase* next;
             if (IS_THING_ALIVE(PTarget))
-                next = new CCreatureAction_BalverineLungeAttack(PCreature, PTarget.GetPItem());
+                next = new CCreatureAction_BalverineLungeAttack(PCreature, ((CThing*)PTarget.GetPItem()));
             else
                 next = new CCreatureAction_BalverineDropInFromSky(PCreature.GetPItem());
             modeManager->AddMode(CCountedPointer<CModeBase>(new CModeIntangible(PCreature.GetPItem(), time, next)));

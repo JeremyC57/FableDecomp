@@ -31,7 +31,7 @@ class CThingCreatureBase { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                 // +0x44
-    CCombatManager* GetCombatManager();         // 0x00661ED0
+    CCombatManager& GetCombatManager();         // 0x00661ED0
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -78,7 +78,7 @@ struct CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose : CAIStateGroupBase {
 void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Cleanup()
 {
     if (PBrain->PCreature->IsInMeleeAsAttacker())
-        PBrain->PCreature->GetCombatManager()->DeregisterCombatant(PBrain->PCreature);
+        PBrain->PCreature->GetCombatManager().DeregisterCombatant(PBrain->PCreature);
     CTCCreatureModeManager* modes;
     PBrain->PCreature->GetInterface(&modes, 0x31);
     modes->RemoveMode(0x19);

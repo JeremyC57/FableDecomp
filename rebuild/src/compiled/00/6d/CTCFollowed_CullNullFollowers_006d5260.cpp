@@ -4,7 +4,7 @@
 // Retail 0x006D5260, 340 bytes (8-aligned ebp frame, plain `ret`).
 // Callees: CBaseIntelligentPointer ctor @ 0x00A01B10 / GetPItem @ 0x00A01B50 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10
 // (CIntelligentPointer<CThing> vtable 0x01238C6C, CIntelligentPointer<CThingAICreature> vtable 0x0123E7E0), the element's virtual
-// destructor (slot 0, flag 0) and CRT `free` @ 0x00BFEA14 in the inlined list erase, CPlayerGui::Refresh(long) @ 0x004378C0 on
+// destructor (slot 0, flag 0) and CRT `free` @ 0x00BFEA14 in the inlined list erase, CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on
 // g_pPlayerGui 0x013B8790, CTCFollowed::AddEmoteIcon(CThing*) @ 0x006D4FD0.
 // Layout = Ego_r.pdb CTCFollowed: Followers +0x0c, AIFollowers +0x10 (retail STLport lists are one node pointer each; the PDB's
 // are 12 bytes); list node {next, prev, CIntelligentPointer data (+8)}; CThing Dead bit 0 of +0x91.
@@ -62,7 +62,7 @@ template <class T> struct CRetailList {                 // STLport list: the hea
 };
 
 class CPlayerGui { public:
-    void Refresh(long mode);                            // 0x004378C0
+    void UpdateMiniMapMarkers(bool mode);               // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 
@@ -87,7 +87,7 @@ void CTCFollowed::CullNullFollowers()
         CIntelligentPointer<CThing> follower(it->_M_data);
         if (!IS_THING_ALIVE(follower)) {
             it = Followers.erase(it);
-            g_pPlayerGui->Refresh(0);
+            g_pPlayerGui->UpdateMiniMapMarkers(false);
         } else {
             AddEmoteIcon(follower.GetPItem());
             it = it->_M_next;

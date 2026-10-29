@@ -3,7 +3,7 @@
 // (PDB ?RemoveActiveQuestCard@CQuestManager@@QAEXABVCCharString@@@Z).
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound const 0x004365B0,
 // the CCharString compare 0x00411570, CThing::Kill(bool) 0x004C9B80, the list element's virtual destructor (slot 0),
-// free 0x00BFEA14, CPlayerGui::Refresh(long) 0x004378C0 on g_pPlayerGui (0x013B8790).
+// free 0x00BFEA14, CPlayerGui::UpdateMiniMapMarkers(bool) 0x004378C0 on g_pPlayerGui (0x013B8790).
 // Layout: ActiveQuestCards +0x5c, CompletedQuestCards +0x60 (PDB +0x88/+0x94; 4-byte STLport lists); ScriptQuestName +0x28 of
 // the quest card TC.
 // Shape: here the card pointer is null-tested and the TC local starts at null, so the absent-TC path jumps straight to
@@ -93,7 +93,7 @@ inline void EraseNode(CCardNode* node)                   // STLport list::erase(
 }
 
 class CPlayerGui { public:
-    void Refresh(long flag);                             // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);                // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 
@@ -127,7 +127,7 @@ void CQuestManager::RemoveActiveQuestCard(const CCharString& scriptName)
             if (!IsCompletedQuestCard(card))
                 card->Kill(false);
             EraseNode(node);
-            g_pPlayerGui->Refresh(0);
+            g_pPlayerGui->UpdateMiniMapMarkers(false);
             return;
         }
     }

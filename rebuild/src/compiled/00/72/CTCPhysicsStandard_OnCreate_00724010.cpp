@@ -1,7 +1,7 @@
 // CTCPhysicsStandard::OnCreate() -- start with OldRHSet = RHSet and a zero offset, build the physics mesh info when the parent's graphic data names a (static or animated) mesh that has a physics mesh, run the base OnCreate, take the interaction flags, gravity / air-resistance and pushable flags from the physics def (defaults without one), work out whether the thing starts on the ground, and when it interacts with things settle it on the surface below
 // Leaf: OnCreate
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00724010, 556 bytes, plain `ret`. CTCPhysicsStandard vtable 0x01265F84 slot 4.
-// Callees: CTCBase::GetWorld 0x00686A80, the graphic bank's GetMesh 0x00A24280 / GetAnimatedMesh 0x00A242B0,
+// Callees: CTCBase::PeekWorld 0x00686A80, the graphic bank's GetMesh 0x00A24280 / GetAnimatedMesh 0x00A242B0,
 //   C3DMeshInfo::HasPhysicsMesh 0x00A23C40 (PhysicsMeshIndex +0x3c != -1), CTCPhysicsBase::CreatePPhysicsMeshInfo 0x006B05A0,
 //   CTCPhysicsBase::OnCreate 0x006B0780 (non-virtual), GetMass 0x006AFE00, GetAirResistance 0x006AFDE0,
 //   CTCPhysicsBase::GetWorldMap 0x006AF620, CWorldMap::GetGroundSizeZAt 0x0063A300,
@@ -79,8 +79,13 @@ class CPhysicsDef { public:
 };
 
 #define V4(n) virtual void v##n##a(); virtual void v##n##b(); virtual void v##n##c(); virtual void v##n##d();
-struct CTCPhysicsStandard {
-    V4(0)                                           // 0-3
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+struct CTCPhysicsStandard : public CTCBase {
+    virtual void v0b(); virtual void v0c(); virtual void v0d();   // 1-3 (slot 0: ~CTCBase)
     virtual void OnCreate();                        // slot 4
     virtual void v5(); virtual void v6(); virtual void v7();
     V4(2) V4(3) V4(4) V4(5) V4(6) V4(7)             // 8-31
@@ -122,7 +127,6 @@ struct CTCPhysicsStandard {
     unsigned char   NavigationLayers : 1;
     unsigned char   PushableByHero : 1;
 
-    const CWorld& GetWorld() const;                 // 0x00686A80 (CTCBase)
     CWorldMap* GetWorldMap();                       // 0x006AF620 (CTCPhysicsBase)
     void CreatePPhysicsMeshInfo(const CGraphicDataRef& graphic);   // 0x006B05A0
     void BaseOnCreate();                            // 0x006B0780 CTCPhysicsBase::OnCreate
@@ -138,7 +142,7 @@ void CTCPhysicsStandard::OnCreate()
     CTCGraphicAppearance* graphic = ParentThing->PGraphicAppearance;
     if (graphic && graphic->GraphicData.IsValid()) {
         const CGraphicDataRef& data = graphic->GraphicData;
-        const CWorld& world = GetWorld();
+        const CWorld& world = PeekWorld();
         CGraphicBank* bank = world.PGraphicBank;
         unsigned char type = data.Type;
         if (type == 5) {

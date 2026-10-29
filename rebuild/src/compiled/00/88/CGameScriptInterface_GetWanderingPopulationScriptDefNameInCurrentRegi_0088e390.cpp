@@ -1,6 +1,6 @@
 // CGameScriptInterface::GetWanderingPopulationScriptDefNameInCurrentRegion(CCharString& name) const -- look the current region up (world map through CWorld slot 13: 0x004FB150 then 0x004FC180) and ask this interface's virtual slot 61 for the wandering-population script def name of the region's name (+0x18)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0088E390, length 64 bytes.
-// Callees: CWorld virtual slot 13 (+0x34) twice (the world kept in edi), CWorldMap::GetCurrentRegionNumber @ 0x004FB150 (labelled "CWorld::DrawGetEnvironment", propagated), CWorldMap::GetRegion @ 0x004FC180, this interface's virtual slot 61 (+0xf4). Shape: the region name address formed with `add eax,18h`, `ret 4`.
+// Callees: CWorld virtual slot 13 (+0x34) twice (the world kept in edi), CWorldMap::GetLoadedRegion @ 0x004FB150 (labelled "CWorld::DrawGetEnvironment", propagated), CWorldMap::GetRegion @ 0x004FC180, this interface's virtual slot 61 (+0xf4). Shape: the region name address formed with `add eax,18h`, `ret 4`.
 // Leaf: ?GetWanderingPopulationScriptDefNameInCurrentRegion@CGameScriptInterface@@UBEXAAVCCharString@@@Z
 struct CDisplayEngine_Retail;
 struct CPlayerManager_Retail;
@@ -67,7 +67,7 @@ class CScriptThing { public:
     virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
 };
 class CCharString;
-struct CRegion_Retail {
+class CRegion { public:
     unsigned char _pad[0x18];
     unsigned char m_name[4];                       // +0x18 (a CCharString)
 };
@@ -75,16 +75,16 @@ struct CThingManager_Retail {
     CThing_Retail* GetThingWithUID(__int64 uid);   // 0x0051ED80 (the label "CStopWatch::GetTicks" is propagated)
     void OnThingKill(CThing_Retail* thing);        // 0x00520C80
 };
-struct CWorldMap_Retail {
+class CWorldMap { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009();
     virtual bool IsMapLoaded(long map);            // slot 10 (+0x28)
     long GetMapNumberFromScriptName(const CCharString& name);   // 0x004FB880
     bool IsMapLoadedOnPlayerProximity(long map);   // 0x004FD000
-    long GetCurrentRegionNumber();                 // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
-    CRegion_Retail* GetRegion(long region);        // 0x004FC180
+    long GetLoadedRegion() const;                  // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
+    const CRegion& GetRegion(long region) const;   // 0x004FC180
     void SetRegionsAsConnectedInGraph(long a, long b, long c);   // 0x004FC970
-    long GetRegionNumberFromName(const CCharString& name);      // 0x004FC210
+    long GetRegionNumberFromName(const CCharString& name) const;   // 0x004FC210
     void ApplyScriptBrush(const CCharString& name, long flag);  // 0x004FE510 (the label "CDrawQuestInfo::OracleSymbolPushBack" is propagated)
 };
 struct CEnvironmentSpellEffectInterpolator_Retail;
@@ -106,10 +106,10 @@ class CWorld { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual CThingManager_Retail* GetThingManager();   // slot 3 (+0x0c)
         virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
-    virtual CWorldMap_Retail* GetWorldMapForEdit();  // slot 12 (+0x30)
-    virtual CWorldMap_Retail* GetWorldMap();         // slot 13 (+0x34)
+    virtual CWorldMap& GetWorldMap();         // slot 12 (+0x30)
+    virtual const CWorldMap& PeekWorldMap() const;   // slot 13 (+0x34)
     unsigned char                        _pad04[0x10];
-    CWorldMap_Retail*                    PWorldMap_ptr;          // +0x14 (engine/CWorld.h)
+    CWorldMap*                    PWorldMap_ptr;          // +0x14 (engine/CWorld.h)
     CEnvironment_Retail*                 PEnvironment_ptr;       // +0x18
     unsigned char                        _pad1c[0x58];
     COpinionReactionManager_Retail*      POpinionReactionManager_Data;   // +0x74
@@ -139,6 +139,6 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::GetWanderingPopulationScriptDefNameInCurrentRegion(CCharString& name) const
 {
-    CRegion_Retail* region = World->GetWorldMap()->GetRegion(World->GetWorldMap()->GetCurrentRegionNumber());
+    const CRegion* region = &World->PeekWorldMap().GetRegion(World->PeekWorldMap().GetLoadedRegion());
     GetWanderingPopulationScriptDefName(*(const CCharString*)region->m_name, name);
 }

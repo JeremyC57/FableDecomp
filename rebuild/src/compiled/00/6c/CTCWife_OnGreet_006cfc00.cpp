@@ -53,8 +53,8 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    const CPlayer& GetMainPlayer() const;       // 0x00449960 (Ego_r.pdb)
+    CPlayer& GetMainPlayer();                   // 0x00449970 (Ego_r.pdb)
 };
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
@@ -83,7 +83,7 @@ void CTCWife::OnGreet()
 {
     if (FrameGotMarriedToThePlayer > CWorld::GetFrame())
         return;
-    CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (!hero || (hero->Flags91 & 1))
         return;
     CTCHeroOpinionDeedLog* deedLog;

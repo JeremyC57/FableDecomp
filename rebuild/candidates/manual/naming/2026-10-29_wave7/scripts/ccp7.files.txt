@@ -1,0 +1,7 @@
+rebuild/src/compiled/00/85/CCombatActionBase_UpdateActionRunningTime_008579d0.cpp
+rebuild/src/compiled/00/8c/CCombatActionStrikeResponseMazeDoForcePush_FinishAction_008c2810.cpp
+rebuild/src/compiled/00/8c/CCreatureActionBanditKingLunge_FinishAction_008c8c30.cpp
+rebuild/src/compiled/00/8c/CCreatureActionBanditKingStuck_FinishAction_008c8f70.cpp
+rebuild/src/compiled/00/8c/CCreatureActionBanditKingStuckGetHit_FinishAction_008c91e0.cpp
+rebuild/src/compiled/00/8c/CCreatureActionBanditKingGetHit_FinishAction_008c92c0.cpp
+rebuild/src/compiled/00/8c/CCreatureActionBalverineCorneredJumpIntoSky_FinishAction_008ccd70.cpp

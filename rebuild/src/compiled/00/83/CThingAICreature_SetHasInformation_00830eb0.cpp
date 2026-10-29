@@ -1,6 +1,6 @@
 // CThingAICreature::SetHasInformation(bool hasInformation, bool wander, bool wave, bool continueAI) -- set the four information flag bits and refresh the player GUI when HasInformation changed
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00830EB0, 104 bytes (`ret 10h`).
-// Callees: CPlayerGui::Refresh(long) @ 0x004378C0 (label "_Cons_val<...>" propagated) on the player GUI singleton
+// Callees: CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 (label "_Cons_val<...>" propagated) on the player GUI singleton
 //   pointer at 0x013B8790.
 // Layout: Ego_r.pdb flag byte +0x1f8 is retail +0x1c8 (0x30 lower): bit 0 PerformingVillageTaskFlag, bit 1 AISuspended,
 //   bit 2 HasInformation, bit 3 WanderWithInformation, bit 4 WaveWithInformation, bit 5 ContinueAIWithInformation,
@@ -8,7 +8,7 @@
 // Shape: the change test is taken first (kept in the dead hasInformation slot: `setne [esp+0Ch]`), then the four
 //   adjacent bit assignments fold into one read-modify-write (`and al,0C3h ; shl dl,2 ; or`).
 class CPlayerGui { public:
-    void Refresh(long mode);                    // 0x004378C0
+    void UpdateMiniMapMarkers(bool mode);       // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                // 0x013B8790
 
@@ -33,5 +33,5 @@ void CThingAICreature::SetHasInformation(bool hasInformation, bool wander, bool 
     WaveWithInformation = wave;
     ContinueAIWithInformation = continueAI;
     if (changed)
-        g_pPlayerGui->Refresh(0);
+        g_pPlayerGui->UpdateMiniMapMarkers(false);
 }

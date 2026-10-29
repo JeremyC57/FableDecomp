@@ -121,7 +121,7 @@ class CTCFollowed : public CTCBase {
 public:
     CRetailList<CIntelligentPointer<CThing> >           Followers;     // +0x0c
     CRetailList<CIntelligentPointer<CThingAICreature> > AIFollowers;   // +0x10
-    bool IsAIFollower(CThingAICreature* creature);          // 0x006D4DB0
+    bool IsAIFollower(const CThingAICreature* creature) const;   // 0x006D4DB0
     void RemoveEmoteIcon(CThingAICreature* creature);       // 0x006D5050
     void QuitAIFollower(CThingAICreature* creature);
 };

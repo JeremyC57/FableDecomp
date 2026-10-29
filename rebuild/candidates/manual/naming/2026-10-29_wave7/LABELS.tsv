@@ -1,0 +1,17 @@
+address	name	note
+004378c0	CPlayerGui::UpdateMiniMapMarkers	label says CPlayerGui::Refresh; Ego_r + FableWin ?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z (bool force); one body reached by 24 rechecked callers (minimap-marker refresh), not ICF-folded (unique bytes); settled multi-name address
+004374f0	CPlayerGui::IsOpen	label says C3DMeshInfo::HasPhysicsMesh (propagated); Ego_r + FableWin ?IsOpen@CPlayerGui@@QBE_NXZ, neighbour of CPlayerGui::Open 0x004374B0
+00661e80	CThingCreatureBase::IsInMelee	label says NUISystem::CText::GetAlignment (propagated byte twin); Ego_r + FableWin ?IsInMelee@CThingCreatureBase@@QBE_NXZ; callers 00752480, 006d77c0, 00978e60, 00978f10, 006d5b50 test the creature melee state
+00449700	CPlayerManager::GetMainPlayerNumber	label says _global::GetMember_dword0x1c_00449700; Ego_r + FableWin ?GetMainPlayerNumber@CPlayerManager@@QBEJXZ (`mov eax,[ecx+1Ch]` = CPlayerManager +0x1C MainPlayer)
+00686d90	CTCBase::PeekThingSearchTools	label says CTCBase::GetThingSearchTools (that is 0x00686D80); Ego_r CTCBase 0x006B2180 - 0x2B33F0, ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ (also FableWin)
+00686d80	CTCBase::GetThingSearchTools	Ego_r CTCBase 0x006B2170 - 0x2B33F0, ?GetThingSearchTools@CTCBase@@IAEAAVCThingSearchTools@@XZ (also FableWin)
+004fb150	CWorldMap::GetLoadedRegion	label says DrawGetEnvironment (ICF-propagated catalog name); Ego_r + FableWin ?GetLoadedRegion@CWorldMap@@QBEJXZ (`mov eax,[ecx+9Ch]`), reached through PeekWorldMap
+00449960	CPlayerManager::GetMainPlayer	const overload; Ego_r + FableWin ?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ (the non-const one is 0x00449970)
+0064dd9a	NPlayerGui::CDrawMiniMap::UpdateRegionExitNames	Ego_r + FableWin CDrawMiniMap member order UpdateRegionExitNames, SetRegion, ToggleCentering = 0x0064DD9A, 0x0064DFDE, 0x0064E019
+004fc180	CWorldMap::GetRegion	the const overload (?GetRegion@CWorldMap@@QBEABVCRegion@@J@Z, Ego_r + FableWin); 0x004FB490 is the non-const one
+00686a70	CTCBase::GetWorld	Ego_r CTCBase run = retail + 0x2B33F0; ?GetWorld@CTCBase@@IBEAAVCWorld@@XZ (const, CWorld&)
+00686a80	CTCBase::PeekWorld	Ego_r CTCBase run; ?PeekWorld@CTCBase@@IBEABVCWorld@@XZ
+006869d0	CTCBase::GetDefinitionManager	Ego_r CTCBase 0x006B1DC0 - 0x2B33F0; ?GetDefinitionManager@CTCBase@@IBEABVCGameDefinitionManager@@XZ
+006d4d70	CTCFollowed::IsFollower	Ego_r + FableWin ?IsFollower@CTCFollowed@@QBE_NPBVCThing@@@Z; member order IsFollower, IsAIFollower
+006d4db0	CTCFollowed::IsAIFollower	Ego_r + FableWin ?IsAIFollower@CTCFollowed@@QBE_NPBVCThingAICreature@@@Z
+009ad410	CDefinitionManager::GetDefGlobalIndexFromName	Ego_r 0x00B05360 + FableWin ?GetDefGlobalIndexFromName@CDefinitionManager@@QBEJABVCCharString@@@Z (17 bound spellings in reloc_bindings.tsv: a follow-up family)

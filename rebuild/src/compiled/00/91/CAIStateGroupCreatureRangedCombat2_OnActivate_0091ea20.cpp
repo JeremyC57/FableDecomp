@@ -15,7 +15,7 @@ class CCombatManager { public:
 class CThingCreatureBase { public:
     unsigned char _pad[0x91];
     unsigned char IsDead : 1;               // +0x91 bit 0
-    CCombatManager* GetCombatManager();     // 0x00661ED0
+    CCombatManager& GetCombatManager();     // 0x00661ED0
 };
 
 class CBaseObject;
@@ -61,6 +61,6 @@ void CAIStateGroup_CreatureRangedCombat2::OnActivate()
 {
     if (PTargetThing.GetPItem() != 0 && !PTargetThing.GetPItem()->IsDead) {
         CThingCreatureBase* creature = PBrain->Creature;
-        creature->GetCombatManager()->RegisterCombatant(creature, PTargetThing.GetPItem(), false);
+        creature->GetCombatManager().RegisterCombatant(creature, PTargetThing.GetPItem(), false);
     }
 }

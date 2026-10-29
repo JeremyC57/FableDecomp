@@ -5,8 +5,8 @@
 // Callees: CPlayerGui::GetPHeroInfoScreensManager() const 0x00437CD0 (global player GUI 0x013B8790),
 // NHeroInformationScreens::CManager::RegisterScreen(const CBase*) 0x0066EB11, CDefClassBase::GetSubDef<T>
 // 0x00485815, CTCInventoryBase::SetPDef(long) 0x005BDB4D, CTCInventoryBase::OnCreate 0x005C0121,
-// vector<CEnginePrimitiveHandle>::Resize(long) 0x00443F90 and erase(first, last) 0x00440D70, CTCBase::GetWorld
-// 0x00686A80, CWorld slot 13 (+0x34, GetWorldMap), CWorldMap::GetNoRegions 0x004FB470 (manifest
+// vector<CEnginePrimitiveHandle>::Resize(long) 0x00443F90 and erase(first, last) 0x00440D70, CTCBase::PeekWorld
+// 0x00686A80, CWorld slot 13 (+0x34, PeekWorldMap), CWorldMap::GetNoMaps 0x004FB470 (manifest
 // "CWorldMap::DrawGetNoMaps"; the result minus one is the last region index), the defs' slot 1 on release.
 // Shape: the def dance of the landed CTCInventoryWeapons::OnCreate 0x005C3057 (owner def read into a local, the
 // sub-def out pointer zeroed between the load and the null test, hand add-ref/release around GetSubDef, the sub-def
@@ -64,18 +64,22 @@ struct CPrimitiveHandleVector {                 // vector<CEnginePrimitiveHandle
     void clear() { erase(begin(), end()); }
 };
 class CWorldMap { public:
-    long GetNoRegions();                        // 0x004FB470
+    long GetNoMaps() const;                     // 0x004FB470 (PDB ?GetNoMaps@CWorldMap@@QBEJXZ)
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();
-    virtual CWorldMap* GetWorldMap();           // slot 13 (+0x34)
+    virtual const CWorldMap* PeekWorldMap() const;   // slot 13 (+0x34) (FableWin.pdb)
 };
 
-struct CTCInventoryBase_Map {                   // retail 0x130 bytes
-    virtual void v00();
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+struct CTCInventoryBase_Map : public CTCBase {  // retail 0x130 bytes
     virtual void v01();
     virtual void v02();
     virtual void v03();
@@ -83,7 +87,6 @@ struct CTCInventoryBase_Map {                   // retail 0x130 bytes
     CThing* ParentThing;                        // +0x04
     unsigned char _pad08[0x130 - 0x08];
     void SetPDef(long globalDefIndex);          // 0x005BDB4D
-    CWorld* GetWorld() const;                   // 0x00686A80 (CTCBase)
 };
 class CTCInventoryMap : public CTCInventoryBase_Map, public NHeroInformationScreens::CBase {
 public:
@@ -116,7 +119,7 @@ void CTCInventoryMap::OnCreate()
     MapScreenQuestPrimitiveHandles.clear();
     MapScreenTeleportPrimitiveHandles.clear();
     MapScreenHousePrimitiveHandles.clear();
-    NumRegions = GetWorld()->GetWorldMap()->GetNoRegions() - 1;
+    NumRegions = PeekWorld().PeekWorldMap()->GetNoMaps() - 1;
     if (--mapDef->m_refCount == 0)
         mapDef->Destroy();
 }

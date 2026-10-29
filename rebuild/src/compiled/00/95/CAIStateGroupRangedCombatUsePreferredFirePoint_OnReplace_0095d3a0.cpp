@@ -182,7 +182,7 @@ class CCombatManager { public:
 };
 class CThingCreatureBase : public CThing { public:
     bool IsRegisteredCombatant();               // 0x00662410
-    CCombatManager* GetCombatManager();         // 0x00661ED0
+    CCombatManager& GetCombatManager();         // 0x00661ED0
 };
 class CTCCreatureModeManager { public:                 // interface 0x31
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
@@ -210,7 +210,7 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::OnReplace()
     CThingCreatureBase* creature = GetCreature();
     if (creature && !(creature->m_flags91 & 1)) {
         if (creature->IsRegisteredCombatant())
-            GetCreature()->GetCombatManager()->DeregisterCombatant(GetCreature());
+            GetCreature()->GetCombatManager().DeregisterCombatant(GetCreature());
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetInterface(&modes, 0x31))
             modes->RemoveMode(0x19);

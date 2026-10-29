@@ -3,10 +3,10 @@
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005FAD40, 336 bytes, `ret`, esp frame (speed TU), /GS (cookie
 //   0x0139C8A8, __security_check_cookie @ 0x00BFE9F9).
-// Callees: CTCBase::GetPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer @ 0x00449960,
+// Callees: CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
 //   CPlayer::PeekPControlledCreature @ 0x00487DD0 (as the landed sibling TeleportHeroToGuild 0x005FBD90), CTCBase::GetWorld
-//   @ 0x00686A70 and its const twin @ 0x00686A80, CMemoryBuffer::Copy(unsigned long, const void*) @ 0x009F1760,
-//   CPlayerManager::GetMainPlayerID @ 0x00449700 (engine 0x013B86A0 +0x1C), CWorld::HandleMoveHeroToRegionGameEvent
+//   @ 0x00686A70 and PeekWorld @ 0x00686A80, CMemoryBuffer::Copy(unsigned long, const void*) @ 0x009F1760,
+//   CPlayerManager::GetMainPlayerNumber @ 0x00449700 (engine 0x013B86A0 +0x1C), CWorld::HandleMoveHeroToRegionGameEvent
 //   @ 0x0049EAF0 (landed; it reads X, Y, Z, angle and three flag bytes in this order).
 // Layout: retail CWorld (Ego_r.pdb order, 16 bytes less ahead of these members): DisplayMiniMapOnRegionLoad +0x12F,
 //   GuildSealRecallPos +0x154, GuildSealRecallAngleXY +0x160; CGameEvent as the landed CInputProcessFishing
@@ -36,8 +36,8 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                   // 0x00449960
-    long GetMainPlayerID() const;                     // 0x00449700
+    const CPlayer& GetMainPlayer() const;             // 0x00449960 (Ego_r.pdb)
+    long GetMainPlayerNumber() const;                 // 0x00449700 (Ego_r.pdb)
 };
 class CEngine { public:
     unsigned char _pad00[0x1c];
@@ -53,19 +53,21 @@ class CWorld { public:
     void HandleMoveHeroToRegionGameEvent(const CGameEvent* event);   // 0x0049EAF0
 };
 
-class CTCInventoryMap { public:
-    CPlayerManager* GetPlayerManager() const;         // 0x00686D50 (CTCBase)
-    CWorld* GetWorld();                               // 0x00686A70 (CTCBase)
-    const CWorld* GetWorld() const;                   // 0x00686A80 (CTCBase)
-    const CWorld& GetWorldConst() const { return *GetWorld(); }
+class CTCBase { protected:                            // Ego_r.pdb CTCBase protected accessors
+    CWorld& GetWorld() const;                         // 0x00686A70
+    const CWorld& PeekWorld() const;                  // 0x00686A80
+    const CPlayerManager& PeekPlayerManager() const;  // 0x00686D50
+};
+class CTCInventoryMap : public CTCBase { public:
+    const CWorld& GetWorldConst() const { return PeekWorld(); }
     void TeleportHeroToGuildSealRecallLocation();
 };
 
 void CTCInventoryMap::TeleportHeroToGuildSealRecallLocation()
 {
-    const CThing* hero = GetPlayerManager()->GetMainPlayer()->PeekPControlledCreature();
+    const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (hero && !hero->IsDead) {
-        GetWorld()->DisplayMiniMapOnRegionLoad = true;
+        GetWorld().DisplayMiniMapOnRegionLoad = true;
         const C3DVector& pos = GetWorldConst().GuildSealRecallPos;
         float angle = GetWorldConst().GuildSealRecallAngleXY;
         CGameEvent event(0x2c);
@@ -76,7 +78,7 @@ void CTCInventoryMap::TeleportHeroToGuildSealRecallLocation()
         event.AddBool(true);
         event.AddBool(false);
         event.AddBool(false);
-        event.Player = (signed char)g_pEngine->PlayerManager->GetMainPlayerID();
-        GetWorld()->HandleMoveHeroToRegionGameEvent(&event);
+        event.Player = (signed char)g_pEngine->PlayerManager->GetMainPlayerNumber();
+        GetWorld().HandleMoveHeroToRegionGameEvent(&event);
     }
 }

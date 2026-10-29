@@ -1,10 +1,10 @@
 // CTCShop::OpenShoppingInterface() -- tell the hero's shopping component which shop it is in, then queue game event 0x1a (open the shopping interface, payload 0xc) for the main player
 // Flags: /GS
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00773B20, 210 bytes (plain `ret`, /GS cookie 0x0139C8A8).
-// Callees: CTCBase::GetGameSubsystem @ 0x00686D60 (its +0x1c member is the player manager here), CPlayerManager::GetMainPlayer
+// Callees: CTCBase::PeekComponent @ 0x00686D60 (CMainGameComponent +0x1c PPlayerManager, Ego_r.pdb), CPlayerManager::GetMainPlayer
 // const @ 0x00449960, CPlayer::GetPControlledCreature @ 0x00487DC0, the const-less interface LowerBound @ 0x0040F020, the interface 0x17
 // component's shop setter @ 0x005BC4CB (`mov [ecx+0B8h],arg ; ret 4`, named SetCurrentShop -- the manifest's
-// CObservable::AddExclusiveObserver is propagated), CMemoryBuffer::Copy @ 0x009F1760, CTCBase::GetPlayerManager const
+// CObservable::AddExclusiveObserver is propagated), CMemoryBuffer::Copy @ 0x009F1760, CTCBase::PeekPlayerManager const
 // @ 0x00686D50, CPlayerManager::GetMainPlayerNumber @ 0x00449700, CMainGameComponent::AddGameEvent @ 0x0041649C on
 // g_pMainGameComponent 0x013B86A0, __security_check_cookie @ 0x00BFE9F9.
 // Layout: CThing dead flag bit 0 of +0x91, interface bitset +0x20 (0x17 = bit 23 of the first word), interface map +0x44;
@@ -52,12 +52,8 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                     // 0x00449960
-    long GetMainPlayerNumber();                         // 0x00449700
-};
-struct CGameSubsystem {
-    unsigned char _pad00[0x1c];
-    CPlayerManager* PlayerManager;                      // +0x1c
+    const CPlayer& GetMainPlayer() const;               // 0x00449960 (Ego_r.pdb)
+    long GetMainPlayerNumber() const;                   // 0x00449700 (Ego_r.pdb)
 };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
@@ -73,6 +69,8 @@ class CGameEvent : public CMemoryBuffer { public:
     void AddULONG(unsigned long value) { Copy(4, &value); }
 };
 class CMainGameComponent { public:
+    unsigned char _pad00[0x1c];
+    CPlayerManager* PPlayerManager;                     // +0x1c (Ego_r.pdb scoped_ptr)
     void AddGameEvent(const CGameEvent& event);         // 0x0041649C
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
@@ -82,8 +80,9 @@ class CTCBase { public:
     bool ToBeRemoved;                                   // +0x08
     bool IsInGlobalUpdateTCs;                           // +0x09
     unsigned char _pad0a[2];
-    CPlayerManager* GetPlayerManager() const;           // 0x00686D50
-    CGameSubsystem* GetGameSubsystem();                 // 0x00686D60
+protected:                                          // Ego_r.pdb CTCBase protected accessors
+    const CPlayerManager& PeekPlayerManager() const;    // 0x00686D50
+    const CMainGameComponent& PeekComponent() const;    // 0x00686D60
 };
 class CTCShop : public CTCBase { public:
     void OpenShoppingInterface();
@@ -91,12 +90,12 @@ class CTCShop : public CTCBase { public:
 
 void CTCShop::OpenShoppingInterface()
 {
-    CThing* hero = GetGameSubsystem()->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = PeekComponent().PPlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCShoppingComponent* shopping;
     if (hero && !(hero->m_flags91 & 1) && hero->GetInterface(0x17, (CTCBase**)&shopping))
         shopping->SetCurrentShop(ParentThing);
     CGameEvent event(0x1a);
     event.AddULONG(0xc);
-    event.Player = (signed char)GetPlayerManager()->GetMainPlayerNumber();
+    event.Player = (signed char)PeekPlayerManager().GetMainPlayerNumber();
     g_pMainGameComponent->AddGameEvent(event);
 }

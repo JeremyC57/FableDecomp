@@ -101,10 +101,11 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vptr 0x01238
     virtual void v00();
     explicit __forceinline CIntelligentPointerCreature(CThing* thing) { SetPItem(thing); }
 };
-struct CIntelligentPointerThing : CBaseIntelligentPointer {
-    CIntelligentPointerThing(CThing* thing);    // 0x004A96F0
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other);   // 0x004A9760
-    CIntelligentPointerThing& operator=(const CIntelligentPointerCreature& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:
+    CIntelligentPointer(CThing* thing);    // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
+    CIntelligentPointer& operator=(const CIntelligentPointerCreature& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 class CSummonerDef { public:
     unsigned char _pad[0x28];
@@ -129,7 +130,7 @@ class CAIStateGroupBase { public:
     CWorld* GetPWorld();                        // 0x008FCFC0
 };
 struct CAIStateGroup_SummonerLightningAttack : CAIStateGroupBase {
-    CIntelligentPointerThing PTarget;           // +0x14
+    CIntelligentPointer<CThing> PTarget;           // +0x14
     const CSummonerDef* PDef;                   // +0x1c CDefPointer<const CSummonerDef>
     long NextFrameForPreemptiveUse;             // +0x20
     CThing* GetCreature() const { return PBrain->PCreature; }

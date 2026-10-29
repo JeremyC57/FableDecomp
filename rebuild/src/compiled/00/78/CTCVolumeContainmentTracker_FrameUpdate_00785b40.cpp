@@ -1,7 +1,7 @@
 // CTCVolumeContainmentTracker::FrameUpdate() -- while tracking is enabled and the tracked volume is active, re-runs the containment Update every 5 seconds' worth of frames (every 0.8 s when the camera is within 10 units of the thing), staggered by the thing's UID; immediately when the def says so or the tracker is not yet updated
 // Leaf: ?FrameUpdate@CTCVolumeContainmentTracker
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00785B40, 318 bytes (plain `ret`, ebp frame).
-// Callees: CTCBase::GetWorld() 0x00686A70; CThing::GetPos() const 0x004C73D0; the world's slot 8 (+0x20) camera
+// Callees: CTCBase::GetWorld() const 0x00686A70; CThing::GetPos() const 0x004C73D0; the world's slot 8 (+0x20) camera
 //          position getter (C3DVector by hidden pointer); CWorld::GetFrame 0x0049D870; __allrem 0x00BFEC30;
 //          CTCVolumeContainmentTracker::Update() 0x00785620.
 // Globals: the tracking-enabled byte 0x01375757, g_framesPerSecond 0x01375550; constants 5.0f 0x0126B664, 0.8f 0x0126B660,
@@ -20,12 +20,11 @@ class C3DVector { public:
 };
 extern unsigned char g_bVolumeTrackingEnabled;  // 0x01375757
 extern long g_framesPerSecond;                  // 0x01375550
-class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
-
-struct CWorldView {
+class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07();
-    virtual C3DVector GetCameraPosition();      // slot 8 (+0x20)
+    virtual C3DVector GetCameraPosition();      // slot 8 (+0x20) (name from use)
+    static long __fastcall GetFrame();          // 0x0049D870
 };
 class CThing {
 public:
@@ -65,13 +64,17 @@ __forceinline long CeilToLong(float value)
     return result;
 }
 
-class CTCVolumeContainmentTracker { public:
-    virtual void v00();
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    CWorld& GetWorld() const;                    // 0x00686A70 (Ego_r.pdb CTCBase, protected)
+    const CWorld& PeekWorld() const;             // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+class CTCVolumeContainmentTracker : public CTCBase { public:
     CThing*       ParentThing;                  // +0x04 (CTCBase)
     unsigned char _pad_0x08[0x10];
     bool          PreviouslyUpdated;            // +0x18
     CVolumeContainmentTrackerDef* PDef;         // +0x1c
-    CWorldView* GetWorld();                     // 0x00686A70 (CTCBase)
     void Update();                              // 0x00785620
     virtual void FrameUpdate();
 };
@@ -82,7 +85,7 @@ void CTCVolumeContainmentTracker::FrameUpdate()
         return;
     if (!PDef->AlwaysUpdate && PreviouslyUpdated) {
         long interval = CeilToLong(g_framesPerSecond * 5.0f);
-        CWorldView* world = GetWorld();
+        CWorld* world = &GetWorld();
         const C3DVector& pos = ParentThing->GetPos();
         if ((world->GetCameraPosition() - pos).GetMagnitudeSquared() < 100.0f)
             interval = CeilToLong(g_framesPerSecond * 0.8f);

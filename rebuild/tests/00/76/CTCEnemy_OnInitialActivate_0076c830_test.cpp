@@ -2,16 +2,16 @@
 
 class CTCEnemy { public: int tag; };
 
-struct GlobalThing {
+class CPlayerGui { public:
     int calls;
     int lastArg;
-    void Register(int arg);   // out-of-line => real emitted symbol
+    void UpdateMiniMapMarkers(bool force);   // out-of-line => real emitted symbol
 };
 
-void GlobalThing::Register(int arg) { calls++; lastArg = arg; }
+void CPlayerGui::UpdateMiniMapMarkers(bool force) { calls++; lastArg = force; }
 
-static GlobalThing g_obj = {0,-1};
-GlobalThing* g_electroGlobal = &g_obj;
+static CPlayerGui g_obj = {0,-1};
+CPlayerGui* g_pPlayerGui = &g_obj;
 
 static int g_baseCalled = 0;
 static CTCEnemy* g_baseSelf = 0;

@@ -125,7 +125,6 @@ public:
     CTexture*           FrameTexture;              // +0x80
 };
 extern CVideoSys* g_pVideoSys;                     // 0x013B8ABC
-extern CTexture*  g_pMovieTexture;                 // 0x013B8AC0
 
 namespace NUISystem {
 class CManager {
@@ -308,6 +307,7 @@ class CMovie : public CChangingStateComponent { public:
     float                  Angle;                  // +0x190
     bool                   AttempToPlay;           // +0x194
     static CMovie*         PlayingMovie;           // 0x013B8AB4
+    static CTexture*       MovieTexture;           // 0x013B8AC0
     virtual void Draw(CIEngine& engine, CEnginePrimitiveHandle* primitives, long layer, long* count, CComponent* drawer);
 };
 
@@ -339,12 +339,12 @@ void CMovie::Draw(CIEngine& engine, CEnginePrimitiveHandle* primitives, long lay
                 renderLayer = CManager::GetInstance()->GetLayer(Layer);
             if (WaitForSingleObjectEx(g_pVideoSys->FrameReadyEvent, 100, 1) != 0)
                 return;
-            if (!g_pMovieTexture)
+            if (!MovieTexture)
                 return;
             EnterCriticalSection(&g_pVideoSys->FrameLock);
-            g_pMovieTexture->CopyFromTexture(g_pVideoSys->FrameTexture, (unsigned long)-1);
+            MovieTexture->CopyFromTexture(g_pVideoSys->FrameTexture, (unsigned long)-1);
             LeaveCriticalSection(&g_pVideoSys->FrameLock);
-            CEnginePrimitive2DSprite sprite(0, &box, renderLayer, g_pMovieTexture, 2, 0, Angle, Angle,
+            CEnginePrimitive2DSprite sprite(0, &box, renderLayer, MovieTexture, 2, 0, Angle, Angle,
                                             colour.A, colour.R, colour.G, colour.B, 2,
                                             C2DVector(0.0f, 0.0f), C2DVector(0.0f, 0.0f));
             if (primitives && count)

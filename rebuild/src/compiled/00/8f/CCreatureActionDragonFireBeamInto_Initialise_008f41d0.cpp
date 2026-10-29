@@ -43,11 +43,12 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public: };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
     CThingCreatureBase* GetPItem() const { return (CThingCreatureBase*)CBaseIntelligentPointer::GetPItem(); }
@@ -99,6 +100,6 @@ void CCreatureAction_DragonFireBeamInto::Initialise()
     }
     CCombatActionBase::Initialise();
     CTCCreatureModeManager* modeManager;
-    if (PCreature.GetPItem()->GetInterface(&modeManager, 0x31))
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&modeManager, 0x31))
         modeManager->AddMode(CCountedPointer<CModeBase>(new CModeDragonFireBeam(PCreature, PTarget, Timer)));
 }

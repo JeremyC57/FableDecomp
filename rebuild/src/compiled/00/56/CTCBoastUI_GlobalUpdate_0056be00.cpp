@@ -52,7 +52,7 @@ template <class T> class CDefPointer { public:
 
 class CDefinitionManager {
 public:
-    long GetDefGlobalIndexFromName(const CCharString& name);                   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;                   // 0x009AD410
     bool GetDef(long globalIndex, CDefPointer<CCameraModeDef>* out);         // 0x0056D0C0
 };
 class CGameDefinitionManager : public CDefinitionManager {

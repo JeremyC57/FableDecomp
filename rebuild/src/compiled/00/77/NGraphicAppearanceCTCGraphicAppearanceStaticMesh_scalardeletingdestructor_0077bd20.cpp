@@ -16,7 +16,7 @@ struct CPrimitive;
 namespace NGraphicAppearance {
 class CAGraphicAppearanceComponent;
 class CTCGraphicAppearance { public:
-    void UnregisterComponent(CAGraphicAppearanceComponent* component);   // 0x004C0000
+    void UnregisterComponent(CAGraphicAppearanceComponent& component);   // 0x004C0000
 };
 }
 
@@ -47,7 +47,7 @@ struct CTCGraphicAppearanceStaticMesh : CTCBase, CAGraphicAppearanceComponent { 
     __forceinline virtual ~CTCGraphicAppearanceStaticMesh()
     {
         if (!ParentThing->Dead)
-            ParentThing->PTCGraphicAppearance->UnregisterComponent(this);
+            ParentThing->PTCGraphicAppearance->UnregisterComponent(*this);
     }
     virtual void OnAppearanceDraw();
 };

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00799000, 181 bytes (plain `ret`).
 // Callees: CBaseIntelligentPointer::GetPItem const @ 0x00A01B50, the interface LowerBound @ 0x0040F020, CTCShop::SetShopKeeper
 // (CThingCreatureBase*) @ 0x007751A0, CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 / dtor @ 0x00A01C10
-// (the clearing temporary; CIntelligentPointer vtable 0x01238C6C stored inline), CPlayerGui::Refresh(long) @ 0x004378C0 on
+// (the clearing temporary; CIntelligentPointer vtable 0x01238C6C stored inline), CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 on
 // g_pPlayerGui 0x013B8790.
 // Layout (retail; Ego_r.pdb CTCShopKeeper): Shop (CIntelligentPointer<CThing>) +0x14; CThing interface bitset +0x20 (0x53 =
 // bit 19 of the third word), map +0x44, dead flag bit 0 of +0x91.
@@ -55,7 +55,7 @@ class CTCShop { public:
     void SetShopKeeper(CThingCreatureBase* shopKeeper); // 0x007751A0
 };
 class CPlayerGui { public:
-    void Refresh(long flag);                            // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);               // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 class CTCShopKeeper { public:
@@ -85,5 +85,5 @@ void CTCShopKeeper::DetachFromShop()
         Shop.SetPItem((CBaseObject*)item);
     }
     if (detached)
-        g_pPlayerGui->Refresh(0);
+        g_pPlayerGui->UpdateMiniMapMarkers(false);
 }

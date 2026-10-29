@@ -2,17 +2,17 @@
 // Leaf: ProcessDrunkenness
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057CB7E, 567 bytes; frame-pointer size TU
 // (`#pragma optimize("y", off)` + `optimize("s", on)`, as the landed SetAge 0x0057B05F).
-// Callees: CTCBase::GetWorld() @ 0x00686A70 / GetWorld() const @ 0x00686A80, CGameScriptInterface::IsInMovieSequence()
-//          (slot 395, +0x62C, through CWorld::PGameScriptInterface +0x38), CTCBase::GetDefinitions() @ 0x006869D0,
-//          CTCHeroStats::GetMaxDrunkenness() @ 0x0057A89D, CTCBase::GetPRandomSeed() @ 0x00686DA0,
+// Callees: CTCBase::GetWorld() const @ 0x00686A70 / PeekWorld() const @ 0x00686A80, CGameScriptInterface::IsInMovieSequence()
+//          (slot 395, +0x62C, through CWorld::PGameScriptInterface +0x38), CTCBase::GetDefinitionManager() const @ 0x006869D0,
+//          CTCHeroStats::GetMaxDrunkenness() @ 0x0057A89D, CTCBase::GetPWorldSeed() const @ 0x00686DA0,
 //          GFRandom(range, seed) @ 0x004CDAE0 (__fastcall), GFGetCurrentFrame() @ 0x0049D870, CTCHeroStats::Vomit()
-//          @ 0x0057B783, CTCBase::GetPlayerManager() @ 0x00686D50, CPlayerManager::GetMainPlayer() @ 0x00449960,
+//          @ 0x0057B783, CTCBase::PeekPlayerManager() const @ 0x00686D50, CPlayerManager::GetMainPlayer() const @ 0x00449960,
 //          CPlayer::GetPControlledCreature() @ 0x00487DC0, std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound
 //          @ 0x0040F020, CTCHeroOpinionDeedLog::RemoveDeedStillSearchingForWitnesses(long) @ 0x006C5920.
 // Globals: g_DrunkennessSoberRate @ 0x0137CBD8 (a 1.0f data float), g_framesPerSecond @ 0x01375550, 24.0f @ 0x0123822C,
 //          0.0f @ 0x0122DEDC.
 // Shape: the frames-per-second global is read into a named local ahead of the vomit-frame call chain; the three
-// definition reads each call GetDefinitions(); interface 0x51 is the hero's opinion deed log (the handle is pushed
+// definition reads each call GetDefinitionManager(); interface 0x51 is the hero's opinion deed log (the handle is pushed
 // after it was reset to -1, as retail does). The script interface comes through an inline CWorld getter (`mov ecx,[eax+38h]`),
 // and the const world through an inline `GetConstWorld()` (a `const` self pointer copies Drunkenness to the frame first).
 // Layout: retail CTCHeroStats sits 0x18 below the PDB here (engine/CTCHeroStats.h): Drunkenness +0x19C (PDB +0x1B4),
@@ -109,7 +109,7 @@ class CHeroStatsDef { public:
     float         BeerReservoirDrainRate;            // +0xA8
 };
 
-struct CDefinitionHolder {
+class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xDC];
     CHeroStatsDef* PHeroStatsDef;                    // +0xDC CDefPointer<const CHeroStatsDef>::Object
 };
@@ -119,7 +119,15 @@ unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   /
 extern float g_DrunkennessSoberRate;                 // 0x0137CBD8
 extern long g_framesPerSecond;                       // 0x01375550
 
-class CTCHeroStats { public:
+class CTCBase { protected:                           // Ego_r.pdb CTCBase protected accessors
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    CWorld& GetWorld() const;                        // 0x00686A70
+    const CWorld& PeekWorld() const;                 // 0x00686A80
+    const CPlayerManager& PeekPlayerManager() const; // 0x00686D50
+    unsigned long* GetPWorldSeed() const;            // 0x00686DA0
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*         __vftable;                         // +0x000
     CThing*       ParentThing;                       // +0x004 CTCBase
     unsigned char _pad_0x008[0x194];
@@ -131,13 +139,8 @@ class CTCHeroStats { public:
     long          DeedHandle;                        // +0x1B0 (PDB +0x1C8)
     long          FrameEndVomit;                     // +0x1B4 (PDB +0x1CC)
 
-    CWorld* GetWorld();                              // 0x00686A70
-    const CWorld* GetWorld() const;                  // 0x00686A80
-    CDefinitionHolder* GetDefinitions() const;       // 0x006869D0
-    unsigned long* GetPRandomSeed();                 // 0x00686DA0
-    CPlayerManager* GetPlayerManager() const;        // 0x00686D50
-    const CWorld* GetConstWorld() const { return GetWorld(); }
-    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitions()->PHeroStatsDef; }
+    const CWorld* GetConstWorld() const { return &PeekWorld(); }
+    const CHeroStatsDef* GetHeroStatsDef() const { return GetDefinitionManager().PHeroStatsDef; }
     float GetMaxDrunkenness();                       // 0x0057A89D
     void Vomit();                                    // 0x0057B783
     void ProcessDrunkenness();
@@ -145,7 +148,7 @@ class CTCHeroStats { public:
 
 void CTCHeroStats::ProcessDrunkenness()
 {
-    if (GetWorld()->GetGameScriptInterface()->IsInMovieSequence())
+    if (GetWorld().GetGameScriptInterface()->IsInMovieSequence())
         return;
     Drunkenness -= g_DrunkennessSoberRate * GetConstWorld()->PGameTimeManager->TimeStep * 24.0f / g_framesPerSecond;
     if (BeerReservoir > 0.0f) {
@@ -162,7 +165,7 @@ void CTCHeroStats::ProcessDrunkenness()
         long fps = g_framesPerSecond;
         FrameToVomit = (GetHeroStatsDef()->MinSecondsToVomit +
                         GFRandom(GetHeroStatsDef()->MaxSecondsToVomit - GetHeroStatsDef()->MinSecondsToVomit + 1,
-                                 GetPRandomSeed())) * fps + CWorld::GetFrame();
+                                 GetPWorldSeed())) * fps + CWorld::GetFrame();
     }
     if (FrameToVomit != -1 && FrameToVomit < CWorld::GetFrame())
         Vomit();
@@ -173,7 +176,7 @@ void CTCHeroStats::ProcessDrunkenness()
     if (DeedHandle != -1 && CWorld::GetFrame() > FrameEndVomit) {
         DeedHandle = -1;
         FrameEndVomit = 0;
-        CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+        CThingPlayerCreature* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero) {
             CTCHeroOpinionDeedLog* log;
             if (hero->GetInterface(&log, 0x51))

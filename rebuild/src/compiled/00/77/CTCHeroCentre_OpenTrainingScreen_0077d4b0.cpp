@@ -54,7 +54,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                     // 0x00449960
+    const CPlayer& GetMainPlayer() const;                     // 0x00449960
     long GetMainPlayerNumber() const;                         // 0x00449700
 };
 struct CMemoryBuffer {
@@ -95,7 +95,7 @@ class CTCHeroCentre : public CTCBase { public:
 
 void CTCHeroCentre::OpenTrainingScreen()
 {
-    CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1)) {
         CTCHero* heroTC;
         if (hero->GetInterface(&heroTC, 0x29) && heroTC && heroTC->GiveTutorialForCategory(0xf, false)) {

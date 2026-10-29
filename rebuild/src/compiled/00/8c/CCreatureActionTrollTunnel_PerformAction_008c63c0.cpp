@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008C63C0, length 97 bytes (+ int3 padding).
 // Callees: CCreatureAction_TrollWhackGroundBase::WhackGround @ 0x008C61C0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (PCreature at +8),
 // CVectorMap::LowerBound @ 0x0040F020 (the inlined GetInterface lookup for type 0x31 = bit 17 of the bitset dword at +0x24),
-// CTCCreatureModeManager::AddMode(unsigned long) @ 0x0073AE10 (bool result dropped), CPlayerGui::Refresh(long) @ 0x004378C0 (landed naming of
+// CTCCreatureModeManager::AddMode(unsigned long) @ 0x0073AE10 (bool result dropped), CPlayerGui::UpdateMiniMapMarkers(bool) @ 0x004378C0 (landed naming of
 // 0x0089EEC0; the manifest "_Cons_val<...>" label is propagated) on the global g_pPlayerGui @ 0x013B8790.
 // Shape: the mode manager is an UNINITIALISED out-parameter used unconditionally; here the two paths JOIN (`jmp` to the shared AddMode push) because
 // more code follows the call; the miss path reads the never-written frame word into eax. The GUI pointer is loaded straight into ecx after AddMode.
@@ -57,7 +57,7 @@ class CTCCreatureModeManager { public:             // interface type 0x31 compon
     bool AddMode(unsigned long mode);       // 0x0073AE10
 };
 class CPlayerGui { public:
-    void Refresh(long flag);                // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);   // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;            // 0x013B8790
 
@@ -81,5 +81,5 @@ void CCreatureAction_TrollTunnel::PerformAction()
     CTCCreatureModeManager* pModes;
     PCreature.GetPItem()->GetInterface(&pModes, 0x31);
     pModes->AddMode(0x1e);
-    g_pPlayerGui->Refresh(0);
+    g_pPlayerGui->UpdateMiniMapMarkers(false);
 }

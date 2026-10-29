@@ -41,11 +41,12 @@ class CThing { public:
     }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
-    operator CThing*() const { return GetPItem(); }
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
+    operator CThing*() const { return ((CThing*)GetPItem()); }
 };
 
 struct CModeBase { };
@@ -81,6 +82,6 @@ public:
 void CCreatureAction_SummonerLightningOrbInto::PerformAction()
 {
     CTCCreatureModeManager* modeManager;
-    if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1) && PCreature.GetPItem()->GetInterface(&modeManager, 0x31))
-        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeSummonerLightningOrb(PCreature, PTarget.GetPItem())));
+    if (PTarget.GetPItem() && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1) && ((CThing*)PCreature.GetPItem())->GetInterface(&modeManager, 0x31))
+        modeManager->AddMode(CCountedPointer<CModeBase>(new CModeSummonerLightningOrb(PCreature, ((CThing*)PTarget.GetPItem()))));
 }

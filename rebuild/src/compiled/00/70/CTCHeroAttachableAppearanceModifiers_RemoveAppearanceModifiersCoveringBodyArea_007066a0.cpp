@@ -2,7 +2,7 @@
 // Leaf: RemoveAppearanceModifiersCoveringBodyArea
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007066A0, 352 bytes (`ret 8`). Ego_r.pdb
 // `?RemoveAppearanceModifiersCoveringBodyArea@CTCHeroAttachableAppearanceModifiers@@QAEXJW4EHeroAttachableAppearanceModifierType@@@Z`.
-// Callees: malloc @ 0x00BFEA0E / free @ 0x00BFEA14 (the local STLport list<long>), CTCBase::GetDefinitions @ 0x006869D0,
+// Callees: malloc @ 0x00BFEA0E / free @ 0x00BFEA14 (the local STLport list<long>), CTCBase::GetDefinitionManager @ 0x006869D0,
 // CDefinitionManager::GetDef<CThingObjectDef> @ 0x0042B040, CDefClassBase::GetSubDef<CAppearanceModifierDef> @ 0x0057FF92,
 // RemoveAppearanceModifier(long) @ 0x00706370, CTCBase::GetWorld @ 0x00686A80, the world frame getter @ 0x0049D870 (static).
 // Layout: as the landed RemoveAllAppearanceModifiers 0x00706640 (local model; retail 12-byte containers): FrameLastChanged +0x10,
@@ -113,6 +113,7 @@ class CDefinitionManager {
 public:
     template<class T> bool GetDef(long index, CDefPointer<const T>* out) const;   // 0x0042B040 for CThingObjectDef
 };
+class CGameDefinitionManager : public CDefinitionManager { };
 void* FindDef_007066a0(long index);
 void* FindSubDef_007066a0(const void* def);
 #pragma auto_inline(off)
@@ -135,7 +136,8 @@ class CTCBase { public:
     bool ToBeRemoved;
     bool IsInGlobalUpdateTCs;
     CWorld_Calls& GetWorld() const;                     // 0x00686A80
-    const CDefinitionManager* GetDefinitions();         // 0x006869D0
+protected:
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0 (Ego_r.pdb CTCBase, protected)
 };
 typedef long EHeroAttachableAppearanceModifierType;
 
@@ -161,7 +163,7 @@ void CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifiersCoveringBody
     for (CModifierEntry* it = modifiers.begin(); it != modifiers.end(); ++it) {
         CDefPointer<const CThingObjectDef> thingDef;
         CDefPointer<const CAppearanceModifierDef> modifierDef;
-        if (GetDefinitions()->GetDef(it->DefIndex, &thingDef)) {
+        if (GetDefinitionManager().GetDef(it->DefIndex, &thingDef)) {
             if (thingDef->GetSubDef(&modifierDef)) {
                 long covers = modifierDef->CoversBodyAreaFlags;
                 if (covers & bodyAreaFlags) {

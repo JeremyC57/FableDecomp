@@ -181,7 +181,10 @@ class CThingSearchTools { public:
     bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_All& filter, CThingVector& out);     // 0x007197C0
 };
 class CWorld { public: unsigned long* GetRandomSeed(); };  // 0x0049D810
-struct CTCShotDefinitionBase {
+class CTCBase { protected:
+    CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
+};
+struct CTCShotDefinitionBase : public CTCBase {
     void*   __vftable;
     CThing* ParentThing;                            // +0x04
     unsigned char _pad08[0x20];
@@ -189,7 +192,6 @@ struct CTCShotDefinitionBase {
     unsigned char _pad34[0x31];
     bool    MadeSound;                              // +0x65
     CThingSearchTools* GetThingSearchTools() const; // 0x00686D90
-    CWorld* GetWorld();                             // 0x00686A70
     CDefClassBase* GetOwnerDefClass() const { return ParentThing->DefClass; }
     void UpdateCreatureAwarenessOfMe();
 };
@@ -225,7 +227,7 @@ void CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe()
                 }
                 if (group)
                 {
-                    ai->PlaySound(group->first[GFRandom(group->last - group->first, GetWorld()->GetRandomSeed())], CSoundInit(), 0, 0);
+                    ai->PlaySound(group->first[GFRandom(group->last - group->first, GetWorld().GetRandomSeed())], CSoundInit(), 0, 0);
                     MadeSound = true;
                 }
             }

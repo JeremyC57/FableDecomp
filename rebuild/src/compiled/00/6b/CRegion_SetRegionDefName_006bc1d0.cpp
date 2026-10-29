@@ -14,7 +14,7 @@ class CCharString { public:
 };
 struct CDefPointer { void* PDef; };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);     // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;     // 0x009AD410
     bool GetDef(long index, CDefPointer& out);                   // 0x006BD060
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0

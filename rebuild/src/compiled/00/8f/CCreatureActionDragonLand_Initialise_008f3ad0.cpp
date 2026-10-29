@@ -41,7 +41,8 @@ class CThing : public CClass { public:
  const C3DVector& GetPos() const; //004C73D0
  void SetSuspendAnimation(bool,const void*); //00833A10, requester keyed suspension
 };
-struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CThing* GetPItem() const;}; //00A01C10/00A01B50
+class CBaseObject;
+struct CBaseIntelligentPointer {virtual ~CBaseIntelligentPointer();void* PData;CBaseObject* GetPItem() const;}; //00A01C10/00A01B50
 class CCombatActionBase { public:void* __vftable;void* IntelligentPointer;CBaseIntelligentPointer PCreature;
  void SetCombatAnimation(const CCharString&); //008574D0
  void Initialise(); //00857520
@@ -52,22 +53,22 @@ FABLE_STATIC_ASSERT(offsetof(CThing,PPhysics)==0x60);
 void CCreatureAction_DragonLand::Initialise(){
  {CCharString animation("LAND",-1);SetCombatAnimation(animation);}
  CCombatActionBase::Initialise();
- CThing* thing=PCreature.GetPItem();
+ CThing* thing=((CThing*)PCreature.GetPItem());
  if(thing->UsingComponents[1]&0x4000000){
   CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(0x3a);CInterfaceMap::Entry* p=map->LowerBound(type);
   if(p==map->Last || p->first>0x3a)p=map->Last;
   static_cast<CTCMapwho*>(((void*)p->second))->InMapwho[0]&=~1;
  }
- C3DVector position=PCreature.GetPItem()->GetPos();position.Z-=g_DragonLandingHeightDrop;
- PCreature.GetPItem()->GetPhysics()->ResetPosition(position);
+ C3DVector position=((CThing*)PCreature.GetPItem())->GetPos();position.Z-=g_DragonLandingHeightDrop;
+ ((CThing*)PCreature.GetPItem())->GetPhysics()->ResetPosition(position);
  C3DVector facing;
- PCreature.GetPItem()->GetPhysics()->GetFacingVectorInto(facing);
- thing=PCreature.GetPItem();CTCTargeted* target;
+ ((CThing*)PCreature.GetPItem())->GetPhysics()->GetFacingVectorInto(facing);
+ thing=((CThing*)PCreature.GetPItem());CTCTargeted* target;
  if(thing->UsingComponents[0]&0x200){
   CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(9);CInterfaceMap::Entry* p=map->LowerBound(type);
   if(p==map->Last || p->first>9)p=map->Last;
   target=static_cast<CTCTargeted*>(((void*)p->second));
  }
  target->Targetable=true;
- if(PCreature.GetPItem()->Type==1){CThing* creature=PCreature.GetPItem();creature->SetSuspendAnimation(true,this);}
+ if(((CThing*)PCreature.GetPItem())->Type==1){CThing* creature=((CThing*)PCreature.GetPItem());creature->SetSuspendAnimation(true,this);}
 }

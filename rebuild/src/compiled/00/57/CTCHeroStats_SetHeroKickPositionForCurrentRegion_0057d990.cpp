@@ -2,8 +2,8 @@
 // Leaf: SetHeroKickPositionForCurrentRegion
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0057D990, 109 bytes; size TU without a frame pointer here
 // (`#pragma optimize("s", on)`; `ret 0Ch`).
-// Callees: CTCBase::GetWorld() @ 0x00686A70 (twice), CTCBase::GetWorldMap() @ 0x00686D20,
-//          CWorldMap::GetCurrentRegionNumber() @ 0x004FB150, CWorld vtable slot 12 (+0x30) GetWorldMap(),
+// Callees: CTCBase::GetWorld() const @ 0x00686A70 (twice), CTCBase::PeekWorldMap() const @ 0x00686D20,
+//          CWorldMap::GetLoadedRegion() const @ 0x004FB150, CWorld vtable slot 12 (+0x30) GetWorldMap(),
 //          CWorldMap::GetRegion(long) @ 0x004FB490 (0x58-byte CRegion records; manifest label
 //          "CTCInventoryBase::GetCategoryWithIndex" is propagated), map<CCharString, MirroredCriminalStatus>::operator[]
 //          @ 0x005812DF on OutstandingCrimes (+0x0C), CWorld::GetWorldFrame() @ 0x0049D870 (static, after a kept
@@ -32,14 +32,14 @@ class CRegion { public:
 
 class CWorldMap { public:
     long GetLoadedRegion() const;                   // 0x004FB150
-    CRegion& GetRegion_004fb490(long index);                  // 0x004FB490
+    CRegion& GetRegion(long index);                 // 0x004FB490
 };
 
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
-    virtual CWorldMap* GetWorldMap();                // slot 12 (+0x30)
+    virtual CWorldMap& GetWorldMap();                // slot 12 (+0x30)
     static long __fastcall GetFrame();                     // 0x0049D870
 };
 
@@ -61,26 +61,29 @@ struct CCrimeStatusMap {                             // std::map<CCharString, Mi
     MirroredCriminalStatus& operator[](const CCharString& key);  // 0x005812DF
 };
 
-class CTCHeroStats { public:
+class CTCBase { protected:
+    CWorld& GetWorld() const;                        // 0x00686A70 (Ego_r.pdb CTCBase, protected)
+    const CWorldMap& PeekWorldMap() const;           // 0x00686D20 (Ego_r.pdb CTCBase, protected)
+};
+
+class CTCHeroStats : public CTCBase { public:
     void*           __vftable;                       // +0x00
     void*           ParentThing;                     // +0x04 CTCBase
     unsigned char   _pad_0x08[0x4];
     CCrimeStatusMap OutstandingCrimes;               // +0x0C
 
-    CWorld* GetWorld() const;                        // 0x00686A70
-    CWorldMap* GetWorldMap() const;                  // 0x00686D20
     void SetHeroKickPositionForCurrentRegion(const C3DVector& position, float angle, bool teleporter);
 };
 
 void CTCHeroStats::SetHeroKickPositionForCurrentRegion(const C3DVector& position, float angle, bool teleporter)
 {
-    CWorld* world = GetWorld();
+    CWorld* world = &GetWorld();
     MirroredCriminalStatus& status =
-        OutstandingCrimes[world->GetWorldMap()->GetRegion_004fb490(GetWorldMap()->GetLoadedRegion()).Name];
+        OutstandingCrimes[world->GetWorldMap().GetRegion(PeekWorldMap().GetLoadedRegion()).Name];
     status.EntrancePosX = position.X;
     status.EntrancePosY = position.Y;
     status.EntrancePosZ = position.Z;
     status.EntranceAngle = angle;
     status.ExitedUsingTeleporter = teleporter;
-    status.LastTimeExited = GetWorld()->GetFrame();
+    status.LastTimeExited = GetWorld().GetFrame();
 }

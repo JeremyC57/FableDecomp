@@ -6,7 +6,7 @@ class CEnvironment;
 class CDefinitionManager
 {
 public:
-    long GetDefGlobalIndexFromName(const CCharString& name);
+    long GetDefGlobalIndexFromName(const CCharString& name) const;
 };
 
 class CGameDefinitionManager : public CDefinitionManager

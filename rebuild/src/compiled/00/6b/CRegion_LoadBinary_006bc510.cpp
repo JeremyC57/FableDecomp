@@ -67,7 +67,7 @@ class CMemoryDataInputStream : public CDataInputStream { public:
 class CRegionDef;
 template <class T> class CDefPointer { public: const T* Def; };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);           // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;           // 0x009AD410
     template <class T> bool GetDef(long index, CDefPointer<T>* pointer);   // 0x006BD060
 };
 class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0

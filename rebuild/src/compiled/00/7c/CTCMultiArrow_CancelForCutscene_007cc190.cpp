@@ -41,10 +41,11 @@ public:
     }
     void Kill(bool immediately);                // 0x004C9B80
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 template<class T> struct CRetailVector {        // STLport vector<T> (12 bytes)
     T* _M_start;
@@ -93,7 +94,7 @@ void CTCMultiArrow::CancelForCutscene()
         CutSceneCancelled = true;
         for (long i = 0; i < (long)AmmoEffects.size(); ++i) {
             CTCDParticleEmitter* emitter = 0;
-            AmmoEffects[i].GetPItem()->GetInterface(&emitter, 0x4b);
+            ((CThing*)AmmoEffects[i].GetPItem())->GetInterface(&emitter, 0x4b);
             emitter->Asleep = true;
             NParticleEngine::CParticleEmitter* particles = emitter->PEmitter.GetPItem();
             if (particles) {

@@ -55,7 +55,7 @@ public:
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };          // 0x00487DD0
-class CPlayerManager { public: CPlayer* GetMainPlayer() const; };          // 0x00449960
+class CPlayerManager { public: const CPlayer& GetMainPlayer() const; };          // 0x00449960
 class CEngine { public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                          // +0x1C
@@ -111,7 +111,7 @@ void CTCInventoryTrade::InitialiseSellableItems()
 {
     CategoryIdent = 0xc;
     long total = 0;
-    const CThing* hero = g_pEngine->PlayerManager->GetMainPlayer()->PeekPControlledCreature();
+    const CThing* hero = g_pEngine->PlayerManager->GetMainPlayer().PeekPControlledCreature();
     CItemVector items;
     CTCInventoryBase* inventory = 0;
     hero->GetInterface(&inventory, 0x11);

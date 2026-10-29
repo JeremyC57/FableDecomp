@@ -1,6 +1,6 @@
 // CTCInventoryMap::FindTeleports() -- rebuilds the list of regions that hold a teleport: for every region (1..count), every map linked to the region is searched for teleporter things (TC 0xDD) and the region index is recorded once when an enabled teleporter is found
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005FC620, 528 bytes, plain `ret`. Speed TU (no pragmas; RTM `and esp,-8` frame).
-// Callees: memmove 0x00BFEAE6 (inline STLport clear), CTCBase::GetWorld() const 0x00686A80, CWorld slot 13 (+0x34)
+// Callees: memmove 0x00BFEAE6 (inline STLport clear), CTCBase::PeekWorld() const 0x00686A80, CWorld slot 13 (+0x34)
 //   PeekWorldMap, CWorldMap::GetRegion 0x004FC180, malloc 0x00BFEA0E / free 0x00BFEA14 (STLport list),
 //   CThingSearchTools::GetAllThings<CThing, list, CFilter_Bind2<CThingFilter_HasTC, CThingFilter_InMap>> 0x00617780
 //   (same-TU stand-in), vector<long>::_M_insert_overflow 0x00440990.
@@ -172,28 +172,30 @@ class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();                 // slot 12
-    virtual CWorldMap* PeekWorldMap();                // slot 13 (+0x34)
+    virtual const CWorldMap* PeekWorldMap() const;    // slot 13 (+0x34) (FableWin.pdb: const)
     unsigned char _pad04[0x20 - 0x04];
     CThingSearchTools* PThingSearchTools;             // +0x20
-    void GetAllThings(const CFilter_Bind2& filter, list<CThing*>& out) { PThingSearchTools->GetAllThings(filter, out); }
+    void GetAllThings(const CFilter_Bind2& filter, list<CThing*>& out) const { PThingSearchTools->GetAllThings(filter, out); }
 };
-class CTCInventoryMap { public:
+class CTCBase { protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+class CTCInventoryMap : public CTCBase { public:
     unsigned char _pad00[0x208];
     CLongVector   TeleportRegions;                    // +0x208
     unsigned char _pad214[0x23c - 0x214];
     long          NumberOfRegions;                    // +0x23c
-    CWorld* GetWorld() const;                         // 0x00686A80 (CTCBase)
     void FindTeleports();
 };
 void CTCInventoryMap::FindTeleports()
 {
     TeleportRegions.clear();
-    CWorldMap* worldMap = GetWorld()->PeekWorldMap();
+    const CWorldMap* worldMap = PeekWorld().PeekWorldMap();
     for (long r = 1; r <= NumberOfRegions; ++r) {
         const CRegion& region = worldMap->GetRegion(r);
         for (unsigned long i = 0; i < region.size(); ++i) {
             list<CThing*> things;
-            GetWorld()->GetAllThings(CThingFilter_HasTC(0xdd) && CThingFilter_InMap(*worldMap, region.LinkedMapsStart[i]), things);
+            PeekWorld().GetAllThings(CThingFilter_HasTC(0xdd) && CThingFilter_InMap(*worldMap, region.LinkedMapsStart[i]), things);
             for (_List_node<CThing*>* node = things._M_node._M_data->_M_next; node != things._M_node._M_data; node = node->_M_next) {
                 CTCTeleporter* teleporter = node->_M_data->PeekTC<CTCTeleporter>(0xdd);
                 if (teleporter->Enabled) {

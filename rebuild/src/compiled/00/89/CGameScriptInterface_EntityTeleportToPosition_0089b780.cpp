@@ -116,7 +116,7 @@ class CGameEvent : public CMemoryBuffer { public:
 class CWorldMap { public:
     VPAD16(a)                                      // 0..15
     virtual long GetRegionAt(const C3DVector& pos);   // slot 16 (+0x40)
-    long GetRegionNumberMapIsIn(long map);         // 0x004FC190
+    long GetRegionNumberMapIsIn(long map) const;         // 0x004FC190
     void StartMovePlayerPos(long map, const C3DVector& pos, long loadType);   // 0x00502500
     void FinishMovePlayer();                       // 0x005064B0
 };

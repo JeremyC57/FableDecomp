@@ -134,7 +134,7 @@ class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();     // 0x0044C6B0
 };
 class CPlayerGui { public:
-    void Refresh(long flag);                             // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);                // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                         // 0x013B8790
 
@@ -176,7 +176,7 @@ bool CQuestManager::ActivateTestQuestCard(const CCharString& questName, const CC
                             World->GuildSealRecallPos = C3DVector(0.0f, 0.0f, 0.0f);
                             World->GuildSealRecallAngleXY = 0.0f;
                             RemoveAvailableQuestCardType(card->GetDefName());
-                            g_pPlayerGui->Refresh(0);
+                            g_pPlayerGui->UpdateMiniMapMarkers(false);
                             if (--def->RefCount == 0)
                                 def->DeleteThis();
                             return true;

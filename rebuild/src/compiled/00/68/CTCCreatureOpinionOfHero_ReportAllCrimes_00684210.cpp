@@ -54,7 +54,7 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };               // 0x00487DD0
-class CPlayerManager { public: CPlayer* GetMainPlayer() const; };   // 0x00449960
+class CPlayerManager { public: const CPlayer& GetMainPlayer() const; };   // 0x00449960
 struct CTCVillager;
 class CTCVillage { public:
     bool IsCrimeHandled(long handle);                        // 0x0065914B
@@ -148,7 +148,7 @@ void CTCCreatureOpinionOfHero::ReportAllCrimes(CTCCreatureOpinionOfHero* informe
         if (!PeekThingSearchTools().GetPFirstLeafThing(CThingFilter_AICreatureHasProperty(3), &guard))
             return;
     }
-    const CThing* hero = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
+    const CThing* hero = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (!hero)
         return;
     CTCHeroOpinionDeedLog* log;

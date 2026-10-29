@@ -5,7 +5,7 @@
 //   GetFacing, CTCBase GetDefinitionManager 0x006869D0, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, CreateThing
 //   0x0080C500 (`__fastcall`), CExplosionDriver::AddExcludedThing 0x0080CBF0, CTCKraken::AddStrikeExplosion 0x007FBA20,
 //   GetSubDef 0x00669580 / GetEffectFromString 0x00669D30 (same-TU noinline stand-ins, as StartBeamEffect 0x007FB6A0),
-//   CTCBase GetDisplayEngine 0x00686A70 (engine+0x34 slot 10 hands back the camera manager), CTools::IsLineOfSightFiltered
+//   CTCBase::GetWorld 0x00686A70 (the world's current game camera +0x34, slot 10, hands back the camera manager), CTools::IsLineOfSightFiltered
 //   0x00877C40, CreateEffectThing 0x006E0880 (`__fastcall`). Global 0x013BAF10 = frame of the last beam explosion.
 // Strings: "MOUTH_DUMMY" 0x0126FA88, "KRAKEN_BEAM_EXPLOSION" 0x01272098, "BEAM_HIT" 0x0127208C; -1.0f at 0x0122DEE0.
 // Layout (local view): retail CTCKraken PKrakenDef +0x0C, PTarget +0x20, PBeamWeaponEffect +0x34, Mode +0x64 (PDB +0x74: the
@@ -124,22 +124,23 @@ class CGameCameraManager { public:
     unsigned char _pad00[0x78];
     CTools CamTools;                                  // +0x78
 };
-struct CCameraSource {
+class CAIGameCameraBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void GetCameraManager(CGameCameraManager** out);   // slot 10 (+0x28)
 };
-class CDisplayEngine { public:
-    unsigned char _pad00[0x34];
-    CCameraSource* PCameraSource;                     // +0x34
-    CCameraSource* GetCameraSource() const { return PCameraSource; }
+class CWorld { public:
+    unsigned char      _pad00[0x34];
+    CAIGameCameraBase* PCurrentGameCamera;            // +0x34 (Ego_r.pdb)
+    CAIGameCameraBase* GetGameCamera() { return PCurrentGameCamera; }   // inline here (Ego_r ?GetGameCamera@CWorld@@QAEPAVCAIGameCameraBase@@XZ)
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410 (Ego_r.pdb)
 };
+class CGameDefinitionManager : public CDefinitionManager { };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, const C3DVector* lookAt);   // 0x0080C500
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);              // 0x006E0880
-class CWorld { public: static long __fastcall GetFrame(); };                             // 0x0049D870
 extern long g_LastBeamExplosionFrame;                 // 0x013BAF10
 
 class CBaseObject;
@@ -174,7 +175,11 @@ class CKrakenDef { public:
     float BeamRange;                                  // +0x64
     long  BeamExplosionInterval;                      // +0x68
 };
-class CTCKraken { public:
+class CTCBase { protected:                            // Ego_r.pdb CTCBase protected accessors
+    const CGameDefinitionManager& GetDefinitionManager() const;   // 0x006869D0
+    CWorld& GetWorld() const;                         // 0x00686A70
+};
+class CTCKraken : public CTCBase { public:
     void*                   __vftable;                // +0x00
     CThing*                 ParentThing;              // +0x04
     unsigned char           _pad08[0x0c - 0x08];
@@ -185,8 +190,6 @@ class CTCKraken { public:
     CIntelligentPointer<CThing> PBeamWeaponEffect;        // +0x34
     unsigned char           _pad3c[0x64 - 0x3c];
     long                    Mode;                     // +0x64
-    CDefinitionManager* GetDefinitionManager();       // 0x006869D0
-    CDisplayEngine* GetDisplayEngine();               // 0x00686A70
     void AddStrikeExplosion(CThing* explosion);       // 0x007FBA20
     void UpdateBeamExplosion();
 };
@@ -215,7 +218,7 @@ void CTCKraken::UpdateBeamExplosion()
         dir = orientation.Up * -1.0f;
     }
     float length = range + PKrakenDef->BeamExtraLength;
-    CThing* explosion = CreateThing(GetDefinitionManager()->GetDefGlobalIndexFromName("KRAKEN_BEAM_EXPLOSION"),
+    CThing* explosion = CreateThing(GetDefinitionManager().GetDefGlobalIndexFromName("KRAKEN_BEAM_EXPLOSION"),
                                     &(start + dir * range), &(start + dir * length));
     if (explosion) {
         CExplosionDriver* driver;
@@ -229,7 +232,7 @@ void CTCKraken::UpdateBeamExplosion()
     if (CDefClassReference(ParentThing->m_pDef)->GetSubDef(effects) &&
         effects->GetEffectFromString("BEAM_HIT", effectType)) {
         CGameCameraManager* cameras;
-        GetDisplayEngine()->GetCameraSource()->GetCameraManager(&cameras);
+        GetWorld().GetGameCamera()->GetCameraManager(&cameras);
         C3DVector hitPos;
         C3DVector hitNormal;
         long hitIndex;

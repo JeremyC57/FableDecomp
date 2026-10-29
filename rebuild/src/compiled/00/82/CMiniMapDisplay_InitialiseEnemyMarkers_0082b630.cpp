@@ -63,7 +63,7 @@ template <class T> struct list {                   // STLport list: the header n
     _List_node<T>* _M_node;
 };
 class CWorldMap { public:
-    long GetRegionNumberMapIsIn(long mapIndex);    // 0x004FC190
+    long GetRegionNumberMapIsIn(long mapIndex) const;    // 0x004FC190
     long GetLoadedRegion() const;                 // 0x004FB150
 };
 struct SMarkerGraphics {                           // a marker's two graphic indices

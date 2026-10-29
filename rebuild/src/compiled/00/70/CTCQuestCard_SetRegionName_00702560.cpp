@@ -17,7 +17,7 @@ class CCharString { public:
 };
 
 class CPlayerGui { public:
-    void Refresh(long flag);                                // 0x004378C0
+    void UpdateMiniMapMarkers(bool flag);                   // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 
@@ -30,6 +30,6 @@ void CTCQuestCard_Methods::SetRegionName(const CCharString& name)
 {
     if (name != RegionName()) {
         RegionName() = name;
-        g_pPlayerGui->Refresh(0);
+        g_pPlayerGui->UpdateMiniMapMarkers(false);
     }
 }

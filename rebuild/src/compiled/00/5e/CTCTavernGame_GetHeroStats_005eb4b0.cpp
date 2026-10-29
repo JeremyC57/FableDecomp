@@ -51,7 +51,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;             // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;                // 0x00449960
+    const CPlayer& GetMainPlayer() const;                // 0x00449960
 };
 class CWorld { public:
     unsigned char   _pad_0x00[0x1c];
@@ -65,7 +65,7 @@ class CTCTavernGame { public:
 
 void CTCTavernGame::GetHeroStats(CTCHeroStats** out)
 {
-    CThing* hero = g_pWorld->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = g_pWorld->PPlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->IsDead())
         hero->GetInterface(out, 4);
 }

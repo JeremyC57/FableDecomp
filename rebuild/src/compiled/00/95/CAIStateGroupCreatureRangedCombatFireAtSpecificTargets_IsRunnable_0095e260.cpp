@@ -10,13 +10,14 @@
 // CIntelligentPointer<T>(item) temporary (vtable 0x01237F1C) assigned through SetPItem(GetPItem()).
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -149,7 +150,7 @@ bool CAIStateGroup_CreatureRangedCombatFireAtSpecificTargets::IsRunnable()
         CTCTargetHolder* holder = (CTCTargetHolder*)PBrain->Creature->FindEntry(8)->second;
         if (holder->PSpecificTarget.GetPItem())
         {
-            PTargetThing.SetPItem(CIntelligentPointer<const CThing>(holder->PSpecificTarget.GetPItem()).GetPItem());
+            PTargetThing.SetPItem(((CThing*)CIntelligentPointer<const CThing>(((CThing*)holder->PSpecificTarget.GetPItem())).GetPItem()));
             return true;
         }
     }

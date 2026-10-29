@@ -5,7 +5,7 @@
 // Label note: catalog "CAIStateGroup_MinionReactToAlert::FindAlertEvent"; the body sits in the CTC region and uses
 // +0x04 as the owner thing and +0x0c as an intelligent pointer, and calls SetAsDirectlyAwareOfPerceivedThing
 // @ 0x007449B0 on `this` -- treat the class attribution as unverified.
-// Callees: the world getter @ 0x00686A80 (`[0x013B8A1C]+24h`, +0x60 = CMessageEventManager),
+// Callees: CTCBase::PeekWorld() const @ 0x00686A80 (`[0x013B8A1C]+24h`, +0x60 = PMessageEventManager),
 // CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, CanBeSeenOrHeard>> @ 0x00746260,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50, AreThingsAllies @ 0x0076D4F0 (__fastcall),
 // CGameScriptThing::GetPThing @ 0x006AF520, SetAsDirectlyAwareOfPerceivedThing @ 0x007449B0.
@@ -144,10 +144,13 @@ __declspec(noinline) CMessageEvent* CMessageEventManager::FindMostRecentMessage(
     return (CMessageEvent*)r;
 }
 #pragma auto_inline(on)
-struct CWorldEvents {
+class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* PMessageEventManager; // +0x60
-    CMessageEventManager* GetPMessageEventManager() { return PMessageEventManager; }
+    CMessageEventManager* GetPMessageEventManager() const { return PMessageEventManager; }
+};
+class CTCBase { protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
 };
 
 bool __fastcall AreThingsAllies(CThing* a, CThing* b);   // 0x0076D4F0
@@ -159,12 +162,11 @@ template <class T> inline bool IsThingOfType(const CThing* const& thing)
     return (thing->ThingTypeFlags & mask) == mask;
 }
 
-struct CTCPerceiveAlert {
+struct CTCPerceiveAlert : public CTCBase {
     void* __vftable;                            // +0x00
     CThing* POwner;                             // +0x04
     unsigned char _pad_0x08[0x4];
     CBaseIntelligentPointerCtor PTracked;       // +0x0c
-    CWorldEvents* GetPWorld();                  // 0x00686A80
     void SetAsDirectlyAwareOfPerceivedThing();  // 0x007449B0
     void FindAlertEvent();
 };
@@ -172,7 +174,7 @@ struct CTCPerceiveAlert {
 void CTCPerceiveAlert::FindAlertEvent()
 {
     CThing* owner = POwner;
-    CMessageEvent* ev = GetPWorld()->GetPMessageEventManager()->FindMostRecentMessage(
+    CMessageEvent* ev = PeekWorld().GetPMessageEventManager()->FindMostRecentMessage(
         CMessageEventFilter_IsOfType(0xc) && CMessageEventFilter_CanBeSeenOrHeard(owner));
     if (ev != 0) {
         CBaseIntelligentPointerCtor& sender = ev->PSender;

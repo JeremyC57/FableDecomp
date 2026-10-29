@@ -87,12 +87,13 @@ struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
     CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
-struct CIntelligentPointer : CBaseIntelligentPointer {
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:
     CIntelligentPointer(CThing* item);                  // 0x004A96F0
     CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
 #pragma pack(pop)
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer& p);   // 0x004CC340 IS_THING_ALIVE<CIntelligentPointer<CThing> >
+bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThing>& p);   // 0x004CC340 IS_THING_ALIVE<CIntelligentPointer<CThing> >
 CThing* __fastcall CreateParticle(long effect, const C3DVector* pos, bool attach);   // 0x006E0880
 
 class CTCDParticleEmitter { public:                            // interface 0x4B
@@ -124,7 +125,7 @@ struct CRegionManager {
 class CPlayerGui { public:
     unsigned char _pad00[0xfd];
     bool TutorialShowing;                               // +0xfd (descriptive)
-    void Refresh(long a);                               // 0x004378C0
+    void UpdateMiniMapMarkers(bool a);                  // 0x004378C0
 };
 extern CPlayerGui* g_pPlayerGui;                        // 0x013B8790
 
@@ -149,7 +150,7 @@ class CTCTeleporter { public:
     bool Active;                                        // +0x10
     bool Activated;                                     // +0x11
     bool HeroInsideRadius;                              // +0x12
-    CIntelligentPointer PParticle;                      // +0x13
+    CIntelligentPointer<CThing> PParticle;                      // +0x13
     bool WaitingForTutorialToFinish;                    // +0x1b
     CWorld* GetWorld();                                 // 0x00686A80
     CRegionManager* GetRegionManager();                 // 0x00686D20
@@ -181,7 +182,7 @@ void CTCTeleporter::FrameUpdate()
             if (parent->ScriptName != "HERO_GUILD_TELEPORT_MARKER" && Active != true) {
                 Active = true;
                 Activated = true;
-                g_pPlayerGui->Refresh(0);
+                g_pPlayerGui->UpdateMiniMapMarkers(false);
             }
         }
     }
@@ -204,7 +205,7 @@ void CTCTeleporter::FrameUpdate()
                     if (parent->ScriptName != "HERO_GUILD_TELEPORT_MARKER" && Active != true) {
                         Active = true;
                         Activated = true;
-                        g_pPlayerGui->Refresh(0);
+                        g_pPlayerGui->UpdateMiniMapMarkers(false);
                     }
                 }
             }
@@ -227,7 +228,7 @@ void CTCTeleporter::FrameUpdate()
     if (((CThing*)PParticle.GetPItem()))
         return;
     {
-        CIntelligentPointer particle(CreateParticle(PDef->ParticleEffect, &ParentThing->GetPos(), false));
+        CIntelligentPointer<CThing> particle(CreateParticle(PDef->ParticleEffect, &ParentThing->GetPos(), false));
         PParticle = particle;
     }
     if (!((CThing*)PParticle.GetPItem()))
@@ -239,7 +240,7 @@ void CTCTeleporter::FrameUpdate()
     } else {
         if (IS_THING_ALIVE(PParticle)) {
             ((CThing*)PParticle.GetPItem())->Kill(true);
-            CIntelligentPointer none(0);
+            CIntelligentPointer<CThing> none(0);
             PParticle = none;
         }
     }

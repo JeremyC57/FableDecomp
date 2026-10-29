@@ -79,15 +79,16 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() const;                           // 0x00A01B50
     ~CBaseIntelligentPointer();                         // 0x00A01C10
 };
-struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
-    CIntelligentPointer_CThing(CThing* thing);          // 0x004A96F0
-    CIntelligentPointer_CThing& operator=(const CIntelligentPointer_CThing& other);   // 0x004A9760
+template <class T> class CIntelligentPointer;
+template <> class CIntelligentPointer<CThing> : public CBaseIntelligentPointer { public:
+    CIntelligentPointer(CThing* thing);          // 0x004A96F0
+    CIntelligentPointer& operator=(const CIntelligentPointer& other);   // 0x004A9760
 };
-bool __fastcall IS_THING_ALIVE(const CIntelligentPointer_CThing* pointer);   // 0x004CC340
+bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThing>* pointer);   // 0x004CC340
 bool PointerAliveSink_s7(CThing* item);   // stand-in: the dead-flag test
 #pragma auto_inline(off)
-// Same-TU body of IS_THING_ALIVE<CIntelligentPointer<CThing>> (0x004CC340, __fastcall): reads the pointer only.
-__declspec(noinline) bool __fastcall IS_THING_ALIVE(const CIntelligentPointer_CThing* pointer)
+// Same-TU body of IS_THING_ALIVE<CIntelligentPointer<CThing> > (0x004CC340, __fastcall): reads the pointer only.
+__declspec(noinline) bool __fastcall IS_THING_ALIVE(const CIntelligentPointer<CThing>* pointer)
 {
     CThing* item = ((CThing*)pointer->GetPItem());
     if (item == 0)
@@ -132,7 +133,7 @@ struct CTCProjectileTrap : CTCTrapBase {
     long ShotTimer;                                     // +0x60
     long IdleTimer;                                     // +0x64
     long NumShotsThisRound;                             // +0x68
-    CIntelligentPointer_CThing PTarget;                 // +0x6c
+    CIntelligentPointer<CThing> PTarget;                 // +0x6c
     void UpdateTrap();
     void TriggerTrap();
 };

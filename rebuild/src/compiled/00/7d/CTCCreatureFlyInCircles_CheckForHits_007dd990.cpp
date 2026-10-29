@@ -1,6 +1,6 @@
 // CTCCreatureFlyInCircles::CheckForHits() -- until it has been hit, look for a hit-by event on the flying creature caused by the hero's shot and remember it in HasBeenHit
 //
-// Retail 0x007DD990, 154 bytes (plain `ret`). Callees: CTCBase::GetWorld() const @ 0x00686A80
+// Retail 0x007DD990, 154 bytes (plain `ret`). Callees: CTCBase::PeekWorld() const @ 0x00686A80
 // (`[0x013B8A1C]+0x24`; manifest "CViewBase::GetDisplayEngine", propagated), CWorld::GetCurrentPlayer
 // @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0 (labels propagated), CVectorMap<ETCInterfaceType,
 // CTCBase*>::LowerBound @ 0x004365B0, CTCEntityEvents::GetEvent<NEntityEvents::CEventHitBy,
@@ -85,17 +85,20 @@ class CPlayer { public:
 };
 
 class CWorld { public:
-    CPlayer* GetCurrentPlayer();                            // 0x0049D9D0
+    CPlayer* GetCurrentPlayer() const;                      // 0x0049D9D0
 };
 
-struct CTCCreatureFlyInCircles {
-    virtual void v00();
+class CTCBase { public:
+    virtual ~CTCBase();                                           // slot 0 (0x00686830)
+protected:
+    const CWorld& PeekWorld() const;   // 0x00686A80 (Ego_r.pdb CTCBase, protected)
+};
+struct CTCCreatureFlyInCircles : public CTCBase {
     void*               ParentThing;                        // +0x04 (CTCBase)
     unsigned char       _pad08[4];
     CThingCreatureBase* Creature;                           // +0x0c
     unsigned char       _pad10[0x43 - 0x10];
     bool                HasBeenHit;                         // +0x43
-    CWorld* GetWorld() const;                               // 0x00686A80 (CTCBase)
     void CheckForHits();
 };
 
@@ -103,7 +106,7 @@ void CTCCreatureFlyInCircles::CheckForHits()
 {
     if (!HasBeenHit)
     {
-        CThing* hero = GetWorld()->GetCurrentPlayer()->GetPControlledCreature();
+        CThing* hero = PeekWorld().GetCurrentPlayer()->GetPControlledCreature();
         CTCEntityEvents* events;
         if (IsThingAlive(hero) && Creature->GetInterface(&events, 0x42))
         {

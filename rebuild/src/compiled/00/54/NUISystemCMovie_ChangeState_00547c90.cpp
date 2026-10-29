@@ -5,8 +5,9 @@
 //   CVideoSys::CVideoSys 0x00A3BC70 / Close 0x00A3B380 / Init 0x00A3B9D0, CAFile::ConvertPathToFullPath 0x00999110 (`__fastcall`,
 //   hidden result in ecx, path in edx; manifest "_global"), CPixelFormat::Initialise(long, long, long, long, bool) 0x009E3790,
 //   ~CWideString 0x0099B510; the playing movie's slot 143 (+0x23C), the owner's slot 91 (+0x16C), the primitive's slots 3/1,
-//   the render device's slots 70 (+0x118, release texture) and 69 (+0x114, create texture).
-// Globals: the playing movie 0x013B8AB4, the render device 0x013B8AB8, the video system 0x013B8ABC, the movie texture 0x013B8AC0.
+//   CIEngine slots 70 (+0x118) FreeTextureFromEngineResourcePools and 69 (+0x114) AllocateTextureFromEngineResourcePools (Ego_r.pdb).
+// Globals: the class statics PlayingMovie 0x013B8AB4, PEngine 0x013B8AB8 and MovieTexture 0x013B8AC0 (the bound spellings of the
+//   landed FreeTextures 0x00547B90 / ~CMovie 0x005483C0), the video system g_pVideoSys 0x013B8ABC.
 // Layout: the landed NUISystem::CMovie::Update 0x00547E40 model (Playing +0x15c, Handle +0x160, Movie +0x174, AttempToPlay
 //   +0x194, owner +0xdc); CChangingStateComponent::TargetState +0x148 (PDB +0x178 less 0x30); the component's float size at
 //   +0xcc/+0xd0; the video system's frame description (+0x20) holds the long width/height at +0x16c/+0x170.
@@ -88,7 +89,8 @@ public:
 };
 extern CVideoSys* g_pVideoSys;                     // 0x013B8ABC
 
-struct CRenderDevice {
+class CTexture;
+class CIEngine { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -158,11 +160,10 @@ struct CRenderDevice {
     virtual void v066();
     virtual void v067();
     virtual void v068();
-    virtual void* CreateTexture(unsigned long flags, const C2DExtentsI* size, unsigned long levels, const CPixelFormat* format);   // slot 69 (+0x114)
-    virtual void ReleaseTexture(void* texture);   // slot 70 (+0x118)
+    virtual CTexture* AllocateTextureFromEngineResourcePools(unsigned long flags, const C2DExtentsI& size, long levels,
+                                                             const CPixelFormat& format);   // slot 69 (+0x114)
+    virtual void FreeTextureFromEngineResourcePools(CTexture* texture);   // slot 70 (+0x118)
 };
-extern CRenderDevice* g_pRenderDevice;             // 0x013B8AB8
-extern void* g_pMovieTexture;                      // 0x013B8AC0
 
 namespace NUISystem {
 
@@ -336,6 +337,8 @@ class CMovie : public CChangingStateComponent { public:
     float                  Angle;                  // +0x190
     bool                   AttempToPlay;           // +0x194
     static CMovie*         PlayingMovie;           // 0x013B8AB4
+    static CIEngine*       PEngine;                // 0x013B8AB8
+    static CTexture*       MovieTexture;           // 0x013B8AC0
     void ChangeState(unsigned long newState);
 };
 
@@ -358,15 +361,15 @@ void CMovie::ChangeState(unsigned long newState)
             Handle.Clear();
             if (m_pOwner)
                 m_pOwner->OnChildMovieStopped();
-            if (g_pMovieTexture) {
-                g_pRenderDevice->ReleaseTexture(g_pMovieTexture);
-                g_pMovieTexture = 0;
+            if (MovieTexture) {
+                PEngine->FreeTextureFromEngineResourcePools(MovieTexture);
+                MovieTexture = 0;
             }
             CVideoFrameInfo* frame = g_pVideoSys->m_pFrameInfo;
             C2DExtentsI size(frame->Width, frame->Height);
             CPixelFormat format;
             format.Initialise(8, 8, 8, 8, false);
-            g_pMovieTexture = g_pRenderDevice->CreateTexture(0, &size, 1, &format);
+            MovieTexture = PEngine->AllocateTextureFromEngineResourcePools(0, size, 1, format);
             AttempToPlay = true;
             Playing = true;
         }

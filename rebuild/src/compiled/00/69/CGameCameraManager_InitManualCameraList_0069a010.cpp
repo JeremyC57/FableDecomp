@@ -160,7 +160,7 @@ public:
 
 class CDefinitionManager {
 public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
     template <class T> bool GetDef(long index, CDefPointer<T>* out) const;   // 0x0056D0C0 (COMDAT-folded)
 };
 class CGameDefinitionManager : public CDefinitionManager { };
