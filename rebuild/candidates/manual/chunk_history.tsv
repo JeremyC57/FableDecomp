@@ -24757,3 +24757,8 @@ chunk	address	module	name	length
 569	00cbd700	CItem	QuickSort	969
 569	00e12b30	CScriptGameResourceObjectScriptedThingBase	HandleQueenHornetDialogue	993
 569	00e39140	CScriptGameResourceObjectScriptedThingBase	HandleQuestCardAssassinAttacks	967
+570	00a5bef0	global	GFInterpolateVectors	946
+570	00e295e0	CScriptGameResourceObjectScriptedThingBase	HandleSisterArenaDialogue	940
+570	00ec3d40	global	sub_00ec3d40	994
+570	00ef87d0	global	sub_00ef87d0	1003
+570	00f3e6b0	CTriangleStripifier2	ProcessTriangles	920
