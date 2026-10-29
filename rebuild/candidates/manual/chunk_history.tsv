@@ -24751,3 +24751,4 @@ chunk	address	module	name	length
 567	005eadd6	CTCTavernGame	SetStateAfterYesNoAlt	332
 567	005eaf46	CTCTavernGame	SetStateAfterYesNoAlt	304
 567	005eb08d	CTCTavernGame	SetStateAfterOK	243
+568	0093b1d0	CAIStateGroup_BanditSitRoundCampfire	Update	1011
