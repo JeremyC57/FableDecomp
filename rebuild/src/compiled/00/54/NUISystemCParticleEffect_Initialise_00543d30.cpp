@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543D30, length 192 bytes. Virtual: slot 43 of NUISystem::CParticleEffect's
 // vtable 0x0124735C.
 // Callees: CChangingStateComponent::Initialise @ 0x0052C730, virtual slot 135 GetStateInfo (x2),
-//          CFrontEndManager::GetInstance @ 0x0041E5F2 and its slot 36 GetLayer, CParticleEmitterManager::Get
+//          CManager::GetInstance @ 0x0041E5F2 and its slot 36 GetLayer, CParticleEmitterManager::Get
 //          @ 0x00AEAAF0 (manifest label "GFGetPreMainMemoryUsed" is a byte-twin), Create2DEmitter @ 0x00AEB790.
 // Layout (no PDB record for NUISystem::CParticleEffect): +0x54 the component's 2D position, +0x12f its depth
 // (signed char), +0x144 the current state, +0x15c the emitter, +0x160 the particle effect index; the state
@@ -40,9 +40,9 @@ public:
 };
 
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
-    static CFrontEndManager* __fastcall GetInstance();                                           // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                                           // 0x0041E5F2
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -241,7 +241,7 @@ public:
     __forceinline void CreateEmitter()
     {
         Emitter = CParticleEmitterManager::Get()->Create2DEmitter(EffectIndex, &Position,
-                      CFrontEndManager::GetInstance()->GetLayer(Depth), true, CRightHandedSet());
+                      CManager::GetInstance()->GetLayer(Depth), true, CRightHandedSet());
     }
     virtual void Initialise();
     virtual void ChangeState(long state);

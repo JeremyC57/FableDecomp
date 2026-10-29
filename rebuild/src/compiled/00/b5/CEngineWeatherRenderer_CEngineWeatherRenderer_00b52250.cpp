@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B52250, length 1472 bytes (plain `ret`, no EH frame).
 // Label correction: catalogued "CEnginePrimitiveManagerParticleLineGroup" (propagated); the body calls the CEngineComponent ctor
 //   @ 0x00B59710, stores vtable 0x012A2434 and its member offsets are exactly engine/CEngineWeatherRenderer.h (0x1328 bytes).
-// Callees: CEngineComponent() @ 0x00B59710, CBase() @ 0x0099A2F0, CIndexBuffer() @ 0x00AC1EC0, CVertexShader() @ 0x00A62FB0,
+// Callees: CEngineComponent() @ 0x00B59710, CBaseClassNonCopyable() @ 0x0099A2F0, CIndexBuffer() @ 0x00AC1EC0, CVertexShader() @ 0x00A62FB0,
 //   CPixelShader() @ 0x00A5EC00, CEngineWeatherSettings() @ 0x00B50FB0, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0,
 //   GetVertexShader @ 0x00A5D5F0 / GetPixelShader @ 0x00A5D720, BuildBuffers (this) @ 0x00B51570.
 // Layout: engine/CEngineWeatherRenderer.h offsets hold, but its members are opaque byte arrays; restated locally with the real
@@ -75,9 +75,10 @@ struct CEngineData {
     CShaderResource* GetPixelShaderResource() { return PixelShaderResource; }
 };
 extern CEngineData* g_pEngineData;                 // 0x01436E98
-struct CBase {
-    virtual void VSlot0();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
 class CVertexCompressionParams { public:
@@ -87,7 +88,7 @@ class CVertexCompressionParams { public:
         : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
           PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
 };
-struct CVertexBufferBase : CBase {                 // 0x34 bytes
+struct CVertexBufferBase : CBaseClassNonCopyable {                 // 0x34 bytes
     IDirect3DVertexBuffer9*  PVertexBuffer;        // +0x04
     unsigned long            Length;               // +0x08
     long                     Type;                 // +0x0c

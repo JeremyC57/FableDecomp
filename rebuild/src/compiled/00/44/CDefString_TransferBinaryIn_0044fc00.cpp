@@ -11,12 +11,12 @@
 //   ReadWithSrcChunkOverflow) fills a local homed in the dead stream slot; the value is copied as a dword and the fast
 //   path forwards the source dword straight into TablePos. Each range-check exit has its own return tail.
 // The stream uses engine/CDataInputStream.h with an inline Read in a methods view.
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
 struct CDataInputStreamReader : CDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 newPosition) { return newPosition >= 0 && newPosition <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

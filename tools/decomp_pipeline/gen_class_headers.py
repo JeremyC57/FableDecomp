@@ -443,6 +443,25 @@ def class_key(name: str) -> str:
     return _KEYS.get(name, "struct")
 
 
+# Member functions a data-only layout cannot carry, opted in per class. Every entry is proven by two
+# sources (the PDB name sets plus the retail call target) and changes no layout: non-virtual and
+# static members add no storage; `virtual_dtor` replaces the slot-0 `__vftable` word with the
+# retail virtual destructor (the same 4-byte vptr at +0). `friend_hook` names a macro a row may
+# define (to `struct <its helper>`) to reach a private member from its inline helper class.
+HEADER_MEMBERS: dict[str, dict] = {
+    "CDataInputStream": {
+        "friend_hook": "FABLE_CDATAINPUTSTREAM_FRIEND",
+        "members": [("private", "void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);",
+                     "0x00993CA0 ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z")],
+    },
+    "CWorld": {
+        "members": [("public", "static long __fastcall GetFrame();", "0x0049D870 ?GetFrame@CWorld@@SIJXZ")],
+    },
+    # "CScriptThing": {"virtual_dtor": "0x004AA840 ??1CScriptThing@@UAE@XZ"},   measured in naming wave 3 and NOT
+    #   opted in: byte-neutral, but 52 of its 384 including rows need model edits first (HEADERS.md).
+}
+
+
 def emit_header(cls: str, donor: DonorStruct, emitted: list[Emitted], fwd: set[str],
                 n_retail: int, status: str) -> str:
     guard = "FABLE_ENGINE_" + re.sub(r"\W", "_", cls).upper() + "_H"
@@ -466,6 +485,12 @@ def emit_header(cls: str, donor: DonorStruct, emitted: list[Emitted], fwd: set[s
     # a `class` opens with `public:` so every member stays accessible to the landed bodies.
     key = class_key(cls)
     lines += ["#pragma pack(push, 1)", f"{key} {cls} {{"] + (["public:"] if key == "class" else [])
+    extra = HEADER_MEMBERS.get(cls, {})
+    vdtor = extra.get("virtual_dtor")
+    if vdtor and emitted and emitted[0].kind == "vptr" and emitted[0].off == 0:
+        # the slot-0 word is retail's vptr: the virtual destructor puts it there (same +0, same size)
+        emitted = emitted[1:]
+        lines.append(f"    {f'virtual ~{cls}();':<56} // +0x00 vptr: {vdtor}")
     w = max((len(e.ctype) for e in emitted), default=10)
     for e in emitted:
         decl = f"    {e.ctype:<{w}} {e.name}{e.suffix};"
@@ -473,6 +498,14 @@ def emit_header(cls: str, donor: DonorStruct, emitted: list[Emitted], fwd: set[s
         if e.comment:
             cm += f" {e.comment}"
         lines.append(f"{decl:<60} {cm}")
+    if extra.get("friend_hook"):
+        hook = extra["friend_hook"]
+        lines += [f"#ifdef {hook}", f"    friend {hook};{'':<{max(1, 47 - len(hook))}} // the including row's inline-helper class", "#endif"]
+    access = "public"
+    for acc, decl, why in extra.get("members", []):
+        if acc != access:
+            lines.append(f"{acc}:"); access = acc
+        lines.append(f"    {decl:<56} // {why}")
     lines += ["};", "#pragma pack(pop)", "",
               f"FABLE_STATIC_ASSERT(sizeof({cls}) == 0x{size:x});"]
     for e in emitted:

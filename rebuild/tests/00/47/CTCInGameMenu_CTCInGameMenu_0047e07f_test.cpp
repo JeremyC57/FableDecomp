@@ -16,12 +16,12 @@ template <class T> struct CPODVector {
     void clear() { erase(begin(), end()); }
 };
 struct CComponent { virtual ~CComponent() { ++g_deleted; } };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void Slot06() { g_slots += 1; }
     virtual void Slot29() { g_slots += 10; }
     virtual void Slot37() { g_slots += 100; }
-    static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
-};
+    static CManager* GetInstance() { static CManager m; return &m; }
+}; }
 struct CNodeList { void clear() { ++g_cleared; } };
 static CNodeList g_frontEndNodeList;
 class CInventoryDef { public:
@@ -55,10 +55,10 @@ CTCInGameMenu::~CTCInGameMenu()
     Components.clear();
     PVideoOptionsNotAcceptedDialog = 0;
     PVideoOptionsChangedDialog = 0;
-    CFrontEndManager::GetInstance()->Slot06();
-    CFrontEndManager::GetInstance()->Slot29();
+    NUISystem::CManager::GetInstance()->Slot06();
+    NUISystem::CManager::GetInstance()->Slot29();
     g_frontEndNodeList.clear();
-    CFrontEndManager::GetInstance()->Slot37();
+    NUISystem::CManager::GetInstance()->Slot37();
 }
 
 int main()

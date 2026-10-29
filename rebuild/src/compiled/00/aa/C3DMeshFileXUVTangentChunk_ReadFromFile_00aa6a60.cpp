@@ -9,12 +9,12 @@
 // 0x10 CArray is too large (retail adds 0x1C for the second array), so the arrays are viewed through
 // a three-pointer CArray model over the header's storage.
 // Leaf: ReadFromFile@C3DMeshFileXUVTangentChunkMethods
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/C3DMeshFileXUVTangentChunk.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 struct CInputStreamAccess : CDataInputStream {
- void ReadWithSrcChunkOverflow(unsigned char*, long); // 0x00993CA0
  static __forceinline bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
  __forceinline void Read(void* buffer,long size) {
   if(size<=0) return;

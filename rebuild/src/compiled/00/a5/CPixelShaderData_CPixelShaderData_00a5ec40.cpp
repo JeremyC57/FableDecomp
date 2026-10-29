@@ -1,7 +1,7 @@
 // CPixelShaderData::CPixelShaderData(IDirect3DPixelShader9* shader, const vector<long>& constIndices, long unused) -- wrap a created pixel shader with one reference and a private copy of its constant-index list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5EC40, length 107 bytes (+ int3 padding).
 // Leaf: ??0CPixelShaderData
-// Callees: CBase::CBase @ 0x0099A2F0, operator new[] @ 0x00BFEB22, memmove @ 0x00BFEAE6 (STLport copy of a POD range).
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, operator new[] @ 0x00BFEB22, memmove @ 0x00BFEAE6 (STLport copy of a POD range).
 // Layout: Ego_r.pdb CPixelShaderData (0x14 bytes, vtable 0x0129D58C): PixelShader +4, ReferenceCount +8, ConstCount
 // +0xc, ConstIndices +0x10.
 // Shape: the shader stored from the argument before the vtable store, ReferenceCount = 1, ConstCount = the vector's
@@ -11,9 +11,10 @@ extern "C" void* __cdecl memmove(void* dest, const void* src, unsigned int count
 void* __cdecl operator new[](unsigned int size);   // 0x00BFEB22
 
 struct IDirect3DPixelShader9;
-struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 
 struct CLongVector {                               // STLport vector<long>
@@ -32,12 +33,11 @@ inline long* CopyTrivial(const long* first, const long* last, long* result)   //
     return result;
 }
 
-struct CPixelShaderData : CBase {                  // vtable 0x0129D58C, 0x14 bytes
+struct CPixelShaderData : CBaseClassNonCopyable {                  // vtable 0x0129D58C, 0x14 bytes
     IDirect3DPixelShader9* PixelShader;            // +0x04
     unsigned long          ReferenceCount;         // +0x08
     unsigned long          ConstCount;             // +0x0c
     long*                  ConstIndices;           // +0x10
-    virtual void v00();
     CPixelShaderData(IDirect3DPixelShader9* shader, const CLongVector& constIndices, long unused);
 };
 

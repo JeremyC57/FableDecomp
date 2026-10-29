@@ -4,7 +4,7 @@
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 ("VILLAGE_KNOTHOLEGLADE" @ 0x012CAECC, -1), the script
 // interface (+4) virtual slots 72 (+0x120, GetThingWithScriptName: CScriptThing by hidden pointer) and 492 (+0x7b0,
 // EntityAttachToVillage), the CScriptThing temporary's inline destructor (vtable 0x01238C8C, counted pimpl release:
-// destroy + operator delete @ 0x00BFE9BC, CBase::~CBase @ 0x0099A2E0), CCharString::~CCharString @ 0x0099EAE0.
+// destroy + operator delete @ 0x00BFE9BC, CBaseClass::~CBaseClass @ 0x0099A2E0), CCharString::~CCharString @ 0x0099EAE0.
 // Model: exactly the landed sibling CGuardToHelpDefend::Init 0x00D1EAE0 (same village); Ego_r.pdb CKG_Sheriff has the
 // interface at +4, its script thing at +8, ParentClass +0x14, PMasterData +0x18 and ToldHeroToGatherGuards +0x1c.
 // Shape: the village name is a named local in its own block; the nested call fetches the interface vtable once (edi).
@@ -14,9 +14,9 @@ class CCharString { public:
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
 struct SCountBlock {
     long  m_references;                            // +0
@@ -40,9 +40,8 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
-    virtual void v00();
     __forceinline ~CScriptThing() {}
 };
 class CGameScriptInterface { public:

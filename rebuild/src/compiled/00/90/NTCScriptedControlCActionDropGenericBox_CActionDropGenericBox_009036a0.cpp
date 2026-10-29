@@ -1,7 +1,8 @@
 // NTCScriptedControl::CActionDropGenericBox::CActionDropGenericBox() -- default constructor.
+// Leaf: ??0CActionDropGenericBox@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009036A0, length 39 bytes.
 // Manifest label "CAIStateGroup_GazeAtHome" is propagated; the vtable stored, 0x0128D7BC, is
-// NTCScriptedControl::CActionDropGenericBox (rtti-vtables.tsv). Callee: CBase::CBase @ 0x0099A2F0.
+// NTCScriptedControl::CActionDropGenericBox (rtti-vtables.tsv). Callee: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0.
 //
 // Shape: base ctor, then the initialiser list in declaration order: a null pointer at +4, three false
 // flags at +8/+9/+0x10 and a -1 index at +0xc; the retail scheduler shares one zero register for the
@@ -9,23 +10,23 @@
 // descriptive (no PDB header for this scripted-control action).
 class CThing;
 
-struct CBase {
-    virtual void v00();
-    CBase();                                    // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
-struct CActionDropGenericBox : CBase {
+struct CActionDropGenericBox : CBaseClassNonCopyable {
     CThing* m_pBox;                             // +0x04
     bool m_dropped;                             // +0x08
     bool m_started;                             // +0x09
     long m_frame;                               // +0x0c = -1
     bool m_finished;                            // +0x10
-    virtual void v00();
     CActionDropGenericBox();
 };
 
 CActionDropGenericBox::CActionDropGenericBox()
-    : CBase()
+    : CBaseClassNonCopyable()
     , m_pBox(0)
     , m_dropped(false)
     , m_started(false)

@@ -3,7 +3,7 @@
 // Retail: Fable.exe @ 0x00A98910, 91 bytes. Vtable 0x0129DFD8 (CTemporaryBuffer, rtti-vtables.tsv).
 // Callees: CHandleBasedMemoryPool::Unlock(long) @ 0x00A02710, CHandleBasedMemoryPool::Free(long) @ 0x00A02B30,
 // CScratchBuffer::Unlock() @ 0x009F49A0 (`mov byte ptr [ecx+0Ch],0` = Locked = false; labelled "CXMVPlaybackInfo"),
-// operator delete[] @ 0x00BFEB1C, CBase::~CBase @ 0x0099A300 (tail-jumped from every path).
+// operator delete[] @ 0x00BFEB1C, CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (tail-jumped from every path).
 // Layout: PDB CTemporaryBuffer (0x18 bytes, CBase vptr +0): Data +4, MemoryPool +8, MemoryHandle +0xc,
 // ScratchBuffer +0x10, AllocateType +0x14; no engine header, modelled locally with the PDB names.
 // Shape: a three-case `switch` lowered to `sub eax,0 ; je / dec eax ; je / dec eax ; jne` with the case bodies laid out
@@ -19,10 +19,10 @@ class CScratchBuffer { public:
     void Unlock();                                 // 0x009F49A0
 };
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 
 enum EAllocateType {
     ALLOCATE_FROM_MEMORY_POOL = 0,
@@ -30,14 +30,13 @@ enum EAllocateType {
     ALLOCATE_FROM_HEAP = 2
 };
 
-class CTemporaryBuffer : public CBase {            // vtable 0x0129DFD8
+class CTemporaryBuffer : public CBaseClassNonCopyable {            // vtable 0x0129DFD8
 public:
     void*                   Data;                  // +0x04
     CHandleBasedMemoryPool* MemoryPool;            // +0x08
     long                    MemoryHandle;          // +0x0c
     CScratchBuffer*         ScratchBuffer;         // +0x10
     EAllocateType           AllocateType;          // +0x14
-    virtual void v00();
     ~CTemporaryBuffer();
 };
 

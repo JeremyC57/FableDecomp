@@ -25,7 +25,7 @@ class CCreatureAction_BalverineBreakOffFromCombatLong : public CCombatActionBase
     CCreatureAction_BalverineBreakOffFromCombatLong(CThingCreatureBase*,CThing*); // 008CCD30
 };
 extern long g_framesPerSecond; // 01375550
-struct CWorldClock {static long GetCurrentFrame();}; // 0049D870
+class CWorld { public: static long __fastcall GetFrame(); }; // 0049D870
 struct CJumpAtFleeingMethods : CAIStateGroup_BalverineJumpAtFleeingEnemy {
     CAIBrain* Brain() const {return *(CAIBrain* const*)_pad_0x04;}
     const CBaseIntelligentPointer& Target() const {return *(const CBaseIntelligentPointer*)PTarget;}
@@ -35,7 +35,7 @@ struct CJumpAtFleeingMethods : CAIStateGroup_BalverineJumpAtFleeingEnemy {
 };
 void CJumpAtFleeingMethods::Update() {
     long fps=g_framesPerSecond;
-    WaitUntilWorldFrameForNextAttempt=(long)(fps*5.0f+CWorldClock::GetCurrentFrame());
+    WaitUntilWorldFrameForNextAttempt=(long)(fps*5.0f+CWorld::GetFrame());
     if(IsAlive(Target())) {
         CThingCreatureBase* creature=(CThingCreatureBase*)Brain()->Creature;
         long result=PerformActionAndWait(&CCreatureAction_BalverineLungeAttack(creature,Target().GetPItem()),false);

@@ -4,15 +4,14 @@
 class CThingAICreature;
 
 
-extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* traits);
 
 void __fastcall LogReaction(CReactionFrequencyTraits_PeriodicFrequency* traits,
                             int edx_pad,
                             const CThingAICreature& creature, bool flag);
 
 static int g_called = 0;
-extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* traits)
-{
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+long __fastcall CWorld::GetFrame() {
     g_called++;
     return 0x1234;
 }

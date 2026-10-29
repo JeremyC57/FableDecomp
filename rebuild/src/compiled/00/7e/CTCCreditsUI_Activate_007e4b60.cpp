@@ -29,9 +29,7 @@ class CComponent { public:
 };
 class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 struct __true_type { __true_type() { } };
@@ -94,7 +92,7 @@ void CTCCreditsUI::Activate(CCharString part)
     if (Active)
         return;
     CreditPart = part;
-    NUISystem::CComponent* component = NUISystem::CFrontEndManager::GetInstance()->CreateComponent(CreditPart, false);
+    NUISystem::CComponent* component = NUISystem::CManager::GetInstance()->CreateComponent(CreditPart, false);
     component->Reset();
     component->ChangeState(1);
     Components.push_back(component);

@@ -163,9 +163,7 @@ class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString button);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 using namespace NUISystem;
@@ -190,7 +188,7 @@ class CTCInventoryClothing { public:
 CComponent* CTCInventoryClothing::ConstructClothingList(const CItemVector& items, CViewport* viewport, EClothingSuitPart part,
                                                         bool plainEntries)
 {
-    CFrontEndManager* fe = CFrontEndManager::GetInstance();
+    CManager* fe = CManager::GetInstance();
     CCountedPointer<CComponent> actions(fe->CreateComponent("UI_LIST_CLOTHING_ACTIONS", false));
     CComponent* actionsList = actions.m_pObject;
     CCountedPointer<CComponent> back(fe->CreateComponent("UI_BACK_FOR_LIST", false));

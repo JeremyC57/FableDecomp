@@ -47,13 +47,12 @@ class CUserProfileManager { public:
     CWideString ProfileName;                                // +0x08
     static CUserProfileManager* Get();                      // 0x0040D2A0
 };
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                               // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                               // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBase { public:                             // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                             // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                                   // 0x0099A920 (slot 2)
     long        AccessType;                                 // +0x04
@@ -111,9 +110,7 @@ CWideString __fastcall NResourceDirectoryNames::GetCustomTattooDir() { return Ma
 CWideString CCharString::ToWideString() const { return Make(4); }
 static CUserProfileManager g_profiles;
 CUserProfileManager* CUserProfileManager::Get() { return &g_profiles; }
-void CBase::v00() {}
-CBase::~CBase() {}
-void CDiskFileWin32::v00() {}
+CBaseClassNonCopyable::~CBaseClassNonCopyable() {}
 void CDiskFileWin32::Open(const CWideString&, FileAccessType, unsigned long) {}
 void CDiskFileWin32::Close() { ++g_closes; }
 CDiskFileWin32::CDiskFileWin32(const CWideString& pathname, FileAccessType access, unsigned long flags)

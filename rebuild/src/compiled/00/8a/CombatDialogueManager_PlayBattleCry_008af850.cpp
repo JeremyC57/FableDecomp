@@ -3,6 +3,7 @@
 // Leaf: PlayBattleCry
 // Layout: CDefStringTable buffer+12 and BufferedData start+8/finish+12 from9d49b0/995e70; CASoundBank mapper+4 froma01920; CCharString release99e9b0.
 // Layout: manager last-frame+0x20,CThingCreatureBase flags+0x20/interfaces+0x44/def+0x70,def battlecry+0xb0; shared def header and retail offsets.
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 #include "engine/CDefClassBase.h"
 #include "engine/CThingCreatureBase.h"
 namespace ExternalRetry_008af850 {
@@ -44,7 +45,6 @@ struct CTCSoundPlayer {unsigned long PlayAttachedSample(const CSoundPair&,const 
 struct Entry {int Type;CTCSoundPlayer* Value;};struct CVectorMap {Entry* Start;Entry* Finish;Entry* End;__declspec(noinline) Entry* LowerBound(const int* key){int length=(int)(Finish-Start);Entry* first=Start;while(length>0){int half=length>>1;Entry* middle=first+half;if(middle->Type<*key){first=middle+1;length-=half+1;}else length=half;}return first;}};
 struct CThingCreatureBase: ::CThingCreatureBase {__forceinline unsigned&Flags(){return *(unsigned*)_pad_0x20;}__forceinline CVectorMap&Interfaces(){return *(CVectorMap*)(_pad_0x20+0x24);}__forceinline CCreatureDef*&Definition(){return *(CCreatureDef**)_pad_0x70;}};
 __forceinline CTCSoundPlayer* FindSoundInterface(CThingCreatureBase* thing){int type=16;CVectorMap& interfaces=thing->Interfaces();Entry* p=interfaces.LowerBound(&type);return (p==interfaces.Finish||type<p->Type?interfaces.Finish:p)->Value;}
-unsigned int GetWorldFrame();
 struct CombatDialogueManager {unsigned char Pad[0x20];unsigned int LastBattleCryFrame;bool IsSpeechAllowed(const CThingCreatureBase&)const;bool PlayBattleCry(CThingCreatureBase&);};
 bool CombatDialogueManager::PlayBattleCry(CThingCreatureBase& creature){
  CThingCreatureBase* thing=&creature;
@@ -54,7 +54,7 @@ bool CombatDialogueManager::PlayBattleCry(CThingCreatureBase& creature){
   if(index && (thing->Flags()&0x10000)){
    CThingCreatureBase* receiver=thing;CTCSoundPlayer* sound=FindSoundInterface(receiver);
    CSoundInit params;CSoundPair pair;pair.FirstSound=index;pair.LastSound=index;
-   if(sound->PlayAttachedSample(pair,params,1,0,0)){LastBattleCryFrame=GetWorldFrame();return true;}
+   if(sound->PlayAttachedSample(pair,params,1,0,0)){LastBattleCryFrame=((unsigned int)CWorld::GetFrame());return true;}
   }
  }
  return false;

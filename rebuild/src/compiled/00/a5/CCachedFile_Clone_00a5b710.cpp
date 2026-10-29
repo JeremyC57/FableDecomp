@@ -2,7 +2,7 @@
 // constructor inlined (CBase(), this vtable, empty CArray, empty CWideString, null CCountedPointer, then
 // CCachedFile::Copy(other)); a failed allocation returns 0.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A5B710, length 79 bytes.
-// Callees: operator new @ 0x00BFEA1A, CBase::CBase @ 0x0099A2F0, CWideString::CWideString @ 0x0099AED0,
+// Callees: operator new @ 0x00BFEA1A, CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CWideString::CWideString @ 0x0099AED0,
 // CCachedFile::Copy @ 0x00A5B650. Vtable 0x012724D4 = CCachedFile (rtti-vtables.tsv).
 // Layout (landed CCachedFile::CCachedFile @ 0x00A5B590): +4 Position, +8 BufferStartPosition (neither is
 // touched here -- Copy fills them), +0xC DataBuffer ({first,last} zeroed by its inline constructor) and +0x14 its
@@ -14,12 +14,13 @@
 #include <stddef.h>  // The CArray<uchar> zeroing lands as {first,last} from one inline constructor plus a separately initialised capacity word: a single 3-pointer object hoists the CWideString `lea` above all three stores.
 void* __cdecl operator new(size_t size);        // 0x00BFEA1A
 
-struct CBase {
-    virtual void v00();
-    CBase();                                    // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
-class CAFile : public CBase { public:
+class CAFile : public CBaseClassNonCopyable { public:
 };
 
 struct CByteArray {                             // retail CArray<unsigned char>: {first, last} + capacity

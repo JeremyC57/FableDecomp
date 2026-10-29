@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BDA3D0, length 148 bytes (`ret 14h`; the first argument is unused; Initialise runs even
 // on a failed allocation, as in retail).
 // Callees: the disposal-list step @ 0x00BDA150, GFCreateGlobalAllocator / lock / unlock (0x009F2870 / 0x009F2000 / 0x009F2010),
-// CMemoryAllocator::InternalAllocate(0x34, 0, 0) @ 0x009F2A40, CBase::CBase @ 0x0099A2F0, CVertexBufferWin32::Initialise @ 0x00A63150
+// CMemoryAllocator::InternalAllocate(0x34, 0, 0) @ 0x009F2A40, CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CVertexBufferWin32::Initialise @ 0x00A63150
 // (return value ignored). Vtable 0x0129BA20 (CVertexBufferWin32).
 // Layout: the landed CVertexBufferWin32 model (0x00A8E160): CBase root, CVertexBufferBase members PVertexBuffer +4, Length +8, Type +0xC,
 // Stride +0x10, CompressionParams +0x14 (scale 1.0 x4, bias 0 x4); engine/CVertexBufferWin32.h only fixes the size.
@@ -28,10 +28,10 @@ inline void* AllocFromGlobalAllocator(unsigned int size)   // the landed AllocVi
     return block;
 }
 
-struct CBase {                                     // the engine's polymorphic root (landed 0x00A8E160 model)
-    virtual void VSlot0();
-    CBase();                                       // 0x0099A2F0
-    ~CBase();                                      // 0x0099A300
+class CBaseClassNonCopyable {
+protected:                                      // the engine's polymorphic root (landed 0x00A8E160 model)
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
 };
 #include "engine/CVertexBufferWin32.h"             // PDB header: opaque flattened base, members modelled below
 struct IDirect3DVertexBuffer9;
@@ -42,7 +42,7 @@ class CVertexCompressionParams { public:                  // PDB: PosScale XYZW 
         : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
           PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
 };
-struct CVertexBufferBase : CBase {                 // 0x34 bytes, PDB member names
+struct CVertexBufferBase : CBaseClassNonCopyable {                 // 0x34 bytes, PDB member names
     IDirect3DVertexBuffer9*  PVertexBuffer;        // +0x04
     unsigned long            Length;               // +0x08
     long                     Type;                 // +0x0c (EVertexType)

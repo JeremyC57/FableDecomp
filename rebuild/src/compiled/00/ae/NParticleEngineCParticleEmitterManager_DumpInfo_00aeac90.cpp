@@ -6,7 +6,7 @@
 //   operator+(const CCharString&, const char*) @ 0x0099F600, operator+(const CCharString&, const CCharString&) @ 0x0099F570,
 //   CCharString::FormatDouble @ 0x009A08B0 (all __fastcall, hidden result in ecx), CParticleEmitter::GetNoParticles
 //   @ 0x00AEDCA0, CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) @ 0x0099AD80 and its inline
-//   destructor (vtable 0x0122D06C, Close 0x0099A920, ~CWideString 0x0099B510, ~CBase 0x0099A300),
+//   destructor (vtable 0x0122D06C, Close 0x0099A920, ~CWideString 0x0099B510, ~CBaseClassNonCopyable 0x0099A300),
 //   CCharString::SaveToFile(CAFile&) @ 0x0099E5F0.
 // Layout: the manager's emitter list is an STLport list<CParticleEmitter*> (head node pointer at +0); emitter
 //   ParticleSystems +0x08, Transform translation +0xd4, Name +0x140 (landed 0x00AEBAF0/0x00AEDAF0 models); the
@@ -19,15 +19,14 @@ class CWideString { public:
     void* PStringData;
     ~CWideString();                                    // 0x0099B510
 };
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                          // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                          // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CAFile : public CBase { public:
+class CAFile : public CBaseClassNonCopyable { public:
 };
 class CDiskFileWin32 : public CAFile { public:                       // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                              // 0x0099A920 (slot 2)
     long        AccessType;                            // +0x04

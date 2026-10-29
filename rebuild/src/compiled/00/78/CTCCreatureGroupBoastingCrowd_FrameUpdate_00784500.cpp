@@ -25,6 +25,7 @@ class COpinionReactionManager { public:
 class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* POpinionReactionManager;   // +0x74
+    static long __fastcall GetFrame();   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 };
 struct SListNode { SListNode* next; SListNode* prev; };
 class CQuestManager { public:
@@ -33,7 +34,6 @@ class CQuestManager { public:
     bool BoastsEmpty() const { return m_boasts->next == m_boasts; }
 };
 extern CQuestManager* g_pQuestManager;          // 0x013B89FC
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
 
 class CBaseObject;
 class CBaseObjectPointer;
@@ -92,7 +92,7 @@ void CTCCreatureGroupBoastingCrowd::FrameUpdate()
         return;
     }
     if (HeroOpinionSourcesPushed > 0 && CurrentStateIsOffPodiumType() && FrameToClearRemainingOpinionSources > 0 &&
-        GFGetCurrentFrame() > FrameToClearRemainingOpinionSources) {
+        CWorld::GetFrame() > FrameToClearRemainingOpinionSources) {
         FrameToClearRemainingOpinionSources = 0;
         while (HeroOpinionSourcesPushed > 0) {
             COpinionReactionManager* manager = GetWorld().POpinionReactionManager;
@@ -101,7 +101,7 @@ void CTCCreatureGroupBoastingCrowd::FrameUpdate()
         }
         EnterCrowdState(0);
     }
-    if ((CrowdState == 5 || CrowdState == 6) && GFGetCurrentFrame() > FrameToLeavePostBoastState) {
+    if ((CrowdState == 5 || CrowdState == 6) && CWorld::GetFrame() > FrameToLeavePostBoastState) {
         FrameToLeavePostBoastState = 0;
         if (!g_pQuestManager->BoastsEmpty())
             EnterCrowdState(CurrentEncouragementState);

@@ -5,7 +5,7 @@
 //   Ego_r.pdb's only member of the class is long Delay +0x08 (12-byte class).
 // Callees: this's virtual slot 8 (+0x20, the reset), CCharString::CCharString(const char*, long) 0x0099EBF0,
 //   CStringParser::CStringParser 0x00404720, CCharString::~CCharString 0x0099EAE0, TransferIn(CPersistContext*,
-//   CStringParser*, long*) 0x009E2590 (`__fastcall`), list<CStringParserCommentBoundaries>::~list 0x004046B0, CBase::~CBase 0x0099A2E0.
+//   CStringParser*, long*) 0x009E2590 (`__fastcall`), list<CStringParserCommentBoundaries>::~list 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0.
 // Shape (family M157, representative 0x005DC450): the landed CAnimComponentSetCreatureMode::Initialise 0x005DC9B0 /
 //   CAnimComponentFlags::Initialise 0x005DC3C0 -- `Reset(); CStringParser parser(text, 0, CCharString("", -1), 0);
 //   Delay = ParseLong(context, parser); return true;` (the parsed long homed in the dead text slot). Speed TU.
@@ -15,15 +15,15 @@ public:
     CCharString(const char* text, long length);           // 0x0099EBF0
     ~CCharString();                                       // 0x0099EAE0
 };
-struct CBase {
-    virtual void v00();
-    ~CBase();                                             // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                             // 0x0099A2E0
 };
 struct CStringParserCommentList {                         // retail std::list<CStringParserCommentBoundaries>: sentinel only
     void* m_pHead;
     ~CStringParserCommentList();                          // 0x004046B0
 };
-class CStringParser : public CBase {                      // retail 0x28 bytes
+class CStringParser : public CBaseClass {                      // retail 0x28 bytes
 public:
     char* String;                                         // +0x04
     unsigned long BaseLineOffset;                         // +0x08

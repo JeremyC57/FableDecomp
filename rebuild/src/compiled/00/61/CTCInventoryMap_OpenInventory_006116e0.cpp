@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006116E0, 535 bytes (+ int3 padding), speed TU (no frame pointer, `sub esp,10h`).
 // Callees: NHeroInformationScreens::CBase slots 2 (+0x08) / 3 (+0x0C) through the +0x130 secondary base,
 //   CTCInventoryBase 0x005BC6ED (manifest "_Dest_val<...>" is propagated; named descriptively) and OpenInventory 0x005BD4EA,
-//   CFrontEndManager::GetInstance 0x0041E5F2 + manager slots 16 (+0x40) / 26 (+0x68) + CreateComponent 0x0041DB1D,
+//   CManager::GetInstance 0x0041E5F2 + manager slots 16 (+0x40) / 26 (+0x68) + CreateComponent 0x0041DB1D,
 //   CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0 (g_pPlayerGui 0x013B8790), CManager::GetCurrentScreen 0x0066E7BD /
 //   SetCurrentScreenType 0x0066E799, the sound system's slot 46 (+0xB8) (g 0x013B8394), OnOpenMenus 0x0041D122, the input
 //   controller's slot 76 (+0x130), FindTeleports 0x005FC620, the map-menu builder 0x0060EEB0 (manifest
@@ -35,9 +35,7 @@ class CManager { public:
     virtual void SetActiveThing(void* thing);           // slot 26 (+0x68)
 #undef V
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 struct __true_type { __true_type() { } };
@@ -153,7 +151,7 @@ void CTCInventoryMap::OpenInventory()
     if (!IsActive()) {
         ResetOpenState();
         AccumFadeTime = 0.0f;
-        NUISystem::CFrontEndManager::GetInstance()->SetActiveThing(ParentThing);
+        NUISystem::CManager::GetInstance()->SetActiveThing(ParentThing);
         PreviousScreenType = g_pPlayerGui->GetPHeroInfoScreensManager()->GetCurrentScreen()->GetScreenType();
         RefreshScreen(0);
         TeleportsFound = true;
@@ -164,7 +162,7 @@ void CTCInventoryMap::OpenInventory()
         gui->GetPHeroInfoScreensManager()->SetCurrentScreenType(GetScreenType());
     }
     CTCInventoryBase::OpenInventory();
-    NUISystem::CFrontEndManager::GetInstance()->AddActiveTC(this);
+    NUISystem::CManager::GetInstance()->AddActiveTC(this);
     if (IsActive())
         return;
     if (g_pSoundSystem) {
@@ -176,7 +174,7 @@ void CTCInventoryMap::OpenInventory()
     g_pMainGameComponent->Display->Input->SetEnabled(false);
     NUISystem::CComponent* screen = BuildMapMenu(0, 0);
     if (screen) {
-        NUISystem::CComponent* pointer = NUISystem::CFrontEndManager::GetInstance()->CreateComponent("UI_MOUSE_POINTER", false);
+        NUISystem::CComponent* pointer = NUISystem::CManager::GetInstance()->CreateComponent("UI_MOUSE_POINTER", false);
         pointer->Reset();
         Components.push_back(pointer);
         screen->Reset();

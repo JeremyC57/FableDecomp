@@ -2,7 +2,7 @@
 // Retail 0x0056F177, 248 bytes, ret 4 (`this` unused). The picture name is a default CCharString local
 // (0x0099E4B0) reassigned by an if-chain (operator=(const char*) 0x0099EFE0) for the stat ids 0..5 and 9
 // (PHYSIQUE, HEALTH, TOUGHNESS, SPEED, ACCURACY, GUILE, MAGIC_POWER). The front-end manager
-// (CFrontEndManager::GetInstance 0x0041E5F2, __fastcall) creates a "UI_RING_PIC" component
+// (CManager::GetInstance 0x0041E5F2, __fastcall) creates a "UI_RING_PIC" component
 // (CManager::CreateComponent(const CCharString&, bool) 0x0041DB1D): the literal converts IMPLICITLY to the
 // const CCharString& (CCharString(const char*, long) 0x0099EBF0), so VC7.1 builds the temporary in the dead
 // `stat` argument slot and re-addresses it with `lea`, destroying it (0x0099EAE0) right after the call. The
@@ -196,9 +196,7 @@ class CManager { public:
     unsigned char _pad_000[0x10];
     CCountedPointer<CGraphicDataBank> GraphicsBank;               // +0x10
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();            // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 
@@ -218,7 +216,7 @@ NUISystem::CComponent* CTCInventoryExperience::GetExperienceStatPic(EHeroTrainab
     if (stat == 4) picName = "UI_RING_PIC_ACCURACY";
     if (stat == 5) picName = "UI_RING_PIC_GUILE";
     if (stat == 9) picName = "UI_RING_PIC_MAGIC_POWER";
-    NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     NUISystem::CComponent* pic = manager->CreateComponent("UI_RING_PIC", false);
     CCountedPointer<CGraphicDataBank> bank(manager->GraphicsBank);
     pic->SetGraphic(bank->FindIndexBySymbol(picName));

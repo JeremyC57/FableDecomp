@@ -8,6 +8,7 @@
 // Shape: the inlined Read(buffer, size) of the landed ReadPixelFormat (0x00994670) with a leading `size > 0` guard (folded for the
 // 4-byte count read, kept for the variable-length one); the count comes from an inlined ReadLong() helper (its frame local is read once, the value stays in ebp); the byte array is the retail CArray with the
 // GetData idiom (its own address when empty); the result is a NAMED CCharString (copy-constructed into the hidden pointer, no NRVO).
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -28,7 +29,6 @@ namespace N_00411910 { struct CByteArray {                                      
 }; } using N_00411910::CByteArray;
 
 struct CDataInputStreamReader : CDataInputStream {         // the engine layout plus the retail member functions
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

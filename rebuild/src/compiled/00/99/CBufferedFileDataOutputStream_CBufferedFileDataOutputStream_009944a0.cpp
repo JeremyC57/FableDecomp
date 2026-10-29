@@ -1,6 +1,7 @@
 // CBufferedFileDataOutputStream::CBufferedFileDataOutputStream(CAFile* file, long bufferSize) -- named stream base, file, a fresh buffer, positions from the file's length
+// Leaf: ??0CBufferedFileDataOutputStream@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009944A0, length 90 bytes (+ int3 padding).
-// Callees: CBase::CBase @ 0x0099A2F0, CCharString::CCharString(const char*, long) @ 0x0099EBF0 (the
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CCharString::CCharString(const char*, long) @ 0x0099EBF0 (the
 // stream name at +0x04, literal @ 0x012397F8, length -1), operator new[] @ 0x00BFEB22, CAFile
 // virtual slot 7 (+0x1c, GetLength) on the file.
 // Vtables: 0x0129A6E0 CDataOutputStream (base, stored before its name is built), 0x0129A710
@@ -17,15 +18,15 @@ class CCharString { public:
     CCharString(const char* text, long length); // 0x0099EBF0
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                    // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
-class CDataOutputStream : public CBase { public:              // vtable 0x0129A6E0
+class CDataOutputStream : public CBaseClassNonCopyable { public:              // vtable 0x0129A6E0
     CCharString m_name;                         // +0x04
-    virtual void v00();
-    CDataOutputStream() : CBase(), m_name("CBufferedFileDataOutputStream", -1) { }
+    CDataOutputStream() : CBaseClassNonCopyable(), m_name("CBufferedFileDataOutputStream", -1) { }
 };
 
 class CAFile { public:
@@ -47,7 +48,6 @@ struct CBufferedFileDataOutputStream : CDataOutputStream {   // vtable 0x0129A71
     long           DataStartFilePtr;            // +0x18
     long           FileSize;                    // +0x1c
     long           FilePos;                     // +0x20
-    virtual void v00();
     CBufferedFileDataOutputStream(CAFile* file, long bufferSize);
 };
 

@@ -6,7 +6,7 @@
 //          child by name, CCharString by value), the {unsigned long, list<CComponent*>} action-parameter pair's ctor
 //          @ 0x0042BED4 and copy ctor @ 0x0042CD84 (by-value argument), the icon's slots 62 (+0xF8, takes the pair), 14
 //          (+0x38, GetColour by hidden pointer) and 13 (+0x34, SetColour), list<CComponent*> dtor @ 0x0042ABCA,
-//          NUISystem::CFrontEndManager::GetInstance() @ 0x0041E5F2, NUISystem::CManager::CreateComponent(const CCharString&,
+//          NUISystem::CManager::GetInstance() @ 0x0041E5F2, NUISystem::CManager::CreateComponent(const CCharString&,
 //          bool) @ 0x0041DB1D, CCountedPointer<NUISystem::CComponent>(CComponent*) @ 0x00429C15 / dtor @ 0x004291DE,
 //          ~CCharString @ 0x0099EAE0, the container's slot 60 (+0xF0, takes the counted pointer; name unproven).
 // Shape: `QuickAccessItems[slot] = 0` first (`and [eax+ecx*4],0`); the icon gets the pair {1, empty list} by value
@@ -73,9 +73,7 @@ class CComponent { public:
 };
 class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 
@@ -105,7 +103,7 @@ void CTCInventory::UnAssignThingPC(unsigned long slot, NUISystem::CComponent* co
         colour.A = 0;
         icon->SetColour(colour);
     }
-    NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     CCountedPointer<NUISystem::CComponent> item(manager->CreateComponent("PC_EXPRESSION_ITEM_INSIDE_CONTAINER", false));
     container->SetContents_slot60(item);
 }

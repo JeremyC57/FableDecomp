@@ -2,25 +2,25 @@
 // Leaf: ??$__unguarded_partition@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0076AA30, 148 bytes, `ret 14h`.
 // Caller: 0x0076C10B (the introsort loop 0x0076C080 of the same instantiation).
-// Callee: CBase::~CBase 0x0099A2E0 (the swap temporary after every swap, then the by-value pivot on return).
+// Callee: CBaseClass::~CBaseClass 0x0099A2E0 (the swap temporary after every swap, then the by-value pivot on return).
 // Element: the landed siblings' 16-byte pair<unsigned long, NParticleEngine::CParticleUpdateParamDesc<ul,ul> > (0x00769EA0
 //   __copy_backward, 0x00769E20 __push_heap, 0x0076A4E0 __adjust_heap, 0x0076BB70 __insertion_sort): the descriptor is
 //   polymorphic (vtable 0x0125FEE4 at +4 of the pair), so the implicit operator= skips that word, the implicit copy
 //   constructor stores the vtable immediate, and every by-value or local copy is destroyed through the
-//   compiler-generated destructor, which only calls CBase::~CBase 0x0099A2E0. Key compares are UNSIGNED.
+//   compiler-generated destructor, which only calls CBaseClass::~CBaseClass 0x0099A2E0. Key compares are UNSIGNED.
 // Shape: STLport `__unguarded_partition(first, last, pivot, comp)`, /Gr (__fastcall: first in ecx, last in edx, pivot
 //   and comparator on the stack), both scans rotated; `iter_swap(first, last)` is inlined with a real frame
 //   temporary (`_Tp tmp = *a; *a = *b; *b = tmp;`, destroyed at the end of each swap).
-struct CBase {
-    virtual void v00();
-    ~CBase();                                               // 0x0099A2E0 (restores the CBase vtable)
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                               // 0x0099A2E0 (restores the CBase vtable)
 };
 
 namespace NParticleEngine {
 
 template <class T1, class T2> class CParticleUpdateParamCallback;
 
-template <class T1, class T2> class CParticleUpdateParamDesc : public CBase {   // vtable 0x0125FEE4, 12 bytes (Ego_r.pdb)
+template <class T1, class T2> class CParticleUpdateParamDesc : public CBaseClass {   // vtable 0x0125FEE4, 12 bytes (Ego_r.pdb)
 public:
     CParticleUpdateParamCallback<T1, T2>* Callback;         // +0x04
     unsigned long                         Index;            // +0x08

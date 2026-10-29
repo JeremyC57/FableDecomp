@@ -76,6 +76,7 @@ class CThing { public:
         return false;
     }
 };
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 class CTCBuyableHouse {
 public:
     virtual void v00();
@@ -84,14 +85,13 @@ public:
     long          CurrentDressLevel;                    // +0x1c
     unsigned char _pad20[0x34 - 0x20];
     long          FrameToNextCheckIfWeNeedToCreateAnything;   // +0x34
-    long GetWorldFrame();                               // 0x0049D870
     void SetupDressingAtLevel(long level);
 };
 
 void CTCBuyableHouse::SetupDressingAtLevel(long level)
 {
     CurrentDressLevel = level;
-    FrameToNextCheckIfWeNeedToCreateAnything = GetWorldFrame();
+    FrameToNextCheckIfWeNeedToCreateAnything = CWorld::GetFrame();
     CTCThingList_0x21* list;
     if (ParentThing->GetInterface(&list, 0x21)) {
         CCharString prefix("Dress");

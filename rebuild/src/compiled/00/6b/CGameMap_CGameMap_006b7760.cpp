@@ -1,7 +1,7 @@
 // CGameMap::CGameMap(CWorld* world, CMap* map, const C2DCoordI& size) -- CBase base, own vtable, an empty cell vector, the map/world pointers and the cell grid size; when SizeX * SizeY fits a positive 32-bit count, size the cell vector to it and clear every cell
 // Leaf: ??0CGameMap
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B7760, length 137 bytes. `ret 0Ch`.
-// Callees: CBase::CBase @ 0x0099A2F0, vector<CGameMapCell>::resize(unsigned, const CGameMapCell&) @ 0x006B81F0 (label propagated from the
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, vector<CGameMapCell>::resize(unsigned, const CGameMapCell&) @ 0x006B81F0 (label propagated from the
 // CBrainBehaviour instantiation), CGameMap::Clear @ 0x006B7510 (landed). Vtable 0x0125D558 = CGameMap (rtti-vtables.tsv).
 // Layout: Ego_r.pdb CGameMap with the retail 12-byte vector (as the landed Clear): Cells +4, Map +0x10, World +0x14, WorldSeed +0x18,
 // SizeX +0x1c, SizeY +0x20.
@@ -32,25 +32,25 @@ struct CGameMapCellVector {                         // retail STLport vector<CGa
     void resize(unsigned long count, const CGameMapCell& value);   // 0x006B81F0
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                        // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                        // 0x0099A2F0
 };
 
-class CGameMap : public CBase { public:                           // vtable 0x0125D558
+class CGameMap : public CBaseClassNonCopyable { public:                           // vtable 0x0125D558
     CGameMapCellVector Cells;                       // +0x04
     CMap*              Map;                         // +0x10
     CWorld*            World;                       // +0x14
     unsigned long*     WorldSeed;                   // +0x18
     long               SizeX;                       // +0x1c
     long               SizeY;                       // +0x20
-    virtual void v00();
     CGameMap(CWorld* world, CMap* map, const C2DCoordI& size);
     void Clear();                                   // 0x006B7510
 };
 
 CGameMap::CGameMap(CWorld* world, CMap* map, const C2DCoordI& size)
-    : CBase()
+    : CBaseClassNonCopyable()
     , Map(map)
     , World(world)
     , SizeX(size.X)

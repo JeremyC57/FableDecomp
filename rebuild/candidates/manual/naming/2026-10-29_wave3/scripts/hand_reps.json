@@ -1,0 +1,44 @@
+{
+ "rebuild/src/compiled/00/97/CAIStateGroupBase_AIActionWaitForMessage_0097d360.cpp": [
+  [
+   "// CAIStateGroupBase::AIAction_WaitForMessage(EMessageEventType, CThingCreatureBase*, long) -- yield until stop, a matching event, or strict timeout; retail 0x0097d360, 293 bytes. Callees: IsStopping 0x008fd010, GetPWorld 0x008fcfa0, GetGameTick 0x0049d870 (global 0x013b89bc), Yield through CAIBrain slot 2, originator filter constructor 0x006af290, type predicate 0x006af1c0, FindMostRecentMessage 0x008d46d0.\n",
+   "// CAIStateGroupBase::AIAction_WaitForMessage(EMessageEventType, CThingCreatureBase*, long) -- yield until stop, a matching event, or strict timeout; retail 0x0097d360, 293 bytes. Callees: IsStopping 0x008fd010, GetPWorld 0x008fcfa0, CWorld::GetFrame 0x0049d870 (static; reads global 0x013b89bc), Yield through CAIBrain slot 2, originator filter constructor 0x006af290, type predicate 0x006af1c0, FindMostRecentMessage 0x008d46d0.\n"
+  ],
+  [
+   "typedef void (FABLE_NATIVE_THISCALL *CAIBrainYieldFunction)(CAIBrain*);\nlong FABLE_FASTCALL GetGameTick();                        // 0x0049d870, global 0x013b89bc\n",
+   "typedef void (FABLE_NATIVE_THISCALL *CAIBrainYieldFunction)(CAIBrain*);\n"
+  ],
+  [
+   "    long deadline = GetGameTick() + timeout;\n    while ((PeekWorld(), GetGameTick()) <= deadline) {\n",
+   "    long deadline = CWorld::GetFrame() + timeout;\n    while ((PeekWorld(), CWorld::GetFrame()) <= deadline) {\n"
+  ]
+ ],
+ "rebuild/src/compiled/00/73/CTCDoor_UpdateOpenStatusTriggerTypePerson_00730f90.cpp": [
+  [
+   "//   CThingCreatureBase> @ 0x007313B0, CTCBase::GetWorld const @ 0x00686A80, GFGetCurrentFrame @ 0x0049D870 (__fastcall),\n",
+   "//   CThingCreatureBase> @ 0x007313B0, CTCBase::GetWorld const @ 0x00686A80, CWorld::GetFrame @ 0x0049D870 (static __fastcall),\n"
+  ],
+  [
+   "extern long g_framesPerSecond;                  // 0x01375550\nlong __fastcall GFGetCurrentFrame();            // 0x0049D870\n",
+   "extern long g_framesPerSecond;                  // 0x01375550\n"
+  ],
+  [
+   "    long GetFrame() const { return GFGetCurrentFrame(); }\n",
+   "    static long __fastcall GetFrame();          // 0x0049D870 ?GetFrame@CWorld@@SIJXZ\n"
+  ]
+ ],
+ "rebuild/tests/00/80/CTCTargetingPlayer_SetAsPickUpNewLockTarget_008023a0_test.cpp": [
+  [
+   "\nextern \"C\" unsigned int __fastcall helper_49d870(CTCTargetingPlayer* player);\n\n",
+   "\n"
+  ],
+  [
+   "static CTCTargetingPlayer* g_seen = 0;\nextern \"C\" unsigned int __fastcall helper_49d870(CTCTargetingPlayer* player)\n{\n    g_seen = player;\n    return 0xDEADBEEF;\n}\n",
+   "// CWorld::GetFrame (0x0049D870) is static and takes no object: the stub only feeds the frame.\nclass CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ\nlong __fastcall CWorld::GetFrame() { return (long)0xDEADBEEF; }\n"
+  ],
+  [
+   "    if (obj.f3c == 1 && obj.f40 == 0 && obj.f44 == 0xDEADBEEF && g_seen == &obj)\n",
+   "    if (obj.f3c == 1 && obj.f40 == 0 && obj.f44 == 0xDEADBEEF)\n"
+  ]
+ ]
+}

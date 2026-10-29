@@ -12,13 +12,13 @@
 //   engine/CDataInputStream.h for the inline Read. C2DCoordI {X, Y} per the PDB.
 // Shape: the two inline reads land in the dead stream-argument slot and a frame word, then are copied into the
 //   coordinate local; the class operator new is null-tested before the ctor (`xor eax,eax` on failure).
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/CWaterPatchMesh.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
 struct CDataInputStreamReader : CDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

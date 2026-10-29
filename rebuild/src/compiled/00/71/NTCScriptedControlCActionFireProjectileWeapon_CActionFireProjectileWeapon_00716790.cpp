@@ -1,7 +1,7 @@
 // NTCScriptedControl::CActionFireProjectileWeapon::CActionFireProjectileWeapon(CThing* target) -- constructor: CBase(), the common action members zeroed, own vtable, target CScriptThing, an empty action list, action index -1
 // Leaf: ??0CActionFireProjectileWeapon
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00716790, length 74 bytes (ret 4).
-// Callees: CBase::CBase @ 0x0099A2F0, CThing::GetScriptThing @ 0x004C7E50 (by-value CScriptThing through the hidden
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CThing::GetScriptThing @ 0x004C7E50 (by-value CScriptThing through the hidden
 // result pointer, constructed straight into the member at +0xc), malloc @ 0x00BFEA0E (the list's sentinel node).
 // Vtable 0x01265960 = NTCScriptedControl::CActionFireProjectileWeapon (rtti-vtables.tsv); the only caller is the
 // scripted-control factory at 0x00903DF6. The catalog label "CTCTargeted::CTCTargeted" is propagated and rejected.
@@ -26,16 +26,17 @@ class CThing { public:
     CScriptThing GetScriptThing();          // 0x004C7E50
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                // 0x0099A2F0
 };
 
-struct __declspec(novtable) CAction : CBase {   // NTCScriptedControl::CActionBase: abstract, its own vtable store is dead
+struct __declspec(novtable) CAction : CBaseClassNonCopyable {   // NTCScriptedControl::CActionBase: abstract, its own vtable store is dead
     void*   PTCScript;                      // +0x04 CTCScriptedControl*
     bool    Activated;                      // +0x08
     bool    Terminated;                     // +0x09
-    CAction() : CBase(), PTCScript(0), Activated(false), Terminated(false) { }
+    CAction() : CBaseClassNonCopyable(), PTCScript(0), Activated(false), Terminated(false) { }
 };
 
 struct CActionList {                        // retail std::list<CCountedPointer<CCreatureActionBase> >: sentinel pointer only
@@ -54,7 +55,6 @@ struct CActionFireProjectileWeapon : CAction {   // vtable 0x01265960
     CScriptThing PTarget;                   // +0x0c
     CActionList  ActionList;                // +0x18
     long         CurrentActionIndex;        // +0x1c
-    virtual void v00();
     CActionFireProjectileWeapon(CThing* target);
 };
 

@@ -11,7 +11,6 @@ struct CBaseEntityEvents {
 struct CSubObject {
     void consume(int x);
 };
-extern int helper_49d870(void);
 
 class CTCEntityEvents { public:
     CBaseEntityEvents base;
@@ -24,7 +23,8 @@ void __fastcall CTCEntityEvents_FrameUpdate(CTCEntityEvents* events);
 // definitions of externs for the test
 void CBaseEntityEvents::baseUpdate() { g_baseCalled++; g_baseThis = this; }
 void CSubObject::consume(int x) { g_subArg = x; g_subThis = this; }
-int helper_49d870(void) { return 4242; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+long __fastcall CWorld::GetFrame() { return 4242; }
 
 int main() {
     CTCEntityEvents obj;

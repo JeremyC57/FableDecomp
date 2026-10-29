@@ -1,8 +1,9 @@
 // NParticleEngine::CPSCLight::~CPSCLight() -- destructor of the particle-system light component: free the user-point array, release the light primitive handle, then the component base
+// Leaf: ??1CPSCLight@
 // Grade: RELOCATION_MATCH -- the member handle is the CEnginePrimitiveHandle model of the landed ??_G 0x0041C500: an inline Clear testing a null-safe `GetRefCount() == 1` (handle address formed first, Data loaded into eax after the vtable store, `mov ecx,eax` for the slot-3 call), `Data = 0` through the counted pointer's inline operator=, then the counted pointer's own inline destructor re-reading Data
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B1AEB0, length 121 bytes.
 // Callees: free @ 0x00BFEA14 (the CArray buffer), the primitive's virtual slots 3 (+0x0c, told that its last handle goes away, with the
-// handle) and 1 (+0x04, destroy on the last reference), CBaseClass::~CBaseClass() @ 0x0099A2E0 (the handle's root), CBase::~CBase() @
+// handle) and 1 (+0x04, destroy on the last reference), CBaseClass::~CBaseClass() @ 0x0099A2E0 (the handle's root), CBaseClassNonCopyable::~CBaseClassNonCopyable() @
 // 0x0099A300 (the component's root, tail jump). Vtable stored: 0x0122F598 CEnginePrimitiveHandle.
 // Label correction: the manifest's "CEngineInternalAttachedPrimitiveInfo::~CEngineInternalAttachedPrimitiveInfo" is a propagated name;
 // the only caller is the deleting destructor 0x00B1AE90 = slot 0 of vtable 0x012A0624 (RTTI NParticleEngine::CPSCLight). Layout = Ego_r.pdb
@@ -80,19 +81,18 @@ class CArray { public:                              // retail CArray: 12 bytes, 
     }
 };
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                // 0x0099A300
+};
 
 namespace NParticleEngine {
 
-class __declspec(novtable) CPSCLight : public CBase {   // vtable 0x012A0624
+class __declspec(novtable) CPSCLight : public CBaseClassNonCopyable {   // vtable 0x012A0624
 public:
     unsigned char          _body[0x58 - 4];  // the component base's state and the light parameters
     CEnginePrimitiveHandle PrimHandle;           // +0x58
     CArray<C3DVector>      LightUserPointsArray; // +0x60
-    virtual void v00();
     ~CPSCLight();
 };
 

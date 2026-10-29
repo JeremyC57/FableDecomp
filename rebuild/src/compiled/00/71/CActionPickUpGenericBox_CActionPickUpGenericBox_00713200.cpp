@@ -1,6 +1,7 @@
 // NTCScriptedControl::CActionPickUpGenericBox::CActionPickUpGenericBox(CThing* box) -- constructor: CBase(), the common action members zeroed, own vtable, CScriptThing at +0xc from box->GetScriptThing(), frame -1 at +0x18, flag false at +0x1c
+// Leaf: ??0CActionPickUpGenericBox@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00713200, length 64 bytes.
-// Callees: CBase::CBase @ 0x0099A2F0, CThing::GetScriptThing @ 0x004C7E50 (by-value CScriptThing
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CThing::GetScriptThing @ 0x004C7E50 (by-value CScriptThing
 // through the hidden result pointer, constructed straight into the member at +0xc).
 // Vtable 0x012658B0 = NTCScriptedControl::CActionPickUpGenericBox (rtti-vtables.tsv). Same shape as
 // the landed CActionDropGenericBox default constructor (009036a0) plus the script-thing member: the
@@ -20,23 +21,23 @@ class CThing { public:
     CScriptThing GetScriptThing();          // 0x004C7E50
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                // 0x0099A2F0
 };
 
-struct __declspec(novtable) CAction : CBase {   // NTCScriptedControl::CAction: abstract, its own vtable store is dead
+struct __declspec(novtable) CAction : CBaseClassNonCopyable {   // NTCScriptedControl::CAction: abstract, its own vtable store is dead
     CThing* m_pThing;                       // +0x04
     bool    m_active;                       // +0x08
     bool    m_finished;                     // +0x09
-    CAction() : CBase(), m_pThing(0), m_active(false), m_finished(false) { }
+    CAction() : CBaseClassNonCopyable(), m_pThing(0), m_active(false), m_finished(false) { }
 };
 
 struct CActionPickUpGenericBox : CAction {    // vtable 0x012658B0
     CScriptThing m_box;                     // +0x0c
     long         m_frame;                   // +0x18 = -1
     bool         m_pickedUp;                // +0x1c
-    virtual void v00();
     CActionPickUpGenericBox(CThing* box);
 };
 

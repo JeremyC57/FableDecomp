@@ -255,9 +255,7 @@ class CComponent { public:
 
 class CManager { public:
     CComponent* CreateComponent(long definition);       // 0x0041D21B
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 
 class CChangingStateComponent : public CComponent { public:
@@ -287,7 +285,7 @@ void CScrollableList::Initialise()
     ItemHeight = def->ItemHeight;
     VisibleItems = (long)(def->ListHeight / def->ItemHeight);
     if (def->UpArrowDef) {
-        PUpArrow = CFrontEndManager::GetInstance()->CreateComponent(def->UpArrowDef);
+        PUpArrow = CManager::GetInstance()->CreateComponent(def->UpArrowDef);
         CCountedPointer<CComponent> arrow(PUpArrow);
         GetParent()->AddChild(arrow);
         arrow->SetParent(GetParent());
@@ -299,7 +297,7 @@ void CScrollableList::Initialise()
         arrow->AddAction(action);
     }
     if (def->DownArrowDef) {
-        PDownArrow = CFrontEndManager::GetInstance()->CreateComponent(def->DownArrowDef);
+        PDownArrow = CManager::GetInstance()->CreateComponent(def->DownArrowDef);
         CCountedPointer<CComponent> arrow(PDownArrow);
         GetParent()->AddChild(arrow);
         arrow->SetParent(GetParent());
@@ -346,8 +344,8 @@ void CChangingStateComponent::Initialise() { g_baseInits++; }
 void CScrollableList::SetScroll(long position, long immediate) { g_scrollA = position; g_scrollB = immediate; }
 static CComponent g_components[4]; static int g_created = 0; static long g_createdDef[4];
 CComponent* CManager::CreateComponent(long definition) { g_createdDef[g_created] = definition; return &g_components[g_created++]; }
-static CFrontEndManager g_manager;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_manager; }
+static CManager g_manager;
+CManager* __fastcall CManager::GetInstance() { return &g_manager; }
 }
 using namespace NUISystem;
 static int g_fail = 0;

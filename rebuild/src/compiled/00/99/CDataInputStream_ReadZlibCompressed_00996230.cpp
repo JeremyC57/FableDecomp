@@ -13,6 +13,7 @@
 // with its own local (a caller local is homed in the dead `size` slot); Read starts with `if (size <= 0) return;` and
 // tests `size <= SourceChunkBytesRemaining` (size on the left for `cmp ebp,[ebx+14h] ; jg`).
 // Opt: /O2 (16-aligned entry).
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStream_Methods   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
@@ -41,7 +42,6 @@ struct CByteArray {                                          // retail vector<un
 };
 
 struct CDataInputStream_Methods : CDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AE8680, length 386 bytes (padded to 400), `ret`.
 // Ego_r.pdb: `?GenerateHeaderFile@CParticleEmitterDatabase@NParticleEngine@@QAEXXZ`.
 // Callees: CCharString::ToWideString @ 0x0099E480, CDiskFileWin32 ctor @ 0x0099AD80 and its inlined dtor (vtable 0x0122D06C, Close
-//   0x0099A920, ~CWideString 0x0099B510, ~CBase 0x0099A300), CCharString(const char*, long) 0x0099EBF0 / copy 0x0099EC30 / dtor 0x0099EAE0 /
+//   0x0099A920, ~CWideString 0x0099B510, ~CBaseClassNonCopyable 0x0099A300), CCharString(const char*, long) 0x0099EBF0 / copy 0x0099EC30 / dtor 0x0099EAE0 /
 //   operator= 0x0099EFB0 / ToUpper 0x0099EE20 / SaveToFile(CAFile&) 0x0099E5F0, the `__fastcall` string builders operator+(const char*,
 //   const CCharString&) 0x0099F690, operator+(const CCharString&, const char*) 0x0099F600, operator+(const CCharString&, const
 //   CCharString&) 0x0099F570 and GFIntToCharString(long) 0x0099F830 (hidden results in ecx).
@@ -33,15 +33,14 @@ CCharString __fastcall operator+(const CCharString& left, const char* right);   
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                           // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                           // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CAFile : public CBase { public:
+class CAFile : public CBaseClassNonCopyable { public:
 };
 class CDiskFileWin32 : public CAFile { public:                        // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                               // 0x0099A920 (slot 2)
     long        AccessType;                             // +0x04

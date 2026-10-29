@@ -77,9 +77,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-struct CThingWorld {
-    static long GetCurrentFrame();              // 0x0049D870
-};
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 class CDisplayEngine { public:
     static float __stdcall DivideByGameSpeed(float value);   // 0x00415FD3
 };
@@ -89,7 +87,7 @@ float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A
 struct CAIStateGroupBehaviourBaseMethods : CAIStateGroupBehaviourBase {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)Brain()->PCreature; }
-    CThingWorld* GetPWorld();                   // 0x008FCFC0
+    CWorld* GetPWorld();                   // 0x008FCFC0
     unsigned long* GetPWorldSeed();             // 0x008FCFD0
     unsigned long Random(unsigned long range)
     {
@@ -106,7 +104,7 @@ struct CAIStateGroupBehaviourBaseMethods : CAIStateGroupBehaviourBase {
 
 bool CAIStateGroupBehaviourBaseMethods::UpdateEmote()
 {
-    float now = CDisplayEngine::DivideByGameSpeed((float)GetPWorld()->GetCurrentFrame());
+    float now = CDisplayEngine::DivideByGameSpeed((float)GetPWorld()->GetFrame());
     if (now - TriggerTime > RandomWaitTime + ThisSpeechDuration) {
         CTCTalk* talk;
         Brain()->PCreature->GetInterface(&talk, 0xf);

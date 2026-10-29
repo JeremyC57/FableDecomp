@@ -1,6 +1,6 @@
 // CInputProcessManager::CInputProcessManager() -- CBase, own vtable, the input-process list (+4) cleared by its inline constructor, the ten queued CProcessedInput records (+0x14) built by an inlined counted loop (each runs the vector constructor iterator over its four CGameEvents), then NoQueuedProcessedInputs (+0x6f4) cleared
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A0D4A0, length 76 bytes (+ int3 padding). Vtable 0x0129CA38 (CInputProcessManager).
-// Callees: CBase::CBase @ 0x0099A2F0, `vector constructor iterator' @ 0x004038C0 (element size 0x28, count 4, CGameEvent::CGameEvent @ 0x004159A0).
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, `vector constructor iterator' @ 0x004038C0 (element size 0x28, count 4, CGameEvent::CGameEvent @ 0x004159A0).
 // Layout from Ego_r.pdb: CLinkedList<CAInputProcess> {Head, Tail, NoEntries, FirstScanInfo} +4; CProcessedInput {Player +0, Type +4,
 // CGameEvent[4] +8, NoGameEvents +0xa8, Priority +0xac} = 0xb0 (engine/CProcessedInput.h); NoQueuedProcessedInputs +0x6f4.
 // Shape: as the landed CGameEventPackageSet constructor (0x009F1A80): the list's four zero stores sit after the vtable store (a member
@@ -31,12 +31,12 @@ struct CLinkedList_CAInputProcess {                 // 16 bytes
     void* FirstScanInfo;                            // +0x0c
     CLinkedList_CAInputProcess() : Head(0), Tail(0), NoEntries(0), FirstScanInfo(0) { }
 };
-struct CBase {
-    virtual void v00();
-    CBase();                                        // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                        // 0x0099A2F0
 };
-class CInputProcessManager : public CBase { public:               // vtable 0x0129CA38
-    virtual void v00();
+class CInputProcessManager : public CBaseClassNonCopyable { public:               // vtable 0x0129CA38
     CLinkedList_CAInputProcess InputProcessList;    // +0x04
     CProcessedInput QueuedProcessedInputs[10];      // +0x14
     long            NoQueuedProcessedInputs;        // +0x6f4
@@ -44,7 +44,7 @@ class CInputProcessManager : public CBase { public:               // vtable 0x01
 };
 
 CInputProcessManager::CInputProcessManager()
-    : CBase(), InputProcessList()
+    : CBaseClassNonCopyable(), InputProcessList()
 {
     NoQueuedProcessedInputs = 0;
 }

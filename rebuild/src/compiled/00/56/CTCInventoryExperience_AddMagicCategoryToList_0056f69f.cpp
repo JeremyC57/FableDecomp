@@ -1,7 +1,7 @@
 // CTCInventoryExperience::AddMagicCategoryToList(CList* list, CWideString title, CCharString definition, CList* subList, CWideString description, CCharString icon) -- adds a magic-category branch entry (title, sub-list, category description and subtitle) to the experience-spending list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056F69F, 517 bytes, `ret 18h`; frame-pointer size TU
 // (`optimize("y", off)` + `("s", on)`, as the landed AddSoundAction 0x0056F615 of the same TU).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall), CManager::CreateMenuEntryComponent 0x00428494
+// Callees: CManager::GetInstance 0x0041E5F2 (__fastcall), CManager::CreateMenuEntryComponent 0x00428494
 // (manifest signature: const CWideString&, float, float, const CCharString&, float, CCharString, float, CCharString),
 // CManager::CreateComponent(const CCharString&, bool) 0x0041DB1D, CCountedPointer<CComponent>(CComponent*) 0x00429C15
 // and its dtor 0x004291DE, AddSoundAction 0x0056F615, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
@@ -63,9 +63,7 @@ class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString f);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 
@@ -81,12 +79,12 @@ class CTCInventoryExperience { public:
 void CTCInventoryExperience::AddMagicCategoryToList(NUISystem::CList* list, CWideString title, CCharString definition,
                                                     NUISystem::CList* subList, CWideString description, CCharString icon)
 {
-    NUISystem::CFrontEndManager* frontEnd = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     CComponentPointer entry(frontEnd->CreateMenuEntryComponent(title, 0.0f, 0.0f, "UI_WEAPON_MENU_ENTRY_BRANCH_TEMPLATE_NEW",
                                                                0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     CComponentPointer subPointer(subList);
     AddSoundAction(entry.operator->(), "SND_TEXT_QST_TUTORIAL_GUI_EXPSPEND_SUB_ALL");
-    CComponentPointer definitionPointer(NUISystem::CFrontEndManager::GetInstance()->CreateComponent(definition, false));
+    CComponentPointer definitionPointer(NUISystem::CManager::GetInstance()->CreateComponent(definition, false));
     entry->AddChild(subPointer);
     entry->AddChild(definitionPointer);
     CComponentPointer descriptionPointer(frontEnd->CreateComponent("UI_EXPSPEND_CAT_DESC", false));

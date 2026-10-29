@@ -7,6 +7,7 @@
 // Shape: seven inlined Read(buffer, size) calls of the landed ReadColour 0x009945E0 family (64-bit position range check,
 //   intrinsic memcpy, `+=` bookkeeping); each byte/word field is read through an inline value reader into one shared
 //   frame word and widened into its own unsigned long local; the result is constructed straight into the hidden pointer.
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -18,7 +19,6 @@ class CDateAndTime { public:
 };
 
 struct CDataInputStreamReader : CDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

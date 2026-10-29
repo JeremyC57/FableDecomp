@@ -67,7 +67,8 @@ public:
     }
 };
 
-struct CDefPointer {                                // CDefPointer<CDefClassBase>: the manager's return type
+class CDefClassBase;
+template <class T> class CDefPointer { public:                                // CDefPointer<CDefClassBase>: the manager's return type
     CDefBase* m_p;
     CDefPointer() { }
     ~CDefPointer()
@@ -78,7 +79,7 @@ struct CDefPointer {                                // CDefPointer<CDefClassBase
 };
 
 class CDefinitionManager { public:
-    CDefPointer GetPDefFromGlobalIndex(long index); // 0x009AD9E0 (hidden result pointer)
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const; // 0x009AD9E0 (hidden result pointer)
 };
 struct CDefinitionHolder : CDefinitionManager { };
 
@@ -120,7 +121,7 @@ public:
 
 void CTCHero::SetTitle(long titleObjectDef)
 {
-    CDefPointer def = GetDefinitions()->GetPDefFromGlobalIndex(titleObjectDef);
+    CDefPointer<const CDefClassBase> def = GetDefinitions()->GetPDefFromGlobalIndex(titleObjectDef);
     if (def.m_p && def.m_p->GetSubDef(&PHeroTitleSubDef)) {
         Title = PHeroTitleSubDef->Title;
         HeroTitleObjectDef = titleObjectDef;

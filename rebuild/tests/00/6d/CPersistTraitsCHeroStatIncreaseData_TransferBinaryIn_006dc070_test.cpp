@@ -2,12 +2,12 @@
 // Flags: /O2 /Oy /W3
 // Leaf: TransferBinaryIn
 // Layout: CDataInputStream shared header; zone fields PDB12911-12913, map pair key/value reads from retail.
+#define FABLE_CDATAINPUTSTREAM_FRIEND class CMemoryDataInputStream   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 
 extern "C" void* __cdecl memcpy(void*,const void*,unsigned int);
 #pragma intrinsic(memcpy)
 class CMemoryDataInputStream: public CDataInputStream { public:
- void ReadWithSrcChunkOverflow(unsigned char*,long);
  __forceinline void Read(void* out,int size) {
   __int64 next=(__int64)(StreamPos+size);
   if(next<0 || next>0x7fffffff) return;
@@ -47,7 +47,7 @@ void __cdecl operator delete[](void*);
 extern "C++" {
 struct TreeNode {TreeNode* Left;TreeNode* Right;Pair Item;TreeNode(const Pair& p):Left(0),Right(0),Item(p){}};
 static int slowCalls,liveNodes,inserts,duplicates;static void* lastPosition;static bool lastAdded;
-void CMemoryDataInputStream::ReadWithSrcChunkOverflow(unsigned char* p,long size){++slowCalls;memcpy(p,CurrentSourcePtr,size);CurrentSourcePtr=(unsigned char*)CurrentSourcePtr+size;SourceChunkBytesRemaining=0;StreamPos+=size;}
+void CDataInputStream::ReadWithSrcChunkOverflow(unsigned char* p,long size){++slowCalls;memcpy(p,CurrentSourcePtr,size);CurrentSourcePtr=(unsigned char*)CurrentSourcePtr+size;SourceChunkBytesRemaining=0;StreamPos+=size;}
 InsertResult Map::insert(const Pair& p){TreeNode** link=(TreeNode**)&Head;while(*link){if(p.Key==(*link)->Item.Key){++duplicates;lastPosition=*link;lastAdded=false;return InsertResult(*link,false);}link=p.Key<(*link)->Item.Key?&(*link)->Left:&(*link)->Right;}*link=new TreeNode(p);++liveNodes;++Count;++inserts;lastPosition=*link;lastAdded=true;return InsertResult(*link,true);}
 static TreeNode* find(Map& m,int key){TreeNode* p=(TreeNode*)m.Head;while(p&&p->Item.Key!=key)p=key<p->Item.Key?p->Left:p->Right;return p;}
 static void clear(TreeNode* p){if(!p)return;clear(p->Left);clear(p->Right);delete p;--liveNodes;}

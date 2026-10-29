@@ -2,7 +2,7 @@
 // Leaf: ??0C3DSkeletalMorphParameter
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A454F0, length 172 bytes (`ret 8`). Vtable 0x0129D490 (rtti-vtables:
 // C3DSkeletalMorphParameter slot 0 = 0x00A46420). Animation/mesh layer.
-// Callees: CBase::CBase @ 0x0099A2F0 (polymorphic root), operator new @ 0x00BFEA1A (0x24 bytes = retail CShared),
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (polymorphic root), operator new @ 0x00BFEA1A (0x24 bytes = retail CShared),
 // CCharString::CCharString() @ 0x0099E4B0, CCountedPointer<CShared>::Reset(CShared*) @ 0x00A47060 (manifest names the
 // CIPhysicsFacesSegmentBase instantiation), CCharString::operator= @ 0x0099EFB0, CArray<C3DSkeletalBoneMorph>::operator=
 // @ 0x00A46790 (manifest "CCombatWheel::operator_assign" is propagated).
@@ -52,10 +52,10 @@ class C3DSkeletalMorphTarget                       // retail 0x10 bytes
     }
 };
 
-struct CBase
-{
-    virtual void v00();
-    CBase();                                        // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                        // 0x0099A2F0
 };
 
 template <class T>
@@ -70,7 +70,7 @@ class CCountedPointer
 
 class C3DSkeletalMorph;
 
-class C3DSkeletalMorphParameter : public CBase            // vtable 0x0129D490
+class C3DSkeletalMorphParameter : public CBaseClassNonCopyable            // vtable 0x0129D490
 { public:
     class CShared                                  // retail 0x24 bytes
     { public:
@@ -82,7 +82,6 @@ class C3DSkeletalMorphParameter : public CBase            // vtable 0x0129D490
     C3DSkeletalMorph* SkeletalMorph;                // +0x08
     CCountedPointer<CShared> SharedData;            // +0x0c
     C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget& positive, const C3DSkeletalMorphTarget& negative);
-    virtual void v00();
 };
 
 C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget& positive,

@@ -151,6 +151,7 @@ public:
     double                      TimePlayed;                  // +0x188
     bool                        HasInitialisedStartTime;     // +0x190
     unsigned char               _pad_0x191[0x7];             // +0x191
+    static long __fastcall GetFrame();                       // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 };
 #pragma pack(pop)
 

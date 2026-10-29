@@ -87,10 +87,10 @@ struct CBoastList {
 class CQuestManager { public: unsigned char _pad00[0x6c]; CBoastList Boasts; };
 extern CQuestManager* g_pQuestManager;                     // 0x013B89FC
 struct CComponent { virtual void v00(); };
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();     // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();     // 0x0041E5F2
     CComponent* CreateComponent(const CCharString& name, bool b);   // 0x0041DB1D
-};
+}; }
 struct CScreenFilter {
     void* vfp;
 };
@@ -203,7 +203,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
         RenderedObjectDef = 0;
         QuestCardDef = 0;
     }
-    PBlack = (CFilterComponent*)CFrontEndManager::GetInstance()->CreateComponent("PC_SCREEN_FILTER", false);
+    PBlack = (CFilterComponent*)NUISystem::CManager::GetInstance()->CreateComponent("PC_SCREEN_FILTER", false);
     PBlack->Show();
     PBlack->SetFocus(true);
     g_pPlayerGui->Close(true);

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E94A0, length 324 bytes (padded to 336), `ret 0Ch`.
 // Callees: ConvertPathToFullPath @ 0x00999110 and PathExists @ 0x00999230 (both `__fastcall`; the first returns a CWideString through
 //   ecx with the path in edx), CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) @ 0x0099AD80 / Read @ 0x0099A960 /
-//   the inlined ~CDiskFileWin32 (vtable 0x0122D06C, Close 0x0099A920, ~CWideString 0x0099B510, ~CBase 0x0099A300),
+//   the inlined ~CDiskFileWin32 (vtable 0x0122D06C, Close 0x0099A920, ~CWideString 0x0099B510, ~CBaseClassNonCopyable 0x0099A300),
 //   vector<unsigned char>::resize(size_type, const unsigned char&) @ 0x00486189, CWideString::ConvertToCharString @ 0x0099B2C0,
 //   CCharString(const char*, long) @ 0x0099EBF0, `__fastcall` operator+(const CCharString&, const CCharString&) @ 0x0099F570, the
 //   CCharString copy ctor 0x0099EC30 / operator const char* 0x0099E4C0 / dtor 0x0099EAE0, _CxxThrowException @ 0x00BFEB84 with the
@@ -47,14 +47,13 @@ public:
 };
 
 class CASuspendableProcess;
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                           // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                           // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                         // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                               // 0x0099A920 (slot 2)
     long        AccessType;                             // +0x04

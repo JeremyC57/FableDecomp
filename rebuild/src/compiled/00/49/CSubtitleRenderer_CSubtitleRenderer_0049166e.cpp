@@ -1,6 +1,6 @@
 // CSubtitleRenderer::CSubtitleRenderer(CGraphicDataBank*) -- subtitle renderer constructor: CBase root, empty strings and text queue, 9 + 3 primitive handles, empty embedded lists, default flags, two fade timers
 // Leaf: ??0CSubtitleRenderer
-// Retail 0x0049166E, 327 bytes, `ret 4`, no EH frame. Callees: CBase::CBase 0x0099A2F0 (root vtable 0x0129A7C4),
+// Retail 0x0049166E, 327 bytes, `ret 4`, no EH frame. Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0 (root vtable 0x0129A7C4),
 // CWideString::CWideString() 0x0099AED0 (labelled CCharString), queue<CSetTextInfo>::queue 0x00494168 (labelled
 // CGameEvent::AddUBYTE), vector<CEnginePrimitiveHandle>::vector(size_type) 0x00485D30 (labelled map::operator[]),
 // CFadeInFadeOutBase-derived timer ctor 0x00436560 (labelled CTCHeroStats::SoberUp). Vtable 0x012384BC (rtti-vtables.tsv).
@@ -20,9 +20,10 @@ struct CEmbeddedGraphic;
 struct CEmbeddedHighlight;
 class CWideStringData;
 
-struct CBase {
-    virtual void v00();
-    CBase();                                                  // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                                  // 0x0099A2F0
 };
 class CWideString { public:
     CWideStringData* PStringData;
@@ -57,7 +58,7 @@ struct CFadeTimer {
     CFadeTimer();                                             // 0x00436560
 };
 
-class CSubtitleRenderer : public CBase { public:
+class CSubtitleRenderer : public CBaseClassNonCopyable { public:
     float                                 VWindow[4];                       // +0x04
     float                                 VTelevisionWindow[4];             // +0x14
     long                                  TextCharactersShowing;            // +0x24
@@ -100,7 +101,6 @@ class CSubtitleRenderer : public CBase { public:
     bool                                  UpdateTimer;                      // +0xe7
     CFadeTimer                            SkipCutsceneTimer;                // +0xe8
     CFadeTimer                            ButtonPulseTimer;                 // +0x104
-    virtual void v00();
     CSubtitleRenderer(CGraphicDataBank* graphics);
 };
 

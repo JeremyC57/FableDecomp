@@ -38,14 +38,13 @@ class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
 };
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                           // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                           // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                         // vtable 0x0122D06C
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);
     virtual void Close();                               // 0x0099A920
     long        AccessType;                             // +0x04

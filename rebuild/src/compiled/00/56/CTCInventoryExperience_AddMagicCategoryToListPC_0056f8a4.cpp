@@ -1,7 +1,7 @@
 // CTCInventoryExperience::AddMagicCategoryToListPC(CComponent* screen, CList* list, CWideString title, CCharString definition, CList* subList, CWideString description, CCharString icon) -- adds a magic-category branch entry (title, sub-list, category description and subtitle) to the PC experience-spending list and registers its parts with the PC screen
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0056F8A4, 563 bytes, `ret 1Ch`; frame-pointer size TU
 // (`optimize("y", off)` + `("s", on)`, as the landed AddSoundAction 0x0056F615 of the same TU).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall), CManager::CreateMenuEntryComponent 0x00428494
+// Callees: CManager::GetInstance 0x0041E5F2 (__fastcall), CManager::CreateMenuEntryComponent 0x00428494
 // (manifest signature: const CWideString&, float, float, const CCharString&, float, CCharString, float, CCharString),
 // CManager::CreateComponent(const CCharString&, bool) 0x0041DB1D, CCountedPointer<CComponent>(CComponent*) 0x00429C15
 // and its dtor 0x004291DE, AddSoundAction 0x0056F615, CCharString(const char*, long) 0x0099EBF0 / ~CCharString
@@ -67,9 +67,7 @@ class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString f);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 
@@ -86,12 +84,12 @@ void CTCInventoryExperience::AddMagicCategoryToListPC(NUISystem::CComponent* scr
                                                       CCharString definition, NUISystem::CList* subList, CWideString description,
                                                       CCharString icon)
 {
-    NUISystem::CFrontEndManager* frontEnd = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     CComponentPointer entry(frontEnd->CreateMenuEntryComponent(title, 0.0f, 0.0f, "PC_MENU_ENTRY_BRANCH_TEMPLATE",
                                                                0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     CComponentPointer subPointer(subList);
     AddSoundAction(entry.operator->(), "SND_TEXT_QST_TUTORIAL_GUI_EXPSPEND_SUB_ALL");
-    CComponentPointer definitionPointer(NUISystem::CFrontEndManager::GetInstance()->CreateComponent(definition, false));
+    CComponentPointer definitionPointer(NUISystem::CManager::GetInstance()->CreateComponent(definition, false));
     entry->AddChild(subPointer);
     entry->AddChild(definitionPointer);
     screen->RegisterInputComponent(definitionPointer.m_pObject);

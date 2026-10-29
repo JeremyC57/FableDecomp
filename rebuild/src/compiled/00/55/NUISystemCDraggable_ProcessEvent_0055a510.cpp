@@ -1,7 +1,7 @@
 // NUISystem::CDraggable::ProcessEvent(EEvent) -- while dragged, follow the mouse: on the mouse-moved event (0x19) move the component to the mouse position divided by the UI scale; then the clickable handling
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055A510, length 157 bytes; slot 1 of the CDraggable CObserver vtable 0x0124BA70
 // (rtti-vtables.tsv), so `this` is the CObserver subobject at +4 (members at -4 from their object offsets).
-// Callees: CFrontEndManager::GetInstance() @ 0x0041E5F2 (static, no arguments), CManager::GetUIScale() @ 0x0041CF47 (C2DVector by
+// Callees: NUISystem::CManager::GetInstance() @ 0x0041E5F2 (static, no arguments), CManager::GetUIScale() @ 0x0041CF47 (C2DVector by
 // hidden pointer), the component's ChangePosition(const C2DVector&, float, bool) (primary slot 32, `call [eax+80h]` on this-4),
 // NUISystem::CClickable::ProcessEvent(EEvent) @ 0x0055AD60.
 // Layout: the retail NUISystem component model of the landed CDraggable constructor 0x0055A9C0 (primary interface at +0, CObserver
@@ -18,12 +18,12 @@ class C2DVector { public:
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
 
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     unsigned char _pad[0xb0];
     C2DVector     MousePosition;                   // +0xb0
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     C2DVector GetUIScale();                        // 0x0041CF47 (CManager::GetUIScale)
-};
+}; }
 
 namespace NUISystem {
 
@@ -89,9 +89,9 @@ class CDraggable : public CClickable { public:                   // retail 0x1ac
 void CDraggable::ProcessEvent(EEvent event)
 {
     if (event == EVENT_MOUSE_MOVED && WasDragged) {
-        C2DVector position(CFrontEndManager::GetInstance()->MousePosition);
+        C2DVector position(NUISystem::CManager::GetInstance()->MousePosition);
         float scaleX, scaleY;
-        scaleX = CFrontEndManager::GetInstance()->GetUIScale().X, scaleY = CFrontEndManager::GetInstance()->GetUIScale().Y;
+        scaleX = NUISystem::CManager::GetInstance()->GetUIScale().X, scaleY = NUISystem::CManager::GetInstance()->GetUIScale().Y;
         position.X /= scaleX;
         position.Y /= scaleY;
         ChangePosition(position, 0.0f, false);

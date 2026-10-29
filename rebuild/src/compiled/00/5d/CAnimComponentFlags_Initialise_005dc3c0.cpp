@@ -4,7 +4,7 @@
 // @ 0x0099EBF0, CStringParser::CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&,
 // long) @ 0x00404720 (landed), CCharString::~CCharString @ 0x0099EAE0, TransferIn(CPersistContext*,
 // CStringParser*, long*) @ 0x009E2590 (__fastcall), std::list<CStringParserCommentBoundaries>::~list
-// @ 0x004046B0 (landed), CBase::~CBase @ 0x0099A2E0.
+// @ 0x004046B0 (landed), CBaseClass::~CBaseClass @ 0x0099A2E0.
 //
 // Shape: after the virtual reset, a CStringParser local (0x28 bytes, the whole frame above the temp string's
 // word) is built over the text with no error callback, an explicit `CCharString("", -1)` file-name
@@ -23,9 +23,9 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CBase {
-    virtual void v00();
-    ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 
 struct CStringParserCommentList {               // retail std::list<CStringParserCommentBoundaries>: sentinel only
@@ -33,7 +33,7 @@ struct CStringParserCommentList {               // retail std::list<CStringParse
     ~CStringParserCommentList();                // 0x004046B0
 };
 
-class CStringParser : public CBase { public:                  // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                  // retail 0x28 bytes
     char* String;                               // +0x04
     unsigned long BaseLineOffset;               // +0x08
     CCharString Filename;                       // +0x0c

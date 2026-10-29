@@ -8,7 +8,7 @@ static int fails = 0;
 // NUISystem::CDraggable::ProcessEvent(EEvent) -- while dragged, follow the mouse: on the mouse-moved event (0x19) move the component to the mouse position divided by the UI scale; then the clickable handling
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0055A510, length 157 bytes; slot 1 of the CDraggable CObserver vtable 0x0124BA70
 // (rtti-vtables.tsv), so `this` is the CObserver subobject at +4 (members at -4 from their object offsets).
-// Callees: CFrontEndManager::GetInstance() @ 0x0041E5F2 (static, no arguments), CManager::GetUIScale() @ 0x0041CF47 (C2DVector by
+// Callees: NUISystem::CManager::GetInstance() @ 0x0041E5F2 (static, no arguments), CManager::GetUIScale() @ 0x0041CF47 (C2DVector by
 // hidden pointer), the component's ChangePosition(const C2DVector&, float, bool) (primary slot 32, `call [eax+80h]` on this-4),
 // NUISystem::CClickable::ProcessEvent(EEvent) @ 0x0055AD60.
 // Layout: the retail NUISystem component model of the landed CDraggable constructor 0x0055A9C0 (primary interface at +0, CObserver
@@ -25,12 +25,12 @@ class C2DVector { public:
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
 
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     unsigned char _pad[0xb0];
     C2DVector     MousePosition;                   // +0xb0
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     C2DVector GetUIScale();                        // 0x0041CF47 (CManager::GetUIScale)
-};
+}; }
 
 namespace NUISystem {
 
@@ -96,9 +96,9 @@ class CDraggable : public CClickable { public:                   // retail 0x1ac
 void CDraggable::ProcessEvent(EEvent event)
 {
     if (event == EVENT_MOUSE_MOVED && WasDragged) {
-        C2DVector position(CFrontEndManager::GetInstance()->MousePosition);
+        C2DVector position(NUISystem::CManager::GetInstance()->MousePosition);
         float scaleX, scaleY;
-        scaleX = CFrontEndManager::GetInstance()->GetUIScale().X, scaleY = CFrontEndManager::GetInstance()->GetUIScale().Y;
+        scaleX = NUISystem::CManager::GetInstance()->GetUIScale().X, scaleY = NUISystem::CManager::GetInstance()->GetUIScale().Y;
         position.X /= scaleX;
         position.Y /= scaleY;
         ChangePosition(position, 0.0f, false);
@@ -109,10 +109,10 @@ void CDraggable::ProcessEvent(EEvent event)
 }
 
 // ---- stubs and driver ----
-static double g_fem[(sizeof(CFrontEndManager) + 7) / 8];
+static double g_fem[(sizeof(NUISystem::CManager) + 7) / 8];
 static int g_scaleCalls = 0; static float g_sx = 2.0f, g_sy = 4.0f;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return (CFrontEndManager*)g_fem; }
-C2DVector CFrontEndManager::GetUIScale() { ++g_scaleCalls; C2DVector v; v.X = g_sx; v.Y = g_sy; return v; }
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return (NUISystem::CManager*)g_fem; }
+C2DVector NUISystem::CManager::GetUIScale() { ++g_scaleCalls; C2DVector v; v.X = g_sx; v.Y = g_sy; return v; }
 namespace NUISystem {
 void CComponentInterface::v000() { }
 void CComponentInterface::v001() { }
@@ -161,7 +161,7 @@ struct TestDrag : CDraggable {
 int main()
 {
     memset(g_fem, 0, sizeof(g_fem));
-    CFrontEndManager* fem = (CFrontEndManager*)g_fem; fem->MousePosition.X = 100.0f; fem->MousePosition.Y = 60.0f;
+    NUISystem::CManager* fem = (NUISystem::CManager*)g_fem; fem->MousePosition.X = 100.0f; fem->MousePosition.Y = 60.0f;
     TestDrag d; d.WasDragged = false;
     d.CDraggable::ProcessEvent(EVENT_MOUSE_MOVED);
     CHECK(g_moves == 0 && g_baseCalls == 1 && g_baseEvent == EVENT_MOUSE_MOVED && g_scaleCalls == 0);

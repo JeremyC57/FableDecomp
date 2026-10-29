@@ -1,11 +1,11 @@
 // NParticleEngine::CPSCSpline::ReadBinary(CDataInputStream&), recovered PDB signature.
 // Retail 00b1b1b0 reads SplineBounce, ScaleSplineSpeed, SplineAnimSpeed then base.
 // PDB derived members +3d,+3e,+40 become retail +39,+3a,+3c after base shrinks4.
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct InputCalls   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void*,const void*,unsigned int);
 #pragma intrinsic(memcpy)
 struct InputCalls:CDataInputStream {
- void ReadWithSrcChunkOverflow(unsigned char*,long); //00993ca0
  static __forceinline bool IsValidPosition(__int64 p){return p>=0&&p<=0x7fffffff;}
  __forceinline void Read(void* buffer,long size){
   __int64 next=(__int64)(StreamPos+size);

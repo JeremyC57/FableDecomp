@@ -1,14 +1,14 @@
 // CVertexBufferWin32::CVertexBufferWin32() -- the default shell: no D3D buffer, zero length/type/stride,
 // identity compression params (scale 1, bias 0). Vtable 0x0129BA20 (RTTI: CVertexBufferWin32).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A8E160, length 61 bytes.
-// Callees: CBase::CBase @ 0x0099A2F0. Manifest label (CChangingStateComponent::Initialise) corrected
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0. Manifest label (CChangingStateComponent::Initialise) corrected
 // from the stored vtable.
 // CBase: the engine's polymorphic root (vtable @ 0x0129A7C4 in the ctor, 0x01231710 in the dtor);
 // both members are out of line in retail.
-struct CBase {
-    virtual void VSlot0();
-    CBase();                                    // 0x0099A2F0
-    ~CBase();                                   // 0x0099A300
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                                    // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();                                   // 0x0099A300
 };
 #include "engine/CVertexBufferWin32.h"   // PDB header: an opaque 0x30-byte flattened base, so the retail
                                             // members (CVertexBufferBase in the PDB) are modelled locally
@@ -20,7 +20,7 @@ class CVertexCompressionParams { public:               // PDB: PosScale XYZW the
         : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
           PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
 };
-struct CVertexBufferBase : CBase {              // 0x34 bytes, PDB member names
+struct CVertexBufferBase : CBaseClassNonCopyable {              // 0x34 bytes, PDB member names
     IDirect3DVertexBuffer9*  PVertexBuffer;     // +0x04
     unsigned long            Length;            // +0x08
     long                     Type;              // +0x0c (EVertexType)

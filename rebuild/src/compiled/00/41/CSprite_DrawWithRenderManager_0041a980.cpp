@@ -1,7 +1,7 @@
 // CSprite::DrawWithRenderManager() -- draw the sprite's graphic scaled into its render box (optionally centred) through the 2D render manager
 // Leaf: DrawWithRenderManager
 // Retail 0x0041A980, 377 bytes. Callees: the sprite's virtual IsCentred (slot 106, +0x1A8), GFAXToVX 0x009E1DA0 /
-// GFAYToVY 0x009E1DD0 (__stdcall float), CFrontEndManager::GetInstance 0x0041E5F2 (graphic bank counted pointer at +0x10),
+// GFAYToVY 0x009E1DD0 (__stdcall float), NUISystem::CManager::GetInstance 0x0041E5F2 (graphic bank counted pointer at +0x10),
 // GFGetSystemManager 0x009A4EC0 (render manager +0x60, 2D manager +8), CRenderManager2D::Draw2DScaledGraphic 0x009DD210,
 // operator delete 0x00BFE9BC (bank copy release). Pools: 2^32 0x0122DCB4 (unsigned to float), 0.5f 0x0122F59C.
 // Layout: engine/CSprite.h is PDB padding with Width at +0x198; retail sits 0x30 lower (as the landed CSlider rows):
@@ -58,11 +58,11 @@ struct CRenderManager2D {
 class CRenderManager { public: unsigned char _pad[8]; CRenderManager2D* RenderManager2D; };   // +0x08
 class CSystemManager { public: unsigned char _pad[0x60]; CRenderManager* RenderManager; };     // +0x60
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     unsigned char _pad[0x10];
     CCountedPointer<CGraphicDataBank> PGraphicBank;      // +0x10
-};
+}; }
 struct CSprite {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -110,7 +110,7 @@ void CSprite::DrawWithRenderManager()
     box.TLY = GFAYToVY_009e1dd0(box.TLY);
     box.BRX = GFAXToVX(box.BRX);
     box.BRY = GFAYToVY_009e1dd0(box.BRY);
-    CCountedPointer<CGraphicDataBank> bank = CFrontEndManager::GetInstance()->PGraphicBank;
+    CCountedPointer<CGraphicDataBank> bank = NUISystem::CManager::GetInstance()->PGraphicBank;
     CSystemManager* system = GFGetSystemManager();
     system->RenderManager->RenderManager2D->Draw2DScaledGraphic(box, bank.Data, GraphicIndex, 0, 0);
 }

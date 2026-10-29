@@ -42,7 +42,8 @@ struct CDefBase : CDefVirtual, CRefCounted {
     void ReleaseTemporary() { DecRef(); if (GetRefCount() == 0) Destroy(); }
 };
 class CExpressionDef : public CDefBase { public: unsigned char _pad08[0x58]; long Graphic; };   // +0x60
-struct CDefPointer {
+class CDefClassBase;
+template <class T> class CDefPointer { public:
     CExpressionDef* m_p;
     CDefPointer() : m_p(0) {}
     __forceinline ~CDefPointer() { if (m_p) { m_p->Release(); m_p = 0; } }
@@ -56,7 +57,7 @@ struct CDefPointer {
         return *this;
     }
 };
-class CDefinitionManager { public: CDefPointer GetPDefFromGlobalIndex(long index) const; };   // 0x009AD9E0
+class CDefinitionManager { public: CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const; };   // 0x009AD9E0
 class CWorld { public: unsigned char _pad[0x10]; CDefinitionManager* Definitions; };
 struct SButtonEntry { unsigned char _pad[0x54]; C2DVector Position; };   // 0x5c bytes
 struct ButtonVector { SButtonEntry *Start, *Finish, *End; long size() const; };   // 0x0043CAC0
@@ -117,7 +118,7 @@ void CDrawAbilityButtonsPC::DrawExpressionButton(CEnginePrimitivePrepareInfo* in
                     GFAPositionToScreen(&pos, &def->ExpressionOrigin);
                     pos.X += def->ExpressionButtons.Start[types[slot]].Position.X;
                     pos.Y += def->ExpressionButtons.Start[types[0]].Position.Y;
-                    CDefPointer icon;
+                    CDefPointer<const CDefClassBase> icon;
                     pos.Y += row * def->ExpressionRowStep;
                     pos.Y += def->ExpressionRowOffset;
                     if ((unsigned int)index < expressions->size()) {

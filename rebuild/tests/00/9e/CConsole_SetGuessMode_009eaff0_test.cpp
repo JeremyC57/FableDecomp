@@ -4,7 +4,7 @@
 // Callees: CCharString copy ctor 0x0099EC30, CCharString::GetAsLowerCase 0x0099ED10 (result by hidden pointer; PDB ?GetAsLowerCase@CCharString@@QBE?AV1@XZ), ~CCharString
 //   0x0099EAE0, the command map's _Lbound 0x009EEC10 (Dinkumware _Tree<CCharString, ...>), strncmp 0x00BFEAF8, the command's
 //   virtual slot 2 (+8, its text by value), CConsoleCommandLine::CConsoleCommandLine(const CCharString&) 0x009EEA10,
-//   CCharString::operator= 0x0099EFB0, CBase::~CBase 0x0099A2E0 (the command line's base); "" @ 0x0129AAF4.
+//   CCharString::operator= 0x0099EFB0, CBaseClass::~CBaseClass 0x0099A2E0 (the command line's base); "" @ 0x0129AAF4.
 // Layout: CConsole: GuessLine (CConsoleCommandLine: vptr, Text +4, flag +8, cursor +0xc) +0x1c, CurrentLine +0x30, the
 //   command map +0x40 (header node first), GuessMode +0x65, GuessIterator +0x68; map node key +0x10, value +0x14.
 // Shape: c_str()/Length() are the null-first inline accessors (merged null test). The lower-cased line comes from a
@@ -28,12 +28,12 @@ class CCharString { public:
     unsigned long Length() const { return PStringData == 0 ? 0 : PStringData->Length; }
 };
 
-struct CBase {
-    virtual void v00();
-    ~CBase();                                               // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                               // 0x0099A2E0
 };
 
-class CConsoleCommandLine : public CBase { public:
+class CConsoleCommandLine : public CBaseClass { public:
     CCharString Text;                                       // +0x04
     bool          Flag;                                     // +0x08
     long          Cursor;                                   // +0x0c
@@ -135,8 +135,7 @@ CCharString CCharString::GetAsLowerCase() const
     if (r.PStringData) { char* t = (char*)r.PStringData->Text; for (; *t; ++t) if (*t >= 'A' && *t <= 'Z') *t = (char)(*t + 32); }
     return r;
 }
-void CBase::v00() { }
-CBase::~CBase() { }
+CBaseClass::~CBaseClass() { }
 static int g_lineCtors = 0;
 CConsoleCommandLine::CConsoleCommandLine(const CCharString& text) : Text(text), Flag(true), Cursor(7) { ++g_lineCtors; }
 void CConsoleCommand::v00() { }

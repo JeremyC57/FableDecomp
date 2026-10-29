@@ -132,9 +132,7 @@ class CTCBoss { public:
     bool IsReadyForPhaseChange();               // 0x007AEE90
 };
 
-struct CWorldFrame {
-    static long GetWorldFrame();                // 0x0049D870 (static: GetPWorld() is evaluated for nothing)
-};
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 struct CAIStateGroup_BriarRose : CAIStateGroupBase {
     CIntelligentPointerThing PEnemy;            // +0x14 CIntelligentPointer<CThingCreatureBase>
@@ -150,7 +148,7 @@ bool CAIStateGroup_BriarRose::IsRunnable()
     creature->GetInterface(&source, 8);
     CTCBoss* boss;
     if (!(creature->GetInterface(&boss, 0xad) && boss->IsReadyForPhaseChange())) {
-        if (((CWorldFrame*)GetPWorld())->GetWorldFrame() < NextRunFrame)
+        if (((CWorld*)GetPWorld())->GetFrame() < NextRunFrame)
             return false;
     }
     CThing* enemy = source->GetEnemy();

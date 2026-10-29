@@ -1,7 +1,7 @@
 // CTCInventoryMap::ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion* region, bool pc) -- creates the map-keys container component (PC or console layout) and adds it under the parent
 // Retail 0x005FB7E0, 272 bytes (+ int3), `ret 0Ch`, esp frame (speed TU); `this` and `region` are unused (the
 // retail body keeps only the container part: an unused CWideString local and the UI misc-things def fetch survive).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall), CWideString() 0x0099AED0 / ~CWideString
+// Callees: CManager::GetInstance 0x0041E5F2 (__fastcall), CWideString() 0x0099AED0 / ~CWideString
 // 0x0099B510, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CGameDefinitionManager::Get
 // 0x0044C6B0 (__fastcall), CDefinitionManager::GetGlobalIndexFromClassIndex(const CCharString&, long) const
 // 0x009AD390 (manifest "COptimisedPrimitive::ActualToUniqueIndex" is propagated), CDefinitionManager::GetDef<T>
@@ -171,9 +171,7 @@ class CComponent { public:
 };
 class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance(); // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 class CRegion;
@@ -184,7 +182,7 @@ class CTCInventoryMap { public:
 
 void CTCInventoryMap::ConstructRegionDescriptionMapKeys(NUISystem::CComponent* parent, CRegion* region, bool pc)
 {
-    NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     CWideString text;
     CDefPointer<CUIMiscThingsDef> miscDef;
     long index = CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex("UI_MISC_THINGS_DEF", 1);

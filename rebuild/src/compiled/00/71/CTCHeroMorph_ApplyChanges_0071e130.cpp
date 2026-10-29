@@ -2,7 +2,7 @@
 // Leaf: ApplyChanges
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0071E130, 77 bytes (+3 int3 padding). CTCHeroMorph vtable 0x01265CF4
 // slot 28 (manifest CTCHeroMorph::vfunc_28; the CTCAppearanceMorphBase default in that slot, 0x0071B7A0, is an empty `ret`).
-// Callees: CBase::CBase() @ 0x0099A2D0 / CBase::~CBase() @ 0x0099A2E0 (the message's root base),
+// Callees: CBaseClass::CBaseClass() @ 0x0099A2D0 / CBaseClass::~CBaseClass() @ 0x0099A2E0 (the message's root base),
 //          CThing::SendMessage(CMessageBase*) @ 0x004C7820, CTCHeroMorph::UpdateTextureMorphs() @ 0x0071DE80,
 //          CTCGraphicAppearance::SetAsChanged(unsigned long) @ 0x004BF9E0.
 // Vtable: NTCMessages::CMessageOnMorphChanged @ 0x01265BB0.
@@ -15,14 +15,13 @@
 // and the Changed byte cleared.
 // Layout: Changed is +0x3D in retail (PDB +0x55, see OnInitialActivate 0x0071C790); a local model.
 
-namespace N_0099a2d0 { struct CBase {
-    virtual void v00();
-    CBase();                                  // 0x0099A2D0
-    ~CBase();                                 // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                  // 0x0099A2D0
+    virtual ~CBaseClass();                                 // 0x0099A2E0
+};
 
-struct CMessageOnMorphChanged : CBase {       // NTCMessages::CMessageOnMorphChanged
-    virtual void v00();
+struct CMessageOnMorphChanged : CBaseClass {       // NTCMessages::CMessageOnMorphChanged
     CMessageOnMorphChanged() {}
 };
 
@@ -33,7 +32,7 @@ struct CTCGraphicAppearance {
 class CThing { public:
     unsigned char         _pad_0x00[0x64];
     CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
-    void SendMessage(CBase* message);         // 0x004C7820
+    void SendMessage(CBaseClass* message);         // 0x004C7820
 };
 
 struct CTCHeroMorph_Retail {

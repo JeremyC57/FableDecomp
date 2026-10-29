@@ -210,9 +210,6 @@ class C3DVector { public:
     C3DVector() { }
     C3DVector(const C3DVector& v) { x = v.x; y = v.y; z = v.z; }
 };
-struct CWorldF {
-    static long GetWorldFrame();                // 0x0049D870 (does not use `this`)
-};
 class CThingCreatureBase;
 class CCombatManager { public:
     void RegisterCombatant(CThingCreatureBase* creature, CThingCreatureBase* enemy, bool ranged);   // 0x006EDC50
@@ -231,7 +228,7 @@ struct CAIStateGroup_RangedCombatUsePreferredFirePoint : CAIStateGroupBase {
     CBaseIntelligentPointer PFirePoint;         // +0x1c CIntelligentPointer<CThing>
     long TimeOutCounter;                        // +0x24
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PBrain->PCreature; }
-    CWorldF* GetPWorld();                       // 0x008FCFC0
+    CWorld* GetPWorld();                       // 0x008FCFC0
     void Terminate();                           // 0x008FCF40
     bool IsStillRunnable();                     // 0x0095D0E0
     bool AttackEnemy();                         // 0x0095D070
@@ -262,7 +259,7 @@ void CAIStateGroup_RangedCombatUsePreferredFirePoint::Update()
         Terminate();
         return;
     }
-    TimeOutCounter = GetPWorld()->GetWorldFrame();
+    TimeOutCounter = GetPWorld()->GetFrame();
     while (AttackEnemy()) {
         if (!IsStillRunnable()) {
             Terminate();

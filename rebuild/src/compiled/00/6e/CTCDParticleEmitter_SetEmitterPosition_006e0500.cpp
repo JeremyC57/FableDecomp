@@ -1,6 +1,6 @@
 // CTCDParticleEmitter::SetEmitterPosition(const C3DVector& position) -- move the live emitter (start and end position both `position`), or else reset the component's physics position
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006E0500, length 142 bytes (+ int3 padding).
-// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), CBase::CBase @ 0x0099A2D0 / ~CBase @ 0x0099A2E0, NParticleEngine::
+// Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x2), CBaseClass::CBaseClass @ 0x0099A2D0 / ~CBaseClass @ 0x0099A2E0, NParticleEngine::
 // CParticleEmitter::SetPosition(const C3DPositionInterpolator&) @ 0x00AEDDC0, CTCPhysicsBase::ResetPosition (slot 31, +0x7C).
 // Shape: the C3DPositionInterpolator temporary is built by an inline ctor (out-of-line CBase ctor, two vector copies, vtable
 // 0x0123981C; C3DVector's user copy ctor gives the register rotation) before the object expression `PEmitter.GetPItem()` is evaluated; the parent's physics is at the retail CThing +0x60.
@@ -16,17 +16,17 @@ class CRightHandedSet { public:
     C3DVector Up;                               // +0x00
     C3DVector Forward;                          // +0x0c
 };
-namespace N_0099a2d0 { struct CBase {                                  // polymorphic root of the interpolators
-    virtual void v00();
-    CBase();                                    // 0x0099A2D0
-    ~CBase();                                   // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
-class C3DOrientationInterpolator : public CBase { public:     // 0x34 bytes
+class CBaseClass {
+public:                                   // polymorphic root of the interpolators
+    CBaseClass();                                    // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
+};
+class C3DOrientationInterpolator : public CBaseClass { public:     // 0x34 bytes
     CRightHandedSet Start;                      // +0x04
     CRightHandedSet End;                        // +0x1c
     C3DOrientationInterpolator(const CRightHandedSet& start, const CRightHandedSet& end);   // 0x005508D0
 };
-class C3DPositionInterpolator : public CBase { public:        // 0x1c bytes, vtable 0x0123981C
+class C3DPositionInterpolator : public CBaseClass { public:        // 0x1c bytes, vtable 0x0123981C
     C3DVector Start;                            // +0x04
     C3DVector End;                              // +0x10
     C3DPositionInterpolator(const C3DVector& start, const C3DVector& end) : Start(start), End(end) {}

@@ -5,7 +5,8 @@ static int g_num = 9;
 
 extern "C" int __fastcall sub_4c5fa0(void*) { return 0; }
 extern "C" int __cdecl   sub_bfea70(void) { return g_div; }
-extern "C" int __cdecl   sub_49d870(void) { return g_num; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+long __fastcall CWorld::GetFrame() { return g_num; }
 
 class CBulletTimeManager;
 extern "C" bool __fastcall IsTimeForFullUpdate(CBulletTimeManager* self);

@@ -174,17 +174,17 @@ struct MazeThing{char base[0x20];unsigned long masks[9];MazeTable table;char bef
 __forceinline void GetBoss(MazeBoss** out){if(masks[5]&0x2000)*out=(MazeBoss*)table.Lookup<173>();}
 __forceinline void GetCombat(MazeCombat** out){if(masks[0]&0x100)*out=(MazeCombat*)table.LookupConst<8>();}
 };
-struct MazeWorld{static long GetWorldFrame();}; //0049d870
+class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
 struct TeleportMethods:CAIStateGroup_MazeTutorialBattleTeleport{
 __forceinline MazeThing* Creature(){return (MazeThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
 bool HasBeenHitByLightning(); //00954c60
-MazeWorld* GetPWorld(); //008fcfc0
+CWorld* GetPWorld(); //008fcfc0
 bool IsRunnable();};
 bool TeleportMethods::IsRunnable(){
 MazeCombat* combat;Creature()->GetCombat(&combat);MazeThing* target=combat->GetTarget();
 if(target&&!(target->dead&1)){
 CDefPointer def;def.m_p=0;Creature()->definition->GetSubDef(def);
-float elapsed=(float)(GetPWorld()->GetWorldFrame()-FrameOfLastTeleport);
+float elapsed=(float)(GetPWorld()->GetFrame()-FrameOfLastTeleport);
 if(elapsed > FramesPerSecond*def.m_p->TutorialTeleportTime){*(MazePointer*)_pad_0x14=MazePointer(target);return true;}
 }
 return false;

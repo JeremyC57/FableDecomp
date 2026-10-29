@@ -2,7 +2,7 @@
 // Leaf: OnHovered
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055A5B0, 29 bytes (tail `jmp` into the cursor's vtable).
 // Callees: NUISystem::NUISystem::CClickable::OnHovered @ 0x0055AEB0 (CClickable vtable 0x0124BD2C slot 143; it runs the hoverable
-// handling and observes the click events), CFrontEndManager::GetInstance @ 0x0041E5F2 (static `__fastcall`), the cursor's
+// handling and observes the click events), CManager::GetInstance @ 0x0041E5F2 (static `__fastcall`), the cursor's
 // virtual slot 149 (+0x254, TurnToHand, 0x0055C810).
 // Label: CScrollBar vtable 0x0124B7E4 slot 143, overriding NUISystem::CClickable::OnHovered (Ego_r.pdb ?OnHovered@CClickable@NUISystem@@MAEXXZ;
 // this retail override has no Ego_r symbol). Its slot-144 twin OnUnhovered (0x0055A740) turns the cursor back to the pointer.
@@ -34,11 +34,11 @@ public:
     virtual void v144(); virtual void v145(); virtual void v146(); virtual void v147(); virtual void v148();
     virtual void TurnToHand();                     // slot 149 (+0x254)
 };
-class CFrontEndManager {
+class CManager {
 public:
     unsigned char _pad00[0xb8];
     CMouseCursor* PMouseCursor;                    // +0xb8
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     CMouseCursor* GetMouseCursor() const { return PMouseCursor; }
 };
 class CClickable {
@@ -54,7 +54,7 @@ public:
 void CScrollBar::OnHovered()
 {
     CClickable::OnHovered();
-    CMouseCursor* cursor = CFrontEndManager::GetInstance()->GetMouseCursor();
+    CMouseCursor* cursor = CManager::GetInstance()->GetMouseCursor();
     if (cursor)
         cursor->TurnToHand();
 }

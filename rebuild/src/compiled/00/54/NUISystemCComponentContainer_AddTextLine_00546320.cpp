@@ -4,7 +4,7 @@
 //   frame (sub esp,28h). Slot 143 of the CComponentContainer vtable 0x01247AF4. Identity: Ego_r.pdb
 //   ?AddTextLine@CComponentContainer@NUISystem@@UAEXABVCWideString@@VCRGBColour@@KJ@Z (the unsigned-long sprite overload;
 //   the catalog's "UIContainer_SetupTextSprite" is descriptive).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall), CFrontEndManager::CreateComponent(const CCharString&, bool)
+// Callees: CManager::GetInstance 0x0041E5F2 (__fastcall), CFrontEndManager::CreateComponent(const CCharString&, bool)
 //   0x0041DB1D, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, operator new 0x00BFEA1A / delete
 //   0x00BFE9BC, CCountedPointer<CComponent>(CComponent*) 0x00429C15 (the 2nd and 3rd; the 1st inlines) with the delete
 //   function 0x00428B10, map<unsigned long, CUIState>::operator[] 0x0042D5B1; virtual slots: CComponent AddChild 59
@@ -270,15 +270,15 @@ class CComponentContainer : public CComponent {
 public:
     virtual void AddTextLine(const CWideString& text, CRGBColour colour, unsigned long spriteIndex, long indent);   // slot 143 (+0x23c)
 };
-class CFrontEndManager {
+class CManager {
 public:
-    static CFrontEndManager* __fastcall GetInstance();                                 // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                                 // 0x0041E5F2
     CComponent* CreateComponent(const CCharString& name, bool b);                      // 0x0041DB1D
 };
 
 void CComponentContainer::AddTextLine(const CWideString& text, CRGBColour colour, unsigned long spriteIndex, long indent)
 {
-    CFrontEndManager* manager = CFrontEndManager::GetInstance();
+    CManager* manager = CManager::GetInstance();
     CCountedPointer<CComponent> textLine(manager->CreateComponent("UI_TEXT_INSIDE_CONTAINER_TEMPLATE", false));
     CText* textComponent = (CText*)textLine.Data;
     C2DBoxF window(0.0f, 0.0f, (float)indent, 100.0f);

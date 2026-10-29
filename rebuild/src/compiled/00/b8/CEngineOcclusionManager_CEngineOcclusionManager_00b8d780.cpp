@@ -2,7 +2,7 @@
 // Leaf: ??0CEngineOcclusionManager
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B8D780, length 767 bytes (plain `ret`, no EH frame).
 // Callees: CEngineComponent::CEngineComponent @ 0x00B59710 (manifest "CNavigationLayer", propagated), CVertexShader::CVertexShader
-//   @ 0x00A62FB0, CBase::CBase @ 0x0099A2F0 (unit-box vertex buffer root), CIndexBuffer::CIndexBuffer @ 0x00AC1EC0,
+//   @ 0x00A62FB0, CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (unit-box vertex buffer root), CIndexBuffer::CIndexBuffer @ 0x00AC1EC0,
 //   CPixelShader::CPixelShader @ 0x00A5EC00, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0,
 //   CShaderResource::GetVertexShader @ 0x00A5D5F0 / GetPixelShader @ 0x00A5D720, InitializeOcclusionBuffers @ 0x00B8D0D0.
 // Globals: the engine data @ 0x01436E98; shader resources at +0x29C8 (static unlit), +0x2A60 (occlusion box), +0x2A98 (pixel).
@@ -84,9 +84,10 @@ struct CEngineData {
 };
 extern CEngineData* g_pEngineData;                 // 0x01436E98
 
-struct CBase {
-    virtual void VSlot0();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
 class CVertexCompressionParams { public:
@@ -96,7 +97,7 @@ class CVertexCompressionParams { public:
         : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
           PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
 };
-struct CVertexBufferBase : CBase {                 // 0x34 bytes
+struct CVertexBufferBase : CBaseClassNonCopyable {                 // 0x34 bytes
     IDirect3DVertexBuffer9*  PVertexBuffer;        // +0x04
     unsigned long            Length;               // +0x08
     long                     Type;                 // +0x0c

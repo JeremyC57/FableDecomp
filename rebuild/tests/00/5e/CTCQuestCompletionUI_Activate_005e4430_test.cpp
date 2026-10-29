@@ -91,10 +91,10 @@ struct CFilterComponent : CComponent {
 };
 static CFilterComponent g_filter;
 static char g_compname[64];
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance() { static CFrontEndManager m; return &m; }
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance() { static CManager m; return &m; }
     CComponent* CreateComponent(const CCharString& name, bool) { strcpy(g_compname, name.Text); return &g_filter; }
-};
+}; }
 static int g_closed = 0;
 class CPlayerGui { public: void Close(bool b) { g_closed = b ? 1 : 2; } };
 CPlayerGui* g_pPlayerGui;
@@ -185,7 +185,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
         RenderedObjectDef = 0;
         QuestCardDef = 0;
     }
-    PBlack = (CFilterComponent*)CFrontEndManager::GetInstance()->CreateComponent("PC_SCREEN_FILTER", false);
+    PBlack = (CFilterComponent*)NUISystem::CManager::GetInstance()->CreateComponent("PC_SCREEN_FILTER", false);
     PBlack->Show();
     PBlack->SetFocus(true);
     g_pPlayerGui->Close(true);

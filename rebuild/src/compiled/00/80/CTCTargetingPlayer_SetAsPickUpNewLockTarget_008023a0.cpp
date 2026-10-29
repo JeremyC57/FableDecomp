@@ -7,11 +7,11 @@ class CTCTargetingPlayer { public:
     unsigned int f44;    // +0x44
 };
 
-extern "C" unsigned int __fastcall helper_49d870(CTCTargetingPlayer* player);
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 void __fastcall SetAsPickUpNewLockTarget(CTCTargetingPlayer* player)
 {
     player->f3c = 1;
     player->f40 = 0;
-    player->f44 = helper_49d870(player);
+    player->f44 = ((unsigned int)CWorld::GetFrame());
 }

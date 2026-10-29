@@ -6,7 +6,7 @@
 //   CDataOutputStream::WriteSLONG @ 0x00993EB0, WriteULONG @ 0x00993EA0, WriteEBOOL @ 0x00993E30, WriteFLOAT @ 0x00993EE0 (the manifest
 //   names all three 4-byte writers "WriteCBYTE"), CMemoryDataOutputStream::GetSize @ 0x00994B40 (manifest "GetFramesRemaining" is a
 //   twin) and PeekData @ 0x00995E70, CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) @ 0x0099AD80, Write @ 0x0099AA90,
-//   the inlined ~CDiskFileWin32 (vtable 0x0122D06C, Close @ 0x0099A920, ~CWideString @ 0x0099B510, ~CBase @ 0x0099A300) as the landed
+//   the inlined ~CDiskFileWin32 (vtable 0x0122D06C, Close @ 0x0099A920, ~CWideString @ 0x0099B510, ~CBaseClassNonCopyable @ 0x0099A300) as the landed
 //   CInputManager::StreamInputsFromFile 0x009F5E10.
 // Layout: the manager's per-animation extra events (STLport vector of 12-byte entries: animation id, CEvent array, count) at +0x2c;
 //   CEvent (8 bytes): packed word (index in the low 30 bits, two flags in bits 30/31) and time.
@@ -16,15 +16,14 @@ class CWideString { public:
     void* PStringData;                              // +0x00
     ~CWideString();                                 // 0x0099B510
 };
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                       // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
 
-class CDiskFileWin32 : public CBase { public:                     // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                     // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                           // 0x0099A920 (slot 2)
     long        AccessType;                         // +0x04

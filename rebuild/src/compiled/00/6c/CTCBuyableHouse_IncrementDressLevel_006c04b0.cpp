@@ -4,10 +4,10 @@ struct CTCBuyableHouse_Methods : CTCBuyableHouse {
     void SetDressLevel(int lvl);
 };
 
-extern int GetNewThing();
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 void __fastcall CTCBuyableHouse_IncrementDressLevel(CTCBuyableHouse* house)
 {
     ((CTCBuyableHouse_Methods*)house)->SetDressLevel(house->CurrentDressLevel + 1);
-    house->FrameToNextCheckIfWeNeedToCreateAnything = GetNewThing();
+    house->FrameToNextCheckIfWeNeedToCreateAnything = CWorld::GetFrame();
 }

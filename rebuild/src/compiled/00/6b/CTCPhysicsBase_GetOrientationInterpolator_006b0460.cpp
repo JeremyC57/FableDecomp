@@ -4,7 +4,7 @@
 // Callees: CTCBase::PeekWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime 0x004C9920, CBulletTime::GetTimeScale
 //   0x004C5FA0, CWorld::GetWorldFrame 0x0049D870 (static), _ftol 0x00BFEA70, CRightHandedSet::Interpolate(const
 //   CRightHandedSet&, float) const 0x00A23190 (hidden result), C3DOrientationInterpolator(const CRightHandedSet&, const
-//   CRightHandedSet&) 0x005508D0, C3DOrientationInterpolator::operator= 0x006B0E00 (landed), ~CBase 0x0099A2E0, the
+//   CRightHandedSet&) 0x005508D0, C3DOrientationInterpolator::operator= 0x006B0E00 (landed), ~CBaseClass 0x0099A2E0, the
 //   physics virtual slots 72 (+0x120, the current right-handed set, as the landed 0x006B0850) and 73 (+0x124, the
 //   previous frame's set; name descriptive). Global 1.0f 0x0122DED8.
 // Layout: CTCBase ParentThing +0x04; CWorld bullet-time controller +0x68 (active flag +0x0c, controller +0x04, as the
@@ -20,11 +20,11 @@ class CRightHandedSet { public:
     C3DVector Up, Forward;
     CRightHandedSet Interpolate(const CRightHandedSet& other, float t) const;   // 0x00A23190
 };
-struct CBase {
-    virtual void v00();
-    ~CBase();                                       // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
 };
-class C3DOrientationInterpolator : public CBase { public:         // 0x34 bytes
+class C3DOrientationInterpolator : public CBaseClass { public:         // 0x34 bytes
     CRightHandedSet StartOrientation;               // +0x04
     CRightHandedSet EndOrientation;                 // +0x1c
     C3DOrientationInterpolator(const CRightHandedSet& start, const CRightHandedSet& end);   // 0x005508D0

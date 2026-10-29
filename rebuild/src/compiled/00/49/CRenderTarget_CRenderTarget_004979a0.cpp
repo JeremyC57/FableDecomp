@@ -1,7 +1,7 @@
-// CRenderTarget::~CRenderTarget() -- destroys the depth surface (+0x14) then the colour surface (+4) -- each stores the CSurface vtable 0x0122F84C and calls Uninitialise -- then tail-calls CBase::~CBase
+// CRenderTarget::~CRenderTarget() -- destroys the depth surface (+0x14) then the colour surface (+4) -- each stores the CSurface vtable 0x0122F84C and calls Uninitialise -- then tail-calls CBaseClass::~CBaseClass
 // Leaf: ??1CRenderTarget
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004979A0, length 39 bytes (no code references).
-// Callees: CSurface::Uninitialise @ 0x009F2E20 (x2), CBase::~CBase @ 0x0099A2E0 (tail jump).
+// Callees: CSurface::Uninitialise @ 0x009F2E20 (x2), CBaseClass::~CBaseClass @ 0x0099A2E0 (tail jump).
 // The catalog label "CThingNoiseDef::~CThingNoiseDef" is propagated (the PDB CThingNoiseDef holds a
 // CTCNoiseDef, nothing like this): the layout is the landed CRenderTarget model (0x00A10E30,
 // constructor 0x009F9CD0) -- CBase vptr, colour CSurface at +4, depth CSurface at +0x14.
@@ -17,11 +17,11 @@ class CSurface { public:                                  // vtable 0x0122F84C, 
     void Uninitialise();                           // 0x009F2E20
     virtual ~CSurface() { Uninitialise(); }
 };
-struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
-struct __declspec(novtable) CRenderTarget : CBase {
+struct __declspec(novtable) CRenderTarget : CBaseClass {
     CSurface ColourSurface;                        // +0x04
     CSurface DepthSurface;                         // +0x14
     ~CRenderTarget();

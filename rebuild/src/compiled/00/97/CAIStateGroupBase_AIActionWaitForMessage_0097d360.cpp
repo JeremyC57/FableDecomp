@@ -1,4 +1,4 @@
-// CAIStateGroupBase::AIAction_WaitForMessage(EMessageEventType, CThingCreatureBase*, long) -- yield until stop, a matching event, or strict timeout; retail 0x0097d360, 293 bytes. Callees: IsStopping 0x008fd010, GetPWorld 0x008fcfa0, GetGameTick 0x0049d870 (global 0x013b89bc), Yield through CAIBrain slot 2, originator filter constructor 0x006af290, type predicate 0x006af1c0, FindMostRecentMessage 0x008d46d0.
+// CAIStateGroupBase::AIAction_WaitForMessage(EMessageEventType, CThingCreatureBase*, long) -- yield until stop, a matching event, or strict timeout; retail 0x0097d360, 293 bytes. Callees: IsStopping 0x008fd010, GetPWorld 0x008fcfa0, CWorld::GetFrame 0x0049d870 (static; reads global 0x013b89bc), Yield through CAIBrain slot 2, originator filter constructor 0x006af290, type predicate 0x006af1c0, FindMostRecentMessage 0x008d46d0.
 #include <new>
 #define CAIStateGroupBase CAIStateGroupBasePdb
 #include "engine/CAIStateGroupBase.h"              // layout only; the local class below carries the protected accessors (PDB: IBE)
@@ -62,7 +62,6 @@ class CMessageEventManager { public:
 };
 
 typedef void (FABLE_NATIVE_THISCALL *CAIBrainYieldFunction)(CAIBrain*);
-long FABLE_FASTCALL GetGameTick();                        // 0x0049d870, global 0x013b89bc
 
 class CAIStateGroupBase : public CAIStateGroupBasePdb {
 protected:
@@ -80,8 +79,8 @@ EAIActionReturn CAIStateGroupBase::AIAction_WaitForMessage(
         return AI_ACTION_RETURN_ONE;
 
     PeekWorld();
-    long deadline = GetGameTick() + timeout;
-    while ((PeekWorld(), GetGameTick()) <= deadline) {
+    long deadline = CWorld::GetFrame() + timeout;
+    while ((PeekWorld(), CWorld::GetFrame()) <= deadline) {
         CAIBrain* brain = PBrain;
         void** slots = (void**)brain->__vftable;
         ((CAIBrainYieldFunction)slots[2])(brain);

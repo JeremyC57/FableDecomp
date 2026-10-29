@@ -29,18 +29,18 @@ class CRightHandedSet { public:
     C3DVector Up;                                            // +0x00
     C3DVector Forward;                                       // +0x0c
 };
-namespace N_0099a2d0 { struct CBase {
-    virtual void v00();
-    CBase();                                                 // 0x0099A2D0
-    ~CBase();                                                // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
-class C3DOrientationInterpolator : public CBase { public:
+class CBaseClass {
+public:
+    CBaseClass();                                                 // 0x0099A2D0
+    virtual ~CBaseClass();                                                // 0x0099A2E0
+};
+class C3DOrientationInterpolator : public CBaseClass { public:
     CRightHandedSet Start;
     CRightHandedSet End;
     C3DOrientationInterpolator() { }
     C3DOrientationInterpolator(const CRightHandedSet& start, const CRightHandedSet& end);   // 0x005508D0
 };
-class C3DPositionInterpolator : public CBase { public:
+class C3DPositionInterpolator : public CBaseClass { public:
     C3DVector Start;
     C3DVector End;
     C3DPositionInterpolator(const C3DVector& start, const C3DVector& end);                  // 0x006AF570
@@ -250,10 +250,9 @@ void CTCDParticleEmitter::FrameUpdate()
     }
 }
 
-CBase::CBase() {}
-void CBase::v00() {}
+CBaseClass::CBaseClass() {}
 void CBaseIntelligentPointer::v00() {}
-CBase::~CBase() {}
+CBaseClass::~CBaseClass() {}
 C3DPositionInterpolator::C3DPositionInterpolator(const C3DVector& s, const C3DVector& e) : Start(s), End(e) {}
 static int g_setPos = 0, g_setOri = 0, g_hidden = -1, g_kill = 0, g_killArg = -1, g_create = 0, g_thingAttach = 0, g_camAttach = 0;
 static C3DPositionInterpolator* g_lastPos = 0;

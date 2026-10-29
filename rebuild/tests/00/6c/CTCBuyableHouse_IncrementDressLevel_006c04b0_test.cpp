@@ -7,7 +7,8 @@ struct CTCBuyableHouse_Methods : CTCBuyableHouse {
 
 static int g_lastLvl = -999;
 void CTCBuyableHouse_Methods::SetDressLevel(int lvl) { g_lastLvl = lvl; }
-int GetNewThing() { return 0x1234; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+long __fastcall CWorld::GetFrame() { return 0x1234; }
 
 void __fastcall CTCBuyableHouse_IncrementDressLevel(CTCBuyableHouse* house);
 

@@ -7,7 +7,7 @@
 // Callees: malloc 0x00BFEA0E / free 0x00BFEA14 (list header nodes, 0xc bytes), CDeletion(const CDeletion&) 0x0042CD84 and
 //   ~list<CComponent*> 0x0042ABCA (the pending-spell branch; the other branch inlines both),
 //   list<CComponent*>::_M_insert_dispatch(iterator, const_iterator, const_iterator, const __false_type&) 0x0042B4C3,
-//   CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall) / CreateComponent(long) 0x0041D21B, operator new 0x00BFEA1A /
+//   CManager::GetInstance 0x0041E5F2 (__fastcall) / CreateComponent(long) 0x0041D21B, operator new 0x00BFEA1A /
 //   delete 0x00BFE9BC, CCountedPointer delete function 0x00428B10, map<unsigned long, CUIState>::operator[] 0x0042D5B1;
 //   virtual slots: CComponent SetDeletion(CDeletion) 62 (+0xf8) / GetStates 82 (+0x148), CSpellContainer
 //   AddChildDynamically 142 (+0x238).
@@ -452,9 +452,9 @@ public:
     std::pair<CComponent*, unsigned long> NewSpell;                                    // +0x168
     long                                EmptySlot;                                     // +0x170
 };
-class CFrontEndManager {
+class CManager {
 public:
-    static CFrontEndManager* __fastcall GetInstance();                                 // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                                 // 0x0041E5F2
     CComponent* CreateComponent(long definition);                                      // 0x0041D21B
 };
 
@@ -471,7 +471,7 @@ void CSpellContainer::UnAssignSpell(unsigned long slot)
         CDeletion deletion;
         deletion.Method = DELETION_METHOD_1;
         Children[slot]->SetDeletion(deletion);
-        CCountedPointer<CComponent> emptySlot(CFrontEndManager::GetInstance()->CreateComponent(EmptySlot));
+        CCountedPointer<CComponent> emptySlot(CManager::GetInstance()->CreateComponent(EmptySlot));
         CStateMap& states = emptySlot->GetStates();
         for (CStateMap::iterator it = states.begin(); it != states.end(); ++it) {
             states[it->first].Position = Children[slot]->GetStates()[it->first].Position;

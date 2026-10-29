@@ -2,7 +2,7 @@
 // Leaf: Initialise
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0053F810, 976 bytes, `ret` (RTTI vtable 0x012468D4 slot 43 = NUISystem::CScrollingViewport;
 //   the manifest's "CSprite::Initialize" label is propagated).
-// Callees: NUISystem::CViewport::Initialise 0x0054E640 (landed), CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall),
+// Callees: NUISystem::CViewport::Initialise 0x0054E640 (landed), CManager::GetInstance 0x0041E5F2 (__fastcall),
 //   CManager::CreateComponent(long) 0x0041D21B / CreateComponent(const CCharString&, bool) 0x0041DB1D,
 //   CCountedPointer<CComponent>::CCountedPointer(CComponent*) 0x00429C15, STLport vector<CCountedPointer<CComponent> >
 //   _M_insert_overflow 0x005359D0, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, operator delete
@@ -134,9 +134,7 @@ class CComponent { public:
 class CManager { public:
     CComponent* CreateComponent(long definition);                     // 0x0041D21B
     CComponent* CreateComponent(const CCharString& name, bool flag);  // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 class CViewport : public CComponent { public:
     unsigned char _pad0bc[0x188 - 0xbc];
@@ -153,22 +151,22 @@ void CScrollingViewport::Initialise()
     CViewport::Initialise();
     CDefPointer def = GetDef();
     if (def->ScrollBarDef) {
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(def->ScrollBarDef)));
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(def->ScrollBarDef)));
         Children[Children.size() - 1]->Initialise();
         Children[Children.size() - 1]->SetParent(this);
         PScrollBar = Children[Children.size() - 1].m_pObject;
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(
             "PC_DESCRIPTION_SCROLL_BAR_POSITION_DUMMY", false)));
         Children[Children.size() - 1]->Initialise();
         Children[Children.size() - 1]->SetParent(this);
         Children[Children.size() - 1]->SetScrolledComponent(PScrollBar);
     }
     if (def->ScrollBarOutsideDef) {
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(def->ScrollBarOutsideDef)));
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(def->ScrollBarOutsideDef)));
         Children[Children.size() - 1]->Initialise();
         Children[Children.size() - 1]->SetParent(this);
         PScrollBarOutside = Children[Children.size() - 1].m_pObject;
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(
             "PC_DESCRIPTION_SCROLL_BAR_POSITION_DUMMY", false)));
         Children[Children.size() - 1]->Initialise();
         Children[Children.size() - 1]->SetParent(this);

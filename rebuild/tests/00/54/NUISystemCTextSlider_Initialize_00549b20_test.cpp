@@ -373,9 +373,7 @@ __declspec(noinline) void CActionVector::_M_insert_overflow(CActionPointer* posi
 
 class CManager { public:
     CComponent* CreateComponent(long definition);       // 0x0041D21B
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 
 class CTextSlider : public CComponent { public:
@@ -423,7 +421,7 @@ void CTextSlider::Initialize()
         Actions.push_back(action);
     }
     if (def->RightArrowDef) {
-        PRightArrow = CFrontEndManager::GetInstance()->CreateComponent(def->RightArrowDef);
+        PRightArrow = CManager::GetInstance()->CreateComponent(def->RightArrowDef);
         CActionPointer action(new CAction);
         action->ActionType = 0x123;
         action->AddUIActionParam(new CActionParamLong(0x15));
@@ -431,7 +429,7 @@ void CTextSlider::Initialize()
         PRightArrow->AddAction(action);
     }
     if (def->LeftArrowDef) {
-        PLeftArrow = CFrontEndManager::GetInstance()->CreateComponent(def->LeftArrowDef);
+        PLeftArrow = CManager::GetInstance()->CreateComponent(def->LeftArrowDef);
         CActionPointer action(new CAction);
         action->ActionType = 0x123;
         action->AddUIActionParam(new CActionParamLong(0x14));
@@ -492,8 +490,8 @@ struct CTestArrow : CComponent {
 };
 static CTestArrow g_arrows[2];
 static long g_created[2]; static int g_createCount = 0;
-static CFrontEndManager g_manager;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_manager; }
+static CManager g_manager;
+CManager* __fastcall CManager::GetInstance() { return &g_manager; }
 CComponent* CManager::CreateComponent(long definition) { g_created[g_createCount] = definition; g_arrows[g_createCount].Def = definition; return &g_arrows[g_createCount++]; }
 
 struct CTestSlider : CTextSlider {

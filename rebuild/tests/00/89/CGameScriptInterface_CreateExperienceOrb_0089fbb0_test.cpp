@@ -321,13 +321,14 @@ struct CThingNative{void* VTable;unsigned char Base[0x1c];unsigned int UsingComp
 // Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
-struct CBaseClassNative{CBaseClassNative();virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
+class CBaseClass {
+public: CBaseClass();virtual ~CBaseClass();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
 class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}}};
-struct ScriptMethods:CBaseClassNative{
+struct ScriptMethods:CBaseClass{
  CountedScriptImp PImp;
  ScriptMethods(){}
- ScriptMethods(const ScriptMethods& other):CBaseClassNative(),PImp(other.PImp){}
+ ScriptMethods(const ScriptMethods& other):CBaseClass(),PImp(other.PImp){}
  virtual ~ScriptMethods(){}
 virtual const CCharString& GetName() const; //slot1 0x004AA8B0
 virtual CCharString GetDefName() const; //slot2 0x004AA8D0
@@ -539,7 +540,7 @@ ScriptMethods CGameScriptInterfaceMethods::CreateExperienceOrb(const C3DVector& 
 #include <string.h>
 static C3DVector FixturePosition;static CCharString FixtureString;
 
-CBaseClassNative::CBaseClassNative(){}CBaseClassNative::~CBaseClassNative(){}
+CBaseClass::CBaseClass(){}CBaseClass::~CBaseClass(){}
 const CCharString& ScriptMethods::GetName() const{return FixtureString;}
 CCharString ScriptMethods::GetDefName() const{return CCharString();}
 CCharString ScriptMethods::GetDataString() const{return CCharString();}

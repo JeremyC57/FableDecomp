@@ -3,7 +3,7 @@
 // Callees: this's virtual slot 8 (+0x20, the component reset), CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0, CStringParser::CStringParser @ 0x00404720 (landed), CCharString::~CCharString @ 0x0099EAE0,
 // TransferIn(CPersistContext*, CStringParser*, long*) @ 0x009E2590 (__fastcall), std::list<CStringParserCommentBoundaries>::~list
-// @ 0x004046B0 (landed), CBase::~CBase @ 0x0099A2E0.
+// @ 0x004046B0 (landed), CBaseClass::~CBaseClass @ 0x0099A2E0.
 // Shape: the landed sibling CAnimComponentFlags::Initialise (0x005DC3C0): the parser local, the inline parse helper whose
 // value is homed in the dead text-argument slot; the zero test picks one of two inlined parser-destructor tails.
 // Layout: rebuild/include/engine/CAnimComponentSetCreatureMode.h is data-only (Mode +0x08, EMode), so the polymorphic class
@@ -15,9 +15,9 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CBase {
-    virtual void v00();
-    ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 
 struct CStringParserCommentList {               // retail std::list<CStringParserCommentBoundaries>: sentinel only
@@ -25,7 +25,7 @@ struct CStringParserCommentList {               // retail std::list<CStringParse
     ~CStringParserCommentList();                // 0x004046B0
 };
 
-class CStringParser : public CBase { public:                  // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                  // retail 0x28 bytes
     char* String;                               // +0x04
     unsigned long BaseLineOffset;               // +0x08
     CCharString Filename;                       // +0x0c

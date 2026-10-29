@@ -146,9 +146,7 @@ class CComponent { public:
 class CManager { public:
     CComponent* CreateComponent(long definition);                     // 0x0041D21B
     CComponent* CreateComponent(const CCharString& name, bool flag);  // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 class CViewport : public CComponent { public:
     unsigned char _pad0bc[0x188 - 0xbc];
@@ -165,22 +163,22 @@ void CScrollingViewport::Initialise()
     CViewport::Initialise();
     CDefPointer def = GetDef();
     if (def->ScrollBarDef) {
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(def->ScrollBarDef)));
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(def->ScrollBarDef)));
         Children[Children.size() - 1]->Initialise();
         Children[Children.size() - 1]->SetParent(this);
         PScrollBar = Children[Children.size() - 1].m_pObject;
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(
             "PC_DESCRIPTION_SCROLL_BAR_POSITION_DUMMY", false)));
         Children[Children.size() - 1]->Initialise();
         Children[Children.size() - 1]->SetParent(this);
         Children[Children.size() - 1]->SetScrolledComponent(PScrollBar);
     }
     if (def->ScrollBarOutsideDef) {
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(def->ScrollBarOutsideDef)));
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(def->ScrollBarOutsideDef)));
         Children[Children.size() - 1]->Initialise();
         Children[Children.size() - 1]->SetParent(this);
         PScrollBarOutside = Children[Children.size() - 1].m_pObject;
-        Children.push_back(CCountedPointer<CComponent>(CFrontEndManager::GetInstance()->CreateComponent(
+        Children.push_back(CCountedPointer<CComponent>(CManager::GetInstance()->CreateComponent(
             "PC_DESCRIPTION_SCROLL_BAR_POSITION_DUMMY", false)));
         Children[Children.size() - 1]->Initialise();
         Children[Children.size() - 1]->SetParent(this);
@@ -225,8 +223,8 @@ CComponent* CManager::CreateComponent(const CCharString& name, bool flag)
 {
     ++g_created; std::strncpy(g_lastName, (const char*)name.m_pStringData, 63); g_lastFlag = flag; return new CTestComponent(-1);
 }
-static CFrontEndManager g_manager;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_manager; }
+static CManager g_manager;
+CManager* __fastcall CManager::GetInstance() { return &g_manager; }
 void CViewport::Initialise() { ++g_baseInits; }
 }
 using namespace NUISystem;

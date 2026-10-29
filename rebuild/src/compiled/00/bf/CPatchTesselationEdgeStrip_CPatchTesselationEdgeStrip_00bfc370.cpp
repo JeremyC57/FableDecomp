@@ -1,9 +1,11 @@
-// CPatchTesselationEdgeStrip::CPatchTesselationEdgeStrip() -- CBase constructed (0x0099A2F0), this class's vtable (0x012A8318, rtti CPatchTesselationEdgeStrip), then the state record at +4 is constructed inline: the eight dwords +8..+0x24, the two words at +4/+6 and the two bytes at +0x28/+0x29 cleared
+// CPatchTesselationEdgeStrip::CPatchTesselationEdgeStrip() -- CBaseClassNonCopyable constructed (0x0099A2F0), this class's vtable (0x012A8318, rtti CPatchTesselationEdgeStrip), then the state record at +4 is constructed inline: the eight dwords +8..+0x24, the two words at +4/+6 and the two bytes at +0x28/+0x29 cleared
+// Leaf: ??0CPatchTesselationEdgeStrip@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BFC370, length 58 bytes.
-// Callees: CBase::CBase @ 0x0099A2F0. The chunk label "CManagedTextureData::CManagedTextureData" is propagated (CManagedTextureData is 0x4c bytes with a counted pointer at +0x20; this 0x2c-byte record is the tesselation edge strip of vtable 0x012A8318). Shape: one zero register (eax) for every store, dwords first, then the words, then the bytes, `ret`.
-struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2F0
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0. The chunk label "CManagedTextureData::CManagedTextureData" is propagated (CManagedTextureData is 0x4c bytes with a counted pointer at +0x20; this 0x2c-byte record is the tesselation edge strip of vtable 0x012A8318). Shape: one zero register (eax) for every store, dwords first, then the words, then the bytes, `ret`.
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 
 struct SEdgeStripState {                           // the strip's record at +4 (an inline constructor: its stores follow the vtable store)
@@ -35,13 +37,12 @@ struct SEdgeStripState {                           // the strip's record at +4 (
         m_flag29 = false;
     }
 };
-class CPatchTesselationEdgeStrip : public CBase { public:       // vtable 0x012A8318
-    virtual void v00();
+class CPatchTesselationEdgeStrip : public CBaseClassNonCopyable { public:       // vtable 0x012A8318
     SEdgeStripState m_state;                       // +0x04
     CPatchTesselationEdgeStrip();
 };
 
 CPatchTesselationEdgeStrip::CPatchTesselationEdgeStrip()
-    : CBase(), m_state()
+    : CBaseClassNonCopyable(), m_state()
 {
 }

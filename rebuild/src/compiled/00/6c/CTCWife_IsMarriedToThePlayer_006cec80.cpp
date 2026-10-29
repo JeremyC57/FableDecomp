@@ -1,3 +1,3 @@
 #include "engine/CTCWife.h"  // retyped onto the PDB layout; byte parity re-verified
-class CTCWife; extern int __fastcall imp_helper(CTCWife*);
-bool __fastcall IsMarriedToThePlayer(CTCWife* wife){ return wife->FrameGotMarriedToThePlayer <= imp_helper(wife) ? true : false; }
+class CTCWife; class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+bool __fastcall IsMarriedToThePlayer(CTCWife* wife){ return wife->FrameGotMarriedToThePlayer <= CWorld::GetFrame() ? true : false; }

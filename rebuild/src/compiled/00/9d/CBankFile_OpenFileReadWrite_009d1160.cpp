@@ -1,7 +1,7 @@
 // CBankFile::OpenFileReadWrite(const CWideString& filename, unsigned long flags, unsigned long alignment) -- reset the open state (OpenFlags = flags | 0x1f8), remember the name and alignment, open a new CDiskFileWin32 on it -- read-only when it already exists and flag bit 0 is clear, otherwise create it (written, solid) -- read the header when the file has data, then run the post-open step
 // Leaf: ?OpenFileReadWrite@CBankFile@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D1160, length 252 bytes (`ret 0Ch`), virtual.
-// Callees: CWideString::operator= @ 0x0099B7D0, operator new @ 0x00BFEA1A, CBase::CBase @ 0x0099A2F0, CWideString::
+// Callees: CWideString::operator= @ 0x0099B7D0, operator new @ 0x00BFEA1A, CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CWideString::
 //          CWideString() @ 0x0099AED0, CCountedPointer<CDiskFileWin32>::Reset @ 0x009D1EE0, PathExists @ 0x00999230
 //          (__fastcall), the file's virtual slots 1 (+0x04, Open(name, access, 4)) and 9 (+0x24, the length),
 //          CBankFile::ReadFileInformation(bool) @ 0x009D0880, this's virtual slot 11 (+0x2c, the post-open step).
@@ -10,9 +10,10 @@
 //          other orders move a store or the flags load); the flag test re-reads the argument
 //          (`test byte ptr [esp+18h],1`); the two open arms differ only in the access mode and the trailing flag stores.
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
-struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 class CWideString { public:
     void* PStringData;
@@ -23,7 +24,7 @@ class CAFile {
 public:
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
 };   // 0x00999230
-class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c

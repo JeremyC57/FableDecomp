@@ -3,7 +3,7 @@
 // Callees: CDiskFileWin32::CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) @ 0x0099AD80,
 // CInputManager::LoadAllEventPackages(const CVersion&, CAFile&) @ 0x009F5D70, CDiskFileWin32::Close @ 0x0099A920 (devirtualised in the
 // inlined destructor after the vtable 0x0122D06C store), CWideString::~CWideString @ 0x0099B510 (Pathname at +0x18 of the file),
-// CBase::~CBase @ 0x0099A300 (the root base).
+// CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (the root base).
 // Shape: a 0x1c-byte frame for the file; the file name is read before the constructor pushes, the version after it; the Loading
 // byte is stored between the load call and the inlined `~CDiskFileWin32() { Close(); }` sequence.
 class CWideString { public:
@@ -11,14 +11,13 @@ class CWideString { public:
     ~CWideString();                                 // 0x0099B510
 };
 class CVersion;
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                       // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-class CDiskFileWin32 : public CBase { public:                     // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                     // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // 0x0099A6A0 (slot 1)
     virtual void Close();                           // 0x0099A920 (slot 2)
     long        AccessType;                         // +0x04

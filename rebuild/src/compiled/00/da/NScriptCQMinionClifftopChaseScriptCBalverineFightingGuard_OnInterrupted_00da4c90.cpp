@@ -4,7 +4,7 @@
 // ?OnInterrupted@CBalverineFightingGuard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ.
 // Callees: the game interface (Game, +4) virtual slots 364 (+0x5b0, StartSpeech) and 366 (+0x5b8, AddSpeechLine; slot names
 // as the landed CBriarRose::DoSpeech 0x00DA2610), CCharString::CCharString(const char*, long) @ 0x0099EBF0 on
-// "TEXT_QST_045_GUARD_ATTACK" (0x012D74AC), CBase::CBase @ 0x0099A2D0, operator delete @ 0x00BFE9BC, CBase::~CBase
+// "TEXT_QST_045_GUARD_ATTACK" (0x012D74AC), CBaseClass::CBaseClass @ 0x0099A2D0, operator delete @ 0x00BFE9BC, CBaseClass::~CBaseClass
 // @ 0x0099A2E0, CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the literal converts implicitly to the const CCharString& parameter, so its temporary is built before the other
 // arguments (an explicit CCharString(...) temporary is built after the thing); then the
@@ -17,11 +17,11 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-namespace N_0099a2d0 { struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2D0
-    ~CBase();                                      // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                                      // 0x0099A2E0
+};
 struct SCountBlock {
     long  m_references;                            // +0
     void (__fastcall* m_pfnDestroy)(void*);        // +4
@@ -45,9 +45,8 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
-    virtual void v00();
     __forceinline CScriptThing() {}
     __forceinline ~CScriptThing() {}
 };

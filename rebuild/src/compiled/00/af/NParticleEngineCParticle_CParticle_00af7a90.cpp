@@ -1,7 +1,7 @@
 // NParticleEngine::CParticle::CParticle() -- default constructor: base CBase(), own vtable, the RandomAcceleration scoped_ptr and the two CArray members zeroed by their inline constructors, then RandomAcceleration.reset() deletes any held object
 // Leaf: ??0CParticle
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AF7A90, length 84 bytes.
-// Callees: CBase::CBase() @ 0x0099A2F0; the held CRandomAcceleration's virtual deleting destructor
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0; the held CRandomAcceleration's virtual deleting destructor
 //          (vtable slot 0) on the reset path.
 // Vtable 0x0129F4F0 = NParticleEngine::CParticle (rtti-vtables.tsv).
 // Layout (PDB CParticle, 0xa4; retail 0x9c because the two CArray members are 12 bytes, not 16):
@@ -13,9 +13,10 @@
 // the body's reset() re-reads the pointer it has just zeroed (`old = p; p = 0; if (old) delete old;`)
 // and deletes through the virtual destructor (`push 1 ; call [eax]`).
 
-struct CBase {
-    virtual void v00();
-    CBase();                                                              // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                                              // 0x0099A2F0
 };
 
 namespace NParticleEngine {
@@ -50,12 +51,11 @@ struct CPrimitiveHandleArray {                                            // ret
     CPrimitiveHandleArray() : m_pData(0), m_size(0), m_capacity(0) {}
 };
 
-class CParticle : public CBase { public:                                                // vtable 0x0129F4F0
+class CParticle : public CBaseClassNonCopyable { public:                                                // vtable 0x0129F4F0
     unsigned char                _state[0x7c];                            // +0x04 Orientation .. ClosestAttractorDistance
     CRandomAccelerationScopedPtr RandomAcceleration;                      // +0x80
     CLongArrayArray              PrimIDList;                              // +0x84
     CPrimitiveHandleArray        ParentHandleList;                        // +0x90
-    virtual void v00();
     CParticle();
 };
 

@@ -337,13 +337,14 @@ FABLE_STATIC_ASSERT(offsetof(CThingNative,LifeFlags)==0x91);
 // Generated engine header flattens vptr; this projection restores its real virtual ABI, with member layout checked against that header.
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
-struct CBaseClassNative{CBaseClassNative(){}virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
+class CBaseClass {
+public: CBaseClass(){}virtual ~CBaseClass();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
 class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
-struct ScriptMethods:CBaseClassNative{
+struct ScriptMethods:CBaseClass{
  CountedScriptImp PImp;
  ScriptMethods(){}
- ScriptMethods(const ScriptMethods& other):CBaseClassNative(),PImp(other.PImp){}
+ ScriptMethods(const ScriptMethods& other):CBaseClass(),PImp(other.PImp){}
  virtual ~ScriptMethods(){}
  CThingNative* GetThing() const {if(!PImp.Data)return 0;return reinterpret_cast<ScriptMethods*>(PImp.Data)->GetPThing();}
 virtual const CCharString& GetName() const; //slot1 0x004AA8B0
@@ -1333,7 +1334,7 @@ void CGuardHoldingBandit::Init() {
 class CRGBColour { public:unsigned int rgba;};
 static int Stage,LiveStrings,Pushes,Lookups,Attaches,Callbacks,BaseDtors;static bool Bad;
 static CGuardHoldingBandit* Current;static CCPPointerInfo* VillageInfo;static bool MakeInfo;static int VillageData,MeData;
-CBaseClassNative::~CBaseClassNative(){++BaseDtors;}
+CBaseClass::~CBaseClass(){++BaseDtors;}
 GameMethods::~GameMethods(){}
 CWideString::CWideString():storage_(0){}CWideString::~CWideString(){}CWideString::CWideString(const CWideString&):storage_(0){}
 CCharString::CCharString():storage_(0){++LiveStrings;}

@@ -5,7 +5,7 @@
 // Leaf: ?Initialise@CScrollableList@NUISystem@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00555EB0, 834 bytes, plain ret. Label: the catalogue's "CChangingStateComponent::Initialize"
 //   is NUISystem::CScrollableList::Initialise (the landed CRedefinerList::Initialise 0x005566A0 calls it as its base).
-// Callees: CChangingStateComponent::Initialise 0x0052C730, CFrontEndManager::GetInstance 0x0041E5F2 (static __fastcall),
+// Callees: CChangingStateComponent::Initialise 0x0052C730, CManager::GetInstance 0x0041E5F2 (static __fastcall),
 //   CManager::CreateComponent 0x0041D21B, CCountedPointer<CComponent>(CComponent*) 0x00429C15, CAction::CAction 0x0042BE50,
 //   CCountedPointer<CAction>(CAction*) 0x0042AA29, CAction 0x0053FDE0 (descriptive SetTarget; manifest "list::push_back"),
 //   SetScroll 0x00555A90 (descriptive), operator new 0x00BFEA1A, malloc 0x00BFEA0E (list node), operator delete 0x00BFE9BC,
@@ -256,9 +256,7 @@ class CComponent { public:
 
 class CManager { public:
     CComponent* CreateComponent(long definition);       // 0x0041D21B
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 
 class CChangingStateComponent : public CComponent { public:
@@ -288,7 +286,7 @@ void CScrollableList::Initialise()
     ItemHeight = def->ItemHeight;
     VisibleItems = (long)(def->ListHeight / def->ItemHeight);
     if (def->UpArrowDef) {
-        PUpArrow = CFrontEndManager::GetInstance()->CreateComponent(def->UpArrowDef);
+        PUpArrow = CManager::GetInstance()->CreateComponent(def->UpArrowDef);
         CCountedPointer<CComponent> arrow(PUpArrow);
         GetParent()->AddChild(arrow);
         arrow->SetParent(GetParent());
@@ -300,7 +298,7 @@ void CScrollableList::Initialise()
         arrow->AddAction(action);
     }
     if (def->DownArrowDef) {
-        PDownArrow = CFrontEndManager::GetInstance()->CreateComponent(def->DownArrowDef);
+        PDownArrow = CManager::GetInstance()->CreateComponent(def->DownArrowDef);
         CCountedPointer<CComponent> arrow(PDownArrow);
         GetParent()->AddChild(arrow);
         arrow->SetParent(GetParent());

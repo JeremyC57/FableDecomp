@@ -14,10 +14,10 @@ class C2DVector { public:
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) {}
 };
 
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     C2DVector GetUIScale();                         // 0x0041CF47
-};
+}; }
 
 struct CSprite {
     C2DVector GetSize();                            // 0x0041A850
@@ -30,7 +30,7 @@ struct CMouseCursor : CSprite {
 C2DVector CMouseCursor::GetScaledSize()
 {
     C2DVector size = GetSize();
-    size.X = CFrontEndManager::GetInstance()->GetUIScale().X * size.X;
-    size.Y = CFrontEndManager::GetInstance()->GetUIScale().Y * size.Y;
+    size.X = NUISystem::CManager::GetInstance()->GetUIScale().X * size.X;
+    size.Y = NUISystem::CManager::GetInstance()->GetUIScale().Y * size.Y;
     return size;
 }

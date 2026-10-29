@@ -4,7 +4,7 @@
 //          interface (+4) virtual slots 72 (+0x120, GetThingWithScriptName: CScriptThing by hidden pointer), 492 (+0x7b0,
 //          the attach-to-village call, as agent chunk 141's EntityAttachToVillage) and 238 (+0x3b8), the CScriptThing
 //          temporary's inline destructor (vtable 0x01238C8C, counted pimpl release: destroy + operator delete @ 0x00BFE9BC,
-//          CBase::~CBase @ 0x0099A2E0), CCharString::~CCharString @ 0x0099EAE0.
+//          CBaseClass::~CBaseClass @ 0x0099A2E0), CCharString::~CCharString @ 0x0099EAE0.
 // Shape: the village name is a NAMED local in its own block (a temporary name would be built after the interface vtable
 // load); the nested `Interface->Attach(Me, Interface->GetThingWithScriptName(name))` fetches the interface vtable once
 // (edi); the returned script thing dies after the call, then the block closes the name; the zero register ebx serves the state stores, the pimpl reset and the final `false`.
@@ -16,9 +16,9 @@ class CCharString { public:
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
 struct SCountBlock {
     long  m_references;                            // +0
@@ -42,9 +42,8 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
-    virtual void v00();
     __forceinline ~CScriptThing() {}
 };
 class CGameScriptInterface { public:

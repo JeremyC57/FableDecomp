@@ -19,7 +19,7 @@ class CThing { public:
 };
 
 
-long GetWorldFrame(); // 0x49D870
+class CWorld { public: static long __fastcall GetFrame(); }; // 0x49D870
 extern long g_TrespassCheckInterval; // 0x138D2D4
 class COpinionDeedFilter_IsStillHappening { public: COpinionDeedFilter_IsStillHappening() {} };
 class COpinionDeedFilter_TargetIs { public: CThing* Target; COpinionDeedFilter_TargetIs(CThing* p):Target(p){} };
@@ -33,8 +33,8 @@ struct CAIStateGroup_MinionReactToTrespassing_Adapter : CAIStateGroup_MinionReac
  bool IsStillRunnable(bool initialCheck);
 };
 bool CAIStateGroup_MinionReactToTrespassing_Adapter::IsStillRunnable(bool initialCheck) {
- if(!initialCheck && GetWorldFrame()-LastFrameCheckedIsStillValid < g_TrespassCheckInterval) return true;
- LastFrameCheckedIsStillValid=GetWorldFrame();
+ if(!initialCheck && CWorld::GetFrame()-LastFrameCheckedIsStillValid < g_TrespassCheckInterval) return true;
+ LastFrameCheckedIsStillValid=CWorld::GetFrame();
  CThing* home=((CThing*)Brain()->Creature)->GetHome();
  if(home && !(home->dead&1)) {
   CTCCreatureOpinionOfHeroMethods* opinion;

@@ -8,7 +8,7 @@
 //   CMemoryDataInputStream::OpenMemorySource @ 0x00994570, CDataInputStream::ReadWithSrcChunkOverflow @ 0x00993CA0,
 //   ~CMemoryDataInputStream @ 0x00993B10, the per-animation vector's resize @ 0x006FCF90, CSmallVector<CEvent,32>::resize
 //   @ 0x006FADE0, operator delete[] @ 0x00BFEB1C (the default pair temporary's empty event list), the inlined
-//   ~CDiskFileWin32 (vtable 0x0122D06C, Close @ 0x0099A920, ~CWideString @ 0x0099B510, ~CBase @ 0x0099A300).
+//   ~CDiskFileWin32 (vtable 0x0122D06C, Close @ 0x0099A920, ~CWideString @ 0x0099B510, ~CBaseClassNonCopyable @ 0x0099A300).
 //   Vtable 0x0123675C CMemoryDataInputStream.
 // Layout: the manager's per-animation table at +0x2c (12-byte pairs: animation id, CSmallVector<CEvent> {Start, Size}) and
 //   CEvent bitfields (Index:30, ExternallyImported:1, StopEvent:1, Time) as the landed AddEventToAnim 0x006FA3F0; the inline
@@ -30,14 +30,13 @@ class CWideString { public:
     void* PStringData;
     ~CWideString();                                     // 0x0099B510
 };
-struct CBase {
-    virtual void v00();
-    ~CBase();                                           // 0x0099A300
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                           // 0x0099A300
 };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                         // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                               // 0x0099A920 (slot 2)
     long        AccessType;                             // +0x04

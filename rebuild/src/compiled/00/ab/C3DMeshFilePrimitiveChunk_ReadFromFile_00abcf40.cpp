@@ -3,6 +3,7 @@
 // engine/C3DMeshFilePrimitiveChunk.h and CChunkedFileSuperChunk.h use donor 16-byte vectors:
 // MaterialIndices +0x34 vs retail +0x2c. The retail 12-byte vector/base model below agrees
 // with landed constructor 0x00ABD080 and WriteToFile 0x00ABC390. Shared chunk/stream storage headers are reused.
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/CChunkedFileChunk.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
@@ -10,7 +11,6 @@ extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 struct CInputStreamVirtuals { virtual void v0(); virtual void v1(); virtual unsigned long GetPosition(); };
 struct CInputStreamAccess : CDataInputStream {
  unsigned long GetPosition() { return ((CInputStreamVirtuals*)this)->GetPosition(); }
- void ReadWithSrcChunkOverflow(unsigned char*, long); // 0x00993CA0
  static __forceinline bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
  __forceinline void Read(void* buffer,long size) {
   __int64 newPosition=(__int64)(StreamPos+size);

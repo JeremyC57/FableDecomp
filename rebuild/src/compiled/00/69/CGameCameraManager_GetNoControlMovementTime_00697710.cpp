@@ -6,7 +6,7 @@
 // Engine callee: returns a monotonically increasing millisecond tick (int in eax).
 // Layout: retail STLport 4.6 header offsets; member names re-bound by the bytes this body touches: `InsideHeroCount` -> `ControlNoControlMovementStartFrame` (+0xc0).
 #include "engine/CGameCameraManager.h"  // retyped onto the PDB layout; byte parity re-verified
-extern int __cdecl GetEngineTimeMs(void);
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 // Relocation-masked globals read directly by the accessor.
 extern float g_defaultNoControlMovementTime; // ds:0x122dedc, read via fld
@@ -17,5 +17,5 @@ float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager 
     if (manager->ControlNoControlMovementStartFrame == 0)
         return g_defaultNoControlMovementTime;
 
-    return (float)(GetEngineTimeMs() - manager->ControlNoControlMovementStartFrame) / g_noControlTimeDivisor;
+    return (float)(CWorld::GetFrame() - manager->ControlNoControlMovementStartFrame) / g_noControlTimeDivisor;
 }

@@ -185,9 +185,7 @@ class CComponent { public:
 
 class CManager { public:
     CComponent* CreateComponent(long definition);       // 0x0041D21B
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 
 class CScrollableList : public CComponent { public:
@@ -213,7 +211,7 @@ void CRedefinerList::Initialise()
     s_pActiveList = this;
     CDefPointer def = GetDef();
     if (def->UndefinedWarningDef) {
-        PUndefinedWarning = CFrontEndManager::GetInstance()->CreateComponent(def->UndefinedWarningDef);
+        PUndefinedWarning = CManager::GetInstance()->CreateComponent(def->UndefinedWarningDef);
         CCountedPointer<CComponent> warning(PUndefinedWarning);
         GetParent()->AddChild(warning);
         warning->SetParent(GetParent());

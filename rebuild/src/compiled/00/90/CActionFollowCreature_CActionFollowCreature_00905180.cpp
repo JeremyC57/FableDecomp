@@ -1,6 +1,7 @@
 // NTCScriptedControl::CActionFollowCreature::CActionFollowCreature(CThing* creature, long distance, bool run) -- constructor: CBase(), the common action members zeroed, own vtable, CScriptThing at +0xc from creature->GetScriptThing(), then the follow parameters
+// Leaf: ??0CActionFollowCreature@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00905180, length 80 bytes.
-// Callees: CBase::CBase @ 0x0099A2F0, CThing::GetScriptThing @ 0x004C7E50 (by-value CScriptThing
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CThing::GetScriptThing @ 0x004C7E50 (by-value CScriptThing
 // through the hidden result pointer, constructed straight into the member at +0xc).
 // Vtable 0x0128D838 = NTCScriptedControl::CActionFollowCreature (rtti-vtables.tsv). Shape: the
 // base constructor, then the action's own init list in declaration order: a null pointer at +4
@@ -20,16 +21,17 @@ class CThing { public:
     CScriptThing GetScriptThing();          // 0x004C7E50
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                // 0x0099A2F0
 };
 
-struct __declspec(novtable) CAction : CBase {   // NTCScriptedControl::CAction: abstract, its own vtable store is dead
+struct __declspec(novtable) CAction : CBaseClassNonCopyable {   // NTCScriptedControl::CAction: abstract, its own vtable store is dead
     CThing* m_pThing;                       // +0x04
     bool    m_active;                       // +0x08
     bool    m_finished;                     // +0x09
-    CAction() : CBase(), m_pThing(0), m_active(false), m_finished(false) { }
+    CAction() : CBaseClassNonCopyable(), m_pThing(0), m_active(false), m_finished(false) { }
 };
 
 struct CActionFollowCreature : CAction {      // vtable 0x0128D838
@@ -41,7 +43,6 @@ struct CActionFollowCreature : CAction {      // vtable 0x0128D838
     bool         m_run;                     // +0x25
     bool         m_unused26;                // +0x26 (left uninitialised by retail)
     bool         m_lost;                    // +0x27
-    virtual void v00();
     CActionFollowCreature(CThing* creature, long distance, bool run);
 };
 

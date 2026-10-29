@@ -1,11 +1,13 @@
 // CSoundEmitterLH::CActiveSound::CActiveSound(void* a, void* b, const char* name, void* d, bool e, bool f) -- CBase, the words at +8 / +0xc / +0x10, the flag bytes at +0x14 / +0x15, this class's vtable, a reference count of 1 at +4, the cleared word at +0x18, the name string at +0x1c built out of line, the cleared word at +0x20
+// Leaf: ??0CActiveSound@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAB8B0, length 87 bytes.
-// Callees: CBase::CBase @ 0x0099A2F0, CCharString::CCharString(const char*) @ 0x0099EC30 (on +0x1c). Vtable 0x0129E67C = CSoundEmitterLH::CActiveSound
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CCharString::CCharString(const char*) @ 0x0099EC30 (on +0x1c). Vtable 0x0129E67C = CSoundEmitterLH::CActiveSound
 // (rtti-vtables.tsv). Shape: the six arguments are loaded in a shuffled order around the vtable store; the string's `push ; lea ecx` sits before the +4 / +0x14 /
 // +0x18 stores; `ret 18h`. The chunk label "CEngineSubPrimitiveAnimatedMesh" is propagated.
-struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 
 class CCharString { public:
@@ -14,7 +16,7 @@ class CCharString { public:
 };
 
 struct CSoundEmitterLH {
-    struct CActiveSound : CBase {                  // vtable 0x0129E67C
+    struct CActiveSound : CBaseClassNonCopyable {                  // vtable 0x0129E67C
         long        m_references;                  // +0x04
         void*       m_pA;                          // +0x08
         void*       m_pB;                          // +0x0c
@@ -25,13 +27,12 @@ struct CSoundEmitterLH {
         long        m_18;                          // +0x18
         CCharString m_name;                        // +0x1c
         long        m_20;                          // +0x20
-        virtual void v00();
         CActiveSound(void* a, void* b, const char* name, void* d, bool e, bool f);
     };
 };
 
 CSoundEmitterLH::CActiveSound::CActiveSound(void* a, void* b, const char* name, void* d, bool e, bool f)
-    : CBase()
+    : CBaseClassNonCopyable()
     , m_references(1)
     , m_pA(a), m_pB(b), m_pD(d)
     , m_e(e), m_f(f)

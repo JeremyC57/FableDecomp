@@ -4,7 +4,7 @@
 // Label correction: catalogued as CGuiControlNumberInit (propagated); the vtables it stores, 0x012A3984 at +0 and
 //   0x012A394C at +4, are CEngineSimulationManager's (RTTI .?AVCEngineSimulationManager@@) -- the landed destructor
 //   0x00B81CF0 stores the same pair.
-// Callees: CBase::CBase @ 0x0099A2F0, CEngineComponent::CEngineComponent @ 0x00B59710, malloc @ 0x00BFEA0E (each STLport
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CEngineComponent::CEngineComponent @ 0x00B59710, malloc @ 0x00BFEA0E (each STLport
 //   list's head node), CPerlinNoise::CPerlinNoise(unsigned long seed) @ 0x00F36BE0 (catalog label is propagated).
 // Layout: Ego_r.pdb CEngineSimulationManager with the retail 4-byte STLport lists (as the landed destructor):
 //   lists +0x10/+0x14/+0x18, NextSimStepOffset +0x1c, CurrentSimStep +0x1d, MaxIterations +0x20, MaxDistanceError +0x24,
@@ -16,9 +16,10 @@
 //   dead X/Y stores after them).
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 class CEngineComponent { public:                          // 0x0c bytes
     virtual void v01();
@@ -52,7 +53,7 @@ struct CRetailList {                               // STLport list<T>: the head 
     }
 };
 
-class CEngineSimulationManager : public CBase, public CEngineComponent { public:   // vtables 0x012A3984 / 0x012A394C
+class CEngineSimulationManager : public CBaseClassNonCopyable, public CEngineComponent { public:   // vtables 0x012A3984 / 0x012A394C
     CRetailList<CIVCountedPointer<CEnginePrimitiveSimulationInfo> > FullUpdateOnlySimulationInfoList;   // +0x10
     CRetailList<CIVCountedPointer<CEnginePrimitiveSimulationInfo> > AlwaysUpdateSimulationInfoList;     // +0x14
     CRetailList<CIVCountedPointer<CEnginePrimitiveSimulationInfo> > PausedSimulationInfoList;           // +0x18
@@ -77,7 +78,6 @@ class CEngineSimulationManager : public CBase, public CEngineComponent { public:
     unsigned long FullUpdateOnlyStepsPending;      // +0x106c
     unsigned long AlwaysUpdateStepsPending;        // +0x1070
     unsigned long PausedStepsPending;              // +0x1074
-    virtual void v00();
     virtual void v01();
     CEngineSimulationManager();
 };

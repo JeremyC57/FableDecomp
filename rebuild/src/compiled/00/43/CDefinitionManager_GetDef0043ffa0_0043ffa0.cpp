@@ -40,7 +40,8 @@ struct CDefBase : CDefVirtual, CRefCounted {
     }
 };
 
-struct CDefPointer {
+class CDefClassBase;
+template <class T> class CDefPointer { public:
     CDefBase* m_p;
     CDefPointer() { }
     ~CDefPointer()
@@ -64,15 +65,15 @@ struct CDefPointer {
 };
 
 class CDefinitionManager { public:
-    CDefPointer GetPDefFromGlobalIndex(long index);   // 0x009AD9E0 (hidden result pointer)
-    bool GetDef_0043ffa0(long index, CDefPointer& out);
+    CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long index) const;   // 0x009AD9E0 (hidden result pointer)
+    bool GetDef_0043ffa0(long index, CDefPointer<const CDefClassBase>& out);
 };
 
-bool CDefinitionManager::GetDef_0043ffa0(long index, CDefPointer& out)
+bool CDefinitionManager::GetDef_0043ffa0(long index, CDefPointer<const CDefClassBase>& out)
 {
     if (index <= 0)
         return false;
-    CDefPointer def = GetPDefFromGlobalIndex(index);
+    CDefPointer<const CDefClassBase> def = GetPDefFromGlobalIndex(index);
     if (def.m_p) {
         out = def;
         return true;

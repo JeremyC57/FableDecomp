@@ -1,7 +1,7 @@
 // NUISystem::CMovie::Draw(CIEngine& engine, CEnginePrimitiveHandle* primitives, long layer, long* count, CComponent* drawer) -- while this is the playing movie in state 3: when visible, size the box from the video (or the component size) times the scale, centre it if asked, pick the front-end layer, wait up to 100 ms for a decoded frame, copy it into the movie texture under the video lock and add a 2D sprite (indexed when the caller passes a handle array and count); when invisible, clear the handle and notify the owner; otherwise just clear the handle
 // Leaf: ?Draw@CMovie
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00547F60, 875 bytes (`ret 14h`). Vtable slot 2.
-// Callees: C2DBoxF::Move 0x0041A810, CFrontEndManager::GetInstance 0x0041E5F2 (`__fastcall`) and its slot 36 GetLayer,
+// Callees: C2DBoxF::Move 0x0041A810, CManager::GetInstance 0x0041E5F2 (`__fastcall`) and its slot 36 GetLayer,
 //   WaitForSingleObjectEx / EnterCriticalSection / LeaveCriticalSection (IAT 0x0143FE08 / 0x0143FE0C / 0x0143FE10),
 //   CTexture::CopyFromTexture 0x009FA4E0, CEnginePrimitive2DSprite ctor 0x0041BF60, the engine's slots 23 (+0x5C) and 28 (+0x70),
 //   own slots 101 / 104 and the owner's slot 91.
@@ -128,9 +128,9 @@ extern CVideoSys* g_pVideoSys;                     // 0x013B8ABC
 extern CTexture*  g_pMovieTexture;                 // 0x013B8AC0
 
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -334,9 +334,9 @@ void CMovie::Draw(CIEngine& engine, CEnginePrimitiveHandle* primitives, long lay
             bool layerIndependent = IsLayerIndependent();
             long renderLayer;
             if (!independent && !layerIndependent)
-                renderLayer = CFrontEndManager::GetInstance()->GetLayer(Layer + layer);
+                renderLayer = CManager::GetInstance()->GetLayer(Layer + layer);
             else
-                renderLayer = CFrontEndManager::GetInstance()->GetLayer(Layer);
+                renderLayer = CManager::GetInstance()->GetLayer(Layer);
             if (WaitForSingleObjectEx(g_pVideoSys->FrameReadyEvent, 100, 1) != 0)
                 return;
             if (!g_pMovieTexture)

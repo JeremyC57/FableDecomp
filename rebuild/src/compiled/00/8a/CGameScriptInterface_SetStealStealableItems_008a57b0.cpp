@@ -3,7 +3,7 @@
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
-// Retail bytes:  push ecx ; mov ecx,[thing.PImp.Data] ; push edi ; xor edi,edi ; cmp ecx,edi ; je X ; mov eax,[ecx] ; call [eax+0x2c] ; cmp eax,edi ; jne B ; X: (CScriptThing dtor: vtable store, count release, delete) ; jmp D ; B: (GetThing again) ; mov ecx,[eax+0x34] ; test flag ; je N ; push esi ; lea esi,[eax+0x44] ; lea eax,[esp+8] ; push eax ; mov ecx,esi ; mov dword ptr [esp+0Ch],0xaa ; call CVectorMap::LowerBound ; mov esi,[esi+4] ; cmp eax,esi ; je L ; cmp dword ptr [eax],0xaa ; jle F ; L: mov eax,esi ; F: mov eax,[eax+4] ; pop esi ; jmp S ; N: mov eax,[dead slot] ; S: mov ecx,[value] ; mov [eax+0x68],ecx ; (dtor) ; D: lea ecx,[esp+0Ch] ; mov [esp+14h],edi ; mov [esp+10h],edi ; call CBase::~CBase ; pop edi ; pop ecx ; ret 10h
+// Retail bytes:  push ecx ; mov ecx,[thing.PImp.Data] ; push edi ; xor edi,edi ; cmp ecx,edi ; je X ; mov eax,[ecx] ; call [eax+0x2c] ; cmp eax,edi ; jne B ; X: (CScriptThing dtor: vtable store, count release, delete) ; jmp D ; B: (GetThing again) ; mov ecx,[eax+0x34] ; test flag ; je N ; push esi ; lea esi,[eax+0x44] ; lea eax,[esp+8] ; push eax ; mov ecx,esi ; mov dword ptr [esp+0Ch],0xaa ; call CVectorMap::LowerBound ; mov esi,[esi+4] ; cmp eax,esi ; je L ; cmp dword ptr [eax],0xaa ; jle F ; L: mov eax,esi ; F: mov eax,[eax+4] ; pop esi ; jmp S ; N: mov eax,[dead slot] ; S: mov ecx,[value] ; mov [eax+0x68],ecx ; (dtor) ; D: lea ecx,[esp+0Ch] ; mov [esp+14h],edi ; mov [esp+10h],edi ; call CBaseClass::~CBaseClass ; pop edi ; pop ecx ; ret 10h
 // Script API entry point (virtual on CGameScriptInterface; `this` unused): the by-value
 // CScriptThing resolves its thing through virtual slot 11 of the counted pointee (null
 // tested, evaluated once for the guard and once for the body), the TC entry 0xaa is looked
@@ -11,7 +11,7 @@
 // over LowerBound @ 0x0040F020; when the flag is clear retail reads an uninitialised local),
 // and the argument is stored at +0x68 of the TC. The CScriptThing parameter's destructor
 // is inlined on both paths (vtable store, count-block release through the flag-tested
-// operator delete, fields nulled, then CBase::~CBase @ 0x0099A2E0). One of 28 bodies.
+// operator delete, fields nulled, then CBaseClass::~CBaseClass @ 0x0099A2E0). One of 28 bodies.
 class CThing;
 class CTCBase;
 
@@ -55,12 +55,12 @@ struct CCountedPointer {
     }
 };
 
-struct CBase {
-    virtual void v00();
-    ~CBase();                              // 0x0099A2E0 (sets the CBase vtable; manifest label propagated)
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                              // 0x0099A2E0 (sets the CBase vtable; manifest label propagated)
 };
 
-class CScriptThing : public CBase { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
+class CScriptThing : public CBaseClass { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
     CCountedPointer PImp;                  // +4 Data / +8 Info
     ~CScriptThing() { }
     CThing* GetThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }

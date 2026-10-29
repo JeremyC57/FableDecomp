@@ -8,7 +8,7 @@ struct CSubObject {
     void consume(int x); // __fastcall, 0x00812030
 };
 
-extern int helper_49d870(void); // cdecl global, 0x0049d870
+class CWorld { public: static long __fastcall GetFrame(); }; // cdecl global, 0x0049d870
 
 class CTCEntityEvents { public:
     // base subobject at offset 0
@@ -20,6 +20,6 @@ class CTCEntityEvents { public:
 void __fastcall CTCEntityEvents_FrameUpdate(CTCEntityEvents* events)
 {
     events->base.baseUpdate();
-    int x = helper_49d870();
+    int x = CWorld::GetFrame();
     events->sub.consume(x);
 }

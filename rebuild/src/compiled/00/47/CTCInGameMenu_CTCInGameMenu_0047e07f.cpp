@@ -3,7 +3,7 @@
 // after free). Only caller: the deleting destructor 0x004861C6 (vtable 0x01236804 is stored first).
 // Callees: CTCBase::RemoveFromGlobalTCs 0x00686DF0; the components' virtual deleting destructor (slot 0, `push 1`);
 // vector<CComponent*>::erase(first, last) 0x00485AA7 (manifest "CGuiControlListBox::SelectEntryFromData" is
-// propagated); CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall) and its virtual slots 6 (+0x18), 29 (+0x74)
+// propagated); CManager::GetInstance 0x0041E5F2 (__fastcall) and its virtual slots 6 (+0x18), 29 (+0x74)
 // and 37 (+0x94) (names unknown, as in the landed CTCInventoryTrade::DeleteComponents 0x0059C8AE); the global
 // front-end node list 0x013B8A98 clear 0x004855A3; member destructors: map<CWideString,bool> 0x00485E45,
 // vector<CCharString> 0x00414EA0 (x2), vector<CEnginePrimitiveHandle> 0x00440C40 (x2), vector<CWideString>
@@ -78,7 +78,7 @@ namespace NUISystem {
 class CComponent { public:
     virtual ~CComponent();
 };
-class CFrontEndManager { public:
+class CManager { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -117,7 +117,7 @@ class CFrontEndManager { public:
     virtual void v035();
     virtual void v036();
     virtual void Slot37();                         // +0x94
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
 struct CNodeList {
@@ -181,8 +181,8 @@ CTCInGameMenu::~CTCInGameMenu()
     Components.clear();
     PVideoOptionsNotAcceptedDialog = 0;
     PVideoOptionsChangedDialog = 0;
-    NUISystem::CFrontEndManager::GetInstance()->Slot06();
-    NUISystem::CFrontEndManager::GetInstance()->Slot29();
+    NUISystem::CManager::GetInstance()->Slot06();
+    NUISystem::CManager::GetInstance()->Slot29();
     g_frontEndNodeList.clear();
-    NUISystem::CFrontEndManager::GetInstance()->Slot37();
+    NUISystem::CManager::GetInstance()->Slot37();
 }

@@ -1,7 +1,7 @@
 // CNavQuadTree::CNavQuadTree() -- empty navigation quad tree: not initialised/activated/initialising, empty layer/transition/topology/action-point/detailed-area/region-seed vectors, empty switchable-node and connector-node maps, empty region list
 // Leaf: ??0CNavQuadTree
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A7A760, length 136 bytes (padded to 144).
-// Callees: CBase::CBase @ 0x0099A2F0, malloc @ 0x00BFEA0E (the region list's head node, 0x14 bytes).
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, malloc @ 0x00BFEA0E (the region list's head node, 0x14 bytes).
 // Identity: the catalog label "CPSCOrbit::CPSCOrbit" is wrong: the vtable stored is 0x0129DE64 = CNavQuadTree
 // (rtti-vtables.tsv), and the caller 0x00A15748 allocates 0x88 bytes for it.
 // Layout: PDB CNavQuadTree is 0xb0 bytes; retail is 0x88 (12-byte vectors, a 4-byte STLport list, 0x10-byte vector
@@ -15,9 +15,10 @@
 // malloc's `add esp,4` is scheduled above the connector map's zero stores.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 
-struct CBase {
-    virtual void v00();
-    CBase();                                // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                // 0x0099A2F0
 };
 class C2DVector { public:
     float X, Y;
@@ -69,7 +70,7 @@ class CANavQuadTreeNode;
 struct CNavConnectorNodePointer { void* Data; void* Info; };
 class CNavRegion { public: unsigned char _body[0xc]; };
 
-class CNavQuadTree : public CBase {         // vtable 0x0129DE64
+class CNavQuadTree : public CBaseClassNonCopyable {         // vtable 0x0129DE64
 public:
     bool                                CInitialised;           // +0x04 Initialised
     bool                                Activated;              // +0x05
@@ -87,7 +88,6 @@ public:
     CRetailVector<CNavigationPosition>  RegionSeeds;            // +0x68
     CRetailList<CNavRegion>             Regions;                // +0x74
     CVectorMap<long, CNavConnectorNodePointer> ConnectorNodes;  // +0x78
-    virtual void v00();
     CNavQuadTree();
 };
 

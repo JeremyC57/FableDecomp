@@ -4,7 +4,7 @@
 // "CMemoryAllocator::ClearPerformanceStats" is propagated), CTCInventoryBase::CloseInventory @ 0x005BD597 (manifest
 // "CCategory::SetQuestPersistentFlagForItems" is propagated), CTCInventoryTrade::DeleteComponents @ 0x0059C8AE, the
 // Components erase(first, last) @ 0x00485AA7, the CComponent-pair map clear @ 0x005B1C18 (ItemsToBuy/ItemsToSell; manifest
-// "CTCCarryable::OnKill" propagated), CFrontEndManager::GetInstance @ 0x0041E5F2 and its slots 6/29/37/40/42 (names unknown),
+// "CTCCarryable::OnKill" propagated), NUISystem::CManager::GetInstance @ 0x0041E5F2 and its slots 6/29/37/40/42 (names unknown),
 // the global front-end node list @ 0x013B8A98 clear @ 0x004855A3, the main game component (0x013B86A0) chain +0x28 -> +0x2C
 // slots 76 (+0x130, SetEnabled) and 56 (+0xE0), CTCBase::GetWorld @ 0x00686A70, GetWorldFrame @ 0x0049D870,
 // CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0, the sound system (0x013B8394) slot 46 RefreshCategory,
@@ -53,7 +53,7 @@ struct CPlayerPtr {
     CPlayerData* Data;
     __forceinline ~CPlayerPtr() { if (Data) Data->Release(); }
 };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void Slot6();                            // +0x18
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -68,8 +68,8 @@ struct CFrontEndManager {
     virtual void Slot40(long* state, bool b);        // +0xA0
     virtual void v41();
     virtual CPlayerPtr Slot42();                     // +0xA8
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 struct CNodeList {
     void* m_pHead;
     void clear();                                    // 0x004855A3
@@ -209,10 +209,10 @@ void CTCInventoryTrade::CloseInventoryPC()
     Components.clear();
     ItemsToBuy.clear();
     ItemsToSell.clear();
-    CFrontEndManager::GetInstance()->Slot6();
-    CFrontEndManager::GetInstance()->Slot29();
+    NUISystem::CManager::GetInstance()->Slot6();
+    NUISystem::CManager::GetInstance()->Slot29();
     g_frontEndNodeList.clear();
-    CFrontEndManager::GetInstance()->Slot37();
+    NUISystem::CManager::GetInstance()->Slot37();
     g_pMainGameComponent->World->Hud->SetEnabled(true);
     CWorld* world = (&GetWorld());
     world->InventoryClosedFrame = CWorld::GetFrame();
@@ -221,8 +221,8 @@ void CTCInventoryTrade::CloseInventoryPC()
         g_pSoundSystem->RefreshCategory(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
         g_pSoundSystem->RefreshCategory(0x80, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
     }
-    CFrontEndManager* a = CFrontEndManager::GetInstance();
-    CFrontEndManager* b = CFrontEndManager::GetInstance();
+    NUISystem::CManager* a = NUISystem::CManager::GetInstance();
+    NUISystem::CManager* b = NUISystem::CManager::GetInstance();
     b->Slot40(&a->Slot42().Data->SomeState, true);
     g_pMainGameComponent->World->Hud->Slot56(0, 0);
     CTCInventoryWeapons* weapons;

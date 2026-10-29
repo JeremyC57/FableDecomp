@@ -1,7 +1,8 @@
 // CEnginePrimitiveManagerTrailsBase_00bcd7c0::~CEnginePrimitiveManagerTrailsBase_00bcd7c0() -- destroy the dynamic 3D resource manager at +0x14 (its vtable, then its member at +0x24 out of line), release the vertex shader at +0xc, then ~CBase (copy b of two)
+// Leaf: ??1CEnginePrimitiveManagerTrailsBase_00bcd7c0@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCD7C0, length 58 bytes.
 // Callees: the resource manager's member destructor @ 0x00BF3160 (the manifest label "CActiveFile::OnReadFinished" is propagated), the shared shader's virtual
-// deleting destructor (slot 0, flag 1), CBase::~CBase @ 0x0099A300 (a tail jump). Vtables 0x012A69DC = CEngineDynamic3DResourceManager, 0x0129B3D0 =
+// deleting destructor (slot 0, flag 1), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (a tail jump). Vtables 0x012A69DC = CEngineDynamic3DResourceManager, 0x0129B3D0 =
 // CVertexShader, 0x0129A030 = CShaderBase. Shape: members in reverse order; no vtable store of this class's own (abstract: `__declspec(novtable)`). The
 // chunk label "CEnginePrimitiveManagerSpriteTrails `scalar deleting destructor'" is wrong (no flag test): this is the inline destructor of the trails
 // managers' shared base, emitted in the sprite-trail and weapon-trail translation units; named by address.
@@ -28,10 +29,10 @@ class CVertexShader : public CShaderBase { public:               // vtable 0x012
     }
 };
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 
 struct CResourceOwner_00bf3160 {                   // the resource manager's member at +0x10 of it
     unsigned char _body[4];
@@ -45,7 +46,7 @@ struct CEngineDynamic3DResourceManager {           // vtable 0x012A69DC: 0x14 by
     ~CEngineDynamic3DResourceManager() { }
 };
 
-struct __declspec(novtable) CEnginePrimitiveManagerTrailsBase_00bcd7c0 : CBase {
+struct __declspec(novtable) CEnginePrimitiveManagerTrailsBase_00bcd7c0 : CBaseClassNonCopyable {
     long                           m_type;         // +0x04
     bool                           m_enabled;      // +0x08
     CVertexShader                  m_vertexShader; // +0x0c

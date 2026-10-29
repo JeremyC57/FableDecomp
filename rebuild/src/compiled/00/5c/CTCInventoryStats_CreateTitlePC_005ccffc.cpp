@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005CCFFC, length 120 bytes (`ret 0Ch`; `this` unused). Frame-pointer size TU:
 // optimize("y",off) + ("s",on).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, CCharString::operator=(const char*) @ 0x0099EFE0,
-// NUISystem::CFrontEndManager::GetInstance() @ 0x0041E5F2 (__fastcall, no arguments), NUISystem::CManager::CreateComponent(
+// NUISystem::CManager::GetInstance() @ 0x0041E5F2 (__fastcall, no arguments), NUISystem::CManager::CreateComponent(
 // const CCharString&, bool) @ 0x0041DB1D, CCountedPointer<NUISystem::CComponent>(CComponent*) @ 0x00429C15 / its dtor @ 0x004291DE,
 // component virtual slot 144 (+0x240, SetText(const CWideString&, bool, bool)), parent virtual slot 59 (+0xEC,
 // AddChild(const CCountedPointer<CComponent>&)), ~CCharString @ 0x0099EAE0.
@@ -180,9 +180,7 @@ class CComponent { public:
 };
 class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();            // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 
@@ -195,7 +193,7 @@ void CTCInventoryStats::CreateTitlePC(const CWideString& text, NUISystem::CCompo
     CCharString definition("PC_STATS_PERSONALITY_STAT_TITLE");
     if (!statTitle)
         definition = "PC_STATS_PERSONALITY_VIEWPORT_TEXT2";
-    CCountedPointer<NUISystem::CComponent> title(NUISystem::CFrontEndManager::GetInstance()->CreateComponent(definition, false));
+    CCountedPointer<NUISystem::CComponent> title(NUISystem::CManager::GetInstance()->CreateComponent(definition, false));
     title->SetText(text, true, true);
     parent->AddChild(title);
 }

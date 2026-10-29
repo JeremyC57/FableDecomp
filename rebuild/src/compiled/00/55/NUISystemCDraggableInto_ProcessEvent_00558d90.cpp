@@ -13,11 +13,11 @@
 //          component being dragged).
 // Shape: the event stays in edi for the base call; `event == 0x1E && WasHovered`; ExecuteActions is a virtual call on the
 //          primary base through this-4.
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     unsigned char _pad[0xbc];
     void*         PDraggedComponent;               // +0xBC (role inferred)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 struct CActionList;                                // list<CCountedPointer<NUISystem::CAction>>
 
 namespace NUISystem {
@@ -71,7 +71,7 @@ void CDraggableInto::ProcessEvent(EEvent event)
 {
     if (event == EVENT_DROP && WasHovered) {
         ExecuteActions(PActions);
-        CFrontEndManager::GetInstance()->PDraggedComponent = 0;
+        NUISystem::CManager::GetInstance()->PDraggedComponent = 0;
     }
     CHoverable::ProcessEvent(event);
 }

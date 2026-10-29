@@ -4,7 +4,7 @@
 // + ("s",on). Vtable 0x0125318C slot (rtti abs reference); FableWin.pdb ?OpenInventoryPC@CTCInventoryTrade@@UAEXXZ.
 // Callees: CTCInventoryBase::PrepareScreen @ 0x005BC6ED, the main game component (0x013B86A0) chain +0x28 -> +0x2C slot 76
 // (+0x130, SetEnabled(false)), the sound system (0x013B8394) slot 46 (+0xB8, RefreshCategory(long, float, float)) for
-// categories 0x10 / 0x40 / 0x80 with (0.0f, 500.0f @ 0x01237584), NUISystem::CFrontEndManager::GetInstance @ 0x0041E5F2 and
+// categories 0x10 / 0x40 / 0x80 with (0.0f, 500.0f @ 0x01237584), NUISystem::CManager::GetInstance @ 0x0041E5F2 and
 // its slots 23 (+0x5C, given this; name descriptive) and 26 (+0x68, OnThingInventoryOpened(ParentThing)), CTCInventoryTrade
 // @ 0x005ACEDA (no arguments: builds the PC screen; name descriptive), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0
 // ("UI_MOUSE_POINTER" @ 0x0124DFB4), CManager::CreateComponent(const CCharString&, bool) @ 0x0041DB1D, the pointer's slot 43
@@ -44,9 +44,7 @@ class CManager { public:                               // the front-end manager'
     virtual void v24(); virtual void v25();
     virtual void OnThingInventoryOpened(CThing* thing);   // slot 26 (+0x68)
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 struct CHudOwner {
@@ -121,7 +119,7 @@ void CTCInventoryTrade::OpenInventoryPC()
         g_pSoundSystem->RefreshCategory(0x40, 0.0f, 500.0f);
         g_pSoundSystem->RefreshCategory(0x80, 0.0f, 500.0f);
     }
-    NUISystem::CFrontEndManager* frontEnd = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     frontEnd->OnInventoryScreenOpened(this);
     frontEnd->OnThingInventoryOpened(ParentThing);
     ConstructTradeScreenPC();

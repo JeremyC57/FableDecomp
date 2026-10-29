@@ -1,7 +1,7 @@
 // CTCInventory::ConstructStyleEntryPC(CComponent& list, const vector<pair<long, long> >& styles, CComponent* owner, const CCharString& headerDefinition, CComponent* viewport) -- PC twin of ConstructStyleEntry 0x00582ACE: the owner (when given) is told the header and is added as a parameter to the select and view actions; no per-entry user value. Fill the style-cards list: an empty style list just clears it; otherwise a sub-list with the header component and one menu entry per style (description text, select/focus/view/unfocus actions carrying the style index and count), then the list takes the sub-list, its name and a type-0x15 action pointing back at itself
 // Leaf: ?ConstructStyleEntryPC@CTCInventory
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0058315B, 1399 bytes, `ret 14h` (`this` unused). Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
+// Callees: CManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
 //   CCountedPointer<CComponent>(T*) 0x00429C15 / Reset 0x00429C6F / dtor 0x004291DE, GetDescription(long) 0x005D95C0 (__fastcall),
 //   CCharString 0x0099EBF0 / ~ 0x0099EAE0, CWideString 0x0099B6B0 / ~ 0x0099B510, operator new 0x00BFEA1A, CAction 0x0042BE50,
 //   CCountedPointer<CAction> 0x0042AA29 / ~ 0x00429160, param-list push_back 0x0042B646 (same-TU noinline stand-in),
@@ -169,9 +169,7 @@ class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString button);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 using namespace NUISystem;
@@ -194,7 +192,7 @@ class CTCInventory { public:
 
 void CTCInventory::ConstructStyleEntryPC(CComponent& list, const CStyleVector& styles, CComponent* owner, const CCharString& headerDefinition, CComponentBase* viewport)
 {
-    CFrontEndManager* fe = CFrontEndManager::GetInstance();
+    CManager* fe = CManager::GetInstance();
     if (styles.empty()) {
         list.Clear();
         return;

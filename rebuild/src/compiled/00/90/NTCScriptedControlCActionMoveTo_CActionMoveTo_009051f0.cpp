@@ -1,6 +1,6 @@
 // NTCScriptedControl::CActionMoveTo::CActionMoveTo(CThing*, long, float, bool, bool, bool, bool, bool, bool) -- move-to-thing scripted action
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009051F0, length 149 bytes (`ret 24h`).
-// Callees: CBase::CBase @ 0x0099A2F0 (the action root), CThing::GetScriptThing @ 0x004C7E50 (by-value
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (the action root), CThing::GetScriptThing @ 0x004C7E50 (by-value
 // CScriptThing built straight into PTargetThing through the hidden pointer), CBaseClass::CBaseClass
 // @ 0x0099A2D0 (the CScriptThing root). Vtables 0x0127091C = NTCScriptedControl::CActionMoveTo, 0x01238C8C =
 // CScriptThing (rtti-vtables.tsv).
@@ -15,9 +15,10 @@
 
 class CThing;
 
-struct CBase {                                  // root of the scripted actions (vtable 0x0129A7C4)
-    virtual void v00();
-    CBase();                                    // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:                                   // root of the scripted actions (vtable 0x0129A7C4)
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
 class CBaseClass {
@@ -53,11 +54,11 @@ class CTCBase;
 
 namespace NTCScriptedControl {
 
-struct __declspec(novtable) CActionBase : CBase {   // abstract: its own vtable store is dead
+struct __declspec(novtable) CActionBase : CBaseClassNonCopyable {   // abstract: its own vtable store is dead
     void* PTCScript;                            // +0x04 CTCScriptedControl*
     bool  Activated;                            // +0x08
     bool  Terminated;                           // +0x09
-    CActionBase() : CBase(), PTCScript(0), Activated(false), Terminated(false) { }
+    CActionBase() : CBaseClassNonCopyable(), PTCScript(0), Activated(false), Terminated(false) { }
 };
 
 struct CActionMoveTo : CActionBase {            // vtable 0x0127091C, 0x50 bytes
@@ -78,7 +79,6 @@ struct CActionMoveTo : CActionBase {            // vtable 0x0127091C, 0x50 bytes
     bool         UseBackupProximityForActionPointIfRouteBlocked;   // +0x4d
     bool         CancelAllActionsOnFailure;     // +0x4e
     bool         IgnorePathPreferability;       // +0x4f
-    virtual void v00();
     CActionMoveTo(CThing* target, long movementType, float proximity, bool faceMovement,
                   bool avoidDynamicObstacles, bool useActionPoint, bool useBackupProximity,
                   bool cancelAllActionsOnFailure, bool ignorePathPreferability);

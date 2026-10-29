@@ -9,7 +9,7 @@
 //   const char*) 0x0099F600, CCharString::operator+=(const CCharString&) 0x0099F0A0 / (const char*) 0x0099F100,
 //   CWorld slot 3 (+0xc, the thing manager), CThingManager::SaveToScript 0x00522600 / DeleteAllThings 0x0051FBA0,
 //   free 0x00BFEA14, CDiskFileWin32(path, 4, 2) 0x0099AD80 (inline dtor: Close 0x0099A920, ~CWideString 0x0099B510,
-//   ~CBase 0x0099A300), CCharString::SaveToFile 0x0099E5F0.
+//   ~CBaseClassNonCopyable 0x0099A300), CCharString::SaveToFile 0x0099E5F0.
 //   Literals "Compiling global things" 0x01244620, "NEWMAP " 0x01244618, "\r\n" 0x012397F8, "\r\nENDMAP\r\n" 0x0124460C.
 // Layout: retail CWorldMap with 12-byte STLport containers: World +0x08, Maps (CArray<CMapInfo>, 0x48-byte entries;
 //   Used +0x24, LoadedOnPlayerProximity +0x28 per Ego_r.pdb) at +0x20; the thing manager's flag word at +0x80.
@@ -63,13 +63,12 @@ struct CThingList {                                    // STLport list<> (12-byt
 };
 
 class CAFile;
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                          // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                          // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBase { public:                        // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                        // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                              // 0x0099A920 (slot 2)
     long        AccessType;

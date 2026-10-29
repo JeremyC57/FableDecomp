@@ -4,7 +4,7 @@
 //   PDB name ?CopyFromVolumeTexture@CVolumeTexture@@QAEXABV1@K@Z.
 // Callees: IDirect3DVolumeTexture9::GetLevelCount (slot 13, +0x34; the inline GetNoLevels), CVolumeTexture::GetVolumeLevel
 //   0x00A67EA0 (CVolume by value, twice per level), CVolume::CopyFromVolume 0x00A67670, the CVolume temporaries' inline
-//   destructor (vtable 0x0129C840 store, ReleaseVolume(true) 0x00A67460, CBase::~CBase 0x0099A2E0).
+//   destructor (vtable 0x0129C840 store, ReleaseVolume(true) 0x00A67460, CBaseClass::~CBaseClass 0x0099A2E0).
 // Shape: `(min)(a, b)` over two const-reference level counts (spilled, `lea` of the winner); in
 //   `GetVolumeLevel(i).CopyFromVolume(0, source.GetVolumeLevel(i), 0, filter)` VC evaluates the arguments (right to
 //   left) before the object expression; the frame is 8-aligned for the 8-byte CVolume temporaries (as the landed
@@ -37,16 +37,15 @@ struct IDirect3DVolumeTexture9 {                   // IUnknown + IDirect3DResour
     virtual long __stdcall UnlockBox(unsigned long level);                   // slot 20 (+0x50)
 };
 class C3DBoxI;
-struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
-class CVolume : public CBase { public:                           // vtable 0x0129C840
+class CVolume : public CBaseClass { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
     ~CVolume() { ReleaseVolume(true); }
     void ReleaseVolume(bool flag);                 // 0x00A67460
     long CopyFromVolume(const C3DBoxI* destBox, const CVolume& source, const C3DBoxI* sourceBox, unsigned long filter);   // 0x00A67670
-    virtual void v00();
 };
 template <class T> inline const T& (min)(const T& a, const T& b) { return a < b ? a : b; }
 class CVolumeTexture { public:                            // vtable 0x0129DC18, 16 bytes (Ego_r.pdb)

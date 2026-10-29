@@ -10,6 +10,7 @@
 // uninitialised local (an out-of-range read leaves it as it was) passed by value as a whole dword; the string is a named
 // local copied into the hidden result at the end (no NRVO) and then destroyed; the zero test compares the slot in
 // memory (`cmp word ptr [esp+8],0`). wchar_t is `unsigned short` (no /Zc:wchar_t in the retail build).
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -24,7 +25,6 @@ public:
 };
 
 struct CDataInputStreamReader : CDataInputStream {   // the engine layout plus the retail member functions
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

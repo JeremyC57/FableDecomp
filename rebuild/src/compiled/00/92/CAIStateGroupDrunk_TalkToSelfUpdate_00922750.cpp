@@ -124,9 +124,7 @@ class CTCTalk { public:                                    // the interface-0xf 
     long PlayAISpeech(const CCharString& text, bool allowNonPure, long layer, bool a, bool b);   // 0x006E3B30 (ESpeechPlaybackResult)
 };
 
-struct CWorldFrame {
-    static long GetWorldFrame();                    // 0x0049D870 (static: GetPWorld() is evaluated for nothing)
-};
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 extern long g_framesPerSecond;                      // 0x01375550
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
@@ -139,7 +137,7 @@ struct CAIStateGroup_Drunk : CAIStateGroupBase {
 
 void CAIStateGroup_Drunk::TalkToSelfUpdate()
 {
-    if (((CWorldFrame*)GetPWorld())->GetWorldFrame() <= FrameToNextTalkToSelf)
+    if (((CWorld*)GetPWorld())->GetFrame() <= FrameToNextTalkToSelf)
         return;
     CTCTalk* talk;
     PBrain->PCreature->GetInterface(&talk, 0xf);
@@ -158,9 +156,9 @@ void CAIStateGroup_Drunk::TalkToSelfUpdate()
             return;
         }
         if (result == 0) {
-            CWorldFrame* world = (CWorldFrame*)GetPWorld();
+            CWorld* world = (CWorld*)GetPWorld();
             long framesPerSecond = g_framesPerSecond;
-            FrameToNextTalkToSelf = (long)(world->GetWorldFrame() +
+            FrameToNextTalkToSelf = (long)(world->GetFrame() +
                 (GFFloatRandom(20.0f, GetPWorldSeed()) + 10.0f) * framesPerSecond);
         }
         return;

@@ -7,11 +7,11 @@ class CTCActivationReceptorBase { public:
     void* f28;           // +0x28
 };
 
-extern void* __fastcall helper_49d870(CTCActivationReceptorBase* receptor);
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 void __fastcall Activate(CTCActivationReceptorBase* receptor)
 {
     receptor->Activated = 1;
     if (receptor->f20)
-        receptor->f28 = helper_49d870(receptor);
+        receptor->f28 = ((void*)CWorld::GetFrame());
 }

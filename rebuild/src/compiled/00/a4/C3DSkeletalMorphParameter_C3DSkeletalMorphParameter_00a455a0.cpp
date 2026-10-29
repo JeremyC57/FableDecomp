@@ -1,7 +1,7 @@
 // C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget& target) -- CBase(), vtable, a new shared block whose positive target is a copy of `target` (unsigned), value 0, no owning morph
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A455A0, length 141 bytes.
 // Leaf: ??0C3DSkeletalMorphParameter
-// Callees: 0x0099A2F0 CBase::CBase, 0x00BFEA1A operator new(0x24), 0x0099E4B0 CCharString() (x2, the two target
+// Callees: 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable, 0x00BFEA1A operator new(0x24), 0x0099E4B0 CCharString() (x2, the two target
 // names), 0x00A47060 CCountedPointer<CShared>::Reset(CShared*), 0x0099EFB0 CCharString::operator=, 0x00A46790
 // CArray<C3DSkeletalBoneMorph>::operator= (propagated label CCombatWheel::operator_assign).
 // Vtable 0x0129D490 = C3DSkeletalMorphParameter (rtti-vtables.tsv).
@@ -53,13 +53,14 @@ template<class T> class CCountedPointer { public:
     T* operator->() const { return Data; }
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                             // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                             // 0x0099A2F0
 };
 
 class C3DSkeletalMorph;
-class C3DSkeletalMorphParameter : public CBase { public:
+class C3DSkeletalMorphParameter : public CBaseClassNonCopyable { public:
     class CShared { public:                                     // 0x24 bytes
         C3DSkeletalMorphTarget PositiveTarget;           // +0x00
         C3DSkeletalMorphTarget NegativeTarget;           // +0x10
@@ -68,12 +69,11 @@ class C3DSkeletalMorphParameter : public CBase { public:
     float                     CurrentValue;              // +0x04
     C3DSkeletalMorph*         SkeletalMorph;             // +0x08
     CCountedPointer<CShared>  SharedData;                // +0x0c   sizeof == 0x14
-    virtual void v00();                                  // own vtable 0x0129D490
     C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget& target);
 };
 
 C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphTarget& target)
-    : CBase()
+    : CBaseClassNonCopyable()
 {
     SharedData.Reset(new CShared);
     SharedData->PositiveTarget = target;

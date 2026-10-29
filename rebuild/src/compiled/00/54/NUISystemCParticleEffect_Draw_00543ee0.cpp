@@ -1,7 +1,7 @@
 // NUISystem::CParticleEffect::Draw(long, long, long, long, long) -- keep the running emitter on the component: pick the front-end layer for its depth (offset by the draw depth unless the component is independent or suppressed) and move the emitter to its position, rescaled from the display to the virtual screen size when that override is on
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543EE0, length 192 bytes (`ret 14h`). Virtual: slot 2 of
 // NUISystem::CParticleEffect's vtable 0x0124735C.
-// Callees: virtual slots 101 / 104 (bool queries), CFrontEndManager::GetInstance @ 0x0041E5F2 (x2) and its slot 36
+// Callees: virtual slots 101 / 104 (bool queries), CManager::GetInstance @ 0x0041E5F2 (x2) and its slot 36
 //          GetLayer, NParticleEngine::CParticleEmitter::Set2DPosition @ 0x00AED090.
 // Globals: the screen-size override flag 0x013B8768 with the override width/height 0x013B876C/0x013B8770 and
 //          the display width/height 0x01375CD4/0x01375CD8 (the getters @ 0x0041CC14/0x0041CC2B read the same).
@@ -47,9 +47,9 @@ public:
 };
 
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
-    static CFrontEndManager* __fastcall GetInstance();                                           // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                                           // 0x0041E5F2
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -249,7 +249,7 @@ public:
     {
         CRightHandedSet axes;
         Emitter = CParticleEmitterManager::Get()->Create2DEmitter(EffectIndex, &Position,
-                      CFrontEndManager::GetInstance()->GetLayer(Depth), true, &axes);
+                      CManager::GetInstance()->GetLayer(Depth), true, &axes);
     }
     virtual void Initialise();
     virtual void ChangeState(long state);
@@ -272,9 +272,9 @@ void CParticleEffect::Draw(long target, long a, long layerOffset, long c, long c
         bool suppressed = IsSuppressed_slot104();
         EEngine2DLayer layer;
         if (!independent && !suppressed)
-            layer = CFrontEndManager::GetInstance()->GetLayer(Depth + layerOffset);
+            layer = CManager::GetInstance()->GetLayer(Depth + layerOffset);
         else
-            layer = CFrontEndManager::GetInstance()->GetLayer(Depth);
+            layer = CManager::GetInstance()->GetLayer(Depth);
         C2DVector position = Position;
         position.X = ScaleScreenX(position.X);
         position.Y = ScaleScreenY(position.Y);

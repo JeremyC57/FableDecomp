@@ -1,6 +1,6 @@
 // NTCScriptedControl::CActionPlayAnimation::CActionPlayAnimation(const CCharString&, bool, bool, long, bool, long, bool, bool, bool, bool, bool) -- scripted "play animation" action
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009034F0, length 117 bytes (`ret 2Ch`).
-// Callees: CBase::CBase @ 0x0099A2F0, CCharString::CCharString(const CCharString&) @ 0x0099EC30 (out of line,
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CCharString::CCharString(const CCharString&) @ 0x0099EC30 (out of line,
 // so CCharString is modelled locally). Vtable 0x0128D6F4 = NTCScriptedControl::CActionPlayAnimation
 // (rtti-vtables.tsv).
 //
@@ -16,18 +16,19 @@ class CCharString { public:
     CCharString(const CCharString& other);      // 0x0099EC30
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                    // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
 namespace NTCScriptedControl {
 
-struct __declspec(novtable) CActionBase : CBase {   // abstract: its own vtable store is dead
+struct __declspec(novtable) CActionBase : CBaseClassNonCopyable {   // abstract: its own vtable store is dead
     void* PTCScript;                            // +0x04 CTCScriptedControl*
     bool  Activated;                            // +0x08
     bool  Terminated;                           // +0x09
-    CActionBase() : CBase(), PTCScript(0), Activated(false), Terminated(false) { }
+    CActionBase() : CBaseClassNonCopyable(), PTCScript(0), Activated(false), Terminated(false) { }
 };
 
 struct CActionPlayAnimation : CActionBase {     // vtable 0x0128D6F4
@@ -43,7 +44,6 @@ struct CActionPlayAnimation : CActionBase {     // vtable 0x0128D6F4
     bool        WaitForAnimationToFinish;       // +0x25
     bool        AnimMayNeedCameraPositionUpdatedInSpeakAndWait;   // +0x26
     bool        AllowLooking;                   // +0x27
-    virtual void v00();
     CActionPlayAnimation(const CCharString& animation, bool stayOnLastFrame, bool looping, long numLoops,
                          bool useMovement, long priority, bool addAsQueuedAction, bool waitForAnimationToFinish,
                          bool usePhysics, bool animMayNeedCameraPositionUpdated, bool allowLooking);

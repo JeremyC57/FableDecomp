@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005907AB, 1415 bytes, `ret 1Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
 //   FableWin.pdb ?ConstructItemCategoryListPC@CTCInventory@@QAEXAAVCWideString@@PAVCList@NUISystem@@AAV?$vector@...@ABVCCharString@@4_N@Z
 //   (the catalog label "CTCInventoryAbilities::ConstructPCExpressionCategoryList" is propagated).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
+// Callees: CManager::GetInstance 0x0041E5F2, CManager::CreateComponent 0x0041DB1D / CreateMenuEntryComponent 0x00428494,
 //   CCountedPointer<CComponent>(T*) 0x00429C15 / Reset 0x00429C6F / dtor 0x004291DE, CTCInventory::CreateMenuDescPC 0x00582673
 //   (CCountedPointer by hidden pointer), GetXString 0x005CC772, IntToWideString 0x00405F00, CWideString copy 0x0099B720 /
 //   += 0x0099B8D0 / += (const wchar*) 0x0099B940 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0 / != 0x0099E960,
@@ -151,9 +151,7 @@ class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString button);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 using namespace NUISystem;
@@ -245,7 +243,7 @@ class CTCInventory { public:
 void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, CItemVector& items, CComponent* owner,
                                                const CCharString& templateName, const CCharString& descriptionSymbol, bool checkUsable)
 {
-    CFrontEndManager* fe = CFrontEndManager::GetInstance();
+    CManager* fe = CManager::GetInstance();
     CViewport* viewport = (CViewport*)owner->FindChild("PC_DESCRIPTION_VIEWPORT");
     CComponent* frame = owner->FindChild("PC_UI_FRAME");
     CCountedPointer<CComponent> subtitle;
@@ -308,7 +306,7 @@ void CTCInventory::ConstructItemCategoryListPC(CWideString& title, CList* list, 
         if (checkUsable && ParentThing->GetInterface(&carrying, 8) && !IS_THING_ALIVE(carrying->GetHeldThing()))
             usable = false;
         CCharString actionsListName(usable ? "PC_UI_LIST_ITEMS_ACTIONS" : "PC_UI_LIST_ITEMS_ACTIONS_CANT_USE");
-        CCountedPointer<CComponent> actions(CFrontEndManager::GetInstance()->CreateComponent(actionsListName, false));
+        CCountedPointer<CComponent> actions(CManager::GetInstance()->CreateComponent(actionsListName, false));
         CComponent* actionsList = actions.m_pObject;
         actionsList->SetSelectedIndex(0);
         if (!usable) {

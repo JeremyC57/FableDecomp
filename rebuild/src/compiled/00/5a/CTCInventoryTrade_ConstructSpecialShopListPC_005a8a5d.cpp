@@ -1,7 +1,7 @@
 // CTCInventoryTrade::ConstructSpecialShopListPC(const std::vector<std::pair<long,long> >& items, CCharString& name) -- creates the special-shop list, totals the price of the special items the hero can still buy and writes it into the buy entry's text
 // Leaf: ConstructSpecialShopListPC
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005A8A5D, 521 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 / CreateComponent 0x0041DB1D, CGameDefinitionManager::Get 0x0044C6B0 /
+// Callees: CManager::GetInstance 0x0041E5F2 / CreateComponent 0x0041DB1D, CGameDefinitionManager::Get 0x0044C6B0 /
 //   GetDefGlobalIndexFromName 0x009AD390 / GetDef 0x0042B312 (same-TU noinline stand-in), GetMainPlayer 0x00449960,
 //   PeekPControlledCreature 0x00487DD0, the item interface-type lookup 0x005D99D0 (`__fastcall`, manifest "GetInventoryCategory"),
 //   bitset::test 0x00410DE0 + LowerBound 0x004365B0 (inline GetInterface), IsItemAffordable 0x0059DA10, CanAddItem 0x005BF2ED,
@@ -115,9 +115,9 @@ class CComponent { public:
     virtual void v143();
     virtual void SetText(const CWideString& text, bool a, bool b);   // slot 144 (+0x240)
 };
-class CFrontEndManager { public:
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-    static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
+    static CManager* __fastcall GetInstance();    // 0x0041E5F2
 };
 }
 namespace std {
@@ -150,7 +150,7 @@ class CTCInventoryTrade { public:
 };
 NUISystem::CComponent* CTCInventoryTrade::ConstructSpecialShopListPC(const std::vector<std::pair<long, long> >& items, CCharString& name)
 {
-    NUISystem::CFrontEndManager* frontEnd = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     NUISystem::CComponent* list = frontEnd->CreateComponent(name, false);
     CDefPointer<CMiscThingsDef> misc;
     long miscIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName("UI_MISC_THINGS_DEF", true);

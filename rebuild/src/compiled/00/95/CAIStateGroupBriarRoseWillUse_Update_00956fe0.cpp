@@ -105,9 +105,7 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-struct CThingWorld {
-    static long GetCurrentFrame();              // 0x0049D870
-};
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 extern long g_FramesPerSecond;                  // 0x01375550
 
 struct CAIStateGroupBriarRoseWillUseMethods : CAIStateGroup_BriarRoseWillUse {
@@ -115,7 +113,7 @@ struct CAIStateGroupBriarRoseWillUseMethods : CAIStateGroup_BriarRoseWillUse {
     CThing* GetCreature() const { return Brain()->PCreature; }
     CIntelligentPointer<CThing>& Enemy() { return *(CIntelligentPointer<CThing>*)PEnemy; }
     void Terminate();                           // 0x008FCF40
-    CThingWorld* GetPWorld();                   // 0x008FCFC0
+    CWorld* GetPWorld();                   // 0x008FCFC0
     long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
     void Update();
 };
@@ -154,9 +152,9 @@ void CAIStateGroupBriarRoseWillUseMethods::Update()
             AIAction_PerformActionAndWait(&CCreatureAction_BriarRoseShotFarInto(GetCreature(), enemy), false);
     }
     {
-        CThingWorld* world = GetPWorld();
+        CWorld* world = GetPWorld();
         long fps = g_FramesPerSecond;
-        NextWillUseFrame = (long)((float)world->GetCurrentFrame() + (float)fps * interval);
+        NextWillUseFrame = (long)((float)world->GetFrame() + (float)fps * interval);
     }
     Terminate();
     if (--def->m_refCount == 0)

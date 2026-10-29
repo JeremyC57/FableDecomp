@@ -7,7 +7,7 @@
 // Callees: as the landed DownloadMemberListForSelectedClan 0x00561DC0, plus GetCachedClanLogosAsString 0x0055E850, GetSaveDir
 // 0x0041A5B0, operator+(const CWideString&, const wchar16*) 0x0099BF30, CWideString() 0x0099AED0, FormatWideString 0x0099BA70
 // (cdecl varargs), CWideString::operator+= 0x0099B8D0 / 0x0099B940, CDiskFileWin32(path, access, flags) 0x0099AD80, Write
-// 0x0099AA90 and the inline ~CDiskFileWin32 (vtable 0x0122D06C, Close 0x0099A920, ~CBase 0x0099A300).
+// 0x0099AA90 and the inline ~CDiskFileWin32 (vtable 0x0122D06C, Close 0x0099A920, ~CBaseClassNonCopyable 0x0099A300).
 // Layout: as the landed UploadPlayerScores 0x00561450 (PHttp +0x0c, SessionID +0x34, TaskState +0x54).
 // Shape: the reply numbers go through the IMPLICIT const char* -> CCharString conversion (an explicit CCharString(..., -1)
 // temporary passes the ctor result in ecx and reverses the request chain's temp slots); the data line is read with lines[i]
@@ -93,14 +93,13 @@ struct CHttpScopedPtr {
 };
 
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                       // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-class CDiskFileWin32 : public CBase { public:                     // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                     // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                           // 0x0099A920 (slot 2)
     long        AccessType;                         // +0x04

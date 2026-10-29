@@ -1,6 +1,7 @@
 // CEnginePrimitiveManagerLines::~CEnginePrimitiveManagerLines() -- release the vertex shader held at +0xc (its inlined destructor: the CVertexShader vtable, drop the shared shader's count and delete it at zero, the CShaderBase vtable), then ~CBase
+// Leaf: ??1CEnginePrimitiveManagerLines@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC9A00, length 43 bytes.
-// Callees: the shared shader's virtual deleting destructor (slot 0, flag 1), CBase::~CBase @ 0x0099A300 (a tail jump). Vtables 0x0129B3D0 = CVertexShader,
+// Callees: the shared shader's virtual deleting destructor (slot 0, flag 1), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (a tail jump). Vtables 0x0129B3D0 = CVertexShader,
 // 0x0129A030 = CShaderBase (rtti-vtables.tsv). Shape: no vtable store of this class's own (`__declspec(novtable)`: the manager base is abstract), the member
 // destructor is inlined (`mov ecx,[esi+10h] ; test ; mov [esi+0Ch],CVertexShader ; je ; dec [ecx+10h] ; jne ; call [eax]`), then the base destructor.
 // The chunk label "vector deleting destructor" is wrong: there is no flag test; this is the plain destructor.
@@ -27,12 +28,12 @@ class CVertexShader : public CShaderBase { public:               // vtable 0x012
     }
 };
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 
-struct __declspec(novtable) CEnginePrimitiveManagerLines : CBase {
+struct __declspec(novtable) CEnginePrimitiveManagerLines : CBaseClassNonCopyable {
     long          m_type;                          // +0x04
     bool          m_enabled;                       // +0x08
     CVertexShader m_vertexShader;                  // +0x0c

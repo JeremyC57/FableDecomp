@@ -14,12 +14,12 @@
 //   homes in the value-argument slot (`lea ecx,[ebp+0Ch]`; a 1-byte empty class lands at [ebp+0Bh]); the float read lands in the dead stream-argument slot. Size-optimised TU:
 //   #pragma optimize("s", on) (ebp frame).
 #pragma optimize("s", on)
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
 struct CDataInputStreamReader : CDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

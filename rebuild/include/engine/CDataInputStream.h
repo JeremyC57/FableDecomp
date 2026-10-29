@@ -17,6 +17,11 @@ public:
     void*         CurrentSourcePtr;                          // +0x0c uchar *
     unsigned long SourceChunkStreamPos;                      // +0x10
     long          SourceChunkBytesRemaining;                 // +0x14
+#ifdef FABLE_CDATAINPUTSTREAM_FRIEND
+    friend FABLE_CDATAINPUTSTREAM_FRIEND;                   // the including row's inline-helper class
+#endif
+private:
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size); // 0x00993CA0 ?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z
 };
 #pragma pack(pop)
 

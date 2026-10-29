@@ -1,6 +1,6 @@
 // NTCScriptedControl::CActionSummonerLightningAttackTarget::CActionSummonerLightningAttackTarget(CThing*) -- summoner lightning attack on a target
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00713180, length 117 bytes (`ret 4`).
-// Callees: CBase::CBase @ 0x0099A2F0 (x2: this action and the embedded turn action), CThing::GetScriptThing
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (x2: this action and the embedded turn action), CThing::GetScriptThing
 // @ 0x004C7E50 (by-value CScriptThing built straight into PTarget), CThing::GetPosition @ 0x004C73D0.
 // Vtables 0x0126586C = NTCScriptedControl::CActionSummonerLightningAttackTarget, 0x01265534 =
 // NTCScriptedControl::CActionTurnToFacePosition (rtti-vtables.tsv).
@@ -14,9 +14,10 @@
 // in the init list (a C3DVector member copies through `lea ecx,[edi+0Ch]`). Members carry the PDB names.
 // Leaf: ??0CActionSummonerLightningAttackTarget
 
-struct CBase {                                  // root of the scripted actions (vtable 0x0129A7C4)
-    virtual void v00();
-    CBase();                                    // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:                                   // root of the scripted actions (vtable 0x0129A7C4)
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
 class CBaseObject { public:
@@ -41,11 +42,11 @@ class CThing { public:
 
 namespace NTCScriptedControl {
 
-struct __declspec(novtable) CActionBase : CBase {   // abstract: its own vtable store is dead
+struct __declspec(novtable) CActionBase : CBaseClassNonCopyable {   // abstract: its own vtable store is dead
     void* PTCScript;                            // +0x04 CTCScriptedControl*
     bool  Activated;                            // +0x08
     bool  Terminated;                           // +0x09
-    CActionBase() : CBase(), PTCScript(0), Activated(false), Terminated(false) { }
+    CActionBase() : CBaseClassNonCopyable(), PTCScript(0), Activated(false), Terminated(false) { }
 };
 
 struct CActionTurnToFacePosition : CActionBase {    // vtable 0x01265534, 0x1c bytes
@@ -53,7 +54,6 @@ struct CActionTurnToFacePosition : CActionBase {    // vtable 0x01265534, 0x1c b
     float     Position_Y;                       // +0x10 C3DVector::Y
     float     Position_Z;                       // +0x14 C3DVector::Z
     float     Tolerance;                        // +0x18 (descriptive)
-    virtual void v00();
     CActionTurnToFacePosition(const C3DVector& position)
         : CActionBase(), Position_X(position.X), Position_Y(position.Y), Position_Z(position.Z), Tolerance(1.0f / 72.0f) { }
 };
@@ -63,7 +63,6 @@ struct CActionSummonerLightningAttackTarget : CActionBase {   // vtable 0x012658
     bool StartedAttack;                         // +0x18
     bool TurnedToFace;                          // +0x19
     CActionTurnToFacePosition TurnToFaceAction; // +0x1c
-    virtual void v00();
     CActionSummonerLightningAttackTarget(CThing* target);
 };
 

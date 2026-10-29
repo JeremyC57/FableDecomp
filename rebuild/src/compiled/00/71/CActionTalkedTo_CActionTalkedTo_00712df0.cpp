@@ -1,6 +1,7 @@
 // NTCScriptedControl::CActionTalkedTo::CActionTalkedTo(CThing* talker, CBaseObject* target) -- constructor: CBase(), the common action members zeroed, own vtable, CIntelligentPointer at +0xc set to target, CScriptThing at +0x14 from talker->GetScriptThing()
+// Leaf: ??0CActionTalkedTo@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00712DF0, length 80 bytes.
-// Callees: CBase::CBase @ 0x0099A2F0, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 // CBaseIntelligentPointer::SetPItem @ 0x00A01B90, CThing::GetScriptThing @ 0x004C7E50 (by-value
 // CScriptThing through the hidden result pointer, built straight into the member at +0x14).
 // Vtables: 0x0126580C = NTCScriptedControl::CActionTalkedTo, 0x01265804 = CIntelligentPointer
@@ -41,22 +42,22 @@ public:
     T* GetPItem() const { return (T*)CBaseIntelligentPointer::GetPItem(); }
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                // 0x0099A2F0
 };
 
-struct __declspec(novtable) CAction : CBase {   // NTCScriptedControl::CAction: abstract, its own vtable store is dead
+struct __declspec(novtable) CAction : CBaseClassNonCopyable {   // NTCScriptedControl::CAction: abstract, its own vtable store is dead
     CThing* m_pThing;                       // +0x04
     bool    m_active;                       // +0x08
     bool    m_finished;                     // +0x09
-    CAction() : CBase(), m_pThing(0), m_active(false), m_finished(false) { }
+    CAction() : CBaseClassNonCopyable(), m_pThing(0), m_active(false), m_finished(false) { }
 };
 
 struct CActionTalkedTo : CAction {            // vtable 0x0126580C
     CIntelligentPointer<NTCScriptedControl::CScriptConversation> m_target;           // +0x0c
     CScriptThing        m_talker;           // +0x14
-    virtual void v00();
     CActionTalkedTo(CThing* talker, CBaseObject* target);
 };
 

@@ -7,16 +7,16 @@
 // record destructor @ 0x00AECB80 (at +0) and the class of vtable 0x0129F38C (two members at +0x1ec / +0x210, 0x24 apart);
 // no PDB name could be pinned, so the class is named by address.
 // Callees: the tree erase @ 0x004ABA70, free @ 0x00BFEA14 (x2), vector<pair<CCharString,...>>::_Destroy @ 0x006FBCC0
-// (`__fastcall` first/last, the iterator tag by reference at `lea [esp+0Bh]`), CBase::~CBase @ 0x0099A300.
+// (`__fastcall` first/last, the iterator tag by reference at `lea [esp+0Bh]`), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300.
 // Shape: members destroyed in reverse order -- the red-black tree's inline destructor (as the landed ~CRetailTree in
 // 0x00755520), then the vector map's vector (destroy range, free) -- the class `__declspec(novtable)` over CBase, then the
 // base destructor as a plain call (the frame word for the tag is popped after it); `ret`.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 
@@ -58,10 +58,9 @@ struct CRetailTree_004aba70 {                      // the retail red-black tree 
     }
 };
 
-struct __declspec(novtable) CStringKeyedTable_006fd040 : CBase {
+struct __declspec(novtable) CStringKeyedTable_006fd040 : CBaseClassNonCopyable {
     CCharStringVectorMap m_entries;                // +0x04
     CRetailTree_004aba70 m_index;                  // +0x14
-    virtual void v00();
     ~CStringKeyedTable_006fd040();
 };
 

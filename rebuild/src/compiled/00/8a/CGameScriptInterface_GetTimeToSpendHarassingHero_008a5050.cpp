@@ -3,7 +3,7 @@
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
-// Retail bytes:  push ecx ; mov ecx,[thing.PImp.Data] ; push edi ; xor edi,edi ; cmp ecx,edi ; je X ; mov eax,[ecx] ; call [eax+0x2c] ; cmp eax,edi ; jne B ; X: (CScriptThing dtor) ; xor eax,eax ; pop edi ; pop ecx ; ret 0Ch ; B: (GetThing again) ; mov ecx,[eax+0x34] ; test flag ; push esi ; je N ; (inlined CVectorMap find of 0xaa) ; jmp S ; N: mov eax,[dead slot] ; S: mov esi,[eax+0x5c] ; (dtor) ; lea ecx,[esp+10h] ; mov [esp+14h],edi ; mov [esp+18h],edi ; call CBase::~CBase ; mov eax,esi ; pop esi ; pop edi ; pop ecx ; ret 0Ch
+// Retail bytes:  push ecx ; mov ecx,[thing.PImp.Data] ; push edi ; xor edi,edi ; cmp ecx,edi ; je X ; mov eax,[ecx] ; call [eax+0x2c] ; cmp eax,edi ; jne B ; X: (CScriptThing dtor) ; xor eax,eax ; pop edi ; pop ecx ; ret 0Ch ; B: (GetThing again) ; mov ecx,[eax+0x34] ; test flag ; push esi ; je N ; (inlined CVectorMap find of 0xaa) ; jmp S ; N: mov eax,[dead slot] ; S: mov esi,[eax+0x5c] ; (dtor) ; lea ecx,[esp+10h] ; mov [esp+14h],edi ; mov [esp+18h],edi ; call CBaseClass::~CBaseClass ; mov eax,esi ; pop esi ; pop edi ; pop ecx ; ret 0Ch
 // Script API getter (virtual on CGameScriptInterface; `this` unused): returns 0 when the
 // by-value CScriptThing does not resolve a thing (virtual slot 11 of the counted pointee),
 // else the dword at +0x5c of TC 0xaa, looked up in the thing's CVectorMap at +0x44 when
@@ -53,12 +53,12 @@ struct CCountedPointer {
     }
 };
 
-struct CBase {
-    virtual void v00();
-    ~CBase();                              // 0x0099A2E0 (sets the CBase vtable; manifest label propagated)
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                              // 0x0099A2E0 (sets the CBase vtable; manifest label propagated)
 };
 
-class CScriptThing : public CBase { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
+class CScriptThing : public CBaseClass { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
     CCountedPointer PImp;                  // +4 Data / +8 Info
     ~CScriptThing() { }
     CThing* GetThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }

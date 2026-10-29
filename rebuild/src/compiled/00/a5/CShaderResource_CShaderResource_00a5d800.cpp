@@ -5,7 +5,7 @@
 // is the scalar deleting destructor @ 0x00A5EBE0, slot 0 of CShaderResource's vtable 0x0129D580 (the stored vtable).
 // Callees: CShaderResource::CloseShaderBank @ 0x00A5D750, free @ 0x00BFEA14 (x3), the CStreamInfo range destroy
 // @ 0x00A5E900 (`__fastcall` first/last, the iterator tag by reference at `lea [esp+0Bh]`), CBaseClass::~CBaseClass
-// @ 0x0099A2E0 (the embedded input's base), CBase::~CBase @ 0x0099A300.
+// @ 0x0099A2E0 (the embedded input's base), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300.
 // Layout: Ego_r.pdb CShaderResource with the retail 12-byte CArray (PDB 16): ShaderBank +0x04, Shaders +0x08,
 // ShaderRenderManager +0x14, VertexShaderInput +0x18 (0x1c bytes: vptr, DataStreams +0x1c, D3DDeclaration +0x28),
 // VertexShaderDeclaration +0x34, VertexFormat +0x38.
@@ -19,10 +19,10 @@ class CBaseClass { public:                                // vtable 0x01231710
     virtual void v00();
     virtual ~CBaseClass();                                 // 0x0099A2E0
 };
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 
 struct SNonscalarPtrIteratorTag { SNonscalarPtrIteratorTag() { } };
 
@@ -58,14 +58,13 @@ struct __declspec(novtable) CVertexShaderInput : CBaseClass {   // vtable 0x0129
 class CShaderDataBank;
 class CShaderBase;
 class CShaderRenderManager;
-class CShaderResource : public CBase { public:                   // vtable 0x0129D580, retail 0x3c bytes
+class CShaderResource : public CBaseClassNonCopyable { public:                   // vtable 0x0129D580, retail 0x3c bytes
     CShaderDataBank*          ShaderBank;          // +0x04
     CPodArray<CShaderBase*>   Shaders;             // +0x08
     CShaderRenderManager*     ShaderRenderManager; // +0x14
     CVertexShaderInput        VertexShaderInput;   // +0x18
     D3DVERTEXELEMENT9*        VertexShaderDeclaration;   // +0x34
     long                      VertexFormat;        // +0x38
-    virtual void v00();
     void CloseShaderBank();                        // 0x00A5D750
     void Close()                                   // out-of-line copy @ 0x00A5D7A0
     {

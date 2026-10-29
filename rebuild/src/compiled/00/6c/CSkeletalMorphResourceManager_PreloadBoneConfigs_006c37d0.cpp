@@ -6,7 +6,7 @@
 // operator+(CWideString, const wchar16*) 0x0099BF30, CWideString(const wchar16*) 0x0099B6B0, ~CWideString 0x0099B510,
 // CWideString::ConvertToCharString 0x0099B2C0, ~CCharString 0x0099EAE0, FindFirstFile 0x00999760 / FindNextFile
 // 0x00999850 (__fastcall pattern, finder, name buffer), the map's find 0x006C31B0 / insert 0x006C3410,
-// CDiskFileWin32(path, 1, 2) 0x0099AD80 (inline dtor: Close 0x0099A920, ~CBase 0x0099A300), operator new
+// CDiskFileWin32(path, 1, 2) 0x0099AD80 (inline dtor: Close 0x0099A920, ~CBaseClassNonCopyable 0x0099A300), operator new
 // 0x00BFEA1A, C3DSkeletalMorphTarget() 0x00A44E60, CCountedPointer::Reset 0x006C3AC0,
 // GFLoadSkeletalMorphTargetFromFile 0x0088B0C0 (__fastcall).
 // Layout: same map model as the landed GetMorphTarget 0x006C3620 (map at +0x04, node key +0x10, value +0x14).
@@ -31,13 +31,12 @@ CWideString __fastcall operator+(const CWideString& a, const wchar16* b);      /
 struct CFileFinder { void* Handle; unsigned long Flags; };
 bool __fastcall FindFirstFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);   // 0x00999760
 bool __fastcall FindNextFile(const CWideString& pattern, CFileFinder* finder, wchar16* fileName);    // 0x00999850
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                          // 0x0099A920 (slot 2)
     long        AccessType;

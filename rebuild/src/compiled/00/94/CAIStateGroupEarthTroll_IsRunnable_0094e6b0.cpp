@@ -118,9 +118,7 @@ struct CTCEnemySource {                         // the interface-8 component
 class C3DVector { public: float X, Y, Z; };
 
 
-struct CWorldFrame {
-    static long GetWorldFrame();                // 0x0049D870 (static: GetPWorld() is evaluated for nothing)
-};
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 struct CAIStateGroup_EarthTroll : CAIStateGroupBase {
     CIntelligentPointerThing PEnemy;            // +0x14 CIntelligentPointer<CThingCreatureBase>
@@ -144,7 +142,7 @@ bool CAIStateGroup_EarthTroll::IsRunnable()
         float dy = pos.Y - enemyPos.Y;
         if ((float)sqrt(dx * dx + dy * dy) < AttackRange) {
             PEnemy = enemy;
-            LastRunFrame = ((CWorldFrame*)GetPWorld())->GetWorldFrame();
+            LastRunFrame = ((CWorld*)GetPWorld())->GetFrame();
             return true;
         }
     }

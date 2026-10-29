@@ -9,12 +9,12 @@
 // and filled with one bulk Read of that byte count into GetData() (the array itself when empty).
 // Layout: engine/C3DMeshFileXVertexDataChunk.h; VertexData +0x40 viewed as the retail 12-byte STLport vector.
 // Leaf: ReadFromFile@C3DMeshFileXVertexDataChunkMethods
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CInputStreamAccess   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #include "engine/C3DMeshFileXVertexDataChunk.h"
 extern "C" void* __cdecl memcpy(void*, const void*, unsigned int);
 #pragma intrinsic(memcpy)
 struct CInputStreamAccess : CDataInputStream {
- void ReadWithSrcChunkOverflow(unsigned char*, long); // 0x00993CA0
  static __forceinline bool IsValidPosition(__int64 pos) {return pos>=0 && pos<=0x7fffffff;}
  __forceinline void Read(void* buffer,long size) {
   if(size<=0) return;

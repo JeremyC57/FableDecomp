@@ -1,6 +1,6 @@
 // NInventory::CTCInventoryStats::ConstructScreen(NUISystem::CComponent* topLevel) -- creates the UI_STATS_LIST screen, touches its three entries, and wires the experience entry's select / back actions (type 3: go to the top-level menu screen in state 0 / 1); returns the screen
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005CD074, 562 bytes, `ret 4`. Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CFrontEndManager::GetInstance @ 0x0041E5F2 (called once with the result dropped, then again for CreateComponent
+// Callees: CManager::GetInstance @ 0x0041E5F2 (called once with the result dropped, then again for CreateComponent
 // @ 0x0041DB1D), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, the component's slot 3 (+0x0C, child by name; CCharString by value
 // built in its argument slot), operator new @ 0x00BFEA1A, NUISystem::CAction::CAction @ 0x0042BE50, CCountedPointer<CAction>
 // (CAction*) @ 0x0042AA29 and its dtor @ 0x00429160, the param list push_back(const T&) @ 0x0042B646, the inline
@@ -76,9 +76,9 @@ struct CComponentBase {
 };
 class CComponent : public CComponentBase, public CActionParam { public:      // the action-parameter subobject at +0x18
 };
-class CFrontEndManager { public:
+class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-    static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
+    static CManager* __fastcall GetInstance();    // 0x0041E5F2
 };
 }
 
@@ -88,11 +88,11 @@ struct CTCInventoryStats {
 };
 NUISystem::CComponent* CTCInventoryStats::ConstructScreen(NUISystem::CComponent* topLevel)
 {
-    NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager::GetInstance();
     NUISystem::CComponent* screen;
     {
         CCharString name("UI_STATS_LIST");
-        screen = NUISystem::CFrontEndManager::GetInstance()->CreateComponent(name, false);
+        screen = NUISystem::CManager::GetInstance()->CreateComponent(name, false);
     }
     screen->GetChild(CCharString("UI_MENU_ENTRY_EXPERIENCE"));
     screen->GetChild(CCharString("UI_MENU_ENTRY_PERSONALITY"));

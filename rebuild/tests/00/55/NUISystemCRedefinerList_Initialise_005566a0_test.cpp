@@ -42,10 +42,10 @@ struct CComponent {
     virtual void AddChild(const CCountedPointer<CComponent>& c) { g_log[g_n++] = 300 + c->id; }
 };
 static CComponent g_created(7);
-struct CFrontEndManager {
-    static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
+namespace NUISystem { class CManager { public:
+    static CManager* GetInstance() { static CManager m; return &m; }
     CComponent* CreateComponent(long def) { g_created.createdFrom = def; g_log[g_n++] = 400; return &g_created; }
-};
+}; }
 static CRedefinerListDef g_def;
 struct CRedefinerList : CComponent {
     CComponent* PUndefinedWarning;
@@ -61,7 +61,7 @@ struct CRedefinerList : CComponent {
         s_pActiveList = this;
         CDefPointer def = GetDef();
         if (def->UndefinedWarningDef) {
-            PUndefinedWarning = CFrontEndManager::GetInstance()->CreateComponent(def->UndefinedWarningDef);
+            PUndefinedWarning = NUISystem::CManager::GetInstance()->CreateComponent(def->UndefinedWarningDef);
             CCountedPointer<CComponent> warning(PUndefinedWarning);
             GetParent()->AddChild(warning);
             warning->SetParent(GetParent());

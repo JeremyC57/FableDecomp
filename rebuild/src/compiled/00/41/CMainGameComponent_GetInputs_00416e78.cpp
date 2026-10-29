@@ -64,7 +64,7 @@ class CSystemManager { public:
     bool IsApplicationActive();                    // 0x009A57B0
 };
 CSystemManager* __fastcall GFGetSystemManager();   // 0x009A4EC0
-long GFGetPreMainMemoryUsed();                     // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                     // 0x0049D870
 class CGamePlayerInterface { public:
     virtual void v00();
     virtual bool PopGameEvent(CGameEvent* event);  // slot 1
@@ -101,7 +101,7 @@ void CMainGameComponent::GetInputs()
     CChecksum checksum(PeekWorldChecksum(), Frame, inputChecksum);
     g_pInputManager->UpdateChecksum(InputChannel, &checksum);
     g_pInputManager->Update();
-    if (GFGetSystemManager()->IsApplicationActive() && GFGetPreMainMemoryUsed() > 1) {
+    if (GFGetSystemManager()->IsApplicationActive() && CWorld::GetFrame() > 1) {
         GetPlayerInterface()->BeginEventPoll();
         while (GetPlayerInterface()->PopGameEvent(&event)) {
             if (!Loading)

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCF920, length 233 bytes (+7 int3). Ego_r.pdb
 // ?OnPredicateFail@CArtefact@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ.
 // Callees: the crate's pimpl virtual slot 78 (+0x138) with the entity's thing word (+0x0c), vector<CScriptThing>::erase(iterator)
-// @ 0x00CD3152 (catalog "std::vector::pop_back"), operator delete @ 0x00BFE9BC, CBase::~CBase @ 0x0099A2E0.
+// @ 0x00CD3152 (catalog "std::vector::pop_back"), operator delete @ 0x00BFE9BC, CBaseClass::~CBaseClass @ 0x0099A2E0.
 // Shape: each crate is copied into a CScriptThing local (vtable 0x01238C8C, pimpl add-ref when the count block is non-null);
 // the test is an inline CScriptThing member forwarding to the pimpl's virtual; on a match the element is erased and the
 // local destroyed before returning; otherwise the local's inline destructor (counted release, zeroing, CBase dtor) runs
@@ -12,9 +12,9 @@
 // Layout: retail CArtefact (PDB 0x1c): entity thing word +0x0c, ParentClass +0x14; retail CQ_OrchardFarmRaidScript CrateList
 // +0x54 (PDB +0x68, the usual -0x14 retail shift; STLport vector of 12-byte CScriptThing).
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
-struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
 struct SCountBlock {
     long  m_references;                            // +0
@@ -53,9 +53,8 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
-    virtual void v00();
     __forceinline CScriptThing(const CScriptThing& other) : PImp(other.PImp) {}
     __forceinline ~CScriptThing() {}
     bool IsThing(void* thing) const { return PImp.Data->IsThing(thing); }

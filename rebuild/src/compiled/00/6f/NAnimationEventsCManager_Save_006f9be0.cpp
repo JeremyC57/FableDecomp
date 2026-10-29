@@ -5,7 +5,7 @@
 // Leaf: ?Save@CManager@NAnimationEvents
 // Retail: Fable.exe @ 0x006F9BE0, 768 bytes, `ret 4`, 8-byte aligned frame, no EH frame.
 // Callees: CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) 0x0099AD80 and its inlined dtor (vtable
-//   0x0122D06C, Close 0x0099A920, ~CWideString 0x0099B510, ~CBase 0x0099A300), CCharString() 0x0099E4B0 /
+//   0x0122D06C, Close 0x0099A920, ~CWideString 0x0099B510, ~CBaseClassNonCopyable 0x0099A300), CCharString() 0x0099E4B0 /
 //   (const char*, long) 0x0099EBF0 / ~ 0x0099EAE0 / SaveToFile(CAFile&) 0x0099E5F0, CPersistContext(CCharString&)
 //   0x009BAE10 / Transfer(CCharString&) 0x009BAB50, CSymbolMap() 0x009E5200 / ~ 0x006FD040 / load-from-header 0x009E5C90
 //   / FindFirstSymbolWithVal(group, val) 0x009E50C0 / FindFirstSymbolWithVal(val) 0x009E5090, the __fastcall directory
@@ -22,15 +22,14 @@ class CWideString { public:
 };
 CWideString __fastcall operator+(const CWideString& a, const unsigned short* b);   // 0x0099BF30
 CWideString __fastcall GetDataDirectory();          // 0x009A76A0 (name descriptive)
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                       // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CAFile : public CBase { public:
+class CAFile : public CBaseClassNonCopyable { public:
 };
 class CDiskFileWin32 : public CAFile { public:                    // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                           // 0x0099A920 (slot 2)
     long        AccessType;                         // +0x04

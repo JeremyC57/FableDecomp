@@ -75,9 +75,10 @@ struct CEngineData {
 };
 extern CEngineData* g_pEngineData;                 // 0x01436E98
 struct CEngineSceneArray;
-struct CBase {
-    virtual void VSlot0();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
 class CVertexCompressionParams { public:
@@ -87,7 +88,7 @@ class CVertexCompressionParams { public:
         : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
           PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
 };
-struct CVertexBufferBase : CBase {                 // 0x34 bytes
+struct CVertexBufferBase : CBaseClassNonCopyable {                 // 0x34 bytes
     IDirect3DVertexBuffer9*  PVertexBuffer;        // +0x04
     unsigned long            Length;               // +0x08
     long                     Type;                 // +0x0c

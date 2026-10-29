@@ -1,7 +1,7 @@
 // CEnginePrimitiveManagerParticleLineGroup::CEnginePrimitiveManagerParticleLineGroup(CEngineSceneArray* scenes) -- constructs the particle line group manager: sizes the point-light vertex shader table to five, looks up the line-group vertex shaders and the sprite-group pixel shaders by name, then builds the buffers
 // Leaf: ??0CEnginePrimitiveManagerParticleLineGroup
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC4D90, length 1345 bytes (`ret 4`, no EH frame). Vtable 0x012A6590.
-// Callees: CEnginePrimitiveManager ctor @ 0x00BACDB0, CVertexShader() @ 0x00A62FB0, CPixelShader() @ 0x00A5EC00, CBase() @ 0x0099A2F0,
+// Callees: CEnginePrimitiveManager ctor @ 0x00BACDB0, CVertexShader() @ 0x00A62FB0, CPixelShader() @ 0x00A5EC00, CBaseClassNonCopyable() @ 0x0099A2F0,
 //   CIndexBuffer() @ 0x00AC1EC0, vector<CVertexShader>::resize @ 0x00B6CBD0 (catalogued "std::vector::erase"; the call site passes
 //   only the count 5), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, GetVertexShader @ 0x00A5D5F0 / GetPixelShader @ 0x00A5D720,
 //   BuildBuffers @ 0x00BC3E10.
@@ -76,9 +76,10 @@ struct CEngineData {
 };
 extern CEngineData* g_pEngineData;                 // 0x01436E98
 struct CEngineSceneArray;
-struct CBase {
-    virtual void VSlot0();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
 class CVertexCompressionParams { public:
@@ -88,7 +89,7 @@ class CVertexCompressionParams { public:
         : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
           PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
 };
-struct CVertexBufferBase : CBase {                 // 0x34 bytes
+struct CVertexBufferBase : CBaseClassNonCopyable {                 // 0x34 bytes
     IDirect3DVertexBuffer9*  PVertexBuffer;        // +0x04
     unsigned long            Length;               // +0x08
     long                     Type;                 // +0x0c

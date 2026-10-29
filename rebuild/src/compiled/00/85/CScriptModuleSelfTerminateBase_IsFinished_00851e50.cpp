@@ -3,9 +3,9 @@ struct CScriptModuleSelfTerminateBase {
     int m_threshold; /* +0x50 */
 };
 
-extern "C" int __cdecl GetElapsed();
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 bool __fastcall IsFinished(CScriptModuleSelfTerminateBase* self)
 {
-    return GetElapsed() > self->m_threshold;
+    return CWorld::GetFrame() > self->m_threshold;
 }

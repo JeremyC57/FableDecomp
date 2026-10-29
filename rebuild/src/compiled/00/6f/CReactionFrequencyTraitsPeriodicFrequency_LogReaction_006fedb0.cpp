@@ -4,12 +4,12 @@
 class CThingAICreature;
 
 
-extern "C" int __fastcall Helper_LR(CReactionFrequencyTraits_PeriodicFrequency* traits);
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 void __fastcall LogReaction(CReactionFrequencyTraits_PeriodicFrequency* traits,
                             int edx_pad,
                             const CThingAICreature& creature, bool flag)
 {
     if (flag)
-        traits->LastHappenedFrame = Helper_LR(traits);
+        traits->LastHappenedFrame = CWorld::GetFrame();
 }

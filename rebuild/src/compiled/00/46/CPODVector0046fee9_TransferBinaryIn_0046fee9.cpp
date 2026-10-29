@@ -13,12 +13,12 @@
 //   `if (bytes > 0)` Read(data, bytes) with the `size <= remaining` test and the intrinsic memcpy; `this` is spilled
 //   to [ebp-4] across the first read. Size-optimised TU: #pragma optimize("s", on) (ebp frame, `leave`).
 #pragma optimize("s", on)
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
 
 struct CDataInputStreamReader : CDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

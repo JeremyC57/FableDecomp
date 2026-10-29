@@ -2,7 +2,7 @@
 // Leaf: FinalConstructSubtitles
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059D0B8, length 249 bytes, `ret 8`. Frame-pointer size TU: optimize("y",off) +
 // ("s",on). FableWin.pdb ?FinalConstructSubtitles@CTCInventoryTrade@@AAEXPAVCComponent@NUISystem@@AAV?$map@...@std@@@Z.
-// Callees: NUISystem::CFrontEndManager::GetInstance() @ 0x0041E5F2 (first), map<CComponent*, pair<CWideString,long> >::find
+// Callees: NUISystem::CManager::GetInstance() @ 0x0041E5F2 (first), map<CComponent*, pair<CWideString,long> >::find
 // @ 0x005B1A8D, CWideString() @ 0x0099AED0 / operator= @ 0x0099B7D0 / operator+= @ 0x0099B8D0 / ~ @ 0x0099B510, GetXString()
 // @ 0x005CC772, IntToWideString(long) @ 0x00405F00, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0 ("UI_ONE_OFF_SUBTITLE" @
 // 0x0124E72C), CManager::CreateComponent(const CCharString&, bool) @ 0x0041DB1D, CCountedPointer<CComponent>(CComponent*) @
@@ -96,9 +96,7 @@ class CComponent { public:
 };
 class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 struct SSubtitleNode {                                  // STLport _Rb_tree_node<pair<CComponent* const, pair<CWideString,long>>>
@@ -134,7 +132,7 @@ struct CTCInventoryTrade {
 };
 void CTCInventoryTrade::FinalConstructSubtitles(NUISystem::CComponent* component, CSubtitleMap& subtitles)
 {
-    NUISystem::CFrontEndManager* manager = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
     SSubtitleNode* found = subtitles.find(component);
     NUISystem::CComponent* owner = component;
     CWideString text;

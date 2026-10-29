@@ -9,6 +9,7 @@
 // Shape: the CByteArray / inline Read / ReadLong models of the landed ReadZlibCompressed 0x00996230; the short count
 //   comes from an inline ReadShort() widened with movsx; the decompressed length starts as `size` and the assertion
 //   fires unless it came out as size - 3.
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStream_Methods   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
@@ -26,7 +27,6 @@ struct CByteArray {
 };
 
 struct CDataInputStream_Methods : CDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

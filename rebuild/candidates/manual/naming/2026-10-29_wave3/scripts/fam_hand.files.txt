@@ -1,0 +1,3 @@
+rebuild/src/compiled/00/97/CAIStateGroupBase_AIActionWaitForMessage_0097d360.cpp
+rebuild/src/compiled/00/73/CTCDoor_UpdateOpenStatusTriggerTypePerson_00730f90.cpp
+rebuild/tests/00/80/CTCTargetingPlayer_SetAsPickUpNewLockTarget_008023a0_test.cpp

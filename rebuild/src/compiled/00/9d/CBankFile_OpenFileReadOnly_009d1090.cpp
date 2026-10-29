@@ -1,7 +1,7 @@
 // CBankFile::OpenFileReadOnly(const CWideString& filename, unsigned long flags) -- reset the open state, then (if the file exists) open it read-only on a new CDiskFileWin32, remember the name and read the bank header; failure closes the bank
 // Leaf: ?OpenFileReadOnly@CBankFile@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009D1090, length 204 bytes (+4 int3), virtual, ret 8, returns bool.
-// Callees: PathExists(const CWideString&) @ 0x00999230 (__fastcall), operator new @ 0x00BFEA1A, CBase::CBase @ 0x0099A2F0,
+// Callees: PathExists(const CWideString&) @ 0x00999230 (__fastcall), operator new @ 0x00BFEA1A, CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0,
 // CWideString::CWideString() @ 0x0099AED0, CCountedPointer<CDiskFileWin32>::Reset(CDiskFileWin32*) @ 0x009D1EE0 (catalog
 // "CCountedPointer<CIPhysicsFacesSegmentBase const>::Reset", a byte-twin), the file's virtual slot 1 (+0x04, Open(name,
 // read 1, flags 4)), CWideString::operator= @ 0x0099B7D0, CBankFile::ReadFileInformation(bool) @ 0x009D0880, CBankFile::Close
@@ -13,9 +13,10 @@
 // Filename +0x84, RetailMode +0x8c, ReadOnly +0x8d, WrittenToFile +0x8e, Solid +0x8f, ChangeCount +0x90, FileValid +0x94,
 // UpdatingFlag +0x95.
 void* __cdecl operator new(unsigned int size);     // 0x00BFEA1A
-struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 class CWideString { public:
     void* PStringData;
@@ -26,7 +27,7 @@ class CAFile {
 public:
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
 };   // 0x00999230
-class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c

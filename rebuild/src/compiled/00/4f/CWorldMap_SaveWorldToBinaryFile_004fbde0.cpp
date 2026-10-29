@@ -8,7 +8,7 @@
 //   CMapInfo::SaveBinary 0x004FB3E0, CRegion::SaveBinary 0x006BBFD0, CDiskFileWin32(const CWideString&,
 //   FileAccessType, unsigned long) 0x0099AD80, CDiskFileWin32::Write 0x0099AA90, CMemoryDataOutputStream::GetSize
 //   0x00994B40 / PeekData 0x00995E70; the inlined ~CDiskFileWin32 (vtable 0x0122D06C, Close 0x0099A920, ~CWideString
-//   0x0099B510, ~CBase 0x0099A300) -- the stream/file model of the landed NAnimationEvents::CManager::SaveBinary
+//   0x0099B510, ~CBaseClassNonCopyable 0x0099A300) -- the stream/file model of the landed NAnimationEvents::CManager::SaveBinary
 //   0x006F92A0.
 // Layout: retail CWorldMap keeps Maps (CArray<CMapInfo>, 0x48-byte entries) at +0x20 and Regions (vector<CRegion>,
 //   0x58-byte entries) at +0x2c, 4 bytes below rebuild/include/engine/CWorldMap.h (the landed
@@ -17,14 +17,13 @@ class CWideString { public:
     void* PStringData;                              // +0x00
     ~CWideString();                                 // 0x0099B510
 };
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                       // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-class CDiskFileWin32 : public CBase { public:                     // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                     // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                           // 0x0099A920 (slot 2)
     long        AccessType;                         // +0x04

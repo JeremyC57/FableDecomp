@@ -2,7 +2,7 @@
 // Leaf: ??0CEnginePrimitiveManagerParticleDecalGroup
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BB6E00, length 1841 bytes (`ret 4`, no EH frame).
 // Callees: CEnginePrimitiveManager ctor @ 0x00BACDB0, CVertexShader() @ 0x00A62FB0 (eh-free array loops), CPixelShader() @ 0x00A5EC00,
-//   CBase() @ 0x0099A2F0, CIndexBuffer() @ 0x00AC1EC0, RegisterEnable @ 0x00BACD80, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0,
+//   CBaseClassNonCopyable() @ 0x0099A2F0, CIndexBuffer() @ 0x00AC1EC0, RegisterEnable @ 0x00BACD80, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0,
 //   CShaderResource::GetVertexShader @ 0x00A5D5F0 / GetPixelShader @ 0x00A5D720. Vtable 0x012A5998.
 // Layout: engine/CEnginePrimitiveManagerParticleDecalGroup.h offsets hold (0x124 bytes) but its members are opaque byte arrays;
 //   the class is restated locally with the real shader / buffer types (models as the landed 0x00BABB50 / 0x00BAD040).
@@ -77,9 +77,10 @@ struct CEngineData {
 };
 extern CEngineData* g_pEngineData;                 // 0x01436E98
 struct CEngineSceneArray;
-struct CBase {
-    virtual void VSlot0();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 struct IDirect3DVertexBuffer9;
 class CVertexCompressionParams { public:
@@ -89,7 +90,7 @@ class CVertexCompressionParams { public:
         : PosScaleX(1.0f), PosScaleY(1.0f), PosScaleZ(1.0f), PosScaleW(1.0f),
           PosBiasX(0.0f), PosBiasY(0.0f), PosBiasZ(0.0f), PosBiasW(0.0f) { }
 };
-struct CVertexBufferBase : CBase {                 // 0x34 bytes
+struct CVertexBufferBase : CBaseClassNonCopyable {                 // 0x34 bytes
     IDirect3DVertexBuffer9*  PVertexBuffer;        // +0x04
     unsigned long            Length;               // +0x08
     long                     Type;                 // +0x0c

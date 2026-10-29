@@ -8,6 +8,7 @@
 // through an inline predicate, chunk memcpy, `+=` bookkeeping); the colour local is zeroed byte by byte by its default
 // constructor (one zero register, ebx, which then serves the range check) and returned through CRGBColour's user copy
 // constructor, which copies R, G, B, A in that order (stores +2, +1, +0, +3; the D3DCOLOR layout is B, G, R, A).
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 extern "C" void* __cdecl memcpy(void* dest, const void* src, unsigned int bytes);
 #pragma intrinsic(memcpy)
@@ -19,7 +20,6 @@ class CRGBColour { public:                                // D3DCOLOR byte order
 };
 
 struct CDataInputStreamReader : CDataInputStream {   // the engine layout plus the retail member functions
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {

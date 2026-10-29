@@ -1,7 +1,7 @@
 // NInventory::CTCInventoryTrade::AddWantedItemToList(long defIndex, NUISystem::CList* list, NUISystem::CViewport* viewport) -- builds a menu entry for a wanted item, wires its five actions and adds it to the list
 // Leaf: AddWantedItemToList@CTCInventoryTrade
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059CB90, 953 bytes, `ret 0Ch`. Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2, CManager::CreateMenuEntryComponent 0x00428494, CCountedPointer<CComponent>
+// Callees: CManager::GetInstance 0x0041E5F2, CManager::CreateMenuEntryComponent 0x00428494, CCountedPointer<CComponent>
 //   Reset 0x00429C6F / dtor 0x004291DE, CPlayerManager::GetMainPlayer 0x00449960 + GetPControlledCreature 0x00487DC0 (result unused),
 //   CWideString 0x0099B6B0 / ~ 0x0099B510, CCharString 0x0099EBF0 / ~ 0x0099EAE0, operator new 0x00BFEA1A, CAction 0x0042BE50,
 //   CCountedPointer<CAction> 0x0042AA29 / ~ 0x00429160, param-list push_back 0x0042B646 (same-TU noinline stand-in),
@@ -149,9 +149,7 @@ class CList { public:
 class CManager { public:
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString button);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 using namespace NUISystem;
@@ -161,7 +159,7 @@ struct CTCInventoryTrade {
 };
 void CTCInventoryTrade::AddWantedItemToList(long defIndex, CList* list, CViewport* viewport)
 {
-    CFrontEndManager* fe = CFrontEndManager::GetInstance();
+    CManager* fe = CManager::GetInstance();
     CCountedPointer<CComponent> entry;
     g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
     entry.Reset(fe->CreateMenuEntryComponent(L"INVALID NAME", 0.0f, 1.0f, "UI_WEAPON_MENU_ENTRY_TEMPLATE_NEW",

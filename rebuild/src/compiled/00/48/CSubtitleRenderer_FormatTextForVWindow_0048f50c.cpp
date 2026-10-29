@@ -40,11 +40,11 @@ void __fastcall WordWrap_SetOption(long option, long value); // 0x00A0FDB0
 void __fastcall WordWrap_SetCallback(unsigned int (__fastcall* charWidth)(wchar),
                                      unsigned int (__fastcall* lineHeight)());   // 0x00A0FD90
 
-struct CBase_0099a2d0 {
-    virtual void v00();
-    ~CBase_0099a2d0();                                       // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
 };
-struct CWStringParser : CBase_0099a2d0 {
+struct CWStringParser : CBaseClass {
     wchar*        String;                                    // +0x04
     unsigned long StringPos;                                 // +0x08
     unsigned long Line;                                      // +0x0C

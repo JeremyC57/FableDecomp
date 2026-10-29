@@ -1,7 +1,7 @@
 // C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphParameter&) -- CBase(), vtable, an empty shared-data pointer assigned from the source's, the source's current value, no owning morph
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A44D80, length 104 bytes.
 // Leaf: ??0C3DSkeletalMorphParameter
-// Callees: 0x0099A2F0 CBase::CBase, the counted block's destroy thunk (`call [info+4]`) and 0x00BFE9BC
+// Callees: 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable, the counted block's destroy thunk (`call [info+4]`) and 0x00BFE9BC
 // operator delete (the assignment's release path, unreachable after the zeroing but still emitted).
 // Vtable 0x0129D490 = C3DSkeletalMorphParameter (rtti-vtables.tsv).
 // Layout (PDB, 20 bytes): CurrentValue +4, SkeletalMorph +8, SharedData +0xc (CCountedPointer<CShared>:
@@ -41,23 +41,23 @@ template<class T> class CCountedPointer { public:
     }
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                             // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                             // 0x0099A2F0
 };
 
 class C3DSkeletalMorph;
-class C3DSkeletalMorphParameter : public CBase { public:
+class C3DSkeletalMorphParameter : public CBaseClassNonCopyable { public:
     class CShared;
     float                     CurrentValue;              // +0x04
     C3DSkeletalMorph*         SkeletalMorph;             // +0x08
     CCountedPointer<CShared>  SharedData;                // +0x0c   sizeof == 0x14
-    virtual void v00();                                  // own vtable 0x0129D490
     C3DSkeletalMorphParameter(const C3DSkeletalMorphParameter& other);
 };
 
 C3DSkeletalMorphParameter::C3DSkeletalMorphParameter(const C3DSkeletalMorphParameter& other)
-    : CBase()
+    : CBaseClassNonCopyable()
 {
     SharedData = other.SharedData;
     CurrentValue = other.CurrentValue;

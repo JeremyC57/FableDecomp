@@ -3,13 +3,13 @@ struct CTCShotDefinitionBase {
     int TimeToDie;   // +0x60
 };
 
-extern "C" int __cdecl GetCurrentGameTime(void);
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 int __fastcall IsToDie(CTCShotDefinitionBase *self)
 {
     int t = self->TimeToDie;
     if (t > 0) {
-        if (GetCurrentGameTime() > self->TimeToDie)
+        if (CWorld::GetFrame() > self->TimeToDie)
             return 1;
     }
     return 0;

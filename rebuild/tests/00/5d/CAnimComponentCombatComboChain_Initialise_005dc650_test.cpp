@@ -10,7 +10,7 @@ static int fails = 0;
 // Callees: this's virtual slot 8 (+0x20, the component reset), CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0 ("" and ","), CStringParser::CStringParser @ 0x00404720 (landed), CCharString::~CCharString @ 0x0099EAE0,
 // TransferIn(CPersistContext*, CStringParser*, long*) @ 0x009E2590 (__fastcall), CStringParser::SkipPastNextItemIfIs(const CCharString&)
-// @ 0x009B9E00, std::list<CStringParserCommentBoundaries>::~list @ 0x004046B0 (landed), CBase::~CBase @ 0x0099A2E0.
+// @ 0x009B9E00, std::list<CStringParserCommentBoundaries>::~list @ 0x004046B0 (landed), CBaseClass::~CBaseClass @ 0x0099A2E0.
 // Shape: the landed sibling CAnimComponentFlags::Initialise (0x005DC3C0) parser and inline parse helper. The first value is
 // homed in the dead context-argument slot (context itself stays in edi), the "," string and the second value in the
 // dead text slot: the "," string is a NAMED local in its own block around the skip call (a bare temporary takes the
@@ -25,9 +25,9 @@ class CCharString { public:
     ~CCharString();                             // 0x0099EAE0
 };
 
-struct CBase {
-    virtual void v00();
-    ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 
 struct CStringParserCommentList {               // retail std::list<CStringParserCommentBoundaries>: sentinel only
@@ -35,7 +35,7 @@ struct CStringParserCommentList {               // retail std::list<CStringParse
     ~CStringParserCommentList();                // 0x004046B0
 };
 
-class CStringParser : public CBase { public:                  // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                  // retail 0x28 bytes
     char* String;                               // +0x04
     unsigned long BaseLineOffset;               // +0x08
     CCharString Filename;                       // +0x0c
@@ -103,8 +103,7 @@ static long g_values[4]; static int g_nextValue = 0; static bool g_hasComma = fa
 static CPersistContext* g_ctx = 0;
 CCharString::CCharString(const char* text, long length) { ++g_strCtor; m_pData = (void*)text; CHECK(length == -1); }
 CCharString::~CCharString() { ++g_strDtor; }
-void CBase::v00() { }
-CBase::~CBase() { }
+CBaseClass::~CBaseClass() { }
 CStringParserCommentList::~CStringParserCommentList() { }
 CStringParser::CStringParser(const CCharString& text, void (*cb)(CCharString*), const CCharString& filename, long baseLineOffset)
     : Filename(0, -1), TempCharString(0, -1)

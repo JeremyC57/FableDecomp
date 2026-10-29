@@ -6,7 +6,7 @@
 //   a virtual called from a constructor/destructor binds statically), it reads one long at +0x130 (the last member of
 //   CComponent, DefIndex, PDB +0x158) and Ego_r.pdb has `?LoadAndReturnDef@CComponent@NUISystem@@UBE?AV?$CDefPointer@
 //   $$CBVCUIDef@NUISystem@@@@XZ` (virtual, const, no arguments, def pointer by value).
-// Callees: CFrontEndManager::GetInstance() @ 0x0041E5F2 (definition-manager override at +0x64), CGameDefinitionManager::Get()
+// Callees: NUISystem::CManager::GetInstance() @ 0x0041E5F2 (definition-manager override at +0x64), CGameDefinitionManager::Get()
 //   @ 0x0044C6B0, CDefinitionManager::GetDef<T>(long, CDefPointer<T>*) @ 0x0042AEDA, the def's virtual slot 1 (release).
 // Layout: retail CComponent DefIndex +0x130 (Ego_r.pdb +0x158: the 16-byte PDB vectors/containers before it are 12 bytes
 //   in retail); no engine header for CComponent exists.
@@ -42,11 +42,11 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long glo
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     unsigned char _pad[0x64];
     CDefinitionManager* m_pDefinitionManager;    // +0x64
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 namespace NUISystem {
 class CUIDef : public CDefBase { public:};
 class CComponent { public:
@@ -57,7 +57,7 @@ class CComponent { public:
 CDefPointer<const CUIDef> CComponent::LoadAndReturnDef() const
 {
     CDefPointer<const CUIDef> def;
-    CFrontEndManager* frontEnd = CFrontEndManager::GetInstance();
+    NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     if (frontEnd->m_pDefinitionManager)
         frontEnd->m_pDefinitionManager->GetDef(DefIndex, &def);
     else

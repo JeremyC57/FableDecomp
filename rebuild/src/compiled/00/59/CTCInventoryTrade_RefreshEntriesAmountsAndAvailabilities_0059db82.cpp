@@ -47,9 +47,7 @@ struct CComponentPointer {                      // CCountedPointer<NUISystem::CC
 };
 class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 struct SChildPointer {                          // CCountedPointer<NUISystem::CComponent>
     CComponent* m_pObject;
@@ -159,7 +157,7 @@ std::pair<unsigned long, unsigned long> CTCInventoryTrade::RefreshEntriesAmounts
     if (hasList && result.first != 0) {
         if (!component->FindChild("UI_SELECTION_ARROW_RIGHT")) {
             component->ShowArrow();
-            NUISystem::CComponentPointer arrow(NUISystem::CFrontEndManager::GetInstance()->CreateComponent("UI_SELECTION_ARROW_RIGHT", false));
+            NUISystem::CComponentPointer arrow(NUISystem::CManager::GetInstance()->CreateComponent("UI_SELECTION_ARROW_RIGHT", false));
             component->AddChildAtFront(arrow);
         }
     } else if (component->FindChild("UI_SELECTION_ARROW_RIGHT")) {

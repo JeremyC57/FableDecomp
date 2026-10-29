@@ -16,7 +16,7 @@ static int fails = 0;
 // NUISystem::CMovie::Draw(CIEngine& engine, CEnginePrimitiveHandle* primitives, long layer, long* count, CComponent* drawer) -- while this is the playing movie in state 3: when visible, size the box from the video (or the component size) times the scale, centre it if asked, pick the front-end layer, wait up to 100 ms for a decoded frame, copy it into the movie texture under the video lock and add a 2D sprite (indexed when the caller passes a handle array and count); when invisible, clear the handle and notify the owner; otherwise just clear the handle
 // Leaf: ?Draw@CMovie
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00547F60, 875 bytes (`ret 14h`). Vtable slot 2.
-// Callees: C2DBoxF::Move 0x0041A810, CFrontEndManager::GetInstance 0x0041E5F2 (`__fastcall`) and its slot 36 GetLayer,
+// Callees: C2DBoxF::Move 0x0041A810, CManager::GetInstance 0x0041E5F2 (`__fastcall`) and its slot 36 GetLayer,
 //   WaitForSingleObjectEx / EnterCriticalSection / LeaveCriticalSection (IAT 0x0143FE08 / 0x0143FE0C / 0x0143FE10),
 //   CTexture::CopyFromTexture 0x009FA4E0, CEnginePrimitive2DSprite ctor 0x0041BF60, the engine's slots 23 (+0x5C) and 28 (+0x70),
 //   own slots 101 / 104 and the owner's slot 91.
@@ -143,9 +143,9 @@ extern CVideoSys* g_pVideoSys;                     // 0x013B8ABC
 extern CTexture*  g_pMovieTexture;                 // 0x013B8AC0
 
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -349,9 +349,9 @@ void CMovie::Draw(CIEngine& engine, CEnginePrimitiveHandle* primitives, long lay
             bool layerIndependent = IsLayerIndependent();
             long renderLayer;
             if (!independent && !layerIndependent)
-                renderLayer = CFrontEndManager::GetInstance()->GetLayer(Layer + layer);
+                renderLayer = CManager::GetInstance()->GetLayer(Layer + layer);
             else
-                renderLayer = CFrontEndManager::GetInstance()->GetLayer(Layer);
+                renderLayer = CManager::GetInstance()->GetLayer(Layer);
             if (WaitForSingleObjectEx(g_pVideoSys->FrameReadyEvent, 100, 1) != 0)
                 return;
             if (!g_pMovieTexture)
@@ -405,42 +405,42 @@ void CIEngine::v024() {}
 void CIEngine::v025() {}
 void CIEngine::v026() {}
 void CIEngine::v027() {}
-void NUISystem::CFrontEndManager::v000() {}
-void NUISystem::CFrontEndManager::v001() {}
-void NUISystem::CFrontEndManager::v002() {}
-void NUISystem::CFrontEndManager::v003() {}
-void NUISystem::CFrontEndManager::v004() {}
-void NUISystem::CFrontEndManager::v005() {}
-void NUISystem::CFrontEndManager::v006() {}
-void NUISystem::CFrontEndManager::v007() {}
-void NUISystem::CFrontEndManager::v008() {}
-void NUISystem::CFrontEndManager::v009() {}
-void NUISystem::CFrontEndManager::v010() {}
-void NUISystem::CFrontEndManager::v011() {}
-void NUISystem::CFrontEndManager::v012() {}
-void NUISystem::CFrontEndManager::v013() {}
-void NUISystem::CFrontEndManager::v014() {}
-void NUISystem::CFrontEndManager::v015() {}
-void NUISystem::CFrontEndManager::v016() {}
-void NUISystem::CFrontEndManager::v017() {}
-void NUISystem::CFrontEndManager::v018() {}
-void NUISystem::CFrontEndManager::v019() {}
-void NUISystem::CFrontEndManager::v020() {}
-void NUISystem::CFrontEndManager::v021() {}
-void NUISystem::CFrontEndManager::v022() {}
-void NUISystem::CFrontEndManager::v023() {}
-void NUISystem::CFrontEndManager::v024() {}
-void NUISystem::CFrontEndManager::v025() {}
-void NUISystem::CFrontEndManager::v026() {}
-void NUISystem::CFrontEndManager::v027() {}
-void NUISystem::CFrontEndManager::v028() {}
-void NUISystem::CFrontEndManager::v029() {}
-void NUISystem::CFrontEndManager::v030() {}
-void NUISystem::CFrontEndManager::v031() {}
-void NUISystem::CFrontEndManager::v032() {}
-void NUISystem::CFrontEndManager::v033() {}
-void NUISystem::CFrontEndManager::v034() {}
-void NUISystem::CFrontEndManager::v035() {}
+void NUISystem::CManager::v000() {}
+void NUISystem::CManager::v001() {}
+void NUISystem::CManager::v002() {}
+void NUISystem::CManager::v003() {}
+void NUISystem::CManager::v004() {}
+void NUISystem::CManager::v005() {}
+void NUISystem::CManager::v006() {}
+void NUISystem::CManager::v007() {}
+void NUISystem::CManager::v008() {}
+void NUISystem::CManager::v009() {}
+void NUISystem::CManager::v010() {}
+void NUISystem::CManager::v011() {}
+void NUISystem::CManager::v012() {}
+void NUISystem::CManager::v013() {}
+void NUISystem::CManager::v014() {}
+void NUISystem::CManager::v015() {}
+void NUISystem::CManager::v016() {}
+void NUISystem::CManager::v017() {}
+void NUISystem::CManager::v018() {}
+void NUISystem::CManager::v019() {}
+void NUISystem::CManager::v020() {}
+void NUISystem::CManager::v021() {}
+void NUISystem::CManager::v022() {}
+void NUISystem::CManager::v023() {}
+void NUISystem::CManager::v024() {}
+void NUISystem::CManager::v025() {}
+void NUISystem::CManager::v026() {}
+void NUISystem::CManager::v027() {}
+void NUISystem::CManager::v028() {}
+void NUISystem::CManager::v029() {}
+void NUISystem::CManager::v030() {}
+void NUISystem::CManager::v031() {}
+void NUISystem::CManager::v032() {}
+void NUISystem::CManager::v033() {}
+void NUISystem::CManager::v034() {}
+void NUISystem::CManager::v035() {}
 void NUISystem::CComponent::v000() {}
 void NUISystem::CComponent::v001() {}
 void NUISystem::CComponent::v003() {}
@@ -548,7 +548,7 @@ void CEnginePrimitiveHandle::v000() {}
 
 void CEnginePersistentPrimitiveBase::Destroy() {}
 void CEnginePersistentPrimitiveBase::OnLastHandleReleased(CEnginePrimitiveHandle*) {}
-long NUISystem::CFrontEndManager::GetLayer(long) { return 0; }
+long NUISystem::CManager::GetLayer(long) { return 0; }
 void CIEngine::AddPrimitive(CEnginePrimitiveHandle*, const CEnginePrimitive2DSprite&, long) {}
 void CIEngine::AddPrimitiveAt(CEnginePrimitiveHandle*, long, const CEnginePrimitive2DSprite&, long) {}
 static int g_waitResult = 0;
@@ -578,9 +578,9 @@ struct TestEngine : CIEngine {
     void AddPrimitive(CEnginePrimitiveHandle* h, const CEnginePrimitive2DSprite& p, long f) { ++addCalls; handle = h; flags = f; sprite = &p; }
     void AddPrimitiveAt(CEnginePrimitiveHandle* h, long i, const CEnginePrimitive2DSprite& p, long f) { ++addAtCalls; handle = h; index = i; flags = f; sprite = &p; }
 };
-struct TestFEM : NUISystem::CFrontEndManager { long GetLayer(long depth) { return depth * 10 + 7; } };
+struct TestFEM : NUISystem::CManager { long GetLayer(long depth) { return depth * 10 + 7; } };
 static TestFEM g_fem;
-NUISystem::CFrontEndManager* __fastcall NUISystem::CFrontEndManager::GetInstance() { return &g_fem; }
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return &g_fem; }
 struct TestPrim : CEnginePersistentPrimitiveBase {
     int destroyed, lastReleased; TestPrim() : destroyed(0), lastReleased(0) { RefCount = 1; }
     void Destroy() { ++destroyed; }

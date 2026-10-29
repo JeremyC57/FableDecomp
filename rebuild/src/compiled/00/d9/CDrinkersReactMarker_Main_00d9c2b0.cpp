@@ -11,14 +11,15 @@ struct CThingNative;class C3DVector{ public:float X,Y,Z;};
 // Restored genuine virtual ABI for by-value CScriptThing; all79 native slots named.
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
-struct CBaseClassNative{CBaseClassNative(){}virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
+class CBaseClass {
+public: CBaseClass(){}virtual ~CBaseClass();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
 class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
-struct ScriptMethods:CBaseClassNative{
+struct ScriptMethods:CBaseClass{
  CountedScriptImp PImp;
  ScriptMethods(){}
- __forceinline ScriptMethods(const CScriptThing& other):CBaseClassNative(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
- ScriptMethods(const ScriptMethods& other):CBaseClassNative(),PImp(other.PImp){}
+ __forceinline ScriptMethods(const CScriptThing& other):CBaseClass(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
+ ScriptMethods(const ScriptMethods& other):CBaseClass(),PImp(other.PImp){}
  virtual ~ScriptMethods(){} //native inline vptr reset, counted release, CBaseClass dtor99A2E0
 virtual const CCharString& GetName() const; //slot1 0x004AA8B0
 virtual CCharString GetDefName() const; //slot2 0x004AA8D0
@@ -113,7 +114,7 @@ struct ImplicitCharString:CCharString {ImplicitCharString(const char* text):CCha
 FABLE_STATIC_ASSERT(sizeof(ImplicitCharString)==sizeof(CCharString));
 // Slot72 actual signature is const CCharString&; field-free derived const-reference
 // projection restores implicit conversion through genuine ctor99EBF0(text,-1).
-struct GameMethods:CBaseClassNative{
+struct GameMethods:CBaseClass{
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20
 virtual void Validate(void) const; //slot3 0x006e72a0

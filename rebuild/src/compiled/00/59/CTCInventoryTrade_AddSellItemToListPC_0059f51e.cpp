@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0059F51E, 1504 bytes, `ret 18h`, bool in al.
 //   FableWin.pdb ?AddSellItemToListPC@CTCInventoryTrade@@QAE_NPAVCComponent@NUISystem@@JJPAVCList@3@PAVCViewport@3@_N@Z (the catalog
 //   label "AddSellItemToList" is propagated from 0x0059ED42). Frame-pointer size TU: optimize("y",off) + ("s",on).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2, CTCInventoryBase::GetTradingThing 0x005BC4C4 (catalog
+// Callees: CManager::GetInstance 0x0041E5F2, CTCInventoryBase::GetTradingThing 0x005BC4C4 (catalog
 //   "CWorld::DrawGetEnvironment" is propagated), std::bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (the inline
 //   GetInterface, type 0x53 = CTCShop), CTCShop::HasDefaultStockItem(long) 0x007723D0 (catalog "_atexit" is propagated; it is
 //   `FindDefaultStockItem(def) != 0`, 0x00772250), CManager::CreateMenuEntryComponent 0x00428494, CCountedPointer<CComponent>
@@ -186,9 +186,7 @@ class CList { public:
 class CManager { public:
     CComponent* CreateMenuEntryComponent(const CWideString& text, float a, float b, const CCharString& definition,
                                          float c, CCharString d, float e, CCharString button);   // 0x00428494
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 using namespace NUISystem;
@@ -223,7 +221,7 @@ class CTCInventoryTrade { public:
 bool CTCInventoryTrade::AddSellItemToListPC(CComponent* owner, long defIndex, long count, CList* list, CViewport* viewport, bool addToTop)
 {
     bool isBranch = true;
-    CFrontEndManager* fe = CFrontEndManager::GetInstance();
+    CManager* fe = CManager::GetInstance();
     CCountedPointer<CComponent> entry;
     CTCShop* shop = 0;
     GetTradingThing()->GetInterface(&shop, 0x53);

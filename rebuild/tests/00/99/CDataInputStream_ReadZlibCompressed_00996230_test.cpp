@@ -1,4 +1,5 @@
 #include <cstdio>
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStream_Methods   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
@@ -27,7 +28,6 @@ struct CByteArray {                                          // retail vector<un
 };
 
 struct CDataInputStream_Methods : CDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
     {
@@ -70,7 +70,7 @@ static int g_fail = 0;
 static void check(bool c, const char* w) { if (!c) { printf("FAIL %s\n", w); g_fail = 1; } }
 static int g_overflows = 0, g_asserts = 0, g_inits = 0, g_dtors = 0, g_frees = 0;
 static unsigned char g_overflowData[64];
-void CDataInputStream_Methods::ReadWithSrcChunkOverflow(unsigned char* buffer, long size)
+void CDataInputStream::ReadWithSrcChunkOverflow(unsigned char* buffer, long size)
 {
     ++g_overflows; memcpy(buffer, g_overflowData, size); StreamPos += size;
 }

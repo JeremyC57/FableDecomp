@@ -3,7 +3,7 @@
 // Retail 0x00E63730, 352 bytes. Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, the script
 // interface's GetThingWithScriptName (slot 72, +0x120, CScriptThing by hidden pointer), IsDistanceBetweenThingsUnder
 // 0x00CBE2FF (__fastcall, distance 1.0f pushed before the nested call), the CScriptThing temporary's inline destructor
-// (vtable 0x01238C8C, counted pimpl release + operator delete 0x00BFE9BC, CBase::~CBase 0x0099A2E0), IsDone 0x00F35B30.
+// (vtable 0x01238C8C, counted pimpl release + operator delete 0x00BFE9BC, CBaseClass::~CBaseClass 0x0099A2E0), IsDone 0x00F35B30.
 // Layout: Ego_r.pdb CSpectator (the CV_ChickenKickingScript one, 0x20 bytes): CEntityScriptBase {vptr, Game +4,
 // CScriptThing Me +8}, ParentClass +0x14, PMasterData +0x18, SpectatorNumber +0x1C. Model as the landed CKG_Sheriff::Init
 // 0x00D1DFF0. Strings: "Spectator1" 0x012E7450, "Spectator2" 0x012E7418.
@@ -17,9 +17,9 @@ class CCharString { public:
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
 struct SCountBlock {
     long  m_references;                            // +0
@@ -43,7 +43,7 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
     __forceinline ~CScriptThing() {}
 };

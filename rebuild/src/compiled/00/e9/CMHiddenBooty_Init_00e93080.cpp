@@ -6,7 +6,7 @@
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, the script interface (+4) virtual slots 72 (+0x120,
 // GetThingWithScriptName @ 0x008A7D60) and 578 (+0x908, SetDiggingSpotAsHidden(const CScriptThing&, bool) @ 0x0089F2A0),
 // the CScriptThing temporary's inline destructor (vtable 0x01238C8C, counted pimpl release: destroy + operator delete
-// @ 0x00BFE9BC, CBase::~CBase @ 0x0099A2E0), CCharString::~CCharString @ 0x0099EAE0.
+// @ 0x00BFE9BC, CBaseClass::~CBaseClass @ 0x0099A2E0), CCharString::~CCharString @ 0x0099EAE0.
 // Model: as the landed CGuardToHelpDefend::Init 0x00D1EAE0 (interface +4, the script's own thing +8); the three flags at
 // +0x1c..+0x1e are modelled descriptively. Shape: the zero register ebx serves the flag stores and the pimpl reset; the
 // trailing `true` is pushed before the nested lookup (right to left).
@@ -16,9 +16,9 @@ class CCharString { public:
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
 struct SCountBlock {
     long  m_references;                            // +0
@@ -42,9 +42,8 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
     CScriptThingPImp PImp;
-    virtual void v00();
     __forceinline ~CScriptThing() {}
 };
 class CGameScriptInterface { public:

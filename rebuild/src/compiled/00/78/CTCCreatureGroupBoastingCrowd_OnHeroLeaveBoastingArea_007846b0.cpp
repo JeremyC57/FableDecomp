@@ -57,6 +57,7 @@ class COpinionReactionManager { public:
 class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* POpinionReactionManager;        // +0x74
+    static long __fastcall GetFrame();   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 };
 class CTCHeroOpinionDeedLog { public:
     void RemoveDeed(long handle);                            // 0x006C5920
@@ -87,7 +88,6 @@ class CQuestManager { public:
 extern CQuestManager* g_pQuestManager;                       // 0x013B89FC
 extern long g_framesPerSecond;                               // 0x01375550
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
-struct CWorldFrame { static long __fastcall GetWorldFrame(); };     // 0x0049D870
 class CTCBase
 {
 public:
@@ -193,14 +193,14 @@ void CTCCreatureGroupBoastingCrowd::OnHeroLeaveBoastingArea()
     if (HeroBoasted) {
         long fps = g_framesPerSecond;
         float delay = (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * fps * 60.0f;
-        FrameToClearRemainingOpinionSources = (long)(CWorldFrame::GetWorldFrame() + delay);
+        FrameToClearRemainingOpinionSources = (long)(CWorld::GetFrame() + delay);
         EnterCrowdState(HeroMadeGoodBoast ? 7 : 8);
         return;
     }
     if (!g_pQuestManager->BoastsEmpty()) {
         long fps = g_framesPerSecond;
         float delay = (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * fps * 60.0f;
-        FrameToClearRemainingOpinionSources = (long)(CWorldFrame::GetWorldFrame() + delay);
+        FrameToClearRemainingOpinionSources = (long)(CWorld::GetFrame() + delay);
         EnterCrowdState(9);
     } else
         EnterCrowdState(0);

@@ -8,7 +8,7 @@
 // delete 0x00BFE9BC, C3DSkeletalMorphTarget() 0x00A44E60, CCountedPointer::Reset 0x006C3AC0 (manifest label
 // propagated from CCountedPointer<CIPhysicsFacesSegmentBase const>), PathExists 0x00999230,
 // CDiskFileWin32(path, 1, 2) 0x0099AD80 with the inlined dtor of the landed 0x006F92A0 (vtable 0x0122D06C, Close
-// 0x0099A920, ~CBase 0x0099A300), GFLoadSkeletalMorphTargetFromFile 0x0088B0C0 (__fastcall).
+// 0x0099A920, ~CBaseClassNonCopyable 0x0099A300), GFLoadSkeletalMorphTargetFromFile 0x0088B0C0 (__fastcall).
 // Layout: the resource manager's STLport map sits at +0x04 (header node +0, node key +0x10, value +0x14); the
 // counted pointer is {Data, Info}, Info = {RefCount, __fastcall deleter, object}.
 // Shape: the name is a const reference, so the full path CCharString is homed in its dead argument slot (and
@@ -37,13 +37,12 @@ public:
     static bool __fastcall PathExists(const CWideString&);   // 0x00999230
 };         // 0x00999110
                            // 0x00999230
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C, 0x1c bytes
-    virtual void v00();
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                          // 0x0099A920 (slot 2)
     long        AccessType;

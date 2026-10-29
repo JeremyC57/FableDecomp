@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00730F90, 292 bytes (+ int3 padding), plain `ret`.
 // Callees: C2DBox::ToInteger @ 0x00A55A30 (manifest "CEditWorldMap::GetPenArea" is propagated), CTCBase::GetThingSearchTools
 //   @ 0x00686D90, CThingSearchTools::GetPFirstThingInRoughArea<CFilter_Bind2<CThingFilter_InArea, CThingFilter_IsWithinZRange>,
-//   CThingCreatureBase> @ 0x007313B0, CTCBase::GetWorld const @ 0x00686A80, GFGetCurrentFrame @ 0x0049D870 (__fastcall),
+//   CThingCreatureBase> @ 0x007313B0, CTCBase::GetWorld const @ 0x00686A80, CWorld::GetFrame @ 0x0049D870 (static __fastcall),
 //   CTCDoor::Open(bool) @ 0x00730C00, CTCDoor::Close @ 0x00730DD0.
 // Globals: g_framesPerSecond @ 0x01375550.
 // Layout: engine/CTCDoor.h (retail offsets): CurrentOpen +0x10, OldOpen +0x11, LastCreatureFoundWF +0x14, PDef +0x20;
@@ -12,7 +12,6 @@
 //   filters are argument temporaries of the Bind2 filter; the out pointer lives in an inner block, so the else arm reuses
 //   its slot for the elapsed-frames temp; the world pointer is read before the frames-per-second copy.
 extern long g_framesPerSecond;                  // 0x01375550
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
 class C3DVector { public: float X, Y, Z; };
 class C2DVector { public:
     float X, Y;
@@ -53,7 +52,7 @@ class CThing { public:
     CTCPhysicsBase* PhysicsTC;                  // +0x60
 };
 class CWorld { public:
-    long GetFrame() const { return GFGetCurrentFrame(); }
+    static long __fastcall GetFrame();          // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 };
 class CDoorDef { public:
     unsigned char _pad00[0x2c];

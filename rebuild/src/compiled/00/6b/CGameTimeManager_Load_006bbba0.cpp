@@ -4,7 +4,7 @@
 //          CStringParser::CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long) @ 0x00404720,
 //          CCharString::~CCharString @ 0x0099EAE0, CPersistContext::CPersistContext(CStringParser*, void (*)(CCharString*),
 //          bool, CDefinitionManager*, CSymbolMap*, CCharString*) @ 0x009BADD0, CGameTimeManager::Load(CPersistContext&)
-//          @ 0x006BBAC0, std::list<CStringParserCommentBoundaries>::~list @ 0x004046B0, CBase::~CBase @ 0x0099A2E0.
+//          @ 0x006BBAC0, std::list<CStringParserCommentBoundaries>::~list @ 0x004046B0, CBaseClass::~CBaseClass @ 0x0099A2E0.
 // Shape: the CAnimComponentFlags::Initialise (0x005DC3C0) parser shape -- a 0x28-byte CStringParser local built over the
 // text with an explicit `CCharString("", -1)` temporary that dies after the declaration, then a 0x2c-byte persist
 // context with a trivial destructor (nothing runs for it); the parser's implicit destructor is inlined (comment list,
@@ -15,15 +15,15 @@ class CCharString { public:
     CCharString(const char* text, long length);    // 0x0099EBF0
     ~CCharString();                                // 0x0099EAE0
 };
-struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
 struct CStringParserCommentList {                  // retail std::list<CStringParserCommentBoundaries>: sentinel only
     void* m_pHead;
     ~CStringParserCommentList();                   // 0x004046B0
 };
-class CStringParser : public CBase { public:                     // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                     // retail 0x28 bytes
     char*                    String;               // +0x04
     unsigned long            BaseLineOffset;       // +0x08
     CCharString              Filename;             // +0x0c

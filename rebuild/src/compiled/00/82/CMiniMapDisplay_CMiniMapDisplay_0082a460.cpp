@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0082A460, length 150 bytes.
 // Label correction: catalogued as CHeroMorphDef::CHeroMorphDef, but the vtable stored is 0x01231768 =
 // CMiniMapDisplay (rtti-vtables.tsv) and the members fit Ego_r.pdb CMiniMapDisplay with retail sizes.
-// Callees: CBase::CBase @ 0x0099A2F0 (root vtable 0x0129A7C4), vector<CEnginePrimitiveHandle>::vector(size_type)
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (root vtable 0x0129A7C4), vector<CEnginePrimitiveHandle>::vector(size_type)
 // @ 0x00485D30 (labelled "map::operator[]"), malloc @ 0x00BFEA0E (the list's 0x18-byte sentinel node),
 // CRegionMinimap::CRegionMinimap @ 0x0066CCC0. Vtable 0x01231768.
 // Layout (retail: 12-byte vectors, a one-word list, a 0x64-byte CRegionMinimap): MapPrimitiveHandles +0x04,
@@ -15,9 +15,10 @@
 // colour is a CRGBColour(R, G, B, A) frame temporary (stored R, G, B, then A) copied as one word.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 struct CEnginePrimitiveHandleVector {              // vector<CEnginePrimitiveHandle>, built out of line with a count
     void* m_first; void* m_last; void* m_end;
@@ -75,7 +76,7 @@ struct CRegionMinimap {
 class CTexture;
 class CRegion;
 
-class CMiniMapDisplay : public CBase { public:
+class CMiniMapDisplay : public CBaseClassNonCopyable { public:
     CEnginePrimitiveHandleVector         MapPrimitiveHandles;      // +0x04
     CRetailVector<CEnginePrimitiveHandle> MarkerPrimitiveHandles;  // +0x10
     long                                 MiniMapGraphic;           // +0x1c
@@ -90,7 +91,6 @@ class CMiniMapDisplay : public CBase { public:
     CRegionMinimap                       RegionMinimap;            // +0x54
     CRegion*                             PRegion;                  // +0xb8
     bool                                 UpdateRequired;           // +0xbc
-    virtual void v00();
     CMiniMapDisplay();
 };
 

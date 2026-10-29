@@ -2,6 +2,7 @@
 // Retail 0x009964E0, 295 bytes. Read overflow 0x00993CA0; malloc 0x00BFEA0E, free 0x00BFEA14.
 // Production input layout supplies all state; output polymorphic slots follow CDataStream and 00994070 audit.
 // Leaf: ReadWithChunking
+#define FABLE_CDATAINPUTSTREAM_FRIEND struct CDataInputStreamReader   // reaches the private CDataInputStream::ReadWithSrcChunkOverflow (0x00993CA0)
 #include "engine/CDataInputStream.h"
 #define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
@@ -49,7 +50,6 @@ struct ByteVector : ByteVectorBase {
     unsigned char* data() { return size()>0 ? Start : (unsigned char*)this; }
 };
 struct CDataInputStreamReader : CDataInputStream {
-    void ReadWithSrcChunkOverflow(unsigned char*,long); // 00993CA0
     static __forceinline bool IsValidPosition(__int64 p) { return p>=0 && p<=0x7fffffff; }
     __forceinline void Read(void* dest,long n) {
         if(n>0) {

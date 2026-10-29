@@ -3,7 +3,6 @@
 #include <stdio.h>
 
 
-extern int __cdecl GetEngineTimeMs(void);
 extern float g_defaultNoControlMovementTime;
 extern int   g_noControlTimeDivisor;
 
@@ -13,7 +12,8 @@ float __fastcall CGameCameraManager_GetNoControlMovementTime(CGameCameraManager 
 float g_defaultNoControlMovementTime = -1.0f;
 int   g_noControlTimeDivisor = 1000;
 static int g_fakeNow = 5500;
-int __cdecl GetEngineTimeMs(void) { return g_fakeNow; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
+long __fastcall CWorld::GetFrame() { return g_fakeNow; }
 
 int main(void)
 {

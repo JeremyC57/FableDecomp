@@ -8,7 +8,7 @@ static int fails = 0;
 // NUISystem::CParticleEffect::Draw(long, long, long, long, long) -- keep the running emitter on the component: pick the front-end layer for its depth (offset by the draw depth unless the component is independent or suppressed) and move the emitter to its position, rescaled from the display to the virtual screen size when that override is on
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00543EE0, length 192 bytes (`ret 14h`). Virtual: slot 2 of
 // NUISystem::CParticleEffect's vtable 0x0124735C.
-// Callees: virtual slots 101 / 104 (bool queries), CFrontEndManager::GetInstance @ 0x0041E5F2 (x2) and its slot 36
+// Callees: virtual slots 101 / 104 (bool queries), CManager::GetInstance @ 0x0041E5F2 (x2) and its slot 36
 //          GetLayer, NParticleEngine::CParticleEmitter::Set2DPosition @ 0x00AED090.
 // Globals: the screen-size override flag 0x013B8768 with the override width/height 0x013B876C/0x013B8770 and
 //          the display width/height 0x01375CD4/0x01375CD8 (the getters @ 0x0041CC14/0x0041CC2B read the same).
@@ -54,9 +54,9 @@ public:
 };
 
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
-    static CFrontEndManager* __fastcall GetInstance();                                           // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                                           // 0x0041E5F2
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -256,7 +256,7 @@ public:
     {
         CRightHandedSet axes;
         Emitter = CParticleEmitterManager::Get()->Create2DEmitter(EffectIndex, &Position,
-                      CFrontEndManager::GetInstance()->GetLayer(Depth), true, &axes);
+                      CManager::GetInstance()->GetLayer(Depth), true, &axes);
     }
     virtual void Initialise();
     virtual void ChangeState(long state);
@@ -279,9 +279,9 @@ void CParticleEffect::Draw(long target, long a, long layerOffset, long c, long c
         bool suppressed = IsSuppressed_slot104();
         EEngine2DLayer layer;
         if (!independent && !suppressed)
-            layer = CFrontEndManager::GetInstance()->GetLayer(Depth + layerOffset);
+            layer = CManager::GetInstance()->GetLayer(Depth + layerOffset);
         else
-            layer = CFrontEndManager::GetInstance()->GetLayer(Depth);
+            layer = CManager::GetInstance()->GetLayer(Depth);
         C2DVector position = Position;
         position.X = ScaleScreenX(position.X);
         position.Y = ScaleScreenY(position.Y);
@@ -303,45 +303,45 @@ namespace NUISystem {
 bool  g_bScreenSizeOverride;
 float g_OverrideScreenWidth, g_OverrideScreenHeight, g_DisplayWidth, g_DisplayHeight;
 static int g_instCalls, g_layerCalls; static long g_layerDepth;
-static CFrontEndManager s_fem;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { ++g_instCalls; return &s_fem; }
-EEngine2DLayer CFrontEndManager::GetLayer(long depth) { ++g_layerCalls; g_layerDepth = depth; return (EEngine2DLayer)(1000 + depth); }
-void CFrontEndManager::v000() {}
-void CFrontEndManager::v001() {}
-void CFrontEndManager::v002() {}
-void CFrontEndManager::v003() {}
-void CFrontEndManager::v004() {}
-void CFrontEndManager::v005() {}
-void CFrontEndManager::v006() {}
-void CFrontEndManager::v007() {}
-void CFrontEndManager::v008() {}
-void CFrontEndManager::v009() {}
-void CFrontEndManager::v010() {}
-void CFrontEndManager::v011() {}
-void CFrontEndManager::v012() {}
-void CFrontEndManager::v013() {}
-void CFrontEndManager::v014() {}
-void CFrontEndManager::v015() {}
-void CFrontEndManager::v016() {}
-void CFrontEndManager::v017() {}
-void CFrontEndManager::v018() {}
-void CFrontEndManager::v019() {}
-void CFrontEndManager::v020() {}
-void CFrontEndManager::v021() {}
-void CFrontEndManager::v022() {}
-void CFrontEndManager::v023() {}
-void CFrontEndManager::v024() {}
-void CFrontEndManager::v025() {}
-void CFrontEndManager::v026() {}
-void CFrontEndManager::v027() {}
-void CFrontEndManager::v028() {}
-void CFrontEndManager::v029() {}
-void CFrontEndManager::v030() {}
-void CFrontEndManager::v031() {}
-void CFrontEndManager::v032() {}
-void CFrontEndManager::v033() {}
-void CFrontEndManager::v034() {}
-void CFrontEndManager::v035() {}
+static CManager s_fem;
+CManager* __fastcall CManager::GetInstance() { ++g_instCalls; return &s_fem; }
+EEngine2DLayer CManager::GetLayer(long depth) { ++g_layerCalls; g_layerDepth = depth; return (EEngine2DLayer)(1000 + depth); }
+void CManager::v000() {}
+void CManager::v001() {}
+void CManager::v002() {}
+void CManager::v003() {}
+void CManager::v004() {}
+void CManager::v005() {}
+void CManager::v006() {}
+void CManager::v007() {}
+void CManager::v008() {}
+void CManager::v009() {}
+void CManager::v010() {}
+void CManager::v011() {}
+void CManager::v012() {}
+void CManager::v013() {}
+void CManager::v014() {}
+void CManager::v015() {}
+void CManager::v016() {}
+void CManager::v017() {}
+void CManager::v018() {}
+void CManager::v019() {}
+void CManager::v020() {}
+void CManager::v021() {}
+void CManager::v022() {}
+void CManager::v023() {}
+void CManager::v024() {}
+void CManager::v025() {}
+void CManager::v026() {}
+void CManager::v027() {}
+void CManager::v028() {}
+void CManager::v029() {}
+void CManager::v030() {}
+void CManager::v031() {}
+void CManager::v032() {}
+void CManager::v033() {}
+void CManager::v034() {}
+void CManager::v035() {}
 void CChangingStateComponent::v000() {}
 void CChangingStateComponent::v001() {}
 void CChangingStateComponent::v003() {}

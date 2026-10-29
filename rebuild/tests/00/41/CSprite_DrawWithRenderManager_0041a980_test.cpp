@@ -47,11 +47,11 @@ struct CRenderManager2D {
 class CRenderManager { public: unsigned char _pad[8]; CRenderManager2D* RenderManager2D; };   // +0x08
 class CSystemManager { public: unsigned char _pad[0x60]; CRenderManager* RenderManager; };     // +0x60
 CSystemManager* GFGetSystemManager();
-struct CFrontEndManager {
-    static CFrontEndManager* GetInstance();
+namespace NUISystem { class CManager { public:
+    static CManager* GetInstance();
     unsigned char _pad[0x10];
     CCountedPointer<CGraphicDataBank> PGraphicBank;      // +0x10
-};
+}; }
 struct CSprite {
     bool centred;
     virtual bool IsCentred() { return centred; }
@@ -81,17 +81,17 @@ void CSprite::DrawWithRenderManager()
     box.TLY = GFAYToVY_009e1dd0(box.TLY);
     box.BRX = GFAXToVX_009e1da0(box.BRX);
     box.BRY = GFAYToVY_009e1dd0(box.BRY);
-    CCountedPointer<CGraphicDataBank> bank = CFrontEndManager::GetInstance()->PGraphicBank;
+    CCountedPointer<CGraphicDataBank> bank = NUISystem::CManager::GetInstance()->PGraphicBank;
     CSystemManager* system = GFGetSystemManager();
     system->RenderManager->RenderManager2D->Draw2DScaledGraphic(box, bank.Data, GraphicIndex, 0, 0);
 }
 
-static CFrontEndManager g_fe;
+static NUISystem::CManager g_fe;
 static CRenderManager2D g_rm2d;
 static CRenderManager g_rm;
 static CSystemManager g_sys;
 static SCountBlock g_block;
-CFrontEndManager* CFrontEndManager::GetInstance() { return &g_fe; }
+NUISystem::CManager* NUISystem::CManager::GetInstance() { return &g_fe; }
 CSystemManager* GFGetSystemManager() { return &g_sys; }
 bool CRenderManager2D::Draw2DScaledGraphic(const C2DBoxF& box, CGraphicDataBank* bank, unsigned long graphic, unsigned long, unsigned long)
 { got = box; gotBank = bank; gotGraphic = graphic; refsDuring = g_block.m_references; return true; }

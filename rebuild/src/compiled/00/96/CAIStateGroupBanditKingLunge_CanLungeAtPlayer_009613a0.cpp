@@ -146,9 +146,7 @@ template<class T> inline const T& min(const T& left, const T& right) { return ri
 }
 
 extern long g_framesPerSecond;                  // 0x01375550
-struct CWorldFrame {
-    static long GetWorldFrame();                // 0x0049D870 (static: GetPWorld() is evaluated for nothing)
-};
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ
 
 struct CAIStateGroup_BanditKingLunge : CAIStateGroupBase {
     unsigned char Player[8];                    // +0x14 CIntelligentPointer<CThingPlayerCreature>
@@ -164,11 +162,11 @@ bool CAIStateGroup_BanditKingLunge::CanLungeAtPlayer(CThing* player)
         if (hits == 0) {
             if (TimeOfLastLunge) {
                 long interval = (long)(g_framesPerSecond * boss->Def->LungeIntervalSeconds);
-                if (((CWorldFrame*)GetPWorld())->GetWorldFrame() - TimeOfLastLunge > interval)
+                if (((CWorld*)GetPWorld())->GetFrame() - TimeOfLastLunge > interval)
                     return true;
             }
             else
-                TimeOfLastLunge = ((CWorldFrame*)GetPWorld())->GetWorldFrame();
+                TimeOfLastLunge = ((CWorld*)GetPWorld())->GetFrame();
         }
         else
             return boss->GetHitsThisPhase() >= hits;

@@ -12,7 +12,7 @@ static int fails = 0;
 // @ 0x0066E7BD, that screen's virtual slot 2 (a long; stored at +0x220), the manager's +0x28 setter @ 0x0066E799 (manifest
 // "CObservable::AddExclusiveObserver" is propagated: the body is `mov [ecx+28h],arg`), CTCInventoryBase::OpenInventory @ 0x005BD4EA,
 // CTCInventoryExperience::InitialiseExperienceSpendValues @ 0x005724CD and ResetExperienceSpendValues @ 0x0056F03D, NUISystem::
-// CFrontEndManager::GetInstance() @ 0x0041E5F2 (`__fastcall`, no arguments), NUISystem::CManager::CreateComponent(const CCharString&,
+// CManager::GetInstance() @ 0x0041E5F2 (`__fastcall`, no arguments), NUISystem::CManager::CreateComponent(const CCharString&,
 // bool) @ 0x0041DB1D with the implicit conversion of "UI_EXP_SPENDING_SCREEN" (0x0124EA2C; CCharString ctor @ 0x0099EBF0, dtor
 // @ 0x0099EAE0), the component's virtual slots 43 (+0xAC, no arguments) and 48 (+0xC0, the visual-state setter, 1),
 // vector<NUISystem::CComponent*>::push_back(CComponent* const&) @ 0x00486024 on Components (+0x0C).
@@ -44,9 +44,7 @@ class CComponent { public:
 };
 class CManager { public:
     CComponent* CreateComponent(const CCharString& definition, bool b);   // 0x0041DB1D
-};
-class CFrontEndManager : public CManager { public:
-    static CFrontEndManager* __fastcall GetInstance();            // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2 ?GetInstance@CManager@NUISystem@@SIPAV12@XZ
 };
 }
 struct CComponentVector {                                         // retail std::vector<NUISystem::CComponent*> (12 bytes)
@@ -106,7 +104,7 @@ void CTCInventoryExperience::OpenInventoryOld()
     CTCInventoryBase_Retail::OpenInventory();
     InitialiseExperienceSpendValues();
     ResetExperienceSpendValues();
-    NUISystem::CFrontEndManager* frontEnd = NUISystem::CFrontEndManager::GetInstance();
+    NUISystem::CManager* frontEnd = NUISystem::CManager::GetInstance();
     NUISystem::CComponent* screen = frontEnd->CreateComponent("UI_EXP_SPENDING_SCREEN", false);
     screen->Initialise();
     screen->SetState(1);
@@ -173,8 +171,8 @@ void NUISystem::CComponent::Initialise() { g_compInit = ++g_seq; }
 void NUISystem::CComponent::SetState(long state) { g_state = state; g_setStateSeq = ++g_seq; }
 static NUISystem::CComponent g_screen;
 NUISystem::CComponent* NUISystem::CManager::CreateComponent(const CCharString& definition, bool b) { strcpy(g_def, (const char*)definition.m_pStringData); g_defFlag = b; return &g_screen; }
-static NUISystem::CFrontEndManager g_fem;
-NUISystem::CFrontEndManager* __fastcall NUISystem::CFrontEndManager::GetInstance() { return &g_fem; }
+static NUISystem::CManager g_fem;
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return &g_fem; }
 struct CScreen7 : NHeroInformationScreens::CBase { long GetScreenType() { return 7; } bool IsOpenedFromHeroInformationScreens() { return false; } };
 static CScreen7 g_current;
 long NHeroInformationScreens::CBase::GetScreenType() { return 0; }

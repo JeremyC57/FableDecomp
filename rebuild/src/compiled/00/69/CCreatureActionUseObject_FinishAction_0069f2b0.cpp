@@ -2,7 +2,7 @@
 // Leaf: ?FinishAction@CCreatureAction_UseObject
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0069F2B0, 303 bytes (304 with padding), virtual FinishAction.
 // Callees: CBaseIntelligentPointer::GetPItem 0x00A01B50 (PCreature +0x08), the physics component's virtual slot 72 (+0x120,
-//   the current right-handed set; name unconfirmed), CBase::CBase 0x0099A2F0 / ~CBase 0x0099A300 (CTCParamsPhysicsBase,
+//   the current right-handed set; name unconfirmed), CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0 / ~CBaseClassNonCopyable 0x0099A300 (CTCParamsPhysicsBase,
 //   vtable 0x0125C818, inline ctor), the params object's virtual slot 22 (+0x58, the component name by value) and its
 //   deleting destructor (slot 0), CThing::AddTC(const CCharString&, bool, CTCParamsBase*) 0x004C9D60, ~CCharString
 //   0x0099EAE0, CCreatureActionBase::FinishAction 0x00694430.
@@ -22,17 +22,16 @@ class CCharString { public:
     void* PStringData;
     ~CCharString();                                   // 0x0099EAE0
 };
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    CBase();                                          // 0x0099A2F0
-    ~CBase();                                         // 0x0099A300
-}; } using N_0099a300::CBase;
-class CTCParamsBase : public CBase { public: };
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                                          // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();                                         // 0x0099A300
+};
+class CTCParamsBase : public CBaseClassNonCopyable { public: };
 class CTCParamsPhysicsBase : public CTCParamsBase { public:         // vtable 0x0125C818, 0x28 bytes
     C3DVector       Position;                         // +0x04
     CRightHandedSet Rhs;                              // +0x10
     CTCParamsPhysicsBase(const C3DVector& position, const CRightHandedSet& rhs) : Position(position), Rhs(rhs) { }
-    virtual void v00();
 };
 #define V10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); virtual void v##n##4(); \
     virtual void v##n##5(); virtual void v##n##6(); virtual void v##n##7(); virtual void v##n##8(); virtual void v##n##9();

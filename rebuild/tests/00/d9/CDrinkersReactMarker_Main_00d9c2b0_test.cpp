@@ -247,14 +247,15 @@ struct CThingNative;class C3DVector{ public:float X,Y,Z;};
 // Restored genuine virtual ABI for by-value CScriptThing; all79 native slots named.
 namespace std {template<class T>class allocator;template<class T,class A>class vector;}
 typedef long EAIStateGroupTypeABI;typedef long EScriptAIPriorityABI;typedef long EHeroAbilityABI; // enum ABI declarations only
-struct CBaseClassNative{CBaseClassNative(){}virtual ~CBaseClassNative();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
+class CBaseClass {
+public: CBaseClass(){}virtual ~CBaseClass();}; //0099A2D0 ctor,0099A2E0 dtor,VT01231710
 class CCPPointerInfo{ public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;}; // actual PDB3field layout, no generated header
 struct CountedScriptImp{CScriptThing* Data;CCPPointerInfo* Info;CountedScriptImp():Data(0),Info(0){}CountedScriptImp(const CountedScriptImp& other):Data(other.Data),Info(other.Info){if(Info)++Info->RefCount;}~CountedScriptImp(){if(Info){--Info->RefCount;if(Info->RefCount==0){Info->DeleteFunc(Info->Data);delete Info;}}Data=0;Info=0;}};
-struct ScriptMethods:CBaseClassNative{
+struct ScriptMethods:CBaseClass{
  CountedScriptImp PImp;
  ScriptMethods(){}
- __forceinline ScriptMethods(const CScriptThing& other):CBaseClassNative(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
- ScriptMethods(const ScriptMethods& other):CBaseClassNative(),PImp(other.PImp){}
+ __forceinline ScriptMethods(const CScriptThing& other):CBaseClass(){PImp.Data=other.PImp_Data;PImp.Info=other.PImp_Info;if(PImp.Info)++PImp.Info->RefCount;}
+ ScriptMethods(const ScriptMethods& other):CBaseClass(),PImp(other.PImp){}
  virtual ~ScriptMethods(){} //native inline vptr reset, counted release, CBaseClass dtor99A2E0
 virtual const CCharString& GetName() const; //slot1 0x004AA8B0
 virtual CCharString GetDefName() const; //slot2 0x004AA8D0
@@ -349,7 +350,7 @@ struct ImplicitCharString:CCharString {ImplicitCharString(const char* text):CCha
 FABLE_STATIC_ASSERT(sizeof(ImplicitCharString)==sizeof(CCharString));
 // Slot72 actual signature is const CCharString&; field-free derived const-reference
 // projection restores implicit conversion through genuine ctor99EBF0(text,-1).
-struct GameMethods:CBaseClassNative{
+struct GameMethods:CBaseClass{
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20
 virtual void Validate(void) const; //slot3 0x006e72a0
@@ -448,7 +449,7 @@ void __fastcall DestroyResult(void* p){assert(p==&marker&&stringLive==1);++destr
 CCharString::CCharString(const char* text,long length){assert(length==-1&&!stringLive&&strcmp(text,"Q_HobbeToothWhisper")==0);storage_=new CCharStringData;unsigned n=strlen(text);storage_->text=new char[n+1];memcpy(storage_->text,text,n+1);storage_->owners=1;++stringLive;++stringCtors;if(mode==8)script->Game=alternateGame;}
 CCharString::~CCharString(){assert(stringLive==1);if(mode!=6&&mode!=7)assert(destroyed==namedCalls);if(mode==6)assert(heldInfo->RefCount==1);delete[] storage_->text;delete storage_;--stringLive;++stringDtors;}
 CCharString::operator const char*()const{return storage_->text;}
-CBaseClassNative::~CBaseClassNative(){}
+CBaseClass::~CBaseClass(){}
 bool CDrinkersReactMarker::IsActiveThreadTerminating(){++checks;assert(checks<20&&!stringLive);return frames>=stopFrame||(stopCheck&&checks>=stopCheck);}
 bool __fastcall IsWithinDistance(const ScriptMethods& t,const CScriptThing& me,float distance){assert(&me==&script->Me&&distance==4.0f);++comparisons;if(&t==hero){assert(!stringLive);return mode==0||mode==4||((mode==2||mode==8)&&frames>=2);}assert(stringLive==1&&t.PImp.Data==reinterpret_cast<CScriptThing*>(whisper));if(mode==6)assert(t.PImp.Info==heldInfo&&heldInfo->RefCount>=2);return mode==1||mode==5||mode==6||mode==7;}
 void GameMethods::NewScriptFrame()const{assert(!stringLive);++frames;if(this==alternateGame)++alternateCalls;}

@@ -91,20 +91,20 @@ virtual void slot73();virtual void slot74();virtual void SetFacingAnglesFromRHSe
 struct CDragonThing{char prefix[0x60];CDragonPhysics* Physics;char beforeDead[0x2d];unsigned char dead;};
 struct CDragonPointer{CDragonThing* GetPItem()const;}; //00a01b50
 extern long FramesPerSecond; //01375550
-struct CDragonWorld{static long GetWorldFrame();}; //0049d870
+class CWorld { public: static long __fastcall GetFrame(); }; //0049d870
 struct DragonMethods:CAIStateGroup_JackDragon{
-CDragonWorld* GetPWorld();void Terminate();bool IsStopping();long AIAction_DoNothing(); //008fcfc0,008fcf40,008fd010,0097e200
+CWorld* GetPWorld();void Terminate();bool IsStopping();long AIAction_DoNothing(); //008fcfc0,008fcf40,008fd010,0097e200
 __forceinline CDragonThing* Creature(){return (CDragonThing*)((CAIStateGroupBase*)this)->PBrain->Creature;}
 __forceinline CDragonPointer& Enemy(){return *(CDragonPointer*)PEnemy;}
 void StayIdleAndTurnToFace(float,const C3DVector&);
 };
 void DragonMethods::StayIdleAndTurnToFace(float duration,const C3DVector& facing){
-long start=GetPWorld()->GetWorldFrame();
+long start=GetPWorld()->GetFrame();
 CRightHandedSet orientation(facing);
 do{
 AIAction_DoNothing();
 orientation=Creature()->Physics->GetFacing().Interpolate(orientation,0.1f);
 Creature()->Physics->SetFacingAnglesFromRHSet(orientation);
 if(!Enemy().GetPItem()||(Enemy().GetPItem()->dead&1)||IsStopping()){Terminate();return;}
-}while((float)(GetPWorld()->GetWorldFrame()-start)/FramesPerSecond<duration);
+}while((float)(GetPWorld()->GetFrame()-start)/FramesPerSecond<duration);
 }

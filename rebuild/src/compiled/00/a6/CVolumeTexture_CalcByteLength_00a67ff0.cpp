@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A67FF0, length 101 bytes (padded to 112).
 // Callees: IDirect3DVolumeTexture9::GetLevelCount (slot 13, +0x34), CVolumeTexture::GetVolumeLevel @ 0x00A67EA0 (CVolume by value),
 // CVolume::GetByteLength @ 0x00A674E0, the CVolume temporary's inline destructor (vtable 0x0129C840 store, ReleaseVolume(true)
-// @ 0x00A67460, CBase::~CBase @ 0x0099A2E0).
+// @ 0x00A67460, CBaseClass::~CBaseClass @ 0x0099A2E0).
 // Graphics layer (D3D9, to be replaced): CVolumeTexture vtable 0x0129DC18 = {vptr, IDirect3DVolumeTexture9* PD3DVolumeTexture +0x04,
 // ByteLength +0x08, PData +0x0c} (Ego_r.pdb); memory counters g_GraphicsMemoryBytes 0x013CAAB0, g_VolumeTextureMemoryBytes 0x013D28E0
 // (next to the landed CVolume counter 0x013D28DC); the inline GetMemorySize = (PData ? GetAllocationSize(PData) @ 0x009F2390 on the
@@ -33,16 +33,15 @@ class CMemoryAllocator { public:
 extern CMemoryAllocator* g_pGlobalAllocator_013caa90;   // 0x013CAA90
 extern unsigned long g_GraphicsMemoryBytes;        // 0x013CAAB0
 extern unsigned long g_VolumeTextureMemoryBytes;   // 0x013D28E0
-struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                      // 0x0099A2E0
 };
-class CVolume : public CBase { public:                           // vtable 0x0129C840
+class CVolume : public CBaseClass { public:                           // vtable 0x0129C840
     IDirect3DVolume9* PD3DVolume;                  // +0x04
     ~CVolume() { ReleaseVolume(true); }
     void ReleaseVolume(bool flag);                 // 0x00A67460
     unsigned long GetByteLength() const;           // 0x00A674E0
-    virtual void v00();
 };
 class CVolumeTexture { public:                            // vtable 0x0129DC18, 16 bytes (Ego_r.pdb)
     virtual ~CVolumeTexture();

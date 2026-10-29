@@ -1,7 +1,7 @@
 // CTCInventoryTrade::DeleteComponents() -- deletes the trade screen's currently open trade menu component (and drops it from the Components list), then has the front-end manager tidy up and clears the global front-end node list
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0059C8AE, 68 bytes.
 // Callees: NUISystem::CComponent scalar deleting destructor (virtual slot 0, `push 1`), the front-end manager accessor
-//          CFrontEndManager::GetInstance @ 0x0041E5F2 (`__fastcall`, as in the landed CTCInventoryClothing::OpenInventory
+//          NUISystem::CManager::GetInstance @ 0x0041E5F2 (`__fastcall`, as in the landed CTCInventoryClothing::OpenInventory
 //          0x005B4E7C) and its virtual slots 37 (+0x94) and 29 (+0x74) (names unknown), the global VC6 node list
 //          @ 0x013B8A98 (98 references) cleared by its out-of-line clear @ 0x004855A3 (tail jump; manifest label
 //          "CGuiControlTreePane::SortTreeRecursively" is propagated).
@@ -21,7 +21,7 @@ class CComponent { public:
     virtual ~CComponent();
 };
 }
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
@@ -34,8 +34,8 @@ struct CFrontEndManager {
     virtual void v30(); virtual void v31(); virtual void v32(); virtual void v33();
     virtual void v34(); virtual void v35(); virtual void v36();
     virtual void Slot37();                    // +0x94
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 struct CNodeList {
     void* m_pHead;
     void clear();                             // 0x004855A3
@@ -66,7 +66,7 @@ void CTCInventoryTrade_Retail::DeleteComponents()
         Components.pop_back();
         PCurrentOpenTradeMenu = 0;
     }
-    CFrontEndManager::GetInstance()->Slot37();
-    CFrontEndManager::GetInstance()->Slot29();
+    NUISystem::CManager::GetInstance()->Slot37();
+    NUISystem::CManager::GetInstance()->Slot29();
     g_frontEndNodeList.clear();
 }

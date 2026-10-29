@@ -1,7 +1,8 @@
 // CEnginePrimitiveManagerOcclusionBase::~CEnginePrimitiveManagerOcclusionBase() -- release the counted occlusion data at +0x14/+0x18 (the inlined CCountedPointer destructor), then the vertex shader at +0xc, then ~CBase
+// Leaf: ??1CEnginePrimitiveManagerOcclusionBase@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B38590, length 92 bytes.
 // Callees: the count block's destroy (slot +4, the object at +8 in ecx), operator delete @ 0x00BFE9BC, the shared shader's virtual deleting destructor (slot 0,
-// flag 1), CBase::~CBase @ 0x0099A300 (a tail jump). Vtables 0x0129B3D0 = CVertexShader, 0x0129A030 = CShaderBase. Shape: members are destroyed in reverse
+// flag 1), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (a tail jump). Vtables 0x0129B3D0 = CVertexShader, 0x0129A030 = CShaderBase. Shape: members are destroyed in reverse
 // order (the counted pointer first: `dec [eax] ; cmp [eax],0 ; jne ; call [eax+4] ; delete`, both words cleared), then the vertex shader's inlined destructor;
 // no vtable store of this class's own (abstract: `__declspec(novtable)`).
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
@@ -52,12 +53,12 @@ class CVertexShader : public CShaderBase { public:               // vtable 0x012
     }
 };
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 
-struct __declspec(novtable) CEnginePrimitiveManagerOcclusionBase : CBase {
+struct __declspec(novtable) CEnginePrimitiveManagerOcclusionBase : CBaseClassNonCopyable {
     long                     m_type;               // +0x04
     bool                     m_enabled;            // +0x08
     CVertexShader            m_vertexShader;       // +0x0c

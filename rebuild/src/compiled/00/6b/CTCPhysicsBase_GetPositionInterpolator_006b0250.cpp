@@ -2,7 +2,7 @@
 // Leaf: ?GetPositionInterpolator@CTCPhysicsBase@@QBEXAAVC3DPositionInterpolator@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006B0250, 524 bytes, `ret 4`.
 // Callees: CTCBase::PeekWorld() const 0x00686A80 (twice), CThing::IsAffectedByBulletTime 0x004C9920, CBulletTime::GetTimeScale
-//   0x004C5FA0, CWorld::GetWorldFrame 0x0049D870 (static), _ftol 0x00BFEA70, CBase::CBase 0x0099A2D0, ~CBase 0x0099A2E0.
+//   0x004C5FA0, CWorld::GetWorldFrame 0x0049D870 (static), _ftol 0x00BFEA70, CBaseClass::CBaseClass 0x0099A2D0, ~CBaseClass 0x0099A2E0.
 //   Global 1.0f 0x0122DED8. Vtable 0x0123981C = C3DPositionInterpolator.
 // Layout: as the landed sibling CTCPhysicsBase::GetOrientationInterpolator 0x006B0460 (local model: the generated
 //   engine/CTCPhysicsBase.h flattens Position/OldPosition into floats with no C3DVector members). Position +0x0c,
@@ -20,23 +20,22 @@ class C3DVector { public:
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     __forceinline C3DVector Interpolate(const C3DVector& to, float t) const { return (to - *this) * t + *this; }
 };
-namespace N_0099a2d0 { struct CBase {
-    virtual void v00();
-    CBase();                                        // 0x0099A2D0
-    ~CBase();                                       // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
-class C3DPositionInterpolator : public CBase { public:            // 0x1c bytes
+class CBaseClass {
+public:
+    CBaseClass();                                        // 0x0099A2D0
+    virtual ~CBaseClass();                                       // 0x0099A2E0
+};
+class C3DPositionInterpolator : public CBaseClass { public:            // 0x1c bytes
     C3DVector StartPosition;                        // +0x04
     C3DVector EndPosition;                          // +0x10
     C3DPositionInterpolator(const C3DVector& start, const C3DVector& end)
-        : CBase(), StartPosition(start), EndPosition(end) { }
+        : CBaseClass(), StartPosition(start), EndPosition(end) { }
     C3DPositionInterpolator& operator=(const C3DPositionInterpolator& other)
     {
         StartPosition = other.StartPosition;
         EndPosition = other.EndPosition;
         return *this;
     }
-    virtual void v00();
 };
 
 struct CBulletTime {

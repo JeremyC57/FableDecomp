@@ -204,9 +204,6 @@ class C2DVector { public:
     float x, y;
     float GetLength() const { return (float)sqrt(x * x + y * y); }
 };
-struct CWorldF {
-    static long GetWorldFrame();                // 0x0049D870 (does not use `this`)
-};
 struct CTCEnemyTracker {                        // interface 8
     V16(a) V4(b) V4(c)
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
@@ -235,7 +232,7 @@ struct CAIStateGroup_TrollBase : CAIStateGroupBase {
     float TROLL_MIN_THROWING_DISTANCE;          // +0x28
     float TROLL_STOP_POUNDING_DISTANCE;         // +0x2c
     float TROLL_STOP_THROWING_DISTANCE;         // +0x30
-    CWorldF* GetPWorld();                       // 0x008FCFC0
+    CWorld* GetPWorld();                       // 0x008FCFC0
 };
 struct CAIStateGroup_RockTroll : CAIStateGroup_TrollBase {
     virtual bool IsRunnable();
@@ -253,7 +250,7 @@ bool CAIStateGroup_RockTroll::IsRunnable()
         delta.y = creaturePos.y - enemyPos.y;
         if (delta.GetLength() < TROLL_MAX_THROWING_DISTANCE) {
             PEnemy = CIntelligentPointerCreature(enemy);
-            EnemyKnockDownFrame = GetPWorld()->GetWorldFrame();
+            EnemyKnockDownFrame = GetPWorld()->GetFrame();
             return true;
         }
     }

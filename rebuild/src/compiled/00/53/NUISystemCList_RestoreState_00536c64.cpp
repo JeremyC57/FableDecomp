@@ -2,7 +2,7 @@
 // Leaf: RestoreState
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00536C64, length 371 bytes, `ret 4`; size-optimised frame-pointer TU
 //   (`#pragma optimize("s", on)`).
-// Callees: NUISystem::CFrontEndManager::GetInstance @ 0x0041E5F2 (restoring flag at +0xA4); component virtual slots 1
+// Callees: NUISystem::CManager::GetInstance @ 0x0041E5F2 (restoring flag at +0xA4); component virtual slots 1
 //   Update(float), 48 ChangeState(long), 49 (state change finished), 53 (children: 8-byte counted pointers), 65 GetType,
 //   131 ExecuteActions, 154 (select actions), 158 SetSelectedChild(long), 163 (scrolling children). Float pool: 5.0f
 //   @ 0x012462A8.
@@ -53,11 +53,11 @@ class CComponent { public:
     unsigned char   _pad004[0x164 - 0x04];
     ComponentVector ScrollingChildren;             // +0x164 (CList)
 };
-class CFrontEndManager {
+class CManager {
 public:
     unsigned char _pad[0xa4];
     bool          Restoring;                       // +0xa4
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 struct ListNode {
     ListNode* _M_next;
@@ -73,7 +73,7 @@ class CList : public CComponent { public:
 
 void CList::RestoreState(const LongList& path)
 {
-    CFrontEndManager* frontEnd = CFrontEndManager::GetInstance();
+    CManager* frontEnd = CManager::GetInstance();
     frontEnd->Restoring = true;
     CComponent* current = this;
     for (ListNode* node = path._M_node->_M_next; node != path._M_node; node = node->_M_next) {

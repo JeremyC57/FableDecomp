@@ -1,16 +1,17 @@
 // CEnginePrimitiveRendererSharedData::CEnginePrimitiveRendererSharedData() -- construct the shared renderer data: the CBase root, this class's vtable, the current interpolation info and the forty CPixelShader members
 // Leaf: ??0CEnginePrimitiveRendererSharedData
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B36CE0, length 480 bytes (body 0x1db + int3 padding), plain `ret`.
-// Callees: CBase::CBase @ 0x0099A2F0, CEngineInterpolationInfo::CEngineInterpolationInfo @ 0x0042FA30, CPixelShader::CPixelShader
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CEngineInterpolationInfo::CEngineInterpolationInfo @ 0x0042FA30, CPixelShader::CPixelShader
 // @ 0x00A5EC00 (catalogued CBaseIntelligentPointer, propagated: called on each 8-byte pixel-shader member). The only caller is
 // 0x00B33B65.
 // Layout: Ego_r.pdb CEnginePrimitiveRendererSharedData (616 bytes; vtable 0x012A1300): BlockOnLoad +4, CurrentInterpolationInfo +8,
 // the scalar settings +0x78..+0xd8 (none of them set here: they have no initialisers), the 40 CPixelShader members +0xdc..+0x214,
 // the shader pointers and debug flags +0x21c..+0x264 (also left alone).
 // Shape: base ctor, vtable store, then each member sub-object's out-of-line default ctor in declaration order with `lea ecx`.
-struct CBase {
-    virtual void v00();
-    CBase();                                    // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();   // 0x0099A300
+    CBaseClassNonCopyable();                                    // 0x0099A2F0
 };
 
 class CEngineInterpolationInfo { public:
@@ -24,8 +25,7 @@ class CPixelShader { public:
     void* PShader;
 };
 
-struct CEnginePrimitiveRendererSharedData : CBase {
-    virtual void v00();
+struct CEnginePrimitiveRendererSharedData : CBaseClassNonCopyable {
     CEnginePrimitiveRendererSharedData();
     bool  BlockOnLoad;                          // +0x04
     CEngineInterpolationInfo CurrentInterpolationInfo;   // +0x08
