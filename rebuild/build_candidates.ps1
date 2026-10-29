@@ -363946,6 +363946,48 @@ $catalog = @(
         TestSource = '00/f0/NScriptCQAmbushTradersScript_WatchForEnemyDeath_00f08590_test.cpp'
         PassPattern = '00f08590_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d37d00'
+        Module = 'NScript::CQ_FireHeartScript::CPuzzleBlockMoon'
+        Source = '00/d3/NScriptCQFireHeartScriptCPuzzleBlockMoon_Main_00d37d00.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCPuzzleBlockMoon_Main_00d37d00_test.cpp'
+        PassPattern = '00d37d00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d384a0'
+        Module = 'NScript::CQ_FireHeartScript::CPuzzleBlockSun'
+        Source = '00/d3/NScriptCQFireHeartScriptCPuzzleBlockSun_Main_00d384a0.cpp'
+        TestSource = '00/d3/NScriptCQFireHeartScriptCPuzzleBlockSun_Main_00d384a0_test.cpp'
+        PassPattern = '00d384a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dfc320'
+        Module = 'NScript::CQ_TraderConflictGoodScript'
+        Source = '00/df/NScriptCQTraderConflictGoodScript_UpdateLiveEnemies_00dfc320.cpp'
+        TestSource = '00/df/NScriptCQTraderConflictGoodScript_UpdateLiveEnemies_00dfc320_test.cpp'
+        PassPattern = '00dfc320_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e56d10'
+        Module = 'NScript::CV_BookCollectingScript::CBS_Teacher'
+        Source = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_AdjustHeroReputation_00e56d10.cpp'
+        TestSource = '00/e5/NScriptCVBookCollectingScriptCBSTeacher_AdjustHeroReputation_00e56d10_test.cpp'
+        PassPattern = '00e56d10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e690f0'
+        Module = 'NScript::CV_ChapelOfEvilScript'
+        Source = '00/e6/NScriptCVChapelOfEvilScript_OnPersist_00e690f0.cpp'
+        TestSource = '00/e6/NScriptCVChapelOfEvilScript_OnPersist_00e690f0_test.cpp'
+        PassPattern = '00e690f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eaea20'
+        Module = 'NScript::CV_MurderTwistFinalScript'
+        Source = '00/ea/NScriptCVMurderTwistFinalScript_Main_00eaea20.cpp'
+        TestSource = '00/ea/NScriptCVMurderTwistFinalScript_Main_00eaea20_test.cpp'
+        PassPattern = '00eaea20_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

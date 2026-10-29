@@ -1,0 +1,25 @@
+addr       parity           behav  name
+00d37d00   RELOCATION_MATCH PASS   Main
+00d384a0   RELOCATION_MATCH PASS   Main
+00dfc320   RELOCATION_MATCH PASS   UpdateLiveEnemies
+00e56d10   RELOCATION_MATCH PASS   AdjustHeroReputation
+00e690f0   RELOCATION_MATCH PASS   OnPersist
+00eaea20   WARN RELOC_NAME: ?Alloc@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z -> 00eb1f80 labelled '_gapscan::sub_00eb1f80'
+00eaea20   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00eaea20   RELOCATION_MATCH PASS   Main
+
+WINS: 6
+  00d37d00 RELOCATION_MATCH NScript::CQ_FireHeartScript::CPuzzleBlockMoon::?Main@CPuzzleBlockMoon@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d384a0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CPuzzleBlockSun::?Main@CPuzzleBlockSun@CQ_FireHeartScript@NScript@@EAEXXZ
+  00dfc320 RELOCATION_MATCH NScript::CQ_TraderConflictGoodScript::?UpdateLiveEnemies@CQ_TraderConflictGoodScript@NScript@@QAEXXZ
+  00e56d10 RELOCATION_MATCH NScript::CV_BookCollectingScript::CBS_Teacher::?AdjustHeroReputation@CBS_Teacher@CV_BookCollectingScript@NScript@@AAEXW4EOpinionDeedType@@@Z
+  00e690f0 RELOCATION_MATCH NScript::CV_ChapelOfEvilScript::?OnPersist@CV_ChapelOfEvilScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00eaea20 RELOCATION_MATCH NScript::CV_MurderTwistFinalScript::?Main@CV_MurderTwistFinalScript@NScript@@UAEXXZ
+
+LANDED 6 wins into src/compiled + tests + catalog + oracle
+  NScriptCQFireHeartScriptCPuzzleBlockMoon_Main_00d37d00
+  NScriptCQFireHeartScriptCPuzzleBlockSun_Main_00d384a0
+  NScriptCQTraderConflictGoodScript_UpdateLiveEnemies_00dfc320
+  NScriptCVBookCollectingScriptCBSTeacher_AdjustHeroReputation_00e56d10
+  NScriptCVChapelOfEvilScript_OnPersist_00e690f0
+  NScriptCVMurderTwistFinalScript_Main_00eaea20

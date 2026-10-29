@@ -35185,3 +35185,10 @@ _icomp	00ca1bc0	00ca1be0
 ?Alloc@CTrophyDealerInCave@CV_TrophyDealerScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ee7340	00ee6e90
 ?HilightGuildTeleporter@CV_TrophyDealerScript@NScript@@QAEXXZ	00ee71a0	00ee6e90
 ?EntityCountDecrease@CQ_AmbushTradersScript@NScript@@QAEXVCCharString@@@Z	00f088e0	00f08590
+?TurnIntoASunSign@CPuzzleBlockMoon@CQ_FireHeartScript@NScript@@AAEX_N@Z	00d38000	00d37d00
+?TurnIntoAMoonSign@CPuzzleBlockSun@CQ_FireHeartScript@NScript@@AAEX_N@Z	00d387a0	00d384a0
+??_7?$CEntityScriptBinding@VCV_MurderTwistFinalScript@NScript@@@@6B@	012ef9f0	00eaea20
+?Alloc@CMurderTwistAssassin@CV_MurderTwistFinalScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eb3c60	00eaea20
+?Alloc@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eb5450	00eaea20
+?Alloc@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaed10	00eaea20
+?Alloc@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eb1f80	00eaea20

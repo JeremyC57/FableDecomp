@@ -1,0 +1,8 @@
+address	name	evidence
+00d37d00	NScript::CQ_FireHeartScript::CPuzzleBlockMoon::Main	vtable 0x012CCED8 slot 1 stored by landed Alloc 0x00D363A0 + Ego_r; chunk 574
+00d384a0	NScript::CQ_FireHeartScript::CPuzzleBlockSun::Main	vtable 0x012CCEF4 slot 1 stored by landed Alloc 0x00D36470 + Ego_r; chunk 574
+00dfc320	NScript::CQ_TraderConflictGoodScript::UpdateLiveEnemies	Ego_r + FableWin, donor order, member callers; chunk 574
+00e56d10	NScript::CV_BookCollectingScript::CBS_Teacher::AdjustHeroReputation	only one-arg CBS_Teacher member in the PDB; sole caller AskForBook; chunk 574
+00e690f0	NScript::CV_ChapelOfEvilScript::OnPersist	quest vtable 0x012E8080 slot 4; persisted names = PDB members; chunk 574
+00eaea20	NScript::CV_MurderTwistFinalScript::Main	quest vtable 0x012EF978 slot 2 + Ego_r; chunk 574
+00eb6a00	NScript::CV_MurderTwistFinalScript::Init	quest vtable 0x012EF978 slot 3; members Guards/seh_Guards (landed as CV_SwordInTheStoneScript::Init -- wrong); chunk 574

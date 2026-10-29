@@ -1,0 +1,7 @@
+address	status	bytes	test	note
+00d37d00	RELOCATION_MATCH	753v753	PASS	NScript::CQ_FireHeartScript::CPuzzleBlockMoon::Main (gap-scan sub_); 1 grade, first probe
+00d384a0	RELOCATION_MATCH	753v753	PASS	NScript::CQ_FireHeartScript::CPuzzleBlockSun::Main (gap-scan sub_; twin of 00d37d00: one je/jne + sound string); 1 grade
+00dfc320	RELOCATION_MATCH	777v777	PASS	NScript::CQ_TraderConflictGoodScript::UpdateLiveEnemies (label CScriptBase_ProcessNPCConversations wrong); 3 grades + 5 compile-only probes (one else-if arm per name)
+00e56d10	RELOCATION_MATCH	745v745	PASS	NScript::CV_BookCollectingScript::CBS_Teacher::AdjustHeroReputation (label CScriptBase_AskForBook_Impl wrong); 1 grade, first probe
+00e690f0	RELOCATION_MATCH	759v759	PASS	NScript::CV_ChapelOfEvilScript::OnPersist (gap-scan sub_); 1 grade, first probe
+00eaea20	RELOCATION_MATCH	732v732	PASS	NScript::CV_MurderTwistFinalScript::Main (gap-scan sub_); 2 grades (`!(!IsLevelLoaded)` wait)

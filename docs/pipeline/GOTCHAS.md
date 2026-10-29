@@ -1618,3 +1618,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - `list::size()` written as STLport 4.6's `distance(begin(), end())` gives retail's order; FableWin.pdb names inline accessors Ego_r.pdb inlines away -- look there for getter names (chunk 572).
 - vland skips string-literal relocations: pair each literal in a matched row with retail yourself (chunk 573 did it with a small COFF reader; 0 mismatches).
 - Quest-script Main rows (entity-script bindings, spawned threads, one wait loop) match first-probe from the RockTroll 0x00EC3D40 model; name them from quest-vtable slot 2 + Ego_r (chunk 573).
+- Several string tests sharing one action: one `else if` arm per test with the same body (a single `||` over a GetDefName temporary adds conditional-destruction flags); `while (!(!f()))` gives `test al,al; setne bl` where `while (f())` gives `mov bl,al` (chunk 574).
