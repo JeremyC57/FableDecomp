@@ -35150,3 +35150,10 @@ _icomp	00ca1bc0	00ca1be0
 ?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z	00662ef0	0093b1d0
 ?Rotate@C2DVector@@QAEXM@Z	00a141d0	0093b1d0
 ?SitMain@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	0093ad70	0093b1d0
+??$__introsort_loop@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@U12@HV?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@00HV?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z	00cbd700	00cbd700
+??$__median@U?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIABU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@ABU10@00V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z	00cb9da0	00cbd700
+??$__partial_sort@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@U12@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@000V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z	00cbcfc0	00cbd700
+??$__unguarded_partition@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@U12@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@PAU10@0U10@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z	00cbb710	00cbd700
+??0?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@QAE@ABU01@@Z	00cb9c20	00cbd700
+?GetRegionIdForRegion@CV_AssassinAttacksScript@NScript@@QAE?AW4AA_LocationIdentifier@12@VCCharString@@@Z	00e38290	00e39140
+?NullString@CScriptThing@@2VCCharString@@A	0143e8ec	00e39140

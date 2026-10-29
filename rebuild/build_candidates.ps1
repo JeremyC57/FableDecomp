@@ -363826,6 +363826,27 @@ $catalog = @(
         TestSource = '00/93/CAIStateGroupBanditSitRoundCampfire_Update_0093b1d0_test.cpp'
         PassPattern = '0093b1d0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00cbd700'
+        Module = 'std'
+        Source = '00/cb/std_introsortloop_00cbd700.cpp'
+        TestSource = '00/cb/std_introsortloop_00cbd700_test.cpp'
+        PassPattern = '00cbd700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e12b30'
+        Module = 'NScript::CQ_WaspBossScript'
+        Source = '00/e1/NScriptCQWaspBossScript_GuildmasterHelp_00e12b30.cpp'
+        TestSource = '00/e1/NScriptCQWaspBossScript_GuildmasterHelp_00e12b30_test.cpp'
+        PassPattern = '00e12b30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e39140'
+        Module = 'NScript::CV_AssassinAttacksScript'
+        Source = '00/e3/NScriptCVAssassinAttacksScript_WatchForAssassinDead_00e39140.cpp'
+        TestSource = '00/e3/NScriptCVAssassinAttacksScript_WatchForAssassinDead_00e39140_test.cpp'
+        PassPattern = '00e39140_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

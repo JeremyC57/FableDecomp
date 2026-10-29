@@ -1605,3 +1605,7 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Check a released/catalog row's first and last instruction before grading: 9 of chunk 567's 12 pass 9 rows were over-runs or mid-function fragments.
 - A by-value CCountedPointer local keeps a private stack slot for its whole scope unless BOTH its ctor and dtor bodies are visible in the TU (same-TU noinline template bodies); with both it shares retail's slot (0x0093B1D0, chunk 568).
 - A spurious store-then-reload in a copy ctor can come from a wrong frame: fix the frame size first (0x0093B1D0).
+- STLport 4.6 sort internals (`__introsort_loop` etc.) match written verbatim under `#pragma inline_recursion(on)` (0x00CBD700, chunk 569).
+- CScriptDef retail offsets = Ego_r offset minus the shrink of the vectors before the member (WB_LowHealth 0xEE4 -> 0xE34, AssassinExperience 0x418 -> 0x3E4) (chunk 569).
+- Script watch loops: `for(;;)` with the terminate check at the top and `break` exits gives retail's rotated loop; CScriptThing wrappers as `Data==0||...` / `Data!=0&&...` give `test al,al` (0x00E39140).
+- `x*0.0f` is never folded by VC7.1, `x*1.0f` is (matrix builders, 0x00BEB6C0). libvorbis statics are LTCG-private (register-kept args): park as lane gaps on sight (0x00C8F200).

@@ -1,0 +1,4 @@
+address	name	evidence
+00cbd700	std::__introsort_loop<CActiveScriptPair*,CActiveScriptPair,int,CActiveScriptLess>	STLport 4.6 structure; caller sort 0xCBDEF0 from CScriptBase::OnScriptedEntityActivated (Ego_r EntityScripts); chunk 569
+00e12b30	NScript::CQ_WaspBossScript::GuildmasterHelp	Ego_r.pdb symbol + spawn string "GuildmasterHelp" + DoMission store 0xE12A37; chunk 569
+00e39140	NScript::CV_AssassinAttacksScript::WatchForAssassinDead	Ego_r.pdb symbol + CSpawnedFunc1 spawn string 0x12E37D8 + ret 0Ch; chunk 569

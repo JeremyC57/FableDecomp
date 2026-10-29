@@ -1,0 +1,18 @@
+addr       parity           behav  name
+00cbd700   WARN RELOC_NAME: ??$__unguarded_partition@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@U12@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@PAU10@0U10@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z -> 00cbb710 labelled 'SortedMerge_WithRefcount'
+00cbd700   WARN RELOC_NAME: ??0?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@QAE@ABU01@@Z -> 00cb9c20 labelled 'SCountedRecord_00cb9c20::SCountedRecord_00cb9c20'
+00cbd700   WARN RELOC_NAME: ??$__introsort_loop@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@U12@HV?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@00HV?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z -> 00cbd700 labelled 'CItem_QuickSort'
+00cbd700   WARN RELOC_NAME: ??$__partial_sort@PAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@U12@V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@std@@YIXPAU?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@0@000V?$CKeyPairCompareLess@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@@@Z -> 00cbcfc0 labelled '_Sort_heap<std::_Sort_heap<std::pair<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>*,CKeyPairCompareLess<unsigned___int64,CCountedPointer<CActiveEntityScriptBase>_>_>'
+00cbd700   RELOCATION_MATCH PASS   __introsort_loop
+00e12b30   RELOCATION_MATCH PASS   GuildmasterHelp
+00e39140   RELOCATION_MATCH PASS   WatchForAssassinDead
+
+WINS: 3
+  00cbd700 RELOCATION_MATCH std::??$__introsort_loop@
+  00e12b30 RELOCATION_MATCH NScript::CQ_WaspBossScript::?GuildmasterHelp@CQ_WaspBossScript@NScript@@QAEXXZ
+  00e39140 RELOCATION_MATCH NScript::CV_AssassinAttacksScript::?WatchForAssassinDead@CV_AssassinAttacksScript@NScript@@QAEXVCScriptThing@@@Z
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  std_introsortloop_00cbd700
+  NScriptCQWaspBossScript_GuildmasterHelp_00e12b30
+  NScriptCVAssassinAttacksScript_WatchForAssassinDead_00e39140
