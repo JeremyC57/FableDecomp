@@ -70,13 +70,13 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Verified functional or matching reconstruction | **18,579 · 37.48%** |
-| Byte-identical reconstruction | **8,082 · 16.30%** |
+| Landed byte-matching C++ (genuine) | **44,494 · 89.76%** |
+| Retail function bytes reproduced | **4,980,401 · 37.58%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
-Current functional-or-matching coverage is **37.48%** of the 49,568-function catalog.
-Of that verified set, **16.30%** is byte-identical C++.
+Landed byte-matching C++ covers **89.76%** of the 49,568-function catalog by count
+and **37.58%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,27 +93,30 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Curated sources, VC7.1-compiled **and** behaviour-gated | **18,604** |
-| Reconstruction | Verified functional or matching C++ | **18,579** (37.48%) |
-| Reconstruction | — of which byte-**identical** C++ | 8,082 (16.30%) |
-| Reconstruction | — of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 292 |
-| Readability | Landed sources typed onto shared PDB-named engine headers | 651 |
-| Readability | Throwaway local `struct T {...}` declarations remaining | 4,417 |
-| Reconstruction | Compiled sources still honestly `DIFFER` | 43 |
-| Reconstruction | Compiled rows lacking a Ghidra function-start oracle | 0 |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **51,480** |
+| Reconstruction | Landed byte-matching genuine C++, original catalog | **44,494** (89.76%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,267 known functions | 51,427 (89.80%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 4,980,401 (37.58%) |
+| Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 134 |
+| Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 21 |
+| Readability (2026-09 snapshot) | Landed sources typed onto shared PDB-named engine headers | 651 |
+| Readability (2026-09 snapshot) | Throwaway local `struct T {...}` declarations remaining | 4,417 |
+| Reconstruction (2026-09 snapshot) | Compiled sources still honestly `DIFFER` | 43 |
+| Reconstruction (2026-09 snapshot) | Compiled rows lacking a Ghidra function-start oracle | 0 |
 | Auto-RE intake | Generated candidates / structural checker PASS | 1,066 / 1,053 |
 | Boot path | GFMain direct-call sites proven | **257 / 257** (100.00%) |
 | Boot path | Callable authored GFMain phases | **10 / 10** (100.00%) |
 | Boot path | Current Phase 10 direct calls proven | **21 / 21** (100.00%) |
 | Modern C++23 | GFMain phases promoted into the modern startup lane | **0 / 10** (0.00%) |
 
-Counts above are from the 2026-10-29 canonical refresh:
-`rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json`,
-`rebuild/COVERAGE.md`, and the naming-quality reports.
+Counts above are from the 2026-10-29 canonical refresh: landing rows from
+`rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1` (`tools/landed_metrics.py`);
+analysis rows from `rebuild/manifest/status.json`, `rebuild/compile-gate/retail-parity.json` and the
+naming-quality reports (rows marked 2026-09 snapshot are not refreshed by the Linux landing lane).
 
 Generated agent output is tracked separately and is never counted merely
-because a structural checker accepted it. The 37.48% figure is intentionally the strict,
-whole-executable denominator. Boot-path figures are a separate view of
+because a structural checker accepted it. The 89.76% figure is intentionally the strict,
+whole-executable denominator; the byte figure sizes each unlanded function to the next function start, an upper bound. Boot-path figures are a separate view of
 the 3,952-byte `GFMain` coordinator, not an estimate of total engineering time.
 The C++23 startup figure is deliberately separate too: exact x86 parity and
 readable integration work do not count as a modern port merely because their

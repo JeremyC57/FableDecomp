@@ -41,51 +41,17 @@ def read_tsv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(handle, delimiter="\t"))
 
 
-def verified_public_counts(
-    status: dict[str, object],
-    parity: dict[str, object],
-    coverage: dict[str, object],
-) -> tuple[int, int]:
-    """Return whole-project verified and byte-identical function counts."""
-    candidate_matches = (
-        int(parity["matching"]) + int(parity["relocation_matching"])
-    )
-    verified = (
-        candidate_matches
-        + int(status["lift_matching"])
-        + int(status["lift_functional"])
-    )
-    byte_identical = (
-        int(parity["matching"]) + int(status["lift_matching"])
-    )
-    if int(coverage["verified_lifted"]) != verified:
-        raise RuntimeError(
-            "coverage/README verified-function sources disagree: "
-            f"coverage={coverage['verified_lifted']} computed={verified}"
-        )
-    if int(coverage["candidate_retail_matches"]) != int(parity["matching"]):
-        raise RuntimeError(
-            "coverage/parity exact-match sources disagree: "
-            f"coverage={coverage['candidate_retail_matches']} "
-            f"parity={parity['matching']}"
-        )
-    return verified, byte_identical
-
-
-def replace_summary_denominator(text: str, total: int) -> str:
-    """Keep the prose denominator synchronized with the dashboard table."""
+def replace_landed_sentence(text: str, count_pct: str, total: int, bytes_pct: str) -> str:
+    """Keep the prose landed-coverage sentence in step with the dashboard table."""
     updated, count = re.subn(
-        r"(functional-or-matching coverage is \*\*"
-        r"\d+(?:\.\d+)?%\*\* of the )"
-        r"\d{1,3}(?:,\d{3})*"
-        r"(-function catalog\.)",
-        rf"\g<1>{total:,}\g<2>",
+        r"(Landed byte-matching C\+\+ covers \*\*)\d+(?:\.\d+)?%(\*\* of the )\d{1,3}(?:,\d{3})*"
+        r"(-function catalog by count\nand \*\*)\d+(?:\.\d+)?%(\*\* of retail function bytes)",
+        rf"\g<1>{count_pct}\g<2>{total:,}\g<3>{bytes_pct}\g<4>",
         text,
         count=1,
     )
     if count != 1:
-        raise RuntimeError(
-            "current functional-or-matching catalog denominator not found")
+        raise RuntimeError("landed coverage sentence not found")
     return updated
 
 
@@ -121,9 +87,12 @@ def main() -> int:
         ).read_text(encoding="utf-8-sig")
     )
     total = int(status["catalog_functions"])
-    verified, byte_identical = verified_public_counts(
-        status, parity, coverage
-    )
+    # Landing progress comes from the live catalog (tools/landed_metrics.py, merged into COVERAGE.json as
+    # landed_*); status.json / retail-parity.json are the old Windows pipeline's snapshot.
+    landed = int(coverage["landed_genuine_original"])
+    landed_total = int(coverage["landed_original_functions"])
+    landed_bytes = int(coverage["landed_matched_bytes_genuine"])
+    bytes_total = landed_bytes + int(coverage["landed_unlanded_bytes_estimate"])
     gfmain_calls = read_tsv(root / "rebuild" / "integration" / "gfmain_calls.tsv")
     gfmain_phases = read_tsv(root / "rebuild" / "integration" / "gfmain_phases.tsv")
     matching_grades = {"MATCH", "EXACT", "RELOCATION_MATCH"}
@@ -147,12 +116,11 @@ def main() -> int:
 
     snapshot_values = {
         "Catalogued retail functions": f"**{total:,}**",
-        "Verified functional or matching reconstruction": (
-            f"**{verified:,} · {percentage(verified, total, 2)}**"
+        "Landed byte-matching C++ (genuine)": (
+            f"**{landed:,} · {percentage(landed, landed_total, 2)}**"
         ),
-        "Byte-identical reconstruction": (
-            f"**{byte_identical:,} · "
-            f"{percentage(byte_identical, total, 2)}**"
+        "Retail function bytes reproduced": (
+            f"**{landed_bytes:,} · {percentage(landed_bytes, bytes_total, 2)}**"
         ),
     }
     values = {
@@ -172,17 +140,24 @@ def main() -> int:
         "Complete non-`undefined` prototype": percentage(
             int(status["prototype_complete"]), total
         ),
-        "Curated sources, VC7.1-compiled **and** behaviour-gated": (
-            f"**{int(status['compiled_candidates']):,}**"
+        "Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated)": (
+            f"**{int(coverage['landed_catalog_rows']):,}**"
         ),
-        "Verified functional or matching C++": (
-            f"**{verified:,}** ({percentage(verified, total, 2)})"
+        "Landed byte-matching genuine C++, original catalog": (
+            f"**{landed:,}** ({percentage(landed, landed_total, 2)})"
         ),
-        "— of which byte-**identical** C++": (
-            f"{byte_identical:,} ({percentage(byte_identical, total, 2)})"
+        f"Landed byte-matching genuine C++, all {int(coverage['landed_known_functions']):,} known functions": (
+            f"{int(coverage['landed_genuine_known']):,} "
+            f"({percentage(int(coverage['landed_genuine_known']), int(coverage['landed_known_functions']), 2)})"
         ),
-        "— of which hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction)": (
-            f"{int(coverage.get('asm_bake_matching', 0)):,}"
+        "Retail function bytes reproduced by genuine C++": (
+            f"{landed_bytes:,} ({percentage(landed_bytes, bytes_total, 2)})"
+        ),
+        "— landed rows using retail inline asm (grade `retail_asm`, counted as genuine)": (
+            f"{int(coverage['landed_retail_asm']):,}"
+        ),
+        "— landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction)": (
+            f"{int(coverage['landed_asm_bake']):,}"
         ),
         "Landed sources typed onto shared PDB-named engine headers": (
             f"{int(coverage.get('landed_using_engine_header', 0)):,}"
@@ -227,31 +202,12 @@ def main() -> int:
     if count != 1:
         raise RuntimeError("canonical refresh date sentence not found")
 
-    strict_parity = percentage(verified, total, 2)
-    text, count = re.subn(
-        r"(functional-or-matching coverage is \*\*)"
-        r"\d+(?:\.\d+)?%(\*\*)",
-        rf"\g<1>{strict_parity}\g<2>",
-        text,
-        count=1,
-    )
-    if count != 1:
-        raise RuntimeError(
-            "current functional-or-matching coverage sentence not found")
-    text = replace_summary_denominator(text, total)
-    exact_parity = percentage(byte_identical, total, 2)
-    text, count = re.subn(
-        r"(Of that verified set, \*\*)"
-        r"\d+(?:\.\d+)?%(\*\* is byte-identical C\+\+\.)",
-        rf"\g<1>{exact_parity}\g<2>",
-        text,
-        count=1,
-    )
-    if count != 1:
-        raise RuntimeError("current byte-identical coverage sentence not found")
+    count_pct = percentage(landed, landed_total, 2)
+    bytes_pct = percentage(landed_bytes, bytes_total, 2)
+    text = replace_landed_sentence(text, count_pct, landed_total, bytes_pct)
     text, count = re.subn(
         r"(The )\d+(?:\.\d+)?%( figure is intentionally the strict,)",
-        rf"\g<1>{strict_parity}\g<2>",
+        rf"\g<1>{count_pct}\g<2>",
         text,
         count=1,
     )

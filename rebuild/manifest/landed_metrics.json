@@ -1,0 +1,17 @@
+{
+  "catalog_rows": 51480,
+  "known_functions": 57267,
+  "original_functions": 49568,
+  "landed_known": 51448,
+  "landed_original": 44515,
+  "landed_genuine_known": 51427,
+  "landed_genuine_original": 44494,
+  "genuine": 51325,
+  "retail_asm": 134,
+  "asm_bake": 21,
+  "missing_source": 0,
+  "matched_bytes": 4985192,
+  "matched_bytes_genuine": 4980401,
+  "unlanded_bytes_estimate": 8272800,
+  "text_bytes": 14858408
+}

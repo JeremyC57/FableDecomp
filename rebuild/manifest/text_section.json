@@ -1,0 +1,6 @@
+{
+  "section": ".text",
+  "virtual_address": "00401000",
+  "size": 14858408,
+  "note": "VirtualSize of retail Fable.exe .text (PE section header); a size only, no retail bytes"
+}

@@ -1,6 +1,23 @@
 # Full-decompilation coverage dashboard
 
-Generated: `2026-10-29T06:46:31+00:00`
+Generated: `2026-10-29T06:59:20+00:00`
+
+## Landed reconstruction (live)
+
+From `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1`, which the landing tool writes for every row that grades MATCH or RELOCATION_MATCH against retail and passes its behaviour test (`tools/landed_metrics.py`). The catalog does not split the two grades.
+
+| Measure | Landed | Denominator | Coverage | Meaning |
+|---|---:|---:|---:|---|
+| Original catalog functions landed, genuine C++ | 44,494 | 49,568 | 89.764% | Byte-matching C++ (no hand-written asm bake) for the original analysis catalog |
+| All known functions landed, genuine C++ | 51,427 | 57,267 | 89.802% | Adds the gap-scan and boundary functions found later |
+| Retail function bytes reproduced, genuine C++ | 4,980,401 | 13,253,201 | 37.579% | Landed row lengths over landed + unlanded (unlanded sized to the next function start: an upper bound) |
+| Retail `.text` bytes reproduced, genuine C++ | 4,980,401 | 14,858,408 | 33.519% | Against the whole `.text` section (includes padding and inline data) |
+| Landed rows using retail inline asm (grade `retail_asm`) | 134 | 51,480 | — | Counted as genuine: retail itself ran the asm (owner rule 2026-10-24) |
+| Landed rows that are hand-written asm bakes | 21 | 51,480 | — | Byte-exact oracles, **not** reconstruction; excluded above |
+
+## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, 2026-09-07)
+
+Written by `tools/bootstrap_rebuild_tree.py` (the Windows pipeline). The Linux lane does not refresh it, so the compile, parity and match rows below stop at that date; use the live table above for landing progress.
 
 | Stage | Complete | Denominator | Coverage | Meaning |
 |---|---:|---:|---:|---|
@@ -30,7 +47,7 @@ Generated: `2026-10-29T06:46:31+00:00`
 
 ## Interpretation
 
-The reverse-engineering database is near complete, while functional source reconstruction remains at proof-of-pipeline scale. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
+The reverse-engineering database is near complete. Landed byte-matching C++ covers 89.764% of the original catalog by function count but 37.579% by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.
 
 The clean-decompile sweep predates later function discovery, so its denominator is 49,082 while the current catalog contains 49,568 functions. The dashboard does not silently extrapolate the missing 486 measurements.
 

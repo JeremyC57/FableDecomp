@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -28,6 +29,15 @@ def main() -> int:
     naming_triage = json.loads(naming_triage_path.read_text(encoding="utf-8")) if naming_triage_path.exists() else {}
     header_metrics_path = rebuild / "manifest" / "header_metrics.json"
     hm = json.loads(header_metrics_path.read_text(encoding="utf-8")) if header_metrics_path.exists() else {}
+    # Live landing counts: auto-re-candidates.tsv + build_candidates.ps1 are what the landing tool writes.
+    # status.json (above) is the old Windows pipeline's snapshot and does not see Linux-lane landings.
+    sys.path.insert(0, str(root / "tools"))
+    import landed_metrics
+    landed_metrics.main()
+    lm = json.loads((rebuild / "manifest" / "landed_metrics.json").read_text(encoding="utf-8"))
+    import subprocess
+    status_date = subprocess.run(["git", "-C", str(root), "log", "-1", "--format=%cs", "--", str(status_path)],
+                                 capture_output=True, text=True).stdout.strip() or "undated"
     total = status["catalog_functions"]
     accepted_names = total - status["naming_quality_review"]
     verified = (
@@ -66,6 +76,7 @@ def main() -> int:
         "engine_headers_generated": hm.get("engine_headers_generated", 0),
         "candidate_integrity_pass": gate.get("integrity_pass", 0),
         "candidate_host_syntax_pass": gate.get("host_cpp20_syntax_pass", 0),
+        **{f"landed_{k}" if not k.startswith("landed_") else k: v for k, v in lm.items()},
     }
     json_temp = rebuild / "COVERAGE.json.tmp"
     json_temp.write_text(json.dumps(dashboard, indent=2) + "\n", encoding="utf-8")
@@ -75,6 +86,26 @@ def main() -> int:
         "# Full-decompilation coverage dashboard",
         "",
         f"Generated: `{timestamp}`",
+        "",
+        "## Landed reconstruction (live)",
+        "",
+        "From `rebuild/oracles/auto-re-candidates.tsv` and `rebuild/build_candidates.ps1`, which the landing tool writes "
+        "for every row that grades MATCH or RELOCATION_MATCH against retail and passes its behaviour test "
+        "(`tools/landed_metrics.py`). The catalog does not split the two grades.",
+        "",
+        "| Measure | Landed | Denominator | Coverage | Meaning |",
+        "|---|---:|---:|---:|---|",
+        f"| Original catalog functions landed, genuine C++ | {lm['landed_genuine_original']:,} | {lm['original_functions']:,} | {pct(lm['landed_genuine_original'], lm['original_functions'])} | Byte-matching C++ (no hand-written asm bake) for the original analysis catalog |",
+        f"| All known functions landed, genuine C++ | {lm['landed_genuine_known']:,} | {lm['known_functions']:,} | {pct(lm['landed_genuine_known'], lm['known_functions'])} | Adds the gap-scan and boundary functions found later |",
+        f"| Retail function bytes reproduced, genuine C++ | {lm['matched_bytes_genuine']:,} | {lm['matched_bytes_genuine'] + lm['unlanded_bytes_estimate']:,} | {pct(lm['matched_bytes_genuine'], lm['matched_bytes_genuine'] + lm['unlanded_bytes_estimate'])} | Landed row lengths over landed + unlanded (unlanded sized to the next function start: an upper bound) |",
+        f"| Retail `.text` bytes reproduced, genuine C++ | {lm['matched_bytes_genuine']:,} | {lm['text_bytes']:,} | {pct(lm['matched_bytes_genuine'], lm['text_bytes'])} | Against the whole `.text` section (includes padding and inline data) |",
+        f"| Landed rows using retail inline asm (grade `retail_asm`) | {lm['retail_asm']:,} | {lm['catalog_rows']:,} | — | Counted as genuine: retail itself ran the asm (owner rule 2026-10-24) |",
+        f"| Landed rows that are hand-written asm bakes | {lm['asm_bake']:,} | {lm['catalog_rows']:,} | — | Byte-exact oracles, **not** reconstruction; excluded above |",
+        "",
+        f"## Analysis and pipeline snapshot (`rebuild/manifest/status.json`, {status_date})",
+        "",
+        "Written by `tools/bootstrap_rebuild_tree.py` (the Windows pipeline). The Linux lane does not refresh it, so the "
+        "compile, parity and match rows below stop at that date; use the live table above for landing progress.",
         "",
         "| Stage | Complete | Denominator | Coverage | Meaning |",
         "|---|---:|---:|---:|---|",
@@ -104,7 +135,7 @@ def main() -> int:
         "",
         "## Interpretation",
         "",
-        "The reverse-engineering database is near complete, while functional source reconstruction remains at proof-of-pipeline scale. Auto-RE output is deliberately not counted as reconstructed source until it compiles.",
+        f"The reverse-engineering database is near complete. Landed byte-matching C++ covers {pct(lm['landed_genuine_original'], lm['original_functions'])} of the original catalog by function count but {pct(lm['matched_bytes_genuine'], lm['matched_bytes_genuine'] + lm['unlanded_bytes_estimate'])} by function bytes: the functions left are the large ones. Auto-RE output is deliberately not counted as reconstructed source until it compiles.",
         "",
         f"The clean-decompile sweep predates later function discovery, so its denominator is {status['clean_decompile_measured']:,} while the current catalog contains {total:,} functions. The dashboard does not silently extrapolate the missing {total - status['clean_decompile_measured']:,} measurements.",
         "",
