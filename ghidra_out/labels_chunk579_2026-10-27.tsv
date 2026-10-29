@@ -1,0 +1,15 @@
+address	name	evidence
+00f25e70	CArenaCreatureDef::Transfer	chunk 579: slot 18 of def vtable 0x012FB358 (GetSizeofClass returns 0x38); Ego_r.pdb
+00f1a8f0	NScript::CQ_ArenaScript::CArenaEnemy::OnPredicateFail	chunk 579: slot 5 of entity vtable 0x012F9C50 stored by Alloc 0x00F1A810; Ego_r.pdb
+00f26b90	NScript::CQ_HeroSoulsArenaScript::Init	chunk 579: slot 3 of quest vtable 0x012D3994; Ego_r.pdb
+00f0eda0	NScript::CQ_AmbushTradersScript::WatchForSpyDeath	chunk 579: CSpawnedFunc1 member-pointer store at 0x00F0D7B9 after the "WatchForSpyDeath" thread name; Ego_r.pdb
+00ddb570	NScript::CQ_PrisonRaceScript::CPrisonRaceGuard::Init	chunk 579: slot 2 of entity vtable 0x012DC97C; Ego_r.pdb
+00f27200	std::vector<CHeroSoulsCreatureDef>::operator=	chunk 579: 0x34-stride landed callees; Ego_r name set
+00e25ab0	NScript::CQS_GuardianSisterInfoScript::Main	chunk 579: slot 2 of script vtable 0x012E1DAC; Ego_r.pdb
+00f33810	std::vector<CConversation>::_M_fill_insert	chunk 579: landed CConversation callees + _M_insert_overflow 0x00F33A10; only caller resize 0x00F33730
+00ef5670	NScript::CPersonalScript_EmptyScript::CCrate2::Main	chunk 579: slot 1 of entity vtable 0x012F5FAC; Ego_r.pdb
+00ef54a0	NScript::CPersonalScript_EmptyScript::CCrate1::Main	chunk 579: slot 1 of entity vtable 0x012F5F90; Ego_r.pdb
+00e24760	NScript::CPredicate_And::CPredicate_And	chunk 579: stores vtable 0x012E1B70; catalog said CConsoleCommandParameters ctor
+00f26c30	std::vector<CHeroSoulsRoundDef>::operator=	chunk 579: catalog said std_vector_Conversation_Assign3
+00f25e40	CArenaCreatureDef::~CArenaCreatureDef	chunk 579: catalog said ~CAIStateGroup_HoverHornetQueen
+00e54d80	CConversation::~CConversation	chunk 579: catalog said CTCInventoryMap::ResetPrimitiveHandles

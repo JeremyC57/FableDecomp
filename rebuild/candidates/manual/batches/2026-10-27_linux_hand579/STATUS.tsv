@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00f25e70	RELOCATION_MATCH	143v143	PASS	CArenaCreatureDef::Transfer (def vtable 0x012FB358 slot 18); first grade
+00f1a8f0	RELOCATION_MATCH	147v147	PASS	NScript::CQ_ArenaScript::CArenaEnemy::OnPredicateFail (entity vtable 0x012F9C50 slot 5); regraded with engine/CBaseClass.h
+00f26b90	RELOCATION_MATCH	149v149	PASS	NScript::CQ_HeroSoulsArenaScript::Init (quest vtable 0x012D3994 slot 3); first grade
+00f0eda0	RELOCATION_MATCH	230v230	PASS	NScript::CQ_AmbushTradersScript::WatchForSpyDeath (spawned thread, store at 0x00F0D7B9); for(;;) form, two grades
+00ddb570	RELOCATION_MATCH	421v421	PASS	NScript::CQ_PrisonRaceScript::CPrisonRaceGuard::Init (entity vtable 0x012DC97C slot 2); first grade
+00f27200	RELOCATION_MATCH	422v422	PASS	std::vector<CHeroSoulsCreatureDef>::operator=; first grade
+00e25ab0	RELOCATION_MATCH	423v423	PASS	NScript::CQS_GuardianSisterInfoScript::Main (script vtable 0x012E1DAC slot 2); first grade
+00f33810	RELOCATION_MATCH	450v450	PASS	std::vector<CConversation>::_M_fill_insert (only caller resize 0x00F33730); first probe
+00ef5670	RELOCATION_MATCH	457v457	PASS	NScript::CPersonalScript_EmptyScript::CCrate2::Main (entity vtable 0x012F5FAC slot 1); first probe
+00ef54a0	RELOCATION_MATCH	463v463	PASS	NScript::CPersonalScript_EmptyScript::CCrate1::Main (entity vtable 0x012F5F90 slot 1); first probe

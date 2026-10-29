@@ -364261,6 +364261,76 @@ $catalog = @(
         TestSource = '00/f0/NScriptCQAmbushTradersScriptCATBanditAlly_Init_00f05f30_test.cpp'
         PassPattern = '00f05f30_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ddb570'
+        Module = 'NScript::CQ_PrisonRaceScript::CPrisonRaceGuard'
+        Source = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_Init_00ddb570.cpp'
+        TestSource = '00/dd/NScriptCQPrisonRaceScriptCPrisonRaceGuard_Init_00ddb570_test.cpp'
+        PassPattern = '00ddb570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e25ab0'
+        Module = 'NScript::CQS_GuardianSisterInfoScript'
+        Source = '00/e2/NScriptCQSGuardianSisterInfoScript_Main_00e25ab0.cpp'
+        TestSource = '00/e2/NScriptCQSGuardianSisterInfoScript_Main_00e25ab0_test.cpp'
+        PassPattern = '00e25ab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef54a0'
+        Module = 'NScript::CPersonalScript_EmptyScript::CCrate1'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCCrate1_Main_00ef54a0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCCrate1_Main_00ef54a0_test.cpp'
+        PassPattern = '00ef54a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef5670'
+        Module = 'NScript::CPersonalScript_EmptyScript::CCrate2'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCCrate2_Main_00ef5670.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCCrate2_Main_00ef5670_test.cpp'
+        PassPattern = '00ef5670_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f0eda0'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/f0/NScriptCQAmbushTradersScript_WatchForSpyDeath_00f0eda0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScript_WatchForSpyDeath_00f0eda0_test.cpp'
+        PassPattern = '00f0eda0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f1a8f0'
+        Module = 'NScript::CQ_ArenaScript::CArenaEnemy'
+        Source = '00/f1/NScriptCQArenaScriptCArenaEnemy_OnPredicateFail_00f1a8f0.cpp'
+        TestSource = '00/f1/NScriptCQArenaScriptCArenaEnemy_OnPredicateFail_00f1a8f0_test.cpp'
+        PassPattern = '00f1a8f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f25e70'
+        Module = 'CArenaCreatureDef'
+        Source = '00/f2/CArenaCreatureDef_Transfer_00f25e70.cpp'
+        TestSource = '00/f2/CArenaCreatureDef_Transfer_00f25e70_test.cpp'
+        PassPattern = '00f25e70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f26b90'
+        Module = 'NScript::CQ_HeroSoulsArenaScript'
+        Source = '00/f2/NScriptCQHeroSoulsArenaScript_Init_00f26b90.cpp'
+        TestSource = '00/f2/NScriptCQHeroSoulsArenaScript_Init_00f26b90_test.cpp'
+        PassPattern = '00f26b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f27200'
+        Module = 'std::vector<CHeroSoulsCreatureDef>'
+        Source = '00/f2/stdvectorCHeroSoulsCreatureDef_operator_00f27200.cpp'
+        TestSource = '00/f2/stdvectorCHeroSoulsCreatureDef_operator_00f27200_test.cpp'
+        PassPattern = '00f27200_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f33810'
+        Module = 'std::vector<CConversation>'
+        Source = '00/f3/stdvectorCConversation_Mfillinsert_00f33810.cpp'
+        TestSource = '00/f3/stdvectorCConversation_Mfillinsert_00f33810_test.cpp'
+        PassPattern = '00f33810_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

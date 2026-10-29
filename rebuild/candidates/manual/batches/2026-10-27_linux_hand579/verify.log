@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00ddb570   RELOCATION_MATCH PASS   Init
+00e25ab0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00e25ab0   RELOCATION_MATCH PASS   Main
+00ef54a0   WARN RELOC_NAME: ??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z -> 00e24760 labelled 'CConsoleCommandParameters::CConsoleCommandParameters'
+00ef54a0   RELOCATION_MATCH PASS   Main
+00ef5670   WARN RELOC_NAME: ??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z -> 00e24760 labelled 'CConsoleCommandParameters::CConsoleCommandParameters'
+00ef5670   RELOCATION_MATCH PASS   Main
+00f0eda0   RELOCATION_MATCH PASS   WatchForSpyDeath
+00f1a8f0   RELOCATION_MATCH PASS   OnPredicateFail
+00f25e70   RELOCATION_MATCH PASS   Transfer
+00f26b90   WARN RELOC_NAME: ??4?$vector@VCHeroSoulsRoundDef@@V?$allocator@VCHeroSoulsRoundDef@@@std@@@std@@QAEAAV01@ABV01@@Z -> 00f26c30 labelled '_global::std_vector_Conversation_Assign3'
+00f26b90   RELOCATION_MATCH PASS   Init
+00f27200   WARN RELOC_NAME: ?_M_clear@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@IAEXXZ -> 00f273b0 labelled 'CRetailVector_poly0x34::~CRetailVector_poly0x34'
+00f27200   RELOCATION_MATCH PASS   operator=
+00f33810   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVCConversation@@IV1@@std@@YIPAVCConversation@@PAV1@IABV1@@Z -> 00f339e0 labelled '_global::UninitFillN_CElement92_00e54ca0_00f339e0'
+00f33810   RELOCATION_MATCH PASS   _M_fill_insert
+
+WINS: 10
+  00ddb570 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRaceGuard::?Init@CPrisonRaceGuard@CQ_PrisonRaceScript@NScript@@EAEXXZ
+  00e25ab0 RELOCATION_MATCH NScript::CQS_GuardianSisterInfoScript::?Main@CQS_GuardianSisterInfoScript@NScript@@UAEXXZ
+  00ef54a0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CCrate1::?Main@CCrate1@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00ef5670 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CCrate2::?Main@CCrate2@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00f0eda0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?WatchForSpyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+  00f1a8f0 RELOCATION_MATCH NScript::CQ_ArenaScript::CArenaEnemy::?OnPredicateFail@CArenaEnemy@CQ_ArenaScript@NScript@@EAEXXZ
+  00f25e70 RELOCATION_MATCH CArenaCreatureDef::?Transfer@CArenaCreatureDef@@UAEXAAVCPersistContext@@@Z
+  00f26b90 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::?Init@CQ_HeroSoulsArenaScript@NScript@@UAEXXZ
+  00f27200 RELOCATION_MATCH std::vector<CHeroSoulsCreatureDef>::??4?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00f33810 RELOCATION_MATCH std::vector<CConversation>::?_M_fill_insert@?$vector@VCConversation@@V?$allocator@VCConversation@@@std@@@std@@QAEXPAVCConversation@@IABV3@@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NScriptCQPrisonRaceScriptCPrisonRaceGuard_Init_00ddb570
+  NScriptCQSGuardianSisterInfoScript_Main_00e25ab0
+  NScriptCPersonalScriptEmptyScriptCCrate1_Main_00ef54a0
+  NScriptCPersonalScriptEmptyScriptCCrate2_Main_00ef5670
+  NScriptCQAmbushTradersScript_WatchForSpyDeath_00f0eda0
+  NScriptCQArenaScriptCArenaEnemy_OnPredicateFail_00f1a8f0
+  CArenaCreatureDef_Transfer_00f25e70
+  NScriptCQHeroSoulsArenaScript_Init_00f26b90
+  stdvectorCHeroSoulsCreatureDef_operator_00f27200
+  stdvectorCConversation_Mfillinsert_00f33810

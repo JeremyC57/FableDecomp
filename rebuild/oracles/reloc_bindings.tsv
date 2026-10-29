@@ -35150,3 +35150,10 @@ _icomp	00ca1bc0	00ca1be0
 ??$Transfer@W4EFeatAttackType@@@CPersistContext@@QAEXPBDAAW4EFeatAttackType@@ABW41@@Z	00f2d4d0	00f2d330
 ?SetBanditAllegiences@CQ_AmbushTradersScript@NScript@@QAEXABVCScriptThing@@@Z	00f060d0	00f05f30
 ?WatchForHeroAttackOnBandit@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z	00f061e0	00f05f30
+??_7?$CEntityScriptBinding@VCQS_GuardianSisterInfoScript@NScript@@@@6B@	012e1e10	00e25ab0
+?Alloc@CMazeAtTavern@CQS_GuardianSisterInfoScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e25c70	00e25ab0
+??4?$vector@VCHeroSoulsRoundDef@@V?$allocator@VCHeroSoulsRoundDef@@@std@@@std@@QAEAAV01@ABV01@@Z	00f26c30	00f26b90
+??$_M_allocate_and_copy@PBVCHeroSoulsCreatureDef@@@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@IAEPAVCHeroSoulsCreatureDef@@IPBV2@0@Z	00f273f0	00f27200
+?_M_clear@?$vector@VCHeroSoulsCreatureDef@@V?$allocator@VCHeroSoulsCreatureDef@@@std@@@std@@IAEXXZ	00f273b0	00f27200
+??$uninitialized_fill_n@PAVCConversation@@IV1@@std@@YIPAVCConversation@@PAV1@IABV1@@Z	00f339e0	00f33810
+?_M_insert_overflow@?$vector@VCConversation@@V?$allocator@VCConversation@@@std@@@std@@IAEXPAVCConversation@@ABV3@ABU__false_type@2@I_N@Z	00f33a10	00f33810
