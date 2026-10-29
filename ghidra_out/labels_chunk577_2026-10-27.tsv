@@ -1,0 +1,11 @@
+address	name	evidence
+00e5e240	NScript::CV_BodyGuardScript::GetHenchmanTypeFromString	chunk 577: both callers store the result in HenchManType (only member of that type in Ego_r + FableWin)
+00d34d40	std::vector<CFireHeartPatternDef>::operator=	chunk 577: callees are the landed vector<CFireHeartPatternDef> helpers (0x34 stride); Ego_r + FableWin name set
+00dde7f0	NScript::CQ_PrisonWardenGameScript::CSecretBook::Init	chunk 577: Init slot 2 of entity vtable 0x012DCC6C; Ego_r.pdb
+00e7e210	NScript::CV_FishingCompetitionScript::OnPersist	chunk 577: OnPersist slot 4 of vtable 0x012EA478; persist key strings = Ego_r members
+00f033f0	NScript::CQ_AmbushTradersScript::WatchForAllGuardsDead	chunk 577: thread-name literal at spawn site 0x00F02B19; Ego_r.pdb
+00dcedf0	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GetNearestCrateToMe	chunk 577: only CScriptThing-returning member of the class in both PDBs
+00e54aa0	std::vector<CConversation>::operator=	chunk 577: callees are the landed CConversation operator= / copy ctor; both PDBs
+00e7a410	NScript::CV_ExposeMayorScript::DoMission	chunk 577: "DoMission" literal at the spawn site; calls landed Phase*/EndMission members
+00e5de80	NScript::CV_BodyGuardScript::CBodyGuard::Init	chunk 577: Init slot 2 of entity vtable 0x012E701C; Ego_r.pdb
+00dec8a0	NScript::CQ_SecretPassageScript::Init	chunk 577: Init slot 3 of vtable 0x012DDC30; Ego_r.pdb

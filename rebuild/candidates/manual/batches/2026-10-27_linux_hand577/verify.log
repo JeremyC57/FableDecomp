@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00d34d40   WARN RELOC_NAME: ?_M_clear@?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@IAEXXZ -> 00d34e80 labelled 'CRetailVector_poly0x34::~CRetailVector_poly0x34'
+00d34d40   RELOCATION_MATCH PASS   operator=
+00dcedf0   RELOCATION_MATCH PASS   GetNearestCrateToMe
+00dde7f0   RELOCATION_MATCH PASS   Init
+00dec8a0   RELOCATION_MATCH PASS   Init
+00e54aa0   WARN RELOC_NAME: ?_M_clear@?$vector@VCConversation@@V?$allocator@VCConversation@@@std@@@std@@IAEXXZ -> 00e54c10 labelled 'CRetailVector_poly0x5c::~CRetailVector_poly0x5c'
+00e54aa0   RELOCATION_MATCH PASS   operator=
+00e5de80   RELOCATION_MATCH PASS   Init
+00e5e240   RELOCATION_MATCH PASS   GetHenchmanTypeFromString
+00e7a410   RELOCATION_MATCH PASS   DoMission
+00e7e210   RELOCATION_MATCH PASS   OnPersist
+00f033f0   RELOCATION_MATCH PASS   WatchForAllGuardsDead
+
+WINS: 10
+  00d34d40 RELOCATION_MATCH std::vector<CFireHeartPatternDef>::??4?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00dcedf0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::?GetNearestCrateToMe@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAE?AVCScriptThing@@XZ
+  00dde7f0 RELOCATION_MATCH NScript::CQ_PrisonWardenGameScript::CSecretBook::?Init@CSecretBook@CQ_PrisonWardenGameScript@NScript@@EAEXXZ
+  00dec8a0 RELOCATION_MATCH NScript::CQ_SecretPassageScript::?Init@CQ_SecretPassageScript@NScript@@UAEXXZ
+  00e54aa0 RELOCATION_MATCH std::vector<CConversation>::??4?$vector@VCConversation@@V?$allocator@VCConversation@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00e5de80 RELOCATION_MATCH NScript::CV_BodyGuardScript::CBodyGuard::?Init@CBodyGuard@CV_BodyGuardScript@NScript@@EAEXXZ
+  00e5e240 RELOCATION_MATCH NScript::CV_BodyGuardScript::?GetHenchmanTypeFromString@CV_BodyGuardScript@NScript@@QAEJABVCCharString@@@Z
+  00e7a410 RELOCATION_MATCH NScript::CV_ExposeMayorScript::?DoMission@CV_ExposeMayorScript@NScript@@QAEXXZ
+  00e7e210 RELOCATION_MATCH NScript::CV_FishingCompetitionScript::?OnPersist@CV_FishingCompetitionScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00f033f0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?WatchForAllGuardsDead@CQ_AmbushTradersScript@NScript@@QAEXXZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  stdvectorCFireHeartPatternDef_operator_00d34d40
+  NScriptCQOrchardFarmRaidScriptCCrateTeamMember_GetNearestCrateToMe_00dcedf0
+  NScriptCQPrisonWardenGameScriptCSecretBook_Init_00dde7f0
+  NScriptCQSecretPassageScript_Init_00dec8a0
+  stdvectorCConversation_operator_00e54aa0
+  NScriptCVBodyGuardScriptCBodyGuard_Init_00e5de80
+  NScriptCVBodyGuardScript_GetHenchmanTypeFromString_00e5e240
+  NScriptCVExposeMayorScript_DoMission_00e7a410
+  NScriptCVFishingCompetitionScript_OnPersist_00e7e210
+  NScriptCQAmbushTradersScript_WatchForAllGuardsDead_00f033f0

@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00e5e240	RELOCATION_MATCH	261v261	PASS	NScript::CV_BodyGuardScript::GetHenchmanTypeFromString; 2 grades (Compare body in TU under auto_inline(off))
+00d34d40	RELOCATION_MATCH	315v315	PASS	std::vector<CFireHeartPatternDef>::operator=; 2 grades (__forceinline __uninitialized_copy)
+00dde7f0	RELOCATION_MATCH	330v330	PASS	NScript::CQ_PrisonWardenGameScript::CSecretBook::Init; 1 grade
+00e7e210	RELOCATION_MATCH	337v337	PASS	NScript::CV_FishingCompetitionScript::OnPersist; 1 grade (+1 regrade after the vector model respelling)
+00f033f0	RELOCATION_MATCH	344v344	PASS	NScript::CQ_AmbushTradersScript::WatchForAllGuardsDead; 2 grades (unrotated do-while wait)
+00dcedf0	RELOCATION_MATCH	350v350	PASS	NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember::GetNearestCrateToMe; 4 grades (begin()+n operator[], Info-before-Data assignment)
+00e54aa0	RELOCATION_MATCH	354v354	PASS	std::vector<CConversation>::operator=; 2 grades (__forceinline __copy / __copy_ptrs)
+00e7a410	RELOCATION_MATCH	355v355	PASS	NScript::CV_ExposeMayorScript::DoMission; 1 grade
+00e5de80	RELOCATION_MATCH	364v364	PASS	NScript::CV_BodyGuardScript::CBodyGuard::Init; 1 grade
+00dec8a0	RELOCATION_MATCH	366v366	PASS	NScript::CQ_SecretPassageScript::Init; 1 grade

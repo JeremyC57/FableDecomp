@@ -364128,6 +364128,76 @@ $catalog = @(
         TestSource = '00/f0/NScriptCQAmbushTradersScript_EntityCountDecrease_00f088e0_test.cpp'
         PassPattern = '00f088e0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d34d40'
+        Module = 'std::vector<CFireHeartPatternDef>'
+        Source = '00/d3/stdvectorCFireHeartPatternDef_operator_00d34d40.cpp'
+        TestSource = '00/d3/stdvectorCFireHeartPatternDef_operator_00d34d40_test.cpp'
+        PassPattern = '00d34d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dcedf0'
+        Module = 'NScript::CQ_OrchardFarmRaidScript::CCrateTeamMember'
+        Source = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_GetNearestCrateToMe_00dcedf0.cpp'
+        TestSource = '00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_GetNearestCrateToMe_00dcedf0_test.cpp'
+        PassPattern = '00dcedf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dde7f0'
+        Module = 'NScript::CQ_PrisonWardenGameScript::CSecretBook'
+        Source = '00/dd/NScriptCQPrisonWardenGameScriptCSecretBook_Init_00dde7f0.cpp'
+        TestSource = '00/dd/NScriptCQPrisonWardenGameScriptCSecretBook_Init_00dde7f0_test.cpp'
+        PassPattern = '00dde7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dec8a0'
+        Module = 'NScript::CQ_SecretPassageScript'
+        Source = '00/de/NScriptCQSecretPassageScript_Init_00dec8a0.cpp'
+        TestSource = '00/de/NScriptCQSecretPassageScript_Init_00dec8a0_test.cpp'
+        PassPattern = '00dec8a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e54aa0'
+        Module = 'std::vector<CConversation>'
+        Source = '00/e5/stdvectorCConversation_operator_00e54aa0.cpp'
+        TestSource = '00/e5/stdvectorCConversation_operator_00e54aa0_test.cpp'
+        PassPattern = '00e54aa0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5de80'
+        Module = 'NScript::CV_BodyGuardScript::CBodyGuard'
+        Source = '00/e5/NScriptCVBodyGuardScriptCBodyGuard_Init_00e5de80.cpp'
+        TestSource = '00/e5/NScriptCVBodyGuardScriptCBodyGuard_Init_00e5de80_test.cpp'
+        PassPattern = '00e5de80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e5e240'
+        Module = 'NScript::CV_BodyGuardScript'
+        Source = '00/e5/NScriptCVBodyGuardScript_GetHenchmanTypeFromString_00e5e240.cpp'
+        TestSource = '00/e5/NScriptCVBodyGuardScript_GetHenchmanTypeFromString_00e5e240_test.cpp'
+        PassPattern = '00e5e240_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7a410'
+        Module = 'NScript::CV_ExposeMayorScript'
+        Source = '00/e7/NScriptCVExposeMayorScript_DoMission_00e7a410.cpp'
+        TestSource = '00/e7/NScriptCVExposeMayorScript_DoMission_00e7a410_test.cpp'
+        PassPattern = '00e7a410_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7e210'
+        Module = 'NScript::CV_FishingCompetitionScript'
+        Source = '00/e7/NScriptCVFishingCompetitionScript_OnPersist_00e7e210.cpp'
+        TestSource = '00/e7/NScriptCVFishingCompetitionScript_OnPersist_00e7e210_test.cpp'
+        PassPattern = '00e7e210_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f033f0'
+        Module = 'NScript::CQ_AmbushTradersScript'
+        Source = '00/f0/NScriptCQAmbushTradersScript_WatchForAllGuardsDead_00f033f0.cpp'
+        TestSource = '00/f0/NScriptCQAmbushTradersScript_WatchForAllGuardsDead_00f033f0_test.cpp'
+        PassPattern = '00f033f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
