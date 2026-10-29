@@ -24727,3 +24727,15 @@ chunk	address	module	name	length
 565	007cdc20	CTCBurntEffect	~CTCBurntEffect	225
 565	007e39d0	CPersistContext	Transfer<signed_char>	200
 565	008320c0	CTCTavernGame	~CTCTavernGame	414
+566	00835b10	CThingDeadCreature	~CThingDeadCreature	120
+566	0085d0a0	CThingMap	~CThingMap	213
+566	00878f50	CProjectileWeapon	OnInit	276
+566	0088bbe0	CAIBrain	~CAIBrain	199
+566	008b7ba0	CCreatureAction_UnsheatheWeapons	?PerformAction@CCreatureAction_UnsheatheWeapons@@UAEXXZ	336
+566	008c40f0	CCreatureAction_WaspQueenDiveAttack	CCreatureAction_WaspQueenDiveAttack::FinishAction	119
+566	008cc7a0	CCreatureAction_BalverineCorneredJumpIntoSky	CCreatureAction_BalverineCorneredJumpIntoSky::FrameUpdate	120
+566	008cc820	CCreatureAction_BalverineDropInFromSky	CCreatureAction_BalverineDropInFromSky::FrameUpdate	114
+566	00934870	CAIStateGroup_MinionKidGroupTag	CAIStateGroup_MinionKidGroupTag::Update	169
+566	009536d0	CCreatureAction_DragonFireBlastBase	~CCreatureAction_DragonFireBlastBase	119
+566	0097c5e0	CAIStateGroup_ScorpionKing	CAIStateGroup_ScorpionKing::Update	383
+566	0098d710	CVertexShaderConstantLayout	~CVertexShaderConstantLayout	270
