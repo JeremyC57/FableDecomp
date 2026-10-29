@@ -1,0 +1,34 @@
+addr       parity           behav  name
+00e295e0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00e295e0   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e295e0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e295e0   RELOCATION_MATCH PASS   Main
+00ec3d40   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+00ec3d40   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00ec3d40   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00ec3d40   RELOCATION_MATCH PASS   Main
+00ef87d0   WARN SHARED_HEADER_AVAILABLE CSpawnedFuncBase
+00ef87d0   WARN RELOC_NAME: ??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z -> 00e24760 labelled 'CConsoleCommandParameters::CConsoleCommandParameters'
+00ef87d0   WARN RELOC_NAME: ??1CIsThingAlive@NScript@@UAE@XZ -> 00e241b0 labelled 'CScriptThingFunctor_00e241b0::~CScriptThingFunctor_00e241b0'
+00ef87d0   WARN RELOC_NAME: ?IsScripting@CScriptGameResourceObjectScriptedThingBase@@QAE_NXZ -> 00cd23b9 labelled 'CScriptGameResourceObjectScriptedThingBase::IsValid'
+00ef87d0   RELOCATION_MATCH PASS   Main
+
+WINS: 3
+  00e295e0 RELOCATION_MATCH NScript::CQS_MeetSisterScript::CMeetSisterSister::?Main@CMeetSisterSister@CQS_MeetSisterScript@NScript@@EAEXXZ
+  00ec3d40 RELOCATION_MATCH NScript::CV_RockTrollFirstEncounterScript::?Main@CV_RockTrollFirstEncounterScript@NScript@@UAEXXZ
+  00ef87d0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CUndeadFellow::?Main@CUndeadFellow@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+
+LANDED 3 wins into src/compiled + tests + catalog + oracle
+  NScriptCQSMeetSisterScriptCMeetSisterSister_Main_00e295e0
+  NScriptCVRockTrollFirstEncounterScript_Main_00ec3d40
+  NScriptCPersonalScriptEmptyScriptCUndeadFellow_Main_00ef87d0
+=== retail_asm payload ===
+addr       parity           behav  name
+00a5bef0   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+00a5bef0   RELOCATION_MATCH PASS   GFInterpolateVectors
+
+WINS: 1
+  00a5bef0 RELOCATION_MATCH NVectorMath::?GFInterpolateVectors@NVectorMath@@YAXPAVC4DVector@@KPBV2@K1KPBMKK@Z
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  NVectorMath_GFInterpolateVectors_00a5bef0

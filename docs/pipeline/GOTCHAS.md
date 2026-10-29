@@ -1609,3 +1609,6 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - CScriptDef retail offsets = Ego_r offset minus the shrink of the vectors before the member (WB_LowHealth 0xEE4 -> 0xE34, AssassinExperience 0x418 -> 0x3E4) (chunk 569).
 - Script watch loops: `for(;;)` with the terminate check at the top and `break` exits gives retail's rotated loop; CScriptThing wrappers as `Data==0||...` / `Data!=0&&...` give `test al,al` (0x00E39140).
 - `x*0.0f` is never folded by VC7.1, `x*1.0f` is (matrix builders, 0x00BEB6C0). libvorbis statics are LTCG-private (register-kept args): park as lane gaps on sight (0x00C8F200).
+- `/Zi` changes codegen of an SSE `__asm` function: only with it does VC7.1 copy the return address into the ebx-realigned frame (0x00A5BEF0, chunk 570; not the chunk 511 lane gap).
+- VC7.1 compiles class-template member bodies at the end of the TU, so `#pragma inline_depth` around a template definition does nothing; put an explicit specialization of the member under `#pragma inline_depth(0)` instead (0x00EF87D0).
+- Quest-script `Main` rows need a polymorphic CScriptBase and a CGameScriptInterface model that keeps its padding virtuals; `cast["Hero"] = hero` needs both operator= `__forceinline` (chunk 570).

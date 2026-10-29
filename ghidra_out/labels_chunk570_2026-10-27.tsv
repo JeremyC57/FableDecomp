@@ -1,0 +1,5 @@
+address	name	evidence
+00e295e0	NScript::CQS_MeetSisterScript::CMeetSisterSister::Main	Ego_r.pdb; vtable slot 1 stored by landed Alloc 0x00E29040; chunk 570
+00ec3d40	NScript::CV_RockTrollFirstEncounterScript::Main	Ego_r.pdb; binding strings + vtables; chunk 570
+00ef87d0	NScript::CPersonalScript_EmptyScript::CUndeadFellow::Main	Ego_r.pdb; vtable 0x012F64FC slot 1 stored by landed Alloc 0x00EF47C0; chunk 570
+00a5bef0	NVectorMath::GFInterpolateVectors	Ego_r.pdb; three overloads in donor order; nine stack args; chunk 570

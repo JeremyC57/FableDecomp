@@ -1,0 +1,6 @@
+address	status	bytes	test	note
+00a5bef0	RELOCATION_MATCH	946v946	PASS	retail_asm (SSE kernel __asm + compiler-emitted x87 fallback); NVectorMath::GFInterpolateVectors per-vector-weight overload; needs /Zi; source in retail_asm/
+00e295e0	RELOCATION_MATCH	940v940	PASS	NScript::CQS_MeetSisterScript::CMeetSisterSister::Main (label HandleSisterArenaDialogue wrong)
+00ec3d40	RELOCATION_MATCH	994v994	PASS	NScript::CV_RockTrollFirstEncounterScript::Main (gap-scan sub_)
+00ef87d0	RELOCATION_MATCH	1003v1003	PASS	NScript::CPersonalScript_EmptyScript::CUndeadFellow::Main (gap-scan sub_); 3 grades
+00f3e6b0	DIFFER	928v920	-	CTriangleStripifier2::BuildVertexAndPolyMaps (label ProcessTriangles wrong); section-2 register allocation; parked in differ/

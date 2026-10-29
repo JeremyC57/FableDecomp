@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00f3e6b0	DIFFER	928v920	-	CTriangleStripifier2::BuildVertexAndPolyMaps (label ProcessTriangles wrong); section-2 register allocation; parked in differ/

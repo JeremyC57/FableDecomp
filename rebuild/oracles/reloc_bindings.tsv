@@ -35157,3 +35157,11 @@ _icomp	00ca1bc0	00ca1be0
 ??0?$pair@_KV?$CCountedPointer@VCActiveEntityScriptBase@@@@@std@@QAE@ABU01@@Z	00cb9c20	00cbd700
 ?GetRegionIdForRegion@CV_AssassinAttacksScript@NScript@@QAE?AW4AA_LocationIdentifier@12@VCCharString@@@Z	00e38290	00e39140
 ?NullString@CScriptThing@@2VCCharString@@A	0143e8ec	00e39140
+??_7?$CEntityScriptBinding@VCV_RockTrollFirstEncounterScript@NScript@@@@6B@	012f1654	00ec3d40
+?Alloc@CM_RTFERockTrollTrigger@CV_RockTrollFirstEncounterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ec41f0	00ec3d40
+?Alloc@CRTFE_RockTroll@CV_RockTrollFirstEncounterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ec4490	00ec3d40
+?Alloc@CRTFE_Sparrow@CV_RockTrollFirstEncounterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ec45c0	00ec3d40
+?WatchForRegionExit@CV_RockTrollFirstEncounterScript@NScript@@QAEXXZ	00ec4130	00ec3d40
+??0?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV?$CPredicate_And@VCIsThingAlive@NScript@@V12@@1@ABVCIsThingAlive@1@@Z	00ef5bc0	00ef87d0
+??_7?$CSpawnedFunc1@VCPersonalScript_EmptyScript@NScript@@VCScriptThing@@@@6B@	012f6888	00ef87d0
+?ChangeAlpha@CPersonalScript_EmptyScript@NScript@@QAEXVCScriptThing@@@Z	00ef8bc0	00ef87d0

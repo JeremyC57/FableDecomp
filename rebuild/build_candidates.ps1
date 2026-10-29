@@ -363847,6 +363847,35 @@ $catalog = @(
         TestSource = '00/e3/NScriptCVAssassinAttacksScript_WatchForAssassinDead_00e39140_test.cpp'
         PassPattern = '00e39140_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e295e0'
+        Module = 'NScript::CQS_MeetSisterScript::CMeetSisterSister'
+        Source = '00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_Main_00e295e0.cpp'
+        TestSource = '00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_Main_00e295e0_test.cpp'
+        PassPattern = '00e295e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec3d40'
+        Module = 'NScript::CV_RockTrollFirstEncounterScript'
+        Source = '00/ec/NScriptCVRockTrollFirstEncounterScript_Main_00ec3d40.cpp'
+        TestSource = '00/ec/NScriptCVRockTrollFirstEncounterScript_Main_00ec3d40_test.cpp'
+        PassPattern = '00ec3d40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ef87d0'
+        Module = 'NScript::CPersonalScript_EmptyScript::CUndeadFellow'
+        Source = '00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_Main_00ef87d0.cpp'
+        TestSource = '00/ef/NScriptCPersonalScriptEmptyScriptCUndeadFellow_Main_00ef87d0_test.cpp'
+        PassPattern = '00ef87d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00a5bef0'
+        Module = 'NVectorMath'
+        Source = '00/a5/NVectorMath_GFInterpolateVectors_00a5bef0.cpp'
+        TestSource = '00/a5/NVectorMath_GFInterpolateVectors_00a5bef0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Zi'
+        PassPattern = '00a5bef0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
