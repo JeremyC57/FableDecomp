@@ -24820,3 +24820,13 @@ chunk	address	module	name	length
 578	00e83a20	global	sub_00e83a20	411
 578	00e96c30	global	DoMission_BodyGuardSimple	413
 578	00f2d010	global	std_vector_assign_CFeatDef	417
+579	00f25e70	global	sub_00f25e70	143
+579	00f1a8f0	global	sub_00f1a8f0	147
+579	00f26b90	global	sub_00f26b90	149
+579	00f0eda0	global	sub_00f0eda0	230
+579	00ddb570	global	Script_Guard_Pointing_Gesture	421
+579	00f27200	global	std::vector_assign_pair_CCharString_CSymbolInfo	422
+579	00e25ab0	global	sub_00e25ab0	423
+579	00f33810	global	vector_insert_impl_CConversation	450
+579	00ef5670	global	sub_00ef5670	457
+579	00ef54a0	global	Script_CrateBlastBoxTrap	463
