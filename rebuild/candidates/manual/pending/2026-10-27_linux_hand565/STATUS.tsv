@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+007a8be0	DIFFER	576v617	PASS	CTCBattleCharge::FrameUpdate byte-exact over its true 576-byte extent; row over-spans 3 more functions: re-split at 0x007A8E20 (differ/)
+007cbf60	DIFFER	241v241	PASS	CTCMultiArrow::~CTCMultiArrow: one element address computed before vs after the push 1 in the ammo loop (differ/)

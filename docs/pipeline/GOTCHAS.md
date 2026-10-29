@@ -1593,3 +1593,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-10-29) In an inlined CThing::GetTC, copy `&Components` into a local map pointer before LowerBound; reading end() off the thing pointer keeps it in esi (chunk 563).
 - (2026-10-29) Never bind `_$E<n>` (the TU-local compiler dynamic-initializer name, one per TU) in reloc_bindings.tsv: every other TU's `_$E2` then reads as a RELOC_CONFLICT.
 - (2026-10-29) Retail CThing::PeekTC tests the component bit through the non-const bitset reference (`const_cast<std::bitset<274>&>(UsingComponents)[type]`); the const operator[] gives `shr/not/and` arms (chunk 564).
+- (2026-10-29) A TC's interface type is its vtable slot 21 getter, size-optimised as `push N ; pop eax ; ret` (searching for `mov eax,N` finds only dead copies) (chunk 565).
+- (2026-10-29) objdump splits a switch function at its `$L` case labels: a tool pairing relocations with a function must merge those blocks or it misses every call after the first case (chunk 565).

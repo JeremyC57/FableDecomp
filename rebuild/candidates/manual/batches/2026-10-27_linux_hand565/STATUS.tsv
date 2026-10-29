@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+007a8be0	DIFFER	576v617	PASS	CTCBattleCharge::FrameUpdate byte-exact over its true 576-byte extent; row over-spans 3 more functions: re-split at 0x007A8E20 (differ/)
+007a9d60	RELOCATION_MATCH	221v221	PASS	CTCAssassinRush::~CTCAssassinRush: radial-blur fade-out through GetWorld().GetEnvironment().GetSpellEffectInterpolator()
+007bf2b0	RELOCATION_MATCH	153v153	PASS	NThingShot::CTCShotDefinitionBase::~CTCShotDefinitionBase (namespace was missing from the catalog label); empty body
+007c3f10	RELOCATION_MATCH	146v146	PASS	label fix: CTCHealLife::~CTCHealLife (catalog CTCActionUseBuyHouse); empty body, STLport list clear 0x007C4E80
+007c5db0	RELOCATION_MATCH	752v752	PASS	CTCGhostSword::MakeSwordsAppear; jump table checked entry by entry
+007c7960	RELOCATION_MATCH	149v149	PASS	CTCTurncoat::~CTCTurncoat: IS_THING_ALIVE + Kill(true)
+007c89f0	RELOCATION_MATCH	1000v1000	PASS	CTCFireballSpell::CastFireball; both jump tables checked; TC 0x77 = NThingShot::CTCShotDefinitionBase, 0x007BED50 = SetCanBeDeflected
+007ca8e0	RELOCATION_MATCH	249v249	PASS	CTCHeroReceiveItems::~CTCHeroReceiveItems: RemoveFromGlobalTCs() then members
+007cbf60	DIFFER	241v241	PASS	CTCMultiArrow::~CTCMultiArrow: one element address computed before vs after the push 1 in the ammo loop (differ/)
+007cdc20	RELOCATION_MATCH	225v225	PASS	CTCBurntEffect::~CTCBurntEffect: index loop of FadeOrKillEffect over live effects
+007e39d0	RELOCATION_MATCH	200v200	PASS	label fix: CPersistContext::Transfer<CDefString> (catalog Transfer<signed_char>); jump table checked
+008320c0	RELOCATION_MATCH	414v414	PASS	label fix: CThingAICreature::~CThingAICreature (catalog CTCTavernGame)

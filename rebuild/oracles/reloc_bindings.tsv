@@ -35012,3 +35012,13 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ??_7CTCUnholyPower@@6B@	0126bfdc	00794ac0
 ?clear@?$_List_base@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@V?$allocator@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@@std@@@std@@QAEXXZ	007a3910	007a0770
 ?FadeOrKillEffect@CTCSpecialAbilities@@SIXAAV?$CIntelligentPointer@VCThing@@@@@Z	0072abd0	007a73f0
+?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z	006b82e0	007a9d60
+?clear@?$_List_base@V?$CIntelligentPointer@VCThingCreatureBase@@@@V?$allocator@V?$CIntelligentPointer@VCThingCreatureBase@@@@@std@@@std@@QAEXXZ	007c4e80	007c3f10
+?AddSword@CTCGhostSword@@AAEXABVC3DVector@@@Z	007c57c0	007c5db0
+?Rotate@CRightHandedSet@@QAEXABVC3DVector@@M@Z	00a22f80	007c89f0
+?SetCanBeDeflected@CTCShotDefinitionBase@NThingShot@@QAEX_N@Z	007bed50	007c89f0
+?clear@?$_List_base@U?$pair@V?$CIntelligentPointer@VCThingObject@@@@_N@std@@V?$allocator@U?$pair@V?$CIntelligentPointer@VCThingObject@@@@_N@std@@@2@@std@@QAEXXZ	007cbb80	007ca8e0
+??_7?$CPersistContext_TransferableComponent@VCDefString@@@@6B@	012704f8	007e39d0
+?TransferBinaryIn@CDefString@@QAEXAAVCDataInputStream@@@Z	0044fc00	007e39d0
+?_M_erase@?$_Rb_tree@PAXPAXU?$_Identity@PAX@std@@U?$less@PAX@2@V?$allocator@PAX@2@@std@@AAEXPAU?$_Rb_tree_node@PAX@2@@Z	00834fd0	008320c0
+?clear@?$_List_base@VCEnginePrimitiveHandle@@V?$allocator@VCEnginePrimitiveHandle@@@std@@@std@@QAEXXZ	00834f90	008320c0

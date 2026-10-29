@@ -1,0 +1,11 @@
+address	name	evidence
+007a9d60	CTCAssassinRush::~CTCAssassinRush	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed
+007bf2b0	NThingShot::CTCShotDefinitionBase::~CTCShotDefinitionBase	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed
+007c3f10	CTCHealLife::~CTCHealLife	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed
+007c5db0	CTCGhostSword::MakeSwordsAppear	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed
+007c7960	CTCTurncoat::~CTCTurncoat	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed
+007c89f0	CTCFireballSpell::CastFireball	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed
+007ca8e0	CTCHeroReceiveItems::~CTCHeroReceiveItems	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed
+007cdc20	CTCBurntEffect::~CTCBurntEffect	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed
+007e39d0	CPersistContext::Transfer<CDefString>	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed
+008320c0	CThingAICreature::~CThingAICreature	proven per batch 2026-10-27_linux_hand565 NOTES.md (chunk 565): PDB leaf + RTTI/caller, objdump-confirmed

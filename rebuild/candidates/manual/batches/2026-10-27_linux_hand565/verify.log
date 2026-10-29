@@ -1,0 +1,48 @@
+addr       parity           behav  name
+007a9d60   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007a9d60   WARN SHARED_HEADER_AVAILABLE CEnvironment
+007a9d60   WARN SHARED_HEADER_AVAILABLE CWorld
+007a9d60   WARN RELOC_NAME: ?RadialBlurFadeOut@CEnvironmentSpellEffectInterpolator@@QAEXMPAX@Z -> 006b82e0 labelled 'std::_Cons_val<std::allocator<std::pair<unsigned_long,CAnimationEntry>_>,std::pair<unsigned_long,CAnimationEntry>,std::pair<unsigned_long,class_CAnimationEntry>&>'
+007a9d60   RELOCATION_MATCH PASS   ~CTCAssassinRush
+007bf2b0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007bf2b0   RELOCATION_MATCH PASS   ~CTCShotDefinitionBase
+007c3f10   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007c3f10   RELOCATION_MATCH PASS   ~CTCHealLife
+007c5db0   RELOCATION_MATCH PASS   MakeSwordsAppear
+007c7960   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007c7960   RELOCATION_MATCH PASS   ~CTCTurncoat
+007c89f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007c89f0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007c89f0   WARN RELOC_NAME: ?Rotate@CRightHandedSet@@QAEXABVC3DVector@@M@Z -> 00a22f80 labelled 'CRightHandedSet::Method_00a22f80'
+007c89f0   WARN RELOC_NAME: ?SetCanBeDeflected@CTCShotDefinitionBase@NThingShot@@QAEX_N@Z -> 007bed50 labelled '_global::SetMember_byte0x68_007bed50'
+007c89f0   RELOCATION_MATCH PASS   CastFireball
+007ca8e0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007ca8e0   RELOCATION_MATCH PASS   ~CTCHeroReceiveItems
+007cdc20   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007cdc20   RELOCATION_MATCH PASS   ~CTCBurntEffect
+007e39d0   RELOCATION_MATCH PASS   Transfer<CDefString>
+008320c0   RELOCATION_MATCH PASS   ~CThingAICreature
+
+WINS: 10
+  007a9d60 RELOCATION_MATCH CTCAssassinRush::??1CTCAssassinRush@@UAE@XZ
+  007bf2b0 RELOCATION_MATCH NThingShot::CTCShotDefinitionBase::??1CTCShotDefinitionBase@NThingShot@@UAE@XZ
+  007c3f10 RELOCATION_MATCH CTCHealLife::??1CTCHealLife@@UAE@XZ
+  007c5db0 RELOCATION_MATCH CTCGhostSword::?MakeSwordsAppear@CTCGhostSword@@QAEXXZ
+  007c7960 RELOCATION_MATCH CTCTurncoat::??1CTCTurncoat@@UAE@XZ
+  007c89f0 RELOCATION_MATCH CTCFireballSpell::?CastFireball@CTCFireballSpell@@QAEXPAVCThing@@@Z
+  007ca8e0 RELOCATION_MATCH CTCHeroReceiveItems::??1CTCHeroReceiveItems@@UAE@XZ
+  007cdc20 RELOCATION_MATCH CTCBurntEffect::??1CTCBurntEffect@@UAE@XZ
+  007e39d0 RELOCATION_MATCH CPersistContext::??$Transfer@VCDefString@@@CPersistContext@@QAEXPBDAAVCDefString@@ABV1@@Z
+  008320c0 RELOCATION_MATCH CThingAICreature::??1CThingAICreature@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CTCAssassinRush_CTCAssassinRush_007a9d60
+  NThingShotCTCShotDefinitionBase_CTCShotDefinitionBase_007bf2b0
+  CTCHealLife_CTCHealLife_007c3f10
+  CTCGhostSword_MakeSwordsAppear_007c5db0
+  CTCTurncoat_CTCTurncoat_007c7960
+  CTCFireballSpell_CastFireball_007c89f0
+  CTCHeroReceiveItems_CTCHeroReceiveItems_007ca8e0
+  CTCBurntEffect_CTCBurntEffect_007cdc20
+  CPersistContext_TransferCDefString_007e39d0
+  CThingAICreature_CThingAICreature_008320c0
