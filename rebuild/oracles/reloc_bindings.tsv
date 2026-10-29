@@ -35006,3 +35006,9 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ?ProcessFramesRunningForOnHitWithParams@?A0x32f6f18d@@YIXAAMMABU?$pair@VC3DVector@@V1@@std@@1ABVC3DVector@@@Z	00856040	008587b0
 ?UnassignString@CCharString@@IAEXXZ	0099e9b0	0099eaf0
 ?AllocStringData@CCharString@@IAEPAVCCharStringData@@PBDJ@Z	0099ea60	0099ec70
+?IsShieldActive@CTCPhysicalShieldSpell@@QAE_NXZ	0079dcb0	0072acf0
+??_7CTCBerserk@@6B@	0126bb94	0078c080
+??_7CTCDivineWrath@@6B@	0126be84	0078f5a0
+??_7CTCUnholyPower@@6B@	0126bfdc	00794ac0
+?clear@?$_List_base@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@V?$allocator@V?$CCountedPointer@VCLightningBeam@CTCWillLightning@@@@@std@@@std@@QAEXXZ	007a3910	007a0770
+?FadeOrKillEffect@CTCSpecialAbilities@@SIXAAV?$CIntelligentPointer@VCThing@@@@@Z	0072abd0	007a73f0

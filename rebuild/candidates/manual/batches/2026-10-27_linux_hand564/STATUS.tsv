@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+0072acf0	RELOCATION_MATCH	573	PASS	CTCSpecialAbilities::CancelUsingAbility(EHeroAbility); jump table checked by hand
+0072c430	DIFFER	584	PASS	CTCSpecialAbilities::IsAbilityAvailable(EHeroAbility) const (label GetAbilityAvailability wrong); DIFFER(584v584): only the register in the 15 !HasTC case arms differs (ours ecx/edx/eax, retail esi)
+00743120	RELOCATION_MATCH	147	PASS	NCreatureMode::CModeBriarRoseConcentrate implicit dtor
+00750850	RELOCATION_MATCH	121	PASS	CTCChest::~CTCChest (label CModeOutOfActionBase wrong)
+00753290	RELOCATION_MATCH	228	PASS	CTCLook::~CTCLook
+0077fde0	DIFFER	240	PASS	CPersistContext::Transfer<EHeroCentreDoorType> (label Transfer<signed_char> wrong); DIFFER(208v240): true function is 208 bytes and byte-exact; re-split at 0x0077FEB0
+0078c080	RELOCATION_MATCH	202	PASS	CTCBerserk::~CTCBerserk
+0078f5a0	RELOCATION_MATCH	316	PASS	CTCDivineWrath::~CTCDivineWrath
+00794ac0	RELOCATION_MATCH	332	PASS	CTCUnholyPower::~CTCUnholyPower
+00798620	RELOCATION_MATCH	120	PASS	CTCForcePushed::~CTCForcePushed (label CTCTurncoat wrong)
+007a0770	RELOCATION_MATCH	126	PASS	CTCWillLightning::CLightningBeam::~CLightningBeam
+007a73f0	RELOCATION_MATCH	161	PASS	CTCBattleCharge::~CTCBattleCharge (label CTCActionUseBed wrong)

@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+0072c430	DIFFER	584	PASS	CTCSpecialAbilities::IsAbilityAvailable(EHeroAbility) const (label GetAbilityAvailability wrong); DIFFER(584v584): only the register in the 15 !HasTC case arms differs (ours ecx/edx/eax, retail esi)
+0077fde0	DIFFER	240	PASS	CPersistContext::Transfer<EHeroCentreDoorType> (label Transfer<signed_char> wrong); DIFFER(208v240): true function is 208 bytes and byte-exact; re-split at 0x0077FEB0

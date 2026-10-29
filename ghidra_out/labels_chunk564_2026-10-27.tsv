@@ -1,0 +1,11 @@
+address	name	evidence
+0072acf0	CTCSpecialAbilities::CancelUsingAbility	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed
+00743120	NCreatureMode::CModeBriarRoseConcentrate::~CModeBriarRoseConcentrate	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed
+00750850	CTCChest::~CTCChest	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed
+00753290	CTCLook::~CTCLook	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed
+0078c080	CTCBerserk::~CTCBerserk	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed
+0078f5a0	CTCDivineWrath::~CTCDivineWrath	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed
+00794ac0	CTCUnholyPower::~CTCUnholyPower	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed
+00798620	CTCForcePushed::~CTCForcePushed	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed
+007a0770	CTCWillLightning::CLightningBeam::~CLightningBeam	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed
+007a73f0	CTCBattleCharge::~CTCBattleCharge	proven per batch 2026-10-27_linux_hand564 NOTES.md (chunk 564): PDB leaf + RTTI/caller, objdump-confirmed

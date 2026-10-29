@@ -362420,6 +362420,76 @@ $catalog = @(
         TestSource = '00/72/CTCRandomAppearanceMorph_CTCRandomAppearanceMorph_00727b40_test.cpp'
         PassPattern = '00727b40_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0072acf0'
+        Module = 'CTCSpecialAbilities'
+        Source = '00/72/CTCSpecialAbilities_CancelUsingAbility_0072acf0.cpp'
+        TestSource = '00/72/CTCSpecialAbilities_CancelUsingAbility_0072acf0_test.cpp'
+        PassPattern = '0072acf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00743120'
+        Module = 'NCreatureMode::CModeBriarRoseConcentrate'
+        Source = '00/74/NCreatureModeCModeBriarRoseConcentrate_CModeBriarRoseConcentrate_00743120.cpp'
+        TestSource = '00/74/NCreatureModeCModeBriarRoseConcentrate_CModeBriarRoseConcentrate_00743120_test.cpp'
+        PassPattern = '00743120_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00750850'
+        Module = 'CTCChest'
+        Source = '00/75/CTCChest_CTCChest_00750850.cpp'
+        TestSource = '00/75/CTCChest_CTCChest_00750850_test.cpp'
+        PassPattern = '00750850_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00753290'
+        Module = 'CTCLook'
+        Source = '00/75/CTCLook_CTCLook_00753290.cpp'
+        TestSource = '00/75/CTCLook_CTCLook_00753290_test.cpp'
+        PassPattern = '00753290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078c080'
+        Module = 'CTCBerserk'
+        Source = '00/78/CTCBerserk_CTCBerserk_0078c080.cpp'
+        TestSource = '00/78/CTCBerserk_CTCBerserk_0078c080_test.cpp'
+        PassPattern = '0078c080_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0078f5a0'
+        Module = 'CTCDivineWrath'
+        Source = '00/78/CTCDivineWrath_CTCDivineWrath_0078f5a0.cpp'
+        TestSource = '00/78/CTCDivineWrath_CTCDivineWrath_0078f5a0_test.cpp'
+        PassPattern = '0078f5a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00794ac0'
+        Module = 'CTCUnholyPower'
+        Source = '00/79/CTCUnholyPower_CTCUnholyPower_00794ac0.cpp'
+        TestSource = '00/79/CTCUnholyPower_CTCUnholyPower_00794ac0_test.cpp'
+        PassPattern = '00794ac0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00798620'
+        Module = 'CTCForcePushed'
+        Source = '00/79/CTCForcePushed_CTCForcePushed_00798620.cpp'
+        TestSource = '00/79/CTCForcePushed_CTCForcePushed_00798620_test.cpp'
+        PassPattern = '00798620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a0770'
+        Module = 'CTCWillLightning::CLightningBeam'
+        Source = '00/7a/CTCWillLightningCLightningBeam_CLightningBeam_007a0770.cpp'
+        TestSource = '00/7a/CTCWillLightningCLightningBeam_CLightningBeam_007a0770_test.cpp'
+        PassPattern = '007a0770_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '007a73f0'
+        Module = 'CTCBattleCharge'
+        Source = '00/7a/CTCBattleCharge_CTCBattleCharge_007a73f0.cpp'
+        TestSource = '00/7a/CTCBattleCharge_CTCBattleCharge_007a73f0_test.cpp'
+        PassPattern = '007a73f0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

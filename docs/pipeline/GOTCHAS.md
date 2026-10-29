@@ -1592,3 +1592,4 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-10-29) A 0-based switch jump table whose entry 0 is the shared return needs an explicit `case 0: return 0;`: a bare `break` is dropped and VC7.1 rebases the table with `dec eax` (chunk 563).
 - (2026-10-29) In an inlined CThing::GetTC, copy `&Components` into a local map pointer before LowerBound; reading end() off the thing pointer keeps it in esi (chunk 563).
 - (2026-10-29) Never bind `_$E<n>` (the TU-local compiler dynamic-initializer name, one per TU) in reloc_bindings.tsv: every other TU's `_$E2` then reads as a RELOC_CONFLICT.
+- (2026-10-29) Retail CThing::PeekTC tests the component bit through the non-const bitset reference (`const_cast<std::bitset<274>&>(UsingComponents)[type]`); the const operator[] gives `shr/not/and` arms (chunk 564).

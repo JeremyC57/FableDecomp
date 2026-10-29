@@ -1,0 +1,52 @@
+addr       parity           behav  name
+0072acf0   WARN RELOC_NAME: ?IsShieldActive@CTCPhysicalShieldSpell@@QAE_NXZ -> 0079dcb0 labelled 'C3DMeshInfo::HasPhysicsMesh'
+0072acf0   WARN RELOC_NAME: ?CancelMove@CTCMultiStrike@@QAEXXZ -> 007cc9b0 labelled 'std::_Dest_val<std::allocator<NCreatureHitNotification::CFlash>,NCreatureHitNotification::CFlash>'
+0072acf0   WARN RELOC_NAME: ?CancelMove@CTCMultiArrow@@QAEXXZ -> 007cbee0 labelled '_Dest_val_std::allocator_NCreatureHitNotification::CFlash_,NCreatureHitNotification::CFlash_'
+0072acf0   RELOCATION_MATCH PASS   CancelUsingAbility
+00743120   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00743120   RELOCATION_MATCH PASS   ~CModeBriarRoseConcentrate
+00750850   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00750850   RELOCATION_MATCH PASS   ~CTCChest
+00753290   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00753290   RELOCATION_MATCH PASS   ~CTCLook
+0078c080   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0078c080   RELOCATION_MATCH PASS   ~CTCBerserk
+0078f5a0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0078f5a0   WARN SHARED_HEADER_AVAILABLE CEnvironment
+0078f5a0   WARN SHARED_HEADER_AVAILABLE CWorld
+0078f5a0   RELOCATION_MATCH PASS   ~CTCDivineWrath
+00794ac0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00794ac0   WARN SHARED_HEADER_AVAILABLE CEnvironment
+00794ac0   WARN SHARED_HEADER_AVAILABLE CWorld
+00794ac0   RELOCATION_MATCH PASS   ~CTCUnholyPower
+00798620   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00798620   RELOCATION_MATCH PASS   ~CTCForcePushed
+007a0770   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007a0770   WARN SHARED_HEADER_AVAILABLE CTCWillLightning
+007a0770   RELOCATION_MATCH PASS   ~CLightningBeam
+007a73f0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+007a73f0   RELOCATION_MATCH PASS   ~CTCBattleCharge
+
+WINS: 10
+  0072acf0 RELOCATION_MATCH CTCSpecialAbilities::?CancelUsingAbility@CTCSpecialAbilities@@QAE_NW4EHeroAbility@@@Z
+  00743120 RELOCATION_MATCH NCreatureMode::CModeBriarRoseConcentrate::??1CModeBriarRoseConcentrate@NCreatureMode@@UAE@XZ
+  00750850 RELOCATION_MATCH CTCChest::??1CTCChest@@UAE@XZ
+  00753290 RELOCATION_MATCH CTCLook::??1CTCLook@@UAE@XZ
+  0078c080 RELOCATION_MATCH CTCBerserk::??1CTCBerserk@@UAE@XZ
+  0078f5a0 RELOCATION_MATCH CTCDivineWrath::??1CTCDivineWrath@@UAE@XZ
+  00794ac0 RELOCATION_MATCH CTCUnholyPower::??1CTCUnholyPower@@UAE@XZ
+  00798620 RELOCATION_MATCH CTCForcePushed::??1CTCForcePushed@@UAE@XZ
+  007a0770 RELOCATION_MATCH CTCWillLightning::CLightningBeam::??1CLightningBeam@CTCWillLightning@@QAE@XZ
+  007a73f0 RELOCATION_MATCH CTCBattleCharge::??1CTCBattleCharge@@UAE@XZ
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CTCSpecialAbilities_CancelUsingAbility_0072acf0
+  NCreatureModeCModeBriarRoseConcentrate_CModeBriarRoseConcentrate_00743120
+  CTCChest_CTCChest_00750850
+  CTCLook_CTCLook_00753290
+  CTCBerserk_CTCBerserk_0078c080
+  CTCDivineWrath_CTCDivineWrath_0078f5a0
+  CTCUnholyPower_CTCUnholyPower_00794ac0
+  CTCForcePushed_CTCForcePushed_00798620
+  CTCWillLightningCLightningBeam_CLightningBeam_007a0770
+  CTCBattleCharge_CTCBattleCharge_007a73f0
