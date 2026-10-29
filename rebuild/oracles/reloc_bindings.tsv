@@ -35045,3 +35045,17 @@ _IID_IMediaEvent	012aa084	00a3b9d0
 ?GPreviousSelected@CList@NUISystem@@2V?$list@PAVCList@NUISystem@@V?$allocator@PAVCList@NUISystem@@@std@@@std@@A	013b8a98	005e41e0
 ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJK@std@@U?$_Select1st@U?$pair@$$CBJK@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJK@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJK@std@@@2@@Z	005e8c00	005e41e0
 ?clear@?$_List_base@VCBoast@CQuestManager@@V?$allocator@VCBoast@CQuestManager@@@std@@@std@@QAEXXZ	004b8c00	005e41e0
+??_7?$CPersistContext_TransferableComponent@W4EOpinionAttitudeType@@@@6B@	0125babc	00685cc0
+??1CThingCreatureBase@@UAE@XZ	006661b0	006aa230
+?DeregisterDestroyedCombatant@CCombatManager@@QAEXAAVCThingCreatureBase@@@Z	006ed9e0	006aa230
+?GetCombatManager@CThingCreatureBase@@QAEAAVCCombatManager@@XZ	00661ed0	006aa230
+?_M_erase@?$_Rb_tree@W4EGameAction@@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@U?$_Select1st@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@U?$less@W4EGameAction@@@3@V?$allocator@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@2@@Z	00527910	006aa230
+?CreateMainSignPost@CTCBuyableHouse@@AAEXXZ	006c0f00	006c1150
+?Evict@CTCBuyableHouse@@AAEXXZ	006c0fd0	006c1150
+?NeedsMainSignPost@CTCBuyableHouse@@AAE_NXZ	006bfb90	006c1150
+?RemoveAgentListFromLists@CNavigatorExternalInterface@@SIXPAV?$vector@PBVCSteeringAgent@@V?$allocator@PBVCSteeringAgent@@@std@@@std@@@Z	00a47d80	006cc1e0
+??1CCompleteAnimation@CAnimateThing@@QAE@XZ	0070b930	0070ba90
+?clear@?$_List_base@VCAnimSet@@V?$allocator@VCAnimSet@@@std@@@std@@QAEXXZ	0070b8a0	0070ba90
+?clear@?$_List_base@VCDelayedAnimation@CAnimateThing@@V?$allocator@VCDelayedAnimation@CAnimateThing@@@std@@@std@@QAEXXZ	0070ba00	0070ba90
+??_7CTCRandomAppearanceMorph@@6BCTCAppearanceMorphBase@@@	0126653c	00727b40
+?UnregisterComponent@CTCGraphicAppearance@NGraphicAppearance@@QAEXAAVCAGraphicAppearanceComponent@2@@Z	004c0000	00727b40

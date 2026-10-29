@@ -1589,3 +1589,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - (2026-10-29) A label for a G-form wide template uses `unsigned short` (`std::operator==<unsigned short,std::char_traits<unsigned short>,...>`), matching the emitted symbol, not the PDB `wchar_t` spelling.
 - (2026-10-29) A compiler-generated destructor has no vptr store before its member dtors; reconstruct it with a one-line helper calling `p->T::~T()` on a class with no user dtor (chunk 562, 0x005EDA50).
 - (2026-10-29) Retail NUISystem member offsets are the PDB (debug) offsets minus 0x30, and 8 less again per Dinkumware list ahead of the member: STLport 4.6 lists are smaller (chunk 562).
+- (2026-10-29) A 0-based switch jump table whose entry 0 is the shared return needs an explicit `case 0: return 0;`: a bare `break` is dropped and VC7.1 rebases the table with `dec eax` (chunk 563).
+- (2026-10-29) In an inlined CThing::GetTC, copy `&Components` into a local map pointer before LowerBound; reading end() off the thing pointer keeps it in esi (chunk 563).

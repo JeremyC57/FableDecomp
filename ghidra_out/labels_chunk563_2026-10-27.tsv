@@ -1,0 +1,12 @@
+address	name	evidence
+005faa90	CTCInventoryMap::GetMenuEntryFromCategory	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+005fac20	CTCInventoryMap::GetMenuEntryFromCategoryPC	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+00625a20	CTCQuickAccessMenu::~CTCQuickAccessMenu	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+00685cc0	CPersistContext::Transfer<EOpinionAttitudeType>	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+006aa230	CThingPlayerCreature::~CThingPlayerCreature	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+006c1150	CTCBuyableHouse::SetRented	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+006cc1e0	CTCCreatureNavigation::~CTCCreatureNavigation	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+0070ba90	CAnimateThing::~CAnimateThing	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+0071a430	NTCScriptedControl::CActionTalkBase::~CActionTalkBase	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+0071b120	CTCEmoteIcon::~CTCEmoteIcon	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)
+00727b40	CTCRandomAppearanceMorph::~CTCRandomAppearanceMorph	proven per batch 2026-10-27_linux_hand563 NOTES.md (chunk 563)

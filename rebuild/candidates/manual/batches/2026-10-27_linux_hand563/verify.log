@@ -1,0 +1,46 @@
+addr       parity           behav  name
+005faa90   RELOCATION_MATCH PASS   GetMenuEntryFromCategory
+005fac20   RELOCATION_MATCH PASS   GetMenuEntryFromCategoryPC
+00625a20   WARN SHARED_HEADER_AVAILABLE CList
+00625a20   RELOCATION_MATCH PASS   ~CTCQuickAccessMenu
+00685cc0   RELOCATION_MATCH PASS   Transfer<EOpinionAttitudeType>
+006aa230   WARN RELOC_NAME: ?IsInMelee@CThingCreatureBase@@QBE_NXZ -> 00661e80 labelled 'NUISystem::CText::GetAlignment'
+006aa230   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@W4EGameAction@@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@U?$_Select1st@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@U?$less@W4EGameAction@@@3@V?$allocator@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@3@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBW4EGameAction@@U?$pair@VC3DVector@@J@std@@@std@@@2@@Z -> 00527910 labelled '_unattributed::FreeTree_CTreeOwner_00527910'
+006aa230   RELOCATION_MATCH PASS   ~CThingPlayerCreature
+006c1150   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006c1150   WARN RELOC_NAME: ?UpdateMiniMapMarkers@CPlayerGui@@QAEX_N@Z -> 004378c0 labelled 'CPlayerGui::Refresh'
+006c1150   RELOCATION_MATCH PASS   SetRented
+006cc1e0   WARN SHARED_HEADER_AVAILABLE CNavigatorBase
+006cc1e0   RELOCATION_MATCH PASS   ~CTCCreatureNavigation
+0070ba90   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0070ba90   RELOCATION_MATCH PASS   ~CAnimateThing
+0071a430   RELOCATION_MATCH PASS   ~CActionTalkBase
+0071b120   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+0071b120   RELOCATION_MATCH PASS   ~CTCEmoteIcon
+00727b40   RELOCATION_MATCH PASS   ~CTCRandomAppearanceMorph
+
+WINS: 11
+  005faa90 RELOCATION_MATCH CTCInventoryMap::?GetMenuEntryFromCategory@CTCInventoryMap@@IAEPAVCComponent@NUISystem@@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAV23@@Z
+  005fac20 RELOCATION_MATCH CTCInventoryMap::?GetMenuEntryFromCategoryPC@CTCInventoryMap@@IAEPAVCComponent@NUISystem@@W4ECategory@CHeroLogBookEntry@CHeroLogBook@@PAV23@@Z
+  00625a20 RELOCATION_MATCH CTCQuickAccessMenu::??1CTCQuickAccessMenu@@UAE@XZ
+  00685cc0 RELOCATION_MATCH CPersistContext::??$Transfer@W4EOpinionAttitudeType@@@CPersistContext@@QAEXPBDAAW4EOpinionAttitudeType@@ABW41@@Z
+  006aa230 RELOCATION_MATCH CThingPlayerCreature::??1CThingPlayerCreature@@UAE@XZ
+  006c1150 RELOCATION_MATCH CTCBuyableHouse::?SetRented@CTCBuyableHouse@@QAEX_N@Z
+  006cc1e0 RELOCATION_MATCH CTCCreatureNavigation::??1CTCCreatureNavigation@@UAE@XZ
+  0070ba90 RELOCATION_MATCH CAnimateThing::??1CAnimateThing@@QAE@XZ
+  0071a430 RELOCATION_MATCH NTCScriptedControl::CActionTalkBase::??1CActionTalkBase@NTCScriptedControl@@UAE@XZ
+  0071b120 RELOCATION_MATCH CTCEmoteIcon::??1CTCEmoteIcon@@UAE@XZ
+  00727b40 RELOCATION_MATCH CTCRandomAppearanceMorph::??1CTCRandomAppearanceMorph@@UAE@XZ
+
+LANDED 11 wins into src/compiled + tests + catalog + oracle
+  CTCInventoryMap_GetMenuEntryFromCategory_005faa90
+  CTCInventoryMap_GetMenuEntryFromCategoryPC_005fac20
+  CTCQuickAccessMenu_CTCQuickAccessMenu_00625a20
+  CPersistContext_TransferEOpinionAttitudeType_00685cc0
+  CThingPlayerCreature_CThingPlayerCreature_006aa230
+  CTCBuyableHouse_SetRented_006c1150
+  CTCCreatureNavigation_CTCCreatureNavigation_006cc1e0
+  CAnimateThing_CAnimateThing_0070ba90
+  NTCScriptedControlCActionTalkBase_CActionTalkBase_0071a430
+  CTCEmoteIcon_CTCEmoteIcon_0071b120
+  CTCRandomAppearanceMorph_CTCRandomAppearanceMorph_00727b40

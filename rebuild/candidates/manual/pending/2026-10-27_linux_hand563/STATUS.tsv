@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+0071ba60	DIFFER	624v624	-	CTCHeroMorph::GetMorphStrength; frame sub esp,14h v 10h (case 11 GFLimitReturn temporaries not packed onto case 9 slot); parked in differ/

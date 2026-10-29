@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+005faa90	RELOCATION_MATCH	272v272	PASS	CTCInventoryMap::GetMenuEntryFromCategory (UI_ strings); switch, case bodies in source order 4,5,6,7,0,1,default
+005fac20	RELOCATION_MATCH	272v272	PASS	CTCInventoryMap::GetMenuEntryFromCategoryPC (PC_ strings); catalog label was the twin's
+00625a20	RELOCATION_MATCH	203v203	PASS	CTCQuickAccessMenu::~CTCQuickAccessMenu; CTCQuestCompletionUI model
+00685cc0	RELOCATION_MATCH	208v208	PASS	CPersistContext::Transfer<EOpinionAttitudeType> (catalog said <signed char>); wrapper vtable RTTI
+006aa230	RELOCATION_MATCH	161v161	PASS	CThingPlayerCreature::~CThingPlayerCreature; IsInMelee -> DeregisterDestroyedCombatant
+006c1150	RELOCATION_MATCH	243v243	PASS	CTCBuyableHouse::SetRented; GetTC must take &Components into a local map pointer
+006cc1e0	RELOCATION_MATCH	137v137	PASS	CTCCreatureNavigation::~CTCCreatureNavigation
+0070ba90	RELOCATION_MATCH	204v204	PASS	CAnimateThing::~CAnimateThing (user-declared empty, non-polymorphic)
+0071a430	RELOCATION_MATCH	161v161	PASS	NTCScriptedControl::CActionTalkBase::~CActionTalkBase implicit (catalog said C3DMeshStripifier)
+0071b120	RELOCATION_MATCH	113v113	PASS	CTCEmoteIcon::~CTCEmoteIcon implicit (catalog said CCreatureAction_DragonFireBlastBase)
+0071ba60	DIFFER	624v624	-	CTCHeroMorph::GetMorphStrength; frame sub esp,14h v 10h (case 11 GFLimitReturn temporaries not packed onto case 9 slot); parked in differ/
+00727b40	RELOCATION_MATCH	120v120	PASS	CTCRandomAppearanceMorph::~CTCRandomAppearanceMorph
