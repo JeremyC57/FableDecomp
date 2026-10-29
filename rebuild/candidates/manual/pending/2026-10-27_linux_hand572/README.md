@@ -6,3 +6,7 @@ shared free/dtor/epilogue tail match. Left: (1) participant loop -- retail `mov 
 loads straight into ebx (the 3 bytes); (2) stock-filter loop node/element registers swapped; (3) the DoNothing()==1 exit
 block placed after the reply path instead of after the scratchpad GetTC block. ~70 probe grades; NOTES.md has the next
 step. differ/ source + test (test PASS under g++ and VC7.1). NAME_FIXES.tsv: 7 rows queued.
+
+Second round (owner asked for more tries, ~40 more probes): unchanged at 2217v2220. Theory (unconfirmed): VC7.1 orders
+out-of-line blocks by creation order, so retail needs the timeout block created before the DoNothing block while still
+falling through into the scratchpad code; no natural C++ form tried does that. NOTES.md lists every form tried.
