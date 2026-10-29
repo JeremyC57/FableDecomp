@@ -1,7 +1,4 @@
 address	name	evidence
-00f34160	std::vector<CFireHeartPatternDef>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand580 NOTES.md (chunk 580)
-00f37f60	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_insert_overflow	proven per batch 2026-10-27_linux_hand580 NOTES.md (chunk 580)
-00f381f0	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_fill_insert	proven per batch 2026-10-27_linux_hand580 NOTES.md (chunk 580)
 00f37f60	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_insert_overflow	chunk 580: 0x2C stride (reciprocal 0x2E8BA2E9); only caller _M_fill_insert 0x00F381F0; Ego_r CResourceEntry
 00f381f0	std::vector<CGPUScratchBufferTextureManager::CResourceEntry>::_M_fill_insert	chunk 580: landed resize 0x00F385A0 binds this exact symbol; STLport 4.6 body
 00f36710	NFractal::CRidgedMultifractal::GetFractalHeight	chunk 580: Ego_r donor order Ridged/Hybrid/Hetero = retail 0xF36710/0xF36860/0xF36A30; Musgrave ridged multifractal body; CFractal layout matches

@@ -24840,3 +24840,13 @@ chunk	address	module	name	length
 580	00d27050	global	DoMission_Setup	489
 580	00ed7830	global	sub_00ed7830	497
 580	00ef7600	global	sub_00ef7600	500
+581	00eff130	global	sub_00eff130	144
+581	00f34660	global	vector_insert_impl_CFeatDef	455
+581	00f26570	global	vector_insert_impl_CParticleMorphs	456
+581	00f281e0	global	vector_insert_impl_CParentDefClassBase	481
+581	00f277f0	global	vector_insert_impl_pair_CSymbolInfo	493
+581	00e99260	global	sub_00e99260	519
+581	00e1f0c0	global	sub_00e1f0c0	525
+581	00e268c0	global	sub_00e268c0	534
+581	00f33ef0	global	vector_insert_impl_ThingBuildingDef_map	538
+581	00ec1cd0	global	sub_00ec1cd0	540

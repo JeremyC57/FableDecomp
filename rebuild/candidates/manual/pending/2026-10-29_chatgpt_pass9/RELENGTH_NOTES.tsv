@@ -1,0 +1,3 @@
+00d50800	452	pool says 448; ret at +0x1c3 (2026-10-29 extent check)
+00effe10	484	pool says 480; ret at +0x1e3 (2026-10-29 extent check)
+00ed83c0	?	pool says 480; tail unclear, re-extent before cutting
