@@ -47,10 +47,10 @@ struct CDefinitionManagerOverlay
     unsigned char             m_Pad00[0xdc];
     CTheftMoralityDefinition* m_Definition; // 0xdc
 };
+class CGameDefinitionManager : public CDefinitionManagerOverlay { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 
 
 extern "C" CPlayer* __fastcall Sub_ResolveA(void* self);
-extern "C" CDefinitionManagerOverlay* __cdecl Sub_GetDefinitionManager();
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)4;
 
@@ -70,7 +70,7 @@ void __fastcall CGameScriptInterface_ChangeHeroMoralityDueToTheft(
             pEntry = pEnd;
 
         CGSITheftMoralityStats* pStats = pEntry->m_Value;
-        CDefinitionManagerOverlay* pManager = Sub_GetDefinitionManager();
+        CDefinitionManagerOverlay* pManager = &CGameDefinitionManager::Get();
         long change = pManager->m_Definition->m_Change;
         pStats->SetMorality(pStats->m_Morality + change);
     }

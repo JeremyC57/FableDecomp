@@ -32,21 +32,26 @@ protected:
 FABLE_STATIC_ASSERT(sizeof(CAIStateGroup_KidWanderNearKids) == sizeof(CAIStateGroupBase));
 
 class CTCBase { public: };
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
-    struct SEntry { int type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType,CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const int* key);                 // 0x0040F020
-    const SEntry* LowerBound(const int* key) const;     // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& key);                 // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& key) const;     // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char pad[0x20]; unsigned int UsingComponents[9]; CInterfaceMap Interfaces;
     template<class T> __forceinline T* GetTC(int id) {
-        int key=id; CInterfaceMap* m=&Interfaces; CInterfaceMap::SEntry* p=m->LowerBound(&key);
-        if (p==m->last || id<p->type) p=m->last; return (T*)p->component;
+        ETCInterfaceType key = (ETCInterfaceType)(id); CInterfaceMap* m=&Interfaces; CInterfaceMap::SEntry* p=m->LowerBound(key);
+        if (p==m->last || id<p->first) p=m->last; return (T*)p->second;
     }
     template<class T> __forceinline T* GetTCConst(int id) const {
-        int key=id; const CInterfaceMap* m=&Interfaces; const CInterfaceMap::SEntry* p=m->LowerBound(&key);
-        if (p==m->last || id<p->type) p=m->last; return (T*)p->component;
+        ETCInterfaceType key = (ETCInterfaceType)(id); const CInterfaceMap* m=&Interfaces; const CInterfaceMap::SEntry* p=m->LowerBound(key);
+        if (p==m->last || id<p->first) p=m->last; return (T*)p->second;
     }
 };
 struct CWorld_Methods : CWorld { unsigned int* GetPRandomSeed(); };          // 0x0049D810

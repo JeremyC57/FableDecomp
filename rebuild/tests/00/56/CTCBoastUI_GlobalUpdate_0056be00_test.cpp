@@ -52,10 +52,10 @@ class CWorld { public: CThingSearchTools* PThingSearchTools; CGameCameraManager*
 class CEngine { public: CWorld* World; };
 CEngine* g_pEngine;
 static int g_closed, g_cleared, g_reset;
-struct CFrontEndManager {
-    static CFrontEndManager* GetInstance() { static CFrontEndManager f; return &f; }
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance() { static CManager f; return &f; }
     void Close() { ++g_closed; } void ClearMenus() { ++g_cleared; } void ResetInput() { ++g_reset; }
-};
+}; }
 struct SListNode { SListNode* Next; SListNode* Prev; };
 SListNode* g_BoastList;
 static int g_compDeleted;
@@ -79,8 +79,8 @@ void CTCBoastUI::GlobalUpdate(long)
         for (unsigned long i = 0; i < Components.size(); ++i)
             delete Components[i];
         Components.clear();
-        CFrontEndManager::GetInstance()->Close();
-        CFrontEndManager::GetInstance()->ClearMenus();
+        NUISystem::CManager::GetInstance()->Close();
+        NUISystem::CManager::GetInstance()->ClearMenus();
         SListNode* node = g_BoastList->Next;
         while (node != g_BoastList) {
             SListNode* dead = node;
@@ -89,7 +89,7 @@ void CTCBoastUI::GlobalUpdate(long)
         }
         g_BoastList->Next = g_BoastList;
         g_BoastList->Prev = g_BoastList;
-        CFrontEndManager::GetInstance()->ResetInput();
+        NUISystem::CManager::GetInstance()->ResetInput();
         Active = false;
         Quitting = false;
         ActivationRequested = false;

@@ -16,13 +16,18 @@ class CWorld;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound: the non-const
 // instantiation @ 0x0040F020 and the const one @ 0x004365B0 (two byte-identical bodies).
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020 (non-const instantiation)
-    SEntry* LowerBound(const long* type) const; // 0x004365B0 (const instantiation, byte-identical body)
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020 (non-const instantiation)
+    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0 (const instantiation, byte-identical body)
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -37,25 +42,25 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    __forceinline const CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        CInterfaceMap::SEntry* sel;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        const CInterfaceMap::SEntry* sel;
         if (it == map->last) sel = map->last;
-        else if (it->type <= interfaceType) sel = it;
+        else if (it->first <= interfaceType) sel = it;
         else sel = map->last;
         return sel;
     }
@@ -63,24 +68,24 @@ class CThing { public:
     template<class T> __forceinline bool GetInterfaceConst(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
     }
-    __forceinline CInterfaceMap::SEntry* FindEntryConst(long interfaceType) const
+    __forceinline const CInterfaceMap::SEntry* FindEntryConst(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        CInterfaceMap::SEntry* sel;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        const CInterfaceMap::SEntry* sel;
         if (it == map->last) sel = map->last;
-        else if (it->type <= interfaceType) sel = it;
+        else if (it->first <= interfaceType) sel = it;
         else sel = map->last;
         return sel;
     }
@@ -151,9 +156,9 @@ struct CAIStateGroup_SummonerSummon : CAIStateGroupBase {
 bool CAIStateGroup_SummonerSummon::IsRunnable()
 {
     if (PBrain->PCreature->HasTC(8)) {
-        CThing* target = ((CTCTargetSource*)PBrain->PCreature->FindEntry(8)->component)->GetEnemy();
+        CThing* target = ((CTCTargetSource*)PBrain->PCreature->FindEntry(8)->second)->GetEnemy();
         if (target != 0 && !(target->m_flags91 & 1) && PBrain->PCreature->HasTC(0xFA)
-            && ((CTCAISummon*)PBrain->PCreature->FindEntryConst(0xFA)->component)->GetMaxCreatureCount() != 0) {
+            && ((CTCAISummon*)PBrain->PCreature->FindEntryConst(0xFA)->second)->GetMaxCreatureCount() != 0) {
             CIntelligentPointerConstThing converted(target);
             PTarget.SetPItem(converted.GetPItem());
             return true;

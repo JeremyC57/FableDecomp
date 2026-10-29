@@ -62,30 +62,30 @@ class CAction { public:
     CSliderTargetRef* PTarget;                   // +0x04
 };
 }
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {}
     virtual void v12() {} virtual void v13() {}
     virtual void ExecuteAction(const CCountedPointer<NUISystem::CAction>& action) = 0;   // slot 14 (+0x38)
-};
+}; }
 namespace NUISystem {
 void CSlider::RevertValue()
 {
     OldValue = StartValue = Value = PreviousValue;
     for (unsigned int i = 0; i < Actions.size(); ++i) {
         Actions[i]->PTarget->Target->Value->Value = PreviousValue.X;
-        CFrontEndManager::GetInstance()->ExecuteAction(Actions[i]);
+        CManager::GetInstance()->ExecuteAction(Actions[i]);
     }
     Move = true;
 }
 }
 static const void* g_executed[8]; static int g_count = 0; static float g_seen[8];
-struct TestManager : CFrontEndManager {
+struct TestManager : NUISystem::CManager {
     void ExecuteAction(const CCountedPointer<NUISystem::CAction>& a) { g_seen[g_count] = a->PTarget->Target->Value->Value; g_executed[g_count++] = &a; }
 };
 static TestManager g_manager;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_manager; }
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return &g_manager; }
 static unsigned char g_mem[sizeof(NUISystem::CSlider)];
 int main()
 {

@@ -47,14 +47,13 @@ struct CDrunkennessDefPointer {
     const CSpecialAbilitiesDrunkennessDef* Object;
     CDrunkennessDefPointer() : Object(0) {}
 };
-struct CPrimitiveHandleBase {
-    virtual void h00();
-    CPrimitiveHandleBase();                          // 0x0099A2D0
+class CBaseClass { public:
+    virtual ~CBaseClass();                           // slot 0 (0x0099A2E0)
+    CBaseClass();                                    // 0x0099A2D0 ??0CBaseClass@@QAE@XZ
 };
-class CEnginePrimitiveHandle : public CPrimitiveHandleBase { public:   // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public:   // vtable 0x0122F598
     long Handle;                                     // +0x04
     __forceinline CEnginePrimitiveHandle() : Handle(0) {}
-    virtual void h00();
 };
 struct CMarriageAllocator { CMarriageAllocator() {} };
 struct CMarriageList {                               // STLport list<CHeroMarriageInfo>

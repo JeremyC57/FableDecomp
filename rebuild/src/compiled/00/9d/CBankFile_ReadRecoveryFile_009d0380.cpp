@@ -28,7 +28,8 @@ class CAFile { public:
     static bool __fastcall PathExists(const CWideString& path);   // 0x00999230
 };
 class CASuspendableProcess;
-struct CBaseClassNonCopyable {
+class CBaseClassNonCopyable {
+protected:
     CBaseClassNonCopyable();                           // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();                  // 0x0099A300
 };

@@ -31,19 +31,23 @@ class CTCInventoryAbilities { public:
     CDefPointer<const CHeroAbilityDef> GetAbilityPDef(EHeroAbility ability) const;   // 0x005EDFD9
     long GetAbilityMaximumLevel(EHeroAbility ability) const;                         // 0x005EDEA3
 };
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
-    struct Entry { long type; void* component; };
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType,CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
     Entry* first; Entry* last;
-    Entry* LowerBound(const long*);                     // 0x0040F020
+    Entry* LowerBound(const ETCInterfaceType& key);                     // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CPresenceBits { bool test(long kind); };         // bitset<>::test 0x00410DE0
 class CThing { public:
     unsigned char _pad00[0x20]; CPresenceBits present; unsigned char _pad21[0x23]; CInterfaceMap interfaces;
     template<class T> __forceinline bool GetInterface(T** out, long kind) {
         if (present.test(kind)) {
-            long key = kind; CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(&key);
-            if (it == map->last || kind < it->type) it = map->last;
-            *out = (T*)it->component; return true;
+            ETCInterfaceType key = (ETCInterfaceType)(kind); CInterfaceMap* map = &interfaces; CInterfaceMap::Entry* it = map->LowerBound(key);
+            if (it == map->last || kind < it->first) it = map->last;
+            *out = (T*)((void*)it->second); return true;
         }
         return false;
     }

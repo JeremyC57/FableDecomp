@@ -35,14 +35,14 @@ public:
 };
 static long g_lastSound = 0; static int g_sounds = 0;
 static CUIMiscThingsDef g_def;
-class CFrontEndManager {
+class CManager {
 public:
-    static CFrontEndManager* GetInstance();
+    static CManager* __fastcall GetInstance();
     virtual void PlaySound(const CSoundHandle& sound, bool) { g_lastSound = sound.m_id; ++g_sounds; }
     virtual CMiscThingsDefPointer GetMiscThingsDef() { return CMiscThingsDefPointer(&g_def); }
 };
-static CFrontEndManager g_fem;
-CFrontEndManager* CFrontEndManager::GetInstance() { return &g_fem; }
+static CManager g_fem;
+CManager* CManager::GetInstance() { return &g_fem; }
 struct CComponentVector {
     CComponent** _M_start; CComponent** _M_finish; CComponent** _M_end_of_storage;
     unsigned long size() const { return _M_finish - _M_start; }
@@ -62,15 +62,15 @@ void CFrontEndList::ScrollUp()
 {
     if (ScrollingChildren.size() <= 1)
     {
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetMiscThingsDef()->ListDeniedSound, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetMiscThingsDef()->ListDeniedSound, true);
         return;
     }
     if (SelectedChild == 0 && IsScrollingList())
     {
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetMiscThingsDef()->ListDeniedSound, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetMiscThingsDef()->ListDeniedSound, true);
         return;
     }
-    CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetMiscThingsDef()->ListScrollSound, true);
+    CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetMiscThingsDef()->ListScrollSound, true);
     ScrollingChildren[SelectedChild]->SetState(4);
     long selected = SelectedChild - 1;
     SelectedChild = selected;

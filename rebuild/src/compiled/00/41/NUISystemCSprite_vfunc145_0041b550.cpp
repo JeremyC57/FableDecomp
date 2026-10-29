@@ -220,13 +220,13 @@ struct CSpriteGraphicsPointer {
     ~CSpriteGraphicsPointer() { if (Info && --Info->RefCount == 0) { Info->DeleteFunc(Info->Data); ::operator delete(Info); } }
     CGraphicDataBank* operator->() const { return Data; }
 };
-struct CManagerGraphicsView {
+class CManager { public:
     unsigned char Base[0x10];
     CSpriteGraphicsPointer PGraphicsBank;
-    static CManagerGraphicsView* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     CSpriteGraphicsPointer GetGraphicsBank() const { return PGraphicsBank; }
 };
 
 class CSprite { public:unsigned char ToSize[0xcc];float SizeX,SizeY;unsigned char ToGraphic[0x178-0xd4];unsigned long GraphicIndex;void SetGraphicIndex(unsigned long);};
-void CSprite::SetGraphicIndex(unsigned long index){GraphicIndex=index;if(GraphicIndex>0){SizeX=(float)CManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrameWidth(GraphicIndex,0);SizeY=(float)CManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrameHeight(GraphicIndex,0);CGraphicInfoFrame* frames=CManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrames(GraphicIndex);frames->BeginLoading(0,0x10);CGraphicFrame frame;frames->GetFrame(frame,0,1);}}
+void CSprite::SetGraphicIndex(unsigned long index){GraphicIndex=index;if(GraphicIndex>0){SizeX=(float)CManager::GetInstance()->GetGraphicsBank()->GetGraphicFrameWidth(GraphicIndex,0);SizeY=(float)CManager::GetInstance()->GetGraphicsBank()->GetGraphicFrameHeight(GraphicIndex,0);CGraphicInfoFrame* frames=CManager::GetInstance()->GetGraphicsBank()->GetGraphicFrames(GraphicIndex);frames->BeginLoading(0,0x10);CGraphicFrame frame;frames->GetFrame(frame,0,1);}}
 }

@@ -43,10 +43,10 @@ struct CEngineInternalRepeatedStaticMeshNative : CEngineInternalPrimitiveOcclusi
     virtual ~CEngineInternalRepeatedStaticMeshNative();
     CEngineInternalRepeatedStaticMeshNative() : CEngineInternalPrimitiveOcclusionNative(0x2a, 8), BoundingSphere() {}
 };
-struct CPrimitiveHandleBaseNative {
-    virtual ~CPrimitiveHandleBaseNative();      // 0x0099A2E0
-    CPrimitiveHandleBaseNative();               // 0x0099A2D0
-    CPrimitiveHandleBaseNative(const CPrimitiveHandleBaseNative&) {}
+class CBaseClass { public:
+    virtual ~CBaseClass();      // 0x0099A2E0
+    CBaseClass();               // 0x0099A2D0
+    CBaseClass(const CBaseClass&) {}
 };
 struct CPrimitiveCountedPointerNative {
     CEngineInternalPrimitiveNative* Object;
@@ -55,10 +55,10 @@ struct CPrimitiveCountedPointerNative {
     __forceinline ~CPrimitiveCountedPointerNative()
     { if (Object) { CEngineInternalPrimitiveNative* p = Object; if (!p->RemoveReference()) p->Destroy(); } Object = 0; }
 };
-struct CEnginePrimitiveHandleNative : CPrimitiveHandleBaseNative {   // vtable 0x0122F598
+struct CEnginePrimitiveHandleNative : CBaseClass {   // vtable 0x0122F598
     CPrimitiveCountedPointerNative Data;
     CEnginePrimitiveHandleNative(CEngineInternalPrimitiveNative* p) : Data(p) {}
-    CEnginePrimitiveHandleNative(const CEnginePrimitiveHandleNative& o) : CPrimitiveHandleBaseNative(o), Data(o.Data) {}
+    CEnginePrimitiveHandleNative(const CEnginePrimitiveHandleNative& o) : CBaseClass(o), Data(o.Data) {}
     __forceinline virtual ~CEnginePrimitiveHandleNative()
     { if (Data.Object && Data.Object->IVRefCount == 1) Data.Object->OnLastHandleReleased(this); }
 };

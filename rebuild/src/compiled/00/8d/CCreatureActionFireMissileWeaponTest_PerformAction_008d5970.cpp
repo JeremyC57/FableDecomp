@@ -39,12 +39,18 @@ template<class T>class CIntelligentPointer:public CBaseIntelligentPointer { publ
 // Retail DeadFlags91 vs donor ThingStateA1: actual PDB containers add16 bytes before this flag.
 // Creature view adds only the real native SetCurrentAction API; no additional fields touched here.
 class CTCPhysicsBase;struct CDefLookup;
-struct CInterfaceMap {
-    struct Entry { long type; void* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
     Entry *Start,*Finish,*End;
-    Entry* LowerBound(const long*); //40F020
-    Entry* LowerBound(const long*)const; //4365B0
+    Entry* LowerBound(const ETCInterfaceType& key); //40F020
+    const Entry* LowerBound(const ETCInterfaceType& key) const; //4365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing:public CBaseObject { public:
     unsigned char BaseState[0x18];
     unsigned long UsingComponents[9];
@@ -63,21 +69,21 @@ class CThing:public CBaseObject { public:
     void Kill(bool); //004C9B80
     template<class T> __forceinline bool GetInterface(T** out,long key) {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
-            long type=key;
+            ETCInterfaceType type = (ETCInterfaceType)(key);
             CInterfaceMap* map=&Components;
-            CInterfaceMap::Entry* it=map->LowerBound(&type);
-            if(it==map->Finish || key<it->type) it=map->Finish;
-            *out=(T*)it->component;return true;
+            const CInterfaceMap::Entry* it=map->LowerBound(type);
+            if(it==map->Finish || key<it->first) it=map->Finish;
+            *out=(T*)((void*)it->second);return true;
         }
         return false;
     }
     template<class T> __forceinline bool GetInterface(T** out,long key) const {
         if(UsingComponents[key>>5]&(1UL<<(key&31))) {
-            long type=key;
+            ETCInterfaceType type = (ETCInterfaceType)(key);
             const CInterfaceMap* map=&Components;
-            CInterfaceMap::Entry* it=map->LowerBound(&type);
-            if(it==map->Finish || key<it->type) it=map->Finish;
-            *out=(T*)it->component;return true;
+            const CInterfaceMap::Entry* it=map->LowerBound(type);
+            if(it==map->Finish || key<it->first) it=map->Finish;
+            *out=(T*)((void*)it->second);return true;
         }
         return false;
     }

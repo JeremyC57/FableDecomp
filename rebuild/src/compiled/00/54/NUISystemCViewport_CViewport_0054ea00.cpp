@@ -1,7 +1,7 @@
 // NUISystem::CViewport::CViewport(long owner) -- CChangingStateComponent(owner), the three vtables of this class, the primitive handle at +0x15c, the empty fake-child vector and the cleared word at +0x170, then InitialiseFromDef()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0054EA00, length 96 bytes.
 // Callees: NUISystem::CChangingStateComponent::CChangingStateComponent(long) @ 0x0052CC50 (the landed
-// CParticleEffect constructor's base), CBase::CBase @ 0x0099A2D0 (the handle's base), the body call
+// CParticleEffect constructor's base), CBaseClass::CBaseClass @ 0x0099A2D0 (the handle's base), the body call
 // @ 0x0054E5D0 (manifest "CParticleEffect::GetDataFromDef" is propagated; the same position as the landed
 // 0x00544010's GetDataFromDef -- reads the def through `this`).
 // Vtables 0x01249A5C / 0x01249A38 / 0x01249A30 = NUISystem::CViewport (primary + the interface bases at +4
@@ -29,15 +29,16 @@ class CChangingStateComponent : public CComponentRoot, public IComponentA, publi
     CChangingStateComponent(long owner);       // 0x0052CC50
 };
 
-struct CBase {
-    virtual void v00();
-    CBase();                                   // 0x0099A2D0
+}   // the retail root is file scope
+class CBaseClass { public:
+    virtual ~CBaseClass();                     // slot 0 (0x0099A2E0)
+    CBaseClass();                              // 0x0099A2D0 ??0CBaseClass@@QAE@XZ
 };
+namespace NUISystem {
 
-struct CEnginePrimitiveHandle : CBase {        // vtable 0x0122F598
+struct CEnginePrimitiveHandle : CBaseClass {   // vtable 0x0122F598
     void* m_pPrimitive;                        // +4
-    virtual void v00();
-    CEnginePrimitiveHandle() : CBase(), m_pPrimitive(0) { }
+    CEnginePrimitiveHandle() : CBaseClass(), m_pPrimitive(0) { }
 };
 
 struct CComponentVector {                      // 12-byte retail vector {first, last, end}

@@ -1,7 +1,7 @@
 // NUISystem::CMenuEntry::~CMenuEntry() -- unregister from the front-end manager, hand every UI action parameter and thing action parameter back to the manager, delete the owned UI action parameters and both parameter lists, delete the six action lists, then run the CClickable base destructor
 // Leaf: ??1CMenuEntry@NUISystem
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0053E4E0, length 606 bytes (+ int3 padding); ends in a tail jump to the base dtor.
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall) and its virtual slots 5 (+0x14, remove the input
+// Callees: CManager::GetInstance 0x0041E5F2 (__fastcall) and its virtual slots 5 (+0x14, remove the input
 //   observer), 25 (+0x64, release a thing action parameter) and 28 (+0x70, release a UI action parameter); free 0x00BFEA14
 //   (STLport list nodes and header), operator delete 0x00BFE9BC, list<CCountedPointer<CAction> >::clear 0x005356A0,
 //   CClickable::~CClickable 0x0055B760 (manifest "CHoverable_destructor").
@@ -70,8 +70,8 @@ struct CActionParam_ {
 }
 
 struct CObserver;
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void RemoveObserver(CObserver* observer);                          // slot 5 (+0x14)
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
@@ -81,7 +81,7 @@ struct CFrontEndManager {
     virtual void ReleaseThingActionParam(long param);                          // slot 25 (+0x64)
     virtual void v26(); virtual void v27();
     virtual void ReleaseUIActionParam(NUISystem::CActionParam_* param);        // slot 28 (+0x70)
-};
+}; }
 
 namespace NUISystem {
 
@@ -114,14 +114,14 @@ class CMenuEntry : public CClickable { public:
 
 CMenuEntry::~CMenuEntry()
 {
-    CFrontEndManager::GetInstance()->RemoveObserver(this);
+    CManager::GetInstance()->RemoveObserver(this);
     if (PUIActionParams) {
         for (_List_iterator<CActionParam_*> it = PUIActionParams->begin(); it != PUIActionParams->end(); ++it)
-            CFrontEndManager::GetInstance()->ReleaseUIActionParam(*it);
+            CManager::GetInstance()->ReleaseUIActionParam(*it);
     }
     if (PThingActionParams) {
         for (_List_iterator<long> it = PThingActionParams->begin(); it != PThingActionParams->end(); ++it)
-            CFrontEndManager::GetInstance()->ReleaseThingActionParam(*it);
+            CManager::GetInstance()->ReleaseThingActionParam(*it);
     }
     if (PUIActionParams) {
         for (_List_iterator<CActionParam_*> it = PUIActionParams->begin(); it != PUIActionParams->end(); ++it) {

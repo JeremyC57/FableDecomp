@@ -18,15 +18,21 @@ public:
 #include "engine/CPlayer.h"
 #undef CPlayer
 class CCharString;
-struct CInterfaceMap { struct Entry { long type; void* component; }; Entry *first,*last; Entry* LowerBound(const long*); };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public: typedef std::pair<ETCInterfaceType, CTCBase*> Entry; Entry *first,*last; Entry* LowerBound(const ETCInterfaceType& key); };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char prefix[0x20]; unsigned long bits[9]; CInterfaceMap interfaces;
     unsigned char middle[0x45]; unsigned char dead;
     template<class T> __forceinline bool GetInterface(T** out,long type) {
         bool present=(bits[type>>5]>>(type&31))&1;
         if(present) {
-            long key=type; CInterfaceMap* map=&interfaces; CInterfaceMap::Entry* it=map->LowerBound(&key);
-            *out=(T*)((it==map->last || it->type>type)?map->last:it)->component;
+            ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&interfaces; CInterfaceMap::Entry* it=map->LowerBound(key);
+            *out=(T*)((void*)((it==map->last || it->first>type)?map->last:it)->second);
         } return present;
     }
 };

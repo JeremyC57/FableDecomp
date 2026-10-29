@@ -70,8 +70,8 @@ struct CFadeSettingsPtr {
     CFadeSettingsObject* operator->() const { return Object; }
 };
 namespace NUISystem {
-class CFrontEndManager { public:
-    static CFrontEndManager* __fastcall GetInstance();        // 0x0041E5F2
+class CManager { public:
+    static CManager* __fastcall GetInstance();        // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14();
@@ -149,7 +149,7 @@ void CTCInventoryQuests::DrawPreparePrimitivesForRendering(const CEnginePrimitiv
                     Components[i]->Render(info.PViewport, 0, 0, 0, 0);
             }
             AccumFadeTime += deltaTime;
-            float alpha = AccumFadeTime / NUISystem::CFrontEndManager::GetInstance()->GetFadeSettings()->FadeTime;
+            float alpha = AccumFadeTime / NUISystem::CManager::GetInstance()->GetFadeSettings()->FadeTime;
             if (alpha > 1.0f)
                 alpha = 1.0f;
             RenderUIBackdropQuad(alpha);

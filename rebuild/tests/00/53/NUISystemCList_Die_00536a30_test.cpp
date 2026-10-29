@@ -67,12 +67,12 @@ struct CInputListener {                            // the input-listener base at
     virtual void v00();
     unsigned char _pad04[0x14 - 0x04];
 };
-class CFrontEndManager {
+namespace NUISystem { class CManager { public:
 public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void RemoveInputListener(CInputListener* listener);   // slot 5 (+0x14)
-};
+}; }
 namespace NUISystem {
 struct CComponentRoot {                            // the primary vtable at +0
     virtual ~CComponentRoot();
@@ -106,7 +106,7 @@ void CList::Die()
             it = g_ListRegistry.erase(it);
     }
     for (unsigned long i = 0; i < ScrollingChildren.size(); ++i) {
-        CFrontEndManager::GetInstance()->RemoveInputListener(ScrollingChildren[i]);
+        CManager::GetInstance()->RemoveInputListener(ScrollingChildren[i]);
         ScrollingChildren[i]->Die();
     }
     CComponent::Die();
@@ -118,16 +118,16 @@ void CList::Die()
 #define D16(n) D4(n##a) D4(n##b) D4(n##c) D4(n##d)
 using namespace NUISystem;
 static int g_erase = 0, g_remove = 0, g_childDie = 0, g_baseDie = 0, g_getdef = 0, g_destroy = 0;
-static CComponentDef g_def; static CFrontEndManager g_fe; static NUISystem::CComponent* g_child = 0;
+static CComponentDef g_def; static NUISystem::CManager g_fe; static NUISystem::CComponent* g_child = 0;
 list<CList*> g_ListRegistry;
 template <> _List_iterator<CList*> list<CList*>::erase(_List_iterator<CList*> position)
 { ++g_erase; _List_node<CList*>* next = position._M_node->_M_next; position._M_node->_M_prev->_M_next = next; next->_M_prev = position._M_node->_M_prev; return _List_iterator<CList*>(next); }
 void CComponentDef::v00() {}
 void CComponentDef::Destroy() { ++g_destroy; }
 void CInputListener::v00() {}
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_fe; }
-void CFrontEndManager::v00() {} void CFrontEndManager::v01() {} void CFrontEndManager::v02() {} void CFrontEndManager::v03() {} void CFrontEndManager::v04() {}
-void CFrontEndManager::RemoveInputListener(CInputListener*) { ++g_remove; }
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return &g_fe; }
+void NUISystem::CManager::v00() {} void NUISystem::CManager::v01() {} void NUISystem::CManager::v02() {} void NUISystem::CManager::v03() {} void NUISystem::CManager::v04() {}
+void NUISystem::CManager::RemoveInputListener(CInputListener*) { ++g_remove; }
 namespace NUISystem {
 CComponentRoot::~CComponentRoot() {}
 D16(a) D16(b) D16(c) D16(d) D16(e) D16(f) D4(g0) D4(g1)

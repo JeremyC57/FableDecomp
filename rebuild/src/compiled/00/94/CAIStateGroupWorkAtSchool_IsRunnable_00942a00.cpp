@@ -18,13 +18,18 @@ class CWorld;
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound (this TU's copy) -- the inlined
 // GetInterface<T>() shape of the landed AI bodies (hit path: lookup result; miss path: the never-written slot).
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020 (this TU's non-const copy)
-    SEntry* LowerBound(const long* type) const; // 0x004365B0 (the const copy: the first lookup goes through a const map)
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020 (this TU's non-const copy)
+    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0 (the const copy: the first lookup goes through a const map)
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class C3DVector;
 class CThing { public:
@@ -48,36 +53,36 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::SEntry* FindEntryC(long interfaceType) const
+    __forceinline const CInterfaceMap::SEntry* FindEntryC(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        CInterfaceMap::SEntry* sel;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        const CInterfaceMap::SEntry* sel;
         if (it == map->last) sel = map->last;
-        else if (it->type <= interfaceType) sel = it;
+        else if (it->first <= interfaceType) sel = it;
         else sel = map->last;
         return sel;
     }
-    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    __forceinline const CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        CInterfaceMap::SEntry* sel;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        const CInterfaceMap::SEntry* sel;
         if (it == map->last) sel = map->last;
-        else if (it->type <= interfaceType) sel = it;
+        else if (it->first <= interfaceType) sel = it;
         else sel = map->last;
         return sel;
     }
@@ -86,12 +91,12 @@ class CThing { public:
     {
         bool has = TestTC(interfaceType);
         if (has) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)it->second;
         }
         return has;
     }
@@ -100,10 +105,10 @@ class CThing { public:
     template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
             return true;
         }
         return false;
@@ -111,11 +116,11 @@ class CThing { public:
     // the KidCleanup form (landed 0x00915190): `if (mask) *pp = Lookup();` with an entry-value lookup
     __forceinline CTCBase* LookupValue(long interfaceType)
     {
-        long type = interfaceType;
-        CInterfaceMap::SEntry* p = m_interfaces.LowerBound(&type);
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
+        const CInterfaceMap::SEntry* p = m_interfaces.LowerBound(type);
         if (p == m_interfaces.last) p = m_interfaces.last;
-        else if (p->type > interfaceType) p = m_interfaces.last;
-        return p->component;
+        else if (p->first > interfaceType) p = m_interfaces.last;
+        return p->second;
     }
     template<class T> __forceinline void GetInterfaceK(T** ppOut, long interfaceType)
     {
@@ -127,19 +132,19 @@ class CThing { public:
     {
         T* component;
         if (HasTC(interfaceType))
-            component = (T*)FindEntry(interfaceType)->component;
+            component = (T*)FindEntry(interfaceType)->second;
         return component;
     }
     // the out-parameter form whose result is ignored (no bool to keep: the component lands in its use register)
     template<class T> __forceinline void GetInterfaceV(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)it->second;
         }
     }
 };
@@ -265,12 +270,12 @@ bool CAIStateGroup_WorkAtSchool::IsRunnable()
 {
     CThingBuilding* school = (CThingBuilding*)GetCreature()->PSchool.GetPItem();
     if (school && GetCreature()->HasTC(0x23)) {
-        CTCVillager* villager = (CTCVillager*)GetCreature()->FindEntryC(0x23)->component;
+        CTCVillager* villager = (CTCVillager*)GetCreature()->FindEntryC(0x23)->second;
         if (GFGetPVillageInterface(villager)) {
             CDefPointer<CSimBuildingDef> simDef = school->PeekPSimDefinition();
             if (simDef.Object) {
                 if ((simDef->Property & 4) && school->HasTC(0x23)) {
-                    CTCVillager* schoolVillager = (CTCVillager*)school->FindEntry(0x23)->component;
+                    CTCVillager* schoolVillager = (CTCVillager*)school->FindEntry(0x23)->second;
                     if (GFGetPVillageInterface(schoolVillager)) {
                         CThingAICreature* creature = (CThingAICreature*)PBrain->PCreature;
                         bool result = GFGetPVillageInterface(schoolVillager)->IsTimeToGoToSchool(creature, (CWorld*)&PeekWorld(), false);

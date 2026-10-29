@@ -29,9 +29,7 @@ struct CActionInputControl {
 struct CUserProfileManager {
     void RedefineControlPassive(CActionInputControl* control, CActionInputControl* previous, long subType);   // 0x00407CD0
 };
-struct CUserProfileManagerSingleton {
-    static CUserProfileManager& __fastcall Get();  // 0x0040D2A0
-};
+} class CUserProfileManager : public NUISystem::CUserProfileManager { public: static CUserProfileManager& __fastcall Get(); }; namespace NUISystem {   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 struct CGameState {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -105,7 +103,7 @@ void CKeyRedefiner::Redefine(const CActionInputControl& control, bool notify)
         index = SubType - 1;
     for (ActionNode* node = Actions->_M_next; node != Actions; node = node->_M_next) {
         previous.GameAction = current.GameAction = node->_M_data;
-        CUserProfileManagerSingleton::Get().RedefineControlPassive(&current, &previous, index);
+        ::CUserProfileManager::Get().RedefineControlPassive(&current, &previous, index);
     }
     if (g_pGameState) {
         g_pGameState->PlaySound(0x10, 0, 0);

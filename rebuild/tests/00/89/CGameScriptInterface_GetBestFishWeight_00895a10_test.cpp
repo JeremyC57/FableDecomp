@@ -106,11 +106,11 @@ struct CTCFishing_Retail { void GoFishing(const CScriptThing& spot) { rec("O"); 
 struct CTCOracleMinigame_Retail { void* m_pGame; };
 struct CTCChest_Retail { long GetNumberOfKeysToUnlock(CCharString& keyName) { rec("K"); keyName = "KEY"; return 3; } };
 struct CGameDefinitionManager_Retail {
-    static CGameDefinitionManager_Retail& Get();
     long GetDefGlobalIndexFromName(const CCharString& name) { rec("I"); return std::strcmp(name.s, "FISH") == 0 ? 77 : 0; }
 };
+class CGameDefinitionManager : public CGameDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 static CGameDefinitionManager_Retail g_gameDefs;
-CGameDefinitionManager_Retail& CGameDefinitionManager_Retail::Get() { return g_gameDefs; }
+CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { return (CGameDefinitionManager&)(g_gameDefs); }
 static const float g_noFishWeight = 0.0f;
 struct CPlayer_Retail {
     CThing_Retail* m_pHero;
@@ -219,7 +219,7 @@ float CGameScriptInterface::GetBestFishWeight(const CCharString& defName) const
     if (hero && !hero->m_dead) {
         CTCInventory_Retail* inventory;
         if (hero->GetInterface(&inventory, 0x11) && inventory) {
-            long defIndex = CGameDefinitionManager_Retail::Get().GetDefGlobalIndexFromName(defName);
+            long defIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(defName);
             if (defIndex)
                 return inventory->GetBestFishWeight(defIndex);
         }

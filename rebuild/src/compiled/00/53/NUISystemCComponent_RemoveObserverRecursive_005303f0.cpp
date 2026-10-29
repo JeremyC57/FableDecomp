@@ -31,15 +31,15 @@ struct CObserver {
     virtual void Notify();
 };
 
-struct CFrontEndManager_Calls {                                // vtable-slot view of NUISystem::CFrontEndManager
+namespace NUISystem { class CManager { public:                                // vtable-slot view of NUISystem::CFrontEndManager
     virtual void v000();
     virtual void v001();
     virtual void v002();
     virtual void v003();
     virtual void v004();
     virtual void RemoveObserver(CObserver* observer);   // slot 5 (+0x14)
-    static CFrontEndManager_Calls* __fastcall GetInstance();  // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();  // 0x0041E5F2
+}; }
 
 struct CCountedComponentPointer {                               // CCountedPointer<NUISystem::CComponent>
     CComponent* m_pObject;                                      // +0
@@ -191,7 +191,7 @@ struct CComponent : CComponentBase, CObserver {                // retail NUISyst
 
 void CComponent::RemoveObserverRecursive()
 {
-    CFrontEndManager_Calls::GetInstance()->RemoveObserver(this);
+    NUISystem::CManager::GetInstance()->RemoveObserver(this);
     OnObserversRemoved();
     for (unsigned long i = 0; i < Children.size(); ++i)
         Children[i].m_pObject->RemoveObserverRecursive();

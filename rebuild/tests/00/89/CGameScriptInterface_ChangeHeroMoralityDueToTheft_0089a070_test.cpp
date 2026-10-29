@@ -45,6 +45,7 @@ struct CDefinitionManagerOverlay
     unsigned char             m_Pad00[0xdc];
     CTheftMoralityDefinition* m_Definition;
 };
+class CGameDefinitionManager : public CDefinitionManagerOverlay { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 
 class CGameScriptInterface
 { public:
@@ -77,10 +78,9 @@ CThingPlayerCreature* CPlayer::GetPControlledCreature() const
     return (CThingPlayerCreature*)g_thing;
 }
 
-extern "C" CDefinitionManagerOverlay* __cdecl Sub_GetDefinitionManager()
-{
+CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() {
     ++g_definition_calls;
-    return &g_definition_manager;
+    return *(CGameDefinitionManager*)(&g_definition_manager);
 }
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)4;

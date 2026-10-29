@@ -40,7 +40,6 @@ struct CDefClass_Retail : CDefObject_Retail {
 };
 static CDefClass_Retail* g_class = 0; static int g_getDef = 0; static long g_getDefIndex = -1;
 struct CGameDefinitionManager_Retail {
-    static CGameDefinitionManager_Retail& Get();
     bool GetDef(long index, CDefPointerSlot<CDefClass_Retail>* out)
     {
         ++g_getDef; g_getDefIndex = index;
@@ -48,8 +47,9 @@ struct CGameDefinitionManager_Retail {
         ++g_class->m_refCount; out->Object = g_class; return true;
     }
 };
+class CGameDefinitionManager : public CGameDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 static CGameDefinitionManager_Retail g_gameDefs;
-CGameDefinitionManager_Retail& CGameDefinitionManager_Retail::Get() { return g_gameDefs; }
+CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { return (CGameDefinitionManager&)(g_gameDefs); }
 static int g_nameLookups = 0; static const void* g_lookedUp = 0;
 struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name) { ++g_nameLookups; g_lookedUp = name.PStringData; return 606; }
@@ -69,7 +69,7 @@ bool CGameScriptInterface::IsGiftRomantic(const CCharString& defName) const
 {
     long index = DefinitionManager->GetDefGlobalIndexFromName(defName);
     CDefPointerSlot<CDefClass_Retail> defClass;
-    if (CGameDefinitionManager_Retail::Get().GetDef(index, &defClass)) {
+    if (CGameDefinitionManager::Get().GetDef(index, &defClass)) {
         CDefPointerSlot<CGiftDef_Retail> giftDef;
         if (defClass->GetSubDef(&giftDef))
             return giftDef->m_giftType == 1;

@@ -2,7 +2,7 @@
 // Leaf: GlobalUpdate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00625ED0, length 569 bytes; vtable 0x01258B74 (CTCQuickAccessMenu) slot 26,
 // the CTCBase GlobalUpdate(bool) slot (catalog name vfunc_26).
-// Callees: CFrontEndManager::GetInstance @ 0x0041E5F2 (slots +0x18, +0x74, +0x94, +0xa8, +0xa0), CRT free @ 0x00BFEA14,
+// Callees: CManager::GetInstance @ 0x0041E5F2 (slots +0x18, +0x74, +0x94, +0xa8, +0xa0), CRT free @ 0x00BFEA14,
 // memmove @ 0x00BFEAE6, CTCBase::GetPlayerManager @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970,
 // CPlayer::RemoveMode @ 0x00634190, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound @ 0x0040F020, the STLport
 // _Rb_tree::_M_erase @ 0x00592BCE (catalog "LTextTreeWalkThrough::BuildTreeArray", propagated),
@@ -122,8 +122,8 @@ struct CCountedRef {
 };
 struct CFrontEndData : CRefCounted { };
 
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();      // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();      // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void Refresh();                                 // +0x18
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
@@ -138,7 +138,7 @@ struct CFrontEndManager {
     virtual void SetScreenData(char* data, bool flag);      // +0xa0
     virtual void v41();
     virtual CCountedRef GetScreenData();                    // +0xa8
-};
+}; }
 
 class CPlayer { public: void RemoveMode(long mode); };             // 0x00634190
 class CPlayerManager { public: CPlayer* GetMainPlayer(); };        // 0x00449970
@@ -195,10 +195,10 @@ void CTCQuickAccessMenu::GlobalUpdate(bool)
                 delete Components._M_start[i];
         }
         Components.clear();
-        CFrontEndManager::GetInstance()->Refresh();
-        CFrontEndManager::GetInstance()->PopScreen();
+        NUISystem::CManager::GetInstance()->Refresh();
+        NUISystem::CManager::GetInstance()->PopScreen();
         g_QuickAccessList.clear();
-        CFrontEndManager::GetInstance()->ResetInput();
+        NUISystem::CManager::GetInstance()->ResetInput();
         Active = false;
         Quitting = false;
         GetPlayerManager().GetMainPlayer()->RemoveMode(0x24);
@@ -206,8 +206,8 @@ void CTCQuickAccessMenu::GlobalUpdate(bool)
         ParentThing->GetInterface(0x11, &tc);
         tc->m_setA.clear();
         tc->m_setB.clear();
-        CFrontEndManager* source = CFrontEndManager::GetInstance();
-        CFrontEndManager* target = CFrontEndManager::GetInstance();
+        NUISystem::CManager* source = NUISystem::CManager::GetInstance();
+        NUISystem::CManager* target = NUISystem::CManager::GetInstance();
         target->SetScreenData((char*)source->GetScreenData().Data + 0x1a8, true);
         g_pPlayerGui->SetSpecialAbilityButtonsAsDisplaying(false, true);
         return;

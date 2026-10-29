@@ -8,12 +8,18 @@ class CTCAISummon { public:
     long GetMaxCreatureCount();                     // 0x007FDF60
 };
 
-struct CInterfaceMap {
-    struct SEntry { long type; void* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);           // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -22,12 +28,12 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)((void*)it->second);
             return true;
         }
         return false;

@@ -1,0 +1,12 @@
+rebuild/src/compiled/00/40/CUserProfileManager_GetConfigOptionsDefaultsDef_004083e0.cpp
+rebuild/src/compiled/00/41/NUISystemCManager_GetIconsDef_0041d98a.cpp
+rebuild/src/compiled/00/41/NUISystemCManager_GetMiscThingsDef_0041d8e7.cpp
+rebuild/src/compiled/00/43/CDefinitionManager_GetDef00430096_00430096.cpp
+rebuild/src/compiled/00/43/CDefinitionManager_GetDef004300fb_004300fb.cpp
+rebuild/src/compiled/00/45/CDefinitionManager_GetDef00451354_00451354.cpp
+rebuild/src/compiled/00/45/CDefinitionManager_GetDef004513b9_004513b9.cpp
+rebuild/src/compiled/00/48/CDefinitionManager_GetDef004858b7_004858b7.cpp
+rebuild/src/compiled/00/5f/CDefinitionManager_GetDef005f89f2_005f89f2.cpp
+rebuild/tests/00/40/CUserProfileManager_GetConfigOptionsDefaultsDef_004083e0_test.cpp
+rebuild/tests/00/41/NUISystemCManager_GetIconsDef_0041d98a_test.cpp
+rebuild/tests/00/41/NUISystemCManager_GetMiscThingsDef_0041d8e7_test.cpp

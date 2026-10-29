@@ -21,13 +21,18 @@ class C3DVector { public:
 };
 enum ECollideType { COLLIDE_NONE = 0, COLLIDE_LANDSCAPE = 1 };
 class CTCBase;
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
 struct CCreatureMode {
     virtual void v00();
@@ -48,21 +53,21 @@ class CThing { public:
     unsigned char Dead : 1;                     // +0x91 bit 0
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        if (it == map->last || interfaceType < it->first)
             it = map->last;
-        return (T*)it->component;
+        return (T*)it->second;
     }
     template<class T> __forceinline const T* GetTC(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        if (it == map->last || interfaceType < it->first)
             it = map->last;
-        return (const T*)it->component;
+        return (const T*)it->second;
     }
     bool HasTC(long interfaceType) const
     {

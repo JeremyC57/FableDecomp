@@ -233,12 +233,12 @@ struct CSpriteGraphicsPointer {
     ~CSpriteGraphicsPointer() { if (Info && --Info->RefCount == 0) { Info->DeleteFunc(Info->Data); ::operator delete(Info); } }
     CGraphicDataBank* operator->() const { return Data; }
 };
-struct CFrontEndManagerGraphicsView {
+namespace NUISystem { class CManager { public:
     unsigned char Base[0x10];
     CSpriteGraphicsPointer PGraphicsBank;
-    static CFrontEndManagerGraphicsView* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     CSpriteGraphicsPointer GetGraphicsBank() const { return PGraphicsBank; }
-};
+}; }
 
 namespace NUISystem {
 struct CSpriteGraphicDef {                             // 124 bytes (descriptive)
@@ -329,9 +329,9 @@ void CSprite::GetDataFromDef()
     else
         GraphicIndex = 0;
     if (GraphicIndex > 0) {
-        SizeX = (float)CFrontEndManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrameWidth(GraphicIndex, 0);
-        SizeY = (float)CFrontEndManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrameHeight(GraphicIndex, 0);
-        CGraphicInfoFrame* frames = CFrontEndManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrames(GraphicIndex);
+        SizeX = (float)CManager::GetInstance()->GetGraphicsBank()->GetGraphicFrameWidth(GraphicIndex, 0);
+        SizeY = (float)CManager::GetInstance()->GetGraphicsBank()->GetGraphicFrameHeight(GraphicIndex, 0);
+        CGraphicInfoFrame* frames = CManager::GetInstance()->GetGraphicsBank()->GetGraphicFrames(GraphicIndex);
         frames->BeginLoading(0, 0x10);
         CGraphicFrame frame;
         frames->GetFrame(frame, 0, 1);
@@ -349,7 +349,7 @@ bool CGraphicInfoFrame::InternalGetFrameForcedLoading(unsigned long f) { ++g_for
 unsigned long CGraphicDataBank::GetGraphicFrameWidth(unsigned long i, unsigned long f) const { return 10 * i + 3 + f; }
 unsigned long CGraphicDataBank::GetGraphicFrameHeight(unsigned long i, unsigned long f) const { return 20 * i + 5 + f; }
 static void* g_viewStore[16];
-CFrontEndManagerGraphicsView* __fastcall CFrontEndManagerGraphicsView::GetInstance() { return (CFrontEndManagerGraphicsView*)g_viewStore; }
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return (NUISystem::CManager*)g_viewStore; }
 static NUISystem::CSpriteDef* g_def;
 void NUISystem::CDefVirtual::Destroy() { ++g_destroy; }
 NUISystem::CDefPointer NUISystem::CComponent::GetDef() { CDefPointer p; p.m_p = g_def; if (g_def) ++g_def->m_count; return p; }
@@ -371,7 +371,7 @@ int main()
     gif.GraphicInfo = &infos[2];
     static CSpriteGraphicsInfo info;
     info.RefCount = 1; info.DeleteFunc = 0; info.Data = 0;
-    CFrontEndManagerGraphicsView* view = CFrontEndManagerGraphicsView::GetInstance();
+    NUISystem::CManager* view = NUISystem::CManager::GetInstance();
     view->PGraphicsBank.Data = &bank; view->PGraphicsBank.Info = &info;
 
     static NUISystem::CSpriteGraphicDef gdefs[2];

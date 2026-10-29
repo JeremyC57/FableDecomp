@@ -9,7 +9,7 @@ static int fails = 0;
 // Leaf: ??1CList
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0053B7F0, 302 bytes, frame-pointer size TU (optimize "y" off, "s" on).
 // Callees: CComponent::GetDef (slot 108) 0x00530EC0, the STLport list find 0x0053C8D0 (same-TU body, the landed 0x00536A30
-// Die model) and erase 0x0053C7B9 on the registry 0x013B8A98, CFrontEndManager::GetInstance 0x0041E5F2 + slot 5,
+// Die model) and erase 0x0053C7B9 on the registry 0x013B8A98, CManager::GetInstance 0x0041E5F2 + slot 5,
 // ~list<CCountedPointer<CAction> > 0x005357E0, operator delete 0x00BFE9BC, free 0x00BFEA14, ~CCountedPointer 0x00429160,
 // the states vector dtor 0x0053CD46, ~CComponent 0x0052CCF0.
 // Shape: the find body in the TU puts the `this` temporary's store after the argument pushes and the erase result in the
@@ -79,12 +79,12 @@ struct CInputListener {                            // the input-listener base at
     virtual void v00();
     unsigned char _pad04[0x14 - 0x04];
 };
-class CFrontEndManager {
+namespace NUISystem { class CManager { public:
 public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void RemoveInputListener(CInputListener* listener);   // slot 5 (+0x14)
-};
+}; }
 namespace NUISystem {
 class CAction;
 struct CComponentRoot {                            // the primary vtable at +0
@@ -153,7 +153,7 @@ CList::~CList()
         if (it != g_ListRegistry.end())
             it = g_ListRegistry.erase(it);
     }
-    CFrontEndManager::GetInstance()->RemoveInputListener(this);
+    CManager::GetInstance()->RemoveInputListener(this);
     if (CActionList* p = PActionsOnInactive) { p->CActionList::~CActionList(); operator delete(p); }
     if (CActionList* p = PActionsOnSelected) { p->CActionList::~CActionList(); operator delete(p); }
 }
@@ -189,10 +189,10 @@ template <> _List_iterator<CList*> list<CList*>::erase(_List_iterator<CList*> po
     n->_M_prev->_M_next = next; next->_M_prev = n->_M_prev; free(n);
     return _List_iterator<CList*>(next);
 }
-static CFrontEndManager g_fe; static const void* g_removed = 0;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_fe; }
-void CFrontEndManager::v00() { } void CFrontEndManager::v01() { } void CFrontEndManager::v02() { } void CFrontEndManager::v03() { } void CFrontEndManager::v04() { }
-void CFrontEndManager::RemoveInputListener(CInputListener* listener) { Log(3); g_removed = listener; }
+static NUISystem::CManager g_fe; static const void* g_removed = 0;
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return &g_fe; }
+void NUISystem::CManager::v00() { } void NUISystem::CManager::v01() { } void NUISystem::CManager::v02() { } void NUISystem::CManager::v03() { } void NUISystem::CManager::v04() { }
+void NUISystem::CManager::RemoveInputListener(CInputListener* listener) { Log(3); g_removed = listener; }
 static const void* g_actionListDtor[16]; static int g_actionLists = 0;
 CActionList::~CActionList() { Log(4); g_actionListDtor[g_actionLists++] = this; }
 static const void* g_cpDtor[16]; static int g_cps = 0;

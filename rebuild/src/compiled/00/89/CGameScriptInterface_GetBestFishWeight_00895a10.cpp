@@ -35,9 +35,9 @@ struct CTCInventory_Retail {                        // interface type 0x11
     float GetBestFishWeight(long defIndex);         // 0x005BFC90 (CTCInventoryBase)
 };
 struct CGameDefinitionManager_Retail {
-    static CGameDefinitionManager_Retail& Get();    // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
+class CGameDefinitionManager : public CGameDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 extern const float g_noFishWeight;                  // 0x0122DEDC
 struct CThing_Retail;
 struct CBase {
@@ -148,7 +148,7 @@ float CGameScriptInterface::GetBestFishWeight(const CCharString& defName) const
     if (hero && !hero->m_dead) {
         CTCInventory_Retail* inventory;
         if (hero->GetInterface(&inventory, 0x11) && inventory) {
-            long defIndex = CGameDefinitionManager_Retail::Get().GetDefGlobalIndexFromName(defName);
+            long defIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(defName);
             if (defIndex)
                 return inventory->GetBestFishWeight(defIndex);
         }

@@ -9,12 +9,18 @@
 // Shape: the quest manager is read into a local before each call's arguments (inline helpers); each by-value CCharString is built straight in its argument slot (`push ecx ; mov ecx,esp`) from the "" literal;
 // HasTC narrows to a byte test, the one-ternary GetTC leaves the component in ecx for AddMoney.
 struct CTCBaseInterface;
-struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
-    struct SEntry { long type; CTCBaseInterface* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // a thing's sorted {type, component} vector map at +0x44
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
@@ -30,10 +36,10 @@ class CThing { public:
     }
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (T*)((CTCBaseInterface*)((it == map->last || interfaceType < it->first) ? map->last : it)->second);
     }
 };
 class CCharString { public:

@@ -1,7 +1,7 @@
 // NUISystem::CMenuEntry::ProcessEvent(EEvent event) -- menu entry input: ignored while the front end is busy (or for event 25 when the front end blocks it) and inside the input delay; runs the CClickable handler when the def enables it, then events 2/5 select the entry and 3/4 unselect it unless the parent list is a type-8 list that keeps its selection with pending list entries
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0053D200, 401 bytes + a 4-entry jump table (432 with padding). Vtable 0x01246604 slot 1:
 //   the event receiver base sits at +4, so `this` is the full object + 4 and the primary virtuals go through `lea edi,[esi-4]`.
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (its virtual slot 11 +0x2c, the busy byte +0xa4), GFGetTime 0x009E1BC0,
+// Callees: CManager::GetInstance 0x0041E5F2 (its virtual slot 11 +0x2c, the busy byte +0xa4), GFGetTime 0x009E1BC0,
 //   CClickable::ProcessEvent 0x0055AD60, primary slots 108 GetDef (CDefPointer by hidden pointer), 155 (+0x26c), 156 (+0x270);
 //   the parent component's slots 65 (+0x104) and 108. Globals: 0x013B8AA8 (bool), 0x013B8AA0 (double time stamp),
 //   0x013B8A98 (list sentinel pointer).
@@ -234,14 +234,14 @@ public:
     CComponent* GetParentList() const { return PParent; }   // inline accessor: its re-read lands straight in ecx
     virtual void ProcessEvent(EEvent event);
 };
-class CFrontEndManager { public:
+class CManager { public:
     virtual void VSlot0(); virtual void VSlot1(); virtual void VSlot2(); virtual void VSlot3(); virtual void VSlot4();
     virtual void VSlot5(); virtual void VSlot6(); virtual void VSlot7(); virtual void VSlot8(); virtual void VSlot9();
     virtual void VSlot10();
     virtual bool IsBlockingEvent25();      // slot 11 (+0x2c) (descriptive)
     unsigned char _pad04[0xa0];
     bool          Busy;                    // +0xa4 (descriptive)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 struct SListNode { SListNode* _M_next; SListNode* _M_prev; };
 extern bool       g_IgnoreInputDelay;      // 0x013B8AA8
@@ -251,9 +251,9 @@ double __fastcall GFGetTime();             // 0x009E1BC0
 
 void CMenuEntry::ProcessEvent(EEvent event)
 {
-    if (CFrontEndManager::GetInstance()->IsBlockingEvent25() && event == EVENT_25)
+    if (CManager::GetInstance()->IsBlockingEvent25() && event == EVENT_25)
         return;
-    if (CFrontEndManager::GetInstance()->Busy)
+    if (CManager::GetInstance()->Busy)
         return;
     if (event != EVENT_25 && !g_IgnoreInputDelay) {
         if (Time - LastEventTime < InputDelay)

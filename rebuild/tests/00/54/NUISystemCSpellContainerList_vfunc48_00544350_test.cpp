@@ -172,10 +172,10 @@ struct Primary {
 struct Third { virtual void Third0()=0; };
 class CChangingStateComponent:public Primary,public CObserver,public Third { public: void ChangeState(unsigned long); // 0x0052cf40
 };
-struct CManagerCalls {
+class CManager { public:
  virtual void Front0()=0; virtual void Front1()=0; virtual void AddObserver(CObserver*)=0;
  virtual void Front3()=0; virtual void Front4()=0; virtual void RemoveObserver(CObserver*)=0;
- static CManagerCalls* __fastcall GetInstance(); // 0x0041e5f2
+ static CManager* __fastcall GetInstance(); // 0x0041e5f2
 };
 class CSpellContainerList:public CChangingStateComponent { public:
  unsigned char InheritedState[0x164-0x1c];
@@ -190,11 +190,11 @@ class CSpellContainerList:public CChangingStateComponent { public:
 void CSpellContainerList::ChangeState(unsigned long state) {
  if(state!=3) {
   CChangingStateComponent::ChangeState(state);
-  CManagerCalls::GetInstance()->RemoveObserver(this);
+  CManager::GetInstance()->RemoveObserver(this);
   while(SelectedChild!=(unsigned)(SpellContainersFinish-SpellContainersStart)-1) ScrollDown();
  } else {
   CChangingStateComponent::ChangeState(3);
-  CManagerCalls::GetInstance()->AddObserver(this);
+  CManager::GetInstance()->AddObserver(this);
   ObserveEvent(5);ObserveEvent(2);ObserveEvent(16);ObserveEvent(17);
   ObserveEvent(14);ObserveEvent(15);ObserveEvent(18);ObserveEvent(19);
   while(SelectedChild!=(unsigned)(SpellContainersFinish-SpellContainersStart)-1) ScrollDown();
@@ -207,13 +207,13 @@ void CSpellContainerList::ChangeState(unsigned long state) {
 using namespace NUISystem;
 static unsigned long stateSeen;
 void CChangingStateComponent::ChangeState(unsigned long state){stateSeen=state;}
-struct Manager:CManagerCalls {
+struct Manager:NUISystem::CManager {
  int adds,removes; NUISystem::CObserver* observed;
  Manager():adds(0),removes(0),observed(0){}
  void Front0(){} void Front1(){} void Front3(){} void Front4(){}
  void AddObserver(NUISystem::CObserver*p){++adds;observed=p;}void RemoveObserver(NUISystem::CObserver*p){++removes;observed=p;}
 } manager;
-CManagerCalls* __fastcall CManagerCalls::GetInstance(){return &manager;}
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance(){return &manager;}
 struct Fixture:CSpellContainerList {
  int events[8],n,scrolls;
  Fixture():n(0),scrolls(0){}

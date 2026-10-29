@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00557EB0, length 440 bytes + a 9-entry jump table and 17-byte index table
 //   (`ret 4`). Vtable slot 1 of the event-receiver base at +4: `this` is the full object + 4 (`lea ecx,[esi-4]` for the
 //   primary-base calls), as the CMenuEntry::ProcessEvent row of this chunk (0x0053D200).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (slot 13 +0x34: the last key code, unsigned short; slot 4 +0x10: focus
+// Callees: CManager::GetInstance 0x0041E5F2 (slot 13 +0x34: the last key code, unsigned short; slot 4 +0x10: focus
 //   control), CKeyRedefiner::CancelSelection 0x00557BD0 / CanRedefineAction(long) 0x00557960 / Redefine(const
 //   CActionInputControl&, bool) 0x00557D20 / UpdateKeyText 0x00557A10 (all landed), CClickable::ProcessEvent 0x0055AD60;
 //   the control base's slots 3 (mode) and 4 (state) as the landed CancelSelection.
@@ -43,13 +43,13 @@ struct CEventReceiver {                            // the second base (vptr at +
     virtual void SetMode(long mode);               // slot 3 (+0x0c)
     virtual void SetState(long state);             // slot 4 (+0x10)
 };
-class CFrontEndManager { public:
+class CManager { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
     virtual void SetFocusControl(CEventReceiver* control);   // slot 4 (+0x10)
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12();
     virtual unsigned short GetLastKey();           // slot 13 (+0x34) (descriptive)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 class CClickable : public CComponentVirtuals, public CEventReceiver {
 public:
@@ -74,7 +74,7 @@ public:
             UpdateKeyText();
             SetState(0x21);
             SetMode(0x19);
-            CFrontEndManager::GetInstance()->SetFocusControl(this);
+            CManager::GetInstance()->SetFocusControl(this);
         }
     }
 };
@@ -107,7 +107,7 @@ void CKeyRedefiner::ProcessEvent(EEvent event)
         switch (event) {
         case EVENT_KEY:
             {
-                long key = CFrontEndManager::GetInstance()->GetLastKey();
+                long key = CManager::GetInstance()->GetLastKey();
                 if (key == 1) {
                     CancelSelection();
                     return;

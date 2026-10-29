@@ -63,8 +63,8 @@ public:
 };
 
 class CBaseClassNonCopyable {                      // vtable 0x0129A7C4
-public:
-    virtual ~CBaseClassNonCopyable();              // 0x0099A300
+protected:
+    virtual ~CBaseClassNonCopyable();              // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (protected)
 };
 
 namespace NParticleEngine {

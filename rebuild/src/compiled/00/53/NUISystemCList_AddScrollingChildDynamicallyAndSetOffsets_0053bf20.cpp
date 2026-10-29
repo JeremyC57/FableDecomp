@@ -3,7 +3,7 @@
 // Retail: Fable.exe @ 0x0053BF20, 1042 bytes, `ret 4`; /Os + optimize("y", off) TU.
 // Callees: map operator[] 0x0042D5B1, CChangingStateComponent::AddChildDynamically 0x0052CAB0 (direct base call), vector
 //   push_backs 0x00486024 (CComponent*), 0x0053CB4F (bool), 0x005178A0 (unsigned long), the scroll layout's AddChild
-//   0x0053CFC2, NUISystem::CFrontEndManager::GetInstance 0x0041E5F2 (+ slot 2), _ftol 0x00BFEA70. 0.0f 0x0122DEDC,
+//   0x0053CFC2, NUISystem::CManager::GetInstance 0x0041E5F2 (+ slot 2), _ftol 0x00BFEA70. 0.0f 0x0122DEDC,
 //   1.0f 0x0122DED8, 0.999f 0x012462AC, 255.0f 0x01230014.
 // Layout: the landed sibling NUISystem::CList::AddScrollingChildAndSetOffsets 0x0053AD07 (its whole first half is this
 //   function's), plus the landed CList::AddScrollingChildDynamically 0x0053BEAC (+0x17c scroll layout); the scroll type
@@ -110,11 +110,11 @@ struct CEventListener {
 };
 class CComponent : public CComponentBase, public CEventListener { public:
 };
-class CFrontEndManager {
+class CManager {
 public:
     virtual void f00(); virtual void f01();
     virtual void SetFocusListener(CEventListener* listener);   // slot 2 (+0x08)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 struct CScrollLayout {
     void* m_pRows;
@@ -226,7 +226,7 @@ void CList::AddScrollingChildDynamicallyAndSetOffsets(const CCountedPointer<CCom
     ScrollLayout.AddChild(child->GetStateMap());
     if (IsLive()) {
         if (ScrollType == 3 || ScrollType == 5) {
-            CFrontEndManager::GetInstance()->SetFocusListener(child.GetPtr());
+            CManager::GetInstance()->SetFocusListener(child.GetPtr());
             child->HandleEvent(0x19);
         }
         ShapeChildren.push_back(Children.size() - 1);

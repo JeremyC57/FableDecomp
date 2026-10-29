@@ -103,7 +103,7 @@ template <class T> __declspec(noinline) void vector<T>::_M_insert_overflow(T* po
 }
 
 class CBaseClassNonCopyable {
-public:
+protected:
     CBaseClassNonCopyable();                       // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();              // 0x0099A300
 };

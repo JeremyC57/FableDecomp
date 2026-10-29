@@ -7,18 +7,18 @@ static CTCInventory* g_inventory = 0;
 static CThing* g_thing = 0;
 static int g_order = 0, g_invOrder = 0, g_thingOrder = 0, g_buildOrder = 0;
 static long g_sum = 0;
-struct CFrontEndManager_Calls {
+namespace NUISystem { class CManager { public:
     virtual void SetActiveInventory(CTCInventory* inventory) { g_inventory = inventory; g_invOrder = ++g_order; }
     virtual void SetActiveThing(CThing* thing) { g_thing = thing; g_thingOrder = ++g_order; }
-    static CFrontEndManager_Calls* GetInstance() { static CFrontEndManager_Calls s; return &s; }
-};
+    static CManager* __fastcall GetInstance() { static CManager s; return &s; }
+}; }
 class CTCInventory { public:
     CThing* PThing;
     CComponent* GetStyleCardsListUIComponent(long a, long b, long c, CComponent* parent) { g_buildOrder = ++g_order; g_sum = a + b + c; return parent; }
     CComponent* ConstructStyleCardsScreenPC(long a, long b, long c, CComponent* parent)
     {
-        CFrontEndManager_Calls::GetInstance()->SetActiveInventory(this);
-        CFrontEndManager_Calls::GetInstance()->SetActiveThing(PThing);
+        NUISystem::CManager::GetInstance()->SetActiveInventory(this);
+        NUISystem::CManager::GetInstance()->SetActiveThing(PThing);
         return GetStyleCardsListUIComponent(a, b, c, parent);
     }
 };

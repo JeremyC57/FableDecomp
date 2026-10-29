@@ -1,7 +1,7 @@
 // CTCInventoryExperience::OpenInventory() -- opens the experience screen: menu bookkeeping, front-end notification, fade reset, HUD hook, sound category refresh, then snapshots the hero's experience values and opens the base inventory view
 // Retail 0x0056FAD7, 278 bytes. Frame-pointer size TU: optimize("y", off) + ("s", on).
 // Callees: the global open-menus counter 0x0041D122 (__fastcall, no arguments; landed as an asm bake),
-// CFrontEndManager::GetInstance 0x0041E5F2 and its slot 26 (+0x68) given the parent thing, the base screen hook
+// CManager::GetInstance 0x0041E5F2 and its slot 26 (+0x68) given the parent thing, the base screen hook
 // 0x005BC6ED on `this` (manifest "_Dest_val<...CRegisteredMusicEntry>" is a propagated label), the main game
 // component (0x013B86A0) chain +0x28 -> +0x2C and that object's slot 76 (+0x130, given false; names from
 // position), std::bitset::test 0x00410DE0 + CVectorMap::LowerBound 0x0040F020 (the inline CThing::GetInterface for
@@ -21,12 +21,18 @@ class CThing;
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
 };
-struct CInterfaceMap {
-    struct SEntry { long type; void* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;                                   // +0x00
     SEntry* last;                                    // +0x04
-    SEntry* LowerBound(const long* type);            // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);            // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad_0x00[0x20];
@@ -36,12 +42,12 @@ public:
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
-            long type = wanted;
+            ETCInterfaceType type = (ETCInterfaceType)(wanted);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || wanted < it->type)
+            CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || wanted < it->first)
                 it = map->last;
-            *out = (T*)it->component;
+            *out = (T*)((void*)it->second);
             return true;
         }
         return false;
@@ -53,7 +59,7 @@ class CTCHeroExperience { public:                           // interface type 0x
     long GetStatExperience(long stat);               // 0x006D6510
 };
 
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -81,8 +87,8 @@ struct CFrontEndManager {
     virtual void v024();
     virtual void v025();
     virtual void OnThingInventoryOpened(CThing* thing);   // slot 26 (+0x68)
-    static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();    // 0x0041E5F2
+}; }
 struct CHudOwner {
     virtual void v000();
     virtual void v001();
@@ -332,7 +338,7 @@ class CTCInventoryExperience { public:
 void CTCInventoryExperience::OpenInventory()
 {
     OnOpenMenus();
-    CFrontEndManager::GetInstance()->OnThingInventoryOpened(ParentThing);
+    NUISystem::CManager::GetInstance()->OnThingInventoryOpened(ParentThing);
     PrepareScreen();
     AccumFadeTime = 0.0f;
     g_pMainGameComponent->World->Hud->SetEnabled(false);

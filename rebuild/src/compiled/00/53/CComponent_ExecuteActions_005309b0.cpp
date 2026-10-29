@@ -20,13 +20,13 @@ struct CActionList {                           // std::list<CCountedPointer<NUIS
     unsigned long    size;                     // +4
 };
 
-struct CFrontEndManager_Calls {               // engine/CFrontEndManager.h exists; only vslot 14 and the singleton getter are needed
+namespace NUISystem { class CManager { public:               // engine/CFrontEndManager.h exists; only vslot 14 and the singleton getter are needed
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void ExecuteAction(const CCountedPointer_CAction& action);   // slot 14
-    static CFrontEndManager_Calls* GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 
 struct CComponent_Retail {
     virtual void v00();
@@ -37,6 +37,6 @@ void CComponent_Retail::ExecuteActions(CActionList* actions)
 {
     if (actions) {
         for (CActionListNode* node = actions->head->next; node != actions->head; node = node->next)
-            CFrontEndManager_Calls::GetInstance()->ExecuteAction(node->value);
+            NUISystem::CManager::GetInstance()->ExecuteAction(node->value);
     }
 }

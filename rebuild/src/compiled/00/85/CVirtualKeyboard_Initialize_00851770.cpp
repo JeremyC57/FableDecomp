@@ -7,7 +7,7 @@
 //   CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0 (`__fastcall`), CUserProfileManager::GetAutoSaveDisplayName
 //   0x004069E0 (CWideString by value); NUISystem::CEditBox slots 143 SetText 0x00540180, 147 UpdateDisplayText
 //   0x00540980, 155 SetForbiddenCharacters 0x00540D40, 150 SetActive 0x005401B0; CWideString(const wchar_t*)
-//   0x0099B6B0, ~CWideString 0x0099B510; NUISystem::CFrontEndManager::GetInstance 0x0041E5F2 and its slot 2 (+8,
+//   0x0099B6B0, ~CWideString 0x0099B510; NUISystem::CManager::GetInstance 0x0041E5F2 and its slot 2 (+8,
 //   takes the edit box's CObserver); CObserver slot 3 ObserveEvent(EEvent) 0x0052DA20. String "UI_NEW_PROFILE_EDIT_BOX"
 //   0x012759A0, L"." 0x0124C4A8.
 // Shape: the by-value CCharString argument needs a user copy ctor (built in the slot: `push ecx ; mov ecx,esp`);
@@ -28,9 +28,7 @@ class CWideString { public:
 };
 class CUserProfileManager { public:
     CWideString GetAutoSaveDisplayName();          // 0x004069E0
-};
-struct CTBaseSingleton_CUserProfileManager {
-    static CUserProfileManager& __fastcall Get();  // 0x0040D2A0
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 };
 namespace NUISystem {
 class CObserver { public:                                 // secondary base, vtable slots of 0x01246B64
@@ -70,9 +68,9 @@ class CEditBox : public CComponent, public CObserver { public:          // prima
     unsigned char _pad08[0x17c - 0x08];
     bool DeleteAllOnKeyPress;                      // +0x17c
 };
-class CFrontEndManager { public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-    virtual ~CFrontEndManager();
+class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+    virtual ~CManager();
     virtual void ProcessEvent(long event);
     virtual void AddObserver(CObserver* observer); // slot 2 (+8)
 };
@@ -91,11 +89,11 @@ long CVirtualKeyboard::Initialize()
     CComponent* box = PEntryScreen->GetChildByName(CCharString("UI_NEW_PROFILE_EDIT_BOX", -1));
     if (box && box->GetComponentType() == 0x25) {
         PEntryBox = static_cast<CEditBox*>(box);
-        PEntryBox->SetText(CTBaseSingleton_CUserProfileManager::Get().GetAutoSaveDisplayName());
+        PEntryBox->SetText(::CUserProfileManager::Get().GetAutoSaveDisplayName());
         PEntryBox->UpdateDisplayText();
         PEntryBox->SetForbiddenCharacters((const unsigned short*)L".");
         PEntryBox->DeleteAllOnKeyPress = true;
-        CFrontEndManager::GetInstance()->AddObserver(PEntryBox);
+        NUISystem::CManager::GetInstance()->AddObserver(PEntryBox);
         PEntryBox->ObserveEvent(0x21);
         PEntryBox->ObserveEvent(0x22);
         PEntryBox->SetActive(true);

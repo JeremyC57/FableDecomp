@@ -17,13 +17,18 @@
 //   map pointer before the key local (`lea ecx,[key]` after `lea esi,[thing+44h]` order flips otherwise).
 class CTCBase;
 class CThing;
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
-    SEntry* LowerBound(const long* type) const;             // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;             // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 interface-present bitset
@@ -32,16 +37,16 @@ class CThing { public:
     template<class T> __forceinline T* GetTC(long wanted)
     {
         CInterfaceMap* map = &m_interfaces;
-        long type = wanted;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        ETCInterfaceType type = (ETCInterfaceType)(wanted);
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
     }
     template<class T> __forceinline T* GetTCConst(long wanted) const
     {
-        long type = wanted;
+        ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
     }
 };
 class CCreatureActionBase { public:                                // retail sizeof 0xa8

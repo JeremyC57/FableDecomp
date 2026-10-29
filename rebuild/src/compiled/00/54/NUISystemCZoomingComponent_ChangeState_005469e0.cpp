@@ -24,14 +24,14 @@ struct CComponentBase3_Retail {             // base at +0x18
     virtual void w00();
 };
 
-struct CFrontEndManager_Calls {             // vtable-slot view of NUISystem::CFrontEndManager
+class CManager { public:             // vtable-slot view of NUISystem::CFrontEndManager
     virtual void v000();
     virtual void v001();
     virtual void AddInputHandlerPtr(CInputHandler_Retail* handler);     // slot 2 (+0x08)
     virtual void v003();
     virtual void v004();
     virtual void RemoveInputHandlerPtr(CInputHandler_Retail* handler);  // slot 5 (+0x14)
-    static CFrontEndManager_Calls* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 
 struct CComponentRoot_Retail {              // primary base: vptr only (ChangeState is slot 48)
@@ -51,11 +51,11 @@ void CZoomingComponent::ChangeState(unsigned long state)
 {
     if (state != 0)
     {
-        CFrontEndManager_Calls::GetInstance()->AddInputHandlerPtr(this);
+        CManager::GetInstance()->AddInputHandlerPtr(this);
         OnInputFocusGained();
     }
     else
-        CFrontEndManager_Calls::GetInstance()->RemoveInputHandlerPtr(this);
+        CManager::GetInstance()->RemoveInputHandlerPtr(this);
     CChangingStateComponent::ChangeState(state);
 }
 

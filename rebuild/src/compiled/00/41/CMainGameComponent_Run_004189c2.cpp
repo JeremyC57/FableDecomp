@@ -85,9 +85,9 @@ double __fastcall GFGetTime();                     // 0x009E1BC0
 void __fastcall GFLogMemoryUse();                  // 0x00415E85
 void __fastcall GFFrameHook();                     // 0x0098E1B0 (empty)
 struct CSingleton44C6B0 {
-    static CSingleton44C6B0& __fastcall Get();     // 0x0044C6B0
     void Tick(long value);                         // 0x009AC9E0 (empty)
 };
+class CGameDefinitionManager : public CSingleton44C6B0 { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 struct CNetworkClient { void Start(); };           // 0x004AE9C0 (empty)
 struct CRoughFrameCounter { long _a, _b; void NewFrame(); };   // 0x009F8BA0
 class CGameComponent;
@@ -171,7 +171,7 @@ bool CMainGameComponent::Run(CGameComponent** next)
         double frameStart = CurrentFrameStartGameTime;
         RecordFrameTime(GetCurrentGameTime() - frameStart);
         GFLogMemoryUse();
-        CSingleton44C6B0::Get().Tick(1);
+        CGameDefinitionManager::Get().Tick(1);
     }
     Running = false;
     *next = NextComponentToRun;

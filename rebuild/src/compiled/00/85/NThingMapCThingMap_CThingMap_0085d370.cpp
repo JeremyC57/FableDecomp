@@ -15,12 +15,13 @@ struct C2DBoxI {
     long X0, Y0, X1, Y1;
     C2DBoxI(const C2DBoxI& other) : X0(other.X0), Y0(other.Y0), X1(other.X1), Y1(other.Y1) { }
 };
-struct CBaseClassNonCopyable {
+}   // the retail root is file scope
+class CBaseClassNonCopyable {
 protected:
     CBaseClassNonCopyable();                       // 0x0099A2F0 ??0CBaseClassNonCopyable@@IAE@XZ (protected)
-public:
-    virtual void v00();
+    virtual ~CBaseClassNonCopyable();              // slot 0 (0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ)
 };
+namespace NThingMap {
 template<class T> struct CRetailVector {
     T* _M_start;
     T* _M_finish;
@@ -37,7 +38,6 @@ class CThingMap : public CBaseClassNonCopyable { public:
     C2DBoxI                                       Area;              // +0x20
     long                                          NoThings;          // +0x30
     CThingMap(CThingMapManager* manager, const C2DBoxI& area);
-    virtual void v00();
     void InitMapwhoLevels();                       // 0x0085D180
     void Clear();                                  // 0x0085CEC0
 };

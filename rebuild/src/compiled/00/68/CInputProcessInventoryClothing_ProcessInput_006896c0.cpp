@@ -4,7 +4,7 @@
 // Identity (proven): slot 4 of vtable 0x01237724 (RTTI .?AVCInputProcessInventoryClothing@@; slot 9 is its GetPInventory 0x006896B0);
 //   Ego_r.pdb ?ProcessInput@CInputProcessInventoryClothing@@UAEXABVCInputEvent@@AAVCProcessedInput@@@Z.
 // Callees: CInputEvent::GetType 0x00A03B40, CInputEvent::GetJoystickPosition 0x00A043A0 (hidden C2DVector),
-//   NUISystem::CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall) + its slot 0 (ProcessEvent),
+//   NUISystem::CManager::GetInstance 0x0041E5F2 (__fastcall) + its slot 0 (ProcessEvent),
 //   CInputProcessGameBase::IsEventButtonPressed 0x00687A90 / IsEventButtonReleased 0x00687B30 / IsEventGameAction 0x00687CF0,
 //   CProcessedInput::SetAsPerformedEvent 0x00A0D390; the virtual GetPInventory (slot 9) whose result is unused.
 // Shape (family M192, representative 0x006896C0): the landed CInputProcessInGameMenu::ProcessInput 0x00690480 pattern -- one
@@ -35,10 +35,10 @@ public:
 };
 namespace NUISystem {
 enum EEvent { EVENT_NONE = 0 };
-class CFrontEndManager {
+class CManager {
 public:
     virtual void ProcessEvent(EEvent event);              // slot 0
-    static CFrontEndManager* __fastcall GetInstance();    // 0x0041E5F2
+    static CManager* __fastcall GetInstance();    // 0x0041E5F2
 };
 }
 class CAInputProcess {
@@ -76,38 +76,38 @@ void CInputProcessInventoryClothing::ProcessInput(const CInputEvent& event, CPro
     if (event.GetType() == INPUT_EVENT_TYPE_JOYSTICK_POSITION) {
         C2DVector stick = event.GetJoystickPosition();
         if (stick.Y > 0.6f) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)1);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)1);
             input.SetAsPerformedEvent();
         } else if (stick.Y < -0.6f) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)0);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)0);
             input.SetAsPerformedEvent();
         } else if (stick.X < -0.9f) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)2);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)2);
             input.SetAsPerformedEvent();
         } else if (stick.X > 0.9f) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)3);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)3);
             input.SetAsPerformedEvent();
         }
     } else if (IsEventButtonPressed(event)) {
         if (IsEventGameAction((EGameAction)0x25, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)0);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)0);
             input.SetAsPerformedEvent();
         } else if (IsEventGameAction((EGameAction)0x26, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)1);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)1);
             input.SetAsPerformedEvent();
         } else if (IsEventGameAction((EGameAction)0x27, event) || IsEventGameAction((EGameAction)0x22, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)2);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)2);
             input.SetAsPerformedEvent();
         } else if (IsEventGameAction((EGameAction)0x28, event) || IsEventGameAction((EGameAction)0x21, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)3);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)3);
             input.SetAsPerformedEvent();
         }
     } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction((EGameAction)0x25, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)0);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)0);
             input.SetAsPerformedEvent();
         } else if (IsEventGameAction((EGameAction)0x26, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->ProcessEvent((NUISystem::EEvent)1);
+            NUISystem::CManager::GetInstance()->ProcessEvent((NUISystem::EEvent)1);
             input.SetAsPerformedEvent();
         }
     }

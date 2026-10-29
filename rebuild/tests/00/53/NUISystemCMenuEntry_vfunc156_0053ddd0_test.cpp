@@ -147,7 +147,7 @@ virtual void SetTargetState(unsigned long)=0;
 };
 struct Observer {virtual void Observer0()=0;unsigned char Data[0x10];};
 struct Stack {struct Node {Node* Next;Node* Prev;Component* Object;};Node* Head;__forceinline unsigned long size()const{unsigned long n=0;for(Node*p=Head->Next;p!=Head;p=p->Next)++n;return n;}__forceinline void pop_front(){Node*p=Head->Next;Node*n=p->Next;Node*previous=p->Prev;previous->Next=n;n->Prev=previous;free(p);}Component* front()const{return Head->Next->Object;}};extern Stack MenuStack_013b8a98;
-struct Manager {
+class CManager { public:
 virtual void ManagerSlot00()=0;
 virtual void ManagerSlot01()=0;
 virtual void ManagerSlot02()=0;
@@ -191,12 +191,12 @@ virtual void ManagerSlot39()=0;
 virtual void PlaySoundW(CCharString&,long)=0;
 virtual void ManagerSlot41()=0;
 virtual MiscPointer GetMiscThingsDef()=0;
-static Manager* __fastcall GetInstance();};
+static CManager* __fastcall GetInstance();};
 struct ActionList {struct Node {Node* Next;Node* Prev;unsigned long Value;};Node* Head;};
 class CMenuEntry:public Component,public Observer { public:unsigned char BeforeTime[0x30-0x18];unsigned long CurrentTime;unsigned char BeforeParent[0xc8-0x34];Component* Parent;unsigned char BeforeLast[0x194-0xcc];unsigned long LastTime;unsigned long Unknown198;ActionList* Actions28;ActionList* Actions25;unsigned char BeforeState[8];unsigned long TargetState;void GoBackwards();};
 class CRedefinerList { public:static void __fastcall Cancel();};double __fastcall GFGetTime();extern double LastMenuTime_013b8aa0;
 void CMenuEntry::GoBackwards(){if(Parent&&Parent->GetType()==8){CRedefinerList::Cancel();if(!Parent->GetDef()->PartOfListTree){SetTargetState(TargetState);LastTime=CurrentTime;return;}}
-if(MenuStack_013b8a98.size()>1){Manager::GetInstance()->PlaySoundW(Manager::GetInstance()->GetMiscThingsDef()->SoundBack,1);bool immediate=GetDef()->PCStyle;if(immediate)MenuStack_013b8a98.front()->ChangeState(0);else MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);if(Actions28)for(ActionList::Node*p=Actions28->Head->Next;p!=Actions28->Head;p=p->Next)Manager::GetInstance()->Action28(p->Value);if(Actions25)for(ActionList::Node*p=Actions25->Head->Next;p!=Actions25->Head;p=p->Next)Manager::GetInstance()->Action25(p->Value);Manager::GetInstance()->RemoveObserver(this);}
+if(MenuStack_013b8a98.size()>1){CManager::GetInstance()->PlaySoundW(CManager::GetInstance()->GetMiscThingsDef()->SoundBack,1);bool immediate=GetDef()->PCStyle;if(immediate)MenuStack_013b8a98.front()->ChangeState(0);else MenuStack_013b8a98.front()->ChangeState(6);MenuStack_013b8a98.pop_front();MenuStack_013b8a98.front()->ChangeState(3);if(Actions28)for(ActionList::Node*p=Actions28->Head->Next;p!=Actions28->Head;p=p->Next)CManager::GetInstance()->Action28(p->Value);if(Actions25)for(ActionList::Node*p=Actions25->Head->Next;p!=Actions25->Head;p=p->Next)CManager::GetInstance()->Action25(p->Value);CManager::GetInstance()->RemoveObserver(this);}
 SetTargetState(TargetState);LastTime=CurrentTime;LastMenuTime_013b8aa0=GFGetTime();}
 }
 
@@ -207,7 +207,7 @@ Stack NUISystem::MenuStack_013b8a98;double NUISystem::LastMenuTime_013b8aa0;stat
 struct TestMisc:MiscDef{void Slot0(){}void Delete(){}}misc;
 struct TestDef:Def{void Slot0(){}void Delete(){}}def;
 void __fastcall NUISystem::CRedefinerList::Cancel(){++prepared;}double __fastcall NUISystem::GFGetTime(){return 123.5;}
-struct TestManager:Manager {
+struct TestManager:NUISystem::CManager {
 void ManagerSlot00(){}
 void ManagerSlot01(){}
 void ManagerSlot02(){}
@@ -247,7 +247,7 @@ void ManagerSlot38(){}
 void ManagerSlot39(){}
 void ManagerSlot41(){}
 void RemoveObserver(Observer*){++removed;}void Action25(unsigned long){++actions;}void Action28(unsigned long){++actions;}void PlaySoundW(CCharString&,long){++actions;}MiscPointer GetMiscThingsDef(){MiscPointer p;p.Object=&misc;++misc.Count;return p;}}manager;
-Manager* __fastcall Manager::GetInstance(){return &manager;}
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance(){return &manager;}
 struct Entry:CMenuEntry {
 void Slot000(){}
 void Slot001(){}

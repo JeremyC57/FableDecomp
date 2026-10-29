@@ -8,6 +8,7 @@ struct CGSIStopMusicCodeSection
     unsigned char pad2c[0xbc];
     float alternateValue;
 };
+class CUserProfileManager : public CGSIStopMusicCodeSection { public: static CUserProfileManager& __fastcall Get(); };   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 
 struct CGSIStopMusicEvent;
 
@@ -73,7 +74,6 @@ struct CGameScriptInterface_Methods : CGameScriptInterface {
 };
 
 extern CGSIStopMusicEmitter* CGSIStopMusic_Emitter;
-extern CGSIStopMusicCodeSection* __cdecl CGSIStopMusic_GetCodeSection();
 extern void __fastcall CGSIStopMusic_StopEvent(CGSIStopMusicEvent* event);
 extern void __fastcall CGSIStopMusic_ResumeEvent(CGSIStopMusicEvent* event);
 
@@ -84,7 +84,7 @@ void CGameScriptInterface_Methods::StopOverrideMusic(bool enabled) const
         if (CGSIStopMusic_Emitter != 0)
         {
             CGSIStopMusicCodeSection* section =
-                CGSIStopMusic_GetCodeSection();
+                &CUserProfileManager::Get();
             float value;
             if (section->useAlternate != 0)
                 value = section->alternateValue;

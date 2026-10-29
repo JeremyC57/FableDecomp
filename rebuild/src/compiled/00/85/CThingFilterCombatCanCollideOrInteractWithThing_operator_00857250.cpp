@@ -10,12 +10,17 @@
 // Shape: the landed CThingFilter_CanCollideOrInteractWithThing::operator() 0x006A8370 body with the dead-creature
 //   exclusion after the creature one and the two extra pass tests before the final `return false`.
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing;
 #define FILL10(n) virtual void v##n##0(); virtual void v##n##1(); virtual void v##n##2(); virtual void v##n##3(); \
@@ -58,10 +63,10 @@ public:
     }
     template<class T> __forceinline T* GetTC(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &Components;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
     }
 };
 

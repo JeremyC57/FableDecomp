@@ -26,11 +26,11 @@ struct CObserver {
 struct IComponentSecondaryB {
     virtual void b00();
 };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v000(); virtual void v001();
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 struct CComponent : IComponentPrimary, CObserver, IComponentSecondaryB {
 };
 class CCPPointerInfo;
@@ -78,13 +78,13 @@ void CScrollableList::Update(float dt)
             }
             if (ShowUpArrow) {
                 PUpArrow->StopObservingEvent(0x19);
-                CFrontEndManager::GetInstance()->AddObserver(PUpArrow);
+                CManager::GetInstance()->AddObserver(PUpArrow);
                 PUpArrow->ObserveEvent(0x19);
                 PUpArrow->ProcessEvent(0x19);
             }
             if (ShowDownArrow) {
                 PDownArrow->StopObservingEvent(0x19);
-                CFrontEndManager::GetInstance()->AddObserver(PDownArrow);
+                CManager::GetInstance()->AddObserver(PDownArrow);
                 PDownArrow->ObserveEvent(0x19);
                 PDownArrow->ProcessEvent(0x19);
             }

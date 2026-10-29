@@ -81,9 +81,9 @@ __declspec(noinline) bool CDefClass_Retail::GetSubDef(CDefPointerSlot<CGiftDef_R
 }
 #pragma auto_inline(on)
 struct CGameDefinitionManager_Retail {
-    static CGameDefinitionManager_Retail& Get();    // 0x0044C6B0
     bool GetDef(long index, CDefPointerSlot<CDefClass_Retail>* out);   // 0x0042AF3C CDefinitionManager::GetDef<T>
 };
+class CGameDefinitionManager : public CGameDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 void* FindDef_CGameDefinitionManager_Retail_GetDef_1();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
@@ -208,7 +208,7 @@ bool CGameScriptInterface::IsGiftRomantic(const CCharString& defName) const
 {
     long index = DefinitionManager->GetDefGlobalIndexFromName(defName);
     CDefPointerSlot<CDefClass_Retail> defClass;
-    if (CGameDefinitionManager_Retail::Get().GetDef(index, &defClass)) {
+    if (CGameDefinitionManager::Get().GetDef(index, &defClass)) {
         CDefPointerSlot<CGiftDef_Retail> giftDef;
         if (defClass->GetSubDef(&giftDef))
             return giftDef->m_giftType == 1;

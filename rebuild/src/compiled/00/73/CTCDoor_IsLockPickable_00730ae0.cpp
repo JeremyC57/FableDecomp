@@ -13,12 +13,17 @@
 //   through the member, then fetched again into a named local for the village lookup (two GetPItem calls; a third
 //   call appears when the lookup re-reads the member).
 class CTCBase;
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
 class CBaseObject;
 class CBaseObjectPointer;
@@ -43,10 +48,10 @@ class CThing { public:
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     template<class T> __forceinline T* GetTC(long wanted) const
     {
-        long type = wanted;
+        ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
     }
 };
 struct CTCInterfaceC2 {                         // interface type 0xC2 component

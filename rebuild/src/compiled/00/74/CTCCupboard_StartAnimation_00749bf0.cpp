@@ -10,22 +10,28 @@
 // Shape: the animator is a named local (fetched before the SetMainAnim pushes); the frame-info ctor's zero stores land
 // between the Set pushes.
 struct CTCBaseInterface;
-struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
-    struct SEntry { long type; CTCBaseInterface* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // a thing's sorted {type, component} vector map at +0x44
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset<274> UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
     template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
     {
-        long type = wanted;
+        ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (T*)((CTCBaseInterface*)((it == map->last || wanted < it->first) ? map->last : it)->second);
     }
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };

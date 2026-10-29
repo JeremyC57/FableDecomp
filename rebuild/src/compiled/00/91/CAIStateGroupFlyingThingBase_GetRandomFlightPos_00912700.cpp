@@ -4,13 +4,19 @@
 #include "engine/CAIBrain.h"
 class C3DVector { public:float X,Y,Z;};
 struct CNavigationMethods {unsigned long GetNavigatorType();void SetNavigatorToType(unsigned long);bool GetNearbyWanderPosition(const C3DVector&,float,C3DVector*,bool);}; //006CB6A0,006CBA80,006CB6E0
-struct CInterfaceMap {struct Entry {long type;void* value;};Entry* first;Entry* last;Entry* LowerBound(const long*);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:typedef std::pair<ETCInterfaceType, CTCBase*> Entry;Entry* first;Entry* last;Entry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap; //0040F020
 class CThing { public:
     const C3DVector& GetPos() const;
 };
 struct CThingRetail : public CThing {unsigned char beforeComponents[0x20];unsigned long UsingComponents[9];CInterfaceMap Components;
  float GetHeightZBelowAt(const C3DVector&,bool,bool); //00666D40
- __forceinline bool GetNavigation(CNavigationMethods** out){if(UsingComponents[0]&128){long key=7;CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(&key);if(it==map->last||7<it->type)it=map->last;*out=(CNavigationMethods*)it->value;return true;}return false;}
+ __forceinline bool GetNavigation(CNavigationMethods** out){if(UsingComponents[0]&128){ETCInterfaceType key = (ETCInterfaceType)(7);CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(key);if(it==map->last||7<it->first)it=map->last;*out=(CNavigationMethods*)((void*)it->second);return true;}return false;}
 };
 struct CWorldMapMethods {
 virtual void s00();virtual void s01();virtual void s02();virtual void s03();virtual void s04();virtual void s05();virtual void s06();virtual void s07();virtual void s08();virtual void s09();virtual void s10();virtual void s11();virtual void s12();virtual void s13();virtual void s14();virtual void s15();virtual long GetMapNumberAt(const C3DVector&)const;float GetGroundSizeZAt(const C3DVector&);}; //slot16=004FC0C0,0063A390

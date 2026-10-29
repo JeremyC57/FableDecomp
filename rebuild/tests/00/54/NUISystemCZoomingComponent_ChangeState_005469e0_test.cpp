@@ -2,12 +2,11 @@
 static int g_added, g_removed, g_focus, g_baseState = -1;
 static void* g_lastHandler;
 struct CInputHandler { int pad; void OnInputFocusGained() { ++g_focus; } };
-struct CFrontEndManager
-{
+namespace NUISystem { class CManager { public:
     void AddInputHandlerPtr(CInputHandler* h) { ++g_added; g_lastHandler = h; }
     void RemoveInputHandlerPtr(CInputHandler* h) { ++g_removed; g_lastHandler = h; }
-    static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
-};
+    static CManager* __fastcall GetInstance() { static CManager m; return &m; }
+}; }
 struct CRoot { int vptrStandIn; };
 struct CChangingStateComponent : CRoot, CInputHandler
 {
@@ -18,11 +17,11 @@ void CZoomingComponent::ChangeState(unsigned long state)
 {
     if (state != 0)
     {
-        CFrontEndManager::GetInstance()->AddInputHandlerPtr(this);
+        NUISystem::CManager::GetInstance()->AddInputHandlerPtr(this);
         OnInputFocusGained();
     }
     else
-        CFrontEndManager::GetInstance()->RemoveInputHandlerPtr(this);
+        NUISystem::CManager::GetInstance()->RemoveInputHandlerPtr(this);
     CChangingStateComponent::ChangeState(state);
 }
 int main()

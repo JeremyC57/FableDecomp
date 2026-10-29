@@ -27,10 +27,10 @@ public:
     void GetAnalogueVector(C2DVector& vector) const;   // 0x00A043A0
 };
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
     virtual void SendEvent(long event);            // slot 0
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
 class CThing { public:
@@ -85,53 +85,53 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
         C2DVector stick;
         event.GetAnalogueVector(stick);
         if (stick.Y > 0.6f) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(1);
+            NUISystem::CManager::GetInstance()->SendEvent(1);
             processed.SetHandled();
         } else if (stick.Y < -0.6f) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0);
+            NUISystem::CManager::GetInstance()->SendEvent(0);
             processed.SetHandled();
         }
         if (stick.X > 0.6f) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x15);
+            NUISystem::CManager::GetInstance()->SendEvent(0x15);
             processed.SetHandled();
         } else if (stick.X < -0.6f) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x14);
+            NUISystem::CManager::GetInstance()->SendEvent(0x14);
             processed.SetHandled();
         }
     } else if (event.GetKey_00a03b40() == 0x12) {
         C2DVector stick;
         event.GetAnalogueVector(stick);
         if (stick.Y > 0.6f) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(7);
+            NUISystem::CManager::GetInstance()->SendEvent(7);
             processed.SetHandled();
         } else if (stick.Y < -0.6f) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(6);
+            NUISystem::CManager::GetInstance()->SendEvent(6);
             processed.SetHandled();
         }
     } else if (IsEventButtonPressed(event)) {
         if (IsEventGameAction(0x25, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0);
+            NUISystem::CManager::GetInstance()->SendEvent(0);
             processed.SetHandled();
         } else if (IsEventGameAction(0x26, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(1);
+            NUISystem::CManager::GetInstance()->SendEvent(1);
             processed.SetHandled();
         } else if (IsEventGameAction(0x27, event)) {
             if (PInGameMenu->IsAnySliderReceivingInput())
-                NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x14);
+                NUISystem::CManager::GetInstance()->SendEvent(0x14);
             else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsListReceivingInputB())
-                NUISystem::CFrontEndManager::GetInstance()->SendEvent(5);
+                NUISystem::CManager::GetInstance()->SendEvent(5);
             processed.SetHandled();
         } else if (IsEventGameAction(0x28, event)) {
             if (PInGameMenu->IsAnySliderReceivingInput())
-                NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x15);
+                NUISystem::CManager::GetInstance()->SendEvent(0x15);
             else if (!PInGameMenu->IsQuitMenuReceivingInput() && !PInGameMenu->IsListReceivingInputA() && !PInGameMenu->IsListReceivingInputB())
-                NUISystem::CFrontEndManager::GetInstance()->SendEvent(4);
+                NUISystem::CManager::GetInstance()->SendEvent(4);
             processed.SetHandled();
         } else if (IsEventGameAction(0x21, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(4);
+            NUISystem::CManager::GetInstance()->SendEvent(4);
             processed.SetHandled();
         } else if (IsEventGameAction(0x22, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(5);
+            NUISystem::CManager::GetInstance()->SendEvent(5);
             processed.SetHandled();
         } else if (IsEventGameAction(3, event)) {
             PInGameMenu->CloseInGameMenuViaGameEvent();
@@ -149,10 +149,10 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
         }
     } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(0x25, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0);
+            NUISystem::CManager::GetInstance()->SendEvent(0);
             processed.SetHandled();
         } else if (IsEventGameAction(0x26, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(1);
+            NUISystem::CManager::GetInstance()->SendEvent(1);
             processed.SetHandled();
         }
     }

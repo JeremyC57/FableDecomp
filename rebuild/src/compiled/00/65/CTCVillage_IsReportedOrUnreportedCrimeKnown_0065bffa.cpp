@@ -17,12 +17,17 @@ class CTCBase;
 struct CBitset {
     bool test(unsigned long position) const;    // 0x00410DE0
 };
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) const;       // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CBaseObject {
 public:
     unsigned char _pad00[0x20];
@@ -35,10 +40,10 @@ public:
     bool HasTC(long type) const { return m_present.test(type); }
     __forceinline CTCBase* GetTC(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return ((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return ((it == map->last || interfaceType < it->first) ? map->last : it)->second;
     }
 };
 bool __fastcall IS_THING_ALIVE(CBaseObject* const& thing);   // 0x0040DCE0

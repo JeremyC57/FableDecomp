@@ -20,11 +20,17 @@
 #undef CCreatureActionBase
 #include "fable_string.h"
 class CTCCombat { public:unsigned char _nativeBeforeWeaponType[0x6c];long UnsheathingWeaponType;};
-struct CInterfaceMap {
-    struct Entry {long type;CTCCombat* component;};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
     Entry* first;Entry* last;
-    Entry* LowerBound(const long*); //0040F020
+    Entry* LowerBound(const ETCInterfaceType& key); //0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingCreatureBase;
 class CThing;
 class C3DVector { public: float x, y, z; };
@@ -180,10 +186,10 @@ void CCombatManager::CreatureUnsheathWeapon(CThingCreatureBase* creature,long we
     if(IsKnockedDown(creature)) return;
     if(!(creature->UsingComponents[1]&0x10000)) return;
     CInterfaceMap* map=&creature->Components;
-    long type=0x30;
-    CInterfaceMap::Entry* found=map->LowerBound(&type);
-    if(found==map->last || found->type>0x30) found=map->last;
-    CTCCombat* combat=found->component;
+    ETCInterfaceType type = (ETCInterfaceType)(0x30);
+    CInterfaceMap::Entry* found=map->LowerBound(type);
+    if(found==map->last || found->first>0x30) found=map->last;
+    CTCCombat* combat=((CTCCombat*)found->second);
     CCreatureAction_UnsheatheWeapons action(*creature,weapon);
     if(creature->IsFreeToPerformAction(action)) {
         if(!animate) {combat->UnsheathingWeaponType=weapon;action.PerformAction();}

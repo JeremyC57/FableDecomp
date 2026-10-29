@@ -5,7 +5,7 @@
 //   CInputEvent::GetAnalogueVector @ 0x00A043A0 (C2DVector by hidden pointer; manifest "GetDefaultVal<CEngineGraphic>"
 //   is propagated; names as in the landed CInputProcessFirstPerson::ProcessInput 0x0068CAC0),
 //   CInputProcessGameBase::IsEventButtonPressed @ 0x00687A90, IsEventButtonReleased @ 0x00687B30, IsEventGameAction
-//   @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance @ 0x0041E5F2 + slot 0, CProcessedInput::SetHandled
+//   @ 0x00687CF0, NUISystem::CManager::GetInstance @ 0x0041E5F2 + slot 0, CProcessedInput::SetHandled
 //   @ 0x00A0D390. Float pool: 0.6f @ 0x0125BEC8, -0.6f @ 0x0125BED4.
 // Layout: engine/CInputProcessInventoryStatsScreen.h (0x28 bytes, flattened over CInputProcessGameBase) -- modelled
 //   locally because the process's own virtual is called (the header's vptr is a plain word).
@@ -24,10 +24,10 @@ public:
     void SetHandled();                             // 0x00A0D390
 };
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
     virtual void SendEvent(long event);            // slot 0
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
 class CInputProcessGameBase {                      // engine/CInputProcessGameBase.h layout
@@ -51,35 +51,35 @@ void CInputProcessInventoryStatsScreen::ProcessInput(const CInputEvent& event, C
     if (event.GetEventType() == 0x11) {
         C2DVector stick = event.GetAnalogueVector();
         if (stick.y > 0.6f)
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(1);
+            NUISystem::CManager::GetInstance()->SendEvent(1);
         else if (stick.y < -0.6f)
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0);
+            NUISystem::CManager::GetInstance()->SendEvent(0);
         else
             return;
     } else if (event.GetEventType() == 0x12) {
         C2DVector stick = event.GetAnalogueVector();
         if (stick.y > 0.6f)
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(7);
+            NUISystem::CManager::GetInstance()->SendEvent(7);
         else if (stick.y < -0.6f)
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(6);
+            NUISystem::CManager::GetInstance()->SendEvent(6);
         else
             return;
     } else if (IsEventButtonPressed(event)) {
         if (IsEventGameAction(0x25, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0);
+            NUISystem::CManager::GetInstance()->SendEvent(0);
         else if (IsEventGameAction(0x26, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(1);
+            NUISystem::CManager::GetInstance()->SendEvent(1);
         else if (IsEventGameAction(0x21, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(4);
+            NUISystem::CManager::GetInstance()->SendEvent(4);
         else if (IsEventGameAction(0x22, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(5);
+            NUISystem::CManager::GetInstance()->SendEvent(5);
         else
             return;
     } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(0x25, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0);
+            NUISystem::CManager::GetInstance()->SendEvent(0);
         else if (IsEventGameAction(0x26, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(1);
+            NUISystem::CManager::GetInstance()->SendEvent(1);
         else
             return;
     } else

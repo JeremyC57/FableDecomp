@@ -1,9 +1,7 @@
 #include <cstdio>
 #include "engine/CNetworkClient.h"
 #include "engine/CPlayerManager.h"
-struct CGameDefinitionManager_Methods {
-    static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
-};
+class CGameDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 struct CPlayerManager_Methods : CPlayerManager {
     void CreatePlayers();                                // 0x0044A530
 };
@@ -23,7 +21,7 @@ protected:
 };
 void CMainGameComponent::CreatePlayers()
 {
-    const CGameDefinitionManager& definitions = CGameDefinitionManager_Methods::Get();
+    const CGameDefinitionManager& definitions = CGameDefinitionManager::Get();
     PPlayerManager->CreatePlayers();
     if (!Client.InitialiseAsLocal(this) && Client.IsValid())
         Client.Uninitialise();
@@ -31,7 +29,7 @@ void CMainGameComponent::CreatePlayers()
 
 static int g_log[8]; static int g_n = 0; static bool g_init = false, g_valid = false;
 static int g_dummy;
-CGameDefinitionManager& __fastcall CGameDefinitionManager_Methods::Get() { g_log[g_n++] = 1; return *(CGameDefinitionManager*)&g_dummy; }
+CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() { g_log[g_n++] = 1; return (CGameDefinitionManager&)(*(CGameDefinitionManager*)&g_dummy); }
 void CPlayerManager_Methods::CreatePlayers() { g_log[g_n++] = 2; }
 bool CNetworkClient_Methods::InitialiseAsLocal(CMainGameComponent*) { g_log[g_n++] = 3; return g_init; }
 bool CNetworkClient_Methods::IsValid() const { g_log[g_n++] = 4; return g_valid; }

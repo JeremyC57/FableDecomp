@@ -14,12 +14,17 @@
 #include "engine/CAIStateGroup_SeekEnemy.h"
 
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20
@@ -33,22 +38,22 @@ class CThing { public:
     template<class T> __forceinline bool GetInterfaceX(T** ppOut, long interfaceType) const
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            *ppOut = (T*)((it == map->last || interfaceType < it->first) ? map->last : it)->second;
             return true;
         }
         return false;
     }
     template<class T> __forceinline T* GetTC(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        if (it == map->last || interfaceType < it->first)
             it = map->last;
-        return (T*)it->component;
+        return (T*)it->second;
     }
 };
 #define V4(n) virtual void n##0(); virtual void n##1(); virtual void n##2(); virtual void n##3();

@@ -18,11 +18,17 @@ class CAIStateGroup_BalverineCornered : public CAIStateGroupBase, public CAIStat
 #include "engine/CAIBrain.h"
 class CThing;
 class CThingCreatureBase;
-struct CInterfaceMap {
-    struct Entry { long Type; void* Component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
     Entry *First,*Last;
-    Entry* LowerBound(const long*); // 0040F020
+    Entry* LowerBound(const ETCInterfaceType& key); // 0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CRetailThing {
     unsigned char _prefix[0x20];
     unsigned long UsingComponents[9];
@@ -31,11 +37,11 @@ struct CRetailThing {
     unsigned char Dead:1;
     template<class T> __forceinline bool GetInterface(T** out,long type) {
         if (UsingComponents[type>>5] & (1UL<<(type&31))) {
-            long key=type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map=&Components;
-            CInterfaceMap::Entry* it=map->LowerBound(&key);
-            if(it==map->Last || type<it->Type) it=map->Last;
-            *out=(T*)it->Component;
+            CInterfaceMap::Entry* it=map->LowerBound(key);
+            if(it==map->Last || type<it->first) it=map->Last;
+            *out=(T*)((void*)it->second);
             return true;
         }
         return false;

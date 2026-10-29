@@ -1,6 +1,6 @@
 // NUISystem::CScrollingViewport::`scalar deleting destructor'(unsigned int flags) -- the three vtables of this class, the viewport removed from the front-end manager's observers, the active-scrolling-viewport global cleared if it is this one, CViewport::~CViewport, then operator delete for flag bit 0
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0053FC30, 87 bytes (vtable 0x012468D4 slot 0 = NUISystem::CScrollingViewport).
-// Callees: CFrontEndManager::GetInstance @ 0x0041E5F2 (`__fastcall` singleton), the manager's RemoveObserver
+// Callees: CManager::GetInstance @ 0x0041E5F2 (`__fastcall` singleton), the manager's RemoveObserver
 // (slot 5, +0x14) with the CObserver sub-object at +4, CViewport::~CViewport @ 0x0054EAC0 (manifest
 // "CMesh::~CMesh" is a propagated name), operator delete @ 0x00BFE9BC. Global 0x013B8AAC = the active
 // scrolling viewport (only CScrollingViewport bodies 0x0053E922..0x0053FC61 touch it).
@@ -35,13 +35,13 @@ struct CViewport : IViewportPrimary, CObserver, IViewportSecondaryB {   // retai
     virtual ~CViewport();                        // 0x0054EAC0
 };
 
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v000(); virtual void v001();
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
     virtual void v003(); virtual void v004();
     virtual void RemoveObserver(CObserver* observer);    // slot 5 (+0x14)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 
 namespace NUISystem {
 
@@ -66,7 +66,7 @@ class CScrollingViewport : public CViewport { public:          // vtables 0x0124
     }
     __forceinline virtual ~CScrollingViewport()
     {
-        CFrontEndManager::GetInstance()->RemoveObserver(this);
+        CManager::GetInstance()->RemoveObserver(this);
         if (g_pActiveScrollingViewport == this)
             g_pActiveScrollingViewport = 0;
     }

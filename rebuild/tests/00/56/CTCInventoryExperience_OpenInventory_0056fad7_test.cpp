@@ -16,10 +16,10 @@ class CThing { public:
         return false;
     }
 };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void OnThingInventoryOpened(CThing* thing) { if (thing) ++g_notified; }
-    static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
-};
+    static CManager* __fastcall GetInstance() { static CManager m; return &m; }
+}; }
 struct CHudOwner { virtual void SetEnabled(bool enabled) { if (!enabled) ++g_hudOff; } };
 struct CWorldPart { CHudOwner* Hud; };
 class CMainGameComponent { public: CWorldPart* World; };
@@ -44,7 +44,7 @@ class CTCInventoryExperience { public:
 void CTCInventoryExperience::OpenInventory()
 {
     OnOpenMenus();
-    CFrontEndManager::GetInstance()->OnThingInventoryOpened(ParentThing);
+    NUISystem::CManager::GetInstance()->OnThingInventoryOpened(ParentThing);
     PrepareScreen();
     AccumFadeTime = 0.0f;
     g_pMainGameComponent->World->Hud->SetEnabled(false);

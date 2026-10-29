@@ -1,7 +1,7 @@
 // NUISystem::CSlider::RevertValue() -- restore the value the slider had before editing, push it into every action's target and re-run the actions
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054ABE0, 167 bytes (+ int3 padding), `ret`.
 // Leaf: RevertValue
-// Callees: CFrontEndManager::GetInstance() @ 0x0041E5F2 (static `__fastcall`); the front-end manager's virtual slot 14
+// Callees: CManager::GetInstance() @ 0x0041E5F2 (static `__fastcall`); the front-end manager's virtual slot 14
 //   (+0x38), called with each action (descriptive name ExecuteAction, as in the landed twin).
 // Shape: the C2DVector twin of the landed NUISystem::CTextSlider::RevertValue 0x005491A0:
 //   `OldValue = StartValue = Value = PreviousValue;` (right to left: stores +0x1A4, +0x1B5, +0x1AD, the two words rotating
@@ -70,20 +70,20 @@ class CAction { public:
     CSliderTargetRef* PTarget;                   // +0x04
 };
 }
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
     virtual void ExecuteAction(const CCountedPointer<NUISystem::CAction>& action);   // slot 14 (+0x38)
-};
+}; }
 namespace NUISystem {
 void CSlider::RevertValue()
 {
     OldValue = StartValue = Value = PreviousValue;
     for (unsigned int i = 0; i < Actions.size(); ++i) {
         Actions[i]->PTarget->Target->Value->Value = PreviousValue.X;
-        CFrontEndManager::GetInstance()->ExecuteAction(Actions[i]);
+        CManager::GetInstance()->ExecuteAction(Actions[i]);
     }
     Move = true;
 }

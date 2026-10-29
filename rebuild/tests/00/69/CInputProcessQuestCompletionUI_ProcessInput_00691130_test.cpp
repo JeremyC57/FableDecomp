@@ -46,14 +46,14 @@ public:
 };
 float __cdecl ceil(float value);                   // 0x00689370
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
     virtual void SendEvent(long event);            // slot 0
     unsigned char  _pad04[0xac];
     CMousePosition MousePosition;                  // +0xB0
     void SetMousePosition(CMousePosition& position) { MousePosition = position; }
     void ScrollMenu(long amount);                  // 0x0041DA2D
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
 class CTCQuestCompletionUI { public:
@@ -111,22 +111,22 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
         return;
     if (IsEventButtonPressed(event)) {
         if (IsEventGameAction(0x19, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1a);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1a);
             processed.SetHandled();
             return;
         }
         if (IsEventGameAction(0x4c, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(5);
+            NUISystem::CManager::GetInstance()->SendEvent(5);
             processed.SetHandled();
             return;
         }
         if (IsEventGameAction(0x58, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(6);
+            NUISystem::CManager::GetInstance()->SendEvent(6);
             processed.SetHandled();
             return;
         }
         if (IsEventGameAction(0x59, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(7);
+            NUISystem::CManager::GetInstance()->SendEvent(7);
             processed.SetHandled();
             return;
         }
@@ -139,47 +139,47 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
     }
     if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(0x19, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1c);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1c);
             processed.SetHandled();
             return;
         }
         if (IsEventGameAction(0x4c, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1d);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1d);
             processed.SetHandled();
         }
         return;
     }
     if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(0x19, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1f);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1f);
             processed.SetHandled();
             return;
         }
         if (IsEventGameAction(0x4c, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x20);
+            NUISystem::CManager::GetInstance()->SendEvent(0x20);
             processed.SetHandled();
             return;
         }
         if (IsEventGameAction(0x58, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(6);
+            NUISystem::CManager::GetInstance()->SendEvent(6);
             processed.SetHandled();
             return;
         }
         if (IsEventGameAction(0x59, event)) {
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(7);
+            NUISystem::CManager::GetInstance()->SendEvent(7);
             processed.SetHandled();
         }
         return;
     }
     if (IsEventGameAction(0x47, event)) {
         CMousePosition position = GetMousePosition(event);
-        NUISystem::CFrontEndManager::GetInstance()->SetMousePosition(position);
-        NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x19);
+        NUISystem::CManager::GetInstance()->SetMousePosition(position);
+        NUISystem::CManager::GetInstance()->SendEvent(0x19);
         processed.SetHandled();
         return;
     }
     if (IsEventGameAction(0x65, event)) {
-        NUISystem::CFrontEndManager::GetInstance()->ScrollMenu((long)ceil(event.GetWheelDelta() * 0.008333334f));
+        NUISystem::CManager::GetInstance()->ScrollMenu((long)ceil(event.GetWheelDelta() * 0.008333334f));
         processed.SetHandled();
     }
 }
@@ -190,7 +190,7 @@ static long g_action;                              // the one game action the ev
 static float g_wheel;
 static int g_sends; static long g_lastEvent; static long g_events[8];
 static int g_handled, g_deactivated, g_scrolls; static long g_scrollAmount;
-static NUISystem::CFrontEndManager* g_mgr;
+static NUISystem::CManager* g_mgr;
 static CThing* g_hero;
 static float g_lastWheelArg;
 CThing* CPlayer::GetHeroCreature() { return g_hero; }
@@ -204,9 +204,9 @@ bool CInputProcessQuestCompletionUI::IsEventButtonPressed(const CInputEvent&) { 
 bool CInputProcessQuestCompletionUI::IsEventButtonReleased(const CInputEvent&) { return g_released != 0; }
 bool CInputProcessQuestCompletionUI::IsEventButtonHeld(const CInputEvent&) { return g_held != 0; }
 bool CInputProcessQuestCompletionUI::IsEventGameAction(long action, const CInputEvent&) { return action == g_action; }
-NUISystem::CFrontEndManager* __fastcall NUISystem::CFrontEndManager::GetInstance() { return g_mgr; }
-void NUISystem::CFrontEndManager::SendEvent(long event) { if (g_sends < 8) g_events[g_sends] = event; ++g_sends; g_lastEvent = event; }
-void NUISystem::CFrontEndManager::ScrollMenu(long amount) { ++g_scrolls; g_scrollAmount = amount; }
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return g_mgr; }
+void NUISystem::CManager::SendEvent(long event) { if (g_sends < 8) g_events[g_sends] = event; ++g_sends; g_lastEvent = event; }
+void NUISystem::CManager::ScrollMenu(long amount) { ++g_scrolls; g_scrollAmount = amount; }
 void CTCQuestCompletionUI::Deactivate() { ++g_deactivated; }
 float CInputEvent::GetWheelDelta() const { return g_wheel; }
 void CProcessedInput::SetHandled() { ++g_handled; }
@@ -228,7 +228,7 @@ int main()
     STCEntry entries[3]; entries[0].m_kind = 0x10; entries[0].m_pTC = &other; entries[1].m_kind = 0xfc; entries[1].m_pTC = &ui; entries[2].m_kind = 0x120; entries[2].m_pTC = &other;
     hero.m_tcs.m_pFirst = entries; hero.m_tcs.m_pLast = entries + 3; hero.m_tcs.m_pEnd = entries + 3;
     hero.m_tcMask[0xfc >> 5] = 1UL << (0xfc & 31);
-    NUISystem::CFrontEndManager mgr; memset(&mgr._pad04, 0, sizeof(mgr._pad04)); mgr.MousePosition.X = -1.0f; mgr.MousePosition.Y = -1.0f; g_mgr = &mgr;
+    NUISystem::CManager mgr; memset(&mgr._pad04, 0, sizeof(mgr._pad04)); mgr.MousePosition.X = -1.0f; mgr.MousePosition.Y = -1.0f; g_mgr = &mgr;
     CInputEvent ev; memset(&ev, 0, sizeof(ev)); ev.Position.X = 123.5f; ev.Position.Y = -42.25f;
     CProcessedInput pi;
 

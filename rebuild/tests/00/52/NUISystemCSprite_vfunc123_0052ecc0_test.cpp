@@ -6,7 +6,7 @@
 #include "engine/CSprite.h" // donor includes inherited CComponent storage; no CComponent header exists
 struct Vec {float X,Y;Vec(){} Vec(float x,float y):X(x),Y(y){} Vec(const Vec& o):X(o.X),Y(o.Y){} };
 namespace NUISystem {
-struct CManagerCalls {static CManagerCalls* __fastcall GetInstance(); Vec GetUIScale()const;}; //0041e5f2,0041cf47
+class CManager { public:static CManager* __fastcall GetInstance(); Vec GetUIScale()const;}; //0041e5f2,0041cf47
 // CUIScreenUnitConverter::ConvertVector recovered PDB debug0055ed1a, retail0052e580.
 struct CUIScreenUnitConverter {static Vec __fastcall ConvertVector(Vec value);};
 class CComponent { public:
@@ -140,8 +140,8 @@ class CComponent { public:
 Vec CComponent::GetTargetRelativeRenderZoom()const {
  Vec size=TargetZoom;
  if(!Parent||IsZoomIndependent()) {
- size.X*=CManagerCalls::GetInstance()->GetUIScale().X;
- size.Y*=CManagerCalls::GetInstance()->GetUIScale().Y;
+ size.X*=CManager::GetInstance()->GetUIScale().X;
+ size.Y*=CManager::GetInstance()->GetUIScale().Y;
  }
  if(IsUsingRelativeZoom())size=CUIScreenUnitConverter::ConvertVector(size);
  CComponent* parent=PositionParent?PositionParent:Parent;
@@ -156,8 +156,8 @@ Vec CComponent::GetTargetRelativeRenderZoom()const {
 // END exact source snapshot
 #include <stdio.h>
 namespace NUISystem {
-CManagerCalls* __fastcall CManagerCalls::GetInstance(){static CManagerCalls m;return &m;}
-Vec CManagerCalls::GetUIScale()const{return Vec(2,3);}
+CManager* __fastcall CManager::GetInstance(){static CManager m;return &m;}
+Vec CManager::GetUIScale()const{return Vec(2,3);}
 Vec __fastcall CUIScreenUnitConverter::ConvertVector(Vec v){return Vec(v.X*10,v.Y*10);}
 struct TestSprite:CComponent {bool independent,screen;
 void Slot000(){}

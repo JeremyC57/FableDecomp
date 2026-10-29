@@ -1,6 +1,6 @@
 // NUISystem::CSlider::~CSlider() -- if the value moved, push the starting value back into every action's target and re-run the actions; delete the back/select action lists; destroy the action vector and the sprite base
 // Leaf: ??1CSlider@NUISystem
-// Retail 0x0054B360, 328 bytes, ret. Callees: CFrontEndManager::GetInstance 0x0041E5F2 and its ExecuteAction (slot 14,
+// Retail 0x0054B360, 328 bytes, ret. Callees: CManager::GetInstance 0x0041E5F2 and its ExecuteAction (slot 14,
 // +0x38), list<CCountedPointer<CAction> >::clear 0x005356A0, free 0x00BFEA14, operator delete 0x00BFE9BC, the action
 // range destroyer 0x0054A1C0 (__fastcall first/last + allocator reference), CSprite::~CSprite 0x0041AB40.
 // Vtables 0x01248D04 / 0x01248CE0 / 0x01248CD8 at +0 / +4 / +0x18. Epsilon float 0x0129BA3C.
@@ -107,20 +107,20 @@ class CAction { public:
     CSliderTargetRef* PTarget;                   // +0x04
 };
 }
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
     virtual void ExecuteAction(const CCountedPointer<NUISystem::CAction>& action);   // slot 14 (+0x38)
-};
+}; }
 namespace NUISystem {
 CSlider::~CSlider()
 {
     if (!(StartValue == Value)) {
         for (unsigned int i = 0; i < Actions.size(); ++i) {
             Actions[i]->PTarget->Target->Value->Value = StartValue.X;
-            CFrontEndManager::GetInstance()->ExecuteAction(Actions[i]);
+            CManager::GetInstance()->ExecuteAction(Actions[i]);
         }
         Move = true;
     }

@@ -14,15 +14,15 @@ struct CChangingStateComponent : IViewportPrimary, CObserver, IViewportSecondary
     unsigned long baseState; int baseCalls;
     void ChangeState(unsigned long state) { baseState = state; ++baseCalls; }
 };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     CObserver* list[8]; int n;
     virtual void AddObserver(CObserver* observer) { list[n++] = observer; }
     virtual void RemoveObserver(CObserver* observer)
     { for (int i = 0; i < n; ++i) if (list[i] == observer) { list[i] = list[--n]; return; } }
-    static CFrontEndManager* GetInstance();
-};
-static CFrontEndManager g_manager;
-CFrontEndManager* CFrontEndManager::GetInstance() { return &g_manager; }
+    static CManager* __fastcall GetInstance();
+}; }
+static NUISystem::CManager g_manager;
+NUISystem::CManager* NUISystem::CManager::GetInstance() { return &g_manager; }
 struct CScrollBarComponent : IViewportPrimary, CObserver {
 };
 
@@ -43,18 +43,18 @@ void CScrollingViewport::ChangeState(unsigned long state)
 {
     switch (state) {
     case 0:
-        CFrontEndManager::GetInstance()->RemoveObserver(this);
+        CManager::GetInstance()->RemoveObserver(this);
         if (g_pActiveScrollingViewport == this)
             g_pActiveScrollingViewport = 0;
         CChangingStateComponent::ChangeState(state);
         if (PScrollBar)
-            CFrontEndManager::GetInstance()->RemoveObserver(PScrollBar);
+            CManager::GetInstance()->RemoveObserver(PScrollBar);
         if (PScrollBarOutside)
-            CFrontEndManager::GetInstance()->RemoveObserver(PScrollBarOutside);
+            CManager::GetInstance()->RemoveObserver(PScrollBarOutside);
         break;
     case 1:
     case 3:
-        CFrontEndManager::GetInstance()->AddObserver(this);
+        CManager::GetInstance()->AddObserver(this);
         ObserveEvent(6);
         ObserveEvent(7);
         ObserveEvent(0x19);
@@ -62,11 +62,11 @@ void CScrollingViewport::ChangeState(unsigned long state)
             g_pActiveScrollingViewport = this;
         CChangingStateComponent::ChangeState(state);
         if (PScrollBar) {
-            CFrontEndManager::GetInstance()->AddObserver(PScrollBar);
+            CManager::GetInstance()->AddObserver(PScrollBar);
             PScrollBar->ObserveEvent(0x19);
         }
         if (PScrollBarOutside) {
-            CFrontEndManager::GetInstance()->AddObserver(PScrollBarOutside);
+            CManager::GetInstance()->AddObserver(PScrollBarOutside);
             PScrollBarOutside->ObserveEvent(0x19);
         }
         break;

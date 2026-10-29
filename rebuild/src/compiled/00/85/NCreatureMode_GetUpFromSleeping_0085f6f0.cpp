@@ -22,13 +22,19 @@ class CBaseObject;
 class CCharString;
 class CAnimationEntry;
 
-struct CInterfaceMap {                                  // CVectorMap<long, CTCBase*>
-    struct SEntry { long type; void* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<long, CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
     SEntry* end_of_storage;
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CCreatureActionBase { public:                            // retail 0xa8 bytes
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -75,10 +81,10 @@ public:
     }
     template <class T> __forceinline T* GetTC(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (T*)((void*)((it == map->last || interfaceType < it->first) ? map->last : it)->second);
     }
     bool IsFreeToPerformAction(const CCreatureActionBase& action) const;   // 0x00662210
     bool SetCurrentAction(const CCreatureActionBase& action);              // 0x006644F0

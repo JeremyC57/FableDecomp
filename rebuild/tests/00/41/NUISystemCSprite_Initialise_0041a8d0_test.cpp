@@ -54,12 +54,12 @@ struct CSpriteGraphicsPointer {
     ~CSpriteGraphicsPointer() {if(Info && --Info->RefCount==0) {Info->DeleteFunc(Info->Data);::operator delete(Info);}}
     CGraphicDataBankCalls* operator->() const {return Data;}
 };
-struct CFrontEndManagerGraphicsView {
+namespace NUISystem { class CManager { public:
     unsigned char Base[0x10];
     CSpriteGraphicsPointer PGraphicsBank;
-    static CFrontEndManagerGraphicsView* __fastcall GetInstance(); //0041E5F2
+    static CManager* __fastcall GetInstance(); //0041E5F2
     CSpriteGraphicsPointer GetGraphicsBank() const {return PGraphicsBank;}
-};
+}; }
 namespace NUISystem {
 struct CChangingStateComponentInitialiseCalls {
     void* VTable;
@@ -72,14 +72,14 @@ struct CChangingStateComponentInitialiseCalls {
 struct CSpriteInitialiseView : CChangingStateComponentInitialiseCalls {void Initialise();};
 void CSpriteInitialiseView::Initialise() {
     CChangingStateComponentInitialiseCalls::Initialise();
-    SizeX=(float)CFrontEndManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrameWidth(GraphicIndex,0);
-    SizeY=(float)CFrontEndManagerGraphicsView::GetInstance()->GetGraphicsBank()->GetGraphicFrameHeight(GraphicIndex,0);
+    SizeX=(float)CManager::GetInstance()->GetGraphicsBank()->GetGraphicFrameWidth(GraphicIndex,0);
+    SizeY=(float)CManager::GetInstance()->GetGraphicsBank()->GetGraphicFrameHeight(GraphicIndex,0);
 }
 }
 
 using NUISystem::CSpriteInitialiseView;
 static CSpriteInitialiseView* active;
-static CFrontEndManagerGraphicsView* managers[2];
+static NUISystem::CManager* managers[2];
 static CSpriteGraphicsInfo* infos[2];
 static unsigned long dimensions[2],owners;
 static float expectedSizes[2];
@@ -105,7 +105,7 @@ void CGraphicDataBankCalls::v18() {}
 void CGraphicDataBankCalls::v19() {}
 void CGraphicDataBankCalls::v20() {}
 
-CFrontEndManagerGraphicsView* __fastcall CFrontEndManagerGraphicsView::GetInstance() {
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() {
     if(baseCalls!=1 || getters>=2) {bad=1;return managers[0];}
     if(getters==1 && (widths!=1 || active->SizeX!=expectedSizes[0] || active->GraphicIndex!=124)) bad=1;
     return managers[getters++];
@@ -141,7 +141,7 @@ static void __fastcall deleted(void* data) {
 }
 static int run(int nullInfo,int finalRelease,unsigned long refs,unsigned long width,unsigned long height) {
     CSpriteInitialiseView sprite;active=&sprite;
-    CFrontEndManagerGraphicsView m0,m1;managers[0]=&m0;managers[1]=&m1;
+    NUISystem::CManager m0,m1;managers[0]=&m0;managers[1]=&m1;
     Bank b0(0),b1(1);CGraphicDataBankCalls* banks[2]={&b0,&b1};
     owners=refs;releaseOwner=finalRelease;dimensions[0]=width;dimensions[1]=height;expectedSizes[0]=(float)width;expectedSizes[1]=(float)height;
     for(int i=0;i<2;++i) {

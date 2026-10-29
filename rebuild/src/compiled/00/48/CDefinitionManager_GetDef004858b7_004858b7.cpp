@@ -1,10 +1,10 @@
-// CDefinitionManager::GetDef<T>(long, long, CDefPointer&) -- GetPDefFromGlobalIndex @ 0x009ADE10 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false; frame-pointer size TU
+// CDefinitionManager::GetDef<T>(const CCharString&, long, CDefPointer&) -- GetPDefFromClassIndex @ 0x009ADE10 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false; frame-pointer size TU
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004858B7, oracle length 101 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
 //
 // Retail bytes:  push ebp ; mov ebp,esp ; cmp dword ptr [index],0 ; jle F ; push [index] ; lea eax,[index] ; push [kind] ; push eax ; call GetPDefFromGlobalIndex ; mov eax,[def] ; test eax,eax ; je F ; push esi ; mov esi,[out] ; mov ecx,[esi] ; cmp ecx,eax ; je K ; test ecx,ecx ; je A ; dec dword ptr [ecx+4] ; jne Z ; mov eax,[ecx] ; call [eax+4] ; Z: and dword ptr [esi],0 ; mov eax,[def] ; A: test eax,eax ; mov [esi],eax ; je R ; inc dword ptr [eax+4] ; mov eax,[def] ; K: mov ecx,eax ; add eax,4 ; dec dword ptr [eax] ; cmp dword ptr [eax],0 ; jne R ; mov eax,[ecx] ; call [eax+4] ; R: mov al,1 ; pop esi ; jmp X ; F: xor al,al ; X: pop ebp ; ret 0Ch
-// Definition lookup into a counted def pointer: GetPDefFromGlobalIndex @ 0x009ADE10 returns a CDefPointer by
+// Definition lookup into a counted def pointer: GetPDefFromClassIndex @ 0x009ADE10 returns a CDefPointer by
 // value through the hidden pointer, which VC homes in the dead key argument slot; the
 // temporary is re-read from that slot at every use. A null def fails (the false path sits at
 // the end: the success branch is the `if` body). Otherwise `out = def` is inlined -- unless
@@ -43,7 +43,9 @@ struct CDefBase : CDefVirtual, CRefCounted {
     }
 };
 
-struct CDefPointer {
+class CCharString;
+class CDefClassBase;
+template <class T> class CDefPointer { public:
     CDefBase* m_p;
     CDefPointer() { }
     ~CDefPointer()
@@ -67,15 +69,15 @@ struct CDefPointer {
 };
 
 class CDefinitionManager { public:
-    CDefPointer GetPDefFromGlobalIndex(long kind, long index);   // 0x009ADE10 (hidden result pointer)
-    bool GetDef_004858b7(long kind, long index, CDefPointer& out);
+    CDefPointer<const CDefClassBase> GetPDefFromClassIndex(const CCharString& name, long index) const;   // 0x009ADE10 ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z (hidden result pointer)
+    bool GetDef_004858b7(const CCharString& kind, long index, CDefPointer<const CDefClassBase>& out);
 };
 
-bool CDefinitionManager::GetDef_004858b7(long kind, long index, CDefPointer& out)
+bool CDefinitionManager::GetDef_004858b7(const CCharString& kind, long index, CDefPointer<const CDefClassBase>& out)
 {
     if (index <= 0)
         return false;
-    CDefPointer def = GetPDefFromGlobalIndex(kind, index);
+    CDefPointer<const CDefClassBase> def = GetPDefFromClassIndex(kind, index);
     if (def.m_p) {
         out = def;
         return true;

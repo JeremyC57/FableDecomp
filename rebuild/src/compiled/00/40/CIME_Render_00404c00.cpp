@@ -21,12 +21,12 @@ struct CThemeProvider_00404c00 {
 // IME UI: draw the composition / candidate strings (0x00CB38E0).
 void __fastcall ImeUI_RenderCompositionString(bool a, bool b);
 struct CSprite { void DrawWithRenderManager(); };   // 0x0041A980
-struct CFrontEndManager_00404c00 {
+namespace NUISystem { class CManager { public:
     unsigned char _pad[0xb8];
     CSprite*      m_pImeSprite;                    // the IME mode indicator sprite, if created
     CSprite* GetImeSprite() { return m_pImeSprite; }
-    static CFrontEndManager_00404c00* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 struct CIME {
     unsigned char             _pad[8];
     bool                      m_active;            // IsInitialised
@@ -46,7 +46,7 @@ void CIME::Render()
         bool flags = true;
         ImeUI_RenderCompositionString(flags, flags);
         // Mode indicator, when the front end has one.
-        CSprite* sprite = CFrontEndManager_00404c00::GetInstance()->GetImeSprite();
+        CSprite* sprite = NUISystem::CManager::GetInstance()->GetImeSprite();
         if (sprite)
             sprite->DrawWithRenderManager();
     }

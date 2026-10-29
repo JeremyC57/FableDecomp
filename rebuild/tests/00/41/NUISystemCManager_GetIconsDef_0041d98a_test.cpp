@@ -422,19 +422,19 @@ template<class T> class CDefPointer { public:
 class CDefClassBase;
 namespace NUISystem { class CUIMiscThingsDef; class CUIIconsDef; }
 class CDefinitionManager { public:
- CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long); //009ad9e0
+ CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long) const; //009ad9e0
  long GetGlobalIndexFromClassIndex(const CCharString&,long)const; //009ad390
  bool GetDef(long,CDefPointer<NUISystem::CUIMiscThingsDef>*); //0042b312
  bool GetDef(long,CDefPointer<NUISystem::CUIIconsDef>*); //0042b374
 };
 #pragma auto_inline(off)
 bool CDefinitionManager::GetDef(long index,CDefPointer<NUISystem::CUIMiscThingsDef>* out){
- if(index>0){ CDefPointer<CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
+ if(index>0){ CDefPointer<const CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
   if(out->PObject!=value.PObject){if(out->PObject){out->PObject->RemoveReference();out->PObject=0;}out->PObject=value.PObject;if(out->PObject)out->PObject->AddReference();}return true;
  }}return false;
 }
 bool CDefinitionManager::GetDef(long index,CDefPointer<NUISystem::CUIIconsDef>* out){
- if(index>0){ CDefPointer<CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
+ if(index>0){ CDefPointer<const CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
   if(out->PObject!=value.PObject){if(out->PObject){out->PObject->RemoveReference();out->PObject=0;}out->PObject=value.PObject;if(out->PObject)out->PObject->AddReference();}return true;
  }}return false;
 }
@@ -499,9 +499,9 @@ long CDefinitionManager::GetGlobalIndexFromClassIndex(const CCharString& name,lo
  if(switchGlobal)globalManager=&managerB;
  return lookupIndex;
 }
-CDefPointer<CDefClassBase> CDefinitionManager::GetPDefFromGlobalIndex(long index){
+CDefPointer<const CDefClassBase> CDefinitionManager::GetPDefFromGlobalIndex(long index) const{
  ++getCalls;if(this!=expectedGet||index!=lookupIndex||strings)good=0;
- CDefPointer<CDefClassBase> result;result.PObject=hasDef?returned:0;if(result.PObject)result.PObject->AddReference();return result;
+ CDefPointer<const CDefClassBase> result;result.PObject=hasDef?returned:0;if(result.PObject)result.PObject->AddReference();return result;
 }
 static void reset(){deleted=getglobal=lookups=getCalls=strings=0;lookupIndex=7;hasDef=true;globalManager=&managerA;expectedLookup=&managerA;expectedGet=&managerA;switchGlobal=false;}
 int main(){

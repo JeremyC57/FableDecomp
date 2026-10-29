@@ -28,12 +28,18 @@ class CCharString { public:
 class C3DVector { public: float X, Y, Z; };
 
 class CTCBaseComponent;
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    struct SEntry { long type; CTCBaseComponent* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CInterfaceBits {                                     // bitset<> at CThing+0x20
     unsigned long _M_w[9];
     bool test(unsigned long pos) const { return (_M_w[pos / 32] & (1ul << (pos % 32))) != 0; }
@@ -60,10 +66,10 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (present.test(interfaceType)) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *ppOut = (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
+            CInterfaceMap::SEntry* it = map->LowerBound(type);
+            *ppOut = (T*)((CTCBaseComponent*)((it == map->last || interfaceType < it->first) ? map->last : it)->second);
             return true;
         }
         return false;

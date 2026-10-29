@@ -24,28 +24,34 @@ struct CTCWallMountable {                           // the interface-8 component
     virtual CThingTarget* GetTarget();              // slot 33 (+0x84)
 };
 
-struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    struct SEntry { long type; CTCWallMountable* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) const;           // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;           // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                 // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
-    CInterfaceMap::SEntry* FindEntry(long type)
+    const CInterfaceMap::SEntry* FindEntry(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
+        const CInterfaceMap::SEntry* it = map->LowerBound(key);
         CInterfaceMap::SEntry* end = map->last;
-        CInterfaceMap::SEntry* sel;
+        const CInterfaceMap::SEntry* sel;
         if (it == end)
             sel = end;
-        else if (it->type <= type)
+        else if (it->first <= type)
             sel = it;
         else
             sel = end;
@@ -61,7 +67,7 @@ struct CTCCarriedActionUseFish {
 bool CTCCarriedActionUseFish::IsWallMountTargeted(CThing* user)
 {
     if (user->HasInterface(8)) {
-        CThingTarget* target = user->FindEntry(8)->component->GetTarget();
+        CThingTarget* target = ((CTCWallMountable*)user->FindEntry(8)->second)->GetTarget();
         if (target && (target->m_flags & 0x4000000))
             return true;
     }

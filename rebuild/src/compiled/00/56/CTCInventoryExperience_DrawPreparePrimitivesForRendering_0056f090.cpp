@@ -4,7 +4,7 @@
 // Identity (proven): slot 11 of vtable 0x0124F11C (RTTI .?AVCTCInventoryExperience@@); Ego_r.pdb ?DrawPreparePrimitivesForRendering@CTCInventoryExperience@@...;
 //   AccumFadeTime (Ego_r.pdb +0x2B8) is the float at retail +0x254. The manifest's CTCInventory label is propagated.
 // Callees: GFGetTime() 0x009E1BC0 (`__fastcall`, double) twice, component slots 1 Update(float) / 2 Render(viewport, 0, 0, 0, 0),
-//   NUISystem::CFrontEndManager::GetInstance 0x0041E5F2 and its slot 42 (+0xA8, the reference-counted fade settings by hidden
+//   NUISystem::CManager::GetInstance 0x0041E5F2 and its slot 42 (+0xA8, the reference-counted fade settings by hidden
 //   pointer; FadeTime +0x234), CTCInventoryBase::RenderUIBackdropQuad(float) 0x005BC6D6.
 // Shape (family M139, representative 0x0056F090): the landed CTCInventoryQuests 0x0061B3C0 body without the information-screen
 //   branch, `optimize("y", off)` + `optimize("s", on)`; the fade settings temporary is homed in the dead deltaTime word and released through its
@@ -62,8 +62,8 @@ struct CFadeSettingsPtr {
     CFadeSettingsObject* operator->() const { return Object; }
 };
 namespace NUISystem {
-class CFrontEndManager { public:
-    static CFrontEndManager* __fastcall GetInstance();      // 0x0041E5F2
+class CManager { public:
+    static CManager* __fastcall GetInstance();      // 0x0041E5F2
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -139,7 +139,7 @@ void CTCInventoryExperience::DrawPreparePrimitivesForRendering(const CEnginePrim
                 Components[i]->Render(info.PViewport, 0, 0, 0, 0);
         }
         AccumFadeTime += deltaTime;
-        float alpha = AccumFadeTime / NUISystem::CFrontEndManager::GetInstance()->GetFadeSettings()->FadeTime;
+        float alpha = AccumFadeTime / NUISystem::CManager::GetInstance()->GetFadeSettings()->FadeTime;
         if (alpha > 1.0f)
             alpha = 1.0f;
         RenderUIBackdropQuad(alpha);

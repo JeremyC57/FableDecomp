@@ -35,27 +35,27 @@ template<class T> class CDefPointer { public:
 class CDefClassBase;
 #include "engine/_quarantine/CConfigOptionsDefaultsDef.h"
 class CDefinitionManager { public:
- CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long); //009AD9E0
+ CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long) const; //009AD9E0
  long GetGlobalIndexFromClassIndex(const CCharString&,long)const; //009AD390
  bool GetDef(long,CDefPointer<const CConfigOptionsDefaultsDef>*); //00410890 native mutable helper projection
 };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 #pragma auto_inline(off)
 bool CDefinitionManager::GetDef(long index,CDefPointer<const CConfigOptionsDefaultsDef>* out){
- if(index>0){CDefPointer<CDefClassBase> value=GetPDefFromGlobalIndex(index);if(value.PObject){
+ if(index>0){CDefPointer<const CDefClassBase> value=GetPDefFromGlobalIndex(index);if(value.PObject){
   if(out->PObject!=value.PObject){if(out->PObject){out->PObject->RemoveReference();out->PObject=0;}out->PObject=value.PObject;if(out->PObject)out->PObject->AddReference();}return true;
  }}return false;
 }
 #pragma auto_inline(on)
 extern void* g_pMainGameComponent; //013B86A0 (only presence is inspected)
 extern void* g_pFrontendRuntime; //013B871C (only presence is inspected)
-CDefinitionManager* __fastcall GetGameDefinitionManager(); //0044C6B0 loads013B879C
 CDefinitionManager* __fastcall GetFrontendDefinitionManager(); //0043368D loads013B8760
 class CUserProfileManager { public:CDefPointer<const CConfigOptionsDefaultsDef> GetConfigOptionsDefaultsDef()const;};
 CDefPointer<const CConfigOptionsDefaultsDef> CUserProfileManager::GetConfigOptionsDefaultsDef()const{
  CDefPointer<const CConfigOptionsDefaultsDef> result;
  if(g_pMainGameComponent){
-  long index;{CCharString name("CONFIG_OPTIONS_DEFAULTS_DEF",-1);index=GetGameDefinitionManager()->GetGlobalIndexFromClassIndex(name,1);}
-  GetGameDefinitionManager()->GetDef(index,&result);
+  long index;{CCharString name("CONFIG_OPTIONS_DEFAULTS_DEF",-1);index=CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name,1);}
+  CGameDefinitionManager::Get().GetDef(index,&result);
  }else if(g_pFrontendRuntime){
   long index;{CCharString name("CONFIG_OPTIONS_DEFAULTS_DEF",-1);index=GetFrontendDefinitionManager()->GetGlobalIndexFromClassIndex(name,1);}
   GetFrontendDefinitionManager()->GetDef(index,&result);

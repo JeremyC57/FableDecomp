@@ -14,12 +14,17 @@
 // return keeps its own exit (`mov al,1` / `xor al,al` / the ally test's al).
 class CTCBase;
 
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) const;             // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;             // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -28,12 +33,12 @@ class CThing { public:
     unsigned long HasInterface(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     CTCBase* GetInterface(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        if (it == map->last || interfaceType < it->first)
             it = map->last;
-        return it->component;
+        return it->second;
     }
 };
 

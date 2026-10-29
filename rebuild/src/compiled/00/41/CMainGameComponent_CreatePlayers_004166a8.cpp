@@ -10,9 +10,7 @@
 #pragma optimize("s", on)
 #include "engine/CNetworkClient.h"
 #include "engine/CPlayerManager.h"
-struct CGameDefinitionManager_Methods {
-    static CGameDefinitionManager& __fastcall Get();    // 0x0044C6B0
-};
+class CGameDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 struct CPlayerManager_Methods : CPlayerManager {
     void CreatePlayers();                                // 0x0044A530
 };
@@ -32,7 +30,7 @@ protected:
 };
 void CMainGameComponent::CreatePlayers()
 {
-    const CGameDefinitionManager& definitions = CGameDefinitionManager_Methods::Get();
+    const CGameDefinitionManager& definitions = CGameDefinitionManager::Get();
     PPlayerManager->CreatePlayers();
     if (!Client.InitialiseAsLocal(this) && Client.IsValid())
         Client.Uninitialise();

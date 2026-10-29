@@ -59,7 +59,7 @@ struct CChangingStateComponent : IPrimary_0054a990, CObserver, ISecondaryB_0054a
     void ChangeState(unsigned long state);               // 0x0052CF40
 };
 namespace NUISystem { class CAction; }
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v000() {} virtual void v001() {}
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
     virtual void v003() {} virtual void v004() {}
@@ -72,8 +72,8 @@ struct CFrontEndManager {
     virtual void v025() {} virtual void v026() {} virtual void v027() {} virtual void v028() {} virtual void v029() {}
     virtual void v030() {} virtual void v031() {} virtual void v032() {}
     virtual long GetLastInputResult();                   // slot 33 (+0x84)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 struct CSliderValue { unsigned char _pad[8]; float Value; };
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };
 struct CSliderTargetRef { CSliderTarget* Target; };
@@ -135,13 +135,13 @@ void CSlider::ChangeState(unsigned long state)
 {
     switch (state) {
     case 0:
-        if (CFrontEndManager::GetInstance()->GetLastInputResult() == 1) {
+        if (CManager::GetInstance()->GetLastInputResult() == 1) {
             OldValue = Value;
             Value = StartValue;
             if (Differs(OldValue, Value)) {
                 for (unsigned int i = 0; i < Actions.size(); ++i) {
                     Actions[i]->PTarget->Target->Value->Value = Value.X;
-                    CFrontEndManager::GetInstance()->ExecuteAction(Actions[i]);
+                    CManager::GetInstance()->ExecuteAction(Actions[i]);
                 }
                 Move = true;
             }
@@ -151,7 +151,7 @@ void CSlider::ChangeState(unsigned long state)
         CChangingStateComponent::ChangeState(state);
         break;
     case 3:
-        CFrontEndManager::GetInstance()->AddObserver(this);
+        CManager::GetInstance()->AddObserver(this);
         ObserveEvent(5);
         ObserveEvent(4);
         ObserveEvent(0x14);
@@ -169,7 +169,7 @@ void CSlider::ChangeState(unsigned long state)
         CChangingStateComponent::ChangeState(state);
         break;
     default:
-        CFrontEndManager::GetInstance()->RemoveObserver(this);
+        CManager::GetInstance()->RemoveObserver(this);
         CChangingStateComponent::ChangeState(state);
         break;
     }
@@ -192,12 +192,12 @@ void CObserver::ObserveEvent(long e) { Log((int)e); }
 CRGBColour CComponentPrimary_0054a990::GetColour() const { CRGBColour c; c.B = 1; c.G = 2; c.R = 3; c.A = 0xff; return c; }
 void CComponentPrimary_0054a990::ChangeColour(const CRGBColour& c, float t, bool linear) { g_fadeAlpha = c.A; g_fadeR = c.R; g_fadeTime = t; g_fadeLinear = linear; }
 void CChangingStateComponent::ChangeState(unsigned long s) { g_baseState = s; }
-void CFrontEndManager::AddObserver(CObserver* o) { g_added = o; }
-void CFrontEndManager::RemoveObserver(CObserver* o) { g_removed = o; }
-void CFrontEndManager::ExecuteAction(const CCountedPointer<NUISystem::CAction>&) { ++g_executed; }
-long CFrontEndManager::GetLastInputResult() { return g_inputResult; }
-static CFrontEndManager g_mgr;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_mgr; }
+void NUISystem::CManager::AddObserver(CObserver* o) { g_added = o; }
+void NUISystem::CManager::RemoveObserver(CObserver* o) { g_removed = o; }
+void NUISystem::CManager::ExecuteAction(const CCountedPointer<NUISystem::CAction>&) { ++g_executed; }
+long NUISystem::CManager::GetLastInputResult() { return g_inputResult; }
+static NUISystem::CManager g_mgr;
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return &g_mgr; }
 void NUISystem::CSlider::UpdateValue() { ++g_updates; }
 static int fails = 0;
 static void Check(bool c, int line) { if (!c) { std::printf("fail line %d\n", line); ++fails; } }

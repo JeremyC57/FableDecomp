@@ -24,12 +24,18 @@ class CTCOnHeroPush { public:
     bool IsAngry() const;                                      // 0x007bba50
 };
 
-struct CInterfaceMap {
-    struct Entry { fable_i32 Type; void* Component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
     Entry* First;
     Entry* Last;
-    Entry* LowerBound(const fable_i32* type);                 // 0x004365b0
+    const Entry* LowerBound(const ETCInterfaceType& type) const;                 // 0x004365b0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 // CThingAICreature's generated header leaves this component-map region opaque.
 // The adapter names the two native regions without inventing a second creature layout.
@@ -38,12 +44,12 @@ struct CThingAICreatureInterfaceAccess : CThingAICreature {
         fable_u32* presentBits = (fable_u32*)((char*)this + 0x20);
         if (!(presentBits[type >> 5] & (1u << (type & 31))))
             return false;
-        fable_i32 key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = (CInterfaceMap*)((char*)this + 0x44);
-        CInterfaceMap::Entry* it = map->LowerBound(&key);
-        if (it == map->Last || type < it->Type)
+        const CInterfaceMap::Entry* it = map->LowerBound(key);
+        if (it == map->Last || type < it->first)
             it = map->Last;
-        *out = (T*)it->Component;
+        *out = (T*)((void*)it->second);
         return true;
     }
 };

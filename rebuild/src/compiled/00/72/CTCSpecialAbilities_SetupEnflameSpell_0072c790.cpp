@@ -31,12 +31,17 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first; SEntry* last; SEntry* end;
-    SEntry* LowerBound(const long& key);                // 0x0040F020
-    const SEntry* LowerBound(const long& key) const;    // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& key);                // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& key) const;    // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -117,19 +122,19 @@ bool CTCSpecialAbilities::SetupEnflameSpell()
 {
     CTCInventory* inventory;
     if (Creature->TCBits[0x46 >> 5] & (1UL << (0x46 & 31))) {
-        long key = 0x46;
+        ETCInterfaceType key = (ETCInterfaceType)(0x46);
         CInterfaceMap* map = &Creature->Interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(key);
-        inventory = (CTCInventory*)(it == map->last || 0x46 < it->type ? map->last : it)->component;
+        inventory = (CTCInventory*)(it == map->last || 0x46 < it->first ? map->last : it)->second;
     }
     CThing* weapon = inventory->GetThingInPrimarySlot();
     CThing* target = 0;
     bool lock = false;
     if (Creature->TCBits[8 >> 5] & (1UL << (8 & 31))) {
-        long key = 8;
+        ETCInterfaceType key = (ETCInterfaceType)(8);
         const CInterfaceMap* map = &Creature->Interfaces;
         const CInterfaceMap::SEntry* it = map->LowerBound(key);
-        CTCCombat* combat = (CTCCombat*)(it == map->last || 8 < it->type ? map->last : it)->component;
+        CTCCombat* combat = (CTCCombat*)(it == map->last || 8 < it->first ? map->last : it)->second;
         target = combat->GetCurrentTarget();
         if (target && !target->Dead && (target->Flags6c & 8) && (Creature->Flags6c & 0x20))
             lock = Creature->PeekPlayer().LockFlag;

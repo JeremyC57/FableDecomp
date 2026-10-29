@@ -53,11 +53,16 @@ bool CDefClassBase::GetSubDef(CSoundDefPtr* out)
 }
 #pragma auto_inline(on)
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first; SEntry* last; SEntry* end;
-    SEntry* LowerBound(const long& key);            // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& key);            // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CTCAI { void PlaySound(const unsigned char& sound, const CSoundInit& init, long a, long b); };   // 0x0066ACE0
 class CThing { public:
     virtual void v00();
@@ -150,10 +155,10 @@ class CThing { public:
     template <class T> __forceinline bool GetInterface(long type, T** out)
     {
         if (TCBits[type >> 5] & (1UL << (type & 31))) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &Interfaces;
             CInterfaceMap::SEntry* it = map->LowerBound(key);
-            *out = (T*)(it == map->last || type < it->type ? map->last : it)->component;
+            *out = (T*)(it == map->last || type < it->first ? map->last : it)->second;
             return true;
         }
         return false;

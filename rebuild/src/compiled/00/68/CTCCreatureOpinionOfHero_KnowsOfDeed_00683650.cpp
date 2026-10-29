@@ -12,12 +12,18 @@
 // sits at +0x342 (as in the landed SetHeroOpinionEnemy 0x006815D0 and KnowsOfDeed 0x00681AE0), hence a local model.
 // Retail CThing: interface bitset +0x20, map +0x44, Dead bit +0x91.
 struct CTCBaseInterface;
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    struct SEntry { long type; CTCBaseInterface* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20
@@ -29,12 +35,12 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)((CTCBaseInterface*)it->second);
             return true;
         }
         return false;
@@ -76,9 +82,9 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
 static __forceinline CTCBaseInterface* GetTC(CThing* thing, long type)
 {
     CInterfaceMap* map = &thing->m_interfaces;
-    long key = type;
-    CInterfaceMap::SEntry* it = map->LowerBound(&key);
-    return ((it == map->last || type < it->type) ? map->last : it)->component;
+    ETCInterfaceType key = (ETCInterfaceType)(type);
+    CInterfaceMap::SEntry* it = map->LowerBound(key);
+    return ((CTCBaseInterface*)((it == map->last || type < it->first) ? map->last : it)->second);
 }
 static __forceinline CTCHeroOpinionDeedLog* GetDeedLog(CThing* thing)
 {

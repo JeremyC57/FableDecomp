@@ -2,7 +2,7 @@
 // Leaf: ??1CList
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0053B7F0, 302 bytes, frame-pointer size TU (optimize "y" off, "s" on).
 // Callees: CComponent::GetDef (slot 108) 0x00530EC0, the STLport list find 0x0053C8D0 (same-TU body, the landed 0x00536A30
-// Die model) and erase 0x0053C7B9 on the registry 0x013B8A98, CFrontEndManager::GetInstance 0x0041E5F2 + slot 5,
+// Die model) and erase 0x0053C7B9 on the registry 0x013B8A98, CManager::GetInstance 0x0041E5F2 + slot 5,
 // ~list<CCountedPointer<CAction> > 0x005357E0, operator delete 0x00BFE9BC, free 0x00BFEA14, ~CCountedPointer 0x00429160,
 // the states vector dtor 0x0053CD46, ~CComponent 0x0052CCF0.
 // Shape: the find body in the TU puts the `this` temporary's store after the argument pushes and the erase result in the
@@ -72,12 +72,12 @@ struct CInputListener {                            // the input-listener base at
     virtual void v00();
     unsigned char _pad04[0x14 - 0x04];
 };
-class CFrontEndManager {
+namespace NUISystem { class CManager { public:
 public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void RemoveInputListener(CInputListener* listener);   // slot 5 (+0x14)
-};
+}; }
 namespace NUISystem {
 class CAction;
 struct CComponentRoot {                            // the primary vtable at +0
@@ -146,7 +146,7 @@ CList::~CList()
         if (it != g_ListRegistry.end())
             it = g_ListRegistry.erase(it);
     }
-    CFrontEndManager::GetInstance()->RemoveInputListener(this);
+    CManager::GetInstance()->RemoveInputListener(this);
     if (CActionList* p = PActionsOnInactive) { p->CActionList::~CActionList(); operator delete(p); }
     if (CActionList* p = PActionsOnSelected) { p->CActionList::~CActionList(); operator delete(p); }
 }

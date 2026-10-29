@@ -12,13 +12,18 @@
 // Shape: DiesOff read once into a bool local (bl); the TC 0x47 test is the out-parameter const GetInterface (component left in eax), the shot TC through the
 //   non-const one; the update path is the nested success path returning false, the kill block laid out last.
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CTCDieOffHold_47 {                       // the component behind ETCInterfaceType 0x47
     unsigned char _pad00[0x10];
     long HoldCount;                             // +0x10
@@ -48,22 +53,22 @@ public:
     }
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &Components;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        if (it == map->last || interfaceType < it->first)
             it = map->last;
-        return (T*)it->component;
+        return (T*)it->second;
     }
     template<class T> __forceinline bool GetInterface(const T** out, long interfaceType) const
     {
         if (UsingComponents[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &Components;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *out = (const T*)it->component;
+            *out = (const T*)it->second;
             return true;
         }
         return false;

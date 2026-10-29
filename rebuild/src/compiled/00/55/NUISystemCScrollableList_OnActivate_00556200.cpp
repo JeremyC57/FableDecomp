@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00556200, length 160 bytes (147 + int3 padding).
 // Vtable: 0x0124A72C (NUISystem::CScrollableList) slot 140.
 // Callees: CScrollableList::UpdateVisibleList(float, float) @ 0x00555A90,
-// NUISystem::CFrontEndManager::GetInstance @ 0x0041E5F2 (`__fastcall`, three times), the input-client
+// NUISystem::CManager::GetInstance @ 0x0041E5F2 (`__fastcall`, three times), the input-client
 // base's virtual slot 3 (+0xc) three times (events 0x25, 0x24, 4), the manager's slots 2 (+0x8) and 5 (+0x14).
 // Shape: the input client is a secondary base at +4, so its virtuals run with `this` re-based (`lea esi,
 // [edi+4]`) and the arrow components convert to it with VC's null test (`lea esi,[eax+4]` / `xor esi,esi`);
@@ -25,12 +25,12 @@ class CComponent : public CComponentBase, public CInputClient { public:
     unsigned char _pad08[0x164];                     // +0x08
 };
 
-class CFrontEndManager { public:
+class CManager { public:
     virtual void m00(); virtual void m01();
     virtual void AddInputClient(CInputClient* client);       // slot 2 (+0x8)
     virtual void m03(); virtual void m04();
     virtual void SetNavigationClient(CInputClient* client);  // slot 5 (+0x14)
-    static CFrontEndManager* __fastcall GetInstance();       // 0x0041E5F2
+    static CManager* __fastcall GetInstance();       // 0x0041E5F2
 };
 
 class CScrollableList : public CComponent { public:
@@ -48,9 +48,9 @@ void CScrollableList::OnActivate()
     AddInputEvent(0x25);
     AddInputEvent(0x24);
     AddInputEvent(4);
-    CFrontEndManager::GetInstance()->AddInputClient(this);
-    CFrontEndManager::GetInstance()->SetNavigationClient(PUpArrow);
-    CFrontEndManager::GetInstance()->SetNavigationClient(PDownArrow);
+    CManager::GetInstance()->AddInputClient(this);
+    CManager::GetInstance()->SetNavigationClient(PUpArrow);
+    CManager::GetInstance()->SetNavigationClient(PDownArrow);
 }
 
 }

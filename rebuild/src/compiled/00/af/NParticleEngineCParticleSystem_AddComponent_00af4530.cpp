@@ -61,11 +61,13 @@ template <class T> struct CCountedPointer {
     void Reset(T* object);                         // 0x00AF6010 for T = CPSCBase
 };
 
+}   // the retail root is file scope
 class CBaseClass {
 public:
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                         // 0x0099A2E0
+    CBaseClass();                                  // 0x0099A2D0 ??0CBaseClass@@QAE@XZ
+    virtual ~CBaseClass();                         // 0x0099A2E0 ??1CBaseClass@@UAE@XZ
 };
+namespace NParticleEngine {
 
 class CComponentInstance : public CBaseClass {     // 0x14 bytes, vtable 0x0129F478
 public:

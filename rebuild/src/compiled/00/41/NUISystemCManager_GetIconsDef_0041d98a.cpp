@@ -35,24 +35,24 @@ template<class T> class CDefPointer { public:
 class CDefClassBase;
 namespace NUISystem { class CUIMiscThingsDef; class CUIIconsDef; }
 class CDefinitionManager { public:
- CDefPointer<CDefClassBase> GetPDefFromGlobalIndex(long); //009ad9e0
+ CDefPointer<const CDefClassBase> GetPDefFromGlobalIndex(long) const; //009ad9e0
  long GetGlobalIndexFromClassIndex(const CCharString&,long)const; //009ad390
  bool GetDef(long,CDefPointer<NUISystem::CUIMiscThingsDef>*); //0042b312
  bool GetDef(long,CDefPointer<NUISystem::CUIIconsDef>*); //0042b374
 };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 #pragma auto_inline(off)
 bool CDefinitionManager::GetDef(long index,CDefPointer<NUISystem::CUIMiscThingsDef>* out){
- if(index>0){ CDefPointer<CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
+ if(index>0){ CDefPointer<const CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
   if(out->PObject!=value.PObject){if(out->PObject){out->PObject->RemoveReference();out->PObject=0;}out->PObject=value.PObject;if(out->PObject)out->PObject->AddReference();}return true;
  }}return false;
 }
 bool CDefinitionManager::GetDef(long index,CDefPointer<NUISystem::CUIIconsDef>* out){
- if(index>0){ CDefPointer<CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
+ if(index>0){ CDefPointer<const CDefClassBase> value=GetPDefFromGlobalIndex(index); if(value.PObject){
   if(out->PObject!=value.PObject){if(out->PObject){out->PObject->RemoveReference();out->PObject=0;}out->PObject=value.PObject;if(out->PObject)out->PObject->AddReference();}return true;
  }}return false;
 }
 #pragma auto_inline(on)
-CDefinitionManager* __fastcall GetDefinitionManager(); //0044c6b0
 namespace NUISystem {
 class CManager { public:
  // Explicit native member projection: PDB donor+88 is retail+64 (0041d8f3).
@@ -75,8 +75,8 @@ CDefPointer<NUISystem::CUIIconsDef> NUISystem::CManager::GetIconsDef(){
    long index; { CCharString name("UI_ICONS_DEF",-1); index=m_pDefinitionManager->GetGlobalIndexFromClassIndex(name,1); }
    m_pDefinitionManager->GetDef(index,&result);
  } else {
-   long index; { CCharString name("UI_ICONS_DEF",-1); index=GetDefinitionManager()->GetGlobalIndexFromClassIndex(name,1); }
-   GetDefinitionManager()->GetDef(index,&result);
+   long index; { CCharString name("UI_ICONS_DEF",-1); index=::CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name,1); }
+   ::CGameDefinitionManager::Get().GetDef(index,&result);
  }
  return result;
 }

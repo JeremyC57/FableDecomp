@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00548B50, 682 bytes, plain `ret`; two jump tables (0x2B..0x2F; 0x54..0x143 via a byte index table).
 // Callees: CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0 and the profile getters (each `UseNewProfileValues ? <x>NewProfile : <x>`;
 //   manifest labels them IsCameraResetting / PeekConnectedToTrackNode): see the declarations; TutorialSystemEnabled and NewProfileToUseWASD
-//   are read inline. CFrontEndManager::GetInstance 0x0041E5F2, its PlaySound (+0xa0) and GetDef (+0xa8, CDefPointer by value).
+//   are read inline. CManager::GetInstance 0x0041E5F2, its PlaySound (+0xa0) and GetDef (+0xa8, CDefPointer by value).
 // Label correction: catalog class "CSlider" -- the layout (SelectedChild +0x15c, PreviouslySelectedChild +0x160, Move +0x168,
 //   LastInputTime +0x180, PDefAction +0x188, PAcceptButton +0x198) is NUISystem::CTextSlider (landed Initialise 0x00549230).
 // Model: the landed CSlider::AdjustValueToProfile 0x0054A6F0 (button / front-end manager / def pointer); profile field names from Ego_r.pdb.
@@ -109,7 +109,7 @@ class CUserProfileManager { public:                     // retail = Ego_r.pdb wi
     bool IsShowTargetingStatus() const;          // 0x00548740
     bool IsTutorialSystemEnabled() const { return UseNewProfileValues ? TutorialSystemEnabledNewProfile : TutorialSystemEnabled; }
 };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v000(); virtual void v001();
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
     virtual void v003(); virtual void v004();
@@ -126,8 +126,8 @@ struct CFrontEndManager {
     virtual void PlaySound(const CSoundName& sound, bool a);   // slot 40 (+0xa0)
     virtual void v041();
     virtual CDefPointer<CFrontEndManagerDef> GetDef();   // slot 42 (+0xa8)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 namespace NUISystem {
 class CTextSlider { public:
     void* __vftable;
@@ -183,7 +183,7 @@ void CTextSlider::AdjustValueToProfile()
             colour.A = 0xff;
             PAcceptButton->ChangeColour(colour, 0.2f, false);
         }
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetDef()->TextSliderSound, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetDef()->TextSliderSound, true);
     }
 }
 }

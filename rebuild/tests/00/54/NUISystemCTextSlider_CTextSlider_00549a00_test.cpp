@@ -85,20 +85,20 @@ class CAction { public:
     CSliderTargetRef* PTarget;                   // +0x04
 };
 }
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
     virtual void ExecuteAction(const CCountedPointer<NUISystem::CAction>& action);   // slot 14 (+0x38)
-};
+}; }
 namespace NUISystem {
 CTextSlider::~CTextSlider()
 {
     if (StartSelectedChild != SelectedChild) {
         for (unsigned int i = 0; i < Actions.size(); ++i) {
             Actions[i]->PTarget->Target->Value->Selected = StartSelectedChild;
-            CFrontEndManager::GetInstance()->ExecuteAction(Actions[i]);
+            CManager::GetInstance()->ExecuteAction(Actions[i]);
         }
         Move = true;
     }
@@ -119,19 +119,19 @@ void CTextSlider::v000() {}
 void CAction::v00() {}
 }
 static const NUISystem::CAction* g_lastExecuted = 0;
-struct CTestFrontEnd : CFrontEndManager {
+struct CTestFrontEnd : NUISystem::CManager {
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {}
     virtual void v06() {} virtual void v07() {} virtual void v08() {} virtual void v09() {} virtual void v10() {} virtual void v11() {}
     virtual void v12() {} virtual void v13() {}
     virtual void ExecuteAction(const CCountedPointer<NUISystem::CAction>& a) { ++g_executed; g_lastExecuted = a.Data; }
 };
 static CTestFrontEnd g_fe;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_fe; }
-void CFrontEndManager::v00() {} void CFrontEndManager::v01() {} void CFrontEndManager::v02() {} void CFrontEndManager::v03() {}
-void CFrontEndManager::v04() {} void CFrontEndManager::v05() {} void CFrontEndManager::v06() {} void CFrontEndManager::v07() {}
-void CFrontEndManager::v08() {} void CFrontEndManager::v09() {} void CFrontEndManager::v10() {} void CFrontEndManager::v11() {}
-void CFrontEndManager::v12() {} void CFrontEndManager::v13() {}
-void CFrontEndManager::ExecuteAction(const CCountedPointer<NUISystem::CAction>&) {}
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return &g_fe; }
+void NUISystem::CManager::v00() {} void NUISystem::CManager::v01() {} void NUISystem::CManager::v02() {} void NUISystem::CManager::v03() {}
+void NUISystem::CManager::v04() {} void NUISystem::CManager::v05() {} void NUISystem::CManager::v06() {} void NUISystem::CManager::v07() {}
+void NUISystem::CManager::v08() {} void NUISystem::CManager::v09() {} void NUISystem::CManager::v10() {} void NUISystem::CManager::v11() {}
+void NUISystem::CManager::v12() {} void NUISystem::CManager::v13() {}
+void NUISystem::CManager::ExecuteAction(const CCountedPointer<NUISystem::CAction>&) {}
 int main()
 {
     using NUISystem::CTextSlider; using NUISystem::CAction;

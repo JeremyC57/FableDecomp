@@ -1,7 +1,7 @@
 // NUISystem::CTextSlider::~CTextSlider() -- if the selection moved, push the starting selection back into every action's target and re-run the actions; delete the back/select action lists; destroy the action vector and the draggable base
 // Leaf: ??1CTextSlider@NUISystem
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00549A00, 280 bytes (+8 int3), `ret`.
-// Callees: CFrontEndManager::GetInstance() @ 0x0041E5F2 (static, `__fastcall`) and its virtual slot 14 (+0x38,
+// Callees: CManager::GetInstance() @ 0x0041E5F2 (static, `__fastcall`) and its virtual slot 14 (+0x38,
 //   ExecuteAction), list<CCountedPointer<CAction> >::clear() @ 0x005356A0 (manifest "remove_if<...>" is propagated),
 //   free @ 0x00BFEA14, operator delete @ 0x00BFE9BC, the action range destroyer @ 0x0054A1C0 (`__fastcall` first/last +
 //   allocator reference; manifest "_Destroy_range<...>" names another instantiation), NUISystem::CDraggableInto::
@@ -94,20 +94,20 @@ class CAction { public:
     CSliderTargetRef* PTarget;                   // +0x04
 };
 }
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
     virtual void ExecuteAction(const CCountedPointer<NUISystem::CAction>& action);   // slot 14 (+0x38)
-};
+}; }
 namespace NUISystem {
 CTextSlider::~CTextSlider()
 {
     if (StartSelectedChild != SelectedChild) {
         for (unsigned int i = 0; i < Actions.size(); ++i) {
             Actions[i]->PTarget->Target->Value->Selected = StartSelectedChild;
-            CFrontEndManager::GetInstance()->ExecuteAction(Actions[i]);
+            CManager::GetInstance()->ExecuteAction(Actions[i]);
         }
         Move = true;
     }

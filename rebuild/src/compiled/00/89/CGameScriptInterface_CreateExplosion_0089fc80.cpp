@@ -39,9 +39,7 @@ struct CThing_Retail {
 struct CDefinitionManager_Retail {
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-struct CGameDefinitionManager_Retail {
-    static CDefinitionManager_Retail& Get();       // 0x0044C6B0
-};
+class CGameDefinitionManager : public CDefinitionManager_Retail { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 class CWorld; class CMainGameComponent; class CDisplayEngine; struct CPlayerManager_Retail; class CThingSearchTools;
 CThing_Retail* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos, const C3DVector& dir);   // 0x0080C500
 CThing_Retail* __fastcall CreateExplosionThing(long defIndex, const C3DVector& pos);                         // 0x0080C460
@@ -58,7 +56,7 @@ class CGameScriptInterface { public:
 
 CScriptThing CGameScriptInterface::CreateExplosion(const CCharString& defName, const C3DVector& pos, const C3DVector* dir, CCharString scriptName) const
 {
-    long defIndex = CGameDefinitionManager_Retail::Get().GetDefGlobalIndexFromName(defName);
+    long defIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(defName);
     if (defIndex > 0) {
         CThing_Retail* t = dir ? CreateExplosionThing(defIndex, pos, *dir) : CreateExplosionThing(defIndex, pos);
         if (t && !t->m_dead) {

@@ -4,7 +4,7 @@
 //   the sound. Record the input time, and restart the global menu timer unless the parent menu's def suppresses it.
 // Leaf: ?GoForward@CMenuEntry@NUISystem
 // Retail: Fable.exe @ 0x0053D720, 592 bytes, plain `ret`.
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall) and its slots 24 (+0x60), 27 (+0x6c), 40 (+0xa0 play a
+// Callees: CManager::GetInstance 0x0041E5F2 (__fastcall) and its slots 24 (+0x60), 27 (+0x6c), 40 (+0xa0 play a
 //   sound by def member) and 42 (+0xa8 GetDef by value); own slot 131 (+0x20c, run an action list); child component slots
 //   48 (+0xc0), 65 (+0x104 GetType) and 108 (+0x1b0 GetDef by value); the time source 0x009E1BC0 (returns double) stored
 //   to the double 0x013B8AA0.
@@ -69,8 +69,8 @@ class CAction;
 struct CActionParam_;
 }
 
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -83,7 +83,7 @@ struct CFrontEndManager {
     virtual void PlaySound(const CSoundName& sound, bool a);   // slot 40 (+0xa0)
     virtual void v041();
     virtual CDefPointer<CFrontEndManagerDef> GetDef();   // slot 42 (+0xa8)
-};
+}; }
 
 namespace NUISystem {
 
@@ -166,7 +166,7 @@ class CMenuEntry { public:
     CRetailList<CAction>*     PPreActions;            // +0x1b0
     __forceinline void PlayForwardSound()
     {
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetDef()->ForwardSound, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetDef()->ForwardSound, true);
     }
     void GoForward();
 };
@@ -184,11 +184,11 @@ void CMenuEntry::GoForward()
         return;
     if (PUIActionParams) {
         for (_List_iterator<CActionParam_*> it = PUIActionParams->begin(); it != PUIActionParams->end(); ++it)
-            CFrontEndManager::GetInstance()->UseUIActionParam(*it);
+            CManager::GetInstance()->UseUIActionParam(*it);
     }
     if (PThingActionParams) {
         for (_List_iterator<long> it = PThingActionParams->begin(); it != PThingActionParams->end(); ++it)
-            CFrontEndManager::GetInstance()->UseThingActionParam(*it);
+            CManager::GetInstance()->UseThingActionParam(*it);
     }
     if (IsAvailable) {
         ExecuteActions(PPreActions);

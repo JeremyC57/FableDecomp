@@ -232,29 +232,35 @@ struct CTCGUI {
     virtual std::vector<CComponent*>* GetComponents();  // slot 82 (+0x148)
 };
 
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();  // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();  // 0x0041E5F2
     CComponent* CreateComponent(const CCharString& name, CComponent* parent);   // 0x0041DB1D
-};
+}; }
 
-struct CInterfaceMap {
-    struct SEntry { long type; void* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char  _pad00[0x20];
     unsigned long  UsingComponents[9];                  // +0x20
     CInterfaceMap  Interfaces;                          // +0x44
     template<class T> __forceinline T* GetTC(long id)
     {
-        long key = id;
+        ETCInterfaceType key = (ETCInterfaceType)(id);
         CInterfaceMap* m = &Interfaces;
-        CInterfaceMap::SEntry* p = m->LowerBound(&key);
-        if (p == m->last || id < p->type)
+        CInterfaceMap::SEntry* p = m->LowerBound(key);
+        if (p == m->last || id < p->first)
             p = m->last;
-        return (T*)p->component;
+        return (T*)((void*)p->second);
     }
 };
 
@@ -303,7 +309,7 @@ void CTCHeroOnlineScoreboard::ShowScoreboard()
     TaskState = 100;
     if (Thing->UsingComponents[0] & 0x20000) {
         CTCGUI* gui = Thing->GetTC<CTCGUI>(0x11);
-        CFrontEndManager* manager = CFrontEndManager::GetInstance();
+        NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
         PConnectingMessage = manager->CreateComponent("UI_CONNECTING", 0);
         PConnectingMessage->Initialise();
         PConnectingMessage->SetVisible(false);

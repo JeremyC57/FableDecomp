@@ -1,6 +1,6 @@
 // NUISystem::CTextSlider::RevertValue() -- restore the original selection, push it into every action's target and re-run the actions
 // Retail: Fable.exe (TLC, VC7.1) @ 0x005491A0, 135 bytes (+9 int3). __fastcall, `ret`.
-// Callees: CFrontEndManager::GetInstance() 0x0041E5F2 (static); the front-end manager's virtual slot 14 (+0x38), called with
+// Callees: CManager::GetInstance() 0x0041E5F2 (static); the front-end manager's virtual slot 14 (+0x38), called with
 //          each action (descriptive name ExecuteAction).
 // Shape: `SelectedChild = PreviouslySelectedChild = StartSelectedChild = OriginalSelectedChild;` (stores +0x164, +0x160,
 //        +0x15C); `for (unsigned i = 0; i < Actions.size(); ++i)` with operator[] as `*(begin() + i)` (the scaled index
@@ -71,20 +71,20 @@ class CAction { public:
     CSliderTargetRef* PTarget;                   // +0x04
 };
 }
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13();
     virtual void ExecuteAction(const CCountedPointer<NUISystem::CAction>& action);   // slot 14 (+0x38)
-};
+}; }
 namespace NUISystem {
 void CTextSlider::RevertValue()
 {
     SelectedChild = PreviouslySelectedChild = StartSelectedChild = OriginalSelectedChild;
     for (unsigned int i = 0; i < Actions.size(); ++i) {
         Actions[i]->PTarget->Target->Value->Selected = OriginalSelectedChild;
-        CFrontEndManager::GetInstance()->ExecuteAction(Actions[i]);
+        CManager::GetInstance()->ExecuteAction(Actions[i]);
     }
     Move = true;
 }

@@ -493,7 +493,7 @@ FABLE_STATIC_ASSERT(offsetof(CDefinitionManager, RecompiledDefs) == 0xe0);
 #endif // FABLE_ENGINE_CDEFINITIONMANAGER_H
 
 struct DefinitionManagerMethods:CDefinitionManager{long GetDefGlobalIndexFromName(const CCharString&)const;}; //009AD410
-DefinitionManagerMethods& GetDefinitionManager(); //0044C6B0
+class CGameDefinitionManager : public DefinitionManagerMethods { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 CThingNative* __fastcall CreateExperienceOrbThing(long,const C3DVector&); //00779E90
 #ifndef FABLE_ENGINE_CTCBASE_H
 #define FABLE_ENGINE_CTCBASE_H
@@ -531,7 +531,7 @@ FABLE_STATIC_ASSERT(offsetof(ExperienceOrbMethods,DecayOverTime)==28);
 static __forceinline void GetOrbInterface(CThingNative* thing,ExperienceOrbMethods** out){if(thing->UsingComponents[3]&0x200){ComponentMap* map=&thing->Components;ComponentEntry* it=map->LowerBound(105);ComponentEntry* end=map->Finish;*out=static_cast<ExperienceOrbMethods*>((it==end||it->Type>105?end:it)->Component);}}
 struct CGameScriptInterfaceMethods:CGameScriptInterface{ScriptMethods CreateExperienceOrb(const C3DVector&,long)const;};
 ScriptMethods CGameScriptInterfaceMethods::CreateExperienceOrb(const C3DVector& position,long scale)const{
- long definition;{CCharString name("THING_EXPERIENCE_ORB",-1);definition=GetDefinitionManager().GetDefGlobalIndexFromName(name);}
+ long definition;{CCharString name("THING_EXPERIENCE_ORB",-1);definition=::CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);}
  if(definition>0){CThingNative* thing=CreateExperienceOrbThing(definition,position);if(thing&&!thing->Dead){ExperienceOrbMethods* orb;GetOrbInterface(thing,&orb);orb->SetExperiencePoints(scale);orb->DecayOverTime=false;return thing->GetScriptThing();}}
  return ScriptMethods();}
 
@@ -625,7 +625,7 @@ CCharString::CCharString(const char* p,long n):storage_(new CCharStringData){if(
 CCharString::~CCharString(){if(storage_&&!--storage_->owners){delete[] storage_->text;delete storage_;StringAlive=false;}}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
 static DefinitionManagerMethods Manager;
-DefinitionManagerMethods& GetDefinitionManager(){++ManagerCalls;if(!StringAlive)Bad=true;return Manager;}
+CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() {++ManagerCalls;if(!StringAlive)Bad=true;return (CGameDefinitionManager&)(Manager);}
 long DefinitionManagerMethods::GetDefGlobalIndexFromName(const CCharString& name)const{++LookupCalls;if(strcmp((const char*)name,"THING_EXPERIENCE_ORB")||!StringAlive||this!=&Manager)Bad=true;return Definition;}
 CThingNative* __fastcall CreateExperienceOrbThing(long id,const C3DVector& pos){++CreateCalls;if(StringAlive||id!=Definition||&pos!=ExpectedPosition)Bad=true;return CreatedThing;}
 ComponentEntry* ComponentMap::LowerBound(const long& key){++MapCalls;if(key!=105)Bad=true;for(ComponentEntry* p=Start;p!=Finish;++p)if(p->Type>=key)return p;return Finish;}

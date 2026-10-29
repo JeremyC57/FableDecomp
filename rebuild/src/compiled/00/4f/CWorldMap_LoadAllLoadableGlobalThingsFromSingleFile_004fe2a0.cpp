@@ -79,7 +79,8 @@ class CDiskFileWin32 : public CBase { public:                        // vtable 0
     ~CDiskFileWin32() { Close(); }
 };
 
-struct CBaseClassNonCopyable {
+class CBaseClassNonCopyable {
+protected:
     CBaseClassNonCopyable();                           // 0x0099A2F0
     virtual ~CBaseClassNonCopyable();
 };

@@ -62,10 +62,10 @@ struct CCountedFontBank {
     CFontBank* operator->() const { return m_pObject; }
 };
 
-struct CFrontEndManager_Data {
+class CManager { public:
     unsigned char _pad[0x10];
     CCountedFontBank m_pFontBank;           // +0x10
-    static CFrontEndManager_Data* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 
 class CComponentContainer { public:
@@ -217,7 +217,7 @@ class CComponentContainer { public:
 
 void CComponentContainer::AddTextLine(const CWideString& text, CRGBColour colour, CCharString fontName, long flags)
 {
-    CFrontEndManager_Data* frontEnd = CFrontEndManager_Data::GetInstance();
+    CManager* frontEnd = CManager::GetInstance();
     CFont* font = 0;
     if (fontName.m_pData != 0 && fontName.m_pData->m_length != 0) {
         CCountedFontBank bank = frontEnd->m_pFontBank;

@@ -9,12 +9,18 @@
 //        tested through ah: bits 9 and 8); each lookup is the inlined GetInterface (lower bound on the key word, end
 //        when absent); Dead is bit 0 of the +0x91 flag byte; the other thing is kept in ebp for both calls.
 class CThing;
-struct CInterfaceMap {                               // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
-    struct SEntry { long type; void* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                               // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);            // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);            // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCAssassinRush { public:                             // interface type 0xA9
     void SetThingCollisionPtr(CThing* thing);        // 0x004CBFB0
 };
@@ -34,12 +40,12 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
-            long type = wanted;
+            ETCInterfaceType type = (ETCInterfaceType)(wanted);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || wanted < it->type)
+            CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || wanted < it->first)
                 it = map->last;
-            *out = (T*)it->component;
+            *out = (T*)((void*)it->second);
             return true;
         }
         return false;

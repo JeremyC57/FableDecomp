@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068AE30, length 1106 bytes, `ret 8`.
 // Callees: CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap LowerBound @ 0x0040F020, CInputProcessGameBase::
 //   IsEventButtonPressed @ 0x00687A90 / IsEventButtonHeld @ 0x00687BD0 / IsEventButtonReleased @ 0x00687B30 /
-//   IsEventGameAction @ 0x00687CF0, NUISystem::CFrontEndManager::GetInstance @ 0x0041E5F2 (+ slot 0 SendEvent, slot 38
+//   IsEventGameAction @ 0x00687CF0, NUISystem::CManager::GetInstance @ 0x0041E5F2 (+ slot 0 SendEvent, slot 38
 //   +0x98, ScrollMenu @ 0x0041DA2D), CPlayerManager::GetMainPlayerNumber @ 0x00449700, CMainGameComponent::AddGameEvent
 //   @ 0x0041649C (on 0x013B86A0), CTCInventoryMap::PanMap @ 0x005FB140, CInputEvent::GetWheelDelta @ 0x00A03BB0,
 //   ceil @ 0x00689370, CProcessedInput::SetHandled @ 0x00A0D390, __security_check_cookie @ 0x00BFE9F9.
@@ -31,7 +31,7 @@ public:
 };
 float __cdecl ceil(float value);                   // 0x00689370
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
     virtual void SendEvent(long event);            // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -47,7 +47,7 @@ public:
     CMousePosition MousePosition;                  // +0xB0
     void SetMousePosition(CMousePosition& position) { MousePosition = position; }
     void ScrollMenu(long amount);                  // 0x0041DA2D
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
 struct CMemoryBuffer {
@@ -119,28 +119,28 @@ void CInputProcessInventoryMapScreen::ProcessInput(const CInputEvent& event, CPr
         map = hero->GetTC(0x1b);
     if (IsEventButtonPressed(event)) {
         if (IsEventGameAction(0x19, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1a);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1a);
         else if (IsEventGameAction(0x4c, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(5);
+            NUISystem::CManager::GetInstance()->SendEvent(5);
         else if (IsEventGameAction(0x58, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(6);
+            NUISystem::CManager::GetInstance()->SendEvent(6);
         else if (IsEventGameAction(0x59, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(7);
+            NUISystem::CManager::GetInstance()->SendEvent(7);
         else if (IsEventGameAction(0x25, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0);
+            NUISystem::CManager::GetInstance()->SendEvent(0);
         else if (IsEventGameAction(0x26, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(1);
+            NUISystem::CManager::GetInstance()->SendEvent(1);
         else if (IsEventGameAction(0x27, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(5);
+            NUISystem::CManager::GetInstance()->SendEvent(5);
         else if (IsEventGameAction(0x28, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(4);
+            NUISystem::CManager::GetInstance()->SendEvent(4);
         else
             return;
     } else if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(0x19, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1c);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1c);
         else if (IsEventGameAction(0x4c, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1d);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1d);
         else if (IsEventGameAction(0x48, event)) {
             CGameEvent closeEvent(0x1b);
             closeEvent.Player = (signed char)g_pMainGameComponent->PlayerManager->GetMainPlayerNumber();
@@ -149,21 +149,21 @@ void CInputProcessInventoryMapScreen::ProcessInput(const CInputEvent& event, CPr
             return;
     } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(0x19, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1f);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1f);
         else if (IsEventGameAction(0x4c, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x20);
+            NUISystem::CManager::GetInstance()->SendEvent(0x20);
         else if (IsEventGameAction(0x58, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(6);
+            NUISystem::CManager::GetInstance()->SendEvent(6);
         else if (IsEventGameAction(0x59, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(7);
+            NUISystem::CManager::GetInstance()->SendEvent(7);
         else if (IsEventGameAction(0x67, event)) {
             CMousePosition zoom(1.0f, 1.0f);
-            NUISystem::CFrontEndManager::GetInstance()->SetZoomDirection(zoom);
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0xc);
+            NUISystem::CManager::GetInstance()->SetZoomDirection(zoom);
+            NUISystem::CManager::GetInstance()->SendEvent(0xc);
         } else if (IsEventGameAction(0x66, event)) {
             CMousePosition zoom(-1.0f, -1.0f);
-            NUISystem::CFrontEndManager::GetInstance()->SetZoomDirection(zoom);
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0xd);
+            NUISystem::CManager::GetInstance()->SetZoomDirection(zoom);
+            NUISystem::CManager::GetInstance()->SendEvent(0xd);
         } else if (IsEventGameAction(0x6b, event)) {
             if (map)
                 map->PanMap(CMousePosition(0.0f, -1.0f));
@@ -180,10 +180,10 @@ void CInputProcessInventoryMapScreen::ProcessInput(const CInputEvent& event, CPr
             return;
     } else if (IsEventGameAction(0x47, event)) {
         CMousePosition position = GetMousePosition(event);
-        NUISystem::CFrontEndManager::GetInstance()->SetMousePosition(position);
-        NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x19);
+        NUISystem::CManager::GetInstance()->SetMousePosition(position);
+        NUISystem::CManager::GetInstance()->SendEvent(0x19);
     } else if (IsEventGameAction(0x65, event))
-        NUISystem::CFrontEndManager::GetInstance()->ScrollMenu((long)ceil(event.GetWheelDelta() * 0.008333334f));
+        NUISystem::CManager::GetInstance()->ScrollMenu((long)ceil(event.GetWheelDelta() * 0.008333334f));
     else
         return;
     processed.SetHandled();

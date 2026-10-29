@@ -75,11 +75,11 @@ static CDefStringTable_Retail g_defStringTable;
 static bool g_tutorialsEnabled = true;
 struct CUserProfileManager_Retail {
     bool m_hasActiveProfile; bool m_defaultTutorialsOn; bool m_profileTutorialsOn;
-    static CUserProfileManager_Retail& Get();
     bool AreTutorialsOn() const { return m_hasActiveProfile ? m_profileTutorialsOn : m_defaultTutorialsOn; }
 };
+class CUserProfileManager : public CUserProfileManager_Retail { public: static CUserProfileManager& __fastcall Get(); };   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 static CUserProfileManager_Retail g_profiles = { true, false, true };
-CUserProfileManager_Retail& CUserProfileManager_Retail::Get() { return g_profiles; }
+CUserProfileManager& __fastcall CUserProfileManager::Get() { return (CUserProfileManager&)(g_profiles); }
 static long g_curFrame = 100, g_maxFrame = 200;
 class CGameScriptInterface { public:
     CWorld*                    World;
@@ -106,7 +106,7 @@ static void setup(bool found, long extra)
 
 bool CGameScriptInterface::MsgIsTutorialClickedPast() const
 {
-    if (g_tutorialsEnabled && CUserProfileManager_Retail::Get().AreTutorialsOn()) {
+    if (g_tutorialsEnabled && CUserProfileManager::Get().AreTutorialsOn()) {
         long frame = GetCurrentWorldFrameForMessages();
         long maxFrame = GetMaxWorldFrameForMessages();
         CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;

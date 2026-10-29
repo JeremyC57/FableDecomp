@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00548760, 29 bytes (32 with padding), virtual, plain `ret`.
 // Vtable 0x01248A8C (NUISystem::CTextSlider) slot 140; Ego_r.pdb declares the protected virtual
 // `CTextSlider::OnActivate()` next to OnDeactivate (slot 141, 0x00548780: the same observer base's slot 4 with 0x19).
-// Callees: the observer base's slot 3 (+0xc) with 0x19, CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall), the
+// Callees: the observer base's slot 3 (+0xc) with 0x19, CManager::GetInstance 0x0041E5F2 (__fastcall), the
 //   manager's slot 2 (+8) with the observer base pointer.
 // Shape: the polymorphic base at +4 is formed once (`lea esi,[ecx+4]`, no null test for `this`) and serves as `this`
 //   of the first call and as the argument of the second. Slot and event names are descriptive (the PDB has no
@@ -19,13 +19,13 @@ public:
 };
 }
 
-class CFrontEndManager {
+namespace NUISystem { class CManager { public:
 public:
     virtual void v000();
     virtual void v001();
     virtual void AddObserver(NUISystem::CObserverBase* observer);   // slot 2 (+8)
-    static CFrontEndManager* __fastcall GetInstance();              // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();              // 0x0041E5F2
+}; }
 
 namespace NUISystem {
 class CComponentRoot {                                  // primary base (CComponent's 140 primary slots)
@@ -181,6 +181,6 @@ protected:
 void CTextSlider::OnActivate()
 {
     StartObserving(0x19);
-    CFrontEndManager::GetInstance()->AddObserver(this);
+    CManager::GetInstance()->AddObserver(this);
 }
 }

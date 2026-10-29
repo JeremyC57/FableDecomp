@@ -13,15 +13,21 @@ struct CIntelligentVector { CIntelligentPointerRetail* first; CIntelligentPointe
 };
 struct CBrainDispatch { virtual void v00();virtual void v01();virtual bool SuspendSuspendableProcess(); }; //slot2, 0x00A44840 verified in CAIBrain vtable0x012780C4
 struct CTCOccupiableMethods { bool IsOccupied(); void SetOccupier(CThingRetail*); }; //0087C3F0,0087C390
-struct CInterfaceMap {struct Entry{long type;void* component;};Entry* first;Entry* last;Entry* LowerBound(const long*);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:typedef std::pair<ETCInterfaceType, CTCBase*> Entry;Entry* first;Entry* last;Entry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap; //0040F020
 struct CThingRetail {
  unsigned char inherited[0x20];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char beforeDeath[0x91-0x4c];unsigned char deathFlags;
  __forceinline bool GetOccupiable(CTCOccupiableMethods** out) {
   if(UsingComponents[5]&0x1000) {
-   long key=172;CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(&key);
-   if(it==map->last || 172<it->type)it=map->last;
-   *out=(CTCOccupiableMethods*)it->component;return true;
+   ETCInterfaceType key = (ETCInterfaceType)(172);CInterfaceMap* map=&Components;CInterfaceMap::Entry* it=map->LowerBound(key);
+   if(it==map->last || 172<it->first)it=map->last;
+   *out=(CTCOccupiableMethods*)((void*)it->second);return true;
   }return false;
  }
 };

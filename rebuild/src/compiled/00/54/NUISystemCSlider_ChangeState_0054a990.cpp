@@ -4,7 +4,7 @@
 //   empty is made unselectable.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0054A990, 592 bytes, `ret 4`.
 // Leaf: ChangeState
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (__fastcall); manager AddObserver (+0x08), RemoveObserver (+0x14),
+// Callees: CManager::GetInstance 0x0041E5F2 (__fastcall); manager AddObserver (+0x08), RemoveObserver (+0x14),
 //   ExecuteAction (+0x38), GetLastInputResult (+0x84, descriptive); CObserver::ObserveEvent (+0x0C) and
 //   IsObservingEvent (+0x08, descriptive); the slider's virtual slot 150 (+0x258, descriptive UpdateValue); the accept
 //   button's GetColour (+0x38) / ChangeColour (+0x98) (descriptive); CChangingStateComponent::ChangeState 0x0052CF40.
@@ -62,7 +62,7 @@ struct CChangingStateComponent : IPrimary_0054a990, CObserver, ISecondaryB_0054a
     void ChangeState(unsigned long state);               // 0x0052CF40
 };
 namespace NUISystem { class CAction; }
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v000(); virtual void v001();
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
     virtual void v003(); virtual void v004();
@@ -75,8 +75,8 @@ struct CFrontEndManager {
     virtual void v025(); virtual void v026(); virtual void v027(); virtual void v028(); virtual void v029();
     virtual void v030(); virtual void v031(); virtual void v032();
     virtual long GetLastInputResult();                   // slot 33 (+0x84)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 struct CSliderValue { unsigned char _pad[8]; float Value; };
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };
 struct CSliderTargetRef { CSliderTarget* Target; };
@@ -138,13 +138,13 @@ void CSlider::ChangeState(unsigned long state)
 {
     switch (state) {
     case 0:
-        if (CFrontEndManager::GetInstance()->GetLastInputResult() == 1) {
+        if (CManager::GetInstance()->GetLastInputResult() == 1) {
             OldValue = Value;
             Value = StartValue;
             if (Differs(OldValue, Value)) {
                 for (unsigned int i = 0; i < Actions.size(); ++i) {
                     Actions[i]->PTarget->Target->Value->Value = Value.X;
-                    CFrontEndManager::GetInstance()->ExecuteAction(Actions[i]);
+                    CManager::GetInstance()->ExecuteAction(Actions[i]);
                 }
                 Move = true;
             }
@@ -154,7 +154,7 @@ void CSlider::ChangeState(unsigned long state)
         CChangingStateComponent::ChangeState(state);
         break;
     case 3:
-        CFrontEndManager::GetInstance()->AddObserver(this);
+        CManager::GetInstance()->AddObserver(this);
         ObserveEvent(5);
         ObserveEvent(4);
         ObserveEvent(0x14);
@@ -172,7 +172,7 @@ void CSlider::ChangeState(unsigned long state)
         CChangingStateComponent::ChangeState(state);
         break;
     default:
-        CFrontEndManager::GetInstance()->RemoveObserver(this);
+        CManager::GetInstance()->RemoveObserver(this);
         CChangingStateComponent::ChangeState(state);
         break;
     }

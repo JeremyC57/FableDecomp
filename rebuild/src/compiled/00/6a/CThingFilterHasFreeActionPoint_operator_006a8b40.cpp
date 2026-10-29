@@ -10,12 +10,17 @@
 // The filter has no data members (PDB: no layout recorded); `this` is unused.
 class CTCBase;
 
-struct CInterfaceMap {                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                              // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) const;           // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;           // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -24,12 +29,12 @@ class CThing { public:
     template <class T> __forceinline bool GetInterface(long type, T** out)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            if (it == map->last || type < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(key);
+            if (it == map->last || type < it->first)
                 it = map->last;
-            *out = (T*)it->component;
+            *out = (T*)it->second;
             return true;
         }
         return false;

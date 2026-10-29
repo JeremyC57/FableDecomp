@@ -27,11 +27,17 @@ class CPlayerManager { public:public:
 }; //00449970 selects player ID at+1c
 class CGame { public:unsigned char _nativeBeforePlayerManager[0x1c];CPlayerManager* PPlayerManager;};
 extern CGame* g_Game; //013B86A0
-struct CInterfaceMap {
- struct Entry {long Type;void* Component;};
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+ typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
  Entry* First;Entry* Last;
- Entry* LowerBound(const long*); //0040F020
+ Entry* LowerBound(const ETCInterfaceType& key); //0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
  unsigned char _nativeBeforeUsingComponents[0x20];
  unsigned long UsingComponents[9];
@@ -60,19 +66,19 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
  CThing* thing=PCreature.GetPItem();
  CTCTargeted* targeted;
  if(thing->UsingComponents[0]&0x200){
-  CInterfaceMap* map=&thing->Components;long type=9;
-  CInterfaceMap::Entry* p=map->LowerBound(&type);
-  if(p==map->Last || p->Type>9)p=map->Last;
-  targeted=static_cast<CTCTargeted*>(p->Component);
+  CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(9);
+  CInterfaceMap::Entry* p=map->LowerBound(type);
+  if(p==map->Last || p->first>9)p=map->Last;
+  targeted=static_cast<CTCTargeted*>(((void*)p->second));
  }
  targeted->Targetable=false; // native requires Targeted component on dragon
  thing=PCreature.GetPItem();
  CTCSolidToThing* solid;
  if(thing->UsingComponents[2]&0x2000){
-  CInterfaceMap* map=&thing->Components;long type=0x4d;
-  CInterfaceMap::Entry* p=map->LowerBound(&type);
-  if(p==map->Last || p->Type>0x4d)p=map->Last;
-  solid=static_cast<CTCSolidToThing*>(p->Component);
+  CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(0x4d);
+  CInterfaceMap::Entry* p=map->LowerBound(type);
+  if(p==map->Last || p->first>0x4d)p=map->Last;
+  solid=static_cast<CTCSolidToThing*>(((void*)p->second));
  } else {
   CCharString name("CTCSolidToThing",-1);
   solid=PCreature.GetPItem()->AddTC(name,false,0);

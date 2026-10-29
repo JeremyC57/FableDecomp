@@ -29,7 +29,7 @@ struct CComponentBase3_Retail {             // base at +0x18
     virtual void w00();
 };
 
-struct CFrontEndManager_Calls {             // vtable-slot view of NUISystem::CFrontEndManager
+class CManager { public:             // vtable-slot view of NUISystem::CFrontEndManager
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -38,7 +38,7 @@ struct CFrontEndManager_Calls {             // vtable-slot view of NUISystem::CF
     virtual void v005();
     virtual void v006();
     virtual CInputHandler_Retail* GetCurrentInputHandler();           // slot 7 (+0x1c)
-    static CFrontEndManager_Calls* __fastcall GetInstance();  // 0x0041E5F2
+    static CManager* __fastcall GetInstance();  // 0x0041E5F2
 };
 
 struct CComponentRoot_Retail {              // primary base: vptr only
@@ -106,14 +106,14 @@ struct CControllerDisconnect : CChangingStateComponent {   // vtables 0x0122FD64
 void CControllerDisconnect::ChangeState(unsigned long state)
 {
     if (state == 1) {
-        m_pPreviousHandler = CFrontEndManager_Calls::GetInstance()->GetCurrentInputHandler();
-        CFrontEndManager_Calls::GetInstance()->RemoveInputHandler(m_pPreviousHandler);
-        CFrontEndManager_Calls::GetInstance()->AddInputHandler(*this);
+        m_pPreviousHandler = CManager::GetInstance()->GetCurrentInputHandler();
+        CManager::GetInstance()->RemoveInputHandler(m_pPreviousHandler);
+        CManager::GetInstance()->AddInputHandler(*this);
         OnInputFocusGained();
     }
     if (state == 0) {
-        CFrontEndManager_Calls::GetInstance()->RemoveInputHandler(this);
-        CFrontEndManager_Calls::GetInstance()->AddInputHandler(*m_pPreviousHandler);
+        CManager::GetInstance()->RemoveInputHandler(this);
+        CManager::GetInstance()->AddInputHandler(*m_pPreviousHandler);
     }
     CChangingStateComponent::ChangeState(state);
 }

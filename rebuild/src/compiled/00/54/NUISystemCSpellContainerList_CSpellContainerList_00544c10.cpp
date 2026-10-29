@@ -1,6 +1,6 @@
 // NUISystem::CSpellContainerList::~CSpellContainerList() -- stop observing the front-end manager, send it a fresh action of type 0xd3 (through a temporary counted pointer), free the SpellContainers storage, then the CChangingStateComponent destructor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00544C10, length 259 bytes (called by the deleting destructor 0x005455F0).
-// Callees: CFrontEndManager::GetInstance @ 0x0041E5F2 (static `__fastcall`, twice), its virtual slots 5 RemoveObserver(CObserver*)
+// Callees: CManager::GetInstance @ 0x0041E5F2 (static `__fastcall`, twice), its virtual slots 5 RemoveObserver(CObserver*)
 // (+0x14) and 14 ExecuteAction(const CCountedPointer<CAction>&) (+0x38), operator new @ 0x00BFEA1A (the 0x10-byte CAction and
 // the 12-byte count block), malloc @ 0x00BFEA0E (the two list heads), the block's destroy function 0x00429F43 (stored, and
 // called through the block), operator delete @ 0x00BFE9BC, free @ 0x00BFEA14 (vector storage),
@@ -92,8 +92,8 @@ class CChangingStateComponent : public CComponentRoot, public CObserver, public 
     virtual ~CChangingStateComponent();              // 0x0052CCF0
 };
 
-class CFrontEndManager { public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void RemoveObserver(CObserver* observer);                        // slot 5 (+0x14)
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
@@ -123,10 +123,10 @@ class CSpellContainerList : public CChangingStateComponent { public:
 
 CSpellContainerList::~CSpellContainerList()
 {
-    CFrontEndManager::GetInstance()->RemoveObserver(this);
+    CManager::GetInstance()->RemoveObserver(this);
     CCountedPointer<CAction> action(new CAction());
     action->ActionType = 0xd3;
-    CFrontEndManager::GetInstance()->ExecuteAction(action);
+    CManager::GetInstance()->ExecuteAction(action);
 }
 
 }

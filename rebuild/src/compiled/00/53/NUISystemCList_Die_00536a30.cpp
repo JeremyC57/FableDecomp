@@ -60,12 +60,12 @@ struct CInputListener {                            // the input-listener base at
     virtual void v00();
     unsigned char _pad04[0x14 - 0x04];
 };
-class CFrontEndManager {
+namespace NUISystem { class CManager { public:
 public:
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void RemoveInputListener(CInputListener* listener);   // slot 5 (+0x14)
-};
+}; }
 namespace NUISystem {
 struct CComponentRoot {                            // the primary vtable at +0
     virtual ~CComponentRoot();
@@ -99,7 +99,7 @@ void CList::Die()
             it = g_ListRegistry.erase(it);
     }
     for (unsigned long i = 0; i < ScrollingChildren.size(); ++i) {
-        CFrontEndManager::GetInstance()->RemoveInputListener(ScrollingChildren[i]);
+        CManager::GetInstance()->RemoveInputListener(ScrollingChildren[i]);
         ScrollingChildren[i]->Die();
     }
     CComponent::Die();

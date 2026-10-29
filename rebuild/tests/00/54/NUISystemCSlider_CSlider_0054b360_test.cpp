@@ -16,10 +16,10 @@ struct CSliderTargetRef { CSliderTarget* Target; };
 struct CAction { CSliderTargetRef* PTarget; };
 struct CActionPtr { CAction* Data; CAction* operator->() const { return Data; } };
 static int g_executed = 0, g_listsDeleted = 0, g_rangeDestroyed = 0, g_spriteDestroyed = 0;
-struct CFrontEndManager {
-    static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance() { static CManager m; return &m; }
     void ExecuteAction(const CActionPtr&) { ++g_executed; }
-};
+}; }
 struct CActionVector {
     CActionPtr* _M_start; CActionPtr* _M_finish;
     unsigned int size() const { return _M_finish - _M_start; }
@@ -42,7 +42,7 @@ CSlider::~CSlider()
     if (!(StartValue == Value)) {
         for (unsigned int i = 0; i < Actions.size(); ++i) {
             Actions[i]->PTarget->Target->Value->Value = StartValue.X;
-            CFrontEndManager::GetInstance()->ExecuteAction(Actions[i]);
+            NUISystem::CManager::GetInstance()->ExecuteAction(Actions[i]);
         }
         Move = true;
     }

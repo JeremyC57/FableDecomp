@@ -12,7 +12,7 @@ struct DefObject:DefVirtual,RefCount {void Release(){DecRef();if(GetRefCount()==
 struct DefPointer {DefObject* Object;DefPointer():Object(0){}__forceinline ~DefPointer(){if(Object){Object->Release();Object=0;}}};
 struct IntelligentPointer {unsigned char Data[8];~IntelligentPointer();}; //00a01c10
 struct DefinitionManager {bool GetDef(const CCharString&,DefPointer*);}; //00593666 typedtemplate GetDef
-DefinitionManager* __fastcall GetDefinitionManager(); //0044c6b0 globalsingleton013b879c
+class CGameDefinitionManager : public DefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 struct ScriptThing {
 virtual void Slot000();
 virtual void Slot001();
@@ -104,7 +104,7 @@ namespace NTCScriptedControl {
 struct CActionPerformExpression {void* Vtable;Controller* Control;bool Active,Complete;unsigned char Pad[2];ScriptThing Target;bool Started;unsigned char Pad2[3];CCharString Expression;long ExtraData1,ExtraData2;void Update();};
 void CActionPerformExpression::Update(){
  if(!Target.IsResolved())Target.Resolve();
- if(!Started){DefPointer definition;GetDefinitionManager()->GetDef(Expression,&definition);
+ if(!Started){DefPointer definition;::CGameDefinitionManager::Get().GetDef(Expression,&definition);
  if(definition.Object){Creature& owner=*Control->Owner;owner.SetCurrentAction(Retail::PerformExpression(owner,Target.GetThing(),definition,0,0,ExtraData1,ExtraData2));Started=true;}
  else Complete=true;
  }else if(!Control->Owner->IsPerformingAnyAction())Complete=true;

@@ -14,12 +14,17 @@ class CWorld;
 
 // A thing's component table: the presence bitset at +0x20 (tested inline, bit N of dword N/32) and the sorted
 // {type, component} vector map at +0x44 searched with CVectorMap::LowerBound @ 0x004365B0.
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) const;       // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;       // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -34,25 +39,25 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
     }
     // entry-returning lookup (the caller tests HasTC first and uses the entry's component directly)
-    __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
+    __forceinline const CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        CInterfaceMap::SEntry* sel;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        const CInterfaceMap::SEntry* sel;
         if (it == map->last) sel = map->last;
-        else if (it->type <= interfaceType) sel = it;
+        else if (it->first <= interfaceType) sel = it;
         else sel = map->last;
         return sel;
     }
@@ -118,7 +123,7 @@ struct CAIStateGroup_MinionBehaviourGreetCreature : CAIStateGroupBase {
 bool CAIStateGroup_MinionBehaviourGreetCreature::IsRunnable()
 {
     if (PBrain->PCreature->HasTC(8)) {
-        CThing* other = ((CTCGreetSource*)PBrain->PCreature->FindEntry(8)->component)->GetCreatureToGreet(true);
+        CThing* other = ((CTCGreetSource*)PBrain->PCreature->FindEntry(8)->second)->GetCreatureToGreet(true);
         if (other != 0 && CanCreatureSeeCreature(PBrain->PCreature, other, false)) {
             PCreatureToGreet = other;
             return true;

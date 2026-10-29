@@ -12,7 +12,7 @@ struct CComponent;
 class CTCInventory;
 
 // NUISystem::CFrontEndManager as this body sees it: two virtual setters (slots 21 and 26).
-struct CFrontEndManager_Calls {
+namespace NUISystem { class CManager { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -40,8 +40,8 @@ struct CFrontEndManager_Calls {
     virtual void v24();
     virtual void v25();
     virtual void SetActiveThing(CThing* thing);                 // slot 26 (+0x68)
-    static CFrontEndManager_Calls* __fastcall GetInstance();    // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();    // 0x0041E5F2
+}; }
 
 class CTCInventory { public:
     void*   __vftable;                            // +0x00
@@ -53,7 +53,7 @@ class CTCInventory { public:
 
 CComponent* CTCInventory::ConstructScreenPC(CComponent* parent)
 {
-    CFrontEndManager_Calls::GetInstance()->SetActiveInventory(this);
-    CFrontEndManager_Calls::GetInstance()->SetActiveThing(PThing);
+    NUISystem::CManager::GetInstance()->SetActiveInventory(this);
+    NUISystem::CManager::GetInstance()->SetActiveThing(PThing);
     return GetItemsListUIComponentPC(parent);
 }

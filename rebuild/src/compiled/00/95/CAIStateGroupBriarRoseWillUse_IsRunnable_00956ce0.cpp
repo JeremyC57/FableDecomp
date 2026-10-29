@@ -29,13 +29,17 @@ class CIntelligentPointer : public CBaseIntelligentPointer   // inline ctor stor
 
 class CTCBase;
 
-struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-{
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;                                  // +0x00
     SEntry* last;                                   // +0x04
-    SEntry* LowerBound(const long* type) const;           // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;           // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing
 { public:
@@ -51,16 +55,16 @@ class CThing
             return true;
         return false;
     }
-    __forceinline CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
+    __forceinline const CInterfaceMap::SEntry* FindEntry(long type)    // the entry; `->component` read at the call site
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
+        const CInterfaceMap::SEntry* it = map->LowerBound(key);
         CInterfaceMap::SEntry* end = map->last;
-        CInterfaceMap::SEntry* sel;
+        const CInterfaceMap::SEntry* sel;
         if (it == end)
             sel = end;
-        else if (it->type <= type)
+        else if (it->first <= type)
             sel = it;
         else
             sel = end;
@@ -70,12 +74,12 @@ class CThing
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31)))
         {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            if (it == map->last || type < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(key);
+            if (it == map->last || type < it->first)
                 it = map->last;
-            *out = (T*)it->component;
+            *out = (T*)it->second;
             return true;
         }
         return false;
@@ -122,7 +126,7 @@ bool CAIStateGroup_BriarRoseWillUse::IsRunnable()
 {
     if (GetPWorld()->GetFrame() >= NextUseFrame && PBrain->Creature->HasTC(8))
     {
-        CThing* target = ((CTCAttackTarget*)PBrain->Creature->FindEntry(8)->component)->GetTarget();
+        CThing* target = ((CTCAttackTarget*)PBrain->Creature->FindEntry(8)->second)->GetTarget();
         if (target && !(target->m_flags91 & 1))
         {
             PTargetThing.SetPItem(CIntelligentPointer<CThing>(target).GetPItem());

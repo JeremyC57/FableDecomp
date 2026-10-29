@@ -29,7 +29,7 @@ struct C2DVector {
     C2DVector& operator=(const C2DVector& o) { X = o.X; Y = o.Y; return *this; }
 };
 
-struct CFrontEndManager_Calls {                      // vtable-slot view of NUISystem::CFrontEndManager
+class CManager { public:                      // vtable-slot view of NUISystem::CFrontEndManager
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
@@ -39,7 +39,7 @@ struct CFrontEndManager_Calls {                      // vtable-slot view of NUIS
     virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
     virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038();
     virtual const float& GetScrollStep();            // slot 39 (+0x9C)
-    static CFrontEndManager_Calls* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 
 struct CComponentInterface {                         // primary vtable at +0
@@ -100,8 +100,8 @@ void CZoomingComponent::ProcessEvent(EEvent event)
             return;
         Zooming = true;
         oldZoom = Zoom;
-        zoom.X = Zoom.X + CFrontEndManager_Calls::GetInstance()->GetScrollStep() * ScrollingSpeed;
-        zoom.Y = Zoom.Y + CFrontEndManager_Calls::GetInstance()->GetScrollStep() * ScrollingSpeed;
+        zoom.X = Zoom.X + CManager::GetInstance()->GetScrollStep() * ScrollingSpeed;
+        zoom.Y = Zoom.Y + CManager::GetInstance()->GetScrollStep() * ScrollingSpeed;
         if (zoom.X < MinZoom.X)
             zoom.X = MinZoom.X;
         if (zoom.X > MaxZoom.X)
@@ -124,8 +124,8 @@ void CZoomingComponent::ProcessEvent(EEvent event)
             return;
         Zooming = true;
         oldZoom = Zoom;
-        zoom.X = (float)(Zoom.X + CFrontEndManager_Calls::GetInstance()->GetScrollStep() * ScrollingSpeed * 0.4);
-        zoom.Y = (float)(Zoom.Y + CFrontEndManager_Calls::GetInstance()->GetScrollStep() * ScrollingSpeed * 0.4);
+        zoom.X = (float)(Zoom.X + CManager::GetInstance()->GetScrollStep() * ScrollingSpeed * 0.4);
+        zoom.Y = (float)(Zoom.Y + CManager::GetInstance()->GetScrollStep() * ScrollingSpeed * 0.4);
         if (zoom.X < MinZoom.X)
             zoom.X = MinZoom.X;
         if (zoom.X > MaxZoom.X)

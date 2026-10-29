@@ -8,7 +8,7 @@ static int fails = 0;
 // NUISystem::CHoverable::~CHoverable() -- stop observing the front-end manager, drop this hoverable from the global hoverable list, and when the manager has a hover cursor and no remaining hoverable is of type 0x23 or 0x29, tell the cursor (virtual slot 151); then the CChangingStateComponent base destructor
 // Leaf: ??1CHoverable
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0055BC30, 203 bytes; ends in a tail jump to the base destructor.
-// Callees: NUISystem::CFrontEndManager::GetInstance @ 0x0041E5F2 (`__fastcall`, no arguments; called twice), the
+// Callees: NUISystem::CManager::GetInstance @ 0x0041E5F2 (`__fastcall`, no arguments; called twice), the
 //   manager's virtual slot 5 (+0x14, takes the observer subobject at this+4), free @ 0x00BFEA14 (the erased list node),
 //   each hoverable's virtual slot 65 (+0x104, the component type), the manager member at +0xb8's virtual slot 151
 //   (+0x25c), NUISystem::CChangingStateComponent::~CChangingStateComponent @ 0x0052CCF0.
@@ -91,12 +91,12 @@ struct CHoverCursor {                              // the front-end manager's me
     virtual void OnNoHoverTargetsLeft();           // slot 151 (+0x25c)
 };
 
-class CFrontEndManager { public:
+class CManager { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void RemoveObserver(IComponentA* observer);   // slot 5 (+0x14)
     unsigned char _pad04[0xb4];
     CHoverCursor* m_pHoverCursor;                  // +0xb8
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 
 class CHoverable;
@@ -142,11 +142,11 @@ class CHoverable : public CChangingStateComponent { public:      // vtables 0x01
 
 CHoverable::~CHoverable()
 {
-    CFrontEndManager::GetInstance()->RemoveObserver(this);
+    CManager::GetInstance()->RemoveObserver(this);
     CHoverableList::iterator it = find_(g_hoverables.begin(), g_hoverables.end(), this);
     if (it != g_hoverables.end())
         g_hoverables.erase(it);
-    CHoverCursor* cursor = CFrontEndManager::GetInstance()->m_pHoverCursor;
+    CHoverCursor* cursor = CManager::GetInstance()->m_pHoverCursor;
     if (cursor) {
         bool found = false;
         for (CHoverableList::iterator i = g_hoverables.begin(); i != g_hoverables.end(); ++i) {
@@ -379,11 +379,11 @@ void NUISystem::CHoverCursor::v147() {}
 void NUISystem::CHoverCursor::v148() {}
 void NUISystem::CHoverCursor::v149() {}
 void NUISystem::CHoverCursor::v150() {}
-void NUISystem::CFrontEndManager::v000() {}
-void NUISystem::CFrontEndManager::v001() {}
-void NUISystem::CFrontEndManager::v002() {}
-void NUISystem::CFrontEndManager::v003() {}
-void NUISystem::CFrontEndManager::v004() {}
+void NUISystem::CManager::v000() {}
+void NUISystem::CManager::v001() {}
+void NUISystem::CManager::v002() {}
+void NUISystem::CManager::v003() {}
+void NUISystem::CManager::v004() {}
 #include <new>
 #include <stdlib.h>
 namespace NUISystem {
@@ -394,9 +394,9 @@ long CChangingStateComponent::GetComponentType() const { return *(const long*)_b
 static int g_noTargets = 0;
 void CHoverCursor::OnNoHoverTargetsLeft() { ++g_noTargets; }
 static IComponentA* g_removed; static int g_removes = 0;
-void CFrontEndManager::RemoveObserver(IComponentA* observer) { g_removed = observer; ++g_removes; }
-static CFrontEndManager* g_fem;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return g_fem; }
+void CManager::RemoveObserver(IComponentA* observer) { g_removed = observer; ++g_removes; }
+static CManager* g_fem;
+CManager* __fastcall CManager::GetInstance() { return g_fem; }
 static SHoverableNode g_head;
 CHoverableList g_hoverables = { &g_head };
 static void Link(CHoverable* h)
@@ -414,7 +414,7 @@ using namespace NUISystem;
 int main()
 {
     g_head.m_pNext = &g_head; g_head.m_pPrev = &g_head;
-    static CFrontEndManager fem; static CHoverCursor cursor; fem.m_pHoverCursor = &cursor; g_fem = &fem;
+    static NUISystem::CManager fem; static CHoverCursor cursor; fem.m_pHoverCursor = &cursor; g_fem = &fem;
     CHoverable* a = Make(0x23); CHoverable* b = Make(0x10); CHoverable* c = Make(0x29);
     CHECK(Count() == 3);
     b->~CHoverable();

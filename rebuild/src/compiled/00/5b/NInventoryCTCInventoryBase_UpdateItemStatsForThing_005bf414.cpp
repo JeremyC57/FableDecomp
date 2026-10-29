@@ -16,12 +16,18 @@
 struct CPresenceBits {
     bool test(long bit);                             // 0x00410DE0 (std::bitset::test)
 };
-struct CInterfaceMap {
-    struct SEntry { long type; void* component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;                                   // +0x00
     SEntry* last;                                    // +0x04
-    SEntry* LowerBound(const long* type) const;            // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;            // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad_0x00[0x20];
     CPresenceBits m_present;                         // +0x20
@@ -29,10 +35,10 @@ class CThing { public:
     CInterfaceMap m_interfaces;                      // +0x44
     template<class T> __forceinline T* GetTC(long wanted)        // the landed 0x00584157 lookup: the entry pick as one ternary, the component read once
     {
-        long type = wanted;
+        ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (T*)((void*)((it == map->last || wanted < it->first) ? map->last : it)->second);
     }
     unsigned long HasTC(long wanted) { return m_present.test(wanted); }
 };

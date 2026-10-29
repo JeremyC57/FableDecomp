@@ -18,10 +18,10 @@ public:
     void SetHandled();                             // 0x00A0D390
 };
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
     virtual void SendEvent(long event);            // slot 0
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
 class CTCQuickAccessMenu { public:
@@ -77,13 +77,13 @@ void CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProce
         return;
     if (IsEventButtonPressed(event)) {
         if (IsEventGameAction(0x25, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0);
+            NUISystem::CManager::GetInstance()->SendEvent(0);
         else if (IsEventGameAction(0x26, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(1);
+            NUISystem::CManager::GetInstance()->SendEvent(1);
         else if (IsEventGameAction(0x27, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(2);
+            NUISystem::CManager::GetInstance()->SendEvent(2);
         else if (IsEventGameAction(0x28, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(3);
+            NUISystem::CManager::GetInstance()->SendEvent(3);
         else if (IsEventGameAction(2, event)) {
             menu->RequestClose();
             processed.SetHandled();
@@ -92,9 +92,9 @@ void CInputProcessQuickAccessMenu::ProcessInput(const CInputEvent& event, CProce
             return;
     } else if (IsEventButtonReleased(event)) {
         if (IsEventGameAction(0x25, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0);
+            NUISystem::CManager::GetInstance()->SendEvent(0);
         else if (IsEventGameAction(0x26, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(1);
+            NUISystem::CManager::GetInstance()->SendEvent(1);
         else
             return;
     } else

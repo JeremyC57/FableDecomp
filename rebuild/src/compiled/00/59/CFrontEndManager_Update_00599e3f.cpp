@@ -99,7 +99,7 @@ struct CDefPointer {
     CScreenDef* operator->() const { return m_p; }
 };
 struct CComponentSecondBase;
-struct CUIManager {
+namespace NUISystem { class CManager { public:
     virtual void v000();
     virtual void v001();
     virtual void RemoveComponent(CComponentSecondBase* component);   // slot 2 (+0x08)
@@ -143,8 +143,8 @@ struct CUIManager {
     virtual void SetText(const CWideString& text, bool now);   // slot 40 (+0xa0)
     virtual void v041();
     virtual CDefPointer GetDef();                     // slot 42 (+0xa8)
-    static CUIManager* __fastcall GetInstance();           // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();           // 0x0041E5F2
+}; }
 struct CScreenStack {
     CComponentBase*& Top();                                // 0x0059B039
     void Pop();                                            // 0x0059AEE5
@@ -184,7 +184,7 @@ struct CVirtualKeyboard {
     CWideString GetProfileName();                          // 0x00851890
 };
 struct CProfileSource { unsigned char _pad[8]; CWideString ProfileName; };
-CProfileSource* __fastcall GetProfileSource();             // 0x0040D2A0
+class CUserProfileManager : public CProfileSource { public: static CUserProfileManager& __fastcall Get(); };   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 struct CFrontEndGame {
     virtual void v0(); virtual void v1(); virtual void v2(); virtual void v3();
     virtual void Reset();                                  // slot 4 (+0x10)
@@ -261,7 +261,7 @@ void CFrontEndManager::Update(float dt)
     }
     if (VirtualKeyboard && VirtualKeyboard->Finished) {
         if (!VirtualKeyboard->Cancelled) {
-            CWideString current(GetProfileSource()->ProfileName);
+            CWideString current(::CUserProfileManager::Get().ProfileName);
             CWideString name = VirtualKeyboard->GetProfileName();
             CWideStringVector names;
             GetProfileNames(&names);
@@ -273,8 +273,8 @@ void CFrontEndManager::Update(float dt)
                 EnableInput(false);
                 LoadProfile(&current);
                 GotoNextScreen(Screens[0x13], false);
-                CUIManager* manager = CUIManager::GetInstance();
-                CUIManager::GetInstance()->SetText(manager->GetDef()->ProfileText, true);
+                NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
+                NUISystem::CManager::GetInstance()->SetText(manager->GetDef()->ProfileText, true);
             }
             else {
                 bool created = CreateNewProfile(&name);
@@ -288,8 +288,8 @@ void CFrontEndManager::Update(float dt)
             }
         }
         else {
-            CUIManager* manager = CUIManager::GetInstance();
-            CUIManager::GetInstance()->SetText(manager->GetDef()->NewProfileText, true);
+            NUISystem::CManager* manager = NUISystem::CManager::GetInstance();
+            NUISystem::CManager::GetInstance()->SetText(manager->GetDef()->NewProfileText, true);
             EnableInput(true);
         }
     }
@@ -301,7 +301,7 @@ void CFrontEndManager::Update(float dt)
     }
     if (FadeOwner && (FadeOwner->IsFinished() || !FadeOwner->GetStatus().Active)) {
         Fade->SetState(5);
-        CUIManager::GetInstance()->RemoveComponent(Fade);
+        NUISystem::CManager::GetInstance()->RemoveComponent(Fade);
         Fade->Release();
         FadeOwner = 0;
         Fade = 0;

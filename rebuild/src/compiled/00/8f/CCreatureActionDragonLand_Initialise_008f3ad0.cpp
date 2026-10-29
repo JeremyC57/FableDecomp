@@ -27,7 +27,13 @@ FABLE_STATIC_ASSERT(sizeof(CPhysicsSlot)==4);
 FABLE_STATIC_ASSERT(sizeof(CPhysicsMethods)==sizeof(CTCPhysicsBase));
 // Interface0x3a proven CTCMapwho: RTTI table1265A3C slot21=71A7E0 returns58.
 #include "engine/CTCMapwho.h"
-struct CInterfaceMap {struct Entry {long Type;void* Component;};Entry* First;Entry* Last;Entry* LowerBound(const long*);}; //0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:typedef std::pair<ETCInterfaceType, CTCBase*> Entry;Entry* First;Entry* Last;Entry* LowerBound(const ETCInterfaceType& key);};
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap; //0040F020
 class CThing : public CClass { public:
  unsigned char _nativeBeforeUsingComponents[0xf];unsigned long UsingComponents[9];CInterfaceMap Components;
  unsigned char _nativeBeforePhysics[0x14];CPhysicsMethods* PPhysics;
@@ -48,9 +54,9 @@ void CCreatureAction_DragonLand::Initialise(){
  CCombatActionBase::Initialise();
  CThing* thing=PCreature.GetPItem();
  if(thing->UsingComponents[1]&0x4000000){
-  CInterfaceMap* map=&thing->Components;long type=0x3a;CInterfaceMap::Entry* p=map->LowerBound(&type);
-  if(p==map->Last || p->Type>0x3a)p=map->Last;
-  static_cast<CTCMapwho*>(p->Component)->InMapwho[0]&=~1;
+  CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(0x3a);CInterfaceMap::Entry* p=map->LowerBound(type);
+  if(p==map->Last || p->first>0x3a)p=map->Last;
+  static_cast<CTCMapwho*>(((void*)p->second))->InMapwho[0]&=~1;
  }
  C3DVector position=PCreature.GetPItem()->GetPos();position.Z-=g_DragonLandingHeightDrop;
  PCreature.GetPItem()->GetPhysics()->ResetPosition(position);
@@ -58,9 +64,9 @@ void CCreatureAction_DragonLand::Initialise(){
  PCreature.GetPItem()->GetPhysics()->GetFacingVectorInto(facing);
  thing=PCreature.GetPItem();CTCTargeted* target;
  if(thing->UsingComponents[0]&0x200){
-  CInterfaceMap* map=&thing->Components;long type=9;CInterfaceMap::Entry* p=map->LowerBound(&type);
-  if(p==map->Last || p->Type>9)p=map->Last;
-  target=static_cast<CTCTargeted*>(p->Component);
+  CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(9);CInterfaceMap::Entry* p=map->LowerBound(type);
+  if(p==map->Last || p->first>9)p=map->Last;
+  target=static_cast<CTCTargeted*>(((void*)p->second));
  }
  target->Targetable=true;
  if(PCreature.GetPItem()->Type==1){CThing* creature=PCreature.GetPItem();creature->SetSuspendAnimation(true,this);}

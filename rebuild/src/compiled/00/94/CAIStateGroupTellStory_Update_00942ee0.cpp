@@ -18,13 +18,18 @@
 //   scheduled before the filter stores); `start` is a named copy of _M_start.
 extern "C" void __cdecl free(void* p);          // 0x00BFEA14
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
-    SEntry* LowerBound(const long* type) const; // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& type) const; // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class C3DVector { public:
     float x, y, z;
     C3DVector() {}
@@ -60,12 +65,12 @@ class CThing { public:
     {
         bool has = TestTC(interfaceType);
         if (has) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             const CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)it->second;
         }
         return has;
     }
@@ -194,12 +199,12 @@ void CAIStateGroup_TellStory::Update()
         const CThing* creature = GetCreature();
         bool hasVillager = ((creature->m_presentBits[0x23 >> 5] >> (0x23 & 31)) & 1) != 0;
         if (hasVillager) {
-            long type = 0x23;
+            ETCInterfaceType type = (ETCInterfaceType)(0x23);
             const CInterfaceMap* map = &creature->m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || 0x23 < it->type)
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || 0x23 < it->first)
                 it = map->last;
-            villager = (CTCVillager*)it->component;
+            villager = (CTCVillager*)it->second;
         }
     }
     while (GFGetPVillageInterface(villager)->IsCookTime()) {

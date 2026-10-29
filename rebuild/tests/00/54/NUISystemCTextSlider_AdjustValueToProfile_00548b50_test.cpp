@@ -13,7 +13,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00548B50, 682 bytes, plain `ret`; two jump tables (0x2B..0x2F; 0x54..0x143 via a byte index table).
 // Callees: CTBaseSingleton<CUserProfileManager>::Get 0x0040D2A0 and the profile getters (each `UseNewProfileValues ? <x>NewProfile : <x>`;
 //   manifest labels them IsCameraResetting / PeekConnectedToTrackNode): see the declarations; TutorialSystemEnabled and NewProfileToUseWASD
-//   are read inline. CFrontEndManager::GetInstance 0x0041E5F2, its PlaySound (+0xa0) and GetDef (+0xa8, CDefPointer by value).
+//   are read inline. CManager::GetInstance 0x0041E5F2, its PlaySound (+0xa0) and GetDef (+0xa8, CDefPointer by value).
 // Label correction: catalog class "CSlider" -- the layout (SelectedChild +0x15c, PreviouslySelectedChild +0x160, Move +0x168,
 //   LastInputTime +0x180, PDefAction +0x188, PAcceptButton +0x198) is NUISystem::CTextSlider (landed Initialise 0x00549230).
 // Model: the landed CSlider::AdjustValueToProfile 0x0054A6F0 (button / front-end manager / def pointer); profile field names from Ego_r.pdb.
@@ -118,7 +118,7 @@ class CUserProfileManager { public:                     // retail = Ego_r.pdb wi
     bool IsShowTargetingStatus() const;          // 0x00548740
     bool IsTutorialSystemEnabled() const { return UseNewProfileValues ? TutorialSystemEnabledNewProfile : TutorialSystemEnabled; }
 };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v000() {} virtual void v001() {}
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
     virtual void v003() {} virtual void v004() {}
@@ -135,8 +135,8 @@ struct CFrontEndManager {
     virtual void PlaySound(const CSoundName& sound, bool a);   // slot 40 (+0xa0)
     virtual void v041() {}
     virtual CDefPointer<CFrontEndManagerDef> GetDef();   // slot 42 (+0xa8)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 namespace NUISystem {
 class CTextSlider { public:
     void* __vftable;
@@ -192,7 +192,7 @@ void CTextSlider::AdjustValueToProfile()
             colour.A = 0xff;
             PAcceptButton->ChangeColour(colour, 0.2f, false);
         }
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetDef()->TextSliderSound, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetDef()->TextSliderSound, true);
     }
 }
 }
@@ -238,12 +238,12 @@ void CObserver::ObserveEvent(long) {}
 CRGBColour CComponentPrimary_0054a990::GetColour() const { CRGBColour c; c.B = c.G = c.R = c.A = 0; return c; }
 void CComponentPrimary_0054a990::ChangeColour(const CRGBColour&, float, bool) {}
 void CDefBase::Destroy() { ++g_destroyed; }
-void CFrontEndManager::AddObserver(CObserver*) {}
-void CFrontEndManager::RemoveObserver(CObserver*) {}
-void CFrontEndManager::ExecuteAction(const CCountedPointer<NUISystem::CAction>&) {}
-long CFrontEndManager::GetLastInputResult() { return 0; }
-void CFrontEndManager::PlaySound(const CSoundName&, bool) {}
-CDefPointer<CFrontEndManagerDef> CFrontEndManager::GetDef() { return *g_holder; }
+void NUISystem::CManager::AddObserver(CObserver*) {}
+void NUISystem::CManager::RemoveObserver(CObserver*) {}
+void NUISystem::CManager::ExecuteAction(const CCountedPointer<NUISystem::CAction>&) {}
+long NUISystem::CManager::GetLastInputResult() { return 0; }
+void NUISystem::CManager::PlaySound(const CSoundName&, bool) {}
+CDefPointer<CFrontEndManagerDef> NUISystem::CManager::GetDef() { return *g_holder; }
 
 struct CTestButton : CComponent {
     bool IsObservingEvent(long eventType) { if (eventType != 0x19) g_fail = 1; return g_observing; }
@@ -251,12 +251,12 @@ struct CTestButton : CComponent {
     CRGBColour GetColour() const { CRGBColour c; c.B = 0x11; c.G = 0x22; c.R = 0x33; c.A = 0x44; return c; }
     void ChangeColour(const CRGBColour& colour, float time, bool linear) { g_gotColour = colour; g_gotTime = time; g_gotLinear = linear; ++g_colourCalls; }
 };
-struct CTestFrontEnd : CFrontEndManager {
+struct CTestFrontEnd : NUISystem::CManager {
     void PlaySound(const CSoundName& sound, bool a) { ++g_sounds; g_soundValue = sound.Value; g_soundFlag = a; }
     CDefPointer<CFrontEndManagerDef> GetDef() { ++g_def.Ref.Count; return *g_holder; }   // AddRef, the caller's temporary releases
 };
 static CTestFrontEnd* g_frontEnd;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return g_frontEnd; }
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return g_frontEnd; }
 
 static int g_soundsBefore;
 static void adjust(NUISystem::CTextSlider& s) { g_soundsBefore = g_sounds; s.AdjustValueToProfile(); }

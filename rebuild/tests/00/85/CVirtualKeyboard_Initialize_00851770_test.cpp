@@ -25,12 +25,12 @@ struct CComponent {
     virtual void SetForbiddenCharacters(const CWideString& c) { if (c.c == '.') Log("forbid"); }
 };
 struct CEditBox : CComponent, CObserver { bool DeleteAllOnKeyPress; CEditBox() : DeleteAllOnKeyPress(false) { } };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     CObserver* added;
-    static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
-    virtual ~CFrontEndManager() { }
+    static CManager* __fastcall GetInstance() { static CManager m; return &m; }
+    virtual ~CManager() { }
     virtual void AddObserver(CObserver* o) { added = o; Log("add"); }
-};
+}; }
 static const unsigned short g_dot[2] = { '.', 0 };
 struct CVirtualKeyboard {
     CComponent* PEntryScreen; CEditBox* PEntryBox;
@@ -43,7 +43,7 @@ struct CVirtualKeyboard {
             PEntryBox->UpdateDisplayText();
             PEntryBox->SetForbiddenCharacters(g_dot);
             PEntryBox->DeleteAllOnKeyPress = true;
-            CFrontEndManager::GetInstance()->AddObserver(PEntryBox);
+            NUISystem::CManager::GetInstance()->AddObserver(PEntryBox);
             PEntryBox->ObserveEvent(0x21);
             PEntryBox->ObserveEvent(0x22);
             PEntryBox->SetActive(true);
@@ -57,7 +57,7 @@ int main()
     CVirtualKeyboard k; k.PEntryScreen = &screen; k.PEntryBox = 0;
     g_log[0] = 0;
     bool ok = k.Initialize() == 0 && k.PEntryBox == &box && box.DeleteAllOnKeyPress
-        && CFrontEndManager::GetInstance()->added == static_cast<CObserver*>(&box)
+        && NUISystem::CManager::GetInstance()->added == static_cast<CObserver*>(&box)
         && std::strcmp(screen.lastName, "UI_NEW_PROFILE_EDIT_BOX") == 0
         && std::strcmp(g_log, "text;update;forbid;add;observe21;observe22;active;") == 0;
     box.type = 3; k.PEntryBox = 0; g_log[0] = 0;

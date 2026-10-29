@@ -21,11 +21,16 @@ struct CBaseIntelligentPointer {
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     T* Get() const { return (T*)GetPItem(); }           // CThing's CBaseObject base is at offset 0
 };
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType,CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType,CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first; SEntry* last;
-    SEntry* LowerBound(const long*) const;                    // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& key) const;                    // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char ThingType;                            // +0x10 (descriptive)
@@ -54,11 +59,11 @@ bool CGameScriptThing::IsAwareOfHero()
     CIntelligentPointer<CThing>* p = &PThing;
     CThing* thing;
     if (p->Get() && !p->Get()->Dead && (thing = p->Get())->UsingComponents[0x34 >> 5] & (1UL << (0x34 & 31))) {
-        long kind = 0x34;
+        ETCInterfaceType kind = (ETCInterfaceType)(0x34);
         CInterfaceMap* map = &thing->Interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&kind);
-        if (it == map->last || it->type > 0x34) it = map->last;
-        CTCPerceiveThing* perceive = (CTCPerceiveThing*)it->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(kind);
+        if (it == map->last || it->first > 0x34) it = map->last;
+        CTCPerceiveThing* perceive = (CTCPerceiveThing*)it->second;
         if (perceive->IsPlayerExtendedLineOfSight()) return true;
         if (perceive->AwarenessTimer == 0.0f) return false;
         CThing* target = perceive->GetPerceivedThing();

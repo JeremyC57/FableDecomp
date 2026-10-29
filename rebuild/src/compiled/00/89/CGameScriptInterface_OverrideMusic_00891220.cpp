@@ -5,6 +5,7 @@ struct CGSIOverrideMusicCodeSection {
     unsigned char pad00[0x0c]; unsigned char useAlternate; unsigned char pad0d[0x17];
     float primaryValue; unsigned char pad28[0xbc]; float alternateValue;
 };
+class CUserProfileManager : public CGSIOverrideMusicCodeSection { public: static CUserProfileManager& __fastcall Get(); };   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 struct CGSIOverrideMusicEvent {
     void AddUBYTE(unsigned char musicSetType);
     void SetOverrideMusic(EMusicSetType musicSetType, bool forcePlay);
@@ -29,7 +30,6 @@ struct CGameScriptInterface_OverrideMusicMethods : CGameScriptInterface {
     virtual void OverrideMusic(EMusicSetType musicSetType, bool enabled, bool forcePlay) const;
 };
 extern CGSIOverrideMusicEmitter* CGSIOverrideMusic_Emitter;
-extern CGSIOverrideMusicCodeSection* __cdecl CGSIOverrideMusic_GetCodeSection();
 
 void CGameScriptInterface_OverrideMusicMethods::OverrideMusic(
     EMusicSetType musicSetType, bool enabled, bool forcePlay) const {
@@ -37,7 +37,7 @@ void CGameScriptInterface_OverrideMusicMethods::OverrideMusic(
         reinterpret_cast<const CGameScriptInterface*>(this);
     if (enabled) {
         if (CGSIOverrideMusic_Emitter != 0) {
-            CGSIOverrideMusicCodeSection* section = CGSIOverrideMusic_GetCodeSection();
+            CGSIOverrideMusicCodeSection* section = &CUserProfileManager::Get();
             float value;
             if (section->useAlternate != 0)
                 value = section->alternateValue;

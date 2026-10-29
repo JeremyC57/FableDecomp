@@ -25,12 +25,12 @@ public:
     C2DVector     MouseMovementXY;                 // +0x0C
 };
 namespace NUISystem {
-class CFrontEndManager {
+class CManager {
 public:
     virtual void SendEvent(long event);            // slot 0
     unsigned char _pad04[0xac];
     C2DVector     MouseMovement;                   // +0xB0
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
 class CInputProcessTavernGame;
@@ -99,17 +99,17 @@ void CInputProcessTavernGame::ProcessInput(const CInputEvent& event, CProcessedI
         player->GetGame()->ProcessInput(event, processed, this);
     if (IsEventButtonPressed(event)) {
         if (IsEventGameAction(0x19, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1a);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1a);
         else if (IsEventGameAction(0x4c, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1b);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1b);
     } else if (IsEventButtonHeld(event)) {
         if (IsEventGameAction(0x19, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1c);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1c);
         else if (IsEventGameAction(0x4c, event))
-            NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x1d);
+            NUISystem::CManager::GetInstance()->SendEvent(0x1d);
     } else if (IsEventGameAction(0x47, event)) {
         C2DVector movement(event.MouseMovementXY);
-        NUISystem::CFrontEndManager::GetInstance()->MouseMovement = movement;
-        NUISystem::CFrontEndManager::GetInstance()->SendEvent(0x19);
+        NUISystem::CManager::GetInstance()->MouseMovement = movement;
+        NUISystem::CManager::GetInstance()->SendEvent(0x19);
     }
 }

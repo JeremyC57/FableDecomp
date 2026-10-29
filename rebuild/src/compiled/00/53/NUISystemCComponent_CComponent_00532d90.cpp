@@ -1,7 +1,7 @@
 // NUISystem::CComponent::~CComponent() -- detach the component: drop it from every action that holds it as a parameter, unregister the observer, leave the parent viewport and position parent, orphan the position children, hand the destruction actions to the front-end manager and delete them, orphan the children, then destroy the members and the CActionParam / CObserver / CUIInterface bases
 // Leaf: ??1CComponent@NUISystem
 // Retail 0x00532D90, 1040 bytes, plain `ret`, one dword of frame (the destroy-range tag).
-// Callees: CFrontEndManager::GetInstance 0x0041E5F2 (`__fastcall`) slots 5 (+0x14, RemoveObserver) and 14 (+0x38, take a
+// Callees: CManager::GetInstance 0x0041E5F2 (`__fastcall`) slots 5 (+0x14, RemoveObserver) and 14 (+0x38, take a
 //   destruction action); free 0x00BFEA14, operator delete 0x00BFE9BC; list<CCountedPointer<CAction> >::clear 0x005356A0;
 //   _Destroy_range<CCountedPointer> 0x00535420 (`__fastcall`); the tree erasers 0x00534C60 (set<CComponent*>),
 //   0x0042A1B6 (map<unsigned long, CUIState>), 0x0052DCA0 (set<EEvent>); ~CCharString 0x0099EAE0.
@@ -233,14 +233,14 @@ class CDeletion { public:
     CPodList<CComponent*>  AssociatedParents;    // +0x04
 };
 }
-struct CFrontEndManager {
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void RemoveObserver(NUISystem::CObserver* observer);                          // slot 5 (+0x14)
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
     virtual void v11(); virtual void v12(); virtual void v13();
     virtual void AddDestructionAction(CCountedPointer<NUISystem::CAction>& action);        // slot 14 (+0x38)
-};
+}; }
 namespace NUISystem {
 #define VPAD1(a) virtual void a();
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
@@ -293,7 +293,7 @@ CComponent::~CComponent()
         (*it)->UIActionParams.remove(this);
         (*it)->Valid = false;
     }
-    CFrontEndManager::GetInstance()->RemoveObserver(this);
+    CManager::GetInstance()->RemoveObserver(this);
     if (PParentViewport)
         PParentViewport->RemoveViewportChild(this);
     if (PPositionParent)
@@ -303,7 +303,7 @@ CComponent::~CComponent()
     CRetailList<CAction>* actions = PActionsOnDestruction;
     if (actions) {
         for (_List_iterator<CCountedPointer<CAction> > it = actions->begin(); it != actions->end(); ++it)
-            CFrontEndManager::GetInstance()->AddDestructionAction(*it);
+            CManager::GetInstance()->AddDestructionAction(*it);
     }
     delete PActionsOnDestruction;
     for (unsigned long i = 0; i < Children.size(); ++i) {

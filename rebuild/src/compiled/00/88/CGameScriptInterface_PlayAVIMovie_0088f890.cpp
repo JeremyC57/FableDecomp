@@ -5,8 +5,8 @@ struct MidObj {
     char pad_e[0xbf];
     char flagCD;           // +0xcd  (signed)
 };
+class CUserProfileManager : public MidObj { public: static CUserProfileManager& __fastcall Get(); };   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 
-extern MidObj* GetMidObj(void);
 extern void __fastcall PlayMovie(void* target, int id,
     int a3, int a4, int a5, int a6, int a7, unsigned char b,
     float f, int a10, int a11, int a12);
@@ -14,7 +14,7 @@ extern void __fastcall PlayMovie(void* target, int id,
 void __fastcall CGameScriptInterface_PlayAVIMovie(void* self, void* edx_, void* target)
 {
     (void)self; (void)edx_;
-    MidObj* m = GetMidObj();
+    MidObj* m = &CUserProfileManager::Get();
     PlayMovie(target, 0x1b, 0, 0, 0, 0, 0,
               m->flagC ? (unsigned char)m->flagCD : m->flagD, -1.0f, 0, 0, 0);
 }

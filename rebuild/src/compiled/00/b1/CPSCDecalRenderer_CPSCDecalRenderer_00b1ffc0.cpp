@@ -46,9 +46,8 @@ public:
     __forceinline ~CEnginePrimitiveHandle() { Clear(); }
 };
 class CBaseClassNonCopyable {
-public:
-    virtual void v000();
-    ~CBaseClassNonCopyable();                      // 0x0099A300
+protected:
+    virtual ~CBaseClassNonCopyable();              // 0x0099A300 ??1CBaseClassNonCopyable@@MAE@XZ (slot 0: the virtual dtor)
 };
 namespace NParticleEngine {
 class __declspec(novtable) CComponent : public CBaseClassNonCopyable {

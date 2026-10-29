@@ -9,12 +9,18 @@
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector First; C3DVector Second; };
 class CThing;
-struct CInterfaceMap {
-    struct Entry { long Type; void* Component; };
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> Entry;
     Entry* First;
     Entry* Last;
-    Entry* LowerBound(const long* type); // 0x0040F020
+    Entry* LowerBound(const ETCInterfaceType& type); // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CCreatureActionBaseVirtuals {
     virtual ~CCreatureActionBaseVirtuals();
     virtual void Validate() const;
@@ -86,11 +92,11 @@ void CActionEventExplosion::Dispatch(const CCreatureActionBase& action)
         CTCDExplosion* explosion;
         if ((created->UsingComponents[2] & 2) != 0) {
             CInterfaceMap* components = &created->Components;
-            long key = 0x41;
-            CInterfaceMap::Entry* found = components->LowerBound(&key);
-            if (found == components->Last || found->Type > 0x41)
+            ETCInterfaceType key = (ETCInterfaceType)(0x41);
+            CInterfaceMap::Entry* found = components->LowerBound(key);
+            if (found == components->Last || found->first > 0x41)
                 found = components->Last;
-            explosion = (CTCDExplosion*)found->Component;
+            explosion = (CTCDExplosion*)((void*)found->second);
         }
         explosion->AddExcludedThing(SourceThing);
     }

@@ -4,8 +4,8 @@ struct CP { CAction* m_pObject; void* m_pCount; };
 struct Node { Node* next; Node* prev; CP value; };
 struct List { Node* head; unsigned long size; };
 static int g_sum = 0, g_calls = 0;
-struct CFrontEndManager { virtual void ExecuteAction(const CP& a) { ++g_calls; g_sum += a.m_pObject->id; } static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; } };
-struct CComp { void ExecuteActions(List* l) { if (l) for (Node* n = l->head->next; n != l->head; n = n->next) CFrontEndManager::GetInstance()->ExecuteAction(n->value); } };
+namespace NUISystem { class CManager { public: virtual void ExecuteAction(const CP& a) { ++g_calls; g_sum += a.m_pObject->id; } static CManager* __fastcall GetInstance() { static CManager m; return &m; } }; }
+struct CComp { void ExecuteActions(List* l) { if (l) for (Node* n = l->head->next; n != l->head; n = n->next) NUISystem::CManager::GetInstance()->ExecuteAction(n->value); } };
 int main()
 {
     CAction a = { 1 }, b = { 10 }; Node head, n1, n2; n1.value.m_pObject = &a; n2.value.m_pObject = &b;

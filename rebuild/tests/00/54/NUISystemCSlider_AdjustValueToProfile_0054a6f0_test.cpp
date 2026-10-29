@@ -105,7 +105,7 @@ class CUserProfileManager { public:                     // retail = Ego_r.pdb wi
     float GetMeshDetail() const;                 // 0x0054A590
     float GetShadowDetail() const { return UseNewProfileValues ? ShadowDetailNewProfile : ShadowDetail; }
 };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v000() {} virtual void v001() {}
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
     virtual void v003() {} virtual void v004() {}
@@ -122,8 +122,8 @@ struct CFrontEndManager {
     virtual void PlaySound(const CSoundName& sound, bool a);   // slot 40 (+0xa0)
     virtual void v041() {}
     virtual CDefPointer<CFrontEndManagerDef> GetDef();   // slot 42 (+0xa8)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 struct CSliderValue { unsigned char _pad[8]; float Value; };
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };
 struct CSliderTargetRef { CSliderTarget* Target; };
@@ -209,7 +209,7 @@ void CSlider::AdjustValueToProfile()
             colour.A = 0xff;
             PAcceptButton->ChangeColour(colour, 0.2f, false);
         }
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetDef()->SliderSound, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetDef()->SliderSound, true);
     }
 }
 }
@@ -223,16 +223,16 @@ void CObserver::ObserveEvent(long e) { Log((int)e); }
 CRGBColour CComponentPrimary_0054a990::GetColour() const { CRGBColour c; c.B = 1; c.G = 2; c.R = 3; c.A = 0x10; return c; }
 void CComponentPrimary_0054a990::ChangeColour(const CRGBColour& c, float t, bool) { g_fadeAlpha = c.A; g_fadeTime = t; }
 void CChangingStateComponent::ChangeState(unsigned long) {}
-void CFrontEndManager::AddObserver(CObserver*) {}
-void CFrontEndManager::RemoveObserver(CObserver*) {}
-void CFrontEndManager::ExecuteAction(const CCountedPointer<NUISystem::CAction>&) {}
-long CFrontEndManager::GetLastInputResult() { return 0; }
-void CFrontEndManager::PlaySound(const CSoundName& s, bool a) { g_played = s.Value; g_playedFlag = a; }
+void NUISystem::CManager::AddObserver(CObserver*) {}
+void NUISystem::CManager::RemoveObserver(CObserver*) {}
+void NUISystem::CManager::ExecuteAction(const CCountedPointer<NUISystem::CAction>&) {}
+long NUISystem::CManager::GetLastInputResult() { return 0; }
+void NUISystem::CManager::PlaySound(const CSoundName& s, bool a) { g_played = s.Value; g_playedFlag = a; }
 void CDefBase::Destroy() { ++g_destroyed; }
 static CFrontEndManagerDef g_def;
-CDefPointer<CFrontEndManagerDef> CFrontEndManager::GetDef() { ++g_def.Ref.Count; return CDefPointer<CFrontEndManagerDef>(&g_def); }
-static CFrontEndManager g_mgr;
-CFrontEndManager* __fastcall CFrontEndManager::GetInstance() { return &g_mgr; }
+CDefPointer<CFrontEndManagerDef> NUISystem::CManager::GetDef() { ++g_def.Ref.Count; return CDefPointer<CFrontEndManagerDef>(&g_def); }
+static NUISystem::CManager g_mgr;
+NUISystem::CManager* __fastcall NUISystem::CManager::GetInstance() { return &g_mgr; }
 void NUISystem::CSlider::UpdateValue() {}
 static CUserProfileManager g_prof;
 CUserProfileManager* CUserProfileManager::Get() { return &g_prof; }

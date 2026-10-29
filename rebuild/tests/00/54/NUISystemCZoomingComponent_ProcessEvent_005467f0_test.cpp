@@ -35,7 +35,7 @@ struct C2DVector {
     C2DVector& operator=(const C2DVector& o) { X = o.X; Y = o.Y; return *this; }
 };
 
-struct CFrontEndManager_Calls {                      // vtable-slot view of NUISystem::CFrontEndManager
+class CManager { public:                      // vtable-slot view of NUISystem::CFrontEndManager
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014();
@@ -45,7 +45,7 @@ struct CFrontEndManager_Calls {                      // vtable-slot view of NUIS
     virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034();
     virtual void v035(); virtual void v036(); virtual void v037(); virtual void v038();
     virtual const float& GetScrollStep();            // slot 39 (+0x9C)
-    static CFrontEndManager_Calls* __fastcall GetInstance();   // 0x0041E5F2
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 
 struct CComponentInterface {                         // primary vtable at +0
@@ -106,8 +106,8 @@ void CZoomingComponent::ProcessEvent(EEvent event)
             return;
         Zooming = true;
         oldZoom = Zoom;
-        zoom.X = Zoom.X + CFrontEndManager_Calls::GetInstance()->GetScrollStep() * ScrollingSpeed;
-        zoom.Y = Zoom.Y + CFrontEndManager_Calls::GetInstance()->GetScrollStep() * ScrollingSpeed;
+        zoom.X = Zoom.X + CManager::GetInstance()->GetScrollStep() * ScrollingSpeed;
+        zoom.Y = Zoom.Y + CManager::GetInstance()->GetScrollStep() * ScrollingSpeed;
         if (zoom.X < MinZoom.X)
             zoom.X = MinZoom.X;
         if (zoom.X > MaxZoom.X)
@@ -130,8 +130,8 @@ void CZoomingComponent::ProcessEvent(EEvent event)
             return;
         Zooming = true;
         oldZoom = Zoom;
-        zoom.X = (float)(Zoom.X + CFrontEndManager_Calls::GetInstance()->GetScrollStep() * ScrollingSpeed * 0.4);
-        zoom.Y = (float)(Zoom.Y + CFrontEndManager_Calls::GetInstance()->GetScrollStep() * ScrollingSpeed * 0.4);
+        zoom.X = (float)(Zoom.X + CManager::GetInstance()->GetScrollStep() * ScrollingSpeed * 0.4);
+        zoom.Y = (float)(Zoom.Y + CManager::GetInstance()->GetScrollStep() * ScrollingSpeed * 0.4);
         if (zoom.X < MinZoom.X)
             zoom.X = MinZoom.X;
         if (zoom.X > MaxZoom.X)
@@ -158,45 +158,45 @@ void CZoomingComponent::ProcessEvent(EEvent event)
 }
 
 namespace NUISystem {
-void CFrontEndManager_Calls::v000() { }
-void CFrontEndManager_Calls::v001() { }
-void CFrontEndManager_Calls::v002() { }
-void CFrontEndManager_Calls::v003() { }
-void CFrontEndManager_Calls::v004() { }
-void CFrontEndManager_Calls::v005() { }
-void CFrontEndManager_Calls::v006() { }
-void CFrontEndManager_Calls::v007() { }
-void CFrontEndManager_Calls::v008() { }
-void CFrontEndManager_Calls::v009() { }
-void CFrontEndManager_Calls::v010() { }
-void CFrontEndManager_Calls::v011() { }
-void CFrontEndManager_Calls::v012() { }
-void CFrontEndManager_Calls::v013() { }
-void CFrontEndManager_Calls::v014() { }
-void CFrontEndManager_Calls::v015() { }
-void CFrontEndManager_Calls::v016() { }
-void CFrontEndManager_Calls::v017() { }
-void CFrontEndManager_Calls::v018() { }
-void CFrontEndManager_Calls::v019() { }
-void CFrontEndManager_Calls::v020() { }
-void CFrontEndManager_Calls::v021() { }
-void CFrontEndManager_Calls::v022() { }
-void CFrontEndManager_Calls::v023() { }
-void CFrontEndManager_Calls::v024() { }
-void CFrontEndManager_Calls::v025() { }
-void CFrontEndManager_Calls::v026() { }
-void CFrontEndManager_Calls::v027() { }
-void CFrontEndManager_Calls::v028() { }
-void CFrontEndManager_Calls::v029() { }
-void CFrontEndManager_Calls::v030() { }
-void CFrontEndManager_Calls::v031() { }
-void CFrontEndManager_Calls::v032() { }
-void CFrontEndManager_Calls::v033() { }
-void CFrontEndManager_Calls::v034() { }
-void CFrontEndManager_Calls::v035() { }
-void CFrontEndManager_Calls::v036() { }
-void CFrontEndManager_Calls::v037() { }
-void CFrontEndManager_Calls::v038() { }
+void CManager::v000() { }
+void CManager::v001() { }
+void CManager::v002() { }
+void CManager::v003() { }
+void CManager::v004() { }
+void CManager::v005() { }
+void CManager::v006() { }
+void CManager::v007() { }
+void CManager::v008() { }
+void CManager::v009() { }
+void CManager::v010() { }
+void CManager::v011() { }
+void CManager::v012() { }
+void CManager::v013() { }
+void CManager::v014() { }
+void CManager::v015() { }
+void CManager::v016() { }
+void CManager::v017() { }
+void CManager::v018() { }
+void CManager::v019() { }
+void CManager::v020() { }
+void CManager::v021() { }
+void CManager::v022() { }
+void CManager::v023() { }
+void CManager::v024() { }
+void CManager::v025() { }
+void CManager::v026() { }
+void CManager::v027() { }
+void CManager::v028() { }
+void CManager::v029() { }
+void CManager::v030() { }
+void CManager::v031() { }
+void CManager::v032() { }
+void CManager::v033() { }
+void CManager::v034() { }
+void CManager::v035() { }
+void CManager::v036() { }
+void CManager::v037() { }
+void CManager::v038() { }
 void CComponentInterface::v000() { }
 void CComponentInterface::v001() { }
 void CComponentInterface::v002() { }
@@ -238,9 +238,9 @@ static int g_zoomCalls = 0, g_posCalls = 0;
 static C2DVector g_lastZoom, g_lastPos;
 static float g_lastZoomTime = 0, g_lastPosTime = 0;
 static bool g_lastZoomImm = true, g_lastPosImm = true;
-const float& CFrontEndManager_Calls::GetScrollStep() { return g_step; }
-static CFrontEndManager_Calls g_manager;
-CFrontEndManager_Calls* __fastcall CFrontEndManager_Calls::GetInstance() { return &g_manager; }
+const float& CManager::GetScrollStep() { return g_step; }
+static CManager g_manager;
+CManager* __fastcall CManager::GetInstance() { return &g_manager; }
 void CComponentInterface::ChangePosition(const C2DVector& position, float time, bool immediate)
 {
     ++g_posCalls; g_lastPos = position; g_lastPosTime = time; g_lastPosImm = immediate;

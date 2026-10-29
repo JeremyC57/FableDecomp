@@ -17,16 +17,17 @@ public:
     CCharString(const CCharString& other);                      // 0x0099EC30
 };
 
-struct CBaseClass {
-    virtual void v00();                                         // vtable 0x01231710
-    CBaseClass();                                               // 0x0099A2D0
+}   // the retail root is file scope
+class CBaseClass { public:
+    virtual ~CBaseClass();                                      // slot 0; vtable 0x01231710
+    CBaseClass();                                               // 0x0099A2D0 ??0CBaseClass@@QAE@XZ
 };
+namespace FableCons_009ee180 {
 
 struct CConsoleCommandLine : CBaseClass {                       // vtable 0x0129C400 (16 bytes)
     CCharString CurrentEntry;                                   // +0x04
     bool        UserEntry;                                      // +0x08
     long        CursorPosition;                                 // +0x0c
-    virtual void v00();
     CConsoleCommandLine(const CConsoleCommandLine& other)
         : CBaseClass(), CurrentEntry(other.CurrentEntry), UserEntry(other.UserEntry), CursorPosition(other.CursorPosition)
     {

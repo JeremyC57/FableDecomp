@@ -8,15 +8,15 @@ public:
     virtual void StopObserving(long) { Observing = 0; }
     virtual ~CObserverBase() { }
 };
-class CFrontEndManager {
+namespace NUISystem { class CManager { public:
 public:
     CObserverBase* LastObserver;
     virtual void AddObserver(CObserverBase* observer) { LastObserver = observer; }
-    virtual ~CFrontEndManager() { }
-    static CFrontEndManager* GetInstance();
-};
-static CFrontEndManager g_manager;
-CFrontEndManager* CFrontEndManager::GetInstance() { return &g_manager; }
+    virtual ~CManager() { }
+    static CManager* __fastcall GetInstance();
+}; }
+static NUISystem::CManager g_manager;
+NUISystem::CManager* NUISystem::CManager::GetInstance() { return &g_manager; }
 class CComponentRoot {
 public:
     long RootData;
@@ -29,7 +29,7 @@ public:
 void CTextSlider::OnActivate()
 {
     StartObserving(0x19);
-    CFrontEndManager::GetInstance()->AddObserver(this);
+    NUISystem::CManager::GetInstance()->AddObserver(this);
 }
 int main()
 {

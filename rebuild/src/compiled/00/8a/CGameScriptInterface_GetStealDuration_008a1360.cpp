@@ -10,12 +10,17 @@
 //   by-value GetDef() in one && condition (the two conditionally destroyed temporaries keep retail's flag word); the three floats are named
 //   locals in retail's load order (Min, Max, then the skill cap).
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type) const;   // 0x004365B0 (const instantiation)
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0 (const instantiation)
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CDefBase {
     virtual void v00();
     virtual void Destroy();                     // slot 1
@@ -73,10 +78,10 @@ public:
     CDefPointer<CDefClassBase> Def;             // +0x70
     template<class T> __forceinline const T* GetTC(long wanted) const
     {
-        long type = wanted;
+        ETCInterfaceType type = (ETCInterfaceType)(wanted);
         const CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (const T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (const T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
     }
     __forceinline unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     CDefPointer<CDefClassBase> GetDef() const { return Def; }

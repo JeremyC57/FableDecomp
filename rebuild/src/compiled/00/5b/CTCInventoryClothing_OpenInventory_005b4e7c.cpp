@@ -8,7 +8,7 @@
 // Model: engine/CTCInventoryClothing.h (PDB) has UseMannequin at +0x180; the retail flag is +0x15C, so a local view is used.
 #pragma optimize("s", on)
 struct CTCInventoryClothing_Retail;
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -32,8 +32,8 @@ struct CFrontEndManager {
     virtual void v20();
     virtual void v21();
     virtual void OnInventoryOpened(CTCInventoryClothing_Retail* inventory);   // slot 22 (+0x58)
-    static CFrontEndManager* __fastcall GetInstance();           // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();           // 0x0041E5F2
+}; }
 struct CTCInventoryBase_Retail {
     void OpenInventory();                                        // 0x005BD4EA
 };
@@ -50,5 +50,5 @@ void CTCInventoryClothing_Retail::OpenInventory()
     UseMannequin = true;
     SetUpSelectedClothes();
     CTCInventoryBase_Retail::OpenInventory();
-    CFrontEndManager::GetInstance()->OnInventoryOpened(this);
+    NUISystem::CManager::GetInstance()->OnInventoryOpened(this);
 }

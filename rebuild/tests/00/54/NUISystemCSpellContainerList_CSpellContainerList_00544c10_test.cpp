@@ -31,20 +31,20 @@ struct CObserver { virtual ~CObserver() {} int state; };
 struct CComponentRoot { virtual ~CComponentRoot() {} };
 struct CChangingStateComponent : CComponentRoot, CObserver { virtual ~CChangingStateComponent() { ++g_baseDtor; g_log[g_n++] = 9; } };
 static CObserver* g_removed = 0; static long g_executedType = -1; static bool g_executedValid = false;
-struct CFrontEndManager {
-    static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
+namespace NUISystem { class CManager { public:
+    static CManager* __fastcall GetInstance() { static CManager m; return &m; }
     void RemoveObserver(CObserver* o) { g_removed = o; g_log[g_n++] = 1; }
     void ExecuteAction(const CCountedPointer<CAction>& a) { g_executedType = a->ActionType; g_executedValid = a->Valid; g_log[g_n++] = 2; }
-};
+}; }
 template<class T> struct CRetailVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; ~CRetailVector() { if (_M_start) { std::free(_M_start); g_log[g_n++] = 3; } } };
 struct CSpellContainerList : CChangingStateComponent {
     CRetailVector<void*> SpellContainers;
     virtual ~CSpellContainerList()
     {
-        CFrontEndManager::GetInstance()->RemoveObserver(this);
+        NUISystem::CManager::GetInstance()->RemoveObserver(this);
         CCountedPointer<CAction> action(new CAction());
         action->ActionType = 0xd3;
-        CFrontEndManager::GetInstance()->ExecuteAction(action);
+        NUISystem::CManager::GetInstance()->ExecuteAction(action);
     }
 };
 int main()

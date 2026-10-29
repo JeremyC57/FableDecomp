@@ -66,17 +66,17 @@ struct CEngineInternalRepeatedZSpriteNative:CEngineInternalPrimitiveOcclusionNat
  virtual ~CEngineInternalRepeatedZSpriteNative();
  CEngineInternalRepeatedZSpriteNative():CEngineInternalPrimitiveOcclusionNative(0x2b,0x10),BoundingSphere(){}
 };
-struct CPrimitiveHandleBaseNative {virtual ~CPrimitiveHandleBaseNative();CPrimitiveHandleBaseNative();CPrimitiveHandleBaseNative(const CPrimitiveHandleBaseNative&){};};
+class CBaseClass { public:virtual ~CBaseClass();CBaseClass();CBaseClass(const CBaseClass&){};};
 struct CPrimitiveCountedPointerNative {
  CEngineInternalPrimitiveNative* Object;
  CPrimitiveCountedPointerNative(CEngineInternalPrimitiveNative* p):Object(p){}
  CPrimitiveCountedPointerNative(const CPrimitiveCountedPointerNative& o):Object(o.Object){if(Object)++Object->IVRefCount;}
  __forceinline ~CPrimitiveCountedPointerNative(){if(Object){CEngineInternalPrimitiveNative* p=Object;if(!p->RemoveReference())p->Destroy();}Object=0;}
 };
-struct CEnginePrimitiveHandleNative:CPrimitiveHandleBaseNative {
+struct CEnginePrimitiveHandleNative:CBaseClass {
  CPrimitiveCountedPointerNative Data;
  CEnginePrimitiveHandleNative(CEngineInternalPrimitiveNative* p):Data(p){}
- CEnginePrimitiveHandleNative(const CEnginePrimitiveHandleNative& o):CPrimitiveHandleBaseNative(o),Data(o.Data){}
+ CEnginePrimitiveHandleNative(const CEnginePrimitiveHandleNative& o):CBaseClass(o),Data(o.Data){}
  __forceinline virtual ~CEnginePrimitiveHandleNative(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->OnLastHandleReleased(this);}
 };
 struct CRepeatedSpriteDescription;

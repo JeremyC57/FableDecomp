@@ -175,8 +175,8 @@ struct CUserProfileManager_Retail {
     bool          m_defaultSetting;              // +0x18
     unsigned char _pad19[0xbf];
     bool          m_profileSetting;              // +0xd8
-    static CUserProfileManager_Retail& Get();    // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
 };
+class CUserProfileManager : public CUserProfileManager_Retail { public: static CUserProfileManager& __fastcall Get(); };   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld*                     World;              // +0x04 (engine/CGameScriptInterface.h)
@@ -195,7 +195,7 @@ void CGameScriptInterface::HeroReceiveMessageFromGuildMaster(const CCharString& 
     if (World->GuildMasterMessagesEnabled) {
         bool allowed = force;
         if (!allowed) {
-            CUserProfileManager_Retail& profile = CUserProfileManager_Retail::Get();
+            CUserProfileManager_Retail& profile = CUserProfileManager::Get();
             allowed = profile.m_profileLoaded ? profile.m_profileSetting : profile.m_defaultSetting;
         }
         if (allowed) {

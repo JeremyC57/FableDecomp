@@ -8,15 +8,21 @@
 #include "engine/CAIBrain.h"
 class CTCBoss { public: long GetPhase(); void SetNextBossPhase(long,bool); void ClearPhaseCounter(); }; // 0x007AED10, 0x007AEDA0, 0x007AED50
 struct CThingRetail;
-struct CInterfaceMap { struct Entry { long type; void* component; }; Entry* first; Entry* last; Entry* LowerBound(const long*); }; // 0x0040F020
+class CTCBase;
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public: typedef std::pair<ETCInterfaceType, CTCBase*> Entry; Entry* first; Entry* last; Entry* LowerBound(const ETCInterfaceType& key); };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap; // 0x0040F020
 struct CThingRetail {
  unsigned char inherited[0x20]; unsigned long UsingComponents[9]; CInterfaceMap Components;
  bool IsPerformingAnyAction(); // 0x006622A0
  template<class T> __forceinline void GetInterface(T** out,long type) {
   if(UsingComponents[type>>5] & (1UL << (type & 31))) {
-   long key=type; CInterfaceMap* map=&Components; CInterfaceMap::Entry* it=map->LowerBound(&key);
-   if(it==map->last || type<it->type) it=map->last;
-   *out=(T*)it->component;
+   ETCInterfaceType key = (ETCInterfaceType)(type); CInterfaceMap* map=&Components; CInterfaceMap::Entry* it=map->LowerBound(key);
+   if(it==map->last || type<it->first) it=map->last;
+   *out=(T*)((void*)it->second);
   }
  }
 };

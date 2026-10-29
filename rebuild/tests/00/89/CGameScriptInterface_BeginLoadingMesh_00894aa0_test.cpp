@@ -1065,7 +1065,8 @@ struct CThingObjectDefNative:CDefPointeeNative {unsigned char BeforeGraphic[0x68
 struct CThingCreatureDefNative:CDefPointeeNative {unsigned char BeforeGraphic[0xf8];CEngineGraphic Graphic;};
 __forceinline void ReleaseDef(CDefPointeeNative* p){if(--p->References==0)(p->*reinterpret_cast<DefReleaseSlot*>(p->VTable)[1].Release)();}
 template<class T>class CDefPointer { public:T* Object;CDefPointer():Object(0){}CDefPointer(const CDefPointer& other):Object(other.Object){if(Object)++Object->References;}~CDefPointer(){if(Object)ReleaseDef(Object);}void Reset(T* p){if(Object!=p){if(Object){ReleaseDef(Object);Object=0;}Object=p;if(p)++p->References;}}};
-struct CDefinitionManagerMethods:CDefinitionManager {static CDefinitionManagerMethods& Get();CDefPointer<CDefPointeeNative> GetPDefByName(const CCharString&);bool GetObjectDef(const CCharString&,CDefPointer<CThingObjectDefNative>&);bool GetCreatureDef(const CCharString&,CDefPointer<CThingCreatureDefNative>&);};
+struct CDefinitionManagerMethods:CDefinitionManager {CDefPointer<CDefPointeeNative> GetPDefByName(const CCharString&);bool GetObjectDef(const CCharString&,CDefPointer<CThingObjectDefNative>&);bool GetCreatureDef(const CCharString&,CDefPointer<CThingCreatureDefNative>&);};
+class CGameDefinitionManager : public CDefinitionManagerMethods { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 #pragma auto_inline(off)
 bool CDefinitionManagerMethods::GetObjectDef(const CCharString& meshName,CDefPointer<CThingObjectDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(meshName);if(p.Object){out.Reset(static_cast<CThingObjectDefNative*>(p.Object));return true;}return false;}
 bool CDefinitionManagerMethods::GetCreatureDef(const CCharString& meshName,CDefPointer<CThingCreatureDefNative>& out){CDefPointer<CDefPointeeNative> p=GetPDefByName(meshName);if(p.Object){out.Reset(static_cast<CThingCreatureDefNative*>(p.Object));return true;}return false;}
@@ -1079,8 +1080,8 @@ FABLE_STATIC_ASSERT(offsetof(CThingCreatureDefNative,Graphic)==0x100);
 void CGameScriptInterfaceMethods::BeginLoadingMesh(const CCharString& meshName)const{
  CDefPointer<CThingObjectDefNative> object;CDefPointer<CThingCreatureDefNative> creature;
  CEngineGraphic* graphic;
- if(CDefinitionManagerMethods::Get().GetObjectDef(meshName,object))graphic=&object.Object->Graphic;
- else if(CDefinitionManagerMethods::Get().GetCreatureDef(meshName,creature))graphic=&creature.Object->Graphic;
+ if(CGameDefinitionManager::Get().GetObjectDef(meshName,object))graphic=&object.Object->Graphic;
+ else if(CGameDefinitionManager::Get().GetCreatureDef(meshName,creature))graphic=&creature.Object->Graphic;
  else return;
  if(graphic&&(graphic->Type==4||graphic->Type==5)){
  CMeshDataBankMethods* bank=static_cast<CMeshDataBankMethods*>(World->PMainMeshBank_Data);
@@ -1108,7 +1109,7 @@ void CCharString::UnassignString(){if(storage_){if(--storage_->owners<=0){free(s
 CCharString::CCharString(const char* text,long n):storage_(0){++g_CCharStringInstanceCount_013BD800;if(text&&*text)storage_=AllocStringData(text,n);}
 CCharString::~CCharString(){UnassignString();--g_CCharStringInstanceCount_013BD800;}
 CCharString::operator const char*()const{return storage_?storage_->text:"";}
-CDefinitionManagerMethods& CDefinitionManagerMethods::Get(){return definitions;}
+CGameDefinitionManager& __fastcall CGameDefinitionManager::Get() {return (CGameDefinitionManager&)(definitions);}
 CDefPointer<CDefPointeeNative> CDefinitionManagerMethods::GetPDefByName(const CCharString& meshName){check(this==&definitions&&strcmp((const char*)meshName,"mesh-definition")==0&&lookups<2);CDefPointer<CDefPointeeNative> out;out.Object=lookupSequence[lookups++];if(out.Object)++out.Object->References;return out;}
 C3DMeshInfoMethods* CMeshDataBankMethods::GetMesh(unsigned long index){check(this==&meshBank&&index==expectedIndex&&activeDefinition&&activeDefinition->References==1);++meshGets;return &mesh;}
 bool C3DMeshInfoMethods::IsLoaded()const{check(this==&mesh&&activeDefinition->References==1);++loadedChecks;return meshLoaded;}

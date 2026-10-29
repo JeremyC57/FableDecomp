@@ -1,0 +1,6 @@
+address	name	evidence
+009ade10	CDefinitionManager::GetPDefFromClassIndex	naming wave 4B (rebuild/candidates/manual/naming/2026-10-29_wave4b/LABELS.tsv)
+009ade50	CDefinitionManager::GetPDefFromClassIndex (protected non-const twin)	naming wave 4B (rebuild/candidates/manual/naming/2026-10-29_wave4b/LABELS.tsv)
+009ada10	CDefinitionManager::GetPDefFromGlobalIndex (protected, IAE)	naming wave 4B (rebuild/candidates/manual/naming/2026-10-29_wave4b/LABELS.tsv)
+009ad2e0	CDefinitionManager::GetPDefClassInfo (probable)	naming wave 4B (rebuild/candidates/manual/naming/2026-10-29_wave4b/LABELS.tsv)
+0099a300	CBaseClassNonCopyable::~CBaseClassNonCopyable	naming wave 4B (rebuild/candidates/manual/naming/2026-10-29_wave4b/LABELS.tsv)

@@ -41,9 +41,9 @@ struct CUserProfileManager_Retail {
     bool          m_defaultTutorialsOn;             // +0x17
     unsigned char _pad18[0xbf];
     bool          m_profileTutorialsOn;             // +0xd7
-    static CUserProfileManager_Retail& Get();       // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
     bool AreTutorialsOn() const { return m_hasActiveProfile ? m_profileTutorialsOn : m_defaultTutorialsOn; }
 };
+class CUserProfileManager : public CUserProfileManager_Retail { public: static CUserProfileManager& __fastcall Get(); };   // 0x0040D2A0 ?Get@CUserProfileManager@@SIAAV1@XZ
 extern bool g_tutorialsEnabled;                     // 0x01375740
 struct CWorldMap_Retail;
 struct CDefinitionManager_Retail;
@@ -76,7 +76,7 @@ class CGameScriptInterface { public:
 
 bool CGameScriptInterface::MsgIsTutorialClickedPast() const
 {
-    if (g_tutorialsEnabled && CUserProfileManager_Retail::Get().AreTutorialsOn()) {
+    if (g_tutorialsEnabled && CUserProfileManager::Get().AreTutorialsOn()) {
         long frame = GetCurrentWorldFrameForMessages();
         long maxFrame = GetMaxWorldFrameForMessages();
         CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;

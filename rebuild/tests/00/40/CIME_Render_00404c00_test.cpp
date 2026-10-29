@@ -6,9 +6,9 @@ static unsigned char g_alpha = 0; struct SThemeRecord { unsigned char _pad[3]; u
 struct CThemeProvider { virtual SThemeRecord* GetTheme() = 0; }; struct CProvider : CThemeProvider { virtual SThemeRecord* GetTheme() { std::strcat(g_seq, "T"); return &g_theme; } };
 static void ImeUI_RenderCompositionString(bool a, bool b) { std::strcat(g_seq, "R"); std::strcat(g_seq, a ? "1" : "0"); std::strcat(g_seq, b ? "1" : "0"); }
 struct CSprite { void DrawWithRenderManager() { std::strcat(g_seq, "S"); } };
-struct CFrontEndManager { unsigned char _pad[0xb8]; CSprite* m_pImeSprite; CSprite* GetImeSprite() { return m_pImeSprite; } static CFrontEndManager* GetInstance(); }; static CFrontEndManager g_manager; CFrontEndManager* CFrontEndManager::GetInstance() { return &g_manager; }
+namespace NUISystem { class CManager { public: unsigned char _pad[0xb8]; CSprite* m_pImeSprite; CSprite* GetImeSprite() { return m_pImeSprite; } static CManager* __fastcall GetInstance(); }; } static NUISystem::CManager g_manager; NUISystem::CManager* NUISystem::CManager::GetInstance() { return &g_manager; }
 struct CIME { unsigned char _pad[8]; bool m_active; unsigned char _pad09[0x43]; CThemeProvider* m_pTheme;
-    void Render() { if (m_active) { if (m_pTheme) g_alpha = m_pTheme->GetTheme()->m_alpha; else g_alpha = 0; bool flags = true; ImeUI_RenderCompositionString(flags, flags); CSprite* sprite = CFrontEndManager::GetInstance()->GetImeSprite(); if (sprite) sprite->DrawWithRenderManager(); } } };
+    void Render() { if (m_active) { if (m_pTheme) g_alpha = m_pTheme->GetTheme()->m_alpha; else g_alpha = 0; bool flags = true; ImeUI_RenderCompositionString(flags, flags); CSprite* sprite = NUISystem::CManager::GetInstance()->GetImeSprite(); if (sprite) sprite->DrawWithRenderManager(); } } };
 
 int main() {
     CIME ime; std::memset(&ime, 0, sizeof ime); CProvider prov; CSprite sprite; ime.m_active = true; ime.m_pTheme = &prov; g_manager.m_pImeSprite = &sprite; g_alpha = 9;

@@ -40,8 +40,8 @@ struct CFadeSettingsPtr {
     CFadeSettingsObject* operator->() const { return Object; }
 };
 namespace NUISystem {
-class CFrontEndManager { public:
-    static CFrontEndManager* GetInstance() { static CFrontEndManager m; return &m; }
+class CManager { public:
+    static CManager* __fastcall GetInstance() { static CManager m; return &m; }
     CFadeSettingsPtr GetFadeSettings() { ++g_fade.RefCount; CFadeSettingsPtr p; p.Object = &g_fade; return p; }
 };
 }
@@ -94,7 +94,7 @@ void CTCInventoryQuests::DrawPreparePrimitivesForRendering(const CEnginePrimitiv
                     Components[i]->Render(info.PViewport, 0, 0, 0, 0);
             }
             AccumFadeTime += deltaTime;
-            float alpha = AccumFadeTime / NUISystem::CFrontEndManager::GetInstance()->GetFadeSettings()->FadeTime;
+            float alpha = AccumFadeTime / NUISystem::CManager::GetInstance()->GetFadeSettings()->FadeTime;
             if (alpha > 1.0f)
                 alpha = 1.0f;
             RenderUIBackdropQuad(alpha);

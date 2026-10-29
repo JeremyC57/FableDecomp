@@ -1,7 +1,7 @@
 // NUISystem::CFrontEndList::ScrollUp() -- move the front-end list selection up one row (wrapping), shifting every row's colour / position to its neighbour's and refading by distance from the selection
 // Leaf: ?ScrollUp@CFrontEndList@NUISystem@@
 // Retail: Fable.exe @ 0x0054C4C0, 834 bytes, `ret`, /O2. With at most one row, or at the top of a list that does not
-// wrap (a scrolling list: own slot 171, +0x2AC), the front-end manager (CFrontEndManager::GetInstance 0x0041E5F2) plays the misc-things
+// wrap (a scrolling list: own slot 171, +0x2AC), the front-end manager (CManager::GetInstance 0x0041E5F2) plays the misc-things
 // def's "denied" sound (+0x1A4; manager slots 42 GetMiscThingsDef by value, 40 PlaySound) and returns; otherwise it
 // plays the scroll sound (+0x194), drops the old selection (row slot 48 SetState(4)), moves SelectedChild up (wrapping
 // to the last row) and highlights it (SetState(3)). Each row then takes its upper neighbour's colour (row slots 56
@@ -84,9 +84,9 @@ public:
     virtual C2DVector GetPosition();                                                  // slot 55 (+0xdc)
     virtual CRGBColour GetColour();                                                   // slot 56 (+0xe0)
 };
-class CFrontEndManager {
+class CManager {
 public:
-    static CFrontEndManager* __fastcall GetInstance();                                // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                                // 0x0041E5F2
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
@@ -150,15 +150,15 @@ void CFrontEndList::ScrollUp()
 {
     if (ScrollingChildren.size() <= 1)
     {
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetMiscThingsDef()->ListDeniedSound, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetMiscThingsDef()->ListDeniedSound, true);
         return;
     }
     if (SelectedChild == 0 && IsScrollingList())
     {
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetMiscThingsDef()->ListDeniedSound, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetMiscThingsDef()->ListDeniedSound, true);
         return;
     }
-    CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetMiscThingsDef()->ListScrollSound, true);
+    CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetMiscThingsDef()->ListScrollSound, true);
     ScrollingChildren[SelectedChild]->SetState(4);
     long selected = SelectedChild - 1;
     SelectedChild = selected;

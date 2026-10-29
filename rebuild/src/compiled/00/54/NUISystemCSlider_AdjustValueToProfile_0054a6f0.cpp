@@ -7,7 +7,7 @@
 //   <x>NewProfile : <x>`; manifest labels them all GetCameraSensitivity): Gamma 0x00437470, HUDAlpha 0x00437490,
 //   SoundVolume 0x0047CFC2, DialogueVolume 0x0047CFD3, MusicVolume 0x0054A4F0, CameraSensitivity 0x0054A510,
 //   TextureDetail 0x0054A530, EffectsDetail 0x0054A570, MeshDetail 0x0054A590; ShadowDetail (+0x40 / +0xfc) is inline.
-//   CFrontEndManager::GetInstance 0x0041E5F2, its PlaySound (+0xa0) and GetDef (+0xa8, CDefPointer by value).
+//   CManager::GetInstance 0x0041E5F2, its PlaySound (+0xa0) and GetDef (+0xa8, CDefPointer by value).
 // Layout: as the landed CSlider rows (Ego_r.pdb minus 0x30): Value +0x1A4, Move +0x1AC, OldValue +0x1AD, PDefAction +0x1D4,
 //   PAcceptButton +0x1E8. CUserProfileManager retail offsets = Ego_r.pdb with 12-byte vectors (UseNewProfileValues +0xc).
 //   The def model is the landed CMenuEntry::GoForward 0x0053D720 one; the slider sound is the def's +0x19c member.
@@ -112,7 +112,7 @@ class CUserProfileManager { public:                     // retail = Ego_r.pdb wi
     float GetMeshDetail() const;                 // 0x0054A590
     float GetShadowDetail() const { return UseNewProfileValues ? ShadowDetailNewProfile : ShadowDetail; }
 };
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v000(); virtual void v001();
     virtual void AddObserver(CObserver* observer);       // slot 2 (+0x08)
     virtual void v003(); virtual void v004();
@@ -129,8 +129,8 @@ struct CFrontEndManager {
     virtual void PlaySound(const CSoundName& sound, bool a);   // slot 40 (+0xa0)
     virtual void v041();
     virtual CDefPointer<CFrontEndManagerDef> GetDef();   // slot 42 (+0xa8)
-    static CFrontEndManager* __fastcall GetInstance();   // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();   // 0x0041E5F2
+}; }
 struct CSliderValue { unsigned char _pad[8]; float Value; };
 struct CSliderTarget { unsigned char _pad[8]; CSliderValue* Value; };
 struct CSliderTargetRef { CSliderTarget* Target; };
@@ -216,7 +216,7 @@ void CSlider::AdjustValueToProfile()
             colour.A = 0xff;
             PAcceptButton->ChangeColour(colour, 0.2f, false);
         }
-        CFrontEndManager::GetInstance()->PlaySound(CFrontEndManager::GetInstance()->GetDef()->SliderSound, true);
+        CManager::GetInstance()->PlaySound(CManager::GetInstance()->GetDef()->SliderSound, true);
     }
 }
 }

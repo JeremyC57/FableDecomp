@@ -2,7 +2,7 @@
 // Leaf: OpenInventory@CTCInventoryWeapons
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005C2F27, length 131 bytes. Frame-pointer size TU: optimize("y",off) + ("s",on).
 // Callees: CTCInventoryBase::OpenInventory() @ 0x005BD4EA (explicit base call), CTCInventoryBase::SetInventoryAnimRenderBox(
-// const C2DBoxF&) @ 0x005BC58F, the def's slot 1 on release, NUISystem::CFrontEndManager::GetInstance() @ 0x0041E5F2 (__fastcall)
+// const C2DBoxF&) @ 0x005BC58F, the def's slot 1 on release, NUISystem::CManager::GetInstance() @ 0x0041E5F2 (__fastcall)
 // and its virtual slot 15 (+0x3C) taking the screen (name descriptive).
 // Shape: the box is built from two by-value GetPDef() temporaries in one full expression (arguments right to left: the
 // extents' copy in edi first, the position's in esi second), each an add-ref with a null test; the 2-float vectors copy as
@@ -45,7 +45,7 @@ struct CTCInventoryBase_Weapons {
     void SetInventoryAnimRenderBox(const C2DBoxF& box);   // 0x005BC58F
 };
 class CTCInventoryWeapons;
-struct CFrontEndManager {
+namespace NUISystem { class CManager { public:
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -62,8 +62,8 @@ struct CFrontEndManager {
     virtual void v13();
     virtual void v14();
     virtual void OnScreenOpened(CTCInventoryWeapons* screen);   // slot 15 (+0x3C)
-    static CFrontEndManager* __fastcall GetInstance();          // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();          // 0x0041E5F2
+}; }
 class CTCInventoryWeapons : public CTCInventoryBase_Weapons { public:
     void OpenInventory();
 };
@@ -72,5 +72,5 @@ void CTCInventoryWeapons::OpenInventory()
 {
     CTCInventoryBase_Weapons::OpenInventory();
     SetInventoryAnimRenderBox(C2DBoxF(GetPDef()->WeaponsAnimBoxTLPos, GetPDef()->WeaponsAnimBoxExtents));
-    CFrontEndManager::GetInstance()->OnScreenOpened(this);
+    NUISystem::CManager::GetInstance()->OnScreenOpened(this);
 }

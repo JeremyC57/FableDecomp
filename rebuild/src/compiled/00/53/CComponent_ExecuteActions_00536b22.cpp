@@ -30,7 +30,7 @@ template<class T> struct CRetailList {                          // retail std::l
     iterator end() { return iterator(head); }
 };
 
-struct CFrontEndManager_Calls {                                // engine/CFrontEndManager.h holds data only: this is the vtable-slot view
+namespace NUISystem { class CManager { public:                                // engine/CFrontEndManager.h holds data only: this is the vtable-slot view
     virtual void v00();
     virtual void v01();
     virtual void v02();
@@ -46,8 +46,8 @@ struct CFrontEndManager_Calls {                                // engine/CFrontE
     virtual void v12();
     virtual void v13();
     virtual void ExecuteAction(const CCountedActionPointer& action);   // slot 14 (+0x38)
-    static CFrontEndManager_Calls* __fastcall GetInstance();          // 0x0041E5F2
-};
+    static CManager* __fastcall GetInstance();          // 0x0041E5F2
+}; }
 
 struct CComponent {
     virtual void v00();
@@ -58,6 +58,6 @@ void CComponent::ExecuteActions(CRetailList<CCountedActionPointer>* actions)
 {
     if (actions != 0) {
         for (CRetailList<CCountedActionPointer>::iterator it = actions->begin(); it != actions->end(); ++it)
-            CFrontEndManager_Calls::GetInstance()->ExecuteAction(*it);
+            NUISystem::CManager::GetInstance()->ExecuteAction(*it);
     }
 }
