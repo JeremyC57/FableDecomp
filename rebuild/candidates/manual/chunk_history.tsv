@@ -24768,3 +24768,9 @@ chunk	address	module	name	length
 571	00ee3b20	global	sub_00ee3b20	952
 571	00f08e90	global	sub_00f08e90	961
 572	00919ae0	CAIStateGroup_BuyFromSeller	Update	2220
+573	00e04bd0	global	Script_Trader_Infection_State	826
+573	00e29b20	global	sub_00e29b20	846
+573	00e2ad50	global	sub_00e2ad50	819
+573	00e9c4b0	global	sub_00e9c4b0	926
+573	00ee6e90	global	sub_00ee6e90	767
+573	00f08590	global	Script_Hero_Morphs_Thread	839
