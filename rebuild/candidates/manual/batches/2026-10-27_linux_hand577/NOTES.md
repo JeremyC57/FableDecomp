@@ -73,8 +73,10 @@ string literal is at the retail address of the same offset.
   477, 478, 481, 506, 601, 763, 766, 769); CScriptThing slots 3 GetDataString, 4 SetDataString, 7 GetHomePos.
 
 ## Header debt
-- engine/CDefClassBase.h (flattened vptr, pack(1), 0x25 bytes): modelled locally as a polymorphic 0x28-byte base in
-  0x00D34D40 / 0x00E54AA0 (`// Layout:` lines); the element bodies are opaque.
+- engine/CDefClassBase.h: RESOLVED at landing (owner review 2026-10-29). The local `virtual ~CDefClassBase(); _body[0x24]`
+  stand-in in 0x00D34D40 / 0x00E54AA0 is replaced by the shared headers' retail opt-in (FABLE_RETAIL_DEF_CLASS_BASE):
+  CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase with all 25 retail vtable slots; the elements
+  declare their real overrides (dtor, Transfer, Copy, GetSizeofClass). Both rows regrade RELOCATION_MATCH + PASS.
 - engine/CGameScriptInterface.h / CScriptThing.h: not used (flattened vptr); the interface is CGameScriptInterfaceBase with the
   needed virtual slots, as every landed quest row does. CScriptBase / CEntityScriptBase / CLevelScriptBase have no headers.
 

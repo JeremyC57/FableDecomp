@@ -16,15 +16,16 @@
 //   helpers: _M_allocate_and_copy, _M_clear, __copy_ptrs, _Destroy and _Construct are declarations; __uninitialized_copy is
 //   `__forceinline` (plain `inline` leaves it an out-of-line call, 290v315). __false_type has no user constructor: retail
 //   zero-stores the __copy_ptrs tag in the dead argument slot (the two __copy_ptrs calls share their pushes).
-// Layout: CDefClassBase is modelled locally as a polymorphic 0x28-byte base: engine/CDefClassBase.h is the flattened Ego_r
-//   layout (vptr as a data member, pack(1), 0x25 bytes), which cannot give the derived element its virtual destructor.
-class CDefClassBase {                                   // 0x28 bytes in retail (Ego_r.pdb 37 + padding)
-public:
-    virtual ~CDefClassBase();
-    unsigned char _body[0x24];
-};
+// Layout: the retail polymorphic def-class chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, 0x28 bytes, vtable 0x01230BCC).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"
 class CFireHeartPatternDef : public CDefClassBase {     // 0x34 bytes in retail (Ego_r.pdb 60: Dinkumware vector<bool>)
 public:
+    virtual ~CFireHeartPatternDef();          // slot 0  0x00D34F60 (scalar deleting); vtable 0x012CCC50 (no RTTI)
+    virtual void Transfer(CPersistContext&);            // slot 18 0x00D35070
+    virtual void Copy(const CDefClassBase*);            // slot 19 0x00D34FB0
+    virtual unsigned long GetSizeofClass();             // slot 20 0x00D34EF0
     unsigned char PadActive[0x0c];                      // +0x28 vector<bool> PadActive (opaque here)
 };
 

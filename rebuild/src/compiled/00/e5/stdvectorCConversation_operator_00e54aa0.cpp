@@ -14,15 +14,16 @@
 //   assignments; plain `inline` keeps __copy an out-of-line call, 341v354), __uninitialized_copy is `__forceinline` with the inline _Construct (`new (p) T(v)`: the placement null test, the
 //   copy constructor out of line); _M_allocate_and_copy, _M_clear and _Destroy are declarations.
 inline void* operator new(unsigned int, void* p) { return p; }
-// Layout: CDefClassBase is modelled locally as a polymorphic 0x28-byte base: engine/CDefClassBase.h is the flattened Ego_r
-//   layout (vptr as a data member, pack(1), 0x25 bytes), which cannot give the derived element its virtual destructor.
-class CDefClassBase {                                   // 0x28 bytes in retail (Ego_r.pdb 37 + padding)
-public:
-    virtual ~CDefClassBase();
-    unsigned char _body[0x24];
-};
+// Layout: the retail polymorphic def-class chain from the shared headers (FABLE_RETAIL_DEF_CLASS_BASE opt-in:
+//   CDefClassBase : CDefPointeeBase : CResource : CIVCountedPointeeBase, 0x28 bytes, vtable 0x01230BCC).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"
 class CConversation : public CDefClassBase {            // 0x5C bytes in retail (Ego_r.pdb 108: Dinkumware vectors)
 public:
+    virtual ~CConversation();                 // slot 0  0x00E54D60 (scalar deleting); vtable 0x012E5FF0 (no RTTI)
+    virtual void Transfer(CPersistContext&);            // slot 18 0x00E579E0
+    virtual void Copy(const CDefClassBase*);            // slot 19 0x00E54D10
+    virtual unsigned long GetSizeofClass();             // slot 20 0x00E54D00
     long Lines;                                         // +0x28
     unsigned char Speaker[0x0c];                        // +0x2c vector<CCharString> Speaker (opaque here)
     unsigned char Dialogue[0x0c];                       // +0x38 vector<CCharString> Dialogue
