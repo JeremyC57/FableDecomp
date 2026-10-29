@@ -24762,3 +24762,9 @@ chunk	address	module	name	length
 570	00ec3d40	global	sub_00ec3d40	994
 570	00ef87d0	global	sub_00ef87d0	1003
 570	00f3e6b0	CTriangleStripifier2	ProcessTriangles	920
+571	00bdbb70	CVertexShaderConstantLayout	Initialize	909
+571	00d99a30	global	Script_Bandit_Sacrifice	911
+571	00ece460	global	Script_InitializeWitchCharacter	908
+571	00ee3b20	global	sub_00ee3b20	952
+571	00f08e90	global	sub_00f08e90	961
+572	00919ae0	CAIStateGroup_BuyFromSeller	Update	2220
