@@ -24780,3 +24780,13 @@ chunk	address	module	name	length
 574	00e56d10	global	CScriptBase_AskForBook_Impl	745
 574	00e690f0	global	sub_00e690f0	759
 574	00eaea20	global	sub_00eaea20	732
+575	00d01290	global	CScriptBase_WaitForEntityAndExecuteOnePair	265
+575	00dc3bd0	global	Script_Assignment_Failed	265
+575	00f01a40	global	Script_Hero_State_Thread	265
+575	00d68600	global	Quest_GuildTrainingWoods_Will_Init	267
+575	00d9b2f0	global	Script_Quest_Failed_Notify	278
+575	00f0d4e0	global	NScript_CQ_AmbushTradersScript_TeleportDataEmplace	279
+575	00d18ca0	global	TeleportData_OnReadFinished	280
+575	00d62140	global	Quest_GuildTrainingWoods_Departure_Init	280
+575	00d04260	global	CScriptBase_WaitForEntityAndExecuteTwoPair	305
+575	00efc300	global	Script_MarkerToFace_Thread	315
