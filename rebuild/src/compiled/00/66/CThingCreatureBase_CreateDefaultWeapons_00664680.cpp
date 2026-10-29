@@ -25,13 +25,18 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char  _pad00[0x20];
@@ -55,19 +60,19 @@ class CThing { public:
     }
     __forceinline CTCBase* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
+        CInterfaceMap::SEntry* it = map->LowerBound(key);
         CInterfaceMap::SEntry* end = map->last;
-        return (it == end || type < it->type ? end : it)->component;
+        return (it == end || type < it->first ? end : it)->second;
     }
     __forceinline const CTCBase* GetTC(long type) const
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&key);
+        const CInterfaceMap::SEntry* it = map->LowerBound(key);
         const CInterfaceMap::SEntry* end = map->last;
-        return (it == end || type < it->type ? end : it)->component;
+        return (it == end || type < it->first ? end : it)->second;
     }
 };
 

@@ -19,12 +19,17 @@ public:
     virtual void v19(); virtual void v20();
     virtual long GetInterfaceType() const;                    // slot 21 (+0x54)
 };
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> at CThing+0x44: {first, last}
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CComponentBits {                         // STLport bitset<274>
     unsigned long _M_w[9];
     bool test(unsigned long pos) const
@@ -46,10 +51,10 @@ public:
 };
 __forceinline CTCBase* GetTC(CThing* thing, long type)
 {
-    long key = type;
+    ETCInterfaceType key = (ETCInterfaceType)(type);
     CInterfaceMap* map = &thing->Components;
-    CInterfaceMap::SEntry* it = map->LowerBound(&key);
-    return ((it == map->last || type < it->type) ? map->last : it)->component;
+    CInterfaceMap::SEntry* it = map->LowerBound(key);
+    return ((it == map->last || type < it->first) ? map->last : it)->second;
 }
 void CThing::CopyTCIfExists(const CTCBase& source)
 {

@@ -12,12 +12,17 @@
 //         CThingAICreature HomeBuilding +0x168, WorkBuilding +0x170.
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);           // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing;
 class CBaseIntelligentPointer {
@@ -63,11 +68,11 @@ public:
     }
     __forceinline CTCBase* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &Interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
+        CInterfaceMap::SEntry* it = map->LowerBound(key);
         CInterfaceMap::SEntry* end = map->last;
-        return (it == end || type < it->type ? end : it)->component;
+        return (it == end || type < it->first ? end : it)->second;
     }
     const C3DVector& GetPos() const;           // 0x004C73D0
 };

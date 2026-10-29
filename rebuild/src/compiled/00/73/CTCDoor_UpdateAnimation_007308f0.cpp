@@ -18,12 +18,17 @@
 extern long g_framesPerSecond;                          // 0x01375550
 extern float g_epsilon_0129ba3c;                        // 0x0129BA3C (1e-4f)
 class CTCBase;
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
@@ -31,10 +36,10 @@ class CThing { public:
     unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template<class T> __forceinline T* GetTC(long wanted)
     {
-        long type = wanted;
+        ETCInterfaceType type = (ETCInterfaceType)(wanted);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (T*)((it == map->last || wanted < it->type) ? map->last : it)->component;
+        CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
     }
     void SetForceFrameUpdate(bool force);               // 0x004C7C60
     bool IsAffectedByBulletTime();                      // 0x004C9920

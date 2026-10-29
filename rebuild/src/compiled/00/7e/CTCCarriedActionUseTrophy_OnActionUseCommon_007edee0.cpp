@@ -10,12 +10,17 @@
 // Shape: the trophy lookup is the unchecked out-parameter GetInterface (the absent arm reads the never-written local from the
 // dead `user` argument slot, GOTCHAS chunk 129); the target component is loaded straight into ecx (HasTC + one-ternary GetTC).
 class CTCBase;
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     virtual void v000();                                // the polymorphic root holds the vptr
     unsigned char _pad04[0x20 - 0x04];
@@ -27,19 +32,19 @@ class CThing { public:
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     __forceinline CTCBase* GetTC(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || interfaceType < it->type)
+        CInterfaceMap::SEntry* it = map->LowerBound(type);
+        if (it == map->last || interfaceType < it->first)
             it = map->last;
-        return it->component;
+        return it->second;
     }
     __forceinline CTCBase* GetTCSelect(long interfaceType)   // one ternary: the component goes straight to ecx
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        return (it == map->last || interfaceType < it->type ? map->last : it)->component;
+        CInterfaceMap::SEntry* it = map->LowerBound(type);
+        return (it == map->last || interfaceType < it->first ? map->last : it)->second;
     }
     template <class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {

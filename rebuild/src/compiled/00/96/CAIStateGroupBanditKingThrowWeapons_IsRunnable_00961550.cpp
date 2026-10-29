@@ -52,13 +52,17 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer   // CIntelligentPo
 };
 
 class CTCBase;
-struct CInterfaceMap                                // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-{
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);           // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);           // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CThingWithTCs
 {
@@ -73,14 +77,14 @@ struct CThingWithTCs
     }
     __forceinline CInterfaceMap::SEntry* FindEntry(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
+        CInterfaceMap::SEntry* it = map->LowerBound(key);
         CInterfaceMap::SEntry* end = map->last;
         CInterfaceMap::SEntry* sel;
         if (it == end)
             sel = end;
-        else if (it->type <= type)
+        else if (it->first <= type)
             sel = it;
         else
             sel = end;
@@ -112,7 +116,7 @@ bool CAIStateGroup_BanditKingThrowWeapons::IsRunnable()
         CThingWithTCs* creature = (CThingWithTCs*)PBrain->Creature;
         if (creature->HasTC(0xad))
         {
-            CTCBoss* boss = (CTCBoss*)creature->FindEntry(0xad)->component;
+            CTCBoss* boss = (CTCBoss*)creature->FindEntry(0xad)->second;
             if (!boss->IsOnFinalPhase() && boss->IsReadyForPhaseChange())
             {
                 const C3DVector& from = PBrain->Creature->GetPos();

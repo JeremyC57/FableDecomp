@@ -13,12 +13,17 @@
 // Layout = Ego_r.pdb CTCDRegionExit (packed, as the landed MoveHeroThroughExit 0x00779080); CThing dead bit +0x91, +0xb4 float.
 class C3DVector { public: float X, Y, Z; };
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);                    // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);                    // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -32,10 +37,10 @@ public:
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        CInterfaceMap::SEntry* it = map->LowerBound(key);
+        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
     }
 };
 class CThingPlayerCreature : public CThing { };

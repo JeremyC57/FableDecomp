@@ -103,12 +103,17 @@ class CTCAnimationComplex { public:
 struct CTCEditable {
     void EditFrameUpdate();                             // 0x00707930
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CPresenceBits { bool test(long kind) const; };   // bitset<>::test 0x00410DE0
 class CThing { public:
     unsigned char  _pad00[0x20];
@@ -125,10 +130,10 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** out, long kind)
     {
         if (m_present.test(kind)) {
-            long key = kind;
+            ETCInterfaceType key = (ETCInterfaceType)(kind);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            *out = (T*)((it == map->last || kind < it->type) ? map->last : it)->component;
+            CInterfaceMap::SEntry* it = map->LowerBound(key);
+            *out = (T*)((it == map->last || kind < it->first) ? map->last : it)->second;
             return true;
         }
         return false;

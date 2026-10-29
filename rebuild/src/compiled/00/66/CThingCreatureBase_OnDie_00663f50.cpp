@@ -55,13 +55,18 @@ class CDefClassBase : public CDefBase { public:
     template <class T> bool GetSubDef(CDefPointer<T>& out);   // 0x00669580 (T = CSpecialEffectsDef)
 };
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCPhysicsBase { public:
     VF(00) VF(01) VF(02) VF(03) VF(04) VF(05) VF(06) VF(07) VF(08) VF(09)
@@ -150,32 +155,32 @@ public:
     }
     __forceinline CTCBase* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        if (it == map->last || type < it->type)
+        CInterfaceMap::SEntry* it = map->LowerBound(key);
+        if (it == map->last || type < it->first)
             it = map->last;
-        return it->component;
+        return it->second;
     }
     template <class T> __forceinline bool GetConstInterface(const T** ppOut, long type) const
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&key);
+            const CInterfaceMap::SEntry* it = map->LowerBound(key);
             const CInterfaceMap::SEntry* end = map->last;
-            *ppOut = (const T*)(it == end || type < it->type ? end : it)->component;
+            *ppOut = (const T*)(it == end || type < it->first ? end : it)->second;
             return true;
         }
         return false;
     }
     __forceinline const CTCBase* GetConstTC(long type) const
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&key);
+        const CInterfaceMap::SEntry* it = map->LowerBound(key);
         const CInterfaceMap::SEntry* end = map->last;
-        return (it == end || type < it->type ? end : it)->component;
+        return (it == end || type < it->first ? end : it)->second;
     }
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880

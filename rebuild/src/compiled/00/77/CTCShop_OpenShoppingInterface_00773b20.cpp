@@ -13,12 +13,17 @@
 // AddULONG (its value homed in the frame word below the event) written before the player number.
 class CThing;
 class CTCBase;
-struct CInterfaceMap {                                  // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                  // CVectorMap<ETCInterfaceType, CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                     // +0x20 interface-present bitset
@@ -28,12 +33,12 @@ class CThing { public:
     __forceinline bool GetInterface(long type, CTCBase** out)   // inline: the landed GetInterface family shape (0x007504E0)
     {
         if (m_presentBits[type >> 5] & (1UL << (type & 31))) {
-            long key = type;
+            ETCInterfaceType key = (ETCInterfaceType)(type);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            if (it == map->last || type < it->type)
+            CInterfaceMap::SEntry* it = map->LowerBound(key);
+            if (it == map->last || type < it->first)
                 it = map->last;
-            *out = it->component;
+            *out = it->second;
             return true;
         }
         return false;

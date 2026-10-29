@@ -158,12 +158,17 @@ struct CAugmentationArray {                                    // vector<EObject
 };
 
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    const SEntry* LowerBound(const long* type) const;          // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;          // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCWeapon { public:                                             // interface 0x77 (descriptive)
     bool IsRanged() const;                                     // 0x007BED60 (descriptive)
 };
@@ -185,10 +190,10 @@ public:
     __forceinline bool IsRangedWeapon() const
     {
         if (m_presentBits[3] & 0x800000) {
-            long type = 0x77;
+            ETCInterfaceType type = (ETCInterfaceType)(0x77);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            return ((CTCWeapon*)(it == map->last || 0x77 < it->type ? map->last : it)->component)->IsRanged();
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            return ((CTCWeapon*)(it == map->last || 0x77 < it->first ? map->last : it)->second)->IsRanged();
         }
         return false;
     }

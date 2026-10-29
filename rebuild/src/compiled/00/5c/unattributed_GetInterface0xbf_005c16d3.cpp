@@ -19,12 +19,17 @@ struct CPresenceBits {
     bool test(long bit);                   // 0x00410DE0 (std::bitset::test)
 };
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type); // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type); // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 struct CThingComponents_005c16d3 {
     unsigned char _pad0[0x20];
@@ -37,12 +42,12 @@ struct CThingComponents_005c16d3 {
 bool CThingComponents_005c16d3::GetInterface_0xbf(CTCBase** out)
 {
     if (m_present.test(0xbf)) {
-        long type = 0xbf;
+        ETCInterfaceType type = (ETCInterfaceType)(0xbf);
         CInterfaceMap* map = &m_interfaces;   // named pointer: retail advances esi to the map once (`add esi`)
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || 0xbf < it->type)
+        CInterfaceMap::SEntry* it = map->LowerBound(type);
+        if (it == map->last || 0xbf < it->first)
             it = map->last;
-        *out = it->component;
+        *out = it->second;
         return true;
     }
     return false;

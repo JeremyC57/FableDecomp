@@ -6,14 +6,19 @@
 // Components +0x44, Dead +0x91 bit 0).
 // CTCHeroExperience retail = Ego_r.pdb minus 8 after its two STLport vectors: AbleToGainExperience +0x3c (PDB +0x44).
 class CTCBase;
-class CInterfaceMap {                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                    // CThing::Components, CVectorMap<ETCInterfaceType, CTCBase*> (retail 8 bytes)
 public:
-    struct SEntry { long type; CTCBase* component; };
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry*       LowerBound(const long* type);          // 0x0040F020
-    const SEntry* LowerBound(const long* type) const;    // 0x004365B0
+    SEntry*       LowerBound(const ETCInterfaceType& type);          // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;    // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing {
 public:
     unsigned char _pad00[0x20];
@@ -32,24 +37,24 @@ public:
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;
-        long type = T::INTERFACE_TYPE;
+        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
         CInterfaceMap* map = &Components;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || T::INTERFACE_TYPE < it->type)
+        CInterfaceMap::SEntry* it = map->LowerBound(type);
+        if (it == map->last || T::INTERFACE_TYPE < it->first)
             it = map->last;
-        *out = (T*)it->component;
+        *out = (T*)it->second;
         return true;
     }
     template <class T> __forceinline bool PeekTC(const T** out) const  // ??$PeekTC@$$CBV...@@@CThing@@QBE_NPAPBV...@@@Z
     {
         if (!HasTC(T::INTERFACE_TYPE))
             return false;
-        long type = T::INTERFACE_TYPE;
+        ETCInterfaceType type = (ETCInterfaceType)(T::INTERFACE_TYPE);
         const CInterfaceMap* map = &Components;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        if (it == map->last || T::INTERFACE_TYPE < it->type)
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        if (it == map->last || T::INTERFACE_TYPE < it->first)
             it = map->last;
-        *out = (const T*)it->component;
+        *out = (const T*)it->second;
         return true;
     }
 };

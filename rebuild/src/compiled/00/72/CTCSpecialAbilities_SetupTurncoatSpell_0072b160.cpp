@@ -17,13 +17,18 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);               // 0x0040F020
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CTCParamsBase;
 class CThing;
 struct CTCTargeter {                                    // interface 8 (named descriptively)
@@ -47,17 +52,17 @@ public:
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        CInterfaceMap::SEntry* it = map->LowerBound(key);
+        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
     }
     template <class T> __forceinline T* GetTC(long type) const
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(key);
+        return (T*)((it == map->last || type < it->first) ? map->last : it)->second;
     }
 public:
     CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60

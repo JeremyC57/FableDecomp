@@ -18,12 +18,17 @@
 //   In a body this large VC7.1 keeps HasTC/GetInterface/GetTC out of line unless they are `__forceinline`.
 class CTCBase;
 
-struct CInterfaceMap {                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                                      // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);                   // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);                   // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char _pad0[0x20];
@@ -38,10 +43,10 @@ class CThing { public:
     template <class T>
     __forceinline void GetInterface(long type, T** out)
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        *out = (T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        CInterfaceMap::SEntry* it = map->LowerBound(key);
+        *out = (T*)((it == map->last || type < it->first) ? map->last : it)->second;
     }
     template <class T>
     __forceinline T* GetTC(long type, T*)

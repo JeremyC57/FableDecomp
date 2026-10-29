@@ -20,12 +20,17 @@ class CThing { };
 class CThingCreatureBase;
 class CTCBase;
 
-struct CInterfaceMap {                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                          // CVectorMap<ETCInterfaceType, CTCBase*> {first, last}
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CModeBase {                               // CTCCreatureModeManager::CModeBase (local model)
 public:
     virtual void v00();
@@ -66,10 +71,10 @@ public:
     }
     template<class T> __forceinline const T* GetTC(long type) const
     {
-        long key = type;
+        ETCInterfaceType key = (ETCInterfaceType)(type);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&key);
-        return (const T*)((it == map->last || type < it->type) ? map->last : it)->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(key);
+        return (const T*)((it == map->last || type < it->first) ? map->last : it)->second;
     }
     bool IsInMelee() const;                     // 0x00661E80
     bool IsInMeleeAsAttacker() const;           // 0x00662410

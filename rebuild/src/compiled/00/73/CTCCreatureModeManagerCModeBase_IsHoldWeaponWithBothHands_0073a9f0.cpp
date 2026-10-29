@@ -27,12 +27,17 @@ class CGameDefinitionManager : public CDefinitionManager
 {
 };
 
-struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                     // CVectorMap<ETCInterfaceType, CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    const SEntry* LowerBound(const long* type) const;  // 0x004365B0 (the const instantiation)
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;  // 0x004365B0 (the const instantiation)
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     unsigned char  _pad0[0x20];
@@ -49,11 +54,11 @@ class CThing { public:
     }
     template<class T> __forceinline const T* GetTC(long interfaceType) const
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         const CInterfaceMap* map = &m_interfaces;
-        const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        const CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->type) ? map->last : it;
-        return (const T*)sel->component;
+        const CInterfaceMap::SEntry* it = map->LowerBound(type);
+        const CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
+        return (const T*)sel->second;
     }
 public:
     const CGameDefinitionManager& PeekDefinitionManager() const;   // 0x004C7990

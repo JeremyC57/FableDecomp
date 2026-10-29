@@ -29,13 +29,18 @@ struct CPresenceBits {
     bool test(long bit) const;                       // 0x00410DE0 (std::bitset::test)
 };
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;                                   // +0x00
     SEntry* last;                                    // +0x04
-    SEntry* LowerBound(const long* type);            // 0x0040F020
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+    SEntry* LowerBound(const ETCInterfaceType& type);            // 0x0040F020
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CThing { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -59,12 +64,12 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** out, long wanted)
     {
         if (m_present.test(wanted)) {
-            long type = wanted;
+            ETCInterfaceType type = (ETCInterfaceType)(wanted);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || wanted < it->type)
+            CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || wanted < it->first)
                 it = map->last;
-            *out = (T*)it->component;
+            *out = (T*)it->second;
             return true;
         }
         return false;
@@ -72,11 +77,11 @@ class CThing { public:
     template<class T> __forceinline bool PeekInterface(T** out, long wanted) const
     {
         if (m_present.test(wanted)) {
-            long type = wanted;
+            ETCInterfaceType type = (ETCInterfaceType)(wanted);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            const CInterfaceMap::SEntry* found = (it != map->last && !(wanted < it->type)) ? it : map->last;
-            *out = (T*)found->component;
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            const CInterfaceMap::SEntry* found = (it != map->last && !(wanted < it->first)) ? it : map->last;
+            *out = (T*)found->second;
             return true;
         }
         return false;

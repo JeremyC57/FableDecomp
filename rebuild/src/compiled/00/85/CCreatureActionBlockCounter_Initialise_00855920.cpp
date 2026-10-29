@@ -9,12 +9,17 @@
 // Target: the CCombatActionBase target pointer at +0xa8; thing flag byte +0x91 bit 0 = dead, byte +0x10 = thing state.
 class CTCBase;
 
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);       // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CTCCombat { public:
     void SetMeleeFlourishValid(bool valid);     // 0x00733E10
@@ -37,24 +42,24 @@ class CThing { public:
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
-            long type = interfaceType;
+            ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
             CInterfaceMap* map = &m_interfaces;
-            CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            if (it == map->last || interfaceType < it->type)
+            CInterfaceMap::SEntry* it = map->LowerBound(type);
+            if (it == map->last || interfaceType < it->first)
                 it = map->last;
-            *ppOut = (T*)it->component;
+            *ppOut = (T*)it->second;
             return true;
         }
         return false;
     }
     __forceinline CInterfaceMap::SEntry* FindEntry(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
+        CInterfaceMap::SEntry* it = map->LowerBound(type);
         CInterfaceMap::SEntry* sel;
         if (it == map->last) sel = map->last;
-        else if (it->type <= interfaceType) sel = it;
+        else if (it->first <= interfaceType) sel = it;
         else sel = map->last;
         return sel;
     }
@@ -95,7 +100,7 @@ void CCreatureAction_BlockCounter::Initialise()
 {
     CThing* owner = Owner.GetPItem();
     if (owner->HasTC(0x30))
-        ((CTCCombat*)owner->FindEntry(0x30)->component)->UnsetBlocking();
+        ((CTCCombat*)owner->FindEntry(0x30)->second)->UnsetBlocking();
     CTCCombat* combat;
     if (Target.GetPItem() && !(Target.GetPItem()->m_flags91 & 1) && Target.GetPItem()->m_state == 2
         && Target.GetPItem()->GetInterface(&combat, 0x30))

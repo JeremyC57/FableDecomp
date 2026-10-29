@@ -17,12 +17,17 @@
 // is read into a local once for the flag clear and the IsPerformingAnyAction call.
 class CTCBase;
 
-struct CInterfaceMap {                     // CVectorMap<ETCInterfaceType, CTCBase*>
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:                     // CVectorMap<ETCInterfaceType, CTCBase*>
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    SEntry* LowerBound(const long* type);  // 0x0040F020
+    SEntry* LowerBound(const ETCInterfaceType& type);  // 0x0040F020
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
 class CDefPointeeBase { public:
     virtual void Destroy();                // slot 0
@@ -100,11 +105,11 @@ class CThing { public:
     }
     template<class T> __forceinline T* GetTC(long interfaceType)
     {
-        long type = interfaceType;
+        ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
         CInterfaceMap* map = &m_interfaces;
-        CInterfaceMap::SEntry* it = map->LowerBound(&type);
-        CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->type) ? map->last : it;
-        return (T*)sel->component;
+        CInterfaceMap::SEntry* it = map->LowerBound(type);
+        CInterfaceMap::SEntry* sel = (it == map->last || interfaceType < it->first) ? map->last : it;
+        return (T*)sel->second;
     }
 };
 

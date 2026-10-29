@@ -120,12 +120,17 @@ __declspec(noinline) bool CGameDefinitionManager::GetDef(long index, CDefPointer
 }
 #pragma auto_inline(on)
 class CTCBase;
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThingPhysical;
 class CThingBuilding;
 class CThingAICreatureInit { public:
@@ -172,10 +177,10 @@ public:
     __forceinline bool GetInterface(const CTCBase** out, long wanted) const
     {
         if (m_presentBits[wanted >> 5] & (1UL << (wanted & 31))) {
-            long type = wanted;
+            ETCInterfaceType type = (ETCInterfaceType)(wanted);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&type);
-            *out = ((it == map->last || wanted < it->type) ? map->last : it)->component;
+            const CInterfaceMap::SEntry* it = map->LowerBound(type);
+            *out = ((it == map->last || wanted < it->first) ? map->last : it)->second;
             return true;
         }
         return false;

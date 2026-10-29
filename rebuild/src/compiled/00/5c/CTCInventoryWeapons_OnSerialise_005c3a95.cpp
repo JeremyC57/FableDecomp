@@ -54,12 +54,17 @@ class CTCCarrying { public:
     bool IsCarryingThing(CThing* thing) const;          // 0x006A1060
     bool IsCarriedThingInPrimarySlot(CThing* thing) const;   // 0x006A1490
 };
-struct CInterfaceMap {
-    struct SEntry { long type; CTCBase* component; };
+enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
+namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
+template <class K, class V> class CKeyPairCompareLess;
+template <class K, class V, class TCompare> class CVectorMap;
+template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > { public:
+    typedef std::pair<ETCInterfaceType, CTCBase*> SEntry;
     SEntry* first;
     SEntry* last;
-    const SEntry* LowerBound(const long* type) const;   // 0x004365B0
+    const SEntry* LowerBound(const ETCInterfaceType& type) const;   // 0x004365B0
 };
+typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 struct CPresenceBits { bool test(long kind) const; };   // 0x00410DE0
 struct CThingBase {
     unsigned char  _pad00[0x20];
@@ -69,10 +74,10 @@ struct CThingBase {
     template<class T> __forceinline bool GetInterface(T** out, long kind) const
     {
         if (m_present.test(kind)) {
-            long key = kind;
+            ETCInterfaceType key = (ETCInterfaceType)(kind);
             const CInterfaceMap* map = &m_interfaces;
-            const CInterfaceMap::SEntry* it = map->LowerBound(&key);
-            *out = (T*)((it == map->last || kind < it->type) ? map->last : it)->component;
+            const CInterfaceMap::SEntry* it = map->LowerBound(key);
+            *out = (T*)((it == map->last || kind < it->first) ? map->last : it)->second;
             return true;
         }
         return false;
