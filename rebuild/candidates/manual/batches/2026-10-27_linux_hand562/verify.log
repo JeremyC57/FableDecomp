@@ -1,0 +1,59 @@
+addr       parity           behav  name
+004cc5c0   RELOCATION_MATCH PASS   Transfer<signed char>
+0051fcc0   RELOCATION_MATCH PASS   WorldUpdateThings
+005408f0   WARN SHARED_HEADER_AVAILABLE CObserver
+005408f0   RELOCATION_MATCH PASS   ~CEditBox
+005483c0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+005483c0   WARN SHARED_HEADER_AVAILABLE CIEngine
+005483c0   WARN SHARED_HEADER_AVAILABLE CObserver
+005483c0   RELOCATION_MATCH PASS   ~CMovie
+00550230   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00550230   WARN SHARED_HEADER_AVAILABLE CObserver
+00550230   RELOCATION_MATCH PASS   ~CMesh
+005541e0   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+005541e0   WARN SHARED_HEADER_AVAILABLE CObserver
+005541e0   RELOCATION_MATCH PASS   ~CMorphingSprite
+00559520   WARN SHARED_HEADER_AVAILABLE CObserver
+00559520   RELOCATION_MATCH PASS   ~CScrollBarOutside
+00559a10   WARN SHARED_HEADER_AVAILABLE CObserver
+00559a10   RELOCATION_MATCH PASS   ~CScrollBar
+0056ac80   WARN SHARED_HEADER_AVAILABLE CQuestManager
+0056ac80   RELOCATION_MATCH PASS   ~CTCBoastUI
+005e41e0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+005e41e0   WARN SHARED_HEADER_AVAILABLE CIEngine
+005e41e0   WARN SHARED_HEADER_AVAILABLE CList
+005e41e0   WARN RELOC_NAME: ?IsOpen@CPlayerGui@@QBE_NXZ -> 004374f0 labelled 'C3DMeshInfo::HasPhysicsMesh'
+005e41e0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJK@std@@U?$_Select1st@U?$pair@$$CBJK@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJK@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJK@std@@@2@@Z -> 005e8c00 labelled '_unattributed::FreeTree_CTreeOwner_005e8c00'
+005e41e0   RELOCATION_MATCH PASS   ~CTCQuestCompletionUI
+005e49e0   WARN RELOC_NAME: ?_M_erase@?$_Rb_tree@JU?$pair@$$CBJK@std@@U?$_Select1st@U?$pair@$$CBJK@std@@@2@U?$less@J@2@V?$allocator@U?$pair@$$CBJK@std@@@2@@std@@AAEXPAU?$_Rb_tree_node@U?$pair@$$CBJK@std@@@2@@Z -> 005e8c00 labelled '_unattributed::FreeTree_CTreeOwner_005e8c00'
+005e49e0   RELOCATION_MATCH PASS   Copy
+005eda50   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+005eda50   RELOCATION_MATCH PASS   ~CTCTavernGame
+
+WINS: 12
+  004cc5c0 RELOCATION_MATCH CPersistContext::??$Transfer@C@CPersistContext@@QAEXPBDAACABC@Z
+  0051fcc0 RELOCATION_MATCH CThingManager::?WorldUpdateThings@CThingManager@@QAEXXZ
+  005408f0 RELOCATION_MATCH NUISystem::CEditBox::??1CEditBox@NUISystem@@UAE@XZ
+  005483c0 RELOCATION_MATCH NUISystem::CMovie::??1CMovie@NUISystem@@UAE@XZ
+  00550230 RELOCATION_MATCH NUISystem::CMesh::??1CMesh@NUISystem@@UAE@XZ
+  005541e0 RELOCATION_MATCH NUISystem::CMorphingSprite::??1CMorphingSprite@NUISystem@@UAE@XZ
+  00559520 RELOCATION_MATCH NUISystem::CScrollBarOutside::??1CScrollBarOutside@NUISystem@@UAE@XZ
+  00559a10 RELOCATION_MATCH NUISystem::CScrollBar::??1CScrollBar@NUISystem@@UAE@XZ
+  0056ac80 RELOCATION_MATCH CTCBoastUI::??1CTCBoastUI@@UAE@XZ
+  005e41e0 RELOCATION_MATCH CTCQuestCompletionUI::??1CTCQuestCompletionUI@@UAE@XZ
+  005e49e0 RELOCATION_MATCH CTCQuestCompletionUI::?Copy@CTCQuestCompletionUI@@UAEXABVCTCBase@@@Z
+  005eda50 RELOCATION_MATCH CTCTavernGame::??1CTCTavernGame@@UAE@XZ
+
+LANDED 12 wins into src/compiled + tests + catalog + oracle
+  CPersistContext_Transfersignedchar_004cc5c0
+  CThingManager_WorldUpdateThings_0051fcc0
+  NUISystemCEditBox_CEditBox_005408f0
+  NUISystemCMovie_CMovie_005483c0
+  NUISystemCMesh_CMesh_00550230
+  NUISystemCMorphingSprite_CMorphingSprite_005541e0
+  NUISystemCScrollBarOutside_CScrollBarOutside_00559520
+  NUISystemCScrollBar_CScrollBar_00559a10
+  CTCBoastUI_CTCBoastUI_0056ac80
+  CTCQuestCompletionUI_CTCQuestCompletionUI_005e41e0
+  CTCQuestCompletionUI_Copy_005e49e0
+  CTCTavernGame_CTCTavernGame_005eda50

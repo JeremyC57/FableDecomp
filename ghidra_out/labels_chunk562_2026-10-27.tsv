@@ -1,0 +1,13 @@
+address	name	evidence
+004cc5c0	CPersistContext::Transfer<signed char>	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+0051fcc0	CThingManager::WorldUpdateThings	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+005408f0	NUISystem::CEditBox::~CEditBox	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+005483c0	NUISystem::CMovie::~CMovie	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+00550230	NUISystem::CMesh::~CMesh	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+005541e0	NUISystem::CMorphingSprite::~CMorphingSprite	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+00559520	NUISystem::CScrollBarOutside::~CScrollBarOutside	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+00559a10	NUISystem::CScrollBar::~CScrollBar	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+0056ac80	CTCBoastUI::~CTCBoastUI	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+005e41e0	CTCQuestCompletionUI::~CTCQuestCompletionUI	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+005e49e0	CTCQuestCompletionUI::Copy(const CTCBase&)	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed
+005eda50	CTCTavernGame::~CTCTavernGame	proven per batch 2026-10-27_linux_hand562 NOTES.md (chunk 562): Ego_r.pdb leaf spelling, objdump-confirmed

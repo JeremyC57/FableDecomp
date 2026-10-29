@@ -362259,6 +362259,90 @@ $catalog = @(
         TestSource = '00/4c/CThing_CThing_004c8310_test.cpp'
         PassPattern = '004c8310_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '004cc5c0'
+        Module = 'CPersistContext'
+        Source = '00/4c/CPersistContext_Transfersignedchar_004cc5c0.cpp'
+        TestSource = '00/4c/CPersistContext_Transfersignedchar_004cc5c0_test.cpp'
+        PassPattern = '004cc5c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0051fcc0'
+        Module = 'CThingManager'
+        Source = '00/51/CThingManager_WorldUpdateThings_0051fcc0.cpp'
+        TestSource = '00/51/CThingManager_WorldUpdateThings_0051fcc0_test.cpp'
+        PassPattern = '0051fcc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005408f0'
+        Module = 'NUISystem::CEditBox'
+        Source = '00/54/NUISystemCEditBox_CEditBox_005408f0.cpp'
+        TestSource = '00/54/NUISystemCEditBox_CEditBox_005408f0_test.cpp'
+        PassPattern = '005408f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005483c0'
+        Module = 'NUISystem::CMovie'
+        Source = '00/54/NUISystemCMovie_CMovie_005483c0.cpp'
+        TestSource = '00/54/NUISystemCMovie_CMovie_005483c0_test.cpp'
+        PassPattern = '005483c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00550230'
+        Module = 'NUISystem::CMesh'
+        Source = '00/55/NUISystemCMesh_CMesh_00550230.cpp'
+        TestSource = '00/55/NUISystemCMesh_CMesh_00550230_test.cpp'
+        PassPattern = '00550230_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005541e0'
+        Module = 'NUISystem::CMorphingSprite'
+        Source = '00/55/NUISystemCMorphingSprite_CMorphingSprite_005541e0.cpp'
+        TestSource = '00/55/NUISystemCMorphingSprite_CMorphingSprite_005541e0_test.cpp'
+        PassPattern = '005541e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00559520'
+        Module = 'NUISystem::CScrollBarOutside'
+        Source = '00/55/NUISystemCScrollBarOutside_CScrollBarOutside_00559520.cpp'
+        TestSource = '00/55/NUISystemCScrollBarOutside_CScrollBarOutside_00559520_test.cpp'
+        PassPattern = '00559520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00559a10'
+        Module = 'NUISystem::CScrollBar'
+        Source = '00/55/NUISystemCScrollBar_CScrollBar_00559a10.cpp'
+        TestSource = '00/55/NUISystemCScrollBar_CScrollBar_00559a10_test.cpp'
+        PassPattern = '00559a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '0056ac80'
+        Module = 'CTCBoastUI'
+        Source = '00/56/CTCBoastUI_CTCBoastUI_0056ac80.cpp'
+        TestSource = '00/56/CTCBoastUI_CTCBoastUI_0056ac80_test.cpp'
+        PassPattern = '0056ac80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e41e0'
+        Module = 'CTCQuestCompletionUI'
+        Source = '00/5e/CTCQuestCompletionUI_CTCQuestCompletionUI_005e41e0.cpp'
+        TestSource = '00/5e/CTCQuestCompletionUI_CTCQuestCompletionUI_005e41e0_test.cpp'
+        PassPattern = '005e41e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005e49e0'
+        Module = 'CTCQuestCompletionUI'
+        Source = '00/5e/CTCQuestCompletionUI_Copy_005e49e0.cpp'
+        TestSource = '00/5e/CTCQuestCompletionUI_Copy_005e49e0_test.cpp'
+        PassPattern = '005e49e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005eda50'
+        Module = 'CTCTavernGame'
+        Source = '00/5e/CTCTavernGame_CTCTavernGame_005eda50.cpp'
+        TestSource = '00/5e/CTCTavernGame_CTCTavernGame_005eda50_test.cpp'
+        PassPattern = '005eda50_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+004cc5c0	RELOCATION_MATCH	208v208	PASS	CPersistContext::Transfer<signed char>; wrapper vtable RTTI @C@@ proves T; 1 grade
+0051fcc0	RELOCATION_MATCH	189v189	PASS	CThingManager::WorldUpdateThings (PDB); per-type gates as if/else-if; 1 grade
+005408f0	RELOCATION_MATCH	137v137	PASS	NUISystem::CEditBox::~CEditBox; CManager::GetInstance()->RemoveObserver(this); 1 grade
+005483c0	RELOCATION_MATCH	289v289	PASS	NUISystem::CMovie::~CMovie; FreeTextures inline; 3 grades (2nd: FindChild respelled to PDB, 3rd: CVideoSys via the shared header)
+00550230	RELOCATION_MATCH	163v163	PASS	NUISystem::CMesh::~CMesh; Handle.Clear(); 1 grade
+005541e0	RELOCATION_MATCH	260v260	PASS	NUISystem::CMorphingSprite::~CMorphingSprite; delete each handle + list clear; 2 grades (1 SRC_FAIL)
+00559520	RELOCATION_MATCH	115v115	PASS	NUISystem::CScrollBarOutside::~CScrollBarOutside (catalog CScrollableList::VectorDtor wrong); 1 grade
+00559a10	RELOCATION_MATCH	115v115	PASS	NUISystem::CScrollBar::~CScrollBar (catalog CScrollableListWithButton::VectorDtor wrong); 1 grade
+0056ac80	RELOCATION_MATCH	185v185	PASS	CTCBoastUI::~CTCBoastUI; 2 grades (1 SRC_FAIL)
+005e41e0	RELOCATION_MATCH	587v587	PASS	CTCQuestCompletionUI::~CTCQuestCompletionUI; inline CWorld::SetAsStarting3DRendering; 2 grades
+005e49e0	RELOCATION_MATCH	497v497	PASS	CTCQuestCompletionUI::Copy (catalog vfunc_12 wrong); 2 grades (1 SRC_FAIL)
+005eda50	RELOCATION_MATCH	417v417	PASS	CTCTavernGame::~CTCTavernGame implicit (catalog CChunkedFileChunk::DestructorCleanup wrong); 1 grade
