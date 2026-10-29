@@ -24752,3 +24752,8 @@ chunk	address	module	name	length
 567	005eaf46	CTCTavernGame	SetStateAfterYesNoAlt	304
 567	005eb08d	CTCTavernGame	SetStateAfterOK	243
 568	0093b1d0	CAIStateGroup_BanditSitRoundCampfire	Update	1011
+569	00beb6c0	global	Interpolate_Quaternion_Scale_Matrix	978
+569	00c8f200	global	AudioSystem_Initialize	1007
+569	00cbd700	CItem	QuickSort	969
+569	00e12b30	CScriptGameResourceObjectScriptedThingBase	HandleQueenHornetDialogue	993
+569	00e39140	CScriptGameResourceObjectScriptedThingBase	HandleQuestCardAssassinAttacks	967
