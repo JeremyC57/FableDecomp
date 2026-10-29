@@ -7,7 +7,7 @@
 // Callees: CTBaseSingleton<CUserProfileManager>::Get() @ 0x0040D2A0 with the same-TU inline GetSoundVolume 0x0047CFC2 /
 //          GetDialogueVolume 0x0047CFD3, the game state (0x013B8394) slot 46 (+0xB8, category volume), the 3D engine's
 //          slot 76 (+0x130) through g_pMainGameComponent (0x013B86A0) ->PDisplayEngine (+0x28) ->Engine3D (+0x2C) and slot
-//          56 (+0xE0), CTCBase::GetWorld() @ 0x00686A70, GFGetCurrentFrame() @ 0x0049D870, GFGetTime() @ 0x009E1BC0,
+//          56 (+0xE0), CTCBase::GetWorld() @ 0x00686A70, CWorld::GetFrame() @ 0x0049D870, GFGetTime() @ 0x009E1BC0,
 //          the components' deleting destructors (slot 0), vector<CComponent*>::erase @ 0x00485AA7,
 //          NUISystem::CManager::GetInstance() @ 0x0041E5F2 (slots 6, 29, 37, 40 and 42), the UI list clear @ 0x004855A3 on
 //          0x013B8A98, CPlayerGui::Close() @ 0x004374B0 (g_pPlayerGui 0x013B8790), CTCBase::GetPlayerManager() @ 0x00686D40,
@@ -24,7 +24,6 @@
 #pragma optimize("s", on)
 
 double __fastcall GFGetTime();                       // 0x009E1BC0
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
 
 class CUserProfileManager { public:
     unsigned char _pad00[0xC];
@@ -37,7 +36,7 @@ class CUserProfileManager { public:
     float SoundVolumeNewProfile;                     // +0xE4
     unsigned char _pade8[0x4];
     float DialogueVolumeNewProfile;                  // +0xEC
-    static CUserProfileManager* __fastcall Get();    // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
+    static CUserProfileManager& __fastcall Get();    // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     float GetSoundVolume() const { return UseNewProfileValues ? SoundVolumeNewProfile : SoundVolume; }        // 0x0047CFC2
     float GetDialogueVolume() const { return UseNewProfileValues ? DialogueVolumeNewProfile : DialogueVolume; }  // 0x0047CFD3
 };
@@ -108,6 +107,8 @@ class CPlayerManager { public:
 class CWorld { public:
     unsigned char _pad00[0x8C];
     long          FrameStarted3DRendering;           // +0x8C
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 
 struct CRefCounted {
@@ -202,13 +203,13 @@ class CTCInGameMenu : public CTCBase { public:
 void CTCInGameMenu::CloseInGameMenu()
 {
     if (g_pGameState) {
-        g_pGameState->SetCategoryVolume(0x10, CUserProfileManager::Get()->GetSoundVolume(), 0.0f);
-        g_pGameState->SetCategoryVolume(0x40, CUserProfileManager::Get()->GetDialogueVolume(), 0.0f);
-        g_pGameState->SetCategoryVolume(0x80, CUserProfileManager::Get()->GetSoundVolume(), 0.0f);
+        g_pGameState->SetCategoryVolume(0x10, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
+        g_pGameState->SetCategoryVolume(0x40, CUserProfileManager::Get().GetDialogueVolume(), 0.0f);
+        g_pGameState->SetCategoryVolume(0x80, CUserProfileManager::Get().GetSoundVolume(), 0.0f);
     }
     g_pMainGameComponent->PDisplayEngine->Engine3D->SetEngineFlag76(true);
     CWorld* world = (&GetWorld());
-    world->FrameStarted3DRendering = GFGetCurrentFrame();
+    world->FrameStarted3DRendering = CWorld::GetFrame();
     AccumulativePausedTime += GFGetTime() - CurStartPauseTime;
     for (unsigned long i = 0; i < Components.size(); ++i)
         delete Components[i];

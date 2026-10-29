@@ -5,21 +5,22 @@
 // Retail bytes:  push ebx ; push esi ; push edi ; mov edi,[esp+10h] ; mov eax,[edi+40h] ; mov esi,ecx ; mov [esi+4],eax ;
 //                mov eax,[esp+18h] ; push eax ; lea ecx,[esi+8] ; mov dword ptr [esi],012C3224h ; call CScriptThing(const&) ;
 //                mov [esi+14h],edi ; mov dword ptr [esi],012DDF3Ch ; xor ebx,ebx ; lea edi,[esi+28h] ; mov [esi+1Ch],ebx ;
-//                mov [esi+20h],ebx ; mov ecx,edi ; mov [esi+24h],ebx ; call CBase::CBase ; mov ecx,[esp+14h] ;
+//                mov [esi+20h],ebx ; mov ecx,edi ; mov [esi+24h],ebx ; call CBaseClass::CBaseClass ; mov ecx,[esp+14h] ;
 //                mov dword ptr [edi],01238C8Ch ; mov [edi+4],ebx ; mov [edi+8],ebx ; pop edi ; mov [esi+18h],ecx ;
 //                mov eax,esi ; pop esi ; pop ebx ; ret 0Ch
 // Manifest label "CRenderManagerCore::CRenderManagerCore" is propagated and wrong: the vtables are those of the script
 // module (no RTTI: 0x012DDF3C derived, 0x012C3224 its base, the same base as the landed script factories such as
 // 0x00D62360) and 0x01238C8C is CScriptThing (rtti-vtables.tsv). Callees: CScriptThing copy constructor @ 0x004ABE90,
-// CBase::CBase @ 0x0099A2D0 (the root of the default-constructed CScriptThing at +0x28).
+// CBaseClass::CBaseClass @ 0x0099A2D0 (the root of the default-constructed CScriptThing at +0x28).
 // Shape: the context word precedes the base vtable store (root class, its own vtable store dead); the owner store
 // precedes the derived vtable (plain initialiser of the derived class); the three zero words follow it; the
 // default CScriptThing at +0x28 is an inline constructor over the out-of-line CBase; the argument is stored last
 // (a body assignment after the member constructors).
-namespace N_0099a2d0 { struct CBase {
-    CBase();                               // 0x0099A2D0
+class CBaseClass {
+public:
+    CBaseClass();                               // 0x0099A2D0
     virtual void v00();
-}; } using N_0099a2d0::CBase;
+};
 
 // The two words of a CScriptThing are zeroed AFTER its vtable store: they are a member object (a counted
 // reference: object + count block) with its own inline constructor.
@@ -29,7 +30,7 @@ struct CScriptThingRef {
     CScriptThingRef() : m_pObject(0), m_pCount(0) { }
 };
 
-class CScriptThing : public CBase { public:              // vtable 0x01238C8C, 0x0C bytes
+class CScriptThing : public CBaseClass { public:              // vtable 0x01238C8C, 0x0C bytes
     CScriptThingRef m_ref;                 // +0x04
     virtual void v00();
     CScriptThing() { }

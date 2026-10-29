@@ -1,7 +1,7 @@
 // CEnginePrimitiveManagerParticleGroup::RenderSubPrimGroups(CEngineInternalPrimitiveBase& primitive, ERenderPassType pass, const CMatrix3x4& transform) -- render a particle group's member primitive by type: nested groups recurse over their children, sprites and sprite trails go straight to their managers (the trail restoring the vertex-shader constant layout), everything else through its manager's virtual sub-primitive render
 // Leaf: RenderSubPrimGroups
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBC130, length 480 bytes (switch tables inline), `ret 0Ch`.
-// Callees: CBase::CBase 0x0099A2F0 / CBase::~CBase 0x0099A300 (the CEngineSubPrimitiveBase local, vtable 0x012A3E7C;
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable 0x0099A2F0 / CBaseClassNonCopyable::~CBaseClassNonCopyable 0x0099A300 (the CEngineSubPrimitiveBase local, vtable 0x012A3E7C;
 //   its out-of-line ctor 0x00B98A50 in the type-30 case), CEnginePrimitiveManagerParticleSpriteGroup::RenderSingleSprite
 //   0x00BC04F0, CEnginePrimitiveManagerParticleSpriteTrailGroup::RenderSingleSpriteTrail 0x00BBE090,
 //   CShaderRenderManager::SetVertexShaderConstantLayout 0x0098B5E0 (singleton 0x013BC470, current layout +8),
@@ -15,16 +15,16 @@
 class CMatrix3x4;
 enum ERenderPassType { RENDER_PASS_DEFAULT = 0 };
 
-class CBase {
-public:
-    virtual ~CBase();                              // 0x0099A300
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 
 class CEngineInternalPrimitiveBase;
 class CEnginePrimitiveManager;
 
-class CEngineSubPrimitiveBase : public CBase {     // vtable 0x012A3E7C
+class CEngineSubPrimitiveBase : public CBaseClassNonCopyable {     // vtable 0x012A3E7C
 public:
     unsigned long                 RenderFlags;      // +0x04
     unsigned char                 Alpha;            // +0x08

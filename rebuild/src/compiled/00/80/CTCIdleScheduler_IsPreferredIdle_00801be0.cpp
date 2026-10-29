@@ -14,7 +14,7 @@
 class CAIStateGroupBase;
 
 class CWorld { public:
-    static long GetWorldFrame();                     // 0x0049D870
+    static long __fastcall GetFrame();                     // 0x0049D870
 };
 
 struct CIdleStateMap {                               // std::map<EIdleStateGroup, CAIStateGroupBase*> (retail 12 bytes)
@@ -50,7 +50,7 @@ bool CTCIdleScheduler::IsPreferredIdle(CAIStateGroupBase* idle)
 {
     if (Preferred == 1)
         return true;
-    if (FrameLastChecked != GetWorld().GetWorldFrame()) {
+    if (FrameLastChecked != GetWorld().GetFrame()) {
         if (Preferred == 0 || IdleStates[Preferred] == idle) {
             Preferred = 0;
             ChooseNewIdle();

@@ -57,11 +57,12 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {                                          // vtable 0x01231710
-    CBase() { }
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:                                           // vtable 0x01231710
+    CBaseClass() { }
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:
+class CScriptThing : public CBaseClass { public:
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
     virtual C3DVector GetHomePos() const;   // slot 7 (+0x1c)

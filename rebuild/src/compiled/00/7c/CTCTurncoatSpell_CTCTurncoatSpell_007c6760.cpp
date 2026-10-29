@@ -99,7 +99,7 @@ class CDefinitionManager { public:
     long GetDefIndex(const CCharString& name, bool required);         // 0x009AD390
     bool GetDef(long index, CDefPointer<CTurncoatSpellDef>* def);     // 0x007C7720
 };
-CDefinitionManager* __fastcall GetDefinitionManager();  // 0x0044C6B0
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };  // 0x0044C6B0
 struct CTCAbilityCast { unsigned char _pad[0x0c]; bool Busy; unsigned char _pad0d[3]; long Ability; };
 class CTCInventoryAbilities { public: long GetAbilityLevel(long ability); };   // 0x005EDE93
 extern long g_FramesPerSecond;                          // 0x01375550
@@ -134,8 +134,8 @@ CTCTurncoatSpell::CTCTurncoatSpell(CThing* owner)
         cast->Busy = true;
         cast->Ability = 5;
     }
-    long index = GetDefinitionManager()->GetDefIndex("SPECIAL_ABILITIES_TURNCOAT_SPELL_DEF", true);
-    GetDefinitionManager()->GetDef(index, &Def);
+    long index = CGameDefinitionManager::Get().GetDefIndex("SPECIAL_ABILITIES_TURNCOAT_SPELL_DEF", true);
+    CGameDefinitionManager::Get().GetDef(index, &Def);
     if (ParentThing->HasTC(0x6f))
         Level = ((CTCInventoryAbilities*)ParentThing->GetTCC(0x6f))->GetAbilityLevel(5);
     CTurncoatSpellDef* def = Def.Object;

@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00950950, length 221 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, 0x5a = bit 26 of +0x28, pointer preset to
 // null), the animation component's current-anim accessor @ 0x0070B460 (manifest label CWorld::DrawGetEnvironment
-// propagated), the brain world accessor @ 0x008FCFC0 (object expression of the frame accessor), GFGetCurrentFrame
+// propagated), the brain world accessor @ 0x008FCFC0 (object expression of the frame accessor), CWorld::GetFrame
 // @ 0x0049D870, CAIStateGroupBase::AIAction_DoNothing @ 0x0097E200, IsStopping @ 0x008FD010, Terminate
 // @ 0x008FCF40; the frame-rate global @ 0x01375550 (15) and the 0.995f fraction @ 0x012933FC.
 // Shape: the wait in frames `(float)g_FramesPerSecond * seconds` goes to a frame slot; a do/while whose body
@@ -167,6 +167,8 @@ class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 
 struct CAIStateGroupBaseW : CAIStateGroupBase {
@@ -245,9 +247,8 @@ struct CTCAnim {                                // interface 0x5a
 };
 
 extern long g_FramesPerSecond;                  // 0x01375550
-long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 struct CWorldFrame {
-    long GetCurrentFrame() { return GFGetCurrentFrame(); }
+    long GetCurrentFrame() { return CWorld::GetFrame(); }
 };
 
 void CAIStateGroup_JackDragon::WaitForAnimLoop(float seconds)

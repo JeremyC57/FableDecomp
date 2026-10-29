@@ -41,9 +41,9 @@ class CSoundDef : public CDefPointeeBase { public:
 };
 
 class CDefinitionManager { public:
-    static CDefinitionManager& __fastcall Get();                                    // 0x0044C6B0
     template <class T> bool GetDef(const CCharString& name, CDefPointer<T>& out);   // 0x004196B2 for T = const CSoundDef
 };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 
 class C2DCoordI;
 struct CMyAtmosMap {                            // CAtmosProcess::CMyAtmosMap, vtable 0x0125D47C
@@ -100,7 +100,7 @@ CAtmosProcess::CAtmosProcess()
         CDefPointer<const CSoundDef> soundDef;
         {
             CCharString name("MAIN_SOUND_SETUP", -1);
-            CDefinitionManager::Get().GetDef(name, soundDef);
+            CGameDefinitionManager::Get().GetDef(name, soundDef);
         }
         CSoundDef* def = const_cast<CSoundDef*>(soundDef.Object);
         g_pSoundSystem->SetAtmosMap_slot36(&AtmosMap, def->AtmosListenerDampingMin, def->AtmosListenerDampingRange, 0x8010);

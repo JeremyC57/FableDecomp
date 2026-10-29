@@ -12,7 +12,7 @@ public:
 class CGameDefinitionManager : public CDefinitionManager
 {
 public:
-    static CGameDefinitionManager& Get();
+    static CGameDefinitionManager& __fastcall Get();
 };
 
 class CEnvironment

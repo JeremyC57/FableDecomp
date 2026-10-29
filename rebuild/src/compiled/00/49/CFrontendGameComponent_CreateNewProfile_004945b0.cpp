@@ -32,6 +32,8 @@ public:
     CWideString GetProfileDir(const CWideString& name, bool create);   // 0x004082D0
     void SetProfileName(const CWideString& name, bool load);           // 0x0040D400
     void SetDefaultValues();                                           // 0x0040C790 (stores the defaults; see 0x0059697A)
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> class CTBaseSingleton {
 public:
@@ -55,8 +57,8 @@ public:
 CWideString CFrontendGameComponent::CreateNewProfile()
 {
     CWideString name = L"NewProfile" + NumberToWideString(ProfileNames.size() + 1);
-    CTBaseSingleton<CUserProfileManager>::Get().GetProfileDir(name, true);
-    CTBaseSingleton<CUserProfileManager>::Get().SetProfileName(name, false);
-    CTBaseSingleton<CUserProfileManager>::Get().SetDefaultValues();
+    CUserProfileManager::Get().GetProfileDir(name, true);
+    CUserProfileManager::Get().SetProfileName(name, false);
+    CUserProfileManager::Get().SetDefaultValues();
     return name;
 }

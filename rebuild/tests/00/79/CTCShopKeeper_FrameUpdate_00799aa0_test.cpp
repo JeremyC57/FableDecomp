@@ -27,7 +27,7 @@ class CThing { public:
 };
 static long g_frame;
 class CWorld { public:
-    static long GetWorldFrame() { return g_frame; }
+    static long __fastcall GetFrame() { return g_frame; }
 };
 class CTCVillage { public:
     bool criminal;
@@ -55,7 +55,7 @@ class CTCShopKeeper { public:
 void CTCShopKeeper::FrameUpdate()
 {
     unsigned __int64 id = ParentThing->UniqueID;
-    if ((CWorld::GetWorldFrame() + id) % 15 == 0) {
+    if ((CWorld::GetFrame() + id) % 15 == 0) {
         if (GetShopTC() && RequiresNewCustomer())
             AcquireNewCustomer();
         if (ParentThing->HasTC(0x23)) {

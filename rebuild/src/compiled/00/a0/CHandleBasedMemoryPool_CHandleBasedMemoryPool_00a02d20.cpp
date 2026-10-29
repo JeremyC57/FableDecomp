@@ -4,7 +4,7 @@
 // vtable it stores, 0x0129C964, is CHandleBasedMemoryPool's (rtti-vtables.tsv), and the PDB layout of that class
 // matches every store. Its derived pools (CMovableResourceMemoryPool 0x00A62E20, CAsyncLoadingMemoryPool
 // 0x00A148D0) call this body as their base constructor.
-// Callees: 0x0099A2F0 CBase::CBase() (out of line: stores the root vtable 0x0129A7C4), 0x0099E4B0
+// Callees: 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable() (out of line: stores the root vtable 0x0129A7C4), 0x0099E4B0
 // CCharString::CCharString() (the Name member).
 // Layout: PDB CHandleBasedMemoryPool (0x468) with retail's 12-byte CArray (as the landed CPSCAttractor's
 // C3DVectorArray), so FirstUnusedHandle/Name sit 4 bytes below the PDB offsets: Buffer +4, UnalignedBuffer +8,
@@ -19,9 +19,10 @@
 // Leaf: ??0CHandleBasedMemoryPool
 #include <string.h>
 
-struct CBase {
-    virtual ~CBase();
-    CBase();                                             // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();                                             // 0x0099A2F0
 };
 class CCharString { public:
     void* m_pData;
@@ -38,7 +39,7 @@ class CFailedAllocationHandler;
 struct CHeader;
 struct SCriticalSection { void* DebugInfo; long LockCount; long RecursionCount; void* OwningThread; void* LockSemaphore; unsigned long SpinCount; };
 
-class CHandleBasedMemoryPool : public CBase { public:                  // vtable 0x0129C964
+class CHandleBasedMemoryPool : public CBaseClassNonCopyable { public:                  // vtable 0x0129C964
     void*                     Buffer;                    // +0x04
     void*                     UnalignedBuffer;           // +0x08
     long                      PoolSize;                  // +0x0c

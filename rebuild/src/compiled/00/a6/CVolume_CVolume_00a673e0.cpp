@@ -1,7 +1,7 @@
 // CVolume::CVolume(const CVolume& other) -- copy constructor: base, vtable, share the volume interface and AddRef it
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A673E0, length 40 bytes (+ int3 padding).
 // Leaf: ??0CVolume
-// Callees: CBase::CBase() @ 0x0099A2D0, COM AddRef (slot 1, +0x04). Vtable 0x0129C840 = CVolume (rtti-vtables.tsv); the
+// Callees: CBaseClass::CBaseClass() @ 0x0099A2D0, COM AddRef (slot 1, +0x04). Vtable 0x0129C840 = CVolume (rtti-vtables.tsv); the
 // catalog label "CVolumeTexture::CVolumeTexture" is propagated (CVolumeTexture's vtable is 0x0129DC18).
 // Shape: base call, vtable store, the pointer initialised from the other and null-tested in the body (the store lands
 // between `test` and `je`).
@@ -19,11 +19,12 @@ struct IDirect3DVolume9 : IUnknownLike {
     virtual long __stdcall GetContainer(const void* iid, void** container);
     virtual long __stdcall GetDesc(D3DVOLUME_DESC* desc);             // slot 8 (+0x20)
 };
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();
-    CBase();                                // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
-class CVolume : public CBase { public:
+class CBaseClass {
+public:
+    virtual ~CBaseClass();
+    CBaseClass();                                // 0x0099A2D0
+};
+class CVolume : public CBaseClass { public:
     IDirect3DVolume9* m_pVolume;
     CVolume(const CVolume& other);
 };

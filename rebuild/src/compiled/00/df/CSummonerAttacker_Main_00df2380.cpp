@@ -4,7 +4,7 @@
 // Literals "HUD_ORB_QUEST_CORE" 0x01258AB0, "HUD_QUEST_ICON_SUMMONER_BLUE" 0x012DE298, "FireHeart" 0x012DE154,
 //   "SCRIPT_NAME_HERO" 0x0125D1C8, "SummonerMinion" 0x012DE170, "CREATURE_MINION_WARDOG" 0x012CB9F4.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0) over CScriptThing copy 0x004ABE90 / ~CScriptThing 0x004AA840,
-//   CBase ctor 0x0099A2D0, CScriptThing::operator= 0x008AB980, RegisterFilter 0x00F35B10, IsActiveThreadTerminating
+//   CBaseClass ctor 0x0099A2D0, CScriptThing::operator= 0x008AB980, RegisterFilter 0x00F35B10, IsActiveThreadTerminating
 //   0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, handle IsScripting 0x00CD23B9 / Release 0x00CD2770 /
 //   SummonerLightningOrbAttackTarget 0x007E72D0 / IsPerformingScriptTask 0x007E7450 / dtor 0x007E74D0 (direct calls on the
 //   local handle), FadeInThing 0x00CBE7AA / IsDistanceBetweenThingsUnder 0x00CBE2FF / IsDistanceBetweenThingsOver 0x00CBE3EA
@@ -61,12 +61,13 @@ template <class T> class CCountedPointer { public:
     }
 };
 class C3DVector { public: float X, Y, Z; };
-struct CBase {                                          // vtable 0x01231710
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:                                           // vtable 0x01231710
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 struct CScriptThingImpl;
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
     virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const;

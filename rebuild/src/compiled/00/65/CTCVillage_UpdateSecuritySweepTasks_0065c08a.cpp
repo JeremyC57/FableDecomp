@@ -27,7 +27,7 @@ class CPlayerManager { public:
     CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 
@@ -68,7 +68,7 @@ void CTCVillage::UpdateSecuritySweepTasks()
         bool recalculate = false;
         const CWorld* world = (&PeekWorld());
         long framesPerSecond = g_framesPerSecond;
-        if ((world->GetWorldFrame() - FrameStartedSecuritySweep) % (long)(framesPerSecond * 7.5f) == 0)
+        if ((world->GetFrame() - FrameStartedSecuritySweep) % (long)(framesPerSecond * 7.5f) == 0)
             recalculate = true;
         CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero) {

@@ -82,7 +82,7 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)   // the pointe
     return false;
 }
 class CWorld { public:
-    static long GetWorldFrame();                     // 0x0049D870
+    static long __fastcall GetFrame();                     // 0x0049D870
 };
 extern const float g_one;                            // 0x0122DED8
 
@@ -133,7 +133,7 @@ void CTCKrakenTentacle::FrameUpdate()
             }
         }
         Tracking = false;
-        if (QueuedStrikeTick > 0 && CWorld::GetWorldFrame() >= QueuedStrikeTick)
+        if (QueuedStrikeTick > 0 && CWorld::GetFrame() >= QueuedStrikeTick)
             PerformStrikeDamage();
     }
 }

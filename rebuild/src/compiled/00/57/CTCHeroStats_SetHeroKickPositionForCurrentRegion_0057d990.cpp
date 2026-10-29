@@ -40,7 +40,7 @@ class CWorld { public:
     virtual void v04(); virtual void v05(); virtual void v06(); virtual void v07();
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CWorldMap* GetWorldMap();                // slot 12 (+0x30)
-    static long GetWorldFrame();                     // 0x0049D870
+    static long __fastcall GetFrame();                     // 0x0049D870
 };
 
 struct MirroredCriminalStatus {
@@ -82,5 +82,5 @@ void CTCHeroStats::SetHeroKickPositionForCurrentRegion(const C3DVector& position
     status.EntrancePosZ = position.Z;
     status.EntranceAngle = angle;
     status.ExitedUsingTeleporter = teleporter;
-    status.LastTimeExited = GetWorld()->GetWorldFrame();
+    status.LastTimeExited = GetWorld()->GetFrame();
 }

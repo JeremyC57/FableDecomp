@@ -3,7 +3,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x23 = CTCVillager, bit 3 of the bitset
 // dword at +0x24), GFGetPVillageInterface @ 0x007EE540 (twice: null test, then the call object), CTCVillage::
 // IsCurfewTime @ 0x00658DB3, CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (called for nothing: the result is dropped,
-// as in the landed siblings), GFGetCurrentFrame @ 0x0049D870.
+// as in the landed siblings), CWorld::GetFrame @ 0x0049D870.
 // Shape: an early `return false` (its own byte `xor al,al` epilogue) from inside the nested village test, then
 // `GetPWorld(); return GFGetCurrentFrame() <= FrameToStopSitting;` (`cmp eax,[edi+40h] ; setle al` with no
 // `xor` zero-extension: the result type is an unsigned char, not bool).
@@ -90,7 +90,7 @@ class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 struct CTCVillager;
@@ -115,5 +115,5 @@ unsigned char CAIStateGroup_MinionSitOutside::IsStillValid()
         }
     }
     GetPWorld();
-    return GFGetCurrentFrame() <= FrameToStopSitting;
+    return CWorld::GetFrame() <= FrameToStopSitting;
 }

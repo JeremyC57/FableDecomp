@@ -4,7 +4,7 @@
 //   CWideString() 0x0099AED0 / copy ctor 0x0099B720 / ~CWideString 0x0099B510 / ConvertToCharString 0x0099B2C0, ScanFirstFile 0x00999C50 /
 //   ScanNextFile 0x00999CB0 (__fastcall), vector<CWideString>::_M_insert_overflow 0x00412330 (same-TU stand-in body below), std::sort
 //   0x009B8440 (__fastcall), CDiskFileWin32(const CWideString&, FileAccessType, unsigned long) 0x0099AD80 / Read 0x0099A960 / Close 0x0099A920,
-//   ~CBase 0x0099A300, operator new[] / delete[], GFRemoveComments 0x00A60410 (__fastcall), ParseStringForSymbols 0x009ADE90, symbol-table
+//   ~CBaseClassNonCopyable 0x0099A300, operator new[] / delete[], GFRemoveComments 0x00A60410 (__fastcall), ParseStringForSymbols 0x009ADE90, symbol-table
 //   finalise 0x009E5C30, CRT free 0x00BFEA14.
 // Layout: retail CDefinitionManager (PDB minus 0x10 from the 12-byte vectors ahead): symbol tables +0x58 / +0x60, CurrentFilename +0xb4.
 //   CDiskFileWin32 0x1c bytes (vtable 0x0122D06C, Length +0x0c, Pathname +0x18). Modelled locally.
@@ -32,13 +32,13 @@ class CWideString { public:
     ~CWideString();                                     // 0x0099B510
     CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                           // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                           // 0x0099A300
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-class CDiskFileWin32 : public CBase { public:                         // vtable 0x0122D06C, 0x1c bytes
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                         // vtable 0x0122D06C, 0x1c bytes
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags);   // slot 1
     virtual void Close();                               // 0x0099A920 (slot 2)
     virtual void Read(void* data, long size, CASuspendableProcess* process);   // 0x0099A960 (slot 3)

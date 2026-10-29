@@ -17,7 +17,7 @@ class CThing { public:
     unsigned __int64 UID;                       // +0x18
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -68,7 +68,7 @@ void CTCSolidToThing::FrameUpdate()
 {
     CWorld* world = (&GetWorld());
     unsigned __int64 uid = ParentThing->UID;
-    if ((uid + world->GetWorldFrame()) % 75 == 0) {
+    if ((uid + world->GetFrame()) % 75 == 0) {
         if (!NotSolidToThings.empty())
             NotSolidToThings.erase(remove(NotSolidToThings.begin(), NotSolidToThings.end(), CPtr(0)), NotSolidToThings.end());
     }

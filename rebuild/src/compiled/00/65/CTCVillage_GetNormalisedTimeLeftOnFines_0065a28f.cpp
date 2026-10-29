@@ -56,8 +56,8 @@ class CPlayer { public:
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
-    static long __fastcall GetCurrentFrame();   // 0x0049D870
-    static long GetFramesSince(long frame) { return GetCurrentFrame() - frame; }
+    static long __fastcall GetFrame();   // 0x0049D870
+    static long GetFramesSince(long frame) { return GetFrame() - frame; }
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x24];

@@ -1,9 +1,10 @@
 #include <cstdio>
 static int g_strings = 0;
 class CCharString { public: void* m_pData; CCharString() : m_pData(0) { ++g_strings; } };
-namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() {} }; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:  virtual void v00() {} CBaseClass() {} };
 namespace NCreatureAction {
-struct __declspec(novtable) CActionEventBase : CBase { bool m_bTriggered; CActionEventBase() : CBase(), m_bTriggered(false) { } };
+struct __declspec(novtable) CActionEventBase : CBaseClass { bool m_bTriggered; CActionEventBase() : CBaseClass(), m_bTriggered(false) { } };
 struct CActionEventRemoveObject : CActionEventBase { unsigned char _pad[0x0c]; CCharString m_name; virtual void v00() {} CActionEventRemoveObject(); };
 }
 NCreatureAction::CActionEventRemoveObject::CActionEventRemoveObject() : CActionEventBase(), m_name() { }

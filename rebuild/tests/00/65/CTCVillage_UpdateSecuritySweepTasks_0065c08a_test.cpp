@@ -20,7 +20,7 @@ class CPlayerManager { public:
     CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 
@@ -56,7 +56,7 @@ void CTCVillage::UpdateSecuritySweepTasks()
         bool recalculate = false;
         CWorld* world = GetWorld();
         long framesPerSecond = g_framesPerSecond;
-        if ((world->GetWorldFrame() - FrameStartedSecuritySweep) % (long)(framesPerSecond * 7.5f) == 0)
+        if ((world->GetFrame() - FrameStartedSecuritySweep) % (long)(framesPerSecond * 7.5f) == 0)
             recalculate = true;
         CThing* hero = GetPlayerManager()->GetMainPlayer().GetHeroThing();
         if (hero) {
@@ -84,7 +84,7 @@ static CPlayer g_player;
 CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
 static CPlayerManager g_manager;
 static long g_frame;
-long CWorld::GetWorldFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 long g_framesPerSecond = 10;
 static CWorld g_world;
 CWorld* CTCVillage::GetWorld() const { return &g_world; }

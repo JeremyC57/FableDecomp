@@ -37,10 +37,10 @@ class CWideString { public:
 };
 CWideString CCharString::ToWideString() const { return CWideString(m_Text); }
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00() {}
-    ~CBase() {}
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+public:
+    virtual ~CBaseClassNonCopyable() {}
+};
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
 
@@ -55,7 +55,7 @@ static const SFakeFile g_Files[] = {
 static const int g_FileCount = sizeof(g_Files) / sizeof(g_Files[0]);
 static int g_OpenFiles = 0;
 
-class CDiskFileWin32 : public CBase { public:
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:
     virtual void Open(const CWideString& pathname, FileAccessType access, unsigned long flags) { (void)pathname; (void)access; (void)flags; }
     virtual void Close() { if (Opened) { Opened = false; --g_OpenFiles; } }
     virtual void Read(void* data, long size, CASuspendableProcess* process)

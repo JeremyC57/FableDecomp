@@ -29,6 +29,8 @@ class CUserProfileManager {
 public:
     CWideString GetDefaultProfileName() const;           // 0x004065D0
     void SetProfileName(const CWideString& name, bool load);   // 0x0040D400
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> class CTBaseSingleton {
 public:
@@ -70,7 +72,7 @@ public:
     }
     __forceinline void LoadProfile(const CWideString& name, bool load)
     {
-        CTBaseSingleton<CUserProfileManager>::Get().SetProfileName(name, load);
+        CUserProfileManager::Get().SetProfileName(name, load);
     }
     void ChooseProfileNumber(long number);
 private:
@@ -81,7 +83,7 @@ void CFrontendGameComponent::ChooseProfileNumber(long number)
     long index = ProfileNamesOffset + number - 1;
     if (index == 11)
     {
-        LoadProfile(CTBaseSingleton<CUserProfileManager>::Get().GetDefaultProfileName(), true);
+        LoadProfile(CUserProfileManager::Get().GetDefaultProfileName(), true);
         SetMode(GAME_MODE_1);
     }
     else if (index == 12)

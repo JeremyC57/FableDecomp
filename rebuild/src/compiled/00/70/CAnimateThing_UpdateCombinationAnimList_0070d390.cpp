@@ -1,7 +1,7 @@
 // CAnimateThing::UpdateCombinationAnimList(list<CAnimSet>& anims, const CAnimSetUpdateInfo& info) -- two passes over the combination anim sets: first drop every finished set whose blend has faded out (or that has no fade), fading the others out by their ChangeAlphaBy; then update each set from the frame info and fade the unfinished fading ones in
 // Leaf: UpdateCombinationAnimList
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070D390, length 370 bytes (+ int3 padding), ret 8; `this` is unused.
-// Callees: GFGetFrameCount @ 0x0049D870 (__fastcall; catalog "GFGetPreMainMemoryUsed" is propagated), CAnimSet::Update
+// Callees: CWorld::GetFrame @ 0x0049D870 (__fastcall; catalog "GFGetPreMainMemoryUsed" is propagated), CAnimSet::Update
 //          @ 0x0070D030 (landed), free @ 0x00BFEA14 (the inline CAnimSet destructor frees InternalAlphas then Anims, then
 //          the list node). EPSILON 0.0001f @ 0x0129BA3C, 0.0f @ 0x0122DEDC, 1.0f @ 0x0122DED8.
 // Layout: the landed CAnimSet model (0x0070C280 / 0x0070D030: Anims +4, InternalAlphas +0x10, FrameInternalAlphasUpdated
@@ -15,7 +15,7 @@
 //          the fade-in sum through a named value local (`value + ChangeAlphaBy`, else VC reassociates), the clamp
 //          `if (a < 0) a = 0; else if (a > 1) a = 1;`.
 extern "C" void __cdecl free(void* p);                 // 0x00BFEA14
-extern "C" long __fastcall GFGetFrameCount();          // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };          // 0x0049D870
 extern const float EPSILON;                            // 0x0129BA3C
 
 struct CAnimSetUpdateInfo {
@@ -106,7 +106,7 @@ __forceinline bool FadeOutCombinationAnim(CAnimSet& set)
             float a = GFClamp01(alpha.GetValue() - set.ChangeAlphaBy);
             alpha.Last = alpha.Current;
             set.InternalAlphas[0].Current = a;
-            set.FrameInternalAlphasUpdated = GFGetFrameCount();
+            set.FrameInternalAlphasUpdated = CWorld::GetFrame();
             return true;
         }
     }
@@ -120,7 +120,7 @@ __forceinline void FadeInCombinationAnim(CAnimSet& set)
         float a = GFClamp01(value + set.ChangeAlphaBy);
         alpha.Last = alpha.Current;
         set.InternalAlphas[0].Current = a;
-        set.FrameInternalAlphasUpdated = GFGetFrameCount();
+        set.FrameInternalAlphasUpdated = CWorld::GetFrame();
     }
 }
 

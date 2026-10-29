@@ -4,7 +4,7 @@
 // Callees: CNewFrontendGameComponent::Shutdown @ 0x0042EBB6, ~CWideString @ 0x0099B510, vector<CWideString>::~vector @ 0x00412130,
 //   free @ 0x00BFEA14 (the POD vector's storage), the CCountedPointer destructors @ 0x00403750 / 0x0042F974 / 0x0042F9A0 /
 //   0x0042918C / 0x00419108 / 0x0042F948 (labels "_Dest_val<...COptimisedPrimitive>" are propagated byte twins),
-//   ~CMainGameComponentInit @ 0x004131D0, the def's virtual slot 1 (destroy), CBase::~CBase @ 0x0099A300 (tail jump).
+//   ~CMainGameComponentInit @ 0x004131D0, the def's virtual slot 1 (destroy), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (tail jump).
 //   Vtables 0x01230CA0 / 0x01230C94 (this class at +0 / +4), 0x0122ECB0 / 0x0122ECA4 (the game-component base).
 // Layout = Ego_r.pdb up to +0x6c (m_pMenuFont +0x10, m_bInitMainGame +0x2c, m_pFrontEndDef +0x3c, banks/engine +0x40..+0x60,
 //   FileNames +0x6c); the retail STLport vectors are 12 bytes, so FileTimes is +0x78 and SaveGame +0x84 (PDB +0x7c / +0x8c).
@@ -15,13 +15,14 @@
 //   are `__forceinline`.
 #pragma optimize("s", on)
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 struct CGameComponentInterface {
     virtual void v00();
 };
-class CGameComponent : public CBase, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
+class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool m_bShutDown;                                      // +0x08
     virtual __forceinline ~CGameComponent() { }
 };

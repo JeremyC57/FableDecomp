@@ -12,9 +12,10 @@
 class CUserProfileManager {
 public:
     void RenderUIBackground(float alpha);       // 0x004075C0
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 
-CUserProfileManager& GetUserProfileManager();   // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
 
 struct CUIBackgroundOwner_005bc6d6 {
     void RenderBackground(float alpha);
@@ -23,5 +24,5 @@ struct CUIBackgroundOwner_005bc6d6 {
 void CUIBackgroundOwner_005bc6d6::RenderBackground(float alpha)
 {
     double a = alpha;
-    GetUserProfileManager().RenderUIBackground((float)a);
+    CUserProfileManager::Get().RenderUIBackground((float)a);
 }

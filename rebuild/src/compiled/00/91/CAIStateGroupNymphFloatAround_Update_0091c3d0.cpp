@@ -114,7 +114,7 @@ class CCreatureAction_NymphTeleportIntoLimbo : public CCombatActionBase { public
     CCreatureAction_NymphTeleportIntoLimbo(CThingCreatureBase* owner);    // 0x008CA800
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CAIBrain { public:
     virtual void v00();
@@ -165,7 +165,7 @@ void CAIStateGroup_NymphFloatAround::Update()
         } else
             nymph->StartFlyingAround(0);
     }
-    long frame = GetPWorld()->GetWorldFrame();
+    long frame = GetPWorld()->GetFrame();
     while (!nymph->ReadyToAttack) {
         nymph->CheckIfCanAttack(frame);
         if (IsStopping() || !nymph->FlyingAround) {

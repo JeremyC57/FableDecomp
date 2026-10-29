@@ -9,9 +9,10 @@
 // packed local polymorphic model uses the header's field layout and supplies slots 3/8.
 class CPersistContext;
 class CCharString { public: void* data; CCharString(const char*, long); ~CCharString(); };
-struct CBase { virtual ~CBase(); };
+class CBaseClass {
+public:  virtual ~CBaseClass(); };
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); }; // retail sentinel-only list, 4 bytes
-class CStringParser : public CBase { public:
+class CStringParser : public CBaseClass { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
  CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
  CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);

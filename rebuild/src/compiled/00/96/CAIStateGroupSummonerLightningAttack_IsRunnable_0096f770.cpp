@@ -79,7 +79,7 @@ class CWorld { public:
     unsigned char _pad00[0x34];
     CGameCameraManager* PCameraManager;         // +0x34
     unsigned long* GetPRandomSeed();            // 0x0049D810
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 extern long g_FramesPerSecond;                  // 0x01375550
@@ -163,7 +163,7 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
                     PTarget = CIntelligentPointerCreature(enemy);
                     return true;
                 }
-                if (CWorld::GetWorldFrame() > NextFrameForPreemptiveUse) {
+                if (CWorld::GetFrame() > NextFrameForPreemptiveUse) {
                     unsigned long* seed = GetPWorld()->GetPRandomSeed();
                     unsigned long next = *seed * 0x24A1U + 0x24DFU;
                     *seed = next;
@@ -186,7 +186,7 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
                     }
                     long fps = g_FramesPerSecond;
                     const CSummonerDef* def = PDef;
-                    NextFrameForPreemptiveUse = (long)((float)CWorld::GetWorldFrame() + (float)fps * def->PreemptiveDelaySeconds);
+                    NextFrameForPreemptiveUse = (long)((float)CWorld::GetFrame() + (float)fps * def->PreemptiveDelaySeconds);
                 }
             }
         }

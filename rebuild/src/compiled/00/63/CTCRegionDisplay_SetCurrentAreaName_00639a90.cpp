@@ -11,7 +11,7 @@
 #include <stddef.h>
 class CThing;
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
 };
 extern long g_framesPerSecond;                              // 0x01375550
 class CWideString { public:
@@ -49,7 +49,7 @@ void CTCRegionDisplay::SetCurrentAreaName(const CWideString& name, float display
     if (name != L"") {
         CurrentAreaName = name;
         CurrentAreaNameExtra = L"";
-        FrameNameChanged = GetWorld().GetWorldFrame();
+        FrameNameChanged = GetWorld().GetFrame();
         LastAlpha = 0;
     } else {
         CurrentAreaName = L"";

@@ -77,7 +77,7 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 class CWorld { public:
-    static long __fastcall GetWorldFrame();     // 0x0049D870
+    static long __fastcall GetFrame();     // 0x0049D870
 };
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector Up, Forward; };
@@ -137,7 +137,7 @@ bool CAIStateGroup_GoToPub::InitCreaturePosition()
                 && GetCreature()->AutoPlaceNearBuilding(PPub.Get(), 3.0f))
                 return true;
         }
-    } else if (NextFramePub < CWorld::GetWorldFrame() && IsRunnable()
+    } else if (NextFramePub < CWorld::GetFrame() && IsRunnable()
         && GetCreature()->AutoPlaceNearBuilding(PPub.Get(), 3.0f))
         return true;
     return false;

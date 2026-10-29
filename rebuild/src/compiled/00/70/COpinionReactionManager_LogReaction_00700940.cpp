@@ -13,7 +13,7 @@
 // `tc->GetWorld()->GetWorldFrame()` keeps the GetWorld call although GetWorldFrame is static.
 class CThing;
 class CWorld { public:
-    static long GetWorldFrame();            // 0x0049D870
+    static long __fastcall GetFrame();            // 0x0049D870
 };
 class CTCBase { public:
     virtual void v00();
@@ -79,6 +79,6 @@ void COpinionReactionManager::LogReaction(long reaction, CThing* creature, bool 
     if (!fromScript)
     {
         CTCCreatureOpinionOfHero* opinion = creature->GetOpinionOfHeroTC();
-        opinion->LastOpinionReactionFrame = opinion->GetWorld()->GetWorldFrame();
+        opinion->LastOpinionReactionFrame = opinion->GetWorld()->GetFrame();
     }
 }

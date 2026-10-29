@@ -1,7 +1,7 @@
 // CTrophiesBriarTrophy::Main() -- the Briar trophy entity script: keep the game updating while BriarRose is alive; once she is gone (and the script is not done) remove the trophy thing (Me)
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E9D800, length 211 bytes (224 with padding).
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CBase::~CBase @ 0x0099A2E0,
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CBaseClass::~CBaseClass @ 0x0099A2E0,
 // CScriptThing::~CScriptThing @ 0x004AA840 (the out-of-line copy), operator delete @ 0x00BFE9BC, IsDone @ 0x00F35B30 (on
 // `this`), the game interface's slots 72 (+0x120, GetThingWithScriptName), 7 (+0x1c, Update) and 108 (+0x1b0,
 // RemoveThing(thing, false, true)); the thing implementation's slot 75 (+0x12c, IsAlive) behind the inlined
@@ -16,9 +16,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
-    CBase();                                                // 0x0099A2D0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
+    CBaseClass();                                                // 0x0099A2D0
 };
 
 struct SScriptThingInfo {                                   // the counted block behind CScriptThing::PImp_Info
@@ -44,7 +45,7 @@ struct CScriptThingImpl {                                   // the game-side thi
     virtual bool IsAlive();                                 // slot 75 (+0x12c)
 };
 
-class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                               // vtable 0x01238C8C, 12 bytes
     CScriptThingImpl* PImp_Data;                            // +0x04
     SScriptThingInfo* PImp_Info;                            // +0x08
     CScriptThing(const CScriptThing& other);

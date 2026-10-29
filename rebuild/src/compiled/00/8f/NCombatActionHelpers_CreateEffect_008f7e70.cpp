@@ -5,7 +5,7 @@
 //   (`?CreateEffect@NCombatActionHelpers@@YIXAAVCThingCreatureBase@@JABVC3DVector@@PBVCCharString@@@Z`).
 // Extra callees: CThing::GetPos @ 0x004C73D0 (spawn at the creature), CTCDParticleEmitter::AttachToThing @
 //   0x006E0BE0 (creature, attach type 12 = helper point, *helperName, 0, 0) when a helper name is given.
-// Callees: CreateEffectThing __fastcall @ 0x006E0880 (type, position, false), CRC Calc @ 0x004014A0 ("DIRECTION" @
+// Callees: CreateEffectThing __fastcall @ 0x006E0880 (type, position, false), CRC CCRC::Calc @ 0x004014A0 ("DIRECTION" @
 //   0x01272FC0, 9 bytes), CBaseClass ctor @ 0x0099A2D0, vector<pair<unsigned long, C3DVector>>::push_back @ 0x0076B120,
 //   CTCDParticleEmitter::SetEmitterUpdateParameters @ 0x006E11A0, ~CParticleUpdateParameters @ 0x006E2500.
 // Layout: the particle emitter component is the thing's PTCDriver +0x5C when component kind 0x4B is present (bit 11 of
@@ -27,7 +27,7 @@ public:
     C3DVector() {}
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0: CRC
 
 class CBaseClass {                              // vtable 0x01231710 (polymorphic: the vptr sits at +0)
 public:
@@ -113,7 +113,7 @@ void __fastcall CreateEffect(CThingCreatureBase& creature, long effectType, cons
         emitter = (CTCDParticleEmitter*)effect->PTCDriver;
     if (helperName)
         emitter->AttachToThing(&creature, 12, *helperName, 0, 0);
-    unsigned long key = Calc_004014a0(0, "DIRECTION", 9);
+    unsigned long key = CCRC::Calc(0, "DIRECTION", 9);
     NParticleEngine::SVectorParam directionParam(key, direction);
     NParticleEngine::CParticleUpdateParameters parameters;
     parameters.VectorParams.Vector.push_back(directionParam);

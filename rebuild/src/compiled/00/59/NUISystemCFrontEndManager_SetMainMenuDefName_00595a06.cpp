@@ -49,7 +49,7 @@ public:
 class CManager {
 public:
     CComponent* CreateComponent(const CCharString& defName, bool frontEnd);   // 0x0041DB1D
-    static CManager* GetInstance();                      // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2
 };
 class CFrontEndManager {
 public:

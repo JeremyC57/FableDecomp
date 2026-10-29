@@ -21,7 +21,7 @@ namespace NEntityEvents { class CEventBase; }
 void __fastcall DeleteData(NEntityEvents::CEventBase* event);   // 0x008119A0
 
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
 };
 
 class CTCEntityEvents;
@@ -107,7 +107,7 @@ class CTCEntityEvents : public CTCBase { public:
 
 void CTCEntityEvents::AddEvent(NEntityEvents::CEventBase* event)
 {
-    event->Frame = GetWorld().GetWorldFrame();
+    event->Frame = GetWorld().GetFrame();
     Events.push_front(CCountedPointer<NEntityEvents::CEventBase>(event));
     event->OnAddedTo(*this);
 }

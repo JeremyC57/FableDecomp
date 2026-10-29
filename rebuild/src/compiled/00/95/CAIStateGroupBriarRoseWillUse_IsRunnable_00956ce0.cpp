@@ -104,7 +104,7 @@ struct CTCAttackTarget                              // interface type 8 componen
 
 class CWorld
 { public:
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 
 struct CAIStateGroup_BriarRoseWillUse
@@ -120,7 +120,7 @@ struct CAIStateGroup_BriarRoseWillUse
 
 bool CAIStateGroup_BriarRoseWillUse::IsRunnable()
 {
-    if (GetPWorld()->GetWorldFrame() >= NextUseFrame && PBrain->Creature->HasTC(8))
+    if (GetPWorld()->GetFrame() >= NextUseFrame && PBrain->Creature->HasTC(8))
     {
         CThing* target = ((CTCAttackTarget*)PBrain->Creature->FindEntry(8)->component)->GetTarget();
         if (target && !(target->m_flags91 & 1))

@@ -3,9 +3,10 @@
 // Behaviour model of CGameJoystickManager::Get() (0x0049BB90): lazy singleton held by the static counted pointer PClass.
 static int g_news = 0;
 
-struct CBase {
-    virtual ~CBase() { }
-    CBase() { }
+class CBaseClassNonCopyable {
+public:
+    virtual ~CBaseClassNonCopyable() { }
+    CBaseClassNonCopyable() { }
 };
 
 template <class T>
@@ -27,7 +28,7 @@ class CCountedPointer { public:
     }
 };
 
-class CGameJoystickManager : public CBase { public:
+class CGameJoystickManager : public CBaseClassNonCopyable { public:
     long m_MainPlayerJoystickDeviceNumber;
     bool m_MainPlayerJoystickDeviceNumberSet;
     CGameJoystickManager() : m_MainPlayerJoystickDeviceNumber(0), m_MainPlayerJoystickDeviceNumberSet(false) { ++g_news; }

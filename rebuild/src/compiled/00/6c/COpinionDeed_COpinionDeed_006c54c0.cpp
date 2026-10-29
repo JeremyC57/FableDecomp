@@ -33,7 +33,7 @@ class C3DVector { public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) {}
 };
 
-long GetWorldFrame_0049d870();                     // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                     // 0x0049D870
 
 class COpinionDeed { public:
     long                              DeedType;                   // +0x00 EOpinionDeedType
@@ -52,7 +52,7 @@ class COpinionDeed { public:
 
 COpinionDeed::COpinionDeed(long type, long handle, const C3DVector& position, const CThing* target,
                            bool happening, bool isCrime, long extraData)
-    : DeedType(type), DeedHandle(handle), Position(position), FrameHappened(GetWorldFrame_0049d870()),
+    : DeedType(type), DeedHandle(handle), Position(position), FrameHappened(CWorld::GetFrame()),
       PTarget(target), WasSearchingForWitnesses(happening), IsStillHappening(happening),
       IsCrimeReportedToVillage(false), IsCrime(isCrime), ExtraData(extraData)
 {

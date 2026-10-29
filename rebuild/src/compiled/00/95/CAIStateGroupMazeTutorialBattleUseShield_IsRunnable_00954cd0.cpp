@@ -94,7 +94,7 @@ class CTCBoss { public:                                // interface 0xad
     long GetBossPhase();                        // 0x007AED10
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long FramesPerSecond;                    // 0x01375550
 
@@ -139,9 +139,9 @@ bool CAIStateGroupMazeTutorialBattleUseShieldMethods::IsRunnable()
         ((const CThing*)GetCreature())->GetInterface(&tracker, 8);
         CThing* target = tracker->GetTarget();
         if (target && !(target->m_flags91 & 1)) {
-            float elapsed = (float)(GetPWorld()->GetWorldFrame() - FrameOfLastShield);
+            float elapsed = (float)(GetPWorld()->GetFrame() - FrameOfLastShield);
             if (elapsed > (float)FramesPerSecond * 8.0f) {
-            FrameOfLastShield = GetPWorld()->GetWorldFrame();
+            FrameOfLastShield = GetPWorld()->GetFrame();
             CDefPointer<CWhisperBattleDef> def;
             GetCreature()->PDef->GetSubDef(&def);
             PTarget() = CIntelligentPointer<CThing>(target);

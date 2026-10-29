@@ -2,7 +2,7 @@
 // Leaf: ?FrameUpdate@CTCVolumeContainmentTracker
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00785B40, 318 bytes (plain `ret`, ebp frame).
 // Callees: CTCBase::GetWorld() 0x00686A70; CThing::GetPos() const 0x004C73D0; the world's slot 8 (+0x20) camera
-//          position getter (C3DVector by hidden pointer); GFGetCurrentFrame 0x0049D870; __allrem 0x00BFEC30;
+//          position getter (C3DVector by hidden pointer); CWorld::GetFrame 0x0049D870; __allrem 0x00BFEC30;
 //          CTCVolumeContainmentTracker::Update() 0x00785620.
 // Globals: the tracking-enabled byte 0x01375757, g_framesPerSecond 0x01375550; constants 5.0f 0x0126B664, 0.8f 0x0126B660,
 //          100.0f 0x01230A08, 0.5f/1.0f as immediates.
@@ -20,7 +20,7 @@ class C3DVector { public:
 };
 extern unsigned char g_bVolumeTrackingEnabled;  // 0x01375757
 extern long g_framesPerSecond;                  // 0x01375550
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 
 struct CWorldView {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -87,7 +87,7 @@ void CTCVolumeContainmentTracker::FrameUpdate()
         if ((world->GetCameraPosition() - pos).GetMagnitudeSquared() < 100.0f)
             interval = CeilToLong(g_framesPerSecond * 0.8f);
         unsigned __int64 uid = ParentThing->UID;
-        if ((uid + GFGetCurrentFrame()) % interval != 0)
+        if ((uid + CWorld::GetFrame()) % interval != 0)
             return;
     }
     Update();

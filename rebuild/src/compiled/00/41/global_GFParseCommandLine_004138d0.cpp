@@ -7,7 +7,7 @@
 // (const CCharString&, CParsedItem*) 0x009BA110 and the CCharString-returning overload 0x009BA330, ReadAsSymbol 0x009BA790 (result
 // discarded: skips the option marker), ReadAsString 0x009BA6F0, ReadAsInteger 0x009BA540, _stricmp 0x00BFEBA8, CCharString::
 // ToWideString 0x0099E480, CWideString::operator= 0x0099B7D0 / operator!=(const wchar_t*) 0x0099B150 / dtor 0x0099B510, the
-// parser's comment-list dtor 0x004046B0 and ~CBase 0x0099A2E0.
+// parser's comment-list dtor 0x004046B0 and ~CBaseClass 0x0099A2E0.
 // Data: options "-" "staticmap" "\"" "q" "build_retail_static_maps" "enable_map_optimizations" (0x0122E630..0x0122E5E8,
 // 0x0122DF24); g_WorldToLoad 0x013B8668, g_bCompileFrontendDefinitions 0x013B8648, g_bRuntimeLevelFiles 0x013B8616,
 // g_bStartMainGame 0x013B8605 (names as landed elsewhere); 0x013B864A / 0x013B864B / 0x01375490 / 0x0137548F / 0x0137544A
@@ -20,10 +20,10 @@
 #include <stddef.h>
 extern "C" int __cdecl _stricmp(const char* a, const char* b);   // 0x00BFEBA8
 
-class CBase {
+class CBaseClass {
 public:
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();                              // 0x0099A2E0
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
 };
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: "" (the string library's shared empty literal; this TU's own "" is 0x0122D70E)
 class CCharStringData { public:
@@ -63,7 +63,7 @@ class CParsedItem { public:                               // 12 bytes
     CCharString String;                            // +0x08
 };
 typedef void (*TStringParserErrorCallback)(CCharString* message);
-class CStringParser : public CBase {               // vtable 0x0122D874, 0x28 bytes in retail
+class CStringParser : public CBaseClass {               // vtable 0x0122D874, 0x28 bytes in retail
 public:
     char*                      String;             // +0x04
     unsigned long              BaseLineOffset;     // +0x08

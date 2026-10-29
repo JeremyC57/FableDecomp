@@ -20,7 +20,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
     }
     return false;
 }
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 static CThing g_enemy;
 
@@ -32,14 +32,14 @@ struct CAIStateGroup_JackDragon {
     void Terminate() { ++g_terminates; }
     void StayIdle(float seconds)
     {
-        long start = GetPWorld()->GetWorldFrame();
+        long start = GetPWorld()->GetFrame();
         do {
             AIAction_DoNothing();
             if (!IS_THING_ALIVE(PEnemy) || IsStopping()) {
                 Terminate();
                 return;
             }
-        } while ((float)(GetPWorld()->GetWorldFrame() - start) / g_framesPerSecond < seconds);
+        } while ((float)(GetPWorld()->GetFrame() - start) / g_framesPerSecond < seconds);
     }
 };
 

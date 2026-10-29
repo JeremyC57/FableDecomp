@@ -53,7 +53,7 @@ template <class T> struct vector {
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
     T& operator[](unsigned long n) const { return *(_M_start + n); }
 };
-class CWorld { public: static long GetWorldFrame(); };          // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };          // 0x0049D870
 extern long g_framesPerSecond;                          // 0x01375550
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C
 // the engine's inline-assembly FPU ceiling helper (0x004FA9A0 is its standalone copy): VC7.1 expands the __forceinline body in
@@ -101,7 +101,7 @@ long CTCObjectAugmentations::GetHealthToAddThisFrame() const
             CAugmentationDef* aug = slot.Object;
             if (aug->FrequencyToAddHealthInSeconds > g_epsilon_0129ba3c) {
                 long period = CeilToLong(g_framesPerSecond * aug->FrequencyToAddHealthInSeconds);
-                if (CWorld::GetWorldFrame() % period == 0)
+                if (CWorld::GetFrame() % period == 0)
                     total += aug->HealthToAddPerIncrease;
             }
             ReleaseDef(aug);

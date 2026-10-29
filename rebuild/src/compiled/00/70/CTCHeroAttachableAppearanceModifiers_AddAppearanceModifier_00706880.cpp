@@ -54,7 +54,7 @@ public:
 class CGameDefinitionManager : public CDefinitionManager { };
 
 class CWorld { public:
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 
 struct CModifierEntry {                             // CTCHeroAttachableAppearanceModifiers::CModifierEntry (8 bytes)
@@ -153,7 +153,7 @@ void CTCHeroAttachableAppearanceModifiers::AddAppearanceModifier(long defIndex)
         AppearanceModifiers._M_start[appearanceOut.Object->Type].push_back(CModifierEntry(defIndex, true));
         Changed = true;
     }
-    FrameLastChanged = PeekWorld().GetWorldFrame();
+    FrameLastChanged = PeekWorld().GetFrame();
     if (appearanceOut.Object && --appearanceOut.Object->RefCount == 0)
         appearanceOut.Object->Destroy();
     if (thingOut.Object && --thingOut.Object->RefCount == 0)

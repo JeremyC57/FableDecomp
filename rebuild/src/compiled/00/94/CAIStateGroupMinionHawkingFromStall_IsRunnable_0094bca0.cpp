@@ -53,7 +53,7 @@ class CWorld { public:
     unsigned char _pad[0x74];
     COpinionReactionManager* POpinionReactionManager;   // +0x74
     COpinionReactionManager* GetOpinionReactionManager() const { return POpinionReactionManager; }
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 
 struct CBaseIntelligentPointer {
@@ -97,7 +97,7 @@ struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
 {
-    if (GetWorld().GetWorldFrame() < NextHawkFrame)
+    if (GetWorld().GetFrame() < NextHawkFrame)
         return false;
     CThing* creature = GetCreature();
     if (creature->HasTC(0x90)) {

@@ -20,7 +20,7 @@ struct CSwitchDefPointer {
     ~CSwitchDefPointer() { if (m_p) { m_p->ReleaseTemporary(); m_p = 0; } }
     CThingSwitchDef* operator->() const { return m_p; }
 };
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CThingSwitch { public:
     U64 UniqueID;
@@ -44,7 +44,7 @@ unsigned char CThingSwitch::WorldUpdate()
         return result;
     CWorld* world = GetWorld();
     U64 id = UniqueID;
-    if ((world->GetWorldFrame() + id) % 5 == 0) {
+    if ((world->GetFrame() + id) % 5 == 0) {
         switch (GetSwitchDef()->TriggerType) {
         case 1: SwitchTriggerPlayerOnlyOnceInArea(); return 0;
         case 2: SwitchTriggerPlayerOnlyMultipleTimesInArea(); return 0;

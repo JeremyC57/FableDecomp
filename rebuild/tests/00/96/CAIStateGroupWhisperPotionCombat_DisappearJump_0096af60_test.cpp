@@ -37,7 +37,7 @@ class CAIBrain { public: CThingCreature* PCreature; };
 
 static long g_frame;
 static long g_frameStep;
-class CWorld { public: static long GetWorldFrame() { long f = g_frame; g_frame += g_frameStep; return f; } };
+class CWorld { public: static long __fastcall GetFrame() { long f = g_frame; g_frame += g_frameStep; return f; } };
 long g_FramesPerSecond = 10;
 
 static int g_stopAt;      // IsStopping() returns true from this call number on (0 = never)
@@ -93,11 +93,11 @@ void CAIStateGroup_WhisperPotionCombat::DisappearJump()
     PBrain->PCreature->PGraphic->SetPosition(&Jump_to_pos);
     PBrain->PCreature->SetActive(false);
     PBrain->PCreature->PGraphic->SetFlags(0x20);
-    long start = GetPWorld()->GetWorldFrame();
+    long start = GetPWorld()->GetFrame();
     long now;
     do {
         AIAction_DoNothing();
-        now = GetPWorld()->GetWorldFrame();
+        now = GetPWorld()->GetFrame();
     } while (!IsStopping() && (float)(now - start) < (float)g_FramesPerSecond * 0.5f);
     PBrain->PCreature->PGraphic->Restore();
     PBrain->PCreature->SetActive(true);

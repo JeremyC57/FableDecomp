@@ -17,7 +17,7 @@
 class CThingAICreature;
 
 class CWorld { public:
-    static long GetCurrentFrame();                          // 0x0049D870
+    static long __fastcall GetFrame();                          // 0x0049D870
 };
 unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
 extern long g_framesPerSecond;                              // 0x01375550
@@ -59,6 +59,6 @@ struct CAIStateGroup_KidReactToBlockage : CAIStateGroupBase {
 
 void CAIStateGroup_KidReactToBlockage::OnReplace()
 {
-    LastEndState = PeekWorld().GetCurrentFrame();
+    LastEndState = PeekWorld().GetFrame();
     CurrentActivationMinInterval = (long)(g_framesPerSecond * 5.0f + (float)RandomFramesWithin(10.0f));
 }

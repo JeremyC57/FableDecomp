@@ -37,6 +37,8 @@ public:
 class CUserProfileManager {
 public:
     void LoadFileList(std::vector<CWideString>& names, CMallocVector<CFileListInfo>& infos);   // 0x004091C0
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> class CTBaseSingleton {
 public:
@@ -51,5 +53,5 @@ void CFrontendProfileList::Refresh()
 {
     Names.erase(Names.begin(), Names.end());
     CMallocVector<CFileListInfo> infos;
-    CTBaseSingleton<CUserProfileManager>::Get().LoadFileList(Names, infos);
+    CUserProfileManager::Get().LoadFileList(Names, infos);
 }

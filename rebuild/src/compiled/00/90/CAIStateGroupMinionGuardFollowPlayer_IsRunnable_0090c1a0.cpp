@@ -2,7 +2,7 @@
 // when the hero is alive, the guard's village has no live guard-follower yet, and this guard is the nearest
 // creature with the guard component (0xB4) to the hero; otherwise re-arm the one-second timer.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090C1A0, length 293 bytes (+ int3 padding).
-// Callees: GFGetCurrentFrame @ 0x0049D870 (x2), CWorld::GetCurrentPlayer @ 0x0049D9D0 (the world at +0x24 of the
+// Callees: CWorld::GetFrame @ 0x0049D870 (x2), CWorld::GetCurrentPlayer @ 0x0049D9D0 (the world at +0x24 of the
 // global @ 0x013B86A0), CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap::LowerBound @ 0x0040F020 (inlined
 // GetInterface: 0x23 = CTCVillager bit 3 of +0x24), GFGetPVillageInterface @ 0x007EE540 (x2; manifest
 // "IS_THING_ALIVE<...>" is propagated), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the village's +0xbd guard
@@ -114,7 +114,7 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CAIStateGroupBase { public:
@@ -233,7 +233,7 @@ bool CThingSearchTools::GetPBestThing(const CThingFilter_HasTC& filter, const CT
 
 bool CAIStateGroup_MinionGuardFollowPlayer::IsRunnable()
 {
-    if (NextCheckFrame > (unsigned long)GFGetCurrentFrame())
+    if (NextCheckFrame > (unsigned long)CWorld::GetFrame())
         return false;
     CThing* hero = g_pMainGameComponent->m_pWorld->GetCurrentPlayer()->GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1) && PBrain->PCreature->HasTC(0x23)) {
@@ -252,6 +252,6 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsRunnable()
         }
     }
     long oneSecond = g_framesPerSecond;
-    NextCheckFrame = GFGetCurrentFrame() + oneSecond;
+    NextCheckFrame = CWorld::GetFrame() + oneSecond;
     return false;
 }

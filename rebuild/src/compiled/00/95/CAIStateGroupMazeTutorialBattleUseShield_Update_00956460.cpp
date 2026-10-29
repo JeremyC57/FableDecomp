@@ -63,7 +63,7 @@ class CCombatAction_WillShieldInto : public CCombatActionBase { public:
 };
 
 class CWorld { public:
-    static long GetCurrentFrame();              // 0x0049D870
+    static long __fastcall GetFrame();              // 0x0049D870
 };
 
 class CAIBrain { public:
@@ -93,7 +93,7 @@ void CAIStateGroup_MazeTutorialBattleUseShield::Update()
 {
     if (IS_THING_ALIVE(PTargetThing) && !IsStopping()) {
         AIAction_PerformActionAndWait(&CCombatAction_WillShieldInto(GetCreature(), 3.0f, 5.0f), false);
-        FrameOfLastShield = GetPWorld()->GetCurrentFrame();
+        FrameOfLastShield = GetPWorld()->GetFrame();
     }
     Terminate();
 }

@@ -45,7 +45,7 @@ struct CDefPointerSlot {                                          // the out-par
     CInventoryCategoryDef* Object;
 };
 class CGameDefinitionManager { public:
-    static CGameDefinitionManager& Get();                         // 0x0044C6B0
+    static CGameDefinitionManager& __fastcall Get();                         // 0x0044C6B0
     bool GetDef(long defIndex, CDefPointerSlot* def);                 // 0x005C0C99
 };
 namespace NInventory {

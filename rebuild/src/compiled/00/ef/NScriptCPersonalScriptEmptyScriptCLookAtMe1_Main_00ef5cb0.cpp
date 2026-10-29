@@ -4,7 +4,7 @@
 // Retail: Fable.exe @ 0x00EF5CB0, 817 bytes (+ int3 padding), plain `ret`.
 // Callees: CPredicate_And<CIsThingAlive, CIsThingAlive> ctor 0x00E24760, ~CIsThingAlive 0x00E241B0, CScriptThing copy
 //   0x004ABE90, out-of-line ~CScriptThing 0x004AA840, SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
-//   CBase dtor 0x0099A2E0, CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7 NewScriptFrame, 72
+//   CBaseClass dtor 0x0099A2E0, CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7 NewScriptFrame, 72
 //   GetThingWithScriptName, 190 SetHeroAsWearing; CScriptThing slot 20 MsgIsUsedBy.
 //   Strings "WalkToHere" 0x012F6654, "TriggerCrate" 0x012F5EB0, "SCRIPT_NAME_HERO" 0x0125D1C8, "OBJECT_HERO_NO_HAT" 0x01250A68.
 // Layout: the landed 00d9f270 CMC_Minion model (CEntityScriptBase {vptr, Game +4, Me +8}); predicate classes from the
@@ -43,11 +43,12 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
      virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

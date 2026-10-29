@@ -22,7 +22,7 @@ public:
     }
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CTCBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -51,6 +51,6 @@ void CTCTargetingSpirit::FrameUpdate()
             SetPTargetedThing(0);
     }
     unsigned __int64 uid = ParentThing->UID;
-    if ((uid + CWorld::GetWorldFrame()) % 4 == 0)
+    if ((uid + CWorld::GetFrame()) % 4 == 0)
         UpdateTargetList();
 }

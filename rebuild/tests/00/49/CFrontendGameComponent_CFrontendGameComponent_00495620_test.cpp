@@ -1,12 +1,13 @@
 #include <cstdio>
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 struct CGameComponentInterface {
     virtual void v00();
 };
-class CGameComponent : public CBase, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
+class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool m_bShutDown;                                      // +0x08
     virtual __forceinline ~CGameComponent() { }
 };
@@ -87,7 +88,7 @@ static int g_fail = 0;
 static void check(bool c, const char* w) { if (!c) { printf("FAIL %s\n", w); g_fail = 1; } }
 static int g_strDtors = 0, g_texDtors = 0, g_baseDtors = 0, g_destroyed = 0;
 static char g_order[256];
-CBase::~CBase() { ++g_baseDtors; strcat(g_order, "Base;"); }
+CBaseClassNonCopyable::~CBaseClassNonCopyable() { ++g_baseDtors; strcat(g_order, "Base;"); }
 void CGameComponentInterface::v00() {}
 CWideString::~CWideString() { ++g_strDtors; char t[16]; sprintf(t, "S%ld;", (long)PStringData); strcat(g_order, t); }
 CTexture::~CTexture() { ++g_texDtors; strcat(g_order, "Tex;"); }

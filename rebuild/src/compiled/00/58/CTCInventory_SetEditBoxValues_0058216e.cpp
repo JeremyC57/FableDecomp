@@ -51,7 +51,7 @@ class CUserProfileManager { public:                          // retail offsets (
     CWideString   ScoreBoardProxyIp;                  // +0x118
     long          ScoreBoardProxyPort;                // +0x11C
     long          ScoreBoardServerPort;               // +0x120
-    static CUserProfileManager* __fastcall Get();     // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
+    static CUserProfileManager& __fastcall Get();     // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     void Save();                                      // 0x0040A740
     void Apply();                                     // 0x0040BC80
     __forceinline CWideString GetScoreBoardUserName() const { return ScoreBoardUserName; }
@@ -110,15 +110,15 @@ void CTCInventory::SetEditBoxValues()
     for (CEditBoxIterator it = EditBoxes.begin(); it != EditBoxes.end(); ++it) {
         CWideString text;
         if ((*it)->GetName() == "UI_SCOREBOARD_LOGIN_EDITBOX")
-            text = CUserProfileManager::Get()->GetScoreBoardUserName();
+            text = CUserProfileManager::Get().GetScoreBoardUserName();
         if ((*it)->GetName() == "UI_SCOREBOARD_PASSWORD_EDITBOX")
-            text = CUserProfileManager::Get()->GetScoreBoardPassword();
+            text = CUserProfileManager::Get().GetScoreBoardPassword();
         if ((*it)->GetName() == "UI_SCOREBOARD_PROXY_IP_EDITBOX")
-            text = CUserProfileManager::Get()->GetScoreBoardProxyIp();
+            text = CUserProfileManager::Get().GetScoreBoardProxyIp();
         if ((*it)->GetName() == "UI_SCOREBOARD_PROXY_PORT_EDITBOX")
-            text = GFIntToCharString(CUserProfileManager::Get()->GetScoreBoardProxyPort()).ToWideString();
+            text = GFIntToCharString(CUserProfileManager::Get().GetScoreBoardProxyPort()).ToWideString();
         if ((*it)->GetName() == "UI_SCOREBOARD_SERVER_PORT_EDITBOX")
-            text = GFIntToCharString(CUserProfileManager::Get()->GetScoreBoardServerPort()).ToWideString();
+            text = GFIntToCharString(CUserProfileManager::Get().GetScoreBoardServerPort()).ToWideString();
         (*it)->SetText(text);
         (*it)->RefreshText();
     }

@@ -1,8 +1,8 @@
 // CLandscapeBackgroundPatch::UpdateTesselation() -- when landscape tesselation is enabled, fill a CTesselationData record for this patch (world origin, size, map, index buffer, the four edge strips and the bridge buffers) and tesselate it: water-only patches through the water sub-patch; otherwise through the engine's landscape tesselator, taking back the bridge buffers and poly counts it produced, then the water sub-patch if any; on success mark all four edge strips tesselated
 // Leaf: UpdateTesselation
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00BE61B0, 573 bytes (+ int3 padding).
-// Callees: CTesselationData ctor (inline; out-of-line copy 0x00BE59C0, base CBase ctor 0x0099A2D0, vtable 0x012A800C) and dtor
-//   (CBase dtor 0x0099A2E0); CLandscapeTesselatorBase::TesselatePatch 0x00BE3910 on the engine global 0x01436EA8 (+0x66C);
+// Callees: CTesselationData ctor (inline; out-of-line copy 0x00BE59C0, base CBaseClass ctor 0x0099A2D0, vtable 0x012A800C) and dtor
+//   (CBaseClass dtor 0x0099A2E0); CLandscapeTesselatorBase::TesselatePatch 0x00BE3910 on the engine global 0x01436EA8 (+0x66C);
 //   CEngineWaterBackgroundSubPatch::TesselatePatch(CTesselationData&) 0x00BFD290; enable flag global 0x0139C40C.
 // Layout: CLandscapeBackgroundPatch and CTesselationData as Ego_r.pdb (Parent +4, EdgeStrips[4] +8 stride 0x2c with Tesselated
 //   +0x28, IndexBuffer +0xbc, BridgeIndexBuffers +0xc4, BridgeVertexBuffers +0xd4, BridgePolyCount +0xe4, WaterSubPatch +0xf4,
@@ -14,17 +14,18 @@
 class CEngineMap { public: unsigned char _pad[0x60]; unsigned short OriginX, OriginY; };   // +0x60 / +0x62
 class CIndexBuffer;
 class CVertexBufferWin32;
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();                               // 0x0099A2E0
-    CBase();                                        // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                               // 0x0099A2E0
+    CBaseClass();                                        // 0x0099A2D0
+};
 class CPatchTesselationEdgeStrip { public:                 // 0x2c bytes
     unsigned char _pad[0x28];
     bool          Tesselated;                       // +0x28
     bool          Vertical;                         // +0x29
     unsigned char _pad2a[2];
 };
-class CTesselationData : public CBase { public:                   // vtable 0x012A800C, 0x5c bytes
+class CTesselationData : public CBaseClass { public:                   // vtable 0x012A800C, 0x5c bytes
     long                        PatchWorldX;        // +0x04
     long                        PatchWorldY;        // +0x08
     long                        Width;              // +0x0c

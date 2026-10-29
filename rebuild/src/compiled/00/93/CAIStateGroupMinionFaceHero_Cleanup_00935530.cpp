@@ -2,14 +2,14 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00935530, length 74 bytes (+ int3 padding).
 // Callees: CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, SetPItem @ 0x00A01B90 (twice),
 // GetPItem @ 0x00A01B50, ~CBaseIntelligentPointer @ 0x00A01C10 (all on the 8-byte frame temporary), then
-// GFGetCurrentFrame @ 0x0049D870 (__fastcall, no arguments).
+// CWorld::GetFrame @ 0x0049D870 (__fastcall, no arguments).
 // `PHero = 0` goes through a converting CIntelligentPointer temporary (base constructor, vtable 0x01237F14 =
 // CIntelligentPointer<CThingPlayerCreature>, SetPItem(0)) and the inline assignment `SetPItem(other.GetPItem())`
 // on the member at +0x14; the temporary is destroyed before the frame read; m_frameCleanedUp at +0x1c.
 // No engine header for this class; layout local, names descriptive.
 class CThing;
 
-long __fastcall GFGetCurrentFrame();        // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };        // 0x0049D870
 
 struct CBaseIntelligentPointer {
     virtual void v00();
@@ -39,5 +39,5 @@ struct CAIStateGroup_MinionFaceHero : CAIStateGroupBase {
 void CAIStateGroup_MinionFaceHero::Cleanup()
 {
     PHero = 0;
-    m_frameCleanedUp = GFGetCurrentFrame();
+    m_frameCleanedUp = CWorld::GetFrame();
 }

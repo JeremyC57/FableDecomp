@@ -5,7 +5,7 @@ struct CSweepTaskList {
     unsigned long size() const { unsigned long n = 0; for (SSweepTaskNode* p = _M_node->next; p != _M_node; p = p->next) ++n; return n; }
 };
 static long g_frame = 0;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CTCVillage { public:
     long FrameStartedSecuritySweep; CSweepTaskList SecuritySweepTasks; bool SecuritySweepUrgent; float InitialSecuritySweepRadius;
@@ -18,7 +18,7 @@ class CTCVillage { public:
         unsigned long queued = SecuritySweepTasks.size();
         SecuritySweepUrgent = urgent;
         if (queued != 0) InvalidateAndClearAllSecuritySweepTasks();
-        else { FrameStartedSecuritySweep = GetWorld()->GetWorldFrame(); InitialSecuritySweepRadius = 20.0f; }
+        else { FrameStartedSecuritySweep = GetWorld()->GetFrame(); InitialSecuritySweepRadius = 20.0f; }
         CalculateSecuritySweepTasks();
     }
 };

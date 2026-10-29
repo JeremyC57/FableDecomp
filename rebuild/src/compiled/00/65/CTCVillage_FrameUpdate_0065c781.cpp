@@ -144,7 +144,7 @@ class CGameTimeManager { public:
 class CWorld { public:
     unsigned char _pad00[0x1c];
     CGameTimeManager* PTimeManager;             // +0x1c
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CWorldMap { public:
     void PopulateRegionWithVillagers(CThing* village);   // 0x00502E90
@@ -242,7 +242,7 @@ void CTCVillage::FrameUpdate()
     }
     SetEnemyToHeroStatus();
     RemoveTimedoutCrimes();
-    if (CWorld::GetWorldFrame() % 30 == 0) {
+    if (CWorld::GetFrame() % 30 == 0) {
         if (!torchesUpdated) {
             for (SNode<CBaseIntelligentPointer>* node = Lights->_M_next; node != Lights; node = node->_M_next) {
                 if (IS_THING_ALIVE_004cc340(node->_M_data)) {

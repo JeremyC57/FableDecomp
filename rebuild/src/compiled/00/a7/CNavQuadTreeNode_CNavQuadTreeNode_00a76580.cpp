@@ -11,11 +11,12 @@ class CAFile { public:
     virtual void v000(); virtual void v001(); virtual void v002();
     virtual void Read(void* dst, unsigned long bytes, bool raw); // 0x00A7F880
 };
-struct CBase {
-    virtual ~CBase();
-    CBase(); // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable(); // 0x0099A2F0
 };
-class CANavQuadTreeNode : public CBase { public:
+class CANavQuadTreeNode : public CBaseClassNonCopyable { public:
     C2DVector Position;
     unsigned char QuadTreeLevel;
     unsigned char NavLayer;

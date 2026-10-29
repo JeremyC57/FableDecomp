@@ -1,13 +1,13 @@
 // CAnimSet::SetInternalAlpha(long index, float alpha, bool setLastToo) -- rolls the indexed transition
 // blend alpha (last = current, current = alpha, optionally last = alpha) and stamps the update frame.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070C280, length 60 bytes.
-// Callees: GFGetFrameCount 0x0049D870 (__fastcall, no arguments; the manifest label "GFGetPreMainMemoryUsed"
+// Callees: CWorld::GetFrame 0x0049D870 (__fastcall, no arguments; the manifest label "GFGetPreMainMemoryUsed"
 //          is propagated -- it is the frame counter compared in UpdateInternalAlphas 0x0070C2C0).
 // Layout: retail std::vector is {first,last,end}; InternalAlphas sits at +0x10 (PDB +0x14 minus 4 for the
 // 12-byte Anims vector before it), its element CTransitionBlendAlpha is {float Current; float Last};
 // FrameInternalAlphasUpdated at +0x28 (PDB 48 minus 8). Each element access re-indexes through begin()
 // (the stores may alias the vector pointers), which is why `[esi+10h]` is reloaded three times.
-extern "C" long __fastcall GFGetFrameCount();          // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };          // 0x0049D870
 
 class CTransitionBlendAlpha { public:
     float Current;
@@ -37,5 +37,5 @@ void CAnimSet::SetInternalAlpha(long index, float alpha, bool setLastToo)
     InternalAlphas[index].Current = alpha;
     if (setLastToo)
         InternalAlphas[index].Last = alpha;
-    FrameInternalAlphasUpdated = GFGetFrameCount();
+    FrameInternalAlphasUpdated = CWorld::GetFrame();
 }

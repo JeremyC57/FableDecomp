@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00706950, 444 bytes (+ int3 padding), `ret 4`.
 // Leaf: AddAppearanceModifierWithReplace
 // Callees: as the landed twin AddAppearanceModifier (0x00706880) -- GetDefinitions 0x006869D0, GetDef<CThingObjectDef> 0x0042B040,
-// GetSubDef<CAppearanceModifierDef> 0x0057FF92, _M_insert_overflow 0x00708E40, GetWorld() const 0x00686A80, GetWorldFrame
+// GetSubDef<CAppearanceModifierDef> 0x0057FF92, _M_insert_overflow 0x00708E40, GetWorld() const 0x00686A80, CWorld::GetFrame
 // 0x0049D870 -- plus RemoveAppearanceModifiersCoveringBodyArea 0x007066A0, GetWorld() 0x00686A70 and
 // CMessageEventManager::AddMessage 0x00687540; g_FramesPerSecond 0x01375550.
 // Shape: the twin's body (same-TU stand-ins, by-hand releases); each message is its own block with a named zero position and a
@@ -66,7 +66,7 @@ class CMessageEventManager { public:
 class CWorld { public:
     unsigned char _pad00[0x60];
     CMessageEventManager* MessageEventManager;      // +0x60
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 extern long g_FramesPerSecond;                      // 0x01375550
 
@@ -180,7 +180,7 @@ void CTCHeroAttachableAppearanceModifiers::AddAppearanceModifierWithReplace(long
             }
         }
     }
-    FrameLastChanged = ((const CTCHeroAttachableAppearanceModifiers*)this)->GetWorld()->GetWorldFrame();
+    FrameLastChanged = ((const CTCHeroAttachableAppearanceModifiers*)this)->GetWorld()->GetFrame();
     if (appearanceOut.Object && --appearanceOut.Object->RefCount == 0)
         appearanceOut.Object->Destroy();
     if (thingOut.Object && --thingOut.Object->RefCount == 0)

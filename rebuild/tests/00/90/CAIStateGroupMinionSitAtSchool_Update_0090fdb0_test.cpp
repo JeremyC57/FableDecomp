@@ -115,7 +115,7 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 class CAIBrain { public:
@@ -176,7 +176,7 @@ void CAIStateGroup_MinionSitAtSchool::Update()
             movement = 3;
     }
     if (MoveToSeat(movement) && SitInSeat()) {
-        long nextHand = CWorld::GetWorldFrame() + RandomFrames(40);
+        long nextHand = CWorld::GetFrame() + RandomFrames(40);
         while (AIAction_DoNothing() == 4) {
             float time = GetPThingWorld()->PTimeOfDay->Now;
             bool over;
@@ -186,10 +186,10 @@ void CAIStateGroup_MinionSitAtSchool::Update()
                 over = time > endTime && time < now;
             if (over && RandomFrames(5) == 0)
                 break;
-            if (CWorld::GetWorldFrame() > nextHand && member->GetPVillage()->LessonOn) {
+            if (CWorld::GetFrame() > nextHand && member->GetPVillage()->LessonOn) {
                 AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_SEATED_CHAIR_RAISE_HAND", CSoundPair(),
                     false, true, false, 0, 0), false);
-                nextHand = CWorld::GetWorldFrame() + RandomFrames(40);
+                nextHand = CWorld::GetFrame() + RandomFrames(40);
             }
         }
         GetUpFromSeat();
@@ -243,7 +243,7 @@ long CAIStateGroupBase::AIAction_DoNothing()
     _snprintf(g_buf, sizeof(g_buf), "DoNothing->%ld@%g", g_doNothing[i], g_times[i]); note(g_buf);
     return g_doNothing[i];
 }
-long CWorld::GetWorldFrame() { long f = g_frames[g_frameIdx < 15 ? g_frameIdx : 15]; ++g_frameIdx; _snprintf(g_buf, sizeof(g_buf), "Frame=%ld", f); note(g_buf); return f; }
+long CWorld::GetFrame() { long f = g_frames[g_frameIdx < 15 ? g_frameIdx : 15]; ++g_frameIdx; _snprintf(g_buf, sizeof(g_buf), "Frame=%ld", f); note(g_buf); return f; }
 CCharString::CCharString(const char* text, long length) { m_pData = (void*)text; }
 CCharString::~CCharString() { }
 CCreatureAction_PlayAnimation::CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,

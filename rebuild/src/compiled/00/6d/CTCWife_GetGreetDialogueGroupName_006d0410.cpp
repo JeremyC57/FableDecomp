@@ -56,7 +56,7 @@ class CWorld {
 public:
     unsigned char            _pad00[0x74];
     COpinionReactionManager* OpinionReactionManager;        // +0x74
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
     COpinionReactionManager* GetOpinionReactionManager() const { return OpinionReactionManager; }
 };
 struct CThingAICreatureFlags {                              // CThingAICreature bitfield run at +0x1C8
@@ -101,7 +101,7 @@ class CTCWife : public CTCBase { public:
     mutable long             FrameLastGaveSexOffer;         // +0x64
     unsigned char            _pad68[0x91 - 0x68];
     bool                     ReceivedWeddingRing;           // +0x91 (retail)
-    bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetWorldFrame(); }
+    bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }
     EOpinionAttitudeType GetAttitudeToPlayer(CThing* thing) const
     {
         return PeekWorld().GetOpinionReactionManager()->GetThingAttitudeToPlayer(thing);
@@ -117,7 +117,7 @@ bool CTCWife::GetGreetDialogueGroupName(CCharString& groupName) const
     if (IsMarriedToThePlayer()) {
         if (IsOfferingSex()) {
             groupName = "TEXT_AI_WIFE_SEX_OFFER_TO_GO_TO_BED";
-            FrameLastGaveSexOffer = GetWorld().GetWorldFrame();
+            FrameLastGaveSexOffer = GetWorld().GetFrame();
             return true;
         }
         groupName = "TEXT_AI_WIFE_OPINION_ACT_GREET_TO_HERO_" + g_OpinionAttitudeNames[GetAttitudeToPlayer(ParentThing)];

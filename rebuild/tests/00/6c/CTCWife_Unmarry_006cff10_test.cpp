@@ -48,7 +48,7 @@ class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CMainGameComponent { public:
     unsigned char _pad_0x00[0x1c];
@@ -70,7 +70,7 @@ class CTCWife { public:
     bool DivorcedHero;                          // +0x24
     bool JustMarried;                           // +0x25
     bool NeedsToChangeBrain;                    // +0x26
-    bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetWorldFrame(); }
+    bool IsMarriedToThePlayer() const { return FrameGotMarriedToThePlayer <= CWorld::GetFrame(); }
     void SetAttractionIcon(bool show, float scale, unsigned char alpha);   // 0x006CFC90
     void Unmarry(bool keepHouseUnrented);
 };
@@ -103,7 +103,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type) { SEntry* it 
 void CBaseIntelligentPointer::v00() {}
 CThing* CBaseIntelligentPointer::GetPItem() const { return PItem; }
 static long g_frame = 100;
-long CWorld::GetWorldFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 static CThing* g_hero = 0; static CPlayer g_player; static CPlayerManager g_pm;
 CThing* CPlayer::GetHeroThing() const { return g_hero; }
 CPlayer* CPlayerManager::GetMainPlayer() { return &g_player; }

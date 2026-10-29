@@ -40,7 +40,7 @@ public:
     }
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 class CHeroMarriageDef { public:
@@ -68,7 +68,7 @@ class CTCWife { public:
 };
 void CTCWife::OnHeroViolence()
 {
-    if (FrameGotMarriedToThePlayer > CWorld::GetWorldFrame()) {
+    if (FrameGotMarriedToThePlayer > CWorld::GetFrame()) {
         CourtingBlocked = true;
         LoveAttitudeValue = 0.0f;
         SetAttractionIcon(false, 1.0f, 0xff);

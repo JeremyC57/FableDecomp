@@ -1,7 +1,7 @@
 // CPersistTraits<COpinionDeed*>::TransferBinaryOut(CDataOutputStream*, COpinionDeed* const*) -- write a hero opinion deed: type, handle, position, frame, crime flags, extra data and the target thing's UID
 // Retail: Fable.exe (TLC, VC7.1) @ 0x006C5310, 201 bytes, `ret 8` (__fastcall, the empty traits `this` is unused).
 // Callees: CDataOutputStream::WriteLong @ 0x00993EB0, Write3DVector @ 0x00993FD0, WriteEBOOL @ 0x00993E30,
-//   WriteUInt64 @ 0x00993EC0 (manifest "WriteCBYTE"); GFGetCurrentFrame @ 0x0049D870 (manifest "GFGetPreMainMemoryUsed",
+//   WriteUInt64 @ 0x00993EC0 (manifest "WriteCBYTE"); CWorld::GetFrame @ 0x0049D870 (manifest "GFGetPreMainMemoryUsed",
 //   a propagated label: it returns the frame global 0x013B89BC); CBaseIntelligentPointer ctor @ 0x00A01B10, GetPItem
 //   @ 0x00A01B50, dtor @ 0x00A01C10; CIntelligentPointer vtable 0x01238C6C.
 // Layout (PDB COpinionDeed, 0x28 bytes): DeedType +0, DeedHandle +4, Position +8, FrameHappened +0x14, PTarget
@@ -23,7 +23,7 @@ struct CDataOutputStream_Methods : CDataOutputStream {
     void Write3DVector(const C3DVector& value);     // 0x00993FD0
 };
 
-long GFGetCurrentFrame();                           // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                           // 0x0049D870
 
 class CThing { public:
     unsigned char    _pad_0x00[0x18];
@@ -53,7 +53,7 @@ class COpinionDeed { public:
     bool                               IsCrimeReportedToVillage;    // +0x22
     bool                               IsCrime;                     // +0x23
     long                               ExtraData;                   // +0x24
-    long GetFrameHappened() const { return IsStillHappening ? GFGetCurrentFrame() : FrameHappened; }
+    long GetFrameHappened() const { return IsStillHappening ? CWorld::GetFrame() : FrameHappened; }
 };
 
 template<class T> struct CPersistTraits;

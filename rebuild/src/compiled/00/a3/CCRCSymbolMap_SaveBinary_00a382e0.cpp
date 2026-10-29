@@ -5,21 +5,22 @@
 //          @ 0x00993EB0, CDiskFileWin32::CDiskFileWin32(const CWideString&, FileAccessType, ulong) @ 0x0099AD80 (access 4 =
 //          write, flags 2), CMemoryDataOutputStream::GetSize @ 0x00994B40 / PeekData @ 0x00995E70, CDiskFileWin32::Write
 //          @ 0x0099AA90, then the local file's inline destructor (vtable 0x0122D06C, Close @ 0x0099A920, ~CWideString
-//          @ 0x0099B510, ~CBase @ 0x0099A300). Manifest labels of 0x00994B40 / 0x00996B30 are propagated.
+//          @ 0x0099B510, ~CBaseClassNonCopyable @ 0x0099A300). Manifest labels of 0x00994B40 / 0x00996B30 are propagated.
 // Layout (Ego_r.pdb CCRCSymbolMap): SLONGMap CVectorMap<unsigned long, long> +4 (the retail vector {first +4, last +8}),
 //          8-byte {key, value} pairs.
 // Shape: size() is the inline (last - first) / 8 re-read every iteration; the file's Write arguments are evaluated right to left.
-namespace N_0099a300 { struct CBase {
-    CBase();                                       // 0x0099A2F0
-    virtual ~CBase();                              // 0x0099A300 (CBase owns the vptr)
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();                              // 0x0099A300 (CBase owns the vptr)
+};
 class CWideString { public:
     void* PStringData;
     ~CWideString();                                // 0x0099B510
 };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CASuspendableProcess;
-class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c

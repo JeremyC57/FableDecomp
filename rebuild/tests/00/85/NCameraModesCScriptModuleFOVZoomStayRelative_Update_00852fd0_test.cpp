@@ -3,7 +3,8 @@
 #include <cmath>
 
 static long g_frame = 0;
-static long GFGetCurrentFrame() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -34,9 +35,9 @@ struct CScriptModuleFOVZoomStayRelative : CScriptModuleFOVZoom {
         position.Rotate(Axis, Angle);
         position *= Mag;
         position += LookAtPos;
-        if (GFGetCurrentFrame() < EndFrame) {
+        if (CWorld::GetFrame() < EndFrame) {
             CCameraState* owner = POwner;
-            CalculateIncrementVector(owner->Position, position, EndFrame - GFGetCurrentFrame());
+            CalculateIncrementVector(owner->Position, position, EndFrame - CWorld::GetFrame());
         }
         else
             POwner->Position = position;

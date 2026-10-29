@@ -1,7 +1,7 @@
 // CEnginePrimitiveManagerAnimatedMeshesBase::CreateInternalPrimitive(long type) -- allocate and construct the internal primitive for an animated-mesh type: 9 = animated mesh, 0xb = morphed animated mesh, 0xd = animated mesh from file; null for any other type or when the allocation fails
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BD6DF0, length 795 bytes (`ret 4`, `this` unused).
 // Callees: operator new @ 0x00BFEA1A, CEngineInternalPrimitiveBase::CEngineInternalPrimitiveBase(long type, unsigned long flags)
-// @ 0x00B8FF00 ((9, 0xa), (0xb, 0xa), (0xd, 8)), CBase::CBase @ 0x0099A2D0 (the interpolators' root), malloc @ 0x00BFEA0E (the
+// @ 0x00B8FF00 ((9, 0xa), (0xb, 0xa), (0xd, 8)), CBaseClass::CBaseClass @ 0x0099A2D0 (the interpolators' root), malloc @ 0x00BFEA0E (the
 // cache map's header node), CEngineInternalPrimitiveMorphInfo::CEngineInternalPrimitiveMorphInfo @ 0x00BAA250 (manifest
 // label "CTCOpinionSource::CTCOpinionSource" is propagated; it is the morphed mesh's Morph member at +0x128).
 // Vtables (rtti-vtables.tsv): 0x012A79B4 CEngineInternalPrimitiveAnimatedMesh, 0x01239840 C3DAnimationInterpolator,
@@ -44,32 +44,33 @@ struct __declspec(novtable) CEngineInternalPrimitiveMeshBase : CEngineInternalPr
         : CEngineInternalPrimitiveBase(type, flags), m_mesh(0), m_material(0), m_animation(0) { }
 };
 
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();
+};
 
-class C3DAnimationBlendState : public CBase { public:            // vtable 0x01239838, 8 bytes
+class C3DAnimationBlendState : public CBaseClass { public:            // vtable 0x01239838, 8 bytes
     class CSharedData;
     CIVCountedPointer<CSharedData> Data;           // +0x04
     virtual ~C3DAnimationBlendState();
 };
 
-class C3DAnimationInterpolator : public CBase { public:          // vtable 0x01239840, 0x14 bytes
+class C3DAnimationInterpolator : public CBaseClass { public:          // vtable 0x01239840, 0x14 bytes
     C3DAnimationBlendState StartState;             // +0x04
     C3DAnimationBlendState EndState;               // +0x0C
     virtual ~C3DAnimationInterpolator();
 };
 
 class C3DVector { public: float X, Y, Z; };
-class C3DPositionInterpolator : public CBase { public:           // vtable 0x0123981C, 0x1c bytes
+class C3DPositionInterpolator : public CBaseClass { public:           // vtable 0x0123981C, 0x1c bytes
     C3DVector StartPosition;                       // +0x04
     C3DVector EndPosition;                         // +0x10
     virtual ~C3DPositionInterpolator();
 };
 
 class CRightHandedSet { public: float m[6]; };
-class C3DOrientationInterpolator : public CBase { public:        // vtable 0x01239824, 0x34 bytes
+class C3DOrientationInterpolator : public CBaseClass { public:        // vtable 0x01239824, 0x34 bytes
     CRightHandedSet StartOrientation;              // +0x04
     CRightHandedSet EndOrientation;                // +0x1C
     virtual ~C3DOrientationInterpolator();

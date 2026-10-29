@@ -139,7 +139,7 @@ class CAIBrain { public:
     CThingCreature* PCreature;                      // +0x18
 };
 class CWorld { public:
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 extern long g_FramesPerSecond;                      // 0x01375550
 class CAIStateGroupBase { public:
@@ -191,11 +191,11 @@ void CAIStateGroup_WhisperPotionCombat::DisappearJump()
     PBrain->PCreature->PGraphic->SetPosition(&Jump_to_pos);
     PBrain->PCreature->SetActive(false);
     PBrain->PCreature->PGraphic->SetFlags(0x20);
-    long start = GetPWorld()->GetWorldFrame();
+    long start = GetPWorld()->GetFrame();
     long now;
     do {
         AIAction_DoNothing();
-        now = GetPWorld()->GetWorldFrame();
+        now = GetPWorld()->GetFrame();
     } while (!IsStopping() && (float)(now - start) < (float)g_FramesPerSecond * 0.5f);
     PBrain->PCreature->PGraphic->Restore();
     PBrain->PCreature->SetActive(true);

@@ -84,7 +84,7 @@ class CManager { public:
     virtual void m30() {} virtual void m31() {} virtual void m32() {} virtual void m33() {} virtual void m34() {} virtual void m35() {}
     virtual void m36() {}
     virtual void ResetC() { g_resetC++; g_resetCOrder = ++g_order; }
-    static CManager* GetInstance();
+    static CManager* __fastcall GetInstance();
 };
 static CManager g_manager;
 CManager* CManager::GetInstance() { return &g_manager; }

@@ -6,7 +6,7 @@ long g_framesPerSecond = 30;
 static long g_frame = 1234;
 static unsigned long g_seed = 0x12345678UL;
 static unsigned long GFROR13(unsigned long v) { v &= 0xFFFFFFFFUL; return ((v >> 13) | (v << 19)) & 0xFFFFFFFFUL; }
-class CWorld { public: static long GetCurrentFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CThingAICreature { public:};
 
@@ -41,7 +41,7 @@ struct CAIStateGroup_KidReactToBlockage : CAIStateGroupBase {
     long LastEndState, CurrentActivationMinInterval;
     void OnReplace()
     {
-        LastEndState = GetPThingWorld()->GetCurrentFrame();
+        LastEndState = GetPThingWorld()->GetFrame();
         CurrentActivationMinInterval = (long)(g_framesPerSecond * 5.0f + (float)RandomFramesWithin(10.0f));
     }
 };

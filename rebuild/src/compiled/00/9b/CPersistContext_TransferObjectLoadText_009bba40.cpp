@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009BBA40, 417 bytes + padding (`ret 8`). Callees: CStringParser(const CStringParser&) @ 0x0046381B,
 // CCharString(const char*, long) @ 0x0099EBF0 / dtor @ 0x0099EAE0, CStringParser 0x009B9C00 (descriptive SkipToItem), ReadAsSymbol
 // @ 0x009BA790, CBasicString<char>::operator== @ 0x004115A0, CPersistContext::Error @ 0x009BAA90, the comment list dtor 0x004046B0,
-// ~CBase 0x0099A2E0; the item's TransferIn is its vtable slot 1. Literals: "" 0x0122D70E, ";" 0x0123542C, the error message
+// ~CBaseClass 0x0099A2E0; the item's TransferIn is its vtable slot 1. Literals: "" 0x0122D70E, ";" 0x0123542C, the error message
 // @ 0x01235404 (text not recovered; the literal here is a placeholder, relocation-masked).
 // Layout: CPersistContext per Ego_r.pdb (as the landed TransferMap 0x00757160); CStringParser retail 0x28 bytes (landed copy ctor
 // 0x0046381B); CCharString as the landed CCombatAction_FallStunned ctor 0x008EDA90.
@@ -41,14 +41,15 @@ public:
         return PStringData->Data == text;
     }
 };
-struct CBase { virtual ~CBase(); };             // dtor 0x0099A2E0
+class CBaseClass {
+public:  virtual ~CBaseClass(); };             // dtor 0x0099A2E0
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); };   // 0x004046B0
 struct CCursorPos {
     bool InQuotes;                              // +0x00
     long StringPos;                             // +0x04
     long Line;                                  // +0x08
 };
-class CStringParser : public CBase { public:                  // retail 0x28 bytes
+class CStringParser : public CBaseClass { public:                  // retail 0x28 bytes
     char*                    String;            // +0x04
     unsigned long            BaseLineOffset;    // +0x08
     CCharString              Filename;          // +0x0c

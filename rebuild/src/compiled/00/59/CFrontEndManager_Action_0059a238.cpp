@@ -96,6 +96,8 @@ public:
     void DeleteProfile(const CWideString& name);          // 0x00407040
     void Save();                                          // 0x0040A740
     void SetDefaultValuesForNewProfile();                 // 0x00409B70
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> class CTBaseSingleton
 {
@@ -307,7 +309,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
         else
         {
             m_bStartNewGame = true;
-            CTBaseSingleton<CUserProfileManager>::Get().Save();
+            CUserProfileManager::Get().Save();
             PScreenToDeactivateForStartGame = m_stackScreens.top();
             PScreenToDeactivateForStartGame->SetCurrentState(0);
         }
@@ -321,10 +323,10 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
     case 0xd6:
     {
         bool deletingCurrent = false;
-        if (!CTBaseSingleton<CUserProfileManager>::Get().UseNewProfileValues
-            && CTBaseSingleton<CUserProfileManager>::Get().ProfileName == ProfileToDelete)
+        if (!CUserProfileManager::Get().UseNewProfileValues
+            && CUserProfileManager::Get().ProfileName == ProfileToDelete)
             deletingCurrent = true;
-        CTBaseSingleton<CUserProfileManager>::Get().DeleteProfile(ProfileToDelete);
+        CUserProfileManager::Get().DeleteProfile(ProfileToDelete);
         long count = RefreshAvailableProfiles();
         if (!deletingCurrent && count != 0)
         {
@@ -392,7 +394,7 @@ void CFrontEndManager::Action(const CCountedPointer<CAction>& action)
         GotoNextScreen(m_mapScreens[(FRONTEND_SCREEN)0], true);
         break;
     case 0x125:
-        CTBaseSingleton<CUserProfileManager>::Get().SetDefaultValuesForNewProfile();
+        CUserProfileManager::Get().SetDefaultValuesForNewProfile();
         GotoNewProfileScreen();
         break;
     case 0x126:

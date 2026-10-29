@@ -10,7 +10,8 @@ struct CBaseIntelligentPointer_Calls {
     void* m_pInfo;
     CThingCreatureBase_Calls* GetPItem() { return m_pItem; }
 };
-long GetWorldFrame_0049d870() { return g_worldFrame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_worldFrame; }
 class CCreatureActionBase { public:
     virtual void v00() { }
     unsigned char _pad04[4];
@@ -23,7 +24,7 @@ class CCreatureActionBase { public:
 void CCreatureActionBase::SetMoveToPos(const C3DVector& pos)
 {
     PCreature.GetPItem()->Call_004c7ab0();
-    NextMovementPosWorldFrame = GetWorldFrame_0049d870();
+    NextMovementPosWorldFrame = CWorld::GetFrame();
     NextMovementPos = pos;
 }
 int main()

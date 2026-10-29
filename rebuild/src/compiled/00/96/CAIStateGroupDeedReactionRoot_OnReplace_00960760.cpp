@@ -93,7 +93,7 @@ class CThing { public:
 };
 class CThingCreatureBase : public CThing { public:
 };
-class CWorld { public: static unsigned long GetWorldFrame(); };   // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 struct CTCDeedReaction {                        // interface 0x4F
     unsigned char _pad00[0x0c];
     unsigned long ReactionFrame;                // +0x0c
@@ -189,7 +189,7 @@ void CAIStateGroup_DeedReactionRoot::OnReplace()
                     reaction->Reacted = true;
                     reaction->SpeechReacted = true;
                 }
-                reaction->ReactionFrame = reaction->GetWorld()->GetWorldFrame();
+                reaction->ReactionFrame = reaction->GetWorld()->GetFrame();
                 const CThingCreatureBase* me = GetCreature();
                 if (me->HasTC(0xd7) && ((const CTCTutorial*)me->GetTC(0xd7))->IsActive()) {
                     CThing* target = ThingReactingTo.GetPItem();

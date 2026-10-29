@@ -4,7 +4,7 @@
 //   release scripted control and idle until the thread terminates
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DAA700, 1133 bytes, plain `ret`, no EH frame.
-// Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CBase dtor 0x0099A2E0, SetPredicate 0x00F35B10,
+// Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CBaseClass dtor 0x0099A2E0, SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle
 //   IsScripting 0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / MoveToPosition 0x007E72F0 /
 //   IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, cast map ctor 0x00CDBF70 / dtor 0x00CDBFB0 /
@@ -63,11 +63,12 @@ struct CScriptThingImp {
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)
 };
 extern const C3DVector g_ZeroPos;                       // 0x0143E8E0
-struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     VPAD4(t1) VPAD1(t2)                                                  // slots 1..5
     virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }   // slot 6
     VPAD8(t7) VPAD4(t8) VPAD2(t9)                                        // slots 7..20

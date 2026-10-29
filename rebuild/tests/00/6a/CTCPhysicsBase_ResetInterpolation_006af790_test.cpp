@@ -2,7 +2,7 @@
 class C3DVector { public: float X, Y, Z; };
 static long g_frame = 0;
 static int g_worldCalls = 0;
-class CWorld { public: static long GetFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CTCPhysicsBase { public:
     C3DVector Position;

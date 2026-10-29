@@ -6,7 +6,7 @@
 // Retail 0x0080D0B0, 580 bytes, plain `ret` (8-aligned frame).
 // Callees: CParticleEmitterManager::Get @ 0x00AEAAF0 (static), __ftol2 @ 0x00BFEA70, C3DVector::AccurateNormalise @ 0x00A14440, the
 // explosion def's emitter spacing @ 0x0080C190, the emitter creator @ 0x006E11F0 (__fastcall), CTCBase::GetWorld
-// @ 0x00686A70, GetWorldFrame @ 0x0049D870 (static), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 /
+// @ 0x00686A70, CWorld::GetFrame @ 0x0049D870 (static), CBaseIntelligentPointer ctor @ 0x00A01B10 / SetPItem @ 0x00A01B90 /
 // GetPItem @ 0x00A01B50 / dtor @ 0x00A01C10 (vtable 0x01238C6C), the emitter vector's push_back @ 0x00789515,
 // CreateCameraShake @ 0x007F1B70 (__fastcall). Constants: 1.0f, 1e-4f, 0.5f.
 // Layout: Ego_r.pdb CTCDExplosion as the landed FrameUpdate (0x0080D750): DamageRadius +0x0c, StartPos +0x20, EndPos +0x2c,
@@ -75,7 +75,7 @@ struct CParticleEmitterManager {
 };
 void __fastcall CreateCameraShake(const C3DVector* position, long strength, long duration, long flags);   // 0x007F1B70
 extern const float g_epsilon_0129ba3c;                       // 0x0129BA3C (1e-4f)
-class CWorld { public: static long __fastcall GetWorldFrame(); };   // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 class CTCBase
 {
 public:
@@ -119,7 +119,7 @@ void CTCDExplosion::CreateStaticExplosion()
             C3DVector pos = StartPos + direction * (float)i * radius;
             CThing* emitter = manager->CreateEmitter(PExplosionDef->EmitterDefIndex, PExplosionDef->EmitterParam, spacing, pos, 0);
             if (emitter && !(emitter->m_flags91 & 1)) {
-                long frame = GetWorld().GetWorldFrame();
+                long frame = GetWorld().GetFrame();
                 Emitters.push_back(SEmitter(CIntelligentPointer<CThing>(emitter), frame));
             }
         }

@@ -77,11 +77,12 @@ struct CScriptThingImp {
     virtual void i076() const {} virtual void i077() const {}
     virtual bool IsEqualTo(const CScriptThingImp* other) const;         // slot 78 (+0x138)
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
-class CScriptThing : public CBase { public:
+class CBaseClass {
+public:
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
+};
+class CScriptThing : public CBaseClass { public:
     virtual void s001() const {} virtual void s002() const {} virtual void s003() const {} virtual void s004() const {} virtual void s005() const {} virtual void s006() const {}
     virtual void s007() const {} virtual void s008() const {} virtual void s009() const {} virtual void s010() const {} virtual void s011() const {} virtual void s012() const {}
     virtual void s013() const {} virtual void s014() const {} virtual void s015() const {} virtual void s016() const {} virtual void s017() const {} virtual void s018() const {}
@@ -99,7 +100,7 @@ class CScriptThing : public CBase { public:
     virtual bool IsDead() const { return !IsAlive(); }                       // slot 76 (+0x130) 0x004AA890
     CCountedPointer PImp;                               // +0x04 Data, +0x08 Info
     CScriptThing() {}
-    CScriptThing(const CScriptThing& o) : CBase() { PImp = o.PImp; }
+    CScriptThing(const CScriptThing& o) : CBaseClass() { PImp = o.PImp; }
     __forceinline ~CScriptThing() {}                    // out-of-line copy 0x004AA840
     const CScriptThingImp* Imp() const { return (const CScriptThingImp*)PImp.Data; }
 };
@@ -218,8 +219,8 @@ void CShowTargetedThingHealthScript::ShowTargetedThingsHealth()
 CCharString::CCharString(const char* t, long) { PStringData = (void*)t; }
 CCharString::~CCharString() {}
 void operator delete(void* p) { std::free(p); }
-CBase::CBase() {}
-CBase::~CBase() {}
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
 struct TestImp : CScriptThingImp { int Id; bool Alive; };
 bool CScriptThingImp::IsAlive() const { return static_cast<const TestImp*>(this)->Alive; }
 bool CScriptThingImp::IsEqualTo(const CScriptThingImp* o) const { return o && static_cast<const TestImp*>(this)->Id == static_cast<const TestImp*>(o)->Id; }

@@ -79,7 +79,7 @@ struct CTimeOfDay {
 class CWorld { public:
     unsigned char _pad[0x1c];
     CTimeOfDay* PTimeOfDay;                     // +0x1c
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -169,7 +169,7 @@ void CAIStateGroup_MinionSitAtSchool::Update()
             movement = 3;
     }
     if (MoveToSeat(movement) && SitInSeat()) {
-        long nextHand = CWorld::GetWorldFrame() + RandomFrames(40);
+        long nextHand = CWorld::GetFrame() + RandomFrames(40);
         while (AIAction_DoNothing() == 4) {
             float time = PeekWorld().PTimeOfDay->Now;
             bool over;
@@ -179,10 +179,10 @@ void CAIStateGroup_MinionSitAtSchool::Update()
                 over = time > endTime && time < now;
             if (over && RandomFrames(5) == 0)
                 break;
-            if (CWorld::GetWorldFrame() > nextHand && member->GetPVillage()->LessonOn) {
+            if (CWorld::GetFrame() > nextHand && member->GetPVillage()->LessonOn) {
                 AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_SEATED_CHAIR_RAISE_HAND", CSoundPair(),
                     false, true, false, 0, 0), false);
-                nextHand = CWorld::GetWorldFrame() + RandomFrames(40);
+                nextHand = CWorld::GetFrame() + RandomFrames(40);
             }
         }
         GetUpFromSeat();

@@ -8,7 +8,7 @@
 namespace NUISystem {
 class CManager {
 public:
-    static CManager* GetInstance();                      // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2
     void ShowErrorMessage(long message);                 // 0x0041DB84
     static void __fastcall ShowErrorMessageOnInstance(long message);
 };

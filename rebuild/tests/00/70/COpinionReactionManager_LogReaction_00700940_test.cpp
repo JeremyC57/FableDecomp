@@ -2,7 +2,7 @@
 #include <cstdio>
 static long g_frame = 500;
 class CThing;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CTCCreatureOpinionOfHero { public:
     long LastOpinionReactionFrame;
@@ -28,7 +28,7 @@ class COpinionReactionManager { public:
         if (highTraits) highTraits->LogReaction(creature, fromScript);
         if (!fromScript) {
             CTCCreatureOpinionOfHero* opinion = creature->GetOpinionOfHeroTC();
-            opinion->LastOpinionReactionFrame = opinion->GetWorld()->GetWorldFrame();
+            opinion->LastOpinionReactionFrame = opinion->GetWorld()->GetFrame();
         }
     }
 };

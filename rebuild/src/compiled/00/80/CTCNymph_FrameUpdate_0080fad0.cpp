@@ -185,7 +185,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 
 extern float g_FramesPerSecondF;                            // 0x013844F4
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
 };
 class CCardinalSpline { public:                                    // retail 0x14 bytes
     void* ControlPoints[3];
@@ -260,7 +260,7 @@ void CTCNymph::FrameUpdate()
 {
     if (FlyingAround) {
         if (FadeCounter == 0) {
-            float t = (float)(GetWorld().GetWorldFrame() - LastTargetTick) / g_FramesPerSecondF;
+            float t = (float)(GetWorld().GetFrame() - LastTargetTick) / g_FramesPerSecondF;
             if (t < 1.0f) {
                 C3DVector position;
                 FlightSpline.GetSplinePosition(&position, t * 0.75f + 0.25f);

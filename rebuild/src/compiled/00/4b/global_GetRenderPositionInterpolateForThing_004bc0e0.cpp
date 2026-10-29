@@ -5,9 +5,9 @@
 // `ret`). Ego_r.pdb `?GetRenderPositionInterpolateForThing@?A0xc76c19b4@@YI?AVC3DPositionInterpolator@@
 // ABVCThing@@@Z` -- a file-static helper of the graphic-appearance TU (the catalog "CTCGraphicAppearance::
 // Draw" is the neighbouring caller's name). It is declared at global scope here so the unreferenced
-// helper is still emitted. Callees: CBase::CBase @ 0x0099A2D0, CTCPhysicsBase::GetPositionInterpolator
+// helper is still emitted. Callees: CBaseClass::CBaseClass @ 0x0099A2D0, CTCPhysicsBase::GetPositionInterpolator
 // (C3DPositionInterpolator&) const @ 0x006B0250, the physics component's virtual slot 79 (+0x13c, a
-// float height offset at a parameter), CBase::~CBase @ 0x0099A2E0. Vtable 0x0123981C =
+// float height offset at a parameter), CBaseClass::~CBaseClass @ 0x0099A2E0. Vtable 0x0123981C =
 // C3DPositionInterpolator.
 // Layout: C3DPositionInterpolator (Ego_r.pdb, 0x1c): StartPosition +0x4, EndPosition +0x10; retail CThing
 // keeps its physics component at +0x60 and a type byte at +0x10.
@@ -21,12 +21,13 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }   // the engine's memberwise copy constructor
 };
 
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
-    CBase();                                                // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
+    CBaseClass();                                                // 0x0099A2D0
+};
 
-class C3DPositionInterpolator : public CBase { public:                    // vtable 0x0123981C
+class C3DPositionInterpolator : public CBaseClass { public:                    // vtable 0x0123981C
     C3DVector StartPosition;                                // +0x04
     C3DVector EndPosition;                                  // +0x10
 };

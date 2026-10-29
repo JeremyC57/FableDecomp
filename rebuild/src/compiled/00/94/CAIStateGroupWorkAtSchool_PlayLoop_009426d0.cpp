@@ -1,7 +1,7 @@
 // CAIStateGroup_WorkAtSchool::PlayLoop(float, const CCharString&, const CCharString&, const CCharString&) -- play the into animation, repeat the loop animation until `duration` seconds have passed, then the out-of animation; false as soon as one of them does not complete
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009426D0, length 322 bytes (`ret 10h`, bool). Called by the landed CrouchAndTalk
 //          @ 0x00942820 / Teach / StandAndTalk wrappers.
-// Callees: GetWorldFrame @ 0x0049D870 (static; manifest "GFGetPreMainMemoryUsed"), _ftol @ 0x00BFEA70, the CCreatureAction_
+// Callees: CWorld::GetFrame @ 0x0049D870 (static; manifest "GFGetPreMainMemoryUsed"), _ftol @ 0x00BFEA70, the CCreatureAction_
 //          PlayAnimation ctor @ 0x008424F0 (creature, name, sound pair, five flags; the outer call's `false` is pushed first), CAIStateGroupBase::AIAction_
 //          PerformActionAndWait @ 0x0097DB70, ~CCreatureActionBase @ 0x00693EF0; data: the frame rate @ 0x01375550.
 // Shape: the frame rate is read into a local before GetWorldFrame (its slot is later reused by the end frame, which VC keeps
@@ -34,7 +34,7 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
 };
 
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long g_FrameRate;                        // 0x01375550
 
@@ -63,12 +63,12 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
 bool CAIStateGroup_WorkAtSchool::PlayLoop(float duration, const CCharString& into, const CCharString& loop, const CCharString& outOf)
 {
     long rate = g_FrameRate;
-    long frame = CWorld::GetWorldFrame();
+    long frame = CWorld::GetFrame();
     long endFrame = (long)((float)rate * duration + (float)frame);
     if (AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), into, CSoundPair(),
         false, true, false, 0, 0), false) != 2)
         return false;
-    while (CWorld::GetWorldFrame() < endFrame) {
+    while (CWorld::GetFrame() < endFrame) {
         if (AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), loop, CSoundPair(),
             false, true, false, 0, 0), false) != 2)
             return false;

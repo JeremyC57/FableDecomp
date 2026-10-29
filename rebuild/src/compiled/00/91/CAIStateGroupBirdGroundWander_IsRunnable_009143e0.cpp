@@ -4,7 +4,7 @@
 // bitset word 0 bit 7 -> `mov cl,[eax+20h] ; test cl,cl ; jns`), the component's mode getter @ 0x006CB6A0
 // (`movzx` of [+0xc]->+0x10; the manifest's CIsHitEventBlocked::operator() label is propagated),
 // CAIStateGroupBase::GetPWorld @ 0x008FCFA0 (result unused: object expression of a static call),
-// GFGetCurrentFrame @ 0x0049D870. Globals: the compared mode @ 0x0129CBA4, frames per second @ 0x01375550.
+// CWorld::GetFrame @ 0x0049D870. Globals: the compared mode @ 0x0129CBA4, frames per second @ 0x01375550.
 // Shape: the MazeTeleport (0x009543B0) form -- the lookup's bool is not tested, so the miss path reads the
 // uninitialised out slot (`mov eax,[esp+8]`); `FrameLastFinishedWalking == 0 ||` short-circuits to the shared
 // `mov al,1`; the frame rate is read into a local (esi) before the frame call and doubled with `lea`, the elapsed
@@ -12,12 +12,13 @@
 // Model: local (engine/CAIStateGroup_BirdGroundWander.h agrees: FrameLastFinishedWalking +0x14, but flattens the base).
 class CTCBase;
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
 extern long g_framesPerSecond;                  // 0x01375550
 extern long g_groundWanderMode;                 // 0x0129CBA4
 
 class CWorld { public:
     static long GetFramesPerSecond() { return g_framesPerSecond; }
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 
 struct CInterfaceMap {
@@ -82,7 +83,7 @@ bool CAIStateGroup_BirdGroundWander::IsRunnable()
         if (FrameLastFinishedWalking == 0)
             return true;
         long framesPerSecond = PeekWorld().GetFramesPerSecond();
-        if (GFGetCurrentFrame() - FrameLastFinishedWalking > (unsigned long)(framesPerSecond * 2))
+        if (CWorld::GetFrame() - FrameLastFinishedWalking > (unsigned long)(framesPerSecond * 2))
             return true;
     }
     return false;

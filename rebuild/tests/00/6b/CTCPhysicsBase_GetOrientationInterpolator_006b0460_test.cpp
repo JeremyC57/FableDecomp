@@ -50,7 +50,7 @@ struct CBulletTime {
 class CWorld { public:
     unsigned char _pad[0x68];
     CBulletTime*  m_pBulletTime;                    // +0x68
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 class CThing {
 public:
@@ -142,7 +142,7 @@ void CTCPhysicsBase::GetOrientationInterpolator(C3DOrientationInterpolator& out)
 {
     if (GetWorld()->m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime()) {
         float timeScale = GetWorld()->m_pBulletTime->GetTimeScale();
-        long step = (CWorld::GetWorldFrame() - 1) % (long)timeScale;
+        long step = (CWorld::GetFrame() - 1) % (long)timeScale;
         float stepSize = 1.0f / timeScale;
         CRightHandedSet start = GetOldRightHandedSet().Interpolate(GetRightHandedSet(), step * stepSize);
         ++step;
@@ -247,7 +247,7 @@ C3DOrientationInterpolator& C3DOrientationInterpolator::operator=(const C3DOrien
 static float g_scale = 4.0f;
 float CBulletTime::GetTimeScale() { Log("Scale"); return g_scale; }
 static long g_frame = 0;
-long CWorld::GetWorldFrame() { Log("Frame"); return g_frame; }
+long CWorld::GetFrame() { Log("Frame"); return g_frame; }
 static bool g_affected = true;
 bool CThing::IsAffectedByBulletTime() const { Log("Affected"); return g_affected; }
 static CBulletTime g_bt;

@@ -10,14 +10,14 @@ static int fails = 0;
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004AFE20, 345 bytes, `ret 8` (by-value CCharString destroyed at the end).
 // Callees: CCharString::operator!=(const char*) 0x0099E960 / (const CCharString&) 0x0099E900 (first pass), CBasicString<char>::
 //   operator==(const char*) 0x004115A0 and Compare 0x00411570 (both given their landed-equivalent bodies as same-TU
-//   stand-ins), ~CWideString 0x0099B510, ~CCharString 0x0099EAE0, free 0x00BFEA14, GFGetCurrentFrame 0x0049D870.
+//   stand-ins), ~CWideString 0x0099B510, ~CCharString 0x0099EAE0, free 0x00BFEA14, CWorld::GetFrame 0x0049D870.
 // Layout: CQuestManager FrameBoastsLastUpdated +0x64, Boasts +0x68 (retail 0x3c below Ego_r.pdb); CBoast from the PDB.
 // Shape: the group pass uses the inline CCharString == ("" and CCharString). The same-TU 0x004115A0 body tells VC7.1 the
 //   call writes no memory, so scriptName's block stays in ebp across it (an extern declaration reloads it). The inline
 //   ==("") null arm is `if (strcmp(text, "") == 0) return true; return false;`, which branches off the repe cmpsb flags.
 #include <string.h>
 extern "C" void __cdecl free(void* p);             // 0x00BFEA14
-long __fastcall GFGetCurrentFrame();               // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };               // 0x0049D870
 #pragma auto_inline(off)
 long __fastcall Compare_00411570(const char* a, const char* b)   // 0x00411570 (the landed body, same-TU stand-in)
 {
@@ -136,7 +136,7 @@ void CQuestManager::RemoveBoast(long id, CCharString scriptName)
         }
         break;
     }
-    FrameBoastsLastUpdated = GFGetCurrentFrame();
+    FrameBoastsLastUpdated = CWorld::GetFrame();
 }
 // ---- end source ----
 static int g_strDtors, g_wideDtors;
@@ -145,7 +145,7 @@ bool CCharString::operator!=(const char* text) const { return strcmp(TextOf(*thi
 bool CCharString::operator!=(const CCharString& other) const { return strcmp(TextOf(*this), TextOf(other)) != 0; }
 CCharString::~CCharString() { ++g_strDtors; }
 CWideString::~CWideString() { ++g_wideDtors; }
-long __fastcall GFGetCurrentFrame() { return 4242; }
+long CWorld::GetFrame() { return 4242; }
 static CCharStringData MakeData(char* text) { CCharStringData d; memset(&d, 0, sizeof(d)); d.Data.PData = text; d.Data.StringLength = (unsigned long)strlen(text); return d; }
 static CBoastNode g_head;
 static void Append(long id, CCharStringData* name, long group)

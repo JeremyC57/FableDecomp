@@ -7,7 +7,7 @@
 // Components erase(first, last) @ 0x00485AA7, the CComponent-pair map clear @ 0x005B1C18 (ItemsToBuy/ItemsToSell; manifest
 // "CTCCarryable::OnKill" propagated), CFrontEndManager::GetInstance @ 0x0041E5F2 and its slots 6/29/37/40/42 (names unknown),
 // the global front-end node list @ 0x013B8A98 clear @ 0x004855A3, the main game component (0x013B86A0) chain +0x28 -> +0x2C
-// slots 76 (+0x130, SetEnabled) and 56 (+0xE0), CTCBase::GetWorld @ 0x00686A70, GetWorldFrame @ 0x0049D870,
+// slots 76 (+0x130, SetEnabled) and 56 (+0xE0), CTCBase::GetWorld @ 0x00686A70, CWorld::GetFrame @ 0x0049D870,
 // CTBaseSingleton<CUserProfileManager>::Get @ 0x0040D2A0, the sound system (0x013B8394) slot 46 RefreshCategory,
 // std::bitset::test @ 0x00410DE0 + CVectorMap::LowerBound @ 0x0040F020 (inline GetInterface, type 0x13),
 // CTCInventoryWeapons::CheckForSoldWieldedWeapons @ 0x005CB780, NUISystem::CManager::OnCloseMenus @ 0x0041D165.
@@ -135,8 +135,9 @@ class CUserProfileManager { public:
 class CWorld { public:
     unsigned char _pad00[0x8c];
     long InventoryClosedFrame;                       // +0x8c
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
-long __fastcall GetWorldFrame();                     // 0x0049D870
 class CTCInventoryWeapons { public:
     void CheckForSoldWieldedWeapons();               // 0x005CB780
 };
@@ -224,7 +225,7 @@ void CTCInventoryTrade::CloseInventory()
     CFrontEndManager::GetInstance()->Slot37();
     g_pMainGameComponent->World->Hud->SetEnabled(true);
     CWorld* world = (&GetWorld());
-    world->InventoryClosedFrame = GetWorldFrame();
+    world->InventoryClosedFrame = CWorld::GetFrame();
     if (g_pSoundSystem) {
         g_pSoundSystem->RefreshCategory(0x10, CUserProfileManager::Get().GetSFXVolume(), 0.0f);
         g_pSoundSystem->RefreshCategory(0x40, CUserProfileManager::Get().GetMusicVolume(), 0.0f);

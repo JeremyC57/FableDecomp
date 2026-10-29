@@ -53,7 +53,7 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;              // 0x00487DD0 (PDB GetPControlledCreature)
 };
 class CWorld { public:
-    static long GetWorldFrame();                        // 0x0049D870
+    static long __fastcall GetFrame();                        // 0x0049D870
     const CPlayer* PeekMyPlayer() const;                // 0x0049D9D0
 };
 class CBaseObject;
@@ -111,7 +111,7 @@ public:
     float         Radii[5];                             // +0x3c..+0x4c
     bool          PerceptionCombat;                     // +0x50
     long          FrameHitByPerceivedThing;             // +0x54
-    bool IsUpdatingThisFrame() const { return CWorld::GetWorldFrame() % 4 == UpdateOffset; }
+    bool IsUpdatingThisFrame() const { return CWorld::GetFrame() % 4 == UpdateOffset; }
     void ResetPerceptionVariables();                    // 0x00744DB0
     void UpdateDistanceFromPerceivedThing();            // 0x007447E0
     void UpdatePerception();                            // 0x00745730

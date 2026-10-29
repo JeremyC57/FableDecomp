@@ -57,7 +57,7 @@ class CTCShotDefinitionBase { public: void Update(); };            // 0x007C21A0
 class CTCCreatureHitNotification { public: void UpdateHitNotification(); };   // 0x008650E0, interface 0xCD
 
 class CWorld { public:
-    static unsigned long GetWorldFrame();               // 0x0049D870 (reads the global frame; called through the world)
+    static long __fastcall GetFrame();               // 0x0049D870 (reads the global frame; called through the world)
 };
 class CThingManager { public:
     unsigned char _pad00[0x54];
@@ -138,7 +138,7 @@ bool CThingCreatureBase::WorldUpdate()
     if (PLastAttackedByCreature.GetPItem()) {
         const CWorld* world = PeekWorld();
         unsigned long lastAttacked = WFLastAttackedByCreature;
-        if (world->GetWorldFrame() - lastAttacked > (unsigned long)(g_framesPerSecond * 300))
+        if (world->GetFrame() - lastAttacked > (unsigned long)(g_framesPerSecond * 300))
             ClearLastAttackedByCreature();
     }
     if (HasTC(0x77))
@@ -165,7 +165,7 @@ static int g_up77 = 0, g_upCD = 0, g_reorients = 0, g_clears = 0, g_sets = 0; st
 void NThingShot::CTCShotDefinitionBase::Update() { ++g_up77; }
 void CTCCreatureHitNotification::UpdateHitNotification() { ++g_upCD; }
 static unsigned long g_frame = 0;
-unsigned long CWorld::GetWorldFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 static CWorld g_world;
 const CWorld* CThing::PeekWorld() const { return &g_world; }
 static CThingManager g_tm; CThingManager* g_pThingManager = &g_tm; long g_framesPerSecond = 30;

@@ -51,9 +51,9 @@ struct CObjectDef : CDef {
     unsigned char Type;                                    // +0x7d
 };
 class CDefinitionManager { public:
-    static CDefinitionManager* __fastcall Get();           // 0x0044C6B0
     bool GetDef(long index, CDefPointer<CObjectDef>* out); // 0x0042B040 (same-TU stand-in below)
 };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 #pragma auto_inline(off)
 __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CObjectDef>* out)
 {
@@ -173,7 +173,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
             }
         }
         CDefPointer<CObjectDef> def;
-        CDefinitionManager::Get()->GetDef(card->GetOwner()->DefIndex, &def);
+        CGameDefinitionManager::Get().GetDef(card->GetOwner()->DefIndex, &def);
         if (def.P->Type == 5) {
             RenderedObjectDef = card->Owner->DefIndex;
             if (PCardDef.P && Completion == COMPLETION_1) {
@@ -181,7 +181,7 @@ void CTCQuestCompletionUI::Activate(CompletionType type, CTCQuestCard* card, boo
                 for (unsigned long i = 0; i < PCardDef->RewardObjects.size() && !found; ++i) {
                     if (IsAugmentation_005d9930(PCardDef->RewardObjects[i])) {
                         CDefPointer<CObjectDef> reward;
-                        CDefinitionManager::Get()->GetDef(PCardDef->RewardObjects[i], &reward);
+                        CGameDefinitionManager::Get().GetDef(PCardDef->RewardObjects[i], &reward);
                         RenderedObjectDef = PCardDef->RewardObjects[i];
                         found = true;
                     }

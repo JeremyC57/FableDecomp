@@ -1,6 +1,6 @@
 // CTesselationData::CTesselationData(CEngineMap*, long, long, unsigned short, unsigned short) -- patch tesselation record constructor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE59C0, length 57 bytes. Vtable 0x012A800C (RTTI: CTesselationData).
-// Callees: CBase::CBase() @ 0x0099A2D0 (the polymorphic root, its vtable store is dead and dropped).
+// Callees: CBaseClass::CBaseClass() @ 0x0099A2D0 (the polymorphic root, its vtable store is dead and dropped).
 // Layout: PDB CTesselationData: PatchWorldX +0x04, PatchWorldY +0x08, Width +0x0c, Height +0x10, EngineMap +0x14
 // (the PDB shows the vptr slot as padding; retail stores vtable 0x012A800C). Width/Height arrive as unsigned
 // shorts (`movzx eax,word ptr [esp+..]`) and the map pointer is the FIRST argument, stored last (+0x14); the
@@ -9,12 +9,13 @@
 // derived constructor's own store is scheduled with the member stores.
 class CEngineMap;
 
-namespace N_0099a2d0 { struct CBase {
-    virtual void v0();
-    CBase();                                    // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    virtual ~CBaseClass();
+    CBaseClass();                                    // 0x0099A2D0
+};
 
-class CTesselationData : public CBase { public:               // vtable 0x012A800C
+class CTesselationData : public CBaseClass { public:               // vtable 0x012A800C
     long PatchWorldX;                           // +0x04
     long PatchWorldY;                           // +0x08
     long Width;                                 // +0x0c

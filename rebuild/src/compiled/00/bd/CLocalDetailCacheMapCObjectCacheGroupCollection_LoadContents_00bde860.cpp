@@ -37,7 +37,6 @@ public:
     const unsigned char* CurrentSourcePtr;                   // +0x0c
     unsigned long        SourceChunkStreamPos;               // +0x10
     long                 SourceChunkBytesRemaining;          // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     void SetPositionAssumeWithinSourceChunk(unsigned long position);    // 0x00993C10
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void Read(void* buffer, long size)
@@ -57,6 +56,8 @@ public:
             ReadWithSrcChunkOverflow((unsigned char*)buffer, size);
     }
     __forceinline long ReadLong() { long value; Read(&value, sizeof(value)); return value; }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
 };
 class CMemoryDataInputStream : public CDataInputStream {
 public:

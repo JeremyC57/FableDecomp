@@ -17,7 +17,7 @@ class C3DVector { public:
 inline C3DVector operator+(const C3DVector& a, const C3DVector& b) { return C3DVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z); }
 
 class CWorld { public:
-    static long GetFrame();                 // 0x0049D870 (returns the global @ 0x013B89BC)
+    static long __fastcall GetFrame();                 // 0x0049D870 (returns the global @ 0x013B89BC)
 };
 class CThing { public:
     const C3DVector& GetPos() const;   // 0x004C73D0

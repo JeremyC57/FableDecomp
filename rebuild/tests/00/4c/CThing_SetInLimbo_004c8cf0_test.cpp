@@ -11,8 +11,9 @@ class CTCBase { public:
     void* ParentThing; bool ToBeRemoved;
 };
 struct SComponentPair { long first; CTCBase* second; };
-namespace N_0099a2d0 { struct CBase { virtual ~CBase() {} CBase() {} }; } using N_0099a2d0::CBase;
-namespace NTCMessages { class CMessageClearPrimitives : public CBase { public: CMessageClearPrimitives() { } }; }
+class CBaseClass {
+public:  virtual ~CBaseClass() {} CBaseClass() {} };
+namespace NTCMessages { class CMessageClearPrimitives : public CBaseClass { public: CMessageClearPrimitives() { } }; }
 struct CMessage;
 class CThing { public:
     virtual void v00() {} virtual void v01() {} virtual void v02() {} virtual void v03() {} virtual void v04() {} virtual void v05() {} virtual void v06() {} virtual void v07() {}

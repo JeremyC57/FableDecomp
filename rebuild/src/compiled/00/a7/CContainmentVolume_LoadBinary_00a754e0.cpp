@@ -24,7 +24,6 @@ class CDataInputStream { public:
     void*         CurrentSourcePtr;                                // +0x0c
     unsigned long SourceChunkStreamPos;                            // +0x10
     long          SourceChunkBytesRemaining;                       // +0x14
-    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
     static __forceinline bool IsValidPosition(__int64 position) { return position >= 0 && position <= 0x7fffffff; }
     __forceinline void ReadInline(void* buffer, long size)
     {
@@ -46,6 +45,8 @@ class CDataInputStream { public:
         ReadInline(&value, 4);
         return value;
     }
+private:
+    void ReadWithSrcChunkOverflow(unsigned char* buffer, long size);   // 0x00993CA0
 };
 
 class CHandleBasedMemoryPool { public:

@@ -9,7 +9,7 @@
 //          "CVillageTaskCarryCrate::AssignCreatureToTask" is propagated), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0,
 //          CCreatureAction_PlayAnimation @ 0x008424F0, CBrainOutput @ 0x00835620, IsFreeToPerformAction @ 0x00662210,
 //          CCountedPointer::Reset @ 0x00668D90, SetBrainOutput @ 0x0088B8F0, ~CCreatureActionBase @ 0x00693EF0,
-//          UnsheatheDefaultWeapon @ 0x00664A50, GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, GFGetCurrentFrame
+//          UnsheatheDefaultWeapon @ 0x00664A50, GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CWorld::GetFrame
 //          @ 0x0049D870, __ftol2 @ 0x00BFEA70.
 // Layout: PDB CAIStateGroup_BanditPlayDice: DiceGamePosition +0x14 (CTCExclusiveUse*, User +0xc), DiceGame +0x18 (CTCDiceGame*,
 //          NumberOfPlayers +0xc, CurrentPlayer +0x10), FrameToInitiate +0x1c, FrameToJoin +0x20, WasCarryingWeapon +0x24.
@@ -141,7 +141,7 @@ class CTCDiceGame { public:
     void SetCurrentPlayer(CThing* player);      // 0x00929550
     CThing* GetCurrentPlayer() const { return CurrentPlayer.GetPItem(); }
 };
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
@@ -186,6 +186,6 @@ void CAIStateGroup_BanditPlayDice::OnReplace()
     }
     if (WasCarryingWeapon)
         GetCreature()->UnsheatheDefaultWeapon();
-    FrameToJoin = (long)(GFGetCurrentFrame() + (WorldRandomRange(*GetPWorldSeed(), 750) + 2250) * 0.5f);
-    FrameToInitiate = GFGetCurrentFrame() + WorldRandomRange(*GetPWorldSeed(), 750) + 2250;
+    FrameToJoin = (long)(CWorld::GetFrame() + (WorldRandomRange(*GetPWorldSeed(), 750) + 2250) * 0.5f);
+    FrameToInitiate = CWorld::GetFrame() + WorldRandomRange(*GetPWorldSeed(), 750) + 2250;
 }

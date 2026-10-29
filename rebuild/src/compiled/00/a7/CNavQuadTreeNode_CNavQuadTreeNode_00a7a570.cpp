@@ -1,7 +1,7 @@
 // CNavQuadTreeNode::CNavQuadTreeNode(const C2DVector&, unsigned char, unsigned char, const CNavQuadTree&, ENavQuadTreeNodeType&, vector<unsigned __int64>&) -- build an inner quad-tree node with no children yet and let Initialise subdivide it
 // Leaf: ??0CNavQuadTreeNode
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00A7A570, 98 bytes (+ int3 padding; `ret 18h`).
-// Callees: CBase::CBase() @ 0x0099A2F0 (out of line, vtable 0x0129A7C4), CNavQuadTreeNode::Initialise(const CNavQuadTree&,
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0 (out of line, vtable 0x0129A7C4), CNavQuadTreeNode::Initialise(const CNavQuadTree&,
 //   ENavQuadTreeNodeType&, vector<unsigned __int64>&) @ 0x00A79B30. Vtables: CANavQuadTreeNode 0x0129CBBC, CNavQuadTreeNode 0x0129DCD4.
 // Layout = Ego_r.pdb: CANavQuadTreeNode {vptr, Position +4, QuadTreeLevel +0xc, NavLayer +0xd, LeafNode +0xe, Blocked +0xf},
 //   CNavQuadTreeNode + TLNode..BRNode +0x10..+0x1c.
@@ -13,9 +13,10 @@ class C2DVector { public:
     float X, Y;
     C2DVector(const C2DVector& other) : X(other.X), Y(other.Y) { }
 };
-struct CBase {
-    virtual ~CBase();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 class CNavQuadTree;
 enum ENavQuadTreeNodeType { NAV_NODE_QUADTREE = 0 };
@@ -23,7 +24,7 @@ namespace std {
 template <class T> struct allocator { };
 template <class T, class A = allocator<T> > struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 }
-class CANavQuadTreeNode : public CBase { public:
+class CANavQuadTreeNode : public CBaseClassNonCopyable { public:
     C2DVector     Position;                        // +0x04
     unsigned char QuadTreeLevel;                   // +0x0c
     unsigned char NavLayer;                        // +0x0d

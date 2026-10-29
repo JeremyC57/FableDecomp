@@ -2,7 +2,7 @@
 // Grade: RELOCATION_MATCH (retry 10, RTM 3077) -- the component through HasInterface + the ternary GetTC model (`((it == last || wanted < it->type) ? last : it)->component`) instead of the GetInterface out-pointer: the component loads straight into ecx for the call
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00896120, length 143 bytes.
 // Callees: CScriptThing virtual slot 11 (+0x2c, GetThing), the inlined CThing::GetInterface (LowerBound @ 0x0040F020, the key in the dead script-thing slot), CTCVillage::TryToRespawnDefNamed @ 0x0065B349,
-// CThing::GetScriptThing @ 0x004C7E50 (into the hidden result), CBase::CBase @ 0x0099A2D0 then the CScriptThing vtable @ 0x01238C8C and two zero words (the inline default ctor).
+// CThing::GetScriptThing @ 0x004C7E50 (into the hidden result), CBaseClass::CBaseClass @ 0x0099A2D0 then the CScriptThing vtable @ 0x01238C8C and two zero words (the inline default ctor).
 // Leaf: TryToRespawnDefNamed
 #include <string.h>
 struct CThing_Retail;
@@ -36,11 +36,12 @@ public:
     bool IsEmpty() const { return PStringData == 0 || PStringData->Data.StringLength == 0; }
 };
 struct CThing_Retail;
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                        // 0x0099A2D0
-    virtual ~CBase();
-}; } using N_0099a2d0::CBase;
-class CScriptThing : public CBase { public:                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
+class CBaseClass {
+public:
+    CBaseClass();                                        // 0x0099A2D0
+    virtual ~CBaseClass();
+};
+class CScriptThing : public CBaseClass { public:                       // 12 bytes: vptr (0x01238C8C) + the thing's intelligent pointer words
      virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
     virtual void s008(); virtual void s009(); virtual void s010();
     virtual CThing_Retail* GetThing() const;   // slot 11 (+0x2c)

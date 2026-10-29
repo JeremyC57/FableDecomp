@@ -72,7 +72,7 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long ind
 class CGameDefinitionManager : public CDefinitionManager { };
 
 class CWorld { public:
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 
 struct CModifierEntry {                             // CTCHeroAttachableAppearanceModifiers::CModifierEntry (8 bytes)
@@ -126,7 +126,7 @@ void CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifier(long defInde
             Changed = true;
         }
     }
-    FrameLastChanged = PeekWorld().GetWorldFrame();
+    FrameLastChanged = PeekWorld().GetFrame();
     if (appearanceDef && --appearanceDef->RefCount == 0)
         appearanceDef->Destroy();
 }

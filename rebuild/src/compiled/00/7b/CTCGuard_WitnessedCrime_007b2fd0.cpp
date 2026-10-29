@@ -6,7 +6,7 @@
 // Callees: CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020 (interfaces 0x23 village member, 0x51 hero deed log),
 // CTCVillageMember::GetPVillage @ 0x007EE540, CTCVillage::HasCrimeBeenReported(long) @ 0x0065914B (descriptive), CBaseIntelligentPointer::
 // GetPItem @ 0x00A01B50, CWorld::PeekMyPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0, CTCHeroOpinionDeedLog::
-// GetDeedEffectsDef(long) @ 0x006C5630 (CDefPointer by hidden pointer), GFGetCurrentFrame @ 0x0049D870, CTCGuard's crime report
+// GetDeedEffectsDef(long) @ 0x006C5630 (CDefPointer by hidden pointer), CWorld::GetFrame @ 0x0049D870, CTCGuard's crime report
 // @ 0x007B2C70 (village, handle, deed type, self flag; named descriptively), CTCVillage::RecalculateSecuritySweep(long) @ 0x00659C32.
 // Globals: the main game component @ 0x013B86A0 (+0x24 the world).
 // Layout: CTCGuard retail = Ego_r.pdb + 0x10 past the deque (STLport deque 0x28 bytes): LastCrimeSeenSeverity +0x44,
@@ -49,13 +49,14 @@ class CPlayer { public:
 };
 class CWorld { public:
     CPlayer* PeekMyPlayer() const;                      // 0x0049D9D0
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CMainGameComponent { public:
     unsigned char _pad00[0x24];
     CWorld* World;                                      // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;        // 0x013B86A0
-long __fastcall GFGetCurrentFrame();                    // 0x0049D870
 
 struct CRefCounted {
     long m_count;
@@ -150,7 +151,7 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
             severe = true;
         else if (LastCrimeSeenSeverity == 3)
             severe = true;
-        FrameLastCrimeSeen = GFGetCurrentFrame();
+        FrameLastCrimeSeen = CWorld::GetFrame();
     }
     ReportCrime(village, deedHandle, deed.Type, self);
     if (severe)

@@ -1,7 +1,7 @@
 #include <cstdio>
 static long g_frame = 0;
 static long g_FramesPerSecond = 15;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } static long GetFramesPerSecond() { return g_FramesPerSecond; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } static long GetFramesPerSecond() { return g_FramesPerSecond; } };
 class CHeroMarriageDef { public: float SecsInLoveAndHusbandPresentBeforeSexOffered; };
 static int g_worldCalls = 0;
 class CTCWife { public:
@@ -11,7 +11,7 @@ class CTCWife { public:
     {
         long framesPerSecond = GetWorld()->GetFramesPerSecond();
         const CHeroMarriageDef* def = PHeroMarriageDef;
-        long framesInLove = CWorld::GetWorldFrame() - FrameEnteredLoveWithHusbandPresentAtHome;
+        long framesInLove = CWorld::GetFrame() - FrameEnteredLoveWithHusbandPresentAtHome;
         return framesInLove > framesPerSecond * def->SecsInLoveAndHusbandPresentBeforeSexOffered;
     }
 };

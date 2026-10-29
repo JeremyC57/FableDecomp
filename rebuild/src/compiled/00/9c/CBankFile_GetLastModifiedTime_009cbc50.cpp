@@ -2,20 +2,20 @@
 // Leaf: ?GetLastModifiedTime@CBankFile@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CBC50, length 188 bytes (+4 int3), ret 8 (hidden CDateAndTime result, path;
 // `this` unused). Ego_r.pdb ?GetLastModifiedTime@CBankFile@@MAE?AVCDateAndTime@@ABVCCharString@@@Z.
-// Callees: CBase::CBase @ 0x0099A2F0, CWideString::CWideString() @ 0x0099AED0, CCharString::ToWideString() @ 0x0099E480,
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CWideString::CWideString() @ 0x0099AED0, CCharString::ToWideString() @ 0x0099E480,
 // CDiskFileWin32::Open(const CWideString&, FileAccessType, ulong) @ 0x0099A6A0 (read, 2), CWideString::~CWideString
 // @ 0x0099B510, CDiskFileWin32::GetFileInformation() @ 0x0099A5A0 (by-value CFileInformation, 0x58 bytes),
-// CDiskFileWin32::Close() @ 0x0099A920, CBase::~CBase @ 0x0099A300. Vtable 0x0122D06C = CDiskFileWin32.
+// CDiskFileWin32::Close() @ 0x0099A920, CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300. Vtable 0x0122D06C = CDiskFileWin32.
 // Shape: the local file's inline ctor (vtable, Pathname, then Opened = false in the BODY: an initialiser stores it before Pathname) and inline dtor (vtable, Close, ~Pathname, ~CBase);
 // the virtual Open/GetFileInformation/Close are direct calls on the local. LastWriteTime (+0x38) is copied into a named
 // CDateAndTime local (`rep movsd` x7), then into the result.
 // Layout: PDB CDiskFileWin32 (0x1c: Opened +0x14, Pathname +0x18), CFileInformation (Creation +0, LastAccess +0x1c,
 // LastWrite +0x38, ReadOnly +0x54), CDateAndTime (7 dwords).
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2F0
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
@@ -37,7 +37,7 @@ class CFileInformation { public:
 };
 enum FileAccessType { FILE_ACCESS_READ = 1 };
 
-class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c

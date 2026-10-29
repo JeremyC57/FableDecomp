@@ -13,7 +13,7 @@ static void L(const char* s) { g_log += s; g_log += ' '; }
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00499880, 489 bytes + padding (`ret 10h`). Callees: GFGetSystemManager 0x009A4EC0, the render
 // manager's 0x00A0AA60 / 0x00A0B560 / 0x009DA9F0 / 0x00A0AA90, the display manager's 0x009BEF20 / 0x009BE420 / 0x009BF220 / 0x009BEF50 /
 // 0x009BEEB0 / 0x009BF160, CSystemManager 0x009A6460, CRenderTarget(const CSurface&, const CSurface&) 0x00A10DC0, CSurface::Uninitialise
-// 0x009F2E20, ~CBase 0x0099A2E0, CProgressDisplay 0x00498490, CRenderStateManager::RestoreCaptureBlock 0x00A05840. Names of the
+// 0x009F2E20, ~CBaseClass 0x0099A2E0, CProgressDisplay 0x00498490, CRenderStateManager::RestoreCaptureBlock 0x00A05840. Names of the
 // callees without a PDB/landed name are descriptive.
 // Layout: CDisplayManager per Ego_r.pdb (PRenderManager +8, RenderTargetSurface +0xc, RenderTargetDepthBuffer +0x1c, ViewportBox +0x1f4,
 // Rendering +0x214); CRenderStateManager as the landed CEngine::RenderColorFilteredQuad 0x00B25C00; CProgressDisplay as the sibling
@@ -24,8 +24,9 @@ static void L(const char* s) { g_log += s; g_log += ' '; }
 class CCharString { public:
     void* PStringData;
 };
-struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
 };
 class CSurface { public:                                           // vtable 0x0122F84C, 0x10 bytes
     virtual void v00();
@@ -35,7 +36,7 @@ class CSurface { public:                                           // vtable 0x0
     ~CSurface() { Uninitialise(); }
     void Uninitialise();                                    // 0x009F2E20
 };
-class CRenderTarget : public CBase { public:                              // 0x24 bytes
+class CRenderTarget : public CBaseClass { public:                              // 0x24 bytes
     CSurface m_colour;                                      // +0x04
     CSurface m_depth;                                       // +0x14
     CRenderTarget(const CSurface& colour, const CSurface& depth);   // 0x00A10DC0
@@ -173,7 +174,7 @@ void CProgressDisplay::RenderProgress(const CCharString& textTag, float progress
         GFGetSystemManager()->TextSettings->Flag = savedFlag;
 }
 
-CBase::~CBase() {}
+CBaseClass::~CBaseClass() {}
 void CSurface::v00() {}
 void CSurface::Uninitialise() { L("unS"); }
 CRenderTarget::CRenderTarget(const CSurface& c, const CSurface& d) { m_colour.PD3DSurface = c.PD3DSurface; m_depth.PD3DSurface = d.PD3DSurface; L("RT"); }

@@ -10,7 +10,7 @@
 // GetWorld runs for nothing and no `mov ecx,eax` follows it; the false result is preloaded in bl before
 // the calls and the true arm is `mov al,1 ; jg` -- a result local initialised to false and set in the if.
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
 };
 
 class CTCBase
@@ -33,7 +33,7 @@ class CTCDegradableBase : public CTCBase { public:
 bool CTCDegradableBase::IsAvailableToHit() const
 {
     bool available = false;
-    if (PeekWorld().GetWorldFrame() - LastWorldFrameHit > 1)
+    if (PeekWorld().GetFrame() - LastWorldFrameHit > 1)
         available = true;
     return available;
 }

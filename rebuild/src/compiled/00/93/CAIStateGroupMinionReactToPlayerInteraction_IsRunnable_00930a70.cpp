@@ -6,7 +6,7 @@
 // "IS_THING_ALIVE" is wrong), CTCCreatureOpinionOfHero::FindMostRecentDeed<COpinionDeedFilter_IsCrimeToRunAndFindAGuard> @
 // 0x006610C7, the village's deed test @ 0x0065914B (manifest "CBankFileAsyncData::StartRead" is wrong), CTCWife::
 // IsMarriedToThePlayer @ 0x006CEC80, IsTooFarFromThePlayer @ 0x0092ECD0, IsTooNearToThePlayer @ 0x0092ED40,
-// GetWorldFrame @ 0x0049D870, TestOrDoInteraction @ 0x0092FAB0, InteractionFailed @ 0x0092F240.
+// CWorld::GetFrame @ 0x0049D870, TestOrDoInteraction @ 0x0092FAB0, InteractionFailed @ 0x0092F240.
 // Layout: engine/CAIStateGroup_MinionReactToPlayerInteraction.h flattens the base and types ReactionType as bytes, so the
 // model is local: NextReactionFrame[5] +0x14, ReactionType +0x28 (Ego_r.pdb); the village's +0x88 count and the event's
 // +0x3c type are descriptive.
@@ -101,6 +101,8 @@ class CPlayer { public:
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;                  // 0x0049D9D0
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CMessageEvent { public:
     unsigned char _pad[0x3c];
@@ -110,7 +112,6 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                                  // +0x18
 };
-unsigned long GetWorldFrame();                          // 0x0049D870
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                   // +0x04
@@ -167,7 +168,7 @@ bool CAIStateGroup_MinionReactToPlayerInteraction::IsRunnable()
     } else {
         ReactionType = 5;
         for (long i = 0; i < 5; ++i) {
-            if (GetWorldFrame() > NextReactionFrame[i]) {
+            if (CWorld::GetFrame() > NextReactionFrame[i]) {
                 CTCInteractionState* state;
                 if (!static_cast<const CThing*>(GetCreature())->GetInterface(&state, 0xc3) || !state->Active
                         || i == 2) {

@@ -66,7 +66,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 };
 
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
 };
 
 enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT = 1, WALL_MOUNT_EFFECT_HEAL = 2 };
@@ -93,7 +93,7 @@ class CTCWallMountEffects : public CTCBaseModel { public:
     {
         const CWallMountEffectsDef* def = PDef;
         long framesPerSecond = g_framesPerSecond;
-        return CWorld::GetWorldFrame() - FrameEffectLastUsed > def->SecondsBetweenEffectUsesAllowed * framesPerSecond;
+        return CWorld::GetFrame() - FrameEffectLastUsed > def->SecondsBetweenEffectUsesAllowed * framesPerSecond;
     }
     bool OnWallMountUseAction(CThingCreatureBase& creature);
 };

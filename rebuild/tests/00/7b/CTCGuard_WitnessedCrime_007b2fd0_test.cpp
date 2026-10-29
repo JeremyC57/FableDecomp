@@ -26,13 +26,16 @@ class CThing { public:
 static CThing* g_hero;
 class CPlayer { public: CThing* GetHeroCreature() { return g_hero; } };
 static CPlayer g_player;
-class CWorld { public: CPlayer* PeekMyPlayer() const { return &g_player; } };
+class CWorld { public: CPlayer* PeekMyPlayer() const { return &g_player; } 
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};
 class CMainGameComponent { public: CWorld* World; };
 static CWorld g_world;
 static CMainGameComponent g_game = { &g_world };
 static CMainGameComponent* g_pMainGameComponent = &g_game;
 static long g_frame;
-static long GFGetCurrentFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 
 static int g_destroys;
 struct CRefCounted {
@@ -123,7 +126,7 @@ void CTCGuard::WitnessedCrime(const COpinionDeed& deed, long deedHandle)
             severe = true;
         else if (LastCrimeSeenSeverity == 3)
             severe = true;
-        FrameLastCrimeSeen = GFGetCurrentFrame();
+        FrameLastCrimeSeen = CWorld::GetFrame();
     }
     ReportCrime(village, deedHandle, deed.Type, self);
     if (severe)

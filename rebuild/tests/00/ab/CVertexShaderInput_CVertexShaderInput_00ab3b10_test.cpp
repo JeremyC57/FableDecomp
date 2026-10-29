@@ -1,10 +1,11 @@
 #include <cstdio>
 #include <cstddef>
 // Behaviour model of CVertexShaderInput::CVertexShaderInput @ 0x00AB3B10.
-namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() {} }; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:  virtual void v00() {} CBaseClass() {} };
 struct SVertexShaderInputState { void* m_pDeclaration; void* m_pStreams; long m_streamCount, m_elementCount, m_stride, m_flags;
     SVertexShaderInputState() : m_pDeclaration(0), m_pStreams(0), m_streamCount(0), m_elementCount(0), m_stride(0), m_flags(0) {} };
-class CVertexShaderInput : public CBase { public: SVertexShaderInputState m_state; virtual void v00() {} CVertexShaderInput() : CBase(), m_state() {} };
+class CVertexShaderInput : public CBaseClass { public: SVertexShaderInputState m_state; virtual void v00() {} CVertexShaderInput() : CBaseClass(), m_state() {} };
 int main()
 {
     CVertexShaderInput v;

@@ -7,10 +7,11 @@ static int fails = 0;
 static int g_baseCtor = 0, g_fadeCtor = 0, g_handleCtor = 0, g_resizeE = 0, g_resizeC = 0; static long g_resizeECount = -1; static unsigned long g_resizeCCount = 0;
 static const void* g_baseGui = 0; static const void* g_baseList = 0;
 class CPlayerGui;
-namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() { ++g_handleCtor; } }; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:  virtual void v00() {} CBaseClass() { ++g_handleCtor; } };
 class CIVCountedPointeeBase;
 struct CIVCountedPointer { CIVCountedPointeeBase* Object; __forceinline CIVCountedPointer() : Object(0) { } };
-class CEnginePrimitiveHandle : public CBase { public: CIVCountedPointer Data; virtual void v00() {} __forceinline CEnginePrimitiveHandle() { } };
+class CEnginePrimitiveHandle : public CBaseClass { public: CIVCountedPointer Data; virtual void v00() {} __forceinline CEnginePrimitiveHandle() { } };
 class C2DCoordI { public: long X; long Y; C2DCoordI() { } };
 namespace NPlayerGui {
 template <class P> struct CAllocProxy { P p; CAllocProxy(P v) : p(v) { } operator P() const { return p; } CAllocProxy& operator=(P v) { p = v; return *this; } };

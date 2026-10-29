@@ -6,7 +6,7 @@
 //          @ 0x0040F020 (interface 0xcf), CTCTavernGame::GetBanter @ 0x005EA3C0, CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0,
 //          CCreatureAction_PlayAnimation @ 0x008424F0, ~CCreatureActionBase @ 0x00693EF0 (manifest "CPhysicsMeshInfo" is
 //          propagated), AIAction_PerformAction @ 0x0097D8B0, AIAction_SpeakAISpeechToTarget @ 0x009812C0, Terminate
-//          @ 0x008FCF40, GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, GFGetCurrentFrame @ 0x0049D870 (manifest
+//          @ 0x008FCF40, GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CWorld::GetFrame @ 0x0049D870 (manifest
 //          "GFGetPreMainMemoryUsed" is propagated), g_framesPerSecond @ 0x01375550.
 // Shape: the bitset::test GetInterface (bool materialised to a frame byte, ternary end/hit pick straight into ecx; the miss
 //          path reads the never-written slot); the animation string is scoped to the PerformAction block so the lookup key
@@ -99,7 +99,7 @@ class CAIBrain { public:
 };
 enum EAIActionRepeat { AI_ACTION_REPEAT_NONE, AI_ACTION_REPEAT_1, AI_ACTION_REPEAT_2 };
 enum EAIActionReturn { AI_RET_0, AI_RET_1, AI_RET_2, AI_RET_3, AI_RET_4 };
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 extern long g_framesPerSecond;                  // 0x01375550
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
@@ -153,6 +153,6 @@ bool CAIStateGroup_GameMaster::OfferPlayerAGame()
     }
     unsigned long seconds = WorldRandomRange(*GetPWorldSeed(), 10);
     long fps = g_framesPerSecond;
-    TimeNextReactToPlayer = GFGetCurrentFrame() + (seconds + 5) * fps;
+    TimeNextReactToPlayer = CWorld::GetFrame() + (seconds + 5) * fps;
     return true;
 }

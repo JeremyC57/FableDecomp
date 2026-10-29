@@ -3,15 +3,16 @@
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 struct CPrimitiveStatMap { int total; };
 static int g_baseDestroyed = 0;
-namespace N_0099a300 { struct CBase { virtual void v00() {} ~CBase() { ++g_baseDestroyed; } }; } using N_0099a300::CBase;
-struct CEngineScenePrimitiveStatsEnumerator : CBase {
+class CBaseClassNonCopyable {
+public:   virtual ~CBaseClassNonCopyable() { ++g_baseDestroyed; } };
+struct CEngineScenePrimitiveStatsEnumerator : CBaseClassNonCopyable {
     CPrimitiveStatMap* Destination; C2DBoxF Area; long StatIndex; unsigned int StatFlags;
     CEngineScenePrimitiveStatsEnumerator(CPrimitiveStatMap* destination, const C2DBoxF& area, long statIndex, unsigned int statFlags)
         : Destination(destination), Area(area), StatIndex(statIndex), StatFlags(statFlags) {}
 };
 class CEngineScene { public:
     int m_primitives;
-    void Enumerate(CBase& enumerator)
+    void Enumerate(CBaseClassNonCopyable& enumerator)
     {
         CEngineScenePrimitiveStatsEnumerator& e = static_cast<CEngineScenePrimitiveStatsEnumerator&>(enumerator);
         if (e.StatIndex == 2 && e.StatFlags == 7 && e.Area.BRX == 10.0f) e.Destination->total += m_primitives;

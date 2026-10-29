@@ -1,6 +1,7 @@
 #include <cstdio>
 static long g_frame = 77;
-long __fastcall GFGetFrameCount() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 class CTransitionBlendAlpha { public: float Current; float Last; };
 template<class T> struct CRetailVector { T* first; T* last; T* end_of_storage; T& operator[](unsigned long n) { return first[n]; } };
 class CAnimSet { public:
@@ -10,7 +11,7 @@ class CAnimSet { public:
         InternalAlphas[index].Last = InternalAlphas[index].Current;
         InternalAlphas[index].Current = alpha;
         if (setLastToo) InternalAlphas[index].Last = alpha;
-        FrameInternalAlphasUpdated = GFGetFrameCount();
+        FrameInternalAlphasUpdated = CWorld::GetFrame();
     }
 };
 int main()

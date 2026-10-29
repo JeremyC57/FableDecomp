@@ -185,8 +185,9 @@ extern CInventoryCamera g_InventoryCamera;              // 0x013B8A98
 class CWorld { public:
     unsigned char _pad00[0x8c];
     long LastInventoryCloseFrame;                       // +0x8c
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
-long GetFrameCount();                                   // 0x0049D870
 void __fastcall RestoreCursor();                        // 0x0041D165
 struct CTextInput {
     void Clear();                                       // 0x00593235
@@ -267,7 +268,7 @@ void CTCInventory::CloseInventory()
     InputB.Clear();
     g_pEngine->PDisplayEngine->PRenderer->SetEnabled(true);
     CWorld* world = (&GetWorld());
-    world->LastInventoryCloseFrame = GetFrameCount();
+    world->LastInventoryCloseFrame = CWorld::GetFrame();
     if (g_pSoundSystem) {
         g_pSoundSystem->SetGroupVolume(0x10, CUserProfileManager::Get().GetMusicVolume(), 0.0f);
         g_pSoundSystem->SetGroupVolume(0x40, CUserProfileManager::Get().GetSoundVolume(), 0.0f);

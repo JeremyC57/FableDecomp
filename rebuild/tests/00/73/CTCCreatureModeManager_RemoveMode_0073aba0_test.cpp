@@ -28,7 +28,7 @@ class CThing { public:
         return it->component;
     }
 };
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 class CTCLook { public: int Updates; void UpdateTurningAnims() { ++Updates; Log('u'); } };
 struct CModeBase {
     unsigned long Type; char Name;
@@ -87,7 +87,7 @@ void CTCCreatureModeManager::RemoveMode(unsigned long modeType)
             ((CTCLook*)ParentThing->GetTC(0x43))->UpdateTurningAnims();
     }
     long idleDelay = (long)(g_framesPerSecond * 30.0f);
-    TimeForNextIdleMode = CWorld::GetWorldFrame() + idleDelay;
+    TimeForNextIdleMode = CWorld::GetFrame() + idleDelay;
 }
 
 int main()

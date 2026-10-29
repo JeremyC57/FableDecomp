@@ -16,10 +16,11 @@ struct CScriptObject : CScriptBase {
     CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
 };
 
-namespace N_0099a2d0 { struct CBase {
-    CBase() { ++g_cbaseBuilt; }
-    virtual ~CBase() { }
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass() { ++g_cbaseBuilt; }
+    virtual ~CBaseClass() { }
+};
 
 class CScriptThing;
 class CCPPointerInfo;
@@ -29,7 +30,7 @@ struct CCountedPointer_CScriptThing {
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
 
-class CScriptThing : public CBase { public:
+class CScriptThing : public CBaseClass { public:
     CCountedPointer_CScriptThing PImp;
     CScriptThing() { }
     virtual ~CScriptThing() { }

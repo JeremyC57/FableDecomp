@@ -2,7 +2,7 @@
 // -- the base initialisation, then a random sit-down frame within the next 80 seconds.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0090F690, length 125 bytes (+ int3 padding), `ret 14h`. Vtable slot 1.
 // Callees: CAIStateGroupBase::Initialise @ 0x008FCEC0 (the five arguments forwarded from the frame), CAIStateGroupBase::
-// GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890 (__fastcall), GFGetCurrentFrame @ 0x0049D870 (__fastcall).
+// GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890 (__fastcall), CWorld::GetFrame @ 0x0049D870 (__fastcall).
 // Global: the frame-rate long @ 0x01375550, read AFTER the base call (`fps*80` = `lea esi,[esi+esi*4] ; shl esi,4`).
 // Shape: the landed random-frames step (seed*0x24A1+0x24DF, GFROR13, `range ? seed % range : 0` with an unsigned
 // `div`; 0x00934090) then `FrameToSitDown = GFGetCurrentFrame() + r` (+0x3c, engine header name). The class is
@@ -91,7 +91,7 @@ class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CCharString;
@@ -122,5 +122,5 @@ void CAIStateGroup_MinionSitOnSeat::Initialise(CAIBrain& brain, CThingAICreature
         r = rotated % range;
     else
         r = 0;
-    FrameToSitDown = GFGetCurrentFrame() + r;
+    FrameToSitDown = CWorld::GetFrame() + r;
 }

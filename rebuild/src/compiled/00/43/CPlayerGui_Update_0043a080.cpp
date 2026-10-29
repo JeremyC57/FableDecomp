@@ -5,7 +5,7 @@
 // 0x004385F0, CPlayerManager::GetMainPlayer 0x00449970, CBaseIntelligentPointer::GetPItem 0x00A01B50 (the player's
 // character pointer +0x34), NPlayerGui::CDrawQuestInfo / CDrawMeleeActionButtonEffects / CDrawPerceivers / CDrawDamage /
 // CDrawStatUpdates / CDrawAutoPickups / CDrawGuildSeal / CDrawQuickAccessIcons ::Update (0x0064A32E, 0x0064BE45, 0x0064A1AE,
-// 0x00644CE2, 0x0064A060, 0x00643EB1, 0x0065196C, 0x0064D6A8), GetWorldFrame 0x0049D870, ~CCharString 0x0099EAE0,
+// 0x00644CE2, 0x0064A060, 0x00643EB1, 0x0065196C, 0x0064D6A8), CWorld::GetFrame 0x0049D870, ~CCharString 0x0099EAE0,
 // ~CWideString 0x0099B510, free 0x00BFEA14 (STLport list node release), CScreenMessage::Update 0x00438770, the lazily
 // loaded "PLAYER_GUI_PC" def (0x0099EBF0 / 0x0044C6B0 / 0x0043FF30; global 0x013B878C).
 // Layout (retail; engine/CPlayerGui.h is the PDB view): the illustrator counted pointers sit 8 below the PDB (narrower
@@ -34,8 +34,8 @@ extern CPlayerGuiDefPointer g_PlayerGuiDef;                 // 0x013B878C
 class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CPlayerGuiDefPointer* out);   // 0x0043FF30
 };
-class CGameDefinitionManager { public:
-    static CDefinitionManager& __fastcall Get();            // 0x0044C6B0
+class CGameDefinitionManager : public CDefinitionManager { public:
+    static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
 {
@@ -45,7 +45,7 @@ __forceinline const CPlayerGuiDef* GetPlayerGuiDef()
     }
     return g_PlayerGuiDef.Object;
 }
-unsigned long GetWorldFrame();                              // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                              // 0x0049D870
 
 class CThing { public:
     unsigned char _pad00[0x91];
@@ -194,7 +194,7 @@ void CPlayerGui::Update(bool paused)
     }
     SListNode<NPlayerGui::CScriptScreenText>* text = ScriptScreenText._M_node->_M_next;
     while (text != ScriptScreenText._M_node) {
-        if (text->_M_data.FrameAdded < GetWorldFrame() - 1)
+        if (text->_M_data.FrameAdded < CWorld::GetFrame() - 1)
             text = ScriptScreenText.erase(text);
         else
             text = text->_M_next;

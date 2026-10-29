@@ -12,7 +12,7 @@
 // the frame store sits after the first compare's fcomp; the clamp zeroes store immediates; the Drunk
 // flag is the comparison result materialised as `mov eax,1` / `xor eax,eax`.
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
 };
 
 class CThing { public:
@@ -37,8 +37,8 @@ class CTCDrunkenness { public:
 void CTCDrunkenness::FrameUpdate()
 {
     if (FrameLastUpdatedSobering > 0)
-        Drunkenness -= (float)(CWorld::GetWorldFrame() - FrameLastUpdatedSobering) * SecondsPerFrame * SoberingPerSecond;
-    FrameLastUpdatedSobering = CWorld::GetWorldFrame();
+        Drunkenness -= (float)(CWorld::GetFrame() - FrameLastUpdatedSobering) * SecondsPerFrame * SoberingPerSecond;
+    FrameLastUpdatedSobering = CWorld::GetFrame();
     if (Drunkenness < 0.0f)
         Drunkenness = 0.0f;
     if (Drunkenness > 0.0f && ParentThing->IsUnderScriptSupervision())

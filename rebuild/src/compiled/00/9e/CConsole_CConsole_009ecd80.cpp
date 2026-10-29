@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009ECD80, 432 bytes. Catalog label "CHeroInformationScreens::Ctor" is a
 // propagation: the vtable stored first is 0x0129C600 (rtti-vtables: CConsole), and the two embedded objects
 // store 0x0129C400 (CConsoleCommandLine, landed ctor 0x009EA2B0 inlined here).
-// Callees: malloc 0x00BFEA0E (each STLport tree header / list sentinel), CBase::CBase 0x0099A2D0,
+// Callees: malloc 0x00BFEA0E (each STLport tree header / list sentinel), CBaseClass::CBaseClass 0x0099A2D0,
 //   CCharString(const char*, long) 0x0099EBF0 (the empty literal 0x0122D70E, -1), CCharString() 0x0099E4B0.
 // Layout: Ego_r.pdb CConsole with the retail container shrink of the landed CConsole::SetHistoryMode 0x009EAB80
 // (maps 12 bytes, list = sentinel pointer only): KeyBindingMap +0x04, StringBindingMap +0x10, FrontCommandLine +0x1c,
@@ -21,16 +21,17 @@ class CCharString { public:
     CCharString();                                  // 0x0099E4B0
     CCharString(const char* text, long length);     // 0x0099EBF0
 };
-namespace N_0099a2d0 { struct CBase {
+class CBaseClass {
+public:
     virtual void v00();
-    CBase();                                        // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
-class CConsoleCommandLine : public CBase { public:                // vtable 0x0129C400
+    CBaseClass();                                        // 0x0099A2D0
+};
+class CConsoleCommandLine : public CBaseClass { public:                // vtable 0x0129C400
     virtual void v00();
     CCharString CurrentEntry;                       // +0x04
     bool        UserEntry;                          // +0x08
     long        CursorPosition;                     // +0x0c
-    CConsoleCommandLine() : CBase(), CurrentEntry("", -1), UserEntry(false), CursorPosition(0) { }
+    CConsoleCommandLine() : CBaseClass(), CurrentEntry("", -1), UserEntry(false), CursorPosition(0) { }
 };
 class CRGBColour { public:
     unsigned char B, G, R, A;

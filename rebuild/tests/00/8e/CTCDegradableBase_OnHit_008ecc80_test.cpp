@@ -5,7 +5,7 @@ class C3DVector { public: float X, Y, Z; };
 static long g_frame = 0;
 static int g_healthCalls = 0;
 static bool g_healthArg = true;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CTCDegradableBase { public:
     virtual void v00() { }
@@ -24,13 +24,13 @@ class CTCDegradableBase { public:
 bool CTCDegradableBase::IsAvailableToHit() const
 {
     bool available = false;
-    if (GetWorld()->GetWorldFrame() - LastWorldFrameHit > 1)
+    if (GetWorld()->GetFrame() - LastWorldFrameHit > 1)
         available = true;
     return available;
 }
 void CTCDegradableBase::OnHit(const C3DVector& position, const C3DVector& direction)
 {
-    long frame = GetWorld()->GetWorldFrame();
+    long frame = GetWorld()->GetFrame();
     if (IsAvailableToHit()) {
         SetAvailabilityToHitFromFrame(frame);
         OnParentHealthChanged(false);

@@ -70,7 +70,7 @@ class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);           // 0x009AD410
     template <class T> bool GetDef(long index, CDefPointer<T>* pointer);   // 0x006BD060
 };
-class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager* __fastcall Get(); };   // 0x0044C6B0
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 enum ENavigatorType { NAVIGATOR_TYPE_NONE };
 struct CLongVector {
     long* _M_start;
@@ -125,9 +125,9 @@ class CRegion { public:
     __forceinline void SetRegionDefName(const CCharString& name)
     {
         RegionDefName = name;
-        long index = CGameDefinitionManager::Get()->GetDefGlobalIndexFromName(RegionDefName);
+        long index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(RegionDefName);
         if (index > 0)
-            CGameDefinitionManager::Get()->GetDef(index, &PDef);
+            CGameDefinitionManager::Get().GetDef(index, &PDef);
     }
     void LoadBinary(CMemoryDataInputStream* stream);
 };

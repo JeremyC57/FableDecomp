@@ -16,16 +16,17 @@ struct CPersistentPrimitiveMethods {
  long Type;
  __forceinline unsigned long RemoveReference(){return --IVRefCount;}
 };
-namespace N_0099a2d0 { struct CBase {CBase();virtual ~CBase();}; } using N_0099a2d0::CBase; //0099a2d0/0099a2e0
+class CBaseClass {
+public: CBaseClass();virtual ~CBaseClass();}; //0099a2d0/0099a2e0
 struct CHandlePointer {
  CPersistentPrimitiveMethods* Object;
  CHandlePointer():Object(0){}
  CHandlePointer(const CHandlePointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}
  __forceinline ~CHandlePointer(){if(Object){CPersistentPrimitiveMethods* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
 };
-class CEnginePrimitiveHandle:public CBase { public:
+class CEnginePrimitiveHandle:public CBaseClass { public:
  CHandlePointer Data;
- CEnginePrimitiveHandle():CBase(),Data(){}
+ CEnginePrimitiveHandle():CBaseClass(),Data(){}
  __forceinline virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}
 };
 struct CFalseType {CFalseType(){}};

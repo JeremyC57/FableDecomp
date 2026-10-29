@@ -4,7 +4,7 @@
 //   SetPItem 0x00A01B90 / GetPItem 0x00A01B50 / dtor 0x00A01C10 (CIntelligentPointer<CThing> vtable 0x01238C6C),
 //   CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / operator=(const CCharString&) 0x0099EFB0 /
 //   operator=(const char*) 0x0099EFE0 / ~ 0x0099EAE0, CThingAppearance::HasDummyObject 0x004BE2C0 / HasHelperPoint 0x004BE170,
-//   CTCDParticleEmitter::AttachToThing 0x006E0BE0, CRC Calc 0x004014A0, physics virtual slot 70 (+0x118),
+//   CTCDParticleEmitter::AttachToThing 0x006E0BE0, CRC CCRC::Calc 0x004014A0, physics virtual slot 70 (+0x118),
 //   CBaseClass ctor 0x0099A2D0, push_back 0x0076B120, SetEmitterUpdateParameters 0x006E11A0, ~CParticleUpdateParameters 0x006E2500.
 // Layout: as the landed UpdateEffects 0x007C2480 (same TU); PShotDef +0x38 (CThingShotDef AttachedContinuousEffect +0x48,
 //   UseEndTimeLineOnContinousEffect +0x50, PDB minus 4); CThing appearance +0x64; g_CCharString_013bacb4 = "SHOT_CREATION_DUMMY".
@@ -15,7 +15,7 @@ class C3DVector { public:
     C3DVector() {}
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) {}
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0: CRC
 extern const float g_epsilon_0129ba3c;                  // 0x0129BA3C (1e-4f)
 class CBaseClass { public:                                     // vtable 0x01231710 (RTTI .?AVCBaseClass@@)
     CBaseClass();                                       // 0x0099A2D0
@@ -242,7 +242,7 @@ void CTCShotDefinitionBase::InitAttachedEffects()
     if (PShotDef->UseEndTimeLineOnContinousEffect)
         attachType |= 0x10;
     emitter->AttachToThing(ParentThing, attachType, helperName, 0, 0);
-    unsigned long key = Calc_004014a0(0, "MOVE_DIRECTION", 14);
+    unsigned long key = CCRC::Calc(0, "MOVE_DIRECTION", 14);
     NParticleEngine::SVectorParam moveDirection(key, ParentThing->PhysicsTC->GetDirection());
     NParticleEngine::CParticleUpdateParameters parameters;
     parameters.VectorParams.Vector.push_back(moveDirection);

@@ -1,7 +1,7 @@
 // CFinalTabletSarcophagus::Main() -- the Necropolis sarcophagus holding the final Oracle tablet: unless tablet A is already taken, put up the magic-barrier forcefield, wait for three tablets, mark the sarcophagus, wait for the hero within 6 units of the barrier point, play the summoners cutscene once (re-raising the forcefield), wait for the final summoners to die, open the sarcophagus, give the hero expression A, take the tablet, have the hero comment twice and re-enable the Northern Wastes 2 creature generators
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CFFB60, 1252 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: CScriptThing dtor 0x004AA840 (inline copies at the first forcefield), CBase dtor 0x0099A2E0, operator delete 0x00BFE9BC,
+// Callees: CScriptThing dtor 0x004AA840 (inline copies at the first forcefield), CBaseClass dtor 0x0099A2E0, operator delete 0x00BFE9BC,
 //   IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CQ_AwakeningTheOracleScript::
 //   PlayCutscene(CCharString, bool) 0x00CFF9A0 (label "Main_InitializeHeroMorphComponents" is wrong), CCharString 0x0099EBF0 /
 //   0x0099EAE0; GameCalls slots 7, 70, 72, 99 CreateObjectOnEntity, 125, 225, 350, 352, 364, 366, 376, 447, 558, 565.
@@ -40,16 +40,17 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {                                          // vtable 0x01231710
-    CBase() { }                                         // out-of-line copy 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:                                           // vtable 0x01231710
+    CBaseClass() { }                                         // out-of-line copy 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 class C3DVector { public: float X, Y, Z; };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
-    CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
 };
 struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8

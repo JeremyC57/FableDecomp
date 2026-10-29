@@ -9,7 +9,7 @@
 // expression is evaluated first, then the right operand (kept in edi), then the static call. Member +0x14 from
 // struct_layouts_egor.tsv (no engine header).
 class CWorld { public:
-    static long GetFrameCount();                // 0x0049D870 (GFGetCurrentFrame)
+    static long __fastcall GetFrame();                // 0x0049D870 (GFGetCurrentFrame)
 };
 
 extern long __stdcall GFSecondsToFrames(float seconds);   // 0x00415FC1
@@ -32,5 +32,5 @@ struct CAIStateGroup_SeekPerceivedThing : CAIStateGroupBase {
 
 void CAIStateGroup_SeekPerceivedThing::OnActivate()
 {
-    FrameLastCaptured = PeekWorld().GetFrameCount() - GFSecondsToFrames(g_seekBackSeconds);
+    FrameLastCaptured = PeekWorld().GetFrame() - GFSecondsToFrames(g_seekBackSeconds);
 }

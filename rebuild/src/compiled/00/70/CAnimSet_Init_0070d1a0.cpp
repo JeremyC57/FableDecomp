@@ -80,7 +80,7 @@ class CTransitionBlendAlpha { public:
     CTransitionBlendAlpha(float current, float last) : CurrentAlpha(current), LastAlpha(last) { }
 };
 class CWorld { public:
-    static unsigned long GetWorldFrame();          // 0x0049D870
+    static long __fastcall GetFrame();          // 0x0049D870
 };
 class CAnimateThing;
 struct CAnimSetInitData {
@@ -132,7 +132,7 @@ void CAnimSet::Init(CAnimateThing* animator, const CAnimSetInitData& data, float
     Anims.push_back(data.Anim);
     InternalAlphas.clear();
     InternalAlphas.push_back(CTransitionBlendAlpha(data.Alpha, data.Alpha));
-    FrameInternalAlphasUpdated = CWorld::GetWorldFrame();
+    FrameInternalAlphasUpdated = CWorld::GetFrame();
     CurrentPercentageComplete = data.PercentageComplete;
     LastPercentageComplete = data.LastPercentageComplete;
     CurrentAlpha = LastAlpha = alpha;

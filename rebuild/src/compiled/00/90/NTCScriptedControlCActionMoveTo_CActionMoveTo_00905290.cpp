@@ -1,6 +1,6 @@
 // NTCScriptedControl::CActionMoveTo::CActionMoveTo(CThing*, long, bool, bool) -- follow-route scripted move action
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00905290, length 129 bytes (`ret 10h`).
-// Callees: CBase::CBase @ 0x0099A2F0 (the action root), CBaseObject::CBaseObject @ 0x0099A2D0 (the CScriptThing
+// Callees: CBase::CBase @ 0x0099A2F0 (the action root), CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing
 // root), CThing::GetScriptThing @ 0x004C7E50 (by-value CScriptThing built straight into PRouteThing). Vtables
 // 0x0127091C = NTCScriptedControl::CActionMoveTo, 0x01238C8C = CScriptThing (rtti-vtables.tsv).
 //
@@ -17,10 +17,11 @@ struct CBase {                                  // root of the scripted actions 
     CBase();                                    // 0x0099A2F0
 };
 
-namespace N_0099a2d0 { struct CBaseObject {                            // root of CScriptThing (vtable 0x01231710)
+class CBaseClass {
+public:                             // root of CScriptThing (vtable 0x01231710)
     virtual void v00();
-    CBaseObject();                              // 0x0099A2D0
-}; } using N_0099a2d0::CBaseObject;
+    CBaseClass();                              // 0x0099A2D0
+};
 
 struct SCountBlock;
 
@@ -30,10 +31,10 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-class CScriptThing : public CBaseObject { public:             // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h layout)
+class CScriptThing : public CBaseClass { public:             // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h layout)
     virtual void v00();
     CCountedPointer PImp;                       // +0x04
-    CScriptThing() : CBaseObject() { }
+    CScriptThing() : CBaseClass() { }
     CScriptThing(const CScriptThing& other);    // non-POD: returned through a hidden pointer
 };
 

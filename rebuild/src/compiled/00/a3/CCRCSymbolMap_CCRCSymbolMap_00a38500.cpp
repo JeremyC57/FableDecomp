@@ -1,7 +1,7 @@
 // CCRCSymbolMap::CCRCSymbolMap() -- CBase part, this class's vtable, an empty clean CRC-keyed symbol vector-map, an empty used-names set (fresh STLport tree header) and duplicate checking off
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A38500, length 76 bytes (80 with int3 padding).
 // Leaf: ??0CCRCSymbolMap
-// Callees: CBase::CBase() @ 0x0099A2F0, malloc @ 0x00BFEA0E (the 0x14-byte tree header). Vtable 0x0129CF84 =
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0, malloc @ 0x00BFEA0E (the 0x14-byte tree header). Vtable 0x0129CF84 =
 // CCRCSymbolMap (rtti-vtables.tsv).
 // Label correction: the manifest's "CParticleUpdateParameters<unsigned long,unsigned long>" constructor is
 // propagated. Layout: Ego_r.pdb CCRCSymbolMap (vptr; SLONGMap CVectorMap<unsigned long, long,
@@ -15,9 +15,10 @@
 // 0x009E5200 (same base, same retail sizes).
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-struct CBase {
-    CBase();                                                // 0x0099A2F0
-    virtual ~CBase();
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                                                // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();
 };
 
 
@@ -77,7 +78,7 @@ template <class K, class V, class C> class CVectorMap { public:    // retail 16 
 };
 template <class K, class V> class CKeyPairCompareLess { public: };
 
-class CCRCSymbolMap : public CBase { public:                              // vtable 0x0129CF84
+class CCRCSymbolMap : public CBaseClassNonCopyable { public:                              // vtable 0x0129CF84
     CVectorMap<unsigned long, long, CKeyPairCompareLess<unsigned long, long> > SLONGMap;   // +0x04
     std::set<unsigned long>                                                  NamesUsed;  // +0x14
     bool                                                                      CheckForDuplicateSymbols;   // +0x20

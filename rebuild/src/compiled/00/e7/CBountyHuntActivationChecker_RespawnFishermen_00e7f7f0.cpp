@@ -1,7 +1,7 @@
 // CBountyHuntActivationChecker::RespawnFishermen() -- recreate the fishing-competition organiser at MK_FC_ORG and, unless the competitors were attacked, the two competitors at MK_FI_COMP1 / MK_FI_COMP2 (data strings "1" / "2", appearance morph seeds 9 / 36)
 // Leaf: RespawnFishermen
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E7F7F0, 908 bytes (912 with padding); called from Main 0x00E7F410.
-// Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CBase 0x0099A2E0, operator delete 0x00BFE9BC
+// Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC
 //   (the CScriptThing destructor is expanded inline at every site), CScriptThing slot 6 GetPos (virtual on the lookup
 //   temporaries) and slot 4 SetDataString (inline on the named locals: the implementation's slot 4 when PImp_Data is set);
 //   CGameScriptInterface slots 72 GetThingWithScriptName, 91 CreateCreature, 479 EntitySetAppearanceMorphSeed.
@@ -44,10 +44,11 @@ struct CScriptThingImpl {                               // the game-side thing b
     virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003();
     virtual void SetDataString(const CCharString& text);   // slot 4 (+0x10)
 };
-struct CBase {
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003();
     virtual void SetDataString(const CCharString& text) { if (PImp_Data) PImp_Data->SetDataString(text); }   // slot 4 (+0x10)
     virtual void t005();

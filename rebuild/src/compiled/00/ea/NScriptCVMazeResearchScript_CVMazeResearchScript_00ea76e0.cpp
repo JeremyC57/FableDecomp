@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EA76E0, length 101 bytes (padded to 112), `ret 8`.
 // Catalog label "CV_MurderTwistFinalScript" is wrong: the factory 0x00EA8690 (this ctor) is registered at 0x00CD8F62
 // under "S_VMR" / "V_MazeResearch", and the PDB CV_MazeResearchScript layout fits the stores.
-// Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBase::CBase @ 0x0099A2D0 (the CScriptThing root; CScriptThing
+// Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing root; CScriptThing
 // vtable 0x01238C8C), malloc @ 0x00BFEA0E (the map's 0x18-byte header).
 // Layout (retail = Ego_r.pdb - 0x14): SwordTaken +0x48, BookRead +0x49, Sword +0x4c, cs_flags +0x58; size 0x64.
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
@@ -88,10 +88,11 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
         this->_M_header->_M_right = this->_M_header;
     }
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();                              // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
+};
 struct CScriptThingImp;
 class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {              // CScriptThing::PImp
@@ -99,7 +100,7 @@ struct CCountedPointer_CScriptThing {              // CScriptThing::PImp
     CCPPointerInfo*  Info;                         // +4
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
-class CScriptThing : public CBase { public:                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     CCountedPointer_CScriptThing PImp;             // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();

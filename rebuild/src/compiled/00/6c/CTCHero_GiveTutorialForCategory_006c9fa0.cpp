@@ -12,8 +12,9 @@ enum ETutorialCategory { TUTORIAL_CATEGORY_NULL };
 
 class CUserProfileManager { public:
     bool GiveTutorialForCategory(ETutorialCategory category, bool force);   // 0x0040B790
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
-CUserProfileManager& __fastcall GetUserProfileManager();   // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
 
 class CTCHero { public:
     bool GiveTutorialForCategory(ETutorialCategory category, bool force);
@@ -21,5 +22,5 @@ class CTCHero { public:
 
 bool CTCHero::GiveTutorialForCategory(ETutorialCategory category, bool force)
 {
-    return GetUserProfileManager().GiveTutorialForCategory(category, force);
+    return CUserProfileManager::Get().GiveTutorialForCategory(category, force);
 }

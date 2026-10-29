@@ -31,7 +31,7 @@ class CWorld { public:
     virtual void _slot2();
     virtual const CThingManager* GetThingManager() const;  // slot 4 (0x0049E1C0) -- overloads are laid out in reverse order
     virtual CThingManager* GetThingManager();       // slot 3 (0x0049E1B0)
-    static long __fastcall GetWorldFrame();         // 0x0049D870
+    static long __fastcall GetFrame();         // 0x0049D870
 };
 extern long g_FramesPerSecond;                      // 0x01375550
 
@@ -128,7 +128,7 @@ void CTCHeroExperience::FrameUpdate()
             node = node->_M_next;
     }
     LastExperienceMultiplierParam = ExperienceMultiplierParam;
-    long frame = GetWorld()->GetWorldFrame();
+    long frame = GetWorld()->GetFrame();
     if (!AttackHistory.empty()) {
         CListNode<SAttack>* last = AttackHistory.end()->_M_prev;
         if (last->_M_data.Attribute != -1 && frame > last->_M_data.Frame - (long)(g_FramesPerSecond * -3.0f)) {

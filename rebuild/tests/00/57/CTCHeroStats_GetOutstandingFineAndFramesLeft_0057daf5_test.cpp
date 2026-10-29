@@ -52,7 +52,7 @@ struct CCrimeStatusMap {
     MirroredCriminalStatus& operator[](const CCharString& key) { return regions[key.id]; }
 };
 static long g_frame = 1000;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 class CTCHeroStats { public:
     CThing*         ParentThing;
     CCrimeStatusMap OutstandingCrimes;
@@ -72,7 +72,7 @@ void CTCHeroStats::UpdateOutstandingCrimes(const CCharString& region)
             deedLog->GetDeedEffectsDef(crime);
             long expiry = deedLog->GetDeedEffectsDef(crime)->KnowledgeLifeInSeconds * 15
                         + OutstandingCrimes[region].LastTimeSeenByGuard;
-            if (expiry < GetWorld()->GetWorldFrame())
+            if (expiry < GetWorld()->GetFrame())
                 OutstandingCrimes[region].Crimes[crime] = 0;
         }
     }
@@ -91,7 +91,7 @@ void CTCHeroStats::GetOutstandingFineAndFramesLeft(const CCharString& region, lo
             fine += deedLog->GetDeedEffectsDef(crime)->CrimeFineAmount * OutstandingCrimes[region].Crimes[crime];
             long expiry = deedLog->GetDeedEffectsDef(crime)->KnowledgeLifeInSeconds * 15
                         + OutstandingCrimes[region].LastTimeSeenByGuard;
-            framesLeft = Max(framesLeft, expiry - GetWorld()->GetWorldFrame());
+            framesLeft = Max(framesLeft, expiry - GetWorld()->GetFrame());
         }
     }
 }

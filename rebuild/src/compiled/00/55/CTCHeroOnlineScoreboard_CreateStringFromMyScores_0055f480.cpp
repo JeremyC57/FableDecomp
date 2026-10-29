@@ -33,8 +33,9 @@ class CUserProfileManager { public:
     unsigned char _pad[0x110];
     CWideString   SignedInUserName;                  // +0x110
     CWideString   SignedInPassword;                  // +0x114
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
-CUserProfileManager* GetUserProfileManager();        // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
 
 enum EOnlineScoreboardActivity { ONLINE_SCOREBOARD_ACTIVITY_0 };
 
@@ -89,7 +90,7 @@ public:
     CScoreMap       LocalScoreboard;                 // +0x1c
     CActivityVector ActivityInfo;                    // +0x28
     CCharString     SessionID;                       // +0x34
-    CCharString GetSignedInUserName() { CWideString name = GetUserProfileManager()->SignedInUserName; return name.ConvertToCharString(); }
+    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return name.ConvertToCharString(); }
     CCharString CreateStringFromMyScores();
 };
 

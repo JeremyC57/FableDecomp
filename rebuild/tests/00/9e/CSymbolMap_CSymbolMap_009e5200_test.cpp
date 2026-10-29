@@ -4,7 +4,8 @@
 #include <cstring>
 #include <new>
 static int g_base = 0;
-struct CBase { CBase() { ++g_base; } virtual ~CBase() {} };
+class CBaseClassNonCopyable {
+public:  CBaseClassNonCopyable() { ++g_base; } virtual ~CBaseClassNonCopyable() {} };
 struct _Rb_tree_node_base { unsigned char _M_color; _Rb_tree_node_base* _M_parent; _Rb_tree_node_base* _M_left; _Rb_tree_node_base* _M_right; };
 template <class V> struct _Rb_tree_node : _Rb_tree_node_base { V _M_value_field; };
 template <class V> struct _Rb_tree_base {
@@ -38,7 +39,7 @@ template <class K, class V> class CVectorMap { public:
     bool                          Dirty;
     CVectorMap() : Dirty(false) {}
 };
-class CSymbolMap : public CBase { public:
+class CSymbolMap : public CBaseClassNonCopyable { public:
     CVectorMap<unsigned long, long> SLONGMap;
     set<unsigned long>              NamesUsed;
     bool                            CheckForDuplicateSymbols;

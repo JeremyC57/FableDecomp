@@ -4,7 +4,7 @@
 // @ 0x00939E70, IsAnotherGuardAdmonishingPlayer @ 0x00939D00, CheckForOtherGuardsNewWarning @ 0x00939D70, the own-warning
 // removal @ 0x00939DD0 (manifest "CheckAndRemove"), AIAction_LookAtThing @ 0x0097D6F0, AIAction_MoveToThingProximity
 // @ 0x0097E380 (its pointer argument built by the out-of-line ctor @ 0x00930D20), CAIStateGroupBase::GetPThingWorld
-// @ 0x008FCFA0 / GetPWorld @ 0x008FCFC0 / Terminate @ 0x008FCF40, GFGetCurrentFrame @ 0x0049D870,
+// @ 0x008FCFA0 / GetPWorld @ 0x008FCFC0 / Terminate @ 0x008FCF40, CWorld::GetFrame @ 0x0049D870,
 // CThingCreatureBase::PeekPos @ 0x006A4D00, CThing::PeekPos @ 0x004C73D0, CMessageEventManager::AddMessage
 // @ 0x00687540, CCreatureAction_DeclarePlayerACriminal ctor @ 0x00910C30 / dtor @ 0x00910B20, AIAction_PerformActionAndWait
 // @ 0x0097DB70.
@@ -14,7 +14,6 @@
 //         the world pointer is fetched into a local BEFORE g_FramesPerSecond is read (retail calls GetPThingWorld, then
 //         loads the global into ebx; a frames-per-second local read first puts the load ahead of the call).
 extern long g_FramesPerSecond;                  // 0x01375550
-long __fastcall GFGetCurrentFrame();             // 0x0049D870
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -58,7 +57,7 @@ class CMessageEventManager { public:
 class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* PMessageEventManager; // +0x60
-    static unsigned long GetWorldFrame() { return GFGetCurrentFrame(); }
+    static long __fastcall GetFrame();
 };
 class CCreatureActionBase { public:
     virtual void v00();
@@ -105,7 +104,7 @@ public:
     {
         const CWorld& world = PeekWorld();
         long framesPerSecond = g_FramesPerSecond;
-        return world.GetWorldFrame() - FrameOfLastWarning < (unsigned long)(framesPerSecond * 4);
+        return world.GetFrame() - FrameOfLastWarning < (unsigned long)(framesPerSecond * 4);
     }
     void Update();
 };
@@ -125,7 +124,7 @@ void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
                 bool justWarning = false;
                 if (WarningCount == 1 || WarningCount == 2)
                     justWarning = true;
-                FrameOfLastWarning = PeekWorld().GetWorldFrame();
+                FrameOfLastWarning = PeekWorld().GetFrame();
                 while (IsWithinWarningTime()) {
                     if (!IsThingAlive(PPlayer)) {
                         Terminate();

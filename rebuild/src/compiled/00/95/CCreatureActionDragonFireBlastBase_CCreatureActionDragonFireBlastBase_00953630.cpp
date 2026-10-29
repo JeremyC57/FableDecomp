@@ -7,7 +7,7 @@
 // Shape: the landed SnapDragon/DragonLand base call (implicit "SWORD_SWING" CCharString temporary, CSoundPair through
 //   the hidden pointer, string destroyed after the base); after the class vtable store the member pointer at +0x114 is
 //   addressed once in edi: out-of-line base constructor, then the inline CIntelligentPointer constructor's vtable store;
-//   the CEnginePrimitiveHandle at +0x11c (CBase::CBase @ 0x0099A2D0, vtable 0x0122F598) is re-addressed in edi the same
+//   the CEnginePrimitiveHandle at +0x11c (CBaseClass::CBaseClass @ 0x0099A2D0, vtable 0x0122F598) is re-addressed in edi the same
 //   way and its inline constructor zeroes the handle word after its vtable store.
 // No engine header exists for this class; the retail CCombatActionBase is 0x114 bytes.
 class CThingCreatureBase;
@@ -47,12 +47,13 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-namespace N_0099a2d0 { struct CBase {                              // engine root object: vtable only
+class CBaseClass {
+public:                               // engine root object: vtable only
     virtual void v00();
-    CBase();                                // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                // 0x0099A2D0
+};
 
-class CEnginePrimitiveHandle : public CBase { public:     // vtable 0x0122F598; 8 bytes
+class CEnginePrimitiveHandle : public CBaseClass { public:     // vtable 0x0122F598; 8 bytes
     long m_id;                              // +4, zero = no primitive
     virtual void v00();
     CEnginePrimitiveHandle() : m_id(0) { }

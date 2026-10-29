@@ -2,7 +2,7 @@
 // Leaf: SetCurrentAreaName
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00639BA0, 658 bytes, `ret 14h` (the CWideString overload 0x00639A90 is landed).
 // Callees: CCharString::operator!=(const char*) const 0x0099E960 (catalog "CCharString::NotEqual"), CWideString() 0x0099AED0
-//   (catalog "CCharString" -- the known CWideString/CCharString default ctor name conflict), CRC32 Calc 0x004014A0 (fastcall),
+//   (catalog "CCharString" -- the known CWideString/CCharString default ctor name conflict), CRC32 CCRC::Calc 0x004014A0 (fastcall),
 //   CDataBank::LookupValue 0x009CC410, CBankFile::GetEntryDataType 0x009CC210, NGameText::CDataBank::GetPGroupEntry
 //   0x009C9070 (the text entry), CDataBank::GetPGroupEntry 0x009C8890 (the group), the entry's text getter 0x009C7A40,
 //   CCharString::ToWideString 0x0099E480, CWideString::operator=(const CWideString&) 0x0099B7D0, operator=(const wchar_t*)
@@ -48,7 +48,7 @@ class CWideString { public:
         return true;
     }
 };
-unsigned long __fastcall CRC32_Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
 
 struct CCounted {
     virtual void v00();
@@ -108,7 +108,7 @@ extern CWorldGlobal* g_pWorld;                              // 0x013B86A0
 
 class CThing;
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
 };
 class CTCBase { public:
     virtual void v00();
@@ -138,7 +138,7 @@ void CTCRegionDisplay::SetCurrentAreaName(const CCharString& tag, float displayT
         CWideString text;
         {
             CDataBank* bank = g_pWorld->PDataBank;
-            unsigned long id = bank->LookupValue(CRC32_Calc(0, tag.GetData(), tag.GetLength()));
+            unsigned long id = bank->LookupValue(CCRC::Calc(0, tag.GetData(), tag.GetLength()));
             if (id > 0) {
                 if (bank->GetEntryDataType(id) == 0)
                     text = bank->GetPTextEntry(id, true)->GetText();
@@ -153,7 +153,7 @@ void CTCRegionDisplay::SetCurrentAreaName(const CCharString& tag, float displayT
             return;
         CurrentAreaName = text;
         CurrentAreaNameExtra = L"";
-        FrameNameChanged = GetWorld().GetWorldFrame();
+        FrameNameChanged = GetWorld().GetFrame();
         LastAlpha = 0;
     } else {
         CurrentAreaName = L"";

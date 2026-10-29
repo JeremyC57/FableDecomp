@@ -1,7 +1,7 @@
 // CQ_HangingTreeGoodScript::CQ_HangingTreeGoodScript(void* owner, CGameScriptInterface* game) -- quest-script constructor: script base, owner/interface pair, vtable 0x012D260C, four empty CScriptThing handles, two empty strings and five empty vectors
 // Leaf: ??0CQ_HangingTreeGoodScript
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D6EF20, length 246 bytes, `ret 8`.
-// Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBase::CBase @ 0x0099A2D0 (the CScriptThing root, x4; CScriptThing
+// Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing root, x4; CScriptThing
 // vtable 0x01238C8C), CCharString::CCharString() @ 0x0099E4B0 (x2).
 // Layout: Ego_r.pdb CQ_HangingTreeGoodScript - 0x14 (retail STLport vectors are 12 bytes): bools +0x48..+0x59,
 // HTG_State +0x5c, CurrentWayPoint +0x60, CurrentGuards +0x64, Leader +0x68, Prisoner +0x74, PartySpawnPoint +0x80,
@@ -27,10 +27,11 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
     CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
 };
 
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                         // 0x0099A2D0
-    virtual ~CBase();                                // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                         // 0x0099A2D0
+    virtual ~CBaseClass();                                // 0x0099A2E0
+};
 
 class CScriptThing;
 class CCPPointerInfo;
@@ -41,7 +42,7 @@ struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
 
-class CScriptThing : public CBase { public:                        // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                        // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;               // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();

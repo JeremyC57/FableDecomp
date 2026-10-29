@@ -6,7 +6,7 @@
 //   CPlayerGui::GetPHeroInfoScreensManager 0x00437CD0 (g_pPlayerGui 0x013B8790) + 0x0066E799, memmove 0x00BFEAE6, free 0x00BFEA14,
 //   the HUD owner slots 56/76 (g_pMainGameComponent +0x28 -> +0x2C), menu close 0x0041D165, CTCInventoryBase::CloseInventory
 //   0x005BD597, CEnginePrimitiveHandle::Clear 0x0041BE70 + vector erase 0x00440D70, quest-card operator= 0x006255B0 and
-//   __destroy_aux 0x005C2A8E (`__fastcall`), CTCBase::GetWorld 0x00686A70, GetWorldFrame 0x0049D870.
+//   __destroy_aux 0x005C2A8E (`__fastcall`), CTCBase::GetWorld 0x00686A70, CWorld::GetFrame 0x0049D870.
 // Shape: the sound / front-end block is the landed CTCInventoryTrade::CloseInventoryPC (0x0059E2C7) form; Components.clear()
 //   and the node-list clear are the inline STLport bodies (memmove copy, free per node); the quest-card vector is cleared twice
 //   through the inline STLport erase (counted copy loop, then __destroy_aux with an uninitialised __false_type tag); the
@@ -182,8 +182,9 @@ class CUserProfileManager { public:
 class CWorld { public:
     unsigned char _pad00[0x8c];
     long InventoryClosedFrame;                       // +0x8c
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
-long __fastcall GetWorldFrame();                     // 0x0049D870
 void __fastcall CloseMenus();                        // 0x0041D165
 namespace NHeroInformationScreens {
 class CManager { public: void SetScreen(long screen);        // 0x0066E799 (name unproven)
@@ -258,5 +259,5 @@ void CTCInventoryQuests::CloseInventoryPC()
     QuestCards.clear();
     g_pMainGameComponent->World->Hud->SetEnabled(true);
     CWorld* world = (&GetWorld());
-    world->InventoryClosedFrame = GetWorldFrame();
+    world->InventoryClosedFrame = CWorld::GetFrame();
 }

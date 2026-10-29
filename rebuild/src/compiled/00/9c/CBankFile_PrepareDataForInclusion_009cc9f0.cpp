@@ -1,7 +1,7 @@
 // CBankFile::PrepareDataForInclusion(long, const CCountedPointer<CCharString>& source, long, CCountedPointer<CBankEntryInfo> entry, CDataWriter* writer, long) -- open the source file named by `source` read-only on a local CDiskFileWin32, read its whole length into a zeroed byte array, hand the bytes to the writer, close the file (the by-value entry pointer is released on exit)
 // Leaf: ?PrepareDataForInclusion@CBankFile
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009CC9F0, length 302 bytes (`ret 1Ch`: seven argument words).
-// Callees: CBase ctor 0x0099A2F0 / virtual dtor 0x0099A300, CWideString() 0x0099AED0 / ~ 0x0099B510, CCharString::
+// Callees: CBaseClassNonCopyable ctor 0x0099A2F0 / virtual dtor 0x0099A300, CWideString() 0x0099AED0 / ~ 0x0099B510, CCharString::
 //          ToWideString 0x0099E480 (result homed in the dead `source` argument slot), CDiskFileWin32::Open 0x0099A6A0 /
 //          Read 0x0099A960 / Close 0x0099A920 (direct calls on the local), malloc 0x00BFEA0E / free 0x00BFEA14 (the byte
 //          array), the writer's virtual slot 4 (+0x10, Write(data, size)), operator delete 0x00BFE9BC (count block).
@@ -28,11 +28,12 @@ class CCharString { public:
     CWideString ToWideString() const;                  // 0x0099E480
 };
 class CASuspendableProcess;
-namespace N_0099a300 { struct CBase {                                         // the polymorphic root (vptr at +0)
-    CBase();                                           // 0x0099A2F0
-    virtual ~CBase();                                  // 0x0099A300
-}; } using N_0099a300::CBase;
-class CDiskFileWin32 : public CBase { public:                        // vtable 0x0122D06C
+class CBaseClassNonCopyable {
+protected:                                          // the polymorphic root (vptr at +0)
+    CBaseClassNonCopyable();                                           // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();                                  // 0x0099A300
+};
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                        // vtable 0x0122D06C
     long        AccessType;                            // +0x04
     long        Position;                              // +0x08
     long        Length;                                // +0x0c

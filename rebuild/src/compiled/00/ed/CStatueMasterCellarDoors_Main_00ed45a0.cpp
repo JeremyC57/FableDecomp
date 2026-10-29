@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED45A0, length 459 bytes (padded to 464).
 // Callees: CV_StatueMasterScript::GetStatuePointingPosition @ 0x00ED4420; IsDone @ 0x00F35B30 (on `this`, as the landed
 //   CStatueMasterChest::Main 0x00ED4830); CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0;
-//   CBase::~CBase @ 0x0099A2E0 and operator delete @ 0x00BFE9BC (the inlined ~CScriptThing); CScriptThing slots 20
+//   CBaseClass::~CBaseClass @ 0x0099A2E0 and operator delete @ 0x00BFE9BC (the inlined ~CScriptThing); CScriptThing slots 20
 //   MsgIsUsedBy (+0x50) and 75 IsAlive (+0x12c); the game interface's slots 7 NewScriptFrame (+0x1c), 40
 //   MsgIsGameInfoClickedPast (+0xa0), 72 GetThingWithScriptName (+0x120), 115 DisplayGameInfo (+0x1cc), 518
 //   EntitySetAsLocked (+0x818).
@@ -17,15 +17,16 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
 };
 struct SScriptThingInfo {                                   // the counted block behind CScriptThing::PImp_Info
     long m_references;                                      // +0
     void (__fastcall* m_pfnDestroy)(void*);                 // +4
     void* m_pObject;                                        // +8
 };
-class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                               // vtable 0x01238C8C, 12 bytes
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();

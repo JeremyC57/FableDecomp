@@ -1,14 +1,14 @@
 #include <cstdio>
 static long g_time = 0;
 static int g_calcs = 0;
-class CWorld { public: static long GetWorldFrame() { return g_time; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_time; } };
 class CTCShopKeeper { public:
     bool m_areOtherPeopleInShop; long m_lastCheckTime; bool m_next;
     bool CalcAreOtherPeopleInShop() { ++g_calcs; return m_next; }
     bool GetAreOtherPeopleInShop(bool force)
     {
-        if (force || CWorld::GetWorldFrame() - m_lastCheckTime > 15) {
-            m_lastCheckTime = CWorld::GetWorldFrame();
+        if (force || CWorld::GetFrame() - m_lastCheckTime > 15) {
+            m_lastCheckTime = CWorld::GetFrame();
             m_areOtherPeopleInShop = CalcAreOtherPeopleInShop();
         }
         return m_areOtherPeopleInShop;

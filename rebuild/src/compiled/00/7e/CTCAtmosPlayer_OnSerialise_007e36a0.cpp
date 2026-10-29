@@ -21,10 +21,10 @@ class CDefString { public:                                     // 4-byte def-nam
     CDefString();
 };
 class CDefinitionManager { public:
-    static CDefinitionManager& __fastcall Get();        // 0x0044C6B0
     CDefString GetDefNameFromGlobalIndex(long index);   // 0x009ACCC0
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
@@ -46,11 +46,11 @@ public:
 void CTCAtmosPlayer::OnSerialise(CPersistContext& context, bool)
 {
     if (context.IsSaving()) {
-        CDefString name = CDefinitionManager::Get().GetDefNameFromGlobalIndex(AtmosDefIndex);
+        CDefString name = CGameDefinitionManager::Get().GetDefNameFromGlobalIndex(AtmosDefIndex);
         context.Transfer_007e39d0("AtmosName", name.m_tablePos, -1);
     } else {
         CCharString name;
         context.Transfer("AtmosName", name, EmptyString());
-        AtmosDefIndex = CDefinitionManager::Get().GetDefGlobalIndexFromName(name);
+        AtmosDefIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(name);
     }
 }

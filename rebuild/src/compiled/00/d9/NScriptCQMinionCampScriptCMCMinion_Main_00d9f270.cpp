@@ -4,7 +4,7 @@
 // Leaf: ?Main@CMC_Minion@CQ_MinionCampScript@NScript
 // Retail: Fable.exe @ 0x00D9F270, 823 bytes (+ int3 padding), plain `ret`.
 // Callees: CIsThingConscious predicate (vtable 0x012C2FE8, CScriptThing copy 0x004ABE90, out-of-line ~CScriptThing
-//   0x004AA840), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBase ctor 0x0099A2D0 / dtor 0x0099A2E0,
+//   0x004AA840), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseClass ctor 0x0099A2D0 / dtor 0x0099A2E0,
 //   CScriptThing::operator= 0x008AB980 (out-of-line copy), rand 0x00BFEB16, operator delete 0x00BFE9BC, CCharString
 //   0x0099EBF0 / 0x0099EAE0; GameCalls slots 7 NewScriptFrame, 70 GetHero, 72 GetThingWithScriptName, 451
 //   GiveThingBestEnemyTarget; CScriptThing slots 21 MsgIsHitBy, 41 MsgIsHitBySpecialAbilityFrom, 42
@@ -83,11 +83,12 @@ struct CScriptThingImpl {
     virtual void v072(); virtual void v073(); virtual void v074(); virtual void v075(); virtual void v076(); virtual void v077();
     virtual bool IsSameThing(const CScriptThingImpl* other) const;   // slot 78 (+0x138)
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CBaseClass {
+public:
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
+};
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
      virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
     virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
     virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();

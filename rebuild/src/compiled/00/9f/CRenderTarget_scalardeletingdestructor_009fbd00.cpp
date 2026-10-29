@@ -4,11 +4,11 @@
 // Leaf: ??_GCRenderTarget
 // Retail bytes:  push esi ; mov esi,ecx ; lea ecx,[esi+14h] ; mov dword ptr [ecx],offset CSurface::`vftable' ; call CSurface::Uninitialise ;
 //                lea ecx,[esi+4] ; mov dword ptr [ecx],offset CSurface::`vftable' ; call CSurface::Uninitialise ; mov ecx,esi ;
-//                call CBase::~CBase ; test byte ptr [esp+8],1 ; je K ; push esi ; call operator delete ; add esp,4 ; K: mov eax,esi ;
+//                call CBaseClass::~CBaseClass ; test byte ptr [esp+8],1 ; je K ; push esi ; call operator delete ; add esp,4 ; K: mov eax,esi ;
 //                pop esi ; ret 4
 // Manifest label says `vector deleting destructor'; the body only tests flag bit 0, so it is the scalar one.
 // Model from the landed CRenderTarget constructor 0x009F9CD0: CBase root, two embedded CSurface members (vtable
-// 0x0122F84C) at +4 (colour) and +0x14 (depth). Callees: CSurface::Uninitialise @ 0x009F2E20, CBase::~CBase @ 0x0099A2E0,
+// 0x0122F84C) at +4 (colour) and +0x14 (depth). Callees: CSurface::Uninitialise @ 0x009F2E20, CBaseClass::~CBaseClass @ 0x0099A2E0,
 // operator delete @ 0x00BFE9BC.
 // Shape: no CRenderTarget vtable store in retail (the implicit destructor resets no vptr), while CSurface's user-written inline destructor stores its vtable
 // before calling Uninitialise. A user-declared empty destructor stores the CRenderTarget vptr (66v60); the implicit one
@@ -17,9 +17,10 @@
 // makes the implicit destructor inlinable there; neither helper is part of the retail body.
 void __cdecl operator delete(void* block);          // 0x00BFE9BC
 
-struct CBase {
-    CBase();                                    // 0x0099A2D0
-    virtual ~CBase();                           // 0x0099A2E0
+class CBaseClass {
+public:
+    CBaseClass();                                    // 0x0099A2D0
+    virtual ~CBaseClass();                           // 0x0099A2E0
 };
 
 struct IDirect3DSurface9;
@@ -36,7 +37,7 @@ class CSurface { public:                               // vtable 0x0122F84C, 0x1
     ~CSurface() { Uninitialise(); }
 };
 
-class CRenderTarget : public CBase { public:                  // vtable 0x0129C800
+class CRenderTarget : public CBaseClass { public:                  // vtable 0x0129C800
     CSurface m_colour;                          // +0x04
     CSurface m_depth;                           // +0x14
 };

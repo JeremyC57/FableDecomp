@@ -10,7 +10,7 @@ static int fails = 0;
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00816150, 406 bytes, ret 8.
 // Callees: CBasicString<char>::operator==(const char*) 0x004115A0, CCharString(const char*, long) 0x0099EBF0, ~CCharString
 //   0x0099EAE0, CStringParser ctor 0x00404720, CPersistTraits<CDefString>::TransferIn 0x007E3820, CPersistTraits<float>::TransferIn
-//   0x0040F7E0, CStringParser::SkipPastNextItemIfIs 0x009B9E00, comment-list dtor 0x004046B0, CBase::~CBase 0x0099A2E0.
+//   0x0040F7E0, CStringParser::SkipPastNextItemIfIs 0x009B9E00, comment-list dtor 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0.
 // Shape: CPersistTraits<T> is an EMPTY class (landed 0x005DCA60); its temporaries sit on the dead `text` argument slot together
 //   with the parsed float. One function-scope `float value` declared after the first ',' test receives both floats, so the
 //   second ',' marker cannot reuse its word and takes the dead `context` slot as retail. The float TransferIn instantiation is
@@ -47,9 +47,10 @@ public:
     }
 };
 class CPersistContext;
-struct CBase { virtual ~CBase(); };             // dtor 0x0099A2E0
+class CBaseClass {
+public:  virtual ~CBaseClass(); };             // dtor 0x0099A2E0
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); };   // 0x004046B0
-class CStringParser : public CBase { public:
+class CStringParser : public CBaseClass { public:
     char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
     CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
     CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);   // 0x00404720
@@ -124,7 +125,7 @@ CCharString::~CCharString()
     if (PStringData) { free(PStringData->Data.PData); free(PStringData); }
 }
 bool CBasicStringChar::operator==(const char* text) const { return strcmp(PData, text) == 0; }
-CBase::~CBase() {}
+CBaseClass::~CBaseClass() {}
 CStringParserCommentList::~CStringParserCommentList() {}
 CStringParser::CStringParser(const CCharString& text, void (*cb)(CCharString*), const CCharString& file, long mode)
     : Filename("", -1), TempCharString("", -1)

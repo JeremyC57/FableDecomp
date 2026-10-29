@@ -7,9 +7,10 @@
 
 static int gBaseCtors = 0;
 
-class CBase { public: CBase() { ++gBaseCtors; } virtual ~CBase() {} };
+class CBaseClass {
+public:  CBaseClass() { ++gBaseCtors; } virtual ~CBaseClass() {} };
 
-class CConsoleCommandLine : public CBase
+class CConsoleCommandLine : public CBaseClass
 {
 public:
     const char* CurrentEntry;

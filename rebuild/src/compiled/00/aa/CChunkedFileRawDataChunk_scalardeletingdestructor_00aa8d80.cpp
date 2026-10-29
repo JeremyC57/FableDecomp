@@ -1,7 +1,7 @@
-// CChunkedFileRawDataChunk::`scalar deleting destructor'(unsigned int) -- stores the CChunkedFileRawDataChunk vtable, delete[]s the raw data block (+0x10), the inlined CChunkedFileChunk destructor stores its vtable, then CBase::~CBase and a free on bit 0
+// CChunkedFileRawDataChunk::`scalar deleting destructor'(unsigned int) -- stores the CChunkedFileRawDataChunk vtable, delete[]s the raw data block (+0x10), the inlined CChunkedFileChunk destructor stores its vtable, then CBaseClassNonCopyable::~CBaseClassNonCopyable and a free on bit 0
 // Leaf: ??_GCChunkedFileRawDataChunk
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AA8D80, length 56 bytes (vtable 0x0129E4B8 slot 0).
-// Callees: operator delete[] @ 0x00BFEB1C, CBase::~CBase @ 0x0099A300, operator delete @ 0x00BFE9BC.
+// Callees: operator delete[] @ 0x00BFEB1C, CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300, operator delete @ 0x00BFE9BC.
 // The catalog label "CThingTrackNode::vector_deleting_destructor" is propagated: the only reference is
 // slot 0 of the CChunkedFileRawDataChunk vtable 0x0129E4B8.
 // Layout: engine/CChunkedFileRawDataChunk.h (vptr, opaque +0x04..+0x0f, Data +0x10, ByteSize +0x14); the
@@ -10,12 +10,13 @@
 // destructors); the data word is loaded and pushed before the vtable store. The intermediate
 // CChunkedFileChunk (vtable 0x0129E474) has an inline empty destructor (its vtable store follows).
 void __cdecl operator delete[](void* block);   // MSVCR71 import thunk 0x00BFEB1C (the lane <new> lacks it)
-namespace N_0099a300 { struct CBase {                                     // root polymorphic base
-    CBase();
-    virtual ~CBase();                              // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:                                      // root polymorphic base
+    CBaseClassNonCopyable();
+    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
+};
 
-class CChunkedFileChunk : public CBase { public:                 // vtable 0x0129E474
+class CChunkedFileChunk : public CBaseClassNonCopyable { public:                 // vtable 0x0129E474
     unsigned char _pad_0x04[0x0c];                 // +0x04
     CChunkedFileChunk() { }
     virtual ~CChunkedFileChunk() { }

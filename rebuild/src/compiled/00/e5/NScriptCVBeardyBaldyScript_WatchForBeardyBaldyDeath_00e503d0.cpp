@@ -1,6 +1,6 @@
 // CV_BeardyBaldyScript::WatchForBeardyBaldyDeath() -- look up BB_BeardyBaldyMan, wait until he has been killed (by anyone), then (unless the thread is terminating) record BeardyBaldyKilled
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E503D0, length 232 bytes (240 with padding).
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CBase::~CBase
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, CBaseClass::~CBaseClass
 // @ 0x0099A2E0, CScriptThing::~CScriptThing @ 0x004AA840 (the out-of-line copy), operator delete @ 0x00BFE9BC,
 // CScriptBase::IsActiveThreadTerminating @ 0x00CB7940 (landed); through the interface (+0x40)
 // GetThingWithScriptName (slot 72, +0x120, CScriptThing by hidden pointer) and NewScriptFrame (slot 7, +0x1c); the
@@ -20,9 +20,10 @@ class CCharString { public:
     ~CCharString();                                         // 0x0099EAE0
 };
 
-struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
-    CBase();                                                // 0x0099A2D0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
+    CBaseClass();                                                // 0x0099A2D0
 };
 
 void operator delete(void* p);                              // 0x00BFE9BC (MSVCR71)
@@ -53,7 +54,7 @@ struct CScriptThingImpl {                                   // the game-side thi
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
     virtual bool MsgIsKilledBy(const CCharString& killer);  // slot 18 (+0x48)
 };
-class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                               // vtable 0x01238C8C, 12 bytes
     CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
     CScriptThing(const CScriptThing& other);
     ~CScriptThing() {}                                      // out of line 0x004AA840

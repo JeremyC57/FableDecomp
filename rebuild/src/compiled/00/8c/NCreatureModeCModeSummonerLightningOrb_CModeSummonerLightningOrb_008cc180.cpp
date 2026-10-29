@@ -27,7 +27,7 @@ class CCharString { public:
     const char* GetPString() const { return m_pData == 0 ? "" : m_pData->m_pData; }
 };
 
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0: CRC
 
 class CAnimFilterOfGroup { public:                // vtable 0x01267568
     virtual void v00();
@@ -37,7 +37,7 @@ class CAnimFilterOfGroup { public:                // vtable 0x01267568
         : Group()
     {
         Group = group;
-        GroupCRC = Calc_004014a0(0, group.GetPString(), group.GetLength());
+        GroupCRC = CCRC::Calc(0, group.GetPString(), group.GetLength());
     }
 };
 

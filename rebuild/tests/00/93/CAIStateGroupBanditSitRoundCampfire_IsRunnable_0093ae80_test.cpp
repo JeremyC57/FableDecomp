@@ -2,7 +2,8 @@
 #include <cstdio>
 class CThing { public: unsigned long bits74; bool hasMember; void* member; unsigned char m_flags91; };
 static long g_frame = 100;
-long GFGetCurrentFrame() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 long g_framesPerSecond = 30;
 class CTCVillage { public: bool curfew; bool IsCurfewTime() { return curfew; } };
 class CTCVillageMember { public: CTCVillage* village; CTCVillage* GetVillage() { return village; } };
@@ -50,7 +51,7 @@ struct CAIStateGroup_BanditSitRoundCampfire {
 };
 bool CAIStateGroup_BanditSitRoundCampfire::IsRunnable()
 {
-    if (FrameToNextCheckIsRunnable > (unsigned long)GFGetCurrentFrame())
+    if (FrameToNextCheckIsRunnable > (unsigned long)CWorld::GetFrame())
         return false;
     CThingT* creature = (CThingT*)PBrain->PCreature;
     if (!creature->HasTC(0x4a))
@@ -68,7 +69,7 @@ bool CAIStateGroup_BanditSitRoundCampfire::IsRunnable()
     bool alive = IS_THING_ALIVE(PCampfire);
     if (!alive) {
         long framesPerSecond = g_framesPerSecond;
-        FrameToNextCheckIsRunnable = GFGetCurrentFrame() + framesPerSecond * 5;
+        FrameToNextCheckIsRunnable = CWorld::GetFrame() + framesPerSecond * 5;
     }
     return alive;
 }

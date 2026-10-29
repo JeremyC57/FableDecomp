@@ -86,7 +86,7 @@ class CTCEntityEvents { public:                             // interface type 0x
     CEventList    Events;                            // +0x0c
 };
 class CWorld { public:
-    static long GetWorldFrame();                     // 0x0049D870
+    static long __fastcall GetFrame();                     // 0x0049D870
 };
 struct SKillNode {                                   // the tree node: key +0x10, value +0x14
     unsigned char _base[0x10];
@@ -140,7 +140,7 @@ void CTCInventoryStats::FrameUpdate()
 {
     CTCEntityEvents* events;
     if (ParentThing->GetInterface(&events, 0x42)) {
-        long frame = CWorld::GetWorldFrame();
+        long frame = CWorld::GetFrame();
         for (SEventNode* it = events->Events.begin(); it != events->Events.end(); it = it->_M_next) {
             CEntityEvent* event = it->_M_data;
             if (event->GetType() == ENTITY_EVENT_CREATURE_KILLED && event->Frame == frame - 1) {
@@ -168,7 +168,7 @@ bool CPresenceBits::test(long bit) { return bit == 0x42 && g_hasEvents; }
 void CEntityEvent::v00() {}
 long CEntityEvent::GetType() { return 0; }
 struct CEvent : CEntityEvent { long type; long GetType() { return type; } };
-long CWorld::GetWorldFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 static SKillNode g_nodes[8]; static int g_nNodes = 0; static unsigned long g_insKey = 0; static long g_insVal = 0; static int g_inserts = 0;
 SKillNode* InsertKillNode(CKillMap* map, unsigned long key, long value, bool* inserted)
 {

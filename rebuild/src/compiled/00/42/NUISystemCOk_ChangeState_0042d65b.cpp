@@ -52,7 +52,7 @@ public:
 
 class CManager : public CObservable {
 public:
-    static CManager* GetInstance();            // 0x0041E5F2
+    static CManager* __fastcall GetInstance();            // 0x0041E5F2
 };
 
 class CComponentRoot {                         // primary base: vptr only

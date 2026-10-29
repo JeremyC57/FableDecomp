@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008A7D60, length 149 bytes (padded to 160).
 // Callees: CCharString copy constructor @ 0x0099EC30 (into the dead name argument slot), the world's (+0x20) script-name
 //          search @ 0x005ED860 (manifest "GetAllThings<...>" is propagated), CCharString::~CCharString @ 0x0099EAE0,
-//          CBase::CBase @ 0x0099A2D0, CThing::GetScriptThing @ 0x004C7E50, free @ 0x00BFEA14 (the vector storage).
+//          CBaseClass::CBaseClass @ 0x0099A2D0, CThing::GetScriptThing @ 0x004C7E50, free @ 0x00BFEA14 (the vector storage).
 // Vtable: CScriptThing 0x01238C8C.
 // Shape: the result vector is a 12-byte frame local zeroed from the shared `xor ebx,ebx`; the name is copied into the
 // argument's own slot by a `__forceinline` helper taking the CCharString BY VALUE; the null script thing is built
@@ -16,19 +16,20 @@ class CCharString { public:                               // fable_string.h layo
 };
 class C3DVector { public: float x, y, z; };
 struct SCountBlock;
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                       // 0x0099A2D0 (out of line)
-    virtual void v00();
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0 (out of line)
+    virtual ~CBaseClass();
+};
 struct CScriptThingImp;
 struct CScriptThingPImp {                          // the counted pointer member: an inline constructor zeroes both words after the vtable store
     CScriptThingImp* Data;                         // +4
     SCountBlock*     Info;                         // +8
     CScriptThingPImp() : Data(0), Info(0) {}
 };
-class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C (rtti-vtables.tsv)
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C (rtti-vtables.tsv)
     CScriptThingPImp PImp;
-    CScriptThing() {}                              // inline: CBase::CBase, the vtable, two zero words
+    CScriptThing() {}                              // inline: CBaseClass::CBaseClass, the vtable, two zero words
 };
 struct CThing_Retail {
     unsigned char  _pad00[0x74];

@@ -5,16 +5,17 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_baseCtor = 0, g_copyCtor = 0;
-namespace N_0099a2d0 { struct CBase {
-    CBase() { ++g_baseCtor; }
+class CBaseClass {
+public:
+    CBaseClass() { ++g_baseCtor; }
     virtual void v00() {}
-}; } using N_0099a2d0::CBase;
+};
 struct CScriptThingRef {
     void* m_pObject;
     void* m_pCount;
     CScriptThingRef() : m_pObject(0), m_pCount(0) { }
 };
-class CScriptThing : public CBase { public:
+class CScriptThing : public CBaseClass { public:
     CScriptThingRef m_ref;
     virtual void v00() {}
     CScriptThing() { }

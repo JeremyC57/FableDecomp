@@ -13,9 +13,10 @@
 // StartHandedness +8 and EndHandedness +0xc, while the local virtual model supplies slots.
 class CPersistContext;
 class CCharString { public: void* m_pData; CCharString(const char*, long); ~CCharString(); };
-struct CBase { virtual ~CBase(); };
+class CBaseClass {
+public:  virtual ~CBaseClass(); };
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); }; // retail list is one sentinel pointer (4 bytes)
-class CStringParser : public CBase { public:
+class CStringParser : public CBaseClass { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
  CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
  CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);
@@ -61,7 +62,7 @@ CCharString::~CCharString() {
  else if(m_pData && !((const char*)m_pData)[0]){if(!same("REP"))bad=true;event('F');}
  else if(m_pData && ((const char*)m_pData)[0]==',' && !((const char*)m_pData)[1]){if(!same("REPFAMS"))bad=true;event('D');}
 }
-CBase::~CBase(){if(this!=(CBase*)gParser)bad=true;event('Z');}
+CBaseClass::~CBaseClass(){if(this!=(CBaseClass*)gParser)bad=true;event('Z');}
 CStringParserCommentList::~CStringParserCommentList(){if(this!=&gParser->Comments)bad=true;event('L');}
 CStringParser::CStringParser(const CCharString& text,void(*cb)(CCharString*),const CCharString& filename,long mode)
  :String(0),BaseLineOffset(0),Filename(0,-1),TempCharString(0,-1),Comments(),ErrorCallback(cb) {

@@ -75,13 +75,14 @@ static void putf(unsigned char* p, float v) { memcpy(p, &v, 4); }
 
 class C3DVector { public: float X, Y, Z; };
 static int g_frame = 777;
-static long GFGetCurrentFrame() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 class CThing { public: u64 UniqueID; };
 struct CIntelligentPointer { CThing* item; CThing* GetPItem() const { return item; } };
 class COpinionDeed { public:
     int DeedType; int DeedHandle; C3DVector Position; int FrameHappened; CIntelligentPointer PTarget;
     bool WasSearchingForWitnesses, IsStillHappening, IsCrimeReportedToVillage, IsCrime; int ExtraData;
-    long GetFrameHappened() const { return IsStillHappening ? GFGetCurrentFrame() : FrameHappened; }
+    long GetFrameHappened() const { return IsStillHappening ? CWorld::GetFrame() : FrameHappened; }
 };
 struct COut3 : COut { void Write3DVector(const C3DVector& v) { add('v', (u64)(s64)(v.X + v.Y * 10 + v.Z * 100)); } };
 struct TraitsPtr { void TransferBinaryOut(COut3* out, const CIntelligentPointer* value)

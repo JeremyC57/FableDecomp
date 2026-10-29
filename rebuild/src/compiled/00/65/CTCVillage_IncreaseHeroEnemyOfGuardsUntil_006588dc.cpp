@@ -41,13 +41,13 @@ struct CTCVillage_Retail : public CTCBase {
 };
 
 class CWorld { public:
-    static long GetCurrentFrame();            // 0x0049D870
+    static long __fastcall GetFrame();            // 0x0049D870
 };
 
 template<class T> inline const T& MaxOf(const T& a, const T& b) { return (a < b) ? b : a; }
 
 void CTCVillage_Retail::IncreaseHeroEnemyOfGuardsUntil(long frames)
 {
-    long now = GetWorld().GetCurrentFrame();
+    long now = GetWorld().GetFrame();
     this->HeroEnemyOfGuardsUntil = MaxOf(now, this->HeroEnemyOfGuardsUntil) + frames;
 }

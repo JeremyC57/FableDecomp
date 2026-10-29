@@ -1,7 +1,7 @@
 // CTCCreatureGroupBoastingCrowd::OnHeroAttackCrowdMember() -- the hero attacked a crowd member: schedule clearing the remaining opinion sources 0.5..1 minutes ahead and, unless the crowd is already hostile (state 10), pop one pushed hero opinion source, drop the pending opinion deed from the hero's deed log, push the "hero attacked crowd" opinion source onto the hero and enter state 10
 // Leaf: OnHeroAttackCrowdMember
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007849C0, 352 bytes (`ret`).
-// Callees: CTCBase::GetPRandomSeed @ 0x00686DA0, GFFloatRandom(float, ulong*) @ 0x004978A0 (__fastcall), GFGetCurrentFrame
+// Callees: CTCBase::GetPRandomSeed @ 0x00686DA0, GFFloatRandom(float, ulong*) @ 0x004978A0 (__fastcall), CWorld::GetFrame
 // @ 0x0049D870 (__fastcall), __ftol2 @ 0x00BFEA70, CTCBase::GetWorld @ 0x00686A70, CBaseIntelligentPointer::GetPItem
 // @ 0x00A01B50, COpinionReactionManager::ClearOpinionSource(CThing*, bool) @ 0x007008C0 and AttachOpinionSource(CThing*,
 // const CCharString&, CTCOpinionSource**) @ 0x00700780, CVectorMap<ETCInterfaceType,CTCBase*>::LowerBound @ 0x0040F020
@@ -24,7 +24,6 @@ public:
 private:
     void* m_pData;
 };
-long __fastcall GFGetCurrentFrame();                                // 0x0049D870
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 extern long g_framesPerSecond;                                      // 0x01375550
 
@@ -62,6 +61,8 @@ class COpinionReactionManager { public:
 class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* OpinionReactionManager;   // +0x74
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -112,7 +113,7 @@ void CTCCreatureGroupBoastingCrowd::OnHeroAttackCrowdMember()
     {
         long framesPerSecond = g_framesPerSecond;
         float delay = (GFFloatRandom(0.5f, GetPWorldSeed()) + 0.5f) * framesPerSecond * 60.0f;
-        FrameToClearRemainingOpinionSources = (long)(GFGetCurrentFrame() + delay);
+        FrameToClearRemainingOpinionSources = (long)(CWorld::GetFrame() + delay);
     }
     if (CrowdState == 10)
         return;

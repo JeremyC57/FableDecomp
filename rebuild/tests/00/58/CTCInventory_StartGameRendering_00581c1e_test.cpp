@@ -14,7 +14,7 @@ static CGameObject* g_pGameObject = 0;
 
 class CWorld { public:
     long m_gameRenderingStartFrame;
-    static long GetWorldFrame() { return g_frame; }
+    static long __fastcall GetFrame() { return g_frame; }
 };
 static CWorld g_world;
 
@@ -27,7 +27,7 @@ void CTCInventory::StartGameRendering()
 {
     g_pGameObject->m_pDisplay->m_pRenderer->SetGameRendering(1);
     CWorld* world = GetWorld();
-    world->m_gameRenderingStartFrame = CWorld::GetWorldFrame();
+    world->m_gameRenderingStartFrame = CWorld::GetFrame();
 }
 
 int main()

@@ -19,7 +19,7 @@ class C3DVector { public:
 };
 
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 
 struct CScriptModuleBase {
@@ -48,7 +48,7 @@ CScriptModuleFullTransition::CScriptModuleFullTransition(const C3DVector& lookAt
     long count = frames ? frames : 15;
     Increment = (endPos - startPos) / (float)count;
     IncrementForLookAtPoints = (endLookAt - lookAt) / (float)count;
-    EndFrame = CWorld::GetWorldFrame() + frames;
+    EndFrame = CWorld::GetFrame() + frames;
 }
 
 }

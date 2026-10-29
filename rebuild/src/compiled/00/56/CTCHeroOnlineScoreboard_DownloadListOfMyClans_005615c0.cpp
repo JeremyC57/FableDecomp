@@ -48,8 +48,9 @@ class CUserProfileManager { public:
     unsigned char _pad[0x110];
     CWideString   SignedInUserName;                  // +0x110
     CWideString   SignedInPassword;                  // +0x114
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
-CUserProfileManager* GetUserProfileManager();        // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
 
 struct CStringAllocator { CStringAllocator() { } };
 struct LHString {                                    // PDB std::basic_string<char> (12 bytes, malloc-backed)
@@ -130,7 +131,7 @@ public:
     ENetworkSuccess ResetAndOpenHTTPAndPrepareRequest(const LHString& request, const CCharString& key, bool flag);   // 0x0055F710
     ENetworkSuccess UpdateTransaction();             // 0x0055FB80
     int GetDecryptedDocument(LHStringVector& lines, const CCharString& key);   // 0x00560BB0
-    CCharString GetSignedInUserName() { CWideString name = GetUserProfileManager()->SignedInUserName; return name.ConvertToCharString(); }
+    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return name.ConvertToCharString(); }
     __forceinline bool OpenRequest(const CCharString& request)
     {
         LHString text(request.c_str());

@@ -5,7 +5,7 @@
 //   Transfer(name, CCharString&, const CCharString&) 0x004109A0, Transfer(name, float&, const float&) 0x00410620,
 //   Transfer(name, long&, const long&) 0x00410BE0, Transfer(name, C3DVector&, const C3DVector&) 0x004859AD (labelled
 //   Transfer<CFloatRange>, a byte twin); CCharString() 0x0099E4B0, CCharString(const CCharString&) 0x0099EC30,
-//   ~CCharString 0x0099EAE0; CRC Calc(seed, data, length) 0x004014A0; CArray<C3DVector>::resize 0x0075C040.
+//   ~CCharString 0x0099EAE0; CRC CCRC::Calc(seed, data, length) 0x004014A0; CArray<C3DVector>::resize 0x0075C040.
 // Data: names "AttractorEnabled" .. "AttractorUserPointsArray" 0x012A060C..0x012A052C, empty string 0x0129AAF4.
 // Layout: PDB (Ego_r) CPSCAttractor, retail offsets equal the PDB (the point CArray is a 12-byte STLport vector):
 //   flag bits +0x0c, AttractorInfluenceFallOff +0x10, AttractorPositionParam +0x14, AttractorPositionParamName +0x18,
@@ -34,7 +34,7 @@ static inline CCharString EmptyCCharString()
     CCharString empty;
     return empty;
 }
-unsigned long __fastcall CRCCalc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
 inline unsigned long GetCRC(const CCharString& s)
 {
     const char* data;
@@ -46,7 +46,7 @@ inline unsigned long GetCRC(const CCharString& s)
         length = s.PStringData->Length;
         data = s.PStringData->Data;
     }
-    return CRCCalc(0, data, length);
+    return CCRC::Calc(0, data, length);
 }
 
 class CPersistContext { public:

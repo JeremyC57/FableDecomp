@@ -41,7 +41,8 @@ struct CAIStateGroup_BanditPlayDice {
     EAIActionReturn Act();
 };
 static float GFFloatRandom(float range, unsigned long*) { return g_floatRandom * range; }
-static long GetWorldFrame() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 
 EAIActionReturn CAIStateGroup_BanditPlayDice::Act()
 {
@@ -49,8 +50,8 @@ EAIActionReturn CAIStateGroup_BanditPlayDice::Act()
     if (result != AI_ACTION_DONE)
         return result;
     unsigned long wait = Random(300);
-    long endFrame = GetWorldFrame() + wait + 375;
-    while (GetWorldFrame() < endFrame) {
+    long endFrame = CWorld::GetFrame() + wait + 375;
+    while (CWorld::GetFrame() < endFrame) {
         if (DiceGame->NumberOfPlayers >= 2 && !DiceGame->CurrentPlayer.GetPItem()
             && GFFloatRandom(1.0f, GetPWorldSeed()) < 0.2f) {
             CThing* player = GetCreature();

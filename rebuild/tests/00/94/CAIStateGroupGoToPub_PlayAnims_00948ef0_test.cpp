@@ -14,7 +14,7 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
 class CAIBrain { public: CThingCreatureBase* PCreature; CThingCreatureBase* GetPCreature() const { return PCreature; } };
 static long g_framesPerSecond = 30;
 static long g_frames[32]; static int g_fi;
-class CWorld { public: static long GetWorldFrame() { return g_frames[g_fi++]; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frames[g_fi++]; } };
 
 static int g_seq[32], g_n, g_results[32], g_waitless;
 
@@ -35,8 +35,8 @@ bool CAIStateGroup_GoToPub::PlayAnims(const CCharString& intoAnim, const CCharSt
     if (failed)
         return false;
     long fps = g_framesPerSecond;
-    float endFrame = (float)CWorld::GetWorldFrame() + fps * seconds;
-    while ((float)CWorld::GetWorldFrame() > endFrame) {
+    float endFrame = (float)CWorld::GetFrame() + fps * seconds;
+    while ((float)CWorld::GetFrame() > endFrame) {
         if (game && game->IsBeingPlayed)
             return true;
         CCreatureAction_PlayAnimation loop(PBrain->GetPCreature(), loopAnim, CSoundPair(), false, true, false, 0, 0);

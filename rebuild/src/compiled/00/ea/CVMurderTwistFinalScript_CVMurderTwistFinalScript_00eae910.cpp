@@ -2,7 +2,7 @@
 // Leaf: ??0CV_MurderTwistFinalScript
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EAE910, length 107 bytes (padded to 112), `ret 8`.
 // Factory 0x00EB6A60 (`push 88h`, this ctor) is registered at 0x00CD9094 under "S_VMTF" / "V_MurderTwistFinal".
-// Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBase::CBase @ 0x0099A2D0 (CScriptThing root, vtable 0x01238C8C),
+// Callees: CScriptBase::CScriptBase @ 0x00CB8110, CBaseClass::CBaseClass @ 0x0099A2D0 (CScriptThing root, vtable 0x01238C8C),
 // CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x0099A380.
 // Layout (retail = Ego_r.pdb - 0x14, then -0x18 after the 12-byte Guards vector): SheriffState +0x48,
 // AssassinState +0x4c, TaskDeclined +0x50, PreemptiveAttackInProgress +0x51, Sheriff +0x54, Guards +0x60,
@@ -65,10 +65,11 @@ template <class T> struct _Vector_base {
 template <class T> struct CRetailVector : _Vector_base<T> {   // STLport vector<T>: three pointers (12 bytes in retail)
     CRetailVector() : _Vector_base<T>(allocator<T>()) { }
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();                              // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
+};
 struct CScriptThingImp;
 class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {              // CScriptThing::PImp
@@ -76,7 +77,7 @@ struct CCountedPointer_CScriptThing {              // CScriptThing::PImp
     CCPPointerInfo*  Info;                         // +4
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
-class CScriptThing : public CBase { public:                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     CCountedPointer_CScriptThing PImp;             // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();

@@ -8,7 +8,7 @@
 extern long g_GameFramesPerSecond;                  // 0x01375550
 
 class CWorld { public:
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 
 class CNymphDef { public:
@@ -31,6 +31,6 @@ class CTCNymph : public CTCBase_0080f210 { public:
 void CTCNymph::CheckIfCanAttack(unsigned long lastTargetTick)
 {
     long framesPerSecond = g_GameFramesPerSecond;
-    if ((long)(CWorld::GetWorldFrame() - lastTargetTick) * framesPerSecond > PDef->FlyAroundTime)
+    if ((long)(CWorld::GetFrame() - lastTargetTick) * framesPerSecond > PDef->FlyAroundTime)
         CanAttack = true;
 }

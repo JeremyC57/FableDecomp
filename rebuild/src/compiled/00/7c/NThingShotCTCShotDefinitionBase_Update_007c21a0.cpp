@@ -14,7 +14,7 @@
 // Shape: `v.erase(remove(v.begin(), v.end(), CPtr(0)), v.end())` (erase's end() read first); the collision flag and the
 //          iterator tag share a frame byte; the world frame comes from the static GetWorldFrame through GetWorld().
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CTCPhysicsBase { public:
     void SetAsMoving(bool moving);              // 0x006B0130
@@ -119,7 +119,7 @@ void CTCShotDefinitionBase::Update()
         if (collided)
             return;
     }
-    long frame = GetWorld().GetWorldFrame();
+    long frame = GetWorld().GetFrame();
     if (PShotDef->NumSubShots > 0 && !SubShotsTriggered
         && (float)(frame - StartFrame) / g_framesPerSecond >= PShotDef->SubShotDelay) {
         TriggerSubShots();

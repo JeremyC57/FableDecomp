@@ -1,14 +1,14 @@
 #include <cstdio>
 // Behaviour model of CReactionFrequencyTraits_PeriodicFrequency::CalculateWeight @ 0x006FFB10 (copy of the source logic).
 static unsigned int g_frame = 0;
-class CWorld { public: static unsigned int GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static const float& Clamp(const float& v, const float& lo, const float& hi) { if (v < lo) return lo; if (v > hi) return hi; return v; }
 struct CReactionFrequencyTraits_PeriodicFrequency {
     float LowFreqPerMin, HighLowFreqInterval;
     unsigned int FramesPerMinute, LastCutoffFrame, RampUpTimeFrames, CutoffIntervalFrames, LastHappenedFrame;
     float CalculateWeight(const void*)
     {
-        unsigned int frame = CWorld::GetWorldFrame();
+        unsigned int frame = CWorld::GetFrame();
         if (frame - LastCutoffFrame > CutoffIntervalFrames)
             LastCutoffFrame += CutoffIntervalFrames;
         float ramp = Clamp((float)(frame - LastCutoffFrame) / (float)RampUpTimeFrames, 0.0f, 1.0f);

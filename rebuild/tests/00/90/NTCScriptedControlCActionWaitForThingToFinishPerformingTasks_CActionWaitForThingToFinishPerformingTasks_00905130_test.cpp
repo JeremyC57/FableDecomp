@@ -2,13 +2,14 @@
 #include <cstring>
 #include <new>
 
-struct CBase { virtual ~CBase() {} CBase() {} };
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() {} CBaseClassNonCopyable() {} };
 class CScriptThing { public:
     long m_id;
     CScriptThing(long id) : m_id(id) {}
     CScriptThing MakeScriptThing() const { return CScriptThing(m_id * 10); }   // stands in for the manager call
 };
-struct CActionBase : CBase { long m_actionState; bool m_started; bool m_finished;
+struct CActionBase : CBaseClassNonCopyable { long m_actionState; bool m_started; bool m_finished;
     CActionBase() : m_actionState(0), m_started(false), m_finished(false) {} };
 struct CActionWait : CActionBase { CScriptThing m_thing;
     CActionWait(const CScriptThing& thing) : m_thing(thing.MakeScriptThing()) {} };

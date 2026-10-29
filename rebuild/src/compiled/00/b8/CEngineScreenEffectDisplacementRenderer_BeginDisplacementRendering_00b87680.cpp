@@ -2,7 +2,7 @@
 // Leaf: BeginDisplacementRendering
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B87680, length 496 bytes (body 0x1e6), plain `ret`.
 // Callees: as the landed sibling BeginOutlineRendering 0x00B89A20 (texture pool get 0x00F36EE0, CRenderTarget ctor
-//   0x00A10DC0, CSurface::operator=/Uninitialise 0x009F2E70/0x009F2E20, CBase 0x0099A2D0/0x0099A2E0, top surface
+//   0x00A10DC0, CSurface::operator=/Uninitialise 0x009F2E70/0x009F2E20, CBaseClass 0x0099A2D0/0x0099A2E0, top surface
 //   0x009F9E00, AttachTarget 0x00A10E60, SetRenderTarget 0x009BF160, the core clear 0x009D8CF0 on the global @ 0x01436E18).
 // Layout: engine/CEngineScreenEffectDisplacementRenderer.h (DisplacementTexture +0x10, its handle +0x14, HasContent
 //   +0x1c, ClearX/ClearY +0xe0/+0xe4, OldRenderTarget +0xf0, OldViewport +0x114; the active byte is the retail-only +0x08
@@ -13,10 +13,11 @@
 //   state switch is an inline core method (early-out on an equal value, capture push, dirty-list push).
 #include "engine/CEngineScreenEffectDisplacementRenderer.h"
 
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();                              // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
+};
 
 struct IDirect3DSurface9;
 
@@ -30,7 +31,7 @@ class CSurface { public:                                  // vtable 0x0122F84C, 
     CSurface& operator=(const CSurface& other);    // 0x009F2E70
 };
 
-class CRenderTarget : public CBase { public:                     // vtable 0x0129C800
+class CRenderTarget : public CBaseClass { public:                     // vtable 0x0129C800
     CSurface RenderToSurface;                      // +0x04
     CSurface ZBufferSurface;                       // +0x14
     CRenderTarget() {}

@@ -7,7 +7,7 @@
 // (CRenderStateCaptureBlock {bool Open}), WasRendering +9, DestSurface +0xc, CCountedPointer<CRenderTarget> RenderTarget +0x10,
 // C2DBoxF OldWindow +0x18, LayerCount +0x28, AlphaTarget +0x2c.
 // Callees: CCPPointerInfo::DeleteFunc through the block, operator delete @ 0x00BFE9BC (the block),
-// CRenderStateManager::RestoreCaptureBlock @ 0x00A05840 on g_pRenderStateManager @ 0x013CB508, CBase::~CBase @ 0x0099A2E0.
+// CRenderStateManager::RestoreCaptureBlock @ 0x00A05840 on g_pRenderStateManager @ 0x013CB508, CBaseClass::~CBaseClass @ 0x0099A2E0.
 // Shape: the class declares no destructor (no own vtable store); members go in reverse order -- RenderTarget, then the
 // capture block's inline destructor (`if (Open) { Open = false; restore; }`) -- and the out-of-line root dtor is the tail.
 void __cdecl operator delete(void* p);                       // 0x00BFE9BC
@@ -49,16 +49,16 @@ struct CRenderStateCaptureBlock {
     }
 };
 
-class CBase {
+class CBaseClass {
 public:
-    virtual ~CBase();                                        // 0x0099A2E0
+    virtual ~CBaseClass();                                        // 0x0099A2E0
 };
 
 class CSurface;
 class CRenderTarget;
 class C2DBoxF { public: float TLX, TLY, BRX, BRY; };
 
-class CSurfaceCompositor : public CBase {                    // vtable 0x01301CF0, 0x30 bytes
+class CSurfaceCompositor : public CBaseClass {                    // vtable 0x01301CF0, 0x30 bytes
 public:
     long                           CurrentBlend;             // +0x04 ECompositeBlendType
     CRenderStateCaptureBlock       StateCaptureBlock;        // +0x08

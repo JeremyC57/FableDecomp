@@ -27,6 +27,8 @@ class CAFile { public:
 
 class CUserProfileManager { public:
     CWideString GetAutoSaveCheckPointPathName() const;                                 // 0x00408040
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 
 template <class T>
@@ -54,7 +56,7 @@ struct CWorld_Methods : CWorld {
 
 void __fastcall CWorld_Methods::DeleteCheckPointSave()
 {
-    CWideString path = CTBaseSingleton<CUserProfileManager>::Get().GetAutoSaveCheckPointPathName();
+    CWideString path = CUserProfileManager::Get().GetAutoSaveCheckPointPathName();
     if (CAFile::PathExists(path)) {
         g_DriveManager->DeleteFile(path);
         CWideString hsPath = path + (const wchar16*)L".hs";

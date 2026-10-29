@@ -40,10 +40,11 @@ struct CCountedPointer {
         m_pCount = 0;
     }
 };
-struct CBase {
-    virtual ~CBase();                                    // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                    // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                            // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                            // vtable 0x01238C8C, 12 bytes
     CCountedPointer PImp;                                // +0x04
     virtual ~CScriptThing() { }
 };

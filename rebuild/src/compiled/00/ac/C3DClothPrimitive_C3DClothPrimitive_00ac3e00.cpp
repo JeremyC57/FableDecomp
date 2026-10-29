@@ -76,12 +76,13 @@ class C3DMeshFileClothChunk { public:
     CCountedPointer<const C3DMeshFileGroupChunk> FindNextGroup(const CCountedPointer<const C3DMeshFileGroupChunk>& current) const;   // 0x00AC6520
 };
 
-struct CBase {
-    CBase();                                       // 0x0099A2F0
-    virtual ~CBase();
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();
 };
 
-class C3DClothPrimitive : public CBase {
+class C3DClothPrimitive : public CBaseClassNonCopyable {
 public:
     CCountedPointer<CParticleProgram> ParticleProgram;   // +0x04
     unsigned long PrimitiveIndex;                        // +0x0c

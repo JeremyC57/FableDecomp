@@ -14,7 +14,7 @@
 // Callees: CPersistContext::CheckCRC 0x00404500, CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / copy 0x0099EC30 /
 //   dtor 0x0099EAE0 / operator+=(const char*) 0x0099F100, CBasicString<char>::operator==(const char*) 0x004115A0, CStringParser
 //   copy 0x0046381B / SkipToItem 0x009B9C00 / ReadAsSymbol 0x009BA790 (inline destructor: ~list 0x004046B0, ~CCharString,
-//   ~CBase 0x0099A2E0), CPersistTraits<CCharString> TransferIn 0x0040E510 / TransferOut 0x0040E630, CPersistTraits<bool>
+//   ~CBaseClass 0x0099A2E0), CPersistTraits<CCharString> TransferIn 0x0040E510 / TransferOut 0x0040E630, CPersistTraits<bool>
 //   TransferIn 0x00403FF0 (TransferOut inline), the map's (STLport 4.6 `_Rb_tree<CCharString, pair<const CCharString, bool>, ..>`)
 //   iterator ++ 0x007AB8A0 / _M_find 0x007ACC90 (map::find inlined; landed F012 row -- the landed source called it lower_bound) /
 //   erase(const key&) 0x007ADE60 / insert_unique 0x007AD060 (map::insert inlined) / clear 0x007ADAF0, and the binary map writer
@@ -64,7 +64,8 @@ public:
         return PStringData->Data == text;
     }
 };
-class CBase { public: virtual ~CBase(); };             // 0x0099A2E0
+class CBaseClass {
+public:  virtual ~CBaseClass(); };             // 0x0099A2E0
 struct CStringParserCommentList {                      // std::list<CStringParserCommentBoundaries>
     void* _M_node;
     ~CStringParserCommentList();                       // 0x004046B0
@@ -74,7 +75,7 @@ struct CCursorPos {
     long StringPos;                                    // +0x04
     long Line;                                         // +0x08
 };
-class CStringParser : public CBase {                   // retail 0x28 bytes
+class CStringParser : public CBaseClass {                   // retail 0x28 bytes
 public:
     char*                    String;                   // +0x04
     unsigned long            BaseLineOffset;           // +0x08

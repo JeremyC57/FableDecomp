@@ -3,7 +3,7 @@
 #include <cstdio>
 static long g_frame = 0;
 static int g_worldCalls = 0;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CTCDegradableBase { public:
     virtual void v00() { }
@@ -18,7 +18,7 @@ class CTCDegradableBase { public:
 bool CTCDegradableBase::IsAvailableToHit() const
 {
     bool available = false;
-    if (GetWorld()->GetWorldFrame() - LastWorldFrameHit > 1)
+    if (GetWorld()->GetFrame() - LastWorldFrameHit > 1)
         available = true;
     return available;
 }

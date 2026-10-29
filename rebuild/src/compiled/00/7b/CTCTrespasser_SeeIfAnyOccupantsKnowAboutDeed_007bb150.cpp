@@ -56,7 +56,7 @@ class CTCCreatureOpinionOfHero { public:
     bool KnowsOfDeed(long deedHandle, EOpinionDeedType type, bool includeReported);   // 0x00681AE0
 };
 class CWorld { public:
-    static unsigned long GetWorldFrame();       // 0x0049D870
+    static long __fastcall GetFrame();       // 0x0049D870
 };
 
 struct SOccupantNode {                          // STLport list node
@@ -93,7 +93,7 @@ bool CTCTrespasser::SeeIfAnyOccupantsKnowAboutDeed(long deedIndex, EOpinionDeedT
             CTCCreatureOpinionOfHero* opinion = occupant->GetTC<CTCCreatureOpinionOfHero>(79);
             if (opinion->KnowsOfDeed(DeedHandles[deedIndex], type, true)) {
                 OccupantsKnowOfDeedHandleIndex = deedIndex;
-                FrameSomeoneWasInformedOfLastDeed = CWorld::GetWorldFrame();
+                FrameSomeoneWasInformedOfLastDeed = CWorld::GetFrame();
                 return true;
             }
         }

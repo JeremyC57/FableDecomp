@@ -10,7 +10,8 @@ static long g_framesPerSecond = 30;
 static CThing* g_hero = 0;
 static CThing* g_candidates[4];
 static int g_candidateCount = 0;
-static long GFGetCurrentFrame() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 static CVillage* GFGetPVillageInterface(CThing* villager) { return villager->village; }
 // nearest candidate carrying the minion interface (the GetPBestThing stand-in)
 static bool GetPBestThing(const C3DVector& from, CThing** out)
@@ -36,7 +37,7 @@ struct CStateGroup {
 };
 bool CStateGroup::IsRunnable()
 {
-    if (NextCheckFrame > (unsigned long)GFGetCurrentFrame())
+    if (NextCheckFrame > (unsigned long)CWorld::GetFrame())
         return false;
     CThing* hero = g_hero;
     if (hero && !hero->dead && creature->isVillager) {
@@ -52,7 +53,7 @@ bool CStateGroup::IsRunnable()
         }
     }
     long oneSecond = g_framesPerSecond;
-    NextCheckFrame = GFGetCurrentFrame() + oneSecond;
+    NextCheckFrame = CWorld::GetFrame() + oneSecond;
     return false;
 }
 int main()

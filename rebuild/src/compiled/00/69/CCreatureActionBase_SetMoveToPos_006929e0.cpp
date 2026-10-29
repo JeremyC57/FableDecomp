@@ -36,7 +36,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem(reinterpret_cast<CBaseObject*>(item)); }
 };
 
-long GetWorldFrame_0049d870();                 // 0x0049D870 (returns the global @ 0x013B89BC)
+class CWorld { public: static long __fastcall GetFrame(); };                 // 0x0049D870 (returns the global @ 0x013B89BC)
 
 class CCreatureActionBase { public:
     virtual void v00();
@@ -51,6 +51,6 @@ class CCreatureActionBase { public:
 void CCreatureActionBase::SetMoveToPos(const C3DVector& pos)
 {
     PCreature.GetPItem()->Call_004c7ab0();
-    NextMovementPosWorldFrame = GetWorldFrame_0049d870();
+    NextMovementPosWorldFrame = CWorld::GetFrame();
     NextMovementPos = pos;
 }

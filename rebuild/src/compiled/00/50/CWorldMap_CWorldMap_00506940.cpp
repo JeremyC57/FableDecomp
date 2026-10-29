@@ -7,7 +7,7 @@
 //   null-checked.
 // Callees: CTBaseSingleton<CEngineManager>::Get 0x00436FB0 (__fastcall), CEngineManager::RemoveMap(long) 0x006403D0,
 //   ~CBaseIntelligentPointer 0x00A01C10, operator delete 0x00BFE9BC, free 0x00BFEA14, ~CRegion 0x0051A110,
-//   _Destroy_range<CMapInfo> 0x00515250 (__fastcall), _Rb_tree::_M_erase 0x0043020A, ~CBase 0x0099A300.
+//   _Destroy_range<CMapInfo> 0x00515250 (__fastcall), _Rb_tree::_M_erase 0x0043020A, ~CBaseClassNonCopyable 0x0099A300.
 // Layout (retail, 12-byte STLport containers): vptrs +0x00 (CBase) / +0x04 (second base), PThingMapManager +0x10,
 //   LoadedScriptedMapBrushes +0x14 (map), Maps +0x20, Regions +0x2C (0x58-byte CRegion), RegionTime +0x38,
 //   PRegionGraph +0x44, MapPlacement +0x6C, +0x78, +0x84, +0x90 vectors, LevelWADBank +0xA0, +0xB0 vector,
@@ -15,10 +15,11 @@
 #include <stdlib.h>
 void operator delete(void* p);                         // 0x00BFE9BC
 
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                                  // 0x0099A300
-    CBase();                                           // 0x0099A2F0
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                  // 0x0099A300
+    CBaseClassNonCopyable();                                           // 0x0099A2F0
+};
 struct CWorldMapBase2 {
     virtual void v00();
     virtual ~CWorldMapBase2() {}
@@ -139,7 +140,7 @@ class CWADBank { public:
 struct CRegionGraph;
 class CThing;
 
-class CWorldMap : public CBase, public CWorldMapBase2 {
+class CWorldMap : public CBaseClassNonCopyable, public CWorldMapBase2 {
 public:
     ~CWorldMap();
     void*                          World;              // +0x08

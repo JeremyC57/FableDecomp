@@ -1,7 +1,7 @@
 // CEnginePrimitiveManager2DSprites::~CEnginePrimitiveManager2DSprites() -- releases the two pixel shaders and two vertex shaders (reverse declaration order), then the CBase destructor
 // Leaf: ??1CEnginePrimitiveManager2DSprites
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BC7B20, length 130 bytes (a byte-identical twin of 0x00BB1900, another translation unit).
-// Callees: the shader objects' virtual deleting destructors (slot 0, `push 1`) at zero count, CBase::~CBase @ 0x0099A300 (tail
+// Callees: the shader objects' virtual deleting destructors (slot 0, `push 1`) at zero count, CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (tail
 // `jmp`). Vtables (rtti-vtables.tsv): 0x0129A054 = CPixelShader, 0x0129B3D0 = CVertexShader, 0x0129A030 = CShaderBase.
 // Layout: the generated engine/CEnginePrimitiveManager2DSprites.h matches retail -- VertexShader2DSprite +0x0C,
 // VertexShader2DClockSprite +0x14, PixelShader2DClockSprite +0x1C, PixelShader2DClockSpriteAdditive +0x24, each an 8-byte
@@ -10,9 +10,10 @@
 // for vertex shaders; `delete` on the known-non-null object needs no second test) and the inline CShaderBase destructor
 // stores the base vtable (kept in edi). The manager is `__declspec(novtable)` (no vtable store of its own) over the
 // out-of-line CBase destructor.
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                              // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
+};
 
 struct CPixelShaderObject {
     virtual ~CPixelShaderObject();                 // slot 0
@@ -54,7 +55,7 @@ class CVertexShader : public CShaderBase { public:               // vtable 0x012
     }
 };
 
-struct __declspec(novtable) CEnginePrimitiveManager2DSprites : CBase {
+struct __declspec(novtable) CEnginePrimitiveManager2DSprites : CBaseClassNonCopyable {
     unsigned char  _pad_0x04[0x4];                 // +0x04
     unsigned char  active;                         // +0x08
     unsigned char  _pad_0x09[0x3];                 // +0x09

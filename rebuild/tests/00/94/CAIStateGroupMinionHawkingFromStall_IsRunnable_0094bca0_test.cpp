@@ -61,7 +61,7 @@ class CWorld { public:
     unsigned char _pad[0x74];
     COpinionReactionManager* POpinionReactionManager;   // +0x74
     COpinionReactionManager* GetOpinionReactionManager() const { return POpinionReactionManager; }
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 
 struct CBaseIntelligentPointer {
@@ -101,7 +101,7 @@ struct CAIStateGroup_MinionHawkingFromStall : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
 {
-    if (GetPWorld()->GetWorldFrame() < NextHawkFrame)
+    if (GetPWorld()->GetFrame() < NextHawkFrame)
         return false;
     CThing* creature = GetCreature();
     if (creature->HasTC(0x90)) {
@@ -133,7 +133,7 @@ bool __fastcall IsSpeaking(CThing*) { return g_speaking; }
 CTCShop* CTCShopKeeper::GetShopTC() { return g_shopPtr; }
 CThing* CTCShopKeeper::GetShopThing() { return g_shopThing; }
 long COpinionReactionManager::GetThingAttitudeToPlayer(CThing*) { return g_attitude; }
-long CWorld::GetWorldFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 static COpinionReactionManager g_orm; static CWorld g_world;
 CWorld* CAIStateGroupBase::GetPThingWorld() { return &g_world; }
 CWorld* CAIStateGroupBase::GetPWorld() { return &g_world; }

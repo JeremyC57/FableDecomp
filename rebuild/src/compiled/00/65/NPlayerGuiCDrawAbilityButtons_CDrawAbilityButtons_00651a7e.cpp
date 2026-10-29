@@ -1,7 +1,7 @@
 #pragma optimize("s", on)
 // NPlayerGui::CDrawAbilityButtons::CDrawAbilityButtons(CPlayerGui*, std::vector<CDrawBase*>*) -- CDrawBase(gui, list), own vtable, three columns, two empty primitive handles, empty special-handle and effect vectors, then one effect slot per ability-button effect in the GUI def
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00651A7E, length 134 bytes.
-// Callees: NPlayerGui::CDrawBase::CDrawBase @ 0x0064CC65, CBase::CBase @ 0x0099A2D0 (the handles' root, vtable 0x01231710),
+// Callees: NPlayerGui::CDrawBase::CDrawBase @ 0x0064CC65, CBaseClass::CBaseClass @ 0x0099A2D0 (the handles' root, vtable 0x01231710),
 // PeekGuiDef @ 0x00438570 (`__fastcall`, no arguments), vector<CIntelligentPointer<CParticleEmitter>>::Resize(long) @ 0x00657037.
 // Vtables 0x0125A6C8 (CDrawAbilityButtons), 0x0122F598 (CEnginePrimitiveHandle, rtti-vtables.tsv).
 // PDB CDrawAbilityButtons (96 bytes): Columns +0x2c, BackgroundPrimitiveHandle +0x30, InteractBorderPrimitiveHandle +0x38,
@@ -33,10 +33,11 @@ public:
     static const CPlayerGuiDef& __fastcall PeekGuiDef();   // 0x00438570
 };     // 0x00438570
 
-namespace N_0099a2d0 { struct CBase {                                     // vtable 0x01231710
+class CBaseClass {
+public:                                      // vtable 0x01231710
     virtual void v00();
-    CBase();                                       // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                       // 0x0099A2D0
+};
 
 class CIVCountedPointeeBase;
 
@@ -45,7 +46,7 @@ struct CIVCountedPointer {                         // embedded member with an in
     __forceinline CIVCountedPointer() : Object(0) { }
 };
 
-class CEnginePrimitiveHandle : public CBase { public:            // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public:            // vtable 0x0122F598
     CIVCountedPointer Data;                        // +4 (PDB: CIVCountedPointer<CEnginePersistentPrimitiveBase>)
     virtual void v00();
     __forceinline CEnginePrimitiveHandle() { }

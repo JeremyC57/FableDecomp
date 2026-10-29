@@ -1,6 +1,6 @@
 // CV_BordelloScript::Init() -- reset the bordello quest state: all hero/bordello flags, the client count and slots, the village handle (to an empty script thing) and the beer state
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E399D0, length 195 bytes (208 with padding); vtable slot at 0x012E38BC.
-// Callees: CBase::CBase @ 0x0099A2D0 / CBase::~CBase @ 0x0099A2E0 (the temporary's base), the count block's destroy
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0 / CBaseClass::~CBaseClass @ 0x0099A2E0 (the temporary's base), the count block's destroy
 // hook (`call [block+4]`, object [block+8] in ecx), operator delete @ 0x00BFE9BC.
 // Layout (retail = Ego_r.pdb CV_BordelloScript - 0x14): HeroPartying +0x48 .. HeroFoundDeedsLocation +0x50,
 // ClientsAlive +0x54, ClientInUse[3] +0x58, BordelloVillage (CScriptThing, vtable 0x01238C8C) +0x5c,
@@ -11,10 +11,11 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();                              // 0x0099A2E0
-    CBase();                                       // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                              // 0x0099A2E0
+    CBaseClass();                                       // 0x0099A2D0
+};
 
 struct SScriptThingInfo {                          // the counted block behind CScriptThing::PImp_Info
     long m_references;                             // +0
@@ -22,7 +23,7 @@ struct SScriptThingInfo {                          // the counted block behind C
     void* m_pObject;                               // +8
 };
 
-class CScriptThing : public CBase { public:                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     void* PImp_Data;                               // +0x04
     SScriptThingInfo* PImp_Info;                   // +0x08
     CScriptThing() : PImp_Data(0), PImp_Info(0) { }

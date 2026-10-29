@@ -28,7 +28,7 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 //          hoisted into edi), CHandleBasedMemoryPool::Free @ 0x00A62ED0, GFEnterAllocatorLock @ 0x009F2000 /
 //          GFLeaveAllocatorLock @ 0x009F2010, CMemoryAllocator::InternalDeallocate @ 0x009F2920 / GetAllocationCount
 //          @ 0x009F1F10 / ~CMemoryAllocator @ 0x009F2310 / operator delete @ 0x009F1F90 (the landed
-//          GFFreeFromGlobalAllocator body, inlined), CBase::~CBase @ 0x0099A300. Vtables 0x0129B8B4 (primary) /
+//          GFFreeFromGlobalAllocator body, inlined), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300. Vtables 0x0129B8B4 (primary) /
 //          0x0129B8A0 (the threaded-file request base inside CBankFileAsyncData) / 0x0129B860 (that base's own).
 // Globals: the loading allocator @ 0x013CAA90 and its destroy-when-empty flag @ 0x013CAA94.
 // Layout: Ego_r.pdb CBankFileAsyncData (0x48; two vptrs): Data +8, Buffer +0xc, Length +0x10, SkipBytes +0x14,
@@ -99,13 +99,14 @@ class CBankFileAsync { public:
     CThreadedFile* GetThreadedFile() const { return ThreadedFile; }
 };
 
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                              // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
+};
 struct CThreadedFileRequest {                      // the second base (vtable 0x0129B860): the file thread's callback interface
     virtual ~CThreadedFileRequest() { }
 };
-class CBankFileAsyncData : public CBase, public CThreadedFileRequest {   // vtables 0x0129B8B4 / 0x0129B8A0
+class CBankFileAsyncData : public CBaseClassNonCopyable, public CThreadedFileRequest {   // vtables 0x0129B8B4 / 0x0129B8A0
 public:
     void*                   Data;                  // +0x08
     void*                   Buffer;                // +0x0c
@@ -172,7 +173,7 @@ static int g_readsLeft = 0;
 bool CThreadedFile::HasReadFinished(unsigned long readUID) { char b[32]; _snprintf(b, sizeof b, "finished?%lu", readUID); note(b); return g_readsLeft-- <= 0; }
 static CBankFileAsyncData* g_erased[4]; static int g_erases = 0;
 unsigned int CAsyncDataSet::erase(CBankFileAsyncData* const& key) { note(this == &g_bank.AsyncDataInstances ? "erase-instances" : "erase-restart"); if (g_erases < 4) g_erased[g_erases] = key; ++g_erases; return 1; }
-CBase::~CBase() { note("~base"); }
+CBaseClassNonCopyable::~CBaseClassNonCopyable() { note("~base"); }
 static CThreadedFile g_file; static CHandleBasedMemoryPool g_pool;
 static unsigned char g_storage[sizeof(CBankFileAsyncData) + 16];
 static CBankFileAsyncData* make(bool aborted, unsigned long uid, bool pool, long handle, unsigned long internalSize, void* buffer)

@@ -5,7 +5,7 @@
 // hidden pointer; it calls IDirect3DVolumeTexture9 slot 18 GetVolumeLevel on the wrapped texture at +4),
 // the one-argument CVolume helper @ 0x00A67440 (a bare `ret 4`; also called from CVolumeTexture code at
 // 0x009FDB19 / 0x00A688AB / 0x00A68A9F with a local record's address), CVolume::ReleaseVolume @ 0x00A67460
-// (releases +4 through IUnknown::Release and nulls it; its argument is unused), CBase::~CBase @ 0x0099A2E0.
+// (releases +4 through IUnknown::Release and nulls it; its argument is unused), CBaseClass::~CBaseClass @ 0x0099A2E0.
 // Identity: the manifest label "CPaintMapDialog::InitNumberBox" is propagated and rejected; the body has no
 // callers or vtable references. `this` goes untouched into GetVolumeLevel, which is a CVolumeTexture
 // method (all its eleven callers are CVolumeTexture code), so the function is modelled as a CVolumeTexture
@@ -16,11 +16,12 @@
 // stores the CVolume vtable (0x0129C840), calls ReleaseVolume(true) and the out-of-line CBase destructor.
 struct IDirect3DVolume9;
 
-struct CBase {
-    virtual ~CBase();                               // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                               // 0x0099A2E0
 };
 
-class CVolume : public CBase { public:                            // vtable 0x0129C840
+class CVolume : public CBaseClass { public:                            // vtable 0x0129C840
     IDirect3DVolume9* m_pVolume;                    // +0x04
     void ReleaseVolume(bool release);               // 0x00A67460
     void Helper(void* argument);                    // 0x00A67440 (empty)

@@ -3,7 +3,7 @@
 // Callees: the count block's per-type destroy function (__fastcall, object in ecx), operator delete @ 0x00BFE9BC (the
 //          count block), the entry list's clear @ 0x009F89B0 (manifest "remove_if<...>", propagated: it walks the nodes
 //          destroying the entry's string +0x34 and counted pointer +0x38), free @ 0x00BFEA14 (the sentinel node),
-//          CBase::~CBase @ 0x0099A300 (tail jump).
+//          CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300 (tail jump).
 // Vtable: CGraphicBankManager 0x0129C7E4.
 // Shape: the destructor body walks the STLport list (sentinel at +4) and resets each entry's counted pointer through an
 // inline Reset (release, then count block and object zeroed from the shared `xor ebx,ebx`); the list member's
@@ -57,10 +57,11 @@ struct list {
             free(_M_node);
     }
 };
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                              // 0x0099A300
-}; } using N_0099a300::CBase;
-class CGraphicBankManager : public CBase { public:
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
+};
+class CGraphicBankManager : public CBaseClassNonCopyable { public:
     list m_banks;                                  // +0x04
     virtual ~CGraphicBankManager();
 };

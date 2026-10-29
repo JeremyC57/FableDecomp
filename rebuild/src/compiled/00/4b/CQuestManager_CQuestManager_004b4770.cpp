@@ -122,7 +122,7 @@ template <class T> struct CTBaseSingletonNoDefaultAlloc {
     virtual ~CTBaseSingletonNoDefaultAlloc() {}
 };
 class CThing;
-class CWorld { public: static long GetWorldFrame(); };       // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };       // 0x0049D870
 class CGameScriptThingManager;
 class CScriptInfoManager;
 class CGameScriptInterface;
@@ -176,6 +176,6 @@ CQuestManager::~CQuestManager()
         DeactivateAllQuests();
         Boasts.clear();
         AcceptedBoasts.clear();
-        FrameBoastsLastUpdated = CWorld::GetWorldFrame();
+        FrameBoastsLastUpdated = CWorld::GetFrame();
     }
 }

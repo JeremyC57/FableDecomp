@@ -2,12 +2,13 @@
 // and the two tracked things.
 #include <cstdio>
 static long g_frame = 50;
-long GFGetCurrentFrame() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 class CThing { public: int id; };
 struct IP { const CThing* item; IP(const CThing* t) : item(t) {} };
 struct SelfTerminate {
     long WFDuration; long EndFrame;
-    SelfTerminate(long duration) : WFDuration(duration) { EndFrame = GFGetCurrentFrame() + WFDuration; }
+    SelfTerminate(long duration) : WFDuration(duration) { EndFrame = CWorld::GetFrame() + WFDuration; }
 };
 struct Module : SelfTerminate {
     IP PCreature; IP PTarget;

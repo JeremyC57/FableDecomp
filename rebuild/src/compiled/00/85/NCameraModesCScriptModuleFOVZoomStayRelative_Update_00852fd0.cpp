@@ -2,7 +2,7 @@
 // Leaf: ?Update@CScriptModuleFOVZoomStayRelative
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00852FD0, length 211 bytes (`ret`).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (Thing), the physics component's virtual slot 70 GetFacing
-// (+0x118, C3DVector by hidden pointer), C3DVector::Rotate(const C3DVector&, float) @ 0x00A13C60, GFGetCurrentFrame
+// (+0x118, C3DVector by hidden pointer), C3DVector::Rotate(const C3DVector&, float) @ 0x00A13C60, CWorld::GetFrame
 // @ 0x0049D870 (`__fastcall`, twice), CScriptModuleFOVZoom::CalculateIncrementVector(const C3DVector&, const C3DVector&,
 // long) @ 0x008520F0 and CScriptModuleFOVZoom::Update @ 0x00852160 (both landed, called non-virtually on `this`).
 // Layout: Ego_r.pdb NCameraModes::CScriptModuleFOVZoomStayRelative (0xa0 bytes) over CScriptModuleFOVZoom (0x84):
@@ -13,7 +13,7 @@
 // up to the new position over the remaining frames (the owner taken into a local first, so it rides in edi across
 // the second frame call), otherwise the position is copied; the base Update is ONE statement after the if/else (VC
 // tail-duplicates it, popping edi first), the physics component is read through an inline accessor straight into ecx.
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                 // 0x0049D870
 
 class C3DVector { public:
     float X, Y, Z;
@@ -86,9 +86,9 @@ void CScriptModuleFOVZoomStayRelative::Update()
     position.Rotate(Axis, Angle);
     position *= Mag;
     position += LookAtPos;
-    if (GFGetCurrentFrame() < EndFrame) {
+    if (CWorld::GetFrame() < EndFrame) {
         CCameraState* owner = POwner;
-        CalculateIncrementVector(owner->Position, position, EndFrame - GFGetCurrentFrame());
+        CalculateIncrementVector(owner->Position, position, EndFrame - CWorld::GetFrame());
     }
     else
         POwner->Position = position;

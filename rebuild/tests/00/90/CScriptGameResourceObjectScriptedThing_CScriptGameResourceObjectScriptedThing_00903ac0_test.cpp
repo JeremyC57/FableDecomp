@@ -25,8 +25,9 @@ struct CThing_Retail {
         return false;
     }
 };
-struct CBase { virtual ~CBase() {} };
-struct CActionBase : CBase { long m_actionState; bool m_started, m_finished; CActionBase() : m_actionState(0), m_started(false), m_finished(false) {} };
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() {} };
+struct CActionBase : CBaseClassNonCopyable { long m_actionState; bool m_started, m_finished; CActionBase() : m_actionState(0), m_started(false), m_finished(false) {} };
 struct CActionStopScripting : CActionBase { };
 class CTCScriptedControl { public:
     bool Locked; CActionBase* last;

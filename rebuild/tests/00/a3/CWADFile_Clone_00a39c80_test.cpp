@@ -2,8 +2,9 @@
 #include <cstring>
 class CBankFileAsync { public: int id; };
 static int g_baseCtor;
-struct CBase { virtual ~CBase() {} CBase() { ++g_baseCtor; } };
-class CWADFile : public CBase { public:
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() {} CBaseClassNonCopyable() { ++g_baseCtor; } };
+class CWADFile : public CBaseClassNonCopyable { public:
     CBankFileAsync* Bank; unsigned long Index; long FilePos;
     CWADFile(CBankFileAsync* bank) : Bank(bank), Index(0), FilePos(0) {}
     CWADFile(const CWADFile& o) : Bank(o.Bank), Index(o.Index), FilePos(o.FilePos) {}

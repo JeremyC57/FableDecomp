@@ -1,0 +1,11 @@
+address	name	evidence
+0049d870	CWorld::GetFrame	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): ?GetFrame@CWorld@@SIJXZ (Ego_r+FableWin); ghidra_out labels_* still carry CWorld::GetWorldFrame / GFGetCurrentFrame / GetWorldFrame rows (chunks 241-914, retry 11a); the wave-1 landed label is right
+0099a2d0	CBaseClass::CBaseClass	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): ??0CBaseClass@@QAE@XZ; catalog already right
+0099a2e0	CBaseClass::~CBaseClass	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): ??1CBaseClass@@UAE@XZ; catalog already right
+0099a2f0	CBaseClassNonCopyable::CBaseClassNonCopyable	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): ??0CBaseClassNonCopyable@@IAE@XZ; catalog already right
+0099a300	CBaseClassNonCopyable::~CBaseClassNonCopyable	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): ??1CBaseClassNonCopyable@@MAE@XZ; auto-re-candidates.tsv still says CBaseClass::~CBaseClass (wrong)
+004014a0	CCRC::Calc	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): ?Calc@CCRC@@SIKKPBXK@Z; catalog already right
+0041e5f2	NUISystem::CManager::GetInstance	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): auto-re-candidates.tsv still says NUISystem::CFrontEndManager::GetInstance (wave-1 LABELS item, still open)
+0040d2a0	CUserProfileManager::Get	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): ?Get@CUserProfileManager@@SIAAV1@XZ; auto-re-candidates.tsv says CTBaseSingleton<CUserProfileManager>::Get (wrong: the PDB CTBaseSingleton<T>::Get rows are for other T)
+0044c6b0	CGameDefinitionManager::Get	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): ?Get@CGameDefinitionManager@@SIAAV1@XZ; catalog already right
+00993ca0	CDataInputStream::ReadWithSrcChunkOverflow	naming wave 2A (rebuild/candidates/manual/naming/2026-10-28_wave2a/LABELS.tsv): private (AAE); catalog already right

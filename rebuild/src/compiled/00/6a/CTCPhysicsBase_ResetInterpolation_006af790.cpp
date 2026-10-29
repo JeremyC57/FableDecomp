@@ -31,7 +31,7 @@ struct SPhysicsBaseFlags {                  // CTCPhysicsBase +0x3c bool:1 group
 };
 
 class CWorld { public:
-    static long GetFrame();                 // 0x0049D870
+    static long __fastcall GetFrame();                 // 0x0049D870
 };
 
 struct CTCPhysicsBase_Methods : CTCPhysicsBase {

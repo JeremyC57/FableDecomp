@@ -1,7 +1,7 @@
 // CFH_Villager::Main() -- a Fire Heart prisoner villager: leave at once if the hero already hit his group; otherwise take scripted control and, until the mission succeeds or his group is hit, mark his group when the hero hits him (plain hit, or a special ability other than 14), make his "_COMMENT_NEW" remark when the quest asks for it, and answer a talk with a paused "_ON_TALK" movie; when his group was hit run to the escape marker and fade out there (or vanish when he did not get within 16 units)
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D37530, 1783 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, CBase dtor 0x0099A2E0, scripted-thing handle IsScripting
+// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, CBaseClass dtor 0x0099A2E0, scripted-thing handle IsScripting
 //   0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 /
 //   MoveToPosition 0x007E72F0 / dtor 0x007E74D0, movie PImp dtor 0x006E7AB0 / out-of-line dtor 0x006E7B80, IsActiveThreadTerminating
 //   0x00F35B30, GFIntToCharString 0x0099F830, operator+ 0x0099F690 / 0x0099F600, CCharString 0x0099EBF0 / 0x0099EAE0 / 0x0099E4C0,
@@ -43,12 +43,13 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {                                          // vtable 0x01231710
-    CBase() { }                                         // out-of-line copy 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:                                           // vtable 0x01231710
+    CBaseClass() { }                                         // out-of-line copy 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 class C3DVector { public: float X, Y, Z; };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
     virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const;
@@ -63,7 +64,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
-    CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
 };
 class CBaseObject { public:                        // vtable 0x0129A7D8

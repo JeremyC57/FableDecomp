@@ -5,8 +5,9 @@
 #define __declspec(x)
 #endif
 static int g_base = 0;
-namespace N_0099a2d0 { struct CBase { virtual void v00() { } CBase() { ++g_base; } }; } using N_0099a2d0::CBase;
-struct __declspec(novtable) CShaderConstantRangeBase : CBase { long m_first; CShaderConstantRangeBase(long f) : CBase(), m_first(f) { } };
+class CBaseClass {
+public:  virtual void v00() { } CBaseClass() { ++g_base; } };
+struct __declspec(novtable) CShaderConstantRangeBase : CBaseClass { long m_first; CShaderConstantRangeBase(long f) : CBaseClass(), m_first(f) { } };
 class CShaderConstantRange : public CShaderConstantRangeBase { public:
     long m_count; virtual void v00() { }
     CShaderConstantRange(long f, long c) : CShaderConstantRangeBase(f), m_count(c) { }

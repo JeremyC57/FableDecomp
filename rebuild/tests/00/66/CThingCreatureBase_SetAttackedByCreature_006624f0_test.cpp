@@ -13,7 +13,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer() : CBaseIntelligentPointer() { }
 };
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 class CThingCreatureBase { public:
     CBaseIntelligentPointer PLastAttackedByCreature;
     unsigned long WFLastAttackedByCreature;
@@ -21,7 +21,7 @@ class CThingCreatureBase { public:
 };
 void CThingCreatureBase::SetAttackedByCreature(CThingCreatureBase* attacker)
 {
-    WFLastAttackedByCreature = CWorld::GetWorldFrame();
+    WFLastAttackedByCreature = CWorld::GetFrame();
     CIntelligentPointer pointer;
     pointer.SetPItem((CBaseObject*)attacker);
     PLastAttackedByCreature.SetPItem(pointer.GetPItem());

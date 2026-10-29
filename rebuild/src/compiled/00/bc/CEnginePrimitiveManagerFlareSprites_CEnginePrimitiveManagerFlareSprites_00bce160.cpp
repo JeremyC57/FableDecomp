@@ -1,7 +1,7 @@
 // CEnginePrimitiveManagerFlareSprites::~CEnginePrimitiveManagerFlareSprites() -- releases the flare-test vertex shader, clears and frees the vertex-buffer map, then the CBase destructor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BCE160, length 115 bytes.
 // Callees: the shader data's virtual slot 0 (scalar deleting destructor, flag 1) when its count (+0x10) drops to zero,
-// 0x00BCE4B0 the map tree's `_M_erase(root)`, 0x00BFEA14 free (the header node), 0x0099A300 CBase::~CBase() (tail jump;
+// 0x00BCE4B0 the map tree's `_M_erase(root)`, 0x00BFEA14 free (the header node), 0x0099A300 CBaseClassNonCopyable::~CBaseClassNonCopyable() (tail jump;
 // stores the root vtable 0x01231710).
 // Vtables: 0x012A6C18 CEnginePrimitiveManagerFlareSprites, 0x0129B3D0 CVertexShader, 0x0129A030 CShaderBase.
 // Layout: PDB CEnginePrimitiveManagerFlareSprites (0x28) with retail's 12-byte STLport map (header node, count,
@@ -16,11 +16,11 @@
 // Leaf: ??1CEnginePrimitiveManagerFlareSprites
 extern "C" void __cdecl free(void* block);               // 0x00BFEA14
 
-namespace N_0099a300 { class CBase {                                            // vtable 0x01231710
-public:
-    virtual ~CBase();                                    // 0x0099A300
-}; } using N_0099a300::CBase;
-class __declspec(novtable) CEnginePrimitiveManager : public CBase {
+class CBaseClassNonCopyable {
+protected:                                             // vtable 0x01231710
+    virtual ~CBaseClassNonCopyable();                                    // 0x0099A300
+};
+class __declspec(novtable) CEnginePrimitiveManager : public CBaseClassNonCopyable {
 public:
     void* SceneList;                                     // +0x04
     bool  Enable;                                        // +0x08

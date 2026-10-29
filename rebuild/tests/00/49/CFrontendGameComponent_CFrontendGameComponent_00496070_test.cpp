@@ -9,7 +9,7 @@ static int g_KeyToNumber[122];
 class CUserProfileManager { public:
     const char* GetDefaultProfileName() const { return "Default"; }
     void SetProfileName(const char* name, bool load) { g_lastProfile = name; g_lastLoadFlag = load; ++g_profileLoads; }
-    static CUserProfileManager& Get() { static CUserProfileManager m; return m; }
+    static CUserProfileManager& __fastcall Get() { static CUserProfileManager m; return m; }
     static void LoadProfile(const char* name, bool load) { Get().SetProfileName(name, load); }
 };
 struct CFrontendGameComponent {

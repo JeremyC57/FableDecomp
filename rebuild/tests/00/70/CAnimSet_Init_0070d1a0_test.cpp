@@ -87,7 +87,7 @@ class CTransitionBlendAlpha { public:
     CTransitionBlendAlpha(float current, float last) : CurrentAlpha(current), LastAlpha(last) { }
 };
 class CWorld { public:
-    static unsigned long GetWorldFrame();          // 0x0049D870
+    static long __fastcall GetFrame();          // 0x0049D870
 };
 class CAnimateThing;
 struct CAnimSetInitData {
@@ -139,7 +139,7 @@ void CAnimSet::Init(CAnimateThing* animator, const CAnimSetInitData& data, float
     Anims.push_back(data.Anim);
     InternalAlphas.clear();
     InternalAlphas.push_back(CTransitionBlendAlpha(data.Alpha, data.Alpha));
-    FrameInternalAlphasUpdated = CWorld::GetWorldFrame();
+    FrameInternalAlphasUpdated = CWorld::GetFrame();
     CurrentPercentageComplete = data.PercentageComplete;
     LastPercentageComplete = data.LastPercentageComplete;
     CurrentAlpha = LastAlpha = alpha;
@@ -168,7 +168,7 @@ void* GrowVectorStorage_s7(void* vector, unsigned long count)
     v[0] = block; v[1] = block + used; v[2] = block + used + 64;
     char* p = v[1]; v[1] += (count == 1) ? 0 : 0; return p;   // the caller's element size is unknown here: bump below
 }
-unsigned long CWorld::GetWorldFrame() { return 1234; }
+long CWorld::GetFrame() { return 1234; }
 int main()
 {
     static CAnimSet set; static short animStore[4] = { 9, 8, 7, 6 }; static CTransitionBlendAlpha alphaStore[2] = { CTransitionBlendAlpha(0.1f, 0.2f), CTransitionBlendAlpha(0.3f, 0.4f) };

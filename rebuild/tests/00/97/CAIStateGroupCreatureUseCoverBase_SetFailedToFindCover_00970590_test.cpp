@@ -2,13 +2,13 @@
 class C3DVector { public: float X, Y, Z; };
 class CThingAICreature { public: C3DVector m_pos; const C3DVector& GetPosition() { return m_pos; } };
 static long g_frame;
-class CWorld { public: static long GetFrameCount() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 class CAIBrain { public: unsigned char _pad[0x18]; CThingAICreature* Creature; };
 static int g_worldCalls;
 class CAIStateGroupBase { public: virtual ~CAIStateGroupBase() {} CAIBrain* PBrain; unsigned char _pad[0xc]; CWorld* GetPWorld() { ++g_worldCalls; return 0; } };
 struct CAIStateGroup_CreatureUseCoverBase : CAIStateGroupBase {
     unsigned char _pad2[0x20]; bool FailedToFindCover; long FailedTime; C3DVector FailedToFindCoverAt;
-    void SetFailedToFindCover() { FailedToFindCover = true; FailedToFindCoverAt = PBrain->Creature->GetPosition(); FailedTime = GetPWorld()->GetFrameCount(); }
+    void SetFailedToFindCover() { FailedToFindCover = true; FailedToFindCoverAt = PBrain->Creature->GetPosition(); FailedTime = GetPWorld()->GetFrame(); }
 };
 int main()
 {

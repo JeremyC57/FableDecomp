@@ -6,7 +6,7 @@
 //          CBrainOutput @ 0x00835620 (implicit dtor inlined: counted pointer +0x20, ~CBaseIntelligentPointer @ 0x00A01C10 +0x40),
 //          CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CCreatureAction_PlayAnimation @ 0x008424F0, ~CCreatureActionBase
 //          @ 0x00693EF0, CCountedPointer::Reset @ 0x00668D90, CAIBrain::SetBrainOutput @ 0x0088B8F0 (manifest
-//          "CQuestManager::RemoveAvailableQuestCardType" is propagated), GFGetCurrentFrame @ 0x0049D870, g_framesPerSecond
+//          "CQuestManager::RemoveAvailableQuestCardType" is propagated), CWorld::GetFrame @ 0x0049D870, g_framesPerSecond
 //          @ 0x01375550, CVectorMap::LowerBound @ 0x0040F020 (0xd3), CTCIdleScheduler::ChooseNewIdle @ 0x00801A50,
 //          CAIStateGroupBase::DestroyItem @ 0x008FD1B0.
 // Shape: the AIAction_PerformAction body (0x0097D8B0) inlined without the waits: the animation name is an implicit
@@ -125,7 +125,7 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
 class CTCIdleScheduler { public:                       // interface 0xd3
     void ChooseNewIdle();                       // 0x00801A50
 };
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 extern long g_framesPerSecond;                  // 0x01375550
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
@@ -164,7 +164,7 @@ void CAIStateGroup_Clean::OnReplace()
     }
     CleanActionID = -1;
     long fps = g_framesPerSecond;
-    FrameToClean = GFGetCurrentFrame() + fps * 100;
+    FrameToClean = CWorld::GetFrame() + fps * 100;
     CTCIdleScheduler* scheduler;
     if (GetCreature()->GetInterface(&scheduler, 0xd3))
         scheduler->ChooseNewIdle();

@@ -6,7 +6,8 @@ static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 static int g_base = 0, g_scriptBase = 0;
 struct CBase { virtual void v00() {} CBase() { ++g_base; } };
-namespace N_0099a2d0 { struct CScriptBase { virtual void v00() {} CScriptBase() { ++g_scriptBase; } }; } using N_0099a2d0::CScriptBase;
+class CBaseClass {
+public:  virtual void v00() {} CBaseClass() { ++g_scriptBase; } };
 class C3DVector { public:
     float X, Y, Z;
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
@@ -15,10 +16,10 @@ class C3DVector { public:
 typedef long EMovementType;
 class CTCBase;
 template <class T> class CCountedPointer { public: T* Object; void* Count; CCountedPointer() : Object(0), Count(0) { } };
-class CScriptThing : public CScriptBase { public:
+class CScriptThing : public CBaseClass { public:
     virtual void v00() {}
     CCountedPointer<CScriptThing> PImp;
-    CScriptThing() : CScriptBase(), PImp() { }
+    CScriptThing() : CBaseClass(), PImp() { }
 };
 struct __declspec(novtable) CAction : CBase {
     void* PTCScript; bool Activated; bool Terminated;

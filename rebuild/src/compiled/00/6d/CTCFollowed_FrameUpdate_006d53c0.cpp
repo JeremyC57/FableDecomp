@@ -84,7 +84,7 @@ extern CFollowerNotify* g_FollowerNotify;               // 0x013B8790
 extern long g_FramesPerSecond;                          // 0x01375550
 class CWorld {
 public:
-    static long GetFrame();                             // 0x0049D870
+    static long __fastcall GetFrame();                             // 0x0049D870
 };
 class CRandom;
 long __fastcall GFRandom(long range, CRandom* rng);     // 0x004CDAE0

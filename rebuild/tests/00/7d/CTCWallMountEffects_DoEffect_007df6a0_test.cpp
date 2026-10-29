@@ -76,7 +76,7 @@ class CPlayerManager { public:
     CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 
 enum EWallMountEffects { WALL_MOUNT_EFFECT_NONE = 0, WALL_MOUNT_EFFECT_TELEPORT = 1, WALL_MOUNT_EFFECT_HEAL = 2 };
@@ -104,7 +104,7 @@ class CTCWallMountEffects : public CTCBase { public:
 
 void CTCWallMountEffects::DoEffect()
 {
-    FrameEffectLastUsed = CWorld::GetWorldFrame();
+    FrameEffectLastUsed = CWorld::GetFrame();
     switch (PDef->Effect) {
     case WALL_MOUNT_EFFECT_TELEPORT: {
         CThing* hero = GetPlayerManager()->GetMainPlayer().GetHeroThing();
@@ -149,7 +149,7 @@ CPlayer& CPlayerManager::GetMainPlayer() { return g_player; }
 static CPlayerManager g_manager;
 CPlayerManager* CTCBase::GetPlayerManager() { return &g_manager; }
 void CTCBase::v00() {}
-long CWorld::GetWorldFrame() { return 4321; }
+long CWorld::GetFrame() { return 4321; }
 
 static CThingPhysical g_creature, g_mount;
 static CTCTeleporter g_tp;

@@ -104,7 +104,7 @@ class CManager { public:
     virtual void m30(); virtual void m31(); virtual void m32(); virtual void m33(); virtual void m34(); virtual void m35();
     virtual void m36();
     virtual void ResetC();                                   // slot 37 (+0x94)
-    static CManager* GetInstance();                          // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                          // 0x0041E5F2
 };
 }
 struct CGlobalList { void clear(); };                        // 0x004855A3

@@ -1,7 +1,7 @@
 // CBalvMarker::Main() -- spooky balverine marker: hold an alive filter over Me; each round create "CREATURE_BALVERINE_01" (script name "SpookyBalv") at the marker, take it under scripted control (priority 4), wait until the marker is on screen, play its "ATTACK_THEN_JUMP_INTO_SKY" combat animation, wait for it to finish, remove the creature, then wait until the marker is off screen again
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EFEB60, 751 bytes (752 with padding); entity-script vtable slot 1 (Main).
-// Callees: CScriptThing copy ctor 0x004ABE90 / ~CScriptThing 0x004AA840 (out-of-line copy) / ~CBase 0x0099A2E0,
+// Callees: CScriptThing copy ctor 0x004ABE90 / ~CScriptThing 0x004AA840 (out-of-line copy) / ~CBaseClass 0x0099A2E0,
 //   ~CIsThingAlive 0x00E241B0 (out of line in this module, filter vtable 0x012C32F0), CEntityScriptBase::SetPredicate
 //   0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   CBaseObject ctor 0x0099A380 / dtor 0x0099A430, handle (vtable 0x0127094C) PlayCombatAnimation 0x007E73E0,
@@ -42,17 +42,18 @@ struct CCountedPointerWords {                          // CCountedPointer<T> {Da
         Info = 0;
     }
 };
-struct CBase {
-    virtual ~CBase();                                  // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                  // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                          // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
     virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
     virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
     CCountedPointerWords PImp;                         // +0x04
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     virtual ~CScriptThing();                                   // 0x004AA840
 };
-struct CScriptThingInline : CBase {                    // the same object, destroyed by the inline body
+struct CScriptThingInline : CBaseClass {                    // the same object, destroyed by the inline body
     CCountedPointerWords PImp;
     __forceinline ~CScriptThingInline() { PImp.ReleaseInline(); }
 };

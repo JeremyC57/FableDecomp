@@ -5,7 +5,7 @@
 // CBase-derived class with no RTTI row: its only direct caller is the scalar deleting destructor 0x00CBD4F0, and nine `jmp`
 // thunks at 0x00CDD100.. forward to it. The class is named by address.
 // Callees: ~CCharString @ 0x0099EAE0, _Destroy_range over 12-byte {CCharString, CCountedPointer<..>} pairs @ 0x00CBB200 and
-// <pair<long, CCountedPointer<CRegionConnectionNode> > > @ 0x00CBB1B0 (`__fastcall(first, last, const allocator&)`), the list's clear() @ 0x00CBB090, free @ 0x00BFEA14, CBase::~CBase @ 0x0099A300.
+// <pair<long, CCountedPointer<CRegionConnectionNode> > > @ 0x00CBB1B0 (`__fastcall(first, last, const allocator&)`), the list's clear() @ 0x00CBB090, free @ 0x00BFEA14, CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300.
 // Layout: CBase vptr +0, STLport list (header pointer) +4, two 16-byte CVectorMaps +8 / +0x18, two words +0x28/+0x2c, a vector of
 // 24-byte records (CCharString at +0x10) +0x30.
 // Shape: no vtable store, so the class is `__declspec(novtable)` over CBase's out-of-line virtual destructor; an empty user dtor,
@@ -21,9 +21,10 @@ class CCharString { public:
     void* m_pData;
     ~CCharString();                         // 0x0099EAE0
 };
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                       // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                       // 0x0099A300
+};
 template <class T> struct allocator { allocator() {} };
 template <class T> inline void _Destroy(T* first, T* last)
 {
@@ -81,7 +82,7 @@ struct CEventList {                         // STLport list: the header node poi
             free(_M_node);
     }
 };
-struct __declspec(novtable) CRecordSet_00cbd510 : CBase {
+struct __declspec(novtable) CRecordSet_00cbd510 : CBaseClassNonCopyable {
     CEventList                    m_list;           // +0x04
     CVectorMap<SConnectionPair>   m_connections;    // +0x08
     CVectorMap<SNamedCountedPair> m_namedPointers;  // +0x18

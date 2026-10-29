@@ -7,8 +7,9 @@ class CThreadedFileManager { public: void RemovePendingRequests(CThreadedFile*) 
 static CThreadedFileManager g_ThreadedFileManager;
 static int CloseHandle(void*) { ++g_closed; return 1; }
 class CWideString { public: void* m_pData; ~CWideString() { g_order[g_n++] = 2; } };
-namespace N_0099a300 { struct CBase { virtual ~CBase() { g_order[g_n++] = 1; } }; } using N_0099a300::CBase;
-class CThreadedFile : public CBase { public:
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() { g_order[g_n++] = 1; } };
+class CThreadedFile : public CBaseClassNonCopyable { public:
     long DeviceID; void* FileHandle; CWideString Filename; unsigned long Length, PhysicalSortKey;
     bool OpenedForWrite, OpenFlag;
     void Close()
@@ -28,7 +29,7 @@ int main()
 {
     CThreadedFile* f = new CThreadedFile;
     f->FileHandle = (void*)0x40; f->OpenFlag = true; f->OpenedForWrite = true;
-    CBase* p = f;
+    CBaseClassNonCopyable* p = f;
     delete p;
     if (g_purged != 1 || g_closed != 1 || g_n != 2 || g_order[0] != 2 || g_order[1] != 1) { std::printf("00991450_TEST FAIL\n"); return 1; }
     g_n = 0;

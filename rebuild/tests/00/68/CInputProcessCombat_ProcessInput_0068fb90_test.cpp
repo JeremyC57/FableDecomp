@@ -1,7 +1,8 @@
 // Behaviour test for 0x0068FB90 (CInputProcessCombat::ProcessInput): at most one joystick-queue pull per frame, then the combat processing.
 #include <cstdio>
 static int g_frame = 0;
-static int GFGetCurrentFrame() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 struct Event { int kind; int player; };
 struct InputManager {
     bool pending; int askedPlayer; int asks;
@@ -14,8 +15,8 @@ struct Combat {
     void ProcessCombatInput(const Event&) { ++processed; }
     void ProcessInput(const Event& event)
     {
-        if (lastFrame != GFGetCurrentFrame()) {
-            lastFrame = GFGetCurrentFrame();
+        if (lastFrame != CWorld::GetFrame()) {
+            lastFrame = CWorld::GetFrame();
             Event joystickEvent = { 0, 0 };
             if (g_input.IsJoystickEventInQueue(0x11, 0, &joystickEvent, playerNumber)) ++queued;
         }

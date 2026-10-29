@@ -100,7 +100,7 @@ public:
     CThingDefPointer PDef;                              // +0x70
 };
 class CWorld { public:
-    static long __fastcall GetWorldFrame();             // 0x0049D870
+    static long __fastcall GetFrame();             // 0x0049D870
 };
 class CDefinitionManager { public:
     bool GetDef(long index, CThingDefPointer* out);     // 0x0042AF3C (CDefinitionManager::GetDef<CThingBaseDef>)
@@ -176,7 +176,7 @@ void CTCHeroMorph::AddTattoo(long tattooDefIndex)
                 Tattoos.push_back(def);
             }
             Changed = true;
-            FrameTattoosChanged = GetWorld()->GetWorldFrame();
+            FrameTattoosChanged = GetWorld()->GetFrame();
         }
     }
 }

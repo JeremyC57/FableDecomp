@@ -31,6 +31,8 @@ class CThing;
 class CThingObject;
 class CGameDefinitionManager { public:
     long GetDefGlobalIndexFromName(CCharString*); // 0x009ad410
+public:
+    static CGameDefinitionManager& __fastcall Get();   // 0x0044C6B0
 };
 // Retail getter 0x00449700 reads native MainPlayer at +0x1c; the donor header
 // places it at +0x20 because its Players vector is four bytes larger.
@@ -52,7 +54,6 @@ struct CVectorMapLong {
     CLongPointerPair* LowerBound(const long& key); // 0x0040f020
 };
 
-CGameDefinitionManager* __fastcall GetGameDefinitionManager(); // 0x0044c6b0
 CThingObject* __fastcall CreateObject(long definition, C3DVector* position, long playerID,
                                       float* orientation, unsigned long flags,
                                       const CCharString& name); // 0x00703210
@@ -74,7 +75,7 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
         C3DVector position = PBrain->Creature->GetPos();
         float orientation[6] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
 
-        long definition = GetGameDefinitionManager()->GetDefGlobalIndexFromName(definitionName);
+        long definition = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(definitionName);
         if (definition != 0)
         {
             CThingObject* thing;
@@ -82,7 +83,7 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
                 CCharString createName("", -1);
             thing = CreateObject(definition, &position, playerID, orientation, 0, createName);
             }
-            long item = GetGameDefinitionManager()->GetDefGlobalIndexFromName(itemName);
+            long item = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(itemName);
             carry->PutThingInCarrySlot(thing, item, true);
         }
     }

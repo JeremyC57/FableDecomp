@@ -9,7 +9,7 @@
 //   0x0099E4B0, CAFile::ParserIsSeparatorNext 0x00997DA0, CAFile::ParserReadPastSeparator 0x00997E90 (the catalog's
 //   second "ParserIsSeparatorNext" label), CAFile::ParserReadPastComponent 0x00998010 (this chunk),
 //   CStringParser::SetStringPos 0x009B9940, CAFile::ParserReadPastDriveLabel 0x00998170, CStringParser::NextItemExists
-//   0x009BA4F0, the comment list's destructor 0x004046B0, CBase::~CBase 0x0099A2E0. Literal "" 0x0122D70E.
+//   0x009BA4F0, the comment list's destructor 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0. Literal "" 0x0122D70E.
 // Layout: CAFile::CExpectedTextType {ComponentOK, SeparatorOK, DriveLabelOK, FinishedOK} (Ego_r.pdb, 4 bools);
 //   CParsedItem {Type +0, union +4, CCharString String +8}; retail CStringParser (0x28 bytes): vptr, String +4,
 //   BaseLineOffset +8, Filename +0xC, TempCharString +0x10, the 4-byte STLport comment list +0x14, ErrorCallback +0x18,
@@ -38,11 +38,10 @@ public:
     CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 
-class CBase
-{
+class CBaseClass {
 public:
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 
 class CStringParserCommentBoundaries;
@@ -56,7 +55,7 @@ public:
 };
 } // namespace std
 
-class CStringParser : public CBase                      // vtable 0x0122D874, 0x28 bytes
+class CStringParser : public CBaseClass                      // vtable 0x0122D874, 0x28 bytes
 {
 public:
     const char*   String;                               // +0x04

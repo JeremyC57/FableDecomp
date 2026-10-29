@@ -71,7 +71,7 @@ class CWorld {
 public:
     unsigned char            _pad00[0x74];
     COpinionReactionManager* OpinionReactionManager;    // +0x74
-    static unsigned long GetWorldFrame();               // 0x0049D870
+    static long __fastcall GetFrame();               // 0x0049D870
     COpinionReactionManager* GetOpinionReactionManager() const { return OpinionReactionManager; }
 };
 
@@ -156,7 +156,7 @@ void CTCTrespasser::LeavingRegion()
         CTCTrespassable* trespassable;
         if (trespassed->GetInterface(&trespassable, 0xbd)) {
             trespassable->BeingTrespassed = false;
-            FramePlayerLeft = CWorld::GetWorldFrame();
+            FramePlayerLeft = CWorld::GetFrame();
         }
     }
     TrespassingThing = CIntelligentPointer<CThing>(0);

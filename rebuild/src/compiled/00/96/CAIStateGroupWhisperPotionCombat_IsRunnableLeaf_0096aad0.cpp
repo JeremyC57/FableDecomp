@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0096AAD0, length 330 bytes (plain `ret`, virtual, bool).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 173 = bit 13 of the bitset dword at +0x34),
 //          CTCBoss::GetBossPhase @ 0x007AED10 (manifest "CWorld::DrawGetEnvironment" is propagated), CAIStateGroupBase::
-//          GetPWorld @ 0x008FCFC0 (manifest "CPlayer::GetCurrentMode" propagated), GetWorldFrame @ 0x0049D870 (static,
+//          GetPWorld @ 0x008FCFC0 (manifest "CPlayer::GetCurrentMode" propagated), CWorld::GetFrame @ 0x0049D870 (static,
 //          manifest "GFGetPreMainMemoryUsed"), CWorld::GetPRandomSeed @ 0x0049D810 (manifest "CVertexBufferWin32::DoSizeof"),
 //          GFROR13 @ 0x00497890, CBaseIntelligentPointer::GetPItem @ 0x00A01B50, CThing::GetPosition @ 0x004C73D0,
 //          CThingCreatureBase::GetCombatTypeDef @ 0x00666D10, the jump-position finder @ 0x0096A3C0 (manifest
@@ -77,7 +77,7 @@ class CTCBoss { public:                                // interface 173
 };
 
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
 unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
@@ -123,7 +123,7 @@ struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
 // against the creature's combat-type range.
 __forceinline bool CAIStateGroup_WhisperPotionCombat::RestampAndCheckRange()
 {
-    FrameLastRun = GetPWorld()->GetWorldFrame();
+    FrameLastRun = GetPWorld()->GetFrame();
     long rate = g_FrameRate;
     unsigned long* seed = GetPWorld()->GetPRandomSeed();
     FrameLastRun += WorldRandomRange(*seed, rate * 5);
@@ -148,7 +148,7 @@ bool CAIStateGroup_WhisperPotionCombat::IsRunnableLeaf()
     default:
         return false;
     }
-    long delta = GetPWorld()->GetWorldFrame() - FrameLastRun;
+    long delta = GetPWorld()->GetFrame() - FrameLastRun;
     if ((float)delta > (float)g_FrameRate * 10.0f) {
         if (RestampAndCheckRange()) {
             if (FindValidCombatPositions(&Jump_to_pos))

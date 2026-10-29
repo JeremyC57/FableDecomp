@@ -17,7 +17,7 @@
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 class CWorld { public:
-    static long GetFrameNumber();              // 0x0049D870 (`mov eax,[0x013B89BC] ; ret`, no this)
+    static long __fastcall GetFrame();              // 0x0049D870 (`mov eax,[0x013B89BC] ; ret`, no this)
 };
 
 class CTCBase
@@ -82,7 +82,7 @@ struct CTCPhysicsStandard : CTCPhysicsBase {   // 0x88 bytes
 
 void CTCPhysicsBase::UpdateOldPosition()
 {
-    long frame = GetWorld().GetFrameNumber();
+    long frame = GetWorld().GetFrame();
     if (OldPositionLastFrameSet != frame) {
         OldPosition = Position;
         OldPositionLastFrameSet = frame;

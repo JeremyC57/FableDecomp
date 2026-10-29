@@ -5,7 +5,7 @@
 //   "CS_GET_SWORD_OF_AEONS_REDEEM" 0x012EE5DC, "HERO" 0x01255174, "" 0x0122D70E, "SCRIPT_NAME_HERO" 0x0125D1C8.
 // Callees: IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0 / operator+ 0x0099F570 (__fastcall, hidden
 //   result in ecx), operator new 0x00BFEA1A (0x3c), CSpawnedFuncBase ctor 0x00CDD450 (spawned-func vtable 0x012EE458, callback
-//   CV_MazeResearchScript::UnLimboSword 0x00EA85E0), CQuestScript AddSpawnedFunction 0x00CB7E50, CBase dtor 0x0099A2E0, operator
+//   CV_MazeResearchScript::UnLimboSword 0x00EA85E0), CQuestScript AddSpawnedFunction 0x00CB7E50, CBaseClass dtor 0x0099A2E0, operator
 //   delete 0x00BFE9BC, scripted-thing handle ctor 0x007E72A0 / dtor 0x007E74D0 / operator= 0x008ABD10, cast map ctor 0x00CDBF70 /
 //   dtor 0x00CDBFB0 / operator[] 0x00CD3D2E, movie ctor 0x006E7B60 / dtor 0x006E7B80, RunCutsceneMacro 0x00CBFB7D (__fastcall);
 //   GameCalls slots 7, 8, 70 GetHero, 72 GetThingWithScriptName, 281 DeactivateQuestLater, 350/352 MiniMap add/remove marker,
@@ -63,9 +63,10 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
@@ -76,7 +77,7 @@ struct CBase {
 #define VPAD64(a) VPAD32(a##0) VPAD32(a##1)
 #define VPAD128(a) VPAD64(a##0) VPAD64(a##1)
 #define VPAD256(a) VPAD128(a##0) VPAD128(a##1)
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     VPAD16(ma) VPAD2(mb) VPAD1(mc)                      // slots 1..19
     virtual bool MsgIsUsedBy(const CCharString& name) const;   // slot 20 (+0x50)
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04

@@ -49,6 +49,8 @@ public:
     bool IsCameraYZInverted() const { return UseNewProfileValues ? CameraYZInvertedNewProfile : CameraYZInverted; }
     void SetCameraYZInverted(bool inverted, bool apply); // 0x0040D2F0
     void Save();                                         // 0x0040A740
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> class CTBaseSingleton {
 public:
@@ -65,16 +67,16 @@ protected:
 bool CFrontEndManager::CreateNewProfile(CWideString& name)
 {
     bool ok = true;
-    if (!CTBaseSingleton<CUserProfileManager>::Get().IsEnoughSpaceForProfile())
+    if (!CUserProfileManager::Get().IsEnoughSpaceForProfile())
         return false;
-    CTBaseSingleton<CUserProfileManager>::Get().UseNewProfileValues = false;
-    if (CTBaseSingleton<CUserProfileManager>::Get().GetProfileDir(name, true).GetLength() == 0)
+    CUserProfileManager::Get().UseNewProfileValues = false;
+    if (CUserProfileManager::Get().GetProfileDir(name, true).GetLength() == 0)
         ok = false;
-    CTBaseSingleton<CUserProfileManager>::Get().SetProfileName(name, false);
-    CTBaseSingleton<CUserProfileManager>::Get().SetDefaultValues();
-    CTBaseSingleton<CUserProfileManager>::Get().ApplyNewProfileValues();
-    CTBaseSingleton<CUserProfileManager>::Get().SetCameraYZInverted(CTBaseSingleton<CUserProfileManager>::Get().IsCameraYZInverted(), true);
-    CTBaseSingleton<CUserProfileManager>::Get().Save();
+    CUserProfileManager::Get().SetProfileName(name, false);
+    CUserProfileManager::Get().SetDefaultValues();
+    CUserProfileManager::Get().ApplyNewProfileValues();
+    CUserProfileManager::Get().SetCameraYZInverted(CUserProfileManager::Get().IsCameraYZInverted(), true);
+    CUserProfileManager::Get().Save();
     {
         CCharString def("UI_FRONTEND_MAIN_MENU_NO_LIVEAWARE_NO_CONTINUE");
         SetMainMenuDefName(def);

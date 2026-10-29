@@ -4,7 +4,7 @@
 // "GFGetPreMainMemoryUsed" is propagated), called twice; CTCShopKeeper::CalcAreOtherPeopleInShop @ 0x00799140.
 // Shape: `force || now - last > 15` (signed `jle`), the time re-read for the store, the flag returned from memory.
 class CWorld { public:
-    static long GetWorldFrame();             // 0x0049D870
+    static long __fastcall GetFrame();             // 0x0049D870
 };
 
 class CTCShopKeeper { public:
@@ -18,8 +18,8 @@ class CTCShopKeeper { public:
 
 bool CTCShopKeeper::GetAreOtherPeopleInShop(bool force)
 {
-    if (force || CWorld::GetWorldFrame() - m_lastCheckTime > 15) {
-        m_lastCheckTime = CWorld::GetWorldFrame();
+    if (force || CWorld::GetFrame() - m_lastCheckTime > 15) {
+        m_lastCheckTime = CWorld::GetFrame();
         m_areOtherPeopleInShop = CalcAreOtherPeopleInShop();
     }
     return m_areOtherPeopleInShop;

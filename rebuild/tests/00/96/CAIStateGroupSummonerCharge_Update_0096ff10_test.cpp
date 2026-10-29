@@ -101,7 +101,7 @@ struct CCreatureAction_SummonerChargeOutOf : CCombatActionBase {
     CCreatureAction_SummonerChargeOutOf(CThingCreatureBase* owner);
 };
 class CWorld { public:
-    static long GetWorldFrame();
+    static long __fastcall GetFrame();
 };
 long g_FramesPerSecond = 30;
 class CSummonerDef { public:
@@ -153,7 +153,7 @@ void CAIStateGroup_SummonerCharge::Update()
     CWorld* world = GetPWorld();
     long fps = g_FramesPerSecond;
     const CSummonerDef* def = PDef;
-    NextFrameToCharge = (long)((float)world->GetWorldFrame() + (float)fps * def->ChargeDelay);
+    NextFrameToCharge = (long)((float)world->GetFrame() + (float)fps * def->ChargeDelay);
     bool reached = false;
     bool done = false;
     long actionCode = PBrain->PCreature->PCurrentAction->GetActionCode();
@@ -219,7 +219,7 @@ CCombatActionBase::CCombatActionBase(CThingCreatureBase* owner, CThing* thing, l
 CCombatActionBase::~CCombatActionBase() { g_combatDtor++; }
 CCreatureAction_SummonerChargeOutOf::CCreatureAction_SummonerChargeOutOf(CThingCreatureBase* owner, CThing* thing) : CCombatActionBase(owner, thing, 0, CSoundPair()) { if (owner == &g_creature && thing == &g_target) g_outOfCtor2++; }
 CCreatureAction_SummonerChargeOutOf::CCreatureAction_SummonerChargeOutOf(CThingCreatureBase* owner) : CCombatActionBase(owner, 0, 0, CSoundPair()) { if (owner == &g_creature) g_outOfCtor1++; }
-long CWorld::GetWorldFrame() { return 1000; }
+long CWorld::GetFrame() { return 1000; }
 CWorld* CAIStateGroupBase::GetPWorld() { return &g_world; }
 void CAIStateGroupBase::Terminate() { g_terminate++; }
 long CAIStateGroupBase::AIAction_DoNothing() { g_nothing++; return g_nothingResults[g_nothingCalls++]; }

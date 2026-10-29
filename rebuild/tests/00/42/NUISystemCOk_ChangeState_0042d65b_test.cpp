@@ -20,7 +20,7 @@ public:
 };
 class CManager : public CObservable {
 public:
-    static CManager* GetInstance() { static CManager instance; return &instance; }
+    static CManager* __fastcall GetInstance() { static CManager instance; return &instance; }
 };
 class CComponentRoot { public: virtual ~CComponentRoot() {} virtual void ChangeState(unsigned long) {} };
 class CComponentBase3 { public: virtual ~CComponentBase3() {} };

@@ -67,7 +67,7 @@ class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
-    static long __fastcall GetWorldFrame();     // 0x0049D870
+    static long __fastcall GetFrame();     // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 
@@ -122,9 +122,9 @@ bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable()
         } else if (NumberOfTimesPlayerTold > 0) {
             const CWorld& world = GetWorld();
             long fps = g_framesPerSecond;
-            if (world.GetWorldFrame() - FrameLastToldPlayer > (unsigned long)(fps * 120)) {
+            if (world.GetFrame() - FrameLastToldPlayer > (unsigned long)(fps * 120)) {
                 --NumberOfTimesPlayerTold;
-                FrameLastToldPlayer = PeekWorld().GetWorldFrame();
+                FrameLastToldPlayer = PeekWorld().GetFrame();
             }
         }
         if (Player.GetPItem() != 0 && !(Player.GetPItem()->m_flags91 & 1) && IsPlayerCarryingWeapon()) {

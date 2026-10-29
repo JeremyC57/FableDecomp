@@ -11,9 +11,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1) : PStringData(text) { (void)length; }
     ~CCharString() {}
 };
-struct CBase {
-    virtual ~CBase() {}
-    CBase() {}
+class CBaseClass {
+public:
+    virtual ~CBaseClass() {}
+    CBaseClass() {}
 };
 struct SScriptThingInfo {
     long m_references;
@@ -23,11 +24,11 @@ struct SScriptThingInfo {
 struct CScriptThingImpl {
     virtual bool IsAlive() { return g_frames < g_aliveUntil; }
 };
-class CScriptThing : public CBase { public:
+class CScriptThing : public CBaseClass { public:
     CScriptThingImpl* PImp_Data;
     SScriptThingInfo* PImp_Info;
     CScriptThing() : PImp_Data(0), PImp_Info(0) {}
-    CScriptThing(const CScriptThing& other) : CBase(), PImp_Data(other.PImp_Data), PImp_Info(other.PImp_Info) { if (PImp_Info) ++PImp_Info->m_references; }
+    CScriptThing(const CScriptThing& other) : CBaseClass(), PImp_Data(other.PImp_Data), PImp_Info(other.PImp_Info) { if (PImp_Info) ++PImp_Info->m_references; }
     ~CScriptThing()
     {
         if (PImp_Info) {

@@ -123,7 +123,7 @@ class CPlayer { public:
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;                  // 0x0049D9D0
-    static long GetWorldFrame();                        // 0x0049D870
+    static long __fastcall GetFrame();                        // 0x0049D870
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x24];
@@ -168,7 +168,7 @@ bool CAIStateGroup_MinionGuardFollowPlayer::IsStillValidInternal(bool)
                 }
                 CWorld* world = GetPWorld();
                 long nextFrame = village->NextFollowFrame;
-                if (world->GetWorldFrame() < nextFrame)
+                if (world->GetFrame() < nextFrame)
                     return false;
                 CTCBuildingGuarded* guarded;
                 if (building->GetInterface(&guarded, 0xd5) && guarded->Guarded && !building->HasTC(0x53))

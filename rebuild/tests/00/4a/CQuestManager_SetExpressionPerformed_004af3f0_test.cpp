@@ -14,7 +14,7 @@ class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name) { return strcmp(name.m_text, "EXPRESSION_HEROIC_STANCE") == 0 ? 321 : -1; }
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
-    static CGameDefinitionManager& Get() { static CGameDefinitionManager s; return s; }
+    static CGameDefinitionManager& __fastcall Get() { static CGameDefinitionManager s; return s; }
 };
 
 class CMessageEventManager { public:

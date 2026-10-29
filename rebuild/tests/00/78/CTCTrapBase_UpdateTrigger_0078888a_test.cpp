@@ -1,7 +1,7 @@
 #include <cstdio>
 class CTrapDef { public: long TriggerType; };
 static long g_frame = 0;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 static int g_updates = 0;
 class CTCTrapBase { public:
@@ -12,7 +12,7 @@ class CTCTrapBase { public:
     void UpdateTrigger()
     {
         if (Active) {
-            if ((GetWorld()->GetWorldFrame() & 8) == 0) {
+            if ((GetWorld()->GetFrame() & 8) == 0) {
                 if (PTrapDef_Object->TriggerType == 1)
                     UpdateTriggerOnProximity();
             }

@@ -1,7 +1,7 @@
 // CHTG_Prisoner::Main() -- the bound prisoner on the Hanging Tree (good) quest: take scripted control, bind his hands and make him unpushable, wait for the party to be set up, then until the quest state reaches 7: in state 2 follow the bandit leader; in state 5 find the nearest REGION_EXIT_POINT and, when it is a real route, try to escape towards it (the leader shouts for the guards when he gets 12 units away, he dies and fails the mission on reaching the exit, and goes back to following the leader when the hero catches him); in any other state stand still; finally release him
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D71B30, 1453 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, CBase ctor 0x0099A2D0, RegisterFilter 0x00F35B10,
+// Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, CBaseClass ctor 0x0099A2D0, RegisterFilter 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting 0x00CD23B9 /
 //   Release 0x00CD2770 / MoveToPosition 0x007E72F0 / FollowThing 0x007E7320 / ClearCommands 0x007E7360 / IsPerformingScriptTask
 //   0x007E7450 / dtor 0x007E74D0, IsDistanceBetweenThingsUnder 0x00CBE2FF / Over 0x00CBE3EA / FadeOutAndKillEntity 0x00CBE716
@@ -62,12 +62,13 @@ struct CScriptThingImpl {                              // the game-side thing be
     virtual void i071() const; virtual void i072() const; virtual void i073() const; virtual void i074() const;
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-namespace N_0099a2d0 { struct CBase {                                          // vtable 0x01231710
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:                                           // vtable 0x01231710
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
+};
 
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
     virtual const CCharString& GetDataString() const { return !PImp.Data ? g_EmptyString : PImp.Data->GetDataString(); }   // slot 3 (+0xc)
     virtual void s004() const; virtual void s005() const;
@@ -85,7 +86,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
-    CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     CScriptThing() { }
     virtual ~CScriptThing();                                    // 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980

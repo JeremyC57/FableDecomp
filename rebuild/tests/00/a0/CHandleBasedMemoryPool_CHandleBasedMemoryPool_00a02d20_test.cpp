@@ -5,10 +5,11 @@
 #define CHECK(c) do { if (!(c)) { std::printf("00a02d20_TEST FAIL\n"); return 1; } } while (0)
 
 static int g_baseCalls = 0, g_nameCalls = 0;
-struct CBase { CBase() { ++g_baseCalls; } virtual ~CBase() { } };
+class CBaseClassNonCopyable {
+public:  CBaseClassNonCopyable() { ++g_baseCalls; } virtual ~CBaseClassNonCopyable() { } };
 class CCharString { public: void* m_pData; CCharString() : m_pData(0) { ++g_nameCalls; } };
 struct CHandleInfoArray { void* m_pData; unsigned int m_size; unsigned int m_capacity; CHandleInfoArray() : m_pData(0), m_size(0), m_capacity(0) { } };
-class CHandleBasedMemoryPool : public CBase { public:
+class CHandleBasedMemoryPool : public CBaseClassNonCopyable { public:
     void* Buffer; void* UnalignedBuffer; int PoolSize; int AllocatedSize; int NumAllocations; int LockCount;
     int LargestFreeArea; unsigned int MemoryFlags; bool MultiThreaded; bool ShutdownFlag; bool EnableDefrag; bool EnableFullDefragIfPartialFails;
     unsigned int MaxFreeSizeBeforeDefrag; unsigned int MaxFreeSizeBeforeFailure; int MaxBlocksToTryOnPartialDefrag; void* FailureHandler;

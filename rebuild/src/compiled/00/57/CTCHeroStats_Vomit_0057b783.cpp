@@ -10,7 +10,7 @@
 //          this TU), std::bitset::test @ 0x00410DE0, CVectorMap::LowerBound @ 0x0040F020,
 //          CTCHeroOnlineScoreboard::UpdateScoreForActivity @ 0x0055F3B0, CThingCreatureBase::IsFreeToPerformAction
 //          @ 0x00662210 / SetCurrentAction @ 0x006644F0, CThing::GetPos() @ 0x004C73D0,
-//          CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990, GFGetCurrentFrame() @ 0x0049D870.
+//          CTCHeroOpinionDeedLog::PostDeed @ 0x006C6990, CWorld::GetFrame() @ 0x0049D870.
 // Globals: 3.0f @ 0x0122DED4, 1.0f @ 0x0122DED8, 2^32 @ 0x0122DCB4, g_framesPerSecond @ 0x01375550.
 // Shape: the loop time is `(Drunkenness - 3) / def` capped at the def's maximum, then a random whole number of seconds
 // from the def's minimum (unsigned GFRandom result, hence the 2^32 fix-up); the animation names are implicit
@@ -124,7 +124,7 @@ class CGameDefinitionManager { public:
 };
 
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                 // 0x0049D870
 extern long g_framesPerSecond;                       // 0x01375550
 
 class CTCBase
@@ -176,7 +176,7 @@ void CTCHeroStats::Vomit()
             hero->SetCurrentAction(action);
         }
         long fps = g_framesPerSecond;
-        FrameEndVomit = (long)(GFGetCurrentFrame() + fps * loopTime);
+        FrameEndVomit = (long)(CWorld::GetFrame() + fps * loopTime);
         BeerReservoir = 0.0f;
     }
 }

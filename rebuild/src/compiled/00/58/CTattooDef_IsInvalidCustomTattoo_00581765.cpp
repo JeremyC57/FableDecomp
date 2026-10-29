@@ -40,7 +40,7 @@ class CCharString { public:
 class CUserProfileManager { public:
     unsigned char _pad00[8];
     CWideString ProfileName;                                // +0x08
-    static CUserProfileManager* Get();                      // 0x0040D2A0
+    static CUserProfileManager& __fastcall Get();                      // 0x0040D2A0
 };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 class CDiskFileWin32 { public:                                     // 0x1c bytes
@@ -64,7 +64,7 @@ bool CTattooDef::IsInvalidCustomTattoo() const
 {
     if (BankIndex != -1)
         return false;
-    CUserProfileManager* profiles = CUserProfileManager::Get();
+    CUserProfileManager* profiles = &CUserProfileManager::Get();
     CWideString profileDir = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\";
     if (CAFile::PathExists(profileDir + CustomFileName.ToWideString())) {
         CWideString baseDir = NResourceDirectoryNames::GetCustomTattooDir() + L"\\";

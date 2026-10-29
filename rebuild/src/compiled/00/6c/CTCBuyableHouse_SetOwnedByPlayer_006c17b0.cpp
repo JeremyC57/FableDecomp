@@ -1,7 +1,7 @@
 // CTCBuyableHouse::SetOwnedByPlayer(bool owned) -- (un)register the house with the living hero (ownership flag, frame stamp, persisted state, the hero stats' house positions, eviction on sale), refresh the sign post and the player GUI
 // Retail 0x006C17B0, 435 bytes (tail `jmp` to CPlayerGui::Refresh with the argument slot reused). Callees: the
 // player-manager accessor @ 0x00686D40, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
-// GFGetCurrentFrame @ 0x0049D870 (__fastcall), CThing::SetAsGameStatePersisted(bool) @ 0x004C7880, CTCBase::GetWorld
+// CWorld::GetFrame @ 0x0049D870 (__fastcall), CThing::SetAsGameStatePersisted(bool) @ 0x004C7880, CTCBase::GetWorld
 // @ 0x00686A80, CWorld virtual slot 13 GetWorldMap, CWorldMap::GetCurrentRegionNumber @ 0x004FB150, CWorldMap::GetRegion
 // @ 0x004FC180, CVectorMap LowerBound @ 0x0040F020 (inlined GetInterface, CTCHeroStats = 4), CThing::GetPos @ 0x004C73D0,
 // CTCHeroStats::AddHousePosition @ 0x0057CB4B / RemoveHousePosition @ 0x0057ADF7, CTCBuyableHouse::Evict @ 0x006C0FD0,
@@ -48,7 +48,6 @@ class CPlayerManager { public:
     CPlayer* GetMainPlayer();                       // 0x00449970
 };
 CPlayerManager* GetPlayerManager();                 // 0x00686D40
-long __fastcall GFGetCurrentFrame();                // 0x0049D870
 
 class CRegion;
 class CWorldMap { public:
@@ -60,6 +59,8 @@ class CWorld { public:
     virtual void v05(); virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09();
     virtual void v10(); virtual void v11(); virtual void v12();
     virtual CWorldMap* GetWorldMap();               // slot 13 (+0x34)
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CTCHeroStats { public:
     void AddHousePosition(const CRegion& region, const C3DVector& pos);      // 0x0057CB4B
@@ -105,7 +106,7 @@ void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
     if (hero && !hero->Dead) {
         if (owned) {
             OwnedByPlayer = true;
-            FrameToNextCheckIfWeNeedToCreateAnything = GFGetCurrentFrame();
+            FrameToNextCheckIfWeNeedToCreateAnything = CWorld::GetFrame();
             Thing->SetAsGameStatePersisted(true);
             long region = GetWorld()->GetWorldMap()->GetCurrentRegionNumber();
             CTCHeroStats* stats;
@@ -114,7 +115,7 @@ void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
             stats->AddHousePosition(world->GetWorldMap()->GetRegion(region), Thing->GetPos());
         } else {
             OwnedByPlayer = false;
-            FrameToNextCheckIfWeNeedToCreateAnything = GFGetCurrentFrame();
+            FrameToNextCheckIfWeNeedToCreateAnything = CWorld::GetFrame();
             long region = GetWorld()->GetWorldMap()->GetCurrentRegionNumber();
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);

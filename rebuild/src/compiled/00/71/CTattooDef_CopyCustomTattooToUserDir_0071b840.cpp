@@ -38,7 +38,7 @@ class CCharString { public:
 class CUserProfileManager { public:
     unsigned char _pad00[8];
     CWideString ProfileName;                                // +0x08
-    static CUserProfileManager* Get();                      // 0x0040D2A0
+    static CUserProfileManager& __fastcall Get();                      // 0x0040D2A0
 };
 namespace N_0099a300 { struct CBase {
     virtual void v00();
@@ -71,7 +71,7 @@ class CTattooDef { public:
 
 bool CTattooDef::CopyCustomTattooToUserDir() const
 {
-    CUserProfileManager* profiles = CUserProfileManager::Get();
+    CUserProfileManager* profiles = &CUserProfileManager::Get();
     CWideString destination = NResourceDirectoryNames::GetSaveDir_0041a650() + GetValidProfileName(profiles->ProfileName) + L"\\" + CustomFileName.ToWideString();
     if (CAFile::PathExists(destination))
         return true;

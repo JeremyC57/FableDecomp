@@ -3,7 +3,7 @@
 class CMainGameComponent;
 class CGameDefinitionManager {
 public:
-    static const CGameDefinitionManager& Get();          // 0x0044C6B0
+    static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
 class CPlayerManager {
 public:
@@ -28,7 +28,7 @@ void CMainGameComponent::InitPlayerManager()
 }
 
 static CGameDefinitionManager g_defs; static CMainGameComponent* g_comp; static const CGameDefinitionManager* g_d; static CPlayerManager* g_new;
-const CGameDefinitionManager& CGameDefinitionManager::Get() { return g_defs; }
+ CGameDefinitionManager& CGameDefinitionManager::Get() { return g_defs; }
 CPlayerManager::CPlayerManager(CMainGameComponent& c, const CGameDefinitionManager& d) { g_comp = &c; g_d = &d; g_new = this; }
 template <class T> void scoped_ptr<T>::reset(T* p) { Ptr = p; }
 struct CMainGameComponent_T : CMainGameComponent { void Run() { InitPlayerManager(); } };

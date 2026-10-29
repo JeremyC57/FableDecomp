@@ -16,7 +16,7 @@ class COpinionReactionManager { public:
 class CWorld { public:
     unsigned char _pad00[0x74];
     COpinionReactionManager* POpinionReactionManager;   // +0x74
-    static long GetWorldFrame();                         // 0x0049D870
+    static long __fastcall GetFrame();                         // 0x0049D870
 };
 extern long g_hitCountDecaySeconds;                // 0x01375550
 class COpinionPersonalityDef { public:
@@ -57,7 +57,7 @@ bool CTCCreatureOpinionOfHero::UpdateHitTolerance(bool heavy)
 {
     NumberOfTimesHit += heavy ? 1.5f : 1.0f;
     long decaySeconds = g_hitCountDecaySeconds;
-    FrameToDecayNumberOfTimesHit = CWorld::GetWorldFrame() + decaySeconds * 0x78;
+    FrameToDecayNumberOfTimesHit = CWorld::GetFrame() + decaySeconds * 0x78;
     if (heavy)
         return true;
     return GetToleranceToBeingHitRemaining() - NumberOfTimesHit <= 0.0f;

@@ -56,11 +56,12 @@ struct CScriptThingImp {
     virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)
 };
 extern const C3DVector g_ZeroPos;                       // 0x0143E8E0
-struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     VPAD4(t1) VPAD1(t2)                                                  // slots 1..5
     virtual const C3DVector& GetPos() const { return PImp.Data == 0 ? g_ZeroPos : PImp.Data->GetPos(); }   // slot 6
     VPAD8(t7) VPAD4(t8) VPAD2(t9)                                        // slots 7..20

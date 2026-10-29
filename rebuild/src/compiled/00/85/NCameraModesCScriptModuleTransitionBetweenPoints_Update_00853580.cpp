@@ -7,7 +7,7 @@
 // members of the same object and either spelling gives retail's order. Focal position as a named local.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00853580, length 233 bytes (`ret`).
 // PDB: ?Update@CScriptModuleTransitionBetweenPoints@NCameraModes@@UAEXXZ (vtable 0x012759F4 slot 1).
-// Callees: GFGetCurrentFrame @ 0x0049D870 (`__fastcall`), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times on
+// Callees: CWorld::GetFrame @ 0x0049D870 (`__fastcall`), CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (three times on
 // PThing), CTCGraphicAppearance::GetCameraFocalPos(float) @ 0x004C12D0 (C3DVector by hidden pointer).
 // Layout: Ego_r.pdb NCameraModes::CScriptModuleTransitionBetweenPoints (0x90 bytes): PThing +0x4c, Increment +0x54,
 // LookAtIncrement +0x60, LookAtPos +0x6c, StartPos +0x78, EndFrame +0x84, FOV +0x88, PreventSelfTermination +0x8c, over
@@ -17,7 +17,7 @@
 // temporary copied by integer moves); the alive test is the GetPItem null test plus the raw dead bit; the focal position
 // lands in a named local (same frame slot) copied to LookAtPos (read back from the frame; the bare assignment copies through
 // the returned pointer and loads the component into eax); the drift is an inline `+=` straight into the member.
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                 // 0x0049D870
 
 class C3DVector { public:
     float X, Y, Z;
@@ -81,7 +81,7 @@ public:
 
 void CScriptModuleTransitionBetweenPoints::Update()
 {
-    if (GFGetCurrentFrame() < EndFrame) {
+    if (CWorld::GetFrame() < EndFrame) {
         POwner->Position = POwner->Position + Increment;
         if (PThing.GetPItem() && !PThing.GetPItem()->m_dead) {
             C3DVector focal = PThing.GetPItem()->GetPTCGraphicAppearance()->GetCameraFocalPos(1.0f);

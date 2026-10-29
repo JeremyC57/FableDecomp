@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4A740, length 335 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("BanditLeader" @ 0x012E4C14,
 //   "BanditTollVillage" @ 0x012E4FB0), IsDone @ 0x00F35B30, ~CScriptThing @ 0x004AA840 (inlined at the first temporary,
-//   out of line at the other two), CBase::~CBase @ 0x0099A2E0, operator delete @ 0x00BFE9BC (the count block);
+//   out of line at the other two), CBaseClass::~CBaseClass @ 0x0099A2E0, operator delete @ 0x00BFE9BC (the count block);
 //   CScriptThing slots 3 GetDataString, 6 GetPos, 76 IsDead (virtual on the returned temporary); CGameScriptInterface
 //   (vtable 0x01260F0C) slots 72 GetThingWithScriptName, 91 CreateCreature, 492 EntityAttachToVillage.
 // Layout: entity-script base {vptr, Game +4, CScriptThing Me +8}; CScriptThing {vptr, CCountedPointer PImp {object,
@@ -40,10 +40,11 @@ struct CCountedPointer {
         m_pCount = 0;
     }
 };
-struct CBase {
-    virtual ~CBase();                              // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                              // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                     // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
     virtual ~CScriptThing() { }                    // slot 0; complete destructor 0x004AA840
     virtual void v001(); virtual void v002();
     virtual CCharString GetDataString() const;                           // slot 3 (+0xc)

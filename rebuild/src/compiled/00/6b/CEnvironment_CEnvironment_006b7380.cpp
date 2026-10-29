@@ -12,7 +12,7 @@
 //   operator delete 0x00BFE9BC (both scoped pointers), std::__destroy_aux 0x006B6FF0 (the pallette's day sets), 0x006B6610
 //   (the theme channels) and 0x006B6F50 (the priority stacks), free 0x00BFEA14 (the three vector blocks), the vector
 //   destructor iterator 0x00401400 with ~CIDrawEnvironmentTextureSet 0x006B5B00 (each blended theme's TextureSets[3]),
-//   CBase::~CBase 0x0099A300.
+//   CBaseClassNonCopyable::~CBaseClassNonCopyable 0x0099A300.
 // Shape: the compiler-generated member destruction of an empty user destructor. CEnvironment is `__declspec(novtable)` --
 //   retail stores no vtable of its own before the member destructors (GOTCHAS 24f). The interface's destructor is
 //   trivial, so its `delete` is a bare operator delete; the interpolator's is not, so it is null-tested. Each STLport
@@ -20,9 +20,9 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 void operator delete(void* block);                          // 0x00BFE9BC
 
-class CBase {
-public:
-    virtual ~CBase();                                       // 0x0099A300
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
 };
 
 class CThing;
@@ -167,7 +167,7 @@ public:
 
 class CGameDefinitionManager;
 
-class __declspec(novtable) CEnvironment : public CBase {
+class __declspec(novtable) CEnvironment : public CBaseClassNonCopyable {
 public:
     CGameDefinitionManager* DefinitionManager;              // +0x04
     float  SunlightAttenuatorAngleFadeStart;                // +0x08

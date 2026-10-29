@@ -11,9 +11,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1) : PStringData(text) { (void)length; }
     ~CCharString() {}
 };
-struct CBase {
-    virtual ~CBase() {}
-    CBase() {}
+class CBaseClass {
+public:
+    virtual ~CBaseClass() {}
+    CBaseClass() {}
 };
 class CCPPointerInfo { public:
     long RefCount;
@@ -40,10 +41,10 @@ template <class T> class CCountedPointer { public:
 struct CScriptThingImpl {
     virtual bool MsgIsKilledBy(const CCharString& killer) { ++g_killedQueries; if (std::strcmp(killer.PStringData, "") != 0) g_killedQueries += 100; return g_frames >= g_killedAt; }
 };
-class CScriptThing : public CBase { public:
+class CScriptThing : public CBaseClass { public:
     CCountedPointer<CScriptThingImpl> PImp;
     CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
-    CScriptThing(const CScriptThing& other) : CBase() { PImp.Data = other.PImp.Data; PImp.Info = other.PImp.Info; if (PImp.Info) ++PImp.Info->RefCount; }
+    CScriptThing(const CScriptThing& other) : CBaseClass() { PImp.Data = other.PImp.Data; PImp.Info = other.PImp.Info; if (PImp.Info) ++PImp.Info->RefCount; }
     ~CScriptThing() {}
     bool MsgIsKilledBy(const CCharString& killer)
     {

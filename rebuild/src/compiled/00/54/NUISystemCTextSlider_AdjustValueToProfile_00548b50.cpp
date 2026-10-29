@@ -90,7 +90,7 @@ class CUserProfileManager { public:                     // retail = Ego_r.pdb wi
     bool  NewProfileToUseWASD;                   // +0x78
     unsigned char _pad79[0xd7 - 0x79];
     bool  TutorialSystemEnabledNewProfile;       // +0xd7
-    static CUserProfileManager* Get();           // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
+    static CUserProfileManager& __fastcall Get();           // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     bool IsCameraXYInverted() const;             // 0x00548590
     bool IsCameraYZInverted() const;             // 0x005485B0
     bool IsVibrationEnabled() const;             // 0x00548570
@@ -154,24 +154,24 @@ void CTextSlider::AdjustValueToProfile()
     PreviouslySelectedChild = SelectedChild;
     if (PDefAction != 0) {
         switch (PDefAction) {
-        case 0x2b:  SelectedChild = CUserProfileManager::Get()->IsCameraXYInverted(); break;
-        case 0x2c:  SelectedChild = CUserProfileManager::Get()->IsCameraYZInverted(); break;
-        case 0x2d:  SelectedChild = CUserProfileManager::Get()->IsVibrationEnabled(); break;
-        case 0x2e:  SelectedChild = CUserProfileManager::Get()->IsUsingHeadPhones(); break;
-        case 0x2f:  SelectedChild = CUserProfileManager::Get()->IsSubtitlingEnabled(); break;
-        case 0x53:  SelectedChild = CUserProfileManager::Get()->IsTutorialSystemEnabled(); break;
-        case 0x5d:  SelectedChild = CUserProfileManager::Get()->IsGuildMasterEnabled(); break;
-        case 0x5e:  SelectedChild = CUserProfileManager::Get()->IsHUDTooltipEnabled(); break;
-        case 0x54:  SelectedChild = CUserProfileManager::Get()->IsShowingBuddyNames(); break;
-        case 0x139: SelectedChild = CUserProfileManager::Get()->NewProfileToUseWASD != 0; break;
-        case 0x102: SelectedChild = CUserProfileManager::Get()->GetResolution(); break;
-        case 0x13d: SelectedChild = CUserProfileManager::Get()->GetRefreshRate(); break;
-        case 0x109: SelectedChild = CUserProfileManager::Get()->GetAntialiasing(); break;
-        case 0x12c: SelectedChild = CUserProfileManager::Get()->GetScreenAspectRatio(); break;
-        case 0x106: SelectedChild = CUserProfileManager::Get()->IsVerticalSyncEnabled(); break;
-        case 0x140: SelectedChild = CUserProfileManager::Get()->IsCameraResetting(); break;
-        case 0x13f: SelectedChild = CUserProfileManager::Get()->IsCameraPCBowYZInverted(); break;
-        case 0x143: SelectedChild = CUserProfileManager::Get()->IsShowTargetingStatus(); break;
+        case 0x2b:  SelectedChild = CUserProfileManager::Get().IsCameraXYInverted(); break;
+        case 0x2c:  SelectedChild = CUserProfileManager::Get().IsCameraYZInverted(); break;
+        case 0x2d:  SelectedChild = CUserProfileManager::Get().IsVibrationEnabled(); break;
+        case 0x2e:  SelectedChild = CUserProfileManager::Get().IsUsingHeadPhones(); break;
+        case 0x2f:  SelectedChild = CUserProfileManager::Get().IsSubtitlingEnabled(); break;
+        case 0x53:  SelectedChild = CUserProfileManager::Get().IsTutorialSystemEnabled(); break;
+        case 0x5d:  SelectedChild = CUserProfileManager::Get().IsGuildMasterEnabled(); break;
+        case 0x5e:  SelectedChild = CUserProfileManager::Get().IsHUDTooltipEnabled(); break;
+        case 0x54:  SelectedChild = CUserProfileManager::Get().IsShowingBuddyNames(); break;
+        case 0x139: SelectedChild = CUserProfileManager::Get().NewProfileToUseWASD != 0; break;
+        case 0x102: SelectedChild = CUserProfileManager::Get().GetResolution(); break;
+        case 0x13d: SelectedChild = CUserProfileManager::Get().GetRefreshRate(); break;
+        case 0x109: SelectedChild = CUserProfileManager::Get().GetAntialiasing(); break;
+        case 0x12c: SelectedChild = CUserProfileManager::Get().GetScreenAspectRatio(); break;
+        case 0x106: SelectedChild = CUserProfileManager::Get().IsVerticalSyncEnabled(); break;
+        case 0x140: SelectedChild = CUserProfileManager::Get().IsCameraResetting(); break;
+        case 0x13f: SelectedChild = CUserProfileManager::Get().IsCameraPCBowYZInverted(); break;
+        case 0x143: SelectedChild = CUserProfileManager::Get().IsShowTargetingStatus(); break;
         }
     }
     if (PreviouslySelectedChild != SelectedChild) {

@@ -137,7 +137,7 @@ class CWorld { public:
     CGameScriptInterface* PGameScriptInterface;     // +0x38
     unsigned char _pad3c[0x8c - 0x3c];
     long LastRenderFrame;                           // +0x8C
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
     CGameScriptInterface* GetGameScriptInterface() const { return PGameScriptInterface; }
 };
 
@@ -170,9 +170,9 @@ bool CTCGraphicAppearance::WasRenderedLastFrame() const
         return true;
     if (const_cast<CTCGraphicAppearance*>(this)->GetWorld()->GetGameScriptInterface()->IsInMovieSequence())
         return true;
-    if (FrameUpdatedWasRenderedFlag < CWorld::GetWorldFrame()) {
+    if (FrameUpdatedWasRenderedFlag < CWorld::GetFrame()) {
         long lastRenderFrame = const_cast<CTCGraphicAppearance*>(this)->GetWorld()->LastRenderFrame;
-        if (lastRenderFrame + 1 < CWorld::GetWorldFrame())
+        if (lastRenderFrame + 1 < CWorld::GetFrame())
             UpdateRenderedLastFrameFlag();
     }
     return RenderedLastFrame;

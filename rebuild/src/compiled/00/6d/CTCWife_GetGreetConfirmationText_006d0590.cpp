@@ -9,7 +9,7 @@
 //        (`lea edx ; push edx`) and reads the bank into a named local AFTER it, which keeps the ctor call in each arm
 //        (with the bank inline VC7.1 merges the two ctor calls too); the GetTextBySymbol / operator= / dtor tails merge.
 // Layout: CTCWife FrameGotMarriedToThePlayer +0x20; CMainGameComponent text CDataBank* +0x14.
-class CWorld { public: static long GetWorldFrame(); };  // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };  // 0x0049D870
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);  // 0x0099EBF0
@@ -41,7 +41,7 @@ class CTCWife { public:
 };
 bool CTCWife::GetGreetConfirmationText(CWideString& text) const
 {
-    if (FrameGotMarriedToThePlayer <= CWorld::GetWorldFrame()) {
+    if (FrameGotMarriedToThePlayer <= CWorld::GetFrame()) {
         if (IsOfferingSex()) {
             CCharString symbol("TEXT_GUI_WIFE_GO_TO_BED", -1);
             CDataBank* bank = g_pMainGameComponent->TextBank;

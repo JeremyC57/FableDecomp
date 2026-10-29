@@ -3,10 +3,11 @@
 #include <cstring>
 #include <new>
 static int g_bases = 0;
-namespace N_0099a2d0 { struct CBase { CBase() { ++g_bases; } virtual ~CBase() {} }; } using N_0099a2d0::CBase;
-class CShaderConstantRange : public CBase { public: long Offset; unsigned long Count; CShaderConstantRange() : Offset(0), Count(0) {} };
+class CBaseClass {
+public:  CBaseClass() { ++g_bases; } virtual ~CBaseClass() {} };
+class CShaderConstantRange : public CBaseClass { public: long Offset; unsigned long Count; CShaderConstantRange() : Offset(0), Count(0) {} };
 struct CVertexShaderConstantArray { void* Data; long Count; long Allocated; CVertexShaderConstantArray() : Data(0), Count(0), Allocated(0) {} };
-class CVertexShaderConstantLayout : public CBase { public:
+class CVertexShaderConstantLayout : public CBaseClass { public:
     CShaderConstantRange Reserved, User, Compression, Ambient, FogColour, CameraPos;
     unsigned long LightSize;
     CShaderConstantRange LightArray, LightGlobals, LightAttenuations, CombinedProjectionMatrix, FogTransform, WorldMatrix, SphereMapMatrix;

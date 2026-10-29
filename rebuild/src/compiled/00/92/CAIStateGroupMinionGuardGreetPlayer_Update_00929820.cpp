@@ -1,7 +1,7 @@
 // CAIStateGroup_MinionGuardGreetPlayer::Update() -- greet the living player: push the village's next-greet frame 120 frames ahead, pick a speech (an opinion-graded TEXT_AI_GUARD_GREET_* tag when the hero-stats field is clear, else the creature opinion's greet group), speak it, then set the next-greet frame 1200 (spoken) or 120 frames ahead; always Terminate()
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00929820, length 623 bytes (+ int3 padding), plain `ret` (virtual).
 // Callees: CWorld::GetCurrentPlayer @ 0x0049D9D0, CPlayer::GetPControlledCreature @ 0x00487DC0, CVectorMap::LowerBound @ 0x0040F020
-// (creature 0x23 / 0x4F lookups) and its const instantiation @ 0x004365B0 (the player's interface 4), GetWorldFrame
+// (creature 0x23 / 0x4F lookups) and its const instantiation @ 0x004365B0 (the player's interface 4), CWorld::GetFrame
 // @ 0x0049D870, CTCVillageMember::GetPVillage @ 0x007EE540, _ftol @ 0x00BFEA70, CCharString() @ 0x0099E4B0 /
 // operator=(const char*) @ 0x0099EFE0 / ~CCharString @ 0x0099EAE0, GetPThingWorld @ 0x008FCFA0, GetOpinionValue
 // @ 0x00701750, CCharString_ComputeCRC32 @ 0x00404310 (__fastcall), GetTagFromCRC @ 0x009CC410,
@@ -95,6 +95,8 @@ class CWorld { public:
     unsigned char _pad[0x74];
     COpinionManager* POpinions;                 // +0x74
     COpinionManager* GetPOpinions() const { return POpinions; }
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x14];
@@ -103,7 +105,6 @@ class CMainGameComponent { public:
     CWorld* PWorld;                             // +0x24
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
-long GetWorldFrame();                           // 0x0049D870
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
@@ -144,7 +145,7 @@ void CAIStateGroup_MinionGuardGreetPlayer::Update()
     if (player && !(player->m_flags91 & 1)) {
         CTCVillageMember* member;
         GetCreature()->GetInterface(&member, 0x23);
-        float next = (float)(GetWorldFrame() + 120);
+        float next = (float)(CWorld::GetFrame() + 120);
         CVillage* village = member->GetPVillage();
         village->NextGreetFrame = (long)next;
         unsigned long speech;
@@ -168,9 +169,9 @@ void CAIStateGroup_MinionGuardGreetPlayer::Update()
         float when;
         if (speech && AIAction_SpeakAISpeechToTarget(1, CIntelligentPointerCreature(GetCreature()),
                 CIntelligentPointerConstThing(player), speech, false, 0x93) == 2)
-            when = (float)(GetWorldFrame() + 1200);
+            when = (float)(CWorld::GetFrame() + 1200);
         else
-            when = (float)(GetWorldFrame() + 120);
+            when = (float)(CWorld::GetFrame() + 120);
         member->GetPVillage()->NextGreetFrame = (long)when;
     }
     Terminate();

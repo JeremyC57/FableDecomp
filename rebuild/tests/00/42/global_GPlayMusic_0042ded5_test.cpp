@@ -54,7 +54,7 @@ CUIMiscThingsDef g_def;
 class CManager {
 public:
     CDefPointer<CUIMiscThingsDef> GetMiscThingsDef() { return CDefPointer<CUIMiscThingsDef>(&g_def); }
-    static CManager* GetInstance() { static CManager m; return &m; }
+    static CManager* __fastcall GetInstance() { static CManager m; return &m; }
 };
 }
 class CSoundManagerLH {

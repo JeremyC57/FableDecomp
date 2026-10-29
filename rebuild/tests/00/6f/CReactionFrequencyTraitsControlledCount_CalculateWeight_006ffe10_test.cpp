@@ -4,7 +4,7 @@
 #include <cstdio>
 class CThingAICreature { public: int Id; };
 static long g_frame;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 inline const float& Clamp(const float& v, const float& lo, const float& hi)
 {
     if (v < lo) return lo;
@@ -26,7 +26,7 @@ struct CReactionFrequencyTraits_ControlledCount {
 };
 float CReactionFrequencyTraits_ControlledCount::CalculateWeight(const CThingAICreature* creature)
 {
-    unsigned long frame = CWorld::GetWorldFrame();
+    unsigned long frame = CWorld::GetFrame();
     if (!AllowIndividualRepeats && creature && PLastReactionCreature && PLastReactionCreature == creature)
         return 0.0f;
     if (InRisingPhase) {

@@ -65,7 +65,7 @@ class CThing { public:
 };
 static long g_frame = 1234;
 class CWorld { public:
-    static long GetWorldFrame() { return g_frame; }
+    static long __fastcall GetFrame() { return g_frame; }
 };
 static CWorld g_world;
 class CTCBase { public:
@@ -119,7 +119,7 @@ void CTCHeroAttachableAppearanceModifiers::OnCreate()
     }
     Changed = true;
     UploadChangesToGraphics();
-    FrameLastChanged = GetWorld()->GetWorldFrame();
+    FrameLastChanged = GetWorld()->GetFrame();
 }
 int main()
 {

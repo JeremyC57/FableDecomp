@@ -16,7 +16,7 @@ public:
 class CGameDefinitionManager : public CDefinitionManager
 {
 public:
-    static CGameDefinitionManager& Get() { static CGameDefinitionManager s; return s; }
+    static CGameDefinitionManager& __fastcall Get() { static CGameDefinitionManager s; return s; }
 };
 
 class CEnvironment

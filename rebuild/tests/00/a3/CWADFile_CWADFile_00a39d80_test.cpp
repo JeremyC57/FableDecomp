@@ -9,13 +9,13 @@ enum FileAccessType { FILE_ACCESS_READ, FILE_ACCESS_WRITE };
 static const CWideString* g_name = 0; static int g_access = -1; static unsigned long g_flags = 0;
 static unsigned long g_indexAtOpen = 99; static long g_posAtOpen = 99;
 
-class CBase {
+class CBaseClassNonCopyable {
 public:
-    virtual ~CBase() {}
-    CBase() {}
+    virtual ~CBaseClassNonCopyable() {}
+    CBaseClassNonCopyable() {}
 };
 
-class CWADFile : public CBase {
+class CWADFile : public CBaseClassNonCopyable {
 public:
     CBankFileAsync* Bank;
     unsigned long   Index;

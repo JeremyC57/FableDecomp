@@ -8,7 +8,7 @@
 //   "CTCInventoryAbilities::GetAbilityLevel", propagated), the physics TC's GetRHSet() slot 72 (+0x120, a reference) and
 //   GetRHSet(float) slot 71 (+0x11C, by value; landed 0x006B1450), C3DMeshObject(const C3DMeshInfo*, const C3DVector&,
 //   const CRightHandedSet&, float) @ 0x00A36E70, C3DMeshObject::operator= @ 0x004C3380, operator delete @ 0x00BFE9BC,
-//   CBase::~CBase @ 0x0099A2E0. Floats: 1.0f @ 0x0122DED8, 0.01f @ 0x01230A5C.
+//   CBaseClass::~CBaseClass @ 0x0099A2E0. Floats: 1.0f @ 0x0122DED8, 0.01f @ 0x01230A5C.
 // Layout: as the landed sibling GetMeshObjectAssumingObjectAt 0x004BD160 (CMeshInfo Index +0 / SizeX +4, appearance
 //   Scale +0x34, C3DMeshObject 0x78 with the Mesh counted pointer at +8); CThing PhysicsTC +0x60 (retail).
 // Shape: the physics pointer is read first, then the render position, then the mesh info; `interpolation == 1.0f`
@@ -53,11 +53,11 @@ public:
     }
 };
 
-class CBase {
+class CBaseClass {
 public:
-    virtual ~CBase();                                       // 0x0099A2E0
+    virtual ~CBaseClass();                                       // 0x0099A2E0
 };
-class C3DMeshObject : public CBase {                        // vtable 0x01239860, 0x78 bytes
+class C3DMeshObject : public CBaseClass {                        // vtable 0x01239860, 0x78 bytes
 public:
     const C3DMeshInfo* MeshInfo;                            // +0x4
     CCountedPointer    Mesh;                                // +0x8 CCountedPointer<const C3DMeshStats>

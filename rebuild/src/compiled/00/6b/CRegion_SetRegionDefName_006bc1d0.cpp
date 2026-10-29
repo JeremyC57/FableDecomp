@@ -14,10 +14,10 @@ class CCharString { public:
 };
 struct CDefPointer { void* PDef; };
 class CDefinitionManager { public:
-    static CDefinitionManager* __fastcall Get();                 // 0x0044C6B0 (reads the singleton at 0x013B879C)
     long GetDefGlobalIndexFromName(const CCharString& name);     // 0x009AD410
     bool GetDef(long index, CDefPointer& out);                   // 0x006BD060
 };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 class CRegion { public:
     char pad0[0x20];
     CCharString DefName;     // at +0x20
@@ -26,8 +26,8 @@ class CRegion { public:
 void __fastcall CRegion_SetRegionDefName(CRegion* region, int /*edx*/, const CCharString& name)
 {
     region->DefName = name;
-    long index = CDefinitionManager::Get()->GetDefGlobalIndexFromName(region->DefName);
+    long index = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(region->DefName);
     if (index > 0) {
-        CDefinitionManager::Get()->GetDef(index, region->PDef);
+        CGameDefinitionManager::Get().GetDef(index, region->PDef);
     }
 }

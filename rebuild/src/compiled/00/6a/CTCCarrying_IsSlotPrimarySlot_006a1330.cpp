@@ -50,8 +50,8 @@ __declspec(noinline) void CDefinitionManager::GetDef(long index, CDefPointer<CCa
 }
 #pragma auto_inline(on)
 
-class CGameDefinitionManager { public:
-    static CDefinitionManager* Get();               // 0x0044C6B0
+class CGameDefinitionManager : public CDefinitionManager { public:
+    static CGameDefinitionManager& __fastcall Get();               // 0x0044C6B0
 };
 
 class CTCCarrying { public:
@@ -62,6 +62,6 @@ class CTCCarrying { public:
 bool CTCCarrying::IsSlotPrimarySlot(long slot)
 {
     CDefPointer<CCarrySlotDef> def;
-    CGameDefinitionManager::Get()->GetDef(slot, &def);
+    CGameDefinitionManager::Get().GetDef(slot, &def);
     return def->IsPrimary;
 }

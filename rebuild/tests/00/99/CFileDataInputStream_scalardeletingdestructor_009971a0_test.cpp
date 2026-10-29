@@ -2,8 +2,9 @@
 // Behaviour test for CFileDataInputStream scalar deleting destructor (0x009971A0): the derived Close runs
 // (statically bound) before the CDataStream and CBase layers.
 static int g_order[8]; static int g_n = 0;
-namespace N_0099a300 { struct CBase { virtual ~CBase() { g_order[g_n++] = 1; } }; } using N_0099a300::CBase;
-struct CDataStream : CBase { virtual void Close() { g_order[g_n++] = 7; } virtual ~CDataStream() { g_order[g_n++] = 2; } };
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() { g_order[g_n++] = 1; } };
+struct CDataStream : CBaseClassNonCopyable { virtual void Close() { g_order[g_n++] = 7; } virtual ~CDataStream() { g_order[g_n++] = 2; } };
 class CFileDataInputStream : public CDataStream { public:
     void* File; unsigned char* Buffer; long BufferSize;
     virtual void Close() { g_order[g_n++] = 3; }
@@ -11,7 +12,7 @@ class CFileDataInputStream : public CDataStream { public:
 };
 int main()
 {
-    CBase* p = new CFileDataInputStream;
+    CBaseClassNonCopyable* p = new CFileDataInputStream;
     delete p;
     if (g_n != 3 || g_order[0] != 3 || g_order[1] != 2 || g_order[2] != 1) { std::printf("009971a0_TEST FAIL\n"); return 1; }
     std::printf("009971a0_TEST PASS\n");

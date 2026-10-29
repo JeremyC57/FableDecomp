@@ -3,7 +3,7 @@ class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 static long g_frame = 0;
 static int g_getWorldCalls = 0;
-class CWorld { public: static long GetFrameNumber() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 struct CTCPhysicsStandard {
     CRightHandedSet RHSet, OldRHSet;
@@ -11,7 +11,7 @@ struct CTCPhysicsStandard {
     CWorld* GetWorld() { ++g_getWorldCalls; return &g_world; }
     void UpdateOldRHSet()
     {
-        long frame = GetWorld()->GetFrameNumber();
+        long frame = GetWorld()->GetFrame();
         if (RHSetLastFrameSet != frame) {
             OldRHSet = RHSet;
             RHSetLastFrameSet = frame;

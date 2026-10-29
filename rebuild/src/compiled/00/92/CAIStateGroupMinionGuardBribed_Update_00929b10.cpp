@@ -120,7 +120,7 @@ class CPlayerManager { public:
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
     static __forceinline unsigned long Random(unsigned long range, unsigned long* seed)
     {
         *seed = *seed * 0x24A1U + 0x24DFU;
@@ -158,7 +158,7 @@ void CAIStateGroup_MinionGuardBribed::Update()
 {
     CIntelligentPointerPlayerCreature hero(GetPPlayerManager()->GetMainPlayer().GetPCharacter().GetPItem());
     unsigned long delay = GetPWorld()->Random(g_BribedWhistleFirstMax - g_BribedWhistleFirstMin, GetPWorldSeed());
-    long nextWhistle = CWorld::GetWorldFrame() + g_BribedWhistleFirstMin + delay;
+    long nextWhistle = CWorld::GetFrame() + g_BribedWhistleFirstMin + delay;
     unsigned long sample = g_InvalidSoundHandle;
     while (IsStillValid() && IS_THING_ALIVE(hero)) {
         C3DVector heroPos = hero.GetPItem()->GetPos();
@@ -168,12 +168,12 @@ void CAIStateGroup_MinionGuardBribed::Update()
             break;
         if (AIAction_DoNothing() != 4)
             break;
-        if (GetPWorld()->GetWorldFrame() >= nextWhistle) {
+        if (GetPWorld()->GetFrame() >= nextWhistle) {
             CTCSoundPlayer* sound;
             if (GetCreature()->GetInterfaceInline(&sound, 0x10))
                 sample = sound->PlayAttachedCriteria("WHISTLE_GUARD_BRIBED", 0, 0, 0, -1);
             delay = GetPWorld()->Random(g_BribedWhistleRepeatMax - g_BribedWhistleRepeatMin, GetPWorldSeed());
-            nextWhistle = CWorld::GetWorldFrame() + delay;
+            nextWhistle = CWorld::GetFrame() + delay;
             nextWhistle += g_BribedWhistleRepeatMin;
         }
     }

@@ -1,6 +1,6 @@
 // CQuestManager::AddNewObjective(const CCharString& textTag, unsigned long id) -- append an objective whose text is the tag's game text (the tag itself, widened, when the bank has no text for it)
 // Leaf: AddNewObjective
-// Retail 0x004B1BA0, 387 bytes, `ret 8`. Callees: CCharString::ToWideString 0x0099E480, the CRC Calc 0x004014A0
+// Retail 0x004B1BA0, 387 bytes, `ret 8`. Callees: CCharString::ToWideString 0x0099E480, the CRC CCRC::Calc 0x004014A0
 // (`__fastcall`), NGameText::CDataBank GetTagFromCRC 0x009CC410 / GetTextInfo 0x009C7D00 / GetPGroupEntry 0x009C9070,
 // CGroupEntry::GetText 0x009C7A40, CWideString copy 0x0099B720 / operator= 0x0099B7D0 / dtor 0x0099B510, malloc 0x00BFEA0E.
 // Globals: the engine 0x013B86A0 (+0x14 the game-text bank), "" 0x0129AAF4.
@@ -12,7 +12,7 @@
 // list push_back is STLport insert(end()) with the `prev` local (one load of header->prev).
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
 class CCharStringData { public:
     char* PData;
     unsigned long StringLength;
@@ -29,7 +29,7 @@ public:
     CCharStringData* PStringData;
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }
-    unsigned long GetCRC() const { return Calc(0, GetString(), GetLength()); }
+    unsigned long GetCRC() const { return CCRC::Calc(0, GetString(), GetLength()); }
     CWideString ToWideString() const;                   // 0x0099E480
 };
 struct CRefCounted {

@@ -1,6 +1,6 @@
 // CFrontendGameComponent::~CFrontendGameComponent() -- destroy the debug front end's members (splash texture, world/save/profile name lists and their selections, main font, temporary graphics) and the game-component base
 // Leaf: ??1CFrontendGameComponent (Ego_r.pdb ??1CFrontendGameComponent@@UAE@XZ)
-// Retail: Fable.exe @ 0x00495620, 344 bytes, ends in a tail jump to CBase::~CBase 0x0099A300.
+// Retail: Fable.exe @ 0x00495620, 344 bytes, ends in a tail jump to CBaseClassNonCopyable::~CBaseClassNonCopyable 0x0099A300.
 // Body: vtables 0x01238768 / 0x0123875C (this class at +0 / +4); ~CTexture 0x009F9F70 (SplashScreen); ~CWideString
 // 0x0099B510 (WorldToLoad, SaveToLoad and every vector element); free 0x00BFEA14 (each vector's storage); the counted
 // pointers' inline release (destroy function, operator delete 0x00BFE9BC, then Data and Info zeroed); base vtables
@@ -16,13 +16,14 @@
 // pointer is the CText model (Release, then Data = Info = 0).
 // Opt: /O2 (16-aligned entry).
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 struct CGameComponentInterface {
     virtual void v00();
 };
-class CGameComponent : public CBase, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
+class CGameComponent : public CBaseClassNonCopyable, public CGameComponentInterface { public:   // vtables 0x0122ECB0 / 0x0122ECA4
     bool m_bShutDown;                                      // +0x08
     virtual __forceinline ~CGameComponent() { }
 };

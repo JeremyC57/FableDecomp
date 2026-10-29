@@ -9,7 +9,7 @@ class C3DVector { public:
     C3DVector operator/(float d) const { float inverse = 1.0f / d; return C3DVector(X * inverse, Y * inverse, Z * inverse); }
 };
 static long g_frame = 1000;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 struct CScriptModuleBase { int baseBuilt; CScriptModuleBase() : baseBuilt(1) {} };
 struct CScriptModuleFullTransition : CScriptModuleBase {
     C3DVector IncrementForLookAtPoints, Increment, LookAtPos, StartPos; long EndFrame;
@@ -19,7 +19,7 @@ struct CScriptModuleFullTransition : CScriptModuleBase {
         long count = frames ? frames : 15;
         Increment = (endPos - startPos) / (float)count;
         IncrementForLookAtPoints = (endLookAt - lookAt) / (float)count;
-        EndFrame = CWorld::GetWorldFrame() + frames;
+        EndFrame = CWorld::GetFrame() + frames;
     }
 };
 static bool Near(float a, float b) { return a > b - 1e-5f && a < b + 1e-5f; }

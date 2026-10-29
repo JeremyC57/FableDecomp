@@ -52,7 +52,7 @@ class CTCShotDefinitionBase { public: void Update(); };            // 0x007C21A0
 class CTCCreatureHitNotification { public: void UpdateHitNotification(); };   // 0x008650E0, interface 0xCD
 
 class CWorld { public:
-    static unsigned long GetWorldFrame();               // 0x0049D870 (reads the global frame; called through the world)
+    static long __fastcall GetFrame();               // 0x0049D870 (reads the global frame; called through the world)
 };
 class CThingManager { public:
     unsigned char _pad00[0x54];
@@ -133,7 +133,7 @@ bool CThingCreatureBase::WorldUpdate()
     if (PLastAttackedByCreature.GetPItem()) {
         const CWorld* world = PeekWorld();
         unsigned long lastAttacked = WFLastAttackedByCreature;
-        if (world->GetWorldFrame() - lastAttacked > (unsigned long)(g_framesPerSecond * 300))
+        if (world->GetFrame() - lastAttacked > (unsigned long)(g_framesPerSecond * 300))
             ClearLastAttackedByCreature();
     }
     if (HasTC(0x77))

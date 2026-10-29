@@ -1,7 +1,7 @@
 // CEnginePrimitiveManagerWeatherMask::RenderPrimitive(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&) -- when enabled, queues the weather mask as a pool-allocated sub-primitive at the distance of its bounding-sphere centre from the camera (alpha 0xff, render flags 1); returns 2 (rendered), else 0
 // Grade: RELOCATION_MATCH -- the squared distance is accumulated in three statements (`float d2 = dy * dy; d2 += dz * dz; d2 += dx * dx;`), which fixes the x87 square order to Y, Z, X as retail; a single-expression sum squares Z first
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BB6AB0, length 150 bytes (+ int3 padding).
-// Callees: 0x00BEB540 CEngineSubPrimitiveBase::operator new (`__fastcall`, size 0x18 in ecx), 0x0099A2F0 CBase::CBase(),
+// Callees: 0x00BEB540 CEngineSubPrimitiveBase::operator new (`__fastcall`, size 0x18 in ecx), 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable(),
 // 0x00B846E0 CEngineSubPrimitiveRenderer::AddSubPrimitive(CEngineSubPrimitiveBase*, float, unsigned char,
 // unsigned long, CEnginePrimitiveManager*) on the global renderer @ 0x01436E74; the camera global @ 0x01436EA0
 // (world position at +0x54). Vtable 0x012A5704 = CEngineSubPrimitiveWeatherMask.
@@ -13,14 +13,14 @@
 
 class C3DVector { public: float X, Y, Z; };
 
-class CBase {
-public:
-    virtual ~CBase();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 class CEngineInternalPrimitiveBase;
 class CEnginePrimitiveManager;
-class __declspec(novtable) CEngineSubPrimitiveBase : public CBase {   // PDB, 0x18 bytes
+class __declspec(novtable) CEngineSubPrimitiveBase : public CBaseClassNonCopyable {   // PDB, 0x18 bytes
 public:
     unsigned long                 RenderFlags;      // +0x04
     unsigned char                 Alpha;            // +0x08

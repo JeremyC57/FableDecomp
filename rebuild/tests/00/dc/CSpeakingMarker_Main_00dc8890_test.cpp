@@ -22,11 +22,12 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
-class CScriptThing : public CBase { public:
+class CBaseClass {
+public:
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
+};
+class CScriptThing : public CBaseClass { public:
     virtual void s001() const {} virtual void s002() const {}
     virtual CCharString GetDataString() const;                          // slot 3 (+0xc)
     virtual void s004() const {} virtual void s005() const {}
@@ -215,9 +216,9 @@ CCharString::CCharString(const char* t, long) { PStringData = (void*)t; }
 CCharString::~CCharString() {}
 static const char* Str(const CCharString& s) { return (const char*)s.PStringData; }
 void operator delete(void* p) { std::free(p); }
-CBase::CBase() {}
-CBase::~CBase() {}
-CScriptThing::CScriptThing(const CScriptThing& o) : CBase(), PImp_Data(o.PImp_Data), PImp_Info(0) {}
+CBaseClass::CBaseClass() {}
+CBaseClass::~CBaseClass() {}
+CScriptThing::CScriptThing(const CScriptThing& o) : CBaseClass(), PImp_Data(o.PImp_Data), PImp_Info(0) {}
 static int g_thingDtors = 0;
 CScriptThing::~CScriptThing() { ++g_thingDtors; }
 static int g_vecDtors = 0;

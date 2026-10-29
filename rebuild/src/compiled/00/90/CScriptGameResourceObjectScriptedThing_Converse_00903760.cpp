@@ -4,7 +4,7 @@
 // PDB: ?Converse@CScriptGameResourceObjectScriptedThing@@UAEXABVCScriptGameResourceObjectScriptedThingBase@@PBD@Z.
 // Callees: other's virtual GetScriptThing() const (slot 12, +0x30; CScriptThing by value through a hidden pointer),
 // this's virtual Speak(const CScriptThing&, const char*, ETextGroupSelectionMethod, bool, bool, bool) (slot 13,
-// +0x34; vtable 0x0128D86C), CBase::~CBase @ 0x0099A2E0 (the temporary's base).
+// +0x34; vtable 0x0128D86C), CBaseClass::~CBaseClass @ 0x0099A2E0 (the temporary's base).
 // Shape: `Speak(other.GetScriptThing(), text, method 0, true, true, false)`: the constant arguments and text are
 // pushed first, this's vtable is read before the nested call; the CScriptThing temporary (vtable 0x01238C8C,
 // CCountedPointer PImp at +4) dies inline: vptr store, counted release, both PImp words zeroed, base dtor call.
@@ -34,14 +34,14 @@ template <class T> class CCountedPointer { public:
     }
 };
 
-class CBase {
+class CBaseClass {
 public:
-    virtual ~CBase();                                // 0x0099A2E0
+    virtual ~CBaseClass();                                // 0x0099A2E0
 };
 
 class CScriptThingImp;
 
-class CScriptThing : public CBase {                  // vtable 0x01238C8C
+class CScriptThing : public CBaseClass {                  // vtable 0x01238C8C
 public:
     virtual ~CScriptThing() {}
     CCountedPointer<CScriptThingImp> PImp;           // +0x04

@@ -1,7 +1,7 @@
 // CQuestManager::AddBoast(const CCharString& scriptName, const CCharString& textTag, long id, long cost, long reward, bool evil, long groupIndex) -- offer a boast: look up its text (tag) and title (tag + "_TITLE") in the game-text bank (falling back to the widened tag), append it to Boasts and stamp the boast frame
 // Leaf: AddBoast
 // Retail 0x004B1720, 576 bytes, `ret 0x1c` (Ego_r.pdb ?AddBoast@CQuestManager@@QAEXABVCCharString@@0JJJ_NJ@Z).
-// Callees: CWideString() 0x0099AED0 / operator= 0x0099B7D0 / copy 0x0099B720 / dtor 0x0099B510, the CRC Calc 0x004014A0
+// Callees: CWideString() 0x0099AED0 / operator= 0x0099B7D0 / copy 0x0099B720 / dtor 0x0099B510, the CRC CCRC::Calc 0x004014A0
 // (`__fastcall`), NGameText::CDataBank GetTagFromCRC 0x009CC410 / GetPGroupEntry 0x009C9070, CGroupEntry::GetText
 // 0x009C7A40, CCharString::ToWideString 0x0099E480, operator+(const CCharString&, const char*) 0x0099F600 (`__fastcall`,
 // hidden result in ecx), CCharString copy 0x0099EC30 / dtor 0x0099EAE0, malloc 0x00BFEA0E, CBoast(const CBoast&)
@@ -13,7 +13,7 @@
 // title tag); the boast is a temporary pushed with the landed STLport push_back, so it dies before the frame stamp.
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
 class CCharStringData { public:
     char* PData;
     unsigned long StringLength;
@@ -33,7 +33,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }
-    unsigned long GetCRC() const { return Calc(0, GetString(), GetLength()); }
+    unsigned long GetCRC() const { return CCRC::Calc(0, GetString(), GetLength()); }
     CWideString ToWideString() const;                   // 0x0099E480
 };
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600
@@ -75,7 +75,7 @@ class CEngine { public:
     NGameText::CDataBank* PGameTextDataBank;            // +0x14
 };
 extern CEngine* g_pEngine;                              // 0x013B86A0
-class CWorld { public: static long GetWorldFrame(); };         // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };         // 0x0049D870
 
 struct CBoast {                                         // CQuestManager::CBoast (PDB, 32 bytes)
     long        ID;                                     // +0x00
@@ -152,5 +152,5 @@ void CQuestManager::AddBoast(const CCharString& scriptName, const CCharString& t
     else
         title = textTag.ToWideString();
     Boasts.push_back(CBoast(id, cost, reward, scriptName, text, title, evil, groupIndex));
-    FrameBoastsLastUpdated = CWorld::GetWorldFrame();
+    FrameBoastsLastUpdated = CWorld::GetFrame();
 }

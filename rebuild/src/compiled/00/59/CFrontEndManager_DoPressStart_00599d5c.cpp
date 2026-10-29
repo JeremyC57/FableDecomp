@@ -68,6 +68,8 @@ public:
     bool UseNewProfileValues;                             // +0x0C
     CWideString GetProfileDir(const CWideString& name, bool create);   // 0x004082D0
     void Apply();                                         // 0x0040BC80
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 
 template <class T> class CTBaseSingleton
@@ -134,7 +136,7 @@ void CFrontEndManager::DoPressStart()
     else
     {
         bool loadDirectly = profiles.size() == 1
-            && VerifySignatureCached(CTBaseSingleton<CUserProfileManager>::Get().GetProfileDir(profiles[0], false));
+            && VerifySignatureCached(CUserProfileManager::Get().GetProfileDir(profiles[0], false));
         if (loadDirectly)
         {
             LoadProfile(profiles[0]);
@@ -143,8 +145,8 @@ void CFrontEndManager::DoPressStart()
         else
         {
             GotoProfileMenu();
-            CTBaseSingleton<CUserProfileManager>::Get().UseNewProfileValues = true;
-            CTBaseSingleton<CUserProfileManager>::Get().Apply();
+            CUserProfileManager::Get().UseNewProfileValues = true;
+            CUserProfileManager::Get().Apply();
         }
     }
     CGameJoystickManager::Get().SetMainPlayerJoystickDeviceNumber(g_pNewFrontendGameComponent->LastActiveJoystickDeviceNumber);

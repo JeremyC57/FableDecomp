@@ -1,6 +1,6 @@
 // CGameScriptThing::CGameScriptThing(CWorld*, CThing*) -- the script thing for an existing thing: base members as the empty constructor, then InitFromThing(thing)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x008D0250, length 107 bytes (padded to 112).
-// Callees: CBase::CBase @ 0x0099A2D0, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0, CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10,
 //          CCharString::CCharString @ 0x0099E4B0 (x2), CGameScriptThing::InitFromThing @ 0x008CFFE0.
 // Vtables: CGameScriptThing 0x012852CC, CIntelligentPointer<CThing> 0x01238C6C.
 // Shape: as 0x008CFF60 but the intelligent pointer is default-constructed (no SetPItem call) and the body is a
@@ -8,16 +8,17 @@
 // Leaf: ??0CGameScriptThing
 class CThing;
 class CWorld;
-namespace N_0099a2d0 { struct CBase {
+class CBaseClass {
+public:
     virtual void v00();
-    CBase();                                       // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                       // 0x0099A2D0
+};
 struct CCountedPointerWords {                      // the script thing's counted-pointer pair (+0x04 / +0x08)
     void* m_pObject;
     void* m_pCount;
     CCountedPointerWords() : m_pObject(0), m_pCount(0) {}
 };
-struct __declspec(novtable) CScriptThing : CBase { // the script-facing interface: no vtable store of its own
+struct __declspec(novtable) CScriptThing : CBaseClass { // the script-facing interface: no vtable store of its own
     CCountedPointerWords m_ref;                    // +0x04
     CScriptThing() {}
 };

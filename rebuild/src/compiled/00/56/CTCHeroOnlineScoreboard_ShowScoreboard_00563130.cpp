@@ -71,8 +71,9 @@ class CUserProfileManager { public:
     unsigned char _pad[0x110];
     CWideString   SignedInUserName;                     // +0x110
     CWideString   SignedInPassword;                     // +0x114
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
-CUserProfileManager* GetUserProfileManager();           // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
 
 struct CComponent {
     virtual void v000();
@@ -289,8 +290,8 @@ public:
     CComponent*    PConnectingMessage1;                 // +0x64
     void ClearScoreboard();                             // 0x00562E10
     void DisplayErrorMessage(const CWideString& text);  // 0x0055EF00
-    CCharString GetSignedInUserName() { CWideString name = GetUserProfileManager()->SignedInUserName; return name.ConvertToCharString(); }
-    CCharString GetSignedInPassword() { CWideString password = GetUserProfileManager()->SignedInPassword; return password.ConvertToCharString(); }
+    CCharString GetSignedInUserName() { CWideString name = CUserProfileManager::Get().SignedInUserName; return name.ConvertToCharString(); }
+    CCharString GetSignedInPassword() { CWideString password = CUserProfileManager::Get().SignedInPassword; return password.ConvertToCharString(); }
     void ShowScoreboard();
 };
 

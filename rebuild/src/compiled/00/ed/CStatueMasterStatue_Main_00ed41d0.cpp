@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED41D0, length 505 bytes (padded to 512).
 // Callees: CV_StatueMasterScript::GetStatueAngle @ 0x00ED43D0 (float; manifest "CGameCameraManager::HasCameraMode" is
 //   propagated) and GetStatuePointingPosition @ 0x00ED4420; IsDone @ 0x00F35B30 (on `this`); `_CIfmod` @ 0x00BFEB28;
-//   CCharString() @ 0x0099E4B0, CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0; CBase::~CBase
+//   CCharString() @ 0x0099E4B0, CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0; CBaseClass::~CBaseClass
 //   @ 0x0099A2E0 and operator delete @ 0x00BFE9BC (the inlined ~CScriptThing); the game interface's slots 7
 //   NewScriptFrame, 72 GetThingWithScriptName (+0x120), 474 EntitySetFacingAngle (+0x768), 512
 //   EntitySetCutsceneBehaviour (+0x800), 714 SetReadableObjectTextTag (+0xb28).
@@ -23,15 +23,16 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
 };
 struct SScriptThingInfo {                                   // the counted block behind CScriptThing::PImp_Info
     long m_references;                                      // +0
     void (__fastcall* m_pfnDestroy)(void*);                 // +4
     void* m_pObject;                                        // +8
 };
-class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                               // vtable 0x01238C8C, 12 bytes
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
     virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();

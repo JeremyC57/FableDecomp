@@ -3,7 +3,7 @@
 //   living is targeted, remove the bar. Runs until the thread terminates.
 // Leaf: ShowTargetedThingsHealth
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EFF930, 893 bytes (+ int3 padding), plain `ret`.
-// Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CBase() 0x0099A2D0 / ~CBase 0x0099A2E0; ~CScriptThing
+// Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CBaseClass() 0x0099A2D0 / ~CBaseClass 0x0099A2E0; ~CScriptThing
 //   0x004AA840 (out-of-line copy); operator delete 0x00BFE9BC; CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0. CGameScriptInterface (quest +0x40) slots 7 NewScriptFrame, 71 GetHeroTargetedThing, 321 DisplayQuestInfo,
 //   325 AddQuestInfoBarHealth, 338 RemoveQuestInfoElement (ghidra_out/cgsi_slots_aligned.tsv); CScriptThing slot 75
@@ -84,11 +84,12 @@ struct CScriptThingImp {
     virtual void i076() const; virtual void i077() const;
     virtual bool IsEqualTo(const CScriptThingImp* other) const;         // slot 78 (+0x138)
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
-class CScriptThing : public CBase { public:
+class CBaseClass {
+public:
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
+};
+class CScriptThing : public CBaseClass { public:
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const;
     virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const;
     virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const; virtual void s017() const; virtual void s018() const;

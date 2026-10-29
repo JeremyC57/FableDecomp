@@ -35,7 +35,7 @@ class CDefClassBase : public CDefBase { public: CAugmentationDef* m_sub; templat
 class CThingBaseDef : public CDefClassBase { public: };
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; unsigned long size() const { return (unsigned long)(_M_finish - _M_start); } T& operator[](unsigned long n) const { return *(_M_start + n); } };
 static long g_frame = 0;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 long g_framesPerSecond = 30;
 const float g_epsilon_0129ba3c = 0.0001f;
 class CTCObjectAugmentations { public:
@@ -51,7 +51,7 @@ class CTCObjectAugmentations { public:
                 CDefPointer<CAugmentationDef> slot; def->GetSubDef(slot); CAugmentationDef* aug = slot.Object;
                 if (aug->FrequencyToAddHealthInSeconds > g_epsilon_0129ba3c) {
                     long period = CeilToLong(g_framesPerSecond * aug->FrequencyToAddHealthInSeconds);
-                    if (CWorld::GetWorldFrame() % period == 0) total += aug->HealthToAddPerIncrease;
+                    if (CWorld::GetFrame() % period == 0) total += aug->HealthToAddPerIncrease;
                 }
                 ReleaseDef(aug);
             }
@@ -67,7 +67,7 @@ class CTCObjectAugmentations { public:
                 CDefPointer<CAugmentationDef> slot; def->GetSubDef(slot); CAugmentationDef* aug = slot.Object;
                 if (aug->FrequencyToAddStaminaInSeconds > g_epsilon_0129ba3c) {
                     long period = CeilToLong(g_framesPerSecond * aug->FrequencyToAddStaminaInSeconds);
-                    if (CWorld::GetWorldFrame() % period == 0) total += aug->StaminaToAddPerIncrease;
+                    if (CWorld::GetFrame() % period == 0) total += aug->StaminaToAddPerIncrease;
                 }
                 ReleaseDef(aug);
             }

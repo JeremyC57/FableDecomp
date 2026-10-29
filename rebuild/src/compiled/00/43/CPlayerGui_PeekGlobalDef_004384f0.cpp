@@ -41,8 +41,8 @@ class CDefinitionManager { public:
     CDefPointer GetDef(const CCharString& name, bool flag); // 0x009ADE10
 };
 
-class CGameDefinitionManager { public:
-    static CDefinitionManager& __fastcall Get();            // 0x0044C6B0
+class CGameDefinitionManager : public CDefinitionManager { public:
+    static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
 class CPlayerGui { public:

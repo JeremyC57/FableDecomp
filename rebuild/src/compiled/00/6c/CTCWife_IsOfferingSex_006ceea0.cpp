@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006CEEA0, length 76 bytes (+ int3 padding).
 // Callees: CTCBase::GetWorld() @ 0x00686A70 (returns g->+0x24; byte-identical twin of 0x00686A80; manifest
 // "CViewBase::GetDisplayEngine" is propagated) -- its result only reaches the static frames-per-second getter, so the
-// call stays and nothing reads eax; GetWorldFrame() @ 0x0049D870 (manifest "GFGetPreMainMemoryUsed", propagated).
+// call stays and nothing reads eax; CWorld::GetFrame() @ 0x0049D870 (manifest "GFGetPreMainMemoryUsed", propagated).
 // Global 0x01375550 = frames per second (long, 15).
 // Ego_r.pdb: ?IsOfferingSex@CTCWife@@QBE_NXZ. Layout: engine/CTCWife.h (PHeroMarriageDef +0x0c,
 // FrameEnteredLoveWithHusbandPresentAtHome +0x60); engine/CHeroMarriageDef.h SecsInLoveAndHusbandPresentBeforeSexOffered
@@ -28,7 +28,7 @@ class CTCWife : public CTCBase, public CTCWifeLayout
 extern long g_FramesPerSecond;                              // 0x01375550
 
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
     static long GetFramesPerSecond() { return g_FramesPerSecond; }
 };
 
@@ -41,6 +41,6 @@ bool CTCWife_Sex::IsOfferingSex() const
 {
     long framesPerSecond = GetWorld().GetFramesPerSecond();
     const CHeroMarriageDef* def = GetDef();
-    long framesInLove = CWorld::GetWorldFrame() - FrameEnteredLoveWithHusbandPresentAtHome;
+    long framesInLove = CWorld::GetFrame() - FrameEnteredLoveWithHusbandPresentAtHome;
     return framesInLove > framesPerSecond * def->SecsInLoveAndHusbandPresentBeforeSexOffered;
 }

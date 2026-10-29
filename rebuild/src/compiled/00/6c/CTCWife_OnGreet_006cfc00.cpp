@@ -52,7 +52,7 @@ class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CFaction;
 class CThingAICreature;
@@ -76,7 +76,7 @@ class CTCWife : public CTCBase { public:
 };
 void CTCWife::OnGreet()
 {
-    if (FrameGotMarriedToThePlayer > CWorld::GetWorldFrame())
+    if (FrameGotMarriedToThePlayer > CWorld::GetFrame())
         return;
     CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
     if (!hero || (hero->Flags91 & 1))

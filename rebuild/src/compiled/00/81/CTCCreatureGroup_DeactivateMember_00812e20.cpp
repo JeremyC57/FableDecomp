@@ -19,7 +19,7 @@ class CThing { public:
     void Kill(bool immediately);                // 0x004C9B80
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870 (static: reads the frame global)
+    static long __fastcall GetFrame();                // 0x0049D870 (static: reads the frame global)
 };
 struct CIntelligentPointerThing { void* vptr; void* item; };
 class CGroupMemberData { public:
@@ -75,7 +75,7 @@ bool CTCCreatureGroup::DeactivateMember(CThing* member)
     CMemberNode* it = Members.find(member->GetUID());
     if (it != Members.Header) {
         if (it->second.IsActive) {
-            it->second.DeactivatedFrame = PeekWorld().GetWorldFrame();
+            it->second.DeactivatedFrame = PeekWorld().GetFrame();
             if (it->second.IsActive)
                 --ActiveMemberCount;
         }

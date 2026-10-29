@@ -64,7 +64,7 @@ class CWorld { public:
     unsigned char       _pad6c[0xa4 - 0x6c];
     bool                Paused;                                     // +0xa4
     void RenderUpdate(CInterpolationInfo* info);                    // 0x0049E080
-    static long GetWorldFrame();                                    // 0x0049D870
+    static long __fastcall GetFrame();                                    // 0x0049D870
 };
 template <class T> const T& __fastcall GFLimitReturn(const T& value, const T& lower, const T& upper);   // 0x0041919C
 extern long g_framesPerSecond;                     // 0x01375550
@@ -157,7 +157,7 @@ void CMainGameComponent::Render()
 {
     CInterpolationInfo info;
     SetCurrentThingManager(PWorld->GetThingManager());
-    if (GFGetSystemManager()->IsApplicationActive() && AllowRender && CWorld::GetWorldFrame() > 1) {
+    if (GFGetSystemManager()->IsApplicationActive() && AllowRender && CWorld::GetFrame() > 1) {
         if (g_ForceRenderFrames > 0) {
             if (g_ForceRenderFrames < g_framesPerSecond)
                 g_ForceRenderFrames = g_framesPerSecond;

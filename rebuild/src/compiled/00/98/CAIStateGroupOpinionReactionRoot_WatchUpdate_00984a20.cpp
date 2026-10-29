@@ -1,7 +1,7 @@
 // CAIStateGroup_OpinionReactionRoot::WatchUpdate() -- keep looking at the thing reacted to for 30 + random(0..44)
 // frames: 1 when the look action finishes (4) or the time is up, 0 on any other result (a long result).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00984A20, length 149 bytes.
-// Callees: CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, GFGetCurrentFrame @ 0x0049D870
+// Callees: CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CWorld::GetFrame @ 0x0049D870
 // (twice), CBaseIntelligentPointer::CBaseIntelligentPointer @ 0x00A01B10, GetPItem @ 0x00A01B50, SetPItem @
 // 0x00A01B90 (the by-value CIntelligentPointer<const CThing> argument, vtable 0x01237F1C, converted in its argument
 // slot from the member at +0x6b: the landed 0x0095EDF0 TurnToFace shape), CAIStateGroupBase::AIAction_LookAtThing
@@ -93,7 +93,7 @@ class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 struct CBaseIntelligentPointerCtor {
@@ -139,7 +139,7 @@ class CAIStateGroup_OpinionReactionRoot : public CAIStateGroupBaseL { public:
 
 long CAIStateGroup_OpinionReactionRoot::WatchUpdate()
 {
-    long endFrame = GFGetCurrentFrame() + RandomFrames(45) + 30;
+    long endFrame = CWorld::GetFrame() + RandomFrames(45) + 30;
     do {
         long result = AIAction_LookAtThing(1, ThingReactingTo, 0x21, 0.0027777f);
         if (result != 2) {
@@ -147,6 +147,6 @@ long CAIStateGroup_OpinionReactionRoot::WatchUpdate()
                 return 0;
             break;                              // shares the `mov eax,1` exit of the timed-out loop
         }
-    } while (GFGetCurrentFrame() < endFrame);
+    } while (CWorld::GetFrame() < endFrame);
     return 1;
 }

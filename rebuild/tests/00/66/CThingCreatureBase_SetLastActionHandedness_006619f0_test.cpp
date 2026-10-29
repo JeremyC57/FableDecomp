@@ -3,7 +3,7 @@
 static long g_frame = 0;
 static int g_getWorldCalls = 0;
 class CWorld { public:
-    static long GetWorldFrame() { return g_frame; }
+    static long __fastcall GetFrame() { return g_frame; }
 };
 static CWorld g_world;
 class CThingCreatureBase { public:
@@ -16,7 +16,7 @@ class CThingCreatureBase { public:
 void CThingCreatureBase::SetLastActionHandedness(long handedness)
 {
     PreviousActionHandedness = handedness;
-    PreviousActionHandednessWF = GetWorld()->GetWorldFrame();
+    PreviousActionHandednessWF = GetWorld()->GetFrame();
 }
 int main()
 {

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00933310, length 352 bytes (+ int3 padding).
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface 0xb4, bit 20 of +0x34), CAIStateGroupBase::
 //          GetPPlayerManager @ 0x008FCF90, CPlayerManager::GetMainPlayer @ 0x00449970, CPlayer::GetPControlledCreature @ 0x00487DC0,
-//          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable 0x01231C4C), GFGetCurrentFrame
+//          CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor (temporary vtable 0x01231C4C), CWorld::GetFrame
 //          @ 0x0049D870, IS_THING_ALIVE<CIntelligentPointer<...>> @ 0x0048C740 (__fastcall, out of line at the second test).
 // Globals: FramesPerSecond @ 0x01375550.
 // Shape: `HasTC` (dword test against memory) then the out-param pick; a same-TU LowerBound stand-in lets the PHero
@@ -74,7 +74,7 @@ class CPlayer { public:
 class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 extern long FramesPerSecond;                    // 0x01375550
 
 struct CBaseIntelligentPointer {
@@ -127,7 +127,7 @@ bool CAIStateGroupMinionGuardReactToBribeMethods::IsRunnable()
         }
         long deadline = bribe->FrameBribeOffered + FramesPerSecond * 4;
         long earliest = FramesPerSecond * 7 + FrameLastReactedToReceiveing;
-        if (GFGetCurrentFrame() < deadline && deadline > earliest) {
+        if (CWorld::GetFrame() < deadline && deadline > earliest) {
             Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
             if (IS_THING_ALIVE_Pointer(Hero())) {
                 HasRecievedBribe = true;

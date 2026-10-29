@@ -14,7 +14,7 @@ struct CPointer { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } 
 static long g_frame;
 static CThing* g_nearestBoard;
 static C3DVector g_searchPos;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 class CAIBrain { public: CThing* PCreature; };
 
 struct CAIStateGroup_KidWatchHopscotch {
@@ -32,13 +32,13 @@ struct CAIStateGroup_KidWatchHopscotch {
 
 bool CAIStateGroup_KidWatchHopscotch::IsRunnable()
 {
-    if (CWorld::GetWorldFrame() > CreationFrame) {
+    if (CWorld::GetFrame() > CreationFrame) {
         if (Fatigued) {
-            ActivationFrequency = (float)ActivationCount * FramesPerMin / (float)(CWorld::GetWorldFrame() - CreationFrame);
+            ActivationFrequency = (float)ActivationCount * FramesPerMin / (float)(CWorld::GetFrame() - CreationFrame);
             if (ActivationFrequency < 2.5f)
                 Fatigued = false;
         } else {
-            ActivationFrequency = (float)ActivationCount * FramesPerMin / (float)(CWorld::GetWorldFrame() - CreationFrame);
+            ActivationFrequency = (float)ActivationCount * FramesPerMin / (float)(CWorld::GetFrame() - CreationFrame);
             if (ActivationFrequency > 3.0f)
                 Fatigued = true;
         }

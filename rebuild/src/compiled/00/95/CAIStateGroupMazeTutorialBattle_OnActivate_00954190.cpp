@@ -5,7 +5,7 @@
 // test, once for the argument), CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (twice: once for the combat manager
 // at +0x4c, once with its result DROPPED in front of the frame read -- `GetPWorld()->GetFrameCount()` with a
 // static GetFrameCount, the landed CreatureUseCover shape), CCombatManager::RegisterCombatant(creature, enemy,
-// true) @ 0x006EDC50, GFGetCurrentFrame @ 0x0049D870 (__fastcall, no arguments).
+// true) @ 0x006EDC50, CWorld::GetFrame @ 0x0049D870 (__fastcall, no arguments).
 // Shape: the flag is bit 3 of the enemy's byte at +0x6c, tested as a branch; inside the body the enemy, the
 // creature and the world are named locals in that order (edi, ebx, then the call) so the pushes follow the
 // world call. FrameOfLastShield is +0x20 (engine header name); the header flattens the base, so the layout
@@ -38,12 +38,11 @@ class CCombatManager { public:
     void RegisterCombatant(CThingCreatureBase* creature, CThing* target, bool hostile);   // 0x006EDC50
 };
 
-long __fastcall GFGetCurrentFrame();        // 0x0049D870
 
 class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* m_pCombatManager;       // +0x4c
-    static long GetFrameCount() { return GFGetCurrentFrame(); }
+    static long __fastcall GetFrame();
 };
 
 class CAIBrain { public:
@@ -73,5 +72,5 @@ void CAIStateGroup_MazeTutorialBattle::OnActivate()
         CWorld* world = GetPWorld();
         world->m_pCombatManager->RegisterCombatant(creature, enemy, true);
     }
-    FrameOfLastShield = GetPWorld()->GetFrameCount();
+    FrameOfLastShield = GetPWorld()->GetFrame();
 }

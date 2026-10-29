@@ -1,7 +1,7 @@
 // NParticleEngine::CParticleEmitter::CParticleEmitter() -- default emitter: empty particle-system list and update parameters, null primitive handle, identity transforms, default orientation and zero position interpolation, the default spawn/draw distances and fades, and its flags (ReadZBuffer, DieIfOffscreen, EnableDithering, ClearedParticles, ClearedDecals set; the rest clear, layer 74)
 // Leaf: CParticleEmitter
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00AF0380, 656 bytes, plain `ret` (returns this).
-// Callees: CBaseObject() 0x0099A380, CBase() 0x0099A2D0, CCharString() 0x0099E4B0, CRightHandedSet::SetDefault 0x00AF07A0,
+// Callees: CBaseObject() 0x0099A380, CBaseClass() 0x0099A2D0, CCharString() 0x0099E4B0, CRightHandedSet::SetDefault 0x00AF07A0,
 //   the default-distance getters 0x00AEAA60 / 0x00AEAA50 / 0x00AEAA20 / 0x00AEAA30 / 0x00AEAA40 (static, float in st0).
 // Layout: Ego_r.pdb CParticleEmitter minus 0x0c (retail STLport 12-byte vectors, 16-byte CVectorMaps):
 //   ParticleSystems +0x08, UpdateParameters +0x14 (vtable 0x0125FFDC), PrimitiveGroupHandle +0x38 (vtable 0x0122F598),
@@ -35,10 +35,11 @@ class CCharString { public:
     void* PStringData;
     CCharString();                                     // 0x0099E4B0
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                           // 0x0099A2D0
-    virtual ~CBase();
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                           // 0x0099A2D0
+    virtual ~CBaseClass();
+};
 class CBaseObject { public:
     void* m_pIntelligentPointer;
 protected:
@@ -63,21 +64,21 @@ namespace NParticleEngine {
 class CParticleSystem;
 struct CParticleSystemPtr { CParticleSystem* Data; void* Info; };
 struct CParticleUpdateParamDesc { unsigned long a, b; };
-struct CParticleUpdateParameters : CBase {             // vtable 0x0125FFDC, retail 0x24 bytes
+struct CParticleUpdateParameters : CBaseClass {             // vtable 0x0125FFDC, retail 0x24 bytes
     CVectorMap<unsigned long, C3DVector>                VectorParams;   // +0x04
     CVectorMap<unsigned long, CParticleUpdateParamDesc> UpdateParams;   // +0x14
 };
 }
 class CEnginePersistentPrimitiveBase;
-class CEnginePrimitiveHandle : public CBase { public:                // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598
     CEnginePersistentPrimitiveBase* Data;              // +0x04 CIVCountedPointer
     CEnginePrimitiveHandle() : Data(0) {}
 };
-class C3DOrientationInterpolator : public CBase { public:            // vtable 0x01239824
+class C3DOrientationInterpolator : public CBaseClass { public:            // vtable 0x01239824
     CRightHandedSet StartOrientation;                  // +0x04
     CRightHandedSet EndOrientation;                    // +0x1c
 };
-class C3DPositionInterpolator : public CBase { public:               // vtable 0x0123981C
+class C3DPositionInterpolator : public CBaseClass { public:               // vtable 0x0123981C
     C3DVector StartPosition;                           // +0x04
     C3DVector EndPosition;                             // +0x10
 };

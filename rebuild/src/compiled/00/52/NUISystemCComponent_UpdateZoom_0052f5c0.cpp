@@ -48,7 +48,7 @@ public:
 };
 class CManager {
 public:
-    static CManager* GetInstance();                     // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                     // 0x0041E5F2
     C2DVector GetUIScale();                             // 0x0041CF47
 };
 

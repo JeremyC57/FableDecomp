@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00581C1E, length 46 bytes.
 // Callees: virtual slot 76 (`call [eax+130h]`, argument 1) on the renderer reached through the global
 //          game object 0x013B86A0 (+0x28 -> +0x2c), CTCBase world getter 0x00686A70 (landed name GetWorld),
-//          GetWorldFrame 0x0049D870 (static; returns the frame counter 0x013B89BC).
+//          CWorld::GetFrame 0x0049D870 (static; returns the frame counter 0x013B89BC).
 // Ego_r PDB: ?StartGameRendering@CTCInventory@@QAEXXZ. The world word written (+0x8c) has no PDB name
 // in the retail layout, so it is named by its use.
 // Shape: the global chain is loaded before `push esi` (scheduling); the world pointer is fetched
@@ -43,7 +43,7 @@ extern CGameObject* g_pGameObject;                   // 0x013B86A0
 class CWorld { public:
     unsigned char _pad_0x00[0x8c];
     long          m_gameRenderingStartFrame;         // +0x8c
-    static long GetWorldFrame();                     // 0x0049D870
+    static long __fastcall GetFrame();                     // 0x0049D870
 };
 
 class CTCBase
@@ -66,5 +66,5 @@ void CTCInventory::StartGameRendering()
 {
     g_pGameObject->m_pDisplay->m_pRenderer->SetGameRendering(1);
     CWorld* world = (&GetWorld());
-    world->m_gameRenderingStartFrame = CWorld::GetWorldFrame();
+    world->m_gameRenderingStartFrame = CWorld::GetFrame();
 }

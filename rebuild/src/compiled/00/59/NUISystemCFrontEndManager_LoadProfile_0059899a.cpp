@@ -35,6 +35,8 @@ public:
     unsigned char _pad00[0xc];
     bool          UseNewProfileValues;                   // +0x0c
     void SetProfileName(const CWideString& name, bool load);   // 0x0040D400
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 namespace std {
 template <class T> class vector {
@@ -58,8 +60,8 @@ protected:
 };
 void CFrontEndManager::LoadProfile(const CWideString& name)
 {
-    CTBaseSingleton<CUserProfileManager>::Get().UseNewProfileValues = false;
-    CTBaseSingleton<CUserProfileManager>::Get().SetProfileName(name, true);
+    CUserProfileManager::Get().UseNewProfileValues = false;
+    CUserProfileManager::Get().SetProfileName(name, true);
     std::vector<CWideString> saves;
     GetSavedGameNames(saves);
     if (saves.empty())

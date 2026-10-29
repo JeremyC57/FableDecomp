@@ -131,7 +131,7 @@ class CGameDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();                    // 0x0044C6B0
     long GetDefGlobalIndexFromName(const CCharString& name);            // 0x009AD410
 };
-long __fastcall GetWorldFrame();                                        // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                                        // 0x0049D870
 CThing* __fastcall CreateExplosionObject(long defIndex, const C3DVector* position);   // 0x0080C460
 namespace NCreatureMode {
 class CModeDragonStrafeBurninate {
@@ -155,7 +155,7 @@ void CModeDragonStrafeBurninate::UpdateBeam(float progress)
     CDragonDefPointer slot;
     Owner->PDef->GetDragonDef(&slot);
     CDragonDef* def = slot.m_p;
-    if (GetWorldFrame() - LastExplodeFrame > def->ExplodeInterval) {
+    if (CWorld::GetFrame() - LastExplodeFrame > def->ExplodeInterval) {
         float fraction = (progress - FlameStartPercentage) / (FlameStopPercentage - FlameStartPercentage);
         C3DVector mouth;
         CRightHandedSet orientation;
@@ -179,7 +179,7 @@ void CModeDragonStrafeBurninate::UpdateBeam(float progress)
                 CTCDependents* dependents;
                 if (explosion->GetInterface(&dependents, 0x41))
                     dependents->AddDependentThing(Owner);
-                LastExplodeFrame = GetWorldFrame();
+                LastExplodeFrame = CWorld::GetFrame();
             }
         }
     }

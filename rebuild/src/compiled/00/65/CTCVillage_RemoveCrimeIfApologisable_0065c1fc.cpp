@@ -63,7 +63,7 @@ class CPlayer { public:
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer() const;          // 0x0049D9D0
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x24];
@@ -125,7 +125,7 @@ class CTCVillage : public CTCVillageDonor {
 void CTCVillage::RemoveCrimeIfApologisable(long deedHandle)
 {
     long* lastApology = &LastFrameApologised;
-    if (*lastApology != 0 && GetWorld()->GetWorldFrame() - *lastApology < 450)
+    if (*lastApology != 0 && GetWorld()->GetFrame() - *lastApology < 450)
         return;
     CThing* hero = g_pMainGameComponent->World->GetCurrentPlayer()->GetPControlledCreature();
     if (hero) {

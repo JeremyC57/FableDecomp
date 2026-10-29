@@ -1,8 +1,8 @@
-// CHandleBasedMemoryPool::`scalar deleting destructor'(unsigned int) -- stores the CHandleBasedMemoryPool vtable, uninitialises the pool, destroys the name string (+0x448) and frees the handle array's block (+0x438), runs CBase::~CBase and frees on bit 0
+// CHandleBasedMemoryPool::`scalar deleting destructor'(unsigned int) -- stores the CHandleBasedMemoryPool vtable, uninitialises the pool, destroys the name string (+0x448) and frees the handle array's block (+0x438), runs CBaseClassNonCopyable::~CBaseClassNonCopyable and frees on bit 0
 // Leaf: ??_GCHandleBasedMemoryPool
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A03AA0, length 73 bytes (vtable 0x0129C964 slot 0).
 // Callees: CHandleBasedMemoryPool::Uninitialise @ 0x00A02190, CCharString::~CCharString @ 0x0099EAE0
-// (manifest "_Cons_val<...>", propagated), free @ 0x00BFEA14, CBase::~CBase @ 0x0099A300,
+// (manifest "_Cons_val<...>", propagated), free @ 0x00BFEA14, CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300,
 // operator delete @ 0x00BFE9BC.
 // The catalog label "CThingTrackNode::vector_deleting_destructor" is propagated: the only reference is
 // slot 0 of the CHandleBasedMemoryPool vtable 0x0129C964.
@@ -20,10 +20,11 @@ class CCharString { public:
     ~CCharString();                                // 0x0099EAE0
 };
 
-namespace N_0099a300 { struct CBase {                                     // root polymorphic base
-    CBase();
-    virtual ~CBase();                              // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:                                      // root polymorphic base
+    CBaseClassNonCopyable();
+    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
+};
 
 struct CHandleInfoArray {                          // CArray<CHandleBasedMemoryPool::CHandleInfo>, 0x0c bytes
     void* m_pData;
@@ -33,7 +34,7 @@ struct CHandleInfoArray {                          // CArray<CHandleBasedMemoryP
     ~CHandleInfoArray() { if (m_pData) free(m_pData); }
 };
 
-class CHandleBasedMemoryPool : public CBase { public:            // vtable 0x0129C964
+class CHandleBasedMemoryPool : public CBaseClassNonCopyable { public:            // vtable 0x0129C964
     unsigned char    _pad_0x04[0x434];             // +0x04 pool state and FreeLists[256] (+0x38)
     CHandleInfoArray Handles;                      // +0x438
     long             FirstUnusedHandle;            // +0x444

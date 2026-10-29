@@ -108,7 +108,7 @@ struct CCreatureAction_SummonerChargeOutOf : CCombatActionBase {
     CCreatureAction_SummonerChargeOutOf(CThingCreatureBase* owner);   // 0x00970370
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long g_FramesPerSecond;                  // 0x01375550
 class CSummonerDef { public:
@@ -159,7 +159,7 @@ void CAIStateGroup_SummonerCharge::Update()
     CWorld* world = GetPWorld();
     long fps = g_FramesPerSecond;
     const CSummonerDef* def = PDef;
-    NextFrameToCharge = (long)((float)world->GetWorldFrame() + (float)fps * def->ChargeDelay);
+    NextFrameToCharge = (long)((float)world->GetFrame() + (float)fps * def->ChargeDelay);
     bool reached = false;
     bool done = false;
     long actionCode = PBrain->PCreature->PCurrentAction->GetActionCode();

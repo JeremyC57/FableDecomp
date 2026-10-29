@@ -74,8 +74,8 @@ public:
 class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
-class CGameDefinitionManager { public:
-    static CDefinitionManager& __fastcall Get();        // 0x0044C6B0
+class CGameDefinitionManager : public CDefinitionManager { public:
+    static CGameDefinitionManager& __fastcall Get();        // 0x0044C6B0
 };
 struct CGameRunState {                                  // descriptive: [0x013B8A1C]+0x1c
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

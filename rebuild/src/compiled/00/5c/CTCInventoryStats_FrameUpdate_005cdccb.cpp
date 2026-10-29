@@ -79,7 +79,7 @@ class CTCEntityEvents { public:                             // interface type 0x
     CEventList    Events;                            // +0x0c
 };
 class CWorld { public:
-    static long GetWorldFrame();                     // 0x0049D870
+    static long __fastcall GetFrame();                     // 0x0049D870
 };
 struct SKillNode {                                   // the tree node: key +0x10, value +0x14
     unsigned char _base[0x10];
@@ -133,7 +133,7 @@ void CTCInventoryStats::FrameUpdate()
 {
     CTCEntityEvents* events;
     if (ParentThing->GetInterface(&events, 0x42)) {
-        long frame = CWorld::GetWorldFrame();
+        long frame = CWorld::GetFrame();
         for (SEventNode* it = events->Events.begin(); it != events->Events.end(); it = it->_M_next) {
             CEntityEvent* event = it->_M_data;
             if (event->GetType() == ENTITY_EVENT_CREATURE_KILLED && event->Frame == frame - 1) {

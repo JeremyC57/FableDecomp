@@ -25,6 +25,8 @@ class CUserProfileManager {
 public:
     unsigned char _pad00[0x0c];
     bool          UseNewProfileValues;                   // +0x0c
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> class CTBaseSingleton {
 public:
@@ -107,7 +109,7 @@ public:
 };
 void CFrontEndManager::GotoNewProfileScreen()
 {
-    CTBaseSingleton<CUserProfileManager>::Get().UseNewProfileValues = true;
+    CUserProfileManager::Get().UseNewProfileValues = true;
     std::vector<CWideString> names;
     GetProfileNames(names);
     m_bStartNewGame = true;

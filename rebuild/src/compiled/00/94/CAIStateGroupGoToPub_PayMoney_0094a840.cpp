@@ -87,7 +87,7 @@ class CMessageEventManager { public:
 class CWorld { public:
     unsigned char _pad0[0x60];
     CMessageEventManager* MessageEventManager;         // +0x60
-    static long __fastcall GetWorldFrame();            // 0x0049D870
+    static long __fastcall GetFrame();            // 0x0049D870
 };
 extern long g_framesPerSecond;                         // 0x01375550
 class CAIBrain { public:
@@ -135,9 +135,9 @@ bool CAIStateGroup_GoToPub::PayMoney()
         request = messages->AddMessage(0x30, 1000, pos, creature, barman, 0.0f, 0.0f, BarIndex);
     }
     long fps = g_framesPerSecond;
-    long timeout = CWorld::GetWorldFrame() + fps * 20;
+    long timeout = CWorld::GetFrame() + fps * 20;
     while (!GetPaymentRequestReplyMessage()) {
-        if (CWorld::GetWorldFrame() > timeout || IsStopping()) {
+        if (CWorld::GetFrame() > timeout || IsStopping()) {
             {
                 CWorld* world = GetPWorld();
                 world->MessageEventManager->RemoveMessage(request);

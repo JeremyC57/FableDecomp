@@ -3,13 +3,14 @@
 // NTCScriptedControl::CActionWait::CActionWait(long): inlined CActionBase part cleared, update counter 0,
 // the frame count stored.
 static int g_baseCtors = 0;
-struct CBase {
-    virtual ~CBase() { }
-    CBase() { ++g_baseCtors; }
+class CBaseClassNonCopyable {
+public:
+    virtual ~CBaseClassNonCopyable() { }
+    CBaseClassNonCopyable() { ++g_baseCtors; }
 };
 class CTCScriptedControl;
 namespace NTCScriptedControl {
-struct CActionBase : CBase {
+struct CActionBase : CBaseClassNonCopyable {
     CTCScriptedControl* PTCScript;
     bool                Activated;
     bool                Terminated;

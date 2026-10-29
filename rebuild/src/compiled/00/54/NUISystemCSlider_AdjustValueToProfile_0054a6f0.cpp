@@ -100,7 +100,7 @@ class CUserProfileManager { public:                     // retail = Ego_r.pdb wi
     float ShadowDetail;                          // +0x40
     unsigned char _pad44[0xfc - 0x44];
     float ShadowDetailNewProfile;                // +0xfc
-    static CUserProfileManager* Get();           // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
+    static CUserProfileManager& __fastcall Get();           // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     float GetGamma() const;                      // 0x00437470
     float GetHUDAlpha() const;                   // 0x00437490
     float GetSoundVolume() const;                // 0x0047CFC2
@@ -196,16 +196,16 @@ void CSlider::AdjustValueToProfile()
     OldValue = Value;
     if (PDefAction != 0) {
         switch (PDefAction) {
-        case 0x29:  Value.X = CUserProfileManager::Get()->GetSoundVolume(); break;
-        case 0x58:  Value.X = CUserProfileManager::Get()->GetDialogueVolume(); break;
-        case 0x2a:  Value.X = CUserProfileManager::Get()->GetMusicVolume(); break;
-        case 0x4e:  Value.X = CUserProfileManager::Get()->GetHUDAlpha(); break;
-        case 0x28:  Value.X = CUserProfileManager::Get()->GetGamma(); break;
-        case 0x103: Value.X = CUserProfileManager::Get()->GetShadowDetail(); break;
-        case 0x10a: Value.X = CUserProfileManager::Get()->GetTextureDetail(); break;
-        case 0x13e: Value.X = CUserProfileManager::Get()->GetCameraSensitivity(); break;
-        case 0x12a: Value.X = CUserProfileManager::Get()->GetMeshDetail(); break;
-        case 0x12b: Value.X = CUserProfileManager::Get()->GetEffectsDetail(); break;
+        case 0x29:  Value.X = CUserProfileManager::Get().GetSoundVolume(); break;
+        case 0x58:  Value.X = CUserProfileManager::Get().GetDialogueVolume(); break;
+        case 0x2a:  Value.X = CUserProfileManager::Get().GetMusicVolume(); break;
+        case 0x4e:  Value.X = CUserProfileManager::Get().GetHUDAlpha(); break;
+        case 0x28:  Value.X = CUserProfileManager::Get().GetGamma(); break;
+        case 0x103: Value.X = CUserProfileManager::Get().GetShadowDetail(); break;
+        case 0x10a: Value.X = CUserProfileManager::Get().GetTextureDetail(); break;
+        case 0x13e: Value.X = CUserProfileManager::Get().GetCameraSensitivity(); break;
+        case 0x12a: Value.X = CUserProfileManager::Get().GetMeshDetail(); break;
+        case 0x12b: Value.X = CUserProfileManager::Get().GetEffectsDetail(); break;
         }
     }
     if (Differs(OldValue, Value)) {

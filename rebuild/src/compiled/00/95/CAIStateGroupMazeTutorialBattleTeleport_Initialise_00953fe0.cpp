@@ -2,7 +2,7 @@
 // const CCharString&) -- base initialisation, then stamp the teleport frame and remember the creature's position.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00953FE0, length 84 bytes (+ int3 padding), `ret 14h`.
 // Callees: CAIStateGroupBase::Initialise @ 0x008FCEC0 (five arguments forwarded), CAIStateGroupBase::GetPWorld
-// @ 0x008FCFC0 with its result DROPPED (`GetPWorld()->GetFrameCount()`, a static GetFrameCount), GFGetCurrentFrame
+// @ 0x008FCFC0 with its result DROPPED (`GetPWorld()->GetFrameCount()`, a static CWorld::GetFrame), CWorld::GetFrame
 // @ 0x0049D870, CThing::GetPos @ 0x004C73D0 (returns a const C3DVector& into the creature; manifest
 // "CVertexBufferWin32::DoSizeof" is a propagated label).
 // Shape: FrameOfLastTeleport (+0x20) stored between the position call's argument load and the call; the
@@ -26,10 +26,9 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public:
 };
 
-long __fastcall GFGetCurrentFrame();        // 0x0049D870
 
 class CWorld { public:
-    static long GetFrameCount() { return GFGetCurrentFrame(); }
+    static long __fastcall GetFrame();
 };
 
 struct CAIBrainModel {
@@ -55,6 +54,6 @@ struct CAIStateGroup_MazeTutorialBattleTeleport : CAIStateGroupBase {
 void CAIStateGroup_MazeTutorialBattleTeleport::Initialise(CAIBrain& brain, CThingAICreature& creature, long id, long priority, const CCharString& name)
 {
     CAIStateGroupBase::Initialise(brain, creature, id, priority, name);
-    FrameOfLastTeleport = GetPWorld()->GetFrameCount();
+    FrameOfLastTeleport = GetPWorld()->GetFrame();
     LastTeleportPos = PBrain->Creature->GetPos();
 }

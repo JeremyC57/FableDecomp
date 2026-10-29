@@ -57,7 +57,7 @@ class CTCNymph { public:
 };
 class CCreatureActionBase { public: };
 class CCreatureAction_NymphTeleportIntoLimbo : public CCreatureActionBase { public: CCreatureAction_NymphTeleportIntoLimbo(CThingCreatureBase*) {} };
-class CWorld { public: static long GetWorldFrame() { return 77; } };
+class CWorld { public: static long __fastcall GetFrame() { return 77; } };
 static CWorld g_world;
 class CAIBrain { public: int yields; CThingCreatureBase* PCreature; void Yield() { ++yields; } };
 class CAIStateGroupBase { public:
@@ -88,7 +88,7 @@ void CAIStateGroup_NymphFloatAround::Update()
         } else
             nymph->StartFlyingAround(0);
     }
-    long frame = GetPWorld()->GetWorldFrame();
+    long frame = GetPWorld()->GetFrame();
     while (!nymph->ReadyToAttack) {
         nymph->CheckIfCanAttack(frame);
         if (IsStopping() || !nymph->FlyingAround) {

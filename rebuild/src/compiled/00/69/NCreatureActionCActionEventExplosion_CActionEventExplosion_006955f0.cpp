@@ -1,7 +1,7 @@
 // NCreatureAction::CActionEventExplosion::CActionEventExplosion(long, long, long) -- inlined intermediate base taking
 // the three arguments, own vtable, a CCharString at +0x14, then -1 / false / false.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x006955F0, length 68 bytes (+ int3 padding), `ret 0Ch`.
-// Callees: CBase::CBase @ 0x0099A2D0, CCharString::CCharString() @ 0x0099E4B0. Vtable 0x0125C154 (rtti-vtables:
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0, CCharString::CCharString() @ 0x0099E4B0. Vtable 0x0125C154 (rtti-vtables:
 // NCreatureAction::CActionEventExplosion; same class as the landed default constructor @ 0x00692230). The manifest
 // label "CAIStateGroup_OpinionReactionRoot ctor" is propagated and rejected.
 // Shape: the flag byte at +4 and the three argument stores (+8, +0xc, +0x10) all sit BEFORE this class's vtable
@@ -13,19 +13,20 @@ class CCharString { public:
     CCharString();                              // 0x0099E4B0
 };
 
-namespace N_0099a2d0 { struct CBase {
+class CBaseClass {
+public:
     virtual void v00();
-    CBase();                                    // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                    // 0x0099A2D0
+};
 
 namespace NCreatureAction {
-struct __declspec(novtable) CActionEventBase : CBase {   // abstract: no vtable store of its own
+struct __declspec(novtable) CActionEventBase : CBaseClass {   // abstract: no vtable store of its own
     bool m_bTriggered;                          // +0x04
     long m_actionId;                            // +0x08
     long m_eventType;                           // +0x0c
     long m_param;                               // +0x10
     CActionEventBase(long actionId, long eventType, long param)
-        : CBase(), m_bTriggered(false), m_actionId(actionId), m_eventType(eventType), m_param(param) { }
+        : CBaseClass(), m_bTriggered(false), m_actionId(actionId), m_eventType(eventType), m_param(param) { }
 };
 
 struct CActionEventExplosion : CActionEventBase {          // vtable 0x0125C154

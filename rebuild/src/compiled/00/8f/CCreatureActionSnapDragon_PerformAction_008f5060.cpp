@@ -81,7 +81,7 @@ class CDefinitionManager { public:
     long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
-    static CGameDefinitionManager& Get();             // 0x0044C6B0
+    static CGameDefinitionManager& __fastcall Get();             // 0x0044C6B0
 };
 class CCreatureActionBase { public:
     virtual void v00();

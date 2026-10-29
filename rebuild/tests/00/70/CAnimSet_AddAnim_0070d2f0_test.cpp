@@ -4,7 +4,8 @@
 #include <new>
 
 static long g_frame = 41;
-static long GFGetFrameCount() { return ++g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return ++g_frame; }
 class CTransitionBlendAlpha { public: float Current; float Last; CTransitionBlendAlpha(float c, float l) : Current(c), Last(l) {} };
 template <class T> struct CVector {
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -25,7 +26,7 @@ class CAnimSet { public:
     {
         Anims.push_back(anim);
         InternalAlphas.push_back(CTransitionBlendAlpha(alpha, alpha));
-        FrameInternalAlphasUpdated = GFGetFrameCount();
+        FrameInternalAlphasUpdated = CWorld::GetFrame();
     }
 };
 

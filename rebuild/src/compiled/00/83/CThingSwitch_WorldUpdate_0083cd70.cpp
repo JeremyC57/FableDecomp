@@ -51,7 +51,7 @@ struct CSwitchDefPointer {                 // CDefPointer<CThingSwitchDef>
 };
 
 class CWorld { public:
-    static long __fastcall GetWorldFrame();          // 0x0049D870 (GFGetCurrentFrame)
+    static long __fastcall GetFrame();          // 0x0049D870 (GFGetCurrentFrame)
 };
 
 enum ESwitchTriggerType {
@@ -84,7 +84,7 @@ unsigned char CThingSwitch::WorldUpdate()
         return result;
     CWorld* world = GetWorld();
     unsigned __int64 id = UniqueID;
-    if ((world->GetWorldFrame() + id) % 5 == 0) {
+    if ((world->GetFrame() + id) % 5 == 0) {
         switch (GetSwitchDef()->TriggerType) {
         case SWITCH_TRIGGER_PLAYER_ONLY_ONCE_IN_AREA:
             SwitchTriggerPlayerOnlyOnceInArea();

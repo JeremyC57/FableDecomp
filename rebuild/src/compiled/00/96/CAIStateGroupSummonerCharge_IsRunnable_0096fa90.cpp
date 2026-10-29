@@ -109,7 +109,7 @@ class CSummonerDef { public:
     float ChargeRangeFar;                       // +0x40
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -136,7 +136,7 @@ struct CAIStateGroup_SummonerCharge : CAIStateGroupBase {
 
 bool CAIStateGroup_SummonerCharge::IsRunnable()
 {
-    if (GetPWorld()->GetWorldFrame() < NextFrameToCharge)
+    if (GetPWorld()->GetFrame() < NextFrameToCharge)
         return false;
     CTCCarrying* carrying;
     if (!GetCreature()->GetInterface(&carrying, 0x46))

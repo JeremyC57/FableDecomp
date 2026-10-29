@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE36A0, 1151 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "REGION_ENTRANCE_POINT" 0x012CA3DC, "REGION_EXIT_POINT" 0x012CA510, "SCRIPT_ROCK_PILE" 0x012F461C,
 //   "SCRIPT_NAME_HERO" 0x0125D1C8, "CS_SNOWTROLL_INTRO" 0x012F4608, "HUD_QUEST_ICON_ICE_TROLL" 0x012F45EC.
-// Callees: CScriptThing copy 0x004ABE90 (filter member), ~CIsThingAlive 0x00E241B0 (out of line), ~CBase 0x0099A2E0,
+// Callees: CScriptThing copy 0x004ABE90 (filter member), ~CIsThingAlive 0x00E241B0 (out of line), ~CBaseClass 0x0099A2E0,
 //   RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC, CCharString 0x0099EBF0 /
 //   0x0099EAE0, handle IsScripting 0x00CD23B9 / Release 0x00CD2770, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall),
 //   parent PlayCutscene(CCharString) 0x00EE2DB0; GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero,
@@ -64,11 +64,12 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {                                          // vtable 0x01231710
-    CBase() { }
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:                                           // vtable 0x01231710
+    CBaseClass() { }
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const;
     virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const;
     virtual void s017() const; virtual void s018() const; virtual void s019() const; virtual void s020() const;

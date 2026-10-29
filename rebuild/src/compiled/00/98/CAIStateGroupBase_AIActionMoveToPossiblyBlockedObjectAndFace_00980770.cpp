@@ -77,7 +77,7 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 extern long g_framesPerSecond;                  // 0x01375550
-unsigned long GFGetCurrentFrame();              // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };              // 0x0049D870
 class CAIStateGroupBase { public:
     virtual void v00();
     CAIBrain* PBrain;                           // +0x04
@@ -125,13 +125,13 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
     if (!IS_THING_ALIVE(thing))
         return 3;
     long fps = g_framesPerSecond;
-    unsigned long endFrame = GFGetCurrentFrame() + (long)(fps * seconds);
+    unsigned long endFrame = CWorld::GetFrame() + (long)(fps * seconds);
     C3DVector pos;
     CRightHandedSet orientation;
     while (!point->GetFreeActionPoint(GetCreature(), &pos, &orientation, &index)) {
         if (AIAction_MinionWander(3, 0) == 1)
             return 1;
-        if (GFGetCurrentFrame() > endFrame)
+        if (CWorld::GetFrame() > endFrame)
             return 3;
         if (!IS_THING_ALIVE(thing) || !filter())
             return 3;

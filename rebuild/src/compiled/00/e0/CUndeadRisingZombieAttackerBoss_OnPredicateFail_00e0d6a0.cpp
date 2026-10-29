@@ -4,7 +4,7 @@
 // 0x012DFFDC (no RTTI locator: the entity-script module).
 // Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0 (x2), ~CCharString @ 0x0099EAE0 (x2), Me's virtual
 // GetPos (slot 6, +0x18), the game interface's CreateEffect(const CCharString&, const C3DVector&, const CCharString&,
-// float, bool, bool) (slot 100, +0x190, CScriptThing by hidden pointer), CBase::~CBase @ 0x0099A2E0, operator delete
+// float, bool, bool) (slot 100, +0x190, CScriptThing by hidden pointer), CBaseClass::~CBaseClass @ 0x0099A2E0, operator delete
 // @ 0x00BFE9BC. Literals: "ZOMBIE_BOSS1_DEATH" @ 0x012DFFF8, "" @ 0x0122D70E.
 // Layout: the CEntityScriptBase family (Game +4, CScriptThing Me +8).
 // Shape: the landed CPermanentBarrier::Main (0x00D2D830) CreateEffect call: both literals are implicit conversions built
@@ -16,9 +16,10 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
-    CBase();                                                // 0x0099A2D0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
+    CBaseClass();                                                // 0x0099A2D0
 };
 struct SScriptThingInfo {                                   // the counted block behind CScriptThing::PImp_Info
     long m_references;                                      // +0
@@ -26,7 +27,7 @@ struct SScriptThingInfo {                                   // the counted block
     void* m_pObject;                                        // +8
 };
 
-class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                               // vtable 0x01238C8C, 12 bytes
     void*             PImp_Data;                            // +0x04
     SScriptThingInfo* PImp_Info;                            // +0x08
     CScriptThing(const CScriptThing& other);

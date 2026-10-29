@@ -89,7 +89,7 @@ class CTCShopKeeper { public:                          // interface 0x90
     void AcquireNewCustomer();                  // 0x00799900
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
@@ -162,7 +162,7 @@ void CAIStateGroup_MinionHawkingFromStall::Update()
             CIntelligentPointer<const CThing>(PStall), speech, false, 0x93);
         keeper->AcquireNewCustomer();
     }
-    NextHawkFrame = GetPWorld()->GetWorldFrame() + Random(75) + 75;
+    NextHawkFrame = GetPWorld()->GetFrame() + Random(75) + 75;
     Terminate();
     }
 }
@@ -180,7 +180,7 @@ static int g_destroyed;
 void CDefPointee::v00() { }
 void CDefPointee::Destroy() { g_destroyed++; }
 static long g_worldFrame = 1000;
-long CWorld::GetWorldFrame() { return g_worldFrame; }
+long CWorld::GetFrame() { return g_worldFrame; }
 unsigned long __fastcall GFROR13(unsigned long value) { return (value >> 13) | (value << 19); }
 CBaseIntelligentPointer::CBaseIntelligentPointer() { m_pItem = 0; }
 CBaseIntelligentPointer::~CBaseIntelligentPointer() { }

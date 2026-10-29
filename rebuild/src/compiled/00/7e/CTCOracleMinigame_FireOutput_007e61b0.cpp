@@ -1,7 +1,7 @@
 // CTCOracleMinigame::FireOutput() -- pick a random symbol 0..3, record it as the next output, mark the symbol firing since this frame, count the output and play the coloured-flare sound
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007E61B0, length 125 bytes.
 // Callees: CTCBase::GetWorld @ 0x00686A70, the world's random-seed accessor @ 0x0049D810 (catalog "CVertexBufferWin32::DoSizeof" is a
-// byte twin), GFROR13(unsigned long) @ 0x00497890 (__fastcall), GetWorldFrame @ 0x0049D870, CCharString::CCharString(const char*, long)
+// byte twin), GFROR13(unsigned long) @ 0x00497890 (__fastcall), CWorld::GetFrame @ 0x0049D870, CCharString::CCharString(const char*, long)
 // @ 0x0099EBF0 ("SND_MM_COLOURED_FLARE" @ 0x01270824), CTCOracleMinigame::PlaySound(const CCharString&) @ 0x007E60F0 (catalog
 // "PlaySoundW"), CCharString::~CCharString @ 0x0099EAE0.
 // Layout: the offsets agree with rebuild/include/engine/CTCOracleMinigame.h (NumOutputsFired +0x24, Output[32] +0x28, SymbolsFiring[4]
@@ -10,7 +10,6 @@
 // Shape: the landed CRandomGenerator::Next inline (seed * 0x24A1 + 0x24DF, then GFROR13) & 3 into a named local; the sound name is
 // a named CCharString local (an unnamed temporary passes the ctor's eax instead of `lea ecx ; push ecx`).
 long __fastcall GFROR13(unsigned long value);       // 0x00497890
-long GetWorldFrame();                               // 0x0049D870
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -22,6 +21,8 @@ struct CRandomGenerator {
 };
 class CWorld { public:
     CRandomGenerator* GetRandomGenerator();         // 0x0049D810
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CThing;
 class CTCBase
@@ -57,7 +58,7 @@ void CTCOracleMinigame::FireOutput()
     long symbol = GetWorld().GetRandomGenerator()->Next() & 3;
     Output[NumOutputsFired] = symbol;
     SymbolsFiring[symbol] = 1;
-    FramesFired[symbol] = GetWorldFrame();
+    FramesFired[symbol] = CWorld::GetFrame();
     ++NumOutputsFired;
     CCharString sound("SND_MM_COLOURED_FLARE");
     PlaySound(sound);

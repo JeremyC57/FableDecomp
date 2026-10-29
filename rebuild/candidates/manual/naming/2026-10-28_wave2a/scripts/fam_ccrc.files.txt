@@ -1,0 +1,17 @@
+rebuild/src/compiled/00/40/CPersistContext_CheckCRC_00404500.cpp
+rebuild/src/compiled/00/4b/CQuestManager_AddBoast_004b1720.cpp
+rebuild/src/compiled/00/4b/CQuestManager_AddNewObjective_004b1ba0.cpp
+rebuild/src/compiled/00/63/CTCRegionDisplay_SetCurrentAreaName_00639ba0.cpp
+rebuild/src/compiled/00/66/CCRC_CalcAndLookup_00669d30.cpp
+rebuild/src/compiled/00/7c/CTCShotDefinitionBase_InitAttachedEffects_007c25a0.cpp
+rebuild/src/compiled/00/86/NCreatureModeCModeDrained_CModeDrained_00868220.cpp
+rebuild/src/compiled/00/89/CGameScriptInterface_SetQuestInfoName_00891940.cpp
+rebuild/src/compiled/00/89/CGameScriptInterface_SetQuestInfoText_00891a00.cpp
+rebuild/src/compiled/00/8a/NCreatureModeCModeScreamerSuperAttack_CModeScreamerSuperAttack_008ac3f0.cpp
+rebuild/src/compiled/00/8c/NCreatureModeCModeSummonerSummon_CModeSummonerSummon_008cc0b0.cpp
+rebuild/src/compiled/00/8c/NCreatureModeCModeSummonerLightningOrb_CModeSummonerLightningOrb_008cc180.cpp
+rebuild/src/compiled/00/8e/NCreatureModeCModeBriarRoseConcentrate_CModeBriarRoseConcentrate_008e78c0.cpp
+rebuild/src/compiled/00/8f/NCombatActionHelpers_CreateEffect_008f7e70.cpp
+rebuild/src/compiled/00/98/CAIStateGroupBase_AIActionSpeakAISpeechToTarget_00981350.cpp
+rebuild/src/compiled/00/9c/NGameTextCDataBank_GetTextBySymbol_009c95e0.cpp
+rebuild/src/compiled/00/b1/NParticleEngineCPSCAttractor_DatabaseSerialise_00b18110.cpp

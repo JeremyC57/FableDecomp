@@ -8,9 +8,10 @@
 // StartHandedness +8 and EndHandedness +0xc, while the local virtual model supplies slots.
 class CPersistContext;
 class CCharString { public: void* m_pData; CCharString(const char*, long); ~CCharString(); };
-struct CBase { virtual ~CBase(); };
+class CBaseClass {
+public:  virtual ~CBaseClass(); };
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); }; // retail list is one sentinel pointer (4 bytes)
-class CStringParser : public CBase { public:
+class CStringParser : public CBaseClass { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
  CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
  CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);

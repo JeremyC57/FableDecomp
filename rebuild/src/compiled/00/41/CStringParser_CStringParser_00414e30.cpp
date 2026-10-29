@@ -1,6 +1,6 @@
 // CStringParser::CStringParser(char*, void (*)(CCharString*), const CCharString&, long) -- constructs the parser members and initialises it over the given text
 // Leaf: ??0CStringParser
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00414E30, 88 bytes. Callees: CBase::CBase @ 0x0099A2D0,
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00414E30, 88 bytes. Callees: CBaseClass::CBaseClass @ 0x0099A2D0,
 // CCharString::CCharString() @ 0x0099E4B0 (Filename, TempCharString), malloc @ 0x00BFEA0E (the comment list's head
 // node), CStringParser::Init(char*, callback, const CCharString&, long) @ 0x009B9530. Manifest label
 // "CStringParser::ConstructorInitialize".
@@ -12,11 +12,11 @@
 // after the `add esp,4` (as the landed default constructor 0x00485C90); ErrorCallback and CursorPos are left to Init.
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 
-namespace N_0099a2d0 { class CBase {
+class CBaseClass {
 public:
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();
+};
 
 class CCharStringData { public:
     char*         PData;                           // +0x0
@@ -57,7 +57,7 @@ struct CCursorPos {
 class CParsedItem;
 typedef void (*TStringParserErrorCallback)(CCharString* message);
 
-class CStringParser : public CBase {               // vtable 0x0122D874
+class CStringParser : public CBaseClass {               // vtable 0x0122D874
 public:
     char*                      String;             // +0x04
     unsigned long              BaseLineOffset;     // +0x08

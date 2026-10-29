@@ -1,15 +1,16 @@
 // CStringParser::CStringParser() -- default constructor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00485C90, length 66 bytes.
-// Callees: CBase::CBase @ 0x0099A2D0, CCharString::CCharString() @ 0x0099E4B0 twice (+0xc,
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0, CCharString::CCharString() @ 0x0099E4B0 twice (+0xc,
 // +0x10), malloc @ 0x00BFEA0E (the list head node, 16 bytes, self-linked next/prev).
 // Vtable 0x0122D874 is CStringParser (rtti-vtables.tsv). The token list at +0x14 is a
 // VC6-era Dinkumware std::list whose constructor zeroes the head pointer, allocates the head
 // node, links it to itself and stores it (the `add esp,4` lands before the final store); the
 // state long at +0x4 is assigned in the body afterwards.
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();
-    CBase();                                // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    virtual ~CBaseClass();
+    CBaseClass();                                // 0x0099A2D0
+};
 
 class CCharString { public:
     char* m_pData;
@@ -30,7 +31,7 @@ struct CTokenList {                         // std::list<CCharString> head only 
     }
 };
 
-class CStringParser : public CBase { public:              // vtable 0x0122D874
+class CStringParser : public CBaseClass { public:              // vtable 0x0122D874
     long        m_position;                 // +0x04
     long        m_length;                   // +0x08
     CCharString m_text;                     // +0x0c

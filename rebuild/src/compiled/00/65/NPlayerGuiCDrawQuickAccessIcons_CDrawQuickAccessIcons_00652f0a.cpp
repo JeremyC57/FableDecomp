@@ -4,7 +4,7 @@
 // Retry 10: RELOCATION_MATCH -- every 12-byte vector modelled as STLport _Vector_base (m_pEnd an _STLP_alloc_proxy with its own ctor); with three plain pointers the resize `push 0Dh` lands before EffectPositions' first zero store.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00652F0A, length 152 bytes.
 // Callees: NPlayerGui::CDrawBase::CDrawBase @ 0x0064CC65, CFadeInFadeOutBase::CFadeInFadeOutBase() @ 0x00436560 (on +0x40),
-// CBase::CBase @ 0x0099A2D0 (the handle's root), vector<CIntelligentPointer<CParticleEmitter>>::Resize(long) @ 0x00657037 (Effects, 13),
+// CBaseClass::CBaseClass @ 0x0099A2D0 (the handle's root), vector<CIntelligentPointer<CParticleEmitter>>::Resize(long) @ 0x00657037 (Effects, 13),
 // vector<C2DCoordI>::resize(unsigned long, const C2DCoordI&) @ 0x00656FAB (EffectPositions, 13). Vtables 0x0125A704
 // (CDrawQuickAccessIcons), 0x0122F598 (CEnginePrimitiveHandle).
 // PDB CDrawQuickAccessIcons (168 bytes): ChargingSoundID +0x2c, ChargingButtonIndex +0x30, ChargingButtonTime +0x34, Charging +0x38,
@@ -18,10 +18,11 @@
 // 8-byte frame slot.
 class CPlayerGui;
 
-namespace N_0099a2d0 { struct CBase {                                     // vtable 0x01231710
+class CBaseClass {
+public:                                      // vtable 0x01231710
     virtual void v00();
-    CBase();                                       // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                       // 0x0099A2D0
+};
 
 class CIVCountedPointeeBase;
 
@@ -30,7 +31,7 @@ struct CIVCountedPointer {                         // embedded member with an in
     __forceinline CIVCountedPointer() : Object(0) { }
 };
 
-class CEnginePrimitiveHandle : public CBase { public:            // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public:            // vtable 0x0122F598
     CIVCountedPointer Data;                        // +4
     virtual void v00();
     __forceinline CEnginePrimitiveHandle() { }

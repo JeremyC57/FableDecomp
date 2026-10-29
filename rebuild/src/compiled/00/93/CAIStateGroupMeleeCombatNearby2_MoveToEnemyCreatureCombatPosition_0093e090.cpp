@@ -98,7 +98,7 @@ class CWorld { public:
     unsigned char _pad0[0x4c];
     CCombatManager* CombatManager;              // +0x4c
     CCombatManager* GetPCombatManager() const { return CombatManager; }
-    static long __fastcall GetWorldFrame();     // 0x0049D870
+    static long __fastcall GetFrame();     // 0x0049D870
 };
 
 class CAIBrain { public:
@@ -141,7 +141,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
     CThingCreatureBase* creature = PBrain->PCreature;
     CWorld* world = GetPWorld();
     C3DVector pos = world->GetPCombatManager()->GetPreferredPos(creature);
-    long lastFrame = CWorld::GetWorldFrame();
+    long lastFrame = CWorld::GetFrame();
     if (IsStillRunnable(true)) {
         CTCCreatureNavigation* navigation;
         do {
@@ -151,11 +151,11 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
                 return false;
             CThingCreatureBase* me = PBrain->PCreature;
             unsigned __int64 uid = me->UID;
-            if ((uid + CWorld::GetWorldFrame()) % 5 == 0 || CWorld::GetWorldFrame() - lastFrame > 6) {
+            if ((uid + CWorld::GetFrame()) % 5 == 0 || CWorld::GetFrame() - lastFrame > 6) {
                 CThingCreatureBase* self = PBrain->PCreature;
                 CWorld* w = GetPWorld();
                 pos = w->GetPCombatManager()->GetPreferredPos(self);
-                lastFrame = CWorld::GetWorldFrame();
+                lastFrame = CWorld::GetFrame();
             }
             PBrain->PCreature->GetInterface(&navigation, 7);
             long result = AIAction_MoveToPosProximity(2, pos, 0.5f, &arrived, 5, true, false, true, PEnemy.GetPItem(), false, 0.0f);

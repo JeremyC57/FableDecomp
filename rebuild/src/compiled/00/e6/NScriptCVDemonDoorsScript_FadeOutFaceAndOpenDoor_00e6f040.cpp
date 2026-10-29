@@ -1,7 +1,7 @@
 // CV_DemonDoorsScript::FadeOutFaceAndOpenDoor(const CScriptThing& face, const CCharString& doorName) -- fade the demon-door face out over three seconds, open the named door and make it persistent, then remove the face
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E6F040, length 169 bytes (`ret 8`; 176 with padding).
 // Callees: FadeOutAndKillEntity @ 0x00CBE716 (`__fastcall`: thing in ecx, the first bool in dl, the float and the
-// second bool on the stack), CBase::~CBase @ 0x0099A2E0, operator delete @ 0x00BFE9BC, and through the interface
+// second bool on the stack), CBaseClass::~CBaseClass @ 0x0099A2E0, operator delete @ 0x00BFE9BC, and through the interface
 // (+0x40): GetThingWithScriptName (slot 72, +0x120, CScriptThing by hidden pointer), OpenDoor (slot 425, +0x6a4),
 // SetThingPersistent (slot 477, +0x774), RemoveThing(const CScriptThing&, bool, bool) (slot 108, +0x1b0).
 // Identity: the catalog label stands (no member is touched beyond the interface pointer).
@@ -13,9 +13,10 @@
 class CCharString { public:
     void* PStringData;
 };
-struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
-    CBase();                                                // 0x0099A2D0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
+    CBaseClass();                                                // 0x0099A2D0
 };
 
 struct SScriptThingInfo {                                   // the counted block behind CScriptThing::PImp_Info
@@ -24,7 +25,7 @@ struct SScriptThingInfo {                                   // the counted block
     void* m_pObject;                                        // +8
 };
 
-class CScriptThing : public CBase { public:                               // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                               // vtable 0x01238C8C, 12 bytes
     void*             PImp_Data;                            // +0x04
     SScriptThingInfo* PImp_Info;                            // +0x08
     CScriptThing(const CScriptThing& other);

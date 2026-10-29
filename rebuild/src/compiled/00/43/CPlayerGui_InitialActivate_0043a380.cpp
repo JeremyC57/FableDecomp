@@ -38,8 +38,8 @@ class CDefinitionManager { public:
     bool GetDef(const CCharString& name, CPlayerGuiDefPointer* out);   // 0x0043FF30 (GetDef<T> instantiation)
 };
 
-class CGameDefinitionManager { public:
-    static CDefinitionManager& __fastcall Get();            // 0x0044C6B0
+class CGameDefinitionManager : public CDefinitionManager { public:
+    static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 
 __forceinline const CPlayerGuiDef* GetPlayerGuiDef()        // lazily load the GUI def into the global pointer

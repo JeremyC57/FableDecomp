@@ -9,7 +9,7 @@
 // Shape: `GetWorld()->GetWorldFrame()` with a STATIC GetWorldFrame: the object expression is still evaluated
 //   (`call GetWorld`, result unused), then the static call -- the same pair as the landed 0x006929E0.
 class CWorld { public:
-    static long GetWorldFrame();        // 0x0049D870
+    static long __fastcall GetFrame();        // 0x0049D870
 };
 
 class CThingCreatureBase { public:
@@ -23,5 +23,5 @@ class CThingCreatureBase { public:
 void CThingCreatureBase::SetLastActionHandedness(long handedness)
 {
     PreviousActionHandedness = handedness;
-    PreviousActionHandednessWF = GetWorld()->GetWorldFrame();
+    PreviousActionHandednessWF = GetWorld()->GetFrame();
 }

@@ -18,7 +18,7 @@ class CThingAICreature : public CThing { public:
 };
 
 class CWorld { public:
-    static long __fastcall GetFrameCount(); // 0x0049D870
+    static long __fastcall GetFrame(); // 0x0049D870
 };
 
 class CAIBrain { public:
@@ -45,5 +45,5 @@ void CAIStateGroup_CreatureUseCoverBase::SetFailedToFindCover()
 {
     FailedToFindCover = true;
     FailedToFindCoverAt = PBrain->Creature->GetPos();
-    FailedTime = GetPWorld()->GetFrameCount();
+    FailedTime = GetPWorld()->GetFrame();
 }

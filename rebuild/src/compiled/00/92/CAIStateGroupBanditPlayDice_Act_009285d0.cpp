@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009285D0, 992 bytes (aligned frame, no EH frame).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CCreatureAction_PlayAnimation ctor 0x008424F0,
 //   AIAction_PerformActionAndWait 0x0097DB70, ~CCreatureActionBase 0x00693EF0, GetPWorldSeed 0x008FCFD0, GFROR13 0x00497890,
-//   GetWorldFrame 0x0049D870 (static), GFFloatRandom 0x004978A0 (__fastcall), rand 0x00BFEB16, CBaseIntelligentPointer
+//   CWorld::GetFrame 0x0049D870 (static), GFFloatRandom 0x004978A0 (__fastcall), rand 0x00BFEB16, CBaseIntelligentPointer
 //   ctor 0x00A01B10 / GetPItem 0x00A01B50 / SetPItem 0x00A01B90 / dtor 0x00A01C10; CIntelligentPointer<CThing> vtable 0x01238C6C.
 // Layout: engine/CAIStateGroup_BanditPlayDice.h DiceGame +0x18; CTCDiceGame NumberOfPlayers +0xc, CurrentPlayer +0x10
 //   (CIntelligentPointer<CThing>, Ego_r.pdb); state group PBrain +4, brain creature +0x18. The generated
@@ -67,7 +67,7 @@ class CAIBrain { public:
 };
 enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2, AI_ACTION_ABORTED = 3, AI_ACTION_RUNNING = 4 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CAIStateGroupBase { public:
     virtual void v00();
@@ -100,8 +100,8 @@ EAIActionReturn CAIStateGroup_BanditPlayDice::Act()
     if (result != AI_ACTION_DONE)
         return result;
     unsigned long wait = Random(300);
-    long endFrame = CWorld::GetWorldFrame() + wait + 375;
-    while (CWorld::GetWorldFrame() < endFrame) {
+    long endFrame = CWorld::GetFrame() + wait + 375;
+    while (CWorld::GetFrame() < endFrame) {
         if (DiceGame->NumberOfPlayers >= 2 && !DiceGame->CurrentPlayer.GetPItem()
             && GFFloatRandom(1.0f, GetPWorldSeed()) < 0.2f) {
             CThing* player = GetCreature();

@@ -4,7 +4,7 @@ namespace NUISystem {
 class CManager {
 public:
     int dummy;
-    static CManager* GetInstance();
+    static CManager* __fastcall GetInstance();
     void ShowErrorMessage(long message) { ++g_shows; g_msg = message; g_this = this; }
     static void __fastcall ShowErrorMessageOnInstance(long message);
 };

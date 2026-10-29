@@ -7,7 +7,7 @@
 // deleter +4 run on the object +8, block freed with operator delete 0x00BFE9BC) and the two zero
 // stores block-then-object. The list member's destructor follows: out-of-line clear() (0x00A0A720,
 // manifest "remove_if" is a byte-twin label) and the sentinel freed when present (0x00BFEA14); the
-// CBase destructor (0x0099A300) is the tail jump. Layout per the landed ctor 0x00A0A110.
+// CBaseClassNonCopyable destructor (0x0099A300) is the tail jump. Layout per the landed ctor 0x00A0A110.
 extern "C" void __cdecl free(void* p);              // 0x00BFEA14
 
 struct SCountBlock {
@@ -53,15 +53,16 @@ struct CBankInfoList {                              // STLport list<CMeshDataBan
     void clear();                                   // 0x00A0A720
 };
 
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                               // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                               // 0x0099A300
+};
 
 struct CMeshBankListener {                          // second base
     virtual void v00();
 };
 
-class CMeshBankManager : public CBase, public CMeshBankListener { public:
+class CMeshBankManager : public CBaseClassNonCopyable, public CMeshBankListener { public:
     CBankInfoList MeshDataBanks;                    // +0x08
     virtual void v00();
     virtual ~CMeshBankManager();

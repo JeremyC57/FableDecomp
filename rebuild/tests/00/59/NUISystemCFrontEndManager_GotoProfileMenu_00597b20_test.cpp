@@ -60,7 +60,7 @@ class CManager {
 public:
     virtual void _m00(); virtual void _m01(); virtual void _m02(); virtual void _m03(); virtual void _m04();
     virtual void RemoveObserver(CObserver* observer);    // slot 5 (+0x14)
-    static CManager* GetInstance();                      // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                      // 0x0041E5F2
 };
 class CFrontEndManager {
 public:

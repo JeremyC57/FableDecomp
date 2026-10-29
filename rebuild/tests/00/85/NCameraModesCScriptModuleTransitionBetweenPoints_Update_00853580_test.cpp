@@ -3,7 +3,8 @@
 // position steps by Increment and the look-at tracks the live thing's focal position (or drifts by LookAtIncrement);
 // the camera then takes the look-at and the FOV.
 static long g_frame = 0;
-long __fastcall GFGetCurrentFrame() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
@@ -40,7 +41,7 @@ public:
 };
 void CScriptModuleTransitionBetweenPoints::Update()
 {
-    if (GFGetCurrentFrame() < EndFrame) {
+    if (CWorld::GetFrame() < EndFrame) {
         POwner->Position = POwner->Position + Increment;
         if (PThing.GetPItem() && !PThing.GetPItem()->m_dead) {
             C3DVector focal = PThing.GetPItem()->GetPTCGraphicAppearance()->GetCameraFocalPos(1.0f);

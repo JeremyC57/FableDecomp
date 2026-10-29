@@ -14,9 +14,10 @@
 // packed local polymorphic model uses the header's field layout and supplies slots 3/8.
 class CPersistContext;
 class CCharString { public: void* data; CCharString(const char*, long); ~CCharString(); };
-struct CBase { virtual ~CBase(); };
+class CBaseClass {
+public:  virtual ~CBaseClass(); };
 struct CStringParserCommentList { void* head; ~CStringParserCommentList(); }; // retail sentinel-only list, 4 bytes
-class CStringParser : public CBase { public:
+class CStringParser : public CBaseClass { public:
  char* String; unsigned long BaseLineOffset; CCharString Filename; CCharString TempCharString;
  CStringParserCommentList Comments; void (*ErrorCallback)(CCharString*); long CursorPos[3];
  CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&, long);
@@ -58,7 +59,7 @@ CCharString::~CCharString() {
  else if(data && !((const char*)data)[0]){if(!same("REP"))bad=true;event('F');}
  else if(data && ((const char*)data)[0]==',' && !((const char*)data)[1]){if(!same("REPFAMS"))bad=true;event('D');}
 }
-CBase::~CBase(){if(this!=(CBase*)gParser)bad=true;event('Z');}
+CBaseClass::~CBaseClass(){if(this!=(CBaseClass*)gParser)bad=true;event('Z');}
 CStringParserCommentList::~CStringParserCommentList(){if(this!=&gParser->Comments)bad=true;event('L');}
 CStringParser::CStringParser(const CCharString& text,void(*cb)(CCharString*),const CCharString& filename,long mode)
  :String(0),BaseLineOffset(0),Filename(0,-1),TempCharString(0,-1),Comments(),ErrorCallback(cb) {

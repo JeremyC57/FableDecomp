@@ -34,7 +34,7 @@ class CThing { public:
     }
 };
 class CWorld { public:
-    static long GetWorldFrame();                        // 0x0049D870
+    static long __fastcall GetFrame();                        // 0x0049D870
 };
 class CTCLook { public:
     void UpdateTurningAnims();                          // 0x00754050
@@ -91,5 +91,5 @@ void CTCCreatureModeManager::RemoveMode(unsigned long modeType)
             ((CTCLook*)ParentThing->GetTC(0x43))->UpdateTurningAnims();
     }
     long idleDelay = (long)(g_framesPerSecond * 30.0f);
-    TimeForNextIdleMode = CWorld::GetWorldFrame() + idleDelay;
+    TimeForNextIdleMode = CWorld::GetFrame() + idleDelay;
 }

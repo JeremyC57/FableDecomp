@@ -133,8 +133,9 @@ class CUserProfileManager { public:
 class CWorld { public:
     unsigned char _pad00[0x8c];
     long InventoryClosedFrame;                       // +0x8c
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
-long __fastcall GetWorldFrame();                     // 0x0049D870
 void __fastcall CloseMenus();                        // 0x0041D165
 namespace NHeroInformationScreens {
 class CManager { public: void SetScreen(long screen);        // 0x0066E799 (name unproven)
@@ -197,7 +198,7 @@ void CTCInventoryMap::vfunc_31()
         b->Slot40(&a->Slot42().Data->SomeState, true);
         g_pMainGameComponent->World->Hud->SetEnabled(true);
         CWorld* world = (&GetWorld());
-        world->InventoryClosedFrame = GetWorldFrame();
+        world->InventoryClosedFrame = CWorld::GetFrame();
         g_pPlayerGui->GetPHeroInfoScreensManager()->SetScreen(PreviousScreen);
         BaseCloseInventory();
         for (unsigned long i = 0; i < Components.size(); ++i)

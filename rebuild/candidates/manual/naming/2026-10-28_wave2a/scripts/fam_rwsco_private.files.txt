@@ -1,0 +1,9 @@
+rebuild/src/compiled/00/a7/CContainmentVolume_LoadBinary_00a754e0.cpp
+rebuild/src/compiled/00/ad/CParticleProgram_OptimiseConstraints_00adfdc0.cpp
+rebuild/src/compiled/00/bd/CLocalDetailCacheMapCObjectCacheGroupCollection_LoadContents_00bde860.cpp
+rebuild/src/compiled/00/be/CLocalDetailObjectCollectionType_Load_00be27b0.cpp
+rebuild/src/compiled/00/bf/CLocalDetailPrimitiveMeshZSpriteBatch_Load_00bfb210.cpp
+rebuild/src/compiled/00/bf/CPatchTesselationEdgeStrip_LoadVertsCVertex_00bfc880.cpp
+rebuild/src/compiled/00/bf/CPatchTesselationEdgeStrip_LoadVertsCFanBaseVertex_00bfca20.cpp
+rebuild/src/compiled/00/bf/CPatchTesselationEdgeStrip_LoadVertsCWaterVertex_00bfcbc0.cpp
+rebuild/src/compiled/00/bf/CPatchTesselationEdgeStrip_LoadVertsCWaterFanBaseVertex_00bfcd60.cpp

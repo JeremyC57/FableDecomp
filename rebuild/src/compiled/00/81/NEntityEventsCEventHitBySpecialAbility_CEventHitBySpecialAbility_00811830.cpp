@@ -38,10 +38,10 @@ class CHeroAbilityDef : public CDefBase { public:
     bool Aggressive;                                    // +0x94
 };
 class CDefinitionManager { public:
-    static CDefinitionManager& __fastcall Get();        // 0x0044C6B0
     long GetNumberOfDefsOfType(const CCharString& typeName);   // 0x009AD3B0
     bool GetDef_005f89f2(const CCharString& typeName, long index, CDefPointer<CHeroAbilityDef>& out);   // 0x005F89F2
 };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 void* FindDef_CDefinitionManager_GetDef_005f89f2_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
@@ -75,7 +75,7 @@ class CEventHitBySpecialAbility : public CEventHitBase { public:      // vtable 
 CEventHitBySpecialAbility::CEventHitBySpecialAbility(const CHitParameters& params, long ability)
     : CEventHitBase(params), Ability(ability), Aggressive(true)
 {
-    CDefinitionManager& manager = CDefinitionManager::Get();
+    CDefinitionManager& manager = CGameDefinitionManager::Get();
     long count;
     {
         CCharString typeName("HERO_ABILITY", -1);

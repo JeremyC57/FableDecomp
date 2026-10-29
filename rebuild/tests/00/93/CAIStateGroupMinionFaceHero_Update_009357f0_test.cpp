@@ -2,7 +2,7 @@
 #include <string.h>
 // CAIStateGroup_MinionFaceHero::Update() -- for up to six seconds while the hero lives: look at the hero, and stop once the hero (perceived in extended line of sight) is within 2.2m; idle a tick between looks; terminate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009357F0, length 384 bytes (both exits are `jmp Terminate` tail calls).
-// Callees: GFGetCurrentFrame @ 0x0049D870 (__fastcall, no object), CBaseIntelligentPointer ctor/GetPItem/SetPItem
+// Callees: CWorld::GetFrame @ 0x0049D870 (__fastcall, no object), CBaseIntelligentPointer ctor/GetPItem/SetPItem
 //          (PHero +0x14), CAIStateGroupBase::AIAction_LookAtThing @ 0x0097D6F0 (CIntelligentPointer<const CThing> by
 //          value, vtable 0x01237F1C), the inlined STLport lower_bound of the interface map (0x34 = CTCPerceiveThing, bit 20
 //          of +0x24), CTCPerceiveThing::IsPlayerExtendedLineOfSight @ 0x00744830, CThing::GetPosition @ 0x004C73D0,
@@ -64,7 +64,7 @@ class CThing { public:
 class CTCPerceiveThing { public:                       // interface 0x34
     bool IsPlayerExtendedLineOfSight();         // 0x00744830
 };
-unsigned long __fastcall GFGetCurrentFrame();   // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 extern unsigned long FramesPerSecond;           // 0x01375550
 
 struct CBaseIntelligentPointer {
@@ -115,10 +115,10 @@ struct CAIStateGroup_MinionFaceHero : CAIStateGroupBase {
 
 void CAIStateGroup_MinionFaceHero::Update()
 {
-    unsigned long start = GFGetCurrentFrame();
+    unsigned long start = CWorld::GetFrame();
     while (IS_THING_ALIVE(PHero)) {
         unsigned long fps = FramesPerSecond;
-        if (GFGetCurrentFrame() - start > fps * 6)
+        if (CWorld::GetFrame() - start > fps * 6)
             break;
         if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(PHero), 0xf, 0.0027777f) != 2) {
             Terminate();
@@ -155,7 +155,7 @@ static C3DVector g_pos[2];
 static CThing* g_heroThing; static CThing* g_creatureThing;
 const C3DVector& CThing::GetPosition() { return this == g_heroThing ? g_pos[0] : g_pos[1]; }
 static unsigned long g_frame, g_step;
-unsigned long __fastcall GFGetCurrentFrame() { unsigned long f = g_frame; g_frame += g_step; return f; }
+long CWorld::GetFrame() { unsigned long f = g_frame; g_frame += g_step; return f; }
 unsigned long FramesPerSecond = 30;
 void CBaseIntelligentPointer::v00() { }
 template<class T> void CIntelligentPointer<T>::v00() { }

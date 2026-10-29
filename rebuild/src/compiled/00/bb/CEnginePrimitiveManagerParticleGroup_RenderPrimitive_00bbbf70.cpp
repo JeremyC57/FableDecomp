@@ -1,7 +1,7 @@
 // CEnginePrimitiveManagerParticleGroup::RenderPrimitive(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&) -- when enabled, queue a 3D particle group as a pool-allocated sub-primitive at its distance from the camera: in list 1 (water-stage group without z-writes) or 0, or for a screen-displacement group (when the displacement pass is available) in lists 5 and 6 with a second displacement sub-primitive; returns 2 (rendered), 0 when disabled
 // Leaf: RenderPrimitive
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBBF70, length 307 bytes (`ret 0Ch`, virtual).
-// Callees: CEngineSubPrimitiveBase::operator new @ 0x00BEB540 (`__fastcall`, size 0x18), CBase::CBase @ 0x0099A2F0,
+// Callees: CEngineSubPrimitiveBase::operator new @ 0x00BEB540 (`__fastcall`, size 0x18), CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0,
 // CEngineSubPrimitiveParticleGroup::CEngineSubPrimitiveParticleGroup(CEngineInternalPrimitiveBase&) @ 0x00BBBDB0 (second
 // construction out of line), CEngineSubPrimitiveRenderer::AddSubPrimitive @ 0x00B84720 (renderer @ 0x01436E74); camera @ 0x01436EA0
 // (WorldPosition +0x54), displacement-pass flag byte +0xef of the engine settings @ 0x01436E38.
@@ -18,14 +18,14 @@ class C3DVector { public:
     C3DVector(const C3DVector& o) : X(o.X), Y(o.Y), Z(o.Z) { }
 };
 #include <math.h>
-class CBase {
-public:
-    virtual ~CBase();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 class CEngineInternalPrimitiveBase;
 class CEnginePrimitiveManager;
-class __declspec(novtable) CEngineSubPrimitiveBase : public CBase {   // PDB, 0x18 bytes
+class __declspec(novtable) CEngineSubPrimitiveBase : public CBaseClassNonCopyable {   // PDB, 0x18 bytes
 public:
     unsigned long                 RenderFlags;      // +0x04
     unsigned char                 Alpha;            // +0x08

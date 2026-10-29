@@ -2,7 +2,7 @@
 // Leaf: ?Get@CGameJoystickManager@@SIAAV1@XZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0049BB90, 88 bytes, plain `ret` (static __fastcall with no arguments:
 //   FableWin.pdb `?Get@CGameJoystickManager@@SIAAV1@XZ`, `static CGameJoystickManager& Get()`).
-// Callees: 0x00BFEA1A operator new (0x0C bytes, null-tested), 0x0099A2F0 CBase::CBase, 0x0049BCE0
+// Callees: 0x00BFEA1A operator new (0x0C bytes, null-tested), 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable, 0x0049BCE0
 //   CCountedPointer<CGameJoystickManager>::Reset (landed, __fastcall on &PClass = 0x013B89A0, `mov ecx,offset`).
 // Globals: 0x013B89A0 CGameJoystickManager::PClass (CCountedPointer {object +0, count block +4}; its dynamic
 //   initializer/atexit destructor are named in the PDB). Vtable 0x01238B54 (CGameJoystickManager, rtti-vtables.tsv).
@@ -12,9 +12,10 @@
 //   re-read from PClass after the Reset. Members from engine/CGameJoystickManager.h (POD snapshot; the polymorphic class
 //   is modelled locally with the same offsets, like the landed constructor).
 // Label correction: catalogued as `_global::Get`; the PDB name is CGameJoystickManager::Get.
-struct CBase {
-    virtual ~CBase();
-    CBase();                                        // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();                                        // 0x0099A2F0
 };
 
 template <class T>
@@ -26,7 +27,7 @@ class CCountedPointer { public:
     void Reset(T* object);                          // 0x0049BCE0
 };
 
-class CGameJoystickManager : public CBase { public:
+class CGameJoystickManager : public CBaseClassNonCopyable { public:
     long m_MainPlayerJoystickDeviceNumber;          // +0x04
     bool m_MainPlayerJoystickDeviceNumberSet;       // +0x08
     CGameJoystickManager()

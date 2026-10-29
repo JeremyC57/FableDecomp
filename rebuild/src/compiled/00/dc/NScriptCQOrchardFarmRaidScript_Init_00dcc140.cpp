@@ -25,16 +25,17 @@ class CWideString { public:
     CWideString& operator=(const unsigned short* text);        // 0x0099B800
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-struct CBase {
-    virtual ~CBase();                                   // 0x0099A2E0
-    CBase();                                            // 0x0099A2D0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                   // 0x0099A2E0
+    CBaseClass();                                            // 0x0099A2D0
 };
 struct SScriptThingInfo {
     long m_references;
     void (__fastcall* m_pfnDestroy)(void*);
     void* m_pObject;
 };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     void* PImp_Data;
     SScriptThingInfo* PImp_Info;
     CScriptThing() : PImp_Data(0), PImp_Info(0) { }

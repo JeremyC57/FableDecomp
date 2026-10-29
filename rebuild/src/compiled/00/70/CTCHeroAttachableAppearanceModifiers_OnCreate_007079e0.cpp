@@ -92,7 +92,7 @@ class CThing { public:
 };
 
 class CWorld { public:
-    static long GetWorldFrame();                     // 0x0049D870
+    static long __fastcall GetFrame();                     // 0x0049D870
 };
 
 class CTCBase { public:
@@ -148,5 +148,5 @@ void CTCHeroAttachableAppearanceModifiers::OnCreate()
     }
     Changed = true;
     UploadChangesToGraphics();
-    FrameLastChanged = PeekWorld().GetWorldFrame();
+    FrameLastChanged = PeekWorld().GetFrame();
 }

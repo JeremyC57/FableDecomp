@@ -3,8 +3,9 @@
 #include <new>
 
 static int g_baseRuns = 0;
-struct CBase { virtual ~CBase() {} CBase() { ++g_baseRuns; } };
-struct CActionBase : CBase { long m_actionState; bool m_started; bool m_finished;
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() {} CBaseClassNonCopyable() { ++g_baseRuns; } };
+struct CActionBase : CBaseClassNonCopyable { long m_actionState; bool m_started; bool m_finished;
     CActionBase() : m_actionState(0), m_started(false), m_finished(false) {} };
 struct CActionStopScripting : CActionBase { CActionStopScripting() {} };
 int main()

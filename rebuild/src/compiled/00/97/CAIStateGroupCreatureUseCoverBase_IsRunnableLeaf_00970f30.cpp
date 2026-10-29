@@ -17,10 +17,12 @@ class C3DVector { public:
 class CThing { public: const C3DVector& GetPos() const; };
 struct CThingRetail : public CThing { public:  };   // 0x004C73D0
 struct CAIBrainRetail { unsigned char _pad[0x18]; CThingRetail* Creature; };   // +0x18
-class CWorld { public: static long GetFramesPerSecond(); };
+class CWorld { public: static long GetFramesPerSecond(); 
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
+};
 extern long g_framesPerSecond;                  // 0x01375550
 inline long CWorld::GetFramesPerSecond() { return g_framesPerSecond; }
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
 struct CIntelligentPointerBaseRetail {virtual ~CIntelligentPointerBaseRetail();void* Data; CIntelligentPointerBaseRetail(); CThingRetail* GetPItem()const;void SetPItem(CThingRetail*);}; //A01B10,A01B50,A01B90,A01C10
 struct CIntelligentPointerRetail:CIntelligentPointerBaseRetail {
  __forceinline CIntelligentPointerRetail(CThingRetail* p){SetPItem(p);}
@@ -53,7 +55,7 @@ bool UseCoverMethods::IsRunnableLeaf(){
  if(RetailFailedToFindCover()){
   C3DVector offset=RetailFailedToFindCoverAt()-GetCreature()->GetPos();
   long framesPerSecond=GetPWorld()->GetFramesPerSecond();
-  long seconds=(GFGetCurrentFrame()-RetailFailedTime())/framesPerSecond;
+  long seconds=(CWorld::GetFrame()-RetailFailedTime())/framesPerSecond;
   if(offset.GetLengthSquared2D()<225.0f&&seconds<8)return false;
   RetailFailedToFindCover()=false;
  }

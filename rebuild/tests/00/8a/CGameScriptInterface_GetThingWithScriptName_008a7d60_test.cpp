@@ -15,17 +15,18 @@ class CCharString { public:
 class C3DVector { public: float x, y, z; };
 struct SCountBlock;
 static int g_baseCtors = 0;
-namespace N_0099a2d0 { struct CBase {
-    CBase() { ++g_baseCtors; }
-    virtual void v00() {}
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass() { ++g_baseCtors; }
+    virtual ~CBaseClass() {}
+};
 struct CScriptThingImp;
 struct CScriptThingPImp {
     CScriptThingImp* Data;
     SCountBlock*     Info;
     CScriptThingPImp() : Data(0), Info(0) {}
 };
-class CScriptThing : public CBase { public:
+class CScriptThing : public CBaseClass { public:
     CScriptThingPImp PImp;
     CScriptThing() {}
 };

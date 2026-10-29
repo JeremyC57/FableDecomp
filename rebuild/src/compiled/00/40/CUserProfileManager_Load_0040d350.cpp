@@ -5,7 +5,7 @@
 // propagated), CWideString::operator!=(const wchar_t*) @ 0x0099B150, PathExists @ 0x00999230 and VerifySignature
 // @ 0x00409730 (`__fastcall`), CDiskFileWin32::CDiskFileWin32(const CWideString&, FileAccessType, unsigned long)
 // @ 0x0099AD80 (landed), CUserProfileManager::LoadGameState(CAFile*) @ 0x0040BCA0, CDiskFileWin32::Close @ 0x0099A920
-// (landed), ~CWideString @ 0x0099B510, CBase::~CBase @ 0x0099A300. Literal L"" @ 0x0122D70C.
+// (landed), ~CWideString @ 0x0099B510, CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300. Literal L"" @ 0x0122D70C.
 // Layout: Ego_r.pdb CUserProfileManager ProfileName (CWideString) +0x08; CDiskFileWin32 (0x1c bytes, vtable 0x0122D06C)
 // Opened +0x14, Pathname +0x18 (as the landed constructor 0x0099AD80).
 // Shape: the three tests chain in one `if`; the file is a block-scoped local whose inline virtual destructor stores the
@@ -20,10 +20,11 @@ bool __fastcall PathExists(const CWideString& path);       // 0x00999230
 bool __fastcall VerifySignature(const CWideString& path);  // 0x00409730
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                                       // 0x0099A300
-}; } using N_0099a300::CBase;
-class CAFile : public CBase { public:
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
+};
+class CAFile : public CBaseClassNonCopyable { public:
     long AccessType;                                        // +0x04 FileAccessType
     long Position;                                          // +0x08
     long Length;                                            // +0x0c

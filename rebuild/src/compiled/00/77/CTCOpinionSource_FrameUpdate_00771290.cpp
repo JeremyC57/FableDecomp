@@ -6,7 +6,7 @@
 // VirtualDeedID +0x84, FrameToClearVirtualDeed +0x88 (unsigned: `jb`).
 // Shape: the frame getter is a plain static call (no GetWorld, nothing in ecx); the deed is cleared with an immediate store.
 class CWorld { public:
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 
 struct CTCBase_00771290 {
@@ -24,6 +24,6 @@ class CTCOpinionSource : public CTCBase_00771290 { public:
 
 void CTCOpinionSource::FrameUpdate()
 {
-    if (VirtualDeed != 0 && (unsigned long)CWorld::GetWorldFrame() >= FrameToClearVirtualDeed)
+    if (VirtualDeed != 0 && (unsigned long)CWorld::GetFrame() >= FrameToClearVirtualDeed)
         VirtualDeed = 0;
 }

@@ -2,7 +2,7 @@
 // Leaf: ??0CQ_ArenaScript
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CFA660, length 149 bytes, `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110, CCharString::CCharString() @ 0x0099E4B0 (20 times, inline counted
-// loop), CBase::CBase @ 0x0099A2D0 (the CScriptThing root, twice; CScriptThing vtable 0x01238C8C), and
+// loop), CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing root, twice; CScriptThing vtable 0x01238C8C), and
 // CGameScriptInterface::RegisterTimer (slot 87, +0x15c) through the interface global @ 0x0143E8F8.
 // Layout: Ego_r.pdb CQ_ArenaScript - 0x14, and a further -4 after the Rounds vector (retail STLport vectors are 12
 // bytes): CrowdLoopTags (CCharString[4][5]) +0x48, Rounds +0x98, CellsVillage +0xc0, GlobalCrowdTimer +0x100,
@@ -51,10 +51,11 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
     CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
 };
 
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                         // 0x0099A2D0
-    virtual ~CBase();                                // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                         // 0x0099A2D0
+    virtual ~CBaseClass();                                // 0x0099A2E0
+};
 
 class CScriptThing;
 class CCPPointerInfo;
@@ -65,7 +66,7 @@ struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
 
-class CScriptThing : public CBase { public:                        // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                        // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;               // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();

@@ -2,7 +2,7 @@
 // Leaf: ??0CV_BanditCampPathScript
 // Retail: Fable.exe @ 0x00E46BD0, 93 bytes (+ int3 padding), `ret 8`.
 // Callees: CScriptBase::CScriptBase @ 0x00CB8110 (manifest label "CHeroMorphDef" is propagated, see GOTCHAS),
-// CBase::CBase @ 0x0099A2D0 (the CScriptThing root, twice); CScriptThing vtable 0x01238C8C.
+// CBaseClass::CBaseClass @ 0x0099A2D0 (the CScriptThing root, twice); CScriptThing vtable 0x01238C8C.
 // Layout: Ego_r.pdb CV_BanditCampPathScript - 0x14: OverheardBanditConversation +0x48, Bandits (STLport vector, 12 bytes)
 // +0x4c, Bandit1 (CScriptThing, 12 bytes) +0x58, Bandit2 +0x64.
 // Shape: the 0x00E68F70 script-object model (arguments stored by an inlined `__declspec(novtable)` intermediate base
@@ -26,10 +26,11 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
     CScriptObject(void* owner, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pOwner(owner) { }
 };
 
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                         // 0x0099A2D0
-    virtual ~CBase();                                // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                         // 0x0099A2D0
+    virtual ~CBaseClass();                                // 0x0099A2E0
+};
 
 class CScriptThing;
 class CCPPointerInfo;
@@ -40,7 +41,7 @@ struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
 
-class CScriptThing : public CBase { public:                        // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                        // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;               // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();

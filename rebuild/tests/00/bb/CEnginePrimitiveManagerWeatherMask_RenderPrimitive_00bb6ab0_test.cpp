@@ -6,15 +6,15 @@
 static int fails = 0;
 #define CHECK(c) do { if (!(c)) { ++fails; printf("FAIL %d: %s\n", __LINE__, #c); } } while (0)
 class C3DVector { public: float X, Y, Z; };
-class CBase {
+class CBaseClassNonCopyable {
 public:
-    virtual ~CBase() {}
-    CBase() {}
+    virtual ~CBaseClassNonCopyable() {}
+    CBaseClassNonCopyable() {}
 };
 class CEngineInternalPrimitiveBase;
 class CEnginePrimitiveManager;
 static int g_newCalls; static unsigned int g_newSize; static unsigned char g_pool[64];
-class CEngineSubPrimitiveBase : public CBase {
+class CEngineSubPrimitiveBase : public CBaseClassNonCopyable {
 public:
     unsigned long                 RenderFlags;
     unsigned char                 Alpha;

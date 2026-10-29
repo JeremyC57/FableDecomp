@@ -77,7 +77,7 @@ class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
-    static long __fastcall GetWorldFrame();     // 0x0049D870
+    static long __fastcall GetFrame();     // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 
@@ -137,7 +137,7 @@ bool CAIStateGroup_MinionReactToCriminal::IsRunnable()
             return IsValid();
     }
     long fps = g_framesPerSecond;
-    if ((float)(CWorld::GetWorldFrame() - FrameLastLeftStategroup) < fps * 10.0f)
+    if ((float)(CWorld::GetFrame() - FrameLastLeftStategroup) < fps * 10.0f)
         return IsValid();
     return false;
 }

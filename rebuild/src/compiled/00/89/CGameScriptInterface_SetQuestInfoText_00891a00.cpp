@@ -2,7 +2,7 @@
 // and show its text as the body text of the player GUI's quest-info panel
 // Leaf: ?SetQuestInfoText@CGameScriptInterface
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00891A00, length 192 bytes, `ret 4`.
-// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, the CRC Calc @ 0x004014A0 (`__fastcall(seed,
+// Callees: CCharString::CCharString(const char*, long) @ 0x0099EBF0, the CRC CCRC::Calc @ 0x004014A0 (`__fastcall(seed,
 // data, length)`), NGameText::NGameText::CDataBank::LookupValue @ 0x009CC410 (the bank's CRC -> tag map at +0xD0, 0 when
 // absent; labelled CVectorMap::LookupValue), ~CCharString @ 0x0099EAE0, NGameText::CDataBank::GetPGroupEntry(unsigned
 // long, bool) const @ 0x009C9070, NGameText::CGroupEntry::GetText() const @ 0x009C7A40, CWideString::operator= @
@@ -15,7 +15,7 @@
 // entry lands in the dead `symbol` argument slot and its dtor is the null-tested inline ReleaseTemporary; the
 // GetText() wide-string temporary takes the `push ecx` frame word.
 
-unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
 
 class CCharStringData { public:
     char* PData;                          // +0x00
@@ -28,7 +28,7 @@ public:
     ~CCharString();                                 // 0x0099EAE0
     unsigned long GetLength() const { return PStringData == 0 ? 0 : PStringData->StringLength; }
     const char* GetString() const { return PStringData == 0 ? "" : PStringData->PData; }
-    unsigned long GetCRC() const { return Calc(0, GetString(), GetLength()); }
+    unsigned long GetCRC() const { return CCRC::Calc(0, GetString(), GetLength()); }
 };
 
 class CWideString {

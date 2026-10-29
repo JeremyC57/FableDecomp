@@ -1,6 +1,6 @@
 // CTCKraken::UpdateBeamExplosion() -- while the target and the beam effect live and the kraken's beam-explosion interval has passed, spawns KRAKEN_BEAM_EXPLOSION along the beam from the mouth dummy (or the effect's own facing) and, when the beam has no line of sight to its end, a BEAM_HIT effect at the hit point
 // Retail: Fable.exe (TLC, VC7.1) @ 0x007FBE50, 955 bytes (+ int3 padding), plain `ret`, speed TU (no pragmas, no frame pointer).
-// Callees: GFGetCurrentFrame 0x0049D870, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0,
+// Callees: CWorld::GetFrame 0x0049D870, CBaseIntelligentPointer::GetPItem 0x00A01B50, CThing::GetPos 0x004C73D0,
 //   CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CTCGraphicAppearance::GetDummyObject 0x004C08C0, physics slot 70 (+0x118)
 //   GetFacing, CTCBase GetDefinitionManager 0x006869D0, CDefinitionManager::GetDefGlobalIndexFromName 0x009AD410, CreateThing
 //   0x0080C500 (`__fastcall`), CExplosionDriver::AddExcludedThing 0x0080CBF0, CTCKraken::AddStrikeExplosion 0x007FBA20,
@@ -139,7 +139,7 @@ class CDefinitionManager { public:
 };
 CThing* __fastcall CreateThing(long defIndex, const C3DVector* position, const C3DVector* lookAt);   // 0x0080C500
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);              // 0x006E0880
-long GFGetCurrentFrame();                             // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                             // 0x0049D870
 extern long g_LastBeamExplosionFrame;                 // 0x013BAF10
 
 class CBaseObject;
@@ -193,7 +193,7 @@ class CTCKraken { public:
 
 void CTCKraken::UpdateBeamExplosion()
 {
-    long now = GFGetCurrentFrame();
+    long now = CWorld::GetFrame();
     if (!IS_THING_ALIVE(PTarget))
         return;
     if (now - g_LastBeamExplosionFrame <= PKrakenDef->BeamExplosionInterval)

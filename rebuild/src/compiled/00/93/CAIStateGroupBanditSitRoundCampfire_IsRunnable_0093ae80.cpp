@@ -1,6 +1,6 @@
 // CAIStateGroup_BanditSitRoundCampfire::IsRunnable() -- (at most every 5 s) a bandit with the 0x4a component, outside its village's non-curfew hours, can sit at a live nearby campfire
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0093AE80, 313 bytes (virtual, `ret`). Ego_r.pdb: ?IsRunnable@CAIStateGroup_BanditSitRoundCampfire@@UAE_NXZ.
-// Callees: GFGetCurrentFrame 0x0049D870 (`__fastcall`, no arguments), CVectorMap::LowerBound 0x0040F020 (inlined
+// Callees: CWorld::GetFrame 0x0049D870 (`__fastcall`, no arguments), CVectorMap::LowerBound 0x0040F020 (inlined
 // GetInterface 0x23), CTCVillageMember::GetVillage 0x007EE540 (twice; manifest "IS_THING_ALIVE<..>" is propagated),
 // CTCVillage::IsCurfewTime 0x00658D5D, CBaseIntelligentPointer ctor 0x00A01B10 / SetPItem 0x00A01B90 / GetPItem
 // 0x00A01B50 / dtor 0x00A01C10, GetPNearCampfire 0x0093AB70; frames-per-second global 0x01375550.
@@ -125,7 +125,7 @@ struct CIntelligentPointerThingObject : CBaseIntelligentPointer {   // CIntellig
 };
 
 extern long g_framesPerSecond;                  // 0x01375550
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 
 struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupBase {
     CIntelligentPointerThingObject PCampfire;   // +0x14
@@ -141,7 +141,7 @@ struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupBase {
 
 bool CAIStateGroup_BanditSitRoundCampfire::IsRunnable()
 {
-    if (FrameToNextCheckIsRunnable > (unsigned long)GFGetCurrentFrame())
+    if (FrameToNextCheckIsRunnable > (unsigned long)CWorld::GetFrame())
         return false;
     CThing* creature = PBrain->PCreature;
     if (!creature->HasTC(0x4a))
@@ -159,7 +159,7 @@ bool CAIStateGroup_BanditSitRoundCampfire::IsRunnable()
     bool alive = IS_THING_ALIVE(PCampfire);
     if (!alive) {
         long framesPerSecond = g_framesPerSecond;
-        FrameToNextCheckIsRunnable = GFGetCurrentFrame() + framesPerSecond * 5;
+        FrameToNextCheckIsRunnable = CWorld::GetFrame() + framesPerSecond * 5;
     }
     return alive;
 }

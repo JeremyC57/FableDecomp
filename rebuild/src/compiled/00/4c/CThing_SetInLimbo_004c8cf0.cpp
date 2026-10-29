@@ -2,7 +2,7 @@
 // Leaf: SetInLimbo
 // Retail: Fable.exe (TLC, VC7.1) @ 0x004C8CF0, 173 bytes (+3 int3). `ret 4`.
 // Callees: CThing::UpdateThingScanInclusion 0x004C8C00, CTCBase virtual slot 16 (+0x40, bool) per live component, own
-//          virtual slot 14 (+0x38, bool), CBase::CBase 0x0099A2D0 / ~CBase 0x0099A2E0 around the message (vtable
+//          virtual slot 14 (+0x38, bool), CBaseClass::CBaseClass 0x0099A2D0 / ~CBaseClass 0x0099A2E0 around the message (vtable
 //          0x01239A8C NTCMessages::CMessageClearPrimitives), CThing::SendMessageW(CMessage*) 0x004C7820.
 // Shape: InLimbo is bit 5 of the +0x91 flag byte: the compare extracts it (`shr cl,5 ; and cl,1 ; cmp cl,bl`) and the
 //        store merges the new bit (`shl dl,5 ; xor ; and 20h ; xor`); AddingTCsPermitted (bit 6 of +0x93) is cleared
@@ -22,12 +22,13 @@ class CTCBase { public:
     void* ParentThing;                               // +0x04
     bool  ToBeRemoved;                               // +0x08
 };
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();                                // 0x0099A2E0
-    CBase();                                         // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                // 0x0099A2E0
+    CBaseClass();                                         // 0x0099A2D0
+};
 namespace NTCMessages {
-class CMessageClearPrimitives : public CBase { public:             // vtable 0x01239A8C
+class CMessageClearPrimitives : public CBaseClass { public:             // vtable 0x01239A8C
     CMessageClearPrimitives() { }
 };
 }

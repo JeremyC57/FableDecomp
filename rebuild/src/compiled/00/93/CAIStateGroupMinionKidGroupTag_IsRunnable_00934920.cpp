@@ -2,7 +2,7 @@
 //   the bound operands (*ab.PF1, *ab.PF2, c); together they hoist the &type store above the IsOriginatedByThing ctor as in retail
 // CAIStateGroup_MinionKidGroupTag::IsRunnable() -- after seven seconds out of the game: join the nearest kid tag group whose nearest member is within 8, else answer a nearby tag invitation (0x2e) by creating a marker-light group and joining it as the initiator, else post the creature's own invitation unless one is queued
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00934920, length 853 bytes (+ int3 padding), plain `ret`, frame 0x30.
-// Callees: GFGetCurrentFrame @ 0x0049D870, CThing::PeekPos @ 0x004C73D0, CThingCreatureBase::PeekPos @ 0x006A4D00,
+// Callees: CWorld::GetFrame @ 0x0049D870, CThing::PeekPos @ 0x004C73D0, CThingCreatureBase::PeekPos @ 0x006A4D00,
 // CAIStateGroupBase::PeekThingSearchTools @ 0x008FD000 / GetPWorld @ 0x008FCFC0, CThingSearchTools::GetPBestThing<HasDefGlobalIndex,
 // Nearest> @ 0x00935040, CVectorMap::LowerBound @ 0x0040F020 (interface 0xA4 = CTCCreatureGroupTag), CTCCreatureGroup::GetNearestMember
 // @ 0x008128F0, the group's virtual slot 28 (+0x70, add member), CMessageEventManager::FindMostRecentMessage @ 0x00934E50 /
@@ -15,7 +15,6 @@
 extern "C" double __cdecl sqrt(double);
 #pragma intrinsic(sqrt)
 extern long g_FramesPerSecond;                  // 0x01375550
-long __fastcall GFGetCurrentFrame();             // 0x0049D870
 class CCharString {
 public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -147,6 +146,8 @@ class CWorld { public:
     CMessageEventManager* PMessageEventManager; // +0x60
     CDefinitionManager* GetPDefinitionManager() { return PDefinitionManager; }
     CMessageEventManager* GetPMessageManager() { return PMessageEventManager; }
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -206,7 +207,7 @@ const CMessageEvent* CMessageEventManager::FindMostRecentMessage(const COwnMessa
 bool CAIStateGroup_MinionKidGroupTag::IsRunnable()
 {
     long framesPerSecond = g_FramesPerSecond;
-    if (GFGetCurrentFrame() - FrameLastPlayedIn < framesPerSecond * 7)
+    if (CWorld::GetFrame() - FrameLastPlayedIn < framesPerSecond * 7)
         return false;
     InitiatedTag = false;
     {

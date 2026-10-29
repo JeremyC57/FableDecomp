@@ -7,7 +7,7 @@
 // (`__fastcall`, the instantiation next to the CThing* one), CThingCreatureBase::IsChild @ 0x00661F70, std::bitset::test @ 0x00410DE0,
 // the interface map LowerBound const @ 0x004365B0, CTCHeroExperience::IsReadyToLevelUp @ 0x006D7CB0, PeekGuiDef @ 0x00438570
 // (`__fastcall`), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CDrawGuildSeal::AddMessage(const
-// CCharString&, long, bool) @ 0x0064E0DA, GFGetCurrentFrame @ 0x0049D870, CDrawGuildSeal::DisplayNextMessage @ 0x0064A9C8; the
+// CCharString&, long, bool) @ 0x0064E0DA, CWorld::GetFrame @ 0x0049D870, CDrawGuildSeal::DisplayNextMessage @ 0x0064A9C8; the
 // display object's virtual slot 395 (+0x62c). "" @ 0x0122D70E.
 // Layout: PDB CDrawBase/CDrawGuildSeal with the retail 12-byte vector (as the landed SetEnabled 0x00643F7C): PlayerGui +4,
 // PlayerManager +8, World +0xc, Component +0x10, ReadyToLevelUp +0x29, CurrentMessageEndFrame +0x60, Messages (STLport deque:
@@ -69,12 +69,13 @@ struct CGuiDef {
     long          GuildSealMessageSound;           // +0x1bc
 };
 extern CGuiDef* __fastcall PeekGuiDef();           // 0x00438570
-long __fastcall GFGetCurrentFrame();               // 0x0049D870
 
 class CWorld { public:
     unsigned char _pad[0xd5];
     bool          FlagD5;                          // +0xd5
     bool          FlagD6;                          // +0xd6
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 class CPlayerGui { public:
     unsigned char _pad[0xf6];
@@ -206,7 +207,7 @@ void CDrawGuildSeal::Update()
     }
     ReadyToLevelUp = false;
 messages:
-    if (GFGetCurrentFrame() > CurrentMessageEndFrame && !PlayerGui->BlockMessages && !Component->Owner->Screen->IsMessageBlocked() &&
+    if (CWorld::GetFrame() > CurrentMessageEndFrame && !PlayerGui->BlockMessages && !Component->Owner->Screen->IsMessageBlocked() &&
         !Messages.empty())
         DisplayNextMessage();
 }

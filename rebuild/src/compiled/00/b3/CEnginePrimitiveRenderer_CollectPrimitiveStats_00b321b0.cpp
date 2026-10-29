@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B321B0, length 120 bytes (+ int3 padding).
 // Callees: CEngineScenePrimitiveStatsEnumerator::CEngineScenePrimitiveStatsEnumerator(map*, const C2DBoxF&, EEnginePrimitiveStatIndex, unsigned long)
 // @ 0x00BACA20 (out of line; vtable 0x012A534C), CEngineScene::Enumerate(CBase& enumerator) @ 0x00B93290 (the same callee as the landed
-// CEnginePrimitiveRenderer::ResetVisibilityRatios @ 0x00B320A0), CBase::~CBase() @ 0x0099A300 (the enumerator has no destructor of its own).
+// CEnginePrimitiveRenderer::ResetVisibilityRatios @ 0x00B320A0), CBaseClassNonCopyable::~CBaseClassNonCopyable() @ 0x0099A300 (the enumerator has no destructor of its own).
 // Label correction: the manifest's "CEngine::CollectPrimitiveStats" belongs to CEnginePrimitiveRenderer: the vector at +0x338 is the PDB
 // SceneList (CArray<CEngineScene*> at PDB +0x33c, retail 4 bytes lower as in ResetVisibilityRatios); CEngine is only 0x188 bytes.
 // Shape: the 0x20-byte enumerator in the frame, its four constructor arguments forwarded in order; an index loop bounded by the
@@ -13,12 +13,12 @@ class C2DBoxF { public:
 
 struct CPrimitiveStatMap;                    // map<unsigned long, unsigned long>
 
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    ~CBase();                                // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                // 0x0099A300
+};
 
-struct CEngineScenePrimitiveStatsEnumerator : CBase {   // 0x20 bytes, vtable 0x012A534C
+struct CEngineScenePrimitiveStatsEnumerator : CBaseClassNonCopyable {   // 0x20 bytes, vtable 0x012A534C
     CPrimitiveStatMap* Destination;          // +0x04
     C2DBoxF            Area;                 // +0x08
     long               StatIndex;            // +0x18 (EEnginePrimitiveStatIndex)
@@ -27,7 +27,7 @@ struct CEngineScenePrimitiveStatsEnumerator : CBase {   // 0x20 bytes, vtable 0x
 };
 
 class CEngineScene { public:
-    void Enumerate(CBase& enumerator);       // 0x00B93290
+    void Enumerate(CBaseClassNonCopyable& enumerator);       // 0x00B93290
 };
 
 template <class T>

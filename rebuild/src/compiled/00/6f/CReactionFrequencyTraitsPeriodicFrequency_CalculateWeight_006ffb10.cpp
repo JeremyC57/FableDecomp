@@ -14,7 +14,7 @@
 class CThingAICreature;
 
 class CWorld { public:
-    static long GetWorldFrame();                         // 0x0049D870
+    static long __fastcall GetFrame();                         // 0x0049D870
 };
 
 inline const float& Clamp(const float& v, const float& lo, const float& hi)
@@ -32,7 +32,7 @@ struct CReactionFrequencyTraits_PeriodicFrequency_Methods : CReactionFrequencyTr
 
 float CReactionFrequencyTraits_PeriodicFrequency_Methods::CalculateWeight(const CThingAICreature* creature)
 {
-    unsigned long frame = CWorld::GetWorldFrame();
+    unsigned long frame = CWorld::GetFrame();
     if (frame - LastCutoffFrame > CutoffIntervalFrames)
         LastCutoffFrame += CutoffIntervalFrames;
     float ramp = Clamp((float)(frame - LastCutoffFrame) / (float)RampUpTimeFrames, 0.0f, 1.0f);

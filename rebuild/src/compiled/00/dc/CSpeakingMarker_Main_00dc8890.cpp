@@ -4,7 +4,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DC8890, 998 bytes (+ int3 padding), plain `ret`. Entity-script slot 1 (Main).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; GFCharStringToInt 0x0099E7F0 (__fastcall);
-//   IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall); CBase() 0x0099A2D0 / ~CScriptThing 0x004AA840 (out of line);
+//   IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall); CBaseClass() 0x0099A2D0 / ~CScriptThing 0x004AA840 (out of line);
 //   ~vector<CScriptThing> 0x008AC970 (manifest: folded ~vector<CConversation>); CEntityScriptBase::IsActiveThreadTerminating
 //   0x00F35B30. CGameScriptInterface slots (ghidra_out/cgsi_slots_aligned.tsv) 7 NewScriptFrame, 70 GetHero,
 //   75 GetAllThingsWithScriptName, 91 CreateCreature, 364 AddNewConversation, 365 AddPersonToConversation,
@@ -29,11 +29,12 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
-class CScriptThing : public CBase { public:
+class CBaseClass {
+public:
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
+};
+class CScriptThing : public CBaseClass { public:
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;                          // slot 3 (+0xc)
     virtual void s004() const; virtual void s005() const;

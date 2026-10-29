@@ -28,7 +28,7 @@ namespace NEntityEvents { class CEventBase; }
 void __fastcall DeleteData(NEntityEvents::CEventBase* event);   // 0x008119A0
 
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
 };
 
 class CTCEntityEvents;
@@ -108,7 +108,7 @@ class CTCEntityEvents { public:
 
 void CTCEntityEvents::AddEvent(NEntityEvents::CEventBase* event)
 {
-    event->Frame = GetWorld()->GetWorldFrame();
+    event->Frame = GetWorld()->GetFrame();
     Events.push_front(CCountedPointer<NEntityEvents::CEventBase>(event));
     event->OnAddedTo(*this);
 }
@@ -119,7 +119,7 @@ static int g_frees = 0;
 void __cdecl operator delete(void* p) { ++g_frees; free(p); }
 static int g_deleted = 0; static NEntityEvents::CEventBase* g_deletedObj;
 void __fastcall DeleteData(NEntityEvents::CEventBase* event) { ++g_deleted; g_deletedObj = event; }
-long CWorld::GetWorldFrame() { return 4321; }
+long CWorld::GetFrame() { return 4321; }
 static CWorld g_world;
 CWorld* CTCEntityEvents::GetWorld() { return &g_world; }
 static CTCEntityEvents* g_addedTo; static int g_added = 0;

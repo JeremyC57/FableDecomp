@@ -4,7 +4,7 @@
 // Label correction: catalogued "CEnginePrimitiveManager2DSprites::CEnginePrimitiveManager2DSprites" (propagated); the vtable
 //   stored is 0x012A3A94 = CEngineScreenEffectDisplacementRenderer (rtti-vtables.tsv), InitialiseTextures 0x00B86A70 is that
 //   class's, and the landed destructor 0x00B870A0 releases exactly these members.
-// Callees: CEngineComponent::CEngineComponent @ 0x00B59710 (manifest label "CNavigationLayer" propagated), CBase::CBase
+// Callees: CEngineComponent::CEngineComponent @ 0x00B59710 (manifest label "CNavigationLayer" propagated), CBaseClass::CBaseClass
 //   @ 0x0099A2D0, CVertexShader::CVertexShader @ 0x00A62FB0, CPixelShader::CPixelShader @ 0x00A5EC00, InitialiseTextures
 //   @ 0x00B86A70, CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CShaderResource::GetVertexShader
 //   @ 0x00A5D5F0 / GetPixelShader @ 0x00A5D720 (engine data 0x01436E98: vertex resource +0x2A28, pixel resource +0x2A98).
@@ -81,10 +81,11 @@ struct CEngineData {
 };
 extern CEngineData* g_pEngineData;                 // 0x01436E98
 
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();                              // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
+};
 struct IDirect3DSurface9;
 class CSurface { public:                                  // vtable 0x0122F84C, 0x10 bytes
     IDirect3DSurface9* PD3DSurface;                // +0x04
@@ -93,7 +94,7 @@ class CSurface { public:                                  // vtable 0x0122F84C, 
     CSurface() : PD3DSurface(0), AllocationSource(0) { }
     virtual ~CSurface();
 };
-class CRenderTarget : public CBase { public:                     // vtable 0x0129C800, 0x24 bytes
+class CRenderTarget : public CBaseClass { public:                     // vtable 0x0129C800, 0x24 bytes
     CSurface RenderToSurface;                      // +0x04
     CSurface ZBufferSurface;                       // +0x14
     CRenderTarget() { }

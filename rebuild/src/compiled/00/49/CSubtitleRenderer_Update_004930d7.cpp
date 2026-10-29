@@ -37,6 +37,8 @@ public:
     unsigned char _pad0e[0xcd - 0x0e];
     bool          m_profileWaitForClickPast;            // +0xcd
     bool IsWaitForClickPast() const { return m_hasActiveProfile ? m_profileWaitForClickPast : m_defaultWaitForClickPast; }
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> struct CTBaseSingleton {
     static T& __fastcall Get();                         // 0x0040D2A0
@@ -59,7 +61,7 @@ void CSubtitleRenderer::Update(bool paused)
     if (!(DisplayFlags & 0xc)) {
         if (DisplayFlags & 2) {
             if (MaxDisplayTime != 0.0f && TextTimer > MaxDisplayTime
-                && (!CTBaseSingleton<CUserProfileManager>::Get().IsWaitForClickPast() || InCutscene))
+                && (!CUserProfileManager::Get().IsWaitForClickPast() || InCutscene))
                 Clear(false);
         } else if (MaxDisplayTime != 0.0f && TextTimer > MaxDisplayTime)
             Clear(false);

@@ -6,7 +6,7 @@
 // allocates 0x40 bytes; the only Ego_r.pdb entity script of 0x40 bytes with three CScriptThing members at
 // +0x1c/+0x28/+0x34 is CHTG_Audience (ParentClass CQ_HangingTreeGoodScript*, PMasterData, ChopBlockMarker,
 // ExecutionerGuy, PrisonerGuy). The derived vtable 0x012D292C has no RTTI.
-// Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, CBase::CBase @ 0x0099A2D0 (x3).
+// Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, CBaseClass::CBaseClass @ 0x0099A2D0 (x3).
 // Vtables: 0x012C3224 (the entity-script base, as in the landed CPermanentBarrier 0x00D2D7B0), 0x012D292C (this
 // class), 0x01238C8C (CScriptThing, rtti-vtables.tsv).
 //
@@ -15,10 +15,11 @@
 // init list (before the derived vtable store), then the three CScriptThing members' inline default
 // constructors (CBase() out of line, the CScriptThing vtable, the PImp counted pointer zeroed from one ebx
 // zero register; CBase must own the vptr, else the members shift by 4), PMasterData a body assignment (stored last).
-namespace N_0099a2d0 { struct CBase {                                  // polymorphic root (owns the vptr)
+class CBaseClass {
+public:                                   // polymorphic root (owns the vptr)
     virtual void v00();
-    CBase();                                    // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                    // 0x0099A2D0
+};
 
 struct SCountBlock;
 
@@ -28,10 +29,10 @@ struct CCountedPointer {
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-class CScriptThing : public CBase { public:                   // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                   // vtable 0x01238C8C, 12 bytes
     virtual void v00();
     CCountedPointer PImp;                       // +0x04
-    CScriptThing() : CBase() { }
+    CScriptThing() : CBaseClass() { }
     CScriptThing(const CScriptThing& other);    // 0x004ABE90
 };
 

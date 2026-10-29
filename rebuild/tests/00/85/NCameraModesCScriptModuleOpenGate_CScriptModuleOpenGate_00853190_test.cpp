@@ -3,7 +3,8 @@
 #include <cstdio>
 
 static long g_frame = 500;
-long GFGetCurrentFrame() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 
 class CThing { public: int dummy; };
 
@@ -32,7 +33,7 @@ struct CScriptModuleSelfTerminateBase : CScriptModuleBase {
     CScriptModuleSelfTerminateBase(long duration)
         : WFDuration(duration)
     {
-        EndFrame = GFGetCurrentFrame() + WFDuration;
+        EndFrame = CWorld::GetFrame() + WFDuration;
     }
 };
 

@@ -116,7 +116,7 @@ class CThing { public:
 class CWorld {
 public:
     unsigned long* GetRandomSeed() const;                    // 0x0049D810
-    static long GetWorldFrame();                             // 0x0049D870
+    static long __fastcall GetFrame();                             // 0x0049D870
 };
 
 template <class T> struct SListNode {
@@ -206,7 +206,7 @@ void CTCWound::AddWound(EBodyLocation location)
     long morphIndex = -1;
     const CWoundMorphs::CEntry* entry = morphs->GetPRandomWoundForLocation(location, *PeekWorld().GetRandomSeed(), morphIndex);
     if (entry != 0) {
-        LastFrameChanged = CWorld::GetWorldFrame();
+        LastFrameChanged = CWorld::GetFrame();
         for (CListIterator<CWound> it = Wounds.begin(); it != Wounds.end(); ++it) {
             if (*entry == it->Desc) {
                 it->Duration = 0;

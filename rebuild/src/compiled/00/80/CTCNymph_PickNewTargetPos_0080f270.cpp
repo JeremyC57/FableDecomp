@@ -202,7 +202,7 @@ class CTCShapeManager;
 class CWorld { public:
     unsigned char _pad00[0x20];
     CThingSearchTools* PThingSearchTools;                   // +0x20
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
     unsigned long* GetPRandomSeed();                        // 0x0049D810
 };
 class CWorldMap { public:
@@ -319,6 +319,6 @@ void CTCNymph::PickNewTargetPos()
         FlightSpline.ControlPoints[3] = point;
         FlightSpline.ControlPoints[4] = point;
     }
-    LastTargetTick = GetWorld().GetWorldFrame();
+    LastTargetTick = GetWorld().GetFrame();
     HasSpline = true;
 }

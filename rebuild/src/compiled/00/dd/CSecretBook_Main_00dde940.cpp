@@ -4,7 +4,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DDE940, 748 bytes (+ int3 padding), plain `ret`. Entity-script slot 1 (Main).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / operator=(const char*) 0x0099EFE0 / ~CCharString 0x0099EAE0;
-//   ~CScriptThing 0x004AA840 (out-of-line copy) / ~CBase 0x0099A2E0 / CScriptThing::operator= 0x008AB980; operator delete
+//   ~CScriptThing 0x004AA840 (out-of-line copy) / ~CBaseClass 0x0099A2E0 / CScriptThing::operator= 0x008AB980; operator delete
 //   0x00BFE9BC; CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30. CGameScriptInterface slots (ghidra_out/
 //   cgsi_slots_aligned.tsv) 7 NewScriptFrame, 40 MsgIsGameInfoClickedPast, 98 CreateObject, 100 CreateEffect,
 //   108 RemoveThing, 115 DisplayGameInfo, 474 EntitySetFacingAngle; CScriptThing slots 6 GetPos, 10 GetAngleXY,
@@ -37,10 +37,11 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-struct CBase {
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:
+class CScriptThing : public CBaseClass { public:
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;                            // slot 6 (+0x18)
     virtual void s007() const; virtual void s008() const; virtual void s009() const;

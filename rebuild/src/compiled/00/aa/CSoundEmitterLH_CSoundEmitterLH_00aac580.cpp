@@ -1,6 +1,6 @@
 // CSoundEmitterLH::CSoundEmitterLH(CSoundManagerLH* manager, const C3DVector& position) -- CBase, the owning manager at +4, this class's vtable, the position at +8..+0x10, an empty retail list at +0x14 (its sentinel node malloc'd inline), three flag bytes, the manager's next emitter number at +0x1c
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AAC580, length 94 bytes.
-// Callees: CBase::CBase @ 0x0099A2D0, malloc @ 0x00BFEA0E (the 16-byte sentinel), the manager's counter @ 0x00A3E420 (`return Counter++;`
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0, malloc @ 0x00BFEA0E (the 16-byte sentinel), the manager's counter @ 0x00A3E420 (`return Counter++;`
 // on the manager's +0x50, descriptive name; its result at +0x1c).
 // Owner: the only caller is CSoundManagerLH vtable slot 4 (0x00A3ECB0, vtable 0x0129D2C4), which passes its own `this` as the
 // first argument (`push edi` = the manager) after its slot-6 test; 0x00A3E420 reads and bumps the manager's +0x50, beside the
@@ -16,10 +16,11 @@ struct CSoundManagerLH {
     long TakeNextEmitterNumber();                  // 0x00A3E420 (descriptive): return EmitterCounter++ (+0x50)
 };
 
-namespace N_0099a2d0 { struct CBase {
+class CBaseClass {
+public:
     virtual void v00();
-    CBase();                                       // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                       // 0x0099A2D0
+};
 
 struct SListNode_00aac580 { SListNode_00aac580* m_pNext; SListNode_00aac580* m_pPrev; long m_a; long m_b; };   // 16 bytes
 
@@ -35,7 +36,7 @@ struct CRetailList_00aac580 {                      // VC6 Dinkumware list: the s
     }
 };
 
-struct CSoundEmitterLH : CBase {                   // vtable 0x0129E6EC
+struct CSoundEmitterLH : CBaseClass {                   // vtable 0x0129E6EC
     CSoundManagerLH*     m_pManager;               // +0x04
     float                m_positionX;              // +0x08 (three floats initialised one by one)
     float                m_positionY;              // +0x0c
@@ -50,7 +51,7 @@ struct CSoundEmitterLH : CBase {                   // vtable 0x0129E6EC
 };
 
 CSoundEmitterLH::CSoundEmitterLH(CSoundManagerLH* manager, const C3DVector& position)
-    : CBase()
+    : CBaseClass()
     , m_pManager(manager)
     , m_positionX(position.X), m_positionY(position.Y), m_positionZ(position.Z)
     , m_sounds()

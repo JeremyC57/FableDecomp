@@ -1,6 +1,7 @@
 #include <cstdio>
 #include <cstdlib>
-namespace N_0099a2d0 { struct CBase { virtual ~CBase() {} CBase() {} }; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:  virtual ~CBaseClass() {} CBaseClass() {} };
 class CCharString { public: char* m_pData; CCharString() : m_pData(0) {} };
 struct CTokenList {
     struct SNode { SNode* next; SNode* prev; char* text; long length; };
@@ -8,7 +9,7 @@ struct CTokenList {
     CTokenList() : m_head(0) { SNode* node = (SNode*)std::malloc(sizeof(SNode)); node->next = node; node->prev = node; m_head = node; }
     ~CTokenList() { std::free(m_head); }
 };
-class CStringParser : public CBase { public: long m_position; long m_length; CCharString m_text; CCharString m_separators; CTokenList m_tokens; CStringParser() : m_text(), m_separators(), m_tokens() { m_position = 0; } };
+class CStringParser : public CBaseClass { public: long m_position; long m_length; CCharString m_text; CCharString m_separators; CTokenList m_tokens; CStringParser() : m_text(), m_separators(), m_tokens() { m_position = 0; } };
 int main()
 {
     CStringParser p;

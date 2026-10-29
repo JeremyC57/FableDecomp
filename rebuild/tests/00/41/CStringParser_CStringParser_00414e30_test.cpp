@@ -34,9 +34,10 @@ struct CCursorPos {
 };
 class CParsedItem { public: long Type; long Value; };
 typedef void (*TStringParserErrorCallback)(CCharString* message);
-namespace N_0099a2d0 { class CBase { public: CBase() {} virtual ~CBase() {} }; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:  CBaseClass() {} virtual ~CBaseClass() {} };
 static void ErrorSink(CCharString* message) { (void)message; }
-class CStringParser : public CBase {
+class CStringParser : public CBaseClass {
 public:
     char*                      String;
     unsigned long              BaseLineOffset;

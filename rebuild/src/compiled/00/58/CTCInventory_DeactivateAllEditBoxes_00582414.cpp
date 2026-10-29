@@ -51,7 +51,7 @@ class CUserProfileManager { public:                          // retail offsets (
     CWideString   ScoreBoardProxyIp;                  // +0x118
     long          ScoreBoardProxyPort;                // +0x11C
     long          ScoreBoardServerPort;               // +0x120
-    static CUserProfileManager* __fastcall Get();     // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
+    static CUserProfileManager& __fastcall Get();     // 0x0040D2A0 CTBaseSingleton<CUserProfileManager>::Get
     void Save();                                      // 0x0040A740
     void Apply();                                     // 0x0040BC80
     CWideString GetScoreBoardUserName() const { return ScoreBoardUserName; }
@@ -114,20 +114,20 @@ void CTCInventory::DeactivateAllEditBoxes(bool apply)
         if (apply) {
             CWideString text = (*it)->GetText();
             if ((*it)->GetName() == "UI_SCOREBOARD_LOGIN_EDITBOX")
-                CUserProfileManager::Get()->SetScoreBoardUserName(text);
+                CUserProfileManager::Get().SetScoreBoardUserName(text);
             if ((*it)->GetName() == "UI_SCOREBOARD_PASSWORD_EDITBOX")
-                CUserProfileManager::Get()->SetScoreBoardPassword(text);
+                CUserProfileManager::Get().SetScoreBoardPassword(text);
             if ((*it)->GetName() == "UI_SCOREBOARD_PROXY_IP_EDITBOX")
-                CUserProfileManager::Get()->SetScoreBoardProxyIp(text);
+                CUserProfileManager::Get().SetScoreBoardProxyIp(text);
             if ((*it)->GetName() == "UI_SCOREBOARD_PROXY_PORT_EDITBOX") {
                 long port = GFCharStringToInt(text.ConvertToCharString());
-                CUserProfileManager::Get()->ScoreBoardProxyPort = port;
+                CUserProfileManager::Get().ScoreBoardProxyPort = port;
             }
             if ((*it)->GetName() == "UI_SCOREBOARD_SERVER_PORT_EDITBOX") {
                 long port = GFCharStringToInt(text.ConvertToCharString());
-                CUserProfileManager::Get()->ScoreBoardServerPort = port;
+                CUserProfileManager::Get().ScoreBoardServerPort = port;
             }
-            CUserProfileManager::Get()->Save();
+            CUserProfileManager::Get().Save();
         }
         (*it)->SetActive(false);
     }

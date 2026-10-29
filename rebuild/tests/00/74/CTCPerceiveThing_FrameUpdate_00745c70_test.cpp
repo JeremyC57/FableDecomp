@@ -33,7 +33,7 @@ static CThing g_hero;
 class CPlayer { public: CThing* GetControlledCreature() const { return &g_hero; } };
 static CPlayer g_player;
 class CWorld { public:
-    static long GetWorldFrame() { return g_frame; }
+    static long __fastcall GetFrame() { return g_frame; }
     const CPlayer* PeekMyPlayer() const { return &g_player; }
 };
 static CWorld g_world;
@@ -49,7 +49,7 @@ class CTCPerceiveThing { public:
     long          UpdateOffset;
     bool          PerceptionCombat;
     const CWorld* GetWorld() const { return &g_world; }
-    bool IsUpdatingThisFrame() const { return CWorld::GetWorldFrame() % 4 == UpdateOffset; }
+    bool IsUpdatingThisFrame() const { return CWorld::GetFrame() % 4 == UpdateOffset; }
     void ResetPerceptionVariables() { g_log[g_n++] = 1; }
     void UpdateDistanceFromPerceivedThing() { g_log[g_n++] = 2; }
     void UpdatePerception() { g_log[g_n++] = 3; }

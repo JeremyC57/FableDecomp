@@ -1,8 +1,9 @@
 #include <cstdio>
-namespace N_0099a2d0 { struct CBase { virtual void v00() {} CBase() {} }; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:  virtual void v00() {} CBaseClass() {} };
 struct CRetailByteVector { unsigned char* first; unsigned char* last; unsigned char* end; CRetailByteVector() : first(0), last(0), end(0) { } };
-class CACompressor : public CBase { public: void* Workspace; unsigned long WorkspaceSize; bool CompressionOn; CRetailByteVector OwnWorkspace; virtual void v00() {} CACompressor(void* workspace, unsigned long workspaceSize); };
-CACompressor::CACompressor(void* workspace, unsigned long workspaceSize) : CBase(), OwnWorkspace() { Workspace = workspace; WorkspaceSize = workspaceSize; }
+class CACompressor : public CBaseClass { public: void* Workspace; unsigned long WorkspaceSize; bool CompressionOn; CRetailByteVector OwnWorkspace; virtual void v00() {} CACompressor(void* workspace, unsigned long workspaceSize); };
+CACompressor::CACompressor(void* workspace, unsigned long workspaceSize) : CBaseClass(), OwnWorkspace() { Workspace = workspace; WorkspaceSize = workspaceSize; }
 int main()
 {
     int buf[4];

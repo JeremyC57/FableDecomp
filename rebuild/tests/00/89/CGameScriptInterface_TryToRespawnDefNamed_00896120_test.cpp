@@ -12,8 +12,9 @@ struct CInterfaceMap_Retail {
     SEntry* last;
     SEntry* LowerBound(const long* type) { SEntry* it = first; while (it != last && it->type < *type) ++it; return it; }
 };
-namespace N_0099a2d0 { struct CBase { virtual ~CBase() {} }; } using N_0099a2d0::CBase;
-class CScriptThing : public CBase { public:
+class CBaseClass {
+public:  virtual ~CBaseClass() {} };
+class CScriptThing : public CBaseClass { public:
     virtual CThing_Retail* GetThing() const { return m_thing; }
     virtual bool IsValid() const { return m_thing != 0; }
     CThing_Retail* m_thing;

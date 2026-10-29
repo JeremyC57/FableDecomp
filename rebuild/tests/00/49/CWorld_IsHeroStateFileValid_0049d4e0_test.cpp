@@ -9,6 +9,8 @@ CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);
 class CUserProfileManager {
 public:
     CWideString GetPathNameFromFileName(const CWideString& file_name, bool create_folder) const;   // 0x00408120
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> class CTBaseSingleton {
 public:
@@ -24,7 +26,7 @@ public:
 };
 bool CWorld::IsHeroStateFileValid(const CWideString& file_name) const
 {
-    const CWideString path = CTBaseSingleton<CUserProfileManager>::Get().GetPathNameFromFileName(file_name + L".hs", false);
+    const CWideString path = CUserProfileManager::Get().GetPathNameFromFileName(file_name + L".hs", false);
     return CAFile::PathExists(path);
 }
 
@@ -37,7 +39,7 @@ CWideString __fastcall operator+(const CWideString& left, const wchar_t* right) 
 CWideString CUserProfileManager::GetPathNameFromFileName(const CWideString& file_name, bool create_folder) const
 { CWideString r; r.PData = Make(create_folder ? L"X:" : L"P:", (const wchar_t*)file_name.PData); return r; }
 static CUserProfileManager g_upm;
-template <> CUserProfileManager& __fastcall CTBaseSingleton<CUserProfileManager>::Get() { return g_upm; }
+CUserProfileManager& CUserProfileManager::Get() { return g_upm; }
 bool __fastcall CAFile::PathExists(const CWideString& path) { wcscpy(g_last, (const wchar_t*)path.PData); return wcscmp(g_last, L"P:hero.hs") == 0; }
 int main()
 {

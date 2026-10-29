@@ -41,7 +41,7 @@ class CCharString
     const char* GetString() const { const char* s = ""; if (PStringData) s = PStringData->Chars; return s; }
 };
 
-unsigned long __fastcall Calc(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0
 
 struct CSpeechMap
 {
@@ -72,6 +72,6 @@ long CAIStateGroupBase::AIAction_SpeakAISpeechToTarget(long mode, CIntelligentPo
                                                        const CCharString& speechName, long a5, long a6, long a7)
 {
     CSpeechMap* map = g_pEngine->SpeechMap;
-    long speech = map->LookupValue(Calc(0, speechName.GetString(), speechName.GetLength()));
+    long speech = map->LookupValue(CCRC::Calc(0, speechName.GetString(), speechName.GetLength()));
     return AIAction_SpeakToTarget(mode, speaker, target, speech, a5, a6, a7);
 }

@@ -7,7 +7,7 @@ static char g_log[256];
 static void logc(const char* s) { strcat(g_log, s); strcat(g_log, ","); }
 class CWorld { public:
     static long s_frame;
-    static long GetWorldFrame() { return s_frame; }
+    static long __fastcall GetFrame() { return s_frame; }
 };
 long CWorld::s_frame = 0;
 class CTCPhysicsBase { public:
@@ -81,7 +81,7 @@ void CTCShotDefinitionBase::Update()
         if (collided)
             return;
     }
-    long frame = GetWorld()->GetWorldFrame();
+    long frame = GetWorld()->GetFrame();
     if (PShotDef->NumSubShots > 0 && !SubShotsTriggered
         && (float)(frame - StartFrame) / g_framesPerSecond >= PShotDef->SubShotDelay) {
         TriggerSubShots();

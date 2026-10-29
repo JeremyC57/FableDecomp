@@ -1,8 +1,8 @@
-namespace N_0099a2d0 { struct CBase
-{
-    CBase();
+class CBaseClass {
+public:
+    CBaseClass();
     virtual void VTableAnchor();
-}; } using N_0099a2d0::CBase;
+};
 
 class CSurface
 { public:
@@ -20,7 +20,7 @@ class CSurface
     CSurface& operator=(const CSurface& source);
 };
 
-class CRenderTarget : public CBase
+class CRenderTarget : public CBaseClass
 { public:
     CSurface primary04;
     CSurface secondary14;

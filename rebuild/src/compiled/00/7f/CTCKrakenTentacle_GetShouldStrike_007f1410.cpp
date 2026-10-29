@@ -73,7 +73,7 @@ class CKrakenTentacleDef { public:
 };
 template <class T> class CDefPointer { public: T* Object; T* operator->() const { return Object; } };
 class CWorld { public:
-    static long GetWorldFrame();                     // 0x0049D870
+    static long __fastcall GetFrame();                     // 0x0049D870
 };
 extern long g_framesPerSecond;                       // 0x01375550
 
@@ -100,7 +100,7 @@ bool CTCKrakenTentacle::GetShouldStrike()
             CThing* kraken = PKraken.GetPItem();
             long framesPerSecond = g_framesPerSecond;
             CKrakenTentacleDef* def = PTentacleDef.Object;
-            long elapsed = CWorld::GetWorldFrame() - LastStrikeTick;
+            long elapsed = CWorld::GetFrame() - LastStrikeTick;
             if ((float)elapsed > (float)framesPerSecond * def->TentacleTimeBetweenAttacks)
                 return true;
         }

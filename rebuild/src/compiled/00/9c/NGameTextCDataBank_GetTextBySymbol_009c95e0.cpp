@@ -1,7 +1,7 @@
 // NGameText::CDataBank::GetTextBySymbol(const CCharString& symbol) const -- the wide text of a symbol: CRC the symbol, look the entry up, and when it is a plain text entry (data type 0) return a copy of its text; otherwise return the bank's empty string
 // Leaf: GetTextBySymbol
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009C95E0, length 150 bytes (`ret 8`: hidden result + symbol).
-// Callees: Calc @ 0x004014A0 (`__fastcall(0, chars, length)`, the symbol's CRC; "" @ 0x0129AAF4 for a null string),
+// Callees: CCRC::Calc @ 0x004014A0 (`__fastcall(0, chars, length)`, the symbol's CRC; "" @ 0x0129AAF4 for a null string),
 // CDataBank::LookupValue(unsigned long) @ 0x009CC410 (entry index, 0 = none), CDataBank::GetEntryDataType(unsigned long)
 // @ 0x009CC210, CDataBank::GetPGroupEntry(unsigned long, bool) @ 0x009C9070 (returns CIVCountedPointer<const CGroupEntry> by
 // value through the hidden pointer), CWideString::CWideString(const CWideString&) @ 0x0099B720 (the entry's text at +0x28,
@@ -21,7 +21,7 @@ class CCharString { public:
     unsigned long GetLength() const { return m_pStringData == 0 ? 0 : m_pStringData->m_length; }
     const char* GetChars() const { return m_pStringData == 0 ? g_emptyLiteral_0129aaf4 : m_pStringData->m_pChars; }
 };
-unsigned long __fastcall Calc_004014a0(unsigned long seed, const char* data, unsigned long length);   // 0x004014A0: CRC
+class CCRC { public: static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length); };   // 0x004014A0: CRC
 
 class CWideString { public:
     void* PStringData;
@@ -65,7 +65,7 @@ class CDataBank : public CBankFile { public:
 
 const CWideString CDataBank::GetTextBySymbol(const CCharString& symbol) const
 {
-    unsigned long index = LookupValue(Calc_004014a0(0, symbol.GetChars(), symbol.GetLength()));
+    unsigned long index = LookupValue(CCRC::Calc(0, symbol.GetChars(), symbol.GetLength()));
     if (index > 0 && GetEntryDataType(index) == 0) {
         CIVCountedPointer<const CTextEntry> pointer = GetPTextEntry(index, true);
         const CTextEntry* entry = pointer.m_pObject;

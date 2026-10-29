@@ -9,7 +9,7 @@
 //   0x00404720, ~CCharString 0x0099EAE0, CCharString() 0x0099E4B0, CStringParser::ReadAsStringUntilString(const
 //   CCharString&, CParsedItem&) 0x009BA110, CParsedItem::GetString 0x009B9880, operator+(const char*, const
 //   CCharString&) 0x0099F690, CCharString::operator+= 0x0099F0A0, CStringParser::SkipPastString 0x009B9BA0,
-//   GetSubString 0x0099EC70, CCharString::operator= 0x0099EFB0, free 0x00BFEA14, CBase::~CBase 0x0099A2E0.
+//   GetSubString 0x0099EC70, CCharString::operator= 0x0099EFB0, free 0x00BFEA14, CBaseClass::~CBaseClass 0x0099A2E0.
 //   Data: "" 0x0122D70E, "\\" 0x0124C530, ".." 0x0129A7B8, the empty text 0x0129AAF4.
 // Shape: the working copy of basePath is homed in relativePath's dead argument slot; both "drop the last component"
 //   scans are the same backwards loop; the parser's STLport comment-list destructor is inlined here (node loop + sentinel
@@ -57,11 +57,10 @@ public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 
-class CBase
-{
+class CBaseClass {
 public:
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 
 class CStringParserCommentBoundaries
@@ -117,7 +116,7 @@ public:
     const CCharString& GetString() const;               // 0x009B9880
 };
 
-class CStringParser : public CBase                      // vtable 0x0122D874, 0x28 bytes
+class CStringParser : public CBaseClass                      // vtable 0x0122D874, 0x28 bytes
 {
 public:
     const char*   String;                               // +0x04

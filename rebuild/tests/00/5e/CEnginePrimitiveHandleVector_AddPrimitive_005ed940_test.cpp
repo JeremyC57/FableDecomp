@@ -16,16 +16,17 @@ struct CPersistentPrimitiveMethods {
  long Type;
  __forceinline unsigned long RemoveReference(){return --IVRefCount;}
 };
-namespace N_0099a2d0 { struct CBase {CBase();virtual ~CBase();}; } using N_0099a2d0::CBase; //0099a2d0/0099a2e0
+class CBaseClass {
+public: CBaseClass();virtual ~CBaseClass();}; //0099a2d0/0099a2e0
 struct CHandlePointer {
  CPersistentPrimitiveMethods* Object;
  CHandlePointer():Object(0){}
  CHandlePointer(const CHandlePointer& p):Object(p.Object){if(Object)++Object->IVRefCount;}
  __forceinline ~CHandlePointer(){if(Object){CPersistentPrimitiveMethods* p=Object;if(!p->RemoveReference())p->Delete();}Object=0;}
 };
-class CEnginePrimitiveHandle:public CBase { public:
+class CEnginePrimitiveHandle:public CBaseClass { public:
  CHandlePointer Data;
- CEnginePrimitiveHandle():CBase(),Data(){}
+ CEnginePrimitiveHandle():CBaseClass(),Data(){}
  __forceinline virtual ~CEnginePrimitiveHandle(){if(Data.Object && Data.Object->IVRefCount==1)Data.Object->NotifyReleased(*this);}
 };
 struct CFalseType {CFalseType(){}};
@@ -48,8 +49,8 @@ static int failures=0,ctors=0,dtors=0,overflows=0,notifies=0,deletes=0,mode=0;
 static CEnginePrimitiveHandle* temporary=0;
 static CPersistentPrimitiveMethods* attach=0;static CPersistentPrimitiveMethods* replacement=0;
 static void check(bool b){if(!b)++failures;}
-CBase::CBase(){++ctors;temporary=reinterpret_cast<CEnginePrimitiveHandle*>(this);}
-CBase::~CBase(){++dtors;}
+CBaseClass::CBaseClass(){++ctors;temporary=reinterpret_cast<CEnginePrimitiveHandle*>(this);}
+CBaseClass::~CBaseClass(){++dtors;}
 CPersistentPrimitiveMethods::~CPersistentPrimitiveMethods(){}
 void CPersistentPrimitiveMethods::Delete()const{check(IVRefCount==0);++deletes;}
 void CPersistentPrimitiveMethods::ReservedSlot2(){check(false);}

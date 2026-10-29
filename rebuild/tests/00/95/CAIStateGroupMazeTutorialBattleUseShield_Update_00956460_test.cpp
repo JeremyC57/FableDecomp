@@ -22,7 +22,7 @@ class CCombatAction_WillShieldInto : public CCombatActionBase { public:
     CCombatAction_WillShieldInto(CThingCreatureBase* c, float a, float b) { g_argsOk = c == g_creature && a == 3.0f && b == 5.0f; }
 };
 template<class T> T* Tmp(const T& t) { return const_cast<T*>(&t); }
-class CWorld { public: static long GetCurrentFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CAIBrain { public: CThingCreatureBase* PCreature; };
 struct CAIStateGroup_MazeTutorialBattleUseShield {
@@ -38,7 +38,7 @@ struct CAIStateGroup_MazeTutorialBattleUseShield {
     {
         if (IS_THING_ALIVE(PTargetThing) && !IsStopping()) {
             AIAction_PerformActionAndWait(Tmp(CCombatAction_WillShieldInto(GetCreature(), 3.0f, 5.0f)), false);
-            FrameOfLastShield = GetPWorld()->GetCurrentFrame();
+            FrameOfLastShield = GetPWorld()->GetFrame();
         }
         Terminate();
     }

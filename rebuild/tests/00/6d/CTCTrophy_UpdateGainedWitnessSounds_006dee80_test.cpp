@@ -128,7 +128,7 @@ struct CDefPointerTrophyDef {
 };
 
 class CWorld { public:
-    static long GetWorldFrame();            // 0x0049D870
+    static long __fastcall GetFrame();            // 0x0049D870
 };
 
 extern long g_FramesPerSecond;              // 0x01375550
@@ -146,19 +146,19 @@ class CTCTrophy { public:
 
 void CTCTrophy::UpdateGainedWitnessSounds()
 {
-    if (PendingGainedWitnessSounds > 0 && CWorld::GetWorldFrame() > FrameForNextGainedWitnessSound) {
+    if (PendingGainedWitnessSounds > 0 && CWorld::GetFrame() > FrameForNextGainedWitnessSound) {
         PlaySoundW(*(const CCharString*)&PDef.Object->SoundGainedWitness_PStringData);
         const CTrophyDef* def = PDef.Object;
         --PendingGainedWitnessSounds;
         long framesPerSecond = g_FramesPerSecond;
-        FrameForNextGainedWitnessSound = (long)(framesPerSecond * def->SecsDelayPerGainedWitnessSound + CWorld::GetWorldFrame());
+        FrameForNextGainedWitnessSound = (long)(framesPerSecond * def->SecsDelayPerGainedWitnessSound + CWorld::GetFrame());
     }
 }
 
 // ---- stubs and driver ----
 long g_FramesPerSecond = 30;
 static long g_frames[4]; static int g_frameCalls = 0;
-long CWorld::GetWorldFrame() { return g_frames[g_frameCalls++]; }
+long CWorld::GetFrame() { return g_frames[g_frameCalls++]; }
 static const CCharString* g_played; static CTCTrophy* g_playThis; static int g_plays = 0;
 unsigned long CTCTrophy::PlaySoundW(const CCharString& name) { ++g_plays; g_played = &name; g_playThis = this; return 7; }
 static CTrophyDef g_def;

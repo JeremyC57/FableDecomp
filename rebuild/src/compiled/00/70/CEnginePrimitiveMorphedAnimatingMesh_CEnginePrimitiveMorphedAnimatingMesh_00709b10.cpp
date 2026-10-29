@@ -6,19 +6,20 @@
 // texture morphs into +0x90, the CCharString set into +0xA8); no vtable store (engine primitive descriptors are plain classes).
 // Callees: _Rb_tree<CCharString>::_M_erase @ 0x004ABA70 (catalog "LTextTreeWalkThrough::BuildTreeArray"), free @ 0x00BFEA14,
 // the +0x9C vector dtor @ 0x007099E0, vector<CEngineTextureMorph>::~vector @ 0x005BC0D3, C3DAnimationInterpolator::
-// ~C3DAnimationInterpolator @ 0x004C2E90, CBase::~CBase @ 0x0099A2E0 (the two novtable interpolators; the last a tail jump).
+// ~C3DAnimationInterpolator @ 0x004C2E90, CBaseClass::~CBaseClass @ 0x0099A2E0 (the two novtable interpolators; the last a tail jump).
 // Shape: the STLport set dtor inline: `if (_M_node_count) { _M_erase(root); leftmost = header; root = 0; rightmost = header;
 // count = 0; }` with &set kept in esi and the header re-read for each store, then `if (header) free(header)`; the counted def
 // release keeps its zero store inside the null test (inline ReleaseTemporary()).
 extern "C" void __cdecl free(void* block);      // 0x00BFEA14
 
-struct CBase {
-    virtual ~CBase();                           // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                           // 0x0099A2E0
 };
-struct __declspec(novtable) C3DPositionInterpolator : CBase {       // +0x1c, 0x1c bytes
+struct __declspec(novtable) C3DPositionInterpolator : CBaseClass {       // +0x1c, 0x1c bytes
     unsigned char _data[0x18];
 };
-struct __declspec(novtable) C3DOrientationInterpolator : CBase {    // +0x38, 0x34 bytes
+struct __declspec(novtable) C3DOrientationInterpolator : CBaseClass {    // +0x38, 0x34 bytes
     unsigned char _data[0x30];
 };
 class C3DAnimationInterpolator { public:               // +0x6c, 0x14 bytes

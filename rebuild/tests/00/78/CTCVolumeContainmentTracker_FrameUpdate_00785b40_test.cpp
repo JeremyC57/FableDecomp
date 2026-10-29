@@ -37,7 +37,8 @@ class C3DVector { public:
 unsigned char g_bVolumeTrackingEnabled = 1;
 long g_framesPerSecond = 15;
 long g_currentFrame = 0;
-long GFGetCurrentFrame() { return g_currentFrame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_currentFrame; }
 struct CWorldView { C3DVector Camera; C3DVector GetCameraPosition() { return Camera; } };
 class CThing { public: Uid64 UID; C3DVector Position; const C3DVector& GetPosition() const { return Position; } };
 struct CVolumeContainmentTrackerDef { bool AlwaysUpdate; };
@@ -56,7 +57,7 @@ class CTCVolumeContainmentTracker { public:
             if ((world->GetCameraPosition() - pos).GetMagnitudeSquared() < 100.0f)
                 interval = CeilToLong(g_framesPerSecond * 0.8f);
             Uid64 uid = ParentThing->UID;
-            if ((uid + GFGetCurrentFrame()) % interval != 0)
+            if ((uid + CWorld::GetFrame()) % interval != 0)
                 return;
         }
         Update();

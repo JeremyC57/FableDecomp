@@ -1,18 +1,19 @@
 // CVertexShaderConstantLayout::CVertexShaderConstantLayout() -- default-construct the vertex-shader constant layout: every CShaderConstantRange slot (incl. the four texture transforms) starts empty, LightSize 0 and the reserved-preset array empty
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0098D490, length 608 bytes (`ret`, returns this).
-// Callees: CBase::CBase 0x0099A2D0 (out of line, once for the layout's own base and once per range).
+// Callees: CBaseClass::CBaseClass 0x0099A2D0 (out of line, once for the layout's own base and once per range).
 // Vtables: CVertexShaderConstantLayout 0x0129A06C, CShaderConstantRange 0x0129A04C.
 // Layout: rebuild/include/engine/CVertexShaderConstantLayout.h flattens every CShaderConstantRange to `unsigned char[0xc]`,
 //   which cannot run the member constructors, so this source keeps a local model with the same offsets (Ego_r.pdb):
 //   CShaderConstantRange = CBase vptr + Offset + Count (12 bytes); LightSize at +0x4c; TextureTransform[4] at +0xa4;
 //   ReservedPresets (CArray<CVertexShaderConstant>) at +0x140, whose inline ctor zeroes its three leading words.
 // Shape: the TextureTransform[4] member array is the inline `mov ebp,4 ; ... dec ebp ; jne` construction loop.
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();
+};
 
-class CShaderConstantRange : public CBase { public:
+class CShaderConstantRange : public CBaseClass { public:
     long Offset;                                   // +0x04
     unsigned long Count;                           // +0x08
     CShaderConstantRange() : Offset(0), Count(0) {}
@@ -27,7 +28,7 @@ struct CVertexShaderConstantArray {
     CVertexShaderConstantArray() : Data(0), Count(0), Allocated(0) {}
 };
 
-class CVertexShaderConstantLayout : public CBase { public:
+class CVertexShaderConstantLayout : public CBaseClass { public:
     CShaderConstantRange Reserved;                 // +0x04
     CShaderConstantRange User;                     // +0x10
     CShaderConstantRange Compression;              // +0x1c

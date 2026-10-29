@@ -19,7 +19,7 @@ struct CIntelligentPointer {
 static CThing* g_hero;
 static long g_frame;
 static long g_framesPerSecond = 30;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CAIBrain { public: CThing* PCreature; };
 
@@ -47,9 +47,9 @@ bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable()
         } else if (NumberOfTimesPlayerTold > 0) {
             CWorld* world = GetPWorld();
             long fps = g_framesPerSecond;
-            if (world->GetWorldFrame() - FrameLastToldPlayer > (unsigned long)(fps * 120)) {
+            if (world->GetFrame() - FrameLastToldPlayer > (unsigned long)(fps * 120)) {
                 --NumberOfTimesPlayerTold;
-                FrameLastToldPlayer = GetPThingWorld()->GetWorldFrame();
+                FrameLastToldPlayer = GetPThingWorld()->GetFrame();
             }
         }
         if (Player.GetPItem() != 0 && !(Player.GetPItem()->m_flags91 & 1) && IsPlayerCarryingWeapon()) {

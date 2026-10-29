@@ -19,11 +19,12 @@ public:
     unsigned char _pad0e[0xcd - 0x0e];
     bool          m_profileWaitForClickPast;            // +0xcd
     bool IsWaitForClickPast() const { return m_hasActiveProfile ? m_profileWaitForClickPast : m_defaultWaitForClickPast; }
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> struct CTBaseSingleton {
     static T& __fastcall Get();                         // 0x0040D2A0
 };
-template <> CUserProfileManager& __fastcall CTBaseSingleton<CUserProfileManager>::Get();
 
 class CSubtitleRenderer {
 public:
@@ -56,7 +57,7 @@ void CSubtitleRenderer::Update(bool paused)
     if (!(DisplayFlags & 0xc)) {
         if (DisplayFlags & 2) {
             if (MaxDisplayTime != 0.0f && TextTimer > MaxDisplayTime
-                && (!CTBaseSingleton<CUserProfileManager>::Get().IsWaitForClickPast() || InCutscene))
+                && (!CUserProfileManager::Get().IsWaitForClickPast() || InCutscene))
                 Clear(false);
         } else if (MaxDisplayTime != 0.0f && TextTimer > MaxDisplayTime)
             Clear(false);
@@ -67,7 +68,7 @@ long g_FramesPerSecond = 4;
 static CPlayerGuiDef g_def;
 CPlayerGuiDef* __fastcall PeekGuiDef() { return &g_def; }
 static CUserProfileManager g_pm;
-template <> CUserProfileManager& __fastcall CTBaseSingleton<CUserProfileManager>::Get() { return g_pm; }
+CUserProfileManager& CUserProfileManager::Get() { return g_pm; }
 static int g_clears = 0;
 void CSubtitleRenderer::Clear(bool flag) { if (!flag) ++g_clears; }
 static bool Run(bool displaying, bool whilePaused, bool paused, bool timer, unsigned long flags, float maxTime, float t,

@@ -13,7 +13,7 @@ static int fails = 0;
 // at +0x38, the preference test is skipped without it; type 0x23 = CTCVillager, bit 3 of +0x24), CTCIdleScheduler::
 // IsPreferredIdle @ 0x00801BE0, GFGetPVillageInterface @ 0x007EE540 (twice), the village time test @ 0x00658D5D
 // (manifest "CTCVillage::IsCurfewTime" is propagated; the landed curfew test is 0x00658DB3), CAIStateGroupBase::GetPWorld
-// @ 0x008FCFC0 (result dropped), GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, GFGetCurrentFrame @ 0x0049D870,
+// @ 0x008FCFC0 (result dropped), GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CWorld::GetFrame @ 0x0049D870,
 // CAIStateGroup_MinionSitOnSeatBase::IsRunnable @ 0x0090F9C0 (qualified base call, tail result).
 // Shape: the seed step is the landed free inline `WorldRandomRange(unsigned long& seed, unsigned long range)` (0x009284B0:
 // seed = seed*0x24A1+0x24DF; seed = GFROR13(seed); `range == 0` test folded for 150; `seed % range` through the reference),
@@ -111,7 +111,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
     __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
@@ -159,7 +159,7 @@ bool CAIStateGroup_MinionSitOutside::IsRunnable()
         }
     }
     GetPWorld();
-    FrameToStopSitting = 225 + WorldRandomRange(*GetPWorldSeed(), 150) + GFGetCurrentFrame();
+    FrameToStopSitting = 225 + WorldRandomRange(*GetPWorldSeed(), 150) + CWorld::GetFrame();
     return CAIStateGroup_MinionSitOnSeatBase::IsRunnable();
 }
 
@@ -172,7 +172,7 @@ CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long* type)
     return it;
 }
 static long g_frame = 1000;
-long __fastcall GFGetCurrentFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 unsigned long __fastcall GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
 static bool g_preferred = true; static int g_prefCalls = 0; static CAIStateGroupBase* g_prefGroup = 0;
 bool CTCIdleScheduler::IsPreferredIdle(CAIStateGroupBase* group) { ++g_prefCalls; g_prefGroup = group; return g_preferred; }

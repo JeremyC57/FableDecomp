@@ -49,7 +49,7 @@ class CPlayerManager { public:
     CPlayer* GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 class CMainGameComponent { public:
     unsigned char _pad_0x00[0x1c];
@@ -69,7 +69,7 @@ class CTCWife { public:
 };
 void CTCWife::Died()
 {
-    if (FrameGotMarriedToThePlayer > CWorld::GetWorldFrame())
+    if (FrameGotMarriedToThePlayer > CWorld::GetFrame())
         return;
     Unmarry(true);
     CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();

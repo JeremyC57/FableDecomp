@@ -1,7 +1,7 @@
 // CVolume::CVolume(IDirect3DVolume9* volume) -- construct an empty volume wrapper and initialise it from a volume-texture mip level
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00A67DA0, length 39 bytes (48 with int3 padding).
 // Leaf: ??0CVolume
-// Callees: CBase::CBase() @ 0x0099A2D0, CVolume::InitialiseFromVolumeTextureMipmap(IDirect3DVolume9*) @ 0x00A67770
+// Callees: CBaseClass::CBaseClass() @ 0x0099A2D0, CVolume::InitialiseFromVolumeTextureMipmap(IDirect3DVolume9*) @ 0x00A67770
 // (thiscall, `ret 4`: releases a held volume through slot 2, stores and AddRefs the new one, then caches its
 // description). Vtable 0x0129C840 = CVolume (rtti-vtables.tsv).
 // Label correction: the manifest's "CIntelligentPointer<const CThing>::CIntelligentPointer" is propagated, and so
@@ -16,11 +16,12 @@ struct IUnknownLike {
     virtual unsigned long __stdcall Release();
 };
 struct IDirect3DVolume9 : IUnknownLike { };
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();
-    CBase();                                // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
-class CVolume : public CBase { public:
+class CBaseClass {
+public:
+    virtual ~CBaseClass();
+    CBaseClass();                                // 0x0099A2D0
+};
+class CVolume : public CBaseClass { public:
     IDirect3DVolume9* m_pVolume;            // +0x04
     CVolume(IDirect3DVolume9* volume);
     void InitialiseFromVolumeTextureMipmap(IDirect3DVolume9* volume);   // 0x00A67770

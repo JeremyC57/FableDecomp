@@ -1,7 +1,7 @@
 // CGameScriptInterface::CreateRumble(const C3DVector& pos, float strength, float radius, CCharString scriptName) const -- create a rumble at a position, give it the script name and return it as a script thing (the null script thing when nothing live was made)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0089FDA0, length 120 bytes.
 // Callees: the rumble factory (__fastcall: pos in ecx, the bool in dl, two floats on the stack) @ 0x007F1AC0, CCharString::operator= @ 0x0099EFB0,
-//          CThing::GetScriptThing @ 0x004C7E50, CBase::CBase @ 0x0099A2D0, CCharString::~CCharString @ 0x0099EAE0 (the by-value name).
+//          CThing::GetScriptThing @ 0x004C7E50, CBaseClass::CBaseClass @ 0x0099A2D0, CCharString::~CCharString @ 0x0099EAE0 (the by-value name).
 // Shape: CScriptThing returned by hidden pointer; the null script thing is built inline.
 // Leaf: CreateRumble
 class CCharString { public:                               // fable_string.h layout: one data-block pointer
@@ -12,19 +12,20 @@ class CCharString { public:                               // fable_string.h layo
 };
 class C3DVector { public: float x, y, z; };
 struct SCountBlock;
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                       // 0x0099A2D0 (out of line)
-    virtual void v00();
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0 (out of line)
+    virtual ~CBaseClass();
+};
 struct CScriptThingImp;
 struct CScriptThingPImp {                          // the counted pointer member: an inline constructor zeroes both words after the vtable store
     CScriptThingImp* Data;                         // +4
     SCountBlock*     Info;                         // +8
     CScriptThingPImp() : Data(0), Info(0) {}
 };
-class CScriptThing : public CBase { public:                      // 12 bytes, vtable 0x01238C8C (rtti-vtables.tsv)
+class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C (rtti-vtables.tsv)
     CScriptThingPImp PImp;
-    CScriptThing() {}                              // inline: CBase::CBase, the vtable, two zero words
+    CScriptThing() {}                              // inline: CBaseClass::CBaseClass, the vtable, two zero words
 };
 class CThing { public:
     unsigned char  _pad00[0x74];

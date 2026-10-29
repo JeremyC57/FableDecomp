@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009EEB00, 92 bytes, `ret 0Ch` (hidden result, the iterator by value, &x).
 //   Catalog label "HeroInformationScreens_CreateListNode" is wrong: the node holds a CConsoleCommandLine (vtable
 //   0x0129C400), the CConsole::CommandLineHistory element.
-// Callees: malloc 0x00BFEA0E (the 0x18-byte node: two links + the 16-byte command line), CBase::CBase 0x0099A2D0,
+// Callees: malloc 0x00BFEA0E (the 0x18-byte node: two links + the 16-byte command line), CBaseClass::CBaseClass 0x0099A2D0,
 //   CCharString copy ctor 0x0099EC30.
 // Shape: STLport 4.x insert + _M_create_node inlined (placement-new null test, no EH). The element copy runs the
 //   out-of-line CBase() DEFAULT constructor, so CConsoleCommandLine has a user copy constructor that does not name
@@ -18,14 +18,13 @@ public:
     CCharString(const CCharString& other);         // 0x0099EC30
 };
 
-class CBase
-{
+class CBaseClass {
 public:
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();                              // 0x0099A2E0
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
 };
 
-class CConsoleCommandLine : public CBase           // vtable 0x0129C400, 16 bytes
+class CConsoleCommandLine : public CBaseClass           // vtable 0x0129C400, 16 bytes
 {
 public:
     CCharString CurrentEntry;                      // +0x04

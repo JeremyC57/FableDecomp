@@ -3,7 +3,7 @@
 // (MaxTeamMembers and EnemyTeam are left uninitialised)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00CDB360, length 94 bytes (+ int3 padding).
 // Callees: the thing manager global @ 0x0143E8F8 vtable slot 87 (+0x15c, long: a new timer
-// index), CBase::CBase @ 0x0099A2D0 (twice, the base of each CScriptThing member).
+// index), CBaseClass::CBaseClass @ 0x0099A2D0 (twice, the base of each CScriptThing member).
 // PDB CCrateTeamManager (64 bytes): long StateCounter[6] +0x00, long MemberCount +0x18,
 // CTimer TeamReinforcementsTimer +0x1c, long MaxTeamMembers +0x20, CScriptThing CrateDropPos +0x24,
 // CScriptThing TeamCrateCarrier +0x30, CCrateTeamManager* EnemyTeam +0x3c.
@@ -42,10 +42,11 @@ struct CThingManager_Calls {
 };
 extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
 
-namespace N_0099a2d0 { struct CBase {
+class CBaseClass {
+public:
     virtual void v00();
-    CBase();                                   // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                   // 0x0099A2D0
+};
 
 struct CCountedPointer_Retail {               // CCountedPointer<CScriptThing>: Data / Info, both null
     void* Data;
@@ -53,10 +54,10 @@ struct CCountedPointer_Retail {               // CCountedPointer<CScriptThing>: 
     CCountedPointer_Retail() : Data(0), Info(0) { }
 };
 
-struct CScriptThing_Retail : CBase {           // vtable 0x01238C8C; layout as engine/CScriptThing.h
+struct CScriptThing_Retail : CBaseClass {           // vtable 0x01238C8C; layout as engine/CScriptThing.h
     virtual void v00();
     CCountedPointer_Retail PImp;               // +0x04 (Data +0x04, Info +0x08)
-    CScriptThing_Retail() : CBase(), PImp() { }
+    CScriptThing_Retail() : CBaseClass(), PImp() { }
 };
 
 class CTimer { public:

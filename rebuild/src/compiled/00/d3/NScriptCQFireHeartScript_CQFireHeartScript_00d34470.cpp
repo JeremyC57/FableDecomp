@@ -27,10 +27,11 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
     void* m_pData;                                   // +0x44
     CScriptObject(void* data, CGameScriptInterface* game) : CScriptBase(), m_pGame(game), m_pData(data) { }
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                         // 0x0099A2D0
-    virtual ~CBase();                                // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                         // 0x0099A2D0
+    virtual ~CBaseClass();                                // 0x0099A2E0
+};
 class CScriptThing;
 class CCPPointerInfo;
 struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
@@ -38,7 +39,7 @@ struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
     CCPPointerInfo* Info;                            // +4
     CCountedPointer_CScriptThing() : Data(0), Info(0) { }
 };
-class CScriptThing : public CBase { public:                        // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:                        // vtable 0x01238C8C
     CCountedPointer_CScriptThing PImp;               // +0x04
     CScriptThing() { }
     virtual ~CScriptThing();

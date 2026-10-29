@@ -1,9 +1,10 @@
 // Behaviour test for 0x0098DFD0 CThreadedFile::CThreadedFile.
 #include <cstdio>
 static int g_wideStrings = 0;
-class CBase { public: CBase() {} virtual ~CBase() {} };
+class CBaseClassNonCopyable {
+public:  CBaseClassNonCopyable() {} virtual ~CBaseClassNonCopyable() {} };
 class CWideString { public: CWideString() : m_pData(0) { ++g_wideStrings; } ~CWideString() { --g_wideStrings; } unsigned short* m_pData; };
-class CThreadedFile : public CBase {
+class CThreadedFile : public CBaseClassNonCopyable {
 public:
     CThreadedFile() : OpenedForWrite(false), OpenFlag(false) { FileHandle = (void*)-1; }
     long DeviceID; void* FileHandle; CWideString Filename; unsigned long Length; unsigned long PhysicalSortKey;

@@ -116,7 +116,7 @@ public:
     CThingDefPointer PDef;                              // +0x70
 };
 class CWorld { public:
-    static long __fastcall GetWorldFrame();             // 0x0049D870
+    static long __fastcall GetFrame();             // 0x0049D870
 };
 class CTCBase {
 public:
@@ -170,6 +170,6 @@ void CTCHeroMorph::AddTattoo(const CThing& tattooThing)
             Tattoos.push_back(CThingDefPointer(tattooThing.PDef));
         }
         Changed = true;
-        FrameTattoosChanged = PeekWorld().GetWorldFrame();
+        FrameTattoosChanged = PeekWorld().GetFrame();
     }
 }

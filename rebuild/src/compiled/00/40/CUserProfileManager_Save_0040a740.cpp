@@ -4,7 +4,7 @@
 // Callees: the profile path builder @ 0x004082D0, CWideString::operator!=(const wchar_t*) @ 0x0099B150,
 // CMemoryFile::CMemoryFile(const CWideString&, FileAccessType, unsigned long) @ 0x009E97B0,
 // CUserProfileManager::SaveGameState(CAFile*) @ 0x00409FD0, CMemoryFile::DumpToFile @ 0x009E9330, CMemoryFile::Close
-// @ 0x009E9390, ~CWideString @ 0x0099B510, free @ 0x00BFEA14 (the data buffer), CBase::~CBase @ 0x0099A300.
+// @ 0x009E9390, ~CWideString @ 0x0099B510, free @ 0x00BFEA14 (the data buffer), CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300.
 // Literal L"" @ 0x0122D70C.
 // Layout: CUserProfileManager ProfileName +0x08, UseNewProfileValues +0x0c (Ego_r.pdb); CMemoryFile (vtable 0x0122E0FC)
 // with the 12-byte retail CArray DataBuffer +0x10, Opened +0x1c, Pathname +0x20 (PDB 0x28 bytes, 4 more).
@@ -21,10 +21,11 @@ bool __fastcall PathExists(const CWideString& path);       // 0x00999230
 bool __fastcall VerifySignature(const CWideString& path);  // 0x00409730
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
 
-namespace N_0099a300 { struct CBase {
-    virtual ~CBase();                                       // 0x0099A300
-}; } using N_0099a300::CBase;
-class CAFile : public CBase { public:
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                       // 0x0099A300
+};
+class CAFile : public CBaseClassNonCopyable { public:
     long AccessType;                                        // +0x04 FileAccessType
     long Position;                                          // +0x08
     long Length;                                            // +0x0c

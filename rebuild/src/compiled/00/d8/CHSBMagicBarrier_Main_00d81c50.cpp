@@ -1,7 +1,7 @@
 // CHSB_MagicBarrier::Main() -- Briar Rose's magic barrier in Hero Souls: register a thing-alive filter, raise the two forcefield idle effects facing the shrine centre, re-raise them whenever both have gone until Briar is killed, then remove them, play the two "off" effects facing the centre and remove Me
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D81C50, 1464 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980 (inline copies in the loop), ~CBase 0x0099A2E0,
+// Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980 (inline copies in the loop), ~CBaseClass 0x0099A2E0,
 //   operator delete 0x00BFE9BC, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 /
 //   0x0099EAE0; GameCalls slots 7, 72, 100 CreateEffect, 108 RemoveThing, 475 EntitySetFacingAngleTowardsThing; CScriptThing
 //   slots 6 GetPos, 10 GetAngleXY, 75 IsAlive (inline through PImp), 76 IsDead (inline, IsAlive through the vtable).
@@ -72,12 +72,13 @@ struct CScriptThingImpl {                              // the game-side thing be
     virtual void i072() const; virtual void i073() const; virtual void i074() const;
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-struct CBase {                                          // vtable 0x01231710
-    CBase() { }                                         // out-of-line copy 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:                                           // vtable 0x01231710
+    CBaseClass() { }                                         // out-of-line copy 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 class C3DVector { public: float X, Y, Z; };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
     virtual void s007() const; virtual void s008() const; virtual void s009() const;
@@ -95,7 +96,7 @@ class CScriptThing : public CBase { public:                           // vtable 
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
-    CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // out-of-line copy 0x008AB980
 };

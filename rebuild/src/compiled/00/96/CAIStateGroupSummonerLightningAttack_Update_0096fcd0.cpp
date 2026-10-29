@@ -8,7 +8,7 @@
 //   @ 0x0062E900, AIAction_CombatPerformActionAndWait @ 0x0097DA40, AIAction_LookAtThing @ 0x0097D6F0 (the target passed
 //   by value through CIntelligentPointer<const CThing>(const CIntelligentPointer<CThing>&) @ 0x007C2930),
 //   IS_THING_ALIVE<CIntelligentPointer<CThing>> @ 0x004CC340 (__fastcall), IsPerformingAnyAction @ 0x006622A0,
-//   AIAction_DoNothing @ 0x0097E200, GetPWorld @ 0x008FCFC0 (evaluated for the static GetWorldFrame @ 0x0049D870),
+//   AIAction_DoNothing @ 0x0097E200, GetPWorld @ 0x008FCFC0 (evaluated for the static CWorld::GetFrame @ 0x0049D870),
 //   Terminate @ 0x008FCF40; frame rate global 0x01375550, ftol 0x00BFEA70.
 // Layout: Ego_r.pdb CAIStateGroup_SummonerLightningAttack (PTarget +0x14, PDef +0x1c, NextFrameForPreemptiveUse +0x20) over
 //   the landed CAIStateGroupBase model (the generated header flattens the vptr into __vftable/_pad bytes); creature flag
@@ -106,7 +106,7 @@ class CCreatureAction_SummonerLightningOrbOutOfGroundSmash : public CCombatActio
     CCreatureAction_SummonerLightningOrbOutOfGroundSmash(CThingCreatureBase* owner);   // 0x00970240
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long g_FramesPerSecond;                  // 0x01375550
 class CSummonerDef { public:
@@ -182,7 +182,7 @@ void CAIStateGroup_SummonerLightningAttack::Update()
                     float delay = PDef->LightningPreemptiveDelay;
                     CWorld* world = GetPWorld();
                     long fps = g_FramesPerSecond;
-                    NextFrameForPreemptiveUse = (long)((float)world->GetWorldFrame() + (float)fps * delay);
+                    NextFrameForPreemptiveUse = (long)((float)world->GetFrame() + (float)fps * delay);
                 }
             }
         }

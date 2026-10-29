@@ -13,7 +13,7 @@ class CActionInputControl;
 struct CActionInputVector;                         // vector<CActionInputControl>
 
 class CUserProfileManager { public:
-    static CUserProfileManager& Get();             // 0x0040D2A0
+    static CUserProfileManager& __fastcall Get();             // 0x0040D2A0
     const CActionInputVector& GetAssignedInputsPassive();   // 0x004088E0
 };
 

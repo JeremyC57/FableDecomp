@@ -106,7 +106,7 @@ class CThingSearchTools { public:
     bool GetPBestThing(const TFilter& filter, const TCompare& compare, TThing** ppBest) const;   // 0x00941450 <..>
 };
 class CWorld { public:
-    static long __fastcall GetWorldFrame();     // 0x0049D870
+    static long __fastcall GetFrame();     // 0x0049D870
 };
 
 class CAIBrain { public:
@@ -139,13 +139,13 @@ struct CAIStateGroup_KidWatchHopscotch : CAIStateGroupBase {
 
 bool CAIStateGroup_KidWatchHopscotch::IsRunnable()
 {
-    if (CWorld::GetWorldFrame() > CreationFrame) {
+    if (CWorld::GetFrame() > CreationFrame) {
         if (Fatigued) {
-            ActivationFrequency = (float)ActivationCount * FramesPerMin / (float)(CWorld::GetWorldFrame() - CreationFrame);
+            ActivationFrequency = (float)ActivationCount * FramesPerMin / (float)(CWorld::GetFrame() - CreationFrame);
             if (ActivationFrequency < 2.5f)
                 Fatigued = false;
         } else {
-            ActivationFrequency = (float)ActivationCount * FramesPerMin / (float)(CWorld::GetWorldFrame() - CreationFrame);
+            ActivationFrequency = (float)ActivationCount * FramesPerMin / (float)(CWorld::GetFrame() - CreationFrame);
             if (ActivationFrequency > 3.0f)
                 Fatigued = true;
         }

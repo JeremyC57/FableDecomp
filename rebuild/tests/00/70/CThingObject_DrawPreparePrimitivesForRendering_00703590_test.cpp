@@ -16,7 +16,7 @@ static void note(const char* s) { if (strlen(g_log) + strlen(s) + 2 < sizeof(g_l
 // CThingObject::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) -- after the CThingPhysical preparation: prepare the weapon trail (interface 0x4C, when trails are shown) and the two draw-preparing components (0x54, 0xCF); take the render position and orientation interpolators from the carry pose when the object is being carried (pushing them into the physics component and updating attached particles, 0xD8) or else from the physics component; then let the graphic appearance prepare itself with them
 // Leaf: DrawPreparePrimitivesForRendering
 // Callees: CThingPhysical::DrawPreparePrimitivesForRendering @ 0x006A64D0 (non-virtual), CVectorMap::LowerBound const @ 0x004365B0 /
-//          non-const @ 0x0040F020, CTCWeaponTrail @ 0x0076E6A0, the components' slot 11 (+0x2c), CBase ctor @ 0x0099A2D0 /
+//          non-const @ 0x0040F020, CTCWeaponTrail @ 0x0076E6A0, the components' slot 11 (+0x2c), CBaseClass ctor @ 0x0099A2D0 /
 //          dtor @ 0x0099A2E0, CTCCarryable::GetCarriedPositionInfo @ 0x00705B00, physics slots 31/32 (+0x7c/+0x80),
 //          CTCParticleAttachmentTracker::UpdateAttachedParticles @ 0x0071A9C0, CTCPhysicsBase::GetPositionInterpolator @ 0x006B0250 /
 //          GetOrientationInterpolator @ 0x006B0460, CTCGraphicAppearance::PrepareForRenderIfNeeded @ 0x004BE490; global 0x0137548E.
@@ -35,15 +35,16 @@ class C3DVector { public:
     C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) { }
 };
 class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();                                   // 0x0099A2E0
-    CBase();                                            // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
-class C3DPositionInterpolator : public CBase { public:                // vtable 0x0123981C
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                   // 0x0099A2E0
+    CBaseClass();                                            // 0x0099A2D0
+};
+class C3DPositionInterpolator : public CBaseClass { public:                // vtable 0x0123981C
     C3DVector StartPosition;                            // +0x04
     C3DVector EndPosition;                              // +0x10
 };
-class C3DOrientationInterpolator : public CBase { public:             // vtable 0x01239824
+class C3DOrientationInterpolator : public CBaseClass { public:             // vtable 0x01239824
     CRightHandedSet StartOrientation;                   // +0x04
     CRightHandedSet EndOrientation;                     // +0x1c
 };
@@ -191,8 +192,8 @@ static float g_lastTime = 0.0f;
 static const C3DVector* g_renderPos = 0;
 static const CRightHandedSet* g_renderOri = 0;
 static int g_ctor = 0, g_dtor = 0;
-CBase::CBase() { ++g_ctor; }
-CBase::~CBase() { ++g_dtor; }
+CBaseClass::CBaseClass() { ++g_ctor; }
+CBaseClass::~CBaseClass() { ++g_dtor; }
 bool CThingPhysical::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info) { note("base"); (void)info; return g_baseResult; }
 void CThingPhysical::v00() {}
 // one linear search serves both map overloads

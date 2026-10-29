@@ -8,8 +8,8 @@ struct CBaseIntelligentPointer {
     CBaseObject* GetPItem() { return m_pItem; }
 };
 class CWorld { public:
-    static long GetWorldFrame() { return g_frame; }
-    unsigned long GetFramesSince(unsigned long frame) { return GetWorldFrame() - frame; }
+    static long __fastcall GetFrame() { return g_frame; }
+    unsigned long GetFramesSince(unsigned long frame) { return GetFrame() - frame; }
 };
 static CWorld g_world;
 class CThingCreatureBase { public:

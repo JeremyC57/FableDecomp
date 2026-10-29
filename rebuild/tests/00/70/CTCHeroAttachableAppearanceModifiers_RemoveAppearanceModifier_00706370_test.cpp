@@ -79,7 +79,7 @@ template <class T> __declspec(noinline) bool CDefinitionManager::GetDef(long ind
 class CDefinitionHolder : public CDefinitionManager { };
 
 class CWorld { public:
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 
 struct CModifierEntry {                             // CTCHeroAttachableAppearanceModifiers::CModifierEntry (8 bytes)
@@ -127,7 +127,7 @@ void CTCHeroAttachableAppearanceModifiers::RemoveAppearanceModifier(long defInde
             Changed = true;
         }
     }
-    FrameLastChanged = GetWorld()->GetWorldFrame();
+    FrameLastChanged = GetWorld()->GetFrame();
     if (appearanceDef && --appearanceDef->RefCount == 0)
         appearanceDef->Destroy();
 }
@@ -143,7 +143,7 @@ void* Lookup_CDefinitionManager_GetDef(const void* manager, long index)
 { g_lookupMgr = manager; g_lookupIndex = index; if (g_thingDef) ++((CDefClassBase*)g_thingDef)->RefCount; return g_thingDef; }
 void* Find_CDefClassBase_GetSubDef(const void* owner)
 { g_findOwner = owner; if (g_appDef) ++((CDefClassBase*)g_appDef)->RefCount; return g_appDef; }
-long CWorld::GetWorldFrame() { return 777; }
+long CWorld::GetFrame() { return 777; }
 CWorld* CTCHeroAttachableAppearanceModifiers::GetWorld() const { return 0; }
 const CDefinitionHolder* CTCHeroAttachableAppearanceModifiers::GetDefinitions() const { return &g_defs; }
 void CTCHeroAttachableAppearanceModifiers::v00() { }

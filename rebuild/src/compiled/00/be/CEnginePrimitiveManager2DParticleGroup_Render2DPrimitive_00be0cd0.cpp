@@ -2,7 +2,7 @@
 // CEnginePrimitiveManager2DParticleGroup::Render2DPrimitive(CEngineInternalPrimitiveBase&, CEngineSubPrimitiveChain&, ESubPrimitiveType) -- when the manager and the group's 2D layer are enabled, queue the group as a pool-allocated sub-primitive at its layer's depth: in the given sort list, or (for a screen-displacement group, when the displacement pass is available) in lists 5 and 6 with a second displacement sub-primitive
 // Leaf: Render2DPrimitive
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BE0CD0, length 256 bytes (`ret 0Ch`, virtual).
-// Callees: CEngineSubPrimitiveBase::operator new @ 0x00BEB540 (`__fastcall`, size 0x18), CBase::CBase @ 0x0099A2F0,
+// Callees: CEngineSubPrimitiveBase::operator new @ 0x00BEB540 (`__fastcall`, size 0x18), CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0,
 // CEngineSubPrimitiveParticleGroup::CEngineSubPrimitiveParticleGroup(CEngineInternalPrimitiveBase&) @ 0x00BBBDB0 (the second
 // construction calls it out of line; the first is inlined), CEnginePrimitiveRenderer2D::Layer2DToSortDistance(EEngine2DLayer)
 // @ 0x00B4A6A0 (2D renderer @ 0x01436E7C, layer-enable bytes at +0x320), CEngineSubPrimitiveRenderer::AddSubPrimitive(long,
@@ -14,14 +14,14 @@
 // Shape: RenderFlags/Alpha are assigned after `new` (stored through the possibly-null pointer); the layer depth is a named
 // float homed in the dead `primitive` argument slot; the chain argument is unused.
 enum EEngine2DLayer { };                         // Ego_r.pdb layer enum (passed as a 32-bit value)
-class CBase {
-public:
-    virtual ~CBase();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 class CEngineInternalPrimitiveBase;
 class CEnginePrimitiveManager;
-class __declspec(novtable) CEngineSubPrimitiveBase : public CBase {   // PDB, 0x18 bytes
+class __declspec(novtable) CEngineSubPrimitiveBase : public CBaseClassNonCopyable {   // PDB, 0x18 bytes
 public:
     unsigned long                 RenderFlags;      // +0x04
     unsigned char                 Alpha;            // +0x08

@@ -13,7 +13,7 @@ public:
 };
 class CCharString { public: char Text[48]; CCharString(const char* t, long = -1) { strcpy(Text, t); } ~CCharString() {} };
 static long g_worldFrame = 100;
-class CWorld { public: static long GetWorldFrame() { return g_worldFrame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_worldFrame; } };
 class CPlayer { public: CThing* Hero; CThing* GetHeroThing() const { return Hero; } };
 class CPlayerManager { public: CPlayer* Main; CPlayer* GetMainPlayer() { return Main; } };
 static CWorld g_world;
@@ -57,7 +57,7 @@ class CTCWife { public:
 };
 void CTCWife::Divorce()
 {
-    if (FrameGotMarriedToThePlayer > CWorld::GetWorldFrame())
+    if (FrameGotMarriedToThePlayer > CWorld::GetFrame())
         return;
     Unmarry(false);
     DivorcedHero = true;
@@ -75,7 +75,7 @@ void CTCWife::Divorce()
             CCharString personality("OPINION_PERSONALITY_WIFE_DIVORCED");
             opinion->SetPersonalityOverride(personality, true);
         }
-        opinion->LastOpinionReactionFrame = opinion->GetWorld()->GetWorldFrame();
+        opinion->LastOpinionReactionFrame = opinion->GetWorld()->GetFrame();
         opinion->ClearAllKnownDeeds();
         opinion->HeroOpinionEnemy = false;
     }

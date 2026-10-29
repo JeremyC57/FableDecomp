@@ -39,7 +39,7 @@ struct CTCDriver41 { void SetOwner(CThing* o) { g_owner = o; } };
 CThing* CreateObstruction(const C3DVector* a, const C3DVector* b, float r) { g_obsA = *a; g_obsB = *b; g_obsR = r; return g_obstruction; }
 CThing* CreateThing(long index, const C3DVector* p, const C3DVector* look) { g_createIndex = index; g_createPos = *p; g_createLook = *look; return g_bite; }
 class CDefinitionManager { public: long GetDefGlobalIndexFromName(const CCharString& n) { std::strcpy(g_defName, n.s); return 77; } };
-class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& Get() { static CGameDefinitionManager m; return m; } };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get() { static CGameDefinitionManager m; return m; } };
 struct CPtr { CThing* m_pItem; CThing* GetPItem() const { return m_pItem; } };
 class CCreatureActionBase { public: CPtr PCreature; CThing* GetCreature() const { return PCreature.GetPItem(); } };
 class CCreatureAction_SnapDragon : public CCreatureActionBase { public: void PerformAction(); };

@@ -2,7 +2,7 @@
 // Leaf: ?Main@CBanditAttacker@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D1F610, 757 bytes (768 with padding); entity-script vtable slot 1 (Main).
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, CScriptThing copy ctor 0x004ABE90 /
-//   ~CScriptThing 0x004AA840 (out-of-line copy) / ~CBase 0x0099A2E0, CEntityScriptBase::SetPredicate 0x00F35B10 /
+//   ~CScriptThing 0x004AA840 (out-of-line copy) / ~CBaseClass 0x0099A2E0, CEntityScriptBase::SetPredicate 0x00F35B10 /
 //   IsActiveThreadTerminating 0x00F35B30, handle (vtable 0x0127094C) ctor 0x007E72A0 (out of line in this module) /
 //   IsScripting 0x00CD23B9 / Release 0x00CD2770 / MoveToThing 0x007E7300 / IsPerformingScriptTask 0x007E7450 / dtor
 //   0x007E74D0, IsDistanceBetweenThingsOver 0x00CBE3EA (__fastcall), operator delete 0x00BFE9BC;
@@ -45,10 +45,11 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-struct CBase {
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
 
     void*           PImp_Data;                          // +0x04
     CCPPointerInfo* PImp_Info;                          // +0x08

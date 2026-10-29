@@ -71,7 +71,7 @@ class CTCBoss { public:                                // interface 0xad
 class CWorld { public:
     unsigned char _pad[0x4c];
     CCombatManager* PCombatManager;             // +0x4c
-    static long GetWorldFrame();                // 0x0049D870 (static: the world pointer is evaluated and dropped)
+    static long __fastcall GetFrame();                // 0x0049D870 (static: the world pointer is evaluated and dropped)
 };
 struct CBaseIntelligentPointer {
     void* __vftable;
@@ -110,8 +110,8 @@ void CAIStateGroupHoverHornetQueenTakeDamageMethods::Update()
     if (boss->IsReadyForPhaseChange())
         boss->IncrementBossPhase();
     if (bIsRangeAttack) {
-        long elapsed = GetPWorld()->GetWorldFrame() - FrameOfLastHit;
-        FrameOfLastHit = GetPWorld()->GetWorldFrame();
+        long elapsed = GetPWorld()->GetFrame() - FrameOfLastHit;
+        FrameOfLastHit = GetPWorld()->GetFrame();
         if (elapsed < 90) {
             if (++RangeAttackCount >= 3) {
                 CCombatManager* combat = GetCreature()->GetCombatManager();

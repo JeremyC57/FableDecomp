@@ -3,7 +3,7 @@
 #include <cstdio>
 #include <stddef.h>
 static long g_frame = 0; static int g_getWorldCalls = 0;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static bool SameText(const wchar_t* a, const wchar_t* b)
 {
     if (!a) a = L""; if (!b) b = L"";
@@ -40,7 +40,7 @@ void CTCRegionDisplay::SetCurrentAreaName(const CWideString& name, float display
     if (name != L"") {
         CurrentAreaName = name;
         CurrentAreaNameExtra = L"";
-        FrameNameChanged = GetWorld()->GetWorldFrame();
+        FrameNameChanged = GetWorld()->GetFrame();
         LastAlpha = 0;
     } else {
         CurrentAreaName = L"";

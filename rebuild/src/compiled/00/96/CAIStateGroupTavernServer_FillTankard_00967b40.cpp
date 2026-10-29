@@ -87,7 +87,7 @@ struct CCreatureAction_FillTankardFromJug : CCreatureActionBase {
 class CCreatureAction_PutDownJug : public CCreatureActionBase { public:
     CCreatureAction_PutDownJug(CThingAICreature* creature);           // 0x00842AF0
 };
-class CWorld { public: static long GetWorldFrame(); };  // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };  // 0x0049D870
 extern long g_FramesPerSecond;                  // 0x01375550
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -135,14 +135,14 @@ bool CAIStateGroup_TavernServer::FillTankard()
         return false;
     }
     long fps = g_FramesPerSecond;
-    long endFrame = CWorld::GetWorldFrame() + fps * 4;
+    long endFrame = CWorld::GetFrame() + fps * 4;
     do {
         if (AIAction_DoNothing() != 4) {
             FreeBarPoint_009670a0();
             SetPushableByHero(true);
             return false;
         }
-    } while (endFrame > CWorld::GetWorldFrame() && IsServingPointValid());
+    } while (endFrame > CWorld::GetFrame() && IsServingPointValid());
     tankard->FillLevel = 1.0f;
     CTCJug* jug;
     PJug.GetPItem()->GetInterface(&jug, 0xbb);

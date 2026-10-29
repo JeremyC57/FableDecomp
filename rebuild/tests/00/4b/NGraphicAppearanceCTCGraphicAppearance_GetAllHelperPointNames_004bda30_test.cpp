@@ -34,16 +34,17 @@ struct CCountedPointer {
     }
 };
 
-namespace N_0099a2d0 { struct CBase {
-    CBase() {}
-    virtual ~CBase() { ++g_baseDtors; }
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass() {}
+    virtual ~CBaseClass() { ++g_baseDtors; }
+};
 
-class C3DMeshObject : public CBase { public:
+class C3DMeshObject : public CBaseClass { public:
     CCountedPointer    Mesh;
     bool               InversePositionMatrixSetup;
     float              Scale;
-    C3DMeshObject() : CBase(), Mesh(), InversePositionMatrixSetup(false) { }
+    C3DMeshObject() : CBaseClass(), Mesh(), InversePositionMatrixSetup(false) { }
     virtual ~C3DMeshObject() { }
     void GetAllHelperPointNames(CStdVector<CCharString>& names) const
     {

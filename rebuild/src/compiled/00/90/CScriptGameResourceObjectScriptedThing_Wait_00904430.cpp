@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00904430, length 270 bytes (`ret 4`), vtable 0x0128D86C slot 29.
 // PDB: ?Wait@CScriptGameResourceObjectScriptedThing@@UAEXM@Z.
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3, PThing at +0x14), CVectorMap<ETCInterfaceType, CTCBase*>::
-// LowerBound @ 0x0040F020 (inlined GetInterface, interface 0x1f), operator new @ 0x00BFEA1A (0x14 bytes), CBase::CBase
+// LowerBound @ 0x0040F020 (inlined GetInterface, interface 0x1f), operator new @ 0x00BFEA1A (0x14 bytes), CBaseClassNonCopyable::CBaseClassNonCopyable
 // @ 0x0099A2F0 (the inline NTCScriptedControl::CActionWait ctor, vtable 0x0128D760), GFSecondsToFrames(float) @ 0x00415FC1
 // (`__stdcall`), CTCScriptedControl::AddAction @ 0x007137D0. Float pool 0x0122DEDC = 0.0f.
 // Layout: engine/CScriptGameResourceObjectScriptedThing.h (PThing +0x14); CActionWait (PDB): CActionBase {PTCScript +4,
@@ -64,13 +64,14 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
-struct CBase {                                     // CBaseClassNonCopyable root
-    virtual ~CBase();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:                                      // CBaseClassNonCopyable root
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 class CTCScriptedControl;
 namespace NTCScriptedControl {
-struct CActionBase : CBase {                       // vtable 0x01265504
+struct CActionBase : CBaseClassNonCopyable {                       // vtable 0x01265504
     CTCScriptedControl* PTCScript;                 // +0x04
     bool                Activated;                 // +0x08
     bool                Terminated;                // +0x09

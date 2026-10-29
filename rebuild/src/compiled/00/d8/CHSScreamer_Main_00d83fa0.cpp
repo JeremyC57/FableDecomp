@@ -2,7 +2,7 @@
 // Leaf: ?Main@CHS_Screamer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D83FA0, 1230 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: scripted-thing handle ctor 0x007E72A0 / IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0, CTimer ctor
-//   0x00CD4450 / dtor 0x00CD4470, CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, ~CBase 0x0099A2E0,
+//   0x00CD4450 / dtor 0x00CD4470, CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, ~CBaseClass 0x0099A2E0,
 //   operator delete 0x00BFE9BC, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder
 //   0x00CBE2FF / IsDistanceBetweenThingsOver 0x00CBE3EA (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8,
 //   70 GetHero, 89/90 SetTimer/GetTimer (through g_pGameScriptInterface 0x0143E8F8), 100 CreateEffect, 108 RemoveThing,
@@ -47,18 +47,19 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {                                          // vtable 0x01231710
-    CBase() { }                                         // out-of-line copy 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:                                           // vtable 0x01231710
+    CBaseClass() { }                                         // out-of-line copy 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 class C3DVector { public: float X, Y, Z; };
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
     virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
-    CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     __forceinline ~CScriptThing() { }                   // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
 };

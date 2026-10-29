@@ -8,12 +8,13 @@
 #ifndef _MSC_VER
 #define __declspec(x)
 #endif
-struct CBase { CBase(); virtual ~CBase(); };
+class CBaseClassNonCopyable {
+public:  CBaseClassNonCopyable(); virtual ~CBaseClassNonCopyable(); };
 class CVertexCompressionParams { public:
  float PosScaleX,PosScaleY,PosScaleZ,PosScaleW,PosBiasX,PosBiasY,PosBiasZ,PosBiasW;
  CVertexCompressionParams():PosScaleX(1),PosScaleY(1),PosScaleZ(1),PosScaleW(1),PosBiasX(0),PosBiasY(0),PosBiasZ(0),PosBiasW(0){}
 };
-struct __declspec(novtable) CVertexBufferWin32Native : CBase {
+struct __declspec(novtable) CVertexBufferWin32Native : CBaseClassNonCopyable {
  void* PVertexBuffer;unsigned long Length;int Type;unsigned char Stride;unsigned char Reserved[3];CVertexCompressionParams CompressionParams;
  CVertexBufferWin32Native():Length(0),Type(0){PVertexBuffer=0;Stride=0;}
  virtual ~CVertexBufferWin32Native(); //00b564c0
@@ -35,7 +36,7 @@ void* operator new(std::size_t n) throw(std::bad_alloc){void* p=std::malloc(n);i
 void operator delete(void* p) throw(){std::free(p);}
 #include <cstddef>
 static int calls,releases,failures,dtors,baseConstructors;static bool ok=true;static CEngineVertexBufferPool* expectedPool;static CVertexBufferWin32Native* allocated;
-CBase::CBase(){++baseConstructors;} CBase::~CBase(){} CVertexBufferWin32Native::~CVertexBufferWin32Native(){++dtors;}
+CBaseClassNonCopyable::CBaseClassNonCopyable(){++baseConstructors;} CBaseClassNonCopyable::~CBaseClassNonCopyable(){} CVertexBufferWin32Native::~CVertexBufferWin32Native(){++dtors;}
 bool CVertexBufferWin32Native::Initialise(int type,long count,long stride,unsigned long usage,int pool){
  ok=ok&&type==7&&count==23&&stride==19&&usage==91&&pool==4;
  if(calls==0){allocated=this;ok=ok&&!PVertexBuffer&&Length==0&&Type==0&&Stride==0&&CompressionParams.PosScaleX==1&&CompressionParams.PosScaleY==1&&CompressionParams.PosScaleZ==1&&CompressionParams.PosScaleW==1&&CompressionParams.PosBiasX==0&&CompressionParams.PosBiasY==0&&CompressionParams.PosBiasZ==0&&CompressionParams.PosBiasW==0&&!static_cast<CEngineDynamic3DResource*>(this)->PoolNext;}
@@ -51,5 +52,5 @@ int main(){CEngineVertexBufferPool p;expectedPool=&p;unsigned long key[3]={10,20
 #endif
  for(failures=0;failures<=2;++failures){calls=releases=0;allocated=0;CEngineDynamic3DResource* r=p.BuildNewBuffer(key,7,23,19,91,4);
  ok=ok&&calls==(failures==0?1:2)&&releases==failures&&key[0]==10&&key[1]==20&&key[2]==30;
- ok=ok&&(failures==2?r==0:r==allocated);ok=ok&&dtors==failures&&baseConstructors==failures+1;CBase* base=allocated;delete base;}
+ ok=ok&&(failures==2?r==0:r==allocated);ok=ok&&dtors==failures&&baseConstructors==failures+1;CBaseClassNonCopyable* base=allocated;delete base;}
  ok=ok&&dtors==3;std::printf("00bf3380_TEST %s\n",ok?"PASS":"FAIL");return ok?0:1;}

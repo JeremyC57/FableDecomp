@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0093A540, length 125 bytes (+ int3 padding).
 // Callees: CAIStateGroupBase::GetPWorld @ 0x008FCFA0 (twice, result unused: the world is only the object
 // expression of static calls), CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFFloatRandom(float, ulong*)
-// @ 0x004978A0 (__fastcall: the float on the stack, the seed in ecx), GFGetCurrentFrame @ 0x0049D870
+// @ 0x004978A0 (__fastcall: the float on the stack, the seed in ecx), CWorld::GetFrame @ 0x0049D870
 // (__fastcall), __ftol2 @ 0x00BFEA70, CAIStateGroupBase::AIAction_DoNothing @ 0x0097E200.
 // Globals/constants: the frames-per-second long @ 0x01375550, 10.0f (pushed), 5.0f @ 0x01292458.
 // Shape: the frame rate is read into a local BEFORE the seed call (it feeds `fimul`), the delay
@@ -12,13 +12,12 @@
 // action status is 4 (running); the result is `status == 4` (`xor eax,eax ; cmp ; sete`, an int-width result).
 // `GetPWorld()->Static()` still emits the GetPWorld call (wave 25 lesson), which is the unused call here.
 // Model: local -- the class has no engine header (layout from struct_layouts_egor.tsv as in the landed 0x0093A500).
-long __fastcall GFGetCurrentFrame();                                // 0x0049D870
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 extern long g_framesPerSecond;                                      // 0x01375550
 
 class CWorld { public:
     static long GetFramesPerSecond() { return g_framesPerSecond; }
-    static long GetFrame() { return GFGetCurrentFrame(); }
+    static long __fastcall GetFrame();
 };
 
 class CAIStateGroupBase { public:

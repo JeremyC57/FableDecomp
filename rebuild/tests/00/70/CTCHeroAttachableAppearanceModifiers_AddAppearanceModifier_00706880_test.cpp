@@ -61,7 +61,7 @@ public:
 class CDefinitionHolder : public CDefinitionManager { };
 
 class CWorld { public:
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 
 struct CModifierEntry {                             // CTCHeroAttachableAppearanceModifiers::CModifierEntry (8 bytes)
@@ -154,7 +154,7 @@ void CTCHeroAttachableAppearanceModifiers::AddAppearanceModifier(long defIndex)
         AppearanceModifiers._M_start[appearanceOut.Object->Type].push_back(CModifierEntry(defIndex, true));
         Changed = true;
     }
-    FrameLastChanged = GetWorld()->GetWorldFrame();
+    FrameLastChanged = GetWorld()->GetFrame();
     if (appearanceOut.Object && --appearanceOut.Object->RefCount == 0)
         appearanceOut.Object->Destroy();
     if (thingOut.Object && --thingOut.Object->RefCount == 0)
@@ -179,7 +179,7 @@ const CDefinitionHolder* CTCHeroAttachableAppearanceModifiers::GetDefinitions() 
 static CWorld g_world;
 CWorld* CTCHeroAttachableAppearanceModifiers::GetWorld() const { return &g_world; }
 static long g_frame = 100;
-long CWorld::GetWorldFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 int main()
 {
     CRetailVector<CModifierEntry> lists[3];

@@ -131,7 +131,7 @@ class CWorld { public:
     CGameScriptInterface* PGameScriptInterface;     // +0x38
     unsigned char _pad3c[0x8c - 0x3c];
     long LastRenderFrame;                           // +0x8C
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
     CGameScriptInterface* GetGameScriptInterface() const { return PGameScriptInterface; }
 };
 
@@ -164,9 +164,9 @@ bool CTCGraphicAppearance::WasRenderedLastFrame() const
         return true;
     if (const_cast<CTCGraphicAppearance*>(this)->GetWorld()->GetGameScriptInterface()->IsInMovieSequence())
         return true;
-    if (FrameUpdatedWasRenderedFlag < CWorld::GetWorldFrame()) {
+    if (FrameUpdatedWasRenderedFlag < CWorld::GetFrame()) {
         long lastRenderFrame = const_cast<CTCGraphicAppearance*>(this)->GetWorld()->LastRenderFrame;
-        if (lastRenderFrame + 1 < CWorld::GetWorldFrame())
+        if (lastRenderFrame + 1 < CWorld::GetFrame())
             UpdateRenderedLastFrameFlag();
     }
     return RenderedLastFrame;
@@ -574,7 +574,7 @@ void CGameScriptInterface::v394() {}
 bool CGameScriptInterface::IsInMovieSequence() const { return g_movie; }
 void CDefClassBase::v00() {}
 void CDefClassBase::Destroy() const { ++g_destroyed; }
-long CWorld::GetWorldFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 static CGameScriptInterface g_gsi; static CWorld g_world;
 CWorld* NGraphicAppearance::CTCGraphicAppearance::GetWorld() { return &g_world; }
 void NGraphicAppearance::CTCGraphicAppearance::UpdateRenderedLastFrameFlag() const { ++g_updates; }

@@ -4,15 +4,16 @@
 #include <cstring>
 #include <new>
 static int g_baseCtors = 0;
-struct CBase {
-    virtual ~CBase();
-    CBase();
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();
 };
-CBase::CBase() { ++g_baseCtors; }
-CBase::~CBase() { }
+CBaseClassNonCopyable::CBaseClassNonCopyable() { ++g_baseCtors; }
+CBaseClassNonCopyable::~CBaseClassNonCopyable() { }
 namespace NParticleEngine {
 class CParticleSystem;
-class CPSCBase : public CBase {
+class CPSCBase : public CBaseClassNonCopyable {
 public:
     CParticleSystem* ParticleSystem;
     bool             UpdateStarted : 1;

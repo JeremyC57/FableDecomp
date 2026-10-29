@@ -9,12 +9,13 @@
 //   the out pointer's zero after loading the creature and loads the whole position before the stores (as retail).
 class CTCBase;
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
 extern long g_framesPerSecond;                  // 0x01375550
 extern long g_flyingMode;                       // 0x0129CBA4 (the mode compared by BirdGroundWander too)
 
 class CWorld { public:
     static long GetFramesPerSecond() { return g_framesPerSecond; }
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 
 struct CInterfaceMap {
@@ -158,7 +159,7 @@ bool CAIStateGroup_BirdFlyToFood::IsRunnable()
         long framesPerSecond;
         if ((FrameLastAte == 0
              || (framesPerSecond = GetPWorld_008fcfa0()->GetFramesPerSecond(),
-                 GFGetCurrentFrame() - FrameLastAte > (unsigned long)(framesPerSecond * 20)))
+                 CWorld::GetFrame() - FrameLastAte > (unsigned long)(framesPerSecond * 20)))
             && WorldRandomRange(*GetPWorldSeed(), 100) < 74) {
             if (WorldRandomRange(*GetPWorldSeed(), 100) < 64) {
                 CThingPhysical* creature = PBrain->Creature;
@@ -186,7 +187,7 @@ static int fails = 0;
 long g_framesPerSecond = 30;
 long g_flyingMode = 5;
 static long g_frame;
-long __fastcall GFGetCurrentFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 static unsigned long g_rolls[8]; static int g_rollIndex;
 unsigned long __fastcall GFROR13(unsigned long) { return g_rolls[g_rollIndex++]; }
 static long g_mode;

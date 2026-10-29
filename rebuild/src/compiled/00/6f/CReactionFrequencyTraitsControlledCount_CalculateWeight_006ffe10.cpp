@@ -12,7 +12,7 @@
 #include "engine/CReactionFrequencyTraits_ControlledCount.h"
 
 class CWorld { public:
-    static long GetWorldFrame();                         // 0x0049D870
+    static long __fastcall GetFrame();                         // 0x0049D870
 };
 
 inline const float& Clamp(const float& v, const float& lo, const float& hi)
@@ -30,7 +30,7 @@ struct CReactionFrequencyTraits_ControlledCount_Methods : CReactionFrequencyTrai
 
 float CReactionFrequencyTraits_ControlledCount_Methods::CalculateWeight(const CThingAICreature* creature)
 {
-    unsigned long frame = CWorld::GetWorldFrame();
+    unsigned long frame = CWorld::GetFrame();
     if (!AllowIndividualRepeats && creature && PLastReactionCreature && PLastReactionCreature == creature)
         return 0.0f;
     if (InRisingPhase) {

@@ -1,7 +1,7 @@
 // CInputProcessCombat::ProcessInput(const CInputEvent& event, CProcessedInput& processed) -- once per frame, pull this player's pending joystick event of kind 0x11 out of the input manager's queue into the combat input's own event queue; then run the combat input processing for this event
 // Leaf: ProcessInput
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0068FB90, length 112 bytes.
-// Callees: GFGetCurrentFrame @ 0x0049D870 (static, twice), CInputEvent::CInputEvent() @ 0x00A04410 / ~CInputEvent @ 0x00A03B30
+// Callees: CWorld::GetFrame @ 0x0049D870 (static, twice), CInputEvent::CInputEvent() @ 0x00A04410 / ~CInputEvent @ 0x00A03B30
 // (a scratch event, as the landed CInputProcessTargetLockCycleTargets::Update), CPlayer::GetPlayerNumber @ 0x00487510
 // (manifest "CWorld::DrawGetEnvironment" propagated), CInputManager::IsJoystickEventInQueue(EInputEventType, long,
 // CInputEvent*, long) @ 0x009F4C60 on the global input manager @ 0x013B8388, the queue push @ 0x00A0DFC0 on the member at
@@ -14,7 +14,7 @@ public:
     ~CInputEvent();                                // 0x00A03B30
 };
 class CProcessedInput;
-long __cdecl GFGetCurrentFrame();                  // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                  // 0x0049D870
 class CInputManager {
 public:
     bool IsJoystickEventInQueue(long type, long device, CInputEvent* event, long player);   // 0x009F4C60
@@ -49,8 +49,8 @@ public:
 
 void CInputProcessCombat::ProcessInput(const CInputEvent& event, CProcessedInput& processed)
 {
-    if (m_lastJoystickFrame != GFGetCurrentFrame()) {
-        m_lastJoystickFrame = GFGetCurrentFrame();
+    if (m_lastJoystickFrame != CWorld::GetFrame()) {
+        m_lastJoystickFrame = CWorld::GetFrame();
         CInputEvent joystickEvent;
         if (g_pInputManager->IsJoystickEventInQueue(0x11, 0, &joystickEvent, MyPlayer->GetPlayerNumber()))
             m_joystickEvents.Push(joystickEvent);

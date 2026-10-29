@@ -1,13 +1,13 @@
-// CScriptThing::`scalar deleting destructor'(unsigned int) -- release the PImp counted pointer, CBase::~CBase, free on bit 0
+// CScriptThing::`scalar deleting destructor'(unsigned int) -- release the PImp counted pointer, CBaseClass::~CBaseClass, free on bit 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004AB170, oracle length 87 bytes.
-// Callees: CBase::~CBase @ 0x0099A2E0, operator delete @ 0x00BFE9BC (both landed-trusted).
+// Callees: CBaseClass::~CBaseClass @ 0x0099A2E0, operator delete @ 0x00BFE9BC (both landed-trusted).
 // Vtable 0x01238C8C = CScriptThing (rtti-vtables.tsv); the manifest label "C3DMeshObject::`scalar_deleting_destructor'"
 // is propagated from the byte-identical body at 0x004C3250 (which releases a pointer at +8/+0xC) and is rejected.
 //
 // Retail bytes:  push esi ; mov esi,ecx ; mov [esi],offset CScriptThing::`vftable' ; mov eax,[esi+8] ; test eax,eax ; je N ;
 //                dec dword ptr [eax] ; mov eax,[esi+8] ; cmp dword ptr [eax],0 ; jne N ; mov ecx,[eax+8] ; call [eax+4] ;
 //                mov eax,[esi+8] ; push eax ; call operator delete ; add esp,4 ; N: mov ecx,esi ; mov dword ptr [esi+4],0 ;
-//                mov dword ptr [esi+8],0 ; call CBase::~CBase ; test byte ptr [esp+8],1 ; je K ; push esi ; call operator delete ;
+//                mov dword ptr [esi+8],0 ; call CBaseClass::~CBaseClass ; test byte ptr [esp+8],1 ; je K ; push esi ; call operator delete ;
 //                add esp,4 ; K: mov eax,esi ; pop esi ; ret 4
 // PDB layout (struct_layouts_egor.tsv): CScriptThing = 12 bytes, +4 CCountedPointer<CScriptThing> PImp
 // {object +4, count block +8}. The empty virtual destructor restores the vtable, runs the member's
@@ -36,12 +36,13 @@ struct CCountedPointer {
     }
 };
 
-struct CBase {
-    CBase();                               // 0x0099A2D0 (only needed by the constructing helper below)
-    virtual ~CBase();                      // 0x0099A2E0
+class CBaseClass {
+public:
+    CBaseClass();                               // 0x0099A2D0 (only needed by the constructing helper below)
+    virtual ~CBaseClass();                      // 0x0099A2E0
 };
 
-class CScriptThing : public CBase { public:
+class CScriptThing : public CBaseClass { public:
     CCountedPointer PImp;                  // +0x4
     virtual ~CScriptThing();
 };

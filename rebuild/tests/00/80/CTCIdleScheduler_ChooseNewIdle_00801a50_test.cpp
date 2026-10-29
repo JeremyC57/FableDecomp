@@ -2,7 +2,7 @@
 // Behaviour test for CTCIdleScheduler::ChooseNewIdle (0x00801A50): same body as src/ over a hand-built STLport tree
 // of idle groups, with the def lookups, weight maps and world frame stubbed.
 class CAIStateGroupBase { public: bool runnable; bool CanRun() { return runnable; } };
-class CWorld { public: static long frame; static long GetWorldFrame() { return frame; } };
+class CWorld { public: static long frame; static long __fastcall GetFrame() { return frame; } };
 long CWorld::frame = 0;
 static int g_destroyed = 0;
 class CDefClassBase { public:
@@ -114,7 +114,7 @@ class CTCIdleScheduler { public:
 };
 void CTCIdleScheduler::ChooseNewIdle()
 {
-    FrameLastChecked = GetWorld()->GetWorldFrame();
+    FrameLastChecked = GetWorld()->GetFrame();
     if (Preferred != 0 && ParentThing->DefIndex != 0) {
         CDefPointer<CIdleSchedulerDef> idleDef;
         CDefPointer<CThingDef> thingDef;

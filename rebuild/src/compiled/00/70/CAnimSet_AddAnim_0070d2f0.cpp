@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0070D2F0, length 153 bytes (+ int3 padding). __fastcall, `ret 8`.
 //         Ego_r.pdb: `?AddAnim@CAnimSet@@QAEXFM@Z`.
 // Callees: vector<short>::_M_insert_overflow(pos, x, __true_type, 1, true) @ 0x00710980, vector<CTransitionBlendAlpha>::
-//          _M_insert_overflow(pos, x, __true_type, 1, true) @ 0x00710F70, GFGetFrameCount @ 0x0049D870 (the frame counter
+//          _M_insert_overflow(pos, x, __true_type, 1, true) @ 0x00710F70, CWorld::GetFrame @ 0x0049D870 (the frame counter
 //          the landed SetInternalAlpha 0x0070C280 / UpdateInternalAlphas 0x0070C2C0 use).
 // Identity: the manifest label "CThingMovement_SetAnimFrame" is propagated. Retail CAnimSet (Ego_r.pdb minus 4 per 16-byte
 //   vector): Anims +0x04 (vector<short>), InternalAlphas +0x10 (vector<CTransitionBlendAlpha>, 8-byte {Current, Last}),
@@ -12,7 +12,7 @@
 //   overflow call shares), the alpha pair is a CTransitionBlendAlpha(alpha, alpha) temporary in the frame whose two
 //   floats are copied as dwords; VC7.1 duplicates the frame-stamp tail into the second overflow branch. The overflow
 //   bodies are same-TU stand-ins (below), which lets both tags share the dead argument slots as in retail.
-extern "C" long __fastcall GFGetFrameCount();          // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };          // 0x0049D870
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __true_type { __true_type() {} };
 
@@ -78,5 +78,5 @@ void CAnimSet::AddAnim(short anim, float alpha)
 {
     Anims.push_back(anim);
     InternalAlphas.push_back(CTransitionBlendAlpha(alpha, alpha));
-    FrameInternalAlphasUpdated = GFGetFrameCount();
+    FrameInternalAlphasUpdated = CWorld::GetFrame();
 }

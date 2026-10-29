@@ -55,9 +55,9 @@ template <class T> class CDefPointer { public:
     T* operator->() const { return Object; }
 };
 class CDefinitionManager { public:
-    static CDefinitionManager& Get();                   // 0x0044C6B0
     bool GetDef(long index, CDefPointer<CCarrySlotDef>* out);   // 0x006A3060
 };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 void* FindDef_CDefinitionManager_GetDef_0();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it writes the out slot only inline, so VC7.1 knows the def
 // pointer's address does not escape the call (the landed 0x00848730 idiom).
@@ -86,7 +86,7 @@ bool CTCCarrying::IsCarriedThingInPrimarySlot(CThing* thing)
         {
             long index = slot->first;
             CDefPointer<CCarrySlotDef> def;
-            CDefinitionManager::Get().GetDef(index, &def);
+            CGameDefinitionManager::Get().GetDef(index, &def);
             primary = def->PrimarySlot;
         }
         if (primary)

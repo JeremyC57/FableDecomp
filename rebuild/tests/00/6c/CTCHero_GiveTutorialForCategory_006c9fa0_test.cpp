@@ -9,11 +9,13 @@ class CUserProfileManager { public:
         if (force || (given & (1 << category)) == 0) { given |= 1 << category; return true; }
         return false;
     }
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 static CUserProfileManager g_profile = { -1, false, 0 };
-static CUserProfileManager& GetUserProfileManager() { return g_profile; }
+CUserProfileManager& CUserProfileManager::Get() { return g_profile; }
 class CTCHero { public:
-    bool GiveTutorialForCategory(int category, bool force) { return GetUserProfileManager().GiveTutorialForCategory(category, force); }
+    bool GiveTutorialForCategory(int category, bool force) { return CUserProfileManager::Get().GiveTutorialForCategory(category, force); }
 };
 
 int main()

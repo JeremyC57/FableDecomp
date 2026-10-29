@@ -97,7 +97,7 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
 };
 extern long g_framesPerSecond;                  // 0x01375550
 class CWorld { public:
-    static long __fastcall GetWorldFrame();     // 0x0049D870
+    static long __fastcall GetFrame();     // 0x0049D870
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -127,8 +127,8 @@ bool CAIStateGroup_GoToPub::PlayAnims(const CCharString& intoAnim, const CCharSt
     if (failed)
         return false;
     long fps = g_framesPerSecond;
-    float endFrame = (float)CWorld::GetWorldFrame() + fps * seconds;
-    while ((float)CWorld::GetWorldFrame() > endFrame) {
+    float endFrame = (float)CWorld::GetFrame() + fps * seconds;
+    while ((float)CWorld::GetFrame() > endFrame) {
         if (game && game->IsBeingPlayed)
             return true;
         failed = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(PBrain->GetPCreature(), loopAnim, CSoundPair(),

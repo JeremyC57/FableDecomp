@@ -39,6 +39,8 @@ class CWideString { public:
 };
 class CUserProfileManager { public:
     bool GetAssignedInputForAction(EGameAction action, bool primary, CActionInputControl* control);   // 0x00408C90
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> struct CTBaseSingleton {
     static T& __fastcall Get();                    // 0x0040D2A0
@@ -73,8 +75,8 @@ class CDrawQuestInfo { public:
 long CDrawQuestInfo::AddTick(EGameAction action, bool ticked, float scale)
 {
     CActionInputControl control;
-    if (CTBaseSingleton<CUserProfileManager>::Get().GetAssignedInputForAction(action, true, &control)
-        || CTBaseSingleton<CUserProfileManager>::Get().GetAssignedInputForAction(action, false, &control)) {
+    if (CUserProfileManager::Get().GetAssignedInputForAction(action, true, &control)
+        || CUserProfileManager::Get().GetAssignedInputForAction(action, false, &control)) {
         CWideString name;
         if (GetActionName(control, name, true)) {
             CCountedPointer<CQuestInfoElementTick> element(new CQuestInfoElementTick(name, ticked, scale));

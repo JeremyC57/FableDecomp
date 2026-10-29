@@ -103,7 +103,7 @@ struct CCrimeStatusMap {                                    // std::map<CCharStr
 };
 
 class CWorld { public:
-    static long GetWorldFrame();                            // 0x0049D870
+    static long __fastcall GetFrame();                            // 0x0049D870
 };
 
 class CTCBase
@@ -131,7 +131,7 @@ void CTCHeroStats::UpdateOutstandingCrimes(const CCharString& region)
             deedLog->GetDeedEffectsDef(crime);
             long expiry = deedLog->GetDeedEffectsDef(crime)->KnowledgeLifeInSeconds * 15
                         + OutstandingCrimes[region].LastTimeSeenByGuard;
-            if (expiry < GetWorld().GetWorldFrame())
+            if (expiry < GetWorld().GetFrame())
                 OutstandingCrimes[region].Crimes[crime] = 0;
         }
     }

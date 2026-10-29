@@ -36,7 +36,7 @@ struct CRetailBanditKingLungeAction {
  CRetailBanditKingLungeAction(CThingRetail*,CThingRetail*); // 0x009619C0
  ~CRetailBanditKingLungeAction(); // 0x0062E900
 };
-long ReadGameTime(); // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); }; // 0x0049D870
 struct BanditKingLungeMethods : CAIStateGroup_BanditKingLunge {
  __forceinline CAIStateGroupBase* Base() { return (CAIStateGroupBase*)this; }
  __forceinline CThingRetail* Creature() { return (CThingRetail*)Base()->PBrain->Creature; }
@@ -63,7 +63,7 @@ void BanditKingLungeMethods::Update()
   AIAction_CombatPerformActionAndWait(&CRetailBanditKingLungeAction(actor,Target().GetPItem()),false);
   boss->SetNextBossPhase(boss->GetPhase()+1,false);
   GetWorld();
-  TimeOfLastLunge=ReadGameTime();
+  TimeOfLastLunge=CWorld::GetFrame();
   boss->ClearPhaseCounter();
  }
 finish:

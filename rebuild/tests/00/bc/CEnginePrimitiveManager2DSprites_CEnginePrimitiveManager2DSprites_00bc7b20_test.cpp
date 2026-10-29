@@ -1,7 +1,8 @@
 // Behaviour test for CEnginePrimitiveManager2DSprites::~CEnginePrimitiveManager2DSprites @ 0x00BC7B20 (release order and counts).
 #include <cstdio>
 static int g_log[16]; static int g_n = 0;
-namespace N_0099a300 { struct CBase { virtual ~CBase() { g_log[g_n++] = 99; } }; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() { g_log[g_n++] = 99; } };
 struct CPixelShaderObject { int id; long m_refCount; virtual ~CPixelShaderObject() { g_log[g_n++] = id; } };
 struct CVertexShaderObject { int id; long m_refCount; virtual ~CVertexShaderObject() { g_log[g_n++] = id; } };
 class CShaderBase { public: virtual ~CShaderBase() { } };
@@ -13,7 +14,7 @@ class CVertexShader : public CShaderBase { public:
     CVertexShaderObject* m_pShader;
     virtual ~CVertexShader() { CVertexShaderObject* s = m_pShader; if (s) { if (--s->m_refCount == 0) delete s; } }
 };
-class CEnginePrimitiveManager2DSprites : public CBase { public:
+class CEnginePrimitiveManager2DSprites : public CBaseClassNonCopyable { public:
     unsigned char active; CVertexShader VertexShader2DSprite, VertexShader2DClockSprite;
     CPixelShader PixelShader2DClockSprite, PixelShader2DClockSpriteAdditive; unsigned short Indices[6];
     virtual ~CEnginePrimitiveManager2DSprites() { }

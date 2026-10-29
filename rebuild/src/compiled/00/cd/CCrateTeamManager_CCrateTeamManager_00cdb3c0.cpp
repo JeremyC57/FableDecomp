@@ -1,7 +1,7 @@
-// CCrateTeamManager::~CCrateTeamManager() -- destroy the two CScriptThing members (release their counted PImp, CBase::~CBase) and give the reinforcements timer back to the thing manager
+// CCrateTeamManager::~CCrateTeamManager() -- destroy the two CScriptThing members (release their counted PImp, CBaseClass::~CBaseClass) and give the reinforcements timer back to the thing manager
 // Leaf: ??1CCrateTeamManager
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDB3C0, 141 bytes.
-// Callees: CBase::~CBase 0x0099A2E0 (twice), operator delete 0x00BFE9BC, the thing manager global
+// Callees: CBaseClass::~CBaseClass 0x0099A2E0 (twice), operator delete 0x00BFE9BC, the thing manager global
 //          @ 0x0143E8F8 vtable slot 88 (+0x160, release a timer index).
 //
 // Shape: the landed constructor (0x00CDB360) model: PDB CCrateTeamManager (64 bytes) with
@@ -34,11 +34,12 @@ struct CCountedPointer {
     }
 };
 
-struct CBase {
-    virtual ~CBase();                      // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                      // 0x0099A2E0
 };
 
-class CScriptThing : public CBase { public:              // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:              // vtable 0x01238C8C
     CCountedPointer PImp;                  // +0x04
     virtual ~CScriptThing() { }
 };

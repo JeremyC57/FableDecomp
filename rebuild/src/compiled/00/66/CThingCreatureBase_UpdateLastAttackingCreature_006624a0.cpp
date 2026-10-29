@@ -25,8 +25,8 @@ private:
 };
 
 class CWorld { public:
-    static long GetWorldFrame();                    // 0x0049D870
-    unsigned long GetFramesSince(unsigned long frame) { return GetWorldFrame() - frame; }
+    static long __fastcall GetFrame();                    // 0x0049D870
+    unsigned long GetFramesSince(unsigned long frame) { return GetFrame() - frame; }
 };
 
 extern long g_GameFramesPerSecond;                  // 0x01375550

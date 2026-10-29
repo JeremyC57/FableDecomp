@@ -124,7 +124,7 @@ class CPlayerManager { public:
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
     static __forceinline unsigned long Random(unsigned long range, unsigned long* seed)
     {
         *seed = *seed * 0x24A1U + 0x24DFU;
@@ -162,7 +162,7 @@ void CAIStateGroup_MinionGuardBribed::Update()
 {
     CIntelligentPointerPlayerCreature hero(GetPPlayerManager()->GetMainPlayer().GetPCharacter().GetPItem());
     unsigned long delay = GetPWorld()->Random(g_BribedWhistleFirstMax - g_BribedWhistleFirstMin, GetPWorldSeed());
-    long nextWhistle = CWorld::GetWorldFrame() + g_BribedWhistleFirstMin + delay;
+    long nextWhistle = CWorld::GetFrame() + g_BribedWhistleFirstMin + delay;
     unsigned long sample = g_InvalidSoundHandle;
     while (IsStillValid() && IS_THING_ALIVE(hero)) {
         C3DVector heroPos = hero.GetPItem()->GetPosition();
@@ -172,12 +172,12 @@ void CAIStateGroup_MinionGuardBribed::Update()
             break;
         if (AIAction_DoNothing() != 4)
             break;
-        if (GetPWorld()->GetWorldFrame() >= nextWhistle) {
+        if (GetPWorld()->GetFrame() >= nextWhistle) {
             CTCSoundInfo* sound;
             if (GetCreature()->GetInterfaceInline(&sound, 0x10))
                 sample = sound->PlaySound("WHISTLE_GUARD_BRIBED", 0, 0, 0, -1);
             delay = GetPWorld()->Random(g_BribedWhistleRepeatMax - g_BribedWhistleRepeatMin, GetPWorldSeed());
-            nextWhistle = CWorld::GetWorldFrame() + delay;
+            nextWhistle = CWorld::GetFrame() + delay;
             nextWhistle += g_BribedWhistleRepeatMin;
         }
     }
@@ -237,7 +237,7 @@ CWorld* CAIStateGroupBase::GetPWorld() { return &g_world; }
 unsigned long* CAIStateGroupBase::GetPWorldSeed() { return &g_seed; }
 unsigned long __fastcall GFROR13(unsigned long v) { return (v >> 13) | (v << 19); }
 static long g_frame;
-long CWorld::GetWorldFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 unsigned long g_InvalidSoundHandle = 0xffffffff;
 long g_BribedWhistleFirstMin = 100, g_BribedWhistleFirstMax = 200, g_BribedWhistleRepeatMin = 50, g_BribedWhistleRepeatMax = 80;
 static int g_valid, g_terms, g_looks, g_badLook; static long g_whistleFrames[16];

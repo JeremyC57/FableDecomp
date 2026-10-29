@@ -18,7 +18,7 @@ public:
     bool UseNewProfileValues;
     bool SubtitlingEnabled;
     bool SubtitlingEnabledNewProfile;
-    static CUserProfileManager& Get();
+    static CUserProfileManager& __fastcall Get();
     bool IsSubtitlingEnabled() const
     {
         if (UseNewProfileValues)

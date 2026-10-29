@@ -4,7 +4,7 @@
 //          propagated and wrong: the body writes the CV_FisticuffsClubScript layout (Ego_r.pdb minus 0x14, as the landed
 //          SetFightCount 0x00E82800): RelevantRegion +0x48, CompletedKnothole/Bowerstone/Bandit/OakvalePunchClub
 //          +0x95..+0x98, Village (CScriptThing, vtable 0x01238C8C) +0x9c (PImp_Data +0xa0, PImp_Info +0xa4).
-// Callees: CBase::CBase @ 0x0099A2D0 / CBase::~CBase @ 0x0099A2E0 (the temporary's base), the count block's
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0 / CBaseClass::~CBaseClass @ 0x0099A2E0 (the temporary's base), the count block's
 //          destroy hook (`call [block+4]`, object [block+8] in ecx), operator delete @ 0x00BFE9BC.
 // Shape: `Village = CScriptThing();` -- the temporary is built in the frame (base ctor, own vtable, zero words); the
 //          inline counted operator= reads the source words first, so with a null source it folds to "release the old
@@ -13,10 +13,11 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();                              // 0x0099A2E0
-    CBase();                                       // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                              // 0x0099A2E0
+    CBaseClass();                                       // 0x0099A2D0
+};
 
 struct SScriptThingInfo {                          // the counted block behind CScriptThing::PImp_Info
     long m_references;                             // +0
@@ -24,7 +25,7 @@ struct SScriptThingInfo {                          // the counted block behind C
     void* m_pObject;                               // +8
 };
 
-class CScriptThing : public CBase { public:                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     void* PImp_Data;                               // +0x04
     SScriptThingInfo* PImp_Info;                   // +0x08
     CScriptThing() : PImp_Data(0), PImp_Info(0) { }

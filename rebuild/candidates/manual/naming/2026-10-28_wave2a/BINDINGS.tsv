@@ -1,0 +1,63 @@
+old_symbol	target	new_symbol	note
+?CRC32_Calc@@YIKKPBXK@Z	004014a0	?Calc@CCRC@@SIKKPBXK@Z	all 1 emitting rows respelled; first caller 00639ba0 respelled
+?CRCCalc@@YIKKPBXK@Z	004014a0	?Calc@CCRC@@SIKKPBXK@Z	all 1 emitting rows respelled; first caller 00b18110 respelled
+?Calc@@YIKKPBDK@Z	004014a0	?Calc@CCRC@@SIKKPBXK@Z	all 1 emitting rows respelled; first caller 00981350 respelled
+?Calc@@YIKKPBXK@Z	004014a0	?Calc@CCRC@@SIKKPBXK@Z	all 6 emitting rows respelled; first caller 00669d30 respelled
+?Calc_004014a0@@YIKKPBDK@Z	004014a0	?Calc@CCRC@@SIKKPBXK@Z	1 of 2 emitting rows respelled; KEEP: still emitted by 1 rows (009ad410); first caller 009c95e0 respelled
+?Get@?$CTBaseSingleton@VCUserProfileManager@@@@SAAAVCUserProfileManager@@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	all 1 emitting rows respelled; first caller 00495830 respelled
+?Get@?$CTBaseSingleton@VCUserProfileManager@@@@SAPAVCUserProfileManager@@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	all 2 emitting rows respelled; first caller 0059686d respelled
+?Get@?$CTBaseSingleton@VCUserProfileManager@@@@SIAAVCUserProfileManager@@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	all 14 emitting rows respelled; first caller 004930d7 respelled
+?Get@CUserProfileManager@@SAAAV1@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	all 3 emitting rows respelled; first caller 0048db46 respelled
+?Get@CUserProfileManager@@SAPAV1@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	all 5 emitting rows respelled; first caller 00581765 respelled
+?Get@CUserProfileManager@@SIPAV1@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	all 3 emitting rows respelled; first caller 0047d78b respelled
+?GetUserProfileManager@@YAAAVCUserProfileManager@@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	all 1 emitting rows respelled; first caller 005bc6d6 respelled
+?GetUserProfileManager@@YAPAVCUserProfileManager@@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	all 6 emitting rows respelled; first caller 0055f480 respelled
+?GetUserProfileManager@@YIAAVCUserProfileManager@@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	all 1 emitting rows respelled; first caller 006c9fa0 respelled
+?GetInstance@CManager@NUISystem@@SAPAV12@XZ	0041e5f2	?GetInstance@CManager@NUISystem@@SIPAV12@XZ	all 11 emitting rows respelled; first caller 0041e61b respelled
+?Get@CDefinitionManager@@SAAAV1@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 1 emitting rows respelled; first caller 006a1490 respelled
+?Get@CDefinitionManager@@SIAAV1@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 5 emitting rows respelled; first caller 008111f0 respelled
+?Get@CDefinitionManager@@SIPAV1@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 2 emitting rows respelled; first caller 006bc1d0 respelled
+?Get@CGameDefinitionManager@@SAAAV1@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 7 emitting rows respelled; first caller 0088ff30 respelled
+?Get@CGameDefinitionManager@@SAABV1@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 1 emitting rows respelled; first caller 0041732a respelled
+?Get@CGameDefinitionManager@@SAPAVCDefinitionManager@@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 3 emitting rows respelled; first caller 006a1330 respelled
+?Get@CGameDefinitionManager@@SIAAVCDefinitionManager@@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 9 emitting rows respelled; first caller 00438770 respelled
+?Get@CGameDefinitionManager@@SIPAV1@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 1 emitting rows respelled; first caller 006bc510 respelled
+?Get@CGameDefinitionManager@@SIPAVCDefinitionManager@@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 1 emitting rows respelled; first caller 008201e0 respelled
+?GetDefinitionManager@@YIPAVCDefinitionManager@@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	1 of 3 emitting rows respelled; KEEP: still emitted by 2 rows (0041d8e7,0041d98a); first caller 0041d8e7 still emits it
+?GetGameDefinitionManager@@YIPAVCGameDefinitionManager@@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	all 1 emitting rows respelled; first caller 008fd0a0 respelled
+?GFGetCurrentFrame@@YAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 3 emitting rows respelled; first caller 0068fb90 respelled
+?GFGetCurrentFrame@@YAKXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 1 emitting rows respelled; first caller 00980770 respelled
+?GFGetCurrentFrame@@YIJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	39 of 41 emitting rows respelled; KEEP: still emitted by 2 rows (00730f90,00784500); first caller 00785b40 respelled
+?GFGetCurrentFrame@@YIKXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 1 emitting rows respelled; first caller 009357f0 respelled
+?GFGetFrameCount@@YAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 1 emitting rows respelled; first caller 004c6010 respelled
+?GetCurrentFrame@CWorld@@SAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 3 emitting rows respelled; first caller 00941d70 respelled
+?GetCurrentFrame@CWorld@@SIJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 1 emitting rows respelled; first caller 0065a28f respelled
+?GetFrame@CWorld@@SAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 3 emitting rows respelled; first caller 00692b30 respelled
+?GetFrameCount@@YAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 1 emitting rows respelled; first caller 00589d30 respelled
+?GetFrameCount@CWorld@@SAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 1 emitting rows respelled; first caller 0091b2f0 respelled
+?GetFrameCount@CWorld@@SIJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 1 emitting rows respelled; first caller 00970590 respelled
+?GetFrameNumber@CWorld@@SAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 2 emitting rows respelled; first caller 006af740 respelled
+?GetWorldFrame@@YAKXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 2 emitting rows respelled; first caller 00930a70 respelled
+?GetWorldFrame@CWorld@@SAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 89 emitting rows respelled; first caller 0057d990 respelled
+?GetWorldFrame@CWorld@@SAKXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 5 emitting rows respelled; first caller 007bb150 respelled
+?GetWorldFrame@CWorld@@SIJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 12 emitting rows respelled; first caller 006d8580 respelled
+?GetWorldFrame_0049d870@@YAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 2 emitting rows respelled; first caller 006929e0 respelled
+?ReadGameTime@@YAJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	all 1 emitting rows respelled; first caller 00961880 respelled
+@GFGetFrameCount@0	0049d870	?GetFrame@CWorld@@SIJXZ	all 4 emitting rows respelled; first caller 0070c280 respelled
+?ReadWithSrcChunkOverflow@CDataInputStream@@QAEXPAEJ@Z	00993ca0	?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z	9 of 12 emitting rows respelled; KEEP: still emitted by 3 rows (0046bf1c,004793f8,00bde190); first caller 0046bf1c still emits it
+??0CBase@@QAE@XZ	0099a2d0	??0CBaseClass@@QAE@XZ	all 5 emitting rows respelled; first caller 00df2380 respelled
+??0CBase@N_0099a2d0@@QAE@XZ	0099a2d0	??0CBaseClass@@QAE@XZ	100 of 107 emitting rows respelled; KEEP: still emitted by 7 rows (00404720,006b0250,006e0500,006e1620,0071e130,00a67ea0...); first caller 006e24d0 respelled
+??1CBase@@UAE@XZ	0099a2e0	??1CBaseClass@@UAE@XZ	54 of 58 emitting rows respelled; KEEP: still emitted by 4 rows (004bb600,00904540,00e241b0,00ef7ab0)
+??1CBase@N_0099a2d0@@UAE@XZ	0099a2e0	??1CBaseClass@@UAE@XZ	all 20 emitting rows respelled; first caller 004be4e0 respelled
+??1CBase@N_0099a300@@UAE@XZ	0099a300	??1CBaseClassNonCopyable@@MAE@XZ	all 21 emitting rows respelled; first caller 00506940 respelled
+# new PDB spellings now emitted (bind if absent from reloc_bindings.tsv)
+??0CBaseClass@@QAE@XZ	0099a2d0	??0CBaseClass@@QAE@XZ	already bound 110 rows (first 00414e30)
+??0CBaseClassNonCopyable@@IAE@XZ	0099a2f0	??0CBaseClassNonCopyable@@IAE@XZ	already bound 29 rows (first 0049bb60)
+??1CBaseClass@@UAE@XZ	0099a2e0	??1CBaseClass@@UAE@XZ	already bound 74 rows (first 004138d0)
+??1CBaseClassNonCopyable@@MAE@XZ	0099a300	??1CBaseClassNonCopyable@@MAE@XZ	already bound 30 rows (first 0040a740)
+?Calc@CCRC@@SIKKPBXK@Z	004014a0	?Calc@CCRC@@SIKKPBXK@Z	already bound 17 rows (first 00404500)
+?Get@CGameDefinitionManager@@SIAAV1@XZ	0044c6b0	?Get@CGameDefinitionManager@@SIAAV1@XZ	already bound 34 rows (first 0041732a)
+?Get@CUserProfileManager@@SIAAV1@XZ	0040d2a0	?Get@CUserProfileManager@@SIAAV1@XZ	already bound 41 rows (first 0047d78b)
+?GetFrame@CWorld@@SIJXZ	0049d870	?GetFrame@CWorld@@SIJXZ	already bound 179 rows (first 00417001)
+?GetInstance@CManager@NUISystem@@SIPAV12@XZ	0041e5f2	?GetInstance@CManager@NUISystem@@SIPAV12@XZ	already bound 16 rows (first 0041e61b)
+?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z	00993ca0	?ReadWithSrcChunkOverflow@CDataInputStream@@AAEXPAEJ@Z	already bound 11 rows (first 00404500)

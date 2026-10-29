@@ -53,7 +53,7 @@ public:
     virtual void KeyPressed(unsigned short key);             // slot 12 (+0x30)
     unsigned char _pad04[0xb0 - 4];
     C2DVector     MousePosition;                   // +0xb0
-    static CManager* GetInstance();                // 0x0041E5F2
+    static CManager* __fastcall GetInstance();                // 0x0041E5F2
 };
 }
 class CConsole {

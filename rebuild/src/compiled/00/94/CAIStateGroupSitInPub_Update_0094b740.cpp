@@ -3,7 +3,7 @@
 // pub building's customer list (component 0x7B) and terminate.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0094B740, length 246 bytes (+ int3 padding). Vtable slot 12 of
 // CAIStateGroup_SitInPub (0x0128BF04).
-// Callees: CAIStateGroup_UsesSeat::MoveToSeatAndSitDown(EMovementType) @ 0x009387C0, GFGetCurrentFrame @ 0x0049D870,
+// Callees: CAIStateGroup_UsesSeat::MoveToSeatAndSitDown(EMovementType) @ 0x009387C0, CWorld::GetFrame @ 0x0049D870,
 // AIAction_DoNothing @ 0x0097E200, CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (the seat pointer, result unused,
 // and PBuilding x3), CAIStateGroupBase::GetPWorldSeed @ 0x008FCFD0, GFROR13 @ 0x00497890, CVectorMap::LowerBound
 // @ 0x0040F020 (inlined GetInterface 0x7B, bit 27 of +0x2c), the pub component's RemoveCustomer(CThing*)
@@ -161,7 +161,7 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CAIStateGroupBase { public:
@@ -220,10 +220,10 @@ struct CAIStateGroup_SitInPub : CAIStateGroup_UsesSeat {
 void CAIStateGroup_SitInPub::Update()
 {
     if (MoveToSeatAndSitDown(3)) {
-        long nextFidget = GFGetCurrentFrame();
+        long nextFidget = CWorld::GetFrame();
         if (AIAction_DoNothing() == 4) {
             do {
-                long now = GFGetCurrentFrame();
+                long now = CWorld::GetFrame();
                 if (now > nextFidget) {
                     PSeat.GetPItem();
                     unsigned long* seed = GetPWorldSeed();

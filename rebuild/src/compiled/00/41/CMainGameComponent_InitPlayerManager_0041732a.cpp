@@ -11,7 +11,7 @@
 class CMainGameComponent;
 class CGameDefinitionManager {
 public:
-    static const CGameDefinitionManager& Get();          // 0x0044C6B0
+    static CGameDefinitionManager& __fastcall Get();          // 0x0044C6B0
 };
 class CPlayerManager {
 public:

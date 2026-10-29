@@ -141,7 +141,7 @@ class CPlayerManager {
 public:
     CPlayer* GetMainPlayer() const;                           // 0x00449960
 };
-long __fastcall GFGetCurrentFrame();                    // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                    // 0x0049D870
 extern long g_HeroIdleParticleDelay;                    // 0x013BAD24
 class CTCBase {
 public:
@@ -193,11 +193,11 @@ void CTCHeroMorph::UpdateIdleParticles()
     if (mode == 1 && !(movement->Velocity.X * movement->Velocity.X + movement->Velocity.Y * movement->Velocity.Y
                        + movement->Velocity.Z * movement->Velocity.Z > g_fEpsilon * g_fEpsilon)) {
         if (!FrameHeroBecameIdle) {
-            FrameHeroBecameIdle = GFGetCurrentFrame();
+            FrameHeroBecameIdle = CWorld::GetFrame();
             IdleParticlesAdded = false;
             return;
         }
-        if (GFGetCurrentFrame() - FrameHeroBecameIdle >= g_HeroIdleParticleDelay && !IdleParticlesAdded) {
+        if (CWorld::GetFrame() - FrameHeroBecameIdle >= g_HeroIdleParticleDelay && !IdleParticlesAdded) {
             CDefPointer<const CHeroMorphDef> def;
             Thing->PDef->GetSubDef(&def);
             vector<CParticleMorphEntry> entries;

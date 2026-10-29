@@ -1,27 +1,27 @@
 // CBankFileManager::CreateRetailBank(const CWideString& path) -- create an empty retail bank file: open it for writing and write the magic, the manager's file version and two zero words
 // Leaf: CreateRetailBank
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009A7720, length 171 bytes (+5 int3), ret 4.
-// Callees: CBase::CBase @ 0x0099A2F0, CWideString::CWideString() @ 0x0099AED0, CDiskFileWin32::Open(const CWideString&,
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0, CWideString::CWideString() @ 0x0099AED0, CDiskFileWin32::Open(const CWideString&,
 // FileAccessType, ulong) @ 0x0099A6A0 (access 4, flags 2), CFileDataOutputStream::CFileDataOutputStream(CAFile*) @ 0x00994400,
 // CFileDataOutputStream::Write(const void*, long) @ 0x00994480 (the 4-byte magic @ 0x0129B004), CDataOutputStream::WriteULong
 // @ 0x00993EA0, CFileDataOutputStream::~CFileDataOutputStream @ 0x00994430 (catalog "~CFileDataInputStream"),
-// CDiskFileWin32::Close @ 0x0099A920, CWideString::~CWideString @ 0x0099B510, CBase::~CBase @ 0x0099A300.
+// CDiskFileWin32::Close @ 0x0099A920, CWideString::~CWideString @ 0x0099B510, CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300.
 // Shape: the local CDiskFileWin32's inline ctor/dtor as in CBankFile::GetLastModifiedTime (0x009CBC50; Opened cleared in the
 // body); the stream is a 0xc-byte local over the file; Open/Write are direct calls on the locals.
 // Layout: retail CBankFileManager = Ego_r.pdb with 12-byte maps and a 4-byte list: Banks +0x04, RetailBanks +0x10,
 // UsingRetailBanks +0x14, BankAliasMap +0x18, BasePath +0x24, CreatedRetailBanks +0x28, FileVersion +0x34.
-namespace N_0099a300 { struct CBase {
-    virtual void v00();
-    CBase();                                       // 0x0099A2F0
-    ~CBase();                                      // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();                                      // 0x0099A300
+};
 class CWideString { public:
     void* PStringData;
     CWideString();                                 // 0x0099AED0
     ~CWideString();                                // 0x0099B510
 };
 enum FileAccessType { FILE_ACCESS_READ = 1, FILE_ACCESS_WRITE = 4 };
-class CDiskFileWin32 : public CBase { public:                    // vtable 0x0122D06C
+class CDiskFileWin32 : public CBaseClassNonCopyable { public:                    // vtable 0x0122D06C
     long        AccessType;                        // +0x04
     long        Position;                          // +0x08
     long        Length;                            // +0x0c

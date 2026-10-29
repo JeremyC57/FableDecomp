@@ -89,7 +89,7 @@ class CWorld { public:
     unsigned char _pad00[0x34];
     CGameCameraManager* PCameraManager;         // +0x34
     unsigned long* GetPRandomSeed();            // 0x0049D810
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 extern long g_FramesPerSecond;                  // 0x01375550
@@ -173,7 +173,7 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
                     PTarget = CIntelligentPointerCreature(enemy);
                     return true;
                 }
-                if (CWorld::GetWorldFrame() > NextFrameForPreemptiveUse) {
+                if (CWorld::GetFrame() > NextFrameForPreemptiveUse) {
                     unsigned long* seed = GetPWorld()->GetPRandomSeed();
                     unsigned long next = *seed * 0x24A1U + 0x24DFU;
                     *seed = next;
@@ -196,7 +196,7 @@ bool CAIStateGroup_SummonerLightningAttack::IsRunnable()
                     }
                     long fps = g_FramesPerSecond;
                     const CSummonerDef* def = PDef;
-                    NextFrameForPreemptiveUse = (long)((float)CWorld::GetWorldFrame() + (float)fps * def->PreemptiveDelaySeconds);
+                    NextFrameForPreemptiveUse = (long)((float)CWorld::GetFrame() + (float)fps * def->PreemptiveDelaySeconds);
                 }
             }
         }
@@ -268,7 +268,7 @@ bool CTCLightningTarget::CanBeTargeted(SMatch* out, CThing* const& attacker) { +
 bool CTools::IsLineOfSightFiltered(const C3DVector* from, const C3DVector* to, C3DVector* hitPos, C3DVector* hitNormal, float* distance, CThing** hitThing, long test, bool flag)
 { ++g_losCalls; g_from = *from; g_to = *to; CHECK(this == &g_cameraManager.Tools && test == 3 && !flag); *distance = 1.0f; *hitThing = 0; hitPos->x = hitNormal->x = 0.0f; return g_los; }
 unsigned long* CWorld::GetPRandomSeed() { CHECK(this == &g_world); return &g_seed; }
-long CWorld::GetWorldFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 unsigned long __fastcall GFROR13(unsigned long value) { return (value >> 13) | (value << 19); }
 void CBaseIntelligentPointer::v00() {}
 void CIntelligentPointerCreature::v00() {}

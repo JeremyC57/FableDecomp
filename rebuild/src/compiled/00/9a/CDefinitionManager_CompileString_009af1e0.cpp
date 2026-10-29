@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x009AF1E0, 672 bytes (incl. int3 padding), thiscall `ret 8`. FableWin.pdb
 //   `?CompileString@CDefinitionManager@@IAEXPBDABVCCharString@@@Z`; the only caller is the file loader 0x009AF480. The
 //   catalog's "CDefinitionManager_LoadDefinitions" is descriptive.
-// Callees: CBase() 0x0099A2D0 / ~CBase 0x0099A2E0, CCharString() 0x0099E4B0, CCharString(const char*, long) 0x0099EBF0,
+// Callees: CBaseClass() 0x0099A2D0 / ~CBaseClass 0x0099A2E0, CCharString() 0x0099E4B0, CCharString(const char*, long) 0x0099EBF0,
 //   ~CCharString 0x0099EAE0, CBasicString<char>::operator== 0x004115A0, malloc 0x00BFEA0E (the comment list's sentinel),
 //   CStringParser::Init(const char*, callback, const CCharString&, long) 0x009B9530, CStringParser::SkipPastWholeString
 //   0x009B9C00 (catalog "CThingCreatureBase::SerialiseGameState" is a propagated label), CStringParser::ReadAsString
@@ -69,11 +69,10 @@ public:
 };
 typedef void (__fastcall* TParserErrorCallback)(const CCharString& message);
 
-class CBase
-{
+class CBaseClass {
 public:
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+    CBaseClass();                                            // 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 
 class CStringParserCommentBoundaries
@@ -111,7 +110,7 @@ public:
 };
 } // namespace std
 
-class CStringParser : public CBase                      // vtable 0x0122D874, 0x28 bytes
+class CStringParser : public CBaseClass                      // vtable 0x0122D874, 0x28 bytes
 {
 public:
     const char*   String;                               // +0x04

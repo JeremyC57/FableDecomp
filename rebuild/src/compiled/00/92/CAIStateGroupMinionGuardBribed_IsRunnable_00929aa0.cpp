@@ -5,7 +5,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x23 = CTCVillager, bit 3 of the
 // bitset dword at +0x24), GFGetPVillageInterface @ 0x007EE540 (__fastcall on the villager component; the
 // manifest's IS_THING_ALIVE label is propagated) twice, CAIStateGroupBase::GetPWorld @ 0x008FCFC0 (called
-// for nothing: its result is dropped, as in the landed siblings), GFGetCurrentFrame @ 0x0049D870.
+// for nothing: its result is dropped, as in the landed siblings), CWorld::GetFrame @ 0x0049D870.
 // Shape: a bool `&&` chain (`mov eax,1` / `xor eax,eax` through the full register): the interface must be
 // present, the village must exist, and the current frame must still be below the village's bribe-end frame
 // (+0xA8), the village being re-fetched for the read. The villager pointer is an uninitialised local filled
@@ -94,7 +94,7 @@ class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed();             // 0x008FCFD0 (world random seed)
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 struct CTCVillager;
@@ -109,7 +109,7 @@ struct CAIStateGroup_MinionGuardBribed : CAIStateGroupBase {
     bool IsStillBribed(CTCVillager* villager)
     {
         GetPWorld();
-        return GFGetCurrentFrame() < GFGetPVillageInterface(villager)->m_frameBribeEnds;
+        return CWorld::GetFrame() < GFGetPVillageInterface(villager)->m_frameBribeEnds;
     }
 };
 

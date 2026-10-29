@@ -1,7 +1,7 @@
 // CEnginePrimitiveManagerDecal::RenderPrimitive(CEngineInternalPrimitiveBase&, EEngineRenderLayer, CEngineSubPrimitiveChain&) -- when enabled, wraps the decal in a pool-allocated sub-primitive and queues it in sort list 0 at its distance from the camera; returns 2 (rendered), else 0
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BBA340, length 142 bytes.
 // Callees: 0x00BEB540 CEngineSubPrimitiveBase::operator new (`__fastcall`, size 0x18 in ecx: the sub-primitive pool),
-// 0x0099A2F0 CBase::CBase(), 0x00B84720 CEngineSubPrimitiveRenderer::AddSubPrimitive(long list,
+// 0x0099A2F0 CBaseClassNonCopyable::CBaseClassNonCopyable(), 0x00B84720 CEngineSubPrimitiveRenderer::AddSubPrimitive(long list,
 // CEngineSubPrimitiveBase*, float distance, CEnginePrimitiveManager*) on the global renderer @ 0x01436E74; the
 // camera global @ 0x01436EA0 (world position at +0x54). Vtable 0x012A5ADC = CEngineSubPrimitiveDecal.
 // Layout: CEnginePrimitiveManager::Enable at +8 (PDB); CEngineInternalPrimitiveDecal::WorldPos at +0x54 (PDB);
@@ -13,14 +13,14 @@
 
 class C3DVector { public: float X, Y, Z; };
 
-class CBase {
-public:
-    virtual ~CBase();
-    CBase();                                       // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();                                       // 0x0099A2F0
 };
 class CEngineInternalPrimitiveBase;
 class CEnginePrimitiveManager;
-class __declspec(novtable) CEngineSubPrimitiveBase : public CBase {   // PDB, 0x18 bytes
+class __declspec(novtable) CEngineSubPrimitiveBase : public CBaseClassNonCopyable {   // PDB, 0x18 bytes
 public:
     unsigned long                 RenderFlags;      // +0x04
     unsigned char                 Alpha;            // +0x08

@@ -1,22 +1,23 @@
 // CAIStateGroup_BuyFromSeller::CAIStateGroup_BuyFromSeller() -- default constructor
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00919A40, length 39 bytes (+ int3 padding).
-// Callees: CBase::CBase @ 0x0099A2D0, CCharString::CCharString() @ 0x0099E4B0 (the Name
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0, CCharString::CCharString() @ 0x0099E4B0 (the Name
 // member at +0xc). Vtables: CAIStateGroupBase 0x01288C60 then CAIStateGroup_BuyFromSeller
 // 0x0128FF0C (rtti-vtables.tsv). FrameLastBought (+0x14, engine header name) is zeroed last.
 // Unlike most state groups this TU inlines CAIStateGroupBase's constructor (the base vtable
 // store between the CBase call and the Name construction), so the base is modelled with an
 // inline constructor here.
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();
-    CBase();                                // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    virtual ~CBaseClass();
+    CBaseClass();                                // 0x0099A2D0
+};
 
 class CCharString { public:
     char* m_pData;
     CCharString();                          // 0x0099E4B0
 };
 
-class CAIStateGroupBase : public CBase { public:          // vtable 0x01288C60
+class CAIStateGroupBase : public CBaseClass { public:          // vtable 0x01288C60
     void*       PBrain;                     // +0x04
     long        ScriptAIPriority;           // +0x08
     CCharString Name;                       // +0x0c

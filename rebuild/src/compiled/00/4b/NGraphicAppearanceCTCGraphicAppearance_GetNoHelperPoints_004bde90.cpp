@@ -5,8 +5,8 @@
 // 0x004BE000: Ego_r.pdb source order after GetDummyObjectNamesStartingWith (retail 0x004BDD70) is GetNoHelperPoints,
 // GetNoDummyObjects, GetHelperPoint, GetDummyObject, ..., HasHelperPoint, and the two twins differ only in the C3DMeshObject
 // counter they call (0x00A36140 here, 0x00A36480 there). Ego_r.pdb `?GetNoHelperPoints@CTCGraphicAppearance@NGraphicAppearance@@QBEJABVCCharString@@M@Z`.
-// Callees: vector<CMeshInfo>::reserve @ 0x004C46C0, each component's GetAllMeshes (virtual slot 2), CBase::CBase @ 0x0099A2D0 /
-// ~CBase @ 0x0099A2E0, CTCGraphicAppearance::GetMeshObject @ 0x004BC4F0, C3DMeshObject::GetNoHelperPoints(const CCharString&) const
+// Callees: vector<CMeshInfo>::reserve @ 0x004C46C0, each component's GetAllMeshes (virtual slot 2), CBaseClass::CBaseClass @ 0x0099A2D0 /
+// ~CBaseClass @ 0x0099A2E0, CTCGraphicAppearance::GetMeshObject @ 0x004BC4F0, C3DMeshObject::GetNoHelperPoints(const CCharString&) const
 // @ 0x00A36140, operator delete @ 0x00BFE9BC (the mesh count block), free @ 0x00BFEA14 (the vector buffer).
 // Shape: the landed GetAllHelperPointNames 0x004BDA30 model (GetAllMeshes inlined, block-scoped C3DMeshObject with inline
 // ctor/dtor); the early return of a non-zero count duplicates the object and vector destructors on its own exit.
@@ -40,20 +40,21 @@ struct CCountedPointer {
     }
 };
 
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                                // 0x0099A2D0
-    virtual ~CBase();                                       // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                                // 0x0099A2D0
+    virtual ~CBaseClass();                                       // 0x0099A2E0
+};
 
 class C3DMeshInfo;
-class C3DMeshObject : public CBase { public:                              // vtable 0x01239860, 0x78 bytes
+class C3DMeshObject : public CBaseClass { public:                              // vtable 0x01239860, 0x78 bytes
     const C3DMeshInfo* MeshInfo;                            // +0x04
     CCountedPointer    Mesh;                                // +0x08 CCountedPointer<const C3DMeshStats>
     unsigned char      PositionMatrix[0x30];                // +0x10 CMatrix3x4
     bool               InversePositionMatrixSetup;          // +0x40
     unsigned char      InversePositionMatrix[0x30];         // +0x44 CMatrix3x4
     float              Scale;                               // +0x74
-    C3DMeshObject() : CBase(), Mesh(), InversePositionMatrixSetup(false) { }
+    C3DMeshObject() : CBaseClass(), Mesh(), InversePositionMatrixSetup(false) { }
     virtual ~C3DMeshObject() { }
     long GetNoHelperPoints(const CCharString& name) const;   // 0x00A36140
 };

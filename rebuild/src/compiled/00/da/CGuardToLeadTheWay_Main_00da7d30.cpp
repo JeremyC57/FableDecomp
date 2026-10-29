@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA7D30, 1472 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / default ctor 0x006E7B40 / dtor 0x004AA840 (inline copies in the first loop) /
-//   operator= 0x008AB980 (inline in the first loop), ~CBase 0x0099A2E0, operator new 0x00BFEA1A / delete 0x00BFE9BC, RegisterFilter
+//   operator= 0x008AB980 (inline in the first loop), ~CBaseClass 0x0099A2E0, operator new 0x00BFEA1A / delete 0x00BFE9BC, RegisterFilter
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting
 //   0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0, CCharString 0x0099EBF0 / 0x0099EAE0, operator+ 0x0099F690 (const char*,
 //   CCharString) / 0x0099F600 (CCharString, const char*) / 0x0099F570 (CCharString, CCharString), CSpawnedFuncBase ctor
@@ -76,12 +76,13 @@ struct CScriptThingImpl {                              // the game-side thing be
     virtual void i072() const; virtual void i073() const; virtual void i074() const;
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-struct CBase {                                          // vtable 0x01231710
-    CBase() { }                                         // out-of-line copy 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:                                           // vtable 0x01231710
+    CBaseClass() { }                                         // out-of-line copy 0x0099A2D0
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
 class C3DVector { public: float X, Y, Z; };
-namespace N_006e7b40 { struct CScriptThing : CBase {                           // vtable 0x01238C8C, 12 bytes
+namespace N_006e7b40 { struct CScriptThing : CBaseClass {                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
     virtual CCharString GetDataString() const;   // slot 3 (+0xc)
     virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const;
@@ -100,7 +101,7 @@ namespace N_006e7b40 { struct CScriptThing : CBase {                           /
     CCountedPointer<CScriptThingImpl> PImp;             // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
     struct InlineCopy { };                              // tag: the inline copy retail expands at by-value call sites
-    CScriptThing(const CScriptThing& other, InlineCopy) : CBase(), PImp(other.PImp) { }
+    CScriptThing(const CScriptThing& other, InlineCopy) : CBaseClass(), PImp(other.PImp) { }
     ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
     CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // out-of-line copy 0x008AB980
     CScriptThing();                                     // 0x006E7B40

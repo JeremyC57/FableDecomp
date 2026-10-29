@@ -51,6 +51,8 @@ public:
     long GetMaxAntialiasing() const;                      // 0x00409090
     long GetMaxRefreshRate() const;                       // 0x00406890
     bool GetOption17() const { return UseSecondProfile ? Profile2Option17 : Profile1Option17; }
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 
 template <class T> class CTBaseSingleton {
@@ -79,78 +81,78 @@ void CTextSlider::GetValueFromProfile()
     switch (PDefAction) {
     case 0x2b:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->IsCameraXYInverted();
+            CUserProfileManager::Get().IsCameraXYInverted();
         break;
     case 0x2c:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->IsCameraYZInverted();
+            CUserProfileManager::Get().IsCameraYZInverted();
         break;
     case 0x2d:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->IsVibrationEnabled();
+            CUserProfileManager::Get().IsVibrationEnabled();
         break;
     case 0x2e:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->IsCameraResetting();
+            CUserProfileManager::Get().IsCameraResetting();
         break;
     case 0x2f:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->GetOption48DB35();
+            CUserProfileManager::Get().GetOption48DB35();
         break;
     case 0x53:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->GetOption17();
+            CUserProfileManager::Get().GetOption17();
         break;
     case 0x5d:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->IsGuildMasterEnabled();
+            CUserProfileManager::Get().IsGuildMasterEnabled();
         break;
     case 0x5e:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->IsHUDTooltipEnabled();
+            CUserProfileManager::Get().IsHUDTooltipEnabled();
         break;
     case 0x54:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->GetOption548650();
+            CUserProfileManager::Get().GetOption548650();
         break;
     case 0x139:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->Option78 != 0;
+            CUserProfileManager::Get().Option78 != 0;
         break;
     case 0x102:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->GetOption5486B0();
-        MaxChild = CTBaseSingleton<CUserProfileManager>::Get()->GetMaxResolution();
+            CUserProfileManager::Get().GetOption5486B0();
+        MaxChild = CUserProfileManager::Get().GetMaxResolution();
         break;
     case 0x13d:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->GetOption5486D0();
-        MaxChild = CTBaseSingleton<CUserProfileManager>::Get()->GetMaxRefreshRate();
+            CUserProfileManager::Get().GetOption5486D0();
+        MaxChild = CUserProfileManager::Get().GetMaxRefreshRate();
         break;
     case 0x109:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->GetOption548670();
-        MaxChild = CTBaseSingleton<CUserProfileManager>::Get()->GetMaxAntialiasing();
+            CUserProfileManager::Get().GetOption548670();
+        MaxChild = CUserProfileManager::Get().GetMaxAntialiasing();
         break;
     case 0x12c:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->GetOption5486F0();
+            CUserProfileManager::Get().GetOption5486F0();
         break;
     case 0x106:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->IsVerticalSyncEnabled();
+            CUserProfileManager::Get().IsVerticalSyncEnabled();
         break;
     case 0x140:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->GetOption548690();
+            CUserProfileManager::Get().GetOption548690();
         break;
     case 0x13f:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->IsCameraPCBowYZInverted();
+            CUserProfileManager::Get().IsCameraPCBowYZInverted();
         break;
     case 0x143:
         SelectedChild = PreviouslySelectedChild = StartSelectedChild =
-            CTBaseSingleton<CUserProfileManager>::Get()->GetOption548740();
+            CUserProfileManager::Get().GetOption548740();
         break;
     }
 }

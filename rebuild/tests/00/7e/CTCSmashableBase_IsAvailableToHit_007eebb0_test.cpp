@@ -5,7 +5,7 @@ static long g_worldFrame = 0;
 static int g_getWorldCalls = 0;
 
 class CWorld { public:
-    static long GetWorldFrame() { return g_worldFrame; }
+    static long __fastcall GetFrame() { return g_worldFrame; }
 };
 static CWorld g_world;
 
@@ -22,7 +22,7 @@ class CTCSmashableBase : public CTCBase { public:
 
 bool CTCSmashableBase::IsAvailableToHit() const
 {
-    return GetWorld()->GetWorldFrame() - LastWorldFrameHit > 1 ? true : false;
+    return GetWorld()->GetFrame() - LastWorldFrameHit > 1 ? true : false;
 }
 
 int main()

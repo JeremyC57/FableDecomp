@@ -1,8 +1,8 @@
-// CFileDataInputStream::`scalar deleting destructor'(unsigned int) -- stores the CFileDataInputStream vtable, closes the stream, the inlined CDataStream destructor stores its vtable, then CBase::~CBase and a free on bit 0
+// CFileDataInputStream::`scalar deleting destructor'(unsigned int) -- stores the CFileDataInputStream vtable, closes the stream, the inlined CDataStream destructor stores its vtable, then CBaseClassNonCopyable::~CBaseClassNonCopyable and a free on bit 0
 // Leaf: ??_GCFileDataInputStream
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009971A0, length 49 bytes (vtable 0x0129A728 slot 0).
 // Callees: CFileDataInputStream::Close @ 0x00994300 (virtual, called directly from the destructor),
-// CBase::~CBase @ 0x0099A300, operator delete @ 0x00BFE9BC.
+// CBaseClassNonCopyable::~CBaseClassNonCopyable @ 0x0099A300, operator delete @ 0x00BFE9BC.
 // The catalog label "CThingTrackNode::vector_deleting_destructor" is propagated: the only reference is
 // slot 0 of the CFileDataInputStream vtable 0x0129A728.
 // Layout: engine/CFileDataInputStream.h is a flat struct (vptr, opaque +0x04..+0x17, File +0x18,
@@ -12,12 +12,13 @@
 // vtable (0x0129A69C) before the root base's out-of-line destructor.
 class CAFile;
 
-namespace N_0099a300 { struct CBase {                                     // root polymorphic base
-    CBase();
-    virtual ~CBase();                              // 0x0099A300
-}; } using N_0099a300::CBase;
+class CBaseClassNonCopyable {
+protected:                                      // root polymorphic base
+    CBaseClassNonCopyable();
+    virtual ~CBaseClassNonCopyable();                              // 0x0099A300
+};
 
-struct CDataStream : CBase {                       // vtable 0x0129A69C
+struct CDataStream : CBaseClassNonCopyable {                       // vtable 0x0129A69C
     CDataStream() { }
     virtual ~CDataStream() { }
 };

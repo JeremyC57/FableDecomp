@@ -8,7 +8,7 @@
 // Callees: CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface, type 0x31 = CTCCreatureModeManager, bit 17 of
 // the dword at +0x24; miss path reads the never-written out slot), CTCCreatureModeManager::RemoveMode @ 0x0073ABA0,
 // CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (IS_THING_ALIVE, the lock test, the creature's own home pointer at
-// +0x170, the compare and the unlock), GFGetCurrentFrame @ 0x0049D870.
+// +0x170, the compare and the unlock), CWorld::GetFrame @ 0x0049D870.
 // Shape: the creature's own home is a named local read before the PHome GetPItem it is compared with (held in edi);
 // the building lock flag is a 1-bit bitfield at +0xd4 (`test byte` / `and byte ..,0FEh` in place).
 // Engine header names (PHome +0x1c, FrameLastLeftStategroup +0x24, OverrodeLocking +0x2c); the header flattens the
@@ -112,7 +112,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointerCtor& p)
     return false;
 }
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 
 class CTCCreatureModeManager { public:
     void RemoveMode(long mode);                 // 0x0073ABA0
@@ -150,7 +150,7 @@ void CAIStateGroup_MinionReactToCriminal::OnReplace()
         if (PHome.GetPItem() != ownHome)
             ((CThingBuildingLock*)PHome.GetPItem())->Unlock();
     }
-    FrameLastLeftStategroup = GFGetCurrentFrame();
+    FrameLastLeftStategroup = CWorld::GetFrame();
 }
 
 // ---- stubs ----
@@ -165,7 +165,7 @@ void CBaseIntelligentPointerCtor::v00() { }
 static long g_removed; static int g_removeCalls;
 void CTCCreatureModeManager::RemoveMode(long mode) { g_removed = mode; g_removeCalls++; g_lastMgr = this; }
 static long g_frame = 100;
-long __fastcall GFGetCurrentFrame() { return g_frame; }
+long CWorld::GetFrame() { return g_frame; }
 CAIStateGroupBase::~CAIStateGroupBase() { }
 void CAIStateGroupBase::v01() { } void CAIStateGroupBase::v02() { } void CAIStateGroupBase::v03() { } void CAIStateGroupBase::v04() { }
 bool CAIStateGroupBase::IsStillValid() { return true; }

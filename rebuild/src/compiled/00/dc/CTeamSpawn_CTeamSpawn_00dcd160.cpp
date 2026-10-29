@@ -2,7 +2,7 @@
 // Leaf: ??0CTeamSpawn
 // Retail: Fable.exe @ 0x00DCD160, 96 bytes. Vtables 0x012C3224 (the entity-script base, as in the landed
 // CPermanentBarrier constructor 0x00D2D7B0) and 0x012DB2D4 (this class, no RTTI); 0x01238C8C = CScriptThing.
-// Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, CBase::CBase() @ 0x0099A2D0 (the inline
+// Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, CBaseClass::CBaseClass() @ 0x0099A2D0 (the inline
 // CScriptThing default constructor's base), CCharString::CCharString() @ 0x0099E4B0 (twice).
 // Layout: PDB CTeamSpawn (0x40 bytes): ParentClass +0x14, PMasterData +0x18, OtherSpawnPoint (CScriptThing) +0x1c,
 // TeamID / TeamMemberLimit / TeamRespawnTime +0x28..+0x30 (left uninitialised), TeamMemberName +0x34,
@@ -10,10 +10,11 @@
 // Shape: the CPermanentBarrier shape (root interface pointer before the dead root vtable, the thing copy after the base
 // vtable, ParentClass in the init list before the derived vtable store, PMasterData a body assignment stored last); the
 // default-constructed OtherSpawnPoint is CBase() + its vtable + the PImp member's inline zeroing (after the vtable store).
-namespace N_0099a2d0 { struct CBase {
+class CBaseClass {
+public:
     virtual void v00();
-    CBase();                                       // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                       // 0x0099A2D0
+};
 
 struct CCountedPointer_Imp {                       // CCountedPointer<CScriptThing>: object + count block
     void* m_pObject;                               // +0x00
@@ -21,7 +22,7 @@ struct CCountedPointer_Imp {                       // CCountedPointer<CScriptThi
     CCountedPointer_Imp() : m_pObject(0), m_pCount(0) { }
 };
 
-class CScriptThing : public CBase { public:                      // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
     CCountedPointer_Imp PImp;                      // +0x04
     virtual void v00();
     CScriptThing() { }

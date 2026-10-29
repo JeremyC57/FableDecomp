@@ -315,8 +315,9 @@ FABLE_STATIC_ASSERT(sizeof(CRenderStateCapture) == 8);
 FABLE_STATIC_ASSERT(sizeof(CRenderStateManagerCaptureView) == 0x2818);
 
 
-struct CBase {
-    virtual ~CBase(); // 0x0099A2E0; native vtable is 0x01231710
+class CBaseClass {
+public:
+    virtual ~CBaseClass(); // 0x0099A2E0; native vtable is 0x01231710
 };
 
 class CShaderBase { public:
@@ -340,7 +341,7 @@ class CSurface { public:
     virtual ~CSurface(); // vtable 0x0122F84C; slot 0 destructor
 };
 
-class CRenderTarget : public CBase { public:
+class CRenderTarget : public CBaseClass { public:
     CSurface RenderToSurface;
     CSurface ZBufferSurface;
 };
@@ -427,7 +428,7 @@ class CEngineScreenEffectDisplacementRenderer : public CEngineComponent { public
 };
 
 #ifdef _MSC_VER
-FABLE_STATIC_ASSERT(sizeof(CBase) == 4);
+FABLE_STATIC_ASSERT(sizeof(CBaseClass) == 4);
 FABLE_STATIC_ASSERT(sizeof(CShaderBase) == 4);
 FABLE_STATIC_ASSERT(sizeof(CEngineComponent) == 0x0c);
 FABLE_STATIC_ASSERT(sizeof(CSurface) == 0x10);
@@ -527,7 +528,7 @@ void FABLE_FASTCALL RestoreCaptureBlockAtGlobal(CRenderStateManagerCaptureView*)
     ++g_captureRestoreCalls;
 }
 
-CBase::~CBase()
+CBaseClass::~CBaseClass()
 {
     ++g_baseDestructorCalls;
 }

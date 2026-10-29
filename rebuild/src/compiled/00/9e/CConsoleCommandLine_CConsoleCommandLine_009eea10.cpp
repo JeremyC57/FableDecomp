@@ -1,7 +1,7 @@
 // CConsoleCommandLine::CConsoleCommandLine(const CCharString& entry) -- a command line seeded with
 // a string: CBase(), own vtable, the entry copied, UserEntry cleared and the cursor at the end.
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009EEA10, length 61 bytes (+ int3 padding).
-// Callees: CBase::CBase @ 0x0099A2D0, CCharString::CCharString(const CCharString&) @ 0x0099EC30.
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0, CCharString::CCharString(const CCharString&) @ 0x0099EC30.
 // Vtable 0x0129C400 = CConsoleCommandLine (rtti-vtables.tsv).
 // Layout from the PDB (16 bytes): CCharString CurrentEntry +0x04, bool UserEntry +0x08,
 // long CursorPosition +0x0c. The cursor is `entry.GetLength()` inlined: a null string block
@@ -24,12 +24,13 @@ class CCharString { public:
     }
 };
 
-namespace N_0099a2d0 { struct CBase {
+class CBaseClass {
+public:
     virtual void v00();
-    CBase();                                   // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                   // 0x0099A2D0
+};
 
-class CConsoleCommandLine : public CBase { public:           // vtable 0x0129C400
+class CConsoleCommandLine : public CBaseClass { public:           // vtable 0x0129C400
     virtual void v00();
     CCharString CurrentEntry;       // +0x04
     bool        UserEntry;          // +0x08
@@ -38,7 +39,7 @@ class CConsoleCommandLine : public CBase { public:           // vtable 0x0129C40
 };
 
 CConsoleCommandLine::CConsoleCommandLine(const CCharString& entry)
-    : CBase()
+    : CBaseClass()
     , CurrentEntry(entry)
     , UserEntry(false)
     , CursorPosition(entry.GetLength())

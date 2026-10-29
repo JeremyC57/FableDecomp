@@ -1,7 +1,7 @@
 // NCameraModes::CScriptModuleUseLamp::CScriptModuleUseLamp(const CThing* creature, const CThing* lamp, long duration) -- constructor: the self-terminating base for `duration` frames, then PCreature and PLamp pointed at the two things
 // Leaf: ??0CScriptModuleUseLamp
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00853120, length 112 bytes (100 + int3 padding).
-// Callees: NCameraModes::CScriptModuleBase::CScriptModuleBase() @ 0x005ED070, GFGetCurrentFrame @ 0x0049D870,
+// Callees: NCameraModes::CScriptModuleBase::CScriptModuleBase() @ 0x005ED070, CWorld::GetFrame @ 0x0049D870,
 // CBaseIntelligentPointer::CBaseIntelligentPointer() @ 0x00A01B10, ::SetPItem @ 0x00A01B90 (twice).
 // Vtables: 0x012759CC (CScriptModuleSelfTerminateBase, stored by the inlined base ctor), 0x01275AE4
 // (NCameraModes::CScriptModuleUseLamp, rtti-vtables.tsv), 0x01237F1C (CIntelligentPointer<const CThing>).
@@ -13,7 +13,7 @@
 // fields (Origin .. AxisY) are not initialised here.
 // Layout: PDB NCameraModes::CScriptModuleUseLamp (0xa0 bytes): PCreature +0x54, PLamp +0x5c, Origin +0x64, Theta +0x70,
 // Rad +0x74, Height +0x78, DeltaTheta +0x7c, DeltaRad +0x80, DeltaHeight +0x84, AxisX +0x88, AxisY +0x94.
-long __fastcall GFGetCurrentFrame();                 // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };                 // 0x0049D870
 
 class CBaseObject;
 class CThing;
@@ -47,7 +47,7 @@ struct CScriptModuleSelfTerminateBase : CScriptModuleBase {   // vtable 0x012759
     CScriptModuleSelfTerminateBase(long duration)
         : WFDuration(duration)
     {
-        EndFrame = GFGetCurrentFrame() + WFDuration;
+        EndFrame = CWorld::GetFrame() + WFDuration;
     }
 };
 

@@ -15,9 +15,10 @@ static int g_restores = 0;
 class CRenderStateManager { public: void RestoreCaptureBlock() { ++g_restores; g_log[g_n++] = 60; } };
 static CRenderStateManager g_manager; static CRenderStateManager* g_pRenderStateManager = &g_manager;
 struct CRenderStateCaptureBlock { bool Open; ~CRenderStateCaptureBlock() { if (Open) { Open = false; g_pRenderStateManager->RestoreCaptureBlock(); } } };
-class CBase { public: virtual ~CBase() { g_log[g_n++] = 100; } };
+class CBaseClass {
+public:  virtual ~CBaseClass() { g_log[g_n++] = 100; } };
 class CRenderTarget; class CSurface;
-class CSurfaceCompositor : public CBase { public: long CurrentBlend; CRenderStateCaptureBlock StateCaptureBlock; bool WasRendering; CSurface* DestSurface; CCountedPointer<CRenderTarget> RenderTarget; float OldWindow[4]; long LayerCount; bool AlphaTarget; };
+class CSurfaceCompositor : public CBaseClass { public: long CurrentBlend; CRenderStateCaptureBlock StateCaptureBlock; bool WasRendering; CSurface* DestSurface; CCountedPointer<CRenderTarget> RenderTarget; float OldWindow[4]; long LayerCount; bool AlphaTarget; };
 int main()
 {
     { CSurfaceCompositor c; c.StateCaptureBlock.Open = true; c.RenderTarget.Data = 0; c.RenderTarget.Info = NewInfo(1); }

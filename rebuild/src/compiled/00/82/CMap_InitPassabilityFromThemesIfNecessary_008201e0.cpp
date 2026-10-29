@@ -64,8 +64,8 @@ __declspec(noinline) bool CDefinitionManager::GetDef(long index, CDefPointer<CTh
     return true;
 }
 #pragma auto_inline(on)
-class CGameDefinitionManager { public:
-    static CDefinitionManager* __fastcall Get();            // 0x0044C6B0
+class CGameDefinitionManager : public CDefinitionManager { public:
+    static CGameDefinitionManager& __fastcall Get();            // 0x0044C6B0
 };
 class CMap { public:
     virtual void v00();
@@ -107,7 +107,7 @@ void CMap::InitPassabilityFromThemesIfNecessary(const C2DBoxI& area)
             }
             if (theme > 0) {
                 CDefPointer<CThemeDef> def;
-                CGameDefinitionManager::Get()->GetDef(theme, &def);
+                CGameDefinitionManager::Get().GetDef(theme, &def);
                 if (!(def->Flags & 1) || def->Passability > 0.0f)
                     passable = false;
             }

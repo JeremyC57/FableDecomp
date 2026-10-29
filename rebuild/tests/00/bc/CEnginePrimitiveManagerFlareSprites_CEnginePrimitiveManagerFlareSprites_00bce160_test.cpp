@@ -18,8 +18,9 @@ struct CVertexBufferMap {
     void clear() { if (count != 0) { Erase(header->parent); header->left = header; header->parent = 0; header->right = header; count = 0; } }
     ~CVertexBufferMap() { clear(); if (header) { ++g_frees; delete header; } }
 };
-namespace N_0099a300 { struct CBase { virtual ~CBase() { ++g_baseDtor; } }; } using N_0099a300::CBase;
-class CEnginePrimitiveManagerFlareSprites : public CBase { public: CVertexBufferMap FlareVertexBuffers; CVertexShader VertexShaderFlareTest; float FadeInSpeed; };
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() { ++g_baseDtor; } };
+class CEnginePrimitiveManagerFlareSprites : public CBaseClassNonCopyable { public: CVertexBufferMap FlareVertexBuffers; CVertexShader VertexShaderFlareTest; float FadeInSpeed; };
 int main()
 {
     CShaderData shader = { 1 }; SNode root;

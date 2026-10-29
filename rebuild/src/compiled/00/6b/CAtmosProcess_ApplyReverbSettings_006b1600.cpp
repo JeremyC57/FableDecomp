@@ -79,9 +79,9 @@ public:
 
 class CDefinitionManager {
 public:
-    static CDefinitionManager& __fastcall Get();                                    // 0x0044C6B0
     template <class T> bool GetDef(const CCharString& name, CDefPointer<T>& out);   // 0x004196B2 for T = const CSoundDef
 };
+class CGameDefinitionManager : public CDefinitionManager { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0
 
 class CSoundSystem {
 public:
@@ -111,7 +111,7 @@ void CAtmosProcess::ApplyReverbSettings()
         CDefPointer<const CSoundDef> soundDef;
         {
             CCharString name("MAIN_SOUND_SETUP", -1);
-            CDefinitionManager::Get().GetDef(name, soundDef);
+            CGameDefinitionManager::Get().GetDef(name, soundDef);
         }
         CSoundDef* def = const_cast<CSoundDef*>(soundDef.Object);
         CReverbParameters params;

@@ -8,7 +8,7 @@ extern "C" int __cdecl printf(const char* format, ...);
 // CEngineInternalPrimitiveMorphInfo::InitialiseCompositeSurfaces(const vector<CCompositeSurfaceDesc>& descs) -- rebuild the key -> composite surface map: reuse the existing surface for each key (or create one through the resource bank), refresh its parameters from the description, collect the pairs into a new map, sort it and swap it in (the old pairs are released)
 // Leaf: InitialiseCompositeSurfaces
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00BECBA0, length 567 bytes (`ret 4`).
-// Callees: CVectorMap::reserve 0x00BEEB80, CBase ctor/dtor 0x0099A2D0 / 0x0099A2E0, CVectorMap::LowerBound 0x00BED2A0,
+// Callees: CVectorMap::reserve 0x00BEEB80, CBaseClass ctor/dtor 0x0099A2D0 / 0x0099A2E0, CVectorMap::LowerBound 0x00BED2A0,
 //   CResourceBank::InitialiseCompositeSurface 0x00B2C460 (global 0x01436EAC), vector::operator= 0x006CADE0,
 //   _M_insert_overflow 0x00BEEF90, sort 0x00BEF5C0 (__fastcall first/last + comparator), _Destroy_range 0x00BA9FD0, free 0x00BFEA14.
 #ifdef _MSC_VER
@@ -18,10 +18,11 @@ inline void* operator new(__SIZE_TYPE__, void* where) { return where; }
 #endif
 void __cdecl operator delete(void* block);         // 0x00BFE9BC
 extern "C" void __cdecl free(void* block);             // 0x00BFEA14
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();                              // 0x0099A2E0 (vtable 0x01231710)
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0 (vtable 0x01231710)
+};
 struct CCPInfo {
     long  References;
     void (__fastcall* Destroy)(void* object);
@@ -67,7 +68,7 @@ struct CCountedPointer {                           // CCountedPointer<CComposite
     }
     ~CCountedPointer() { Release(); Object = 0; Info = 0; }
 };
-class CCompositeSurfaceInfo : public CBase { public:             // vtable 0x012A8154 (implicit virtual dtor)
+class CCompositeSurfaceInfo : public CBaseClass { public:             // vtable 0x012A8154 (implicit virtual dtor)
     CCountedPointer Ptr;
 };
 struct CDescVector { CCompositeSurfaceDesc* _M_start; CCompositeSurfaceDesc* _M_finish; CCompositeSurfaceDesc* _M_end_of_storage; };
@@ -226,8 +227,8 @@ void CEngineInternalPrimitiveMorphInfo::InitialiseCompositeSurfaces(const CDescV
 
 // ---- behaviour-test stubs ----
 static int g_bases, g_deleted, g_destroyed, g_created, g_listCopies;
-CBase::CBase() { ++g_bases; }
-CBase::~CBase() { }
+CBaseClass::CBaseClass() { ++g_bases; }
+CBaseClass::~CBaseClass() { }
 void __cdecl operator delete(void* p) { ++g_deleted; free(p); }
 CSurfaceList& CSurfaceList::operator=(const CSurfaceList& other)
 {

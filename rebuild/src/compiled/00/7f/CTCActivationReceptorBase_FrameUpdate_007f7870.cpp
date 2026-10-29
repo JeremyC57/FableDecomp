@@ -19,7 +19,7 @@
 class CThing;
 
 class CWorld { public:
-    static long GetWorldFrame();                         // 0x0049D870
+    static long __fastcall GetFrame();                         // 0x0049D870
 };
 
 class CIsTriggerActivated { public: CIsTriggerActivated() { } };
@@ -75,7 +75,7 @@ void CTCActivationReceptorBase::FrameUpdate()
     if (Triggers.empty())
         return;
     if (Activated) {
-        if (DeactivateAfterSetTime && CWorld::GetWorldFrame() - FrameAtLastActivation == FramesAfterActivationToDeactivate)
+        if (DeactivateAfterSetTime && CWorld::GetFrame() - FrameAtLastActivation == FramesAfterActivationToDeactivate)
             Deactivate();
         return;
     }

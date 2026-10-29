@@ -4,7 +4,7 @@
 // Retail 0x004BDB40, 264 bytes (`ret 4`). Ego_r.pdb `?GetAllDummyObjectNames@CTCGraphicAppearance@
 // NGraphicAppearance@@QBEXAAV?$vector@VCCharString@@...@std@@@Z`.
 // Callees: vector<CMeshInfo>::reserve @ 0x004C46C0 (manifest "VectorReserve"), each component's GetAllMeshes (virtual slot
-// 2, +0x08), CBase::CBase @ 0x0099A2D0 / ~CBase @ 0x0099A2E0, CTCGraphicAppearance::GetMeshObject(const CMeshInfo&, float,
+// 2, +0x08), CBaseClass::CBaseClass @ 0x0099A2D0 / ~CBaseClass @ 0x0099A2E0, CTCGraphicAppearance::GetMeshObject(const CMeshInfo&, float,
 // C3DMeshObject&) const @ 0x004BC4F0 (Ego_r.pdb `?GetMeshObject@...@IBEXABVCMeshInfo@2@MAAVC3DMeshObject@@@Z`; manifest
 // "CTCGraphicAppearance_CreateAbilityMeshObject"), C3DMeshObject::GetAllDummyObjectNames @ 0x00A35B30 (forwards to C3DMeshStats 0x00A2F0F0 with the dummy-section flag 1;
 // the byte-twin 0x004BDA30 is GetAllHelperPointNames), operator delete @ 0x00BFE9BC (the mesh count block), free
@@ -45,20 +45,21 @@ struct CCountedPointer {
     }
 };
 
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                                // 0x0099A2D0
-    virtual ~CBase();                                       // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                                // 0x0099A2D0
+    virtual ~CBaseClass();                                       // 0x0099A2E0
+};
 
 class C3DMeshInfo;
-class C3DMeshObject : public CBase { public:                              // vtable 0x01239860, 0x78 bytes
+class C3DMeshObject : public CBaseClass { public:                              // vtable 0x01239860, 0x78 bytes
     const C3DMeshInfo* MeshInfo;                            // +0x04
     CCountedPointer    Mesh;                                // +0x08 CCountedPointer<const C3DMeshStats>
     unsigned char      PositionMatrix[0x30];                // +0x10 CMatrix3x4
     bool               InversePositionMatrixSetup;          // +0x40
     unsigned char      InversePositionMatrix[0x30];         // +0x44 CMatrix3x4
     float              Scale;                               // +0x74
-    C3DMeshObject() : CBase(), Mesh(), InversePositionMatrixSetup(false) { }
+    C3DMeshObject() : CBaseClass(), Mesh(), InversePositionMatrixSetup(false) { }
     virtual ~C3DMeshObject() { }
     void GetAllDummyObjectNames(CStdVector<CCharString>& names) const;   // 0x00A35B30
 };

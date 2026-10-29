@@ -50,7 +50,7 @@ struct CBulletTime {
 class CWorld { public:
     unsigned char _pad[0x68];
     CBulletTime*  m_pBulletTime;                    // +0x68
-    static long GetWorldFrame();                    // 0x0049D870
+    static long __fastcall GetFrame();                    // 0x0049D870
 };
 class CThing {
 public:
@@ -78,7 +78,7 @@ void CTCPhysicsBase::GetPositionInterpolator(C3DPositionInterpolator& out) const
 {
     if (PeekWorld().m_pBulletTime->IsActive() && ParentThing->IsAffectedByBulletTime()) {
         float timeScale = PeekWorld().m_pBulletTime->GetTimeScale();
-        long step = (CWorld::GetWorldFrame() - 1) % (long)timeScale;
+        long step = (CWorld::GetFrame() - 1) % (long)timeScale;
         float stepSize = 1.0f / timeScale;
         C3DVector start = OldPosition.Interpolate(Position, step * stepSize);
         ++step;

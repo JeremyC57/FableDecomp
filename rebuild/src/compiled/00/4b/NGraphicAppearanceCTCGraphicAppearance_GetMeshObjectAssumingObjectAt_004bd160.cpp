@@ -6,7 +6,7 @@
 // Callees: the mesh bank's mesh-info lookup @ 0x00A24270 on the global bank @ 0x013B8A04 (manifest
 // "CTCInventoryAbilities::GetAbilityLevel", propagated), C3DMeshObject::C3DMeshObject(const C3DMeshInfo*,
 // const C3DVector&, const CRightHandedSet&, float) @ 0x00A36E70, C3DMeshObject::operator= @ 0x004C3380,
-// operator delete @ 0x00BFE9BC, CBase::~CBase @ 0x0099A2E0.
+// operator delete @ 0x00BFE9BC, CBaseClass::~CBaseClass @ 0x0099A2E0.
 // Layout: CMeshInfo (Ego_r.pdb, 0xc): Index +0, SizeX +4; retail CTCGraphicAppearance Scale +0x34
 // (PDB +0x3c: the two maps ahead are 12-byte retail maps); C3DMeshObject (0x78) as the landed deleting
 // destructor 0x004C3250 models it (Mesh counted pointer at +8/+0xc).
@@ -43,11 +43,12 @@ struct CCountedPointer {
     }
 };
 
-struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
 };
 
-class C3DMeshObject : public CBase { public:                              // vtable 0x01239860, 0x78 bytes
+class C3DMeshObject : public CBaseClass { public:                              // vtable 0x01239860, 0x78 bytes
     const C3DMeshInfo* MeshInfo;                            // +0x4
     CCountedPointer    Mesh;                                // +0x8 CCountedPointer<const C3DMeshStats>
     unsigned char      _rest[0x78 - 0x10];                  // +0x10 PositionMatrix .. Scale

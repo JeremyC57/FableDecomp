@@ -9,8 +9,9 @@ struct CFakeVolume {
     long GetDesc(D3DVOLUME_DESC* d) { ++m_descCalls; d->Format = 21; d->Type = 0; d->Usage = 0; d->Pool = 0; d->Width = 4; d->Height = 5; d->Depth = 6; return 0; }
 };
 static int g_base;
-namespace N_0099a2d0 { struct CBase { virtual ~CBase() {} CBase() { ++g_base; } }; } using N_0099a2d0::CBase;
-class CVolume : public CBase { public:
+class CBaseClass {
+public:  virtual ~CBaseClass() {} CBaseClass() { ++g_base; } };
+class CVolume : public CBaseClass { public:
     CFakeVolume* m_pVolume;
     CVolume() : m_pVolume(0) {}
     CVolume(const CVolume& other) : m_pVolume(other.m_pVolume) { if (m_pVolume) m_pVolume->AddRef(); }

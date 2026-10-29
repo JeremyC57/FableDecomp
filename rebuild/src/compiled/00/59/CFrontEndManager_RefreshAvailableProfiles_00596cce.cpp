@@ -103,6 +103,8 @@ class CUserProfileManager
 {
 public:
     CWideString GetProfileDir(const CWideString& name, bool create);   // 0x004082D0
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> class CTBaseSingleton
 {
@@ -245,7 +247,7 @@ long CFrontEndManager::RefreshAvailableProfiles()
         CCountedPointer<CComponent> button(
             CreateFrontEndButtonComponent(profiles[i], y, "UI_FRONTEND_BUTTON_FOR_PROFILES_LIST", "", false));
         CCountedPointer<CAction> action(new CAction);
-        bool valid = VerifySignatureCached(CTBaseSingleton<CUserProfileManager>::Get().GetProfileDir(profiles[i], false));
+        bool valid = VerifySignatureCached(CUserProfileManager::Get().GetProfileDir(profiles[i], false));
         action->ActionType = valid ? 0x124 : 0xdb;
         CActionParam* parameter = (CActionParam*)new CActionParamString(profiles[i]);
         action->UIActionParams.push_back(parameter);

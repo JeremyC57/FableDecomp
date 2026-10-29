@@ -8,7 +8,7 @@
 // CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<IsOfType, IsOriginatedByThing>> @ 0x0090DEE0,
 // CMessageEventManager::RemoveMessage @ 0x00493B5B, CVectorMap::LowerBound @ 0x0040F020 (inlined GetInterface: 0xC1 =
 // CTCGossip bit 1 of +0x38, 0x31 = CTCModes bit 17 of +0x24), CBaseIntelligentPointer ctor/SetPItem/GetPItem/dtor
-// (temporary vtable 0x0123E7E0), CTCModes::RemoveMode @ 0x0073ABA0, GFGetCurrentFrame @ 0x0049D870.
+// (temporary vtable 0x0123E7E0), CTCModes::RemoveMode @ 0x0073ABA0, CWorld::GetFrame @ 0x0049D870.
 // Shape: the landed message-filter chain (`IsOfType(0x2C) && IsOriginatedByThing(creature)` bound by pointers, the
 // bound filter passed by const reference); both components used unconditionally (miss arms read the key slot);
 // the gossip target cleared through a CIntelligentPointer temporary of null.
@@ -112,7 +112,6 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CAIStateGroupBase { public:
@@ -186,6 +185,8 @@ class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* m_pMessageManager;    // +0x60
     CMessageEventManager* GetPMessageManager() { return m_pMessageManager; }
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
 struct CIntelligentPointerGossip : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase> (vtable 0x0123E7E0)
     virtual void v00();
@@ -223,7 +224,7 @@ void CAIStateGroup_MinionGossip::OnReplace()
     CTCModes* modes;
     PBrain->PCreature->GetInterfaceV(&modes, 0x31);
     modes->RemoveMode(0x1b);
-    FrameOfLastGossip = GFGetCurrentFrame();
+    FrameOfLastGossip = CWorld::GetFrame();
 }
 
 // ---- stubs ----
@@ -240,7 +241,7 @@ void CIntelligentPointerGossip::v00() { }
 void CIntelligentPointerThing::v00() { }
 static unsigned long g_removedMode; static int g_removeModeCalls;
 void CTCModes::RemoveMode(unsigned long mode) { g_removedMode = mode; g_removeModeCalls++; }
-long __fastcall GFGetCurrentFrame() { return 4321; }
+long CWorld::GetFrame() { return 4321; }
 unsigned long __fastcall GFROR13(unsigned long v) { return v; }
 CMessageEventFilter_IsOriginatedByThing::CMessageEventFilter_IsOriginatedByThing(const CThing* thing) { UID = (unsigned __int64)(unsigned long)thing; }
 static CMessageEvent* g_found; static long g_seenType; static unsigned __int64 g_seenUID;

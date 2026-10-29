@@ -31,7 +31,7 @@ struct CSweepTaskList {                     // retail std::list<CCountedPointer<
 };
 
 class CWorld { public:
-    static long GetWorldFrame();            // 0x0049D870
+    static long __fastcall GetFrame();            // 0x0049D870
 };
 
 class CTCBase
@@ -61,7 +61,7 @@ void CTCVillage::StartSecuritySweep(bool urgent)
     if (queued != 0) {
         InvalidateAndClearAllSecuritySweepTasks();
     } else {
-        FrameStartedSecuritySweep = PeekWorld().GetWorldFrame();
+        FrameStartedSecuritySweep = PeekWorld().GetFrame();
         InitialSecuritySweepRadius = 20.0f;
     }
     CalculateSecuritySweepTasks();

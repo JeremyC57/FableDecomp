@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00903AC0, length 256 bytes (called by the deleting destructor 0x009054D0).
 // Callees: CBaseIntelligentPointer::GetPItem @ 0x00A01B50 (x3), CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // @ 0x0040F020 (the inlined unchecked GetInterface, interface 0x1f = CTCScriptedControl), operator new @ 0x00BFEA1A (0xc bytes),
-// CBase::CBase @ 0x0099A2F0 (the inline NTCScriptedControl::CActionStopScripting ctor, vtable 0x0128D788), CTCScriptedControl::
+// CBaseClassNonCopyable::CBaseClassNonCopyable @ 0x0099A2F0 (the inline NTCScriptedControl::CActionStopScripting ctor, vtable 0x0128D788), CTCScriptedControl::
 // AddAction @ 0x007137D0, ClearLocked @ 0x00712C80, CleanupAllActions @ 0x00713630, CBaseIntelligentPointer::
 // ~CBaseIntelligentPointer @ 0x00A01C10 (PThing), operator delete (import thunk 0x00BFE9BC), CBaseObject::~CBaseObject @ 0x0099A430.
 // Vtables: 0x0128D86C (CScriptGameResourceObjectScriptedThing) at entry, 0x0126008C (CScriptGameResourceObjectBase) before
@@ -47,13 +47,14 @@ struct CThing_Retail {
     }
 };
 
-struct CBase {                                       // CBaseClassNonCopyable root
-    virtual ~CBase();
-    CBase();                                         // 0x0099A2F0
+class CBaseClassNonCopyable {
+protected:                                        // CBaseClassNonCopyable root
+    virtual ~CBaseClassNonCopyable();
+    CBaseClassNonCopyable();                                         // 0x0099A2F0
 };
 
 namespace NTCScriptedControl {
-struct CActionBase : CBase {                         // vtable 0x01265504
+struct CActionBase : CBaseClassNonCopyable {                         // vtable 0x01265504
     long m_actionState;                              // +0x04
     bool m_started;                                  // +0x08
     bool m_finished;                                 // +0x09

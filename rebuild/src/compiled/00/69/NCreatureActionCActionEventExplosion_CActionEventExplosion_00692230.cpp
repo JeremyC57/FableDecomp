@@ -1,6 +1,6 @@
 // NCreatureAction::CActionEventExplosion::CActionEventExplosion() -- inlined intermediate base (CBase(), a cleared flag byte at +4), own vtable, a CCharString at +0x14
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00692230, length 30 bytes.
-// Callees: CBase::CBase @ 0x0099A2D0, CCharString::CCharString() @ 0x0099E4B0 (null data pointer,
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0, CCharString::CCharString() @ 0x0099E4B0 (null data pointer,
 // bumps the string-instance counter). This class's vtable is 0x0125C154 (rtti-vtables.tsv:
 // NCreatureAction::CActionEventExplosion).
 // Shape: the byte store at +4 sits BEFORE this class's vtable store. An init-list member of this
@@ -10,15 +10,16 @@
 // the name member at +0x14 is default-constructed out of line and `this` is returned.
 #include "fable_string.h"
 
-namespace N_0099a2d0 { struct CBase {
+class CBaseClass {
+public:
     virtual void v00();
-    CBase();                                // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+    CBaseClass();                                // 0x0099A2D0
+};
 
 namespace NCreatureAction {
-struct __declspec(novtable) CActionEventBase : CBase {   // abstract: no vtable store of its own
+struct __declspec(novtable) CActionEventBase : CBaseClass {   // abstract: no vtable store of its own
     bool m_bTriggered;                      // +0x04
-    CActionEventBase() : CBase(), m_bTriggered(false) { }
+    CActionEventBase() : CBaseClass(), m_bTriggered(false) { }
 };
 
 struct CActionEventExplosion : CActionEventBase {              // vtable 0x0125C154

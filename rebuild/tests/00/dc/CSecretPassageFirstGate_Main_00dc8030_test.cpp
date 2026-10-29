@@ -22,10 +22,11 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void* data);          // +4
     void* Data;                                         // +8
 };
-struct CBase {
-    virtual ~CBase();                                   // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                   // 0x0099A2E0
 };
-class CScriptThing : public CBase { public:
+class CScriptThing : public CBaseClass { public:
     virtual void s001() const {} virtual void s002() const {} virtual void s003() const {} virtual void s004() const {} virtual void s005() const {} virtual void s006() const {}
     virtual void s007() const {} virtual void s008() const {} virtual void s009() const {} virtual void s010() const {} virtual void s011() const {} virtual void s012() const {}
     virtual void s013() const {} virtual void s014() const {} virtual void s015() const {} virtual void s016() const {} virtual void s017() const {} virtual void s018() const {}
@@ -232,7 +233,7 @@ CCharString::CCharString(const char* t, long) { PStringData = (void*)t; }
 CCharString::~CCharString() {}
 static const char* Str(const CCharString& s) { return (const char*)s.PStringData; }
 void operator delete(void* p) { std::free(p); }
-CBase::~CBase() {}
+CBaseClass::~CBaseClass() {}
 static int g_meId = 5, g_keeperId = 6, g_skelId = 7;
 static int g_usedAt = -1;            // frame number from which the hero uses the gate
 static int g_keeperDiesAt = 1000;    // frame number at which the keeper dies

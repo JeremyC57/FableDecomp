@@ -3,11 +3,11 @@
 #include <cstring>
 
 static long g_frame, g_framesPerSecond = 30;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 inline bool HasTimePassed(const long& lastFrame, long seconds)
 {
     long fps = g_framesPerSecond;
-    return CWorld::GetWorldFrame() - lastFrame > seconds * fps;
+    return CWorld::GetFrame() - lastFrame > seconds * fps;
 }
 static int g_sounds;
 class CCharString { public: const char* text; CCharString(const char* t) : text(t) { } };
@@ -66,7 +66,7 @@ void CAIStateGroup_MinionHasInformation::Update()
             return;
         if (GetCreature()->GetWaveWithInformation()) {
             if (LastFrameWaved == 0 || HasTimePassed(LastFrameWaved, 5)) {
-                LastFrameWaved = CWorld::GetWorldFrame();
+                LastFrameWaved = CWorld::GetFrame();
                 bool attract = true;
                 if (LastFrameWaved - FrameInitialised > 20 * g_framesPerSecond) {
                     if (++WavesWithoutCalling > 4)
@@ -83,7 +83,7 @@ void CAIStateGroup_MinionHasInformation::Update()
         }
         if (GetCreature()->GetWanderWithInformation()) {
             if (LastFrameWandered == 0 || HasTimePassed(LastFrameWandered, 10)) {
-                LastFrameWandered = CWorld::GetWorldFrame();
+                LastFrameWandered = CWorld::GetFrame();
                 if (!Wander()) {
                     Terminate();
                     return;

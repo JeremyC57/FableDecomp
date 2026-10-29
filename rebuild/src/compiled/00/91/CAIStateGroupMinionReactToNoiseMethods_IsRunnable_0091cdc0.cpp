@@ -2,7 +2,7 @@
 //   Bind2 first-pointer store hoist above the GetPItem call as in retail), a local copy of FramesPerSecond taken before the
 //   AddMessage argument calls (retail spills it), and two unused named float locals at entry (E-19 symbol-count re-key: fiadd)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x0091CDC0, length 384 bytes.
-// Callees: GFGetCurrentFrame @ 0x0049D870, the inlined GetInterface 0x34 (CTCPerceiveThing, bit 20 of +0x24),
+// Callees: CWorld::GetFrame @ 0x0049D870, the inlined GetInterface 0x34 (CTCPerceiveThing, bit 20 of +0x24),
 //          CTCPerceiveThing::GetPerceivedThing @ 0x007446A0, CThing::GetPos @ 0x004C73D0, CBaseIntelligentPointer::
 //          GetPItem @ 0x00A01B50 (the creature's PHome +0x168), CAIStateGroupBase::GetPWorld @ 0x008FCFC0,
 //          CMessageEventFilter_IsOriginatedByThing ctor @ 0x006AF290, CMessageEventManager::FindMostRecentMessage<
@@ -106,8 +106,9 @@ class CMessageEventManager { public:
 class CWorld { public:
     unsigned char _pad[0x60];
     CMessageEventManager* PMessageManager;      // +0x60
+public:
+    static long __fastcall GetFrame();   // 0x0049D870
 };
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
 extern long FramesPerSecond;                    // 0x01375550
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -139,7 +140,7 @@ bool CAIStateGroupMinionReactToNoiseMethods::IsRunnable()
     float u0 = 0.0f;   // E-19 symbol-count re-key (no bytes)
     float u1 = 0.0f;
     long fps = FramesPerSecond;
-    if ((float)GFGetCurrentFrame() > (float)(fps * 120.0f + FrameOfLastInteraction))
+    if ((float)CWorld::GetFrame() > (float)(fps * 120.0f + FrameOfLastInteraction))
         return false;
     if (!InvestigatingNoise) {
         CTCPerceiveThing* perceive;

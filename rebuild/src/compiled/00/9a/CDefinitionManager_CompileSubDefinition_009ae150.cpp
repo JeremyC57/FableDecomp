@@ -4,7 +4,7 @@
 // Callees: CDefinitionManager::LoadDef @ 0x009AD6E0 (GetPDefFromGlobalIndex inlined), InstantiateSubDef @ 0x009ADAE0
 //          (CDefPointer by value), parent def vslots 13 (+0x34 RemoveSubDef) / 15 (+0x3c GetPSubDefInfo), sub def vslots
 //          18 (+0x48 Persist) / 19 (+0x4c SetParent), CCharString @ 0x0099EBF0 / ~ @ 0x0099EAE0, CStringParser
-//          @ 0x00404720, list dtor @ 0x004046B0, ~CBase @ 0x0099A2E0, CPersistContext @ 0x009BADD0, ~CPersistContext
+//          @ 0x00404720, list dtor @ 0x004046B0, ~CBaseClass @ 0x0099A2E0, CPersistContext @ 0x009BADD0, ~CPersistContext
 //          @ 0x009BBBF0.
 // Layout: retail CDefinitionManager (vectors 12 bytes): PSymbolMap +0x58, InstantiatedDefs +0xa4, ErrorCallback +0xb0
 //   (PDB +0x60/+0xbc/+0xcc); retail CStringParser 0x28 bytes (STLport list 4 bytes; PDB 0x30).
@@ -21,14 +21,15 @@ class CCharString { public:
 };
 typedef void (*TErrorCallback)(CCharString*);
 
-struct CBase {
-    virtual ~CBase();                                        // 0x0099A2E0
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                        // 0x0099A2E0
 };
 struct CStringParserCommentList {
     void* _M_node;
     ~CStringParserCommentList();                             // 0x004046B0
 };
-class CStringParser : public CBase { public:
+class CStringParser : public CBaseClass { public:
     const char*              String;                         // +0x04
     unsigned long            BaseLineOffset;                 // +0x08
     CCharString              Filename;                       // +0x0c

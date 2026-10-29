@@ -9,7 +9,7 @@ class CThingAICreature { public: CPointer HomeBuilding, WorkBuilding; CTCShopKee
 static bool IsAwareOfThingImplementation(const CThingAICreature* c, const CThing* t, bool) { return c->aware == t; }
 static CThing* g_hero;
 static long g_frame, g_framesPerSecond = 30;
-class CWorld { public: static long GetWorldFrame() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 class CAIBrain { public: CThingAICreature* PCreature; };
 static int g_validCalls;
 
@@ -43,7 +43,7 @@ bool CAIStateGroup_MinionReactToCriminal::IsRunnable()
             return IsValid();
     }
     long fps = g_framesPerSecond;
-    if ((float)(CWorld::GetWorldFrame() - FrameLastLeftStategroup) < fps * 10.0f)
+    if ((float)(CWorld::GetFrame() - FrameLastLeftStategroup) < fps * 10.0f)
         return IsValid();
     return false;
 }

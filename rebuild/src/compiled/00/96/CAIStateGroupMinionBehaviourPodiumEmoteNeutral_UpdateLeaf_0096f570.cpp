@@ -39,7 +39,7 @@ class CTCTalk { public:                                // interface 0xf
     float GetCurrentSpeechDuration();           // 0x006E2840
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 float __stdcall DivideByGameSpeed(float value); // 0x00415FD3
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
@@ -101,7 +101,7 @@ struct CAIStateGroup_MinionBehaviourPodiumEmoteNeutral : CAIStateGroupBase {
 
 void CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::UpdateLeaf()
 {
-    float now = DivideByGameSpeed((float)GetPWorld()->GetWorldFrame());
+    float now = DivideByGameSpeed((float)GetPWorld()->GetFrame());
     if (now - LastEmoteTime > SpeechDuration + Pause) {
         CTCTalk* talk;
         GetCreature()->GetInterface(&talk, 0xf);

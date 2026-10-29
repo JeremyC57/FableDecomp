@@ -1,6 +1,7 @@
 #include <stdio.h>
 static long g_frames;
-long GFGetFrameCount() { return g_frames; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frames; }
 const float g_bulletTimeRatioNumerator = 2.0f;
 struct CBulletTime {
     float m_scale;
@@ -10,7 +11,7 @@ struct CBulletTime {
 float CBulletTime::ConvertInterpolateToBulletTimeInterpolate(float interpolate)
 {
     float ratio; long divisor; long frames;
-    { float scale = GetTimeScale(); ratio = g_bulletTimeRatioNumerator / scale; frames = GFGetFrameCount(); divisor = (long)scale; }
+    { float scale = GetTimeScale(); ratio = g_bulletTimeRatioNumerator / scale; frames = CWorld::GetFrame(); divisor = (long)scale; }
     long rem = (frames - 1) % divisor;
     float carried = ratio * (float)rem;
     float stepped = interpolate * ratio;

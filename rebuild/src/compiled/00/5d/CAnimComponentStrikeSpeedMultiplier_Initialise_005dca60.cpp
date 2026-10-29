@@ -4,7 +4,7 @@
 // Callees: SetDefaultValue (vtable slot 8, 0x005DB410), CCharString::CCharString(const char*, long)
 // 0x0099EBF0, CStringParser::CStringParser(const CCharString&, void (*)(CCharString*), const CCharString&,
 // long) 0x00404720, CCharString::~CCharString 0x0099EAE0, CPersistTraits<float>::TransferIn 0x0040F7E0,
-// list<CStringParserCommentBoundaries>::~list 0x004046B0, CBase::~CBase 0x0099A2E0.
+// list<CStringParserCommentBoundaries>::~list 0x004046B0, CBaseClass::~CBaseClass 0x0099A2E0.
 // Shape: the default reset is a real virtual call (`call [eax+20h]`). The parser is a 0x28-byte stack
 // object built from the text with no error callback, an explicit `CCharString("", -1)` temporary as
 // its file name (the constructor's returned `this` is pushed straight from eax; the literal is the
@@ -24,9 +24,9 @@ public:
     ~CCharString();                                // 0x0099EAE0
 };
 
-class CBase {
+class CBaseClass {
 public:
-    virtual ~CBase();                              // 0x0099A2E0
+    virtual ~CBaseClass();                              // 0x0099A2E0
 };
 
 class CStringParserCommentList {                   // list<CStringParserCommentBoundaries>, retail 8 bytes
@@ -36,7 +36,7 @@ public:
     ~CStringParserCommentList();                   // 0x004046B0
 };
 
-class CStringParser : public CBase {
+class CStringParser : public CBaseClass {
 public:
     char* String;                                  // +0x04
     unsigned long BaseLineOffset;                  // +0x08

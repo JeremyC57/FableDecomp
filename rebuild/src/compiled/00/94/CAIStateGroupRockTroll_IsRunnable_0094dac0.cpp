@@ -160,7 +160,7 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
-long __fastcall GFGetCurrentFrame();            // 0x0049D870
+class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CAIStateGroupBase { public:

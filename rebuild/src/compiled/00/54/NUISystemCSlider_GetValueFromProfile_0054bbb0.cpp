@@ -60,7 +60,7 @@ class CUserProfileManager { public:
     float ShadowDetail;                          // +0x40
     unsigned char _pad44[0xfc - 0x44];
     float ShadowDetailNewProfile;                // +0xfc
-    static CUserProfileManager* Get();           // 0x0040D2A0
+    static CUserProfileManager& __fastcall Get();           // 0x0040D2A0
     float GetGamma() const;                      // 0x00437470
     float GetHUDAlpha() const;                   // 0x00437490
     float GetSoundVolume() const;                // 0x0047CFC2
@@ -103,47 +103,47 @@ void CSlider::GetValueFromProfile()
     if (PDefAction != 0) {
         switch (PDefAction) {
         case 0x29:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetSoundVolume();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetSoundVolume();
             SetThumbToValue();
             break;
         case 0x58:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetDialogueVolume();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetDialogueVolume();
             SetThumbToValue();
             break;
         case 0x2a:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetMusicVolume();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetMusicVolume();
             SetThumbToValue();
             break;
         case 0x4e:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetHUDAlpha();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetHUDAlpha();
             SetThumbToValue();
             break;
         case 0x28:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetGamma();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetGamma();
             SetThumbToValue();
             break;
         case 0x103:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetShadowDetail();
-            Max.X = CUserProfileManager::Get()->GetMaxShadowDetail();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetShadowDetail();
+            Max.X = CUserProfileManager::Get().GetMaxShadowDetail();
             SetThumbToValue();
             break;
         case 0x10a:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetTextureDetail();
-            Max.X = CUserProfileManager::Get()->GetMaxTextureDetail();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetTextureDetail();
+            Max.X = CUserProfileManager::Get().GetMaxTextureDetail();
             SetThumbToValue();
             break;
         case 0x13e:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetCameraSensitivity();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetCameraSensitivity();
             SetThumbToValue();
             break;
         case 0x12a:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetMeshDetail();
-            Max.X = CUserProfileManager::Get()->GetMaxMeshDetail();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetMeshDetail();
+            Max.X = CUserProfileManager::Get().GetMaxMeshDetail();
             SetThumbToValue();
             break;
         case 0x12b:
-            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get()->GetEffectsDetail();
-            Max.X = CUserProfileManager::Get()->GetMaxEffectsDetail();
+            Value.X = OldValue.X = StartValue.X = CUserProfileManager::Get().GetEffectsDetail();
+            Max.X = CUserProfileManager::Get().GetMaxEffectsDetail();
             SetThumbToValue();
             break;
         }

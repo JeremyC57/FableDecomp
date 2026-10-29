@@ -7,9 +7,9 @@ static int g_n = 0;
 static int g_freed = 0;
 static void Log(char c) { if (g_n < 15) g_log[g_n++] = c; g_log[g_n] = 0; }
 static void FreeBlock(void* p) { ++g_freed; free(p); }
-class CBase {
+class CBaseClassNonCopyable {
 public:
-    virtual ~CBase() { Log('B'); }
+    virtual ~CBaseClassNonCopyable() { Log('B'); }
 };
 class CEngineComponent {
 public:
@@ -38,7 +38,7 @@ public:
         _M_node.deallocate(_M_node._M_data, 1);
     }
 };
-class CEnginePrimitiveAttachmentManager : public CBase, public CEngineComponent {
+class CEnginePrimitiveAttachmentManager : public CBaseClassNonCopyable, public CEngineComponent {
 public:
     CAttachedPrimitiveList AttachedPrimitives;
     virtual ~CEnginePrimitiveAttachmentManager() { }
@@ -47,7 +47,7 @@ int main()
 {
     CEnginePrimitiveAttachmentManager* m = new CEnginePrimitiveAttachmentManager;
     m->AttachedPrimitives._M_node._M_data = (SAttachedPrimitiveNode*)malloc(sizeof(SAttachedPrimitiveNode));
-    CBase* asBase = m;
+    CBaseClassNonCopyable* asBase = m;
     delete asBase;                                      // through the scalar deleting destructor
     if (g_freed != 1 || g_log[0] != 'C' || g_log[1] != 'F' || g_log[2] != 'E' || g_log[3] != 'B' || g_n != 4) { std::printf("00b3adc0_TEST FAIL\n"); return 1; }
     g_n = 0; g_freed = 0;

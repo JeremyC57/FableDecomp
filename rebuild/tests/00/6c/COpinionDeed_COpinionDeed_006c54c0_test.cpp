@@ -2,7 +2,8 @@
 #include <cstdio>
 class CThing { public: int id; };
 static long g_worldFrame = 1234;
-long GetWorldFrame_0049d870() { return g_worldFrame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_worldFrame; }
 struct CBaseIntelligentPointer {
     const void* m_pItem;
     CBaseIntelligentPointer() : m_pItem(0) {}
@@ -21,7 +22,7 @@ class COpinionDeed { public:
     CIntelligentPointer<const CThing> PTarget;
     bool WasSearchingForWitnesses, IsStillHappening, IsCrimeReportedToVillage, IsCrime; long ExtraData;
     COpinionDeed(long type, long handle, const C3DVector& position, const CThing* target, bool happening, bool isCrime, long extraData)
-        : DeedType(type), DeedHandle(handle), Position(position), FrameHappened(GetWorldFrame_0049d870()),
+        : DeedType(type), DeedHandle(handle), Position(position), FrameHappened(CWorld::GetFrame()),
           PTarget(target), WasSearchingForWitnesses(happening), IsStillHappening(happening),
           IsCrimeReportedToVillage(false), IsCrime(isCrime), ExtraData(extraData) {}
 };

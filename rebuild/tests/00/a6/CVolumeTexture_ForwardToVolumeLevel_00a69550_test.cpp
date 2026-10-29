@@ -10,13 +10,14 @@ struct IVolume {
     int m_refs;
     void Release() { --m_refs; }
 };
-struct CBase {
-    virtual ~CBase() { ++g_baseDtors; }
+class CBaseClass {
+public:
+    virtual ~CBaseClass() { ++g_baseDtors; }
 };
-class CVolume : public CBase { public:
+class CVolume : public CBaseClass { public:
     IVolume* m_pVolume;
     CVolume(IVolume* v) : m_pVolume(v) { }
-    CVolume(const CVolume& o) : CBase(), m_pVolume(o.m_pVolume) { if (m_pVolume) ++m_pVolume->m_refs; }
+    CVolume(const CVolume& o) : CBaseClass(), m_pVolume(o.m_pVolume) { if (m_pVolume) ++m_pVolume->m_refs; }
     void ReleaseVolume(bool) { if (m_pVolume) { m_pVolume->Release(); ++g_releases; m_pVolume = 0; } }
     void Helper_00a67450(void* argument) { ++g_helperCalls; g_helperArg = argument; }
     virtual ~CVolume() { ReleaseVolume(true); }

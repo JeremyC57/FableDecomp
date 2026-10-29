@@ -18,6 +18,8 @@ CWideString __fastcall operator+(const CWideString& left, const wchar_t* right);
 class CUserProfileManager {
 public:
     CWideString GetPathNameFromFileName(const CWideString& file_name, bool create_folder) const;   // 0x00408120
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 template <class T> class CTBaseSingleton {
 public:
@@ -33,6 +35,6 @@ public:
 };
 bool CWorld::IsHeroStateFileValid(const CWideString& file_name) const
 {
-    const CWideString path = CTBaseSingleton<CUserProfileManager>::Get().GetPathNameFromFileName(file_name + L".hs", false);
+    const CWideString path = CUserProfileManager::Get().GetPathNameFromFileName(file_name + L".hs", false);
     return CAFile::PathExists(path);
 }

@@ -8,7 +8,7 @@
 // Callees: list<CEngineInternalAttachedPrimitiveInfo>::clear() 0x00B3A760 (STLport _List_base::clear: each node's
 //   element destroyed through its virtual destructor, node freed, sentinel relinked; its catalog label
 //   "CGuiControlTreePane::SortTreeRecursively" is propagated), free 0x00BFEA14 (the sentinel), CEngineComponent::
-//   ~CEngineComponent 0x00B59730 (the +4 base), CBase::~CBase 0x0099A300 (the +0 base), operator delete 0x00BFE9BC.
+//   ~CEngineComponent 0x00B59730 (the +4 base), CBaseClassNonCopyable::~CBaseClassNonCopyable 0x0099A300 (the +0 base), operator delete 0x00BFE9BC.
 // Layout: Ego_r.pdb CEnginePrimitiveAttachmentManager (28 bytes there: 16 bytes of bases, then the 12-byte Dinkumware
 //   list) -- retail: CBase (vptr only) +0x00, CEngineComponent (Ego_r 12 bytes: vptr, GlobalPointerAddress,
 //   RenderEnabled, KeepAlive) +0x04, the 4-byte STLport list AttachedPrimitives +0x10. Bases modelled locally (real
@@ -17,9 +17,9 @@
 //   `if (p != 0) free(p)` (the landed list<CAnimSet> ??_G 0x0070B9B0 model), then the bases in reverse order.
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14 (import thunk)
 
-class CBase {
-public:
-    virtual ~CBase();                                   // 0x0099A300
+class CBaseClassNonCopyable {
+protected:
+    virtual ~CBaseClassNonCopyable();                                   // 0x0099A300
 };
 
 class CEngineComponent {
@@ -55,7 +55,7 @@ public:
     }
 };
 
-class CEnginePrimitiveAttachmentManager : public CBase, public CEngineComponent {
+class CEnginePrimitiveAttachmentManager : public CBaseClassNonCopyable, public CEngineComponent {
 public:
     CAttachedPrimitiveList AttachedPrimitives;          // +0x10
     virtual ~CEnginePrimitiveAttachmentManager();

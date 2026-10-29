@@ -1,7 +1,7 @@
 #include <cstdio>
 class C3DVector { public: float X, Y, Z; };
 static long g_frame = 0;
-class CWorld { public: static long GetFrameNumber() { return g_frame; } };
+class CWorld { public: static long __fastcall GetFrame() { return g_frame; } };
 static CWorld g_world;
 class CTCPhysicsBase { public:
     C3DVector Position, OldPosition;
@@ -11,7 +11,7 @@ class CTCPhysicsBase { public:
     CWorld* GetWorld() { return &g_world; }
     void UpdateOldPosition()
     {
-        long frame = GetWorld()->GetFrameNumber();
+        long frame = GetWorld()->GetFrame();
         if (OldPositionLastFrameSet != frame) {
             OldPosition = Position;
             OldPositionLastFrameSet = frame;

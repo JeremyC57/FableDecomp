@@ -61,7 +61,7 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 class CCharString { public:
@@ -141,7 +141,7 @@ void CTCOracleMinigame::Quit()
     InputsPending.clear();
     long framesPerSecond = g_framesPerSecond;
     COracleMinigameDef* def = PDef;
-    WaitTime = (long)(CWorld::GetWorldFrame() + framesPerSecond * def->QuitWaitTime);
+    WaitTime = (long)(CWorld::GetFrame() + framesPerSecond * def->QuitWaitTime);
     g_pPlayerGui->QuestInfo->DisplayMiniGameInfo(0, 7, 0);
     {
         CCharString empty("");

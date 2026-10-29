@@ -1,15 +1,16 @@
 #include <cstdio>
 static long g_frame = 5;
-long __fastcall GFGetFrameCount() { return g_frame; }
+class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
+long CWorld::GetFrame() { return g_frame; }
 class CTransitionBlendAlpha { public: float Current; float Last; };
 template<class T> struct CRetailVector { T* first; T* last; T* end_of_storage; T& operator[](unsigned long n) { return first[n]; } unsigned long size() const { return (unsigned long)(last - first); } };
 class CAnimSet { public:
     long UpdateMode; CRetailVector<short> Anims; CRetailVector<CTransitionBlendAlpha> InternalAlphas;
     float a, b, c; unsigned long FrameInternalAlphasUpdated;
     void UpdateInternalAlphas() {
-        if (FrameInternalAlphasUpdated < (unsigned long)GFGetFrameCount()) {
+        if (FrameInternalAlphasUpdated < (unsigned long)CWorld::GetFrame()) {
             for (unsigned long i = 0; i < InternalAlphas.size(); ++i) InternalAlphas[i].Last = InternalAlphas[i].Current;
-            FrameInternalAlphasUpdated = GFGetFrameCount();
+            FrameInternalAlphasUpdated = CWorld::GetFrame();
         }
     }
 };

@@ -16,10 +16,11 @@ struct CBase {                                  // the action root
     CBase();                                    // 0x0099A2F0
 };
 
-namespace N_0099a2d0 { struct CScriptBase {                            // CScriptThing's root (the manifest also calls it CBase::CBase)
+class CBaseClass {
+public:                             // CScriptThing's root (the manifest also calls it CBase::CBase)
     virtual void v00();
-    CScriptBase();                              // 0x0099A2D0
-}; } using N_0099a2d0::CScriptBase;
+    CBaseClass();                              // 0x0099A2D0
+};
 
 class C3DVector { public:
     float X, Y, Z;
@@ -34,10 +35,10 @@ template <class T> class CCountedPointer { public:      // the counted pointer r
     CCountedPointer() : Object(0), Count(0) { }
 };
 
-class CScriptThing : public CScriptBase { public:             // vtable 0x01238C8C, 12 bytes
+class CScriptThing : public CBaseClass { public:             // vtable 0x01238C8C, 12 bytes
     virtual void v00();
     CCountedPointer<CScriptThing> PImp;         // +0x04 (Ego_r.pdb: CCountedPointer<CScriptThing> PImp -- object, count block)
-    CScriptThing() : CScriptBase(), PImp() { }
+    CScriptThing() : CBaseClass(), PImp() { }
 };
 
 struct __declspec(novtable) CAction : CBase {   // NTCScriptedControl::CActionBase: abstract, its own vtable store is dead

@@ -1,7 +1,7 @@
 // CSymbolMap::CSymbolMap() -- CBase part, this class's vtable, an empty clean symbol vector-map, an empty used-names set (fresh STLport tree header) and duplicate checking off
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x009E5200, length 76 bytes (80 with int3 padding).
 // Leaf: ??0CSymbolMap
-// Callees: CBase::CBase() @ 0x0099A2F0, malloc @ 0x00BFEA0E (the 0x14-byte tree header). Vtable 0x0129C158 =
+// Callees: CBaseClassNonCopyable::CBaseClassNonCopyable() @ 0x0099A2F0, malloc @ 0x00BFEA0E (the 0x14-byte tree header). Vtable 0x0129C158 =
 // CSymbolMap (rtti-vtables.tsv).
 // Label correction: the manifest's "CParticleUpdateParameters<unsigned long,unsigned long>" constructor is
 // propagated. Layout: Ego_r.pdb CSymbolMap (vptr; SLONGMap CVectorMap<CCharString, CSymbolInfo, CCompareString>;
@@ -14,9 +14,10 @@
 // CLookDrawRequest constructor 0x007554C0); the bool last.
 extern "C" void* __cdecl malloc(unsigned int size);         // 0x00BFEA0E
 
-struct CBase {
-    CBase();                                                // 0x0099A2F0
-    virtual ~CBase();
+class CBaseClassNonCopyable {
+protected:
+    CBaseClassNonCopyable();                                                // 0x0099A2F0
+    virtual ~CBaseClassNonCopyable();
 };
 
 class CCharString { public: void* PStringData; };
@@ -77,7 +78,7 @@ template <class K, class V, class C> class CVectorMap { public:    // retail 16 
 };
 template <class T> class CCompareString { public: };
 
-class CSymbolMap : public CBase { public:                                 // vtable 0x0129C158
+class CSymbolMap : public CBaseClassNonCopyable { public:                                 // vtable 0x0129C158
     class CSymbolInfo { public: CCharString GroupName; CCharString EntryName; long Val; };   // PDB, 12 bytes
     CVectorMap<CCharString, CSymbolInfo, CCompareString<CSymbolInfo> > SLONGMap;   // +0x04
     std::set<CCharString>                                             NamesUsed;  // +0x14

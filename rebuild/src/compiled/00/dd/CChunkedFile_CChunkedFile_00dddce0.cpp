@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DDDCE0, 153 bytes of code. Not a CChunkedFile function (that class is 20 bytes; this
 // body writes +0x48..+0x58): it is slot 3 of the no-RTTI vtable around 0x012DCB40 (the only reference to the address),
 // so the class is named by that vtable and the method descriptively.
-// Callees: CBase::CBase @ 0x0099A2D0 and CBase::~CBase @ 0x0099A2E0 (the temporary's base, both out of line),
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0 and CBaseClass::~CBaseClass @ 0x0099A2E0 (the temporary's base, both out of line),
 //          operator delete @ 0x00BFE9BC; the count block's destroy hook through `call [block+4]` with the object at
 //          [block+8] in ecx.
 // Shape: `m_thing = CScriptThing();` -- the 12-byte temporary {CScriptThing vtable 0x01238C8C, PImp {0, 0}} is built
@@ -11,7 +11,7 @@
 // assignment compares the blocks (constant 0 on the right, so `cmp [esi+58h],ebx`), releases ours without a
 // second null test, and stores the (zero) pair it read into locals BEFORE the release (so the stores are
 // the zero register and the add-ref folds away; reading the source after the release reloads it and adds an inc); the temporary's destructor stores its vtable first, releases its
-// own (null) block, clears both words and calls CBase::~CBase. Counted-pointer model of the landed
+// own (null) block, clears both words and calls CBaseClass::~CBaseClass. Counted-pointer model of the landed
 // CScriptThing deleting destructor @ 0x004AB170.
 struct SCountBlock {
     long m_references;                      // +0
@@ -56,12 +56,13 @@ struct CCountedPointer {
     }
 };
 
-namespace N_0099a2d0 { struct CBase {
-    CBase();                                // 0x0099A2D0
-    virtual ~CBase();                       // 0x0099A2E0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass();                                // 0x0099A2D0
+    virtual ~CBaseClass();                       // 0x0099A2E0
+};
 
-class CScriptThing : public CBase { public:               // vtable 0x01238C8C
+class CScriptThing : public CBaseClass { public:               // vtable 0x01238C8C
     CCountedPointer PImp;                   // +0x4
     CScriptThing() { }
     virtual ~CScriptThing() { }

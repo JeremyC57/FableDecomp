@@ -72,7 +72,9 @@ template <class T> struct CTBaseSingleton {
 class CUserProfileManager { public:
     CWideString GetDefaultProfileName() const;             // 0x004065D0
     void SetProfileName(const CWideString& name, bool load);   // 0x0040D400
-    static void LoadProfile(const CWideString& name, bool load) { CTBaseSingleton<CUserProfileManager>::Get().SetProfileName(name, load); }
+    static void LoadProfile(const CWideString& name, bool load) { CUserProfileManager::Get().SetProfileName(name, load); }
+public:
+    static CUserProfileManager& __fastcall Get();   // 0x0040D2A0
 };
 double __fastcall GFGetTime();                             // 0x009E1BC0
 extern bool g_bLoadDefaultProfile;                         // 0x013B8644
@@ -155,7 +157,7 @@ CFrontendGameComponent::CFrontendGameComponent(CMainGameComponentParent* parent,
     LastSessionString = 0;
     NoSessionStrings = 0;
     if (g_bLoadDefaultProfile) {
-        CUserProfileManager::LoadProfile(CTBaseSingleton<CUserProfileManager>::Get().GetDefaultProfileName(), true);
+        CUserProfileManager::LoadProfile(CUserProfileManager::Get().GetDefaultProfileName(), true);
         SetMode(1);
     } else {
         SetMode(12);

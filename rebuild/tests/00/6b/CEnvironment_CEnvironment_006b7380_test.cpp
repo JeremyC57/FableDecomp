@@ -7,7 +7,8 @@ static char g_log[64];
 static int g_n = 0;
 static void Log(char c) { if (g_n < 63) g_log[g_n++] = c; g_log[g_n] = 0; }
 
-struct CBase { virtual ~CBase() { Log('B'); } };
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() { Log('B'); } };
 struct Particle { ~Particle() { Log('P'); } };
 struct Interpolator { ~Interpolator() { Log('I'); } };
 struct Interface { int x; };
@@ -17,7 +18,7 @@ struct Blended { TextureSet TextureSets[3]; };
 struct TickState { Blended BlendedTheme[6]; };
 template <class T> struct scoped_ptr { T* ptr; ~scoped_ptr() { delete ptr; } };
 
-struct Env : CBase {
+struct Env : CBaseClassNonCopyable {
     Vec PriorityStackChannels;
     TickState GameTickState;
     TickState PrevGameTickState;

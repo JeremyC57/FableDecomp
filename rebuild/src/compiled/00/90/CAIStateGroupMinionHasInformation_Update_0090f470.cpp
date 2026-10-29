@@ -76,13 +76,13 @@ class CPlayerManager { public:
     CPlayer* GetPMainPlayer();                  // 0x00449960
 };
 class CWorld { public:
-    static long GetWorldFrame();                // 0x0049D870
+    static long __fastcall GetFrame();                // 0x0049D870
 };
 extern long g_framesPerSecond;                  // 0x01375550
 inline bool HasTimePassed(const long& lastFrame, long seconds)
 {
     long fps = g_framesPerSecond;
-    return CWorld::GetWorldFrame() - lastFrame > seconds * fps;
+    return CWorld::GetFrame() - lastFrame > seconds * fps;
 }
 
 class CAIBrain { public:
@@ -125,7 +125,7 @@ void CAIStateGroup_MinionHasInformation::Update()
             return;
         if (GetCreature()->GetWaveWithInformation()) {
             if (LastFrameWaved == 0 || HasTimePassed(LastFrameWaved, 5)) {
-                LastFrameWaved = CWorld::GetWorldFrame();
+                LastFrameWaved = CWorld::GetFrame();
                 bool attract = true;
                 if (LastFrameWaved - FrameInitialised > 20 * g_framesPerSecond) {
                     if (++WavesWithoutCalling > 4)
@@ -142,7 +142,7 @@ void CAIStateGroup_MinionHasInformation::Update()
         }
         if (GetCreature()->GetWanderWithInformation()) {
             if (LastFrameWandered == 0 || HasTimePassed(LastFrameWandered, 10)) {
-                LastFrameWandered = CWorld::GetWorldFrame();
+                LastFrameWandered = CWorld::GetFrame();
                 if (!Wander()) {
                     Terminate();
                     return;

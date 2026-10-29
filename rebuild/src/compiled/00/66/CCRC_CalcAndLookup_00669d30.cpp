@@ -1,7 +1,7 @@
 // CCRC::CalcAndLookup(const CCharString& name, long* value) -- hash a name with the engine CRC and look the hash up in the owner's CRC -> value map; on a hit store the mapped value and return true
 // Leaf: CalcAndLookup
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00669D30, length 100 bytes (ret 8; 178 call sites, e.g. 0x0066385F).
-// Callees: Calc @ 0x004014A0 (`__fastcall(seed, data, length)`, the engine's CRC-32 kernel, seed 0), the STLport
+// Callees: CCRC::Calc @ 0x004014A0 (`__fastcall(seed, data, length)`, the engine's CRC-32 kernel, seed 0), the STLport
 // map's find @ 0x006699C0 (manifest "BinaryTree_FindNode": `find(iterator* result, const unsigned long& key)`,
 // header pointer at the map's +0, keys at node+0x10, mapped values at node+0x14).
 // The owning class is unknown (the manifest name is kept); the map sits at +0x28.
@@ -20,7 +20,6 @@ public:
     unsigned long GetLength() const { if (PStringData == 0) return 0; return PStringData->StringLength; }
     const char* GetText() const { if (PStringData == 0) return g_EmptyString; return PStringData->PData; }
 };
-unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
 
 struct SCRCMapNode {                          // STLport _Rb_tree_node<pair<const unsigned long, long> >
     long          Color;                      // +0x00
@@ -44,11 +43,13 @@ public:
     unsigned char _pad00[0x28];
     CCRCMap       Map;                        // +0x28
     bool CalcAndLookup(const CCharString& name, long* value);
+public:
+    static unsigned long __fastcall Calc(unsigned long seed, const void* data, unsigned long length);   // 0x004014A0
 };
 
 bool CCRC::CalcAndLookup(const CCharString& name, long* value)
 {
-    unsigned long crc = Calc(0, name.GetText(), name.GetLength());
+    unsigned long crc = CCRC::Calc(0, name.GetText(), name.GetLength());
     SCRCMapIterator it;
     Map.Find(&it, crc);
     if (it.Node != Map.Header) {

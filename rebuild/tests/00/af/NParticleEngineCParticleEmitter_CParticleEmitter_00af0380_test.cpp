@@ -35,10 +35,11 @@ class CCharString { public:
     void* PStringData;
     CCharString() : PStringData(0) {}
 };
-namespace N_0099a2d0 { struct CBase {
-    CBase() {}
-    virtual ~CBase() {}
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    CBaseClass() {}
+    virtual ~CBaseClass() {}
+};
 class CBaseObject { public:
     virtual ~CBaseObject() {}
     void* m_pIntelligentPointer;
@@ -62,21 +63,21 @@ namespace NParticleEngine {
 class CParticleSystem;
 struct CParticleSystemPtr { CParticleSystem* Data; void* Info; };
 struct CParticleUpdateParamDesc { unsigned long a, b; };
-struct CParticleUpdateParameters : CBase {             // vtable 0x0125FFDC, retail 0x24 bytes
+struct CParticleUpdateParameters : CBaseClass {             // vtable 0x0125FFDC, retail 0x24 bytes
     CVectorMap<unsigned long, C3DVector>                VectorParams;   // +0x04
     CVectorMap<unsigned long, CParticleUpdateParamDesc> UpdateParams;   // +0x14
 };
 }
 class CEnginePersistentPrimitiveBase;
-class CEnginePrimitiveHandle : public CBase { public:                // vtable 0x0122F598
+class CEnginePrimitiveHandle : public CBaseClass { public:                // vtable 0x0122F598
     CEnginePersistentPrimitiveBase* Data;              // +0x04 CIVCountedPointer
     CEnginePrimitiveHandle() : Data(0) {}
 };
-class C3DOrientationInterpolator : public CBase { public:            // vtable 0x01239824
+class C3DOrientationInterpolator : public CBaseClass { public:            // vtable 0x01239824
     CRightHandedSet StartOrientation;                  // +0x04
     CRightHandedSet EndOrientation;                    // +0x1c
 };
-class C3DPositionInterpolator : public CBase { public:               // vtable 0x0123981C
+class C3DPositionInterpolator : public CBaseClass { public:               // vtable 0x0123981C
     C3DVector StartPosition;                           // +0x04
     C3DVector EndPosition;                             // +0x10
 };

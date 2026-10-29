@@ -87,7 +87,7 @@ public:
     bool          SubtitlingEnabled;               // +0x0D
     unsigned char _pad0E[0xCD - 0x0E];
     bool          SubtitlingEnabledNewProfile;     // +0xCD (PDB +0xD1)
-    static CUserProfileManager& Get();             // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
+    static CUserProfileManager& __fastcall Get();             // 0x0040D2A0 (CTBaseSingleton<CUserProfileManager>::Get)
     bool IsSubtitlingEnabled() const
     {
         if (UseNewProfileValues)

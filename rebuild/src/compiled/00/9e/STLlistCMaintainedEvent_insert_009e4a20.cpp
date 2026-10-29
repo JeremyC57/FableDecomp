@@ -4,7 +4,7 @@
 // Label correction: the catalog's "CInputEvent_AllocNode" is the one-argument STLport `list<CMaintainedEvent>::insert(iterator)`
 //   (`ret 8`: hidden result pointer + the iterator by value), i.e. `insert(pos, _Tp())` with the two-argument insert and
 //   `_M_create_node` inlined. Same list type as 0x009E47E0 (erase) and CJoystick::MaintainedEventsList.
-// Callees: CBase::CBase @ 0x0099A2D0 / CBase::~CBase @ 0x0099A2E0, CInputEvent::CInputEvent() @ 0x00A04410, the
+// Callees: CBaseClass::CBaseClass @ 0x0099A2D0 / CBaseClass::~CBaseClass @ 0x0099A2E0, CInputEvent::CInputEvent() @ 0x00A04410, the
 //   CInputEvent copy constructor @ 0x009E4850 (landed), CInputEvent::~CInputEvent @ 0x00A03B30 (empty, out of line),
 //   malloc @ 0x00BFEA0E (the 0x40-byte node: two links + the 0x38-byte event).
 // Model: CMaintainedEvent = CBase (vptr) + a CInputEvent at +4, both special members implicit: the temporary's default
@@ -15,11 +15,10 @@
 #include <new>
 extern "C" void* __cdecl malloc(unsigned int size);
 
-class CBase
-{
+class CBaseClass {
 public:
-    CBase();                                       // 0x0099A2D0
-    virtual ~CBase();                              // 0x0099A2E0
+    CBaseClass();                                       // 0x0099A2D0
+    virtual ~CBaseClass();                              // 0x0099A2E0
 };
 
 class CInputEvent
@@ -31,7 +30,7 @@ public:
     ~CInputEvent();                                // 0x00A03B30
 };
 
-class CMaintainedEvent : public CBase              // vtable 0x0129C0E0, 0x38 bytes
+class CMaintainedEvent : public CBaseClass              // vtable 0x0129C0E0, 0x38 bytes
 {
 public:
     CInputEvent Event;                             // +0x04

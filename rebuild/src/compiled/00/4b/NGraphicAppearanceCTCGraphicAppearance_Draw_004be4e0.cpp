@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004BE4E0, length 163 bytes, `ret 4` (thiscall: info).
 // Ego_r.pdb: `?Draw@CTCGraphicAppearance@NGraphicAppearance@@QAEXABVCEnginePrimitivePrepareInfo@@@Z`.
 // Callees: the file-static __fastcall GetRenderPositionInterpolateForThing(const CThing&) @ 0x004BC0E0 (landed),
-// CBase::CBase @ 0x0099A2D0 / CBase::~CBase @ 0x0099A2E0, CTCPhysicsBase::GetOrientationInterpolator(C3DOrientationInterpolator&)
+// CBaseClass::CBaseClass @ 0x0099A2D0 / CBaseClass::~CBaseClass @ 0x0099A2E0, CTCPhysicsBase::GetOrientationInterpolator(C3DOrientationInterpolator&)
 // const @ 0x006B0460, CTCGraphicAppearance::SetPrimitive(info, position, orientation) @ 0x004BD6E0. Globals: the latch byte
 // 0x013B8A14 and the prepare-enabled byte 0x01375480; C3DOrientationInterpolator vtable 0x01239824.
 // Label: the catalog "CTCGraphicAppearance_PrepareForDraw" is behavioural. The body inlines the three-argument
@@ -24,16 +24,17 @@ class CRightHandedSet { public:
     C3DVector Forward;
 };
 
-namespace N_0099a2d0 { struct CBase {
-    virtual ~CBase();                                       // 0x0099A2E0
-    CBase();                                                // 0x0099A2D0
-}; } using N_0099a2d0::CBase;
+class CBaseClass {
+public:
+    virtual ~CBaseClass();                                       // 0x0099A2E0
+    CBaseClass();                                                // 0x0099A2D0
+};
 
-class C3DPositionInterpolator : public CBase { public:                    // vtable 0x0123981C (Ego_r.pdb 0x1c)
+class C3DPositionInterpolator : public CBaseClass { public:                    // vtable 0x0123981C (Ego_r.pdb 0x1c)
     C3DVector StartPosition;                                // +0x04
     C3DVector EndPosition;                                  // +0x10
 };
-class C3DOrientationInterpolator : public CBase { public:                 // vtable 0x01239824 (Ego_r.pdb 0x34)
+class C3DOrientationInterpolator : public CBaseClass { public:                 // vtable 0x01239824 (Ego_r.pdb 0x34)
     CRightHandedSet StartOrientation;                       // +0x04
     CRightHandedSet EndOrientation;                         // +0x1c
 };

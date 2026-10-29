@@ -3,8 +3,9 @@
 #include <new>
 
 static int g_baseRuns = 0;
-struct CBase { virtual ~CBase() {} CBase() { ++g_baseRuns; } };
-class CGameJoystickManager : public CBase { public:
+class CBaseClassNonCopyable {
+public:  virtual ~CBaseClassNonCopyable() {} CBaseClassNonCopyable() { ++g_baseRuns; } };
+class CGameJoystickManager : public CBaseClassNonCopyable { public:
     long m_MainPlayerJoystickDeviceNumber; bool m_MainPlayerJoystickDeviceNumberSet;
     CGameJoystickManager() : m_MainPlayerJoystickDeviceNumber(0), m_MainPlayerJoystickDeviceNumberSet(false) {}
 };

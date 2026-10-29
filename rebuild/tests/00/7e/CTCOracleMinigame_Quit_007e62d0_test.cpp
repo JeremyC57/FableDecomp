@@ -27,7 +27,7 @@ static CPlayerManager g_manager;
 class CMainGameComponent { public: const CPlayerManager* PlayerManager; };
 static CMainGameComponent g_mgc = { &g_manager };
 static CMainGameComponent* g_pMainGameComponent = &g_mgc;
-class CWorld { public: static long GetWorldFrame() { return 1000; } };
+class CWorld { public: static long __fastcall GetFrame() { return 1000; } };
 static long g_framesPerSecond = 30;
 class CCharString { public:
     char text[8];
@@ -84,7 +84,7 @@ void CTCOracleMinigame::Quit()
     InputsPending.clear();
     long framesPerSecond = g_framesPerSecond;
     COracleMinigameDef* def = PDef;
-    WaitTime = (long)(CWorld::GetWorldFrame() + framesPerSecond * def->QuitWaitTime);
+    WaitTime = (long)(CWorld::GetFrame() + framesPerSecond * def->QuitWaitTime);
     g_pPlayerGui->QuestInfo->DisplayMiniGameInfo(0, 7, 0);
     {
         CCharString empty("");

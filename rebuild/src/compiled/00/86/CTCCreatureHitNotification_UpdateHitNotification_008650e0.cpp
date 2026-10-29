@@ -88,7 +88,7 @@ struct CFlashVector {                                    // STLport vector<CFlas
 };
 
 class CWorld { public:
-    static long GetWorldFrame();                         // 0x0049D870
+    static long __fastcall GetFrame();                         // 0x0049D870
 };
 
 class CTCCreatureHitNotification : public CTCBase { public:
@@ -98,7 +98,7 @@ class CTCCreatureHitNotification : public CTCBase { public:
 
 void CTCCreatureHitNotification::UpdateHitNotification()
 {
-    long frame = GetWorld().GetWorldFrame();
+    long frame = GetWorld().GetFrame();
     for (NCreatureHitNotification::CFlash* it = Flashes.begin(); it != Flashes.end(); ) {
         if (it->CreationFrame < frame)
             it = Flashes.erase(it);
