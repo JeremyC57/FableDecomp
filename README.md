@@ -70,13 +70,13 @@ a worklist, not the intended end state.
 | Snapshot | Current result |
 |---|---:|
 | Catalogued retail functions | **49,568** |
-| Landed byte-matching C++ (genuine) | **44,651 · 90.08%** |
-| Retail function bytes reproduced | **5,021,847 · 37.90%** |
+| Landed byte-matching C++ (genuine) | **44,653 · 90.08%** |
+| Retail function bytes reproduced | **5,023,230 · 37.91%** |
 | Accepted analysis naming quality | **99.211%** |
 | Runnable milestone | **Boot movies + interactive frontend, Saved Games, and Options screens** |
 
 Landed byte-matching C++ covers **90.08%** of the 49,568-function catalog by count
-and **37.90%** of retail function bytes: the functions still to do are the large ones.
+and **37.91%** of retail function bytes: the functions still to do are the large ones.
 The first 5% byte-match milestone has been passed.
 
 <details>
@@ -93,10 +93,10 @@ parity, coverage, and naming reports:
 | Analysis DB | Usable reconstruction/navigation names | 99.913% |
 | Analysis DB | Calling convention known | 77.746% |
 | Analysis DB | Complete non-`undefined` prototype | 69.174% |
-| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **51,648** |
-| Reconstruction | Landed byte-matching genuine C++, original catalog | **44,651** (90.08%) |
-| Reconstruction | Landed byte-matching genuine C++, all 57,267 known functions | 51,595 (90.10%) |
-| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,021,847 (37.90%) |
+| Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **51,650** |
+| Reconstruction | Landed byte-matching genuine C++, original catalog | **44,653** (90.08%) |
+| Reconstruction | Landed byte-matching genuine C++, all 57,267 known functions | 51,597 (90.10%) |
+| Reconstruction | Retail function bytes reproduced by genuine C++ | 5,023,230 (37.91%) |
 | Reconstruction | — landed rows using retail inline asm (grade `retail_asm`, counted as genuine) | 134 |
 | Reconstruction | — landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction) | 21 |
 | Readability (2026-09 snapshot) | Landed sources typed onto shared PDB-named engine headers | 651 |
