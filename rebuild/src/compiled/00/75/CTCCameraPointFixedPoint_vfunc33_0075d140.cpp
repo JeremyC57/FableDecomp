@@ -8,8 +8,8 @@
 // Shape: the defaults are literals bound to the const references; VC homes them in the frame word
 // (the bool) and in the dead context-argument slot (each 0.0f re-stored before its call).
 class CPersistContext { public:
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
-    void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620; bool 0x004045C0
 };
 
 #pragma pack(push, 1)

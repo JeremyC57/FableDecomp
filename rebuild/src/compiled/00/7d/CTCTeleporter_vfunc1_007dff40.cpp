@@ -7,7 +7,8 @@
 //        second advances `this`. Members: TeleportActive / TeleportActivated (the persisted keys;
 //        the constructor at 0x007DFEE0 clears both).
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 class CTCTeleporter { public:

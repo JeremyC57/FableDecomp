@@ -35,12 +35,12 @@ void __fastcall GFSerialiseVectorBinaryInLong(CMemoryDataInputStream* stream, CL
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<long> {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, long* value);   // 0x0040FE60
+    void TransferBinaryIn(CMemoryDataInputStream& stream, long& value);   // 0x0040FE60
     static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteSLONG(value); }
 };
 template<> struct CPersistTraits<CDefString> {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, CDefString* value) { value->TransferBinaryIn(stream); }
+    void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(&stream); }
     static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteSLONG(value.TablePos); }
 };
 
@@ -56,7 +56,7 @@ class CPersistContext { public:
         CheckCRC(name);
         switch (m_mode) {
         case 2:
-            CPersistTraits<T>().TransferBinaryIn(m_pLoadStream, &value);
+            CPersistTraits<T>().TransferBinaryIn(*m_pLoadStream, value);
             break;
         case 3:
             CPersistTraits<T>::TransferBinaryOut(m_pSaveStream, value);

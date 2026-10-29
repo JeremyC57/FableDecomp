@@ -73,7 +73,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
@@ -117,7 +117,7 @@ void CTCWife::Unmarry(bool keepHouseUnrented)
         }
         SetAttractionIcon(false, 1.0f, 255);
         FrameGotMarriedToThePlayer = 0x7fffffff;
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
         if (hero && !(hero->Flags91 & 1)) {
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);

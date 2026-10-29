@@ -149,11 +149,12 @@ class CThing { public:
 };
 class CThingObject : public CThing { public: };
 class CThingCreatureBase : public CThing { public: };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
@@ -240,14 +241,14 @@ void CAIStateGroup_ServeFood::Update()
     case 2:
         if (WalkTo(ServePos, ServeRHSet)) {
             CIntelligentPointerThingObject food(table->GetFood(TaskIndex));
-            if (food.GetPItem() && !(food.GetPItem()->m_flags91 & 1)) {
-                if (AIAction_PerformActionAndWait(&CCreatureAction_RemoveFoodFromTable(GetCreature(), food.GetPItem()), false) != 2)
+            if (((CThing*)food.GetPItem()) && !(((CThing*)food.GetPItem())->m_flags91 & 1)) {
+                if (AIAction_PerformActionAndWait(&CCreatureAction_RemoveFoodFromTable(GetCreature(), ((CThing*)food.GetPItem())), false) != 2)
                     break;
                 CTCCarrying* carrying;
                 GetCreature()->GetInterface(&carrying, 0x46);
                 carrying->RemoveThingFromPrimarySlot(0);
                 if (IS_THING_ALIVE(food))
-                    food.GetPItem()->Kill(true);
+                    ((CThing*)food.GetPItem())->Kill(true);
             }
             table->NotifyFoodServed(TaskIndex, 0);
         }

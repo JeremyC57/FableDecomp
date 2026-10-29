@@ -12,7 +12,8 @@ class CPersistContext { public:
     unsigned char _pad_0x00[0x18];
     long Mode;                                                // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: unsigned __int64 0x0044BB00
 };
 struct CThing_Persist {
     unsigned char _pad_0x00[0x18];
@@ -33,7 +34,7 @@ void CTCInventoryItem_Persist::Persist(CPersistContext* context, bool flag)
         unsigned __int64 uid = 0;
         if (PInventory)
             uid = ((CTCInventoryBase_Persist*)PInventory)->ParentThing->UID;
-        context->Transfer("InventoryUID", uid, 0);
+        context->Transfer<unsigned __int64>("InventoryUID", uid, 0);
     } else
-        context->Transfer("InventoryUID", InventoryUIDToAttachTo, 0);
+        context->Transfer<unsigned __int64>("InventoryUID", InventoryUIDToAttachTo, 0);
 }

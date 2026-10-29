@@ -28,7 +28,7 @@ class CPlayer { public:
     CThing* GetPlayerCharacter();                      // 0x00487B70
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                          // 0x00449970
+    CPlayer& GetMainPlayer();                          // 0x00449970
 };
 struct CStatBase {
     void*          __vftable;                          // +0x00
@@ -66,7 +66,7 @@ class CPlayerGui { public:
 
 void CPlayerGui::UpdateRenown()
 {
-    CThing* character = PlayerManager->GetMainPlayer()->GetPlayerCharacter();
+    CThing* character = PlayerManager->GetMainPlayer().GetPlayerCharacter();
     if (character == 0 || (character->StateFlags & 1))
         return;
     long pending = PDrawStatUpdates->PendingRenown;

@@ -162,7 +162,7 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
     CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970
 struct CFrontEnd { bool IsActive(); };             // 0x00434D60
 class CMainGameComponent { public:
     unsigned char _pad0[0x1c];
@@ -187,7 +187,7 @@ bool CSubtitleRenderer::IsInInteractiveState()
                     return false;
             }
         } else {
-            const CThingPlayerCreature* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->PeekPControlledCreature();
+            const CThingPlayerCreature* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().PeekPControlledCreature();
             bool busy = false;
             if (IS_THING_ALIVE(hero) && hero->HasInterface(0xfc)) {
                 CTCA* c = hero->GetInterfaceConst<CTCA>(0xfc);
@@ -196,11 +196,11 @@ bool CSubtitleRenderer::IsInInteractiveState()
             }
             if (!busy) {
                 CTCA* a = 0;
-                CThingCreatureBase* h2 = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
+                CThingCreatureBase* h2 = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetPControlledCreature();
                 if (h2->HasInterface(0xfc))
                     a = h2->GetTC<CTCA>(0xfc);
                 CTCB* b = 0;
-                CThingCreatureBase* h3 = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
+                CThingCreatureBase* h3 = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetPControlledCreature();
                 if (h3->HasInterface(0xc6))
                     b = h3->GetTC<CTCB>(0xc6);
                 return g_pMainGameComponent->m_pFrontEnd->IsActive() || (a && a->m_d) || (b && b->m_c)

@@ -37,15 +37,16 @@ template <class T> struct CRetailList {          // STLport list: the sentinel n
     Node* end() const { return Head; }
 };
 class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                               // +4
     CBaseIntelligentPointer();                   // 0x00A01B10
-    CThing* GetPItem() const;                    // 0x00A01B50
+    CBaseObject* GetPItem() const;                    // 0x00A01B50
     void SetPItem(CThing* item);                 // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 struct CLightningBeam {
     long m_lsState;                              // +0x00 ELightningState

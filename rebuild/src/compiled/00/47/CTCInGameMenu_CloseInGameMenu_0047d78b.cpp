@@ -102,7 +102,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                        // 0x00449970
+    CPlayer& GetMainPlayer();                        // 0x00449970
 };
 class CWorld { public:
     unsigned char _pad00[0x8C];
@@ -226,7 +226,7 @@ void CTCInGameMenu::CloseInGameMenu()
     NUISystem::CManager::GetInstance()->PlayUISound_0041d0a8(owner->GetIconsDef()->CloseMenuSound_1a8, true);
     g_pMainGameComponent->PDisplayEngine->Engine3D->SetCameraMoved(false, false);
     if (OpenInventory) {
-        CThingPlayerCreature* const& hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+        CThingPlayerCreature* const& hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (IS_THING_ALIVE(hero)) {
             CGameEvent event(GAME_EVENT_OPEN_INVENTORY);
             event.Player = hero->PlayerNumber;

@@ -28,7 +28,7 @@ public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                               // 0x00449970
+    CPlayer& GetMainPlayer();                               // 0x00449970
 };
 
 class CSubtitleRenderer { public:
@@ -77,7 +77,7 @@ class CTCFireheartMinigame : public CTCBase { public:
 void CTCFireheartMinigame::Quit()
 {
     InSession = false;
-    CPlayer* player = GetPlayerManager().GetMainPlayer();
+    CPlayer* player = &GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() == PLAYER_MODE_FIREHEART_MINIGAME)
         player->RemoveMode(PLAYER_MODE_FIREHEART_MINIGAME);
     g_pPlayerGui->FireheartQuitPending = true;

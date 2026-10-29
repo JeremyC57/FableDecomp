@@ -119,7 +119,7 @@ class CPlayer { public:
     long GetPlayerNumber() const { return PlayerNumber; }
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                            // 0x00449970
+    CPlayer& GetMainPlayer();                            // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad[0x1c];
@@ -153,7 +153,7 @@ class CQuestManager { public:
 
 bool CQuestManager::ActivateTestQuestCard(const CCharString& questName, const CCharString& cardDefName)
 {
-    CPlayer* player = g_pMainGameComponent->GetPlayerManager()->GetMainPlayer();
+    CPlayer* player = &g_pMainGameComponent->GetPlayerManager()->GetMainPlayer();
     CThing* hero = player->GetPControlledCreature();
     if (hero && !hero->Dead) {
         long defIndex = CGameDefinitionManager::Get().GetDefGlobalIndexFromName(cardDefName);

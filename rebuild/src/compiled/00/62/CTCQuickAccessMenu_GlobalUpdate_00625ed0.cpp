@@ -141,7 +141,7 @@ namespace NUISystem { class CManager { public:
 }; }
 
 class CPlayer { public: void RemoveMode(long mode); };             // 0x00634190
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };        // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };        // 0x00449970
 class CPlayerGui { public: void SetSpecialAbilityButtonsAsDisplaying(bool a, bool b); };   // 0x00437580
 extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 
@@ -201,7 +201,7 @@ void CTCQuickAccessMenu::GlobalUpdate(bool)
         NUISystem::CManager::GetInstance()->ResetInput();
         Active = false;
         Quitting = false;
-        GetPlayerManager().GetMainPlayer()->RemoveMode(0x24);
+        GetPlayerManager().GetMainPlayer().RemoveMode(0x24);
         CTC11* tc = 0;
         ParentThing->GetInterface(0x11, &tc);
         tc->m_setA.clear();

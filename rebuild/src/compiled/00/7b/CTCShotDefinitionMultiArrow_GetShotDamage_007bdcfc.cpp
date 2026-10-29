@@ -43,10 +43,11 @@ class CThing { public:
     }
 };
 template <class T> bool __fastcall IS_THING_ALIVE_0040dce0(const T& thing);   // 0x0040DCE0 (CThing*)
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                                // +4
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
 };
 class CTCDivineWrath { public:
     float GetDamageMultiplier() const;              // 0x007CBF50
@@ -65,8 +66,8 @@ struct CTCShotDefinitionMultiArrow : CTCShotDefinitionBase {
 float CTCShotDefinitionMultiArrow::GetShotDamage() const
 {
     float multiplier = 1.0f;
-    if (IS_THING_ALIVE_0040dce0<CThing*>(PShooter.GetPItem())) {
-        CThing* shooter = PShooter.GetPItem();
+    if (IS_THING_ALIVE_0040dce0<CThing*>(((CThing*)PShooter.GetPItem()))) {
+        CThing* shooter = ((CThing*)PShooter.GetPItem());
         if (shooter->HasInterface(0x88))
             multiplier = shooter->GetInterfaceUnchecked<CTCDivineWrath>(0x88)->GetDamageMultiplier();
     }

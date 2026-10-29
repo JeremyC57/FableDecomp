@@ -104,19 +104,20 @@ class CThing { public:
     }
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                              // +4
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentThingPointer() : CBaseIntelligentPointer() { }
     __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentThingPointer& operator=(const CIntelligentThingPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentThingPointer& operator=(const CIntelligentThingPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 class CCombatActionBase { public:                      // retail sizeof 0x114
     virtual void v00();
@@ -137,7 +138,7 @@ void CCreatureAction_WaspQueenDeath::Initialise()
     CCombatActionBase::Initialise();
     CDefSlot<CSpecialEffectsDef> effectsSlot;
     long effectType = 0;
-    PCreature.GetPItem()->GetDef()->GetSubDef(effectsSlot);
+    ((CThing*)PCreature.GetPItem())->GetDef()->GetSubDef(effectsSlot);
     CSpecialEffectsDef* effects = effectsSlot.m_p;
     if (effects) {
         bool found;
@@ -146,13 +147,13 @@ void CCreatureAction_WaspQueenDeath::Initialise()
             found = effects->GetEffectFromString(name, effectType);
         }
         if (found) {
-            CThing* effect = CreateEffectThing(effectType, &PCreature.GetPItem()->GetPos(), false);
+            CThing* effect = CreateEffectThing(effectType, &((CThing*)PCreature.GetPItem())->GetPos(), false);
             if (effect && !(effect->m_flags91 & 1)) {
                 PDeathEffect = CIntelligentThingPointer(effect);
                 CTCDParticleEmitter* emitter;
                 if (effect->GetTCParticleEmitter(&emitter)) {
                     CCharString helper("TARGET_CURSOR_POINT");
-                    emitter->AttachToThing(PCreature.GetPItem(), 0xc, helper, 0, 0.0f);
+                    emitter->AttachToThing(((CThing*)PCreature.GetPItem()), 0xc, helper, 0, 0.0f);
                 }
             }
         }

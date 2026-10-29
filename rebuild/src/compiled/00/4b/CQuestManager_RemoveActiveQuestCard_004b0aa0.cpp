@@ -70,10 +70,11 @@ __forceinline CTCQuestCard* GetQuestCard(CThing* thing)  // the unchecked lookup
     return tc;
 }
 
+class CBaseObject;
 struct CBaseIntelligentPointer {                         // 8 bytes: vptr, item block
     void* PItem;
     virtual ~CBaseIntelligentPointer();
-    CThing* GetPItem() const;                            // 0x00A01B50
+    CBaseObject* GetPItem() const;                            // 0x00A01B50
 };
 
 struct CCardNode {                                       // STLport list<CIntelligentPointer<CThing>> node
@@ -108,7 +109,7 @@ class CQuestManager { public:
     bool IsCompletedQuestCard(CThing* card) const
     {
         for (CCardNode* node = CompletedQuestCards->_M_next; node != CompletedQuestCards; node = node->_M_next)
-            if (node->_M_data.GetPItem() == card)
+            if (((CThing*)node->_M_data.GetPItem()) == card)
                 return true;
         return false;
     }
@@ -118,7 +119,7 @@ class CQuestManager { public:
 void CQuestManager::RemoveActiveQuestCard(const CCharString& scriptName)
 {
     for (CCardNode* node = ActiveQuestCards->_M_next; node != ActiveQuestCards; node = node->_M_next) {
-        CThing* card = node->_M_data.GetPItem();
+        CThing* card = ((CThing*)node->_M_data.GetPItem());
         CTCQuestCard* tc = 0;
         if (card && card->HasTC(0x6c))
             tc = (CTCQuestCard*)card->GetTC(0x6c);

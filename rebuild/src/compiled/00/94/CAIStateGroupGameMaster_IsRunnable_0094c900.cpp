@@ -93,7 +93,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -132,7 +132,7 @@ struct CAIStateGroup_GameMaster : CAIStateGroupBase {
 bool CAIStateGroup_GameMaster::IsRunnable()
 {
     PTavern = CBuildingPointer(GetCreature()->WorkBuilding.GetPItem());
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero) {
         if (hero->HasTC(0xbc)) {
             CTCFollowed* followed = hero->GetTC<CTCFollowed>(0xbc);

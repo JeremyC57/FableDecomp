@@ -46,7 +46,7 @@ public:
     CTCGraphicAppearance* m_pGraphicAppearance; // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char m_stateFlags;                 // +0x91 (bit 0: dead)
-    CPlayer* GetPlayer_004c7a30();                       // 0x004C7A30
+    CPlayer& GetPlayer();                       // 0x004C7A30
     void SetAlpha(unsigned char alpha)
     {
         if (m_pGraphicAppearance)
@@ -73,21 +73,21 @@ class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem((CBaseObject*)item);
         return *this;
     }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_stateFlags & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_stateFlags & 1))
             return true;
     }
     return false;
@@ -153,9 +153,9 @@ void CTCAssassinRush::CleanUpEffects()
     parent->SetAlpha(0xff);
     for (CIntelligentPointer<CThing>* it = ItemAlphaList.begin_ptr(), *last = ItemAlphaList.end_ptr(); it != last; ++it) {
         if (IS_THING_ALIVE(*it))
-            it->GetPItem()->SetAlpha(0xff);
+            ((CThing*)it->GetPItem())->SetAlpha(0xff);
     }
     ItemAlphaList.clear();
     if (!(parent->m_stateFlags & 1) && parent->m_state == 2)
-        parent->GetPlayer_004c7a30()->EndSpecialMoveMode();
+        parent->GetPlayer().EndSpecialMoveMode();
 }

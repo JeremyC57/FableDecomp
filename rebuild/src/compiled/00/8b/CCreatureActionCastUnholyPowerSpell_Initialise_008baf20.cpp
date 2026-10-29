@@ -70,24 +70,25 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -117,8 +118,8 @@ void CCreatureAction_CastUnholyPowerSpell::Initialise()
 {
     CCombatActionBase::Initialise();
     CTCUnholyPower* power;
-    if (!PCreature.GetPItem()->GetInterface(&power, 0x86))
-        power = (CTCUnholyPower*)PCreature.GetPItem()->AddTC("CTCUnholyPower", true, 0);
+    if (!((CThing*)PCreature.GetPItem())->GetInterface(&power, 0x86))
+        power = (CTCUnholyPower*)((CThing*)PCreature.GetPItem())->AddTC("CTCUnholyPower", true, 0);
     power->m_bArmed = 1;
     CIntelligentPointer thing(PItemRemoved);
     if (IS_THING_ALIVE(thing))

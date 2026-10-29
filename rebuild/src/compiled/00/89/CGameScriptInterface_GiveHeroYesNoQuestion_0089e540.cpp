@@ -65,11 +65,12 @@ class CThing { public:
     unsigned char  LifeFlags;                            // +0x91
 };
 class CThingPlayerCreature : public CThing { };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* Info;
     CBaseIntelligentPointer();                           // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CThing* GetPItem() const;                            // 0x00A01B50
+    CBaseObject* GetPItem() const;                            // 0x00A01B50
     void SetPItem(CThing* item);                         // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01231C4C
@@ -77,7 +78,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };              // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };     // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };     // 0x00449970
 class CGameScriptInterface { public:
     virtual void v000();   // slot 0 (+0x0)
     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008();
@@ -138,10 +139,10 @@ class CGameScriptInterface { public:
 
 void CGameScriptInterface::GiveHeroYesNoQuestion(const CCharString& question, const CCharString& yesText, const CCharString& noText, const CCharString& extraText, bool pauseGame) const
 {
-    CIntelligentPointer<CThingPlayerCreature> hero((CThingPlayerCreature*)PlayerManager->GetMainPlayer()->GetPControlledCreature());
+    CIntelligentPointer<CThingPlayerCreature> hero((CThingPlayerCreature*)PlayerManager->GetMainPlayer().GetPControlledCreature());
     CTCBoastUI* boastUI = 0;
-    if (hero.GetPItem() && !(hero.GetPItem()->LifeFlags & 1)) {
-        CThing* thing = hero.GetPItem();
+    if (((CThing*)hero.GetPItem()) && !(((CThing*)hero.GetPItem())->LifeFlags & 1)) {
+        CThing* thing = ((CThing*)hero.GetPItem());
         if (thing->UsingComponents[7] & 0x100) {
         ComponentMap* map = &thing->Components;
         ComponentEntry* it = map->LowerBound((ETCInterfaceType)0xe8);
@@ -156,6 +157,6 @@ void CGameScriptInterface::GiveHeroYesNoQuestion(const CCharString& question, co
         g_pPlayerGui->Subtitles.SetText(*Component->PFont, question, "", yesText, noText, 0x24, 0.0f, false, true);
     else
         g_pPlayerGui->Subtitles.SetText(*Component->PFont, question, "", yesText, noText, extraText, 0x24, 0.0f, false, true);
-    if (hero.GetPItem() && !(hero.GetPItem()->LifeFlags & 1) && boastUI)
+    if (((CThing*)hero.GetPItem()) && !(((CThing*)hero.GetPItem())->LifeFlags & 1) && boastUI)
         boastUI->AllowUIToOpen(true);
 }

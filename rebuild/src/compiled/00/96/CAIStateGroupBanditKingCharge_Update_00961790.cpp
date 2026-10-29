@@ -15,13 +15,14 @@ class CThing
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -30,15 +31,15 @@ class CIntelligentPointer : public CBaseIntelligentPointer
 { public:
     virtual void v00();
     __forceinline CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }   // converting copy
+    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
+    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }   // converting copy
 };
 
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0)
+    if (((CThing*)p.GetPItem()) != 0)
     {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -110,7 +111,7 @@ void CAIStateGroup_BanditKingCharge::Update()
         CCharString anim("BK_CHARGE_ATTACK", -1);
         CThing* creature = PBrain->Creature;
         AIAction_CombatPerformActionAndWait(
-            &CCreatureAction_BanditKingAttack(creature, PTargetThing.GetPItem(), anim, true, false), false);
+            &CCreatureAction_BanditKingAttack(creature, ((CThing*)PTargetThing.GetPItem()), anim, true, false), false);
     }
     Terminate();
 }

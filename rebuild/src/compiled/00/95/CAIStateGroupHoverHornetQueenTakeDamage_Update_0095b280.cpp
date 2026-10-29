@@ -78,10 +78,11 @@ class CWorld { public:
     CCombatManager* PCombatManager;             // +0x4c
     static long __fastcall GetFrame();                // 0x0049D870 (static: the world pointer is evaluated and dropped)
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -122,7 +123,7 @@ void CAIStateGroupHoverHornetQueenTakeDamageMethods::Update()
                 CCombatManager* combat = GetCreature()->GetCombatManager();
                 if (!GetCreature()->IsCombatant()) {
                     CThing* creature = GetCreature();
-                    combat->RegisterCombatant(creature, PTarget().GetPItem(), true);
+                    combat->RegisterCombatant(creature, ((CThing*)PTarget().GetPItem()), true);
                 }
                 if (GetCreature()->IsCombatant()) {
                     CThing* creature = GetCreature();
@@ -130,7 +131,7 @@ void CAIStateGroupHoverHornetQueenTakeDamageMethods::Update()
                     world->PCombatManager->SetAttackerAsReadyToAttack(creature, true);
                 }
                 CThing* creature = GetCreature();
-                AIAction_CombatPerformActionAndWait(&CCreatureAction_DragonRoar(creature, PTarget().GetPItem()), false);
+                AIAction_CombatPerformActionAndWait(&CCreatureAction_DragonRoar(creature, ((CThing*)PTarget().GetPItem())), false);
                 Terminate();
                 return;
             }

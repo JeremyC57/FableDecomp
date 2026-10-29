@@ -67,7 +67,7 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+    CPlayer& GetMainPlayer();                       // 0x00449970
 };
 
 class CPlayerGui : public CPlayerGuiDonor {
@@ -116,7 +116,7 @@ void CTCFireheartMinigame::PlayGame()
     YPos = 3;
     CTCPhysicsBase* physics = ParentThing->PhysicsTC;
     physics->SetPosition(Markers[0][3]->GetPos());
-    CPlayer* player = GetPlayerManager().GetMainPlayer();
+    CPlayer* player = &GetPlayerManager().GetMainPlayer();
     if (player->GetCurrentMode() != 0x2a)
         player->AddMode(0x2a, false);
     g_pPlayerGui->DisplayBottomHalfGUI = false;

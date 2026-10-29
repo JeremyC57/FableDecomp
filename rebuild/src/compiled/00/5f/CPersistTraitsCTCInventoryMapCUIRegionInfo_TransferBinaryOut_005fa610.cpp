@@ -4,18 +4,8 @@
 // Layout (PDB CTCInventoryMap::CUIRegionInfo, 0x28 bytes, ten longs): Region, Shops, BarberShops, TitleShops, TatooShops,
 //   ShopsForSale, HousesForSale, ShopsOwned, HousesOwned, Taverns. Retail writes TatooShops (+0x10) before TitleShops
 //   (+0xC): the persist order differs from the declaration order. Speed-optimised (default) TU.
-#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
-#undef CDataOutputStream
 
-class CDataOutputStream : public CDataOutputStreamLayout
-{
-public:
-    void WriteSLONG(long);   // 0x00993EB0
-};
-
-struct CDataOutputStream_Methods : CDataOutputStream {
-};
 
 class CTCInventoryMap { public:
     class CUIRegionInfo { public:
@@ -39,7 +29,7 @@ template<> struct CPersistTraits<CTCInventoryMap::CUIRegionInfo> {
 
 void CPersistTraits<CTCInventoryMap::CUIRegionInfo>::TransferBinaryOut(CDataOutputStream* stream, const CTCInventoryMap::CUIRegionInfo* value)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)stream;
+    CDataOutputStream* out = (CDataOutputStream*)stream;
     out->WriteSLONG(value->Region);
     out->WriteSLONG(value->Shops);
     out->WriteSLONG(value->BarberShops);

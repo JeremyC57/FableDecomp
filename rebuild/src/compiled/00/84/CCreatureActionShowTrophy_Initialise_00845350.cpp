@@ -128,19 +128,20 @@ class CThing { public:
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
 #pragma pack(push, 1)
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                              // +4
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentThingPointer() : CBaseIntelligentPointer() { }
     __forceinline CIntelligentThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentThingPointer& operator=(const CIntelligentThingPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentThingPointer& operator=(const CIntelligentThingPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 class CCreatureActionBase {
 public:
@@ -148,7 +149,7 @@ public:
     unsigned char           _pad04[4];
     CBaseIntelligentPointer PCreature;          // +0x08
     unsigned char           _pad10[0xa8 - 0x10];
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThing* GetCreature() const { return ((CThing*)PCreature.GetPItem()); }
 };
 class CCreatureAction_ShowTrophy : public CCreatureActionBase {
 public:
@@ -160,7 +161,7 @@ public:
     __forceinline CTCTrophy* GetTrophy() const
     {
         CTCTrophy* trophy;
-        PTrophyBeingShown.GetPItem()->GetInterface(&trophy, 0x39);
+        ((CThing*)PTrophyBeingShown.GetPItem())->GetInterface(&trophy, 0x39);
         return trophy;
     }
 };
@@ -168,7 +169,7 @@ public:
 
 void CCreatureAction_ShowTrophy::Initialise()
 {
-    if (PTrophyBeingShown.GetPItem() && !(PTrophyBeingShown.GetPItem()->m_flags91 & 1))
+    if (((CThing*)PTrophyBeingShown.GetPItem()) && !(((CThing*)PTrophyBeingShown.GetPItem())->m_flags91 & 1))
         GetTrophy()->SetShowingCreature(GetCreature());
     CDefPointer<CSpecialEffectsDef> effects;
     long effectType = 0;
@@ -181,7 +182,7 @@ void CCreatureAction_ShowTrophy::Initialise()
         if (effect) {
             PEmitter = CIntelligentThingPointer(effect);
             CTCDParticleEmitter* emitter;
-            if (PEmitter.GetPItem()->GetInterface(&emitter, 0x4b))
+            if (((CThing*)PEmitter.GetPItem())->GetInterface(&emitter, 0x4b))
                 emitter->AttachToThing(GetCreature(), 10, g_RightHandAttachmentName, 0, 0.0f);
         }
     }

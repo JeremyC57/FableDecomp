@@ -173,12 +173,13 @@ public:
     unsigned char   m_flags91;                          // +0x91 bit 0: dead
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {                        // Ego_r.pdb: 8 bytes (vtable, PData)
     virtual void v00();
     CThing* m_pItem;                                    // +0x04
     CBaseIntelligentPointer();                          // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CThing* item);                        // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -186,8 +187,8 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -223,7 +224,7 @@ void CTCShotDefinitionBase::InitAttachedEffects()
         return;
     {
         CIntelligentPointerThing effectPointer(effect);
-        PEffect.SetPItem(effectPointer.GetPItem());
+        PEffect.SetPItem(((CThing*)effectPointer.GetPItem()));
     }
     CTCDParticleEmitter* emitter;
     if (effect->HasTC(0x4b))

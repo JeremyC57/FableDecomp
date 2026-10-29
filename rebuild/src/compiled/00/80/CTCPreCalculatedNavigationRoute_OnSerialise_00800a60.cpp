@@ -36,8 +36,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, long& value, const long& defaultValue);                         // 0x00410BE0
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue); // 0x0044BB00
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: long 0x00410BE0; unsigned __int64 0x0044BB00
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -69,7 +69,7 @@ public:
 void CTCPreCalculatedNavigationRoute::OnSerialise(CPersistContext& context, bool)
 {
     long version = 2;
-    context.Transfer("PrecCalculatedNavigationRouteVersion", version, 0);
+    context.Transfer<long>("PrecCalculatedNavigationRouteVersion", version, 0);
     if (context.IsSaving()) {
         if (PThingToCalculateRouteTo.GetPItem() == 0) {
             ThingToCalculateRouteToUID = 0;
@@ -78,10 +78,10 @@ void CTCPreCalculatedNavigationRoute::OnSerialise(CPersistContext& context, bool
             ThingToCalculateRouteToUID = item->UID;
             ThingToCalculateRouteToUID = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ThingToCalculateRouteToUID);
         }
-        context.Transfer("ThingToCalculateRouteToUID", ThingToCalculateRouteToUID, 0);
+        context.Transfer<unsigned __int64>("ThingToCalculateRouteToUID", ThingToCalculateRouteToUID, 0);
         SaveRoute(context);
     } else {
-        context.Transfer("ThingToCalculateRouteToUID", ThingToCalculateRouteToUID, 0);
+        context.Transfer<unsigned __int64>("ThingToCalculateRouteToUID", ThingToCalculateRouteToUID, 0);
         if (ThingToCalculateRouteToUID != 0)
             ThingToCalculateRouteToUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ThingToCalculateRouteToUID);
         LoadRoute(context, version);

@@ -9,8 +9,8 @@
 #include "engine/CTCStockItem.h"
 
 class CPersistContext { public:
-    void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: long 0x00410BE0; bool 0x004045C0
 };
 
 struct CTCStockItem_Methods : CTCStockItem {
@@ -21,6 +21,6 @@ void CTCStockItem_Methods::OnSerialise(CPersistContext& context, bool)
 {
     context.Transfer("ForSale", ForSale, false);
     context.Transfer("Stealable", Stealable, false);
-    context.Transfer("Price", Price, 0);
+    context.Transfer<long>("Price", Price, 0);
     Initialised = true;
 }

@@ -14,13 +14,6 @@
 #include "engine/CDataOutputStream.h"
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public: void* PStringData; };
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                        // 0x00993E30
-    void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteFloat(float value);                       // 0x00993EE0
-    void Write3DVector(const C3DVector& value);         // 0x00993FD0
-    void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
-};
 namespace NParticleEngine {
 class CPSCUpdateNormal { public:
     unsigned char _base[0xc];                           // CPSCBase
@@ -71,9 +64,9 @@ class CPSCUpdateNormal { public:
 };
 void CPSCUpdateNormal::WriteBinary(CDataOutputStream* destination)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)destination;
-    out->WriteULong(FadeInEndInteger);
-    out->WriteULong(FadeOutBeginInteger);
+    CDataOutputStream* out = (CDataOutputStream*)destination;
+    out->WriteULONG(FadeInEndInteger);
+    out->WriteULONG(FadeOutBeginInteger);
     out->WriteEBOOL(UseParticleLifeSecs);
     out->WriteEBOOL(UseRandomRotationAxis);
     out->WriteEBOOL(UseRandomInitialRotation);
@@ -113,7 +106,7 @@ void CPSCUpdateNormal::WriteBinary(CDataOutputStream* destination)
     out->Write3DVector(RotationAxis);
     out->Write3DVector(RandomisePosSpeed);
     out->Write3DVector(RandomisePosScale);
-    out->WriteULong(AccelerationParam);
-    out->WriteULong(OrientFromGameParam);
+    out->WriteULONG(AccelerationParam);
+    out->WriteULONG(OrientFromGameParam);
 }
 }

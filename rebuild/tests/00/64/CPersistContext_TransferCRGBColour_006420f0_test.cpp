@@ -13,8 +13,8 @@ static long VAL(const T& v) { return (long)v.m_argb; }
 class CMemoryDataInputStream { public: int id; CRGBColour ReadColour() { LOG("binin"); return CRGBColour(7); } };
 class CDataOutputStream { public: int id; long written; void WriteColour(const CRGBColour& c) { LOG("write"); written = (long)c.m_argb; } };
 
-struct CPersistContext_TransferableObjectBase { virtual long Peek() { return -1; } virtual ~CPersistContext_TransferableObjectBase() {} };
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableObjectBase {
+class CPersistContext_TransferableComponentGenericType { public: virtual long Peek() { return -1; } virtual ~CPersistContext_TransferableComponentGenericType() {} };
+template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {
     T* Value;
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual long Peek() { return VAL(*Value); }
@@ -26,8 +26,8 @@ class CPersistContext { public:
     CDataOutputStream* PSaveStream;
     long seen;
     void CheckCRC(const char* name) { LOG(std::strcmp(name, "Key") == 0 ? "crc" : "crc?"); }
-    void TransferObjectSaveText(const char*, CPersistContext_TransferableObjectBase& item) { LOG("save"); seen = item.Peek(); }
-    void TransferObjectLoadText(const char*, CPersistContext_TransferableObjectBase& item) { LOG("load"); seen = item.Peek(); }
+    void TransferObjectSaveText(const char*, CPersistContext_TransferableComponentGenericType& item) { LOG("save"); seen = item.Peek(); }
+    void TransferObjectLoadText(const char*, CPersistContext_TransferableComponentGenericType& item) { LOG("load"); seen = item.Peek(); }
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);
 };
 template <class T>

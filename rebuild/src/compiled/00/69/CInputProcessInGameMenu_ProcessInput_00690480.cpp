@@ -49,7 +49,7 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;         // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+    CPlayer& GetMainPlayer();                      // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -138,7 +138,7 @@ void CInputProcessInGameMenu::ProcessInput(const CInputEvent& event, CProcessedI
             processed.SetHandled();
         } else if (IsEventGameAction(2, event)) {
             PInGameMenu->CloseInGameMenuViaGameEvent();
-            CThingPlayerCreature* const& hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+            CThingPlayerCreature* const& hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
             if (IS_THING_ALIVE(hero)) {
                 CGameEvent gameEvent(0x1a);
                 gameEvent.Player = hero->PlayerNumber;

@@ -47,12 +47,13 @@ struct CRetailThing {
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable; CThing* Object;
-    CThing* GetPItem() const; // 00A01B50
+    CBaseObject* GetPItem() const; // 00A01B50
 };
 inline bool IsAlive(const CBaseIntelligentPointer& p) {
-    if(p.GetPItem()!=0) { if(!((CRetailThing*)p.GetPItem())->Dead) return true; }
+    if(((CThing*)p.GetPItem())!=0) { if(!((CRetailThing*)p.GetPItem())->Dead) return true; }
     return false;
 }
 class CTCVolumeContainmentTracker { public:
@@ -86,12 +87,12 @@ void CCorneredMethods::Update() {
         ((CRetailThing*)Brain()->Creature)->GetInterface(&tracker,0x75);
         tracker->Update();
         long result;
-        if(tracker->PThingInside.GetPItem()) {
+        if(((CThing*)tracker->PThingInside.GetPItem())) {
             CThingCreatureBase* creature=(CThingCreatureBase*)Brain()->Creature;
-            result=PerformActionAndWait(&CCreatureAction_BalverineLungeAttack(creature,Target().GetPItem()),false);
+            result=PerformActionAndWait(&CCreatureAction_BalverineLungeAttack(creature,((CThing*)Target().GetPItem())),false);
         } else {
             CThingCreatureBase* creature=(CThingCreatureBase*)Brain()->Creature;
-            result=PerformActionAndWait(&CCreatureAction_BalverineCorneredJumpIntoSky(creature,Target().GetPItem(),(C3DVector*)&LandPos_X),false);
+            result=PerformActionAndWait(&CCreatureAction_BalverineCorneredJumpIntoSky(creature,((CThing*)Target().GetPItem()),(C3DVector*)&LandPos_X),false);
         }
         if(result==2) { Terminate(); return; }
     }

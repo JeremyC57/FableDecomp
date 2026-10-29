@@ -54,17 +54,18 @@ class CThing { public:
     }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -167,7 +168,7 @@ struct CListNode {
 struct CThingLinked {
     unsigned char _pad[0x170];
     CBaseIntelligentPointer m_linkedThing;      // +0x170
-    CThing* GetPLinkedThing() { return m_linkedThing.GetPItem(); }
+    CThing* GetPLinkedThing() { return ((CThing*)m_linkedThing.GetPItem()); }
 };
 
 class CTCVillage { public:
@@ -192,7 +193,7 @@ bool CAIStateGroup_GoToPub::IsStaffed()
         if (village) {
             for (CListNode* node = village->m_head->next; node != village->m_head; node = node->next) {
                 if (IS_THING_ALIVE(node->value)
-                    && node->value.GetPBuilding()->GetPLinkedThing() == PPub.GetPItem())
+                    && node->value.GetPBuilding()->GetPLinkedThing() == ((CThing*)PPub.GetPItem()))
                     return true;
             }
         }

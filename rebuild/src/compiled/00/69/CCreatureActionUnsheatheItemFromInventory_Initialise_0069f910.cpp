@@ -27,7 +27,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];         // +0x20 std::bitset of interface types
     CInterfaceMap m_interfaces;             // +0x44
-    CPlayer* GetPlayer_004c7a30();                   // 0x004C7A30
+    CPlayer& GetPlayer();                   // 0x004C7A30
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -83,6 +83,6 @@ void CCreatureAction_UnsheatheItemFromInventory::Initialise()
     if (PCreature.GetPItem()->GetInterface(&ranged, 0x81)) {
         ranged->CancelAimingWeapon();
         ranged->ResetProjectileWeaponMode();
-        PCreature.GetPItem()->GetPlayer_004c7a30()->RemoveMode(0x22);
+        PCreature.GetPItem()->GetPlayer().RemoveMode(0x22);
     }
 }

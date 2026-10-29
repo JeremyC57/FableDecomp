@@ -25,13 +25,13 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CThing* PItem;                              // +4
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(other.GetPItem()); return *this; }
+    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
+    __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 class C3DVector { public: float X, Y, Z; C3DVector() {} C3DVector(const C3DVector& v) : X(v.X), Y(v.Y), Z(v.Z) {} };
 class CRightHandedSet { public: C3DVector Up, Forward; };
@@ -94,20 +94,20 @@ void CCreatureAction_CastBattleCharge::Initialise()
         SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
-    CTCBattleCharge* tc = PCreature.GetPItem()->AddTC("CTCBattleCharge", true, 0);
-    CThing* aim = PTarget.GetPItem();
+    CTCBattleCharge* tc = ((CThing*)PCreature.GetPItem())->AddTC("CTCBattleCharge", true, 0);
+    CThing* aim = ((CThing*)PTarget.GetPItem());
     tc->SetPTarget(aim, IsZTargetting);
     if (Override) {
         tc->Distance = Distance;
-        CPhysics& physics = *PCreature.GetPItem()->GetPhysics();
+        CPhysics& physics = *((CThing*)PCreature.GetPItem())->GetPhysics();
         CRightHandedSet set;
         set.Up.X = 0; set.Up.Y = 0; set.Up.Z = 1;
         CopyDirection(set.Forward);
         physics.SetFacingAnglesFromRHSet(set);
     }
-    if (PCreature.GetPItem()->m_state == 1)
+    if (((CThing*)PCreature.GetPItem())->m_state == 1)
         tc->Level = Level;
     CIntelligentPointerThing target = PItemRemoved;
-    if (target.GetPItem() && !(target.GetPItem()->m_flags91 & 1))
+    if (((CThing*)target.GetPItem()) && !(((CThing*)target.GetPItem())->m_flags91 & 1))
         tc->PTarget = target;
 }

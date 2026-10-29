@@ -9,7 +9,8 @@
 // Shape: the `true` default is a one-byte temporary in the high byte of the `push ecx` frame slot,
 // stored after the argument pushes; `this` is advanced in place (`add ecx,0Ch`) to form &Active.
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 class CTCDRegionEntrance { public:

@@ -99,10 +99,11 @@ class CTCHitLocations { public:                        // interface type 0x7F
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithTriangle(const CVector<C3DVector>& triangle,
         C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008169B0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                            // +4
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 extern long g_StrikeHitPauseFrames;             // 0x013B86D0
 namespace {
@@ -229,11 +230,11 @@ void CCombatActionBase::ProcessPossibleProneThingsStrikeEvent(float time, const 
     }
     if (hit) {
         GetPActiveStrikeEvent()->StruckThingList.push_back_inline(&thing);
-        if (!HasPerformedAction() && IsToPerformActionOnStrike() && PTarget.GetPItem() == &thing) {
+        if (!HasPerformedAction() && IsToPerformActionOnStrike() && ((CThing*)PTarget.GetPItem()) == &thing) {
             PerformAction();
             PerformedAction = true;
         }
-        if (PTarget.GetPItem() == &thing || (!(PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1)) && !HitThing))
+        if (((CThing*)PTarget.GetPItem()) == &thing || (!(((CThing*)PTarget.GetPItem()) && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1)) && !HitThing))
             FrameUpdatePauseFrames = g_StrikeHitPauseFrames;
         HitThing = true;
         ProcessFramesRunningForOnHitWithParams(RunningTimeSeconds, LastRunningTimeSeconds, previous, current, hitPosition);

@@ -25,7 +25,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -33,7 +33,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem((CBaseObject*)item);
         return *this;
     }
@@ -98,7 +98,7 @@ void CTCBulletTime::PlayCreatureOnHitEffect(CThing* creature)
     CEnvironmentSpellEffectInterface* spellEffects = GetWorld().PEffects->SpellEffects;
     CRadialBlurManager* blurs = GetWorld().PEffects->RadialBlurs;
     CThing* parent = ParentThing;
-    if (HitCreatureBlur.GetPItem() == parent) {
+    if (((CThing*)HitCreatureBlur.GetPItem()) == parent) {
         RadialBlurKey = blurs->AddRadialBlur(0, 0, PDef->DamageRadialBlur.ThresholdCol, PDef->DamageRadialBlur.Length,
                                              PDef->DamageRadialBlur.IntensityCol, PDef->DamageRadialBlur.Fade,
                                              PDef->DamageRadialBlur.Range, PDef->DamageRadialBlur.Twist);
@@ -109,5 +109,5 @@ void CTCBulletTime::PlayCreatureOnHitEffect(CThing* creature)
                                              PDef->RadialBlur.Range, PDef->RadialBlur.Twist);
         blurs->FadeOutRadialBlur(PDef->RadialBlur.FadeTimeSecs, RadialBlurKey);
     }
-    spellEffects->SetRadialBlurCenterWorldPos(HitCreatureBlur.GetPItem()->GetPos(), true);
+    spellEffects->SetRadialBlurCenterWorldPos(((CThing*)HitCreatureBlur.GetPItem())->GetPos(), true);
 }

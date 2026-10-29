@@ -34,7 +34,8 @@ class CPersistContext { public:
     void Transfer(CCharStringVector& value);                                 // 0x004331F9
     void Transfer(ECrimeSeverity& value);                                    // 0x0047922B
     void Transfer(ETutorialCategory& value);                                 // 0x00452045
-    void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 struct CDefBase {

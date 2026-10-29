@@ -31,9 +31,10 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                     // +0x18: 0 text load, 1 text save, 2 binary load, 3 binary save
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
-    void Transfer(const char* name, CCharString& value);                      // 0x00411010
-    void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);   // 0x004109A0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0; CCharString 0x004109A0
+    template <class T> void Transfer(const char* name, T& value);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: CCharString 0x00411010
 };
 
 struct CSymbolInfo {

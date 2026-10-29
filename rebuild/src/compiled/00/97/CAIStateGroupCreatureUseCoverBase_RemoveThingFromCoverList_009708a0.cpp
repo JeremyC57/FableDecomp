@@ -15,15 +15,16 @@
 //   inline `SetPItem(other.GetPItem())` form evaluates the inlined member's `this` first.
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     void* m_pItem;                                  // +0x04
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
 struct CIntelligentPointerThing : CBaseIntelligentPointer {      // CIntelligentPointer<CThing>
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 
 __forceinline CIntelligentPointerThing* CopyRange(CIntelligentPointerThing* first, CIntelligentPointerThing* last, CIntelligentPointerThing* result)
@@ -77,7 +78,7 @@ struct CAIStateGroup_CreatureUseCoverBase : CAIStateGroupBase {
 void CAIStateGroup_CreatureUseCoverBase::RemoveThingFromCoverList(CThing* thing)
 {
     for (CIntelligentPointerThing* it = CoverList.begin(); it != CoverList.end(); ) {
-        if (it->GetPItem() == thing)
+        if (((CThing*)it->GetPItem()) == thing)
             it = CoverList.erase(it);
         else
             ++it;

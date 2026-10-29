@@ -115,7 +115,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                            // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
-    CPlayer* GetPlayer_004c7a30();                             // 0x004C7A30
+    CPlayer& GetPlayer();                             // 0x004C7A30
     CDefClassBase* GetDef() const { return m_pDef; }
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template<class T> __forceinline T* GetTC(long type)
@@ -236,8 +236,8 @@ void CCreatureAction_CastWillEnflameSpell::FinishAction()
         CTCCreatureModeManager* modes;
         PCreature.GetPItem()->GetInterface(&modes, 0x31);
         modes->UpdateFrontMode();
-        if (PCreature.GetPItem()->GetPlayer_004c7a30()->IsMainPlayer())
-            PCreature.GetPItem()->GetPlayer_004c7a30()->SetAggressiveMode(true);
+        if (PCreature.GetPItem()->GetPlayer().IsMainPlayer())
+            PCreature.GetPItem()->GetPlayer().SetAggressiveMode(true);
     }
     CTCEnflame* enflame;
     if (PCreature.GetPItem()->GetInterface(&enflame, 0x95)) {

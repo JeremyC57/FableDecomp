@@ -6,16 +6,17 @@
 // memberwise user copy constructor over dword members, so no FPU and no `lea`), PWeapon (+0x120) through the inline intelligent-pointer
 // copy constructor (its address kept in ebx), PerformedStrikeEnd (+0x128). Members = PDB names (PDB +0x12c.. sit 0x18 high).
 class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
     CBaseIntelligentPointer();              // 0x00A01B10
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
     void SetPItem(CThing* item);            // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 class C3DVector { public:                          // floats in the engine; copied as dwords
     long X, Y, Z;

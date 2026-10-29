@@ -101,23 +101,24 @@ class CTCDParticleEmitter { public:
     void AttachToThing(CThing* thing, long boneIndex, const CCharString& boneName, long a, float b);   // 0x006E0BE0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -207,12 +208,12 @@ extern long g_FramesPerSecond;                        // 0x01375550
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vtable 0x0123E7E0
     virtual void v00();
     CIntelligentPointerCreature(CThing* item) { SetPItem(item); }
-    CIntelligentPointerCreature(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); }
+    CIntelligentPointerCreature(const CIntelligentPointerCreature& other) { SetPItem(((CThing*)other.GetPItem())); }
 };
 struct CIntelligentPointerThing2 : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v01();
     CIntelligentPointerThing2(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing2(const CIntelligentPointerThing2& other) { SetPItem(other.GetPItem()); }
+    CIntelligentPointerThing2(const CIntelligentPointerThing2& other) { SetPItem(((CThing*)other.GetPItem())); }
 };
 inline void* operator new(unsigned int, void* where) { return where; }
 struct __false_type { };

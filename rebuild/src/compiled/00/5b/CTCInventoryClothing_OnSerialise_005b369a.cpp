@@ -14,8 +14,10 @@
 #pragma optimize("y", off)
 #pragma optimize("s", on)
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue); // 0x004045C0
-    void Transfer(const char* name, bool& value);                           // 0x004107C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
+    template <class T> void Transfer(const char* name, T& value);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004107C0
 public:
     bool IsSaving() const;   // 0x004AEF50
 };

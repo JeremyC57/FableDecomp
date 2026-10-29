@@ -22,7 +22,7 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                            // 0x00449970
+    CPlayer& GetMainPlayer();                            // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -68,7 +68,7 @@ __declspec(noinline) void CManager::GetAllRegisteredScreens(CVector<const CBase*
 #pragma auto_inline(on)
 void CManager::RemoveAllPlayerModes()
 {
-    CPlayer* player = g_pMainGameComponent->PPlayerManager->GetMainPlayer();
+    CPlayer* player = &g_pMainGameComponent->PPlayerManager->GetMainPlayer();
     unsigned int i = 0;
     CVector<const CBase*> screens;
     GetAllRegisteredScreens(screens);

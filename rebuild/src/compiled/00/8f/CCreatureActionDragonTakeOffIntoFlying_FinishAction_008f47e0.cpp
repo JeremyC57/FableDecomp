@@ -52,7 +52,7 @@ struct CTC4D {                                        // interface 0x4D on the h
     void RemoveThing(CThing* thing);                  // 0x00770F20
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };        // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };  // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };  // 0x00449970
 class CMainGameComponent { public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;                    // +0x1c
@@ -139,7 +139,7 @@ void CCreatureAction_DragonTakeOffIntoFlying::FinishAction()
 {
     PCreature.GetPItem()->GetPhysics()->SetFlying(true);
     PCreature.GetPItem()->RemoveTC(0x4d);
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTC4D* list;
     if (hero->GetInterface(&list, 0x4d))
         list->RemoveThing(PCreature.GetPItem());

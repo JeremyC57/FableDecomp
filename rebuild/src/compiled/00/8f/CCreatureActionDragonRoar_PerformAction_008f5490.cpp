@@ -27,7 +27,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -98,18 +98,18 @@ class CCreatureAction_DragonRoar { public:
 
 void CCreatureAction_DragonRoar::PerformAction()
 {
-    C3DVector position = PCreature.GetPItem()->GetPos();
+    C3DVector position = ((CThing*)PCreature.GetPItem())->GetPos();
     CRightHandedSet orientation;
     {
         CCharString name("DRAGON_MOUTH_DUMMY");
-        PCreature.GetPItem()->GetGraphicAppearance()->GetDummyObject(name, 0, 0, &position, &orientation, 1.0f);
+        ((CThing*)PCreature.GetPItem())->GetGraphicAppearance()->GetDummyObject(name, 0, 0, &position, &orientation, 1.0f);
     }
-    position.Z = PCreature.GetPItem()->GetPos().Z;
-    position += PCreature.GetPItem()->GetPhysics()->GetFacing() * 2.0f;
-    CThing* barrier = CreatePhysicalBarrierThing(position, PCreature.GetPItem()->GetPos(), 2.0f);
+    position.Z = ((CThing*)PCreature.GetPItem())->GetPos().Z;
+    position += ((CThing*)PCreature.GetPItem())->GetPhysics()->GetFacing() * 2.0f;
+    CThing* barrier = CreatePhysicalBarrierThing(position, ((CThing*)PCreature.GetPItem())->GetPos(), 2.0f);
     if (barrier) {
         CTCDriverBase* driver = barrier->GetDriver();
         driver->SetLifetime(3.0f);
-        driver->Passengers.push_back(CIntelligentPointer<CThing>(PCreature.GetPItem()));
+        driver->Passengers.push_back(CIntelligentPointer<CThing>(((CThing*)PCreature.GetPItem())));
     }
 }

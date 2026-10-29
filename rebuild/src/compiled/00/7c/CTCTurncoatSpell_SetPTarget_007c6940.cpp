@@ -57,12 +57,13 @@ public:
 };
 class CThingCreatureBase;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();                         // +0x00 vptr
     void*   PData;                              // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x0123E7D8
@@ -70,7 +71,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem(item);
         return *this;
     }
@@ -78,8 +79,8 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -115,7 +116,7 @@ void CTCTurncoatSpell::SetPTarget(CThingCreatureBase* target)
 {
     PTarget = CIntelligentPointer<CThingCreatureBase>(target);
     if (IS_THING_ALIVE(PTarget)) {
-        CThing* targetThing = PTarget.GetPItem();
+        CThing* targetThing = ((CThing*)PTarget.GetPItem());
         if (targetThing->HasTC(0x9f)) {
             CTCTurncoat* turncoat = (CTCTurncoat*)targetThing->GetTC(0x9f);
             const CThing* caster = ParentThing;

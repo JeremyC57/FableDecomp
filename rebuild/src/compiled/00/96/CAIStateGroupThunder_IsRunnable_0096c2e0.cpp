@@ -122,18 +122,19 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {          // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>
     virtual void v00();
@@ -142,8 +143,8 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelli
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {       // vtable 0x0123E7D8
     virtual void v00();
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerConstThing& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
+    CIntelligentPointerCreature& operator=(const CIntelligentPointerConstThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();

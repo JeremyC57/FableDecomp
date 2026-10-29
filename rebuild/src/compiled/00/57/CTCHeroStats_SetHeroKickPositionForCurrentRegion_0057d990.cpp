@@ -31,7 +31,7 @@ class CRegion { public:
 };
 
 class CWorldMap { public:
-    long GetCurrentRegionNumber();                   // 0x004FB150
+    long GetLoadedRegion() const;                   // 0x004FB150
     CRegion& GetRegion_004fb490(long index);                  // 0x004FB490
 };
 
@@ -76,7 +76,7 @@ void CTCHeroStats::SetHeroKickPositionForCurrentRegion(const C3DVector& position
 {
     CWorld* world = GetWorld();
     MirroredCriminalStatus& status =
-        OutstandingCrimes[world->GetWorldMap()->GetRegion_004fb490(GetWorldMap()->GetCurrentRegionNumber()).Name];
+        OutstandingCrimes[world->GetWorldMap()->GetRegion_004fb490(GetWorldMap()->GetLoadedRegion()).Name];
     status.EntrancePosX = position.X;
     status.EntrancePosY = position.Y;
     status.EntrancePosZ = position.Z;

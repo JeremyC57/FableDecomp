@@ -57,15 +57,16 @@ class CThing { public:
         return (T*)((it == map->last || wanted < it->first) ? map->last : it)->second;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {                // CIntelligentPointer<T>: vptr + item
     void*   __vftable;                          // +0x00
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;

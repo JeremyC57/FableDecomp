@@ -55,12 +55,13 @@ struct CTCHeroTargeting {                          // interface 8 (descriptive)
     virtual void v32();
     virtual CThing* GetTargetThing();              // slot 33 (+0x84) (descriptive)
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                               // +4
     CBaseIntelligentPointer();                     // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                    // 0x00A01C10
-    CThing* GetPItem() const;                      // 0x00A01B50
+    CBaseObject* GetPItem() const;                      // 0x00A01B50
     void SetPItem(CThing* item);                   // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
@@ -70,8 +71,8 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 bool __fastcall operator!=(const CBaseIntelligentPointer& pointer, const CThing* thing);   // 0x00689270
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -111,19 +112,19 @@ void CInputProcessZTarget::ProcessInput(const CInputEvent& event, CProcessedInpu
     if (IsEventButtonPressed(event) && IsEventGameAction(0x4a, event)) {
         CThing* target = 0;
         CTCHeroTargeting* targeting;
-        if (IS_THING_ALIVE(PCreature) && PCreature.GetPItem()->GetInterface(&targeting, 8))
+        if (IS_THING_ALIVE(PCreature) && ((CThing*)PCreature.GetPItem())->GetInterface(&targeting, 8))
             target = targeting->GetTargetThing();
         {
             CIntelligentPointer pointer;
             pointer.SetPItem(target);
-            PTarget.SetPItem(pointer.GetPItem());
+            PTarget.SetPItem(((CThing*)pointer.GetPItem()));
         }
         DeactivateHoldTimer = 15;
         processed.SetHandled();
     }
     if (IsEventButtonHeld(event) && IsEventGameAction(0x4a, event)) {
         CTCHeroTargeting* targeting;
-        if (IS_THING_ALIVE(PCreature) && PCreature.GetPItem()->GetInterface(&targeting, 8)) {
+        if (IS_THING_ALIVE(PCreature) && ((CThing*)PCreature.GetPItem())->GetInterface(&targeting, 8)) {
             if (!(PTarget != targeting->GetTargetThing()) && DeactivateHoldTimer != -1) {
                 DeactivateHoldTimer = -1;
                 DeactivateZTarget(processed);

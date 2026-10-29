@@ -38,10 +38,11 @@ class CThing { public:
  CPhysicsMethods* PPhysics;
  __forceinline CPhysicsMethods* GetPhysics() const {return PPhysics;}
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer(); //00A01C10
  void* PData;
- CThing* GetPItem() const; //00A01B50
+ CBaseObject* GetPItem() const; //00A01B50
 };
 class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;
@@ -61,11 +62,11 @@ void CCreatureAction_DragonFlight::FrameUpdate()
  if(TurnRate!=0.0f){
   long frames=GetTotalTime();
   C3DVector facing;
-  PCreature.GetPItem()->GetPhysics()->GetFacingVectorInto(facing);
+  ((CThing*)PCreature.GetPItem())->GetPhysics()->GetFacingVectorInto(facing);
   facing.RotateXY(TurnRate/frames);
   C3DVector side(facing.Y,-facing.X,0.0f);
   C3DVector up=side.Cross(facing);
-  CPhysicsMethods& physics=*PCreature.GetPItem()->GetPhysics();
+  CPhysicsMethods& physics=*((CThing*)PCreature.GetPItem())->GetPhysics();
   CRightHandedSet orientation(up,facing);
   physics.SetRHSet(orientation);
  }

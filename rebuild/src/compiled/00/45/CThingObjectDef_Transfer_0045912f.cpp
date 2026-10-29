@@ -23,7 +23,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                                      // +0x18
     template <class T> void Transfer(T& value);                                              // 0x00431102
-    void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 class CThingBaseDef { public:

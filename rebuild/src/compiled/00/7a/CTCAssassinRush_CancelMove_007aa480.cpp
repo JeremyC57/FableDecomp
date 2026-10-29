@@ -19,7 +19,7 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                               // 0x00449970
+    CPlayer& GetMainPlayer();                               // 0x00449970
 };
 
 CPlayerManager* GetPlayerManager();                         // 0x00686D40
@@ -38,7 +38,7 @@ class CTCAssassinRush { public:
 void CTCAssassinRush::CancelMove()
 {
     CThing* parent = ParentThing;
-    if (!GetPlayerManager()->GetMainPlayer()->m_bCancelLocked) {
+    if (!GetPlayerManager()->GetMainPlayer().m_bCancelLocked) {
         CleanUpEffects();
         parent->RemoveTC(0xa9);
         ScheduleForCancel = false;

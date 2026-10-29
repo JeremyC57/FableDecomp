@@ -11,18 +11,19 @@ class CThing;
 
 class CWorld { public: static long __fastcall GetFrame(); };        // 0x0049D870
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                          // +4
     CBaseIntelligentPointer();              // 0x00A01B10
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
     void SetPItem(CThing* item);            // 0x00A01B90
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {    // vtable 0x01237F14
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 
 class CAIStateGroupBase { public:

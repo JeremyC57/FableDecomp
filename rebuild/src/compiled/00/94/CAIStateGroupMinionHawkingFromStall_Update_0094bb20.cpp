@@ -95,19 +95,20 @@ class CWorld { public:
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
 };
 class CThingCreatureBase;
 class CAIBrain { public:

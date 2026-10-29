@@ -7,21 +7,8 @@
 //   No engine header exists for CMusicEntry; local model with the PDB member names.
 // Size-optimised TU: #pragma optimize("s", on) (the `push dword ptr [esi+N]` argument form).
 #pragma optimize("s", on)
-#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
-#undef CDataOutputStream
 
-class CDataOutputStream : public CDataOutputStreamLayout
-{
-public:
-    void WriteEBOOL(bool);   // 0x00993E30
-    void WriteFloat(float);   // 0x00993EE0
-    void WriteSLONG(long);   // 0x00993EB0
-};
-
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteULong(unsigned long value);           // 0x00993EA0
-};
 
 class CMusicEntry { public:
     long          ID;               // +0x00
@@ -37,7 +24,7 @@ template<> struct CPersistTraits<CMusicEntry> {
 
 void CPersistTraits<CMusicEntry>::TransferBinaryOut(CDataOutputStream* stream, const CMusicEntry* value)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)stream;
+    CDataOutputStream* out = (CDataOutputStream*)stream;
     out->WriteSLONG(value->ID);
     out->WriteSLONG(value->Filename);
     out->WriteFloat(value->Gain);

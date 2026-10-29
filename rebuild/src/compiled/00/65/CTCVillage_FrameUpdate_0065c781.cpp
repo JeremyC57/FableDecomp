@@ -72,10 +72,11 @@ public:
     const C3DVector& GetPos() const;       // 0x004C73D0
     long GetVillagerState();                    // 0x00662010 (descriptive)
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* _vfptr;
     void* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& thing);   // 0x004CC340
 bool __fastcall IS_THING_ALIVE_Villager(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
@@ -164,7 +165,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 template <class T> struct SNode {
     SNode* _M_next;
@@ -251,7 +252,7 @@ void CTCVillage::FrameUpdate()
         if (!torchesUpdated) {
             for (SNode<CBaseIntelligentPointer>* node = Lights->_M_next; node != Lights; node = node->_M_next) {
                 if (IS_THING_ALIVE_004cc340(node->_M_data)) {
-                    CThing* thing = node->_M_data.GetPItem();
+                    CThing* thing = ((CThing*)node->_M_data.GetPItem());
                     if (thing->HasTC(0x27)) {
                         CTCLight* light = (CTCLight*)thing->GetTC(0x27);
                         bool onDuringDay = light->OnDuringDay;
@@ -264,7 +265,7 @@ void CTCVillage::FrameUpdate()
         NumWorkingVillagers = 0;
         SNode<CBaseIntelligentPointer>* end = VillagePeople;
         for (SNode<CBaseIntelligentPointer>* node = end->_M_next; node != end; node = node->_M_next) {
-            if (IS_THING_ALIVE_Villager(node->_M_data) && node->_M_data.GetPItem()->GetVillagerState() == 3)
+            if (IS_THING_ALIVE_Villager(node->_M_data) && ((CThing*)node->_M_data.GetPItem())->GetVillagerState() == 3)
                 ++NumWorkingVillagers;
         }
         UpdateMirroredCrimeData();
@@ -291,7 +292,7 @@ void CTCVillage::FrameUpdate()
                         long sample = soundBank->GetSoundIndexFromSymbol("SND_" + entry->SoundName);
                         if (sample > 0) {
                             C3DVector pos = ParentThing->GetPos();
-                            CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+                            CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
                             if (IS_THING_ALIVE(hero)) {
                                 C3DVector offset = hero->PhysicsTC->GetRHSet().Forward * 20.0f;
                                 pos = hero->GetPos() + offset;

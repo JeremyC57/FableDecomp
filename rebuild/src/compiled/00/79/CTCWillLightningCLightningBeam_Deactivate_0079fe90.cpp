@@ -95,21 +95,22 @@ template <class T> struct CRetailList {          // STLport list: the sentinel n
     Node* end() const { return Head; }
     unsigned long size() const { unsigned long n = 0; for (Node* it = Head->Next; it != Head; it = it->Next) ++n; return n; }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                               // +4
     CBaseIntelligentPointer();                   // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                  // 0x00A01C10
-    CThing* GetPItem() const;                    // 0x00A01B50
+    CBaseObject* GetPItem() const;                    // 0x00A01B50
     void SetPItem(CThing* item);                 // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -167,13 +168,13 @@ void CLightningBeam::Deactivate(CIntelligentPointer player)
         m_lsState = 5;
         if (IS_THING_ALIVE(m_tcpTarget)) {
             CTCSoundPlayer* sound;
-            if (m_tcpTarget.GetPItem()->GetInterface(&sound, 0x10)) {
+            if (((CThing*)m_tcpTarget.GetPItem())->GetInterface(&sound, 0x10)) {
                 CCharString name = g_DefStringTable.GetString(PDef->HitSound);
                 sound->PlayAttachedCriteria(name, true, false, false, -1);
             }
         } else if (IS_THING_ALIVE(player) && !m_bTemporary) {
             CTCSoundPlayer* sound;
-            if (player.GetPItem()->GetInterface(&sound, 0x10)) {
+            if (((CThing*)player.GetPItem())->GetInterface(&sound, 0x10)) {
                 CCharString name = g_DefStringTable.GetString(PDef->HitSound);
                 sound->PlayUnattachedCriteria(name, m_vEndPos, false, false);
             }

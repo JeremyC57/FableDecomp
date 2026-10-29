@@ -62,12 +62,13 @@ class CThingPhysical : public CThing { public:
 class CThingCreatureBase : public CThingPhysical { public:
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // <const CThing>: vtable 0x01237F1C
@@ -143,7 +144,7 @@ void CAIStateGroup_MinionMotherConsoleChild::Update()
         NEntityEvents::CEventChildHurtGoToMother* event = 0;
         long result = 4;
         while (events->GetEvent(&event, NEntityEvents::CIsEventOfType(0x18)) && result != 1) {
-            CThing* child = event->PChild.GetPItem();
+            CThing* child = ((CThing*)event->PChild.GetPItem());
             if (child != 0 && !(child->m_flags91 & 1)) {
                 if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(child), 1, 0.0027777f) == 1) {
                     Terminate();

@@ -21,7 +21,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CBaseObject* item);               // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
@@ -61,7 +61,7 @@ public:
 
 __forceinline bool IsThingAlive(const CBaseIntelligentPointer& p)   // one GetPItem per pointer here
 {
-    CThing* thing = p.GetPItem();
+    CThing* thing = ((CThing*)p.GetPItem());
     if (thing && !thing->Dead)
         return true;
     return false;

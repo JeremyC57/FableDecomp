@@ -20,7 +20,7 @@ class CMemoryDataInputStream;
 template <class T> struct CPersistTraits {
     T DefaultVal;                                 // +0x00
     CPersistTraits() {}                           // user ctor: DefaultVal is left unset, nothing is stored
-    void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x0044B890 for T = unsigned __int64
+    void TransferBinaryIn(CMemoryDataInputStream& stream, T& value);   // 0x0044B890 for T = unsigned __int64
 };
 
 class CPersistContext { public:
@@ -44,7 +44,7 @@ void CPersistContext::TransferBinary(T& value)
         break;
     case 2: {
         CPersistTraits<T> traits;
-        traits.TransferBinaryIn(PLoadStream, &value);
+        traits.TransferBinaryIn(*PLoadStream, value);
         break;
     }
     }

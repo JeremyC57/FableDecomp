@@ -54,11 +54,12 @@ class CThing { public:
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
@@ -101,20 +102,20 @@ class CCreatureAction_UseObject : public CCreatureActionBase { public:
 
 void CCreatureAction_UseObject::PerformAction()
 {
-    SetMoveToPos(PCreature.GetPItem()->GetPos());
-    CThing* used = PUsedThing.GetPItem();
+    SetMoveToPos(((CThing*)PCreature.GetPItem())->GetPos());
+    CThing* used = ((CThing*)PUsedThing.GetPItem());
     if (used->HasTC(0x42)) {
         CTCEntityEvents* events = used->GetTC<CTCEntityEvents>(0x42);
-        events->AddEvent(new NEntityEvents::CEventItemUsed(PCreature.GetPItem()));
+        events->AddEvent(new NEntityEvents::CEventItemUsed(((CThing*)PCreature.GetPItem())));
     }
     else
-        PUsedThing.GetPItem();
-    CThing* usedThing = PUsedThing.GetPItem();
+        ((CThing*)PUsedThing.GetPItem());
+    CThing* usedThing = ((CThing*)PUsedThing.GetPItem());
     if (usedThing->HasTC(0xc2)) {
-        usedThing->GetTC<CTCActionUseScriptedHook>(0xc2)->OnActionUse(PCreature.GetPItem());
+        usedThing->GetTC<CTCActionUseScriptedHook>(0xc2)->OnActionUse(((CThing*)PCreature.GetPItem()));
         return;
     }
     CTCActionUse* actionUse;
-    PUsedThing.GetPItem()->GetInterface(&actionUse, 0xd);
-    actionUse->OnUsed(PCreature.GetPItem());
+    ((CThing*)PUsedThing.GetPItem())->GetInterface(&actionUse, 0xd);
+    actionUse->OnUsed(((CThing*)PCreature.GetPItem()));
 }

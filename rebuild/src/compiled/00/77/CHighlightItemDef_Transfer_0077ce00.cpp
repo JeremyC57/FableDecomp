@@ -20,17 +20,17 @@ class CDataOutputStream { public:
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<bool> {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value);   // 0x00403EB0
+    void TransferBinaryIn(CMemoryDataInputStream& stream, bool& value);   // 0x00403EB0
     static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteBool(value); }
 };
 template<> struct CPersistTraits<long> {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, long* value);   // 0x0040FE60
+    void TransferBinaryIn(CMemoryDataInputStream& stream, long& value);   // 0x0040FE60
     static void TransferBinaryOut(CDataOutputStream* stream, const long& value) { stream->WriteLong(value); }
 };
 template<> struct CPersistTraits<float> {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, float* value);  // 0x0040EFB0
+    void TransferBinaryIn(CMemoryDataInputStream& stream, float& value);  // 0x0040EFB0
     static void TransferBinaryOut(CDataOutputStream* stream, const float& value) { stream->WriteFloat(value); }
 };
 class CPersistContext { public:
@@ -45,7 +45,7 @@ class CPersistContext { public:
         CheckCRC(name);
         switch (m_mode) {
         case 2:
-            CPersistTraits<T>().TransferBinaryIn(m_pLoadStream, &value);
+            CPersistTraits<T>().TransferBinaryIn(*m_pLoadStream, value);
             break;
         case 3:
             CPersistTraits<T>::TransferBinaryOut(m_pSaveStream, value);

@@ -10,7 +10,8 @@
 // temporaries are homed in it (`lea eax,[esp+10h]` / `mov byte ptr [esp+1Ch],1|0`); `this` is
 // advanced in place (`add esi,0Dh`) for the last member.
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 class CTCDiggingSpot { public:

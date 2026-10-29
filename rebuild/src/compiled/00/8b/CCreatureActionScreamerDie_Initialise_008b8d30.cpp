@@ -87,18 +87,19 @@ class CThing { public:
 };
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 
 struct CTCInterface9 {                                // interface 9 component
@@ -125,7 +126,7 @@ class CCreatureAction_ScreamerDie : public CCombatActionBase { public:
 void CCreatureAction_ScreamerDie::Initialise()
 {
     CTCInterface9* component;
-    if (PCreature.GetPItem()->GetInterface(&component, 9))
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&component, 9))
         component->m_flag10 = false;
     {
         CCharString name("ST_DIE");
@@ -135,17 +136,17 @@ void CCreatureAction_ScreamerDie::Initialise()
     bool found;
     {
         long effect = 0;
-        found = PCreature.GetPItem()->GetDef()->GetSubDef(&effects) && effects.Object->CalcAndLookup("SCREAMER_DEATH", &effect);
+        found = ((CThing*)PCreature.GetPItem())->GetDef()->GetSubDef(&effects) && effects.Object->CalcAndLookup("SCREAMER_DEATH", &effect);
         if (found) {
-            CThing* created = CreateSpecialEffect(effect, PCreature.GetPItem()->GetPos(), false);
+            CThing* created = CreateSpecialEffect(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false);
             PDieEffect = CIntelligentPointerThing(created);
         }
     }
     if (found) {
-        if (PDieEffect.GetPItem() && !(PDieEffect.GetPItem()->m_flags91 & 1)) {
+        if (((CThing*)PDieEffect.GetPItem()) && !(((CThing*)PDieEffect.GetPItem())->m_flags91 & 1)) {
             CTCDParticleEmitter* emitter = 0;
-            PDieEffect.GetPItem()->GetInterface(&emitter, 0x4b);
-            emitter->AttachToThing(PCreature.GetPItem(), 0xa, "DUMMY_CENTRE", 0, 0);
+            ((CThing*)PDieEffect.GetPItem())->GetInterface(&emitter, 0x4b);
+            emitter->AttachToThing(((CThing*)PCreature.GetPItem()), 0xa, "DUMMY_CENTRE", 0, 0);
         }
     }
     CCombatActionBase::Initialise();

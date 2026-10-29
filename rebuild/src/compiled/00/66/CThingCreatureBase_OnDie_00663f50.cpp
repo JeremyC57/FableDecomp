@@ -185,10 +185,11 @@ public:
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 
 class CThingCreatureDef { public:
@@ -269,10 +270,10 @@ void CThingCreatureBase::OnDie()
                     body->PTCGraphicAppearance->SetAsChanged(4);
                 }
             }
-            body->SetKiller(PLastAttackedByCreature.GetPItem());
+            body->SetKiller(((CThing*)PLastAttackedByCreature.GetPItem()));
         }
     }
-    CThing* killer = PLastAttackedByCreature.GetPItem();
+    CThing* killer = ((CThing*)PLastAttackedByCreature.GetPItem());
     CTCPhysicsBase* physics = PhysicsTC;
     CWorld* world = PeekWorld();
     world->MessageEventManager->AddMessage(9, g_framesPerSecond, physics->Position, killer, this, 0.0f, 0.0f, 0);

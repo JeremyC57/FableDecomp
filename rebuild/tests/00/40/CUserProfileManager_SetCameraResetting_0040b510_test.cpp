@@ -1,49 +1,36 @@
+// behaviour test for 0x0040B510 CUserProfileManager::SetCameraResetting: the live value is always stored, the new-profile copy only
+// while UseNewProfileValues; ApplyValues runs every time, Save only when asked (links the row's object)
 #include <cstdio>
-
-class CUserProfileManager { public:
-    char pad0[0xc];
-    char gate;
-    char pad1[0x79 - 0xd];
-    char flag79;
-    char pad2[0x12c - 0x7a];
-    char flag12c;
+#include <cstring>
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0x6C];
+    bool          CameraResetting;           // +0x79
+    unsigned char _pad7A[0xB2];
+    bool          CameraResettingNewProfile; // +0x12C
+    void SetCameraResetting(bool value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
-
-static int g_a = 0, g_b = 0;
-void __fastcall CUserProfileManager_HelperA(CUserProfileManager* self) { (void)self; g_a++; }
-void __fastcall CUserProfileManager_HelperB(CUserProfileManager* self) { (void)self; g_b++; }
-
-void __fastcall CUserProfileManager_SetCameraResetting(CUserProfileManager* self, void* /*edx*/, char p1, char p2)
-{
-    if (self->gate)
-        self->flag12c = p1;
-    self->flag79 = p1;
-    CUserProfileManager_HelperA(self);
-    if (p2)
-        CUserProfileManager_HelperB(self);
-}
-
+static int g_applies = 0, g_saves = 0;
+void CUserProfileManager::ApplyValues() { ++g_applies; }
+void CUserProfileManager::Save() { ++g_saves; }
 int main()
 {
-    CUserProfileManager o;
-    for (int i = 0; i < (int)sizeof(o); ++i) ((char*)&o)[i] = 0;
-
-    /* gate off: flag12c untouched, flag79 set, HelperA called, p2 off */
-    o.gate = 0;
-    CUserProfileManager_SetCameraResetting(&o, 0, (char)7, (char)0);
-    if (o.flag12c != 0) { std::printf("FAIL gate-off wrote 12c\n"); return 1; }
-    if (o.flag79 != 7) { std::printf("FAIL flag79\n"); return 1; }
-    if (g_a != 1) { std::printf("FAIL helperA\n"); return 1; }
-    if (g_b != 0) { std::printf("FAIL helperB called\n"); return 1; }
-
-    /* gate on + p2 on */
-    o.gate = 1;
-    CUserProfileManager_SetCameraResetting(&o, 0, (char)5, (char)1);
-    if (o.flag12c != 5) { std::printf("FAIL gate-on 12c\n"); return 1; }
-    if (o.flag79 != 5) { std::printf("FAIL flag79 b\n"); return 1; }
-    if (g_a != 2) { std::printf("FAIL helperA b\n"); return 1; }
-    if (g_b != 1) { std::printf("FAIL helperB not called\n"); return 1; }
-
+    int fails = 0;
+    CUserProfileManager m;
+    std::memset(&m, 0, sizeof(m));
+    m.CameraResetting = false; m.CameraResettingNewProfile = false;
+    m.SetCameraResetting(true, false);
+    if (m.CameraResetting != true || m.CameraResettingNewProfile != false || g_applies != 1 || g_saves != 0) fails |= 1;
+    m.UseNewProfileValues = true;
+    m.SetCameraResetting(false, true);
+    if (m.CameraResetting != false || m.CameraResettingNewProfile != false || g_applies != 2 || g_saves != 1) fails |= 2;
+    if (sizeof(m) != 0x12D) fails |= 4;
+    if (fails) { std::printf("0040b510_TEST FAIL %d\n", fails); return 1; }
     std::printf("CUserProfileManager_0040b510_TEST PASS\n");
     return 0;
 }

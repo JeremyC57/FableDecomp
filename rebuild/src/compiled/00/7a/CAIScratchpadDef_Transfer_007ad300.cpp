@@ -22,13 +22,8 @@ class C3DVector { public:
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_NONE = 0 };
 
 class CPersistContext { public:
-    void Transfer(const char* name, unsigned long& value, const unsigned long& defaultValue);   // 0x004106F0
-    void Transfer(const char* name, C3DVector& value, const C3DVector& defaultValue);           // 0x004859AD
-    void Transfer(const char* name, float& value, const float& defaultValue);                   // 0x00410620
-    void Transfer(const char* name, long& value, const long& defaultValue);                     // 0x00410BE0
-    void Transfer(const char* name, EScriptingStateGroups& value, const EScriptingStateGroups& defaultValue);   // 0x007AD6D0
-    void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);       // 0x004109A0
-    void Transfer(const char* name, bool& value, const bool& defaultValue);                     // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: unsigned long 0x004106F0; C3DVector 0x004859AD; float 0x00410620; long 0x00410BE0; EScriptingStateGroups 0x007AD6D0; CCharString 0x004109A0; bool 0x004045C0
 };
 
 class CDefClassBase { public:
@@ -93,7 +88,7 @@ void CAIScratchpadDef::Transfer(CPersistContext& context)
     context.Transfer("TargetName", TargetName, CCharString(""));
     context.Transfer("FollowDistance", FollowDistance, 0.0f);
     context.Transfer("AttackHeroOnSight", AttackHeroOnSight, false);
-    context.Transfer("TimeToSpendHarassingHero", TimeToSpendHarassingHero, 0);
+    context.Transfer<long>("TimeToSpendHarassingHero", TimeToSpendHarassingHero, 0);
     context.Transfer("CombatNearbyEnemyFleeingBreakOffRange", CombatNearbyEnemyFleeingBreakOffRange, 5.0f);
     context.Transfer("CombatNearbyBreakOffRange", CombatNearbyBreakOffRange, 10.0f);
     context.Transfer("StealStealableItems", StealStealableItems, false);

@@ -14,12 +14,13 @@ class CThing { public:
     void Kill(bool immediately);            // 0x004C9B80
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
     CBaseIntelligentPointer();              // 0x00A01B10
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
     void SetPItem(CThing* item);            // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -30,8 +31,8 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined, landed 0x0094DBC0 form).
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -51,9 +52,9 @@ void CCreatureAction_HobbeSpellcasterAim::FinishAction()
 {
     CCombatActionBase::FinishAction();
     if (IS_THING_ALIVE(PSpell)) {
-        PSpell.GetPItem()->Kill(true);
+        ((CThing*)PSpell.GetPItem())->Kill(true);
         CIntelligentPointer none;
         none.SetPItem(0);
-        PSpell.SetPItem(none.GetPItem());
+        PSpell.SetPItem(((CThing*)none.GetPItem()));
     }
 }

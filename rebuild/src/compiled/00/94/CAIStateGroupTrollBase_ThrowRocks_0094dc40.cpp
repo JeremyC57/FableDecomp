@@ -16,10 +16,11 @@ class CThing;
 class CThingCreatureBase;
 class C3DVector { public: float X, Y, Z; };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
 };
 
@@ -119,7 +120,7 @@ long CAIStateGroup_TrollBase::ThrowRocks()
         previousAction = PBrain->Creature->CurrentAction->GetActionID();
     CBrainOutput output;
     CThingCreatureBase* creature = PBrain->Creature;
-    SetPerformAction(output, &CCreatureAction_TrollThrowProjectile(creature, PEnemy.GetPItem()));
+    SetPerformAction(output, &CCreatureAction_TrollThrowProjectile(creature, ((CThing*)PEnemy.GetPItem())));
     PBrain->SetBrainOutput(output);
     PBrain->Yield();
     if (PBrain->Creature->IsPerformingAnyAction() && PBrain->Creature->CurrentAction->GetActionID() != previousAction) {

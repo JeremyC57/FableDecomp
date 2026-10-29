@@ -27,12 +27,12 @@ public:
     void TransferBinaryIn(CDataInputStream* stream, T& value);   // 0x0047CF3F for T = C3DVector
 };
 
-class CPersistContext_TransferableObjectBase {
+class CPersistContext_TransferableComponentGenericType { public:
 public:
     virtual void TransferIn();
 };
 template <class T>
-class CPersistContext_TransferableComponent : public CPersistContext_TransferableObjectBase {   // vtable 0x01236750 for C3DVector
+class CPersistContext_TransferableComponent : public CPersistContext_TransferableComponentGenericType {   // vtable 0x01236750 for C3DVector
 public:
     T* Value;
     CPersistContext_TransferableComponent(T& value) : Value(&value) { }
@@ -49,8 +49,8 @@ public:
     CDataInputStream*  LoadStream;                 // +0x24
     CDataOutputStream* SaveStream;                 // +0x28
     protected: void CheckCRC(const char* name); public:               // 0x00404500
-    void TransferObjectSaveText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BAD60
-    void TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BBA40
+    protected: void TransferObjectSaveText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BAD60
+    protected: void TransferObjectLoadText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BBA40
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);
 };
 

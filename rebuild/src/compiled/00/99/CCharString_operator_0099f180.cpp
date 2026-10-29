@@ -30,7 +30,7 @@ class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
     void MakeOwnCopyOfData();                   // 0x0099EAF0
-    void UnassignString();                      // 0x0099E9B0
+    protected: void UnassignString(); public:                      // 0x0099E9B0
     const CCharString& operator+=(char c);
     // inline copy of operator=(char) 0x0099F040 for the empty-string arm (the null test of the unassign folds away)
     __forceinline const CCharString& operator=(char c)

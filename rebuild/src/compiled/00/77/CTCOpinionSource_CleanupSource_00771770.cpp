@@ -34,10 +34,11 @@ template<class T> class CCountedPointer { public:
         Data = 0;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();             // slot 0
     CThing* m_pItem;
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
 };
 struct SSourceNode {
     SSourceNode* Next;
@@ -90,7 +91,7 @@ void CTCOpinionSource::CleanupSource()
     while (node != sources.Node) {
         CThing* owner = ParentThing;
         it = it->Next;
-        if (node->Source.GetPItem() == owner)
+        if (((CThing*)node->Source.GetPItem()) == owner)
             sources.erase(node);
         node = it;
     }

@@ -37,7 +37,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: unsigned __int64 0x0044BB00
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -74,9 +75,9 @@ void CTCVillageMember::OnSerialise(CPersistContext& context, bool)
             VillageUID = item->UID;
             VillageUID = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, VillageUID);
         }
-        context.Transfer("VillageUID", VillageUID, 0);
+        context.Transfer<unsigned __int64>("VillageUID", VillageUID, 0);
     } else {
-        context.Transfer("VillageUID", VillageUID, 0);
+        context.Transfer<unsigned __int64>("VillageUID", VillageUID, 0);
         if (VillageUID != 0)
             VillageUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, VillageUID);
     }

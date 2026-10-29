@@ -63,7 +63,7 @@ class CPlayer { public:
     long GetPlayerNumber() const;                           // 0x00487510
 };
 class CThing { public:
-    CPlayer* GetPlayer() const;                             // 0x004C7A30
+    CPlayer& GetPlayer();                             // 0x004C7A30
 };
 class CThingPlayerCreature : public CThing { public:
     float GetCurrentRelativeMovementAngleXY() const;        // 0x006A9640
@@ -86,7 +86,7 @@ void CTCBattleCharge::UpdateDirectionOverride()
     CInputEvent event;
     CThingPlayerCreature* thing = ParentThing;
     CInputManager* input = GFGetSystemManager()->InputManager;
-    if (input->IsJoystickEventInQueue(0x11, 0, &event, thing->GetPlayer()->GetPlayerNumber())) {
+    if (input->IsJoystickEventInQueue(0x11, 0, &event, thing->GetPlayer().GetPlayerNumber())) {
         C2DVector stick = event.GetJoystickPosition();
         if (stick.GetLength() > 0.05f) {
             DirectionOverrideVector.X = stick.X;

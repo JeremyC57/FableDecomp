@@ -71,17 +71,18 @@ class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction();               // 0x006622A0
     void StopCurrentAction();                   // 0x00662650
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer { };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThing& pointer);   // 0x004CC340
 inline bool IsTargetAlive(const CIntelligentPointerThing& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -154,10 +155,10 @@ void CAIStateGroup_SummonerCharge::Update()
         return;
     }
     CTCStealth* stealth;
-    if (PTarget.GetPItem()->GetInterfaceX(&stealth, 0x36))
+    if (((CThing*)PTarget.GetPItem())->GetInterfaceX(&stealth, 0x36))
         stealth->SetAsInDanger(GetCreature(), 3);
     CThingCreatureBase* owner = GetCreature();
-    if (!GetCreature()->SetCurrentAction(&CCreatureAction_SummonerChargeInto(owner, PTarget.GetPItem()))) {
+    if (!GetCreature()->SetCurrentAction(&CCreatureAction_SummonerChargeInto(owner, ((CThing*)PTarget.GetPItem())))) {
         Terminate();
         return;
     }
@@ -179,7 +180,7 @@ void CAIStateGroup_SummonerCharge::Update()
                 done = true;
             } else {
                 CThingCreatureBase* creature = GetCreature();
-                CThing* target = PTarget.GetPItem();
+                CThing* target = ((CThing*)PTarget.GetPItem());
                 const C3DVector& from = creature->GetPos();
                 const C3DVector& to = target->GetPos();
                 float distanceSquared = C2DVector(to.x - from.x, to.y - from.y).GetLengthSquared();
@@ -201,7 +202,7 @@ void CAIStateGroup_SummonerCharge::Update()
             PBrain->PCreature->StopCurrentAction();
         if (IS_THING_ALIVE(PTarget)) {
             CThingCreatureBase* creature = GetCreature();
-            AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerChargeOutOf(creature, PTarget.GetPItem()), true);
+            AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerChargeOutOf(creature, ((CThing*)PTarget.GetPItem())), true);
         } else {
             AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerChargeOutOf(GetCreature()), true);
         }

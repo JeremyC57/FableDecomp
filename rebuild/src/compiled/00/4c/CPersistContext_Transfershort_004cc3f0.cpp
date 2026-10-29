@@ -21,10 +21,10 @@ template <class T> struct CPersistTraits {
     void TransferBinaryIn(CMemoryDataInputStream* stream, T* value);   // 0x004CBC70 for T = short
 };
 
-struct CPersistContext_TransferableObjectBase {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferIn();
 };
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableObjectBase {   // vtable 0x01239A74 for T = short
+template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {   // vtable 0x01239A74 for T = short
     T* Value;
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual void TransferIn();
@@ -39,8 +39,8 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;           // +0x24
     CDataOutputStream*      PSaveStream;           // +0x28
     protected: void CheckCRC(const char* name); public:              // 0x00404500
-    void TransferObjectSaveText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BAD60
-    void TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BBA40
+    protected: void TransferObjectSaveText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BAD60
+    protected: void TransferObjectLoadText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BBA40
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);
 };
 

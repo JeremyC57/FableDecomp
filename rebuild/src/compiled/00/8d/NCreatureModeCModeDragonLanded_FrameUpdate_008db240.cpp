@@ -78,10 +78,11 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public: };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* _vptr;
     void* PItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 namespace NCreatureMode {
 class CModeBase {
@@ -100,21 +101,21 @@ public:
 void CModeDragonLanded::FrameUpdate()
 {
     CModeBase::FrameUpdate();
-    if (!PTarget.GetPItem() || (PTarget.GetPItem()->Killed & 1))
+    if (!((CThing*)PTarget.GetPItem()) || (((CThing*)PTarget.GetPItem())->Killed & 1))
         return;
     CThingCreatureBase* owner = Owner;
     if (!owner->HasTC(0x43))
         return;
     CTCLook* look = owner->GetTC<CTCLook>(0x43);
     bool facing = false;
-    CThing* target = PTarget.GetPItem();
+    CThing* target = ((CThing*)PTarget.GetPItem());
     C3DVector delta = target->GetPos() - owner->GetPos();
     float invLength = FastInvSqrt(delta.X * delta.X + delta.Y * delta.Y + delta.Z * delta.Z);
     C3DVector direction = ScaleRef(delta, invLength);
     if (delta.GetLength2D() < 12.5f && direction.Dot(C3DVector(0.0f, -1.0f, 0.0f)) > 0.96f)
         facing = true;
     if (UseHeadTurning && !facing) {
-        look->LookAtPos(&PTarget.GetPItem()->GetPos(), 10);
+        look->LookAtPos(&((CThing*)PTarget.GetPItem())->GetPos(), 10);
     } else {
         C3DVector ahead = Owner->PTCDriver->GetForward() * 50.0f;
         C3DVector position = Owner->GetPos() + ahead;

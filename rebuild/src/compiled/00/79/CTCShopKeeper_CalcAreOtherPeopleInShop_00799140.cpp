@@ -16,7 +16,7 @@ class CThing;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CBaseObject* m_pItem;
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
 };
 class CTCBase;
 enum ETCInterfaceType { };                                   // CTCBase interface type (values unused here)
@@ -67,7 +67,7 @@ struct CVillage {
 class CTCVillageMember { public: CVillage* GetPVillage(); };   // 0x007EE540
 struct CTCHeroBuilding { unsigned char _pad00[0x0c]; CBaseIntelligentPointer Building; };   // TC 0x75, +0x0c
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970
 class CTCBase
 {
 protected:
@@ -97,26 +97,26 @@ bool CTCShopKeeper::CalcAreOtherPeopleInShop()
             for (CVillagerNode* node = village->Villagers->_M_next; node != village->Villagers; node = node->_M_next)
             {
                 CBaseIntelligentPointer& villager = node->Villager;
-                if (villager.GetPItem() && !villager.GetPItem()->Dead && villager.GetPItem() != owner)
+                if (((CThing*)villager.GetPItem()) && !((CThing*)villager.GetPItem())->Dead && ((CThing*)villager.GetPItem()) != owner)
                 {
-                    CThing* other = villager.GetPItem();
-                    CThing* home = other->HomeBuilding.GetPItem();
-                    if (building->IsPointInside(villager.GetPItem()->GetPos()) != (home == building))
+                    CThing* other = ((CThing*)villager.GetPItem());
+                    CThing* home = ((CThing*)other->HomeBuilding.GetPItem());
+                    if (building->IsPointInside(((CThing*)villager.GetPItem())->GetPos()) != (home == building))
                         return true;
                 }
-                if (villager.GetPItem() && !villager.GetPItem()->Dead && villager.GetPItem() != owner)
+                if (((CThing*)villager.GetPItem()) && !((CThing*)villager.GetPItem())->Dead && ((CThing*)villager.GetPItem()) != owner)
                 {
-                    if (building->IsDoorBlockedBy(villager.GetPItem()))
+                    if (building->IsDoorBlockedBy(((CThing*)villager.GetPItem())))
                         return true;
                 }
             }
         }
     }
-    CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     CTCHeroBuilding* heroBuilding;
     if (hero && !hero->Dead && hero->GetInterface(0x75, &heroBuilding))
     {
-        if (heroBuilding->Building.GetPItem() == building)
+        if (((CThing*)heroBuilding->Building.GetPItem()) == building)
             return true;
         if (building->IsDoorBlockedBy(hero))
             return true;

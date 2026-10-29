@@ -95,7 +95,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();               // 0x00449970
+    CPlayer& GetMainPlayer();               // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char _pad[0x1c];
@@ -126,7 +126,7 @@ void CCreatureAction_DragonTakeOffIntoFlying::Initialise()
     CTCCreatureFlags9* pFlags;
     PCreature.GetPItem()->GetInterface(&pFlags, 9);
     pFlags->m_canBeTargeted = 0;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTCSolidToThing* pSolid;
     if (hero->HasTC(0x4d))
         pSolid = hero->GetTC<CTCSolidToThing>(0x4d);

@@ -14,12 +14,6 @@
 #include "engine/CDataOutputStream.h"
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 class C3DVector { public: float X, Y, Z; };
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                        // 0x00993E30
-    void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteFloat(float value);                       // 0x00993EE0
-    void Write3DVector(const C3DVector& value);         // 0x00993FD0
-};
 struct CPointVector {
     C3DVector* _M_start; C3DVector* _M_finish; C3DVector* _M_end_of_storage;
     CPointVector(const CPointVector& other);            // 0x006F0810
@@ -90,12 +84,12 @@ class CPSCEmitterGeneric { public:
 };
 void CPSCEmitterGeneric::WriteBinary(CDataOutputStream* destination)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)destination;
-    out->WriteULong(EmitterPosParam);
-    out->WriteULong(DirectionParamName);
-    out->WriteULong(NoParticlesToStart);
-    out->WriteULong(NoParticlesToStartRand);
-    out->WriteULong(EmitterType);
+    CDataOutputStream* out = (CDataOutputStream*)destination;
+    out->WriteULONG(EmitterPosParam);
+    out->WriteULONG(DirectionParamName);
+    out->WriteULONG(NoParticlesToStart);
+    out->WriteULONG(NoParticlesToStartRand);
+    out->WriteULONG(EmitterType);
     out->WriteEBOOL(Solid);
     out->WriteEBOOL(UseEmitterLifeSecs);
     out->WriteEBOOL(UseEmitterTimelineSecs);
@@ -106,30 +100,30 @@ void CPSCEmitterGeneric::WriteBinary(CDataOutputStream* destination)
     out->WriteEBOOL(UseOutwardDirection);
     out->WriteEBOOL(UseParamDirection);
     out->WriteEBOOL(OppositeDirection);
-    out->WriteULong(AngularPerturbationInteger);
-    out->WriteULong(CustomDirectionX);
-    out->WriteULong(ParticlesPerSecond);
-    out->WriteULong(EmitterSize);
-    out->WriteULong(RadialBias);
-    out->WriteULong(MinSpeed);
+    out->WriteULONG(AngularPerturbationInteger);
+    out->WriteULONG(CustomDirectionX);
+    out->WriteULONG(ParticlesPerSecond);
+    out->WriteULONG(EmitterSize);
+    out->WriteULONG(RadialBias);
+    out->WriteULONG(MinSpeed);
     out->WriteEBOOL(UseForwardDirection);
     out->WriteEBOOL(UseRandom2DDirection);
-    out->WriteULong(CustomDirectionY);
-    out->WriteULong(CustomDirectionZ);
-    out->WriteULong(EmitterTimelineSecs);
+    out->WriteULONG(CustomDirectionY);
+    out->WriteULONG(CustomDirectionZ);
+    out->WriteULONG(EmitterTimelineSecs);
     out->WriteEBOOL(UseRandom3DDirection);
-    out->WriteULong(EmitterLifeSecs);
-    out->WriteULong(EmitterStartTime);
-    out->WriteULong(MaxSpeed);
-    out->WriteULong(NonUniformScalingX);
-    out->WriteULong(NonUniformScalingY);
-    out->WriteULong(NonUniformScalingZ);
+    out->WriteULONG(EmitterLifeSecs);
+    out->WriteULONG(EmitterStartTime);
+    out->WriteULONG(MaxSpeed);
+    out->WriteULONG(NonUniformScalingX);
+    out->WriteULONG(NonUniformScalingY);
+    out->WriteULONG(NonUniformScalingZ);
     bool hasSpline = Spline.Data != 0;
     out->WriteEBOOL(hasSpline);
     if (hasSpline) {
         out->WriteFloat(Spline->Tension);
         unsigned long count = Spline->ControlPoints.size();
-        out->WriteULong(count);
+        out->WriteULONG(count);
         CPointVector points(Spline->ControlPoints);
         for (unsigned long i = 0; i < count; ++i)
             out->Write3DVector(points._M_start[i]);

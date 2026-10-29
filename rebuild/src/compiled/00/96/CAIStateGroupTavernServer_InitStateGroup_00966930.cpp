@@ -30,10 +30,11 @@ struct CThingCreatureSpeed {                    // the brain's creature
     virtual float GetWalkSpeed(const C3DVector& direction);   // slot 79 (+0x13c, descriptive)
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CThing* item);                // 0x00A01B90
@@ -41,12 +42,12 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerObject : CBaseIntelligentPointer {   // CIntelligentPointer<CThingObject>, vtable 0x0125A858
     virtual void v00();
     __forceinline CIntelligentPointerObject(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerObject& operator=(const CIntelligentPointerObject& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointerObject& operator=(const CIntelligentPointerObject& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 struct CIntelligentPointerBuilding : CBaseIntelligentPointer {   // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
     __forceinline CIntelligentPointerBuilding(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 class CAIBrain { public:
     unsigned char _pad[0x18];

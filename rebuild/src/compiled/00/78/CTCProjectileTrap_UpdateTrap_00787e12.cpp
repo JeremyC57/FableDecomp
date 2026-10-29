@@ -70,12 +70,13 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* m_pItem;
     void* m_pInfo;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
     ~CBaseIntelligentPointer();                         // 0x00A01C10
 };
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer {
@@ -88,7 +89,7 @@ bool PointerAliveSink_s7(CThing* item);   // stand-in: the dead-flag test
 // Same-TU body of IS_THING_ALIVE<CIntelligentPointer<CThing>> (0x004CC340, __fastcall): reads the pointer only.
 __declspec(noinline) bool __fastcall IS_THING_ALIVE(const CIntelligentPointer_CThing* pointer)
 {
-    CThing* item = pointer->GetPItem();
+    CThing* item = ((CThing*)pointer->GetPItem());
     if (item == 0)
         return false;
     return PointerAliveSink_s7(item);
@@ -149,7 +150,7 @@ void CTCProjectileTrap::UpdateTrap()
     if (!Triggered || !Active)
         return;
     if (!IS_THING_ALIVE(&PTarget)) {
-        CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (IS_THING_ALIVE(hero))
             PTarget = hero;
     }
@@ -161,7 +162,7 @@ void CTCProjectileTrap::UpdateTrap()
         CInterfaceMap* map = &thing->m_interfaces;
         CInterfaceMap::SEntry* it = map->LowerBound(&key);
         CTCLook* look = (CTCLook*)((it == map->last || 0x43 < it->type) ? map->last : it)->component;
-        look->LookAtPos(PTarget.GetPItem()->GetPos(), 0x17);
+        look->LookAtPos(((CThing*)PTarget.GetPItem())->GetPos(), 0x17);
     }
     if (IdleTimer > 0) {
         --IdleTimer;

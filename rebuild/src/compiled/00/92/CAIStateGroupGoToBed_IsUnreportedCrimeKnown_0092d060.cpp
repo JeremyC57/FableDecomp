@@ -29,10 +29,11 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 class CThingPhysical;
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:};
@@ -111,11 +112,11 @@ bool CAIStateGroup_GoToBed::IsUnreportedCrimeKnown()
         CTCCreatureOpinionOfHero* opinion = PBrain->GetPCreature()->GetTC<CTCCreatureOpinionOfHero>(0x4f);
         if (opinion->FindMostRecentDeed(COpinionDeedFilter_IsCrimeToRunAndFindAGuard(), 0, true))
             return true;
-        CThing* home = PBrain->GetPCreature()->Home.GetPItem();
+        CThing* home = ((CThing*)PBrain->GetPCreature()->Home.GetPItem());
         if (home && !(home->m_flags91 & 1)) {
-            if (opinion->FindMostRecentDeed(10, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(PBrain->GetPCreature()->Home.GetPItem()), 0, true)
-                || opinion->FindMostRecentDeed(11, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(PBrain->GetPCreature()->Home.GetPItem()), 0, true)
-                || opinion->FindMostRecentDeed(2, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(PBrain->GetPCreature()->Home.GetPItem()), 0, true))
+            if (opinion->FindMostRecentDeed(10, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(((CThing*)PBrain->GetPCreature()->Home.GetPItem())), 0, true)
+                || opinion->FindMostRecentDeed(11, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(((CThing*)PBrain->GetPCreature()->Home.GetPItem())), 0, true)
+                || opinion->FindMostRecentDeed(2, COpinionDeedFilter_IsStillHappening() && COpinionDeedFilter_TargetIs(((CThing*)PBrain->GetPCreature()->Home.GetPItem())), 0, true))
                 return true;
         }
     }

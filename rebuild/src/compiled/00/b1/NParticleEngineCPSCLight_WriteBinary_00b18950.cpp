@@ -9,13 +9,6 @@
 //   extracts as `xor ; mov r8 ; shr ; and r,0xffffff01` (the top bit needs no mask).
 #include "engine/CDataOutputStream.h"
 class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };   // 4-byte aligned packed colour
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                        // 0x00993E30
-    void WriteLong(long value);                         // 0x00993EB0
-    void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteFloat(float value);                       // 0x00993EE0
-    void WriteColour(const CRGBColour& value);          // 0x00993F30
-};
 namespace NParticleEngine {
 class CPSCLight { public:
     unsigned char _base[0xc];                           // CPSCBase
@@ -52,17 +45,17 @@ class CPSCLight { public:
 };
 void CPSCLight::WriteBinary(CDataOutputStream* destination)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)destination;
-    out->WriteULong(LightPositionParam);
+    CDataOutputStream* out = (CDataOutputStream*)destination;
+    out->WriteULONG(LightPositionParam);
     out->WriteFloat(LightLifeSecs);
     out->WriteFloat(LightRespawnDelaySecs);
     out->WriteFloat(LightStartTime);
     out->WriteFloat(LightTimelineSecs);
     out->WriteFloat(LightStartRenderWorldRadius);
     out->WriteFloat(LightEndRenderWorldRadius);
-    out->WriteLong(LightAttenuationFactor);
-    out->WriteLong(LightFadeInEndInteger);
-    out->WriteLong(LightFadeOutBeginInteger);
+    out->WriteSLONG(LightAttenuationFactor);
+    out->WriteSLONG(LightFadeInEndInteger);
+    out->WriteSLONG(LightFadeOutBeginInteger);
     out->WriteFloat(LightWorldRadiusFadeMinimum);
     out->WriteColour(LightColourFadeMinimum);
     out->WriteEBOOL(LightWorldRadiusFadeEnable);

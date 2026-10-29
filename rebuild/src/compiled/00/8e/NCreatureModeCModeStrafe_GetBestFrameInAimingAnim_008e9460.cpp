@@ -106,7 +106,7 @@ class CThing { public:
         const CInterfaceMap::SEntry* it = map->LowerBound(&type);
         return (T*)((it == map->last || interfaceType < it->type) ? map->last : it)->component;
     }
-    CPlayer* GetPlayer() const;                         // 0x004C7A30
+    CPlayer& GetPlayer();                         // 0x004C7A30
 };
 inline bool IsAlive(const CThing* thing) { return thing && !(thing->m_flags91 & 1); }
 bool __fastcall IsValidRangedWeaponTargetForShooter(CThing* shooter, CThing* target, float angle);   // 0x0085F8D0
@@ -153,7 +153,7 @@ bool CModeStrafe::GetBestFrameInAimingAnim(float& frame)
     if (IsAlive(targeting->GetTarget())
         && IsValidRangedWeaponTargetForShooter(ParentThing, targeting->GetTarget(), 45.0f))
         validTarget = true;
-    if (ParentThing->GetPlayer()->IsFirstPersonTargeting() || ParentThing->GetPlayer()->m_bLockedOn) {
+    if (ParentThing->GetPlayer().IsFirstPersonTargeting() || ParentThing->GetPlayer().m_bLockedOn) {
         CCamera* camera;
         g_pEngine->m_pWorld->m_pCameraManager->GetCurrentCamera(&camera);
         direction = camera->Forward;

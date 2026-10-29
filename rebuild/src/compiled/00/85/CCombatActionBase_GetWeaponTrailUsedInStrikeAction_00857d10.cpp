@@ -42,10 +42,11 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 
 struct CStrikeEvent {
@@ -97,7 +98,7 @@ CTCWeaponTrail* CCombatActionBase::GetWeaponTrailUsedInStrikeAction(long* strike
     CStrikeEvent* event = result.ForEach(StrikeEvents.begin(), StrikeEvents.end(),
                                          CGetActiveStrikeEventThatContainsFrame(CurrentFrame)).PFound;
     if (event != 0) {
-        CThing* weapon = event->PWeapon.GetPItem();
+        CThing* weapon = ((CThing*)event->PWeapon.GetPItem());
         if (weapon != 0 && !(weapon->m_flags91 & 1)) {
             *strikeIndex = event->Index;
             CTCWeaponTrail* trail;

@@ -1,51 +1,36 @@
+// behaviour test for 0x0040B4D0 CUserProfileManager::SetAntialiasing: the live value is always stored, the new-profile copy only
+// while UseNewProfileValues; ApplyValues runs every time, Save only when asked (links the row's object)
 #include <cstdio>
-
-class CUserProfileManager { public:
-    char pad0[0x0c];
-    char UseNewProfileValues;        // +0x0c
-    char pad1[0x38 - 0x0d];
-    int Antialiasing;         // +0x38
-    char pad2[0xf4 - 0x3c];
-    int fldF4;         // +0xf4
+#include <cstring>
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0x2B];
+    unsigned long Antialiasing;              // +0x38
+    unsigned char _pad3C[0xB8];
+    unsigned long AntialiasingNewProfile;    // +0xF4
+    void SetAntialiasing(unsigned long value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
-
-static int g_apply = 0;
-static int g_refresh = 0;
-
-extern "C" void __fastcall UPM_Apply(CUserProfileManager* self) { (void)self; ++g_apply; }
-extern "C" void __fastcall UPM_Refresh(CUserProfileManager* self) { (void)self; ++g_refresh; }
-
-void __fastcall CUserProfileManager_SetAntialiasing(CUserProfileManager* self, int /*edx*/, int value, char doRefresh)
-{
-    if (self->UseNewProfileValues)
-        self->fldF4 = value;
-    self->Antialiasing = value;
-    UPM_Apply(self);
-    if (doRefresh)
-        UPM_Refresh(self);
-}
-
+static int g_applies = 0, g_saves = 0;
+void CUserProfileManager::ApplyValues() { ++g_applies; }
+void CUserProfileManager::Save() { ++g_saves; }
 int main()
 {
+    int fails = 0;
     CUserProfileManager m;
-    for (int i = 0; i < (int)sizeof(m); ++i) ((char*)&m)[i] = 0;
-
-    // Case 1: flagC set, doRefresh set
-    m.UseNewProfileValues = 1; m.Antialiasing = 0; m.fldF4 = 0;
-    g_apply = 0; g_refresh = 0;
-    CUserProfileManager_SetAntialiasing(&m, 0, 7, 1);
-    if (m.fldF4 != 7 || m.Antialiasing != 7 || g_apply != 1 || g_refresh != 1) {
-        std::printf("FAIL case1\n"); return 1;
-    }
-
-    // Case 2: flagC clear -> fldF4 untouched, doRefresh clear -> no refresh
-    m.UseNewProfileValues = 0; m.Antialiasing = 0; m.fldF4 = 99;
-    g_apply = 0; g_refresh = 0;
-    CUserProfileManager_SetAntialiasing(&m, 0, 42, 0);
-    if (m.fldF4 != 99 || m.Antialiasing != 42 || g_apply != 1 || g_refresh != 0) {
-        std::printf("FAIL case2\n"); return 1;
-    }
-
+    std::memset(&m, 0, sizeof(m));
+    m.Antialiasing = 1; m.AntialiasingNewProfile = 1;
+    m.SetAntialiasing(5, false);
+    if (m.Antialiasing != 5 || m.AntialiasingNewProfile != 1 || g_applies != 1 || g_saves != 0) fails |= 1;
+    m.UseNewProfileValues = true;
+    m.SetAntialiasing(7, true);
+    if (m.Antialiasing != 7 || m.AntialiasingNewProfile != 7 || g_applies != 2 || g_saves != 1) fails |= 2;
+    if (sizeof(m) != 0xF8) fails |= 4;
+    if (fails) { std::printf("0040b4d0_TEST FAIL %d\n", fails); return 1; }
     std::printf("CUserProfileManager_0040b4d0_TEST PASS\n");
     return 0;
 }

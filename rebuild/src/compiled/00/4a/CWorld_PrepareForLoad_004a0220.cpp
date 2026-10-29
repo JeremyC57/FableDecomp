@@ -34,7 +34,7 @@ public:
 };
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
 namespace NHeroInformationScreens {
 class CManager {
@@ -161,8 +161,8 @@ public:
 
 void CWorld::PrepareForLoad()
 {
-    PlayerManager->GetMainPlayer()->RemoveMode(0x2b);
-    PlayerManager->GetMainPlayer()->PrepareForLoad();
+    PlayerManager->GetMainPlayer().RemoveMode(0x2b);
+    PlayerManager->GetMainPlayer().PrepareForLoad();
     g_pPlayerGui->GetPHeroInfoScreensManager()->Close();
     g_pPlayerGui->PrepareForLoad();
     PMusicManager->ClearUIOverridingMusicSet();

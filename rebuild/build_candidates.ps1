@@ -2533,9 +2533,9 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '0040bc50'
-        Module = 'CEngine'
-        Source = '00/40/CEngine_GetEditorAnimation_0040bc50.cpp'
-        TestSource = '00/40/CEngine_GetEditorAnimation_0040bc50_test.cpp'
+        Module = 'CUserProfileManager'
+        Source = '00/40/CUserProfileManager_SetSaveSlotFileName_0040bc50.cpp'
+        TestSource = '00/40/CUserProfileManager_SetSaveSlotFileName_0040bc50_test.cpp'
         PassPattern = 'CEngine_0040bc50_TEST PASS'
     }
     [pscustomobject]@{
@@ -2702,8 +2702,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0040b490'
         Module = 'CUserProfileManager'
-        Source = '00/40/CUserProfileManager_SetCameraResetting_0040b490.cpp'
-        TestSource = '00/40/CUserProfileManager_SetCameraResetting_0040b490_test.cpp'
+        Source = '00/40/CUserProfileManager_SetShowTargetingStatus_0040b490.cpp'
+        TestSource = '00/40/CUserProfileManager_SetShowTargetingStatus_0040b490_test.cpp'
         PassPattern = 'CUserProfileManager_0040b490_TEST PASS'
     }
     [pscustomobject]@{
@@ -2730,8 +2730,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0040b710'
         Module = 'CUserProfileManager'
-        Source = '00/40/CUserProfileManager_SetAntialiasing_0040b710.cpp'
-        TestSource = '00/40/CUserProfileManager_SetAntialiasing_0040b710_test.cpp'
+        Source = '00/40/CUserProfileManager_SetScreenAspectRatio_0040b710.cpp'
+        TestSource = '00/40/CUserProfileManager_SetScreenAspectRatio_0040b710_test.cpp'
         PassPattern = 'CUserProfileManager_0040b710_TEST PASS'
     }
     [pscustomobject]@{
@@ -2751,15 +2751,15 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0040b310'
         Module = 'CUserProfileManager'
-        Source = '00/40/CUserProfileManager_SetAntialiasing_0040b310.cpp'
-        TestSource = '00/40/CUserProfileManager_SetAntialiasing_0040b310_test.cpp'
+        Source = '00/40/CUserProfileManager_SetHUDAlpha_0040b310.cpp'
+        TestSource = '00/40/CUserProfileManager_SetHUDAlpha_0040b310_test.cpp'
         PassPattern = 'CUserProfileManager_0040b310_TEST PASS'
     }
     [pscustomobject]@{
         Address = '0040b3d0'
         Module = 'CUserProfileManager'
-        Source = '00/40/CUserProfileManager_SetAntialiasing_0040b3d0.cpp'
-        TestSource = '00/40/CUserProfileManager_SetAntialiasing_0040b3d0_test.cpp'
+        Source = '00/40/CUserProfileManager_SetDialogueVolume_0040b3d0.cpp'
+        TestSource = '00/40/CUserProfileManager_SetDialogueVolume_0040b3d0_test.cpp'
         PassPattern = 'CUserProfileManager_0040b3d0_TEST PASS'
     }
     [pscustomobject]@{
@@ -8640,7 +8640,7 @@ $catalog = @(
     }
     [pscustomobject]@{
         Address = '004fb150'
-        Module = '_global'
+        Module = 'CWorldMap'
         Source = '00/4f/global_DrawGetEnvironment_004fb150.cpp'
         TestSource = '00/4f/global_DrawGetEnvironment_004fb150_test.cpp'
         PassPattern = 'AUTO_TINY_004fb150_TEST PASS'

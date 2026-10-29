@@ -65,25 +65,26 @@ class CTCCrateStack { public:                          // interface 0xB5
 struct CTCUserActionPointBase {                 // interface 0x2D
     void FreeActionPoint(long index);           // 0x007FEF40
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {     // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     __forceinline CIntelligentPointerThing() : CBaseIntelligentPointer() { }
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
+    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -127,9 +128,9 @@ bool CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointerThing container,
     CAIFilterBase* filter, CThing* ignore)
 {
     CIntelligentPointerThing target;
-    target.SetPItem(container.GetPItem());
+    target.SetPItem(((CThing*)container.GetPItem()));
     CTCCrateStack* stack = 0;
-    if (container.GetPItem()->GetInterfaceWord(&stack, 0xb5))
+    if (((CThing*)container.GetPItem())->GetInterfaceWord(&stack, 0xb5))
         target = CIntelligentPointerThing(stack->GetNextCrate());
     long actionPoint;
     if (AIAction_MoveToPossiblyBlockedObjectAndFace(target, &actionPoint, distance, 10.0f, filter, ignore, 0, 1.0f) == 2
@@ -137,20 +138,20 @@ bool CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointerThing container,
         long* data = goods.Start;
         long index;
         CTCCrateStack* crates;
-        if (container.GetPItem()->GetInterface(&crates, 0xb5) && crates)
+        if (((CThing*)container.GetPItem())->GetInterface(&crates, 0xb5) && crates)
             index = crates->GetNumCrates() - 1;
         else
             index = 0;
-        CThing* item = target.GetPItem();
+        CThing* item = ((CThing*)target.GetPItem());
         CCreatureAction_FetchGoods action(GetCreature(), item, data[index]);
         CurrentActionID = action.GetActionID();
         if (AIAction_PerformActionAndWait(&action, false) == 2) {
             if (IS_THING_ALIVE(target)) {
                 CTCUserActionPointBase* point;
-                target.GetPItem()->GetInterface(&point, 0x2d);
+                ((CThing*)target.GetPItem())->GetInterface(&point, 0x2d);
                 point->FreeActionPoint(actionPoint);
             }
-            if (container.GetPItem() && stack)
+            if (((CThing*)container.GetPItem()) && stack)
                 stack->RemoveNextCrate();
             return true;
         }

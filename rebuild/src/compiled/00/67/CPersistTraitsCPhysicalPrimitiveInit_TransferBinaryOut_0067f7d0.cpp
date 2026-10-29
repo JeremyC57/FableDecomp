@@ -6,18 +6,8 @@
 //   +0, whose first word is the raw object pointer. No engine header exists; local model.
 // Shape: the pointer is re-read through the counted pointer for the second virtual call (`mov ecx,[edi]` again);
 //   speed-optimised (default) TU.
-#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
-#undef CDataOutputStream
 
-class CDataOutputStream : public CDataOutputStreamLayout
-{
-public:
-    void WriteSLONG(long);   // 0x00993EB0
-};
-
-struct CDataOutputStream_Methods : CDataOutputStream {
-};
 
 namespace NHitLocations {
 class CPhysicalPrimitiveBase { public:
@@ -49,9 +39,9 @@ template<> struct CPersistTraits<CPhysicalPrimitiveInit> {
 void CPersistTraits<CPhysicalPrimitiveInit>::TransferBinaryOut(CDataOutputStream* stream, const CPhysicalPrimitiveInit* value)
 {
     if (value->PPrimitive.Get() != 0) {
-        ((CDataOutputStream_Methods*)stream)->WriteSLONG(value->PPrimitive->GetType());
+        ((CDataOutputStream*)stream)->WriteSLONG(value->PPrimitive->GetType());
         value->PPrimitive->TransferBinaryOut(stream);
     }
     else
-        ((CDataOutputStream_Methods*)stream)->WriteSLONG(0);
+        ((CDataOutputStream*)stream)->WriteSLONG(0);
 }

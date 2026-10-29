@@ -42,11 +42,12 @@ class CThing { public:
         return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31));
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentThingPointer : CBaseIntelligentPointer {   // vtable 0x01238C6C
@@ -54,8 +55,8 @@ struct CIntelligentThingPointer : CBaseIntelligentPointer {   // vtable 0x01238C
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -99,24 +100,24 @@ void CCreatureAction_OpenChest::PerformAction()
     if (IS_THING_ALIVE(PChest)) {
         CTCChest* chest = 0;
         {
-            CThing* chestThing = PChest.GetPItem();
+            CThing* chestThing = ((CThing*)PChest.GetPItem());
             if (chestThing->HasTC(0x3c))
                 chest = chestThing->GetTC<CTCChest>(0x3c);
         }
         chest->Open();
         CTCInterface8* movement = 0;
         {
-            CThing* creature = PCreature.GetPItem();
+            CThing* creature = ((CThing*)PCreature.GetPItem());
             if (creature->HasTC(8))
                 movement = creature->GetTC<CTCInterface8>(8);
         }
         movement->Stop(0);
         CTCEntityEvents* events = 0;
         {
-            CThing* creature = PCreature.GetPItem();
+            CThing* creature = ((CThing*)PCreature.GetPItem());
             if (creature->HasTC(0x42))
                 events = creature->GetTC<CTCEntityEvents>(0x42);
         }
-        events->AddEvent(new NEntityEvents::CEventOpenedChest(PChest.GetPItem()));
+        events->AddEvent(new NEntityEvents::CEventOpenedChest(((CThing*)PChest.GetPItem())));
     }
 }

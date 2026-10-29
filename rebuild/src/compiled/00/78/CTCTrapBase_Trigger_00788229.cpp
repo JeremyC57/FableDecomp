@@ -29,10 +29,11 @@
 #pragma optimize("s", on)
 class C3DVector { public: float X, Y, Z; };
 class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   PData;                                      // +0x04
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>
     CIntelligentPointer(CThing* thing);                 // 0x004A96F0
@@ -87,8 +88,8 @@ __declspec(noinline) bool __fastcall IS_THING_ALIVE(CThing* const& thing)       
 }
 __declspec(noinline) bool __fastcall IS_THING_ALIVE_004cc340(const CBaseIntelligentPointer& pointer)   // 0x004CC340
 {
-    if (pointer.GetPItem() != 0) {
-        if ((pointer.GetPItem()->m_flags & 1) == 0)
+    if (((CThing*)pointer.GetPItem()) != 0) {
+        if ((((CThing*)pointer.GetPItem())->m_flags & 1) == 0)
             return true;
     }
     return false;
@@ -145,11 +146,11 @@ void CTCTrapBase::Trigger()
             explosion->GetTCDriver(&explosionDriver);
             for (CHitThing* it = HitThings.begin(); it != HitThings.end(); ++it)
                 if (IS_THING_ALIVE_004cc340(it->first))
-                    explosionDriver->SetThingAsImmune(*it->first.GetPItem());
+                    explosionDriver->SetThingAsImmune(*((CThing*)it->first.GetPItem()));
             long count = ImmuneThings.size();
             for (long i = 0; i < count; ++i)
                 if (IS_THING_ALIVE_004cc340(*(ImmuneThings.begin() + i)))
-                    explosionDriver->SetThingAsImmune(*(ImmuneThings.begin() + i)->GetPItem());
+                    explosionDriver->SetThingAsImmune(*((CThing*)(ImmuneThings.begin() + i)->GetPItem()));
             if (PTrapDef->PhysicalObstructionDefIndex >= 0) {
                 float radius = explosionDriver->PhysicsRadius;
                 const C3DVector& position = ParentThing->GetPos();
@@ -160,7 +161,7 @@ void CTCTrapBase::Trigger()
                     obstruction->GetTCDriver(&obstructionDriver);
                     obstructionDriver->SetLifeTimeSeconds(100.0f);
                     for (CIntelligentPointer* it = ImmuneThings.begin(); it != ImmuneThings.end(); ++it) {
-                        CThing* thing = it->GetPItem();
+                        CThing* thing = ((CThing*)it->GetPItem());
                         if (IS_THING_ALIVE(thing))
                             obstructionDriver->SetThingToIgnoreObstruction(thing);
                     }

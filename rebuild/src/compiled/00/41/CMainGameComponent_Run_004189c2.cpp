@@ -41,8 +41,8 @@ class CRegion { public:
     CRefPointer GetPointer() const { return m_24; }
 };
 class CWorldMap { public:
-    long GetCurrentRegionIndex() const;            // 0x004FB150
-    CRegion& GetRegion(long index);                // 0x004FC180
+    long GetLoadedRegion() const;            // 0x004FB150
+    const CRegion& GetRegion(long index) const;    // 0x004FC180
 };
 class CWorld { public:
     virtual void w00(); virtual void w01(); virtual void w02(); virtual void w03(); virtual void w04(); virtual void w05(); virtual void w06(); virtual void w07();
@@ -146,7 +146,7 @@ bool CMainGameComponent::Run(CGameComponent** next)
         g_pDisplayManager->ChangePresentationInterval(g_PresentationInterval, 1, true);
     else {
         CWorld* world = PWorld;
-        world->GetWorldMap()->GetRegion(world->GetWorldMap()->GetCurrentRegionIndex()).GetPointer();
+        world->GetWorldMap()->GetRegion(world->GetWorldMap()->GetLoadedRegion()).GetPointer();
     }
     CUserProfileManager::Get().Apply();
     PDisplayEngine->Engine3D->SetOption(0xc, 20.0f);

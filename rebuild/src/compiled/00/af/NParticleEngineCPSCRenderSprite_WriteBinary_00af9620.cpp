@@ -10,15 +10,6 @@ class C3DVector { public: float X, Y, Z; };
 class CCharString { public: void* PStringData; };
 class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
 class CEnginePrimitiveHandle { public: long Index; long Generation; };
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                        // 0x00993E30
-    void WriteLong(long value);                         // 0x00993EB0
-    void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteFloat(float value);                       // 0x00993EE0
-    void WriteColour(const CRGBColour& value);          // 0x00993F30
-    void Write3DVector(const C3DVector& value);         // 0x00993FD0
-    void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
-};
 namespace NParticleEngine {
 class CPSCRenderSprite { public:
     unsigned char _base[0xc];                           // CPSCBase
@@ -61,31 +52,31 @@ class CPSCRenderSprite { public:
 };
 void CPSCRenderSprite::WriteBinary(CDataOutputStream* destination)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)destination;
-    out->WriteLong(SpriteBankIndex);
-    out->WriteLong(TrailBankIndex);
+    CDataOutputStream* out = (CDataOutputStream*)destination;
+    out->WriteSLONG(SpriteBankIndex);
+    out->WriteSLONG(TrailBankIndex);
     out->WriteColour(StartColour);
     out->WriteColour(MidColour);
     out->WriteColour(EndColour);
-    out->WriteULong(BlendMode);
-    out->WriteULong(TrailBlendMode);
-    out->WriteULong(BlendOp);
-    out->WriteULong(TrailBlendOp);
-    out->WriteULong(Flags);
-    out->WriteULong(FadeInEndInteger);
-    out->WriteULong(FadeOutBeginInteger);
-    out->WriteULong(TrailLengthInteger);
-    out->WriteULong(FlickerMinAlphaInteger);
-    out->WriteULong(FlickerMinSizeInteger);
-    out->WriteULong(NoCrossedSprites);
-    out->WriteULong(StartRenderSize);
-    out->WriteULong(AlphaFadeMinimum);
-    out->WriteULong(EndRenderSize);
-    out->WriteULong(FlickerBias);
-    out->WriteULong(AnimationTimeSecs);
-    out->WriteULong(SizeFadeMinimum);
-    out->WriteULong(TrailWidth);
-    out->WriteULong(FlickerSpeed);
+    out->WriteULONG(BlendMode);
+    out->WriteULONG(TrailBlendMode);
+    out->WriteULONG(BlendOp);
+    out->WriteULONG(TrailBlendOp);
+    out->WriteULONG(Flags);
+    out->WriteULONG(FadeInEndInteger);
+    out->WriteULONG(FadeOutBeginInteger);
+    out->WriteULONG(TrailLengthInteger);
+    out->WriteULONG(FlickerMinAlphaInteger);
+    out->WriteULONG(FlickerMinSizeInteger);
+    out->WriteULONG(NoCrossedSprites);
+    out->WriteULONG(StartRenderSize);
+    out->WriteULONG(AlphaFadeMinimum);
+    out->WriteULONG(EndRenderSize);
+    out->WriteULONG(FlickerBias);
+    out->WriteULONG(AnimationTimeSecs);
+    out->WriteULONG(SizeFadeMinimum);
+    out->WriteULONG(TrailWidth);
+    out->WriteULONG(FlickerSpeed);
     out->WriteEBOOL(UseStartColour);
     out->WriteEBOOL(UseMidColour);
     out->WriteEBOOL(UseEndColour);

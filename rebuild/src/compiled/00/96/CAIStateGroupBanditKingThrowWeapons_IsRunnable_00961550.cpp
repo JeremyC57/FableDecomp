@@ -24,7 +24,7 @@ class CPlayer
 
 class CPlayerManager
 { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+    CPlayer& GetMainPlayer();                       // 0x00449970
 };
 
 struct CBaseIntelligentPointer
@@ -110,7 +110,7 @@ struct CAIStateGroup_BanditKingThrowWeapons
 
 bool CAIStateGroup_BanditKingThrowWeapons::IsRunnable()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1))
     {
         CThingWithTCs* creature = (CThingWithTCs*)PBrain->Creature;

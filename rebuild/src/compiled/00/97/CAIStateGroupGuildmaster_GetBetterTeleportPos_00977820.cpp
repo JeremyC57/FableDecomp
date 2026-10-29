@@ -25,23 +25,24 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                              // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CThingPointer : CBaseIntelligentPointer {             // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CThingPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CThingPointer& operator=(const CThingPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CThingPointer& operator=(const CThingPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -78,19 +79,19 @@ bool CAIStateGroupGuildmasterMethods::GetBetterTeleportPos(C3DVector& pos)
 {
     CThing* creature = GetCreature();
     CThing* best = 0;
-    double length = Distance2D(creature->GetPos(), Enemy().GetPItem()->GetPos());
+    double length = Distance2D(creature->GetPos(), ((CThing*)Enemy().GetPItem())->GetPos());
     float bestDistance = (float)length;
     for (CThingPointer* it = Markers().first; it != Markers().last; ++it) {
         if (IS_THING_ALIVE(*it)) {
-            CThing* enemy = Enemy().GetPItem();
-            float distance = Distance2D(enemy->GetPos(), it->GetPItem()->GetPos());
+            CThing* enemy = ((CThing*)Enemy().GetPItem());
+            float distance = Distance2D(enemy->GetPos(), ((CThing*)it->GetPItem())->GetPos());
             if (distance < bestDistance && distance > g_MinTeleportMarkerDistance) {
                 bestDistance = distance;
-                best = it->GetPItem();
+                best = ((CThing*)it->GetPItem());
             }
         }
     }
-    if (IS_THING_ALIVE(best) && best != LastTeleportMarker().GetPItem()) {
+    if (IS_THING_ALIVE(best) && best != ((CThing*)LastTeleportMarker().GetPItem())) {
         pos = best->GetPos();
         LastTeleportMarker() = CThingPointer(best);
         return true;

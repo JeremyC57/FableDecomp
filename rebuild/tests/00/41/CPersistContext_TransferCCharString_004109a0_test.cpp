@@ -51,10 +51,10 @@ template <class T> struct CPersistTraits {
     void TransferBinaryIn(CDataInputStream* stream, T* value) { *value = stream->ReadNullTerminatedString(); }
 };
 
-struct CPersistContext_TransferableObjectBase {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferIn();
 };
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableObjectBase {   // vtable 0x0122DEFC
+template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {   // vtable 0x0122DEFC
     T* Value;
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual void TransferIn();
@@ -69,8 +69,8 @@ class CPersistContext { public:
     CDataInputStream*  PLoadStream;          // +0x24
     CDataOutputStream* PSaveStream;          // +0x28
     protected: void CheckCRC(const char* name); public:         // 0x00404500
-    void TransferObjectSaveText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BAD60
-    void TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BBA40
+    protected: void TransferObjectSaveText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BAD60
+    protected: void TransferObjectLoadText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BBA40
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);
 };
 
@@ -122,12 +122,12 @@ CCharString::~CCharString() { ++g_dtor; }
 const CCharString& CCharString::operator=(const CCharString& other) { ++g_assign; g_lastAssignFrom = other.PData; PData = other.PData; return *this; }
 CCharString CDataInputStream::ReadNullTerminatedString() { ++g_read; CCharString s; s.PData = (void*)0x5555; return s; }
 void CDataOutputStream::WriteNullTerminatedString(const CCharString& value) { ++g_write; g_lastAssignFrom = value.PData; }
-void CPersistContext_TransferableObjectBase::TransferIn() { }
+void CPersistContext_TransferableComponentGenericType::TransferIn() { }
 template <class T> void CPersistContext_TransferableComponent<T>::TransferIn() { }
 void CPersistContext::CheckCRC(const char* name) { ++g_crc; g_lastName = name; }
-void CPersistContext::TransferObjectSaveText(const char* name, CPersistContext_TransferableObjectBase& item)
+void CPersistContext::TransferObjectSaveText(const char* name, CPersistContext_TransferableComponentGenericType& item)
 { ++g_saveText; g_lastName = name; g_itemValue = static_cast<CPersistContext_TransferableComponent<CCharString>&>(item).Value; }
-void CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item)
+void CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_TransferableComponentGenericType& item)
 { ++g_loadText; g_lastName = name; g_itemValue = static_cast<CPersistContext_TransferableComponent<CCharString>&>(item).Value; }
 int main()
 {

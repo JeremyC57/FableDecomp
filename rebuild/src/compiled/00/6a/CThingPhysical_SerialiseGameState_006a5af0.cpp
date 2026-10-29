@@ -66,7 +66,8 @@ public:
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                        // +0x18 EMode
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620
 };
 extern const char g_strHealth[];                               // 0x0125D090 "Health"
 extern const char g_strScale[];                                // 0x0125D088 "Scale"

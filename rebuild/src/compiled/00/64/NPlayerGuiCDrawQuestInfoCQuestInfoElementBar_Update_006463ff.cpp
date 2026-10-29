@@ -53,7 +53,7 @@ class CThingManager { public:
     CThing* GetThingWithUID(unsigned __int64 uid);  // 0x0051ED80
 };
 class CWorldMap { public:
-    long GetCurrentRegionNumber();                  // 0x004FB150
+    long GetLoadedRegion() const;                  // 0x004FB150
 public:
     long GetRegionNumberMapIsIn(long) const;   // 0x004FC190
 };
@@ -107,7 +107,7 @@ bool CQuestInfoElementBar::Update()
     } else if (ThingValid && ThingUID && ThingMapNumber) {
         CWorld* world = g_pGame->World;
         CWorldMap* map = world->GetWorldMap();
-        if (map->GetCurrentRegionNumber() == map->GetRegionNumberMapIsIn(ThingMapNumber)) {
+        if (map->GetLoadedRegion() == map->GetRegionNumberMapIsIn(ThingMapNumber)) {
             CThing* thing = world->GetThingManager()->GetThingWithUID(ThingUID);
             if (IS_THING_ALIVE_RAW(&thing)) {
                 CIntelligentPointer<CThingPhysical> found(thing);

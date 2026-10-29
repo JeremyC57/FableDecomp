@@ -39,8 +39,8 @@ class CPersistContext { public:
     unsigned char _pad_0x00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, long& value, const long& defaultValue);                          // 0x00410BE0
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);  // 0x0044BB00
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: long 0x00410BE0; unsigned __int64 0x0044BB00
 };
 
 class CTCBase { public:                                // 0x0c bytes (a real base keeps the vptr from padding to 8)
@@ -57,11 +57,11 @@ class CTCWallMount : public CTCBase { public:
 
 void CTCWallMount::OnSerialise(CPersistContext* context, bool flag)
 {
-    context->Transfer("BoughtForAmount", BoughtForAmount, 0);
+    context->Transfer<long>("BoughtForAmount", BoughtForAmount, 0);
     if (context->IsSaving()) {
         TrophyID = 0;
         if (Trophy.GetPItem() && !Trophy.GetPItem()->IsDead())
             TrophyID = Trophy.GetPItem()->UID;
     }
-    context->Transfer("TrophyID", TrophyID, 0);
+    context->Transfer<unsigned __int64>("TrophyID", TrophyID, 0);
 }

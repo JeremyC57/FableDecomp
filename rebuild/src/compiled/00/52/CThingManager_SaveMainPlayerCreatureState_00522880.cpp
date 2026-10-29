@@ -104,7 +104,7 @@ class CTCInventoryItem { public:
 class CThingCreature : public CThing { };
 class CThingPlayerCreature : public CThingCreature { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };    // 0x00449970
 
 struct SThingListNode {
     SThingListNode* _M_next;
@@ -140,7 +140,7 @@ __declspec(noinline) void CThingManager::SaveThingList(CCharString& script, long
 void CThingManager::SaveMainPlayerCreatureState(CCharString& script)
 {
     Saving = true;
-    CThingCreature* hero = PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThingCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     long map = hero->CurrentMapNumber;
     CRetailPtrVector<CThing*> things;
     things.push_back(hero);

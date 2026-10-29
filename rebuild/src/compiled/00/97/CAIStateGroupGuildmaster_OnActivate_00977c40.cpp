@@ -82,18 +82,19 @@ __declspec(noinline) void CThingSearchTools::GetAllThingsInRoughArea(const C2DBo
     out._M_finish = out._M_start + CollectSink_977c40(this, area.MinX + *(const long*)&filter, 0);
 }
 #pragma auto_inline(on)
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 struct __false_type { __false_type() { } };
 inline void* operator new(unsigned int, void* where) { return where; }

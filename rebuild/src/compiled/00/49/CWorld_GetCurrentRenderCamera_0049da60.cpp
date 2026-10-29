@@ -46,7 +46,7 @@ class CPlayer : public CPlayerDonor {
  public:
     CCamera GetFreeCamera(float t) const;     // 0x00487180
 };
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970
 class CAIGameCameraBase { public:
     virtual void v00();
     virtual CCamera GetCamera(float t) const;          // slot 1 (+0x04)
@@ -66,7 +66,7 @@ public:
 
 CCamera CWorld::GetCurrentRenderCamera() const
 {
-    CPlayer* player = PlayerManager->GetMainPlayer();
+    CPlayer* player = &PlayerManager->GetMainPlayer();
     if (player->UsingFreeCamera)
         return player->GetFreeCamera(1.0f);
     return PCurrentGameCamera->GetCamera(1.0f);

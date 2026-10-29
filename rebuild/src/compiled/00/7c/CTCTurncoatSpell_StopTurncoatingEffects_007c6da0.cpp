@@ -51,16 +51,17 @@ class CTCSoundPlayer { public:                         // interface 0x10
     void StopSample(unsigned long sampleID);    // 0x0066ADD0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;                            // +0x00
     void* PData;                                // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -86,7 +87,7 @@ void CTCTurncoatSpell::StopTurncoatingEffects()
         LoopingSound = 0;
     }
     if (IS_THING_ALIVE(TurncoatingEffectOnMe))
-        TurncoatingEffectOnMe.GetPItem()->FadeOutEffect();
+        ((CThing*)TurncoatingEffectOnMe.GetPItem())->FadeOutEffect();
     if (IS_THING_ALIVE(TurncoatingEffectOnTarget))
-        TurncoatingEffectOnTarget.GetPItem()->FadeOutEffect();
+        ((CThing*)TurncoatingEffectOnTarget.GetPItem())->FadeOutEffect();
 }

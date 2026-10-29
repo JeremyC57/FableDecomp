@@ -50,23 +50,24 @@ class CThingCreatureBase : public CThing { public:
 bool __fastcall IsAbleToMove(CThing* thing);                  // 0x0085F3E0
 void __fastcall RemoveMovementBlockingModes(CThing* thing);   // 0x0085F600
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -139,7 +140,7 @@ void CAIStateGroup_MeleeCombatNearby2::Update()
     }
     CThing* creature = GetCreature();
     CCombatManager* combat = GetPWorld()->PCombatManager;
-    combat->RegisterCombatant(creature, PEnemy.GetPItem(), true);
+    combat->RegisterCombatant(creature, ((CThing*)PEnemy.GetPItem()), true);
     CTCPerceiveThing* perceive;
     if (GetCreature()->GetInterface(&perceive, 0x34))
         perceive->Refresh();

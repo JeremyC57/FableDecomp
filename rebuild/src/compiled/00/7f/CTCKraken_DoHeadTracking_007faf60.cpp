@@ -46,16 +46,17 @@ class CThing { public:
     bool IsDead() const { return (m_flags91 & 1) != 0; }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     void* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -114,7 +115,7 @@ void CTCKraken::DoHeadTracking()
         else
             speed = PKrakenDef->TargetingTrackSpeed;
         CThing* parent = ParentThing;
-        CThing* target = PTarget.GetPItem();
+        CThing* target = ((CThing*)PTarget.GetPItem());
         const C3DVector& ownPos = parent->GetPos();
         const C3DVector& targetPos = target->GetPos();
         float angle = WrapAngle((float)atan2(targetPos.X - ownPos.X, targetPos.Y - ownPos.Y) * 0.15915494f);

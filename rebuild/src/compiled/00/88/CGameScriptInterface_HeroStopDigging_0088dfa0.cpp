@@ -13,7 +13,7 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+    CPlayer& GetMainPlayer();                       // 0x00449970
 };
 
 struct CGameScriptInterface_Methods : CGameScriptInterface {
@@ -22,7 +22,7 @@ struct CGameScriptInterface_Methods : CGameScriptInterface {
 
 void CGameScriptInterface_Methods::HeroStopDigging()
 {
-    CPlayer* player = PlayerManager->GetMainPlayer();
+    CPlayer* player = &PlayerManager->GetMainPlayer();
     long mode = player->GetCurrentMode();
     if (mode == 0x1e)
         player->RemoveMode(mode);

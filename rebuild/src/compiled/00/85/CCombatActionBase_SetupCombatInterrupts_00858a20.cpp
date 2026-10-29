@@ -96,10 +96,11 @@ class CThing { public:
     unsigned char  _pad0[0x70];
     CDefClassBase* PDef;                               // +0x70
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pData;
-    CThing* GetPItem() const;                          // 0x00A01B50
+    CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
 class CAnimationEntry { public:
     unsigned long AnimID;                              // +0x00
@@ -141,7 +142,7 @@ void CCombatActionBase::SetupCombatInterrupts()
         float totalTime = (TotalTime - GetAnimDelayTime()) / framesPerSecond;
         float speed = 1.0f;
         CDefPointer<CCreatureStatsDef> stats;
-        CDefClassBase* creatureDef = PCreature.GetPItem()->PDef;
+        CDefClassBase* creatureDef = ((CThing*)PCreature.GetPItem())->PDef;
         if (creatureDef->GetSubDef(stats))
             speed = stats->Speed;
         StrikeEventInterruptTime = eventTime + (totalTime - eventTime) * (1.0f - speed) * 0.5f;

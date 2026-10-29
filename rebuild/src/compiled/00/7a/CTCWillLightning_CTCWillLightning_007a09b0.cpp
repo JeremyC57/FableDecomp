@@ -100,7 +100,7 @@ struct CBaseIntelligentPointer {
     void* m_pItem;
     CBaseIntelligentPointer();                          // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CThing* item);                        // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -112,7 +112,7 @@ struct CCreaturePointer : CBaseIntelligentPointer {     // CIntelligentPointer<C
     virtual void v00();
     CCreaturePointer() { }
     CCreaturePointer(CThing* item) { SetPItem(item); }
-    CCreaturePointer& operator=(const CCreaturePointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CCreaturePointer& operator=(const CCreaturePointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 
 struct CDefNative {
@@ -262,13 +262,13 @@ CTCWillLightning::CTCWillLightning(CThing* parent)
     }
     m_cbpPlayer = CCreaturePointer(ParentThing);
     long level = 0;
-    CThing* caster = m_cbpPlayer.GetPItem();
+    CThing* caster = ((CThing*)m_cbpPlayer.GetPItem());
     if (caster->HasTC(0x6f))
         level = caster->GetTCConst<CTCInventoryAbilities>(0x6f)->GetAbilityLevel(11);
     SetLevel(level);
     if (ParentThing->ThingType == 1)
         m_tTimer.IsPlayer = true;
-    CThing* player = m_cbpPlayer.GetPItem();
+    CThing* player = ((CThing*)m_cbpPlayer.GetPItem());
     CTCHeroStats* stats;
     if (player->GetInterface(&stats, 4) && stats->WillPower <= 0) {
         m_lsState = 6;

@@ -24,11 +24,10 @@ inline CCharString EmptyName() { CCharString name; return name; }
 struct CDefIndexArray { unsigned char _pad[0x10]; };
 
 class CPersistContext { public:
-    void Transfer(const char* name, CDefIndexArray& value);                                 // 0x0074DE50
-    void Transfer(const char* name, float& value, const float& defaultValue);               // 0x00410620
-    void Transfer(const char* name, bool& value, const bool& defaultValue);                 // 0x004045C0
-    void Transfer(const char* name, long& value, const long& defaultValue);                 // 0x00410BE0
-    void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);   // 0x004109A0
+    template <class T> void Transfer(const char* name, T& value);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: CDefIndexArray 0x0074DE50
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620; bool 0x004045C0; long 0x00410BE0; CCharString 0x004109A0
 };
 
 struct TGenerationParameters {

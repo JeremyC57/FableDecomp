@@ -44,10 +44,11 @@ class CThing { public:
 class CTCCreatureModeManager { public:
     void OnUnsheatheFinished();             // 0x0073A840
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
 };
 struct CCountedPointer {                    // CCountedPointer<CCreatureActionBase>
     CCreatureActionBase* Object;            // +0
@@ -86,10 +87,10 @@ void CCreatureAction_UnsheatheItemFromInventory::FinishAction()
         PerformAction();
     CCreatureActionBase::FinishAction();
     if (PFollowUpAction.Object) {
-        if (!PCreature.GetPItem()->SetCurrentAction(PFollowUpAction.Object))
+        if (!((CThing*)PCreature.GetPItem())->SetCurrentAction(PFollowUpAction.Object))
             PFollowUpAction.Object->OnRejectedByCreature();
     }
     CTCCreatureModeManager* modes;
-    if (PCreature.GetPItem()->GetInterface(&modes, 0x31))
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31))
         modes->OnUnsheatheFinished();
 }

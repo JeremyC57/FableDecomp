@@ -25,7 +25,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                    // +0x04
     CBaseIntelligentPointer();                          // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThingAICreature>: vtable 0x0123E7E0
@@ -34,15 +34,15 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)other.GetPItem()); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem((CBaseObject*)item);
         return *this;
     }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -78,7 +78,7 @@ void CTCBoss::SetHelperCreature(CThingAICreature* creature)
 {
     unsigned int i;
     for (i = 0; i < HelperCreatures.size(); ++i) {
-        if (IS_THING_ALIVE(HelperCreatures[i]) && creature == HelperCreatures[i].GetPItem())
+        if (IS_THING_ALIVE(HelperCreatures[i]) && creature == ((CThing*)HelperCreatures[i].GetPItem()))
             return;
     }
     for (i = 0; i < HelperCreatures.size(); ++i) {

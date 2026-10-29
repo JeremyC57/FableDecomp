@@ -5,10 +5,11 @@
 #include "engine/CThingAICreature.h"
 class C3DVector { public: float X,Y,Z; };
 class CThing { public: unsigned char _beforeDead[0x91]; unsigned char Dead:1; };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CThing* item);                // 0x00A01B90
@@ -17,7 +18,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
     virtual void v00();
     CIntelligentPointerThing(CThing* item=0) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 
 
@@ -41,11 +42,11 @@ struct CGameMasterMethods : CAIStateGroupBase {
 bool CGameMasterMethods::InitCreaturePosition() {
  CCreatureWorkView* creature=(CCreatureWorkView*)PBrain->Creature;
  {
- CIntelligentPointerThing work(creature->GetWorkBuilding().GetPItem());
- CThing* item=work.GetPItem();
+ CIntelligentPointerThing work(((CThing*)creature->GetWorkBuilding().GetPItem()));
+ CThing* item=((CThing*)work.GetPItem());
  Building.SetPItem(item);
  }
- if(Building.GetPItem() && !Building.GetPItem()->Dead && ((CSeatVirtualView*)this)->GetSeat()) {
+ if(((CThing*)Building.GetPItem()) && !((CThing*)Building.GetPItem())->Dead && ((CSeatVirtualView*)this)->GetSeat()) {
   CAIBrain* brain = PBrain;
   CCreaturePlacementMethods* placement=(CCreaturePlacementMethods*)brain->Creature;
   bool placed=placement->AutoPlaceNear(SeatPosition,GameMasterPlacementRadius);

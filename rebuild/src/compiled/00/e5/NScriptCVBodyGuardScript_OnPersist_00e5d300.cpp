@@ -12,8 +12,8 @@
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 class CPersistContext { public:
-    void Transfer(const char* name, long& value, const long& defaultValue);    // 0x00410BE0
-    void Transfer(const char* name, float& value, const float& defaultValue);  // 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: long 0x00410BE0; float 0x00410620
 };
 class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
@@ -74,10 +74,10 @@ using NScript::CV_BodyGuardScript;
 
 void NScript::CV_BodyGuardScript::OnPersist(CPersistContext& context)
 {
-    context.Transfer("HenchmanGlobalStatus[HT_EVIL1]", HenchmanGlobalStatus[0], 0);
-    context.Transfer("HenchmanGlobalStatus[HT_EVIL2]", HenchmanGlobalStatus[1], 0);
-    context.Transfer("HenchmanGlobalStatus[HT_GOOD1]", HenchmanGlobalStatus[2], 0);
-    context.Transfer("HenchmanGlobalStatus[HT_GOOD2]", HenchmanGlobalStatus[3], 0);
+    context.Transfer<long>("HenchmanGlobalStatus[HT_EVIL1]", HenchmanGlobalStatus[0], 0);
+    context.Transfer<long>("HenchmanGlobalStatus[HT_EVIL2]", HenchmanGlobalStatus[1], 0);
+    context.Transfer<long>("HenchmanGlobalStatus[HT_GOOD1]", HenchmanGlobalStatus[2], 0);
+    context.Transfer<long>("HenchmanGlobalStatus[HT_GOOD2]", HenchmanGlobalStatus[3], 0);
     float evil1 = (float)HenchmanDeadRespawnTimer[0].GetTime();
     float evil2 = (float)HenchmanDeadRespawnTimer[1].GetTime();
     float good1 = (float)HenchmanDeadRespawnTimer[2].GetTime();

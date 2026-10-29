@@ -22,13 +22,13 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CThing* PItem;                              // +4
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-    CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
+    CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 
 class CThing { public:
@@ -69,10 +69,10 @@ class CCreatureAction_CastWillGhostSwordSpell : public CCombatActionBase { publi
 void CCreatureAction_CastWillGhostSwordSpell::Initialise()
 {
     CCombatActionBase::Initialise();
-    CTCGhostSword* tc = (CTCGhostSword*)PCreature.GetPItem()->AddTC("CTCGhostSword", true, 0);
-    if (PCreature.GetPItem()->m_state == 1)
+    CTCGhostSword* tc = (CTCGhostSword*)((CThing*)PCreature.GetPItem())->AddTC("CTCGhostSword", true, 0);
+    if (((CThing*)PCreature.GetPItem())->m_state == 1)
         tc->SetAICast(SpellLevel);
     CIntelligentPointerThing target = PItemRemoved;
-    if (target.GetPItem() && !(target.GetPItem()->m_flags91 & 1))
+    if (((CThing*)target.GetPItem()) && !(((CThing*)target.GetPItem())->m_flags91 & 1))
         tc->PTarget = target;
 }

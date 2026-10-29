@@ -51,12 +51,13 @@ public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -87,7 +88,7 @@ class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThing* GetCreature() const { return ((CThing*)PCreature.GetPItem()); }
 };
 class CCreatureAction_SnapDragon : public CCreatureActionBase { public:
     void PerformAction();

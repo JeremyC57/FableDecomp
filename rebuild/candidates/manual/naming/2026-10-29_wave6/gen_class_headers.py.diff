@@ -1,0 +1,46 @@
+--- gen/gen_class_headers.repo.py	2026-10-29 04:32:25.912549387 +0000
++++ gen/gen_class_headers.py	2026-10-29 05:03:38.483740570 +0000
+@@ -457,6 +457,34 @@
+     "CWorld": {
+         "members": [("public", "static long __fastcall GetFrame();", "0x0049D870 ?GetFrame@CWorld@@SIJXZ")],
+     },
++    # naming wave 6: the scalar writers (Ego_r.pdb / FableWin.pdb member order EBOOL, UBYTE, SBYTE, CBYTE, UWORD, SWORD,
++    # ULONG, SLONG, UHUGE, SHUGE, Float, Double, NullTerminatedWString, Colour, PixelFormat, 2DVector, 3DVector = retail
++    # 0x00993E30 .. 0x00993FD0; WriteStringNewLine / WritePresizedString / WriteNullTerminatedString 0x00995A20 / A80 / AE0;
++    # catalogue labels agree, and landed rows already bind these spellings). The three one-byte writers
++    # 0x00993E50/E60/E70 are left out: their order-derived names disagree with the catalogue label (WriteCBYTE at E50).
++    "CDataOutputStream": {
++        "fwd": ["C2DVector", "C3DVector", "CCharString", "CRGBColour", "CWideString"],
++        "members": [
++            ("public", "void WriteEBOOL(bool value);", "0x00993E30 ?WriteEBOOL@CDataOutputStream@@QAEX_N@Z"),
++            ("public", "void WriteUWORD(unsigned short value);", "0x00993E80 ?WriteUWORD@CDataOutputStream@@QAEXG@Z"),
++            ("public", "void WriteSWORD(short value);", "0x00993E90 ?WriteSWORD@CDataOutputStream@@QAEXF@Z"),
++            ("public", "void WriteULONG(unsigned long value);", "0x00993EA0 ?WriteULONG@CDataOutputStream@@QAEXK@Z"),
++            ("public", "void WriteSLONG(long value);", "0x00993EB0 ?WriteSLONG@CDataOutputStream@@QAEXJ@Z"),
++            ("public", "void WriteUHUGE(unsigned __int64 value);", "0x00993EC0 ?WriteUHUGE@CDataOutputStream@@QAEX_K@Z"),
++            ("public", "void WriteFloat(float value);", "0x00993EE0 ?WriteFloat@CDataOutputStream@@QAEXM@Z"),
++            ("public", "void WriteNullTerminatedWString(const CWideString& text);",
++             "0x00993F00 ?WriteNullTerminatedWString@CDataOutputStream@@QAEXABVCWideString@@@Z"),
++            ("public", "void WriteColour(const CRGBColour& colour);", "0x00993F30 ?WriteColour@CDataOutputStream@@QAEXABVCRGBColour@@@Z"),
++            ("public", "void Write2DVector(const C2DVector& vector);", "0x00993F90 ?Write2DVector@CDataOutputStream@@QAEXABVC2DVector@@@Z"),
++            ("public", "void Write3DVector(const C3DVector& vector);", "0x00993FD0 ?Write3DVector@CDataOutputStream@@QAEXABVC3DVector@@@Z"),
++            ("public", "void WriteStringNewLine(const CCharString& text);",
++             "0x00995A20 ?WriteStringNewLine@CDataOutputStream@@QAEXABVCCharString@@@Z"),
++            ("public", "void WritePresizedString(const CCharString& text);",
++             "0x00995A80 ?WritePresizedString@CDataOutputStream@@QAEXABVCCharString@@@Z"),
++            ("public", "void WriteNullTerminatedString(const CCharString& text);",
++             "0x00995AE0 ?WriteNullTerminatedString@CDataOutputStream@@QAEXABVCCharString@@@Z"),
++        ],
++    },
+     # "CScriptThing": {"virtual_dtor": "0x004AA840 ??1CScriptThing@@UAE@XZ"},   measured in naming wave 3 and NOT
+     #   opted in: byte-neutral, but 52 of its 384 including rows need model edits first (HEADERS.md).
+ }
+@@ -477,6 +505,8 @@
+              "// Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque",
+              "// `unsigned char X[N]` members carry their real (composite/template) type in a comment.",
+              "#include <stddef.h>", '#include "rebuild_abi.h"', ""]
++    extra = HEADER_MEMBERS.get(cls, {})
++    fwd = set(fwd) | set(extra.get("fwd", []))
+     for f in sorted(fwd - {cls}):
+         lines.append(f"{class_key(f)} {f};")
+     if fwd - {cls}:

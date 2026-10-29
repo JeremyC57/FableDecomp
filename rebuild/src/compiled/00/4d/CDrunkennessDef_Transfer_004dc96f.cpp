@@ -8,7 +8,8 @@
 // the virtual persist hook (mangled `?Transfer@CDrunkennessDef@@UAEXAAVCPersistContext@@@Z`).
 // Leaf: Transfer
 class CPersistContext { public:
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620
 };
 
 class CDrunkennessDef { public:

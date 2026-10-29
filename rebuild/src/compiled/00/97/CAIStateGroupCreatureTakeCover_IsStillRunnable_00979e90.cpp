@@ -7,13 +7,14 @@
 // written in the body, so they share one key slot (inside an inline helper, or as HasTC + FindEntry, they get two). Layout: PTargetThing +0x14, PCoverThing +0x1f (Ego_r.pdb CAIStateGroup_CreatureUseCoverBase, byte-packed).
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -108,9 +109,9 @@ class CThingCreatureBase : public CThing
 
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0)
+    if (((CThing*)p.GetPItem()) != 0)
     {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -146,11 +147,11 @@ struct CAIStateGroup_CreatureTakeCover
 bool CAIStateGroup_CreatureTakeCover::IsStillRunnable()
 {
     if (IS_THING_ALIVE(PTargetThing)
-        && IS_THING_ALIVE(PCoverThing.GetPItem())
-        && !IsInMeleeWithCombatWheelAttackers(PTargetThing.GetPItem()))
+        && IS_THING_ALIVE(((CThing*)PCoverThing.GetPItem()))
+        && !IsInMeleeWithCombatWheelAttackers(((CThing*)PTargetThing.GetPItem())))
     {
         CTCCarrying* carrying;
-        if (PTargetThing.GetPItem()->GetInterface(0x46, &carrying))
+        if (((CThing*)PTargetThing.GetPItem())->GetInterface(0x46, &carrying))
         {
             CThing* weapon = carrying->GetThingInPrimarySlot();
             if (weapon) {

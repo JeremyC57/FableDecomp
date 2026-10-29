@@ -12,15 +12,6 @@ class C3DVector { public: float X, Y, Z; };
 class CCharString { public: void* PStringData; };
 class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
 class CEnginePrimitiveHandle { public: long Index; long Generation; };
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                        // 0x00993E30
-    void WriteLong(long value);                         // 0x00993EB0
-    void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteFloat(float value);                       // 0x00993EE0
-    void WriteColour(const CRGBColour& value);          // 0x00993F30
-    void Write3DVector(const C3DVector& value);         // 0x00993FD0
-    void WriteNullTerminatedString(const CCharString& s); // 0x00995AE0
-};
 namespace NParticleEngine {
 class CPSCSplineBase { public:
     unsigned char _base[0x34];                          // CPSCBase + spline data (retail size)
@@ -69,30 +60,30 @@ class CPSCSingleSprite : public CPSCSplineBase { public:
 };
 void CPSCSingleSprite::WriteBinary(CDataOutputStream* destination)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)destination;
-    out->WriteLong(SpriteBankIndex);
+    CDataOutputStream* out = (CDataOutputStream*)destination;
+    out->WriteSLONG(SpriteBankIndex);
     out->WriteColour(StartColour);
     out->WriteColour(MidColour);
     out->WriteColour(EndColour);
     out->WriteFloat(AnimationTimeSecs);
     out->WriteFloat(StartRenderSize);
     out->WriteFloat(EndRenderSize);
-    out->WriteLong(SpriteAlignment);
-    out->WriteLong(NoCrossedSprites);
+    out->WriteSLONG(SpriteAlignment);
+    out->WriteSLONG(NoCrossedSprites);
     out->WriteFloat(InitialAngle);
-    out->WriteLong(FadeInEndInteger);
-    out->WriteLong(FadeOutBeginInteger);
+    out->WriteSLONG(FadeInEndInteger);
+    out->WriteSLONG(FadeOutBeginInteger);
     out->WriteFloat(AlphaFadeMinimum);
     out->WriteFloat(SizeFadeMinimum);
-    out->WriteULong(PositionParam);
-    out->WriteLong(BlendMode);
-    out->WriteLong(BlendOp);
-    out->WriteLong(TrailBlendMode);
-    out->WriteLong(TrailBlendOp);
-    out->WriteLong(TrailBankIndex);
+    out->WriteULONG(PositionParam);
+    out->WriteSLONG(BlendMode);
+    out->WriteSLONG(BlendOp);
+    out->WriteSLONG(TrailBlendMode);
+    out->WriteSLONG(TrailBlendOp);
+    out->WriteSLONG(TrailBankIndex);
     out->WriteFloat(TrailWidth);
-    out->WriteLong(MaxTrailLength);
-    out->WriteLong(StayWithEmitterIntFactor);
+    out->WriteSLONG(MaxTrailLength);
+    out->WriteSLONG(StayWithEmitterIntFactor);
     out->WriteEBOOL(UseStartColour);
     out->WriteEBOOL(UseMidColour);
     out->WriteEBOOL(UseEndColour);

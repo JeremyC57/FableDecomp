@@ -12,7 +12,8 @@
 #include "engine/CTCBase.h"
 
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 class CTCFishingSpot : public CTCBase { public:

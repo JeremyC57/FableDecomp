@@ -23,11 +23,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
@@ -58,17 +59,17 @@ class CThingAICreature { public:
 struct CIntelligentPointerBuilding : CBaseIntelligentPointer {     // CIntelligentPointer<CThingBuilding> (vtable 0x01244344)
     virtual void v00();
     CIntelligentPointerBuilding(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntelligentPointer<CThingAICreature> (vtable 0x0123E7E0)
     virtual void v00();
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -109,10 +110,10 @@ bool CAIStateGroup_TavernKeeper::IsRunnable()
     if (PBrain->PCreature->GetInterface(&villager, 0x23)) {
         CTCVillage* village = GFGetPVillageInterface(villager);
         if (!IS_THING_ALIVE(PPub))
-            PPub = CIntelligentPointerBuilding(((CThingAICreature*)GetCreature())->PWorkplace.GetPItem());
+            PPub = CIntelligentPointerBuilding(((CThing*)((CThingAICreature*)GetCreature())->PWorkplace.GetPItem()));
         if (IS_THING_ALIVE(PPub) && village != 0 && (IS_THING_ALIVE(PBar) || GetBar())) {
             CTCTavernBar* bar;
-            PBar.GetPItem()->GetInterface(&bar, 0xb9);
+            ((CThing*)PBar.GetPItem())->GetInterface(&bar, 0xb9);
             bar->PKeeper = CIntelligentPointerCreature(PBrain->PCreature);
             return true;
         }

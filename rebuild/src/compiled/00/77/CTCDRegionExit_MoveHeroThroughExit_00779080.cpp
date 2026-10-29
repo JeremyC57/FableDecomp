@@ -61,7 +61,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
@@ -115,7 +115,7 @@ public:
 
 void CTCDRegionExit::MoveHeroThroughExit()
 {
-    CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead) {
         GetWorld().HeroMovingThroughRegionExit = true;
         CGameEvent event(0x2c);

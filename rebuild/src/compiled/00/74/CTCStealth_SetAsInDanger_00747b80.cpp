@@ -44,7 +44,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                    // +0x04
     CBaseIntelligentPointer();                          // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01237F1C (const CThing)
@@ -75,7 +75,7 @@ struct CDangerThingVector {                             // STLport vector (12 by
     CDangerThing* end() { return _M_finish; }
     void push_back(const CDangerThing& value);          // 0x00749620
 };
-inline bool CDangerThingIs::operator()(const CDangerThing& entry) const { return entry.first.GetPItem() == Thing; }
+inline bool CDangerThingIs::operator()(const CDangerThing& entry) const { return ((CThing*)entry.first.GetPItem()) == Thing; }
 #pragma auto_inline(off)
 __declspec(noinline) CDangerThing* __fastcall __find_if(CDangerThing* first, CDangerThing* last, CDangerThingIs pred,
                                                         const random_access_iterator_tag&)   // 0x007485F0

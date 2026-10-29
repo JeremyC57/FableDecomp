@@ -67,11 +67,12 @@ public:
     const CHeroTitleDef* PHeroTitleSubDef;      // +0x18 CDefPointer<const CHeroTitleDef>
 };
 
+class CBaseObject;
 class CBaseIntelligentPointer {
 public:
     virtual void v00();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CThing* item);                // 0x00A01B90
@@ -123,9 +124,9 @@ private:
 bool CAIStateGroup_OpinionReactionRoot::HeroTitleToSelfUpdate()
 {
     CTCHero* hero;
-    ThingReactingTo.GetPItem()->GetInterfaceT(&hero, 0x29);
+    ((CThing*)ThingReactingTo.GetPItem())->GetInterfaceT(&hero, 0x29);
     const CHeroTitleDef* title = hero->PHeroTitleSubDef;
-    CThing* target = ThingReactingTo.GetPItem();
+    CThing* target = ((CThing*)ThingReactingTo.GetPItem());
     return AIAction_SpeakAISpeechToTarget(AI_ACTION_REPEAT_ONCE, PBrain->PCreature, target,
         title->HeroTitleCommentToSelfTag, true, 0x93) == AI_ACTION_RETURN_COMPLETED;
 }

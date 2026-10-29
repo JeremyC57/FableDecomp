@@ -55,18 +55,19 @@ template <class TFilter, class T> __declspec(noinline) bool CThingSearchTools::G
     return true;
 }
 extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);   // 0x00BFEB10
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 struct __false_type { __false_type() { } };
 inline void* operator new(unsigned int, void* where) { return where; }

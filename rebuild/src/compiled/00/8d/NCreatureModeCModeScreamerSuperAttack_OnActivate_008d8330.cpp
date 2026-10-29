@@ -91,19 +91,20 @@ class CThing : public CThingAnimatable { public:
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing() { }
     __forceinline CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 
 struct CModeStandBase {                         // retail sizeof 0x68
@@ -128,7 +129,7 @@ void CModeScreamerSuperAttack::OnActivate()
     if (ParentThing->State == 1)
         ParentThing->SetSuspendAnimation(true, (long)this);
     CBaseIntelligentPointer* target = &PTarget;
-    if (target->GetPItem() == 0 || target->GetPItem()->Dead)
+    if (((CThing*)target->GetPItem()) == 0 || ((CThing*)target->GetPItem())->Dead)
         return;
     long effectType = 0;
     CDefPointer<CSpecialEffectsDef> slot;

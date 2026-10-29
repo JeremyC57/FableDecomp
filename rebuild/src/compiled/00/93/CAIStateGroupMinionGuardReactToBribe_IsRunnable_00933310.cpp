@@ -72,15 +72,16 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
 extern long FramesPerSecond;                    // 0x01375550
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CThing* item);                // 0x00A01B90
@@ -88,12 +89,12 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerHero : CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
     __forceinline CIntelligentPointerHero(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerHero& operator=(const CIntelligentPointerHero& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointerHero& operator=(const CIntelligentPointerHero& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -119,7 +120,7 @@ bool CAIStateGroupMinionGuardReactToBribeMethods::IsRunnable()
         CTCGuardBribe* bribe;
         creature->GetInterfaceV(&bribe, 0xb4);
         if (bribe->PendingBribe < 0) {
-            Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
+            Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
             if (IS_THING_ALIVE(Hero())) {
                 HasRecievedBribe = false;
                 return true;
@@ -128,7 +129,7 @@ bool CAIStateGroupMinionGuardReactToBribeMethods::IsRunnable()
         long deadline = bribe->FrameBribeOffered + FramesPerSecond * 4;
         long earliest = FramesPerSecond * 7 + FrameLastReactedToReceiveing;
         if (CWorld::GetFrame() < deadline && deadline > earliest) {
-            Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
+            Hero() = CIntelligentPointerHero(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
             if (IS_THING_ALIVE_Pointer(Hero())) {
                 HasRecievedBribe = true;
                 return true;

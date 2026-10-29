@@ -63,12 +63,13 @@ class CThing { public:
     }
 };
 bool __fastcall GetDummyObjectRecursive(CThing* thing, const CCharString& name, long index, unsigned long flags, C3DVector* pos, CRightHandedSet* set);   // 0x00942B30
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01244344
@@ -127,13 +128,13 @@ struct CAIStateGroup_WorkAtSchool : CAIStateGroup_UsesSeat {
 
 void CAIStateGroup_WorkAtSchool::Update()
 {
-    CIntelligentPointerThing school(GetCreature()->Workplace.GetPItem());
-    if (!school.GetPItem()) {
+    CIntelligentPointerThing school(((CThing*)GetCreature()->Workplace.GetPItem()));
+    if (!((CThing*)school.GetPItem())) {
         Terminate();
         return;
     }
     CTCVillageMember* member;
-    school.GetPItem()->GetInterface(&member, 0x23);
+    ((CThing*)school.GetPItem())->GetInterface(&member, 0x23);
     float startTime;
     float endTime;
     member->GetPVillage()->GetSchoolTimes(&startTime, &endTime);
@@ -143,14 +144,14 @@ void CAIStateGroup_WorkAtSchool::Update()
     CRightHandedSet boardSet;
     {
         CCharString name("ACTION_POINT_BLACKBOARD");
-        CTCGraphicAppearance* app = school.GetPItem()->PGraphicAppearance;
+        CTCGraphicAppearance* app = ((CThing*)school.GetPItem())->PGraphicAppearance;
         app->GetDummyObject(name, 0, 0, &boardPos, &boardSet, 1.0f);
     }
     C3DVector deskPos;
     CRightHandedSet deskSet;
     {
         CCharString name("ACTION_POINT_DESK");
-        GetDummyObjectRecursive(school.GetPItem(), name, 0, 0, &deskPos, &deskSet);
+        GetDummyObjectRecursive(((CThing*)school.GetPItem()), name, 0, 0, &deskPos, &deskSet);
     }
     C3DVector boardLook = boardPos + boardSet.Up;
     C3DVector deskLook = deskPos + deskSet.Up;
@@ -170,7 +171,7 @@ void CAIStateGroup_WorkAtSchool::Update()
         CTCVillageMember* self;
         if (GetCreature()->GetInterface(&self, 0x23) && self->GetPVillage())
             self->GetPVillage()->LessonOn = true;
-        while (!GetRandomFreeSeatInBuilding(school.GetPItem())) {
+        while (!GetRandomFreeSeatInBuilding(((CThing*)school.GetPItem()))) {
             if (AIAction_DoNothing() != 4) {
                 Terminate();
                 return;
@@ -178,7 +179,7 @@ void CAIStateGroup_WorkAtSchool::Update()
         }
         CTimeOfDay* tod2 = PeekWorld().PTimeOfDay;
         float time = tod2->Now;
-        if (!school.GetPItem())
+        if (!((CThing*)school.GetPItem()))
             break;
         bool over;
         if (endTime > now)
@@ -188,7 +189,7 @@ void CAIStateGroup_WorkAtSchool::Update()
         if (over)
             break;
         for (long i = 0; i < 4; ++i) {
-            CThing* pupil = GetRandomFreeSeatInBuilding(school.GetPItem());
+            CThing* pupil = GetRandomFreeSeatInBuilding(((CThing*)school.GetPItem()));
             if (!pupil)
                 break;
             while (AIAction_LookAtPos(2, pupil->GetPos(), 0x11, 0.0027777f) == 4)
@@ -203,7 +204,7 @@ void CAIStateGroup_WorkAtSchool::Update()
                 return;
             }
         }
-        CThing* seat = GetRandomFreeSeatInBuilding(school.GetPItem());
+        CThing* seat = GetRandomFreeSeatInBuilding(((CThing*)school.GetPItem()));
         if (!seat)
             continue;
         if (!MoveAndFace(seat->GetPos(), 1.0f, seat->GetPos()))

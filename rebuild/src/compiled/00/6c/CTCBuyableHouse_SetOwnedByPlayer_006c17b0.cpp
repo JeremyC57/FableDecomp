@@ -50,14 +50,14 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+    CPlayer& GetMainPlayer();                       // 0x00449970
 };
 CPlayerManager* GetPlayerManager();                 // 0x00686D40
 
 class CRegion;
 class CWorldMap { public:
-    long GetCurrentRegionNumber();                  // 0x004FB150
-    CRegion& GetRegion(long region);                // 0x004FC180
+    long GetLoadedRegion() const;                  // 0x004FB150
+    const CRegion& GetRegion(long region) const;    // 0x004FC180
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -107,13 +107,13 @@ class CTCBuyableHouse { public:
 
 void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead) {
         if (owned) {
             OwnedByPlayer = true;
             FrameToNextCheckIfWeNeedToCreateAnything = CWorld::GetFrame();
             Thing->SetAsGameStatePersisted(true);
-            long region = GetWorld()->GetWorldMap()->GetCurrentRegionNumber();
+            long region = GetWorld()->GetWorldMap()->GetLoadedRegion();
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);
             CWorld* world = GetWorld();
@@ -121,7 +121,7 @@ void CTCBuyableHouse::SetOwnedByPlayer(bool owned)
         } else {
             OwnedByPlayer = false;
             FrameToNextCheckIfWeNeedToCreateAnything = CWorld::GetFrame();
-            long region = GetWorld()->GetWorldMap()->GetCurrentRegionNumber();
+            long region = GetWorld()->GetWorldMap()->GetLoadedRegion();
             CTCHeroStats* stats;
             hero->GetInterface(&stats, 4);
             CWorld* world = GetWorld();

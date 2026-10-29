@@ -61,10 +61,11 @@ class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 namespace N_00668b60 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     CIntelligentPointerConstThing(CThing* item);    // 0x00668B60
@@ -111,14 +112,14 @@ bool CAIStateGroup_MinionHawkingFromStall::IsRunnable()
             CTCShop* shop = keeper->GetShopTC();
             if (shop) {
                 PStall = keeper->GetShopThing();
-                if (!PStall.GetPItem() && shop->OnTheSpot) {
+                if (!((CThing*)PStall.GetPItem()) && shop->OnTheSpot) {
                     PStall = GetCreature();
                     CThing* self = GetCreature();
                     long attitude = PeekWorld().GetOpinionReactionManager()->GetThingAttitudeToPlayer(self);
                     if (attitude == 3 || attitude == 4 || attitude == 8)
                         PStall = (CThing*)0;
                 }
-                return PStall.GetPItem() != 0;
+                return ((CThing*)PStall.GetPItem()) != 0;
             }
         }
     }

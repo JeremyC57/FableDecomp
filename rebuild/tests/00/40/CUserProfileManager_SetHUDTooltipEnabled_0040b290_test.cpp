@@ -1,52 +1,36 @@
+// behaviour test for 0x0040B290 CUserProfileManager::SetHUDTooltipEnabled: the live value is always stored, the new-profile copy only
+// while UseNewProfileValues; ApplyValues runs every time, Save only when asked (links the row's object)
 #include <cstdio>
-
-class CUserProfileManager { public:
-    char pad0[0xc];
-    char UseNewProfileValues;                 /* +0x0c */
-    char pad1[0x19 - 0x0c - 1];
-    char HUDTooltipEnabled;                   /* +0x19 */
-    char pad2[0xd9 - 0x19 - 1];
-    char HUDTooltipEnabledNewProfile;                   /* +0xd9 */
-    void Helper1();
-    void Helper2();
-    void SetHUDTooltipEnabled(char a, char b);
+#include <cstring>
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0xC];
+    bool          HUDTooltipEnabled;         // +0x19
+    unsigned char _pad1A[0xBF];
+    bool          HUDTooltipEnabledNewProfile; // +0xD9
+    void SetHUDTooltipEnabled(bool value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
-
-static int g_h1 = 0;
-static int g_h2 = 0;
-
-void CUserProfileManager::Helper1() { g_h1++; }
-void CUserProfileManager::Helper2() { g_h2++; }
-
-void CUserProfileManager::SetHUDTooltipEnabled(char a, char b)
-{
-    if (this->UseNewProfileValues)
-        this->HUDTooltipEnabledNewProfile = a;
-    this->HUDTooltipEnabled = a;
-    this->Helper1();
-    if (b)
-        this->Helper2();
-}
-
+static int g_applies = 0, g_saves = 0;
+void CUserProfileManager::ApplyValues() { ++g_applies; }
+void CUserProfileManager::Save() { ++g_saves; }
 int main()
 {
-    CUserProfileManager o;
-    for (int i = 0; i < (int)sizeof(o); i++) ((char*)&o)[i] = 0;
-
-    o.UseNewProfileValues = 1;
-    o.SetHUDTooltipEnabled((char)7, (char)1);
-    if (o.HUDTooltipEnabledNewProfile != 7) { std::printf("FAIL atD9\n"); return 1; }
-    if (o.HUDTooltipEnabled != 7) { std::printf("FAIL at19\n"); return 1; }
-    if (g_h1 != 1)   { std::printf("FAIL h1\n"); return 1; }
-    if (g_h2 != 1)   { std::printf("FAIL h2\n"); return 1; }
-
-    o.UseNewProfileValues = 0; o.HUDTooltipEnabledNewProfile = 55; o.HUDTooltipEnabled = 0; g_h1 = 0; g_h2 = 0;
-    o.SetHUDTooltipEnabled((char)9, (char)0);
-    if (o.HUDTooltipEnabledNewProfile != 55) { std::printf("FAIL atD9 preserved\n"); return 1; }
-    if (o.HUDTooltipEnabled != 9)  { std::printf("FAIL at19b\n"); return 1; }
-    if (g_h1 != 1)    { std::printf("FAIL h1b\n"); return 1; }
-    if (g_h2 != 0)    { std::printf("FAIL h2b\n"); return 1; }
-
+    int fails = 0;
+    CUserProfileManager m;
+    std::memset(&m, 0, sizeof(m));
+    m.HUDTooltipEnabled = false; m.HUDTooltipEnabledNewProfile = false;
+    m.SetHUDTooltipEnabled(true, false);
+    if (m.HUDTooltipEnabled != true || m.HUDTooltipEnabledNewProfile != false || g_applies != 1 || g_saves != 0) fails |= 1;
+    m.UseNewProfileValues = true;
+    m.SetHUDTooltipEnabled(false, true);
+    if (m.HUDTooltipEnabled != false || m.HUDTooltipEnabledNewProfile != false || g_applies != 2 || g_saves != 1) fails |= 2;
+    if (sizeof(m) != 0xDA) fails |= 4;
+    if (fails) { std::printf("0040b290_TEST FAIL %d\n", fails); return 1; }
     std::printf("CUserProfileManager_0040b290_TEST PASS\n");
     return 0;
 }

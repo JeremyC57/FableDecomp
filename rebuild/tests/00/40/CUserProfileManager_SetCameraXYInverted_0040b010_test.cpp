@@ -1,46 +1,36 @@
+// behaviour test for 0x0040B010 CUserProfileManager::SetCameraXYInverted: the live value is always stored, the new-profile copy only
+// while UseNewProfileValues; ApplyValues runs every time, Save only when asked (links the row's object)
 #include <cstdio>
-
-class CUserProfileManager { public:
-  char pad0[0xc];
-  char gate;
-  char pad1[2];
-  char CameraXYInverted;
-  char pad2[0xbf];
-  char CameraXYInvertedNewProfile;
+#include <cstring>
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0x2];
+    bool          CameraXYInverted;          // +0x0F
+    unsigned char _pad10[0xBF];
+    bool          CameraXYInvertedNewProfile; // +0xCF
+    void SetCameraXYInverted(bool value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
-
-static int g_sub1=0, g_sub2=0;
-void __fastcall CUPM_sub1(CUserProfileManager* self){ (void)self; g_sub1++; }
-void __fastcall CUPM_sub2(CUserProfileManager* self){ (void)self; g_sub2++; }
-
-void __fastcall CUserProfileManager_SetCameraXYInverted(CUserProfileManager* self, char a, char b)
+static int g_applies = 0, g_saves = 0;
+void CUserProfileManager::ApplyValues() { ++g_applies; }
+void CUserProfileManager::Save() { ++g_saves; }
+int main()
 {
-  if (self->gate)
-    self->CameraXYInvertedNewProfile = a;
-  self->CameraXYInverted = a;
-  CUPM_sub1(self);
-  if (b)
-    CUPM_sub2(self);
-}
-
-int main(){
-  CUserProfileManager o;
-  o.gate=1; o.CameraXYInverted=0; o.CameraXYInvertedNewProfile=0;
-  g_sub1=g_sub2=0;
-  CUserProfileManager_SetCameraXYInverted(&o, 7, 1);
-  if(o.CameraXYInvertedNewProfile!=7){ std::printf("FAIL flagCF\n"); return 1; }
-  if(o.CameraXYInverted!=7){ std::printf("FAIL flagF\n"); return 1; }
-  if(g_sub1!=1){ std::printf("FAIL sub1\n"); return 1; }
-  if(g_sub2!=1){ std::printf("FAIL sub2\n"); return 1; }
-
-  o.gate=0; o.CameraXYInverted=0; o.CameraXYInvertedNewProfile=3;
-  g_sub1=g_sub2=0;
-  CUserProfileManager_SetCameraXYInverted(&o, 9, 0);
-  if(o.CameraXYInvertedNewProfile!=3){ std::printf("FAIL flagCF2\n"); return 1; }
-  if(o.CameraXYInverted!=9){ std::printf("FAIL flagF2\n"); return 1; }
-  if(g_sub1!=1){ std::printf("FAIL sub1b\n"); return 1; }
-  if(g_sub2!=0){ std::printf("FAIL sub2b\n"); return 1; }
-
-  std::printf("CUserProfileManager_0040b010_TEST PASS\n");
-  return 0;
+    int fails = 0;
+    CUserProfileManager m;
+    std::memset(&m, 0, sizeof(m));
+    m.CameraXYInverted = false; m.CameraXYInvertedNewProfile = false;
+    m.SetCameraXYInverted(true, false);
+    if (m.CameraXYInverted != true || m.CameraXYInvertedNewProfile != false || g_applies != 1 || g_saves != 0) fails |= 1;
+    m.UseNewProfileValues = true;
+    m.SetCameraXYInverted(false, true);
+    if (m.CameraXYInverted != false || m.CameraXYInvertedNewProfile != false || g_applies != 2 || g_saves != 1) fails |= 2;
+    if (sizeof(m) != 0xD0) fails |= 4;
+    if (fails) { std::printf("0040b010_TEST FAIL %d\n", fails); return 1; }
+    std::printf("CUserProfileManager_0040b010_TEST PASS\n");
+    return 0;
 }

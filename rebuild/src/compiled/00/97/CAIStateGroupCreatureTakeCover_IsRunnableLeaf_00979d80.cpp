@@ -4,13 +4,14 @@
 // The PDB header only exposes a flattened 0x50-byte base area. The fields at +0x14/+0x1f and inherited call behavior follow the landed CreatureTakeCover/CreatureUseCoverBase relatives. GetInterface inlines the presence-bit test at +0x28, then searches the sorted component map.
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -101,9 +102,9 @@ class CThingCreatureBase : public CThing
 
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0)
+    if (((CThing*)p.GetPItem()) != 0)
     {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -156,11 +157,11 @@ bool CAIStateGroup_CreatureTakeCover::IsRunnableLeaf()
 {
     if (NCreatureAI::CIsRunnableModuleCarryingProjectileWeapon(GetPWorld(), (CThing*)PBrain->Creature).IsRunnable()
         && IS_THING_ALIVE(PTargetThing)
-        && !IsInMeleeWithCombatWheelAttackers(PTargetThing.GetPItem())
+        && !IsInMeleeWithCombatWheelAttackers(((CThing*)PTargetThing.GetPItem()))
         )
     {
         CTCCarrying* carrying;
-        if (PTargetThing.GetPItem()->GetInterface(0x46, &carrying)) {
+        if (((CThing*)PTargetThing.GetPItem())->GetInterface(0x46, &carrying)) {
             CThing* weapon = carrying->GetThingInPrimarySlot();
             if (weapon) {
                 CTCWeapon* tcWeapon;

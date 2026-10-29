@@ -1,0 +1,9 @@
+address	name	evidence
+0040b310	CUserProfileManager::SetHUDAlpha	proven, naming wave 6 (rebuild/candidates/manual/naming/2026-10-29_wave6/LABELS.tsv)
+0040b3d0	CUserProfileManager::SetDialogueVolume	proven, naming wave 6 (rebuild/candidates/manual/naming/2026-10-29_wave6/LABELS.tsv)
+0040b490	CUserProfileManager::SetShowTargetingStatus	proven, naming wave 6 (rebuild/candidates/manual/naming/2026-10-29_wave6/LABELS.tsv)
+0040b710	CUserProfileManager::SetScreenAspectRatio	proven, naming wave 6 (rebuild/candidates/manual/naming/2026-10-29_wave6/LABELS.tsv)
+0040bc50	CUserProfileManager::SetSaveSlotFileName	proven, naming wave 6 (rebuild/candidates/manual/naming/2026-10-29_wave6/LABELS.tsv)
+0040a7f0	CUserProfileManager::ApplyVideoValues	proven, naming wave 6 (rebuild/candidates/manual/naming/2026-10-29_wave6/LABELS.tsv)
+004fb150	CWorldMap::GetLoadedRegion	proven, naming wave 6 (rebuild/candidates/manual/naming/2026-10-29_wave6/LABELS.tsv)
+00487dc0	CPlayer::GetPControlledCreature	proven, naming wave 6 (rebuild/candidates/manual/naming/2026-10-29_wave6/LABELS.tsv)

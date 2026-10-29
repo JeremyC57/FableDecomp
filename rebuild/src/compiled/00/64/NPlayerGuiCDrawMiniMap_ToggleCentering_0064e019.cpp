@@ -43,7 +43,7 @@ class CFadeInFadeOutBase { public:                        // PDB 0x1c bytes
 };
 
 class CWorldMap { public:
-    long GetCurrentRegionIndex();                  // 0x004FB150
+    long GetLoadedRegion() const;                  // 0x004FB150
     CRegion& GetRegion(long index);                // 0x004FC180
 };
 
@@ -73,7 +73,7 @@ void CDrawMiniMap::ToggleCentering()
     if (IsActive()) {
         CFadeInFadeOutBase* fade = &ScreenPosFadeInOut;
         if (!fade->Active) {
-            ApplyRegion(&World->GetWorldMap()->GetRegion(World->GetWorldMap()->GetCurrentRegionIndex()));
+            ApplyRegion(&World->GetWorldMap()->GetRegion(World->GetWorldMap()->GetLoadedRegion()));
             fade->Start(0.5f, 0.5f, CRGBColour(0, 0, 0, 0xff));
         }
         else if (fade->IsOpen()) {

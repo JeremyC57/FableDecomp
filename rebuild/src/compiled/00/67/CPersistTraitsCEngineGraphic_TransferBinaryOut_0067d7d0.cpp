@@ -5,21 +5,8 @@
 //   WriteEBOOL @ 0x00993E30 (AdditiveAlpha).
 // Layout (PDB CEngineGraphic, 0x0E bytes): BankIndex +0, AnimStep +4, RenderSizeX +8, AdditiveAlpha +0xC, Type (uchar)
 //   +0xD. No engine header exists; local model with the PDB member names. Speed-optimised (default) TU.
-#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
-#undef CDataOutputStream
 
-class CDataOutputStream : public CDataOutputStreamLayout
-{
-public:
-    void WriteEBOOL(bool);   // 0x00993E30
-    void WriteFloat(float);   // 0x00993EE0
-    void WriteSLONG(long);   // 0x00993EB0
-    void WriteULONG(unsigned long);   // 0x00993EA0
-};
-
-struct CDataOutputStream_Methods : CDataOutputStream {
-};
 
 class CEngineGraphic { public:
     unsigned long BankIndex;        // +0x00
@@ -36,7 +23,7 @@ template<> struct CPersistTraits<CEngineGraphic> {
 
 void CPersistTraits<CEngineGraphic>::TransferBinaryOut(CDataOutputStream* stream, const CEngineGraphic* value)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)stream;
+    CDataOutputStream* out = (CDataOutputStream*)stream;
     out->WriteSLONG(value->Type);
     out->WriteULONG(value->BankIndex);
     out->WriteFloat(value->AnimStep);

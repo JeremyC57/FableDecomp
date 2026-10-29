@@ -128,18 +128,19 @@ class CThing { public:
 };
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 
 class CTCDParticleEmitter { public:
@@ -159,7 +160,7 @@ class CCreatureActionBase { public:
     virtual void v00();
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThing* GetCreature() const { return ((CThing*)PCreature.GetPItem()); }
     CDefinitionManager* GetPDefinitionManager() const;   // 0x00692910
 };
 class CCreatureAction_BanditKingLunge : public CCreatureActionBase { public:

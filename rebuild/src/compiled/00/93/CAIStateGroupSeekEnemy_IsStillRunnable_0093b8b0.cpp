@@ -51,11 +51,12 @@ FABLE_FORCEINLINE CThing* GetTargetFromSlot29(CTCTargetingAI* targeting) {
 typedef char NativeTargetPMFSize[sizeof(TargetMethod)==4 ? 1:-1];
 #endif
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();
     struct PointerInfo { CThing* PItem; fable_u32 References; };
     mutable PointerInfo* PPointerInfo; // native +4 record, never a raw item
-    CThing* GetPItem() const;                                  // 0x00a01b50
+    CBaseObject* GetPItem() const;                                  // 0x00a01b50
 };
 
 struct CTCPerceiveThingAccess : CTCPerceiveThing {
@@ -110,21 +111,21 @@ bool CAIStateGroup_SeekEnemyAccess::IsStillRunnable()
         targetSource = (CTCTargetingAI*)it->Component;
     }
 
-    if (PEnemy.GetPItem() && !((CThingNativeState*)PEnemy.GetPItem())->IsDead()) {
+    if (((CThing*)PEnemy.GetPItem()) && !((CThingNativeState*)PEnemy.GetPItem())->IsDead()) {
         CThing* target = GetTargetFromSlot29(targetSource);
-        if (PEnemy.GetPItem() == target) {
+        if (((CThing*)PEnemy.GetPItem()) == target) {
             CAIBrain* willingBrain = GetBrain();
             CThingAICreature& attacker = *willingBrain->Creature;
-            if (IsWillingToAttackTarget(&attacker, PEnemy.GetPItem())) {
+            if (IsWillingToAttackTarget(&attacker, ((CThing*)PEnemy.GetPItem()))) {
                 CThing* perceived = perception->GetPerceivedThing();
-                if (PEnemy.GetPItem() == perceived && perception->IsAwareOfThing()) {
+                if (((CThing*)PEnemy.GetPItem()) == perceived && perception->IsAwareOfThing()) {
                     fable_i32 frames = perception->FramesSinceDirectlyPerceivedThing;
                     if (frames != -1 && (float)frames < (float)g_FrameForTargetPerception * g_TargetPerceptionFrameScale)
                         return true;
                 } else {
                     CAIBrain* visibleBrain = GetBrain();
                     CThingAICreature& observer = *visibleBrain->Creature;
-                    if (CanCreatureSeeCreature(&observer, PEnemy.GetPItem(), true))
+                    if (CanCreatureSeeCreature(&observer, ((CThing*)PEnemy.GetPItem()), true))
                         return true;
                 }
             }

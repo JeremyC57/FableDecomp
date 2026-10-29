@@ -50,26 +50,27 @@ class CThing { public:
 class CThingPlayerCreature : public CThing { };
 class CThingPlayerCreature;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(const CThing* item);          // 0x00A01B90
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
     static long __fastcall GetFrame();     // 0x0049D870
@@ -120,10 +121,10 @@ bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable()
 {
     CThing* creature = PBrain->PCreature;
     if (creature->HasTC(0x23) && GFGetPVillageInterface(creature->GetTC<CTCVillager>(0x23)) != 0) {
-        if (Player.GetPItem() == 0) {
+        if (((CThing*)Player.GetPItem()) == 0) {
             NumberOfTimesPlayerTold = 0;
             FrameLastToldPlayer = 0;
-            Player = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+            Player = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
         } else if (NumberOfTimesPlayerTold > 0) {
             const CWorld& world = GetWorld();
             long fps = g_framesPerSecond;
@@ -132,11 +133,11 @@ bool CAIStateGroup_MinionGuardReactToPlayerWithWeapon::IsRunnable()
                 FrameLastToldPlayer = PeekWorld().GetFrame();
             }
         }
-        if (Player.GetPItem() != 0 && !(Player.GetPItem()->m_flags91 & 1) && IsPlayerCarryingWeapon()) {
+        if (((CThing*)Player.GetPItem()) != 0 && !(((CThing*)Player.GetPItem())->m_flags91 & 1) && IsPlayerCarryingWeapon()) {
             CThing* self = PBrain->PCreature;
             if (self->HasTC(0x34) && self->GetTC<CTCPerceiveThing>(0x34)->IsPlayerExtendedLineOfSight()) {
                 CThing* me = PBrain->PCreature;
-                const C3DVector& player = Player.GetPItem()->GetPos();
+                const C3DVector& player = ((CThing*)Player.GetPItem())->GetPos();
                 const C3DVector& mine = me->GetPos();
                 float dx = mine.X - player.X;
                 float dy = mine.Y - player.Y;

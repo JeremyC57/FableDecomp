@@ -15,12 +15,13 @@ class CThing { public:
     unsigned char m_flags91;                        // +0x91 bit 0: dead
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                                  // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -30,7 +31,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {          // CIntelli
 
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    CIntelligentPointerConstThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointerConstThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 
 enum EAIActionRepeat { AI_ACTION_REPEAT_NONE, AI_ACTION_REPEAT_ONCE };
@@ -60,7 +61,7 @@ struct CAIStateGroup_FollowPlayer : CAIStateGroupBase {
 
 void CAIStateGroup_FollowPlayer::Update()
 {
-    if (PThingToFollow.GetPItem() != 0 && !(PThingToFollow.GetPItem()->m_flags91 & 1)) {
+    if (((CThing*)PThingToFollow.GetPItem()) != 0 && !(((CThing*)PThingToFollow.GetPItem())->m_flags91 & 1)) {
         bool arrived;
         while (AIAction_MoveToThingProximity(AI_ACTION_REPEAT_ONCE, PThingToFollow, FollowDistance, &arrived,
                 MOVEMENT_TYPE_FOLLOW, true, false, true, true, 0.0f) == AI_ACTION_RETURN_SUCCEEDED)

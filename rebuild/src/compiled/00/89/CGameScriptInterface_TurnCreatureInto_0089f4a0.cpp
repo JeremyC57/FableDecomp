@@ -206,7 +206,7 @@ class CPlayer { public:
     void SetControlledCreature(CThingPlayerCreature* creature);         // 0x00487CF0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
 
 class CGameScriptInterface { public:
@@ -266,8 +266,8 @@ CScriptThing CGameScriptInterface::TurnCreatureInto(const CScriptThing& thing, c
                         if (old->GetInterface(&tc, 0x12))
                             creature->CopyTCIfExists(tc);
                     }
-                    PlayerManager->GetMainPlayer()->SetPlayerCharacter_00487B80(creature);
-                    PlayerManager->GetMainPlayer()->SetControlledCreature(creature);
+                    PlayerManager->GetMainPlayer().SetPlayerCharacter_00487B80(creature);
+                    PlayerManager->GetMainPlayer().SetControlledCreature(creature);
                 }
             }
             old->Kill(false);

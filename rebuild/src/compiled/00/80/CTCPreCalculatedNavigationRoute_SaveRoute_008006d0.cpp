@@ -43,9 +43,8 @@ class CWorldMap { public:
     C2DVector ConvertWorldMapCoordsToLocalCoords(long region, const C2DVector& pos) const;   // 0x004FC330
 };
 class CPersistContext { public:
-    void Transfer(const char* name, long& value, const long& defaultValue);                          // 0x00410BE0
-    void Transfer(const char* name, C2DVector& value, const C2DVector& defaultValue);                // 0x00800B90
-    void Transfer(const char* name, unsigned char& value, const unsigned char& defaultValue);        // 0x00405A60
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: long 0x00410BE0; C2DVector 0x00800B90; unsigned char 0x00405A60
 };
 #pragma pack(push, 1)
 struct CNavStep { C2DVector Pos; unsigned char Layer; };
@@ -88,7 +87,7 @@ void CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context)
         CNavStepVector route;
         CalculateRouteFromTo(owner->GetPos(), PThingToCalculateRouteTo.GetPItem()->GetPos(), route);
         long steps = route.size();
-        context->Transfer("NumberOfStepsOnRoute", steps, 0);
+        context->Transfer<long>("NumberOfStepsOnRoute", steps, 0);
         long i = 0;
         if (i < steps)
         {
@@ -106,6 +105,6 @@ void CTCPreCalculatedNavigationRoute::SaveRoute(CPersistContext* context)
     else
     {
         long steps = 0;
-        context->Transfer("NumberOfStepsOnRoute", steps, 0);
+        context->Transfer<long>("NumberOfStepsOnRoute", steps, 0);
     }
 }

@@ -1,53 +1,36 @@
+// behaviour test for 0x0040B450 CUserProfileManager::SetShowingBuddyNames: the live value is always stored, the new-profile copy only
+// while UseNewProfileValues; ApplyValues runs every time, Save only when asked (links the row's object)
 #include <cstdio>
-
-class CUserProfileManager { public:
-    char pad00[0x0c];
-    unsigned char UseNewProfileValues;
-    char pad0d[0x32 - 0x0d];
-    unsigned char ShowingBuddyNames;
-    char pad33[0xf1 - 0x33];
-    unsigned char ShowingBuddyNamesNewProfile;
+#include <cstring>
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0x25];
+    bool          ShowingBuddyNames;         // +0x32
+    unsigned char _pad33[0xBE];
+    bool          ShowingBuddyNamesNewProfile; // +0xF1
+    void SetShowingBuddyNames(bool value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
-
-int g_a = 0;
-int g_b = 0;
-
-void __fastcall UPM_MethodA(CUserProfileManager* manager) { (void)manager; g_a++; }
-void __fastcall UPM_MethodB(CUserProfileManager* manager) { (void)manager; g_b++; }
-
-void __fastcall CUserProfileManager_SetShowingBuddyNames(CUserProfileManager* manager, int edx, char p1, char p2)
+static int g_applies = 0, g_saves = 0;
+void CUserProfileManager::ApplyValues() { ++g_applies; }
+void CUserProfileManager::Save() { ++g_saves; }
+int main()
 {
-    (void)edx;
-    if (manager->UseNewProfileValues)
-        manager->ShowingBuddyNamesNewProfile = (unsigned char)p1;
-    manager->ShowingBuddyNames = (unsigned char)p1;
-    UPM_MethodA(manager);
-    if (p2)
-        UPM_MethodB(manager);
-}
-
-int main() {
-    CUserProfileManager o;
-    for (int i = 0; i < (int)sizeof(o); ++i) ((char*)&o)[i] = 0;
-
-    // case: flag_0c set, p1=1, p2=1
-    o.UseNewProfileValues = 1;
-    g_a = g_b = 0;
-    CUserProfileManager_SetShowingBuddyNames(&o, 0, 1, 1);
-    if (o.ShowingBuddyNamesNewProfile != 1) { std::printf("FAIL f1\n"); return 1; }
-    if (o.ShowingBuddyNames != 1) { std::printf("FAIL b32\n"); return 1; }
-    if (g_a != 1) { std::printf("FAIL a\n"); return 1; }
-    if (g_b != 1) { std::printf("FAIL b\n"); return 1; }
-
-    // case: flag_0c clear, p1=1 -> f1 untouched, p2=0 -> no B
-    for (int i = 0; i < (int)sizeof(o); ++i) ((char*)&o)[i] = 0;
-    g_a = g_b = 0;
-    CUserProfileManager_SetShowingBuddyNames(&o, 0, 1, 0);
-    if (o.ShowingBuddyNamesNewProfile != 0) { std::printf("FAIL f1b\n"); return 1; }
-    if (o.ShowingBuddyNames != 1) { std::printf("FAIL b32b\n"); return 1; }
-    if (g_a != 1) { std::printf("FAIL a2\n"); return 1; }
-    if (g_b != 0) { std::printf("FAIL b2\n"); return 1; }
-
+    int fails = 0;
+    CUserProfileManager m;
+    std::memset(&m, 0, sizeof(m));
+    m.ShowingBuddyNames = false; m.ShowingBuddyNamesNewProfile = false;
+    m.SetShowingBuddyNames(true, false);
+    if (m.ShowingBuddyNames != true || m.ShowingBuddyNamesNewProfile != false || g_applies != 1 || g_saves != 0) fails |= 1;
+    m.UseNewProfileValues = true;
+    m.SetShowingBuddyNames(false, true);
+    if (m.ShowingBuddyNames != false || m.ShowingBuddyNamesNewProfile != false || g_applies != 2 || g_saves != 1) fails |= 2;
+    if (sizeof(m) != 0xF2) fails |= 4;
+    if (fails) { std::printf("0040b450_TEST FAIL %d\n", fails); return 1; }
     std::printf("CUserProfileManager_0040b450_TEST PASS\n");
     return 0;
 }

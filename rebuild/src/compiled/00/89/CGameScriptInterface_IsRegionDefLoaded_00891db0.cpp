@@ -159,7 +159,7 @@ class CRegion { public:                             // 0x58-byte world-map regio
     bool          m_creatureGenerationEnabled;      // +0x55
 };
 class CWorldMap { public:
-    long GetCurrentRegionNumber();                  // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
+    long GetLoadedRegion() const;                  // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
     CRegion& GetRegionEntry(long region);    // 0x004FB490 (same body as GetRegion; the label "CTCInventoryBase::GetCategoryWithIndex" is propagated)
     long GetRegionNumberFromName(const CCharString& name);   // 0x004FC210
 public:
@@ -202,7 +202,7 @@ class CGameScriptInterface { public:
 
 bool CGameScriptInterface::IsRegionDefLoaded(const CCharString& name) const
 {
-    long region = World->PeekWorldMap()->GetCurrentRegionNumber();
+    long region = World->PeekWorldMap()->GetLoadedRegion();
     if (region > 0) {
         CCountedPointer<CRegionDef_Retail> def(World->PeekWorldMap()->GetRegion(region).m_pDef.Data);
         if (!def.IsNull()) {

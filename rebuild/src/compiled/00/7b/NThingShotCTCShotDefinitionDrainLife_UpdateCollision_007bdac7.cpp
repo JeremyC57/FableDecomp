@@ -32,10 +32,11 @@ class CThing { public:
     unsigned char m_flags6c;                            // +0x6c bit 1: can be healed
     void Kill(bool immediately);                        // 0x004C9B80
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                                    // +4
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 template <class T> bool __fastcall IS_THING_ALIVE(const T& thing);
 template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing);   // the 0x00436380 copy (CThing*)
@@ -62,18 +63,18 @@ struct CTCShotDefinitionDrainLife : CTCShotDefinitionBase {
 void CTCShotDefinitionDrainLife::UpdateCollision(bool* finished)
 {
     CTCShotDefinitionBase::UpdateCollision(finished);
-    CThing* target = PTargetThing.GetPItem();
-    CThing* hit = PBestCollisionThing.GetPItem();
+    CThing* target = ((CThing*)PTargetThing.GetPItem());
+    CThing* hit = ((CThing*)PBestCollisionThing.GetPItem());
     const CThing* constHit = hit;
     if (!IS_THING_ALIVE_00436380<CThing*>(target)) {
         if (IS_THING_ALIVE<CBaseIntelligentPointer>(PSoulEffect))
-            PSoulEffect.GetPItem()->Kill(true);
+            ((CThing*)PSoulEffect.GetPItem())->Kill(true);
         *finished = true;
     } else if (hit == target) {
         if (IS_THING_ALIVE<const CThing*>(constHit) && (hit->m_flags6c & 2))
             hit->Heal(AmountToHeal, true);
         if (IS_THING_ALIVE<CBaseIntelligentPointer>(PSoulEffect))
-            PSoulEffect.GetPItem()->Kill(true);
+            ((CThing*)PSoulEffect.GetPItem())->Kill(true);
         *finished = true;
     } else {
         BestCollisionType = 0;

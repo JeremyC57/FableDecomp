@@ -41,17 +41,18 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                    // +0x04
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer { };   // CIntelligentPointer<CThingCreatureBase>
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -75,10 +76,10 @@ void CTCDivineWrath::ResetCreatureHitState(CIntelligentPointerCreature creature)
 {
     if (IS_THING_ALIVE(creature)) {
         CTCCreatureModeManager* modes;
-        if (creature.GetPItem()->GetInterface(&modes, 0x31))
+        if (((CThing*)creature.GetPItem())->GetInterface(&modes, 0x31))
             modes->RemoveMode(0x5f);
         CTCHitReaction* hit;
-        if (creature.GetPItem()->GetInterface(&hit, 0x8b)) {
+        if (((CThing*)creature.GetPItem())->GetInterface(&hit, 0x8b)) {
             hit->Armed = true;
             hit->CurrentValue = hit->ResetValue;
         }

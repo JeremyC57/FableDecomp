@@ -18,24 +18,25 @@ class CThing { public:
     unsigned char _pad0[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
     CIntelligentPointerConstThing() : CBaseIntelligentPointer() { }
     CIntelligentPointerConstThing(const CThing* item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
-    CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -152,7 +153,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_PerformActionTargetFaceAndWait(const
     while (PBrain->Creature->IsPerformingAnyAction() && !IsStopping() && IS_THING_ALIVE(target)
            && (!stopWhenReplaced || id == PBrain->Creature->CurrentAction->GetActionID())) {
         CBrainOutput look;
-        look.SetAsLookAtThing(target.GetPItem(), 0x11);
+        look.SetAsLookAtThing(((CThing*)target.GetPItem()), 0x11);
         PBrain->SetBrainOutput(look);
         PBrain->Yield();
     }

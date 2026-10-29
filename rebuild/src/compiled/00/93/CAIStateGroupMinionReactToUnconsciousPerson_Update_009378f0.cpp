@@ -64,24 +64,25 @@ class CTCDiscovery { public:                           // interface 0x40
     bool Discovered;                            // +0x0c
     void SetDiscovered(bool discovered, CThing* by);    // 0x007509D0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {    // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    __forceinline CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    __forceinline CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
     template<class U> CIntelligentPointerConstThing(const CIntelligentPointer<U>& other);   // 0x0091F990
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -142,7 +143,7 @@ void CAIStateGroup_MinionReactToUnconsciousPerson::Update()
         if (AIAction_MoveToThingProximity(1, CIntelligentPointerConstThing(static_cast<const CBaseIntelligentPointer&>(PPerson)),
                 1.0f, &reached, 5, true, false, true, true, 0.0f) == 2 && IS_THING_ALIVE(PPerson)) {
             CTCDiscovery* discovery;
-            if (IS_THING_ALIVE(PPerson) && PPerson.GetPItem()->GetInterface(&discovery, 0x40) && !discovery->Discovered)
+            if (IS_THING_ALIVE(PPerson) && ((CThing*)PPerson.GetPItem())->GetInterface(&discovery, 0x40) && !discovery->Discovered)
                 discovery->SetDiscovered(true, GetCreature());
             if (GetCreature()->GetLifeState() == 3) {
                 if (AIAction_LookAtThing(1, CIntelligentPointerConstThing(PPerson), 11, 0.0027777f) == 2) {
@@ -162,7 +163,7 @@ void CAIStateGroup_MinionReactToUnconsciousPerson::Update()
                 }
                 CMessageEventDef* p = def.m_p;
                 if (found) {
-                    CThing* person = PPerson.GetPItem();
+                    CThing* person = ((CThing*)PPerson.GetPItem());
                     AIAction_FindAGuardAndGiveMessage(CDefPointer(p), person->GetPos(), 0);
                 }
                 if (p) {

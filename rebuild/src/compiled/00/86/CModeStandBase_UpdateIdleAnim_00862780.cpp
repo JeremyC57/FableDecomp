@@ -152,7 +152,7 @@ class CPlayer { public:
     CThing* GetPCharacterThing() const { return PCharacterThing.GetPItem(); }
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char _pad00[0x1c];
@@ -233,7 +233,7 @@ void CModeStandBase::UpdateIdleAnim(CAnimateThing& anim)
     bool resetIdleCounter = false;
     if ((creature->Flags6c & 0x10) && creature->GetHasInformation() && creature->GetWaveWithInformation()
         && IdleCounter > GetNoFramesBeforePlayingWaveAnims(GetModeType())) {
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetPCharacterThing();
+        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPCharacterThing();
         if (hero && !(hero->Flags91 & 1)) {
             const C3DVector& heroPos = hero->GetPos();
             const C3DVector& pos = creature->GetPos();

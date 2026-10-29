@@ -9,8 +9,8 @@
 // Shape: one Transfer per member with a literal default (a const-reference temporary: the first in the frame word, the rest in
 // the dead `context` slot; the `true` defaults share bl).
 class CPersistContext { public:
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
-    void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620; bool 0x004045C0
 };
 class CTCCameraPointGeneralCase {
 public:

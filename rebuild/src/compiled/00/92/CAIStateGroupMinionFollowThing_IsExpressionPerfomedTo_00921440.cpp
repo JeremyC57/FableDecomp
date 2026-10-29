@@ -118,10 +118,11 @@ struct CDefPointerExpression {
     CExpressionDef* operator->() const { return m_p; }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
@@ -131,7 +132,7 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {
     __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerConstThing& other)
     {
-        SetPItem(other.GetPItem());
+        SetPItem(((CThing*)other.GetPItem()));
         return *this;
     }
 };
@@ -219,7 +220,7 @@ bool CAIStateGroup_MinionFollowThing::IsExpressionPerfomedTo(const CCharString& 
                 CTCAIScratchpad* scratchpad;
                 if (!creature->GetInterface(&scratchpad, 0xaa) || scratchpad->AllowedToFollow) {
                     if (expression == "EXPRESSION_FOLLOW")
-                        PFollowee = event->PerformedBy.GetPItem();
+                        PFollowee = ((CThing*)event->PerformedBy.GetPItem());
                     if (event->ExtraData1 > -1)
                         FollowDistance = (float)event->ExtraData1;
                     if (event->ExtraData2 > -1)

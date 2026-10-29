@@ -66,10 +66,11 @@ class CThingCreatureBase : public CThing { public:
     unsigned char CreatureFlags1c8;             // +0x1c8 bit 1: busy (retail)
     bool IsPerformingAnyAction();               // 0x006622A0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer { };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
@@ -78,8 +79,8 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointerThing& pointer);   // 0x004CC340
 inline bool IsTargetAlive(const CIntelligentPointerThing& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -149,7 +150,7 @@ void CAIStateGroup_SummonerLightningAttack::Update()
 {
     if (IsTargetAlive(PTarget) && !(GetCreature()->CreatureFlags1c8 & 2)) {
         CTCStealth* stealth;
-        if (PTarget.GetPItem()->GetInterfaceX(&stealth, 0x36))
+        if (((CThing*)PTarget.GetPItem())->GetInterfaceX(&stealth, 0x36))
             stealth->SetAsInDanger(GetCreature(), 4);
         CTCCarrying* carrying;
         if (((const CThing*)GetCreature())->GetInterfaceC(&carrying, 0x46)) {
@@ -170,7 +171,7 @@ void CAIStateGroup_SummonerLightningAttack::Update()
             if (AIAction_LookAtThing(1, PTarget, 1, 0.013888889f) != 1) {
                 if (IS_THING_ALIVE(PTarget)) {
                     CThingCreatureBase* creature = GetCreature();
-                    long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerLightningOrbInto(creature, PTarget.GetPItem()), false);
+                    long result = AIAction_CombatPerformActionAndWait(&CCreatureAction_SummonerLightningOrbInto(creature, ((CThing*)PTarget.GetPItem())), false);
                     if (result == 1) {
                         Terminate();
                         return;

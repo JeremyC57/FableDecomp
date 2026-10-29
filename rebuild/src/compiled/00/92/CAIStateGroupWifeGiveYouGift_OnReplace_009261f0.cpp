@@ -94,7 +94,7 @@ class CTCInventoryItem { public:
     CWideString GetDescription();                       // 0x005D9070
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };    // 0x00449970
 namespace NGameText {
 class CDataBank { public: const CWideString GetTextBySymbol(const CCharString& symbol) const; };
 }
@@ -145,7 +145,7 @@ void CAIStateGroup_WifeGiveYouGift::OnReplace()
 {
     if (!DeliveredGiveSpeech)
         return;
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || (hero->m_flags91 & 1))
         return;
     CThing* gift = CreateThingObject(GiftToGiveDef, &hero->GetPos(), hero->PlayerNumber, 0, 0, "");

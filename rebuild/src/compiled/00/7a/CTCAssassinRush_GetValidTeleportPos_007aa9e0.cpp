@@ -102,10 +102,11 @@ class CThing { public:
     const C3DVector& GetPos() const;               // 0x004C73D0
     float GetHeightZBelowAt(const C3DVector& pos, bool a, bool b);   // 0x00666D40
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 struct CWorldMapRef;
 class CWorld { public:
@@ -151,7 +152,7 @@ class CTCAssassinRush : public CTCBase { public:
 
 C3DVector CTCAssassinRush::GetValidTeleportPos(const CThing* rusher)
 {
-    CThing* collided = CollidedThing.GetPItem();
+    CThing* collided = ((CThing*)CollidedThing.GetPItem());
     CWorldMapRef* map = GetWorld().GetWorldMap();
     float scale = PDef->SizeScale * rusher->Radius;
     if (scale < 1.0f)

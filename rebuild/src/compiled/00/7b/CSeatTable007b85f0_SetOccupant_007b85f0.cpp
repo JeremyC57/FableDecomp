@@ -10,11 +10,12 @@
 // inline begin() (a raw pointer member folds the address before the call).
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +0x04
     CBaseIntelligentPointer();              // 0x00A01B10
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
     void SetPItem(CThing* item);            // 0x00A01B90
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
@@ -23,7 +24,7 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
     virtual void v00();
     CIntelligentPointer() {}
     CIntelligentPointer(CThing* item) { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 struct COccupantVector {                            // STLport vector<CIntelligentPointer<CThing> >
     CIntelligentPointer* _M_start;

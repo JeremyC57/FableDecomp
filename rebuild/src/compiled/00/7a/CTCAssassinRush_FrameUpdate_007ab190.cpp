@@ -59,15 +59,16 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_stateFlags & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_stateFlags & 1))
             return true;
     }
     return false;
@@ -176,9 +177,9 @@ void CTCAssassinRush::FrameUpdate()
         }
         --RushDelayFrameCount;
         if (IS_THING_ALIVE(AssassinTrail))
-            AssassinTrail.GetPItem()->Kill(true);
+            ((CThing*)AssassinTrail.GetPItem())->Kill(true);
         if (IS_THING_ALIVE(AssassinDisplacementTrail))
-            AssassinDisplacementTrail.GetPItem()->Kill(true);
+            ((CThing*)AssassinDisplacementTrail.GetPItem())->Kill(true);
         if (RadialBlurFadeKey) {
             CAssassinRushDef* def = PDef;
             CWorld* world = (&GetWorld());

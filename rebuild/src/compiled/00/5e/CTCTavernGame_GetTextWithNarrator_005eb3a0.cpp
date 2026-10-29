@@ -74,10 +74,11 @@ public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 enum EDialogueLayer { DIALOGUE_LAYER_0 = 0 };
 class CTCTalk { public:
@@ -96,7 +97,7 @@ class CTCTavernGame { public:
 CWideString CTCTavernGame::GetTextWithNarrator(unsigned long textId)
 {
     CTCTalk* talk = 0;
-    PGameMaster.GetPItem()->GetInterface(0xf, &talk);
+    ((CThing*)PGameMaster.GetPItem())->GetInterface(0xf, &talk);
     talk->PlaySpeech(textId, DIALOGUE_LAYER_0, true, true);
     static CWideString no_text_entry(L"Missing text entry");
     CDataBank* bank = g_pMainGameComponent->PDataBank;

@@ -66,7 +66,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+    CPlayer& GetMainPlayer();                      // 0x00449970
 };
 class CWorld { public:
     unsigned char _pad00[0xf8];
@@ -120,7 +120,7 @@ void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& 
         CWorld* world = g_pMainGameComponent->PWorld;
         if ((world->RegionLoadStatus == 0 || world->RegionLoadStatus == 9) && world->SaveGameLoadStatus == 0
             && !g_bAutoSaveProgressShown) {
-            CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
+            CThing* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetPControlledCreature();
             if (hero->HasTC(0x10e)) {
                 CTCPhotojournalCapture* capture = hero->GetTC(0x10e);
                 if (GetAsyncKeyState(0x10) < 0) {

@@ -117,18 +117,19 @@ class CThing { public:
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector& position, bool flag);   // 0x006E0880
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); }
+    CIntelligentPointerThing(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); }
 };
 inline void* operator new(unsigned int, void* place) { return place; }
 struct __false_type { __false_type() {} };

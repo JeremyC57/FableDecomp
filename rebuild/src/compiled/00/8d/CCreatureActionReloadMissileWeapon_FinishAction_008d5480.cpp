@@ -54,12 +54,13 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A858
@@ -68,8 +69,8 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // vtable 0x0125A858
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -96,13 +97,13 @@ class CCreatureAction_ReloadMissileWeapon : public CCreatureActionBase { public:
 void CCreatureAction_ReloadMissileWeapon::FinishAction()
 {
     CTCCarrying* carrying;
-    if (IS_THING_ALIVE(PAmmo) && PCreature.GetPItem()->GetInterface(&carrying, 0x46)) {
-        carrying->RemoveThing(PAmmo.GetPItem());
-        PAmmo.GetPItem()->Kill(true);
+    if (IS_THING_ALIVE(PAmmo) && ((CThing*)PCreature.GetPItem())->GetInterface(&carrying, 0x46)) {
+        carrying->RemoveThing(((CThing*)PAmmo.GetPItem()));
+        ((CThing*)PAmmo.GetPItem())->Kill(true);
         {
             CIntelligentPointer none;
             none.SetPItem(0);
-            PAmmo.SetPItem(none.GetPItem());
+            PAmmo.SetPItem(((CThing*)none.GetPItem()));
         }
         CThing* weaponThing = carrying->GetThingInPrimarySlot();
         if (weaponThing && !(weaponThing->m_flags91 & 1) && weaponThing->HasTC(0x48))

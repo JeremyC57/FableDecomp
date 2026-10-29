@@ -73,7 +73,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CTCCreatureOpinionOfHero { public:
     unsigned char _pad00[0x0c];
@@ -151,7 +151,7 @@ void CTCWife::Divorce()
     }
     ParentThing->Flags1C9 &= ~8;
     LoveAttitudeValue = 0.0f;
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero && !(hero->Flags91 & 1)) {
         CTCHeroStats* stats;
         hero->GetInterface(&stats, 4);

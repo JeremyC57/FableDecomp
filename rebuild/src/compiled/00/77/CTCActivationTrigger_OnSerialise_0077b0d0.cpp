@@ -36,7 +36,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: unsigned __int64 0x0044BB00
 };
 class CTCActivationReceptorBase {
 public:
@@ -60,9 +61,9 @@ void CTCActivationTrigger::OnSerialise(CPersistContext& context, bool)
             ReceptorUID = PTCReceptor->ParentThing->UID;
             ReceptorUID = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ReceptorUID);
         }
-        context.Transfer("ReceptorUID", ReceptorUID, 0);
+        context.Transfer<unsigned __int64>("ReceptorUID", ReceptorUID, 0);
     } else {
-        context.Transfer("ReceptorUID", ReceptorUID, 0);
+        context.Transfer<unsigned __int64>("ReceptorUID", ReceptorUID, 0);
         if (ReceptorUID > 0)
             ReceptorUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ReceptorUID);
     }

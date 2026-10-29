@@ -1,7 +1,7 @@
 // CTCFishing::FinishFishing(bool caught) -- stops the reel/escape sounds on the hero, closes the fishing mini-game GUI and button prompts, scores a caught fish's weight, posts the finish message and leaves fishing mode
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x007B0950, 584 bytes, `ret 4`.
-// Callees: CTCBase::GetPlayerManager @ 0x00686D50, CPlayerManager::GetMainPlayer @ 0x00449960, CMainPlayer::GetCharacterThing
-//          @ 0x00487DC0 (labels on these three are folded), CVectorMap::LowerBound @ 0x0040F020, sound stop @ 0x0066ADD0
+// Callees: CTCBase::PeekPlayerManager @ 0x00686D50, CPlayerManager::GetMainPlayer const @ 0x00449960,
+//          CPlayer::GetPControlledCreature @ 0x00487DC0 (Ego_r.pdb names; the const chain), CVectorMap::LowerBound @ 0x0040F020, sound stop @ 0x0066ADD0
 //          (manifest "SetToKillOnLevelUnload", folded), CDrawQuestInfo::DisplayMiniGameInfo @ 0x00654593,
 //          CCharString(const char*, long) @ 0x0099EBF0, CSubtitleRenderer::SetButton2OverrideText @ 0x0048F881 /
 //          SetButton1OverrideText @ 0x0048F7C0, ~CCharString @ 0x0099EAE0, CBaseIntelligentPointer::GetPItem @ 0x00A01B50,
@@ -48,9 +48,11 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);               // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
+class CThingPlayerCreature;
 class CPlayer {
 public:
     void RemoveMode(long mode);                         // 0x00634190
+    CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 class CThing {
 public:
@@ -70,6 +72,7 @@ public:
     }
     CPlayer& GetPlayer();                               // 0x004C7A30
 };
+class CThingPlayerCreature : public CThing { };
 class CMessageManager {
 public:
     void AddMessage(long type, long frames, const C3DVector& pos, long a, long b, long c, long d, const CThing* thing);   // 0x00687540
@@ -81,18 +84,16 @@ public:
 };
 class CPlayerManager {
 public:
-    class CMainPlayer* GetMainPlayer();                 // 0x00449960
-};
-class CMainPlayer {
-public:
-    CThing* GetCharacterThing();                        // 0x00487DC0
+    const CPlayer& GetMainPlayer() const;               // 0x00449960
 };
 class CTCBase {
 public:
     virtual void v00();
     CThing* Thing;                                      // +0x04
     unsigned char _pad08[4];
-    CPlayerManager* GetPlayerManager();                 // 0x00686D50
+protected:
+    const CPlayerManager& PeekPlayerManager() const;    // 0x00686D50
+public:
     CWorld* GetWorld() const;                           // 0x00686A70
     __forceinline void PostMessage(long type, const C3DVector& pos, const CThing* thing)
     {
@@ -145,7 +146,7 @@ public:
 
 void CTCFishing::FinishFishing(bool caught)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetCharacterThing();
+    CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (!hero || (hero->Flags91 & 1))
         return;
     unsigned long reelingInSoundID = ReelingInSoundID;

@@ -19,9 +19,8 @@ class CRGBColour { public:
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                 // +0x18
-    void Transfer(const char* name, bool& value, const bool& defaultValue);               // 0x004045C0
-    void Transfer(const char* name, CRGBColour& value, const CRGBColour& defaultValue);   // 0x006420F0
-    void Transfer(const char* name, float& value, const float& defaultValue);             // 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0; CRGBColour 0x006420F0; float 0x00410620
 };
 struct CSpotLightInfo {
     float      Angle;                                   // +0x00

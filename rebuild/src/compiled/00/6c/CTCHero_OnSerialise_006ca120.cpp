@@ -99,10 +99,11 @@ public:
     unsigned __int64 RemapUIDForSerialisation(bool saving, bool levelLess, long level, unsigned __int64 uid);   // 0x0051E210
 };
 // CIntelligentPointer<CThing> sits unaligned at +0x1D in retail; modelled as an opaque byte block.
+class CBaseObject;
 class CBaseIntelligentPointer {
 public:
     unsigned char Storage[8];
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
 };
 
 class CPersistContext {
@@ -110,8 +111,8 @@ public:
     unsigned char _pad00[0x18];
     long Mode;                                      // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
-    void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);            // 0x004109A0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: unsigned __int64 0x0044BB00; CCharString 0x004109A0
 };
 
 class CTCBase {
@@ -144,12 +145,12 @@ void CTCHero::OnSerialise(CPersistContext* context, long)
 {
     if (context->IsSaving()) {
         LastWeaponEquippedID = 0;
-        if (LastWeaponEquipped.GetPItem() && !(LastWeaponEquipped.GetPItem()->Flags91 & 1)) {
-            CThing* weapon = LastWeaponEquipped.GetPItem();
+        if (((CThing*)LastWeaponEquipped.GetPItem()) && !(((CThing*)LastWeaponEquipped.GetPItem())->Flags91 & 1)) {
+            CThing* weapon = ((CThing*)LastWeaponEquipped.GetPItem());
             unsigned __int64 uid = weapon->UID;
             LastWeaponEquippedID = GetThingManager().RemapUIDForSerialisation(true, Thing->IsLevelLess(), Thing->LevelIndex, uid);
         }
-        context->Transfer("LastWeaponEquippedID", LastWeaponEquippedID, 0);
+        context->Transfer<unsigned __int64>("LastWeaponEquippedID", LastWeaponEquippedID, 0);
         CCharString defName("");
         CDefPointer<const CDefinition> def = GetDefinitionManager().GetPDefFromGlobalIndex(HeroTitleObjectDef);
         if (def.Object)
@@ -159,7 +160,7 @@ void CTCHero::OnSerialise(CPersistContext* context, long)
         }
         context->Transfer("hero_title_object_def_name", defName, EmptyString());
     } else {
-        context->Transfer("LastWeaponEquippedID", LastWeaponEquippedID, 0);
+        context->Transfer<unsigned __int64>("LastWeaponEquippedID", LastWeaponEquippedID, 0);
         if (LastWeaponEquippedID)
             LastWeaponEquippedID = GetThingManager().RemapUIDForSerialisation(false, Thing->IsLevelLess(), Thing->LevelIndex, LastWeaponEquippedID);
         CCharString defName("");

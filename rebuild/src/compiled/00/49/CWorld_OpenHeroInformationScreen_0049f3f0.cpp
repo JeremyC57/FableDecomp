@@ -47,7 +47,7 @@ class CPlayer { public:
     void AddMode(EPlayerMode mode, bool flag);     // 0x006345C0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+    CPlayer& GetMainPlayer();                      // 0x00449970
 };
 class CWorld { public:
     void*           __vftable;                     // +0x00
@@ -65,7 +65,7 @@ class CWorld { public:
 };
 void CWorld::OpenHeroInformationScreen(EPlayerMode mode)
 {
-    CPlayer* player = PlayerManager->GetMainPlayer();
+    CPlayer* player = &PlayerManager->GetMainPlayer();
     NHeroInformationScreens::CManager* manager = g_pPlayerGui->GetPHeroInfoScreensManager();
     CRetailVector<const NHeroInformationScreens::CBase*> screens;
     manager->GetAllRegisteredScreens(&screens);

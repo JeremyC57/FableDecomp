@@ -42,7 +42,7 @@ public:
         }
         return *this;
     }
-    void UnassignString();                    // 0x0099E9B0
+    protected: void UnassignString(); public:                    // 0x0099E9B0
     CCharString GetSubString(unsigned long start, unsigned long count) const;   // 0x0099EC70
     unsigned long GetLength() const { unsigned long length; if (PStringData == 0) length = 0; else length = PStringData->StringLength; return length; }
     const char* GetText() const { return PStringData == 0 ? g_EmptyCharString : PStringData->PData; }

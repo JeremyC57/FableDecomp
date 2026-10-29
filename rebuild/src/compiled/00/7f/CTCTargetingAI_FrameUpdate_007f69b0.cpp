@@ -60,10 +60,11 @@ inline bool IS_THING_ALIVE(const CThing* thing)
 class CTCStealth { public:
     bool IsAvailableForAttack();                        // 0x00747B00
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual ~CBaseIntelligentPointer();                 // slot 0
     CThing* m_pItem;                                    // +0x04
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 struct SThingListNode {
     SThingListNode* _M_next;
@@ -108,7 +109,7 @@ void CTCTargetingAI::FrameUpdate()
     BaseFrameUpdate();
     if (!ThingsToNotAttack.empty()) {
         for (SThingListNode* it = ThingsToNotAttack.begin(); it != ThingsToNotAttack.end(); ) {
-            CThing* thing = it->_M_data.GetPItem();
+            CThing* thing = ((CThing*)it->_M_data.GetPItem());
             if (!IS_THING_ALIVE(thing)) {
                 it = ThingsToNotAttack.erase(it);
                 continue;

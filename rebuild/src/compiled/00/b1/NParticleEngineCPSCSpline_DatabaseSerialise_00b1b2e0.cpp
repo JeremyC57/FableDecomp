@@ -13,8 +13,8 @@
 // Shape: each member is transferred in place by reference; the three default-value temporaries (false,
 // false, 0.0f) are homed in the dead `info` argument slot ([esp+10h]) after the base call. `ret 8`.
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0; float 0x00410620
 };
 
 namespace NParticleEngine {

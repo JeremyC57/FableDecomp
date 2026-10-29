@@ -83,7 +83,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CMessageEvent;
 class CAIBrain { public:
@@ -111,7 +111,7 @@ bool CAIStateGroupMinionReactToCrimeMethods::IsRunnable()
                                                             &OpinionDeedHandle, true);
             if (deed) {
                 if (deed->Type == 0x35) {
-                    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+                    CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
                     if (hero) {
                         CTCHeroOpinionDeedLog* log;
                         hero->GetInterface(&log, 0x51);

@@ -91,12 +91,13 @@ class CThingCreatureBase : public CThing { public:
     static float __fastcall GetPersonalSpaceRadius();   // 0x00661CC0 ?GetPersonalSpaceRadius@CThingCreatureBase@@SIMXZ (Ego_r.pdb; donor 0x0053CA80 in the CThingCreatureBase run)
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
@@ -104,8 +105,8 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -139,13 +140,13 @@ class CAIStateGroupBase { public:
 
 EAIActionReturn CAIStateGroupBase::AIAction_RunAwayFrom(CIntelligentPointerConstThing threat, CCreatureActionBase* action)
 {
-    if (!IS_THING_ALIVE(threat) || !(threat.GetPItem()->m_flags6c & 8))
+    if (!IS_THING_ALIVE(threat) || !(((CThing*)threat.GetPItem())->m_flags6c & 8))
         return AI_ACTION_ABORTED;
-    CIntelligentPointerConstCreature enemy(threat.GetPItem());
+    CIntelligentPointerConstCreature enemy(((CThing*)threat.GetPItem()));
     for (;;) {
-        if (!IS_THING_ALIVE(enemy) || !IsAwareOfThingImplementation(GetCreature(), enemy.GetPItem(), false))
+        if (!IS_THING_ALIVE(enemy) || !IsAwareOfThingImplementation(GetCreature(), ((CThing*)enemy.GetPItem()), false))
             return AI_ACTION_DONE;
-        C3DVector away = GetCreature()->GetPos() - enemy.GetPItem()->GetPos();
+        C3DVector away = GetCreature()->GetPos() - ((CThing*)enemy.GetPItem())->GetPos();
         CThingCreatureBase* creature = GetCreature();
         CTCCreatureNavigation* nav;
         bool moving;
@@ -155,7 +156,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_RunAwayFrom(CIntelligentPointerConst
         if (nav->GetNearbyDirectedPosition(creature->GetPos(), 5.0f, away, 0.25277778f, &dest)) {
             result = AIAction_MoveToPos(AI_ACTION_REPEAT_POLL, dest, moving, MOVEMENT_RUN, true, true, 0, true, 0.0f);
         } else {
-            const CThing* threatThing = enemy.GetPItem();
+            const CThing* threatThing = ((CThing*)enemy.GetPItem());
             CThingCreatureBase* me = GetCreature();
             float radius = CThingCreatureBase::GetPersonalSpaceRadius();
             const C3DVector& from = threatThing->GetPos();
@@ -165,7 +166,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_RunAwayFrom(CIntelligentPointerConst
             float distanceSquared = dy * dy + dx * dx;
             float radiusSquared = radius * radius;
             if (distanceSquared < radiusSquared
-                && nav->GetNearbyWanderPosition(enemy.GetPItem()->GetPos(), 5.0f, &dest, false)) {
+                && nav->GetNearbyWanderPosition(((CThing*)enemy.GetPItem())->GetPos(), 5.0f, &dest, false)) {
                     result = AIAction_MoveToPos(AI_ACTION_REPEAT_UNTIL_DONE, dest, moving, MOVEMENT_RUN, true, true, 0, true, 0.0f);
                 if (result == AI_ACTION_DONE)
                     continue;

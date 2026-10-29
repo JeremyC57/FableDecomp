@@ -116,18 +116,19 @@ class CThing { public:
 };
 CThing* __fastcall CreateSpecialEffect(long effect, const C3DVector& position, bool attached);   // 0x006E0880
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointerThing(CThing* item) { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 
 class CTCDParticleEmitter { public:
@@ -154,21 +155,21 @@ void CCreatureAction_BanditKingStuck::Initialise()
         CCharString name("BK_STUCK");
         SetCombatAnimation(name);
     }
-    if (PStuckEffect.GetPItem() == 0 || (PStuckEffect.GetPItem()->m_flags91 & 1)) {
+    if (((CThing*)PStuckEffect.GetPItem()) == 0 || (((CThing*)PStuckEffect.GetPItem())->m_flags91 & 1)) {
         CDefPointer<CSpecialEffectsDef> effects;
         bool found;
         {
             long effect = 0;
-            found = PCreature.GetPItem()->GetDef()->GetSubDef(&effects) && effects.Object->CalcAndLookup("STUCKLOOP", &effect);
+            found = ((CThing*)PCreature.GetPItem())->GetDef()->GetSubDef(&effects) && effects.Object->CalcAndLookup("STUCKLOOP", &effect);
             if (found) {
-                PStuckEffect = CIntelligentPointerThing(CreateSpecialEffect(effect, PCreature.GetPItem()->GetPos(), false));
+                PStuckEffect = CIntelligentPointerThing(CreateSpecialEffect(effect, ((CThing*)PCreature.GetPItem())->GetPos(), false));
             }
         }
         if (found) {
-            if (PStuckEffect.GetPItem() && !(PStuckEffect.GetPItem()->m_flags91 & 1)) {
+            if (((CThing*)PStuckEffect.GetPItem()) && !(((CThing*)PStuckEffect.GetPItem())->m_flags91 & 1)) {
                 CTCDParticleEmitter* emitter = 0;
-                PStuckEffect.GetPItem()->GetInterface(&emitter, 0x4b);
-                emitter->AttachToThing(PCreature.GetPItem(), 0x2a, "", 0, 0);
+                ((CThing*)PStuckEffect.GetPItem())->GetInterface(&emitter, 0x4b);
+                emitter->AttachToThing(((CThing*)PCreature.GetPItem()), 0x2a, "", 0, 0);
             }
         }
     }

@@ -14,7 +14,8 @@
 //   xor/and/xor (the top bit with and 7Fh / or). Only ReceiveShadows defaults to true.
 class CPersistContext { public:
     template <class T> void Transfer(T& value);                                              // 0x00431102
-    void Transfer(const char* name, bool& value, const bool& defaultValue);  // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 class CDefClassBase { public:

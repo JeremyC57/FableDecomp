@@ -8,19 +8,8 @@
 //   vectors (begin/end/end-of-storage, empty allocator). Local model with the PDB member names.
 // Size-optimised TU: #pragma optimize("s", on) (`push dword ptr [esi+N]`, `fld ; push ecx ; fstp [esp]`).
 #pragma optimize("s", on)
-#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
-#undef CDataOutputStream
 
-class CDataOutputStream : public CDataOutputStreamLayout
-{
-public:
-    void WriteFloat(float);   // 0x00993EE0
-    void WriteSLONG(long);   // 0x00993EB0
-};
-
-struct CDataOutputStream_Methods : CDataOutputStream {
-};
 
 class CDefString { public: long Index; };
 template<class T> class CArray { public:                   // STLport vector, 12 bytes in retail
@@ -48,7 +37,7 @@ template<> struct CPersistTraits<CObjectAugmentationParticleSet> {
 
 void CPersistTraits<CObjectAugmentationParticleSet>::TransferBinaryOut(CDataOutputStream* stream, const CObjectAugmentationParticleSet* value)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)stream;
+    CDataOutputStream* out = (CDataOutputStream*)stream;
     out->WriteFloat(value->PeriodSecs);
     out->WriteSLONG(value->ParticleEffect);
     out->WriteSLONG(value->ParticleEffectToBlendTo);

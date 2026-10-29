@@ -1,7 +1,8 @@
 // NUISystem::CFrontEndManager::CreateComponent @ 0x00594F94
 //
-// Ghidra confirms this is a one-argument __thiscall wrapper around the base
-// manager factory.  Size optimization preserves the retail push order and
+// A one-argument __thiscall wrapper around the base manager factory: it calls
+// NUISystem::CManager::GetInstance 0x0041E5F2 (not its own getter 0x00595582), then
+// CManager::CreateComponent(const CCharString&, true) 0x0041DB1D.  Size optimization preserves the retail push order and
 // stack cleanup without an assembly shim.
 
 #pragma optimize("s", on)
@@ -15,19 +16,19 @@ class CComponent;
 class CManager
 {
 public:
-    CComponent* CreateComponent(CCharString* definition, bool frontEnd);
+    static CManager* __fastcall GetInstance();      // 0x0041E5F2
+    CComponent* CreateComponent(const CCharString& definition, bool frontEnd);   // 0x0041DB1D
 };
 
 class CFrontEndManager : public CManager
 {
 public:
-    static CFrontEndManager* GetInstance();
-    CComponent* CreateComponent(CCharString* definition);
+    CComponent* CreateComponent(const CCharString& definition);
 };
 
-CComponent* CFrontEndManager::CreateComponent(CCharString* definition)
+CComponent* CFrontEndManager::CreateComponent(const CCharString& definition)
 {
-    return GetInstance()->CManager::CreateComponent(definition, true);
+    return CManager::GetInstance()->CreateComponent(definition, true);
 }
 }
 

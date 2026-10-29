@@ -54,19 +54,20 @@ class CThingCreatureBase : public CThing { public: };
 class CThingAICreature;
 class CThingObject;
 class CThingBuilding;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                         // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
-    CThing* GetPItem() const;                          // 0x00A01B50
+    CBaseObject* GetPItem() const;                          // 0x00A01B50
     void SetPItem(const CThing* item);                 // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer() { }
-    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
+    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 class CTCTavernBar { public:                                  // interface 0xb9
     unsigned char _pad0[0x18];
@@ -122,18 +123,18 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 
 bool CAIStateGroup_GoToPub::PayMoney()
 {
-    if (PBarman.GetPItem() == 0) {
+    if (((CThing*)PBarman.GetPItem()) == 0) {
         CTCTavernBar* bar;
-        PBar.GetPItem()->GetInterface(&bar, 0xb9);
+        ((CThing*)PBar.GetPItem())->GetInterface(&bar, 0xb9);
         PBarman = bar->GetBarman();
-        if (PBarman.GetPItem() == 0) {
+        if (((CThing*)PBarman.GetPItem()) == 0) {
             FreeBarPoint();
             return false;
         }
     }
     CMessageEvent* request;
     {
-        CThing* barman = PBarman.GetPItem();
+        CThing* barman = ((CThing*)PBarman.GetPItem());
         CThingCreatureBase* creature = GetCreature();
         C3DVector pos(0.0f, 0.0f, 0.0f);
         CMessageEventManager* messages = GetPWorld()->MessageEventManager;
@@ -147,7 +148,7 @@ bool CAIStateGroup_GoToPub::PayMoney()
                 CWorld* world = GetPWorld();
                 world->MessageEventManager->RemoveMessage(request);
             }
-            CThing* barman = PBarman.GetPItem();
+            CThing* barman = ((CThing*)PBarman.GetPItem());
             CThingCreatureBase* creature = GetCreature();
             C3DVector pos(0.0f, 0.0f, 0.0f);
             CWorld* world = GetPWorld();
@@ -162,7 +163,7 @@ bool CAIStateGroup_GoToPub::PayMoney()
         CThingCreatureBase* creature = GetCreature();
         C3DVector pos(0.0f, 0.0f, 0.0f);
         CMessageEventManager* messages = GetPWorld()->MessageEventManager;
-        messages->AddMessage(0x30, 1000, pos, creature, PBarman.GetPItem(), 0.0f, 0.0f, 0);
+        messages->AddMessage(0x30, 1000, pos, creature, ((CThing*)PBarman.GetPItem()), 0.0f, 0.0f, 0);
     }
     FreeBarPoint();
     return true;

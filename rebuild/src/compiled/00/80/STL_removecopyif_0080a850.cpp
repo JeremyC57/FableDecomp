@@ -15,17 +15,18 @@
 //   so F2 itself is its `this`); the copy is CTargetPoint's implicit operator= (the landed 0x00807B70 form).
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                      // +0x04
-    CThing* GetPItem() const;                             // 0x00A01B50
+    CBaseObject* GetPItem() const;                             // 0x00A01B50
     void SetPItem(CThing* item);                          // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        SetPItem(other.GetPItem());
+        SetPItem(((CThing*)other.GetPItem()));
         return *this;
     }
 };

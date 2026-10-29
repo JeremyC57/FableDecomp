@@ -9,7 +9,8 @@
 // temporary bound to the const reference and homed in the flag's own argument slot
 // (`mov byte ptr [esp+20h],1`) although the flag is still live in ebx; the base hook comes last.
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 struct CTCContainer_Calls {                                 // retail 0x18 bytes

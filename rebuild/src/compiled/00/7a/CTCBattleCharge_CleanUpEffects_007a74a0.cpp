@@ -55,12 +55,12 @@ class CTCDParticleEmitter { public:
 struct CBaseIntelligentPointer {
     void*        __vftable;
     CBaseObject* PData;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -79,15 +79,15 @@ public:
 void CTCBattleCharge::CleanUpEffects()
 {
     if (IS_THING_ALIVE(ShieldEffect))
-        ShieldEffect.GetPItem()->Kill(true);
+        ((CThing*)ShieldEffect.GetPItem())->Kill(true);
     CThing* owner = ParentThing;
     CTCDParticleEmitter* emitter;
     if (IS_THING_ALIVE(LeftFeetEffect)) {
-        LeftFeetEffect.GetPItem()->GetInterface(&emitter, 0x4b);
+        ((CThing*)LeftFeetEffect.GetPItem())->GetInterface(&emitter, 0x4b);
         emitter->AttachToThing(owner, 1, "", 0, 0.0f);
     }
     if (IS_THING_ALIVE(RightFeetEffect)) {
-        RightFeetEffect.GetPItem()->GetInterface(&emitter, 0x4b);
+        ((CThing*)RightFeetEffect.GetPItem())->GetInterface(&emitter, 0x4b);
         emitter->AttachToThing(owner, 1, "", 0, 0.0f);
     }
 }

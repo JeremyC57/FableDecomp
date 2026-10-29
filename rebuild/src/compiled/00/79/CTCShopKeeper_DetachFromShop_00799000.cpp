@@ -44,7 +44,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                    // +0x04
     CBaseIntelligentPointer();                          // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CBaseObject* item);                   // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -72,8 +72,8 @@ class CTCShopKeeper { public:
 void CTCShopKeeper::DetachFromShop()
 {
     bool detached = false;
-    if (Shop.GetPItem() && !(Shop.GetPItem()->m_flags91 & 1)) {
-        CThing* shop = Shop.GetPItem();
+    if (((CThing*)Shop.GetPItem()) && !(((CThing*)Shop.GetPItem())->m_flags91 & 1)) {
+        CThing* shop = ((CThing*)Shop.GetPItem());
         if (shop->HasTC(0x53)) {
             ((CTCShop*)shop->GetTC(0x53))->SetShopKeeper(0);
             detached = true;
@@ -81,7 +81,7 @@ void CTCShopKeeper::DetachFromShop()
     }
     {
         CIntelligentPointer<CThing> cleared(0);
-        CThing* item = cleared.GetPItem();
+        CThing* item = ((CThing*)cleared.GetPItem());
         Shop.SetPItem((CBaseObject*)item);
     }
     if (detached)

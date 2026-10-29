@@ -138,7 +138,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                   // +0x04
     CBaseIntelligentPointer();                         // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
-    CThing* GetPItem() const;                          // 0x00A01B50
+    CBaseObject* GetPItem() const;                          // 0x00A01B50
     void SetPItem(CBaseObject* item);                  // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -148,8 +148,8 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 #pragma pack(pop)
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -190,7 +190,7 @@ void CTCMultiArrow::CreateAmmoEffect()
             CIntelligentPointer<CThing> effect(CreateParticleEffect(effectIndex, ParentThing->GetPos()));
             if (IS_THING_ALIVE(effect)) {
                 CTCDParticleEmitter* emitter;
-                effect.GetPItem()->GetInterface(&emitter, 0x4b);
+                ((CThing*)effect.GetPItem())->GetInterface(&emitter, 0x4b);
                 if (emitter)
                     emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
             }

@@ -12,17 +12,18 @@
 class CThing;
 class CThingCreatureBase;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     // (the dead bit lives at +0x91 of the thing)
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x01237F1C
-    CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 
 class CCharString { public:
@@ -68,7 +69,7 @@ struct CThingAlive { unsigned char _pad[0x91]; unsigned char m_flags91; };
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
+    if (((CThing*)p.GetPItem()) != 0) {
         if (!(((CThingAlive*)p.GetPItem())->m_flags91 & 1))
             return true;
     }

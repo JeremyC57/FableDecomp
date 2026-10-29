@@ -53,20 +53,21 @@ class CThing { public:
 class CThingObject;
 class CThingAICreature;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     CIntelligentPointer() { }
     CIntelligentPointer(T* item) { SetPItem((CThing*)item); }
-    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(other.GetPItem()); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointer(const CIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 
 #define IS_THING_ALIVE(p) ((p) != 0 && !((p)->m_flags91 & 1))
@@ -162,17 +163,17 @@ struct CAIStateGroup_GoToPub : CAIStateGroupBase {
 bool CAIStateGroup_GoToPub::GetBar()
 {
     CTCBuildingContents* contents;
-    PPub.GetPItem()->GetInterface(&contents, 0x21);
+    ((CThing*)PPub.GetPItem())->GetInterface(&contents, 0x21);
     CThingPtrList bars;
     for (SContentsNode* node = contents->head->next; node != contents->head; node = node->next) {
-        if (IS_THING_ALIVE(node->value.GetPItem()) && node->value.GetPItem()->HasTC(0xb9))
-            bars.push_back(node->value.GetPItem());
+        if (IS_THING_ALIVE(((CThing*)node->value.GetPItem())) && ((CThing*)node->value.GetPItem())->HasTC(0xb9))
+            bars.push_back(((CThing*)node->value.GetPItem()));
     }
     if (bars.empty())
         return false;
     PBar = (CThingObject*)bars.front();
     CTCTavernBar* bar;
-    PBar.GetPItem()->GetInterface(&bar, 0xb9);
+    ((CThing*)PBar.GetPItem())->GetInterface(&bar, 0xb9);
     PBarman = bar->GetPBarman();
     return true;
 }

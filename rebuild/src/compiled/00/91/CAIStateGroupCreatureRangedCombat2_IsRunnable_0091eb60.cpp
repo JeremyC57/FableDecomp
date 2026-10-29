@@ -11,13 +11,14 @@
 // out-of-line ctor's eax) and shares the module's slot. Layout: PTargetThing +0x14 (Ego_r.pdb CAIStateGroup_CreatureRangedCombat2).
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -153,7 +154,7 @@ bool CAIStateGroup_CreatureRangedCombat2::IsRunnable()
         {
             {
                 CIntelligentPointerConstThing item(target);
-                PTargetThing.SetPItem(item.GetPItem());
+                PTargetThing.SetPItem(((CThing*)item.GetPItem()));
             }
             if (IsAbleToFire())
                 return true;

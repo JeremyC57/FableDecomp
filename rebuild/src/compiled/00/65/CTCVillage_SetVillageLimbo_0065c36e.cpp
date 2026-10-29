@@ -51,7 +51,7 @@ class CThingBuilding : public CThing { public:
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     void* __vftable;
     CBaseObject* PData;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointerBuilding : CBaseIntelligentPointer { };   // CIntelligentPointer<CThingBuilding>
 bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
@@ -92,9 +92,9 @@ void CTCVillage::SetVillageLimbo(bool limbo)
         for (SListNode<CBaseIntelligentPointer>* it = people._M_node->_M_next; it != people._M_node; it = it->_M_next) {
             CBaseIntelligentPointer& person = it->_M_data;
             if (IS_THING_ALIVE(person)) {
-                if (!GFHasScriptThing(person.GetPItem()) || !person.GetPItem()->HasTC(0x1f)) {
-                    person.GetPItem()->SetInLimbo(true);
-                    person.GetPItem()->SetPersistOnUnloadWhenInLimbo(true);
+                if (!GFHasScriptThing(((CThing*)person.GetPItem())) || !((CThing*)person.GetPItem())->HasTC(0x1f)) {
+                    ((CThing*)person.GetPItem())->SetInLimbo(true);
+                    ((CThing*)person.GetPItem())->SetPersistOnUnloadWhenInLimbo(true);
                 }
             }
         }

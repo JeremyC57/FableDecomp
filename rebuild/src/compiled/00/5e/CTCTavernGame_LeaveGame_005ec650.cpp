@@ -95,7 +95,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
@@ -167,7 +167,7 @@ void CTCTavernGame::LeaveGame()
         messages->AddMessage(0x40, framesPerSecond * 5, (C3DVector*)&gameMaster->GetPos(),
                                        PGameMaster.Get(), 0, 0.0f, 0.0f, 0);
     }
-    CPlayer* player = g_pMainGameComponent->PlayerManager->GetMainPlayer();
+    CPlayer* player = &g_pMainGameComponent->PlayerManager->GetMainPlayer();
     player->RemoveMode(0x1a);
     CThing* hero = player->GetPControlledCreature();
     hero->SetVisible(true);

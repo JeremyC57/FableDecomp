@@ -1,0 +1,11 @@
+rebuild/src/compiled/00/68/CInputProcessUseRangedWeapon_ProcessInput_0068f9d0.cpp
+rebuild/src/compiled/00/69/CCreatureActionUnsheatheItemFromInventory_Initialise_0069f910.cpp
+rebuild/src/compiled/00/69/CCreatureActionUnsheatheItemFromInventory_PerformAction_0069f9e0.cpp
+rebuild/src/compiled/00/73/CTCCombat_SetBlocking_007337e0.cpp
+rebuild/src/compiled/00/7a/CTCAssassinRush_CleanUpEffects_007aa370.cpp
+rebuild/src/compiled/00/7a/CTCAssassinRush_UpdateDirectionOverride_007a9960.cpp
+rebuild/src/compiled/00/7a/CTCBattleCharge_CTCBattleCharge_007a71b0.cpp
+rebuild/src/compiled/00/7a/CTCBattleCharge_UpdateDirectionOverride_007a7000.cpp
+rebuild/src/compiled/00/7c/CTCMultiStrike_StartMultiHit_007ccb00.cpp
+rebuild/src/compiled/00/8b/CCreatureActionCastWillEnflameSpell_FinishAction_008ba3c0.cpp
+rebuild/src/compiled/00/8e/NCreatureModeCModeStrafe_GetBestFrameInAimingAnim_008e9460.cpp

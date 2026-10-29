@@ -14,8 +14,8 @@ class CMemoryDataInputStream { public: int id; C2DVector ReadC2DVector() { LOG("
 class CDataOutputStream { public: int id; long written; void Write2DVector(const C2DVector& v) { LOG("write"); written = VAL(v); } };
 template <class U> struct CPersistTraits;
 template <> struct CPersistTraits<C2DVector> { C2DVector DefaultVal; CPersistTraits() {} void TransferBinaryIn(CMemoryDataInputStream* stream, C2DVector* value) { *value = stream->ReadC2DVector(); } };
-struct CPersistContext_TransferableObjectBase { virtual long Peek() { return -1; } virtual ~CPersistContext_TransferableObjectBase() {} };
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableObjectBase {
+class CPersistContext_TransferableComponentGenericType { public: virtual long Peek() { return -1; } virtual ~CPersistContext_TransferableComponentGenericType() {} };
+template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {
     T* Value;
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual long Peek() { return VAL(*Value); }
@@ -27,8 +27,8 @@ class CPersistContext { public:
     CDataOutputStream* PSaveStream;
     long seen;
     void CheckCRC(const char* name) { LOG(std::strcmp(name, "Key") == 0 ? "crc" : "crc?"); }
-    void TransferObjectSaveText(const char*, CPersistContext_TransferableObjectBase& item) { LOG("save"); seen = item.Peek(); }
-    void TransferObjectLoadText(const char*, CPersistContext_TransferableObjectBase& item) { LOG("load"); seen = item.Peek(); }
+    void TransferObjectSaveText(const char*, CPersistContext_TransferableComponentGenericType& item) { LOG("save"); seen = item.Peek(); }
+    void TransferObjectLoadText(const char*, CPersistContext_TransferableComponentGenericType& item) { LOG("load"); seen = item.Peek(); }
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);
 };
 template <class T>

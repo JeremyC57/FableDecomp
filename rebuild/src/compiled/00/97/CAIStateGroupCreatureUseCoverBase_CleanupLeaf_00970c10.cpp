@@ -8,13 +8,14 @@
 // key slot `mov eax,[esp+8]`), so the lookup is `T* tc; if (HasTC(k)) tc = GetTC(k); tc->SetUser(0);`.
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -108,9 +109,9 @@ struct CCoverList                                   // vector<CIntelligentPointe
 
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0)
+    if (((CThing*)p.GetPItem()) != 0)
     {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -137,13 +138,13 @@ void CAIStateGroup_CreatureUseCoverBase::CleanupLeaf()
 {
     if (IS_THING_ALIVE(PCoverThing))
     {
-        CThing* thing = PCoverThing.GetPItem();
+        CThing* thing = ((CThing*)PCoverThing.GetPItem());
         CTCCoverPoint* cover;
         if (thing->HasTC(0xac))
             cover = (CTCCoverPoint*)thing->FindEntry(0xac)->second;
         cover->SetUser(0);
     }
     CoverList.clear();
-    PCoverThing.SetPItem(CIntelligentPointer<CThing>(0).GetPItem());
+    PCoverThing.SetPItem(((CThing*)CIntelligentPointer<CThing>(0).GetPItem()));
     TimingCritical = false;
 }

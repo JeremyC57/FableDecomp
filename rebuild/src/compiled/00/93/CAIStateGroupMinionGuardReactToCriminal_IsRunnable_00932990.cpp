@@ -64,19 +64,20 @@ class CThing { public:
 class CThingPlayerCreature : public CThing { };
 template<class T> bool __fastcall IS_THING_ALIVE(T* const& thing);     // 0x004A88F0 <CThing*>
 
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(const CThing* item);          // 0x00A01B90
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
     CIntelligentPointer() : CBaseIntelligentPointer() { }
     CIntelligentPointer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 bool __fastcall operator==(const CThing* thing, const CIntelligentPointer& pointer);   // 0x00933250
 
@@ -109,7 +110,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 
 class CTCVillage { public:
@@ -155,15 +156,15 @@ bool CAIStateGroup_MinionGuardReactToCriminal::IsRunnable()
         const CThing* creature = PBrain->PCreature;
         if (creature->HasTC(0x34)) {
             CTCPerceiveThing* perceive = creature->GetTC<CTCPerceiveThing>(0x34);
-            PHero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
-            if (PHero.GetPItem() != 0 && perceive->GetPerceivedThing() != 0
+            PHero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+            if (((CThing*)PHero.GetPItem()) != 0 && perceive->GetPerceivedThing() != 0
                 && perceive->GetPerceivedThing() == PHero && perceive->CanSeeOrSmellPerceivedThing()) {
                 bool isFine;
                 long amount;
                 bool noWarning = village->GetWarningStringForCurrentCrimes(0, isFine, amount) == "";
                 if (noWarning)
                     return true;
-                return !IS_THING_ALIVE(village->PCriminalHandler.GetPItem());
+                return !IS_THING_ALIVE(((CThing*)village->PCriminalHandler.GetPItem()));
             }
         }
     }

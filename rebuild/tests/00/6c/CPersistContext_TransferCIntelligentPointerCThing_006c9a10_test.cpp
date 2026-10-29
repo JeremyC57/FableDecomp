@@ -44,10 +44,10 @@ template <class T> struct CPersistTraits {
     void TransferBinaryIn(CMemoryDataInputStream* stream, T& value);        // 0x006C8780 for this T
 };
 
-struct CPersistContext_TransferableObjectBase {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferIn();
 };
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableObjectBase {   // vtable 0x0125E9D0
+template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {   // vtable 0x0125E9D0
     T* Value;
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual void TransferIn();
@@ -62,8 +62,8 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;          // +0x24
     CDataOutputStream*      PSaveStream;          // +0x28
     protected: void CheckCRC(const char* name); public:              // 0x00404500
-    void TransferObjectSaveText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BAD60
-    void TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BBA40
+    protected: void TransferObjectSaveText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BAD60
+    protected: void TransferObjectLoadText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BBA40
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);
 };
 
@@ -121,12 +121,12 @@ template <> void CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryOut
 { Log("BinOut"); g_stream = stream; g_out = &value; }
 template <> void CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryIn(CMemoryDataInputStream* stream, CIntelligentPointer<CThing>& value)
 { Log("BinIn"); g_stream = stream; g_in = &value; }
-void CPersistContext_TransferableObjectBase::TransferIn() {}
+void CPersistContext_TransferableComponentGenericType::TransferIn() {}
 template <> void CPersistContext_TransferableComponent<CIntelligentPointer<CThing> >::TransferIn() {}
 static const char* g_textName = 0; static const void* g_textValue = 0; static CBaseObject* g_itemAtLoad = 0;
-void CPersistContext::TransferObjectSaveText(const char* name, CPersistContext_TransferableObjectBase& item)
+void CPersistContext::TransferObjectSaveText(const char* name, CPersistContext_TransferableComponentGenericType& item)
 { Log("SaveText"); g_textName = name; g_textValue = ((CPersistContext_TransferableComponent<CIntelligentPointer<CThing> >&)item).Value; }
-void CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item)
+void CPersistContext::TransferObjectLoadText(const char* name, CPersistContext_TransferableComponentGenericType& item)
 {
     Log("LoadText"); g_textName = name;
     CIntelligentPointer<CThing>* v = ((CPersistContext_TransferableComponent<CIntelligentPointer<CThing> >&)item).Value;

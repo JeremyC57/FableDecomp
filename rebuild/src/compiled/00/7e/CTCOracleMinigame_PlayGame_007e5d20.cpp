@@ -32,7 +32,7 @@ class CPlayer { public:
     void AddMode(long mode, bool exclusive);            // 0x006345C0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
 class COracleMinigameDef { public:
     unsigned char _pad00[0x2c];
@@ -92,7 +92,7 @@ void CTCOracleMinigame::PlayGame()
     SymbolsFiring[1] = 0;
     SymbolsFiring[2] = 0;
     SymbolsFiring[3] = 0;
-    CPlayer* player = GetPlayerManager()->GetMainPlayer();
+    CPlayer* player = &GetPlayerManager()->GetMainPlayer();
     if (player->GetCurrentMode() != 0x29)
         player->AddMode(0x29, false);
     CurrentText = 0;

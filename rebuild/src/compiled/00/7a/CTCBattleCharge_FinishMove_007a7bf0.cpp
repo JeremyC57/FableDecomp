@@ -26,7 +26,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -35,8 +35,8 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_stateFlags & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_stateFlags & 1))
             return true;
     }
     return false;
@@ -96,7 +96,7 @@ void CTCBattleCharge::FinishMove(CThingCreatureBase* creature, bool hitSomething
     HitSomething = hitSomething;
     if (IS_THING_ALIVE(PItemRemoved)) {
         CCharString animation("ST_ABILITY_FAST_UNSHEATHE_TO_COMBAT_POSE", -1);
-        creature->SetCurrentAction(&CCreatureAction_UnsheatheItemFromInventory(creature, animation, PItemRemoved.GetPItem(), 100, 250, 0));
+        creature->SetCurrentAction(&CCreatureAction_UnsheatheItemFromInventory(creature, animation, ((CThing*)PItemRemoved.GetPItem()), 100, 250, 0));
     }
     if (hitSomething)
         creature->SetCurrentAction(&CCreatureAction_BattleChargeImpact(creature, LeftFeetEffect, RightFeetEffect));

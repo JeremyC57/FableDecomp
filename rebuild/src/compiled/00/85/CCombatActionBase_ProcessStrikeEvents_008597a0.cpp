@@ -63,11 +63,12 @@ class CThing { public:
     }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pData;
     virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
-    CThing* GetPItem() const;                          // 0x00A01B50
+    CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     CIntelligentPointer(CThing* item);                 // 0x004A96F0
@@ -148,7 +149,7 @@ void CCombatActionBase::ProcessStrikeEvents()
         if (strikeEvent) {
             if (strikeEvent->StrikeEventIndex != ActiveStrikeEventIndex) {
                 ActiveStrikeEventIndex = strikeEvent->StrikeEventIndex;
-                if (PCreature.GetPItem()->ThingTypeFlags & 0x20) {
+                if (((CThing*)PCreature.GetPItem())->ThingTypeFlags & 0x20) {
                     CThing* weapon = GetWeaponUsedInStrikeAction();
                     if (weapon) {
                         LastWeaponUsedInStrike = weapon;
@@ -161,15 +162,15 @@ void CCombatActionBase::ProcessStrikeEvents()
         } else if (ActiveStrikeEventIndex >= 0) {
             if (IS_THING_ALIVE(LastWeaponUsedInStrike)) {
                 CTCObjectAugmentations* augmentations;
-                if (LastWeaponUsedInStrike.GetPItem()->GetInterface(&augmentations, 0xbf))
+                if (((CThing*)LastWeaponUsedInStrike.GetPItem())->GetInterface(&augmentations, 0xbf))
                     augmentations->EndStrikeAction();
             }
             ActiveStrikeEventIndex = -1;
         }
     } else if (ActiveStrikeEventIndex >= 0) {
-        if (LastWeaponUsedInStrike.GetPItem() && !LastWeaponUsedInStrike.GetPItem()->Dead) {
+        if (((CThing*)LastWeaponUsedInStrike.GetPItem()) && !((CThing*)LastWeaponUsedInStrike.GetPItem())->Dead) {
             CTCObjectAugmentations* augmentations;
-            if (LastWeaponUsedInStrike.GetPItem()->GetInterface(&augmentations, 0xbf))
+            if (((CThing*)LastWeaponUsedInStrike.GetPItem())->GetInterface(&augmentations, 0xbf))
                 augmentations->EndStrikeAction();
         }
         ActiveStrikeEventIndex = -1;
@@ -181,7 +182,7 @@ void CCombatActionBase::ProcessStrikeEvents()
         FramesRunning > (long)(GetAnimDelayTime() + framesPerSecond * StrikeEventResetComboTime)) {
         HasStrikeEventResetCombo = false;
         CTCCombat* combat;
-        PCreature.GetPItem()->GetInterface(&combat, 0x30);
+        ((CThing*)PCreature.GetPItem())->GetInterface(&combat, 0x30);
         combat->ResetComboChainPos();
     }
     if (HasMovementEventInterrupt && !MovementEventInterruptActive && MovementEventInterruptFrame == FramesRunning)

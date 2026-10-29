@@ -11,7 +11,7 @@ static int fails = 0;
 // Callees: CComponent::GetDef (slot 108) 0x00530EC0, the STLport list find 0x0053C8D0 (same-TU body, the landed 0x00536A30
 // Die model) and erase 0x0053C7B9 on the registry 0x013B8A98, CManager::GetInstance 0x0041E5F2 + slot 5,
 // ~list<CCountedPointer<CAction> > 0x005357E0, operator delete 0x00BFE9BC, free 0x00BFEA14, ~CCountedPointer 0x00429160,
-// the states vector dtor 0x0053CD46, ~CComponent 0x0052CCF0.
+// the states vector dtor 0x0053CD46, ~CChangingStateComponent 0x0052CCF0 (RTTI: CList : CChangingStateComponent : CComponent).
 // Shape: the find body in the TU puts the `this` temporary's store after the argument pushes and the erase result in the
 // iterator's own slot; the action lists are destroyed with a QUALIFIED explicit destructor call plus operator delete
 // (`p->CActionList::~CActionList(); operator delete(p);`): under optimize("s") a plain `delete p` calls a generated
@@ -93,7 +93,6 @@ struct CComponentRoot {                            // the primary vtable at +0
 struct CThirdBase { virtual void v00(); };         // the vtable at +0x18
 class CComponent : public CComponentRoot, public CInputListener, public CThirdBase {
 public:
-    ~CComponent();                                 // 0x0052CCF0
     V16(a) V16(b) V16(c) V16(d) V16(e) V16(f) V4(g0) V4(g1) virtual void h0(); virtual void h1(); virtual void h2();
     virtual CDefPointer<CComponentDef> GetDef();   // slot 108 (+0x1b0) 0x00530EC0
     unsigned char _pad1c[0x164 - 0x1c];
@@ -125,7 +124,11 @@ struct CCountedPointer_Action {
     void*    Info;
     ~CCountedPointer_Action();                     // 0x00429160
 };
-class CList : public CComponent {
+class CChangingStateComponent : public CComponent {   // RTTI direct base of CList
+public:
+    ~CChangingStateComponent();                    // 0x0052CCF0
+};
+class CList : public CChangingStateComponent {
 public:
     vector<CComponent*>    ScrollingChildren;      // +0x164
     vector<CComponent*>    NonScrollingChildren;   // +0x170
@@ -179,7 +182,7 @@ static CTestDef* g_def;
 CDefPointer<CComponentDef> CComponent::GetDef() { Log(1); g_def->Ref.Count += 2; CDefPointer<CComponentDef> d; d.Object = g_def; return d; }   // +2: the stub's own local releases once
 CComponentRoot::~CComponentRoot() { }
 static int g_componentDtor = 0;
-CComponent::~CComponent() { Log(9); ++g_componentDtor; }
+CChangingStateComponent::~CChangingStateComponent() { Log(9); ++g_componentDtor; }
 list<CList*> g_ListRegistry;
 static int g_erased = 0;
 template <> _List_iterator<CList*> list<CList*>::erase(_List_iterator<CList*> position)

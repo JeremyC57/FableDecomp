@@ -1,0 +1,14 @@
+rebuild/src/compiled/00/41/CPersistContext_Transferlong_00410be0.cpp
+rebuild/src/compiled/00/4c/CPersistContext_TransferBinaryunsignedint64_004cc520.cpp
+rebuild/src/compiled/00/4c/CPersistContext_Transferunsignedint64_004cca80.cpp
+rebuild/src/compiled/00/67/CActionUseDef_Transfer_006773f0.cpp
+rebuild/src/compiled/00/67/CThingBaseDef_Transfer_00676be0.cpp
+rebuild/src/compiled/00/6b/CRegion_TransferGameState_006bc290.cpp
+rebuild/src/compiled/00/74/CCreatureGeneratorDef_Transfer_0074c5f0.cpp
+rebuild/src/compiled/00/77/CHighlightItemDef_Transfer_0077ce00.cpp
+rebuild/src/compiled/00/7b/CActivateQuestDef_Transfer_007b5740.cpp
+rebuild/src/compiled/00/7b/CFishingDef_Transfer_007b1f10.cpp
+rebuild/src/compiled/00/7b/COverheadDisplayDef_Transfer_007b7d20.cpp
+rebuild/src/compiled/00/7d/CShoveHaPennyRegionDef_Transfer_007d0070.cpp
+rebuild/src/compiled/00/7d/CTavernGameShoveHaPennyDef_Transfer_007d0a40.cpp
+rebuild/src/compiled/00/7e/CReadableDef_Transfer_007e81b0.cpp

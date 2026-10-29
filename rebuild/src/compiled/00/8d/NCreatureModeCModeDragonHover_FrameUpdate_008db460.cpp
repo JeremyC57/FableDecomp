@@ -78,10 +78,11 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* _vptr;
     void* PItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 namespace NCreatureMode {
 class CModeBase {
@@ -100,13 +101,13 @@ public:
 void CModeDragonHover::FrameUpdate()
 {
     CModeBase::FrameUpdate();
-    if (!PTarget.GetPItem() || (PTarget.GetPItem()->Killed & 1))
+    if (!((CThing*)PTarget.GetPItem()) || (((CThing*)PTarget.GetPItem())->Killed & 1))
         return;
     CThingCreatureBase* owner = Owner;
     if (owner->HasTC(0x43)) {
         CTCLook* look = owner->GetTC<CTCLook>(0x43);
         if (UseHeadTurning) {
-            look->LookAtPos(&PTarget.GetPItem()->GetPos(), 10);
+            look->LookAtPos(&((CThing*)PTarget.GetPItem())->GetPos(), 10);
         } else {
             C3DVector ahead = owner->PTCDriver->GetForward() * 50.0f;
             C3DVector position = Owner->GetPos() + ahead;
@@ -116,7 +117,7 @@ void CModeDragonHover::FrameUpdate()
     if (Owner->IsPerformingAnyAction())
         return;
     CThing* me = Owner;
-    CThing* target = PTarget.GetPItem();
+    CThing* target = ((CThing*)PTarget.GetPItem());
     C3DVector delta = target->GetPos() - me->GetPos();
     if (delta.GetLength2D() < 14.0f) {
         C3DVector back = Owner->PTCDriver->GetForward() * 0.04f;

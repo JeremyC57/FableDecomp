@@ -49,10 +49,11 @@ class CTCVillageMember { public:                       // interface 0x23
     CVillage* GetPVillage() const;              // 0x007EE540
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CThing* item);                // 0x00A01B90
@@ -60,7 +61,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01244344
     virtual void v00();
     __forceinline CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 namespace N_0065e133 { namespace N_007b82c0 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     CIntelligentPointerConstThing(CThing* item);    // 0x0065E133
@@ -68,8 +69,8 @@ namespace N_0065e133 { namespace N_007b82c0 { struct CIntelligentPointerConstThi
 }; } using N_007b82c0::CIntelligentPointerConstThing; } using N_0065e133::CIntelligentPointerConstThing;
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -107,8 +108,8 @@ bool CAIStateGroupTavernServerMethods::IsRunnable()
     CTCVillageMember* member;
     if (GetCreature()->GetInterface(&member, 0x23)) {
         CVillage* village = member->GetPVillage();
-        if (!Pub().GetPItem())
-            Pub() = CIntelligentPointerThing(((CThingAICreature*)GetCreature())->PWorkplace.GetPItem());
+        if (!((CThing*)Pub().GetPItem()))
+            Pub() = CIntelligentPointerThing(((CThing*)((CThingAICreature*)GetCreature())->PWorkplace.GetPItem()));
         if (IS_THING_ALIVE(Pub()) && village
             && (IS_THING_ALIVE_Pointer_0078b2a0(Bar()) || GetBar())
             && (ServingActionPointIndex != -1 || GetServingPoint())) {

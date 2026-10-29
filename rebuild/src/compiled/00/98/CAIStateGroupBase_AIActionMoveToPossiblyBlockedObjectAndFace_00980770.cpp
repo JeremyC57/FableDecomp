@@ -52,11 +52,12 @@ class CThingPhysical : public CThing { public:
 class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingBuilding;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
@@ -101,9 +102,9 @@ class CAIStateGroupBase { public:
 long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligentPointerThing thing, long& index, float proximity,
     float seconds, const CAIFilterBase& filter, const CThing* route, const CThing* avoid, float speed)
 {
-    if (thing.GetPItem() == 0 || (thing.GetPItem()->m_flags91 & 1) || !filter())
+    if (((CThing*)thing.GetPItem()) == 0 || (((CThing*)thing.GetPItem())->m_flags91 & 1) || !filter())
         return 3;
-    CThing* target = thing.GetPItem();
+    CThing* target = ((CThing*)thing.GetPItem());
     bool hasPoint = target->TestTC(0x2d);
     if (!hasPoint)
         return 3;
@@ -116,9 +117,9 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
             return result;
     }
     for (;;) {
-        if (thing.GetPItem() == 0 || (thing.GetPItem()->m_flags91 & 1) || !filter())
+        if (((CThing*)thing.GetPItem()) == 0 || (((CThing*)thing.GetPItem())->m_flags91 & 1) || !filter())
             return 3;
-        CThing* item = thing.GetPItem();
+        CThing* item = ((CThing*)thing.GetPItem());
         bool reached;
         result = AIAction_MoveToPosProximity(2, item->GetPos(), proximity, reached, 3, true, false, true, 0, true, 0.0f);
         if (result == 2)
@@ -141,7 +142,7 @@ long CAIStateGroupBase::AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligent
         if (!IS_THING_ALIVE(thing) || !filter())
             return 3;
     }
-    CThing* carried = thing.GetPItem();
+    CThing* carried = ((CThing*)thing.GetPItem());
     bool isCarryable = carried->TestTC(0x47);
     if (!isCarryable || ((CTCCarryable*)carried->GetTC(0x47))->PCarryingTC != 0) {
         point->FreeActionPoint(index);

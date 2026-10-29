@@ -11,7 +11,8 @@
 // Shape: the literal false default is a one-byte temporary that VC homes in the dead argument slot of
 // the already-tested flag (`mov byte ptr [esp+14h],0`, `lea eax,[esp+8]`).
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 class CThing;

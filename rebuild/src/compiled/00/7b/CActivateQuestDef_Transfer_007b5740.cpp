@@ -31,12 +31,12 @@ class CDefString { public:                                     // a name stored 
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<bool> {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, bool* value);   // 0x00403EB0
+    void TransferBinaryIn(CMemoryDataInputStream& stream, bool& value);   // 0x00403EB0
     static void TransferBinaryOut(CDataOutputStream* stream, const bool& value) { stream->WriteEBOOL(value); }
 };
 template<> struct CPersistTraits<CDefString> {
     CPersistTraits() {}
-    void TransferBinaryIn(CMemoryDataInputStream* stream, CDefString* value) { value->TransferBinaryIn(stream); }
+    void TransferBinaryIn(CMemoryDataInputStream& stream, CDefString& value) { value.TransferBinaryIn(&stream); }
     static void TransferBinaryOut(CDataOutputStream* stream, const CDefString& value) { stream->WriteSLONG(value.TablePos); }
 };
 
@@ -52,7 +52,7 @@ class CPersistContext { public:
         CheckCRC(name);
         switch (m_mode) {
         case 2:
-            CPersistTraits<T>().TransferBinaryIn(m_pLoadStream, &value);
+            CPersistTraits<T>().TransferBinaryIn(*m_pLoadStream, value);
             break;
         case 3:
             CPersistTraits<T>::TransferBinaryOut(m_pSaveStream, value);

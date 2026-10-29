@@ -67,12 +67,13 @@ class CThing { public:
         return (it == map->last || type < it->type ? map->last : it)->component;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 namespace N_0056c860 { struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>
     virtual void v00();
@@ -85,8 +86,8 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntellige
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointerConstThing* pointer);   // 0x006961F0
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -194,13 +195,13 @@ void CAIStateGroup_CreatureTakeCover::Update()
     CThing* me = GetCreature();
     if (me->HasTC(0x34)) {
         CTCPerceiveThing* perceive = (CTCPerceiveThing*)me->GetTC(0x34);
-        CThing* target = PTargetThing.GetPItem();
+        CThing* target = ((CThing*)PTargetThing.GetPItem());
         if (perceive->GetPerceivedThing() == target)
             perceive->SetAsDirectlyAwareOfPerceivedThing();
     }
     CThing* cover = 0;
-    if (IS_THING_ALIVE(PCoverThing.GetPItem()))
-        cover = PCoverThing.GetPItem();
+    if (IS_THING_ALIVE(((CThing*)PCoverThing.GetPItem())))
+        cover = ((CThing*)PCoverThing.GetPItem());
     C3DVector coverPos;
     if (!GetHiddenCoverPosAndSetUpCoverThing(coverPos)) {
         if (FailedCount <= 0)
@@ -209,17 +210,17 @@ void CAIStateGroup_CreatureTakeCover::Update()
         return;
     }
     bool far = FlatDistanceTo(coverPos) > g_CoverReachedDistance;
-    bool lowCover = IsLowCover(PCoverThing.GetPItem());
+    bool lowCover = IsLowCover(((CThing*)PCoverThing.GetPItem()));
     if (far) {
         if (IS_THING_ALIVE(cover)) {
             if (!IsStillRunnable()) {
                 Terminate();
                 return;
             }
-            AIAction_PerformActionAndWait(&CCreatureAction_ProjectileCrouch(GetCreature(), PTargetThing.GetPItem(), coverPos), false);
+            AIAction_PerformActionAndWait(&CCreatureAction_ProjectileCrouch(GetCreature(), ((CThing*)PTargetThing.GetPItem()), coverPos), false);
         }
         if (!MoveIntoCover(coverPos)) {
-            RemoveThingFromCoverList(PCoverThing.GetPItem());
+            RemoveThingFromCoverList(((CThing*)PCoverThing.GetPItem()));
             ClearCoverThing();
             goto refresh;
         }
@@ -241,14 +242,14 @@ void CAIStateGroup_CreatureTakeCover::Update()
                 Terminate();
                 return;
             }
-            GetHiddenCoverPos(coverPos, PCoverThing.GetPItem());
+            GetHiddenCoverPos(coverPos, ((CThing*)PCoverThing.GetPItem()));
             if (FlatDistanceTo(coverPos) > g_CoverReachedDistance)
                 drifted = true;
         }
         DuckBehindCover(true);
     } else {
         unsigned long attacks = Random() % 3 + 1;
-        if (!IS_THING_ALIVE(&PTargetThing) || !IS_THING_ALIVE(PCoverThing.GetPItem())) {
+        if (!IS_THING_ALIVE(&PTargetThing) || !IS_THING_ALIVE(((CThing*)PCoverThing.GetPItem()))) {
             Terminate();
             return;
         }
@@ -257,9 +258,9 @@ void CAIStateGroup_CreatureTakeCover::Update()
                 Terminate();
                 return;
             }
-            GetHiddenCoverPos(coverPos, PCoverThing.GetPItem());
+            GetHiddenCoverPos(coverPos, ((CThing*)PCoverThing.GetPItem()));
             bool canFire = CanSeeTarget()
-                || MoveFromCoverToFiringPosition(coverPos, PCoverThing.GetPItem());
+                || MoveFromCoverToFiringPosition(coverPos, ((CThing*)PCoverThing.GetPItem()));
             if (canFire) {
                 if (!IsStillRunnable()) {
                     Terminate();
@@ -273,7 +274,7 @@ void CAIStateGroup_CreatureTakeCover::Update()
                     Terminate();
                     return;
                 }
-                GetHiddenCoverPos(coverPos, PCoverThing.GetPItem());
+                GetHiddenCoverPos(coverPos, ((CThing*)PCoverThing.GetPItem()));
                 bool inCover = MoveIntoCover(coverPos);
                 if (!IsStillRunnable()) {
                     Terminate();
@@ -290,7 +291,7 @@ void CAIStateGroup_CreatureTakeCover::Update()
             }
         }
     }
-    RemoveThingFromCoverList(PCoverThing.GetPItem());
+    RemoveThingFromCoverList(((CThing*)PCoverThing.GetPItem()));
 refresh:
     if (FailedCount > 0 && CoverListSize() == 0)
         RefreshCoverList();

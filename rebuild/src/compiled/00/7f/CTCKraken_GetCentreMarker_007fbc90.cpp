@@ -86,7 +86,9 @@ public:
 class CTCBase { public:
     void*   __vftable;                                  // +0x00
     CThing* ParentThing;                                // +0x04
-    CPlayerManager*     GetPlayerManager();             // 0x00686D40
+protected:
+    CPlayerManager&     GetPlayerManager();             // 0x00686D40 (Ego_r.pdb: protected, CPlayerManager&)
+public:
     CWorld*             GetWorld_00686d60();                     // 0x00686D60
     CThingSearchTools*  GetThingSearchTools() const;    // 0x00686D90
     CDefinitionManager* GetDefinitionManager() const;   // 0x006869D0
@@ -119,5 +121,5 @@ void CTCKraken::GetCentreMarker()
         }
         PCentreMarker = CIntelligentPointer<CThing>(found);
     }
-    PTarget = CIntelligentPointer<CThing>(GetPlayerManager()->GetMainPlayer().GetPControlledCreature());
+    PTarget = CIntelligentPointer<CThing>(GetPlayerManager().GetMainPlayer().GetPControlledCreature());
 }

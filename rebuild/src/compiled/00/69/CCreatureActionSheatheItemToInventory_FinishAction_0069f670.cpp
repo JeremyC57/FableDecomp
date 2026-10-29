@@ -41,10 +41,11 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
 };
 class CTCCreatureModeManager { public:             // interface type 0x31 component
     void UpdateFrontMode();                 // 0x0073A840
@@ -82,10 +83,10 @@ void CCreatureAction_SheatheItemToInventory::FinishAction()
         PerformAction();
     CCreatureActionBase::FinishAction();
     if (m_pNextAction) {
-        if (!PCreature.GetPItem()->SetCurrentAction(m_pNextAction))
+        if (!((CThing*)PCreature.GetPItem())->SetCurrentAction(m_pNextAction))
             m_pNextAction->Cancel();
     }
     CTCCreatureModeManager* pModes;
-    if (PCreature.GetPItem()->GetInterface(&pModes, 0x31))
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&pModes, 0x31))
         pModes->UpdateFrontMode();
 }

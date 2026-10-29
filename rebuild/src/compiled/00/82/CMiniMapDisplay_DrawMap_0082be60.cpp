@@ -57,7 +57,7 @@ struct CHero : public CThing {
 };
 class CThingPlayerCreature : public CHero { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PPlayerManager;                // +0x1C
@@ -92,7 +92,7 @@ class CMiniMapDisplay { public:
 
 void CMiniMapDisplay::DrawMap(CEnginePrimitivePrepareInfo& info, const C2DBoxF& box, unsigned char alpha, bool front)
 {
-    CHero* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CHero* hero = g_pMainGameComponent->PPlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || (hero->Flags91 & 1) || MiniMapGraphic <= 0)
         return;
     long layer = 0x44;

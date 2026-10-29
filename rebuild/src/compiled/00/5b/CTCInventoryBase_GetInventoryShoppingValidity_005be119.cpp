@@ -109,7 +109,7 @@ struct CTCFacing {                                          // interface 2
     float Y;                                                // +0x10
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };             // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };        // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };        // 0x00449970
 
 class CTCBase
 {
@@ -137,7 +137,7 @@ bool CTCInventoryBase::GetInventoryShoppingValidity()
             if (IS_THING_ALIVE(creature)) {
                 if (creature->IsFreeToFinishAction())
                     creature->FinishCurrentAction();
-                CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+                CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
                 if (IS_THING_ALIVE(hero)) {
                     CTCFacing* facing;
                     creature->GetInterface(&facing, 2);

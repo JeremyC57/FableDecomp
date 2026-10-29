@@ -18,12 +18,13 @@ class CSoundPair { public:
     long m_second;
     CSoundPair() : m_first(0), m_second(0) { }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
     CBaseIntelligentPointer();              // 0x00A01B10
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
     void SetPItem(CThing* item);            // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -48,6 +49,6 @@ CCreatureAction_SummonerLightningOrbOutOf::CCreatureAction_SummonerLightningOrbO
 {
     if (orb != 0 && !(orb->m_flags91 & 1)) {
         CIntelligentPointer target(orb);
-        PTarget.SetPItem(target.GetPItem());
+        PTarget.SetPItem(((CThing*)target.GetPItem()));
     }
 }

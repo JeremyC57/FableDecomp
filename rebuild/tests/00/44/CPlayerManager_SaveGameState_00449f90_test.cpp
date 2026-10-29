@@ -58,7 +58,7 @@ class CWorldMap { public:
     virtual void v15();
     virtual long GetMapNumberAt(const C3DVector& position) const;   // slot 16 (+0x40)
     long GetRegionNumberMapIsIn(long mapNumber) const;  // 0x004FC190
-    CRegion& GetRegion(long region);                    // 0x004FC180
+    const CRegion& GetRegion(long region) const;        // 0x004FC180
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -127,7 +127,7 @@ static CRegion g_regionObj;
 class CMap : public CWorldMap { public: long GetMapNumberAt(const C3DVector& p) const { g_seenPos = &p; return 7; } };
 long CWorldMap::GetMapNumberAt(const C3DVector&) const { return -1; }
 long CWorldMap::GetRegionNumberMapIsIn(long m) const { g_seenMap = m; return 4; }
-CRegion& CWorldMap::GetRegion(long r) { g_seenRegion = r; return g_regionObj; }
+const CRegion& CWorldMap::GetRegion(long r) const { g_seenRegion = r; return g_regionObj; }
 static CMap g_map;
 struct CW : CWorld { CWorldMap* PeekWorldMap() { return &g_map; } };
 CWorldMap* CWorld::PeekWorldMap() { return 0; }

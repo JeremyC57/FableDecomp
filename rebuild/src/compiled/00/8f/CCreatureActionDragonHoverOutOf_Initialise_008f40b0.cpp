@@ -45,10 +45,11 @@ class CThing { public:
  CTCSolidToThing* AddTC(const CCharString&,bool,CTCParamsBase*); //004C9D60
 };
 class CThingPlayerCreature : public CThing { };
+class CBaseObject;
 struct CBaseIntelligentPointer {
  virtual ~CBaseIntelligentPointer(); //00A01C10
  void* PData;
- CThing* GetPItem() const; //00A01B50
+ CBaseObject* GetPItem() const; //00A01B50
 };
 class CCombatActionBase { public:
  void* __vftable;void* IntelligentPointer;
@@ -62,8 +63,8 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
 {
  {CCharString animation("HOVER_OUT_OF",-1);SetCombatAnimation(animation);}
  CCombatActionBase::Initialise();
- SetThingIsAbleToBeLifted(PCreature.GetPItem(),false);
- CThing* thing=PCreature.GetPItem();
+ SetThingIsAbleToBeLifted(((CThing*)PCreature.GetPItem()),false);
+ CThing* thing=((CThing*)PCreature.GetPItem());
  CTCTargeted* targeted;
  if(thing->UsingComponents[0]&0x200){
   CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(9);
@@ -72,7 +73,7 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
   targeted=static_cast<CTCTargeted*>(((void*)p->second));
  }
  targeted->Targetable=false; // native requires Targeted component on dragon
- thing=PCreature.GetPItem();
+ thing=((CThing*)PCreature.GetPItem());
  CTCSolidToThing* solid;
  if(thing->UsingComponents[2]&0x2000){
   CInterfaceMap* map=&thing->Components;ETCInterfaceType type = (ETCInterfaceType)(0x4d);
@@ -81,7 +82,7 @@ void CCreatureAction_DragonHoverOutOf::Initialise()
   solid=static_cast<CTCSolidToThing*>(((void*)p->second));
  } else {
   CCharString name("CTCSolidToThing",-1);
-  solid=PCreature.GetPItem()->AddTC(name,false,0);
+  solid=((CThing*)PCreature.GetPItem())->AddTC(name,false,0);
  }
  if(solid)solid->AddThingNotSolidTo(g_Game->PPlayerManager->GetMainPlayer().PeekPControlledCreature());
 }

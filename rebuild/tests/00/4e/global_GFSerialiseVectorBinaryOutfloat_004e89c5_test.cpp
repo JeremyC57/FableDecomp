@@ -8,18 +8,18 @@ struct FloatVecRange {
     int* last;
 };
 
-/* Spy for CDataOutputStream::WriteLong (0x00993EB0): the first call carries the count, the rest the elements. */
-struct CDataOutputStream_Methods {
+/* Spy for CDataOutputStream::WriteSLONG(0x00993EB0): the first call carries the count, the rest the elements. */
+class CDataOutputStream { public:
     int  seenCount;
     int  elemSum;
     int  elemCnt;
     int  calls;
-    void WriteLong(long value);
+    void WriteSLONG(long value);
 };
 
-void CDataOutputStream_Methods::WriteLong(long value) { if (calls++ == 0) seenCount = value; else { elemSum += value; ++elemCnt; } }
+void CDataOutputStream::WriteSLONG(long value) { if (calls++ == 0) seenCount = value; else { elemSum += value; ++elemCnt; } }
 
-void __fastcall GFSerialiseVectorBinaryOut_float(CDataOutputStream_Methods* thisptr, void* vec);
+void __fastcall GFSerialiseVectorBinaryOut_float(CDataOutputStream* thisptr, void* vec);
 
 int main(void)
 {
@@ -32,7 +32,7 @@ int main(void)
     r.first = &data[0];
     r.last  = &data[3];
 
-    CDataOutputStream_Methods s;
+    CDataOutputStream s;
     s.calls = 0;
     s.seenCount = -1;
     s.elemSum = 0;

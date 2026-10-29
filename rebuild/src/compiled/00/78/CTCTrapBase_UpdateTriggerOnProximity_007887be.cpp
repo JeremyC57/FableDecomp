@@ -25,10 +25,11 @@ class C3DVector { public:
 class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {                // CIntelligentPointer<CThing>: vptr + item (8 bytes)
     void* __vftable;
     void* PData;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CTriggerThingVector {                    // STLport vector<CIntelligentPointer<CThing> > (12 bytes)
     CBaseIntelligentPointer* _M_start;
@@ -69,7 +70,7 @@ void CTCTrapBase::UpdateTriggerOnProximity()
     C3DVector position = ParentThing->GetPos();
     bool inRange = false;
     for (CBaseIntelligentPointer* it = TriggerThings.begin(); it != TriggerThings.end(); ++it) {
-        const C3DVector& thing = it->GetPItem()->GetPos();
+        const C3DVector& thing = ((CThing*)it->GetPItem())->GetPos();
         float dx = thing.X - position.X;
         float dy = thing.Y - position.Y;
         float dz = thing.Z - position.Z;

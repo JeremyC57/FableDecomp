@@ -24,7 +24,7 @@ struct CBaseIntelligentPointer {                            // 8 bytes: vtable +
     CBaseObject* m_pItem;                                   // +4
     CBaseIntelligentPointer();                              // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
-    CThing* GetPItem() const;                               // 0x00A01B50
+    CBaseObject* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CBaseObject* item);                       // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
@@ -32,7 +32,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        T* item = other.GetPItem();
+        T* item = ((CThing*)other.GetPItem());
         SetPItem((CBaseObject*)item);
         return *this;
     }
@@ -40,8 +40,8 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->Flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->Flags91 & 1))
             return true;
     }
     return false;
@@ -62,7 +62,7 @@ class CTCFishingSpot : public CTCBase { public:                           // vta
     static __forceinline void RemoveParticle(CIntelligentPointer<CThing>& particle)
     {
         if (IS_THING_ALIVE(particle)) {
-            particle.GetPItem()->Kill(true);
+            ((CThing*)particle.GetPItem())->Kill(true);
             particle = CIntelligentPointer<CThing>(0);
         }
     }

@@ -79,7 +79,7 @@ class CRegion { public:
     CDefPointer<CRegionDef> m_pDef;                 // +0x24
 };
 class CWorldMap { public:
-    long GetCurrentRegionNumber();                  // 0x004FB150
+    long GetLoadedRegion() const;                  // 0x004FB150
 public:
     const CRegion& GetRegion(long) const;   // 0x004FC180
 };
@@ -111,7 +111,7 @@ __declspec(noinline) void CGameCameraManager::SetCameraManagerSetDef(const CDefP
 void CGameCameraManager::SetUpMainCameraManagerSetDef()
 {
     CWorld* world = World;
-    CDefPointer<CRegionDef> regionDef(world->PeekWorldMap()->GetRegion(world->PeekWorldMap()->GetCurrentRegionNumber()).m_pDef.Object);
+    CDefPointer<CRegionDef> regionDef(world->PeekWorldMap()->GetRegion(world->PeekWorldMap()->GetLoadedRegion()).m_pDef.Object);
     if (regionDef.Object) {
         CDefPointer<CCameraManagerSetDef> setDef;
         if (regionDef.Object->CameraManagerSetIndex > 0) {

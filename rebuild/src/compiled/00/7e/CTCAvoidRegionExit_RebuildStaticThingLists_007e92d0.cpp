@@ -20,7 +20,7 @@ struct CThingList {                         // std::list<CIntelligentPointer<CTh
 };
 
 class CWorldMap { public:
-    long GetCurrentMap() const;             // 0x004FB150 (`mov eax,[ecx+9Ch]`)
+    long GetLoadedRegion() const;             // 0x004FB150 (`mov eax,[ecx+9Ch]`)
 };
 
 class CThingFilter_HasTC { public:
@@ -66,7 +66,7 @@ void CTCAvoidRegionExit::RebuildStaticThingLists()
     g_AvoidRegionThings.clear();
     g_ScriptedHookThings.clear();
     GetThingSearchTools()->GetAllThings(
-        CFilter_Bind2(CThingFilter_HasTC(99), CThingFilter_InMap(PeekWorldMap(), PeekWorldMap().GetCurrentMap())),
+        CFilter_Bind2(CThingFilter_HasTC(99), CThingFilter_InMap(PeekWorldMap(), PeekWorldMap().GetLoadedRegion())),
         g_AvoidRegionThings);
     GetThingSearchTools()->GetAllThings(CThingFilter_HasTCOfLeafType(100), g_ScriptedHookThings);
 }

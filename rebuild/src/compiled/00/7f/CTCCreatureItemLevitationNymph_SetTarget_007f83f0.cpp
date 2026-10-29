@@ -24,12 +24,13 @@ class CThing { public:
     unsigned char Flags91;                      // +0x91 bit 0 Dead
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
@@ -38,14 +39,14 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
     CIntelligentPointerConstThing(CThing* item) { SetPItem(item); }
     CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other)
     {
-        SetPItem(other.GetPItem());
+        SetPItem(((CThing*)other.GetPItem()));
         return *this;
     }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->Flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->Flags91 & 1))
             return true;
     }
     return false;

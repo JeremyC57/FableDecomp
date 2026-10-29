@@ -14,13 +14,14 @@
 // header flattens the base), PEnemy +0x14.
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(const CThing* item);          // 0x00A01B90
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
@@ -92,7 +93,7 @@ class CBrainOutput { public:
         {
             CIntelligentPointer pointer;
             pointer.SetPItem(thing);
-            LookAtThing.SetPItem(pointer.GetPItem());
+            LookAtThing.SetPItem(((CThing*)pointer.GetPItem()));
         }
         LookFlags = lookFlags;
     }
@@ -166,7 +167,7 @@ void CAIStateGroup_MeleeCombatNearby2::AttackEnemy()
             return;
         CBrainOutput output;
         output.Types |= 0x20;
-        output.SetAsLookAtThing(PEnemy.GetPItem(), 0x11);
+        output.SetAsLookAtThing(((CThing*)PEnemy.GetPItem()), 0x11);
         PBrain->SetBrainOutput(output);
         PBrain->Yield();
         if (IsStopping()) {

@@ -46,28 +46,29 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {        // CIntelligentPointer<CThing> (vtable 0x01238C6C)
     virtual void v00();
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing> (vtable 0x01237F1C)
     virtual void v00();
     CIntelligentPointerConstThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerConstThing& operator=(const CIntelligentPointerConstThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -127,8 +128,8 @@ bool CAIStateGroup_RecoverStealableItem::IsRunnable()
             PTargetPoint = CIntelligentPointerConstThing(FindPTargetPoint());
             if (IS_THING_ALIVE(PTargetPoint)) {
                 CTCTargetPoint* target;
-                PTargetPoint.GetPItem()->GetInterface(&target, 0xb2);
-                CThing* point = PTargetPoint.GetPItem();
+                ((CThing*)PTargetPoint.GetPItem())->GetInterface(&target, 0xb2);
+                CThing* point = ((CThing*)PTargetPoint.GetPItem());
                 PStealableItem = CIntelligentPointerThing(FindPStealableItemOutsideTargetPointRange(point->GetPos(), target->Range));
             }
             return IS_THING_ALIVE(PStealableItem) && IS_THING_ALIVE(PTargetPoint);

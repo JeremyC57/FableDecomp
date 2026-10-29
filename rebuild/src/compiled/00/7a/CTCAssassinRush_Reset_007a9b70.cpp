@@ -30,7 +30,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -38,7 +38,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem((CBaseObject*)item);
         return *this;
     }
@@ -46,8 +46,8 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
 #pragma pack(pop)
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_stateFlags & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_stateFlags & 1))
             return true;
     }
     return false;
@@ -110,7 +110,7 @@ void CTCAssassinRush::Reset()
     RushDelayFrameCount = (long)(g_framesPerSecond * PDef->RushDelay);
     DashDistance = PDef->DashDistance[SpellLevel];
     if (IS_THING_ALIVE(AssassinTrail))
-        AssassinTrail.GetPItem()->Kill(true);
+        ((CThing*)AssassinTrail.GetPItem())->Kill(true);
     if (IS_THING_ALIVE(AssassinDisplacementTrail))
-        AssassinDisplacementTrail.GetPItem()->Kill(true);
+        ((CThing*)AssassinDisplacementTrail.GetPItem())->Kill(true);
 }

@@ -4,18 +4,8 @@
 //   CDataOutputStream::WriteUInt64 @ 0x00993EC0 (manifest "WriteCBYTE"; writes 8 bytes from its argument slot).
 // Layout: CThing::UniqueID (ulong64) at +0x18 (PDB); CBaseIntelligentPointer is {vptr/pad, PData} (8 bytes), only
 //   its GetPItem is used. The 64-bit zero lives in esi:edi across the branch. Speed-optimised (default) TU.
-#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
-#undef CDataOutputStream
 
-class CDataOutputStream : public CDataOutputStreamLayout
-{
-public:
-    void WriteUHUGE(unsigned __int64);   // 0x00993EC0
-};
-
-struct CDataOutputStream_Methods : CDataOutputStream {
-};
 
 class CThing { public:
     unsigned char    _pad_0x00[0x18];   // CBaseObject + CThing bookkeeping
@@ -48,5 +38,5 @@ void CPersistTraits<CIntelligentPointer<CThing> >::TransferBinaryOut(CDataOutput
     unsigned __int64 uid = 0;
     if (value->GetPItem() != 0)
         uid = value->GetPItem()->UniqueID;
-    ((CDataOutputStream_Methods*)stream)->WriteUHUGE(uid);
+    ((CDataOutputStream*)stream)->WriteUHUGE(uid);
 }

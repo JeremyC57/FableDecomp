@@ -31,9 +31,8 @@ CCharString __fastcall operator+(const CCharString& left, const CCharString& rig
 CCharString __fastcall GFIntToCharString(long value);                                  // 0x0099F830
 
 class CPersistContext { public:
-    void Transfer(const char* name, bool& value, const bool& defaultValue);             // 0x004045C0
-    void Transfer(const char* name, long& value, const long& defaultValue);             // 0x00410BE0
-    void Transfer(const char* name, C3DVector& value, const C3DVector& defaultValue);   // 0x004859AD
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0; long 0x00410BE0; C3DVector 0x004859AD
 };
 
 template <class T> class CArray { public:              // STLport vector<T> (12 bytes in retail)

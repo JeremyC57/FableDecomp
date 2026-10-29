@@ -35,12 +35,13 @@ class CThing { public:
     const C3DVector& GetPos() const;    // 0x004C73D0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                              // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(void* item);                  // 0x00A01B90
 };
 
@@ -49,7 +50,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem(item);
         return *this;
     }
@@ -87,7 +88,7 @@ bool CAIStateGroup_HoverAttackArea::IsRunnable()
     if (enemy) {
         PTargetThing = enemy;
         if (IsEnemyValid()) {
-            const C3DVector* pos = &PTargetThing.GetPItem()->GetPos();
+            const C3DVector* pos = &((CThing*)PTargetThing.GetPItem())->GetPos();
             C2DVector delta(pos->X - StartPos.X, pos->Y - StartPos.Y);
             if (!(delta.Length() > 20.0f))
                 return true;

@@ -59,7 +59,7 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+    CPlayer& GetMainPlayer();                      // 0x00449970
 };
 class CTCHeroExperience { public:                         // the thing's interface 0x68
     bool IsReadyToLevelUp();                       // 0x006D7CB0
@@ -193,7 +193,7 @@ class CDrawGuildSeal { public:
 void CDrawGuildSeal::Update()
 {
     if (World->FlagD6 && World->FlagD5) {
-        const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->PeekPControlledCreature();
+        const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
         if (IS_THING_ALIVE(hero) && !hero->IsChild() && hero->HasInterface(0x68)) {
             CTCHeroExperience* experience = hero->GetInterfaceUncheckedConst<CTCHeroExperience>(0x68);
             if (experience) {

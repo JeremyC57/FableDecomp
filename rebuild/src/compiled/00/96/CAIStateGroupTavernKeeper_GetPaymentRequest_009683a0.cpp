@@ -23,11 +23,12 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
@@ -35,7 +36,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingAICreature>, vtable 0x0123E7E0
     virtual void v00();
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 
 class CAIBrain { public:
@@ -65,9 +66,9 @@ class CMessageEvent { public:
     CThing* GetPOriginatorCreature()
     {
         CThing* result = 0;
-        if (POriginator.GetPItem()) {
-            if (!(~POriginator.GetPItem()->m_flags6c & 0x1f))
-                result = POriginator.GetPItem();
+        if (((CThing*)POriginator.GetPItem())) {
+            if (!(~((CThing*)POriginator.GetPItem())->m_flags6c & 0x1f))
+                result = ((CThing*)POriginator.GetPItem());
         }
         return result;
     }

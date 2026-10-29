@@ -77,8 +77,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                      // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, long& value, const long& defaultValue);                       // 0x00410BE0
-    void Transfer(const char* name, unsigned long& value, const unsigned long& defaultValue);     // 0x004106F0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: long 0x00410BE0; unsigned long 0x004106F0
 };
 class CDefinitionManager { public:
     CDefPointer<CCreatureDef> GetPDefFromGlobalIndex(long index);   // 0x009ADA10 (hidden result pointer)

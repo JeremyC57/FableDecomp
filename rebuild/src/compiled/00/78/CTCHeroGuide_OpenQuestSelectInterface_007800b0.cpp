@@ -60,8 +60,9 @@ __declspec(noinline) CInterfaceMap::SEntry* CInterfaceMap::LowerBound(const long
 }
 #pragma auto_inline(on)
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 class CThing { public:
     unsigned char _pad00[0x20];
@@ -177,9 +178,9 @@ void CTCHeroGuide::OpenQuestSelectInterface()
     const CThing* parent = ParentThing;
     const CThing* centre;
     if (parent->HasTC(0x33))
-        centre = parent->FindTC<CTCCentreOwner>(0x33)->HeroCentre.GetPItem();
+        centre = ((CThing*)parent->FindTC<CTCCentreOwner>(0x33)->HeroCentre.GetPItem());
     else
-        centre = parent->HeroCentre.GetPItem();
+        centre = ((CThing*)parent->HeroCentre.GetPItem());
     if (centre && GetWorld()->QuestCardsEnabled && centre->HasTC(0x6a)) {
         const CTCHeroCentre* heroCentre = centre->FindTC<CTCHeroCentre>(0x6a);
         CThingVector cards;

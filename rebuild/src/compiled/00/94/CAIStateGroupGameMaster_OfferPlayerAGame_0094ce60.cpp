@@ -51,12 +51,13 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 class CThingCreatureBase;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
@@ -69,8 +70,8 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer { // CIntelligent
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -96,7 +97,7 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };                     // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };            // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };            // 0x00449970
 class CTCTavernGame { public: long GetBanter(); };                     // 0x005EA3C0 (interface 0xcf)
 class CAIBrain { public:
     unsigned char _pad[0x18];
@@ -138,11 +139,11 @@ struct CAIStateGroup_GameMaster : CAIStateGroupBase {
 
 bool CAIStateGroup_GameMaster::OfferPlayerAGame()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero == 0 || !IS_THING_ALIVE(PTable))
         return false;
     CTCTavernGame* game;
-    PTable.GetPItem()->GetInterface(&game, 0xcf);
+    ((CThing*)PTable.GetPItem())->GetInterface(&game, 0xcf);
     long banter = game->GetBanter();
     {
         CCharString animation("OFFER_GAME");

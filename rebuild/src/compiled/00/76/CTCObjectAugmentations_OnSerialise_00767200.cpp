@@ -55,8 +55,10 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
-    void Transfer(const char* name, CCharStringVector& value);   // 0x0049B8D0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
+    template <class T> void Transfer(const char* name, T& value);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: CCharStringVector 0x0049B8D0
 };
 struct CDefBase {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();

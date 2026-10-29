@@ -50,10 +50,11 @@ class CTCStockItem { public:
     long Price;                                           // +0x10
     CTCShop* GetShopTC() const;                           // 0x007F4FC0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                      // +0x04
-    CThing* GetPItem() const;                             // 0x00A01B50
+    CBaseObject* GetPItem() const;                             // 0x00A01B50
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public: };
 class C3DVector { public: float X, Y, Z; };
@@ -78,7 +79,7 @@ class CTargetPointFilter_IsStealableStockItem {           // Ego_r.pdb, empty
 public:
     bool operator()(const CTargetPoint& point) const      // the landed 0x00809270 body
     {
-        const CThing* thing = point.PThing.GetPItem();
+        const CThing* thing = ((CThing*)point.PThing.GetPItem());
         if (thing->HasTC(TC_STOCK_ITEM)) {
             const CTCStockItem* item = (const CTCStockItem*)thing->GetTC(TC_STOCK_ITEM);
             if (item->GetShopTC() != 0 && item->Stealable)

@@ -7,20 +7,8 @@
 // Size-optimised TU: #pragma optimize("s", on) (the `push dword ptr [esi+N]` argument form).
 #pragma optimize("s", on)
 #include "engine/CHeroMarriageInfo.h"
-#define CDataOutputStream CDataOutputStreamLayout
 #include "engine/CDataOutputStream.h"
-#undef CDataOutputStream
 
-class CDataOutputStream : public CDataOutputStreamLayout
-{
-public:
-    void WriteUHUGE(unsigned __int64);   // 0x00993EC0
-};
-
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                    // 0x00993E30
-    void WriteLong(long value);                     // 0x00993EB0
-};
 
 template<class T> struct CPersistTraits;
 template<> struct CPersistTraits<CHeroMarriageInfo> {
@@ -29,9 +17,9 @@ template<> struct CPersistTraits<CHeroMarriageInfo> {
 
 void CPersistTraits<CHeroMarriageInfo>::TransferBinaryOut(CDataOutputStream* stream, const CHeroMarriageInfo* value)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)stream;
+    CDataOutputStream* out = (CDataOutputStream*)stream;
     out->WriteUHUGE(value->WifeUID);
     out->WriteUHUGE(value->MaritalHomeUID);
-    out->WriteLong(*(const long*)value->State);
+    out->WriteSLONG(*(const long*)value->State);
     out->WriteEBOOL(value->GayMarriage);
 }

@@ -45,13 +45,14 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
-    CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CBaseIntelligentPointer& operator=(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 class CCharString { public:
@@ -185,7 +186,7 @@ void CAIStateGroup_TavernKeeper::OnReplace()
         GetAICreature()->FinishCurrentAction();
     if (IsCarryingJug()) {
         CTCTavernGame* game;
-        PJug.GetPItem()->GetInterface(&game, 0x47);
+        ((CThing*)PJug.GetPItem())->GetInterface(&game, 0x47);
         long id = game->GetItemID();
         CTCCarrying* carrying;
         GetCreature()->GetInterface(&carrying, 0x46);
@@ -201,9 +202,9 @@ void CAIStateGroup_TavernKeeper::OnReplace()
         GetCreature()->GetInterface(&modes, 0x31);
         modes->RemoveMode(0x2b);
     }
-    if (PBar.GetPItem() && !(PBar.GetPItem()->m_flags91 & 1)) {
+    if (((CThing*)PBar.GetPItem()) && !(((CThing*)PBar.GetPItem())->m_flags91 & 1)) {
         CTCBarPoint* bar;
-        PBar.GetPItem()->GetInterface(&bar, 0xb9);
+        ((CThing*)PBar.GetPItem())->GetInterface(&bar, 0xb9);
         FreeBarPoint();
         bar->PUser = CIntelligentPointerCreature(0);
     }

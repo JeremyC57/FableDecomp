@@ -79,7 +79,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 
 class CTCVillage { public:
@@ -131,7 +131,7 @@ struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
 
 void CAIStateGroup_MeleeCombatNearbyBase::RequestMoney()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
     CTCFineDialogue* fine;
     if (hero != 0 && !(hero->m_flags91 & 1) && hero == PEnemy.GetPItem() && hero->GetInterface(&fine, 0xf3)) {
         if (fine->IsAllowed()) {

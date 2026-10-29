@@ -81,15 +81,16 @@ class CTCHitLocations { public:                                // interface 0x7F
 };
 CThing* __fastcall CreateExplosion(long defIndex, const C3DVector* position);   // 0x0080C460
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* PItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -130,7 +131,7 @@ void CTCLightningOrb::FrameUpdate()
     CTCHitLocations* hitLocations;
     C3DVector centre;
     float radius;
-    if (IS_THING_ALIVE(PTarget) && PTarget.GetPItem()->GetInterface(&hitLocations, 0x7f)) {
+    if (IS_THING_ALIVE(PTarget) && ((CThing*)PTarget.GetPItem())->GetInterface(&hitLocations, 0x7f)) {
         float range = PDef->ExplosionRange;
         hitLocations->GetBoundingSphere(&centre, &radius, true);
         if ((centre - ParentThing->GetPos()).GetLengthSquared() < range * range)

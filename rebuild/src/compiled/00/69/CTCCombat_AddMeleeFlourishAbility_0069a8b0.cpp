@@ -20,7 +20,7 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+    CPlayer& GetMainPlayer();                       // 0x00449970
 };
 
 struct CGlobalGame {                                // the object behind 0x013B86A0
@@ -105,7 +105,7 @@ __declspec(noinline) void CGameCameraManager::SetCameraManagerDef(const CDefPoin
 
 void CGameCameraManager::AddMeleeFlourishAbility()
 {
-    g_pGame_013b86a0->PlayerManager->GetMainPlayer()->RemoveMode(0x2f);
+    g_pGame_013b86a0->PlayerManager->GetMainPlayer().RemoveMode(0x2f);
     long index = PCameraManagerSet->MeleeCameraManager;
     CDefPointer<const CCameraManagerDef> def;
     World->DefinitionManager->GetDef(index, &def);

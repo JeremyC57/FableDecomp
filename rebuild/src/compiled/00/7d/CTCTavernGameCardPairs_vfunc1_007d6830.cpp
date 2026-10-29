@@ -7,7 +7,8 @@
 // after them sits 0x1C lower -- the engine header's layout does not match, hence the local model.
 // Shape: the `const float&` zero default is homed in the dead `arg` slot; `this` advanced in place.
 class CPersistContext { public:
-    void Transfer(const char* name, float& value, const float& defaultValue);  // 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620
 };
 
 struct CTCTavernGameCardBase {

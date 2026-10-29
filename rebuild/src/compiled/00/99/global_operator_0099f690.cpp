@@ -62,7 +62,7 @@ public:
             return new CCharStringData(text);
         return new CCharStringData(text, length);
     }
-    void UnassignString();                              // 0x0099E9B0
+    protected: void UnassignString(); public:                              // 0x0099E9B0
     const CCharString& operator+=(const CCharString& other);   // 0x0099F0A0
 };
 

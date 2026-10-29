@@ -90,12 +90,13 @@ struct CVillage {
 class CTCVillageMember { public:                       // interface 0x23
     CVillage* GetPVillage();                    // 0x007EE540
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 struct CIntelligentPointerPlayerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
@@ -104,8 +105,8 @@ struct CIntelligentPointerPlayerCreature : CBaseIntelligentPointer {   // CIntel
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -156,12 +157,12 @@ struct CAIStateGroup_MinionGuardBribed : CAIStateGroupBase {
 
 void CAIStateGroup_MinionGuardBribed::Update()
 {
-    CIntelligentPointerPlayerCreature hero(GetPPlayerManager()->GetMainPlayer().GetPCharacter().GetPItem());
+    CIntelligentPointerPlayerCreature hero(((CThing*)GetPPlayerManager()->GetMainPlayer().GetPCharacter().GetPItem()));
     unsigned long delay = GetPWorld()->Random(g_BribedWhistleFirstMax - g_BribedWhistleFirstMin, GetPWorldSeed());
     long nextWhistle = CWorld::GetFrame() + g_BribedWhistleFirstMin + delay;
     unsigned long sample = g_InvalidSoundHandle;
     while (IsStillValid() && IS_THING_ALIVE(hero)) {
-        C3DVector heroPos = hero.GetPItem()->GetPos();
+        C3DVector heroPos = ((CThing*)hero.GetPItem())->GetPos();
         const C3DVector& here = GetCreature()->GetPos();
         C3DVector lookPos = here * 2.0f - heroPos;
         if (AIAction_LookAtPos(1, lookPos, 0x11, 0.0027777f) != 2)

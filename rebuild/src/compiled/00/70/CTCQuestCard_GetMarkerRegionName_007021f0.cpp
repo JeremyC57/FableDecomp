@@ -19,7 +19,7 @@ class CCharString { public:
 };
 class CWorldMap { public:
     long GetRegionNumberFromName(const CCharString& name) const;   // 0x004FC210
-    long GetCurrentRegion() const;                 // 0x004FB150
+    long GetLoadedRegion() const;                 // 0x004FB150
     long GetNextRegionOnRouteTo(long from, long to) const;         // 0x004FB4D0
 };
 class CThing;
@@ -54,7 +54,7 @@ CCharString CTCQuestCard::GetMarkerRegionName() const
     if (name != "") {
         long region = PeekWorldMap().GetRegionNumberFromName(name);
         if (region > 0) {
-            if (PeekWorldMap().GetNextRegionOnRouteTo(PeekWorldMap().GetCurrentRegion(), region) != -1)
+            if (PeekWorldMap().GetNextRegionOnRouteTo(PeekWorldMap().GetLoadedRegion(), region) != -1)
                 name = "";
         }
     }

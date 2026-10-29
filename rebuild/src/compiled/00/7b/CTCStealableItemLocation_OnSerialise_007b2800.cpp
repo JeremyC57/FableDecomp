@@ -8,7 +8,8 @@
 // Shape: each default is a zero dword in a frame slot (the first in the `push ecx` word, the second in the dead
 // argument slot), stored with an integer immediate.
 class CPersistContext { public:
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620
 };
 
 class CTCStealableItemLocation { public:

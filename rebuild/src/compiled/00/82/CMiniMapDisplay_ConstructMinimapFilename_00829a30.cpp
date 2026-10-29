@@ -40,7 +40,7 @@ class CRegion { public:
     CCharString   Name;                            // +0x18
 };
 class CWorldMap { public:
-    long GetCurrentRegionIndex() const;            // 0x004FB150
+    long GetLoadedRegion() const;            // 0x004FB150
 public:
     const CRegion& GetRegion(long) const;   // 0x004FC180
 };
@@ -61,7 +61,7 @@ CWideString CMiniMapDisplay::ConstructMinimapFilename(const CWideString& path, C
     CWideString filename;
     CWideString fullPath = CAFile::ConvertPathToFullPath(path);
     CAFile::SplitPath(fullPath, 0, 0, &filename, 0);
-    CCharString regionName(map->GetRegion(map->GetCurrentRegionIndex()).Name);
+    CCharString regionName(map->GetRegion(map->GetLoadedRegion()).Name);
     filename += L"_";
     filename += regionName.ToWideString();
     CWideString number;

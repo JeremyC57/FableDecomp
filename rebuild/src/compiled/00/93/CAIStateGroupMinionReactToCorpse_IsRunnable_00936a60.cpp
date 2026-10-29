@@ -134,10 +134,11 @@ class CThing { public:
     }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CThing* item);                // 0x00A01B90
@@ -146,14 +147,14 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
     virtual void v00();
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 
 // IS_THING_ALIVE(ptr): the pointer is set and the thing's dead bit (+0x91 bit 0) is clear (inlined).
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -245,7 +246,7 @@ struct CTCCorpse {                              // interface 0x40
 struct CIntelligentPointerDead : CBaseIntelligentPointer {   // CIntelligentPointer<CThingDeadCreature> (vtable 0x0128B080)
     virtual void v00();
     CIntelligentPointerDead(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerDead& operator=(const CIntelligentPointerDead& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerDead& operator=(const CIntelligentPointerDead& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 
 struct CAIStateGroup_MinionReactToCorpse : CAIStateGroupBase {
@@ -261,11 +262,11 @@ bool CAIStateGroup_MinionReactToCorpse::IsRunnable()
             CThingCompare_Nearest(((CThingPhysical*)PBrain->PCreature)->PeekPos()), &corpse)) {
         PCorpse = CIntelligentPointerDead((CThing*)corpse);
         if (IS_THING_ALIVE(PCorpse)) {
-            CThing* dead = PCorpse.GetPItem();
+            CThing* dead = ((CThing*)PCorpse.GetPItem());
             CTCCorpse* state;
             if (dead->HasTC(0x40) && (dead->GetInterfaceV(&state, 0x40), !state->m_handled)) {
                 CThing* creature = PBrain->PCreature;
-                if (AreThingsAllies(creature, PCorpse.GetPItem())) {
+                if (AreThingsAllies(creature, ((CThing*)PCorpse.GetPItem()))) {
                     CThingCreatureLook* looker = (CThingCreatureLook*)PBrain->PCreature;
                     return looker->CanSeePosition(((CThingPos*)PCorpse.GetPItem())->GetPos(), true);
                 }

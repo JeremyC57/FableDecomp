@@ -73,7 +73,7 @@ class CPlayer { public:
     CThing* GetPlayerCharacter() const { return PCharacter.GetPItem(); }
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                               // 0x00449970
+    CPlayer& GetMainPlayer();                               // 0x00449970
 };
 class CSubtitleRenderer { public:
     void Update(bool paused);                               // 0x004930D7
@@ -181,7 +181,7 @@ void CPlayerGui::Update(bool paused)
         UpdateRenown();
         UpdateMorality();
         UpdateCrime();
-        CThing* hero = PlayerManager->GetMainPlayer()->GetPlayerCharacter();
+        CThing* hero = PlayerManager->GetMainPlayer().GetPlayerCharacter();
         if (hero && !(hero->m_statusFlags & 1))
             PDrawQuestInfo->Update();
         PDrawMeleeActionButtonEffects->Update();

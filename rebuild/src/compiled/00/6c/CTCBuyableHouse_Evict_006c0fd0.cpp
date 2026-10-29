@@ -32,7 +32,7 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 struct CBaseIntelligentPointer {
     void*        __vftable;
     CBaseObject* PData;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 class CThing { public:
     unsigned char m_pad00[0x20];
@@ -127,12 +127,12 @@ void CTCBuyableHouse::Evict()
             for (SCreatureNode* node = end->_M_next; node != end; node = node->_M_next) {
                 CThingAICreature* creature = (CThingAICreature*)node->_M_data.GetPItem();
                 if (creature) {
-                    if (creature->Home.GetPItem() == house) {
+                    if (((CThing*)creature->Home.GetPItem()) == house) {
                         creature->SetHome(0);
                         creature->SetAsGameStatePersisted(false);
                         creature->m_flags92 &= ~0x10;
                     }
-                    if (creature->Workplace.GetPItem() == house) {
+                    if (((CThing*)creature->Workplace.GetPItem()) == house) {
                         creature->SetWorkplace(0);
                         creature->SetAsGameStatePersisted(false);
                         creature->m_flags92 &= ~0x10;

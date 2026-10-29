@@ -13,9 +13,8 @@
 // bound to the const references, homed in the dead context-argument slot; the last member address is formed by
 // advancing `this` (`add esi,0E9h`). The bool parameter is unused.
 class CPersistContext { public:
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
-    void Transfer(const char* name, long& value, const long& defaultValue);     // 0x00410BE0
-    void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620; long 0x00410BE0; bool 0x004045C0
 };
 
 class CTCTavernGame { public:
@@ -32,6 +31,6 @@ void CTCTavernGame::OnSerialise(CPersistContext& context, bool flag)
 {
     float defaultTime = 0.0f;
     context.Transfer("TargetTime", TargetTime, defaultTime);
-    context.Transfer("TargetRound", TargetRound, 0);
+    context.Transfer<long>("TargetRound", TargetRound, 0);
     context.Transfer("HasPrizeBeenGiven", HasPrizeBeenGiven, false);
 }

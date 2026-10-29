@@ -121,7 +121,7 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;               // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+    CPlayer& GetMainPlayer();                      // 0x00449970
 };
 class CTCCombat { public:
     bool IsMeleeFlourishValid();                   // 0x00733EE0
@@ -148,7 +148,7 @@ struct CDrawMeleeActionButtonEffects {
 
 void CDrawMeleeActionButtonEffects::Update()
 {
-    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->PeekPControlledCreature();
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
     CDefPointer<CAbilityDef> ability;
     if (IS_THING_ALIVE(hero)) {
         CTCCombat* combat;

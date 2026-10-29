@@ -39,7 +39,7 @@ class CPlayer { public:
 };
 
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                        // 0x00449970
+    CPlayer& GetMainPlayer();                        // 0x00449970
 };
 
 namespace NInventory {
@@ -55,7 +55,7 @@ class CTCInventoryBase { public:
 void CTCInventoryBase::GetRightStickPosition(C2DVector& out) const
 {
     CInputEvent event;
-    if (g_pInputManager->IsJoystickEventInQueue(0x12, 0, &event, GetPlayerManager()->GetMainPlayer()->GetPlayerNumber()))
+    if (g_pInputManager->IsJoystickEventInQueue(0x12, 0, &event, GetPlayerManager()->GetMainPlayer().GetPlayerNumber()))
         out = event.GetAnalogueVector();
     else {
         out.x = 0.0f;

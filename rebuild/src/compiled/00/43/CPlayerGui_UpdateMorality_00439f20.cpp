@@ -19,7 +19,7 @@ class CPlayer { public:
     CThing* GetPlayerCharacter();                       // 0x00487B70
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
 
 class CPlayerGuiDef { public:
@@ -67,7 +67,7 @@ class CPlayerGui { public:                                     // retail-offset 
 
 void CPlayerGui::UpdateMorality()
 {
-    CThing* hero = PlayerManager->GetMainPlayer()->GetPlayerCharacter();
+    CThing* hero = PlayerManager->GetMainPlayer().GetPlayerCharacter();
     if (!hero || (hero->m_stateFlags & 1))
         return;
     long change = PDrawStatUpdates->PendingMoralityChange;

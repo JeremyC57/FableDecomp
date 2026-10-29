@@ -97,12 +97,13 @@ struct CThingGraphic {
     virtual void v108(); virtual void v10c(); virtual void v110(); virtual void v114(); virtual void v118(); virtual void v11c();
     virtual const CRightHandedSet* GetRHSet();  // slot 72 (+0x120)
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -110,7 +111,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPoi
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem(item);
         return *this;
     }
@@ -173,7 +174,7 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
             float bestDistanceSquared = 0.0f;
             CPointerListNode* head = region->_M_node;
             for (CPointerListNode* node = head->_M_next; node != head; node = node->_M_next) {
-                CThing* bed = node->_M_data.GetPItem();
+                CThing* bed = ((CThing*)node->_M_data.GetPItem());
                 if (bed && !(bed->m_flags91 & 1) && isMine(bed) && !isBlocked(bed)) {
                     CThing* me = GetCreature();
                     const C3DVector& bedPos = bed->GetPos();
@@ -182,7 +183,7 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
                     float dy = myPos.Y - bedPos.Y;
                     float dz = myPos.Z - bedPos.Z;
                     float distanceSquared = dz * dz + dy * dy + dx * dx;
-                    if (!PBed.GetPItem() || bestDistanceSquared > distanceSquared) {
+                    if (!((CThing*)PBed.GetPItem()) || bestDistanceSquared > distanceSquared) {
                         PBed.SetPItem(bed);
                         bestDistanceSquared = distanceSquared;
                         BedPos = bed->GetPos();
@@ -190,10 +191,10 @@ bool CAIStateGroup_GoToBed::FindFreeBanditBed()
                     }
                 }
             }
-            if (PBed.GetPItem()) {
+            if (((CThing*)PBed.GetPItem())) {
                 IsBedSleepPointMarker = true;
                 CTCSleepPoint* point;
-                CThing* chosen = PBed.GetPItem();
+                CThing* chosen = ((CThing*)PBed.GetPItem());
                 if (chosen->HasTC(0xac))
                     point = (CTCSleepPoint*)chosen->GetTC(0xac);
                 point->SetUser(GetCreature());

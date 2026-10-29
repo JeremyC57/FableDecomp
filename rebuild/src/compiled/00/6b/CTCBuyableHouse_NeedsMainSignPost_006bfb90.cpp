@@ -89,10 +89,11 @@ class CThingBuilding : public CThing {
 public:
     bool GetIsAvailableForResidency() const;    // 0x0082E0E0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 class CTCBuyableHouse {
 public:
@@ -128,7 +129,7 @@ bool CTCBuyableHouse::NeedsMainSignPost() const
             if (!member->GetPVillage()->Flag_b3 && residential && PDef.Object
                 && (PDef->IsBuyable || PDef->IsBuyableWithoutSignpost) && !IsScripted) {
                 if (OwnedByPlayer) {
-                    if (WifeLivingHere.GetPItem())
+                    if (((CThing*)WifeLivingHere.GetPItem()))
                         return false;
                 } else {
                     bool free = !IsHouseBeingUsed(IsInUseFlagSet());

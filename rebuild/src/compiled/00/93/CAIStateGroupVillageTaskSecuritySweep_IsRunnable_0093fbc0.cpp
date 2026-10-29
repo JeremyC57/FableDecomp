@@ -24,11 +24,12 @@ class CThing { public:
     }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
@@ -36,7 +37,7 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x0128B098
     virtual void v00();
     CIntelligentPointerThing(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 
 class CTCVillage { public:
@@ -75,5 +76,5 @@ bool CAIStateGroup_VillageTaskSecuritySweep::IsRunnable()
     CTCVillage* village = GFGetPVillageInterface(PVillager);
     if (village != 0 && GetCreature()->HasTC(0x34))
         PTaskThing = village->GetSecuritySweepThing(GetCreature());
-    return PTaskThing.GetPItem() != 0;
+    return ((CThing*)PTaskThing.GetPItem()) != 0;
 }

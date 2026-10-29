@@ -53,22 +53,23 @@ class CThing { public:
 };
 class CThingObject : public CThing { public: };
 class CThingAICreature : public CThing { public: };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v01();
     CIntelligentPointer(CThing* item) { SetPItem(item); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    return p.GetPItem() != 0 && !(p.GetPItem()->m_flags91 & 1);
+    return ((CThing*)p.GetPItem()) != 0 && !(((CThing*)p.GetPItem())->m_flags91 & 1);
 }
 template <class T> struct CListNode {
     CListNode* _M_next;
@@ -166,11 +167,11 @@ bool CAIStateGroup_GameMaster::GetSeat()
 {
     CStlList<CThing*> tables;
     CTCTableList* tableList;
-    if (!IS_THING_ALIVE(PPub) || !PPub.GetPItem()->GetInterface(&tableList, 0x21))
+    if (!IS_THING_ALIVE(PPub) || !((CThing*)PPub.GetPItem())->GetInterface(&tableList, 0x21))
         return false;
     for (CPointerListNode* node = tableList->_M_node->_M_next; node != tableList->_M_node; node = node->_M_next) {
-        if (IS_THING_ALIVE(node->_M_data) && node->_M_data.GetPItem()->HasTC(0xb8))
-            tables.push_back(node->_M_data.GetPItem());
+        if (IS_THING_ALIVE(node->_M_data) && ((CThing*)node->_M_data.GetPItem())->HasTC(0xb8))
+            tables.push_back(((CThing*)node->_M_data.GetPItem()));
     }
     if (tables.size() == 0)
         return false;
@@ -180,11 +181,11 @@ bool CAIStateGroup_GameMaster::GetSeat()
         tables.pop_front();
         CCharString name("ACTION_POINT_GAME_MASTER");
         CTCTavernTable* table;
-        if (IS_THING_ALIVE(PTable) && PTable.GetPItem()->GetInterface(&table, 0xb8)
+        if (IS_THING_ALIVE(PTable) && ((CThing*)PTable.GetPItem())->GetInterface(&table, 0xb8)
             && table->GetSeat(*GetCreature(), Pos, RHSet, ActionPointIndex, SeatIndex, &name)) {
             PTankard = CIntelligentPointer<CThing>(table->GetTankard(SeatIndex));
             CTCTavernGameCoinGolf* golf;
-            PTable.GetPItem()->GetInterface(&golf, 0xcf);
+            ((CThing*)PTable.GetPItem())->GetInterface(&golf, 0xcf);
             golf->SetGameMaster(GetCreature());
             return true;
         }

@@ -44,18 +44,19 @@ class CThingAICreature;
 class CThingCreatureBase : public CThing { public:
     bool AutoPlaceNearBuilding(CThingBuilding* building, float distance);   // 0x00666EF0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
     __forceinline CIntelligentPointer(T* item) { SetPItem((const CThing*)item); }
-    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
     T* Get() const { return (T*)GetPItem(); }
 };
 class CCharString { public:
@@ -135,10 +136,10 @@ bool CAIStateGroup_GoToPub::InitCreaturePosition()
     if (UnderScriptControl) {
         PTable = FindMarkerByName(scratchpad->GetTableName());
         CTCOwnedEntity* owned = 0;
-        PTable.GetPItem()->GetInterface(&owned, 0x33);
+        ((CThing*)PTable.GetPItem())->GetInterface(&owned, 0x33);
         if (owned) {
             PPub = (CThingBuilding*)owned->POwner.GetPItem();
-            if (PPub.GetPItem() != 0 && !(PPub.GetPItem()->m_flags91 & 1)
+            if (((CThing*)PPub.GetPItem()) != 0 && !(((CThing*)PPub.GetPItem())->m_flags91 & 1)
                 && GetCreature()->AutoPlaceNearBuilding(PPub.Get(), 3.0f))
                 return true;
         }

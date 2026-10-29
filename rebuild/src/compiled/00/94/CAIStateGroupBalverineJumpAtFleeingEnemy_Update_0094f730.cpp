@@ -6,12 +6,13 @@
 class CThing;
 class CThingCreatureBase;
 struct CRetailThing { unsigned char _prefix[0x91]; unsigned char Dead:1; };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable; CThing* Object;
-    CThing* GetPItem() const; // 00A01B50
+    CBaseObject* GetPItem() const; // 00A01B50
 };
 inline bool IsAlive(const CBaseIntelligentPointer& p) {
-    if(p.GetPItem()!=0) {if(!((CRetailThing*)p.GetPItem())->Dead) return true;}
+    if(((CThing*)p.GetPItem())!=0) {if(!((CRetailThing*)p.GetPItem())->Dead) return true;}
     return false;
 }
 class CCombatActionBase { public:
@@ -38,10 +39,10 @@ void CJumpAtFleeingMethods::Update() {
     WaitUntilWorldFrameForNextAttempt=(long)(fps*5.0f+CWorld::GetFrame());
     if(IsAlive(Target())) {
         CThingCreatureBase* creature=(CThingCreatureBase*)Brain()->Creature;
-        long result=PerformActionAndWait(&CCreatureAction_BalverineLungeAttack(creature,Target().GetPItem()),false);
+        long result=PerformActionAndWait(&CCreatureAction_BalverineLungeAttack(creature,((CThing*)Target().GetPItem())),false);
         if(result==2 && IsAlive(Target())) {
             CThingCreatureBase* creature=(CThingCreatureBase*)Brain()->Creature;
-            long result=PerformActionAndWait(&CCreatureAction_BalverineBreakOffFromCombatLong(creature,Target().GetPItem()),false);
+            long result=PerformActionAndWait(&CCreatureAction_BalverineBreakOffFromCombatLong(creature,((CThing*)Target().GetPItem())),false);
             if(result==2) {Terminate();return;}
         }
     }

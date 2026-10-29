@@ -11,10 +11,11 @@ class CThing { public:
     void Kill(bool checkLocked);            // 0x004C9B80
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;                        // +0x00
     void* PData;                            // +0x04
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
 };
 
 struct CIntelligentPointer : CBaseIntelligentPointer {
@@ -38,5 +39,5 @@ void CTCTrapBase::OnKill()
 {
     CTCBase::OnKill();
     if (IS_THING_ALIVE(&PObstruction))
-        PObstruction.GetPItem()->Kill(true);
+        ((CThing*)PObstruction.GetPItem())->Kill(true);
 }

@@ -8,13 +8,14 @@
 // Layout: PTargetThing +0x14, next-use frame +0x1c (local model; the header is byte-flattened).
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -129,7 +130,7 @@ bool CAIStateGroup_BriarRoseWillUse::IsRunnable()
         CThing* target = ((CTCAttackTarget*)PBrain->Creature->FindEntry(8)->second)->GetTarget();
         if (target && !(target->m_flags91 & 1))
         {
-            PTargetThing.SetPItem(CIntelligentPointer<CThing>(target).GetPItem());
+            PTargetThing.SetPItem(((CThing*)CIntelligentPointer<CThing>(target).GetPItem()));
             return true;
         }
     }

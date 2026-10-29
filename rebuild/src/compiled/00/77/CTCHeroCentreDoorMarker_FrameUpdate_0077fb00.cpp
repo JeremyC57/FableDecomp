@@ -45,7 +45,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                             // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
 struct CMemoryBuffer {
     void Copy(unsigned long length, const void* data);  // 0x009F1760
@@ -91,7 +91,7 @@ public:
 void CTCHeroCentreDoorMarker::FrameUpdate()
 {
     if (IS_THING_ALIVE(PHeroCentre)) {
-        CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+        CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero && !hero->Dead) {
             const C3DVector& pos = ParentThing->GetPos();
             const C3DVector& heroPos = hero->GetPos();

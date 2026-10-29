@@ -3,7 +3,7 @@
 // Callees: CTCInventoryMap's map-primitive release @ 0x005FC510 (manifest "ComboBox_ClearAllLists" is propagated; it clears the three
 // MapScreen*PrimitiveHandles vectors), CTCBase::GetWorld() const @ 0x00686A80 (manifest "CViewBase::GetDisplayEngine"), CWorld virtual slot
 // 13 (+0x34, PeekWorldMap), CWorldMap::GetRegion(long) @ 0x004FC180 (CRegion&), CPlayerGui::GetPMiniMapDisplay() @ 0x00437CE0 on g_pPlayerGui
-// (0x013B8790), CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(CRegion*, CCharString*, bool) @ 0x00829D90 with CWorld::CurrentWorldName
+// (0x013B8790), CMiniMapDisplay::InitialiseMiniMapFileLoading_Region(const CRegion&, const CCharString&, bool) @ 0x00829D90 with CWorld::CurrentWorldName
 // (+0x84), CTCInventoryMap::FindQuestsForActiveRegion @ 0x005FD0F0 and FindTeleportsForActiveRegion @ 0x005FD1D0, CTCInventoryBase virtual
 // slot 46 (+0xB8, the selection hook taking 0), the NHeroInformationScreens::CBase secondary base's virtual slot 3 (+0x130),
 // CTCInventoryMap::TeleportToActiveRegion @ 0x005FBFA0 and CTCInventoryBase::ProcessButtonAReleased @ 0x005BC65C (both tail-jumped).
@@ -15,7 +15,7 @@
 class CCharString { public: void* PStringData; };
 class CRegion;
 class CWorldMap { public:
-    CRegion& GetRegion(long index);                // 0x004FC180
+    const CRegion& GetRegion(long index) const;    // 0x004FC180
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -28,7 +28,7 @@ class CWorld { public:
     unsigned char m_teleportAllowed;               // +0xD5 (name from use)
 };
 class CMiniMapDisplay { public:
-    void InitialiseMiniMapFileLoading_Region(CRegion* region, CCharString* worldName, bool b);   // 0x00829D90
+    void InitialiseMiniMapFileLoading_Region(const CRegion& region, const CCharString& worldName, bool b);   // 0x00829D90
 };
 class CPlayerGui { public:
     CMiniMapDisplay* GetPMiniMapDisplay();         // 0x00437CE0
@@ -77,10 +77,10 @@ void CTCInventoryMap::ProcessButtonAReleased()
         if (WorldMapActive && ActiveRegionIndex > 0) {
             WorldMapActive = false;
             ReleaseMapScreenPrimitives();
-            CRegion& region = GetWorld()->PeekWorldMap()->GetRegion(ActiveRegionIndex);
+            const CRegion& region = GetWorld()->PeekWorldMap()->GetRegion(ActiveRegionIndex);
             CWorld* world = GetWorld();
             CPlayerGui* gui = g_pPlayerGui;
-            gui->GetPMiniMapDisplay()->InitialiseMiniMapFileLoading_Region(&region, &world->CurrentWorldName, false);
+            gui->GetPMiniMapDisplay()->InitialiseMiniMapFileLoading_Region(region, world->CurrentWorldName, false);
             FindQuestsForActiveRegion();
             FindTeleportsForActiveRegion();
             SelectItem(0);

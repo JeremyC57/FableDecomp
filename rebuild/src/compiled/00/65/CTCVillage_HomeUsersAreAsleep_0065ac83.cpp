@@ -62,7 +62,7 @@ class CThingBuilding : public CThing { public: };
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     void* __vftable;
     CBaseObject* PData;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 bool __fastcall IS_THING_ALIVE(const CBaseIntelligentPointer& thing);   // 0x004AB8F0
 
@@ -106,7 +106,7 @@ bool CTCVillage::HomeUsersAreAsleep(CThingBuilding* home)
             if (((CThingAICreature*)person.GetPItem())->GetHomeBuilding() == home) {
                 usersFound = true;
                 CTCCreatureModeManager* modes;
-                person.GetPItem()->GetInterface(&modes, 0x31);
+                ((CThing*)person.GetPItem())->GetInterface(&modes, 0x31);
                 if (modes->GetCurrentMode().GetModeType() != 0xd)
                     return false;
             }

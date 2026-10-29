@@ -10,13 +10,6 @@
 //   bias, speed, unlike their declaration order); VC7.1 picks byte/word loads for fields at byte boundaries.
 #include "engine/CDataOutputStream.h"
 class CRGBColour { public: union { struct { unsigned char B, G, R, A; }; unsigned long Colour; }; };
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                        // 0x00993E30
-    void WriteLong(long value);                         // 0x00993EB0
-    void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteFloat(float value);                       // 0x00993EE0
-    void WriteColour(const CRGBColour& value);          // 0x00993F30
-};
 class CEnginePrimitiveHandle { public: long Index; long Generation; };
 namespace NParticleEngine {
 class CPSCDecalRenderer { public:
@@ -65,32 +58,32 @@ class CPSCDecalRenderer { public:
 };
 void CPSCDecalRenderer::WriteBinary(CDataOutputStream* destination)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)destination;
+    CDataOutputStream* out = (CDataOutputStream*)destination;
     out->WriteFloat(DecalLifeSecs);
-    out->WriteLong(DecalBankIndex);
+    out->WriteSLONG(DecalBankIndex);
     out->WriteColour(StartColour);
     out->WriteColour(MidColour);
     out->WriteColour(EndColour);
-    out->WriteULong(BlendMode);
-    out->WriteULong(BlendOp);
-    out->WriteULong(Flags);
-    out->WriteULong(FadeInEndInteger);
-    out->WriteULong(FadeOutBeginInteger);
-    out->WriteULong(StartRenderSize);
-    out->WriteULong(AlphaFadeMinimum);
-    out->WriteULong(EndRenderSize);
-    out->WriteULong(AnimationTimeSecs);
-    out->WriteULong(SizeFadeMinimum);
+    out->WriteULONG(BlendMode);
+    out->WriteULONG(BlendOp);
+    out->WriteULONG(Flags);
+    out->WriteULONG(FadeInEndInteger);
+    out->WriteULONG(FadeOutBeginInteger);
+    out->WriteULONG(StartRenderSize);
+    out->WriteULONG(AlphaFadeMinimum);
+    out->WriteULONG(EndRenderSize);
+    out->WriteULONG(AnimationTimeSecs);
+    out->WriteULONG(SizeFadeMinimum);
     out->WriteEBOOL(UseStartColour);
     out->WriteEBOOL(UseMidColour);
     out->WriteEBOOL(UseEndColour);
     out->WriteEBOOL(AlphaFadeEnable);
     out->WriteEBOOL(SizeFadeEnable);
     out->WriteEBOOL(ForceAnimationTime);
-    out->WriteULong(FlickerMinAlphaInteger);
-    out->WriteULong(FlickerMinSizeInteger);
-    out->WriteULong(FlickerBias);
-    out->WriteULong(FlickerSpeed);
+    out->WriteULONG(FlickerMinAlphaInteger);
+    out->WriteULONG(FlickerMinSizeInteger);
+    out->WriteULONG(FlickerBias);
+    out->WriteULONG(FlickerSpeed);
     out->WriteEBOOL(FlickerEnable);
     out->WriteEBOOL(PoolingEnable);
     out->WriteEBOOL(PoolIncreaseAlphaEnable);

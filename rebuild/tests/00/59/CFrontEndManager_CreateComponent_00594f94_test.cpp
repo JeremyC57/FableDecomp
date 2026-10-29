@@ -16,14 +16,14 @@ class CComponent
 class CManager
 {
 public:
-    CComponent* CreateComponent(CCharString* definition, bool frontEnd);
+    static CManager* __fastcall GetInstance();      // 0x0041E5F2
+    CComponent* CreateComponent(const CCharString& definition, bool frontEnd);   // 0x0041DB1D
 };
 
 class CFrontEndManager : public CManager
 {
 public:
-    static CFrontEndManager* GetInstance();
-    CComponent* CreateComponent(CCharString* definition);
+    CComponent* CreateComponent(const CCharString& definition);
 };
 }
 
@@ -31,11 +31,11 @@ static NUISystem::CFrontEndManager g_manager;
 static NUISystem::CComponent g_component;
 static int g_getCalls;
 static int g_createCalls;
-static CCharString* g_definition;
+static const CCharString* g_definition;
 static bool g_frontEnd;
 
-NUISystem::CFrontEndManager*
-NUISystem::CFrontEndManager::GetInstance()
+NUISystem::CManager* __fastcall
+NUISystem::CManager::GetInstance()
 {
     ++g_getCalls;
     return &g_manager;
@@ -43,11 +43,11 @@ NUISystem::CFrontEndManager::GetInstance()
 
 NUISystem::CComponent*
 NUISystem::CManager::CreateComponent(
-    CCharString* definition,
+    const CCharString& definition,
     bool frontEnd)
 {
     ++g_createCalls;
-    g_definition = definition;
+    g_definition = &definition;
     g_frontEnd = frontEnd;
     return &g_component;
 }
@@ -61,7 +61,7 @@ int main()
     g_frontEnd = false;
 
     NUISystem::CComponent* result =
-        g_manager.CreateComponent(&definition);
+        g_manager.CreateComponent(definition);
 
     if (result != &g_component ||
         g_getCalls != 1 ||

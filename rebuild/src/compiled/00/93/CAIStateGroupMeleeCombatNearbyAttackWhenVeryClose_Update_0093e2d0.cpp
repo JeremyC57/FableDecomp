@@ -47,13 +47,14 @@ class CThing { public:
     bool IsCombatant();                         // 0x00662410
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(const CThing* item);          // 0x00A01B90
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
@@ -125,7 +126,7 @@ class CBrainOutput { public:
         {
             CIntelligentPointer pointer;
             pointer.SetPItem(thing);
-            LookAtThing.SetPItem(pointer.GetPItem());
+            LookAtThing.SetPItem(((CThing*)pointer.GetPItem()));
         }
         LookFlags = lookFlags;
     }
@@ -136,8 +137,8 @@ inline CBrainOutput::~CBrainOutput()
 
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -198,7 +199,7 @@ void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
         return;
     }
     CThing* creature = GetCreature();
-    creature->GetCombatManager()->RegisterCombatant(creature, PEnemy.GetPItem(), true);
+    creature->GetCombatManager()->RegisterCombatant(creature, ((CThing*)PEnemy.GetPItem()), true);
     CTCPerceiveThing* perceive;
     if (GetCreature()->GetInterface(&perceive, 0x34))
         perceive->Refresh();
@@ -213,7 +214,7 @@ void CAIStateGroup_MeleeCombatNearbyAttackWhenVeryClose::Update()
     while (IS_THING_ALIVE(PEnemy) && !IsStopping() && IsStillRunnable(true) && GetCreature()->IsCombatant()) {
         CBrainOutput output;
         output.Types |= 0x20;
-        output.SetAsLookAtThing(PEnemy.GetPItem(), 0x11);
+        output.SetAsLookAtThing(((CThing*)PEnemy.GetPItem()), 0x11);
         PBrain->SetBrainOutput(output);
         PBrain->Yield();
         if (IsStopping()) {

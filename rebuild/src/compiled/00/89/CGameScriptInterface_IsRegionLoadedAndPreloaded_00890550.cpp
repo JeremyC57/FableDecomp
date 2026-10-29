@@ -80,7 +80,7 @@ class CWorldMap { public:
     virtual bool IsMapLoaded(long map);            // slot 10 (+0x28)
     long GetMapNumberFromScriptName(const CCharString& name);   // 0x004FB880
     bool IsMapLoadedOnPlayerProximity(long map);   // 0x004FD000
-    long GetCurrentRegionNumber();                 // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
+    long GetLoadedRegion() const;                 // 0x004FB150 (the label "CWorld::DrawGetEnvironment" is propagated)
     CRegion_Retail* GetRegion(long region);        // 0x004FC180
     void SetRegionsAsConnectedInGraph(long a, long b, long c);   // 0x004FC970
     void ApplyScriptBrush(const CCharString& name, long flag);  // 0x004FE510 (the label "CDrawQuestInfo::OracleSymbolPushBack" is propagated)
@@ -152,7 +152,7 @@ class CGameScriptInterface { public:
 bool CGameScriptInterface::IsRegionLoadedAndPreloaded(const CCharString& name) const
 {
     long region = World->GetWorldMap()->GetRegionNumberFromName(name);
-    if (region == World->GetWorldMap()->GetCurrentRegionNumber()) {
+    if (region == World->GetWorldMap()->GetLoadedRegion()) {
         if (g_pEngine_013b86a0->m_pDevice->m_pRenderer->IsPreloadComplete())
             return true;
     }

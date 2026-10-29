@@ -23,16 +23,17 @@ class CPlayer
 
 class CPlayerManager
 { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+    CPlayer& GetMainPlayer();                       // 0x00449970
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -70,11 +71,11 @@ struct CAIStateGroup_BanditKingCharge
 
 bool CAIStateGroup_BanditKingCharge::IsRunnable()
 {
-    CThing* hero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero && !(hero->m_flags91 & 1)
         && GetDistanceSquaredXY(hero->GetPos(), PBrain->GetCreature()->GetPos()) > 49.0f)
     {
-        PTargetThing.SetPItem(CIntelligentPointerThing(hero).GetPItem());
+        PTargetThing.SetPItem(((CThing*)CIntelligentPointerThing(hero).GetPItem()));
         return true;
     }
     return false;

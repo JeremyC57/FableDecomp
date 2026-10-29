@@ -102,10 +102,11 @@ class CTCCreatureModeManager { public:                       // interface 0x31
     bool AddMode(CCountedModePointer mode);           // 0x0073ACC0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
 };
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -122,7 +123,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad78[0x114 - 0x78];
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
     void Initialise();                                // 0x00857520
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThing* GetCreature() const { return ((CThing*)PCreature.GetPItem()); }
 };
 struct CCreatureAction_DragonFlyInto : CCombatActionBase {
     C3DVector             Dest;                       // +0x114 (PDB +0x12C)
@@ -143,7 +144,7 @@ void CCreatureAction_DragonFlyInto::Initialise()
     }
     CCombatActionBase::Initialise();
     RunningTimeSeconds = GetStartRunningTimeSeconds();
-    CAnimSet* set = GetSingleActionAnimSet(PCreature.GetPItem(), PAnimEntry->BankIndex);
+    CAnimSet* set = GetSingleActionAnimSet(((CThing*)PCreature.GetPItem()), PAnimEntry->BankIndex);
     float fps = (float)g_framesPerSecond;
     if (set) {
         float delay = GetAnimDelayTime() / fps;
@@ -156,7 +157,7 @@ void CCreatureAction_DragonFlyInto::Initialise()
         set->CurrentFraction = fraction;
     }
     CTCCreatureModeManager* modes;
-    if (PCreature.GetPItem()->GetInterface(&modes, 0x31)) {
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&modes, 0x31)) {
         if (!UsePreviousPoint)
             PreviousPoint = MovementPoints[0];
         modes->AddMode(CCountedModePointer(new CModeDragonFlying(GetCreature(), MovementPoints, PreviousPoint, Speed, PEndAction)));

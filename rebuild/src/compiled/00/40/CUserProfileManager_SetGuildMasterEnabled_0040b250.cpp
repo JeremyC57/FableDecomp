@@ -1,21 +1,32 @@
-class CUserProfileManager { public:
-    char pad0[0xc];
-    char UseNewProfileValues;       // +0x0c
-    char pad1[0x0b];
-    char GuildMasterEnabled;         // +0x18
-    char pad2[0xbf];
-    char GuildMasterEnabledNewProfile;         // +0xd8
+// CUserProfileManager::SetGuildMasterEnabled(bool value, bool save) -- store the option (and its new-profile copy while
+// UseNewProfileValues is set), push the live values to the engine, then save the profile when asked
+// Leaf: ?SetGuildMasterEnabled@CUserProfileManager@@QAEX_N0@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0040B250, thiscall, `ret 8`.
+// Identity: PDB name set ?SetGuildMasterEnabled@CUserProfileManager@@QAEX_N0@Z; the stored field is GuildMasterEnabled (retail +0x18) and its
+//   new-profile copy GuildMasterEnabledNewProfile (retail +0xD8) by struct_layouts_egor (retail = PDB below the first STL vector at
+//   +0x54, PDB - 8 after the two AssignedInputs vectors, PDB - 4 in the new-profile block).
+// Callees: CUserProfileManager::ApplyValues() @ 0x00407370 (protected in the PDB name set), CUserProfileManager::Save()
+//   @ 0x0040A740 (builds the profile path and writes the file).
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0xB];
+    bool          GuildMasterEnabled;        // +0x18
+    unsigned char _pad19[0xBF];
+    bool          GuildMasterEnabledNewProfile; // +0xD8
+    void SetGuildMasterEnabled(bool value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
 
-extern void __fastcall CUserProfileManager_OnResetChanged(CUserProfileManager* manager);
-extern void __fastcall CUserProfileManager_OnSecondFlag(CUserProfileManager* manager);
-
-void __fastcall CUserProfileManager_SetGuildMasterEnabled(CUserProfileManager* manager, void* edx, char a, char b)
+void CUserProfileManager::SetGuildMasterEnabled(bool value, bool save)
 {
-    if (manager->UseNewProfileValues)
-        manager->GuildMasterEnabledNewProfile = a;
-    manager->GuildMasterEnabled = a;
-    CUserProfileManager_OnResetChanged(manager);
-    if (b)
-        CUserProfileManager_OnSecondFlag(manager);
+    if (UseNewProfileValues)
+        GuildMasterEnabledNewProfile = value;
+    GuildMasterEnabled = value;
+    ApplyValues();
+    if (save)
+        Save();
 }

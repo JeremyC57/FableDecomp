@@ -82,12 +82,13 @@ public:
     const CCharString& operator=(const char* text);
     CWideString ToWideString() const;
 
-private:
-    void UnassignString();
-    CCharStringData* AllocStringData(
+protected:
+    void UnassignString();                                     // 0x0099E9B0 protected (Ego_r / FableWin: IAE)
+    CCharStringData* AllocStringData(                          // 0x0099EA60 protected (Ego_r / FableWin: IAE)
         const char* text,
         long length);
 
+private:
     CCharStringData* storage_;
 };
 

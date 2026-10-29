@@ -10,13 +10,14 @@
 extern unsigned long g_InvSqrtMantissaTable[128];   // 0x013CE558
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -133,9 +134,9 @@ class CTCWeapon                                    // interface type 0x48 (word 
 
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0)
+    if (((CThing*)p.GetPItem()) != 0)
     {
-        if (!(p.GetPItem()->m_flags91 & 1))
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -155,15 +156,15 @@ bool CAIStateGroup_CreatureFindCover::IsStillRunnable()
     if (!IS_THING_ALIVE(PEnemy))
         return false;
     CTCCarrying* carrying;
-    if (PEnemy.GetPItem()->GetInterface(0x46, &carrying)) {
+    if (((CThing*)PEnemy.GetPItem())->GetInterface(0x46, &carrying)) {
         CThing* weapon = carrying->GetThingInPrimarySlot();
         if (weapon) {
             CTCWeapon* tcWeapon;
             if (weapon->GetInterface(0x48, &tcWeapon) && tcWeapon->IsProjectileWeapon()) {
                 CThing* creature = PBrain->Creature;
-                C3DVector toMe = creature->GetPos() - PEnemy.GetPItem()->GetPos();
+                C3DVector toMe = creature->GetPos() - ((CThing*)PEnemy.GetPItem())->GetPos();
                 toMe.Normalise();
-                if (Dot(toMe, PEnemy.GetPItem()->GetPhysicsBody()->GetFacing()) > 0.0f)
+                if (Dot(toMe, ((CThing*)PEnemy.GetPItem())->GetPhysicsBody()->GetFacing()) > 0.0f)
                     return true;
             }
         }

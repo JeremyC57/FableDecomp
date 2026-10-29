@@ -140,7 +140,7 @@ class CTCHaste { public:                                    // interface 0x8C
 };
 
 class CWorldMap { public:
-    long GetCurrentRegionNumber();                   // 0x004FB150
+    long GetLoadedRegion() const;                   // 0x004FB150
 };
 
 struct CLongVector {                                 // std::vector<long> (retail 12 bytes)
@@ -205,7 +205,7 @@ class CTCHeroStats : public CTCBase { public:
 
 void CTCHeroStats::FrameUpdate()
 {
-    long region = GetWorldMap().GetCurrentRegionNumber();
+    long region = GetWorldMap().GetLoadedRegion();
     if (region >= 0 && region < RegionTime.size())
         ++RegionTime[region];
     UpdateAppearanceStats(false);

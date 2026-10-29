@@ -71,14 +71,14 @@ class CTCHeroOpinionDeedLog { public:                  // interface 0x51
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     void* __vftable;
     CBaseObject* PData;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 #pragma pack(pop)
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -103,13 +103,13 @@ class CTCTrespasser { public:
 
 void CTCTrespasser::ForceTrespass()
 {
-    if (IS_THING_ALIVE(TrespassingThing) && TrespassingThing.GetPItem()->HasTC(0xbd)) {
+    if (IS_THING_ALIVE(TrespassingThing) && ((CThing*)TrespassingThing.GetPItem())->HasTC(0xbd)) {
         CTCHeroOpinionDeedLog* log = 0;
         if (ParentThing->GetInterface(&log, 0x51) && DeedHandles[2] == -1)
-            DeedHandles[2] = log->PostDeed(OPINION_DEED_TYPE_TRESPASS, ParentThing->GetPos(), TrespassingThing.GetPItem(), 0,
+            DeedHandles[2] = log->PostDeed(OPINION_DEED_TYPE_TRESPASS, ParentThing->GetPos(), ((CThing*)TrespassingThing.GetPItem()), 0,
                                            OPINION_POST_DEED_TYPE_0x12, true, true, 0, false, 0);
         else
-            log->PostDeed(OPINION_DEED_TYPE_TRESPASS, ParentThing->GetPos(), TrespassingThing.GetPItem(), 0,
+            log->PostDeed(OPINION_DEED_TYPE_TRESPASS, ParentThing->GetPos(), ((CThing*)TrespassingThing.GetPItem()), 0,
                           OPINION_POST_DEED_TYPE_0x12, true, false, 0, false, 0);
     }
 }

@@ -30,13 +30,13 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + item
     CThing* PItem;                              // +4
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
-    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
-    __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(other.GetPItem()); return *this; }
+    __forceinline CIntelligentPointerThing(const CIntelligentPointerThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
+    __forceinline CIntelligentPointerThing& operator=(CIntelligentPointerThing other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 struct CInterfaceMap {                          // a thing's sorted {type, component} vector map at +0x44
     struct SEntry { long type; CTCBase* component; };
@@ -127,15 +127,15 @@ class CCreatureAction_CastWillDrainLifeSpell : public CCombatActionBase { public
 
 void CCreatureAction_CastWillDrainLifeSpell::PerformAction()
 {
-    if (PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1)) {
+    if (((CThing*)PTarget.GetPItem()) && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1)) {
         CTCSpellCasting* casting;
-        if (PCreature.GetPItem()->GetInterface(&casting, 8)) {
-            CTCDrainLife* drain = (CTCDrainLife*)PCreature.GetPItem()->AddTC("CTCDrainLife", true, 0);
-            casting->SetSpellTarget(PTarget.GetPItem());
-            if (PCreature.GetPItem()->m_state == 1)
+        if (((CThing*)PCreature.GetPItem())->GetInterface(&casting, 8)) {
+            CTCDrainLife* drain = (CTCDrainLife*)((CThing*)PCreature.GetPItem())->AddTC("CTCDrainLife", true, 0);
+            casting->SetSpellTarget(((CThing*)PTarget.GetPItem()));
+            if (((CThing*)PCreature.GetPItem())->m_state == 1)
                 drain->SetAICast(SpellLevel, SpellPower);
             CIntelligentPointerThing target = PItemRemoved;
-            if (target.GetPItem() && !(target.GetPItem()->m_flags91 & 1))
+            if (((CThing*)target.GetPItem()) && !(((CThing*)target.GetPItem())->m_flags91 & 1))
                 drain->PTarget = target;
         }
     }

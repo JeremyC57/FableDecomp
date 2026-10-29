@@ -12,7 +12,8 @@ class CSoundBankEntry; class CAtmosBankEntry; class CMusicEntry; class CMusicSet
 template <class T> struct CRetailVector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };   // 12-byte retail vector
 
 class CPersistContext { public:
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620
     void TransferBinary(CRetailVector<CSoundBankEntry>* v);            // 0x0046AA63
     void TransferBinary(CRetailVector<CAtmosBankEntry>* v);            // 0x0046AFC6
     void TransferBinary(CRetailVector<CMusicEntry>* v);                // 0x0046B3F4

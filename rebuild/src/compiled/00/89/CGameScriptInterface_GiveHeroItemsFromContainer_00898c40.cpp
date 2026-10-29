@@ -101,7 +101,7 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };    // 0x00449970
 struct CScriptRunner;
 extern CScriptRunner* g_pScriptRunner;                  // 0x013D2838
 class CGameScriptInterface { public:
@@ -117,7 +117,7 @@ class CGameScriptInterface { public:
 
 bool CGameScriptInterface::GiveHeroItemsFromContainer(const CScriptThing& container, bool addToInventory) const
 {
-    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->m_dead && container.IsValid()) {
         if (!addToInventory) {
             CThing_Retail* thing = container.GetThing();

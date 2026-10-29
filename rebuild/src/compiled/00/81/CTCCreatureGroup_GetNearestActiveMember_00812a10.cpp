@@ -23,10 +23,11 @@ class CThingPhysical { public:  // retail: CThingPhysical derives from CThing; m
 };
 class CThing : public CThingPhysical { public:
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;                            // +0x00
     void* PData;                                // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 class CGroupMemberData { public:
     CBaseIntelligentPointer PMember;            // +0x00
@@ -91,16 +92,16 @@ CThing* CTCCreatureGroup::GetNearestActiveMember(const C3DVector& pos)
     float nearestDistSq = 0;
     for (CGroupMemberIterator it = Members.begin(); it != Members.end(); ++it) {
         if (it->Value.IsActive) {
-            CThing* thing = it->Value.PMember.GetPItem();
+            CThing* thing = ((CThing*)it->Value.PMember.GetPItem());
             if (nearest) {
                 float distSq = (thing->PeekPos() - pos).GetLengthSquared();
                 if (distSq < nearestDistSq * nearestDistSq) {
-                    nearest = it->Value.PMember.GetPItem();
+                    nearest = ((CThing*)it->Value.PMember.GetPItem());
                     nearestDistSq = distSq;
                 }
             } else {
                 nearest = thing;
-                nearestDistSq = (it->Value.PMember.GetPItem()->PeekPos() - pos).GetLengthSquared();
+                nearestDistSq = (((CThing*)it->Value.PMember.GetPItem())->PeekPos() - pos).GetLengthSquared();
             }
         }
     }

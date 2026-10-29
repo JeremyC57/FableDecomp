@@ -33,9 +33,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, bool& value, const bool& defaultValue);             // 0x004045C0
-    void Transfer(const char* name, float& value, const float& defaultValue);           // 0x00410620
-    void Transfer(const char* name, C3DVector& value, const C3DVector& defaultValue);   // 0x004859AD
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0; float 0x00410620; C3DVector 0x004859AD
 };
 #pragma pack(push, 1)
 class CTCCameraPointDefinitionBase {

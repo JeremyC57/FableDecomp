@@ -6,16 +6,9 @@
 // Layout: PDB (Ego_r) CPSCAttractor names/types (retail offsets equal the PDB): flag bits +0x0c, AttractorInfluenceFallOff
 //   (long) +0x10, AttractorPositionParam / AttractorPositionParamName (ulong) +0x14/+0x18, radius/force +0x1c/+0x20,
 //   AttractorUserPointsArray (CArray<C3DVector>: begin/end/capacity) +0x24. Local model: engine/CDataOutputStream.h is
-//   data-only; CDataOutputStream_Methods is the lane's method carrier.
+//   data-only; CDataOutputStream is the lane's method carrier.
 #include "engine/CDataOutputStream.h"
 class C3DVector { public: float X, Y, Z; };
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                        // 0x00993E30
-    void WriteLong(long value);                         // 0x00993EB0
-    void WriteULong(unsigned long value);               // 0x00993EA0
-    void WriteFloat(float value);                       // 0x00993EE0
-    void Write3DVector(const C3DVector& value);         // 0x00993FD0
-};
 template<class T> class CArray { public:
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
     unsigned long size() const { return (unsigned long)(_M_finish - _M_start); }
@@ -35,16 +28,16 @@ class CPSCAttractor { public:
 };
 void CPSCAttractor::WriteBinary(CDataOutputStream* destination)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)destination;
+    CDataOutputStream* out = (CDataOutputStream*)destination;
     out->WriteEBOOL(AttractorEnabled);
     out->WriteEBOOL(AttractorUseParamPosition);
-    out->WriteLong(AttractorInfluenceFallOff);
-    out->WriteULong(AttractorPositionParam);
-    out->WriteULong(AttractorPositionParamName);
+    out->WriteSLONG(AttractorInfluenceFallOff);
+    out->WriteULONG(AttractorPositionParam);
+    out->WriteULONG(AttractorPositionParamName);
     out->WriteFloat(AttractorInfluenceRadius);
     out->WriteFloat(AttractorInfluenceForce);
     unsigned long n = AttractorUserPointsArray.size();
-    out->WriteULong(n);
+    out->WriteULONG(n);
     if (n <= 0) return;
     {
         unsigned long offset = 0;

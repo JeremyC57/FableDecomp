@@ -139,10 +139,11 @@ class CCPPointerInfo { public:
 };
 void operator delete(void* p);                         // 0x00BFE9BC
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pData;
-    CThing* GetPItem() const;                          // 0x00A01B50
+    CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
 class CAnimationEntry { public:
     unsigned long AnimID;                              // +0x00
@@ -237,7 +238,7 @@ void CCombatActionBase::SetupCombatStrikeEvents()
         if (ParseStrikeEventName(it->Name, isStart, isWeapon, legacy, primaryLegacy) && isStart) {
             if (startFrame == 0)
                 startFrame = 1;
-            CThing* creature = PCreature.GetPItem();
+            CThing* creature = ((CThing*)PCreature.GetPItem());
             CThing* weapon = GetThingDoingDamageFromCreatureAndEventName(creature, it->Name, isWeapon, legacy, primaryLegacy);
             if (weapon && !weapon->Dead) {
                 CTCWeaponTrail* trail;

@@ -36,9 +36,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, bool& value, const bool& defaultValue);                          // 0x004045C0
-    void Transfer(const char* name, long& value, const long& defaultValue);                          // 0x00410BE0
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);  // 0x0044BB00
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0; long 0x00410BE0; unsigned __int64 0x0044BB00
 };
 class CTCOwnedEntity : public CTCBase {         // a real base keeps the vptr word 4 bytes wide next to the __int64
 public:
@@ -55,11 +54,11 @@ void CTCOwnedEntity::OnSerialise(CPersistContext& context, bool)
         long version = 1;
         context.Transfer("VersionNumber", version, 0L);
         unsigned __int64 uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, OwnerUID);
-        context.Transfer("OwnerUID", uid, 0);
+        context.Transfer<unsigned __int64>("OwnerUID", uid, 0);
     } else {
         long version;
         context.Transfer("VersionNumber", version, 0L);
-        context.Transfer("OwnerUID", OwnerUID, 0);
+        context.Transfer<unsigned __int64>("OwnerUID", OwnerUID, 0);
         if (version == 1 && OwnerUID != 0)
             OwnerUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, OwnerUID);
     }

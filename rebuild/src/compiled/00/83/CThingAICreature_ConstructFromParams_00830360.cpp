@@ -21,18 +21,19 @@ class CCharString { public:
     void* PData;
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                              // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CBuildingPointer : CBaseIntelligentPointer {          // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
     CBuildingPointer(CThingBuilding* item) : CBaseIntelligentPointer() { SetPItem((CThing*)item); }
-    CBuildingPointer& operator=(const CBuildingPointer& other) { SetPItem(other.GetPItem()); return *this; }
+    CBuildingPointer& operator=(const CBuildingPointer& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 class CThingAICreatureInit { public:
     CThingPhysical* OriginalThing;              // +0x00

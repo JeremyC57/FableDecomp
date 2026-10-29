@@ -53,7 +53,7 @@ class CPlayer : public CPlayerDonor {
     CCamera GetFreeCamera(float t) const;     // 0x00487180
     CThingPlayerCreature* GetPControlledCreature() const;                   // 0x00487DC0
 };
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970
 class CGameCameraManager { public: bool IsUsingScriptedCameraMode() const; };   // 0x00697AE0
 class CAIGameCameraBase { public:
     virtual void v00();
@@ -86,7 +86,7 @@ CCamera CWorld::GetCurrentSoundCamera(const CInterpolationInfo& info) const
         return GetCurrentRenderCamera(info);
     if (g_pMainGameComponent->IsEditorActive())
         return GetCurrentRenderCamera();
-    CPlayer* player = PlayerManager->GetMainPlayer();
+    CPlayer* player = &PlayerManager->GetMainPlayer();
     if (player->UsingFreeCamera)
         return player->GetFreeCamera(t);
     CGameCameraManager* manager;

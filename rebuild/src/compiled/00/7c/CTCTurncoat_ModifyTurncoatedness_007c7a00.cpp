@@ -56,11 +56,12 @@ class CThing { public:
 };
 CThing* __fastcall CreateParticleEffect(long effect, const C3DVector* pos);   // 0x0072AB70
 
+class CBaseObject;
 struct CBaseIntelligentPointer {                        // 8 bytes: vptr + item
     virtual void v00();
     void* m_pData;
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CThing* item);                        // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {
@@ -69,8 +70,8 @@ struct CIntelligentPointer : CBaseIntelligentPointer {
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer* p);   // 0x004CC340
 inline bool IsThingAlive(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -138,11 +139,11 @@ void CTCTurncoat::ModifyTurncoatedness(float amount)
             if (effect) {
                 {
                     CIntelligentPointer created(CreateParticleEffect(effect, &ParentThing->GetPos()));
-                    TurncoatedEffect.SetPItem(created.GetPItem());
+                    TurncoatedEffect.SetPItem(((CThing*)created.GetPItem()));
                 }
                 if (IS_THING_ALIVE(&TurncoatedEffect)) {
                     CTCDParticleEmitter* emitter;
-                    TurncoatedEffect.GetPItem()->GetInterface(&emitter, 0x4b);
+                    ((CThing*)TurncoatedEffect.GetPItem())->GetInterface(&emitter, 0x4b);
                     emitter->AttachToThing(ParentThing, 8, "", 0, 0.0f);
                 }
             }
@@ -150,7 +151,7 @@ void CTCTurncoat::ModifyTurncoatedness(float amount)
         for (long i = 0; i < TurncoatStageEffects.size(); ++i) {
             if (IsThingAlive(TurncoatStageEffects._M_start[i])) {
                 CIntelligentPointer* start = TurncoatStageEffects._M_start;
-                start[i].GetPItem()->Kill(true);
+                ((CThing*)start[i].GetPItem())->Kill(true);
             }
         }
         TurncoatStageEffects.clear();

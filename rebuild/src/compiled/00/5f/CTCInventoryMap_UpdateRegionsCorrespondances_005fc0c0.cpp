@@ -8,7 +8,7 @@
 //   lists walk newest first (reverse iterators kept in the argument slots); the first find leaves a `bool absent = true`
 //   cleared when it hits, and end() is read once into a named local reused by the second compare and the insert.
 // Layout: CWorld +0x60 message manager (engine/CWorld.h); STLport list nodes {next, prev, data +8}; the message's map
-//   number +0x3C; local view of CTCInventoryMap: region-correspondence list<pair<CRegion*, CRegion*>> +0x24C.
+//   number +0x3C; local view of CTCInventoryMap: region-correspondence list<pair<const CRegion*, const CRegion*>> +0x24C.
 extern "C" void* __cdecl malloc(unsigned int size);     // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
@@ -103,10 +103,10 @@ inline It find(It first, It last, const T& val)
 }
 
 class CRegion;
-struct CRegionPair {                                    // pair<CRegion*, CRegion*>
-    CRegion* first;
-    CRegion* second;
-    CRegionPair(CRegion* a, CRegion* b) : first(a), second(b) {}
+struct CRegionPair {                                    // pair<const CRegion*, const CRegion*>
+    const CRegion* first;
+    const CRegion* second;
+    CRegionPair(const CRegion* a, const CRegion* b) : first(a), second(b) {}
     CRegionPair(const CRegionPair& o) : first(o.first), second(o.second) {}
     bool operator==(const CRegionPair& o) const { return first == o.first && second == o.second; }
 };
@@ -156,7 +156,7 @@ long CMessageEventManager::FindAllMessages(const CBetweenFilter& filter, list<CM
 #pragma auto_inline(on)
 
 class CWorldMap { public:
-    CRegion& GetRegion(long map);                       // 0x004FC180
+    const CRegion& GetRegion(long map) const;           // 0x004FC180
 };
 class CWorld { public:
     virtual void w00(); virtual void w01(); virtual void w02(); virtual void w03(); virtual void w04(); virtual void w05(); virtual void w06();
@@ -196,8 +196,8 @@ void CTCInventoryMap::UpdateRegionsCorrespondances(long startFrame, long endFram
     for (; entered != entereds.rend(); ++left, ++entered) {
         CMessageEvent* from = *left;
         CMessageEvent* to = *entered;
-        CRegion* a = &GetWorld().GetWorldMap()->GetRegion(from->MapNumber);
-        CRegion* b = &GetWorld().GetWorldMap()->GetRegion(to->MapNumber);
+        const CRegion* a = &GetWorld().GetWorldMap()->GetRegion(from->MapNumber);
+        const CRegion* b = &GetWorld().GetWorldMap()->GetRegion(to->MapNumber);
         bool absent = true;
         list<CRegionPair>::iterator it = find(RegionCorrespondances.begin(), RegionCorrespondances.end(), CRegionPair(a, b));
         list<CRegionPair>::iterator last = RegionCorrespondances.end();

@@ -30,8 +30,8 @@ inline CCharString EmptyString()
 }
 
 class CPersistContext { public:
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
-    void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);             // 0x004109A0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: unsigned __int64 0x0044BB00; CCharString 0x004109A0
 };
 
 class CThing { public:
@@ -63,7 +63,7 @@ class CWorldMap { public:
     virtual void v15();
     virtual long GetMapNumberAt(const C3DVector& position) const;   // slot 16 (+0x40)
     long GetRegionNumberMapIsIn(long mapNumber) const;  // 0x004FC190
-    CRegion& GetRegion(long region);                    // 0x004FC180
+    const CRegion& GetRegion(long region) const;        // 0x004FC180
 };
 class CWorld { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -108,6 +108,6 @@ void CPlayerManager::SaveGameState(CPersistContext& context)
     const C3DVector& position = character->GetPos();
     CWorldMap* worldMap = Component->PWorld->PeekWorldMap();
     save.RegionName = worldMap->GetRegion(worldMap->GetRegionNumberMapIsIn(worldMap->GetMapNumberAt(position))).Name;
-    context.Transfer("PlayerCharacterUID", save.CharacterUID, 0);
+    context.Transfer<unsigned __int64>("PlayerCharacterUID", save.CharacterUID, 0);
     context.Transfer("PlayerRegionName", save.RegionName, EmptyString());
 }

@@ -21,11 +21,12 @@
 extern "C" void __cdecl free(void* block);                  // 0x00BFEA14
 
 class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                        // +0x04
     virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
-    CThing* GetPItem() const;                               // 0x00A01B50
+    CBaseObject* GetPItem() const;                               // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {      // CIntelligentPointer<CThing>
 };
@@ -169,7 +170,7 @@ public:
 // The thing behind an intelligent pointer is still there and not dead (descriptive name; retail inlines it).
 inline bool IsThingAlive(const CBaseIntelligentPointer& pointer)
 {
-    return pointer.GetPItem() != 0 && !pointer.GetPItem()->IsDead();
+    return ((CThing*)pointer.GetPItem()) != 0 && !((CThing*)pointer.GetPItem())->IsDead();
 }
 
 bool CThing::WorldUpdate()
@@ -187,7 +188,7 @@ bool CThing::WorldUpdate()
     while (it != TCsToBeRemoved.end()) {
         if (!IsThingAlive(it->PThing))
             it = TCsToBeRemoved.erase(it);
-        else if (it->PThing.GetPItem() == this) {
+        else if (((CThing*)it->PThing.GetPItem()) == this) {
             CTCBase* tc = it->PTC;
             if (tc != 0) {
                 if (tc->IsDriver())

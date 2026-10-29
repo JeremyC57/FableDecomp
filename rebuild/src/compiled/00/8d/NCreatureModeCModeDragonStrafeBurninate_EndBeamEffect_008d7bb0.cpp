@@ -13,12 +13,13 @@ class CThing { public:
     unsigned char m_flags91;                // +0x91 bit 0: dead
     void Kill(bool immediately);            // 0x004C9B80
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
     CBaseIntelligentPointer();              // 0x00A01B10
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
     void SetPItem(CThing* item);            // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -27,8 +28,8 @@ struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -44,10 +45,10 @@ struct CModeDragonStrafeBurninate {
 void CModeDragonStrafeBurninate::EndBeamEffect()
 {
     if (IS_THING_ALIVE(PBeamWeaponEffect)) {
-        PBeamWeaponEffect.GetPItem()->Kill(true);
+        ((CThing*)PBeamWeaponEffect.GetPItem())->Kill(true);
         CIntelligentPointer none;
         none.SetPItem(0);
-        PBeamWeaponEffect.SetPItem(none.GetPItem());
+        PBeamWeaponEffect.SetPItem(((CThing*)none.GetPItem()));
     }
 }
 }

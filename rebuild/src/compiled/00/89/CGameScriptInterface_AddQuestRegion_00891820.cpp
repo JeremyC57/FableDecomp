@@ -25,8 +25,8 @@ class CWorldMap
 {
 public:
     long GetRegionNumberFromName(
-        const CCharString& regionName);
-    CRegion& GetRegion(long regionNumber);
+        const CCharString& regionName) const;   // 0x004FC210
+    const CRegion& GetRegion(long regionNumber) const;   // 0x004FC180
 };
 
 class CQuestManager
@@ -63,7 +63,7 @@ void CGameScriptInterface::AddQuestRegion(
             ->GetRegionNumberFromName(regionName);
     if (regionNumber > 0)
     {
-        CRegion& region =
+        const CRegion& region =
             reinterpret_cast<const CGSIAddQuestRegion_Interface*>(
                 this)->m_World->GetWorldMap()
                 ->GetRegion(regionNumber);

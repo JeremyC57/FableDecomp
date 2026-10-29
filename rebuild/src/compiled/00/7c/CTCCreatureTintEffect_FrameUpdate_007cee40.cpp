@@ -24,10 +24,11 @@ class CThing { public:
     unsigned char m_flags91;                            // +0x91 bit 0: dead
     void RemoveTC(long interfaceType);                  // 0x004C9840
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 template <class T> struct vector {                      // STLport vector, 12 bytes
     T* _M_start; T* _M_finish; T* _M_end_of_storage;
@@ -64,7 +65,7 @@ __forceinline void CTCCreatureTintEffect::SetTint(CThing* parent, float amount)
     CBaseIntelligentPointer* it = TintList.begin();
     CBaseIntelligentPointer* end = TintList.end();
     for (; it != end; ++it) {
-        CThing* thing = it->GetPItem();
+        CThing* thing = ((CThing*)it->GetPItem());
         if (thing && !(thing->m_flags91 & 1) && thing->PGraphicAppearance)
             thing->PGraphicAppearance->SetTintColour(colour, this);
     }

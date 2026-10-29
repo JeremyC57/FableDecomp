@@ -1,45 +1,36 @@
+// behaviour test for 0x0040B750 CUserProfileManager::SetVerticalSyncEnabled: the live value is always stored, the new-profile copy only
+// while UseNewProfileValues; ApplyValues runs every time, Save only when asked (links the row's object)
 #include <cstdio>
-
-class CUserProfileManager { public:
-    char pad0[0xc];
-    char UseNewProfileValues;
-    char pad1[0x50-0x0d];
-    char resetFlag50;
-    char pad2[0x10c-0x51];
-    char VerticalSyncEnabledNewProfile;
+#include <cstring>
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0x43];
+    bool          VerticalSyncEnabled;       // +0x50
+    unsigned char _pad51[0xBB];
+    bool          VerticalSyncEnabledNewProfile; // +0x10C
+    void SetVerticalSyncEnabled(bool value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
-
-static int g_apply = 0;
-static int g_notify = 0;
-void __fastcall CUserProfileManager_Apply(CUserProfileManager* manager) { (void)manager; g_apply++; }
-void __fastcall CUserProfileManager_Notify(CUserProfileManager* manager) { (void)manager; g_notify++; }
-
-void __fastcall CUserProfileManager_SetVerticalSyncEnabled(CUserProfileManager* manager, void* /*edx*/, char resetting, char notify)
+static int g_applies = 0, g_saves = 0;
+void CUserProfileManager::ApplyValues() { ++g_applies; }
+void CUserProfileManager::Save() { ++g_saves; }
+int main()
 {
-    if (manager->UseNewProfileValues)
-        manager->VerticalSyncEnabledNewProfile = resetting;
-    manager->resetFlag50 = resetting;
-    CUserProfileManager_Apply(manager);
-    if (notify)
-        CUserProfileManager_Notify(manager);
-}
-
-int main() {
-    CUserProfileManager o;
-    for (int i = 0; i < (int)sizeof(o); ++i) ((char*)&o)[i] = 0;
-    o.UseNewProfileValues = 1;
-    g_apply = g_notify = 0;
-    CUserProfileManager_SetVerticalSyncEnabled(&o, 0, (char)7, (char)1);
-    if (o.VerticalSyncEnabledNewProfile != 7 || o.resetFlag50 != 7 || g_apply != 1 || g_notify != 1) { std::printf("FAIL case1\n"); return 1; }
-
-    CUserProfileManager o2;
-    for (int i = 0; i < (int)sizeof(o2); ++i) ((char*)&o2)[i] = 0;
-    o2.UseNewProfileValues = 0;
-    o2.VerticalSyncEnabledNewProfile = 99;
-    g_apply = g_notify = 0;
-    CUserProfileManager_SetVerticalSyncEnabled(&o2, 0, (char)3, (char)0);
-    if (o2.VerticalSyncEnabledNewProfile != 99 || o2.resetFlag50 != 3 || g_apply != 1 || g_notify != 0) { std::printf("FAIL case2\n"); return 1; }
-
+    int fails = 0;
+    CUserProfileManager m;
+    std::memset(&m, 0, sizeof(m));
+    m.VerticalSyncEnabled = false; m.VerticalSyncEnabledNewProfile = false;
+    m.SetVerticalSyncEnabled(true, false);
+    if (m.VerticalSyncEnabled != true || m.VerticalSyncEnabledNewProfile != false || g_applies != 1 || g_saves != 0) fails |= 1;
+    m.UseNewProfileValues = true;
+    m.SetVerticalSyncEnabled(false, true);
+    if (m.VerticalSyncEnabled != false || m.VerticalSyncEnabledNewProfile != false || g_applies != 2 || g_saves != 1) fails |= 2;
+    if (sizeof(m) != 0x10D) fails |= 4;
+    if (fails) { std::printf("0040b750_TEST FAIL %d\n", fails); return 1; }
     std::printf("CUserProfileManager_0040b750_TEST PASS\n");
     return 0;
 }

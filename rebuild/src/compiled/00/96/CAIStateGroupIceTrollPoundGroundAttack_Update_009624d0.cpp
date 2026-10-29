@@ -78,22 +78,23 @@ class CTCStealth { public:                             // interface 0x36
 class CTCCreatureModeManager { public:                 // interface 0x31
     bool HasMode(long mode);                    // 0x0073A8A0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // vtable 0x01237F1C
     virtual void v00();
-    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    CIntelligentPointerConstThing(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -201,7 +202,7 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
 {
     if (IS_THING_ALIVE(PTarget)) {
         CTCStealth* stealth;
-        if (PTarget.GetPItem()->GetInterface(&stealth, 0x36))
+        if (((CThing*)PTarget.GetPItem())->GetInterface(&stealth, 0x36))
             stealth->SetAsInDanger(GetCreature(), 3);
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetInterface(&modes, 0x31) && modes->HasMode(0x1e)) {
@@ -212,7 +213,7 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
             }
         }
         if (IS_THING_ALIVE(PTarget)) {
-            C3DVector targetPos = PTarget.GetPItem()->GetPos();
+            C3DVector targetPos = ((CThing*)PTarget.GetPItem())->GetPos();
             const C3DVector& myPos = GetCreature()->GetPos();
             C3DVector toTarget(targetPos.X - myPos.X, targetPos.Y - myPos.Y, targetPos.Z - myPos.Z);
             toTarget.Z = 0.0f;
@@ -238,7 +239,7 @@ void CAIStateGroup_IceTrollPoundGroundAttack::Update()
                 }
             }
             if (IsStillRunnable()) {
-                CThing* target = PTarget.GetPItem();
+                CThing* target = ((CThing*)PTarget.GetPItem());
                 long result = AIAction_CombatPerformActionAndWait(&CCombatAction_StabThing(GetCreature(), target), true);
                 if (result == 1) {
                     Terminate();

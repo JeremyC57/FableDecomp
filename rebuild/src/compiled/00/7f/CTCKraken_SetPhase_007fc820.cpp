@@ -25,10 +25,11 @@ class CWorld { public:
     CCombatManager* CombatManager;                       // +0x4c
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vfptr;
     CThing* m_pItem;
-    CThing* GetPItem() const;                            // 0x00A01B50
+    CBaseObject* GetPItem() const;                            // 0x00A01B50
 };
 struct CIntelligentPointer_CThing : CBaseIntelligentPointer { };
 bool __fastcall IS_THING_ALIVE(const CIntelligentPointer_CThing& thing);   // 0x004CC340
@@ -94,7 +95,7 @@ void CTCKraken::SetPhase(EKrakenBossPhase phase)
     case 2:
         if (!combat->IsCreatureAttacking(*thing)) {
             if (IS_THING_ALIVE(PTarget)) {
-                CThing* target = PTarget.GetPItem();
+                CThing* target = ((CThing*)PTarget.GetPItem());
                 combat->RegisterCombatant(thing, target, false);
             }
         }

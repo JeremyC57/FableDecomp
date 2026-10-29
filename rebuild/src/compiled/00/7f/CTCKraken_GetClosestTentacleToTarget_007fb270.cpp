@@ -89,10 +89,11 @@ public:
         return (T*)it->component;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*  __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
 };
 class CTCKrakenTentacle { public:
     unsigned char _pad00[0x44];
@@ -130,9 +131,9 @@ class CTCKraken { public:
 };
 bool CTCKraken::GetClosestTentacleToTarget(CTentacleIterator& closest)
 {
-    if (Target.GetPItem() && !(Target.GetPItem()->Flags91 & 1) && Tentacles.size() > 0) {
-        C3DVector targetPos(Target.GetPItem()->GetPos());
-        C3DVector bodyPos(Body.GetPItem()->GetPos());
+    if (((CThing*)Target.GetPItem()) && !(((CThing*)Target.GetPItem())->Flags91 & 1) && Tentacles.size() > 0) {
+        C3DVector targetPos(((CThing*)Target.GetPItem())->GetPos());
+        C3DVector bodyPos(((CThing*)Body.GetPItem())->GetPos());
         float heading = ParentThing->PhysicsTC->GetFacingAngleXY();
         float bearing = (float)atan2(targetPos.X - bodyPos.X, targetPos.Y - bodyPos.Y) * 0.15915493667125702f;
         if (bearing < 0.0f || bearing >= 1.0f) {
@@ -143,7 +144,7 @@ bool CTCKraken::GetClosestTentacleToTarget(CTentacleIterator& closest)
         bool found = false;
         float best = 1.0f / Tentacles.size();
         for (STentacleNode* node = Tentacles._M_node->_M_next; node != Tentacles._M_node; node = node->_M_next) {
-            CThing* thing = node->_M_data.GetPItem();
+            CThing* thing = ((CThing*)node->_M_data.GetPItem());
             CTCKrakenTentacle* tentacle;
             thing->GetInterface(&tentacle, 0xe3);
             {
@@ -157,7 +158,7 @@ bool CTCKraken::GetClosestTentacleToTarget(CTentacleIterator& closest)
             }
         }
         if (found) {
-            CThing* thing = closest._M_node->_M_data.GetPItem();
+            CThing* thing = ((CThing*)closest._M_node->_M_data.GetPItem());
             if (thing->HasTC(0x31) && !thing->FindTC<CTCCreatureModeManager>(0x31)->IsModeActive(0x54))
                 return true;
         }

@@ -21,7 +21,7 @@ class CCharString { public:
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
     virtual ~CBaseIntelligentPointer();             // 0x00A01C10
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>
@@ -72,6 +72,6 @@ class CCreatureAction_UnsheatheToShowToSheatheTrophy : public CCreatureAction_Un
 void CCreatureAction_UnsheatheToShowToSheatheTrophy::FinishAction()
 {
     CCreatureAction_UnsheatheItemFromInventory::FinishAction();
-    CThing* creature = PCreature.GetPItem();
-    PCreature.GetPItem()->SetCurrentAction(CCreatureAction_ShowToSheatheTrophy(creature, Trophy.GetPItem(), ShowAnimName));
+    CThing* creature = ((CThing*)PCreature.GetPItem());
+    ((CThing*)PCreature.GetPItem())->SetCurrentAction(CCreatureAction_ShowToSheatheTrophy(creature, ((CThing*)Trophy.GetPItem()), ShowAnimName));
 }

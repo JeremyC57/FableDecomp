@@ -1,52 +1,36 @@
+// behaviour test for 0x0040B110 CUserProfileManager::SetCameraPCBowXYInverted: the live value is always stored, the new-profile copy only
+// while UseNewProfileValues; ApplyValues runs every time, Save only when asked (links the row's object)
 #include <cstdio>
-
-class CUserProfileManager { public:
-    char pad0[0xc];
-    char UseNewProfileValues;
-    char pad1[0x13 - 0xd];
-    char CameraPCBowXYInverted;
-    char pad2[0xd3 - 0x14];
-    char CameraPCBowXYInvertedNewProfile;
+#include <cstring>
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0x6];
+    bool          CameraPCBowXYInverted;     // +0x13
+    unsigned char _pad14[0xBF];
+    bool          CameraPCBowXYInvertedNewProfile; // +0xD3
+    void SetCameraPCBowXYInverted(bool value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
-
-static int g_update = 0;
-static int g_refresh = 0;
-
-void __fastcall UPM_Update(CUserProfileManager* manager) { (void)manager; g_update++; }
-void __fastcall UPM_Refresh(CUserProfileManager* manager) { (void)manager; g_refresh++; }
-
-void __fastcall CUserProfileManager_SetCameraPCBowXYInverted(CUserProfileManager* manager, int edx_pad, char p1, char p2)
-{
-    (void)edx_pad;
-    if (manager->UseNewProfileValues)
-        manager->CameraPCBowXYInvertedNewProfile = p1;
-    manager->CameraPCBowXYInverted = p1;
-    UPM_Update(manager);
-    if (p2)
-        UPM_Refresh(manager);
-}
-
+static int g_applies = 0, g_saves = 0;
+void CUserProfileManager::ApplyValues() { ++g_applies; }
+void CUserProfileManager::Save() { ++g_saves; }
 int main()
 {
-    CUserProfileManager o;
-    for (int i = 0; i < (int)sizeof(o); i++) ((char*)&o)[i] = 0;
-
-    o.UseNewProfileValues = 1;
-    CUserProfileManager_SetCameraPCBowXYInverted(&o, 0, 7, 1);
-    if (o.CameraPCBowXYInvertedNewProfile != 7) { std::printf("FAIL bd3\n"); return 1; }
-    if (o.CameraPCBowXYInverted != 7) { std::printf("FAIL b13\n"); return 1; }
-    if (g_update != 1) { std::printf("FAIL update\n"); return 1; }
-    if (g_refresh != 1) { std::printf("FAIL refresh\n"); return 1; }
-
-    CUserProfileManager o2;
-    for (int i = 0; i < (int)sizeof(o2); i++) ((char*)&o2)[i] = 0;
-    o2.CameraPCBowXYInvertedNewProfile = 99;
-    CUserProfileManager_SetCameraPCBowXYInverted(&o2, 0, 3, 0);
-    if (o2.CameraPCBowXYInvertedNewProfile != 99) { std::printf("FAIL bd3 unchanged\n"); return 1; }
-    if (o2.CameraPCBowXYInverted != 3) { std::printf("FAIL b13_2\n"); return 1; }
-    if (g_update != 2) { std::printf("FAIL update2\n"); return 1; }
-    if (g_refresh != 1) { std::printf("FAIL refresh2\n"); return 1; }
-
+    int fails = 0;
+    CUserProfileManager m;
+    std::memset(&m, 0, sizeof(m));
+    m.CameraPCBowXYInverted = false; m.CameraPCBowXYInvertedNewProfile = false;
+    m.SetCameraPCBowXYInverted(true, false);
+    if (m.CameraPCBowXYInverted != true || m.CameraPCBowXYInvertedNewProfile != false || g_applies != 1 || g_saves != 0) fails |= 1;
+    m.UseNewProfileValues = true;
+    m.SetCameraPCBowXYInverted(false, true);
+    if (m.CameraPCBowXYInverted != false || m.CameraPCBowXYInvertedNewProfile != false || g_applies != 2 || g_saves != 1) fails |= 2;
+    if (sizeof(m) != 0xD4) fails |= 4;
+    if (fails) { std::printf("0040b110_TEST FAIL %d\n", fails); return 1; }
     std::printf("CUserProfileManager_0040b110_TEST PASS\n");
     return 0;
 }

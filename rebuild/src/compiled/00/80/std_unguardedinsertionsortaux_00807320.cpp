@@ -14,16 +14,17 @@
 // Shape: the by-value CIntelligentPointer is copy-constructed in the argument slot: base constructor, own vtable store,
 // then `SetPItem(other.GetPItem())` (GOTCHAS 24m chain); the comparator is loaded once into ebp and pushed first.
 class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* PItem;                          // +0x04
     CBaseIntelligentPointer();              // 0x00A01B10
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
     void SetPItem(CThing* item);            // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
-    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointer(const CIntelligentPointer& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 namespace {
 struct CDoNotUseBinaryPredicate { };        // empty comparator (random order)

@@ -1,54 +1,36 @@
+// behaviour test for 0x0040B210 CUserProfileManager::SetTutorialSystemEnabled: the live value is always stored, the new-profile copy only
+// while UseNewProfileValues; ApplyValues runs every time, Save only when asked (links the row's object)
 #include <cstdio>
-
-class CUserProfileManager { public:
-    char pad0[0xc];
-    char UseNewProfileValues;      // +0xc
-    char pad1[0xa];
-    char TutorialSystemEnabled;     // +0x17
-    char pad2[0xbf];
-    char TutorialSystemEnabledNewProfile;     // +0xd7
+#include <cstring>
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0xA];
+    bool          TutorialSystemEnabled;     // +0x17
+    unsigned char _pad18[0xBF];
+    bool          TutorialSystemEnabledNewProfile; // +0xD7
+    void SetTutorialSystemEnabled(bool value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
-
-static int g_h1 = 0;
-static int g_h2 = 0;
-
-void __fastcall CUserProfileManager_Helper1(CUserProfileManager* manager) { g_h1++; }
-void __fastcall CUserProfileManager_Helper2(CUserProfileManager* manager) { g_h2++; }
-
-void __fastcall CUserProfileManager_SetTutorialSystemEnabled(CUserProfileManager* manager, int edx_dummy, char p1, char p2)
-{
-    if (manager->UseNewProfileValues)
-        manager->TutorialSystemEnabledNewProfile = p1;
-    manager->TutorialSystemEnabled = p1;
-    CUserProfileManager_Helper1(manager);
-    if (p2)
-        CUserProfileManager_Helper2(manager);
-}
-
+static int g_applies = 0, g_saves = 0;
+void CUserProfileManager::ApplyValues() { ++g_applies; }
+void CUserProfileManager::Save() { ++g_saves; }
 int main()
 {
-    CUserProfileManager o;
-    for (int i = 0; i < (int)sizeof(o); i++) ((char*)&o)[i] = 0;
-
-    // Case: flagC set, p2 set
-    o.UseNewProfileValues = 1;
-    g_h1 = g_h2 = 0;
-    CUserProfileManager_SetTutorialSystemEnabled(&o, 0, 5, 7);
-    if (o.TutorialSystemEnabledNewProfile != 5) { std::printf("FAIL d7\n"); return 1; }
-    if (o.TutorialSystemEnabled != 5) { std::printf("FAIL 17\n"); return 1; }
-    if (g_h1 != 1) { std::printf("FAIL h1\n"); return 1; }
-    if (g_h2 != 1) { std::printf("FAIL h2\n"); return 1; }
-
-    // Case: flagC clear, p2 clear
-    o.UseNewProfileValues = 0;
-    o.TutorialSystemEnabledNewProfile = 99;
-    g_h1 = g_h2 = 0;
-    CUserProfileManager_SetTutorialSystemEnabled(&o, 0, 3, 0);
-    if (o.TutorialSystemEnabledNewProfile != 99) { std::printf("FAIL d7-2\n"); return 1; }
-    if (o.TutorialSystemEnabled != 3) { std::printf("FAIL 17-2\n"); return 1; }
-    if (g_h1 != 1) { std::printf("FAIL h1-2\n"); return 1; }
-    if (g_h2 != 0) { std::printf("FAIL h2-2\n"); return 1; }
-
+    int fails = 0;
+    CUserProfileManager m;
+    std::memset(&m, 0, sizeof(m));
+    m.TutorialSystemEnabled = false; m.TutorialSystemEnabledNewProfile = false;
+    m.SetTutorialSystemEnabled(true, false);
+    if (m.TutorialSystemEnabled != true || m.TutorialSystemEnabledNewProfile != false || g_applies != 1 || g_saves != 0) fails |= 1;
+    m.UseNewProfileValues = true;
+    m.SetTutorialSystemEnabled(false, true);
+    if (m.TutorialSystemEnabled != false || m.TutorialSystemEnabledNewProfile != false || g_applies != 2 || g_saves != 1) fails |= 2;
+    if (sizeof(m) != 0xD8) fails |= 4;
+    if (fails) { std::printf("0040b210_TEST FAIL %d\n", fails); return 1; }
     std::printf("CUserProfileManager_0040b210_TEST PASS\n");
     return 0;
 }

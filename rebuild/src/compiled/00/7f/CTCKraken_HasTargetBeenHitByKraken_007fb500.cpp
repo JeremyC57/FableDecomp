@@ -19,7 +19,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointed-t
     CBaseObject* m_pItem;                       // +4 (after the vptr)
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();         // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -55,8 +55,8 @@ class CThing { public:
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -102,11 +102,11 @@ bool CTCKraken::HasTargetBeenHitByKraken()
 {
     Tentacles.remove(CIntelligentPointer(0));
     if (Tentacles.size() > 0 && IS_THING_ALIVE(PTarget)) {
-        CThing* target = PTarget.GetPItem();
+        CThing* target = ((CThing*)PTarget.GetPItem());
         if (target->HasTC(0x42)) {
             CTCEntityEvents* events = (CTCEntityEvents*)target->m_tcs.Find(0x42);
             for (SThingListNode* it = Tentacles._M_node->_M_next; it != Tentacles._M_node; it = it->_M_next) {
-                CThing* tentacle = it->_M_data.GetPItem();
+                CThing* tentacle = ((CThing*)it->_M_data.GetPItem());
                 if (tentacle && !(tentacle->m_flags91 & 1)) {
                     NEntityEvents::CEventHitBy* event;
                     if (events->GetEvent(&event, NEntityEvents::CIsHitEventHitBy(tentacle)))

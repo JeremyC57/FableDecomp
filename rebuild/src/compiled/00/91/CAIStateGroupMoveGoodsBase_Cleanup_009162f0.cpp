@@ -96,7 +96,7 @@ class CTCCreatureModeManager { public:
     void RemoveMode(unsigned long mode);        // 0x0073ABA0
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };     // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
@@ -143,7 +143,7 @@ void CAIStateGroup_MoveGoodsBase::Cleanup()
         }
         if (solid) {
             solid->AddThingNotSolidTo(PBrain->PCreature);
-            solid->AddThingNotSolidTo(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
+            solid->AddThingNotSolidTo(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
         }
         carrying->RemoveThingFromPrimarySlot(false);
         CTCCreatureModeManager* modes;

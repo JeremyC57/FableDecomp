@@ -99,7 +99,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                                   // +0x04
     CBaseIntelligentPointer();                         // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                        // 0x00A01C10
-    CThing* GetPItem() const;                          // 0x00A01B50
+    CBaseObject* GetPItem() const;                          // 0x00A01B50
     void SetPItem(CBaseObject* item);                  // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -158,7 +158,7 @@ public:
         return false;
     }
     const C3DVector& GetPos() const;              // 0x004C73D0
-    CPlayer* GetPlayer() const;                        // 0x004C7A30
+    CPlayer& GetPlayer();                        // 0x004C7A30
     long GetJoystickDeviceNumber() const;              // 0x004C7CA0
 };
 CThing* __fastcall CreateParticleEffect(long type, const C3DVector& position);   // 0x0072AB70
@@ -242,7 +242,7 @@ void CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target)
 {
     PTarget = CIntelligentPointer<CThing>(target);
     PHitLocation = hit.PHitLocation;
-    PWeapon = CIntelligentPointer<CThing>(hit.PWeapon.GetPItem());
+    PWeapon = CIntelligentPointer<CThing>(((CThing*)hit.PWeapon.GetPItem()));
     PointOfHit = hit.Position;
     HitDirection = hit.Direction;
     StrikeStarted = true;
@@ -255,11 +255,11 @@ void CTCMultiStrike::StartMultiHit(const CHitParameters& hit, CThing* target)
         CreateParticleEffect(effect, target->GetPos());
     const CThing* parentThing = ParentThing;
     if (parentThing->HasTC(0x13)) {
-        CThing* weapon = ((CTCWeaponHolder*)parentThing->GetTC(0x13))->PWeapon.GetPItem();
+        CThing* weapon =((CThing*) ((CTCWeaponHolder*)parentThing->GetTC(0x13))->PWeapon.GetPItem());
         if (weapon)
             RemoveEffectOnWeapon(weapon);
     }
-    if (ParentThing->GetPlayer()->IsMainPlayer()) {
+    if (ParentThing->GetPlayer().IsMainPlayer()) {
         CThing* parent = ParentThing;
         CInputManager* input = GFGetSystemManager()->InputManager;
         input->GetJoystick(parent->GetJoystickDeviceNumber())->Rumble(4, CRumbleParams(1.0f, 0.5f, 0.0f, 0.4f, true), 0);

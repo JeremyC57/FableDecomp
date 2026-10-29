@@ -21,7 +21,7 @@ using NCreatureMode::CThing;
 class CThingPlayerCreature : public CThing { };
 
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };       // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970
 class CEngine { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* m_pPlayerManager;              // +0x1c
@@ -67,7 +67,7 @@ struct CModeDragonGetHit : CModeStandBase {
 void CModeDragonGetHit::OnActivate()
 {
     CModeStandBase::OnActivate();
-    PTarget = CIntelligentPointer(g_pEngine->m_pPlayerManager->GetMainPlayer()->GetPControlledCreature());
+    PTarget = CIntelligentPointer(g_pEngine->m_pPlayerManager->GetMainPlayer().GetPControlledCreature());
     if (m_pThing->m_type == 1)
         m_pThing->SetSuspendAnimation(true, this);
 }

@@ -99,7 +99,7 @@ class CRegion { public:                          // 0x58-byte world-map region r
 };
 
 class CWorldMap { public:
-    long GetCurrentRegionNumber();        // 0x004FB150
+    long GetLoadedRegion() const;        // 0x004FB150
 public:
     CRegion& GetRegion(long);   // 0x004FB490
 };
@@ -127,7 +127,7 @@ void CGameScriptInterface::SetHeroWillAsUsable(bool usable) const
         CTCHero* will = hero->GetTC<CTCHero>(0x29);
         will->WillUseOverriddenByScripts = !usable;
         if (usable) {
-            CRegion& region = World->GetWorldMap()->GetRegion(World->GetWorldMap()->GetCurrentRegionNumber());
+            CRegion& region = World->GetWorldMap()->GetRegion(World->GetWorldMap()->GetLoadedRegion());
             CCountedPointer<CRegionDef> def(region.m_pDef.Data);
             if (!def.IsNull()) {
                 if (!def->PreventHeroWillUse)

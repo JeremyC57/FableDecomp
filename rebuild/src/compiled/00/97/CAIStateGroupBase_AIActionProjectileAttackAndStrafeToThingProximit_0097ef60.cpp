@@ -111,22 +111,23 @@ class CThingCreatureBase : public CThing { public:
     bool SetCurrentAction(CCreatureActionBase* action);   // 0x006644F0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointerConstThing(const CIntelligentPointerConstThing& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -197,7 +198,7 @@ EAIActionReturn CAIStateGroupBase::AIAction_ProjectileAttackAndStrafeToThingProx
             modes->RemoveMode(0x19);
         if (IS_THING_ALIVE(target)) {
             CThingCreatureBase* creature = GetCreature();
-            creature->SetCurrentAction(&CCreatureAction_FireMissileWeapon(creature, target.GetPItem()));
+            creature->SetCurrentAction(&CCreatureAction_FireMissileWeapon(creature, ((CThing*)target.GetPItem())));
         }
     }
     if (indicator)

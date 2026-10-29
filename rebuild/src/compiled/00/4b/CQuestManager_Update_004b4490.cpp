@@ -28,7 +28,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                          // 0x00449970
+    CPlayer& GetMainPlayer();                          // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad0[0x1c];
@@ -119,7 +119,7 @@ class CQuestManager { public:
 
 void CQuestManager::Update()
 {
-    CPlayer* player = g_pMainGameComponent->PlayerManager->GetMainPlayer();
+    CPlayer* player = &g_pMainGameComponent->PlayerManager->GetMainPlayer();
     GameInterface->MainPlayerID = player->PlayerID;
     PGameScriptThingManager->FrameUpdate();
     for (_List_node<CPendingDeactivation>* n = PendingQuestsToDeactivate._M_node->_M_next; n != PendingQuestsToDeactivate._M_node; n = n->_M_next) {

@@ -33,7 +33,7 @@ class CRegion { public:                                // 0x58 bytes
 };
 
 class CWorldMap { public:
-    long GetCurrentRegionIndex();               // 0x004FB150
+    long GetLoadedRegion() const;               // 0x004FB150
 public:
     const CRegion& GetRegion(long) const;   // 0x004FC180
 };
@@ -78,7 +78,7 @@ struct CAIStateGroup_MeleeCombatNearbyBase : CAIStateGroupBase {
 void CAIStateGroup_MeleeCombatNearbyBase::OnReadyToAttack()
 {
     if (PBrain->PCreature->GetCombatMode() == 3) {
-        const CRegion& region = PeekWorldMap()->GetRegion(PeekWorldMap()->GetCurrentRegionIndex());
+        const CRegion& region = PeekWorldMap()->GetRegion(PeekWorldMap()->GetLoadedRegion());
         CRegionDefPointer def = region.PDef;
         if (def.m_pDef) {
             if (def->m_noFighting) {

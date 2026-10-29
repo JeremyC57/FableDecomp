@@ -65,7 +65,7 @@ class CThing { public:
     CDefClassBase* m_pDef;                                   // +0x70
     unsigned char  _pad74[0x91 - 0x74];
     unsigned char  m_flags91;                                // +0x91 bit 0: dead
-    CPlayer* GetPlayer_004c7a30();                                    // 0x004C7A30
+    CPlayer& GetPlayer();                                    // 0x004C7A30
     template <class T> __forceinline T* GetTC(long interfaceType)
     {
         ETCInterfaceType type = (ETCInterfaceType)(interfaceType);
@@ -191,6 +191,6 @@ void CCreatureAction_UnsheatheItemFromInventory::PerformAction()
             modeManager = creature->GetTC<CTCCreatureModeManager>(0x31);
     }
     modeManager->RestartCurrentMode();
-    if (GetCreature()->GetPlayer_004c7a30()->IsMainPlayer())
-        GetCreature()->GetPlayer_004c7a30()->SetAggressiveMode(true);
+    if (GetCreature()->GetPlayer().IsMainPlayer())
+        GetCreature()->GetPlayer().SetAggressiveMode(true);
 }

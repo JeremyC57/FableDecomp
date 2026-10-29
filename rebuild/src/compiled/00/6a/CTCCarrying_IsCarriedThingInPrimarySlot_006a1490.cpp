@@ -12,12 +12,13 @@
 // ; jne`, GOTCHAS chunk 172); the flag survives the release in bl and both results share the earlier `return false` tail.
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                    // +0x04
     CBaseIntelligentPointer();                          // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
     void SetPItem(CThing* item);                        // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {  // CIntelligentPointer<CThing>
@@ -35,7 +36,7 @@ struct CCarrySlotMap {                                  // retail CVectorMap<lon
     __forceinline SCarrySlotEntry* FindValue(const CBaseIntelligentPointer& value)
     {
         for (SCarrySlotEntry* it = m_pFirst; it != m_pLast; ++it)
-            if (it->second.GetPItem() == value.GetPItem())
+            if (((CThing*)it->second.GetPItem()) == ((CThing*)value.GetPItem()))
                 return it;
         return m_pLast;
     }

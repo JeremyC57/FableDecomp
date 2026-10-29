@@ -33,7 +33,7 @@ class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
     CCharString(CAFile& file, long length);
-    void UnassignString();                      // 0x0099E9B0
+    protected: void UnassignString(); public:                      // 0x0099E9B0
     void LoadFromFile(CAFile& file, CASuspendableProcess* process, long length); // 0x0099F2E0
 };
 

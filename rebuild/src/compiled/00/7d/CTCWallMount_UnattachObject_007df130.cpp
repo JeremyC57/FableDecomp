@@ -84,7 +84,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;                       // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C for T = CThing
@@ -92,15 +92,15 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem(item);
         return *this;
     }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -129,7 +129,7 @@ struct CTCHeroTrophies {                        // interface 4 (descriptive)
 class CPlayer { public:
     unsigned char                       _pad_0x00[0x34];
     CIntelligentPointer<CThing>         PlayerCharacter;    // +0x34 CIntelligentPointer<CThingPlayerCreature>
-    CThing* GetPlayerCharacter() const { return PlayerCharacter.GetPItem(); }
+    CThing* GetPlayerCharacter() const { return ((CThing*)PlayerCharacter.GetPItem()); }
 };
 class CWorld { public:
     CPlayer* GetCurrentPlayer();                // 0x0049D9D0
@@ -156,11 +156,11 @@ CThing* CTCWallMount::UnattachObject(long* boughtForAmount)
         *boughtForAmount = BoughtForAmount;
     BoughtForAmount = 0;
     if (IS_THING_ALIVE(Trophy)) {
-        CThing* trophy = Trophy.GetPItem();
+        CThing* trophy = ((CThing*)Trophy.GetPItem());
         if (trophy->HasTC(0xdb))
             ((CTCWallMountEffects*)trophy->GetTC(0xdb))->OnTakenOffMount();
         CTCTargeted* targeted;
-        if (Trophy.GetPItem()->GetInterface(&targeted, 9))
+        if (((CThing*)Trophy.GetPItem())->GetInterface(&targeted, 9))
             targeted->Targetable = true;
         CThing* hero = GetWorld().GetCurrentPlayer()->GetPlayerCharacter();
         if (IS_THING_ALIVE(hero) && hero->HasTC(4))
@@ -168,7 +168,7 @@ CThing* CTCWallMount::UnattachObject(long* boughtForAmount)
     }
     ParentThing->SetAsGameStatePersisted(false);
     ParentThing->m_flags92 &= ~0x10;
-    CThing* trophy = Trophy.GetPItem();
+    CThing* trophy = ((CThing*)Trophy.GetPItem());
     Trophy = CIntelligentPointer<CThing>(0);
     return trophy;
 }

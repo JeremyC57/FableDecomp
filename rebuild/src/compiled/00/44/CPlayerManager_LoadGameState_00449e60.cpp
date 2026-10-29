@@ -23,8 +23,8 @@ struct CPlayerSave {                                   // Ego_r.pdb (16 bytes)
     CCharString      RegionName;                       // +0x08
 };
 class CPersistContext { public:
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
-    void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);             // 0x004109A0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: unsigned __int64 0x0044BB00; CCharString 0x004109A0
 };
 class CPlayer { public:
     unsigned char _pad00[0x28];
@@ -74,7 +74,7 @@ void CPlayerManager::LoadGameState(CPersistContext& context)
     }
     CPlayerSave save;
     context.Transfer("PlayerCharacterUID", save.CharacterUID, (unsigned __int64)0);
-    context.Transfer("PlayerRegionName", save.RegionName, "");
+    context.Transfer<CCharString>("PlayerRegionName", save.RegionName, "");
     FindPlayer(MainPlayer)->InitCharacterFromSave(&save);
     CGameJoystickManager::Get()->SetMainPlayerJoystickDeviceNumber(FindPlayer(MainPlayer)->GetJoystickDeviceNumber());
 }

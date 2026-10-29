@@ -15,8 +15,8 @@ class CCharString
 { public:
     CCharStringData* storage;
 
-    CCharStringData* AllocStringData(char* data, long len);
-    void UnassignString();
+    protected: CCharStringData* AllocStringData(const char* data, long len); public:
+    protected: void UnassignString(); public:
     CCharString* GetSubString(CCharString* retVal, unsigned long start, unsigned long len);
 };
 
@@ -24,7 +24,7 @@ static char g_buf[64];
 static long g_freeCount = 0;
 static long g_allocCount = 0;
 
-CCharStringData* CCharString::AllocStringData(char* data, long len)
+CCharStringData* CCharString::AllocStringData(const char* data, long len)
 {
     ++g_allocCount;
     CCharStringData* d = new CCharStringData();

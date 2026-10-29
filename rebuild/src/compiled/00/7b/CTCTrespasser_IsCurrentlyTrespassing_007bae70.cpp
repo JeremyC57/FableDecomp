@@ -62,10 +62,11 @@ public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* _vfptr;
     CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 
 struct CTCBuildingLocation {                    // the owner's interface-117 component (class name unknown)
@@ -89,7 +90,7 @@ bool CTCTrespasser::IsCurrentlyTrespassing()
     CThing* thing = ParentThing;
     if (thing->HasTC(117)) {
         CTCBuildingLocation* location = (CTCBuildingLocation*)thing->GetTC(117);
-        CThing* building = location->PBuilding.GetPItem();
+        CThing* building = ((CThing*)location->PBuilding.GetPItem());
         CTCTrespassable* trespassable;
         if (building && !building->IsDead() && building->GetInterface(&trespassable, 189))
             return trespassable->IsBeingTrespassedIn;

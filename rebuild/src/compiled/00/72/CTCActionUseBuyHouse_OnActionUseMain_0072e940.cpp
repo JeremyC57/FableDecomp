@@ -51,7 +51,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                       // 0x00449970
+    CPlayer& GetMainPlayer();                       // 0x00449970
 };
 CPlayerManager* GetPlayerManager();                 // 0x00686D40
 class CTCHero { public:
@@ -114,7 +114,7 @@ public:
 
 void CTCActionUseBuyHouse::OnActionUseMain(CTCBuyableHouse* house, long money)
 {
-    CThing* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->Dead) {
         CTCHero* heroTC;
         if (hero->GetInterface(&heroTC, 0x29) && heroTC->GiveTutorialForCategory(0x23, false))

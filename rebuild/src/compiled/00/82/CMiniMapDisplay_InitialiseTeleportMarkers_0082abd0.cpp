@@ -58,7 +58,7 @@ template <class T> struct list {                   // STLport list: the header n
 };
 class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex);    // 0x004FC190
-    long GetCurrentRegionNumber();                 // 0x004FB150
+    long GetLoadedRegion() const;                 // 0x004FB150
 };
 struct SMarkerGraphics {                           // a marker's two graphic indices
     long Primary;
@@ -115,7 +115,7 @@ void CMiniMapDisplay::InitialiseTeleportMarkers()
         for (_List_node<CThing*>* node = teleporters._M_node->_M_next; node != teleporters._M_node; node = node->_M_next) {
             CThing* thing = node->_M_data;
             const CTCTeleporter* teleporter;
-            if (worldMap->GetCurrentRegionNumber() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex()) && thing->GetInterface(&teleporter, 0xdd)) {
+            if (worldMap->GetLoadedRegion() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex()) && thing->GetInterface(&teleporter, 0xdd)) {
                 if (teleporter->Active)
                     AddMarker(thing, PeekGuiDef()->MiniMapMarkerGraphics[3].Primary);
                 else

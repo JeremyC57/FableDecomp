@@ -92,12 +92,13 @@ class CThingCreatureBase : public CThingPhysical { public:
     bool IsPerformingAnyAction() const;         // 0x006622A0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerConstCreature;
@@ -108,8 +109,8 @@ struct CIntelligentPointerConstThing : CBaseIntelligentPointer {   // CIntellige
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -122,7 +123,7 @@ struct CIntelligentPointerConstCreature : CBaseIntelligentPointer {   // CIntell
 inline CIntelligentPointerConstThing::CIntelligentPointerConstThing(const CIntelligentPointerConstCreature& other)
     : CBaseIntelligentPointer()
 {
-    SetPItem(other.GetPItem());
+    SetPItem(((CThing*)other.GetPItem()));
 }
 __forceinline bool IS_THING_ALIVE(const CThing* thing)
 {

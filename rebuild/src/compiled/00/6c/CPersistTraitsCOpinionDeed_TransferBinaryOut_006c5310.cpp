@@ -16,12 +16,6 @@
 
 class C3DVector { public: float X, Y, Z; };
 
-struct CDataOutputStream_Methods : CDataOutputStream {
-    void WriteEBOOL(bool value);                    // 0x00993E30
-    void WriteLong(long value);                     // 0x00993EB0
-    void WriteUInt64(unsigned __int64 value);       // 0x00993EC0
-    void Write3DVector(const C3DVector& value);     // 0x00993FD0
-};
 
 class CWorld { public: static long __fastcall GetFrame(); };                           // 0x0049D870
 
@@ -30,12 +24,13 @@ class CThing { public:
     unsigned __int64 UniqueID;                      // +0x18
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();                             // vtable 0x0129C95C
     void* PData;                                    // +0x04 CBaseObjectPointer*
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
     virtual void v00();
@@ -62,9 +57,9 @@ template<class T> struct CPersistTraits<CIntelligentPointer<T> > {
     void TransferBinaryOut(CDataOutputStream* stream, const CIntelligentPointer<T>* value)
     {
         unsigned __int64 uid = 0;
-        if (value->GetPItem() != 0)
-            uid = value->GetPItem()->UniqueID;
-        ((CDataOutputStream_Methods*)stream)->WriteUInt64(uid);
+        if (((CThing*)value->GetPItem()) != 0)
+            uid = ((CThing*)value->GetPItem())->UniqueID;
+        ((CDataOutputStream*)stream)->WriteUHUGE(uid);
     }
 };
 template<> struct CPersistTraits<COpinionDeed*> {
@@ -73,14 +68,14 @@ template<> struct CPersistTraits<COpinionDeed*> {
 
 void CPersistTraits<COpinionDeed*>::TransferBinaryOut(CDataOutputStream* stream, COpinionDeed* const* value)
 {
-    CDataOutputStream_Methods* out = (CDataOutputStream_Methods*)stream;
-    out->WriteLong((*value)->DeedType);
-    out->WriteLong((*value)->DeedHandle);
+    CDataOutputStream* out = (CDataOutputStream*)stream;
+    out->WriteSLONG((*value)->DeedType);
+    out->WriteSLONG((*value)->DeedHandle);
     out->Write3DVector((*value)->Position);
-    out->WriteLong((*value)->GetFrameHappened());
+    out->WriteSLONG((*value)->GetFrameHappened());
     out->WriteEBOOL((*value)->IsCrimeReportedToVillage);
     out->WriteEBOOL((*value)->IsCrime);
-    out->WriteLong((*value)->ExtraData);
+    out->WriteSLONG((*value)->ExtraData);
     CPersistTraits<CIntelligentPointer<CThing> > traits;
     traits.TransferBinaryOut(stream, &(*value)->PTarget);
 }

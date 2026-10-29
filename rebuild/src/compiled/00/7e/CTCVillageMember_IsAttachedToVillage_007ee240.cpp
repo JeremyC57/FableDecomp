@@ -6,10 +6,11 @@
 // Layout: Ego_r.pdb CTCVillageMember (retail = PDB): PVillage +0x10, VillageUID +0x18. No engine header.
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;                        // +0x00
     void* PData;                            // +0x04
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
 };
 
 class CTCVillageMember { public:
@@ -22,7 +23,7 @@ class CTCVillageMember { public:
 
 bool CTCVillageMember::IsAttachedToVillage() const
 {
-    if (PVillage.GetPItem())
+    if (((CThing*)PVillage.GetPItem()))
         return true;
     return VillageUID != 0;
 }

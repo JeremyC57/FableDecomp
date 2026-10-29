@@ -27,8 +27,8 @@ class CCharStringData { public:                        // 17 bytes
 class CCharString {
 public:
     CCharStringData* PStringData;               // +0x00
-    void UnassignString();                      // 0x0099E9B0
-    CCharStringData* AllocStringData(const char* text, long length); // 0x0099EA60
+    protected: void UnassignString(); public:                      // 0x0099E9B0
+    protected: CCharStringData* AllocStringData(const char* text, long length); public: // 0x0099EA60
     void SetAsSubString(const char* text, long length);
 };
 

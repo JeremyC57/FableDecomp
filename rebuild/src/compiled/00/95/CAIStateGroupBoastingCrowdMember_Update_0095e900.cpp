@@ -37,11 +37,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978A0
 class CThing;
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
@@ -124,8 +125,8 @@ void CAIStateGroup_BoastingCrowdMember::Update()
     if (IsRunnable()) {
         CTCCreatureGroupBoastingCrowd* crowd = 0;
         bool hasCrowd;
-        PCrowdThing.GetPItem()->GetInterface(&crowd, 0x74, &hasCrowd);
-        CThing* hero = crowd->PHero.GetPItem();
+        ((CThing*)PCrowdThing.GetPItem())->GetInterface(&crowd, 0x74, &hasCrowd);
+        CThing* hero = ((CThing*)crowd->PHero.GetPItem());
         if (hero && !(hero->m_flags91 & 1)) {
             bool moving = false;
             bool first = true;

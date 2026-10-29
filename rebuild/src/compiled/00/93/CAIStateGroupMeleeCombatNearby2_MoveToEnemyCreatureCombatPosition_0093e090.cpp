@@ -70,11 +70,12 @@ class CThingCreatureBase : public CThing { public:
     bool IsRegisteredCombatant();               // 0x00662410
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {
@@ -82,7 +83,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {
 };
 struct CIntelligentPointerConstThing : CBaseIntelligentPointer {     // CIntelligentPointer<const CThing>, vtable 0x01237F1C
     virtual void v00();
-    CIntelligentPointerConstThing(const CIntelligentPointerCreature& other) : CBaseIntelligentPointer() { SetPItem(other.GetPItem()); }
+    CIntelligentPointerConstThing(const CIntelligentPointerCreature& other) : CBaseIntelligentPointer() { SetPItem(((CThing*)other.GetPItem())); }
 };
 
 class CTCCreatureNavigation { public:                  // interface 7
@@ -158,7 +159,7 @@ bool CAIStateGroup_MeleeCombatNearby2::MoveToEnemyCreatureCombatPosition()
                 lastFrame = CWorld::GetFrame();
             }
             PBrain->PCreature->GetInterface(&navigation, 7);
-            long result = AIAction_MoveToPosProximity(2, pos, 0.5f, &arrived, 5, true, false, true, PEnemy.GetPItem(), false, 0.0f);
+            long result = AIAction_MoveToPosProximity(2, pos, 0.5f, &arrived, 5, true, false, true, ((CThing*)PEnemy.GetPItem()), false, 0.0f);
             if (result == 3) {
                 if (PBrain->PCreature->IsRegisteredCombatant()) {
                     CThingCreatureBase* self = PBrain->PCreature;

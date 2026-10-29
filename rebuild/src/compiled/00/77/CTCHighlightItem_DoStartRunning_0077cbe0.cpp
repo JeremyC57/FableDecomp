@@ -101,12 +101,13 @@ class CThing { public:
 
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                 // +4
     CBaseIntelligentPointer();                       // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
-    CThing* GetPItem() const;                        // 0x00A01B50
+    CBaseObject* GetPItem() const;                        // 0x00A01B50
     void SetPItem(CThing* item);                     // 0x00A01B90
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -136,7 +137,7 @@ void CTCHighlightItem::DoStartRunning()
         CThing* emitter = CreateEffectThing(def->ParticleEmitter, &position, false);
         CIntelligentPointer pointer;
         pointer.SetPItem(emitter);
-        PParticleEmitter.SetPItem(pointer.GetPItem());
+        PParticleEmitter.SetPItem(((CThing*)pointer.GetPItem()));
     }
     LifeTimer = 0;
     StartRunning = false;

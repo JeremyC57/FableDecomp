@@ -47,7 +47,7 @@ struct CBaseIntelligentPointer {
     CBaseObject* m_pItem;                       // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
 class CMessageEvent : public CBaseObject { public: };
@@ -93,22 +93,22 @@ struct CAIStateGroup_MinionKidCalledToMother : CAIStateGroupBase {
 void CAIStateGroup_MinionKidCalledToMother::Update()
 {
     CIntelligentPointerMessage callHome(FindCallHomeEvent());
-    if (callHome.GetPItem() == 0)
+    if (((CThing*)callHome.GetPItem()) == 0)
         return;
     long result = 3;
     do {
-        if (callHome.GetPItem() == 0) {
+        if (((CThing*)callHome.GetPItem()) == 0) {
             Terminate();
             return;
         }
         const CThing* hero = GetPPlayerManager_008fcf80()->GetPMainPlayer()->PeekPControlledCreature();
         if (hero != 0 && !(hero->m_flags91 & 1)) {
-            CThing* mother = GetCreature()->PMother.GetPItem();
+            CThing* mother = ((CThing*)GetCreature()->PMother.GetPItem());
             if (mother != 0 && !(mother->m_flags91 & 1)) {
                 CThingAICreature* creature = GetCreature();
                 float distanceSquared;
                 {
-                    const C3DVector& motherPos = creature->PMother.GetPItem()->GetPos();
+                    const C3DVector& motherPos = ((CThing*)creature->PMother.GetPItem())->GetPos();
                     const C3DVector& pos = creature->GetPos();
                     float dx = pos.X - motherPos.X;
                     float dy = pos.Y - motherPos.Y;
@@ -121,12 +121,12 @@ void CAIStateGroup_MinionKidCalledToMother::Update()
                 } else {
                     bool reached = false;
                     do {
-                        if (callHome.GetPItem() == 0 || (mother = GetCreature()->PMother.GetPItem()) == 0
+                        if (((CThing*)callHome.GetPItem()) == 0 || (mother = ((CThing*)GetCreature()->PMother.GetPItem())) == 0
                                 || (mother->m_flags91 & 1)) {
                             Terminate();
                             break;
                         }
-                        CThing* target = GetCreature()->PMother.GetPItem();
+                        CThing* target = ((CThing*)GetCreature()->PMother.GetPItem());
                         result = AIAction_MoveToThingProximity(2, CIntelligentPointerConstThing(target), 1.2f, &reached, 5,
                             true, false, true, true, 0.0f);
                     } while (result == 4);

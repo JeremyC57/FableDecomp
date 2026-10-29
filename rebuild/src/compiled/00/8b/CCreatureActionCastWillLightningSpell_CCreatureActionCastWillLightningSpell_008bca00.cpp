@@ -109,12 +109,13 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                                  // +4
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -132,7 +133,7 @@ class CCombatActionBase { public:                            // retail sizeof 0x
     unsigned char _pad10[0xa8 - 0x10];
     CBaseIntelligentPointer PTarget;                  // +0xa8
     unsigned char _padb0[0x114 - 0xb0];
-    __forceinline void SetPTarget(CIntelligentPointerThing target) { PTarget.SetPItem(target.GetPItem()); }
+    __forceinline void SetPTarget(CIntelligentPointerThing target) { PTarget.SetPItem(((CThing*)target.GetPItem())); }
     CCombatActionBase(CThingCreatureBase* owner, long actionCode, const CSoundPair& sound);   // 0x00858030
     void SetCombatAnimation(const CCharString& name);   // 0x008574D0
 };
@@ -158,7 +159,7 @@ CCreatureAction_CastWillLightningSpell::CCreatureAction_CastWillLightningSpell(C
     }
     CGameDefinitionManager::Get().GetDef(index, &def);
     CTCSound* sound;
-    if (PCreature.GetPItem()->GetInterface(&sound, 0x10)) {
+    if (((CThing*)PCreature.GetPItem())->GetInterface(&sound, 0x10)) {
         CCharString castSound = g_DefStringTable.GetString(def->CastSound);
         sound->PlaySound(castSound, 0, 0, 0, -1);
     }

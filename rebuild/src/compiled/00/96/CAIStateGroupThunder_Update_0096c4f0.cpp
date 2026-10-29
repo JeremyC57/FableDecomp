@@ -54,19 +54,20 @@ class CThing { public:
     }
 };
 #pragma pack(push, 1)
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
 #pragma pack(pop)
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -167,7 +168,7 @@ void CAIStateGroup_Thunder::Update()
     PBrain->PCreature->GetInterface(&combat, 0xad);
     if (IS_THING_ALIVE(PTargetThing)) {
         CTCStealth* stealth;
-        if (PTargetThing.GetPItem()->GetInterface(&stealth, 0x36))
+        if (((CThing*)PTargetThing.GetPItem())->GetInterface(&stealth, 0x36))
             stealth->SetAsInDanger(PBrain->PCreature, 3);
     }
     switch (combat->GetState()) {
@@ -176,7 +177,7 @@ void CAIStateGroup_Thunder::Update()
             long index = CGameDefinitionManager::Get().GetDefGlobalIndex("SPECIAL_ABILITIES_THUNDER_LIGHTNING_STORM_DEF", true);
             CDefPointer def;
             CGameDefinitionManager::Get().GetDef(index, &def);
-            float dist = Distance2D(PTargetThing.GetPItem(), PBrain->PCreature);
+            float dist = Distance2D(((CThing*)PTargetThing.GetPItem()), PBrain->PCreature);
             if (dist < def->Range && dist > 1.0f) {
                 long result = AIAction_PerformActionAndWait(&CCreatureAction_ThunderLightningStorm(GetCreatureBase()), false);
                 if (result != 0) {

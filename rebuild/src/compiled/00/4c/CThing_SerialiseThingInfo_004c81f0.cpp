@@ -27,9 +27,8 @@ static inline CCharString EmptyCCharString()
 
 class CPersistContext {
 public:
-    void Transfer(const char* name, signed char& value, const signed char& defaultValue);             // 0x004CC5C0
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
-    void Transfer(const char* name, CCharString& value, const CCharString& defaultValue);             // 0x004109A0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: signed char 0x004CC5C0; unsigned __int64 0x0044BB00; CCharString 0x004109A0
 };
 
 class CThing {

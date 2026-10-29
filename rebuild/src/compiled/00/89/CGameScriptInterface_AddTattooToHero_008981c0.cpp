@@ -107,7 +107,7 @@ class CTCHeroMorph { public:
     void UploadTextureMorphsToEngine(CIEngine* engine, CLongSet* morphs, bool b, float f);   // 0x006CA7F0
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };      // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };    // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };    // 0x00449970
 class CGameScriptInterface { public:
     virtual void AddTattooToHero(const CCharString& tattooDefName) const;
     void*            World;                             // +0x04 (engine/CGameScriptInterface.h)
@@ -122,7 +122,7 @@ void CGameScriptInterface::AddTattooToHero(const CCharString& tattooDefName) con
     long index = g_pEngine->PeekDefinitionManager().GetDefGlobalIndexFromName(tattooDefName);
     if (index <= 0)
         return;
-    CThing_Retail* hero = PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!hero || hero->m_dead)
         return;
     C3DVector offset = hero->m_pPhysics->GetFacingVector() * 2.0f;

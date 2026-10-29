@@ -123,7 +123,7 @@ extern SListNode* g_BoastList;                         // 0x013B8A98 (STLport li
 
 struct CComponent { virtual ~CComponent(); };
 class CPlayer { public: void RemoveMode(long mode); };        // 0x00634190
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };   // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970
 
 struct CComponentVector {
     CComponent** _M_start;
@@ -207,7 +207,7 @@ void CTCBoastUI::GlobalUpdate(long)
         Active = false;
         Quitting = false;
         ActivationRequested = false;
-        GetPlayerManager().GetMainPlayer()->RemoveMode(0x20);
+        GetPlayerManager().GetMainPlayer().RemoveMode(0x20);
     }
     if (ActivationRequested) {
         if (Active) {

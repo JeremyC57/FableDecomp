@@ -85,7 +85,7 @@ struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pData;
     virtual ~CBaseIntelligentPointer();                         // 0x00A01C10
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {
     CIntelligentPointer(CThing* item);                  // 0x004A96F0
@@ -107,14 +107,14 @@ class CPlayer { public:
 };
 class CPlayerManager { public:
     CPlayer* GetPlayer_00449960();                               // 0x00449960
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
 class CWorld : public CWorldDonor {
  public:
 };
 class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex);         // 0x004FC190
-    long GetCurrentRegion();                            // 0x004FB150
+    long GetLoadedRegion() const;                            // 0x004FB150
 };
 struct CRegionManager {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -174,7 +174,7 @@ void CTCTeleporter::FrameUpdate()
     }
     long mapIndex = ParentThing->RegionMapIndex;
     long region = GetWorldMap()->GetRegionNumberMapIsIn(mapIndex);
-    if (GetWorldMap()->GetCurrentRegion() == region) {
+    if (GetWorldMap()->GetLoadedRegion() == region) {
     if (!Activated) {
         if (!PDef.IsGuildMarkerOnly()) {
             CThing* parent = ParentThing;
@@ -190,7 +190,7 @@ void CTCTeleporter::FrameUpdate()
     if (!GetRegionManager()->IsMapLoaded(ParentThing->RegionMapIndex))
         return;
     if (GetWorld()->TeleportingEnabled) {
-    CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
     if (IS_THING_ALIVE(hero)) {
         const C3DVector& myPos = ParentThing->GetPos();
         const C3DVector& heroPos = hero->GetPos();
@@ -224,21 +224,21 @@ void CTCTeleporter::FrameUpdate()
     }
     if (!Active)
         return;
-    if (PParticle.GetPItem())
+    if (((CThing*)PParticle.GetPItem()))
         return;
     {
         CIntelligentPointer particle(CreateParticle(PDef->ParticleEffect, &ParentThing->GetPos(), false));
         PParticle = particle;
     }
-    if (!PParticle.GetPItem())
+    if (!((CThing*)PParticle.GetPItem()))
         return;
     CTCDParticleEmitter* emitter = 0;
-    PParticle.GetPItem()->GetInterface(&emitter, 0x4b);
+    ((CThing*)PParticle.GetPItem())->GetInterface(&emitter, 0x4b);
     emitter->AttachToThing(ParentThing, 1, "", 0, 0.0f);
     emitter->SetAlwaysUpdate(true);
     } else {
         if (IS_THING_ALIVE(PParticle)) {
-            PParticle.GetPItem()->Kill(true);
+            ((CThing*)PParticle.GetPItem())->Kill(true);
             CIntelligentPointer none(0);
             PParticle = none;
         }

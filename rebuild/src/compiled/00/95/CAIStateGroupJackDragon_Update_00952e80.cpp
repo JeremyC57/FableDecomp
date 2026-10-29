@@ -55,10 +55,11 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(CThing* item);                // 0x00A01B90
@@ -66,12 +67,12 @@ struct CBaseIntelligentPointer {
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();
     CIntelligentPointerCreature(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -81,7 +82,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                    // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CTCBoss { public:                                // interface 0xad
     bool IsReadyForPhaseChange();               // 0x007AEE90
@@ -132,7 +133,7 @@ struct CAIStateGroup_JackDragon : CAIStateGroupBase {
 
 void CAIStateGroup_JackDragon::Update()
 {
-    PEnemy = CIntelligentPointerCreature(GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature());
+    PEnemy = CIntelligentPointerCreature(GetPPlayerManager()->GetMainPlayer().GetPControlledCreature());
     CTCBoss* boss;
     while (IS_THING_ALIVE(PEnemy) && !IsStopping()) {
         GetCreature()->GetInterface(&boss, 0xad);

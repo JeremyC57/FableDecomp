@@ -127,10 +127,11 @@ class CTCHitLocations { public:                        // interface type 0x7F
     NHitLocations::CHitLocation* GetPCombatFirstHitLocationIntersectionWithTriangle(const CVector<C3DVector>& triangle,
         C3DVector* hitPosition, C3DVector* hitNormal, float tolerance);   // 0x008169B0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;                            // +4
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 extern const float g_Epsilon;                   // 0x0129BA3C (0.0001f, the engine's vector epsilon)
 extern long g_StrikeHitPauseFrames;             // 0x013B86D0
@@ -271,7 +272,7 @@ void CCombatActionBase::ProcessPossibleCreatureStrikeEvent(float time, const std
     }
     if (hit) {
         GetPActiveStrikeEvent()->StruckThingList.push_back_inline(&thing);
-        if (!HasPerformedAction() && IsToPerformActionOnStrike() && PTarget.GetPItem() == &thing) {
+        if (!HasPerformedAction() && IsToPerformActionOnStrike() && ((CThing*)PTarget.GetPItem()) == &thing) {
             PerformAction();
             PerformedAction = true;
         }
@@ -283,9 +284,9 @@ void CCombatActionBase::ProcessPossibleCreatureStrikeEvent(float time, const std
             direction.AccurateNormalise();
         CThing* weapon = GetWeaponUsedInStrikeAction();
         CHitParameters params;
-        thing.GetMeleeHitParameters(hit, *PCreature.GetPItem(), weapon, hitPosition, direction, params);
+        thing.GetMeleeHitParameters(hit, *((CThing*)PCreature.GetPItem()), weapon, hitPosition, direction, params);
         thing.OnHit(params);
-        if (PTarget.GetPItem() == &thing || (!(PTarget.GetPItem() && !(PTarget.GetPItem()->m_flags91 & 1)) && !HitThing))
+        if (((CThing*)PTarget.GetPItem()) == &thing || (!(((CThing*)PTarget.GetPItem()) && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1)) && !HitThing))
             FrameUpdatePauseFrames = g_StrikeHitPauseFrames;
         HitThing = true;
         HitCreature = true;

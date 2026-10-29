@@ -58,7 +58,7 @@ class CPlayer { public:
     CHeroLogBook* PHeroLogBook;                             // +0xf8 (CCountedPointer data)
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                               // 0x00449970
+    CPlayer& GetMainPlayer();                               // 0x00449970
 };
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
@@ -93,7 +93,7 @@ class CUserProfileManager { public:
 void CUserProfileManager::SetAllTutorialsAsGiven()
 {
     CPlayerGuiDef* def = PeekGuiDef();
-    CHeroLogBook* logBook = g_pMainGameComponent->PlayerManager->GetMainPlayer()->PHeroLogBook;
+    CHeroLogBook* logBook = g_pMainGameComponent->PlayerManager->GetMainPlayer().PHeroLogBook;
     for (long i = 0; i < 95; ++i) {
         if (i > 0) {
             CCharString text = def->TutorialText[i];

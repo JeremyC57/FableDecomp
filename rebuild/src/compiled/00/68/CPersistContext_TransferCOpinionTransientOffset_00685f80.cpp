@@ -22,10 +22,10 @@ class COpinionTransientOffset { public:
     void TransferBinaryIn(CMemoryDataInputStream* stream);   // 0x004793F8
 };
 
-struct CPersistContext_TransferableObjectBase {
+class CPersistContext_TransferableComponentGenericType { public:
     virtual void TransferIn();
 };
-template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableObjectBase {   // vtable 0x0125BAB0 for T = COpinionTransientOffset
+template <class T> struct CPersistContext_TransferableComponent : CPersistContext_TransferableComponentGenericType {   // vtable 0x0125BAB0 for T = COpinionTransientOffset
     T* Value;
     CPersistContext_TransferableComponent(T& value) : Value(&value) {}
     virtual void TransferIn();
@@ -40,8 +40,8 @@ class CPersistContext { public:
     CMemoryDataInputStream* PLoadStream;           // +0x24
     CDataOutputStream*      PSaveStream;           // +0x28
     protected: void CheckCRC(const char* name); public:              // 0x00404500
-    void TransferObjectSaveText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BAD60
-    void TransferObjectLoadText(const char* name, CPersistContext_TransferableObjectBase& item);   // 0x009BBA40
+    protected: void TransferObjectSaveText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BAD60
+    protected: void TransferObjectLoadText(const char* name, CPersistContext_TransferableComponentGenericType& item); public:   // 0x009BBA40
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);
 };
 

@@ -10,8 +10,8 @@
 // member address is formed by advancing `this` (`add esi,48h`). The bool parameter is unused.
 // Layout: Ego_r.pdb CTCTrophy with the retail one-pointer lists: BestWitnessesAheadToDate +0x18, Mountable +0x48.
 class CPersistContext { public:
-    void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: long 0x00410BE0; bool 0x004045C0
 };
 
 class CTCTrophy { public:

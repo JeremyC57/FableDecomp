@@ -66,10 +66,11 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                        // +4
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
 };
 class CThingCreatureBase;
 struct CCreaturePointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThingCreatureBase>
@@ -151,14 +152,14 @@ class CCreatureAction_UnsheatheItemFromInventory : public CCreatureActionBase { 
 
 void CCreatureActionBase::FinishAction()
 {
-    if (PCreature.GetPItem() && !PCreature.GetPItem()->Dead) {
+    if (((CThing*)PCreature.GetPItem()) && !((CThing*)PCreature.GetPItem())->Dead) {
         CTCHaste* haste;
-        if (PCreature.GetPItem()->GetInterface(&haste, 0x8c)) {
+        if (((CThing*)PCreature.GetPItem())->GetInterface(&haste, 0x8c)) {
             haste->SpeedSources.Erase(this);
             haste->RecalculateSpeed();
         }
     }
-    if (PCreature.GetPItem() && !PCreature.GetPItem()->Dead) {
+    if (((CThing*)PCreature.GetPItem()) && !((CThing*)PCreature.GetPItem())->Dead) {
         CAnimationEntry* entry = PAnimEntry_Data;
         if (entry && entry->BankIndex && AddedActionAnim) {
             CAnimSet* animSet = GetSingleActionAnimSet(PCreature.GetCreature(), entry->BankIndex);
@@ -174,19 +175,19 @@ void CCreatureActionBase::FinishAction()
     }
     Finished = true;
     if (ReEquipRemovedItem()) {
-        if (PItemRemoved.GetPItem() && !PItemRemoved.GetPItem()->Dead) {
+        if (((CThing*)PItemRemoved.GetPItem()) && !((CThing*)PItemRemoved.GetPItem())->Dead) {
             if (!PCreature.GetCreature()->PeekThingManager()->NonScriptedEntitesPauseMode &&
                 !PCreature.GetCreature()->PeekThingManager()->AllEntitesPauseMode) {
-                PCreature.GetCreature()->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(PCreature.GetCreature(), PItemRemoved.GetPItem(), 0, 150));
+                PCreature.GetCreature()->SetCurrentAction(CCreatureAction_UnsheatheItemFromInventory(PCreature.GetCreature(), ((CThing*)PItemRemoved.GetPItem()), 0, 150));
             }
             else if (PCreature.GetCreature()->IsPlayerCreature()) {
-                PCreature.GetCreature()->SetPItemToUnsheatheAfterCutscene(PItemRemoved.GetPItem());
+                PCreature.GetCreature()->SetPItemToUnsheatheAfterCutscene(((CThing*)PItemRemoved.GetPItem()));
             }
         }
     }
-    if (PCreature.GetPItem() && !PCreature.GetPItem()->Dead) {
+    if (((CThing*)PCreature.GetPItem()) && !((CThing*)PCreature.GetPItem())->Dead) {
         CTCCarrying* carrying;
-        if (PCreature.GetPItem()->GetInterface(&carrying, 0x46)) {
+        if (((CThing*)PCreature.GetPItem())->GetInterface(&carrying, 0x46)) {
             CThingVector items;
             carrying->GetAllItems(items);
             for (CThing** it = items._M_start; it != items._M_finish; ++it) {
@@ -196,7 +197,7 @@ void CCreatureActionBase::FinishAction()
                 }
             }
         }
-        if (PCreature.GetPItem()->HasTC(0xfd))
-            PCreature.GetPItem()->Kill(true);
+        if (((CThing*)PCreature.GetPItem())->HasTC(0xfd))
+            ((CThing*)PCreature.GetPItem())->Kill(true);
     }
 }

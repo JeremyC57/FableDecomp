@@ -46,11 +46,12 @@ class CThingPhysical : public CThing { public:
 };
 struct CThingCreature : public CThingPhysical {
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
@@ -94,12 +95,12 @@ struct CAIStateGroup_UsesSeat : CAIStateGroupBase {
 
 bool CAIStateGroup_UsesSeat::MoveToSeat(long movement)
 {
-    if (PSeat.GetPItem() == 0 || !IsSeatValid())
+    if (((CThing*)PSeat.GetPItem()) == 0 || !IsSeatValid())
         return false;
     CRightHandedSet orientation;
     {
         CTCUserActionPointBase* point;
-        PSeat.GetPItem()->GetInterface(&point, 0x2d);
+        ((CThing*)PSeat.GetPItem())->GetInterface(&point, 0x2d);
         if (!point->GetFreeActionPoint(GetCreature(), &SeatPos, &orientation, &SeatPosIndex))
             return false;
     }
@@ -108,25 +109,25 @@ bool CAIStateGroup_UsesSeat::MoveToSeat(long movement)
     {
         bool reached;
         do {
-            if (PSeat.GetPItem() == 0 || !IsSeatValid())
+            if (((CThing*)PSeat.GetPItem()) == 0 || !IsSeatValid())
                 return false;
             result = AIAction_MoveToPos(2, SeatPos, &reached, movement, true, true, 0, true, 0.0f);
         } while (result == 4);
     }
     if (result != 2)
         return false;
-    if (PSeat.GetPItem() == 0 || !IsSeatValid())
+    if (((CThing*)PSeat.GetPItem()) == 0 || !IsSeatValid())
         return false;
     C3DVector forward = orientation.Forward;
     C3DVector lookPos = forward + PBrain->PCreature->PeekPos();
     do {
-        if (PSeat.GetPItem() == 0 || !IsSeatValid())
+        if (((CThing*)PSeat.GetPItem()) == 0 || !IsSeatValid())
             return false;
         result = AIAction_LookAtPos(2, lookPos, 0x11, 0.0027777f);
     } while (result == 4);
     if (result != 2)
         return false;
-    if (PSeat.GetPItem() == 0 || !IsSeatValid())
+    if (((CThing*)PSeat.GetPItem()) == 0 || !IsSeatValid())
         return false;
     return true;
 }

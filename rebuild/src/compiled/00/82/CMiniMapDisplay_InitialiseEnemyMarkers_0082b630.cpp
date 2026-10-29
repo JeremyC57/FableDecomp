@@ -64,7 +64,7 @@ template <class T> struct list {                   // STLport list: the header n
 };
 class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex);    // 0x004FC190
-    long GetCurrentRegionNumber();                 // 0x004FB150
+    long GetLoadedRegion() const;                 // 0x004FB150
 };
 struct SMarkerGraphics {                           // a marker's two graphic indices
     long Primary;
@@ -128,7 +128,7 @@ void CMiniMapDisplay::InitialiseEnemyMarkers()
             list<CThing*>& creatures = world->GetThingManager()->Lists->Creatures;
             for (_List_node<CThing*>* node = creatures._M_node->_M_next; node != creatures._M_node; node = node->_M_next) {
                 CThing* thing = node->_M_data;
-                if (worldMap->GetCurrentRegionNumber() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex())
+                if (worldMap->GetLoadedRegion() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex())
                     && AreThingsEnemies(hero, thing)
                     && thing->GetDefName() != "CREATURE_BIRD_GUILD_SPARROW"
                     && !IsUnderground(thing)

@@ -22,7 +22,7 @@ public:
     CCharString() : PStringData(0) { ++g_CCharStringInstanceCount; }
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString() { UnassignString(); --g_CCharStringInstanceCount; }
-    void UnassignString();                      // 0x0099E9B0
+    protected: void UnassignString(); public:                      // 0x0099E9B0
 };
 
 CCharString __fastcall operator+(const CCharString& left, const char* right);   // 0x0099F600

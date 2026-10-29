@@ -1,21 +1,32 @@
-class CUserProfileManager { public:
-    char pad0[0xc];
-    unsigned char UseNewProfileValues;   // +0xc
-    char pad1[0x9];
-    unsigned char CameraPCViewHeroYZInverted;  // +0x16
-    char pad2[0xbf];
-    unsigned char CameraPCViewHeroYZInvertedNewProfile;  // +0xd6
+// CUserProfileManager::SetCameraPCViewHeroYZInverted(bool value, bool save) -- store the option (and its new-profile copy while
+// UseNewProfileValues is set), push the live values to the engine, then save the profile when asked
+// Leaf: ?SetCameraPCViewHeroYZInverted@CUserProfileManager@@QAEX_N0@Z
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x0040B1D0, thiscall, `ret 8`.
+// Identity: PDB name set ?SetCameraPCViewHeroYZInverted@CUserProfileManager@@QAEX_N0@Z; the stored field is CameraPCViewHeroYZInverted (retail +0x16) and its
+//   new-profile copy CameraPCViewHeroYZInvertedNewProfile (retail +0xD6) by struct_layouts_egor (retail = PDB below the first STL vector at
+//   +0x54, PDB - 8 after the two AssignedInputs vectors, PDB - 4 in the new-profile block).
+// Callees: CUserProfileManager::ApplyValues() @ 0x00407370 (protected in the PDB name set), CUserProfileManager::Save()
+//   @ 0x0040A740 (builds the profile path and writes the file).
+class CUserProfileManager {
+public:
+    unsigned char _pad00[0x0C];
+    bool          UseNewProfileValues;      // +0x0C
+    unsigned char _pad0D[0x9];
+    bool          CameraPCViewHeroYZInverted; // +0x16
+    unsigned char _pad17[0xBF];
+    bool          CameraPCViewHeroYZInvertedNewProfile; // +0xD6
+    void SetCameraPCViewHeroYZInverted(bool value, bool save);
+    void Save();                                 // 0x0040A740
+protected:
+    void ApplyValues();                          // 0x00407370
 };
 
-extern void __fastcall UPM_helperA(CUserProfileManager* manager);
-extern void __fastcall UPM_helperB(CUserProfileManager* manager);
-
-void __fastcall CUserProfileManager_SetCameraPCViewHeroYZInverted(CUserProfileManager* manager, void* /*edx*/, char p1, char p2)
+void CUserProfileManager::SetCameraPCViewHeroYZInverted(bool value, bool save)
 {
-    if (manager->UseNewProfileValues)
-        manager->CameraPCViewHeroYZInvertedNewProfile = (unsigned char)p1;
-    manager->CameraPCViewHeroYZInverted = (unsigned char)p1;
-    UPM_helperA(manager);
-    if (p2)
-        UPM_helperB(manager);
+    if (UseNewProfileValues)
+        CameraPCViewHeroYZInvertedNewProfile = value;
+    CameraPCViewHeroYZInverted = value;
+    ApplyValues();
+    if (save)
+        Save();
 }

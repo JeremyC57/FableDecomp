@@ -12,13 +12,14 @@
 class CThingCreatureBase;
 class CThing;
 
+class CBaseObject;
 struct CBaseIntelligentPointer
 {
     virtual void v00();
     CThing* m_pItem;                                // +0x04
     CBaseIntelligentPointer();                      // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                     // 0x00A01C10
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
     void SetPItem(CThing* item);                    // 0x00A01B90
 };
 
@@ -130,7 +131,7 @@ bool CAIStateGroup_CreatureUseCoverBase::IsRunnable()
         CThing* target = ((CTCInterface8*)creature->FindEntry(8)->second)->GetTarget();
         if (target && IsToAttackTarget(PBrain->Creature, target))
         {
-            PTargetThing.SetPItem(CIntelligentPointer<CThingCreatureBase>((CThingCreatureBase*)target).GetPItem());
+            PTargetThing.SetPItem(((CThing*)CIntelligentPointer<CThingCreatureBase>((CThingCreatureBase*)target).GetPItem()));
             return IsRunnableLeaf();
         }
     }

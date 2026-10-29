@@ -100,10 +100,11 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* Data;
     void* Info;
-    CThing* GetPItem() const;                          // 0x00A01B50
+    CBaseObject* GetPItem() const;                          // 0x00A01B50
 };
 struct CActionEventPointer { void* Data; void* Info; };
 struct CDispatchActionEventIfActivationFrame {
@@ -238,7 +239,7 @@ void CCreatureActionBase::FrameUpdate()
     FramesRunning = (long)(g_FramesPerSecond * RunningTimeSeconds);
     if (PauseTimer-- == 0) {
         CTCHaste* haste;
-        if (PCreature.GetPItem()->GetInterface(&haste, 0x8c)) {
+        if (((CThing*)PCreature.GetPItem())->GetInterface(&haste, 0x8c)) {
             CCreatureActionBase* key = this;
             haste->Paused.Erase(key);
             haste->Recalculate();
@@ -248,9 +249,9 @@ void CCreatureActionBase::FrameUpdate()
         PauseFrame = -1;
         PauseTimer = (long)((1.0f - GetSpeedScale()) * 5.0f);
         CThing* creature;
-        while ((creature = PCreature.GetPItem())->LacksTC(0x8c)) {
+        while ((creature = ((CThing*)PCreature.GetPItem()))->LacksTC(0x8c)) {
             CCharString name("CTCHaste");
-            PCreature.GetPItem()->AddTC(name, 0, 0);
+            ((CThing*)PCreature.GetPItem())->AddTC(name, 0, 0);
         }
         CTCHaste* haste = (CTCHaste*)creature->m_interfaces.FindInline(0x8c);
         haste->Paused.Insert(SPausePair(this, 0));
@@ -261,14 +262,14 @@ void CCreatureActionBase::FrameUpdate()
         PerformAction();
         PerformedAction = true;
         CTCSound* sound;
-        if (PCreature.GetPItem()->GetInterface(&sound, 0x10))
+        if (((CThing*)PCreature.GetPItem())->GetInterface(&sound, 0x10))
             PlayingSoundID = sound->PlayRandomSound(Sounds, CSoundInit(true, 0, 0));
     }
     while (CutSceneEvents._M_node_count != 0) {
         SCutSceneNode* node = CutSceneEvents._M_header->Left;
         if (FramesRunning < node->Frame)
             break;
-        CThing* creature = PCreature.GetPItem();
+        CThing* creature = ((CThing*)PCreature.GetPItem());
         if (creature->m_presentBits[0x42 >> 5] & (1UL << (0x42 & 31))) {
             CTCEntityEvents* events = (CTCEntityEvents*)creature->m_interfaces.FindInline(0x42);
             events->AddEvent(new CEventCutScene(CutSceneEvents._M_header->Left->Name));

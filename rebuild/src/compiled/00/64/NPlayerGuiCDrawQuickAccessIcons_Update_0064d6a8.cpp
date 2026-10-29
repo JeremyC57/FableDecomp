@@ -19,7 +19,7 @@ template <class T> __declspec(noinline) bool __fastcall IS_THING_ALIVE(const T& 
     return thing != 0 && !(reinterpret_cast<const unsigned char*>(thing)[0x91] & 1);   // CThing dead bit +0x91
 }
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };          // 0x00487DC0
-class CPlayerManager { public: CPlayer* GetMainPlayer(); };                  // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };                  // 0x00449970
 struct CMemoryBuffer { void Copy(unsigned long length, const void* data); };   // 0x009F1760
 class CGameEvent : public CMemoryBuffer { public:
     long          Type;                           // +0x00
@@ -51,7 +51,7 @@ class CDrawQuickAccessIcons { public:
 };
 void CDrawQuickAccessIcons::Update()
 {
-    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (!IS_THING_ALIVE(hero))
         return;
     if (Charging) {

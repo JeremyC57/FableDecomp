@@ -14,8 +14,8 @@ class CCharString
 { public:
     CCharStringData* storage;
 
-    CCharStringData* AllocStringData(char* data, long len);
-    void UnassignString();
+    protected: CCharStringData* AllocStringData(const char* data, long len); public:
+    protected: void UnassignString(); public:
     CCharString* GetSubString(CCharString* retVal, unsigned long start, unsigned long len);
 };
 

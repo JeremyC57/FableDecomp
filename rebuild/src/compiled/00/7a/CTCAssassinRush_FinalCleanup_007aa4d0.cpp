@@ -50,15 +50,16 @@ class CThing { public:
         return false;
     }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void*   __vftable;
     CThing* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -119,7 +120,7 @@ void CTCAssassinRush::FinalCleanup()
         }
     }
     if (IS_THING_ALIVE(AssassinTrail))
-        AssassinTrail.GetPItem()->Kill(true);
+        ((CThing*)AssassinTrail.GetPItem())->Kill(true);
     if (IS_THING_ALIVE(AssassinDisplacementTrail))
-        AssassinDisplacementTrail.GetPItem()->Kill(true);
+        ((CThing*)AssassinDisplacementTrail.GetPItem())->Kill(true);
 }

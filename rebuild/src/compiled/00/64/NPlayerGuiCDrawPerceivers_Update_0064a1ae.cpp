@@ -84,7 +84,7 @@ class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                      // 0x00449970
+    CPlayer& GetMainPlayer();                      // 0x00449970
 };
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
 void* FindRef_free_AreThingsEnemies_1();   // stand-in callee of the stand-in body below
@@ -179,7 +179,7 @@ void CDrawPerceivers::Update()
     State = 0;
     Allegiance = 0;
     ThingCount = 0;
-    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer()->PeekPControlledCreature();
+    const CThingPlayerCreature* hero = PlayerManager->GetMainPlayer().PeekPControlledCreature();
     if (!IS_THING_ALIVE(hero))
         return;
     for (CRetailThingPointerList::iterator it = Things.begin(); it != Things.end(); ) {

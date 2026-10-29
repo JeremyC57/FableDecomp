@@ -34,7 +34,7 @@ struct CBaseIntelligentPointer {                // 8 bytes: vtable + item pointe
     CBaseObject* m_pItem;                       // +4
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // CIntelligentPointer<CThing>, vtable 0x01238C6C
@@ -105,7 +105,7 @@ class CTCShopKeeper { public:
 
 void CTCShopKeeper::OnInitialActivate()
 {
-    Shop = CIntelligentPointer<CThing>(GetCreature()->ShopThing.GetPItem());
+    Shop = CIntelligentPointer<CThing>(((CThing*)GetCreature()->ShopThing.GetPItem()));
     CTCShop* shop = GetShopTC();
     if (!shop) {
         vector<CThing*> shops;
@@ -114,7 +114,7 @@ void CTCShopKeeper::OnInitialActivate()
             CTCShop* candidate = 0;
             if ((*it)->HasTC(0x53))
                 candidate = (CTCShop*)(*it)->GetTC(0x53);
-            CThing* keeper = candidate->PShopKeeper.GetPItem();
+            CThing* keeper = ((CThing*)candidate->PShopKeeper.GetPItem());
             if (!keeper || (keeper->m_flags91 & 1)) {
                 Shop = CIntelligentPointer<CThing>(*it);
                 shop = candidate;

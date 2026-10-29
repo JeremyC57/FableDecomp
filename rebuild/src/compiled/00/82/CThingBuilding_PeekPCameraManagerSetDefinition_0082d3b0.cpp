@@ -81,7 +81,7 @@ class CRegion { public:
     CRegionDef* PDef;                              // +0x24 CDefPointer<const CRegionDef>
 };
 class CWorldMap { public:
-    long GetCurrentRegionIndex() const;            // 0x004FB150
+    long GetLoadedRegion() const;            // 0x004FB150
 public:
     const CRegion& GetRegion(long) const;   // 0x004FC180
 };
@@ -122,7 +122,7 @@ CDefPointer<CCameraManagerSetDef> CThingBuilding::PeekPCameraManagerSetDefinitio
         GetDefinitionManager()->GetDef(PeekPDef()->CameraManagerSet, &def);
         return def;
     }
-    CDefPointer<CRegionDef> regionDef(GetWorld()->GetWorldMap()->GetRegion(GetWorld()->GetWorldMap()->GetCurrentRegionIndex()).PDef);
+    CDefPointer<CRegionDef> regionDef(GetWorld()->GetWorldMap()->GetRegion(GetWorld()->GetWorldMap()->GetLoadedRegion()).PDef);
     const CRegionDef* rdef = regionDef.Object;
     if (rdef && rdef->CameraManagerSet > 0) {
         GetDefinitionManager()->GetDef(rdef->CameraManagerSet, &def);

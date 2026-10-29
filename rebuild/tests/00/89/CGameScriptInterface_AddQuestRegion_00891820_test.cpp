@@ -47,8 +47,8 @@ class CWorldMap
 {
 public:
     long GetRegionNumberFromName(
-        const CCharString& regionName);
-    CRegion& GetRegion(long regionNumber);
+        const CCharString& regionName) const;   // 0x004FC210
+    const CRegion& GetRegion(long regionNumber) const;   // 0x004FC180
 };
 
 class CQuestManager
@@ -83,10 +83,10 @@ public:
 CQuestManager* CGSIAddQuestRegion_QuestManager;
 static CWorld* g_ObservedWorld;
 static CWorldMap* g_WorldMap;
-static CWorldMap* g_ObservedLookupWorldMap;
+static const CWorldMap* g_ObservedLookupWorldMap;
 static const CCharString* g_ObservedRegionName;
 static long g_RegionNumber;
-static CWorldMap* g_ObservedGetRegionWorldMap;
+static const CWorldMap* g_ObservedGetRegionWorldMap;
 static long g_ObservedRegionNumber;
 static CRegion* g_Region;
 static CQuestManager* g_ObservedQuestManager;
@@ -105,7 +105,7 @@ CWorldMap* CTestWorld::GetWorldMap()
 }
 
 long CWorldMap::GetRegionNumberFromName(
-    const CCharString& regionName)
+    const CCharString& regionName) const
 {
     g_ObservedLookupWorldMap = this;
     g_ObservedRegionName = &regionName;
@@ -113,7 +113,7 @@ long CWorldMap::GetRegionNumberFromName(
     return g_RegionNumber;
 }
 
-CRegion& CWorldMap::GetRegion(long regionNumber)
+const CRegion& CWorldMap::GetRegion(long regionNumber) const
 {
     g_ObservedGetRegionWorldMap = this;
     g_ObservedRegionNumber = regionNumber;

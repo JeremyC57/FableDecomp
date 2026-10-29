@@ -21,7 +21,8 @@ class CRightHandedSet { public: C3DVector Up; C3DVector Forward; };
 struct CRetailVector { void* m_first; void* m_last; void* m_end; };   // retail STLport vector, 12 bytes
 
 class CPersistContext { public:
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620
 };
 
 class CTCPhysicsBase { public:                        // 0x40 bytes

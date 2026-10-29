@@ -17,16 +17,17 @@ class CThing { public:
     void FadeOutEffect();                   // 0x0072AC40
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable;                        // +0x00
     void* PData;                            // +0x04
-    CThing* GetPItem() const;               // 0x00A01B50
+    CBaseObject* GetPItem() const;               // 0x00A01B50
 };
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -43,6 +44,6 @@ class CTCTurncoatSpell { public:
 void CTCTurncoatSpell::FinalCleanup()
 {
     if (IS_THING_ALIVE(TurncoatingEffectOnMeOutOfRange))
-        TurncoatingEffectOnMeOutOfRange.GetPItem()->FadeOutEffect();
+        ((CThing*)TurncoatingEffectOnMeOutOfRange.GetPItem())->FadeOutEffect();
     StopTurncoatingEffects();
 }

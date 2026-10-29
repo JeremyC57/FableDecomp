@@ -6,8 +6,8 @@
 // Callees: the shop-thing getter @ 0x005BC4C4, the inline CThing interface lookup for the shopkeeper (kind 0x53: bitset
 // test 0x00410DE0, non-const LowerBound 0x0040F020 -- the landed InitialiseBuyableItems 0x005A30A1 form), the shop type
 // tests 0x00772590 / 0x00772490 / 0x00772510 (names unproven, as in 0x005A30A1; called on the null shop too when the
-// interface is absent), then the 0x0059DE04 loop: CAction() 0x0042BED4, list push_back 0x0042B6B8, the copy ctor
-// 0x0042CD84 for the by-value argument, slot 62 (+0xF8), ~list 0x0042ABCA, _M_increment 0x004292C0, map::clear 0x0042ADE5.
+// interface is absent), then the 0x0059DE04 loop: CDeletion() 0x0042BED4, list push_back 0x0042B6B8, the copy ctor
+// CDeletion(const CDeletion&) 0x0042CD84 for the by-value argument, slot 62 (+0xF8) CComponent::SetDeletion, ~list 0x0042ABCA, _M_increment 0x004292C0, map::clear 0x0042ADE5.
 // Label: the catalog "Shop_CleanupCarryables" is descriptive and wrong (nothing is cleaned up but the map).
 // Shape: the lookup key and the action's list share [ebp-4] (block-scoped key in the inline lookup, the action at
 // [ebp-8] in the loop), `this` and the target component share [ebp-0Ch]. Frame-pointer size TU: `optimize("y", off)` +
@@ -34,14 +34,14 @@ public:
 }
 
 namespace NUISystem {
-enum EActionType { ACTION_TYPE_3 = 3 };
+enum EDeletionMethod { DELETION_METHOD_3 = 3 };
 class CComponent;
-class CAction {                                      // retail 8 bytes
+class CDeletion {                                    // retail 8 bytes (Ego_r.pdb NUISystem::CDeletion)
 public:
-    EActionType                   ActionType;        // +0x00
-    std::list<CComponent*>        UIActionParams;    // +0x04 (see the header: the element is the map's key type here)
-    CAction();                                       // 0x0042BED4
-    CAction(const CAction& other);                   // 0x0042CD84
+    EDeletionMethod               Method;            // +0x00
+    std::list<CComponent*>        AssociatedParents; // +0x04 (see the header: the element is the map's key type here)
+    CDeletion();                                     // 0x0042BED4
+    CDeletion(const CDeletion& other);               // 0x0042CD84
 };
 class CComponent : public CActionParam {
 public:
@@ -56,7 +56,7 @@ public:
     virtual void v49(); virtual void v50(); virtual void v51(); virtual void v52(); virtual void v53(); virtual void v54();
     virtual void v55(); virtual void v56(); virtual void v57(); virtual void v58(); virtual void v59(); virtual void v60();
     virtual void v61();
-    virtual void SetAction(CAction action);          // slot 62 (+0xF8) (name descriptive)
+    virtual void SetDeletion(CDeletion deletion);    // slot 62 (+0xF8)
 };
 }
 
@@ -150,10 +150,10 @@ void CTCInventoryTrade::UpdateSellActionsList()
     if (shop->IsAbilityShop() || shop->IsBarberShop() || shop->IsTattooShop())
         return;
     for (CComponentMap::iterator it = ItemSellLists.begin(); it != ItemSellLists.end(); ++it) {
-        NUISystem::CAction action;
-        action.ActionType = NUISystem::ACTION_TYPE_3;
-        action.UIActionParams.push_back(it->first);
-        it->second->SetAction(action);
+        NUISystem::CDeletion deletion;
+        deletion.Method = NUISystem::DELETION_METHOD_3;
+        deletion.AssociatedParents.push_back(it->first);
+        it->second->SetDeletion(deletion);
     }
     ItemSellLists.clear();
 }

@@ -62,7 +62,7 @@ struct CBaseIntelligentPointer {
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CBaseObject* item);           // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -71,15 +71,15 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     CIntelligentPointer(T* item) : CBaseIntelligentPointer() { SetPItem((CBaseObject*)item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem((CBaseObject*)item);
         return *this;
     }
 };
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -120,20 +120,20 @@ void CTCWillLightning::StartHandEffects()
     if (m_lsState == 6)
         return;
     if (IsRightHanded()) {
-        m_tpRightHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(PrimaryHandEffect, &m_cbpPlayer.GetPItem()->GetPos()));
-        m_tpLeftHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(SecondaryHandEffect, &m_cbpPlayer.GetPItem()->GetPos()));
+        m_tpRightHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(PrimaryHandEffect, &((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
+        m_tpLeftHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(SecondaryHandEffect, &((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
     } else {
-        m_tpRightHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(SecondaryHandEffect, &m_cbpPlayer.GetPItem()->GetPos()));
-        m_tpLeftHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(PrimaryHandEffect, &m_cbpPlayer.GetPItem()->GetPos()));
+        m_tpRightHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(SecondaryHandEffect, &((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
+        m_tpLeftHandEffect = CIntelligentPointer<CThing>(CreateParticleEffect(PrimaryHandEffect, &((CThing*)m_cbpPlayer.GetPItem())->GetPos()));
     }
     if (IS_THING_ALIVE(m_tpRightHandEffect)) {
-        CTCDParticleEmitter* emitter = m_tpRightHandEffect.GetPItem()->GetInterface<CTCDParticleEmitter>(0x4b);
+        CTCDParticleEmitter* emitter = ((CThing*)m_tpRightHandEffect.GetPItem())->GetInterface<CTCDParticleEmitter>(0x4b);
         if (emitter)
-            emitter->AttachToThing(m_cbpPlayer.GetPItem(), 10, g_RightHandAttachmentName, 0, 0.0f);
+            emitter->AttachToThing(((CThing*)m_cbpPlayer.GetPItem()), 10, g_RightHandAttachmentName, 0, 0.0f);
     }
     if (IS_THING_ALIVE(m_tpLeftHandEffect)) {
         CTCDParticleEmitter* emitter = 0;
-        m_tpLeftHandEffect.GetPItem()->GetInterface(&emitter, 0x4b);
-        emitter->AttachToThing(m_cbpPlayer.GetPItem(), 10, g_LeftHandAttachmentName, 0, 0.0f);
+        ((CThing*)m_tpLeftHandEffect.GetPItem())->GetInterface(&emitter, 0x4b);
+        emitter->AttachToThing(((CThing*)m_cbpPlayer.GetPItem()), 10, g_LeftHandAttachmentName, 0, 0.0f);
     }
 }

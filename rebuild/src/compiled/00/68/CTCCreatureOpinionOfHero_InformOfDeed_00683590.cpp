@@ -50,7 +50,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970
 };
 struct CRefCounted {
     long m_count;
@@ -100,7 +100,7 @@ class CTCCreatureOpinionOfHero : public CTCBase { public:
 
 void CTCCreatureOpinionOfHero::InformOfDeed(long deedHandle, bool flag)
 {
-    CThing* hero = GetPlayerManager().GetMainPlayer()->GetPControlledCreature();
+    CThing* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero) {
         CTCHeroOpinionDeedLog* log;
         hero->GetInterface(&log, 0x51);

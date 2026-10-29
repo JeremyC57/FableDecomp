@@ -49,23 +49,24 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(const CThing* item);          // 0x00A01B90
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointerPlayer : CBaseIntelligentPointer {    // CIntelligentPointer<CThingPlayerCreature>, vtable 0x01231C4C
     virtual void v00();
     CIntelligentPointerPlayer(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    CIntelligentPointerPlayer& operator=(const CIntelligentPointerPlayer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerPlayer& operator=(const CIntelligentPointerPlayer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 struct CIntelligentPointerBuilding : CBaseIntelligentPointer {  // CIntelligentPointer<CThingBuilding>, vtable 0x01244344
     virtual void v00();
     CIntelligentPointerBuilding(CThing* item) : CBaseIntelligentPointer() { SetPItem(item); }   // 0x0050F380 out of line
-    CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointerBuilding& operator=(const CIntelligentPointerBuilding& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 
 class CThingAICreature : public CThing { public:
@@ -79,7 +80,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CWorld { public:
     static long __fastcall GetFrame();     // 0x0049D870
@@ -121,9 +122,9 @@ struct CAIStateGroup_MinionReactToCriminal : CAIStateGroupBase {
 
 bool CAIStateGroup_MinionReactToCriminal::IsRunnable()
 {
-    PHero = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
+    PHero = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
     const CThingAICreature* me = PBrain->PCreature;
-    PHome = me->HomeBuilding.GetPItem();
+    PHome = ((CThing*)me->HomeBuilding.GetPItem());
     CThingAICreature* creature = PBrain->PCreature;
     if (creature->HasTC(0x90)) {
         CTCShopKeeper* keeper = creature->GetTC<CTCShopKeeper>(0x90);
@@ -131,14 +132,14 @@ bool CAIStateGroup_MinionReactToCriminal::IsRunnable()
             if (keeper->GetShopTC()->StallLike)
                 return false;
             const CThingAICreature* worker = PBrain->PCreature;
-            PHome = worker->WorkBuilding.GetPItem();
+            PHome = ((CThing*)worker->WorkBuilding.GetPItem());
         }
     }
-    if (PHome.GetPItem() != 0 && !(PHome.GetPItem()->m_flags91 & 1) && PHome.GetPItem()->HasTC(0xab))
+    if (((CThing*)PHome.GetPItem()) != 0 && !(((CThing*)PHome.GetPItem())->m_flags91 & 1) && ((CThing*)PHome.GetPItem())->HasTC(0xab))
         return false;
-    if (PHero.GetPItem() != 0 && !(PHero.GetPItem()->m_flags91 & 1)) {
+    if (((CThing*)PHero.GetPItem()) != 0 && !(((CThing*)PHero.GetPItem())->m_flags91 & 1)) {
         me = PBrain->PCreature;
-        if (IsAwareOfThingImplementation(me, PHero.GetPItem(), false))
+        if (IsAwareOfThingImplementation(me, ((CThing*)PHero.GetPItem()), false))
             return IsValid();
     }
     long fps = g_framesPerSecond;

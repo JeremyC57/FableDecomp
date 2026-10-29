@@ -32,8 +32,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, float& value, const float& defaultValue);                        // 0x00410620
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);  // 0x0044BB00
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620; unsigned __int64 0x0044BB00
 };
 class C3DVector { public: float X, Y, Z; };
 class CTCCameraPointScripted : public CTCBase {
@@ -75,10 +75,10 @@ void CTCCameraPointScripted::OnSerialseLeaf(CPersistContext& context)
     if (context.IsSaving()) {
         if (ThingUID != 0) {
             unsigned __int64 uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, ThingUID);
-            context.Transfer("ThingUID", uid, 0);
+            context.Transfer<unsigned __int64>("ThingUID", uid, 0);
         }
     } else {
-        context.Transfer("ThingUID", ThingUID, 0);
+        context.Transfer<unsigned __int64>("ThingUID", ThingUID, 0);
         if (ThingUID != 0)
             ThingUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, ThingUID);
     }

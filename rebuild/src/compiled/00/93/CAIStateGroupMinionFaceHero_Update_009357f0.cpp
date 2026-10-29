@@ -65,23 +65,24 @@ class CTCPerceiveThing { public:                       // interface 0x34
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870
 extern unsigned long FramesPerSecond;           // 0x01375550
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!p.GetPItem()->IsDead())
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!((CThing*)p.GetPItem())->IsDead())
             return true;
     }
     return false;
@@ -126,7 +127,7 @@ void CAIStateGroup_MinionFaceHero::Update()
         if (GetCreature()->GetInterface(&perceive, 0x34) && perceive->IsPlayerExtendedLineOfSight()
             && IS_THING_ALIVE(PHero)) {
             CThing* creature = GetCreature();
-            const C3DVector& hero = PHero.GetPItem()->GetPos();
+            const C3DVector& hero = ((CThing*)PHero.GetPItem())->GetPos();
             const C3DVector& me = creature->GetPos();
             float dx = me.X - hero.X;
             float dy = me.Y - hero.Y;

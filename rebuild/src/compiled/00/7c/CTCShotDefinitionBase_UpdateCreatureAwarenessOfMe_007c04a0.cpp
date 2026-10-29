@@ -169,9 +169,10 @@ struct CThingVector {
     CThingVector() : _M_start(0), _M_finish(0), _M_end_of_storage(0) {}
     ~CThingVector() { if (_M_start) free(_M_start); }
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* __vftable; void* m_pItem; long m_link;
-    CThing* GetPItem() const;                       // 0x00A01B50
+    CBaseObject* GetPItem() const;                       // 0x00A01B50
 };
 class CThingFilter_IsNot { public: const CThing* Thing; };
 struct CThingFilter_All { CThingFilter_All() {} };
@@ -200,10 +201,10 @@ void CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe()
     long x = (long)pos.X;
     long y = (long)pos.Y;
     C2DBoxI area(x - 5, y - 5, x + 5, y + 5);
-    if (PShooter.GetPItem() && !PShooter.GetPItem()->Dead)
+    if (((CThing*)PShooter.GetPItem()) && !((CThing*)PShooter.GetPItem())->Dead)
     {
         CThingFilter_IsNot filter;
-        filter.Thing = PShooter.GetPItem();
+        filter.Thing = ((CThing*)PShooter.GetPItem());
         GetThingSearchTools()->GetAllThingsInRoughArea(area, filter, things);
     }
     else

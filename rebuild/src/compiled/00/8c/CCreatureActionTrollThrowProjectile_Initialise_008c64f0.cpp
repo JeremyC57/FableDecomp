@@ -142,11 +142,12 @@ class CThingObject : public CThing { public:
                                            CRightHandedSet* orientation, unsigned long flags,
                                            const CCharString& name);   // 0x00703210
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     CThing* m_pItem;
     CBaseIntelligentPointer();                               // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                      // 0x00A01C10
-    CThing* GetPItem() const;                                // 0x00A01B50
+    CBaseObject* GetPItem() const;                                // 0x00A01B50
     void SetPItem(CThing* item);                             // 0x00A01B90
 };
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
@@ -154,7 +155,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointer {
     ~CIntelligentPointerThing();                             // 0x00A01C10
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other)
     {
-        SetPItem(other.GetPItem());
+        SetPItem(((CThing*)other.GetPItem()));
         return *this;
     }
 };
@@ -180,7 +181,7 @@ class CCombatActionBase { public:
     unsigned char           _pad10[0x74 - 0x10];
     CCombatTC*              PCombat;                         // +0x74
     void SetCombatAnimation(const CCharString& name);          // 0x008574D0
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThing* GetCreature() const { return ((CThing*)PCreature.GetPItem()); }
     CDefinitionManager* GetPDefinitionManager() const;       // 0x00692910
     CWorld* GetPWorld() const;                               // 0x00692940
 };

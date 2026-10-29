@@ -33,8 +33,8 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, long& value, const long& defaultValue);                           // 0x00410BE0
-    void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: long 0x00410BE0; unsigned __int64 0x0044BB00
 };
 
 #pragma pack(push, 1)
@@ -80,16 +80,16 @@ public:
 void CTCCreatureGeneratorCreator::OnSerialise(CPersistContext& context, bool fullState)
 {
     if (fullState) {
-        context.Transfer("FrameToRegenerate", FrameToRegenerate, 0);
+        context.Transfer<long>("FrameToRegenerate", FrameToRegenerate, 0);
         if (context.IsSaving()) {
             unsigned __int64 uid = 0;
             if (PGenerator.GetPItem() && !PGenerator.GetPItem()->IsDead()) {
                 uid = PGenerator.GetPItem()->GetUID();
                 uid = GetThingManager().RemapUIDForSerialisation(true, ParentThing->IsLevelLess(), ParentThing->m_level, uid);
             }
-            context.Transfer("GeneratorUID", uid, 0);
+            context.Transfer<unsigned __int64>("GeneratorUID", uid, 0);
         } else {
-            context.Transfer("GeneratorUID", GeneratorUID, 0);
+            context.Transfer<unsigned __int64>("GeneratorUID", GeneratorUID, 0);
             if (GeneratorUID != 0)
                 GeneratorUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, GeneratorUID);
         }

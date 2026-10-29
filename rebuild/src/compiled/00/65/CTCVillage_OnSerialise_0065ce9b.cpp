@@ -91,10 +91,10 @@ back_insert_iterator<vector<long> > __fastcall copy(_Rb_tree_iterator<long> firs
 class CPersistContext {
 public:
     bool IsSaving() const;                                                     // 0x004AEF50
-    void Transfer(const char* name, bool& value);                              // 0x004107C0
-    void Transfer(const char* name, long& value);                              // 0x004110B0
-    void Transfer(const char* name, bool& value, const bool& defaultValue);    // 0x004045C0
-    void Transfer(const char* name, long& value, const long& defaultValue);    // 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004107C0; long 0x004110B0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0; long 0x00410BE0
     void TransferVector(const char* name, std::vector<long>* value);           // 0x005815D6
 };
 
@@ -127,7 +127,7 @@ void CTCVillage::OnSerialise(CPersistContext& context, bool fullSave)
         std::copy(PlayersCrimes.begin(), PlayersCrimes.end(), std::back_inserter(crimes));
         context.TransferVector("PlayersCrimes", &crimes);
         long framesSinceSeen = FramePlayerLastSeenByGuard - CWorld::GetFrame();
-        context.Transfer("FramePlayerLastSeenByGuard", framesSinceSeen, 0);
+        context.Transfer<long>("FramePlayerLastSeenByGuard", framesSinceSeen, 0);
     } else {
         std::vector<long> crimes;
         context.TransferVector("PlayersCrimes", &crimes);

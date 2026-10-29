@@ -46,15 +46,16 @@ class CThing { public:
     unsigned char m_flags91;                    // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -110,8 +111,8 @@ struct CAIStateGroupCreatureAdvanceInCoverMethods : CAIStateGroup_CreatureUseCov
 void CAIStateGroupCreatureAdvanceInCoverMethods::Update()
 {
     CThing* previousCover = 0;
-    if (IS_THING_ALIVE(Cover().GetPItem()))
-        previousCover = Cover().GetPItem();
+    if (IS_THING_ALIVE(((CThing*)Cover().GetPItem())))
+        previousCover = ((CThing*)Cover().GetPItem());
     C3DVector coverPos;
     if (!GetHiddenCoverPosAndSetUpCoverThing(coverPos)) {
         SetFailedToFindCover();
@@ -130,7 +131,7 @@ void CAIStateGroupCreatureAdvanceInCoverMethods::Update()
                 return;
             }
             CThing* creature = GetCreature();
-            AIAction_PerformActionAndWait(&CCreatureAction_ProjectileCrouch(creature, Enemy().GetPItem(), coverPos), false);
+            AIAction_PerformActionAndWait(&CCreatureAction_ProjectileCrouch(creature, ((CThing*)Enemy().GetPItem()), coverPos), false);
         }
         if (MoveIntoCover(coverPos))
             DuckBehindCover(true);
@@ -141,7 +142,7 @@ void CAIStateGroupCreatureAdvanceInCoverMethods::Update()
         return;
     }
     RefreshCoverList();
-    RemoveThingFromCoverList(Cover().GetPItem());
+    RemoveThingFromCoverList(((CThing*)Cover().GetPItem()));
     if (Candidates().size() == 0)
         Terminate();
 }

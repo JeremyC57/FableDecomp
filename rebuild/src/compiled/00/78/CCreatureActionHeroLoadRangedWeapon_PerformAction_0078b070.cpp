@@ -110,12 +110,13 @@ class CTCWeapon { public:                                    // interface 0x48
 class CTCCarrying { public:                                  // interface 0x46
     void PutThingInCarrySlot(CThing* thing, long slot, bool show);   // 0x006A1F80
 };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                        // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                       // 0x00A01C10
-    CThing* GetPItem() const;                         // 0x00A01B50
+    CBaseObject* GetPItem() const;                         // 0x00A01B50
     void SetPItem(CThing* item);                      // 0x00A01B90
 };
 template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:
@@ -123,7 +124,7 @@ template<class T> class CIntelligentPointer : public CBaseIntelligentPointer { p
     __forceinline CIntelligentPointer& operator=(T* item)
     {
         CIntelligentPointer pointer(item);
-        CThing* p = pointer.GetPItem();
+        CThing* p = ((CThing*)pointer.GetPItem());
         SetPItem(p);
         return *this;
     }
@@ -135,7 +136,7 @@ class CCreatureActionBase { public:                          // retail sizeof 0x
     CIntelligentPointer<CThing> PCreature;            // +0x08
     unsigned char _pad10[0xa8 - 0x10];
     CDefinitionManager* GetPDefinitionManager() const;   // 0x00692910
-    CThing* GetCreature() const { return PCreature.GetPItem(); }
+    CThing* GetCreature() const { return ((CThing*)PCreature.GetPItem()); }
 };
 class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public:
     CIntelligentPointer<CThing>       PRangedWeapon;  // +0xa8
@@ -146,7 +147,7 @@ class CCreatureAction_HeroLoadRangedWeapon : public CCreatureActionBase { public
 void CCreatureAction_HeroLoadRangedWeapon::PerformAction()
 {
     CTCWeapon* weapon;
-    if (IS_THING_ALIVE(PRangedWeapon) && PRangedWeapon.GetPItem()->GetInterface(&weapon, 0x48)) {
+    if (IS_THING_ALIVE(PRangedWeapon) && ((CThing*)PRangedWeapon.GetPItem())->GetInterface(&weapon, 0x48)) {
         CTCCarrying* carrying;
         if (GetCreature()->GetInterface(&carrying, 0x46) && weapon->IsAnalogueLoading_005da8f0()) {
             long category = weapon->GetCategoryIdentifier();
@@ -156,8 +157,8 @@ void CCreatureAction_HeroLoadRangedWeapon::PerformAction()
                 GetPDefinitionManager()->GetDef(shot, &def);
                 long objectDef = def->ObjectDefIndex;
                 PAmmo = CreateThingObject(objectDef, GetCreature(), GetCreature(), "");
-                if (IS_THING_ALIVE(PAmmo) && PAmmo.GetPItem()->HasTC(0x47))
-                    carrying->PutThingInCarrySlot(PAmmo.GetPItem(), category, true);
+                if (IS_THING_ALIVE(PAmmo) && ((CThing*)PAmmo.GetPItem())->HasTC(0x47))
+                    carrying->PutThingInCarrySlot(((CThing*)PAmmo.GetPItem()), category, true);
             }
         }
     }

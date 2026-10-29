@@ -63,20 +63,21 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(const CThing* item);          // 0x00A01B90
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     CIntelligentPointer(CThing* thing);         // 0x004A96F0
     CIntelligentPointer& operator=(const CIntelligentPointer& other)   // 0x004A9760
     {
-        SetPItem(other.GetPItem());
+        SetPItem(((CThing*)other.GetPItem()));
         return *this;
     }
 };
@@ -95,7 +96,7 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                     // 0x00487DC0
 };
 class CPlayerManager { public:
-    CPlayer* GetMainPlayer();                   // 0x00449970
+    CPlayer& GetMainPlayer();                   // 0x00449970
 };
 
 class CAIBrain { public:
@@ -128,14 +129,14 @@ bool CAIStateGroup_MazeRangedCombat::IsRunnable()
         const CThing* creature = PBrain->PCreature;
         if (creature->HasTC(8)) {
             CTCTargetingAI* targeting = creature->GetTC<CTCTargetingAI>(8);
-            if (targeting->PEnemy.GetPItem() != 0)
-                PTarget = targeting->PEnemy.GetPItem();
+            if (((CThing*)targeting->PEnemy.GetPItem()) != 0)
+                PTarget = ((CThing*)targeting->PEnemy.GetPItem());
         }
-        if (PTarget.GetPItem() == 0 || (PTarget.GetPItem()->m_flags91 & 1))
-            PTarget = GetPPlayerManager()->GetMainPlayer()->GetPControlledCreature();
-        if (PTarget.GetPItem() != 0 && !(PTarget.GetPItem()->m_flags91 & 1)) {
+        if (((CThing*)PTarget.GetPItem()) == 0 || (((CThing*)PTarget.GetPItem())->m_flags91 & 1))
+            PTarget = GetPPlayerManager()->GetMainPlayer().GetPControlledCreature();
+        if (((CThing*)PTarget.GetPItem()) != 0 && !(((CThing*)PTarget.GetPItem())->m_flags91 & 1)) {
             const CThing* self = PBrain->PCreature;
-            const CThing* target = PTarget.GetPItem();
+            const CThing* target = ((CThing*)PTarget.GetPItem());
             const C3DVector& me = self->GetPos();
             const C3DVector& him = target->GetPos();
             float dx = him.X - me.X;

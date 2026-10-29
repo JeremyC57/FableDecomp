@@ -60,18 +60,19 @@ class CThingCreatureBase : public CThingPhysical { public:
 };
 class CThingObject : public CThing { public: };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {                // 8 bytes: vptr + the pointee link
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
     void SetPItem(const CThing* item);          // 0x00A01B90
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
 };
 struct CIntelligentPointer : CBaseIntelligentPointer {   // CIntelligentPointer<CThing>, vtable 0x01238C6C
     virtual void v00();
     template<class U> CIntelligentPointer(U* const& thing) : CBaseIntelligentPointer() { SetPItem(thing); }
-    CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    CIntelligentPointer& operator=(const CIntelligentPointer& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 
 class CThingPhysicsMeshInfo { public:
@@ -164,9 +165,9 @@ bool CAIStateGroup_KidWatchHopscotch::IsRunnable()
             PHopscotchBoard = board;
         }
         CTCPhysicsBase* physics;
-        PHopscotchBoard.GetPItem()->GetInterface(&physics, 2);
+        ((CThing*)PHopscotchBoard.GetPItem())->GetInterface(&physics, 2);
         const CThingPhysicsMeshInfo* mesh = physics->GetPhysicsMeshInfo();
-        HopscotchCentre = mesh->ToCentre + PHopscotchBoard.GetPItem()->GetPos();
+        HopscotchCentre = mesh->ToCentre + ((CThing*)PHopscotchBoard.GetPItem())->GetPos();
         HopscotchRadius = mesh->BoundingCircleRadius;
         return true;
     }

@@ -61,23 +61,24 @@ class CTCCreatureNavigation { public:                  // interface 7
     bool GetNearbyWanderPosition(const C3DVector& centre, float radius, C3DVector* result, bool onMap);   // 0x006CB6E0
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
 };
 template <class T>
 class CIntelligentPointer : public CBaseIntelligentPointer { public:
     virtual void v00();
-    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(other.GetPItem()); }
+    __forceinline CIntelligentPointer(const CBaseIntelligentPointer& other) { SetPItem(((CThing*)other.GetPItem())); }
 };
 __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->m_flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->m_flags91 & 1))
             return true;
     }
     return false;
@@ -139,7 +140,7 @@ void CAIStateGroup_HoverWanderAroundThing::Update()
         GetCreature()->GetInterfaceT(&navigation, 7);
         C3DVector target;
         if (IS_THING_ALIVE(PThing)
-            && navigation->GetNearbyWanderPosition(PThing.GetPItem()->GetPos(), 5.0f, &target, false)) {
+            && navigation->GetNearbyWanderPosition(((CThing*)PThing.GetPItem())->GetPos(), 5.0f, &target, false)) {
             if (AIAction_LookAtThing(1, CIntelligentPointer<const CThing>(PThing), 0x11, 0.05f) != 2) {
                 Terminate();
                 return;
@@ -152,7 +153,7 @@ void CAIStateGroup_HoverWanderAroundThing::Update()
                     Terminate();
                     return;
                 }
-                result = AIAction_MoveToPosAndFacePos(2, target, PThing.GetPItem()->GetPos(), reached, movement);
+                result = AIAction_MoveToPosAndFacePos(2, target, ((CThing*)PThing.GetPItem())->GetPos(), reached, movement);
             } while (result == 4);
             if (result != 2) {
                 Terminate();

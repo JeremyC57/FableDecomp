@@ -16,7 +16,8 @@
 class CPersistContext { public:
     unsigned char _pad[0x18];                               // PDefinitionManager .. Finished
     long          Mode;                                     // +0x18 EMode
-    void Transfer(const char* name, bool& value, const bool& defaultValue);   // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0
 };
 
 struct CTCDoor_Methods : CTCDoor {

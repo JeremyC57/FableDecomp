@@ -96,10 +96,11 @@ public:
     }
 };
 
+class CBaseObject;
 struct CBaseIntelligentPointer {
     void* _vptr;
     void* m_pItem;
-    CThing* GetPItem() const;                           // 0x00A01B50
+    CBaseObject* GetPItem() const;                           // 0x00A01B50
 };
 
 class CCharString { public:
@@ -228,10 +229,10 @@ class CEventKnockedOut : public CEventBase { public:
 
 void CEventKnockedOut::OnAdd(const CTCEntityEvents& events)
 {
-    if (m_pKnockedOutBy.GetPItem() == 0)
+    if (((CThing*)m_pKnockedOutBy.GetPItem()) == 0)
         return;
     CTCHeroStats* stats;
-    if (!m_pKnockedOutBy.GetPItem()->GetInterface(&stats, 4))
+    if (!((CThing*)m_pKnockedOutBy.GetPItem())->GetInterface(&stats, 4))
         return;
     CDefPointer<CDefClassBase> def;
     CGameDefinitionManager::Get().GetDef(events.GetThing()->GetGlobalDefIndex(), &def);

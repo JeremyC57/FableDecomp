@@ -13,9 +13,8 @@
 // const references, homed in the frame word (first) and then the dead context-argument slot; the
 // unused bool parameter only shows in `ret 8`.
 class CPersistContext { public:
-    void Transfer(const char* name, float& value, const float& defaultValue);   // 0x00410620
-    void Transfer(const char* name, long& value, const long& defaultValue);     // 0x00410BE0
-    void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: float 0x00410620; long 0x00410BE0; bool 0x004045C0
 };
 
 class CThing;

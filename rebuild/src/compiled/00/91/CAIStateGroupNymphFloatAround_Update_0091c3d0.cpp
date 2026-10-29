@@ -74,18 +74,19 @@ class CThing { public:
     }
 };
 class CThingCreatureBase : public CThing { public: };
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;                            // +0x04
     CBaseIntelligentPointer();                  // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(const CThing* item);          // 0x00A01B90
 };
 struct CIntelligentPointerCreature : CBaseIntelligentPointer {     // CIntelligentPointer<CThingCreatureBase>, vtable 0x0123E7D8
     virtual void v00();
     __forceinline CIntelligentPointerCreature(CThingCreatureBase* item) : CBaseIntelligentPointer() { SetPItem(item); }
-    __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = other.GetPItem(); SetPItem(item); return *this; }
+    __forceinline CIntelligentPointerCreature& operator=(const CIntelligentPointerCreature& other) { CThing* item = ((CThing*)other.GetPItem()); SetPItem(item); return *this; }
 };
 #pragma pack(push, 1)
 class CTCNymph { public:
@@ -175,9 +176,9 @@ void CAIStateGroup_NymphFloatAround::Update()
         PBrain->Yield();
     }
     nymph->StopFlyingAround(-1);
-    if (nymph->PTarget.GetPItem()) {
+    if (((CThing*)nymph->PTarget.GetPItem())) {
         const CThing* creature = GetCreature();
-        const CThing* target = nymph->PTarget.GetPItem();
+        const CThing* target = ((CThing*)nymph->PTarget.GetPItem());
         const C3DVector& from = creature->GetPos();
         const C3DVector& to = target->GetPos();
         C3DVector direction(to.X - from.X, to.Y - from.Y, 0.0f);

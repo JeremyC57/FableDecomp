@@ -46,7 +46,7 @@ template <class T> struct list {                   // STLport list: the header n
 };
 class CWorldMap { public:
     long GetRegionNumberMapIsIn(long mapIndex);    // 0x004FC190
-    long GetCurrentRegionNumber();                 // 0x004FB150
+    long GetLoadedRegion() const;                 // 0x004FB150
 };
 struct SMarkerGraphics {                           // a marker's two graphic indices
     long Primary;
@@ -103,7 +103,7 @@ void CMiniMapDisplay::InitialiseHouseMarkers()
         list<CThing*>& houses = world->GetThingManager()->Lists->Houses;
         for (_List_node<CThing*>* node = houses._M_node->_M_next; node != houses._M_node; node = node->_M_next) {
             CThing* thing = node->_M_data;
-            if (worldMap->GetCurrentRegionNumber() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex()) && thing->HasTC(0xd5)) {
+            if (worldMap->GetLoadedRegion() == worldMap->GetRegionNumberMapIsIn(thing->GetMapIndex()) && thing->HasTC(0xd5)) {
                 const CTCBuyableHouse* house = thing->GetTC<CTCBuyableHouse>(0xd5);
                 if (house->OwnedByHero)
                     AddMarker(thing, PeekGuiDef()->MiniMapMarkerGraphics[4].Primary);

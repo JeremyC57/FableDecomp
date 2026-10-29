@@ -88,11 +88,12 @@ class CWorld { public:
 };
 unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
 extern long g_FramesPerSecond;                  // 0x01375550
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     CThing* m_pItem;
     CBaseIntelligentPointer();                  // 0x00A01B10
-    CThing* GetPItem() const;                   // 0x00A01B50
+    CBaseObject* GetPItem() const;                   // 0x00A01B50
     void SetPItem(CThing* item);                // 0x00A01B90
     virtual ~CBaseIntelligentPointer();                 // 0x00A01C10
 };
@@ -103,7 +104,7 @@ struct CIntelligentPointerCreature : CBaseIntelligentPointer {   // vptr 0x01238
 struct CIntelligentPointerThing : CBaseIntelligentPointer {
     CIntelligentPointerThing(CThing* thing);    // 0x004A96F0
     CIntelligentPointerThing& operator=(const CIntelligentPointerThing& other);   // 0x004A9760
-    CIntelligentPointerThing& operator=(const CIntelligentPointerCreature& other) { SetPItem(other.GetPItem()); return *this; }
+    CIntelligentPointerThing& operator=(const CIntelligentPointerCreature& other) { SetPItem(((CThing*)other.GetPItem())); return *this; }
 };
 class CSummonerDef { public:
     unsigned char _pad[0x28];

@@ -11,8 +11,8 @@
 class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                  // +0x18
-    void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0
-    void Transfer(const char* name, long& value, const long& defaultValue);     // 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // CPersistContext::Transfer<T> (member template, PDB)
+    //   instances here: bool 0x004045C0; long 0x00410BE0
 };
 class CTCDCameraPoint { public:
     virtual void v00();
@@ -32,7 +32,7 @@ void CTCDCameraPoint::Persist(CPersistContext* context, bool flag)
         context->Transfer("CutOutOf", CutOutOf, false);
         context->Transfer("TestAngleBeforeActivation", TestAngleBeforeActivation, false);
         long type;
-        context->Transfer("PointType", type, 0);
+        context->Transfer<long>("PointType", type, 0);
         Type = type;
     }
 }

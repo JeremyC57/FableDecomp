@@ -123,12 +123,13 @@ template<class T> inline bool IS_THING_ALIVE(T* const& p)
 }
 
 #pragma pack(push, 1)
+class CBaseObject;
 struct CBaseIntelligentPointer {
     virtual void v00();
     void* m_pItem;                                          // +0x04
     CBaseIntelligentPointer();                              // 0x00A01B10
     virtual ~CBaseIntelligentPointer();                             // 0x00A01C10
-    CThing* GetPItem() const;                               // 0x00A01B50
+    CBaseObject* GetPItem() const;                               // 0x00A01B50
     void SetPItem(CThing* item);                            // 0x00A01B90
 };
 template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { public:   // vtable 0x01238C6C
@@ -136,7 +137,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
     CIntelligentPointer(T* item) { SetPItem(item); }
     CIntelligentPointer& operator=(const CIntelligentPointer& other)
     {
-        CThing* item = other.GetPItem();
+        CThing* item = ((CThing*)other.GetPItem());
         SetPItem(item);
         return *this;
     }
@@ -145,8 +146,8 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 
 inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 {
-    if (p.GetPItem() != 0) {
-        if (!(p.GetPItem()->Flags91 & 1))
+    if (((CThing*)p.GetPItem()) != 0) {
+        if (!(((CThing*)p.GetPItem())->Flags91 & 1))
             return true;
     }
     return false;
@@ -202,8 +203,8 @@ void CTCKrakenTentacle::PerformStrikeDamage()
 {
     if (IS_THING_ALIVE(PKraken)) {
         CTCKraken* kraken;
-        PKraken.GetPItem()->GetInterface(&kraken, 0xe2);
-        CThing* target = kraken->PTarget.GetPItem();
+        ((CThing*)PKraken.GetPItem())->GetInterface(&kraken, 0xe2);
+        CThing* target = ((CThing*)kraken->PTarget.GetPItem());
         if (IS_THING_ALIVE(target)) {
             C3DVector facing = ParentThing->m_pPhysics->GetFacingVector();
             C3DVector pos = ParentThing->GetPos();

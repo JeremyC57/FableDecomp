@@ -9,7 +9,7 @@
 // Layout: CTCStealth RegionBasedMaxNumberOfDangerThings +0x48 (retail = PDB). CWorldMap::CRegion PDef at retail +0x24 (PDB +0x2C, two
 // 12-byte vectors); CRegionDef MaxNumAttackersOnHero at retail +0x98 (PDB +0xA4; retail CSoundMap is 12 bytes smaller, as the landed
 // CGameScriptInterface rows).
-// Shape: `GetWorld()->GetWorldMap()->GetRegion(GetWorld()->GetWorldMap()->GetCurrentRegionNumber())` (both GetWorld calls first); the
+// Shape: `GetWorld()->GetWorldMap()->GetRegion(GetWorld()->GetWorldMap()->GetLoadedRegion())` (both GetWorld calls first); the
 // def is copied twice: a by-value `HasDef()` style test (copy, null test, release with its null test) and a copy dereferenced for the
 // value whose release has no null test.
 class CRegionDef { public:
@@ -35,7 +35,7 @@ class CRegion { public:                                // CWorldMap::CRegion
     CDefPointer<CRegionDef> PDef;               // +0x24 (PDB +0x2C)
 };
 class CWorldMap { public:
-    long GetCurrentRegionNumber();              // 0x004FB150
+    long GetLoadedRegion() const;              // 0x004FB150
 public:
     CRegion& GetRegion(long);   // 0x004FB490
 };
@@ -63,7 +63,7 @@ void CTCStealth::OnSetInLimbo(bool on)
 {
     RegionBasedMaxNumberOfDangerThings = -1;
     if (!on) {
-        CRegion& region = GetWorld().GetWorldMap()->GetRegion(GetWorld().GetWorldMap()->GetCurrentRegionNumber());
+        CRegion& region = GetWorld().GetWorldMap()->GetRegion(GetWorld().GetWorldMap()->GetLoadedRegion());
         if (CDefPointerTest<CRegionDef>(region.PDef).Object != 0)
             RegionBasedMaxNumberOfDangerThings = CDefPointer<CRegionDef>(region.PDef)->MaxNumAttackersOnHero;
     }
