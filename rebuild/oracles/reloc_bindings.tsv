@@ -35136,3 +35136,17 @@ _icomp	00ca1bc0	00ca1be0
 ?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z	006d7b80	005d64dd
 ?GetExperienceAbilityColour@CTCInventoryExperience@@QAE?AVCRGBFloatColour@@W4EHeroAbility@@@Z	0056edd2	005d64dd
 ?GetExperienceAbilityName@CTCInventoryExperience@@QAE?AVCWideString@@J@Z	0056f2bd	005d64dd
+??0?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@PAVCModeSitBase@NCreatureMode@@@Z	008ab380	0093b1d0
+??0CCreatureAction_SheatheWeapons@@QAE@AAVCThingCreatureBase@@@Z	008cc370	0093b1d0
+??0CCreatureAction_SitDown@@QAE@AAVCThingCreatureBase@@ABVCAnimationEntry@@V?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@@Z	008ab9d0	0093b1d0
+??1?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@XZ	008ab3d0	0093b1d0
+??1CCreatureAction_SitDown@@UAE@XZ	008abaa0	0093b1d0
+??_7CModeSitFloor@NCreatureMode@@6B@	01267bbc	0093b1d0
+?AIAction_LookAtPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@JM@Z	0097d580	0093b1d0
+?AIAction_MoveToPos@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@W4EAIActionRepeat@@VC3DVector@@AA_NW4EMovementType@@_N4PBVCThing@@4M@Z	0097ec00	0093b1d0
+?AIAction_PerformAction@CAIStateGroupBase@@IAE?AW4EAIActionReturn@@ABVCCreatureActionBase@@@Z	0097d8b0	0093b1d0
+?GetFreeActionPoint@CTCUserActionPointBase@@QAE_NAAVCThing@@AAVC3DVector@@AAVCRightHandedSet@@AAJ@Z	007fede0	0093b1d0
+?GetPhysPos@CThing@@QBE?AVC3DVector@@XZ	004c7950	0093b1d0
+?GetRandomAnimFromNameWithFilter@CThingCreatureBase@@QBEABVCAnimationEntry@@ABVCCharString@@ABVCAnimFilterBase@@@Z	00662ef0	0093b1d0
+?Rotate@C2DVector@@QAEXM@Z	00a141d0	0093b1d0
+?SitMain@CAIStateGroup_BanditSitRoundCampfire@@AAE_NXZ	0093ad70	0093b1d0

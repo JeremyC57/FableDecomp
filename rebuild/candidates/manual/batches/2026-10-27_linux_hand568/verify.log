@@ -1,0 +1,9 @@
+addr       parity           behav  name
+0093b1d0   WARN RELOC_NAME: ??1?$CCountedPointer@VCModeSitBase@NCreatureMode@@@@QAE@XZ -> 008ab3d0 labelled '_global::CCountedPointer_Release_008ab3d0'
+0093b1d0   RELOCATION_MATCH PASS   Update
+
+WINS: 1
+  0093b1d0 RELOCATION_MATCH CAIStateGroup_BanditSitRoundCampfire::?Update@CAIStateGroup_BanditSitRoundCampfire@@UAEXXZ
+
+LANDED 1 wins into src/compiled + tests + catalog + oracle
+  CAIStateGroupBanditSitRoundCampfire_Update_0093b1d0

@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+0093b1d0	RELOCATION_MATCH	1011v1011	PASS	CAIStateGroup_BanditSitRoundCampfire::Update; frame closed by same-TU noinline stand-ins for CCountedPointer<CModeSitBase> ctor 0x008AB380 + dtor 0x008AB3D0

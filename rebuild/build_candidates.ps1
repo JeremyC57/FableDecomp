@@ -363819,6 +363819,13 @@ $catalog = @(
         TestSource = '00/5d/CTCInventoryStats_AddHeroAbility_005d64dd_test.cpp'
         PassPattern = '005d64dd_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '0093b1d0'
+        Module = 'CAIStateGroup_BanditSitRoundCampfire'
+        Source = '00/93/CAIStateGroupBanditSitRoundCampfire_Update_0093b1d0.cpp'
+        TestSource = '00/93/CAIStateGroupBanditSitRoundCampfire_Update_0093b1d0_test.cpp'
+        PassPattern = '0093b1d0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

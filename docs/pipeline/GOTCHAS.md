@@ -1603,3 +1603,5 @@ short; **append here** when you solve something real. Newest at the bottom of ea
 - Two identical `{ x = it; break; }` blocks where retail has one shared block = one `||` condition (0x00502B00).
 - STLport model containers need their allocator default template argument, or every mangled name drops `V?$allocator@..` (chunk 567).
 - Check a released/catalog row's first and last instruction before grading: 9 of chunk 567's 12 pass 9 rows were over-runs or mid-function fragments.
+- A by-value CCountedPointer local keeps a private stack slot for its whole scope unless BOTH its ctor and dtor bodies are visible in the TU (same-TU noinline template bodies); with both it shares retail's slot (0x0093B1D0, chunk 568).
+- A spurious store-then-reload in a copy ctor can come from a wrong frame: fix the frame size first (0x0093B1D0).
