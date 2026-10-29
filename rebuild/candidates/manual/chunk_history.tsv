@@ -24703,3 +24703,15 @@ chunk	address	module	name	length
 563	0071b120	CCreatureAction_DragonFireBlastBase	~CCreatureAction_DragonFireBlastBase	113
 563	0071ba60	CTCHeroMorph	GetMorphStrength	624
 563	00727b40	CTCRandomAppearanceMorph	~CTCRandomAppearanceMorph	120
+564	0072acf0	CTCSpecialAbilities	CancelUsingAbility	573
+564	0072c430	CTCSpecialAbilities	CTCSpecialAbilities::GetAbilityAvailability	584
+564	00743120	CModeBriarRoseConcentrate	~CModeBriarRoseConcentrate	147
+564	00750850	CModeOutOfActionBase	~CModeOutOfActionBase	121
+564	00753290	CTCLook	~CTCLook	228
+564	0077fde0	CPersistContext	Transfer<signed_char>	240
+564	0078c080	CTCBerserk	~CTCBerserk	202
+564	0078f5a0	CTCDivineWrath	~CTCDivineWrath	316
+564	00794ac0	CTCUnholyPower	~CTCUnholyPower	332
+564	00798620	CTCTurncoat	~CTCTurncoat	120
+564	007a0770	CLightningBeam	~CLightningBeam	126
+564	007a73f0	CTCActionUseBed	~CTCActionUseBed	161
