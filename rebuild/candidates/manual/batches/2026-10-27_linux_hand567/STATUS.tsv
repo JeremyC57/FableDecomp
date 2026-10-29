@@ -1,0 +1,13 @@
+address	status	bytes	test	note
+004ca019	SKIP	-v428	-	mid-function fragment: 0x004CA019 sits 9 bytes into CThing::ConstructFromParams 0x004CA010 (already landed); the row opens `push esi ; mov esi,ecx ; je` on flags the parent set
+004cebb0	DIFFER	771v771	-	CSubtitledMessage::GetMessagesFromTextName (static): every byte but the not-found path's two dead-arg-slot offsets (placeholder text +0x64 vs ToWideString temp +0x68 swapped); differ/004cebb0.cpp
+00502b00	RELOCATION_MATCH	906v906	PASS	AddToRelevantBuilding (free __fastcall, the home-building chooser of region population)
+005239cd	SKIP	-v366	-	mid-function fragment: real start 0x005239C0 (label Thing_SavePersistentState; not landed); the row reads ebx/ebp set by the parent's prologue
+00537e70	SKIP	-v955	-	mid-function fragment inside NUISystem::CList code starting 0x005379F5: enters with ebp/esi/ebx live (`lea edx,[ebp-0x20]`, ends `leave` of a frame it never built)
+0055a5d0	DIFFER	82v697	PASS	re-split: NUISystem::CDraggable::OnLeftClicked true extent 82 bytes byte-exact (pfx2 0 mismatches); the row runs on into four CScrollBar overrides; differ/0055a5d0.cpp + .test.cpp
+00564d5d	SKIP	-v29	-	mid-function fragment: real start 0x00564D50 (42 bytes: zero-count early return, then rep movsd/movsb copy returning dst; uncatalogued, name unknown -- the _Copy_impl<CEntry*> label is propagated)
+005d64dd	RELOCATION_MATCH	477v477	PASS	CTCInventoryStats::AddHeroAbility (size TU, optimize(y off, s on))
+005e9840	DIFFER	180v533	PASS	re-split: CPersistContext::TransferVector<unsigned long> true extent 180 bytes (code + mov edi,edi + 5-entry table) byte-exact (pfx2 0 mismatches); label Transfer<signed_char> is wrong; differ/005e9840.cpp + .test.cpp
+005eadd6	SKIP	-v332	-	mid-function fragment of CTCTavernGame::SetStateAfterYesNoAlt 0x005EADC0 (already landed)
+005eaf46	SKIP	-v304	-	mid-function fragment of CTCTavernGame::SetStateAfterYesNo 0x005EAF30 (already landed; the row label SetStateAfterYesNoAlt is wrong)
+005eb08d	SKIP	-v243	-	mid-function fragment of CTCTavernGame::SetStateAfterOK 0x005EB080 (already landed)

@@ -363805,6 +363805,20 @@ $catalog = @(
         TestSource = '00/98/CVertexShaderConstantLayout_CVertexShaderConstantLayout_0098d710_test.cpp'
         PassPattern = '0098d710_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00502b00'
+        Module = '_global'
+        Source = '00/50/global_AddToRelevantBuilding_00502b00.cpp'
+        TestSource = '00/50/global_AddToRelevantBuilding_00502b00_test.cpp'
+        PassPattern = '00502b00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '005d64dd'
+        Module = 'CTCInventoryStats'
+        Source = '00/5d/CTCInventoryStats_AddHeroAbility_005d64dd.cpp'
+        TestSource = '00/5d/CTCInventoryStats_AddHeroAbility_005d64dd_test.cpp'
+        PassPattern = '005d64dd_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

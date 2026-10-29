@@ -1,0 +1,14 @@
+addr       parity           behav  name
+00502b00   WARN RELOC_NAME: ?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ -> 00662000 labelled 'CThingCreatureBase::GetMovementMode'
+00502b00   RELOCATION_MATCH PASS   AddToRelevantBuilding
+005d64dd   WARN RELOC_NAME: ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z -> 00429c6f labelled '_global::CCountedPointer_SetPItem_00429c6f'
+005d64dd   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled '_global::CCountedPointer_Release_004291de'
+005d64dd   RELOCATION_MATCH PASS   AddHeroAbility
+
+WINS: 2
+  00502b00 RELOCATION_MATCH _global::?AddToRelevantBuilding@@YIXPAVCThingAICreature@@AAV?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@AAV?$vector@PAVCThingBuilding@@V?$allocator@PAVCThingBuilding@@@std@@@3@PBVCDefinitionManager@@AAVCWorld@@@Z
+  005d64dd RELOCATION_MATCH CTCInventoryStats::?AddHeroAbility@CTCInventoryStats@@QAEXPAVCComponent@NUISystem@@W4EHeroAbility@@AAM@Z
+
+LANDED 2 wins into src/compiled + tests + catalog + oracle
+  global_AddToRelevantBuilding_00502b00
+  CTCInventoryStats_AddHeroAbility_005d64dd

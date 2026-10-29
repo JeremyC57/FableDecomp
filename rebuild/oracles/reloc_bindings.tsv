@@ -35128,3 +35128,11 @@ _icomp	00ca1bc0	00ca1be0
 ??0CJoystick@@QAE@AAVCInputManager@@_N@Z	009e43b0	00ab7850
 ??0CKeyboard@@QAE@AAVCInputManager@@_N@Z	00a66930	00ab64e0
 ??0CMouse@@QAE@AAVCInputManager@@_N@Z	00a66f20	00ab5d00
+??A?$map@PAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@U?$less@PAVCThingBuilding@@@3@V?$allocator@U?$pair@QAVCThingBuilding@@V?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@std@@@std@@@3@@std@@QAEAAV?$list@PAVCThingAICreature@@V?$allocator@PAVCThingAICreature@@@std@@@1@ABQAVCThingBuilding@@@Z	0051bf90	00502b00
+?GetCreatureType@CThingCreatureBase@@QBE?AW4ECreatureType@@XZ	00662000	00502b00
+?GetSex@CThingCreatureBase@@QBE?AW4ESex@@XZ	00661ff0	00502b00
+?CreateTickSlider@CManager@NUISystem@@QAEPAVCComponent@2@ABVCWideString@@ABVC2DCoordI@@JJABVCRGBFloatColour@@MM_N32M@Z	00427216	005d64dd
+?GetAbilityLevel@CTCInventoryAbilities@@QBEJW4EHeroAbility@@@Z	005ede93	005d64dd
+?GetAbilityPossibleLevelUpAmount@CTCHeroExperience@@QAEJW4EHeroAbility@@AAM@Z	006d7b80	005d64dd
+?GetExperienceAbilityColour@CTCInventoryExperience@@QAE?AVCRGBFloatColour@@W4EHeroAbility@@@Z	0056edd2	005d64dd
+?GetExperienceAbilityName@CTCInventoryExperience@@QAE?AVCWideString@@J@Z	0056f2bd	005d64dd

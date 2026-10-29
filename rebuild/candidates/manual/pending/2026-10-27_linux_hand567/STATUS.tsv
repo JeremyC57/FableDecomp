@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+004cebb0	DIFFER	771v771	-	CSubtitledMessage::GetMessagesFromTextName (static): every byte but the not-found path's two dead-arg-slot offsets (placeholder text +0x64 vs ToWideString temp +0x68 swapped); differ/004cebb0.cpp
+0055a5d0	DIFFER	82v697	PASS	re-split: NUISystem::CDraggable::OnLeftClicked true extent 82 bytes byte-exact (pfx2 0 mismatches); the row runs on into four CScrollBar overrides; differ/0055a5d0.cpp + .test.cpp
+005e9840	DIFFER	180v533	PASS	re-split: CPersistContext::TransferVector<unsigned long> true extent 180 bytes (code + mov edi,edi + 5-entry table) byte-exact (pfx2 0 mismatches); label Transfer<signed_char> is wrong; differ/005e9840.cpp + .test.cpp
