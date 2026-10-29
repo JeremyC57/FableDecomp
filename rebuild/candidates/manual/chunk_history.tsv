@@ -24691,3 +24691,15 @@ chunk	address	module	name	length
 562	005e41e0	CTCQuestCompletionUI	~CTCQuestCompletionUI	587
 562	005e49e0	CTCQuestCompletionUI	CTCQuestCompletionUI::vfunc_12	497
 562	005eda50	CChunkedFileChunk	CChunkedFileChunk::DestructorCleanup	417
+563	005faa90	CTCInventoryMap	GetMenuEntryFromCategory	272
+563	005fac20	CTCInventoryMap	GetMenuEntryFromCategory	272
+563	00625a20	CTCQuickAccessMenu	~CTCQuickAccessMenu	203
+563	00685cc0	CPersistContext	Transfer<signed_char>	208
+563	006aa230	CThingPlayerCreature	~CThingPlayerCreature	161
+563	006c1150	CTCBuyableHouse	SetRented	243
+563	006cc1e0	CTCCreatureNavigation	~CTCCreatureNavigation	137
+563	0070ba90	CAnimateThing	~CAnimateThing	204
+563	0071a430	C3DMeshStripifier	~C3DMeshStripifier	161
+563	0071b120	CCreatureAction_DragonFireBlastBase	~CCreatureAction_DragonFireBlastBase	113
+563	0071ba60	CTCHeroMorph	GetMorphStrength	624
+563	00727b40	CTCRandomAppearanceMorph	~CTCRandomAppearanceMorph	120
