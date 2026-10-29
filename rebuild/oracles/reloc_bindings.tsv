@@ -35192,3 +35192,5 @@ _icomp	00ca1bc0	00ca1be0
 ?Alloc@CMurderTwistAssassinGuard@CV_MurderTwistFinalScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eb5450	00eaea20
 ?Alloc@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eaed10	00eaea20
 ?Alloc@CMurderTwistSheriffGuard@CV_MurderTwistFinalScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00eb1f80	00eaea20
+?_M_clear@?$vector@UTeleportData@CQ_BountyHuntScript@NScript@@V?$allocator@UTeleportData@CQ_BountyHuntScript@NScript@@@std@@@std@@IAEXXZ	00d18dc0	00d18ca0
+?_M_clear@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@IAEXXZ	00f0d600	00f0d4e0

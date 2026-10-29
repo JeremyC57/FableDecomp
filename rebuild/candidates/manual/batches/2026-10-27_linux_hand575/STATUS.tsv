@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00d01290	RELOCATION_MATCH	265v265	PASS	NScript::CQ_BanditCampScript::WatchForTermination; 3 grades (model respelled twice, matched each time)
+00dc3bd0	RELOCATION_MATCH	265v265	PASS	NScript::CQ_OpeningGraveyardSecretPassageScript::WatchForTermination; 2 grades
+00f01a40	RELOCATION_MATCH	265v265	PASS	NScript::CQ_CinemaTestScript::WatchForTermination; 1 grade
+00d68600	RELOCATION_MATCH	267v267	PASS	NScript::CQ_GuildTrainingWoodsWillScript::WatchForTermination; 1 grade
+00d9b2f0	RELOCATION_MATCH	278v278	PASS	NScript::CQ_HobbeToothContestScript::WatchForTermination; 1 grade
+00f0d4e0	RELOCATION_MATCH	279v279	PASS	vector<CQ_AmbushTradersScript::TeleportData>::_M_insert_overflow; 1 grade
+00d18ca0	RELOCATION_MATCH	280v280	PASS	vector<CQ_BountyHuntScript::TeleportData>::_M_insert_overflow; 2 grades (__forceinline __uninitialized_copy)
+00d62140	RELOCATION_MATCH	280v280	PASS	NScript::CQ_GuildTrainingWoodsDepartureScript::WatchForTermination; 1 grade
+00d04260	RELOCATION_MATCH	305v305	PASS	NScript::CQ_BanditCampBossBattleScript::WatchForTermination; 2 grades (SetQuestAsFailed bool order)
+00efc300	RELOCATION_MATCH	315v315	PASS	NScript::CHeroTurningDebuggerScript::MoveHeroTest; 3 grades (first match; then name-only respellings)

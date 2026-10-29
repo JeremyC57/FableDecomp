@@ -363988,6 +363988,76 @@ $catalog = @(
         TestSource = '00/ea/NScriptCVMurderTwistFinalScript_Main_00eaea20_test.cpp'
         PassPattern = '00eaea20_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d01290'
+        Module = 'NScript::CQ_BanditCampScript'
+        Source = '00/d0/NScriptCQBanditCampScript_WatchForTermination_00d01290.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampScript_WatchForTermination_00d01290_test.cpp'
+        PassPattern = '00d01290_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d04260'
+        Module = 'NScript::CQ_BanditCampBossBattleScript'
+        Source = '00/d0/NScriptCQBanditCampBossBattleScript_WatchForTermination_00d04260.cpp'
+        TestSource = '00/d0/NScriptCQBanditCampBossBattleScript_WatchForTermination_00d04260_test.cpp'
+        PassPattern = '00d04260_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d18ca0'
+        Module = 'std::vector'
+        Source = '00/d1/stdvector_Minsertoverflow_00d18ca0.cpp'
+        TestSource = '00/d1/stdvector_Minsertoverflow_00d18ca0_test.cpp'
+        PassPattern = '00d18ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d62140'
+        Module = 'NScript::CQ_GuildTrainingWoodsDepartureScript'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsDepartureScript_WatchForTermination_00d62140.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsDepartureScript_WatchForTermination_00d62140_test.cpp'
+        PassPattern = '00d62140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d68600'
+        Module = 'NScript::CQ_GuildTrainingWoodsWillScript'
+        Source = '00/d6/NScriptCQGuildTrainingWoodsWillScript_WatchForTermination_00d68600.cpp'
+        TestSource = '00/d6/NScriptCQGuildTrainingWoodsWillScript_WatchForTermination_00d68600_test.cpp'
+        PassPattern = '00d68600_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d9b2f0'
+        Module = 'NScript::CQ_HobbeToothContestScript'
+        Source = '00/d9/NScriptCQHobbeToothContestScript_WatchForTermination_00d9b2f0.cpp'
+        TestSource = '00/d9/NScriptCQHobbeToothContestScript_WatchForTermination_00d9b2f0_test.cpp'
+        PassPattern = '00d9b2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00dc3bd0'
+        Module = 'NScript::CQ_OpeningGraveyardSecretPassageScript'
+        Source = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_WatchForTermination_00dc3bd0.cpp'
+        TestSource = '00/dc/NScriptCQOpeningGraveyardSecretPassageScript_WatchForTermination_00dc3bd0_test.cpp'
+        PassPattern = '00dc3bd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00efc300'
+        Module = 'NScript::CHeroTurningDebuggerScript'
+        Source = '00/ef/NScriptCHeroTurningDebuggerScript_MoveHeroTest_00efc300.cpp'
+        TestSource = '00/ef/NScriptCHeroTurningDebuggerScript_MoveHeroTest_00efc300_test.cpp'
+        PassPattern = '00efc300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f01a40'
+        Module = 'NScript::CQ_CinemaTestScript'
+        Source = '00/f0/NScriptCQCinemaTestScript_WatchForTermination_00f01a40.cpp'
+        TestSource = '00/f0/NScriptCQCinemaTestScript_WatchForTermination_00f01a40_test.cpp'
+        PassPattern = '00f01a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f0d4e0'
+        Module = 'std::vector'
+        Source = '00/f0/stdvector_Minsertoverflow_00f0d4e0.cpp'
+        TestSource = '00/f0/stdvector_Minsertoverflow_00f0d4e0_test.cpp'
+        PassPattern = '00f0d4e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

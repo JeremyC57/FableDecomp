@@ -1,0 +1,15 @@
+address	name	evidence
+00d01290	NScript::CQ_BanditCampScript::WatchForTermination	chunk 575: thread ptr stored beside "WatchForTermination" (0x012C84B0) in the quest's Main; Ego_r.pdb name set
+00dc3bd0	NScript::CQ_OpeningGraveyardSecretPassageScript::WatchForTermination	chunk 575: as above; Ego_r.pdb
+00f01a40	NScript::CQ_CinemaTestScript::WatchForTermination	chunk 575: as above; Ego_r.pdb
+00d68600	NScript::CQ_GuildTrainingWoodsWillScript::WatchForTermination	chunk 575: as above; Ego_r.pdb
+00d9b2f0	NScript::CQ_HobbeToothContestScript::WatchForTermination	chunk 575: as above; Ego_r.pdb
+00d62140	NScript::CQ_GuildTrainingWoodsDepartureScript::WatchForTermination	chunk 575: as above; Ego_r.pdb
+00d04260	NScript::CQ_BanditCampBossBattleScript::WatchForTermination	chunk 575: as above; Ego_r.pdb
+00efc300	NScript::CHeroTurningDebuggerScript::MoveHeroTest	chunk 575: spawned as the "MoveHeroTest" thread by landed Main 0x00EFC260; Ego_r.pdb
+00d18ca0	std::vector<NScript::CQ_BountyHuntScript::TeleportData>::_M_insert_overflow	chunk 575: only caller is the landed push_back; 24-byte element from the mul/div constants; protected (IAE)
+00f0d4e0	std::vector<NScript::CQ_AmbushTradersScript::TeleportData>::_M_insert_overflow	chunk 575: only caller is the landed push_back; 28-byte element; protected (IAE)
+00dc27c0	NScript::CQ_OpeningGraveyardSecretPassageScript::Main	chunk 575: vtable slot 2 (0x012DA11C) stored by ctor 0x00DC2570; Ego_r.pdb
+00d67890	NScript::CQ_GuildTrainingWoodsWillScript::Main	chunk 575: vtable slot 2 (0x012D1E08) stored by ctor 0x00D677A0; Ego_r.pdb
+00d9a190	NScript::CQ_HobbeToothContestScript::Main	chunk 575: vtable slot 2 (0x012D65CC) stored by ctor 0x00D99E40; Ego_r.pdb
+00d038e0	NScript::CQ_BanditCampBossBattleScript::Main	chunk 575: vtable slot 2 (0x012C88E0) used by RegisterMain 0x00D03820; Ego_r.pdb

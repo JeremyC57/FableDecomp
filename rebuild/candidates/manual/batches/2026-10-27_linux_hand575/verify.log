@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00d01290   RELOCATION_MATCH PASS   WatchForTermination
+00d04260   RELOCATION_MATCH PASS   WatchForTermination
+00d18ca0   RELOCATION_MATCH PASS   _M_insert_overflow
+00d62140   RELOCATION_MATCH PASS   WatchForTermination
+00d68600   RELOCATION_MATCH PASS   WatchForTermination
+00d9b2f0   RELOCATION_MATCH PASS   WatchForTermination
+00dc3bd0   RELOCATION_MATCH PASS   WatchForTermination
+00efc300   RELOCATION_MATCH PASS   MoveHeroTest
+00f01a40   RELOCATION_MATCH PASS   WatchForTermination
+00f0d4e0   RELOCATION_MATCH PASS   _M_insert_overflow
+
+WINS: 10
+  00d01290 RELOCATION_MATCH NScript::CQ_BanditCampScript::?WatchForTermination@CQ_BanditCampScript@NScript@@QAEXXZ
+  00d04260 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::?WatchForTermination@CQ_BanditCampBossBattleScript@NScript@@QAEXXZ
+  00d18ca0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@UTeleportData@CQ_BountyHuntScript@NScript@@V?$allocator@UTeleportData@CQ_BountyHuntScript@NScript@@@std@@@std@@IAEXPAUTeleportData@CQ_BountyHuntScript@NScript@@ABU345@ABU__false_type@2@I_N@Z
+  00d62140 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::?WatchForTermination@CQ_GuildTrainingWoodsDepartureScript@NScript@@QAEXXZ
+  00d68600 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsWillScript::?WatchForTermination@CQ_GuildTrainingWoodsWillScript@NScript@@QAEXXZ
+  00d9b2f0 RELOCATION_MATCH NScript::CQ_HobbeToothContestScript::?WatchForTermination@CQ_HobbeToothContestScript@NScript@@QAEXXZ
+  00dc3bd0 RELOCATION_MATCH NScript::CQ_OpeningGraveyardSecretPassageScript::?WatchForTermination@CQ_OpeningGraveyardSecretPassageScript@NScript@@QAEXXZ
+  00efc300 RELOCATION_MATCH NScript::CHeroTurningDebuggerScript::?MoveHeroTest@CHeroTurningDebuggerScript@NScript@@QAEXXZ
+  00f01a40 RELOCATION_MATCH NScript::CQ_CinemaTestScript::?WatchForTermination@CQ_CinemaTestScript@NScript@@QAEXXZ
+  00f0d4e0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@UTeleportData@CQ_AmbushTradersScript@NScript@@V?$allocator@UTeleportData@CQ_AmbushTradersScript@NScript@@@std@@@std@@IAEXPAUTeleportData@CQ_AmbushTradersScript@NScript@@ABU345@ABU__false_type@2@I_N@Z
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  NScriptCQBanditCampScript_WatchForTermination_00d01290
+  NScriptCQBanditCampBossBattleScript_WatchForTermination_00d04260
+  stdvector_Minsertoverflow_00d18ca0
+  NScriptCQGuildTrainingWoodsDepartureScript_WatchForTermination_00d62140
+  NScriptCQGuildTrainingWoodsWillScript_WatchForTermination_00d68600
+  NScriptCQHobbeToothContestScript_WatchForTermination_00d9b2f0
+  NScriptCQOpeningGraveyardSecretPassageScript_WatchForTermination_00dc3bd0
+  NScriptCHeroTurningDebuggerScript_MoveHeroTest_00efc300
+  NScriptCQCinemaTestScript_WatchForTermination_00f01a40
+  stdvector_Minsertoverflow_00f0d4e0
