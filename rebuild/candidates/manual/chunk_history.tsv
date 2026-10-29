@@ -24774,3 +24774,9 @@ chunk	address	module	name	length
 573	00e9c4b0	global	sub_00e9c4b0	926
 573	00ee6e90	global	sub_00ee6e90	767
 573	00f08590	global	Script_Hero_Morphs_Thread	839
+574	00d37d00	global	sub_00d37d00	753
+574	00d384a0	global	sub_00d384a0	753
+574	00dfc320	global	CScriptBase_ProcessNPCConversations	777
+574	00e56d10	global	CScriptBase_AskForBook_Impl	745
+574	00e690f0	global	sub_00e690f0	759
+574	00eaea20	global	sub_00eaea20	732
