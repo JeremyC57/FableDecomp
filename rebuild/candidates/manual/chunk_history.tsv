@@ -24667,3 +24667,15 @@ chunk	address	module	name	length
 560	00ed94d0	CV_TalentlessBardScript	WatchForResetWanderCentre	689
 560	00f07b80	CQ_AmbushTradersScript	WatchForBanditSpeechMarkers	842
 560	00f3abf0	CRangeCompressor	CalcCompressionScript	605
+561	004045c0	CPersistContext	CPersistContext::Transfer<signed char>	208
+561	00405a60	CPersistContext	Transfer<signed_char>	308
+561	0040cca0	CUserProfileManager	ApplyNewProfileValues	535
+561	00410620	CPersistContext	Transfer<signed_char>	208
+561	004106f0	CPersistContext	Transfer<signed_char>	208
+561	0041ab40	CSprite	~CSprite	218
+561	0041cd93	CManager	GetCorrectComponentInterface	215
+561	00434cd0	CDisplayEngine	SetAboutToRun	141
+561	0044bb00	CPersistContext	Transfer<signed_char>	261
+561	004a2f10	CWorld	UpdateSaveGameLoad	752
+561	004ab640	CPersistContext	Transfer<signed_char>	208
+561	004c8310	CThing	~CThing	412
