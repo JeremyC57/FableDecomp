@@ -42,7 +42,7 @@ class CThing { public:
     unsigned char m_stateFlags;                         // +0x91 (bit 0: dead)
     const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
-    void RemoveTC(long interfaceType);                  // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);                  // 0x004C9840
     void FinishCurrentAction();                         // 0x00662650
     void SetSuspendAnimation(bool suspend, long reason);   // 0x00833A10
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
@@ -189,7 +189,7 @@ void CTCAssassinRush::FrameUpdate()
     }
     bool finished = parent->State == 1 || RushDelayFrameCount <= 0;
     if (SlowTimeLength <= 0 && TrailDelay <= 0 && finished)
-        parent->RemoveTC(0xa9);
+        parent->RemoveTC((ETCInterfaceType)(0xa9));
     if (ScheduleForCancel)
         CancelMove();
 }

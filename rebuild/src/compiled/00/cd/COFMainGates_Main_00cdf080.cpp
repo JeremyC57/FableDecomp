@@ -36,11 +36,14 @@ public:
     virtual bool operator()(CThing* thing) const;
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                            // vtable 0x012C32F0: a thing filter holding the script thing
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                            // vtable 0x012C32F0: a thing filter holding the script thing
     CScriptThing m_thing;                         // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 struct CGameScriptInterface_Calls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void Update();   // slot 7 (+0x1c)

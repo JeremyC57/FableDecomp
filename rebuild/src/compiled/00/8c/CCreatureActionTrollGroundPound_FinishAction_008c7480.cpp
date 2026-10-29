@@ -71,8 +71,8 @@ class CCreatureActionBase { public:
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
 };
 class CCombatActionBase : public CCreatureActionBase { public:   // retail sizeof 0x114
-    unsigned char _pad10[0x114 - 0x10];     // +0x10
-    virtual void FinishAction();            // 0x00859A20
+    unsigned char _pad10[0x114 - 0x10];     protected: // +0x10
+    virtual void FinishAction(); public:            // 0x00859A20
 };
 class CCreatureAction_TrollGroundPound : public CCombatActionBase { public:
     virtual void FinishAction();

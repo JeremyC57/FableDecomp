@@ -92,6 +92,7 @@ class CAIBrain { public:
 
 class CWorld;
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
@@ -113,8 +114,8 @@ protected:
 public:
     unsigned long* GetPWorldSeed() const;       // 0x008FCFD0 (world random seed)
     void Terminate();                           // 0x008FCF40 (Terminated = true)
-    bool IsStopping();                          // 0x008FD010
-    long AIAction_DoNothing();                  // 0x0097E200 (EAIActionReturn)
+    bool IsStopping();                          protected: // 0x008FD010
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200 (EAIActionReturn)
 };
 
 struct CAIStateGroup_MinionPutOutFires : CAIStateGroupBase {

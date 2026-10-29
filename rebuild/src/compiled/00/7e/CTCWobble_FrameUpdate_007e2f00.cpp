@@ -47,10 +47,11 @@ class CTCPhysicsBase { public:
     virtual void v072(); virtual void v073(); virtual void v074();
     virtual void SetFacingAnglesFromRHSet(const CRightHandedSet& rhSet);   // slot 75 (+0x12c)
 };
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;                     // +0x60
-    void RemoveTC(long interfaceType);             // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);             // 0x004C9840
 };
 class CTCWobble { public:
     virtual void v00();
@@ -74,6 +75,6 @@ void CTCWobble::FrameUpdate()
         DirectionLastRotated = -DirectionLastRotated;
     } else {
         ParentThing->PhysicsTC->SetFacingAnglesFromRHSet(ParentRHSet);
-        ParentThing->RemoveTC(0xf7);
+        ParentThing->RemoveTC((ETCInterfaceType)(0xf7));
     }
 }

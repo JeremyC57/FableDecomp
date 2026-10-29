@@ -133,8 +133,8 @@ class CAIStateGroupBase { public:
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->Creature; }
     EAIActionReturn AIAction_MoveToPos(EAIActionRepeat repeat, C3DVector pos, bool& moving, EMovementType anim, bool b1,
-                                       bool b2, const CThing* target, bool b3, float f);   // 0x0097EC00
-    EAIActionReturn AIAction_DoNothing();       // 0x0097E200
+                                       bool b2, const CThing* target, bool b3, float f);   protected: // 0x0097EC00
+    EAIActionReturn AIAction_DoNothing(); public:       // 0x0097E200
     EAIActionReturn AIAction_RunAwayFrom(CIntelligentPointerConstThing threat, CCreatureActionBase* action);
 };
 

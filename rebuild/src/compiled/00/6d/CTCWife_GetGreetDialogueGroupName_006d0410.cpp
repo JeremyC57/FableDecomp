@@ -38,7 +38,7 @@ CCharString __fastcall operator+(const char* left, const CCharString& right);   
 extern CCharString g_OpinionAttitudeNames[];                // 0x013BABD0
 extern CCharString g_CourtingAdviceGroupNames[4];           // 0x013BAB30
 
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
+long __fastcall GFROR13(unsigned long value);      // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 __forceinline unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {

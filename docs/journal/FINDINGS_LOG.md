@@ -868,3 +868,4 @@ Chunk 574 (agent574; batches/2026-10-27_linux_hand574): 6 of 6 quest-script-rang
 - 2026-10-29 chunk 575: 10/10 quest-script rows (7 WatchForTermination threads, MoveHeroTest, 2 TeleportData _M_insert_overflow); all catalog labels were invented.
 - 2026-10-29 chunk 576: 10/10 quest-script rows (entity Mains, OnPersist, Init, RunChantTimer, EntityCountDecrease); all manifest labels wrong.
 - 2026-10-29 chunk 577: 10/10 quest-script rows (Init, OnPersist, DoMission, GetNearestCrateToMe, two vector operator=); all manifest labels wrong.
+- 2026-10-29 naming wave 9: 456 rows respelled (0x0099EFB0 const& operator= settled, 5 renames, 95 bindings retired / 17 added); full recheck 456/456 pass.

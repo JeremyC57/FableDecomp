@@ -208,11 +208,14 @@ public:
     virtual void f00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing    m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 class CEntityScriptBase { public:                             // retail 0x14 bytes
     virtual void e00();
     CGameScriptInterface* Game;                        // +0x04

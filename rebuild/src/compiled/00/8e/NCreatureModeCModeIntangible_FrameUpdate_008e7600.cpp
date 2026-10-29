@@ -55,7 +55,7 @@ class CThing { public:
 };
 
 class CTCBoss { public:                           // interface type 0xad
-    long GetBossPhase();                   // 0x007AED10
+    long GetBossPhase() const;                   // 0x007AED10
 };
 class CTCCreatureModeManager { public:            // interface 0x31
     void RemoveMode(unsigned long mode);   // 0x0073ABA0

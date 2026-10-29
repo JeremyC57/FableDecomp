@@ -96,12 +96,13 @@ class CWorld { public:
     unsigned char _pad[0x1c];
     CTimeOfDay* PTimeOfDay;                     // +0x1c
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 unsigned long __fastcall GFRandom(unsigned long range, unsigned long* seed);   // 0x004CDAE0
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -113,8 +114,8 @@ public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
-    void Terminate();                           // 0x008FCF40
-    long AIAction_DoNothing();                  // 0x0097E200
+    void Terminate();                           protected: // 0x008FCF40
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float speed);   // 0x0097D580
 };
 struct CAIStateGroup_UsesSeat : CAIStateGroupBase {

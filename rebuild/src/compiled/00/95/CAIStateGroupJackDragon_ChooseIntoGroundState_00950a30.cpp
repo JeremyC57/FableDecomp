@@ -310,7 +310,7 @@ inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 }
 
 class CTCBoss { public:                                // interface 0xad
-    long GetBossPhase();                        // 0x007AED10
+    long GetBossPhase() const;                        // 0x007AED10
 };
 
 struct CWorldSeed {

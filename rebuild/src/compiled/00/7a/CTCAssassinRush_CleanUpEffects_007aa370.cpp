@@ -29,9 +29,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAlpha(unsigned char alpha);         // 0x004BFAC0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CPlayer { public:
     void EndSpecialMoveMode();                  // 0x00487150
 };

@@ -92,6 +92,7 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -102,8 +103,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThing* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
-    long AIAction_DoNothing();                  // 0x0097E200
+    long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   protected: // 0x0097D6F0
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     void Terminate();                           // 0x008FCF40
 };
 

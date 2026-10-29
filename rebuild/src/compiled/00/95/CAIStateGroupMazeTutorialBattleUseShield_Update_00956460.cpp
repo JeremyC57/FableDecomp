@@ -71,14 +71,15 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                        // 0x008FCFC0
-    bool IsStopping();                          // 0x008FD010
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    bool IsStopping();                          protected: // 0x008FD010
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 };
 
@@ -92,7 +93,7 @@ struct CAIStateGroup_MazeTutorialBattleUseShield : CAIStateGroupBase {
 void CAIStateGroup_MazeTutorialBattleUseShield::Update()
 {
     if (IS_THING_ALIVE(PTargetThing) && !IsStopping()) {
-        AIAction_PerformActionAndWait(&CCombatAction_WillShieldInto(GetCreature(), 3.0f, 5.0f), false);
+        AIAction_PerformActionAndWait(CCombatAction_WillShieldInto(GetCreature(), 3.0f, 5.0f), false);
         FrameOfLastShield = GetPWorld()->GetFrame();
     }
     Terminate();

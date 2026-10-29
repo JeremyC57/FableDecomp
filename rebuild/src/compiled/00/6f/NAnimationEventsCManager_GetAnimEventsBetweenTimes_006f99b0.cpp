@@ -22,8 +22,8 @@ struct EventMap {
 class CManager { public:
  CManager(const CMeshDataBank&,const CWideString&,bool); // FableWin023fa5c0
  unsigned char EventSymbolMapAndBank[0x2c]; EventMap AnimToExtraEventsMap; bool DifferentToSavedCopy,UseEmbeddedEvents;
- bool GetEmbeddedEventsBetweenTimes(unsigned long,CSmallVector<CEvent,32>&,float,float)const; //006f9820
- bool GetExtraEventsBetweenTimes(unsigned long,CSmallVector<CEvent,32>&,float,float)const; //006f95a0
+ bool GetEmbeddedEventsBetweenTimes(unsigned long,CSmallVector<CEvent,32>&,float,float)const; private: //006f9820
+ bool GetExtraEventsBetweenTimes(unsigned long,CSmallVector<CEvent,32>&,float,float)const; public: //006f95a0
  bool GetAnimEventsBetweenTimes(unsigned long,CSmallVector<CEvent,32>&,float,float)const;
 };
 inline const float& MinFloat(const float& a,const float& b){return a<b?a:b;}

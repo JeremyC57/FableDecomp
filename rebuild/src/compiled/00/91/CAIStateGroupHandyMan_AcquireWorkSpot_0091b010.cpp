@@ -138,7 +138,7 @@ template <class I> inline void advance(I& it, long n)          // STLport __adva
 }
 }
 
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 inline unsigned long GFRandom(unsigned long range, unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;

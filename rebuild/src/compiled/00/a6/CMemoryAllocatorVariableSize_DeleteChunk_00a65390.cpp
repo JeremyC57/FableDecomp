@@ -66,9 +66,9 @@ public:
     unsigned long     Flags;                            // +0xc28
     unsigned long     InternalFlags;                    // +0xc2c
     unsigned long     ExtraMemUsedByOS;                 // +0xc30
-    CMemoryArea*      PTreeRoot;                        // +0xc34
+    CMemoryArea*      PTreeRoot;                        protected: // +0xc34
 
-    void RemoveFromTree(CMemoryArea* area);             // 0x00A64EF0
+    void RemoveFromTree(CMemoryArea* area); public:             // 0x00A64EF0
     void DeleteChunk(CMemoryAreaChunk* chunk);
 };
 

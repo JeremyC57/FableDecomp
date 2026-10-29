@@ -103,8 +103,8 @@ class CMap { public:
     unsigned char           _pad24[0x1a7c - 0x24];
     scoped_ptr<CHeightMap>  HeightMap;             // +0x1a7c
     unsigned char           _pad1a80[0x1d24 - 0x1a80];
-    unsigned char           RegionKey[4];          // +0x1d24
-    unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex);   // 0x008F70F0
+    unsigned char           RegionKey[4];          protected: // +0x1d24
+    unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); public:   // 0x008F70F0
     __forceinline void SetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long themeDefIndex, long layer)   // out-of-line copy 0x0081EF30
     {
         if (themeDefIndex > 0) {

@@ -88,8 +88,8 @@ class CTCCreatureModeManager { public:             // interface type 0x31
 };
 extern const float g_fMinFacingLength;      // 0x0129BA3C (1e-4)
 
-class CCombatActionBase { public:                  // retail sizeof 0x114
-    virtual void FinishAction();            // 0x00859A20
+class CCombatActionBase { public:                  protected: // retail sizeof 0x114
+    virtual void FinishAction(); public:            // 0x00859A20
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10

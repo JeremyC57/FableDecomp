@@ -22,9 +22,9 @@
 // CSkeletalMorph::operator= which copies the two u32 members inline and calls
 // the two (distinct, relocation-masked) member operator= helpers.
 
-struct MemberA {                 // sizeof == 4
+class CCharString { public:      // sizeof == 4
     unsigned long _p;
-    MemberA& operator=(const MemberA& _rhs);   // out-of-line -> __fastcall call A
+    const CCharString& operator=(const CCharString& _rhs);   // 0x0099EFB0
 };
 
 struct MemberB {                 // sizeof == 12
@@ -34,7 +34,7 @@ struct MemberB {                 // sizeof == 12
 
 struct CSkeletalMorph {          // sizeof == 0x18 (24)
     unsigned long _a;            // +0x00
-    MemberA       _b;            // +0x04
+    CCharString   _b;            // +0x04
     unsigned long _c;            // +0x08
     MemberB       _d;            // +0x0c
     // implicit copy-assignment: _a, _b (call A), _c, _d (call B)

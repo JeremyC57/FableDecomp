@@ -15,11 +15,13 @@ namespace NParticleEngine {
 
 class CParticleSystem;
 
+} // (hoisted to global scope: naming wave 9)
 class CCharString {
 public:
     void* PData;
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
+namespace NParticleEngine {
 
 struct C3DVector {
     float X, Y, Z;

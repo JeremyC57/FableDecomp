@@ -14,7 +14,8 @@ class CWideString { public:
     void __cdecl Sprintf(const wchar_t* format, ...);   // 0x0099BA70
 };
 
-CWideString __fastcall IntToWideString(long value)
+// Leaf: GFIntToWideString
+CWideString __fastcall GFIntToWideString(long value)
 {
     CWideString text;
     text.Sprintf(L"%d", value);

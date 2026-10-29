@@ -26,9 +26,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);       // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAlpha(unsigned char alpha);         // 0x004BFAC0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];             // +0x20 std::bitset of interface types

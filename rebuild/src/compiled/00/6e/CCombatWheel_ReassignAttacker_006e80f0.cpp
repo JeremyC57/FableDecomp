@@ -34,7 +34,7 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public:
 };
 class CWorld { public:
-    unsigned long* GetRandomSeed();         // 0x0049D810
+    unsigned long* GetWorldSeed() const;         // 0x0049D810
 };
 class CAttackingCombatantInfo { public:
     CThingCreatureBase* Attacked;           // +0x00
@@ -64,7 +64,7 @@ void CCombatWheel::ReassignAttacker(CWorld* world, CCombatantInfo* attacker, CCo
         dolly = attacker->Parent->GetPos() - defender->Parent->GetPos();
         dolly.Z = 0.0f;
         if (dolly.GetLengthSquared() > g_Epsilon * g_Epsilon)
-            dolly.Rotate(C3DVector(0.0f, 0.0f, 1.0f), GFFloatRandom(0.5f, world->GetRandomSeed()) + 0.25f);
+            dolly.Rotate(C3DVector(0.0f, 0.0f, 1.0f), GFFloatRandom(0.5f, world->GetWorldSeed()) + 0.25f);
     }
     if (dolly.GetLengthSquared() > g_Epsilon * g_Epsilon) {
         dolly.AccurateNormalise();

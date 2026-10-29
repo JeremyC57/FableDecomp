@@ -7,7 +7,7 @@
 // Users (vector<CIntelligentPointer<CThing const> >) +0x0c..+0x17, MaxOccupation (long) +0x18.
 // Shape: the zero default lives in the `push ecx` frame slot; the context is kept in edi for the virtual call.
 class CPersistContext { public:
-    void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
 };
 
 class CTCGatherPointBase { public:

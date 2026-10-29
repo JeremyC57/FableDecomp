@@ -4,7 +4,8 @@ public:
     void AddToRenderList();   // 0x004C7AC0
 };
 
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
     char pad0[4];        // +0x00
     CThing* ParentThing;             // +0x04
     char pad8[0x58 - 8]; // +0x08 .. +0x57
@@ -13,6 +14,8 @@ struct CTCGraphicAppearance {
     unsigned char alpha; // +0x5a
     void SetAlpha(unsigned char a);
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
 void CTCGraphicAppearance::SetAlpha(unsigned char a)
 {

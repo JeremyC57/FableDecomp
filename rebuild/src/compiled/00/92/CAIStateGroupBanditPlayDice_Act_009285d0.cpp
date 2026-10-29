@@ -11,7 +11,7 @@
 //   CurrentPlayer assignments, so it is loaded into ebp before the CIntelligentPointer<CThing> temporary is built; without
 //   the named pointers VC reloads DiceGame after the temporary and swaps the zero/result registers.
 class CThing { public: };
-unsigned long __fastcall GFROR13(unsigned long value);    // 0x00497890
+long __fastcall GFROR13(unsigned long value);    // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);    // 0x004978A0
 extern "C" int __cdecl rand();                           // 0x00BFEB16
 class CCharString { public:

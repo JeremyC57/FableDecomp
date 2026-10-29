@@ -1603,8 +1603,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00438570'
         Module = '_global'
-        Source = '00/43/global_PeekGuiDef_00438570.cpp'
-        TestSource = '00/43/global_PeekGuiDef_00438570_test.cpp'
+        Source = '00/43/CPlayerGui_PeekGuiDef_00438570.cpp'
+        TestSource = '00/43/CPlayerGui_PeekGuiDef_00438570_test.cpp'
         PassPattern = '_global_00438570_TEST PASS'
     }
     [pscustomobject]@{
@@ -63487,8 +63487,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0051ed80'
         Module = 'CWorld'
-        Source = '00/51/CWorld_GetThingWithUID_0051ed80.cpp'
-        TestSource = '00/51/CWorld_GetThingWithUID_0051ed80_test.cpp'
+        Source = '00/51/CThingManager_GetPThingWithUID_0051ed80.cpp'
+        TestSource = '00/51/CThingManager_GetPThingWithUID_0051ed80_test.cpp'
         PassPattern = 'PARITY_OK'
     }
     [pscustomobject]@{
@@ -67676,8 +67676,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '008fcf80'
         Module = 'CAIStateGroupBase'
-        Source = '00/8f/CountReferences_CountReferences_008fcf80.cpp'
-        TestSource = '00/8f/CountReferences_CountReferences_008fcf80_test.cpp'
+        Source = '00/8f/CAIStateGroupBase_PeekPlayerManager_008fcf80.cpp'
+        TestSource = '00/8f/CAIStateGroupBase_PeekPlayerManager_008fcf80_test.cpp'
         PassPattern = 'OK_008fcf80'
     }
     [pscustomobject]@{
@@ -69209,8 +69209,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '0049d810'
         Module = 'CWorld'
-        Source = '00/49/CWorld_GetPRandomSeed_0049d810.cpp'
-        TestSource = '00/49/CWorld_GetPRandomSeed_0049d810_test.cpp'
+        Source = '00/49/CWorld_GetWorldSeed_0049d810.cpp'
+        TestSource = '00/49/CWorld_GetWorldSeed_0049d810_test.cpp'
         PassPattern = 'OK_0049d810'
     }
     [pscustomobject]@{
@@ -202995,8 +202995,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00405f00'
         Module = '_global'
-        Source = '00/40/global_IntToWideString_00405f00.cpp'
-        TestSource = '00/40/global_IntToWideString_00405f00_test.cpp'
+        Source = '00/40/global_GFIntToWideString_00405f00.cpp'
+        TestSource = '00/40/global_GFIntToWideString_00405f00_test.cpp'
         PassPattern = '00405f00_TEST PASS'
     }
     [pscustomobject]@{

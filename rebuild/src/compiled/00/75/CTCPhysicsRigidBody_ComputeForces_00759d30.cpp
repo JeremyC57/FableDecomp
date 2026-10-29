@@ -42,7 +42,7 @@ struct CRigidBodyConfig {
     C3DVector     AngularVelocity;                 // +0x9c
 };
 class CWorld { public:
-    unsigned long* GetRandomSeed();                // 0x0049D810
+    unsigned long* GetWorldSeed() const;                // 0x0049D810
 };
 class CTCBase
 {
@@ -78,9 +78,9 @@ void CTCPhysicsRigidBody::ComputeForces(CRigidBodyConfig& config)
     CInputEvent event;
     if (g_pInputManager->m_enabled && g_pInputManager->IsKeyboardEventInQueue((EInputEventType)2, (EInputKey)0x2e, &event)) {
         config.CMForce.Z += 25.0f / OneOverMass;
-        config.Torque.X = GFFloatRandom(100.0f, GetWorld().GetRandomSeed());
-        config.Torque.Y = GFFloatRandom(100.0f, GetWorld().GetRandomSeed());
-        config.Torque.Z = GFFloatRandom(100.0f, GetWorld().GetRandomSeed());
+        config.Torque.X = GFFloatRandom(100.0f, GetWorld().GetWorldSeed());
+        config.Torque.Y = GFFloatRandom(100.0f, GetWorld().GetWorldSeed());
+        config.Torque.Z = GFFloatRandom(100.0f, GetWorld().GetWorldSeed());
         config.Torque.AccurateNormalise();
     }
     if (IsAffectedByGravity()) {

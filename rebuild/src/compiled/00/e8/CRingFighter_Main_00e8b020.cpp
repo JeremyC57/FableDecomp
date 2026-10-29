@@ -67,13 +67,16 @@ struct CScriptPredicate {                               // vtable 0x012C2FF4
     virtual CScriptPredicate* Clone() const = 0;
     virtual ~CScriptPredicate() {}
 };
-struct CIsThingAlive : CScriptPredicate {               // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive : public CScriptPredicate { public:               // vtable 0x012C32F0
     CScriptThing Thing;                                 // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}
-    ~CIsThingAlive();                                   // 0x00E241B0
+    virtual ~CIsThingAlive();                                   // 0x00E241B0
     virtual bool Evaluate() const;
     virtual CScriptPredicate* Clone() const;
 };
+}
+using NScript::CIsThingAlive;
 struct CIsFlagFalse : CScriptPredicate {                // vtable 0x012EA43C
     const bool* Flag;                                   // +0x04
     CIsFlagFalse(const bool* flag) : Flag(flag) {}

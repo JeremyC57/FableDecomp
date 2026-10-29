@@ -11,8 +11,10 @@ struct Buffer {
  Buffer(); Buffer(const Buffer&); Buffer& operator=(const Buffer&);
  __forceinline ~Buffer() { if(_M_start) free(_M_start); }
 };
+} // (hoisted to global scope: naming wave 9)
 struct CCharStringData;
-struct CCharString {CCharStringData* PStringData;CCharString();CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);};
+class CCharString { public:CCharStringData* PStringData;CCharString();CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);};
+namespace N0052b9d0 {
 struct Element { unsigned int W0,W1; CCharString S; };
 void _Construct(Element*,const Element&);
 #pragma auto_inline(off)

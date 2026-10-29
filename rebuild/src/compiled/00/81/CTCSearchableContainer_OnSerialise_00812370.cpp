@@ -9,7 +9,7 @@
 // Shape: the context argument is cached in edi; the zero default is a named local that VC homes in the dead `bool`
 // argument slot (`mov dword ptr [esp+1Ch],0`, `lea ecx,[esp+10h]`); `add esi,1Ch` forms the member address.
 class CPersistContext { public:
-    void Transfer(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
 };
 
 class CTCContainerRewardHero { public:

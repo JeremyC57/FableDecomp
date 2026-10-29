@@ -48,8 +48,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                          // +0x12
     unsigned char _pad_0x13;
     EAIActionReturn AIAction_MoveToThingProximity(EAIActionRepeat repeat, CIntelligentPointerConstThing target, float proximity,
-        bool* pArrived, EMovementType movement, bool a, bool b, bool c, bool d, float e);    // 0x0097E380
-    long AIAction_DoNothing();                      // 0x0097E200
+        bool* pArrived, EMovementType movement, bool a, bool b, bool c, bool d, float e);    protected: // 0x0097E380
+    EAIActionReturn AIAction_DoNothing(); public:                      // 0x0097E200
     void Terminate();                               // 0x008FCF40
 };
 

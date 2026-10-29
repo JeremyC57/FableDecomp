@@ -118,11 +118,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04 (copied and destroyed out of line)
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive();
+    virtual ~CIsThingAlive();
 };
+}
+using NScript::CIsThingAlive;
 // The filter's destructor is inlined into Main, but the CScriptThing member it destroys stays an out-of-line call (0x004AA840).
 #pragma inline_depth(0)
 inline CIsThingAlive::~CIsThingAlive() { }

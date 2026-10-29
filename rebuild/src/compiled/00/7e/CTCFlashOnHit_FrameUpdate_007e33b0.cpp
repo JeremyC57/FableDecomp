@@ -25,10 +25,11 @@ struct CTCGraphicAppearance {
     void SetTintColour(const CRGBColour& colour, void* owner);   // 0x004C00B0
 };
 
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char         _pad00[0x64];
     CTCGraphicAppearance* PGraphicAppearance;               // +0x64
-    void RemoveTC(long type);                               // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                               // 0x004C9840
 };
 
 class CTCFlashOnHit { public:
@@ -49,7 +50,7 @@ void CTCFlashOnHit::FrameUpdate()
     if (Timer-- == 0)
     {
         ParentThing->PGraphicAppearance->RemoveTintColour(this);
-        ParentThing->RemoveTC(0xfb);
+        ParentThing->RemoveTC((ETCInterfaceType)(0xfb));
     }
     else
         ParentThing->PGraphicAppearance->SetTintColour(CRGBColour(255, 0, 0, 255), this);

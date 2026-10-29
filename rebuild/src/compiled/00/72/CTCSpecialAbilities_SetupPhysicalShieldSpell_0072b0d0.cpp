@@ -51,7 +51,7 @@ public:
     CTCBase* AddTC(const CCharString&, bool, const CTCParamsBase*);   // 0x004C9D60
 };
 class CTCPhysicalShieldSpell { public:
-    bool IsShieldActive() const;                // 0x0079DCB0
+    bool IsShieldActive();                // 0x0079DCB0
     void CancelMove();                          // 0x0079E300
 };
 class CTCSpecialAbilities { public:

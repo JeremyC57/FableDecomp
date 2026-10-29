@@ -188,7 +188,7 @@ struct CTCEnflame {
 };
 class CCombatActionBase { public:                            // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void FinishAction();                      // slot 4: 0x00859A20
+    protected: virtual void FinishAction(); public:                      // slot 4: 0x00859A20
     unsigned char _pad04[4];
     CBaseIntelligentPointer PCreature;                // +0x08
     unsigned char _pad10[0x2c - 0x10];

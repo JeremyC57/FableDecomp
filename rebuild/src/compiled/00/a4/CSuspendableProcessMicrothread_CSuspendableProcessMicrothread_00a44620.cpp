@@ -31,8 +31,8 @@ public:
 
 class CSuspendableProcessMicrothread : public CASuspendableProcess {
 public:
-    MicroThreadInfo* PMicrothread;                 // +0x10
-    virtual ~CSuspendableProcessMicrothread();
+    MicroThreadInfo* PMicrothread;                 protected: // +0x10
+    virtual ~CSuspendableProcessMicrothread(); public:
     virtual bool SuspendSuspendableProcess();
 };
 

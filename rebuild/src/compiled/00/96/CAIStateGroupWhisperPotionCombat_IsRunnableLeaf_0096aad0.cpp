@@ -78,14 +78,14 @@ public:
 };
 
 class CTCBoss { public:                                // interface 173
-    long GetBossPhase();                        // 0x007AED10
+    long GetBossPhase() const;                        // 0x007AED10
 };
 
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long value);  // 0x00497890
 extern long g_FrameRate;                        // 0x01375550
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)

@@ -147,7 +147,7 @@ public:
 };
 class CWorld {
 public:
-    unsigned long* GetRandomSeed() const;                    // 0x0049D810
+    unsigned long* GetWorldSeed() const;                    // 0x0049D810
 };
 
 class CTCBase
@@ -184,7 +184,7 @@ bool CTCUserActionPointBase::GetFreeActionPoint(CThing& thing, C3DVector& positi
     PThing = CIntelligentPointer<CThing>(&thing);
     do {
         unsigned long count = FreeActionPointIndexes.size();
-        unsigned long pick = GFRandom(count, PeekWorld().GetRandomSeed());
+        unsigned long pick = GFRandom(count, PeekWorld().GetWorldSeed());
         index = FreeActionPointIndexes._M_start[pick];
         FreeActionPointIndexes.erase(FreeActionPointIndexes._M_start + pick);
         long value = index;

@@ -138,11 +138,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                             // vtable 0x012C32F0
     CScriptThing Thing;                            // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 class CEntityScriptBase
 {
 public:

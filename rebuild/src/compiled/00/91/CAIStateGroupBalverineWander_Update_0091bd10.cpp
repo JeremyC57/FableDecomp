@@ -129,8 +129,8 @@ class CAIStateGroupBase { public:
     EAIActionReturn AIAction_MoveToPosProximity(EAIActionRepeat repeat, C3DVector pos, float proximity, bool& moving,
                                                 EMovementType anim, bool b1, bool b2, bool b3, const CThing* target,
                                                 bool b4, float f);     // 0x0097E890
-    EAIActionReturn AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
-    EAIActionReturn AIAction_DoNothing();       // 0x0097E200
+    EAIActionReturn AIAction_PerformAction(CCreatureActionBase* action);   protected: // 0x0097D8B0
+    EAIActionReturn AIAction_DoNothing(); public:       // 0x0097E200
 };
 struct CAIStateGroup_BalverineWander : CAIStateGroupBase {
     void Update();

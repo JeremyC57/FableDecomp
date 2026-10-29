@@ -104,7 +104,7 @@ class CTCTargeted { public:                            // interface 9
     bool          Targetable;                   // +0x10
 };
 class CTCBoss { public:                                // interface 0xad
-    long GetBossPhase();                        // 0x007AED10
+    long GetBossPhase() const;                        // 0x007AED10
 };
 class CTCWeaponTrail { public:                         // interface 0x4c
     void ClearAllWeaponTrails();                // 0x0076E150

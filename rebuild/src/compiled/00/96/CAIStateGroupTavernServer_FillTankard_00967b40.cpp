@@ -98,6 +98,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -109,9 +110,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
     void Terminate();                           // 0x008FCF40
     CThingAICreature* GetAICreature() const { return (CThingAICreature*)PBrain->PCreature; }
-    void SetPushableByHero(bool pushable);      // 0x0097E330
-    long AIAction_DoNothing();                  // 0x0097E200
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool b);   // 0x0097DB70
+    void SetPushableByHero(bool pushable);      protected: // 0x0097E330
+    EAIActionReturn AIAction_DoNothing(); public:                  protected: // 0x0097E200
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool b); public:   // 0x0097DB70
 };
 struct CAIStateGroup_TavernServer : CAIStateGroupBase {
     CIntelligentPointer<CThing> PJug;               // +0x14
@@ -134,7 +135,7 @@ bool CAIStateGroup_TavernServer::FillTankard()
     CTCTankard* tankard;
     PTankard.GetPItem()->GetInterface(&tankard, 0xba);
     tankard->SetUser(PBrain->PCreature);
-    if (AIAction_PerformActionAndWait(&CCreatureAction_FillTankardFromJug(GetAICreature()), false) != 2) {
+    if (AIAction_PerformActionAndWait(CCreatureAction_FillTankardFromJug(GetAICreature()), false) != 2) {
         FreeBarPoint_009670a0();
         SetPushableByHero(true);
         return false;
@@ -152,7 +153,7 @@ bool CAIStateGroup_TavernServer::FillTankard()
     CTCJug* jug;
     PJug.GetPItem()->GetInterface(&jug, 0xbb);
     jug->Servings--;
-    if (AIAction_PerformActionAndWait(&CCreatureAction_PutDownJug(GetAICreature()), false) != 2) {
+    if (AIAction_PerformActionAndWait(CCreatureAction_PutDownJug(GetAICreature()), false) != 2) {
         FreeBarPoint_009670a0();
         SetPushableByHero(true);
         return false;

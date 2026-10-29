@@ -40,7 +40,7 @@ inline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 
 class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void FinishAction();            // slot 4: 0x00859A20
+    protected: virtual void FinishAction(); public:            // slot 4: 0x00859A20
     unsigned char _pad04[0x114 - 4];
 };
 class CCreatureAction_HobbeSpellcasterAim : public CCombatActionBase { public:

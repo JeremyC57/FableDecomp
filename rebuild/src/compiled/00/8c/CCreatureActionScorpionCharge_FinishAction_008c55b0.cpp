@@ -29,7 +29,7 @@ class CThing { public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                          // +0x91 bit 0: dead
     const C3DVector& GetPos() const;             // 0x004C73D0
-    void RemoveTC(long type);                         // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                         // 0x004C9840
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -114,7 +114,7 @@ void CCreatureAction_ScorpionCharge::FinishAction()
             if (!GetCreature()->IsCollidingWithLandscape())
                 GetCreature()->SetCurrentAction(CCreatureAction_ScorpionCharge(*GetCreature(), *PTarget.GetPItem(), remaining));
         } else {
-            GetCreature()->RemoveTC(0xc8);
+            GetCreature()->RemoveTC((ETCInterfaceType)(0xc8));
             if (!GetCreature()->IsCollidingWithLandscape())
                 GetCreature()->SetCurrentAction(CCreatureAction_ScorpionChargeStrike(GetCreature(), PTarget.GetPItem()));
         }

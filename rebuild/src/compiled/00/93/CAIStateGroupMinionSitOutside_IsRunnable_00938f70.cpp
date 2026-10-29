@@ -110,7 +110,7 @@ struct CIntelligentPointerThing : CBaseIntelligentPointerCtor {
 };
 
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {

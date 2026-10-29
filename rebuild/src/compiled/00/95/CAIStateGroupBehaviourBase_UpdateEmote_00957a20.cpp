@@ -81,7 +81,7 @@ class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?Ge
 class CDisplayEngine { public:
     static float __stdcall DivideByGameSpeed(float value);   // 0x00415FD3
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 struct CAIStateGroupBehaviourBaseMethods : CAIStateGroupBehaviourBase {

@@ -14,8 +14,9 @@ class CTCHitOnCollision { public:                  // the component AddTC return
     unsigned char _pad[0x19];
     unsigned char m_hitsObjects;            // +0x19
 };
+enum ETCInterfaceType { };
 class CThing { public:
-    void RemoveTC(long interfaceType);      // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
     CTCHitOnCollision* AddTC(const CCharString& name, bool activate, CTCParamsBase* params);   // 0x004C9D60
 };
 class CBaseObject;
@@ -55,7 +56,7 @@ void CCreatureAction_WaspQueenLashOutAttack::Initialise()
         SetCombatAnimation(name);
     }
     CCombatActionBase::Initialise();
-    PCreature.GetPItem()->RemoveTC(200);
+    PCreature.GetPItem()->RemoveTC((ETCInterfaceType)(200));
     CTCHitOnCollision* pHit;
     {
         CCharString name("CTCHitOnCollision", -1);

@@ -122,12 +122,15 @@ class __declspec(novtable) CPredicateBase { public:               // vtable 0x01
     virtual bool IsTrue() = 0;
 };
 }
-struct CIsThingAlive : NScript::CPredicateBase {            // vtable 0x012C32F0, 16 bytes
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:            // vtable 0x012C32F0, 16 bytes
     CScriptThing Thing;                                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}
-    ~CIsThingAlive();                                       // 0x00E241B0
+    virtual ~CIsThingAlive();                                       // 0x00E241B0
     virtual bool IsTrue();
 };
+}
+using NScript::CIsThingAlive;
 class CGameScriptInterface { public:                   // retail vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void NewScriptFrame() const;                                           // slot 7 (+0x1c)

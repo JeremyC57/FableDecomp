@@ -184,7 +184,7 @@ __declspec(noinline) void CThingSearchTools::GetAllThingsInRoughArea(const C2DBo
 class CWorld { public:
     unsigned char      _pad00[0x20];
     CThingSearchTools* ThingSearchTools;              // +0x20
-    unsigned long* GetRandomSeed();                   // 0x0049D810
+    unsigned long* GetWorldSeed() const;                   // 0x0049D810
 };
 class CTCHealLife { public:
     void SetState(long state);                        // 0x007C3EA0
@@ -268,7 +268,7 @@ inline void EraseCreature(CCreatureVector& v, CThingAICreature** position)
         memmove(position, next, (char*)v._M_finish - (char*)next);
     --v._M_finish;
 }
-unsigned long __fastcall GFROR13(unsigned long value);       // 0x00497890
+long __fastcall GFROR13(unsigned long value);       // 0x00497890
 inline unsigned long GFRandom(unsigned long* seed)
 {
     *seed = *seed * 0x24a1 + 0x24df;
@@ -332,7 +332,7 @@ void CModeGuildmasterPowerUpShield::OnActivate()
         }
         while (bodyguards.size() > 0 && ShieldTargets.size() < 3) {
             unsigned long count = bodyguards.size();
-            unsigned long r = GFRandom(GetWorld()->GetRandomSeed());
+            unsigned long r = GFRandom(GetWorld()->GetWorldSeed());
             unsigned long index = count ? r % count : 0;
             long timeLimit = (long)((float)g_FramesPerSecond * 12.0f);
             bodyguards._M_start[index]->SetCurrentAction(CCreatureAction_CastPhysicalShieldSpell(*bodyguards._M_start[index], 2, true, "", timeLimit, 10.0f));

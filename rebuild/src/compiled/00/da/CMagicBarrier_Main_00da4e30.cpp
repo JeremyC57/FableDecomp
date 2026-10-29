@@ -116,7 +116,7 @@ class CIsThingAlive : public CPredicateBase { public:                // vtable 0
     CScriptThing Thing;                                // +0x04 (copied inline, destroyed out of line)
     __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
-    ~CIsThingAlive();
+    virtual ~CIsThingAlive();
 };
 // The filter's dtor is inlined into Main, but its CScriptThing member's dtor stays a call (0x004AA840).
 #pragma inline_depth(0)

@@ -27,9 +27,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
     SEntry* LowerBound(const ETCInterfaceType& type);                  // 0x0040F020
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAlpha(unsigned char alpha);                    // 0x004BFAC0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 class CBaseObjectPointer;
 class CBaseIntelligentPointer {                       // vtable 0x0129C95C (Ego_r: vptr + PData, 8 bytes)
 public:

@@ -12,11 +12,13 @@
 // record's string is destroyed at the end. /Gr: first=ecx, hole=edx; `ret 20h` = top + 24-byte pair
 // + the empty comparator.
 namespace N00cb93e0 {
-struct CCharString {
+} // (hoisted to global scope: naming wave 9)
+class CCharString { public:
     void* Data;
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
     ~CCharString();                                       // 0x0099EAE0
 };
+namespace N00cb93e0 {
 namespace NScript { namespace CRuntimeScriptedEntityPersist {
 struct CPersistInfo {
     unsigned __int64 UID;                                 // +0x0

@@ -105,7 +105,7 @@ class CPredicateBase { public:                                 // vtable 0x012C2
 class CIsThingAlive : public CPredicateBase { public:                 // vtable 0x012C32F0, 16 bytes
     CScriptThing Thing;                                 // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
-    ~CIsThingAlive();                                   // 0x00E241B0
+    virtual ~CIsThingAlive();                                   // 0x00E241B0
     virtual bool IsTrue();
 };
 template <class A, class B> class CPredicate_And : public CPredicateBase { public:   // vtable 0x012E1B70 for <CIsThingAlive, CIsThingAlive>

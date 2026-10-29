@@ -113,11 +113,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                 // vtable 0x012C32F0
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive();                                  // 0x00E241B0
+    virtual ~CIsThingAlive();                                  // 0x00E241B0
 };
+}
+using NScript::CIsThingAlive;
 struct GameCalls {                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)

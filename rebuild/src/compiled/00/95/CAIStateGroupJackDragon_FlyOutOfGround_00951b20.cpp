@@ -99,13 +99,14 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    CWorld* GetPWorld();                        // 0x008FCFC0
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    CWorld* GetPWorld();                        protected: // 0x008FCFC0
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
     bool IsStopping();                          // 0x008FD010
 };
@@ -168,7 +169,7 @@ void CAIStateGroup_JackDragon::FlyOutOfGround()
         route.push_back(DragonPosOutOfGround4Right);
         PreviousFlightPos = DragonPosOutOfGround3Right;
     }
-    AIAction_PerformActionAndWait(&CCreatureAction_DragonTakeOffIntoFlying(GetCreature(), route), false);
+    AIAction_PerformActionAndWait(CCreatureAction_DragonTakeOffIntoFlying(GetCreature(), route), false);
     bool stop = !IS_THING_ALIVE(PEnemy) || IsStopping();
     if (stop)
         Terminate();

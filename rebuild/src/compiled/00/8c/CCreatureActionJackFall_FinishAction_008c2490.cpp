@@ -73,8 +73,8 @@ class CThingCreatureBase { public:
 };
 class CCombatActionBase : public CCreatureActionBase { public:          // retail sizeof 0x114
     unsigned char _combat[0x114 - 0xa8];    // +0xa8
-    virtual ~CCombatActionBase();                   // 0x0062E900
-    virtual void FinishAction();            // 0x00859A20
+    virtual ~CCombatActionBase();                   protected: // 0x0062E900
+    virtual void FinishAction(); public:            // 0x00859A20
     CThingCreatureBase* GetCreature() const { return (CThingCreatureBase*)PCreature.GetPItem(); }
 };
 namespace N_008c3810 { struct CCreatureAction_GoUnderground : CCombatActionBase {

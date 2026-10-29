@@ -30,12 +30,15 @@ struct CScriptThing_Calls {
     CScriptThing_Calls(const CScriptThing_Calls& other);    // 0x004ABE90
 };
 
-struct CIsThingAlive {                                      // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive { public:                                      // vtable 0x012C32F0
     virtual void v00();
     CScriptThing_Calls Thing;                               // +4
     CIsThingAlive(const CScriptThing_Calls& thing) : Thing(thing) { }
-    ~CIsThingAlive();                                       // 0x00E241B0
+    virtual ~CIsThingAlive();                                       // 0x00E241B0
 };
+}
+using NScript::CIsThingAlive;
 
 struct CVtable_012ef7c8 {
     virtual void v00();

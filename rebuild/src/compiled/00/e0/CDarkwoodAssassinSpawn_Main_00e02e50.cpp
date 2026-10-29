@@ -96,12 +96,15 @@ class CScriptDef { public:
     CDefString  DarkwoodAssassinDefName;                 // +0xe18
 };
 extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
-struct CIsThingAlive {                                   // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive { public:                                   // vtable 0x012C32F0
     virtual void v00();
     CScriptThing m_thing;
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 struct CDarkwoodAssassinSpawn {
     virtual ~CDarkwoodAssassinSpawn();
     virtual void Main();

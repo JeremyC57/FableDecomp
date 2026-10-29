@@ -9,7 +9,7 @@ class CWorld;class CMainGameComponent;
 struct StopTimeSet {void*Head;unsigned long Size;unsigned long Allocator;}; //native tree12 vs donor16
 class CGameTimeManager { public:CGameTimeManager(CMainGameComponent&,CWorld&); // actual PDB006F7540
  CWorld*World;CMainGameComponent*GameComponent;float Time,PrevTime,TimeStep;long DayCount;bool UsingVillageTime;float VillageTime;bool VillageDay,FastForwardingToTime;float TimeFastForwardingTo,SecondsLeftToFastForwardTime;StopTimeSet StopTimeIndexes;long NextStopTimeIndex;
- bool IsTimeBetween(float,float,float)const; //006BB5B0/PDB006F6E20
+ private: bool IsTimeBetween(float,float,float)const; public: //006BB5B0/PDB006F6E20
  void Update(float);
 };
 void CGameTimeManager::Update(float delta){

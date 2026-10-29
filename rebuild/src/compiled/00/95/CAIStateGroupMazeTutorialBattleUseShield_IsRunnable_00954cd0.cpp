@@ -96,7 +96,7 @@ struct CTCEnemyTracker {                        // interface 8
     virtual CThing* GetTarget();                // slot 29 (+0x74)
 };
 class CTCBoss { public:                                // interface 0xad
-    long GetBossPhase();                        // 0x007AED10
+    long GetBossPhase() const;                        // 0x007AED10
 };
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870

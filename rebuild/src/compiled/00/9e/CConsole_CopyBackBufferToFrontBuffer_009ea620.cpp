@@ -1,12 +1,15 @@
 // CConsole::CopyBackBufferToFrontBuffer  retail 0x009ea620
 
+class CCharString { public:
+    void* Data;
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+};
+
 struct ConBuffer {
-    void*         data;    // +0x00
+    CCharString   data;    // +0x00
     unsigned char flag;    // +0x04
     int           extra;   // +0x08
     int           pad;     // +0x0C
-    // member at 0x99efb0: copies contents of another buffer
-    void CopyContents(ConBuffer* src);
 };
 
 class CConsole { public:
@@ -18,7 +21,7 @@ class CConsole { public:
 
 void CConsole::CopyBackBufferToFrontBuffer()
 {
-    this->front.CopyContents(&this->back);
+    this->front.data = this->back.data;
     this->front.flag = this->back.flag;
     int* pd = &this->front.extra;
     int* ps = &this->back.extra;

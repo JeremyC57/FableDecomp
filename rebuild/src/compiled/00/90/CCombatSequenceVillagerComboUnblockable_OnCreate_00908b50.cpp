@@ -105,7 +105,7 @@ class CSoundPair { public: long first; long last; CSoundPair() : first(0), last(
 class CCombatActionBase : public CCreatureActionBase { public:
     virtual ~CCombatActionBase();
     virtual void PerformAction();
-    virtual void FinishAction();
+    protected: virtual void FinishAction(); public:
     virtual long GetAnimDelayTime() const;
     virtual long GetAnimationIndex() const;
     virtual long GetAnimationTransitionInTime() const;

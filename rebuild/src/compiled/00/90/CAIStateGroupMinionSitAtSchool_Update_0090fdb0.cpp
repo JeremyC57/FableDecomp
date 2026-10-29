@@ -112,12 +112,13 @@ class CCreatureAction_PlayAnimation : public CCreatureActionBase { public:
     CCreatureAction_PlayAnimation(CThingCreatureBase* creature, const CCharString& animation,
         const CSoundPair& sound, bool a, bool b, bool c, long d, long e);   // 0x008424F0
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 extern long g_framesPerSecond;                  // 0x01375550
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -129,9 +130,9 @@ public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
-    void Terminate();                           // 0x008FCF40
-    long AIAction_DoNothing();                  // 0x0097E200
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    void Terminate();                           protected: // 0x008FCF40
+    EAIActionReturn AIAction_DoNothing(); public:                  protected: // 0x0097E200
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     __forceinline unsigned long RandomFrames(unsigned long seconds)   // random frame count below seconds * fps
     {
         long fps = g_framesPerSecond;
@@ -187,7 +188,7 @@ void CAIStateGroup_MinionSitAtSchool::Update()
             if (over && RandomFrames(5) == 0)
                 break;
             if (CWorld::GetFrame() > nextHand && member->GetPVillage()->LessonOn) {
-                AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "ST_SEATED_CHAIR_RAISE_HAND", CSoundPair(),
+                AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "ST_SEATED_CHAIR_RAISE_HAND", CSoundPair(),
                     false, true, false, 0, 0), false);
                 nextHand = CWorld::GetFrame() + RandomFrames(40);
             }

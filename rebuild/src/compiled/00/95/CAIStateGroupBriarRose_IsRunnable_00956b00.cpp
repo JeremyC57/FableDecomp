@@ -129,7 +129,7 @@ struct CTCEnemySource {                         // the interface-8 component
 };
 
 class CTCBoss { public:
-    bool IsReadyForPhaseChange();               // 0x007AEE90
+    bool IsReadyForPhaseChange() const;               // 0x007AEE90
 };
 
 class CWorld { public: static long __fastcall GetFrame(); };   // 0x0049D870 ?GetFrame@CWorld@@SIJXZ

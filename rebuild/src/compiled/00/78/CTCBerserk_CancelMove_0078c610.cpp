@@ -42,7 +42,7 @@ class CThing { public:
     unsigned char m_flags;                              // +0x91 bit 0: dead
     const C3DVector& GetPos() const;               // 0x004C73D0
     void Kill(bool immediately);                        // 0x004C9B80
-    void RemoveTC(long type);                           // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                           // 0x004C9840
     __forceinline unsigned long HasTC(long type) const { return m_presentBits[type >> 5] & (1UL << (type & 31)); }
     template <class T> __forceinline T* GetTC(long type)
     {
@@ -199,7 +199,7 @@ void CTCBerserk::CancelMove()
         long effect = 0;
         if (berserkDef->GetSubDef(&def) && def->GetEffect("BERSERK_EXIT_EFFECT", &effect))
             CreateParticleEffect(effect, thing->GetPos());
-        thing->RemoveTC(0x84);
+        thing->RemoveTC((ETCInterfaceType)(0x84));
     } else {
         float animTimer = (float)AnimTimer;
         if (animTimer < ReleasedAnimationTimer)

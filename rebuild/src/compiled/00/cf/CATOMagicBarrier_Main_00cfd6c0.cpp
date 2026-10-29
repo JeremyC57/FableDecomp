@@ -62,7 +62,7 @@ class CIsThingAlive : public CPredicateBase { public:                // vtable 0
     CScriptThing Thing;
     __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) { }
     virtual bool operator()() const; virtual CPredicateBase* Clone() const;
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
 }
 class CGameScriptInterface { public:

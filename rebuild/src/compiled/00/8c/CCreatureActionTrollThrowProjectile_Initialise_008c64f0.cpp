@@ -10,7 +10,7 @@
 //   0x00703210 (__fastcall), CIntelligentPointer ctor 0x00A01B10 / Set 0x00A01B90 / dtor 0x00A01C10, LowerBound
 //   0x0040F020, 0x00669CB0 (weapon-hand query, out param), GetPDefinitionManager 0x00692910, GetDefGlobalIndex
 //   0x009AD410, CTCCarrying::AddThing(CThing*, long, bool) 0x006A1F80, CTCGraphicAppearance 0x004BFAC0,
-//   GetRandomSeed 0x0049D810, GFROR13 0x00497890 (__fastcall), CCharString 0x0099EBF0 / ~ 0x0099EAE0.
+//   GetWorldSeed 0x0049D810, GFROR13 0x00497890 (__fastcall), CCharString 0x0099EBF0 / ~ 0x0099EAE0.
 // Layout: action +0x08 PCreature, +0x74 combat TC pointer, +0x114 PProjectile, +0x12c long flag (retail bytes);
 //   creature +0x70 def, +0x90 player (signed char), +0x64 graphic appearance TC.
 class CCharString { public:
@@ -20,7 +20,7 @@ class CCharString { public:
 };
 class C3DVector { public: float X, Y, Z; };
 class CRightHandedSet;
-unsigned long __fastcall GFROR13(unsigned long value);       // 0x00497890
+long __fastcall GFROR13(unsigned long value);       // 0x00497890
 
 struct CDefBase {
     virtual void v00();
@@ -82,7 +82,7 @@ __declspec(noinline) bool CPhysicalDefManager::GetDef(long index, CDefPointer<CP
 class CWorld { public:
     unsigned char        _pad00[0x10];
     CPhysicalDefManager* PDefs;                              // +0x10
-    unsigned long* GetRandomSeed();                          // 0x0049D810
+    unsigned long* GetWorldSeed() const;                          // 0x0049D810
 };
 inline unsigned long GFRandom(unsigned long* seed)
 {
@@ -234,7 +234,7 @@ void CCreatureAction_TrollThrowProjectile::Initialise()
     CDefPointer<CWillPowerIndicatorDef> willPower;
     CDefClassBase* creatureDef = GetCreature()->PDef;
     if (creatureDef->GetSubDef(&willPower)) {
-        unsigned long roll = GFRandom(GetPWorld()->GetRandomSeed()) % 100;
+        unsigned long roll = GFRandom(GetPWorld()->GetWorldSeed()) % 100;
         CTCWillPower* tc;
         if ((float)roll < willPower->Chance && GetCreature()->GetInterface(&tc, 0x30) && willPower->Value > 0)
             tc->Value = willPower->Value;

@@ -18,12 +18,14 @@ namespace std {
 
 struct random_access_iterator_tag { random_access_iterator_tag() { } };
 
-struct CCharString {                            // 4 bytes: the string-data pointer
+} // (hoisted to global scope: naming wave 9)
+class CCharString { public:                            // 4 bytes: the string-data pointer
     void* m_pData;
     CCharString(const CCharString& other);      // 0x0099EC30
     ~CCharString();                             // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
+namespace std {
 
 template <class T1, class T2> struct pair {     // STLport pair: memberwise copy constructor
     T1 first;

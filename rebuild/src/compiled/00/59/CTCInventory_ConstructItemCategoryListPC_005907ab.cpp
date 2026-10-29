@@ -234,8 +234,8 @@ struct CLongLongMap {                                   // std::map<long, long> 
 };
 class CTCInventory { public:
     void*   __vftable;                                  // +0x00
-    CThing* ParentThing;                                // +0x04
-    CCountedPointer<CComponent> CreateMenuDescPC(const CCharString& descriptionSymbol);   // 0x00582673
+    CThing* ParentThing;                                private: // +0x04
+    CCountedPointer<CComponent> CreateMenuDescPC(const CCharString& descriptionSymbol); public:   // 0x00582673
     void ContructItemListsPC(CLongLongMap& items, CList* subList, CComponent* owner, CCountedPointer<CComponent>& actionsList);   // 0x00590198
     void ConstructItemCategoryListPC(CWideString& title, CList* list, CItemVector& items, CComponent* owner,
                                      const CCharString& templateName, const CCharString& descriptionSymbol, bool checkUsable);

@@ -47,7 +47,7 @@ class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
 float __stdcall DivideByGameSpeed(float value); // 0x00415FD3
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CCharString { public:
     void* PStringData;
@@ -74,6 +74,7 @@ class CAIBrain { public:
     CThing* PCreature;                          // +0x18
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -95,7 +96,7 @@ class CAIStateGroupBase { public:
         *seed = GFROR13(*seed);
         return *seed % range;
     }
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
+    protected: EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool stopWhenReplaced); public:   // 0x0097DB70
 };
 
 struct CAIStateGroup_MinionBehaviourPodiumEmoteNeutral : CAIStateGroupBase {
@@ -117,7 +118,7 @@ void CAIStateGroup_MinionBehaviourPodiumEmoteNeutral::UpdateLeaf()
         Pause = (float)Random(100) * 0.03f + 2.0f;
         if ((float)Random(100) * 0.01f < 0.1f) {
             CCharString name("ST_EMOTE");
-            AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), name, CSoundPair(),
+            AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), name, CSoundPair(),
                 false, true, false, 0, 0), false);
         }
     }

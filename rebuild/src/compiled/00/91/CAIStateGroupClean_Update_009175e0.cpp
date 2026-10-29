@@ -51,7 +51,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 
 class CAIStateGroupBase

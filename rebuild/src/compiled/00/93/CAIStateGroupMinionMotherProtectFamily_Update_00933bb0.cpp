@@ -53,11 +53,12 @@ class CAIBrain { public:
     CThingAICreature* Creature;             // +0x18
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                       // +0x04
-    unsigned char _pad[0xc];                // +0x08..+0x13
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    unsigned char _pad[0xc];                protected: // +0x08..+0x13
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                       // 0x008FCF40
 };
 
@@ -70,7 +71,7 @@ void CAIStateGroup_MinionMotherProtectFamily::Update()
 {
     if (PFamilyMember.GetPItem() != 0 && !(PFamilyMember.GetPItem()->m_flags91 & 1)) {
         CThingAICreature* creature = PBrain->Creature;
-        long result = AIAction_PerformActionAndWait(&CCreatureAction_AlertToPlayer(creature), false);
+        long result = AIAction_PerformActionAndWait(CCreatureAction_AlertToPlayer(creature), false);
         if (result == 2) {
             Terminate();
             return;

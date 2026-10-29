@@ -73,6 +73,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -82,8 +83,8 @@ class CAIStateGroupBase { public:
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
     long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerConstThing target, float distance, bool* reached,
-        long movement, bool a, bool b, bool c, bool d, float speed);         // 0x0097E380
-    long AIAction_DoNothing();                  // 0x0097E200
+        long movement, bool a, bool b, bool c, bool d, float speed);         protected: // 0x0097E380
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 };
 struct CAIStateGroup_MinionKidCalledToMother : CAIStateGroupBase {
     CMessageEvent* FindCallHomeEvent();         // 0x0090EE20

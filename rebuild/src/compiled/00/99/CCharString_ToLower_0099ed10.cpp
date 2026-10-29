@@ -67,7 +67,7 @@ public:
         }
         --g_CCharStringInstanceCount;
     }
-    void UnassignString();                             // 0x0099E9B0
+    protected: void UnassignString(); public:                             // 0x0099E9B0
     void MakeOwnCopyOfData()
     {
         CCharStringData* data = PStringData;

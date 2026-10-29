@@ -91,11 +91,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04 (copied and destroyed out of line)
     CIsThingAlive(const CScriptThing& thing);
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 // The filter's constructor is inlined into Main, but its CScriptThing copy stays an out-of-line call (0x004ABE90) while
 // the by-value SetIsPushableByHero argument expands the same copy constructor inline.
 #pragma inline_depth(0)

@@ -155,7 +155,7 @@ class CWorld { public:
 struct CAIStateGroupBaseW : CAIStateGroupBase {
 };
 
-unsigned long __fastcall GFROR13(unsigned long value);      // 0x00497890
+long __fastcall GFROR13(unsigned long value);      // 0x00497890
 long __fastcall GFGetCurrentFrame();            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
 extern long g_FramesPerSecond;                  // 0x01375550
 

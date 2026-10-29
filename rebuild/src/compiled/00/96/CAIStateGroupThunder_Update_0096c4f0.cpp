@@ -130,6 +130,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -139,8 +140,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;
     unsigned char Enabled;
     unsigned char _pad_0x13;
-    void Terminate();                           // 0x008FCF40
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool b);   // 0x0097DB70
+    void Terminate();                           protected: // 0x008FCF40
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool b); public:   // 0x0097DB70
     CThingCreatureBase* GetCreatureBase() const { return (CThingCreatureBase*)PBrain->PCreature; }
 };
 __forceinline float Distance2D(CThing* target, CThing* me)
@@ -179,7 +180,7 @@ void CAIStateGroup_Thunder::Update()
             CGameDefinitionManager::Get().GetDef(index, &def);
             float dist = Distance2D(((CThing*)PTargetThing.GetPItem()), PBrain->PCreature);
             if (dist < def->Range && dist > 1.0f) {
-                long result = AIAction_PerformActionAndWait(&CCreatureAction_ThunderLightningStorm(GetCreatureBase()), false);
+                long result = AIAction_PerformActionAndWait(CCreatureAction_ThunderLightningStorm(GetCreatureBase()), false);
                 if (result != 0) {
                     HitCount = 0;
                     combat->Reset();

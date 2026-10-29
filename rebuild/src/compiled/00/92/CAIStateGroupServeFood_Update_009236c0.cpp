@@ -191,6 +191,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();               // slot 0
     virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
@@ -203,7 +204,7 @@ class CAIStateGroupBase { public:
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    protected: EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_ServeFood : CAIStateGroupBase {
@@ -233,7 +234,7 @@ void CAIStateGroup_ServeFood::Update()
             CDefPointer<CCarryableDef> carryDef;
             food->m_pDef->GetSubDef(&carryDef);
             carrying->PutThingInCarrySlot(food, carryDef->CarrySlot, true);
-            if (AIAction_PerformActionAndWait(&CCreatureAction_PutDownTankard(GetCreature()), false) != 2)
+            if (AIAction_PerformActionAndWait(CCreatureAction_PutDownTankard(GetCreature()), false) != 2)
                 break;
             table->NotifyFoodServed(TaskIndex, food);
         }
@@ -242,7 +243,7 @@ void CAIStateGroup_ServeFood::Update()
         if (WalkTo(ServePos, ServeRHSet)) {
             CIntelligentPointerThingObject food(table->GetFood(TaskIndex));
             if (((CThing*)food.GetPItem()) && !(((CThing*)food.GetPItem())->m_flags91 & 1)) {
-                if (AIAction_PerformActionAndWait(&CCreatureAction_RemoveFoodFromTable(GetCreature(), ((CThing*)food.GetPItem())), false) != 2)
+                if (AIAction_PerformActionAndWait(CCreatureAction_RemoveFoodFromTable(GetCreature(), ((CThing*)food.GetPItem())), false) != 2)
                     break;
                 CTCCarrying* carrying;
                 GetCreature()->GetInterface(&carrying, 0x46);

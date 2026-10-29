@@ -44,7 +44,7 @@ class CThing { public:
         }
         return false;
     }
-    void RemoveTC(long interfaceType);      // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
 };
 
 class CTCSpecialAbilities { public:                // interface 0xA7
@@ -69,5 +69,5 @@ void CTCWillEnflame::CancelMove()
         abilities->AbilityMutexLock = false;
         abilities->CurrentAbility = 0;
     }
-    parent->RemoveTC(0x95);
+    parent->RemoveTC((ETCInterfaceType)(0x95));
 }

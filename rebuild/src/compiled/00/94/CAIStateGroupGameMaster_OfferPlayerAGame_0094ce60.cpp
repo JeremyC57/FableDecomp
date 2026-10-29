@@ -106,7 +106,7 @@ class CAIBrain { public:
 enum EAIActionRepeat { AI_ACTION_REPEAT_NONE, AI_ACTION_REPEAT_1, AI_ACTION_REPEAT_2 };
 enum EAIActionReturn { AI_RET_0, AI_RET_1, AI_RET_2, AI_RET_3, AI_RET_4 };
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 extern long g_framesPerSecond;                  // 0x01375550
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {

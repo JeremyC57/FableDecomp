@@ -53,6 +53,7 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
+enum ETCInterfaceType { };
 class CThing {
 public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
@@ -77,7 +78,7 @@ public:
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     const C3DVector& GetPos() const;           // 0x004C73D0
     void Kill(bool immediately);                    // 0x004C9B80
-    void RemoveTC(long interfaceType);              // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);              // 0x004C9840
 };
 class CThingAnimatable : public CThing {
 public:
@@ -134,5 +135,5 @@ void CTCForcePushed::FinishBeingForcePushed(bool reversed, float damage)
         ((CThingAnimatable*)ParentThing)->SetSuspendAnimation(false, 0);
     if (IS_THING_ALIVE(PParticle))
         PParticle.GetPItem()->Kill(true);
-    ParentThing->RemoveTC(0x8d);
+    ParentThing->RemoveTC((ETCInterfaceType)(0x8d));
 }

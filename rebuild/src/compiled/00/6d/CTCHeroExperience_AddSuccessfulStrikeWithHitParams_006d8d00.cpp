@@ -101,7 +101,7 @@ public:
 
 class CTCHeroExperience {
 public:
-    void AddSuccessfulStrikeOfType(EDamageAttribute type, float damage, bool special);   // 0x006D8790
+    private: void AddSuccessfulStrikeOfType(EDamageAttribute type, float damage, bool special); public:   // 0x006D8790
     void AddSuccessfulStrikeWithHitParams(const CHitParameters& params);
 };
 

@@ -26,11 +26,12 @@ struct CBasicStringChar {
     bool operator<(const CBasicStringChar& other) const;   // 0x00429950
 };
 
-struct CCharString {
-    CBasicStringChar* PStringData;
+} // (hoisted to global scope: naming wave 9)
+class CCharString { public:
+    std::CBasicStringChar* PStringData;
     CCharString(const CCharString& other);                 // 0x0099EC30
     ~CCharString();                                        // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);      // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);      // 0x0099EFB0
     __forceinline bool operator<(const CCharString& other) const
     {
         if (other.PStringData == PStringData)
@@ -42,6 +43,7 @@ struct CCharString {
         return *PStringData < *other.PStringData;
     }
 };
+namespace std {
 
 struct CThing;
 struct CTCBase;

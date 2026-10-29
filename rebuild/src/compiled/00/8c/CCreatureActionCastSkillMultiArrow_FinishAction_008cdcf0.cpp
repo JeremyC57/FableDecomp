@@ -66,7 +66,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12();
-    virtual void FinishAction();            // 0x00859A20 (retail slot 4; the slot is immaterial to this direct call)
+    protected: virtual void FinishAction(); public:            // 0x00859A20 (retail slot 4; the slot is immaterial to this direct call)
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThingCreatureBase> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];     // +0x10

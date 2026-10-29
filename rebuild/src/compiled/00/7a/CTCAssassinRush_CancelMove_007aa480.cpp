@@ -9,8 +9,9 @@
 // Shape: the parent pointer is read into a local BEFORE the accessor call (edi), the two flag stores
 // are tail-duplicated into both exits; the unlocked path is the `if` arm (the early-return form
 // places the locked exit first).
+enum ETCInterfaceType { };
 class CThing { public:
-    void RemoveTC(long interfaceType);                      // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);                      // 0x004C9840
 };
 
 class CPlayer { public:
@@ -42,7 +43,7 @@ void CTCAssassinRush::CancelMove()
     CThing* parent = ParentThing;
     if (!GetPlayerManager().GetMainPlayer().m_bCancelLocked) {
         CleanUpEffects();
-        parent->RemoveTC(0xa9);
+        parent->RemoveTC((ETCInterfaceType)(0xa9));
         ScheduleForCancel = false;
     } else {
         ScheduleForCancel = true;

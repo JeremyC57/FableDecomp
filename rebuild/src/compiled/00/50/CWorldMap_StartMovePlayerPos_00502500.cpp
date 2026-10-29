@@ -41,8 +41,8 @@ class CWorldMap { public:
     unsigned char               _pad04[0x74];
     CVector<CPlayerPositionInfo> PlayerPositionInfo;                   // +0x78 (PDB +0x8C)
 
-    long GetRegionNumberMapIsIn(long map) const;                       // 0x004FC190
-    void UnloadRegion(long region, bool b);                            // 0x004FEEC0
+    long GetRegionNumberMapIsIn(long map) const;                       protected: // 0x004FC190
+    void UnloadRegion(long region, bool b); public:                            // 0x004FEEC0
     void LoadRegion(long region, ELoadType loadType, bool b);          // 0x00500540
     void UnloadAllMapsExceptPlayerPos();                               // 0x004FF390
     void StartMovePlayerPos(long player, const C3DVector& pos, ELoadType loadType);

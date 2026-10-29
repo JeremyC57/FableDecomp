@@ -57,7 +57,7 @@ public:
         CInterfaceMap::SEntry* it = map->LowerBound(type);
         return (it == map->last || interfaceType < it->first ? map->last : it)->second;
     }
-    void RemoveTC(long interfaceType);          // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
     CTCPhysicsBase* GetPhysicsTC() const { return PhysicsTC; }
 };
 class CThingManager { public:
@@ -131,7 +131,7 @@ void CTCWallMount::OnInitialActivate()
         CThing* trophy = Trophy.GetPItem();
         if (trophy->HasTC(0x82)) {
             ((CTCComponent82*)trophy->GetTC(0x82))->ClearEntries();
-            Trophy.GetPItem()->RemoveTC(0x82);
+            Trophy.GetPItem()->RemoveTC((ETCInterfaceType)(0x82));
         }
         CThing* target = Trophy.GetPItem();
         if (target->HasTC(9))

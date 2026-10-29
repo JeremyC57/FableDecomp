@@ -27,12 +27,15 @@ class CGameScriptInterface { public:                      // vtable 0x01260F0C
     virtual bool StartScriptingEntity(const CScriptThing& thing, CScriptGameResourceObjectScriptedThingBase& object, EScriptAIPriority priority);   // slot 8 (+0x20)
     virtual void v009() const; virtual void v010() const;
 };
-struct CIsThingAlive {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CIsThingAlive { public:                             // vtable 0x012C32F0: a filter holding a script thing
     virtual void v00();
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 class CBaseObject { public:                               // CBaseIntelligentPointer root
     virtual void v00();
     void* m_pIntelligentPointer;                   // +0x04

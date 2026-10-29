@@ -73,8 +73,8 @@ struct CModeRockTrollVulnerable : CModeBase {   // vtable 0x01285774
     long          RecoveryCount;           // +0x1c
     unsigned char Filter[0x0c];            // +0x20 CAnimFilterOfGroup
     void*         PCreature;               // +0x2c
-    bool          bRecovering;             // +0x30
-    void Recover();                        // 0x008DE700
+    bool          bRecovering;             private: // +0x30
+    void Recover(); public:                        // 0x008DE700
     void FrameUpdate();
 };
 }

@@ -102,6 +102,7 @@ class CAIBrain { public:
     CThing* GetPCreature() const { return PCreature; }
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -112,8 +113,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float distance, bool* reached, long movement,
-        bool a, bool b, bool c, CThing* avoid, bool d, float speed);        // 0x0097E890
-    long AIAction_DoNothing();                  // 0x0097E200
+        bool a, bool b, bool c, CThing* avoid, bool d, float speed);        protected: // 0x0097E890
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     void Terminate();                           // 0x008FCF40
 };
 

@@ -43,13 +43,14 @@ __declspec(noinline) bool CDefClassBase::GetSubDef(CDefPointerNavigation* out) c
     return out->m_p != 0;
 }
 #pragma auto_inline(on)
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad0[0x70];
     CDefClassBase* PhysicsTC;                   // +0x70
     unsigned char _pad74[0x91 - 0x74];
     unsigned char m_flags91;                    // +0x91 bit 0: Dead
     const C3DVector& GetPos() const;             // 0x004C73D0
-    void RemoveTC(long interfaceType);          // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -122,7 +123,7 @@ void CAIStateGroup_LookAtInterestingThings::Update()
                 break;
             }
         } else if (result == 3)
-            thing.GetPItem()->RemoveTC(0xb3);
+            thing.GetPItem()->RemoveTC((ETCInterfaceType)(0xb3));
         Terminate();
         return;
     }

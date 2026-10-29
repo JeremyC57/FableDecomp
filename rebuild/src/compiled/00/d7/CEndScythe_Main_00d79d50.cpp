@@ -77,11 +77,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
 protected:

@@ -23,7 +23,7 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long          Mode;                                 // +0x18
     void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue);   // 0x0044BB00
-    void Transfer(const char* name, long& value, const long& defaultValue);                           // 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
     void Transfer(const char* name, bool& value, const bool& defaultValue);                           // 0x004045C0
     void Transfer(const char* name, CCharString* value);                                              // 0x00411010
 };
@@ -58,8 +58,8 @@ bool CThingTrackNode::SerialiseGameState(CPersistContext* context)
             AddTC("CTCPhysicsStandard", false, 0);
         context->Transfer("NextNodeUID", NextNodeUID, 0);
         context->Transfer("PreviousNodeUID", PreviousNodeUID, 0);
-        context->Transfer("NextNodeThingFileID", NextNodeThingFileID, 0);
-        context->Transfer("PreviousNodeThingFileID", PreviousNodeThingFileID, 0);
+        context->Transfer<long>("NextNodeThingFileID", NextNodeThingFileID, 0);
+        context->Transfer<long>("PreviousNodeThingFileID", PreviousNodeThingFileID, 0);
         context->Transfer("IsStart", IsStart, false);
         context->Transfer("IsEnd", IsEnd, false);
         context->Transfer("TrackName", &TrackName);

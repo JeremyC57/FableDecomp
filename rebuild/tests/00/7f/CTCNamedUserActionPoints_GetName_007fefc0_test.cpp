@@ -1,10 +1,10 @@
 #include <stdio.h>
 class CCharString { public:
     char* p;
-    void Assign(const CCharString& src);
+    const CCharString& operator=(const CCharString& src);
 };
 static const CCharString* captured_src; static CCharString* captured_self;
-void CCharString::Assign(const CCharString& src){ captured_self=this; captured_src=&src; }
+const CCharString& CCharString::operator=(const CCharString& src){ captured_self=this; captured_src=&src; return *this; }
 class CTCNamedUserActionPoints { public:
     char pad[0x34];
     CCharString* arr;

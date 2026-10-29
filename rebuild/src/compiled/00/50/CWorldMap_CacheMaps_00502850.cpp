@@ -27,7 +27,7 @@ class CWorld { public:
 class CLevelLoader { public:
     virtual void v00();
     virtual void Update();                              // slot 1
-    bool IsBusy();                                      // 0x006C20A0
+    bool IsBusy() const;                                      // 0x006C20A0
 };
 enum ELoadType { LOAD_TYPE_IMMEDIATE = 0, LOAD_TYPE_BACKGROUND = 1 };
 class CMapInfo { public:                                       // 0x48 bytes

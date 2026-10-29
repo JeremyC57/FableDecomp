@@ -6,7 +6,7 @@ CCharString __fastcall GFIntToCharString(long);
 CCharString __fastcall operator+(const char*,const CCharString&);
 class CFaction;
 class CPersistContext { public:
- void Transfer(const char*,long&,const long&);
+ template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
  void TransferFaction(const char*,CFaction&);
 };
 struct CountedFaction { CFaction* Data; void* Info; __forceinline CFaction& operator*() const { return *Data; } };
@@ -17,6 +17,6 @@ class CFactionManager { public:
 };
 void CFactionManager::SaveGameState(CPersistContext& ctx) const {
  long n=Finish-Start;
- ctx.Transfer("NumberOfFactions",n,0);
+ ctx.Transfer<long>("NumberOfFactions",n,0);
  for(long i=0;i<n;++i) ctx.TransferFaction("Faction"+GFIntToCharString(i),*Start[i].Faction);
 }

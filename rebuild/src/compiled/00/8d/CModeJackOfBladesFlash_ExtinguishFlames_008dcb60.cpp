@@ -9,6 +9,7 @@ struct CInterfaceMap {                             // a thing's sorted {type, co
     SEntry* last;
     SEntry* LowerBound(const long& type);          // 0x0040F020
 };
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad00[0x20];
     unsigned long m_presentBits[9];                // +0x20 std::bitset of interface types
@@ -27,7 +28,7 @@ class CThing { public:
             it = map->last;
         return (T*)it->component;
     }
-    void RemoveTC(long interfaceType);             // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);             // 0x004C9840
 };
 class CThingCreatureBase : public CThing { public: };
 class CBaseObject;
@@ -126,7 +127,7 @@ void CModeJackOfBladesFlash::ExtinguishFlames()
         if (perceived && !(perceived->m_flags91 & 1)) {
             CThing* target = perception->GetPerceivedThing();
             if (PTarget.GetPItem() == target)
-                PTarget.GetPItem()->RemoveTC(0x89);
+                PTarget.GetPItem()->RemoveTC((ETCInterfaceType)(0x89));
         }
     }
     {
@@ -138,7 +139,7 @@ void CModeJackOfBladesFlash::ExtinguishFlames()
         for (long i = 0; i < count; ++i) {
             CThing* thing = things[i];
             if (thing && !(thing->m_flags91 & 1))
-                thing->RemoveTC(0x89);
+                thing->RemoveTC((ETCInterfaceType)(0x89));
         }
     }
 }

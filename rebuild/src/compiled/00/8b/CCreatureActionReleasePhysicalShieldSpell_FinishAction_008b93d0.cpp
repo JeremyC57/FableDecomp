@@ -18,7 +18,7 @@ class CGameCameraManager { public:
 
 class CCombatActionBase { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();
-    virtual void FinishAction();            // slot 4: 0x00859A20
+    protected: virtual void FinishAction(); public:            // slot 4: 0x00859A20
     CWorld* GetWorld();                     // 0x00692940
 };
 class CCreatureAction_ReleasePhysicalShieldSpell : public CCombatActionBase { public:

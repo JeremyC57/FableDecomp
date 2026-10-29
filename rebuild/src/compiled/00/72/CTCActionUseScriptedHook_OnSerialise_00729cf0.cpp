@@ -35,7 +35,7 @@ class CPersistContext { public:
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
     bool IsLoading() const { return Mode == 2 || Mode == 3; }
     void Transfer(const char* name, bool& value, const bool& defaultValue);                         // 0x004045C0
-    void Transfer(const char* name, long& value, const long& defaultValue);                         // 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
     void Transfer(const char* name, unsigned __int64& value, const unsigned __int64& defaultValue); // 0x0044BB00
     void Transfer(const char* name, CCharString* value);                                            // 0x00411010
 };
@@ -70,7 +70,7 @@ void CTCActionUseScriptedHook::OnSerialise(CPersistContext& context, bool)
     context.Transfer("HiddenOnMiniMap", HiddenOnMiniMap, false);
     if (context.IsSaving()) {
         long version = 1;
-        context.Transfer("VersionNumber", version, 0);
+        context.Transfer<long>("VersionNumber", version, 0);
         context.Transfer("ForceConfirmation", ForceConfirmation, false);
         context.Transfer("TeleportToRegionEntrance", TeleportToRegionEntrance, false);
         if (EntranceConnectedToUID != 0 || context.IsLoading())
@@ -79,10 +79,10 @@ void CTCActionUseScriptedHook::OnSerialise(CPersistContext& context, bool)
             context.Transfer("CameraTrackUID", CameraTrackUID, 0);
         context.Transfer("SoundName", &SoundName);
         context.Transfer("AnimationName", &AnimationName);
-        context.Transfer("ReplacementObject", ReplacementObject, 0);
+        context.Transfer<long>("ReplacementObject", ReplacementObject, 0);
     } else {
         long version;
-        context.Transfer("VersionNumber", version, 0);
+        context.Transfer<long>("VersionNumber", version, 0);
         if (version != 1)
             return;
         context.Transfer("ForceConfirmation", ForceConfirmation, false);
@@ -95,6 +95,6 @@ void CTCActionUseScriptedHook::OnSerialise(CPersistContext& context, bool)
             CameraTrackUID = GetThingManager().RemapUIDForSerialisation(false, ParentThing->IsLevelLess(), ParentThing->m_level, CameraTrackUID);
         context.Transfer("SoundName", &SoundName);
         context.Transfer("AnimationName", &AnimationName);
-        context.Transfer("ReplacementObject", ReplacementObject, 0);
+        context.Transfer<long>("ReplacementObject", ReplacementObject, 0);
     }
 }

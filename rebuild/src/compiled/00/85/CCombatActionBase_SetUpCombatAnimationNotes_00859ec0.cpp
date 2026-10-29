@@ -26,8 +26,8 @@ class CCombatActionBase { public:
     CStrikeEventList StrikeEvents;              // +0xbc
     unsigned char _padc4[0xde - 0xc4];          // +0xc4
     bool m_keepActionTime;                      // +0xde
-    unsigned char _paddf[0x114 - 0xdf];         // +0xdf
-    void SetupCombatStrikeEvents();             // 0x00859A70
+    unsigned char _paddf[0x114 - 0xdf];         protected: // +0xdf
+    void SetupCombatStrikeEvents(); public:             // 0x00859A70
     void SetupCombatInterrupts();               // 0x00858A20
     void SetUpCombatAnimationNotes();
 };

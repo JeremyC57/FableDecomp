@@ -43,7 +43,10 @@ struct CFrameSource {
     virtual void v66(); virtual void v67(); virtual void v68(); virtual void v69();
     virtual void GetSummonOffset(C3DVector* out);       // vslot 70 (+0x118)
 };
-struct CTCGraphicAppearance { void SetAlpha(unsigned char alpha); };   // 0x004BFAC0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public: void SetAlpha(unsigned char alpha); };
+}
+using NGraphicAppearance::CTCGraphicAppearance;   // 0x004BFAC0
 class CThing {
 public:
     virtual void v00();
@@ -56,7 +59,7 @@ public:
     unsigned char _pad68[0x91 - 0x68];
     unsigned char Dead : 1;                             // +0x91 bit0
     const C3DVector& GetPos() const;               // 0x004C73D0
-    void RemoveTC(long type);                           // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                           // 0x004C9840
     template<class T> __forceinline void GetInterface(long interfaceType, T** out)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -149,5 +152,5 @@ void CTCSummonSpell::FrameUpdate()
             return;
         }
     }
-    thing->RemoveTC(0x91);
+    thing->RemoveTC((ETCInterfaceType)(0x91));
 }

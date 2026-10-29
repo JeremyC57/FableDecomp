@@ -80,6 +80,7 @@ class CCreatureAction_PickUpJug : public CCreatureAction_PickUpThingAtTable { pu
         : CCreatureAction_PickUpThingAtTable(owner, jug, PickUpJugAnimationName(), 0x29) { }
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -89,8 +90,8 @@ class CAIStateGroupBase { public:
     unsigned char Priority;                     // +0x11
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
-    void SetPushableByHero(bool pushable);                              // 0x0097E330
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool interruptible);   // 0x0097DB70
+    void SetPushableByHero(bool pushable);                              protected: // 0x0097E330
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool interruptible); public:   // 0x0097DB70
 };
 
 struct CAIStateGroup_TavernServer : CAIStateGroupBase {
@@ -110,7 +111,7 @@ bool CAIStateGroup_TavernServer::PickUpJug()
     {
         CThingCreatureBase* creature = (CThingCreatureBase*)PBrain->PCreature;
         CCreatureAction_PickUpJug action(creature, PJug.GetPItem());
-        failed = AIAction_PerformActionAndWait(&action, false) != 2;
+        failed = AIAction_PerformActionAndWait(action, false) != 2;
     }
     if (failed) {
         FreeBarPoint();

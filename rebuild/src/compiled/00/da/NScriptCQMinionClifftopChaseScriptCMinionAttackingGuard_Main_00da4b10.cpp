@@ -30,7 +30,7 @@ public:
 class CIsThingAlive : public CPredicateBase {           // vtable 0x012C32F0 (Ego_r 16 bytes)
 public:
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
     CScriptThing Thing;                                 // +0x04
 };
 }

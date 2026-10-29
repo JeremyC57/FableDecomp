@@ -87,11 +87,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(void* thing) : m_thing(thing) { }
-    ~CIsThingAlive();                          // 0x00E241B0 (out of line in this translation unit)
+    virtual ~CIsThingAlive();                          // 0x00E241B0 (out of line in this translation unit)
 };
+}
+using NScript::CIsThingAlive;
 
 class CEntityScriptBase
 {

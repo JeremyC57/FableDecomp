@@ -1,6 +1,6 @@
 class CCharString { public:
     char* p;
-    void Assign(const CCharString& src);
+    const CCharString& operator=(const CCharString& src);   // 0x0099EFB0
 };
 
 class CTCNamedUserActionPoints { public:
@@ -11,5 +11,5 @@ class CTCNamedUserActionPoints { public:
 
 void CTCNamedUserActionPoints::GetName(long index, CCharString* out)
 {
-    out->Assign(this->arr[index]);
+    *out = this->arr[index];
 }

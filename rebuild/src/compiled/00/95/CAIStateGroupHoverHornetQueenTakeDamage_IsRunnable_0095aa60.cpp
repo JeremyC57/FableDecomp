@@ -172,7 +172,7 @@ class CPlayerManager { public:
 };
 
 class CTCBoss { public:                                // interface 0xad
-    long GetBossPhase();                        // 0x007AED10
+    long GetBossPhase() const;                        // 0x007AED10
 };
 
 struct CThingQueen {

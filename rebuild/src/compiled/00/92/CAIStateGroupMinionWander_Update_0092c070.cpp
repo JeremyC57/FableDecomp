@@ -89,6 +89,7 @@ class CAIBrain { public:
 };
 
 class CThingBuilding;
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -100,8 +101,8 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
     void Terminate();                           // 0x008FCF40
     long AIAction_MinionWander(long movement, CThingBuilding* building);    // 0x0097F870
-    long AIAction_MinionIdle();                 // 0x0097FA00
-    long AIAction_DoNothing();                  // 0x0097E200
+    long AIAction_MinionIdle();                 protected: // 0x0097FA00
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* reached, long movementType,
                                      bool a, bool b, bool c, CThing* leader, bool d, float e);   // 0x0097E890
 };

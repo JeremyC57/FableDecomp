@@ -43,11 +43,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                  // vtable 0x012C32F0
     CScriptThing m_thing;                               // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive();                                   // 0x00E241B0
+    virtual ~CIsThingAlive();                                   // 0x00E241B0
 };
+}
+using NScript::CIsThingAlive;
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 class CBaseObject { public:                        // vtable 0x0129A7D8
     virtual void b000();

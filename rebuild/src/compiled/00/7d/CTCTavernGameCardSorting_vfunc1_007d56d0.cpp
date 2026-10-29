@@ -8,7 +8,7 @@
 // The card games' own members start at +0x318 (the card base is far larger than the PDB's
 // CTCTavernGame), so the base is a local model padded to there.
 class CPersistContext { public:
-    void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
 };
 
 struct CTCTavernGameCardBase {
@@ -25,6 +25,6 @@ struct CTCTavernGameCardSorting : CTCTavernGameCardBase {
 void CTCTavernGameCardSorting::vfunc_1(CPersistContext* context, long arg)
 {
     CTCTavernGameCardBase::vfunc_1(context, arg);
-    context->Transfer("TimeLimitNumRoundsToWin", m_timeLimitNumRoundsToWin, 0);
-    context->Transfer("TimeLimitBestNumRounds", m_timeLimitBestNumRounds, 0);
+    context->Transfer<long>("TimeLimitNumRoundsToWin", m_timeLimitNumRoundsToWin, 0);
+    context->Transfer<long>("TimeLimitBestNumRounds", m_timeLimitBestNumRounds, 0);
 }

@@ -107,11 +107,14 @@ public:
     virtual bool operator()(const CScriptThing& thing) const;
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                             // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
+    virtual ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
 };
+}
+using NScript::CIsThingAlive;
 extern const char g_scriptNameHero[];              // 0x0125D1C8 "SCRIPT_NAME_HERO"
 class CPersonalScript_alextestScript;
 class CalextestData;

@@ -33,7 +33,7 @@ class CStringParser { public:
     void (__fastcall* ErrorCallback)(const CCharString&);   // +0x18
     CCursorPos     CursorPos;            // +0x1c
 protected:
-    long SkipWhitespace();               // 0x009B9C60
+    public: long SkipWhitespace(); protected:               // 0x009B9C60
     bool CalcInQuotes(bool inQuotes, const char* from, const char* to) const   // 0x009B9570 when out of line
     {
         while (from != to) {

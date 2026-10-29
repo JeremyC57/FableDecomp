@@ -76,7 +76,7 @@ class CGameDefinitionManager { public:
     unsigned char  _pad_0x00[0xdc];
     CHeroStatsDef* PHeroStatsDef;                    // +0xdc
 };
-class CWorld { public: unsigned long* GetRandomSeed();     // 0x0049D810
+class CWorld { public: unsigned long* GetWorldSeed() const;     // 0x0049D810
 };
 class CWorldMap { public: long GetNoMaps() const;           // 0x004FB470
 };
@@ -239,9 +239,9 @@ CTCHeroStats::CTCHeroStats(CThing* owner)
     NumberOfTimesUsedAbility.resize(20, 0);
     RegionTime.resize(GetWorldMap().GetNoMaps(), 0);
     HeroStatsExperience.resize(4, 0);
-    UCounter = GFFloatRandom(1.0f, GetWorld().GetRandomSeed());
-    VCounter = GFFloatRandom(1.0f, GetWorld().GetRandomSeed());
-    RotCounter = GFFloatRandom(1.0f, GetWorld().GetRandomSeed());
+    UCounter = GFFloatRandom(1.0f, GetWorld().GetWorldSeed());
+    VCounter = GFFloatRandom(1.0f, GetWorld().GetWorldSeed());
+    RotCounter = GFFloatRandom(1.0f, GetWorld().GetWorldSeed());
     FramesUntilFatnessReduces = GetFatnessReducingFrequencyInFrames();
     Age = GetHeroStatsDef()->StartAge;
     Stamina = MaxStamina = GetHeroStatsDef()->MaxStamina + ExtraMaxStamina;

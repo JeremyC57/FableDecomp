@@ -79,6 +79,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -86,8 +87,8 @@ class CAIStateGroupBase { public:
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     long AIAction_MoveToPos(long repeat, C3DVector pos, bool* arrived, long movement, bool a, bool b,
                             CThing* avoid, bool c, float speed);   // 0x0097EC00
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long lookFlags, float tolerance);   // 0x0097D580
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    long AIAction_LookAtPos(long repeat, C3DVector pos, long lookFlags, float tolerance);   protected: // 0x0097D580
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 };
 class CAIStateGroup_LightHomeCandle : public CAIStateGroupBase { public:
@@ -145,7 +146,7 @@ void CAIStateGroup_LightHomeCandle::Update()
         points->FreeActionPoint(index);
         return;
     }
-    AIAction_PerformActionAndWait(&CCreatureAction_UseObject(GetCreature(), PCandle.GetPItem(), false), false);
+    AIAction_PerformActionAndWait(CCreatureAction_UseObject(GetCreature(), PCandle.GetPItem(), false), false);
     points->FreeActionPoint(index);
     {
         CIntelligentPointer<CThing> none(0);

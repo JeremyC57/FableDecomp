@@ -83,11 +83,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive();                                  // 0x00E241B0
+    virtual ~CIsThingAlive();                                  // 0x00E241B0
 };
+}
+using NScript::CIsThingAlive;
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, bool kill, float seconds, bool removeOnFade);        // 0x00CBE716
 struct CCountedPointerWords { void* Data; void* Info; };

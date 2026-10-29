@@ -33,7 +33,7 @@ public:
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char m_flags91;                        // +0x91 bit 0: dead
     void Kill(bool immediately);                    // 0x004C9B80
-    void RemoveTC(long interfaceType);              // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);              // 0x004C9840
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -114,5 +114,5 @@ void CTCFireballSpell::CancelMove()
         sound->StopAttachedSound(InitLoopingSound);
     if (IS_THING_ALIVE(FireballBuildUpEffect))
         FireballBuildUpEffect.GetPItem()->Kill(true);
-    parent->RemoveTC(0x9d);
+    parent->RemoveTC((ETCInterfaceType)(0x9d));
 }

@@ -26,9 +26,11 @@ template<class T> struct PolyCounted:Base {
 struct CBasicString {char* PData;unsigned int StringLength;unsigned int DataLength:31;unsigned int Reserved:1;unsigned char UseFastExtend:1;bool operator<(const CBasicString&)const;};
 struct StringData {CBasicString Data;unsigned int NoRefs;};
 #pragma pack(pop)
-struct CCharString {StringData* Data;CCharString();CCharString(const CCharString&);~CCharString();CCharString& operator=(const CCharString&);
+} // (hoisted to global scope: naming wave 9)
+class CCharString { public:N00cb68c0::StringData* Data;CCharString();CCharString(const CCharString&);~CCharString();const CCharString& operator=(const CCharString&);
  __forceinline bool operator<(const CCharString& other)const {if(other.Data==Data)return false;if(!Data)return true;if(!other.Data)return false;return Data->Data<other.Data->Data;}
 };
+namespace N00cb68c0 {
 struct CWideString {unsigned int Key; CWideString();CWideString(const CWideString&);~CWideString();CWideString& operator=(const CWideString&);};
 struct Element {CCharString S;unsigned int A,B;CCharString Other;unsigned int C;unsigned char Flag;};
 struct CKeyPairCompareLess {unsigned int State; __forceinline bool operator()(const Element& a,const Element& b) const {return a.S<b.S;}};

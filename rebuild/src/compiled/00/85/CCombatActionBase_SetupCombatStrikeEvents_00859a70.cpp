@@ -212,7 +212,7 @@ class CCombatActionBase { public:
     CStrikeEventList        StrikeEvents;              // +0xbc
     long                    LastStrikeEventEndTime;    // +0xc0
     unsigned char           _padc4[0x114 - 0xc4];
-    void SetupCombatStrikeEvents();
+    protected: void SetupCombatStrikeEvents(); public:
 };
 
 template <class It, class F> inline F for_each(It first, It last, F f)

@@ -21,7 +21,7 @@ namespace NScript {
 class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
 class CIsThingAlive:public CPredicateBase { public:ScriptThingCopy Thing;__forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}~CIsThingAlive(){}virtual bool operator()()const;virtual CPredicateBase* Clone()const;}; //CDF120/CDF130/implicitdtorCDF160, VT12C32F0
 }
-class CBaseObject { public:CBaseObject();virtual ~CBaseObject();CBaseObjectPointer* IntelligentPointer;}; //0099A380/0099A430 native8
+class CBaseObject { public:protected: CBaseObject(); public:virtual ~CBaseObject();CBaseObjectPointer* IntelligentPointer;}; //0099A380/0099A430 native8
 class CCPPointerInfo;
 enum EScriptEntityMoveType { ScriptMoveDefault=0 };enum ETextGroupSelectionMethod { TextGroupDefault=0 };
 class CScriptGameResourceObjectBase:public CBaseObject{ public:virtual ~CScriptGameResourceObjectBase();}; //native base8, ordinary cleanup6E7090; PDB size8
@@ -73,7 +73,7 @@ struct GameScriptCalls:CGameScriptInterface {
 extern "C" int rand(); //00BFEB16
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing&,const CScriptThing&,float); //00CBE2FF
 void __fastcall FadeOutAndKillEntity(const CScriptThing&,float,bool,bool); //00CBE716
-class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;CScriptThing Me;void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating();}; //00F35B10/00F35B30
+class CEntityScriptBase { public:void* __vftable;GameScriptCalls* Game;CScriptThing Me;void SetPredicate(const NScript::CPredicateBase&);bool IsActiveThreadTerminating() const;}; //00F35B10/00F35B30
 namespace NScript{class CQ_EndGameFocalSitesScript{ public:struct CBattleGuard:CEntityScriptBase{CQ_EndGameFocalSitesScript* ParentClass;void* PMasterData;void Main();};};}
 void NScript::CQ_EndGameFocalSitesScript::CBattleGuard::Main(){
  SetPredicate(CIsThingAlive(Me));Game->NewScriptFrame();if(IsActiveThreadTerminating())return;

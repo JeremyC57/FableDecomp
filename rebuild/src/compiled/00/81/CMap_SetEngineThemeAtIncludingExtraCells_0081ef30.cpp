@@ -49,8 +49,8 @@ template <class T> struct scoped_ptr {
 };
 class CMap { public:
     unsigned char           _pad00[0x1a7c];
-    scoped_ptr<CHeightMap>  HeightMap;             // +0x1a7c
-    unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex);   // 0x008F70F0
+    scoped_ptr<CHeightMap>  HeightMap;             protected: // +0x1a7c
+    unsigned char AddThemeDefIndexToPalette(unsigned long themeDefIndex); public:   // 0x008F70F0
     void SetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long themeDefIndex, long layer);
 };
 void CMap::SetEngineThemeAtIncludingExtraCells(long x, long y, unsigned long themeDefIndex, long layer)

@@ -6,10 +6,14 @@
 // SetAlpha(255) (0x004BFAC0); finally the CIntelligentPointer at +0x80 is tested with the
 // IS_THING_ALIVE idiom (GetPItem 0x00A01B50 re-called for each use: non-null, dead bit 0 of +0x91
 // clear) and the thing is killed (CThing::Kill(true), 0x004C9B80).
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAlpha(unsigned char alpha);     // 0x004BFAC0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char m_state;                  // +0x10 (compared with 1, as in the landed 0x008C4B00)
@@ -17,7 +21,7 @@ class CThing { public:
     CTCGraphicAppearance* m_pGraphicAppearance;   // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char m_flags91;                // +0x91 bit 0: dead
-    void RemoveTC(long interfaceType);      // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
     void Kill(bool b);                      // 0x004C9B80
     void SetSuspendAnimation(bool suspend, void* suspender);   // 0x00833A10 (CThingAnimatable)
 };
@@ -68,7 +72,7 @@ void CModeBriarRoseTeleportInvulnerable::OnDeactivate()
     CModeStandBase::OnDeactivate();
     if (ParentThing->m_state == 1)
         ParentThing->SetSuspendAnimation(false, this);
-    ParentThing->RemoveTC(0x93);
+    ParentThing->RemoveTC((ETCInterfaceType)(0x93));
     ParentThing->m_pGraphicAppearance->SetAlpha(0xff);
     if (IS_THING_ALIVE(m_pHelper))
         m_pHelper.GetPItem()->Kill(true);

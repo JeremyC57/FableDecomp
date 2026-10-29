@@ -87,7 +87,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];
-    virtual void FinishAction();            // 0x00859A20
+    protected: virtual void FinishAction(); public:            // 0x00859A20
 };
 
 class CCreatureAction_GenericLoadProjectileWeapon : public CCombatActionBase { public:

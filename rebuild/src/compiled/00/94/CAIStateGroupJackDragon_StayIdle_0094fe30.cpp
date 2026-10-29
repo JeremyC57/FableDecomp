@@ -48,12 +48,13 @@ class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     void* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
-    CWorld* GetPWorld();                        // 0x008FCFC0
-    long AIAction_DoNothing();                  // 0x0097E200
+    CWorld* GetPWorld();                        protected: // 0x008FCFC0
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     bool IsStopping();                          // 0x008FD010
     void Terminate();                           // 0x008FCF40
 };

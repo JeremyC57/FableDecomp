@@ -208,7 +208,7 @@ public:
 
 class CCombatActionBase : public CCreatureActionBase {
 public:
-    virtual void FinishAction();                             // 0x00859A20
+    protected: virtual void FinishAction(); public:                             // 0x00859A20
 };
 
 class CCreatureAction_RockTrollShakeAndExplode : public CCombatActionBase {

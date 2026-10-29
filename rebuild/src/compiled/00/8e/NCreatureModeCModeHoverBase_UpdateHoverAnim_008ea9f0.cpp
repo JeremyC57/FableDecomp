@@ -194,8 +194,8 @@ struct CModeHoverBase : CModeBase {
     CCharString  CurrentName;                           // +0x28
     const CHoverState* PCurrentState;                   // +0x2c
     long         CurrentMovementType;                   // +0x30
-    CAnimQueue   AnimQueue;                             // +0x34
-    const CHoverState* GetBestHoverState(const C3DVector& forward, const C3DVector& velocity) const;   // 0x008EA930
+    CAnimQueue   AnimQueue;                             private: // +0x34
+    const CHoverState* GetBestHoverState(const C3DVector& forward, const C3DVector& velocity) const; public:   // 0x008EA930
     void UpdateHoverAnim();
 };
 

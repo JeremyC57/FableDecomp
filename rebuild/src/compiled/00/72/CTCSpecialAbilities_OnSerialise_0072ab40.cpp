@@ -7,7 +7,7 @@
 // The value is not a member: 0x0138306C is a static long in .data (initial value -1), so `this` is never read.
 // Shape: the zero default lives in the `push ecx` frame slot; the context is loaded straight into ecx.
 class CPersistContext { public:
-    void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
 };
 
 class CTCSpecialAbilities { public:

@@ -41,7 +41,7 @@ class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];             // +0x20 UsingComponents
     CInterfaceMap m_interfaces;                 // +0x44 Components
-    void RemoveTC(long interfaceType);          // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -142,5 +142,5 @@ void CTCBulletTimeImpl::ImmediateCancel()
     }
     CutSceneCancel = true;
     Pausable = false;
-    GetParentThing()->RemoveTC(0x92);
+    GetParentThing()->RemoveTC((ETCInterfaceType)(0x92));
 }

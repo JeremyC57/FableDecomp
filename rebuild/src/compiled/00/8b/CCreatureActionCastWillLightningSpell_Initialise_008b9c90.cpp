@@ -38,10 +38,11 @@ public:
     void SetPItem(T* item) { CBaseIntelligentPointer::SetPItem((CBaseObject*)item); }
 };
 
+enum ETCInterfaceType { };
 class CThing : public CClass { public:
     unsigned char _nativeTailBeforeLifeFlags[0x80];
     unsigned char LifeFlags;                          // +0x91 retail; named native view of CThing life state
-    void RemoveTC(long type); // 0x004C9840 marks matching component removed and queues removal
+    void RemoveTC(ETCInterfaceType type); // 0x004C9840 marks matching component removed and queues removal
     CTCWillLightning* AddTC(const CCharString&, bool, CTCParamsBase*); // 0x004C9D60
 };
 FABLE_STATIC_ASSERT(offsetof(CThing, Type) == 0x10);
@@ -82,7 +83,7 @@ void CCreatureAction_CastWillLightningSpell::Initialise()
 {
     CCombatActionBase::Initialise();
 
-    PCreature.GetPItem()->RemoveTC(0x94);
+    PCreature.GetPItem()->RemoveTC((ETCInterfaceType)(0x94));
     CTCWillLightning* force;
     {
         CCharString name("CTCWillLightning", -1);

@@ -99,7 +99,7 @@ class CAIStateGroupBase { public:
 };
 
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870 (manifest "GFGetPreMainMemoryUsed" is propagated)
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CCharString;
 extern long g_framesPerSecond;                  // 0x01375550

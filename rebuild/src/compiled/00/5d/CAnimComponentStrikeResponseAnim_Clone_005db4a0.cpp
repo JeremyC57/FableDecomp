@@ -6,8 +6,9 @@ class CAnimComponentBase;
 
 // The sub-object living at offset +8; sub_99efb0 is its member (some copy/assign
 // taking a pointer to the source sub-object).
-struct SubObj {
-    void copyFrom(SubObj* src);   // __fastcall -> harness makes __fastcall (ecx=this)
+class CCharString { public:
+    void* Data;
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 class CAnimComponentBase { public:
@@ -18,7 +19,7 @@ class CAnimComponentBase { public:
     virtual void v3();
     virtual CAnimComponentBase* CreateInstance();   // slot 4 -> [eax+0x10]
     char pad[4];        // bring the sub-object to +8 (vptr=+0, pad=+4)
-    SubObj sub;         // at +8
+    CCharString sub;    // at +8
 };
 
 class CAnimComponentStrikeResponseAnim : public CAnimComponentBase { public:
@@ -27,6 +28,6 @@ class CAnimComponentStrikeResponseAnim : public CAnimComponentBase { public:
 
 CAnimComponentBase* CAnimComponentStrikeResponseAnim::Clone() const {
     CAnimComponentBase* n = ((CAnimComponentBase*)this)->CreateInstance();
-    n->sub.copyFrom(&((CAnimComponentBase*)this)->sub);
+    n->sub = ((CAnimComponentBase*)this)->sub;
     return n;
 }

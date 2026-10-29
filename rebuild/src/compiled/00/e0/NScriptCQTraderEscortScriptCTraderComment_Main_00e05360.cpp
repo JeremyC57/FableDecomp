@@ -88,7 +88,7 @@ class CPredicateBase { public:
 class CIsThingAlive : public CPredicateBase { public:                 // vtable 0x012C32F0
     CScriptThing Thing;                                 // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
     virtual bool IsTrue();
 };
 class CQ_TraderEscortScript { public:

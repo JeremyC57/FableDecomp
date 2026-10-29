@@ -134,7 +134,7 @@ public:
                 return false;
         return true;
     }
-    bool IsEveryUniqueIDOpen() const;                       // 0x00A773E0
+    private: bool IsEveryUniqueIDOpen() const; public:                       // 0x00A773E0
     void Unlock(CNavRegion* region);                        // 0x00A77420
     void SetAsBlocked(unsigned __int64 uniqueID, bool blocked);
 };

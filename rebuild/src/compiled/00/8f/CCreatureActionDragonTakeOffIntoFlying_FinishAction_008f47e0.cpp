@@ -32,7 +32,7 @@ class CThing { public:
     CPhysicsBody* PhysicsBody;                        // +0x60
     CPhysicsBody* GetPhysics() const { return PhysicsBody; }
     const C3DVector& GetPos() const;             // 0x004C73D0
-    void RemoveTC(long interfaceType);                // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);                // 0x004C9840
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -138,7 +138,7 @@ class CCreatureAction_DragonTakeOffIntoFlying : public CCombatActionBase { publi
 void CCreatureAction_DragonTakeOffIntoFlying::FinishAction()
 {
     PCreature.GetPItem()->GetPhysics()->SetFlying(true);
-    PCreature.GetPItem()->RemoveTC(0x4d);
+    PCreature.GetPItem()->RemoveTC((ETCInterfaceType)(0x4d));
     CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
     CTC4D* list;
     if (hero->GetInterface(&list, 0x4d))

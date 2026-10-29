@@ -89,6 +89,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18 - 4];
     CThing* PCreature;                          // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -99,8 +100,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;
     unsigned char _pad_0x13;
     void Terminate();                           // 0x008FCF40
-    bool IsStopping();                          // 0x008FD010
-    long AIAction_DoNothing();                  // 0x0097E200
+    bool IsStopping();                          protected: // 0x008FD010
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     long AIAction_MoveToPosProximity(long repeat, C3DVector pos, float radius, bool* arrived, long movement, bool b1,
         bool b2, bool b3, CThing* faceThing, bool b4, float f);    // 0x0097E890
     CThing* GetCreature() const { return PBrain->PCreature; }
@@ -111,7 +112,7 @@ class CAIStateGroupBase { public:
     void SetPushableByHero(bool pushable);      // 0x0097E330
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CTCShop { public:
     void SetStockState(long state);             // 0x00773C00
 };

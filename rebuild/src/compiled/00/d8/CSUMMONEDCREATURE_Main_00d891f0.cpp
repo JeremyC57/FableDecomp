@@ -86,11 +86,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                             // vtable 0x012C32F0: a predicate holding a script thing
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                             // vtable 0x012C32F0: a predicate holding a script thing
     CScriptThing Thing;                            // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad00[0x68];
     bool          CollectedSoulFromNostro;         // +0x68

@@ -3,7 +3,7 @@
 // Callees: CThing::GetPos 0x004C73D0, __ftol2 0x00BFEA70, CBaseIntelligentPointer::GetPItem 0x00A01B50,
 //   CTCBase::GetThingSearchTools 0x00686D90, CThingSearchTools::GetAllThingsInRoughArea<IsNot> 0x00725F10 / <all> 0x007197C0,
 //   LowerBound 0x0040F020, CDefClassBase::GetSubDef 0x0065F604, CCharString(const char*, long) 0x0099EBF0 / ~ 0x0099EAE0,
-//   sound-group lookup 0x0065FBA4, CSoundInit() 0x0041C930, CTCBase::GetWorld 0x00686A70, CWorld::GetRandomSeed 0x0049D810,
+//   sound-group lookup 0x0065FBA4, CSoundInit() 0x0041C930, CTCBase::GetWorld 0x00686A70, CWorld::GetWorldSeed 0x0049D810,
 //   GFRandom 0x004CDAE0 (__fastcall), CTCAI::PlaySound 0x0066ACE0, free 0x00BFEA14.
 // Layout: Ego_r.pdb CTCShotDefinitionBase minus 4 after the 12-byte HitThingsList vector: PShooter +0x28, MadeSound +0x65.
 //   CThing: TC bitset +0x20 (bit 0x10 = +0x20 bit 16), interface map +0x44, Dead +0x91 bit 0, def class +0x70.
@@ -180,7 +180,7 @@ class CThingSearchTools { public:
     bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_IsNot& filter, CThingVector& out);   // 0x00725F10
     bool GetAllThingsInRoughArea(const C2DBoxI& area, const CThingFilter_All& filter, CThingVector& out);     // 0x007197C0
 };
-class CWorld { public: unsigned long* GetRandomSeed(); };  // 0x0049D810
+class CWorld { public: unsigned long* GetWorldSeed() const; };  // 0x0049D810
 class CTCBase { protected:
     CWorld& GetWorld() const;   // 0x00686A70 (Ego_r.pdb CTCBase, protected)
 };
@@ -227,7 +227,7 @@ void CTCShotDefinitionBase::UpdateCreatureAwarenessOfMe()
                 }
                 if (group)
                 {
-                    ai->PlaySound(group->first[GFRandom(group->last - group->first, GetWorld().GetRandomSeed())], CSoundInit(), 0, 0);
+                    ai->PlaySound(group->first[GFRandom(group->last - group->first, GetWorld().GetWorldSeed())], CSoundInit(), 0, 0);
                     MadeSound = true;
                 }
             }

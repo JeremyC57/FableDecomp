@@ -203,7 +203,7 @@ public:
     unsigned char _pad00[0x18];
     long          Mode;                                     // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, long& value, const long& defaultValue);                       // 0x00410BE0
+
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);         // 0x007B45A0 (ECrimeSeverity)
     template <class T> void TransferVector(const char* name, std::vector<T>& value);             // 0x007B5470
 };

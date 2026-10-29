@@ -13,10 +13,11 @@ class CTCTalk { public:
     long PlayAISpeech(unsigned long text, bool allowNonPure, long layer, bool a, bool b);   // 0x006E3B30
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
-    unsigned char _pad[0x10];                   // +0x4..+0x13
-    long AIAction_DoNothing();                  // 0x0097E200 (EAIActionReturn)
+    unsigned char _pad[0x10];                   protected: // +0x4..+0x13
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200 (EAIActionReturn)
     void Terminate();                           // 0x008FCF40
 };
 

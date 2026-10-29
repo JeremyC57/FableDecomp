@@ -14,7 +14,7 @@
 
 class CPersistContext { public:
     template <class T> void Transfer(T& value);                                          // 0x00431102
-    void Transfer(const char* name, long& value, const long& defaultValue);           // Transfer<long> @ 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
 };
 
 struct CCrateStackDef_Methods : CCrateStackDef {

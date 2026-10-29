@@ -5,10 +5,13 @@
 #include "fable_string.h"
 #include <string.h>
 struct CAliveScriptThing:CScriptThing {CAliveScriptThing(const CScriptThing&);}; //4ABE90 genuine copy constructor, increments counted Info refs0
-struct CIsThingAlive {
+namespace NScript {
+class CIsThingAlive { public:
  virtual bool operator()()const;virtual CIsThingAlive* Clone()const;virtual ~CIsThingAlive(); //CDF120/CDF130/E241B0
  CAliveScriptThing Thing;CIsThingAlive(const CScriptThing& thing):Thing(thing){}
 };
+}
+using NScript::CIsThingAlive;
 struct CExitWardensOffice {void* Vtable;CGameScriptInterface* Script;CScriptThing Thing;void SetPredicate(const CIsThingAlive&);bool IsActiveThreadTerminating()const;void Main();}; //F35B10/F35B30
 __forceinline bool WardenUsed(const CScriptThing& thing,const CCharString& name){typedef bool(CScriptThing::*F)(const CCharString&)const;return (thing.*static_cast<const F*>(thing.__vftable)[20])(name);}
 __forceinline void WardenFrame(CGameScriptInterface* s){typedef void(CGameScriptInterface::*F)()const;F f=0;memcpy(&f,static_cast<const F*>(s->__vftable)+7,sizeof(f));(s->*f)();}

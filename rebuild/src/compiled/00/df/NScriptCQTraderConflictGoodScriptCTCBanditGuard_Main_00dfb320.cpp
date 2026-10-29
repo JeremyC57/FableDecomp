@@ -110,11 +110,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a predicate holding a script thing
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                 // vtable 0x012C32F0: a predicate holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 
 struct CEntityScriptBase {                             // retail 0x14 bytes

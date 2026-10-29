@@ -104,12 +104,13 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
     CThingCreatureBase* GetPCreature() const { return PCreature; }
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
-    long AIAction_PerformAction(CCreatureActionBase* action);                     // 0x0097D8B0
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);  // 0x0097DB70
+    long AIAction_PerformAction(CCreatureActionBase* action);                     protected: // 0x0097D8B0
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:  // 0x0097DB70
 };
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     CIntelligentPointer<CThing> PPub;               // +0x14
@@ -122,7 +123,7 @@ bool CAIStateGroup_GoToPub::PlayAnims(const CCharString& intoAnim, const CCharSt
 {
     CTCTavernGame* game = 0;
     PTable.GetPItem()->GetInterface(&game, 0xcf);
-    bool failed = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(PBrain->GetPCreature(), intoAnim, CSoundPair(),
+    bool failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), intoAnim, CSoundPair(),
                                                                               false, true, false, 0, 0), false) != 2;
     if (failed)
         return false;
@@ -131,7 +132,7 @@ bool CAIStateGroup_GoToPub::PlayAnims(const CCharString& intoAnim, const CCharSt
     while ((float)CWorld::GetFrame() > endFrame) {
         if (game && game->IsBeingPlayed)
             return true;
-        failed = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(PBrain->GetPCreature(), loopAnim, CSoundPair(),
+        failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), loopAnim, CSoundPair(),
                                                                              false, true, false, 0, 0), false) != 2;
         if (failed)
             return false;

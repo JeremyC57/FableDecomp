@@ -17,12 +17,13 @@ namespace NGraphicAppearance {
         void SetTintColour(const CRGBColour& colour, void* owner);   // 0x004C00B0
     };
 }
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad00[0x64];
     NGraphicAppearance::CTCGraphicAppearance* PGraphicAppearance;   // +0x64
     unsigned char _pad68[0x91 - 0x68];
     unsigned char m_flags91;                            // +0x91 bit 0: dead
-    void RemoveTC(long interfaceType);                  // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);                  // 0x004C9840
 };
 class CBaseObject;
 struct CBaseIntelligentPointer {
@@ -85,7 +86,7 @@ void CTCCreatureTintEffect::FrameUpdate()
             amount = 1.0f;
         SetTint(parent, amount);
         if (CurTime > FadeOutTimeStart + FadeOutTime)
-            parent->RemoveTC(0x8b);
+            parent->RemoveTC((ETCInterfaceType)(0x8b));
     }
     ++CurTime;
 }

@@ -67,7 +67,7 @@ public:
 };
 
 class CCombatActionBase { public:
-    virtual void FinishAction();                // 0x00859A20
+    protected: virtual void FinishAction(); public:                // 0x00859A20
     unsigned char           _pad04[4];          // +0x04
     CIntelligentPointer<CThing> PCreature;          // +0x08
     unsigned char           _pad10[0x114 - 0x10];

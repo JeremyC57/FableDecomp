@@ -20,6 +20,7 @@ class CWorld { public:
     static long __fastcall GetFrame();
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     unsigned char _pad[0x10];                   // PBrain, ScriptAIPriority, Name, flags (+0x4..+0x13)
@@ -29,7 +30,7 @@ public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
-    long AIAction_DoNothing();                  // 0x0097E200 (EAIActionReturn)
+    protected: EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200 (EAIActionReturn)
 };
 
 struct CAIStateGroup_BanditSitRoundCampfire : CAIStateGroupBase {

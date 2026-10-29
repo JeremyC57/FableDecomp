@@ -70,7 +70,7 @@ class CCombatManager { public:
     void SetAttackerAsReadyToAttack(CThing* creature, bool ready);         // 0x006EA450
 };
 class CTCBoss { public:                                // interface 0xad
-    bool IsReadyForPhaseChange();               // 0x007AEE90
+    bool IsReadyForPhaseChange() const;               // 0x007AEE90
     void IncrementBossPhase();                  // 0x007AED20
 };
 class CWorld { public:

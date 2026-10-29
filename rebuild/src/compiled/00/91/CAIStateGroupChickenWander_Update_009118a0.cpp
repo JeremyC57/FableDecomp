@@ -92,6 +92,7 @@ class CAIBrain { public:
 
 long __fastcall GFROR13(unsigned long);   // 0x00497890
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -115,8 +116,8 @@ class CAIStateGroupBase { public:
         return rotated % range;
     }
     long AIAction_MoveToPos(long repeat, C3DVector pos, bool* reached, long movement, bool a, bool b,
-        CThing* avoid, bool c, float speed);    // 0x0097EC00
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
+        CThing* avoid, bool c, float speed);    protected: // 0x0097EC00
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool stopWhenReplaced); public:   // 0x0097DB70
 };
 
 struct CAIStateGroup_ChickenWander : CAIStateGroupBase {
@@ -139,7 +140,7 @@ void CAIStateGroup_ChickenWander::Update()
         bool failed;
         {
             CCharString animation("ST_IDLE");
-            failed = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
+            failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, 0.0f,
                 CSoundPair(), false, true, false, 0, 0), false) != 2;
         }
         if (failed)

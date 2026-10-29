@@ -73,6 +73,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* Creature;                 // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -84,8 +85,8 @@ public:
 protected:
     CWorld& GetWorld() const;    // 0x008FCFC0
 public:
-    void Terminate();                           // 0x008FCF40
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    void Terminate();                           protected: // 0x008FCF40
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     long AIAction_LookAtThing(long repeat, CIntelligentPointer<const CThing> thing, long frames, float speed);   // 0x0097D6F0
     long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerThing thing, float proximity, bool* arrived,
                                        long movement, bool a, bool b, bool c, bool d, float e);   // 0x0097E380
@@ -145,7 +146,7 @@ void CAIStateGroup_MinionGuardReactToPlayerWithWeapon::Update()
                 }
                 if (justWarning)
                     return;
-                AIAction_PerformActionAndWait(&CCreatureAction_DeclarePlayerACriminal(GetCreature(), PPlayer.GetPItem()), false);
+                AIAction_PerformActionAndWait(CCreatureAction_DeclarePlayerACriminal(GetCreature(), PPlayer.GetPItem()), false);
             } else {
                 long result;
                 do {

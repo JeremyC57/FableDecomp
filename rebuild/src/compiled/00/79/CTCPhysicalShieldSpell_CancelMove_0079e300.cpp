@@ -19,10 +19,11 @@ struct CDefStringTable {
     CCharString GetString(long id);             // 0x009D49B0
 };
 extern CDefStringTable g_DefStringTable;        // 0x013CA828
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad00[0x10];
     unsigned char Type;                         // +0x10 (2 = player)
-    void RemoveTC(long type);                   // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                   // 0x004C9840
 };
 class CSpecialAbilitiesPhysicalShieldDef { public:
     unsigned char _pad00[0x60];
@@ -53,5 +54,5 @@ void CTCPhysicalShieldSpell::CancelMove()
         PlayEffect(0, boneName, type, owner, 8);
     }
     Pausable = false;
-    owner->RemoveTC(0x93);
+    owner->RemoveTC((ETCInterfaceType)(0x93));
 }

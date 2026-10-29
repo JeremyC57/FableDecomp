@@ -10,7 +10,10 @@
 #undef CCreatureActionBase
 
 extern long g_FrameTicks_01375550;
-struct CTCGraphicAppearance { void SetAlpha(unsigned char); }; // 004BFAC0
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public: void SetAlpha(unsigned char); };
+}
+using NGraphicAppearance::CTCGraphicAppearance; // 004BFAC0
 class CThing : public CBaseObject { public:
     unsigned char BeforeAppearance[0x64-sizeof(CBaseObject)];
     CTCGraphicAppearance* PTCGraphicAppearance;

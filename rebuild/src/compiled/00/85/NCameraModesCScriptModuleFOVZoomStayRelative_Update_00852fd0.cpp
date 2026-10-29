@@ -67,8 +67,8 @@ public:
     C3DVector     LookAtPos;                         // +0x4c
     long          EndFrame;                          // +0x58
     unsigned char _pad5c[0x28];
-    void Update();                                   // 0x00852160
-    void CalculateIncrementVector(const C3DVector& from, const C3DVector& to, long frames);   // 0x008520F0
+    void Update();                                   protected: // 0x00852160
+    void CalculateIncrementVector(const C3DVector& from, const C3DVector& to, long frames); public:   // 0x008520F0
 };
 
 class CScriptModuleFOVZoomStayRelative : public CScriptModuleFOVZoom {

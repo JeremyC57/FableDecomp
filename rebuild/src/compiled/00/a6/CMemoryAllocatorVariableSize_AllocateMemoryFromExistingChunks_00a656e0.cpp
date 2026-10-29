@@ -41,7 +41,7 @@ public:
     CMemoryArea*      PTreeRoot;                        // +0xc34
 
     unsigned long Align(unsigned long size) const { return (size + Alignment - 1) >> AlignmentShift << AlignmentShift; }
-    CMemoryArea* GetTreeAreaWithSizeGreaterThanOrEqualTo(long size) const;   // 0x00A64C10
+    protected: CMemoryArea* GetTreeAreaWithSizeGreaterThanOrEqualTo(long size) const; public:   // 0x00A64C10
     CMemoryArea* AllocateMemoryFromExistingChunks(unsigned long size);
 };
 

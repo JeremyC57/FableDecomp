@@ -4,7 +4,7 @@
 // Native string copy0099EC30,assign0099EFB0,dtor0099EAE0; comparator009E6530; move_backward009E6410; unguarded_insert009E66F0.
 #include "fable_string.h"
 // Actual string header omits the native copy constructor and comparator. Field-free API view retains its genuine storage.
-struct SymbolString:CCharString{SymbolString(const SymbolString&);SymbolString& operator=(const SymbolString&);bool operator<(const SymbolString&)const;};
+struct SymbolString:CCharString{SymbolString(const SymbolString&);bool operator<(const SymbolString&)const;};
 struct SymbolInfo{SymbolString GroupName;SymbolString EntryName;long Val;};
 struct SymbolRecord{SymbolString Name;SymbolInfo Info;};
 struct NonscalarTag{NonscalarTag(){}};

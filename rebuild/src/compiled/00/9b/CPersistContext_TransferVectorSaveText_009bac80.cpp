@@ -35,7 +35,7 @@ class CPersistContext { public:
     unsigned char           _pad00[0x20];
     CCharString*            PStringToSaveTo;      // +0x20
     unsigned char           _pad24[8];
-    void TransferVectorSaveText(const char* name, CPersistContext_TransferableVectorGenericType& vec);
+    protected: void TransferVectorSaveText(const char* name, CPersistContext_TransferableVectorGenericType& vec); public:
 };
 
 void CPersistContext::TransferVectorSaveText(const char* name, CPersistContext_TransferableVectorGenericType& vec)

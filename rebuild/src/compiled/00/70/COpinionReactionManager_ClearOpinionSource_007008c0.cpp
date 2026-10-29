@@ -32,7 +32,7 @@ class CThing { public:
     unsigned char _pad04[0x1c];
     unsigned long m_presentBits[9];         // +0x20 bitset of the interface types present
     CInterfaceMap m_interfaces;             // +0x44
-    void RemoveTC(long interfaceType);      // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     __forceinline CTCBase* GetTC(long interfaceType)
     {
@@ -66,7 +66,7 @@ void COpinionReactionManager::ClearOpinionSource(CThing* thing, bool popOneDef)
     {
         CTCOpinionSource* source = (CTCOpinionSource*)thing->GetTC(TC_OPINION_SOURCE);
         if (!popOneDef || (source->PopSourceDef(), source->HasNoSourceDefs()))
-            thing->RemoveTC(TC_OPINION_SOURCE);
+            thing->RemoveTC((ETCInterfaceType)(TC_OPINION_SOURCE));
     }
     if (thing == ExclusiveOpinionSource.GetPItem())
         ExclusiveOpinionSource.SetPItem(0);

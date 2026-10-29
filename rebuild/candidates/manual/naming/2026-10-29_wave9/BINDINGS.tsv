@@ -1,0 +1,151 @@
+action	symbol	target	by_row	note
+KEEP	?Transfer@CPersistContext@@QAEXPBDAAJABJ@Z	00410be0	004de9a1	identifier appears in 5 unindexed row(s) (00e37520,00e54880,00d34d40,00e54aa0): conservative
+RETIRE	?resize@?$vector@UCCharString@X_00e54990@@@std@X_00e54990@@QAEXIABUCCharString@3@@Z	0043332c	00e54990	no row names it after wave 9 (was: 00e54990; bound by 00e54990)
+KEEP	?GFROR13@@YIKK@Z	00497890	0091b010	still named by 1 unedited row(s) (index)
+RETIRE	?GetRandomSeed@CWorld@@QAEPAKXZ	0049d810	00757f90	no row names it after wave 9 (was: 0057cdb5,006e80f0,00757f90,00759d30,007c04a0,008c64f0,008e0060; bound by 00757f90)
+RETIRE	?GetRandomSeed@CWorld@@QBEPAKXZ	0049d810	00757b30	no row names it after wave 9 (was: 00757b30,007fede0; bound by 00757b30)
+RETIRE	?find@?$set@UCCharString@X_004fe630@@@std@X_004fe630@@QBEPAUNode@3@ABUCCharString@3@@Z	004b9370	004fe630	no row names it after wave 9 (was: 004fe630; bound by 004fe630)
+KEEP	?SetAlpha@CTCGraphicAppearance@@QAEXE@Z	004bfac0	008ccb00	still named by 2 edited row(s)
+KEEP	?RemoveTC@CThing@@QAEXJ@Z	004c9840	007008c0	still named by 1 unedited row(s) (index)
+RETIRE	?__copy_backward@std@@YIPAU?$pair@MUCCharString@std@@@1@PAU21@00ABUrandom_access_iterator_tag@1@PAH@Z	004cf580	004d0f80	no row names it after wave 9 (was: 004d0f80; bound by 004d0f80)
+RETIRE	?__unguarded_linear_insert@std@@YIXPAU?$pair@MUCCharString@std@@@1@U21@UCKeyPairCompareLess@1@@Z	004cfcf0	004d0f80	no row names it after wave 9 (was: 004d0f80; bound by 004d0f80)
+KEEP	??0?$pair@UCCharString@std@@UCRegisteredTCInfo@2@@std@@QAE@ABU01@@Z	004d788d	004dfd60	still named by 4 unedited row(s) (index)
+RETIRE	??4?$pair@UCCharString@std@@UCRegisteredTCInfo@2@@std@@QAEAAU01@ABU01@@Z	004da56a	004e1c8a	no row names it after wave 9 (was: 004e1c8a; bound by 004e1c8a)
+RETIRE	?__copy_backward@std@@YIPAU?$pair@UCCharString@std@@UCRegisteredTCInfo@2@@1@PAU21@00ABUrandom_access_iterator_tag@1@PAH@Z	004da738	004e1c8a	no row names it after wave 9 (was: 004e1c8a; bound by 004e1c8a)
+KEEP	?__unguarded_linear_insert@std@@YIXPAU?$pair@UCCharString@std@@UCRegisteredTCInfo@2@@1@U21@UCKeyPairCompareLess@1@@Z	004dd80b	004dfd60	still named by 1 unedited row(s) (index)
+RETIRE	?UnloadRegion@CWorldMap@@QAEXJ_N@Z	004feec0	00502500	no row names it after wave 9 (was: 00502500,005063e0; bound by 00502500)
+RETIRE	?CreateMenuDescPC@CTCInventory@@QAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z	00582673	005907ab	no row names it after wave 9 (was: 005907ab; bound by 005907ab)
+RETIRE	?GetAbilityLevel@CTCInventoryAbilities@@QAEJW4EHeroAbility@@@Z	005ede93	006d7cb0	no row names it after wave 9 (was: 006d7cb0; bound by 006d7cb0)
+RETIRE	?IsTimeBetween@CGameTimeManager@@QBE_NMMM@Z	006bb5b0	006bb990	no row names it after wave 9 (was: 006bb990; bound by 006bb990)
+RETIRE	?IsBusy@CLevelLoader@@QAE_NXZ	006c20a0	00502850	no row names it after wave 9 (was: 00502850; bound by 00502850)
+RETIRE	?AddSuccessfulStrikeOfType@CTCHeroExperience@@QAEXW4EDamageAttribute@@M_N@Z	006d8790	006d8d00	no row names it after wave 9 (was: 006d8d00; bound by 006d8d00)
+RETIRE	?GetExtraEventsBetweenTimes@CManager@NAnimationEvents@@QBE_NKAAV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@MM@Z	006f95a0	006f99b0	no row names it after wave 9 (was: 006f99b0; bound by 006f99b0)
+RETIRE	?insert@map@X_007565e0@@QAE?AU_Rb_tree_insert_result@2@ABU?$pair@UCCharString@X_007565e0@@U?$pair@HH@std@2@@std@2@@Z	00756250	007565e0	no row names it after wave 9 (was: 007565e0; bound by 007565e0)
+RETIRE	?IsShieldActive@CTCPhysicalShieldSpell@@QBE_NXZ	0079dcb0	0072b0d0	no row names it after wave 9 (was: 0072b0d0; bound by 0072b0d0)
+RETIRE	?insert@map@X_007adbf0@@QAE?AU_Rb_tree_insert_result@2@ABU?$pair@UCCharString@X_007adbf0@@_N@std@2@@Z	007ad060	007adbf0	no row names it after wave 9 (was: 007adbf0; bound by 007adbf0)
+RETIRE	?GetBossPhase@CTCBoss@@QAEJXZ	007aed10	00950a30	no row names it after wave 9 (was: 008e7390,008e7600,00950a30,00954cd0,0095aa60,0095c1f0,0096aad0,0096b600,00972280,009723d0,009725b0; bound by 00950a30)
+RETIRE	?IsReadyForPhaseChange@CTCBoss@@QAE_NXZ	007aee90	00961550	no row names it after wave 9 (was: 008e7a00,00952e80,00956b00,0095b280,00961550,0096b600; bound by 00961550)
+RETIRE	?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@QAEXABVC3DVector@@0J@Z	008520f0	00852560	no row names it after wave 9 (was: 00852560,00852fd0; bound by 00852560)
+KEEP	?FinishAction@CCombatActionBase@@UAEXXZ	00859a20	0085c120	still named by 4 unedited row(s) (index)
+RETIRE	?SetupCombatStrikeEvents@CCombatActionBase@@QAEXXZ	00859a70	00859ec0	no row names it after wave 9 (was: 00859a70,00859ec0; bound by 00859ec0)
+RETIRE	?Recover@CModeRockTrollVulnerable@NCreatureMode@@QAEXXZ	008de700	008e0990	no row names it after wave 9 (was: 008e0990; bound by 008e0990)
+RETIRE	?GetBestHoverState@CModeHoverBase@NCreatureMode@@QBEPBVCHoverState@12@ABVC3DVector@@0@Z	008ea930	008ea9f0	no row names it after wave 9 (was: 008ea9f0; bound by 008ea9f0)
+KEEP	?AddThemeDefIndexToPalette@CMap@@QAEEK@Z	008f70f0	0081ef30	still named by 1 unedited row(s) (index)
+RETIRE	?IsStillRunnable@CAIStateGroup_ScorpionKing@@QAE_NXZ	0097b870	0097c580	no row names it after wave 9 (was: 0097c580; bound by 0097c580)
+RETIRE	?AIAction_PerformActionAndWait@CAIStateGroupBase@@QAEJPAVCCreatureActionBase@@_N@Z	0097db70	0090fdb0	no row names it after wave 9 (was: 0090fdb0,00911710,009118a0,00914460,00915890,0091c3d0,009236c0,00925170,009251e0,0092a8a0,0092b3e0,00933bb0,009378f0,0093a080,0093d030,00941e00,009426d0,00942920,009454c0,00946850,00948d40,00948ef0,0094a840,00951b20,00956460,009574d0,0095b680,009621f0,009624d0,00967930,00967b40,0096af60,0096c4f0,0096f570,0097c580,0097db70; bound by 0090fdb0)
+RETIRE	?AIAction_DoNothing@CAIStateGroupBase@@QAE?AW4EAIActionReturn@@XZ	0097e200	0091bd10	no row names it after wave 9 (was: 0091bd10,0097fbe0; bound by 0091bd10)
+KEEP	?AIAction_DoNothing@CAIStateGroupBase@@QAEJXZ	0097e200	00920770	still named by 1 unedited row(s) (index)
+KEEP	??0CBaseObject@@QAE@XZ	0099a380	00efc500	still named by 6 unedited row(s) (index)
+RETIRE	??0CCharString@CombatDebug@@QAE@XZ	0099e4b0	006eac50	no row names it after wave 9 (was: 006eac50; bound by 006eac50)
+RETIRE	??0CCharString@X_004fe630@@QAE@XZ	0099e4b0	004fe630	no row names it after wave 9 (was: 004fe630; bound by 004fe630)
+RETIRE	??0CCharString@X_007565e0@@QAE@XZ	0099e4b0	007565e0	no row names it after wave 9 (was: 007565e0; bound by 007565e0)
+RETIRE	??0CCharString@X_007adbf0@@QAE@XZ	0099e4b0	007adbf0	no row names it after wave 9 (was: 007adbf0; bound by 007adbf0)
+KEEP	??0CCharString@X_00e54990@@QAE@XZ	0099e4b0	00e54990	identifier appears in 1 unindexed row(s) (00e54aa0): conservative
+KEEP	?UnassignString@CCharString@@QAEXXZ	0099e9b0	0099f690	still named by 1 edited row(s)
+RETIRE	??1CCharString@CombatDebug@@QAE@XZ	0099eae0	006eac50	no row names it after wave 9 (was: 006eac50; bound by 006eac50)
+RETIRE	??1CCharString@N0052b9d0@@QAE@XZ	0099eae0	0052b9d0	no row names it after wave 9 (was: 0052b9d0; bound by 0052b9d0)
+RETIRE	??1CCharString@N00569550@@QAE@XZ	0099eae0	00569550	no row names it after wave 9 (was: 00569550; bound by 00569550)
+RETIRE	??1CCharString@N009b77b0@@QAE@XZ	0099eae0	009b77b0	no row names it after wave 9 (was: 009b77b0; bound by 009b77b0)
+RETIRE	??1CCharString@N00cb68c0@@QAE@XZ	0099eae0	00cb68c0	no row names it after wave 9 (was: 00cb68c0; bound by 00cb68c0)
+RETIRE	??1CCharString@N00cb93e0@@QAE@XZ	0099eae0	00cb93e0	no row names it after wave 9 (was: 00cb93e0; bound by 00cb93e0)
+RETIRE	??1CCharString@N00cbac70@@QAE@XZ	0099eae0	00cbac70	no row names it after wave 9 (was: 00cbac70; bound by 00cbac70)
+RETIRE	??1CCharString@N00cbb4d0@@QAE@XZ	0099eae0	00cbb4d0	no row names it after wave 9 (was: 00cbb4d0; bound by 00cbb4d0)
+RETIRE	??1CCharString@X_004fe630@@QAE@XZ	0099eae0	004fe630	no row names it after wave 9 (was: 004fe630; bound by 004fe630)
+RETIRE	??1CCharString@X_007565e0@@QAE@XZ	0099eae0	007565e0	no row names it after wave 9 (was: 007565e0; bound by 007565e0)
+RETIRE	??1CCharString@X_007adbf0@@QAE@XZ	0099eae0	007adbf0	no row names it after wave 9 (was: 007adbf0; bound by 007adbf0)
+KEEP	??1CCharString@X_00e54990@@QAE@XZ	0099eae0	00e54990	identifier appears in 1 unindexed row(s) (00e54aa0): conservative
+KEEP	??1CCharString@std@@QAE@XZ	0099eae0	004d0f80	still named by 4 unedited row(s) (index)
+RETIRE	??0CCharString@CombatDebug@@QAE@PBDH@Z	0099ebf0	006eac50	no row names it after wave 9 (was: 006eac50; bound by 006eac50)
+RETIRE	??0CCharString@X_004fe630@@QAE@PBDH@Z	0099ebf0	004fe630	no row names it after wave 9 (was: 004fe630; bound by 004fe630)
+RETIRE	??0CCharString@CombatDebug@@QAE@ABU01@@Z	0099ec30	006eac50	no row names it after wave 9 (was: 006eac50; bound by 006eac50)
+RETIRE	??0CCharString@N0052b9d0@@QAE@ABU01@@Z	0099ec30	0052b9d0	no row names it after wave 9 (was: 0052b9d0; bound by 0052b9d0)
+RETIRE	??0CCharString@N00569550@@QAE@ABU01@@Z	0099ec30	00569550	no row names it after wave 9 (was: 00569550; bound by 00569550)
+RETIRE	??0CCharString@N00cb68c0@@QAE@ABU01@@Z	0099ec30	00cb68c0	no row names it after wave 9 (was: 00cb68c0; bound by 00cb68c0)
+RETIRE	??0CCharString@N00cbb4d0@@QAE@ABU01@@Z	0099ec30	00cbb4d0	no row names it after wave 9 (was: 00cbb4d0; bound by 00cbb4d0)
+RETIRE	??0CCharString@X_004fe630@@QAE@ABU01@@Z	0099ec30	004fe630	no row names it after wave 9 (was: 004fe630; bound by 004fe630)
+RETIRE	??0CCharString@X_007565e0@@QAE@ABU01@@Z	0099ec30	007565e0	no row names it after wave 9 (was: 007565e0; bound by 007565e0)
+RETIRE	??0CCharString@X_007adbf0@@QAE@ABU01@@Z	0099ec30	007adbf0	no row names it after wave 9 (was: 007adbf0; bound by 007adbf0)
+KEEP	??0CCharString@std@@QAE@ABU01@@Z	0099ec30	004d0f80	identifier appears in 3 unindexed row(s) (00e54880,00e54aa0,00e7e210): conservative
+RETIRE	??4CCharString@CombatDebug@@QAEAAU01@ABU01@@Z	0099efb0	006eac50	no row names it after wave 9 (was: 006eac50; bound by 006eac50)
+RETIRE	??4CCharString@N009b77b0@@QAEAAU01@ABU01@@Z	0099efb0	009b77b0	no row names it after wave 9 (was: 009b77b0; bound by 009b77b0)
+RETIRE	??4CCharString@N00cb68c0@@QAEAAU01@ABU01@@Z	0099efb0	00cb68c0	no row names it after wave 9 (was: 00cb68c0; bound by 00cb68c0)
+RETIRE	??4CCharString@N00cb93e0@@QAEAAU01@ABU01@@Z	0099efb0	00cb93e0	no row names it after wave 9 (was: 00cb93e0; bound by 00cb93e0)
+RETIRE	??4CCharString@N00cbac70@@QAEAAU01@ABU01@@Z	0099efb0	00cbac70	no row names it after wave 9 (was: 00cbac70; bound by 00cbac70)
+RETIRE	??4CCharString@N00cbb4d0@@QAEAAU01@ABU01@@Z	0099efb0	00cbb4d0	no row names it after wave 9 (was: 00cbb4d0; bound by 00cbb4d0)
+RETIRE	??4CCharString@NParticleEngine@@QAEAAV01@ABV01@@Z	0099efb0	00af4ee0	no row names it after wave 9 (was: 00af4ee0; bound by 00af4ee0)
+RETIRE	??4CCharString@X_004fe630@@QAEAAU01@ABU01@@Z	0099efb0	004fe630	no row names it after wave 9 (was: 004fe630; bound by 004fe630)
+RETIRE	??4CCharString@X_007565e0@@QAEAAU01@ABU01@@Z	0099efb0	007565e0	no row names it after wave 9 (was: 007565e0; bound by 007565e0)
+RETIRE	??4CCharString@X_007adbf0@@QAEAAU01@ABU01@@Z	0099efb0	007adbf0	no row names it after wave 9 (was: 007adbf0; bound by 007adbf0)
+KEEP	??4CCharString@X_00e54990@@QAEAAU01@ABU01@@Z	0099efb0	00e54990	identifier appears in 1 unindexed row(s) (00e54aa0): conservative
+KEEP	??4CCharString@std@@QAEAAU01@ABU01@@Z	0099efb0	004d0f80	identifier appears in 3 unindexed row(s) (00e54880,00e54aa0,00e7e210): conservative
+RETIRE	??4MemberA@@QAEAAU0@ABU0@@Z	0099efb0	0047c600	no row names it after wave 9 (was: 0047c600; bound by 0047c600)
+RETIRE	?Assign@CCharString@@QAEXABV1@@Z	0099efb0	007fefc0	no row names it after wave 9 (was: 007fefc0; bound by 007fefc0)
+RETIRE	?AttachToScript@CScriptAttachmentComponent@@QAEXH@Z	0099efb0	00890690	no row names it after wave 9 (was: 00890690; bound by 00890690)
+RETIRE	?CopyContents@ConBuffer@@QAEXPAU1@@Z	0099efb0	009ea620	no row names it after wave 9 (was: 009ea620; bound by 009ea620)
+RETIRE	?M@Sub@@QAEXPAH@Z	0099efb0	0057a5a5	no row names it after wave 9 (was: 0057a5a5; bound by 0057a5a5)
+RETIRE	?copyFrom@SubObj@@QAEXPAU1@@Z	0099efb0	005db4a0	no row names it after wave 9 (was: 005db4a0; bound by 005db4a0)
+RETIRE	?ctor@StrDest@@QAEXPBH@Z	0099efb0	00890970	no row names it after wave 9 (was: 00890970; bound by 00890970)
+RETIRE	??4CCharString@CombatDebug@@QAEAAU01@PBD@Z	0099efe0	006eac50	no row names it after wave 9 (was: 006eac50; bound by 006eac50)
+RETIRE	?LoadFromFile@CCharString@X_004fe630@@QAEXPAUCAFile@2@PAXH@Z	0099f2e0	004fe630	no row names it after wave 9 (was: 004fe630; bound by 004fe630)
+RETIRE	?GetDefGlobalIndexFromName@CDefinitionManager@@QAEJABVCCharString@@@Z	009ad410	0056be00	no row names it after wave 9 (was: 004b4c50,0074e280,0074e460,00800540; bound by 0056be00)
+RETIRE	?SkipWhitespace@CStringParser@@IAEJXZ	009b9c60	009ba1d0	no row names it after wave 9 (was: 009ba1d0; bound by 009ba1d0)
+RETIRE	?TransferVectorSaveText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z	009bac80	00412e80	no row names it after wave 9 (was: 00412db0,00412e80,0049b8d0,00569f20,00569fe0,005815d6,0058165d,005c2b8b,006192f0,00619710,006197d0,00619890,006c9ee0,006d4c00,0074de50,007b5470,009bac80,00f333b0; bound by 00412e80)
+RETIRE	?TransferVectorLoadText@CPersistContext@@QAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z	009bb110	00412e80	no row names it after wave 9 (was: 00412db0,00412e80,0049b8d0,00569f20,00569fe0,005815d6,0058165d,005c2b8b,006192f0,00619710,006197d0,00619890,006c9ee0,006d4c00,0074de50,007b5470,00f333b0; bound by 00412e80)
+RETIRE	?FastCompare@CCharString@N00cbac70@@QBE_NABU12@@Z	009e6530	00cbac70	no row names it after wave 9 (was: 00cbac70; bound by 00cbac70)
+RETIRE	?FastCompare@CCharString@N00cbb4d0@@QBE_NABU12@@Z	009e6530	00cbb4d0	no row names it after wave 9 (was: 00cbb4d0; bound by 00cbb4d0)
+RETIRE	?IsLoaded@C3DMeshInfo@@QAE_NXZ	00a23e40	00b9e950	no row names it after wave 9 (was: 00b9e950,00bd1f70; bound by 00b9e950)
+KEEP	??1CSuspendableProcessMicrothread@@UAE@XZ	00a44620	00a44a40	still named by 1 unedited row(s) (index)
+RETIRE	?CalculateBias@CPackedUIntArray@@QBEKPBXKJK@Z	00a62ae0	00a62d80	no row names it after wave 9 (was: 00a62d80; bound by 00a62d80)
+RETIRE	?GetTreeAreaWithSizeGreaterThanOrEqualTo@CMemoryAllocatorVariableSize@@QBEPAVCMemoryArea@1@J@Z	00a64c10	00a656e0	no row names it after wave 9 (was: 00a656e0; bound by 00a656e0)
+RETIRE	?RemoveFromTree@CMemoryAllocatorVariableSize@@QAEXPAVCMemoryArea@1@@Z	00a64ef0	00a65390	no row names it after wave 9 (was: 00a65390; bound by 00a65390)
+RETIRE	?IsEveryUniqueIDOpen@CNavSwitchableLeafNode@@QBE_NXZ	00a773e0	00a78800	no row names it after wave 9 (was: 00a78800; bound by 00a78800)
+RETIRE	??1CIsThingAlive@@QAE@XZ	00e241b0	00e95e80	no row names it after wave 9 (was: 00cdf080,00cdf260,00cdf430,00cdfb00,00ce0600,00ce15e0,00cfc990,00d02b80,00d08790,00d15510,00d15a40,00d1f610,00d1fa00,00d22880,00d246c0,00d25d80,00d25f50,00d2d830,00d2fb20,00d38f70,00d69f50,00d6a0d0,00d71b30,00d73f40,00d79d50,00d7a360,00d7dd80,00d7ecb0,00d7eed0,00d7f110,00d81820,00d81c50,00d83dc0,00d83fa0,00d85b40,00d86150,00d86680,00d86c30,00d874f0,00d88540,00d88f90,00d891f0,00d89380,00d9f6c0,00da45c0,00da47a0,00da5490,00da5f40,00da68e0,00da6d50,00da7830,00da7d30,00da9c70,00dc3fc0,00dcdc50,00dcf4c0,00dd44c0,00de21d0,00de3830,00ded540,00ded810,00dedb80,00dedf30,00df2380,00df2ab0,00df80b0,00df8970,00df9180,00dfb320,00e02e50,00e035e0,00e03810,00e047d0,00e04970,00e0ad40,00e0f4e0,00e10bf0,00e11450,00e1af30,00e1b1f0,00e1b750,00e1ee30,00e2a320,00e383a0,00e49980,00e4a280,00e6af20,00e6ea30,00e6f1c0,00e6f710,00e71450,00e71980,00e73410,00e73930,00e7bb30,00e82950,00e95e80,00e998f0,00e9a5c0,00ead800,00eaef30,00ec0ba0,00ec1ef0,00ec42f0,00ec5010,00ecd530,00ed7320,00ed9790,00edcb80,00edf3a0,00edfa00,00ee06b0,00ee0a20,00ee1500,00ee1e40,00ee36a0,00ee3ee0,00ee7a20,00eed8b0,00ef12f0,00ef1e10,00ef2150,00ef2290,00ef25e0,00ef2ba0,00ef3200,00ef34a0,00ef3840,00ef3aa0,00efeb60; bound by 00e95e80)
+RETIRE	??1CIsThingAlive@@UAE@XZ	00e241b0	00eed6b0	no row names it after wave 9 (was: 00e8b020,00eed6b0; bound by 00eed6b0)
+RETIRE	??1CIsThingAlive@NScript@@QAE@XZ	00e241b0	00e86e60	no row names it after wave 9 (was: 00cfd6c0,00d293f0,00d6a220,00d6a360,00d9bdc0,00da4b10,00da4e30,00daa260,00daa700,00e05360,00e86e60,00ee76f0,00ef5cb0; bound by 00e86e60)
+RETIRE	??0CAndPredicate@@QAE@ABUCIsThingAlive@@ABUCIsFlagFalse@@@Z	00e7e020	00e8b020	no row names it after wave 9 (was: 00e8b020; bound by 00e8b020)
+RETIRE	?RegisterFilter@CBanditCronies@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00e03810	no row names it after wave 9 (was: 00e03810; bound by 00e03810)
+RETIRE	?RegisterFilter@CSummonerToKill@CQ_HeroSoulsArenaScript@NScript@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00d7dd80	no row names it after wave 9 (was: 00d7dd80; bound by 00d7dd80)
+RETIRE	?RegisterFilter@CSummonerToKill@CQ_HeroSoulsMotherScript@NScript@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00d83dc0	no row names it after wave 9 (was: 00d83dc0; bound by 00d83dc0)
+RETIRE	?RegisterFilter@CSummonerToKill@CQ_HeroSoulsNostroScript@NScript@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00d88540	no row names it after wave 9 (was: 00d88540; bound by 00d88540)
+RETIRE	?SetPredicate@CDarkwoodAssassinSpawn@@QAEXAAUCIsThingAlive@@@Z	00f35b10	00e02e50	no row names it after wave 9 (was: 00e02e50; bound by 00e02e50)
+RETIRE	?SetPredicate@CExitWardensOffice@@QAEXABUCIsThingAlive@@@Z	00f35b10	00eed6b0	no row names it after wave 9 (was: 00eed6b0; bound by 00eed6b0)
+RETIRE	?WaitFor@CVtable_012ef7c8@@QAEXPAUCIsThingAlive@@@Z	00f35b10	00ead800	no row names it after wave 9 (was: 00ead800; bound by 00ead800)
+KEEP	?IsActiveThreadTerminating@CEntityScriptBase@@QAE_NXZ	00f35b30	00d2c530	identifier appears in 5 unindexed row(s) (00d00440,00d86a30,00dd8de0,00e54450): conservative
+RETIRE	??_7CIsThingAlive@@6B@	012c32f0	00cdf080	no row names it after wave 9 (was: 00cdf080,00cdf260,00cdf430,00cdfb00,00ce0600,00ce15e0,00cfc990,00d02b80,00d08790,00d15510,00d15a40,00d1f610,00d1fa00,00d22880,00d246c0,00d25d80,00d25f50,00d2d830,00d2fb20,00d38f70,00d69f50,00d6a0d0,00d71b30,00d73f40,00d79d50,00d7a360,00d7dd80,00d7ecb0,00d7eed0,00d7f110,00d81820,00d81c50,00d83dc0,00d83fa0,00d85b40,00d86150,00d86680,00d86c30,00d874f0,00d88540,00d88f90,00d891f0,00d89380,00d9f6c0,00da45c0,00da47a0,00da5490,00da5f40,00da68e0,00da6d50,00da7830,00da7d30,00da9c70,00dc3fc0,00dcdc50,00dcf4c0,00dd44c0,00de21d0,00de3830,00ded540,00ded810,00dedb80,00dedf30,00df2380,00df2ab0,00df80b0,00df8970,00df9180,00dfb320,00e02e50,00e035e0,00e03810,00e047d0,00e04970,00e0ad40,00e0f4e0,00e10bf0,00e11450,00e1af30,00e1b1f0,00e1b750,00e1ee30,00e2a320,00e383a0,00e49980,00e4a280,00e6af20,00e6ea30,00e6f1c0,00e6f710,00e71450,00e71980,00e73410,00e73930,00e7bb30,00e82950,00e8b020,00e95e80,00e998f0,00e9a5c0,00ead800,00eaef30,00ec0ba0,00ec1ef0,00ec42f0,00ec5010,00ecd530,00ed7320,00ed9790,00edcb80,00edf3a0,00edfa00,00ee06b0,00ee0a20,00ee1500,00ee1e40,00ee36a0,00ee3ee0,00ee7a20,00eed6b0,00eed8b0,00ef12f0,00ef1e10,00ef2150,00ef2290,00ef25e0,00ef2ba0,00ef3200,00ef34a0,00ef3840,00ef3aa0,00efeb60; bound by 00cdf080)
+RETIRE	?Assign@CConBuf@@QAEXPAU1@@Z	0099efb0	009ea640	stale: no indexed row names it and no unindexed row source mentions it (bound by 009ea640; the row now emits ??4CCharString@@QAEABV0@ABV0@@Z)
+ADD	?TransferVectorLoadText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z	009bb110	00412db0	exact Ego_r/FableWin spelling, not yet bound; first named by 00412db0
+ADD	?TransferVectorSaveText@CPersistContext@@IAEXPBDAAVCPersistContext_TransferableVectorGenericType@@@Z	009bac80	00412db0	exact Ego_r/FableWin spelling, not yet bound; first named by 00412db0
+NO-BIND	?__copy_backward@std@@YIPAU?$pair@MVCCharString@@@1@PAU21@00ABUrandom_access_iterator_tag@1@PAH@Z	004cf580	004d0f80	stand-in spelling named by 004d0f80 (not a PDB name): left unbound
+NO-BIND	?__unguarded_linear_insert@std@@YIXPAU?$pair@MVCCharString@@@1@U21@UCKeyPairCompareLess@1@@Z	004cfcf0	004d0f80	stand-in spelling named by 004d0f80 (not a PDB name): left unbound
+NO-BIND	??0?$pair@VCCharString@@UCRegisteredTCInfo@std@@@std@@QAE@ABU01@@Z	004d788d	004e1c8a	stand-in spelling named by 004e1c8a (not a PDB name): left unbound
+NO-BIND	??4?$pair@VCCharString@@UCRegisteredTCInfo@std@@@std@@QAEAAU01@ABU01@@Z	004da56a	004e1c8a	stand-in spelling named by 004e1c8a (not a PDB name): left unbound
+NO-BIND	?__copy_backward@std@@YIPAU?$pair@VCCharString@@UCRegisteredTCInfo@std@@@1@PAU21@00ABUrandom_access_iterator_tag@1@PAH@Z	004da738	004e1c8a	stand-in spelling named by 004e1c8a (not a PDB name): left unbound
+NO-BIND	?__unguarded_linear_insert@std@@YIXPAU?$pair@VCCharString@@UCRegisteredTCInfo@std@@@1@U21@UCKeyPairCompareLess@1@@Z	004dd80b	004e1c8a	stand-in spelling named by 004e1c8a (not a PDB name): left unbound
+NO-BIND	?LoadFromFile@CCharString@@QAEXPAUCAFile@X_004fe630@@PAXH@Z	0099f2e0	004fe630	stand-in spelling named by 004fe630 (not a PDB name): left unbound
+NO-BIND	?find@?$set@VCCharString@@@std@X_004fe630@@QBEPAUNode@3@ABVCCharString@@@Z	004b9370	004fe630	stand-in spelling named by 004fe630 (not a PDB name): left unbound
+ADD	?UnloadRegion@CWorldMap@@IAEXJ_N@Z	004feec0	00502500	exact Ego_r/FableWin spelling, not yet bound; first named by 00502500
+ADD	?IsBusy@CLevelLoader@@QBE_NXZ	006c20a0	00502850	exact Ego_r/FableWin spelling, not yet bound; first named by 00502850
+ADD	?CreateMenuDescPC@CTCInventory@@AAE?AV?$CCountedPointer@VCComponent@NUISystem@@@@ABVCCharString@@@Z	00582673	005907ab	exact Ego_r/FableWin spelling, not yet bound; first named by 005907ab
+ADD	?IsTimeBetween@CGameTimeManager@@ABE_NMMM@Z	006bb5b0	006bb990	exact Ego_r/FableWin spelling, not yet bound; first named by 006bb990
+ADD	?AddSuccessfulStrikeOfType@CTCHeroExperience@@AAEXW4EDamageAttribute@@M_N@Z	006d8790	006d8d00	exact Ego_r/FableWin spelling, not yet bound; first named by 006d8d00
+ADD	?GetExtraEventsBetweenTimes@CManager@NAnimationEvents@@ABE_NKAAV?$CSmallVector@VCEvent@NAnimationEvents@@$0CA@@@MM@Z	006f95a0	006f99b0	exact Ego_r/FableWin spelling, not yet bound; first named by 006f99b0
+NO-BIND	?insert@map@X_007565e0@@QAE?AU_Rb_tree_insert_result@2@ABU?$pair@VCCharString@@U?$pair@HH@std@X_007565e0@@@std@2@@Z	00756250	007565e0	stand-in spelling named by 007565e0 (not a PDB name): left unbound
+NO-BIND	?insert@map@X_007adbf0@@QAE?AU_Rb_tree_insert_result@2@ABU?$pair@VCCharString@@_N@std@2@@Z	007ad060	007adbf0	stand-in spelling named by 007adbf0 (not a PDB name): left unbound
+ADD	?AddThemeDefIndexToPalette@CMap@@IAEEK@Z	008f70f0	0081ef30	exact Ego_r/FableWin spelling, not yet bound; first named by 0081ef30
+ADD	?CalculateIncrementVector@CScriptModuleFOVZoom@NCameraModes@@IAEXABVC3DVector@@0J@Z	008520f0	00852560	exact Ego_r/FableWin spelling, not yet bound; first named by 00852560
+ADD	?Recover@CModeRockTrollVulnerable@NCreatureMode@@AAEXXZ	008de700	008e0990	exact Ego_r/FableWin spelling, not yet bound; first named by 008e0990
+ADD	?GetBestHoverState@CModeHoverBase@NCreatureMode@@ABEPBVCHoverState@12@ABVC3DVector@@0@Z	008ea930	008ea9f0	exact Ego_r/FableWin spelling, not yet bound; first named by 008ea9f0
+ADD	?IsStillRunnable@CAIStateGroup_ScorpionKing@@IAE_NXZ	0097b870	0097c580	exact Ego_r/FableWin spelling, not yet bound; first named by 0097c580
+ADD	?CalculateBias@CPackedUIntArray@@ABEKPBXKJK@Z	00a62ae0	00a62d80	exact Ego_r/FableWin spelling, not yet bound; first named by 00a62d80
+ADD	?RemoveFromTree@CMemoryAllocatorVariableSize@@IAEXPAVCMemoryArea@1@@Z	00a64ef0	00a65390	exact Ego_r/FableWin spelling, not yet bound; first named by 00a65390
+ADD	?GetTreeAreaWithSizeGreaterThanOrEqualTo@CMemoryAllocatorVariableSize@@IBEPAVCMemoryArea@1@J@Z	00a64c10	00a656e0	exact Ego_r/FableWin spelling, not yet bound; first named by 00a656e0
+ADD	?IsLoaded@C3DMeshInfo@@QBE_NXZ	00a23e40	00b9e950	exact Ego_r/FableWin spelling, not yet bound; first named by 00b9e950
+NO-BIND	?RegisterFilter@CSummonerToKill@CQ_HeroSoulsArenaScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00f35b10	00d7dd80	stand-in spelling named by 00d7dd80 (not a PDB name): left unbound
+NO-BIND	?RegisterFilter@CSummonerToKill@CQ_HeroSoulsMotherScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00f35b10	00d83dc0	stand-in spelling named by 00d83dc0 (not a PDB name): left unbound
+NO-BIND	?RegisterFilter@CSummonerToKill@CQ_HeroSoulsNostroScript@NScript@@QAEXAAVCIsThingAlive@3@@Z	00f35b10	00d88540	stand-in spelling named by 00d88540 (not a PDB name): left unbound
+NO-BIND	?SetPredicate@CDarkwoodAssassinSpawn@@QAEXAAVCIsThingAlive@NScript@@@Z	00f35b10	00e02e50	stand-in spelling named by 00e02e50 (not a PDB name): left unbound
+NO-BIND	?RegisterFilter@CBanditCronies@@QAEXAAVCIsThingAlive@NScript@@@Z	00f35b10	00e03810	stand-in spelling named by 00e03810 (not a PDB name): left unbound
+NO-BIND	?resize@?$vector@VCCharString@@@std@X_00e54990@@QAEXIABVCCharString@@@Z	0043332c	00e54990	stand-in spelling named by 00e54990 (not a PDB name): left unbound
+NO-BIND	??0CAndPredicate@@QAE@ABVCIsThingAlive@NScript@@ABUCIsFlagFalse@@@Z	00e7e020	00e8b020	stand-in spelling named by 00e8b020 (not a PDB name): left unbound
+NO-BIND	?WaitFor@CVtable_012ef7c8@@QAEXPAVCIsThingAlive@NScript@@@Z	00f35b10	00ead800	stand-in spelling named by 00ead800 (not a PDB name): left unbound
+NO-BIND	?SetPredicate@CExitWardensOffice@@QAEXABVCIsThingAlive@NScript@@@Z	00f35b10	00eed6b0	stand-in spelling named by 00eed6b0 (not a PDB name): left unbound

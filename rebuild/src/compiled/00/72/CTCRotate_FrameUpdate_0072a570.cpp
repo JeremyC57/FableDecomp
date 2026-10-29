@@ -97,11 +97,12 @@ struct CThingDrawState {
     unsigned char _pad00[0x59];
     unsigned char m_flags59;                                    // +0x59 (bit 1: orientation changed)
 };
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char    _pad00[0x60];
     CThingPlacement* m_pPlacement;                              // +0x60
     CThingDrawState* m_pDrawState;                              // +0x64
-    void RemoveTC(long type);                                   // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                                   // 0x004C9840
 };
 class CTCRotate { public:
     virtual void v00();
@@ -125,6 +126,6 @@ void CTCRotate::FrameUpdate()
         rhs.Rotate(RotationAxis, RotationSpeed * Timer);
         ParentThing->m_pPlacement->SetOrientation(rhs);
         if (++Timer > TimerLimit)
-            ParentThing->RemoveTC(0x2a);
+            ParentThing->RemoveTC((ETCInterfaceType)(0x2a));
     }
 }

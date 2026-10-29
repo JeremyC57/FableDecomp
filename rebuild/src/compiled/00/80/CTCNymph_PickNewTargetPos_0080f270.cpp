@@ -189,7 +189,7 @@ template <class T> class CIntelligentPointer : public CBaseIntelligentPointer { 
 #pragma pack(pop)
 
 extern float g_FramesPerSecondF;                            // 0x013844F4
-extern unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+extern long __fastcall GFROR13(unsigned long value);   // 0x00497890
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
     seed = seed * 0x24A1 + 0x24DF;

@@ -10,11 +10,11 @@
 class C3DVector { public: float X, Y, Z; };
 long __fastcall GFROR13(unsigned long value);    // 0x00497890
 class CWorld { public:
-    unsigned long* GetRandomSeed();              // 0x0049D810
+    unsigned long* GetWorldSeed() const;              // 0x0049D810
 };
 __forceinline long GetRandomBelow(CWorld* world, unsigned long n)
 {
-    unsigned long* seed = world->GetRandomSeed();
+    unsigned long* seed = world->GetWorldSeed();
     *seed = *seed * 0x24a1 + 0x24df;
     *seed = GFROR13(*seed);
     return *seed % n;

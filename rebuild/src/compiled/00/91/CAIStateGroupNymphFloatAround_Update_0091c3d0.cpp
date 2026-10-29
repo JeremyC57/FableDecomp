@@ -124,14 +124,15 @@ class CAIBrain { public:
     unsigned char _pad[0x14];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                        // 0x008FCFC0
     bool IsStopping();                          // 0x008FD010
-    void Terminate();                           // 0x008FCF40
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    void Terminate();                           protected: // 0x008FCF40
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
 };
 struct CAIStateGroup_NymphFloatAround : CAIStateGroupBase {
     virtual void Update();
@@ -159,7 +160,7 @@ void CAIStateGroup_NymphFloatAround::Update()
     nymph->PTarget = CIntelligentPointerCreature(0);
     if (!nymph->FlyingAround) {
         if (nymph->HasBeenInLimbo) {
-            if (AIAction_PerformActionAndWait(&CCreatureAction_NymphTeleportIntoLimbo(GetCreature()), false) != 2) {
+            if (AIAction_PerformActionAndWait(CCreatureAction_NymphTeleportIntoLimbo(GetCreature()), false) != 2) {
                 Terminate();
                 return;
             }

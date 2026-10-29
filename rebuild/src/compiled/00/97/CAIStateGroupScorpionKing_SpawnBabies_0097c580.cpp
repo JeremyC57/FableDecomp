@@ -55,12 +55,13 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad[0x0c];                   // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    protected: EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 };
 
@@ -72,8 +73,8 @@ public:
     long ChargeCount;                           // +0x2c
     CIntelligentPointer<CThingCreatureBase> PEnemy;             // +0x30 CIntelligentPointer<CThingCreatureBase>
     long EnemyKnockDownFrame;                   // +0x38
-    float HealthAtLastTailStrike;               // +0x3c
-    bool IsStillRunnable();                     // 0x0097B870
+    float HealthAtLastTailStrike;               protected: // +0x3c
+    bool IsStillRunnable(); public:                     // 0x0097B870
 protected:
     void SpawnBabies();
 };
@@ -81,7 +82,7 @@ protected:
 void CAIStateGroup_ScorpionKing::SpawnBabies()
 {
     CThingCreatureBase* creature = GetCreature();
-    AIAction_PerformActionAndWait(&CCreatureAction_ScorpionSummon(*creature, *PEnemy.GetPItem()), false);
+    AIAction_PerformActionAndWait(CCreatureAction_ScorpionSummon(*creature, *PEnemy.GetPItem()), false);
     if (!IsStillRunnable())
         Terminate();
 }

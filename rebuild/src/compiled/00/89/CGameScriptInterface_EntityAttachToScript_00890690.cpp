@@ -11,8 +11,9 @@ struct CGameScriptInterfaceAttachmentVTable {
     CScriptAttachmentTargetView* (__fastcall* GetTarget)(CGameScriptInterface*);
 };
 
-struct CScriptAttachmentComponent {
-    void AttachToScript(int scriptId);
+class CCharString { public:
+    void* Data;
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
 void __stdcall CGameScriptInterface_EntityAttachToScript(
@@ -25,5 +26,5 @@ void __stdcall CGameScriptInterface_EntityAttachToScript(
         return;
     if (target->StateFlags & 1)
         return;
-    ((CScriptAttachmentComponent*)((char*)target + 0x58))->AttachToScript(scriptId);
+    *(CCharString*)((char*)target + 0x58) = *(const CCharString*)scriptId;
 }

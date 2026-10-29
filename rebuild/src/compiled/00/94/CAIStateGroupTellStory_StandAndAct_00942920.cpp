@@ -42,12 +42,13 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;                  // +0x18
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    protected: EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
 };
 
 extern long g_storyGestureIndex;                    // 0x013BB718
@@ -62,6 +63,6 @@ void CAIStateGroup_TellStory::StandAndAct(long unused)
     if (g_storyGestures[++g_storyGestureIndex] == 0)
         g_storyGestureIndex = 0;
     CCharString animation(g_storyGestures[g_storyGestureIndex], -1);
-    AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
+    AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), animation, CSoundPair(),
         false, true, false, 0, 0), false);
 }

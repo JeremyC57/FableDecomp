@@ -14,11 +14,13 @@
 // /Gr: first=ecx, hole=edx; `ret 20h` = top + 24-byte pair + the empty comparator.
 extern "C" void __cdecl free(void* p);                     // 0x00BFEA14
 namespace N009b77b0 {
-struct CCharString {
+} // (hoisted to global scope: naming wave 9)
+class CCharString { public:
     void* Data;
-    CCharString& operator=(const CCharString& other);     // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);     // 0x0099EFB0
     ~CCharString();                                       // 0x0099EAE0
 };
+namespace N009b77b0 {
 template<class T> struct CArray {                         // retail STLport vector, 12 bytes
     T* _M_start;
     T* _M_finish;

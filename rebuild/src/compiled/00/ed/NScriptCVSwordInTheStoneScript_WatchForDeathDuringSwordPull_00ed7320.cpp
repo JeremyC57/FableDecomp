@@ -125,12 +125,15 @@ class __declspec(novtable) CPredicateBase { public:               // vtable 0x01
     virtual bool IsTrue() = 0;
 };
 }
-struct CIsThingAlive : NScript::CPredicateBase {            // vtable 0x012C32F0, 16 bytes
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:            // vtable 0x012C32F0, 16 bytes
     CScriptThing Thing;                                     // +0x04
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}
-    ~CIsThingAlive();                                       // 0x00E241B0
+    virtual ~CIsThingAlive();                                       // 0x00E241B0
     virtual bool IsTrue();
 };
+}
+using NScript::CIsThingAlive;
 class CBaseObject { public:                        // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                        // +0x04
 protected:

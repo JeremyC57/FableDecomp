@@ -39,7 +39,7 @@ struct CScriptModuleFOVZoom : CScriptModuleBase {    // vtable 0x01275A1C
     bool          ShortenOnOcclusion;                // +0x80
     bool          ResetCamera;                       // +0x81
     virtual void v00();
-    void CalculateIncrementVector(const C3DVector& from, const C3DVector& to, long frames);   // 0x008520F0
+    protected: void CalculateIncrementVector(const C3DVector& from, const C3DVector& to, long frames); public:   // 0x008520F0
     CScriptModuleFOVZoom(const C3DVector& lookAt, const C3DVector& from, const C3DVector& to,
                          float fovFraction, long frames, bool shortenOnOcclusion);
 };

@@ -118,6 +118,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;          // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -127,8 +128,8 @@ class CAIStateGroupBase { public:
     void Terminate();                           // 0x008FCF40
     long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
     long AIAction_MoveToThingProximity(long repeat, CIntelligentPointerConstThing target, float distance, bool* reached,
-        long movement, bool a, bool b, bool c, bool d, float speed);         // 0x0097E380
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+        long movement, bool a, bool b, bool c, bool d, float speed);         protected: // 0x0097E380
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     long AIAction_FindAGuardAndGiveMessage(CDefPointer def, C3DVector position, long flags);   // 0x009810B0
 };
 struct CAIStateGroup_MinionReactToUnconsciousPerson : CAIStateGroupBase {
@@ -147,7 +148,7 @@ void CAIStateGroup_MinionReactToUnconsciousPerson::Update()
                 discovery->SetDiscovered(true, GetCreature());
             if (GetCreature()->GetLifeState() == 3) {
                 if (AIAction_LookAtThing(1, CIntelligentPointerConstThing(PPerson), 11, 0.0027777f) == 2) {
-                    if (AIAction_PerformActionAndWait(&CCreatureAction_AlertToPlayer(GetCreature()), false) != 2) {
+                    if (AIAction_PerformActionAndWait(CCreatureAction_AlertToPlayer(GetCreature()), false) != 2) {
                         Terminate();
                         return;
                     }

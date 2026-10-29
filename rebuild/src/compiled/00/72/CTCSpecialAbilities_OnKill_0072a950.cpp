@@ -7,10 +7,11 @@
 // Layout: the thing's interface presence bitset at +0x20 (type 0x92 -> word 4 = +0x30, bit 18 = 0x40000; the same bit
 // SetupBulletTime 0x0072A970 tests before adding "CTCBulletTime").
 // Shape: the inlined HasTC probe is the raw masked word in the `if`; RemoveTC takes an argument, so no tail jump.
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad0[0x20];
     unsigned long m_presentBits[9];                         // +0x20 std::bitset of thing-component interface types
-    void RemoveTC(long interfaceType);                      // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);                      // 0x004C9840
 };
 
 class CTCSpecialAbilities { public:
@@ -22,5 +23,5 @@ class CTCSpecialAbilities { public:
 void CTCSpecialAbilities::OnKill()
 {
     if (ParentThing->m_presentBits[0x92 >> 5] & (1UL << (0x92 & 31)))
-        ParentThing->RemoveTC(0x92);
+        ParentThing->RemoveTC((ETCInterfaceType)(0x92));
 }

@@ -6,8 +6,9 @@
 // Layout (Ego_r.pdb): CTCWallMountEffects PDef +0x0c, ObjectWasGamePersistant +0x20; CWallMountEffectsDef Effect +0x28.
 // Shape: undoes OnPutOnMount; Effect is re-read through PDef for the second test, the `&&` gives two `je` to the
 // shared epilogue.
+enum ETCInterfaceType { };
 class CThing { public:
-    void RemoveTC(long type);                               // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                               // 0x004C9840
     void SetAsGameStatePersisted(bool persisted);           // 0x004C7880
 };
 
@@ -36,7 +37,7 @@ class CTCWallMountEffects { public:
 void CTCWallMountEffects::OnTakenOffMount()
 {
     if (PDef->Effect == WALL_MOUNT_EFFECT_TELEPORT)
-        ParentThing->RemoveTC(TC_TELEPORTER);
+        ParentThing->RemoveTC((ETCInterfaceType)(TC_TELEPORTER));
     if (PDef->Effect != WALL_MOUNT_EFFECT_NONE && !ObjectWasGamePersistant)
         ParentThing->SetAsGameStatePersisted(false);
 }

@@ -19,7 +19,9 @@ namespace CombatDebug{
 struct CBasicStringData{char*PData;unsigned StringLength,DataLength;bool UseFastExtend;int RefCount;};
 #pragma pack(pop)
 extern const char EmptyString[];
-struct CCharString{CBasicStringData*PData;CCharString();CCharString(const char*,int=-1);CCharString(const CCharString&);~CCharString();CCharString&operator=(const CCharString&);CCharString&operator=(const char*);__forceinline const char*c_str()const{return !PData?EmptyString:PData->PData;}};
+} // (hoisted to global scope: naming wave 9)
+class CCharString{ public:CombatDebug::CBasicStringData*PData;CCharString();CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);const CCharString&operator=(const char*);__forceinline const char*c_str()const{return !PData?CombatDebug::EmptyString:PData->PData;}};
+namespace CombatDebug {
 struct C3DVector{float X,Y,Z;};
 namespace std{template<class T>struct vector{T*_M_start,*_M_finish,*_M_end_of_storage;__forceinline vector():_M_start(0),_M_finish(0),_M_end_of_storage(0){}vector(const vector&);__forceinline ~vector(){if(_M_start)free(_M_start);}};}
 // Only the genuine inherited CThing base prefix is viewed; active creature fields are never shadowed.

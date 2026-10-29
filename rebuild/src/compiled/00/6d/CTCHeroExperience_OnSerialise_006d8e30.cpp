@@ -25,7 +25,7 @@ class CPersistContext { public:
     unsigned char _pad00[0x18];
     long Mode;                                          // +0x18
     bool IsSaving() const { return Mode == 1 || Mode == 3; }
-    void Transfer(const char* name, long& value, const long& defaultValue);   // 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
     void TransferVector(const char* name, CLongVector* value);              // 0x005815D6
 };
 
@@ -45,9 +45,9 @@ class CTCHeroExperience { public:
 
 void CTCHeroExperience::OnSerialise(CPersistContext& context, bool)
 {
-    context.Transfer("FishingLevel", FishingLevel, 0);
-    context.Transfer("TotalExperiencePoints", TotalExperiencePoints, 0);
-    context.Transfer("ExperiencePointsAvailableToSpend", ExperiencePointsAvailableToSpend, 0);
+    context.Transfer<long>("FishingLevel", FishingLevel, 0);
+    context.Transfer<long>("TotalExperiencePoints", TotalExperiencePoints, 0);
+    context.Transfer<long>("ExperiencePointsAvailableToSpend", ExperiencePointsAvailableToSpend, 0);
     context.TransferVector("StatExperiencePoints", &StatExperiencePoints);
     context.TransferVector("TrainableStatLevels", &TrainableStatLevels);
     if (StatExperiencePoints.size() != 3)

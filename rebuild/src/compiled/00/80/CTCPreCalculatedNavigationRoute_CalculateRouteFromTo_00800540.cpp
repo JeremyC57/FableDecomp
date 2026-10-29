@@ -77,7 +77,7 @@ public:
     static CThingAICreature* __fastcall Create(long defIndex, const C3DVector& pos, long flags, const CThingAICreatureInit& init);   // 0x00833800
 };
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();        // 0x0044C6B0

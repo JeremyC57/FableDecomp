@@ -32,12 +32,15 @@ class CGameScriptInterface { public:
     virtual void v104(); virtual void v105(); virtual void v106(); virtual void v107();
     virtual void RemoveThing(const CScriptThing& thing, bool a, bool b) const;   // slot 108 (+0x1b0)
 };
-struct CIsThingAlive {                              // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CIsThingAlive { public:                              // vtable 0x012C32F0: a filter holding a script thing
     virtual void v00();
     CScriptThing m_thing;                          // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 namespace NScript {
 class CQ_HeroSoulsMotherScript { public:
     unsigned char _body[0x64];

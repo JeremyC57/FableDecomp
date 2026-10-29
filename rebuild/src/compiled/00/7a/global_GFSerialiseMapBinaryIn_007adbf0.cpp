@@ -31,13 +31,15 @@ struct CMemoryDataInputStreamAdapter : ::CMemoryDataInputStream {
     __forceinline unsigned int ReadWord() { unsigned int v; Read(&v, 4); return v; }
 };
 
-struct CCharString {
+} // (hoisted to global scope: naming wave 9)
+class CCharString { public:
     void* PStringData;
     CCharString();                                // 0x0099E4B0
     CCharString(const CCharString& other);        // 0x0099EC30
     ~CCharString();                               // 0x0099EAE0
-    CCharString& operator=(const CCharString& other);   // 0x0099EFB0
+    const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
+namespace X_007adbf0 {
 // Method-only ABI view of the stream's virtual slots (slot 6 returns CCharString through a hidden result pointer).
 struct CMemoryDataInputStreamVirtualSlots {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();

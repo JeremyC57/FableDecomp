@@ -165,16 +165,17 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
     void SetBrainOutput(const CBrainOutput& output);   // 0x0088B8F0
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    bool IsStopping();                          // 0x008FD010
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    bool IsStopping();                          protected: // 0x008FD010
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     long AIAction_CombatPerformActionAndWait(CCombatActionBase* action, bool wait);   // 0x0097DA40
-    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   // 0x0097D6F0
-    long AIAction_DoNothing();                  // 0x0097E200
+    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long flags, float turnSpeed);   protected: // 0x0097D6F0
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_IceTrollIcicleAttack : CAIStateGroupBase {
@@ -193,7 +194,7 @@ void CAIStateGroup_IceTrollIcicleAttack::Update()
         }
         CTCCreatureModeManager* modes;
         if (GetCreature()->GetInterface(&modes, 0x31) && modes->HasMode(0x1e)) {
-            long result = AIAction_PerformActionAndWait(&CCreatureAction_RiseUp(GetCreature()), false);
+            long result = AIAction_PerformActionAndWait(CCreatureAction_RiseUp(GetCreature()), false);
             if (result == 1) {
                 Terminate();
                 return;

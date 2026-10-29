@@ -147,7 +147,7 @@ class CTCDiceGame { public:
     CThing* GetCurrentPlayer() const { return CurrentPlayer.GetPItem(); }
 };
 class CWorld { public: static long __fastcall GetFrame(); };            // 0x0049D870
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
     seed = seed * 0x24A1 + 0x24DF;

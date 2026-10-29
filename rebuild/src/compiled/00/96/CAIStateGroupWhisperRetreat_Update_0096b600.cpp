@@ -81,8 +81,8 @@ inline bool IS_THING_ALIVE(const CIntelligentPointer<CThing>& p)
 }
 
 class CTCBoss { public:                                // interface 173
-    long GetBossPhase();                        // 0x007AED10
-    bool IsReadyForPhaseChange();               // 0x007AEE90
+    long GetBossPhase() const;                        // 0x007AED10
+    bool IsReadyForPhaseChange() const;               // 0x007AEE90
     void SetNextBossPhase(long phase, bool immediate);   // 0x007AEDA0
 };
 class CTCStealth { public:                             // interface 54

@@ -92,7 +92,7 @@ class CThing { public:
         return false;
     }
     const C3DVector& GetPos() const;       // 0x004C73D0
-    void RemoveTC(long interfaceType);          // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
     __forceinline unsigned long HasTC(long kind) const { return m_presentBits[kind >> 5] & (1UL << (kind & 31)); }
     __forceinline CTCBase_Retail* FindTC(long kind)
     {
@@ -220,7 +220,7 @@ void CTCFireballSpell::FrameUpdate()
         break;
     case 3:
         if (SpellFinished && ReleaseDelayFrameCount <= 0)
-            parent->RemoveTC(0x9d);
+            parent->RemoveTC((ETCInterfaceType)(0x9d));
         break;
     }
 }

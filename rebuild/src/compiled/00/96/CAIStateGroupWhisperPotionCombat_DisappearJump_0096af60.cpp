@@ -142,6 +142,7 @@ class CWorld { public:
     static long __fastcall GetFrame();                    // 0x0049D870
 };
 extern long g_FramesPerSecond;                      // 0x01375550
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -153,9 +154,9 @@ class CAIStateGroupBase { public:
     unsigned char _pad_0x13;
     CWorld* GetPWorld() const;                  // 0x008FCFC0
     bool IsStopping();                          // 0x008FD010
-    void Terminate();                           // 0x008FCF40
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool b);   // 0x0097DB70
-    long AIAction_DoNothing();                  // 0x0097E200
+    void Terminate();                           protected: // 0x008FCF40
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool b); public:   protected: // 0x0097DB70
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 };
 template <class T> struct vector { T* _M_start; T* _M_finish; T* _M_end_of_storage; };
 struct CAIStateGroup_WhisperPotionCombat : CAIStateGroupBase {
@@ -175,7 +176,7 @@ __forceinline bool CAIStateGroup_WhisperPotionCombat::JumpIntoSky()
         if (PTarget.GetPItem() == 0 || (PTarget.GetPItem()->m_flags91 & 1))
             return false;
         CCreatureAction_WhisperJumpIntoSky action(GetCreature(), PTarget.GetPItem());
-        result = AIAction_PerformActionAndWait(&action, false);
+        result = AIAction_PerformActionAndWait(action, false);
     } while (!IsStopping() && result != 2);
     if (IsStopping())
         return false;
@@ -199,5 +200,5 @@ void CAIStateGroup_WhisperPotionCombat::DisappearJump()
     } while (!IsStopping() && (float)(now - start) < (float)g_FramesPerSecond * 0.5f);
     PBrain->PCreature->PGraphic->Restore();
     PBrain->PCreature->SetActive(true);
-    AIAction_PerformActionAndWait(&CCreatureAction_WhisperLand(GetCreature()), false);
+    AIAction_PerformActionAndWait(CCreatureAction_WhisperLand(GetCreature()), false);
 }

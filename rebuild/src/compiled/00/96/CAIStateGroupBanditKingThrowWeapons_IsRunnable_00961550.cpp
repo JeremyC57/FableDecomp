@@ -95,7 +95,7 @@ struct CThingWithTCs
 class CTCBoss
 { public:
     bool IsOnFinalPhase();                          // 0x007AEDE0
-    bool IsReadyForPhaseChange();                   // 0x007AEE90
+    bool IsReadyForPhaseChange() const;                   // 0x007AEE90
 };
 
 struct CAIStateGroup_BanditKingThrowWeapons

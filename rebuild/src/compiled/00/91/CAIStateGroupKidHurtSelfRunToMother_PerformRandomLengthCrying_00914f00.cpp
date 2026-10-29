@@ -40,7 +40,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 struct CAIStateGroupKidHurtSelfRunToMotherMethods : CAIStateGroup_KidHurtSelfRunToMother {
     CAIBrain* Brain() const { return *(CAIBrain* const*)_pad_0x04; }

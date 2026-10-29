@@ -32,15 +32,17 @@ template<class T> struct PolyCounted:Base {
 struct StringData{char*Data;unsigned Length,Capacity;unsigned char Fast;int Refs;};
 #pragma pack(pop)
 extern int StringInstances;
-struct CCharString {
- StringData*Data;
+} // (hoisted to global scope: naming wave 9)
+class CCharString { public:
+ N00cbb4d0::StringData*Data;
  __declspec(noinline) void Clear();
  __declspec(noinline) CCharString();
  __declspec(noinline) CCharString(const CCharString&v);
  __declspec(noinline) ~CCharString();
- __declspec(noinline) CCharString&operator=(const CCharString&v);
+ __declspec(noinline) const CCharString&operator=(const CCharString&v);
  __declspec(noinline) bool FastCompare(const CCharString&v)const;
 };
+namespace N00cbb4d0 {
 struct CWideString {unsigned int Key; CWideString();CWideString(const CWideString&);~CWideString();CWideString& operator=(const CWideString&);};
 struct Element {CCharString S;Counted<void> P;};
 struct CCompareString {unsigned int State; __forceinline bool operator()(const Element& a,const Element& b) const {return a.S.FastCompare(b.S);}};

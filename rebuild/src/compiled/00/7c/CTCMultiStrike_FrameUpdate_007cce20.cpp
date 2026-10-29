@@ -82,7 +82,7 @@ public:
     CInterfaceMap m_interfaces;                     // +0x44
     unsigned char _pad4c[0x6c - 0x4c];
     unsigned long ThingTypeFlags;                   // +0x6C (bit 3: game object)
-    void RemoveTC(long interfaceType);              // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);              // 0x004C9840
     unsigned long HasTC(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
     template <class T> __forceinline T* GetTC(long wanted)
     {
@@ -169,7 +169,7 @@ void CTCMultiStrike::FrameUpdate()
         }
         ++NumHits;
         if (NumHits == PDef->NumHits[SpellLevel])
-            owner->RemoveTC(0x87);
+            owner->RemoveTC((ETCInterfaceType)(0x87));
         DelayTimer = (long)(g_framesPerSecond * PDef->DelayTimeSecs[SpellLevel]);
     }
 }

@@ -110,13 +110,14 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x10];
     long CurrentActionID;                       // +0x18
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    protected: EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     long AIAction_MoveToPossiblyBlockedObjectAndFace(CIntelligentPointerThing target, long* actionPoint, float distance,
         float faceDistance, CAIFilterBase* filter, CThing* ignore, CThing* other, float speed);   // 0x00980770
 };
@@ -145,7 +146,7 @@ bool CAIStateGroup_MoveGoodsBase::FetchGoods(CIntelligentPointerThing container,
         CThing* item = ((CThing*)target.GetPItem());
         CCreatureAction_FetchGoods action(GetCreature(), item, data[index]);
         CurrentActionID = action.GetActionID();
-        if (AIAction_PerformActionAndWait(&action, false) == 2) {
+        if (AIAction_PerformActionAndWait(action, false) == 2) {
             if (IS_THING_ALIVE(target)) {
                 CTCUserActionPointBase* point;
                 ((CThing*)target.GetPItem())->GetInterface(&point, 0x2d);

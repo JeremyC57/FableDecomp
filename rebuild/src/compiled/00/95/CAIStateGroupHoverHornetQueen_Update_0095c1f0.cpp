@@ -48,7 +48,7 @@ class CThing { public:
 class CThingCreatureBase : public CThing { public: };
 bool __fastcall IsKnockedDown(CThing* thing);   // 0x0085F010
 class CTCBoss { public:                                // interface 0xad
-    long GetBossPhase();                        // 0x007AED10
+    long GetBossPhase() const;                        // 0x007AED10
     void IncrementBossPhase();                  // 0x007AED20
     void SetNextBossPhase(long phase, bool immediate);   // 0x007AEDA0
 public:

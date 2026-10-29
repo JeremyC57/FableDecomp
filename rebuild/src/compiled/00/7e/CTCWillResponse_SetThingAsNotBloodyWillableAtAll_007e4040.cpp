@@ -53,7 +53,7 @@ public:
         return (T*)((it == map->m_pLast || T::INTERFACE_TYPE < it->first) ? map->m_pLast : it)->second;
     }
     CTCBase* AddTC(const CCharString& name, bool activate, const CTCParamsBase* params);   // 0x004C9D60
-    void RemoveTC(long kind);                   // 0x004C9840
+    void RemoveTC(ETCInterfaceType kind);                   // 0x004C9840
 };
 
 class CTCWillResponse {
@@ -75,7 +75,7 @@ public:
     {
         if (IsForcePushable && IsLifeDrainable && IsLightningable && IsAbleToBeLifted && IsEpicPowerExplodable &&
             IsEpicSpellable && !IsNotBloodyWillable)
-            ParentThing->RemoveTC(INTERFACE_TYPE);
+            ParentThing->RemoveTC((ETCInterfaceType)(INTERFACE_TYPE));
     }
     static void __fastcall SetThingAsNotBloodyWillableAtAll(CThing* thing, bool notWillable);
 };

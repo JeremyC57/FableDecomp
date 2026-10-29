@@ -45,12 +45,13 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;                  // +0x18
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad[0x0c];                       // +0x08..+0x13
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_DoNothing();                      // 0x0097E200 (EAIActionReturn)
+    protected: EAIActionReturn AIAction_DoNothing(); public:                      // 0x0097E200 (EAIActionReturn)
     long AIAction_PerformAction(CCreatureActionBase* action);   // 0x0097D8B0 (EAIActionReturn)
 };
 

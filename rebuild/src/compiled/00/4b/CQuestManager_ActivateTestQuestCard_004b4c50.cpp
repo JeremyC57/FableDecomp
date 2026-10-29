@@ -128,7 +128,7 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 class CDefinitionManager { public:
-    long GetDefGlobalIndexFromName(const CCharString& name);   // 0x009AD410
+    long GetDefGlobalIndexFromName(const CCharString& name) const;   // 0x009AD410
 };
 class CGameDefinitionManager : public CDefinitionManager { public:
     static CGameDefinitionManager& __fastcall Get();     // 0x0044C6B0

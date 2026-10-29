@@ -7,8 +7,9 @@
 // then `inc dword ptr [ecx+1Ch]` and the compare against the static re-read.
 extern long g_framesPerSecond;                      // 0x01375550
 
+enum ETCInterfaceType { };
 class CThing { public:
-    void RemoveTC(long type);                       // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                       // 0x004C9840
 };
 
 struct CTCBase_007bba70 {
@@ -29,5 +30,5 @@ void CTCOnHeroPush::vfunc_9()
     static long s_maxFramesSincePushed = g_framesPerSecond * 5;
     ++FrameSincePushed;
     if (FrameSincePushed > s_maxFramesSincePushed)
-        ParentThing->RemoveTC(0xc4);
+        ParentThing->RemoveTC((ETCInterfaceType)(0xc4));
 }

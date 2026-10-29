@@ -87,11 +87,14 @@ public:
 };
 }
 #pragma inline_depth(0)
-struct CIsThingAlive : public NScript::CPredicateBase {                                 // vtable 0x012C32F0: a filter holding a script thing
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                 // vtable 0x012C32F0: a filter holding a script thing
     CScriptThing m_thing;                              // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 #pragma inline_depth()
 
 struct SRaidMasterData { unsigned char _pad[0x109]; bool ArtefactTaken; };

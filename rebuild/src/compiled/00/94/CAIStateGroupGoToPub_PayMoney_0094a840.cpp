@@ -100,14 +100,15 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;                     // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                                  // +0x04
     unsigned char _pad08[0x0c];
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
     CWorld* GetPWorld();                               // 0x008FCFC0
-    bool IsStopping();                                 // 0x008FD010
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    bool IsStopping();                                 protected: // 0x008FD010
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
 };
 struct CAIStateGroup_GoToPub : CAIStateGroupBase {
     CIntelligentPointer<CThingBuilding> PPub;          // +0x14
@@ -157,7 +158,7 @@ bool CAIStateGroup_GoToPub::PayMoney()
             return false;
         }
     }
-    AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), "PAY_AT_BAR", CSoundPair(), false, true,
+    AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), "PAY_AT_BAR", CSoundPair(), false, true,
                                                                  false, 0, 0), false);
     {
         CThingCreatureBase* creature = GetCreature();

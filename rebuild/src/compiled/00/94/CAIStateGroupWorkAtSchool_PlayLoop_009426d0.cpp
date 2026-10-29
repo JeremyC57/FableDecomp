@@ -43,6 +43,7 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -53,7 +54,7 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;                      // +0x12
     unsigned char _pad_0x13;
     CThingCreatureBase* GetCreature() const { return PBrain->PCreature; }
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);   // 0x0097DB70
+    protected: EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool stopWhenReplaced); public:   // 0x0097DB70
 };
 
 struct CAIStateGroup_WorkAtSchool : CAIStateGroupBase {
@@ -65,15 +66,15 @@ bool CAIStateGroup_WorkAtSchool::PlayLoop(float duration, const CCharString& int
     long rate = g_FrameRate;
     long frame = CWorld::GetFrame();
     long endFrame = (long)((float)rate * duration + (float)frame);
-    if (AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), into, CSoundPair(),
+    if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), into, CSoundPair(),
         false, true, false, 0, 0), false) != 2)
         return false;
     while (CWorld::GetFrame() < endFrame) {
-        if (AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), loop, CSoundPair(),
+        if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), loop, CSoundPair(),
             false, true, false, 0, 0), false) != 2)
             return false;
     }
-    if (AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(GetCreature(), outOf, CSoundPair(),
+    if (AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(GetCreature(), outOf, CSoundPair(),
         false, true, false, 0, 0), false) != 2)
         return false;
     return true;

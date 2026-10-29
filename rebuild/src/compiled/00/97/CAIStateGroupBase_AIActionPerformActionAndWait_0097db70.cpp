@@ -83,24 +83,28 @@ class CThingCreatureBase
     bool IsPerformingAnyAction();                   // 0x006622A0
 };
 
+enum EAIActionReturn { AI_ACTION_STOPPING = 1, AI_ACTION_DONE = 2 };
+
 class CAIStateGroupBase
 { public:
     virtual void v00();
     CAIBrain* PBrain;                               // +0x04
     unsigned char _pad08[0x0c];                     // +0x08
     bool IsStopping();                              // 0x008FD010
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced);
+protected:
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& actionRef, bool stopWhenReplaced);
 };
 
-long CAIStateGroupBase::AIAction_PerformActionAndWait(CCreatureActionBase* action, bool stopWhenReplaced)
+EAIActionReturn CAIStateGroupBase::AIAction_PerformActionAndWait(const CCreatureActionBase& actionRef, bool stopWhenReplaced)
 {
+    CCreatureActionBase* action = (CCreatureActionBase*)&actionRef;
     if (IsStopping())
-        return 1;
+        return AI_ACTION_STOPPING;
     long id = action->GetActionID();
     while (!((CThingCreatureBase*)PBrain->Creature)->IsFreeToPerformAction(action) && !IsStopping())
         PBrain->Yield();
     if (IsStopping())
-        return 1;
+        return AI_ACTION_STOPPING;
     CBrainOutput output;
     output.Flags |= 8;
     output.PAction.Reset(action->Clone());
@@ -110,6 +114,6 @@ long CAIStateGroupBase::AIAction_PerformActionAndWait(CCreatureActionBase* actio
            (!stopWhenReplaced || id == ((CThingCreatureBase*)PBrain->Creature)->CurrentAction->GetActionID()))
         PBrain->Yield();
     if (IsStopping())
-        return 1;
-    return 2;
+        return AI_ACTION_STOPPING;
+    return AI_ACTION_DONE;
 }

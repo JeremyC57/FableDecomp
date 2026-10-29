@@ -65,11 +65,12 @@ class CCreatureAction_PlayCombatAnimation : public CCombatActionBase { public:  
     long Loop;                                  // +0x114
     CCreatureAction_PlayCombatAnimation(CThingCreatureBase* creature, const CCharString& animation, bool loop);   // 0x008B7FF0
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -78,9 +79,9 @@ class CAIStateGroupBase { public:
     protected:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
-    long AIAction_DoNothing();                  // 0x0097E200
-    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   // 0x0097D6F0
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    protected: EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
+    long AIAction_LookAtThing(long repeat, CIntelligentPointerConstThing thing, long frames, float speed);   protected: // 0x0097D6F0
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     long AIAction_MinionWander(long movementType, CThing* building);   // 0x0097F870
     __forceinline unsigned long Random()
     {
@@ -137,18 +138,18 @@ bool CAIStateGroup_SkillPractice::PracticeSkills()
         bool stepFailed;
         if (DummyType == 1) {
             stepFailed = firstAnim != ""
-                && AIAction_PerformActionAndWait(&CCreatureAction_AimMissileWeapon(GetCreature()), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_AimMissileWeapon(GetCreature()), false) != 2;
             if (stepFailed)
                 goto failed;
             stepFailed = secondAnim != ""
-                && AIAction_PerformActionAndWait(&CCreatureAction_FireMissileWeapon(GetCreature(), PDummy), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_FireMissileWeapon(GetCreature(), PDummy), false) != 2;
         } else {
             stepFailed = firstAnim != ""
-                && AIAction_PerformActionAndWait(&CCreatureAction_PlayCombatAnimation(GetCreature(), firstAnim, true), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), firstAnim, true), false) != 2;
             if (stepFailed)
                 goto failed;
             stepFailed = secondAnim != ""
-                && AIAction_PerformActionAndWait(&CCreatureAction_PlayCombatAnimation(GetCreature(), secondAnim, true), false) != 2;
+                && AIAction_PerformActionAndWait(CCreatureAction_PlayCombatAnimation(GetCreature(), secondAnim, true), false) != 2;
         }
         if (stepFailed)
             goto failed;

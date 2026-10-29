@@ -5,8 +5,9 @@
 // Retail CTCMultiArrow (PDB): NumberOfShots +0x10, CreateAmmoEffectCount +0x24, CreateAmmoEffectDelay +0x28,
 // CreateAmmoEffectTimer +0x2c, CutSceneCancelled +0x44.
 // Shape: the timer decrement folds into `dec dword ptr [ecx+2Ch] ; jne`, the reload from the delay precedes the tail jump.
+enum ETCInterfaceType { };
 class CThing { public:
-    void RemoveTC(long type);                       // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                       // 0x004C9840
 };
 
 struct CTCBase_007cc490 {
@@ -42,6 +43,6 @@ void CTCMultiArrow::vfunc_9()
             }
         }
     } else if (NumberOfShots <= 0) {
-        ParentThing->RemoveTC(0x88);
+        ParentThing->RemoveTC((ETCInterfaceType)(0x88));
     }
 }

@@ -9,10 +9,11 @@
 // dead-flag tests; target, owner and the call's owner are three named locals fetched in that order before the temporary is built
 // (an inline `Owner.GetPItem()->SetCurrentAction(T(Owner.GetPItem(), ...))` fetches `this` after the temporary and drops the ebx 1).
 // Layout: NumberOfStrikes at retail +0x114 (PDB +0x12c); thing byte +0x91 bit 0 = dead.
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_flags91;                    // +0x91 bit 0: dead
-    void RemoveTC(long interfaceType);          // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
 };
 class CCreatureActionBase;
 class CThingCreatureBase : public CThing { public:
@@ -46,7 +47,7 @@ class CCombatActionBase : public CCreatureActionBase { public:
     unsigned char _pad10[0xa8 - 0x10];
     CIntelligentPointer<CThingCreatureBase> Target;             // +0xa8 (the action's target)
     unsigned char _padb0[0x114 - 0xb0];
-    virtual void FinishAction();                // 0x00859A20
+    protected: virtual void FinishAction(); public:                // 0x00859A20
 };
 
 class CCreatureAction_CastStrengthMultiStrike : public CCombatActionBase { public:   // retail sizeof 0x118
@@ -66,6 +67,6 @@ void CCreatureAction_CastStrengthMultiStrike::FinishAction()
         CThingCreatureBase* creature = Owner.GetPItem();
         creature->SetCurrentAction(CCreatureAction_CastStrengthMultiStrike(owner, target, NumberOfStrikes - 1));
     } else {
-        Owner.GetPItem()->RemoveTC(0x8c);
+        Owner.GetPItem()->RemoveTC((ETCInterfaceType)(0x8c));
     }
 }

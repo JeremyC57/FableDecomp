@@ -142,8 +142,8 @@ class CCombatActionBase : public CCreatureActionBase { public:        // retail 
     CBaseIntelligentPointer PTarget;                    // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
     CCombatActionBase(CThingCreatureBase* owner, long animation, const CSoundPair& sounds = CSoundPair());   // 0x00858030
-    ~CCombatActionBase();                               // 0x0062E900
-    virtual void FinishAction();                        // 0x00859A20
+    ~CCombatActionBase();                               protected: // 0x0062E900
+    virtual void FinishAction(); public:                        // 0x00859A20
 };
 class CCreatureAction_BanditKingStuck : public CCombatActionBase { public:     // retail sizeof 0x128
     long                    TimesToLoop;                // +0x114

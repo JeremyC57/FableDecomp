@@ -66,7 +66,7 @@ class CCreatureActionBase { public:                   // retail sizeof 0xa8
 };
 class CCombatActionBase : public CCreatureActionBase { public:      // retail sizeof 0x114
     unsigned char _pad0a8[0x114 - 0xa8];
-    virtual void FinishAction();                      // 0x00859A20
+    protected: virtual void FinishAction(); public:                      // 0x00859A20
 };
 class CCombatAction_Guildmaster_SpeedUpFollowersRelease : public CCombatActionBase {
 public:

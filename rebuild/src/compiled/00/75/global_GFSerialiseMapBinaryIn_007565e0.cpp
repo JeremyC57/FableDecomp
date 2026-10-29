@@ -24,7 +24,9 @@ template<class Char>struct CBasicString {Char*PData;unsigned StringLength,DataLe
 struct CCharStringData {CBasicString<char> Data;int RefCount;};
 #pragma pack(pop)
 void ReleaseStringData(CCharStringData*);
-struct CCharString {unsigned int Data;__declspec(noinline) CCharString():Data(0){}__declspec(noinline) CCharString(const CCharString&x):Data(0){if(this!=&x&&x.Data){Data=x.Data;++((CCharStringData*)Data)->RefCount;}}__declspec(noinline) ~CCharString(){ReleaseStringData((CCharStringData*)Data);Data=0;}__declspec(noinline) CCharString& operator=(const CCharString&x){if(this!=&x){ReleaseStringData((CCharStringData*)Data);Data=x.Data;if(Data)++((CCharStringData*)Data)->RefCount;}return *this;}};
+} // (hoisted to global scope: naming wave 9)
+class CCharString { public:unsigned int Data;__declspec(noinline) CCharString():Data(0){}__declspec(noinline) CCharString(const CCharString&x):Data(0){if(this!=&x&&x.Data){Data=x.Data;++((X_007565e0::CCharStringData*)Data)->RefCount;}}__declspec(noinline) ~CCharString(){X_007565e0::ReleaseStringData((X_007565e0::CCharStringData*)Data);Data=0;}__declspec(noinline) const CCharString& operator=(const CCharString&x){if(this!=&x){X_007565e0::ReleaseStringData((X_007565e0::CCharStringData*)Data);Data=x.Data;if(Data)++((X_007565e0::CCharStringData*)Data)->RefCount;}return *this;}};
+namespace X_007565e0 {
 // Layout: method-only ABI view of the actual header receiver, not an original class.
 // Slot6 returns CCharString by hidden result pointer; the flattened header holds its vptr at0.
 // This data-free view supplies only virtual dispatch signatures, retaining all real stream fields.

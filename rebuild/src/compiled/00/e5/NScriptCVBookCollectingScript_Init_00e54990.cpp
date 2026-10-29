@@ -2,7 +2,9 @@
 // Flags: /O2 /Oy /W3
 // Leaf: Init
 namespace X_00e54990{
-struct CCharStringData;struct CCharString{CCharStringData*PStringData;CCharString();CCharString(const CCharString&);~CCharString();CCharString&operator=(const CCharString&);};
+} // (hoisted to global scope: naming wave 9)
+struct CCharStringData;class CCharString{ public:CCharStringData*PStringData;CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);};
+namespace X_00e54990 {
 namespace std{template<class T>struct vector{T*Start,*Finish,*Storage;vector&operator=(const vector&);void resize(unsigned,const T&);__forceinline void resize(unsigned n){resize(n,T());}};}
 // Layout: retail CConversation is92: ten prefix words, Lines40 and four12-byte string vectors44/56/68/80. PDB gives original member names, donor vector size16.
 struct CConversation{unsigned Prefix[10];long Lines;std::vector<CCharString>Speaker,Dialogue,Animation,AnimLoop;};

@@ -92,7 +92,7 @@ class CThingCreatureBase { public:
 struct CRandomSeed {
     unsigned long Seed;
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CWorld { public:
     CRandomSeed* GetRandomSeed();          // 0x0049D810
 };

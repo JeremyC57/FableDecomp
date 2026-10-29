@@ -185,7 +185,7 @@ class CIsThingAlive { public:                                  // vtable 0x012C3
     virtual void f00();
     CScriptThing Thing;
     CIsThingAlive(const CScriptThing& thing) : Thing(thing) {}
-    ~CIsThingAlive();                                   // 0x00E241B0
+    virtual ~CIsThingAlive();                                   // 0x00E241B0
 };
 
 struct CEntityScriptBase {

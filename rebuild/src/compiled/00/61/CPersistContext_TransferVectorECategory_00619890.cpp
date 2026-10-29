@@ -43,9 +43,9 @@ class CPersistContext { public:
     unsigned char           _pad1c[8];
     CMemoryDataInputStream* PLoadStream;           // +0x24
     CDataOutputStream*      PSaveStream;           // +0x28
-    protected: void CheckCRC(const char* name); public:              // 0x00404500
-    void TransferVectorSaveText(const char* name, CPersistContext_TransferableVectorGenericType& item);   // 0x009BAC80
-    void TransferVectorLoadText(const char* name, CPersistContext_TransferableVectorGenericType& item);   // 0x009BB110
+    protected: void CheckCRC(const char* name); public:              protected: // 0x00404500
+    void TransferVectorSaveText(const char* name, CPersistContext_TransferableVectorGenericType& item); public:   protected: // 0x009BAC80
+    void TransferVectorLoadText(const char* name, CPersistContext_TransferableVectorGenericType& item); public:   // 0x009BB110
     template <class T> void TransferVector(const char* name, vector<T>& value);
 };
 

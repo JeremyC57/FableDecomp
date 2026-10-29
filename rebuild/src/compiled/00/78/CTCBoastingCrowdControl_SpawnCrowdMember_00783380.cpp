@@ -21,7 +21,7 @@ class CCharString { public:
 };
 extern CCharString g_CrowdMemberScriptName;             // 0x013BADE8
 class C3DVector { public: float X, Y, Z; };
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long value);  // 0x00497890
 float __fastcall GFFloatRandom(float range, unsigned long* seed);   // 0x004978A0
 __forceinline unsigned long GFRandom(unsigned long* seed)
 {

@@ -7,7 +7,9 @@ namespace X_0052bff0 {
 // Layout: 0052b5e0 assigns CCharString+0, nested vector+0x04, scalar+0x10,
 // bool+0x14, stride0x18; vector pointers+0x00,+0x04,+0x08.
 // Nested byte-vector verified by 005295b0 byte-count allocation and memmove.
-struct CCharString{void*p;CCharString();CCharString(const CCharString&);~CCharString();CCharString&operator=(const CCharString&);};
+} // (hoisted to global scope: naming wave 9)
+class CCharString{ public:void*p;CCharString();CCharString(const CCharString&);~CCharString();const CCharString&operator=(const CCharString&);};
+namespace X_0052bff0 {
 template<class T>struct CArray;
 template<>struct CArray<unsigned char>{unsigned char*first,*last,*limit;CArray();CArray(const CArray&);~CArray();CArray&operator=(const CArray&);};
 typedef CArray<unsigned char> ByteVector;

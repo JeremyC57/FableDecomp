@@ -21,7 +21,7 @@ struct CCountedMeshPointer {                       // CCountedPointer<const C3DM
 class C3DMeshInfo { public:
     void BeginLoading(unsigned long priority, bool urgent, bool wait);   // 0x00A256F0
     void SetLoadPriority(long priority);           // 0x00A23C50
-    bool IsLoaded();                               // 0x00A23E40
+    bool IsLoaded() const;                               // 0x00A23E40
     bool IsBuilt();                                // 0x00A23C60
     bool GetMesh(CCountedMeshPointer& mesh, unsigned long lod, unsigned long flags) const;   // 0x00A25E70
 };

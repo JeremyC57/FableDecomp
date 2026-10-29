@@ -87,7 +87,7 @@ __forceinline bool IS_THING_ALIVE(const CBaseIntelligentPointer& p)
 class CWorld { public:
     unsigned long* GetPRandomSeed();            // 0x0049D810
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 
 class CAIBrain { public:
     unsigned char _pad[0x18];

@@ -142,11 +142,14 @@ public:
     virtual void v00();
 };
 }
-struct CIsThingAlive : public NScript::CPredicateBase {                                  // vtable 0x012C32F0
+namespace NScript {
+class CIsThingAlive : public NScript::CPredicateBase { public:                                  // vtable 0x012C32F0
     CScriptThingCopy m_thing;                           // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive();                                   // 0x00E241B0
+    virtual ~CIsThingAlive();                                   // 0x00E241B0
 };
+}
+using NScript::CIsThingAlive;
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 class CTimer { public:                                         // 4 bytes: an index into the global script timers
     long TimerIndex;

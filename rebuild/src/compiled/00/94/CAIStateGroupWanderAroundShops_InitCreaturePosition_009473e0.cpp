@@ -43,7 +43,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 extern unsigned long g_WanderAroundShopsChance;          // 0x0138CE34 (percent)
 
 class CAIStateGroupBase { public:

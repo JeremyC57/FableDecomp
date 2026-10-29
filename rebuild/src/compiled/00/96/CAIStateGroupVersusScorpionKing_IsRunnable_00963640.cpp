@@ -158,7 +158,7 @@ struct CTCEnemySource {                         // interface 8
     virtual void v24(); virtual void v25(); virtual void v26(); virtual void v27(); virtual void v28();
     virtual CThing* GetEnemy();                 // slot 29 (+0x74)
 };
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long value);  // 0x00497890
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
     seed = seed * 0x24A1 + 0x24DF;

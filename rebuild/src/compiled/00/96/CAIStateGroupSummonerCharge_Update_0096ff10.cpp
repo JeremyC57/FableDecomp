@@ -126,6 +126,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingCreatureBase* PCreature;              // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
@@ -136,8 +137,8 @@ class CAIStateGroupBase { public:
     unsigned char Enabled;
     unsigned char _pad_0x13;
     CWorld* GetPWorld();                        // 0x008FCFC0
-    void Terminate();                           // 0x008FCF40
-    long AIAction_DoNothing();                  // 0x0097E200
+    void Terminate();                           protected: // 0x008FCF40
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
     long AIAction_CombatPerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DA40
 };
 struct CAIStateGroup_SummonerCharge : CAIStateGroupBase {

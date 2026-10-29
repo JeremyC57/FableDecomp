@@ -39,7 +39,7 @@ public:
     CInterfaceMap m_interfaces;                 // +0x44
     unsigned char _pad4c[0x91 - 0x4c];
     unsigned char Flags91;                      // +0x91 bit 0 Dead
-    void RemoveTC(long interfaceType);          // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);          // 0x004C9840
     template<class T> __forceinline bool GetInterface(T** ppOut, long interfaceType)
     {
         if (m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31))) {
@@ -140,5 +140,5 @@ void CTCFireRangedWeaponOnLeavingStateGroup::FrameUpdate()
             }
         }
     }
-    ParentThing->RemoveTC(0x104);
+    ParentThing->RemoveTC((ETCInterfaceType)(0x104));
 }

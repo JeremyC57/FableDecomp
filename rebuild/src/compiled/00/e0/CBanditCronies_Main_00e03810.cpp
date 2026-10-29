@@ -155,12 +155,15 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
-struct CIsThingAlive {                                   // vtable 0x012C32F0: the entity script's alive-filter over Me
+namespace NScript {
+class CIsThingAlive { public:                                   // vtable 0x012C32F0: the entity script's alive-filter over Me
     virtual void v00();
     CScriptThing m_thing;                                // +0x04
     CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    ~CIsThingAlive() { }
+    virtual ~CIsThingAlive() { }
 };
+}
+using NScript::CIsThingAlive;
 
 struct CBanditCronies {
     virtual ~CBanditCronies();

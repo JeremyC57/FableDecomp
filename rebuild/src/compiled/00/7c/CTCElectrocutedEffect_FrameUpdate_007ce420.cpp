@@ -27,6 +27,7 @@ namespace NGraphicAppearance {
                               EAppearanceMeshEffectPriority priority, void* owner);   // 0x004C04C0
     };
 }
+enum ETCInterfaceType { };
 class CThing {
 public:
     unsigned char _pad00[0x64];
@@ -35,7 +36,7 @@ public:
     unsigned char Flags91;                          // +0x91 (bit 0: being destroyed)
     void SetActive(bool active);                    // 0x004C7590
     void SetAsFrameUpdated();                       // 0x004C7C40
-    void RemoveTC(long type);                       // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                       // 0x004C9840
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -130,5 +131,5 @@ void CTCElectrocutedEffect::FrameUpdate()
         ApplyTint(thing, t);
     }
     if (++CurTime > FadeOutTimeStart + FadeOutTime)
-        thing->RemoveTC(0x8a);
+        thing->RemoveTC((ETCInterfaceType)(0x8a));
 }

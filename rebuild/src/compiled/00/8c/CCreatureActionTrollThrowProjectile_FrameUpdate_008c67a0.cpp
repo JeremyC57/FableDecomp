@@ -26,9 +26,12 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 };
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > CInterfaceMap;
 
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAlpha(unsigned char alpha);         // 0x004BFAC0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
 class CThing { public:
     unsigned char  _pad0[0x20];

@@ -119,7 +119,7 @@ class CPlayer { public:
 class CPlayerManager { public:
     const CPlayer& GetMainPlayer() const;       // 0x00449960
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870
     static __forceinline unsigned long Random(unsigned long range, unsigned long* seed)
@@ -138,6 +138,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThing* PCreature;                          // +0x18
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
 #define VF(n) virtual void v##n();
     VF(0) VF(1) VF(2) VF(3) VF(4) VF(5) VF(6) VF(7) VF(8) VF(9) VF(10)
@@ -152,8 +153,8 @@ class CAIStateGroupBase { public:
     unsigned long* GetPWorldSeed() const;             // 0x008FCFD0
     public:
     void Terminate();                           // 0x008FCF40
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
-    long AIAction_DoNothing();                  // 0x0097E200
+    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   protected: // 0x0097D580
+    EAIActionReturn AIAction_DoNothing(); public:                  // 0x0097E200
 };
 struct CAIStateGroup_MinionGuardBribed : CAIStateGroupBase {
     virtual void Update();

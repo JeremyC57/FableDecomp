@@ -182,7 +182,7 @@ class CCombatActionBase : public CCreatureActionBase { public:        // retail 
     unsigned char           _pad20[0xa8 - 0x20];
     CBaseIntelligentPointer PTarget;                    // +0xa8
     unsigned char           _padb0[0x114 - 0xb0];
-    virtual void FinishAction();                        // 0x00859A20
+    protected: virtual void FinishAction(); public:                        // 0x00859A20
 };
 class CCreatureAction_BalverineDropInFromSky : public CCombatActionBase { public:    // vtable 0x0128390C
     CCreatureAction_BalverineDropInFromSky(CThingCreatureBase* owner); // 0x008CCBD0

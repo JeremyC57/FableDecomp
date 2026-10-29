@@ -61,12 +61,13 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;              // +0x18
     CThingCreatureBase* GetPCreature() const { return PCreature; }
 };
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                           // +0x04
     unsigned char _pad08[0x0c];                 // +0x08..+0x13
-    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   // 0x0097D580
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);        // 0x0097DB70
+    long AIAction_LookAtPos(long repeat, C3DVector pos, long flags, float turnSpeed);   protected: // 0x0097D580
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:        // 0x0097DB70
     void Terminate();                           // 0x008FCF40
 };
 struct CAIStateGroup_KidReactToBlockage : CAIStateGroupBase {
@@ -90,18 +91,18 @@ void CAIStateGroup_KidReactToBlockage::Update()
         bool failed;
         {
             CCharString anim("ST_TANTRUM_INTO");
-            failed = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(PBrain->GetPCreature(), anim, CSoundPair(),
+            failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), anim, CSoundPair(),
                                                                                  false, true, false, 0, 0), false) != 2;
         }
         if (!failed) {
             {
                 CCharString anim("ST_TANTRUM_LOOP");
-                failed = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(PBrain->GetPCreature(), anim, CSoundPair(),
+                failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), anim, CSoundPair(),
                                                                                      false, true, false, 0, 0), false) != 2;
             }
             if (!failed) {
                 CCharString anim("ST_TANTRUM_OUTOF");
-                failed = AIAction_PerformActionAndWait(&CCreatureAction_PlayAnimation(PBrain->GetPCreature(), anim, CSoundPair(),
+                failed = AIAction_PerformActionAndWait(CCreatureAction_PlayAnimation(PBrain->GetPCreature(), anim, CSoundPair(),
                                                                                      false, true, false, 0, 0), false) != 2;
             }
         }

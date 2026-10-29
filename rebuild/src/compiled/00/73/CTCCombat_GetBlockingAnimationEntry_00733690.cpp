@@ -21,7 +21,7 @@ class CTCCombat : public CTCBase, public CTCCombatLayout
 {
 };
 extern "C" void __cdecl free(void* block);              // 0x00BFEA14
-unsigned long __fastcall GFROR13(unsigned long value);  // 0x00497890
+long __fastcall GFROR13(unsigned long value);  // 0x00497890
 
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {

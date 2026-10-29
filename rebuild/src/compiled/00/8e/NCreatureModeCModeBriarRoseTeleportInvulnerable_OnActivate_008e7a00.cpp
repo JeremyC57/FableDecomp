@@ -123,7 +123,7 @@ class CThing { public:
     const C3DVector& GetPos() const;       // 0x004C73D0
 };
 class CTCBoss { public:
-    bool IsReadyForPhaseChange();               // 0x007AEE90
+    bool IsReadyForPhaseChange() const;               // 0x007AEE90
     void IncrementBossPhase();                  // 0x007AED20
 };
 CThing* __fastcall CreateEffectThing(long type, const C3DVector* position, bool flag);   // 0x006E0880

@@ -6,11 +6,12 @@
 //          last one a tail jump).
 // Shape: a non-polymorphic class of two 8-byte intelligent pointers; the dead flag is bit 0 of the thing's byte
 // +0x91; every use calls GetPItem again (no local).
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad00[0x91];
     unsigned char m_stateFlags;                    // +0x91 bit 0: dead / being removed
     void Kill(bool immediate);                     // 0x004C9B80
-    void RemoveTC(long type);                      // 0x004C9840
+    void RemoveTC(ETCInterfaceType type);                      // 0x004C9840
 };
 class CBaseObject;
 class CBaseObjectPointer;
@@ -39,5 +40,5 @@ CLightningBranch::~CLightningBranch()
     if (m_effect.GetPItem() && !(m_effect.GetPItem()->m_stateFlags & 1))
         m_effect.GetPItem()->Kill(true);
     if (m_target.GetPItem() && !(m_target.GetPItem()->m_stateFlags & 1))
-        m_target.GetPItem()->RemoveTC(0x10b);
+        m_target.GetPItem()->RemoveTC((ETCInterfaceType)(0x10b));
 }

@@ -22,11 +22,12 @@ class CTCPhysicsBase { public:                     // the thing's physics TC; on
     virtual void ResetPosition(const C3DVector& position);   // slot 31 (+0x7c)
 };
 
+enum ETCInterfaceType { };
 class CThing { public:
     unsigned char _pad00[0x60];
     CTCPhysicsBase* PhysicsTC;              // +0x60
     const C3DVector& GetPos() const;   // 0x004C73D0
-    void RemoveTC(long interfaceType);      // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);      // 0x004C9840
 };
 
 class CBaseObject;
@@ -51,7 +52,7 @@ class CCombatActionBase { public:                  // retail sizeof 0x114
     unsigned char _pad04[4];                // +0x04
     CIntelligentPointer<CThing> PCreature;      // +0x08 CIntelligentPointer<CThingCreatureBase>
     unsigned char _pad10[0x114 - 0x10];
-    virtual void FinishAction();            // 0x00859A20
+    protected: virtual void FinishAction(); public:            // 0x00859A20
 };
 
 class CCreatureAction_DragonHoverOutOf : public CCombatActionBase { public:
@@ -67,6 +68,6 @@ void CCreatureAction_DragonHoverOutOf::FinishAction()
     position.Z = current.Z + 31.148378f;    // 0x01288430
     CThing* creature = PCreature.GetPItem();   // named: the physics TC then loads straight into ecx
     creature->PhysicsTC->ResetPosition(position);
-    PCreature.GetPItem()->RemoveTC(0x4d);
+    PCreature.GetPItem()->RemoveTC((ETCInterfaceType)(0x4d));
     CCombatActionBase::FinishAction();
 }

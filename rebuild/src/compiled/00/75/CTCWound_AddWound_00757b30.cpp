@@ -115,7 +115,7 @@ class CThing { public:
 };
 class CWorld {
 public:
-    unsigned long* GetRandomSeed() const;                    // 0x0049D810
+    unsigned long* GetWorldSeed() const;                    // 0x0049D810
     static long __fastcall GetFrame();                             // 0x0049D870
 };
 
@@ -204,7 +204,7 @@ void CTCWound::AddWound(EBodyLocation location)
     ParentThing->m_pDef->GetSubDef(&def);
     const CWoundMorphs* morphs = def->PWoundMorphs.Data;
     long morphIndex = -1;
-    const CWoundMorphs::CEntry* entry = morphs->GetPRandomWoundForLocation(location, *PeekWorld().GetRandomSeed(), morphIndex);
+    const CWoundMorphs::CEntry* entry = morphs->GetPRandomWoundForLocation(location, *PeekWorld().GetWorldSeed(), morphIndex);
     if (entry != 0) {
         LastFrameChanged = CWorld::GetFrame();
         for (CListIterator<CWound> it = Wounds.begin(); it != Wounds.end(); ++it) {

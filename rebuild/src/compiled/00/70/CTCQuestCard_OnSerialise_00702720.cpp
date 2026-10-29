@@ -11,7 +11,7 @@
 class CCharString { public: void* PStringData; };
 class CPersistContext { public:
     void Transfer(const char* name, bool& value, const bool& defaultValue);     // 0x004045C0 Transfer<bool>
-    void Transfer(const char* name, long& value, const long& defaultValue);     // 0x00410BE0 Transfer<long>
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
     void Transfer(const char* name, CCharString* value);                        // 0x00411010
 };
 class CQuestCardDef { public:
@@ -49,7 +49,7 @@ void CTCQuestCard::OnSerialise(CPersistContext& context, bool flag)
     if (flag) {
         context.Transfer("Finished", Finished, false);
         context.Transfer("Replayable", Replayable, false);
-        context.Transfer("FeatIndex", FeatIndex, 0);
+        context.Transfer<long>("FeatIndex", FeatIndex, 0);
         context.Transfer("QuestName", &QuestName);
         context.Transfer("ObjectiveName", &ObjectiveName);
         context.Transfer("RegionName", &RegionName);

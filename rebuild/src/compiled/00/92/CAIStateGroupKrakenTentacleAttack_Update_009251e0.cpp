@@ -40,11 +40,12 @@ class CAIBrain { public:
     CThingCreatureBase* PCreature;                  // +0x18
 };
 
+enum EAIActionReturn { };
 class CAIStateGroupBase { public:
     virtual ~CAIStateGroupBase();
     CAIBrain* PBrain;                               // +0x04
-    unsigned char _pad[0x0c];                       // +0x08..+0x13
-    long AIAction_PerformActionAndWait(CCreatureActionBase* action, bool wait);   // 0x0097DB70
+    unsigned char _pad[0x0c];                       protected: // +0x08..+0x13
+    EAIActionReturn AIAction_PerformActionAndWait(const CCreatureActionBase& action, bool wait); public:   // 0x0097DB70
     void Terminate();                               // 0x008FCF40
 };
 
@@ -54,6 +55,6 @@ struct CAIStateGroup_KrakenTentacleAttack : CAIStateGroupBase {
 
 void CAIStateGroup_KrakenTentacleAttack::Update()
 {
-    AIAction_PerformActionAndWait(&CCreatureAction_TentacleStrikeInto(PBrain->PCreature), false);
+    AIAction_PerformActionAndWait(CCreatureAction_TentacleStrikeInto(PBrain->PCreature), false);
     Terminate();
 }

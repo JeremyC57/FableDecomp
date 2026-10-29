@@ -9,7 +9,7 @@
 // default built in a dword stack temporary. The member name is taken from the
 // persisted key; the member type is any 4-byte scalar (`long` models it). One of 16 bodies.
 class CPersistContext { public:
-    void Transfer(const char* name, long& value, const long& defaultValue);   // Transfer<long> @ 0x00410BE0
+    template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x00410BE0 <long>
 };
 
 struct CPersistable_00d21b10 {

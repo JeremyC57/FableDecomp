@@ -15,10 +15,14 @@
 // pointer every pass and calls GetPItem afresh for each use.
 class CThing;
 
-struct CTCGraphicAppearance {
+namespace NGraphicAppearance {
+class CTCGraphicAppearance { public:
     void SetAlpha(unsigned char alpha);                     // 0x004BFAC0
 };
+}
+using NGraphicAppearance::CTCGraphicAppearance;
 
+enum ETCInterfaceType { };
 class CThing {
 public:
 #define V(n) virtual void v##n();
@@ -28,7 +32,7 @@ public:
     virtual void SetAsDrawable(bool drawable);              // slot 28 (+0x70)
     unsigned char _pad04[0x64 - 0x04];
     CTCGraphicAppearance* PGraphicAppearance;               // +0x64
-    void RemoveTC(long interfaceType);                      // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);                      // 0x004C9840
 };
 
 class CBaseObject;
@@ -93,7 +97,7 @@ void CTCFadeOutAndIn::FrameUpdate()
     if (ParentThing->PGraphicAppearance == 0) {
         FadingOut = false;
         FadingIn = false;
-        ParentThing->RemoveTC(0xf9);
+        ParentThing->RemoveTC((ETCInterfaceType)(0xf9));
         return;
     }
     UpdateFadingThings();
@@ -103,7 +107,7 @@ void CTCFadeOutAndIn::FrameUpdate()
     if (frames <= 0) {
         if (FadingIn) {
             FadingIn = false;
-            ParentThing->RemoveTC(0xf9);
+            ParentThing->RemoveTC((ETCInterfaceType)(0xf9));
             return;
         }
         FadingOut = false;

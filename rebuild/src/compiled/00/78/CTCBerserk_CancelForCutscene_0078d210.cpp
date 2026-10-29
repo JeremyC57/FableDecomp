@@ -6,8 +6,9 @@
 // DependentThings vector is 4 bytes narrower in retail), so the class is modelled locally.
 // Shape: the parent pointer is read into a local (edi) before the flag store; the guard is an `if`
 // around the body (the early-out shares the single exit).
+enum ETCInterfaceType { };
 class CThing { public:
-    void RemoveTC(long interfaceType);                      // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);                      // 0x004C9840
 };
 
 class CThingCreatureBase : public CThing { public:
@@ -30,6 +31,6 @@ void CTCBerserk_Retail::CancelForCutscene()
         IsInCutscene = true;
         parent->FinishCurrentAction();
         CleanupAbility(true);
-        parent->RemoveTC(0x84);
+        parent->RemoveTC((ETCInterfaceType)(0x84));
     }
 }

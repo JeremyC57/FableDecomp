@@ -85,7 +85,7 @@ class CPlayerManager { public:
     CPlayer& GetMainPlayer();                   // 0x00449970
 };
 class CTCBoss { public:                                // interface 0xad
-    bool IsReadyForPhaseChange();               // 0x007AEE90
+    bool IsReadyForPhaseChange() const;               // 0x007AEE90
     void IncrementBossPhase();                  // 0x007AED20
 };
 

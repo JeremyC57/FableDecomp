@@ -82,7 +82,7 @@ class CAIBrain { public:
     unsigned char _pad[0x18];
     CThingAICreature* PCreature;                // +0x18
 };
-unsigned long __fastcall GFROR13(unsigned long value);   // 0x00497890
+long __fastcall GFROR13(unsigned long value);   // 0x00497890
 inline unsigned long WorldRandomRange(unsigned long& seed, unsigned long range)
 {
     seed = seed * 0x24A1 + 0x24DF;

@@ -42,7 +42,7 @@ public:
         return ((it == map->last || interfaceType < it->first) ? map->last : it)->second;
     }
     void OnCollision(ECollideType type, const C3DVector& position, const C3DVector& normal, CThing* other);   // 0x004C8DA0
-    void RemoveTC(long interfaceType);          // 0x004C9840
+    void RemoveTC(ETCInterfaceType interfaceType);   // 0x004C9840
 };
 struct CTCCollisionHandler {                    // component kind 0x77
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027();
@@ -59,5 +59,5 @@ void CThingGameObject::OnCollision(ECollideType type, const C3DVector& position,
     if (HasTC(0x77))
         ((CTCCollisionHandler*)GetTC(0x77))->OnCollision(type, position, normal, other);
     if (HasTC(0x2a))
-        RemoveTC(0x2a);
+        RemoveTC((ETCInterfaceType)0x2a);
 }
