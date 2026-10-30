@@ -365125,6 +365125,70 @@ $catalog = @(
         TestSource = '00/41/global_InitialiseConsoleVariables_00413c50_test.cpp'
         PassPattern = '00413c50_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00aeb190'
+        Module = 'NParticleEngine::CParticleEmitterList'
+        Source = '00/ae/NParticleEngineCParticleEmitterList_Insert_00aeb190.cpp'
+        TestSource = '00/ae/NParticleEngineCParticleEmitterList_Insert_00aeb190_test.cpp'
+        PassPattern = '00aeb190_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af2010'
+        Module = 'std::vector'
+        Source = '00/af/stdvector_Mfillinsert_00af2010.cpp'
+        TestSource = '00/af/stdvector_Mfillinsert_00af2010_test.cpp'
+        PassPattern = '00af2010_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00af7570'
+        Module = 'std::vector'
+        Source = '00/af/stdvector_Mfillinsert_00af7570.cpp'
+        TestSource = '00/af/stdvector_Mfillinsert_00af7570_test.cpp'
+        PassPattern = '00af7570_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b4a2c0'
+        Module = 'std::vector'
+        Source = '00/b4/stdvector_Mfillinsert_00b4a2c0.cpp'
+        TestSource = '00/b4/stdvector_Mfillinsert_00b4a2c0_test.cpp'
+        PassPattern = '00b4a2c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b85b90'
+        Module = 'std'
+        Source = '00/b8/std_chunkinsertionsort_00b85b90.cpp'
+        TestSource = '00/b8/std_chunkinsertionsort_00b85b90_test.cpp'
+        PassPattern = '00b85b90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b85cd0'
+        Module = 'std'
+        Source = '00/b8/std_rotateadaptive_00b85cd0.cpp'
+        TestSource = '00/b8/std_rotateadaptive_00b85cd0_test.cpp'
+        PassPattern = '00b85cd0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bdff50'
+        Module = 'std::vector'
+        Source = '00/bd/stdvector_Mfillinsert_00bdff50.cpp'
+        TestSource = '00/bd/stdvector_Mfillinsert_00bdff50_test.cpp'
+        PassPattern = '00bdff50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c06f30'
+        Module = '_global'
+        Source = '00/c0/global_swdinit_00c06f30.cpp'
+        TestSource = '00/c0/global_swdinit_00c06f30_test.cpp'
+        PassPattern = '00c06f30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c11ac0'
+        Module = 'CSoundEventManager'
+        Source = '00/c1/CSoundEventManager_FindFirstEntryState_00c11ac0.cpp'
+        TestSource = '00/c1/CSoundEventManager_FindFirstEntryState_00c11ac0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c11ac0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

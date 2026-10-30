@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00bdff50	RELOCATION_MATCH	316	PASS	std::vector<C3DBoundingSphere>::_M_fill_insert (STLport 4.6 vector.c verbatim; tag on dead x slot -> same-TU noinline __uninitialized_copy / __copy_backward)
+00aeb190	RELOCATION_MATCH	318	PASS	NParticleEngine::CParticleEmitterList::Insert (private; PDB name set + caller FindVisible 0x00AEB2D0)
+00af2010	RELOCATION_MATCH	318	PASS	std::vector<NParticleEngine::CParticleEmitterInfo>::_M_fill_insert (fill needs a same-TU body)
+00b85b90	RELOCATION_MATCH	319	PASS	std::__chunk_insertion_sort<CSortElement*,int,less<CSortElement> > (STLport _algo.c verbatim)
+00b85cd0	RELOCATION_MATCH	320	PASS	std::__rotate_adaptive<CSortElement*,CSortElement*,int> (__forceinline copy chains)
+00c11ac0	RELOCATION_MATCH	320	PASS	CSoundEventManager::FindFirstEntryState (descriptive; vtable 0x012B2748 slot 17)
+00c1a870	DIFFER	325v321	PASS	PKCDefaultFileManager::ReleaseFile (descriptive) parked in differ/: trace CString not homed in the dead Find out-slot (frame 0x14 vs 0x10)
+00c06f30	RELOCATION_MATCH	326	PASS	swd_init (LZO 1.08 static; same-TU static chain gives retail's private registers)
+00b4a2c0	RELOCATION_MATCH	327	PASS	std::vector<CEngineLightingManager::CThemeChannel>::_M_fill_insert (QAE; helpers declared only)
+00af7570	RELOCATION_MATCH	328	PASS	std::vector<std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance> >::_M_fill_insert

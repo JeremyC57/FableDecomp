@@ -1,0 +1,39 @@
+addr       parity           behav  name
+00aeb190   RELOCATION_MATCH PASS   Insert
+00af2010   WARN RELOC_NAME: ??$fill@PAVCParticleEmitterInfo@NParticleEngine@@V12@@std@@YIXPAVCParticleEmitterInfo@NParticleEngine@@0ABV12@@Z -> 00af1c70 labelled '_global::CIVCountedPointer_Attach_00af1c70'
+00af2010   RELOCATION_MATCH PASS   _M_fill_insert
+00af7570   WARN RELOC_NAME: ??$__uninitialized_fill_n@PAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@IU12@@std@@YIPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@0@PAU10@IABU10@ABU__false_type@0@@Z -> 00af6980 labelled 'std::__uninitialized_fill_n<std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance>*,unsigned int,std::pair<NParticleEngine::EPSCType,NParticleEngine::CComponentInstance> >'
+00af7570   RELOCATION_MATCH PASS   _M_fill_insert
+00b4a2c0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAUCThemeChannel@CEngineLightingManager@@IU12@@std@@YIPAUCThemeChannel@CEngineLightingManager@@PAU12@IABU12@@Z -> 00b497b0 labelled '_global::UninitFillN_00b497b0'
+00b4a2c0   RELOCATION_MATCH PASS   _M_fill_insert
+00b85b90   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b85b90   RELOCATION_MATCH PASS   __chunk_insertion_sort
+00b85cd0   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b85cd0   RELOCATION_MATCH PASS   __rotate_adaptive
+00bdff50   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DBoundingSphere@@PAV1@@std@@YIPAVC3DBoundingSphere@@PAV1@00ABU__false_type@0@@Z -> 00bdf880 labelled '_global::UninitCopy_SElement16_00bdf880'
+00bdff50   WARN RELOC_NAME: ??$__copy_backward@PAVC3DBoundingSphere@@PAV1@H@std@@YIPAVC3DBoundingSphere@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z -> 00bdf600 labelled '_Move_backward<std::pair<unsigned___int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*,std::pair<unsigned___int64,class_NScript::CRuntimeScriptedEntityPersist::_Move_backward<std::pair<unsigned___int64,NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*,std::pair<unsigned___int64,class_NScript::CRuntimeScriptedEntityPersist::CPersistInfo>*>'
+00bdff50   RELOCATION_MATCH PASS   _M_fill_insert
+00c06f30   RELOCATION_MATCH PASS   swd_init
+00c11ac0   RELOCATION_MATCH PASS   FindFirstEntryState
+
+WINS: 9
+  00aeb190 RELOCATION_MATCH NParticleEngine::CParticleEmitterList::?Insert@CParticleEmitterList@NParticleEngine@@AAE_NAAV?$list@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@V?$allocator@V?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@@std@@@std@@ABV?$CCountedPointer@VCParticleEmitter@NParticleEngine@@@@J@Z
+  00af2010 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCParticleEmitterInfo@NParticleEngine@@V?$allocator@VCParticleEmitterInfo@NParticleEngine@@@std@@@std@@QAEXPAVCParticleEmitterInfo@NParticleEngine@@IABV34@@Z
+  00af7570 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@V?$allocator@U?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@std@@@2@@std@@QAEXPAU?$pair@W4EPSCType@NParticleEngine@@VCComponentInstance@2@@2@IABU32@@Z
+  00b4a2c0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@UCThemeChannel@CEngineLightingManager@@V?$allocator@UCThemeChannel@CEngineLightingManager@@@std@@@std@@QAEXPAUCThemeChannel@CEngineLightingManager@@IABU34@@Z
+  00b85b90 RELOCATION_MATCH std::??$__chunk_insertion_sort@PAVCSortElement@CEngineSubPrimitiveRenderer@@HU?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@std@@@std@@YIXPAVCSortElement@CEngineSubPrimitiveRenderer@@0HU?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@0@@Z
+  00b85cd0 RELOCATION_MATCH std::??$__rotate_adaptive@PAVCSortElement@CEngineSubPrimitiveRenderer@@PAV12@H@std@@YIPAVCSortElement@CEngineSubPrimitiveRenderer@@PAV12@00HH0H@Z
+  00bdff50 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VC3DBoundingSphere@@V?$allocator@VC3DBoundingSphere@@@std@@@std@@QAEXPAVC3DBoundingSphere@@IABV3@@Z
+  00c06f30 RELOCATION_MATCH _global::_swd_init
+  00c11ac0 RELOCATION_MATCH CSoundEventManager::?FindFirstEntryState@CSoundEventManager@@UAEJPAXPBUSObjectKey_00c196a0@@@Z
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  NParticleEngineCParticleEmitterList_Insert_00aeb190
+  stdvector_Mfillinsert_00af2010
+  stdvector_Mfillinsert_00af7570
+  stdvector_Mfillinsert_00b4a2c0
+  std_chunkinsertionsort_00b85b90
+  std_rotateadaptive_00b85cd0
+  stdvector_Mfillinsert_00bdff50
+  global_swdinit_00c06f30
+  CSoundEventManager_FindFirstEntryState_00c11ac0

@@ -1,0 +1,10 @@
+address	name	evidence
+0x00BDFF50	std::vector::_M_fill_insert	proven per batch 2026-10-27_linux_hand593 NOTES.md (chunk 593)
+0x00AEB190	NParticleEngine::CParticleEmitterList::Insert	proven per batch 2026-10-27_linux_hand593 NOTES.md (chunk 593)
+0x00AF2010	std::vector::_M_fill_insert	proven per batch 2026-10-27_linux_hand593 NOTES.md (chunk 593)
+0x00B85B90	std::__chunk_insertion_sort	proven per batch 2026-10-27_linux_hand593 NOTES.md (chunk 593)
+0x00B85CD0	std::__rotate_adaptive	proven per batch 2026-10-27_linux_hand593 NOTES.md (chunk 593)
+0x00C11AC0	CSoundEventManager::FindFirstEntryState	proven per batch 2026-10-27_linux_hand593 NOTES.md (chunk 593)
+0x00C06F30	_global::swd_init	proven per batch 2026-10-27_linux_hand593 NOTES.md (chunk 593)
+0x00B4A2C0	std::vector::_M_fill_insert	proven per batch 2026-10-27_linux_hand593 NOTES.md (chunk 593)
+0x00AF7570	std::vector::_M_fill_insert	proven per batch 2026-10-27_linux_hand593 NOTES.md (chunk 593)
