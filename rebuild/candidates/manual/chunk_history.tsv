@@ -24900,3 +24900,13 @@ chunk	address	module	name	length
 586	00c01090	global	fill_window	269
 586	00c6b9d0	global	Audio_FilterSamples_2ndOrder	269
 586	00c27890	global	sub_00c27890	257
+587	00c5dc60	global	Audio_QueryHardwareDevicePath	267
+587	00c89d70	global	AsyncBankFile_Process	269
+587	00c9c2f0	global	FFT_Radix2VariableStride	269
+587	00cfaf70	global	sub_00cfaf70	269
+587	00ae3920	global	InsertFromVector	270
+587	00ae82c0	global	Vector_Insert_Pair128BitMultipleResize	270
+587	00b86140	global	std_introsort_binary_search	274
+587	00c43a10	global	CDisplayManager_ProcessStateChange	274
+587	00caafc0	global	PopNodes_FromList_UpToCount	276
+587	00c39130	global	CTCTavernGameSpotTheAddition_Constructor	265
