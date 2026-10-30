@@ -19,11 +19,7 @@ public:
     CCharString();                                      // 0x0099E4B0
     ~CCharString();                                     // 0x0099EAE0
 };
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CTimer.h"

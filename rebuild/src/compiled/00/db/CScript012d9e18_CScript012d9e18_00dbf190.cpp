@@ -16,11 +16,7 @@
 
 class CCPPointerInfo;
 
-template <class T> class CCountedPointer { public:     // Data, Info (8 bytes); the inline default constructor nulls both
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) { }
-};
+#include "engine/CCountedPointer.h"
 
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

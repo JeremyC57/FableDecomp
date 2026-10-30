@@ -9,22 +9,7 @@
 //   the count bumped) and destroyed by the callee.
 // Layout: Ego_r.pdb CEntityScriptBase (0x14) {vptr, Game (CGameScriptInterfaceBase*) +4, Me (CScriptThing, 0x0C) +8};
 //   CRansommer (0x1C): ParentClass (CQ_RansomVictimScript*) +0x14, PMasterData (CQ_SunnyvaleMasterData*) +0x18.
-class CCPPointerInfo {
-public:
-    long RefCount;                                      // +0x0
-    void (__fastcall* DeleteFunc)(void* data);          // +0x4
-    void* Data;                                         // +0x8
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;                               // +0x0
-    CCPPointerInfo* Info;                               // +0x4
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

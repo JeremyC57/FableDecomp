@@ -28,11 +28,7 @@ void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
 class CScriptThing;
 class CScriptDataBase;
 class CEntityScriptBase;
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 class __declspec(novtable) CEntityScriptBindingBase {
 public:
     virtual const CCharString& GetEntityScriptName() const = 0;

@@ -137,10 +137,10 @@ struct CMovement {
     C3DVector Velocity;                                 // +0x10C
 };
 class CThingPlayerCreature : public CMovement { };
-class CPlayerManager {
-public:
-    CPlayer* GetMainPlayer() const;                           // 0x00449960
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CWorld { public: static long __fastcall GetFrame(); };                    // 0x0049D870
 extern long g_HeroIdleParticleDelay;                    // 0x013BAD24
 class CTCBase {
@@ -189,8 +189,8 @@ void CTCHeroMorph::UpdateIdleParticles()
         else
             node = node->_M_next;
     }
-    long mode = PeekPlayerManager().GetMainPlayer()->GetCurrentMode();
-    const CMovement* movement = PeekPlayerManager().GetMainPlayer()->PeekPControlledCreature();
+    long mode = PeekPlayerManager().GetMainPlayer().GetCurrentMode();
+    const CMovement* movement = PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
     if (mode == 1 && !(movement->Velocity.X * movement->Velocity.X + movement->Velocity.Y * movement->Velocity.Y
                        + movement->Velocity.Z * movement->Velocity.Z > g_fEpsilon * g_fEpsilon)) {
         if (!FrameHeroBecameIdle) {

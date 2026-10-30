@@ -19,12 +19,7 @@
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CCountedPointer<T>: the Ego_r.pdb members (Data, Info; CCPPointerInfo RefCount +0); the copy is the inline addref retail
 // expands inside the CScriptThing copy below.
-class CCPPointerInfo { public: unsigned long RefCount; };
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing / CEntityScriptBase / CActiveEntityScript<T>: the retail models from the shared headers.
 #define FABLE_RETAIL_NSCRIPT
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS

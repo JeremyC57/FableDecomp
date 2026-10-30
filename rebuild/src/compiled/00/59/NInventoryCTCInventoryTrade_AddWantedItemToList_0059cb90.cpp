@@ -25,8 +25,12 @@ class CWideString { public:
 class CThing;
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };           // 0x00487DC0
-class CPlayerManager { public: const CPlayer& GetMainPlayer() const; };   // 0x00449960
-class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+   // 0x00449960
+class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 namespace NUISystem {
 class CActionParam { public:
@@ -161,7 +165,7 @@ void CTCInventoryTrade::AddWantedItemToList(long defIndex, CList* list, CViewpor
 {
     CManager* fe = CManager::GetInstance();
     CCountedPointer<CComponent> entry;
-    g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     entry.Reset(fe->CreateMenuEntryComponent(L"INVALID NAME", 0.0f, 1.0f, "UI_WEAPON_MENU_ENTRY_TEMPLATE_NEW",
                                              0.0f, "", 0.0f, "PC_BUTTON_BASTARD"));
     CComponent* comp = entry.m_pObject;

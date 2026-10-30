@@ -13,7 +13,8 @@ typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCharStringData;class CCharString{public:CCharString();CCharString(const CCharString&);CCharString(const char*,long=-1);~CCharString();CCharStringData* PStringData;bool FastCompare(const CCharString&)const;};
-class CCPPointerInfo{public:unsigned long RefCount;void(__fastcall *DeleteFunc)(void*);void* Data;CCPPointerInfo(unsigned long refs,void(__fastcall *deleter)(void*),void* data):RefCount(refs),DeleteFunc(deleter),Data(data){}};template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer();CCountedPointer(const CCountedPointer&);~CCountedPointer();CCountedPointer& operator=(const CCountedPointer&);static void __fastcall DeleteData(void*);CCountedPointer(T* data):Data(data){if(Data)Info=new CCPPointerInfo(1,&DeleteData,Data);else Info=0;}};
+#include "engine/CCountedPointer.h"
+
 
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 namespace std{

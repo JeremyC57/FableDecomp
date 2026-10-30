@@ -64,12 +64,14 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                          // 0x00487DC0
 };
-class CPlayerManager { public:
-    const CPlayer& GetMainPlayer() const;                           // 0x00449960
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CMainGameComponent { public:
     unsigned char   _pad00[0x1c];
     CPlayerManager* PlayerManager;                      // +0x1c
+    const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; }   // FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
     long GetFrame();                                    // 0x00416225
 };
 extern CMainGameComponent* g_pMainGameComponent;       // 0x013B86A0
@@ -149,7 +151,7 @@ __declspec(noinline) STCEntry* CTCMap::LowerBound(const unsigned long& kind)
 void CTCBetting::ProcessInput(const CInputEvent& event, CProcessedInput& processed, CInputProcessGameBase* input)
 {
     CTCHeroStats* stats = 0;
-    CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+    CThing* hero = g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (hero->HasTC(4))
         stats = hero->GetTC(4);
     CDefPointer<CBettingDef> def;

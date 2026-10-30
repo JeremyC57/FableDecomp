@@ -1,0 +1,1170 @@
+addr       parity           behav  name
+0051fc20   WARN SHARED_HEADER_AVAILABLE CPlayer
+0051fc20   RELOCATION_MATCH PASS   DeleteThingsWithSectionName
+0051f070   WARN SHARED_HEADER_AVAILABLE CPlayer
+0051f070   RELOCATION_MATCH PASS   UpdateDeaths
+0059da10   WARN SHARED_HEADER_AVAILABLE CPlayer
+0059da10   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059da10   WARN RELOC_NAME: ?GetTradingThing@CTCInventoryTrade@NInventory@@QAEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+0059da10   WARN RELOC_NAME: ?GetCurrentBuyPrice@CTCShop@@QAEJJJ@Z -> 007743b0 labelled 'CTCShop::GetCurrentSellPrice'
+0059da10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0059da10   RELOCATION_MATCH PASS   IsItemAffordable
+0059cb90   WARN SHARED_HEADER_AVAILABLE CPlayer
+0059cb90   WARN SHARED_HEADER_AVAILABLE CCountedPointer
+0059cb90   WARN SHARED_HEADER_AVAILABLE CList
+0059cb90   WARN SHARED_HEADER_AVAILABLE CManager
+0059cb90   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+0059cb90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0059cb90   WARN RELOC_NAME: ?Reset@?$CCountedPointer@VCComponent@NUISystem@@@@QAEXPAVCComponent@NUISystem@@@Z -> 00429c6f labelled '_global::CCountedPointer_SetPItem_00429c6f'
+0059cb90   WARN RELOC_NAME: ?push_back@CActionParamList@NUISystem@@QAEXABQAVCActionParam@2@@Z -> 0042b646 labelled 'CUIState::operator='
+0059cb90   WARN RELOC_NAME: ??1?$CCountedPointer@VCAction@NUISystem@@@@QAE@XZ -> 00429160 labelled '_global::CCountedPointer_Release_00429160'
+0059cb90   WARN RELOC_NAME: ??1?$CCountedPointer@VCComponent@NUISystem@@@@QAE@XZ -> 004291de labelled '_global::CCountedPointer_Release_004291de'
+0059cb90   RELOCATION_MATCH PASS   AddWantedItemToList
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CPlayer
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CManager
+005a8a5d   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+005a8a5d   WARN RELOC_NAME: ?GetDefGlobalIndexFromName@CGameDefinitionManager@@QAEJABVCCharString@@_N@Z -> 009ad390 labelled 'QuadricOptimiserInternals::COptimisedPrimitive::ActualToUniqueIndex'
+005a8a5d   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+005a8a5d   WARN RELOC_NAME: ?GetInventoryInterfaceType@@YIJJ@Z -> 005d99d0 labelled 'CTCInventoryItem::GetInventoryCategory'
+005a8a5d   WARN RELOC_NAME: ?CanAddItem@CTCInventoryBase@@QBE_NJ@Z -> 005bf2ed labelled 'NInventory::CTCInventoryBase::GetItemDescription'
+005a8a5d   RELOCATION_MATCH PASS   ConstructSpecialShopListPC
+005a30a1   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005a30a1   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005a30a1   WARN SHARED_HEADER_AVAILABLE CPlayer
+005a30a1   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+005a30a1   WARN SHARED_HEADER_AVAILABLE CTCInventoryTrade
+005a30a1   WARN RELOC_NAME: ?GetShopThing@CTCInventoryTrade@@QAEPAVCThing@@XZ -> 005bc4c4 labelled '_global::GetMember_dword0xb8_005bc4c4'
+005a30a1   WARN RELOC_NAME: ?GetStockMap@CTCShopkeeper@@QBE?AUCLongMap@@XZ -> 00774610 labelled 'CTCShop_RebuildCacheMap'
+005a30a1   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+005a30a1   WARN RELOC_NAME: ?IsTattooShop@CTCShopkeeper@@QBE_NXZ -> 00772510 labelled 'CTCShop::IsBarberShop'
+005a30a1   WARN RELOC_NAME: ?GetSubDef_005b1e5a@CDefClassBase@@QAE_NPAV?$CDefPointer@VCAbilityDef@@@@@Z -> 005b1e5a labelled 'CDefClassBase::GetSubDef<CHeroTitleDef>'
+005a30a1   WARN RELOC_NAME: ?IsAbilityShop@CTCShopkeeper@@QBE_NXZ -> 00772590 labelled 'CTCShop::IsBarberShop'
+005a30a1   WARN RELOC_NAME: ?_M_increment@@YAPAU_Rb_tree_node_base@@PAU1@@Z -> 004292c0 labelled 'std::_Rb_tree_base::_Rb_tree_increment'
+005a30a1   WARN RELOC_NAME: ??1CLongMap@@QAE@XZ -> 004dd2b1 labelled 'std::list<T_004dd2b1>::~list'
+005a30a1   RELOCATION_MATCH PASS   InitialiseBuyableItems
+005faf50   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+005faf50   WARN SHARED_HEADER_AVAILABLE CManager
+005faf50   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005faf50   WARN SHARED_HEADER_AVAILABLE CPlayer
+005faf50   WARN RELOC_NAME: ?Close@CManager@NHeroInformationScreens@@QAEXXZ -> 0066e73d labelled '_global::SetMemberConst_0066e73d'
+005faf50   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+005faf50   RELOCATION_MATCH PASS   DrawPreparePrimitivesForRendering
+0066fb80   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0066fb80   WARN SHARED_HEADER_AVAILABLE CPlayer
+0066fb80   WARN SHARED_HEADER_AVAILABLE CTCBase
+0066fb80   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0066fb80   RELOCATION_MATCH PASS   UpdateLocalJostling
+00670710   WARN SHARED_HEADER_AVAILABLE CPlayer
+00670710   WARN SHARED_HEADER_AVAILABLE CTCBase
+00670710   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00670710   RELOCATION_MATCH PASS   UpdateScore
+006cf810   WARN SHARED_HEADER_AVAILABLE CPlayer
+006cf810   WARN SHARED_HEADER_AVAILABLE CWorld
+006cf810   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cf810   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006cf810   RELOCATION_MATCH PASS   IsCourtableAndNotBlockingIt
+006cf890   WARN SHARED_HEADER_AVAILABLE CPlayer
+006cf890   WARN SHARED_HEADER_AVAILABLE CWorld
+006cf890   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+006cf890   WARN SHARED_HEADER_AVAILABLE CTCWife
+006cf890   RELOCATION_MATCH PASS   IsCourtingHero
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CWorld
+0071c9f0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0071c9f0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0071c9f0   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator_class_CCharString'
+0071c9f0   RELOCATION_MATCH PASS   UpdateIdleParticles
+007800b0   WARN SHARED_HEADER_AVAILABLE CTCHeroCentre
+007800b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007800b0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007800b0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007800b0   WARN SHARED_HEADER_AVAILABLE CWorld
+007800b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007800b0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007800b0   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+007800b0   WARN RELOC_NAME: ?GetGameSubsystem@CTCBase@@QBEPAUCGameSubsystem@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+007800b0   WARN RELOC_NAME: ??1CThingVector@@QAE@XZ -> 004406d0 labelled 'std::vector<CConversation,std::allocator<CConversation>_>::~vector<CConversation,std::allocator<CConversation>_>'
+007800b0   RELOCATION_MATCH PASS   OpenQuestSelectInterface
+007aefd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007aefd0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007aefd0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007aefd0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007aefd0   RELOCATION_MATCH PASS   CTCBoss
+007aef60   WARN SHARED_HEADER_AVAILABLE CPlayer
+007aef60   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007aef60   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007aef60   WARN SHARED_HEADER_AVAILABLE CTCBase
+007aef60   RELOCATION_MATCH PASS   ClearEffects
+007dab60   WARN SHARED_HEADER_AVAILABLE CPlayer
+007dab60   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007dab60   RELOCATION_MATCH PASS   UpdateValues
+007d6f70   WARN SHARED_HEADER_AVAILABLE CPlayer
+007d6f70   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007d6f70   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+007d6f70   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007d6f70   RELOCATION_MATCH PASS   UpdateValues
+007d5730   WARN SHARED_HEADER_AVAILABLE CPlayer
+007d5730   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007d5730   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007d5730   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+007d5730   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007d5730   RELOCATION_MATCH PASS   UpdateValues
+007d4410   WARN SHARED_HEADER_AVAILABLE CPlayer
+007d4410   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007d4410   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007d4410   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+007d4410   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007d4410   RELOCATION_MATCH PASS   UpdateValues
+007d0850   WARN SHARED_HEADER_AVAILABLE CPlayer
+007d0850   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007d0850   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+007d0850   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007d0850   RELOCATION_MATCH PASS   UpdateValues
+007d8ab0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007d8ab0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007d8ab0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+007d8ab0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007d8ab0   RELOCATION_MATCH PASS   UpdateValues
+007e5230   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+007e5230   WARN SHARED_HEADER_AVAILABLE CInputProcessGameBase
+007e5230   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e5230   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e5230   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+007e5230   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e5230   WARN SHARED_HEADER_AVAILABLE CBettingDef
+007e5230   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007e5230   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007e5230   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007e5230   WARN RELOC_NAME: ?GetFrame@CMainGameComponent@@QAEJXZ -> 00416225 labelled '_global::GetMember_dword0x48_00416225'
+007e5230   WARN RELOC_NAME: ?GetEventType@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+007e5230   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+007e5230   RELOCATION_MATCH PASS   ProcessInput
+008a0cb0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008a0cb0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008a0cb0   WARN RELOC_NAME: ?_M_erase@CStringSet@@QAEXPAU_Rb_tree_node_base@@@Z -> 004cf810 labelled '_unattributed::FreeTree_CTreeOwner_004cf810'
+008a0cb0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+008a0cb0   WARN RELOC_NAME: ?GetBankHandle@CTCText@@QBE?AVCCharString@@XZ -> 004faee0 labelled 'CTCTalk::GetDialogueVoice'
+008a0cb0   RELOCATION_MATCH PASS   DebugGetAllTextEntriesForTargetedThing
+008afc40   WARN SHARED_HEADER_AVAILABLE CWorld
+008afc40   WARN SHARED_HEADER_AVAILABLE CPlayer
+008afc40   RELOCATION_MATCH PASS   SaySpeech
+008af780   WARN SHARED_HEADER_AVAILABLE CWorld
+008af780   WARN SHARED_HEADER_AVAILABLE CPlayer
+008af780   RELOCATION_MATCH PASS   Update
+00d08790   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d08790   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d08790   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d08790   RELOCATION_MATCH PASS   Main
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d032c0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d032c0.obj; graded the largest function
+00d032c0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d032c0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d0ede0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d0ede0.obj; graded the largest function
+00d0ede0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d0ede0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d04770   RELOCATION_MATCH PASS   EndMission
+00d00440   RELOCATION_MATCH PASS   Main
+00d04990   RELOCATION_MATCH PASS   Alloc
+00d05910   RELOCATION_MATCH PASS   Alloc
+00d05fe0   RELOCATION_MATCH PASS   Alloc
+00d048c0   RELOCATION_MATCH PASS   Alloc
+00d066b0   RELOCATION_MATCH PASS   Alloc
+00d0c2c0   RELOCATION_MATCH PASS   Alloc
+00d0c390   RELOCATION_MATCH PASS   Init
+00d0a700   RELOCATION_MATCH PASS   Alloc
+00d0a7b0   RELOCATION_MATCH PASS   OnPredicateFail
+00d08670   RELOCATION_MATCH PASS   Alloc
+00d08720   RELOCATION_MATCH PASS   Init
+00d08a70   RELOCATION_MATCH PASS   Alloc
+00d08e50   RELOCATION_MATCH PASS   Alloc
+00d08f00   RELOCATION_MATCH PASS   Init
+00d08fb0   RELOCATION_MATCH PASS   OnPredicateFail
+00d07d20   RELOCATION_MATCH PASS   Alloc
+00d07dd0   RELOCATION_MATCH PASS   Init
+00d071f0   RELOCATION_MATCH PASS   Alloc
+00d072c0   RELOCATION_MATCH PASS   Init
+00d07340   RELOCATION_MATCH PASS   Alloc
+00d02a70   RELOCATION_MATCH PASS   Alloc
+00d02b20   RELOCATION_MATCH PASS   Init
+00d014c0   RELOCATION_MATCH PASS   Alloc
+00d01590   RELOCATION_MATCH PASS   Init
+00d00af0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d00af0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d00af0   RELOCATION_MATCH PASS   Main
+00d03270   RELOCATION_MATCH PASS   SuspendableProcess_00d03270
+00d0ed60   RELOCATION_MATCH PASS   SuspendableProcess_00d0ed60
+00d1f610   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d1f610   RELOCATION_MATCH PASS   Main
+00d1fa00   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d1fa00   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d1fa00   RELOCATION_MATCH PASS   Main
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d172e0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d172e0.obj; graded the largest function
+00d172e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d17340   RELOCATION_MATCH PASS   WatchForAllGruntsKilled
+00d151d0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d151d0   RELOCATION_MATCH PASS   WatchForEnableFisherCreekHutDoor
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d17310.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d17310.obj; graded the largest function
+00d17310   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d17310   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d129c0   RELOCATION_MATCH PASS   Main
+00d15fc0   RELOCATION_MATCH PASS   Alloc
+00d161a0   RELOCATION_MATCH PASS   Alloc
+00d153f0   RELOCATION_MATCH PASS   Alloc
+00d154a0   RELOCATION_MATCH PASS   Init
+00d15940   RELOCATION_MATCH PASS   Alloc
+00d16380   RELOCATION_MATCH PASS   Alloc
+00d179b0   WARN SHARED_HEADER_AVAILABLE CTimer
+00d179b0   RELOCATION_MATCH PASS   sub_00d179b0
+00d160b0   RELOCATION_MATCH PASS   Alloc
+00d16290   RELOCATION_MATCH PASS   Alloc
+00d1cac0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d1cac0   RELOCATION_MATCH PASS   WatchForAllLeaderChargeGruntsKilled
+00d18b20   WARN RELOC_NAME: ?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ -> 008ac970 labelled 'std::vector<CScriptThing>::~vector'
+00d18b20   RELOCATION_MATCH PASS   WatchForDeputy1GruntsKilled
+00d16570   RELOCATION_MATCH PASS   WatchForDeputy1Killed
+00d19af0   WARN RELOC_NAME: ?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ -> 008ac970 labelled 'std::vector<CScriptThing>::~vector'
+00d19af0   RELOCATION_MATCH PASS   WatchForDeputy2GruntsKilled
+00d16920   RELOCATION_MATCH PASS   sub_00d16920
+00d16d00   RELOCATION_MATCH PASS   sub_00d16d00
+00d1c9e0   WARN RELOC_NAME: ?Destroy@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXXZ -> 008ac970 labelled 'std::vector<CScriptThing>::~vector'
+00d1c9e0   RELOCATION_MATCH PASS   WatchForLeaderGruntsKilled
+00d1f510   RELOCATION_MATCH PASS   Alloc
+00d1f5c0   MATCH            PASS   Init
+00d1f910   RELOCATION_MATCH PASS   Alloc
+00d1dcc0   RELOCATION_MATCH PASS   Alloc
+00d1fc30   RELOCATION_MATCH PASS   Alloc
+00d1fce0   RELOCATION_MATCH PASS   Init
+00d1e230   RELOCATION_MATCH PASS   Alloc
+00d1ea10   RELOCATION_MATCH PASS   Alloc
+00d1e090   RELOCATION_MATCH PASS   Alloc
+00d1e1b0   RELOCATION_MATCH PASS   Init
+00d1e140   RELOCATION_MATCH PASS   OnPredicateFail
+00d1dde0   RELOCATION_MATCH PASS   Alloc
+00d1dea0   RELOCATION_MATCH PASS   OnPredicateFail
+00d1df20   RELOCATION_MATCH PASS   Alloc
+00d1cfc0   WARN SHARED_HEADER_AVAILABLE CTimer
+00d1cfc0   RELOCATION_MATCH PASS   sub_00d1cfc0
+00d1d7d0   WARN RELOC_NAME: ??4CWideString@@QAEABV0@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+00d1d7d0   RELOCATION_MATCH PASS   WatchForTermination
+00d17290   RELOCATION_MATCH PASS   SuspendableProcess_00d17290
+00d25a00   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d25a00   RELOCATION_MATCH PASS   Main
+00d2fb20   RELOCATION_MATCH PASS   Main
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d2d6d0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d2d6d0.obj; graded the largest function
+00d2d6d0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d22880   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d22880   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d22880   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d22880   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d22880   WARN RELOC_NAME: ??4CHandlePImp@@QAEAAU0@ABU0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00d22880   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d22880   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00d22880   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d22880   RELOCATION_MATCH PASS   Main
+00d29db0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d29db0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d29db0   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d29db0   WARN RELOC_NAME: ??4CHandlePImp@@QAEAAU0@ABU0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00d29db0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d29db0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00d29db0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d29db0   RELOCATION_MATCH PASS   Main
+00d2a180   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d2a180   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d2a180   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d2a180   WARN RELOC_NAME: ??4CHandlePImp@@QAEAAU0@ABU0@@Z -> 008ab1e0 labelled '_global::CCountedPointer_Set_008ab1e0'
+00d2a180   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d2a180   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00d2a180   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d2a180   RELOCATION_MATCH PASS   Main
+00d2d830   RELOCATION_MATCH PASS   Main
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d20760.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d20760.obj; graded the largest function
+00d20760   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d20760   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d24630.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d24630.obj; graded the largest function
+00d24630   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d24630   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d26160.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d26160.obj; graded the largest function
+00d26160   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d26160   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d29800.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d29800.obj; graded the largest function
+00d29800   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d29800   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d2d700.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d2d700.obj; graded the largest function
+00d2d700   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d2d700   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d27c00   RELOCATION_MATCH PASS   EndMission
+00d2f6b0   RELOCATION_MATCH PASS   CVtable_012cc60c
+00d24330   RELOCATION_MATCH PASS   Alloc
+00d243e0   RELOCATION_MATCH PASS   Init
+00d24210   RELOCATION_MATCH PASS   Alloc
+00d242c0   MATCH            PASS   Init
+00d226e0   RELOCATION_MATCH PASS   SendBodyguardsToTheRightPlace
+00d20790   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d20790   RELOCATION_MATCH PASS   WatchForWinLoseConditions
+00d25c60   RELOCATION_MATCH PASS   Alloc
+00d25e30   RELOCATION_MATCH PASS   Alloc
+00d257d0   RELOCATION_MATCH PASS   Alloc
+00d255e0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d255e0   RELOCATION_MATCH PASS   Main
+00d26cc0   RELOCATION_MATCH PASS   SpawnMinions
+00d26e60   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d26e60   RELOCATION_MATCH PASS   SpawnSummoners
+00d2fa40   RELOCATION_MATCH PASS   Alloc
+00d2fc00   RELOCATION_MATCH PASS   Alloc
+00d2fce0   RELOCATION_MATCH PASS   Alloc
+00d2fdc0   RELOCATION_MATCH PASS   Alloc
+00d2f710   MATCH            PASS   sub_00d2f710
+00d2f7f0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d2f7f0   WARN RELOC_NAME: ?JackOfBladesBossBattle@CQ_EndGameBossBattleScript@NScript@@QAEXXZ -> 00d30030 labelled 'CScriptGameResourceObject_LoadGuildComplex'
+00d2f7f0   RELOCATION_MATCH PASS   Main
+00d2c430   RELOCATION_MATCH PASS   Alloc
+00d2c340   RELOCATION_MATCH PASS   Alloc
+00d2c140   RELOCATION_MATCH PASS   Alloc
+00d2c260   RELOCATION_MATCH PASS   Alloc
+00d2cf80   RELOCATION_MATCH PASS   Alloc
+00d2c650   RELOCATION_MATCH PASS   Alloc
+00d2c730   RELOCATION_MATCH PASS   Alloc
+00d2a8a0   RELOCATION_MATCH PASS   Init
+00d29230   RELOCATION_MATCH PASS   Alloc
+00d293f0   RELOCATION_MATCH PASS   Main
+00d29320   RELOCATION_MATCH PASS   OnPredicateFail
+00d28f70   RELOCATION_MATCH PASS   Alloc
+00d29020   RELOCATION_MATCH PASS   Init
+00d29460   RELOCATION_MATCH PASS   Alloc
+00d290a0   RELOCATION_MATCH PASS   Alloc
+00d29160   RELOCATION_MATCH PASS   Main
+00d29570   RELOCATION_MATCH PASS   Alloc
+00d29620   RELOCATION_MATCH PASS   Init
+00d20710   RELOCATION_MATCH PASS   SuspendableProcess_00d20710
+00d245c0   RELOCATION_MATCH PASS   SuspendableProcess_00d245c0
+00d26110   RELOCATION_MATCH PASS   SuspendableProcess_00d26110
+00d29790   RELOCATION_MATCH PASS   SuspendableProcess_00d29790
+00d2d680   RELOCATION_MATCH PASS   SuspendableProcess_00d2d680
+00d2ffb0   RELOCATION_MATCH PASS   SuspendableProcess_00d2ffb0
+00d3af50   RELOCATION_MATCH PASS   Main
+00d3a9b0   RELOCATION_MATCH PASS   MakeRoundStartComment
+00d3b410   RELOCATION_MATCH PASS   DeclareGossipCategories
+00d38f70   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d38f70   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d38f70   RELOCATION_MATCH PASS   Main
+00d38000   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d38000   RELOCATION_MATCH PASS   TurnIntoASunSign
+00d387a0   WARN RELOC_NAME: ??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z -> 00704580 labelled '_global::CCountedPointer_Set_00704580'
+00d387a0   RELOCATION_MATCH PASS   TurnIntoAMoonSign
+00d3cbd0   RELOCATION_MATCH PASS   KeepTabsOnWhisper
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d30000.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d30000.obj; graded the largest function
+00d30000   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d30000   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d34440.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d34440.obj; graded the largest function
+00d34440   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor_007e74d0@@YIXPAX@Z -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00d34440   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00cbd510@@YIXPAX@Z -> 00cbd510 labelled 'CRecordSet_00cbd510::~CRecordSet_00cbd510'
+00d34440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d38cf0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d38cf0.obj; graded the largest function
+00d38cf0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d38cf0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d34410   WARN RELOC_NAME: ??0CQ_EndGameBossBattleScript@NScript@@QAE@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z -> 00d2f6b0 labelled 'CVtable_012cc60c::CVtable_012cc60c'
+00d34410   RELOCATION_MATCH PASS   sub_00d34410
+00d362b0   RELOCATION_MATCH PASS   Alloc
+00d37240   RELOCATION_MATCH PASS   Alloc
+00d372f0   MATCH            PASS   Init
+00d36790   RELOCATION_MATCH PASS   Alloc
+00d37c30   RELOCATION_MATCH PASS   Alloc
+00d36540   RELOCATION_MATCH PASS   Alloc
+00d37140   RELOCATION_MATCH PASS   Alloc
+00d373d0   RELOCATION_MATCH PASS   Alloc
+00d36680   RELOCATION_MATCH PASS   Alloc
+00d36730   RELOCATION_MATCH PASS   Init
+00d363a0   RELOCATION_MATCH PASS   Alloc
+00d37d00   RELOCATION_MATCH PASS   Main
+00d36470   RELOCATION_MATCH PASS   Alloc
+00d384a0   RELOCATION_MATCH PASS   Main
+00d3d060   RELOCATION_MATCH PASS   Alloc
+00d3e1f0   RELOCATION_MATCH PASS   Alloc
+00d3c8f0   RELOCATION_MATCH PASS   KeepBookcaseExitRemoved
+00d34ac0   RELOCATION_MATCH PASS   resize
+00d38ca0   RELOCATION_MATCH PASS   SuspendableProcess_00d38ca0
+00d446d0   RELOCATION_MATCH PASS   Main
+00d49a20   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d49a20   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d49a20   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d49a20   RELOCATION_MATCH PASS   RunSaveXPCutscene2
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d44620.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d44620.obj; graded the largest function
+00d44620   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d44620   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d42f40   RELOCATION_MATCH PASS   Alloc
+00d42ff0   MATCH            PASS   sub_00d42ff0
+00d41a30   RELOCATION_MATCH PASS   Alloc
+00d40b30   RELOCATION_MATCH PASS   Alloc
+00d43040   RELOCATION_MATCH PASS   Alloc
+00d43120   RELOCATION_MATCH PASS   OnPredicateFail
+00d40c10   RELOCATION_MATCH PASS   Alloc
+00d40cc0   MATCH            PASS   Init
+00d43cd0   RELOCATION_MATCH PASS   Alloc
+00d409e0   RELOCATION_MATCH PASS   Alloc
+00d41b10   RELOCATION_MATCH PASS   Alloc
+00d41bf0   RELOCATION_MATCH PASS   Alloc
+00d41ca0   RELOCATION_MATCH PASS   sub_00d41ca0
+00d43280   RELOCATION_MATCH PASS   Alloc
+00d43360   RELOCATION_MATCH PASS   Alloc
+00d44cb0   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d44cb0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d44cb0   RELOCATION_MATCH PASS   RunArrivalCutscene
+00d496f0   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d496f0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d496f0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d496f0   RELOCATION_MATCH PASS   RunSaveXPCutscene
+00d445d0   RELOCATION_MATCH PASS   SuspendableProcess_00d445d0
+00d51fc0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingPreMeleeScript
+00d51fc0   RELOCATION_MATCH PASS   Main
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d50c30.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d50c30.obj; graded the largest function
+00d50c30   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d50c30   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d52470.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d52470.obj; graded the largest function
+00d52470   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d52470   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d58460.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d58460.obj; graded the largest function
+00d58460   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d58460   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d5ae40.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d5ae40.obj; graded the largest function
+00d5ae40   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d5ae40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d5e040.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d5e040.obj; graded the largest function
+00d5e040   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d5e040   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d509d0   RELOCATION_MATCH PASS   Alloc
+00d50c60   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00d50c60   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00d50c60   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d50c60   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d50c60   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d50c60   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d50c60   WARN RELOC_NAME: ??1CResourcePImp@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d50c60   RELOCATION_MATCH PASS   Main
+00d506b0   RELOCATION_MATCH PASS   Init
+00d566a0   RELOCATION_MATCH PASS   Alloc
+00d56750   MATCH            PASS   Init
+00d57fa0   RELOCATION_MATCH PASS   Alloc
+00d565c0   RELOCATION_MATCH PASS   Alloc
+00d51f00   RELOCATION_MATCH PASS   Alloc
+00d52230   RELOCATION_MATCH PASS   Alloc
+00d51e20   RELOCATION_MATCH PASS   Alloc
+00d5abe0   RELOCATION_MATCH PASS   Alloc
+00d5aa80   MATCH            PASS   Init
+00d5ab40   WARN SHARED_HEADER_AVAILABLE CTimer
+00d5ab40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBindingBase
+00d5ab40   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d5ab40   RELOCATION_MATCH PASS   sub_00d5ab40
+00d5dde0   RELOCATION_MATCH PASS   Alloc
+00d5dc80   MATCH            PASS   Init
+00d5dd40   WARN SHARED_HEADER_AVAILABLE CTimer
+00d5dd40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBindingBase
+00d5dd40   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d5dd40   RELOCATION_MATCH PASS   sub_00d5dd40
+00d50bc0   RELOCATION_MATCH PASS   SuspendableProcess_00d50bc0
+00d52420   RELOCATION_MATCH PASS   SuspendableProcess_00d52420
+00d58410   RELOCATION_MATCH PASS   SuspendableProcess_00d58410
+00d5add0   RELOCATION_MATCH PASS   SuspendableProcess_00d5add0
+00d5dfd0   RELOCATION_MATCH PASS   SuspendableProcess_00d5dfd0
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d6b560.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d6b560.obj; graded the largest function
+00d6b560   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00d6b560   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d6a0d0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d6a0d0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d6a0d0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d6a0d0   RELOCATION_MATCH PASS   Main
+00d69f50   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d69f50   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d69f50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d69f50   RELOCATION_MATCH PASS   Main
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d64370.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d64370.obj; graded the largest function
+00d64370   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d64370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d67240.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d67240.obj; graded the largest function
+00d67240   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d67240   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d68e70.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d68e70.obj; graded the largest function
+00d68e70   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d68e70   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d6b6f0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d6b6f0.obj; graded the largest function
+00d6b6f0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d6b6f0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d68810   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d68810   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d68810   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d68810   RELOCATION_MATCH PASS   Main
+00d62360   RELOCATION_MATCH PASS   Alloc
+00d62270   RELOCATION_MATCH PASS   Alloc
+00d63cc0   RELOCATION_MATCH PASS   Alloc
+00d63d80   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00d63d80   RELOCATION_MATCH PASS   sub_00d63d80
+00d61d20   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d61d20   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d61d20   RELOCATION_MATCH PASS   Main
+00d64080   RELOCATION_MATCH PASS   Quest_GuildWoods_Teleport_Exit_First
+00d64000   RELOCATION_MATCH PASS   WatchForLeaving
+00d66ba0   RELOCATION_MATCH PASS   Alloc
+00d66c60   WARN SHARED_HEADER_AVAILABLE CIVCountedPointeeBase
+00d66c60   RELOCATION_MATCH PASS   sub_00d66c60
+00d66620   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d66620   RELOCATION_MATCH PASS   Main
+00d66f50   RELOCATION_MATCH PASS   Quest_GuildWoods_Teleport_Exit_Additional
+00d68720   RELOCATION_MATCH PASS   Alloc
+00d68c50   RELOCATION_MATCH PASS   WatchForLeaving
+00d6a150   RELOCATION_MATCH PASS   Alloc
+00d6a220   RELOCATION_MATCH PASS   Main
+00d6a290   RELOCATION_MATCH PASS   Alloc
+00d6a360   RELOCATION_MATCH PASS   Main
+00d69d50   RELOCATION_MATCH PASS   Alloc
+00d6ad70   RELOCATION_MATCH PASS   Alloc
+00d6ae30   RELOCATION_MATCH PASS   OnPredicateFail
+00d6b180   WARN RELOC_NAME: ??0CScriptThing@@QAE@XZ -> 006e7b40 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00d6b180   RELOCATION_MATCH PASS   Alloc
+00d69fd0   RELOCATION_MATCH PASS   Alloc
+00d6a080   RELOCATION_MATCH PASS   OnPredicateFail
+00d6a3d0   RELOCATION_MATCH PASS   Alloc
+00d6a480   RELOCATION_MATCH PASS   Init
+00d6a4f0   RELOCATION_MATCH PASS   OnPredicateFail
+00d69e30   RELOCATION_MATCH PASS   Alloc
+00d69ee0   RELOCATION_MATCH PASS   OnPredicateFail
+00d68f00   RELOCATION_MATCH PASS   CQ_HangingTreeEvilScript
+00d6b720   RELOCATION_MATCH PASS   CleanUp
+00d6bfa0   WARN RELOC_NAME: ?Introduction@CQ_HangingTreeEvilScript@NScript@@QAEXXZ -> 00d6d080 labelled 'CQ_HangingTreeEvil_Init'
+00d6bfa0   WARN RELOC_NAME: ?Conclusion@CQ_HangingTreeEvilScript@NScript@@QAEXXZ -> 00d6d670 labelled 'CQ_HangingTreeEvil_Execute'
+00d6bfa0   RELOCATION_MATCH PASS   DoMission
+00d6ccc0   RELOCATION_MATCH PASS   MonitorBanditRegion
+00d6be20   RELOCATION_MATCH PASS   MonitorEnemies
+00d6cdc0   WARN RELOC_NAME: ?_M_insert_overflow@CCharStringVector@@QAEXPAVCCharString@@ABV2@ABU__false_type@@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00d6cdc0   RELOCATION_MATCH PASS   MonitorRegionPresence
+00d6c4a0   RELOCATION_MATCH PASS   SpawnParty
+00d6ca90   RELOCATION_MATCH PASS   WatchForHeroNearExit
+00d6fe50   RELOCATION_MATCH PASS   Alloc
+00d6ff30   RELOCATION_MATCH PASS   Alloc
+00d6fd70   RELOCATION_MATCH PASS   Alloc
+00d6fd00   RELOCATION_MATCH PASS   RemoveDregs
+00d64320   RELOCATION_MATCH PASS   SuspendableProcess_00d64320
+00d671f0   RELOCATION_MATCH PASS   SuspendableProcess_00d671f0
+00d68e20   RELOCATION_MATCH PASS   SuspendableProcess_00d68e20
+00d6b6a0   RELOCATION_MATCH PASS   SuspendableProcess_00d6b6a0
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d728a0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d728a0.obj; graded the largest function
+00d728a0   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00d728a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d729b0.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d729b0.obj; graded the largest function
+00d729b0   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00d729b0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d73ae0   RELOCATION_MATCH PASS   Main
+00d73610   RELOCATION_MATCH PASS   Main
+00d73f40   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d73f40   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00d73f40   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d73f40   RELOCATION_MATCH PASS   Main
+00d71b30   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d71b30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d71b30   RELOCATION_MATCH PASS   Main
+00d7f110   RELOCATION_MATCH PASS   Main
+00d773e0   WARN RELOC_NAME: ??$_M_insert_overflow@U__false_type@@@CCharStringVector@@QAEXPAVCCharString@@ABV1@ABU__false_type@@I_N@Z -> 00433530 labelled 'std::vector::std::vector::Reallocate'
+00d773e0   RELOCATION_MATCH PASS   MonitorRegionPresence
+00d7ecb0   RELOCATION_MATCH PASS   Main
+00d7eed0   RELOCATION_MATCH PASS   Main
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d72b40.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d72b40.obj; graded the largest function
+00d72b40   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d72b40   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7aa00.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7aa00.obj; graded the largest function
+00d7aa00   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d7aa00   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7c440.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7c440.obj; graded the largest function
+00d7c440   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d7c440   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7fc10.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d7fc10.obj; graded the largest function
+00d7fc10   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d7fc10   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d70010   RELOCATION_MATCH PASS   Alloc
+00d724d0   WARN RELOC_NAME: ??0CScriptThing@@QAE@XZ -> 006e7b40 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00d724d0   RELOCATION_MATCH PASS   Alloc
+00d73220   RELOCATION_MATCH PASS   CACompressor
+00d73280   MATCH            PASS   Init
+00d700e0   RELOCATION_MATCH PASS   Alloc
+00d70520   RELOCATION_MATCH PASS   Alloc
+00d705d0   RELOCATION_MATCH PASS   Init
+00d70650   RELOCATION_MATCH PASS   OnPredicateFail
+00d71980   WARN RELOC_NAME: ??0CScriptThing@@QAE@XZ -> 006e7b40 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00d71980   RELOCATION_MATCH PASS   Alloc
+00d71a30   RELOCATION_MATCH PASS   Init
+00d71a70   RELOCATION_MATCH PASS   OnPredicateFail
+00d72b70   RELOCATION_MATCH PASS   CleanUp
+00d74f80   RELOCATION_MATCH PASS   ReassignLeader
+00d732f0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d732f0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d732f0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00d732f0   RELOCATION_MATCH PASS   RemoveParty
+00d766c0   RELOCATION_MATCH PASS   SetGuardsHealth
+00d736b0   RELOCATION_MATCH PASS   SpawnEnemies
+00d74e80   RELOCATION_MATCH PASS   UpdateWayPoint
+00d76490   RELOCATION_MATCH PASS   WatchForHeroNearExit
+00d7de80   RELOCATION_MATCH PASS   Alloc
+00d7f1a0   RELOCATION_MATCH PASS   Alloc
+00d7f380   RELOCATION_MATCH PASS   Alloc
+00d7dff0   RELOCATION_MATCH PASS   Alloc
+00d7f7b0   RELOCATION_MATCH PASS   Alloc
+00d7f020   RELOCATION_MATCH PASS   Alloc
+00d7dba0   RELOCATION_MATCH PASS   Alloc
+00d7dc50   MATCH            PASS   Main
+00d7ebe0   RELOCATION_MATCH PASS   Alloc
+00d7ee00   RELOCATION_MATCH PASS   Alloc
+00d7dc90   RELOCATION_MATCH PASS   Alloc
+00d7dd80   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d7dd80   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00d7dd80   WARN RELOC_NAME: ?RegisterFilter@CSummonerToKill@CQ_HeroSoulsArenaScript@NScript@@QAEXAAVCIsThingAlive@3@@Z -> 00f35b10 labelled 'CEntityScriptBase::SetPredicate'
+00d7dd80   WARN RELOC_NAME: ?IsDone@CSummonerToKill@CQ_HeroSoulsArenaScript@NScript@@QAE_NXZ -> 00f35b30 labelled 'CEntityScriptBase::IsActiveThreadTerminating'
+00d7dd80   RELOCATION_MATCH PASS   Main
+00d7a290   RELOCATION_MATCH PASS   Alloc
+00d79c80   RELOCATION_MATCH PASS   Alloc
+00d79b90   RELOCATION_MATCH PASS   Alloc
+00d79c40   MATCH            PASS   Main
+00d78500   MATCH            PASS   sub_00d78500
+00d7b400   RELOCATION_MATCH PASS   Alloc
+00d7ae80   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d7ae80   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d7ae80   RELOCATION_MATCH PASS   Main
+00d72af0   RELOCATION_MATCH PASS   SuspendableProcess_00d72af0
+00d7a9b0   RELOCATION_MATCH PASS   SuspendableProcess_00d7a9b0
+00d7c3f0   RELOCATION_MATCH PASS   SuspendableProcess_00d7c3f0
+00d7fbc0   RELOCATION_MATCH PASS   SuspendableProcess_00d7fbc0
+00d81820   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d81820   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d81820   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d81820   RELOCATION_MATCH PASS   Main
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d84470.obj; graded the largest function
+  WARN leaf "`scalar_deleting_destructor'" matches no symbol in 00d84470.obj; graded the largest function
+00d84470   WARN RELOC_NAME: ?AutoTinyCompositeDestructor_00f35b40@@YIXPAX@Z -> 00f35b40 labelled '_global::CCountedPointer_Dtor_00f35b40'
+00d84470   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d874f0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d874f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d874f0   WARN RELOC_NAME: ??0CScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00d874f0   WARN RELOC_NAME: ??1CScriptThingCopy@@UAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00d874f0   RELOCATION_MATCH PASS   Main
+00d81c50   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d81c50   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d81c50   RELOCATION_MATCH PASS   Main
+00d86150   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d86150   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d86150   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d86150   RELOCATION_MATCH PASS   Main
+00d8e990   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d8e990   RELOCATION_MATCH PASS   WatchForTermination
+00d891f0   RELOCATION_MATCH PASS   Main
+00d86c30   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d86c30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d86c30   RELOCATION_MATCH PASS   Main
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d82370.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d82370.obj; graded the largest function
+00d82370   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d82370   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d84600.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d84600.obj; graded the largest function
+00d84600   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d84600   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d872a0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d872a0.obj; graded the largest function
+00d872a0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d872a0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d896e0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d896e0.obj; graded the largest function
+00d896e0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d896e0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d8aae0.obj; graded the largest function
+  WARN leaf "`vector_deleting_destructor'" matches no symbol in 00d8aae0.obj; graded the largest function
+00d8aae0   WARN RELOC_NAME: ?AutoTinySecondMemberDestructor@@YIXPAX@Z -> 00ce1000 labelled '_global::CCountedPointer_Release_00ce1000'
+00d8aae0   RELOCATION_MATCH PASS   `scalar deleting destructor'
+00d88f90   RELOCATION_MATCH PASS   Main
+00d86680   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d86680   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d86680   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d86680   RELOCATION_MATCH PASS   Main
+00d81750   RELOCATION_MATCH PASS   Alloc
+00d81630   RELOCATION_MATCH PASS   Alloc
+00d81b60   RELOCATION_MATCH PASS   Alloc
+00d83300   RELOCATION_MATCH PASS   sub_00d83300
+00d80c30   RELOCATION_MATCH PASS   CQ_HeroSoulsBriarScript
+00d80e40   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d80e40   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d80e40   RELOCATION_MATCH PASS   Main
+00d823a0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d823a0   RELOCATION_MATCH PASS   PlayCutscene
+00d86390   RELOCATION_MATCH PASS   Alloc
+00d85fa0   RELOCATION_MATCH PASS   Alloc
+00d85a30   RELOCATION_MATCH PASS   Alloc
+00d86980   RELOCATION_MATCH PASS   Alloc
+00d86a30   RELOCATION_MATCH PASS   Main
+00d86080   RELOCATION_MATCH PASS   Alloc
+00d86b60   RELOCATION_MATCH PASS   Alloc
+00d86560   RELOCATION_MATCH PASS   Alloc
+00d83e60   WARN RELOC_NAME: ??0CScriptThing@@QAE@XZ -> 006e7b40 labelled 'CCarriedReadableDef::CCarriedReadableDef'
+00d83e60   RELOCATION_MATCH PASS   Alloc
+00d83f10   MATCH            PASS   Init
+00d83cf0   RELOCATION_MATCH PASS   Alloc
+00d84630   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00d84630   RELOCATION_MATCH PASS   CreateScreamers
+00d835d0   WARN SHARED_HEADER_AVAILABLE CScriptThing
+00d835d0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d835d0   RELOCATION_MATCH PASS   Main
+00d885e0   RELOCATION_MATCH PASS   Alloc
+00d892a0   RELOCATION_MATCH PASS   Alloc
+00d89380   RELOCATION_MATCH PASS   Main
+00d890a0   RELOCATION_MATCH PASS   Alloc
+00d88420   RELOCATION_MATCH PASS   Alloc
+00d88ec0   RELOCATION_MATCH PASS   Alloc
+00d87cb0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d87cb0   WARN RELOC_NAME: ?DealWithCreatureGeneration@CQ_HeroSoulsNostroScript@NScript@@QAEXXZ -> 00d89710 labelled 'Script_Undead_Generator'
+00d87cb0   RELOCATION_MATCH PASS   Main
+00d88260   RELOCATION_MATCH PASS   WatchForNostroHit
+00d8a7f0   RELOCATION_MATCH PASS   Alloc
+00d8a8a0   RELOCATION_MATCH PASS   Main
+00d8a650   RELOCATION_MATCH PASS   Alloc
+00d8a700   RELOCATION_MATCH PASS   Init
+00d8a770   RELOCATION_MATCH PASS   OnPredicateFail
+00d8a4b0   RELOCATION_MATCH PASS   Alloc
+00d8a560   RELOCATION_MATCH PASS   Init
+00d8fc70   RELOCATION_MATCH PASS   Alloc
+00d8fd90   RELOCATION_MATCH PASS   Init
+00d8fd20   WARN SHARED_HEADER_AVAILABLE CTimer
+00d8fd20   RELOCATION_MATCH PASS   sub_00d8fd20
+00d8f5e0   RELOCATION_MATCH PASS   Alloc
+00d8f950   RELOCATION_MATCH PASS   Alloc
+00d8fa30   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d8fa30   RELOCATION_MATCH PASS   Main
+00d8f4f0   RELOCATION_MATCH PASS   Alloc
+00d8f310   RELOCATION_MATCH PASS   Alloc
+00d8f3f0   RELOCATION_MATCH PASS   Alloc
+
+WINS: 397
+  0051fc20 RELOCATION_MATCH CThingManager::DeleteThingsWithSectionName
+  0051f070 RELOCATION_MATCH CThingManager::UpdateDeaths
+  0059da10 RELOCATION_MATCH CTCInventoryTrade::IsItemAffordable
+  0059cb90 RELOCATION_MATCH NInventory::CTCInventoryTrade::AddWantedItemToList@CTCInventoryTrade
+  005a8a5d RELOCATION_MATCH CTCInventoryTrade::ConstructSpecialShopListPC
+  005a30a1 RELOCATION_MATCH CTCInventoryTrade::InitialiseBuyableItems@CTCInventoryTrade
+  005faf50 RELOCATION_MATCH CTCInventoryMap::DrawPreparePrimitivesForRendering
+  0066fb80 RELOCATION_MATCH CTCCoopSpirit::UpdateLocalJostling
+  00670710 RELOCATION_MATCH CTCCoopSpirit::UpdateScore
+  006cf810 RELOCATION_MATCH CTCWife::IsCourtableAndNotBlockingIt
+  006cf890 RELOCATION_MATCH CTCWife::IsCourtingHero
+  0071c9f0 RELOCATION_MATCH CTCHeroMorph::UpdateIdleParticles
+  007800b0 RELOCATION_MATCH CTCHeroGuide::OpenQuestSelectInterface
+  007aefd0 RELOCATION_MATCH CTCBoss::??0CTCBoss
+  007aef60 RELOCATION_MATCH CTCBoss::ClearEffects
+  007dab60 RELOCATION_MATCH CTCTavernGameCardBlackjack::UpdateValues
+  007d6f70 RELOCATION_MATCH CTCTavernGameCardPairs::?UpdateValues@CTCTavernGameCardPairs
+  007d5730 RELOCATION_MATCH CTCTavernGameCardSorting::?UpdateValues@CTCTavernGameCardSorting
+  007d4410 RELOCATION_MATCH CTCTavernGameCoinGolf::?UpdateValues@CTCTavernGameCoinGolf
+  007d0850 RELOCATION_MATCH CTCTavernGameShoveHaPenny::?UpdateValues@CTCTavernGameShoveHaPenny
+  007d8ab0 RELOCATION_MATCH CTCTavernGameSpotTheAddition::?UpdateValues@CTCTavernGameSpotTheAddition
+  007e5230 RELOCATION_MATCH CTCBetting::ProcessInput
+  008a0cb0 RELOCATION_MATCH CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing
+  008afc40 RELOCATION_MATCH CombatDialogueManager::SaySpeech
+  008af780 RELOCATION_MATCH CombatDialogueManager::Update
+  00d08790 RELOCATION_MATCH CCampHostage2::Main
+  00d032c0 RELOCATION_MATCH CVtable_012c88ac::`vector_deleting_destructor'
+  00d0ede0 RELOCATION_MATCH CVtable_012c9a70::`vector_deleting_destructor'
+  00d04770 RELOCATION_MATCH CV_ChapelOfEvilScript::EndMission
+  00d00440 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::CLostBayCutsceneTrigger::?Main@CLostBayCutsceneTrigger@CQ_AwakeningTheOracleScript@NScript@@EAEXXZ
+  00d04990 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin1::?Alloc@CAssassin1@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d05910 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin2::?Alloc@CAssassin2@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d05fe0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassin3::?Alloc@CAssassin3@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d048c0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CAssassinMarker::?Alloc@CAssassinMarker@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d066b0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBCGameMaster::?Alloc@CBCGameMaster@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d0c2c0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditForger::?Alloc@CBanditForger@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d0c390 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditForger::?Init@CBanditForger@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d0a700 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditKing::?Alloc@CBanditKing@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d0a7b0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CBanditKing::?OnPredicateFail@CBanditKing@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d08670 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage2::?Alloc@CCampHostage2@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d08720 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage2::?Init@CCampHostage2@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d08a70 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageDoor::?Alloc@CCampHostageDoor@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d08e50 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::?Alloc@CCampHostageGuard@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d08f00 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::?Init@CCampHostageGuard@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d08fb0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostageGuard::?OnPredicateFail@CCampHostageGuard@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d07d20 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage::?Alloc@CCampHostage@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d07dd0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CCampHostage::?Init@CCampHostage@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d071f0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::?Alloc@CGate2Guard1@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d072c0 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CGate2Guard1::?Init@CGate2Guard1@CQ_BanditCampBossBattleScript@NScript@@EAEXXZ
+  00d07340 RELOCATION_MATCH NScript::CQ_BanditCampBossBattleScript::CGate3Guard::?Alloc@CGate3Guard@CQ_BanditCampBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d02a70 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardInner::?Alloc@CGate1GuardInner@CQ_BanditCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d02b20 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardInner::?Init@CGate1GuardInner@CQ_BanditCampScript@NScript@@EAEXXZ
+  00d014c0 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardOuter::?Alloc@CGate1GuardOuter@CQ_BanditCampScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d01590 RELOCATION_MATCH NScript::CQ_BanditCampScript::CGate1GuardOuter::?Init@CGate1GuardOuter@CQ_BanditCampScript@NScript@@EAEXXZ
+  00d00af0 RELOCATION_MATCH NScript::CQ_BanditCampScript::Main
+  00d03270 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_BanditCampScript@NScript@@@@UAEXXZ
+  00d0ed60 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_BanditCampBossBattleScript@NScript@@@@UAEXXZ
+  00d1f610 RELOCATION_MATCH CBanditAttacker::?Main@CBanditAttacker@@
+  00d1fa00 RELOCATION_MATCH CBanditFirstWave::?Main@CBanditFirstWave@@
+  00d172e0 RELOCATION_MATCH CVtable_012ca5e0::`scalar_deleting_destructor'
+  00d17340 RELOCATION_MATCH CQ_BountyHuntScript::WatchForAllGruntsKilled
+  00d151d0 RELOCATION_MATCH CQ_BountyHuntScript::WatchForEnableFisherCreekHutDoor
+  00d17310 RELOCATION_MATCH CVtable_012ca6ac::`vector_deleting_destructor'
+  00d129c0 RELOCATION_MATCH NScript::CQ_BanditCampHoldingScriptScript::Main
+  00d15fc0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangDeputy1::?Alloc@CBH_GangDeputy1@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d161a0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangDeputy2::?Alloc@CBH_GangDeputy2@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d153f0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::?Alloc@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d154a0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangGruntSpawn::?Init@CBH_GangGruntSpawn@CQ_BountyHuntScript@NScript@@EAEXXZ
+  00d15940 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangGrunt::?Alloc@CBH_GangGrunt@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d16380 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangLeader::?Alloc@CBH_GangLeader@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d179b0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_GangLeader::?OnPersist@CBH_GangLeader@CQ_BountyHuntScript@NScript@@EAEXAAVCPersistContext@@@Z
+  00d160b0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_Hostage1::?Alloc@CBH_Hostage1@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d16290 RELOCATION_MATCH NScript::CQ_BountyHuntScript::CBH_Hostage2::?Alloc@CBH_Hostage2@CQ_BountyHuntScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1cac0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::WatchForAllLeaderChargeGruntsKilled
+  00d18b20 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForDeputy1GruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+  00d16570 RELOCATION_MATCH NScript::CQ_BountyHuntScript::WatchForDeputy1Killed
+  00d19af0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForDeputy2GruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+  00d16920 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForHostage1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+  00d16d00 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForHostage2Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+  00d1c9e0 RELOCATION_MATCH NScript::CQ_BountyHuntScript::?WatchForLeaderGruntsKilled@CQ_BountyHuntScript@NScript@@QAEXXZ
+  00d1f510 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CBanditAttacker::?Alloc@CBanditAttacker@CQ_BreakSiegeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1f5c0 MATCH NScript::CQ_BreakSiegeScript::CBanditAttacker::?Init@CBanditAttacker@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1f910 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CBanditFirstWave::?Alloc@CBanditFirstWave@CQ_BreakSiegeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1dcc0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CBanditSiegeLeader::?Alloc@CBanditSiegeLeader@CQ_BreakSiegeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1fc30 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CDisplacedTrader::?Alloc@CDisplacedTrader@CQ_BreakSiegeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1fce0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CDisplacedTrader::?Init@CDisplacedTrader@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1e230 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CGuardHoldingBandit::?Alloc@CGuardHoldingBandit@CQ_BreakSiegeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1ea10 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CGuardToHelpDefend::?Alloc@CGuardToHelpDefend@CQ_BreakSiegeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1e090 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::?Alloc@CImprisonedBanditLeader@CQ_BreakSiegeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1e1b0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::?Init@CImprisonedBanditLeader@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1e140 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CImprisonedBanditLeader::?OnPredicateFail@CImprisonedBanditLeader@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1dde0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege::?Alloc@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1dea0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CKG_ChiefBreakSiege::?OnPredicateFail@CKG_ChiefBreakSiege@CQ_BreakSiegeScript@NScript@@EAEXXZ
+  00d1df20 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::CKG_Sheriff::?Alloc@CKG_Sheriff@CQ_BreakSiegeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d1cfc0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::?OnPersist@CQ_BreakSiegeScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00d1d7d0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::?WatchForTermination@CQ_BreakSiegeScript@NScript@@
+  00d17290 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_BountyHuntScript@NScript@@@@UAEXXZ
+  00d25a00 RELOCATION_MATCH CDragon::?Main@CDragon@@
+  00d2fb20 RELOCATION_MATCH CEndGameJackOfBladesBoss::Main
+  00d2d6d0 RELOCATION_MATCH CVtable_012cc444::`scalar_deleting_destructor'
+  00d22880 RELOCATION_MATCH CKG_ChiefBreakSiege::?Main@CKG_ChiefBreakSiege@
+  00d29db0 RELOCATION_MATCH CMK_GHC_HERO3::?Main@CMK_GHC_HERO3@
+  00d2a180 RELOCATION_MATCH CMazeJournal::?Main@CMazeJournal@
+  00d2d830 RELOCATION_MATCH CPermanentBarrier::Main
+  00d20760 RELOCATION_MATCH CVtable_012cb140::`vector_deleting_destructor'
+  00d24630 RELOCATION_MATCH CVtable_012cb5fc::`vector_deleting_destructor'
+  00d26160 RELOCATION_MATCH CVtable_012cb7c4::`vector_deleting_destructor'
+  00d29800 RELOCATION_MATCH CVtable_012cbcc8::`vector_deleting_destructor'
+  00d2d700 RELOCATION_MATCH CVtable_012cc470::`vector_deleting_destructor'
+  00d27c00 RELOCATION_MATCH CV_ChapelOfEvilScript::?EndMission@CV_ChapelOfEvilScript@@
+  00d2f6b0 RELOCATION_MATCH CVtable_012cc60c::??0CVtable_012cc60c@
+  00d24330 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh::?Alloc@CBowerstoneIntroGuardToPosh@CQ_BowerstoneTownLifeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d243e0 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuardToPosh::?Init@CBowerstoneIntroGuardToPosh@CQ_BowerstoneTownLifeIntroScript@NScript@@EAEXXZ
+  00d24210 RELOCATION_MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard::?Alloc@CBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d242c0 MATCH NScript::CQ_BowerstoneTownLifeIntroScript::CBowerstoneIntroGuard::?Init@CBowerstoneIntroGuard@CQ_BowerstoneTownLifeIntroScript@NScript@@EAEXXZ
+  00d226e0 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::?SendBodyguardsToTheRightPlace@CQ_BreakSiegeScript@NScript@@QAEXVCCharString@@0@Z
+  00d20790 RELOCATION_MATCH NScript::CQ_BreakSiegeScript::WatchForWinLoseConditions
+  00d25c60 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::CDBMinion::?Alloc@CDBMinion@CQ_DragonBossFightScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d25e30 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::CDBSummoner::?Alloc@CDBSummoner@CQ_DragonBossFightScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d257d0 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::CDragon::?Alloc@CDragon@CQ_DragonBossFightScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d255e0 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::Main
+  00d26cc0 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::SpawnMinions
+  00d26e60 RELOCATION_MATCH NScript::CQ_DragonBossFightScript::SpawnSummoners
+  00d2fa40 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CEndGameJackOfBladesBoss::?Alloc@CEndGameJackOfBladesBoss@CQ_EndGameBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2fc00 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CEndGameSister::?Alloc@CEndGameSister@CQ_EndGameBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2fce0 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CSwordVoid::?Alloc@CSwordVoid@CQ_EndGameBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2fdc0 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::CTheRealGuildmaster::?Alloc@CTheRealGuildmaster@CQ_EndGameBossBattleScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2f710 MATCH NScript::CQ_EndGameBossBattleScript::?Init@CQ_EndGameBossBattleScript@NScript@@UAEXXZ
+  00d2f7f0 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::?Main@CQ_EndGameBossBattleScript@NScript@@UAEXXZ
+  00d2c430 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CBattleGuard::?Alloc@CBattleGuard@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2c340 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CBattleMinion::?Alloc@CBattleMinion@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2c140 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameFocalSite::?Alloc@CEndGameFocalSite@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2c260 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameJackOfBlades::?Alloc@CEndGameJackOfBlades@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2cf80 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameScarletRobe::?Alloc@CEndGameScarletRobe@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2c650 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameScythe::?Alloc@CEndGameScythe@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2c730 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::CEndGameThunder::?Alloc@CEndGameThunder@CQ_EndGameFocalSitesScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d2a8a0 RELOCATION_MATCH NScript::CQ_EndGameFocalSitesScript::?Init@CQ_EndGameFocalSitesScript@NScript@@UAEXXZ
+  00d29230 RELOCATION_MATCH NScript::CQ_EndGameScript::CGatewayUndead::?Alloc@CGatewayUndead@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d293f0 RELOCATION_MATCH NScript::CQ_EndGameScript::CGatewayUndead::?Main@CGatewayUndead@CQ_EndGameScript@NScript@@EAEXXZ
+  00d29320 RELOCATION_MATCH NScript::CQ_EndGameScript::CGatewayUndead::?OnPredicateFail@CGatewayUndead@CQ_EndGameScript@NScript@@EAEXXZ
+  00d28f70 RELOCATION_MATCH NScript::CQ_EndGameScript::CHookCoastTeleporter::?Alloc@CHookCoastTeleporter@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d29020 RELOCATION_MATCH NScript::CQ_EndGameScript::CHookCoastTeleporter::?Init@CHookCoastTeleporter@CQ_EndGameScript@NScript@@EAEXXZ
+  00d29460 RELOCATION_MATCH NScript::CQ_EndGameScript::CMK_GHC_HERO3::?Alloc@CMK_GHC_HERO3@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d290a0 RELOCATION_MATCH NScript::CQ_EndGameScript::CM_UndeadSpawn::?Alloc@CM_UndeadSpawn@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d29160 RELOCATION_MATCH NScript::CQ_EndGameScript::CM_UndeadSpawn::?Main@CM_UndeadSpawn@CQ_EndGameScript@NScript@@EAEXXZ
+  00d29570 RELOCATION_MATCH NScript::CQ_EndGameScript::CMazeJournal::?Alloc@CMazeJournal@CQ_EndGameScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d29620 RELOCATION_MATCH NScript::CQ_EndGameScript::CMazeJournal::?Init@CMazeJournal@CQ_EndGameScript@NScript@@EAEXXZ
+  00d20710 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_BreakSiegeScript@NScript@@@@UAEXXZ
+  00d245c0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@UAEXXZ
+  00d26110 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_DragonBossFightScript@NScript@@@@UAEXXZ
+  00d29790 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_EndGameScript@NScript@@@@UAEXXZ
+  00d2d680 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_EndGameFocalSitesScript@NScript@@@@UAEXXZ
+  00d2ffb0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_EndGameBossBattleScript@NScript@@@@UAEXXZ
+  00d3af50 RELOCATION_MATCH CFH_MemorialCutsceneMarker::Main
+  00d3a9b0 RELOCATION_MATCH CFH_Prisoner::MakeRoundStartComment
+  00d3b410 RELOCATION_MATCH CGameflowScript::DeclareGossipCategories
+  00d38f70 RELOCATION_MATCH CProphetCage::Main
+  00d38000 RELOCATION_MATCH CPuzzleBlockMoon::TurnIntoASunSign
+  00d387a0 RELOCATION_MATCH CPuzzleBlockSun::TurnIntoAMoonSign
+  00d3cbd0 RELOCATION_MATCH CQ_GuildTrainingScript::KeepTabsOnWhisper
+  00d30000 RELOCATION_MATCH CVtable_012cc724::`vector_deleting_destructor'
+  00d34440 RELOCATION_MATCH CVtable_012cc60c::`vector_deleting_destructor'
+  00d38cf0 RELOCATION_MATCH CVtable_012cd1a0::`vector_deleting_destructor'
+  00d34410 RELOCATION_MATCH NScript::CQ_EndGameBossBattleScript::?Alloc@CQ_EndGameBossBattleScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d362b0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CDF_Fireheart::?Alloc@CDF_Fireheart@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d37240 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_BriarRose::?Alloc@CFH_BriarRose@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d372f0 MATCH NScript::CQ_FireHeartScript::CFH_BriarRose::?Init@CFH_BriarRose@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d36790 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_GuildMaster::?Alloc@CFH_GuildMaster@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d37c30 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_MemorialCutsceneMarker::?Alloc@CFH_MemorialCutsceneMarker@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d36540 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Prisoner::?Alloc@CFH_Prisoner@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d37140 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Scythe::?Alloc@CFH_Scythe@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d373d0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CFH_Villager::?Alloc@CFH_Villager@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d36680 RELOCATION_MATCH NScript::CQ_FireHeartScript::CProphetCage::?Alloc@CProphetCage@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d36730 RELOCATION_MATCH NScript::CQ_FireHeartScript::CProphetCage::?Init@CProphetCage@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d363a0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CPuzzleBlockMoon::?Alloc@CPuzzleBlockMoon@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d37d00 RELOCATION_MATCH NScript::CQ_FireHeartScript::CPuzzleBlockMoon::?Main@CPuzzleBlockMoon@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d36470 RELOCATION_MATCH NScript::CQ_FireHeartScript::CPuzzleBlockSun::?Alloc@CPuzzleBlockSun@CQ_FireHeartScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d384a0 RELOCATION_MATCH NScript::CQ_FireHeartScript::CPuzzleBlockSun::?Main@CPuzzleBlockSun@CQ_FireHeartScript@NScript@@EAEXXZ
+  00d3d060 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CAppleGirl::?Alloc@CAppleGirl@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d3e1f0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CApprenticeSpeedTest::?Alloc@CApprenticeSpeedTest@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d3c8f0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::KeepBookcaseExitRemoved
+  00d34ac0 RELOCATION_MATCH std::vector::?resize@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@QAEXIABVCScriptThing@@@Z
+  00d38ca0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_FireHeartScript@NScript@@@@UAEXXZ
+  00d446d0 RELOCATION_MATCH CHeroBed::Main
+  00d49a20 RELOCATION_MATCH CQ_GuildTrainingScript::RunSaveXPCutscene2
+  00d44620 RELOCATION_MATCH CVtable_012ce48c::`vector_deleting_destructor'
+  00d42f40 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CBirdKiller::?Alloc@CBirdKiller@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d42ff0 MATCH NScript::CQ_GuildTrainingScript::CBirdKiller::?Init@CBirdKiller@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00d41a30 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CCombatApprentice::?Alloc@CCombatApprentice@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d40b30 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CHeroBed::?Alloc@CHeroBed@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d43040 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CKillBird::?Alloc@CKillBird@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d43120 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CKillBird::?OnPredicateFail@CKillBird@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00d40c10 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CMeleeApprentice::?Alloc@CMeleeApprentice@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d40cc0 MATCH NScript::CQ_GuildTrainingScript::CMeleeApprentice::?Init@CMeleeApprentice@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00d43cd0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CPreMeleeMaze::?Alloc@CPreMeleeMaze@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d409e0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CRaceMarker::?Alloc@CRaceMarker@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d41b10 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CSkillApprentice::?Alloc@CSkillApprentice@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d41bf0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CSkillTarget::?Alloc@CSkillTarget@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d41ca0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CSkillTarget::?Init@CSkillTarget@CQ_GuildTrainingScript@NScript@@EAEXXZ
+  00d43280 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CWillApprentice::?Alloc@CWillApprentice@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d43360 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::CWillDummy::?Alloc@CWillDummy@CQ_GuildTrainingScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d44cb0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::RunArrivalCutscene
+  00d496f0 RELOCATION_MATCH NScript::CQ_GuildTrainingScript::RunSaveXPCutscene
+  00d445d0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingScript@NScript@@@@UAEXXZ
+  00d51fc0 RELOCATION_MATCH CPreMeleeDummy::Main
+  00d50c30 RELOCATION_MATCH CVtable_012cf6e0::`vector_deleting_destructor'
+  00d52470 RELOCATION_MATCH CVtable_012cf890::`vector_deleting_destructor'
+  00d58460 RELOCATION_MATCH CVtable_012d0580::`vector_deleting_destructor'
+  00d5ae40 RELOCATION_MATCH CVtable_012d09f4::`vector_deleting_destructor'
+  00d5e040 RELOCATION_MATCH CVtable_012d108c::`vector_deleting_destructor'
+  00d509d0 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::?Alloc@CTheRealGuildmaster@CQ_GuildTrainingDepartureScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d50c60 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main
+  00d506b0 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::Init
+  00d566a0 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::?Alloc@CMeleeOpponent@CQ_GuildTrainingMeleeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d56750 MATCH NScript::CQ_GuildTrainingMeleeScript::CMeleeOpponent::?Init@CMeleeOpponent@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ
+  00d57fa0 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::?Alloc@CMeleeThunder@CQ_GuildTrainingMeleeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d565c0 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::CTheRealGuildmaster::?Alloc@CTheRealGuildmaster@CQ_GuildTrainingMeleeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d51f00 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::?Alloc@CPreMeleeDummy@CQ_GuildTrainingPreMeleeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d52230 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeWhisper::?Alloc@CPreMeleeWhisper@CQ_GuildTrainingPreMeleeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d51e20 RELOCATION_MATCH NScript::CQ_GuildTrainingPreMeleeScript::CTheRealGuildmaster::?Alloc@CTheRealGuildmaster@CQ_GuildTrainingPreMeleeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d5abe0 RELOCATION_MATCH NScript::CQ_GuildTrainingSkillScript::CTheRealGuildmaster::?Alloc@CTheRealGuildmaster@CQ_GuildTrainingSkillScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d5aa80 MATCH NScript::CQ_GuildTrainingSkillScript::?Init@CQ_GuildTrainingSkillScript@NScript@@UAEXXZ
+  00d5ab40 RELOCATION_MATCH NScript::CQ_GuildTrainingSkillScript::?RegisterMain@CQ_GuildTrainingSkillScript@NScript@@UAEXXZ
+  00d5dde0 RELOCATION_MATCH NScript::CQ_GuildTrainingWillScript::CTheRealGuildmaster::?Alloc@CTheRealGuildmaster@CQ_GuildTrainingWillScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d5dc80 MATCH NScript::CQ_GuildTrainingWillScript::?Init@CQ_GuildTrainingWillScript@NScript@@UAEXXZ
+  00d5dd40 RELOCATION_MATCH NScript::CQ_GuildTrainingWillScript::?RegisterMain@CQ_GuildTrainingWillScript@NScript@@UAEXXZ
+  00d50bc0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingDepartureScript@NScript@@@@UAEXXZ
+  00d52420 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingPreMeleeScript@NScript@@@@UAEXXZ
+  00d58410 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingMeleeScript@NScript@@@@UAEXXZ
+  00d5add0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingSkillScript@NScript@@@@UAEXXZ
+  00d5dfd0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWillScript@NScript@@@@UAEXXZ
+  00d6b560 RELOCATION_MATCH CVtable_012d2258::`scalar_deleting_destructor'
+  00d6a0d0 RELOCATION_MATCH CHTE_Executioner::Main
+  00d69f50 RELOCATION_MATCH CHTE_Prisoner::Main
+  00d64370 RELOCATION_MATCH CVtable_012d1a64::`vector_deleting_destructor'
+  00d67240 RELOCATION_MATCH CVtable_012d1dbc::`vector_deleting_destructor'
+  00d68e70 RELOCATION_MATCH CVtable_012d1f7c::`vector_deleting_destructor'
+  00d6b6f0 RELOCATION_MATCH CVtable_012d22b8::`vector_deleting_destructor'
+  00d68810 RELOCATION_MATCH CWillWhisper::Main
+  00d62360 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CArtifactThief::?Alloc@CArtifactThief@CQ_GuildTrainingWoodsDepartureScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d62270 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CFinalMaze::?Alloc@CFinalMaze@CQ_GuildTrainingWoodsDepartureScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d63cc0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::?Alloc@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d63d80 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::CScorpionHome::?Init@CScorpionHome@CQ_GuildTrainingWoodsDepartureScript@NScript@@EAEXXZ
+  00d61d20 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::Main
+  00d64080 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::?TeleportOutHero@CQ_GuildTrainingWoodsDepartureScript@NScript@@QAEXXZ
+  00d64000 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsDepartureScript::?WatchForLeaving@CQ_GuildTrainingWoodsDepartureScript@NScript@@QAEXXZ
+  00d66ba0 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::?Alloc@CScorpionHome@CQ_GuildTrainingWoodsMeleeScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d66c60 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::CScorpionHome::?Init@CScorpionHome@CQ_GuildTrainingWoodsMeleeScript@NScript@@EAEXXZ
+  00d66620 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::Main
+  00d66f50 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsMeleeScript::?TeleportOutHero@CQ_GuildTrainingWoodsMeleeScript@NScript@@QAEXXZ
+  00d68720 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsWillScript::CWillWhisper::?Alloc@CWillWhisper@CQ_GuildTrainingWoodsWillScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d68c50 RELOCATION_MATCH NScript::CQ_GuildTrainingWoodsWillScript::?WatchForLeaving@CQ_GuildTrainingWoodsWillScript@NScript@@QAEXXZ
+  00d6a150 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CGUARD1::?Alloc@CGUARD1@CQ_HangingTreeEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d6a220 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CGUARD1::?Main@CGUARD1@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6a290 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CGUARD2::?Alloc@CGUARD2@CQ_HangingTreeEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d6a360 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CGUARD2::?Main@CGUARD2@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d69d50 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AmbushPoint::?Alloc@CHTE_AmbushPoint@CQ_HangingTreeEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d6ad70 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::?Alloc@CHTE_AssaultGuard@CQ_HangingTreeEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d6ae30 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_AssaultGuard::?OnPredicateFail@CHTE_AssaultGuard@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6b180 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Audience::?Alloc@CHTE_Audience@CQ_HangingTreeEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d69fd0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Executioner::?Alloc@CHTE_Executioner@CQ_HangingTreeEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d6a080 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Executioner::?OnPredicateFail@CHTE_Executioner@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6a3d0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter::?Alloc@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d6a480 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter::?Init@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d6a4f0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_FreedomFighter::?OnPredicateFail@CHTE_FreedomFighter@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d69e30 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Prisoner::?Alloc@CHTE_Prisoner@CQ_HangingTreeEvilScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d69ee0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CHTE_Prisoner::?OnPredicateFail@CHTE_Prisoner@CQ_HangingTreeEvilScript@NScript@@EAEXXZ
+  00d68f00 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::??0CQ_HangingTreeEvilScript
+  00d6b720 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::CleanUp
+  00d6bfa0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::?DoMission@CQ_HangingTreeEvilScript@NScript@@
+  00d6ccc0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::?MonitorBanditRegion@CQ_HangingTreeEvilScript@NScript@@QAEXXZ
+  00d6be20 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::MonitorEnemies
+  00d6cdc0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::MonitorRegionPresence
+  00d6c4a0 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::SpawnParty
+  00d6ca90 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::?WatchForHeroNearExit@CQ_HangingTreeEvilScript@NScript@@QAEXXZ
+  00d6fe50 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointCond::?Alloc@CHTG_AmbushPointCond@CQ_HangingTreeGoodScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d6ff30 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointRear::?Alloc@CHTG_AmbushPointRear@CQ_HangingTreeGoodScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d6fd70 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPoint::?Alloc@CHTG_AmbushPoint@CQ_HangingTreeGoodScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d6fd00 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::RemoveDregs
+  00d64320 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@UAEXXZ
+  00d671f0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWoodsMeleeScript@NScript@@@@UAEXXZ
+  00d68e20 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWoodsWillScript@NScript@@@@UAEXXZ
+  00d6b6a0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_HangingTreeEvilScript@NScript@@@@UAEXXZ
+  00d728a0 RELOCATION_MATCH CVtable_012d28a0::`scalar_deleting_destructor'
+  00d729b0 RELOCATION_MATCH CVtable_012d296c::`scalar_deleting_destructor'
+  00d73ae0 RELOCATION_MATCH CHTG_AmbushPointRear::Main
+  00d73610 RELOCATION_MATCH CHTG_AmbushPoint::Main
+  00d73f40 RELOCATION_MATCH CHTG_Executioner::Main
+  00d71b30 RELOCATION_MATCH CHTG_Prisoner::Main
+  00d7f110 RELOCATION_MATCH CHeroSoulsEnemy::Main
+  00d773e0 RELOCATION_MATCH CQ_HangingTreeGoodScript::MonitorRegionPresence
+  00d7ecb0 RELOCATION_MATCH CSummoner1::Main
+  00d7eed0 RELOCATION_MATCH CSummoner2::Main
+  00d72b40 RELOCATION_MATCH CVtable_012d299c::`vector_deleting_destructor'
+  00d7aa00 RELOCATION_MATCH CVtable_012d346c::`vector_deleting_destructor'
+  00d7c440 RELOCATION_MATCH CVtable_012d3978::`vector_deleting_destructor'
+  00d7fc10 RELOCATION_MATCH CVtable_012d3fe0::`vector_deleting_destructor'
+  00d70010 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_AmbushPointBackup::?Alloc@CHTG_AmbushPointBackup@CQ_HangingTreeGoodScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d724d0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Boss::?Alloc@CHTG_Boss@CQ_HangingTreeGoodScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d73220 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Executioner::??0CHTG_Executioner@CQ_HangingTreeGoodScript@NScript@@QAE@AAV12@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d73280 MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Executioner::?Init@CHTG_Executioner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d700e0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_FreedomFighter::?Alloc@CHTG_FreedomFighter@CQ_HangingTreeGoodScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d70520 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?Alloc@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d705d0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?Init@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d70650 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Guard::?OnPredicateFail@CHTG_Guard@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d71980 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::?Alloc@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d71a30 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::?Init@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d71a70 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CHTG_Prisoner::?OnPredicateFail@CHTG_Prisoner@CQ_HangingTreeGoodScript@NScript@@EAEXXZ
+  00d72b70 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::CleanUp
+  00d74f80 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::ReassignLeader
+  00d732f0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::RemoveParty
+  00d766c0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::SetGuardsHealth
+  00d736b0 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::SpawnEnemies
+  00d74e80 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::UpdateWayPoint
+  00d76490 RELOCATION_MATCH NScript::CQ_HangingTreeGoodScript::WatchForHeroNearExit
+  00d7de80 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CArenaHeroGate::?Alloc@CArenaHeroGate@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7f1a0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CBlockedEntrance::?Alloc@CBlockedEntrance@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7f380 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CDyingVillager::?Alloc@CDyingVillager@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7dff0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CHOHGuard::?Alloc@CHOHGuard@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7f7b0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CHSA_ScreamingVillager::?Alloc@CHSA_ScreamingVillager@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7f020 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CHeroSoulsEnemy::?Alloc@CHeroSoulsEnemy@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7dba0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CNotForODG::?Alloc@CNotForODG@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7dc50 MATCH NScript::CQ_HeroSoulsArenaScript::CNotForODG::?Main@CNotForODG@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ
+  00d7ebe0 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CSummoner1::?Alloc@CSummoner1@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7ee00 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CSummoner2::?Alloc@CSummoner2@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7dc90 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CSummonerToKill::?Alloc@CSummonerToKill@CQ_HeroSoulsArenaScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7dd80 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::CSummonerToKill::Main
+  00d7a290 RELOCATION_MATCH NScript::CQ_HeroSoulsScript::CEndBriarRose::?Alloc@CEndBriarRose@CQ_HeroSoulsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d79c80 RELOCATION_MATCH NScript::CQ_HeroSoulsScript::CEndScythe::?Alloc@CEndScythe@CQ_HeroSoulsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d79b90 RELOCATION_MATCH NScript::CQ_HeroSoulsScript::CNotForODG::?Alloc@CNotForODG@CQ_HeroSoulsScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d79c40 MATCH NScript::CQ_HeroSoulsScript::CNotForODG::?Main@CNotForODG@CQ_HeroSoulsScript@NScript@@EAEXXZ
+  00d78500 MATCH NScript::CQ_HeroSoulsScript::?Init@CQ_HeroSoulsScript@NScript@@UAEXXZ
+  00d7b400 RELOCATION_MATCH NScript::CQ_HeroSoulsThunderScript::CHeroThunder::?Alloc@CHeroThunder@CQ_HeroSoulsThunderScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d7ae80 RELOCATION_MATCH NScript::CQ_HeroSoulsThunderScript::?Main@CQ_HeroSoulsThunderScript@NScript@@
+  00d72af0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_HangingTreeGoodScript@NScript@@@@UAEXXZ
+  00d7a9b0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsScript@NScript@@@@UAEXXZ
+  00d7c3f0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsThunderScript@NScript@@@@UAEXXZ
+  00d7fbc0 RELOCATION_MATCH _unattributed::?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsArenaScript@NScript@@@@UAEXXZ
+  00d81820 RELOCATION_MATCH CBRIAR_ROSE_IMPOSTER::Main
+  00d84470 RELOCATION_MATCH CVtable_012d477c::`scalar_deleting_destructor'
+  00d874f0 RELOCATION_MATCH CGuardOutsideWoods::Main
+  00d81c50 RELOCATION_MATCH CHSB_MagicBarrier::Main
+  00d86150 RELOCATION_MATCH CMuteGuardOutsideWoods::Main
+  00d8e990 RELOCATION_MATCH CQ_HobbeCaveScript::WatchForTermination
+  00d891f0 RELOCATION_MATCH CSUMMONED_CREATURE::Main
+  00d86c30 RELOCATION_MATCH CSoulInfoAcolyte::Main
+  00d82370 RELOCATION_MATCH CVtable_012d4428::`vector_deleting_destructor'
+  00d84600 RELOCATION_MATCH CVtable_012d47c0::`vector_deleting_destructor'
+  00d872a0 RELOCATION_MATCH CVtable_012d4c78::`vector_deleting_destructor'
+  00d896e0 RELOCATION_MATCH CVtable_012d4f84::`vector_deleting_destructor'
+  00d8aae0 RELOCATION_MATCH CVtable_012d5114::`vector_deleting_destructor'
+  00d88f90 RELOCATION_MATCH CUndeadSoldier::Main
+  00d86680 RELOCATION_MATCH CWaitingGuardInWoods::?Main@CWaitingGuardInWoods@@
+  00d81750 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::CBRIAR_ROSE_IMPOSTER::?Alloc@CBRIAR_ROSE_IMPOSTER@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d81630 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::CBriarRose::?Alloc@CBriarRose@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d81b60 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::CHSB_MagicBarrier::?Alloc@CHSB_MagicBarrier@CQ_HeroSoulsBriarScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d83300 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::?Alloc@CQ_HeroSoulsBriarScript@NScript@@SIPAVCScriptBase@@PAVCScriptDataBase@@AAVCGameScriptInterfaceBase@@@Z
+  00d80c30 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::??0CQ_HeroSoulsBriarScript
+  00d80e40 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::?Main@CQ_HeroSoulsBriarScript@NScript@@
+  00d823a0 RELOCATION_MATCH NScript::CQ_HeroSoulsBriarScript::?PlayCutscene@CQ_HeroSoulsBriarScript@
+  00d86390 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CGuardInWoods::?Alloc@CGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d85fa0 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CGuardOutsideWoods::?Alloc@CGuardOutsideWoods@CQ_HeroSoulsGuildmasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d85a30 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CGuildmaster_HS::?Alloc@CGuildmaster_HS@CQ_HeroSoulsGuildmasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d86980 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CHSG_DistanceChecker::?Alloc@CHSG_DistanceChecker@CQ_HeroSoulsGuildmasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d86a30 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CHSG_DistanceChecker::?Main@CHSG_DistanceChecker@CQ_HeroSoulsGuildmasterScript@NScript@@EAEXXZ
+  00d86080 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CMuteGuardOutsideWoods::?Alloc@CMuteGuardOutsideWoods@CQ_HeroSoulsGuildmasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d86b60 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CSoulInfoAcolyte::?Alloc@CSoulInfoAcolyte@CQ_HeroSoulsGuildmasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d86560 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::CWaitingGuardInWoods::?Alloc@CWaitingGuardInWoods@CQ_HeroSoulsGuildmasterScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d83e60 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::CHS_Screamer::?Alloc@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d83f10 MATCH NScript::CQ_HeroSoulsMotherScript::CHS_Screamer::?Init@CHS_Screamer@CQ_HeroSoulsMotherScript@NScript@@EAEXXZ
+  00d83cf0 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::CSummonerToKill::?Alloc@CSummonerToKill@CQ_HeroSoulsMotherScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d84630 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::?CreateScreamers@CQ_HeroSoulsMotherScript@NScript@@
+  00d835d0 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::Main
+  00d885e0 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CGuardNearGraveyardPath::?Alloc@CGuardNearGraveyardPath@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d892a0 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CNostro::?Alloc@CNostro@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d89380 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CNostro::Main
+  00d890a0 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::?Alloc@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d88420 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CSummonerToKill::?Alloc@CSummonerToKill@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d88ec0 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::CUndeadSoldier::?Alloc@CUndeadSoldier@CQ_HeroSoulsNostroScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d87cb0 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::Main
+  00d88260 RELOCATION_MATCH NScript::CQ_HeroSoulsNostroScript::WatchForNostroHit
+  00d8a7f0 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CExtraBooty::?Alloc@CExtraBooty@CQ_HerosOldHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d8a8a0 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CExtraBooty::?Main@CExtraBooty@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8a650 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CFishermansWife::?Alloc@CFishermansWife@CQ_HerosOldHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d8a700 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CFishermansWife::?Init@CFishermansWife@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8a770 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CFishermansWife::?OnPredicateFail@CFishermansWife@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8a4b0 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CGhostFisherman::?Alloc@CGhostFisherman@CQ_HerosOldHouseScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d8a560 RELOCATION_MATCH NScript::CQ_HerosOldHouseScript::CGhostFisherman::?Init@CGhostFisherman@CQ_HerosOldHouseScript@NScript@@EAEXXZ
+  00d8fc70 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CGranny::?Alloc@CGranny@CQ_HobbeCaveScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d8fd90 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CGranny::?Init@CGranny@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d8fd20 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CGranny::?OnPredicateFail@CGranny@CQ_HobbeCaveScript@NScript@@EAEXXZ
+  00d8f5e0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeLarder::?Alloc@CHobbeLarder@CQ_HobbeCaveScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d8f950 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeLeader::?Alloc@CHobbeLeader@CQ_HobbeCaveScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d8fa30 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeLeader::Main
+  00d8f4f0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeRoaming::?Alloc@CHobbeRoaming@CQ_HobbeCaveScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d8f310 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeSpawn::?Alloc@CHobbeSpawn@CQ_HobbeCaveScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+  00d8f3f0 RELOCATION_MATCH NScript::CQ_HobbeCaveScript::CHobbeTorrent::?Alloc@CHobbeTorrent@CQ_HobbeCaveScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z
+exit 0

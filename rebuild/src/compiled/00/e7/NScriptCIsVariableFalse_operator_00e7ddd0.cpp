@@ -12,7 +12,7 @@
 //   CScriptThing Thing +4} (16 bytes); CPredicate_And<P1, P2> {vptr; P1 +4; P2 +0x14} (0x1c bytes).
 void* __cdecl operator new(unsigned int size);         // 0x00BFEA1A
 class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

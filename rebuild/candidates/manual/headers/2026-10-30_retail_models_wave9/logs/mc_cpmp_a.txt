@@ -1,0 +1,12 @@
+0059cb90	SRC_FAIL	new.cpp(33): error C2270: 'PeekPlayerManager' : modifiers not allowed on nonmember functions | new.cpp(33): error C2065: 'PlayerManager' : undeclared identifier | new.cpp(168): error C2039: 'PeekPlayerManager' : is not a member of 'CMainGameComponent'
+0059da10	SAME	171b RELOCATION_MATCH->RELOCATION_MATCH
+005a30a1	SRC_FAIL	new.cpp(201): error C2039: 'PeekPlayerManager' : is not a member of 'CMainGameComponent' | new.cpp(201): error C2228: left of '.GetMainPlayer' must have class/struct/union type | new.cpp(201): error C2228: left of '.PeekPControlledCreature' must have class/struct/union type
+005a8a5d	SRC_FAIL	new.cpp(88): error C2270: 'PeekPlayerManager' : modifiers not allowed on nonmember functions | new.cpp(88): error C2065: 'PlayerManager' : undeclared identifier | new.cpp(168): error C2039: 'PeekPlayerManager' : is not a member of 'CMainGameComponent'
+007d0850	SAME	359b RELOCATION_MATCH->RELOCATION_MATCH
+007d4410	SAME	693b RELOCATION_MATCH->RELOCATION_MATCH
+007d5730	SAME	350b RELOCATION_MATCH->RELOCATION_MATCH
+007d6f70	SAME	365b RELOCATION_MATCH->RELOCATION_MATCH
+007d8ab0	SAME	367b RELOCATION_MATCH->RELOCATION_MATCH
+007dab60	SAME	163b RELOCATION_MATCH->RELOCATION_MATCH
+007e5230	SAME	817b RELOCATION_MATCH->RELOCATION_MATCH
+008a0cb0	SAME	456b RELOCATION_MATCH->RELOCATION_MATCH

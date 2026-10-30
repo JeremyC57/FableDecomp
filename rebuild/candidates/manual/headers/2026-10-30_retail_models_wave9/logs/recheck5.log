@@ -1,0 +1,19 @@
+addr       parity           behav  name
+00a9b1a0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00a9b1a0   RELOCATION_MATCH PASS   GetMaterialList
+00ac0910   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00ac0910   RELOCATION_MATCH PASS   FindFirstEngineMaterial
+00aba6a0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00aba6a0   RELOCATION_MATCH PASS   FindFirstBone
+00aae5b0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00aae5b0   RELOCATION_MATCH PASS   GetMovementVector
+00ac04c0   WARN SHARED_HEADER_AVAILABLE CChunkedFileChunk
+00ac04c0   RELOCATION_MATCH PASS   FindFirstMaterial
+
+WINS: 5
+  00a9b1a0 RELOCATION_MATCH C3DMeshFileRootChunk::?GetMaterialList@C3DMeshFileRootChunk@@QAE?AV?$CCountedPointer@VC3DMeshFileMaterialListChunk@@@@XZ
+  00ac0910 RELOCATION_MATCH C3DMeshFileMaterialListChunk::?FindFirstEngineMaterial@C3DMeshFileMaterialListChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileEngineMaterialChunk@@@@XZ
+  00aba6a0 RELOCATION_MATCH C3DMeshFileSubMeshChunk::?FindFirstBone@C3DMeshFileSubMeshChunk@@QBE?AV?$CCountedPointer@$$CBVC3DMeshFileBoneChunk@@@@XZ
+  00aae5b0 RELOCATION_MATCH C3DAnimFileHelpersChunk::?GetMovementVector@C3DAnimFileHelpersChunk@@QBE?AV?$CCountedPointer@$$CBVC3DAnimFileMovementVectorChunk@@@@XZ
+  00ac04c0 RELOCATION_MATCH C3DMeshFileMaterialListChunk::?FindFirstMaterial@C3DMeshFileMaterialListChunk@@QAE?AV?$CCountedPointer@VC3DMeshFileMaterialChunk@@@@XZ
+exit 0

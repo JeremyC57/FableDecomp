@@ -10,16 +10,7 @@
 // Callees: interface slots 360 SetThingHasInformation, 517 EntitySetAsKillable, 516 EntitySetAsDamageable, 844
 //   SetIsPushableByHero (Me by value), 745 SetIsThingForcePushable, 529 EntitySetAsUseMovementInActions.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

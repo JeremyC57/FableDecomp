@@ -1,0 +1,17 @@
+0051fc20	SAME	146b RELOCATION_MATCH->RELOCATION_MATCH
+0051f070	SAME	101b RELOCATION_MATCH->RELOCATION_MATCH
+0056fbed	RELOC_RENAMED	RELOCATION_MATCH ; e:?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+00570009	RELOC_RENAMED	RELOCATION_MATCH ; e:?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+005701da	RELOC_RENAMED	RELOCATION_MATCH ; e:?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ
+005ee99d	SRC_FAIL	new.cpp(148): error C2662: 'CPlayer::GetPlayerNumber' : cannot convert 'this' pointer from 'const CPlayer' to 'CPlayer &'
+005faf50	RELOC_RENAMED	RELOCATION_MATCH ; 2a:?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z->?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z
+0066fb80	RELOC_RENAMED	RELOCATION_MATCH ; 43:?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z->?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z
+00670710	RELOC_RENAMED	RELOCATION_MATCH ; 2d:?GetPlayer@CPlayerManager@@QAEPAVCPlayer@@J@Z->?GetPlayer@CPlayerManager@@QAEAAVCPlayer@@J@Z
+006cf810	RELOC_RENAMED	RELOCATION_MATCH ; 22:?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ
+006cf890	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH
+0071c9f0	RELOC_RENAMED	RELOCATION_MATCH ; 5e:?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ ; 75:?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ
+007800b0	RELOC_RENAMED	RELOCATION_MATCH ; 1a:?GetMainPlayer@CPlayerManager@@QBEPAVCPlayer@@XZ->?GetMainPlayer@CPlayerManager@@QBEABVCPlayer@@XZ
+007aefd0	SAME	114b RELOCATION_MATCH->RELOCATION_MATCH
+007aef60	SAME	110b RELOCATION_MATCH->RELOCATION_MATCH
+008afc40	SAME	113b RELOCATION_MATCH->RELOCATION_MATCH
+008af780	SAME	204b RELOCATION_MATCH->RELOCATION_MATCH

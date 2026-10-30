@@ -68,11 +68,7 @@ class CCharString { public:
         return PStringData->Data == text;
     }
 };
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 namespace std {
 template <class T> class allocator {
 public:

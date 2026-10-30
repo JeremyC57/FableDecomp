@@ -157,9 +157,11 @@ class CThing { public:
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const;   // 0x00487DD0
 };
-class CPlayerManager { public: const CPlayer& GetMainPlayer() const;       // 0x00449960
-};
-class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };   // +0x1c
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };   // +0x1c
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 struct CTCShopkeeper {
     CLongMap GetStockMap() const;                          // 0x00774610
@@ -196,7 +198,7 @@ void CTCInventoryTrade::InitialiseBuyableItems(CItemVector& items)
     GetShopThing()->GetInterface(&shop, 0x53);
     CLongMap stock = shop->GetStockMap();
     CTCInventoryItem* inventory = 0;
-    static_cast<const CThing*>(g_pMainGameComponent->PlayerManager->GetMainPlayer().PeekPControlledCreature())->GetInterface(&inventory, 0x11);
+    static_cast<const CThing*>(g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature())->GetInterface(&inventory, 0x11);
     CItemVector heroItems;
     inventory->GetAllItems(heroItems);
     for (unsigned int i = 0; i < heroItems.size(); ++i) {

@@ -26,28 +26,7 @@ class CWideString { public:
     ~CWideString();                                     // 0x0099B510
 };
 void operator delete(void* p);                          // 0x00BFE9BC
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T> class CCountedPointer { public:     // retail CCountedPointer<T>: Data +0, Info +4; the release
-    T*              Data;                              // dtor is 0x007E74D0's inline PImp release (wave 6 GRO rule:
-    CCPPointerInfo* Info;                              // VC7.1's per-site inlining of the implicit STB dtor follows
-    CCountedPointer() : Data(0), Info(0) {}            // from this size)
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 class C3DVector { public: float X, Y, Z; };
 extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0

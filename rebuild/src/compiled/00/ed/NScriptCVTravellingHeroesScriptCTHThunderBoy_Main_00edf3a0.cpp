@@ -24,36 +24,11 @@ class CCharString { public:
 };
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 class C3DVector;
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 struct CScriptThingImpl;
 class CBaseClass { public:                                    // vtable 0x01231710
     CBaseClass() { }
     virtual ~CBaseClass();                             // 0x0099A2E0
-};
-template <class T> class CCountedPointer { public:             // {Data, Info}
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
-    {
-        if (Info)
-            ++Info->RefCount;
-    }
-    ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
 };
 class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005();

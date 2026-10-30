@@ -35,7 +35,7 @@ class CScriptThing;
 class CScriptDataBase;
 class CEntityScriptBase;
 class CActiveEntityScriptBase;
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 
 class __declspec(novtable) CEntityScriptBindingBase { public:
     virtual const CCharString& GetEntityScriptName() const = 0;

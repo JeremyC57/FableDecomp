@@ -17,37 +17,10 @@
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
 void operator delete(void* p);                         // 0x00BFE9BC (MSVCR71)
 
-class CCPPointerInfo { public:                                // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);         // destroys the pointee
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    __forceinline CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            if (Info) {
-                --Info->RefCount;
-                if (Info->RefCount == 0) {
-                    Info->DeleteFunc(Info->Data);
-                    delete Info;
-                }
-            }
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-};
 
 class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
     CCountedPointer<CScriptThing> PImp;                // +0x04 Data, +0x08 Info

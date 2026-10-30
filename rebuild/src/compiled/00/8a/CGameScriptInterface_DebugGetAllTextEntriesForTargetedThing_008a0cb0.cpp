@@ -93,14 +93,17 @@ struct CTCTargeting {
 };
 struct CTCText { CCharString GetBankHandle() const; };  // 0x004FAEE0
 class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };      // 0x00487DD0
-class CPlayerManager { public: public:
-    const CPlayer& GetMainPlayer() const;   // 0x00449960
-};   // 0x00449960
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+   // 0x00449960
 class CMainGameComponent { public:
     unsigned char   Data[0x14];
     CTextDataBank*  TextBank;                            // +0x14
     unsigned char   Data2[4];
     CPlayerManager* PlayerManager;                       // +0x1c
+    const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; }   // FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
 };
 extern CMainGameComponent* g_pMainGameComponent;         // 0x013B86A0
 extern CCharString g_DebugNarrator;                      // 0x013B86F8
@@ -122,7 +125,7 @@ void CGameScriptInterface::DebugGetAllTextEntriesForTargetedThing(CStringSet& en
     entries.clear();
     const CThing* hero;
     CThing* target;
-    if (g_DebugNarrator == "" && (hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().PeekPControlledCreature()) != 0
+    if (g_DebugNarrator == "" && (hero = g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature()) != 0
         && !(hero->LifeFlags & 1) && (hero->UsingComponents[0] & 0x100)
         && (target = GetComponent<CTCTargeting, 8>(hero)->GetTarget()) != 0 && (target->ThingTypeFlags & 0x10)) {
         if (target->UsingComponents[0] & 0x8000) {

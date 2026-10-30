@@ -37,11 +37,7 @@ public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);
     template <class T> void Transfer(const char* name, T& value) { Transfer(name, value, GetDefaultVal<T>()); }
 };
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CTimer.h"
 #include "engine/CLevelScriptBase.h"

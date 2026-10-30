@@ -1,0 +1,20 @@
+00d49a20	DIFFER	798v815 grades=False sym=?RunSaveXPCutscene2@CQ_GuildTrainingScript@NScript@@QAEXXZ
+00d496f0	DIFFER	798v815 grades=False sym=?RunSaveXPCutscene@CQ_GuildTrainingScript@NScript@@QAEXXZ
+00d55e90	SRC_FAIL	CCountedPointer.h(44): error C2011: 'CCPPointerInfo' : 'class' type redefinition | CCountedPointer.h(137): error C2953: 'CCountedPointer' : template class has already been defined | CScriptGameResourceObjectMovieBase.h(33): error C2955: 'CCountedPointer' : use of class template requires template argument list
+00d823a0	DIFFER	705v669 grades=False sym=?PlayCutscene@CQ_HeroSoulsBriarScript@NScript@@QAEXVCCharString@@@Z
+00dbf2d0	DIFFER	1768v1785 grades=False sym=?Main@CQ_OakValeBanditRaidScript@NScript@@UAEXXZ
+00dd1af0	DIFFER	895v959 grades=False sym=?DoMultiplierCutscene@CQ_OrchardFarmRaidScript@NScript@@QAEXXZ
+00df2d30	DIFFER	385v349 grades=False sym=?Main@CFireHeartHolder@@QAEXXZ
+00df0b70	SRC_FAIL	new.cpp(77): error C2953: 'CCountedPointer' : template class has already been defined | CScriptThing.h(108): error C2955: 'CCountedPointer' : use of class template requires template argument list | CScriptThing.h(109): error C2955: 'CCountedPointer' : use of class template requires template argument list
+00df0750	DIFFER	738v755 grades=False sym=?MotherTortureThread@CQ_SecretPassageScript@NScript@@QAEXXZ
+00e12f20	DIFFER	1017v1002 grades=False sym=?WaspIntro@CQ_WaspBossScript@NScript@@QAEXXZ
+00e1cd40	DIFFER	729v653 grades=False sym=?CutsceneScreamers@CQ_WizardBattleScript@NScript@@QAEXXZ
+00e2a900	DIFFER	537v499 grades=False sym=?PlayCutscene@CQS_ScytheInfoScript@@QAEXVCCharString@@_N@Z
+00e2a320	DIFFER	1524v1503 grades=False sym=?Main@CScytheNearOracle@@QAEXXZ
+00e9aeb0	SRC_FAIL	CCountedPointer.h(44): error C2011: 'CCPPointerInfo' : 'class' type redefinition | CCountedPointer.h(137): error C2953: 'CCountedPointer' : template class has already been defined | CScriptGameResourceObjectMovieBase.h(33): error C2955: 'CCountedPointer' : use of class template requires template argument list
+00ed0b10	SAME	747b RELOCATION_MATCH->RELOCATION_MATCH
+00ee76f0	DIFFER	796v813 grades=False sym=?Main@CTrophyDealerInCave@NScript@@QAEXXZ
+00ee2db0	DIFFER	938v902 grades=False sym=?PlayCutscene@CV_TravellingHeroesScript@NScript@@QAEXVCCharString@@@Z
+00f01480	SRC_FAIL	CCountedPointer.h(44): error C2011: 'CCPPointerInfo' : 'class' type redefinition | CCountedPointer.h(137): error C2953: 'CCountedPointer' : template class has already been defined | CScriptGameResourceObjectMovieBase.h(33): error C2955: 'CCountedPointer' : use of class template requires template argument list
+00f0bb10	SRC_FAIL	new.cpp(166): error C3861: 'bandit3': identifier not found, even with argument-dependent lookup | new.cpp(167): error C3861: 'bandit4': identifier not found, even with argument-dependent lookup | new.cpp(168): error C2512: 'CScriptGameResourceObjectScriptedThingBase' : no appropriate default constructor available
+00f02210	SRC_FAIL	CCountedPointer.h(44): error C2011: 'CCPPointerInfo' : 'class' type redefinition | CCountedPointer.h(137): error C2953: 'CCountedPointer' : template class has already been defined | CScriptGameResourceObjectMovieBase.h(33): error C2955: 'CCountedPointer' : use of class template requires template argument list

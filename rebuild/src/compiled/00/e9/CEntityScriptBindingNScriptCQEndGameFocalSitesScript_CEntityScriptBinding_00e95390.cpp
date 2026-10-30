@@ -19,10 +19,7 @@ class CCharString { public:
 class CScriptDataBase;
 class CScriptThing;
 class CEntityScriptBase;
-template<class T> class CCountedPointer { public:
-    T*    Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 
 // The script class is single-inheritance, so its member-function pointer (Func) is one dword (PDB: Func +0xc,
 // ClassAllocFunc +0x10); an incomplete forward declaration would give the 16-byte general form.

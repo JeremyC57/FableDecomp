@@ -22,46 +22,8 @@ class CCharString { public:
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 
-class CCPPointerInfo { public:
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
+#include "engine/CCountedPointer.h"
 
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    void Release()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-    }
-    CCountedPointer& operator=(const CCountedPointer& other)
-    {
-        CCPPointerInfo* info = other.Info;
-        T* data = other.Data;
-        if (Info != info) {
-            Release();
-            Data = data;
-            Info = info;
-            if (info)
-                ++info->RefCount;
-        }
-        return *this;
-    }
-    ~CCountedPointer()
-    {
-        Release();
-        Data = 0;
-        Info = 0;
-    }
-};
 
 struct CScriptThingImp;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
@@ -73,9 +35,7 @@ inline CScriptThing::~CScriptThing() {}
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
-class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
-    virtual ~CScriptGameResourceObjectBase() {}
-};
+#include "engine/CScriptGameResourceObjectMovieBase.h"   // : GROBase, vtable 0x01260EF4, PImp +0x08; implicit dtor (wave 9)
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointer<CScriptThingImp> PImp;
     // implicit destructor; out of line: 0x007E74D0
@@ -85,15 +45,6 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
         PImp = other.PImp;
         return *this;
     }
-};
-struct CMovieImpPointer {
-    void* Data;
-    void* Info;
-    CMovieImpPointer() : Data(0), Info(0) {}
-    ~CMovieImpPointer();                                // 0x006E7AB0
-};
-class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4
-    CMovieImpPointer PImp;
 };
 
 struct CCutsceneCastMap {                               // map<CCharString, CScriptGameResourceObjectScriptedThingBase> (retail STLport, 12 bytes)

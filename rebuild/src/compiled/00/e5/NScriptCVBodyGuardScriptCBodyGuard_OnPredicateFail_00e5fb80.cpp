@@ -35,18 +35,7 @@ public:
 };
 }
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    T* operator->() const { return Data; }
-    T& operator*() const { return *Data; }
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
 public:
     virtual ~CScriptThing();                            // slot 0

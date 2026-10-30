@@ -24,11 +24,7 @@ public:
     CCharString(const char* text, long length = -1);    // 0x0099EBF0
     ~CCharString();                                     // 0x0099EAE0
 };
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 #pragma pack(push, 1)
 class C3DVector {                                       // byte-aligned: Ego_r.pdb places it at odd offsets (+0x8a, +0x99)
 public:

@@ -37,7 +37,7 @@ struct __declspec(novtable) CQuestScriptObject : CScriptBase {   // the argument
 inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
 extern "C" void* __cdecl malloc(unsigned int size);    // 0x00BFEA0E
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #include "engine/CScriptThing.h"
 // Retail expands these at this row's sites (the local model had them in class): defined inline after the header.

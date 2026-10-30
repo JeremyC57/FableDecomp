@@ -11,16 +11,7 @@
 //   517 EntitySetAsKillable, 526 EntitySetAsToAddToComboMultiplierWhenHit, 516 EntitySetAsDamageable.
 // Note: the landed 0x00E76540 labelled CEM_Rhodri::Init is slot 2 of CEM_Sheriff's vtable 0x012E98B4 (CEM_Sheriff::Init).
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

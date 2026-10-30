@@ -11,7 +11,8 @@ typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString(const char*,long=-1);~CCharString();bool FastCompare(const CCharString&)const;};
-class CCPPointerInfo{public:unsigned long RefCount;void(__fastcall* DeleteFunc)(void*);void* Data;};template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer():Data(0),Info(0){}CCountedPointer(const CCountedPointer& x):Data(x.Data),Info(x.Info){if(Info)++Info->RefCount;}~CCountedPointer(){if(Info){if(--Info->RefCount==0){Info->DeleteFunc(Info->Data);operator delete(Info);}}Data=0;Info=0;}T* operator->()const{return Data;}};
+#include "engine/CCountedPointer.h"
+
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 namespace std{
 template<class T>class allocator{};template<class A,class B>struct pair{typedef A first_type;typedef B second_type;A first;B second;};

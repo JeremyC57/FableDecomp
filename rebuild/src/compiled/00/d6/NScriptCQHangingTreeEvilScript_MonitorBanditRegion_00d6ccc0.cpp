@@ -32,20 +32,7 @@ public:
     const CCharString& operator=(const char* text);       // 0x0099EFE0
 };
 class C3DVector;                                         // 1-aligned 12-byte vector (only referenced here)
-class CCPPointerInfo {                                   // CCountedPointer's shared block
-public:
-    long  RefCount;
-    void (__fastcall* DeleteFunc)(void* data);
-    void* Data;
-};
-template <class T>
-class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580 (CScriptThing instance)
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

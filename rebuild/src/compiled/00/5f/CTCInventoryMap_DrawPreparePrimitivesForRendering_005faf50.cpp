@@ -127,9 +127,10 @@ class CPlayer { public:
     long GetCurrentMode();                                     // 0x00633BE0
     void RemoveMode(long mode);                                // 0x00634190
 };
-class CPlayerManager { public:
-    CPlayer* GetPlayer(long index);                            // 0x004498C0
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CMainGameComponent { public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                             // +0x1C
@@ -148,7 +149,7 @@ class CTCInventoryMap : public CTCInventoryBase, public NHeroInformationScreens:
 void CTCInventoryMap::DrawPreparePrimitivesForRendering(const CEnginePrimitivePrepareInfo& info)
 {
     if (QuestToBeDropped > 0) {
-        CPlayer* player = g_pMainGameComponent->PlayerManager->GetPlayer(0);
+        CPlayer* player = &g_pMainGameComponent->PlayerManager->GetPlayer(0);
         player->RemoveMode(player->GetCurrentMode());
         g_pPlayerGui->GetPHeroInfoScreensManager()->Close();
         CGameEvent event(9);

@@ -80,8 +80,12 @@ class CThing { public:
 };
 class CThingPlayerCreature : public CThing { };
 class CPlayer { public: const CThingPlayerCreature* PeekPControlledCreature() const; };    // 0x00487DD0
-class CPlayerManager { public: const CPlayer& GetMainPlayer() const; };   // 0x00449960
-class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; };
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+   // 0x00449960
+class CMainGameComponent { public: unsigned char _pad[0x1c]; CPlayerManager* PlayerManager; const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; } };
 extern CMainGameComponent* g_pMainGameComponent;      // 0x013B86A0
 long __fastcall GetInventoryInterfaceType(long defIndex);   // 0x005D99D0
 namespace NUISystem {
@@ -161,7 +165,7 @@ NUISystem::CComponent* CTCInventoryTrade::ConstructSpecialShopListPC(const std::
         for (const std::pair<long, long>* it = items.begin(); it != items.end(); ++it) {
             long defIndex = it->first;
             long count = it->second;
-            const CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().PeekPControlledCreature();
+            const CThing* hero = g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().PeekPControlledCreature();
             CTCInventoryBase* inventory = 0;
             hero->GetInterface(&inventory, GetInventoryInterfaceType(defIndex));
             if (IsItemAffordable(defIndex, true) && (inventory->CanAddItem(defIndex) || IsSpecialCase(defIndex)) && count > 0

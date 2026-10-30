@@ -1,0 +1,40 @@
+edit rebuild/src/compiled/00/8a/STLvector_pushback_008adf90.cpp ok cp:CScriptThing slots1 inl2
+edit rebuild/src/compiled/00/af/unattributed_ScalarDeletingDestructorLongCBaseClassCountedPoi_00af69d0.cpp ok cp:CScriptThing slots1 inl3
+edit rebuild/src/compiled/00/d0/CCampHostage2_Main_00d08790.cpp ok ww slots1 latedtor cpmin
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_CheckAnyBanditsKilled_00d032f0.cpp ok ww slots56 cpmin
+edit rebuild/src/compiled/00/d0/NScriptCQBanditCampScript_Main_00d00af0.cpp ok ww slots7 latedtor cpmin
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage1Killed_00d16920.cpp ok cp:CScriptThing slots19 cpmin inl5 trio
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScript_WatchForHostage2Killed_00d16d00.cpp ok cp:CScriptThing slots19 cpmin inl5 trio
+edit rebuild/src/compiled/00/d6/CWillWhisper_Main_00d68810.cpp ok ww slots68 latedtor cpmin
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScript_Main_00d61d20.cpp ok ww slots7 latedtor cpmin
+edit rebuild/src/compiled/00/d7/CHTGAmbushPointBackup_Main_00d73c70.cpp ok cp:CScriptThing slots7 pointee GetPosition->GetPos dropQ CScriptThingImp inl5
+edit rebuild/src/compiled/00/d8/CMuteGuardOutsideWoods_Main_00d86150.cpp ok ww slots43 latedtor cpmin
+edit rebuild/src/compiled/00/d8/CWaitingGuardInWoods_Main_00d86680.cpp ok ww slots43 latedtor GetPosition->GetPos x1 cpmin
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsBriarScript_Main_00d80e40.cpp ok ww slots1 latedtor cpmin
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsMotherScript_Main_00d835d0.cpp ok ww slots1 latedtor cpmin
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScript_IsAssignedAsHeroAttacker_00d9ec50.cpp ok cp:CScriptThing slots79 cpmin inl3
+edit rebuild/src/compiled/00/da/CMinionEscortEnd_Main_00da47a0.cpp ok pad:8 slots17 latedtor cpmin
+edit rebuild/src/compiled/00/da/CRockTroll_Main_00da5f40.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/da/NScriptCQMinionCampScript_FindFurthestSpawnPoint_00da0d90.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/dc/NScriptCQOakValeBanditRaidScript_DepopulateLevel_00dc0830.cpp ok ww slots1 cpmin
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageKeeperFriend_OnPredicateFail_00dc7420.cpp ok cp:CScriptThing slots19 cpmin inl3 trio
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageMan_OnPredicateFail_00dc4d00.cpp ok cp:CScriptThing slots19 cpmin inl3 trio
+edit rebuild/src/compiled/00/dc/NScriptCQOpeningGraveyardSecretPassageScriptCSecretPassageWoman_OnPredicateFail_00dc5f10.cpp ok cp:CScriptThing slots19 cpmin inl3 trio
+edit rebuild/src/compiled/00/de/CSPAmbushGuard_Main_00ded540.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/df/CKrakenMinion_Main_00df4610.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScript_WatchForKilledPeople_00dfc290.cpp ok - slots56 cpmin
+edit rebuild/src/compiled/00/e0/CUndeadRisingZombieAttacker_Main_00e0cff0.cpp ok pad:12-4 slots1 cpmin
+edit rebuild/src/compiled/00/e1/CChasingScreamer_Main_00e1af30.cpp ok ww slots1 latedtor cpmin
+edit rebuild/src/compiled/00/e1/CHKCScreamerPoint_Main_00e1b750.cpp ok ww slots76 latedtor cpmin
+edit rebuild/src/compiled/00/e1/CWaspAttacker_Main_00e11450.cpp ok ww slots76 cpmin
+edit rebuild/src/compiled/00/e2/NScriptCVAmbushScamScript_WatchForHeroAttack_00e2e520.cpp ok cp:CScriptThingImpl slots1 pointee GetDataString->GetName dropP CScriptThingImpl cpmin inl7
+edit rebuild/src/compiled/00/e3/CAttackingAssassin_Main_00e383a0.cpp ok ww slots1 latedtor cpmin
+edit rebuild/src/compiled/00/e5/NScriptCVBeardyBaldyScript_WatchForBeardyBaldyDeath_00e503d0.cpp ok cp:CScriptThingImpl slots1 dropP CScriptThingImpl cpmin inl3
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_OnPredicateFail_00e5fb80.cpp ok cp:CScriptThing slots79 cpmin inl2
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_OnPredicateFail_00eae5a0.cpp ok cp:CScriptThing slots79 cpmin inl2
+edit rebuild/src/compiled/00/eb/CVtable012efee8_CVtable012efee8_00eb2000.cpp ok pod12 slots0 cpmin
+edit rebuild/src/compiled/00/ef/CCham_Main_00ef3aa0.cpp ok ww slots1 latedtor cpmin
+edit rebuild/src/compiled/00/ef/CMRestartMarker_Main_00ef34a0.cpp ok ww slots1 latedtor cpmin
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScript_CheckForHeroActions_00ef5200.cpp ok cp:CScriptThing slots76 cpmin inl5
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_BanditHireSetup_00f081e0.cpp ok cp:CScriptThingImpl slots1 keepP CScriptThingImpl inl3
+edit rebuild/src/compiled/00/f0/NScriptCQAmbushTradersScript_WatchForBanditsDeath_00f0b960.cpp ok ww slots76 cpmin

@@ -27,27 +27,7 @@ class CCharString { public:
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
 #include "engine/CBaseClass.h"                         // vtable 0x01231710, ~CBaseClass 0x0099A2E0
-class CCPPointerInfo { public:                          // CCountedPointer's shared block
-    long RefCount;
-    void (__fastcall* DeleteFunc)(void* data);          // destroys the pointee
-    void* Data;
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"                       // vtable 0x01238C8C (79 slots), copy 0x004ABE90, ~CScriptThing 0x004AA840
 inline CScriptThing::~CScriptThing() { }                // plain inline: expanded at the first exit, 0x004AA840 at the later ones

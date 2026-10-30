@@ -52,10 +52,10 @@ class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                                 // 0x00487DC0
 };
 
-class CPlayerManager { public:
-    long GetMainPlayerNumber() const;                             // 0x00449700
-    CPlayer* GetPlayer(long number);                        // 0x004498C0
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 
 class CTCBase
 {
@@ -83,7 +83,7 @@ void CTCCoopSpirit::UpdateScore()
         {
             if (player != GetPlayerManager().GetMainPlayerNumber())
             {
-                CThing* hero = GetPlayerManager().GetPlayer(player)->GetPControlledCreature();
+                CThing* hero = GetPlayerManager().GetPlayer(player).GetPControlledCreature();
                 CTCCoopScore* score;
                 if (hero && hero->GetInterface(&score, 0xc7))
                     score->m_counter = 0;

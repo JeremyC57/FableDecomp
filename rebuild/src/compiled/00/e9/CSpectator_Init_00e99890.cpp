@@ -7,7 +7,7 @@
 // Shape: `this` in esi, &Thing kept in edi for both calls, the interface re-read from +4 for the second call
 // (the first virtual call may change it), the flag store scheduled between the first push and the call; `ret`.
 class CCPPointerInfo;
-template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

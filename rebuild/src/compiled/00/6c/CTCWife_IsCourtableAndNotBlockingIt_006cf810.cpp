@@ -46,10 +46,10 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0
 };
-class CPlayerManager { public:
-    CPlayer* GetMainPlayer() const;             // 0x00449960 (const)
-    CPlayer* GetMainPlayer();                   // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CWorld { public:
     static long GetWorldFrame();                // 0x0049D870
 };
@@ -76,7 +76,7 @@ class CTCWife : public CTCBase { public:
 bool CTCWife::IsCourtableAndNotBlockingIt() const
 {
     if (!CourtingBlocked && OpinionAttitude != 4 && (ParentThing->Flags1C9 & 8)) {
-        CThing* hero = PeekPlayerManager().GetMainPlayer()->GetPControlledCreature();
+        CThing* hero = PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         if (hero && !(hero->Flags91 & 1)) {
             CHeroInterface4* component;
             if (hero->GetInterface(&component, 4)) {

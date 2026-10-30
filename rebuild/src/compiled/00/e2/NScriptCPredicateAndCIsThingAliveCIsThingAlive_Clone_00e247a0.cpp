@@ -4,7 +4,9 @@
 // Layout: active CScriptThing header aliased for actual CBaseClass inheritance and real counted pointer. Direct original CPredicateBase interface order is operator()/Clone/dtor (no invented CBaseClass root); nested Predicate1+4,Predicate2+20, each Thing+4. PC conjunction size36.
 #include <new>
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
+class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
+
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

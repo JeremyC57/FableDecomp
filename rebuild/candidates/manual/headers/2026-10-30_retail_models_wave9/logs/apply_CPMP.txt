@@ -1,0 +1,15 @@
+edit rebuild/src/compiled/00/59/NInventoryCTCInventoryTrade_AddWantedItemToList_0059cb90.cpp ok
+edit rebuild/src/compiled/00/59/CTCInventoryTrade_IsItemAffordable_0059da10.cpp ok
+edit rebuild/src/compiled/00/5a/CTCInventoryTrade_InitialiseBuyableItems_005a30a1.cpp ok
+edit rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructSpecialShopListPC_005a8a5d.cpp ok
+edit rebuild/src/compiled/00/7d/CTCTavernGameShoveHaPenny_UpdateValues_007d0850.cpp ok
+edit rebuild/src/compiled/00/7d/CTCTavernGameCoinGolf_UpdateValues_007d4410.cpp ok
+edit rebuild/src/compiled/00/7d/CTCTavernGameCardSorting_UpdateValues_007d5730.cpp ok
+edit rebuild/src/compiled/00/7d/CTCTavernGameCardPairs_UpdateValues_007d6f70.cpp ok
+edit rebuild/src/compiled/00/7d/CTCTavernGameSpotTheAddition_UpdateValues_007d8ab0.cpp ok
+edit rebuild/src/compiled/00/7d/CTCTavernGameCardBlackjack_UpdateValues_007dab60.cpp ok
+edit rebuild/src/compiled/00/7e/CTCBetting_ProcessInput_007e5230.cpp ok
+edit rebuild/src/compiled/00/8a/CGameScriptInterface_DebugGetAllTextEntriesForTargetedThing_008a0cb0.cpp ok
+edit rebuild/src/compiled/00/59/NInventoryCTCInventoryTrade_AddWantedItemToList_0059cb90.cpp ok
+edit rebuild/src/compiled/00/5a/CTCInventoryTrade_InitialiseBuyableItems_005a30a1.cpp ok
+edit rebuild/src/compiled/00/5a/CTCInventoryTrade_ConstructSpecialShopListPC_005a8a5d.cpp ok

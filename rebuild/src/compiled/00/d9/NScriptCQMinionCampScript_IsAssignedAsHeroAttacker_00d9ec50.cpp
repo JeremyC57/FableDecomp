@@ -12,12 +12,7 @@
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
 //   ?IsHeroDressedAsLady@CV_BordelloScript@NScript@@QAE_NXZ; every CV_/CQ_ script class is spelled ...@NScript@@ and
 //   class-keyed); this row's class is now declared there (wrapped, struct->class). Same bytes.
-template <class T> class CCountedPointer { public:       // CCountedPointer<T> (8 bytes)
-    T*    Data;
-    void* Info;
-    T* operator->() const { return Data; }
-    T& operator*() const { return *Data; }
-};
+#include "engine/CCountedPointer.h"
 class CScriptThing { public:                              // vtable 0x01238C8C
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009();
     virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();

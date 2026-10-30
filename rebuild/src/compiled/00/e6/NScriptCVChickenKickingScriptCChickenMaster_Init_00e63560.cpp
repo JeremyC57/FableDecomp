@@ -8,16 +8,7 @@
 // Layout: Ego_r.pdb CChickenMaster (entity offsets equal retail): ParentClass +0x14, PMasterData +0x18, members from +0x1c;
 //   the parent level script's members sit at Ego_r offset - 0x14 (retail CScriptBase is 0x40).
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CCPPointerInfo {
-public:
-    unsigned long RefCount;
-};
-template <class T> class CCountedPointer {
-public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-};
+#include "engine/CCountedPointer.h"
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"

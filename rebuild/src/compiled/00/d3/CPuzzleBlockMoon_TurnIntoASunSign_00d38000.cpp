@@ -16,11 +16,7 @@ class CCharString { public:
     ~CCharString();                                      // 0x0099EAE0
 };
 class CCPPointerInfo;
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer& operator=(const CCountedPointer& other);   // 0x00704580
-};
+#include "engine/CCountedPointer.h"
 class C3DVector { public: float X, Y, Z; };
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

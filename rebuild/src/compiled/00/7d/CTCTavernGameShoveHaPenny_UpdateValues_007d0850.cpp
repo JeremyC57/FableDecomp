@@ -57,12 +57,14 @@ class CTCHeroOnlineScoreboard { public:
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0
 };
-class CPlayerManager { public:
-    const CPlayer& GetMainPlayer() const;          // 0x00449960
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CMainGameComponent { public:
     unsigned char   _pad_0x00[0x1c];
     CPlayerManager* PlayerManager;           // +0x1c
+    const CPlayerManager& PeekPlayerManager() const { return *PlayerManager; }   // FableWin.pdb ?PeekPlayerManager@CMainGameComponent@@QBEABVCPlayerManager@@XZ
 };
 extern CMainGameComponent* g_pMainGameComponent;   // 0x013B86A0
 
@@ -121,7 +123,7 @@ bool CTCTavernGameShoveHaPenny::UpdateValues()
             stats->PrizeGivenShoveHaPenny = true;
             GivePrize();
         }
-        CThing* hero = g_pMainGameComponent->PlayerManager->GetMainPlayer().GetPControlledCreature();
+        CThing* hero = g_pMainGameComponent->PeekPlayerManager().GetMainPlayer().GetPControlledCreature();
         CTCHeroOnlineScoreboard* scoreboard;
         hero->GetInterface(&scoreboard, 0x10d);
         scoreboard->UpdateScoreForActivity(0x19, Score, false);

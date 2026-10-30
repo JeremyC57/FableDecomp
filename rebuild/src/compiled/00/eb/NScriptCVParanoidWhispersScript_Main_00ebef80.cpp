@@ -26,11 +26,7 @@ public:
     ~CCharString();                                     // 0x0099EAE0
 };
 void* __cdecl operator new(unsigned int bytes);         // 0x00BFEA1A (MSVCR71)
-template <class T> class CCountedPointer {
-public:
-    T* Data;
-    void* Info;
-};
+#include "engine/CCountedPointer.h"
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 #include "engine/CLevelScriptBase.h"

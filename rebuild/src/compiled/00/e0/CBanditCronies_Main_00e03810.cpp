@@ -25,10 +25,7 @@ class CDefString { public:                                      // 4 bytes: a de
 extern "C" int __cdecl rand();                           // 0x00BFEB16 (MSVCR71)
 
 class CCPPointerInfo;                                   // CCountedPointer's shared block
-template <class T> class CCountedPointer { public:               // destroyed by the out-of-line ~CScriptThing here
-    T*              Data;
-    CCPPointerInfo* Info;
-};
+#include "engine/CCountedPointer.h"
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT

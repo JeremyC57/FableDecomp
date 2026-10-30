@@ -28,28 +28,7 @@ class CCharString { public:                                     // 4 bytes: the 
 };
 void operator delete(void* p);                                  // 0x00BFE9BC (MSVCR71)
 
-class CCPPointerInfo { public:                                  // CCountedPointer's shared block
-    long RefCount;                                              // +0
-    void (__fastcall* DeleteFunc)(void* data);                  // +4
-    void* Data;                                                 // +8
-};
-template <class T> class CCountedPointer { public:
-    T*              Data;
-    CCPPointerInfo* Info;
-    CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
-    {
-        if (Info) {
-            --Info->RefCount;
-            if (Info->RefCount == 0) {
-                Info->DeleteFunc(Info->Data);
-                delete Info;
-            }
-        }
-        Data = 0;
-        Info = 0;
-    }
-};
+#include "engine/CCountedPointer.h"
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).

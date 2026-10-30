@@ -12,7 +12,9 @@ typedef unsigned __int64 RetailUID;
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;CCharString():PStringData(0){}CCharString(const char*,long=-1);CCharString(const CCharString&);~CCharString();bool FastCompare(const CCharString&)const;};
-class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;CCountedPointer();CCountedPointer(const CCountedPointer&);~CCountedPointer();};
+class CCPPointerInfo;
+#include "engine/CCountedPointer.h"
+
 class CEntityScriptBindingBase;class CActiveEntityScriptBase;class CSpawnedFuncBase;
 namespace std{
 template<class A,class B>struct pair{A first;B second;};template<class T>class allocator{};

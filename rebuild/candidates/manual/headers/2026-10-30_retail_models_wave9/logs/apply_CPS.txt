@@ -1,0 +1,6 @@
+edit rebuild/src/compiled/00/a9/C3DMeshFileRootChunk_GetMaterialList_00a9b1a0.cpp ok
+edit rebuild/src/compiled/00/ac/C3DMeshFileMaterialListChunk_FindFirstEngineMaterial_00ac0910.cpp ok
+edit rebuild/src/compiled/00/ab/C3DMeshFileSubMeshChunk_FindFirstBone_00aba6a0.cpp ok
+edit rebuild/src/compiled/00/aa/C3DAnimFileHelpersChunk_GetMovementVector_00aae5b0.cpp ok
+edit rebuild/src/compiled/00/ac/C3DMeshFileMaterialListChunk_FindFirstMaterial_00ac04c0.cpp ok
+# 5 ok

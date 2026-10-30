@@ -37,7 +37,7 @@ class CScriptThing { public:                                   // 12 bytes, vtab
 #include "engine/CSpawnedFunc.h"                         // vtable per instantiation; ctor inline, slot 4 SuspendableProcess
 class CScriptDataBase;
 class CEntityScriptBase;
-template <class T> class CCountedPointer { public: T* Data; void* Info; };
+#include "engine/CCountedPointer.h"
 class __declspec(novtable) CEntityScriptBindingBase { public:
     virtual const CCharString& GetEntityScriptName() const = 0;
 };
