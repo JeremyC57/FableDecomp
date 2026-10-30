@@ -11,7 +11,7 @@
 //   AddNumberTriggers 0x00C2E4D0, whose callee spellings this row reuses. The manifest label
 //   "Thiscall_AnimationEventTriggerProcess" is a guess.
 // Callees: CItemDispatcher::Find(const CString&, long*) 0x00C101D0 (bound so by the landed 0x00C1EEE0), CString::GetHash
-//   0x00C0DBB0, CLoadLog::AddMessage 0x00C307E0, CDebugStream::operator<< 0x00C0DEC0 (text) / 0x00C0DF10 (unsigned long) /
+//   0x00C0DBB0, CLoadLog::AddMessage 0x00C307E0, CString::operator<< 0x00C0DEC0 (text) / 0x00C0DF10 (unsigned long) /
 //   0x00C0DEA0 (CString), CString(const char*) 0x00C0BFE0 (the by-value name built in its argument slot),
 //   CEventTriggerRef::CEventTriggerRef(CItemDispatcher*, CString, bool) 0x00C1EEE0 (the criteria-string overload of the
 //   number constructor 0x00C1EE60; landed as CItemAction::CItemAction, NAME_FIXES.tsv), CEventTriggerRef::GetDriverCount
@@ -31,17 +31,13 @@ public:
     ~CString();                              // 0x00C0BA40
     unsigned long GetHash() const;           // 0x00C0DBB0
     operator const char*() const { return m_pchData; }
-};
-
-struct CDebugStream {                        // libpk message text
-    char* m_pBuffer;
-    CDebugStream& __fastcall operator<<(const char* text);       // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(const CString& text);    // 0x00C0DEA0
-    CDebugStream& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
+    CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
+    CString& __fastcall operator<<(const CString& text);    // 0x00C0DEA0
+    CString& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
 };
 
 struct CLoadLog {
-    CDebugStream& AddMessage();              // 0x00C307E0
+    CString& AddMessage();                   // 0x00C307E0 ?AddMessage@CLoadLog@@QAEAAVCString@@XZ
 };
 
 template <class T>

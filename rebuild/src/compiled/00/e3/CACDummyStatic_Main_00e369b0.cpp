@@ -1,4 +1,5 @@
-// CAC_DummyStatic::Main() -- archery static dummy: remember the facing angle, then each contest round wait for the contest to start, wobble the dummy, wait for a hero arrow hit, score it, play the impact sound and spin, turn back and pause
+// NScript::CV_ArcheryCompetitionScript::CAC_DummyStatic::Main() -- archery static dummy: remember the facing angle, then each contest round wait for the contest to start, wobble the dummy, wait for a hero arrow hit, score it, play the impact sound and spin, turn back and pause
+// Identity (naming wave 11): ?Main@CAC_DummyStatic@CV_ArcheryCompetitionScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E315C slot 1 is stored by the factory 0x00E33BC0 registered as "AC_DummyStatic"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E369B0, 752 bytes. Entity-script slot 1 (Main) of the V_ArcheryCompetition family.
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, CV_ArcheryCompetitionScript::CalculateScoreForHit
 //   0x00E36CA0, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0; Me's CScriptThing slots 10 GetAngleXY
@@ -34,16 +35,23 @@ class CScriptDef { public:
     long          ArcheryDummyStaticPoints;              // +0x37c (descriptive)
 };
 extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C
-struct CV_ArcheryCompetitionScript {
+namespace NScript {
+class CV_ArcheryCompetitionScript {
+public:
     unsigned char _pad00[0xa0];
     long          ContestState;                          // +0xa0
     void CalculateScoreForHit(long points, float distance);   // 0x00E36CA0
+public:
+    class CAC_DummyStatic;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_ArcheryCompetitionScript;
 struct CQ_SunnyvaleMasterData;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CAC_DummyStatic : public CEntityScriptBase {
+namespace NScript {
+class CV_ArcheryCompetitionScript::CAC_DummyStatic : public CEntityScriptBase {
 public:
         CV_ArcheryCompetitionScript* ParentClass;            // +0x14
     CQ_SunnyvaleMasterData*      PMasterData;            // +0x18
@@ -52,8 +60,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CAC_DummyStatic::Main()
+void NScript::CV_ArcheryCompetitionScript::CAC_DummyStatic::Main()
 {
     float angle = Me.GetAngleXY();
     Game->NewScriptFrame();

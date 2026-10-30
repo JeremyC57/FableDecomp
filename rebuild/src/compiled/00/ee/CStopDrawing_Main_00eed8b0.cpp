@@ -1,5 +1,6 @@
-// CStopDrawing::Main() -- alextest script: until done, hide Me (EntitySetAsDrawable false) once the hero talks to it, hits it, or hits it with any special ability other than ability 14
+// NScript::CPersonalScript_alextestScript::CStopDrawing::Main() -- alextest script: until done, hide Me (EntitySetAsDrawable false) once the hero talks to it, hits it, or hits it with any special ability other than ability 14
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CStopDrawing@CPersonalScript_alextestScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F58AC slot 1 is stored by the factory 0x00EED7D0 registered as "StopDrawing"
 // Retail 0x00EED8B0, 391 bytes. Callees: CScriptThing(const CScriptThing&) 0x004ABE90 (filter member), RegisterFilter
 // 0x00F35B10, ~CIsThingAlive 0x00E241B0 (out of line in this module), IsDone 0x00F35B30, CCharString(const char*, long)
 // 0x0099EBF0 / ~CCharString 0x0099EAE0 ("SCRIPT_NAME_HERO" 0x0125D1C8); CScriptThing (vtable 0x01238C8C) slots 21
@@ -36,13 +37,20 @@ namespace NScript {
 }
 using NScript::CIsThingAlive;
 extern const char g_scriptNameHero[];              // 0x0125D1C8 "SCRIPT_NAME_HERO"
-class CPersonalScript_alextestScript;
+namespace NScript {
+class CPersonalScript_alextestScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CStopDrawing;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CPersonalScript_alextestScript;
 class CalextestData;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CStopDrawing : public CEntityScriptBase {
+namespace NScript {
+class CPersonalScript_alextestScript::CStopDrawing : public CEntityScriptBase {
 public:
         CPersonalScript_alextestScript* ParentClass;   // +0x14
     CalextestData*         PMasterData;            // +0x18
@@ -50,8 +58,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CStopDrawing::Main()
+void NScript::CPersonalScript_alextestScript::CStopDrawing::Main()
 {
     {
         CIsThingAlive filter(Me);

@@ -119,20 +119,20 @@ struct CAudioContext {
 };
 extern CAudioContext g_AudioContext;                     // 0x0143BDB0
 
-struct CAudioSound;                                      // the sound a source plays (landed CAudioSource rows)
+class CAudioObject;                                      // the sound a source plays (landed CAudioSource rows)
 
 struct CVtable_012B5C10 {                                // the libpk voice base, vtable 0x012B5C10 (no RTTI)
     virtual ~CVtable_012B5C10();                         // slot 0
-    virtual long Initialise(CAudioSound* sound);         // slot 1 (0x00C596E0)
+    virtual long Initialise(CAudioObject* sound);         // slot 1 (0x00C596E0)
     unsigned char _body04[0x54];                         // +0x04 .. +0x58 (base state, not touched here)
 };
 
 struct CAudioSource : CVtable_012B5C10 {                 // the OpenAL source (vtables 0x012B8CC8 / 0x012B8D48 / 0x012BEE40)
     unsigned long  SourceId;                             // +0x58 the AL source name
-    virtual long Initialise(CAudioSound* sound);         // slot 1 (0x00C72930)
+    virtual long Initialise(CAudioObject* sound);         // slot 1 (0x00C72930)
 };
 
-long CAudioSource::Initialise(CAudioSound* sound)
+long CAudioSource::Initialise(CAudioObject* sound)
 {
     long result = CVtable_012B5C10::Initialise(sound);
     if (result < 0)

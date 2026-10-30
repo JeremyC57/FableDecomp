@@ -1,4 +1,5 @@
-// CEndGameScarletRobe::Main() -- entity-script Main (vtable 0x012F7338 slot 1): register an is-alive functor over Me, run one script frame, then (unless done) keep trying, a frame at a time, to start scripting Me through a fresh local handle
+// NScript::CQ_CinemaTestScript::CDummy::Main() -- entity-script Main (vtable 0x012F7338 slot 1): register an is-alive functor over Me, run one script frame, then (unless done) keep trying, a frame at a time, to start scripting Me through a fresh local handle
+// Identity (naming wave 11): ?Main@CDummy@CQ_CinemaTestScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F7338 slot 1 is stored by the factory 0x00F01B60 registered as "Dummy"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F01C50, 205 bytes (+ int3 padding).
 // Identity: the catalog/BSim label "NScript::CQ_EndGameFocalSitesScript::CEndGameScarletRobe::Main" is a 0.58-similarity guess;
 //   the body is slot 1 of vtable 0x012F7338, built by the 0x1c-byte factory 0x00F01B60 (registered under the name "Dummy"
@@ -59,15 +60,25 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_LOW = 1 };
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-struct CEndGameScarletRobe : public CEntityScriptBase {
+namespace NScript {
+class CQ_CinemaTestScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CDummy;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_CinemaTestScript;
+namespace NScript {
+class CQ_CinemaTestScript::CDummy : public CEntityScriptBase {
+public:
         void*                 ParentClass;                 // +0x14
     void*                 PMasterData;                 // +0x18
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CEndGameScarletRobe::Main()
+void NScript::CQ_CinemaTestScript::CDummy::Main()
 {
     SetPredicate(CScriptThingFunctor_00ef7ab0(Me));
     Game->NewScriptFrame();

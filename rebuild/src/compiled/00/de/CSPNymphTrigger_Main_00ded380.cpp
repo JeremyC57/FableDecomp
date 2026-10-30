@@ -1,5 +1,6 @@
-// CSP_NymphTrigger::Main() -- Secret Passage nymph trigger: wait (frame by frame) until the hero comes within 10 units of the trigger, then spawn the succubus nymph at the trigger with the hero-seeking script
+// NScript::CQ_SecretPassageScript::CSP_NymphTrigger::Main() -- Secret Passage nymph trigger: wait (frame by frame) until the hero comes within 10 units of the trigger, then spawn the succubus nymph at the trigger with the hero-seeking script
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CSP_NymphTrigger@CQ_SecretPassageScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DDD60 slot 1 is stored by the factory 0x00DED290 registered as "SP_NymphTrigger"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DED380, length 208 bytes (`ret`).
 // Callees: IsDistanceBetweenThingsUnder(const CScriptThing&, const CScriptThing&, float) @ 0x00CBE2FF (`__fastcall`),
 // CEntityScriptBase::IsActiveThreadTerminating @ 0x00F35B30, CCharString::CCharString(const char*, long) @ 0x0099EBF0,
@@ -28,13 +29,20 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-struct CQ_SecretPassageScript;
+namespace NScript {
+class CQ_SecretPassageScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CSP_NymphTrigger;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_SecretPassageScript;
 struct CQ_SunnyvaleMasterData;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CSP_NymphTrigger : public CEntityScriptBase {
+namespace NScript {
+class CQ_SecretPassageScript::CSP_NymphTrigger : public CEntityScriptBase {
 public:
         CQ_SecretPassageScript* ParentClass;           // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
@@ -42,8 +50,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CSP_NymphTrigger::Main()
+void NScript::CQ_SecretPassageScript::CSP_NymphTrigger::Main()
 {
     while (!IsDistanceBetweenThingsUnder(Game->GetHero(), Me, 10.0f)) {
         Game->NewScriptFrame();

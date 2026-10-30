@@ -1,5 +1,6 @@
-// CSummonerMinion::Main() -- Summoning-the-ship minion script: hide in limbo until the summoner attacks reach this minion's wave, then (wave 1 targets the hero) appear, fade in, wait for every summoner to die and remove itself
+// NScript::CQ_SummoningTheShipScript::CSummonerMinion::Main() -- Summoning-the-ship minion script: hide in limbo until the summoner attacks reach this minion's wave, then (wave 1 targets the hero) appear, fade in, wait for every summoner to die and remove itself
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CSummonerMinion@CQ_SummoningTheShipScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DE2B8 slot 1 is stored by the factory 0x00DF2960 registered as "SummonerMinion"
 // Retail 0x00DF2AB0, 368 bytes, `ret`.
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) 0x004ABE90, the filter registration 0x00F35B10,
 // CScriptThing::~CScriptThing 0x004AA840, IsDone 0x00F35B30, FadeInThing 0x00CBE7AA (__fastcall CScriptThing*, float 2.0);
@@ -31,19 +32,26 @@ namespace NScript {
 namespace NScript {
 }
 using NScript::CIsThingAlive;
-struct CQ_SummoningTheShipScript {
+namespace NScript {
+class CQ_SummoningTheShipScript {
+public:
     unsigned char _pad00[0x48];
     long          SummonersAlive;                       // +0x48
     long          CurrentAttackWave;                    // +0x4c
     bool          LighthouseStarted;                    // +0x50
     bool          SummonerAttacksStarted;               // +0x51
+public:
+    class CSummonerMinion;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CQ_SummoningTheShipScript;
 struct CQ_SunnyvaleMasterData;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CSummonerMinion : public CEntityScriptBase {
+namespace NScript {
+class CQ_SummoningTheShipScript::CSummonerMinion : public CEntityScriptBase {
 public:
         CQ_SummoningTheShipScript* ParentClass;             // +0x14
     CQ_SunnyvaleMasterData*    PMasterData;             // +0x18
@@ -52,8 +60,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CSummonerMinion::Main()
+void NScript::CQ_SummoningTheShipScript::CSummonerMinion::Main()
 {
     {
         CIsThingAlive filter(Me);

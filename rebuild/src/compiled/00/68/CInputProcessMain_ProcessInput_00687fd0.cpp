@@ -93,8 +93,11 @@ class CConsole { public:                                  // vtable 0x0129C600, 
     bool          IsOpen;                          // +0x78 (descriptive)
     unsigned char _body[0x9c - 0x79];
     CConsole();                                    // 0x009ECD80
-    static CConsole* __fastcall Get();             // 0x00414C90
     bool ProcessInput(const CInputEvent& event);   // 0x009EA540
+};
+template <class T> class CTBaseSingleton {
+public:
+    static T& __fastcall Get();                    // 0x00414C90 (CConsole) ?Get@?$CTBaseSingleton@VCConsole@@@@SIAAVCConsole@@XZ (FableWin)
 };
 struct CCountedPointer_CConsole {
     CConsole* m_pObject;
@@ -139,7 +142,7 @@ void CInputProcessMain::ProcessInput(const CInputEvent& event, CProcessedInput& 
         g_pConsole.Reset(new CConsole());
     if (g_pConsole.m_pObject->IsOpen)
         return;
-    if (CConsole::Get()->ProcessInput(event))
+    if (CTBaseSingleton<CConsole>::Get().ProcessInput(event))
         processed.SetHandled();
     if (event.GetType() == 1)
         return;

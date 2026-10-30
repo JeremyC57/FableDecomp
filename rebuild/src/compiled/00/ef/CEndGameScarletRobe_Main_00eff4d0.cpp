@@ -1,4 +1,5 @@
-// CEndGameScarletRobe::Main() -- entity-script Main (vtable 0x012F701C slot 1): register an is-alive functor over Me, run one script frame, then (unless done) flag Me as having information and keep trying, a frame at a time, to start scripting Me through a fresh local handle
+// NScript::CTonyTestScriptsScript::CDummy::Main() -- entity-script Main (vtable 0x012F701C slot 1): register an is-alive functor over Me, run one script frame, then (unless done) flag Me as having information and keep trying, a frame at a time, to start scripting Me through a fresh local handle
+// Identity (naming wave 11): ?Main@CDummy@CTonyTestScriptsScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F701C slot 1 is stored by the factory 0x00EFF3F0 registered as "Dummy"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EFF4D0, 226 bytes (+ int3 padding).
 // Identity: the catalog/BSim label "NScript::CQ_EndGameFocalSitesScript::CEndGameScarletRobe::Main" is a 0.58-similarity guess;
 //   the body is slot 1 of vtable 0x012F701C, built by the 0x1c-byte factory 0x00EFF3F0 (registered under the name "Dummy"
@@ -59,15 +60,25 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-struct CEndGameScarletRobe : public CEntityScriptBase {
+namespace NScript {
+class CTonyTestScriptsScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CDummy;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CTonyTestScriptsScript;
+namespace NScript {
+class CTonyTestScriptsScript::CDummy : public CEntityScriptBase {
+public:
         void*                 ParentClass;                 // +0x14
     void*                 PMasterData;                 // +0x18
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CEndGameScarletRobe::Main()
+void NScript::CTonyTestScriptsScript::CDummy::Main()
 {
     SetPredicate(CScriptThingFunctor_00ef7ab0(Me));
     Game->NewScriptFrame();

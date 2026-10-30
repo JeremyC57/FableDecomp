@@ -41,8 +41,8 @@ class CScriptGameResourceObjectScriptedThingBase {      // 0x10 bytes, vtable 0x
 public:
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    void MoveToPosition(const C3DVector& position, float speed, EScriptEntityMoveType type, bool a, bool b);   // 0x007E72F0
-    unsigned char _body[0x10];
+    virtual void MoveToPosition(const C3DVector& position, float speed, EScriptEntityMoveType type, bool a, bool b);   // 0x007E72F0 (header slot 4; direct call on the local)
+    unsigned char _body[0xc];                           // + the vptr = 0x10 bytes
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

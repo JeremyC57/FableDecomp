@@ -1,5 +1,5 @@
 // CEngineSceneGrid::RenderCellClipped(ulong x, ulong y, EEngineRenderLayer layer, const CEngineCamera& camera, bool clipped, CEngineSceneRenderStats& stats) -- render one grid cell against the camera: skip empty cells and cells without the layer, clip the cell box unless already inside, render the cell's primitives of the layer that pass their own camera test, recurse into the four child cells and mark the cell rendered
-// Leaf: RenderCellClipped
+// Leaf: ?RenderCellClipped@CEngineSceneGrid@@QAEXKKW4EEngineRenderLayer@@ABVCEngineCamera@@_NAAVCEngineSceneRenderStats@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B92500, length 352 bytes (with int3 padding; body 0x157), `ret 18h`.
 // PDB: ?RenderCellClipped@CEngineSceneGrid@@QAEXKKW4EEngineRenderLayer@@ABVCEngineCamera@@_NAAVCEngineSceneRenderStats@@@Z.
 // Callees: CEngineSceneGrid::GetCellRenderMask(ulong, ulong) @ 0x00B91DC0, GetCellBoundingBoxAndDrawDistance(C3DBoundingBox&,
@@ -13,6 +13,7 @@
 //   box/distance come back through out-parameters; the chain is zeroed after the manager load.
 class CEngineCamera;
 class CEngineSceneRenderStats;
+enum EEngineRenderLayer { };
 class CEngineSubPrimitiveBase;
 
 class C3DBoundingBox { public: float MinX, MinY, MinZ, MaxX, MaxY, MaxZ; };
@@ -84,13 +85,15 @@ class CEngineSceneGrid { public:
     CEngineSceneGrid*             LevelDown;     // +0x0c
     unsigned long                 Size;          // +0x10
     CArray<CEngineSceneGridCell*> GridCells;     // +0x14
-    unsigned long GetCellRenderMask(unsigned long x, unsigned long y);   // 0x00B91DC0
+private:
+    unsigned long GetCellRenderMask(unsigned long x, unsigned long y);   // 0x00B91DC0 ?GetCellRenderMask@CEngineSceneGrid@@AAEKKK@Z (Ego_r: private)
+public:
     bool GetCellBoundingBoxAndDrawDistance(C3DBoundingBox& box, float& drawDistance, unsigned long x, unsigned long y);   // 0x00B919C0
-    void RenderCellClipped(unsigned long x, unsigned long y, long layer, const CEngineCamera& camera, bool clipped,
+    void RenderCellClipped(unsigned long x, unsigned long y, EEngineRenderLayer layer, const CEngineCamera& camera, bool clipped,
                            CEngineSceneRenderStats& stats);
 };
 
-void CEngineSceneGrid::RenderCellClipped(unsigned long x, unsigned long y, long layer, const CEngineCamera& camera, bool clipped,
+void CEngineSceneGrid::RenderCellClipped(unsigned long x, unsigned long y, EEngineRenderLayer layer, const CEngineCamera& camera, bool clipped,
                                          CEngineSceneRenderStats& stats)
 {
     CEngineSceneGridCell* cell = GridCells[Size * y + x];

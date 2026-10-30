@@ -1,5 +1,6 @@
-// CPreMeleeDummy::Main() -- the guild training dummy (nested entity script of CQ_GuildTrainingPreMeleeScript): untargetable until pre-melee mode 1, then wobble when the hero hits it (counting hits); in mode 2 spin when hit with the training stick, wobble on any other hero hit
+// NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::Main() -- the guild training dummy (nested entity script of CQ_GuildTrainingPreMeleeScript): untargetable until pre-melee mode 1, then wobble when the hero hits it (counting hits); in mode 2 spin when hit with the training stick, wobble on any other hero hit
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CPreMeleeDummy@CQ_GuildTrainingPreMeleeScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012CF858 slot 1 is stored by the factory 0x00D51F00 registered as "PreMeleeDummy"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D51FC0, length 592 bytes, plain ret.
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30; CCharString(const char*, long) 0x0099EBF0 /
 // ~CCharString 0x0099EAE0; Me's CScriptThing vtable (0x01238C8C) slots 21 MsgIsHitBy (+0x54), 24 MsgIsHitByWithWeapon
@@ -24,23 +25,34 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-struct CQ_GuildTrainingPreMeleeScript {
+namespace NScript {
+class CQ_GuildTrainingPreMeleeScript {
+public:
     unsigned char _body[0x48];                         // CQuestScriptBase, Game +0x40, Data +0x44
     bool MazeArrived;                                  // +0x48
     bool HeroSleeps;                                   // +0x49
     bool WhisperCutsceneFinished;                      // +0x4a
     long PreMeleeMode;                                 // +0x4c
     long DummyHits;                                    // +0x50
+public:
+    class CPreMeleeDummy;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CQ_GuildTrainingPreMeleeScript;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
-struct CPreMeleeDummy : CEntityScriptBase {
+namespace NScript {
+class CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy : public CEntityScriptBase {
+public:
     CQ_GuildTrainingPreMeleeScript* ParentClass;       // +0x14
     void*                           PMasterData;       // +0x18
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private
+public:
 };
+}
 
-void CPreMeleeDummy::Main()
+void NScript::CQ_GuildTrainingPreMeleeScript::CPreMeleeDummy::Main()
 {
     Game->EntitySetAsKillable(Me, false, true);
     Game->EntitySetTargetable(Me, false);

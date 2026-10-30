@@ -1,4 +1,5 @@
-// CSecretWhisperingFriend::Init() -- hand the friend's own thing to the game interface (slot 477 with 1), then remember where it starts (StartPos = Me.GetPos())
+// NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend::Init() -- hand the friend's own thing to the game interface (slot 477 with 1), then remember where it starts (StartPos = Me.GetPos())
+// Identity (naming wave 11): ?Init@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F11F8 slot 2 is stored by the factory 0x00EC0A50 registered as "SecretWhisperingFriend"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC0B00, 50 bytes (vtable entry at 0x012F1200 of the script's table).
 // Callees: the game interface's virtual slot 477 (+0x774, `(const CScriptThing&, long)`: the same slot the
 // landed CBurningPerson::Init 0x00EED580 / CMansLover::Init 0x00EC9CB0 call), CScriptThing::GetPos
@@ -39,13 +40,21 @@ class CGameScriptInterfaceBase { public:                // only the slot used is
     virtual void Slot477(const CScriptThing& thing, long flag);   // slot 477 (+0x774)
 };
 
-struct CV_ParanoidWhispersScript;
+namespace NScript {
+class CV_ParanoidWhispersScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CSecretWhisperingFriend;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CV_ParanoidWhispersScript;
 struct CQ_SunnyvaleMasterData;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-struct CSecretWhisperingFriend : CEntityScriptBase {
+namespace NScript {
+class CV_ParanoidWhispersScript::CSecretWhisperingFriend : public CEntityScriptBase {
+public:
     CV_ParanoidWhispersScript* ParentClass;      // +0x14
     CQ_SunnyvaleMasterData*    PMasterData;      // +0x18
     C3DVector                  StartPos;         // +0x1C
@@ -53,8 +62,9 @@ private:
     virtual void Init();   // PDB ?Init@<entity>@..@@EAEXXZ: every entity override is private (slot 2)
 public:
 };
+}
 
-void CSecretWhisperingFriend::Init()
+void NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend::Init()
 {
     Game->Slot477(Me, 1);
     StartPos = Me.GetPos();

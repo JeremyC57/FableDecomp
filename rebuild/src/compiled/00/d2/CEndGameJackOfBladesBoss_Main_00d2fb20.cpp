@@ -1,5 +1,6 @@
-// CEndGameJackOfBladesBoss::Main() -- the final boss entity script: watch that Jack stays alive, mark him on the mini-map with the quest-core orb, wait for the boss battle script to flag the fight ready, then point Jack at the hero and idle until the script is done
+// NScript::CQ_EndGameBossBattleScript::CEndGameJackOfBladesBoss::Main() -- the final boss entity script: watch that Jack stays alive, mark him on the mini-map with the quest-core orb, wait for the boss battle script to flag the fight ready, then point Jack at the hero and idle until the script is done
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CEndGameJackOfBladesBoss@CQ_EndGameBossBattleScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012CC6B4 slot 1 is stored by the factory 0x00D2FA40 registered as "EndGameJackOfBladesBoss"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D2FB20, length 222 bytes (+ int3 padding), `ret`.
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90 and ~CScriptThing @ 0x004AA840 (the CIsThingAlive
 // filter, vtable 0x012C32F0), the filter registration @ 0x00F35B10 and IsDone @ 0x00F35B30 on `this` (labels propagated;
@@ -37,15 +38,22 @@ namespace NScript {
 namespace NScript {
 }
 using NScript::CIsThingAlive;
-struct CQ_EndGameBossBattleScript {
+namespace NScript {
+class CQ_EndGameBossBattleScript {
+public:
     unsigned char _pad[0x48];
     bool JackReadyToFight;                         // +0x48
+public:
+    class CEndGameJackOfBladesBoss;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CQ_EndGameBossBattleScript;
 struct CQ_SunnyvaleMasterData;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CEndGameJackOfBladesBoss : public CEntityScriptBase {
+namespace NScript {
+class CQ_EndGameBossBattleScript::CEndGameJackOfBladesBoss : public CEntityScriptBase {
 public:
         CQ_EndGameBossBattleScript* ParentClass;       // +0x14
     CQ_SunnyvaleMasterData*     PMasterData;       // +0x18
@@ -53,8 +61,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CEndGameJackOfBladesBoss::Main()
+void NScript::CQ_EndGameBossBattleScript::CEndGameJackOfBladesBoss::Main()
 {
     {
         CIsThingAlive filter(Me);

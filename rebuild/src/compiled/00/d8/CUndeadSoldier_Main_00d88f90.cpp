@@ -1,5 +1,6 @@
-// CUndeadSoldier::Main() -- undead soldier entity script: alive filter on Me, then invulnerable and hostile until the hero comes within 15 units, then damageable for the rest of the script
+// NScript::CQ_HeroSoulsNostroScript::CUndeadSoldier::Main() -- undead soldier entity script: alive filter on Me, then invulnerable and hostile until the hero comes within 15 units, then damageable for the rest of the script
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CUndeadSoldier@CQ_HeroSoulsNostroScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D4F00 slot 1 is stored by the factory 0x00D88EC0 registered as "UndeadSoldier"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D88F90, length 265 bytes (+ int3 padding). Entity-script slot 1 (Main).
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 / ~CScriptThing @ 0x004AA840 (the CIsThingAlive filter, vtable
 // 0x012C32F0), the filter registration @ 0x00F35B10, IsActiveThreadTerminating @ 0x00F35B30, CGameScriptInterface slots 7
@@ -40,14 +41,23 @@ using NScript::CIsThingAlive;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CUndeadSoldier : public CEntityScriptBase {
+namespace NScript {
+class CQ_HeroSoulsNostroScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CUndeadSoldier;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_HeroSoulsNostroScript;
+namespace NScript {
+class CQ_HeroSoulsNostroScript::CUndeadSoldier : public CEntityScriptBase {
 public:
 private:
         virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CUndeadSoldier::Main()
+void NScript::CQ_HeroSoulsNostroScript::CUndeadSoldier::Main()
 {
     {
         CIsThingAlive filter(Me);

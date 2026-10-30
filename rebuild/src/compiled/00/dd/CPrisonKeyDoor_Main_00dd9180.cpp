@@ -1,5 +1,6 @@
-// CPrisonKeyDoor::Main() -- entity script: lock the warden's door until the hero has stolen the prison key; whenever the hero uses it meanwhile show the "door locked" game info, wait for it to be clicked past and pause five seconds; then unlock it
+// NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonKeyDoor::Main() -- entity script: lock the warden's door until the hero has stolen the prison key; whenever the hero uses it meanwhile show the "door locked" game info, wait for it to be clicked past and pause five seconds; then unlock it
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CPrisonKeyDoor@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DC544 slot 1 is stored by the factory 0x00DD90C0, registered as "StoreRoomDoor" / "TortureChamberDoor" / "BarracksDoor" / "PrisonKeyDoor" (site 0x00DD31FD..)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DD9180, length 302 bytes, plain `ret` (entity-script vtable slot at
 // 0x012DC548).
 // Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30 (on `this`), CScriptThing::MsgIsUsedBy(const
@@ -39,7 +40,15 @@ struct CQ_SunnyvaleMasterData {
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CPrisonKeyDoor : public CEntityScriptBase {
+namespace NScript {
+class CQ_PrisonEscapeRescueMotherScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CPrisonKeyDoor;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_PrisonEscapeRescueMotherScript;
+namespace NScript {
+class CQ_PrisonEscapeRescueMotherScript::CPrisonKeyDoor : public CEntityScriptBase {
 public:
         void*                   ParentClass;               // +0x14 (CQ_PrisonEscapeRescueMotherScript*)
     CQ_SunnyvaleMasterData* PMasterData;               // +0x18
@@ -47,8 +56,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CPrisonKeyDoor::Main()
+void NScript::CQ_PrisonEscapeRescueMotherScript::CPrisonKeyDoor::Main()
 {
     Game->EntitySetAsLocked(Me, true);
     while (!PMasterData->PrisonKeyStolenByHero) {

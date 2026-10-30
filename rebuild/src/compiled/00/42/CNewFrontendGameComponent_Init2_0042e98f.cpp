@@ -45,8 +45,10 @@ public:
 class CGraphicDataBank;
 class CMeshDataBank;
 class CInputManager;
-class CDefinitionManager;
-CDefinitionManager* GetDefinitionManager();              // 0x0043368D
+class CDefinitionManager { };                           // only passed on here
+class CStartupDefinitionManager : public CDefinitionManager { public:
+    static CStartupDefinitionManager& __fastcall Get();  // 0x0043368D ?Get@CStartupDefinitionManager@@SIAAV1@XZ (Ego_r / FableWin)
+};
 void __fastcall SetCurrentGraphicBank(CGraphicDataBank* bank);   // 0x00AEAA80
 namespace NGameText {
 class CDataBank {
@@ -116,7 +118,7 @@ void CNewFrontendGameComponent::Init2()
     m_pTextBank.Reset(new NGameText::CDataBank);
     m_pTextBank->OpenReadOnly(NLocalisation::GetTextBankName(), 0x100);
     NUISystem::CManager::Clear();
-    m_pFrontEndManager->Init(m_pFrontEndGraphicBank, m_pMeshBank, m_pInputManager, GetDefinitionManager());
+    m_pFrontEndManager->Init(m_pFrontEndGraphicBank, m_pMeshBank, m_pInputManager, &CStartupDefinitionManager::Get());
     m_pFrontEndManager->BuildComponents(!WindowsMediaPlayerInstalled);
     g_pDisplayManager->SetDisplayMode(C2DExtentsI(1024, 768), 16, SURFACE_MULTISAMPLE_NONE, 60);
 }

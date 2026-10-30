@@ -1,4 +1,6 @@
-// CDefinitionManager::GetDef<T>(const CCharString&, long, CDefPointer&) -- GetPDefFromClassIndex @ 0x009ADE10 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer is reassigned (old def released, new one addref'd) and the temporary released; true, else false; frame-pointer size TU
+// CDefinitionManager::GetDef<CFrontEndDef>(const CCharString&, long, CDefPointer<const CFrontEndDef>*) const -- GetPDefFromClassIndex @ 0x009ADE10 returns the def pointer through the hidden pointer homed in the dead key slot; on a hit the out pointer takes it
+// Leaf: ??$GetDef@VCFrontEndDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCFrontEndDef@@@@@Z
+// Identity (naming wave 11): ??$GetDef@VCFrontEndDef@@@CDefinitionManager@@QBE_NABVCCharString@@JPAV?$CDefPointer@$$CBVCFrontEndDef@@@@@Z (FableWin.pdb GetDef<CFrontEndDef> instantiation; the "FRONT_END" def of CNewFrontendGameComponent::InitialiseDefs 0x0042F722, which passes the def BY POINTER).
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004300FB, oracle length 101 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -68,19 +70,21 @@ template <class T> class CDefPointer { public:
     }
 };
 
+class CFrontEndDef;
 class CDefinitionManager { public:
     CDefPointer<const CDefClassBase> GetPDefFromClassIndex(const CCharString& name, long index) const;   // 0x009ADE10 ?GetPDefFromClassIndex@CDefinitionManager@@QBE?AV?$CDefPointer@$$CBVCDefClassBase@@@@ABVCCharString@@J@Z (hidden result pointer)
-    bool GetDef_004300fb(const CCharString& kind, long index, CDefPointer<const CDefClassBase>& out);
+    template <class T> bool GetDef(const CCharString& name, long index, CDefPointer<const T>* def) const;
 };
 
-bool CDefinitionManager::GetDef_004300fb(const CCharString& kind, long index, CDefPointer<const CDefClassBase>& out)
+template <class T> bool CDefinitionManager::GetDef(const CCharString& name, long index, CDefPointer<const T>* def) const
 {
     if (index <= 0)
         return false;
-    CDefPointer<const CDefClassBase> def = GetPDefFromClassIndex(kind, index);
-    if (def.m_p) {
-        out = def;
+    CDefPointer<const CDefClassBase> found = GetPDefFromClassIndex(name, index);
+    if (found.m_p) {
+        *(CDefPointer<const CDefClassBase>*)def = found;
         return true;
     }
     return false;
 }
+template bool CDefinitionManager::GetDef<CFrontEndDef>(const CCharString&, long, CDefPointer<const CFrontEndDef>*) const;

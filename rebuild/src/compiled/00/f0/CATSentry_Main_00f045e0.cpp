@@ -87,13 +87,14 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
+enum EScriptEntityMoveType { };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                        // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor; out-of-line copy 0x007E74D0
     bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
-    void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
+    virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType moveType, bool a, bool b);   // 0x007E72F0 (header slot 4; called directly on the local)
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -287,7 +288,7 @@ void CAT_Sentry::Main()
                             return;
 #pragma inline_depth()
                         }
-                    handle.MoveToPosition(exitPoint.GetPos(), 1.0f, 1, false, true);
+                    handle.MoveToPosition(exitPoint.GetPos(), 1.0f, (EScriptEntityMoveType)1, false, true);
                 }
                 while (!IsDistanceBetweenThingsUnder(Me, exitPoint, 2.0f)) {
                     Game->NewScriptFrame();

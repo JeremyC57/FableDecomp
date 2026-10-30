@@ -104,7 +104,7 @@ class CEngineSceneGrid { public:
  void* NativeVTable;unsigned long Level;CEngineSceneGrid* LevelUp;CEngineSceneGrid* LevelDown;unsigned long Size;
  CEngineSceneGridCell** GridCells;CEngineSceneGridCell** LastCell;CEngineSceneGridCell** EndCell;
  bool GetCellBoundingBoxAndDrawDistance(C3DBoundingBox&,float&,unsigned long,unsigned long); //00B919C0
- unsigned long GetCellRenderMask(unsigned long,unsigned long); //00B91DC0
+private: unsigned long GetCellRenderMask(unsigned long,unsigned long); public: //00B91DC0 (Ego_r: private)
  bool PreloadPrimitives(unsigned long,unsigned long,const CEngineCamera&,unsigned long); //00B91F50
  bool PreloadPrimitives(unsigned long,unsigned long,const C3DBoundingSphere&,unsigned long); //00B92D30
  void RenderCellClippedShadowBuffer(unsigned long,unsigned long,EEngineRenderLayer,const CShadowClipVolume&,bool,CEngineSceneRenderStats&); //00B92660

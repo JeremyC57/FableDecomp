@@ -101,7 +101,9 @@ public:
     bool                                 AllowRender;               // +0x161e1
     bool                                 Rendered;                  // +0x161e2
     long                                 DebugNoFramesUnableToRender;   // +0x161e4
-    double GetCurrentGameTime();                  // 0x00416231
+protected:
+    double GetCurrentGameTime() const;            // 0x00416231 ?GetCurrentGameTime@CMainGameComponent@@IBENXZ (Ego_r / FableWin)
+public:
     void ForceRender(long frames);
     virtual ~CMainGameComponent();
     virtual void v00();

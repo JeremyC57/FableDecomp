@@ -1,5 +1,6 @@
-// CSummonerAttacker::Main() -- a summoner guarding the Fire Heart: hide Me, wait until the quest activates this summoner's wave, fade Me in (with a blue health bar for summoner 1), then forever: script Me; while the hero is more than 15 units away keep the lightning-orb attack on the Fire Heart going and, when the hero hits Me, respawn either dead wardog minion near the hero; once the hero closes in, release Me, drop its minimap marker and wait until the hero backs off
+// NScript::CQ_SummoningTheShipScript::CSummonerAttacker::Main() -- a summoner guarding the Fire Heart: hide Me, wait until the quest activates this summoner's wave, fade Me in (with a blue health bar for summoner 1), then forever: script Me; while the hero is more than 15 units away keep the lightning-orb attack on the Fire Heart going and, when the hero hits Me, respawn either dead wardog minion near the hero; once the hero closes in, release Me, drop its minimap marker and wait until the hero backs off
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CSummonerAttacker@CQ_SummoningTheShipScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DE274 slot 1 is stored by the factory 0x00DF21F0 registered as "SummonerAttacker"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF2380, 1494 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "HUD_ORB_QUEST_CORE" 0x01258AB0, "HUD_QUEST_ICON_SUMMONER_BLUE" 0x012DE298, "FireHeart" 0x012DE154,
 //   "SCRIPT_NAME_HERO" 0x0125D1C8, "SummonerMinion" 0x012DE170, "CREATURE_MINION_WARDOG" 0x012CB9F4.
@@ -107,24 +108,33 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 void __fastcall FadeInThing(const CScriptThing& thing, float time);                               // 0x00CBE7AA
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
-struct CQ_SummonerScript {
+namespace NScript {
+class CQ_SummoningTheShipScript {
+public:
     unsigned char _pad00[0x4c];
     long WaveSummoner;                                  // +0x4c
     unsigned char _pad50;
     bool WaveActive;                                    // +0x51
+public:
+    class CSummonerAttacker;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CQ_SummoningTheShipScript;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
-struct CSummonerAttacker : CEntityScriptBase {
-    CQ_SummonerScript* ParentClass;                     // +0x14
+namespace NScript {
+class CQ_SummoningTheShipScript::CSummonerAttacker : public CEntityScriptBase {
+public:
+    CQ_SummoningTheShipScript* ParentClass;                     // +0x14
     void*              PMasterData;                     // +0x18
     long               SummonerIndex;                   // +0x1c
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CSummonerAttacker::Main()
+void NScript::CQ_SummoningTheShipScript::CSummonerAttacker::Main()
 {
     {
         CIsThingAlive filter(Me);

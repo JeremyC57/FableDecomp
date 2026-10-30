@@ -1,5 +1,5 @@
 // CEngineScene::RenderEntireScene(EEngineRenderLayer layer) -- render one layer without culling: every scene map's top grid level renders all its cells into the layer's stats, then each moving primitive of the layer is rendered through its type's primitive manager and stamped with the frame number when it drew
-// Leaf: RenderEntireScene
+// Leaf: ?RenderEntireScene@CEngineScene@@QAEXW4EEngineRenderLayer@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B943F0, length 336 bytes (with int3 padding; body 0x14a), `ret 4`.
 // PDB: ?RenderEntireScene@CEngineScene@@QAEXW4EEngineRenderLayer@@@Z (catalogued "CEngineSceneGrid::RenderAll", propagated).
 // Callees: map<long, CEngineSceneRenderStats>::operator[](const long&) @ 0x00B97B60 (on +0x2c), CEngineSceneGrid::
@@ -14,6 +14,8 @@
 // Shape: as 0x00B93F40, including its same-TU operator[] stand-in under auto_inline(off) (keeps `layer` in ebp); the chain
 //   local reuses the dead stats slot and is zeroed per primitive.
 class CEngineSceneRenderStats;
+enum EEngineRenderLayer { };
+enum EEngineOcclusionLayer { };
 class CEngineInternalPrimitiveBase;
 class CEngineSubPrimitiveBase;
 
@@ -50,7 +52,7 @@ public:
 };
 
 class CEngineSceneGrid { public:
-    void RenderCellAll(unsigned long x, unsigned long y, long layer, CEngineSceneRenderStats& stats);   // 0x00B92C20
+    void RenderCellAll(unsigned long x, unsigned long y, EEngineRenderLayer layer, CEngineSceneRenderStats& stats);   // 0x00B92C20
 };
 struct CGridPointer { CEngineSceneGrid* m_pObject; long* m_pCount; };
 class CEngineSceneMap { public:
@@ -68,18 +70,27 @@ template <class T> static T* Next(T* node)
     return node;
 }
 
-struct CRenderStatsMap {
+namespace std {
+template <class T> struct less;
+template <class T> class allocator;
+template <class T1, class T2> struct pair;
+template <class Key, class T, class Compare = less<Key>, class Alloc = allocator<pair<const Key, T> > > class map {
+public:
     void* m_header; unsigned long m_count;
-    CEngineSceneRenderStats& operator[](const long& key);   // 0x00B97B60 (stand-in body below)
-    CEngineSceneRenderStats& FindOrInsert(long key);         // descriptive: the tree lookup/insert the real body performs
+    T& operator[](const Key& key);              // 0x00B97B60 (stand-in body below)
+    T& FindOrInsert(Key key);                   // descriptive: the tree lookup/insert the real body performs
 };
+}
+typedef std::map<EEngineRenderLayer, CEngineSceneRenderStats> CRenderStatsMap;
 
 // Stand-in for the out-of-line map operator[] @ 0x00B97B60 (as in the landed 0x00B93F40), compiled above the graded function
 // under auto_inline(off) so VC7.1 sees that the key reference is only read. Only RenderEntireScene is graded.
 #pragma auto_inline(off)
-CEngineSceneRenderStats& CRenderStatsMap::operator[](const long& key)
+namespace std {
+template <> CEngineSceneRenderStats& map<EEngineRenderLayer, CEngineSceneRenderStats>::operator[](const EEngineRenderLayer& key)
 {
     return FindOrInsert(key);
+}
 }
 #pragma auto_inline(on)
 
@@ -95,10 +106,11 @@ class CEngineScene { public:
     CRenderStatsMap               LayerStats;     // +0x2c
     unsigned char                 _pad34[0x10];
     long                          CurrentCell;    // +0x44
-    void RenderEntireScene(long layer);
+public:
+    void RenderEntireScene(EEngineRenderLayer layer);
 };
 
-void CEngineScene::RenderEntireScene(long layer)
+void CEngineScene::RenderEntireScene(EEngineRenderLayer layer)
 {
     CEngineSceneRenderStats& stats = LayerStats[layer];
     CurrentCell = -1;

@@ -1,5 +1,6 @@
-// CDW5_Balv::Main() -- the balverine entity script: register an alive filter over Me, update once, wait frame by frame until Me is aware of the hero, give Me the hero as best enemy target, then idle frame by frame until the script is done
+// NScript::CQ_TraderEscortScript::CDW5_Balv::Main() -- the balverine entity script: register an alive filter over Me, update once, wait frame by frame until Me is aware of the hero, give Me the hero as best enemy target, then idle frame by frame until the script is done
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CDW5_Balv@CQ_TraderEscortScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DF72C slot 1 is stored by the factory 0x00E04890 registered as "DW5_Balv"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E04970, 178 bytes (+ int3 padding; entity-script vtable slot 1 = Main); a byte-identical second copy of 0x00E047D0 compiled in another TU (no ICF in retail).
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 (the filter's member; filter vtable 0x012C32F0), the filter registration
 //          @ 0x00F35B10 (on `this`), ~CScriptThing @ 0x004AA840, IsDone @ 0x00F35B30, CScriptThing::IsAwareOfHero (virtual slot 16,
@@ -33,7 +34,15 @@ using NScript::CIsThingAlive;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CDW5_Balv : public CEntityScriptBase {
+namespace NScript {
+class CQ_TraderEscortScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CDW5_Balv;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_TraderEscortScript;
+namespace NScript {
+class CQ_TraderEscortScript::CDW5_Balv : public CEntityScriptBase {
 public:
         void*                 ParentClass;             // +0x14
     void*                 PMasterData;             // +0x18
@@ -41,8 +50,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CDW5_Balv::Main()
+void NScript::CQ_TraderEscortScript::CDW5_Balv::Main()
 {
     {
         CIsThingAlive filter(Me);

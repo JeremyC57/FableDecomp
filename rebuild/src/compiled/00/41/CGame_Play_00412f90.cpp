@@ -46,9 +46,9 @@ struct CFrontendGameComponent : CGameComponent {
 };
 class CNewFrontendGameComponent : public CGameComponent { public:
     CNewFrontendGameComponent(CGame* game, const CNewFrontendGameComponentInit& init);   // 0x0042EA8F
+    static void __fastcall CompileDefs();               // 0x0042F70B ?CompileDefs@CNewFrontendGameComponent@@SIXXZ (Ego_r / FableWin)
     unsigned char _body[0x144];
 };
-void __fastcall CompileDefs();                          // 0x0042F70B
 extern bool g_bCompileFrontendDefinitions;              // 0x013B8648
 extern bool g_bStartMainGame;                           // 0x013B8605
 extern bool g_bUseLegacyFrontend;                       // 0x013B8642
@@ -68,7 +68,7 @@ void CGame::Play()
 {
     CGameComponent* component = 0;
     if (g_bCompileFrontendDefinitions)
-        CompileDefs();
+        CNewFrontendGameComponent::CompileDefs();
     if (g_bStartMainGame) {
         CMainGameComponentInit init;
         init.SaveGameName = g_MainGameStartupPath;

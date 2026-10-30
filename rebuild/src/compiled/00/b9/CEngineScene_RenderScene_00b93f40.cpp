@@ -1,6 +1,7 @@
-// CEngineScene::RenderLayerCells(EEngineRenderLayer layer, const CEngineCamera& camera) -- render one layer: when any primitive of the layer lives in the grid, every scene map's top grid level renders its cells clipped to the camera; then the two loose primitive lists are rendered; all into the layer's render-stats record
+// CEngineScene::RenderScene(EEngineRenderLayer layer, const CEngineCamera& camera) -- render one layer: when any primitive of the layer lives in the grid, every scene map's top grid level renders its cells clipped to the camera; then the two loose primitive lists are rendered; all into the layer's render-stats record
+// Leaf: ?RenderScene@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCEngineCamera@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B93F40, length 283 bytes (`ret 8`).
-// Callees: map<long, CEngineSceneRenderStats>::operator[](const long&) @ 0x00B97B60 (on +0x2c), CEngineSceneGrid::RenderCellClipped
+// Callees: map<EEngineRenderLayer, CEngineSceneRenderStats>::operator[] @ 0x00B97B60 (on +0x2c), CEngineSceneGrid::RenderCellClipped
 // (unsigned long, unsigned long, EEngineRenderLayer, const CEngineCamera&, bool, CEngineSceneRenderStats&) @ 0x00B92500,
 // CEngineScene::RenderPrimitiveList(CEngineInternalPrimitiveBase*, EEngineRenderLayer, const CEngineCamera&,
 // CEngineSceneRenderStats&) @ 0x00B91760 (landed).
@@ -14,10 +15,12 @@
 // call; `this` is parked in the `push ecx` frame slot while esi walks the inner trees; both ends are re-read every step.
 class CEngineCamera;
 class CEngineSceneRenderStats;
+enum EEngineRenderLayer { };
+enum EEngineOcclusionLayer { };
 class CEngineInternalPrimitiveBase;
 
 class CEngineSceneGrid { public:
-    void RenderCellClipped(unsigned long x, unsigned long y, long layer, const CEngineCamera& camera, bool clipped,
+    void RenderCellClipped(unsigned long x, unsigned long y, EEngineRenderLayer layer, const CEngineCamera& camera, bool clipped,
                            CEngineSceneRenderStats& stats);   // 0x00B92500
 };
 struct CGridPointer { CEngineSceneGrid* m_pObject; long* m_pCount; };
@@ -36,19 +39,28 @@ template <class T> static T* Next(T* node)
     return node;
 }
 
-struct CRenderStatsMap {
+namespace std {
+template <class T> struct less;
+template <class T> class allocator;
+template <class T1, class T2> struct pair;
+template <class Key, class T, class Compare = less<Key>, class Alloc = allocator<pair<const Key, T> > > class map {
+public:
     void* m_header; unsigned long m_count;
-    CEngineSceneRenderStats& operator[](const long& key);   // 0x00B97B60 (stand-in body below)
-    CEngineSceneRenderStats& FindOrInsert(long key);         // descriptive: the tree lookup/insert the real body performs
+    T& operator[](const Key& key);              // 0x00B97B60 (stand-in body below)
+    T& FindOrInsert(Key key);                   // descriptive: the tree lookup/insert the real body performs
 };
+}
+typedef std::map<EEngineRenderLayer, CEngineSceneRenderStats> CRenderStatsMap;
 
 // Stand-in for the out-of-line map operator[] @ 0x00B97B60, compiled above the graded function under auto_inline(off) so
 // VC7.1 sees (as retail's whole-program build did) that the key reference is only read: the `layer` argument then stays
-// in ebp across the calls although its address is passed. Only RenderLayerCells is graded.
+// in ebp across the calls although its address is passed. Only RenderScene is graded.
 #pragma auto_inline(off)
-CEngineSceneRenderStats& CRenderStatsMap::operator[](const long& key)
+namespace std {
+template <> CEngineSceneRenderStats& map<EEngineRenderLayer, CEngineSceneRenderStats>::operator[](const EEngineRenderLayer& key)
 {
     return FindOrInsert(key);
+}
 }
 #pragma auto_inline(on)
 
@@ -64,12 +76,14 @@ class CEngineScene { public:
     CRenderStatsMap               LayerStats;     // +0x2c
     unsigned char                 _pad34[0x10];
     long                          CurrentCell;    // +0x44
-    void RenderPrimitiveList(CEngineInternalPrimitiveBase* list, long layer, const CEngineCamera& camera,
+private:
+    void RenderPrimitiveList(CEngineInternalPrimitiveBase* list, EEngineRenderLayer layer, const CEngineCamera& camera,
                              CEngineSceneRenderStats& stats);   // 0x00B91760
-    void RenderLayerCells(long layer, const CEngineCamera& camera);
+public:
+    void RenderScene(EEngineRenderLayer layer, const CEngineCamera& camera);
 };
 
-void CEngineScene::RenderLayerCells(long layer, const CEngineCamera& camera)
+void CEngineScene::RenderScene(EEngineRenderLayer layer, const CEngineCamera& camera)
 {
     CEngineSceneRenderStats& stats = LayerStats[layer];
     CurrentCell = -1;

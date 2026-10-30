@@ -15,8 +15,11 @@ enum EInputKey { INPUT_KEY_NONE = 0 };
 
 class CConsole {
 public:
-    static CConsole* Get();                                                  // 0x00414C90
     void Initialise(char toggleCharacter, EInputKey toggleKey, CFontBank* font);   // 0x009ED190
+};
+template <class T> class CTBaseSingleton {
+public:
+    static T& __fastcall Get();                    // 0x00414C90 (CConsole) ?Get@?$CTBaseSingleton@VCConsole@@@@SIAAVCConsole@@XZ (FableWin)
 };
 
 void StaticLoadXMVCode();                                                    // 0x009BCF70
@@ -41,5 +44,5 @@ void CNewFrontendGameComponent::Init()
     InitialiseDefs();
     StaticLoadXMVCode();
     XMVCodeLoaded = true;
-    CConsole::Get()->Initialise('`', (EInputKey)0x29, m_pMenuFont);
+    CTBaseSingleton<CConsole>::Get().Initialise('`', (EInputKey)0x29, m_pMenuFont);
 }

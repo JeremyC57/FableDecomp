@@ -1,7 +1,8 @@
-// CVtable_012DB4B8::Main() -- Opening Graveyard entity script: register an alive-filter over Me, let the interface update once, and if the script is not done and the parent quest has started the undead cut-scene, remove Me (fading) through the interface
+// NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance::Main() -- Opening Graveyard entity script: register an alive-filter over Me, let the interface update once, and if the script is not done and the parent quest has started the undead cut-scene, remove Me (fading) through the interface
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CFarmRearEntrance@CQ_OrchardFarmRaidScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DB4B8 slot 1 is stored by the factory 0x00DCF3D0 registered as "FarmRearEntrance"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DCF4C0, length 119 bytes (padded to 128).
-// Label correction: the catalog's "CQ_OpeningGraveyardSecretPassageScript::FadeObjectUp" is not a quest-script member:
+// Label correction: the catalog's "CQ_OrchardFarmRaidScript::FadeObjectUp" is not a quest-script member:
 // this body is slot 1 (Main, entity-script contract [dtor, Main, Init, ...]) of vtable 0x012DB4B8, stored by the factory
 // 0x00DCF3D0 (`new` of 0x1c bytes: Game +4, Me +8 copied from the argument, ParentClass +0x14, PMasterData +0x18).
 // No RTTI locator and no registered name in the factory, so the class is named by its vtable (the landed convention).
@@ -9,7 +10,7 @@
 // 0x012C32F0), the filter registration @ 0x00F35B10 (on `this`), CScriptThing::~CScriptThing @ 0x004AA840, IsDone
 // @ 0x00F35B30 (x2), the game interface's virtual slots 7 (+0x1c) and 108 (+0x1b0, RemoveThing(thing, true, true)).
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14 (the parent's byte at +0x50 is
-// CQ_OpeningGraveyardSecretPassageScript::UndeadCutsceneStarted in the retail layout), PMasterData +0x18.
+// CQ_OrchardFarmRaidScript::UndeadCutsceneStarted in the retail layout), PMasterData +0x18.
 // Shape (landed CHTE_Prisoner::Main 0x00D69F50): the filter is a scoped 0x10-byte frame object, the address of Me stays
 // in edi; the three-term condition is one `&&` chain re-testing IsDone after the parent flag.
 namespace NScript { class CPredicateBase; }
@@ -32,22 +33,30 @@ namespace NScript {
 namespace NScript {
 }
 using NScript::CIsThingAlive;
-struct CQ_OpeningGraveyardSecretPassageScript {
+namespace NScript {
+class CQ_OrchardFarmRaidScript {
+public:
     unsigned char _pad[0x50];
     bool          UndeadCutsceneStarted;           // +0x50
+public:
+    class CFarmRearEntrance;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CQ_OrchardFarmRaidScript;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CVtable_012DB4B8 : public CEntityScriptBase {
+namespace NScript {
+class CQ_OrchardFarmRaidScript::CFarmRearEntrance : public CEntityScriptBase {
 public:
-        CQ_OpeningGraveyardSecretPassageScript* ParentClass;   // +0x14
+        CQ_OrchardFarmRaidScript* ParentClass;   // +0x14
     void*                 PMasterData;             // +0x18
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
-void CVtable_012DB4B8::Main()
+}
+void NScript::CQ_OrchardFarmRaidScript::CFarmRearEntrance::Main()
 {
     {
         CIsThingAlive filter(Me);

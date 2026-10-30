@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2C810, 1901 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release
-//   0x00CD2770 / MoveTo 0x007E72F0 / IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, IsActiveThreadTerminating
+//   0x00CD2770 / MoveToPosition 0x007E72F0 / IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, IsActiveThreadTerminating
 //   0x00F35B30, IsDistanceBetweenThingsOver 0x00CBE3EA (__fastcall), operator delete 0x00BFE9BC, CCharString 0x0099EBF0 /
 //   0x0099EAE0; GameCalls slots 7, 8, 70, 364-366 conversation, 516 damageable, 517 killable, 526 combo, 599 ally, 601 faction;
 //   CScriptThing slots 6 GetPos, 21 MsgIsHitBy, 41/42 special-ability hits. Literals "FACTION_VILLAGERS" 0x0125EAB4,
@@ -81,13 +81,14 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
+enum EScriptEntityMoveType { };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
     bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void MoveTo(const C3DVector& pos, float speed, bool a, bool b, bool c);   // 0x007E72F0
+    virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType moveType, bool a, bool b);   // 0x007E72F0 (header slot 4; called directly on the local)
     bool IsPerformingScriptTask() const;                // 0x007E7450
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -165,7 +166,7 @@ void CEndGameThunder::Main()
                 return;
 #pragma inline_depth()
             }
-        face.MoveTo(Game->GetHero().GetPos(), 2.0f, true, false, true);
+        face.MoveToPosition(Game->GetHero().GetPos(), 2.0f, (EScriptEntityMoveType)1, false, true);
         while (IsDistanceBetweenThingsOver(Game->GetHero(), Me, 4.0f)) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
@@ -181,7 +182,7 @@ void CEndGameThunder::Main()
                         return;
 #pragma inline_depth()
                     }
-                face.MoveTo(Game->GetHero().GetPos(), 2.0f, true, false, true);
+                face.MoveToPosition(Game->GetHero().GetPos(), 2.0f, (EScriptEntityMoveType)1, false, true);
             }
         }
         if (IsActiveThreadTerminating())
@@ -252,7 +253,7 @@ void CEndGameThunder::Main()
                     return;
 #pragma inline_depth()
                 }
-            face.MoveTo(Game->GetHero().GetPos(), 2.0f, true, false, true);
+            face.MoveToPosition(Game->GetHero().GetPos(), 2.0f, (EScriptEntityMoveType)1, false, true);
             while (IsDistanceBetweenThingsOver(Game->GetHero(), Me, 4.0f)) {
                 Game->NewScriptFrame();
                 if (IsActiveThreadTerminating())
@@ -293,7 +294,7 @@ void CEndGameThunder::Main()
                             return;
 #pragma inline_depth()
                         }
-                    face.MoveTo(Game->GetHero().GetPos(), 2.0f, true, false, true);
+                    face.MoveToPosition(Game->GetHero().GetPos(), 2.0f, (EScriptEntityMoveType)1, false, true);
                 }
             }
             if (IsActiveThreadTerminating())

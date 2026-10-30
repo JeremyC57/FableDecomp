@@ -34,7 +34,7 @@ struct CAudioContext {
 extern CAudioContext g_AudioContext;                     // 0x0143BDB0
 extern __int64 g_AudioClockRate;                         // 0x0139CA20
 
-struct CAudioSound {
+class CAudioObject { public:
     virtual void v00();
     virtual bool IsStreamed();                           // slot 1
     unsigned char _pad04[8];
@@ -59,10 +59,10 @@ struct CAudioSource {
     unsigned char  _pad70[8];
     __int64        PitchEndTime;                         // +0x78
     void SetPitchProperties(const float* pitchTime, __int64 now);   // 0x00C71F10
-    unsigned long InitializeProperties(CAudioSound* sound, const CAudioSourceProperties* props, __int64 now);
+    unsigned long InitializeProperties(CAudioObject* sound, const CAudioSourceProperties* props, __int64 now);
 };
 
-unsigned long CAudioSource::InitializeProperties(CAudioSound* sound, const CAudioSourceProperties* props, __int64 now)
+unsigned long CAudioSource::InitializeProperties(CAudioObject* sound, const CAudioSourceProperties* props, __int64 now)
 {
     unsigned long soundFlags = sound->Flags;
     unsigned long flags = props->Flags;

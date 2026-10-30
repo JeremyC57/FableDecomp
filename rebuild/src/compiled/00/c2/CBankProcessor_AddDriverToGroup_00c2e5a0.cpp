@@ -13,14 +13,15 @@
 // Name: the catalog's `EventTrigger_ProcessSingleDriver` is a guess; descriptive.
 // Shape: the group test comes before ebx/ebp are saved (shrink-wrapped early return); the number lives in ebp for the
 //   lookup and the message; the found-or-created group is one local, so both calls feed the single AddDriver call.
-struct CDebugStream {                        // libpk message text
-    char* m_pBuffer;
-    CDebugStream& __fastcall operator<<(const char* text);       // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
+class CString {                              // libpk message text (0x00C0DEA0 / 0x00C0DEC0 / 0x00C0DF10 = CString::operator<<)
+public:
+    char* m_pchData;
+    CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
+    CString& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
 };
 
 struct CLoadLog {
-    CDebugStream& AddMessage();              // 0x00C307E0
+    CString& AddMessage();                   // 0x00C307E0 ?AddMessage@CLoadLog@@QAEAAVCString@@XZ
 };
 
 struct CDriver;

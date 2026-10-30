@@ -4,21 +4,26 @@ class CEnginePrimitivePosition { public:
     char pad[0xc];
     int payload;
 };
+class CMatrix3x4;
+class C3DVector;
+class CRightHandedSet;
 
-static void* g_self;
-static const CEnginePrimitivePosition* g_rawPos;
+static const void* g_self;
+static const void* g_rawPos;
 static const void* g_payloadPtr;
-static int g_field58;
+static float g_field58;
 
-void __fastcall CEngineInternalPrimitiveStaticMesh_Sub_Apply(
-        void* self, const CEnginePrimitivePosition* rawPos,
-        const void* payloadPtr, int field58) {
-    g_self = self; g_rawPos = rawPos; g_payloadPtr = payloadPtr; g_field58 = field58;
+class CEngineInternalPrimitiveMeshBase { public:
+    static void __fastcall CalcObjectMatrix(CMatrix3x4& matrix, const C3DVector& position, const CRightHandedSet& orientation, float scale);
+};
+void __fastcall CEngineInternalPrimitiveMeshBase::CalcObjectMatrix(CMatrix3x4& matrix, const C3DVector& position,
+        const CRightHandedSet& orientation, float scale) {
+    g_self = &matrix; g_rawPos = &position; g_payloadPtr = &orientation; g_field58 = scale;
 }
 
 class CEngineInternalPrimitiveStaticMesh { public:
     char pad0[0x58];
-    int field58;
+    float field58;
     char pad1[0x70 - 0x58 - 4];
     char sub;
 };
@@ -30,7 +35,7 @@ void __fastcall CEngineInternalPrimitiveStaticMesh_SetPosition(
 
 int main() {
     CEngineInternalPrimitiveStaticMesh obj;
-    obj.field58 = 0x12345678;
+    obj.field58 = 2.5f;
     CEnginePrimitivePosition pos;
     pos.payload = 0x99;
 
@@ -39,10 +44,8 @@ int main() {
     bool ok = (g_self == (void*)&obj.sub)
            && (g_rawPos == &pos)
            && (g_payloadPtr == (const void*)&pos.payload)
-           && (g_field58 == 0x12345678);
+           && (g_field58 == 2.5f);
     if (ok) printf("00b9cfa0_TEST PASS\n");
-    else printf("FAIL self=%p sub=%p rp=%p pos=%p pptr=%p payl=%p f=%x\n",
-                g_self,(void*)&obj.sub,(void*)g_rawPos,(void*)&pos,
-                g_payloadPtr,(void*)&pos.payload,g_field58);
+    else printf("FAIL\n");
     return 0;
 }

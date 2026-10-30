@@ -1,5 +1,6 @@
-// CWaypointSpeedCheck::Main() -- entity script: track how close the hero gets to this waypoint; with data string "0" the best distance is reset to 1000 every frame; each new best (squared) distance is stored with the waypoint's data number
+// NScript::CQ_PrisonRaceScript::CWaypointSpeedCheck::Main() -- entity script: track how close the hero gets to this waypoint; with data string "0" the best distance is reset to 1000 every frame; each new best (squared) distance is stored with the waypoint's data number
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CWaypointSpeedCheck@CQ_PrisonRaceScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DCA64 slot 1 is stored by the factory 0x00DDC5E0 registered as "WaypointSpeedCheck"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DDC6C0, 259 bytes (272 with padding), plain `ret`. Entity-script class (no RTTI;
 //   name from the manifest label).
 // Callees: CScriptThing slot 3 GetDataString() const (CCharString by hidden pointer, twice), ~CCharString 0x0099EAE0,
@@ -75,14 +76,23 @@ struct CWaypointSpeedCheckData {                        // the script's shared d
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CWaypointSpeedCheck : public CEntityScriptBase {
+namespace NScript {
+class CQ_PrisonRaceScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CWaypointSpeedCheck;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_PrisonRaceScript;
+namespace NScript {
+class CQ_PrisonRaceScript::CWaypointSpeedCheck : public CEntityScriptBase {
 public:
         CWaypointSpeedCheckData* Data;                      // +0x14
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
-void CWaypointSpeedCheck::Main()
+}
+void NScript::CQ_PrisonRaceScript::CWaypointSpeedCheck::Main()
 {
     bool resetEveryFrame = Me.GetDataString() == "0";
     while (!IsActiveThreadTerminating()) {

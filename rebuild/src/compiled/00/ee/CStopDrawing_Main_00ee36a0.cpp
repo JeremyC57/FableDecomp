@@ -1,5 +1,6 @@
-// CStopDrawing::Main() -- snow-troll rock pile: shut the nearest region entrance/exit; unless the troll intro already ran, take the rock pile under scripted control, loop its idle animation and wait until the hero comes within 15 units, hits it, or hits it with a special ability other than ability 14; then play CS_SNOWTROLL_INTRO, unhide Me on the minimap, flag the intro done and release the pile; finally show the ice-troll health bar and idle
+// NScript::CV_TravellingHeroesScript::CTH_SnowTroll::Main() -- snow-troll rock pile: shut the nearest region entrance/exit; unless the troll intro already ran, take the rock pile under scripted control, loop its idle animation and wait until the hero comes within 15 units, hits it, or hits it with a special ability other than ability 14; then play CS_SNOWTROLL_INTRO, unhide Me on the minimap, flag the intro done and release the pile; finally show the ice-troll health bar and idle
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CTH_SnowTroll@CV_TravellingHeroesScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F42B0 slot 1 is stored by the factory 0x00EE0240 (through its ctor 0x00EE02C0) registered as "TH_SnowTroll"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE36A0, 1151 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "REGION_ENTRANCE_POINT" 0x012CA3DC, "REGION_EXIT_POINT" 0x012CA510, "SCRIPT_ROCK_PILE" 0x012F461C,
 //   "SCRIPT_NAME_HERO" 0x0125D1C8, "CS_SNOWTROLL_INTRO" 0x012F4608, "HUD_QUEST_ICON_ICE_TROLL" 0x012F45EC.
@@ -106,18 +107,26 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #include "engine/CGameScriptInterface.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern bool g_bScriptAnimationFlag;                    // 0x01375748
-struct CQ_SnowTrollScript {
+namespace NScript {
+class CV_TravellingHeroesScript {
+public:
     unsigned char _pad00[0x48];
     CScriptGameResourceObjectScriptedThingBase RockPile;   // +0x48
     unsigned char _pad58[0x7d - 0x58];
     bool IntroPlayed;                                   // +0x7d
     void PlayCutscene(CCharString name);
     void ReleaseRockPile() { if (RockPile.IsValid()) RockPile.Release(); }                // 0x00EE2DB0
+public:
+    class CTH_SnowTroll;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_TravellingHeroesScript;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
-struct CStopDrawing : CEntityScriptBase {
-    CQ_SnowTrollScript* ParentClass;                    // +0x14
+namespace NScript {
+class CV_TravellingHeroesScript::CTH_SnowTroll : public CEntityScriptBase {
+public:
+    CV_TravellingHeroesScript* ParentClass;                    // +0x14
     void*               PMasterData;                    // +0x18
     CScriptThing        EntrancePoint;                  // +0x1c
     CScriptThing        ExitPoint;                      // +0x28
@@ -125,8 +134,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CStopDrawing::Main()
+void NScript::CV_TravellingHeroesScript::CTH_SnowTroll::Main()
 {
     {
         CIsThingAlive filter(Me);

@@ -1,7 +1,8 @@
-// CCham::Main() -- arena Cham (CQ_ArenaScript): unset Me as an opinion source, put Me in FACTION_HERO, make Me unkillable
+// NScript::CQ_ArenaScript::CCham::Main() -- arena Cham (CQ_ArenaScript): unset Me as an opinion source, put Me in FACTION_HERO, make Me unkillable
 //   and keep him out of the combo multiplier, wait until the arena sets ChamLeaving, take Me under scripted control
 //   (priority 4, retried each frame), walk to GuardingDoorMarkerLeft and remove Me once the walk is done
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CCham@CQ_ArenaScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F8FB4 slot 1 is stored by the factory 0x00F14670 registered as "Cham"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F14770, 517 bytes (528 with padding); entity-script vtable slot 1 (Main).
 // Callees: CBaseObject ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle (vtable 0x0127094C) IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / MoveToPosition 0x007E72F0 (slot 4) / IsPerformingScriptTask 0x007E7450 (slot 26) / dtor 0x007E74D0,
@@ -88,19 +89,28 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
 #include "engine/CGameScriptInterface.h"
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
-struct CQ_ArenaScript {
+namespace NScript {
+class CQ_ArenaScript {
+public:
     char _pad[0xb4];
     bool ChamLeaving;                                  // +0xb4
+public:
+    class CCham;                        // the entity class below (naming wave 11)
 };
-struct CCham : CEntityScriptBase {
+}
+using NScript::CQ_ArenaScript;
+namespace NScript {
+class CQ_ArenaScript::CCham : public CEntityScriptBase {
+public:
     CQ_ArenaScript* ParentClass;                       // +0x14
     void*           PMasterData;                       // +0x18 CQ_SunnyvaleMasterData*
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CCham::Main()
+void NScript::CQ_ArenaScript::CCham::Main()
 {
     CScriptGameResourceObjectScriptedThingBase scripted;
     Game->EntityUnsetAsOpinionSource(Me, false);

@@ -8,12 +8,12 @@ struct CPrisonerSpeechString:CCharString {
  CPrisonerSpeechString(const CPrisonerSpeechString&);
  const CCharString& Append(const char*); //99F100
 };
-CPrisonerSpeechString __fastcall PrisonerNumberString(int); //99F830 resultECX, numberEDX
-CPrisonerSpeechString __fastcall operator+(const char*,const CPrisonerSpeechString&); //99F690
+CCharString __fastcall GFIntToCharString(long); //99F830 resultECX, numberEDX; ?GFIntToCharString@@YI?AVCCharString@@J@Z (Ego_r / FableWin)
+CCharString __fastcall operator+(const char*,const CCharString&); //99F690 ??H@YI?AVCCharString@@PBDABV0@@Z (Ego_r / FableWin)
 struct CPrisonerQuestState {unsigned char Prefix[0x88];int FreedCount;unsigned char BeforeOutcome[0xf8];int Outcome;};
 struct CFH_Prisoner {unsigned char Prefix[0x14];CPrisonerQuestState* Quest;bool IsActiveThreadTerminating()const;void GetEndSpeech(CPrisonerSpeechString&)const;}; //F35B30
 void CFH_Prisoner::GetEndSpeech(CPrisonerSpeechString& out)const{
- static_cast<CCharString&>(out)="TEXT_QST_B01_PROPHET"+PrisonerNumberString(Quest->FreedCount+1);
+ static_cast<CCharString&>(out)="TEXT_QST_B01_PROPHET"+GFIntToCharString(Quest->FreedCount+1);
  if(Quest->FreedCount==0){if(IsActiveThreadTerminating())return;out.Append("_FREED");return;}
  if(IsActiveThreadTerminating())return;
  if(Quest->Outcome==1){if(IsActiveThreadTerminating())return;out.Append("_FREED_ASEXPECTED");return;}

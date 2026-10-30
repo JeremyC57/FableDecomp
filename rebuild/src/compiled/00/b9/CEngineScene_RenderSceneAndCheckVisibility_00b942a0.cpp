@@ -1,5 +1,5 @@
 // CEngineScene::RenderSceneAndCheckVisibility(EEngineRenderLayer layer, const CEngineCamera& camera, EEngineOcclusionLayer occlusion, bool flag) -- render one layer with occlusion queries: set the occlusion-layer bit for this pass, let every scene map's top grid level render its clipped cells and check their visibility, then render the two loose primitive lists
-// Leaf: RenderSceneAndCheckVisibility
+// Leaf: ?RenderSceneAndCheckVisibility@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCEngineCamera@@W4EEngineOcclusionLayer@@_N@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B942A0, length 336 bytes (with int3 padding; body 0x14d), `ret 10h`.
 // PDB: ?RenderSceneAndCheckVisibility@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCEngineCamera@@W4EEngineOcclusionLayer@@_N@Z
 //   (catalogued "CEngineScene::RenderLayered", descriptive).
@@ -15,14 +15,16 @@
 //   stored between the pushes); the occlusion mask is re-read for every cell.
 class CEngineCamera;
 class CEngineSceneRenderStats;
+enum EEngineRenderLayer { };
+enum EEngineOcclusionLayer { };
 class CEngineInternalPrimitiveBase;
 
 class CEngineSceneGrid { public:
-    bool RenderCellClippedAndCheckVisibility(unsigned long x, unsigned long y, long layer, unsigned long occlusionMask,
+    bool RenderCellClippedAndCheckVisibility(unsigned long x, unsigned long y, EEngineRenderLayer layer, unsigned long occlusionMask,
                                              const CEngineCamera& camera, bool clipped, CEngineSceneRenderStats& stats,
-                                             long occlusion, bool flag, bool& visible);   // 0x00B92950
-    void RenderCellAndCheck(long layer, unsigned long occlusionMask, const CEngineCamera& camera, CEngineSceneRenderStats& stats,
-                            long occlusion, bool flag)
+                                             EEngineOcclusionLayer occlusion, bool flag, bool& visible);   // 0x00B92950
+    void RenderCellAndCheck(EEngineRenderLayer layer, unsigned long occlusionMask, const CEngineCamera& camera, CEngineSceneRenderStats& stats,
+                            EEngineOcclusionLayer occlusion, bool flag)
     {
         bool visible = false;
         RenderCellClippedAndCheckVisibility(0, 0, layer, occlusionMask, camera, false, stats, occlusion, flag, visible);
@@ -44,18 +46,27 @@ template <class T> static T* Next(T* node)
     return node;
 }
 
-struct CRenderStatsMap {
+namespace std {
+template <class T> struct less;
+template <class T> class allocator;
+template <class T1, class T2> struct pair;
+template <class Key, class T, class Compare = less<Key>, class Alloc = allocator<pair<const Key, T> > > class map {
+public:
     void* m_header; unsigned long m_count;
-    CEngineSceneRenderStats& operator[](const long& key);   // 0x00B97B60 (stand-in body below)
-    CEngineSceneRenderStats& FindOrInsert(long key);         // descriptive: the tree lookup/insert the real body performs
+    T& operator[](const Key& key);              // 0x00B97B60 (stand-in body below)
+    T& FindOrInsert(Key key);                   // descriptive: the tree lookup/insert the real body performs
 };
+}
+typedef std::map<EEngineRenderLayer, CEngineSceneRenderStats> CRenderStatsMap;
 
 // Stand-in for the out-of-line map operator[] @ 0x00B97B60 (as in the landed 0x00B93F40), compiled above the graded function
 // under auto_inline(off) so VC7.1 sees that the key reference is only read. Only RenderSceneAndCheckVisibility is graded.
 #pragma auto_inline(off)
-CEngineSceneRenderStats& CRenderStatsMap::operator[](const long& key)
+namespace std {
+template <> CEngineSceneRenderStats& map<EEngineRenderLayer, CEngineSceneRenderStats>::operator[](const EEngineRenderLayer& key)
 {
     return FindOrInsert(key);
+}
 }
 #pragma auto_inline(on)
 
@@ -71,12 +82,14 @@ class CEngineScene { public:
     CRenderStatsMap               LayerStats;     // +0x2c
     unsigned char                 _pad34[0x10];
     unsigned long                 CurrentOcclusionMask;   // +0x44
-    void RenderPrimitiveList(CEngineInternalPrimitiveBase* list, long layer, const CEngineCamera& camera,
+private:
+    void RenderPrimitiveList(CEngineInternalPrimitiveBase* list, EEngineRenderLayer layer, const CEngineCamera& camera,
                              CEngineSceneRenderStats& stats);   // 0x00B91760
-    void RenderSceneAndCheckVisibility(long layer, const CEngineCamera& camera, long occlusion, bool flag);
+public:
+    void RenderSceneAndCheckVisibility(EEngineRenderLayer layer, const CEngineCamera& camera, EEngineOcclusionLayer occlusion, bool flag);
 };
 
-void CEngineScene::RenderSceneAndCheckVisibility(long layer, const CEngineCamera& camera, long occlusion, bool flag)
+void CEngineScene::RenderSceneAndCheckVisibility(EEngineRenderLayer layer, const CEngineCamera& camera, EEngineOcclusionLayer occlusion, bool flag)
 {
     CEngineSceneRenderStats& stats = LayerStats[layer];
     CurrentOcclusionMask = 1 << (occlusion + 1);

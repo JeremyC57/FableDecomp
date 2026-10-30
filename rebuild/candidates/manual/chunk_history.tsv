@@ -24970,3 +24970,13 @@ chunk	address	module	name	length
 593	00c06f30	global	swd_init	326
 593	00b4a2c0	global	Vector_Resize_Struct0x70	327
 593	00af7570	global	Vector_InsertRangeResize	328
+594	00ca67b0	global	CAudioBank_Stop	312
+594	00ca68f0	global	CAudioBank_Start	313
+594	00c6b260	global	FloatToLongConvert_Vectorized	315
+594	00cbb710	global	SortedMerge_WithRefcount	315
+594	00c599c0	global	Audio_ComputePitchFromVector	318
+594	00cab160	global	CParticleMorphs_GetEntries_Batch	322
+594	00c21a50	global	Display_UpdateWithFlags	325
+594	00c8c580	global	WorldMap_ProcessWithCallback	325
+594	00c93080	global	FFT_ComputeWaveformEnvelope	328
+594	00c4d070	global	CCombatSequenceManager_ProcessAction	328

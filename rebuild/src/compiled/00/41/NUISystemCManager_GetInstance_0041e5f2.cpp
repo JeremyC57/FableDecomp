@@ -9,7 +9,7 @@ class CManager {
 public:
     unsigned char _body[0xd0];
     CManager();                                          // 0x0041E3F6
-    static CManager* GetInstance();
+    static CManager* __fastcall GetInstance();          // ?GetInstance@CManager@NUISystem@@SIPAV12@XZ (Ego_r / FableWin)
 };
 extern CManager* g_pUIManagerInstance;                   // 0x013B8710
 

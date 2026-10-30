@@ -16,7 +16,7 @@ class CEngineSceneRenderStats;
 class CEngineSceneGridCell { public:CEngineSceneGridCell* Parent;CEngineInternalPrimitiveBase* FirstPrimitive;unsigned char BoundsAndGroups[0x2c];unsigned long LocalCount,TotalCount,RenderMask,OccludedLayers;unsigned char Flags,OccludedFrames,PreloadFrames;};
 template<class T>class CArray { public:T* Data;long Size,Capacity;};
 class CEngineSceneGrid { public:unsigned long Base,Level;CEngineSceneGrid *LevelUp,*LevelDown;unsigned long Size;CArray<CEngineSceneGridCell*> GridCells;
- unsigned long GetCellRenderMask(unsigned long,unsigned long); //00b91dc0
+private: unsigned long GetCellRenderMask(unsigned long,unsigned long); public: //00b91dc0 (Ego_r: private)
  void RenderCellAll(unsigned long x,unsigned long y,EEngineRenderLayer layer,CEngineSceneRenderStats& stats);
 };
 void CEngineSceneGrid::RenderCellAll(unsigned long x,unsigned long y,EEngineRenderLayer layer,CEngineSceneRenderStats& stats){

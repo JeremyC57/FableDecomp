@@ -4,16 +4,16 @@
 // Identity (descriptive): slot 0 of the non-RTTI vtable 0x012B4F4C, stored only by its constructor 0x00C32FC0 (the
 //   manager at +4, the file key at +8): the libpk file handle over the default file manager. Its slot 1 is
 //   0x00C32F60 (read), slot 3 0x00C32FA0 (close through 0x00C1A870 / 0x00C19FA0). libpk has no PDB or RTTI.
-// Callees: CFileManager_00c1a070::GetFileSize(unsigned long key, unsigned long* size) @ 0x00C1A070 (landed; the
+// Callees: PKCDefaultFileManager::GetFileSize(unsigned long key, unsigned long* size) @ 0x00C1A070 (landed; the
 //   default file manager's locked Win32 GetFileSize; its header names 0x00C32F4C as its caller).
-struct CFileManager_00c1a070 {
+struct PKCDefaultFileManager {
     bool GetFileSize(unsigned long key, unsigned long* size);   // 0x00C1A070
 };
 
 class CVtable_012b4f4c {                        // vtable 0x012B4F4C
 public:
     virtual bool GetSize(unsigned long* size);  // slot 0
-    CFileManager_00c1a070* m_pManager;          // +0x04
+    PKCDefaultFileManager* m_pManager;          // +0x04
     unsigned long          m_key;               // +0x08
 };
 

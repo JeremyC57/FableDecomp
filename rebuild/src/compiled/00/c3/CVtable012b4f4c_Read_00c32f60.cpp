@@ -7,7 +7,7 @@
 //   under its lock it looks the key up and posts a seven-word request to the mailbox at +0x58; not landed).
 // Shape: right-to-left evaluation pushes the four pass-through arguments before the slot-2 call; the product
 //   `GetUnitSize() * count` is `imul eax,[count]`.
-struct CFileManager_00c1a070 {
+struct PKCDefaultFileManager {
     bool QueueRead(unsigned long key, unsigned long size, void* a, void* b, void* c, void* d);   // 0x00C1A110
 };
 
@@ -16,7 +16,7 @@ public:
     virtual bool GetSize(unsigned long* size);  // slot 0 (0x00C32F40)
     virtual bool Read(unsigned long count, long unused, void* a, void* b, void* c, void* d);   // slot 1
     virtual unsigned long GetUnitSize();        // slot 2 (0x00C32F30)
-    CFileManager_00c1a070* m_pManager;          // +0x04
+    PKCDefaultFileManager* m_pManager;          // +0x04
     unsigned long          m_key;               // +0x08
 };
 

@@ -1,5 +1,5 @@
-// std::map::operator[](const long& k) -- STLport subscript of map<long, CEngineSceneRenderStats>: lower_bound the key, insert {key, zeroed stats} at that hint when absent, return the stats record
-// Leaf: ??A?$map@JVCEngineSceneRenderStats@@
+// std::map::operator[](const EEngineRenderLayer& k) -- STLport subscript of map<EEngineRenderLayer, CEngineSceneRenderStats> (Ego_r.pdb; CEngineScene::RenderStats): lower_bound the key, insert {key, zeroed stats} at that hint when absent, return the stats record
+// Leaf: ??A?$map@W4EEngineRenderLayer@@VCEngineSceneRenderStats@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00B97B60, 163 bytes, __fastcall `ret 4`.
 // Identity: five call sites (CEngineScene::RenderLayerCells 0x00B93F40 .. CEngineSceneGrid::RenderAll 0x00B943F0); the
 //   value is the 28-byte Ego_r.pdb CEngineSceneRenderStats (seven counters). The manifest type agrees.
@@ -113,4 +113,5 @@ public:
 
 }   // namespace std
 
-template CEngineSceneRenderStats& std::map<long, CEngineSceneRenderStats>::operator[](const long&);
+enum EEngineRenderLayer { };
+template CEngineSceneRenderStats& std::map<EEngineRenderLayer, CEngineSceneRenderStats>::operator[](const EEngineRenderLayer&);

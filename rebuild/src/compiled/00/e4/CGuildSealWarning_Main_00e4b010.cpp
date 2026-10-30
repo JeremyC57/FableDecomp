@@ -1,5 +1,6 @@
-// CGuildSealWarning::Main() -- guild seal warning: the guildmaster tells the hero about the guild seal, then (once per quest) the active quest hands the hero the bandit-toll quest card and sets its objective; finally this marker removes itself
+// NScript::CV_BanditTollScript::CGuildSealWarning::Main() -- guild seal warning: the guildmaster tells the hero about the guild seal, then (once per quest) the active quest hands the hero the bandit-toll quest card and sets its objective; finally this marker removes itself
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CGuildSealWarning@CV_BanditTollScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E508C slot 1 is stored by the factory 0x00E4AF50 registered as "GuildSealWarning"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4B010, length 359 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("" @ 0x0122D70E,
 //   "TEXT_QST_011_GUILDSEAL_MESSAGE" @ 0x012E50EC, "OBJECT_QUEST_CARD_BANDIT_TOLL" @ 0x012E50CC, "GreatwoodBanditToll"
@@ -26,23 +27,31 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-struct CQ_BanditTollOwner {
+namespace NScript {
+class CV_BanditTollScript {
+public:
     unsigned char _pad[0x58];
     bool          QuestCardGiven;                  // +0x58
+public:
+    class CGuildSealWarning;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_BanditTollScript;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CGuildSealWarning : public CEntityScriptBase {
+namespace NScript {
+class CV_BanditTollScript::CGuildSealWarning : public CEntityScriptBase {
 public:
-        CQ_BanditTollOwner*   ParentClass;             // +0x14
+        CV_BanditTollScript*   ParentClass;             // +0x14
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CGuildSealWarning::Main()
+void NScript::CV_BanditTollScript::CGuildSealWarning::Main()
 {
     Game->HeroReceiveMessageFromGuildMaster("TEXT_QST_011_GUILDSEAL_MESSAGE", "", true, true);
     Game->Pause(2.0f);

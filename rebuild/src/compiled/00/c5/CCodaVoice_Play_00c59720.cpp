@@ -1,5 +1,5 @@
 // CCodaVoice::Play(CAudioSound* sound) -- start a sound's single buffer on the voice: clear the start time and the buffer, hand the voice the sound's buffer (+0x78) with its loop bit, its format record (+0xF0), reset the play state and report 2
-// Leaf: ?Play@CCodaVoice@@UAEJPAUCAudioSound@@@Z
+// Leaf: ?Play@CCodaVoice@@UAEJPAVCAudioObject@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C59720, 74 bytes, thiscall, `ret 4`.
 // Identity: slot 7 (+0x1C) of the GameCODA voice base vtable 0x012B5C10 (agent441's CCodaVoice, ctor 0x00C59BA0) and of
 //   the derived voice vtables (the eight `abs .rdata` refs: 0x012B5C2C ... 0x012BEE5C). Descriptive method name
@@ -9,7 +9,7 @@
 // Layout: +0x0C buffer, +0x10 64-bit start time (the landed CAudioSource / CSoftwareVoice models, 4-byte packed);
 //   CAudioSound flag word +0x10 (bit 8: loop), buffer +0x78, format record +0xF0.
 // Shape: the loop bit is an `unsigned char` argument (`shr ecx,8 ; and ecx,0FFFFFF01h` = a byte `& 1` on the dword).
-struct CAudioSound {
+class CAudioObject { public:
     unsigned char  _pad00[0x10];
     unsigned long  m_flags;                             // +0x10 (bit 8: loop)
     unsigned char  _pad14[0x78 - 0x14];
@@ -22,7 +22,7 @@ class CCodaVoice {                                      // vtable 0x012B5C10 (19
 public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06();
-    virtual long Play(CAudioSound* sound);              // slot 7 (+0x1C)
+    virtual long Play(CAudioObject* sound);              // slot 7 (+0x1C)
     virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
     virtual void v13();
     virtual void SetFormat(void* format);               // slot 14 (+0x38)
@@ -35,7 +35,7 @@ public:
 };
 #pragma pack(pop)
 
-long CCodaVoice::Play(CAudioSound* sound)
+long CCodaVoice::Play(CAudioObject* sound)
 {
     m_startTime = 0;
     m_pBuffer = 0;

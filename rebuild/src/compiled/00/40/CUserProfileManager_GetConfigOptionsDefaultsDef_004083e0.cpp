@@ -49,7 +49,7 @@ bool CDefinitionManager::GetDef(long index,CDefPointer<const CConfigOptionsDefau
 #pragma auto_inline(on)
 extern void* g_pMainGameComponent; //013B86A0 (only presence is inspected)
 extern void* g_pFrontendRuntime; //013B871C (only presence is inspected)
-CDefinitionManager* __fastcall GetFrontendDefinitionManager(); //0043368D loads013B8760
+class CStartupDefinitionManager : public CDefinitionManager { public: static CStartupDefinitionManager& __fastcall Get(); };   // 0x0043368D ?Get@CStartupDefinitionManager@@SIAAV1@XZ (Ego_r / FableWin): loads 0x013B8760
 class CUserProfileManager { public:CDefPointer<const CConfigOptionsDefaultsDef> GetConfigOptionsDefaultsDef()const;};
 CDefPointer<const CConfigOptionsDefaultsDef> CUserProfileManager::GetConfigOptionsDefaultsDef()const{
  CDefPointer<const CConfigOptionsDefaultsDef> result;
@@ -57,8 +57,8 @@ CDefPointer<const CConfigOptionsDefaultsDef> CUserProfileManager::GetConfigOptio
   long index;{CCharString name("CONFIG_OPTIONS_DEFAULTS_DEF",-1);index=CGameDefinitionManager::Get().GetGlobalIndexFromClassIndex(name,1);}
   CGameDefinitionManager::Get().GetDef(index,&result);
  }else if(g_pFrontendRuntime){
-  long index;{CCharString name("CONFIG_OPTIONS_DEFAULTS_DEF",-1);index=GetFrontendDefinitionManager()->GetGlobalIndexFromClassIndex(name,1);}
-  GetFrontendDefinitionManager()->GetDef(index,&result);
+  long index;{CCharString name("CONFIG_OPTIONS_DEFAULTS_DEF",-1);index=CStartupDefinitionManager::Get().GetGlobalIndexFromClassIndex(name,1);}
+  CStartupDefinitionManager::Get().GetDef(index,&result);
  }
  return result;
 }

@@ -3,15 +3,20 @@
 
 #include <cstdio>
 
-extern "C" void* __fastcall
-CFrontEndManager_GetInstance_00595582();
-
-extern "C" void* FableFrontEndManagerSingleton = 0;
+namespace NUISystem {
+class CFrontEndManager {
+public:
+    unsigned char _body[0xe0];
+    CFrontEndManager();
+    static CFrontEndManager* __fastcall GetInstance();
+};
+}
+using NUISystem::CFrontEndManager;
+extern "C" CFrontEndManager* FableFrontEndManagerSingleton = 0;
 
 static unsigned char g_storage[0xe0];
-static unsigned char g_constructed;
+static CFrontEndManager* g_constructed = (CFrontEndManager*)g_storage;
 static void* g_allocationResult;
-static void* g_constructorResult;
 static unsigned long g_allocatedBytes;
 static int g_allocateCalls;
 static void* g_constructorStorage;
@@ -19,25 +24,21 @@ static int g_constructorCalls;
 
 void* __cdecl operator new(unsigned int bytes)
 {
-    unsigned long bytes_c = (unsigned long)bytes; (void)bytes_c;
     ++g_allocateCalls;
-    g_allocatedBytes = bytes_c;
+    g_allocatedBytes = (unsigned long)bytes;
     return g_allocationResult;
 }
 
-extern "C" void* __fastcall
-FableFrontEndManagerConstructInstance(void* storage)
+CFrontEndManager::CFrontEndManager()
 {
     ++g_constructorCalls;
-    g_constructorStorage = storage;
-    return g_constructorResult;
+    g_constructorStorage = this;
 }
 
 static void Reset()
 {
     FableFrontEndManagerSingleton = 0;
     g_allocationResult = 0;
-    g_constructorResult = 0;
     g_allocatedBytes = 0;
     g_allocateCalls = 0;
     g_constructorStorage = 0;
@@ -46,39 +47,28 @@ static void Reset()
 
 static bool RunExisting()
 {
+    static unsigned char other[0xe0];
     Reset();
-    FableFrontEndManagerSingleton = &g_constructed;
-    void* result = CFrontEndManager_GetInstance_00595582();
-    return result == &g_constructed &&
-        FableFrontEndManagerSingleton == &g_constructed &&
-        g_allocateCalls == 0 &&
-        g_constructorCalls == 0;
+    FableFrontEndManagerSingleton = (CFrontEndManager*)other;
+    CFrontEndManager* result = CFrontEndManager::GetInstance();
+    return result == (CFrontEndManager*)other && g_allocateCalls == 0 && g_constructorCalls == 0;
 }
 
 static bool RunAllocationFailure()
 {
     Reset();
-    g_allocationResult = 0;
-    void* result = CFrontEndManager_GetInstance_00595582();
-    return result == 0 &&
-        FableFrontEndManagerSingleton == 0 &&
-        g_allocateCalls == 1 &&
-        g_allocatedBytes == 0xe0 &&
-        g_constructorCalls == 0;
+    CFrontEndManager* result = CFrontEndManager::GetInstance();
+    return result == 0 && FableFrontEndManagerSingleton == 0 && g_allocateCalls == 1 &&
+        g_allocatedBytes == 0xe0 && g_constructorCalls == 0;
 }
 
 static bool RunConstruction()
 {
     Reset();
     g_allocationResult = g_storage;
-    g_constructorResult = &g_constructed;
-    void* result = CFrontEndManager_GetInstance_00595582();
-    return result == &g_constructed &&
-        FableFrontEndManagerSingleton == &g_constructed &&
-        g_allocateCalls == 1 &&
-        g_allocatedBytes == 0xe0 &&
-        g_constructorCalls == 1 &&
-        g_constructorStorage == g_storage;
+    CFrontEndManager* result = CFrontEndManager::GetInstance();
+    return result == g_constructed && FableFrontEndManagerSingleton == g_constructed && g_allocateCalls == 1 &&
+        g_allocatedBytes == 0xe0 && g_constructorCalls == 1 && g_constructorStorage == g_storage;
 }
 
 int main()
@@ -88,12 +78,8 @@ int main()
     const bool constructed = RunConstruction();
     if (!existing || !failed || !constructed)
     {
-        std::printf(
-            "FSE2_00595582_TEST FAIL existing=%d failed=%d "
-            "constructed=%d\n",
-            existing ? 1 : 0,
-            failed ? 1 : 0,
-            constructed ? 1 : 0);
+        std::printf("FSE2_00595582_TEST FAIL existing=%d failed=%d constructed=%d\n",
+            existing ? 1 : 0, failed ? 1 : 0, constructed ? 1 : 0);
         return 1;
     }
     std::puts("FSE2_00595582_TEST PASS");

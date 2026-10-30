@@ -1,5 +1,5 @@
 // CSoftwareVoice::AdvanceBuffer(CAudioSound* sound) -- once the source ring (+0xB4) has drained, move the voice on to the sound's next buffer: a single-buffer sound (+0x78) restarts when looping or stops the voice; a queued sound re-feeds a looping streamed slot, else dequeues the tail slot, reports the queue, and hands the voice the new slot at its due time, or clears the ring and the buffer when nothing is left
-// Leaf: ?AdvanceBuffer@CSoftwareVoice@@QAEXPAUCAudioSound@@@Z
+// Leaf: ?AdvanceBuffer@CSoftwareVoice@@QAEXPAVCAudioObject@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C5B300, 307 bytes, thiscall `ret 4`.
 // Identity (descriptive method name; GameCODA / libpk have no PDB or RTTI): called twice (0x00C5BA05, 0x00C5BC32) by slot 9
 //   of the CSoftwareVoice vtable 0x012B5C60 (0x00C5B7C0) with that slot's sound argument. The voice layout is the landed
@@ -43,18 +43,15 @@ public:
     CSoundBuffer* GetCurrentEntry() const;              // 0x00C35D10
 };
 
-class CAudioObject {                                    // the same libpk object under its landed member spelling
+class CAudioObject {                                    // the libpk audio object (vtable 0x012B5A88; the voice rows' CAudioSound)
 public:
-    void ReportQueueInfo();                             // 0x00C432F0
-};
-
-struct CAudioSound {
     unsigned char  _pad00[0x10];
     unsigned long  m_flags;                             // +0x10 (bit 8: loop)
     unsigned char  _pad14[0x54 - 0x14];
     CircularQueue  m_queue;                             // +0x54
     CSoundBuffer*  m_pBuffer;                           // +0x78
     bool IsLooping() const { return (m_flags >> 8) & 1; }
+    void ReportQueueInfo();                             // 0x00C432F0
 };
 
 class CAudioRingBuffer {                                // vtable 0x012B8FC4
@@ -84,11 +81,11 @@ public:
     __int64          m_clock;                           // +0x10
     unsigned char    _pad18[0xb4 - 0x18];
     CAudioRingBuffer m_ring;                            // +0xb4
-    void AdvanceBuffer(CAudioSound* sound);
+    void AdvanceBuffer(CAudioObject* sound);
 };
 #pragma pack(pop)
 
-void CSoftwareVoice::AdvanceBuffer(CAudioSound* sound)
+void CSoftwareVoice::AdvanceBuffer(CAudioObject* sound)
 {
     if (m_ring.m_pData == 0)
         return;
@@ -110,7 +107,7 @@ void CSoftwareVoice::AdvanceBuffer(CAudioSound* sound)
         return;
     }
     queue.DequeueNext();
-    ((CAudioObject*)sound)->ReportQueueInfo();
+    sound->ReportQueueInfo();
     if (!queue.IsEmpty() && queue.m_items[queue.m_tail] != 0 && (queue.m_tail != 0 || sound->IsLooping())) {
         m_clock = queue.m_times[queue.m_tail];
         SetBuffer(queue.GetCurrentEntry(), (sound->m_flags >> 8) & 1);

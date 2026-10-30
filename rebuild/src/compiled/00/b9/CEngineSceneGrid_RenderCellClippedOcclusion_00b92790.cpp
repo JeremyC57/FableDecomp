@@ -1,5 +1,5 @@
 // CEngineSceneGrid::RenderCellClippedOcclusion(unsigned long x, unsigned long y, EEngineRenderLayer layer, unsigned long occlusionLayers, const CEngineCamera& camera, bool clipped, CEngineSceneRenderStats& stats) -- render one grid cell's occlusion primitives against the camera: skip empty or already-occluded cells and cells without the layer, clip the cell box unless already inside, render the primitives of the layer and occlusion layers that pass their own camera test, recurse into the four child cells, mark the cell rendered and report whether the cell (or any child) produced occlusion results
-// Leaf: RenderCellClippedOcclusion
+// Leaf: ?RenderCellClippedOcclusion@CEngineSceneGrid@@QAE_NKKW4EEngineRenderLayer@@KABVCEngineCamera@@_NAAVCEngineSceneRenderStats@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B92790, length 435 bytes (+ int3 padding), `ret 0x1c`.
 // Callees: as the landed sibling CEngineSceneGrid::RenderCellClipped 0x00B92500 (GetCellRenderMask 0x00B91DC0,
 //   GetCellBoundingBoxAndDrawDistance 0x00B919C0, CEngineCamera::ClipWorldSpaceBoundingBox 0x00B308E0, the primitive's camera
@@ -11,6 +11,7 @@
 //   shared exit to the end of the function); the clip failures return the cell flag; `rendered` is a long OR of the results.
 class CEngineCamera;
 class CEngineSceneRenderStats;
+enum EEngineRenderLayer { };
 class CEngineSubPrimitiveBase;
 
 class C3DBoundingBox { public: float MinX, MinY, MinZ, MaxX, MaxY, MaxZ; };
@@ -85,13 +86,15 @@ class CEngineSceneGrid { public:
     CEngineSceneGrid*             LevelDown;     // +0x0c
     unsigned long                 Size;          // +0x10
     CArray<CEngineSceneGridCell*> GridCells;     // +0x14
-    unsigned long GetCellRenderMask(unsigned long x, unsigned long y);   // 0x00B91DC0
+private:
+    unsigned long GetCellRenderMask(unsigned long x, unsigned long y);   // 0x00B91DC0 ?GetCellRenderMask@CEngineSceneGrid@@AAEKKK@Z (Ego_r: private)
+public:
     bool GetCellBoundingBoxAndDrawDistance(C3DBoundingBox& box, float& drawDistance, unsigned long x, unsigned long y);   // 0x00B919C0
-    bool RenderCellClippedOcclusion(unsigned long x, unsigned long y, long layer, unsigned long occlusionLayers,
+    bool RenderCellClippedOcclusion(unsigned long x, unsigned long y, EEngineRenderLayer layer, unsigned long occlusionLayers,
                                     const CEngineCamera& camera, bool clipped, CEngineSceneRenderStats& stats);
 };
 
-bool CEngineSceneGrid::RenderCellClippedOcclusion(unsigned long x, unsigned long y, long layer, unsigned long occlusionLayers,
+bool CEngineSceneGrid::RenderCellClippedOcclusion(unsigned long x, unsigned long y, EEngineRenderLayer layer, unsigned long occlusionLayers,
                                                   const CEngineCamera& camera, bool clipped, CEngineSceneRenderStats& stats)
 {
     CEngineSceneGridCell* cell = GridCells[Size * y + x];

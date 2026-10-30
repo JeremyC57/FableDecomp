@@ -1,5 +1,6 @@
-// CHHUndead::Main() -- haunted-house undead script: register an alive-filter over Me, start a script frame; unless done, when the parent script's flag (+0x50) is set remove Me (unless done by then), then run script frames until done
+// NScript::CV_HauntedHouseScript::CHHUndead::Main() -- haunted-house undead script: register an alive-filter over Me, start a script frame; unless done, when the parent script's flag (+0x50) is set remove Me (unless done by then), then run script frames until done
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CHHUndead@CV_HauntedHouseScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012ECD3C slot 1 is stored by the factory 0x00E95CD0, registered as "HHUndead" (site 0x00E94AD5)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E95E80, length 137 bytes.
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90, the filter registration @ 0x00F35B10,
 // the filter's out-of-line destructor @ 0x00E241B0, IsDone @ 0x00F35B30; CGameScriptInterface slots 7 NewScriptFrame and
@@ -27,16 +28,23 @@ namespace NScript {
 namespace NScript {
 }
 using NScript::CIsThingAlive;
-struct CV_HauntedHouseScript {
+namespace NScript {
+class CV_HauntedHouseScript {
+public:
     unsigned char _pad[0x50];
     bool          m_raiseUndead;                   // +0x50
+public:
+    class CHHUndead;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_HauntedHouseScript;
 struct CQ_SunnyvaleMasterData;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CHHUndead : public CEntityScriptBase {
+namespace NScript {
+class CV_HauntedHouseScript::CHHUndead : public CEntityScriptBase {
 public:
         CV_HauntedHouseScript* ParentClass;            // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
@@ -45,8 +53,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CHHUndead::Main()
+void NScript::CV_HauntedHouseScript::CHHUndead::Main()
 {
     {
         CIsThingAlive filter(Me);

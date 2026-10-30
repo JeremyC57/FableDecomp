@@ -23,11 +23,11 @@ class CConsoleInputBase { public:                            // vtable 0x0122E5B
     CCharString Name;                                 // +0x04
     CConsoleInputBase(const CCharString& name) : Name(name) { }
 };
+enum EGenericVarType { GVT_FLOAT = 3 };
 class CConsoleCommandParameters { public:                    // 12-byte vector of parameter types
     long* first; long* last; long* end_of_storage;
-    CConsoleCommandParameters(long type);             // 0x009EBB30
+    CConsoleCommandParameters(EGenericVarType type);  // 0x009EBB30 ??0CConsoleCommandParameters@@QAE@W4EGenericVarType@@@Z (Ego_r / FableWin)
 };
-enum EGenericVarType { GVT_FLOAT = 3 };
 struct CConsoleCommandBase : CConsoleInputBase {      // vtable 0x0122E638
     CConsoleCommandParameters ParamTypes;             // +0x08
     virtual ~CConsoleCommandBase();

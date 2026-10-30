@@ -1,5 +1,6 @@
-// CCrateDeathMarker::Main() -- death-marker crate: alive filter on Me; each round wait for the living hero to come within 5.5 of the marker, spawn a CREATURE_BS_VILLAGER_MALE at it, fade it in (alpha 0 to 1 in 0.05 steps, one per frame), then wait until the hero is dead or more than 8 away, and end the round with a script frame
+// NScript::CPersonalScript_EmptyScript::CCrateDeathMarker::Main() -- death-marker crate: alive filter on Me; each round wait for the living hero to come within 5.5 of the marker, spawn a CREATURE_BS_VILLAGER_MALE at it, fade it in (alpha 0 to 1 in 0.05 steps, one per frame), then wait until the hero is dead or more than 8 away, and end the round with a script frame
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CCrateDeathMarker@CPersonalScript_EmptyScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F5FC8 slot 1 is stored by the factory 0x00EF1210 registered as "CrateDeathMarker"
 // Retail: Fable.exe (TLC, VC7.1) CCrateDeathMarker::Main @ 0x00EF12F0, 693 bytes. Strings: "CREATURE_BS_VILLAGER_MALE" @ 0x012E39D8, "" @ 0x0122D70E; 0.05f @ 0x0125A15C.
 // Callees: CScriptThing copy ctor 0x004ABE90, ~CScriptThing 0x004AA840, CIsThingAlive dtor 0x00E241B0, RegisterFilter 0x00F35B10, IsDone 0x00F35B30, IsDistanceBetweenThingsUnder 0x00CBE2FF / Over 0x00CBE3EA, CGameScriptInterface slots 7/70/91/510.
 // Layout: entity-script base {vptr, Game +4, CScriptThing Me +8} as the landed CTrophiesBriarTrophy::Main 0x00E9D800.
@@ -65,14 +66,23 @@ using NScript::CIsThingAlive;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CCrateDeathMarker : public CEntityScriptBase {
+namespace NScript {
+class CPersonalScript_EmptyScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CCrateDeathMarker;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CPersonalScript_EmptyScript;
+namespace NScript {
+class CPersonalScript_EmptyScript::CCrateDeathMarker : public CEntityScriptBase {
 public:
 private:
         virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CCrateDeathMarker::Main()
+void NScript::CPersonalScript_EmptyScript::CCrateDeathMarker::Main()
 {
     {
         CIsThingAlive filter(Me);

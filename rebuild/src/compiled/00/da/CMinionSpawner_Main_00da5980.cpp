@@ -1,5 +1,6 @@
-// CMinionSpawner::Main() -- minion-spawner marker: read the trigger distance from Me's data string (10 when empty or zero), wait until the hero is that close, then play the evil summon effect at Me, pause 0.2s, create a war-dog minion ("MinionEscort") at Me facing the hero and remove the spawner
+// NScript::CQ_MinionClifftopChaseScript::CMinionSpawner::Main() -- minion-spawner marker: read the trigger distance from Me's data string (10 when empty or zero), wait until the hero is that close, then play the evil summon effect at Me, pause 0.2s, create a war-dog minion ("MinionEscort") at Me facing the hero and remove the spawner
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CMinionSpawner@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D7548 slot 1 is stored by the factory 0x00DA58B0 registered as "MinionSpawner"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA5980, length 446 bytes (+ int3 padding).
 // Callees: GFCharStringToInt @ 0x0099E7F0 (`__fastcall`), CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0
 //   ("" 0x0122D70E, "SUMMON_CREATURE_SUMMON_EVIL" 0x012CBA0C, "MinionEscort" 0x012D7300, "CREATURE_MINION_WARDOG" 0x012CB9F4),
@@ -31,14 +32,23 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CMinionSpawner : public CEntityScriptBase {
+namespace NScript {
+class CQ_MinionClifftopChaseScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CMinionSpawner;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_MinionClifftopChaseScript;
+namespace NScript {
+class CQ_MinionClifftopChaseScript::CMinionSpawner : public CEntityScriptBase {
 public:
 private:
         virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CMinionSpawner::Main()
+void NScript::CQ_MinionClifftopChaseScript::CMinionSpawner::Main()
 {
     long distance = GFCharStringToInt(Me.GetDataString());
     if (distance == 0) {

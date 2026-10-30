@@ -1,5 +1,6 @@
-// CPermanentBarrier::Main() -- the permanent magic barrier entity script: register an alive-filter over the barrier (Me), let the game update, and unless the script is already done put the HK_MAGIC_BARRIER effect on the barrier's position and keep updating until it is done
+// NScript::CQ_EndGameFocalSitesScript::CPermanentBarrier::Main() -- the permanent magic barrier entity script: register an alive-filter over the barrier (Me), let the game update, and unless the script is already done put the HK_MAGIC_BARRIER effect on the barrier's position and keep updating until it is done
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CPermanentBarrier@CQ_EndGameFocalSitesScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012CC48C slot 1 is stored by the ctor 0x00D2D7B0 of the factory 0x00D2D730, registered as "PermanentBarrier" (site 0x00D2AF3B)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2D830, 202 bytes (+ int3 padding), `ret` (vtable slot 1 = Main per the entity-script
 //   contract [dtor, Main, Init, ...]).
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) 0x004ABE90 (the filter's member; filter vtable 0x012C32F0
@@ -50,14 +51,23 @@ using NScript::CIsThingAlive;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CPermanentBarrier : public CEntityScriptBase {
+namespace NScript {
+class CQ_EndGameFocalSitesScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CPermanentBarrier;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_EndGameFocalSitesScript;
+namespace NScript {
+class CQ_EndGameFocalSitesScript::CPermanentBarrier : public CEntityScriptBase {
 public:
 private:
         virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CPermanentBarrier::Main()
+void NScript::CQ_EndGameFocalSitesScript::CPermanentBarrier::Main()
 {
     SetPredicate(CIsThingAlive(Me));
     Game->NewScriptFrame();

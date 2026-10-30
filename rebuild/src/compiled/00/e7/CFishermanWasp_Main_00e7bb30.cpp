@@ -1,6 +1,7 @@
-// CFishermanWasp::Main() -- the wasp-quest fisherman entity script: register an alive-filter over Me, start a frame, and
+// NScript::CV_FishermanScript::CFishermanWasp::Main() -- the wasp-quest fisherman entity script: register an alive-filter over Me, start a frame, and
 // unless the script is done set the hero as Me's best enemy target and keep running frames until it is done
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CFishermanWasp@CV_FishermanScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012EA0EC slot 1 is stored by the factory 0x00E7BA40 registered as "FishermanWasp"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E7BB30, length 162 bytes (padded to 176), `ret`.
 // Callees: CScriptThing copy ctor @ 0x004ABE90, the filter registration @ 0x00F35B10 (on `this`), ~CIsThingAlive
 // @ 0x00E241B0 (out of line in this module), IsDone @ 0x00F35B30, CBaseObject::CBaseObject @ 0x0099A380 (the
@@ -51,14 +52,23 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CFishermanWasp : public CEntityScriptBase {
+namespace NScript {
+class CV_FishermanScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CFishermanWasp;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CV_FishermanScript;
+namespace NScript {
+class CV_FishermanScript::CFishermanWasp : public CEntityScriptBase {
 public:
 private:
         virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CFishermanWasp::Main()
+void NScript::CV_FishermanScript::CFishermanWasp::Main()
 {
     {
         CIsThingAlive filter(Me);

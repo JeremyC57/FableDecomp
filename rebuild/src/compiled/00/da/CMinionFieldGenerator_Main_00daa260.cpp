@@ -85,6 +85,7 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0
     CScriptGameResourceObjectBase() { }
     __forceinline ~CScriptGameResourceObjectBase() { }
 };
+enum EScriptEntityMoveType { };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
@@ -92,7 +93,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     CScriptThing GetScriptThing() const;                // 0x007E7490
-    void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
+    virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType moveType, bool a, bool b);   // 0x007E72F0 (header slot 4; called directly on the local)
     bool IsPerformingScriptTask() const;                // 0x007E7450
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
@@ -181,7 +182,7 @@ void CMinionFieldGenerator::Main()
 #pragma inline_depth(0)
             return;
 #pragma inline_depth()
-        generator.MoveToPosition(windmillPos, 0.0f, 1, false, true);
+        generator.MoveToPosition(windmillPos, 0.0f, (EScriptEntityMoveType)1, false, true);
         while (generator.IsPerformingScriptTask()) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())

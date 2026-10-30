@@ -1,4 +1,5 @@
-// CNOVI_CreatedBeetle::Main() -- the beetle spawned in Oakvale's intro: register an is-alive functor over Me, run a frame, then give it five seconds on a script timer and remove it (with effects) unless the script finished first
+// NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::Main() -- the beetle spawned in Oakvale's intro: register an is-alive functor over Me, run a frame, then give it five seconds on a script timer and remove it (with effects) unless the script finished first
+// Identity (naming wave 11): ?Main@CNOVI_CreatedBeetle@CQ_NewOakValeIntroScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D9560 slot 1 is stored by the factory 0x00DB7FF0 registered as "NOVI_CreatedBeetle"
 // Grade: RELOCATION_MATCH -- the closing test is written `if (IsActiveThreadTerminating()) return; Game->RemoveThing(...)`: an early return there keeps a second CTimer-dtor + epilogue copy like retail, where `if (!IsActiveThreadTerminating()) RemoveThing` let VC cross-jump the loop exit into the final DeregisterTimer
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DB80C0, 232 bytes (+ int3 padding). __fastcall, `ret`.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (the functor's member; the functor's inline dtor re-stores its
@@ -40,20 +41,29 @@ class CTimer { public:                                        // 4 bytes: an ind
     ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
     long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 };
-struct CQ_NewOakValeIntroScript;
+namespace NScript {
+class CQ_NewOakValeIntroScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CNOVI_CreatedBeetle;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_NewOakValeIntroScript;
 struct CQ_SunnyvaleMasterData;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-struct CNOVI_CreatedBeetle : public CEntityScriptBase {
+namespace NScript {
+class CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle : public CEntityScriptBase {
+public:
         CQ_NewOakValeIntroScript* ParentClass;             // +0x14
     CQ_SunnyvaleMasterData*   PMasterData;             // +0x18
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CNOVI_CreatedBeetle::Main()
+void NScript::CQ_NewOakValeIntroScript::CNOVI_CreatedBeetle::Main()
 {
     {
         CScriptThingFunctor_00ef7ab0 functor(Me);

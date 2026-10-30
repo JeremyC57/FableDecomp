@@ -1,4 +1,4 @@
-// CBeggar::Main() -- the beggar entity: hold an alive filter over Me, then loop: wait until the hero talks to the beggar, sit him on the floor, wait until the hero talks to him again, stand him up
+// NScript::CPersonalScript_EmptyScript::CBeggar::Main() -- the beggar entity: hold an alive filter over Me, then loop: wait until the hero talks to the beggar, sit him on the floor, wait until the hero talks to him again, stand him up
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EF3200, 443 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor @ 0x004ABE90, CEntityScriptBase::SetPredicate @ 0x00F35B10, ~CIsThingAlive @ 0x00E241B0
 //          (out of line in this module), CEntityScriptBase::IsActiveThreadTerminating @ 0x00F35B30, CCharString(const char*, long)
@@ -11,6 +11,7 @@
 //        WAIT_UNTIL(Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) loops written as plain `while (!x)` (retail's neg/sbb/inc bool),
 //        each followed by a terminating test and the sit/stand call.
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CBeggar@CPersonalScript_EmptyScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F636C slot 1 is stored by the factory 0x00EF3120 registered as "Beggar"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -42,11 +43,23 @@ using NScript::CIsThingAlive;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-struct CBeggar : CEntityScriptBase {
-    void Main();
+namespace NScript {
+class CPersonalScript_EmptyScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CBeggar;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CPersonalScript_EmptyScript;
+namespace NScript {
+class CPersonalScript_EmptyScript::CBeggar : public CEntityScriptBase {
+public:
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private
+public:
+};
+}
 
-void CBeggar::Main()
+void NScript::CPersonalScript_EmptyScript::CBeggar::Main()
 {
     {
         CIsThingAlive filter(Me);

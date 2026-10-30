@@ -1,4 +1,6 @@
-// CEngineScene::RenderPrimitiveList(CEngineInternalPrimitiveBase* first, unsigned long layerMask, long, long) -- walk the primitive chain: a primitive whose render-layer mask (+0x30) meets the mask is handed to its type's manager (slot 8) and the walk continues through its +0x38 link, otherwise through its +0x40 link
+// CEngineScene::RenderPrimitiveListToShadowBuffer(CEngineInternalPrimitiveBase* first, EEngineRenderLayer layer, const CShadowClipVolume&, CEngineSceneRenderStats&) -- walk
+// Leaf: ?RenderPrimitiveListToShadowBuffer@CEngineScene@@AAEXPAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@ABVCShadowClipVolume@@AAVCEngineSceneRenderStats@@@Z
+// Identity (naming wave 11): Ego_r.pdb's only (list, layer, CShadowClipVolume&, stats&) CEngineScene member; RenderSceneShadowBuffer 0x00B94060 calls it on both loose lists. the primitive chain: a primitive whose render-layer mask (+0x30) meets the mask is handed to its type's manager (slot 8) and the walk continues through its +0x38 link, otherwise through its +0x40 link
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B917E0, length 55 bytes.
 // Callees: virtual slot 8 (+0x20) of the primitive's manager (`g_pEngine->m_managers[type]` @ 0x01436E84 + 0x10). Shape: `test esi,esi ; je` skips an empty chain, the
 // mask stays in edi, the loop head is aligned with `mov edi,edi`; the two trailing arguments and `this` are unused (`ret 10h`).
@@ -26,11 +28,17 @@ class CEngineInternalPrimitiveBase { public:
     CEngineInternalPrimitiveBase* m_pNextSkipped;  // +0x40
 };
 
-class CEngineScene { public:
-    void RenderPrimitiveList(CEngineInternalPrimitiveBase* first, unsigned long layerMask, long a, long b);
+enum EEngineRenderLayer { };
+class CShadowClipVolume;
+class CEngineSceneRenderStats;
+class CEngineScene {
+private:                                        // Ego_r.pdb: private (AAE)
+    void RenderPrimitiveListToShadowBuffer(CEngineInternalPrimitiveBase* first, EEngineRenderLayer layerMask,
+                                           const CShadowClipVolume& volume, CEngineSceneRenderStats& stats);
 };
 
-void CEngineScene::RenderPrimitiveList(CEngineInternalPrimitiveBase* first, unsigned long layerMask, long a, long b)
+void CEngineScene::RenderPrimitiveListToShadowBuffer(CEngineInternalPrimitiveBase* first, EEngineRenderLayer layerMask,
+                                                     const CShadowClipVolume& volume, CEngineSceneRenderStats& stats)
 {
     CEngineInternalPrimitiveBase* primitive = first;
     while (primitive) {

@@ -71,11 +71,12 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0
 };
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECTION_RANDOM };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
+enum EScriptEntityMoveType { };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
+    virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType moveType, bool a, bool b);   // 0x007E72F0 (header slot 4; called directly on the local)
     bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     CScriptThing GetScriptThing() const;                // 0x007E7490
@@ -226,7 +227,7 @@ void CFH_Villager::Main()
     if ((MyID < 3 && ParentClass->HasHeroHitVillagersGroupOne) || (MyID >= 3 && ParentClass->HasHeroHitVillagersGroupTwo)) {
         if (IsActiveThreadTerminating())
             return;
-        villager.MoveToPosition(ParentClass->VillagerEscapeMarker.GetPos(), 1.0f, 1, false, true);
+        villager.MoveToPosition(ParentClass->VillagerEscapeMarker.GetPos(), 1.0f, (EScriptEntityMoveType)1, false, true);
         while (!villager.IsPerformingScriptTask()) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())

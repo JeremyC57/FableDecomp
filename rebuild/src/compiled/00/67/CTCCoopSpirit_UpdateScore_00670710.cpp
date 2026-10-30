@@ -70,8 +70,9 @@ class CTCCoopSpirit : public CTCBase { public:
     unsigned char _pad08[4];
     long          NoMovementTimer;                          // +0x0c
     long          Score;                                    // +0x10
-    void SwapToHero();                                      // 0x0066FF20
     void UpdateScore();
+private:
+    void SwapToHero();                                      // 0x0066FF20 ?SwapToHero@CTCCoopSpirit@@AAEXXZ (Ego_r / FableWin, private)
 };
 
 void CTCCoopSpirit::UpdateScore()

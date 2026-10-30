@@ -1,4 +1,4 @@
-// CItem::AddInventoryItem(const CItem& other) -- merge another stack into this slot: an empty slot takes the other item wholesale; otherwise add as many as still fit and re-average the bought price over the new count
+// NInventory::CItem::AddInventoryItem(const CItem& other) -- merge another stack into this slot: an empty slot takes the other item wholesale; otherwise add as many as still fit and re-average the bought price over the new count
 // Leaf: AddInventoryItem
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x005BDDE4, length 108 bytes.
 // Callees: CCountedPointer<NInventory::CPerItemData>::operator=(const CCountedPointer&) @ 0x005C077F,
@@ -17,16 +17,19 @@ struct CPerItemDataPointer {                       // CCountedPointer<NInventory
     CPerItemDataPointer& operator=(const CPerItemDataPointer& other);   // 0x005C077F
 };
 template <class T> inline const T& Min(const T& a, const T& b) { return b < a ? b : a; }
-struct CItem {
+namespace NInventory {
+class CItem {                                      // NInventory::CItem (Ego_r.pdb / FableWin.pdb)
+public:
     long                ItemType;                  // +0x00
     long                NumberOfItems;             // +0x04
     CPerItemDataPointer PPerItemData;              // +0x08
     long                AverageBoughtPrice;        // +0x10
-    long GetMaximumNumberOfItems();                // 0x005BD931
+    long GetMaximumNumberOfItems() const;          // 0x005BD931 ?GetMaximumNumberOfItems@CItem@NInventory@@QBEJXZ
     void AddInventoryItem(const CItem& other);
 };
+}
 
-void CItem::AddInventoryItem(const CItem& other)
+void NInventory::CItem::AddInventoryItem(const CItem& other)
 {
     if (NumberOfItems == 0) {
         NumberOfItems = other.NumberOfItems;

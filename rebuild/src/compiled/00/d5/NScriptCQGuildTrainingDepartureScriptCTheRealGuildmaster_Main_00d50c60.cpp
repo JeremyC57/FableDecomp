@@ -115,7 +115,7 @@ struct CIsThingAlive {                                 // vtable 0x012C32F0
     ~CIsThingAlive();                                  // 0x00E241B0
 };
 typedef long EScriptAIPriority;
-typedef long EScriptEntityMoveType;
+enum EScriptEntityMoveType { };
 typedef long ETextGroupSelectionMethod;
 class CBaseObject { public:                       // vtable 0x0129A7D8
     void* m_pIntelligentPointer;                       // +0x04

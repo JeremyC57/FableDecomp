@@ -1,7 +1,8 @@
-// CMurderTwistSheriff::DoSuspicious() -- the pleased sheriff: talked to by the hero -> paused movie sequence, the "pleased" line (first time,
+// NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoSuspicious() -- the pleased sheriff: talked to by the hero -> paused movie sequence, the "pleased" line (first time,
 //   then HasSaidWellDoneToHero) or that line numbered 1..2 (NextLine); hit by the hero (or a special ability other than 14) ->
 //   wait for the enflame reaction, "pleased, attacked" line, SheriffState 2
-// Leaf: DoSuspicious
+// Leaf: ?DoSayingWellDoneToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+// Identity (naming wave 11): ?DoSayingWellDoneToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ (Ego_r.pdb / FableWin.pdb name lists); Ego_r.pdb / FableWin.pdb member order (DoGivingRewardToHero 0x00EB15C0 < DoSayingWellDoneToHero < AttackHero 0x00EB1EC0); this body says TEXT_QST_B07_SHERIFF_PLEASED; invented DoSuspicious
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB19C0, 1274 bytes (`ret`).
 // Label: the catalog repeats DoBecomingSuspiciousOfHero for this second handler; the landed CMurderTwistSheriff::Main 0x00EAEF30
 //   binds 0x00EB19C0 as DoSuspicious, so that name is kept (one symbol per address); by its strings and flag the original is
@@ -83,15 +84,23 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
 };
 enum ESheriffState { SHERIFF_STATE_0, SHERIFF_STATE_1, SHERIFF_STATE_2, SHERIFF_STATE_3 };   // enumerator names not in the PDB dump
 enum EAssassinState { ASSASSIN_STATE_0, ASSASSIN_STATE_1, ASSASSIN_STATE_2, ASSASSIN_STATE_3 };
-struct CV_MurderTwistFinalScript {                     // retail sits 0x14 below the PDB (SheriffState PDB +0x5c)
+namespace NScript {
+class CV_MurderTwistFinalScript {
+public:                     // retail sits 0x14 below the PDB (SheriffState PDB +0x5c)
     unsigned char _pad00[0x48];
     ESheriffState  SheriffState;                       // +0x48
     EAssassinState AssassinState;                      // +0x4c
     void WaitForEnflameReactionIfNecessary(const CScriptThing& thing);   // 0x00EB0700
     bool HasHeroEnflamedEntity(const CScriptThing& thing);               // 0x00EB07D0
+public:
+    class CMurderTwistSheriff;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_MurderTwistFinalScript;
 class CTimer { public: unsigned long _handle; };
-struct CMurderTwistSheriff : CEntityScriptBase {
+namespace NScript {
+class CV_MurderTwistFinalScript::CMurderTwistSheriff : public CEntityScriptBase {
+public:
     CV_MurderTwistFinalScript* ParentClass;            // +0x14
     void*                      PMasterData;            // +0x18
     CScriptGameResourceObjectScriptedThingBase MyEntityHandle;   // +0x1c
@@ -101,10 +110,13 @@ struct CMurderTwistSheriff : CEntityScriptBase {
     bool HasBeingRumbledCutscenePlayed;                // +0x35
     bool HasExpressedSuspicionToHero;                  // +0x36
     bool HasSaidWellDoneToHero;                        // +0x37
-    void DoSuspicious();
+private:
+    void DoSayingWellDoneToHero();   // PDB ?DoSayingWellDoneToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ (private)
+public:
 };
+}
 
-void CMurderTwistSheriff::DoSuspicious()
+void NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoSayingWellDoneToHero()
 {
     if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
         if (IsActiveThreadTerminating())

@@ -15,7 +15,7 @@ public:
 
 class CPlayerManager {
 public:
-    CPlayer* GetMainPlayer();                           // 0x00449970
+    CPlayer& GetMainPlayer();                           // 0x00449970 ?GetMainPlayer@CPlayerManager@@QAEAAVCPlayer@@XZ (Ego_r / FableWin)
 };
 
 class CMainGameComponent { public:
@@ -31,7 +31,7 @@ public:
 
 bool CTCQuestCompletionUI::IsHeroControlledByPlayer() const
 {
-    switch (g_pMainGameComponent->PlayerManager->GetMainPlayer()->GetCurrentMode()) {
+    switch (g_pMainGameComponent->PlayerManager->GetMainPlayer().GetCurrentMode()) {
     case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13: case 14: case 15:
     case 17: case 18: case 21: case 23: case 26: case 27: case 29: case 30: case 32: case 36: case 37:
         return false;

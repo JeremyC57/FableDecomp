@@ -1,5 +1,6 @@
-// CTrappedMan::Main() -- the trapped man on the hill: register an alive filter over Me, run a frame; then, until the script is done, wait for the hero to hit Me, show "You hit the man on the hill!" and, when his health is below 1e-4, "You hit him to the point of death!", once per script frame
+// NScript::CPersonalScript_EmptyScript::CTrappedMan::Main() -- the trapped man on the hill: register an alive filter over Me, run a frame; then, until the script is done, wait for the hero to hit Me, show "You hit the man on the hill!" and, when his health is below 1e-4, "You hit him to the point of death!", once per script frame
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CTrappedMan@CPersonalScript_EmptyScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F6128 slot 1 is stored by the factory 0x00EF1D30 registered as "TrappedMan"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EF1E10, 384 bytes (entity-script vtable slot 1 = Main).
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 (filter member; filter vtable 0x012C32F0), the filter registration
 //          @ 0x00F35B10, the filter's out-of-line dtor @ 0x00E241B0, IsDone @ 0x00F35B30, CCharString(const char*, long)
@@ -34,13 +35,20 @@ namespace NScript {
 namespace NScript {
 }
 using NScript::CIsThingAlive;
-struct CPersonalScript_EmptyScript;
+namespace NScript {
+class CPersonalScript_EmptyScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CTrappedMan;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CPersonalScript_EmptyScript;
 struct CEmptyData;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CTrappedMan : public CEntityScriptBase {
+namespace NScript {
+class CPersonalScript_EmptyScript::CTrappedMan : public CEntityScriptBase {
 public:
         CPersonalScript_EmptyScript* ParentClass;      // +0x14
     CEmptyData*                  PMasterData;      // +0x18
@@ -48,8 +56,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CTrappedMan::Main()
+void NScript::CPersonalScript_EmptyScript::CTrappedMan::Main()
 {
     {
         CIsThingAlive filter(Me);

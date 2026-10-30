@@ -14,14 +14,15 @@
 //   switch lowers to `dec ; je ; dec ; je ; sub 67h ; je` with the logged default inline and its own epilogue; the loop
 //   start clamps branch-free (`setl ; dec ; and`), the end (+1) through ebx; the created sample is a named local, so the
 //   index is read after CreateSample returns (an inline call argument loads it first).
-struct CDebugStream {                        // libpk message text
-    char* m_pBuffer;
-    CDebugStream& __fastcall operator<<(const char* text);       // 0x00C0DEC0
-    CDebugStream& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
+class CString {                              // libpk message text (0x00C0DEA0 / 0x00C0DEC0 / 0x00C0DF10 = CString::operator<<)
+public:
+    char* m_pchData;
+    CString& __fastcall operator<<(const char* text);       // 0x00C0DEC0
+    CString& __fastcall operator<<(unsigned long value);    // 0x00C0DF10
 };
 
 struct CLoadLog {                            // the processor's message log / status (+0x30 ok flag)
-    CDebugStream& AddMessage();              // 0x00C307E0
+    CString& AddMessage();                   // 0x00C307E0 ?AddMessage@CLoadLog@@QAEAAVCString@@XZ
 };
 
 struct CAudioFormat {                        // 20 bytes (the CAudioFormat of 0x00C2D790..0x00C2D9A0)

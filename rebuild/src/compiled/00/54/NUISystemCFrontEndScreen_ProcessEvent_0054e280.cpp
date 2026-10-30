@@ -1,7 +1,7 @@
 // NUISystem::CFrontEndScreen::ProcessEvent(EEvent) -- 0.2 s debounced screen input: left click runs the screen action, back returns to the previous screen, the cancel keys too unless the IME is active
 // Retail 0x0054E280, 197 bytes incl. the embedded jump table (CObserver vtable 0x012497BC slot 1: `this` is the observer
 // subobject, members at -4). Callees: CFrontEndManager::GetInstance 0x00595582, GotoPreviousScreen 0x00597BF2, the manager's
-// Action slot 8 (+0x20), CManager::GetInstance 0x0041E5F2 + GetKeyPressed (slot 13), CIME::GetInstance 0x00404A80 +
+// Action slot 8 (+0x20), CManager::GetInstance 0x0041E5F2 + GetKeyPressed (slot 13), CIME::Get 0x00404A80 +
 // IsIMEActive 0x00404C50. Float 0.2f @ 0x012305A0. Jump table: index bytes 00 01 03 03 03 03 03 02 02 for events 0x1a..0x22.
 // Name: Ego_r.pdb ?ProcessEvent@CFrontEndScreen@NUISystem@@UAEXW4EEvent@2@@Z.
 // Local model after the landed CFrontEndScreen rows 0x0054E4B0 / 0x0054E3D0: CComponent = CUIInterface (+0) + CObserver
@@ -70,12 +70,12 @@ public:
  static CManager* __fastcall GetInstance();   // 0x0041E5F2
 };
 }
+namespace NUISystem {
 class CIME {
 public:
- static CIME* __fastcall GetInstance();       // 0x00404A80 (returns the static 0x013B7CD8)
- bool IsIMEActive();                          // 0x00404C50
+ static CIME& __fastcall Get();               // 0x00404A80 ?Get@CIME@NUISystem@@SIAAV12@XZ (Ego_r / FableWin; the static 0x013B7CD8)
+ bool IsIMEActive() const;                    // 0x00404C50 ?IsIMEActive@CIME@NUISystem@@QBE_NXZ
 };
-namespace NUISystem {
 class CFrontEndScreen : public CChangingStateComponent {
 public:
  float m_fLastInputTime;                      // +0x15c
@@ -93,7 +93,7 @@ void CFrontEndScreen::ProcessEvent(EEvent event)
   break;
  case 0x21:
  case 0x22:
-  if (CManager::GetInstance()->GetKeyPressed() == 1 && !CIME::GetInstance()->IsIMEActive())
+  if (CManager::GetInstance()->GetKeyPressed() == 1 && !CIME::Get().IsIMEActive())
    CFrontEndManager::GetInstance()->GotoPreviousScreen(true);
   break;
  case 0x1a:

@@ -1,7 +1,8 @@
-// CTestGateSwitch::Main() -- test gate switch: open or close every "TestGate" thing to match the switch state (with an
+// NScript::CPersonalScript_GlobalThingsScript::CTestGateSwitch::Main() -- test gate switch: open or close every "TestGate" thing to match the switch state (with an
 // on-screen reminder of the required script name), then whenever the hero uses the switch toggle the state and
 // re-apply it, once per script frame until the thread terminates
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CTestGateSwitch@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012C33E0 slot 1 is stored by the factory 0x00CDF930 registered as "TestGateSwitch"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CE1280, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CCharString ctor 0x0099EBF0 / dtor 0x0099EAE0, CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30,
 //   vector<CScriptThing>::~vector 0x008AC970 (out of line on the inner exits), CScriptThing slots 0 (virtual dtor in the
@@ -50,14 +51,26 @@ using std::vector;
 #include "engine/CGameScriptInterface.h"
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
-struct CTestGateSwitch : CEntityScriptBase {
+namespace NScript {
+class CPersonalScript_GlobalThingsScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CTestGateSwitch;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CPersonalScript_GlobalThingsScript;
+namespace NScript {
+class CPersonalScript_GlobalThingsScript::CTestGateSwitch : public CEntityScriptBase {
+public:
     void* ParentClass;                                 // +0x14 CPersonalScript_GlobalThingsScript*
     void* PMasterData;                                 // +0x18 CQ_SunnyvaleMasterData*
     bool  GatesOpen;                                   // +0x1c
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private
+public:
 };
+}
 
-void CTestGateSwitch::Main()
+void NScript::CPersonalScript_GlobalThingsScript::CTestGateSwitch::Main()
 {
     vector<CScriptThing> gates;
     Game->GetAllThingsWithScriptName("TestGate", gates);

@@ -1,5 +1,5 @@
 // CAudioSource::BeginSound(CAudioSound* sound) -- prime the source from the sound's current queue slot: take the slot's due time as the start time, hand the slot's buffer (or null for an empty queue) with the sound's loop bit to the voice, then the sound's format record
-// Leaf: ?BeginSound@CAudioSource@@QAEXPAUCAudioSound@@@Z
+// Leaf: ?BeginSound@CAudioSource@@QAEXPAVCAudioObject@@@Z
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C59BC0, 89 bytes, thiscall, `ret 4`.
 // Identity: bound by the landed callers CAudioSource::Update 0x00C72FE0 and CSoftwareVoice::StartSound 0x00C5B250 (by a
 //   cast on the voice); it sits in the GameCODA voice TU next to CCodaVoice::Play 0x00C59720 (the same SetBuffer /
@@ -18,7 +18,7 @@ public:
     __int64*      m_times;                              // +0x04 per-slot times
     unsigned long m_capacity;                           // +0x08
 };
-struct CAudioSound {
+class CAudioObject { public:
     unsigned char  _pad00[0x10];
     unsigned long  m_flags;                             // +0x10 (bit 8: loop)
     unsigned char  _pad14[0x54 - 0x14];
@@ -40,11 +40,11 @@ public:
     unsigned char _pad04[8];
     void*         m_pBuffer;                            // +0x0C
     __int64       m_startTime;                          // +0x10
-    void BeginSound(CAudioSound* sound);
+    void BeginSound(CAudioObject* sound);
 };
 #pragma pack(pop)
 
-void CAudioSource::BeginSound(CAudioSound* sound)
+void CAudioSource::BeginSound(CAudioObject* sound)
 {
     CItem* item = sound->m_queue.m_capacity ? sound->m_queue.m_items[sound->m_current] : 0;
     m_startTime = sound->m_queue.m_times[sound->m_current];

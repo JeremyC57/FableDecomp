@@ -1,6 +1,7 @@
 // Levers: inline CScriptThing model (CBaseClass + CCountedPointer, __forceinline dtor); the CAnd filter comes from an inline by-value `And(a, b)` factory (the argument address is re-taken, `lea eax,[esp+48h]`); in-body `#pragma inline_depth(0)` from after the scripted-object declaration to the end keeps every later ~CScriptThing out of line (merged with the scripted-object dtor tail), leaving the single inline expansion at the early terminate return.
 // CCham::Main() -- Cham's second entity script: filter on Me and the "Leader" marker, take Me under scripted control (priority 4), then run the scripted movement towards the leader until it finishes
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CFollower@CPersonalScript_EmptyScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F646C slot 1 is stored by the factory 0x00EF4130 registered as "Follower"
 namespace NScript { class CPredicateBase; }
 class CCharString { public:
     void* PStringData;
@@ -94,15 +95,25 @@ struct CAnd : CFilterBase {                            // vtable 0x012F687C, 0x2
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-struct CCham : CEntityScriptBase {
+namespace NScript {
+class CPersonalScript_EmptyScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CFollower;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CPersonalScript_EmptyScript;
+namespace NScript {
+class CPersonalScript_EmptyScript::CFollower : public CEntityScriptBase {
+public:
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
 inline CAnd And(const CIsThing& a, const CIsThing& b) { return CAnd(a, b); }
 
-void CCham::Main()
+void NScript::CPersonalScript_EmptyScript::CFollower::Main()
 {
     CScriptThing leader = Game->GetThingWithScriptName("Leader");
     SetPredicate(And(CIsThing(Me), CIsThing(leader)));

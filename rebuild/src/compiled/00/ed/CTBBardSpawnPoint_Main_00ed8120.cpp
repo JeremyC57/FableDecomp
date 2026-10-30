@@ -1,4 +1,5 @@
-// CTB_BardSpawnPoint::Main() -- spawn the Bowerstone bard at the spawn point and hand him to the parent quest as stBard
+// NScript::CV_TalentlessBardScript::CTB_BardSpawnPoint::Main() -- spawn the Bowerstone bard at the spawn point and hand him to the parent quest as stBard
+// Identity (naming wave 11): ?Main@CTB_BardSpawnPoint@CV_TalentlessBardScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F34BC slot 1 is stored by the factory 0x00ED8050 registered as "TB_BardSpawnPoint"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ED8120, length 240 bytes (entity-script vtable 0x012F34C0 slot 1).
 // Callees: CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0, ~CBaseClass @ 0x0099A2E0,
 // operator delete @ 0x00BFE9BC, CScriptThing::GetPos (virtual slot 6, +0x18) on Me, and
@@ -79,23 +80,32 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-struct CV_TalentlessBardScript {
+namespace NScript {
+class CV_TalentlessBardScript {
+public:
     unsigned char _base[0x54];                           // quest script base and earlier members
     CScriptThing  stBard;                                // +0x54 (PDB +0x68)
+public:
+    class CTB_BardSpawnPoint;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_TalentlessBardScript;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-struct CTB_BardSpawnPoint : CEntityScriptBase {
+namespace NScript {
+class CV_TalentlessBardScript::CTB_BardSpawnPoint : public CEntityScriptBase {
+public:
     CV_TalentlessBardScript* ParentClass;                // +0x14
     void*                    PMasterData;                // +0x18 CQ_SunnyvaleMasterData*
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CTB_BardSpawnPoint::Main()
+void NScript::CV_TalentlessBardScript::CTB_BardSpawnPoint::Main()
 {
     CCharString scriptName("TB_Bard");
     CCharString defName("CREATURE_BOWERSTONE_BARD");

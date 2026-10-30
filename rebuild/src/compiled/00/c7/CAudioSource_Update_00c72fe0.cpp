@@ -20,7 +20,7 @@ public:
     unsigned long     m_capacity;          // +0x08
 };
 
-struct CAudioSound {                       // the sound a source plays (flag word +0x10, property block +0x14)
+class CAudioObject { public:                       // the sound a source plays (flag word +0x10, property block +0x14)
     unsigned char  _pad00[0x54];
     CircularQueue  m_queue;                // +0x54 decoded buffers and their due times
     unsigned char  _pad60[4];
@@ -30,7 +30,7 @@ struct CAudioSound {                       // the sound a source plays (flag wor
 struct CAudioSource {
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04();
     virtual void v05(); virtual void v06(); virtual void v07();
-    virtual long Update(CAudioSound* sound, __int64 now);                // slot 8 (+0x20)
+    virtual long Update(CAudioObject* sound, __int64 now);                // slot 8 (+0x20)
     virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12(); virtual void v13();
     virtual void v14(); virtual void v15(); virtual void v16();
     virtual void Restart();                                              // slot 17 (+0x44)
@@ -39,12 +39,12 @@ struct CAudioSource {
     unsigned char  _pad08[4];             // +0x08 (VC7.1 pads the vfptr to 8: the class holds an __int64)
     long           m_started;              // +0x0C
     __int64        m_startTime;            // +0x10
-    void BeginSound(CAudioSound* sound);                                 // 0x00C59BC0
-    void ApplySound(CAudioSound* sound, __int64 now);                    // 0x00C72E00
+    void BeginSound(CAudioObject* sound);                                 // 0x00C59BC0
+    void ApplySound(CAudioObject* sound, __int64 now);                    // 0x00C72E00
     long QueueNextBuffer(CircularQueue* queue, __int64 now, bool force); // 0x00C72C40
 };
 
-long CAudioSource::Update(CAudioSound* sound, __int64 now)
+long CAudioSource::Update(CAudioObject* sound, __int64 now)
 {
     if (!m_started) {
         Restart();

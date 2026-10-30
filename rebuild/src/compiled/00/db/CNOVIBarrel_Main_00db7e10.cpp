@@ -1,5 +1,6 @@
-// CNOVI_Barrel::Main() -- tutorial barrel entity script: until the parent's game-info flag is set, wait for the hero within 2m, show the Xbox or PC game-info text, wait for it to be clicked past and set the flag; then idle until the thread terminates
+// NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::Main() -- tutorial barrel entity script: until the parent's game-info flag is set, wait for the hero within 2m, show the Xbox or PC game-info text, wait for it to be clicked past and set the flag; then idle until the thread terminates
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CNOVI_Barrel@CQ_NewOakValeIntroScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D94F0 slot 1 is stored by the factory 0x00DB7D00 registered as "NOVI_Barrel"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DB7E10, 0x1DC bytes (padded to 480), `ret`.
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 / ~CScriptThing 0x004AA840 (predicate vtable 0x012C2FE8),
 //   CEntityScriptBase::SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder
@@ -34,21 +35,29 @@ struct CIsThingPredicate : public NScript::CPredicateBase {                     
     CIsThingPredicate(const CScriptThing& thing) : Thing(thing) { }
     ~CIsThingPredicate() { }
 };
-struct CNOVIParent {
+namespace NScript {
+class CQ_NewOakValeIntroScript {
+public:
     unsigned char _pad[0x82];
     bool          GameInfoShown;                   // +0x82
+public:
+    class CNOVI_Barrel;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CQ_NewOakValeIntroScript;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CNOVI_Barrel : public CEntityScriptBase {
+namespace NScript {
+class CQ_NewOakValeIntroScript::CNOVI_Barrel : public CEntityScriptBase {
 public:
-        CNOVIParent*          ParentClass;             // +0x14
+        CQ_NewOakValeIntroScript*          ParentClass;             // +0x14
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
-void CNOVI_Barrel::Main()
+}
+void NScript::CQ_NewOakValeIntroScript::CNOVI_Barrel::Main()
 {
     {
         CIsThingPredicate predicate(Me);

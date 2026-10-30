@@ -24,6 +24,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 {
 public:
     void Release();   // 0x00CD2770
+    bool IsValid() const;   // 0x00CD23B9 (Ego_r / FableWin: QBE)
 };
 extern const unsigned char ResourceVTable[]; //0127094C
 // Generated resource header flattens CBaseObject. This field-free API binds the
@@ -33,7 +34,6 @@ struct ScriptResource:CScriptGameResourceObjectScriptedThingBase {
  void InitializeCBaseObject(); //0099A380, this points to flattened base at offset0
  __forceinline ScriptResource(){InitializeCBaseObject();__vftable=(void*)ResourceVTable;PImp_Data=0;PImp_Info=0;}
  ~ScriptResource(); //007E74D0
- bool IsScripting(); //00CD23B9
 };
 struct GameCalls;
 #pragma pointers_to_members(full_generality,single_inheritance)
@@ -60,7 +60,7 @@ void CVtable012F16E0::Main(){
  {NScript::CIsThingAlive p(Me);SetPredicate(p);}
  Game->NewScriptFrame();if(IsActiveThreadTerminating())return;
  ScriptResource resource;
- if(resource.IsScripting())resource.Release();
+ if(resource.IsValid())resource.Release();
  while(!Game->StartScriptingEntity(Me,resource,4)){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}
  if(!IsActiveThreadTerminating()){
   while(!Parent->ScriptFlag){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}

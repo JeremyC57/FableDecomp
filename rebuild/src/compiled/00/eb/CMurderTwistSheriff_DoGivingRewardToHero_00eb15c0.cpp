@@ -1,7 +1,8 @@
-// CMurderTwistSheriff::DoRemindingHeroToKillSheriff() -- the sheriff's reaction once the assassin is dead: talked to by the hero
+// NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoRemindingHeroToKillSheriff() -- the sheriff's reaction once the assassin is dead: talked to by the hero
 //   -> paused movie sequence, "assassin killed" line while alive, 1000 gold, SheriffState 3; hit by the hero (or by any of his
 //   special abilities except ability 14) -> wait for the enflame reaction, paused "hero sussed" line, SheriffState 2
-// Leaf: DoRemindingHeroToKillSheriff
+// Leaf: ?DoGivingRewardToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+// Identity (naming wave 11): ?DoGivingRewardToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ (Ego_r.pdb / FableWin.pdb name lists); Ego_r.pdb / FableWin.pdb member order (DoBecomingSuspiciousOfHero 0x00EB10C0 < DoGivingRewardToHero < DoSayingWellDoneToHero 0x00EB19C0 < AttackHero 0x00EB1EC0); this body says TEXT_QST_B07_SHERIFF_ASSASSIN_KILLED (the hero killed the assassin: the reward); invented DoRemindingHeroToKillSheriff
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB15C0, 1010 bytes (`ret`).
 // Label: the catalog files 0x00EB15C0 under CMurderTwistAssassin, but the landed CMurderTwistSheriff::Main 0x00EAEF30 calls it
 //   on the sheriff and it writes the parent quest's SheriffState (+0x48); the original method name is not in any PDB dump.
@@ -79,13 +80,21 @@ class CEntityScriptBase { public:                             // retail 0x14 byt
     bool IsActiveThreadTerminating() const;            // 0x00F35B30
 };
 enum ESheriffState { SHERIFF_STATE_0, SHERIFF_STATE_1, SHERIFF_STATE_2, SHERIFF_STATE_3 };   // enumerator names not in the PDB dump
-struct CV_MurderTwistFinalScript {
+namespace NScript {
+class CV_MurderTwistFinalScript {
+public:
     unsigned char _pad00[0x48];
     ESheriffState  SheriffState;                       // +0x48
     void WaitForEnflameReactionIfNecessary(const CScriptThing& thing);   // 0x00EB0700
+public:
+    class CMurderTwistSheriff;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_MurderTwistFinalScript;
 class CTimer { public: unsigned long _handle; };
-struct CMurderTwistSheriff : CEntityScriptBase {
+namespace NScript {
+class CV_MurderTwistFinalScript::CMurderTwistSheriff : public CEntityScriptBase {
+public:
     CV_MurderTwistFinalScript* ParentClass;            // +0x14
     void*                      PMasterData;            // +0x18
     CScriptGameResourceObjectScriptedThingBase MyEntityHandle;   // +0x1c
@@ -95,10 +104,13 @@ struct CMurderTwistSheriff : CEntityScriptBase {
     bool HasBeingRumbledCutscenePlayed;                // +0x35
     bool HasExpressedSuspicionToHero;                  // +0x36
     bool HasSaidWellDoneToHero;                        // +0x37
-    void DoRemindingHeroToKillSheriff();
+private:
+    void DoGivingRewardToHero();   // PDB ?DoGivingRewardToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ (private)
+public:
 };
+}
 
-void CMurderTwistSheriff::DoRemindingHeroToKillSheriff()
+void NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::DoGivingRewardToHero()
 {
     if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
         if (IsActiveThreadTerminating())

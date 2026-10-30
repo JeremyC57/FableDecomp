@@ -37,8 +37,8 @@ struct NativeCIME : CIME { void Reset(); }; //004051C0
 }
 struct IMEUI_VERTEX;
 extern void (FABLE_FASTCALL *g_ImeDrawRect)(int,int,int,int,unsigned long); //0143CD64
-extern void* (FABLE_FASTCALL *g_ImeMalloc)(unsigned int); //0143E514
-extern void (FABLE_FASTCALL *g_ImeFree)(void*); //0143CF08
+extern void* (FABLE_FASTCALL *ImeUiCallback_Malloc)(unsigned int); //0143E514 (DirectX SDK ImeUi.cpp; as 0x00CB2310 / 0x00CB2670)
+extern void (FABLE_FASTCALL *ImeUiCallback_Free)(void*); //0143CF08 (DirectX SDK ImeUi.cpp; as 0x00CB2310)
 extern void (FABLE_FASTCALL *g_ImeDrawFans)(const IMEUI_VERTEX*,unsigned int); //0143CDFC
 extern void (FABLE_FASTCALL *g_ImeOnChar)(wchar_t); //0143E630
 void FABLE_FASTCALL Callback_DrawRect(int,int,int,int,unsigned long); //00404D50
@@ -80,8 +80,8 @@ void CIME::Initialise(HWND__* window) {
  static_cast<NativeCIME*>(this)->Reset();
  if(enableIme_) {
   g_ImeDrawRect=Callback_DrawRect;
-  g_ImeMalloc=Callback_malloc;
-  g_ImeFree=Callback_free;
+  ImeUiCallback_Malloc=Callback_malloc;
+  ImeUiCallback_Free=Callback_free;
   g_ImeDrawFans=Callback_DrawFans;
   g_ImeOnChar=Callback_OnChar;
   window_=window;

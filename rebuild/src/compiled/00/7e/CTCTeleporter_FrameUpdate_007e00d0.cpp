@@ -142,8 +142,12 @@ struct CTeleporterDefPointer {
 };
 
 #pragma pack(push, 1)
-class CTCTeleporter { public:
+class CTCBase { public:
     virtual void v00();
+protected:
+    CPlayerManager& GetPlayerManager();                 // 0x00686D40 ?GetPlayerManager@CTCBase@@IAEAAVCPlayerManager@@XZ (Ego_r / FableWin)
+};
+class CTCTeleporter : public CTCBase { public:
     CThing* ParentThing;                                // +0x04
     unsigned char _pad08[4];
     CTeleporterDefPointer PDef;                         // +0x0c
@@ -155,7 +159,6 @@ class CTCTeleporter { public:
     CWorld* GetWorld();                                 // 0x00686A80
     CRegionManager* GetRegionManager();                 // 0x00686D20
     CWorldMap* GetWorldMap();                           // 0x00686D30
-    CPlayerManager* GetPlayerManager();                 // 0x00686D40
     CPlayerManager* GetPlayerManager2();                // 0x00686D50
     void StartTeleporting(CThingPlayerCreature* hero);  // 0x007DFF90
     void FrameUpdate();
@@ -191,7 +194,7 @@ void CTCTeleporter::FrameUpdate()
     if (!GetRegionManager()->IsMapLoaded(ParentThing->RegionMapIndex))
         return;
     if (GetWorld()->TeleportingEnabled) {
-    CThingPlayerCreature* hero = GetPlayerManager()->GetMainPlayer().GetPControlledCreature();
+    CThingPlayerCreature* hero = GetPlayerManager().GetMainPlayer().GetPControlledCreature();
     if (IS_THING_ALIVE(hero)) {
         const C3DVector& myPos = ParentThing->GetPos();
         const C3DVector& heroPos = hero->GetPos();

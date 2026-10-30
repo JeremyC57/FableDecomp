@@ -1,7 +1,8 @@
-// CMagicBarrierGraveyard::Main() (0x00DA5490) -- the second graveyard magic barrier: under an alive filter on Me, create the
+// NScript::CQ_MinionClifftopChaseScript::CMagicBarrierGraveyard::Main() (0x00DA5490) -- the second graveyard magic barrier: under an alive filter on Me, create the
 //   two red force-field effects at Me (oriented by Me's XY angle); then every frame, once neither effect is alive, replace them
 //   with the two force-field idle effects
 // Leaf: ?Main@CMagicBarrierGraveyard@
+// Identity (naming wave 11): ?Main@CMagicBarrierGraveyard@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D7510 slot 1 is stored by the factory 0x00DA53A0 registered as "MagicBarrierGraveyard"
 // Retail: Fable.exe @ 0x00DA5490, 779 bytes (+ int3 padding), plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, CScriptThing copy 0x004ABE90, out-of-line ~CScriptThing 0x004AA840),
 //   SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0 ("" 0x0122D70E,
@@ -73,15 +74,25 @@ using NScript::CIsThingAlive;
 #pragma inline_depth()
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
-struct CMagicBarrierGraveyard : CEntityScriptBase {
+namespace NScript {
+class CQ_MinionClifftopChaseScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CMagicBarrierGraveyard;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_MinionClifftopChaseScript;
+namespace NScript {
+class CQ_MinionClifftopChaseScript::CMagicBarrierGraveyard : public CEntityScriptBase {
+public:
     void* ParentClass;                                    // +0x14
     void* PMasterData;                                    // +0x18
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CMagicBarrierGraveyard::Main()
+void NScript::CQ_MinionClifftopChaseScript::CMagicBarrierGraveyard::Main()
 {
     SetPredicate(CIsThingAlive(Me));
     Game->NewScriptFrame();

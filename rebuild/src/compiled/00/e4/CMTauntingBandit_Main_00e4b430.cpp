@@ -1,5 +1,6 @@
-// CM_TauntingBandit::Main() -- taunting-bandit spawner: count the "TauntingBandit" things; while fewer than the script def's maximum exist, spawn one more here (creature def from this marker's data string, scripted "TauntingBandit") and attach it to the "BanditTollVillage"
-// Leaf: ?Main@CM_TauntingBandit@@
+// NScript::CV_BanditTollScript::CM_TauntingBandit::Main() -- taunting-bandit spawner: count the "TauntingBandit" things; while fewer than the script def's maximum exist, spawn one more here (creature def from this marker's data string, scripted "TauntingBandit") and attach it to the "BanditTollVillage"
+// Leaf: ?Main@CM_TauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+// Identity (naming wave 11): ?Main@CM_TauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E4DB8 slot 1 is stored by the factory 0x00E48D00 registered as "M_TauntingBandit"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4B430, length 375 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("TauntingBandit" @ 0x012E4C60,
 //   "BanditTollVillage" @ 0x012E4FB0), IsDone @ 0x00F35B30, ~CScriptThing @ 0x004AA840, the vector<CScriptThing>
@@ -60,14 +61,23 @@ extern CScriptDef* pGlobalScriptDef;                   // 0x0143E90C (Ego_r.pdb 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CM_TauntingBandit : public CEntityScriptBase {
+namespace NScript {
+class CV_BanditTollScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CM_TauntingBandit;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CV_BanditTollScript;
+namespace NScript {
+class CV_BanditTollScript::CM_TauntingBandit : public CEntityScriptBase {
 public:
 private:
         virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CM_TauntingBandit::Main()
+void NScript::CV_BanditTollScript::CM_TauntingBandit::Main()
 {
     std::vector<CScriptThing> bandits;
     Game->GetAllThingsWithScriptName("TauntingBandit", bandits);

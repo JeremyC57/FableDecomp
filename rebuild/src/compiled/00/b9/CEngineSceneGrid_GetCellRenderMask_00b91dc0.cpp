@@ -14,7 +14,8 @@ class CEngineSceneGrid { public:
     CEngineSceneGrid *LevelUp, *LevelDown;
     unsigned long Size;
     CArray<CEngineSceneGridCell*> GridCells;
-    unsigned long GetCellRenderMask(unsigned long x, unsigned long y);
+private:
+    unsigned long GetCellRenderMask(unsigned long x, unsigned long y);   // ?GetCellRenderMask@CEngineSceneGrid@@AAEKKK@Z (Ego_r: private)
 };
 unsigned long CEngineSceneGrid::GetCellRenderMask(unsigned long x, unsigned long y)
 {

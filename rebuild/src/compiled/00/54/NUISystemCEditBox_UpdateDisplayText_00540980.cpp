@@ -1,6 +1,6 @@
 // NUISystem::CEditBox::UpdateDisplayText() -- rebuild the text shown by the edit box: asterisks for a password box, the text before the cursor, a "|" caret while active with the IME on (positioning the IME composition window when the box uses it), the text after the cursor; clamp the scroll adjustment, pick the visible window of characters that fit the text component width from the right edge, offset the text component from its state-0 position and set the visible substring
 // Leaf: UpdateDisplayText
-// Retail: Fable.exe (TLC, VC7.1) function @ 0x00540980, length 873 bytes (`ret`). Callees: CWideString 0x0099AED0/0x0099B720/0x0099B510/0x0099B220/0x0099B800/0x0099B7D0/0x0099B940/0x0099B8D0/0x0099AF10/0x0099BDB0, GFGetIME 0x00404A80, CIME 0x00404BA0 (IME on) / 0x00404B80 (composition position), __ftol2, GetCharWidthW 0x0054F4B0, map::operator[] 0x0042D5B1. Strings L"" 0x0122D70C, L"*" 0x0122DE6C, L"|" 0x0122DE58; 3.0f 0x0122DED4.
+// Retail: Fable.exe (TLC, VC7.1) function @ 0x00540980, length 873 bytes (`ret`). Callees: CWideString 0x0099AED0/0x0099B720/0x0099B510/0x0099B220/0x0099B800/0x0099B7D0/0x0099B940/0x0099B8D0/0x0099AF10/0x0099BDB0, CIME::Get 0x00404A80, CIME::ShouldEditBoxShowCaret 0x00404BA0 / CIME::SetEditBoxCaretPos 0x00404B80, __ftol2, GetCharWidthW 0x0054F4B0, map::operator[] 0x0042D5B1. Strings L"" 0x0122D70C, L"*" 0x0122DE6C, L"|" 0x0122DE58; 3.0f 0x0122DED4.
 // Layout: as AddCharacter 0x0053FE50 (CEditBox members 0x40 below Ego_r.pdb); text component slots from the landed CText::ForceWidth 0x0054FB10 and CComponentContainer::Initialise 0x005461D0.
 // Grade note: the home-X offset sum is `C2DVector((double)home.X + offset, home.Y)` -- a double sum narrowed by the float ctor parameter makes VC7.1 load home.X first and keep the X store after the temporary lea (a float sum loads the frame float first in either order; an explicit (float) cast stores X early). Found by advisor B4.
 class CWideString { public:
@@ -19,11 +19,13 @@ public:
     long GetLength() const;   // 0x0099B220
 };
 unsigned long __fastcall GetCharWidthW(unsigned short c);   // 0x0054F4B0
-struct CIME {
-    bool IsOn();                                            // 0x00404BA0
-    void SetCompositionPosition(long x, long y);            // 0x00404B80
+namespace NUISystem {
+class CIME { public:
+    static CIME& __fastcall Get();                          // 0x00404A80 ?Get@CIME@NUISystem@@SIAAV12@XZ (Ego_r / FableWin)
+    void SetEditBoxCaretPos(long x, long y);                // 0x00404B80 ?SetEditBoxCaretPos@CIME@NUISystem@@QAEXJJ@Z
+    bool ShouldEditBoxShowCaret();                          // 0x00404BA0 ?ShouldEditBoxShowCaret@CIME@NUISystem@@QAE_NXZ
 };
-CIME* GFGetIME();                                           // 0x00404A80
+}
 class C2DVector { public:
     float X, Y;
     C2DVector() { }
@@ -384,12 +386,12 @@ void CEditBox::UpdateDisplayText()
     if (CursorPos < (long)Text.GetLength())
         afterCursor = display.GetSubString(CursorPos, display.GetLength());
     CWideString line(beforeCursor);
-    if (Active && GFGetIME()->IsOn()) {
+    if (Active && CIME::Get().ShouldEditBoxShowCaret()) {
         if (UsesIME) {
             C2DVector position = GetTextComponent()->GetScreenPosition();
             C2DVector size;
             position.X += text->GetFont()->GetStringSizeOut(size, line.GetAsCharArray(), 0).X * text->GetScale().X;
-            GFGetIME()->SetCompositionPosition((long)(position.X + 3.0f), (long)(position.Y + 3.0f));
+            CIME::Get().SetEditBoxCaretPos((long)(position.X + 3.0f), (long)(position.Y + 3.0f));
         }
         line += L"|";
     }

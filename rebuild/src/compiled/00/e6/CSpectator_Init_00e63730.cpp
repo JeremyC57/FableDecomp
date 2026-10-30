@@ -1,5 +1,6 @@
-// CSpectator::Init() -- the chicken-kicking spectator script picks its number from whichever "Spectator1"/"Spectator2" marker it stands on (else 3)
+// NScript::CV_ChickenKickingScript::CSpectator::Init() -- the chicken-kicking spectator script picks its number from whichever "Spectator1"/"Spectator2" marker it stands on (else 3)
 // Leaf: Init
+// Identity (naming wave 11): ?Init@CSpectator@CV_ChickenKickingScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E74B4 slot 2 is stored by the factory 0x00E63660 registered as "Spectator"
 // Retail 0x00E63730, 352 bytes. Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, the script
 // interface's GetThingWithScriptName (slot 72, +0x120, CScriptThing by hidden pointer), IsDistanceBetweenThingsUnder
 // 0x00CBE2FF (__fastcall, distance 1.0f pushed before the nested call), the CScriptThing temporary's inline destructor
@@ -54,12 +55,20 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #include "engine/CGameScriptInterface.h"
 extern const char g_spectator1[];                  // 0x012E7450 "Spectator1"
 extern const char g_spectator2[];                  // 0x012E7418 "Spectator2"
-struct CV_ChickenKickingScript;
+namespace NScript {
+class CV_ChickenKickingScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CSpectator;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CV_ChickenKickingScript;
 struct CQ_SunnyvaleMasterData;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-struct CSpectator : public CEntityScriptBase {
+namespace NScript {
+class CV_ChickenKickingScript::CSpectator : public CEntityScriptBase {
+public:
         CV_ChickenKickingScript* ParentClass;          // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;          // +0x18
     long                     SpectatorNumber;      // +0x1c
@@ -67,8 +76,9 @@ private:
     virtual void Init();   // PDB ?Init@<entity>@..@@EAEXXZ: every entity override is private (slot 2)
 public:
 };
+}
 
-void CSpectator::Init()
+void NScript::CV_ChickenKickingScript::CSpectator::Init()
 {
     bool nearFirst;
     {

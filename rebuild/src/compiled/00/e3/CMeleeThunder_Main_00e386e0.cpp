@@ -1,7 +1,8 @@
-// CMeleeThunder::Main() (0x00E386E0) -- conscious filter on Me; the first time, take scripted control (priority 4) and play
+// NScript::CV_AssassinAttacksScript::CChestHidingAssassin::Main() (0x00E386E0) -- conscious filter on Me; the first time, take scripted control (priority 4) and play
 //   the jump-from-chest combat animation to its end; then take scripted control (priority 3), make Me the hero's enemy,
 //   follow the hero and idle until the script is done
-// Leaf: ?Main@CMeleeThunder@
+// Leaf: ?Main@CChestHidingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ
+// Identity (naming wave 11): ?Main@CChestHidingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E3704 slot 1 is stored by the factory 0x00E385D0 registered as "ChestHidingAssassin"
 // Retail: Fable.exe @ 0x00E386E0, 523 bytes (+ int3 padding), plain `ret`.
 // Callees: CIsThingConscious filter (vtable 0x012C2FE8, CScriptThing copy 0x004ABE90, out-of-line ~CScriptThing
 //   0x004AA840), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, the
@@ -81,7 +82,16 @@ struct CIsThingConscious : public NScript::CPredicateBase {                     
 #pragma inline_depth()
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
-struct CMeleeThunder : CEntityScriptBase {
+namespace NScript {
+class CV_AssassinAttacksScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CChestHidingAssassin;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CV_AssassinAttacksScript;
+namespace NScript {
+class CV_AssassinAttacksScript::CChestHidingAssassin : public CEntityScriptBase {
+public:
     void* ParentClass;                                  // +0x14
     void* PMasterData;                                  // +0x18
     bool  HasJumped;                                    // +0x1c
@@ -89,8 +99,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CMeleeThunder::Main()
+void NScript::CV_AssassinAttacksScript::CChestHidingAssassin::Main()
 {
     SetPredicate(CIsThingConscious(Me));
     Game->NewScriptFrame();

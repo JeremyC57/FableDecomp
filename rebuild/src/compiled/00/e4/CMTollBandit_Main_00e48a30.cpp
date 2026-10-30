@@ -1,5 +1,6 @@
-// CM_TollBandit::Main() -- toll-bandit spawner entity script: when the "TollBandit" thing is dead and the script is not done, create the script def's toll-bandit creature at Me's position under the script name "TollBandit"
-// Leaf: ?Main@CM_TollBandit@@
+// NScript::CV_BanditTollScript::CM_TollBandit::Main() -- toll-bandit spawner entity script: when the "TollBandit" thing is dead and the script is not done, create the script def's toll-bandit creature at Me's position under the script name "TollBandit"
+// Leaf: ?Main@CM_TollBandit@CV_BanditTollScript@NScript@@EAEXXZ
+// Identity (naming wave 11): ?Main@CM_TollBandit@CV_BanditTollScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E4D6C slot 1 is stored by the factory 0x00E48950 registered as "M_TollBandit"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E48A30, 263 bytes (+ int3 padding). Entity-script slot 1 (Main).
 // Callees: CCharString 0x0099EBF0 / ~CCharString 0x0099EAE0, CDefString::operator CCharString() 0x00415D70 (the script def
 //   0x0143E90C, creature def name at +0x438), ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, ~CScriptThing 0x004AA840,
@@ -60,14 +61,23 @@ inline CScriptThing::~CScriptThing() {}
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CM_TollBandit : public CEntityScriptBase {
+namespace NScript {
+class CV_BanditTollScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CM_TollBandit;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CV_BanditTollScript;
+namespace NScript {
+class CV_BanditTollScript::CM_TollBandit : public CEntityScriptBase {
 public:
 private:
         virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CM_TollBandit::Main()
+void NScript::CV_BanditTollScript::CM_TollBandit::Main()
 {
     bool dead = Game->GetThingWithScriptName("TollBandit").IsDead();
     if (dead && !IsActiveThreadTerminating())

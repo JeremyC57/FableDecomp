@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B18AF0, length 356 bytes (padded to 368), `ret 10h`.
 // Ego_r.pdb: `?AddToBoundingSphere@CPSCLight@NParticleEngine@@UAE_NAAVC3DBoundingSphere@@MAAVCParticleSystem@2@ABV?$CParticleUpdateParameters@KK@2@@Z`.
 // Callees: CPSCBase::GetCurrentPosition(params, const unsigned long& param, float, bool, unsigned long) const @ 0x00AF2640
-//          (hidden C3DVector result), CParticleSystem::GetInverseSystemTransform(CMatrix3x4&) @ 0x00AF2250, the particle frame
+//          (hidden C3DVector result), CParticleSystem::GetSystemTransform(CMatrix3x4&) const @ 0x00AF2250, the particle frame
 //          rate getter @ 0x00AEA9F0 (returns the long @ 0x01399504; manifest "GFGetPreMainMemoryUsed" is a byte twin),
 //          CParticleSystem::ScaleParticleDimensions(float&) @ 0x00AF8F80, C3DBoundingSphere::AddToBounds(const C3DVector&, float)
 //          @ 0x00ADDD80.
@@ -34,7 +34,6 @@ class C3DBoundingSphere { public:
     void AddToBounds(const C3DVector& point, float radius);     // 0x00ADDD80
 };
 
-template <class A, class B> struct CParticleUpdateParameters;
 
 inline float Lerp(float a, float b, float t) { return (b - a) * t + a; }
 
@@ -42,10 +41,12 @@ long GetParticleFrameRate();                    // 0x00AEA9F0
 
 namespace NParticleEngine {
 
+template <class A, class B> class CParticleUpdateParameters;   // NParticleEngine (Ego_r / FableWin)
+
 class CParticleSystem { public:
     unsigned char _pad00[0x50];
     unsigned char Flags;                        // +0x50 (bit 6: local space)
-    void GetInverseSystemTransform(CMatrix3x4& matrix);         // 0x00AF2250
+    void GetSystemTransform(CMatrix3x4& matrix) const;          // 0x00AF2250 ?GetSystemTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z (Ego_r / FableWin)
     void ScaleParticleDimensions(float& size);                  // 0x00AF8F80
 };
 
@@ -87,7 +88,7 @@ bool CPSCLight::AddToBoundingSphere(C3DBoundingSphere& sphere, float timeOffset,
         C3DVector pos = GetCurrentPosition(params, LightPositionParam, timeOffset, false, 0);
         if (!(system.Flags & 0x40)) {
             CMatrix3x4 m;
-            system.GetInverseSystemTransform(m);
+            system.GetSystemTransform(m);
             float x = pos.X;
             float y = pos.Y;
             float z = pos.Z;

@@ -22,13 +22,14 @@ class CConsoleInputBase { public:                                      // vtable
     CConsoleInputBase(const CCharString& name) : Name(name) { }
 };
 
-struct CConsoleCommandParameters_Retail {                       // 12 bytes: a retail std::vector of parameter types
+enum EGenericVarType { };
+class CConsoleCommandParameters { public:                       // 12 bytes: a retail std::vector of parameter types
     long* first; long* last; long* end_of_storage;
-    CConsoleCommandParameters_Retail(long type);                // 0x009EBB30: one element
+    CConsoleCommandParameters(EGenericVarType type);            // 0x009EBB30: one element ??0CConsoleCommandParameters@@QAE@W4EGenericVarType@@@Z (Ego_r / FableWin)
 };
 
 struct CConsoleCommandBase_Retail : CConsoleInputBase {
-    CConsoleCommandParameters_Retail ParamTypes;                // +0x08
+    CConsoleCommandParameters ParamTypes;                       // +0x08
     virtual void v00();                                         // own vtable 0x0122E638
     CConsoleCommandBase_Retail(const CCharString& name, const long& type);
 };
@@ -39,6 +40,6 @@ FABLE_STATIC_ASSERT(offsetof(CConsoleCommandBase, ParamTypes) == 0x08);
 
 CConsoleCommandBase_Retail::CConsoleCommandBase_Retail(const CCharString& name, const long& type)
     : CConsoleInputBase(name)
-    , ParamTypes(type)
+    , ParamTypes((EGenericVarType)type)
 {
 }

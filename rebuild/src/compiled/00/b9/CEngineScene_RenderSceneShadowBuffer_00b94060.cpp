@@ -1,4 +1,5 @@
-// CEngineScene::RenderLayerCellsShadow(EEngineRenderLayer layer, const CShadowClipVolume& volume) -- the shadow-buffer twin of RenderLayerCells 0x00B93F40: when any primitive of the layer lives in the grid, every scene map's top grid level renders its cells clipped to the shadow volume; then the two loose primitive lists are rendered against the volume; all into the layer's render-stats record
+// CEngineScene::RenderSceneShadowBuffer(EEngineRenderLayer layer, const CShadowClipVolume& volume) -- the shadow-buffer twin of RenderLayerCells 0x00B93F40: when any primitive of the layer lives in the grid, every scene map's top grid level renders its cells clipped to the shadow volume; then the two loose primitive lists are rendered against the volume; all into the layer's render-stats record
+// Leaf: ?RenderSceneShadowBuffer@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCShadowClipVolume@@@Z
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00B94060, length 283 bytes (`ret 8`).
 // Callees: map<long, CEngineSceneRenderStats>::operator[](const long&) @ 0x00B97B60 (on +0x2c), CEngineSceneGrid::
 // RenderCellClippedShadowBuffer(unsigned long, unsigned long, EEngineRenderLayer, const CShadowClipVolume&, bool,
@@ -13,10 +14,12 @@
 // call; `this` is parked in the `push ecx` frame slot while esi walks the inner trees; both ends are re-read every step.
 class CShadowClipVolume;
 class CEngineSceneRenderStats;
+enum EEngineRenderLayer { };
+enum EEngineOcclusionLayer { };
 class CEngineInternalPrimitiveBase;
 
 class CEngineSceneGrid { public:
-    void RenderCellClippedShadowBuffer(unsigned long x, unsigned long y, long layer, const CShadowClipVolume& volume,
+    void RenderCellClippedShadowBuffer(unsigned long x, unsigned long y, EEngineRenderLayer layer, const CShadowClipVolume& volume,
                                        bool clipped, CEngineSceneRenderStats& stats);   // 0x00B92660
 };
 struct CGridPointer { CEngineSceneGrid* m_pObject; long* m_pCount; };
@@ -35,19 +38,28 @@ template <class T> static T* Next(T* node)
     return node;
 }
 
-struct CRenderStatsMap {
+namespace std {
+template <class T> struct less;
+template <class T> class allocator;
+template <class T1, class T2> struct pair;
+template <class Key, class T, class Compare = less<Key>, class Alloc = allocator<pair<const Key, T> > > class map {
+public:
     void* m_header; unsigned long m_count;
-    CEngineSceneRenderStats& operator[](const long& key);   // 0x00B97B60 (stand-in body below)
-    CEngineSceneRenderStats& FindOrInsert(long key);         // descriptive: the tree lookup/insert the real body performs
+    T& operator[](const Key& key);              // 0x00B97B60 (stand-in body below)
+    T& FindOrInsert(Key key);                   // descriptive: the tree lookup/insert the real body performs
 };
+}
+typedef std::map<EEngineRenderLayer, CEngineSceneRenderStats> CRenderStatsMap;
 
 // Stand-in for the out-of-line map operator[] @ 0x00B97B60, compiled above the graded function under auto_inline(off) so
 // VC7.1 sees (as retail's whole-program build did) that the key reference is only read: the `layer` argument then stays
 // in ebp across the calls although its address is passed. Only RenderLayerCells is graded.
 #pragma auto_inline(off)
-CEngineSceneRenderStats& CRenderStatsMap::operator[](const long& key)
+namespace std {
+template <> CEngineSceneRenderStats& map<EEngineRenderLayer, CEngineSceneRenderStats>::operator[](const EEngineRenderLayer& key)
 {
     return FindOrInsert(key);
+}
 }
 #pragma auto_inline(on)
 
@@ -63,12 +75,14 @@ class CEngineScene { public:
     CRenderStatsMap               LayerStats;     // +0x2c
     unsigned char                 _pad34[0x10];
     long                          CurrentCell;    // +0x44
-    void RenderPrimitiveList(CEngineInternalPrimitiveBase* list, long layer, const CShadowClipVolume& volume,
+private:
+    void RenderPrimitiveListToShadowBuffer(CEngineInternalPrimitiveBase* list, EEngineRenderLayer layer, const CShadowClipVolume& volume,
                              CEngineSceneRenderStats& stats);   // 0x00B917E0
-    void RenderLayerCellsShadow(long layer, const CShadowClipVolume& volume);
+public:
+    void RenderSceneShadowBuffer(EEngineRenderLayer layer, const CShadowClipVolume& volume);
 };
 
-void CEngineScene::RenderLayerCellsShadow(long layer, const CShadowClipVolume& volume)
+void CEngineScene::RenderSceneShadowBuffer(EEngineRenderLayer layer, const CShadowClipVolume& volume)
 {
     CEngineSceneRenderStats& stats = LayerStats[layer];
     CurrentCell = -1;
@@ -77,6 +91,6 @@ void CEngineScene::RenderLayerCellsShadow(long layer, const CShadowClipVolume& v
             for (CMapNode* inner = outer->Maps.Head->Left; inner != outer->Maps.Head; inner = Next(inner))
                 inner->Data->GridLevelsFirst->m_pObject->RenderCellClippedShadowBuffer(0, 0, layer, volume, false, stats);
     }
-    RenderPrimitiveList(PrimitiveListA, layer, volume, stats);
-    RenderPrimitiveList(PrimitiveListB, layer, volume, stats);
+    RenderPrimitiveListToShadowBuffer(PrimitiveListA, layer, volume, stats);
+    RenderPrimitiveListToShadowBuffer(PrimitiveListB, layer, volume, stats);
 }

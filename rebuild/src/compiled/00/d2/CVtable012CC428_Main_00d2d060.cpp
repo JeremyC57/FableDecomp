@@ -14,6 +14,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 {
 public:
     void Release();   // 0x00CD2770
+    bool IsValid() const;   // 0x00CD23B9 (Ego_r / FableWin: QBE)
 };
 class CCPPointerInfo { public:unsigned long RefCount;void(__fastcall*DeleteFunc)(void*);void* Data;};
 extern const unsigned char ResourceBaseVTable[]; //0126008C genuine CScriptGameResourceObjectBase
@@ -29,7 +30,6 @@ struct ScriptResource:CScriptGameResourceObjectScriptedThingBase {
   if(PImp_Info){--PImp_Info->RefCount;if(PImp_Info->RefCount==0){PImp_Info->DeleteFunc(PImp_Info->Data);delete PImp_Info;}}
   PImp_Data=0;PImp_Info=0;__vftable=(void*)ResourceBaseVTable;DestroyCBaseObject();
  }
- bool IsScripting(); //00CD23B9
 };
 struct GameCalls;
 #pragma pointers_to_members(full_generality,single_inheritance)
@@ -53,11 +53,11 @@ FABLE_STATIC_ASSERT(offsetof(NativeParent,ScriptFlag)==0x81);
 #endif
 void CVtable012CC428::Main(){
  ScriptResource resource;
- if(resource.IsScripting())resource.Release();
+ if(resource.IsValid())resource.Release();
  while(!Game->StartScriptingEntity(Me,resource,4)){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}
  if(!IsActiveThreadTerminating()){
   while(!Parent->ScriptFlag){Game->NewScriptFrame();if(IsActiveThreadTerminating())return;}
   if(IsActiveThreadTerminating())return;
-  if(resource.IsScripting())resource.Release();Game->NewScriptFrame();IsActiveThreadTerminating();
+  if(resource.IsValid())resource.Release();Game->NewScriptFrame();IsActiveThreadTerminating();
  }
 }

@@ -42,13 +42,14 @@ struct CCountedPointerWords {
 };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+enum EScriptEntityMoveType { };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointerWords PImp;                          // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
     bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void MoveToPosition(const C3DVector& position, float a2, float a3, bool a4, bool a5);   // 0x007E72F0
+    virtual void MoveToPosition(const C3DVector& position, float a2, EScriptEntityMoveType moveType, bool a4, bool a5);   // 0x007E72F0 (header slot 4; called directly on the local)
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_3 = 3 };
 struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
@@ -178,7 +179,7 @@ void CUndeadRisingZombieAttackerBoss::Main()
     if (Game->GetHealth(Me) < MaxHealth * 0.5f) {
         if (IsActiveThreadTerminating())
             return;
-        handle.MoveToPosition(StartPos, 0.0f, 0.0f, true, true);
+        handle.MoveToPosition(StartPos, 0.0f, (EScriptEntityMoveType)0, true, true);
         while (Game->GetHealth(Me) < MaxHealth) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())

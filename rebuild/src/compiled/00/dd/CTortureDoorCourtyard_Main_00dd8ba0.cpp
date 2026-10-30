@@ -1,5 +1,6 @@
-// CTortureDoorCourtyard::Main() -- keep the courtyard torture door unlocked until the mother is rescued; then lock it and, for as long as the mother stays rescued, show the "escape via the secret passage" hint whenever the hero uses it
+// NScript::CQ_PrisonEscapeRescueMotherScript::CTortureDoorCourtyard::Main() -- keep the courtyard torture door unlocked until the mother is rescued; then lock it and, for as long as the mother stays rescued, show the "escape via the secret passage" hint whenever the hero uses it
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CTortureDoorCourtyard@CQ_PrisonEscapeRescueMotherScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012DC4AC slot 1 is stored by the factory 0x00DD8AE0 registered as "TortureDoorCourtyard"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DD8BA0, length 348 bytes (+4 int3). Entity-script slot 1 (Main) of the
 //   CQ_PrisonEscapeRescueMotherScript nested CTortureDoorCourtyard (Ego_r.pdb has two CTortureDoorCourtyard classes; the
 //   other, CQ_SecretPassageScript's, is landed at 0x00DEEFC0 and has no flag at +0x67).
@@ -27,16 +28,22 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
+namespace NScript {
 class CQ_PrisonEscapeRescueMotherScript {
 public:
     unsigned char _pad00[0x67];
     bool          MotherRescued;                         // +0x67
+public:
+    class CTortureDoorCourtyard;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CQ_PrisonEscapeRescueMotherScript;
 class CQ_SunnyvaleMasterData;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CTortureDoorCourtyard : public CEntityScriptBase {
+namespace NScript {
+class CQ_PrisonEscapeRescueMotherScript::CTortureDoorCourtyard : public CEntityScriptBase {
 public:
         CQ_PrisonEscapeRescueMotherScript* ParentClass;      // +0x14
     CQ_SunnyvaleMasterData*            PMasterData;      // +0x18
@@ -44,8 +51,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CTortureDoorCourtyard::Main()
+void NScript::CQ_PrisonEscapeRescueMotherScript::CTortureDoorCourtyard::Main()
 {
     Game->EntitySetAsLocked(Me, false);
     while (!ParentClass->MotherRescued) {

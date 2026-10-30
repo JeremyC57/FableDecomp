@@ -1,5 +1,6 @@
-// CTH_Trigger_Oakvale::Main() -- Travelling Heroes Oakvale trigger: register an alive-filter over Me, start a script frame, make Me persistent; between frames 900 and 2300 of the master data's clock, unless the whisper is already handled, spawn the rival hero's whisper creature at Me (script "TH_Whisper"); then remove Me
+// NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale::Main() -- Travelling Heroes Oakvale trigger: register an alive-filter over Me, start a script frame, make Me persistent; between frames 900 and 2300 of the master data's clock, unless the whisper is already handled, spawn the rival hero's whisper creature at Me (script "TH_Whisper"); then remove Me
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CTH_Trigger_Oakvale@CV_TravellingHeroesScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F4364 slot 1 is stored by the factory 0x00EE0930 registered as "TH_Trigger_Oakvale"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE0A20, 307 bytes (+13 int3), `ret`.
 // Identity: the factory record at 0x00EDF0C0 ("TH_Trigger_Oakvale" @ 0x012F40F4, creator 0x00EE0930) builds the object
 //   whose vtable 0x012F4364 has this Main in slot 1 (its sibling 0x00EE06B0 is CTH_Trigger_Oakvale_Gossip::Main).
@@ -45,12 +46,19 @@ struct CTravellingHeroesMasterData {
     unsigned char _pad08[0x74 - 0x08];
     bool          WhisperHandled;                  // +0x74 (unnamed)
 };
-class CV_TravellingHeroesScript;
+namespace NScript {
+class CV_TravellingHeroesScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CTH_Trigger_Oakvale;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CV_TravellingHeroesScript;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CTH_Trigger_Oakvale : public CEntityScriptBase {
+namespace NScript {
+class CV_TravellingHeroesScript::CTH_Trigger_Oakvale : public CEntityScriptBase {
 public:
         CV_TravellingHeroesScript* ParentClass;        // +0x14
     CTravellingHeroesMasterData* PMasterData;      // +0x18
@@ -58,8 +66,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CTH_Trigger_Oakvale::Main()
+void NScript::CV_TravellingHeroesScript::CTH_Trigger_Oakvale::Main()
 {
     {
         CIsThingAlive filter(Me);

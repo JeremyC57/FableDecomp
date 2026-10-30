@@ -28,11 +28,13 @@ class C3DGroup2 { public:
     C3DGroup2();                                          // 0x00AC40C0
 };
 
-struct CArrayGroup2 {                                     // retail CArray<C3DGroup2>
-    C3DGroup2* m_pFirst;                                  // +0x00
-    C3DGroup2* m_pLast;                                   // +0x04
-    C3DGroup2* m_pEnd;                                    // +0x08
-    void push_back(const C3DGroup2& value);               // 0x00AE83D0
+template <class T> class CArray { public:               // retail CArray<T> (12 bytes)
+    T* m_pFirst;                                          // +0x00
+    T* m_pLast;                                           // +0x04
+    T* m_pEnd;                                            // +0x08
+    void push_back(const T& value);                       // 0x00AE83D0 for C3DGroup2: ?push_back@?$CArray@VC3DGroup2@@@@QAEXABVC3DGroup2@@@Z (Ego_r / FableWin)
+};
+struct CArrayGroup2 : public CArray<C3DGroup2> {          // retail CArray<C3DGroup2>; AddDefault keeps its descriptive owner
     void AddDefault();
 };
 

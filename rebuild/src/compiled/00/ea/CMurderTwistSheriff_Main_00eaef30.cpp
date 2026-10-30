@@ -1,5 +1,6 @@
-// CMurderTwistSheriff::Main() -- the Murder Twist sheriff: alive filter on Me, melee-guard brain, scripted control (priority 4, retried each frame), registers himself with the parent quest, then runs his state machine: ask the hero to kill the assassin, remind him, play the being-rumbled cutscene once the hero is within 7 m, grow suspicious, and finally turn on the hero
+// NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::Main() -- the Murder Twist sheriff: alive filter on Me, melee-guard brain, scripted control (priority 4, retried each frame), registers himself with the parent quest, then runs his state machine: ask the hero to kill the assassin, remind him, play the being-rumbled cutscene once the hero is within 7 m, grow suspicious, and finally turn on the hero
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012EFA0C slot 1 is stored by the factory 0x00EAED10 (through its ctor 0x00EAED90) registered as "MurderTwistSheriff"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EAEF30, 675 bytes (+ int3 padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90, ~CIsThingAlive 0x00E241B0 (out of line), SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, the scripted-thing
@@ -47,7 +48,9 @@ using NScript::CIsThingAlive;
 #include "engine/CEntityScriptBase.h"
 enum ESheriffState { SHERIFF_STATE_0, SHERIFF_STATE_1, SHERIFF_STATE_2, SHERIFF_STATE_3 };   // enumerator names not in the PDB dump
 enum EAssassinState { ASSASSIN_STATE_0, ASSASSIN_STATE_1, ASSASSIN_STATE_2, ASSASSIN_STATE_3, ASSASSIN_STATE_4 };
-struct CV_MurderTwistFinalScript {
+namespace NScript {
+class CV_MurderTwistFinalScript {
+public:
     unsigned char _pad00[0x48];
     ESheriffState  SheriffState;                       // +0x48
     EAssassinState AssassinState;                      // +0x4c
@@ -57,9 +60,15 @@ struct CV_MurderTwistFinalScript {
     unsigned char  Guards[0xc];                        // +0x60 vector<CScriptThing> (retail STLport, 12 bytes)
     CScriptGameResourceObjectScriptedThingBase seh_Sheriff;   // +0x6c
     void PlayBeingRumbledCutscene();                   // 0x00EAF1E0
+public:
+    class CMurderTwistSheriff;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_MurderTwistFinalScript;
 class CTimer { public: unsigned long _handle; };
-struct CMurderTwistSheriff : CEntityScriptBase {
+namespace NScript {
+class CV_MurderTwistFinalScript::CMurderTwistSheriff : public CEntityScriptBase {
+public:
     CV_MurderTwistFinalScript* ParentClass;            // +0x14
     void*                      PMasterData;            // +0x18
     CScriptGameResourceObjectScriptedThingBase MyEntityHandle;   // +0x1c
@@ -71,16 +80,17 @@ struct CMurderTwistSheriff : CEntityScriptBase {
     bool HasSaidWellDoneToHero;                        // +0x37
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
-public:
+private:   // the six members are private in Ego_r.pdb / FableWin.pdb (AAE; naming wave 11)
     void DoAskingHeroToKillAssassin();                 // 0x00EAF810
     void DoRemindingHeroToKillAssassin();              // 0x00EB0830
     void DoBecomingSuspiciousOfHero();                 // 0x00EB10C0
-    void DoRemindingHeroToKillSheriff();               // 0x00EB15C0 (catalog files it under CMurderTwistAssassin; called on the sheriff here)
-    void DoSuspicious();                               // 0x00EB19C0 (catalog: a second DoBecomingSuspiciousOfHero label)
-    void DoFightHero();                                // 0x00EB1EC0 (catalog "Init": GiveThingBestEnemyTarget hero, killable, damageable)
+    void DoGivingRewardToHero();               // 0x00EB15C0 (catalog files it under CMurderTwistAssassin; called on the sheriff here)
+    void DoSayingWellDoneToHero();                               // 0x00EB19C0 (catalog: a second DoBecomingSuspiciousOfHero label)
+    void AttackHero();                                // 0x00EB1EC0 (catalog "Init": GiveThingBestEnemyTarget hero, killable, damageable)
 };
+}
 
-void CMurderTwistSheriff::Main()
+void NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::Main()
 {
     {
         CIsThingAlive filter(Me);
@@ -124,19 +134,19 @@ void CMurderTwistSheriff::Main()
         }
         if (ParentClass->AssassinState == ASSASSIN_STATE_4) {
             if (IsActiveThreadTerminating()) return;
-            DoRemindingHeroToKillSheriff();
+            DoGivingRewardToHero();
         }
     }
     if (IsActiveThreadTerminating()) return;
     while (ParentClass->SheriffState == SHERIFF_STATE_3) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating()) return;
-        DoSuspicious();
+        DoSayingWellDoneToHero();
     }
     if (IsActiveThreadTerminating()) return;
     if (ParentClass->SheriffState == SHERIFF_STATE_2) {
         if (IsActiveThreadTerminating()) return;
-        DoFightHero();
+        AttackHero();
     }
     do {
         Game->NewScriptFrame();

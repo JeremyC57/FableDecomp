@@ -60,7 +60,7 @@ extern CEnginePrimitiveTypeInfo* g_pEnginePrimitiveTypeInfo;   // 0x01436E84
 extern unsigned short            g_engineFrameNumber;          // 0x0143B8D8
 
 class CEngineScene {
-public:
+private:                                        // Ego_r.pdb: private (AAE)
     void RenderPrimitiveList(CEngineInternalPrimitiveBase* primitive, EEngineRenderLayer layer,
                              const CEngineCamera& camera, CEngineSceneRenderStats& stats);
 };

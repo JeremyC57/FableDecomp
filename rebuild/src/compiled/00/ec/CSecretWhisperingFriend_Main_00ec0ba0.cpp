@@ -1,5 +1,6 @@
-// CSecretWhisperingFriend::Main() -- the secret whispering man: look up "SecretWhisperingMan", take Me under scripted control, remove Me if the soul-mother quest is active, then while the quest stage (parent +0x48) is 5 give Me the hero as best enemy target, and while it is 1 walk Me back to its stored position and face the "M_SecretWhisperLookAtPos" marker
+// NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend::Main() -- the secret whispering man: look up "SecretWhisperingMan", take Me under scripted control, remove Me if the soul-mother quest is active, then while the quest stage (parent +0x48) is 5 give Me the hero as best enemy target, and while it is 1 walk Me back to its stored position and face the "M_SecretWhisperLookAtPos" marker
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F11F8 slot 1 is stored by the factory 0x00EC0A50 registered as "SecretWhisperingFriend"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC0BA0, 1114 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "SecretWhisperingMan" 0x012F0FD0, "Q_HeroSoulsMother" 0x012D3210, "M_SecretWhisperLookAtPos" 0x012F11C0.
 // Callees: CScriptThing copy 0x004ABE90 / ~CScriptThing 0x004AA840, ~CIsThingAlive 0x00E241B0, RegisterFilter 0x00F35B10,
@@ -93,22 +94,31 @@ public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
-struct CQuestParent {
+namespace NScript {
+class CV_ParanoidWhispersScript {
+public:
     unsigned char _pad00[0x48];
     long Stage;                                         // +0x48
+public:
+    class CSecretWhisperingFriend;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_ParanoidWhispersScript;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
-struct CSecretWhisperingFriend : CEntityScriptBase {
-    CQuestParent* ParentClass;                          // +0x14
+namespace NScript {
+class CV_ParanoidWhispersScript::CSecretWhisperingFriend : public CEntityScriptBase {
+public:
+    CV_ParanoidWhispersScript* ParentClass;                          // +0x14
     void*         PMasterData;                          // +0x18
     C3DVector     HomePosition;                         // +0x1c
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CSecretWhisperingFriend::Main()
+void NScript::CV_ParanoidWhispersScript::CSecretWhisperingFriend::Main()
 {
     CScriptThing man = Game->GetThingWithScriptName("SecretWhisperingMan");
     {

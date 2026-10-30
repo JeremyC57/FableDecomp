@@ -1,5 +1,6 @@
-// CSUMMONED_CREATURE::Main() -- Hero Souls (Nostro) summoned creature: watch itself with an alive predicate, set the hero as its best enemy target, wait until the master data records Nostro's soul as collected, then remove itself
+// NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::Main() -- Hero Souls (Nostro) summoned creature: watch itself with an alive predicate, set the hero as its best enemy target, wait until the master data records Nostro's soul as collected, then remove itself
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CSUMMONED_CREATURE@CQ_HeroSoulsNostroScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D4F34 slot 1 is stored by the factory 0x00D890A0 registered as "SUMMONED_CREATURE"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D891F0, length 175 bytes (`ret`).
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) @ 0x004ABE90 (the predicate's member; CIsThingAlive vtable 0x012C32F0
 // kept in ebx and stored again by its inline destructor), CEntityScriptBase::SetPredicate @ 0x00F35B10,
@@ -34,12 +35,19 @@ struct CQ_SunnyvaleMasterData {
     unsigned char _pad00[0x68];
     bool          CollectedSoulFromNostro;         // +0x68
 };
-struct CQ_HeroSoulsNostroScript;
+namespace NScript {
+class CQ_HeroSoulsNostroScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CSUMMONED_CREATURE;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_HeroSoulsNostroScript;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CSUMMONED_CREATURE : public CEntityScriptBase {
+namespace NScript {
+class CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE : public CEntityScriptBase {
 public:
         CQ_HeroSoulsNostroScript* ParentClass;         // +0x14
     CQ_SunnyvaleMasterData*   PMasterData;         // +0x18
@@ -47,8 +55,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CSUMMONED_CREATURE::Main()
+void NScript::CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::Main()
 {
     {
         CIsThingAlive predicate(Me);

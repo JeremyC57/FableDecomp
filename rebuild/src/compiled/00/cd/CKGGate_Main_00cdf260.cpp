@@ -1,5 +1,6 @@
-// CKG_Gate::Main() -- gate entity script: register the alive-filter over Me, run a script frame and, unless done, open the gate once either hero-souls quest ("Q_HeroSoulsThunder" / "Q_HeroSoulsArena") is completed
+// NScript::CPersonalScript_GlobalThingsScript::CKG_Gate::Main() -- gate entity script: register the alive-filter over Me, run a script frame and, unless done, open the gate once either hero-souls quest ("Q_HeroSoulsThunder" / "Q_HeroSoulsArena") is completed
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CKG_Gate@CPersonalScript_GlobalThingsScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012C32FC slot 1 is stored by the factory 0x00CDF190 registered as "KG_Gate"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDF260, 250 bytes (+ int3 padding). Entity-script slot 1 (Main) per docs/engine/QUEST_SCRIPTS.md.
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (the CIsThingAlive filter, vtable 0x012C32F0), the filter
 //   registration 0x00F35B10 and IsDone 0x00F35B30 on `this` (manifest labels propagated: AllocateMapThingUID / Initialise),
@@ -37,14 +38,23 @@ using NScript::CIsThingAlive;
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CKG_Gate : public CEntityScriptBase {
+namespace NScript {
+class CPersonalScript_GlobalThingsScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CKG_Gate;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CPersonalScript_GlobalThingsScript;
+namespace NScript {
+class CPersonalScript_GlobalThingsScript::CKG_Gate : public CEntityScriptBase {
 public:
 private:
         virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CKG_Gate::Main()
+void NScript::CPersonalScript_GlobalThingsScript::CKG_Gate::Main()
 {
     {
         CIsThingAlive filter(Me);

@@ -45,7 +45,7 @@ public:
     unsigned char  _pad04[0x600];
     unsigned long  m_604;                           // +0x604
     unsigned long  m_source;                        // +0x608 OpenAL source name
-    void QueueChunk_00c57b60();                     // 0x00C57B60
+    void QueueChunk();                              // 0x00C57B60 (its defining row's leaf)
 };
 
 void CVtable_012b8ed4::UnlockChunk(void* chunk)
@@ -54,7 +54,7 @@ void CVtable_012b8ed4::UnlockChunk(void* chunk)
     g_AudioContext.GetSourcei(m_source, 0x1016, &processed);
     while (processed-- > 0)
         ((COpenALVoice*)this)->UnqueueBuffer();
-    QueueChunk_00c57b60();
+    QueueChunk();
     long state;
     g_AudioContext.GetSourcei(m_source, 0x1010, &state);
     if (state != 0x1012)

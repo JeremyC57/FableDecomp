@@ -1,7 +1,8 @@
-// CMeleeThunder::Main() (0x00D58080) -- the Thunder fight: wait for the parent's stage 4, take scripted control
+// NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main() (0x00D58080) -- the Thunder fight: wait for the parent's stage 4, take scripted control
 //   (priority 4) and hold it while the stage stays 4; then wait for stage 6, take control again and hold it while the stage
 //   stays 6; release the scripted-thing handle and idle until the script is done
 // Leaf: ?Main@CMeleeThunder@
+// Identity (naming wave 11): ?Main@CMeleeThunder@CQ_GuildTrainingMeleeScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D0564 slot 1 is stored by the factory 0x00D57FA0 registered as "MeleeThunder"
 // Retail: Fable.exe @ 0x00D58080, 633 bytes (+ int3 padding), plain `ret`.
 // Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, the scripted-thing handle's IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / out-of-line destructor 0x007E74D0, IsActiveThreadTerminating 0x00F35B30, operator delete
@@ -72,19 +73,28 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #include "engine/CGameScriptInterface.h"
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
-struct CParentQuestScript {
+namespace NScript {
+class CQ_GuildTrainingMeleeScript {
+public:
     unsigned char _pad[0x4c];
     long          Stage;                                // +0x4c
+public:
+    class CMeleeThunder;                        // the entity class below (naming wave 11)
 };
-struct CMeleeThunder : CEntityScriptBase {
-    CParentQuestScript* ParentClass;                    // +0x14
+}
+using NScript::CQ_GuildTrainingMeleeScript;
+namespace NScript {
+class CQ_GuildTrainingMeleeScript::CMeleeThunder : public CEntityScriptBase {
+public:
+    CQ_GuildTrainingMeleeScript* ParentClass;                    // +0x14
     void*               PMasterData;                    // +0x18
 private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CMeleeThunder::Main()
+void NScript::CQ_GuildTrainingMeleeScript::CMeleeThunder::Main()
 {
     CScriptGameResourceObjectScriptedThingBase scripted;
     while (ParentClass->Stage != 4) {

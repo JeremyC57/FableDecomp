@@ -3,7 +3,7 @@
 unsigned char g_flagByte = 0;
 unsigned short g_flagWord = 0;
 
-int IsMeleeWeaponClass(int weaponClass);
+bool __fastcall ImeUi_GetCaretStatus();
 
 int main()
 {
@@ -11,19 +11,19 @@ int main()
 
     // both zero -> true
     g_flagByte = 0; g_flagWord = 0;
-    if (IsMeleeWeaponClass(3) != 1) fails++;
+    if (ImeUi_GetCaretStatus() != true) fails++;
 
     // byte set, word zero -> true
     g_flagByte = 1; g_flagWord = 0;
-    if (IsMeleeWeaponClass(3) != 1) fails++;
+    if (ImeUi_GetCaretStatus() != true) fails++;
 
     // byte zero, word set -> true
     g_flagByte = 0; g_flagWord = 5;
-    if (IsMeleeWeaponClass(3) != 1) fails++;
+    if (ImeUi_GetCaretStatus() != true) fails++;
 
     // both set -> false
     g_flagByte = 1; g_flagWord = 5;
-    if (IsMeleeWeaponClass(3) != 0) fails++;
+    if (ImeUi_GetCaretStatus() != false) fails++;
 
     if (fails == 0) printf("MELEEWEAPONCLASS_OK\n");
     else printf("FAIL %d\n", fails);

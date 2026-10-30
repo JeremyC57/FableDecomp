@@ -1,8 +1,10 @@
-// CHeroBoastsScript::BoastFireHeartKillAllPrisoners(CCharString) -- wait for quest/boast outcome
-// Native 00ce6b10; callee00CB7940 termination query and99EAE0 by-value string destructor.
-// Leaf: BoastFireHeartKillAllPrisoners
+// CHeroBoastsScript::BoastGraveyardKillAllInnocents(CCharString) -- wait for quest/boast outcome
+// Native 00ce56e0; callee00CB7940 termination query and99EAE0 by-value string destructor.
+// Leaf: ?BoastGraveyardKillAllInnocents@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z
 #include "engine/CGameScriptInterface.h"
 #include "fable_string.h"
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptBase.h"                  // retail CScriptBase (0x40 bytes, vtable 0x012C1648)
 // CHeroBoastsScript and CQ_SunnyvaleMasterData have no generated engine headers.
 // Native CLevelScriptBase Game+40/MasterScriptData+44; donor Game+54/Master+58.
 // Named master flags have identical native/PDB offsets; untouched ranges remain opaque.
@@ -10,7 +12,7 @@ struct SunnyvaleMasterData {
  unsigned char BeforeBounty[0xd9]; bool BountyHuntDecapitation;
  unsigned char BeforeHobbe[0x33]; bool HobbeCavePerpertratorKilled;
  unsigned char BeforeContest[0xd]; bool HobbeContestKillMoreHobbes; bool GraveyardKillAllInnocents;
- unsigned char BeforeFireHeart[0x12]; bool FireHeartFreeAllPrisoners; bool FireHeartKillAllPrisoners;
+ unsigned char BeforeFireHeart[0x12]; bool FireHeartFreeAllPrisoners;
 };
 struct GameMethods:CGameScriptInterface {};
 union GameSlot {
@@ -21,16 +23,18 @@ union GameSlot {
 };
 // Native vtable01260F0C:7=6E7410,28=893730,29=8937D0,305=8915B0,306=8915E0.
 // PMF union restores flattened header's real virtual ABI without fabricated virtual slots.
-struct CHeroBoastsScript {
- unsigned char ScriptBaseState[0x40]; GameMethods* Game; SunnyvaleMasterData* MasterScriptData;
- bool IsActiveThreadTerminating()const; //00CB7940: active thread+2C, thread terminating byte+5
- void BoastFireHeartKillAllPrisoners(CCharString quest);
+namespace NScript {
+struct CHeroBoastsScript : public CScriptBase {  // IsActiveThreadTerminating 0x00CB7940 is CScriptBase's (active thread+2C, terminating byte+5)
+ GameMethods* Game; SunnyvaleMasterData* MasterScriptData;
+ void BoastGraveyardKillAllInnocents(CCharString quest);
  __forceinline bool Failed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[29].QuestMessage)(q);}
  __forceinline bool Completed(const CCharString& q){return (Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[28].QuestMessage)(q);}
  __forceinline void Frame(){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[7].NewScriptFrame)();}
  __forceinline void Success(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[306].SetBoast)(id,q);}
  __forceinline void Failure(long id,const CCharString& q){(Game->*reinterpret_cast<GameSlot*>(Game->__vftable)[305].SetBoast)(id,q);}
 };
+}   // namespace NScript
+using NScript::CHeroBoastsScript;
 FABLE_STATIC_ASSERT(sizeof(GameSlot)==4);
 FABLE_STATIC_ASSERT(offsetof(CHeroBoastsScript,Game)==0x40);
 FABLE_STATIC_ASSERT(offsetof(CHeroBoastsScript,MasterScriptData)==0x44);
@@ -39,22 +43,10 @@ FABLE_STATIC_ASSERT(offsetof(SunnyvaleMasterData,HobbeCavePerpertratorKilled)==0
 FABLE_STATIC_ASSERT(offsetof(SunnyvaleMasterData,HobbeContestKillMoreHobbes)==0x11b);
 FABLE_STATIC_ASSERT(offsetof(SunnyvaleMasterData,GraveyardKillAllInnocents)==0x11c);
 FABLE_STATIC_ASSERT(offsetof(SunnyvaleMasterData,FireHeartFreeAllPrisoners)==0x12f);
-FABLE_STATIC_ASSERT(offsetof(SunnyvaleMasterData,FireHeartKillAllPrisoners)==0x130);
-void CHeroBoastsScript::BoastFireHeartKillAllPrisoners(CCharString quest){
+void NScript::CHeroBoastsScript::BoastGraveyardKillAllInnocents(CCharString quest){
  while(!IsActiveThreadTerminating()){
-  if(Failed(quest)){
-   if(IsActiveThreadTerminating())return;
-   Failure(44,quest);
-  }else if(Completed(quest)){
-   if(IsActiveThreadTerminating())return;
-   if(MasterScriptData->FireHeartKillAllPrisoners){
-    if(IsActiveThreadTerminating())return;
-    Success(44,quest);
-   }else{
-    if(IsActiveThreadTerminating())return;
-    Failure(44,quest);
-   }
-  }
+  if(MasterScriptData->GraveyardKillAllInnocents){if(!IsActiveThreadTerminating())Success(29,quest);return;}
+  if(Failed(quest)||Completed(quest)){if(!IsActiveThreadTerminating())Failure(29,quest);return;}
   Frame();
  }
 }

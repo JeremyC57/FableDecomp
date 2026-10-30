@@ -1,4 +1,5 @@
-// CIME::Render() -- draw the IME composition string and the front end's IME indicator sprite each frame
+// Leaf: ?Render@CIME@NUISystem@@QAEXXZ
+// NUISystem::CIME::Render() -- draw the IME composition string and the front end's IME indicator sprite each frame
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00404C00, length 80 bytes.
 //
 // Called from the front end's render pass. When the IME was initialised we first publish the alpha of
@@ -19,7 +20,7 @@ struct CThemeProvider_00404c00 {
     virtual SThemeRecord_00404c00* GetTheme();     // slot 27: the control's current style record
 };
 // IME UI: draw the composition / candidate strings (0x00CB38E0).
-void __fastcall ImeUI_RenderCompositionString(bool a, bool b);
+void __fastcall ImeUi_RenderUI(bool drawCompAttr, bool drawOtherUi);   // 0x00CB38E0 ?ImeUi_RenderUI@@YIX_N0@Z (Ego_r; the only (bool, bool) ImeUi entry)
 struct CSprite { void DrawWithRenderManager(); };   // 0x0041A980
 namespace NUISystem { class CManager { public:
     unsigned char _pad[0xb8];
@@ -27,24 +28,27 @@ namespace NUISystem { class CManager { public:
     CSprite* GetImeSprite() { return m_pImeSprite; }
     static CManager* __fastcall GetInstance();   // 0x0041E5F2
 }; }
-struct CIME {
-    unsigned char             _pad[8];
-    bool                      m_active;            // IsInitialised
+namespace NUISystem {
+class CIME {
+public:
+    unsigned char             _pad00[0x8];
+    bool                      IsInitialised;       // +0x08
     unsigned char             _pad09[0x43];
-    CThemeProvider_00404c00*  m_pTheme;            // PEditBox: the edit box currently taking IME input
+    CThemeProvider_00404c00*  m_pTheme;            // +0x4C PEditBox: the edit box currently taking IME input
     void Render();
 };
+}
 
-void CIME::Render()
+void NUISystem::CIME::Render()
 {
-    if (m_active) {
+    if (IsInitialised) {
         // Composition alpha follows the owning edit box.
         if (m_pTheme)
             g_imeCompositionAlpha_013750b0 = m_pTheme->GetTheme()->m_alpha;
         else
             g_imeCompositionAlpha_013750b0 = 0;
         bool flags = true;
-        ImeUI_RenderCompositionString(flags, flags);
+        ImeUi_RenderUI(flags, flags);
         // Mode indicator, when the front end has one.
         CSprite* sprite = NUISystem::CManager::GetInstance()->GetImeSprite();
         if (sprite)

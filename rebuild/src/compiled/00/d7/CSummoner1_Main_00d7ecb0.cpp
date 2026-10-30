@@ -1,5 +1,6 @@
-// CSummoner1::Main() -- Hero Souls arena summoner script: wait (one script frame at a time) until the hero hits this summoner (other than with special ability 14), then flag PlayerHitSummoner1 on the arena quest script
+// NScript::CQ_HeroSoulsArenaScript::CSummoner1::Main() -- Hero Souls arena summoner script: wait (one script frame at a time) until the hero hits this summoner (other than with special ability 14), then flag PlayerHitSummoner1 on the arena quest script
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CSummoner1@CQ_HeroSoulsArenaScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D3EB0 slot 1 is stored by the factory 0x00D7EBE0 registered as "Summoner1"
 // Retail 0x00D7ECB0, 336 bytes, `ret`. Vtable reference 0x012D3EB4 (slot of CSummoner1's vtable).
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) 0x004ABE90, the filter registration 0x00F35B10,
 // CScriptThing::~CScriptThing 0x004AA840, IsDone 0x00F35B30, CGameScriptInterface slot 7 NewScriptFrame (+0x1c),
@@ -35,17 +36,24 @@ namespace NScript {
 namespace NScript {
 }
 using NScript::CIsThingAlive;
-struct CQ_HeroSoulsArenaScript {
+namespace NScript {
+class CQ_HeroSoulsArenaScript {
+public:
     unsigned char _pad00[0x4d];
     bool          PlayerHitSummoner1;                   // +0x4d
     bool          PlayerHitSummoner2;                   // +0x4e
+public:
+    class CSummoner1;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CQ_HeroSoulsArenaScript;
 struct CQ_SunnyvaleMasterData;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CSummoner1 : public CEntityScriptBase {
+namespace NScript {
+class CQ_HeroSoulsArenaScript::CSummoner1 : public CEntityScriptBase {
 public:
         CQ_HeroSoulsArenaScript* ParentClass;               // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;               // +0x18
@@ -53,8 +61,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CSummoner1::Main()
+void NScript::CQ_HeroSoulsArenaScript::CSummoner1::Main()
 {
     {
         CIsThingAlive filter(Me);

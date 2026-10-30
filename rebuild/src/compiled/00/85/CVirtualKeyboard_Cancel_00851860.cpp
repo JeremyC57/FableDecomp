@@ -11,12 +11,13 @@
 // no arguments; its manifest label is a propagated name).
 #include "engine/CVirtualKeyboard.h"
 
-struct CIMECalls {
-    bool IsIMEActive();                     // 0x00404C50
-    void FinaliseString(bool commit);       // 0x00404B50
+namespace NUISystem {
+class CIME { public:
+    static CIME& __fastcall Get();          // 0x00404A80 ?Get@CIME@NUISystem@@SIAAV12@XZ (Ego_r / FableWin)
+    void FinaliseString(bool commit);       // 0x00404B50 ?FinaliseString@CIME@NUISystem@@QAEX_N@Z
+    bool IsIMEActive() const;               // 0x00404C50 ?IsIMEActive@CIME@NUISystem@@QBE_NXZ
 };
-
-extern CIMECalls* GFGetIME();               // 0x00404A80
+}
 
 struct CVirtualKeyboard_Methods : CVirtualKeyboard {
     void Cancel();
@@ -27,7 +28,7 @@ void CVirtualKeyboard_Methods::Cancel()
     if (!this->Done) {
         this->Done     = true;
         this->Canceled = true;
-        if (GFGetIME()->IsIMEActive())
-            GFGetIME()->FinaliseString(false);
+        if (NUISystem::CIME::Get().IsIMEActive())
+            NUISystem::CIME::Get().FinaliseString(false);
     }
 }

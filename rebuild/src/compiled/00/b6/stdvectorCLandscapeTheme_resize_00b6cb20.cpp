@@ -71,8 +71,7 @@ public:
     }
     void insert(iterator __pos, size_type __n, const _Tp& __x) { _M_fill_insert(__pos, __n, __x); }
     void resize(size_type __new_size, const _Tp& __x);
-protected:
-    void _M_fill_insert(iterator __pos, size_type __n, const _Tp& __x);   // 0x00B6C700
+    void _M_fill_insert(iterator __pos, size_type __n, const _Tp& __x);   // 0x00B6C700 (public in STLport 4.6 _vector.h: QAE)
 };
 template <class _Tp, class _Alloc>
 void vector<_Tp, _Alloc>::resize(size_type __new_size, const _Tp& __x)

@@ -1,5 +1,6 @@
-// CSickChildFishingSpot::Main() -- sick-child quest fishing-spot entity: register an alive-filter over Me, start a frame, then wait frame by frame while the fishing spot stays enabled; once it is disabled (and the script is not done) set the parent's GotFishingSpotMushroom flag
+// NScript::CV_SickChildScript::CSickChildFishingSpot::Main() -- sick-child quest fishing-spot entity: register an alive-filter over Me, start a frame, then wait frame by frame while the fishing spot stays enabled; once it is disabled (and the script is not done) set the parent's GotFishingSpotMushroom flag
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CSickChildFishingSpot@CV_SickChildScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012F2420 slot 1 is stored by the factory 0x00ECD450 registered as "SickChildFishingSpot"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00ECD530, length 145 bytes (slot of the entity vtable at 0x012F2424 references it).
 // Callees: CScriptThing copy ctor @ 0x004ABE90, the filter registration @ 0x00F35B10, ~CIsThingAlive @ 0x00E241B0 (out of line in
 // this module), IsDone @ 0x00F35B30; CGameScriptInterface slots 7 NewScriptFrame and 243 IsFishingSpotEnabled (0x008958F0).
@@ -26,16 +27,23 @@ namespace NScript {
 namespace NScript {
 }
 using NScript::CIsThingAlive;
-struct CV_SickChildScript {
+namespace NScript {
+class CV_SickChildScript {
+public:
     unsigned char _pad[0x69];
     bool          GotFishingSpotMushroom;          // +0x69 (PDB +0x7d; retail script base is 0x14 smaller)
+public:
+    class CSickChildFishingSpot;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_SickChildScript;
 struct CQ_SunnyvaleMasterData;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CSickChildFishingSpot : public CEntityScriptBase {
+namespace NScript {
+class CV_SickChildScript::CSickChildFishingSpot : public CEntityScriptBase {
 public:
         CV_SickChildScript*     ParentClass;           // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
@@ -43,8 +51,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CSickChildFishingSpot::Main()
+void NScript::CV_SickChildScript::CSickChildFishingSpot::Main()
 {
     {
         CIsThingAlive filter(Me);

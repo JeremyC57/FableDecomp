@@ -1,4 +1,5 @@
-// CMurderTwistSheriff::Init() -- make the sheriff fight the hero (best enemy target), killable, damageable, pushable and moving in actions, then drop any old scripting handles (his own and the parent quest's)
+// NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::Init() -- make the sheriff fight the hero (best enemy target), killable, damageable, pushable and moving in actions, then drop any old scripting handles (his own and the parent quest's)
+// Identity (naming wave 11): ?AttackHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ (Ego_r.pdb / FableWin.pdb name lists); Ego_r.pdb / FableWin.pdb: the last private member before Init (AttackHero); this body gives Me the hero as best enemy target and makes him killable / damageable; the catalog's Init label is propagated (no vtable references 0x00EB1EC0)
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EB1EC0, 178 bytes (+ int3 padding). __fastcall, `ret`.
 // Callees (CGameScriptInterface virtuals, ghidra_out/cgsi_slots_aligned.tsv): GetHero 70 (+0x118) 0x00891CA0,
 //   GiveThingBestEnemyTarget 451 (+0x70c) 0x008A0260, EntitySetAsDamageable 516 (+0x810) 0x0088EAD0, EntitySetAsKillable 517
@@ -34,22 +35,33 @@ class CScriptGameResourceObjectScriptedThingBase { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-struct CV_MurderTwistFinalScript {               // retail offsets
+namespace NScript {
+class CV_MurderTwistFinalScript {
+public:               // retail offsets
     unsigned char _pad0[0x6c];
     CScriptGameResourceObjectScriptedThingBase SheriffHandle;   // +0x6c
+public:
+    class CMurderTwistSheriff;                        // the entity class below (naming wave 11)
 };
+}
+using NScript::CV_MurderTwistFinalScript;
 struct CQ_SunnyvaleMasterData;
-struct CMurderTwistSheriff {
+namespace NScript {
+class CV_MurderTwistFinalScript::CMurderTwistSheriff {
+public:
     void*                       __vftable;       // +0x00
     CGameScriptInterface*       Game;            // +0x04
     CScriptThing                Me;              // +0x08
     CV_MurderTwistFinalScript*  ParentClass;     // +0x14
     CQ_SunnyvaleMasterData*     PMasterData;     // +0x18
     CScriptGameResourceObjectScriptedThingBase MyEntityHandle;   // +0x1c
-    void Init();
+private:
+    void AttackHero();   // PDB ?AttackHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ (private)
+public:
 };
+}
 
-void CMurderTwistSheriff::Init()
+void NScript::CV_MurderTwistFinalScript::CMurderTwistSheriff::AttackHero()
 {
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     Game->EntitySetAsKillable(Me, true, true);

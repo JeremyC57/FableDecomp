@@ -59,7 +59,9 @@ struct SEngineResources {                          // engine resource record rea
 };
 extern SEngineResources* g_pEngineResources;       // 0x01436E98
 
-void __fastcall CalcObjectMatrix(CMatrix3x4* matrix, const C3DVector* position, const CRightHandedSet* set, float scale);   // 0x00BEBAA0
+class CEngineInternalPrimitiveMeshBase { public:
+    static void __fastcall CalcObjectMatrix(CMatrix3x4& matrix, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEBAA0 (Ego_r / FableWin)
+};
 
 class CEnginePrimitive {                           // PDB, 12 bytes
 public:
@@ -120,7 +122,7 @@ void CEngineInternalPrimitiveStaticMesh::Update(const CEnginePrimitive& primitiv
     BulletTimeAffectsCloth = mesh.BulletTimeAffectsCloth;
     MeshEffect = mesh.MeshEffect;
     ThemeChannelDesc = mesh.ThemeChannelDesc;
-    CalcObjectMatrix(&ObjectTransform, &mesh.WorldPos, &mesh.RightHandedSet, Scale);
+    CEngineInternalPrimitiveMeshBase::CalcObjectMatrix(ObjectTransform, mesh.WorldPos, mesh.RightHandedSet, Scale);
     SetFadeDistanceWithGamePrimitiveDefaults(mesh.FadeStart);
     OverrideFadeDistance = 1;
 }

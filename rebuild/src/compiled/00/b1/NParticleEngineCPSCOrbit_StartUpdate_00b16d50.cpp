@@ -4,7 +4,7 @@
 // Callees: particle frame-time getter @ 0x00AEAA00 (fld of the float @ 0x01399508; manifest "GetMaxDrawDistance"),
 //          particle random-seed getter @ 0x00AEAAD0 (returns &seed @ 0x013D2E10; manifest "AddChildPrimitive" is wrong),
 //          COrbitState::Initialise(const COrbitSettings&, unsigned long*) @ 0x00B161A0 (landed),
-//          CPSCBase::GetCurrentPosition(params, const unsigned long& param, float, bool, unsigned long) const @ 0x00AF2780
+//          CPSCBase::GetCurrentPositionLocal(params, const unsigned long& param, float, bool, unsigned long) const @ 0x00AF2780
 //          (by-value C3DVector, hidden result pointer; manifest "CParticleUpdateParameters_TransformPosition"),
 //          COrbitState::Update(const COrbitSettings&, CMatrix3x4&, float) @ 0x00B16410.
 // Identity: Ego_r.pdb `?StartUpdate@CPSCOrbit@NParticleEngine@@UAEXABV?$CParticleUpdateParameters@KK@2@@Z`.
@@ -25,12 +25,13 @@ public:
     C3DVector Pos;
 };
 
-template <class A, class B> struct CParticleUpdateParameters;
 
 float GetParticleFrameTime();                   // 0x00AEAA00
 unsigned long* GetParticleRandomSeed();         // 0x00AEAAD0
 
 namespace NParticleEngine {
+
+template <class A, class B> class CParticleUpdateParameters;   // NParticleEngine (Ego_r / FableWin)
 
 class CParticleSystem;
 
@@ -60,8 +61,8 @@ class CPSCBase { public:
     CParticleSystem* ParticleSystem;            // +0x04
     bool             UpdateStarted : 1;         // +0x08 bit 0
     bool             Initialised : 1;           // +0x08 bit 1
-    C3DVector GetCurrentPosition(const CParticleUpdateParameters<unsigned long, unsigned long>& params,
-                                 const unsigned long& param, float scale, bool local, unsigned long flags) const;  // 0x00AF2780
+    C3DVector GetCurrentPositionLocal(const CParticleUpdateParameters<unsigned long, unsigned long>& params,
+                                 const unsigned long& param, float scale, bool local, unsigned long flags) const;  // 0x00AF2780 (Ego_r / FableWin)
 };
 
 class CPSCOrbit : public CPSCBase { public:                   // vtable 0x012A0374
@@ -84,7 +85,7 @@ void CPSCOrbit::StartUpdate(const CParticleUpdateParameters<unsigned long, unsig
         updates = 4;
         LifeTimeSecs = -frameTime;
     }
-    C3DVector centre = GetCurrentPosition(params, CentreParam, 1.0f, false, 0);
+    C3DVector centre = GetCurrentPositionLocal(params, CentreParam, 1.0f, false, 0);
     for (unsigned long n = 0; n < updates; ++n) {
         CMatrix3x4 transform;
         transform.E12 = transform.E13 = transform.E21 = transform.E23 = transform.E31 = transform.E32 = 0.0f;

@@ -19,15 +19,14 @@ struct CTrace_00c48640 {                   // empty temporary (a debug-break hel
     CTrace_00c48640();                         // 0x00C16750
 };
 
-struct SThreadParams_00c48640 {            // 8 bytes: stack size and flags
+struct SThreadParams_00c355e0 {            // 8 bytes: stack size and priority (the 0x00C355E0 row's record)
     long m_stackSize;
     long m_flags;
 };
 
-struct CAsyncDecoder_00c48640;
-struct CWorkerThread_00c48640 {            // 12 bytes
+struct CWorkerThread_00c355e0 {            // 12 bytes (the 0x00C355E0 row's spelling, as CTimerHost 0x00C25B10)
     unsigned char _body[0xc];
-    CWorkerThread_00c48640(CAsyncDecoder_00c48640* owner, const SThreadParams_00c48640* params);   // 0x00C355E0
+    CWorkerThread_00c355e0(void* owner, const SThreadParams_00c355e0* params);   // 0x00C355E0
 };
 
 struct CDecoderBase_00c48640 {             // 0x38 bytes
@@ -37,17 +36,17 @@ struct CDecoderBase_00c48640 {             // 0x38 bytes
 };
 
 struct CAsyncDecoder_00c48640 : CDecoderBase_00c48640 {
-    CWorkerThread_00c48640* m_pThread;     // +0x38
+    CWorkerThread_00c355e0* m_pThread;     // +0x38
     CAsyncDecoder_00c48640();
 };
 
 CAsyncDecoder_00c48640::CAsyncDecoder_00c48640()
     : CDecoderBase_00c48640(), m_pThread(0)
 {
-    SThreadParams_00c48640 params;
+    SThreadParams_00c355e0 params;
     params.m_flags = 0;                    // retail stores the flags before the stack size
     params.m_stackSize = 0x3000;
-    m_pThread = new CWorkerThread_00c48640(this, &params);
+    m_pThread = new CWorkerThread_00c355e0(this, &params);
     if (m_pThread == 0) {
         {
             CString_00c48640 line;

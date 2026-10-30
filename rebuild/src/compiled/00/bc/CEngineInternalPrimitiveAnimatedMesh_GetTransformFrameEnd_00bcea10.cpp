@@ -1,11 +1,15 @@
+// callee at 0xbebaa0: CEngineInternalPrimitiveMeshBase::CalcObjectMatrix (static __fastcall, Ego_r / FableWin; naming wave 11):
+// ecx = matrix, edx = EndPosition self+0x94, stack: EndOrientation self+0xbc, Scale +0x58
 class CMatrix3x4;
-
-// callee at 0xbebaa0: __fastcall(ecx=matrix, edx=self+0x94, stack: self+0xbc, field58)
-extern "C" void __fastcall FrameEndCallee(CMatrix3x4* matrix, void* sub, void* p, int v);
+class C3DVector;
+class CRightHandedSet;
+class CEngineInternalPrimitiveMeshBase { public:
+    static void __fastcall CalcObjectMatrix(CMatrix3x4& matrix, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEBAA0 (Ego_r / FableWin)
+};
 
 struct Mesh {
     char pad0[0x58];
-    int field58;        // +0x58
+    float field58;      // +0x58 (Scale)
     char pad1[0x94 - 0x58 - 4];
     char field94[0x100]; // +0x94 region; +0xbc lands inside
 };
@@ -14,6 +18,6 @@ struct Mesh {
 bool __fastcall GetTransformFrameEnd(Mesh* self, void* /*edx*/, CMatrix3x4& matrix)
 {
     char* base = (char*)self;
-    FrameEndCallee(&matrix, base + 0x94, base + 0xbc, self->field58);
+    CEngineInternalPrimitiveMeshBase::CalcObjectMatrix(matrix, *(const C3DVector*)(base + 0x94), *(const CRightHandedSet*)(base + 0xbc), self->field58);
     return true;
 }

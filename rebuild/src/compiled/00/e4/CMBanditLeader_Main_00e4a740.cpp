@@ -1,5 +1,6 @@
-// CM_BanditLeader::Main() -- bandit-leader spawner: when the "BanditLeader" thing is dead (or gone), spawn a new one here (creature def from this marker's data string, scripted "BanditLeader") and attach it to the "BanditTollVillage"
+// NScript::CV_BanditTollScript::CM_BanditLeader::Main() -- bandit-leader spawner: when the "BanditLeader" thing is dead (or gone), spawn a new one here (creature def from this marker's data string, scripted "BanditLeader") and attach it to the "BanditTollVillage"
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CM_BanditLeader@CV_BanditTollScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012E4F94 slot 1 is stored by the factory 0x00E4A660 registered as "M_BanditLeader"
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4A740, length 335 bytes.
 // Callees: CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0 ("BanditLeader" @ 0x012E4C14,
 //   "BanditTollVillage" @ 0x012E4FB0), IsDone @ 0x00F35B30, ~CScriptThing @ 0x004AA840 (inlined at the first temporary,
@@ -54,14 +55,23 @@ inline CScriptThing::~CScriptThing() { }
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CM_BanditLeader : public CEntityScriptBase {
+namespace NScript {
+class CV_BanditTollScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CM_BanditLeader;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CV_BanditTollScript;
+namespace NScript {
+class CV_BanditTollScript::CM_BanditLeader : public CEntityScriptBase {
 public:
 private:
         virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CM_BanditLeader::Main()
+void NScript::CV_BanditTollScript::CM_BanditLeader::Main()
 {
     if (Game->GetThingWithScriptName("BanditLeader").IsDead()) {
         if (IsActiveThreadTerminating())

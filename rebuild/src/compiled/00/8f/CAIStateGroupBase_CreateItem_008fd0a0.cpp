@@ -21,7 +21,7 @@ class C3DVector;
 class CThing { public: const C3DVector& GetPos() const; };   // 0x004C73D0 ?GetPos@CThing@@QBEABVC3DVector@@XZ (Ego_r.pdb)
 class CThingAICreature : public CThing { public: unsigned char storage[0x100]; };
 class CPlayer;
-class CPlayerManager { public: long MainPlayer; };
+class CPlayerManager { public: long MainPlayer; long GetMainPlayerNumber() const; };
 class CAIBrain { public: CThingAICreature* Creature; CPlayerManager* PlayerManager; };
 class CAIStateGroupBase { public: CAIBrain* PBrain; };
 #endif
@@ -36,7 +36,6 @@ public:
 };
 // Retail getter 0x00449700 reads native MainPlayer at +0x1c; the donor header
 // places it at +0x20 because its Players vector is four bytes larger.
-struct CPlayerManagerAccess : CPlayerManager { long GetMainPlayer(); };
 class CTCCarrying { public:
     void PutThingInCarrySlot(CThingObject*, long, bool); // 0x006a1f80
 };
@@ -77,7 +76,7 @@ void CAIStateGroupBaseCreateItem::CreateItem(CCharString* definitionName, CCharS
             entry = carries->last;
         CTCCarrying* carry = (CTCCarrying*)((void*)entry->second);
 
-        long playerID = ((CPlayerManagerAccess*)brain->PlayerManager)->GetMainPlayer();
+        long playerID = brain->PlayerManager->GetMainPlayerNumber();   // 0x00449700 ?GetMainPlayerNumber@CPlayerManager@@QBEJXZ
         C3DVector position = PBrain->Creature->GetPos();
         float orientation[6] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
 

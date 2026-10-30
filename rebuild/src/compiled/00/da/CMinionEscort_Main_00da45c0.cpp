@@ -1,5 +1,6 @@
-// CMinionEscort::Main() -- the clifftop-chase minion escort: register an alive-filter over Me, advance a script frame, and unless already done attach Me to the active quest, turn it to face the hero and make the hero its best enemy target, then keep advancing frames until done
+// NScript::CQ_MinionClifftopChaseScript::CMinionEscort::Main() -- the clifftop-chase minion escort: register an alive-filter over Me, advance a script frame, and unless already done attach Me to the active quest, turn it to face the hero and make the hero its best enemy target, then keep advancing frames until done
 // Leaf: Main
+// Identity (naming wave 11): ?Main@CMinionEscort@CQ_MinionClifftopChaseScript@NScript@@EAEXXZ (Ego_r.pdb / FableWin.pdb name lists); retail vtable 0x012D7420 slot 1 is stored by the factory 0x00DA4490 registered as "MinionEscort"
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA45C0, 194 bytes (`ret`).
 // Callees: CScriptThing::CScriptThing(const CScriptThing&) 0x004ABE90 (the filter's member at +4; the filter's vtable
 // 0x012C32F0 kept in ebx and stored first), the entity-script filter registration 0x00F35B10 (on `this`; manifest label
@@ -41,13 +42,20 @@ namespace NScript {
 }
 using NScript::CIsThingAlive;
 
-struct CQ_MinionClifftopChaseScript;
+namespace NScript {
+class CQ_MinionClifftopChaseScript {                // the PDB owner script (naming wave 11); only its nested entity class is modelled
+public:
+    class CMinionEscort;                        // the entity class below (naming wave 11)
+};
+}
+using NScript::CQ_MinionClifftopChaseScript;
 struct CQ_SunnyvaleMasterData;
 
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 
-class CMinionEscort : public CEntityScriptBase {
+namespace NScript {
+class CQ_MinionClifftopChaseScript::CMinionEscort : public CEntityScriptBase {
 public:
         CQ_MinionClifftopChaseScript*  ParentClass;   // +0x14
     CQ_SunnyvaleMasterData*        PMasterData;   // +0x18
@@ -56,8 +64,9 @@ private:
     virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
 public:
 };
+}
 
-void CMinionEscort::Main()
+void NScript::CQ_MinionClifftopChaseScript::CMinionEscort::Main()
 {
     {
         CIsThingAlive filter(Me);

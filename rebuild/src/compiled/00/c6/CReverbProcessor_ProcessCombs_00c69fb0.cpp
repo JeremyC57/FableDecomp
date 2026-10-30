@@ -20,7 +20,7 @@ struct SReverbSettings {
     unsigned char _pad00[0x38];
     SCombSettings Combs[4];                        // +0x38
 };
-struct CDelayLine {
+struct CRingBuffer {
     float*        m_pBuffer;
     unsigned long m_length;
     unsigned long m_position;
@@ -28,9 +28,9 @@ struct CDelayLine {
 struct CCombFilter {
     unsigned char _pad00[0x10];
     long          m_mode;                          // +0x10
-    void Blend(const SCombSettings* current, const SCombSettings* target, CDelayLine* line, float* output,
+    void Blend(const SCombSettings* current, const SCombSettings* target, CRingBuffer* line, float* output,
                const float* input, unsigned long count, unsigned long blendPosition);          // 0x00C76120
-    void Process(const SCombSettings* current, CDelayLine* line, float* output, const float* input,
+    void Process(const SCombSettings* current, CRingBuffer* line, float* output, const float* input,
                  unsigned long count);                                                     // 0x00C75FF0
 };
 
@@ -45,7 +45,7 @@ struct CReverbProcessor {
     unsigned char    _pad20[0x2c - 0x20];
     unsigned long    m_inputCount;                 // +0x2c
     unsigned char    _pad30[0x54 - 0x30];
-    CDelayLine       m_line;                       // +0x54
+    CRingBuffer       m_line;                       // +0x54
     unsigned char    _pad60[0x1f8 - 0x60];
     CCombFilter      m_combs[4];                   // +0x1f8
     void ProcessCombs(const float* const* inputs, unsigned long count, float* output);
