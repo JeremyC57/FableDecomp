@@ -24920,3 +24920,13 @@ chunk	address	module	name	length
 588	00c9c500	global	Mesh_TransformVertices	282
 588	00b94180	global	CEngineScene_RenderWithOcclusion	283
 588	00ae6e60	global	Vector_Insert_ResizeLogic	292
+589	00c57b60	global	CAudioSource_BufferNextFrame	292
+589	00b8f950	global	Vector_InsertWithMove_Element	293
+589	00c74bb0	global	CAudioChannel_ComputePeakFilterCoefficients	293
+589	00aded70	global	sub_00aded70	294
+589	00c5ab50	global	CAudioSource_UpdateRotationDamping	294
+589	00b6c5d0	global	Vector_Insert_Generic	295
+589	00caaca0	global	CAudioBank_SetAudioFormat	266
+589	00c25b10	global	CLandscapeBackgroundSubNodeSplitBranch_Ctor	268
+589	00c4aeb0	global	PKCBufferedReader_PrimeBuffer	281
+589	00c1a110	global	FileManager_IncrementAndCheckReference	283
