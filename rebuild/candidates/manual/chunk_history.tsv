@@ -25000,3 +25000,13 @@ chunk	address	module	name	length
 596	00af7730	global	Vector_InsertSingle_Counted	345
 596	00c8e580	global	CreatureHitNotification_Construct	347
 596	00ca3420	global	Geometry_ScaleVertexArray	347
+597	00c55da0	global	Audio_FindWaveOutDevice	348
+597	00cb3570	global	ImeUi_ToggleLanguageBar	348
+597	00c298d0	global	std_vector_InsertRange	352
+597	00cd5170	global	LoadDataFromMarker	352
+597	00c62530	global	CItem_UpdateWeaponGeometry	354
+597	00cbf13c	global	FindNearestEntity_ByDirection	355
+597	00b85660	global	RotateElements_CNavigationPosition	356
+597	00c00e60	global	longest_match	359
+597	00ae3360	global	construct	360
+597	00b9e750	global	RenderMeshPrimitiveBlocksDegenerateTriangles	361
