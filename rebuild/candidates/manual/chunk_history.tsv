@@ -24910,3 +24910,13 @@ chunk	address	module	name	length
 587	00c43a10	global	CDisplayManager_ProcessStateChange	274
 587	00caafc0	global	PopNodes_FromList_UpToCount	276
 587	00c39130	global	CTCTavernGameSpotTheAddition_Constructor	265
+588	00c02350	global	updatewindow	277
+588	00c75ab0	global	Graphics_ProcessTerrainStreamingChunks	277
+588	00ae7340	global	Vector_Insert_ResizeLogic_Large	278
+588	00c071b0	global	swd_accept	279
+588	00bbd950	global	std_vector_insert_fill_complex	280
+588	00cb37a0	global	ImeUI_SetupLayoutFromKeyboard	280
+588	00caa290	global	AllocateAndValidateMemoryRange	281
+588	00c9c500	global	Mesh_TransformVertices	282
+588	00b94180	global	CEngineScene_RenderWithOcclusion	283
+588	00ae6e60	global	Vector_Insert_ResizeLogic	292
