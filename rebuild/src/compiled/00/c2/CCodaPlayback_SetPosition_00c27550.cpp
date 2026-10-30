@@ -4,25 +4,26 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C27550, 139 bytes (`ret 4`, EH-framed). Descriptive names (no PDB or RTTI
 //   covers the libpk audio library): the manifest's "CPhysicalPrimitive_InitializeFromMesh" is propagated. The
 //   function is slot 7 of vtable 0x012B4034.
-// Callees: CScopedLock @ 0x00C0FFC0 / ~CScopedLock @ 0x00C0FFE0 over the module lock 0x0143BAFC,
+// Callees: PKCProtectionInstance @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 over the module lock 0x0143BAFC,
 //   C3DVector::SwapYZ @ 0x00C1C070 (landed name; a C++ member, so the lock gets EH state 0),
 //   CODA_SetSourcePosition @ 0x00C33FD0 (`__stdcall`, extern "C").
 // Shape: the swapped vector is ASSIGNED to a declared local (return temporary at esp+0x18 copied dword by dword to
 //   the local at esp+0xc); `C3DVector v = position.SwapYZ();` builds straight into the local (0x14-byte frame).
+class PKCCriticalSection;
 class C3DVector { public:
     float X, Y, Z;
     C3DVector() { }
     C3DVector SwapYZ() const;                   // 0x00C1C070
 };
 
-struct CScopedLock {                            // 8-byte scoped lock (chunk 431 model)
+class PKCProtectionInstance { public:                            // 8-byte scoped lock (chunk 431 model)
     void*         m_pSection;
     unsigned long m_tick;
-    CScopedLock(void* section);                 // 0x00C0FFC0
-    ~CScopedLock();                             // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
+    ~PKCProtectionInstance();                             // 0x00C0FFE0
 };
 
-extern unsigned char g_soundLock[];             // 0x0143BAFC the audio library's module lock
+extern PKCCriticalSection g_soundLock;             // 0x0143BAFC the audio library's module lock
 
 struct CODASource;                              // opaque CODA source object
 extern "C" {                                    // the CODA C API (__stdcall; nothrow under /EHsc)
@@ -57,7 +58,7 @@ struct CCodaPlayback {                          // vtable 0x012B4034 (landed row
 
 void CCodaPlayback::SetPosition(const C3DVector& position)
 {
-    CScopedLock lock(g_soundLock);
+    PKCProtectionInstance lock(&g_soundLock);
     if (m_b3D) {
         C3DVector v;
         v = position.SwapYZ();

@@ -4,7 +4,7 @@
 // Callees: CScriptThing copy 0x004ABE90 / ~ 0x004AA840, CIsThingAlive (vtable 0x012C32F0, ~ 0x00E241B0), flag predicate
 //   (vtable 0x012EA43C), and-predicate (vtable 0x012EA430, ctor 0x00E7E020), predicate base vtable 0x012C2FF4,
 //   SetPredicate 0x00F35B10, IsDone 0x00F35B30 (manifest "CCreatureAction_TrollWhackGroundBase::Initialise" is propagated),
-//   CBaseObject 0x0099A380, scripted-thing handle ctor 0x007E72A0 / ~ 0x007E74D0 / IsScripting 0x00CD23B9 / Release 0x00CD2770
+//   CBaseObject 0x0099A380, scripted-thing handle ctor 0x007E72A0 / ~ 0x007E74D0 / IsValid 0x00CD23B9 / Release 0x00CD2770
 //   / IsPerformingScriptTask 0x007E7450 / MoveToThing 0x007E7300 / MoveToPosition 0x007E72F0 / GetScriptThing 0x007E7490,
 //   cast map ctor 0x00CDBF70 / ~ 0x00CDBFB0 / operator[] 0x00CD3D2E, handle operator= 0x008ABD10, movie ctor 0x006E7B60 / ~
 //   0x006E7B80, CCharString 0x0099EBF0 / ~ 0x0099EAE0, CV_FisticuffsClubScript::GetCutsceneName 0x00E8A1D0, RunCutsceneMacro
@@ -99,7 +99,7 @@ enum EScriptEntityMoveType { MOVE_TYPE_WALK };
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
     virtual bool IsPerformingScriptTask() const;        // 0x007E7450
@@ -206,7 +206,7 @@ void CRingFighter::Main()
 #pragma inline_depth(0)
                 CScriptGameResourceObjectScriptedThingBase hero;
 #pragma inline_depth()
-                if (fighter.IsScripting())
+                if (fighter.IsValid())
                     fighter.Release();
                 while (!Game->StartScriptingEntity(Me, fighter, (EScriptAIPriority)4)) {
                     Game->NewScriptFrame();

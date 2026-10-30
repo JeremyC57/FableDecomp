@@ -127,13 +127,15 @@ struct CTCQuestStartTarget {                        // interface 0xFC
 class CGameScriptInterface { public:
     virtual bool MsgOnLeavingQuestStartScreen(CCharString& questName) const;
     CWorld* World;                                  // +0x04
-    long GetCurrentWorldFrameForMessages() const;   // 0x006E7510
+protected:
+    long GetMinWorldFrameForMessages() const;   // 0x006E7510
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
+public:
 };
 
 bool CGameScriptInterface::MsgOnLeavingQuestStartScreen(CCharString& questName) const
 {
-    long frame = GetCurrentWorldFrameForMessages();
+    long frame = GetMinWorldFrameForMessages();
     long maxFrame = GetMaxWorldFrameForMessages();
     CMessageEventManager* messages = World->PMessageEventManager_Data;
     CMessageEvent* message = messages->FindMostRecentMessage(

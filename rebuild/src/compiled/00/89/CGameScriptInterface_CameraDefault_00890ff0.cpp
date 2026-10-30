@@ -37,7 +37,7 @@ struct GlobalOverlay
 };
 
 extern GlobalOverlay* gCameraGlobal;
-extern CPlayer* __fastcall GetCameraContext(void* cameraOwner);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 
 class CGameScriptInterface
 {
@@ -58,7 +58,7 @@ public:
 
 void CGameScriptInterface::CameraDefault()
 {
-    CPlayer* context = GetCameraContext(gCameraGlobal->cameraOwner);
+    CPlayer* context = (&((CPlayerManager*)gCameraGlobal->cameraOwner)->GetMainPlayer());
     CameraTarget* target = context->GetPControlledCreature();
     if (target != 0 && (target->flags91 & 1) == 0)
     {

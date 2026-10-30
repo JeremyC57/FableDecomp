@@ -4,7 +4,7 @@
 // Literals "SCRIPT_NAME_HERO" 0x0125D1C8, "" 0x0122D70E, "TEXT_QST_B04_GUILD_ACOLYTE" 0x012D4C5C, "TEXT_QST_B04_GUILD_ACOLYTE_HIT" 0x012D4C3C.
 // Callees: the landed CEndScythe::Main 0x00D79D50 model: CIsThingAlive (inline dtor) over CScriptThing copy 0x004ABE90 / dtor 0x004AA840,
 //   RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle
-//   IsScripting 0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 /
+//   IsValid 0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 /
 //   dtor 0x007E74D0, movie handle ctor 0x006E7B60 / dtor 0x006E7B80; GameCalls slots 7, 8, 70, 264 GetHealth, 370 StartMovieSequence,
 //   379 PauseAllNonScriptedEntities, 599 EntitySetThingAsAllyOfThing; CScriptThing slots 21, 27, 41, 42.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (ready flag +0x4a), PMasterData +0x18.

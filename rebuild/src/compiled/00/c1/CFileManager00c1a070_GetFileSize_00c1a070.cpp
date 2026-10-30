@@ -13,13 +13,14 @@
 //   the `mov [esp+20h],0` store and the plain prologue order. The two `return false` paths tail-merge into one lock-destructor call (the size-failure path jumps into the
 //   not-found block after its state store); the size test compares the call result, not the stored word.
 // Label: the catalog's `FileManager_GetFileSizeByKey` is descriptive; the class is named by address.
+class PKCCriticalSection;
 extern "C" __declspec(dllimport) unsigned long __stdcall GetFileSize(void* hFile, unsigned long* sizeHigh);   // 0x0143FDF0
 
-struct CScopedLock_00c1a070 {              // 8-byte scoped lock
+class PKCProtectionInstance { public:              // 8-byte scoped lock
     void* m_pSection;
     unsigned long m_state;
-    CScopedLock_00c1a070(void* section);   // 0x00C0FFC0
-    ~CScopedLock_00c1a070();               // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);   // 0x00C0FFC0
+    ~PKCProtectionInstance();               // 0x00C0FFE0
 };
 
 struct SOpenFile_00c1a070 {
@@ -72,7 +73,7 @@ struct CFileManager_00c1a070 {
 
 bool CFileManager_00c1a070::GetFileSize(unsigned long key, unsigned long* size)
 {
-    CScopedLock_00c1a070 lock(m_section);
+    PKCProtectionInstance lock((PKCCriticalSection*)m_section);
     SOpenFile_00c1a070* file;
     if (m_files.Find(&key, (void**)&file) != 0)
         return false;

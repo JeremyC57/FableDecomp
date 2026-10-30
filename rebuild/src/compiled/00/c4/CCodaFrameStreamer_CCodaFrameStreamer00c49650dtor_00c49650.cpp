@@ -2,12 +2,13 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C49650, oracle length 385 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,10h ; push ebp ; push esi ; mov esi,ecx ; push edi ; mov [esp+18h],esi ; mov dword ptr [esi],12B8138h ; push offset g_playbackSection ; lea ecx,[esp+14h] ; mov dword ptr [esp+28h],3 ; call CProfileLock::CProfileLock ; mov eax,[esi+4] ; push eax ; call IsPlaying ; test eax,eax ; je a ; mov ecx,[esi+4] ; push 0 ; push 0 ; push ecx ; call Stop ; a: mov edx,[esi+4] ; push edx ; call Release ; mov eax,[esi+4] ; push eax ; call Destroy ; xor ebp,ebp ; lea ecx,[esp+10h] ; mov [esi+4],ebp ; call ~CProfileLock ; cmp [esi+3Ch],ebp ; jbe tail ; loop: lea ecx,[esi+1Ch] ; call CFrameQueue::Pop ; mov edi,eax ; test edi,edi ; jne del ; mov ecx,[g_pchNil] ; mov [esp+10h],ecx ; mov edx,offset ".\CCodaFrameStreamer.cpp" ; lea ecx,[esp+10h] ; mov byte ptr [esp+24h],4 ; call Append ; ... mov edx,54h ; ... call AppendNumber ; ... call Append ("Null frame") ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+10h] ; call eax ; skip: lea ecx,[esp+10h] ; mov byte ptr [esp+24h],3 ; call ~CString ; lea ecx,[esp+0Fh] ; call CTrace::CTrace ; jmp next ; del: mov ecx,edi ; call CFrame::~CFrame ; push edi ; call operator delete ; add esp,4 ; next: mov eax,[esi+3Ch] ; inc ebp ; cmp ebp,eax ; jb loop ; tail: lea ecx,[esi+48h] ; mov byte ptr [esp+24h],2 ; call CPart48::~CPart48 ; lea edi,[esi+1Ch] ; mov [esp+10h],edi ; lea ecx,[edi+1Ch] ; mov byte ptr [esp+24h],5 ; call CEvent::~CEvent ; mov ecx,edi ; mov byte ptr [esp+24h],1 ; call CHandleTable::~CHandleTable ; lea ecx,[esi+8] ; mov byte ptr [esp+24h],0 ; call CPart8::~CPart8 ; mov ecx,[esp+1Ch] ; pop edi ; mov dword ptr [esi],12B80ACh ; ... ret
 // The classes are named by address.
+class PKCCriticalSection;
 void __cdecl operator delete(void* block);
-extern unsigned char g_playbackSection_0143bafc[];   // 0x0143BAFC
+extern PKCCriticalSection g_soundLock;   // 0x0143BAFC
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c49650)(const char* text);
 extern PFNLOGSINK_00c49650 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
-extern "C" long __stdcall IsPlaying_00c49650(void* source);                 // 0x00C35CA0 (non-throwing)
+extern "C" long __stdcall CODA_IsSourcePlaying(void* source);               // 0x00C35CA0 (non-throwing)
 extern "C" void __stdcall StopSource_00c49650(void* source, long a, long b);   // 0x00C35C30
 extern "C" void __stdcall ReleaseSource_00c49650(void* source);             // 0x00C35D50
 extern "C" void __stdcall DestroySource_00c49650(void* source);             // 0x00C35980
@@ -22,11 +23,11 @@ struct CString_00c49650 {                  // MFC-style string: one word, the sh
 struct CTrace_00c49650 {                   // empty temporary (a debug-break helper): lands on a free frame byte
     CTrace_00c49650();                         // 0x00C16750
 };
-struct CProfileLock_00c49650 {             // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CProfileLock_00c49650(void* section);  // 0x00C0FFC0
-    ~CProfileLock_00c49650();              // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
+    ~PKCProtectionInstance();              // 0x00C0FFE0
 };
 
 struct CFrame_00c49650 { ~CFrame_00c49650(); };   // 0x00C491B0
@@ -59,8 +60,8 @@ struct CCodaFrameStreamer_00c49650 : CStreamerBase_00c49650 {
 CCodaFrameStreamer_00c49650::~CCodaFrameStreamer_00c49650()
 {
     {
-        CProfileLock_00c49650 lock(g_playbackSection_0143bafc);
-        if (IsPlaying_00c49650(m_pSource))
+        PKCProtectionInstance lock(&g_soundLock);
+        if (CODA_IsSourcePlaying(m_pSource))
             StopSource_00c49650(m_pSource, 0, 0);
         ReleaseSource_00c49650(m_pSource);
         DestroySource_00c49650(m_pSource);

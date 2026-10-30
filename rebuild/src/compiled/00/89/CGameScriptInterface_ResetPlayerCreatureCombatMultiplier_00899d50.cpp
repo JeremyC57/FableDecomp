@@ -28,7 +28,7 @@ class CThingPlayerCreature : public CThingOverlay { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
 
-extern "C" CPlayer* __fastcall Sub_ResolveA(void* self);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern "C" void __fastcall Sub_ResetExperiencePickUpMultiplier(void* iface);
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)0x68;
@@ -36,7 +36,7 @@ const ETCInterfaceType kTargetType = (ETCInterfaceType)0x68;
 void __fastcall CGameScriptInterface_ResetPlayerCreatureCombatMultiplier(
     const CGameScriptInterface* self)
 {
-    CPlayer* a = Sub_ResolveA(self->PlayerManager);
+    CPlayer* a = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     CThingOverlay* pThing = a->GetPControlledCreature();
     if (pThing != 0 &&
         (pThing->m_Flags91 & 0x01) == 0 &&

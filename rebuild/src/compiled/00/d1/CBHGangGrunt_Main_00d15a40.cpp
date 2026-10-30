@@ -102,10 +102,10 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:   // vtable 0
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 16 bytes
     CCountedPointer PImp;                              // +0x08
     VPAD2(s0) VPAD1(s1)                                // slots 1..3
-    virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // slot 4 (+0x10), 0x007E72F0
-    bool IsScripting();                                // 0x00CD23B9
+    virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // slot 4 (+0x10), 0x007E72F0
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
-    void ClearCommands();                              // 0x007E7360
+    virtual void ClearCommands();                              // 0x007E7360
 };
 class CGameScriptInterface { public:
     VPAD4(p0x0) VPAD2(p0x1) VPAD1(p0x2)   // slots 0..6
@@ -189,7 +189,7 @@ void CBH_GangGrunt::Main()
     CScriptGameResourceObjectScriptedThingBase scripted;
     CCharString data = Me.GetDataString();
     CScriptThing target = Game->GetThingWithScriptName(data);
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -206,7 +206,7 @@ void CBH_GangGrunt::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     Game->EntitySetFacingAngleTowardsThing(Me, Game->GetHero(), false);
     Game->SetWanderCentrePoint(Me, target.GetPos());
@@ -224,7 +224,7 @@ void CBH_GangGrunt::Main()
     if (IsActiveThreadTerminating())
         return;
     Game->SetScriptingStateGroup(Me, (EScriptingStateGroups)0);
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -248,7 +248,7 @@ void CBH_GangGrunt::Main()
     if (IsActiveThreadTerminating())
         return;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     for (;;) {
         Game->NewScriptFrame();

@@ -5,7 +5,7 @@
 // Leaf: ?Main@CMK_GHC_HERO3@
 // Retail: Fable.exe @ 0x00D29DB0, 963 bytes (+ int3 padding), plain `ret`.
 // Callees: IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0, IsDistanceBetweenThingsUnder
-//   0x00CBE2FF (__fastcall), scripted-thing handle ctor 0x007E72A0 / dtor 0x007E74D0 / IsScripting 0x00CD23B9 / Release
+//   0x00CBE2FF (__fastcall), scripted-thing handle ctor 0x007E72A0 / dtor 0x007E74D0 / IsValid 0x00CD23B9 / Release
 //   0x00CD2770, CBaseIntelligentPointer ctor 0x0099A380 / operator= 0x0099A3B0 / dtor 0x0099A430, the handle's
 //   CCountedPointer operator= 0x008AB1E0, cast map ctor 0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E, movie PImp
 //   dtor 0x006E7AB0, RunCutsceneMacro 0x00CBFB7D (__fastcall), AddLogbookStoryEntry 0x00CBE87F (__fastcall); GameCalls
@@ -90,7 +90,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
         PImp = other.PImp;
         return *this;
     }
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 struct CMovieImpPointer {
@@ -170,7 +170,7 @@ void CMK_GHC_HERO3::Main()
         return;
     {
         CScriptGameResourceObjectScriptedThingBase hero;
-        if (hero.IsScripting())
+        if (hero.IsValid())
             hero.Release();
         while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();

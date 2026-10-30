@@ -80,7 +80,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     __forceinline CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
     virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 struct CMovieImpPointer {
@@ -174,7 +174,7 @@ void CM_RestartMarker::Main()
         ParentClass->Flag4a = false;
         {
             CScriptGameResourceObjectScriptedThingBase hero;
-            if (hero.IsScripting())
+            if (hero.IsValid())
                 hero.Release();
             while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {
                 Game->NewScriptFrame();

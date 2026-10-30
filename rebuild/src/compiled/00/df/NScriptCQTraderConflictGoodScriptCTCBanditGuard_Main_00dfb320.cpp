@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DFB320, 1637 bytes (+ int3 padding); entity-script vtable slot 1 (Main);
 //   PDB ?Main@CTC_BanditGuard@CQ_TraderConflictGoodScript@NScript@@EAEXXZ.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 (the CIsThingAlive predicate, vtable 0x012C32F0), SetPredicate
-//   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, the scripted-thing handle's IsScripting
+//   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, the scripted-thing handle's IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0, CCharString 0x0099EBF0 / 0x0099EAE0, IsDistanceBetweenThingsUnder
 //   0x00CBE2FF (__fastcall); GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 187
 //   IsWearingClothingItem, 364 AddNewConversation, 365 AddPersonToConversation, 366 AddLineToConversation.
@@ -39,7 +39,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 typedef long EScriptAIPriority;
@@ -157,7 +157,7 @@ void NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating()) return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, 2)) {
         Game->NewScriptFrame();
@@ -217,7 +217,7 @@ void NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard::Main()
                 ParentClass->BanditSecurityLinesSaid = 0;
         }
     }
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     do {
         Game->NewScriptFrame();

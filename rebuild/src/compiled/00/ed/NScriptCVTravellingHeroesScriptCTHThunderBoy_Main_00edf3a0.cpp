@@ -4,7 +4,7 @@
 //   PDB ?Main@CTH_ThunderBoy@CV_TravellingHeroesScript@NScript@@EAEXXZ (factory 0x00EDF2B0, 0x1c bytes).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, ~CBaseClass 0x0099A2E0, ~CIsThingAlive 0x00E241B0 (predicate
 //   vtable 0x012C32F0), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer 0x0099A380 /
-//   0x0099A430, handle IsScripting 0x00CD23B9 / Release 0x00CD2770, movie handle dtor 0x006E7B80 (its counted-pointer member
+//   0x0099A430, handle IsValid 0x00CD23B9 / Release 0x00CD2770, movie handle dtor 0x006E7B80 (its counted-pointer member
 //   dtor 0x006E7AB0), CCharString 0x0099EBF0 / 0x0099EAE0, operator delete 0x00BFE9BC, IsDistanceBetweenThingsOver 0x00CBE3EA
 //   (__fastcall), the inline GetMasterData accessor; CScriptThing slots 6 GetPos, 27 MsgIsTalkedToBy; scripted-thing handle slots 5 MoveToThing, 12 GetScriptThing,
 //   13 Speak, 26 IsPerformingScriptTask; GameCalls slots 7, 8, 70, 72, 108, 264, 370, 379, 421, 472, 475, 477, 498, 529, 844, 847.
@@ -113,7 +113,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     virtual void h022(); virtual void h023(); virtual void h024(); virtual void h025();
     virtual bool IsPerformingScriptTask() const;   // slot 26 (+0x68)
     CResourcePImp PImp;                                // +0x08
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
@@ -288,7 +288,7 @@ public:
 
 static inline void ReleaseScriptedControl(CScriptGameResourceObjectScriptedThingBase& handle)
 {
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
 }
 

@@ -4,7 +4,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D043A0, length 964 bytes, plain `ret` (+ a five-entry switch table).
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0; CTimer (inline ctor/dtor on the global interface 0x0143E8F8, slots 87..90; out-of-line ~CTimer 0x00CD4470
-//   at the return before the switch); GameCalls slots 7 NewScriptFrame, 11 IsLevelLoaded, 274
+//   at the return before the switch); CGameScriptInterface slots 7 NewScriptFrame, 11 IsLevelLoaded, 274
 //   HeroReceiveMessageFromGuildMaster. Strings "BanditCampResidential", "BanditCampBoss",
 //   "TEXT_QST_009_GUILDMASTER_THROUGH_GATE_10" .. "_50".
 // Layout: Ego_r.pdb CQ_BanditCampScript minus 0x14 (retail CScriptBase): ActivatedBanditRaid +0x4d.
@@ -20,7 +20,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
+class CGameScriptInterface { public:                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
  virtual void NewScriptFrame(void) const; //slot7 0x006e7410
  virtual void v008(); virtual void v009(); virtual void v010();
@@ -64,7 +64,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v267(); virtual void v268(); virtual void v269(); virtual void v270(); virtual void v271(); virtual void v272(); virtual void v273();
  virtual void HeroReceiveMessageFromGuildMaster(CCharString const &, CCharString const &, bool, bool) const; //slot274 0x008918c0
 };
-extern GameCalls* g_pGameScriptInterface;                   // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;                   // 0x0143E8F8
 class CTimer { public:                                             // a script timer: the interface's timer index
     long Index;
     CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
@@ -80,7 +80,7 @@ class CScriptBase { public:                                        // retail 0x4
 namespace NScript {
 class CQ_BanditCampScript : public CScriptBase {
 public:
-    GameCalls*    Game;                                     // +0x40
+    CGameScriptInterface*    Game;                                     // +0x40
     void*         Data;                                     // +0x44
     unsigned char _pad48[0x4d - 0x48];
     bool          ActivatedBanditRaid;                      // +0x4d

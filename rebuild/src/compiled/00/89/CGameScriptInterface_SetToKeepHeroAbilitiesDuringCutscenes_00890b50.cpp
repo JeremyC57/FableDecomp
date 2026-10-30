@@ -6,10 +6,11 @@ class CMainGameComponent { public:
 };
 
 // helper @ 0x449970 : __fastcall(void* that) -> void* (object)
-void* __fastcall helper_449970(void* that);
+class CPlayer;
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 
 void __fastcall SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface* self, int /*edx*/, bool keep)
 {
-    unsigned char* obj = (unsigned char*)helper_449970(self->Component->PPlayerManager);
+    unsigned char* obj = (unsigned char*)((void*)&((CPlayerManager*)self->Component->PPlayerManager)->GetMainPlayer());
     obj[0x224] = (unsigned char)keep;
 }

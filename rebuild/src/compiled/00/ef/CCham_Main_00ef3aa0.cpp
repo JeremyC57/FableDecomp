@@ -3,7 +3,7 @@
 // Callees: CScriptThing copy ctor @ 0x004ABE90 / ~CScriptThing @ 0x004AA840, CEntityScriptBase::SetPredicate @ 0x00F35B10,
 //          ~CIsThingAlive @ 0x00E241B0 (out of line in this module), CEntityScriptBase::IsActiveThreadTerminating @ 0x00F35B30,
 //          CCharString(const char*, long) @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CBaseObject::CBaseObject @ 0x0099A380,
-//          CScriptGameResourceObjectScriptedThingBase IsScripting @ 0x00CD23B9 / Release @ 0x00CD2770 (propagated labels, as in
+//          CScriptGameResourceObjectScriptedThingBase IsValid @ 0x00CD23B9 / Release @ 0x00CD2770 (propagated labels, as in
 //          the landed 0x00EB6200), MoveToThing @ 0x007E7300 (slot 5) and FollowPreCalculatedRoute @ 0x007E7310 (slot 6) called
 //          directly on the local, its destructor @ 0x007E74D0; CGameScriptInterface slots 7 NewScriptFrame, 8 StartScriptingEntity,
 //          72 GetThingWithScriptName (by value), 496 EntitySetAsScared (ghidra_out/cgsi_slots_aligned.tsv).
@@ -45,7 +45,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // slot 5 (+0x14)
     virtual void FollowPreCalculatedRoute(const CScriptThing& thing, EScriptEntityMoveType moveType, bool a, bool b);   // slot 6 (+0x18)
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 
@@ -98,7 +98,7 @@ void CCham::Main()
     CScriptThing inMap2 = Game->GetThingWithScriptName("InMap2");
     Game->EntitySetAsScared(Me, true);
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

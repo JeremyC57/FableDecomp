@@ -12,7 +12,7 @@ struct CMinionRecord {
     long m_timer;                              // +0x14
 };
 
-struct CThingManager_Calls {             // retail vtable of the thing manager global @ 0x0143E8F8
+class CGameScriptInterface { public:             // retail vtable of the thing manager global @ 0x0143E8F8
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -105,7 +105,7 @@ struct CThingManager_Calls {             // retail vtable of the thing manager g
     virtual void  ResetMinionTimer(long thingId, long* timerSlot);   // slot 89 (+0x164)
     virtual CMinionRecord* GetMinionRecord(long thingId);         // slot 90 (+0x168)
 };
-extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 
 class CScriptThing { public:                          // 4 bytes: the thing id/handle
     long m_thingId;
@@ -129,6 +129,6 @@ void CDBMinion::OnPredicateFail()
 {
     --ParentClass->m_minionCount;
     const CScriptThing& minion = ParentClass->m_minion;
-    CMinionRecord* record = g_pThingManager_0143e8f8->GetMinionRecord(minion.GetThingId());
-    g_pThingManager_0143e8f8->ResetMinionTimer(ParentClass->m_minion.m_thingId, &record->m_timer);
+    CMinionRecord* record = g_pGameScriptInterface->GetMinionRecord(minion.GetThingId());
+    g_pGameScriptInterface->ResetMinionTimer(ParentClass->m_minion.m_thingId, &record->m_timer);
 }

@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D874F0, 1418 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
-//   CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation
+//   CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation
 //   0x007E73D0 / dtor 0x007E74D0, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CQ_HeroSoulsGuildmasterScript::
 //   PlayCutscene(CCharString) 0x00D872D0 (label "Script_InitializeComponents" is wrong; name by analogy with the landed
 //   CQ_AwakeningTheOracleScript::PlayCutscene 0x00CFF9A0), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8, 70, 350,
@@ -96,12 +96,15 @@ using NScript::CIsThingAlive;
 #include "engine/CGameScriptInterface.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern bool g_bScriptAnimationFlag;                     // 0x01375748
-struct CQ_HeroSoulsGuildmasterScript {
+namespace NScript {
+class CQ_HeroSoulsGuildmasterScript { public:
     unsigned char _pad[0x4b];
     bool OutsideWoodGuardsAttack;                       // +0x4b (PDB +0x5f)
     bool GiveWarningCutscene;                           // +0x4c (PDB +0x60)
     void PlayCutscene(CCharString name);                // 0x00D872D0
 };
+}
+using NScript::CQ_HeroSoulsGuildmasterScript;
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04

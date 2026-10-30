@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D68810, 719 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
-//   CBaseObject ctor 0x0099A380, the scripted-thing handle's IsScripting 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation
+//   CBaseObject ctor 0x0099A380, the scripted-thing handle's IsValid 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation
 //   0x007E73D0 / dtor 0x007E74D0, CCharString 0x0099EBF0 / 0x0099EAE0; CScriptThing slots 21 MsgIsHitBy, 41
 //   MsgIsHitBySpecialAbilityFrom, 42 MsgIsHitByAnySpecialAbilityFrom, 67 SetFriendsWithEverythingFlag; GameCalls slots 7, 8,
 //   517 EntitySetAsKillable, 521 EntitySetAllowBossPhaseChanges, 526 EntitySetAsToAddToComboMultiplierWhenHit, 601
@@ -53,7 +53,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 public:
     virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73D0
@@ -106,7 +106,7 @@ void CWillWhisper::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating()) return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

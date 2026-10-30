@@ -3,14 +3,14 @@
 // Retail bytes:  ... mov esi,[item] ; movsx eax,byte ptr [esi+16h] ; mov ecx,[edi+4] ; push eax ; push ecx ; mov ecx,esi ; mov dword ptr [esp+24h],0 ; call CItem::Equip ; mov ebx,eax ; mov eax,[esi] ; test eax,eax ; je skip ; xor edx,edx ; test ebx,ebx ; setge dl ; push eax ; mov [eax+1Ch],dx ; mov ecx,[edi+4] ; call COwner::UpdateAllThemeElements ; skip: test ebx,ebx ; jge done ; mov eax,[edi+4] ; push eax ; mov ecx,esi ; call CItem::Detach ; mov ecx,esi ; call ~CItem ; push esi ; call operator delete ; add esp,4 ; done: ...
 // The signed byte slot is sign-extended for the long parameter; the `>= 0` flag is widened to the
 // 16-bit word. The manifest label is propagated; the class is named by address.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CNode_00c26de0 {
@@ -39,7 +39,7 @@ struct CItemManager_00c26de0 {
 
 void CItemManager_00c26de0::EquipItem(CItem_00c26de0* item)
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     long result = item->Equip(m_pOwner, item->m_slot);
     CNode_00c26de0* node = item->m_pNode;
     if (node) {

@@ -51,7 +51,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CScriptGameResourceObjectScriptedThingBase() {}
     // implicit destructor; out of line: 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 
@@ -118,7 +118,7 @@ void CTrophyDealerInCave::Main()
     {
         CScriptGameResourceObjectScriptedThingBase hero;
         GSI->StartScriptingEntity(GSI->GetHero(), hero, (EScriptAIPriority)4);
-        if (trophy.IsScripting())
+        if (trophy.IsValid())
             trophy.Release();
         while (!GSI->StartScriptingEntity(Me, trophy, (EScriptAIPriority)4)) {
             GSI->NewScriptFrame();

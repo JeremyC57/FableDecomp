@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DA47A0, length 371 bytes (padded to 384), `ret`.
 // Callees: as the landed sibling CMinionEscort::Main 0x00DA45C0 (same TU): CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 in the
 //   CIsThingAlive filter (vtable 0x012C32F0), filter registration 0x00F35B10, IsDone 0x00F35B30; the scripted-thing handle as the
-//   landed CUndeadRisingZombieAttacker::Main 0x00E0CFF0: CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9, Release 0x00CD2770,
+//   landed CUndeadRisingZombieAttacker::Main 0x00E0CFF0: CBaseObject ctor 0x0099A380, IsValid 0x00CD23B9, Release 0x00CD2770,
 //   destructor 0x007E74D0 (vtable 0x0127094C); CScriptThing virtual slot 16 (+0x40) IsAwareOfHero 0x004AAAC0.
 // CGameScriptInterface virtuals: NewScriptFrame 7, StartScriptingEntity 8 (priority 4), GetHero 70, GiveThingBestEnemyTarget 451,
 //   EntitySetFacingAngleTowardsThing 475, OpinionSourceSetAsAttentionGrabbing 625 (+0x9c4, 0x0089C510; manifest name).
@@ -37,7 +37,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                 // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                        // 0x00CD23B9
+    bool IsValid() const;                        // 0x00CD23B9
     void Release();                            // 0x00CD2770
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
@@ -89,7 +89,7 @@ void CMinionEscortEnd::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_4)) {
         Game->NewScriptFrame();

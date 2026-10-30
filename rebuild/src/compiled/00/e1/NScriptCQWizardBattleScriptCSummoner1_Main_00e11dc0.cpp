@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E11DC0, 942 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, scripted-thing
-//   handle (CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9, Release 0x00CD2770, MoveToThing 0x007E7300, ClearCommands 0x007E7360,
+//   handle (CBaseObject ctor 0x0099A380, IsValid 0x00CD23B9, Release 0x00CD2770, MoveToThing 0x007E7300, ClearCommands 0x007E7360,
 //   PlayAnimation 0x007E73D0, PlayLoopingAnimation 0x007E73F0, ClearAllActionsIncludingLoopingAnimations 0x007E7410,
 //   IsPerformingScriptTask 0x007E7450, dtor 0x007E74D0); GameCalls slots 7, 8, 70 GetHero, 77 GetNearestWithScriptName, 451
 //   GiveThingBestEnemyTarget; CScriptThing slots 16 IsAwareOfHero, 21/41/42 hit tests. Strings "Q_WB_DeadBody" 0x012E0564,
@@ -159,7 +159,7 @@ typedef long EScriptVillageAttitude;
 typedef long EScriptingStateGroups;
 typedef long ESex;
 typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
+enum ETextGroupSelectionMethod { };
 typedef long ETutorialCategory;
 namespace NEntityEvents {typedef long EEventType;}
 struct GameCalls {virtual ~GameCalls();
@@ -1016,18 +1016,19 @@ class CCharString { public:
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+enum EScriptEntityMoveType;
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
- void PlayAnimation(const CCharString& anim, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73D0
- bool IsPerformingScriptTask() const;               // 0x007E7450
- void MoveToThing(const CScriptThing& thing, float distance, long moveType, bool a, bool b, bool c, bool d);   // 0x007E7300
- void ClearCommands();                              // 0x007E7360
- void PlayLoopingAnimation(const CCharString& anim, long loops, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73F0
- void ClearAllActionsIncludingLoopingAnimations();  // 0x007E7410
+ virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73D0
+ virtual bool IsPerformingScriptTask() const;               // 0x007E7450
+ virtual void MoveToThing(const CScriptThing&, float, EScriptEntityMoveType, bool, bool, bool, bool);   // 0x007E7300
+ virtual void ClearCommands();                              // 0x007E7360
+ virtual void PlayLoopingAnimation(const CCharString&, long, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73F0
+ virtual void ClearAllActionsIncludingLoopingAnimations();  // 0x007E7410
 };
 extern bool g_bScriptAnimationFlag;                 // 0x01375748
 class CEntityScriptBase
@@ -1047,14 +1048,14 @@ void CSummoner1::Main()
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;
  }
  if (IsActiveThreadTerminating()) return;
- handle.MoveToThing(Game->GetNearestWithScriptName(Me, "Q_WB_DeadBody"), 0.3f, 1, false, false, false, true);
+ handle.MoveToThing(Game->GetNearestWithScriptName(Me, "Q_WB_DeadBody"), 0.3f, (EScriptEntityMoveType)1, false, false, false, true);
  while (handle.IsPerformingScriptTask()) {
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;

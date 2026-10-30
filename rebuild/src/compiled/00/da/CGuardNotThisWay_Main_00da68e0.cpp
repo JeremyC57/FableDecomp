@@ -1,7 +1,7 @@
 // CGuardNotThisWay::Main() -- the minion clifftop-chase guard who blocks the wrong way: take scripted control, attach Me to the active quest, face the hero, then every frame -- when the 15-tick timer has run out and the hero is within 12 units -- point aggressively at the summoner's run-off point, tell the hero "not this way" (two lines), point again and restart the timer
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA68E0, 1125 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation
+// Callees: CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation
 //   0x007E73D0 / IsPerformingScriptTask 0x007E7450 / dtor 0x007E74D0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CTimer dtor 0x00CD4470 (inline copies elsewhere), IsDistanceBetweenThingsUnder
 //   0x00CBE2FF (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8, 70 GetHero, 72 GetThingWithScriptName,

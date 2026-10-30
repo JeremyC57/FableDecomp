@@ -2,7 +2,7 @@
 // Leaf: ?SetSlot@CAudioParamBlock@@QAEXKPAX0@Z
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C0B380, oracle length 150 bytes. Built under /EHsc.
-// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call CScopedLock::CScopedLock ; mov eax,[index] ; cmp eax,10h ; mov dword ptr [esp+14h],0 ; jae done ; mov ecx,[b] ; imul eax,eax,34h ; mov edx,[a] ; push ecx ; push 0 ; push edx ; lea ecx,[eax+esi+4] ; call CRampedParam::SetTarget ; mov eax,[esi+3C4h] ; mov ecx,[eax+38h] ; call CDisplay::Refresh ; mov ecx,[esi+3C4h] ; mov ecx,[ecx+60h] ; test ecx,ecx ; je done ; call CSprite::Update ; done: lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~CScopedLock ; ...
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call PKCProtectionInstance::PKCProtectionInstance ; mov eax,[index] ; cmp eax,10h ; mov dword ptr [esp+14h],0 ; jae done ; mov ecx,[b] ; imul eax,eax,34h ; mov edx,[a] ; push ecx ; push 0 ; push edx ; lea ecx,[eax+esi+4] ; call CRampedParam::SetTarget ; mov eax,[esi+3C4h] ; mov ecx,[eax+38h] ; call CDisplay::Refresh ; mov ecx,[esi+3C4h] ; mov ecx,[ecx+60h] ; test ecx,ecx ; je done ; call CSprite::Update ; done: lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; ...
 // Naming (sweep1, 2026-10-25): was landed as _unattributed::CCombatAbilityDef_00c0b380::SetSlot (manifest
 //   "Container_UpdateElement_WithMatrixTransform", propagated); descriptive (no PDB covers this library). `this` is the
 //   libpk audio parameter block (chunk 431's CAudioParamBlock): this function is slot 0 of its vtable 0x012B1E84 (the
@@ -10,14 +10,14 @@
 //   sit at +4 and the owner at +0x3c4, exactly as in the landed CAudioParamBlock::Update 0x00C0AF20, whose CAudioOwner /
 //   CDisplay / CSprite / CRampedParam model (display +0x38, sprite +0x60, Refresh 0x00C11180, Update 0x00C15B90) this
 //   source now shares. The landed CRampedParam::SetImmediate 0x00C0B510 names 0x00C0B570 SetTarget.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CRampedParam {                      // 0x34 bytes
@@ -45,7 +45,7 @@ struct CAudioParamBlock {
 
 void CAudioParamBlock::SetSlot(unsigned long index, void* a, void* b)
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     if (index < 16) {
         m_gains[index].SetTarget(a, 0, b);
         m_pOwner->m_pDisplay->Refresh();

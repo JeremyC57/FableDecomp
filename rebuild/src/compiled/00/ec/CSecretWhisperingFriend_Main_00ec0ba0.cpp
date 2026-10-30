@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EC0BA0, 1114 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Literals "SecretWhisperingMan" 0x012F0FD0, "Q_HeroSoulsMother" 0x012D3210, "M_SecretWhisperLookAtPos" 0x012F11C0.
 // Callees: CScriptThing copy 0x004ABE90 / ~CScriptThing 0x004AA840, ~CIsThingAlive 0x00E241B0, RegisterFilter 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, handle IsScripting 0x00CD23B9 /
+//   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, handle IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / MoveToPosition 0x007E72F0 / ClearCommands 0x007E7360 / IsPerformingScriptTask 0x007E7450 /
 //   dtor 0x007E74D0, IsDistanceFromThingToPositionOver 0x00CBE45C (__fastcall); GameCalls slots 7, 8, 70, 72, 108, 284, 451, 475;
 //   CScriptThing slots 6 GetPos, 7 GetHomePos (results unused).
@@ -90,9 +90,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     void* PImpInfo;                                     // +0x0c
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void ClearCommands();                               // 0x007E7360
+    virtual void ClearCommands();                               // 0x007E7360
 public:
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
     virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // 0x007E72F0
@@ -133,7 +133,7 @@ void CSecretWhisperingFriend::Main()
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
 #pragma inline_depth(0)
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -154,7 +154,7 @@ void CSecretWhisperingFriend::Main()
             if (IsActiveThreadTerminating())
                 return;
             Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-            if (scripted.IsScripting())
+            if (scripted.IsValid())
                 scripted.Release();
             while (ParentClass->Stage == 5) {
                 Game->NewScriptFrame();
@@ -163,7 +163,7 @@ void CSecretWhisperingFriend::Main()
             }
             if (IsActiveThreadTerminating())
                 return;
-            if (scripted.IsScripting())
+            if (scripted.IsValid())
                 scripted.Release();
             while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
                 Game->NewScriptFrame();

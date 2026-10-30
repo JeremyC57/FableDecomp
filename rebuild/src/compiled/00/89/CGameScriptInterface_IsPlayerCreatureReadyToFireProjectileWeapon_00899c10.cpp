@@ -43,7 +43,7 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > IsPCReady_Map;
 
 /* --- engine callees / globals: relocation-masked, declared extern --- */
-extern CPlayer* __fastcall IsPCReady_GetSubsystem(void* thisField14);        /* 0x00449970 */
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern float  __fastcall IsPCReady_GetReadiness(void* weapon);               /* call ffeefe50 */
 extern const float IsPCReady_ReadyThreshold;                                 /* ds:0x129ba3c  */
 
@@ -52,7 +52,7 @@ bool __fastcall CGameScriptInterface_IsPlayerCreatureReadyToFireProjectileWeapon
 {
     IsPCReady_Self* self = (IsPCReady_Self*)thisptr;
 
-    CPlayer* subsystem = IsPCReady_GetSubsystem(self->m_Field14);
+    CPlayer* subsystem = (&((CPlayerManager*)self->m_Field14)->GetMainPlayer());
     IsPCReady_Creature* creature = subsystem->GetPControlledCreature();
 
     if (creature == 0)

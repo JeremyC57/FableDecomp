@@ -10,7 +10,7 @@
 // Label: the manifest's "CScriptGameResourceObjectScriptedThingBase::HandleSisterArenaDialogue" is descriptive/invented: `this`
 //   is the entity script (Game +4, Me +8), the ScriptedThingBase objects are its locals.
 // Callees: CBaseObject ctor / dtor / operator= 0x0099A380 / 0x0099A430 / 0x0099A3B0, CScriptGameResourceObjectScriptedThingBase
-//   IsScripting 0x00CD23B9 / Release 0x00CD2770 / implicit dtor 0x007E74D0 (out-of-line copy at all exits but the first),
+//   IsValid 0x00CD23B9 / Release 0x00CD2770 / implicit dtor 0x007E74D0 (out-of-line copy at all exits but the first),
 //   CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0, malloc 0x00BFEA0E (the cast
 //   map's header node), operator delete 0x00BFE9BC, map operator[] 0x00CD3D2E, map dtor 0x00CDBFB0,
 //   CCountedPointer<CScriptGameResourceObjectMovieBase> dtor 0x006E7AB0, RunCutsceneMacro 0x00CBFB7D (__fastcall).
@@ -98,7 +98,7 @@ public:
         PImp = other.PImp;
         return *this;
     }
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase {   // vtable 0x01260EF4, 0x10 bytes
@@ -252,7 +252,7 @@ void CQS_MeetSisterScript::CMeetSisterSister::Main()
     CScriptGameResourceObjectScriptedThingBase sister;
     {
         CScriptGameResourceObjectScriptedThingBase hero;
-        if (sister.IsScripting())
+        if (sister.IsValid())
             sister.Release();
         while (!Game->StartScriptingEntity(Me, sister, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();

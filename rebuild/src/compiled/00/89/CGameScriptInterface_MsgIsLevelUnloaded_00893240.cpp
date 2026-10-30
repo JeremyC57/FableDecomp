@@ -64,7 +64,9 @@ class CGameScriptInterface {
 public:
     virtual ~CGameScriptInterface();
     CWorld* World;                                         // +0x04
-    long GetCurrentWorldFrameForMessages() const;          // 0x006E7510 (descriptive spelling, as bound)
+protected:
+    long GetMinWorldFrameForMessages() const;          // 0x006E7510
+public:
 protected:
     long GetMaxWorldFrameForMessages() const;              // 0x006E7530
 public:
@@ -75,7 +77,7 @@ bool CGameScriptInterface::MsgIsLevelUnloaded(const CCharString& name) const
     long number = World->PeekWorldMap().GetMapNumberFromScriptName(name);
     if (number == 0)
         return false;
-    long frame = GetCurrentWorldFrameForMessages();
+    long frame = GetMinWorldFrameForMessages();
     long maxFrame = GetMaxWorldFrameForMessages();
     const CMessageEventManager* messages = World->PMessageEventManager_Data;
     return messages->FindMostRecentMessage(

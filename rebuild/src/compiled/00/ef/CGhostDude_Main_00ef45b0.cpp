@@ -945,7 +945,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
  void PlayAnimation(const CCharString& anim, bool waitForFinish, bool stayOnLastFrame, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 18, 0x007E73D0
  void PlayLoopingAnimation(const CCharString& anim, long loops, bool waitForFinish, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 20, 0x007E73F0
@@ -979,7 +979,7 @@ void CGhostDude::Main()
  Game->EntitySetAlpha(Me, 0.5f, true);
  Game->EntitySetAsKillable(Me, false, true);
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();

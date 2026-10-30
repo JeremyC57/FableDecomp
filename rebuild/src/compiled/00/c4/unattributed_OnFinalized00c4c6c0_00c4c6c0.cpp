@@ -3,12 +3,13 @@
 // Retail bytes:  ... lea eax,[esi+10h] ; push eax ; lea ecx,[esp+10h] ; call CScopedLock::CScopedLock ; mov al,[esi+28h] ; test al,al ; mov dword ptr [esp+1Ch],0 ; je bump ; mov ecx,[g_pchNil] ; mov [esp+8],ecx ; mov edx,offset file ; lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],1 ; call Append ; ... AppendNumber(47h) ... ; mov eax,[g_pfnLogSink] ; test eax,eax ; je rel ; mov ecx,[esp+8] ; call eax ; rel: lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],0 ; call ~CString ; lea ecx,[esp+7] ; call CTrace::CTrace ; bump: mov eax,[esi] ; inc eax ; lea ecx,[esp+0Ch] ; mov [esi],eax ; mov dword ptr [esp+1Ch],-1 ; call ~CScopedLock ; ...
 // The lock target is the member itself. The manifest label is a description; the class is
 // named by address.
+class PKCCriticalSection;
 struct CLockTarget_00c4c6c0;
-struct CScopedLock_00c4c6c0 {              // 8-byte scoped lock
+class PKCProtectionInstance { public:              // 8-byte scoped lock
     CLockTarget_00c4c6c0* m_pTarget;
     long m_state;
-    CScopedLock_00c4c6c0(CLockTarget_00c4c6c0* target);   // 0x00C0FFC0
-    ~CScopedLock_00c4c6c0();                   // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                   // 0x00C0FFE0
 };
 
 extern char* g_pchNil_0139c900;            // 0x0139C900
@@ -41,7 +42,7 @@ struct CDependency_00c4c6c0 {
 
 void CDependency_00c4c6c0::OnFinalized()
 {
-    CScopedLock_00c4c6c0 lock(&m_lock);
+    PKCProtectionInstance lock((PKCCriticalSection*)&m_lock);
     if (m_finalised) {
         {
             CString_00c4c6c0 line;

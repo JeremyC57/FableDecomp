@@ -15,7 +15,7 @@
  *
  *   this            -> edi
  *   [this+0x10]     -> object def container (CountObjects(objDefId))
- *   [this+0x14]     -> world  (GetWorldAccessor -> GetHero)
+ *   [this+0x14]     -> world  (CPlayerManager::GetMainPlayer -> GetHero)
  *   vtable slot 0x1c-> inventory/UI refresh (called twice on this)
  *   ret 0xc         -> 3 incoming dwords: objDefId, quantity, suppressFlag
  */
@@ -34,7 +34,7 @@ class CCharString { public:
 /* --- engine callees modeled as real (__fastcall) member functions --- */
 struct ObjContainer { int  CountObjects(int objDefId); };            /* 0x11d130 */
 class CPlayer;
-struct World        { CPlayer* GetWorldAccessor(); };                /* 0x00449970 */
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };       /* 0x00449970 (Ego_r 0x004450F0) */
 struct Hero         { unsigned char Give(int count, int quantity,
                                          int suppressFlag, CCharString* name); }; /* 0xffe1bf20 */
 class CThingPlayerCreature : public Hero { };
@@ -53,7 +53,7 @@ void __fastcall CGameScriptInterface_GiveHeroObject(void* thisptr, unsigned long
         return;
 
     /* mov ecx,[edi+0x14]; call 9690 ; mov ecx,eax; call 7ae0 */
-    CPlayer* accessor = ((World*)(*(void**)((char*)self + 0x14)))->GetWorldAccessor();
+    CPlayer* accessor = &((CPlayerManager*)(*(void**)((char*)self + 0x14)))->GetMainPlayer();
     Hero* hero = accessor->GetPControlledCreature();         /* esi */
     if (hero == 0)                                           /* test esi,esi; je */
         return;

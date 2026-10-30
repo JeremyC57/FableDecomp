@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DBF2D0, 1785 bytes (int3 padded to 1792).
 // Callees: CCharString 0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0, ~CScriptThing 0x004AA840, IsActiveThreadTerminating 0x00CB7940,
-//   scripted-thing handle (CBaseObject 0x0099A380, vtable 0x0127094C, IsScripting 0x00CD23B9, Release 0x00CD2770, operator=
+//   scripted-thing handle (CBaseObject 0x0099A380, vtable 0x0127094C, IsValid 0x00CD23B9, Release 0x00CD2770, operator=
 //   0x008ABD10, dtor 0x007E74D0), movie handle (vtable 0x01260EF4, PImp dtor 0x006E7AB0, ~CBaseObject 0x0099A430), cast map
 //   0x00CDBF70 / 0x00CDBFB0 / operator[] 0x00CD3D2E, RunCutsceneMacro 0x00CBFB7D (__fastcall), operator new 0x00BFEA1A,
 //   AddEntityScriptBinding 0x00CB8230 (binding vtable 0x012D9EC0; allocators 0x00DBFDD0 / 0x00DC0090),
@@ -70,7 +70,7 @@ struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : D
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
@@ -133,7 +133,7 @@ void NScript::CQ_OakValeBanditRaidScript::Main()
     Game->SetThingPersistent(gate, true);
     {
         CScriptGameResourceObjectScriptedThingBase hero;
-        if (hero.IsScripting())
+        if (hero.IsValid())
             hero.Release();
         while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();

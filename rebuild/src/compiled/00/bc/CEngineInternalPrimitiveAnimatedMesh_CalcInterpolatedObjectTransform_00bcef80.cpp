@@ -26,7 +26,9 @@ class CRightHandedSet { public:
 
 class CMatrix3x4 { public: float E[12]; };
 
-void __fastcall CalcObjectMatrix(CMatrix3x4& out, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEBAA0
+class CEngineInternalPrimitiveMeshBase { public:
+    static void __fastcall CalcObjectMatrix(CMatrix3x4& out, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEBAA0
+};
 
 class C3DPositionInterpolator { public:
     void*     __vftable;
@@ -57,5 +59,5 @@ void CEngineInternalPrimitiveAnimatedMesh::CalcInterpolatedObjectTransform(CMatr
         scale = Scale;
     else
         scale = 1.0f;
-    CalcObjectMatrix(out, position, orientation, scale);
+    CEngineInternalPrimitiveMeshBase::CalcObjectMatrix(out, position, orientation, scale);
 }

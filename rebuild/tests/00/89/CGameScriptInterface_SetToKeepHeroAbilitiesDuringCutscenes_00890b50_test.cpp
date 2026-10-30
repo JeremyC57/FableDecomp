@@ -8,10 +8,12 @@ class CMainGameComponent { public:
 
 static unsigned char g_obj[0x300];
 
-void* __fastcall helper_449970(void* that)
+class CPlayer;
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970, called by the row
+CPlayer& CPlayerManager::GetMainPlayer()
 {
-    // return our fake object; verify 'that' is the expected pointer
-    return g_obj;
+    // return our fake object
+    return *(CPlayer*)g_obj;
 }
 
 void __fastcall SetToKeepHeroAbilitiesDuringCutscenes(CGameScriptInterface* self, int edx, bool keep);

@@ -12,13 +12,14 @@
 // Label correction: the old row named the class CInventory_00c125e0 and the method CountSelectedBindings (callees
 //   "IsBound"/"IsSelected") while its `// Leaf:` named the manifest's propagated "GetTexturesInUse", which matched no
 //   symbol (the grade fell back to the largest function); the catalog's "CVtable_012b2748::vfunc_30" is the slot.
-extern unsigned char g_section_0143bb14[];  // 0x0143BB14: the module's critical section
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-struct CScopedLock_00c125e0 {               // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:               // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CScopedLock_00c125e0(void* section);    // 0x00C0FFC0
-    ~CScopedLock_00c125e0();                // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);    // 0x00C0FFC0
+    ~PKCProtectionInstance();                // 0x00C0FFE0
 };
 
 struct CSoundEvent {                        // 0xb4 bytes
@@ -40,7 +41,7 @@ struct CSoundEventManager {
 
 unsigned long CSoundEventManager::CountWaitingEvents()
 {
-    CScopedLock_00c125e0 lock(g_section_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     unsigned long count = 0;
     for (unsigned long i = 0; i < m_events.m_count; ++i) {
         CSoundEvent* event = m_events.Get(i);

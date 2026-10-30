@@ -4,7 +4,7 @@
 //   PDB ?Main@CTC_BanditFollower@CQ_TraderConflictEvilScript@NScript@@EAEXXZ.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 (the CIsThingAlive predicate, vtable 0x012C32F0), SetPredicate
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer 0x0099A380 / 0x0099A430, scripted-thing handle
-//   IsScripting 0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask
+//   IsValid 0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask
 //   0x007E7450 / dtor 0x007E74D0, movie handle dtor 0x006E7B80 (counted member dtor 0x006E7AB0), CCharString 0x0099EBF0 /
 //   0x0099EAE0, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall); CScriptThing slots 21, 27, 41, 42; GameCalls slots 7,
 //   8, 70, 77, 108, 229, 230, 238, 264, 325, 350, 364, 365, 366, 370, 379, 451, 465, 599, 600, 601, 655.
@@ -71,7 +71,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CResourcePImp PImp;                                // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
@@ -261,7 +261,7 @@ void NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::Main()
         bool talkedTo = !SetAgainstHero && Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO");
         if (talkedTo) {
             if (IsActiveThreadTerminating()) return;
-            if (scripted.IsScripting())
+            if (scripted.IsValid())
                 scripted.Release();
             while (!Game->StartScriptingEntity(Me, scripted, 4)) {
                 Game->NewScriptFrame();

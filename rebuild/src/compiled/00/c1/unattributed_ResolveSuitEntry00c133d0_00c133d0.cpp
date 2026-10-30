@@ -3,14 +3,14 @@
 // Retail bytes:  ... mov eax,[key] ; mov ecx,[esi+4] ; mov ecx,[ecx+68h] ; push eax ; mov dword ptr [esp+18h],0 ; call CClothingSuitMap::Find ; test eax,eax ; jne hit ; ... or eax,-1 ; ... ret 8 ; hit: mov edx,[arg] ; push edx ; push eax ; mov ecx,esi ; call ResolveEntry ; ...
 // The map's find is the one used by the clothing-suit queries landed at 0x00C19B70 / 0x00C19C10.
 // The manifest label is propagated; the class is named by address.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CEntry_00c133d0;
@@ -32,7 +32,7 @@ struct CTCHeroExperience_00c133d0 {
 
 long CTCHeroExperience_00c133d0::ResolveSuitEntry(void* key, void* argument)
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     CEntry_00c133d0* entry = m_pOwner->m_pSuitMap->Find(key);
     if (!entry)
         return -1;

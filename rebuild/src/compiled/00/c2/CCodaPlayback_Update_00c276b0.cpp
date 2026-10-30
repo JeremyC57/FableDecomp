@@ -3,7 +3,7 @@
 // Flags: /EHsc
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C276B0, 164 bytes (`ret`). Descriptive names (no PDB or RTTI covers the libpk
 //   audio library): the manifest's "DebugState_UpdateDisplay" is propagated. Only caller: 0x00C11FA5.
-// Callees: CScopedLock @ 0x00C0FFC0 / ~CScopedLock @ 0x00C0FFE0 over the module lock 0x0143BAFC,
+// Callees: PKCProtectionInstance @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 over the module lock 0x0143BAFC,
 //   CODA_GetSourcePosition @ 0x00C35CC0, CODA_StopSource @ 0x00C35DD0 (both `__stdcall`).
 // Shape: m_loopsLeft -1 loops forever, 0 is the last pass (stop), above 0 counts down; the `m_bArmed = 0` after the
 //   three-way test is tail-duplicated into the count-down arm, and the constant 1 lives in ecx for both the byte
@@ -12,14 +12,15 @@
 //   without the return VC7.1 drops the frame and duplicates the lock-destructor exit three times. The count test is
 //   `!= 0` first (`je` to the stop arm, then `jle` past the count-down); `== 0` first puts the stop arm on the
 //   fall-through and pushes the known-zero eax instead of `push 0`.
-struct CScopedLock {                            // 8-byte scoped lock (chunk 431 model)
+class PKCCriticalSection;
+class PKCProtectionInstance { public:                            // 8-byte scoped lock (chunk 431 model)
     void*         m_pSection;
     unsigned long m_tick;
-    CScopedLock(void* section);                 // 0x00C0FFC0
-    ~CScopedLock();                             // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
+    ~PKCProtectionInstance();                             // 0x00C0FFE0
 };
 
-extern unsigned char g_soundLock[];             // 0x0143BAFC the audio library's module lock
+extern PKCCriticalSection g_soundLock;             // 0x0143BAFC the audio library's module lock
 
 struct CODASource;                              // opaque CODA source object
 extern "C" {                                    // the CODA C API (__stdcall; nothrow under /EHsc)
@@ -51,7 +52,7 @@ struct CCodaPlayback {                          // vtable 0x012B4034 (landed row
 
 void CCodaPlayback::Update()
 {
-    CScopedLock lock(g_soundLock);
+    PKCProtectionInstance lock(&g_soundLock);
     unsigned long position = CODA_GetSourcePosition(m_pSource);
     if (position)
         m_bStarted = true;

@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D08790, 730 bytes (736 with padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter, vtable 0x012C32F0, inline dtor here),
 //   CEntityScriptBase::SetPredicate 0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380,
-//   scripted-thing handle (vtable 0x0127094C) IsScripting 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation 0x007E73D0 (slot 18)
+//   scripted-thing handle (vtable 0x0127094C) IsValid 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation 0x007E73D0 (slot 18)
 //   / dtor 0x007E74D0, CTimer dtor 0x00CD4470, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString ctor
 //   0x0099EBF0 / dtor 0x0099EAE0; through Game (+4): 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero,
 //   364 AddNewConversation, 365 AddPersonToConversation, 366 AddLineToConversation, 475 EntitySetFacingAngleTowardsThing;
@@ -47,7 +47,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016();
     virtual void s017();
     virtual void PlayAnimation(const CCharString& anim, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // slot 18 (+0x48)
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -117,7 +117,7 @@ void CCampHostage2::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

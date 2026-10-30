@@ -1,7 +1,7 @@
 // CHS_Screamer::Main() -- a Hero Souls (Abbey mother) screamer: target the hero; until the mother's soul is collected, whenever no super screamer exists, the new-super-screamer timer has run out and the hero is over 5 units away, become the super screamer (mini-map marker, wait for the hero within 15 units), take scripted control, cast the unholy-power effect and drain the hero's health every timer period while lowering the mother's bar, starting the super attack once; finally play the death effect and remove Me
 // Leaf: ?Main@CHS_Screamer@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D83FA0, 1230 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: scripted-thing handle ctor 0x007E72A0 / IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0, CTimer ctor
+// Callees: scripted-thing handle ctor 0x007E72A0 / IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0, CTimer ctor
 //   0x00CD4450 / dtor 0x00CD4470, CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, ~CBaseClass 0x0099A2E0,
 //   operator delete 0x00BFE9BC, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, IsDistanceBetweenThingsUnder
 //   0x00CBE2FF / IsDistanceBetweenThingsOver 0x00CBE3EA (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8,
@@ -93,7 +93,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 class CGameScriptInterface { public:                          // vtable 0x01260F0C (slots: ghidra_out/cgsi_slots_aligned.tsv)
@@ -302,7 +302,7 @@ void CHS_Screamer::Main()
                 if (IsActiveThreadTerminating())
                     return;
                 CScriptGameResourceObjectScriptedThingBase screamer;
-                if (screamer.IsScripting())
+                if (screamer.IsValid())
                     screamer.Release();
                 while (!Game->StartScriptingEntity(Me, screamer, (EScriptAIPriority)4)) {
                     Game->NewScriptFrame();

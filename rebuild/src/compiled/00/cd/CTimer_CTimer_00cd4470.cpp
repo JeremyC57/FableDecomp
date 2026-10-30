@@ -1,6 +1,6 @@
 #include "rebuild_abi.h"
 // CTimer::~CTimer @ 0x00cd4470
-struct GMgr {
+class CGameScriptInterface { public:                // view of the script interface vtable (slot 88 at +0x160)
     virtual void s00();
     virtual void s01();
     virtual void s02();
@@ -91,6 +91,6 @@ struct GMgr {
     virtual void s87();
     virtual void Release(void *p); // slot 88 = 0x160
 };
-extern GMgr *g_timerMgr_cd4470;
+extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8 (wave-10 decision)
 class CTimer { public: void *m_first; void Dtor(); };
-void CTimer::Dtor(){ g_timerMgr_cd4470->Release(m_first); }
+void CTimer::Dtor(){ g_pGameScriptInterface->Release(m_first); }

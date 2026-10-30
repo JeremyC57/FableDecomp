@@ -2,7 +2,7 @@
 // Leaf: ?Main@CBanditFirstWave@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D1FA00, 557 bytes (560 with padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 (filter member) / ~CScriptThing 0x004AA840, CEntityScriptBase::SetPredicate
-//   0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, handle (vtable 0x0127094C) IsScripting
+//   0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, handle (vtable 0x0127094C) IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / MoveToThing 0x007E7300 / IsPerformingScriptTask 0x007E7450 / dtor 0x007E74D0,
 //   CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, IsDistanceBetweenThingsOver 0x00CBE3EA (__fastcall);
 //   CGameScriptInterface slots 7 NewScriptFrame, 8 StartScriptingEntity, 72 GetThingWithScriptName, 229 EntityFollowThing,
@@ -83,7 +83,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void s014(); virtual void s015(); virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020(); virtual void s021();
     virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025();
     virtual bool IsPerformingScriptTask() const;   // slot 26 (+0x68)
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -139,7 +139,7 @@ void CBanditFirstWave::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)3)) {
         Game->NewScriptFrame();
@@ -163,7 +163,7 @@ void CBanditFirstWave::Main()
     if (IsActiveThreadTerminating())
         return;
     ParentClass->BanditLeaderFree = true;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     Game->EntityFollowThing(Me, leader, 1.0f, true);
     do {

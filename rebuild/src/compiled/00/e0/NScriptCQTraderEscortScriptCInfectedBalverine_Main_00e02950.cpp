@@ -2,7 +2,7 @@
 // Leaf: ?Main@CInfectedBalverine@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E02950, 820 bytes (+ int3 padding). Second of the two catalog rows named CInfectedBalverine::Main.
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9,
+//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsValid 0x00CD23B9,
 //   Release 0x00CD2770, PlayCombatAnimation 0x007E73E0, PlayLoopingAnimation 0x007E73F0, ClearAllActionsIncludingLoopingAnimations
 //   0x007E7410, IsPerformingScriptTask 0x007E7450, dtor 0x007E74D0), IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall),
 //   CCharString 0x0099EBF0 / 0x0099EAE0, the script def 0x0143E90C (+0xE0C), the animation-default bool 0x01375748; GameCalls
@@ -163,7 +163,7 @@ typedef long EScriptVillageAttitude;
 typedef long EScriptingStateGroups;
 typedef long ESex;
 typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
+enum ETextGroupSelectionMethod { };
 typedef long ETutorialCategory;
 namespace NEntityEvents {typedef long EEventType;}
 struct GameCalls {virtual ~GameCalls();
@@ -1024,10 +1024,10 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
- void PlayLoopingAnimation(const CCharString& anim, long loops, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73F0
- void ClearAllActionsIncludingLoopingAnimations();  // 0x007E7410
+ virtual void PlayLoopingAnimation(const CCharString&, long, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73F0
+ virtual void ClearAllActionsIncludingLoopingAnimations();  // 0x007E7410
 public:
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
     virtual void PlayCombatAnimation(const CCharString&, bool, bool, bool, bool, bool, bool);   // 0x007E73E0
@@ -1065,7 +1065,7 @@ void CInfectedBalverine::Main()
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();

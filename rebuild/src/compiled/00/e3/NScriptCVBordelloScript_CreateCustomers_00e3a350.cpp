@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E3A350, length 860 bytes, plain `ret`.
 // Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString
 //   0x0099EAE0; ~CBaseClass 0x0099A2E0 and operator delete 0x00BFE9BC (the inline ~CScriptThing); CScriptThing slot 6
-//   GetPos (+0x18); GameCalls slots 7 NewScriptFrame, 12 IsRegionLoaded, 72 GetThingWithScriptName (by value), 91
+//   GetPos (+0x18); CGameScriptInterface slots 7 NewScriptFrame, 12 IsRegionLoaded, 72 GetThingWithScriptName (by value), 91
 //   CreateCreature (by value); the CTimer calls 87..90 through the global interface 0x0143E8F8. Strings "Bordello",
 //   "BordelloClient", "M_ClientSpawn", "CREATURE_BS_VILLAGER_FEMALE", "CREATURE_BS_VILLAGER_MALE".
 // Layout: Ego_r.pdb CV_BordelloScript minus 0x14 (retail CScriptBase): BecomeNunnery +0x4d, ClientsAlive +0x54.
@@ -48,7 +48,7 @@ class CScriptThing : public CBaseClass { public:                          // vta
     CScriptThing(const CScriptThing& other);                // 0x004ABE90
     __forceinline ~CScriptThing() { }                       // out of line 0x004AA840
 };
-struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
+class CGameScriptInterface { public:                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
  virtual void NewScriptFrame(void) const; //slot7 0x006e7410
  virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -70,7 +70,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual long GetTimer(long) const; //slot90 0x006e7710
  virtual CScriptThing CreateCreature(CCharString const &, C3DVector const &, CCharString const &, bool) const; //slot91 0x008a9100
 };
-extern GameCalls* g_pGameScriptInterface;                   // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;                   // 0x0143E8F8
 class CTimer { public:                                             // a script timer: the interface's timer index
     long Index;
     CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
@@ -86,7 +86,7 @@ class CScriptBase { public:                                        // retail 0x4
 namespace NScript {
 class CV_BordelloScript : public CScriptBase {
 public:
-    GameCalls*    Game;                                     // +0x40
+    CGameScriptInterface*    Game;                                     // +0x40
     void*         Owner;                                    // +0x44
     unsigned char _pad48[0x4d - 0x48];
     bool          BecomeNunnery;                            // +0x4d

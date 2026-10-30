@@ -1,6 +1,6 @@
 // CQR_EscortTraderScript::ExpressionEnableFollow(const CScriptThing& trader, CScriptGameResourceObjectScriptedThingBase& handle) -- the hero used the "follow me" expression: if the trader's scripting handle is still running a follow on the hero, re-take the trader and stop that follow; then (two script frames later) mark the trader as following, drop its minimap marker and information, make it follow the hero, show its emote icon and region-follow the hero
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E242D0, length 371 bytes (+ int3 padding), `ret 8`.
-// Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, the handle's IsScripting 0x00CD23B9 / Release
+// Callees: CScriptBase::IsActiveThreadTerminating 0x00CB7940, the handle's IsValid 0x00CD23B9 / Release
 // 0x00CD2770 (as the landed CFH_BriarRose::Main 0x00D37330) and its virtual StopFollowingThing (slot 8, +0x20) /
 // IsFollowActionRunning (slot 9, +0x24) (CScriptGameResourceObjectScriptedThing vtable 0x0128D86C); through the game
 // script interface (+0x40): NewScriptFrame (7), StartScriptingEntity (8), GetHero (70), EntityFollowThing (229),
@@ -20,7 +20,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:     // vtable 0x0128D
     virtual void StopFollowingThing(const CScriptThing& thing);              // slot 8 (+0x20)
     virtual bool IsFollowActionRunning(const CScriptThing& thing) const;     // slot 9 (+0x24)
     unsigned char _body[0x0c];
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 
@@ -52,10 +52,10 @@ struct CQR_EscortTraderScript : CScriptBase {
 
 void CQR_EscortTraderScript::ExpressionEnableFollow(const CScriptThing& trader, CScriptGameResourceObjectScriptedThingBase& handle)
 {
-    if (handle.IsScripting() && handle.IsFollowActionRunning(GSI->GetHero())) {
+    if (handle.IsValid() && handle.IsFollowActionRunning(GSI->GetHero())) {
         if (IsActiveThreadTerminating())
             return;
-        if (handle.IsScripting())
+        if (handle.IsValid())
             handle.Release();
         while (!GSI->StartScriptingEntity(trader, handle, SCRIPT_AI_PRIORITY_HIGHEST)) {
             GSI->NewScriptFrame();
@@ -65,7 +65,7 @@ void CQR_EscortTraderScript::ExpressionEnableFollow(const CScriptThing& trader, 
         if (IsActiveThreadTerminating())
             return;
         handle.StopFollowingThing(GSI->GetHero());
-        if (handle.IsScripting())
+        if (handle.IsValid())
             handle.Release();
     }
     GSI->NewScriptFrame();

@@ -2,7 +2,7 @@
 // Leaf: ?Main@CAttackingAssassin@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E383A0, length 541 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy @ 0x004ABE90, ~CIsThingAlive @ 0x00E241B0 (out of line here), SetPredicate @ 0x00F35B10,
-//          IsDone @ 0x00F35B30, CBaseObject ctor @ 0x0099A380, the scripted-thing handle's IsScripting @ 0x00CD23B9 /
+//          IsDone @ 0x00F35B30, CBaseObject ctor @ 0x0099A380, the scripted-thing handle's IsValid @ 0x00CD23B9 /
 //          Release @ 0x00CD2770 / FollowThing @ 0x007E7320 / StopFollowingThing @ 0x007E7330 / destructor @ 0x007E74D0,
 //          IsDistanceBetweenThingsUnder @ 0x00CBE2FF, rand @ 0x00BFEB16, CDefString::operator CCharString @ 0x00415D70,
 //          ~CCharString @ 0x0099EAE0; CGameScriptInterface slots 7, 8, 70 GetHero, 597 EntitySetThingAsEnemyOfThing,
@@ -40,7 +40,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void FollowThing(const CScriptThing& thing, float distance, bool run);   // slot 7 (+0x1c), 0x007E7320
     virtual void StopFollowingThing(const CScriptThing& thing);   // slot 8 (+0x20), 0x007E7330
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 
@@ -109,7 +109,7 @@ void CAttackingAssassin::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)3)) {
         Game->NewScriptFrame();

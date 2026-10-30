@@ -84,9 +84,12 @@ class CScriptBase { public:                                        // retail 0x4
     unsigned char _body[0x40];
     void AddSpawnedFunction(CSpawnedFuncBase* func, const CCharString& regionName);   // 0x00CB7E50
 };
-struct CQ_UndeadRisingScript : CScriptBase {
+namespace NScript {
+class CQ_UndeadRisingScript : public CScriptBase { public:
     void ActivateNextLamp();                                // 0x00E0E040
 };
+}
+using NScript::CQ_UndeadRisingScript;
 class CUndeadRisingZombieAttacker {
 public:
     void*                  __vftable;                       // +0x00

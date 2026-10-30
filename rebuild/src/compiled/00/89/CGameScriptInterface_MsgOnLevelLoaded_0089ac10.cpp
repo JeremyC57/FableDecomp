@@ -2,7 +2,7 @@
 // Leaf: ?MsgOnLevelLoaded@CGameScriptInterface@@UBE_NAAV?$list@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
 // Retail: Fable.exe @ 0x0089AC10, 109 bytes, `ret 4`; Ego_r.pdb same symbol.
 // Body: frame = 0x006E7510, maxFrame = 0x006E7530 (both labelled GetMaxWorldFrameForMessages; the landed Msg family
-// calls the first GetCurrentWorldFrameForMessages); World (+0x04)->PMessageEventManager (+0x60)->ForEachMessage(
+// calls the first GetMinWorldFrameForMessages); World (+0x04)->PMessageEventManager (+0x60)->ForEachMessage(
 // IsOfType(0x24) && OccuredBetween(frame, maxFrame), callback{World, &levels}) (0x008AD050, whose landed model has the
 // callback push GetLevelScriptName(message.ExtraData) onto the list); return levels.begin() != levels.end().
 // Frame: the IsOfType filter sits in the dead `levels` slot; OccuredBetween, callback and the Bind2 pair follow in the frame.
@@ -63,12 +63,14 @@ class CGameScriptInterface {
 public:
     virtual bool MsgOnLevelLoaded(CList<CCharString>& levels) const;
     CWorld* World;                               // +0x04
-    long GetCurrentWorldFrameForMessages() const;   // 0x006E7510 (labelled GetMaxWorldFrameForMessages)
+protected:
+    long GetMinWorldFrameForMessages() const;   // 0x006E7510
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
+public:
 };
 bool CGameScriptInterface::MsgOnLevelLoaded(CList<CCharString>& levels) const
 {
-    long frame = GetCurrentWorldFrameForMessages();
+    long frame = GetMinWorldFrameForMessages();
     long maxFrame = GetMaxWorldFrameForMessages();
     CWorld* world = World;
     world->PMessageEventManager->ForEachMessage(CMessageEventFilter_IsOfType(0x24) && CMessageEventFilter_OccuredBetween(frame, maxFrame), CGameScriptInterface_MsgOnLevelLoaded_Callback(world, levels));

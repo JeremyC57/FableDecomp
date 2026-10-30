@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EAEF30, 675 bytes (+ int3 padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90, ~CIsThingAlive 0x00E241B0 (out of line), SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, the scripted-thing
-//   handle's IsScripting 0x00CD23B9 / Release 0x00CD2770 / operator= 0x008ABD10, CScriptThing::operator= 0x008AB980,
+//   handle's IsValid 0x00CD23B9 / Release 0x00CD2770 / operator= 0x008ABD10, CScriptThing::operator= 0x008AB980,
 //   GetSquaredDistanceBetweenThings 0x00CBE583 (__fastcall, float); own state handlers 0x00EAF810, 0x00EB0830, 0x00EB10C0, 0x00EB15C0,
 //   0x00EB19C0, 0x00EB1EC0; CV_MurderTwistFinalScript::PlayBeingRumbledCutscene 0x00EAF1E0; GameCalls slots 7, 8, 70, 589.
 // Layout: CMurderTwistSheriff (Ego_r.pdb 0x38, matches retail; see the landed Init 0x00EAEE80). The parent quest script
@@ -26,7 +26,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
 };
 class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes
     unsigned char _body[0x10];
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
@@ -102,7 +102,7 @@ void CMurderTwistSheriff::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating()) return;
     Game->SetCreatureBrain(Me, "BRAIN_MELEE_GUARD");
-    if (MyEntityHandle.IsScripting())
+    if (MyEntityHandle.IsValid())
         MyEntityHandle.Release();
     while (!Game->StartScriptingEntity(Me, MyEntityHandle, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

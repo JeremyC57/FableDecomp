@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c57b60	RELOCATION_MATCH	292v292	PASS	CVtable_012b8ed4::QueueChunk (descriptive, GameCODA OpenAL streaming; landed CAudioContext lazy resolvers); 1 grade
+00b8f950	RELOCATION_MATCH	293v293	PASS	std::vector<pair<unsigned long,CCountedPointer<CVertexBufferWin32> > >::insert(iterator, const T&) (STLport 4.6; proven by landed siblings 0x00B8F840/0x00B8EF60); 2 grades (stub _M_insert_overflow body let VC7.1 drop the call; real body fixed it)
+00c74bb0	DIFFER	293v293	PASS	CDspFilter::SetHighPass (descriptive): scheduling only (sample-rate load before fmul [reference]); 6+ grades; parked differ/00c74bb0.cpp + .test.cpp
+00aded70	RELOCATION_MATCH	294v294	PASS	C3DBoundingBox::BuildFromPoints (Ego_r + FableWin PDB, bound by 0x00ADEEA0); 1 grade
+00c5ab50	RELOCATION_MATCH	294v294	PASS	CCodaVoice::UpdateModulation (descriptive method; class from bound SetModulation 0x00C5A9D0; twin of landed UpdateVibrato 0x00C59890); 1 grade
+00b6c5d0	RELOCATION_MATCH	295v295	PASS	std::vector<CVertexShader>::_M_fill_insert (bound by landed resize 0x00B6CBD0); 4 grades (inline FableWin.pdb operator=/Release/AddReference body needed)
+00caaca0	RELOCATION_MATCH	266v266	PASS	CBaseFilter::Run (DirectShow strmbase amfilter.cpp; only caller CBaseRenderer::Run 0x00CA6987), /EHsc; 1 grade
+00c25b10	RELOCATION_MATCH	268v268	PASS	CTimerHost::CTimerHost (descriptive class; PKCTimerManager member + new CWorkerThread, EMEM trace PKCTimerManager.cpp:10), /EHsc; 1 grade
+00c4aeb0	DIFFER	284v281	PASS	PKCBufferedReader::WaitForSlot (descriptive method; trace PKCBufferedReader.cpp:84), /EHsc: retail homes CString + CDebugBreak + flag in the dead slot arg slot, ours opens an 8-byte frame; 8+ grades; parked differ/00c4aeb0.cpp + .test.cpp
+00c1a110	RELOCATION_MATCH	283v283	PASS	PKCDefaultFileManager::QueueRead (descriptive method; sweep1 PKCDefaultFileManager model), /EHsc; 1 grade

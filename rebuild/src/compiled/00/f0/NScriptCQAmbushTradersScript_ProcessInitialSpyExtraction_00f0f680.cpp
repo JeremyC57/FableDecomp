@@ -2,7 +2,7 @@
 // Leaf: ProcessInitialSpyExtraction
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0F680, length 644 bytes (padded to 656), ret 8.
 // Callees: IsActiveThreadTerminating 0x00CB7940; CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0;
-// CScriptGameResourceObjectScriptedThingBase::IsScripting 0x00CD23B9 / Release 0x00CD2770 and vtable 0x0127094C slots
+// CScriptGameResourceObjectScriptedThingBase::IsValid 0x00CD23B9 / Release 0x00CD2770 and vtable 0x0127094C slots
 // 8 StopFollowingThing, 27 IsFollowingThing; RefreshSpyAllegiences 0x00F05A10; operator new 0x00BFEA1A;
 // CSpawnedFuncBase(const CCharString&, unsigned long) 0x00CDD450 (CSpawnedFunc<CQ_AmbushTradersScript> vtable 0x012C6CC0,
 // func 0x00F0F910 = WatchForArcherSpawnConditions; the manifest's "CQ_GuildTrainingScript::WatchForSparrowKilled" label
@@ -29,7 +29,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:    // vtable 0x012709
     virtual void v017(); virtual void v018(); virtual void v019(); virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024();
     virtual void v025(); virtual void v026();
     virtual bool IsFollowingThing() const;             // slot 27 (+0x6c) 0x007E7460
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -72,16 +72,16 @@ void CQ_AmbushTradersScript::ProcessInitialSpyExtraction(const CScriptThing& spy
     SpyContactMade = true;
     SpeechBanditCount = 0;
     Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_AMBUSH_TRADERS_OBJECTIVE_04", "BowerstonePosh", "BowerstoneSlums");
-    if (spyObject.IsScripting() && spyObject.IsFollowingThing()) {
+    if (spyObject.IsValid() && spyObject.IsFollowingThing()) {
         if (IsActiveThreadTerminating()) return;
-        if (spyObject.IsScripting()) spyObject.Release();
+        if (spyObject.IsValid()) spyObject.Release();
         while (!Game->StartScriptingEntity(spy, spyObject, SCRIPT_AI_PRIORITY_4)) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating()) return;
         }
         if (IsActiveThreadTerminating()) return;
         spyObject.StopFollowingThing(Game->GetHero());
-        if (spyObject.IsScripting()) spyObject.Release();
+        if (spyObject.IsValid()) spyObject.Release();
     }
     Game->EntitySetAsAllowedToFollowHero(spy, true);
     Game->SetEntityAsRegionFollowing(Game->GetHero(), spy, true);

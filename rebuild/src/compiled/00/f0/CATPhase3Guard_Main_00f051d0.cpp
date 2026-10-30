@@ -2,7 +2,7 @@
 // Leaf: ?Main@CAT_Phase3Guard@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F051D0, 1232 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CIsThingAlive dtor 0x00E241B0, SetPredicate 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, scripted-thing handle IsScripting 0x00CD23B9 /
+//   IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / MoveToPosition 0x007E72F0 / dtor 0x007E74D0, CCharString 0x0099EBF0 / 0x0099EAE0,
 //   IsDistanceBetweenThingsUnder 0x00CBE2FF, FadeOutAndKillEntity 0x00CBE716; GameCalls slots 7, 8, 70 GetHero,
 //   72 GetThingWithScriptName, 81 GetNearestWithDefName, 350 MiniMapAddMarker, 451 GiveThingBestEnemyTarget,
@@ -76,13 +76,14 @@ protected:
     CBaseObject();                                       // 0x0099A380
     virtual ~CBaseObject();                              // 0x0099A430
 };
+enum EScriptEntityMoveType;
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
-    void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
+    virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // 0x007E72F0
 };
 class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
@@ -269,7 +270,7 @@ void CAT_Phase3Guard::Main()
         if (IsActiveThreadTerminating()) return;
     }
     if (IsActiveThreadTerminating()) return;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, 4)) {
         Game->NewScriptFrame();
@@ -279,9 +280,9 @@ void CAT_Phase3Guard::Main()
     CScriptThing exitPoint = Game->GetNearestWithDefName(Me, "REGION_EXIT_POINT");
     if (exitPoint.IsAlive()) {
         if (IsActiveThreadTerminating()) return;
-        if (handle.IsScripting()) {
+        if (handle.IsValid()) {
             if (IsActiveThreadTerminating()) return;
-            handle.MoveToPosition(exitPoint.GetPos(), 1.0f, 1, false, true);
+            handle.MoveToPosition(exitPoint.GetPos(), 1.0f, (EScriptEntityMoveType)1, false, true);
         }
         while (!IsDistanceBetweenThingsUnder(Me, exitPoint, 2.0f)) {
             Game->NewScriptFrame();

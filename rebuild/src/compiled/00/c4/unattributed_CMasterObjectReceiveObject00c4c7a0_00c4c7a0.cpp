@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C4C7A0, oracle length 257 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,10h ; push esi ; mov esi,ecx ; lea eax,[esi+10h] ; push eax ; lea ecx,[esp+10h] ; call CProfileLock::CProfileLock ; mov ecx,[esi+4] ; cmp ecx,[esi] ; mov dword ptr [esp+1Ch],0 ; jb ok ; mov edx,[g_pchNil] ; mov [esp+8],edx ; mov edx,offset ".\PKRACMasterObject.cpp" ; lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],1 ; call Append ; ... mov edx,4Fh ; ... call AppendNumber ; ... call Append (text) ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+8] ; call eax ; skip: lea ecx,[esp+8] ; mov byte ptr [esp+1Ch],0 ; call ~CString ; lea ecx,[esp+7] ; call CTrace::CTrace ; ok: mov al,[esp+24h] ; test al,al ; jne a ; inc dword ptr [esi+8] ; a: mov edx,[esi+4] ; mov ecx,[esi] ; inc edx ; mov eax,edx ; cmp ecx,eax ; mov [esi+4],edx ; jne b ; mov al,[esi+28h] ; test al,al ; je b ; mov ecx,esi ; call Complete ; b: lea ecx,[esp+0Ch] ; mov dword ptr [esp+1Ch],-1 ; call ~CProfileLock ; ... ret 4
 // The sibling destructor landed at 0x00C4C370 and the finalise hook at 0x00C4C6C0. The classes are named by address.
+class PKCCriticalSection;
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c4c7a0)(const char* text);
 extern PFNLOGSINK_00c4c7a0 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
@@ -18,11 +19,11 @@ struct CTrace_00c4c7a0 {                   // empty temporary (a debug-break hel
     CTrace_00c4c7a0();                         // 0x00C16750
 };
 
-struct CProfileLock_00c4c7a0 {             // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CProfileLock_00c4c7a0(void* section);  // 0x00C0FFC0
-    ~CProfileLock_00c4c7a0();              // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
+    ~PKCProtectionInstance();              // 0x00C0FFE0
 };
 
 struct CMasterObject_00c4c7a0 {
@@ -38,7 +39,7 @@ struct CMasterObject_00c4c7a0 {
 
 void CMasterObject_00c4c7a0::ReceiveObject(bool late)
 {
-    CProfileLock_00c4c7a0 lock(m_section);
+    PKCProtectionInstance lock((PKCCriticalSection*)m_section);
     if (!(m_received < m_expected)) {
         {
             CString_00c4c7a0 line;

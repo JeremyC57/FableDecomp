@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D246C0, 896 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter vtable 0x012C32F0, inline dtor),
 //   CEntityScriptBase::SetPredicate 0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380 /
-//   operator= 0x0099A3B0 / dtor 0x0099A430, scripted-thing handle (vtable 0x0127094C) IsScripting 0x00CD23B9 / Release 0x00CD2770 /
+//   operator= 0x0099A3B0 / dtor 0x0099A430, scripted-thing handle (vtable 0x0127094C) IsValid 0x00CD23B9 / Release 0x00CD2770 /
 //   out-of-line dtor 0x007E74D0, the handle's CCountedPointer operator= 0x008AB1E0, cast map (map<CCharString, handle>)
 //   ctor 0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E, movie handle (vtable 0x01260EF4) PImp dtor 0x006E7AB0,
 //   CCharString(const char*, long) 0x0099EBF0 / dtor 0x0099EAE0, RunCutsceneMacro 0x00CBFB7D (__fastcall),
@@ -78,7 +78,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
         PImp = other.PImp;
         return *this;
     }
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     void Destroy();                                    // 0x007E74D0
     __forceinline void DestroyInline()
@@ -167,7 +167,7 @@ void CBowerstoneIntroGuard::Main()
         SetPredicate(filter);
     }
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -222,7 +222,7 @@ void CBowerstoneIntroGuard::Main()
         hero.Destroy();
         cast.Destroy();
     }
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     scripted.Destroy();
 }

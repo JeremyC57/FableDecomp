@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) NScript::CQ_HeroSoulsArenaScript::CDyingVillager::Main @ 0x00D7F460, 836 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate
-// 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsScripting
+// 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsValid
 // 0x00CD23B9, Release 0x00CD2770, PlayAnimation 0x007E73D0, PlayLoopingAnimation 0x007E73F0, dtor 0x007E74D0),
 // IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0, CScriptThing slot 67
 // SetFriendsWithEverythingFlag (+0x10c); GameCalls slots 7, 8, 70, 108 RemoveThing, 235, 364/365/366/368 conversation,
@@ -89,7 +89,7 @@ typedef long EScriptVillageAttitude;
 typedef long EScriptingStateGroups;
 typedef long ESex;
 typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
+enum ETextGroupSelectionMethod { };
 typedef long ETutorialCategory;
 namespace NEntityEvents {typedef long EEventType;}
 struct GameCalls {virtual ~GameCalls();
@@ -954,9 +954,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
- void PlayLoopingAnimation(const CCharString& anim, long loops, bool waitForFinish, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 20, 0x007E73F0
+ virtual void PlayLoopingAnimation(const CCharString&, long, bool, bool, bool, bool, bool, bool, bool);   // slot 20, 0x007E73F0
 public:
     virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73D0
 };
@@ -982,7 +982,7 @@ void CDyingVillager::Main()
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();

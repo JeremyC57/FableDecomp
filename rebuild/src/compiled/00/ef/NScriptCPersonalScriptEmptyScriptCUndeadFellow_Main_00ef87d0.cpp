@@ -13,7 +13,7 @@
 //   CScriptBase::AddSpawnedFunction 0x00CB7E50 (on ParentClass), CPredicate_And<CIsThingAlive, CIsThingAlive> ctor 0x00E24760,
 //   CPredicate_And<CPredicate_And<CIsThingAlive, CIsThingAlive>, CIsThingAlive> ctor 0x00EF5BC0, ~CIsThingAlive 0x00E241B0,
 //   CEntityScriptBase::SetPredicate 0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380,
-//   CScriptGameResourceObjectScriptedThingBase IsScripting 0x00CD23B9 / Release 0x00CD2770 / MoveToThing 0x007E7300 /
+//   CScriptGameResourceObjectScriptedThingBase IsValid 0x00CD23B9 / Release 0x00CD2770 / MoveToThing 0x007E7300 /
 //   implicit dtor 0x007E74D0; CGameScriptInterfaceBase slots 7 NewScriptFrame, 8 StartScriptingEntity,
 //   72 GetThingWithScriptName (ghidra_out/cgsi_slots_aligned.tsv).
 // Data: vtables CScriptThing 0x01238C8C, CIsThingAlive 0x012C32F0, CPredicateBase 0x012C2FF4, CPredicate_And<IsAlive, IsAlive>

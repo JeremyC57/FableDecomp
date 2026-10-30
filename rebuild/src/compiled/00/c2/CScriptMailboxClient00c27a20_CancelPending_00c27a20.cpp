@@ -1,7 +1,7 @@
 // CScriptMailboxClient_00c27a20::CancelPending() -- under the module's scoped lock, posts an empty (0, 0) notification to the object at +0x0C and clears the pending flag at +0x24
 // Leaf: CancelPending
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C27A20, length 51 bytes (the 64-byte catalog row ends in int3 padding).
-// Callees: CScopedLock::CScopedLock @ 0x00C0FFC0 / ~CScopedLock @ 0x00C0FFE0 (8-byte lock over the global
+// Callees: PKCProtectionInstance::PKCProtectionInstance @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 (8-byte lock over the global
 //          @ 0x0143BAFC), the `__stdcall` notifier @ 0x00C35C30 (tests the target's flags & 0x217 and forwards
 //          the two values; manifest label "CTCSpecialAbilities::OnKill" is propagated).
 // Label: the manifest's "CTCInventory::ProcessInventoryInputLeft" is propagated; the body is a virtual
@@ -9,14 +9,14 @@
 // Shape: no EH frame (the TU is built without /EHsc); the flag clear sits between the call and the
 //        lock's destructor exactly as written.
 
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bafc;                 // 0x0143BAFC
+class PKCCriticalSection;
+extern PKCCriticalSection g_soundLock;                 // 0x0143BAFC
 
-struct CScopedLock {                                      // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                                      // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long               m_state;
-    CScopedLock(CGlobalLockTarget* target);               // 0x00C0FFC0
-    ~CScopedLock();                                       // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);               // 0x00C0FFC0
+    ~PKCProtectionInstance();                                       // 0x00C0FFE0
 };
 
 struct CMailboxTarget;
@@ -32,7 +32,7 @@ struct CScriptMailboxClient_00c27a20 {
 
 void CScriptMailboxClient_00c27a20::CancelPending()
 {
-    CScopedLock lock(&g_lock_0143bafc);
+    PKCProtectionInstance lock(&g_soundLock);
     NotifyTarget(m_pTarget, 0, 0);
     m_pending = false;
 }

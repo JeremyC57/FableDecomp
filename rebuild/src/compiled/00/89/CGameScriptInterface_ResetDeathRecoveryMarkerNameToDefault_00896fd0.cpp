@@ -4,7 +4,7 @@ struct MapNode;
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 class CPlayerManager { public:
-    CPlayer* GetB();          // __fastcall, returns object ptr in eax
+    CPlayer& GetMainPlayer();   /* 0x00449970 */          // __fastcall, returns object ptr in eax
 };
 struct SubB;
 struct MapKind {
@@ -19,7 +19,7 @@ extern "C" void __fastcall FinalizeNode(void* n);      // this in ecx
 void __fastcall CGameScriptInterface_ResetDeathRecoveryMarkerNameToDefault(CGameScriptInterface* self)
 {
     int key;
-    CPlayer* a = self->PlayerManager->GetB();
+    CPlayer* a = (&self->PlayerManager->GetMainPlayer());
     CThingPlayerCreature* obj = a->GetPControlledCreature();
     if (!obj) return;
     if (*(unsigned char*)((char*)obj + 0x91) & 1) return;

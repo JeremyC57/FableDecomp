@@ -63,12 +63,12 @@ class CScriptThing { public:
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
     const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
-struct CPlayerManager_Retail {
-    CPlayer* GetMainPlayer();               // 0x00449970
+class CPlayerManager { public:
+    CPlayer& GetMainPlayer();               // 0x00449970
 };
 class CCharString;
 class CDefinitionManager { public:

@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00F0BB10, length 1579 bytes.
 // Callees: CBaseObject ctor/dtor/operator= 0x0099A380 / 0x0099A430 / 0x0099A3B0, CCharString(const char*, long) 0x0099EBF0 /
 //   ~CCharString 0x0099EAE0, CRT malloc 0x00BFEA0E / free 0x00BFEA14 (cast-map header), operator delete 0x00BFE9BC, cast map
-//   operator[] 0x00CD3D2E and _M_erase 0x00CD344A, scripted-thing handle IsScripting 0x00CD23B9 / Release 0x00CD2770, movie
+//   operator[] 0x00CD3D2E and _M_erase 0x00CD344A, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770, movie
 //   PImp dtor 0x006E7AB0, cut-scene runner 0x00CBFB7D (__fastcall); the game script interface (+0x40) slots 8
 //   StartScriptingEntity, 70 GetHero, 370 StartMovieSequence, 371 FixMovieSequenceCamera, 379 PauseAllNonScriptedEntities.
 // Strings: "HERO" 0x01255174, "BAN1" 0x012D1F04, "BAN2" 0x012D1EFC, "BAN3" 0x012D1EF4, "BAN4" 0x012D241C,
@@ -93,7 +93,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
         PImp = other.PImp;
         return *this;
     }
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 struct CMovieImpPointer {
@@ -192,15 +192,15 @@ void CQ_AmbushTradersScript::Intro()
         Game->FixMovieSequenceCamera(false);
         game->PauseAllNonScriptedEntities(false);
     }
-    if (bandit1.IsScripting())
+    if (bandit1.IsValid())
         bandit1.Release();
-    if (bandit2.IsScripting())
+    if (bandit2.IsValid())
         bandit2.Release();
-    if (bandit3.IsScripting())
+    if (bandit3.IsValid())
         bandit3.Release();
-    if (bandit4.IsScripting())
+    if (bandit4.IsValid())
         bandit4.Release();
-    if (hero.IsScripting())
+    if (hero.IsValid())
         hero.Release();
     BanditIntroDone = true;
 }

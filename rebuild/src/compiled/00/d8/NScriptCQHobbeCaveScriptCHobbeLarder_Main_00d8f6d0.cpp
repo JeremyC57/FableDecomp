@@ -2,7 +2,7 @@
 // Leaf: ?Main@CHobbeLarder@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D8F6D0, 640 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9,
+//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsValid 0x00CD23B9,
 //   Release 0x00CD2770, dtor 0x007E74D0, vtable 0x0127094C), CTimer (inline ctor RegisterTimer 87; dtor DeregisterTimer 88,
 //   out-of-line copy 0x00CD4470) with SetTimer 89 / GetTimer 90 on g_pGameScriptInterface 0x0143E8F8, the script def
 //   0x0143E90C (+0xCC8), IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls
@@ -1019,7 +1019,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
 };
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
@@ -1061,7 +1061,7 @@ void CHobbeLarder::Main()
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 3)) {
   Game->NewScriptFrame();

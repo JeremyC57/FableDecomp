@@ -18,8 +18,8 @@
 class CCharString { public:
     void* PStringData;
     ~CCharString();                                                      // 0x0099EAE0
-    static CCharString __fastcall FromLong(long value);                  // 0x0099F830
 };
+CCharString __fastcall GFIntToCharString(long value);                     // 0x0099F830
 CCharString __fastcall operator+(const CCharString& left, const CCharString& right);   // 0x0099F570
 CCharString __fastcall operator+(const CCharString& left, const char* right);          // 0x0099F600
 
@@ -49,6 +49,6 @@ public:
 void CDefinitionManager::Error(const CStringParser& parser, const CCharString& message)
 {
     long line = parser.CursorPos.Line;
-    CCharString text = parser.Filename + "(" + CCharString::FromLong(line + 1) + ")" + " : error : " + message;
+    CCharString text = parser.Filename + "(" + GFIntToCharString(line + 1) + ")" + " : error : " + message;
     ErrorCallback(text);
 }

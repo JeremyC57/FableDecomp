@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0CFF0, length 312 bytes (+ int3 padding). Entity-script slot 1 (Main).
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 / ~CScriptThing @ 0x004AA840 (the CIsThingConscious filter, vtable
 // 0x012C2FE8), the filter registration @ 0x00F35B10, IsActiveThreadTerminating @ 0x00F35B30, CBaseIntelligentPointer /
-// CBaseObject ctor @ 0x0099A380, the scripted-thing handle's IsScripting @ 0x00CD23B9 / Release @ 0x00CD2770 / destructor
+// CBaseObject ctor @ 0x0099A380, the scripted-thing handle's IsValid @ 0x00CD23B9 / Release @ 0x00CD2770 / destructor
 // @ 0x007E74D0 (vtable 0x0127094C), CGameScriptInterface slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero,
 // 451 GiveThingBestEnemyTarget (+0x70c), 108 RemoveThing (+0x1b0).
 // Layout: the entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14 (the undead-rising quest script, its state at
@@ -40,7 +40,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                           // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                  // 0x00CD23B9
+    bool IsValid() const;                                  // 0x00CD23B9
     void Release();                                      // 0x00CD2770
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_3 = 3 };
@@ -79,7 +79,7 @@ void CUndeadRisingZombieAttacker::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_3)) {
         Game->NewScriptFrame();

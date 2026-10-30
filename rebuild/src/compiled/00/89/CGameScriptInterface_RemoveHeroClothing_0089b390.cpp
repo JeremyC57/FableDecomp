@@ -9,7 +9,7 @@ struct Vec {
 };
 
 class CPlayer;
-extern CPlayer* __fastcall GetHeroObj(void* mgr);   // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern void  __fastcall DoRemove(void* self);    // 0xffd18d56
 
 struct HeroData {
@@ -26,7 +26,7 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 void __fastcall CGameScriptInterface_RemoveHeroClothing(CGameScriptInterface* self)
 {
     int key;
-    CPlayer* h = GetHeroObj(self->PlayerManager);
+    CPlayer* h = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     HeroData* d = h->GetPControlledCreature();
     if (!d) return;
     if (d->flag91 & 1) return;

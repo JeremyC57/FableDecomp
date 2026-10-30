@@ -2,14 +2,14 @@
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
-extern CPlayer* __fastcall Sub_GetManager(void* self);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern float __fastcall Sub_GetHealthPct(CThingPlayerCreature* hero);
 extern float g_defaultHealthPct;
 
 float __fastcall CGameScriptInterface_GetHeroHealthPercentage(CGameScriptInterface* self)
 {
     void* mgr = self->PlayerManager;
-    CThingPlayerCreature* hero = Sub_GetManager(mgr)->GetPControlledCreature();
+    CThingPlayerCreature* hero = (&((CPlayerManager*)mgr)->GetMainPlayer())->GetPControlledCreature();
     if (hero != 0 && (*(unsigned char*)((char*)hero + 0x91) & 0x1) == 0) {
         float v = Sub_GetHealthPct(hero);
         return v;

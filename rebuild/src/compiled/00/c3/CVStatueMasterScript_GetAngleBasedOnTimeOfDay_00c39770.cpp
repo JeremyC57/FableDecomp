@@ -8,11 +8,12 @@
 // @ 0x00C0FFC0, the result of virtual slot 2 of the object at +0x18 is kept in esi
 // while the guard is destroyed out of line @ 0x00C0FFE0 (state -1), then returned. Classes other
 // than the labelled one are placeholders. One of 5 bodies of this shape.
-struct CGuard_00c0ffc0 {
+class PKCCriticalSection;
+class PKCProtectionInstance { public:
     void* m_first;
     void* m_second;
-    CGuard_00c0ffc0(void* owner);        // 0x00C0FFC0
-    ~CGuard_00c0ffc0();                  // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* owner);        // 0x00C0FFC0
+    ~PKCProtectionInstance();                  // 0x00C0FFE0
 };
 
 struct CQueried {
@@ -29,6 +30,6 @@ struct CV_StatueMasterScript {
 
 long CV_StatueMasterScript::GetAngleBasedOnTimeOfDay()
 {
-    CGuard_00c0ffc0 guard(this);
+    PKCProtectionInstance guard((PKCCriticalSection*)this);
     return m_pObject->Query();
 }

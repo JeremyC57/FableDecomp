@@ -1,7 +1,7 @@
 // CUndeadRisingCentre::Main() -- Undead Rising quest: until the hero comes within 3 units of the centre marker, every 10 seconds play the next of three "light" voice-over lines; then flag HeroReachedCentre on the quest, remove the minimap marker and idle
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E0D850, length 545 bytes.
 // Callees: IsActiveThreadTerminating 0x00F35B30; IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall); CCharString(const char*,
-//   long) 0x0099EBF0 / ~CCharString 0x0099EAE0; GameCalls slots 7 NewScriptFrame, 70 GetHero, 87..90 the timer calls (through the
+//   long) 0x0099EBF0 / ~CCharString 0x0099EAE0; CGameScriptInterface slots 7 NewScriptFrame, 70 GetHero, 87..90 the timer calls (through the
 //   global interface 0x0143E8F8, as CTimer does), 352 MiniMapRemoveMarker, 364 AddNewConversation, 365 AddPersonToConversation,
 //   366 AddLineToConversation.
 // Layout: Ego_r.pdb CUndeadRisingCentre (32 bytes): CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14,
@@ -22,7 +22,7 @@ class CScriptThing : public CBaseClass { public:                       // 12 byt
     CCountBlock* PImpInfo;
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
+class CGameScriptInterface { public:                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
  virtual void NewScriptFrame(void) const; //slot7 0x006e7410
  virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -80,7 +80,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void AddPersonToConversation(long, CScriptThing const &) const; //slot365 0x00890710
  virtual void AddLineToConversation(long, CCharString const &, bool, CScriptThing const &, CScriptThing const &) const; //slot366 0x00890750
 };
-extern GameCalls* g_pGameScriptInterface;                // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;                // 0x0143E8F8
 class CTimer { public:                                          // a script timer: the interface's timer index
     long Index;
     CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
@@ -100,7 +100,7 @@ public:
 
 struct CUndeadRisingCentre : public CEntityScriptBase {
     void*                  VTable;
-    GameCalls*             Game;                         // +0x04
+    CGameScriptInterface*             Game;                         // +0x04
     CScriptThing           Me;                           // +0x08
     CQ_UndeadRisingScript* ParentClass;                  // +0x14
     void*                  PMasterData;                  // +0x18

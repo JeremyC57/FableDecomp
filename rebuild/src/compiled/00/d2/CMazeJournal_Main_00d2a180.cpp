@@ -80,7 +80,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
         PImp = other.PImp;
         return *this;
     }
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 struct CMovieImpPointer {
@@ -156,7 +156,7 @@ void CMazeJournal::Main()
             return;
         {
             CScriptGameResourceObjectScriptedThingBase hero;
-            if (hero.IsScripting())
+            if (hero.IsValid())
                 hero.Release();
             while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {
                 Game->NewScriptFrame();

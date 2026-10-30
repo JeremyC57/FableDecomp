@@ -42051,8 +42051,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c35ca0'
         Module = 'CEngine'
-        Source = '00/c3/CEngine_Is3DSceneRenderingEnabled_00c35ca0.cpp'
-        TestSource = '00/c3/CEngine_Is3DSceneRenderingEnabled_00c35ca0_test.cpp'
+        Source = '00/c3/global_CODA_IsSourcePlaying_00c35ca0.cpp'
+        TestSource = '00/c3/global_CODA_IsSourcePlaying_00c35ca0_test.cpp'
         PassPattern = 'OK_00c35ca0'
     }
     [pscustomobject]@{
@@ -49374,8 +49374,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '00c5a1d0'
         Module = 'CTCStealth'
-        Source = '00/c5/CTCStealth_OnCreate_00c5a1d0.cpp'
-        TestSource = '00/c5/CTCStealth_OnCreate_00c5a1d0_test.cpp'
+        Source = '00/c5/CVtable012b5c60_Initialise_00c5a1d0.cpp'
+        TestSource = '00/c5/CVtable012b5c60_Initialise_00c5a1d0_test.cpp'
         PassPattern = 'STEALTH_ONCREATE_OK'
     }
     [pscustomobject]@{
@@ -63657,8 +63657,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '006e7510'
         Module = 'CWorld'
-        Source = '00/6e/CGameScriptInterface_GetMaxWorldFrameForMessages_006e7510.cpp'
-        TestSource = '00/6e/CGameScriptInterface_GetMaxWorldFrameForMessages_006e7510_test.cpp'
+        Source = '00/6e/CGameScriptInterface_GetMinWorldFrameForMessages_006e7510.cpp'
+        TestSource = '00/6e/CGameScriptInterface_GetMinWorldFrameForMessages_006e7510_test.cpp'
         PassPattern = 'BEHAVIOR_OK'
     }
     [pscustomobject]@{
@@ -144904,8 +144904,8 @@ $catalog = @(
     [pscustomobject]@{
         Address = '01224b00'
         Module = '_static_init'
-        Source = '01/22/staticinit_gCStatic00c1c8100143bafc_01224b00.cpp'
-        TestSource = '01/22/staticinit_gCStatic00c1c8100143bafc_01224b00_test.cpp'
+        Source = '01/22/staticinit_g_soundLock_01224b00.cpp'
+        TestSource = '01/22/staticinit_g_soundLock_01224b00_test.cpp'
         PassPattern = '01224b00_TEST PASS'
     }
     [pscustomobject]@{
@@ -364846,6 +364846,65 @@ $catalog = @(
         TestSource = '00/cb/global_CheckInputLocale_00cb37a0_test.cpp'
         CompilerFlags = '/O2 /Oy /W3 /GS'
         PassPattern = '00cb37a0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00aded70'
+        Module = 'C3DBoundingBox'
+        Source = '00/ad/C3DBoundingBox_BuildFromPoints_00aded70.cpp'
+        TestSource = '00/ad/C3DBoundingBox_BuildFromPoints_00aded70_test.cpp'
+        PassPattern = '00aded70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6c5d0'
+        Module = 'std::vector'
+        Source = '00/b6/stdvector_Mfillinsert_00b6c5d0.cpp'
+        TestSource = '00/b6/stdvector_Mfillinsert_00b6c5d0_test.cpp'
+        PassPattern = '00b6c5d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b8f950'
+        Module = 'std::vector'
+        Source = '00/b8/stdvector_insert_00b8f950.cpp'
+        TestSource = '00/b8/stdvector_insert_00b8f950_test.cpp'
+        PassPattern = '00b8f950_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c1a110'
+        Module = 'PKCDefaultFileManager'
+        Source = '00/c1/PKCDefaultFileManager_QueueRead_00c1a110.cpp'
+        TestSource = '00/c1/PKCDefaultFileManager_QueueRead_00c1a110_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c1a110_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c25b10'
+        Module = 'CTimerHost'
+        Source = '00/c2/CTimerHost_CTimerHost_00c25b10.cpp'
+        TestSource = '00/c2/CTimerHost_CTimerHost_00c25b10_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c25b10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c57b60'
+        Module = 'CVtable_012b8ed4'
+        Source = '00/c5/CVtable012b8ed4_QueueChunk_00c57b60.cpp'
+        TestSource = '00/c5/CVtable012b8ed4_QueueChunk_00c57b60_test.cpp'
+        PassPattern = '00c57b60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5ab50'
+        Module = 'CCodaVoice'
+        Source = '00/c5/CCodaVoice_UpdateModulation_00c5ab50.cpp'
+        TestSource = '00/c5/CCodaVoice_UpdateModulation_00c5ab50_test.cpp'
+        PassPattern = '00c5ab50_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caaca0'
+        Module = 'CBaseFilter'
+        Source = '00/ca/CBaseFilter_Run_00caaca0.cpp'
+        TestSource = '00/ca/CBaseFilter_Run_00caaca0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00caaca0_TEST PASS'
     }
 )
 

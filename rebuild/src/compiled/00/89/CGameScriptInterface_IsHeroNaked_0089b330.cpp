@@ -29,12 +29,12 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 // engine callees (addresses reloc-masked)
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
-extern "C" CPlayer* __fastcall GSI_Helper_A(void* p);               // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern "C" bool        __fastcall TCShop_GetName(void* self);
 
 bool __fastcall CGameScriptInterface_IsHeroNaked(const CGameScriptInterface* self)
 {
-    HeroTarget* target = GSI_Helper_A(self->PlayerManager)->GetPControlledCreature();
+    HeroTarget* target = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer())->GetPControlledCreature();
 
     if (target != 0 &&
         (target->flags91 & 0x1) == 0 &&

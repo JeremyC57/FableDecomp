@@ -24930,3 +24930,13 @@ chunk	address	module	name	length
 589	00c25b10	global	CLandscapeBackgroundSubNodeSplitBranch_Ctor	268
 589	00c4aeb0	global	PKCBufferedReader_PrimeBuffer	281
 589	00c1a110	global	FileManager_IncrementAndCheckReference	283
+590	00c8a0a0	global	CreatureHitNotification_Initialize	295
+590	00ab2e40	global	Vector_ResizeWithAppearanceModifiers	296
+590	00ce5050	global	sub_00ce5050	296
+590	00c2e7a0	global	Thiscall_AnimationEventTriggerProcess	297
+590	00c579c0	global	CAudioSource_Cleanup	297
+590	00c74d30	global	Animation_InterpolateHelper	297
+590	00c5f3b0	global	Audio_DecodeADPCM_Mono	300
+590	00b7ffc0	global	Vector_PushBack_CActiveFile_14Elements	302
+590	00cab470	global	sub_00cab470	258
+590	00c4c080	global	CRABuffer_ctor	294

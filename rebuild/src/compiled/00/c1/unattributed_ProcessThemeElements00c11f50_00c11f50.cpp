@@ -3,14 +3,14 @@
 // Retail bytes:  ... loop: push ebx ; mov ecx,ebp ; call CArray::Get ; mov esi,eax ; mov eax,[esi+4] ; test eax,eax ; je next ; mov ecx,esi ; call CEntry::Refresh ; mov esi,[esi+4] ; push edi ; mov ecx,esi ; call CElement::Validate ; test al,al ; jne next ; push edi ; mov ecx,esi ; call CElement::Process ; next: mov eax,[edi+228h] ; inc ebx ; cmp ebx,eax ; jb loop ; pop esi ; pop ebp ; mov ecx,edi ; call Refresh ; ...
 // The element pointer is re-read after the refresh (the register is reused). The manifest
 // label is propagated; the class is named by address.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CEditControlCentre_00c11f50;
@@ -40,7 +40,7 @@ struct CEditControlCentre_00c11f50 {
 
 void CEditControlCentre_00c11f50::ProcessThemeElements()
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     for (unsigned long i = 0; i < m_entries.m_count; ++i) {
         CEntry_00c11f50* entry = m_entries.Get(i);
         if (entry->m_pElement) {

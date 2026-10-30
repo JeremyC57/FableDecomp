@@ -4,14 +4,14 @@
 // The sibling of this body (0x00C12460) differs only in the compared entity word and the finder.
 // The manifest label is a description; the class is named by address (the callee labels are
 // propagated).
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CInventory_00c12520;
@@ -47,7 +47,7 @@ struct CInventory_00c12520 {
 
 void CInventory_00c12520::UnbindKey(void* key)
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     for (unsigned long i = 0; i < m_entities.m_count; ++i) {
         CEntity_00c12520* entity = m_entities.Get(i);
         if (entity->IsBound() && entity->m_pKey == key)

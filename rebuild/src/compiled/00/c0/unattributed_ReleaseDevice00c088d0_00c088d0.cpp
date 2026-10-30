@@ -1,16 +1,16 @@
 // CInputManagerDX_00c088d0::ReleaseDevice() -- EH-framed: under a scoped lock over the global @ 0x0143BB14, the device at +0x64 is released through its virtual slot 17 with 1 and cleared when present
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C088D0, oracle length 103 bytes. Built under /EHsc.
-// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call CScopedLock::CScopedLock ; mov ecx,[esi+64h] ; test ecx,ecx ; mov dword ptr [esp+14h],0 ; je skip ; mov eax,[ecx] ; push 1 ; call [eax+44h] ; mov dword ptr [esi+64h],0 ; skip: lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~CScopedLock ; mov ecx,[esp+0Ch] ; pop esi ; mov fs:[0],ecx ; add esp,14h ; ret
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call PKCProtectionInstance::PKCProtectionInstance ; mov ecx,[esi+64h] ; test ecx,ecx ; mov dword ptr [esp+14h],0 ; je skip ; mov eax,[ecx] ; push 1 ; call [eax+44h] ; mov dword ptr [esi+64h],0 ; skip: lea ecx,[esp+4] ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+0Ch] ; pop esi ; mov fs:[0],ecx ; add esp,14h ; ret
 // The scoped-lock shape of `2026-10-14_linux_i1117`. The manifest label (a destructor name) is
 // propagated garbage for this body; the class is named by address.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct IInputDevice_00c088d0 {
@@ -28,7 +28,7 @@ struct CInputManagerDX_00c088d0 {
 
 void CInputManagerDX_00c088d0::ReleaseDevice()
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     if (m_pDevice) {
         m_pDevice->Release(1);
         m_pDevice = 0;

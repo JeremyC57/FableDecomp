@@ -3,7 +3,7 @@
 // Callees: CBaseClass 0x0099A2D0 / ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, ~CScriptThing 0x004AA840 (out of
 //   line at the later returns), CScriptBase::IsActiveThreadTerminating 0x00CB7940, CCharString(const char*, long)
 //   0x0099EBF0 / ~CCharString 0x0099EAE0; the thing implementation's slot 75 IsAlive (+0x12c) behind the inlined null-safe
-//   wrapper; SetTimer slot 89 through g_pGameScriptInterface 0x0143E8F8; GameCalls slots 7 NewScriptFrame, 70 GetHero, 72
+//   wrapper; SetTimer slot 89 through g_pGameScriptInterface 0x0143E8F8; CGameScriptInterface slots 7 NewScriptFrame, 70 GetHero, 72
 //   GetThingWithScriptName (by value), 131 SetHeroWillAsUsable, 264 GetHealth, 506 EntitySheatheWeapons, 565
 //   SetTeleportingAsActive. String "AC_Owner"; 0.0001f 0x0129BA3C.
 // Layout: Ego_r.pdb CV_ArcheryCompetitionScript minus 0x14 (retail CScriptBase): QuestFinished +0x51, GameTimeLeft (CTimer)
@@ -135,7 +135,7 @@ class CScriptThing : public CBaseClass { public:                          // vta
         return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker);
     }
 };
-struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
+class CGameScriptInterface { public:                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
  virtual void NewScriptFrame(void) const; //slot7 0x006e7410
  virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();
@@ -219,7 +219,7 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v563(); virtual void v564();
  virtual void SetTeleportingAsActive(bool) const; //slot565 0x0088f410
 };
-extern GameCalls* g_pGameScriptInterface;                   // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;                   // 0x0143E8F8
 class CTimer { public:                                             // a script timer: the interface's timer index
     long Index;
     void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
@@ -232,7 +232,7 @@ class CScriptBase { public:                                        // retail 0x4
 namespace NScript {
 class CV_ArcheryCompetitionScript : public CScriptBase {
 public:
-    GameCalls*    Game;                                     // +0x40
+    CGameScriptInterface*    Game;                                     // +0x40
     void*         Owner;                                    // +0x44
     unsigned char _pad48[0x51 - 0x48];
     bool          QuestFinished;                            // +0x51

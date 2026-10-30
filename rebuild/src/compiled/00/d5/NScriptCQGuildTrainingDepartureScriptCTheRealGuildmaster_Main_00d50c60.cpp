@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D50C60, 1882 bytes (+ int3 padding); entity-script vtable 0x012CF6C4 slot 1 (Main);
 //   PDB ?Main@CTheRealGuildmaster@CQ_GuildTrainingDepartureScript@NScript@@EAEXXZ (factory 0x00D509D0, 0x20 bytes).
 // Callees: CScriptThing dtor 0x004AA840 (inline copies elsewhere), ~CBaseClass 0x0099A2E0, IsActiveThreadTerminating
-//   0x00F35B30, CBaseIntelligentPointer 0x0099A380 / 0x0099A430, scripted-thing handle IsScripting 0x00CD23B9 / Release
+//   0x00F35B30, CBaseIntelligentPointer 0x0099A380 / 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release
 //   0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 / operator= 0x008ABD10 /
 //   dtor 0x007E74D0, movie handle ctor 0x006E7B60 / dtor 0x006E7B80 (member dtor 0x006E7AB0), the cutscene cast map ctor
 //   0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E, RunCutsceneMacro 0x00CBFB7D (__fastcall), CCharString 0x0099EBF0 /
@@ -142,7 +142,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<CScriptGameResourceObjectImpl> PImp;   // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : PImp() { }
     // implicit destructor; out-of-line copy 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
@@ -334,7 +334,7 @@ void NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main()
     Game->SetHeroGuideToShowQuestCardsWhenSpokenTo(false);
     Game->EntityTeleportToThing(Me, Game->GetThingWithScriptName("M_DepartureTeacherStand"), false);
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, 4)) {
         Game->NewScriptFrame();
@@ -346,7 +346,7 @@ void NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main()
         if (IsActiveThreadTerminating()) return;
         {
         CScriptGameResourceObjectScriptedThingBase hero;
-        if (hero.IsScripting())
+        if (hero.IsValid())
             hero.Release();
         while (!Game->StartScriptingEntity(Game->GetHero(), hero, 4)) {
             Game->NewScriptFrame();

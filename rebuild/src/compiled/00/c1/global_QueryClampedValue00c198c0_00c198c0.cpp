@@ -3,14 +3,14 @@
 // Retail bytes:  ... mov esi,[entry] ; mov eax,[esi] ; mov ecx,esi ; mov dword ptr [esp+18h],0 ; call [eax+14h] ; mov edx,[eax] ; mov ecx,eax ; call [edx+14h] ; mov edi,[index] ; cmp edi,eax ; jb hit ; ... or eax,-1 ; ... ret 8 ; hit: mov eax,[esi] ; mov ecx,esi ; call [eax+14h] ; mov edx,[eax] ; push edi ; mov ecx,eax ; call [edx+10h] ; lea ecx,[esp+8] ; mov esi,eax ; ...
 // `this` is not used, so the function is modelled as a `__stdcall` free function (the callee of
 // the two-argument resolve landed at 0x00C19C10). The manifest label is a description.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CTable_00c198c0 {
@@ -26,7 +26,7 @@ struct CEntry_00c198c0 {
 
 long __stdcall QueryClampedValue_00c198c0(CEntry_00c198c0* entry, unsigned long index)
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     if (index >= entry->GetTable()->Count())
         return -1;
     return entry->GetTable()->Get(index);

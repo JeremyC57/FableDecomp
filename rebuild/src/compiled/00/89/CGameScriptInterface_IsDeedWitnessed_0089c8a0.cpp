@@ -44,9 +44,10 @@ public:
 };
 
 // [self+0x14] object with a single argument-less __fastcall accessor.
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 struct GSI_HelperAObj
 {
-    CPlayer* HelperA();   // 0x00449970
+   // 0x00449970
 };
 
 struct GSI_Target
@@ -69,7 +70,7 @@ bool __fastcall CGameScriptInterface_IsDeedWitnessed(const void* thisPtr,
     const GSI_Self* self = reinterpret_cast<const GSI_Self*>(thisPtr);
 
     GSI_HelperAObj* a = reinterpret_cast<GSI_HelperAObj*>(self->field14);
-    CPlayer*        b = a->HelperA();
+    CPlayer*        b = (&((CPlayerManager*)a)->GetMainPlayer());
     GSI_Target*     target = b->GetPControlledCreature();
 
     if (target != 0 &&

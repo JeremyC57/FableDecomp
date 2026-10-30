@@ -5,7 +5,7 @@
 // 0x012C2FE8, its destructor called out of line @ 0x00EF7AB0 in this module; named CIsThingAliveEndGame to keep it apart from
 // the CIsThingAlive copy at 0x00E241B0), the filter registration @ 0x00F35B10 and
 // IsDone @ 0x00F35B30 on `this` (labels propagated; see the landed CHTE_Prisoner::Main 0x00D69F50), CBaseObject::CBaseObject
-// @ 0x0099A380, CScriptGameResourceObjectScriptedThingBase (vtable 0x0127094C): IsScripting @ 0x00CD23B9, Release
+// @ 0x0099A380, CScriptGameResourceObjectScriptedThingBase (vtable 0x0127094C): IsValid @ 0x00CD23B9, Release
 // @ 0x00CD2770 (labels propagated; the landed CFH_BriarRose::Main 0x00D37330 names them) and its destructor @ 0x007E74D0
 // (catalog "~CScriptGameResourceObjectMovieBase"); CGameScriptInterface slots 7 NewScriptFrame (+0x1c), 8
 // StartScriptingEntity (+0x20) and 360 SetThingHasInformation (+0x5a0, thing + three bools).
@@ -46,7 +46,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     SCountedImp PImp;                              // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                            // 0x00CD23B9
+    bool IsValid() const;                            // 0x00CD23B9
     void Release();                                // 0x00CD2770
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -83,7 +83,7 @@ void CEndGameScarletRobe::Main()
         return;
     Game->SetThingHasInformation(Me, false, true, false);
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_HIGHEST)) {
         Game->NewScriptFrame();

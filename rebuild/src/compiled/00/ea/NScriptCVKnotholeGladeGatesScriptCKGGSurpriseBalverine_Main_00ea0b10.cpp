@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EA0B10, 997 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90, its destructor out of line in this module
 //   0x00E241B0), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor
-//   0x0099A380, IsScripting 0x00CD23B9, Release 0x00CD2770, PlayLoopingAnimation 0x007E73F0, ClearAllActionsIncludingLooping-
+//   0x0099A380, IsValid 0x00CD23B9, Release 0x00CD2770, PlayLoopingAnimation 0x007E73F0, ClearAllActionsIncludingLooping-
 //   Animations 0x007E7410, dtor 0x007E74D0), CTimer (inline ctor RegisterTimer 87, dtor out-of-line copy 0x00CD4470, SetTimer 89,
 //   GetTimer 90 on g_pGameScriptInterface 0x0143E8F8), IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString
 //   0x0099EBF0 / 0x0099EAE0, CScriptThing dtor 0x004AA840, the animation-default bool 0x01375748; GameCalls slots 7, 8, 70
@@ -170,7 +170,7 @@ typedef long EScriptVillageAttitude;
 typedef long EScriptingStateGroups;
 typedef long ESex;
 typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
+enum ETextGroupSelectionMethod { };
 typedef long ETutorialCategory;
 namespace NEntityEvents {typedef long EEventType;}
 struct GameCalls {virtual ~GameCalls();
@@ -1031,12 +1031,12 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
- void PlayCombatAnimation(const CCharString& anim, bool a, bool b, bool c, bool d, bool e, bool f);   // 0x007E73E0
- void PlayLoopingAnimation(const CCharString& anim, long loops, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73F0
- void ClearAllActionsIncludingLoopingAnimations();  // 0x007E7410
- bool IsPerformingScriptTask() const;               // 0x007E7450
+ virtual void PlayCombatAnimation(const CCharString&, bool, bool, bool, bool, bool, bool);   // 0x007E73E0
+ virtual void PlayLoopingAnimation(const CCharString&, long, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73F0
+ virtual void ClearAllActionsIncludingLoopingAnimations();  // 0x007E7410
+ virtual bool IsPerformingScriptTask() const;               // 0x007E7450
 };
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
 class CTimer { public:                                     // 4 bytes: an index into the global script timers
@@ -1071,7 +1071,7 @@ void CKGG_SurpriseBalverine::Main()
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();
@@ -1104,7 +1104,7 @@ void CKGG_SurpriseBalverine::Main()
   Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;
-  if (handle.IsScripting())
+  if (handle.IsValid())
    handle.Release();
   do {
    Game->NewScriptFrame();

@@ -20,14 +20,15 @@
 // Shape: the two-argument trace evaluates right to left: the event description first (temporary 1, EH state 1 while
 //   the status call runs), then the slot status (temporary 2, no state of its own); they die in reverse order.
 // Label correction: the catalog's `CTCInventory_DumpCombatActionDebug_c127c0` is propagated.
-extern unsigned char g_section_0143bb14[];  // 0x0143BB14: the module's critical section
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 extern char* g_pchNil_0139c900;            // 0x0139C900
 
-struct CScopedLock_00c127c0 {                  // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:                  // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CScopedLock_00c127c0(void* section);        // 0x00C0FFC0
-    ~CScopedLock_00c127c0();                    // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);        // 0x00C0FFC0
+    ~PKCProtectionInstance();                    // 0x00C0FFE0
 };
 
 struct CString_00c127c0 {                      // MFC-style string: one word, the shared empty data for the default constructor
@@ -68,7 +69,7 @@ struct CSoundEventManager {
 
 void CSoundEventManager::TracePlaybacks()
 {
-    CScopedLock_00c127c0 lock(g_section_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     UpdateEvents();
     for (unsigned long i = 0; i < GetNumPlaybacks(); ++i) {
         CPlaybackSlot_00c127c0* slot = GetPlayback(i);

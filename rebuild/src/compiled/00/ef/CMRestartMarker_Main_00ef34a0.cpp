@@ -4,7 +4,7 @@
 // Callees: CScriptThing copy ctor @ 0x004ABE90 / ~CScriptThing @ 0x004AA840, CEntityScriptBase::SetPredicate @ 0x00F35B10,
 //          ~CIsThingAlive @ 0x00E241B0, CEntityScriptBase::IsActiveThreadTerminating @ 0x00F35B30, CCharString(const char*, long)
 //          @ 0x0099EBF0 / ~CCharString @ 0x0099EAE0, CBaseObject::CBaseObject @ 0x0099A380, the scripted-thing handle's
-//          IsScripting @ 0x00CD23B9 / Release @ 0x00CD2770, MoveToThing @ 0x007E7300 (direct on the local) and its destructor
+//          IsValid @ 0x00CD23B9 / Release @ 0x00CD2770, MoveToThing @ 0x007E7300 (direct on the local) and its destructor
 //          @ 0x007E74D0; CGameScriptInterface slots 7 NewScriptFrame, 8 StartScriptingEntity, 72 GetThingWithScriptName,
 //          489 EntitySetMaxWalkingSpeed (+0x7a4), 491 EntityResetMaxWalkingSpeed (+0x7ac). Literals "Marker1" @ 0x012F63AC,
 //          "Marker2" @ 0x012F63A4.
@@ -42,7 +42,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004();
     virtual void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // slot 5 (+0x14)
     virtual void FollowPreCalculatedRoute(const CScriptThing& thing, EScriptEntityMoveType moveType, bool a, bool b);   // slot 6 (+0x18)
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 
@@ -92,7 +92,7 @@ void CM_RestartMarker::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

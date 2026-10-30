@@ -1,13 +1,13 @@
 // CV_HeroDuelScript::SecondFleeCutscene() -- hide the health bar, drop Thunder's minimap marker, take Thunder and then the hero under scripted control, play CS_GIBBETHILL_HERODUEL_FLEE with both cast inside a paused movie sequence, then restore Thunder's cutscene behaviour and flag that he entered the cave first
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9AEB0, 0x387 bytes, plain `ret`.
-// Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CBaseObject 0x0099A380 / ~ 0x0099A430, the handle's IsScripting 0x00CD23B9 /
+// Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, CBaseObject 0x0099A380 / ~ 0x0099A430, the handle's IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / operator= 0x008ABD10 / out-of-line dtor 0x007E74D0, the cast map's ctor 0x00CDBF70 / operator[]
 //   0x00CD3D2E / dtor 0x00CDBFB0, the movie PImp dtor 0x006E7AB0, the __fastcall cut-scene runner 0x00CBFB7D, operator delete
 //   0x00BFE9BC, ~CScriptThing 0x004AA840, IsActiveThreadTerminating 0x00CB7940; Game slots 7, 8 StartScriptingEntity, 70
 //   GetHero, 72 GetThingWithScriptName, 352 MiniMapRemoveMarker, 370 StartMovieSequence, 371 FixMovieSequenceCamera, 379
 //   PauseAllNonScriptedEntities, 512 EntitySetCutsceneBehaviour.
 // Shape: the landed CQ_WizardBattleScript::CutsceneScreamers 0x00E1CD40 (cast map, held movie, cached `game`) plus the
-//   CMeleeThunder::Main 0x00D58080 handle (IsScripting/Release, implicit dtor); the handles live in an inner block and every
+//   CMeleeThunder::Main 0x00D58080 handle (IsValid/Release, implicit dtor); the handles live in an inner block and every
 //   exit except the first wait loop's sits under inline_depth(0), so only that one expands the dtors.
 // Layout (retail = Ego_r.pdb - 0x14): Game +0x40, OkToShowHealthBar +0x4e, ThunderEnteredCaveFirst +0x4f.
 // NScript (sweep 3): the script classes live in namespace NScript (Ego_r/FableWin name sets, e.g.
@@ -150,7 +150,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CScriptGameResourceObjectScriptedThingBase() {}
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
     // implicit destructor (no vptr store of its own); out of line 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 
@@ -213,7 +213,7 @@ void NScript::CV_HeroDuelScript::SecondFleeCutscene()
     Game->MiniMapRemoveMarker(thunder);
     {
         CScriptGameResourceObjectScriptedThingBase thunderHandle;
-        if (thunderHandle.IsScripting())
+        if (thunderHandle.IsValid())
             thunderHandle.Release();
         while (!Game->StartScriptingEntity(thunder, thunderHandle, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();
@@ -226,7 +226,7 @@ void NScript::CV_HeroDuelScript::SecondFleeCutscene()
 #pragma inline_depth()
         Game->EntitySetCutsceneBehaviour(thunder, (ECutsceneBehaviour)2);
         CScriptGameResourceObjectScriptedThingBase heroHandle;
-        if (heroHandle.IsScripting())
+        if (heroHandle.IsValid())
             heroHandle.Release();
         while (!Game->StartScriptingEntity(Game->GetHero(), heroHandle, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();

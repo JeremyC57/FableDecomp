@@ -3,7 +3,7 @@
 // Callees: the world's virtual slots 3 (+0xc, the thing manager) and 12 (+0x30, the world map), CBaseIntelligentPointer::
 // GetPItem 0x00A01B50, CPlayer::CreateCharacter(const CCharString&) 0x00489D40, CCharString(const char*, long)
 // 0x0099EBF0 / ~CCharString 0x0099EAE0, DisplayProgress(const CCharString&, bool, float, bool) 0x009E9F40
-// (`__fastcall`), CPlayer::SetControlledCreature 0x00487CF0, CPlayerManager::GetMainPlayerID 0x00449700 and
+// (`__fastcall`), CPlayer::SetControlledCreature 0x00487CF0, CPlayerManager::GetMainPlayerNumber 0x00449700 and
 // GetMainPlayer 0x00449970, the world's +0x34 object's slot 9 GetCameraManager (+0x24), CGameCameraManager slot 27
 // (+0x6c, the followed thing) and ResetCamera 0x0069A990, CVectorMap<ETCInterfaceType, CTCBase*>::LowerBound
 // 0x0040F020 (TC 0x7a, word 3 bit 26), the TC's 0x006AEDC0 (propagated label "InsertIntelligentPointerInList").
@@ -95,10 +95,9 @@ struct CWorld_Retail {
     CCameraManagerSource* CameraSource;                // +0x34
 };
 
-struct CPlayer_Methods;
-struct CPlayerManager_Retail {
-    long GetMainPlayerID() const;                      // 0x00449700
-    CPlayer_Methods* GetMainPlayer();                  // 0x00449970
+class CPlayerManager { public:
+    long GetMainPlayerNumber() const;                  // 0x00449700
+    CPlayer& GetMainPlayer();                          // 0x00449970
 };
 
 struct CPlayer_Methods : CPlayer {
@@ -119,15 +118,15 @@ void CPlayer_Methods::InitCharacterAs(const CCharString& defName)
     DisplayProgress("CPlayer::InitCharacterAs", false, -1.0f, false);
     SetControlledCreature(PlayerCharacterPtr().GetPItem());
     long number = Number;
-    if (number == ((CPlayerManager_Retail*)PlayerManager)->GetMainPlayerID()) {
+    if (number == ((CPlayerManager*)PlayerManager)->GetMainPlayerNumber()) {
         CGameCameraManager* camera;
         ((CWorld_Retail*)World)->CameraSource->GetCameraManager(&camera);
         camera->SetFollowedThing(PlayerCharacterPtr().GetPItem());
         camera->ResetCamera();
         return;
     }
-    if (((CPlayerManager_Retail*)PlayerManager)->GetMainPlayer()->ControlledCreaturePtr().GetPItem() != 0) {
-        CThing* creature = ((CPlayerManager_Retail*)PlayerManager)->GetMainPlayer()->ControlledCreaturePtr().GetPItem();
+    if (static_cast<CPlayer_Methods&>(((CPlayerManager*)PlayerManager)->GetMainPlayer()).ControlledCreaturePtr().GetPItem() != 0) {
+        CThing* creature = static_cast<CPlayer_Methods&>(((CPlayerManager*)PlayerManager)->GetMainPlayer()).ControlledCreaturePtr().GetPItem();
         if (creature->HasTC(0x7a))
             ((CTCPlayerCharacterLinks*)creature->GetTC(0x7a))->AddThing(PlayerCharacterPtr().GetPItem());
     }

@@ -36,7 +36,7 @@ class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 class CPlayerManager
 { public:
-    CPlayer* GetTarget();
+    CPlayer& GetMainPlayer();   /* 0x00449970 */
 };
 
 template <class T> __forceinline bool GetTCOut(unsigned char* thing, int kind, T** out)
@@ -53,7 +53,7 @@ void __fastcall CGameScriptInterface_SetDeathRecoveryMarkerName(
     unsigned long,
     const CCharString& name)
 {
-    CPlayer* source = self->PlayerManager->GetTarget();
+    CPlayer* source = (&self->PlayerManager->GetMainPlayer());
     unsigned char* target =
         (unsigned char*)source->GetPControlledCreature();
 

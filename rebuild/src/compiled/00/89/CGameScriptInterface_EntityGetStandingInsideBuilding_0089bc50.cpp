@@ -68,12 +68,12 @@ class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThi
 public:
     static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
 };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0
     const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0
 };
-struct CPlayerManager_Retail {
-    CPlayer* GetMainPlayer();               // 0x00449970
+class CPlayerManager { public:
+    CPlayer& GetMainPlayer();               // 0x00449970
 };
 class CCharString;
 struct CDefinitionManager_Retail {

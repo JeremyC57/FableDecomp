@@ -2,13 +2,14 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C12D50, oracle length 256 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,58h ; push ebx ; push esi ; push edi ; mov edi,ecx ; push offset g_section ; lea ecx,[esp+10h] ; call CProfileLock::CProfileLock ; mov ebx,[esp+74h] ; xor esi,esi ; cmp ebx,esi ; mov [esp+6Ch],esi ; jne go ; lea ecx,[esp+0Ch] ; mov dword ptr [esp+6Ch],-1 ; call ~CProfileLock ; ... or eax,-1 ; ... ret 0Ch ; go: lea ecx,[esp+14h] ; call CPartA::CPartA ; lea ecx,[esp+44h] ; mov [esp+30h],esi ; mov [esp+34h],esi ; mov dword ptr [esp+38h],3F800000h ; mov dword ptr [esp+3Ch],3F800000h ; mov [esp+40h],esi ; call CPartB::CPartB ; mov eax,[esp+7Ch] ; push eax ; lea ecx,[esp+18h] ; mov dword ptr [esp+58h],0 ; mov [esp+5Ch],si ; mov dword ptr [esp+60h],0 ; mov dword ptr [esp+64h],0 ; call CQuery::Bind ; mov edx,[esp+78h] ; push esi ; lea ecx,[esp+18h] ; push ecx ; push edx ; push ebx ; mov ecx,edi ; call Resolve ; cmp eax,esi ; je miss ; mov esi,[eax+0Ch] ; jmp done ; miss: or esi,-1 ; done: lea ecx,[esp+0Ch] ; mov dword ptr [esp+6Ch],-1 ; call ~CProfileLock ; ... mov eax,esi ; ... ret 0Ch
 // The manifest label is propagated; the classes are named by address.
-extern unsigned char g_section_0143bb14[];  // 0x0143BB14: the module's critical section
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-struct CProfileLock_00c12d50 {             // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CProfileLock_00c12d50(void* section);  // 0x00C0FFC0
-    ~CProfileLock_00c12d50();              // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
+    ~PKCProtectionInstance();              // 0x00C0FFE0
 };
 
 struct CPartA_00c12d50 { unsigned char _body[0x1c]; CPartA_00c12d50(); };   // 0x00C203A0
@@ -42,7 +43,7 @@ struct CCombatGeometry_00c12d50 {
 
 long CCombatGeometry_00c12d50::ResolveBlock(void* attacker, void* context, void* target)
 {
-    CProfileLock_00c12d50 lock(g_section_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     if (!attacker)
         return -1;
     CQuery_00c12d50 query;

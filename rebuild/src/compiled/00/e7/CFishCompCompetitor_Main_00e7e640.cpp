@@ -1,7 +1,7 @@
 // CFishCompCompetitor::Main() -- a fishing-competition competitor (his ID is his data string): attach to the quest and stay persistent; vanish if the competitors were already attacked; otherwise every frame until they are, flag the attack when the hero hits him (plain hit, or a special ability other than 14), and answer a talk with a paused movie line "TEXT_QST_B15_FISHER<id>" + _SCARED / _INTRO / _FISHCOMMENT_<prize> (once per new prize) / _TIP; finally become scared
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E7E640, 1604 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, CBaseClass dtor 0x0099A2E0, scripted-thing handle IsScripting
+// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, CBaseClass dtor 0x0099A2E0, scripted-thing handle IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 /
 //   out-of-line dtor 0x007E74D0, movie PImp dtor 0x006E7AB0, IsActiveThreadTerminating 0x00F35B30, GFCharStringToInt 0x0099E7F0,
 //   GFIntToCharString 0x0099F830, operator+ 0x0099F690 / 0x0099F600 / 0x0099F570, CCharString 0x0099EBF0 / 0x0099EAE0 / 0x0099E4C0 /
@@ -76,7 +76,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor; out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     CScriptThing GetScriptThing() const;                // 0x007E7490
     void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
@@ -286,7 +286,7 @@ void CFishCompCompetitor::Main()
                 line = line + "_TIP";
             }
             CScriptGameResourceObjectScriptedThingBase competitor;
-            if (competitor.IsScripting())
+            if (competitor.IsValid())
                 competitor.Release();
             while (!Game->StartScriptingEntity(Me, competitor, (EScriptAIPriority)4)) {
                 Game->NewScriptFrame();

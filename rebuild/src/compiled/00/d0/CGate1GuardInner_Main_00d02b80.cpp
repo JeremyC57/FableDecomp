@@ -1,7 +1,7 @@
 // CGate1GuardInner::Main() -- the inner guard at the bandit camp's first gate: take scripted control of Me, then every frame while Gate1 is open: when the hero talks to him play a paused movie with the "bandit aside" line; once the outer gate guards were attacked, or the hero hits him (plain hit, or any special ability other than ability 14), play the "attacked" movie, flag the attack and fight the hero for good
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D02B80, 1489 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsScripting 0x00CD23B9 / Release 0x00CD2770 /
+// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 /
 //   GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, movie PImp dtor
 //   0x006E7AB0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
 //   CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8, 70 GetHero, 72 GetThingWithScriptName, 264 GetHealth,
@@ -90,9 +90,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
+    virtual void Speak(const CScriptThing&, const char*, ETextGroupSelectionMethod, bool, bool, bool);   // 0x007E7390
 public:
     virtual CScriptThing GetScriptThing() const;   // 0x007E7490
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
@@ -156,7 +156,7 @@ void CGate1GuardInner::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase guard;
-    if (guard.IsScripting())
+    if (guard.IsValid())
         guard.Release();
     while (!Game->StartScriptingEntity(Me, guard, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -206,7 +206,7 @@ void CGate1GuardInner::Main()
                 if (IsActiveThreadTerminating())
                     return;
                 Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-                if (guard.IsScripting())
+                if (guard.IsValid())
                     guard.Release();
                 for (;;) {
                     Game->NewScriptFrame();
@@ -245,7 +245,7 @@ void CGate1GuardInner::Main()
                 movie.DestroyInline();
                 ParentClass->AttackedOuterGateGuards = true;
                 Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-                if (guard.IsScripting())
+                if (guard.IsValid())
                     guard.Release();
                 for (;;) {
                     Game->NewScriptFrame();

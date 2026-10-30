@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D1E3E0, 1584 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
-//   CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0,
+//   CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0,
 //   CCharString() 0x0099E4B0 / (const char*, long) 0x0099EBF0 / dtor 0x0099EAE0, operator+ 0x0099F690 / 0x0099F600, the CBasicString
 //   compare 0x00411570 (__fastcall); GameCalls slots 7, 8, 70, 72, 108, 264, 265, 364-366, 475, 517, 526, 599; CScriptThing slots 3,
 //   21, 27, 29 MsgExpressionPerformedTo, 41, 42.
@@ -114,7 +114,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     CScriptThing GetScriptThing() const;                // 0x007E7490
     void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
@@ -181,7 +181,7 @@ void CGuardHoldingBandit::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase guard;
-    if (guard.IsScripting())
+    if (guard.IsValid())
         guard.Release();
     while (!Game->StartScriptingEntity(Me, guard, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -237,7 +237,7 @@ void CGuardHoldingBandit::Main()
     if (IsActiveThreadTerminating())
         return;
     Game->EntitySetAsKillable(Me, false, true);
-    if (guard.IsScripting())
+    if (guard.IsValid())
         guard.Release();
     while (!ParentClass->EndCutsceneDone) {
         Game->NewScriptFrame();

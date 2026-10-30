@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D9F6C0, 1720 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, RegisterFilter 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting 0x00CD23B9 /
+//   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / PlayAnimation 0x007E73D0 / PlayLoopingAnimation 0x007E73F0 / ClearAllActionsIncludingLoopingAnimations
 //   0x007E7410 / dtor 0x007E74D0, CTimer ctor 0x00CD4450 / dtor 0x00CD4470, CFadeinSummoner::PhaseMe 0x00D9FD80, rand 0x00BFEB16,
 //   CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8, 70, 87-90 (timers through g_pGameScriptInterface 0x0143E8F8),

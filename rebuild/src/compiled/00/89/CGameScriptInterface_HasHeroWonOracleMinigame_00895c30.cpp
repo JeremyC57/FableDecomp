@@ -3,7 +3,7 @@
 // Callees: the hero thing through the player (0x00449970 on PlayerManager, then 0x00487DC0; both labels propagated), live (+0x91 bit 0 clear), the inlined CThing::GetInterface (the presence bitset at +0x20, CVectorMap::LowerBound @ 0x0040F020 on the map at +0x44, end or a larger key -> the end entry). Shape: a `push ecx` frame for the lookup key, the presence bit tested as the sign of the byte at +0x40 (`jns`), the false exits folded into `xor al,al`, `ret`.
 // Leaf: HasHeroWonOracleMinigame
 struct CDisplayEngine_Retail;
-struct CPlayerManager_Retail;
+class CPlayerManager;
 struct CMainGameComponent_Retail;
 struct CDefinitionManager_Retail;
 class CWorld;
@@ -69,11 +69,11 @@ struct CThing_Retail {
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }   // the masked word (a bool would narrow the test)
 };
 class CThingPlayerCreature : public CThing_Retail { };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;               // 0x00487DC0 (the label is propagated; the landed IsHeroNaked helper)
 };
-struct CPlayerManager_Retail {
-    CPlayer* GetPlayer();                 // 0x00449970 (labelled "Catch@0040d959", propagated)
+class CPlayerManager { public:
+    CPlayer& GetMainPlayer();                 // 0x00449970
 };
 class CGameScriptInterface { public:
     virtual void v000();
@@ -81,16 +81,18 @@ class CGameScriptInterface { public:
     CMainGameComponent_Retail*  Component;          // +0x08
     CDisplayEngine_Retail*      DisplayEngine;      // +0x0c
     CDefinitionManager_Retail*  DefinitionManager;  // +0x10
-    CPlayerManager_Retail*      PlayerManager;      // +0x14
+    CPlayerManager*      PlayerManager;      // +0x14
     long GetTextIDFromSymbol(const CCharString& symbol) const;   // 0x006E77F0 (labelled LTextSystem::GetIDFromSymbol; `this` is unused)
-    long GetCurrentWorldFrameForMessages() const;   // 0x006E7510 (labelled GetMaxWorldFrameForMessages)
+protected:
+    long GetMinWorldFrameForMessages() const;   // 0x006E7510
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
+public:
     bool HasHeroWonOracleMinigame() const;
 };
 
 bool CGameScriptInterface::HasHeroWonOracleMinigame() const
 {
-    CThing_Retail* hero = PlayerManager->GetPlayer()->GetPControlledCreature();
+    CThing_Retail* hero = PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->m_dead) {
         CTCOracleMinigame* minigame;
         if (hero->GetInterface(&minigame, 0x107))

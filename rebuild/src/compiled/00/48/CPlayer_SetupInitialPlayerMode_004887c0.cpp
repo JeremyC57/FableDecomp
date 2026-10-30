@@ -2,7 +2,7 @@
 // Leaf: ?SetupInitialPlayerMode@CPlayer_Methods@@QAEXXZ
 // (retail ?SetupInitialPlayerMode@CPlayer@@QAEXXZ; defined through the CPlayer_Methods carrier)
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x004887C0, length 251 bytes, plain `ret`.
-// Callees: CPlayerManager::GetMainPlayerID 0x00449700 (returns +0x1c; propagated label "CWorld::DrawGetEnvironment"),
+// Callees: CPlayerManager::GetMainPlayerNumber 0x00449700 (returns +0x1c; propagated label "CWorld::DrawGetEnvironment"),
 // CPlayer::GetCurrentMode 0x00633BE0, RemoveMode(EPlayerMode) 0x00634190, AddMode(EPlayerMode, bool) 0x006345C0,
 // CThingSearchTools::GetAllThings<...> 0x0048D400 (World +0x20; the interface type 0xc7 by reference), CVectorMap<
 // ETCInterfaceType, CTCBase*>::LowerBound 0x0040F020, CPlayerManager::GetMainPlayer 0x00449970, CTCCoopSpirit::SetMaster
@@ -94,9 +94,9 @@ struct CWorld_Retail {
     unsigned char      _pad00[0x20];
     CThingSearchTools* PThingSearchTools;              // +0x20
 };
-struct CPlayerManager_Retail {
-    long GetMainPlayerID() const;                      // 0x00449700
-    CPlayer* GetMainPlayer();                          // 0x00449970
+class CPlayerManager { public:
+    long GetMainPlayerNumber() const;                  // 0x00449700
+    CPlayer& GetMainPlayer();                          // 0x00449970
 };
 class CTCCoopSpirit { public:                                 // TC type 0xc7
     void SetMaster(CPlayer* master);                   // 0x0066FA50
@@ -112,7 +112,7 @@ struct CPlayer_Methods : CPlayer {
 void CPlayer_Methods::SetupInitialPlayerMode()
 {
     long number = Number;
-    EPlayerMode mode = (number != ((CPlayerManager_Retail*)PlayerManager)->GetMainPlayerID()) ? 0x18 : 1;
+    EPlayerMode mode = (number != ((CPlayerManager*)PlayerManager)->GetMainPlayerNumber()) ? 0x18 : 1;
     bool frontEnd = false;
     if (GetCurrentMode() == 0x1b) {
         frontEnd = true;
@@ -127,6 +127,6 @@ void CPlayer_Methods::SetupInitialPlayerMode()
     for (unsigned long i = 0; i < count; ++i) {
         CTCCoopSpirit* spirit;
         spirits[i]->GetInterface(&spirit, 0xc7);
-        spirit->SetMaster(((CPlayerManager_Retail*)PlayerManager)->GetMainPlayer());
+        spirit->SetMaster(&((CPlayerManager*)PlayerManager)->GetMainPlayer());
     }
 }

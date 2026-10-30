@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E9A5C0, length 943 bytes, plain `ret`.
 // Callees: CScriptThing(const CScriptThing&) 0x004ABE90 (the predicate's copy), CEntityScriptBase::SetPredicate 0x00F35B10,
 //   ~CIsThingAlive 0x00E241B0, IsActiveThreadTerminating 0x00F35B30, CCharString(const char*, long) 0x0099EBF0 /
-//   ~CCharString 0x0099EAE0, __ftol2 0x00BFEA70; the scripted-thing handle (ctor 0x007E72A0, IsScripting 0x00CD23B9, Release
+//   ~CCharString 0x0099EAE0, __ftol2 0x00BFEA70; the scripted-thing handle (ctor 0x007E72A0, IsValid 0x00CD23B9, Release
 //   0x00CD2770, dtor 0x007E74D0, all out of line); CV_HeroDuelScript FirstFleeCutscene 0x00E9A970, SecondFleeCutscene
 //   0x00E9AEB0, DuelLost 0x00E9B240; GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity, 11 IsLevelLoaded, 70 GetHero,
 //   235 EntitySetAsAllowedToFollowHero, 264 GetHealth, 265 ModifyThingHealth, 451 GiveThingBestEnemyTarget, 480
@@ -29,7 +29,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:         // vtable 0x0
     void* PImpInfo;
     CScriptGameResourceObjectScriptedThingBase();           // 0x007E72A0
     virtual ~CScriptGameResourceObjectScriptedThingBase();          // 0x007E74D0
-    bool IsScripting();                                     // 0x00CD23B9
+    bool IsValid() const;                                     // 0x00CD23B9
     void Release();                                         // 0x00CD2770
 };
 typedef long EScriptAIPriority;
@@ -186,7 +186,7 @@ void CV_HeroDuelScript::CThunder::Main()
         ParentClass->SecondFleeCutscene();
     }
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, 4)) {
         Game->NewScriptFrame();
@@ -202,7 +202,7 @@ void CV_HeroDuelScript::CThunder::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     Game->EntitySetAsAllowedToFollowHero(Me, false);
     Game->SetEntityAsRegionFollowing(Game->GetHero(), Me, false);

@@ -4,14 +4,14 @@
 // Retail bytes:  ... call Find ; test eax,eax ; jne hit ; ... xor eax,eax ; ... ret 0Ch ; hit: mov ecx,[b] ; mov edx,[a] ; push ecx ; push edx ; push eax ; mov ecx,esi ; call ResolveEntry ; lea ecx,[esp+4] ; mov esi,eax ; ...
 // The three-argument sibling of 0x00C19B70 / 0x00C19C10 (miss value 0). The manifest label is
 // propagated; the class is named by address.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CEntry_00c19ad0;
@@ -24,7 +24,7 @@ struct CClothingSuitMap_00c19ad0 {
 
 long CClothingSuitMap_00c19ad0::Resolve(void* key, void* a, void* b)
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     CEntry_00c19ad0* entry = Find(key);
     if (!entry)
         return 0;

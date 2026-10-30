@@ -13,10 +13,12 @@ struct HeroHandle
     CBaseIntelligentPointer item;
 };
 
+class CPlayer;
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 class HeroResolver
 {
 public:
-    HeroHandle* ResolveHero();
+
 };
 
 class CCreatureActionBase
@@ -88,7 +90,7 @@ void CGameScriptInterface::ChangeHeroHealthBy(
     bool rawHealthMode,
     bool applyHealthChange) const
 {
-    HeroHandle* handle = heroResolver->ResolveHero();
+    HeroHandle* handle = ((HeroHandle*)&((CPlayerManager*)heroResolver)->GetMainPlayer());
     if (handle == 0)
         return;
     CThingCreatureBase* hero = handle->item.GetPItem();

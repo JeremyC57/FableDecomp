@@ -4,7 +4,7 @@
 //   "CCreatureAction_TrollWhackGroundBase::Initialise" is propagated, as in the landed CHTE_Prisoner::Main 0x00D69F50), the game
 //   script interface (+4) slots 7 NewScriptFrame, 8 StartScriptingEntity(const CScriptThing&,
 //   CScriptGameResourceObjectScriptedThingBase&, EScriptAIPriority), 108 RemoveThing(const CScriptThing&, bool, bool); the
-//   handle's IsScripting @ 0x00CD23B9 and Release @ 0x00CD2770 (manifest labels "C3DMeshInfo::HasPhysicsMesh" /
+//   handle's IsValid @ 0x00CD23B9 and Release @ 0x00CD2770 (manifest labels "C3DMeshInfo::HasPhysicsMesh" /
 //   "CMemoryDataOutputStream::Clear" are propagated).
 // Layout = Ego_r.pdb CFH_BriarRose (28 bytes): CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass
 //   (CQ_FireHeartScript*) +0x14, PMasterData +0x18. In the retail CQ_FireHeartScript (0x64 below the PDB) the
@@ -21,7 +21,7 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_HIGHEST = 4 };
 
 class CScriptGameResourceObjectScriptedThingBase { public:
     unsigned char _body[0x10];
-    bool IsScripting();                          // 0x00CD23B9
+    bool IsValid() const;                          // 0x00CD23B9
     void Release();                              // 0x00CD2770
 };
 
@@ -77,7 +77,7 @@ void CFH_BriarRose::Main()
         return;
     }
     CScriptGameResourceObjectScriptedThingBase* handle = &ParentClass->seh_BriarRose;
-    if (handle->IsScripting())
+    if (handle->IsValid())
         handle->Release();
     while (!Game->StartScriptingEntity(Me, ParentClass->seh_BriarRose, SCRIPT_AI_PRIORITY_HIGHEST)) {
         Game->NewScriptFrame();

@@ -112,7 +112,7 @@ struct CGameScriptInterface_Calls {               // slots: ghidra_out/cgsi_slot
     virtual void v489(); virtual void v490(); virtual void v491(); virtual void v492(); virtual void v493(); virtual void v494(); virtual void v495();
     virtual void EntitySetAsScared(const CScriptThing& thing, bool scared) const;   // slot 496 (+0x7c0)
 };
-struct CTimerService {
+class CGameScriptInterface { public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17();
@@ -130,7 +130,7 @@ struct CTimerService {
     virtual void v84(); virtual void v85(); virtual void v86(); virtual void v87(); virtual void v88();
     virtual void SetTimer(long index, long time);            // slot 89 (+0x164)
 };
-extern CTimerService* g_pThingManager_0143e8f8;              // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;              // 0x0143E8F8
 class CScriptDef { public:
     unsigned char _pad000[0xdf4];
     long          TraderInfectionTime;                       // +0xdf4
@@ -179,11 +179,11 @@ void CTraderScript::HandleTrader(long state)
         if (ParentClass->LongInfection) {
             if (IsActiveThreadTerminating())
                 return;
-            g_pThingManager_0143e8f8->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTimeLong);
+            g_pGameScriptInterface->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTimeLong);
         } else {
             if (IsActiveThreadTerminating())
                 return;
-            g_pThingManager_0143e8f8->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTime);
+            g_pGameScriptInterface->SetTimer(Timer, pGlobalScriptDef->TraderInfectionTime);
         }
     } else if (Me.GetDataString() == "SCARED") {
         if (IsActiveThreadTerminating())

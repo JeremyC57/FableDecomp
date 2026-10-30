@@ -65,10 +65,12 @@ static CKeyPair* g_lower_bound_result = 0;
 static CVectorMap* g_observed_map = 0;
 static ETCInterfaceType g_observed_key = ETC_DUMMY;
 
-extern "C" void* __fastcall Sub_ResolveA(void* self)
+class CPlayer;
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970, called by the row
+CPlayer& CPlayerManager::GetMainPlayer()
 {
-    g_resolve_a_input = self;
-    return (void*)0xAAAA;
+    g_resolve_a_input = this;
+    return *(CPlayer*)0xAAAA;
 }
 
 class CThingPlayerCreature;

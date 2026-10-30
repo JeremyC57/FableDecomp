@@ -22,13 +22,14 @@
 //   ebx/ebp are pushed inside the guarded block, `lea esp,[esp]` aligns the loop; the listener loop loads the set's
 //   vtable before forming its address (`mov eax,[esi+2Ch] ; lea edi,[esi+2Ch]`).
 // Label correction: the catalog's `C3DMesh2_OnDestructorCleanup` is propagated.
-extern unsigned char g_section_0143bb14[];  // 0x0143BB14: the module's critical section
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-struct CScopedLock_00c123b0 {                  // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:                  // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CScopedLock_00c123b0(void* section);        // 0x00C0FFC0
-    ~CScopedLock_00c123b0();                    // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);        // 0x00C0FFC0
+    ~PKCProtectionInstance();                    // 0x00C0FFE0
 };
 
 struct CSoundEventManager;
@@ -67,7 +68,7 @@ struct CSoundEventManager {
 
 void CSoundEventManager::Shutdown()
 {
-    CScopedLock_00c123b0 lock(g_section_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     for (unsigned long i = 0; i < GetNumEvents(); ++i) {
         CSoundEvent* event = GetEvent(i);
         if (event->IsActive())

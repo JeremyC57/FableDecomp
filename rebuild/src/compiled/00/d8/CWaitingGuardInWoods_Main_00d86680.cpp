@@ -2,7 +2,7 @@
 // Leaf: ?Main@CWaitingGuardInWoods@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D86680, 762 bytes (+ int3 padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30,
-//   CBaseObject ctor 0x0099A380, the scripted-thing handle's IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0,
+//   CBaseObject ctor 0x0099A380, the scripted-thing handle's IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0,
 //   CCharString 0x0099EBF0 / 0x0099EAE0, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall); CScriptThing slots 6
 //   GetPosition, 21 MsgIsHitBy, 41 MsgIsHitBySpecialAbilityFrom, 42 MsgIsHitByAnySpecialAbilityFrom; GameCalls slots 7
 //   NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 350 MiniMapAddMarker, 421 IsCameraPosOnScreen, 451
@@ -48,7 +48,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -112,7 +112,7 @@ void CWaitingGuardInWoods::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating()) return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -136,7 +136,7 @@ void CWaitingGuardInWoods::Main()
         if (IsActiveThreadTerminating()) return;
     }
     if (IsActiveThreadTerminating()) return;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     do {

@@ -5,7 +5,7 @@
 //   at 0x00F018D9); a sibling of 0x00EFF4D0 (same shape without the SetThingHasInformation call, priority 1). 28 bytes matches the PDB CEndGameScarletRobe, so the label is kept; the true class is unproven.
 // Callees: CScriptThing copy ctor 0x004ABE90 (the functor's member), the functor registration 0x00F35B10 and IsDone 0x00F35B30
 //   (on `this`), the functor's out-of-line dtor 0x00EF7AB0 (vtable 0x012C2FE8, landed as CScriptThingFunctor_00ef7ab0),
-//   CBaseObject::CBaseObject() 0x0099A380, the handle's IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0
+//   CBaseObject::CBaseObject() 0x0099A380, the handle's IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0
 //   (vtable 0x0127094C = CScriptGameResourceObjectScriptedThingBase), game interface slots 7 NewScriptFrame, 8
 //   StartScriptingEntity.
 // Layout: CEntityScriptBase {vptr, Game +4, CScriptThing Me +8}, ParentClass +0x14, PMasterData +0x18.
@@ -44,7 +44,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointer_ScriptedThing PImp;                // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 
@@ -78,7 +78,7 @@ void CEndGameScarletRobe::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_LOW)) {
         Game->NewScriptFrame();

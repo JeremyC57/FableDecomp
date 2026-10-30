@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DAA700, 1133 bytes, plain `ret`, no EH frame.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, CBaseClass dtor 0x0099A2E0, SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle
-//   IsScripting 0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / MoveToPosition 0x007E72F0 /
+//   IsValid 0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / MoveToPosition 0x007E72F0 /
 //   IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, cast map ctor 0x00CDBF70 / dtor 0x00CDBFB0 /
 //   operator[] 0x00CD3D2E, handle operator= 0x008ABD10, movie ctor 0x006E7B60 / dtor 0x006E7B80, RunCutsceneMacro 0x00CBFB7D,
 //   IsDistanceFromThingToPositionOver 0x00CBE45C, IsDistanceBetweenThingsUnder 0x00CBE2FF (all three __fastcall), CCharString

@@ -8,13 +8,14 @@
 //   the description.
 // Layout: +0x00 the critical section (the scoped lock takes `this`), +0x18 capacity, +0x1C slot array, +0x20 count,
 //   +0x24 tail index.
-// Callees: CScopedLock::CScopedLock(void*) 0x00C0FFC0 / ~CScopedLock 0x00C0FFE0 (8-byte lock: section + entry tick).
+// Callees: PKCProtectionInstance::PKCProtectionInstance(void*) 0x00C0FFC0 / ~PKCProtectionInstance 0x00C0FFE0 (8-byte lock: section + entry tick).
 // Shape: the full test is an early `return` inside the lock's scope -- that alone gives the EH frame (state -1 stored
 //   right after the constructor, scheduled above the `je`); the `if (!full) { ... }` form compiles with no frame at
 //   all (67 bytes). The increment of the count lands between the `idiv` and the tail store.
-struct CScopedLock {
-    CScopedLock(void* section);                 // 0x00C0FFC0
-    ~CScopedLock();                             // 0x00C0FFE0
+class PKCCriticalSection;
+class PKCProtectionInstance { public:
+    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
+    ~PKCProtectionInstance();                             // 0x00C0FFE0
     void* m_pSection;
     long  m_entryTick;
 };
@@ -32,7 +33,7 @@ struct CLockedRingBuffer {
 
 void CLockedRingBuffer::Push(CCodaFrame* frame)
 {
-    CScopedLock lock(this);
+    PKCProtectionInstance lock((PKCCriticalSection*)this);
     if (m_count == m_capacity)
         return;
     m_pSlots[m_tail] = frame;

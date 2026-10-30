@@ -11,14 +11,14 @@
 //   CSoundEventManager::AssignPendingItems; +0x7c8 is the flag word the landed SetFlagBit1 0x00C11180 sets. Its caller
 //   is the audio owner's per-tick CAudioOwner::Update 0x00C091F0 (on the owner's +0x38 manager). The +0x7bc part and
 //   the 0x00C12040 / 0x00C21A50 callees keep descriptive placeholder names.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CSoundEventManager;
@@ -50,7 +50,7 @@ struct CSoundEventManager {
 
 void CSoundEventManager::Update()
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     for (unsigned long i = 0; i < m_events.GetCount(); ++i) {
         CSoundEvent* event = m_events.Get(i);
         if (event->IsActive())

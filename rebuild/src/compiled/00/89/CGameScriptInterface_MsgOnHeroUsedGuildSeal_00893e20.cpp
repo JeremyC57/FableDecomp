@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00893E20, 80 bytes, thiscall, plain `ret`.
 // Identity (proven): CGameScriptInterface vtable 0x01260F0C slot 48; Ego_r.pdb ?MsgOnHeroUsedGuildSeal@CGameScriptInterface@@UBE_NXZ (donor
 //   0x008D0DA0) and the manifest label agree.
-// Callees: CGameScriptInterface::GetCurrentWorldFrameForMessages() const 0x006E7510, GetMaxWorldFrameForMessages() const
+// Callees: CGameScriptInterface::GetMinWorldFrameForMessages() const 0x006E7510, GetMaxWorldFrameForMessages() const
 //   0x006E7530, CMessageEventManager::FindMostRecentMessage<CFilter_Bind2<CMessageEventFilter_IsOfType,
 //   CMessageEventFilter_OccuredBetween> >(const ...&) const 0x008ABED0 (Ego_r.pdb template name).
 // Shape (family K031, representative 0x00893AB0, grade 12): the two frame bounds are read first (current, then maximum;
@@ -49,15 +49,17 @@ public:
 class CGameScriptInterface {                             // Ego_r.pdb 84 bytes
 public:
     virtual ~CGameScriptInterface();
-    long GetCurrentWorldFrameForMessages() const;        // 0x006E7510
+protected:
+    long GetMinWorldFrameForMessages() const;        // 0x006E7510
     long GetMaxWorldFrameForMessages() const;            // 0x006E7530
+public:
     virtual bool MsgOnHeroUsedGuildSeal() const;
     CWorld* World;                                       // +0x04
 };
 
 bool CGameScriptInterface::MsgOnHeroUsedGuildSeal() const
 {
-    long first = GetCurrentWorldFrameForMessages();
+    long first = GetMinWorldFrameForMessages();
     long last = GetMaxWorldFrameForMessages();
     CMessageEventManager* manager = World->PMessageEventManager.Data;
     if (manager->FindMostRecentMessage(

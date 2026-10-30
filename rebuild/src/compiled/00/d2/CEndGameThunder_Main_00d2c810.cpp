@@ -1,7 +1,7 @@
 // CEndGameThunder::Main() -- end-game Thunder: make Me undamageable, unkillable, a villager and off the combo count; unless the fight is already over, walk Me up to the hero, open a conversation (married / not married to Lady Grey line, then two more lines); then until the fight is over, ally Me with the hero whenever the hero hits Me, and whenever the hero strays beyond 8 units walk Me back to within 4
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D2C810, 1901 bytes, plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsScripting 0x00CD23B9 / Release
+// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release
 //   0x00CD2770 / MoveTo 0x007E72F0 / IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, IsActiveThreadTerminating
 //   0x00F35B30, IsDistanceBetweenThingsOver 0x00CBE3EA (__fastcall), operator delete 0x00BFE9BC, CCharString 0x0099EBF0 /
 //   0x0099EAE0; GameCalls slots 7, 8, 70, 364-366 conversation, 516 damageable, 517 killable, 526 combo, 599 ally, 601 faction;
@@ -85,7 +85,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     void MoveTo(const C3DVector& pos, float speed, bool a, bool b, bool c);   // 0x007E72F0
     bool IsPerformingScriptTask() const;                // 0x007E7450
@@ -148,7 +148,7 @@ void CEndGameThunder::Main()
                 return;
 #pragma inline_depth()
             }
-        if (face.IsScripting())
+        if (face.IsValid())
             face.Release();
         while (!Game->StartScriptingEntity(Me, face, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();
@@ -211,7 +211,7 @@ void CEndGameThunder::Main()
         }
         Game->AddLineToConversation(conversation, "TEXT_QST_001_THUNDER_CONVERSATION_FIRST_LINE", false, Me, Game->GetHero());
         Game->AddLineToConversation(conversation, "TEXT_QST_001_THUNDER_CONVERSATION_SECOND_LINE", false, Me, Game->GetHero());
-        if (face.IsScripting())
+        if (face.IsValid())
             face.Release();
     }
     while (!ParentClass->ThunderFightOver) {
@@ -239,7 +239,7 @@ void CEndGameThunder::Main()
                     return;
 #pragma inline_depth()
                 }
-            if (face.IsScripting())
+            if (face.IsValid())
                 face.Release();
             while (!Game->StartScriptingEntity(Me, face, (EScriptAIPriority)4)) {
                 Game->NewScriptFrame();
@@ -278,7 +278,7 @@ void CEndGameThunder::Main()
                             return;
 #pragma inline_depth()
                         }
-                    if (face.IsScripting())
+                    if (face.IsValid())
                         face.Release();
                     {
 #pragma inline_depth(0)
@@ -302,7 +302,7 @@ void CEndGameThunder::Main()
                     return;
 #pragma inline_depth()
                 }
-            if (face.IsScripting())
+            if (face.IsValid())
                 face.Release();
         }
     }

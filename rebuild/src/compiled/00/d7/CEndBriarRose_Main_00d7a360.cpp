@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D7A360, 1333 bytes (+ int3 padding), plain `ret`. Literals "TEXT_QST_B04_BRIAR_ONTALK" 0x012D3450, "TEXT_QST_B04_BRIAR_ONHIT" 0x012D3434.
 //   CEndScythe::Main 0x00D79D50 and CEndBriarRose::Main 0x00D7A360 are byte-identical apart from the literals (the catalog books both
 //   as CEndBriarRose::Main; the 0x00D79D50 vtable 0x012D33C8 and its literals name CEndScythe).
-// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsScripting 0x00CD23B9 / Release 0x00CD2770 /
+// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 /
 //   GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, movie handle
 //   out-of-line dtor 0x006E7B80, CIsThingAlive (vtable 0x012C32F0, inline dtor), CScriptThing copy 0x004ABE90 /
 //   dtor 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC, CCharString
@@ -96,9 +96,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
+    virtual void Speak(const CScriptThing&, const char*, ETextGroupSelectionMethod, bool, bool, bool);   // 0x007E7390
 public:
     virtual CScriptThing GetScriptThing() const;   // 0x007E7490
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
@@ -160,7 +160,7 @@ void CEndBriarRose::Main()
     Game->SetThingHasInformation(Me, false, false, false);
     Game->EntitySetAsKillable(Me, false, false);
     Game->EntitySetAsToAddToComboMultiplierWhenHit(Me, false);
-    if (face.IsScripting())
+    if (face.IsValid())
         face.Release();
     while (!Game->StartScriptingEntity(Me, face, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

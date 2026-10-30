@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D72200, length 720 bytes (+ int3 padding).
 // Callees: the entity-script machinery of the landed CDyingVillager::Main 0x00D7F460 (CIsThingAlive predicate vtable
 //   0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / operator= 0x008AB980, SetPredicate 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle: CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9,
+//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle: CBaseObject ctor 0x0099A380, IsValid 0x00CD23B9,
 //   Release 0x00CD2770, dtor 0x007E74D0), IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString 0x0099EBF0 /
 //   0x0099EAE0; GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 72 GetThingWithScriptName,
 //   599 EntitySetThingAsAllyOfThing, 622 EntitySetAsOpinionSource.
@@ -943,7 +943,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
  void PlayAnimation(const CCharString& anim, bool waitForFinish, bool stayOnLastFrame, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 18, 0x007E73D0
  void PlayLoopingAnimation(const CCharString& anim, long loops, bool waitForFinish, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 20, 0x007E73F0
@@ -976,7 +976,7 @@ void CHTG_Audience::Main()
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();
@@ -996,7 +996,7 @@ void CHTG_Audience::Main()
  if (IsActiveThreadTerminating()) return;
  Game->EntitySetAsOpinionSource(ExecutionerGuy, "OPINION_SOURCE_INANIMATE_EVIL_HIGH");
  Game->EntitySetAsOpinionSource(Game->GetHero(), "OPINION_SOURCE_INANIMATE_GOOD_HIGH");
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  do {
   Game->NewScriptFrame();

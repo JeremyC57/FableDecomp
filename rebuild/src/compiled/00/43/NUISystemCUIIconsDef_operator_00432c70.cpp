@@ -10,15 +10,15 @@
 // Shape: same TU as the CDefClassBase out-of-line copy, so the implicit CDefClassBase/CParentDefClassBase/CVectorMap
 //   assignments are inlined (`__forceinline` user copies) and the 32 dwords copied member by member.
 #pragma pack(push, 1)
-struct CDefRootBase {                                   // 28-byte polymorphic root of CDefClassBase
+class CDefPointeeBase { public:                                   // 28-byte polymorphic root of CDefClassBase
     virtual void v00();
     unsigned long m_words[6];                           // +0x04..+0x18
-    CDefRootBase& operator=(const CDefRootBase& other); // 0x00431F60
+    CDefPointeeBase& operator=(const CDefPointeeBase& other); // 0x00431F60
 };
 
 class CDefinitionManager;
 
-class CDefClassBase : public CDefRootBase { public:
+class CDefClassBase : public CDefPointeeBase { public:
     CDefinitionManager* PDefManager;                    // +0x1c
     unsigned long GlobalIndex;                          // +0x20
     unsigned char Setup : 1;                            // +0x24 bit 0
@@ -26,7 +26,7 @@ class CDefClassBase : public CDefRootBase { public:
     unsigned char DefaultValsApplied : 1;               // +0x24 bit 2
     __forceinline CDefClassBase& operator=(const CDefClassBase& other)
     {
-        CDefRootBase::operator=(other);
+        CDefPointeeBase::operator=(other);
         PDefManager = other.PDefManager;
         GlobalIndex = other.GlobalIndex;
         Setup = other.Setup;

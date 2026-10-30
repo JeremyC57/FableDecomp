@@ -67,12 +67,12 @@ class CScriptThing { public:
     virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
     virtual bool IsValid() const;                  // slot 75 (+0x12c)
 };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;              // 0x00487DC0 (the manifest label "_Cons_val<...>" is propagated)
     const CThingPlayerCreature* PeekPControlledCreature() const;        // 0x00487DD0 (the manifest label "_Cons_val<...>" is propagated)
 };
-struct CPlayerManager_Retail {
-    CPlayer* GetMainPlayer();               // 0x00449970 (labelled "Catch@0040d959", propagated)
+class CPlayerManager { public:
+    CPlayer& GetMainPlayer();               // 0x00449970
 };
 struct CDisplayEngine_Retail; class CWorld;
 class CGameScriptInterface { public:
@@ -81,7 +81,7 @@ class CGameScriptInterface { public:
     long                    Component;
     CDisplayEngine_Retail*  DisplayEngine;                   // +0x0c
     long                    DefinitionManager;
-    CPlayerManager_Retail*  PlayerManager;                   // +0x14
+    CPlayerManager*  PlayerManager;                   // +0x14
     unsigned char           _pad18[4];
     bool                    m_handLampLit;                   // +0x1c (read when the hero has no hand-lamp component)
     void EntityResetForceToLookAt(const CScriptThing& thing) const;

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DF4610, 281 bytes (+ int3 padding). Entity-script slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (NScript::CIsThingConscious filter, vtable 0x012C2FE8), filter registration
 //   0x00F35B10 / IsDone 0x00F35B30 on `this` (propagated manifest labels), CBaseObject ctor 0x0099A380 (labelled
-//   CBaseIntelligentPointer), the scripted-thing handle's IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0
+//   CBaseIntelligentPointer), the scripted-thing handle's IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0
 //   (labels HasPhysicsMesh / Clear / ~CScriptGameResourceObjectMovieBase are propagated), CCharString 0x0099EBF0 / 0x0099EAE0,
 //   CGameScriptInterface slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 350 MiniMapAddMarker,
 //   451 GiveThingBestEnemyTarget.
@@ -34,7 +34,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void v00();
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                        // 0x00CD23B9
+    bool IsValid() const;                        // 0x00CD23B9
     void Release();                            // 0x00CD2770
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -78,7 +78,7 @@ void CKrakenMinion::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_HIGH)) {
         Game->NewScriptFrame();

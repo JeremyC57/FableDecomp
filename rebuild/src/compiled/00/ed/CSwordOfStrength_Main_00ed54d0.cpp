@@ -14,7 +14,7 @@
 //   loop's thing = crowd[i] calls the out-of-line CScriptThing::operator=.
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E11DC0, 942 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0), SetPredicate 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, scripted-thing
-//   handle (CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9, Release 0x00CD2770, MoveToThing 0x007E7300, ClearCommands 0x007E7360,
+//   handle (CBaseObject ctor 0x0099A380, IsValid 0x00CD23B9, Release 0x00CD2770, MoveToThing 0x007E7300, ClearCommands 0x007E7360,
 //   PlayAnimation 0x007E73D0, PlayLoopingAnimation 0x007E73F0, ClearAllActionsIncludingLoopingAnimations 0x007E7410,
 //   IsPerformingScriptTask 0x007E7450, dtor 0x007E74D0); GameCalls slots 7, 8, 70 GetHero, 77 GetNearestWithScriptName, 451
 //   GiveThingBestEnemyTarget; CScriptThing slots 16 IsAwareOfHero, 21/41/42 hit tests. Strings "Q_WB_DeadBody" 0x012E0564,

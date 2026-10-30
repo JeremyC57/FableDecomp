@@ -4,7 +4,7 @@
 // Callees: CCharString 0x0099EBF0 / 0x0099EC30 / ~ 0x0099EAE0 / operator=(const char*) 0x0099EFE0, operator new 0x00BFEA1A,
 //   AddEntityScriptBinding 0x00CB8230 (binding vtable 0x012D364C, allocator 0x00D7B400), PostAddScriptedEntities 0x00CB8930,
 //   IsActiveThreadTerminating 0x00CB7940, ~CScriptThing 0x004AA840, map<CCharString,CCharString>::operator[] 0x009AC700,
-//   PlayCutScene 0x00D7C470 (by-value name), AddLogbookStoryEntryString 0x00CBE960 (__fastcall), pGlobalScriptDef 0x0143E90C;
+//   PlayCutscene 0x00D7C470 (by-value name), AddLogbookStoryEntryString 0x00CBE960 (__fastcall), pGlobalScriptDef 0x0143E90C;
 //   CGameScriptInterface slots 7, 12, 64, 70, 72, 156, 276, 280, 288, 296, 364, 366, 374, 425, 655, 665.
 // Layout: Game +0x40, PMasterData +0x44 (+0x63 Thunder defeated, +0x70 arena state, +0x74 / +0xD7 line selectors),
 //   StartDone +0x48, SkipStart +0x49, JackSpoke +0x4A, CutSceneArgs map +0x4C.
@@ -96,7 +96,7 @@ public:
     unsigned char         _pad_0x4b;
     CStringMap            CutSceneArgs;                  // +0x4C
     void Main();
-    void PlayCutScene(CCharString name);                 // 0x00D7C470
+    void PlayCutscene(CCharString name);                 // 0x00D7C470
 };
 } // namespace NScript
 using NScript::CQ_HeroSoulsThunderScript;
@@ -130,7 +130,7 @@ void NScript::CQ_HeroSoulsThunderScript::Main()
                 return;
             CutSceneArgs["$LINE1"] = "TEXT_CS_B04_SOUL1_THUNDER_START_40_C";
         }
-        PlayCutScene("CS_HEROSOULS_SOUL1_THUNDER_START");
+        PlayCutscene("CS_HEROSOULS_SOUL1_THUNDER_START");
         StartDone = true;
         Game->ActivateQuest("Q_HeroSoulsArena");
         Game->ActivateQuest("Q_HeroSoulsPermanentArena");
@@ -161,7 +161,7 @@ void NScript::CQ_HeroSoulsThunderScript::Main()
     }
     if (IsActiveThreadTerminating())
         return;
-    PlayCutScene("CS_HEROSOULS_SOUL1_THUNDER_SUCCESS");
+    PlayCutscene("CS_HEROSOULS_SOUL1_THUNDER_SUCCESS");
     Game->GiveHeroMorality(pGlobalScriptDef->ThunderMoralityReward);
     AddLogbookStoryEntryString("TEXT_QST_LOG_STORY_PLATINUM_355");
     Game->SetQuestAsCompleted(Game->GetActiveQuestName(), true, true, true);

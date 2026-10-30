@@ -1,0 +1,35 @@
+addr       parity           behav  name
+00aded70   RELOCATION_MATCH PASS   BuildFromPoints
+00b6c5d0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVCVertexShader@@PAV1@@std@@YIPAVCVertexShader@@PAV1@00ABU__false_type@0@@Z -> 00b6bab0 labelled '_global::UninitCopy_CVertexShader_00b6bab0'
+00b6c5d0   RELOCATION_MATCH PASS   _M_fill_insert
+00b8f950   RELOCATION_MATCH PASS   insert
+00c1a110   RELOCATION_MATCH PASS   QueueRead
+00c25b10   WARN RELOC_NAME: ??0PKCTimerManager@@QAE@MJPAUPKCTimerTarget@@@Z -> 00c25a20 labelled 'CVtable_012b3fa0::CVtable_012b3fa0'
+00c25b10   WARN RELOC_NAME: ??0CWorkerThread_00c355e0@@QAE@PAXPBUSThreadParams_00c355e0@@@Z -> 00c355e0 labelled 'PKCThreadManager::PKCThreadManager::InitializeThread'
+00c25b10   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c25b10   WARN RELOC_NAME: ??6CString@@QAIAAV0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c25b10   RELOCATION_MATCH PASS   CTimerHost
+00c57b60   RELOCATION_MATCH PASS   QueueChunk
+00c5ab50   RELOCATION_MATCH PASS   UpdateModulation
+00caaca0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caaca0   RELOCATION_MATCH PASS   Run
+
+WINS: 8
+  00aded70 RELOCATION_MATCH C3DBoundingBox::?BuildFromPoints@C3DBoundingBox@@QAEXPBVC3DVector@@M@Z
+  00b6c5d0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@VCVertexShader@@V?$allocator@VCVertexShader@@@std@@@std@@QAEXPAVCVertexShader@@IABV3@@Z
+  00b8f950 RELOCATION_MATCH std::vector::?insert@?$vector@U?$pair@KV?$CCountedPointer@VCVertexBufferWin32@@@@@std@@
+  00c1a110 RELOCATION_MATCH PKCDefaultFileManager::?QueueRead@PKCDefaultFileManager@@QAE_NKKPAX000@Z
+  00c25b10 RELOCATION_MATCH CTimerHost::??0CTimerHost@@QAE@MJPAUPKCTimerTarget@@PBUSThreadParams_00c355e0@@@Z
+  00c57b60 RELOCATION_MATCH CVtable_012b8ed4::?QueueChunk@CVtable_012b8ed4@@QAEXXZ
+  00c5ab50 RELOCATION_MATCH CCodaVoice::?UpdateModulation@CCodaVoice@@
+  00caaca0 RELOCATION_MATCH CBaseFilter::?Run@CBaseFilter@@
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  C3DBoundingBox_BuildFromPoints_00aded70
+  stdvector_Mfillinsert_00b6c5d0
+  stdvector_insert_00b8f950
+  PKCDefaultFileManager_QueueRead_00c1a110
+  CTimerHost_CTimerHost_00c25b10
+  CVtable012b8ed4_QueueChunk_00c57b60
+  CCodaVoice_UpdateModulation_00c5ab50
+  CBaseFilter_Run_00caaca0

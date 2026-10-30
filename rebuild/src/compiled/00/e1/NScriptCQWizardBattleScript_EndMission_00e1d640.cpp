@@ -88,7 +88,7 @@ public:
     unsigned char               _pad_0x44[7];
     bool                        MissionSucceeded;       // +0x4b
     void CleanUp();                                     // 0x00E1D690
-    void FinishMazeStage();                             // 0x00E1D7B0
+    void CutsceneMazeDeath();                             // 0x00E1D7B0
     void EndMission();
 };
 } // namespace NScript
@@ -99,7 +99,7 @@ void NScript::CQ_WizardBattleScript::EndMission()
     CleanUp();
     Game->SetTeleportingAsActive(true);
     Game->DisplayQuestInfo(false);
-    FinishMazeStage();
+    CutsceneMazeDeath();
     Game->GiveHeroExperience(pGlobalScriptDef->m_experienceReward);
     MissionSucceeded = true;
 }

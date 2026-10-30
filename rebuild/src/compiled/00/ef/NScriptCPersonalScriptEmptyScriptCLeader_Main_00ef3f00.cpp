@@ -4,7 +4,7 @@
 // Callees: the is-conscious predicate NScript::CIsThingConscious (vtable 0x012C2FE8, CScriptThing copy 0x004ABE90), SetPredicate 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, GFIntToCharString 0x0099F830 and operator+(const char*, const CCharString&) 0x0099F690
 //   (both __fastcall, hidden result in ecx), CCharString dtor 0x0099EAE0, the scripted-thing handle (CBaseObject ctor 0x0099A380
-//   / dtor 0x0099A430, IsScripting 0x00CD23B9, Release 0x00CD2770, MoveToThing 0x007E7300, out-of-line dtor 0x007E74D0, base
+//   / dtor 0x0099A430, IsValid 0x00CD23B9, Release 0x00CD2770, MoveToThing 0x007E7300, out-of-line dtor 0x007E74D0, base
 //   vtable 0x0126008C), CScriptThing dtor (out-of-line copy 0x004AA840, base ~CBaseClass 0x0099A2E0), operator delete 0x00BFE9BC;
 //   GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity, 72 GetThingWithScriptName, 376 Pause. String "Marker" 0x01245BE0.
 // Layout: entity-script model of the landed CDrinkingHobbe::Main 0x00D9BF60 (GameCalls interface copied from it). CLeader (Ego_r.pdb,
@@ -191,7 +191,7 @@ typedef long EScriptVillageAttitude;
 typedef long EScriptingStateGroups;
 typedef long ESex;
 typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
+enum ETextGroupSelectionMethod { };
 typedef long ETutorialCategory;
 namespace NEntityEvents {typedef long EEventType;}
 struct GameCalls {virtual ~GameCalls();
@@ -1059,6 +1059,7 @@ struct CBaseObjectDtor {                               // the same root, as its 
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
  __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
+enum EScriptEntityMoveType;
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
  struct Words {                                     // CCountedPointer<void> {Data, Info}, released by hand
   void* Data; CCPPointerInfo* Info;
@@ -1075,9 +1076,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  } PImp;
  CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
  virtual void s001();
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
- void MoveToThing(const CScriptThing& thing, float distance, long moveType, bool a, bool b, bool c, bool d);   // 0x007E7300
+ virtual void MoveToThing(const CScriptThing&, float, EScriptEntityMoveType, bool, bool, bool, bool);   // 0x007E7300
  void Destroy();                                    // ~CScriptGameResourceObjectScriptedThingBase, out of line 0x007E74D0
  __forceinline void DestroyInline()
  {
@@ -1110,7 +1111,7 @@ void CLeader::Main()
  while (!IsActiveThreadTerminating()) {
   CScriptThingLocal target = Game->GetThingWithScriptName("Marker" + GFIntToCharString(marker));
   CScriptGameResourceObjectScriptedThingBase handle;
-  if (handle.IsScripting())
+  if (handle.IsValid())
    handle.Release();
   while (!Game->StartScriptingEntity(Me, handle, 4)) {
    Game->NewScriptFrame();
@@ -1125,7 +1126,7 @@ void CLeader::Main()
    target.Destroy();
    return;
   }
-  handle.MoveToThing(target.Thing(), 0.5f, 0, true, true, false, true);
+  handle.MoveToThing(target.Thing(), 0.5f, (EScriptEntityMoveType)0, true, true, false, true);
   Game->Pause(5.0f);
   if (++marker > 6)
    marker = 1;

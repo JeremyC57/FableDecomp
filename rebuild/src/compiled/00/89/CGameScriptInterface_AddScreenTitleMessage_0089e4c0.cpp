@@ -21,7 +21,7 @@ __forceinline AstmTarget* GetTCIfPresent(unsigned char* thing, int kind)
 struct AstmTarget { void d(void* a0, float a1, bool a2, int z, int one); };
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
-extern CPlayer* __fastcall ASTM_Helper_A(void* p_ecx);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 
 void __fastcall CGameScriptInterface_AddScreenTitleMessage(
     void* self_ecx,
@@ -31,7 +31,7 @@ void __fastcall CGameScriptInterface_AddScreenTitleMessage(
     bool messageFlag)
 {
     void* chain = *(void**)((char*)self_ecx + 0x14);
-    CPlayer* a = ASTM_Helper_A(chain);
+    CPlayer* a = (&((CPlayerManager*)chain)->GetMainPlayer());
     unsigned char* obj = (unsigned char*)a->GetPControlledCreature();
     if (obj == 0) return;
     if (*(unsigned char*)(obj + 0x91) & 0x01) return;

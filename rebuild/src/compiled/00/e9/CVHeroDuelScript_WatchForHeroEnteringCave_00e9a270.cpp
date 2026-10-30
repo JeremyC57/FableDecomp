@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E9A270, 0x347 bytes, plain `ret`. PDB ?WatchForHeroEnteringCave@CV_HeroDuelScript@NScript@@QAEXXZ.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, IsActiveThreadTerminating 0x00CB7940,
 //   ~CScriptThing 0x004AA840, scripted-thing handle ctor 0x007E72A0 / dtor 0x007E74D0 / operator= 0x008ABD10 /
-//   IsScripting 0x00CD23B9 / Release 0x00CD2770, cast map ctor 0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E,
+//   IsValid 0x00CD23B9 / Release 0x00CD2770, cast map ctor 0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E,
 //   movie ctor 0x006E7B60 / dtor 0x006E7B80, RunCutsceneMacro 0x00CBFB7D (__fastcall); CGameScriptInterface slots 7, 8,
 //   11, 70, 72, 370, 371, 379, 512.
 // Strings: "HeroDualAreaCave" 0x012ED198, "Thunder" 0x012ED164, "THUNDER" 0x012CC504, "HERO" 0x01255174, "" 0x0122D70E,
@@ -88,7 +88,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:     // vtable 0x01270
     CScriptGameResourceObjectScriptedThingBase();       // 0x007E72A0
     virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 class CScriptGameResourceObjectMovieBase { public:             // vtable 0x01260EF4, 0x10 bytes
@@ -149,7 +149,7 @@ void CV_HeroDuelScript::WatchForHeroEnteringCave()
     CScriptGameResourceObjectScriptedThingBase thunderHandle;
     Game->StartScriptingEntity(thunder, thunderHandle, (EScriptAIPriority)4);
     CScriptGameResourceObjectScriptedThingBase hero;
-    if (hero.IsScripting())
+    if (hero.IsValid())
         hero.Release();
     while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

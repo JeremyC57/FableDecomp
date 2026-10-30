@@ -20,6 +20,7 @@
 // Layout: library code with no RTTI or PDB type: descriptive model sized from the 0x84-byte allocation; vtables
 //   0x012B1E24 (group) and 0x012B1C98 (the +4 container; its base stores the data pointer first, as the out-of-line
 //   sibling container ctor 0x00C0A6D0 does).
+class PKCCriticalSection;
 struct CSteeringSaveRecord {
     float  A0;              // +0x00
     float  A4;              // +0x04
@@ -56,9 +57,9 @@ struct CSteeringList {
     ~CSteeringList();
     char Pad[0x20];
 };
-struct CScopedSteeringTimer {
-    CScopedSteeringTimer(void* timer);   // 0x00C0FFC0
-    ~CScopedSteeringTimer();             // 0x00C0FFE0
+class PKCProtectionInstance { public:
+    PKCProtectionInstance(PKCCriticalSection* timer);   // 0x00C0FFC0
+    ~PKCProtectionInstance();             // 0x00C0FFE0
     void* Timer;
     unsigned long Start;
 };
@@ -85,7 +86,7 @@ void __fastcall SetSteeringMode(int mode, int value, int on);  // 0x00C1BE00
 void __stdcall SetSteeringTimeStep(float step);                // 0x00C1BD80
 void __stdcall SetSteeringRange(int lo, int hi);               // 0x00C1B9A0
 void __fastcall NullAssertHook(const char* message);        // 0x00C089E0 (empty: `ret`)
-extern char g_lock_0143bb14[];                                 // 0x0143BB14
+extern PKCCriticalSection g_lock_0143bb14;                                 // 0x0143BB14
 extern void (__fastcall* g_pfnAssertHook)(const char* message);   // 0x0143BB2C
 extern bool g_SteeringActive;                                  // 0x0143BAF8
 
@@ -116,7 +117,7 @@ CAudioOwner::CAudioOwner(CSteeringSaveRecord* record, CSteeringWorldEntry* entry
       LimitA(record->LimitA), LimitB(record->LimitB), P78(0), P7C(0), Capacity(0x1000)
 {
     SetSteeringWorld(record->World);
-    CScopedSteeringTimer timer(g_lock_0143bb14);
+    PKCProtectionInstance timer(&g_lock_0143bb14);
     g_pfnAssertHook = NullAssertHook;
     SetSteeringOption(0, true);
     SetSteeringOption(1, true);

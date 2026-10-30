@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E1AF30, 452 bytes; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor @ 0x004ABE90 / ~CScriptThing @ 0x004AA840, CEntityScriptBase::SetPredicate @ 0x00F35B10,
 //          CEntityScriptBase::IsActiveThreadTerminating @ 0x00F35B30, CBaseObject::CBaseObject @ 0x0099A380,
-//          CScriptGameResourceObjectScriptedThingBase::IsScripting @ 0x00CD23B9 / Release @ 0x00CD2770 (manifest labels
+//          CScriptGameResourceObjectScriptedThingBase::IsValid @ 0x00CD23B9 / Release @ 0x00CD2770 (manifest labels
 //          "C3DMeshInfo::HasPhysicsMesh" / "CMemoryDataOutputStream::Clear" are propagated; landed 0x00EB6200 names them),
 //          its FollowThing(const CScriptThing&, float, bool) @ 0x007E7320 (vtable slot 7, called directly on the local) and
 //          destructor @ 0x007E74D0 (labelled ~CScriptGameResourceObjectMovieBase), CCharString(const char*, long) @ 0x0099EBF0 /
@@ -45,7 +45,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void FollowThing(const CScriptThing& thing, float distance, bool run);   // slot 7 (+0x1c)
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 
@@ -95,7 +95,7 @@ void CChasingScreamer::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -115,6 +115,6 @@ void CChasingScreamer::Main()
     if (IsActiveThreadTerminating())
         return;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
 }

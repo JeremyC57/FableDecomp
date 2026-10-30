@@ -19,7 +19,7 @@ class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C
     CCountedPointerWords PImp;                // +0x04
     CScriptThing(const CScriptThing& other);  // 0x004ABE90
 };
-struct CTimerManager {                        // the game-script timer service behind the global at 0x0143E8F8
+class CGameScriptInterface { public:                        // the game-script timer service behind the global at 0x0143E8F8
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -109,10 +109,10 @@ struct CTimerManager {                        // the game-script timer service b
     virtual void v086();
     virtual long NewTimer();                  // slot 87 (+0x15c)
 };
-extern CTimerManager* g_pScriptTimerManager;  // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 class CTimer { public:                               // 4 bytes
     long TimerIndex;                          // +0x00
-    CTimer() : TimerIndex(g_pScriptTimerManager->NewTimer()) { }
+    CTimer() : TimerIndex(g_pGameScriptInterface->NewTimer()) { }
 };
 struct CScriptOwner {                         // the quest script that owns this entity script
     unsigned char _pad00[0x40];

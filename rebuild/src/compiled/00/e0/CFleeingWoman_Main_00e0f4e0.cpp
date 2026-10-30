@@ -29,10 +29,10 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();     // 0x007E74D0
     virtual void s001();
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
-    void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // 0x007E72F0
-    bool IsPerformingScriptTask() const;               // 0x007E7450
+    virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // 0x007E72F0
+    virtual bool IsPerformingScriptTask() const;               // 0x007E7450
 };
 #define VPAD1(a) virtual void a() const;
 #define VPAD2(a) VPAD1(a##0) VPAD1(a##1)
@@ -95,7 +95,7 @@ void CFleeingWoman::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

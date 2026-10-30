@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D55E90, length 1820 bytes.
 // Callees: operator new 0x00BFEA1A, operator delete 0x00BFE9BC, CCharString(const char*, long) 0x0099EBF0 /
 //   CCharString(const CCharString&) 0x0099EC30 / ~CCharString 0x0099EAE0, ~CBaseClass 0x0099A2E0, ~CScriptThing 0x004AA840,
-//   CBaseObject ctor/dtor 0x0099A380 / 0x0099A430, scripted-thing handle IsScripting 0x00CD23B9 / Release 0x00CD2770 /
+//   CBaseObject ctor/dtor 0x0099A380 / 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 /
 //   operator= 0x008ABD10 / dtor 0x007E74D0, movie PImp dtor 0x006E7AB0, cast map ctor 0x00CDBF70 / dtor 0x00CDBFB0 /
 //   operator[] 0x00CD3D2E, RunCutsceneMacro 0x00CBFB7D (__fastcall), AddLogbookStoryEntry 0x00CBE87F (__fastcall),
 //   CScriptBase::IsActiveThreadTerminating 0x00CB7940 / AddEntityScriptBinding 0x00CB8230 / PostAddScriptedEntities
@@ -80,7 +80,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 struct CMovieImpPointer {
@@ -158,7 +158,7 @@ void CQ_GuildTrainingMeleeScript::Main()
     Game->EntitySetInFaction(whisper, "FACTION_HERO");
     whisper.SetFriendsWithEverythingFlag(true);
     CScriptGameResourceObjectScriptedThingBase whisperHandle;
-    if (whisperHandle.IsScripting())
+    if (whisperHandle.IsValid())
         whisperHandle.Release();
     while (!Game->StartScriptingEntity(whisper, whisperHandle, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -173,7 +173,7 @@ void CQ_GuildTrainingMeleeScript::Main()
         }
     Game->EntitySetAllowBossPhaseChanges(whisper, false);
     CScriptGameResourceObjectScriptedThingBase heroHandle;
-    if (heroHandle.IsScripting())
+    if (heroHandle.IsValid())
         heroHandle.Release();
     while (!Game->StartScriptingEntity(Game->GetHero(), heroHandle, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

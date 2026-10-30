@@ -18,13 +18,13 @@ typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceT
 
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
-extern CPlayer* __fastcall GetSubObject(void* self);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern void __fastcall Consume(void* value);
 
 
 void __fastcall CGameScriptInterface_ResetWhetherToFailQuestOnDeathToDefault(CGameScriptInterface* self)
 {
-    CPlayer* a = GetSubObject(self->PlayerManager);
+    CPlayer* a = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     unsigned char* eax = (unsigned char*)a->GetPControlledCreature();
     if (!eax) return;
     if (eax[0x91] & 0x1) return;

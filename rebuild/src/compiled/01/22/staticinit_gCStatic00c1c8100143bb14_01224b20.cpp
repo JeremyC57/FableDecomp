@@ -1,4 +1,4 @@
-// dynamic initializer for CStatic_00c1c810 g_CStatic_00c1c810_0143bb14 @ 0x0143BB14 -- default-constructs it out of line, then registers its destructor with atexit
+// dynamic initializer for PKCCriticalSection g_lock_0143bb14 @ 0x0143BB14 -- default-constructs it out of line, then registers its destructor with atexit
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x01224B20, oracle length 22 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -10,9 +10,11 @@
 // with _atexit @ 0x004012BC. Reconstructing the global definition below makes VC7.1 emit this
 // exact function (and the thunk) from the .CRT$XCU table; the object's name is descriptive, its
 // real identifier is not recoverable. One of 36 bodies of this shape.
-struct CStatic_00c1c810 {
-    CStatic_00c1c810();                 // 0x00C1C810
-    ~CStatic_00c1c810();                // 0x00C1C820, reached through the atexit thunk
+class PKCCriticalSection {                // a Win32 CRITICAL_SECTION (0x18 bytes)
+public:
+    PKCCriticalSection();               // 0x00C1C810
+    ~PKCCriticalSection();              // 0x00C1C820, reached through the atexit thunk
+    unsigned char m_section[0x18];
 };
 
-CStatic_00c1c810 g_CStatic_00c1c810_0143bb14;
+PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14 the other module lock (the landed PKC rows' spelling)

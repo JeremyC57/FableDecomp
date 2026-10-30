@@ -152,14 +152,16 @@ class CGameScriptInterface { public:
     virtual bool MsgOnLevelUnloaded(list<CCharString>& levels) const;
     CWorld* World;                                  // +0x04
     CWorld* GetWorld() const { return World; }
-    long GetCurrentWorldFrameForMessages() const;   // 0x006E7510
+protected:
+    long GetMinWorldFrameForMessages() const;   // 0x006E7510
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
+public:
 };
 
 bool CGameScriptInterface::MsgOnLevelUnloaded(list<CCharString>& levels) const
 {
     list<CMessageEvent*> messages;
-    long frame = GetCurrentWorldFrameForMessages() - 1;
+    long frame = GetMinWorldFrameForMessages() - 1;
     long maxFrame = GetMaxWorldFrameForMessages();
     CMessageEventManager* manager = World->PMessageEventManager_Data;
     manager->FindAllMessages(CMessageEventFilter_IsOfType(0x25) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame), &messages);

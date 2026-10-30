@@ -1,7 +1,7 @@
 // CPrisonEscapeGuard::Main() -- a prison guard during the escape: whenever its alert timer has run out and it sees the hero or is hit by him (any hit except special ability 14), it raises the alarm once (take scripted control, face the hero, play ALARM, blow the race whistle, wait, then sound the bandit alarm on the quest) and shouts one of two "seen criminal" lines (picked at random once), restarting the 30-second timer
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DD6440, length 1116 bytes (+ int3 padding), plain `ret`.
 // Callees: rand 0x00BFEB16, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing
-//   handle IsScripting 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation 0x007E73D0 / IsPerformingScriptTask 0x007E7450 / dtor
+//   handle IsValid 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation 0x007E73D0 / IsPerformingScriptTask 0x007E7450 / dtor
 //   0x007E74D0, ~CTimer 0x00CD4470, CCharString 0x0099EBF0 / 0x0099EAE0; g_pGameScriptInterface 0x0143E8F8 slots 87-90 (the
 //   inline CTimer); GameCalls (+0x04) slots 7, 8, 70, 364-366, 376, 475, 632, 690, 692; CScriptThing slots 21/41/42.
 // Strings: "SCRIPT_NAME_HERO" 0x0125D1C8, "ALARM" 0x012737BC, "SND_RACEWHISTLE" 0x012DC0F8, "SND_BANDIT_ALARM" 0x012DC0E4,
@@ -87,7 +87,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     void PlayAnimation(const CCharString& anim, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73D0
     bool IsPerformingScriptTask() const;               // 0x007E7450
@@ -135,7 +135,7 @@ void CPrisonEscapeGuard::Main()
                 if (IsActiveThreadTerminating())
                     return;
                 CScriptGameResourceObjectScriptedThingBase guard;
-                if (guard.IsScripting())
+                if (guard.IsValid())
                     guard.Release();
                 while (!Game->StartScriptingEntity(Me, guard, (EScriptAIPriority)4)) {
                     Game->NewScriptFrame();

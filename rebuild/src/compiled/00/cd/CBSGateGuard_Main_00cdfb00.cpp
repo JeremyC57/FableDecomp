@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00CDFB00, 563 bytes (576 with padding); entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy ctor 0x004ABE90 / dtor 0x004AA840 (CIsThingAlive filter, vtable 0x012C32F0, inline dtor here),
 //   CEntityScriptBase::SetPredicate 0x00F35B10 / IsActiveThreadTerminating 0x00F35B30, CBaseObject ctor 0x0099A380,
-//   scripted-thing handle (vtable 0x0127094C) IsScripting 0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 (slot 4) /
+//   scripted-thing handle (vtable 0x0127094C) IsValid 0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 (slot 4) /
 //   GetScriptThing 0x007E7490 (slot 12) / IsPerformingScriptTask 0x007E7450 (slot 26) / dtor 0x007E74D0,
 //   IsDistanceFromThingToPositionOver 0x00CBE45C (__fastcall), CScriptThing slot 7 GetHomePos (by value);
 //   CGameScriptInterface slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 475 EntitySetFacingAngleTowardsThing
@@ -42,7 +42,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
     virtual void s021(); virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025();
     virtual bool IsPerformingScriptTask() const;   // slot 26 (+0x68)
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
@@ -89,7 +89,7 @@ void CBSGateGuard::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)1)) {
         Game->NewScriptFrame();

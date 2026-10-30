@@ -22,7 +22,7 @@ struct CKillInterface;
 struct CKillInteger { int Value; };
 struct CKillMapKey { const int* Value; };
 
-extern CPlayer* __fastcall Sub1(void* playerManager);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern CKillInterfaceEntry* __fastcall VMap_LowerBound(
     CKillInterfaceMap* self, CKillMapKey key);
 extern void __fastcall Iface_Do(CKillInterface* self, CKillInteger value);
@@ -33,7 +33,7 @@ void __fastcall CGameScriptInterface_SetThingAsKilled(
 {
     int key;
     (void)edx_unused;
-    CPlayer* value = Sub1(((CGameScriptInterface*)self)->PlayerManager);
+    CPlayer* value = (&((CPlayerManager*)(((CGameScriptInterface*)self)->PlayerManager))->GetMainPlayer());
     CKillTargetView* target = value->GetPControlledCreature();
     if (target != 0 && (target->TypeFlags & 0x100000)) {
         CKillInterfaceMap* map = &target->Interfaces;

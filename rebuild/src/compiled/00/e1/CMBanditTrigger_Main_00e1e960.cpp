@@ -9,12 +9,12 @@
 //   CScriptThing::GetDataString 0x004AA900 (virtual on Me, direct on the local), GetPos 0x004AA980 (inlined; zero vector
 //   0x0143E8E0), IsDistanceBetweenThingsUnder 0x00CBE2FF, CTimer ctor 0x00CD4450 / dtor 0x00CD4470 (SetTimer 89 / GetTimer
 //   90 on 0x0143E8F8), rand 0x00BFEB16, CCharString copy 0x0099EC30 / (const char*) 0x0099EBF0 / dtor 0x0099EAE0 /
-//   operator!= 0x0099E960; GameCalls slots 7, 70, 72 GetThingWithScriptName, 91 CreateCreature, 108 RemoveThing,
+//   operator!= 0x0099E960; CGameScriptInterface slots 7, 70, 72 GetThingWithScriptName, 91 CreateCreature, 108 RemoveThing,
 //   421 IsCameraPosOnScreen, 585 AddItemToContainer. Literals "AttackingBandit" 0x012E14F4, "" 0x0122D70E, "NULL" 0x012393E4.
 // Layout: Ego_r.pdb CM_BanditTrigger (32 bytes): entity-script base {vptr, Game +4, Me +8}, ParentClass +0x14
 //   (CQR_EscortTraderScript*), PMasterData +0x18, BanditTriggered +0x1c. CQR_EscortTraderScript::TraderFollowing PDB +0x64 =
 //   retail +0x50 (quest-script base 0x14 smaller, as the landed HobbeLeader note). The vector<CCharString> at
-//   pGlobalScriptDef +0x9ac (STLport {start, finish, eos}) is named descriptively. GameCalls, CTimer and CIsThingAlive are copied
+//   pGlobalScriptDef +0x9ac (STLport {start, finish, eos}) is named descriptively. CGameScriptInterface, CTimer and CIsThingAlive are copied
 //   from the landed NScript::CQ_HobbeCaveScript::CHobbeLeader::Main 0x00D8FA30.
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 class C3DVector { public: float X, Y, Z; };
@@ -98,7 +98,7 @@ typedef long ETargetingType;
 typedef long ETextGroupSelectionMethod;
 typedef long ETutorialCategory;
 namespace NEntityEvents {typedef long EEventType;}
-struct GameCalls {virtual ~GameCalls();
+class CGameScriptInterface { public:virtual ~CGameScriptInterface();
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20
 virtual void Validate(void) const; //slot3 0x006e72a0
@@ -944,7 +944,7 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
-extern GameCalls* g_pGameScriptInterface;              // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;              // 0x0143E8F8
 class CTimer { public:                                         // 4 bytes: an index into the global script timers
  long TimerIndex;
  CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }   // out-of-line copy 0x00CD4450
@@ -970,7 +970,7 @@ public:
 };
 
 struct CM_BanditTrigger : public CEntityScriptBase {
-    void* VTable; GameCalls* Game; CScriptThing Me;     // +0x00 / +0x04 / +0x08
+    void* VTable; CGameScriptInterface* Game; CScriptThing Me;     // +0x00 / +0x04 / +0x08
     CQR_EscortTraderScript* ParentClass;                // +0x14
     void* PMasterData;                                  // +0x18
     bool BanditTriggered;                               // +0x1c

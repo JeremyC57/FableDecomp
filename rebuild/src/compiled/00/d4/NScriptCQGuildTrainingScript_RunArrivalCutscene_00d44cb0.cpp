@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D44CB0, length 944 bytes; called from 0x00D3BE0B.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840 / ~CBaseClass
 //   0x0099A2E0 / operator delete 0x00BFE9BC (the inline temporary copy), CBaseObject ctor 0x0099A380, scripted-thing handle
-//   IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0 / operator= 0x008ABD10, cast map ctor 0x00CDBF70 / dtor
+//   IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0 / operator= 0x008ABD10, cast map ctor 0x00CDBF70 / dtor
 //   0x00CDBFB0 / operator[] 0x00CD3D2E, movie ctor 0x006E7B60 / dtor 0x006E7B80, RunCutsceneMacro 0x00CBFB7D (__fastcall),
 //   CScriptBase::IsActiveThreadTerminating 0x00CB7940; CScriptThing::GetPos (slot 6); through the interface (+0x40):
 //   NewScriptFrame (7), StartScriptingEntity (8), GetHero (70), GetThingWithScriptName (72), CreateCreature (91),

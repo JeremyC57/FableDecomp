@@ -57,7 +57,9 @@ __forceinline void Rotate(CMatrix3x4& m, const CMatrix3x3& b)
     m.E42 = a.E41 * b.E12 + a.E42 * b.E22 + a.E43 * b.E32;
     m.E43 = a.E41 * b.E13 + a.E42 * b.E23 + a.E43 * b.E33;
 }
-void __fastcall CalcObjectMatrix(CMatrix3x4& out, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEBAA0
+class CEngineInternalPrimitiveMeshBase { public:
+    static void __fastcall CalcObjectMatrix(CMatrix3x4& out, const C3DVector& position, const CRightHandedSet& orientation, float scale);   // 0x00BEBAA0
+};
 
 bool __fastcall GetTransformFrameStart(const CEngineInternalPrimitive2DAnimatedMesh* self, int /*edx*/, CMatrix3x4& transform)
 {
@@ -67,7 +69,7 @@ bool __fastcall GetTransformFrameStart(const CEngineInternalPrimitive2DAnimatedM
         orientation.Up.AccurateNormalise();
         orientation.Forward.AccurateNormalise();
         const C3DMeshInfo* info = *(C3DMeshInfo* const*)self->_pad_0x50;
-        CalcObjectMatrix(transform, *(const C3DVector*)self->_pad_0x88, orientation, ((const float*)info->BoundingSphere)[3] * 0.01f);
+        CEngineInternalPrimitiveMeshBase::CalcObjectMatrix(transform, *(const C3DVector*)self->_pad_0x88, orientation, ((const float*)info->BoundingSphere)[3] * 0.01f);
     }
     Rotate(transform, CMatrix3x3(1.0f, 0.0f, 0.0f, 0.0f, 0.0f, -1.0f, 0.0f, 1.0f, 0.0f));
     return true;

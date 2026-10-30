@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E6EA30, 1537 bytes (+ int3 padding), plain `ret`. Literals "CAM_DD_CLOSE" 0x012E8CA4,
 //   "TEXT_QST_088_SHINE_LIGHT_INTRO" 0x012E8C84, "MK_DD" 0x012E8C7C, "CAM_DD_WIDE" 0x012E8C70, "TEXT_QST_088_SHINE_LIGHT_OPENING"
 //   0x012E8C4C, "DD_ShineLight" 0x012E8C3C (sibling of the matched CDF_CombatMult::Main 0x00E6F710).
-// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsScripting 0x00CD23B9 / Release 0x00CD2770 /
+// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 /
 //   GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, movie handle
 //   out-of-line dtor 0x006E7B80, CIsThingAlive (vtable 0x012C32F0, out-of-line dtor 0x00E241B0), CScriptThing copy 0x004ABE90 /
 //   dtor 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC, CCharString
@@ -91,9 +91,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
+    virtual void Speak(const CScriptThing&, const char*, ETextGroupSelectionMethod, bool, bool, bool);   // 0x007E7390
 public:
     virtual CScriptThing GetScriptThing() const;   // 0x007E7490
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
@@ -142,7 +142,7 @@ void CDF_ShineLight::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;
-    if (face.IsScripting())
+    if (face.IsValid())
         face.Release();
     while (!Game->StartScriptingEntity(Me, face, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

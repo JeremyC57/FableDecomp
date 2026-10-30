@@ -163,8 +163,10 @@ class CGameScriptInterface { public:
     CDefinitionManager_Retail*  DefinitionManager;  // +0x10
     CPlayerManager_Retail*      PlayerManager;      // +0x14
     long GetTextIDFromSymbol(const CCharString& symbol) const;   // 0x006E77F0 (labelled LTextSystem::GetIDFromSymbol; `this` is unused)
-    long GetCurrentWorldFrameForMessages() const;   // 0x006E7510 (labelled GetMaxWorldFrameForMessages)
+protected:
+    long GetMinWorldFrameForMessages() const;   // 0x006E7510
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
+public:
     void EntityGetOpinionAttitudeToPlayerAsString(const CScriptThing& thing, CCharString& attitude) const;
 };
 

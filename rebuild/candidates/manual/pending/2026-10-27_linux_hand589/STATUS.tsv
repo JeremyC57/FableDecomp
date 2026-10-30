@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00c74bb0	DIFFER	293v293	PASS	CDspFilter::SetHighPass (descriptive): scheduling only (sample-rate load before fmul [reference]); 6+ grades; parked differ/00c74bb0.cpp + .test.cpp
+00c4aeb0	DIFFER	284v281	PASS	PKCBufferedReader::WaitForSlot (descriptive method; trace PKCBufferedReader.cpp:84), /EHsc: retail homes CString + CDebugBreak + flag in the dead slot arg slot, ours opens an 8-byte frame; 8+ grades; parked differ/00c4aeb0.cpp + .test.cpp

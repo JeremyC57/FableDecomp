@@ -89,7 +89,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor; out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     CScriptThing GetScriptThing() const;                // 0x007E7490
     void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
@@ -140,7 +140,7 @@ void CMinionFieldGenerator::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating()) return;
     CScriptGameResourceObjectScriptedThingBase generator;
-    if (generator.IsScripting())
+    if (generator.IsValid())
         generator.Release();
     while (!Game->StartScriptingEntity(Me, generator, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -196,7 +196,7 @@ void CMinionFieldGenerator::Main()
 #pragma inline_depth(0)
     if (IsActiveThreadTerminating())
         return;
-    if (generator.IsScripting())
+    if (generator.IsValid())
         generator.Release();
     while (!Game->StartScriptingEntity(Me, generator, (EScriptAIPriority)3)) {
         Game->NewScriptFrame();

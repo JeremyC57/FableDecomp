@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E02470, 1022 bytes (+ int3 padding). First of the two catalog rows named CInfectedBalverine::Main
 //   (the second is 0x00E02950); the catalog's 1024-byte row length includes 2 bytes of padding.
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9,
+//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsValid 0x00CD23B9,
 //   Release 0x00CD2770, PlayAnimation 0x007E73D0, PlayCombatAnimation 0x007E73E0, IsPerformingScriptTask 0x007E7450, dtor
 //   0x007E74D0), IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0, the
 //   animation-default bool 0x01375748; GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 72
@@ -1025,7 +1025,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
 public:
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
@@ -1065,7 +1065,7 @@ void CInfectedBalverine::Main()
  }
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();

@@ -107,7 +107,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CScriptGameResourceObjectScriptedThingBase() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 struct CMovieImpPointer {
@@ -184,7 +184,7 @@ void CM_HeroInsideHouse::Main()
     CScriptThing barrier = Game->CreatePhysicalBarrier(8.0f, Game->GetThingWithScriptName("M_ThePhysBarrier").GetPos(), 0, "");
     {
         CScriptGameResourceObjectScriptedThingBase hero;
-        if (hero.IsScripting())
+        if (hero.IsValid())
             hero.Release();
         while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();

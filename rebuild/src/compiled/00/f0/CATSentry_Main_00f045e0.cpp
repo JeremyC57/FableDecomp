@@ -2,7 +2,7 @@
 // Leaf: ?Main@CAT_Sentry@@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00F045E0, 1520 bytes; entity-script vtable slot 1 (Main).
 // Callees: ~CScriptThing 0x004AA840, ~CBaseClass 0x0099A2E0, operator delete 0x00BFE9BC, IsActiveThreadTerminating
-//   0x00F35B30, CBaseObject ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsScripting 0x00CD23B9 / Release
+//   0x00F35B30, CBaseObject ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release
 //   0x00CD2770 / MoveToPosition 0x007E72F0 / dtor 0x007E74D0, CCharString 0x0099EBF0 / 0x0099EAE0,
 //   IsDistanceBetweenThingsUnder 0x00CBE2FF, FadeOutAndKillEntity 0x00CBE716; GameCalls slots 7, 8, 70, 72, 81, 451,
 //   480 SetEntityAsRegionFollowing, 496 EntitySetAsScared, 597, 599, 632 CanThingBe_Seen_ByOtherThing, 784.
@@ -91,7 +91,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                        // +0x08
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor; out-of-line copy 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
 };
@@ -259,7 +259,7 @@ void CAT_Sentry::Main()
         if (ParentClass->PhaseOver || ParentClass->PhaseFailed) {
             if (IsActiveThreadTerminating())
                 return;
-            if (handle.IsScripting())
+            if (handle.IsValid())
                 handle.Release();
             while (!Game->StartScriptingEntity(Me, handle, 4)) {
                 Game->NewScriptFrame();
@@ -280,7 +280,7 @@ void CAT_Sentry::Main()
                         return;
 #pragma inline_depth()
                     }
-                if (handle.IsScripting()) {
+                if (handle.IsValid()) {
                     if (IsActiveThreadTerminating())
                         {
 #pragma inline_depth(0)
@@ -327,7 +327,7 @@ void CAT_Sentry::Main()
                 Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
             }
             Game->SetEntityAsRegionFollowing(Game->GetHero(), Me, true);
-            if (handle.IsScripting())
+            if (handle.IsValid())
                 handle.Release();
             do {
                 Game->NewScriptFrame();

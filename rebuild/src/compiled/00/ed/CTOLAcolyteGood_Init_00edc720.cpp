@@ -969,7 +969,7 @@ struct CGameScriptInterfaceCalls {
     virtual void v843();
     virtual void SetThingAsTarget(CScriptThingArg thing, long flag);                 // slot 844 (+0xd30)
 };
-struct CTimerManager {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -1061,7 +1061,7 @@ struct CTimerManager {
     virtual void v088();
     virtual void SetTimer(long index, long time);   // slot 89 (+0x164)
 };
-extern CTimerManager* g_pScriptTimerManager;  // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 class CScriptDef { public:
     unsigned char _pad[0x7fc];
     long          AcolyteTimerTime;           // +0x7fc
@@ -1109,7 +1109,7 @@ void CTOL_AcolyteGood::Init()
             CCharString("ParentClass.", -1) + CCharString("WatchForAcolyteDeath", -1),
             0, &CQ_AcolyteParentScript::WatchForAcolyteDeath_00edc980, ParentClass, Thing),
         CCharString("", -1));
-    g_pScriptTimerManager->SetTimer(Timer.TimerIndex, pGlobalScriptDef->GetAcolyteTimerTime());
+    g_pGameScriptInterface->SetTimer(Timer.TimerIndex, pGlobalScriptDef->GetAcolyteTimerTime());
     GSI->SetThingFlags(Thing, 0, 0, 0);
     GSI->SetThingAsTarget(Thing, 0);
     ParentClass->AcolyteFlag5B = false;

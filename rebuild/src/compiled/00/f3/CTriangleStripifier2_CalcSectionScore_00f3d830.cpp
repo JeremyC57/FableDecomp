@@ -30,8 +30,10 @@ template<class T> class CArray { public:                              // retail 
 class CTriangleStripifier2 {
 public:
     void* __vftable;                                           // +0x00 (4 bytes, Ego_r.pdb)
+private:
     long CalcSectionPolyMask(const CArray<unsigned short>& triangles, const CArray<CArray<long> >& vertexPolys,
                              const CArray<unsigned short>& section, CArray<bool>& polyMask);            // 0x00F3CF50
+public:
     void StripUnusedVerts(CArray<unsigned short>& section, const CArray<CArray<long> >& vertexPolys,
                           const CArray<bool>& polyMask);                                                // 0x00F3B970
     float CalcSectionScore(const CArray<unsigned short>& section, const CArray<unsigned short>& triangles,

@@ -185,12 +185,12 @@ struct CThing_Retail {
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }
 };
 class CThingPlayerCreature : public CThing_Retail { };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                  // 0x00487DC0 (label propagated)
     const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0 (label propagated)
 };
-struct CPlayerManager_Retail {
-    CPlayer* GetPlayer();                    // 0x00449970 (labelled "Catch@0040d959", propagated)
+class CPlayerManager { public:
+    CPlayer& GetMainPlayer();                    // 0x00449970
 };
 class CWorld;
 class CDefinitionManager;
@@ -200,7 +200,7 @@ class CGameScriptInterface { public:
     void*                      Component;           // +0x08
     void*                      DisplayEngine;       // +0x0c
     CDefinitionManager* DefinitionManager;   // +0x10
-    CPlayerManager_Retail*     PlayerManager;       // +0x14
+    CPlayerManager*     PlayerManager;       // +0x14
     bool IsGiftRomantic(const CCharString& defName) const;
 };
 

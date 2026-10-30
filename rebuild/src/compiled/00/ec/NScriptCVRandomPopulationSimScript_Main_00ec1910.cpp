@@ -64,7 +64,7 @@ public:
 };
 namespace NScript {
 class CV_RandomPopulationSimScript : public CScriptBase { public:
-    struct CRandomPopulationEntity {
+    struct CRandomPopulationCreature {
         static CCountedPointer<CEntityScriptBase> __fastcall Alloc(CV_RandomPopulationSimScript& parent, CScriptDataBase* data, const CScriptThing& thing);   // 0x00EC1B70
     };
     CGameScriptInterface* GSI;                          // +0x40
@@ -75,9 +75,9 @@ class CV_RandomPopulationSimScript : public CScriptBase { public:
 };
 void CV_RandomPopulationSimScript::Main()
 {
-    AddEntityScriptBinding(new CEntityScriptBinding<CV_RandomPopulationSimScript>("RandomPopulationVillager", this, &CRandomPopulationEntity::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CV_RandomPopulationSimScript>("RandomPopulationGuard", this, &CRandomPopulationEntity::Alloc, 0));
-    AddEntityScriptBinding(new CEntityScriptBinding<CV_RandomPopulationSimScript>("RandomPopulationBandit", this, &CRandomPopulationEntity::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CV_RandomPopulationSimScript>("RandomPopulationVillager", this, &CRandomPopulationCreature::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CV_RandomPopulationSimScript>("RandomPopulationGuard", this, &CRandomPopulationCreature::Alloc, 0));
+    AddEntityScriptBinding(new CEntityScriptBinding<CV_RandomPopulationSimScript>("RandomPopulationBandit", this, &CRandomPopulationCreature::Alloc, 0));
     PostAddScriptedEntities();
     GSI->PostAddScriptedEntities();
     SpawnFunction(new CSpawnedFunc<CV_RandomPopulationSimScript>("ProcessAlbionPopulationSim", 0, this, &CV_RandomPopulationSimScript::ProcessAlbionPopulationSim));

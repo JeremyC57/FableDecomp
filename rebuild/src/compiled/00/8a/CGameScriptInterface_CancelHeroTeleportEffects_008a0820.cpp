@@ -62,11 +62,11 @@ class CScriptThing { public:
     CScriptThing();                                // 0x008CFF40 (the null script thing)
 };
 class CThingPlayerCreature : public CThing_Retail { };
-struct CPlayer {
+class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
-struct CPlayerManager_Retail {
-    CPlayer* GetMainPlayer();               // 0x00449970
+class CPlayerManager { public:
+    CPlayer& GetMainPlayer();               // 0x00449970
 };
 class CCharString;
 struct CDefinitionManager_Retail {
@@ -123,14 +123,14 @@ class CGameScriptInterface { public:
     CMainGameComponent*         Component;         // +0x08
     CDisplayEngine*             DisplayEngine;     // +0x0c
     CDefinitionManager_Retail*  DefinitionManager; // +0x10
-    CPlayerManager_Retail*      PlayerManager;     // +0x14
+    CPlayerManager*      PlayerManager;     // +0x14
     CThingSearchTools*          ThingSearchTools;  // +0x18
     virtual void CancelHeroTeleportEffects() const;
 };
 
 void CGameScriptInterface::CancelHeroTeleportEffects() const
 {
-    CThingKill_Retail* hero = (CThingKill_Retail*)PlayerManager->GetMainPlayer()->GetPControlledCreature();
+    CThingKill_Retail* hero = (CThingKill_Retail*)PlayerManager->GetMainPlayer().GetPControlledCreature();
     if (hero && !hero->m_dead) {
         hero->RemoveTC(0xf9);
         CTCTeleport_Retail* teleport;

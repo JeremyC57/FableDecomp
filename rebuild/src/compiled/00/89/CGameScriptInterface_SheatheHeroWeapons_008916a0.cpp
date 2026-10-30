@@ -8,10 +8,10 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 
-class CGSISheatheHeroWeapons_LookupSource
+class CPlayerManager
 {
 public:
-    CPlayer* BeginLookup();
+    CPlayer& GetMainPlayer();   // 0x00449970 (Ego_r 0x004450F0)
 };
 
 class CGSISheatheHeroWeapons_Target
@@ -44,7 +44,7 @@ private:
 struct CGSISheatheHeroWeapons_Interface
 {
     unsigned char m_Unused[0x14];
-    CGSISheatheHeroWeapons_LookupSource* m_LookupSource;
+    CPlayerManager* m_LookupSource;
 };
 
 class CGameScriptInterface
@@ -59,7 +59,7 @@ void CGameScriptInterface::SheatheHeroWeapons() const
         reinterpret_cast<
             const CGSISheatheHeroWeapons_Interface*>(
                 this)->m_LookupSource
-            ->BeginLookup()->GetPControlledCreature();
+            ->GetMainPlayer().GetPControlledCreature();
 
     if (target != 0 &&
         (target->m_Flags & 1) == 0 &&

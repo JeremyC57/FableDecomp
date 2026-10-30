@@ -4,18 +4,19 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C27620, 75 bytes (`ret 8`, no EH frame). Descriptive names (no PDB or RTTI
 //   covers the libpk audio library; the strings after the vtable read "CODA reports source is NOT playing"): the
 //   manifest's "CEngineSubPrimitive_AllocateBuffer" is propagated. The function is slot 1 of vtable 0x012B4034.
-// Callees: CScopedLock @ 0x00C0FFC0 / ~CScopedLock @ 0x00C0FFE0 over the module lock 0x0143BAFC,
+// Callees: PKCProtectionInstance @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0 over the module lock 0x0143BAFC,
 //   CODA_SetSourceVolume @ 0x00C35AF0 (`__stdcall`, `ret 8`).
 // Shape: no EH frame although the lock has a destructor: the only call inside the lock is an `extern "C"` CODA
 //   function, which /EHsc assumes cannot throw. The scaled volume is stored back into the argument slot.
-struct CScopedLock {                            // 8-byte scoped lock (chunk 431 model)
+class PKCCriticalSection;
+class PKCProtectionInstance { public:                            // 8-byte scoped lock (chunk 431 model)
     void*         m_pSection;
     unsigned long m_tick;
-    CScopedLock(void* section);                 // 0x00C0FFC0
-    ~CScopedLock();                             // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
+    ~PKCProtectionInstance();                             // 0x00C0FFE0
 };
 
-extern unsigned char g_soundLock[];             // 0x0143BAFC the audio library's module lock
+extern PKCCriticalSection g_soundLock;             // 0x0143BAFC the audio library's module lock
 
 struct CODASource;                              // opaque CODA source object
 extern "C" {                                    // the CODA C API (__stdcall; nothrow under /EHsc)
@@ -46,7 +47,7 @@ struct CCodaPlayback {                          // vtable 0x012B4034 (landed row
 
 void CCodaPlayback::SetVolume(CPanel* panel, float volume)
 {
-    CScopedLock lock(g_soundLock);
+    PKCProtectionInstance lock(&g_soundLock);
     if (!m_b3D)
         volume *= panel->m_masterVolume;
     CODA_SetSourceVolume(m_pSource, volume);

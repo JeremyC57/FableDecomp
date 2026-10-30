@@ -1,7 +1,7 @@
 // CTollBandit::Should_I_Flee(CScriptGameResourceObjectScriptedThingBase&) -- once the bandits flee, take scripting control of the bandit, run him to the escape marker until he is close to it, then fade him out and kill him
 // Leaf: ?Should_I_Flee@CTollBandit@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E4DF20, 433 bytes (448 with padding), `ret 4`.
-// Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, the handle's IsScripting 0x00CD23B9 / Release
+// Callees: CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30, the handle's IsValid 0x00CD23B9 / Release
 //   0x00CD2770 and virtuals MoveToPosition (slot 4), GetScriptThing (slot 12), IsPerformingScriptTask (slot 26),
 //   IsDistanceFromThingToPositionOver 0x00CBE45C and FadeOutAndKillEntity 0x00CBE716 (`__fastcall`), ~CScriptThing
 //   0x004AA840; through the interface (+4) NewScriptFrame (slot 7), StartScriptingEntity (slot 8); BanditEscapeMarker's
@@ -32,7 +32,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:         // vtable 0x0
     void* m_pIntelligentPointer;
     void* PImpData;
     void* PImpInfo;
-    bool IsScripting();                                     // 0x00CD23B9
+    bool IsValid() const;                                     // 0x00CD23B9
     void Release();                                         // 0x00CD2770
 };
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
@@ -79,7 +79,7 @@ void CTollBandit::Should_I_Flee(CScriptGameResourceObjectScriptedThingBase& band
         return;
     if (IsActiveThreadTerminating())
         return;
-    if (bandit.IsScripting())
+    if (bandit.IsValid())
         bandit.Release();
     while (!Game->StartScriptingEntity(Me, bandit, SCRIPT_AI_PRIORITY_4)) {
         Game->NewScriptFrame();

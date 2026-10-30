@@ -2,7 +2,7 @@
 // Leaf: ?Main@CBlockingBandit@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E49980, length 1424 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, out-of-line dtor 0x00E241B0), the scripted-thing handle (vtable
-//   0x0127094C) IsScripting 0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 / FollowThing 0x007E7320 /
+//   0x0127094C) IsValid 0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 / FollowThing 0x007E7320 /
 //   IsPerformingScriptTask 0x007E7450 / GetScriptThing 0x007E7490 / dtor 0x007E74D0, IsDistanceFromThingToPositionOver
 //   0x00CBE45C and FadeOutAndKillEntity 0x00CBE716 (`__fastcall`). CGameScriptInterface slots 7, 8, 70, 72
 //   GetThingWithScriptName, 601 EntitySetInFaction, 636 IsThingAwareOfOtherThingInAnyWay; CScriptThing slot 75 IsAlive.
@@ -101,12 +101,12 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
     VPAD1(s0) VPAD1(s1)                                // slots 2..3
-    virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // slot 4 (+0x10), 0x007E72F0
-    bool IsScripting();                                // 0x00CD23B9
+    virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // slot 4 (+0x10), 0x007E72F0
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
-    void FollowThing(const CScriptThing& thing, float distance, bool run);   // 0x007E7320
-    bool IsPerformingScriptTask() const;               // 0x007E7450
-    CScriptThing GetScriptThing() const;               // 0x007E7490
+    virtual void FollowThing(const CScriptThing&, float, bool);   // 0x007E7320
+    virtual bool IsPerformingScriptTask() const;               // 0x007E7450
+    virtual CScriptThing GetScriptThing() const;               // 0x007E7490
 };
 class CGameScriptInterface { public:
     VPAD4(p0x0) VPAD2(p0x1) VPAD1(p0x2)   // slots 0..6
@@ -163,7 +163,7 @@ void CBlockingBandit::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -178,7 +178,7 @@ void CBlockingBandit::Main()
         if (ParentClass->BanditsFlee) {
             if (IsActiveThreadTerminating())
                 return;
-            if (scripted.IsScripting())
+            if (scripted.IsValid())
                 scripted.Release();
             while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
                 Game->NewScriptFrame();
@@ -209,7 +209,7 @@ void CBlockingBandit::Main()
         if (ParentClass->BanditsAngered && Me.IsAlive() && Game->IsThingAwareOfOtherThingInAnyWay(Game->GetHero(), Me)) {
             if (IsActiveThreadTerminating())
                 return;
-            if (scripted.IsScripting())
+            if (scripted.IsValid())
                 scripted.Release();
             while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)3)) {
                 Game->NewScriptFrame();

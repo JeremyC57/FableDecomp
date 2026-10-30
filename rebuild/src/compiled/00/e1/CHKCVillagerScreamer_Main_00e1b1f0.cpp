@@ -83,9 +83,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
+    virtual void Speak(const CScriptThing&, const char*, ETextGroupSelectionMethod, bool, bool, bool);   // 0x007E7390
 public:
     virtual CScriptThing GetScriptThing() const;   // 0x007E7490
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
@@ -151,7 +151,7 @@ void CHKC_VillagerScreamer::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase villager;
-    if (villager.IsScripting())
+    if (villager.IsValid())
         villager.Release();
     while (!Game->StartScriptingEntity(Me, villager, (EScriptAIPriority)2)) {
         Game->NewScriptFrame();
@@ -168,7 +168,7 @@ void CHKC_VillagerScreamer::Main()
         if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())
                 return;
-            if (villager.IsScripting())
+            if (villager.IsValid())
                 villager.Release();
             while (!Game->StartScriptingEntity(Me, villager, (EScriptAIPriority)4)) {
                 Game->NewScriptFrame();
@@ -200,7 +200,7 @@ void CHKC_VillagerScreamer::Main()
             }
             game->PauseAllNonScriptedEntities(false);
             movie.DestroyInline();
-            if (villager.IsScripting())
+            if (villager.IsValid())
                 villager.Release();
             while (!Game->StartScriptingEntity(Me, villager, (EScriptAIPriority)1)) {
                 Game->NewScriptFrame();

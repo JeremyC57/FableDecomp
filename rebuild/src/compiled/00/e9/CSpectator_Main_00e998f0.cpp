@@ -4,7 +4,7 @@
 // Literals "Thunder" 0x012ED164, "SCRIPT_CHEER_1/2/3" 0x01292930 / 0x01292910 / 0x01292920, "TEXT_QST_044_HERO_DUEL_CHEERING_10..100"
 //   0x012ED34C..0x012ED208, "TEXT_QST_044_HERO_DUEL_JEERING_10" 0x012ED1E4, "SCRIPT_NAME_HERO" 0x0125D1C8.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, ~CIsThingAlive 0x00E241B0, RegisterFilter 0x00F35B10, IsActiveThreadTerminating
-//   0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, handle IsScripting 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation 0x007E73D0 /
+//   0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, handle IsValid 0x00CD23B9 / Release 0x00CD2770 / PlayAnimation 0x007E73D0 /
 //   IsPerformingScriptTask 0x007E7450 / dtor 0x007E74D0, CTimer ctor 0x00CD4450 / dtor 0x00CD4470, rand 0x00BFEB16, the eh vector
 //   destructor iterator 0x00401400 (the ten cheering lines); GameCalls slots 7, 8, 70, 72, 87-90 timers (g_pGameScriptInterface
 //   0x0143E8F8), 364 AddNewConversation, 366 AddLineToConversation, 453 EntitySetInLimbo, 475 EntitySetFacingAngleTowardsThing.
@@ -59,7 +59,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     void* PImpInfo;                                     // +0x0c
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 public:
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
@@ -116,7 +116,7 @@ void CSpectator::Main()
         Game->EntitySetInLimbo(Me, true, false);
     }
     CScriptGameResourceObjectScriptedThingBase face;
-    if (face.IsScripting())
+    if (face.IsValid())
         face.Release();
     while (!Game->StartScriptingEntity(Me, face, (EScriptAIPriority)3)) {
         Game->NewScriptFrame();
@@ -133,7 +133,7 @@ void CSpectator::Main()
     if (IsActiveThreadTerminating())
         return;
     Game->EntitySetInLimbo(Me, false, true);
-    if (face.IsScripting())
+    if (face.IsValid())
         face.Release();
     while (!Game->StartScriptingEntity(Me, face, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

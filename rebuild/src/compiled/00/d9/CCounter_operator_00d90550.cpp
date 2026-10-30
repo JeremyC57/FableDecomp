@@ -9,7 +9,7 @@
 // the clamp stores 0 into the local (`test ah,5 ; jp` = `seconds < 0`); the current frame is converted
 // into a second float local (`fild ; fstp`) before the second virtual call, then `fild rate ; fmul
 // [clamped] ; fsubr [now]` and the truncating conversion.
-struct CThingManager_Calls {             // retail vtable: slots 653/654 are the two frame getters
+class CGameScriptInterface { public:             // retail vtable: slots 653/654 are the two frame getters
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -666,7 +666,7 @@ struct CThingManager_Calls {             // retail vtable: slots 653/654 are the
     virtual long GetWorldFrame();              // slot 653 (+0xa34)
     virtual long GetWorldFramesPerSecond();    // slot 654 (+0xa38)
 };
-extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 
 class CCounter { public:
     long RelevantWorldFrame;                   // +0x00
@@ -678,7 +678,7 @@ CCounter& CCounter::operator=(float seconds)
     float clamped = seconds;
     if (seconds < 0.0f)
         clamped = 0.0f;
-    float now = (float)g_pThingManager_0143e8f8->GetWorldFrame();
-    RelevantWorldFrame = (long)(now - (float)g_pThingManager_0143e8f8->GetWorldFramesPerSecond() * clamped);
+    float now = (float)g_pGameScriptInterface->GetWorldFrame();
+    RelevantWorldFrame = (long)(now - (float)g_pGameScriptInterface->GetWorldFramesPerSecond() * clamped);
     return *this;
 }

@@ -73,6 +73,7 @@ struct CBaseObjectDtor {                               // destructor-only view o
 struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x0126008C
     __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
+enum ETextGroupSelectionMethod;
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
     struct Words {                                     // CCountedPointer<void> {Data, Info}, released by hand
         void* Data; CCPPointerInfo* Info;
@@ -90,7 +91,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void s001();
     void Release();                                    // 0x00CD2770
-    void Speak(const CScriptThing& listener, const char* text, bool a, bool b, bool c, bool d);   // 0x007E7390
+    virtual void Speak(const CScriptThing&, const char*, ETextGroupSelectionMethod, bool, bool, bool);   // 0x007E7390
     void Destroy();                                    // ~CScriptGameResourceObjectScriptedThingBase, out of line 0x007E74D0
     __forceinline void DestroyInline()
     {
@@ -229,7 +230,7 @@ void CPersonalScript_AardvarkScript::Main()
         game->PauseAllNonScriptedEntities(true);
         GSI->Pause(1.0f);
         if (GSI->GetHealth(handle.GetScriptThing()) > 0.0f) {
-            handle.Speak(GSI->GetHero(), "Smack my bitch up", false, false, true, false);
+            handle.Speak(GSI->GetHero(), "Smack my bitch up", (ETextGroupSelectionMethod)false, false, true, false);
             while (handle.IsPerformingScriptTask()) {
                 GSI->NewScriptFrame();
                 if (IsActiveThreadTerminating()) {

@@ -1,0 +1,13 @@
+address	name	evidence
+00aded70	C3DBoundingBox::BuildFromPoints	chunk 589: Ego_r + FableWin PDBs; binding from 0x00ADEEA0
+00b6c5d0	std::vector<CVertexShader>::_M_fill_insert	chunk 589: bound by landed resize 0x00B6CBD0
+00b8f950	std::vector<std::pair<unsigned long,CCountedPointer<CVertexBufferWin32> > >::insert	chunk 589: landed siblings 0x00B8F840 / 0x00B8EF60, only caller 0x00B8DCD0, STLport 4.6
+00c1a110	PKCDefaultFileManager::QueueRead	chunk 589: class proven (trace file name, landed dtor 0x00C1A230); method DESCRIPTIVE; /EHsc
+00c25b10	CTimerHost::CTimerHost	chunk 589: DESCRIPTIVE (built by CSoundEventManager ctor 0x00C11D00, stored at +0x7C4; its trace names PKCTimerManager.cpp, so the outer class may be PKCTimerManager); /EHsc
+00c57b60	CVtable_012b8ed4::QueueChunk	chunk 589: DESCRIPTIVE (GameCODA OpenAL stream)
+00c5ab50	CCodaVoice::UpdateModulation	chunk 589: class from the bound SetModulation spelling; method DESCRIPTIVE
+00caaca0	CBaseFilter::Run	chunk 589: strmbase amfilter.cpp; only caller CBaseRenderer::Run 0x00CA6987; /EHsc
+00c4aeb0	PKCBufferedReader::WaitForSlot	chunk 589 (parked DIFFER 284v281): DESCRIPTIVE; retail homes three short-lived EH locals in the dead `slot` argument slot
+00c74bb0	CDspFilter::SetHighPass	chunk 589 (parked DIFFER 293v293): DESCRIPTIVE; x87 load order of the sample rate
+00caabe0	CBaseFilter::Pause	chunk 589: strmbase Pause body; caller CBaseRenderer::Pause 0x00CA6833; landed as CAudioBank_00caabe0::ResumeAllSounds (wrong)
+00c25c20	CTimerHost::~CTimerHost	chunk 589: ~CSoundEventManager 0x00C13470 calls it on +0x7C4 then operator delete; landed as CTimerHost_00c25c20::Close (wrong)

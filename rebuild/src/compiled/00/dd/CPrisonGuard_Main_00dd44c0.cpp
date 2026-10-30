@@ -2,7 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DD44C0, length 1241 bytes (+ int3 padding), plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0; CScriptThing copy 0x004ABE90 / dtor 0x004AA840), RegisterFilter
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle
-//   IsScripting 0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 / IsPerformingScriptTask 0x007E7450 /
+//   IsValid 0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 / IsPerformingScriptTask 0x007E7450 /
 //   GetScriptThing 0x007E7490 / dtor 0x007E74D0, IsDistanceFromThingToPositionOver 0x00CBE45C (__fastcall), CCharString
 //   0x0099EBF0 / 0x0099EAE0; GameCalls (+0x04) slots 7, 8, 70, 72, 108, 364-366, 368, 376, 512; CScriptThing slots 6 GetPos,
 //   7 GetHomePos.

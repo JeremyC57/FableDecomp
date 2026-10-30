@@ -13,7 +13,7 @@ struct CGameScriptTimerMethods {
     void* BeforeRegisterTimer[87];
     long (__fastcall *RegisterTimer)(CGameScriptInterface*); // slot87,0x006E79E0
 };
-extern CGameScriptInterface* g_Game; // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface; // 0x0143E8F8
 struct CScriptBaseNative {
     virtual ~CScriptBaseNative();
     unsigned char RetailMembers[0x3c];
@@ -42,7 +42,7 @@ struct CScriptThingConstructorView : CBaseClass {
 struct CQuestInfoStrings { CCharString name; CCharString tag; };
 struct CScriptTimer {
     long TimerIndex;
-    CScriptTimer() : TimerIndex(((CGameScriptTimerMethods*)g_Game->__vftable)->RegisterTimer(g_Game)) {}
+    CScriptTimer() : TimerIndex(((CGameScriptTimerMethods*)g_pGameScriptInterface->__vftable)->RegisterTimer(g_pGameScriptInterface)) {}
 };
 struct CScriptRetailArray {
     void* Start; void* Finish; void* End;

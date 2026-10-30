@@ -10,15 +10,15 @@
 // Callees: CScriptThing() @ 0x006E7B40, CScriptThing::operator= @ 0x008AB980 (x2), copy constructor @ 0x004ABE90,
 //   ~CScriptThing @ 0x004AA840 (x2); Compare(const char*, const char*) @ 0x00411570 (__fastcall, the inlined
 //   CBasicString<char>::operator==); the map's out-of-line _M_find @ 0x00CD2B86 (node pointer in eax);
-//   CScriptGameResourceObjectScriptedThingBase::IsScripting @ 0x00CD23B9 (x2) and its virtual GetScriptThing (slot 12,
+//   CScriptGameResourceObjectScriptedThingBase::IsValid @ 0x00CD23B9 (x2) and its virtual GetScriptThing (slot 12,
 //   +0x30, 0x007E7490); CGameScriptInterface (global @ 0x0143E8F8) slot 70 GetHero (+0x118) and slot 72
 //   GetThingWithScriptName (+0x120). Literals "HERO" @ 0x01255174, "" @ 0x0122D70E.
 // Shape: frame-pointer size TU. The inline CCharString::operator==(const char*) of the landed 0x00E6A000 (both levels
 //   `__forceinline`: the size TU calls them out of line otherwise): a null block branches off the strcmp intrinsic's
 //   flags (`repe cmpsb` of "HERO" against the pooled ""), else the inlined block compare `Compare(...) ? false : true`
-//   whose result byte is homed in the frame ([ebp-1]). The actor test is `it != end && it->second.IsScripting() &&
-//   IsScriptingActor(&it->second)` with an inline `actor && actor->IsScripting()` helper (the `test esi,esi` on the
-//   value's address and the second IsScripting); a lookup helper returning the address or null leaves a
+//   whose result byte is homed in the frame ([ebp-1]). The actor test is `it != end && it->second.IsValid() &&
+//   IsScriptingActor(&it->second)` with an inline `actor && actor->IsValid()` helper (the `test esi,esi` on the
+//   value's address and the second IsValid); a lookup helper returning the address or null leaves a
 //   `xor esi,esi` that retail threads away. The two by-value thing sources share the frame temporary and one
 //   assignment + destructor tail; no NRVO, the local is copied into the hidden result and destroyed.
 #include <string.h>
@@ -81,7 +81,7 @@ public:
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
     virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11();
     virtual CScriptThing GetScriptThing() const;        // slot 12 (+0x30)
-    bool IsScripting() const;                           // 0x00CD23B9 (the implementation pointer at +8 is set)
+    bool IsValid() const;                           // 0x00CD23B9 (the implementation pointer at +8 is set)
     void* m_pIntelligentPointer;                        // +0x04
     void* m_pImplementation;                            // +0x08
     void* m_pImplementationInfo;                        // +0x0c
@@ -134,7 +134,7 @@ extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 
 static inline bool IsScriptingActor(const CScriptGameResourceObjectScriptedThingBase* actor)
 {
-    return actor && actor->IsScripting();
+    return actor && actor->IsValid();
 }
 
 CScriptThing __fastcall CSFindThing(const CCharString& name, CActorMap& actors)
@@ -144,7 +144,7 @@ CScriptThing __fastcall CSFindThing(const CCharString& name, CActorMap& actors)
         thing = g_pGameScriptInterface->GetHero();
     } else {
         CActorMap::iterator it = actors.find(name);
-        if (it != actors.end() && it->second.IsScripting() && IsScriptingActor(&it->second))
+        if (it != actors.end() && it->second.IsValid() && IsScriptingActor(&it->second))
             thing = it->second.GetScriptThing();
         else
             thing = g_pGameScriptInterface->GetThingWithScriptName(name);

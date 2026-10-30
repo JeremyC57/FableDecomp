@@ -72,7 +72,7 @@ struct KickOffCreditsScreenResolvedOverlay
 class CThingPlayerCreature : public KickOffCreditsScreenResolvedOverlay { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
-extern "C" CPlayer* __fastcall Helper00449970(void* value);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 
 void CGameScriptInterface::KickOffCreditsScreen(
     CCharString& screenName)
@@ -81,7 +81,7 @@ void CGameScriptInterface::KickOffCreditsScreen(
         (const CGameScriptInterfaceOverlay*)this;
     CTCCreditsUI* creditsUI = 0;
     KickOffCreditsScreenResolvedOverlay* resolved =
-        Helper00449970(self->m_Field14)->GetPControlledCreature();
+        (&((CPlayerManager*)self->m_Field14)->GetMainPlayer())->GetPControlledCreature();
 
     if ((resolved->m_Flags40 & 0x02) != 0)
     {

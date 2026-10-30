@@ -10,14 +10,14 @@
 // and this->Refresh() 0x00C1C460 (label "ParticleMorphs_UpdateEditor").
 // Shape: nothing happens when the state is unchanged; the guard lives across the store, the notification and the
 // refresh; `Paused ? 1 : 4` compiles to neg/sbb/and/add.
-struct CLibGuardTarget;
-extern CLibGuardTarget g_LibWorldGuardTarget;   // 0x0143BAFC
+class PKCCriticalSection;
+extern PKCCriticalSection g_soundLock;   // 0x0143BAFC
 
-struct CLibScopeGuard {
-    CLibGuardTarget* Target;                    // +0x00
+class PKCProtectionInstance { public:
+    PKCCriticalSection* Target;                    // +0x00
     unsigned long    StartTime;                 // +0x04
-    CLibScopeGuard(CLibGuardTarget* target);    // 0x00C0FFC0
-    ~CLibScopeGuard();                          // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);    // 0x00C0FFC0
+    ~PKCProtectionInstance();                          // 0x00C0FFE0
 };
 
 bool __stdcall LibNotifyWorldState(long state, long arg);   // 0x00C335C0
@@ -34,7 +34,7 @@ void CWorld::SetAsPaused(bool paused)
     if (Paused != paused)
     {
         Paused = paused;
-        CLibScopeGuard guard(&g_LibWorldGuardTarget);
+        PKCProtectionInstance guard(&g_soundLock);
         LibNotifyWorldState(Paused ? 1 : 4, 0);
         Refresh();
     }

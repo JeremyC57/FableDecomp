@@ -11,14 +11,15 @@
 //   vptr store is the CSoundEventManager vtable 0x012B2748 and the lock-guarded call is its Shutdown 0x00C123B0 (agent433:
 //   'destructor 0x00C13470 landed as "C3DMesh2", a propagated label'); the worker queues are the landed PKCWorkerQueue
 //   destructors 0x00C14630 / 0x00C14560. The other parts keep their address names.
+class PKCCriticalSection;
 void __cdecl operator delete(void* block);
-extern unsigned char g_section_0143bb14[];  // 0x0143BB14: the module's critical section
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-struct CProfileLock_00c13470 {             // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CProfileLock_00c13470(void* section);  // 0x00C0FFC0
-    ~CProfileLock_00c13470();              // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
+    ~PKCProtectionInstance();              // 0x00C0FFE0
 };
 
 struct CPartA_00c13470 { unsigned char _body[4]; ~CPartA_00c13470(); };   // 0x00C25C20
@@ -48,7 +49,7 @@ struct CSoundEventManager {
 CSoundEventManager::~CSoundEventManager()
 {
     {
-        CProfileLock_00c13470 lock(g_section_0143bb14);
+        PKCProtectionInstance lock(&g_lock_0143bb14);
         Shutdown();
     }
     if (m_pA) {                            // each clear sits inside its own test (retail places the store before the join)

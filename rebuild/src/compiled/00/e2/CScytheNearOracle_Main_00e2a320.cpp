@@ -4,7 +4,7 @@
 // Literals "HUD_ORB_QUEST_CORE" 0x01258AB0, "MK_OW_SCYTHE3" 0x012C7D28, "" 0x0122D70E, "SCYTHE" 0x012CC544,
 //   "CS_ORACLE_AWAKENS" 0x012E2414, "SCRIPT_NAME_HERO" 0x0125D1C8, "TEXT_QST_B03_SCYTHE_ON_HIT_RETURNED" 0x012E23F0.
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840, ~CIsThingAlive 0x00E241B0, RegisterFilter 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer 0x0099A380 / 0x0099A430, handle IsScripting 0x00CD23B9 /
+//   IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer 0x0099A380 / 0x0099A430, handle IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 / operator=
 //   0x008ABD10 / dtor 0x007E74D0, movie handle dtor 0x006E7B80 (counted-pointer member dtor 0x006E7AB0), CTimer dtor 0x00CD4470,
 //   cast map operator[] 0x00CD3D2E, CQS_ScytheInfoScript::PlayCutscene 0x00E2A900, IsDistanceBetweenThingsUnder 0x00CBE2FF;
@@ -75,9 +75,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CScriptGameResourceObjectScriptedThingBase() { PImpData = 0; PImpInfo = 0; }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
+    virtual void Speak(const CScriptThing&, const char*, ETextGroupSelectionMethod, bool, bool, bool);   // 0x007E7390
 public:
     virtual CScriptThing GetScriptThing() const;   // 0x007E7490
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
@@ -136,7 +136,7 @@ void CScytheNearOracle::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase face;
-    if (face.IsScripting())
+    if (face.IsValid())
         face.Release();
     while (!Game->StartScriptingEntity(Me, face, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

@@ -122,14 +122,16 @@ class CWorld { public:
 class CGameScriptInterface { public:
     virtual void v000();
     CWorld* World;                                  // +0x04 (engine/CGameScriptInterface.h)
-    long GetCurrentWorldFrameForMessages() const;   // 0x006E7510 (labelled GetMaxWorldFrameForMessages)
+protected:
+    long GetMinWorldFrameForMessages() const;   // 0x006E7510
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
+public:
     bool MsgOnBoastsMade(CBoastVector& boasts) const;
 };
 
 bool CGameScriptInterface::MsgOnBoastsMade(CBoastVector& boasts) const
 {
-    long frame = GetCurrentWorldFrameForMessages();
+    long frame = GetMinWorldFrameForMessages();
     long maxFrame = GetMaxWorldFrameForMessages();
     CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;
     CMessageList found;

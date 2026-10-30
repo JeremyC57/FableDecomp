@@ -1090,7 +1090,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  } PImp;
  CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
  virtual void s001();
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
  void MoveToThing(const CScriptThing& thing, float distance, long moveType, bool a, bool b, bool c, bool d);   // 0x007E7300
  void Destroy();                                    // ~CScriptGameResourceObjectScriptedThingBase, out of line 0x007E74D0

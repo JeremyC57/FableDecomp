@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00E4A280, length 992 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0, out-of-line dtor 0x00E241B0) over the CScriptThing copy ctor
 // 0x004ABE90 / ~CScriptThing 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30;
-// scripted-thing handle (vtable 0x0127094C) inline ctor over CBaseObject 0x0099A380, IsScripting 0x00CD23B9, Release
+// scripted-thing handle (vtable 0x0127094C) inline ctor over CBaseObject 0x0099A380, IsValid 0x00CD23B9, Release
 // 0x00CD2770, MoveToThing 0x007E7300, FollowPreCalculatedRoute 0x007E7310, IsPerformingScriptTask 0x007E7450, dtor
 // 0x007E74D0; IsDistanceBetweenThingsOver 0x00CBE3EA / IsDistanceBetweenThingsUnder 0x00CBE2FF / FadeOutAndKillEntity
 // 0x00CBE716 (all __fastcall); CCharString 0x0099EBF0 / 0x0099EAE0; CScriptThing slots 21 MsgIsHitBy, 41
@@ -62,11 +62,11 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
-    void MoveToThing(const CScriptThing& thing, float distance, EScriptEntityMoveType moveType, bool a, bool b, bool c, bool d);   // 0x007E7300
-    void FollowPreCalculatedRoute(const CScriptThing& thing, EScriptEntityMoveType moveType, bool a, bool b);   // 0x007E7310
-    bool IsPerformingScriptTask() const;               // 0x007E7450
+    virtual void MoveToThing(const CScriptThing&, float, EScriptEntityMoveType, bool, bool, bool, bool);   // 0x007E7300
+    virtual void FollowPreCalculatedRoute(const CScriptThing&, EScriptEntityMoveType, bool, bool);   // 0x007E7310
+    virtual bool IsPerformingScriptTask() const;               // 0x007E7450
 };
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
@@ -122,7 +122,7 @@ void CSafeTrader::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

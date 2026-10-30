@@ -90,6 +90,7 @@ struct CHandlePImp {
     CHandlePImp() : Data(0), Info(0) { }
     CHandlePImp& operator=(const CHandlePImp& other);   // 0x008AB1E0
 };
+enum EScriptEntityMoveType;
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 0x10 bytes
     CHandlePImp PImp;                                   // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }    // out of line 0x007E72A0
@@ -100,11 +101,11 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
         PImp = other.PImp;
         return *this;
     }
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void MoveToPosition(const C3DVector& pos, float speed, long type, bool a, bool b);   // 0x007E72F0
-    bool IsPerformingScriptTask() const;                // 0x007E7450
-    void ClearCommands();                               // 0x007E7360
+    virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // 0x007E72F0
+    virtual bool IsPerformingScriptTask() const;                // 0x007E7450
+    virtual void ClearCommands();                               // 0x007E7360
 };
 struct CMovieImpPointer {
     void* Data;
@@ -198,7 +199,7 @@ void CKG_ChiefBreakSiege::Main()
         return;
     Game->Pause(1.0f);
     ParentClass->ChiefTaken = true;
-    if (chief.IsScripting())
+    if (chief.IsValid())
         chief.Release();
     while (!Game->StartScriptingEntity(Me, chief, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -216,7 +217,7 @@ void CKG_ChiefBreakSiege::Main()
         if (!chief.IsPerformingScriptTask()) {
             if (IsActiveThreadTerminating())
                 return;
-            chief.MoveToPosition(hut.PosOrZero(), 0.0f, 0, false, true);
+            chief.MoveToPosition(hut.PosOrZero(), 0.0f, (EScriptEntityMoveType)0, false, true);
         }
         if (IsTalkedToBy(Me, "SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())

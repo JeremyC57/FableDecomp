@@ -6,7 +6,7 @@
 // Label: the catalog name "CTimer::CTimer" is propagated (a byte-identical shape with another slot); the
 // world-frame slot makes this the CCounter constructor. PDB CCounter = { long RelevantWorldFrame } (4 bytes).
 // Shape: `this` kept in esi across the virtual call, the frame stored from eax, `this` returned.
-struct CThingManager_Calls {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -173,7 +173,7 @@ struct CThingManager_Calls {
     virtual void v652();
     virtual long GetWorldFrame();                  // slot 653 (+0xa34)
 };
-extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 
 class CCounter { public:
     long RelevantWorldFrame;                       // +0x00
@@ -181,6 +181,6 @@ class CCounter { public:
 };
 
 CCounter::CCounter()
-    : RelevantWorldFrame(g_pThingManager_0143e8f8->GetWorldFrame())
+    : RelevantWorldFrame(g_pGameScriptInterface->GetWorldFrame())
 {
 }

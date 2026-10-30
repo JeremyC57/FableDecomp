@@ -2,6 +2,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C48860, oracle length 254 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,14h ; push esi ; mov esi,ecx ; lea ecx,[esi+1Ch] ; mov dword ptr [esp+0Ch],0 ; call CSemaphore::Acquire ; push esi ; lea ecx,[esp+14h] ; call CProfileLock::CProfileLock ; mov ecx,[esi+18h] ; mov eax,[ecx] ; mov dword ptr [esp+20h],1 ; call [eax+8] ; test eax,eax ; ja pop ; mov ecx,[g_pchNil] ; mov [esp+8],ecx ; mov edx,offset "d:\dev\audio\ver_fable_1.5_b\libpk\PKCMailbox.h" ; lea ecx,[esp+8] ; mov byte ptr [esp+20h],2 ; call Append ; ... mov edx,3Fh ; ... call AppendNumber ; ... call Append (text) ; ... call Append ("\n") ; mov eax,[g_pfnLogSink] ; test eax,eax ; je skip ; mov ecx,[esp+8] ; call eax ; skip: lea ecx,[esp+8] ; mov byte ptr [esp+20h],1 ; call ~CString ; lea ecx,[esp+7] ; call CTrace::CTrace ; pop: mov ecx,[esi+18h] ; mov esi,[esp+28h] ; mov edx,[ecx] ; push esi ; call [edx] ; lea ecx,[esp+10h] ; mov dword ptr [esp+0Ch],1 ; mov byte ptr [esp+20h],0 ; call ~CProfileLock ; ... mov eax,esi ; ... ret 4
 // The sibling peek at 0x00C48960 returns the result through the same hidden pointer. The classes are named by address.
+class PKCCriticalSection;
 extern char* g_pchNil_0139c900;            // 0x0139C900
 typedef void (__fastcall* PFNLOGSINK_00c48860)(const char* text);
 extern PFNLOGSINK_00c48860 g_pfnLogSink_0143bb2c;   // 0x0143BB2C
@@ -18,11 +19,11 @@ struct CTrace_00c48860 {                   // empty temporary (a debug-break hel
     CTrace_00c48860();                         // 0x00C16750
 };
 
-struct CProfileLock_00c48860 {             // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CProfileLock_00c48860(void* section);  // 0x00C0FFC0
-    ~CProfileLock_00c48860();              // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
+    ~PKCProtectionInstance();              // 0x00C0FFE0
 };
 
 struct CMessage_00c48860 {                 // one word, released by its destructor
@@ -48,7 +49,7 @@ struct CMailbox_00c48860 {
 CMessage_00c48860 CMailbox_00c48860::Take()
 {
     m_semaphore.Acquire();
-    CProfileLock_00c48860 lock(this);
+    PKCProtectionInstance lock((PKCCriticalSection*)this);
     if (!(m_pQueue->Count() > 0)) {
         {
             CString_00c48860 line;

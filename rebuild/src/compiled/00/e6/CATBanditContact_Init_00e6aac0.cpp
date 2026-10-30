@@ -974,7 +974,7 @@ struct CGameScriptInterfaceCalls {
     virtual void v843();
     virtual void SetThingAsTarget(CScriptThingArg thing, long flag);                 // slot 844 (+0xd30)
 };
-struct CTimerManager {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -1066,7 +1066,7 @@ struct CTimerManager {
     virtual void v088();
     virtual void SetTimer(long index, long time);   // slot 89 (+0x164)
 };
-extern CTimerManager* g_pScriptTimerManager;  // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 class CScriptDef { public:
     unsigned char _pad[0x50c];
     long          AcolyteTimerTime;           // +0x50c
@@ -1114,7 +1114,7 @@ void CAT_BanditContact::Init()
             CCharString("ParentClass.", -1) + CCharString("WatchForAcolyteDeath", -1),
             0, &CQ_AcolyteParentScript::WatchForAcolyteDeath, ParentClass, Thing),
         CCharString("", -1));
-    g_pScriptTimerManager->SetTimer(Timer.TimerIndex, pGlobalScriptDef->GetAcolyteTimerTime());
+    g_pGameScriptInterface->SetTimer(Timer.TimerIndex, pGlobalScriptDef->GetAcolyteTimerTime());
     GSI->SetThingFlags(Thing, 0, 0, 0);
     GSI->SetThingAsTarget(Thing, 0);
 }

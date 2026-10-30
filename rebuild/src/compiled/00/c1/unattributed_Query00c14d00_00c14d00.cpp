@@ -1,16 +1,16 @@
 // CHTE_Executioner_00c14d00::Query(void*) -- EH-framed: under a scoped lock over the global @ 0x0143BB14, virtual slot 13 of the polymorphic member at +0x10 with the argument, its result returned
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C14D00, oracle length 102 bytes. Built under /EHsc.
-// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call CScopedLock::CScopedLock ; mov edx,[value] ; mov eax,[esi+0x10] ; lea ecx,[esi+0x10] ; push edx ; mov dword ptr [esp+18h],0 ; call [eax+34h] ; lea ecx,[esp+4] ; mov esi,eax ; mov dword ptr [esp+14h],-1 ; call ~CScopedLock ; mov ecx,[esp+0Ch] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,14h ; ret 4
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call PKCProtectionInstance::PKCProtectionInstance ; mov edx,[value] ; mov eax,[esi+0x10] ; lea ecx,[esi+0x10] ; push edx ; mov dword ptr [esp+18h],0 ; call [eax+34h] ; lea ecx,[esp+4] ; mov esi,eax ; mov dword ptr [esp+14h],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+0Ch] ; mov eax,esi ; pop esi ; mov fs:[0],ecx ; add esp,14h ; ret 4
 // The scoped-lock shape with a virtual call on an embedded member taking the argument, the result
 // surviving the lock's destructor in esi. The manifest label is propagated; the class is named by address.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CExecutionTarget_00c14d00 {             // polymorphic member at +0x10
@@ -38,6 +38,6 @@ struct CHTE_Executioner_00c14d00 {
 
 long CHTE_Executioner_00c14d00::Query(void* value)
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     return m_target.Query(value);
 }

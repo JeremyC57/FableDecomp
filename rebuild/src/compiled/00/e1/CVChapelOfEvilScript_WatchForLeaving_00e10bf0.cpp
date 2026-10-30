@@ -5,7 +5,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E10BF0, 384 bytes.
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 / ~CScriptThing @ 0x004AA840, CCharString(const char*, long)
 //          @ 0x0099EBF0 / ~ @ 0x0099EAE0, the filter registration @ 0x00F35B10 and IsDone @ 0x00F35B30 (on this),
-//          CBaseObject() @ 0x0099A380, the scripted-thing handle's IsScripting @ 0x00CD23B9 / Release @ 0x00CD2770 /
+//          CBaseObject() @ 0x0099A380, the scripted-thing handle's IsValid @ 0x00CD23B9 / Release @ 0x00CD2770 /
 //          FollowThing @ 0x007E7320 / destructor @ 0x007E74D0 (vtable 0x0127094C); CGameScriptInterface slots 7
 //          NewScriptFrame (+0x1c), 8 StartScriptingEntity (+0x20), 72 GetThingWithScriptName (+0x120); CScriptThing
 //          slot 75 IsAlive (+0x12c, through the reference).
@@ -93,7 +93,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                           // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                  // 0x00CD23B9
+    bool IsValid() const;                                  // 0x00CD23B9
     void Release();                                      // 0x00CD2770
     virtual void FollowThing(const CScriptThing& thing, float distance, bool run);   // 0x007E7320
 };
@@ -123,7 +123,7 @@ void CV_ChapelOfEvilScript::WatchForLeaving()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_4)) {
         Game->NewScriptFrame();
@@ -138,7 +138,7 @@ void CV_ChapelOfEvilScript::WatchForLeaving()
         if (!woman.IsAlive()) {
             if (IsActiveThreadTerminating())
                 return;
-            if (handle.IsScripting())
+            if (handle.IsValid())
                 handle.Release();
             return;
         }

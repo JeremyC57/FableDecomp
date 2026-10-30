@@ -76,7 +76,7 @@ struct GiveTarget {
 
 // ---- engine helpers / globals (relocation-masked: extern only) --------------
 
-extern CPlayer* __fastcall GiveHeroItem_HelperA(void* thisA);            // 0x00449970
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 
 // ---- the function ----------------------------------------------------------
 
@@ -89,7 +89,7 @@ void __fastcall CGameScriptInterface_GiveHeroItem(void* thisPtr, unsigned long /
         return;
 
     // mov ecx,[esi+0x14] ; call HelperA ; mov ecx,eax ; call HelperB
-    CPlayer* a = GiveHeroItem_HelperA(*(void**)((unsigned char*)thisPtr + 0x14));
+    CPlayer* a = (&((CPlayerManager*)(*(void**)((unsigned char*)thisPtr + 0x14)))->GetMainPlayer());
     HeroThing* h = a->GetPControlledCreature();
 
     // test eax,eax ; je ret

@@ -154,7 +154,8 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void SetTeleportingAsActive(bool a0) const;   // slot 565 (+0x8d4) 0x0088F410
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-struct CQ_AwakeningTheOracleScript {
+namespace NScript {
+class CQ_AwakeningTheOracleScript { public:
     char pad00[0x4c];
     long TabletsCollected;                              // +0x4c (PDB +0x60)
     bool SpawnedFinalSpotsStuff;                        // +0x50 (PDB +0x64)
@@ -164,6 +165,8 @@ struct CQ_AwakeningTheOracleScript {
     bool GotA;                                          // +0x70 (PDB +0x84)
     void PlayCutscene(CCharString name, bool wait);     // 0x00CFF9A0
 };
+}
+using NScript::CQ_AwakeningTheOracleScript;
 class CEntityScriptBase { public:
     virtual void e00();
     CGameScriptInterface* Game;                         // +0x04

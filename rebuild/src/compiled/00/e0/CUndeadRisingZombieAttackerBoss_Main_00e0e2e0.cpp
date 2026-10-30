@@ -5,7 +5,7 @@
 //   0x00BFEA1A and the inlined CSpawnedFunc1<CQ_UndeadRisingScript, CScriptThing> constructor (CSpawnedFuncBase ctor
 //   0x00CDD450, vtable 0x012E0088, callback 0x00E0DBB0); CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   operator+(const CCharString&, const CCharString&) 0x0099F570 (__fastcall); CScriptBase::Add 0x00CB7E50; the scripted-thing
-//   handle (CBaseObject ctor 0x0099A380, vtable 0x0127094C, IsScripting 0x00CD23B9, Release 0x00CD2770, MoveToPosition
+//   handle (CBaseObject ctor 0x0099A380, vtable 0x0127094C, IsValid 0x00CD23B9, Release 0x00CD2770, MoveToPosition
 //   0x007E72F0, dtor 0x007E74D0); GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 264 GetHealth, 451
 //   GiveThingBestEnemyTarget. Strings "LookAfterHealth", "ParentClass.", ""; 0.5f 0x0122F59C.
 // Layout: Ego_r.pdb CUndeadRisingZombieAttackerBoss: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14,
@@ -47,7 +47,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                          // +0x08
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     void MoveToPosition(const C3DVector& position, float a2, float a3, bool a4, bool a5);   // 0x007E72F0
 };
@@ -167,7 +167,7 @@ void CUndeadRisingZombieAttackerBoss::Main()
         return;
     ParentClass->Add(new CSpawnedFunc1(CCharString("ParentClass.") + CCharString("LookAfterHealth"), 0,
                                        &CQ_UndeadRisingScript::LookAfterHealth, ParentClass, Me), CCharString(""));
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_3)) {
         Game->NewScriptFrame();

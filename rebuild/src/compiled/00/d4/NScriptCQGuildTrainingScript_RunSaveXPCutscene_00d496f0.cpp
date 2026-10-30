@@ -4,7 +4,7 @@
 //   "CS_GUILD_SAVEXP2" 0x012CE910 there), and FableWin.pdb lists both RunSaveXPCutscene and RunSaveXPCutscene2.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840 (out of line)
 //   / ~CBaseClass 0x0099A2E0 / operator delete 0x00BFE9BC, CBaseObject ctor 0x0099A380 / dtor 0x0099A430, scripted-thing
-//   handle IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0 (out of line) / operator= 0x008ABD10, cast map
+//   handle IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0 (out of line) / operator= 0x008ABD10, cast map
 //   ctor 0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E, movie PImp dtor 0x006E7AB0, RunCutsceneMacro 0x00CBFB7D
 //   (__fastcall), CScriptBase::IsActiveThreadTerminating 0x00CB7940; the game script interface slots 7, 8, 70, 72, 370,
 //   371, 379.
@@ -57,7 +57,7 @@ class CScriptGameResourceObjectBase : public CBaseObject { public:        // vta
 struct CScriptThingImp;
 class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObjectBase { public:   // vtable 0x0127094C, 0x10 bytes
     CCountedPointer<CScriptThingImp> PImp;                  // +0x08
-    bool IsScripting();                                     // 0x00CD23B9
+    bool IsValid() const;                                     // 0x00CD23B9
     void Release();                                         // 0x00CD2770
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
@@ -101,7 +101,7 @@ void CQ_GuildTrainingScript::RunSaveXPCutscene()
 {
     CScriptThing guildmaster = Game->GetThingWithScriptName("TheRealGuildmaster");
     CScriptGameResourceObjectScriptedThingBase gm;
-    if (gm.IsScripting())
+    if (gm.IsValid())
         gm.Release();
     while (!Game->StartScriptingEntity(guildmaster, gm, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -111,7 +111,7 @@ void CQ_GuildTrainingScript::RunSaveXPCutscene()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase hero;
-    if (hero.IsScripting())
+    if (hero.IsValid())
         hero.Release();
     while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

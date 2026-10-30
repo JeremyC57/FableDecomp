@@ -1003,13 +1003,16 @@ class CTimer { public:                                     // 4 bytes: an index 
 };
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);              // 0x00CBE512
-struct CQ_AwakeningTheOracleScript {
+namespace NScript {
+class CQ_AwakeningTheOracleScript { public:
  unsigned char BaseState[0x49];
  bool PlayedOpeningCS;                              // +0x49 (PDB +0x5d)
  unsigned char _pad4a[0x65 - 0x4a];
  bool PlayedOpeningNecroCS;                         // +0x65 (PDB +0x79)
  void PlayCutscene(CCharString name, bool wait);    // 0x00CFF9A0
 };
+}
+using NScript::CQ_AwakeningTheOracleScript;
 class CEntityScriptBase
 {
 public:

@@ -11,12 +11,12 @@ struct Obj { char pad20[0x20]; unsigned int flags20; char pad24[0x44-0x24]; Cont
 class CThingPlayerCreature : public Obj { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
-extern CPlayer* __fastcall GetSub(void* self);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern void __fastcall DoIt(void* self);
 
 void __fastcall CGameScriptInterface_ConfiscateAllHeroWeapons(CGameScriptInterface* self)
 {
-    CPlayer* a = GetSub(self->PlayerManager);
+    CPlayer* a = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     Obj* o = a->GetPControlledCreature();
     if (!o) return;
     if (o->flag91 & 1) return;

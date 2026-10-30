@@ -5,14 +5,14 @@
 //   "SCRIPT_NAME_HERO" 0x0125D1C8, "CS_SNOWTROLL_INTRO" 0x012F4608, "HUD_QUEST_ICON_ICE_TROLL" 0x012F45EC.
 // Callees: CScriptThing copy 0x004ABE90 (filter member), ~CIsThingAlive 0x00E241B0 (out of line), ~CBaseClass 0x0099A2E0,
 //   RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC, CCharString 0x0099EBF0 /
-//   0x0099EAE0, handle IsScripting 0x00CD23B9 / Release 0x00CD2770, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall),
+//   0x0099EAE0, handle IsValid 0x00CD23B9 / Release 0x00CD2770, IsDistanceBetweenThingsUnder 0x00CBE2FF (__fastcall),
 //   parent PlayCutscene(CCharString) 0x00EE2DB0; GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero,
 //   81 GetNearestWithDefName, 321 DisplayQuestInfo, 325 AddQuestInfoBarHealth, 356 EntitySetAsHiddenOnMiniMap,
 //   477 SetThingPersistent, 567 SetRegionExitAsActive, 568 SetRegionEntranceAsActive; CScriptThing slots 21 MsgIsHitBy,
 //   41 MsgIsHitBySpecialAbilityFrom, 42 MsgIsHitByAnySpecialAbilityFrom; handle slot 20 PlayLoopingAnimation.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8}, ParentClass +0x14 (the troll quest script: rock-pile handle +0x48,
 //   intro-played flag +0x7d), PMasterData +0x18, EntrancePoint +0x1C, ExitPoint +0x28 (CScriptThing members).
-// Shape: the parent's IsScripting/Release pair is an inline parent helper (a local handle alias computes the handle with
+// Shape: the parent's IsValid/Release pair is an inline parent helper (a local handle alias computes the handle with
 //   `add` instead of `lea`); CRGBColour is the D3DCOLOR B,G,R,A byte view set R,G,B,A in its body (store order 0x16,0x17,0x15,0x14);
 //   the GetNearestWithDefName results are assigned through inline operator= and destroyed by the inline ~CScriptThing;
 //   the hero-name temporaries of the wait test are one `||`/`&&` chain (construction flags in ebx).
@@ -107,7 +107,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseIntelligentPointe
     virtual void PlayLoopingAnimation(const CCharString& anim, long loops, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // slot 20 (+0x50)
     void* PImpData;                                     // +0x08
     void* PImpInfo;                                     // +0x0c
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 class CRGBColour { public:
@@ -127,7 +127,7 @@ struct CQ_SnowTrollScript {
     unsigned char _pad58[0x7d - 0x58];
     bool IntroPlayed;                                   // +0x7d
     void PlayCutscene(CCharString name);
-    void ReleaseRockPile() { if (RockPile.IsScripting()) RockPile.Release(); }                // 0x00EE2DB0
+    void ReleaseRockPile() { if (RockPile.IsValid()) RockPile.Release(); }                // 0x00EE2DB0
 };
 class CEntityScriptBase { public:
     virtual void e00();

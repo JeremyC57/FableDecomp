@@ -18,6 +18,7 @@
 //   <new> does): a plain declaration adds an EH state-0 store before the vector's inline _Tidy and moves the zero
 //   register ahead of the lock (the state 2 then stored as an immediate).
 // Label correction: the catalog's `DetailCache_Cleanup_Variant` is propagated; descriptive names.
+class PKCCriticalSection;
 void __cdecl operator delete(void* block) throw();   // 0x00BFE9BC (nothrow, as VC7.1 <new> declares it)
 
 struct PKCCriticalSection_00c14630 {               // 0x18 bytes: a CRITICAL_SECTION
@@ -26,11 +27,11 @@ struct PKCCriticalSection_00c14630 {               // 0x18 bytes: a CRITICAL_SEC
     ~PKCCriticalSection_00c14630();                 // 0x00C1C820
 };
 
-struct CScopedLock_00c14630 {                      // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:                      // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CScopedLock_00c14630(void* section);            // 0x00C0FFC0
-    ~CScopedLock_00c14630();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);            // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct PKCSemaphore_00c14630 {                     // a Win32 semaphore handle
@@ -91,7 +92,7 @@ public:
 PKCWorkerQueue_00c14630::~PKCWorkerQueue_00c14630()
 {
     {
-        CScopedLock_00c14630 lock(&m_section);
+        PKCProtectionInstance lock((PKCCriticalSection*)&m_section);
         m_requests.insert(m_requests.end(), 0);
         m_semaphore.Release();
     }

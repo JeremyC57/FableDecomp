@@ -41,7 +41,7 @@ class CScriptThing : public CBaseClass { public:              // vtable 0x01238C
     virtual ~CScriptThing() { }
 };
 
-struct CThingManager_Calls {
+class CGameScriptInterface { public:
     virtual void v000();
     virtual void v001();
     virtual void v002();
@@ -132,11 +132,11 @@ struct CThingManager_Calls {
     virtual void v087();
     virtual void ReleaseTimer(long timerIndex);   // slot 88 (+0x160)
 };
-extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 
 class CTimer { public:
     long TimerIndex;
-    ~CTimer() { g_pThingManager_0143e8f8->ReleaseTimer(TimerIndex); }
+    ~CTimer() { g_pGameScriptInterface->ReleaseTimer(TimerIndex); }
 };
 
 struct CCrateTeamManager {

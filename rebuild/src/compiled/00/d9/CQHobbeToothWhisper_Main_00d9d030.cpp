@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D9D030, 1216 bytes (int3 padded).
 // Callees: CCharString 0x0099EBF0 / ~ 0x0099EAE0, IsActiveThreadTerminating 0x00F35B30, ~CScriptThing 0x004AA840,
-//   CScriptThing::operator= 0x008AB980; scripted-thing handle (vtable 0x0127094C) over CBaseObject 0x0099A380, IsScripting
+//   CScriptThing::operator= 0x008AB980; scripted-thing handle (vtable 0x0127094C) over CBaseObject 0x0099A380, IsValid
 //   0x00CD23B9, Release 0x00CD2770, MoveToThing 0x007E7300, dtor 0x007E74D0; CScriptThing slots 21 MsgIsHitBy, 41
 //   MsgIsHitBySpecialAbilityFrom, 42 MsgIsHitByAnySpecialAbilityFrom; impl IsAlive (slot 75, inline null-checked);
 //   CGameScriptInterface slots 7, 8 StartScriptingEntity, 77 GetNearestWithScriptName, 265 ModifyThingHealth,
@@ -55,14 +55,15 @@ static inline bool IsThingImpAlive(const CScriptThing& t)
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+enum EScriptEntityMoveType;
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void MoveToThing(const CScriptThing& thing, float distance, long moveType, bool a, bool b, bool c, bool d);   // 0x007E7300
-    bool IsPerformingScriptTask() const;                // 0x007E7450
+    virtual void MoveToThing(const CScriptThing&, float, EScriptEntityMoveType, bool, bool, bool, bool);   // 0x007E7300
+    virtual bool IsPerformingScriptTask() const;                // 0x007E7450
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -103,7 +104,7 @@ void CQ_HobbeToothWhisper::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, (EScriptAIPriority)1)) {
         Game->NewScriptFrame();
@@ -125,7 +126,7 @@ void CQ_HobbeToothWhisper::Main()
                 return;
             Game->EntitySetThingAsEnemyOfThing(Me, hobbe);
             Game->GiveThingBestEnemyTarget(Me, hobbe);
-            handle.MoveToThing(hobbe, 0.0f, 1, false, true, false, true);
+            handle.MoveToThing(hobbe, 0.0f, (EScriptEntityMoveType)1, false, true, false, true);
             while (IsThingImpAlive(hobbe)) {
                 Game->NewScriptFrame();
                 if (IsActiveThreadTerminating())
@@ -138,7 +139,7 @@ void CQ_HobbeToothWhisper::Main()
             if (IsActiveThreadTerminating())
                 return;
             CScriptThing spawn = Game->GetNearestWithScriptName(Me, "SpawnNewHobbe");
-            if (handle.IsScripting())
+            if (handle.IsValid())
                 handle.Release();
             while (!Game->StartScriptingEntity(Me, handle, (EScriptAIPriority)4)) {
                 Game->NewScriptFrame();
@@ -147,8 +148,8 @@ void CQ_HobbeToothWhisper::Main()
             }
             if (IsActiveThreadTerminating())
                 return;
-            handle.MoveToThing(spawn, 0.0f, 1, true, true, false, true);
-            if (handle.IsScripting())
+            handle.MoveToThing(spawn, 0.0f, (EScriptEntityMoveType)1, true, true, false, true);
+            if (handle.IsValid())
                 handle.Release();
             while (!Game->StartScriptingEntity(Me, handle, (EScriptAIPriority)1)) {
                 Game->NewScriptFrame();

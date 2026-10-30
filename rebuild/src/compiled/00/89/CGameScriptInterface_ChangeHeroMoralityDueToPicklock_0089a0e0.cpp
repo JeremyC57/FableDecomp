@@ -50,14 +50,14 @@ struct CDefinitionManagerOverlay
 class CGameDefinitionManager : public CDefinitionManagerOverlay { public: static CGameDefinitionManager& __fastcall Get(); };   // 0x0044C6B0 ?Get@CGameDefinitionManager@@SIAAV1@XZ
 
 
-extern "C" CPlayer* __fastcall Sub_ResolveA(void* self);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 
 const ETCInterfaceType kTargetType = (ETCInterfaceType)4;
 
 void __fastcall CGameScriptInterface_ChangeHeroMoralityDueToPicklock(
     const CGameScriptInterface* self)
 {
-    CThingOverlay* pThing = Sub_ResolveA(self->PlayerManager)->GetPControlledCreature();
+    CThingOverlay* pThing = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer())->GetPControlledCreature();
     if (pThing != 0 &&
         (pThing->m_Flags91 & 0x01) == 0 &&
         (pThing->m_Flags20 & 0x10) != 0)

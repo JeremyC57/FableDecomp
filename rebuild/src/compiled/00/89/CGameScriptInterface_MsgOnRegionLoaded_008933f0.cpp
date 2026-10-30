@@ -57,14 +57,16 @@ class CGameScriptInterface { public:
     void*   DisplayEngine;                          // +0x0c
     CDefinitionManager_Retail* DefinitionManager;   // +0x10
     CPlayerManager_Retail*     PlayerManager;       // +0x14
-    long GetCurrentWorldFrameForMessages() const;   // 0x006E7510 (labelled GetMaxWorldFrameForMessages)
+protected:
+    long GetMinWorldFrameForMessages() const;   // 0x006E7510
     long GetMaxWorldFrameForMessages() const;       // 0x006E7530
+public:
     bool MsgOnRegionLoaded(CCharString& name) const;
 };
 
 bool CGameScriptInterface::MsgOnRegionLoaded(CCharString& name) const
 {
-    long frame = GetCurrentWorldFrameForMessages();
+    long frame = GetMinWorldFrameForMessages();
     long maxFrame = GetMaxWorldFrameForMessages();
     CMessageEventManager_Retail* messages = World->PMessageEventManager_Data;
     CMessageEvent_Retail* message = messages->FindMostRecentMessage(CMessageEventFilter_IsOfType(0x26) && CMessageEventFilter_CanBeSeenOrHeard(frame, maxFrame));

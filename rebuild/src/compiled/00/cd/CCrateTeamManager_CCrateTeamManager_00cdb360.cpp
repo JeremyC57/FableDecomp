@@ -15,7 +15,7 @@
 // address kept in a register.
 #include "engine/CScriptThing.h"   // PDB layout cited: CScriptThing = {vptr, PImp_Data, PImp_Info}, 12 bytes (modelled below with its constructor)
 
-struct CThingManager_Calls {
+class CGameScriptInterface { public:
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003();
     virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
@@ -40,7 +40,7 @@ struct CThingManager_Calls {
     virtual void v084(); virtual void v085(); virtual void v086();
     virtual long CreateTimer();                // slot 87 (+0x15c)
 };
-extern CThingManager_Calls* g_pThingManager_0143e8f8;   // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
@@ -58,7 +58,7 @@ struct CScriptThing_Retail : CBaseClass {           // vtable 0x01238C8C; layout
 
 class CTimer { public:
     long TimerIndex;
-    CTimer() : TimerIndex(g_pThingManager_0143e8f8->CreateTimer()) { }
+    CTimer() : TimerIndex(g_pGameScriptInterface->CreateTimer()) { }
 };
 
 struct CCrateTeamManager {

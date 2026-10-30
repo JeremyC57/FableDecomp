@@ -26,12 +26,12 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 
 struct M14 { char d; };
 
-extern CPlayer* __fastcall Resolve1(M14* self);      // ecx = member14
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern void __fastcall FinalCall(void* p);           // ecx
 
 void __fastcall CGameScriptInterface_StartSneaking(CGameScriptInterface* self)
 {
-    CPlayer* a = Resolve1((M14*)self->PlayerManager);
+    CPlayer* a = (&((CPlayerManager*)((M14*)self->PlayerManager))->GetMainPlayer());
     Obj* o = a->GetPControlledCreature();
     if (!o) return;
     if (o->flags & 1) return;

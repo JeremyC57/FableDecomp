@@ -92,12 +92,13 @@ static void RecordEvent(unsigned long event)
     ++g_EventCount;
 }
 
-CPlayer*
-CGSISheatheHeroWeapons_LookupSource::BeginLookup()
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970: the row's inline BeginLookup forwards here
+CPlayer&
+CPlayerManager::GetMainPlayer()
 {
-    g_ObservedLookupSource = this;
+    g_ObservedLookupSource = (CGSISheatheHeroWeapons_LookupSource*)this;
     RecordEvent(1);
-    return g_LookupResult;
+    return *g_LookupResult;
 }
 
 CThingPlayerCreature*

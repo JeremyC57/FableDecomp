@@ -23,12 +23,12 @@ struct CRumbleManager {
 };
 
 extern CRumbleManager* g_manager;
-extern CPlayer* __fastcall GetA(void* playerManager);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern int __fastcall GetIndex(CRumbleTarget* target);
 
 void __fastcall CGameScriptInterface_ClearAllRumbles(CGameScriptInterface* self)
 {
-    CPlayer* value = GetA(self->PlayerManager);
+    CPlayer* value = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     CRumbleTarget* target = value->GetPControlledCreature();
     if (target == 0)
         return;

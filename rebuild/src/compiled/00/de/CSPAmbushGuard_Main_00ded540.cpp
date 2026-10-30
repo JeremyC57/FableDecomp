@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DED540, length 470 bytes (padded to 480). Entity-script slot 1 (Main).
 // Callees: CScriptThing(const CScriptThing&) @ 0x004ABE90 / ~CScriptThing @ 0x004AA840 (the CIsThingAlive filter, vtable
 //   0x012C32F0), the filter registration @ 0x00F35B10, IsDone @ 0x00F35B30 (on `this`), CBaseObject ctor @ 0x0099A380,
-//   the scripted-thing handle's IsScripting @ 0x00CD23B9 / Release @ 0x00CD2770 / destructor @ 0x007E74D0 (vtable
+//   the scripted-thing handle's IsValid @ 0x00CD23B9 / Release @ 0x00CD2770 / destructor @ 0x007E74D0 (vtable
 //   0x0127094C); CCharString(const char*, long) @ 0x0099EBF0, ~CCharString @ 0x0099EAE0; CGameScriptInterface slots
 //   7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 364 AddNewConversation (+0x5b0), 366 AddLineToConversation
 //   (+0x5b8), 451 GiveThingBestEnemyTarget (+0x70c), 632 CanThingBe_Seen_ByOtherThing (+0x9e0), 635
@@ -48,7 +48,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;                           // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                  // 0x00CD23B9
+    bool IsValid() const;                                  // 0x00CD23B9
     void Release();                                      // 0x00CD2770
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_4 = 4 };
@@ -84,7 +84,7 @@ void CSP_AmbushGuard::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, SCRIPT_AI_PRIORITY_4)) {
         Game->NewScriptFrame();
@@ -103,6 +103,6 @@ void CSP_AmbushGuard::Main()
     long conversation = Game->AddNewConversation(Me, false, false);
     Game->AddLineToConversation(conversation, "TEXT_QST_055_GUARD_SURPRISED_BY_HERO", false, Me, Game->GetHero());
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
 }

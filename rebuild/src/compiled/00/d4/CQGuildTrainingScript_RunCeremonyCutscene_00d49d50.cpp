@@ -1,13 +1,13 @@
 // CQ_GuildTrainingScript::RunCeremonyCutscene() -- once the fresco dome is loaded, create Whisper and the guildmaster at their ceremony markers, take Whisper, the guildmaster and the hero under scripted control (Whisper in the hero faction), cast them as WHIS / GM / HERO and play CS_GUILD_CEREMONY in a paused movie sequence with the camera fixed, then remove Whisper and the guildmaster
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D49D50, length 1304 bytes.
 // Callees: CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0, ~CScriptThing 0x004AA840, CBaseObject ctor
-//   0x0099A380, scripted-thing handle (vtable 0x0127094C) ctor 0x007E72A0 / dtor 0x007E74D0 / IsScripting 0x00CD23B9 /
+//   0x0099A380, scripted-thing handle (vtable 0x0127094C) ctor 0x007E72A0 / dtor 0x007E74D0 / IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / operator= 0x008ABD10, cast map ctor 0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E, movie
 //   ctor 0x006E7B60 / dtor 0x006E7B80, cut-scene runner 0x00CBFB7D (__fastcall), CScriptBase::IsActiveThreadTerminating
 //   0x00CB7940; CScriptThing::GetPos (slot 6); the game script interface (+0x40) slots 7, 8, 11, 70, 72, 91, 108, 370, 371,
 //   379, 601.
 // Shape: cast/movie model of the landed CQ_HeroSoulsBriarScript::PlayCutscene 0x00D823A0 (one named copy of Game for the
-//   pause pair); scripted-thing handle as the landed CHobbeLeader::Main 0x00D8FA30 (`if (IsScripting()) Release();`).
+//   pause pair); scripted-thing handle as the landed CHobbeLeader::Main 0x00D8FA30 (`if (IsValid()) Release();`).
 class C3DVector { public: float X, Y, Z; };
 class CCharString { public:
     void* PStringData;
@@ -30,7 +30,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImpData(0), PImpInfo(0) { }   // out of line 0x007E72A0
     virtual ~CScriptGameResourceObjectScriptedThingBase();          // 0x007E74D0
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 class CScriptGameResourceObjectMovieBase : public CBaseObject { public:   // vtable 0x01260EF4, 16 bytes
@@ -77,7 +77,7 @@ void CQ_GuildTrainingScript::RunCeremonyCutscene()
     CScriptThing whisper = Game->CreateCreature("CREATURE_RIVAL_HERO_WHISPER_APPRENTICE", Game->GetThingWithScriptName("MK_GTC_WHISSTART").GetPos(), "Whisper", false);
     CScriptThing guildmaster = Game->CreateCreature("CREATURE_GUILDKEEPER", Game->GetThingWithScriptName("MK_GTC_GMSTART").GetPos(), "GM", false);
     CScriptGameResourceObjectScriptedThingBase whisperHandle;
-    if (whisperHandle.IsScripting())
+    if (whisperHandle.IsValid())
         whisperHandle.Release();
     while (!Game->StartScriptingEntity(whisper, whisperHandle, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -88,7 +88,7 @@ void CQ_GuildTrainingScript::RunCeremonyCutscene()
         return;
     Game->EntitySetInFaction(whisper, "FACTION_HERO");
     CScriptGameResourceObjectScriptedThingBase guildmasterHandle;
-    if (guildmasterHandle.IsScripting())
+    if (guildmasterHandle.IsValid())
         guildmasterHandle.Release();
     while (!Game->StartScriptingEntity(guildmaster, guildmasterHandle, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -98,7 +98,7 @@ void CQ_GuildTrainingScript::RunCeremonyCutscene()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase heroHandle;
-    if (heroHandle.IsScripting())
+    if (heroHandle.IsValid())
         heroHandle.Release();
     while (!Game->StartScriptingEntity(Game->GetHero(), heroHandle, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

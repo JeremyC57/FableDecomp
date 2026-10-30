@@ -21,13 +21,14 @@
 //   four callee-saved registers hold this, the index, the pool and the event) read back after the lock destructor;
 //   `a && (b || c)` gives the je/jne/je chain into the shared increment.
 // Label correction: the catalog's `Inventory_CountEquippedItems` is propagated.
-extern unsigned char g_section_0143bb14[];  // 0x0143BB14: the module's critical section
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-struct CScopedLock_00c12680 {                  // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:                  // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CScopedLock_00c12680(void* section);        // 0x00C0FFC0
-    ~CScopedLock_00c12680();                    // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);        // 0x00C0FFC0
+    ~PKCProtectionInstance();                    // 0x00C0FFE0
 };
 
 struct CSoundEvent {                  // 0xb4 bytes
@@ -53,7 +54,7 @@ struct CSoundEventManager {
 
 long CSoundEventManager::CountPlayingEvents()
 {
-    CScopedLock_00c12680 lock(g_section_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     long count = 0;
     for (unsigned long i = 0; i < GetNumEvents(); ++i) {
         CSoundEvent* event = GetEvent(i);

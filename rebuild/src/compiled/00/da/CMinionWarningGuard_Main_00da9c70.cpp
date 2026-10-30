@@ -6,7 +6,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA9C70, 1509 bytes, plain `ret`, no EH frame.
 // Callees: CIsThingAlive out-of-line dtor 0x00E241B0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840, RegisterFilter
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle
-//   out-of-line ctor 0x007E72A0 / IsScripting 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0 / operator= 0x008ABD10, cast map
+//   out-of-line ctor 0x007E72A0 / IsValid 0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0 / operator= 0x008ABD10, cast map
 //   0x00CDBF70 / 0x00CDBFB0 / operator[] 0x00CD3D2E, movie 0x006E7B60 / 0x006E7B80, RunCutsceneMacro 0x00CBFB7D, CCharString
 //   0x0099EBF0 / 0x0099EAE0 / operator+ 0x0099F570, operator new 0x00BFEA1A, CSpawnedFuncBase 0x00CDD450, AddSpawnedFunction
 //   0x00CB7E50; GameCalls slots 7, 8, 12 IsRegionLoaded, 70, 108, 229, 296 SetQuestCardObjective, 309 KickOffQuestStartScreen,
@@ -76,7 +76,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointerWords PImp;                          // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }    // out of line 0x007E72A0
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
 };
@@ -162,7 +162,7 @@ void CMinionWarningGuard::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase guard;
-    if (guard.IsScripting())
+    if (guard.IsValid())
         guard.Release();
     while (!Game->StartScriptingEntity(Me, guard, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -184,7 +184,7 @@ void CMinionWarningGuard::Main()
 #pragma inline_depth(0)
         CScriptGameResourceObjectScriptedThingBase hero;
 #pragma inline_depth()
-        if (hero.IsScripting())
+        if (hero.IsValid())
             hero.Release();
         while (!Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();

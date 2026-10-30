@@ -5,7 +5,7 @@
 //   "SCRIPT_NAME_HERO" 0x0125D1C8, "SummonerMinion" 0x012DE170, "CREATURE_MINION_WARDOG" 0x012CB9F4.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0) over CScriptThing copy 0x004ABE90 / ~CScriptThing 0x004AA840,
 //   CBaseClass ctor 0x0099A2D0, CScriptThing::operator= 0x008AB980, RegisterFilter 0x00F35B10, IsActiveThreadTerminating
-//   0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, handle IsScripting 0x00CD23B9 / Release 0x00CD2770 /
+//   0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, handle IsValid 0x00CD23B9 / Release 0x00CD2770 /
 //   SummonerLightningOrbAttackTarget 0x007E72D0 / IsPerformingScriptTask 0x007E7450 / dtor 0x007E74D0 (direct calls on the
 //   local handle), FadeInThing 0x00CBE7AA / IsDistanceBetweenThingsUnder 0x00CBE2FF / IsDistanceBetweenThingsOver 0x00CBE3EA
 //   (__fastcall), CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7, 8, 70 GetHero, 72 GetThingWithScriptName,
@@ -114,7 +114,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     void* PImpInfo;                                     // +0x0c
     __forceinline CScriptGameResourceObjectScriptedThingBase() : PImpData(0), PImpInfo(0) { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 class CRGBColour { public:
@@ -183,7 +183,7 @@ void CSummonerAttacker::Main()
     if (IsActiveThreadTerminating())
         return;
     do {
-        if (summoner.IsScripting())
+        if (summoner.IsValid())
             summoner.Release();
         while (!Game->StartScriptingEntity(Me, summoner, (EScriptAIPriority)4)) {
             Game->NewScriptFrame();
@@ -221,7 +221,7 @@ void CSummonerAttacker::Main()
         }
         if (IsActiveThreadTerminating())
             return;
-        if (summoner.IsScripting())
+        if (summoner.IsValid())
             summoner.Release();
         Game->MiniMapRemoveMarker(Me);
         while (IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 15.0f)) {

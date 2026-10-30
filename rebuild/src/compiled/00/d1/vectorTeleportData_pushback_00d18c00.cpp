@@ -46,7 +46,9 @@ public:
     T* _M_start;
     T* _M_finish;
     T* _M_end_of_storage;
+protected:
     void _M_insert_overflow(T* position, const T& x, const __false_type&, unsigned int fill_len, bool atend);   // 0x00D18CA0
+public:
     void push_back(const T& x)
     {
         if (_M_finish != _M_end_of_storage) {

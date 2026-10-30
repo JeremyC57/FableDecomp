@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00E36590, 446 bytes (448 with padding), `ret 8`.
 // Callees: CScriptThing::IsNull (slot 77, +0x134), CCharString(const char*, long) 0x0099EBF0 / ~CCharString 0x0099EAE0,
 //   ~CScriptThing 0x004AA840, CScriptBase::IsActiveThreadTerminating 0x00CB7940; the scripted-thing handle's
-//   IsScripting 0x00CD23B9 and virtuals ClearCommands (slot 10), GetScriptThing (slot 12), Speak(thing, const char*, ...)
+//   IsValid 0x00CD23B9 and virtuals ClearCommands (slot 10), GetScriptThing (slot 12), Speak(thing, const char*, ...)
 //   (slot 13), IsPerformingScriptTask (slot 26) (vtable 0x0127094C); through the interface (+0x40) NewScriptFrame (slot 7),
 //   GetHero (slot 70), AddScreenTitleMessage (slot 113), GetHealth (slot 264), Pause (slot 376).
 // Strings: "TEXT_QST_004_TIMES_UP" 0x012E3438, "TEXT_QST_004_GAME_OVER1" 0x012E3420, "TEXT_QST_004_GAME_OVER2" 0x012E3408;
@@ -48,7 +48,7 @@ class CScriptGameResourceObjectScriptedThingBase { public:         // vtable 0x0
     void* m_pIntelligentPointer;
     void* PImpData;
     void* PImpInfo;
-    bool IsScripting();                                     // 0x00CD23B9
+    bool IsValid() const;                                     // 0x00CD23B9
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -78,7 +78,7 @@ void NScript::CV_ArcheryCompetitionScript::DoTimesUp(const CScriptThing& thing, 
         IsActiveThreadTerminating();
         return;
     }
-    if (!judge.IsScripting())
+    if (!judge.IsValid())
         return;
     if (IsActiveThreadTerminating())
         return;

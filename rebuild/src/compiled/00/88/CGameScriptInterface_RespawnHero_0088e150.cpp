@@ -29,8 +29,8 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
-struct CPlayerManager_Retail {
-    long GetMainPlayerNumber();                   // 0x00449700
+class CPlayerManager { public:
+    long GetMainPlayerNumber() const;             // 0x00449700
 };
 
 enum { GAME_EVENT_RESPAWN_HERO = 8 };
@@ -42,7 +42,7 @@ class CGameScriptInterface { public:
     void*                  Component;             // +0x08
     void*                  DisplayEngine;         // +0x0c
     void*                  DefinitionManager;     // +0x10
-    CPlayerManager_Retail* PlayerManager;         // +0x14
+    CPlayerManager*        PlayerManager;         // +0x14
     void RespawnHero(bool flag) const;
 };
 

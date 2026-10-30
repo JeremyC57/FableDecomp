@@ -2,13 +2,14 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00C16310, oracle length 408 bytes. Built under /EHsc.
 // Retail bytes:  ... sub esp,30h ; push ebx ; push esi ; push edi ; mov edi,ecx ; push offset g_section ; lea ecx,[esp+10h] ; call CProfileLock::CProfileLock ; mov esi,[esp+50h] ; mov eax,[esi+4] ; mov cx,[esi] ; mov edx,[esi+0Ch] ; xor ebx,ebx ; mov [esp+14h],eax ; mov eax,[esi+10h] ; mov [esp+20h],cx ; push eax ; lea ecx,[esp+18h] ; mov [esp+48h],ebx ; mov [esp+1Ch],ebx ; mov [esp+20h],ebx ; mov [esp+26h],bx ; mov [esp+28h],edx ; call SRange::Convert ; mov ecx,[esi+14h] ; add ecx,[esi+10h] ; push ecx ; lea ecx,[esp+18h] ; mov [esp+1Ch],eax ; call SRange::Convert ; mov edx,[esp+18h] ; mov ecx,[esp+14h] ; cmp edx,ecx ; mov [esp+1Ch],eax ; jae zero ; cmp eax,ecx ; jae zero ; cmp edx,eax ; jbe keep ; zero: mov [esp+1Ch],ebx ; mov [esp+18h],ebx ; keep: mov edx,[esi+8] ; mov eax,[esp+4Ch] ; push edx ; push eax ; lea ecx,[esp+1Ch] ; push ecx ; mov ecx,[edi+8] ; call CEngine::Open ; lea ecx,[esp+28h] ; mov ebx,eax ; call CRecordBuilder::CRecordBuilder ; mov esi,[esp+54h] ; (fourteen setters) ; mov ecx,[edi+8] ; lea edx,[esp+28h] ; push edx ; push ebx ; call CEngine::Apply ; lea ecx,[esp+0Ch] ; mov esi,eax ; mov dword ptr [esp+44h],-1 ; call ~CProfileLock ; ... mov eax,esi ; ... ret 0Ch
 // The classes are named by address.
-extern unsigned char g_section_0143bb14[];  // 0x0143BB14: the module's critical section
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 
-struct CProfileLock_00c16310 {             // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CProfileLock_00c16310(void* section);  // 0x00C0FFC0
-    ~CProfileLock_00c16310();              // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
+    ~PKCProtectionInstance();              // 0x00C0FFE0
 };
 
 struct SParams_00c16310 {                  // the caller's parameter block
@@ -65,7 +66,7 @@ struct CScriptLoader_00c16310 {
 
 long CScriptLoader_00c16310::LoadScript(void* script, const SParams_00c16310* params, const SRecord_00c16310* record)
 {
-    CProfileLock_00c16310 lock(g_section_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     SRange_00c16310 range;
     range.m_limit = params->m_limit;
     range.m_start = 0;

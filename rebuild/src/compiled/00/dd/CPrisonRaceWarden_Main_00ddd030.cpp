@@ -1,7 +1,7 @@
 // CPrisonRaceWarden::Main() -- the prison race warden: take Me under scripted control, stand at GuardPosition facing its angle, wait until the race is over and the hero is within 5 units, then mark the hero's win and play the race-end cut-scene (the repeat version once the race was ever won before) with the hero and guard cast inside a paused movie sequence, mark the race ended and idle until the script ends
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DDD030, length 1019 bytes (padded to 1024), plain `ret`.
-// Callees: scripted-thing handle (vtable 0x0127094C) inline ctor over CBaseObject 0x0099A380, IsScripting 0x00CD23B9,
+// Callees: scripted-thing handle (vtable 0x0127094C) inline ctor over CBaseObject 0x0099A380, IsValid 0x00CD23B9,
 // Release 0x00CD2770, out-of-line ctor 0x007E72A0 / dtor 0x007E74D0 / operator= 0x008ABD10, inline-once dtor (vtable
 // 0x0126008C, ~CBaseObject 0x0099A430, operator delete 0x00BFE9BC); IsActiveThreadTerminating 0x00F35B30; ~CScriptThing
 // 0x004AA840; CCharString 0x0099EBF0 / 0x0099EAE0; cast map ctor 0x00CDBF70 / dtor 0x00CDBFB0 / operator[] 0x00CD3D2E;
@@ -75,7 +75,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void s001();
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     void Destroy();                                    // 0x007E74D0
     __forceinline void DestroyInline()
@@ -143,7 +143,7 @@ struct CPrisonRaceWarden : CEntityScriptBase {
 void CPrisonRaceWarden::Main()
 {
     CScriptGameResourceObjectScriptedThingBase scripted;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

@@ -62,10 +62,10 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();         // 0x007E74D0
     virtual void v01();
-    void ClearCommands();                                  // 0x007E7360
-    void PlayAnimation(const CCharString& name, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73D0
-    void PlayLoopingAnimation(const CCharString& name, long count, bool a, bool b, bool c, bool d, bool e, bool f, bool g);   // 0x007E73F0
-    void ClearAllActionsIncludingLoopingAnimations();      // 0x007E7410
+    virtual void ClearCommands();                                  // 0x007E7360
+    virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73D0
+    virtual void PlayLoopingAnimation(const CCharString&, long, bool, bool, bool, bool, bool, bool, bool);   // 0x007E73F0
+    virtual void ClearAllActionsIncludingLoopingAnimations();      // 0x007E7410
 };
 
 class CScriptGameResourceObjectMovieBase { public:                // 0x10 bytes

@@ -2,7 +2,7 @@
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D8FA30, 576 bytes (+ int3 padding).
 // Callees: CIsThingAlive predicate (vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840), SetPredicate 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsScripting 0x00CD23B9,
+//   IsActiveThreadTerminating 0x00F35B30, the scripted-thing handle (CBaseObject ctor 0x0099A380, IsValid 0x00CD23B9,
 //   Release 0x00CD2770, dtor 0x007E74D0, vtable 0x0127094C), CTimer ctor 0x00CD4450 / dtor 0x00CD4470 with SetTimer 89 /
 //   GetTimer 90 on g_pGameScriptInterface 0x0143E8F8, CCharString 0x0099EBF0 / 0x0099EAE0; GameCalls slots 7 NewScriptFrame,
 //   8 StartScriptingEntity, 70 GetHero, 451 GiveThingBestEnemyTarget, 689 PlayCriteriaSoundOnThing; CScriptThing slots 16
@@ -938,7 +938,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
 };
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
@@ -972,7 +972,7 @@ void CHobbeLeader::Main()
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 3)) {
   Game->NewScriptFrame();

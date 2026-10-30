@@ -7,18 +7,19 @@
 //   0x00C2A2D0); the libpk worker queue (chunk 433: PKCWorkerQueue, critical section +0, request vector +0x18,
 //   semaphore +0x28) pushes a null request to stop its thread, which is the `return 1` here.
 // Callees: PKCSemaphore::Wait @ 0x00C2A090 (WaitForSingleObject(h, INFINITE) with a PKCSemaphore.cpp warning),
-//   CScopedLock @ 0x00C0FFC0 / ~CScopedLock @ 0x00C0FFE0, std::vector<PKCRequest*>::erase @ 0x00C26BC0 (the iterator is a
+//   PKCProtectionInstance @ 0x00C0FFC0 / ~PKCProtectionInstance @ 0x00C0FFE0, std::vector<PKCRequest*>::erase @ 0x00C26BC0 (the iterator is a
 //   class: hidden return slot, begin() passed by value), the handler's virtual slot 0 (+0x10 member).
 // Shape: the lock lives in an inner block so it is released before the handler runs; `stop` (ebx) and `request`
 //   (edi) are zeroed between the lock argument push and the constructor call, and edi doubles as the EH state-0
 //   store; `!empty()` is Dinkumware's `size() == 0` test (`_Myfirst == 0 ? 0 : _Mylast - _Myfirst`). The front
 //   request is read through ONE named begin() iterator that is then erased: `front()` plus a second `begin()`
 //   reloads _Myfirst (`mov eax,ecx ; mov edx,[eax+4]`) instead of reusing the size() test's edx.
-struct CScopedLock {                            // 8-byte scoped lock (chunk 431 model)
+class PKCCriticalSection;
+class PKCProtectionInstance { public:                            // 8-byte scoped lock (chunk 431 model)
     void*         m_pSection;
     unsigned long m_tick;
-    CScopedLock(void* section);                 // 0x00C0FFC0
-    ~CScopedLock();                             // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
+    ~PKCProtectionInstance();                             // 0x00C0FFE0
 };
 
 struct PKCSemaphore {                           // a Win32 semaphore handle
@@ -73,7 +74,7 @@ long PKCWorkerThread::ProcessNextRequest()
     long stop = 0;
     PKCRequest* request = 0;
     {
-        CScopedLock lock(m_pSection);
+        PKCProtectionInstance lock((PKCCriticalSection*)m_pSection);
         if (!m_pRequests->empty()) {
             std::vector<PKCRequest*>::iterator first = m_pRequests->begin();
             request = *first;

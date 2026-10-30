@@ -3,7 +3,7 @@
 //   stays 6; release the scripted-thing handle and idle until the script is done
 // Leaf: ?Main@CMeleeThunder@
 // Retail: Fable.exe @ 0x00D58080, 633 bytes (+ int3 padding), plain `ret`.
-// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, the scripted-thing handle's IsScripting 0x00CD23B9 /
+// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, the scripted-thing handle's IsValid 0x00CD23B9 /
 //   Release 0x00CD2770 / out-of-line destructor 0x007E74D0, IsActiveThreadTerminating 0x00F35B30, operator delete
 //   0x00BFE9BC; GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity.
 // Layout: CEntityScriptBase {vptr, Game +4, Me +8} + ParentClass +0x14 (the parent quest script; its stage long at
@@ -65,7 +65,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
@@ -103,7 +103,7 @@ void CMeleeThunder::Main()
             return;
 #pragma inline_depth()
         }
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -135,7 +135,7 @@ void CMeleeThunder::Main()
             return;
 #pragma inline_depth()
         }
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (ParentClass->Stage != 6) {
         Game->NewScriptFrame();
@@ -152,7 +152,7 @@ void CMeleeThunder::Main()
             return;
 #pragma inline_depth()
         }
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -184,7 +184,7 @@ void CMeleeThunder::Main()
             return;
 #pragma inline_depth()
         }
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     do {
         Game->NewScriptFrame();

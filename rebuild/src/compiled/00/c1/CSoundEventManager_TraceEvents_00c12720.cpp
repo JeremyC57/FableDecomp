@@ -19,14 +19,15 @@
 //   before its destructor); the walk uses the inline accessors that give retail's esi/edi/ebx assignment (0x00C123B0);
 //   the zero index is the state word and the first count test is a memory compare after the refresh call.
 // Label correction: the catalog's `Inventory_DebugLogState` is propagated.
-extern unsigned char g_section_0143bb14[];  // 0x0143BB14: the module's critical section
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 extern char* g_pchNil_0139c900;            // 0x0139C900
 
-struct CScopedLock_00c12720 {                  // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:                  // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CScopedLock_00c12720(void* section);        // 0x00C0FFC0
-    ~CScopedLock_00c12720();                    // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);        // 0x00C0FFC0
+    ~PKCProtectionInstance();                    // 0x00C0FFE0
 };
 
 struct CString_00c12720 {                      // MFC-style string: one word, the shared empty data for the default constructor
@@ -61,7 +62,7 @@ struct CSoundEventManager {
 
 void CSoundEventManager::TraceEvents()
 {
-    CScopedLock_00c12720 lock(g_section_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     UpdateEvents();
     for (unsigned long i = 0; i < GetNumEvents(); ++i) {
         CSoundEvent* event = GetEvent(i);

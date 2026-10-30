@@ -81,7 +81,9 @@ class CGameScriptInterface {
 public:
     virtual ~CGameScriptInterface();
     CWorld* World;                                         // +0x04
-    long GetCurrentWorldFrameForMessages() const;          // 0x006E7510 (descriptive spelling, as bound)
+protected:
+    long GetMinWorldFrameForMessages() const;          // 0x006E7510
+public:
 protected:
     long GetMaxWorldFrameForMessages() const;              // 0x006E7530
 public:
@@ -89,7 +91,7 @@ public:
 };
 bool CGameScriptInterface::MsgOnQuestFailed(const CCharString& name) const
 {
-    long frame = GetCurrentWorldFrameForMessages() - 1;
+    long frame = GetMinWorldFrameForMessages() - 1;
     long maxFrame = GetMaxWorldFrameForMessages();
     const CMessageEventManager* messages = World->PMessageEventManager_Data;
     const CMessageEvent* message = messages->FindMostRecentMessage(

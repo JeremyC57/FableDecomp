@@ -1,7 +1,7 @@
 // CPrisonRacer::Main() -- a prisoner in the prison race: wait for the race start, take scripted control and set its running speed (slower for each racer), then every frame: every fourth frame find the nearest WaypointSpeedCheck marker and remember its index; sprint ("SPRINT" comment, faster speed) while behind the hero's nearest race marker, slow down again ("SLOW") when the sprint timer runs out; when idle follow the route to the nearest RaceMarker; stop when the hero won, and flag RaceEnded on reaching the warden
 // Leaf: ?Main@CPrisonRacer@@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DDC980, length 1477 bytes (+ int3 padding), plain `ret`.
-// Callees: IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting
+// Callees: IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / FollowPreCalculatedRoute 0x007E7310 / ClearCommands 0x007E7360 / IsPerformingScriptTask
 //   0x007E7450 / dtor 0x007E74D0, CScriptThing::GetDataString 0x004AA900 (slot 3) / operator= 0x008AB980 / dtor 0x004AA840,
 //   ~vector<CScriptThing> 0x008AC970, ~CTimer 0x00CD4470, GetDistanceBetweenThings 0x00CBE512 /
@@ -105,7 +105,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedVoidPointer PImp;                           // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     void FollowPreCalculatedRoute(const CScriptThing& thing, EScriptEntityMoveType moveType, bool a, bool b);   // 0x007E7310
     void ClearCommands();                               // 0x007E7360
@@ -165,7 +165,7 @@ void CPrisonRacer::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase racer;
-    if (racer.IsScripting())
+    if (racer.IsValid())
         racer.Release();
     while (!Game->StartScriptingEntity(Me, racer, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

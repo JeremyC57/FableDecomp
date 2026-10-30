@@ -138,7 +138,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
     virtual void FollowThing(const CScriptThing& thing, float distance, bool run);   // slot 7 (+0x1c), 0x007E7320
     virtual void StopFollowingThing(const CScriptThing& thing);   // slot 8 (+0x20), 0x007E7330
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 
@@ -177,11 +177,11 @@ public:
 
 
 
-extern CGameScriptInterface* g_pScriptTimers;          // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;          // 0x0143E8F8
 class CTimer { public:
     long Index;
-    long GetTime() const { return g_pScriptTimers->GetTimer(Index); }
-    void SetTime(long time) { g_pScriptTimers->SetTimer(Index, time); }
+    long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
+    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
 };
 struct CQ_HeroSoulsBriarScript {
     unsigned char _pad[0x68];

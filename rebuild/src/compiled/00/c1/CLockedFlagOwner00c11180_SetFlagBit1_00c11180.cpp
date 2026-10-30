@@ -9,14 +9,14 @@
 // the destructor's `lea ecx`: a one-bit BITFIELD assignment (`m_bit1 = 1`). A plain `m_flags |= 2`
 // gives the read-modify-write `or dword ptr [esi+7C8h],2` of 0x00C10DD0. No EH frame: nothing
 // between the lock's construction and destruction can throw.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;  // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock (section + entry tick)
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock (section + entry tick)
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CLockedFlagOwner_00c11180 {
@@ -29,6 +29,6 @@ struct CLockedFlagOwner_00c11180 {
 
 void CLockedFlagOwner_00c11180::SetFlagBit1()
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     m_bit1 = 1;
 }

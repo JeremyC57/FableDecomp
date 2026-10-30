@@ -11,15 +11,16 @@
 //   0x012B2748): the +0x5C pool of 0xB4-byte CSoundEvents (accessor 0x00C13620, IsActive 0x00C20840, Stop 0x00C21620, as in
 //   Shutdown 0x00C123B0) and the +0x2C event set; FINDINGS chunk 433 lists CTCHero among the manager's propagated names.
 //   The other classes keep their address names.
+class PKCCriticalSection;
 void __cdecl operator delete(void* block);
-extern unsigned char g_section_0143bb14[];  // 0x0143BB14: the module's critical section
+extern PKCCriticalSection g_lock_0143bb14;  // 0x0143BB14: the module's critical section
 struct CSoundEventManager;
 
-struct CProfileLock_00c12140 {             // 8 bytes: section + entry tick
+class PKCProtectionInstance { public:             // 8 bytes: section + entry tick
     void* m_pSection;
     unsigned long m_tick;
-    CProfileLock_00c12140(void* section);  // 0x00C0FFC0
-    ~CProfileLock_00c12140();              // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* section);  // 0x00C0FFC0
+    ~PKCProtectionInstance();              // 0x00C0FFE0
 };
 
 struct CTarget_00c12140 {
@@ -77,7 +78,7 @@ struct CSoundEventManager {
 
 void CSoundEventManager::ReleaseTarget(CTarget_00c12140* target)
 {
-    CProfileLock_00c12140 lock(g_section_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     for (unsigned long i = 0; i < m_events.m_count; ++i) {
         CSoundEvent* event = m_events.GetAt(i);
         if (event->IsActive() && event->m_pRecord && event->m_pRecord->m_pTarget == target)

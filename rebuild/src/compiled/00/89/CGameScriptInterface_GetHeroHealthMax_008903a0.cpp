@@ -2,13 +2,13 @@
 class CThingPlayerCreature;
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
-extern "C" CPlayer* __fastcall GetThing(void* p);
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern float g_defaultHealthMax;
 
 
 float __fastcall CGameScriptInterface_GetHeroHealthMax(CGameScriptInterface* self)
 {
-    CPlayer* t = GetThing(self->PlayerManager);
+    CPlayer* t = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer());
     CThingPlayerCreature* h = t->GetPControlledCreature();
     if (h != 0) {
         if ((*(unsigned char*)((char*)h + 0x91) & 1) == 0) {

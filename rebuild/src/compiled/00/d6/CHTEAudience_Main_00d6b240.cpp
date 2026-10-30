@@ -82,7 +82,7 @@ typedef long EScriptVillageAttitude;
 typedef long EScriptingStateGroups;
 typedef long ESex;
 typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
+enum ETextGroupSelectionMethod { };
 typedef long ETutorialCategory;
 namespace NEntityEvents {typedef long EEventType;}
 struct GameCalls {virtual ~GameCalls();
@@ -939,16 +939,17 @@ class CCharString { public:
 struct CCountedPointerWords { void* Data; void* Info; CCountedPointerWords() : Data(0), Info(0) { } };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+enum EScriptEntityMoveType;
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
- void PlayAnimation(const CCharString& anim, bool waitForFinish, bool stayOnLastFrame, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 18, 0x007E73D0
- void PlayLoopingAnimation(const CCharString& anim, long loops, bool waitForFinish, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 20, 0x007E73F0
- void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
- bool IsPerformingScriptTask() const;               // 0x007E7450
+ virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // slot 18, 0x007E73D0
+ virtual void PlayLoopingAnimation(const CCharString&, long, bool, bool, bool, bool, bool, bool, bool);   // slot 20, 0x007E73F0
+ virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // 0x007E72F0
+ virtual bool IsPerformingScriptTask() const;               // 0x007E7450
 };
 extern bool g_bScriptAnimationFlag;                 // 0x01375748 (a global bool the script headers pass as an animation default)
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
@@ -984,7 +985,7 @@ void CHTE_Audience::Main()
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();
@@ -998,14 +999,14 @@ void CHTE_Audience::Main()
   if (IsActiveThreadTerminating()) return;
  }
  if (IsActiveThreadTerminating()) return;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!ParentClass->AudienceLeggit) {
   Game->NewScriptFrame();
   if (IsActiveThreadTerminating()) return;
  }
  if (IsActiveThreadTerminating()) return;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();
@@ -1017,7 +1018,7 @@ void CHTE_Audience::Main()
   if (!handle.IsPerformingScriptTask()) {
    if (IsActiveThreadTerminating()) return;
    CScriptThingImp* imp = (CScriptThingImp*)spawnPoint.PImp.Data;
-   handle.MoveToPosition(!imp ? g_ZeroVector : imp->GetPosition(), 0.0f, 1, false, true);
+   handle.MoveToPosition(!imp ? g_ZeroVector : imp->GetPosition(), 0.0f, (EScriptEntityMoveType)1, false, true);
   }
   if (IsDistanceBetweenThingsUnder(Me, spawnPoint, 4.0f)) {
    if (IsActiveThreadTerminating()) return;

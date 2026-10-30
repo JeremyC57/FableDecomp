@@ -12,10 +12,11 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;   // 0x00487DC0
 };
 
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 class HeroResolverStage1
 {
 public:
-    CPlayer* ResolveStage2();
+
 };
 
 class CGameScriptInterface
@@ -40,7 +41,7 @@ bool CGameScriptInterface::HeroHasExpression(
     const CCharString& expression) const
 {
     const InterfaceOverlay* self = (const InterfaceOverlay*)this;
-    CThingPlayerCreature* hero = self->field14->ResolveStage2()->GetPControlledCreature();
+    CThingPlayerCreature* hero = ((CPlayerManager*)self->field14)->GetMainPlayer().GetPControlledCreature();
     if (hero != 0 && (((const HeroOverlay*)hero)->flags91 & 1) == 0)
     {
         return hero->IsExpressionAvailable(expression);

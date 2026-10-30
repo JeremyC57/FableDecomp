@@ -29,13 +29,13 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 
 
 // externs (reloc-masked); all __fastcall to match retail this-in-ecx idiom
-extern CPlayer* __fastcall GetMgr(void* self);         // call A: this=member14
+class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern long __fastcall CalcPct(void* value);           // call C: this=value
 extern long __cdecl Finalize(void);                    // call D
 
 long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(CGameScriptInterface* self)
 {
-    Thing* thing = GetMgr(self->PlayerManager)->GetPControlledCreature();
+    Thing* thing = (&((CPlayerManager*)self->PlayerManager)->GetMainPlayer())->GetPControlledCreature();
     if (thing != 0 && !(thing->flags91 & 1) && (thing->field20 & 0x10)) {
         ETCInterfaceType key = (ETCInterfaceType)(4);
         IFaceMap* m = &thing->ifaces;

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00DA7D30, 1472 bytes, plain `ret`; entity-script vtable slot 1 (Main).
 // Callees: CScriptThing copy 0x004ABE90 / default ctor 0x006E7B40 / dtor 0x004AA840 (inline copies in the first loop) /
 //   operator= 0x008AB980 (inline in the first loop), ~CBaseClass 0x0099A2E0, operator new 0x00BFEA1A / delete 0x00BFE9BC, RegisterFilter
-//   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsScripting
+//   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CBaseIntelligentPointer ctor 0x0099A380, scripted-thing handle IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / dtor 0x007E74D0, CCharString 0x0099EBF0 / 0x0099EAE0, operator+ 0x0099F690 (const char*,
 //   CCharString) / 0x0099F600 (CCharString, const char*) / 0x0099F570 (CCharString, CCharString), CSpawnedFuncBase ctor
 //   0x00CDD450, CScriptBase::Add 0x00CB7E50; GameCalls slots 7, 8, 70, 77, 108, 229, 265, 321, 325, 364-366, 376, 451, 465,

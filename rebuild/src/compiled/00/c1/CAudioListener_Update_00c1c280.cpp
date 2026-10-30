@@ -3,20 +3,20 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00C1C280, 171 bytes (`ret 0Ch`). Descriptive name (no PDB covers this library):
 //   the manifest's "CPhysicalPrimitiveMesh_ComputeLighting" is propagated. Callers: the landed 0x00C10E50 and 0x00C10F40
 //   (both `m_pOwner->Update(m_a, m_b, m_c)` on the object at +0x7BC after one of the three vectors changed).
-// Callees: CScopedLock::CScopedLock / ~CScopedLock @ 0x00C0FFC0 / 0x00C0FFE0 over the lock @ 0x0143BAFC,
+// Callees: PKCProtectionInstance::PKCProtectionInstance / ~PKCProtectionInstance @ 0x00C0FFC0 / 0x00C0FFE0 over the lock @ 0x0143BAFC,
 //   C3DVector::SwapYZ @ 0x00C1C070 (hidden-pointer POD result), the library's `__stdcall` SetListenerPosition
 //   @ 0x00C338C0 (handle, &position) and SetListenerOrientation @ 0x00C33920 (handle, &front, &top).
 // Shape: the converted vectors are declared first and ASSIGNED: each SwapYZ builds into one shared result temporary
 //   (+0x30) that is copied into the named POD local (three dword moves); initialising the locals directly builds
 //   straight into them (111 bytes). No EH frame (this TU is built without /EHsc).
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_audioLock;       // 0x0143BAFC
+class PKCCriticalSection;
+extern PKCCriticalSection g_soundLock;       // 0x0143BAFC
 
-struct CScopedLock {                        // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                        // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target); // 0x00C0FFC0
-    ~CScopedLock();                         // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target); // 0x00C0FFC0
+    ~PKCProtectionInstance();                         // 0x00C0FFE0
 };
 
 class C3DVector { public:
@@ -35,7 +35,7 @@ struct CAudioListener {
 
 void CAudioListener::Update(const C3DVector& position, const C3DVector& front, const C3DVector& top)
 {
-    CScopedLock lock(&g_audioLock);
+    PKCProtectionInstance lock(&g_soundLock);
     C3DVector pos, fwd, up;
     pos = position.SwapYZ();
     fwd = front.SwapYZ();

@@ -1,7 +1,7 @@
 // CBH_GangGruntSpawn::Main() -- bounty-hunt gang grunt spawn point: register the alive filter; if Me's data string holds a number, start the wait timer with it; wait until the hero hits Me (plainly or with a special ability other than 14), sees Me, or the timer runs out; set Me on the hero, wait for the quest to end, then walk Me to the nearest REGION_EXIT_POINT and fade it out once there (or once the region is loaded)
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D15510, length 1072 bytes, plain `ret`.
-// Callees: CBaseObject ctor 0x0099A380 / dtor 0x0099A430, the scripted-thing handle (vtable 0x0127094C) IsScripting
+// Callees: CBaseObject ctor 0x0099A380 / dtor 0x0099A430, the scripted-thing handle (vtable 0x0127094C) IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / MoveToPosition 0x007E72F0 / dtor 0x007E74D0 (the generated dtor is expanded at the
 //   first exit), CScriptThing copy 0x004ABE90 / dtor 0x004AA840 / IsAlive 0x004AB130, the filter registration 0x00F35B10,
 //   IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099E4B0 / ~ 0x0099EAE0 / operator!= 0x0099E960,
@@ -104,7 +104,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CCountedPointer PImp;                              // +0x08
     VPAD2(s0) VPAD1(s1)                                // slots 1..3
     virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // slot 4 (+0x10), 0x007E72F0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
 class CGameScriptInterface { public:
@@ -193,7 +193,7 @@ void CBH_GangGruntSpawn::Main()
         return;
     CScriptThing exitPoint = Game->GetNearestWithDefName(Me, "REGION_EXIT_POINT");
     CCharString region;
-    if (scripted.IsScripting())
+    if (scripted.IsValid())
         scripted.Release();
     while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -206,7 +206,7 @@ void CBH_GangGruntSpawn::Main()
         return;
     if (IsActiveThreadTerminating())
         return;
-    if (scripted.IsScripting()) {
+    if (scripted.IsValid()) {
         if (IsActiveThreadTerminating())
             return;
         scripted.MoveToPosition(exitPoint.GetPos(), 1.0f, (EScriptEntityMoveType)1, false, true);

@@ -5,7 +5,7 @@
 // RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30; CScriptThing::IsAlive 0x004AB130 (devirtualised on a
 // local), ~CScriptThing 0x004AA840 (village exits) and its inline expansion (the GetScriptThing temporary: vtable
 // 0x01238C8C, counted-pointer release, operator delete 0x00BFE9BC, ~CBaseClass 0x0099A2E0); scripted-thing handle (vtable
-// 0x0127094C) over CBaseObject 0x0099A380, IsScripting 0x00CD23B9, Release 0x00CD2770, MoveToPosition 0x007E72F0,
+// 0x0127094C) over CBaseObject 0x0099A380, IsValid 0x00CD23B9, Release 0x00CD2770, MoveToPosition 0x007E72F0,
 // IsPerformingScriptTask 0x007E7450, GetScriptThing 0x007E7490, dtor 0x007E74D0; IsDistanceFromThingToPositionOver
 // 0x00CBE45C (__fastcall); CCharString 0x0099EBF0 / 0x0099EAE0; CGameScriptInterface slots 7 NewScriptFrame,
 // 8 StartScriptingEntity, 72 GetThingWithScriptName, 108 RemoveThing, 477 SetThingPersistent, 492 EntityAttachToVillage.
@@ -78,15 +78,16 @@ using NScript::CIsThingAlive;
 struct CCountedPointerWords { void* Data; void* Info; };
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
+enum EScriptEntityMoveType;
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
-    bool IsPerformingScriptTask() const;                // 0x007E7450
-    CScriptThing GetScriptThing() const;                // 0x007E7490
+    virtual void MoveToPosition(const C3DVector&, float, EScriptEntityMoveType, bool, bool);   // 0x007E72F0
+    virtual bool IsPerformingScriptTask() const;                // 0x007E7450
+    virtual CScriptThing GetScriptThing() const;                // 0x007E7490
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 bool __fastcall IsDistanceFromThingToPositionOver(const CScriptThing& thing, const C3DVector& pos, float distance);   // 0x00CBE45C
@@ -165,7 +166,7 @@ void CRandomPopulationCreature::Main()
     }
     Game->SetThingPersistent(Me, false);
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, (EScriptAIPriority)1)) {
         Game->NewScriptFrame();
@@ -180,7 +181,7 @@ void CRandomPopulationCreature::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             return;
-        handle.MoveToPosition(exitPos, 0.0f, 0, false, true);
+        handle.MoveToPosition(exitPos, 0.0f, (EScriptEntityMoveType)0, false, true);
         while (handle.IsPerformingScriptTask()) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())

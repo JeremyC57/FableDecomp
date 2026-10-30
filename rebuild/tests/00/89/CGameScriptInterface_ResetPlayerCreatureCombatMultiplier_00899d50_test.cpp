@@ -39,10 +39,12 @@ static CKeyPair* g_lower_bound_result = 0;
 static ETCInterfaceType g_observed_key = ETC_DUMMY;
 static CVectorMap* g_observed_map = 0;
 
-extern "C" void* __fastcall Sub_ResolveA(void* self)
+class CPlayer;
+class CPlayerManager { public: CPlayer& GetMainPlayer(); };   // 0x00449970, called by the row
+CPlayer& CPlayerManager::GetMainPlayer()
 {
-    g_resolveA_in = self;
-    return (void*)0xAAAA;
+    g_resolveA_in = this;
+    return *(CPlayer*)0xAAAA;
 }
 
 class CThingPlayerCreature;

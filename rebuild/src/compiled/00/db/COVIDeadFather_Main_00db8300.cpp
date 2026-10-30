@@ -4,7 +4,7 @@
 //   vtable 0x012D9580.
 // Callees: the entity-script machinery of the landed CDyingVillager::Main 0x00D7F460 / CHTG_Audience::Main 0x00D72200
 //   (CIsThingAlive predicate vtable 0x012C32F0, CScriptThing copy 0x004ABE90 / dtor 0x004AA840, SetPredicate 0x00F35B10,
-//   IsActiveThreadTerminating 0x00F35B30, scripted-thing handle 0x0099A380 / IsScripting 0x00CD23B9 / Release 0x00CD2770
+//   IsActiveThreadTerminating 0x00F35B30, scripted-thing handle 0x0099A380 / IsValid 0x00CD23B9 / Release 0x00CD2770
 //   / PlayLoopingAnimation 0x007E73F0 / dtor 0x007E74D0), CCharString 0x0099EBF0 / 0x0099EAE0, CScriptThing::GetAngleXY
 //   (vtable slot 10); GameCalls slots 7 NewScriptFrame, 8 StartScriptingEntity, 72 GetThingWithScriptName,
 //   352 MiniMapRemoveMarker, 472 EntityTeleportToThing, 474 EntitySetFacingAngle.
@@ -85,7 +85,7 @@ typedef long EScriptVillageAttitude;
 typedef long EScriptingStateGroups;
 typedef long ESex;
 typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
+enum ETextGroupSelectionMethod { };
 typedef long ETutorialCategory;
 namespace NEntityEvents {typedef long EEventType;}
 struct GameCalls {virtual ~GameCalls();
@@ -946,10 +946,10 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  CCountedPointerWords PImp;
  CScriptGameResourceObjectScriptedThingBase() : CBaseObject(), PImp() { }
  virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
- bool IsScripting();                                // 0x00CD23B9
+ bool IsValid() const;                                // 0x00CD23B9
  void Release();                                    // 0x00CD2770
- void PlayAnimation(const CCharString& anim, bool waitForFinish, bool stayOnLastFrame, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 18, 0x007E73D0
- void PlayLoopingAnimation(const CCharString& anim, long loops, bool waitForFinish, bool b2, bool b3, bool b4, bool b5, bool b6, bool b7);   // slot 20, 0x007E73F0
+ virtual void PlayAnimation(const CCharString&, bool, bool, bool, bool, bool, bool, bool);   // slot 18, 0x007E73D0
+ virtual void PlayLoopingAnimation(const CCharString&, long, bool, bool, bool, bool, bool, bool, bool);   // slot 20, 0x007E73F0
 };
 extern bool g_bScriptAnimationFlag;                 // 0x01375748 (a global bool the script headers pass as an animation default)
 struct CQ_NewOakValeIntroScript {
@@ -975,7 +975,7 @@ void COVI_DeadFather::Main()
  Game->NewScriptFrame();
  if (IsActiveThreadTerminating()) return;
  CScriptGameResourceObjectScriptedThingBase handle;
- if (handle.IsScripting())
+ if (handle.IsValid())
   handle.Release();
  while (!Game->StartScriptingEntity(Me, handle, 4)) {
   Game->NewScriptFrame();

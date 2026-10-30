@@ -5,7 +5,7 @@
 // Callees: CScriptThing copy 0x004ABE90 / dtor 0x004AA840 (the CIsThingAlive predicate, vtable 0x012C32F0), SetPredicate
 //   0x00F35B10, IsActiveThreadTerminating 0x00F35B30, CCharString 0x0099EBF0 / 0x0099EAE0, IsDistanceBetweenThingsUnder
 //   0x00CBE2FF (__fastcall), rand 0x00BFEB16; CScriptThing slots 21 MsgIsHitBy, 41 MsgIsHitBySpecialAbilityFrom, 42
-//   MsgIsHitByAnySpecialAbilityFrom; GameCalls (this->Game, and the global interface 0x0143E8F8 for the timer) slots 7
+//   MsgIsHitByAnySpecialAbilityFrom; CGameScriptInterface (this->Game, and the global interface 0x0143E8F8 for the timer) slots 7
 //   NewScriptFrame, 12 IsRegionLoaded, 70 GetHero, 89 SetTimer, 90 GetTimer, 265 ModifyThingHealth, 361
 //   ClearThingHasInformation, 364 AddNewConversation, 365 AddPersonToConversation, 366 AddLineToConversation, 496
 //   EntitySetAsScared, 513 EntityGetSex, 592 EntitySetCombatEnabled, 600 EntityUnsetThingAsAllyOfThing.
@@ -39,7 +39,7 @@ class CScriptThing { public:                                  // 12 bytes, vtabl
     CScriptThing(const CScriptThing& other);           // 0x004ABE90
     virtual ~CScriptThing();                                   // 0x004AA840
 };
-struct GameCalls {                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
+class CGameScriptInterface { public:                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
     virtual void g008(); virtual void g009(); virtual void g010(); virtual void g011();
@@ -133,7 +133,7 @@ struct GameCalls {                                     // CGameScriptInterface v
     virtual void g593(); virtual void g594(); virtual void g595(); virtual void g596(); virtual void g597(); virtual void g598(); virtual void g599();
     virtual void EntityUnsetThingAsAllyOfThing(const CScriptThing& thing, const CScriptThing& ally) const;   // slot 600 (+0x960)
 };
-extern GameCalls* g_pGameScriptInterface;              // 0x0143E8F8
+extern CGameScriptInterface* g_pGameScriptInterface;              // 0x0143E8F8
 class CTimer { public:                                        // a script timer: the interface's timer index
     long TimerIndex;
     __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
@@ -159,7 +159,7 @@ extern "C" int __cdecl rand();                         // 0x00BFEB16
 
 struct CEntityScriptBase {                             // retail 0x14 bytes
     virtual void v00();
-    GameCalls*   Game;                                 // +0x04
+    CGameScriptInterface*   Game;                                 // +0x04
     CScriptThing Me;                                   // +0x08
 public:
     bool IsActiveThreadTerminating() const;   // 0x00F35B30

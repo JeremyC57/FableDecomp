@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00DEDF30, length 623 bytes, plain `ret`.
 // Callees: CIsThingAlive filter (vtable 0x012C32F0) over CScriptThing copy ctor 0x004ABE90 / ~CScriptThing 0x004AA840,
 // RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30; scripted-thing handle (vtable 0x0127094C) inline
-// ctor over CBaseObject 0x0099A380, IsScripting 0x00CD23B9, Release 0x00CD2770,,
+// ctor over CBaseObject 0x0099A380, IsValid 0x00CD23B9, Release 0x00CD2770,,
 // IsPerformingScriptTask 0x007E7450, dtor 0x007E74D0; rand 0x00BFEB16; CCharString 0x0099EBF0 /
 // 0x0099EAE0; CGameScriptInterface slots 7 NewScriptFrame, 8 StartScriptingEntity, 70 GetHero, 364 AddNewConversation,
 // 366 AddLineToConversation, 451 GiveThingBestEnemyTarget, 632 CanThingBe_Seen_ByOtherThing, 635
@@ -52,7 +52,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     CCountedPointerWords PImp;
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual ~CScriptGameResourceObjectScriptedThingBase();   // 0x007E74D0
-    bool IsScripting();                                // 0x00CD23B9
+    bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
     void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
 public:
@@ -97,7 +97,7 @@ void CSP_DeskGuard::Main()
     if (IsActiveThreadTerminating())
         return;
     CScriptGameResourceObjectScriptedThingBase handle;
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
     while (!Game->StartScriptingEntity(Me, handle, (EScriptAIPriority)3)) {
         Game->NewScriptFrame();
@@ -122,6 +122,6 @@ void CSP_DeskGuard::Main()
     long conversation = Game->AddNewConversation(Me, false, false);
     Game->AddLineToConversation(conversation, "TEXT_QST_055_GUARD_SURPRISED_BY_HERO", false, Me, Game->GetHero());
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
-    if (handle.IsScripting())
+    if (handle.IsValid())
         handle.Release();
 }

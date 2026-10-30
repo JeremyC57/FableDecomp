@@ -4,7 +4,7 @@
 //   GiveThingBestEnemyTarget 451 (+0x70c) 0x008A0260, EntitySetAsDamageable 516 (+0x810) 0x0088EAD0, EntitySetAsKillable 517
 //   (+0x814) 0x0088EB30, EntitySetAsUseMovementInActions 529 (+0x844) 0x0088EC20, SetIsPushableByHero 844 (+0xd30) 0x008A6DD0
 //   (CScriptThing BY VALUE: inline CBaseClass vtable 0x01231710 then CScriptThing vtable 0x01238C8C stored into the argument area,
-//   PImp copied with add-ref); the handle's IsScripting 0x00CD23B9 / Release 0x00CD2770 (manifest labels
+//   PImp copied with add-ref); the handle's IsValid 0x00CD23B9 / Release 0x00CD2770 (manifest labels
 //   "C3DMeshInfo::HasPhysicsMesh" / "CMemoryDataOutputStream::Clear" are propagated; see landed CFH_BriarRose::Main 0x00D37330).
 // Class: the catalog label is propagated over four byte-similar Init bodies (no vtable in .rdata references this address);
 //   Ego_r.pdb CMurderTwistSheriff (56 bytes) has MyEntityHandle at +0x1c, which is the handle tested first. Same prologue as 0x00EB1EC0, then
@@ -36,7 +36,7 @@ class CScriptThing : public CBaseClass { public:                    // vtable 0x
 };
 class CScriptGameResourceObjectScriptedThingBase { public:
     unsigned char _body[0x10];
-    bool IsScripting();                          // 0x00CD23B9
+    bool IsValid() const;                          // 0x00CD23B9
     void Release();                              // 0x00CD2770
 };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -63,6 +63,6 @@ void CMurderTwistSheriff::Init()
     Game->SetIsPushableByHero(Me, true);
     Game->EntitySetAsUseMovementInActions(Me, true);
     Me.SetFriendsWithEverythingFlag(false);
-    if (MyEntityHandle.IsScripting())
+    if (MyEntityHandle.IsValid())
         MyEntityHandle.Release();
 }

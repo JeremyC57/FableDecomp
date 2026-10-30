@@ -5,12 +5,13 @@
 //   m_pSlots[GetHeadIndex()] and decrements the count while holding the same recursive lock); the Push twin is
 //   0x00C49D50. The manifest's "RingBuffer_GetCountLocked" is propagated (the count is +0x20; this returns an index).
 // Layout: +0x00 the critical section, +0x18 capacity, +0x1C slot array, +0x20 count, +0x24 tail index.
-// Callees: CScopedLock::CScopedLock(void*) 0x00C0FFC0 / ~CScopedLock 0x00C0FFE0.
+// Callees: PKCProtectionInstance::PKCProtectionInstance(void*) 0x00C0FFC0 / ~PKCProtectionInstance 0x00C0FFE0.
 // Shape: a named `head` local survives the lock's destructor in esi; nothing in the lock's scope can throw, so no EH
 //   frame is built (with or without /EHsc).
-struct CScopedLock {
-    CScopedLock(void* section);                 // 0x00C0FFC0
-    ~CScopedLock();                             // 0x00C0FFE0
+class PKCCriticalSection;
+class PKCProtectionInstance { public:
+    PKCProtectionInstance(PKCCriticalSection* section);                 // 0x00C0FFC0
+    ~PKCProtectionInstance();                             // 0x00C0FFE0
     void* m_pSection;
     long  m_entryTick;
 };
@@ -28,7 +29,7 @@ struct CLockedRingBuffer {
 
 long CLockedRingBuffer::GetHeadIndex()
 {
-    CScopedLock lock(this);
+    PKCProtectionInstance lock((PKCCriticalSection*)this);
     long head = m_tail - m_count;
     if (head < 0)
         head += m_capacity;

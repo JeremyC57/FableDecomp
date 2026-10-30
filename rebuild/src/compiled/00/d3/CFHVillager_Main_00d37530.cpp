@@ -1,7 +1,7 @@
 // CFH_Villager::Main() -- a Fire Heart prisoner villager: leave at once if the hero already hit his group; otherwise take scripted control and, until the mission succeeds or his group is hit, mark his group when the hero hits him (plain hit, or a special ability other than 14), make his "_COMMENT_NEW" remark when the quest asks for it, and answer a talk with a paused "_ON_TALK" movie; when his group was hit run to the escape marker and fade out there (or vanish when he did not get within 16 units)
 // Leaf: Main
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00D37530, 1783 bytes (+ int3 padding), plain `ret`; entity-script vtable slot 1 (Main).
-// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, CBaseClass dtor 0x0099A2E0, scripted-thing handle IsScripting
+// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, CBaseClass dtor 0x0099A2E0, scripted-thing handle IsValid
 //   0x00CD23B9 / Release 0x00CD2770 / GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 /
 //   MoveToPosition 0x007E72F0 / dtor 0x007E74D0, movie PImp dtor 0x006E7AB0 / out-of-line dtor 0x006E7B80, IsActiveThreadTerminating
 //   0x00F35B30, GFIntToCharString 0x0099F830, operator+ 0x0099F690 / 0x0099F600, CCharString 0x0099EBF0 / 0x0099EAE0 / 0x0099E4C0,
@@ -76,7 +76,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CScriptGameResourceObjectScriptedThingBase() { }
     ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
     void MoveToPosition(const C3DVector& pos, float speed, long moveType, bool a, bool b);   // 0x007E72F0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
     CScriptThing GetScriptThing() const;                // 0x007E7490
     void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
@@ -208,7 +208,7 @@ void CFH_Villager::Main()
         return;
     }
     CScriptGameResourceObjectScriptedThingBase villager;
-    if (villager.IsScripting())
+    if (villager.IsValid())
         villager.Release();
     while (!Game->StartScriptingEntity(Me, villager, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();

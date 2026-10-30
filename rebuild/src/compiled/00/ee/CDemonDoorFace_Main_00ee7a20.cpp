@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00EE7A20, 1659 bytes (+ int3 padding), plain `ret`. Literals "HUD_ORB_QUEST_CORE" 0x01258AB0,
 //   "TEXT_QST_071_DOOR_LOCKED1" 0x012F53A4, "TEXT_QUEST_FIND_TROPHY_DEALER_OBJECTIVE_03" 0x012F5378 / _04 0x012F5330, "Witchwood2" 0x012DCEF8,
 //   "WitchwoodCavern" 0x012DCEE8, "HERO" 0x01255174, "DOOR" 0x012DAC70, "CS_TROPHY_DEALER_DOOR_OPENS" 0x012F535C, "DemonDoorDoor" 0x012DDAAC.
-// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsScripting 0x00CD23B9 / Release 0x00CD2770 /
+// Callees: CBaseIntelligentPointer ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle IsValid 0x00CD23B9 / Release 0x00CD2770 /
 //   GetScriptThing 0x007E7490 / Speak 0x007E7390 / IsPerformingScriptTask 0x007E7450 / out-of-line dtor 0x007E74D0, movie handle
 //   out-of-line dtor 0x006E7B80, CIsThingAlive (vtable 0x012C32F0, out-of-line dtor 0x00E241B0), CScriptThing copy 0x004ABE90 /
 //   dtor 0x004AA840, RegisterFilter 0x00F35B10, IsActiveThreadTerminating 0x00F35B30, operator delete 0x00BFE9BC, CCharString
@@ -92,9 +92,9 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
     CScriptGameResourceObjectScriptedThingBase() { }
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
     // implicit destructor (stores no vptr); out-of-line copy 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
-    void Speak(const CScriptThing& listener, const char* text, ETextGroupSelectionMethod method, bool a, bool b, bool c);   // 0x007E7390
+    virtual void Speak(const CScriptThing&, const char*, ETextGroupSelectionMethod, bool, bool, bool);   // 0x007E7390
 public:
     virtual CScriptThing GetScriptThing() const;   // 0x007E7490
     virtual bool IsPerformingScriptTask() const;   // 0x007E7450
@@ -151,7 +151,7 @@ void CDemonDoorFace::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;
-    if (face.IsScripting())
+    if (face.IsValid())
         face.Release();
     while (!Game->StartScriptingEntity(Me, face, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
@@ -233,7 +233,7 @@ void CDemonDoorFace::Main()
                 CScriptGameResourceObjectScriptedThingBase hero;
 #pragma inline_depth()
                 Game->StartScriptingEntity(Game->GetHero(), hero, (EScriptAIPriority)4);
-                if (face.IsScripting())
+                if (face.IsValid())
                     face.Release();
                 while (!Game->StartScriptingEntity(Me, face, (EScriptAIPriority)4)) {
                     Game->NewScriptFrame();

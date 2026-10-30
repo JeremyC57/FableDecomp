@@ -10,16 +10,16 @@
 //   block (its landed Update 0x00C0AF20 cites this caller as m_pFirst) and +0x38 the CSoundEventManager (0x00C12880 walks
 //   its event pool +0x5c / +0x60 and runs AssignPendingItems 0x00C10CD0). The other callees keep their landed names
 //   (OnActivate 0x00C091A0, Advance 0x00C14DD0).
-// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call CScopedLock::CScopedLock ; mov ecx,esi ; mov dword ptr [esp+14h],0 ; call OnActivate ; mov ecx,[esi+34h] ; call CAudioParamBlock::Update ; mov ecx,[esi+38h] ; call CSoundEventManager::Update ; mov ecx,[esi+64h] ; test ecx,ecx ; pop esi ; je skip ; call CThird::Advance ; skip: lea ecx,[esp] ; mov dword ptr [esp+10h],-1 ; call ~CScopedLock ; mov ecx,[esp+8] ; mov fs:[0],ecx ; add esp,14h ; ret
+// Retail bytes:  push -1 ; push offset __ehhandler ; mov eax,fs:[0] ; push eax ; mov fs:[0],esp ; sub esp,8 ; push esi ; mov esi,ecx ; push offset g_lock ; lea ecx,[esp+8] ; call PKCProtectionInstance::PKCProtectionInstance ; mov ecx,esi ; mov dword ptr [esp+14h],0 ; call OnActivate ; mov ecx,[esi+34h] ; call CAudioParamBlock::Update ; mov ecx,[esi+38h] ; call CSoundEventManager::Update ; mov ecx,[esi+64h] ; test ecx,ecx ; pop esi ; je skip ; call CThird::Advance ; skip: lea ecx,[esp] ; mov dword ptr [esp+10h],-1 ; call ~PKCProtectionInstance ; mov ecx,[esp+8] ; mov fs:[0],ecx ; add esp,14h ; ret
 // No vtable store and no return value. The member pointers are called, not deleted.
-struct CGlobalLockTarget;
-extern CGlobalLockTarget g_lock_0143bb14;        // 0x0143BB14
+class PKCCriticalSection;
+extern PKCCriticalSection g_lock_0143bb14;        // 0x0143BB14
 
-struct CScopedLock {                       // 8-byte scoped lock
-    CGlobalLockTarget* m_pTarget;
+class PKCProtectionInstance { public:                       // 8-byte scoped lock
+    PKCCriticalSection* m_pTarget;
     long m_state;
-    CScopedLock(CGlobalLockTarget* target);   // 0x00C0FFC0
-    ~CScopedLock();                        // 0x00C0FFE0
+    PKCProtectionInstance(PKCCriticalSection* target);   // 0x00C0FFC0
+    ~PKCProtectionInstance();                        // 0x00C0FFE0
 };
 
 struct CAudioParamBlock { void Update(); };       // 0x00C0AF20
@@ -38,7 +38,7 @@ struct CAudioOwner {
 
 void CAudioOwner::Update()
 {
-    CScopedLock lock(&g_lock_0143bb14);
+    PKCProtectionInstance lock(&g_lock_0143bb14);
     OnActivate();
     m_pParams->Update();
     m_pEventManager->Update();

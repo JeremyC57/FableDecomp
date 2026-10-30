@@ -6,7 +6,7 @@
 // Callees: malloc 0x00BFEA0E / free 0x00BFEA14 (the cast map's head node; inline STLport ctor/dtor at the first wait loop,
 //   out-of-line map dtor 0x00CDBFB0 at the later exits), map erase 0x00CD344A, map operator[] 0x00CD3D2E,
 //   CCharString 0x0099EBF0 / 0x0099EAE0, CBaseObject ctor 0x0099A380 / dtor 0x0099A430, scripted-thing handle (vtable
-//   0x0127094C) IsScripting 0x00CD23B9 / Release 0x00CD2770 / operator= 0x008ABD10 / dtor 0x007E74D0, movie PImp dtor
+//   0x0127094C) IsValid 0x00CD23B9 / Release 0x00CD2770 / operator= 0x008ABD10 / dtor 0x007E74D0, movie PImp dtor
 //   0x006E7AB0, RunCutsceneMacro 0x00CBFB7D, CEntityScriptBase::IsActiveThreadTerminating 0x00F35B30.
 //   CGameScriptInterface slots 7 NewScriptFrame, 8 StartScriptingEntity, 12 IsRegionLoaded, 70 GetHero, 108 RemoveThing,
 //   370 StartMovieSequence, 379 PauseAllNonScriptedEntities.
@@ -85,7 +85,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     __forceinline CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     CScriptGameResourceObjectScriptedThingBase& operator=(const CScriptGameResourceObjectScriptedThingBase& other);   // 0x008ABD10
     virtual ~CScriptGameResourceObjectScriptedThingBase();      // 0x007E74D0
-    bool IsScripting();                                 // 0x00CD23B9
+    bool IsValid() const;                                 // 0x00CD23B9
     void Release();                                     // 0x00CD2770
 };
 struct CMovieImpPointer {
@@ -168,7 +168,7 @@ void CMeetSisterMessenger::Main()
         return;
     CScriptGameResourceObjectScriptedThingBase sister;
     CScriptGameResourceObjectScriptedThingBase hero;
-    if (sister.IsScripting())
+    if (sister.IsValid())
         sister.Release();
     while (!Game->StartScriptingEntity(Me, sister, (EScriptAIPriority)4)) {
         Game->NewScriptFrame();
