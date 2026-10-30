@@ -15,10 +15,7 @@ class CMouse;
 class CKeyboard;
 class CJoystick;
 struct CCountedJoystick;
-class CBaseClass { public:
-    CBaseClass(); // 0099A2D0; native vtable01231710
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 template<class T> struct NativeVector { T* Start; T* Finish; T* End; };
 class CChecksum { public: unsigned int Value[4]; };
 enum EInputEventType { INPUT_NULL, INPUT_KEY_PRESSED, INPUT_KEY_HELD, INPUT_KEY_RELEASED };

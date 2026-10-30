@@ -5,6 +5,114 @@
 // Retail evidence: 55 trusted landed function(s); reconciliation clean.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+// Retail opt-in: define FABLE_RETAIL_NSCRIPT for the polymorphic retail class (wave 1 class-model migration, 2026-10-29).
+// RTTI .?AVCScriptThing@@ : CBaseClass; vtable 0x01238C8C, 79 slots: slot 0 scalar deleting dtor 0x004AB170 (~CScriptThing
+// 0x004AA840), slots 1-78 below with their retail addresses. Every slot name is the retail label of its address and the same
+// mangled name is in FableWin.pdb (77 also in Ego_r.pdb; slot 78 IsEqualTo, protected, is FableWin-only); each declaration is
+// the VC7.1 undname spelling. The probe build of this header emits all 78 mangled names in retail slot order (HEADERS.md).
+// Non-virtual members: ctor 0x006E7B40, copy ctor 0x004ABE90, operator= 0x008AB980, operator== 0x008AAE20, operator!=
+// 0x008AAE40 (Ego_r.pdb + FableWin.pdb spellings), NullString 0x0143E8EC. Retail expands the dtor, the copy and the slot
+// wrappers inline at some call sites: a row that needs an inline body defines it out of class after the include
+// (`inline CScriptThing::~CScriptThing() { }`). Contract: the includer defines CCountedPointer<T> before the include
+// (PImp is a by-value member; the row's own CCountedPointer model decides its inline expansion).
+#ifdef FABLE_RETAIL_NSCRIPT
+#include "rebuild_abi.h"
+#include "engine/CBaseClass.h"
+#include "engine/fable_nscript_forward.h"
+class CScriptThing : public CBaseClass {
+public:
+    CScriptThing();                                                      // 0x006E7B40
+    CScriptThing(const CScriptThing&);                                   // 0x004ABE90
+    virtual ~CScriptThing();                                             // slot 0  0x004AB170 (scalar deleting); 0x004AA840
+    virtual const CCharString& GetName() const;                                                              //  1 0x004AA8B0
+    virtual CCharString GetDefName() const;                                                                  //  2 0x004AA8D0
+    virtual CCharString GetDataString() const;                                                               //  3 0x004AA900
+    virtual void SetDataString(const CCharString&);                                                          //  4 0x004AA930
+    virtual C3DVector GetFocalPos() const;                                                                   //  5 0x004AA940
+    virtual const C3DVector& GetPos() const;                                                                 //  6 0x004AA980
+    virtual C3DVector GetHomePos() const;                                                                    //  7 0x004AA9A0
+    virtual CCharString GetCurrentMapName() const;                                                           //  8 0x004AA9E0
+    virtual CCharString GetHomeMapName() const;                                                              //  9 0x004AAA10
+    virtual float GetAngleXY() const;                                                                        // 10 0x004AAA40
+    virtual CThing* GetPThing() const;                                                                       // 11 0x004AAA60
+    virtual FableNScriptUInt64 GetPThingUniqueID() const;                                                     // 12 0x004AAA70
+    virtual EAIStateGroupType GetCurrentStateGroupType() const;                                              // 13 0x004AAA90
+    virtual EScriptAIPriority GetCurrentScriptPriority() const;                                              // 14 0x004AAAA0
+    virtual bool IsSneaking() const;                                                                         // 15 0x004AAAB0
+    virtual bool IsAwareOfHero() const;                                                                      // 16 0x004AAAC0
+    virtual bool MsgIsTriggeredBy(const CCharString&) const;                                                 // 17 0x004AAAD0
+    virtual bool MsgIsKilledBy(const CCharString&) const;                                                    // 18 0x004AAAF0
+    virtual CScriptThing MsgWhoKilledMe() const;                                                             // 19 0x004ABE60
+    virtual bool MsgIsUsedBy(const CCharString&) const;                                                      // 20 0x004AAB10
+    virtual bool MsgIsHitBy(const CCharString&) const;                                                       // 21 0x004AAB30
+    virtual bool MsgIsHitByWithFlourish(const CCharString&) const;                                           // 22 0x004AAB50
+    virtual bool MsgIsHitByWithDecapitate(const CCharString&) const;                                         // 23 0x004AAB70
+    virtual bool MsgIsHitByWithWeapon(const CCharString&, const CCharString&) const;                         // 24 0x004AAB90
+    virtual bool MsgIsHitByWithProjectileWeapon(const CCharString&, float&) const;                           // 25 0x004AABB0
+    virtual CScriptThing MsgWhoHitMe() const;                                                                // 26 0x004ABEC0
+    virtual bool MsgIsTalkedToBy(const CCharString&) const;                                                  // 27 0x004AABD0
+    virtual CScriptThing MsgWhoTalkedToMe() const;                                                           // 28 0x004ABF00
+    virtual bool MsgExpressionPerformedTo(CCharString&) const;                                               // 29 0x004AABF0
+    virtual CScriptThing MsgWhoExpressedToMe() const;                                                        // 30 0x004ABF40
+    virtual long MsgHowLongWasExpressionPerformed() const;                                                   // 31 0x004AAC10
+    virtual bool MsgIsKnockedOutBy(const CCharString&) const;                                                // 32 0x004AAC20
+    virtual CScriptThing MsgWhoKnockedMeOut() const;                                                         // 33 0x004ABF80
+    virtual bool MsgReceivedMoney(long&) const;                                                              // 34 0x004AAC40
+    virtual bool MsgIsPresentedWithItem(CCharString&) const;                                                 // 35 0x004AAC60
+    virtual bool MsgReceivedInventoryItem() const;                                                           // 36 0x004AAC80
+    virtual bool MsgPerformedSpecialAbility(EHeroAbility) const;                                             // 37 0x004AACA0
+    virtual bool MsgPerformedAnySpecialAbility() const;                                                      // 38 0x004AACC0
+    virtual bool MsgPerformedAnyAggressiveSpecialAbility() const;                                            // 39 0x004AACE0
+    virtual bool MsgPerformedAnyNonAggressiveSpecialAbility() const;                                         // 40 0x004AAD00
+    virtual bool MsgIsHitBySpecialAbilityFrom(EHeroAbility, const CCharString&) const;                       // 41 0x004AAD20
+    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString&) const;                                  // 42 0x004AAD40
+    virtual bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString&) const;                        // 43 0x004AAD60
+    virtual bool MsgIsHitByAnyNonAggressiveSpecialAbilityFrom(const CCharString&) const;                     // 44 0x004AAD80
+    virtual bool MsgOpenedChest() const;                                                                     // 45 0x004AADA0
+    virtual bool MsgHitEnemyWithMeleeWeapon() const;                                                         // 46 0x004AADC0
+    virtual bool MsgHitFriendWithMeleeWeapon() const;                                                        // 47 0x004AADE0
+    virtual bool MsgHitEnemyWithRangedWeapon() const;                                                        // 48 0x004AAE00
+    virtual bool MsgHitFriendWithRangedWeapon() const;                                                       // 49 0x004AAE20
+    virtual bool MsgHitEnemyWithBareHands() const;                                                           // 50 0x004AAE40
+    virtual bool MsgHitFriendWithBareHands() const;                                                          // 51 0x004AAE60
+    virtual bool MsgAttackedWithMeleeWeaponWithoutHittingAnything() const;                                   // 52 0x004AAE80
+    virtual bool MsgAttackedWithBareHandsWithoutHittingAnything() const;                                     // 53 0x004AAEA0
+    virtual bool MsgTalkedToAnyone() const;                                                                  // 54 0x004AAEC0
+    virtual bool MsgGetThingsKilled(std::vector<unsigned long,std::allocator<unsigned long> >&) const;       // 55 0x004AAEE0
+    virtual bool MsgPerformedFlourish() const;                                                               // 56 0x004AAF00
+    virtual bool MsgPerformedSuccessfulFlourish() const;                                                     // 57 0x004AAF20
+    virtual bool MsgOnMoralityChanged(long&) const;                                                          // 58 0x004AAF40
+    virtual bool MsgOnCutSceneAnimEvent(CCharString&) const;                                                 // 59 0x004AAF60
+    virtual bool MsgIsKicked() const;                                                                        // 60 0x004AAF80
+    virtual bool IsUnconscious() const;                                                                      // 61 0x004AAFA0
+    virtual bool IsUsable() const;                                                                           // 62 0x004AAFC0
+    virtual bool IsBeingCarriedBy(const CCharString&) const;                                                 // 63 0x004AAFE0
+    virtual bool IsOpenDoor() const;                                                                         // 64 0x004AB000
+    virtual bool IsSummonedCreature() const;                                                                 // 65 0x004AB020
+    virtual void SetAsUsable(bool);                                                                          // 66 0x004AB040
+    virtual void SetFriendsWithEverythingFlag(bool);                                                         // 67 0x004AB060
+    virtual bool GetActivationTriggerStatus() const;                                                         // 68 0x004AB080
+    virtual void SetActivationTriggerStatus(bool);                                                           // 69 0x004AB0A0
+    virtual void SetToKillOnLevelUnload(bool);                                                               // 70 0x004AB0C0
+    virtual void UpdateThingAttachment();                                                                    // 71 0x004AB0E0
+    virtual void IncrementScriptCounter();                                                                   // 72 0x004AB0F0
+    virtual void DecrementScriptCounter();                                                                   // 73 0x004AB100
+    virtual long GetScriptCounter();                                                                         // 74 0x004AB110
+    virtual bool IsAlive() const;                                                                            // 75 0x004AB130
+    virtual bool IsDead() const;                                                                             // 76 0x004AA890
+    virtual bool IsNull() const;                                                                             // 77 0x004AB150
+    protected: virtual bool IsEqualTo(const CScriptThing&) const; public:                                    // 78 0x004AA8A0 (FableWin.pdb only)
+    CScriptThing& operator=(const CScriptThing&);                        // 0x008AB980
+    bool operator==(const CScriptThing&) const;                          // 0x008AAE20
+    bool operator!=(const CScriptThing&) const;                          // 0x008AAE40
+    void SetImplementation(CCountedPointer<CScriptThing>);               // Ego_r.pdb / FableWin.pdb
+    CCountedPointer<CScriptThing> PImp;                                  // +0x04 (Data +0x04, Info +0x08)
+    static CCharString NullString;                                       // 0x0143E8EC
+private:
+    void ValidatePImp() const;                                           // FableWin.pdb ?ValidatePImp@CScriptThing@@ABEXXZ
+};
+FABLE_STATIC_ASSERT(sizeof(CScriptThing) == 0xc);
+#else // flattened Ego_r layout (the landed default)
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -23,5 +131,7 @@ FABLE_STATIC_ASSERT(sizeof(CScriptThing) == 0xc);
 FABLE_STATIC_ASSERT(offsetof(CScriptThing, __vftable) == 0x0);
 FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Data) == 0x4);
 FABLE_STATIC_ASSERT(offsetof(CScriptThing, PImp_Info) == 0x8);
+
+#endif // FABLE_RETAIL_NSCRIPT
 
 #endif // FABLE_ENGINE_CSCRIPTTHING_H

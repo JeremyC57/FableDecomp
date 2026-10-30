@@ -12,10 +12,8 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CContainmentMap {                // std::map<CDefString, long, CCompareDefString<long> > (retail STLport _Rb_tree, 12 bytes)
     void* m_pHeader;
@@ -36,6 +34,7 @@ class CFireEffectCreationSet { public:         // PDB 0x18 bytes (retail 0x14): 
     }
 };
 
+// def vtable 0x01242984: slot 0 0x004E2869 (implicit inline dtor); real overrides from the def vtable scan
 class CFlammableDef : public CDefClassBase { public:
     long FireResistance;                // +0x28
     float MaxDamageCaused;              // +0x2c
@@ -43,6 +42,9 @@ class CFlammableDef : public CDefClassBase { public:
     float FireDamagePeriod;             // +0x34
     CFireEffectCreationSet EffectCreationSet;// +0x38
     CFlammableDef& operator=(const CFlammableDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E599D
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E5834
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004E2865
 };
 
 CFlammableDef& CFlammableDef::operator=(const CFlammableDef& other)

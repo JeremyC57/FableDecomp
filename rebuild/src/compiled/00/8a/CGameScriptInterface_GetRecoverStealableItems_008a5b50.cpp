@@ -140,11 +140,7 @@ public:
     bool GetRecoverStealableItems() const { return RecoverStealableItems; }
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                            // 0x0099A2D0
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCPPointerInfo {                                       // 12 bytes (Ego_r.pdb)
 public:
     unsigned long RefCount;                                  // +0x00

@@ -10,15 +10,14 @@
 // Blend is the 4-byte ECompositeBlendType enum, modelled as long.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 class CCharString { public:
     void* m_pStringData;
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
 };
 
+// def vtable 0x012323B4: slot 0 0x0044FA51 (implicit inline dtor); real overrides from the def vtable scan
 class CTattooDef : public CDefClassBase { public:
     CCharString              TattooName;                  // +0x28
     long                     TextureLayer;                // +0x2c
@@ -36,6 +35,9 @@ class CTattooDef : public CDefClassBase { public:
     float                    Scariness;                   // +0x58
     float                    Goodstrength;                // +0x5c
     CTattooDef& operator=(const CTattooDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004529AE
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00453D41
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C3D4
 };
 
 CTattooDef& CTattooDef::operator=(const CTattooDef& other)

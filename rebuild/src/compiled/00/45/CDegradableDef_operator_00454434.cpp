@@ -20,11 +20,9 @@ public:
     _Tp* _M_end_of_storage;
 };
 }
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x01232D1C: slot 0 0x004545EE (implicit inline dtor); real overrides from the def vtable scan
 class CDegradableDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
@@ -32,6 +30,8 @@ public:
     EEngineGraphicType        GraphicType;                       // +0x28
     bool                      InitiallyBlocksNavigation;         // +0x2c
     std::vector<CDegradableInfo> Degradations;                      // +0x30
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x0067E290
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x00453884
 };
 void CDegradableDef::Copy(const CDefClassBase* other)
 {

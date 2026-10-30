@@ -16,10 +16,7 @@ class CMouse;
 class CKeyboard;
 class CJoystick;
 struct CCountedJoystick;
-class CBaseClass { public:
-    CBaseClass(); // 0099A2D0; native vtable01231710
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 template<class T> struct NativeVector { T* Start; T* Finish; T* End; struct iterator { T* current; iterator(T* p):current(p){} iterator operator+(int n)const{return iterator(current+n);} T& operator*()const{return *current;} }; iterator begin()const{return iterator(Start);} T& operator[](int n) const { return *(begin()+n); } };
 template<class T> struct NativeScoped { T* ptr; T* get() const {return ptr;} T& operator*() const {return *ptr;} T* operator->() const{return ptr;} };
 class CChecksum { public: unsigned int Value[4]; };

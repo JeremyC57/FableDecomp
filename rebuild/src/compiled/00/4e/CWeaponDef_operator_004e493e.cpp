@@ -15,10 +15,8 @@
 // is formed with `add edi,0E0h` because nothing reads `other` after it.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x28];
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 class CCharString { public:
     void* m_pStringData;
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
@@ -44,6 +42,7 @@ class CFloatRange { public:
     float LowValue;
 };
 
+// def vtable 0x0124291C: slot 0 0x004E3D2E (implicit inline dtor); real overrides from the def vtable scan
 class CWeaponDef : public CDefClassBase { public:                         // vtable 0x0124291C
     long Type;                                              // +0x28 EWeaponType
     long Class;                                             // +0x2c EWeaponClass
@@ -79,6 +78,9 @@ class CWeaponDef : public CDefClassBase { public:                         // vta
     CCharString SheatheFromCombatAnim;                      // +0xdc
     CCharString SheatheFromNormalAnim;                      // +0xe0
     CWeaponDef& operator=(const CWeaponDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E8CE9
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E4939
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004E26B6
 };
 
 CWeaponDef& CWeaponDef::operator=(const CWeaponDef& other)

@@ -5,11 +5,7 @@
 // Callees: the element destructor's one call -- ~CBaseClass 0x0099A2E0 on the desc at +4.
 // Shape (family K118, representative 0x004D0EE0): STLport 4.6 `_Destroy(first, last)` -> `__destroy_aux(..., __false_type)` loop,
 //   emitted out of line (the vector operator= calls it); the element's implicit destructor inlines to the member's call.
-class CBaseClass {
-public:
-    CBaseClass();
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace NParticleEngine {
 template <class A, class B> class CParticleUpdateParamCallback;
 template <class A, class B> class CParticleUpdateParamDesc : public CBaseClass {   // Ego_r.pdb 12 bytes

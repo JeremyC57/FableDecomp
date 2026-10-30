@@ -10,11 +10,7 @@
 // Callee: CBaseClass::~CBaseClass @ 0x0099A2E0 (the temporary's descriptor).
 // Shape: STLport 4.6 `_Tp __tmp = __a; __a = __b; __b = __tmp;` -- the pair's and the descriptor's implicit copy
 //   constructor and assignment inline (the vptr is set on the temporary, never copied); the temporary is destroyed last.
-class CBaseClass {                                      // vtable 0x01231710
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 template <class A, class B> class CParticleUpdateParamCallback;

@@ -13,10 +13,7 @@
 #include "engine/CObserver.h"
 typedef ::CComponent CComponentDonorLayout;
 typedef ::CObserver CObserverDonorLayout;
-class CBaseClass { public:
- CBaseClass(); //0099A2D0 VT01231710
- virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CEnginePersistentPrimitiveBase;
 class CEnginePrimitiveHandle : public CBaseClass { public:
  CEnginePersistentPrimitiveBase* Data;

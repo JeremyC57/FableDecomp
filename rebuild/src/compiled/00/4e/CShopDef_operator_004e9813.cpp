@@ -12,10 +12,8 @@
 // float members copy through eax.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x28];
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 class CCharString { public:
     void* m_pStringData;
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
@@ -29,6 +27,7 @@ struct CAttitudeFloatMap {                                  // map<EOpinionAttit
     CAttitudeFloatMap& operator=(const CAttitudeFloatMap& other);     // 0x004E99AE
 };
 
+// def vtable 0x01241F9C: slot 0 0x004E26D5 (implicit inline dtor); real overrides from the def vtable scan
 class CShopDef : public CDefClassBase { public:                           // vtable 0x01241F9C
     unsigned long Name;                                     // +0x28
     unsigned long InitialHawkingPhrase;                     // +0x2c
@@ -68,6 +67,9 @@ class CShopDef : public CDefClassBase { public:                           // vta
     float ProbabilityOfSpecialItemPerDay;                   // +0xc8
     float SpecialItemPriceMult;                             // +0xcc
     CShopDef& operator=(const CShopDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004ECB4D
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E980E
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004E0701
 };
 
 CShopDef& CShopDef::operator=(const CShopDef& other)

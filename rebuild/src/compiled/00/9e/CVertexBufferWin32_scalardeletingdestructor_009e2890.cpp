@@ -5,11 +5,7 @@
 // Callees: CVertexBufferWin32::Uninitialise() 0x00A63200, CBaseClassNonCopyable::~CBaseClassNonCopyable() 0x0099A300, operator delete 0x00BFE9BC.
 // Shape (family K048, representative 0x00987F30): the compiler's scalar deleting destructor around a one-call inline
 //   destructor; a `new` of the class in this file makes VC7.1 emit the vtable and the ??_G COMDAT.
-class CBaseClass {
-public:
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                             // 0x0099A2F0

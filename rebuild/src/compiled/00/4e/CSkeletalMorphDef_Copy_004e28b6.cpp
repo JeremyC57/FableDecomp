@@ -1,7 +1,6 @@
 // CSkeletalMorphDef::Copy 0x004e28b6
-class CDefClassBase { public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x431f10, __fastcall(this, src)
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 struct Sub {
     void Copy(const void* src);   // 0x46078c, __fastcall(this, src)
 };

@@ -31,11 +31,7 @@ public:
     static unsigned long __fastcall Calc(unsigned long, const void*, unsigned long);   // 0x004014A0
 };   // 0x004014A0: CRC
 
-class CBaseClass {                              // vtable 0x01231710 (polymorphic: the vptr sits at +0)
-public:
-    CBaseClass();                               // 0x0099A2D0
-    virtual ~CBaseClass();                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 namespace NParticleEngine {
 struct SVectorParam {                           // pair<unsigned long, C3DVector>

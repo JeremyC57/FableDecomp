@@ -41,7 +41,7 @@ class CSurface : public CSurfaceDonor { public:
 };
 struct CDisplayDevice { unsigned char DisplayState[0x2c]; CSurface BackSurface; CSurface& GetBackSurface(){return BackSurface;} };
 extern CDisplayDevice* g_DisplayDevice; //013b8390
-class CBaseClass { public: CBaseClass(); virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass { CBaseClassNonCopyable(); private: CBaseClassNonCopyable(const CBaseClassNonCopyable&); CBaseClassNonCopyable&operator=(const CBaseClassNonCopyable&); };
 class CMainGameComponent; class CGamePlayerInterface;
 class CDisplayEngineInit { public:

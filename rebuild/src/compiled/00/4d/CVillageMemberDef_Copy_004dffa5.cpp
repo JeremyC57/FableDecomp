@@ -1,8 +1,7 @@
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CVillageMemberDef.h"  // retyped onto the PDB layout; byte parity re-verified
 
-class CDefClassBase { public:
-  CDefClassBase& operator=(const CDefClassBase& other);  // 0x431f10, __fastcall
-};
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 
 void __fastcall CVillageMemberDef_Copy(CVillageMemberDef* self, void* edx, const CDefClassBase* src)

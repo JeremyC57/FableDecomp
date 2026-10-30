@@ -10,10 +10,8 @@
 // SuitPart/AppearanceType are 4-byte enums (long). Retail vectors are 12 bytes, so offsets after HideMaterials sit 4/8 below the PDB.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 struct CCharStringVector {                       // retail std::vector<CCharString> (retail 0xc bytes)
     unsigned long m_words[3];
     CCharStringVector& operator=(const CCharStringVector& other);   // 0x00432EE9
@@ -23,6 +21,7 @@ class CAppearanceModifierGraphics { public:                       // CArray<CEnt
     CAppearanceModifierGraphics& operator=(const CAppearanceModifierGraphics& other);   // 0x0045CC79
 };
 
+// def vtable 0x012330DC: slot 0 0x004563FE (implicit inline dtor); real overrides from the def vtable scan
 class CAppearanceModifierDef : public CDefClassBase { public:
     CCharStringVector        HideMaterials;               // +0x28
     CAppearanceModifierGraphics MorphGraphics;               // +0x34
@@ -39,6 +38,9 @@ class CAppearanceModifierDef : public CDefClassBase { public:
     float                    Attractiveness;              // +0x68
     float                    Goodstrength;                // +0x6c
     CAppearanceModifierDef& operator=(const CAppearanceModifierDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x0046FC51
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x0045CBFF
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004546D5
 };
 
 CAppearanceModifierDef& CAppearanceModifierDef::operator=(const CAppearanceModifierDef& other)

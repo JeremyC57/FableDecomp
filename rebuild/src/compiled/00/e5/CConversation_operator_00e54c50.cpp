@@ -9,11 +9,8 @@
 // engine/CDefClassBase.h (PDB, 0x25 bytes padded to 0x28) is the base layout, modelled locally
 // with its operator=. The manifest label "Copy" is rejected: the body is the assignment
 // operator (the copy constructor twin is @ 0x00E54CA0).
-class CDefClassBase { public:                  // engine/CDefClassBase.h: vptr + 0x24 bytes
-    virtual void v00();
-    unsigned char _body[0x24];
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CRetailVector_CCharString {             // VC6-era Dinkumware vector<CCharString>: first / last / end
     void* first;
@@ -22,6 +19,7 @@ struct CRetailVector_CCharString {             // VC6-era Dinkumware vector<CCha
     CRetailVector_CCharString& operator=(const CRetailVector_CCharString& other);   // 0x00432EE9
 };
 
+// def vtable 0x012E5FF0: slot 0 0x00E54D60 (implicit inline dtor); real overrides from the def vtable scan
 class CConversation : public CDefClassBase { public:  // vtable 0x012E5FF0
     long                      Lines;           // +0x28
     CRetailVector_CCharString Speaker;         // +0x2c
@@ -30,6 +28,9 @@ class CConversation : public CDefClassBase { public:  // vtable 0x012E5FF0
     CRetailVector_CCharString AnimLoop;        // +0x50
     virtual void v00();
     CConversation& operator=(const CConversation& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00E579E0
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00E54D10
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x00E54D00
 };
 
 CConversation& CConversation::operator=(const CConversation& other)

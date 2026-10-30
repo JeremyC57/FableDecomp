@@ -7,11 +7,7 @@
 // Callees: CBaseClass::CBaseClass() 0x0099A2D0.
 // Shape (family M193, representative 0x006920F0): `CActionEventBase() : Finished(false) { }` over the out-of-line base
 //   constructor, then the vtable store and the member. Speed TU.
-class CBaseClass {                                         // vtable 0x01231710, RTTI .?AVCBaseClass@@
-public:
-    CBaseClass();                                         // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CThingCreatureBase;
 class CGameCameraManager;
 namespace NCreatureAction {

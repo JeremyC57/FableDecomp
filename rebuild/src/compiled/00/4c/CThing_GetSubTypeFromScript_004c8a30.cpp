@@ -47,11 +47,7 @@ public:
     }
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                      // 0x0099A2D0
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CStringParserCommentList {                      // retail list<CStringParserCommentBoundaries>: the head pointer only
     struct SNode { SNode* Next; SNode* Prev; char* PStart; char* PEnd; };
     SNode* m_pHead;

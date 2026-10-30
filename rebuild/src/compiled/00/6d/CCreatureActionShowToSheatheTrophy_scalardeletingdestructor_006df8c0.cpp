@@ -12,11 +12,7 @@
 //   the implicit ~CCreatureAction_ShowTrophy out of line: 30 bytes against 48). Same fix as G032 (0x009C6F40).
 // Model: local -- no engine header for this class; the bases are sized to the retail layout.
 class CThing;
-class CBaseClass {                                // RTTI root, vtable 0x01231710
-public:
-    CBaseClass();                                 // 0x0099A2F0
-    virtual ~CBaseClass();                        // 0x0099A300
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass { };
 #pragma pack(push, 1)
 class CBaseIntelligentPointer {                   // 8 bytes, 1-aligned in retail (Coin::Thing +0x25, ShowTrophy::PEmitter +0xB5)

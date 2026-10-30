@@ -8,11 +8,9 @@
 //   `*this = *(const CTavernGameCoinGolfDef*)other;`; `optimize("s", on)` keeps every scalar copy in eax/al.
 // Header debt: the def base is modelled by its retail size only (its operator= is out of line).
 #pragma optimize("s", on)
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x0123D4D4: slot 0 0x004D8FBB (implicit inline dtor); real overrides from the def vtable scan
 class CTavernGameCoinGolfDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
@@ -29,6 +27,8 @@ public:
     long                      Courses;                           // +0x50
     float                     GoalRadius;                        // +0x54
     long                      StartingCourse;                    // +0x58
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004DEC86
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004D59DA
 };
 void CTavernGameCoinGolfDef::Copy(const CDefClassBase* other)
 {

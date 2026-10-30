@@ -11,11 +11,8 @@
 // No engine header exists for the class: modelled locally from struct_layouts_egor.tsv.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x24];                                            // +0x04..+0x28
-    CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CLongVector {                                                      // retail std::vector<long> (12 bytes)
     long* m_first;
@@ -28,6 +25,7 @@ class CRGBColour { public:                                                      
     unsigned char B, G, R, A;
 };
 
+// def vtable 0x01241A4C: slot 0 0x004E11DC (implicit inline dtor); real overrides from the def vtable scan
 class CTavernGameSpotTheAdditionDef : public CDefClassBase { public:                    // vtable 0x01241A4C
     long        Pointer;                                                  // +0x28
     long        Cover;                                                    // +0x2c
@@ -53,6 +51,9 @@ class CTavernGameSpotTheAdditionDef : public CDefClassBase { public:            
     CRGBColour  HighlightColourError;                                     // +0x8c
     virtual void v00();
     CTavernGameSpotTheAdditionDef& operator=(const CTavernGameSpotTheAdditionDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E7FD8
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E2E08
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004DED48
 };
 
 CTavernGameSpotTheAdditionDef& CTavernGameSpotTheAdditionDef::operator=(const CTavernGameSpotTheAdditionDef& other)

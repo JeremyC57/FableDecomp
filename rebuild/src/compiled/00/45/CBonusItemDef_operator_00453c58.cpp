@@ -8,11 +8,9 @@
 //   `*this = *(const CBonusItemDef*)other;`; `optimize("s", on)` keeps every copy in eax/al (speed rotates eax/ecx/edx).
 // Header debt: the def base is modelled by its retail size only (its operator= is out of line).
 #pragma optimize("s", on)
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x012322E4: slot 0 0x0044F9D3 (implicit inline dtor); real overrides from the def vtable scan
 class CBonusItemDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
@@ -36,6 +34,8 @@ public:
     long                  ParticleEffect;                 // +0x68
     bool                  AddsDrunkenness;                // +0x6c
     float                 AlcoholicStrength;              // +0x70
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x0045279B
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C390
 };
 void CBonusItemDef::Copy(const CDefClassBase* other)
 {

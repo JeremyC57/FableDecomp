@@ -9,10 +9,8 @@
 //   flattens the base (no base operator= to call), so the classes are modelled locally like the landed 0x00463BA2.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 class CCharString { public:
     void* m_pStringData;
     const CCharString& operator=(const CCharString& other);       // 0x0099EFB0
@@ -21,6 +19,7 @@ class CDefString { public:
     long TablePos;                      // index into the def string table (trivially copied)
 };
 
+// def vtable 0x0123AC1C: slot 0 0x004D7F91 (implicit inline dtor); real overrides from the def vtable scan
 class CTrophyDef : public CDefClassBase { public:
     float                    MinigameInitialTimerSecs;    // +0x28
     float                    TimeBonusPerWitness;         // +0x2c
@@ -39,6 +38,9 @@ class CTrophyDef : public CDefClassBase { public:
     CCharString              SoundEndNewHighScore;        // +0x5c
     CCharString              SoundEndNoNewScore;          // +0x60
     CTrophyDef& operator=(const CTrophyDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004DE122
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E046F
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004D374C
 };
 
 CTrophyDef& CTrophyDef::operator=(const CTrophyDef& other)

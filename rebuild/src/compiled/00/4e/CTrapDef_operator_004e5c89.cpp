@@ -10,10 +10,8 @@
 // TriggerType/TrapType are 4-byte enums (long).
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 struct CSoundNameMap {                       // retail std::map<CCharString,long> (12 bytes) (retail 0xc bytes)
     unsigned long m_words[3];
     CSoundNameMap& operator=(const CSoundNameMap& other);   // 0x00432B38
@@ -22,6 +20,7 @@ class CDefString { public:
     long TablePos;                      // index into the def string table (trivially copied)
 };
 
+// def vtable 0x01243054: slot 0 0x004E5EEC (implicit inline dtor); real overrides from the def vtable scan
 class CTrapDef : public CDefClassBase { public:
     CSoundNameMap            Sound;                       // +0x28
     long                     TriggerType;                 // +0x34
@@ -37,6 +36,9 @@ class CTrapDef : public CDefClassBase { public:
     float                    SecondsIdle;                 // +0x5c
     float                    SecondsBetweenShots;         // +0x60
     CTrapDef& operator=(const CTrapDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E5D08
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E5C84
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004E3E48
 };
 
 CTrapDef& CTrapDef::operator=(const CTrapDef& other)

@@ -10,16 +10,18 @@
 //   ::erase 0x00B7FD70): `for (n = last - first; n > 0; --n) *result++ = *first++;` (signed `jle`, the source folded into
 //   an offset from the destination), then the __false_type destroy loop. Local def base: engine/CDefClassBase.h is a
 //   0x25-byte pack(1) flat layout (vptr as data), unusable as a polymorphic base.
-class CDefClassBase {                               // 0x28 bytes in retail (vptr + 0x24 body), polymorphic def root
-public:
-    virtual ~CDefClassBase();
-    unsigned char _body[0x24];                      // +0x04..+0x27
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x012FB778: slot 0 0x00F2D300 (implicit inline dtor); real overrides from the def vtable scan
 class CFeatDef : public CDefClassBase {             // 0x64 bytes (Ego_r.pdb: FeatName +0x28 .. CO_ItemName +0x60)
 public:
+    unsigned char _pad_0x25[0x3];                   // +0x25 (CDefClassBase is 0x25 packed; FeatName is 4-aligned)
     unsigned char _members[0x3c];                   // +0x28..+0x63
     CFeatDef& operator=(const CFeatDef& other);     // 0x00F2D200
     virtual ~CFeatDef();
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00F2D330
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00F2D680
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x00F2D2F0
 };
 
 namespace std {

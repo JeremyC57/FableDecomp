@@ -1,7 +1,6 @@
 // CHeroSuitDef::Copy @ 0x004e54ad
-class CDefClassBase { public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // @ 0x431f10, this in ecx, param on stack
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 struct SubDef {
     void Copy(SubDef const* src);          // @ 0x4e54cc, this in ecx, param on stack
 };

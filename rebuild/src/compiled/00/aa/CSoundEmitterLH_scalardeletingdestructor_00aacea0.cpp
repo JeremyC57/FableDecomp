@@ -14,11 +14,7 @@
 // a plain inline one (two calls + a free) is emitted out of line and called once.
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 
-class CBaseClass {
-public:                                      // root polymorphic base
-    CBaseClass();
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CEmitterArray {                             // array whose destructor tears the elements down, then frees
     void* m_pData;

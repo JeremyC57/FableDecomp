@@ -10,10 +10,8 @@
 // ControlType is the 4-byte ETavernGameControlType enum (long).
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 class CRGBColour { public:
     unsigned char B, G, R, A;
 };
@@ -29,6 +27,7 @@ struct CCardDefVector {                       // retail std::vector<CCardDef> (r
     CCardDefVector& operator=(const CCardDefVector& other);   // 0x004EBF32
 };
 
+// def vtable 0x0124258C: slot 0 0x004E2DCB (implicit inline dtor); real overrides from the def vtable scan
 class CTavernGameCardBaseDef : public CDefClassBase { public:
     long                     ControlType;                 // +0x28
     float                    CardWidth;                   // +0x2c
@@ -49,6 +48,9 @@ class CTavernGameCardBaseDef : public CDefClassBase { public:
     CCardPositionsVector     CardOrders;                  // +0x6c
     CCardDefVector           CardPack;                    // +0x78
     CTavernGameCardBaseDef& operator=(const CTavernGameCardBaseDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004F9A90
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004EBC11
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004E11BD
 };
 
 CTavernGameCardBaseDef& CTavernGameCardBaseDef::operator=(const CTavernGameCardBaseDef& other)

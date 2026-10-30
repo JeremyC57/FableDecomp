@@ -11,10 +11,8 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CLongVector {                    // std::vector<long> (retail STLport, 12 bytes)
     long* m_pFirst;
@@ -23,6 +21,7 @@ struct CLongVector {                    // std::vector<long> (retail STLport, 12
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
+// def vtable 0x0124193C: slot 0 0x004E0FB2 (implicit inline dtor); real overrides from the def vtable scan
 class CTurncoatDef : public CDefClassBase { public:
     bool Turncoatable;                  // +0x25
     long TurncoatedEffect;              // +0x28
@@ -35,6 +34,9 @@ class CTurncoatDef : public CDefClassBase { public:
     float PercentageOfHealthAsResistance;// +0x4c
     float ExtraResistance;              // +0x50
     CTurncoatDef& operator=(const CTurncoatDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E7F24
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E2CDF
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004DEBC0
 };
 
 CTurncoatDef& CTurncoatDef::operator=(const CTurncoatDef& other)

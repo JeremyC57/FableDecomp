@@ -29,11 +29,7 @@ public:
         Info = 0;
     }
 };
-class CBaseClass {                                        // Fable.exe RTTI root
-public:
-    CBaseClass();
-    virtual ~CBaseClass();                                // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 public:
     CBaseClassNonCopyable();

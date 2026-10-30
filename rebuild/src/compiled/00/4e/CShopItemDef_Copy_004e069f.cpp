@@ -7,6 +7,7 @@
 // local CShopItem record (the member type the header names in its comments).
 // Shape: the source loaded into esi before the base call and kept, `this` in edi; `push 7 ; pop ecx` = /Os.
 #pragma optimize("s", on)
+#define FABLE_RETAIL_DEF_CLASS_BASE
 #include "engine/CShopItemDef.h"
 
 
@@ -20,9 +21,7 @@ class CShopItem { public:                              // CShopItemDef::Item (+0
     float SalesPerDayRandomness;
 };
 
-class CDefClassBase { public:                      // the definition base sub-object (+0x00..+0x28)
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CShopItemDef_Methods : CShopItemDef {
     CShopItem&       Item()       { return *reinterpret_cast<CShopItem*>(&Item_Quantity); }

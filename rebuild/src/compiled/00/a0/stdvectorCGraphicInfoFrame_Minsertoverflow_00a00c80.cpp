@@ -19,11 +19,7 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 extern "C" void __cdecl free(void* block);            // 0x00BFEA14
 inline void* operator new(unsigned int, void* where) { return where; }
 
-class CBaseClass {                                  // vtable 0x01231710
-public:
-    CBaseClass();                                   // 0x0099A2D0
-    virtual ~CBaseClass();                          // slot 0 (0x0099A2E0)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 template <class T>
 class CIVCountedPointer {                           // intrusive: the object's RefCount at +4, virtual slot 1 frees it

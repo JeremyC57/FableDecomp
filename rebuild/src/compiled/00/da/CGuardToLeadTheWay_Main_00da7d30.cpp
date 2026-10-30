@@ -76,11 +76,7 @@ struct CScriptThingImpl {                              // the game-side thing be
     virtual void i072() const; virtual void i073() const; virtual void i074() const;
     virtual bool IsAlive() const;   // slot 75 (+0x12c)
 };
-class CBaseClass {
-public:                                           // vtable 0x01231710
-    CBaseClass() { }                                         // out-of-line copy 0x0099A2D0
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DVector { public: float X, Y, Z; };
 namespace N_006e7b40 { struct CScriptThing : CBaseClass {                           // vtable 0x01238C8C, 12 bytes
     virtual void s001() const; virtual void s002() const;
@@ -255,11 +251,11 @@ class CGameScriptInterface { public:                          // vtable 0x01260F
     virtual void v649() const; virtual void v650() const; virtual void v651() const; virtual void v652() const; virtual void v653() const; virtual void v654() const;
     virtual CCharString GetActiveQuestName() const;   // slot 655 (+0xa3c) 0x00891880
 };
-class CSpawnedFuncBase { public:                               // 0x34 bytes
-    virtual ~CSpawnedFuncBase();
-    unsigned char _body[0x30];
-    CSpawnedFuncBase(const CCharString& name, unsigned long id);   // 0x00CDD450
-};
+// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
+//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
+//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 struct CQ_MinionClifftopChaseScript {
     unsigned char _pad00[0x49];
     bool MissionFailed;                                 // +0x49 (PDB +0x5d)

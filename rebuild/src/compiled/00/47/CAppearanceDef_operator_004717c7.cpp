@@ -10,10 +10,8 @@
 // The two 14-byte CEngineGraphic records copy as `movsd x3 ; movsw` (size TU); LightingChannel is the 4-byte ELightingChannel enum (long).
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 #pragma pack(push, 1)
 class CEngineGraphic { public:                 // 14 bytes, byte-aligned (PDB: Graphic at +0x25)
     unsigned long BankIndex;            // +0x00
@@ -28,6 +26,7 @@ class CAnimationSet { public:                  // retail 0x20 bytes (PDB 0x24: i
     CAnimationSet& operator=(const CAnimationSet& other);   // 0x00471832
 };
 
+// def vtable 0x012354DC: slot 0 0x0046CDFC (implicit inline dtor); real overrides from the def vtable scan
 class CAppearanceDef : public CDefClassBase { public:
     CEngineGraphic           Graphic;                     // +0x25
     CAnimationSet            Animation;                   // +0x34
@@ -41,6 +40,9 @@ class CAppearanceDef : public CDefClassBase { public:
     float                    FadeOutGraphicNearRenderFadeDistance; // +0x70
     float                    FadeOutGraphicNearRenderClipDistance; // +0x74
     CAppearanceDef& operator=(const CAppearanceDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00473504
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004717C2
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0046A174
 };
 
 CAppearanceDef& CAppearanceDef::operator=(const CAppearanceDef& other)

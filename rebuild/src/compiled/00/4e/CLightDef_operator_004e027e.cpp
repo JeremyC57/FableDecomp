@@ -10,11 +10,9 @@
 #pragma optimize("s", on)
 class CRGBColour { public: union { unsigned long Value; unsigned char Channel[4]; }; };   // Ego_r.pdb: one 32-bit union (B, G, R, A)
 enum EPointLightChannelEffect { EPOINTLIGHTCHANNELEFFECT_NONE = 0 };
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x0123A814: slot 0 0x004D7C97 (implicit inline dtor); real overrides from the def vtable scan
 class CLightDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
@@ -33,6 +31,8 @@ public:
     float                     DaylightAttenuatorFadeOutEnd;      // +0x50
     EPointLightChannelEffect  EffectChannel;                     // +0x54
     bool                      Inverted;                          // +0x58
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004DDCFA
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004D33D8
 };
 void CLightDef::Copy(const CDefClassBase* other)
 {

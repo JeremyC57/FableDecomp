@@ -28,11 +28,7 @@ class CRightHandedSet { public:
     CRightHandedSet(const C3DVector& up, const C3DVector& forward) : Up(up), Forward(forward) {}
     CRightHandedSet(const CRightHandedSet& o) : Up(o.Up), Forward(o.Forward) {}
 };
-class CBaseClass {
-public:
-    CBaseClass();                               // 0x0099A2D0
-    virtual ~CBaseClass();                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                    // 0x0099A2F0

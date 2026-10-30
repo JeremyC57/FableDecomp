@@ -18,10 +18,8 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the class is local.
 #pragma optimize("s", on)   // the def module is size-optimised
 
-class CDefClassBase { public:
-    unsigned char _body[0x28];          // vptr, resource links, PDefManager, GlobalIndex, flag bits
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CLongVector {                    // retail std::vector<long> (12 bytes)
     long* m_first;
@@ -58,6 +56,7 @@ struct CAttackHistoryComboVector {      // retail std::vector<CAttackHistoryComb
     CAttackHistoryComboVector& operator=(const CAttackHistoryComboVector& other);   // 0x004F932C
 };
 
+// def vtable 0x0124390C: slot 0 0x004EBB00 (implicit inline dtor); real overrides from the def vtable scan
 class CHeroExperienceDef : public CDefClassBase { public:                         // vtable 0x0124390C
     CLongVector ExperienceLevelThresholds;                          // +0x28
     CLongVector HeroLevelTitles;                                    // +0x34
@@ -73,6 +72,9 @@ class CHeroExperienceDef : public CDefClassBase { public:                       
     CRetailTree_004f98a4 StatIncreasePerHitType;                    // +0x9c
     CAttackHistoryComboVector AttackHistoryCombos;                  // +0xa8
     CHeroExperienceDef& operator=(const CHeroExperienceDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x006D8F10
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004F9145
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004EBA68
 };
 
 CHeroExperienceDef& CHeroExperienceDef::operator=(const CHeroExperienceDef& other)

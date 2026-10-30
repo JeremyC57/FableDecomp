@@ -1,8 +1,6 @@
 #pragma optimize("s",on)
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 struct CBase {  unsigned char _b[0x30]; };
 class CGuildMasterDef : public CBase { public: void Copy(const CGuildMasterDef* other); };
 void CGuildMasterDef::Copy(const CGuildMasterDef* other) {

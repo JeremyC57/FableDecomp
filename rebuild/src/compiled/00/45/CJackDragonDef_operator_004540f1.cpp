@@ -8,11 +8,9 @@
 //   `*this = *(const CJackDragonDef*)other;`; `optimize("s", on)` keeps every copy in eax/al (speed rotates eax/ecx/edx).
 // Header debt: the def base is modelled by its retail size only (its operator= is out of line).
 #pragma optimize("s", on)
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x0123294C: slot 0 0x0044FFBD (implicit inline dtor); real overrides from the def vtable scan
 class CJackDragonDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
@@ -36,6 +34,8 @@ public:
     float                 NotHitSnapBuildupTime;          // +0x6c
     float                 MaxTimeBeforeSnap;              // +0x70
     float                 MinRoarDistance;                // +0x74
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00452EA5
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C63D
 };
 void CJackDragonDef::Copy(const CDefClassBase* other)
 {

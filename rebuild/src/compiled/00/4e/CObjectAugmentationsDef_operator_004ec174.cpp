@@ -16,11 +16,8 @@
 // No engine header exists for the class: modelled locally from struct_layouts_egor.tsv.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x24];                                            // +0x04..+0x28
-    CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CLongVector {                                                      // retail std::vector<long> (12 bytes)
     long* m_first;
@@ -50,6 +47,7 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);                     // 0x0099EFB0
 };
 
+// def vtable 0x01243974: slot 0 0x004ECAE1 (implicit inline dtor); real overrides from the def vtable scan
 class CObjectAugmentationsDef : public CDefClassBase { public:                          // vtable 0x01243974
     long                 NumberOfSlots;                                   // +0x28
     long                 MaximumNumberOfSlots;                            // +0x2c
@@ -68,6 +66,9 @@ class CObjectAugmentationsDef : public CDefClassBase { public:                  
     CCharString          WeaponTrailAttachmentPoint;                      // +0x88
     virtual void v00();
     CObjectAugmentationsDef& operator=(const CObjectAugmentationsDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004EC53F
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004EC16F
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004EBBEC
 };
 
 CObjectAugmentationsDef& CObjectAugmentationsDef::operator=(const CObjectAugmentationsDef& other)

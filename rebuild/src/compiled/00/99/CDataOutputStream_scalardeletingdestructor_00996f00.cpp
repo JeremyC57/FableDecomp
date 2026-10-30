@@ -6,11 +6,7 @@
 // Shape (family K050, representative 0x00996F00): an implicit destructor stores no vptr of its own; the base's user-declared
 //   inline destructor does (the vptr store sits between the member destructor and the base call). A `new` of the class
 //   makes VC7.1 emit the vtable and the ??_G COMDAT.
-class CBaseClass {
-public:
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseClassNonCopyable : public CBaseClass {
 protected:
     CBaseClassNonCopyable();                             // 0x0099A2F0

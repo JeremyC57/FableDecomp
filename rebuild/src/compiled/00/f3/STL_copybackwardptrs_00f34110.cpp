@@ -10,12 +10,8 @@
 //   `for (n = last - first; n > 0; --n) *--result = *--last;` inlined (the source folded into an offset from the
 //   destination); `__fastcall` on the template definition; `__copy_backward` and the memberwise operator= `__forceinline`
 //   (VC7.1 refuses the plain-inline chain). Local def base as in 0x00F33EA0.
-class CDefClassBase {                               // 0x28 bytes in retail (vptr + 0x24 body), the def root
-public:
-    virtual ~CDefClassBase();
-    unsigned char _body[0x24];                      // +0x04..+0x27
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };

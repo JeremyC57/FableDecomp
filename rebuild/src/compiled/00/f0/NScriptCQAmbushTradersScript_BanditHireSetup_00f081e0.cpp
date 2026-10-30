@@ -20,10 +20,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);        // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class CBaseClass { public:
-    virtual ~CBaseClass();                                  // 0x0099A2E0
-    CBaseClass();                                           // 0x0099A2D0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCPPointerInfo { public:
     long RefCount;
     void (__fastcall* DeleteFunc)(void* data);
@@ -111,11 +108,11 @@ class CGameScriptInterface { public:
     virtual float GetHealth(const CScriptThing& thing) const;   // slot 264 (+0x420)
 };
 
-class CSpawnedFuncBase { public:                                    // 0x34 bytes
-    CSpawnedFuncBase(const CCharString& name, unsigned long id);   // 0x00CDD450
-    virtual void v00();
-    unsigned char _body[0x30];
-};
+// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
+//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
+//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 template <class C, class P> struct CSpawnedFunc1 : CSpawnedFuncBase {
     typedef void (C::*TFunc)(P);
     TFunc               Func;                              // +0x34

@@ -24,10 +24,7 @@ class CMouse;
 class CKeyboard;
 class CJoystick;
 struct CCountedJoystick;
-class CBaseClass { public:
-    CBaseClass(); // 0099A2D0; native vtable01231710
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 template<class T> struct NativeAllocator {};
 template<class T> struct NativeStorageEnd:NativeAllocator<T> { T* Value; NativeStorageEnd(T* p):Value(p){} };
 template<class T> struct NativeVector { T* Start; T* Finish; NativeStorageEnd<T> End; NativeVector():Start(0),Finish(0),End(Start){} T* erase(T*,T*); void clear(){erase(Start,Finish);} struct iterator { T* current; iterator(T* p):current(p){} iterator operator+(int n)const{return iterator(current+n);} T& operator*()const{return *current;} }; iterator begin()const{return iterator(Start);} T& operator[](int n) const { return *(begin()+n); } };

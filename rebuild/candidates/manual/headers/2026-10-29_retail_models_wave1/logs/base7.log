@@ -1,0 +1,25 @@
+addr       parity           behav  name
+  TIMEOUT /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/wine/vc71rtm/bin/cl.exe laude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/mig1/work/lv0/00/f2/00f25f90/00f25f90.cpp
+00f25f90   WARN RELOC_NAME: ?_M_clear@?$vector@VCArenaCreatureDef@@V?$allocator@VCArenaCreatureDef@@@std@@@std@@IAEXXZ -> 00f26110 labelled 'CRetailVector_poly0x38::~CRetailVector_poly0x38'
+00f25f90   WARN RELOC_NAME: ??4CArenaCreatureDef@@QAEAAV0@ABV0@@Z -> 00f25f10 labelled 'CArenaCreatureDef::Copy'
+00f25f90   WARN RELOC_NAME: ??0CArenaCreatureDef@@QAE@ABV0@@Z -> 00f25dd0 labelled 'CVtable_012fb358::CVtable_012fb358'
+00f25f90   RELOCATION_MATCH["t"] PASS   std_vector_assign_CConversation
+00f26420   MATCH            PASS   sub_00f26420
+00f26c30   WARN RELOC_NAME: ?_M_clear@?$vector@VCHeroSoulsRoundDef@@V?$allocator@VCHeroSoulsRoundDef@@@std@@@std@@IAEXXZ -> 00f26d70 labelled 'CRetailVector_poly0x38::~CRetailVector_poly0x38'
+00f26c30   WARN RELOC_NAME: ??$_Construct@VCHeroSoulsRoundDef@@V1@@std@@YIXPAVCHeroSoulsRoundDef@@ABV1@@Z -> 00f26db0 labelled '_Cons_val<std::allocator<CTCHeroOnlineScoreboard::CClanMember>,CTCHeroOnlineScoreboard::CClanMember,CTCHeroOnlineScoreboard::_Cons_val<std::allocator<CTCHeroOnlineScoreboard::CClanMember>,CTCHeroOnlineScoreboard::CClanMember,CTCHeroOnlineScoreboard::CClanMember_const&>'
+00f26c30   RELOCATION_MATCH PASS   std_vector_Conversation_Assign3
+00f27060   RELOCATION_MATCH PASS   CHeroSoulsCreatureDef
+00f261f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00f261f0   RELOCATION_MATCH PASS   Transfer
+00d35070   RELOCATION_MATCH PASS   Transfer
+00f08590   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00f08590   RELOCATION_MATCH PASS   WatchForEnemyDeath
+
+WINS: 7
+  00f25f90 RELOCATION_MATCH["t"] std::vector<CArenaCreatureDef>::??4?$vector@VCArenaCreatureDef@@V?$allocator@VCArenaCreatureDef@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00f26420 MATCH CPersistContext_TransferableVectorOfSubComponents<CArenaCreatureDef>::?AreDefaultValsApplied@?$CPersistContext_TransferableVectorOfSubComponents@VCArenaCreatureDef@@@@EAE_NJ@Z
+  00f26c30 RELOCATION_MATCH std::vector<CHeroSoulsRoundDef>::??4?$vector@VCHeroSoulsRoundDef@@V?$allocator@VCHeroSoulsRoundDef@@@std@@@std@@QAEAAV01@ABV01@@Z
+  00f27060 RELOCATION_MATCH CHeroSoulsCreatureDef::??0CHeroSoulsCreatureDef@@QAE@ABV0@@Z
+  00f261f0 RELOCATION_MATCH CArenaWaveDef::?Transfer@CArenaWaveDef@@UAEXAAVCPersistContext@@@Z
+  00d35070 RELOCATION_MATCH CFireHeartPatternDef::?Transfer@CFireHeartPatternDef@@UAEXAAVCPersistContext@@@Z
+  00f08590 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?WatchForEnemyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z

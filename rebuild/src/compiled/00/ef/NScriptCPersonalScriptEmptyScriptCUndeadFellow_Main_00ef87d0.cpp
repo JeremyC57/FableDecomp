@@ -72,17 +72,13 @@ public:
         Info = 0;
     }
 };
-class CBaseClass {
-public:
-    CBaseClass() { }                                    // out-of-line copy 0x0099A2D0 (vtable 0x01231710)
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThingImp;
 class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
 public:
     CCountedPointer<CScriptThingImp> PImp;              // +0x04
     CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline CScriptThing(CScriptThing& other) : CBaseClass(), PImp(other.PImp) { }   // inline copy of a non-const thing
+    __forceinline CScriptThing(CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }   // inline copy of a non-const thing
     virtual ~CScriptThing() { }                         // out-of-line copy 0x004AA840
 };
 class CBaseObjectPointer;
@@ -149,16 +145,11 @@ template <class A, class B> inline CPredicate_And<A, B> operator&&(const A& firs
     return CPredicate_And<A, B>(first, second);
 }
 }   // namespace NScript
-class CSpawnedFuncBase {                                // retail 0x34 bytes
-public:
-    virtual ~CSpawnedFuncBase();
-    virtual void RunSuspendableProcess();
-    virtual void SuspendSuspendableProcess(bool suspend);
-    virtual void Restart();
-    virtual void SuspendableProcess() = 0;
-    unsigned char _body[0x30];                          // +0x04 .. +0x34
-    CSpawnedFuncBase(const CCharString& name, unsigned long id);   // 0x00CDD450
-};
+// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
+//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
+//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 template <class T, class P1> class CSpawnedFunc1 : public CSpawnedFuncBase {   // vtable 0x012F6888 for <CPersonalScript_EmptyScript, CScriptThing>
 public:
     void (T::*Func)(P1);                                // +0x34

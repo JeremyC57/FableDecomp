@@ -13,12 +13,8 @@
 //   definition (the TU's free STLport helpers are fastcall). VC7.1 refuses to inline the plain-inline `__copy` (the
 //   pointer-difference divide) and the memberwise operator=, so both are `__forceinline` (as the landed 0x00B7FD70). Local def base: engine/CDefClassBase.h is a 0x25-byte pack(1)
 //   flat layout (vptr as data), unusable as a polymorphic base.
-class CDefClassBase {                               // 0x28 bytes in retail (vptr + 0x24 body), the def root
-public:
-    virtual ~CDefClassBase();
-    unsigned char _body[0x24];                      // +0x04..+0x27
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 namespace std {
 template <class _Tp> class allocator { public: allocator() { } };

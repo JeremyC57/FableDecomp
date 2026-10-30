@@ -98,10 +98,7 @@ struct CScriptThingImp {
     virtual void _i77();
     virtual bool IsSameThing(const CScriptThingImp* other) const;   // slot 78 (+0x138)
 };
-class CBaseClass { public:                                     // the polymorphic root (vptr at +0)
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCPPointerInfo { public:
     unsigned long RefCount;
     void (__fastcall* DeleteFunc)(void*);

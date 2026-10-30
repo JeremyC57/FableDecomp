@@ -10,11 +10,9 @@
 //   bases (no base operator= to call), Review at landing.
 // Shape: the compiler-generated assignment written out in declaration order; float members copy through eax as integer moves.
 #pragma optimize("s", on)
-class CDefClassBase {                                         // 37 bytes in retail
-public:
-    unsigned char _body[0x25];
-    CDefClassBase& operator=(const CDefClassBase& other);        // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x012329B4: slot 0 0x00450003 (implicit inline dtor); real overrides from the def vtable scan
 class CBriarRoseDef : public CDefClassBase {                       // vtable 0x012329B4
 public:
     float SecondsToTeleport;                           // +0x28
@@ -29,6 +27,9 @@ public:
     float SecondsBetweenTeleportAway;                  // +0x4C
     float DistanceForcePushThreshold;                  // +0x50
     CBriarRoseDef& operator=(const CBriarRoseDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00452F8E
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x0045417E
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C653
 };
 
 CBriarRoseDef& CBriarRoseDef::operator=(const CBriarRoseDef& other)

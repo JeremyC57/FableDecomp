@@ -7,11 +7,8 @@
 // PDB CCarryingDef (sizeof 0x3C): AvailableCarrySlots at +0x28 (16-byte PDB vector, 12 in retail) and
 // OverriddenDummyObject (CDefString) at +0x38, which the retail body reaches at +0x34. No vtable store and
 // no `this` return: a plain member function, not a constructor.
-class CDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x24];                   // +0x04..+0x27
-    CDefClassBase& operator=(const CDefClassBase& other);       // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CLongVector {                             // retail std::vector<long>: {first, last, end}
     long* m_pFirst;
@@ -20,10 +17,14 @@ struct CLongVector {                             // retail std::vector<long>: {f
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
+// def vtable 0x01241194: slot 0 0x004DFE78 (implicit inline dtor); real overrides from the def vtable scan
 class CCarryingDef : public CDefClassBase { public:
     CLongVector AvailableCarrySlots;             // +0x28
     long        OverriddenDummyObject_TablePos;  // +0x34 CDefString::TablePos
     void Copy(const CCarryingDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E77C8
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E1DDC
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004DD920
 };
 
 void CCarryingDef::Copy(const CCarryingDef& other)

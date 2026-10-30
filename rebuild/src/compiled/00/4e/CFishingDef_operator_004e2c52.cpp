@@ -10,15 +10,14 @@
 // Retail vector<long> is 12 bytes: every member after FishTypes sits 4 below the PDB.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 struct CLongVector {                       // retail std::vector<long> (retail 0xc bytes)
     unsigned long m_words[3];
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
+// def vtable 0x012418C4: slot 0 0x004E0DCF (implicit inline dtor); real overrides from the def vtable scan
 class CFishingDef : public CDefClassBase { public:
     CLongVector              FishTypes;                   // +0x28
     float                    FishingSpotProximity;        // +0x34
@@ -40,6 +39,9 @@ class CFishingDef : public CDefClassBase { public:
     long                     MaxRandomHookPresses;        // +0x74
     float                    StrainIncreasePerPress;      // +0x78
     CFishingDef& operator=(const CFishingDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x007B1F10
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E2C4D
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004DE912
 };
 
 CFishingDef& CFishingDef::operator=(const CFishingDef& other)

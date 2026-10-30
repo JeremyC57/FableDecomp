@@ -6,11 +6,7 @@
 // Shape (family K104, representative 0x0047BD70): the landed vector<pair<CCharString, float> >::_M_clear 0x006FBE60 (family J007)
 //   with the destroyed member at another offset: `_Destroy(_M_start, _M_finish)` (inline __destroy_aux loop) then deallocate.
 extern "C" void __cdecl free(void* block);                   // 0x00BFEA14
-class CBaseClass {
-public:
-    CBaseClass();
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 namespace NParticleEngine {
 template <class A, class B> class CParticleUpdateParamCallback;
 template <class A, class B> class CParticleUpdateParamDesc : public CBaseClass {   // Ego_r.pdb 12 bytes

@@ -20,11 +20,7 @@ class C3DVector { public:
     C3DVector operator*(float s) const { return C3DVector(X * s, Y * s, Z * s); }
     __forceinline C3DVector Interpolate(const C3DVector& to, float t) const { return (to - *this) * t + *this; }
 };
-class CBaseClass {
-public:
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();                                       // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DPositionInterpolator : public CBaseClass { public:            // 0x1c bytes
     C3DVector StartPosition;                        // +0x04
     C3DVector EndPosition;                          // +0x10

@@ -9,15 +9,14 @@
 //   flattens the base (no base operator= to call), so the classes are modelled locally like the landed 0x00463BA2.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 struct CLongVector {                       // retail std::vector<long> (retail 0xc bytes)
     unsigned long m_words[3];
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
+// def vtable 0x01241B2C: slot 0 0x004E13C3 (implicit inline dtor); real overrides from the def vtable scan
 class CKrakenDef : public CDefClassBase { public:
     float                    HeightOffset;                // +0x28
     float                    PoolRadius;                  // +0x2c
@@ -39,6 +38,9 @@ class CKrakenDef : public CDefClassBase { public:
     CLongVector              TentacleDefIndex;            // +0x6c
     float                    TentacleMaxRiseDelay;        // +0x78
     CKrakenDef& operator=(const CKrakenDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E80E3
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E3168
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004DEFA3
 };
 
 CKrakenDef& CKrakenDef::operator=(const CKrakenDef& other)

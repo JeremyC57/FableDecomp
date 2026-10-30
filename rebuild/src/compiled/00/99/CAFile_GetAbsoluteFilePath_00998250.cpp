@@ -57,11 +57,7 @@ public:
 };
 CCharString __fastcall operator+(const char* left, const CCharString& right);   // 0x0099F690
 
-class CBaseClass {
-public:
-    CBaseClass();                                            // 0x0099A2D0
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CStringParserCommentBoundaries
 {

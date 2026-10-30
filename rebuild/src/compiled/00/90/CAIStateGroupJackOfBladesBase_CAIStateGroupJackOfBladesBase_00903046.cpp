@@ -29,11 +29,7 @@ public:
     ~vector();                                                  // out of line in retail (0x004406D0 for CIntelligentPointer<CThing>)
 };
 }   // namespace std
-class CBaseClass {                                       // RTTI root, vtable 0x01231710
-public:
-    CBaseClass();                                        // 0x0099A2F0
-    virtual ~CBaseClass();                               // 0x0099A300
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
 class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
 public:

@@ -10,10 +10,8 @@
 //   one) and its byte + dword are copied relative to the record pointers (here edi/esi, `this` in ebx).
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 class CCombatAbilityData { public:
     virtual void v00();
@@ -37,9 +35,13 @@ class CCombatAbilityProjectileAttackData : public CCombatAbilityData { public:
     }
 };
 
+// def vtable 0x012326DC: slot 0 0x0044FE12 (implicit inline dtor); real overrides from the def vtable scan
 class CCombatAbilityUseProjectileWeaponDef : public CDefClassBase { public:
     CCombatAbilityProjectileAttackData CombatAbility;   // +0x28
     CCombatAbilityUseProjectileWeaponDef& operator=(const CCombatAbilityUseProjectileWeaponDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00452BB4
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00453F8E
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C5B9
 };
 
 CCombatAbilityUseProjectileWeaponDef& CCombatAbilityUseProjectileWeaponDef::operator=(const CCombatAbilityUseProjectileWeaponDef& other)

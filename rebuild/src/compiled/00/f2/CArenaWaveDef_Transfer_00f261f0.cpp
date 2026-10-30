@@ -9,7 +9,7 @@
 // Label: the manifest's "sub_00f261f0" is a gap-scan placeholder.
 // Callees: CPersistContext::Transfer<long> 0x00410BE0, CPersistContext::TransferVectorOfSubComponents<CArenaCreatureDef>
 //   0x00F26250, CPersistContext::Transfer<bool> 0x004045C0 (PDB member-template spellings).
-// Layout: CDefClassBase is 0x28 bytes; NumWaveCreatures +0x28, the 12-byte STLport vector Creatures +0x2c, ShortWave +0x38
+// Layout: CDefClassBase is the retail 0x28-byte class of the shared FABLE_RETAIL_DEF_CLASS_BASE headers; NumWaveCreatures +0x28, the 12-byte STLport vector Creatures +0x2c, ShortWave +0x38
 //   (Ego_r.pdb +0x3c: its Dinkumware vector is 16 bytes).
 // Shape: one Transfer per member in declaration order; the defaults are compiler temporaries (the long one takes the frame
 //   word, the bool one the dead context-argument slot).
@@ -30,19 +30,17 @@ public:
     template <class T> void TransferVectorOfSubComponents(const char* name, std::vector<T>& value);   // 0x00F26250
 };
 
-class CDefClassBase {
-public:
-    virtual ~CDefClassBase();
-    virtual void Transfer(CPersistContext& context);
-    unsigned char _base_0x04[0x24];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"
 
-class CArenaWaveDef : public CDefClassBase {             // vtable 0x012FB2F0
+class CArenaWaveDef : public CDefClassBase {             // vtable 0x012FB2F0 (no RTTI); slot 0 0x00F25CB0
 public:
     long                              NumWaveCreatures;   // +0x28
     std::vector<CArenaCreatureDef>    Creatures;          // +0x2c
     bool                              ShortWave;          // +0x38
-    virtual void Transfer(CPersistContext& context);
+    virtual void Transfer(CPersistContext& context);    // slot 18 0x00F261F0
+    virtual void Copy(const CDefClassBase* other);      // slot 19 0x00F25F50
+    virtual unsigned long GetSizeofClass();             // slot 20 0x00F25CA0
 };
 
 void CArenaWaveDef::Transfer(CPersistContext& context)

@@ -9,16 +9,14 @@
 // Shape: compiler-style memberwise assignment, each word through eax/ecx/edx in rotation, the bools through cl/al.
 // No engine header exists for CFeatDef: modelled locally from struct_layouts_egor.tsv.
 
-class CDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x24];                                            // +0x04..+0x28
-    CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 class CDefString { public:
     long TablePos;
 };
 
+// def vtable 0x012FB778: slot 0 0x00F2D300 (implicit inline dtor); real overrides from the def vtable scan
 class CFeatDef : public CDefClassBase { public:
     CDefString FeatName;                                                  // +0x28
     CDefString Verb;                                                      // +0x2c
@@ -37,6 +35,9 @@ class CFeatDef : public CDefClassBase { public:
     CDefString CO_ItemName;                                               // +0x60
     virtual void v00();
     CFeatDef& operator=(const CFeatDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00F2D330
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00F2D680
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x00F2D2F0
 };
 
 CFeatDef& CFeatDef::operator=(const CFeatDef& other)

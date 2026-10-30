@@ -6,13 +6,15 @@
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
 // Retail opt-in: define FABLE_RETAIL_DEF_CLASS_BASE before the include for the polymorphic retail class (vtable
-// 0x012354D0: slot 0 scalar deleting dtor 0x004664E0, slot 1 Delete 0x0042D930). The flattened layout below stays the
+// 0x012354D0: slot 0 scalar deleting dtor 0x004664E0, slot 1 Delete 0x0042D930). The dtor is inline (0x004664E0 is only the
+// vtable store + conditional delete; ~CResource 0x009FC550 ends with the same store; only FableWin.pdb has the ??1 symbol).
+// The flattened layout below stays the
 // default so the landed includers are unchanged.
 #ifdef FABLE_RETAIL_DEF_CLASS_BASE
 #include <stddef.h>
 class CIVCountedPointeeBase {
 public:
-    virtual ~CIVCountedPointeeBase();                                    // slot 0
+    virtual ~CIVCountedPointeeBase() { }                                 // slot 0  0x004664E0 (scalar deleting; inline dtor)
     virtual void Delete() const;                                         // slot 1  0x0042D930
     unsigned long IVRefCount;                                            // +0x04
 };

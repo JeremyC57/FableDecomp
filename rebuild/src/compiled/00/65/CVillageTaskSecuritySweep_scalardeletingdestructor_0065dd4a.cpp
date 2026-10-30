@@ -10,11 +10,7 @@
 //   that constructs the class: MakeOne is that construction (a modelling device); the qualified explicit destructor calls make VC7.1 define the
 //   implicit destructors before it generates the deleting destructor, so the chain inlines.
 #pragma optimize("s", on)
-class CBaseClass {                                       // RTTI root, vtable 0x01231710
-public:
-    CBaseClass();                                        // 0x0099A2F0
-    virtual ~CBaseClass();                               // 0x0099A300
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CThing;
 #pragma pack(push, 1)
 class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail

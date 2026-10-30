@@ -8,15 +8,17 @@
 //   reached by `jmp` with the object in ecx.
 // Header debt: the def class is modelled by its retail size only (the constructor is out of line).
 void* __cdecl operator new(unsigned int size);            // 0x00BFEA1A
-class CDefClassBase {                                     // Ego_r.pdb: CResource + PDefManager, GlobalIndex, flags (0x25 bytes, packed)
-public:
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x012FB5C8: slot 0 0x00F29510 (implicit inline dtor); real overrides from the def vtable scan
 class CScriptDef : public CDefClassBase {
 public:
     CScriptDef();                                              // 0x00F28F90
     static CDefClassBase* __fastcall Alloc();
     unsigned char _members[0x1063];                    // retail sizeof 0x1088
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00F2D6E0
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00F2A240
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x00F29500
 };
 CDefClassBase* __fastcall CScriptDef::Alloc()
 {

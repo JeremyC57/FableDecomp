@@ -10,11 +10,7 @@
 // (@base_dtor_99a300@4, ?baseDtor@BaseInput@@QAEXXZ, N_0099a300, ...).
 // Callees: none. Layout: CBaseClass is the bare vptr (Ego_r.pdb size 4).
 // Shape: a user-declared (even empty) destructor stores its own vtable; the compiler-generated one would not.
-class CBaseClass {
-public:
-    CBaseClass();
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 CBaseClass::~CBaseClass()
 {

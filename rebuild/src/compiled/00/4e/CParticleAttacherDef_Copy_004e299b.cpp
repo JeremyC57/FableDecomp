@@ -2,9 +2,8 @@
 // void __fastcall CParticleAttacherDef::Copy(CParticleAttacherDef*, CDefClassBase const*)
 // Real member function => genuine __fastcall (this in ecx, src on stack, ret 4).
 
-class CDefClassBase { public: 
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 // base class Copy at 0x431f10: __fastcall base::Copy(self, const CDefClassBase* src)
 struct BaseDef {

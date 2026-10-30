@@ -19,10 +19,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);      // 0x0099EBF0
     ~CCharString();                                        // 0x0099EAE0
 };
-class CBaseClass { public:
-    CBaseClass();                                          // 0x0099A2D0
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct SCommentNode {                                      // list<CStringParserCommentBoundaries> node
     SCommentNode* m_next;
     SCommentNode* m_prev;

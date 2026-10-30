@@ -8,11 +8,7 @@
 // embeds this class at +0x14.
 // Shape: base call, then one `xor eax,eax` zero for the six vector words and the two Dirty bytes (the comparator
 // byte is never written), with the vtable store scheduled after the zero.
-class CBaseClass {
-public:
-    CBaseClass();                                           // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class C3DVector { public: float X, Y, Z; };
 

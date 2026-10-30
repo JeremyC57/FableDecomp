@@ -9,11 +9,9 @@
 // Header debt: the def base is modelled by its retail size only (its operator= is out of line).
 #pragma optimize("s", on)
 enum EPerceivedThingType { EPERCEIVEDTHINGTYPE_NONE = 0 };
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x0123AA9C: slot 0 0x004D7EDA (implicit inline dtor); real overrides from the def vtable scan
 class CPerceivedThingDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
@@ -27,6 +25,8 @@ public:
     float                     AwarenessTimer;                    // +0x44
     float                     DayTimeVisibilityMultiplier;       // +0x48
     float                     NightTimeVisibilityMultiplier;     // +0x4c
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004DDF9E
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004D35DE
 };
 void CPerceivedThingDef::Copy(const CDefClassBase* other)
 {

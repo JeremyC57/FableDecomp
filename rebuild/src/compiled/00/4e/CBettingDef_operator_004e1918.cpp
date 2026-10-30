@@ -12,11 +12,10 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
+// def vtable 0x0123E3B4: slot 0 0x004D9701 (implicit inline dtor); real overrides from the def vtable scan
 class CBettingDef : public CDefClassBase { public:
     float BetX;                         // +0x28
     float BetY;                         // +0x2c
@@ -31,6 +30,9 @@ class CBettingDef : public CDefClassBase { public:
     unsigned long Continue;             // +0x50
     unsigned long Cancel;               // +0x54
     CBettingDef& operator=(const CBettingDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004DF5C7
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E1913
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004D64F8
 };
 
 CBettingDef& CBettingDef::operator=(const CBettingDef& other)

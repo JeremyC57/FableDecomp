@@ -45,33 +45,17 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01238C8C
-    __forceinline virtual ~CScriptThing() {}            // 0x004AA840 where it stays out of line
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006();
-    virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012();
-    virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017();
-    virtual bool MsgIsKilledBy(const CCharString& killer) const   // slot 18 (+0x48) 0x004AAAF0
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsKilledBy(killer);
-    }
-    CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
-};
-class CGameScriptInterfaceBase { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
-    virtual void NewScriptFrame() const;                // slot 7 (+0x1c)
-};
-class CScriptBase { public:                             // retail 0x40 bytes
-    virtual ~CScriptBase();
-    unsigned char _body[0x3c];
-    bool IsActiveThreadTerminating();                   // 0x00CB7940
-};
-template <class TData> class CLevelScriptBase : public CScriptBase {
-public:
-    CGameScriptInterfaceBase* Game;                     // +0x40
-    TData* MasterScriptData;                            // +0x44
-};
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"                       // vtable 0x01238C8C (79 slots)
+__forceinline CScriptThing::~CScriptThing() { }         // 0x004AA840 where it stays out of line
+inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const   // slot 18 (+0x48) 0x004AAAF0
+{
+    if (!PImp.Data)
+        return false;
+    return PImp.Data->MsgIsKilledBy(killer);
+}
+#include "engine/CGameScriptInterfaceBase.h"           // vtable slots: CGameScriptInterface 0x01260F0C
+#include "engine/CLevelScriptBase.h"                   // CScriptBase (0x40, vtable 0x012C1648) + Game +0x40, MasterScriptData +0x44
 namespace NScript {
 class CQ_SunnyvaleMasterData { public:                  // Ego_r.pdb layout up to the member used
     unsigned char _before[0xd4];

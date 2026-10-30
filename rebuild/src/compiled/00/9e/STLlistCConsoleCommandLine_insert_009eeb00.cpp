@@ -18,11 +18,7 @@ public:
     CCharString(const CCharString& other);         // 0x0099EC30
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CConsoleCommandLine : public CBaseClass           // vtable 0x0129C400, 16 bytes
 {

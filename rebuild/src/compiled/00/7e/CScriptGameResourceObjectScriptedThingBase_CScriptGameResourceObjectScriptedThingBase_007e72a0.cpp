@@ -6,11 +6,7 @@
 //   CCountedPointer's inline default ctor zeroing Data/Info through one zero register (a member object with its own
 //   inline ctor stores after the vtable). Header debt: engine/CScriptGameResourceObjectScriptedThingBase.h (where present) flattens the vptr into data, so the
 //   class is modelled locally from the PDB layout.
-class CBaseClass {                                       // Ego_r.pdb / RTTI: the polymorphic engine root
-public:
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CBaseObjectPointer;
 class CBaseObject : public CBaseClass {                  // Ego_r.pdb, 8 bytes
 protected:

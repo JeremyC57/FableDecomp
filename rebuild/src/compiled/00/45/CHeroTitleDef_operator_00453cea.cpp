@@ -11,11 +11,9 @@
 // Shape: the compiler-generated assignment written out in declaration order; float members copy through eax as integer moves.
 #pragma optimize("s", on)
 enum EHeroTitle { };                                        // enumerators not needed
-class CDefClassBase {                                         // 37 bytes in retail
-public:
-    unsigned char _body[0x25];
-    CDefClassBase& operator=(const CDefClassBase& other);        // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x0123234C: slot 0 0x0044FA19 (implicit inline dtor); real overrides from the def vtable scan
 class CHeroTitleDef : public CDefClassBase {                       // vtable 0x0123234C
 public:
     EHeroTitle Title;                                  // +0x28
@@ -30,6 +28,9 @@ public:
     bool IsBuyable;                                    // +0x4C
     bool IsAutomatic;                                  // +0x4D
     CHeroTitleDef& operator=(const CHeroTitleDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00452884
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00453CE5
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C3A6
 };
 
 CHeroTitleDef& CHeroTitleDef::operator=(const CHeroTitleDef& other)

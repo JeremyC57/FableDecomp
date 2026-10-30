@@ -74,11 +74,7 @@ public:
     unsigned char Type;                                  // +0x0D (EEngineGraphicType)
 };
 #pragma pack(pop)
-class CBaseClass {                                       // RTTI root, vtable 0x01231710
-public:
-    CBaseClass();                                        // 0x0099A2F0
-    virtual ~CBaseClass();                               // 0x0099A300
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CInitBaseClass : public CBaseClass {               // Ego_r.pdb 8 bytes, vtable 0x0129A7CC
 public:
     CInitBaseClass();

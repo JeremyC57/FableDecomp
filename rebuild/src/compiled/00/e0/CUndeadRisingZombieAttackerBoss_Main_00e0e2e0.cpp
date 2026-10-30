@@ -121,11 +121,11 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v449(); virtual void v450();
  virtual void GiveThingBestEnemyTarget(CScriptThing const &, CScriptThing const &) const; //slot451 0x008a0260
 };
-class CSpawnedFuncBase { public:                               // 0x34 bytes
-    virtual ~CSpawnedFuncBase();
-    unsigned char _body[0x30];
-    CSpawnedFuncBase(const CCharString& name, unsigned long id);   // 0x00CDD450
-};
+// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
+//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
+//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 struct CQ_UndeadRisingScript {
     unsigned char _pad00[0x51];
     bool          BossCutscenePlayed;                   // +0x51

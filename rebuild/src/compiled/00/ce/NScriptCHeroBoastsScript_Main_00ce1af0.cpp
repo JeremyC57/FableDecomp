@@ -50,15 +50,11 @@ class CGameScriptInterface { public:
     virtual void v032(); virtual void v033();
     virtual void MsgOnBoastsMade(BoastVector& boasts) const;             // slot 34 (+0x88)
 };
-class CSpawnedFuncBase { public:                               // retail 0x34 bytes
-    virtual ~CSpawnedFuncBase();
-    virtual void RunSuspendableProcess();
-    virtual void SuspendSuspendableProcess(bool suspend);
-    virtual void Restart();
-    virtual void SuspendableProcess() = 0;
-    unsigned char _body[0x30];                          // +0x04 .. +0x34
-    CSpawnedFuncBase(const CCharString& name, unsigned long id);   // 0x00CDD450
-};
+// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
+//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
+//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 template <class T, class A1, class A2> struct CSpawnedFunc2 : CSpawnedFuncBase {   // vtable 0x012C36B8
     void (T::*Func)(A1, A2);                            // +0x34
     T* PClass;                                          // +0x38

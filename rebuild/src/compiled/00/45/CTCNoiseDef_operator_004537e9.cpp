@@ -11,21 +11,19 @@
 //   CSubDefClassBase::operator=.
 // Shape: implicit operator= copies each scalar member with integer moves (no x87 for the float); `return *this` in eax.
 #pragma optimize("s", on)
-class CDefClassBase {                                      // retail 0x25 bytes (+ tail padding)
-public:
-    virtual ~CDefClassBase();
-    CDefClassBase& operator=(const CDefClassBase& other);  // 0x00431F10
-    unsigned char _body[0x25 - 4];
-};
-class CSubDefClassBase : public CDefClassBase {           // no members: its implicit operator= inlines to the base call
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+#include "engine/CSubDefClassBase.h"                    // vtable 0x01231D54
 enum ENoiseType { };
+// def vtable 0x01231E9C: slot 0 0x0044F71B (implicit inline dtor); real overrides from the def vtable scan
 class CTCNoiseDef : public CSubDefClassBase {
 public:
     virtual void Copy(const CDefClassBase* other);
     ENoiseType Type;                         // +0x28
     float LifeTime;                          // +0x2c
     float DistanceCanBeHeardFrom;            // +0x30
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00452184
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C1CD
 };
 void CTCNoiseDef::Copy(const CDefClassBase* other)
 {

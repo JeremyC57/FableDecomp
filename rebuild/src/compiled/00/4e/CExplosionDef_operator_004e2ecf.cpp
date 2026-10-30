@@ -10,15 +10,14 @@
 // RumbleStrength/RumbleLength are the 4-byte EQuakeStrength/EQuakeLength enums (long).
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 struct CExplosionRingVector {                       // retail std::vector<CExplosionRing> (retail 0xc bytes)
     unsigned long m_words[3];
     CExplosionRingVector& operator=(const CExplosionRingVector& other);   // 0x004E2F56
 };
 
+// def vtable 0x012425F4: slot 0 0x004E30AC (implicit inline dtor); real overrides from the def vtable scan
 class CExplosionDef : public CDefClassBase { public:
     float                    Damage;                      // +0x28
     float                    ExplosionRadius;             // +0x2c
@@ -39,6 +38,9 @@ class CExplosionDef : public CDefClassBase { public:
     long                     RumbleStrength;              // +0x68
     long                     RumbleLength;                // +0x6c
     CExplosionDef& operator=(const CExplosionDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004EB02F
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E2ECA
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004E135E
 };
 
 CExplosionDef& CExplosionDef::operator=(const CExplosionDef& other)

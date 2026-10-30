@@ -41,10 +41,7 @@ template <class T> class CCountedPointer { public:
     }
 };
 
-class CBaseClass { public:                                      // polymorphic root of the script handles
-    CBaseClass();                                        // 0x0099A2D0
-    virtual ~CBaseClass();                               // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C; PImp is the game-side thing
     CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
     ~CScriptThing() {}                                   // out of line 0x004AA840
@@ -95,15 +92,11 @@ class CGameScriptInterface { public:   // retail vtable 0x01260F0C (ghidra_out/c
     virtual void v317(); virtual void v318(); virtual void v319(); virtual void v320();
     virtual void DisplayQuestInfo(bool show) const;   // slot 321 (+0x504)
 };
-class CSpawnedFuncBase { public:                                // retail 0x34 bytes
-    virtual ~CSpawnedFuncBase();
-    virtual void RunSuspendableProcess();
-    virtual void SuspendSuspendableProcess(bool suspend);
-    virtual void Restart();
-    virtual void SuspendableProcess() = 0;
-    unsigned char _body[0x30];                           // +0x04 .. +0x34
-    CSpawnedFuncBase(const CCharString& name, unsigned long id);   // 0x00CDD450
-};
+// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
+//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
+//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 template <class T> struct CSpawnedFunc : CSpawnedFuncBase {
     void (T::*Func)();                                   // +0x34
     T* PClass;                                           // +0x38

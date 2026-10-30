@@ -17,10 +17,8 @@
 // natural layout lands every member on the retail offset with no #pragma pack.
 #pragma optimize("s", on)   // the def module is size-optimised
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 class CEngineGraphic { public:                 // 14 packed bytes: BankIndex +0, AnimStep +4, RenderSizeX +8, AdditiveAlpha +12, Type +13
     unsigned char _bytes[14];
@@ -32,6 +30,7 @@ enum EInventoryObjectOrientation { INVENTORY_OBJECT_ORIENTATION_FORCE_DWORD = 0x
 enum ETutorialCategory { TUTORIAL_CATEGORY_FORCE_DWORD = 0x7fffffff };
 enum EUIInventoryCategory { UI_INVENTORY_CATEGORY_FORCE_DWORD = 0x7fffffff };
 
+// def vtable 0x01231DBC: slot 0 0x0044F65A (implicit inline dtor); real overrides from the def vtable scan
 class CInventoryItemDef : public CDefClassBase {                   // vtable 0x01231DBC
 public:
     CEngineGraphic              Graphic;                            // +0x25
@@ -56,6 +55,9 @@ public:
     EUIInventoryCategory        UIInventoryCategory;                // +0x6c
 
     CInventoryItemDef& operator=(const CInventoryItemDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00451D28
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00453705
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C12F
 };
 
 CInventoryItemDef& CInventoryItemDef::operator=(const CInventoryItemDef& other)

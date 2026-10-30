@@ -18,11 +18,9 @@ public:
     _Tp* _M_end_of_storage;
 };
 }
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x01241704: slot 0 0x004E0B61 (implicit inline dtor); real overrides from the def vtable scan
 class CCreatureModeDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
@@ -30,6 +28,8 @@ public:
     long                      InitialCreatureMode;               // +0x2c
     long                      DefaultWeaponCreatureMode;         // +0x30
     std::vector<long>         AvailableIdleModes;                // +0x34
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E7EA7
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004DE7F9
 };
 void CCreatureModeDef::Copy(const CDefClassBase* other)
 {

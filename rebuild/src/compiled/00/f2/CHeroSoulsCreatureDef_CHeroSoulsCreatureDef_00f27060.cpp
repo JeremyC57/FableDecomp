@@ -8,8 +8,7 @@
 //   (CCharString), NumCreatures +48 (long). Its default constructor is the landed 0x00F27650 (catalog "CFireheartMinigameDef").
 // Callees: CDefClassBase::CDefClassBase(const CDefClassBase&) @ 0x0046644C, CCharString::CCharString(const CCharString&)
 //   @ 0x0099EC30 (twice).
-// Model: engine/CDefClassBase.h flattens CResource and the flag bits and has no member functions, so the base is modelled
-//   locally (vptr + 0x24 bytes, with its out-of-line copy constructor and assignment); no CHeroSoulsCreatureDef header.
+// Model: the shared FABLE_RETAIL_DEF_CLASS_BASE CDefClassBase (0x28 bytes, vtable 0x01230BCC); no CHeroSoulsCreatureDef header.
 // Shape: the memberwise copy constructor; VC7.1 forms the first member's argument and `this` before the vtable store.
 class CCharString {
 public:
@@ -20,21 +19,18 @@ public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
-class CDefClassBase {
-public:
-    virtual ~CDefClassBase();
-    unsigned char _body[0x24];                          // +0x04 CResource body, PDefManager, GlobalIndex, flag bits
-    CDefClassBase();
-    CDefClassBase(const CDefClassBase& other);          // 0x0046644C
-    CDefClassBase& operator=(const CDefClassBase& other); // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                      // copy ctor 0x0046644C, operator= 0x00431F10
 
-class CHeroSoulsCreatureDef : public CDefClassBase {    // vtable 0x012FB500
+class CHeroSoulsCreatureDef : public CDefClassBase {    // vtable 0x012FB500 (no RTTI); slot 0 0x00F270B0
 public:
     CCharString CreatureType;                           // +0x28
     CCharString Location;                               // +0x2C
     long        NumCreatures;                           // +0x30
     CHeroSoulsCreatureDef(const CHeroSoulsCreatureDef& other);
+    virtual void Transfer(CPersistContext&);            // slot 18 0x00F27100
+    virtual void Copy(const CDefClassBase*);            // slot 19 0x00F27180
+    virtual unsigned long GetSizeofClass();             // slot 20 0x00F270A0
 };
 
 CHeroSoulsCreatureDef::CHeroSoulsCreatureDef(const CHeroSoulsCreatureDef& other)

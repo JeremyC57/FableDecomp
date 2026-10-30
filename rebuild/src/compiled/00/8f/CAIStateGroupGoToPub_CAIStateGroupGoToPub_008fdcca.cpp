@@ -9,11 +9,7 @@
 // Shape: no vtable store -- VC7.1 resets the vptr only in user-written destructors (agent952's finding, 0x006DF8C0); the class-typed
 //   members are destroyed in reverse declaration order, then the base destructor CAIStateGroupBase::~CAIStateGroupBase (a tail `jmp`). KillOne's explicit destructor call is a modelling
 //   device: it makes VC7.1 emit the implicit destructor, which it keeps out of line.
-class CBaseClass {                                       // RTTI root, vtable 0x01231710
-public:
-    CBaseClass();                                        // 0x0099A2F0
-    virtual ~CBaseClass();                               // 0x0099A300
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 #pragma pack(push, 1)
 class CBaseIntelligentPointer {                          // 8 bytes, 1-aligned in retail
 public:

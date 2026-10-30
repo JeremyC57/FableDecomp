@@ -38,11 +38,7 @@ public:
     CCharString ConvertToCharString() const;            // 0x0099B2C0
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                            // 0x0099A2D0
-    virtual ~CBaseClass();                                   // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CStringParserCommentBoundaries;
 namespace std {

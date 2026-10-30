@@ -14,11 +14,7 @@ class CGameScriptThing { public:
     long DecrementScriptCounter();                 // 0x00A3E420
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                         // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct SListNode_00aac530 { SListNode_00aac530* m_pNext; SListNode_00aac530* m_pPrev; long m_a; long m_b; };   // 16 bytes
 

@@ -20,11 +20,7 @@
 #include <stddef.h>
 extern "C" int __cdecl _stricmp(const char* a, const char* b);   // 0x00BFEBA8
 
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 extern const char g_emptyLiteral_0129aaf4[];       // 0x0129AAF4: "" (the string library's shared empty literal; this TU's own "" is 0x0122D70E)
 class CCharStringData { public:
     char*         PData;                           // +0x0

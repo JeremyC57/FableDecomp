@@ -26,7 +26,7 @@ public:
     virtual void Transfer(CPersistContext&);            // slot 18 0x00D35070
     virtual void Copy(const CDefClassBase*);            // slot 19 0x00D34FB0
     virtual unsigned long GetSizeofClass();             // slot 20 0x00D34EF0
-    unsigned char PadActive[0x0c];                      // +0x28 vector<bool> PadActive (opaque here)
+    unsigned long PadActive[0x3];                       // +0x28 vector<bool> PadActive (opaque here; 4-aligned after the 0x25 packed base)
 };
 
 namespace std {

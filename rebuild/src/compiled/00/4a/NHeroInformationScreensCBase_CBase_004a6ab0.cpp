@@ -52,7 +52,7 @@ class CCPPointerInfo { public:
     void (__fastcall *DeleteFunc)(void*);
     void* Data;
 };
-class CBaseClass { public: CBaseClass(); virtual ~CBaseClass(); };
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CBaseClassNonCopyable : CBaseClass {
 protected:
     CBaseClassNonCopyable();

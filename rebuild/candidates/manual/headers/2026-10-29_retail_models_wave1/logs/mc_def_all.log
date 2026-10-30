@@ -1,0 +1,214 @@
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+00432c40	SAME	27b RELOCATION_MATCH->RELOCATION_MATCH
+004536ae	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+0045370a	SAME	150b RELOCATION_MATCH->RELOCATION_MATCH
+004537a5	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+004537e9	SAME	39b RELOCATION_MATCH->RELOCATION_MATCH
+00453815	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+00453842	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+0045389e	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+00453aae	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+00453ac7	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+00453be8	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+00453c20	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+00453c58	SAME	141b RELOCATION_MATCH->RELOCATION_MATCH
+00453cea	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+00453d46	SAME	129b RELOCATION_MATCH->RELOCATION_MATCH
+00453dc7	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+00453ed2	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+00453f63	SAME	43b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+00453f93	SAME	49b RELOCATION_MATCH->RELOCATION_MATCH
+00453fc9	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+0045403d	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00454088	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+004540d3	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+004540f1	SAME	141b RELOCATION_MATCH->RELOCATION_MATCH
+00454183	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+004541df	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+00454248	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+0045426c	SAME	99b RELOCATION_MATCH->RELOCATION_MATCH
+004542d4	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+00454434	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+00454993	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+00454ab2	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+00456244	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+0045cc04	SAME	117b RELOCATION_MATCH->RELOCATION_MATCH
+0045d729	SAME	213b RELOCATION_MATCH->RELOCATION_MATCH
+00461b98	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+00461d0d	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+00461d2c	SRC_FAIL	|         'void CDefClassBase::Copy(const CDefClassBase *)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\repo\rebuild\include\engine\CDefClassBase.h(64) : see declaration of 'CDefClassBase::Copy' |         'unsigned long CDefClassBase::GetSizeofClass(void)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\repo\rebuild\include\engine\CDefClassBase.h(65) : see declaration of 'CDefClassBase::GetSizeofClass' | 
+00463ba2	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+00463bdb	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+004663ae	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+004717c7	SAME	107b RELOCATION_MATCH->RELOCATION_MATCH
+004dfeb8	SAME	76b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004dffa5	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+004dffc3	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+004dfff6	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004e001a	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+004e01c0	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+004e01de	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+004e0222	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+004e027e	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH
+004e02f2	DIFFER	63v63 grades=False sym=??4CSpotLightDef@@QAEAAV0@ABV0@@Z
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+004e03d4	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+004e0474	SAME	159b RELOCATION_MATCH->RELOCATION_MATCH
+004e0569	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004e05ad	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+004e05df	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004e066c	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004e069f	SAME	36b RELOCATION_MATCH->RELOCATION_MATCH
+004e070c	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+004e0750	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+004e0a6c	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+004e0d33	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+004e0e28	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+004e0e98	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004e0f34	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+004e0f52	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+004e10a8	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+004e10c6	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+004e1132	SAME	99b RELOCATION_MATCH->RELOCATION_MATCH
+004e1225	SRC_FAIL	new.cpp | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\004e1225\new.cpp(16) : error C2535: 'void CDecapitationDef::Copy(const CDefClassBase *)' : member function already defined or declared |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\004e1225\new.cpp(14) : see declaration of 'CDecapitationDef::Copy' | 
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004e12b8	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+004e1367	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004e1394	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+004e1494	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+004e15a0	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+004e176e	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+004e17d2	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+004e187e	SAME	25b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004e189c	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+004e1918	SAME	93b RELOCATION_MATCH->RELOCATION_MATCH
+004e197a	SAME	99b RELOCATION_MATCH->RELOCATION_MATCH
+004e19e2	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004e1a26	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+004e1ddc	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+004e1e06	SAME	537b RELOCATION_MATCH->RELOCATION_MATCH
+004e2391	SAME	81b RELOCATION_MATCH->RELOCATION_MATCH
+004e2447	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+004e249b	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+004e28b6	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+004e2968	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+004e299b	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+004e2c08	SAME	69b RELOCATION_MATCH->RELOCATION_MATCH
+004e2c52	SAME	141b RELOCATION_MATCH->RELOCATION_MATCH
+004e2ce4	SAME	87b RELOCATION_MATCH->RELOCATION_MATCH
+004e2e0d	SAME	189b RELOCATION_MATCH->RELOCATION_MATCH
+004e2ecf	SAME	135b RELOCATION_MATCH->RELOCATION_MATCH
+004e316d	SAME	141b RELOCATION_MATCH->RELOCATION_MATCH
+004e4299	SAME	141b RELOCATION_MATCH->RELOCATION_MATCH
+004e4450	SAME	39b RELOCATION_MATCH->RELOCATION_MATCH
+004e493e	SAME	429b RELOCATION_MATCH->RELOCATION_MATCH
+004e4d88	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+004e54ad	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+004e5839	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+004e5c89	SAME	105b RELOCATION_MATCH->RELOCATION_MATCH
+004e5f51	DIFFER	31v31 grades=False sym=?CReplaceableMeshDef_Copy@@YIXPAVCReplaceableMeshDef@@PAXPBVCDefClassBase@@@Z
+004e64f3	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in old.obj; graded the largest function
+004e6f0b	SRC_FAIL	ndefined class 'CVectorMap' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\004e6f0b\new.cpp(50) : error C2955: 'CVectorMap' : use of class template requires template argument list |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\004e6f0b\new.cpp(40) : see declaration of 'CVectorMap' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\004e6f0b\new.cpp(50) : error C2079: 'CParticleMorphs::Morphs' uses undefined class 'CVectorMap' | 
+004e9813	SAME	411b RELOCATION_MATCH->RELOCATION_MATCH
+004ea6dd	SAME	1011b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '??4_unattributed@' matches no symbol in new.obj; graded the largest function
+004eac9c	SAME	31b RELOCATION_MATCH->RELOCATION_MATCH
+004eb831	SAME	51b RELOCATION_MATCH->RELOCATION_MATCH
+004ebc16	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+004ec174	SAME	165b RELOCATION_MATCH->RELOCATION_MATCH
+004f914a	SAME	189b RELOCATION_MATCH->RELOCATION_MATCH
+00675c00	SRC_FAIL	C2628: 'CVectorMap<K,V,C>' followed by 'long' is illegal (did you forget a ';'?) |         with |         [ |             K=unsigned long, |             V=CDefClassBase::CSubDefInfo, |             C=CKeyPairCompareLess |         ] | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\repo\rebuild\include\engine\CDefClassBase.h(69) : error C2059: syntax error : ',' | Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\repo\rebuild\include\engine\CDefClassBase.h(70) : error C2238: unexpected token(s) preceding ';' | 
+0067c490	SAME	63b RELOCATION_MATCH->RELOCATION_MATCH
+0067c980	RELOC_RENAMED	leafsym ?Copy@CBlurredAttitudesDef@@QAEXPBVCDefClassBase@@@Z -> ?Copy@CBlurredAttitudesDef@@UAEXPBVCDefClassBase@@@Z
+00d34d40	NOCHANGE	
+00d34fd0	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+00d35070	SAME	21b RELOCATION_MATCH->RELOCATION_MATCH
+00e54aa0	NOCHANGE	
+00e54c50	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH
+00f1a8f0	SAME	147b RELOCATION_MATCH->RELOCATION_MATCH
+00f25980	SAME	317b RELOCATION_MATCH->RELOCATION_MATCH
+00f25b00	SAME	43b RELOCATION_MATCH->RELOCATION_MATCH
+00f25bb0	SRC_FAIL	        ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\00f25bb0\new.cpp(67) : while compiling class-template member function 'std::vector<_Tp>::vector(const std::vector<_Tp> &)' |         with |         [ |             _Tp=CArenaWaveDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\00f25bb0\new.cpp(85) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CArenaWaveDef |         ] | 
+00f25d20	SRC_FAIL	] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\00f25d20\new.cpp(67) : while compiling class-template member function 'std::vector<_Tp>::vector(const std::vector<_Tp> &)' |         with |         [ |             _Tp=CArenaCreatureDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\00f25d20\new.cpp(85) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CArenaCreatureDef |         ] | 
+00f25e70	NOCHANGE	
+00f25f10	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+00f25f60	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00f25f90	SAME	383b RELOCATION_MATCH->RELOCATION_MATCH
+00f261f0	SAME	86b RELOCATION_MATCH->RELOCATION_MATCH
+00f26420	SAME	24b MATCH->MATCH
+00f26440	SAME	38b MATCH->MATCH
+00f26470	SAME	28b MATCH->MATCH
+00f268c0	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00f268f0	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+00f26920	SAME	383b RELOCATION_MATCH->RELOCATION_MATCH
+00f26b90	SAME	149b RELOCATION_MATCH->RELOCATION_MATCH
+00f26c30	SAME	317b RELOCATION_MATCH->RELOCATION_MATCH
+00f26db0	SAME	43b RELOCATION_MATCH->RELOCATION_MATCH
+00f26f00	SAME	43b RELOCATION_MATCH->RELOCATION_MATCH
+00f26fb0	SRC_FAIL	    Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\00f26fb0\new.cpp(67) : while compiling class-template member function 'std::vector<_Tp>::vector(const std::vector<_Tp> &)' |         with |         [ |             _Tp=CHeroSoulsCreatureDef |         ] |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\work\mc\00f26fb0\new.cpp(84) : see reference to class template instantiation 'std::vector<_Tp>' being compiled |         with |         [ |             _Tp=CHeroSoulsCreatureDef |         ] | 
+00f27060	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH
+00f271d0	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+00f27200	NOCHANGE	
+00f27490	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00f276a0	SAME	24b MATCH->MATCH
+00f276c0	SAME	38b MATCH->MATCH
+00f276f0	SAME	28b MATCH->MATCH
+00f27780	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH
+00f27a10	SAME	325b RELOCATION_MATCH->RELOCATION_MATCH
+00f27b60	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00f27b90	SAME	37b RELOCATION_MATCH->RELOCATION_MATCH
+00f27e60	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00f285d0	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00f28ba0	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00f28bd0	SAME	340b RELOCATION_MATCH->RELOCATION_MATCH
+00f28d30	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+00f29f40	SRC_FAIL	|         'void CDefClassBase::Copy(const CDefClassBase *)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\repo\rebuild\include\engine\CDefClassBase.h(64) : see declaration of 'CDefClassBase::Copy' |         'unsigned long CDefClassBase::GetSizeofClass(void)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\repo\rebuild\include\engine\CDefClassBase.h(65) : see declaration of 'CDefClassBase::GetSizeofClass' | 
+00f2a0d0	SRC_FAIL	|         'void CDefClassBase::Copy(const CDefClassBase *)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\repo\rebuild\include\engine\CDefClassBase.h(64) : see declaration of 'CDefClassBase::Copy' |         'unsigned long CDefClassBase::GetSizeofClass(void)' : pure virtual function was not defined |         Z:\tmp\claude-0\-home-user-FableDecomp\a013f3ec-d440-5b47-87a1-ed975cb80dfb\scratchpad\mig1\repo\rebuild\include\engine\CDefClassBase.h(65) : see declaration of 'CDefClassBase::GetSizeofClass' | 
+00f2d010	NOCHANGE	
+00f2d200	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH
+00f2d330	NOCHANGE	
+00f33810	NOCHANGE	
+00f33b60	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00f33ea0	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+00f34110	SAME	74b RELOCATION_MATCH->RELOCATION_MATCH
+00f34510	SAME	24b MATCH->MATCH
+00f34530	SAME	38b MATCH->MATCH
+00f34560	SAME	28b MATCH->MATCH
+00f345f0	DIFFER	109v109 grades=False sym=?erase@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@QAEPAVCFeatDef@@PAV3@0@Z
+00f34860	SAME	325b RELOCATION_MATCH->RELOCATION_MATCH
+00f34d70	RELOC_RENAMED	RELOCATION_MATCH ; 1d0:??_7CDefClassBase@@6B@->??_7CDefPointeeBase@@6B@
+00f34f80	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00f34fb0	SAME	340b RELOCATION_MATCH->RELOCATION_MATCH
+00f35110	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH
+00f35570	RELOC_RENAMED	RELOCATION_MATCH ; 1d0:??_7CDefClassBase@@6B@->??_7CDefPointeeBase@@6B@
+00f35780	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH
+00f357b0	SAME	340b RELOCATION_MATCH->RELOCATION_MATCH
+00f35910	SAME	92b RELOCATION_MATCH->RELOCATION_MATCH

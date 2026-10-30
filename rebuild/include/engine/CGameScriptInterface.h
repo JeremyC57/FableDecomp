@@ -6,6 +6,972 @@
 // Retail evidence: 23 trusted landed function(s); reconciliation 11 conflict(s) in 8 file(s) vs 8 agreeing; PINNED by 116 retyped file(s) despite conflicts.
 // Members are original Lionhead names; `_pad_*` are unnamed bytes; opaque
 // `unsigned char X[N]` members carry their real (composite/template) type in a comment.
+// Retail opt-in (FABLE_RETAIL_NSCRIPT): retail model (hand-written 2026-10-29, wave 1 class-model migration,
+// scripts/gen_cgsi_derived.py). RTTI .?AVCGameScriptInterface@@ : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass
+// (ghidra_out/rtti_bases.tsv); vtable 0x01260F0C = 918 slots: 0 vector deleting dtor 0x006E7D50, 1..916 the overrides of the
+// base's pure slots (same order and names, ghidra_out/cgsi_slots_aligned.tsv), 917 SetTrapAsActive 0x00895130 (FableWin.pdb
+// ?SetTrapAsActive@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z). Ctor 0x006E7740 (Ego_r.pdb mangled ctor bound in
+// rebuild/oracles/reloc_bindings.tsv); the ~CGameScriptInterface body address is not proven (only the deleting dtor is).
+// Size 0x50: members are the generated #else model's (Ego_r names, retail STLport sizes); HeroSThing / ScriptTimers stay
+// opaque (CScriptThing needs the includer's CCountedPointer; std::map<long,long> is STLport 0xc). Slot 308's nested-enum
+// stand-in is inherited from CGameScriptInterfaceBase.h. Non-virtual members of the PDB class are not declared here yet.
+#ifdef FABLE_RETAIL_NSCRIPT
+#include <stddef.h>
+#include "rebuild_abi.h"
+#include "engine/CGameScriptInterfaceBase.h"
+class CDisplayEngine;
+class CGameDefinitionManager;
+class CMainGameComponent;
+class CPlayerManager;
+class CThingSearchTools;
+class CWorld;
+
+class CGameScriptInterface : public CGameScriptInterfaceBase {
+public:
+    CGameScriptInterface(CMainGameComponent&, const CGameDefinitionManager&, CWorld&, CPlayerManager&, CDisplayEngine&); // 0x006E7740
+    virtual ~CGameScriptInterface();                                     // slot 0  0x006E7D50 (vector deleting)
+public:
+    virtual void Error(const CCharString&, const CCharString&, const CCharString&, unsigned long) const; //   1 0x0088DE00
+    virtual void TraceMessage(const CCharString&) const;                                                 //   2 0x006E7D20
+    virtual void Validate() const;                                                                       //   3 0x006E72A0
+    virtual void SetDebugCameraType(long) const;                                                         //   4 0x0088E0F0
+    virtual void DeactivateBoastUi() const;                                                              //   5 0x008A0C60
+    virtual bool IsXbox() const;                                                                         //   6 0x0088E100
+    virtual void NewScriptFrame() const;                                                                 //   7 0x006E7410
+    virtual bool StartScriptingEntity(const CScriptThing&, CScriptGameResourceObjectScriptedThingBase&, EScriptAIPriority); //   8 0x0089B5B0
+    virtual bool IsEntityUnderScriptedControl(const CScriptThing&) const;                                //   9 0x008960C0
+    virtual bool IsActiveThreadTerminating() const;                                                      //  10 0x006E71B0
+    virtual bool IsLevelLoaded(const CCharString&) const;                                                //  11 0x0088E2A0
+    virtual bool IsRegionLoaded(const CCharString&) const;                                               //  12 0x0088E300
+    virtual bool IsRegionLoadedAndPreloaded(const CCharString&) const;                                   //  13 0x00890550
+    virtual bool IsRegionDefLoaded(const CCharString&) const;                                            //  14 0x00891DB0
+    virtual const CCharString& GetRegionName() const;                                                    //  15 0x0088E340
+    virtual bool MsgIsLevelLoaded(const CCharString&) const;                                             //  16 0x008931B0
+    virtual bool MsgIsLevelUnloaded(const CCharString&) const;                                           //  17 0x00893240
+    virtual bool MsgOnLevelLoaded(std::list<CCharString,std::allocator<CCharString> >&) const;           //  18 0x0089AC10
+    virtual bool MsgOnLevelUnloaded(std::list<CCharString,std::allocator<CCharString> >&) const;         //  19 0x0089AC80
+    virtual bool MsgIsRegionLoaded(const CCharString&) const;                                            //  20 0x008932D0
+    virtual bool MsgIsRegionUnloaded(const CCharString&) const;                                          //  21 0x00893360
+    virtual bool MsgOnRegionLoaded(CCharString&) const;                                                  //  22 0x008933F0
+    virtual bool MsgOnRegionUnloaded(CCharString&) const;                                                //  23 0x00893470
+    virtual bool MsgOnRegionPreunload(CCharString&) const;                                               //  24 0x008934F0
+    virtual bool MsgOnQuestCompleted(const CCharString&) const;                                          //  25 0x00893570
+    virtual bool MsgOnAnyQuestCompleted(CCharString&) const;                                             //  26 0x00893610
+    virtual bool MsgOnQuestFailed(const CCharString&) const;                                             //  27 0x00893690
+    virtual bool MsgOnQuestCompletedBeforeScreenShown(const CCharString&) const;                         //  28 0x00893730
+    virtual bool MsgOnQuestFailedBeforeScreenShown(const CCharString&) const;                            //  29 0x008937D0
+    virtual bool MsgOnQuestAccepted(CCharString&) const;                                                 //  30 0x00893870
+    virtual bool MsgOnFeatAccepted(long&) const;                                                         //  31 0x008938F0
+    virtual bool MsgIsBoastMade(long) const;                                                             //  32 0x00893960
+    virtual bool MsgOnBoastMade(long&, CCharString&) const;                                              //  33 0x008939D0
+    virtual bool MsgOnBoastsMade(std::vector<std::pair<long,CCharString>,std::allocator<std::pair<long,CCharString> > >&) const; //  34 0x008A9AE0
+    virtual void RemoveBoastMessage() const;                                                             //  35 0x00893A50
+    virtual bool IsQuestStartScreenActive(CCharString&) const;                                           //  36 0x0089AD90
+    virtual bool MsgOnLeavingQuestStartScreen(CCharString&) const;                                       //  37 0x0089AE30
+    virtual bool MsgOnLeavingExperienceSpendingScreen() const;                                           //  38 0x00893AB0
+    virtual long MsgIsQuestionAnsweredYesOrNo() const;                                                   //  39 0x00894300
+    virtual bool MsgIsGameInfoClickedPast() const;                                                       //  40 0x00894370
+    virtual bool MsgIsTutorialClickedPast() const;                                                       //  41 0x008943C0
+    virtual bool MsgIsActionModeButtonPressed() const;                                                   //  42 0x00894440
+    virtual bool MsgOnExpressionPerformed(CCharString&) const;                                           //  43 0x00893B00
+    virtual bool MsgIsCutSceneSkipped() const;                                                           //  44 0x00893BA0
+    virtual void RemoveAllCutSceneSkippedMessages() const;                                               //  45 0x0089AF30
+    virtual bool MsgOnHeroHairTypeChanged(EClothingCoversArea, CCharString&) const;                      //  46 0x00893C00
+    virtual bool MsgOnHeroUsedTeleporter(CCharString&) const;                                            //  47 0x00893D80
+    virtual bool MsgOnHeroUsedGuildSeal() const;                                                         //  48 0x00893E20
+    virtual bool MsgOnGameSavedManually() const;                                                         //  49 0x00893E70
+    virtual bool MsgOnHeroSlept(bool&) const;                                                            //  50 0x00893EC0
+    virtual bool MsgOnHeroFiredRangedWeapon() const;                                                     //  51 0x00893F30
+    virtual bool MsgOnHeroCastSpell(EHeroAbility&) const;                                                //  52 0x00893F80
+    virtual bool MsgOnHeroPickedPocket(CScriptThing&) const;                                             //  53 0x00893FF0
+    virtual bool MsgOnHeroPickedLock(CScriptThing&) const;                                               //  54 0x00894080
+    virtual bool MsgOnFishingGameFinished(CScriptThing&) const;                                          //  55 0x00894110
+    virtual bool MsgOnTavernGameFinished(const CScriptThing&) const;                                     //  56 0x008941A0
+    virtual bool MsgOnHeroRewardedWithItemsFrom(CCharString&) const;                                     //  57 0x00894250
+    virtual bool MsgOnChestOpeningCancelled() const;                                                     //  58 0x008942C0
+    virtual void DontPopulateNextLoadedRegion() const;                                                   //  59 0x0088E380
+    virtual void GetWanderingPopulationScriptDefNameInCurrentRegion(CCharString&) const;                 //  60 0x0088E390
+    virtual void GetWanderingPopulationScriptDefNameInRegion(const CCharString&, CCharString&) const;    //  61 0x00891E30
+    virtual bool IsHeroAllowedHenchmenInCurrentRegion() const;                                           //  62 0x00891EA0
+    virtual bool IsHeroAllowedHenchmenInRegion(const CCharString&) const;                                //  63 0x00891EF0
+    virtual void PostAddScriptedEntities() const;                                                        //  64 0x006E7460
+    virtual bool IsPlayerHoldingUnsheatheRangedWeaponButton() const;                                     //  65 0x008905B0
+    virtual bool IsPlayerHoldingLockTargetButton() const;                                                //  66 0x008905E0
+    virtual bool IsPlayerHoldingFireRangedWeaponButton() const;                                          //  67 0x00890610
+    virtual bool IsPlayerHoldingFirstPersonTargetingButton() const;                                      //  68 0x00890640
+    virtual bool IsHeroInProjectileWeaponMode() const;                                                   //  69 0x00890670
+    virtual CScriptThing& GetHero();                                                                     //  70 0x00891CA0
+    virtual CScriptThing GetHeroTargetedThing() const;                                                   //  71 0x0089A490
+    virtual CScriptThing GetThingWithScriptName(const CCharString&, const CCharString&) const;           //  73 0x008930F0
+    virtual CScriptThing GetThingWithScriptName(const CCharString&) const;                               //  72 0x008A7D60
+    virtual CScriptThing GetRandomThingWithScriptName(const CCharString&) const;                         //  74 0x008A7E00
+    virtual long GetAllThingsWithScriptName(const CCharString&, std::vector<CScriptThing,std::allocator<CScriptThing> >&) const; //  75 0x008A8570
+    virtual long GetAllCreaturesInAreaWithScriptName(const CCharString&, const C3DVector&, float, std::vector<CScriptThing,std::allocator<CScriptThing> >&) const; //  76 0x008A86C0
+    virtual CScriptThing GetNearestWithScriptName(const CScriptThing&, const CCharString&) const;        //  77 0x0089A510
+    virtual CScriptThing GetFurthestWithScriptName(const CScriptThing&, const CCharString&) const;       //  78 0x0089A6E0
+    virtual long GetAllThingsWithDefNameByDistanceFrom(const CScriptThing&, const CCharString&, std::vector<CScriptThing,std::allocator<CScriptThing> >&) const; //  79 0x008A9C40
+    virtual long GetAllThingsWithDefName(const CCharString&, std::vector<CScriptThing,std::allocator<CScriptThing> >&) const; //  80 0x008A8890
+    virtual CScriptThing GetNearestWithDefName(const CScriptThing&, const CCharString&) const;           //  81 0x0089A880
+    virtual CScriptThing GetFurthestWithDefName(const CScriptThing&, const CCharString&) const;          //  82 0x0089AA70
+    virtual CScriptThing GetThingWithUID(unsigned __int64) const;                                        //  83 0x00891D50
+    virtual long GetAllCreaturesExcludingHero(std::vector<CScriptThing,std::allocator<CScriptThing> >&) const; //  84 0x008A89D0
+    virtual long GetAllThingsInLevel(const CCharString&, std::vector<CScriptThing,std::allocator<CScriptThing> >&) const; //  85 0x008A8AF0
+    virtual bool IsThingWithThisUIDAlive(unsigned __int64) const;                                        //  86 0x0088E260
+    virtual long RegisterTimer();                                                                        //  87 0x006E79E0
+    virtual void DeregisterTimer(long);                                                                  //  88 0x006E7690
+    virtual void SetTimer(long, long);                                                                   //  89 0x006E76E0
+    virtual long GetTimer(long) const;                                                                   //  90 0x006E7710
+    virtual CScriptThing CreateCreature(const CCharString&, const C3DVector&, const CCharString&, bool) const; //  91 0x008A9100
+    virtual CScriptThing CreateCreatureNearby(const CCharString&, const C3DVector&, float, const CCharString&, bool) const; //  92 0x0089F300
+    virtual CScriptThing CreateCreatureOnEntity(const CCharString&, const CScriptThing&, const CCharString&) const; //  93 0x00894500
+    virtual CScriptThing TurnCreatureInto(const CScriptThing&, const CCharString&) const;                //  94 0x0089F4A0
+    virtual void SetCreatureCreationDelayFrames(long);                                                   //  95 0x006E7D30
+    virtual void ResetCreatureCreationDelayFrames();                                                     //  96 0x006E7D40
+    virtual CScriptThing CreateObject(const CCharString&, const C3DVector&, const CCharString&) const;   //  98 0x00894820
+    virtual CScriptThing CreateObject(const CCharString&, const C3DVector&, float, const CCharString&) const; //  97 0x00894950
+    virtual CScriptThing CreateObjectOnEntity(const CCharString&, const CScriptThing&, const CCharString&) const; //  99 0x008946E0
+    virtual CScriptThing CreateEffect(const CCharString&, const CScriptThing&, const CCharString&, const CCharString&, bool, bool) const; // 101 0x0089F910
+    virtual CScriptThing CreateEffect(const CCharString&, const C3DVector&, const CCharString&, float, bool, bool) const; // 100 0x0089F9E0
+    virtual CScriptThing CreateLight(const C3DVector&, const CRGBColour&, const CCharString&, float, float, bool) const; // 102 0x0089FAA0
+    virtual CScriptThing CreateExperienceOrb(const C3DVector&, long) const;                              // 103 0x0089FBB0
+    virtual CScriptThing CreateExplosion(const CCharString&, const C3DVector&, const C3DVector*, CCharString) const; // 104 0x0089FC80
+    virtual CScriptThing CreatePhysicalBarrier(float, const C3DVector&, const C3DVector*, CCharString) const; // 105 0x0089FD20
+    virtual CScriptThing CreateRumble(const C3DVector&, float, float, CCharString) const;                // 106 0x0089FDA0
+    virtual void ClearAllRumbles() const;                                                                // 107 0x00892DF0
+    virtual void RemoveThing(const CScriptThing&, bool, bool) const;                                     // 108 0x008910D0
+    virtual void ShowOnScreenMessage(const CCharString&, float) const;                                   // 111 0x00892780
+    virtual void ShowOnScreenMessage(const CCharString&, const CCharString&, const CCharString&, float) const; // 110 0x008927B0
+    virtual void ShowOnScreenMessage(const C2DVector&, const CCharString&, const CRGBColour&, const CCharString&) const; // 109 0x00892810
+    virtual void AddScreenMessage(const CCharString&, ETextGroupSelectionMethod) const;                  // 112 0x00892850
+    virtual void AddScreenTitleMessage(const CCharString&, float, bool) const;                           // 113 0x0089E4C0
+    virtual void GiveHeroYesNoQuestion(const CCharString&, const CCharString&, const CCharString&, const CCharString&, bool) const; // 114 0x0089E540
+    virtual void DisplayGameInfo(const CCharString&) const;                                              // 115 0x008929D0
+    virtual void DisplayGameInfoText(const CWideString&) const;                                          // 116 0x00892A80
+    virtual bool IsSafeToDisplayGameInfo() const;                                                        // 117 0x00892B30
+    virtual bool DisplayTutorial(ETutorialCategory) const;                                               // 118 0x0089E710
+    virtual bool IsTutorialSystemEnabled() const;                                                        // 119 0x0088F3E0
+    virtual void GiveHeroWeapon(const CCharString&, bool) const;                                         // 120 0x0088E130
+    virtual void GiveHeroObject(const CCharString&, long, bool) const;                                   // 121 0x008902E0
+    virtual void SetWeaponAsHerosActiveWeapon(const CCharString&) const;                                 // 122 0x00898B30
+    virtual void GiveHeroItem(const CScriptThing&) const;                                                // 123 0x00898BB0
+    virtual bool GiveHeroItemsFromContainer(const CScriptThing&, bool) const;                            // 124 0x00898C40
+    virtual void TakeObjectFromHero(const CCharString&) const;                                           // 125 0x00898DB0
+    virtual void GiveHeroGold(long) const;                                                               // 126 0x00898F40
+    virtual long GetHeroGold() const;                                                                    // 127 0x00898FA0
+    virtual void GiveHeroExperience(long) const;                                                         // 128 0x00899000
+    virtual void SetHeroAbleToGainExperience(bool) const;                                                // 129 0x00899060
+    virtual void SheatheHeroWeapons() const;                                                             // 130 0x008916A0
+    virtual void SetHeroWillAsUsable(bool) const;                                                        // 131 0x00898340
+    virtual void SetHeroWeaponsAsUsable(bool) const;                                                     // 132 0x00898410
+    virtual void SetWeaponOutCrimeEnabled(bool) const;                                                   // 133 0x008984E0
+    virtual void SetGuardsIgnoreCrimes(bool) const;                                                      // 134 0x00898540
+    virtual void RemoveAllHeroWeapons() const;                                                           // 135 0x00898600
+    virtual bool IsReportedOrUnreportedCrimeKnown(const CScriptThing&) const;                            // 136 0x008985A0
+    virtual void ConfiscateAllHeroItems() const;                                                         // 137 0x008986D0
+    virtual void ConfiscateAllHeroWeapons() const;                                                       // 138 0x008987E0
+    virtual void ConfiscateItemsOfTypeFromHero(const CCharString&) const;                                // 139 0x00898840
+    virtual void ReturnAllConfiscatedItemsToHero() const;                                                // 140 0x00898940
+    virtual bool GiveHeroTutorial(ETutorialCategory) const;                                              // 141 0x00898A50
+    virtual void MakeHeroCarryItemInHand(const CCharString&) const;                                      // 143 0x00897E10
+    virtual void MakeHeroCarryItemInHand(const CScriptThing&, bool, bool) const;                         // 142 0x00897FA0
+    virtual void AddTattooToHero(const CCharString&) const;                                              // 144 0x008981C0
+    virtual void GiveHeroAbility(EHeroAbility, bool) const;                                              // 145 0x0088FCC0
+    virtual bool IsPlayerZTargetingThing(const CScriptThing&) const;                                     // 146 0x00899B10
+    virtual bool IsPlayerCreatureBlocking() const;                                                       // 147 0x00899BA0
+    virtual bool IsPlayerCreatureReadyToFireProjectileWeapon(float&) const;                              // 148 0x00899C10
+    virtual long GetPlayerCreatureCombatMultiplier() const;                                              // 149 0x00899C90
+    virtual long GetPlayerCreatureCombatMultiplierRunningNumHits() const;                                // 150 0x00899CF0
+    virtual void ResetPlayerCreatureCombatMultiplier() const;                                            // 151 0x00899D50
+    virtual bool IsPlayerCreatureFlourishEnabled() const;                                                // 152 0x00899DB0
+    virtual void SetPlayerCreatureOnlyTarget(const CScriptThing&) const;                                 // 153 0x00899E10
+    virtual void ResetPlayerCreatureOnlyTarget() const;                                                  // 154 0x00899E90
+    virtual void RespawnHero(bool) const;                                                                // 155 0x0088E150
+    virtual void GiveHeroMorality(float) const;                                                          // 156 0x00899EF0
+    virtual float GetHeroMorality() const;                                                               // 157 0x00899F90
+    virtual EMorality GetHeroMoralityCategory() const;                                                   // 158 0x0089A000
+    virtual void ChangeHeroMoralityDueToTheft() const;                                                   // 159 0x0089A070
+    virtual void ChangeHeroMoralityDueToPicklock() const;                                                // 160 0x0089A0E0
+    virtual void GiveHeroRenownPoints(long) const;                                                       // 161 0x008990C0
+    virtual long GetHeroRenownLevel() const;                                                             // 162 0x00899140
+    virtual bool IsHeroRenownLevelFull() const;                                                          // 163 0x008991A0
+    virtual void IncreaseHeroRenownLevel() const;                                                        // 164 0x00899220
+    virtual long GetHeroStrengthLevel() const;                                                           // 165 0x00899390
+    virtual long GetHeroSkillLevel() const;                                                              // 166 0x00899400
+    virtual long GetHeroWillLevel() const;                                                               // 167 0x00899470
+    virtual long GetHeroStatLevel(EHeroTrainableStatType) const;                                         // 168 0x00899290
+    virtual long GetHeroStatMax(EHeroTrainableStatType) const;                                           // 169 0x00899310
+    virtual void SetHeroAge(float) const;                                                                // 170 0x008994E0
+    virtual float GetHeroAge() const;                                                                    // 171 0x00899560
+    virtual void SetHeroAsTeenager(bool) const;                                                          // 172 0x008995D0
+    virtual void SetHeroAsApprentice(bool) const;                                                        // 173 0x00899680
+    virtual float GetDistanceHeroCanBeHeardFrom() const;                                                 // 174 0x00899700
+    virtual long GetHeroRoughExperienceLevel() const;                                                    // 175 0x00899770
+    virtual long GetHeroExperienceAvailableToSpend() const;                                              // 176 0x008997E0
+    virtual float GetHeroFatness() const;                                                                // 177 0x00899850
+    virtual float GetHeroScariness() const;                                                              // 178 0x008998C0
+    virtual float GetHeroAttractiveness() const;                                                         // 179 0x00899930
+    virtual float GetHeroWillEnergyLevel() const;                                                        // 180 0x008999A0
+    virtual void SetHeroWillEnergyLevel(float) const;                                                    // 181 0x00899A10
+    virtual void SetHeroWillEnergyAsAbleToRefill(bool) const;                                            // 182 0x00899A90
+    virtual long GetNumberOfItemsOfTypeInInventory(const CCharString&) const;                            // 183 0x00897190
+    virtual bool IsObjectInThingsPossession(const CCharString&, const CScriptThing&) const;              // 184 0x00897220
+    virtual bool IsHeroHandLampLit() const;                                                              // 185 0x00898E60
+    virtual void SetHeroHandLampAsLit(bool) const;                                                       // 186 0x00898EC0
+    virtual bool IsWearingClothingItem(const CScriptThing&, const CCharString&) const;                   // 187 0x0089B2B0
+    virtual bool IsHeroNaked() const;                                                                    // 188 0x0089B330
+    virtual void RemoveHeroClothing() const;                                                             // 189 0x0089B390
+    virtual void SetHeroAsWearing(const CCharString&) const;                                             // 190 0x0089B3F0
+    virtual void ChangeHeroHairstyle(const CCharString&) const;                                          // 191 0x0089B450
+    virtual void RemoveHeroHairstyle() const;                                                            // 192 0x0089B4D0
+    virtual bool IsWearingHairstyle(CScriptThing&, const CCharString&) const;                            // 193 0x0089B530
+    virtual bool IsPlayerCarryingItemOfType(const CCharString&) const;                                   // 194 0x008973A0
+    virtual bool IsPlayerWieldingWeapon() const;                                                         // 195 0x00897480
+    virtual bool IsEntityWieldingWeapon(const CScriptThing&) const;                                      // 196 0x008974F0
+    virtual bool IsEntityWieldingMeleeWeapon(const CScriptThing&) const;                                 // 197 0x00890220
+    virtual bool IsEntityWieldingRangedWeapon(const CScriptThing&) const;                                // 198 0x00890250
+    virtual bool GetPreviouslyWieldedMeleeWeaponName(CCharString&) const;                                // 199 0x00897560
+    virtual bool GetPreviouslyWieldedRangedWeaponName(CCharString&) const;                               // 200 0x00897630
+    virtual bool IsEntityAbleToAttack(const CScriptThing&) const;                                        // 201 0x00890280
+    virtual CScriptThing EntityGetThingInPrimarySlot(const CScriptThing&) const;                         // 202 0x008976F0
+    virtual void ApplyHeroPenaltyForDeath() const;                                                       // 203 0x008977F0
+    virtual void GiveHeroTitle(const CCharString&) const;                                                // 204 0x0088E110
+    virtual EHeroTitle GetHeroTitle() const;                                                             // 205 0x00897880
+    virtual void EntitySetAsMarryable(const CScriptThing&, bool) const;                                  // 206 0x00894DD0
+    virtual void EntitySetAsAbleToRegionFollowWhenMarried(const CScriptThing&, bool) const;              // 207 0x008978E0
+    virtual void EntityForceMarriageToHero(const CScriptThing&, bool) const;                             // 208 0x00897940
+    virtual bool IsEntityMarriedToHero(const CScriptThing&) const;                                       // 209 0x008979C0
+    virtual bool IsEntityMarriable(const CScriptThing&) const;                                           // 210 0x00897A30
+    virtual bool GetHeroHasMarried() const;                                                              // 211 0x00897AA0
+    virtual bool GetHeroHasCurrentMarriage() const;                                                      // 212 0x00897B10
+    virtual bool GetHeroHasDivorcedMarriage() const;                                                     // 213 0x00897B70
+    virtual bool GetHeroHasChildren() const;                                                             // 214 0x00897BD0
+    virtual bool GetHeroHasMurderedWife() const;                                                         // 215 0x00897C30
+    virtual bool IsHeroChild() const;                                                                    // 216 0x008902B0
+    virtual void CancelHeroTeleportEffects() const;                                                      // 217 0x008A0820
+    virtual long GetNumberOfTimesHeroHasHadSex() const;                                                  // 218 0x00897C90
+    virtual void SetNumberOfTimesHeroHasHadSex(long) const;                                              // 219 0x00897CF0
+    virtual void SetHeroAsHavingHadSex(bool) const;                                                      // 220 0x00897D50
+    virtual void SetHeroAsHavingHadGaySex(bool) const;                                                   // 221 0x00897DB0
+    virtual void GiveThingHeroRewardItem(const CScriptThing&, const CCharString&, const CCharString&) const; // 222 0x00898AC0
+    virtual void GiveThingItemInHand(const CScriptThing&, const CCharString&, bool) const;               // 223 0x0088DE10
+    virtual void GiveThingItemInSlot(const CScriptThing&, const CCharString&, const CCharString&) const; // 224 0x00895190
+    virtual void GiveHeroExpression(const CCharString&, long, bool) const;                               // 225 0x0088FC60
+    virtual bool HeroHasExpression(const CCharString&) const;                                            // 226 0x0088FC90
+    virtual bool IsHeroPerformingExpression(const CCharString&) const;                                   // 227 0x008953A0
+    virtual bool IsDPadButtonHeldForExpression(const CCharString&) const;                                // 228 0x00895430
+    virtual void EntityFollowThing(const CScriptThing&, const CScriptThing&, float, bool) const;         // 229 0x008954A0
+    virtual void EntityStopFollowing(const CScriptThing&) const;                                         // 230 0x008A7980
+    virtual bool GetFollowingEntityList(const CScriptThing&, std::vector<CScriptThing,std::allocator<CScriptThing> >&) const; // 231 0x008A80F0
+    virtual bool GetHeroSummonedCreaturesList(std::vector<CScriptThing,std::allocator<CScriptThing> >&) const; // 232 0x008A8260
+    virtual bool GetPerceivingHeroEntityList(std::vector<CScriptThing,std::allocator<CScriptThing> >&) const; // 233 0x008A8440
+    virtual bool IsEntityFollowingHero(const CScriptThing&) const;                                       // 234 0x008955C0
+    virtual void EntitySetAsAllowedToFollowHero(const CScriptThing&, bool) const;                        // 235 0x0088DE90
+    virtual void EntitySetAsAllowedToChangeRegionFollowingState(const CScriptThing&, bool) const;        // 236 0x0088DED0
+    virtual void EntitySetAsRespondingToFollowAndWaitExpressions(const CScriptThing&, bool) const;       // 237 0x0088DF20
+    virtual void EntitySetAsMirroringHeroEnemyRelationsWhileFollowing(const CScriptThing&, bool) const;  // 238 0x00895650
+    virtual void TeleportAllFollowersToHeroPosition() const;                                             // 239 0x008A7A70
+    virtual void EntityTeleportToHeroPosition(const CScriptThing&) const;                                // 240 0x008956B0
+    virtual void SendEntityEvent(NEntityEvents::EEventType, const CScriptThing&, const CScriptThing&, CThing*) const; // 241 0x008957C0
+    virtual float GetWaterHeightAtPosition(const C3DVector&) const;                                      // 242 0x0088DF60
+    virtual bool IsFishingSpotEnabled(const CScriptThing&) const;                                        // 243 0x008958F0
+    virtual void DisableFishingSpot(const CScriptThing&) const;                                          // 244 0x00895950
+    virtual void UpdateFishWeight(const CScriptThing&) const;                                            // 245 0x008959B0
+    virtual float GetBestFishWeight(const CCharString&) const;                                           // 246 0x00895A10
+    virtual void HeroGoFishing(bool) const;                                                              // 247 0x00895A90
+    virtual long GetHeroFishingLevel() const;                                                            // 248 0x00895B00
+    virtual void HeroGoDigging() const;                                                                  // 249 0x0088DF80
+    virtual void HeroStopDigging() const;                                                                // 250 0x0088DFA0
+    virtual void HeroPlayOracleMinigame() const;                                                         // 251 0x00895B60
+    virtual bool IsHeroPlayingOracleMinigame() const;                                                    // 252 0x00895BC0
+    virtual bool HasHeroWonOracleMinigame() const;                                                       // 253 0x00895C30
+    virtual void HeroPlayFireheartMinigame() const;                                                      // 254 0x00895C90
+    virtual void HeroQuitFireheartMinigame() const;                                                      // 255 0x00895CF0
+    virtual bool HasHeroForceQuitFireheartMinigame() const;                                              // 256 0x00895D50
+    virtual float GetHeroHealth() const;                                                                 // 257 0x00890370
+    virtual float GetHeroHealthMax() const;                                                              // 258 0x008903A0
+    virtual float GetHeroHealthPercentage() const;                                                       // 259 0x008903D0
+    virtual long GetHeroWillEnergy() const;                                                              // 260 0x0089A150
+    virtual long GetHeroWillEnergyMax() const;                                                           // 261 0x0089A1B0
+    virtual long GetHeroWillEnergyPercentage() const;                                                    // 262 0x0089A210
+    virtual void ChangeHeroHealthBy(float, bool, bool) const;                                            // 263 0x00891720
+    virtual float GetHealth(const CScriptThing&) const;                                                  // 264 0x00890400
+    virtual void ModifyThingHealth(const CScriptThing&, float, bool) const;                              // 265 0x00890430
+    virtual void EntitySetMaxHealth(const CScriptThing&, float, bool) const;                             // 266 0x0088E1C0
+    virtual void SetThingAsKilled(const CScriptThing&) const;                                            // 267 0x0089A270
+    virtual void GiveHeroNewQuestObjective(const CCharString&, unsigned long) const;                     // 268 0x008917F0
+    virtual void TellHeroQuestObjectiveCompleted(unsigned long) const;                                   // 269 0x00891800
+    virtual void TellHeroQuestObjectiveFailed(unsigned long) const;                                      // 270 0x00891810
+    virtual void AddQuestRegion(const CCharString&, const CCharString&) const;                           // 271 0x00891820
+    virtual void SetQuestWorldMapOffset(const CCharString&, const C2DCoordI&) const;                     // 272 0x00891860
+    virtual bool IsHeroOnQuest() const;                                                                  // 273 0x00891870
+    virtual void HeroReceiveMessageFromGuildMaster(const CCharString&, const CCharString&, bool, bool) const; // 274 0x008918C0
+    virtual void SetGuildMasterMessages(bool) const;                                                     // 275 0x0088E200
+    virtual void ActivateQuest(const CCharString&) const;                                                // 276 0x00892E80
+    virtual void ActivateMultipleQuests(const CArray<CCharString>&) const;                               // 277 0x00892EA0
+    virtual void ActivateQuestWithoutLoadingResources(const CCharString&) const;                         // 278 0x00892EC0
+    virtual void ActivateMultipleQuestsWithoutLoadingResources(const CArray<CCharString>&) const;        // 279 0x00892EE0
+    virtual void DeactivateQuest(const CCharString&, unsigned long) const;                               // 280 0x00892F00
+    virtual void DeactivateQuestLater(const CCharString&, unsigned long) const;                          // 281 0x00892F10
+    virtual void PrepareQuestsWhenFinalQuestIsActivated(const CCharString&) const;                       // 282 0x00892F20
+    virtual void PrepareQuestsWhenFinalQuestIsCompleted() const;                                         // 283 0x00892F30
+    virtual bool IsQuestActive(const CCharString&) const;                                                // 284 0x00892F40
+    virtual bool IsQuestRegistered(const CCharString&) const;                                            // 285 0x00892F50
+    virtual bool IsQuestCompleted(const CCharString&) const;                                             // 286 0x00892F60
+    virtual bool IsQuestFailed(const CCharString&) const;                                                // 287 0x00892F70
+    virtual void SetQuestAsCompleted(const CCharString&, bool, bool, bool) const;                        // 288 0x00892F80
+    virtual void SetQuestAsFailed(const CCharString&, bool, const CWideString&, bool) const;             // 289 0x00892FD0
+    virtual void SetQuestAsPersistent(const CCharString&, bool) const;                                   // 290 0x00893020
+    virtual const CCharString& GetExclusiveQuestScriptName() const;                                      // 291 0x00893030
+    virtual void AddQuestCard(const CCharString&, const CCharString&, bool, bool) const;                 // 292 0x008913F0
+    virtual void RemoveQuestCardFromGuild(const CCharString&) const;                                     // 293 0x00891490
+    virtual void RemoveQuestCardFromHero(const CCharString&) const;                                      // 294 0x008914E0
+    virtual void GiveHeroQuestCardDirectly(const CCharString&, const CCharString&, bool) const;          // 295 0x008968C0
+    virtual void SetQuestCardObjective(const CCharString&, const CCharString&, const CCharString&, const CCharString&) const; // 296 0x00896A30
+    virtual void SetQuestCardGoldReward(const CCharString&, long) const;                                 // 297 0x008914F0
+    virtual void SetQuestCardRenownReward(const CCharString&, long) const;                               // 298 0x00891500
+    virtual void RemoveAllAvailableQuestCardsFromGuild() const;                                          // 299 0x00891510
+    virtual void FailAllActiveQuests() const;                                                            // 300 0x00891520
+    virtual void GetAllActiveQuestInfo(std::vector<CCharString,std::allocator<CCharString> >&, std::vector<CCharString,std::allocator<CCharString> >&) const; // 301 0x00891530
+    virtual void AddFeatCard(long, const CCharString&, const CCharString&) const;                        // 302 0x00891540
+    virtual void AddBoast(const CCharString&, long, long, long, bool, const CCharString&, long) const;   // 303 0x00893060
+    virtual void RemoveBoast(long, const CCharString&) const;                                            // 304 0x00891580
+    virtual void SetBoastAsFailed(long, const CCharString&) const;                                       // 305 0x008915B0
+    virtual void SetBoastAsCompleted(long, const CCharString&) const;                                    // 306 0x008915E0
+    virtual bool IsBoastTaken(long, const CCharString&) const;                                           // 307 0x00891550
+    virtual void AddLogBookEntry(const CWideString&, const CWideString&, const CWideString&, long) const; // 308 0x0088FE00
+    virtual void KickOffQuestStartScreen(const CCharString&, bool, bool) const;                          // 309 0x00896B60
+    virtual void KickOffDeathScreen() const;                                                             // 310 0x00896D20
+    virtual void KickOffCreditsScreen(CCharString&) const;                                               // 311 0x00896DF0
+    virtual void SetPreferredQuickAccessItem(const CCharString&, long, long) const;                      // 312 0x00896E60
+    virtual CCharString GetDeathRecoveryMarkerName() const;                                              // 313 0x00896EE0
+    virtual void SetDeathRecoveryMarkerName(const CCharString&) const;                                   // 314 0x00896F60
+    virtual void ResetDeathRecoveryMarkerNameToDefault() const;                                          // 315 0x00896FD0
+    virtual bool IsToFailQuestOnDeath() const;                                                           // 316 0x00897030
+    virtual void SetWhetherToFailQuestOnDeath(bool) const;                                               // 317 0x00897090
+    virtual void ResetWhetherToFailQuestOnDeathToDefault() const;                                        // 318 0x008970F0
+    virtual CScriptThing GetMostRecentValidUsedTarget() const;                                           // 319 0x00891610
+    virtual CCharString GetMostRecentValidUsedTargetName() const;                                        // 320 0x00891680
+    virtual void DisplayQuestInfo(bool) const;                                                           // 321 0x00891920
+    virtual void SetQuestInfoName(const char*) const;                                                    // 322 0x00891940
+    virtual void SetQuestInfoText(const char*) const;                                                    // 323 0x00891A00
+    virtual long AddQuestInfoBar(float, float, const CRGBColour&, const CRGBColour&, const CCharString&, const CCharString&, float) const; // 324 0x00891AC0
+    virtual long AddQuestInfoBarHealth(const CScriptThing&, const CRGBColour&, const CCharString&, float) const; // 325 0x00891AD0
+    virtual long AddQuestInfoTimer(const CTimer&, const CCharString&, float) const;                      // 326 0x00891B20
+    virtual long AddQuestInfoCounter(const CCounter&, const CCharString&, float) const;                  // 328 0x00891B30
+    virtual long AddQuestInfoCounter(const CCharString&, long, float) const;                             // 327 0x00891B40
+    virtual long AddQuestInfoCounterList(const CCharString&, long, float) const;                         // 329 0x00891B50
+    virtual long AddQuestInfoTick(const CCharString&, bool, float) const;                                // 331 0x00891B60
+    virtual long AddQuestInfoTick(EGameAction, bool, float) const;                                       // 330 0x00891B70
+    virtual void UpdateQuestInfoBar(long, float, float, float) const;                                    // 332 0x00891B80
+    virtual void ChangeQuestInfoBarColour(long, const CRGBColour&, const CRGBColour&) const;             // 333 0x00891BA0
+    virtual void UpdateQuestInfoTimer(long, float) const;                                                // 334 0x00891BB0
+    virtual void UpdateQuestInfoCounter(long, long, long) const;                                         // 335 0x00891BD0
+    virtual void UpdateQuestInfoCounterList(long, long, long) const;                                     // 336 0x00891BE0
+    virtual void UpdateQuestInfoTick(long, bool) const;                                                  // 337 0x00891BF0
+    virtual void RemoveQuestInfoElement(long) const;                                                     // 338 0x00891C10
+    virtual void RemoveAllQuestInfoElements() const;                                                     // 339 0x00891C30
+    virtual void DisplayTime(bool) const;                                                                // 340 0x0088E210
+    virtual void DisplayMoneyBag(bool) const;                                                            // 341 0x00891C40
+    virtual void DisplayMiniGameInfo(bool, EMiniGameType) const;                                         // 342 0x00891C60
+    virtual void UpdateMiniGameInfoBar(float) const;                                                     // 343 0x00891C80
+    virtual bool IsEntityPickPocketable(const CScriptThing&) const;                                      // 344 0x0088E220
+    virtual bool IsEntityPickLockable(const CScriptThing&) const;                                        // 345 0x0089A2D0
+    virtual bool IsEntityStealable(const CScriptThing&) const;                                           // 346 0x0089A330
+    virtual void EntitySetAsPickPocketed(const CScriptThing&) const;                                     // 347 0x00890470
+    virtual void EntitySetAsPickLocked(const CScriptThing&) const;                                       // 348 0x0089A390
+    virtual void EntitySetAsStolen(const CScriptThing&) const;                                           // 349 0x008904E0
+    virtual void MiniMapAddMarker(const CScriptThing&, const CCharString&) const;                        // 350 0x00891F50
+    virtual void MiniMapSetMarkerGraphic(const CScriptThing&, const CCharString&) const;                 // 351 0x00891FA0
+    virtual void MiniMapRemoveMarker(const CScriptThing&) const;                                         // 352 0x00891FF0
+    virtual void MiniMapRemoveAllMarkers() const;                                                        // 353 0x00892030
+    virtual void MiniMapAllowRouteBetweenRegions(const CCharString&, const CCharString&, bool) const;    // 354 0x0088E3D0
+    virtual void MiniMapSetAsEnabled(bool) const;                                                        // 355 0x0088E400
+    virtual void EntitySetAsHiddenOnMiniMap(const CScriptThing&, bool) const;                            // 356 0x0088E410
+    virtual void SetHUDEnabled(bool) const;                                                              // 357 0x00892050
+    virtual bool TextEntryExists(const CCharString&) const;                                              // 358 0x00892070
+    virtual CCharString GetValidTextEntryNameWithAttitude(const CScriptThing&, const CCharString&) const; // 359 0x008920C0
+    virtual void SetThingHasInformation(const CScriptThing&, bool, bool, bool) const;                    // 360 0x0088E440
+    virtual void ClearThingHasInformation(const CScriptThing&) const;                                    // 361 0x0088E480
+    virtual void EntitySetWillBeUsingNarrator(const CScriptThing&, const CCharString&) const;            // 362 0x0089B050
+    virtual void EntityResetAsPureAINarrator(const CScriptThing&) const;                                 // 363 0x0089B0B0
+    virtual long AddNewConversation(const CScriptThing&, bool, bool) const;                              // 364 0x008906C0
+    virtual void AddPersonToConversation(long, const CScriptThing&) const;                               // 365 0x00890710
+    virtual void AddLineToConversation(long, const CCharString&, bool, const CScriptThing&, const CScriptThing&) const; // 366 0x00890750
+    virtual void RemoveConversation(long, bool) const;                                                   // 367 0x008907C0
+    virtual bool IsConversationActive(long) const;                                                       // 368 0x008907D0
+    virtual void PlayAVIMovie(const CCharString&) const;                                                 // 369 0x0088F890
+    virtual void StartMovieSequence(const CCharString&, CScriptGameResourceObjectMovieBase&);            // 370 0x0089B110
+    virtual void FixMovieSequenceCamera(bool) const;                                                     // 371 0x0088E500
+    virtual void FadeScreenOutUntilNextCallToFadeScreenIn(float, float);                                 // 372 0x008907E0
+    virtual bool FadeScreenOut(float, float, CRGBColour);                                                // 373 0x00890820
+    virtual void FadeScreenIn();                                                                         // 374 0x0088E4C0
+    virtual bool IsScreenFadingOut() const;                                                              // 375 0x0088E4D0
+    virtual void Pause(float) const;                                                                     // 376 0x0088E4F0
+    virtual void EndCutFade();                                                                           // 377 0x0088E520
+    protected: virtual void EndLetterBox(); public:                                                      // 378 0x006E7290
+    virtual void PauseAllNonScriptedEntities(bool);                                                      // 379 0x00890AB0
+    virtual void PauseAllEntities(bool);                                                                 // 380 0x00890B00
+    virtual void SetAllowScreenFadingOnNextRegionChange(bool);                                           // 381 0x0088E910
+    virtual void SetAllowScreenFadingIfAlreadyFaded(bool);                                               // 382 0x0088E920
+    virtual void SetToKeepHeroAbilitiesDuringCutscenes(bool) const;                                      // 383 0x00890B50
+    virtual void SetToDisplayTutorialsDuringCutscenes(bool) const;                                       // 384 0x0088E930
+    virtual void SetCutsceneMode(bool, bool) const;                                                      // 385 0x0089D600
+    virtual bool IsInCutscene() const;                                                                   // 386 0x00892270
+    virtual void SetCutsceneSkippable(bool) const;                                                       // 387 0x00892280
+    virtual void SetCutsceneSkippableWhilePaused(bool) const;                                            // 388 0x008922A0
+    virtual void SetCutsceneActionMode(bool, const CCharString&) const;                                  // 389 0x008922C0
+    virtual void PreloadNewScene(float) const;                                                           // 390 0x00890B70
+    virtual void StartProgressDisplay() const;                                                           // 391 0x0088E950
+    virtual void StopProgressDisplay() const;                                                            // 392 0x0088E970
+    virtual void SetScreenMessagesEnabled(bool) const;                                                   // 393 0x008922D0
+    virtual bool IsHeroControlledByPlayer() const;                                                       // 394 0x0088E980
+    virtual bool IsInMovieSequence() const;                                                              // 395 0x0088E9E0
+    virtual void CancelAbilitiesForCutscene() const;                                                     // 396 0x0089D690
+    virtual void ResumeAbilitiesForCutscene() const;                                                     // 397 0x0089D6F0
+    virtual void CancelUsingAbility(EHeroAbility) const;                                                 // 398 0x0089D750
+    virtual void SetAbilityAvailability(EHeroAbility, bool) const;                                       // 399 0x0089D7C0
+    virtual void SetEnvironmentalEffectsAlwaysUpdate(bool) const;                                        // 400 0x00890B90
+    virtual void SetDeadCreaturesAndExperienceOrbsAndDropBagsAsHidden(bool) const;                       // 401 0x00894EC0
+    virtual void RemoveDeadCreature(const CCharString&) const;                                           // 402 0x00894490
+    virtual void CameraSetCameraPreloadFlag(bool) const;                                                 // 403 0x0088EC90
+    virtual void CameraCircleAroundThing(const CScriptThing&, const C3DVector&, float) const;            // 404 0x00892B50
+    virtual void CameraCircleAroundPos(const C3DVector&, const C3DVector&, float) const;                 // 405 0x00892C20
+    virtual void CameraMoveToPosAndLookAtPos(const C3DVector&, const C3DVector&, float) const;           // 406 0x00892410
+    virtual void CameraMoveToPosAndLookAtThing(const C3DVector&, const CScriptThing&, float) const;      // 407 0x008924B0
+    virtual void CameraMoveBetweenLookingAt(const C3DVector&, const C3DVector&, const C3DVector&, float, float) const; // 409 0x00892530
+    virtual void CameraMoveBetweenLookingAt(const C3DVector&, const C3DVector&, const CScriptThing&, float, float) const; // 408 0x008926D0
+    virtual void CameraMoveBetweenLookFromAndLookTo(const C3DVector&, const C3DVector&, const C3DVector&, const C3DVector&, float) const; // 410 0x00892610
+    virtual void CameraUseCameraPoint(const CCharString&, const CScriptThing&, float, long, long) const; // 414 0x008922F0
+    virtual void CameraUseCameraPoint(const CScriptThing&, const CScriptThing&, float, long, long) const; // 413 0x00891070
+    virtual void CameraUseCameraPoint(const CCharString&, const C3DVector*, const CRightHandedSet*, float, long, long) const; // 412 0x00892380
+    virtual void CameraUseCameraPoint(const CScriptThing&, const C3DVector*, const CRightHandedSet*, float, long, long) const; // 411 0x0089E190
+    virtual void CameraDoConversation(const CScriptThing&, const CScriptThing&, ECameraOp, bool) const;  // 415 0x0088EDC0
+    virtual void CameraDefault();                                                                        // 416 0x00890FF0
+    virtual void CameraResetToViewBehindHero(float);                                                     // 417 0x00890FC0
+    virtual bool IsCameraInScriptedMode() const;                                                         // 418 0x0088ECC0
+    virtual void CameraUseScreenEffect(float, float, float) const;                                       // 419 0x0088EDA0
+    virtual void CameraCancelScreenEffect() const;                                                       // 420 0x0088EDB0
+    virtual bool IsCameraPosOnScreen(const C3DVector&) const;                                            // 421 0x006E7300
+    virtual float GetGameAngleXY() const;                                                                // 422 0x006E7340
+    virtual void CameraEarthquakeIntensityAtPos(const C3DVector&, float, float) const;                   // 423 0x0088ED20
+    virtual void CameraShake(float, float) const;                                                        // 424 0x0088ECE0
+    virtual void OpenDoor(const CScriptThing&) const;                                                    // 425 0x00895DB0
+    virtual void CloseDoor(const CScriptThing&) const;                                                   // 426 0x00895DE0
+    virtual void OpenHouseDoors(const CScriptThing&) const;                                              // 427 0x0088DFD0
+    virtual void CloseHouseDoors(const CScriptThing&) const;                                             // 428 0x0088E000
+    virtual void JamDoor(const CScriptThing&) const;                                                     // 429 0x00895E10
+    virtual void SetDoorTriggerType(const CScriptThing&, EDoorTriggerType) const;                        // 430 0x00895E70
+    virtual void OverrideAutomaticHouseLocking(const CScriptThing&, bool) const;                         // 431 0x0088E030
+    virtual void SetHouseOwnedByPlayer(const CScriptThing&, bool, bool) const;                           // 432 0x00895ED0
+    virtual void SetBuyableHouseAsScripted(const CScriptThing&, bool) const;                             // 433 0x00896000
+    virtual bool IsChestOpen(const CScriptThing&) const;                                                 // 434 0x00896330
+    virtual bool OpenChest(const CScriptThing&, bool) const;                                             // 435 0x00896390
+    virtual void CloseChest(const CScriptThing&) const;                                                  // 436 0x00896660
+    virtual long GetNumberOfKeysNeededToUnlockChest(const CScriptThing&, CCharString&) const;            // 437 0x008966C0
+    virtual void DisplayLockedChestMessage(const CScriptThing&) const;                                   // 438 0x00896730
+    virtual void SetTrophyAsMountable(const CScriptThing&, bool) const;                                  // 439 0x00896790
+    virtual void SetVillageLimbo(const CScriptThing&, bool) const;                                       // 440 0x00896060
+    virtual void SetCreatureNotReload(const CScriptThing&) const;                                        // 441 0x0088FD90
+    virtual bool IsSleepingTime(const CScriptThing&) const;                                              // 442 0x00896210
+    virtual void EnableGuards(const CScriptThing&, bool) const;                                          // 443 0x00896270
+    virtual void EnableVillagerDefTypes(const CScriptThing&, bool, const CCharString&) const;            // 444 0x008962D0
+    virtual CScriptThing TryToRespawnDefNamed(const CScriptThing&, const CCharString&, const C3DVector&) const; // 445 0x00896120
+    virtual void ClearHeroEnemyOfGuards(const CScriptThing&) const;                                      // 446 0x008961B0
+    virtual void SetThingAsUsable(const CScriptThing&, bool) const;                                      // 447 0x008967F0
+    virtual void SetThingHomeBuilding(const CScriptThing&, const CScriptThing&) const;                   // 448 0x00892E30
+    virtual void SetVillageAttitude(const CScriptThing&, EScriptVillageAttitude) const;                  // 449 0x0089FE20
+    virtual void AddCrimeCommitted(const CScriptThing&, ECrime, bool, const CScriptThing*, const CScriptThing*, EOpinionPostDeedType) const; // 450 0x0089FEB0
+    virtual void GiveThingBestEnemyTarget(const CScriptThing&, const CScriptThing&) const;               // 451 0x008A0260
+    virtual void ClearThingBestEnemyTarget(const CScriptThing&) const;                                   // 452 0x008A03F0
+    virtual void EntitySetInLimbo(const CScriptThing&, bool, bool) const;                                // 453 0x0088FD00
+    virtual bool IsEntityInLimbo(const CScriptThing&) const;                                             // 454 0x0088FD60
+    virtual bool EntityGetShotStrikePos(const CScriptThing&, C3DVector&) const;                          // 455 0x0089DF70
+    virtual void EntitySetNegateAllHits(const CScriptThing&, bool) const;                                // 456 0x00890E80
+    virtual void EntitySetEvadeAllHits(const CScriptThing&, bool) const;                                 // 457 0x00890EC0
+    virtual void EntitySetAbleToBeEngagedInCombat(const CScriptThing&, bool) const;                      // 458 0x00890F00
+    virtual void EntitySetAlwaysBlockAttacksFromThing(const CScriptThing&, const CScriptThing&, bool) const; // 459 0x0089DFF0
+    virtual void EntitySetAttackThingImmediately(const CScriptThing&, const CScriptThing&, bool, bool) const; // 460 0x008A8EB0
+    virtual void EntitySetCombatType(const CScriptThing&, const CCharString&) const;                     // 461 0x0089E080
+    virtual void EntityResetCombatTypeToDefault(const CScriptThing&) const;                              // 462 0x00890F40
+    virtual void EntitySetMaxNumberOfAttackers(const CScriptThing&, long) const;                         // 463 0x0089E130
+    virtual void EntityClearMaxNumberOfAttackers(const CScriptThing&) const;                             // 464 0x0088EC70
+    virtual void EntityAttachToScript(const CScriptThing&, const CCharString&) const;                    // 465 0x00890690
+    virtual void EntitySetCombatAbility(const CScriptThing&, float) const;                               // 466 0x0089AFF0
+    virtual void EntitySetRangedTarget(const CScriptThing&, const CScriptThing&) const;                  // 467 0x008A04C0
+    virtual void EntityClearRangedTarget(const CScriptThing&) const;                                     // 468 0x008A0540
+    virtual void EntitySetTargetable(const CScriptThing&, bool) const;                                   // 469 0x008A05A0
+    virtual void EntitySetTargetingType(const CScriptThing&, ETargetingType) const;                      // 470 0x008A0600
+    virtual void EntitySetTargetingValidTargetWithoutLOS(const CScriptThing&, bool) const;               // 471 0x008A0660
+    virtual void EntityTeleportToThing(const CScriptThing&, const CScriptThing&, bool) const;            // 472 0x0088E540
+    virtual void EntityTeleportToPosition(const CScriptThing&, const C3DVector&, float, bool, bool) const; // 473 0x0089B780
+    virtual void EntitySetFacingAngle(const CScriptThing&, float, bool) const;                           // 474 0x0089BDF0
+    virtual void EntitySetFacingAngleTowardsThing(const CScriptThing&, const CScriptThing&, bool) const; // 475 0x0088E620
+    virtual void EntitySetPerceptionVariables(const CScriptThing&, float, float, float) const;           // 476 0x0089BF80
+    virtual void SetThingPersistent(const CScriptThing&, bool) const;                                    // 477 0x0088E5A0
+    virtual void EntitySetThingAsWantingMoney(const CScriptThing&, long) const;                          // 478 0x0089BB30
+    virtual void EntitySetAppearanceMorphSeed(const CScriptThing&, long) const;                          // 479 0x008A0200
+    virtual void SetEntityAsRegionFollowing(const CScriptThing&, const CScriptThing&, bool) const;       // 480 0x008A0B10
+    virtual void SetEntityAsFollowingHeroThroughTeleporters(const CScriptThing&, bool) const;            // 481 0x0088F670
+    virtual void EntitySetAppearanceSeed(const CScriptThing&, unsigned long) const;                      // 482 0x008A0BC0
+    virtual void EntityGetAppearanceSeed(const CScriptThing&, unsigned long&) const;                     // 483 0x008A0C10
+    virtual void EntitySetAsForSale(const CScriptThing&, bool) const;                                    // 484 0x008A00E0
+    virtual void EntitySetStockItemPrice(const CScriptThing&, long) const;                               // 485 0x008A0140
+    virtual long EntityGetStockItemPrice(const CScriptThing&) const;                                     // 486 0x008A01A0
+    virtual void EntityPlayObjectAnimation(const CScriptThing&, const CCharString&, bool) const;         // 487 0x0089BBC0
+    virtual void EntitySetMaxRunningSpeed(const CScriptThing&, float) const;                             // 488 0x0088E750
+    virtual void EntitySetMaxWalkingSpeed(const CScriptThing&, float) const;                             // 489 0x0088E7B0
+    virtual void EntityResetMaxRunningSpeed(const CScriptThing&) const;                                  // 490 0x0088E810
+    virtual void EntityResetMaxWalkingSpeed(const CScriptThing&) const;                                  // 491 0x0088E870
+    virtual void EntityAttachToVillage(const CScriptThing&, const CScriptThing&) const;                  // 492 0x0089D3A0
+    virtual void EntitySetAsSittingOnFloor(const CScriptThing&, bool) const;                             // 493 0x008A8C60
+    virtual void EntitySetAsHavingBoundHands(CScriptThing&, bool) const;                                 // 494 0x0089D420
+    virtual void EntitySetAsRemoveAllMovementBlockingModes(CScriptThing&) const;                         // 495 0x0088E8D0
+    virtual void EntitySetAsScared(const CScriptThing&, bool) const;                                     // 496 0x0089D4C0
+    virtual void EntitySetAsDrunk(CScriptThing&, bool) const;                                            // 497 0x0089D560
+    virtual void EntityForceToLookAtThing(const CScriptThing&, const CScriptThing&) const;               // 498 0x0089D830
+    virtual void EntityForceToLookAtCamera(const CScriptThing&, bool) const;                             // 499 0x0089D8B0
+    virtual void EntityForceToLookAtNothing(const CScriptThing&) const;                                  // 500 0x0089D910
+    virtual void EntityResetForceToLookAt(const CScriptThing&) const;                                    // 501 0x0089D970
+    virtual void EntitySetShotAccuracyPercentage(const CScriptThing&, long) const;                       // 502 0x0088E5F0
+    virtual CScriptThing EntityGetStandingOnThing(const CScriptThing&) const;                            // 503 0x00892220
+    virtual CScriptThing EntityGetStandingInsideBuilding(const CScriptThing&) const;                     // 504 0x0089BC50
+    virtual void EntityDropGenericBox(const CScriptThing&) const;                                        // 505 0x0089D9D0
+    virtual void EntitySheatheWeapons(const CScriptThing&, bool) const;                                  // 506 0x00890BA0
+    virtual void EntityUnsheatheWeapons(const CScriptThing&, bool) const;                                // 507 0x00890C10
+    virtual void EntityUnsheatheMeleeWeapon(const CScriptThing&, bool) const;                            // 508 0x00890C80
+    virtual void EntityUnsheatheRangedWeapon(const CScriptThing&, bool) const;                           // 509 0x00890D80
+    virtual void EntitySetAlpha(const CScriptThing&, float, bool) const;                                 // 510 0x0089DA70
+    virtual void EntitySetAsDrawable(const CScriptThing&, bool) const;                                   // 511 0x0088E9F0
+    virtual void EntitySetCutsceneBehaviour(const CScriptThing&, ECutsceneBehaviour) const;              // 512 0x0088EA20
+    virtual ESex EntityGetSex(const CScriptThing&) const;                                                // 513 0x0088EA50
+    virtual void EntitySetAsAbleToWalkThroughSolidObjects(const CScriptThing&, bool) const;              // 514 0x0089DBB0
+    virtual void EntitySetAsRespondToHit(const CScriptThing&, bool) const;                               // 515 0x0088EA90
+    virtual void EntitySetAsDamageable(const CScriptThing&, bool) const;                                 // 516 0x0088EAD0
+    virtual void EntitySetAsKillable(const CScriptThing&, bool, bool) const;                             // 517 0x0088EB30
+    virtual void EntitySetAsLocked(const CScriptThing&, bool) const;                                     // 518 0x0089DC10
+    virtual void EntityDecapitate(const CScriptThing&) const;                                            // 519 0x008A8E40
+    virtual void EntityGiveGold(const CScriptThing&, long) const;                                        // 520 0x0089DC70
+    virtual void EntitySetAllowBossPhaseChanges(const CScriptThing&, bool) const;                        // 521 0x0089DCD0
+    virtual long EntityGetBossPhase(const CScriptThing&) const;                                          // 522 0x0089DD30
+    virtual void EntitySetBossPhase(const CScriptThing&, long) const;                                    // 523 0x0089DD90
+    virtual void EntityResetCreatureMode(const CScriptThing&) const;                                     // 524 0x0089DDF0
+    virtual bool EntitySetAsReceivingEvents(const CScriptThing&, bool) const;                            // 525 0x00895010
+    virtual void EntitySetAsToAddToComboMultiplierWhenHit(const CScriptThing&, bool) const;              // 526 0x0088EBC0
+    virtual void EntitySetAsToAddToStatChangesWhenHit(const CScriptThing&, bool) const;                  // 527 0x0088EBF0
+    virtual void EntityLeaveCombatStance(const CScriptThing&) const;                                     // 528 0x0089DE50
+    virtual void EntitySetAsUseMovementInActions(const CScriptThing&, bool) const;                       // 529 0x0088EC20
+    virtual void EntitySetAsDisplayingEmoteIcon(const CScriptThing&, bool) const;                        // 530 0x0089DEB0
+    virtual void EntitySetAsCollidableToThings(const CScriptThing&, bool) const;                         // 531 0x00891120
+    virtual void EntityEnableGravity(const CScriptThing&, bool) const;                                   // 532 0x0088F4D0
+    virtual void EntitySetLightAsOn(const CScriptThing&, bool) const;                                    // 533 0x008A06C0
+    virtual void EntityFadeOut(const CScriptThing&, float) const;                                        // 534 0x008A0720
+    virtual void EntityFadeIn(const CScriptThing&, float) const;                                         // 535 0x008A07C0
+    virtual void EntityBeginLoadingAnimation(const CScriptThing&, const CCharString&) const;             // 536 0x0088F500
+    virtual void EntityBeginLoadingBasicAnimations(const CScriptThing&) const;                           // 537 0x0088F530
+    virtual bool EntityCastForcePush(const CScriptThing&, bool) const;                                   // 538 0x008A9320
+    virtual void EntityCastLightningAtTarget(const CScriptThing&, const CScriptThing&) const;            // 539 0x0088F560
+    virtual void BeginLoadingMesh(const CCharString&) const;                                             // 540 0x00894AA0
+    virtual bool EntityWillTeleportToArea(const CScriptThing&, C3DVector, float, float) const;           // 541 0x008A93A0
+    virtual void EntityStartScreamerSuperAttackThing(const CScriptThing&, const CScriptThing&) const;    // 542 0x008A08A0
+    virtual void EntityEndScreamerSuperAttackThing(const CScriptThing&) const;                           // 543 0x008A0950
+    virtual void SetHeroGuideToShowQuestCardsWhenSpokenTo(bool);                                         // 544 0x0088EC60
+    virtual void SetLightColour(const CScriptThing&, const CRGBColour&) const;                           // 545 0x0089DF10
+    virtual void CreatureGeneratorSetFamily(const CScriptThing&, const CCharString&) const;              // 546 0x008A9020
+    virtual void CreatureGeneratorTrigger(const CScriptThing&) const;                                    // 547 0x0089E8E0
+    virtual void CreatureGeneratorSetAlwaysCreateCreaturesOnTrigger(const CScriptThing&, bool) const;    // 548 0x0089E950
+    virtual bool CreatureGeneratorIsDepleted(const CScriptThing&) const;                                 // 549 0x0089E9C0
+    virtual bool CreatureGeneratorIsDestroyed(const CScriptThing&) const;                                // 550 0x0089EA30
+    virtual void CreatureGeneratorSetGeneratedCreatureScriptName(const CScriptThing&, const CCharString&) const; // 551 0x0089EAA0
+    virtual void CreatureGeneratorSetNumTriggers(const CScriptThing&, long) const;                       // 552 0x0089EB10
+    virtual long CreatureGeneratorGetNumGeneratedCreatures(const CScriptThing&) const;                   // 553 0x0089EB80
+    virtual bool CreatureGeneratorAreAllCreaturesAlive(const CScriptThing&) const;                       // 554 0x0089EBF0
+    virtual void CreatureGeneratorAddTriggerer(const CScriptThing&, const CScriptThing&) const;          // 555 0x0089EC60
+    virtual void CreatureGeneratorRemoveTriggerer(const CScriptThing&, const CScriptThing&) const;       // 556 0x0089ECC0
+    virtual void SetCreatureGeneratorEnabled(const CScriptThing&, bool) const;                           // 557 0x0089ED20
+    virtual void SetCreatureGeneratorsEnabled(const CCharString&, bool) const;                           // 558 0x00892CF0
+    virtual void SetCreatureGeneratorsEnabledDuringScript(const CCharString&, bool) const;               // 559 0x00892D70
+    virtual void SetCreatureGeneratorsCreatureGroupAsEnabled(ECreatureGroup, bool) const;                // 560 0x0088F400
+    virtual bool IsCreatureGenerationEnabledForRegion(const CCharString&) const;                         // 561 0x00892D80
+    virtual bool IsCreatureFlying(const CScriptThing&) const;                                            // 562 0x0089ED80
+    virtual void SetTeleporterAsActive(const CScriptThing&, bool) const;                                 // 563 0x0089EE00
+    virtual bool IsTeleporterActive(const CScriptThing&) const;                                          // 564 0x0089EE60
+    virtual void SetTeleportingAsActive(bool) const;                                                     // 565 0x0088F410
+    virtual bool IsTeleportingActive() const;                                                            // 566 0x0088F420
+    virtual void SetRegionExitAsActive(const CScriptThing&, bool) const;                                 // 567 0x0089EEC0
+    virtual void SetRegionEntranceAsActive(const CScriptThing&, bool) const;                             // 568 0x0089EF00
+    virtual void SetRegionTextDisplayAsActive(bool) const;                                               // 569 0x0088F430
+    virtual void SetHeroSleepingAsEnabled(bool) const;                                                   // 570 0x0088F440
+    virtual bool IsHeroSleepingEnabled() const;                                                          // 571 0x0088F450
+    virtual void SetExperienceSpendingAsEnabled(bool) const;                                             // 572 0x0088F460
+    virtual void SetMoralityChangingAsEnabled(bool) const;                                               // 573 0x0089EF30
+    virtual void SetSummonerDeathExplosionAffectsHero(bool) const;                                       // 574 0x0088F470
+    virtual CScriptThing GetNearestEnabledDiggingSpot(const CScriptThing&) const;                        // 575 0x0089EF90
+    virtual bool IsDiggingSpotEnabled(const CScriptThing&) const;                                        // 576 0x0089F1E0
+    virtual bool IsDiggingSpotHidden(const CScriptThing&) const;                                         // 577 0x0089F240
+    virtual void SetDiggingSpotAsHidden(const CScriptThing&, bool) const;                                // 578 0x0089F2A0
+    virtual bool CheckForCameraMessage(const CCharString&) const;                                        // 579 0x006E7920
+    virtual void WaitForCameraMessage(const CCharString&) const;                                         // 580 0x006E7820
+    virtual void SetThingAsConscious(const CScriptThing&, bool, const CCharString&) const;               // 581 0x008A9610
+    virtual void SetFireToThing(const CScriptThing&) const;                                              // 582 0x0089BCD0
+    virtual void ExtinguishFiresOnThing(const CScriptThing&) const;                                      // 583 0x0089BD30
+    virtual bool IsThingOnFire(const CScriptThing&) const;                                               // 584 0x0089BD90
+    virtual void AddItemToContainer(const CScriptThing&, const CCharString&) const;                      // 585 0x0089E780
+    virtual void RemoveItemFromContainer(const CScriptThing&, const CCharString&) const;                 // 586 0x0089E810
+    virtual void EntitySetDeathContainerAsEnabled(const CScriptThing&, bool) const;                      // 587 0x0089E880
+    virtual void GetItemDefNamesFromContainer(const CScriptThing&, std::vector<CCharString,std::allocator<CCharString> >&) const; // 588 0x008A8F20
+    virtual void SetCreatureBrain(const CScriptThing&, const CCharString&) const;                        // 589 0x00894B90
+    virtual void EntitySetStategroupEnabled(const CScriptThing&, const CCharString&, bool) const;        // 590 0x0088F6B0
+    virtual void EntitySetAllStategroupsEnabled(const CScriptThing&, bool) const;                        // 591 0x0088F6E0
+    virtual void EntitySetCombatEnabled(const CScriptThing&, bool) const;                                // 592 0x0088F710
+    virtual void EntitySetSleepEnabled(const CScriptThing&, bool) const;                                 // 593 0x0088F7D0
+    virtual void EntitySetOpinionReactionsEnabled(const CScriptThing&, bool) const;                      // 594 0x0088F810
+    virtual void EntitySetDeedReactionsEnabled(const CScriptThing&, bool) const;                         // 595 0x0088F850
+    virtual void DebugGetAllTextEntriesForTargetedThing(std::set<unsigned long,std::less<unsigned long>,std::allocator<unsigned long> >&) const; // 596 0x008A0CB0
+    virtual void EntitySetThingAsEnemyOfThing(const CScriptThing&, const CScriptThing&) const;           // 597 0x0089C000
+    virtual void EntityUnsetThingAsEnemyOfThing(const CScriptThing&, const CScriptThing&) const;         // 598 0x0089C080
+    virtual void EntitySetThingAsAllyOfThing(const CScriptThing&, const CScriptThing&) const;            // 599 0x008A7EC0
+    virtual void EntityUnsetThingAsAllyOfThing(const CScriptThing&, const CScriptThing&) const;          // 600 0x008A7EE0
+    virtual void EntitySetInFaction(const CScriptThing&, const CCharString&) const;                      // 601 0x0089C190
+    virtual void SetFactionAsAlliedToFaction(const CCharString&, const CCharString&) const;              // 602 0x00890870
+    virtual void SetFactionAsNeutralToFaction(const CCharString&, const CCharString&) const;             // 603 0x008908C0
+    virtual void SetFactionAsEnemyToFaction(const CCharString&, const CCharString&) const;               // 604 0x00890910
+    virtual bool AreEntitiesEnemies(const CScriptThing&, const CScriptThing&) const;                     // 605 0x0088E6F0
+    virtual EOpinionAttitudeType GetNextInOpinionAttitudeGraph(EOpinionAttitudeType) const;              // 606 0x00890960
+    virtual void GetOpinionAttitudeAsString(EOpinionAttitudeType, CCharString&) const;                   // 607 0x00890970
+    virtual EOpinionAttitudeType EntityGetOpinionAttitudeToPlayer(const CScriptThing&) const;            // 608 0x00890990
+    virtual void EntityGetOpinionAttitudeToPlayerAsString(const CScriptThing&, CCharString&) const;      // 609 0x008909C0
+    virtual float EntityGetOpinionOfPlayer(const CScriptThing&, EOpinion) const;                         // 610 0x008909F0
+    virtual void EntitySetOpinionReactionMask(const CScriptThing&, long) const;                          // 612 0x0089C1F0
+    virtual void EntitySetOpinionReactionMask(const CScriptThing&, const CCharString&) const;            // 611 0x0089C240
+    virtual void EntitySetOpinionDeedMask(const CScriptThing&, long) const;                              // 614 0x0089C290
+    virtual void EntitySetOpinionDeedMask(const CScriptThing&, const CCharString&) const;                // 613 0x0089C2E0
+    virtual void EntitySetOpinionDeedTypeEnabled(const CScriptThing&, EOpinionDeedType, bool) const;     // 615 0x0089C330
+    virtual void EntitySetOpinionAttitudeEnabled(const CScriptThing&, EOpinionAttitudeType, bool) const; // 616 0x0089C380
+    virtual void EntitySetOpinionReactionEnabled(const CScriptThing&, EOpinionReactionType, bool) const; // 617 0x0089C3D0
+    virtual void EntitySetPersonalityOverride(const CScriptThing&, const CCharString&) const;            // 619 0x0089C420
+    virtual void EntitySetPersonalityOverride(const CScriptThing&, long) const;                          // 618 0x0089C470
+    virtual void EntityClearPersonalityOverride(const CScriptThing&) const;                              // 620 0x0089C4C0
+    virtual void EntitySetAsOpinionSource(const CScriptThing&, const CCharString&) const;                // 622 0x00890A20
+    virtual void EntitySetAsOpinionSource(const CScriptThing&, long) const;                              // 621 0x00890A50
+    virtual void EntityUnsetAsOpinionSource(const CScriptThing&, bool) const;                            // 623 0x00890A80
+    virtual void OpinionSourceSetAsExclusive(const CScriptThing&, bool) const;                           // 624 0x00894E60
+    virtual void OpinionSourceSetAsAttentionGrabbing(const CScriptThing&, bool) const;                   // 625 0x0089C510
+    virtual void EntityPostOpinionDeedToAll(const CScriptThing&, EOpinionDeedType) const;                // 626 0x0089C560
+    virtual void EntityPostOpinionDeedToRecipient(const CScriptThing&, EOpinionDeedType, const CScriptThing&) const; // 627 0x0089C670
+    virtual void EntityPostOpinionDeedToRecipientVillage(const CScriptThing&, EOpinionDeedType, const CScriptThing&) const; // 628 0x0089C710
+    virtual long EntityPostOpinionDeedKeepSearchingForWitnesses(const CScriptThing&, EOpinionDeedType, const CScriptThing&) const; // 629 0x0089C7B0
+    virtual void RemoveOpinionDeedStillSearchingForWitnesses(const CScriptThing&, long) const;           // 630 0x0089C850
+    virtual bool IsDeedWitnessed(long) const;                                                            // 631 0x0089C8A0
+    virtual bool CanThingBe_Seen_ByOtherThing(const CScriptThing&, const CScriptThing&) const;           // 632 0x0089CD10
+    virtual bool CanThingBe_NearlySeen_ByOtherThing(const CScriptThing&, const CScriptThing&) const;     // 633 0x0089CD30
+    virtual bool CanThingBe_Smelled_ByOtherThing(const CScriptThing&, const CScriptThing&) const;        // 634 0x0089CD50
+    virtual bool CanThingBe_Heard_ByOtherThing(const CScriptThing&, const CScriptThing&) const;          // 635 0x0089CD70
+    virtual bool IsThingAwareOfOtherThingInAnyWay(const CScriptThing&, const CScriptThing&) const;       // 636 0x0089CE70
+    virtual void EntitySetAsAwareOfThing(const CScriptThing&, const CScriptThing&) const;                // 637 0x0089D0E0
+    virtual void EntitySetSoundRadius(const CScriptThing&, float) const;                                 // 638 0x0089D160
+    virtual void EntitySetSmellRadius(const CScriptThing&, float) const;                                 // 639 0x0089D1C0
+    virtual void EntitySetSightRadius(const CScriptThing&, float) const;                                 // 640 0x0089D220
+    virtual void EntitySetExtendedSightRadius(const CScriptThing&, float) const;                         // 641 0x0089D280
+    virtual void EntitySetGiveUpChaseRadius(const CScriptThing&, float) const;                           // 642 0x0089D2E0
+    virtual float EntityGetHearingRadius(const CScriptThing&) const;                                     // 643 0x0089D340
+    virtual bool ManuallyTriggerTrap(const CScriptThing&) const;                                         // 644 0x00895090
+    virtual bool ManuallyResetTrap(const CScriptThing&) const;                                           // 645 0x008950E0
+    virtual void SetTimeOfDay(float) const;                                                              // 646 0x0088FDC0
+    virtual long GetTimeOfDay() const;                                                                   // 647 0x0088FE30
+    virtual void SetTimeAsStopped(bool, long&) const;                                                    // 648 0x0088FE80
+    virtual void FastForwardTimeTo(float, float) const;                                                  // 649 0x0088FE90
+    virtual bool IsTimeOfDayBetween(long, long) const;                                                   // 650 0x0088FE40
+    virtual long GetDayOfWeek() const;                                                                   // 651 0x0088FE50
+    virtual long GetDayCount() const;                                                                    // 652 0x0088FE70
+    virtual long GetWorldFrame() const;                                                                  // 653 0x0088E070
+    virtual long GetConstantFPS() const;                                                                 // 654 0x0088E080
+    virtual CCharString GetActiveQuestName() const;                                                      // 655 0x00891880
+    virtual void TransitionToTheme(const CCharString&, float) const;                                     // 656 0x0088FEE0
+    virtual void ResetToDefaultTheme(float) const;                                                       // 657 0x0088FF10
+    virtual void TransitionToThemeAllInternals(const CCharString&, float) const;                         // 658 0x0088FF30
+    virtual void ResetToDefaultThemeAllInternals(float) const;                                           // 659 0x0088FF80
+    virtual void TransitionToThemeExternals(const CCharString&, float) const;                            // 660 0x0088FFB0
+    virtual void ResetToDefaultThemeExternals(float) const;                                              // 661 0x0088FFF0
+    virtual void SetEnvironmentThemeWeightAllChannels(const CCharString&, float) const;                  // 662 0x00890010
+    virtual void SetEnvironmentThemeWeightAllInternals(const CCharString&, float) const;                 // 663 0x00890040
+    virtual void SetEnvironmentThemeWeightExternals(const CCharString&, float) const;                    // 664 0x00890090
+    virtual void SetSoundThemesAsEnabledForRegion(const CCharString&, bool) const;                       // 665 0x0088E0B0
+    virtual void SetAllSoundsAsMuted(bool) const;                                                        // 666 0x0088E090
+    virtual void* RadialBlurFadeTo(float, C3DVector, float, C3DVector, float, float, float) const;       // 668 0x008900D0
+    virtual void* RadialBlurFadeTo(float, float, float, float, float, float, float) const;               // 667 0x00890110
+    virtual void RadialBlurFadeOut(float, void*) const;                                                  // 669 0x00890150
+    virtual bool IsRadialBlurFadeActive() const;                                                         // 670 0x00890170
+    virtual void CancelRadialBlurFade() const;                                                           // 671 0x00890180
+    virtual void RadialBlurSetCenterWorldPos(void*, const C3DVector&) const;                             // 672 0x008901A0
+    virtual void* DisplacementMonochromeEffectColourFadeTo(float, const CRGBFloatColour&) const;         // 673 0x008901C0
+    virtual void DisplacementMonochromeEffectColourFadeOut(float, void*) const;                          // 674 0x008901E0
+    virtual void* ScreenFilterFadeTo(float, float, float, float, float, const CRGBFloatColour&, const std::vector<CScreenFilterSThingByPass,std::allocator<CScreenFilterSThingByPass> >&) const; // 675 0x008A9880
+    virtual void ScreenFilterFadeOut(float, void*) const;                                                // 676 0x00890200
+    virtual void SetThingAndCarriedItemsNotAffectedByScreenFilter(CScriptThing&, void*) const;           // 677 0x008A99F0
+    virtual void UnSetThingAndCarriedItemsNotAffectedByScreenFilter(CScriptThing&) const;                // 678 0x00897150
+    virtual bool IsGiftRomantic(const CCharString&) const;                                               // 679 0x00894BF0
+    virtual bool IsGiftFriendly(const CCharString&) const;                                               // 680 0x00894C90
+    virtual bool IsGiftOffensive(const CCharString&) const;                                              // 681 0x00894D30
+    virtual bool IsThingABed(const CScriptThing&) const;                                                 // 682 0x008A0E80
+    virtual bool IsThingAChest(const CScriptThing&) const;                                               // 683 0x008A0EB0
+    virtual bool IsThingADoor(const CScriptThing&) const;                                                // 684 0x008A0EE0
+    virtual bool IsThingSmashable(const CScriptThing&) const;                                            // 685 0x008A0F10
+    virtual bool IsThingSearchable(const CScriptThing&) const;                                           // 686 0x008A0F40
+    virtual void ApplyScriptBrush(const CCharString&) const;                                             // 687 0x0088F480
+    virtual void EnableDecals(bool) const;                                                               // 688 0x0088F4A0
+    virtual unsigned long PlayCriteriaSoundOnThing(const CScriptThing&, const CCharString&) const;       // 689 0x008A09B0
+    virtual unsigned long PlaySoundOnThing(const CScriptThing&, const CCharString&) const;               // 690 0x008A0A20
+    virtual unsigned long PlaySoundAtPos(const C3DVector&, const CCharString&) const;                    // 691 0x00891170
+    virtual unsigned long Play2DSound(const CCharString&) const;                                         // 692 0x0088F570
+    virtual bool IsSoundPlaying(unsigned long) const;                                                    // 693 0x0088F610
+    virtual void EnableSounds(bool) const;                                                               // 694 0x0088F620
+    virtual void StopSound(unsigned long) const;                                                         // 695 0x0088F660
+    virtual void OverrideMusic(EMusicSetType, bool, bool) const;                                         // 696 0x00891220
+    virtual void StopOverrideMusic(bool) const;                                                          // 697 0x008912A0
+    virtual void CacheMusicSet(EMusicSetType) const;                                                     // 698 0x00891310
+    virtual void EnableDangerMusic(bool) const;                                                          // 699 0x00891320
+    virtual bool IsDangerMusicEnabled() const;                                                           // 700 0x00891330
+    virtual void StartCountdownTimer(float) const;                                                       // 701 0x0088F8D0
+    virtual float GetCountdownTimer() const;                                                             // 702 0x0088F900
+    virtual void AutoSaveCheckPoint() const;                                                             // 703 0x0088F910
+    virtual void AutoSaveQuestStart() const;                                                             // 704 0x0088F920
+    virtual void AutoSave() const;                                                                       // 705 0x0088F930
+    virtual void SetSavingAsEnabled(bool) const;                                                         // 706 0x0088F940
+    virtual bool IsSavingEnabled() const;                                                                // 707 0x0088F950
+    virtual void SetSaveGameMarkerPos(const C3DVector&) const;                                           // 708 0x0088F960
+    virtual void ResetToFrontEnd() const;                                                                // 709 0x0088F970
+    virtual void SetGuildSealRecallLocation(const C3DVector&, float) const;                              // 710 0x0088F980
+    virtual C3DVector GetGuildSealRecallPos() const;                                                     // 711 0x0088F9B0
+    virtual float GetGuildSealRecallAngleXY() const;                                                     // 712 0x0088F9E0
+    virtual void SetReadableObjectText(const CScriptThing&, const CWideString&) const;                   // 713 0x008A0F70
+    virtual void SetReadableObjectTextTag(const CScriptThing&, const CCharString&) const;                // 714 0x008A0FD0
+    virtual CWideString GetFormattedString(const CCharString&, const std::vector<CWideString,std::allocator<CWideString> >&) const; // 715 0x00891340
+    virtual CWideString GetTextString(const CCharString&) const;                                         // 716 0x008913A0
+    virtual void AddRumourCategory(const CCharString&) const;                                            // 717 0x008A9DB0
+    virtual void AddNewRumourToCategory(const CCharString&, const CCharString&) const;                   // 718 0x008A9DD0
+    virtual void RemoveRumourCategory(const CCharString&) const;                                         // 719 0x008A9E00
+    virtual void SetCategoryActivity(const CCharString&, bool) const;                                    // 720 0x008A96C0
+    virtual void AddGossipVillage(const CCharString&, const CCharString&) const;                         // 721 0x008A9E30
+    virtual void AddGossipFactionToCategory(const CCharString&, const CCharString&) const;               // 722 0x008A9E60
+    virtual void SetIsGossipForPlayer(const CCharString&, bool) const;                                   // 724 0x008A96F0
+    virtual void SetIsGossipForPlayer(CCharString, bool);                                                // 723 0x008A97D0
+    virtual void UpdateOnlineScore_Archery(float) const;                                                 // 725 0x008A1040
+    virtual void UpdateOnlineScore_ChickenKick(float) const;                                             // 726 0x008A10C0
+    virtual void UpdateOnlineScore_ChapelOrTemple(float) const;                                          // 727 0x008A1140
+    virtual void UpdateOnlineScore_FishingCompo(float) const;                                            // 728 0x008A11C0
+    virtual void UpdateScore_FishingCompetition(float) const;                                            // 729 0x008A1240
+    virtual float GetBestTimePairs() const;                                                              // 730 0x008A1590
+    virtual float GetBestTimeSorting() const;                                                            // 731 0x008A15F0
+    virtual long GetBestScoreBlackjack() const;                                                          // 732 0x008A1650
+    virtual long GetBestScoreCoinGolfOakVale() const;                                                    // 733 0x008A16B0
+    virtual long GetBestScoreCoinGolfSnowSpire() const;                                                  // 734 0x008A1710
+    virtual long GetBestScoreShoveHaPenny() const;                                                       // 735 0x008A1770
+    virtual float GetBestTimeGuessTheAddition() const;                                                   // 736 0x008A17D0
+    virtual bool IsHeroInTavernGame() const;                                                             // 737 0x008913C0
+    virtual long GetNumHousesOwned() const;                                                              // 738 0x008A12A0
+    virtual void StartSneaking() const;                                                                  // 739 0x008A1300
+    virtual long GetStealDuration(const CScriptThing&) const;                                            // 740 0x008A1360
+    virtual void SetUseableByHero(const CScriptThing&, bool) const;                                      // 741 0x008A1830
+    virtual void SetOwnedByHero(const CScriptThing&, bool) const;                                        // 742 0x008A18F0
+    virtual void SetTavernTableAvailableForUse(const CScriptThing&, bool) const;                         // 743 0x008A1890
+    virtual void SetIsThingTurncoatable(const CScriptThing&, bool) const;                                // 744 0x008A1950
+    virtual void SetIsThingForcePushable(const CScriptThing&, bool) const;                               // 745 0x0088F9F0
+    virtual void SetIsThingLightningable(const CScriptThing&, bool) const;                               // 746 0x0088FA20
+    virtual void SetIsThingEpicSpellable(const CScriptThing&, bool) const;                               // 747 0x0088FA50
+    virtual bool IsThingTurncoated(const CScriptThing&) const;                                           // 748 0x008A19B0
+    virtual void AddCreatureScriptedMode(const CScriptThing&, const CCharString&) const;                 // 749 0x008A1A10
+    virtual void RemoveCreatureScriptedMode(const CScriptThing&) const;                                  // 750 0x008A1AB0
+    virtual void ForceShipsVisible() const;                                                              // 751 0x008A7F60
+    virtual bool GetSleepingPositionAndOrientationFromBed(const CScriptThing&, const CScriptThing&, C3DVector&, C3DVector&); // 752 0x008A1B10
+    virtual void SetBedAvailability(const CScriptThing&, bool);                                          // 753 0x008A1BF0
+    virtual void RepopulateVillage(const CScriptThing&) const;                                           // 754 0x008A1C50
+    virtual void SmashAllWindowsWithinRadiusOfPoint(const C3DVector&, float);                            // 755 0x008A8010
+    virtual CScriptThing SetResidency(const CScriptThing&, bool);                                        // 756 0x008A1CC0
+    virtual void SetThankingPhrase(CScriptThing, unsigned long);                                         // 757 0x008A1E50
+    virtual unsigned long GetThankingPhrase(CScriptThing);                                               // 758 0x008A1F30
+    virtual void ResetThankingPhrase(CScriptThing);                                                      // 759 0x008A2020
+    virtual void SetIgnoringPhrase(CScriptThing, unsigned long);                                         // 760 0x008A2100
+    virtual unsigned long GetIgnoringPhrase(CScriptThing);                                               // 761 0x008A21E0
+    virtual void ResetIgnoringPhrase(CScriptThing);                                                      // 762 0x008A22D0
+    virtual void SetWanderCentrePoint(CScriptThing, C3DVector);                                          // 763 0x008A23B0
+    virtual C3DVector GetWanderCentrePoint(CScriptThing);                                                // 764 0x008A24C0
+    virtual void ResetWanderCentrePoint(CScriptThing);                                                   // 765 0x008A2590
+    virtual void SetWanderMinDistance(CScriptThing, float);                                              // 766 0x008A2690
+    virtual float GetWanderMinDistance(CScriptThing);                                                    // 767 0x008A2770
+    virtual void ResetWanderMinDistance(CScriptThing);                                                   // 768 0x008A2870
+    virtual void SetWanderMaxDistance(CScriptThing, float);                                              // 769 0x008A2950
+    virtual float GetWanderMaxDistance(CScriptThing);                                                    // 770 0x008A2A30
+    virtual void ResetWanderMaxDistance(CScriptThing);                                                   // 771 0x008A2B30
+    virtual void SetGossipCounter(CScriptThing, long);                                                   // 772 0x008A2C10
+    virtual long GetGossipCounter(CScriptThing);                                                         // 773 0x008A2CF0
+    virtual void ResetGossipCounter(CScriptThing);                                                       // 774 0x008A2DE0
+    virtual void SetMaxGossipPhrase(CScriptThing, long);                                                 // 775 0x008A2EC0
+    virtual long GetMaxGossipPhrase(CScriptThing);                                                       // 776 0x008A2FA0
+    virtual void ResetMaxGossipPhrase(CScriptThing);                                                     // 777 0x008A3090
+    virtual void SetWarningPhrase(CScriptThing, unsigned long);                                          // 778 0x008A3170
+    virtual unsigned long GetWarningPhrase(CScriptThing);                                                // 779 0x008A3250
+    virtual void ResetWarningPhrase(CScriptThing);                                                       // 780 0x008A3340
+    virtual void SetBeerRequestPhrase(CScriptThing, unsigned long);                                      // 781 0x008A3420
+    virtual unsigned long GetBeerRequestPhrase(CScriptThing);                                            // 782 0x008A3500
+    virtual void ResetBeerRequestPhrase(CScriptThing);                                                   // 783 0x008A35F0
+    virtual void SetScriptingStateGroup(CScriptThing, EScriptingStateGroups);                            // 784 0x008A36D0
+    virtual EScriptingStateGroups GetScriptingStateGroup(CScriptThing);                                  // 785 0x008A37B0
+    virtual void ResetScriptingStateGroup(CScriptThing);                                                 // 786 0x008A38A0
+    virtual void SetMaxHeroReactionDistance(CScriptThing, float);                                        // 787 0x008A3980
+    virtual float GetMaxHeroReactionDistance(CScriptThing);                                              // 788 0x008A3A60
+    virtual void ResetMaxHeroReactionDistance(CScriptThing);                                             // 789 0x008A3B60
+    virtual void SetActionFrequency(CScriptThing, long);                                                 // 790 0x008A3C40
+    virtual long GetActionFrequency(CScriptThing);                                                       // 791 0x008A3D20
+    virtual void ResetActionFrequency(CScriptThing);                                                     // 792 0x008A3E10
+    virtual void SetActionFrequencyVariation(CScriptThing, float);                                       // 793 0x008A3EF0
+    virtual float GetActionFrequencyVariation(CScriptThing);                                             // 794 0x008A3FD0
+    virtual void ResetActionFrequencyVariation(CScriptThing);                                            // 795 0x008A40D0
+    virtual void SetAction(CScriptThing, CCharString);                                                   // 796 0x008A41B0
+    virtual CCharString GetAction(CScriptThing);                                                         // 797 0x008A42C0
+    virtual void ResetAction(CScriptThing);                                                              // 798 0x008A4390
+    virtual void SetFaceHeroForAction(CScriptThing, bool);                                               // 799 0x008A4480
+    virtual bool GetFaceHeroForAction(CScriptThing);                                                     // 800 0x008A4560
+    virtual void ResetFaceHeroForAction(CScriptThing);                                                   // 801 0x008A4650
+    virtual void SetTargetName(CScriptThing, CCharString);                                               // 802 0x008A4730
+    virtual CCharString GetTargetName(CScriptThing);                                                     // 803 0x008A4840
+    virtual void ResetTargetName(CScriptThing);                                                          // 804 0x008A4910
+    virtual void SetFollowDistance(CScriptThing, float);                                                 // 805 0x008A4A00
+    virtual float GetFollowDistance(CScriptThing);                                                       // 806 0x008A4AE0
+    virtual void ResetFollowDistance(CScriptThing);                                                      // 807 0x008A4BE0
+    virtual void SetAttackHeroOnSight(CScriptThing, bool);                                               // 808 0x008A4CC0
+    virtual bool GetAttackHeroOnSight(CScriptThing);                                                     // 809 0x008A4DA0
+    virtual void ResetAttackHeroOnSight(CScriptThing);                                                   // 810 0x008A4E90
+    virtual void SetTimeToSpendHarassingHero(CScriptThing, long);                                        // 811 0x008A4F70
+    virtual long GetTimeToSpendHarassingHero(CScriptThing);                                              // 812 0x008A5050
+    virtual void ResetTimeToSpendHarassingHero(CScriptThing);                                            // 813 0x008A5140
+    virtual void SetCombatNearbyEnemyFleeingBreakOffRange(CScriptThing, float);                          // 814 0x008A5220
+    virtual float GetCombatNearbyEnemyFleeingBreakOffRange(CScriptThing);                                // 815 0x008A5300
+    virtual void ResetCombatNearbyEnemyFleeingBreakOffRange(CScriptThing);                               // 816 0x008A5400
+    virtual void SetCombatNearbyBreakOffRange(CScriptThing, float);                                      // 817 0x008A54E0
+    virtual float GetCombatNearbyBreakOffRange(CScriptThing);                                            // 818 0x008A55C0
+    virtual void ResetCombatNearbyBreakOffRange(CScriptThing);                                           // 819 0x008A56C0
+    virtual void SetStealStealableItems(CScriptThing, bool);                                             // 820 0x008A57B0
+    virtual bool GetStealStealableItems(CScriptThing);                                                   // 821 0x008A5890
+    virtual void ResetStealStealableItems(CScriptThing);                                                 // 822 0x008A5980
+    virtual void SetRecoverStealableItems(CScriptThing, bool);                                           // 823 0x008A5A70
+    virtual bool GetRecoverStealableItems(CScriptThing);                                                 // 824 0x008A5B50
+    virtual void ResetRecoverStealableItems(CScriptThing);                                               // 825 0x008A5C40
+    virtual void SetTakeStealableItemToRandomDestination(CScriptThing, bool);                            // 826 0x008A5D30
+    virtual bool GetTakeStealableItemToRandomDestination(CScriptThing);                                  // 827 0x008A5E10
+    virtual void ResetTakeStealableItemToRandomDestination(CScriptThing);                                // 828 0x008A5F00
+    virtual void SetKillSelfAndStealableItemAfterReachingDestination(CScriptThing, bool);                // 829 0x008A5FF0
+    virtual bool GetKillSelfAndStealableItemAfterReachingDestination(CScriptThing);                      // 830 0x008A60D0
+    virtual void ResetKillSelfAndStealableItemAfterReachingDestination(CScriptThing);                    // 831 0x008A61C0
+    virtual void SetAllowedToFollow(CScriptThing, bool);                                                 // 832 0x008A62B0
+    virtual bool GetAllowedToFollow(CScriptThing);                                                       // 833 0x008A6390
+    virtual void ResetAllowedToFollow(CScriptThing);                                                     // 834 0x008A6480
+    virtual void SetTableName(CScriptThing, CCharString);                                                // 835 0x008A6570
+    virtual CCharString GetTableName(CScriptThing);                                                      // 836 0x008A6680
+    virtual void ResetTableName(CScriptThing);                                                           // 837 0x008A6750
+    virtual void SetSeatName(CScriptThing, CCharString);                                                 // 838 0x008A6840
+    virtual CCharString GetSeatName(CScriptThing);                                                       // 839 0x008A6950
+    virtual void ResetSeatName(CScriptThing);                                                            // 840 0x008A6A20
+    virtual void SetDisableHeadLooking(CScriptThing, bool);                                              // 841 0x008A6B10
+    virtual bool GetDisableHeadLooking(CScriptThing);                                                    // 842 0x008A6BF0
+    virtual void ResetDisableHeadLooking(CScriptThing);                                                  // 843 0x008A6CE0
+    virtual void SetIsPushableByHero(CScriptThing, bool);                                                // 844 0x008A6DD0
+    virtual bool GetIsPushableByHero(CScriptThing);                                                      // 845 0x008A6EB0
+    virtual void ResetIsPushableByHero(CScriptThing);                                                    // 846 0x008A6FA0
+    virtual void SetLookForFiniteTime(CScriptThing, bool);                                               // 847 0x008A7090
+    virtual bool GetLookForFiniteTime(CScriptThing);                                                     // 848 0x008A7170
+    virtual void ResetLookForFiniteTime(CScriptThing);                                                   // 849 0x008A7260
+    virtual void SetAvoidRegionExits(CScriptThing, bool);                                                // 850 0x008A7350
+    virtual bool GetAvoidRegionExits(CScriptThing);                                                      // 851 0x008A7430
+    virtual void ResetAvoidRegionExits(CScriptThing);                                                    // 852 0x008A7520
+    virtual void SetTargetingDistanceOffset(CScriptThing, float);                                        // 853 0x008A7610
+    virtual float GetTargetingDistanceOffset(CScriptThing);                                              // 854 0x008A76F0
+    virtual void ResetTargetingDistanceOffset(CScriptThing);                                             // 855 0x008A77F0
+    virtual void SetPlayerUsingMeleeDummies(bool);                                                       // 856 0x0088FA80
+    virtual bool GetPlayerUsingMeleeDummies();                                                           // 857 0x0088FA90
+    virtual void SetPlayerUsingRangedDummies(bool);                                                      // 858 0x0088FAA0
+    virtual bool GetPlayerUsingRangedDummies();                                                          // 859 0x0088FAB0
+    virtual void SetPlayerUsingWillDummies(bool);                                                        // 860 0x0088FAC0
+    virtual bool GetPlayerUsingWillDummies();                                                            // 861 0x0088FAD0
+    virtual void SetCheapHeadLooking(bool);                                                              // 862 0x0088FAE0
+    virtual bool GetCheapHeadLooking();                                                                  // 863 0x0088FAF0
+    virtual void SetQuitTavernGame(bool);                                                                // 864 0x0088FB00
+    virtual bool GetQuitTavernGame();                                                                    // 865 0x0088FB10
+    virtual void SetPrizeTavernTable(bool);                                                              // 866 0x0088FB20
+    virtual bool GetPrizeTavernTable();                                                                  // 867 0x0088FB30
+    virtual void SetBettingActive(bool);                                                                 // 868 0x0088FB40
+    virtual bool GetBettingActive();                                                                     // 869 0x0088FB50
+    virtual void SetBettingAccept(bool);                                                                 // 870 0x0088FB60
+    virtual bool GetBettingAccept();                                                                     // 871 0x0088FB70
+    virtual void SetBettingAmount(long);                                                                 // 872 0x0088FB80
+    virtual long GetBettingAmount();                                                                     // 873 0x0088FB90
+    virtual void SetCountBetMoneyDown(bool);                                                             // 874 0x0088FBA0
+    virtual bool GetCountBetMoneyDown();                                                                 // 875 0x0088FBB0
+    virtual void SetSpotTheAdditionBeaten(bool);                                                         // 876 0x0088FBC0
+    virtual bool GetSpotTheAdditionBeaten();                                                             // 877 0x0088FBD0
+    virtual void SetGlobalTargetingDistanceOffset(float);                                                // 878 0x0088FBE0
+    virtual float GetGlobalTargetingDistanceOffset();                                                    // 879 0x0088FBF0
+    virtual void SetTradingPriceMult(float);                                                             // 880 0x0088FC00
+    virtual float GetTradingPriceMult();                                                                 // 881 0x0088FC10
+    virtual void SetBoastingEnabled(bool);                                                               // 882 0x0088FC20
+    virtual bool GetBoastingEnabled();                                                                   // 883 0x0088FC30
+    virtual void SetActiveGossipCategories(CCharString, bool);                                           // 884 0x008A9720
+    virtual bool* GetActiveGossipCategories(CCharString);                                                // 886 0x008A9760
+    virtual const std::map<CCharString,bool,std::less<CCharString>,std::allocator<std::pair<CCharString const,bool> > >& GetActiveGossipCategories(); // 885 0x0088FC40
+    virtual int GetActiveGossipCategoriesSize();                                                         // 887 0x00893040
+    virtual void ClearActiveGossipCategories();                                                          // 888 0x008A78E0
+    virtual bool* GetIsGossipForPlayer(CCharString);                                                     // 890 0x008A9810
+    virtual const std::map<CCharString,bool,std::less<CCharString>,std::allocator<std::pair<CCharString const,bool> > >& GetIsGossipForPlayer(); // 889 0x0088FC50
+    virtual int GetIsGossipForPlayerSize();                                                              // 891 0x00893050
+    virtual void ClearIsGossipForPlayer();                                                               // 892 0x008A7930
+    virtual void SetGossip(CCharString, CCharString, long);                                              // 893 0x008A9E90
+    virtual CCharString GetGossip(CCharString, long);                                                    // 895 0x008A9F00
+    virtual const std::vector<CCharString,std::allocator<CCharString> >* GetGossip(CCharString);         // 894 0x008A9F50
+    virtual int GetGossipSize(CCharString);                                                              // 896 0x008A9FC0
+    virtual void ClearGossip(CCharString);                                                               // 897 0x008AA010
+    virtual void RemoveGossip(CCharString);                                                              // 898 0x008AA050
+    virtual void AddGossip(CCharString, CCharString);                                                    // 900 0x008AA090
+    virtual void AddGossip(CCharString);                                                                 // 899 0x008AA0D0
+    virtual void SetGossipVillages(CCharString, CCharString, long);                                      // 901 0x008AA0F0
+    virtual CCharString GetGossipVillages(CCharString, long);                                            // 903 0x008AA160
+    virtual const std::vector<CCharString,std::allocator<CCharString> >* GetGossipVillages(CCharString); // 902 0x008AA1B0
+    virtual int GetGossipVillagesSize(CCharString);                                                      // 904 0x008AA220
+    virtual void ClearGossipVillages(CCharString);                                                       // 905 0x008AA270
+    virtual void RemoveGossipVillages(CCharString);                                                      // 906 0x008AA2B0
+    virtual void AddGossipVillages(CCharString, CCharString);                                            // 908 0x008AA2F0
+    virtual void AddGossipVillages(CCharString);                                                         // 907 0x008AA330
+    virtual void SetGossipFactions(CCharString, CCharString, long);                                      // 909 0x008AA350
+    virtual CCharString GetGossipFactions(CCharString, long);                                            // 911 0x008AA3C0
+    virtual const std::vector<CCharString,std::allocator<CCharString> >* GetGossipFactions(CCharString); // 910 0x008AA410
+    virtual int GetGossipFactionsSize(CCharString);                                                      // 912 0x008AA480
+    virtual void ClearGossipFactions(CCharString);                                                       // 913 0x008AA4D0
+    virtual void RemoveGossipFactions(CCharString);                                                      // 914 0x008AA510
+    virtual void AddGossipFactions(CCharString, CCharString);                                            // 916 0x008AA550
+    virtual void AddGossipFactions(CCharString);                                                         // 915 0x008AA590
+public:
+    virtual void SetTrapAsActive(const CScriptThing&, bool) const;                                       // 917 0x00895130
+    CWorld*                 World;                           // +0x04
+    CMainGameComponent*     Component;                       // +0x08
+    CDisplayEngine*         DisplayEngine;                   // +0x0c
+    CGameDefinitionManager* DefinitionManager;               // +0x10
+    CPlayerManager*         PlayerManager;                   // +0x14
+    CThingSearchTools*      ThingSearchTools;                // +0x18
+    long                    CurrentPlayer;                   // +0x1c
+    long                    CurrentLevelID;                  // +0x20
+    long                    CurrentScriptLevelID;            // +0x24
+    long                    CurrentScriptID;                 // +0x28
+    bool                    InMovieSequence;                 // +0x2c
+    bool                    AllowScreenFadingIfAlreadyFaded; // +0x2d
+    unsigned char           _pad_0x2e[0x2];                  // +0x2e
+    unsigned char           HeroSThing[0xc];                 // +0x30 CScriptThing
+    unsigned char           ScriptTimers[0xc];               // +0x3c std::map<long,long> (STLport)
+    long                    CameraResetToViewBehindHeroCount; // +0x48
+    long                    CreateCreatureDelayFrames;       // +0x4c
+};
+FABLE_STATIC_ASSERT(sizeof(CGameScriptInterface) == 0x50);
+FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, World) == 0x04);
+FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, HeroSThing) == 0x30);
+FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) == 0x4c);
+#else
 #include <stddef.h>
 #include "rebuild_abi.h"
 
@@ -59,4 +1025,5 @@ FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, ScriptTimers) == 0x3c);
 FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CameraResetToViewBehindHeroCount) == 0x48);
 FABLE_STATIC_ASSERT(offsetof(CGameScriptInterface, CreateCreatureDelayFrames) == 0x4c);
 
+#endif // FABLE_RETAIL_NSCRIPT
 #endif // FABLE_ENGINE_CGAMESCRIPTINTERFACE_H

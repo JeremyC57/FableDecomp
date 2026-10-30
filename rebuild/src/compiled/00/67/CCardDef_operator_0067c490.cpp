@@ -10,11 +10,9 @@
 // returned. Retail keeps `&other+0x29` in ebx and `this+0x29` in ebp and copies the flag byte at
 // +0x0d FROM THOSE registers: the vector and the flag are one sub-object whose inline operator=
 // is expanded here (a flat member list loads the byte from [edi+36h] instead).
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 #pragma pack(push, 1)
-class CDefClassBase { public:
-    unsigned char _body[0x25];
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
 
 struct CRetailVector_long {                     // VC6-era Dinkumware vector: first / last / end
     long* first;
@@ -40,12 +38,16 @@ struct CSubObject_00471e44 {
     CSubObject_00471e44& operator=(const CSubObject_00471e44& other);   // 0x00471E44
 };
 
+// def vtable 0x01243A44: slot 0 0x004EC0D4 (implicit inline dtor); real overrides from the def vtable scan
 class CCardDef : public CDefClassBase { public:
     long                m_id;                   // +0x25
     SAttitudeBlock      m_block;                // +0x29 (vector + flag)
     unsigned char       m_pad37[5];             // +0x37..+0x3b
     CSubObject_00471e44 m_tail;                 // +0x3c
     CCardDef& operator=(const CCardDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004EC0B3
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004EC0F0
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004EC0AF
 };
 #pragma pack(pop)
 

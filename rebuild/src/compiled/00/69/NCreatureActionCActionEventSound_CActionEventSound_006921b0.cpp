@@ -7,11 +7,7 @@
 // Shape (family M194, representative 0x00692170): the default constructor over the inline protected CActionEventBase()
 //   (`Finished(false)`, its own out-of-line copy is 0x006920F0, family M193): base constructor call, the Finished store, then
 //   this class's vtable (CActionEventBase's store is dead). Speed TU.
-class CBaseClass {                                         // vtable 0x01231710, RTTI .?AVCBaseClass@@
-public:
-    CBaseClass();                                         // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CThingCreatureBase;
 class CGameCameraManager;
 namespace NCreatureAction {

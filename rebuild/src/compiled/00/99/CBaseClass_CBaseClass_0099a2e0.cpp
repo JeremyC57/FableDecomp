@@ -5,11 +5,7 @@
 //   public virtual ??1CBaseClass@@UAE@XZ right after ??0CBaseClass@@QAE@XZ (0x0099A2D0 here). Derived destructors
 //   (CBaseObject 0x0099A430, CBaseClassNonCopyable 0x0099A300) inline the same store. The row was the address-named
 //   free helper FableRestoreCBaseVTable_0099A2E0(CBase*).
-class CBaseClass {                                     // vtable 0x01231710
-public:
-    CBaseClass();                                      // 0x0099A2D0
-    virtual ~CBaseClass();                             // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 CBaseClass::~CBaseClass()
 {

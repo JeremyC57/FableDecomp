@@ -15,11 +15,7 @@
 // and the Changed byte cleared.
 // Layout: Changed is +0x3D in retail (PDB +0x55, see OnInitialActivate 0x0071C790); a local model.
 
-class CBaseClass {
-public:
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                                 // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 struct CMessageOnMorphChanged : CBaseClass {       // NTCMessages::CMessageOnMorphChanged
     CMessageOnMorphChanged() {}

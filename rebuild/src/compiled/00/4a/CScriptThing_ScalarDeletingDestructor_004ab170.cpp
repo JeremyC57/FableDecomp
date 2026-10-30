@@ -36,11 +36,7 @@ struct CCountedPointer {
     }
 };
 
-class CBaseClass {
-public:
-    CBaseClass();                               // 0x0099A2D0 (only needed by the constructing helper below)
-    virtual ~CBaseClass();                      // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing : public CBaseClass { public:
     CCountedPointer PImp;                  // +0x4

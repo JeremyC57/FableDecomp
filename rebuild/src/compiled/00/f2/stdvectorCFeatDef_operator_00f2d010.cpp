@@ -24,6 +24,7 @@ public:
     virtual void Transfer(CPersistContext& context);    // slot 18 0x00F2D330
     virtual void Copy(const CDefClassBase* other);      // slot 19 0x00F2D680
     virtual unsigned long GetSizeofClass();             // slot 20 0x00F2D2F0
+    unsigned char _pad_0x25[0x3];                       // +0x25 (CDefClassBase is 0x25 packed; FeatName is 4-aligned)
     unsigned char _members[0x3c];                       // +0x28 FeatName .. CO_ItemName (opaque here)
     CFeatDef(const CFeatDef& other);                    // 0x00F2D270
     CFeatDef& operator=(const CFeatDef& other);         // 0x00F2D200

@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00D34FD0, 74 bytes, `__fastcall` (first in ecx, last in edx, result and the
 //   tag on the stack: `ret 8`). Callers: vector<CFireHeartPatternDef>::operator= @ 0x00D34DEC / 0x00D34E14.
 // Label correction: the catalog "std_vector_CConversation_CopyElements" names the wrong element: the 0x34-byte element is
-//   CFireHeartPatternDef (CDefClassBase 0x28 bytes + vector<bool> PadActive +0x28; its construct @ 0x00D34EC0 stores
+//   CFireHeartPatternDef (CDefClassBase 0x25 packed bytes + vector<bool> PadActive +0x28; its construct @ 0x00D34EC0 stores
 //   vtable 0x012CCC50), not CConversation (Ego_r.pdb 108 bytes, four vectors). 0x00431F10 (manifest
 //   "CThingBuildingDef::operator=") is the shared CDefClassBase::operator=, 0x00462E78 ("CSimpleMemoryPool_AssignFrom")
 //   is vector<bool>::operator=.
@@ -15,12 +15,8 @@
 //   the divide by 0x34 is the 0x4EC4EC4F multiply. With plain `inline` VC7.1 keeps __copy out of line (the inlined
 //   element operator= makes it too big: `push 0 ; lea eax,[esp+8] ; call`, 25 v 74); `__forceinline` on __copy
 //   reproduces retail's single body.
-class CDefClassBase {                                   // 0x28 bytes in retail (Ego_r.pdb 37 + padding)
-public:
-    virtual ~CDefClassBase();
-    unsigned char _body[0x24];
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 namespace std {
 struct __false_type { };
 struct random_access_iterator_tag { };

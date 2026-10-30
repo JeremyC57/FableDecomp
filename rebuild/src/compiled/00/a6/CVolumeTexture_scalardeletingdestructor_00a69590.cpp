@@ -9,11 +9,7 @@
 // Shape: VC7.1 resets the vptr in a user-written destructor, so the store is the class's own vtable; the destructor body is
 //   one call (`this` is already in ecx), the base destructor follows. The deleting destructor is emitted with the vtable, in
 //   a TU that constructs the class: MakeOne is that construction, nothing more.
-class CBaseClass {
-public:
-    CBaseClass();
-    virtual ~CBaseClass();                              // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CVolumeTexture : public CBaseClass {
 public:
     CVolumeTexture() { }

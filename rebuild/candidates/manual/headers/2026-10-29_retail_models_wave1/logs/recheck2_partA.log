@@ -1,0 +1,23 @@
+addr       parity           behav  name
+00ef54a0   WARN RELOC_NAME: ??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z -> 00e24760 labelled 'CConsoleCommandParameters::CConsoleCommandParameters'
+00ef54a0   RELOCATION_MATCH PASS   Main
+00ef5670   WARN RELOC_NAME: ??0?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@QAE@ABVCIsThingAlive@1@0@Z -> 00e24760 labelled 'CConsoleCommandParameters::CConsoleCommandParameters'
+00ef5670   RELOCATION_MATCH PASS   Main
+00f1a8f0   RELOCATION_MATCH PASS   OnPredicateFail
+00ddb570   RELOCATION_MATCH PASS   Init
+00f0eda0   RELOCATION_MATCH PASS   WatchForSpyDeath
+00f26b90   WARN RELOC_NAME: ??4?$vector@VCHeroSoulsRoundDef@@V?$allocator@VCHeroSoulsRoundDef@@@std@@@std@@QAEAAV01@ABV01@@Z -> 00f26c30 labelled '_global::std_vector_Conversation_Assign3'
+00f26b90   RELOCATION_MATCH PASS   Init
+00f05f30   RELOCATION_MATCH PASS   Init
+00e25ab0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00e25ab0   RELOCATION_MATCH PASS   Main
+
+WINS: 8
+  00ef54a0 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CCrate1::?Main@CCrate1@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00ef5670 RELOCATION_MATCH NScript::CPersonalScript_EmptyScript::CCrate2::?Main@CCrate2@CPersonalScript_EmptyScript@NScript@@EAEXXZ
+  00f1a8f0 RELOCATION_MATCH NScript::CQ_ArenaScript::CArenaEnemy::?OnPredicateFail@CArenaEnemy@CQ_ArenaScript@NScript@@EAEXXZ
+  00ddb570 RELOCATION_MATCH NScript::CQ_PrisonRaceScript::CPrisonRaceGuard::?Init@CPrisonRaceGuard@CQ_PrisonRaceScript@NScript@@EAEXXZ
+  00f0eda0 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::?WatchForSpyDeath@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+  00f26b90 RELOCATION_MATCH NScript::CQ_HeroSoulsArenaScript::?Init@CQ_HeroSoulsArenaScript@NScript@@UAEXXZ
+  00f05f30 RELOCATION_MATCH NScript::CQ_AmbushTradersScript::CAT_BanditAlly::?Init@CAT_BanditAlly@CQ_AmbushTradersScript@NScript@@EAEXXZ
+  00e25ab0 RELOCATION_MATCH NScript::CQS_GuardianSisterInfoScript::?Main@CQS_GuardianSisterInfoScript@NScript@@UAEXXZ

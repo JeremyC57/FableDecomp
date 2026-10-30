@@ -1,0 +1,9 @@
+addr	file	family	reason
+00461d2c	CCombatAbilityBlockProjectileWeaponAttackDef_Copy_00461d2c.cpp	DCB	the row instantiates a derived def that is abstract under the shared header (no def vtable entry for its class in work/def_vtables.tsv) and its zero-sized array member blocks the copy; needs the class's real overrides
+004e02f2	CSpotLightDef_operator_004e02f2.cpp	DCB	DIFFER 63v63: member offsets of the opaque derived model do not survive the retail 0x25 packed base (wave 2: re-model the derived members)
+004e1225	CDecapitationDef_Copy_004e1225.cpp	DCB	the row declares Copy with a second spelling (C2535 against the added override); needs a hand edit
+004e5f51	CReplaceableMeshDef_Copy_004e5f51.cpp	DCB	DIFFER 31v31: private-member access workaround in the free Copy helper changes codegen; hand edit
+004e6f0b	CHeroMorphDef_operator_004e6f0b.cpp	DCB	the row's local CVectorMap template (2 parameters) clashes with the header's forward declaration (3 parameters)
+00675c00	CCreatureDef_operator_00675c00.cpp	DCB	the row's local CVectorMap / CKeyPairCompareLess clash with the header's forward declarations
+0067c980	CBlurredAttitudesDef_Copy_0067c980.cpp	DCB	SAME bytes but the leaf symbol changes ?Copy@CBlurredAttitudesDef@@QAE.. -> UAE.. (Copy is the slot 19 override, so the retail spelling is the U one): needs the catalog/NAME_FIXES respelling first
+00f05f30	NScriptCQAmbushTradersScriptCATBanditAlly_Init_00f05f30.cpp	PartA (partial)	kept its local CScriptThing / CEntityScriptBase: retail inlines the CScriptThing copy at the by-value argument but calls 0x004ABE90 for the CSpawnedFunc1 member copy; the shared model with an inline copy expands both (427 vs 409 bytes). CGameScriptInterface/CTimer/CScriptBase moved to the shared headers (SAME)

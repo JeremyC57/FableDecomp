@@ -12,10 +12,8 @@
 // Shape: memberwise assignment in declaration order; dword members copy through eax.
 #pragma optimize("s", on)   // the def module is size-optimised
 
-class CDefClassBase { public:
-    unsigned char _body[0x28];          // vptr, resource links, PDefManager, GlobalIndex, flag bits
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 class CDefString { public:                     // a def-string table index (4 bytes, trivially copied)
     long Index;
@@ -40,6 +38,7 @@ class CCharString { public:                    // ref-counted string handle (4 b
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
+// def vtable 0x01241DDC: slot 0 0x004E2154 (implicit inline dtor); real overrides from the def vtable scan
 class CVillageDef : public CDefClassBase { public:                                // vtable 0x01241DDC
     CVillageTaskTypeVector Tasks;               // +0x28
     CDefString PatrolTrackName;                 // +0x34
@@ -85,6 +84,9 @@ class CVillageDef : public CDefClassBase { public:                              
     long FramesBeforeGuardSnoop;                // +0x104
     long FramesBeforeGuardSnoopNightShops;      // +0x108
     CVillageDef& operator=(const CVillageDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E82C7
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E1E01
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004DFF9F
 };
 
 CVillageDef& CVillageDef::operator=(const CVillageDef& other)

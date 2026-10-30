@@ -11,11 +11,9 @@
 // Shape: the compiler-generated assignment written out in declaration order; float members copy through eax as integer moves.
 #pragma optimize("s", on)
 enum EOpinionDeedType { };                                  // enumerators not needed
-class CDefClassBase {                                         // 37 bytes in retail
-public:
-    unsigned char _body[0x25];
-    CDefClassBase& operator=(const CDefClassBase& other);        // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x0123A7AC: slot 0 0x004D7C51 (implicit inline dtor); real overrides from the def vtable scan
 class CKickableDef : public CDefClassBase {                       // vtable 0x0123A7AC
 public:
     float BaseDistanceToTravel;                        // +0x28
@@ -30,6 +28,9 @@ public:
     EOpinionDeedType OpinionDeedTypeToEnemies;         // +0x4C
     bool IgnoreNavigationTest;                         // +0x50
     CKickableDef& operator=(const CKickableDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004DDC74
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E021D
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004D33C2
 };
 
 CKickableDef& CKickableDef::operator=(const CKickableDef& other)

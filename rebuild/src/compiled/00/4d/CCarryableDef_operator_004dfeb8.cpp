@@ -12,10 +12,8 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 class C3DVector { public:
     float X;
@@ -23,6 +21,7 @@ class C3DVector { public:
     float Z;
 };
 
+// def vtable 0x0123E7EC: slot 0 0x004DA78B (implicit inline dtor); real overrides from the def vtable scan
 class CCarryableDef : public CDefClassBase { public:
     long ActiveCarrySlot;               // +0x28
     long SecondaryActiveCarrySlot;      // +0x2c
@@ -33,6 +32,9 @@ class CCarryableDef : public CDefClassBase { public:
     float PassiveCarrySlotScale;        // +0x48
     bool IncludeInThingScansWhenCarried;// +0x4c
     CCarryableDef& operator=(const CCarryableDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004DD924
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004DFEB3
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004D7A0B
 };
 
 CCarryableDef& CCarryableDef::operator=(const CCarryableDef& other)

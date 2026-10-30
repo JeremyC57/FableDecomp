@@ -12,10 +12,8 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 class CSoundMap { public:                      // two CVectorMaps (SoundMap, CriteriaMap), 0x20 bytes in retail
     void* m_soundMap[4];                // CVectorMap<unsigned long, CSoundPair>: vector + sorted flag
@@ -28,12 +26,16 @@ class CCharString { public:
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
+// def vtable 0x01233A44: slot 0 0x0045CE06 (implicit inline dtor); real overrides from the def vtable scan
 class CEntitySoundDef : public CDefClassBase { public:
     CSoundMap SoundMap;                 // +0x28
     CCharString SoundIdentifier;        // +0x48
     float VoicePitchOverride;           // +0x4c
     long AnimCriteriaClipDistance;      // +0x50
     CEntitySoundDef& operator=(const CEntitySoundDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004702C8
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00463B9D
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004564B1
 };
 
 CEntitySoundDef& CEntitySoundDef::operator=(const CEntitySoundDef& other)

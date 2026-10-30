@@ -6,11 +6,7 @@
 // Shape (family M031, representative 0x0044C213): `optimize("s", on)` -- the base constructor out of line, the vtable store,
 //   then the member's inline default constructor as a size-form store (`and dword ptr [esi + 4], 0`).
 #pragma optimize("s", on)
-class CBaseClass {                                        // vptr only (Ego_r.pdb)
-public:
-    CBaseClass();                                         // 0x0099A2D0
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CIVCountedPointeeBase;
 template <class T> class CIVCountedPointer {
 public:

@@ -14,7 +14,8 @@
 class CResourceList;
 class CResource : public CIVCountedPointeeBase {
 public:
-    virtual ~CResource();                                                // slot 0  0x004664FF (scalar deleting)
+    CResource();                                                         // 0x009FBEC0 (??0CResource@@QAE@XZ, bound)
+    virtual ~CResource();                                                // slot 0  0x004664FF (scalar deleting); ~CResource 0x009FC550
     virtual bool UnloadResource();                                       // slot 2  0x0042D940
     virtual unsigned long GetUnloadableMemory() const;                   // slot 3  0x009FBEF0
     virtual bool IsResourceLoaded() const;                               // slot 4  0x0042D950

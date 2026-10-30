@@ -1,7 +1,8 @@
 // Byte-exact reconstruction of CCombatAbilityBlockLightWeaponAttackDef::Copy @ 0x00461b98
 // __fastcall void Copy(This*, CDefClassBase const*)
 
-class CDefClassBase { public: };
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 // Embedded sub-object at +0x28 that has its own Copy(CDefClassBase const*)
 struct SubDef {

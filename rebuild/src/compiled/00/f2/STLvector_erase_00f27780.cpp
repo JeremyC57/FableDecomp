@@ -12,15 +12,13 @@
 //   ::erase 0x00B7FD70): `for (n = last - first; n > 0; --n) *result++ = *first++;` (signed `jle`, the source folded into
 //   an offset from the destination), then the __false_type destroy loop. Local def base: engine/CDefClassBase.h is a
 //   0x25-byte pack(1) flat layout (vptr as data), unusable as a polymorphic base.
-class CDefClassBase {                               // 0x28 bytes in retail (vptr + 0x24 body), polymorphic def root
-public:
-    virtual ~CDefClassBase();
-    unsigned char _body[0x24];                      // +0x04..+0x27
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 class CCharString {
 public:
     void* PStringData;
 };
+// def vtable 0x012FB500: slot 0 0x00F270B0 (implicit inline dtor); real overrides from the def vtable scan
 class CHeroSoulsCreatureDef : public CDefClassBase {   // vtable 0x012FB500, 0x34 bytes
 public:
     CCharString CreatureType;                       // +0x28
@@ -28,6 +26,9 @@ public:
     long        NumCreatures;                       // +0x30
     CHeroSoulsCreatureDef& operator=(const CHeroSoulsCreatureDef& other);   // 0x00F27190
     virtual ~CHeroSoulsCreatureDef();
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00F27100
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00F27180
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x00F270A0
 };
 
 namespace std {

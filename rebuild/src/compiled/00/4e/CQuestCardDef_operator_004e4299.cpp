@@ -9,10 +9,8 @@
 //   flattens the base (no base operator= to call), so the classes are modelled locally like the landed 0x00463BA2.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 struct CLongVector {                       // retail std::vector<long> (retail 0xc bytes)
     unsigned long m_words[3];
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
@@ -25,6 +23,7 @@ class CDefString { public:
     long TablePos;                      // index into the def string table (trivially copied)
 };
 
+// def vtable 0x01241E44: slot 0 0x004E2349 (implicit inline dtor); real overrides from the def vtable scan
 class CQuestCardDef : public CDefClassBase { public:
     long                     QuestName;                   // +0x28
     long                     QuestSummary;                // +0x2c
@@ -45,6 +44,9 @@ class CQuestCardDef : public CDefClassBase { public:
     bool                     CanPlayerCancel;             // +0x6c
     unsigned long            QuestEpilogue;               // +0x70
     CQuestCardDef& operator=(const CQuestCardDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E795A
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E4294
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004E00E9
 };
 
 CQuestCardDef& CQuestCardDef::operator=(const CQuestCardDef& other)

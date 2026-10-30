@@ -15,11 +15,8 @@
 //   as a polymorphic base of these 0x28-aligned defs (same local base as the landed CArenaWaveDef::operator= 0x00F25F60).
 #include <new>
 
-class CDefClassBase {                               // 0x28 bytes in retail (vptr + 0x24 body), polymorphic def root
-public:
-    virtual ~CDefClassBase();
-    unsigned char _body[0x24];                      // +0x04..+0x27
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 class CCharString {
 public:
     void* PStringData;
@@ -77,12 +74,16 @@ public:
 }   // namespace std
 
 class CArenaCreatureDef;
+// def vtable 0x012FB2F0: slot 0 0x00F25CB0 (implicit inline dtor); real overrides from the def vtable scan
 class CArenaWaveDef : public CDefClassBase {        // vtable 0x012FB2F0, 0x3c bytes
 public:
     long                             NumWaveCreatures;   // +0x28
     std::vector<CArenaCreatureDef>  Creatures;          // +0x2c
     bool                             ShortWave;          // +0x38
     CArenaWaveDef(const CArenaWaveDef& other);           // 0x00F25C60
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00F261F0
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00F25F50
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x00F25CA0
 };
 
 template class std::vector<CArenaWaveDef>;

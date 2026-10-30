@@ -12,10 +12,8 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CLongVector {                    // std::vector<long> (retail STLport, 12 bytes)
     long* m_pFirst;
@@ -24,6 +22,7 @@ struct CLongVector {                    // std::vector<long> (retail STLport, 12
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
+// def vtable 0x0124131C: slot 0 0x004E015E (implicit inline dtor); real overrides from the def vtable scan
 class CBuyableHouseDef : public CDefClassBase { public:
     bool IsBuyable;                     // +0x25
     bool InitiallyEmpty;                // +0x26
@@ -34,6 +33,9 @@ class CBuyableHouseDef : public CDefClassBase { public:
     bool IsScripted;                    // +0x48
     bool IsBuyableWithoutSignpost;      // +0x49
     CBuyableHouseDef& operator=(const CBuyableHouseDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E7D97
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E238C
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004DDB52
 };
 
 CBuyableHouseDef& CBuyableHouseDef::operator=(const CBuyableHouseDef& other)

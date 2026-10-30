@@ -8,11 +8,9 @@
 //   `*this = *(const CLookDef*)other;`; `optimize("s", on)` keeps every scalar copy in eax/al.
 // Header debt: the def base is modelled by its retail size only (its operator= is out of line).
 #pragma optimize("s", on)
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x0123AE14: slot 0 0x004D8108 (implicit inline dtor); real overrides from the def vtable scan
 class CLookDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
@@ -31,6 +29,8 @@ public:
     bool                      DrawEyePrimitives;                 // +0x4f
     float                     CutOffNoLooking;                   // +0x50
     bool                      AlwaysUpdateHeadPos;               // +0x54
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004DE28C
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004D3938
 };
 void CLookDef::Copy(const CDefClassBase* other)
 {

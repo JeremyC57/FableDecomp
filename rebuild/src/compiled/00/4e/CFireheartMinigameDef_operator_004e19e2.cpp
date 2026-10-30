@@ -10,16 +10,15 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 class CCharString { public:
     void* m_pStringData;
     const CCharString& operator=(const CCharString& other);   // 0x0099EFB0
 };
 
+// def vtable 0x0123E584: slot 0 0x004D9845 (implicit inline dtor); real overrides from the def vtable scan
 class CFireheartMinigameDef : public CDefClassBase { public:
     CCharString MoonFX;                 // +0x28
     CCharString SunFX;                  // +0x2c
@@ -27,6 +26,9 @@ class CFireheartMinigameDef : public CDefClassBase { public:
     unsigned long YesText;              // +0x34
     unsigned long NoText;               // +0x38
     CFireheartMinigameDef& operator=(const CFireheartMinigameDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004DF6F4
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E19DD
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004D665A
 };
 
 CFireheartMinigameDef& CFireheartMinigameDef::operator=(const CFireheartMinigameDef& other)

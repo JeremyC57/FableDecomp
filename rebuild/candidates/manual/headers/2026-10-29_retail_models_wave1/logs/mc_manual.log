@@ -1,0 +1,26 @@
+00f25f90	SAME	flagged row (hand edit; mcheck before batch 1)
+00f27060	SAME	flagged row (hand edit)
+00f261f0	SAME	flagged row (hand edit)
+00d35070	SAME	flagged row (hand edit)
+00f08590	SAME	flagged row (local CBaseClass -> include)
+00ef54a0	SAME	Part A (CScriptThing/CIsThingAlive/CPredicate_And/CGameScriptInterfaceBase/CEntityScriptBase headers)
+00ef5670	SAME	Part A (same headers)
+00f1a8f0	SAME	Part A (CScriptThing/CGameScriptInterfaceBase/CEntityScriptBase/CLevelScriptBase headers)
+00ddb570	SAME	Part A
+00f0eda0	SAME	Part A (CScriptThing/CGameScriptInterfaceBase/CLevelScriptBase headers)
+00f26b90	SAME	149b RELOCATION_MATCH->RELOCATION_MATCH Part A (CGameScriptInterface/CTimer/CLevelScriptBase headers)
+00f05f30	SAME	409b RELOCATION_MATCH->RELOCATION_MATCH Part A partial (CGameScriptInterface/CTimer/CScriptBase headers; CScriptThing/CEntityScriptBase stay local)
+00e25ab0	SAME	423b RELOCATION_MATCH->RELOCATION_MATCH Part A (CEntityScriptBinding/CGameScriptInterface/CScriptBase headers)
+00d34d40	SAME	315b RELOCATION_MATCH->RELOCATION_MATCH HEAD opt-in row; PadActive retyped unsigned long[3] for the 0x25 packed base
+00f2d010	SAME	417b RELOCATION_MATCH->RELOCATION_MATCH HEAD opt-in row; _pad_0x25[3] added for the 0x25 packed base
+00f345f0	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH DCB; _pad_0x25[3] added
+00e54c50	SAME	75b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)
+00f25f10	SAME	57b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)
+00f25f60	SAME	45b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)
+00f2a0d0	SAME	27b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)
+00f2d200	SAME	111b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)
+00f29f40	SAME	27b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)
+00f27780	SAME	109b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)
+00f25bb0	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)
+00f25d20	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)
+00f26fb0	SAME	98b RELOCATION_MATCH->RELOCATION_MATCH DCB (overrides re-run)

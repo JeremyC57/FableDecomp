@@ -8,14 +8,10 @@
 // Callees: CDefClassBase::operator=(const CDefClassBase&) 0x00431F10 (bound under that name), reached through the inline implicit CSubDefClassBase::operator=.
 // Shape: implicit operator= copies each scalar member with integer moves (no x87 for the floats); `return *this` in eax.
 #pragma optimize("s", on)
-class CDefClassBase {                                      // retail 0x25 bytes (+ tail padding)
-public:
-    virtual ~CDefClassBase();
-    CDefClassBase& operator=(const CDefClassBase& other);  // 0x00431F10
-    unsigned char _body[0x25 - 4];
-};
-class CSubDefClassBase : public CDefClassBase {           // no members: its implicit operator= inlines to the base call
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+#include "engine/CSubDefClassBase.h"                    // vtable 0x01231D54
+// def vtable 0x01231E34: slot 0 0x0044F6BA (implicit inline dtor); real overrides from the def vtable scan
 class CPhysicsDef : public CSubDefClassBase {
 public:
     virtual void Copy(const CDefClassBase* other);
@@ -26,6 +22,8 @@ public:
     float Mass;                              // +0x38
     long InteractionFlags;                   // +0x3c
     bool PushableByHero;                     // +0x40
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x0045212A
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C158
 };
 void CPhysicsDef::Copy(const CDefClassBase* other)
 {

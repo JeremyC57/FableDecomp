@@ -8,10 +8,21 @@
 // Retail opt-in: define FABLE_RETAIL_DEF_CLASS_BASE for the polymorphic retail class. RTTI: CDefClassBase :
 // CDefPointeeBase : CResource : CIVCountedPointeeBase. Vtable 0x01230BCC, 25 slots; slots 18-20 are _purecall 0x00BFEA08
 // and are named from the derived overrides (CFireHeartPatternDef vtable 0x012CCC50: Transfer 0x00D35070, Copy 0x00D34FB0,
-// GetSizeofClass 0x00D34EF0). Signatures are the Ego_r.pdb / FableWin.pdb spellings. Size 0x28: the first
-// CFireHeartPatternDef member is copied at +0x28 by _Construct 0x00D34EC0 after the base copy ctor 0x0046644C.
+// GetSizeofClass 0x00D34EF0). Signatures are the Ego_r.pdb / FableWin.pdb spellings. Size 0x25, packed (corrected
+// 2026-10-29 from 0x28): the class is declared under #pragma pack(1) (Ego_r.pdb 0x25), so a derived def's first member
+// sits at +0x25 when it is a byte (landed CDegradableDef::operator= 0x00454434: Degradable bool +0x25, GraphicType +0x28)
+// and at +0x28 when it is 4-aligned (CFireHeartPatternDef: _Construct 0x00D34EC0 copies its first member at +0x28).
 // Slots 14/15 (0x0042DA60 / 0x0042DA50) are the two GetPSubDefInfo overloads; their bodies are identical
-// (`xor eax,eax; ret 4`), so which one is const is unproven.
+// (`xor eax,eax; ret 4`), but slot 14 is the const one: the landed const GetSubDef<T> rows (e.g. 0x008C79B0) call [vptr+0x38]
+// from a const member, and the CParentDefClassBase overrides (0x009AD4A0 / 0x009AD510) are bound UBE / UAE. Declared
+// non-const first, VC7.1 emits the const overload first; a probe build reproduces all 25 retail slot names (HEADERS.md).
+// Non-virtual members (2026-10-29 migration wave 1): operator= 0x00431F10 (catalog + Ego_r ??4CDefClassBase@@QAEAAV0@ABV0@@Z),
+// the GetSubDef member template (Ego_r spelling), CSubDefInfo {DefIndex, OriginalParentDefIndex} (Ego_r layout, 8 bytes) and
+// the FableWin.pdb accessors AreDefaultValsApplied / SetDefaultValsApplied (Ego_r inlines them away: inline bodies here).
+// ~CDefClassBase is inline: only FableWin.pdb (debug) has ??1CDefClassBase@@UAE@XZ, and the retail scalar deleting dtor
+// 0x0042DAB0 stores the CDefPointeeBase vtable 0x01230BA0 and calls ~CResource 0x009FC550 (landed vector<CArenaRoundDef>
+// ::_M_fill_insert 0x00F34D70 destroys its by-value copy with that inline sequence). FableWin.pdb also has a private
+// default ctor ??0CDefClassBase@@AAE@XZ (derived defs reach it through friendship); it is not declared here yet.
 #ifdef FABLE_RETAIL_DEF_CLASS_BASE
 #include <stddef.h>
 #include "rebuild_abi.h"
@@ -25,18 +36,28 @@ class CDataOutputStream;
 class CValidateDefinitionInitBase;
 template <class K, class V> class CKeyPairCompareLess;
 template <class K, class V, class C> class CVectorMap;
+template <class T> class CDefPointer;
+#pragma pack(push, 1)
 class CDefClassBase : public CDefPointeeBase {
 public:
-    class CSubDefInfo;
+    class CSubDefInfo {                                                  // Ego_r.pdb CSubDefInfo, 8 bytes
+    public:
+        long DefIndex;                                                   // +0x00
+        long OriginalParentDefIndex;                                     // +0x04
+    };
     CDefClassBase(const CDefClassBase&);                                 // 0x0046644C
-    virtual ~CDefClassBase();                                            // slot 0  0x0042DAB0 (scalar deleting)
+    CDefClassBase& operator=(const CDefClassBase&);                      // 0x00431F10 (Ego_r ??4CDefClassBase@@QAEAAV0@ABV0@@Z)
+    template <class T> bool GetSubDef(CDefPointer<const T>*) const;      // Ego_r ??$GetSubDef@V..@@@CDefClassBase@@QBE_NPAV?$CDefPointer@$$CBV..@@@@@Z
+    bool AreDefaultValsApplied() const { return DefaultValsApplied; }    // FableWin.pdb ?AreDefaultValsApplied@CDefClassBase@@QBE_NXZ
+    void SetDefaultValsApplied(bool value) { DefaultValsApplied = value; }   // FableWin.pdb ?SetDefaultValsApplied@CDefClassBase@@QAEX_N@Z
+    virtual ~CDefClassBase() { }                                         // slot 0  0x0042DAB0 (scalar deleting; the dtor is inline)
     virtual bool UnloadResource();                                       // slot 2  0x009ACE90
     virtual CDefString GetInstantiationName() const;                     // slot 10 0x0042DA10
     virtual void SetInstantiationName(CDefString);                       // slot 11 0x0042DA20
     virtual void AddSubDef(const CCharString&, long, long);              // slot 12 0x0042DA30
     virtual void RemoveSubDef(const CCharString&);                       // slot 13 0x0042DA40
-    virtual CSubDefInfo* GetPSubDefInfo(const CCharString&);             // slots 14/15 (overload order unproven)
-    virtual const CSubDefInfo* GetPSubDefInfo(const CCharString&) const;
+    virtual CSubDefInfo* GetPSubDefInfo(const CCharString&);             // slot 15 0x0042DA50 (declared first: VC7.1 reverses overloads)
+    virtual const CSubDefInfo* GetPSubDefInfo(const CCharString&) const; // slot 14 0x0042DA60
     virtual bool IsParentDef() const;                                    // slot 16 0x0042DA70
     virtual void PostTransfer();                                         // slot 17 0x0042DA80
     virtual void Transfer(CPersistContext&) = 0;                         // slot 18
@@ -53,7 +74,8 @@ public:
     unsigned char       Template : 1;
     unsigned char       DefaultValsApplied : 1;
 };
-FABLE_STATIC_ASSERT(sizeof(CDefClassBase) == 0x28);
+#pragma pack(pop)
+FABLE_STATIC_ASSERT(sizeof(CDefClassBase) == 0x25);
 FABLE_STATIC_ASSERT(offsetof(CDefClassBase, PDefManager) == 0x1c);
 #else // flattened Ego_r layout (the landed default)
 #include <stddef.h>

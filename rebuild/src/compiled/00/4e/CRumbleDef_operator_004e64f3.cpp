@@ -29,16 +29,16 @@ public:
     _Tp* _M_end_of_storage;
 };
 }
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x0124273C: slot 0 0x004E32A6 (implicit inline dtor); real overrides from the def vtable scan
 class CRumbleDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
     std::map<EQuakeStrength, float> QuakeIntensities;                  // +0x28
     std::map<EQuakeLength, float> QuakeDurations;                    // +0x34
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E676A
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004E1744
 };
 void CRumbleDef::Copy(const CDefClassBase* other)
 {

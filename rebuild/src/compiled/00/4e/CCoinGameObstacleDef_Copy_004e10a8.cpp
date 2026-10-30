@@ -1,7 +1,6 @@
 
-class CDefClassBase { public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // __fastcall: this in ecx, src on stack
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 class CCoinGameObstacleDef { public:
     char pad[0x28];

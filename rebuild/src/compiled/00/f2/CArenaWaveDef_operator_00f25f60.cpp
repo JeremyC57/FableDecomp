@@ -10,11 +10,8 @@
 // Shape: compiler-generated memberwise assignment in declaration order: base out of line, the
 // long through eax, the vector out of line, the bool through dl.
 
-class CDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x24];                                            // +0x04..+0x28 (0x25 bytes + alignment)
-    CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CArenaCreatureDefVector {                                          // retail std::vector<CArenaCreatureDef> (12 bytes)
     void* m_first;
@@ -23,12 +20,16 @@ struct CArenaCreatureDefVector {                                          // ret
     CArenaCreatureDefVector& operator=(const CArenaCreatureDefVector& other);   // 0x00F25F90
 };
 
+// def vtable 0x012FB2F0: slot 0 0x00F25CB0 (implicit inline dtor); real overrides from the def vtable scan
 class CArenaWaveDef : public CDefClassBase { public:                                    // vtable 0x012FB2F0 (no RTTI)
     long                    NumWaveCreatures;                             // +0x28
     CArenaCreatureDefVector Creatures;                                    // +0x2c
     bool                    ShortWave;                                    // +0x38
     virtual void v00();
     CArenaWaveDef& operator=(const CArenaWaveDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00F261F0
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x00F25F50
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x00F25CA0
 };
 
 CArenaWaveDef& CArenaWaveDef::operator=(const CArenaWaveDef& other)

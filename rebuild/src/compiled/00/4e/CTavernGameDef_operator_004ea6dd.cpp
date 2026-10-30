@@ -11,10 +11,8 @@
 // float, the 4-byte CDefString index) copy through eax, the two bools through al.
 #pragma optimize("s", on)   // the def module is size-optimised
 
-class CDefClassBase { public:
-    unsigned char _body[0x28];          // vptr, resource links, PDefManager, GlobalIndex, flag bits
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 class CDefString { public:                     // a def-string table index (4 bytes, trivially copied)
     long Index;
@@ -27,6 +25,7 @@ struct CPrizeScoreDefVector {           // retail std::vector<CPrizeScoreDef> (1
     CPrizeScoreDefVector& operator=(const CPrizeScoreDefVector& other);   // 0x004EAAD0
 };
 
+// def vtable 0x012424BC: slot 0 0x004E2D54 (implicit inline dtor); real overrides from the def vtable scan
 class CTavernGameDef : public CDefClassBase { public:                             // vtable 0x012424BC
     unsigned long    Banter;                              // +0x28
     unsigned long    Greeting;                            // +0x2c
@@ -122,6 +121,9 @@ class CTavernGameDef : public CDefClassBase { public:                           
     bool             DisplayErrata;                       // +0x19c
     float            PointerPhaseSpeed;                   // +0x1a0
     CTavernGameDef& operator=(const CTavernGameDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004ED472
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004EA6D8
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004E1086
 };
 
 CTavernGameDef& CTavernGameDef::operator=(const CTavernGameDef& other)

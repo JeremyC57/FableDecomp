@@ -64,15 +64,11 @@ public:
     virtual void Main() = 0;
     virtual void Init();                                // slot 2 (+0x08)
 };
-class CSpawnedFuncBase {                                // retail 0x34 bytes
-public:
-    virtual ~CSpawnedFuncBase();
-    virtual void RunSuspendableProcess();
-    virtual void SuspendSuspendableProcess(bool suspend);
-    virtual void Restart();
-    virtual void SuspendableProcess() = 0;
-    unsigned char _body[0x30];                          // +0x04 .. +0x34
-};
+// Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
+//   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
+//   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CSpawnedFuncBase.h"
 class CActiveEntityScriptBase : public CSpawnedFuncBase {
 public:
     CCountedPointer<CEntityScriptBase> PEntityScript;   // +0x34

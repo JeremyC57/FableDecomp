@@ -9,11 +9,7 @@
 //   null test, the implicit copy constructor of the polymorphic record stores the vtable then copies the three words.
 inline void* operator new(unsigned int, void* p) { return p; }
 
-class CBaseClass {
-public:
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                         // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CActiveSoundInfo : public CBaseClass {       // vtable 0x0129E674, 16 bytes
 public:

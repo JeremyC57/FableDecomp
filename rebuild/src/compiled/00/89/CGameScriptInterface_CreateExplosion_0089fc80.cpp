@@ -13,11 +13,7 @@ class CCharString { public:                               // fable_string.h layo
 };
 class C3DVector { public: float x, y, z; };
 struct SCountBlock;
-class CBaseClass {
-public:
-    CBaseClass();                                       // 0x0099A2D0 (out of line)
-    virtual ~CBaseClass();
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
 struct CScriptThingPImp {                          // the counted pointer member: an inline constructor zeroes both words after the vtable store
     CScriptThingImp* Data;                         // +4

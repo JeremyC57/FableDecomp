@@ -2,11 +2,7 @@
 // Leaf: ??1CVolume@
 // Pattern: set vtable, call a member cleanup helper with arg 1, tail-call base dtor.
 
-class CBaseClass {
-public:
-    CBaseClass();
-    virtual ~CBaseClass();               // 0x0099a2e0 (base destructor, tail-called)
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CVolume : public CBaseClass {
 public:

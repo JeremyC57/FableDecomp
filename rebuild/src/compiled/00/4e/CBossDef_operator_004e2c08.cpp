@@ -10,10 +10,8 @@
 // The generated engine headers flatten the bases (no base operator= to call), so the classes are modelled locally.
 #pragma optimize("s", on)
 
-class CDefClassBase { public:
-    unsigned char _body[0x25];          // vptr, resource links, PDefManager +0x1c, GlobalIndex +0x20, flag bits +0x24
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 struct CLongVector {                    // std::vector<long> (retail STLport, 12 bytes)
     long* m_pFirst;
@@ -22,6 +20,7 @@ struct CLongVector {                    // std::vector<long> (retail STLport, 12
     CLongVector& operator=(const CLongVector& other);   // 0x00454886
 };
 
+// def vtable 0x0124185C: slot 0 0x004E0D62 (implicit inline dtor); real overrides from the def vtable scan
 class CBossDef : public CDefClassBase { public:
     CLongVector PhaseHealthPercent;     // +0x28
     CLongVector Shots;                  // +0x34
@@ -29,6 +28,9 @@ class CBossDef : public CDefClassBase { public:
     long TwinBladeStuckLoops;           // +0x4c
     float TwinBladeTimeBeforeLunge;     // +0x50
     CBossDef& operator=(const CBossDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x004E7EE0
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x004E2C03
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004DE8F1
 };
 
 CBossDef& CBossDef::operator=(const CBossDef& other)

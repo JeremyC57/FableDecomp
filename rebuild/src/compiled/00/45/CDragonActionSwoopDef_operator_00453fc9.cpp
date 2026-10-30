@@ -8,11 +8,9 @@
 //   `*this = *(const CDragonActionSwoopDef*)other;`; `optimize("s", on)` keeps every scalar copy in eax/al.
 // Header debt: the def base is modelled by its retail size only (its operator= is out of line).
 #pragma optimize("s", on)
-class CDefClassBase {
-public:
-    CDefClassBase& operator=(const CDefClassBase& other);   // 0x00431F10
-    unsigned char _base[0x25];
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
+// def vtable 0x01232744: slot 0 0x0044FE5F (implicit inline dtor); real overrides from the def vtable scan
 class CDragonActionSwoopDef : public CDefClassBase {
 public:
     void Copy(const CDefClassBase* other);
@@ -31,6 +29,8 @@ public:
     float                     ExplosionLineProjectionAngle;      // +0x58
     long                      FramesBetweenExplosions;           // +0x5c
     float                     WindSpeed;                         // +0x60
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x00452BE2
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x0044C5CF
 };
 void CDragonActionSwoopDef::Copy(const CDefClassBase* other)
 {

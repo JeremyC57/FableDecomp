@@ -415,13 +415,11 @@ public:
 };
 }
 
-class CDefClassBase { public:
-    virtual void v00();
-    unsigned char _body[0x24];                                            // +0x04..+0x28
-    CDefClassBase& operator=(const CDefClassBase& other);                 // 0x00431F10
-};
+#define FABLE_RETAIL_DEF_CLASS_BASE
+#include "engine/CDefClassBase.h"                       // retail def chain (0x25 packed, vtable 0x01230BCC)
 
 
+// def vtable 0x01232D84: slot 0 0x0045470E (implicit inline dtor); real overrides from the def vtable scan
 class CTargetingDef : public CDefClassBase { public:                                    // vtable 0x01232D84
     unsigned long Type;                                                   // +0x28
     bool  UseGlowTargeting;                                               // +0x2c
@@ -452,6 +450,9 @@ class CTargetingDef : public CDefClassBase { public:                            
     float PreferCurrentBestEnemyWeight;                                   // +0x8c
     virtual void v00();
     CTargetingDef& operator=(const CTargetingDef& other);
+    virtual void Transfer(CPersistContext& context);         // slot 18 0x0045D923
+    virtual void Copy(const CDefClassBase* other);           // slot 19 0x0045D724
+    virtual unsigned long GetSizeofClass();                  // slot 20 0x004538E5
 };
 
 CTargetingDef& CTargetingDef::operator=(const CTargetingDef& other)

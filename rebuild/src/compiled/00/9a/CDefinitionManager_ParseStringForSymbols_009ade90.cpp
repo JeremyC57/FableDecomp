@@ -13,11 +13,7 @@
 //   retail 0x28-byte CStringParser (vtable 0x0122D874; inline default ctor model: landed CTCBase::SerialiseLevelState
 //   0x00686E10).
 extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
-class CBaseClass {
-public:
-    CBaseClass();                                  // 0x0099A2D0
-    virtual ~CBaseClass();                         // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCharString {
 public:
     void* PStringData;
