@@ -46,13 +46,10 @@ class CThing { public:
     }
 };
 class CCPPointerInfo;
-class CScriptThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const;               // slot 11 (+0x2c)
-    CScriptThing*   PImp_Data;                      // +0x04
-    CCPPointerInfo* PImp_Info;                      // +0x08
-};
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 class CTCLook {
 public:
@@ -133,11 +130,11 @@ public:
 
 void CActionTalkBase::OnCleanup()
 {
-    if (PTargetThing.GetThing()) {
+    if (PTargetThing.GetPThing()) {
         CThing* parent = PTCScript->ParentThing;
-        if (PTargetThing.GetThing() != parent) {
+        if (PTargetThing.GetPThing() != parent) {
             CTCLook* look;
-            if (PTargetThing.GetThing()->GetInterface(&look, 0x43))
+            if (PTargetThing.GetPThing()->GetInterface(&look, 0x43))
                 look->StopLooking(2);
         }
     }

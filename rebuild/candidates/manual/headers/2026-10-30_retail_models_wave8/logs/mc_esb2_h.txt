@@ -1,0 +1,11 @@
+00d29db0	SRC_FAIL	new.cpp(180): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00d2a180	SRC_FAIL	new.cpp(160): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00d446d0	RELOC_RENAMED	leafsym ?Main@CHeroBed@@QAEXXZ -> ?Main@CHeroBed@@UAEXXZ
+00d58080	RELOC_RENAMED	leafsym ?Main@CMeleeThunder@@QAEXXZ -> ?Main@CMeleeThunder@@UAEXXZ
+00da5980	RELOC_RENAMED	leafsym ?Main@CMinionSpawner@@QAEXXZ -> ?Main@CMinionSpawner@@UAEXXZ
+00dc21f0	SRC_FAIL	new.cpp(186): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00e292c0	SRC_FAIL	new.cpp(178): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00e386e0	RELOC_RENAMED	leafsym ?Main@CMeleeThunder@@QAEXXZ -> ?Main@CMeleeThunder@@UAEXXZ
+00e4b430	RELOC_RENAMED	leafsym ?Main@CM_TauntingBandit@@QAEXXZ -> ?Main@CM_TauntingBandit@@UAEXXZ
+00ea4de0	RELOC_RENAMED	RELOCATION_MATCH ; 7d:$L5112->$L5245 ; 1fc:$L5057->$L5188 ; 200:$L5060->$L5191 ; 204:$L5063->$L5194 ; 208:$L5066->$L5197 ; 20c:$L5069->$L5200
+00f14770	RELOC_RENAMED	leafsym ?Main@CCham@@QAEXXZ -> ?Main@CCham@@UAEXXZ

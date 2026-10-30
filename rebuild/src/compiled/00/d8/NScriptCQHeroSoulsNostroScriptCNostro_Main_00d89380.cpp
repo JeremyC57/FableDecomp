@@ -25,33 +25,24 @@ class CCharString { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CTimer { public:
-    long TimerIndex;
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 void __fastcall FadeOutThing(const CScriptThing& thing, float time, float alpha);   // 0x00CBE814
 void __fastcall FadeInThing(const CScriptThing& thing, float time);                 // 0x00CBE7AA
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
+inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                             // vtable 0x012C32F0
-    CScriptThing Thing;                            // +0x04
-    CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
-    virtual ~CIsThingAlive() { }
-};
 }
 using NScript::CIsThingAlive;
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 namespace NScript {
 class CQ_HeroSoulsNostroScript { public:
@@ -60,11 +51,10 @@ class CQ_HeroSoulsNostroScript { public:
 
     class CNostro : public CEntityScriptBase {
     public:
-        void*                     __vftable;       // +0x00
-        CGameScriptInterface*     Game;            // +0x04
-        CScriptThing              Me;              // +0x08
-        CQ_HeroSoulsNostroScript* ParentClass;     // +0x14
-        void Main();
+                CQ_HeroSoulsNostroScript* ParentClass;     // +0x14
+private:
+        virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
     };
 };
 void CQ_HeroSoulsNostroScript::CNostro::Main()

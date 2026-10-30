@@ -33,10 +33,10 @@ class CCPPointerInfo { public:                                 // counted-pointe
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing;
-struct CCountedPointerScriptThing {                     // CCountedPointer<CScriptThing>
+template <class T> class CCountedPointer { public:                     // CCountedPointer<CScriptThing>
     CScriptThing*   Data;                               // +0x00
     CCPPointerInfo* Info;                               // +0x04
-    ~CCountedPointerScriptThing()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -50,31 +50,15 @@ struct CCountedPointerScriptThing {                     // CCountedPointer<CScri
     }
 };
 
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    CCountedPointerScriptThing PImp;                    // +0x04
-    virtual __forceinline ~CScriptThing() {}                          // out of line: 0x004AA840
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
-    virtual void v11(); virtual void v12(); virtual void v13(); virtual void v14(); virtual void v15();
-    virtual void v16(); virtual void v17(); virtual void v18(); virtual void v19(); virtual void v20();
-    virtual bool MsgIsHitBy(const CCharString& attacker) const     // slot 21 (+0x54)
-    {
-        if (PImp.Data)
-            return PImp.Data->MsgIsHitBy(attacker);
-        return false;
-    }
-    virtual void v22(); virtual void v23(); virtual void v24(); virtual void v25(); virtual void v26();
-    virtual void v27(); virtual void v28(); virtual void v29(); virtual void v30(); virtual void v31();
-    virtual void v32(); virtual void v33(); virtual void v34(); virtual void v35(); virtual void v36();
-    virtual void v37(); virtual void v38(); virtual void v39(); virtual void v40(); virtual void v41();
-    virtual void v42();
-    virtual bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const     // slot 43 (+0xac)
-    {
-        if (PImp.Data)
-            return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker);
-        return false;
-    }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline CScriptThing::~CScriptThing() {}
+inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (PImp.Data) return PImp.Data->MsgIsHitBy(attacker); return false; }
+inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (PImp.Data) return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); return false; }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

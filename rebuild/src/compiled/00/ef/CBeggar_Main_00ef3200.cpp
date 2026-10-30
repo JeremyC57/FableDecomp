@@ -29,19 +29,13 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                                 // vtable 0x012C32F0: a filter holding a script thing
-    CScriptThing m_thing;                              // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive();                                  // 0x00E241B0 (out of line in this module)
-};
 }
 using NScript::CIsThingAlive;
 

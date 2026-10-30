@@ -50,17 +50,11 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
-    virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
-    virtual void v13(); virtual void v14(); virtual void v15(); virtual void v16(); virtual void v17(); virtual void v18();
-    virtual void v19(); virtual void v20(); virtual void v21(); virtual void v22(); virtual void v23(); virtual void v24();
-    virtual void v25(); virtual void v26();
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c) 0x004AABD0
-    CCountedPointer<CScriptThing> PImp;                // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    __forceinline ~CScriptThing() {}                   // out of line 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline CScriptThing::~CScriptThing() {}
 #include "engine/CGameScriptInterface.h"
 class C2DCoordI;
 class C2DVector;
@@ -79,32 +73,7 @@ template<class T> class CArray;
 class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
 class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
-typedef long ECameraOp;
-typedef long EClothingCoversArea;
-typedef long ECreatureGroup;
-typedef long ECrime;
-typedef long ECutsceneBehaviour;
-typedef long EDoorTriggerType;
-typedef long EGameAction;
-typedef long EHeroAbility;
-typedef long EHeroTitle;
-typedef long EHeroTrainableStatType;
-typedef long EMiniGameType;
-typedef long EMorality;
-typedef long EMusicSetType;
-typedef long EOpinion;
-typedef long EOpinionAttitudeType;
-typedef long EOpinionDeedType;
-typedef long EOpinionPostDeedType;
-typedef long EOpinionReactionType;
-typedef long EScriptAIPriority;
-typedef long EScriptVillageAttitude;
-typedef long EScriptingStateGroups;
-typedef long ESex;
-typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
-typedef long ETutorialCategory;
-namespace NEntityEvents {typedef long EEventType;}
+#include "engine/fable_nscript_forward.h"   // the PDB enums the row used typedef stand-ins for
 struct GameCalls {virtual ~GameCalls();
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20
@@ -951,12 +920,11 @@ virtual bool GetDisableHeadLooking(CScriptThing); //slot842 0x008a6bf0
 virtual void ResetDisableHeadLooking(CScriptThing); //slot843 0x008a6ce0
 virtual void SetIsPushableByHero(CScriptThing, bool); //slot844 0x008a6dd0
 };
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
 namespace NScript {
-class CPredicateBase { public:                                // vtable 0x012C2FF4
-    virtual bool operator()() const = 0;
-    virtual CPredicateBase* Clone() const = 0;
-    virtual ~CPredicateBase() {}
-};
 #pragma inline_depth(0)
 struct CHeldThing {                                    // depth-0 holder: its inline dtor expands, the ~CScriptThing inside it stays a call
     CScriptThing Thing;
@@ -976,13 +944,6 @@ struct CIsThingStored : CPredicateBase {               // the And's CIsThing mem
     virtual bool operator()() const;
     virtual CPredicateBase* Clone() const;
     ~CIsThingStored();                                 // 0x00EF7AB0
-};
-class CIsThingAlive : public CPredicateBase { public:                // vtable 0x012C32F0
-    CScriptThing Thing;
-    __forceinline CIsThingAlive(const CScriptThing& t) : Thing(t) {}
-    virtual bool operator()() const;
-    virtual CPredicateBase* Clone() const;
-    ~CIsThingAlive();                                  // 0x00E241B0
 };
 struct CPredicate_And : CPredicateBase {               // CPredicate_And<CIsThing,CIsThingAlive>, vtable 0x012F6818
     CIsThingStored A;                                  // +0x04

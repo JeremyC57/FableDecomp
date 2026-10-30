@@ -111,10 +111,10 @@ class CTCLight { public:
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const;     // 0x00487DC0
 };
-class CPlayerManager { public: // 0x00449970
-public:
-    CPlayer& GetMainPlayer();   // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CEnvironment { public: bool IsDaytime();         // 0x006BB2C0
 };
 class CWorld { public:

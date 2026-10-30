@@ -16,14 +16,11 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void v00();
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-    CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CScriptGameResourceObjectScriptedThingBase { public:    // 0x10 bytes
     unsigned char _body[0x10];
     bool IsValid() const;                                // 0x00CD23B9
@@ -37,29 +34,17 @@ enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                                 // vtable 0x012C32F0: a predicate holding a script thing
-    CScriptThing m_thing;                              // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive();                                  // 0x00E241B0 (out of line here)
-};
 }
 using NScript::CIsThingAlive;
-class CEntityScriptBase { public:                             // retail 0x14 bytes
-    virtual void v00();
-    CGameScriptInterface* Game;                        // +0x04
-    CScriptThing          Me;                          // +0x08
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
-public:
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 enum ESheriffState { SHERIFF_STATE_0, SHERIFF_STATE_1, SHERIFF_STATE_2, SHERIFF_STATE_3 };   // enumerator names not in the PDB dump
 enum EAssassinState { ASSASSIN_STATE_0, ASSASSIN_STATE_1, ASSASSIN_STATE_2, ASSASSIN_STATE_3, ASSASSIN_STATE_4 };
 struct CV_MurderTwistFinalScript {
@@ -84,7 +69,9 @@ struct CMurderTwistSheriff : CEntityScriptBase {
     bool HasBeingRumbledCutscenePlayed;                // +0x35
     bool HasExpressedSuspicionToHero;                  // +0x36
     bool HasSaidWellDoneToHero;                        // +0x37
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
     void DoAskingHeroToKillAssassin();                 // 0x00EAF810
     void DoRemindingHeroToKillAssassin();              // 0x00EB0830
     void DoBecomingSuspiciousOfHero();                 // 0x00EB10C0

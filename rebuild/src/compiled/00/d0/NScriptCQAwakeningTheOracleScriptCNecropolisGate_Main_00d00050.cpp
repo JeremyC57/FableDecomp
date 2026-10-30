@@ -994,13 +994,14 @@ template <class T> class CCountedPointer { public: void* Data; void* Info; CCoun
 #include "engine/CScriptGameResourceObjectBase.h"
 #include "engine/CScriptGameResourceObjectScriptedThingBase.h"
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
-class CTimer { public:                                     // 4 bytes: an index into the global script timers
- long TimerIndex;
- CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
- ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
- void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
- long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+#define FABLE_RETAIL_NSCRIPT
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);              // 0x00CBE512
 namespace NScript {
@@ -1037,7 +1038,7 @@ void CNecropolisGate::Main()
    long conversation = Game->AddNewConversation(guard, false, false);
    Game->AddPersonToConversation(conversation, Game->GetHero());
    Game->AddLineToConversation(conversation, "TEXT_QST_B03_NECROPOLIS_BLOCKED", false, guard, Game->GetHero());
-   timer.SetTime(15);
+   timer = 15;
   }
  }
  if (IsActiveThreadTerminating()) return;

@@ -6,7 +6,7 @@
 //   CTCBase*, ...>::LowerBound 0x0040F020 (inlined GetInterface), CCharString::CCharString(const CCharString&) 0x0099EC30,
 //   operator delete 0x00BFE9BC and CBaseClass::~CBaseClass 0x0099A2E0 (the parameter's inline ~CScriptThing: vtable
 //   0x01238C8C, the CCountedPointer<CScriptThing> release, the base destructor).
-// Body: CScriptThing::GetThing() is an inline virtual (`PImp.Data == 0 ? 0 : PImp.Data->GetThing()`) called on the by-value object,
+// Body: CScriptThing::GetThing() is an inline virtual (`PImp.Data == 0 ? 0 : PImp.Data->GetPThing()`) called on the by-value object,
 //   so it devirtualises and inlines twice; GetInterface's result is ignored (a miss reads the uninitialised scratchpad local).
 // Header debt: engine/CScriptThing.h, CThing and engine/CTCAIScratchpad.h are flat layouts; modelled locally.
 enum ETCInterfaceType { ETCInterfaceType_FIRST };
@@ -82,14 +82,12 @@ public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass {                   // retail 12 bytes: vptr, PImp
-public:
-    virtual ~CScriptThing() { }
-    virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing* GetThing() const { return PImp.Data == 0 ? 0 : PImp.Data->GetThing(); }   // slot 11 (+0x2C)
-    CCountedPointer<CScriptThing> PImp;                    // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline CThing* CScriptThing::GetPThing() const { return PImp.Data == 0 ? 0 : PImp.Data->GetPThing(); }
 class CTCAIScratchpad {
 public:
     unsigned char _pad00[0x48];
@@ -101,9 +99,9 @@ public:
 #include "engine/CGameScriptInterface.h"
 CCharString CGameScriptInterface::GetAction(CScriptThing thing)
 {
-    if (thing.GetThing() == 0)
+    if (thing.GetPThing() == 0)
         return CCharString("", -1);
     CTCAIScratchpad* scratchpad;
-    thing.GetThing()->GetInterface(&scratchpad, (ETCInterfaceType)0xAA);
+    thing.GetPThing()->GetInterface(&scratchpad, (ETCInterfaceType)0xAA);
     return scratchpad->Action;
 }

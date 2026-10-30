@@ -26,7 +26,7 @@ class CCPPointerInfo { public:                                // CCountedPointer
     void (__fastcall* DeleteFunc)(void* data);         // +4
     void* Data;                                        // +8
 };
-struct CCountedPointerWords {                          // CCountedPointer<T> {Data, Info}
+template <class T> class CCountedPointer { public:                          // CCountedPointer<T> {Data, Info}
     void*           Data;
     CCPPointerInfo* Info;
     __forceinline void ReleaseInline()                 // ~CCountedPointer body
@@ -42,16 +42,12 @@ struct CCountedPointerWords {                          // CCountedPointer<T> {Da
         Info = 0;
     }
 };
-struct CBase {
-    virtual ~CBase();                                  // 0x0099A2E0
-};
-class CScriptThing : public CBase { public:                          // vtable 0x01238C8C, 12 bytes
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
-    CCountedPointerWords PImp;                         // +0x04
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (the row's local CBase)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 class CBaseObject { public:                                   // vtable 0x0129A7D8 {vptr, intelligent-pointer link}
@@ -69,7 +65,7 @@ struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x01260
     __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
-    CCountedPointerWords PImp;                         // +0x08
+    CCountedPointer<CScriptThing> PImp;                         // +0x08
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void s001(); virtual void s002(); virtual void s003();
     virtual void MoveToPosition(const C3DVector& pos, float speed, EScriptEntityMoveType type, bool a, bool b);   // slot 4 (+0x10), 0x007E72F0
@@ -90,12 +86,8 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CEntityScriptBase { public:                             // retail 0x14 bytes
-    virtual void e00();
-    CGameScriptInterface* Game;                        // +0x04
-    CScriptThing          Me;                          // +0x08
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 struct CQ_ArenaScript {
     char _pad[0xb4];
     bool ChamLeaving;                                  // +0xb4
@@ -103,7 +95,9 @@ struct CQ_ArenaScript {
 struct CCham : CEntityScriptBase {
     CQ_ArenaScript* ParentClass;                       // +0x14
     void*           PMasterData;                       // +0x18 CQ_SunnyvaleMasterData*
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CCham::Main()

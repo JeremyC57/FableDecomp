@@ -49,9 +49,9 @@ class CScriptThing : public CBaseClass { public:                     // 12 bytes
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 
-class CTimer { public:
-    long Index;
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
@@ -74,7 +74,7 @@ bool NScript::CQ_SummoningTheShipScript::MakeBriarRoseComment(const CCharString&
 {
     if (m_pInterface->IsConversationActive(ConversationIndex))
         return false;
-    g_pGameScriptInterface->SetTimer(CommentaryTimer.Index, 15);
+    g_pGameScriptInterface->SetTimer(CommentaryTimer.TimerIndex, 15);
     CScriptThing briar = m_pInterface->GetThingWithScriptName("STS_BriarRose");
     if (!briar.IsAlive())
         return false;

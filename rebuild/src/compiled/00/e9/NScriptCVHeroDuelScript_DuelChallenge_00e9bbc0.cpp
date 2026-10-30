@@ -228,9 +228,7 @@ void CV_HeroDuelScript::DuelChallenge()
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     std::map<CCharString, CScriptGameResourceObjectScriptedThingBase> cast;
     cast["HERO"] = hero;

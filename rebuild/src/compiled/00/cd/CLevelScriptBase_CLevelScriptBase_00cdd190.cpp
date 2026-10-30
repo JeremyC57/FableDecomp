@@ -9,28 +9,10 @@
 class CScriptDataBase;
 class CGameScriptInterfaceBase;
 class CPersistContext;
-class CScriptBase {                                             // retail 0x40 bytes
-public:
-    CScriptBase();                                              // 0x00CB8110
-    virtual ~CScriptBase();
-protected:
-    virtual void RegisterMain();
-    virtual void Main();
-    virtual void Init();
-public:
-    virtual void OnPersist(CPersistContext& context);
-    unsigned char _body[0x3c];                                  // +0x04 .. +0x40
-};
-template <class TData> class CLevelScriptBase : public CScriptBase {   // vtable: own deleting destructor + the four CScriptBase hooks
-public:
-    CLevelScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& game);
-    CGameScriptInterfaceBase* Game;                             // +0x40
-    CScriptDataBase*          MasterScriptData;                 // +0x44
-};
-template <class TData>
-CLevelScriptBase<TData>::CLevelScriptBase(CScriptDataBase* data, CGameScriptInterfaceBase& game)
-    : Game(&game), MasterScriptData(data)
-{
-}
+// CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
+//   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44;
+//   its ctor is inline (wave 7): this row is the explicit instantiation of it, the five retail copies 0x00CDD160..0x00CDD220).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CLevelScriptBase.h"
 namespace NScript { class CalextestData; }
 template CLevelScriptBase<NScript::CalextestData >::CLevelScriptBase(CScriptDataBase*, CGameScriptInterfaceBase&);

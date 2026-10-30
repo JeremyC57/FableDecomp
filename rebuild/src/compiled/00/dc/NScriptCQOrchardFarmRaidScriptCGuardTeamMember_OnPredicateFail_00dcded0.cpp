@@ -38,10 +38,9 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CTimer {                                          // Ego_r.pdb: one long TimerIndex
-public:
-    long TimerIndex;
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 // CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
 #include "engine/CEntityScriptBase.h"
 namespace NScript {

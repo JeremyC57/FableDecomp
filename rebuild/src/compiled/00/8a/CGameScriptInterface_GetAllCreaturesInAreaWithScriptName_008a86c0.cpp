@@ -25,12 +25,12 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
 };
-struct CCountedScriptImp {                              // CCountedPointer<CScriptThingImp>
+template <class T> class CCountedPointer { public:                              // CCountedPointer<CScriptThingImp>
     void* Data;
     CCPPointerInfo* Info;
-    CCountedScriptImp() : Data(0), Info(0) {}
-    CCountedScriptImp(const CCountedScriptImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedScriptImp()
+    CCountedPointer() : Data(0), Info(0) {}
+    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -43,11 +43,14 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
-    CCountedScriptImp PImp;                             // +0x04
-    CScriptThing() {}
-    virtual ~CScriptThing() {}
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 struct __false_type { __false_type() {} };
 struct CScriptThingVector {                             // STLport vector<CScriptThing> (12-byte elements)
     CScriptThing* _M_start;

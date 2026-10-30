@@ -56,7 +56,7 @@ struct CCountBlock {
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-struct CCountedPointer {                               // CCountedPointer<CScriptThing>: {Data, Info}
+template <class T> class CCountedPointer { public:                               // CCountedPointer<CScriptThing>: {Data, Info}
     void*        Data;
     CCountBlock* Info;
     __forceinline CCountedPointer& operator=(const CCountedPointer& other)
@@ -79,15 +79,12 @@ struct CCountedPointer {                               // CCountedPointer<CScrip
         return *this;
     }
 };
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void t00(); virtual void t01(); virtual void t02();
-    virtual CCharString GetDataString() const;         // slot 3 (+0x0c)
-    virtual void t04(); virtual void t05();
-    virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
-    CCountedPointer PImp;                              // +0x04
-    virtual ~CScriptThing();                                   // 0x004AA840
-    __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }   // 0x008AB980 out of line
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 struct CScriptThingVector {                            // STLport vector<CScriptThing>
     CScriptThing* _M_start;
     CScriptThing* _M_finish;

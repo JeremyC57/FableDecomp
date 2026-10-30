@@ -22,9 +22,9 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
-class CTimer { public:
-    long Index;
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 
 struct CV_AmbushScamScript {
     unsigned char _base[0x84];
@@ -36,5 +36,5 @@ void CV_AmbushScamScript::ResetRandomSpeechTime()
 {
     CScriptDef* def = pGlobalScriptDef;
     long time = pGlobalScriptDef->RandomSpeechTimeMax - rand() % def->RandomSpeechTimeRange;
-    g_pGameScriptInterface->SetTimer(RandomSpeechTimer.Index, time);
+    g_pGameScriptInterface->SetTimer(RandomSpeechTimer.TimerIndex, time);
 }

@@ -1,0 +1,13 @@
+edit rebuild/src/compiled/00/4a/CScriptThing_CScriptThing_004abe90.cpp ok | pimpfix ok CCountedPointer_CScriptThing | ok cp:CScriptThing slots1 inl1
+edit rebuild/src/compiled/00/4a/CScriptThing_MsgWhoKnockedMeOut_004abf80.cpp ok | pimpfix ok CCountedPointer_CScriptThing | ok cp:CScriptThing slots34 inl2
+edit rebuild/src/compiled/00/70/CGameScriptThingManager_GetNullScriptThing_00704730.cpp ok | pimpfix ok CCountedPointer_CScriptThing | ok cp:CScriptThing slots1 inl2
+edit rebuild/src/compiled/00/8a/CScriptThing_operator_008ab980.cpp ok | pimpfix ok CCountedPointer_CScriptThing | ok cp:CScriptThing slots1 inl1
+edit rebuild/src/compiled/00/8a/global_UninitFillNCScriptThing008ac180_008ac180.cpp ok | pimpfix ok CCountedPointer_CScriptThing | ok cp:CScriptThing slots1 inl2
+edit rebuild/src/compiled/00/d2/CMKGHCHERO3_Main_00d29db0.cpp ok | ok cp:CScriptThingImpl slots1 dropP CScriptThingImpl inl3
+edit rebuild/src/compiled/00/d2/CMazeJournal_Main_00d2a180.cpp ok | ok cp:CScriptThingImpl slots21 dropP CScriptThingImpl inl2
+edit rebuild/src/compiled/00/d5/CMeleeThunder_Main_00d58080.cpp ok | ok cp:CScriptThingImpl slots1 dropP CScriptThingImpl inl3
+edit rebuild/src/compiled/00/dc/CMRestartMarker_Main_00dc21f0.cpp ok | ok cp:CScriptThingImpl slots1 dropP CScriptThingImpl inl2
+edit rebuild/src/compiled/00/e2/CMeetSisterMessenger_Main_00e292c0.cpp ok | ok cp:CScriptThingImpl slots1 dropP CScriptThingImpl inl3
+edit rebuild/src/compiled/00/e3/CMeleeThunder_Main_00e386e0.cpp ok | ok cp:CScriptThingImpl slots1 dropP CScriptThingImpl inl3
+edit rebuild/src/compiled/00/ea/CLostTraderTrader_MakeRandomComment_00ea4de0.cpp ok | ok cp:CScriptThingImpl slots1 dropP CScriptThingImpl inl3
+edit rebuild/src/compiled/00/f1/CCham_Main_00f14770.cpp ok | pimpfix ok CCountedPointerWords | ok cp:CScriptThing slots7 inl1

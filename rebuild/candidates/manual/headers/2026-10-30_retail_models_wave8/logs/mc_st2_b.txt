@@ -1,0 +1,103 @@
+008a42c0	SAME	201b RELOCATION_MATCH->RELOCATION_MATCH
+008a4560	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a4840	SAME	201b RELOCATION_MATCH->RELOCATION_MATCH
+008a4da0	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a5890	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a5b50	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a5e10	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a60d0	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a6390	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a6680	SAME	201b RELOCATION_MATCH->RELOCATION_MATCH
+008a6950	SAME	201b RELOCATION_MATCH->RELOCATION_MATCH
+008a6bf0	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a6eb0	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a7170	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008a7430	SAME	240b RELOCATION_MATCH->RELOCATION_MATCH
+008ac140	DIFFER	46v58 grades=False sym=?UninitCopy_CScriptThing_008ac140@@YIPAVCScriptThing@@PBV1@0PAV1@ABU__false_type@@@Z
+008ac2a0	DIFFER	66v132 grades=False sym=??$__copy@PAVCScriptThing@@PAV1@H@std@@YIPAVCScriptThing@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+008ad5f0	DIFFER	256v272 grades=False sym=?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z
+008adf90	SRC_FAIL	new.cpp(69): error C2976: 'std::vector' : too few template arguments | new.cpp(74): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(74): error C2039: '_M_insert_overflow' : is not a member of 'std::vector'
+00903ca0	SAME	180b RELOCATION_MATCH->RELOCATION_MATCH
+00903d60	SAME	183b RELOCATION_MATCH->RELOCATION_MATCH
+00903e20	SAME	258b RELOCATION_MATCH->RELOCATION_MATCH
+009041a0	SAME	363b RELOCATION_MATCH->RELOCATION_MATCH
+009046a0	SAME	213b RELOCATION_MATCH->RELOCATION_MATCH
+00904780	SAME	213b RELOCATION_MATCH->RELOCATION_MATCH
+00904860	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+00904940	SAME	173b RELOCATION_MATCH->RELOCATION_MATCH
+00904cd0	SAME	327b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf 'ScalarDeletingDestructor_LongCBaseClassCountedPointer' matches no symbol in old.obj; graded the largest function
+  WARN leaf 'ScalarDeletingDestructor_LongCBaseClassCountedPointer' matches no symbol in new.obj; graded the largest function
+00af69d0	DIFFER	33v86 grades=False sym=??_GCThingPredicateRecord@@QAEPAXI@Z
+00ce0600	DIFFER	777v795 grades=False sym=?Main@CMagicBarrierGraveyard@@QAEXXZ
+00ce0920	RELOC_RENAMED	RELOCATION_MATCH ; 142:??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z
+00ce0b00	RELOC_RENAMED	RELOCATION_MATCH ; 142:??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z
+00ce0ce0	RELOC_RENAMED	RELOCATION_MATCH ; 142:??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z
+00cf8970	DIFFER	243v248 grades=False sym=?Init@CLadyGreyWifeManagerScript@@UAEXXZ
+00cf8a70	RELOC_RENAMED	RELOCATION_MATCH ; 68:??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z ; 283:??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z ; 2ff:??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z ; 3aa:??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z ; 41c:??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z ; 45f:??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z
+00d032f0	SRC_FAIL	new.cpp(99): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'ThingIDVector' to 'std::vector<T,A> &'
+00d151d0	RELOC_RENAMED	RELOCATION_MATCH ; 1ad:??4?$CCountedPointer@UCScriptThingImpl@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z
+00d16570	SAME	517b RELOCATION_MATCH->RELOCATION_MATCH
+00d16920	SRC_FAIL	new.cpp(57): error C2275: 'NScript::CQ_BountyHuntScript' : illegal use of this type as an expression | new.cpp(57): error C2065: 'Hostage1Killed' : undeclared identifier | new.cpp(57): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00d16d00	SRC_FAIL	new.cpp(57): error C2275: 'NScript::CQ_BountyHuntScript' : illegal use of this type as an expression | new.cpp(57): error C2065: 'Hostage2Killed' : undeclared identifier | new.cpp(57): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00d25a00	SRC_FAIL	new.cpp(60): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(61): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(62): error C2371: 'EOpinion' : redefinition; different basic types
+00d732f0	DIFFER	737v789 grades=False sym=?RemoveParty@CQ_HangingTreeGoodScript@NScript@@QAEX_N@Z
+00d73c70	SRC_FAIL	new.cpp(38): error C2065: 'CScriptThingImp' : undeclared identifier | new.cpp(38): error C2065: 'data' : undeclared identifier | new.cpp(47): error C3861: 'data': identifier not found, even with argument-dependent lookup
+00d8f040	SAME	705b RELOCATION_MATCH->RELOCATION_MATCH
+00d907b0	SRC_FAIL	new.cpp(179): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(180): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(181): error C2371: 'EOpinion' : redefinition; different basic types
+00d90b30	SRC_FAIL	new.cpp(180): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(181): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(182): error C2371: 'EOpinion' : redefinition; different basic types
+00d97170	SAME	491b RELOCATION_MATCH->RELOCATION_MATCH
+00d9ec50	SRC_FAIL	new.cpp(25): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00da0d90	SRC_FAIL	new.cpp(118): error C2976: 'std::list' : too few template arguments | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list
+00da4350	DIFFER	288v317 grades=False sym=?Init@CMapKeeper@@QAEXXZ
+00da5490	SAME	779b RELOCATION_MATCH->RELOCATION_MATCH
+00dc0830	SRC_FAIL	new.cpp(57): error C2976: 'std::vector' : too few template arguments | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list
+00dc4d00	SRC_FAIL	new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dc5f10	SRC_FAIL	new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dc7420	SRC_FAIL	new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dcd1d0	DIFFER	318v370 grades=False sym=?Init@CTeamSpawn@@QAEXXZ
+00dcdc50	SAME	454b RELOCATION_MATCH->RELOCATION_MATCH
+00dcedf0	DIFFER	326v350 grades=False sym=?GetNearestCrateToMe@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAE?AVCScriptThing@@XZ
+00df2380	SRC_FAIL	new.cpp(189): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00dfc290	SRC_FAIL	new.cpp(57): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'CRetailVector<T>' to 'std::vector<T,A> &'
+00e1bc70	SRC_FAIL	new.cpp(177): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(178): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(179): error C2371: 'EOpinion' : redefinition; different basic types
+00e1c0f0	SAME	987b RELOCATION_MATCH->RELOCATION_MATCH
+00e1fcf0	SAME	435b RELOCATION_MATCH->RELOCATION_MATCH
+00e1fef0	SAME	435b RELOCATION_MATCH->RELOCATION_MATCH
+00e2e520	SRC_FAIL	new.cpp(96): error C2556: 'const CCharString &CScriptThing::GetDataString(void) const' : overloaded function differs only by return type from 'CCharString CScriptThing::GetDataString(void) const' | new.cpp(96): error C2040: 'CScriptThing::GetDataString' : 'const CCharString &(void) const' differs in levels of indirection from 'CCharString (void) const' | new.cpp(177): error C2264: 'CScriptThing::GetDataString' : error in function definition or declaration; function not called
+00e32080	SAME	371b RELOCATION_MATCH->RELOCATION_MATCH
+00e331f0	SAME	714b RELOCATION_MATCH->RELOCATION_MATCH
+00e36390	SAME	502b RELOCATION_MATCH->RELOCATION_MATCH
+00e503d0	SRC_FAIL	new.cpp(52): error C2511: 'bool CScriptThing::MsgIsKilledBy(const CCharString &)' : overloaded member function not found in 'CScriptThing'
+00e504c0	SAME	394b RELOCATION_MATCH->RELOCATION_MATCH
+00e53d90	SAME	464b RELOCATION_MATCH->RELOCATION_MATCH
+00e5fb80	SRC_FAIL	new.cpp(54): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00e6a0b0	DIFFER	584v650 grades=False sym=?WatchForInsideChapel@CV_ChapelOfEvilScript@@QAEXXZ
+00e6af20	SAME	725b RELOCATION_MATCH->RELOCATION_MATCH
+00e6b750	SAME	424b RELOCATION_MATCH->RELOCATION_MATCH
+00e8b020	SRC_FAIL	new.cpp(163): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00e9cb20	DIFFER	892v953 grades=False sym=?WatchForInsideTavern@CV_IntroductionToTrophiesScript@NScript@@QAEXXZ
+00e9dc80	SAME	610b RELOCATION_MATCH->RELOCATION_MATCH
+00ea1090	SAME	585b RELOCATION_MATCH->RELOCATION_MATCH
+00eae5a0	SRC_FAIL	new.cpp(38): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00eae670	DIFFER	120v136 grades=False sym=?Init@CMurderTwistBrotherYounger@CV_MurderTwistScript@NScript@@EAEXXZ
+00eae700	DIFFER	120v136 grades=False sym=?Init@CMurderTwistBrother@CV_MurderTwistScript@NScript@@EAEXXZ
+00eae790	DIFFER	120v136 grades=False sym=?Init@CMurderTwistBrotherFriend@CV_MurderTwistScript@NScript@@EAEXXZ
+00ecbd50	DIFFER	129v148 grades=False sym=?Init@CTalkingTrader1@CV_SickChildScript@NScript@@EAEXXZ
+00ecca30	DIFFER	129v148 grades=False sym=?Init@CTalkingTrader2@CV_SickChildScript@NScript@@EAEXXZ
+00ed7320	SAME	600b RELOCATION_MATCH->RELOCATION_MATCH
+00ed9790	SAME	453b RELOCATION_MATCH->RELOCATION_MATCH
+00edbd80	DIFFER	584v650 grades=False sym=?WatchForInsideTemple@CV_TempleOfLightScript@NScript@@QAEXXZ
+00edcb80	SAME	725b RELOCATION_MATCH->RELOCATION_MATCH
+00ee36a0	SRC_FAIL	new.cpp(169): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00ee6850	SAME	487b RELOCATION_MATCH->RELOCATION_MATCH
+00ef2290	SAME	394b RELOCATION_MATCH->RELOCATION_MATCH
+00ef3f00	SRC_FAIL	new.cpp(172): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(173): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(174): error C2371: 'EOpinion' : redefinition; different basic types
+00ef5200	SRC_FAIL	CScriptThing.h(81): error C2955: 'std::vector' : use of class template requires template argument list | CScriptThing.h(81): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(71): error C2955: 'std::vector' : use of class template requires template argument list
+00ef5cb0	SAME	817b RELOCATION_MATCH->RELOCATION_MATCH
+00ef7800	SRC_FAIL	new.cpp(87): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(88): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(89): error C2371: 'EOpinion' : redefinition; different basic types
+00f04cc0	SAME	1049b RELOCATION_MATCH->RELOCATION_MATCH
+00f081e0	SRC_FAIL	new.cpp(59): error C2664: 'CCountedPointer<T>::CCountedPointer' : cannot convert parameter 1 from 'const CCountedPointer<T>' to 'const CCountedPointer<T> &'
+00f09260	SAME	445b RELOCATION_MATCH->RELOCATION_MATCH
+00f09950	SAME	437b RELOCATION_MATCH->RELOCATION_MATCH
+00f0b960	SRC_FAIL	new.cpp(33): error C2976: 'std::vector' : too few template arguments | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list

@@ -15,10 +15,10 @@ extern "C" void* __cdecl malloc(unsigned int size);   // 0x00BFEA0E
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
-class CTimer { public:                                    // a script timer: the interface's timer index
-    long Index;
-    CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -49,16 +49,19 @@ template <unsigned int NodeSize> struct CRetailMap : _Rb_tree_base<NodeSize> {  
         this->_M_header->_M_right = this->_M_header;
     }
 };
-struct CCountedPointerWords {                     // {Data, Info}: a member object so its zero stores follow the owner's vtable store
+template <class T> class CCountedPointer { public:                     // {Data, Info}: a member object so its zero stores follow the owner's vtable store
     void* Data;
     void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+    CCountedPointer() : Data(0), Info(0) { }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CScriptThing : public CBaseClass { public:                 // vtable 0x01238C8C, 12 bytes
-    CCountedPointerWords PImp;                     // +0x04 Data, +0x08 Info
-    CScriptThing() : CBaseClass(), PImp() { }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() : CBaseClass(), PImp() { }
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 struct CQ_WizardBattleScript : CQuestScriptObject {   // vtable 0x012E0F54
     bool         VillagersTurnOnHero;              // +0x48
     bool         VillagersChased;                  // +0x49

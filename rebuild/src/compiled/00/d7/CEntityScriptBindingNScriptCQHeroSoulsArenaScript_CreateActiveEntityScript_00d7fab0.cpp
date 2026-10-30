@@ -2,10 +2,15 @@
 // Flags: /O2 /Oy /W3 
 // Leaf: ?CreateActiveEntityScript@CEntityScriptBinding
 #include <new>
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace EntityScriptBinding_00d7fab0 {
 struct CCPPointerInfo { unsigned RefCount; void (__fastcall *DeleteFunc)(void*); void* Data; };
-struct CEntityScriptBase { virtual ~CEntityScriptBase(); virtual void Stop(); virtual void Start(); };
 template<class T> struct CCountedPointer {
  T* Data; CCPPointerInfo* Info;
  CCountedPointer(T* p);
@@ -43,7 +48,7 @@ struct CEntityScriptBinding {
 CCountedPointer<CActiveEntityScriptBase> CEntityScriptBinding::CreateActiveEntityScript(CScriptThing* entity,unsigned lo,unsigned hi) {
  if(ClassAllocValid) {
   CCountedPointer<CEntityScriptBase> object(ClassAllocFunc(PParentScript,PParentScript->ScriptData,entity));
-  object.Data->Start();
+  object.Data->Init();
   return CCountedPointer<CActiveEntityScriptBase>(new CActiveEntityScript(entity,lo,hi,Flags,PParentScript,object));
  }
  return CCountedPointer<CActiveEntityScriptBase>(new CActiveEntityScript(entity,lo,hi,Flags,PParentScript,Func));

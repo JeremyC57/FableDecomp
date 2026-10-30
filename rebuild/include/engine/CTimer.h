@@ -5,6 +5,9 @@
 // dtor 0x00CD4470 = interface slot 88 DeregisterTimer(TimerIndex) (both through the global interface pointer 0x0143E8F8).
 // The operators are the Ego_r.pdb set; retail expands operator= inline (slot 89 SetTimer): a row that needs the inline body
 // defines it out of class after the include.
+// Wave 8 (family TIMER, 185 rows): rows whose retail expands the ctor (RegisterTimer), the dtor (DeregisterTimer),
+// GetTime (GetTimer) or operator= (SetTimer) define exactly those inline after the include; the invented setters
+// SetTime / Set are this operator= (Ego_r.pdb ??4CTimer@@QAEAAV0@J@Z; no SetTime / Set in either PDB).
 #ifndef FABLE_RETAIL_NSCRIPT
 #error engine/CTimer.h is the retail NScript model: define FABLE_RETAIL_NSCRIPT before including it
 #else

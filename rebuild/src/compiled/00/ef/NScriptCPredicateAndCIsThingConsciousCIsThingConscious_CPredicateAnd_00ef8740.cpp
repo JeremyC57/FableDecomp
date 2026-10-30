@@ -8,10 +8,10 @@ class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPo
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive, CIsThingConscious: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+#include "engine/CIsThingConscious.h"
 namespace NScript{
-class CPredicateBase{public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-class CIsThingAlive:public CPredicateBase{public:CScriptThing Thing;virtual bool operator()()const;virtual CPredicateBase* Clone()const;};
-class CIsThingConscious:public CPredicateBase{public:CScriptThing Thing;virtual bool operator()()const;virtual CPredicateBase* Clone()const;};
 template<class P1,class P2>class CPredicate_And:public CPredicateBase{public:P1 Predicate1;P2 Predicate2;CPredicate_And(const P1& p,const P2& q):Predicate1(p),Predicate2(q){}virtual bool operator()()const{return Predicate1()&&Predicate2();}virtual CPredicateBase* Clone()const{return new CPredicate_And(Predicate1,Predicate2);}};
 }
 template class NScript::CPredicate_And<NScript::CIsThingConscious,NScript::CIsThingConscious>;

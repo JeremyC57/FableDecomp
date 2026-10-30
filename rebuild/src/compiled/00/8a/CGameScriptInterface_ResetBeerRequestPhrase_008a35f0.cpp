@@ -22,23 +22,9 @@ struct SCountBlock {
     void* m_pObject;                       // +8
 };
 
-struct CScriptEntity {
-    virtual void _slot00();
-    virtual void _slot01();
-    virtual void _slot02();
-    virtual void _slot03();
-    virtual void _slot04();
-    virtual void _slot05();
-    virtual void _slot06();
-    virtual void _slot07();
-    virtual void _slot08();
-    virtual void _slot09();
-    virtual void _slot10();
-    virtual CThing* GetThing();            // slot 11 (vtable offset 0x2c)
-};
 
 template <class T> class CCountedPointer { public:
-    CScriptEntity* m_pData;                // +0
+    T*  m_pData;                // +0
     SCountBlock* m_pInfo;                  // +4
     ~CCountedPointer()
     {
@@ -56,11 +42,12 @@ template <class T> class CCountedPointer { public:
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CScriptThing : public CBaseClass { public:             // 12 bytes, passed by value (vtable 0x01238C8C, rtti-vtables.tsv)
-    CCountedPointer<CScriptThing> PImp;                  // +4 Data / +8 Info
-    ~CScriptThing() { }
-    CThing* GetThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetThing(); }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline CThing* CScriptThing::GetPThing() const { return PImp.m_pData == 0 ? 0 : PImp.m_pData->GetPThing(); }
 
 namespace std { template <class T1, class T2> struct pair { T1 first; T2 second; }; }   // STLport 4.6 <utility>
 template <class K, class V> class CKeyPairCompareLess;
@@ -114,9 +101,9 @@ struct STC_34_80 {
 
 void CGameScriptInterface::ResetBeerRequestPhrase(CScriptThing thing)
 {
-    if (!thing.GetThing())
+    if (!thing.GetPThing())
         return;                            // the parameter's destructor is inlined here too
-    CThing* pThing = thing.GetThing();
+    CThing* pThing = thing.GetPThing();
     STC_34_80* tc = (STC_34_80*)pThing->GetTC((ETCInterfaceType)0xaa);
     tc->m_34 = tc->m_80->m_50;
 }

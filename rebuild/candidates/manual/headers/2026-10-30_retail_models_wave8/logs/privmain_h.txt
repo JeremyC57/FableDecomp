@@ -1,0 +1,6 @@
+edit rebuild/src/compiled/00/d4/CHeroBed_Main_00d446d0.cpp Main CHeroBed
+edit rebuild/src/compiled/00/d5/CMeleeThunder_Main_00d58080.cpp Main CMeleeThunder
+edit rebuild/src/compiled/00/da/CMinionSpawner_Main_00da5980.cpp Main CMinionSpawner
+edit rebuild/src/compiled/00/e3/CMeleeThunder_Main_00e386e0.cpp Main CMeleeThunder
+edit rebuild/src/compiled/00/e4/CMTauntingBandit_Main_00e4b430.cpp Main CM_TauntingBandit
+edit rebuild/src/compiled/00/f1/CCham_Main_00f14770.cpp Main CCham

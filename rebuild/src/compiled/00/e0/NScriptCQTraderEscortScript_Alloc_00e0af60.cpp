@@ -25,10 +25,10 @@ struct __declspec(novtable) CLevelScriptBase : CScriptBase {
     TData*                MasterScriptData;             // +0x44
     CLevelScriptBase(CScriptDataBase* data, CGameScriptInterface& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
 };
-class CTimer { public:                                         // a script timer: the interface's timer index
-    long Index;
-    CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
 class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
 namespace NScript {
 class CQ_SunnyvaleMasterData;

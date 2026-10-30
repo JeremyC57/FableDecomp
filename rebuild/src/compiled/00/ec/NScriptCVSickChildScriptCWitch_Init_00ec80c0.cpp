@@ -17,17 +17,18 @@ struct SCount { long m_references; };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-struct CCountedPointer_CThing {                  // CScriptThing::PImp: object, count block
+template <class T> class CCountedPointer { public:                  // CScriptThing::PImp: object, count block
     CThing* m_pObject;
     SCount* m_pCount;
-    CCountedPointer_CThing(const CCountedPointer_CThing& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
+    CCountedPointer(const CCountedPointer& other) : m_pObject(other.m_pObject), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
 };
 
-class CScriptThing : public CBaseClass { public:               // 12 bytes, vtable 0x01238C8C
-    CCountedPointer_CThing PImp;                 // +4
-    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-    virtual ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

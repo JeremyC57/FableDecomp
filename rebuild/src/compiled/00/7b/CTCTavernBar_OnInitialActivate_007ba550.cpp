@@ -162,9 +162,10 @@ class CPlayer { public:
     long Number;                                // +0x28 (Ego_r.pdb)
     long GetNumber() const { return Number; }   // inline here (FableWin.pdb ?GetNumber@CPlayer@@QBEJXZ)
 };
-class CPlayerManager { public:
-    const CPlayer& GetMainPlayer() const;       // 0x00449960 (Ego_r.pdb)
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CTCBase { protected:                    // Ego_r.pdb CTCBase protected accessors
     CWorld& GetWorld() const;                   // 0x00686A70
     const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50

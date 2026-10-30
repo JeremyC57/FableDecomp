@@ -53,18 +53,12 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 #include "engine/CScriptThing.h"
 struct CQ_SunnyvaleMasterData;
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CTB_Bard : public CEntityScriptBase {
 public:
-    void*                    __vftable;                    // +0x00
-    CGameScriptInterface*    Game;                         // +0x04
-    CScriptThing             Me;                           // +0x08
-    CV_TalentlessBardScript* ParentClass;                  // +0x14
+        CV_TalentlessBardScript* ParentClass;                  // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;                  // +0x18
     bool                     first_time_talked_to;         // +0x1c
     bool                     given_gold;                   // +0x1d

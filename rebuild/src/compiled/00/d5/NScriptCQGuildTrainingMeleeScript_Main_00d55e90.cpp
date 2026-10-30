@@ -35,7 +35,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -48,27 +48,13 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-struct CScriptThingImpl {                               // the game-side object behind a CScriptThing (PImp)
-    virtual void h000(); virtual void h001(); virtual void h002(); virtual void h003(); virtual void h004(); virtual void h005(); virtual void h006(); virtual void h007();
-    virtual void h008(); virtual void h009(); virtual void h010(); virtual void h011(); virtual void h012(); virtual void h013(); virtual void h014(); virtual void h015();
-    virtual void h016(); virtual void h017(); virtual void h018(); virtual void h019(); virtual void h020(); virtual void h021(); virtual void h022(); virtual void h023();
-    virtual void h024(); virtual void h025(); virtual void h026(); virtual void h027(); virtual void h028(); virtual void h029(); virtual void h030(); virtual void h031();
-    virtual void h032(); virtual void h033(); virtual void h034(); virtual void h035(); virtual void h036(); virtual void h037(); virtual void h038(); virtual void h039();
-    virtual void h040(); virtual void h041(); virtual void h042(); virtual void h043(); virtual void h044(); virtual void h045(); virtual void h046(); virtual void h047();
-    virtual void h048(); virtual void h049(); virtual void h050(); virtual void h051(); virtual void h052(); virtual void h053(); virtual void h054(); virtual void h055();
-    virtual void h056(); virtual void h057(); virtual void h058(); virtual void h059(); virtual void h060(); virtual void h061(); virtual void h062(); virtual void h063();
-    virtual void h064(); virtual void h065(); virtual void h066();
-    virtual void SetFriendsWithEverythingFlag(bool on); // slot 67 (+0x10c)
-};
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980
-    CCountedPointer<CScriptThingImpl> PImp;                       // +0x04
-    __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
-    // virtual slot 67 (+0x10c), out of line 0x004AB060; called on a by-value thing, so expanded inline here
-    void SetFriendsWithEverythingFlag(bool on) { if (PImp.Data) PImp.Data->SetFriendsWithEverythingFlag(on); }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
+inline void CScriptThing::SetFriendsWithEverythingFlag(bool on) { if (PImp.Data) PImp.Data->SetFriendsWithEverythingFlag(on); }
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C
@@ -164,9 +150,7 @@ void CQ_GuildTrainingMeleeScript::Main()
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     Game->EntitySetAllowBossPhaseChanges(whisper, false);
     CScriptGameResourceObjectScriptedThingBase heroHandle;
@@ -176,16 +160,12 @@ void CQ_GuildTrainingMeleeScript::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     {
         CCutsceneCastMap cast;
@@ -206,30 +186,22 @@ void CQ_GuildTrainingMeleeScript::Main()
     if (Game->DisplayTutorial((ETutorialCategory)26)) {
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
         while (!Game->MsgIsTutorialClickedPast()) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
         }
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     {
-#pragma inline_depth(0)
         return;
-#pragma inline_depth()
     }
 }
 }

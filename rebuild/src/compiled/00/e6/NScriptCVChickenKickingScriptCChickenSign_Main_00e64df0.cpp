@@ -26,10 +26,10 @@ class CCPPointerInfo { public:                                 // counted-pointe
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThing;
-struct CCountedPointerScriptThing {                     // CCountedPointer<CScriptThing>
+template <class T> class CCountedPointer { public:                     // CCountedPointer<CScriptThing>
     CScriptThing*   Data;                               // +0x00
     CCPPointerInfo* Info;                               // +0x04
-    ~CCountedPointerScriptThing()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -42,10 +42,13 @@ struct CCountedPointerScriptThing {                     // CCountedPointer<CScri
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    CCountedPointerScriptThing PImp;                    // +0x04
-    virtual ~CScriptThing() {}                          // out of line: 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 template <class T> struct CVector {                     // STLport vector<T> (12 bytes)
     T* _M_start;
     T* _M_finish;
@@ -57,13 +60,8 @@ template <class T> struct CVector {                     // STLport vector<T> (12
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CEntityScriptBase
-{
-public:
-        virtual void Main();
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;
@@ -72,9 +70,7 @@ class CV_ChickenKickingScript { public:
     long FinalSector;                                   // +0x5c (Ego_r.pdb +0x60)
     class CChickenSign : public CEntityScriptBase {
     public:
-        CGameScriptInterface*    Game;                  // +0x04
-        CScriptThing             Me;                    // +0x08
-        CV_ChickenKickingScript* ParentClass;           // +0x14
+                CV_ChickenKickingScript* ParentClass;           // +0x14
         CQ_SunnyvaleMasterData*  PMasterData;           // +0x18
         CVector<CWideString>     TextKeys;              // +0x1c
     private:

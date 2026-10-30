@@ -52,16 +52,11 @@ template <class T> class CCountedPointer { public:
 };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:               // 12 bytes, vtable 0x01238C8C
-    virtual const CCharString& GetName() const;                 // slot 1 0x004AA8B0
-    virtual CCharString GetDefName() const;                     // slot 2 0x004AA8D0
-    virtual CCharString GetDataString() const;                  // slot 3 0x004AA900
-    virtual void SetDataString(const CCharString& text);        // slot 4 0x004AA930
-    virtual C3DVector GetFocalPos() const;                      // slot 5 0x004AA940
-    virtual const C3DVector& GetPos() const;                    // slot 6 (+0x18) 0x004AA980
-    CCountedPointer<CScriptThing> PImp;                         // +0x04
-    __forceinline ~CScriptThing() {}                            // inline here; out-of-line copy 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
 
 class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
@@ -92,8 +87,9 @@ class CPersistContext;
 #include "engine/CLevelScriptBase.h"
 
 namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CHeroTurningDebuggerScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
+class CDanyalTestScriptsData;
+// Master data (wave 8): RegisterScripts 0x00CD52D0 pairs CHeroTurningDebuggerScript's Alloc with the CDanyalTestScriptsData 0x00CD4B80 Alloc (wave 7 HEADERS.md table), so T is CDanyalTestScriptsData.
+class CHeroTurningDebuggerScript : public CLevelScriptBase<CDanyalTestScriptsData> {
 public:
     void MoveHeroTest();
 };

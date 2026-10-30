@@ -41,25 +41,23 @@ template <class T> class CCountedPointer { public:
 };
 class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImpl;
-class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
-    virtual void t001() const; virtual void t002() const; virtual void t003() const; virtual void t004() const; virtual void t005() const;
-    virtual const C3DVector& GetPos() const;                // slot 6 (+0x18) 0x004AA980
-    CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);                // 0x004ABE90
-    __forceinline ~CScriptThing() { }                       // out of line 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;                   // 0x0143E8F8
-class CTimer { public:                                             // a script timer: the interface's timer index
-    long Index;
-    CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -90,7 +88,7 @@ void NScript::CV_BordelloScript::CreateCustomers()
             if (timer.GetTime() == 0 && ClientsAlive < 3) {
                 if (IsActiveThreadTerminating())
                     return;
-                timer.SetTime(15);
+                timer = 15;
                 if (BecomeNunnery) {
                     if (IsActiveThreadTerminating())
                         return;

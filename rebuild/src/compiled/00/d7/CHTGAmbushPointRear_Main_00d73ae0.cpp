@@ -35,20 +35,16 @@ struct CQ_HangingTreeGoodScript {
 };
 struct CQ_SunnyvaleMasterData;
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CHTG_AmbushPointRear : public CEntityScriptBase {
 public:
-    void*                     __vftable;           // +0x00
-    CGameScriptInterface*     Game;                // +0x04
-    CScriptThing              Me;                  // +0x08
-    CQ_HangingTreeGoodScript* ParentClass;         // +0x14
+        CQ_HangingTreeGoodScript* ParentClass;         // +0x14
     CQ_SunnyvaleMasterData*   PMasterData;         // +0x18
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CHTG_AmbushPointRear::Main()

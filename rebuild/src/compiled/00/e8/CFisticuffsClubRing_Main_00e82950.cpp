@@ -91,13 +91,13 @@ class CIsThingAlive : public NScript::CPredicateBase { public:                  
 }
 using NScript::CIsThingAlive;
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-class CTimer { public:                                         // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }   // out-of-line copy 0x00CD4470
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 class CScriptDef { public:
     unsigned char _pad0[0x5e4];
     float FC_OutsideRingRange;                          // +0x5e4
@@ -185,7 +185,7 @@ void CFisticuffsClubRing::Main()
                 if (IsActiveThreadTerminating())
                     return;
                 Game->RemoveQuestInfoElement(warningInfo);
-                warningTimer.SetTime(0);
+                warningTimer = 0;
             }
             if (ParentClass->FisticuffsActive && !ParentClass->HeroInFisticuffsClub && !ParentClass->HeroPaidEntryFee
                 && !ParentClass->EverybodyAttack && interruptTimer.GetTime() < 1) {
@@ -199,7 +199,7 @@ void CFisticuffsClubRing::Main()
                 long conversation = Game->AddNewConversation(member, false, false);
                 Game->AddPersonToConversation(conversation, Game->GetHero());
                 Game->AddLineToConversation(conversation, ParentClass->GetQuestText("INTERRUPT_FIGHT_10"), false, member, Game->GetHero());
-                interruptTimer.SetTime(pGlobalScriptDef->FC_InsideRingMessageDelay);
+                interruptTimer = pGlobalScriptDef->FC_InsideRingMessageDelay;
             }
         } else {
             if (IsActiveThreadTerminating())
@@ -211,7 +211,7 @@ void CFisticuffsClubRing::Main()
                 long conversation = Game->AddNewConversation(tyler, false, false);
                 Game->AddPersonToConversation(conversation, Game->GetHero());
                 Game->AddLineToConversation(conversation, ParentClass->GetQuestText("STEP_OUTSIDE_RING_10"), false, tyler, Game->GetHero());
-                warningTimer.SetTime((long)pGlobalScriptDef->FC_RingTimeOut);
+                warningTimer = (long)pGlobalScriptDef->FC_RingTimeOut;
                 warningInfo = Game->AddQuestInfoTimer(warningTimer, "HUD_CLOCK_ICON", 1.0f);
             }
             ParentClass->HeroInsideRing = false;

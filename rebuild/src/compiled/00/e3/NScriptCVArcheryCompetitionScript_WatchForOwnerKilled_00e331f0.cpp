@@ -62,88 +62,26 @@ template <class T> class CCountedPointer { public:
         return *this;
     }
 };
-struct CScriptThingImpl {                                   // the game-side thing behind PImp.Data (CScriptThing vtable layout)
-    virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003(); virtual void i004(); virtual void i005(); virtual void i006(); virtual void i007();
-    virtual void i008(); virtual void i009(); virtual void i010(); virtual void i011(); virtual void i012(); virtual void i013(); virtual void i014(); virtual void i015();
-    virtual void i016(); virtual void i017();
-    virtual bool MsgIsKilledBy(const CCharString& killer) const;             // slot 18 (+0x48)
-    virtual void i019(); virtual void i020();
-    virtual bool MsgIsHitBy(const CCharString& attacker) const;              // slot 21 (+0x54)
-    virtual void i022(); virtual void i023(); virtual void i024(); virtual void i025(); virtual void i026(); virtual void i027(); virtual void i028(); virtual void i029();
-    virtual void i030(); virtual void i031(); virtual void i032(); virtual void i033(); virtual void i034(); virtual void i035(); virtual void i036(); virtual void i037();
-    virtual void i038(); virtual void i039(); virtual void i040(); virtual void i041(); virtual void i042();
-    virtual bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const; // slot 43 (+0xac)
-    virtual void i044();
-    virtual void i045();
-    virtual void i046();
-    virtual void i047();
-    virtual void i048();
-    virtual void i049();
-    virtual void i050();
-    virtual void i051();
-    virtual void i052();
-    virtual void i053();
-    virtual void i054();
-    virtual void i055();
-    virtual void i056();
-    virtual void i057();
-    virtual void i058();
-    virtual void i059();
-    virtual void i060();
-    virtual void i061();
-    virtual void i062();
-    virtual void i063();
-    virtual void i064();
-    virtual void i065();
-    virtual void i066();
-    virtual void i067();
-    virtual void i068();
-    virtual void i069();
-    virtual void i070();
-    virtual void i071();
-    virtual void i072();
-    virtual void i073();
-    virtual void i074();
-    virtual bool IsAlive() const;                                                      // slot 75 (+0x12c)
-};
-class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
-    CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
-    CScriptThing() { }
-    CScriptThing(const CScriptThing& other);                // 0x004ABE90
-    CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-    __forceinline ~CScriptThing() {}                                      // out of line 0x004AA840
-    bool IsAlive() const                                    // 0x004AB130 (the `&&` form: `test al,al` on the result)
-    {
-        return PImp.Data && PImp.Data->IsAlive();
-    }
-    bool MsgIsKilledBy(const CCharString& killer) const     // 0x004AAAF0
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsKilledBy(killer);
-    }
-    bool MsgIsHitBy(const CCharString& attacker) const      // 0x004AAB30
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsHitBy(attacker);
-    }
-    bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const   // 0x004AAD60
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker);
-    }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+__forceinline CScriptThing::~CScriptThing() {}
+inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
+inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const { if (!PImp.Data) return false; return PImp.Data->MsgIsKilledBy(killer); }
+inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
+inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;                   // 0x0143E8F8
-class CTimer { public:                                             // a script timer: the interface's timer index
-    long Index;
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -203,7 +141,7 @@ void NScript::CV_ArcheryCompetitionScript::WatchForOwnerKilled()
                 if (IsActiveThreadTerminating())
                     return;
 #pragma inline_depth()
-                GameTimeLeft.SetTime(0);
+                GameTimeLeft = 0;
                 ContestState = 0;
                 QuestFinished = true;
                 Game->SetTeleportingAsActive(true);

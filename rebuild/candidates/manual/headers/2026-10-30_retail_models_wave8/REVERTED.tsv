@@ -1,0 +1,95 @@
+addr	family	reason
+00cfc990	ESB2	SRC_FAIL new.cpp(110): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(110): error C2227: left of '->Update' must point to class/struct/union | new.cpp(113): error C2027: use of undefined type 'CGameScriptInterfaceBase'
+00d69f50	ESB2	SRC_FAIL new.cpp(154): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(154): error C2227: left of '->Update' must point to class/struct/union | new.cpp(156): error C2027: use of undefined type 'CGameScriptInterfaceBase'
+00d6a0d0	ESB2	SRC_FAIL new.cpp(154): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(154): error C2227: left of '->Update' must point to class/struct/union | new.cpp(156): error C2027: use of undefined type 'CGameScriptInterfaceBase'
+00dcec70	ESB2	DIFFER 157v157 grades=False sym=?GoOnPatrol@CCrateTeamMember@@QAEXXZ
+00ddece0	ESB2	SRC_FAIL new.cpp(30): error C2065: '__vftable' : undeclared identifier
+00df2d30	ESB2	SRC_FAIL new.cpp(84): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00ee3ee0	ESB2	SRC_FAIL new.cpp(141): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(141): error C2227: left of '->Update' must point to class/struct/union | new.cpp(144): error C2027: use of undefined type 'CGameScriptInterfaceBase'
+008adf90	ST2	SRC_FAIL new.cpp(69): error C2976: 'std::vector' : too few template arguments | new.cpp(74): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(74): error C2039: '_M_insert_overflow' : is not a member of 'std::vector'
+008d0c50	ST2	SRC_FAIL new.cpp(74): error C2065: 'PImp_Data' : undeclared identifier
+008d0e00	ST2	SRC_FAIL new.cpp(74): error C2065: 'PImp_Data' : undeclared identifier
+008d19a0	ST2	SRC_FAIL new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d1fd0	ST2	SRC_FAIL new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d29c0	ST2	SRC_FAIL new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d2bb0	ST2	SRC_FAIL new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d2d90	ST2	SRC_FAIL new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d2f80	ST2	SRC_FAIL new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+00af69d0	ST2	DIFFER 92v86 grades=False sym=??_GCThingPredicateRecord@@QAEPAXI@Z
+00d032f0	ST2	SRC_FAIL new.cpp(99): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'ThingIDVector' to 'std::vector<T,A> &'
+00d16920	ST2	SRC_FAIL new.cpp(57): error C2275: 'NScript::CQ_BountyHuntScript' : illegal use of this type as an expression | new.cpp(57): error C2065: 'Hostage1Killed' : undeclared identifier | new.cpp(57): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00d16d00	ST2	SRC_FAIL new.cpp(57): error C2275: 'NScript::CQ_BountyHuntScript' : illegal use of this type as an expression | new.cpp(57): error C2065: 'Hostage2Killed' : undeclared identifier | new.cpp(57): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00d73c70	ST2	SRC_FAIL new.cpp(38): error C2065: 'CScriptThingImp' : undeclared identifier | new.cpp(38): error C2065: 'data' : undeclared identifier | new.cpp(47): error C3861: 'data': identifier not found, even with argument-dependent lookup
+00d9ec50	ST2	SRC_FAIL new.cpp(25): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00da0d90	ST2	SRC_FAIL new.cpp(118): error C2976: 'std::list' : too few template arguments | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list
+00dc0830	ST2	SRC_FAIL new.cpp(57): error C2976: 'std::vector' : too few template arguments | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list
+00dc4d00	ST2	SRC_FAIL new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dc5f10	ST2	SRC_FAIL new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dc7420	ST2	SRC_FAIL new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00df0200	ST2	SRC_FAIL new.cpp(58): error C2614: 'CScriptThing' : illegal member initialization: 'PImpInfo' is not a base or member | new.cpp(58): error C2614: 'CScriptThing' : illegal member initialization: 'PImpData' is not a base or member
+00dfc290	ST2	SRC_FAIL new.cpp(57): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'CRetailVector<T>' to 'std::vector<T,A> &'
+00e2e520	ST2	SRC_FAIL new.cpp(96): error C2556: 'const CCharString &CScriptThing::GetDataString(void) const' : overloaded function differs only by return type from 'CCharString CScriptThing::GetDataString(void) const' | new.cpp(96): error C2040: 'CScriptThing::GetDataString' : 'const CCharString &(void) const' d
+00e4e0e0	ST2	DIFFER 1574v1811 grades=False sym=?HandleBanditToll@CTollBanditScript@@QAEXXZ
+00e503d0	ST2	SRC_FAIL new.cpp(52): error C2511: 'bool CScriptThing::MsgIsKilledBy(const CCharString &)' : overloaded member function not found in 'CScriptThing'
+00e5fb80	ST2	SRC_FAIL new.cpp(54): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00eae5a0	ST2	SRC_FAIL new.cpp(38): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00ef5200	ST2	SRC_FAIL fable_nscript_forward.h(39): error C2977: 'std::vector' : too many template arguments | CScriptThing.h(81): error C2955: 'std::vector' : use of class template requires template argument list | CScriptThing.h(81): error C2955: 'std::vector' : use of class template requires template argument 
+00f081e0	ST2	SRC_FAIL new.cpp(59): error C2664: 'CCountedPointer<T>::CCountedPointer' : cannot convert parameter 1 from 'const CCountedPointer<T>' to 'const CCountedPointer<T> &'
+00f0b960	ST2	SRC_FAIL new.cpp(33): error C2976: 'std::vector' : too few template arguments | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list
+00d38f70	ESB2	SRC_FAIL new.cpp(109): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(109): error C2227: left of '->NewScriptFrame' must point to class/struct/union | new.cpp(113): error C2027: use of undefined type 'CGameScriptInterfaceBase'
+00deb000	ESB2	SRC_FAIL new.cpp(97): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00df9180	ESB2	SRC_FAIL new.cpp(204): error C2227: left of '->ModifyThingHealth' must point to class/struct/union | new.cpp(219): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(219): error C2227: left of '->GetHero' must point to class/struct/union
+00eb10c0	ESB2	SRC_FAIL new.cpp(107): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(175): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb15c0	ESB2	SRC_FAIL new.cpp(104): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(134): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb19c0	ESB2	SRC_FAIL new.cpp(110): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(178): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb23e0	ESB2	SRC_FAIL new.cpp(104): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(142): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb3740	ESB2	SRC_FAIL new.cpp(107): error C2440: '=' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(144): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb4f80	ESB2	SRC_FAIL new.cpp(109): error C2440: '=' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(146): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb5d50	ESB2	SRC_FAIL new.cpp(104): error C2440: '=' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(141): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00dbe4e0	ST3	SRC_FAIL new.cpp(55): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *const ' to 'const CScriptThing &'
+00def3b0	ST3	SRC_FAIL new.cpp(37): error C2065: 'CScriptThingImp' : undeclared identifier | new.cpp(37): error C2065: 'data' : undeclared identifier | new.cpp(46): error C3861: 'data': identifier not found, even with argument-dependent lookup
+00e04f10	ST3	SRC_FAIL new.cpp(59): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *const ' to 'const CScriptThing &'
+00def760	ESB2	SRC_FAIL new.cpp(154): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(154): error C2227: left of '->GetHero' must point to class/struct/union | new.cpp(154): fatal error C1903: unable to recover from previous error(s); stopping compilation
+00efeb60	ESB2	SRC_FAIL new.cpp(183): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(183): error C2227: left of '->NewScriptFrame' must point to class/struct/union | new.cpp(187): error C2027: use of undefined type 'CGameScriptInterfaceBase'
+004abe90	ST4	DIFFER 42v33 grades=False sym=??0CScriptThing@@QAE@ABV0@@Z
+004abf80	ST4	DIFFER 69v60 grades=False sym=?MsgWhoKnockedMeOut@CScriptThing@@UBE?AV1@XZ
+00704730	ST4	DIFFER 46v31 grades=False sym=?GetNullScriptThing@CGameScriptThingManager@@QAE?AVCScriptThing@@XZ
+008ac180	ST4	DIFFER 65v54 grades=False sym=?UninitFillN_CScriptThing_008ac180@@YIPAVCScriptThing@@PAV1@IABV1@ABU__false_type@@@Z
+00d29db0	ESB2	SRC_FAIL new.cpp(180): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00d2a180	ESB2	SRC_FAIL new.cpp(160): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00dc21f0	ESB2	SRC_FAIL new.cpp(186): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00e292c0	ESB2	SRC_FAIL new.cpp(178): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00ce0600	PRED	SRC_FAIL CPredicateBase.h(19): error C2011: 'NScript::CPredicateBase' : 'class' type redefinition
+00da5490	PRED	SRC_FAIL CPredicateBase.h(19): error C2011: 'NScript::CPredicateBase' : 'class' type redefinition
+00db7e10	PRED	SRC_FAIL new.cpp(51): error C2259: 'CIsThingPredicate' : cannot instantiate abstract class
+00dcdc50	PRED	SRC_FAIL CPredicateBase.h(19): error C2011: 'NScript::CPredicateBase' : 'class' type redefinition
+00df80b0	PRED	SRC_FAIL CPredicateBase.h(19): error C2011: 'NScript::CPredicateBase' : 'class' type redefinition
+00df8970	PRED	SRC_FAIL CPredicateBase.h(19): error C2011: 'NScript::CPredicateBase' : 'class' type redefinition
+00dfb320	PRED	SRC_FAIL CPredicateBase.h(19): error C2011: 'NScript::CPredicateBase' : 'class' type redefinition
+00e386e0	PRED	SRC_FAIL CPredicateBase.h(19): error C2011: 'NScript::CPredicateBase' : 'class' type redefinition
+00ee1500	PRED	SRC_FAIL CPredicateBase.h(19): error C2011: 'NScript::CPredicateBase' : 'class' type redefinition
+00ee3b20	PRED	SRC_FAIL new.cpp(60): error C2011: 'NScript::CPredicateBase' : 'class' type redefinition
+00ef5b80	PRED	SRC_FAIL new.cpp(23): error C2259: 'NScript::CPredicate_And<L,R>' : cannot instantiate abstract class
+00ef6ec0	PRED	SRC_FAIL new.cpp(23): error C2259: 'NScript::CPredicate_And<L,R>' : cannot instantiate abstract class | new.cpp(23): error C2259: 'NScript::CPredicate_And<L,R>' : cannot instantiate abstract class | new.cpp(23): error C2259: 'NScript::CPredicate_And<L,R>' : cannot instantiate abstract class
+00ef6fe0	PRED	DIFFER 67v52 grades=False sym=??0?$CPredicate_And@V?$CPredicate_And@V?$CPredicate_And@VCIsThingAlive@NScript@@V12@@NScript@@VCIsThingAlive@2@@NScript@@VCIsThingAlive@2@@NScript@@QAE@ABV01@@Z
+00efbe20	PRED	RELOC_RENAMED: the row calls 0x00F35B10 (CEntityScriptBase::SetPredicate) as invented CGuildSealTrigger::RegisterFilter; respelling its parameter would bind a second invented name (NAME_FIXES)
+00435000	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+00587b93	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+0059cb90	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+0059d820	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+0059da10	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+005a30a1	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+005a3436	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+005a3581	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+005a8a5d	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+005eb4b0	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+00773b20	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+007d0850	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+007d4410	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+007d5730	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+007d6f70	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+007d8ab0	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+007dab60	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+007e5230	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+008a0cb0	CPM	callee GetMainPlayer QBE 0x00449960 -> QAE 0x00449970 (local model declared only the const accessor; header overload picks the non-const one)
+00da9c70	MBX	callee ~MovieBase 0x006E7B80 -> ~CBaseObject (bytes same, the B80 site became the base dtor call)

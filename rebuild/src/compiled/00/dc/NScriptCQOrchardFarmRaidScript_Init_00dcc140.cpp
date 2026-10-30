@@ -72,10 +72,10 @@ class CScriptThing : public CBaseClass { public:                           // vt
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CTimer { public:
-    long Index;
-    void Set(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 struct CQ_SunnyvaleMasterData {
     unsigned char _pad[0x109];
     bool OFBRCratesStolen;                              // +0x109
@@ -136,7 +136,7 @@ void NScript::CQ_OrchardFarmRaidScript::Init()
     CrateCount = 0;
     PMasterData->OFBRCratesStolen = false;
     PMasterData->OFBR_NoCratesWereStolen = false;
-    CommentTimer.Set(0);
+    CommentTimer = 0;
     DoneIntroduction = false;
     HeroAtWrongEntrance = false;
     WhisperSpawned = false;

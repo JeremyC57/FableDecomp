@@ -48,10 +48,9 @@ public:
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
-class CTimer {                                          // Ego_r.pdb: one long TimerIndex
-public:
-    long TimerIndex;
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 class CPersistContext {
 protected:
     template <class T> static T __fastcall GetDefaultVal();

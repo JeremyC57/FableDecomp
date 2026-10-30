@@ -29,9 +29,10 @@ class CMainGameComponent { public:
 };
 extern CMainGameComponent* g_pMainGameComponent;  // 0x013B86A0
 
-class CPlayerManager { public:
-    long GetMainPlayerNumber() const;             // 0x00449700
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 
 enum { GAME_EVENT_RESPAWN_HERO = 8 };
 

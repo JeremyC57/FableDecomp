@@ -14,21 +14,18 @@
 // steps are an if / else-if chain (`<=` = `test ah,41h ; jp`) whose bodies store the new state on the parent and, unless
 // the parent's thread is terminating, copy the def's target minion/summoner counts (the def pointer reloads after the
 // first store because the store may alias). Graded RELOCATION_MATCH on the first build.
-class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- void* PImp_Data;
- void* PImp_Info;
- CScriptThing(const CScriptThing& other);   // 0x004ABE90
- virtual ~CScriptThing();                           // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 #include "engine/CGameScriptInterface.h"
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& t) : Thing(t) { }
+inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
-class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-class CIsThingAlive:public CPredicateBase { public:
- CScriptThing Thing;
- __forceinline CIsThingAlive(const CScriptThing& t):Thing(t){}
- virtual bool operator()()const;virtual CPredicateBase* Clone()const;
- ~CIsThingAlive(){}
-};
 }
 class C2DCoordI;
 class C2DVector;
@@ -47,32 +44,7 @@ template<class T> class CArray;
 class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
 class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
-typedef long ECameraOp;
-typedef long EClothingCoversArea;
-typedef long ECreatureGroup;
-typedef long ECrime;
-typedef long ECutsceneBehaviour;
-typedef long EDoorTriggerType;
-typedef long EGameAction;
-typedef long EHeroAbility;
-typedef long EHeroTitle;
-typedef long EHeroTrainableStatType;
-typedef long EMiniGameType;
-typedef long EMorality;
-typedef long EMusicSetType;
-typedef long EOpinion;
-typedef long EOpinionAttitudeType;
-typedef long EOpinionDeedType;
-typedef long EOpinionPostDeedType;
-typedef long EOpinionReactionType;
-typedef long EScriptAIPriority;
-typedef long EScriptVillageAttitude;
-typedef long EScriptingStateGroups;
-typedef long ESex;
-typedef long ETargetingType;
-typedef long ETextGroupSelectionMethod;
-typedef long ETutorialCategory;
-namespace NEntityEvents {typedef long EEventType;}
+#include "engine/fable_nscript_forward.h"   // the PDB enums the row used typedef stand-ins for
 struct GameCalls {virtual ~GameCalls();
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20

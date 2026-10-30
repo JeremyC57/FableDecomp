@@ -31,12 +31,12 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
 };
-struct CCountedScriptImp {
+template <class T> class CCountedPointer { public:
     void* Data;
     CCPPointerInfo* Info;
-    CCountedScriptImp() : Data(0), Info(0) {}
-    CCountedScriptImp(const CCountedScriptImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedScriptImp()
+    CCountedPointer() : Data(0), Info(0) {}
+    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -50,33 +50,13 @@ struct CCountedScriptImp {
     }
 };
 class CThing;
-class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
-    virtual void s01() const; virtual void s02() const; virtual void s03() const; virtual void s04() const;
-    virtual void s05() const; virtual void s06() const; virtual void s07() const; virtual void s08() const;
-    virtual void s09() const; virtual void s10() const;
-    virtual CThing* GetPThing() const;                  // slot 11 (+0x2c)
-    virtual void s12() const; virtual void s13() const; virtual void s14() const; virtual void s15() const;
-    virtual void s16() const; virtual void s17() const; virtual void s18() const; virtual void s19() const;
-    virtual void s20() const; virtual void s21() const; virtual void s22() const; virtual void s23() const;
-    virtual void s24() const; virtual void s25() const; virtual void s26() const; virtual void s27() const;
-    virtual void s28() const; virtual void s29() const; virtual void s30() const; virtual void s31() const;
-    virtual void s32() const; virtual void s33() const; virtual void s34() const; virtual void s35() const;
-    virtual void s36() const; virtual void s37() const; virtual void s38() const; virtual void s39() const;
-    virtual void s40() const; virtual void s41() const; virtual void s42() const; virtual void s43() const;
-    virtual void s44() const; virtual void s45() const; virtual void s46() const; virtual void s47() const;
-    virtual void s48() const; virtual void s49() const; virtual void s50() const; virtual void s51() const;
-    virtual void s52() const; virtual void s53() const; virtual void s54() const; virtual void s55() const;
-    virtual void s56() const; virtual void s57() const; virtual void s58() const; virtual void s59() const;
-    virtual void s60() const; virtual void s61() const; virtual void s62() const; virtual void s63() const;
-    virtual void s64() const; virtual void s65() const; virtual void s66() const; virtual void s67() const;
-    virtual void s68() const; virtual void s69() const; virtual void s70() const; virtual void s71() const;
-    virtual void s72() const; virtual void s73() const; virtual void s74() const;
-    virtual bool IsAlive() const;                       // slot 75 (+0x12c)
-    CCountedScriptImp PImp;                             // +0x04
-    CScriptThing() {}
-    virtual ~CScriptThing() {}
-    CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 struct CDefVirtual {
     virtual void v000();
     virtual void DestroyDef();                          // slot 1 (+4)
@@ -202,9 +182,10 @@ class CPlayer { public:
     void SetPlayerCharacter_00487B80(CThingPlayerCreature* creature);   // 0x00487B80
     void SetControlledCreature(CThingPlayerCreature* creature);         // 0x00487CF0
 };
-class CPlayerManager { public:
-    CPlayer& GetMainPlayer();                           // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

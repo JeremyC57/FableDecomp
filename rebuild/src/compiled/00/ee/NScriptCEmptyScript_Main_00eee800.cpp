@@ -31,8 +31,9 @@ class CPersistContext;
 #include "engine/CLevelScriptBase.h"
 
 namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CEmptyScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
+class CEmptyData;
+// Master data (wave 8): RegisterScripts 0x00CD52D0 pairs CEmptyScript's Alloc with the CEmptyData 0x00CD4AC0 Alloc (wave 7 HEADERS.md table), so T is CEmptyData.
+class CEmptyScript : public CLevelScriptBase<CEmptyData> {
 public:
     void Bum();                                         // 0x00EEE8B0
     virtual void Main();

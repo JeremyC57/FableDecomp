@@ -1,0 +1,20 @@
+00d2d830	RELOC_RENAMED	leafsym ?Main@CPermanentBarrier@@QAEXXZ -> ?Main@CPermanentBarrier@@UAEXXZ
+00d7ecb0	RELOC_RENAMED	leafsym ?Main@CSummoner1@@QAEXXZ -> ?Main@CSummoner1@@UAEXXZ
+00d7eed0	RELOC_RENAMED	leafsym ?Main@CSummoner2@@QAEXXZ -> ?Main@CSummoner2@@UAEXXZ
+  WARN leaf '?DealWithHeroHittingMe@CVictimsBrother@CQ_RansomVictimScript@NScript@@AAEXXZ' matches no symbol in old.obj; graded the largest function
+00ded380	RELOC_RENAMED	leafsym ?Main@CSP_NymphTrigger@@QAEXXZ -> ?Main@CSP_NymphTrigger@@UAEXXZ
+00deb000	SRC_FAIL	new.cpp(97): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00df9180	SRC_FAIL	new.cpp(204): error C2227: left of '->ModifyThingHealth' must point to class/struct/union | new.cpp(219): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(219): error C2227: left of '->GetHero' must point to class/struct/union
+00e047d0	RELOC_RENAMED	leafsym ?Main@CDW5_Balv@@QAEXXZ -> ?Main@CDW5_Balv@@UAEXXZ
+00e04970	RELOC_RENAMED	leafsym ?Main@CDW5_Balv@@QAEXXZ -> ?Main@CDW5_Balv@@UAEXXZ
+00eaef30	RELOC_RENAMED	leafsym ?Main@CMurderTwistSheriff@@QAEXXZ -> ?Main@CMurderTwistSheriff@@UAEXXZ
+00eb5d50	SRC_FAIL	new.cpp(104): error C2440: '=' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(141): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb4f80	SRC_FAIL	new.cpp(109): error C2440: '=' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(146): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb23e0	SRC_FAIL	new.cpp(104): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(142): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb3740	SRC_FAIL	new.cpp(107): error C2440: '=' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(144): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb10c0	SRC_FAIL	new.cpp(107): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(175): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb15c0	SRC_FAIL	new.cpp(104): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(134): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eb19c0	SRC_FAIL	new.cpp(110): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *' | new.cpp(178): error C2440: 'initializing' : cannot convert from 'CGameScriptInterfaceBase *' to 'CGameScriptInterface *'
+00eed8b0	RELOC_RENAMED	leafsym ?Main@CStopDrawing@@QAEXXZ -> ?Main@CStopDrawing@@UAEXXZ
+00ee0a20	RELOC_RENAMED	leafsym ?Main@CTH_Trigger_Oakvale@@QAEXXZ -> ?Main@CTH_Trigger_Oakvale@@UAEXXZ
+00ef1e10	RELOC_RENAMED	leafsym ?Main@CTrappedMan@@QAEXXZ -> ?Main@CTrappedMan@@UAEXXZ

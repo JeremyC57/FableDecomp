@@ -32,11 +32,11 @@ struct SCountBlock {
     void* m_pObject;                                // +8
 };
 struct CScriptThingImp;
-struct CScriptThingPImp {                           // CCountedPointer<CScriptThingImp>
+template <class T> class CCountedPointer { public:                           // CCountedPointer<CScriptThingImp>
     CScriptThingImp* Data;
     SCountBlock*     Info;
-    CScriptThingPImp() : Data(0), Info(0) { }
-    __forceinline ~CScriptThingPImp()
+    CCountedPointer() : Data(0), Info(0) { }
+    __forceinline ~CCountedPointer()
     {
         if (Info) {
             --Info->m_references;
@@ -49,12 +49,13 @@ struct CScriptThingPImp {                           // CCountedPointer<CScriptTh
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:                 // 12 bytes, vtable 0x01238C8C
-    CScriptThingPImp PImp;
-    CScriptThing() { }
-    __forceinline ~CScriptThing() { }
-    CScriptThing& operator=(const CScriptThing& other);   // 0x008AB980
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
+__forceinline CScriptThing::~CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 
 class CThing { public:
     unsigned char _pad[0x91];

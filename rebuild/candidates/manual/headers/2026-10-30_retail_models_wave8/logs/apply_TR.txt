@@ -1,0 +1,6 @@
+edit rebuild/src/compiled/00/ee/NScriptCEmptyScript_Main_00eee800.cpp 00eee800
+edit rebuild/src/compiled/00/ee/NScriptCTestTheInventoryScript_TestForLampOn_00eeec00.cpp 00eeec00
+edit rebuild/src/compiled/00/ef/NScriptCHeroTurningDebuggerScript_MoveHeroTest_00efc300.cpp 00efc300
+edit rebuild/src/compiled/00/ef/NScriptCHeroTurningDebuggerScript_Main_00efc260.cpp 00efc260
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsArenaScript_Alloc_00d80ba0.cpp 00d80ba0
+edit rebuild/src/compiled/00/ee/NScriptCExpressionFollowScript_Main_00eea020.cpp 00eea020

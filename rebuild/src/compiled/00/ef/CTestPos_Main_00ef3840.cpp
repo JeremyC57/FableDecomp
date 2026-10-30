@@ -25,35 +25,24 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                         // vtable 0x012C32F0: a filter holding a script thing
-    CScriptThing m_thing;                     // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive();                         // 0x00E241B0
-};
 }
 using NScript::CIsThingAlive;
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CTestPos : public CEntityScriptBase {
 public:
-    void*                 __vftable;          // +0x00
-    CGameScriptInterface* Game;               // +0x04
-    CScriptThing          Me;                 // +0x08
-    void Main();
+private:
+        virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CTestPos::Main()

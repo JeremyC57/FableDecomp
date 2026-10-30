@@ -48,27 +48,13 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes; PImp is the game-side thing
-    CCountedPointer<CScriptThing> PImp;                     // +0x04 Data, +0x08 Info
-    ~CScriptThing() { }                                     // out of line 0x004AA840
-    virtual void t01() const; virtual void t02() const; virtual void t03() const; virtual void t04() const; virtual void t05() const;
-    virtual const C3DVector& GetPos() const                 // slot 6 (+0x18)
-    {
-        if (!PImp.Data)
-            return g_ZeroVector;
-        return PImp.Data->GetPos();
-    }
-    virtual void t07() const; virtual void t08() const; virtual void t09() const; virtual void t10() const; virtual void t11() const; virtual void t12() const; virtual void t13() const; virtual void t14() const;
-    virtual void t15() const; virtual void t16() const; virtual void t17() const; virtual void t18() const; virtual void t19() const; virtual void t20() const; virtual void t21() const; virtual void t22() const;
-    virtual void t23() const; virtual void t24() const; virtual void t25() const; virtual void t26() const; virtual void t27() const; virtual void t28() const; virtual void t29() const; virtual void t30() const;
-    virtual void t31() const; virtual void t32() const; virtual void t33() const; virtual void t34() const; virtual void t35() const; virtual void t36() const; virtual void t37() const; virtual void t38() const;
-    virtual void t39() const; virtual void t40() const; virtual void t41() const; virtual void t42() const; virtual void t43() const; virtual void t44() const; virtual void t45() const; virtual void t46() const;
-    virtual void t47() const; virtual void t48() const; virtual void t49() const; virtual void t50() const; virtual void t51() const; virtual void t52() const; virtual void t53() const; virtual void t54() const;
-    virtual void t55() const; virtual void t56() const; virtual void t57() const; virtual void t58() const; virtual void t59() const; virtual void t60() const; virtual void t61() const; virtual void t62() const;
-    virtual void t63() const; virtual void t64() const; virtual void t65() const; virtual void t66() const; virtual void t67() const; virtual void t68() const; virtual void t69() const; virtual void t70() const;
-    virtual void t71() const; virtual void t72() const; virtual void t73() const; virtual void t74() const; virtual void t75() const; virtual void t76() const;
-    virtual bool IsNull() const { return !PImp.Data || PImp.Data->IsNull(); }   // slot 77 (+0x134)
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
+inline bool CScriptThing::IsNull() const { return !PImp.Data || PImp.Data->IsNull(); }
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).

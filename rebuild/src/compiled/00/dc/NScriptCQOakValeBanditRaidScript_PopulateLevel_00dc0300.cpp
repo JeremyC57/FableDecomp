@@ -51,13 +51,11 @@ template <class T> class CCountedPointer { public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImpl;
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    virtual const C3DVector& GetPos() const;            // slot 6 (+0x18) 0x004AA980
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing() {}
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
 namespace std {
 template<class T> inline void _Destroy(T* first, T* last)
 {

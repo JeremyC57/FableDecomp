@@ -1023,13 +1023,14 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
  void Release();                                    // 0x00CD2770
 };
 extern GameCalls* g_pGameScriptInterface;          // 0x0143E8F8
-class CTimer { public:                                     // 4 bytes: an index into the global script timers
- long TimerIndex;
- CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
- ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
- void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
- long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+#define FABLE_RETAIL_NSCRIPT
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 class CScriptDef { public:
  unsigned char _pad[0xcc8];
  long LarderAlarmTime;                              // +0xCC8 (descriptive)
@@ -1074,7 +1075,7 @@ void CHobbeLarder::Main()
   if (IsActiveThreadTerminating()) return;
   if (Me.IsAwareOfHero() && timer.GetTime() == 0) {
    if (IsActiveThreadTerminating()) return;
-   timer.SetTime(pGlobalScriptDef->LarderAlarmTime);
+   timer = pGlobalScriptDef->LarderAlarmTime;
   }
  }
  if (IsActiveThreadTerminating()) return;

@@ -55,13 +55,12 @@ template <class T> class CCountedPointer { public:
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct CScriptThingImpl;
-class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
-    CCountedPointer<CScriptThingImpl> PImp;              // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
-    ~CScriptThing() {}
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual const C3DVector& GetPos() const;             // slot 6 (+0x18) 0x004AA980
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
+inline CScriptThing::~CScriptThing() {}
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

@@ -3,7 +3,11 @@ struct HealthObj { char pad[0x91]; unsigned char flags; char pad2[0xb4-0x92]; fl
 class CThingPlayerCreature : public HealthObj { };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };   // 0x00487DC0
 
-class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+ /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern float g_defaultHealth;
 
 float __fastcall CGameScriptInterface_GetHeroHealth(CGameScriptInterface* self)

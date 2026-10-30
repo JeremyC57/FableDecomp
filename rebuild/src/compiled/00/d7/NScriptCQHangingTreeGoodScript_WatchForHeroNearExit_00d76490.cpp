@@ -17,11 +17,10 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CCPPointerInfo;
-class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
-    virtual ~CScriptThing();                       // slot 0; complete destructor 0x004AA840
-    CScriptThing*   PImp_Data;                     // +0x04
-    CCPPointerInfo* PImp_Info;                     // +0x08
-};
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace std {
 template<class T> inline void _Destroy(T* first, T* last)
 {

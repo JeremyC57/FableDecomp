@@ -18,10 +18,10 @@ class CGamePlayerInterface { public:
     long GetAssignableSpecialMoveIndexForButton(EXboxControllerButton button);   // 0x00445EE0
 };
 class CPlayer;
-class CPlayerManager { public:
-public:
-    CPlayer& GetMainPlayer();   // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CAbilityButtonGuiDef { public:
     unsigned char         _def00[0x40];            // CGameDefinition base + gui def members
     EXboxControllerButton ControllerButton;        // +0x40 (PDB +68)

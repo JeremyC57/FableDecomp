@@ -41,7 +41,9 @@ namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CLevelScriptBase.h"
 class CGameScriptInterfaceBase;class CScriptDataBase;
-class CTimer{public:long TimerIndex;};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 namespace NScript{class CQ_TraderConflictGoodScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:std::vector<CScriptThing> AllCreatures;long TradersFollowing,TradersReachedTeleporter,BanditSecurityLinesSaid;bool FirstRegionDead,EnteredNewRegion,IntroDone,OutroStart,OutroDone,OpenedCage,CommentedOnBanditCostume,MissionSucceeded;CQ_TraderConflictGoodScript(CScriptDataBase* data,CGameScriptInterfaceBase& game);virtual void RegisterMain();virtual void Main();virtual void Init();virtual void OnPersist(CPersistContext&);static CScriptBase* __fastcall Alloc(CScriptDataBase*,CGameScriptInterfaceBase&);};
 CQ_TraderConflictGoodScript::CQ_TraderConflictGoodScript(CScriptDataBase* data,CGameScriptInterfaceBase& game):CLevelScriptBase<CQ_SunnyvaleMasterData>(data,game){}
 }

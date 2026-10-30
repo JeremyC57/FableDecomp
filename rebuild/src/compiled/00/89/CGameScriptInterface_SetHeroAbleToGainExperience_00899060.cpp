@@ -64,10 +64,10 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;       // 0x00487DC0
     const CThingPlayerCreature* PeekPControlledCreature() const;      // 0x00487DD0
 };
-class CPlayerManager {
-public:
-    CPlayer& GetMainPlayer();                                       // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 enum EHeroExperienceStatCategory { HERO_EXPERIENCE_STAT_STRENGTH = 0, HERO_EXPERIENCE_STAT_SKILL = 1, HERO_EXPERIENCE_STAT_WILL = 2,
                                    HERO_EXPERIENCE_STAT_FORCE_DWORD = 0x7fffffff };
 enum EHeroTrainableStatType { HERO_TRAINABLE_STAT_FORCE_DWORD = 0x7fffffff };

@@ -71,10 +71,10 @@ class CTimer;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CTimer { public:                                         // a script timer: the interface's timer index
-    long Index;
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 class CScriptDef { public:
     unsigned char _pad[0xf58];
     long HangingTreeEvilMissionTimer;                   // +0xF58
@@ -154,7 +154,7 @@ void CQ_HangingTreeEvilScript::DoMission()
             }
             if (IsActiveThreadTerminating())
                 return;
-            MissionTimer.SetTime(pGlobalScriptDef->HangingTreeEvilMissionTimer);
+            MissionTimer = pGlobalScriptDef->HangingTreeEvilMissionTimer;
             TimerGUIIndex = Game->AddQuestInfoTimer(MissionTimer, "HUD_CLOCK_ICON", 1.0f);
             Game->DisplayQuestInfo(true);
             HTE_State = 2;

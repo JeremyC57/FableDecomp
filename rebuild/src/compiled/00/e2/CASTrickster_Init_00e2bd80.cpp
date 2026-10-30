@@ -21,21 +21,21 @@ class C3DVector { public:
 enum EScriptingStateGroups { SCRIPTING_STATE_GROUP_4 = 4 };
 struct SCountInfo { long RefCount; };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCountedPointerImp {                       // CCountedPointer<CScriptThing>: {Data, Info}
+template <class T> class CCountedPointer { public:                       // CCountedPointer<CScriptThing>: {Data, Info}
     void*       Data;                              // +0x00
     SCountInfo* Info;                              // +0x04
-    CCountedPointerImp(const CCountedPointerImp& other) : Data(other.Data), Info(other.Info)
+    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
     {
         if (Info)
             ++Info->RefCount;
     }
 };
-class CScriptThing : public CBaseClass { public:                  // vtable 0x01238C8C, 12 bytes
-    CCountedPointerImp PImp;                       // +0x04
-    virtual ~CScriptThing();
-    virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 class CScriptDef { public:
     unsigned char _pad[0x29c];
     float AmbushScamTricksterWanderMax;            // +0x29c (PDB +0x2a0)

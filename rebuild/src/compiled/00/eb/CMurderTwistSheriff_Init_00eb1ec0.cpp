@@ -20,11 +20,11 @@ template <class T> class CCountedPointer { public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0, implicit copy
 struct CScriptThingImp;
-class CScriptThing : public CBaseClass { public:                    // vtable 0x01238C8C, 12 bytes
-    CCountedPointer<CScriptThingImp> PImp;       // +0x04
-    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
-    virtual ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) {}
 class CScriptGameResourceObjectScriptedThingBase { public:
     unsigned char _body[0x10];
     bool IsValid() const;                          // 0x00CD23B9

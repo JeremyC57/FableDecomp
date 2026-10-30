@@ -21,13 +21,11 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void s000();
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CCountedPointerWords {
@@ -42,7 +40,7 @@ class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public: 
     bool IsValid() const;                                // 0x00CD23B9
     void Release();                                    // 0x00CD2770
 };
-typedef long EScriptAIPriority;
+#include "engine/fable_nscript_forward.h"   // the PDB enums the row used typedef stand-ins for
 struct GameCalls {                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -159,7 +157,7 @@ void NScript::CQ_TraderConflictGoodScript::CTC_BanditGuard::Main()
     CScriptGameResourceObjectScriptedThingBase scripted;
     if (scripted.IsValid())
         scripted.Release();
-    while (!Game->StartScriptingEntity(Me, scripted, 2)) {
+    while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)2)) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating()) return;
     }

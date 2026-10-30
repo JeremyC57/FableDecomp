@@ -41,10 +41,10 @@ class CPlayer { public:
     bool IsInitialised();                     // 0x0099A330
     CThingPlayerCreature* GetPControlledCreature() const;// 0x00487DC0
 };
-class CPlayerManager { public:
-public:
-    CPlayer& GetMainPlayer();   // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 extern long g_BulletTimeStrikeSeconds;        // 0x01375550
 extern long g_BulletTimeFramesPerSecond;      // 0x01378D08
 

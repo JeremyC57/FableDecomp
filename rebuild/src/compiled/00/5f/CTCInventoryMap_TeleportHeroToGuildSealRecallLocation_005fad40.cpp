@@ -35,10 +35,10 @@ class CThingPlayerCreature : public CThing { };
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const;            // 0x00487DD0
 };
-class CPlayerManager { public:
-    const CPlayer& GetMainPlayer() const;             // 0x00449960 (Ego_r.pdb)
-    long GetMainPlayerNumber() const;                 // 0x00449700 (Ego_r.pdb)
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CEngine { public:
     unsigned char _pad00[0x1c];
     CPlayerManager* PlayerManager;                    // +0x1C

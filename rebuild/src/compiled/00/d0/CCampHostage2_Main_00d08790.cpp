@@ -89,13 +89,12 @@ public:
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 extern bool g_PlayAnimationDefaultFlag;                // 0x01375748
-class CTimer { public:                                        // a script timer: the interface's timer index
-    long Index;
-    CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
-    ~CTimer();                                         // 0x00CD4470
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 struct CQ_BanditCampBossBattleScript {
     char _pad[0x4e];
     bool HostagesRescued;                              // +0x4e
@@ -113,7 +112,7 @@ long UnregisterScriptTimer(long index);
 #pragma auto_inline(off)
 CTimer::~CTimer()
 {
-    UnregisterScriptTimer(Index);
+    UnregisterScriptTimer(TimerIndex);
 }
 #pragma auto_inline(on)
 void CCampHostage2::Main()
@@ -135,7 +134,7 @@ void CCampHostage2::Main()
     }
     if (!IsActiveThreadTerminating()) {
         CTimer cryTimer;
-        cryTimer.SetTime(0);
+        cryTimer = 0;
         long cry = 0;
         while (!ParentClass->HostagesRescued && !ParentClass->HostageKilled) {
             Game->NewScriptFrame();
@@ -158,7 +157,7 @@ void CCampHostage2::Main()
                     cry = 0;
                     break;
                 }
-                cryTimer.SetTime(8);
+                cryTimer = 8;
             }
         }
         if (!IsActiveThreadTerminating())

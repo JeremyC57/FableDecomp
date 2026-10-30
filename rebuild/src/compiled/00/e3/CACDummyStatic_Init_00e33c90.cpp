@@ -23,7 +23,7 @@ struct SCountBlock {
     void (__fastcall* m_pfnDestroy)(void*);              // +4
     void* m_pObject;                                     // +8
 };
-struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     void* m_pObject;                                     // +0
     SCountBlock* m_pCount;                               // +4
     ~CCountedPointer()
@@ -40,10 +40,13 @@ struct CCountedPointer {
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:                            // vtable 0x01238C8C, 12 bytes
-    CCountedPointer PImp;                                // +0x04
-    virtual ~CScriptThing() { }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 class CGameScriptInterface { public:                       // retail vtable @ 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();

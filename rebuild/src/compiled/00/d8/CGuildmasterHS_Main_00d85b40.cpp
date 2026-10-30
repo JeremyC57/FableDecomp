@@ -89,13 +89,13 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-class CTimer { public:                                         // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }   // out-of-line copy 0x00CD4470
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 struct CQ_HeroSoulsGuildmasterScript {
     unsigned char _pad[0x49];
@@ -172,7 +172,7 @@ void CGuildmaster_HS::Main()
                 break;
             }
             ++comments;
-            commentTimer.SetTime(18);
+            commentTimer = 18;
         }
     }
     if (IsActiveThreadTerminating())

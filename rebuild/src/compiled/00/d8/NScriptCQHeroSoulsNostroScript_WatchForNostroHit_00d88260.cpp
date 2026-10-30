@@ -31,13 +31,13 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
 
-class CTimer { public:                                         // a script timer: the interface's timer index
-    long Index;
-    CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }
-    void SetTime(long seconds) { g_pGameScriptInterface->SetTimer(Index, seconds); }
-    long GetTime() { return g_pGameScriptInterface->GetTimer(Index); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long seconds) { g_pGameScriptInterface->SetTimer(TimerIndex, seconds); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
@@ -57,7 +57,7 @@ void NScript::CQ_HeroSoulsNostroScript::WatchForNostroHit()
     CScriptThing nostro = Game->GetThingWithScriptName("Nostro");
     float threshold = Game->GetHealth(nostro) - 100.0f;
     CTimer timer;
-    timer.SetTime(80);
+    timer = 80;
     while (Game->GetHealth(nostro) > threshold) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())

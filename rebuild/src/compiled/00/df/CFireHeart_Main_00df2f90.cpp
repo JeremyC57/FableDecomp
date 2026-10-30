@@ -79,13 +79,12 @@ class CRGBColour { public:                                     // B,G,R,A bytes
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-class CTimer { public:
-    long TimerIndex;
-    CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-    ~CTimer();                                          // 0x00CD4470
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 #pragma auto_inline(off)
 CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
 #pragma auto_inline(on)
@@ -133,7 +132,7 @@ void CFireHeart::Main()
     CScriptThing fireHeart = Game->GetThingWithScriptName("FireHeart");
     Game->AddQuestInfoBarHealth(fireHeart, CRGBColour(0, 255, 0, 255), "HUD_ICON_FIRE_HEART", 1.0f);
     CTimer beatTimer;
-    beatTimer.SetTime(3);
+    beatTimer = 3;
     while (Game->GetHealth(Me) > 1.0f) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
@@ -145,17 +144,17 @@ void CFireHeart::Main()
                 if (IsActiveThreadTerminating())
                     return;
                 Game->Play2DSound("SND_MM_FIREHEART_BEAT_FAST");
-                beatTimer.SetTime(1);
+                beatTimer = 1;
             } else if (Game->GetHealth(Me) <= 1500.0f) {
                 if (IsActiveThreadTerminating())
                     return;
                 Game->Play2DSound("SND_MM_FIREHEART_BEAT_MEDIUM");
-                beatTimer.SetTime(2);
+                beatTimer = 2;
             } else {
                 if (IsActiveThreadTerminating())
                     return;
                 Game->Play2DSound("SND_MM_FIREHEART_BEAT_SLOW");
-                beatTimer.SetTime(3);
+                beatTimer = 3;
             }
         }
         if (Me.MsgIsHitBy("SummonerAttacker")
@@ -165,7 +164,7 @@ void CFireHeart::Main()
             if (commentTimer.GetTime() == 0 && ParentClass->MakeBriarRoseComment("FIREHEART")) {
                 if (IsActiveThreadTerminating())
                     return;
-                commentTimer.SetTime(20);
+                commentTimer = 20;
             }
         }
     }

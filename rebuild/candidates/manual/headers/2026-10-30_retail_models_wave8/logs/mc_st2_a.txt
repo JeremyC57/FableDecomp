@@ -1,0 +1,336 @@
+004ab100	SAME	16b MATCH->MATCH
+004ab0f0	SAME	16b MATCH->MATCH
+004ab0a0	SAME	18b MATCH->MATCH
+004ab060	SAME	18b MATCH->MATCH
+004ab0e0	SAME	16b MATCH->MATCH
+007e71d0	SAME	162b RELOCATION_MATCH->RELOCATION_MATCH
+0089aa70	SAME	413b RELOCATION_MATCH->RELOCATION_MATCH
+0089ef90	SAME	587b RELOCATION_MATCH->RELOCATION_MATCH
+008a3d20	SAME	238b RELOCATION_MATCH->RELOCATION_MATCH
+008a42c0	SRC_FAIL	new.cpp(90): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a6390	SRC_FAIL	new.cpp(167): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a4da0	SRC_FAIL	new.cpp(172): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a7430	SRC_FAIL	new.cpp(167): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a3500	SAME	238b RELOCATION_MATCH->RELOCATION_MATCH
+008a6bf0	SRC_FAIL	new.cpp(172): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a4560	SRC_FAIL	new.cpp(172): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a2cf0	SAME	238b RELOCATION_MATCH->RELOCATION_MATCH
+008a21e0	SAME	238b RELOCATION_MATCH->RELOCATION_MATCH
+008a6eb0	SRC_FAIL	new.cpp(167): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a60d0	SRC_FAIL	new.cpp(167): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a7170	SRC_FAIL	new.cpp(167): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a2fa0	SAME	238b RELOCATION_MATCH->RELOCATION_MATCH
+008a5b50	SRC_FAIL	new.cpp(172): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a6950	SRC_FAIL	new.cpp(90): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a5890	SRC_FAIL	new.cpp(172): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a6680	SRC_FAIL	new.cpp(90): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a5e10	SRC_FAIL	new.cpp(172): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a4840	SRC_FAIL	new.cpp(90): error C2039: 'GetThing' : is not a member of 'CScriptThing'
+008a1f30	SAME	238b RELOCATION_MATCH->RELOCATION_MATCH
+008a5050	SAME	238b RELOCATION_MATCH->RELOCATION_MATCH
+008a3250	SAME	238b RELOCATION_MATCH->RELOCATION_MATCH
+008a40d0	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a3e10	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a6480	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a4e90	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a7520	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a35f0	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a56c0	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a5400	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a6ce0	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a4650	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a4be0	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a2de0	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a22d0	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a6fa0	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a61c0	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a7260	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a3090	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a3b60	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a5c40	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a38a0	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a5980	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a5f00	SAME	229b RELOCATION_MATCH->RELOCATION_MATCH
+008a2020	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a5140	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a2b30	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a2870	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a3340	SAME	223b RELOCATION_MATCH->RELOCATION_MATCH
+008a3ef0	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a3c40	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a62b0	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a4cc0	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a7350	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a3420	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a54e0	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a5220	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a6b10	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a4480	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a4a00	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a2c10	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a2100	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a6dd0	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a7090	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a2ec0	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a3980	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a5a70	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a36d0	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a57b0	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a5d30	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a7610	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a1e50	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a4f70	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a2950	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a2690	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008a3170	SAME	218b RELOCATION_MATCH->RELOCATION_MATCH
+008ac2a0	DIFFER	66v132 grades=False sym=??$__copy@PAVCScriptThing@@PAV1@H@std@@YIPAVCScriptThing@@PAV1@00ABUrandom_access_iterator_tag@0@PAH@Z
+008adf90	SRC_FAIL	new.cpp(69): error C2976: 'std::vector' : too few template arguments | new.cpp(74): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(74): error C2039: '_M_insert_overflow' : is not a member of 'std::vector'
+008ac140	DIFFER	46v58 grades=False sym=?UninitCopy_CScriptThing_008ac140@@YIPAVCScriptThing@@PBV1@0PAV1@ABU__false_type@@@Z
+008ad5f0	DIFFER	256v272 grades=False sym=?_M_insert_overflow@?$vector@VCScriptThing@@V?$allocator@VCScriptThing@@@std@@@std@@IAEXPAVCScriptThing@@ABV3@ABU__false_type@2@I_N@Z
+008d2d90	SRC_FAIL	new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d2f80	SRC_FAIL	new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d2bb0	SRC_FAIL	new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d29c0	SRC_FAIL	new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d1fd0	SRC_FAIL	new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d19a0	SRC_FAIL	new.cpp(84): error C2065: 'PImp_Data' : undeclared identifier
+008d0c50	SRC_FAIL	new.cpp(74): error C2065: 'PImp_Data' : undeclared identifier
+008d0e00	SRC_FAIL	new.cpp(74): error C2065: 'PImp_Data' : undeclared identifier
+00904860	SRC_FAIL	new.cpp(99): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00903760	SAME	120b RELOCATION_MATCH->RELOCATION_MATCH
+00903d60	SRC_FAIL	new.cpp(95): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00904cd0	SRC_FAIL	new.cpp(103): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00903e20	SRC_FAIL	new.cpp(110): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00904940	SRC_FAIL	new.cpp(98): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+009046a0	SRC_FAIL	new.cpp(97): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00904780	SRC_FAIL	new.cpp(97): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+  WARN leaf 'ScalarDeletingDestructor_LongCBaseClassCountedPointer' matches no symbol in old.obj; graded the largest function
+009041a0	SRC_FAIL	new.cpp(203): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+00903ca0	SRC_FAIL	new.cpp(95): error C2440: 'initializing' : cannot convert from 'CThing *' to 'CThing_Retail *'
+  WARN leaf 'ScalarDeletingDestructor_LongCBaseClassCountedPointer' matches no symbol in new.obj; graded the largest function
+00af69d0	DIFFER	33v86 grades=False sym=??_GCThingPredicateRecord@@QAEPAXI@Z
+00ce0920	DIFFER	392v470 grades=False sym=?Main@CMK_HS2_SOUL@@QAEXXZ
+00ce0b00	DIFFER	392v470 grades=False sym=?Main@CMK_HS2_SOUL@@QAEXXZ
+00ce0ce0	DIFFER	392v470 grades=False sym=?Main@CMK_HS2_SOUL@@QAEXXZ
+00ce0600	DIFFER	777v795 grades=False sym=?Main@CMagicBarrierGraveyard@@QAEXXZ
+00cf88c0	SAME	172b RELOCATION_MATCH->RELOCATION_MATCH
+00cf8970	DIFFER	243v248 grades=False sym=?Init@CLadyGreyWifeManagerScript@@UAEXXZ
+00cf8a70	DIFFER	1663v1679 grades=False sym=?Main@CLadyGreyWifeManagerScript@@UAEXXZ
+00d032f0	SRC_FAIL	new.cpp(99): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'ThingIDVector' to 'std::vector<T,A> &'
+00d151d0	DIFFER	464v531 grades=False sym=?WatchForEnableFisherCreekHutDoor@CQ_BountyHuntScript@@QAEXXZ
+00d129c0	SAME	416b RELOCATION_MATCH->RELOCATION_MATCH
+00d16570	DIFFER	387v517 grades=False sym=?WatchForDeputy1Killed@CQ_BountyHuntScript@NScript@@QAEXVCScriptThing@@@Z
+00d16920	SRC_FAIL	new.cpp(57): error C2275: 'NScript::CQ_BountyHuntScript' : illegal use of this type as an expression | new.cpp(57): error C2065: 'Hostage1Killed' : undeclared identifier | new.cpp(57): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00d16d00	SRC_FAIL	new.cpp(57): error C2275: 'NScript::CQ_BountyHuntScript' : illegal use of this type as an expression | new.cpp(57): error C2065: 'Hostage2Killed' : undeclared identifier | new.cpp(57): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00d25a00	SRC_FAIL	new.cpp(60): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(61): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(62): error C2371: 'EOpinion' : redefinition; different basic types
+00d2f6b0	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00d26cc0	SAME	401b RELOCATION_MATCH->RELOCATION_MATCH
+00d26e60	SAME	496b RELOCATION_MATCH->RELOCATION_MATCH
+00d38f70	SAME	955b RELOCATION_MATCH->RELOCATION_MATCH
+00d38000	RELOC_RENAMED	RELOCATION_MATCH ; fa:??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z
+00d387a0	RELOC_RENAMED	RELOCATION_MATCH ; fa:??4?$CCountedPointer@UCScriptThingImp@@@@QAEAAV0@ABV0@@Z->??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z
+00d37d00	SAME	753b RELOCATION_MATCH->RELOCATION_MATCH
+00d384a0	SAME	753b RELOCATION_MATCH->RELOCATION_MATCH
+00d3c8f0	SAME	728b RELOCATION_MATCH->RELOCATION_MATCH
+00d49a20	SAME	815b RELOCATION_MATCH->RELOCATION_MATCH
+00d42ff0	SAME	31b MATCH->MATCH
+00d41ca0	SAME	40b RELOCATION_MATCH->RELOCATION_MATCH
+00d44cb0	SAME	944b RELOCATION_MATCH->RELOCATION_MATCH
+00d496f0	SAME	815b RELOCATION_MATCH->RELOCATION_MATCH
+00d506b0	SAME	176b RELOCATION_MATCH->RELOCATION_MATCH
+00d55e90	SAME	1820b RELOCATION_MATCH->RELOCATION_MATCH
+00d63d80	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+00d64080	SAME	400b RELOCATION_MATCH->RELOCATION_MATCH
+00d66c60	SAME	28b RELOCATION_MATCH->RELOCATION_MATCH
+00d66f50	SAME	400b RELOCATION_MATCH->RELOCATION_MATCH
+00d68f00	SAME	230b RELOCATION_MATCH->RELOCATION_MATCH
+00d6b720	SAME	922b RELOCATION_MATCH->RELOCATION_MATCH
+00d6cdc0	RELOC_RENAMED	RELOCATION_MATCH ; 15d:?IsAlive@CScriptThing@@QBE_NXZ->?IsAlive@CScriptThing@@UBE_NXZ
+00d6c4a0	SAME	909b RELOCATION_MATCH->RELOCATION_MATCH
+00d73c70	SRC_FAIL	new.cpp(38): error C2065: 'CScriptThingImp' : undeclared identifier | new.cpp(38): error C2065: 'data' : undeclared identifier | new.cpp(47): error C3861: 'data': identifier not found, even with argument-dependent lookup
+00d773e0	RELOC_RENAMED	RELOCATION_MATCH ; 166:?IsAlive@CScriptThing@@QBE_NXZ->?IsAlive@CScriptThing@@UBE_NXZ
+00d72b70	SAME	1575b RELOCATION_MATCH->RELOCATION_MATCH
+00d74f80	SAME	213b RELOCATION_MATCH->RELOCATION_MATCH
+00d732f0	DIFFER	737v789 grades=False sym=?RemoveParty@CQ_HangingTreeGoodScript@NScript@@QAEX_N@Z
+00d766c0	SAME	291b RELOCATION_MATCH->RELOCATION_MATCH
+00d74e80	SAME	249b RELOCATION_MATCH->RELOCATION_MATCH
+00d823a0	SAME	669b RELOCATION_MATCH->RELOCATION_MATCH
+00d84630	SAME	662b RELOCATION_MATCH->RELOCATION_MATCH
+00d8fd20	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00d8f4a0	SAME	40b RELOCATION_MATCH->RELOCATION_MATCH
+00d8f040	DIFFER	619v705 grades=False sym=?WatchForGrannysRegion@CQ_HobbeCaveScript@NScript@@QAEXXZ
+00d90b30	SRC_FAIL	new.cpp(180): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(181): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(182): error C2371: 'EOpinion' : redefinition; different basic types
+00d907b0	SRC_FAIL	new.cpp(179): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(180): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(181): error C2371: 'EOpinion' : redefinition; different basic types
+00d99a30	SAME	911b RELOCATION_MATCH->RELOCATION_MATCH
+00d97170	DIFFER	343v491 grades=False sym=?CheckJamesKilled@CQ_HobbeCaveScript@NScript@@QAEXVCScriptThing@@@Z
+00d905c0	SAME	163b RELOCATION_MATCH->RELOCATION_MATCH
+00d9bf10	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00d9b8a0	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00d9b8f0	SAME	608b RELOCATION_MATCH->RELOCATION_MATCH
+00d9bb50	SAME	621b RELOCATION_MATCH->RELOCATION_MATCH
+00d9e210	SAME	197b RELOCATION_MATCH->RELOCATION_MATCH
+00d9ec50	SRC_FAIL	new.cpp(25): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00da5490	DIFFER	653v779 grades=False sym=?Main@CMagicBarrierGraveyard@@QAEXXZ
+00da4350	DIFFER	288v317 grades=False sym=?Init@CMapKeeper@@QAEXXZ
+00daed30	SAME	172b RELOCATION_MATCH->RELOCATION_MATCH
+00da0d90	SRC_FAIL	new.cpp(118): error C2976: 'std::list' : too few template arguments | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list
+00da4c30	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00da5d40	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00da4300	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00da5bf0	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00db5260	SAME	167b RELOCATION_MATCH->RELOCATION_MATCH
+00dbf190	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00dcdc50	DIFFER	350v454 grades=False sym=?Main@CArtefact@@QAEXXZ
+00dcdf60	SAME	710b RELOCATION_MATCH->RELOCATION_MATCH
+00dcd1d0	DIFFER	318v370 grades=False sym=?Init@CTeamSpawn@@QAEXXZ
+00dc24e0	SAME	90b RELOCATION_MATCH->RELOCATION_MATCH
+00dc0830	SRC_FAIL	new.cpp(57): error C2976: 'std::vector' : too few template arguments | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list
+00dc0300	SAME	1319b RELOCATION_MATCH->RELOCATION_MATCH
+00dc7420	SRC_FAIL	new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dc4d00	SRC_FAIL	new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dc5f10	SRC_FAIL	new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dcedf0	DIFFER	326v350 grades=False sym=?GetNearestCrateToMe@CCrateTeamMember@CQ_OrchardFarmRaidScript@NScript@@AAE?AVCScriptThing@@XZ
+00dcc040	SAME	242b RELOCATION_MATCH->RELOCATION_MATCH
+00dcda80	SAME	253b RELOCATION_MATCH->RELOCATION_MATCH
+00dd5860	SAME	220b RELOCATION_MATCH->RELOCATION_MATCH
+00dd1af0	SAME	959b RELOCATION_MATCH->RELOCATION_MATCH
+00dd0eb0	SAME	161b RELOCATION_MATCH->RELOCATION_MATCH
+00dd8de0	SAME	259b RELOCATION_MATCH->RELOCATION_MATCH
+00ddcf50	SAME	220b RELOCATION_MATCH->RELOCATION_MATCH
+00dddc90	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00de0290	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00ded0c0	SAME	205b RELOCATION_MATCH->RELOCATION_MATCH
+00df2380	SRC_FAIL	new.cpp(189): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00df0200	SRC_FAIL	new.cpp(58): error C2614: 'CScriptThing' : illegal member initialization: 'PImpInfo' is not a base or member | new.cpp(58): error C2614: 'CScriptThing' : illegal member initialization: 'PImpData' is not a base or member
+00df5c00	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00df40f0	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00df9b80	SAME	639b RELOCATION_MATCH->RELOCATION_MATCH
+00dfc320	SAME	777b RELOCATION_MATCH->RELOCATION_MATCH
+00dfc630	SAME	740b RELOCATION_MATCH->RELOCATION_MATCH
+00dfc290	SRC_FAIL	new.cpp(57): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'CRetailVector<T>' to 'std::vector<T,A> &'
+00e03810	SAME	339b RELOCATION_MATCH->RELOCATION_MATCH
+00e0d210	SAME	886b RELOCATION_MATCH->RELOCATION_MATCH
+00e0de90	SAME	428b RELOCATION_MATCH->RELOCATION_MATCH
+00e0e820	SAME	192b RELOCATION_MATCH->RELOCATION_MATCH
+00e1fcf0	DIFFER	233v435 grades=False sym=?WatchForExpressionFollow@CQR_EscortTraderScript@@QAEXVCScriptThing@@@Z
+00e1fef0	DIFFER	233v435 grades=False sym=?WatchForExpressionWait@CQR_EscortTraderScript@@QAEXVCScriptThing@@@Z
+00e10bf0	SAME	384b RELOCATION_MATCH->RELOCATION_MATCH
+00e12f20	SAME	1002b RELOCATION_MATCH->RELOCATION_MATCH
+00e183b0	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00e13c20	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00e19390	SAME	28b MATCH->MATCH
+00e1a770	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00e18440	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00e18480	SAME	236b RELOCATION_MATCH->RELOCATION_MATCH
+00e1bc70	SRC_FAIL	new.cpp(177): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(178): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(179): error C2371: 'EOpinion' : redefinition; different basic types
+00e1c0f0	DIFFER	885v987 grades=False sym=?DoMission@CQ_WizardBattleScript@NScript@@QAEXXZ
+00e1c4d0	SAME	164b RELOCATION_MATCH->RELOCATION_MATCH
+00e1ad60	SAME	216b RELOCATION_MATCH->RELOCATION_MATCH
+00e2fd30	SAME	360b RELOCATION_MATCH->RELOCATION_MATCH
+00e27ac0	SAME	233b RELOCATION_MATCH->RELOCATION_MATCH
+00e295e0	SAME	940b RELOCATION_MATCH->RELOCATION_MATCH
+00e2e520	SRC_FAIL	new.cpp(96): error C2556: 'const CCharString &CScriptThing::GetDataString(void) const' : overloaded function differs only by return type from 'CCharString CScriptThing::GetDataString(void) const' | new.cpp(96): error C2040: 'CScriptThing::GetDataString' : 'const CCharString &(void) const' differs in levels of indirection from 'CCharString (void) const' | new.cpp(177): error C2264: 'CScriptThing::GetDataString' : error in function definition or declaration; function not called
+00e338e0	SAME	319b RELOCATION_MATCH->RELOCATION_MATCH
+00e32080	DIFFER	275v371 grades=False sym=?WatchForExpressions@CV_AmbushScamScript@NScript@@QAEXVCScriptThing@@@Z
+00e32200	SAME	188b RELOCATION_MATCH->RELOCATION_MATCH
+00e36390	DIFFER	354v502 grades=False sym=?WatchForAttack@CV_ArcheryCompetitionScript@NScript@@QAEXVCScriptThing@@@Z
+00e331f0	DIFFER	679v714 grades=False sym=?WatchForOwnerKilled@CV_ArcheryCompetitionScript@NScript@@QAEXXZ
+00e38680	SAME	56b RELOCATION_MATCH->RELOCATION_MATCH
+00e398f0	SAME	216b RELOCATION_MATCH->RELOCATION_MATCH
+00e3a350	SAME	860b RELOCATION_MATCH->RELOCATION_MATCH
+00e3b8f0	SAME	344b RELOCATION_MATCH->RELOCATION_MATCH
+00e48a30	SAME	263b RELOCATION_MATCH->RELOCATION_MATCH
+00e48eb0	SAME	356b RELOCATION_MATCH->RELOCATION_MATCH
+00e4e0e0	DIFFER	1574v1811 grades=False sym=?HandleBanditToll@CTollBanditScript@@QAEXXZ
+00e50650	SAME	390b RELOCATION_MATCH->RELOCATION_MATCH
+00e50e40	SAME	390b RELOCATION_MATCH->RELOCATION_MATCH
+00e53d90	DIFFER	316v464 grades=False sym=?WatchForAttack@CV_BeardyBaldyScript@NScript@@QAEXVCScriptThing@@@Z
+00e504c0	DIFFER	354v394 grades=False sym=?WatchForBarberLadyDeath@CV_BeardyBaldyScript@NScript@@QAEXXZ
+00e503d0	SRC_FAIL	new.cpp(52): error C2511: 'bool CScriptThing::MsgIsKilledBy(const CCharString &)' : overloaded member function not found in 'CScriptThing'
+00e5f190	SAME	35b RELOCATION_MATCH->RELOCATION_MATCH
+00e5fb80	SRC_FAIL	new.cpp(54): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00e5db30	SAME	557b RELOCATION_MATCH->RELOCATION_MATCH
+00e56d10	SAME	745b RELOCATION_MATCH->RELOCATION_MATCH
+00e6b400	SAME	842b RELOCATION_MATCH->RELOCATION_MATCH
+00e6af20	DIFFER	582v725 grades=False sym=?WatchForAcolyteHit@CV_ChapelOfEvilScript@@QAEXVCScriptThing@@@Z
+00e6a0b0	DIFFER	474v650 grades=False sym=?WatchForInsideChapel@CV_ChapelOfEvilScript@@QAEXXZ
+00e6da80	SAME	905b RELOCATION_MATCH->RELOCATION_MATCH
+00e6b750	DIFFER	338v424 grades=False sym=?WatchForRegionEntry@CV_ChapelOfEvilScript@NScript@@QAEXXZ
+00e69f00	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00e7fb80	SAME	456b RELOCATION_MATCH->RELOCATION_MATCH
+00e8b020	SRC_FAIL	new.cpp(163): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00e80c00	SAME	206b RELOCATION_MATCH->RELOCATION_MATCH
+00e81f60	SAME	167b RELOCATION_MATCH->RELOCATION_MATCH
+00e86e60	SAME	449b RELOCATION_MATCH->RELOCATION_MATCH
+00e8d2a0	SAME	35b RELOCATION_MATCH->RELOCATION_MATCH
+00e8cf40	SAME	343b RELOCATION_MATCH->RELOCATION_MATCH
+00e8cb40	SAME	1020b RELOCATION_MATCH->RELOCATION_MATCH
+00e98fb0	SAME	687b RELOCATION_MATCH->RELOCATION_MATCH
+00e9aeb0	SAME	903b RELOCATION_MATCH->RELOCATION_MATCH
+00e99470	SAME	572b RELOCATION_MATCH->RELOCATION_MATCH
+00e9e110	SAME	344b RELOCATION_MATCH->RELOCATION_MATCH
+00e9dc80	DIFFER	467v610 grades=False sym=?WatchForAttack@CV_IntroductionToTrophiesScript@NScript@@QAEXVCScriptThing@@@Z
+00e9cb20	DIFFER	791v953 grades=False sym=?WatchForInsideTavern@CV_IntroductionToTrophiesScript@NScript@@QAEXXZ
+00e9fbd0	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00eaee80	SAME	173b RELOCATION_MATCH->RELOCATION_MATCH
+00ea7460	SAME	419b RELOCATION_MATCH->RELOCATION_MATCH
+00ea2c60	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00ea1090	DIFFER	533v585 grades=False sym=?DoMission@CV_KnotholeGladeGatesScript@NScript@@QAEXXZ
+00ea1ec0	SAME	448b RELOCATION_MATCH->RELOCATION_MATCH
+00ea1360	SAME	710b RELOCATION_MATCH->RELOCATION_MATCH
+00ea3640	SAME	71b RELOCATION_MATCH->RELOCATION_MATCH
+00eae790	DIFFER	120v136 grades=False sym=?Init@CMurderTwistBrotherFriend@CV_MurderTwistScript@NScript@@EAEXXZ
+00eae5a0	SRC_FAIL	new.cpp(38): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00eae670	DIFFER	120v136 grades=False sym=?Init@CMurderTwistBrotherYounger@CV_MurderTwistScript@NScript@@EAEXXZ
+00eadb60	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+00eae700	DIFFER	120v136 grades=False sym=?Init@CMurderTwistBrother@CV_MurderTwistScript@NScript@@EAEXXZ
+00eae550	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+00eae620	SAME	66b RELOCATION_MATCH->RELOCATION_MATCH
+00eb5500	SAME	207b RELOCATION_MATCH->RELOCATION_MATCH
+00eb1ec0	SAME	178b RELOCATION_MATCH->RELOCATION_MATCH
+00eb53a0	SAME	166b RELOCATION_MATCH->RELOCATION_MATCH
+00eb6200	SAME	166b RELOCATION_MATCH->RELOCATION_MATCH
+00ebcc10	SAME	84b RELOCATION_MATCH->RELOCATION_MATCH
+00eb6b90	SAME	60b RELOCATION_MATCH->RELOCATION_MATCH
+00ebcd70	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+00ec0ba0	SAME	1114b RELOCATION_MATCH->RELOCATION_MATCH
+00ec12e0	SAME	241b RELOCATION_MATCH->RELOCATION_MATCH
+00ec4540	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00ec5140	SAME	421b RELOCATION_MATCH->RELOCATION_MATCH
+00ec5010	SAME	293b RELOCATION_MATCH->RELOCATION_MATCH
+00ec8210	SAME	31b MATCH->MATCH
+00ec6860	SAME	28b MATCH->MATCH
+00ecbd50	DIFFER	129v148 grades=False sym=?Init@CTalkingTrader1@CV_SickChildScript@NScript@@EAEXXZ
+00ecca30	DIFFER	129v148 grades=False sym=?Init@CTalkingTrader2@CV_SickChildScript@NScript@@EAEXXZ
+00ed0b10	SAME	747b RELOCATION_MATCH->RELOCATION_MATCH
+00ed51e0	SAME	68b RELOCATION_MATCH->RELOCATION_MATCH
+00ed7320	DIFFER	614v600 grades=False sym=?WatchForDeathDuringSwordPull@CV_SwordInTheStoneScript@NScript@@QAEXVCScriptThing@@@Z
+00ed9790	DIFFER	413v453 grades=False sym=?WatchForAttack@CV_TalentlessBardScript@NScript@@QAEXVCScriptThing@@@Z
+00edcb80	DIFFER	582v725 grades=False sym=?WatchForAcolyteHit@CV_TempleOfLightScript@NScript@@QAEXVCScriptThing@@@Z
+00edbd80	DIFFER	474v650 grades=False sym=?WatchForInsideTemple@CV_TempleOfLightScript@NScript@@QAEXXZ
+00edbc80	SAME	142b RELOCATION_MATCH->RELOCATION_MATCH
+00ee36a0	SRC_FAIL	new.cpp(169): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00eef5d0	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+00eef760	SAME	53b RELOCATION_MATCH->RELOCATION_MATCH
+00ee41f0	SAME	176b RELOCATION_MATCH->RELOCATION_MATCH
+00ee6850	DIFFER	478v487 grades=False sym=?MoveToNextWaypoint@CV_TourGuideScript@NScript@@QAEXABVCScriptThing@@AAVCScriptGameResourceObjectScriptedThingBase@@@Z
+00ee4a70	SAME	313b RELOCATION_MATCH->RELOCATION_MATCH
+00ee6a40	SAME	441b RELOCATION_MATCH->RELOCATION_MATCH
+00ee1500	SAME	1519b RELOCATION_MATCH->RELOCATION_MATCH
+00ee2a80	SAME	807b RELOCATION_MATCH->RELOCATION_MATCH
+00ef84d0	SAME	499b RELOCATION_MATCH->RELOCATION_MATCH
+00ef7800	SRC_FAIL	new.cpp(87): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(88): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(89): error C2371: 'EOpinion' : redefinition; different basic types
+00ef2290	DIFFER	387v394 grades=False sym=?Main@CSwordChest@@QAEXXZ
+00efc300	SAME	315b RELOCATION_MATCH->RELOCATION_MATCH
+00efc500	SAME	721b RELOCATION_MATCH->RELOCATION_MATCH
+00ef3f00	SRC_FAIL	new.cpp(172): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(173): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(174): error C2371: 'EOpinion' : redefinition; different basic types
+00ef5cb0	DIFFER	706v817 grades=False sym=?Main@CLookAtMe1@CPersonalScript_EmptyScript@NScript@@QAEXXZ
+00ef5200	SRC_FAIL	CScriptThing.h(81): error C2955: 'std::vector' : use of class template requires template argument list | CScriptThing.h(81): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(71): error C2955: 'std::vector' : use of class template requires template argument list
+00f04cc0	DIFFER	1038v1049 grades=False sym=?Main@CAT_Phase3Archer@@QAEXXZ
+00f07ed0	SAME	784b RELOCATION_MATCH->RELOCATION_MATCH
+00f081e0	SRC_FAIL	new.cpp(59): error C2664: 'CCountedPointer<T>::CCountedPointer' : cannot convert parameter 1 from 'const CCountedPointer<T>' to 'const CCountedPointer<T> &'
+00f0bb10	SAME	1579b RELOCATION_MATCH->RELOCATION_MATCH
+00f060d0	SAME	272b RELOCATION_MATCH->RELOCATION_MATCH
+00f0b960	SRC_FAIL	new.cpp(33): error C2976: 'std::vector' : too few template arguments | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list
+00f09950	DIFFER	289v437 grades=False sym=?WatchForHeroAttackOnContact@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+00f09260	DIFFER	306v445 grades=False sym=?WatchForHeroAttackOnSentry@CQ_AmbushTradersScript@NScript@@QAEXVCScriptThing@@@Z
+00f0a470	SAME	1127b RELOCATION_MATCH->RELOCATION_MATCH

@@ -22,10 +22,10 @@ class CCPPointerInfo { public:
     void* m_pObject;                         // +8
 };
 
-struct CCountedPointer_CScriptThing {
+template <class T> class CCountedPointer { public:
     CScriptThing* Data;                      // +0
     CCPPointerInfo* Info;                    // +4
-    CCountedPointer_CScriptThing& operator=(const CCountedPointer_CScriptThing& other)
+    CCountedPointer& operator=(const CCountedPointer& other)
     {
         CScriptThing* data = other.Data;
         CCPPointerInfo* info = other.Info;
@@ -46,15 +46,13 @@ struct CCountedPointer_CScriptThing {
     }
 };
 
-struct CBase {
-    virtual ~CBase();                        // 0x0099A2E0
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (the row's local CBase)
 
-class CScriptThing : public CBase { public:                // vtable 0x01238C8C
-    CCountedPointer_CScriptThing PImp;       // +0x04
-    virtual ~CScriptThing();
-    CScriptThing& operator=(const CScriptThing& other);
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 
 CScriptThing& CScriptThing::operator=(const CScriptThing& other)
 {

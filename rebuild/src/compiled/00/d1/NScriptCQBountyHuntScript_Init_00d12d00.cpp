@@ -28,10 +28,10 @@ public:
 
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 
-class CTimer { public:                                        // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 
 class CScriptDef { public:
     unsigned char _pad_0x000[0x98];
@@ -161,7 +161,7 @@ void NScript::CQ_BountyHuntScript::Init()
     LakeComplete = false;
     BountyHuntIntroComplete = false;
     BanditGruntTextCounter = 0;
-    BoastTime.SetTime(pGlobalScriptDef->BountyHuntBoastTimeLimit);
+    BoastTime = pGlobalScriptDef->BountyHuntBoastTimeLimit;
     BoastQuestInfoDisplayed = false;
     BoastActiveTimeLimit = false;
     BoastActiveDecapitation = false;

@@ -27,19 +27,11 @@ class CCPPointerInfo { public:
     void* Data;
 };
 
-struct CScriptThingImp {                                // the implementation object's vtable view
-    virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003(); virtual void i004(); virtual void i005();
-    virtual const C3DVector& GetPos() const;            // slot 6 (+0x18)
-    virtual void i007(); virtual void i008(); virtual void i009(); virtual void i010(); virtual void i011(); virtual void i012();
-    virtual void i013(); virtual void i014(); virtual void i015(); virtual void i016(); virtual void i017(); virtual void i018();
-    virtual void i019();
-    virtual bool MsgIsUsedBy(const CCharString& user) const;   // slot 20 (+0x50)
-};
 
-struct CCountedPointerImp {
-    CScriptThingImp* Data;
+template <class T> class CCountedPointer { public:
+    T*  Data;
     CCPPointerInfo*  Info;
-    ~CCountedPointerImp()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -55,22 +47,15 @@ struct CCountedPointerImp {
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    CCountedPointerImp PImp;                            // +0x04
-    virtual __forceinline ~CScriptThing() {}            // out of line: 0x004AA840
-    const C3DVector& GetPos() const                     // 0x004AA980
-    {
-        if (!PImp.Data)
-            return g_ZeroVector;
-        return PImp.Data->GetPos();
-    }
-    bool MsgIsUsedBy(const CCharString& user) const     // 0x004AAB10
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsUsedBy(user);
-    }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline CScriptThing::~CScriptThing() {}
+inline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
+inline bool CScriptThing::MsgIsUsedBy(const CCharString& user) const { if (!PImp.Data) return false; return PImp.Data->MsgIsUsedBy(user); }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE3EA
 

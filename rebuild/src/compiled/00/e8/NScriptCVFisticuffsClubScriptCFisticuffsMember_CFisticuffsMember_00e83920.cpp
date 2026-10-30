@@ -17,25 +17,26 @@
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
 class CScriptDataBase;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCountedPointerWords {
+template <class T> class CCountedPointer { public:
     void* Data;
     void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+    CCountedPointer() : Data(0), Info(0) { }
 };
-class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp Data +4, Info +8)
-    CCountedPointerWords PImp;                // +0x04
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 class CEntityScriptBase { public:                    // vtable 0x012C3224, 0x14 bytes
     virtual void v00();
     CGameScriptInterface* Game;               // +0x04 (a plain initialiser: stored before the vtable)
     CScriptThing          Me;                 // +0x08
     CEntityScriptBase(const CScriptThing& thing, CGameScriptInterface* game) : Game(game), Me(thing) { }
 };
-class CTimer { public:                               // a script timer: the interface's timer index
-    long Index;
-    CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
 class CCharString { public:
     void* PStringData;
     CCharString();                            // 0x0099E4B0

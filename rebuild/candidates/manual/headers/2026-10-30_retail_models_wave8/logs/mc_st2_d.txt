@@ -1,0 +1,28 @@
+008adf90	SRC_FAIL	new.cpp(69): error C2976: 'std::vector' : too few template arguments | new.cpp(74): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(74): error C2039: '_M_insert_overflow' : is not a member of 'std::vector'
+00d032f0	SRC_FAIL	new.cpp(99): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'ThingIDVector' to 'std::vector<T,A> &'
+00d16920	SRC_FAIL	new.cpp(57): error C2275: 'NScript::CQ_BountyHuntScript' : illegal use of this type as an expression | new.cpp(57): error C2065: 'Hostage1Killed' : undeclared identifier | new.cpp(57): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00d16d00	SRC_FAIL	new.cpp(57): error C2275: 'NScript::CQ_BountyHuntScript' : illegal use of this type as an expression | new.cpp(57): error C2065: 'Hostage2Killed' : undeclared identifier | new.cpp(57): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00d25a00	SAME	540b RELOCATION_MATCH->RELOCATION_MATCH
+00d73c70	SRC_FAIL	new.cpp(38): error C2065: 'CScriptThingImp' : undeclared identifier | new.cpp(38): error C2065: 'data' : undeclared identifier | new.cpp(47): error C3861: 'data': identifier not found, even with argument-dependent lookup
+00d907b0	SAME	659b RELOCATION_MATCH->RELOCATION_MATCH
+00d90b30	SAME	855b RELOCATION_MATCH->RELOCATION_MATCH
+00d9ec50	SRC_FAIL	new.cpp(25): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00da0d90	SRC_FAIL	new.cpp(118): error C2976: 'std::list' : too few template arguments | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list | new.cpp(135): error C2955: 'std::list' : use of class template requires template argument list
+00dc0830	SRC_FAIL	new.cpp(57): error C2976: 'std::vector' : too few template arguments | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(136): error C2955: 'std::vector' : use of class template requires template argument list
+00dc4d00	SRC_FAIL	new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dc5f10	SRC_FAIL	new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00dc7420	SRC_FAIL	new.cpp(50): error C2275: 'NScript::CQ_SunnyvaleMasterData' : illegal use of this type as an expression | new.cpp(50): error C2065: 'GraveyardKillAllInnocents' : undeclared identifier | new.cpp(50): error C3861: 'offsetof': identifier not found, even with argument-dependent lookup
+00df2380	SAME	1494b RELOCATION_MATCH->RELOCATION_MATCH
+00dfc290	SRC_FAIL	new.cpp(57): error C2664: 'CScriptThing::MsgGetThingsKilled' : cannot convert parameter 1 from 'CRetailVector<T>' to 'std::vector<T,A> &'
+00e1bc70	SAME	751b RELOCATION_MATCH->RELOCATION_MATCH
+00e2e520	SRC_FAIL	new.cpp(96): error C2556: 'const CCharString &CScriptThing::GetDataString(void) const' : overloaded function differs only by return type from 'CCharString CScriptThing::GetDataString(void) const' | new.cpp(96): error C2040: 'CScriptThing::GetDataString' : 'const CCharString &(void) const' differs in levels of indirection from 'CCharString (void) const' | new.cpp(177): error C2264: 'CScriptThing::GetDataString' : error in function definition or declaration; function not called
+00e503d0	SRC_FAIL	new.cpp(52): error C2511: 'bool CScriptThing::MsgIsKilledBy(const CCharString &)' : overloaded member function not found in 'CScriptThing'
+00e5fb80	SRC_FAIL	new.cpp(54): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00e8b020	SAME	1748b RELOCATION_MATCH->RELOCATION_MATCH
+00eae5a0	SRC_FAIL	new.cpp(38): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *' to 'const CScriptThing &'
+00ee36a0	SAME	1151b RELOCATION_MATCH->RELOCATION_MATCH
+00ef3f00	SAME	547b RELOCATION_MATCH->RELOCATION_MATCH
+00ef5200	SRC_FAIL	fable_nscript_forward.h(39): error C2977: 'std::vector' : too many template arguments | CScriptThing.h(81): error C2955: 'std::vector' : use of class template requires template argument list | CScriptThing.h(81): error C2955: 'std::vector' : use of class template requires template argument list
+00ef7800	SAME	627b RELOCATION_MATCH->RELOCATION_MATCH
+00f081e0	SRC_FAIL	new.cpp(59): error C2664: 'CCountedPointer<T>::CCountedPointer' : cannot convert parameter 1 from 'const CCountedPointer<T>' to 'const CCountedPointer<T> &'
+00f0b960	SRC_FAIL	new.cpp(33): error C2976: 'std::vector' : too few template arguments | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list | new.cpp(52): error C2955: 'std::vector' : use of class template requires template argument list

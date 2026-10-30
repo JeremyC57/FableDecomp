@@ -141,7 +141,11 @@ namespace NUISystem { class CManager { public:
 }; }
 
 class CPlayer { public: void RemoveMode(long mode); };             // 0x00634190
-class CPlayerManager { public: CPlayer& GetMainPlayer(); };        // 0x00449970
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+        // 0x00449970
 class CPlayerGui { public: void SetSpecialAbilityButtonsAsDisplaying(bool a, bool b); };   // 0x00437580
 extern CPlayerGui* g_pPlayerGui;                            // 0x013B8790
 

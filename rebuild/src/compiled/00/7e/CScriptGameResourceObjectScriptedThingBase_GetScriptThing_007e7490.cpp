@@ -16,17 +16,19 @@
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
 struct CScriptThingImp;
-struct CCountedPointer_CScriptThing {
+template <class T> class CCountedPointer { public:
     CScriptThingImp* Data;
     CCPPointerInfo*  Info;
-    CCountedPointer_CScriptThing() : Data(0), Info(0) { }
+    CCountedPointer() : Data(0), Info(0) { }
 };
 
-class CScriptThing : public CBaseClass { public:                    // vtable 0x01238C8C
-    CCountedPointer_CScriptThing PImp;                // +0x04 PImp_Data / +0x08 PImp_Info
-    CScriptThing() { }
-    CScriptThing(const CScriptThing& other);
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 struct CScriptedThingBaseVirtuals {                   // vtable view of the implementation object
     virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03();

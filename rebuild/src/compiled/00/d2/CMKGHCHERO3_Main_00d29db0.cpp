@@ -49,17 +49,14 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
-};
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing() {}
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (the row's local CBase)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() {}
+__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 class CBaseObject { public:                                    // CBaseIntelligentPointer, vtable 0x0129A7D8
     virtual void b000();
     void* m_pIntelligentPointer;                        // +0x04

@@ -126,13 +126,13 @@ class CScriptDef { public:
 extern CScriptDef* pGlobalScriptDef;                        // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 float __fastcall GetDistanceBetweenThings(const CScriptThing& a, const CScriptThing& b);   // 0x00CBE512
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
-class CTimer { public:                                         // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }   // out-of-line copy 0x00CD4450
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }      // out-of-line copy 0x00CD4470
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 struct CQ_PrisonRaceScript {
     unsigned char _pad[0x48];
     bool HeroWonRace;                                   // +0x48 (PDB +0x5c)
@@ -180,7 +180,7 @@ void CPrisonRacer::Main()
     bool sprinting = false;
     CTimer sprintTimer;
     CTimer restTimer;
-    restTimer.SetTime(5);
+    restTimer = 5;
     CScriptThing marker = Game->GetNearestWithScriptName(Me, "RaceMarker");
     vector<CScriptThing> speedChecks;
     Game->GetAllThingsWithScriptName("WaypointSpeedCheck", speedChecks);
@@ -207,7 +207,7 @@ void CPrisonRacer::Main()
 #pragma inline_depth()
                 }
             sprinting = true;
-            sprintTimer.SetTime(pGlobalScriptDef->PrisonRacerSprintTime);
+            sprintTimer = pGlobalScriptDef->PrisonRacerSprintTime;
             Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerSprintSpeed - ParentClass->RacerSpeed * 0.02f);
             ParentClass->MakePrisonerComment(Me, "SPRINT");
         }
@@ -219,7 +219,7 @@ void CPrisonRacer::Main()
 #pragma inline_depth()
                 }
             sprinting = false;
-            restTimer.SetTime(pGlobalScriptDef->PrisonRacerRestTime);
+            restTimer = pGlobalScriptDef->PrisonRacerRestTime;
             Game->EntitySetMaxRunningSpeed(Me, pGlobalScriptDef->PrisonRacerSpeed - ParentClass->RacerSpeed * 0.02f);
             ParentClass->MakePrisonerComment(Me, "SLOW");
         }

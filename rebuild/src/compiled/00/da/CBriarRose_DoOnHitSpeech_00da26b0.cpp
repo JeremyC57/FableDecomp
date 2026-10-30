@@ -23,9 +23,9 @@ class CCharString { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
-class CTimer { public:
-    long TimerIndex;                          // +0x00
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 inline long GetTime(const CTimer& timer) { return g_pGameScriptInterface->GetTimer(timer.TimerIndex); }
 
 struct CQ_MinionCampScript {

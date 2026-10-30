@@ -1,0 +1,6 @@
+00d446d0	RELOC_RENAMED	leafsym ?Main@CHeroBed@@QAEXXZ -> ?Main@CHeroBed@@EAEXXZ
+00d58080	RELOC_RENAMED	leafsym ?Main@CMeleeThunder@@QAEXXZ -> ?Main@CMeleeThunder@@EAEXXZ
+00da5980	RELOC_RENAMED	leafsym ?Main@CMinionSpawner@@QAEXXZ -> ?Main@CMinionSpawner@@EAEXXZ
+00e386e0	RELOC_RENAMED	leafsym ?Main@CMeleeThunder@@QAEXXZ -> ?Main@CMeleeThunder@@EAEXXZ
+00e4b430	RELOC_RENAMED	leafsym ?Main@CM_TauntingBandit@@QAEXXZ -> ?Main@CM_TauntingBandit@@EAEXXZ
+00f14770	RELOC_RENAMED	leafsym ?Main@CCham@@QAEXXZ -> ?Main@CCham@@EAEXXZ

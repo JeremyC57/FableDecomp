@@ -1,0 +1,8 @@
+00da5490	RELOC_RENAMED	leafsym ?Main@CMagicBarrierGraveyard@@QAEXXZ -> ?Main@CMagicBarrierGraveyard@@EAEXXZ
+00dcdc50	RELOC_RENAMED	leafsym ?Main@CArtefact@@QAEXXZ -> ?Main@CArtefact@@EAEXXZ
+00df2380	RELOC_RENAMED	leafsym ?Main@CSummonerAttacker@@QAEXXZ -> ?Main@CSummonerAttacker@@EAEXXZ
+00e48a30	RELOC_RENAMED	leafsym ?Main@CM_TollBandit@@QAEXXZ -> ?Main@CM_TollBandit@@EAEXXZ
+00ec0ba0	RELOC_RENAMED	leafsym ?Main@CSecretWhisperingFriend@@QAEXXZ -> ?Main@CSecretWhisperingFriend@@EAEXXZ
+00ee36a0	RELOC_RENAMED	leafsym ?Main@CStopDrawing@@QAEXXZ -> ?Main@CStopDrawing@@EAEXXZ
+00ef84d0	RELOC_RENAMED	leafsym ?Main@CCham@@QAEXXZ -> ?Main@CCham@@EAEXXZ
+00ef2290	RELOC_RENAMED	leafsym ?Main@CSwordChest@@QAEXXZ -> ?Main@CSwordChest@@EAEXXZ

@@ -27,13 +27,13 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;                // 0x0143E8F8
-class CTimer { public:                                          // a script timer: the interface's timer index
-    long Index;
-    CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 struct CQ_UndeadRisingScript {
     unsigned char _pad[0x50];
     bool          HeroReachedCentre;                     // +0x50
@@ -57,7 +57,7 @@ struct CUndeadRisingCentre : public CEntityScriptBase {
 void CUndeadRisingCentre::Main()
 {
     CTimer timer;
-    timer.SetTime(0);
+    timer = 0;
     long line = 0;
     while (!IsDistanceBetweenThingsUnder(Game->GetHero(), Me, 3.0f)) {
         Game->NewScriptFrame();
@@ -78,7 +78,7 @@ void CUndeadRisingCentre::Main()
                 break;
             }
             ++line;
-            timer.SetTime(10);
+            timer = 10;
         }
     }
     if (IsActiveThreadTerminating()) return;

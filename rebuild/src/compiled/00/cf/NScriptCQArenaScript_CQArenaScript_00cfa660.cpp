@@ -24,10 +24,10 @@ class CCharString { public:
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 
-class CTimer { public:
-    long Index;
-    CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
@@ -44,17 +44,18 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
 class CScriptThing;
 class CCPPointerInfo;
 
-struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
+template <class T> class CCountedPointer { public:                // CScriptThing::PImp
     CScriptThing* Data;                              // +0
     CCPPointerInfo* Info;                            // +4
-    CCountedPointer_CScriptThing() : Data(0), Info(0) { }
+    CCountedPointer() : Data(0), Info(0) { }
 };
 
-class CScriptThing : public CBaseClass { public:                        // vtable 0x01238C8C
-    CCountedPointer_CScriptThing PImp;               // +0x04
-    CScriptThing() { }
-    virtual ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 template <class T>
 struct allocator {

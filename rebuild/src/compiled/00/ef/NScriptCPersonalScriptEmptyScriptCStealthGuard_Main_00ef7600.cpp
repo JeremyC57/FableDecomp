@@ -53,21 +53,11 @@ template <class T> class CCountedPointer { public:
 // Retail expands these at this row's sites (the local model had them inline or implicit): defined inline after the header.
 inline CScriptThing::~CScriptThing() { }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 namespace NScript {
-class CPredicateBase {                                  // vtable 0x012C2FF4
-public:
-    virtual bool operator()() const = 0;                // slot 0
-    virtual CPredicateBase* Clone() const = 0;          // slot 1
-    virtual ~CPredicateBase() { }                       // slot 2
-};
-class CIsThingAlive : public CPredicateBase {           // 0x10 bytes, vtable 0x012C32F0
-public:
-    CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
-    virtual bool operator()() const;
-    virtual CPredicateBase* Clone() const;
-    virtual ~CIsThingAlive();                           // 0x00E241B0
-    CScriptThing Thing;                                 // +0x04
-};
 template <class P1, class P2> class CPredicate_And : public CPredicateBase {   // vtable 0x012E1B70 for <CIsThingAlive, CIsThingAlive>
 public:
     CPredicate_And(const P1& p1, const P2& p2);         // 0x00E24760

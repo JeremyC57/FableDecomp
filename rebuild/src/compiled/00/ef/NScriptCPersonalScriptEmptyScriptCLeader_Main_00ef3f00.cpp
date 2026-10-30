@@ -37,19 +37,9 @@ template <class T> class CCountedPointer { public:
  ~CCountedPointer() { Release(); Data = 0; Info = 0; }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
- virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05(); virtual void v06();
- virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10(); virtual void v11(); virtual void v12();
- virtual void v13(); virtual void v14(); virtual void v15();
- virtual bool IsAwareOfHero() const;              // slot 16 (+0x40) 0x004AAAC0
- virtual void v17(); virtual void v18();
- virtual void v19(); virtual void v20();
- virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
- CCountedPointer<CScriptThingImpl> PImp;    // +0x04 Data, +0x08 Info
- CScriptThing(const CScriptThing& other);   // 0x004ABE90
- virtual ~CScriptThing();                           // out-of-line copy 0x004AA840
- bool IsAlive() const;                      // slot 75, inlined below
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct CScriptThingImpl {
  virtual void s00();
  virtual void s01();
@@ -142,14 +132,12 @@ struct CScriptThingLocal {                              // a by-value CScriptThi
  __forceinline void DestroyInline() { reinterpret_cast<CScriptThingInline*>(this)->CScriptThingInline::~CScriptThingInline(); }
 };
 #include "engine/CGameScriptInterface.h"
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingConscious: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingConscious.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& t) : Thing(t) { }
+inline NScript::CIsThingConscious::~CIsThingConscious() { }
 namespace NScript {
-class CPredicateBase { public:virtual bool operator()()const=0;virtual CPredicateBase* Clone()const=0;virtual ~CPredicateBase(){}};
-class CIsThingConscious:public CPredicateBase { public:
- CScriptThing Thing;
- __forceinline CIsThingConscious(const CScriptThing& t):Thing(t){}
- virtual bool operator()()const;virtual CPredicateBase* Clone()const;
- ~CIsThingConscious(){}
-};
 }
 class C2DCoordI;
 class C2DVector;
@@ -168,32 +156,8 @@ template<class T> class CArray;
 class CCounter;
 namespace std {template<class T> class allocator;template<class T> struct less;template<class A,class B>struct pair;template<class T,class A> class vector;template<class T,class A> class list;template<class T,class P,class A> class set;}
 class CHeroLogBook { public: class CHeroLogBookEntry { public: typedef long ECategory; }; };
-typedef long ECameraOp;
-typedef long EClothingCoversArea;
-typedef long ECreatureGroup;
-typedef long ECrime;
-typedef long ECutsceneBehaviour;
-typedef long EDoorTriggerType;
-typedef long EGameAction;
-typedef long EHeroAbility;
-typedef long EHeroTitle;
-typedef long EHeroTrainableStatType;
-typedef long EMiniGameType;
-typedef long EMorality;
-typedef long EMusicSetType;
-typedef long EOpinion;
-typedef long EOpinionAttitudeType;
-typedef long EOpinionDeedType;
-typedef long EOpinionPostDeedType;
-typedef long EOpinionReactionType;
-typedef long EScriptAIPriority;
-typedef long EScriptVillageAttitude;
-typedef long EScriptingStateGroups;
-typedef long ESex;
-typedef long ETargetingType;
+#include "engine/fable_nscript_forward.h"   // the PDB enums the row used typedef stand-ins for
 enum ETextGroupSelectionMethod { };
-typedef long ETutorialCategory;
-namespace NEntityEvents {typedef long EEventType;}
 struct GameCalls {virtual ~GameCalls();
 virtual void Error(CCharString const &, CCharString const &, CCharString const &, unsigned long) const; //slot1 0x0088de00
 virtual void TraceMessage(CCharString const &) const; //slot2 0x006e7d20
@@ -1113,7 +1077,7 @@ void CLeader::Main()
   CScriptGameResourceObjectScriptedThingBase handle;
   if (handle.IsValid())
    handle.Release();
-  while (!Game->StartScriptingEntity(Me, handle, 4)) {
+  while (!Game->StartScriptingEntity(Me, handle, (EScriptAIPriority)4)) {
    Game->NewScriptFrame();
    if (IsActiveThreadTerminating()) {
     handle.DestroyInline();

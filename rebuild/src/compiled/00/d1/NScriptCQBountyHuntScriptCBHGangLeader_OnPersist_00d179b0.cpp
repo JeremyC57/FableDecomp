@@ -43,7 +43,8 @@ namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;
 class CGameScriptInterfaceBase;
 class CPersistContext{public:template<class T>void Transfer(const char*,T&,const T&);};class CTimer{public:long TimerIndex;};
 // CEntityScriptBase is a polymorphic API projection: Game+4, Me+8, own base vtable012c3224, OnPersist slot4. Unused virtual names are descriptive.
-class CEntityScriptBase{public:virtual ~CEntityScriptBase(){}virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void OnPersist(CPersistContext&){}CGameScriptInterfaceBase* Game;CScriptThing Me;};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace NScript{class CQ_BountyHuntScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:class CBH_GangLeader;};class CQ_BountyHuntScript::CBH_GangLeader:public CEntityScriptBase{public:CQ_BountyHuntScript* ParentClass;CQ_SunnyvaleMasterData* PMasterData;long hitCount;bool stage1Done,stage2Done,stage3Done,stage4Done;float HealthInitial,HealthCurrent;private:virtual void OnPersist(CPersistContext&);};void CQ_BountyHuntScript::CBH_GangLeader::OnPersist(CPersistContext& context){context.Transfer("hitCount",hitCount,0L);context.Transfer("stage1Done",stage1Done,false);context.Transfer("stage2Done",stage2Done,false);context.Transfer("stage3Done",stage3Done,false);context.Transfer("stage4Done",stage4Done,false);context.Transfer("HealthInitial",HealthInitial,0.0f);context.Transfer("HealthCurrent",HealthCurrent,0.0f);}}
 #ifdef _MSC_VER
 typedef char ExactOwnerSize[sizeof(NScript::CQ_BountyHuntScript::CBH_GangLeader)==44?1:-1];

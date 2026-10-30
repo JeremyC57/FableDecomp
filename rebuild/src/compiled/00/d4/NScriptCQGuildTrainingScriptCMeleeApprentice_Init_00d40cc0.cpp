@@ -8,21 +8,15 @@
 // Layout: Ego_r.pdb CMeleeApprentice (entity offsets equal retail): ParentClass +0x14, PMasterData +0x18,
 //   WaitingForFight +0x1c, BadHit +0x20, WillWoodsChatDone +0x24.
 class CGameScriptInterfaceBase;
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"                      // Me: 12 bytes (vptr word, PImp Data, PImp Info)
 class CScriptBase;
 class CPersistContext;
-class CEntityScriptBase {                               // Ego_r.pdb: vptr, Game +0x04, Me +0x08 (20 bytes)
-public:
-    virtual ~CEntityScriptBase();                       // slot 0
-    virtual void Main() = 0;                            // slot 1
-    virtual void Init();                                // slot 2
-    virtual CScriptBase* GetParentScript() const = 0;   // slot 3
-    virtual void OnPersist(CPersistContext& context);   // slot 4
-    virtual void OnPredicateFail();                     // slot 5
-    virtual void OnInterrupted();                       // slot 6
-    CGameScriptInterfaceBase* Game;                     // +0x04
-    CScriptThing              Me;                       // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 namespace NScript {
 class CQ_SunnyvaleMasterData;

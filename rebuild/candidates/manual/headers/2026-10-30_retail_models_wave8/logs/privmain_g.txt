@@ -1,0 +1,3 @@
+edit rebuild/src/compiled/00/e6/CSpectator_Init_00e63730.cpp Init CSpectator
+edit rebuild/src/compiled/00/ed/CTBBardSpawnPoint_Main_00ed8120.cpp Main CTB_BardSpawnPoint
+edit rebuild/src/compiled/00/ef/CCrateDeathMarker_Main_00ef12f0.cpp Main CCrateDeathMarker

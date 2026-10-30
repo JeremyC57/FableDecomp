@@ -10,16 +10,18 @@
 // Shape: the landed CDarkwoodTrader constructor (0x00E01670): Game is a plain initialiser stored before the base vtable, the
 // Me copy follows, the derived vtable precedes ParentClass, the two default CScriptThings, PMasterData a body assignment stored last.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCountedPointerWords {
+template <class T> class CCountedPointer { public:
     void* Data;
     void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+    CCountedPointer() : Data(0), Info(0) { }
 };
-class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
-    CCountedPointerWords PImp;                // +0x04
-    CScriptThing() { }
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 struct CScriptOwner {                         // the quest script that owns this entity script
     unsigned char _pad00[0x40];
     void*         m_pInterface;               // +0x40 CGameScriptInterfaceBase*

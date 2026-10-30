@@ -36,16 +36,18 @@ struct CBaseClassNonCopyable : CBaseClass {
     virtual ~CBaseClassNonCopyable();     // 0x0099A300
 };
 
-struct CCountedPointerWords {
+template <class T> class CCountedPointer { public:
     void* Data;
     void* Info;
-    CCountedPointerWords() : Data(0), Info(0) {}
+    CCountedPointer() : Data(0), Info(0) {}
 };
-class CScriptThing : public CBaseClass { public:        // vtable 0x01238C8C
-    CCountedPointerWords PImp;
-    CScriptThing() {}
-    virtual ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 struct _Rb_tree_node_base {
     char                _M_color;

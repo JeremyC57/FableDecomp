@@ -63,42 +63,20 @@ template <class T> class CCountedPointer { public:
 class C3DVector { public: float X, Y, Z; };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImpl;
-class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
-    virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const;
-    virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
-    virtual void s007() const; virtual void s008() const; virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const;
-    virtual void s015() const; virtual void s016() const; virtual void s017() const; virtual void s018() const; virtual void s019() const; virtual void s020() const;
-    virtual bool MsgIsHitBy(const CCharString& hitter) const;   // slot 21 (+0x54)
-    virtual void s022() const; virtual void s023() const; virtual void s024() const; virtual void s025() const; virtual void s026() const; virtual void s027() const; virtual void s028() const; virtual void s029() const;
-    virtual void s030() const; virtual void s031() const; virtual void s032() const; virtual void s033() const; virtual void s034() const; virtual void s035() const; virtual void s036() const; virtual void s037() const;
-    virtual void s038() const; virtual void s039() const; virtual void s040() const;
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& from) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& from) const;   // slot 42 (+0xa8)
-    virtual void s043() const; virtual void s044() const; virtual void s045() const; virtual void s046() const; virtual void s047() const; virtual void s048() const; virtual void s049() const; virtual void s050() const;
-    virtual void s051() const; virtual void s052() const; virtual void s053() const; virtual void s054() const; virtual void s055() const; virtual void s056() const; virtual void s057() const; virtual void s058() const;
-    virtual void s059() const; virtual void s060() const; virtual void s061() const; virtual void s062() const; virtual void s063() const; virtual void s064() const; virtual void s065() const; virtual void s066() const;
-    virtual void s067() const; virtual void s068() const; virtual void s069() const; virtual void s070() const; virtual void s071() const; virtual void s072() const; virtual void s073() const; virtual void s074() const;
-    virtual bool IsAlive() const;   // slot 75 (+0x12c)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    __forceinline CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                                    // 0x004AA840
-    CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline CScriptThing::CScriptThing() { PImp.Data = 0; PImp.Info = 0; }
 inline bool IsThingAlive(const CScriptThing& thing) { return thing.IsAlive(); }   // a virtual call (not devirtualised)
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
+inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                                  // vtable 0x012C32F0
-    CScriptThing m_thing;                               // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive() { }
-};
 }
 using NScript::CIsThingAlive;
 #define FABLE_RETAIL_BASE_OBJECT
@@ -135,19 +113,15 @@ struct CQ_SummonerScript {
     unsigned char _pad50;
     bool WaveActive;                                    // +0x51
 };
-class CEntityScriptBase { public:
-    virtual void e00();
-    CGameScriptInterface* Game;                         // +0x04
-    CScriptThing          Me;                           // +0x08
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-public:
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 struct CSummonerAttacker : CEntityScriptBase {
     CQ_SummonerScript* ParentClass;                     // +0x14
     void*              PMasterData;                     // +0x18
     long               SummonerIndex;                   // +0x1c
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CSummonerAttacker::Main()
@@ -203,7 +177,7 @@ void CSummonerAttacker::Main()
                     summoner.SummonerLightningOrbAttackTarget(fireHeart);
                 }
                 if (Me.MsgIsHitBy("SCRIPT_NAME_HERO")
-                    || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"))) {
+                    || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO"))) {
                     if (IsActiveThreadTerminating())
                         return;
                     if (!IsThingAlive(minion1)) {

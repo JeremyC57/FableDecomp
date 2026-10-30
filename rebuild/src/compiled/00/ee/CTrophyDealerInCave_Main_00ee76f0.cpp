@@ -30,7 +30,7 @@ struct CCountedPointerHandle {                          // CCountedPointer<CScri
     void*           Data;
     CCPPointerInfo* Info;
     CCountedPointerHandle() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointerHandle()
+    ~CCountedPointerHandle()
     {
         if (Info) {
             --Info->RefCount;
@@ -120,15 +120,11 @@ void CTrophyDealerInCave::Main()
             trophy.Release();
         while (!GSI->StartScriptingEntity(Me, trophy, (EScriptAIPriority)4)) {
             GSI->NewScriptFrame();
-#pragma inline_depth(0)
             if (IsActiveThreadTerminating())
                 return;
-#pragma inline_depth()
         }
-#pragma inline_depth(0)
         if (IsActiveThreadTerminating())
             return;
-#pragma inline_depth()
         CCutsceneCastMap cast;
         cast["Hero"] = hero;
         cast["Trophy"] = trophy;
@@ -140,14 +136,10 @@ void CTrophyDealerInCave::Main()
             RunCutsceneMacro("CS_TROPHY_DEALER", cast, 0, 0, false, true);
             game->PauseAllNonScriptedEntities(false);
         }
-#pragma inline_depth(0)
     }
-#pragma inline_depth()
     GSI->SetCreatureGeneratorsEnabled("Witchwood2", true);
     GSI->SetQuestAsCompleted(GSI->GetActiveQuestName(), true, false, false);
     GSI->FadeScreenIn();
     GSI->DeactivateQuestLater(GSI->GetActiveQuestName(), 0);
-#pragma inline_depth(0)
 }
-#pragma inline_depth()
 }

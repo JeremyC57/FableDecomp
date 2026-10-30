@@ -18,33 +18,24 @@ class CCharString { public:
 long __fastcall GFCharStringToInt(const CCharString& text);   // 0x0099E7F0
 class C3DVector { public: float x, y, z; };
 class CCPPointerInfo;
-class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
-    virtual ~CScriptThing();                       // slot 0; complete destructor 0x004AA840
-    virtual void v001() const; virtual void v002() const;
-    virtual CCharString GetDataString() const;     // slot 3 (+0x0c)
-    virtual void v004() const; virtual void v005() const;
-    virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
-    CScriptThing*   PImp_Data;                     // +0x04
-    CCPPointerInfo* PImp_Info;                     // +0x08
-};
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CMinionSpawner : public CEntityScriptBase {
 public:
-    void*                 __vftable;               // +0x00
-    CGameScriptInterface* Game;                    // +0x04
-    CScriptThing          Me;                      // +0x08
-    void Main();
+private:
+        virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CMinionSpawner::Main()

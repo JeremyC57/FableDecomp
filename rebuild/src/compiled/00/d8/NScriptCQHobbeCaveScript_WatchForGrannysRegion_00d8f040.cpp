@@ -2,9 +2,6 @@
 // Leaf: ?WatchForGrannysRegion@CQ_HobbeCaveScript@NScript@@QAEXXZ
 // Identity: Own Main callback registration00d8e61c stores this function with exact method literal WatchForGrannysRegion and parent receiver; independent PDB nameset agrees. Own Game vtable01260f0c slot12 IsRegionLoaded,72 GetThingWithScriptName,440 SetVillageLimbo/447 SetThingAsUsable; real script base Game64. Counted handle CScriptThing lifetime and assigning returned handle explicit original copy semantics; late cancellation exits call destructor004aa840.
 // Layout: actual typed script ancestry and original counted handle model; inherited Game64; inactive owned trailing quest state unaccessed. Shared headers retained as evidence, unused virtual slots descriptive.
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #ifndef _MSC_VER
 #define __fastcall
 #define __forceinline inline
@@ -35,7 +32,15 @@ class CPersistContext;class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 #include "engine/CScriptGameResourceObjectBase.h"
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;CScriptThing(){}CScriptThing(const CScriptThing& s):PImp(s.PImp){}__forceinline CScriptThing& operator=(const CScriptThing& s){PImp=s.PImp;return *this;}__forceinline virtual ~CScriptThing(){}virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void UnknownSlot4(){}virtual void UnknownSlot5(){}virtual void UnknownSlot6(){}virtual void UnknownSlot7(){}virtual void UnknownSlot8(){}virtual void UnknownSlot9(){}virtual void UnknownSlot10(){}virtual void UnknownSlot11(){}virtual void UnknownSlot12(){}virtual void UnknownSlot13(){}virtual void UnknownSlot14(){}virtual void UnknownSlot15(){}virtual void UnknownSlot16(){}virtual void UnknownSlot17(){}virtual bool MsgIsKilledBy(const CCharString& who)const{if(!PImp.Data)return false;return PImp->MsgIsKilledBy(who);}};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& s) :PImp(s.PImp){}
+__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& s) {PImp=s.PImp;return *this;}
+__forceinline CScriptThing::~CScriptThing() {}
+inline bool CScriptThing::MsgIsKilledBy(const CCharString& who) const {if(!PImp.Data)return false;return PImp->MsgIsKilledBy(who);}
 namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;CVectorMap<RetailUID,CPersistInfo> PersistScripts;};class CQ_SunnyvaleMasterData;}
 // CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).

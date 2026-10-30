@@ -132,11 +132,12 @@ struct CQ_BountyHuntScript {
     bool QuestSucceeded;                               // +0x49
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-class CTimer { public:
-    long Handle;
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(Handle, time); }
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(Handle); }
-};
+#define FABLE_RETAIL_NSCRIPT
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 struct CQ_SunnyvaleMasterData;
 class CEntityScriptBase
 {
@@ -170,7 +171,7 @@ void CBH_GangGruntSpawn::Main()
     if (data != "" && data != "NULL") {
         if (IsActiveThreadTerminating())
             return;
-        WaitForTimer.SetTime(GFCharStringToInt(data));
+        WaitForTimer = GFCharStringToInt(data);
     }
     while (!Me.MsgIsHitBy("SCRIPT_NAME_HERO")
            && !(Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")

@@ -31,17 +31,18 @@ struct __declspec(novtable) CScriptObject : CScriptBase {
 class CScriptThing;
 class CCPPointerInfo;
 
-struct CCountedPointer_CScriptThing {                // CScriptThing::PImp
+template <class T> class CCountedPointer { public:                // CScriptThing::PImp
     CScriptThing* Data;                              // +0
     CCPPointerInfo* Info;                            // +4
-    CCountedPointer_CScriptThing() : Data(0), Info(0) { }
+    CCountedPointer() : Data(0), Info(0) { }
 };
 
-class CScriptThing : public CBaseClass { public:                        // vtable 0x01238C8C
-    CCountedPointer_CScriptThing PImp;               // +0x04
-    CScriptThing() { }
-    virtual ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 class CCharString { public:
     void* PStringData;

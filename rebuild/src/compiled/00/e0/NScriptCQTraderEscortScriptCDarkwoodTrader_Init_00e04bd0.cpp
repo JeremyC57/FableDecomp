@@ -132,10 +132,11 @@ class CGameScriptInterfaceBase { public:          // slots: ghidra_out/cgsi_slot
 };
 class CGameScriptInterface : public CGameScriptInterfaceBase { public: };
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CTimer { public:                                  // 4 bytes
-    long TimerIndex;                                    // +0x00
-    __forceinline CTimer& operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
-};
+#define FABLE_RETAIL_NSCRIPT
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 namespace NScript { class CPredicateBase; }
 class CSpawnedFuncBase { public:                        // 0x34 bytes
     unsigned char _base[0x10];                          // CScriptProcessBase +0x04 .. +0x13 (vptr +0x00)

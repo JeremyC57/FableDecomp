@@ -17,9 +17,9 @@
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CTimer { public:
-    long Handle;                                   // +0x00
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 class CScriptBase {                                // the quest script base: vptr first; the thread-state query is a
 public:                                            // non-virtual member @ 0x00CB7940 (`this` in ecx)
@@ -50,7 +50,7 @@ void NScript::CQ_MinionCampScript::OnMinionKilled()
         NumberOfMinions = 0;
     }
     if (NumberOfMinions < MaxNumberOfMinions) {
-        if (g_pGameScriptInterface->GetTimer(MinionSpawnTimer.Handle) <= 0) {
+        if (g_pGameScriptInterface->GetTimer(MinionSpawnTimer.TimerIndex) <= 0) {
             if (IsActiveThreadTerminating())
                 return;
             StartMinionSpawnTimer();

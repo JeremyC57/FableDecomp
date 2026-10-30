@@ -29,7 +29,7 @@ template <class T> class CCountedPointer { public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -201,9 +201,7 @@ void CFishCompCompetitor::Main()
             }
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             CMovieStorage movieStorage;
             CScriptGameResourceObjectMovieBase& movie = *new (&movieStorage) CScriptGameResourceObjectMovieBase;
@@ -218,17 +216,13 @@ void CFishCompCompetitor::Main()
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
                         movie.DestroyInline();
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
                     movie.DestroyInline();
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             }
             game->PauseAllNonScriptedEntities(false);

@@ -38,11 +38,11 @@ template <class T> class CCountedPointer { public:
 
 class CScriptThingImp;
 
-class CScriptThing : public CBaseClass {                  // vtable 0x01238C8C
-public:
-    virtual ~CScriptThing() {}
-    CCountedPointer<CScriptThingImp> PImp;           // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
 
 enum ETextGroupSelectionMethod { TEXT_GROUP_SELECT_RANDOM = 0 };
 

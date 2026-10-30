@@ -27,11 +27,11 @@ extern "C" int __cdecl rand();                          // 0x00BFEB16
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
 
-class CTimer { public:                                         // a script timer: the interface's timer index
-    long Index;
-    void SetTime(long seconds) { g_pGameScriptInterface->SetTimer(Index, seconds); }
-    long GetTime() { return g_pGameScriptInterface->GetTimer(Index); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long seconds) { g_pGameScriptInterface->SetTimer(TimerIndex, seconds); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
@@ -85,7 +85,7 @@ void CQ_MinionCampScript::RunSpawnPointControl()
                 if (IsActiveThreadTerminating())
                     return;
                 float t = rand() * (1.0f / 32767.0f);
-                MinionSpawnTimer.SetTime((long)(MinMinionSpawnPeriod + (MaxMinionSpawnPeriod - MinMinionSpawnPeriod) * t));
+                MinionSpawnTimer = (long)(MinMinionSpawnPeriod + (MaxMinionSpawnPeriod - MinMinionSpawnPeriod) * t);
             }
             ShouldSpawn = true;
         }

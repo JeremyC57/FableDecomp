@@ -44,21 +44,18 @@ template <class T> class CCountedPointer { public:
 };
 struct CScriptThingImpl;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
-     virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011();
-    virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
-    virtual void v018(); virtual void v019();
-    virtual bool MsgIsUsedBy(const CCharString& name) const;   // slot 20 (+0x50)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing() {}
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() {}
+__forceinline CScriptThing::~CScriptThing() {}
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace NScript {
 class CPredicateBase { public:                                 // vtable 0x012C2FF4
     virtual bool IsTrue() = 0;
@@ -81,13 +78,6 @@ template <class A, class B> inline CPredicate_And<A, B> operator&&(const A& firs
 {
     return CPredicate_And<A, B>(first, second);
 }
-struct CEntityScriptBase {                              // retail 0x14 bytes
-    virtual void e00();
-    CGameScriptInterface* Game;                         // +0x04
-    CScriptThing          Me;                           // +0x08
-    void SetPredicate(const CPredicateBase& predicate); // 0x00F35B10
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-};
 class CPersonalScript_EmptyScript { public:
 struct CLookAtMe1 : CEntityScriptBase {
     void Main();

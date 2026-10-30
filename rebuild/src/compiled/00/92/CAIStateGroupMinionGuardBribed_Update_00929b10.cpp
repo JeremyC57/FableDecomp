@@ -116,9 +116,10 @@ class CPlayer { public:
     CBaseIntelligentPointer PCharacter;         // +0x34
     const CBaseIntelligentPointer& GetPCharacter() const { return PCharacter; }
 };
-class CPlayerManager { public:
-    const CPlayer& GetMainPlayer() const;       // 0x00449960
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 long __fastcall GFROR13(unsigned long value);   // 0x00497890
 class CWorld { public:
     static long __fastcall GetFrame();                // 0x0049D870

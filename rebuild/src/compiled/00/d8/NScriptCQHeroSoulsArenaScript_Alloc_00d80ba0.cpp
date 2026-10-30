@@ -31,10 +31,10 @@ struct __declspec(novtable) CLevelScriptBase : CScriptBase {
     TData*                MasterScriptData;             // +0x44
     CLevelScriptBase(CScriptDataBase* data, CGameScriptInterface& game) : CScriptBase(), Game(&game), MasterScriptData((TData*)data) { }
 };
-class CTimer { public:
-    long Index;
-    CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
 class CHeroSoulsRoundDef;
 template <class T> struct allocator {                  // STLport allocator<T>: empty
     allocator() { }
@@ -53,8 +53,9 @@ template <class T> struct vector : _Vector_base<T> {   // STLport vector<T>, 12 
     vector() : _Vector_base<T>(allocator<T>()) { }
 };
 namespace NScript {
-class CEmptyData;
-class CQ_HeroSoulsArenaScript : public CLevelScriptBase<CEmptyData> {
+class CQ_SunnyvaleMasterData;
+// Master data (wave 8): RegisterScripts 0x00CD52D0 pairs CQ_HeroSoulsArenaScript's Alloc with the CQ_SunnyvaleMasterData 0x00CDBD20 Alloc (wave 7 HEADERS.md table), so T is CQ_SunnyvaleMasterData.
+class CQ_HeroSoulsArenaScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
     long CreatureCount;                                 // +0x48
     bool PlayedArenaCS;                                 // +0x4c
@@ -67,7 +68,7 @@ public:
     long ArenaLevelReached;                             // +0x54
     CTimer GuardChatTimer;                              // +0x58
     vector<CHeroSoulsRoundDef> Rounds;                  // +0x5c
-    CQ_HeroSoulsArenaScript(CScriptDataBase* data, CGameScriptInterface& game) : CLevelScriptBase<CEmptyData>(data, game) { }
+    CQ_HeroSoulsArenaScript(CScriptDataBase* data, CGameScriptInterface& game) : CLevelScriptBase<CQ_SunnyvaleMasterData>(data, game) { }
     virtual ~CQ_HeroSoulsArenaScript();
     static CScriptBase* __fastcall Alloc(CScriptDataBase* data, CGameScriptInterface& game);
 };

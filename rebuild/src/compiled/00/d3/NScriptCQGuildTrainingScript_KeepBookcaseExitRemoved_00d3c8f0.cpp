@@ -40,11 +40,11 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
-    CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);                // 0x004ABE90
-    ~CScriptThing() {}                                      // out of line 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

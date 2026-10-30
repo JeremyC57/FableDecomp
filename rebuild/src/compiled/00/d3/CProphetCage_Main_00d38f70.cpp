@@ -42,13 +42,11 @@ template <class T> class CCountedPointer { public:
 class C3DVector { public: float X, Y, Z; };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
-class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
-    CCountedPointer<CScriptThingImp> PImp;               // +0x04
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    __forceinline ~CScriptThing() {}                     // out of line 0x004AA840
-    virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const; virtual void v05() const;
-    virtual const C3DVector& GetPos() const;             // slot 6 (+0x18)
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
 void __fastcall FadeOutAndKillEntity(const CScriptThing& thing, float time, bool kill, bool removeOnFade);   // 0x00CBE716
 class CGameScriptInterface { public:                      // retail vtable 0x01260F0C (ghidra_out/cgsi_slots_aligned.tsv)
     virtual void v000() const; virtual void v001() const; virtual void v002() const; virtual void v003() const; virtual void v004() const; virtual void v005() const; virtual void v006() const; virtual void NewScriptFrame() const; /* slot 7 (+0x1c) */ virtual void v008() const; virtual void v009() const;

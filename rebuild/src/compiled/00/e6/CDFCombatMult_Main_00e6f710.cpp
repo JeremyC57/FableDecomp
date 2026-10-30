@@ -31,7 +31,7 @@ template <class T> class CCountedPointer { public:
     T*              Data;
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -101,7 +101,6 @@ public:
 class CScriptGameResourceObjectMovieBase : public CScriptGameResourceObjectBase { public:   // vtable 0x01260EF4, 0x10 bytes
     CCountedPointer<void> PImp;                         // +0x08 Data, +0x0c Info
     CScriptGameResourceObjectMovieBase() { }
-    ~CScriptGameResourceObjectMovieBase();              // 0x006E7B80
 };
 enum EScriptAIPriority { SCRIPT_AI_PRIORITY_NONE };
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
@@ -147,16 +146,12 @@ void CDF_CombatMult::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     Game->SetThingPersistent(Me, true);
     Game->EntitySetAsDamageable(Me, false);
@@ -176,9 +171,7 @@ void CDF_CombatMult::Main()
             if (Game->GetPlayerCreatureCombatMultiplier() < def->DemonDoor_CombatMult_TriggerLevel) {
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
                 if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
                     face.Speak(Game->GetHero(), "TEXT_QST_088_COMBAT_MULT_INTRO", (ETextGroupSelectionMethod)0, false, true, false);
@@ -186,25 +179,19 @@ void CDF_CombatMult::Main()
                         Game->NewScriptFrame();
                         if (IsActiveThreadTerminating()) {
                             game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                     }
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 game->PauseAllNonScriptedEntities(false);
             } else {
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
                 if (Game->GetHealth(face.GetScriptThing()) > g_fZero) {
                     face.Speak(Game->GetHero(), "TEXT_QST_088_COMBAT_MULT_OPENING", (ETextGroupSelectionMethod)0, false, true, false);
@@ -212,16 +199,12 @@ void CDF_CombatMult::Main()
                         Game->NewScriptFrame();
                         if (IsActiveThreadTerminating()) {
                             game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                     }
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 {
@@ -235,6 +218,4 @@ void CDF_CombatMult::Main()
         }
         Game->NewScriptFrame();
     }
-#pragma inline_depth(0)
 }
-#pragma inline_depth()

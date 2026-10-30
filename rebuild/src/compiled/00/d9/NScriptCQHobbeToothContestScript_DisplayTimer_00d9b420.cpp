@@ -25,13 +25,13 @@ class CTimer;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CTimer { public:                                         // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }      // out-of-line copy 0x00CD4470
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 class CScriptDef { public:
     unsigned char _pad[0xf20];
     float HOB_TotalTime;                                // +0xF20
@@ -55,13 +55,13 @@ public:
 void CQ_HobbeToothContestScript::DisplayTimer()
 {
     CTimer contestTimer;
-    contestTimer.SetTime((long)pGlobalScriptDef->HOB_TotalTime);
+    contestTimer = (long)pGlobalScriptDef->HOB_TotalTime;
     Game->DisplayQuestInfo(true);
     long timerElement = Game->AddQuestInfoTimer(contestTimer, "HUD_CLOCK_ICON", 1.0f);
     long heroElement = Game->AddQuestInfoCounter("HUD_HERO_ICON", 0, 1.0f);
     long whisperElement = Game->AddQuestInfoCounter("HUD_WHISPER_ICON", 0, 1.0f);
     CTimer whisperTimer;
-    whisperTimer.SetTime(10);
+    whisperTimer = 10;
     bool heroInArea = true;
     while (contestTimer.GetTime() > 0) {
         Game->NewScriptFrame();
@@ -75,14 +75,14 @@ void CQ_HobbeToothContestScript::DisplayTimer()
             if (heroInArea == true) {
                 if (IsActiveThreadTerminating())
                     return;
-                whisperTimer.SetTime(5);
+                whisperTimer = 5;
                 heroInArea = false;
             }
             if (whisperTimer.GetTime() <= 0) {
                 if (IsActiveThreadTerminating())
                     return;
                 ++NumberOfHobbeTeethCollectedByWhisper;
-                whisperTimer.SetTime(5);
+                whisperTimer = 5;
             }
         } else {
             if (IsActiveThreadTerminating())

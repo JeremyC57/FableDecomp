@@ -1,0 +1,240 @@
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCPersonalScript_GlobalThingsScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_AwakeningTheOracleScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_ArenaHoldingScriptScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ce11b0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ce11b0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCPersonalScript_GlobalThingsScript@NScript@@@@UAEXXZ
+00cf67f0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00cf67f0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_ArenaHoldingScriptScript@NScript@@@@UAEXXZ
+00cfdf50	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00cfdf50@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_AwakeningTheOracleScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_BanditCampScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_BanditCampBossBattleScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_BountyHuntScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d03270	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d03270@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_BanditCampScript@NScript@@@@UAEXXZ
+00d0ed60	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d0ed60@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_BanditCampBossBattleScript@NScript@@@@UAEXXZ
+00d17290	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d17290@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_BountyHuntScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_BreakSiegeScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_DragonBossFightScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d20710	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d20710@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_BreakSiegeScript@NScript@@@@UAEXXZ
+00d245c0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d245c0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_BowerstoneTownLifeIntroScript@NScript@@@@UAEXXZ
+00d26110	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d26110@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_DragonBossFightScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_EndGameFocalSitesScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_EndGameScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_EndGameBossBattleScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d29790	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d29790@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_EndGameScript@NScript@@@@UAEXXZ
+00d2d680	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d2d680@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_EndGameFocalSitesScript@NScript@@@@UAEXXZ
+00d2ffb0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d2ffb0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_EndGameBossBattleScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_FireHeartScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingDepartureScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d38ca0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d38ca0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_FireHeartScript@NScript@@@@UAEXXZ
+00d445d0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d445d0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingPreMeleeScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d50bc0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d50bc0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingDepartureScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingMeleeScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingSkillScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d52420	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d52420@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingPreMeleeScript@NScript@@@@UAEXXZ
+00d58410	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d58410@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingMeleeScript@NScript@@@@UAEXXZ
+00d5add0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d5add0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingSkillScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWillScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWoodsMeleeScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d5dfd0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d5dfd0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWillScript@NScript@@@@UAEXXZ
+00d64320	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d64320@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWoodsDepartureScript@NScript@@@@UAEXXZ
+00d671f0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d671f0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWoodsMeleeScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWoodsWillScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HangingTreeEvilScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HangingTreeGoodScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d68e20	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d68e20@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_GuildTrainingWoodsWillScript@NScript@@@@UAEXXZ
+00d6b6a0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d6b6a0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HangingTreeEvilScript@NScript@@@@UAEXXZ
+00d72af0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d72af0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HangingTreeGoodScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsThunderScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsArenaScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d7a9b0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d7a9b0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsScript@NScript@@@@UAEXXZ
+00d7c3f0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d7c3f0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsThunderScript@NScript@@@@UAEXXZ
+00d7fbc0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d7fbc0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsArenaScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsBriarScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsMotherScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsGuildmasterScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d82320	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d82320@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsBriarScript@NScript@@@@UAEXXZ
+00d845b0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d845b0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsMotherScript@NScript@@@@UAEXXZ
+00d87250	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d87250@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsGuildmasterScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsNostroScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HobbeCaveScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HerosOldHouseScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d89690	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d89690@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HeroSoulsNostroScript@NScript@@@@UAEXXZ
+00d8aa70	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d8aa70@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HerosOldHouseScript@NScript@@@@UAEXXZ
+00d916c0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d916c0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HobbeCaveScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_HobbeToothContestScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_MinionCampScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_MinionClifftopChaseScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00d9da40	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00d9da40@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_HobbeToothContestScript@NScript@@@@UAEXXZ
+00da00e0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00da00e0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_MinionCampScript@NScript@@@@UAEXXZ
+00da8430	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00da8430@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_MinionClifftopChaseScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_NewOakValeIntroScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_OakValeBanditRaidScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_OpeningGraveyardSecretPassageScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00db8630	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00db8630@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_NewOakValeIntroScript@NScript@@@@UAEXXZ
+00dc0280	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00dc0280@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_OakValeBanditRaidScript@NScript@@@@UAEXXZ
+00dc8810	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00dc8810@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_OpeningGraveyardSecretPassageScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_OrchardFarmRaidScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_PrisonEscapeRescueMotherScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_PrisonRaceScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00dcf8a0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00dcf8a0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_OrchardFarmRaidScript@NScript@@@@UAEXXZ
+00dd9410	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00dd9410@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_PrisonEscapeRescueMotherScript@NScript@@@@UAEXXZ
+00ddc8e0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ddc8e0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_PrisonRaceScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_PrisonWardenGameScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_RansomVictimScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_RansomVictimChiefsHouseScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ddeff0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ddeff0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_PrisonWardenGameScript@NScript@@@@UAEXXZ
+00de4590	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00de4590@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_RansomVictimScript@NScript@@@@UAEXXZ
+00dec6c0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00dec6c0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_RansomVictimChiefsHouseScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_SecretPassageScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_TentacleKrakenBossFightScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_SummoningTheShipScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00def330	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00def330@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_SecretPassageScript@NScript@@@@UAEXXZ
+00df3660	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00df3660@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_SummoningTheShipScript@NScript@@@@UAEXXZ
+00df4b60	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00df4b60@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_TentacleKrakenBossFightScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_TraderConflictGoodScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_TraderConflictEvilScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_TraderEscortScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00df9b00	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00df9b00@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_TraderConflictEvilScript@NScript@@@@UAEXXZ
+00dfc210	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00dfc210@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_TraderConflictGoodScript@NScript@@@@UAEXXZ
+00e05280	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e05280@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_TraderEscortScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_WhiteBalverineKnotholeGladeScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_UndeadRisingScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_WaspBossScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e0e6b0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e0e6b0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_UndeadRisingScript@NScript@@@@UAEXXZ
+00e12280	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e12280@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_WaspBossScript@NScript@@@@UAEXXZ
+00e18330	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e18330@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_WhiteBalverineKnotholeGladeScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_WizardBattleScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQR_EscortTraderScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_WhiteBalverineWWScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e194e0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e194e0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_WhiteBalverineWWScript@NScript@@@@UAEXXZ
+00e1c070	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e1c070@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_WizardBattleScript@NScript@@@@UAEXXZ
+00e1f730	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e1f730@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQR_EscortTraderScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQS_GuardianTrophyDealerInfoScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQS_GuardianSisterInfoScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e25ea0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e25ea0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQS_GuardianSisterInfoScript@NScript@@@@UAEXXZ
+00e26d60	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e26d60@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQS_GuardianSisterInfo2_SisterInBanditCampScript@NScript@@@@UAEXXZ
+00e27dc0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e27dc0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQS_GuardianTrophyDealerInfoScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQS_MeetSisterScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQS_ScytheInfoScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_AmbushScamScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e29220	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e29220@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQS_MeetSisterScript@NScript@@@@UAEXXZ
+00e2a280	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e2a280@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQS_ScytheInfoScript@NScript@@@@UAEXXZ
+00e2ea10	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e2ea10@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_AmbushScamScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_ArcheryCompetitionScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_AssassinAttacksScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_BordelloScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e37450	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e37450@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_ArcheryCompetitionScript@NScript@@@@UAEXXZ
+00e38ce0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e38ce0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_AssassinAttacksScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_BanditCampPathScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e3b850	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e3b850@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_BordelloScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_BanditTollScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_BeardyBaldyScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e47720	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e47720@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_BanditCampPathScript@NScript@@@@UAEXXZ
+00e4b2e0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e4b2e0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_BanditTollScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_BookCollectingScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_BeggarAndChildScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e541b0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e541b0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_BeardyBaldyScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_BodyGuardScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e547e0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e547e0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_BookCollectingScript@NScript@@@@UAEXXZ
+00e5d030	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e5d030@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_BeggarAndChildScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_ChickenKickingScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_ChapelOfEvilScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e5f110	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e5f110@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_BodyGuardScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_DemonDoorsScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e64130	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e64130@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_ChickenKickingScript@NScript@@@@UAEXXZ
+00e6b350	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e6b350@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_ChapelOfEvilScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_ExposeMayorScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_FishermanScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e74cd0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e74cd0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_DemonDoorsScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_FishingCompetitionScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e775f0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e775f0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_ExposeMayorScript@NScript@@@@UAEXXZ
+00e7c7c0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e7c7c0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_FishermanScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_FisticuffsClubScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_GhostGrannyNecklaceScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e7ee70	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e7ee70@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_FishingCompetitionScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_GuildMasterScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e83cd0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e83cd0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_FisticuffsClubScript@NScript@@@@UAEXXZ
+00e8d1f0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e8d1f0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_GhostGrannyNecklaceScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_HiddenBootyScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e90b40	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e90b40@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_GuildMasterScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_HeroDollsScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e93b70	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e93b70@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_HiddenBootyScript@NScript@@@@UAEXXZ
+00e96090	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e96090@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_HauntedHouseScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_HeroDuelScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e98570	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e98570@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_HeroDollsScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_IntroductionToTrophiesScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_KnotholeGladeGatesScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00e9a1f0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e9a1f0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_HeroDuelScript@NScript@@@@UAEXXZ
+00e9e040	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00e9e040@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_IntroductionToTrophiesScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_LostTraderScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ea1010	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ea1010@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_KnotholeGladeGatesScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_MazeResearchScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_MurderTwistScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ea5890	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ea5890@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_LostTraderScript@NScript@@@@UAEXXZ
+00ea8000	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ea8000@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_MazeResearchScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_MurderTwistFinalScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ead970	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ead970@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_MurderTwistScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_MayorsInvitationScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_OracleScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00eb6480	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00eb6480@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_MurderTwistFinalScript@NScript@@@@UAEXXZ
+00eb9820	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00eb9820@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_MayorsInvitationScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_ParanoidWhispersScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ebed00	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ebed00@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_OracleScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_PicnicAreaAfterWaspBossScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_RandomPopulationSimScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ec1110	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ec1110@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_ParanoidWhispersScript@NScript@@@@UAEXXZ
+00ec16e0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ec16e0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_PicnicAreaAfterWaspBossScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_RockTrollFirstEncounterScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ec2970	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ec2970@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_RandomPopulationSimScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_SickChildScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_SingingStonesScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ec48d0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ec48d0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_RockTrollFirstEncounterScript@NScript@@@@UAEXXZ
+00ecd710	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ecd710@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_SickChildScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_StatueMasterScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ed29d0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ed29d0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_SingingStonesScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_SwordInTheStoneScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_TalentlessBardScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ed49a0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ed49a0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_StatueMasterScript@NScript@@@@UAEXXZ
+00ed5450	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ed5450@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_SwordInTheStoneScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_TempleOfLightScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_TravellingHeroesScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ed8320	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ed8320@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_TalentlessBardScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_TourGuideScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00edcfb0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00edcfb0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_TempleOfLightScript@NScript@@@@UAEXXZ
+00ee1d20	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ee1d20@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_TravellingHeroesScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCV_TrophyDealerScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCPersonalScript_alextestScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ee5680	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ee5680@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_TourGuideScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCPersonalScript_EmptyScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ee7650	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ee7650@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCV_TrophyDealerScript@NScript@@@@UAEXXZ
+00eedb50	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00eedb50@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCPersonalScript_alextestScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCguy_scriptScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCbandit_level_cutsceneScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00ef5180	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00ef5180@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCPersonalScript_EmptyScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCProximityPodiumTestScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00efa320	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00efa320@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCguy_scriptScript@NScript@@@@UAEXXZ
+00efae90	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00efae90@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCbandit_level_cutsceneScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCHitSwitchTestScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00efb570	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00efb570@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCProximityPodiumTestScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCGuildSealTriggerTestScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCMarkTestScriptsScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00efbad0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00efbad0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCHitSwitchTestScript@NScript@@@@UAEXXZ
+00efc090	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00efc090@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCGuildSealTriggerTestScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCBenTestScriptsScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00efdba0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00efdba0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCMarkTestScriptsScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCTonyTestScriptsScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCOracleMinigameTestScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00efef60	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00efef60@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCBenTestScriptsScript@NScript@@@@UAEXXZ
+00eff6d0	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00eff6d0@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCTonyTestScriptsScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_CinemaTestScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_AmbushTradersScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00f01260	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00f01260@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCOracleMinigameTestScript@NScript@@@@UAEXXZ
+  WARN leaf '?SuspendableProcess@?$CActiveEntityScript@VCQ_ArenaScript@NScript@@@@UAEXXZ' matches no symbol in old.obj; graded the largest function
+00f01e30	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00f01e30@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_CinemaTestScript@NScript@@@@UAEXXZ
+00f09c20	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00f09c20@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_AmbushTradersScript@NScript@@@@UAEXXZ
+00f1cc60	RELOC_RENAMED	leafsym ?SuspendableProcess@CActiveEntityScript_00f1cc60@@QAEXXZ -> ?SuspendableProcess@?$CActiveEntityScript@VCQ_ArenaScript@NScript@@@@UAEXXZ

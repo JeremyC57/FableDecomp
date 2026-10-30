@@ -56,10 +56,11 @@ struct CScriptThing_Retail : CBaseClass {           // vtable 0x01238C8C; layout
     CScriptThing_Retail() : CBaseClass(), PImp() { }
 };
 
-class CTimer { public:
-    long TimerIndex;
-    CTimer() : TimerIndex(g_pGameScriptInterface->CreateTimer()) { }
-};
+#define FABLE_RETAIL_NSCRIPT
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->CreateTimer()) { }
 
 struct CCrateTeamManager {
     long               StateCounter[6];        // +0x00

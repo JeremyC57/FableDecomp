@@ -46,13 +46,13 @@ class C3DVector { public: float X, Y, Z; };
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CTimer { public:                                         // a script timer: the interface's timer index
-    long Index;
-    CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }   // out-of-line copy 0x00CD4470
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 namespace NScript {
 }   // namespace NScript (CScriptBase is global in retail)
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
@@ -84,7 +84,7 @@ void CQ_HangingTreeGoodScript::SpawnEnemies(const C3DVector& pos, CCharString de
         if (IsActiveThreadTerminating())
             return;
         CTimer timer;
-        timer.SetTime(10);
+        timer = 10;
         while (timer.GetTime() > 0 && (HTG_State == 4 || HTG_State == 3)) {
             Game->NewScriptFrame();
             if (IsActiveThreadTerminating())

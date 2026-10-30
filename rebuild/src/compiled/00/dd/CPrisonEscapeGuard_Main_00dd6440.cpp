@@ -99,13 +99,13 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
 extern "C" int __cdecl rand();                          // 0x00BFEB16
 extern bool g_bScriptAnimationFlag;                     // 0x01375748
-class CTimer { public:                                         // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }   // out-of-line copy 0x00CD4450
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }      // out-of-line copy 0x00CD4470
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 struct CQ_PrisonEscapeRescueMotherScript {
     unsigned char _pad[0x79];
     bool AlarmSounded;                                  // +0x79 (PDB +0x8d)
@@ -174,7 +174,7 @@ void CPrisonEscapeGuard::Main()
                     Game->Play2DSound("SND_BANDIT_ALARM");
                 }
             }
-            timer.SetTime(30);
+            timer = 30;
             long conversation = Game->AddNewConversation(Me, false, false);
             Game->AddPersonToConversation(conversation, Game->GetHero());
             if (line == 1) {

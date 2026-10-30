@@ -12,34 +12,29 @@
 namespace NScript { class CPredicateBase; }
 class CThing;
 struct SCount { long m_references; };
-struct CCountedPointer_CThing {
+template <class T> class CCountedPointer { public:
     CThing* m_pObject;
     SCount* m_pCount;
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CScriptThing : public CBaseClass { public:                // 12 bytes
-    CCountedPointer_CThing PImp;                  // +4
-    CScriptThing(const CScriptThing& other);      // 0x004ABE90
-    virtual ~CScriptThing();                              // 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length);   // 0x0099EBF0
     ~CCharString();                               // 0x0099EAE0
 };
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
+inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual bool operator()(CThing* thing) const;
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                            // vtable 0x012C32F0: a thing filter holding the script thing
-    CScriptThing m_thing;                         // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive() { }
-};
 }
 using NScript::CIsThingAlive;
 struct CGameScriptInterface_Calls {

@@ -19,7 +19,7 @@ struct SCountBlock {
     void* m_pObject;                       // +8
 };
 
-struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     void* m_pObject;                       // +0
     SCountBlock* m_pCount;                 // +4
     ~CCountedPointer()
@@ -38,10 +38,12 @@ struct CCountedPointer {
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CScriptThing : public CBaseClass { public:
-    CCountedPointer PImp;                  // +0x4
-    virtual ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 // The empty virtual destructor is defined out of line: VC7.1 then inlines it (and the member's
 // ~CCountedPointer) into the deleting destructor; an in-class `{ }` body made the deleting destructor

@@ -43,8 +43,9 @@ class CPersistContext;
 #include "engine/CLevelScriptBase.h"
 
 namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CTestTheInventoryScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
+class CEmptyData;
+// Master data (wave 8): RegisterScripts 0x00CD52D0 pairs CTestTheInventoryScript's Alloc with the CEmptyData 0x00CD4AC0 Alloc (wave 7 HEADERS.md table), so T is CEmptyData.
+class CTestTheInventoryScript : public CLevelScriptBase<CEmptyData> {
 public:
     bool IgnoreNextLoad;                                // +0x48
     void TestForLampOn();

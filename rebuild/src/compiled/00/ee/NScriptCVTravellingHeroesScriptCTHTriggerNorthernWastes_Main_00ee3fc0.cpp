@@ -36,21 +36,11 @@ public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 namespace NScript {
-class CPredicateBase {                                  // Ego_r.pdb NScript::CPredicateBase
-public:
-    virtual bool operator()() const = 0;
-    virtual CPredicateBase* Clone() const = 0;
-    virtual ~CPredicateBase() { }
-};
-class CIsThingAlive : public CPredicateBase {           // vtable 0x012C32F0
-public:
-    CScriptThing Thing;                                 // +0x04
-    CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
-    virtual bool operator()() const;
-    virtual CPredicateBase* Clone() const;
-    virtual ~CIsThingAlive();                           // 0x00E241B0
-};
 }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 class CScriptBase;

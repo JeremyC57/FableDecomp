@@ -32,8 +32,9 @@ class CPersistContext;
 #include "engine/CLevelScriptBase.h"
 
 namespace NScript {
-class CQ_SunnyvaleMasterData;
-class CHeroTurningDebuggerScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
+class CDanyalTestScriptsData;
+// Master data (wave 8): RegisterScripts 0x00CD52D0 pairs CHeroTurningDebuggerScript's Alloc with the CDanyalTestScriptsData 0x00CD4B80 Alloc (wave 7 HEADERS.md table), so T is CDanyalTestScriptsData.
+class CHeroTurningDebuggerScript : public CLevelScriptBase<CDanyalTestScriptsData> {
 public:
     void MoveHeroTest();                                // 0x00EFC300
     virtual void Main();

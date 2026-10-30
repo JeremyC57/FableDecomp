@@ -985,9 +985,9 @@ class CScriptDef { public:
     long GetAcolyteTimerTime() const { return AcolyteTimerTime; }
 };
 extern CScriptDef* pGlobalScriptDef;        // 0x0143E90C
-class CTimer { public:
-    long TimerIndex;                          // +0x00
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 
 struct CAT_BanditContact {
     void* __vftable;

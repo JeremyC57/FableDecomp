@@ -18,15 +18,19 @@ class C3DVector { public: float x, y, z; };
 struct SCountBlock;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
-struct CScriptThingPImp {                          // the counted pointer member: an inline constructor zeroes both words after the vtable store
+template <class T> class CCountedPointer { public:                          // the counted pointer member: an inline constructor zeroes both words after the vtable store
     CScriptThingImp* Data;                         // +4
     SCountBlock*     Info;                         // +8
-    CScriptThingPImp() : Data(0), Info(0) {}
+    CCountedPointer() : Data(0), Info(0) {}
 };
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C (rtti-vtables.tsv)
-    CScriptThingPImp PImp;
-    CScriptThing() {}                              // inline: CBaseClass::CBaseClass, the vtable, two zero words
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() {}
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 struct CThing_Retail {
     unsigned char  _pad00[0x74];
     CCharString    ScriptName;                     // +0x74

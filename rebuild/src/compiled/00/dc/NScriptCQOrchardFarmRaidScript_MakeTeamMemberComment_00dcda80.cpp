@@ -22,13 +22,11 @@ CCharString __fastcall operator+(const CCharString& left, const char* right);   
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    virtual const CCharString& GetName() const;        // slot 1 (+0x4), 0x004AA8B0
-    virtual CCharString GetDefName() const;            // slot 2 (+0x8), 0x004AA8D0
-    virtual CCharString GetDataString() const;         // slot 3 (+0xc), 0x004AA900
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -36,9 +34,9 @@ class CScriptThing : public CBaseClass { public:                     // 12 bytes
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
 
-class CTimer { public:
-    long Index;
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
@@ -60,13 +58,13 @@ using NScript::CQ_OrchardFarmRaidScript;
 
 bool NScript::CQ_OrchardFarmRaidScript::MakeTeamMemberComment(const CCharString& line, const CScriptThing& speaker, bool unused)
 {
-    if (g_pGameScriptInterface->GetTimer(CommentTimer.Index) > 0) {
+    if (g_pGameScriptInterface->GetTimer(CommentTimer.TimerIndex) > 0) {
         IsActiveThreadTerminating();
         return false;
     }
     long conversation = m_pInterface->AddNewConversation(speaker, false, false);
     m_pInterface->AddPersonToConversation(conversation, m_pInterface->GetHero());
     m_pInterface->AddLineToConversation(conversation, TextSystemScriptCode + speaker.GetDataString() + "_" + line, false, speaker, m_pInterface->GetHero());
-    g_pGameScriptInterface->SetTimer(CommentTimer.Index, 5);
+    g_pGameScriptInterface->SetTimer(CommentTimer.TimerIndex, 5);
     return true;
 }

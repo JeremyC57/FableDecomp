@@ -7,7 +7,7 @@
 // Callees: CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<...> >::LowerBound(const ETCInterfaceType&) 0x0040F020
 //   (Ego_r.pdb names it; the catalog's bindings there are stand-ins), CBaseClass::~CBaseClass() 0x0099A2E0 (the CScriptThing
 //   destructor's base call), operator delete 0x00BFE9BC; the pointee's virtual GetThing (slot 11, +0x2C).
-// Shape: `if (!thing.GetThing()) return false; CTCAIScratchpad* tc; thing.GetThing()->GetTC(&tc); return tc->GetStealStealableItems();`
+// Shape: `if (!thing.GetPThing()) return false; CTCAIScratchpad* tc; thing.GetPThing()->GetTC(&tc); return tc->GetStealStealableItems();`
 //   -- CScriptThing::GetThing forwards to the counted pimpl; CThing::GetTC<T>(T**) (Ego_r.pdb
 //   ??$GetTC@VCTCAIScratchpad@@@CThing@@QAE_NPAPAVCTCAIScratchpad@@@Z) tests UsingComponents through the STLport bitset
 //   reference proxy (`test ch, 4`) and looks the type up through a map pointer (LowerBound on a key copy, the end / greater
@@ -164,14 +164,12 @@ public:
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass {                    // vtable 0x01238C8C
-public:
-    virtual ~CScriptThing() { }
-    virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual void v06(); virtual void v07(); virtual void v08(); virtual void v09(); virtual void v10();
-    virtual CThing* GetThing() const { return PImp.Data == 0 ? 0 : PImp.Data->GetThing(); }   // slot 11 (+0x2C)
-    CCountedPointer<CScriptThing> PImp;                      // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline CThing* CScriptThing::GetPThing() const { return PImp.Data == 0 ? 0 : PImp.Data->GetPThing(); }
 
 class CGameScriptInterface {
 public:
@@ -181,9 +179,9 @@ public:
 
 bool CGameScriptInterface::GetStealStealableItems(CScriptThing thing)
 {
-    if (!thing.GetThing())
+    if (!thing.GetPThing())
         return false;
     CTCAIScratchpad* tc;
-    thing.GetThing()->GetTC(&tc);
+    thing.GetPThing()->GetTC(&tc);
     return tc->GetStealStealableItems();
 }

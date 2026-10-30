@@ -21,9 +21,9 @@ struct CScriptOwner {
     long m_value08;                                      // +0x08
 };
 
-class CTimer { public:
-    long TimerIndex;
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 
 namespace NScript {
 class CV_BodyGuardScript {

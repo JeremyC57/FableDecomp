@@ -43,17 +43,14 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImpl;
-struct CBase {
-    CBase();                                            // 0x0099A2D0
-    virtual ~CBase();                                   // 0x0099A2E0
-};
-class CScriptThing : public CBase { public:                           // vtable 0x01238C8C, 12 bytes
-    
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing() {}
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline ~CScriptThing() {}                    // inline here; out-of-line copy 0x004AA840
-};
+#include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (the row's local CBase)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() {}
+__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 struct CCountedPointerWords {
@@ -82,19 +79,15 @@ struct CIsThingConscious : public NScript::CPredicateBase {                     
     ~CIsThingConscious() { }
 };
 #pragma inline_depth()
-class CEntityScriptBase { public:                              // retail 0x14 bytes
-    virtual void e00();
-    CGameScriptInterface* Game;                         // +0x04
-    CScriptThing          Me;                           // +0x08
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-public:
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 struct CMeleeThunder : CEntityScriptBase {
     void* ParentClass;                                  // +0x14
     void* PMasterData;                                  // +0x18
     bool  HasJumped;                                    // +0x1c
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CMeleeThunder::Main()

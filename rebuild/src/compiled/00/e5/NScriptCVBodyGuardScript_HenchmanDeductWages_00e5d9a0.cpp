@@ -30,10 +30,10 @@ class CScriptDef { public:
 };
 extern CScriptDef*           pGlobalScriptDef;             // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-class CTimer { public:                                    // a script timer: the interface's timer index
-    long Index;
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 class CScriptThing { public:                              // 12 bytes (vtable 0x01238C8C)
     void* __vftable;
     long  m_data[2];
@@ -105,7 +105,7 @@ void NScript::CV_BodyGuardScript::HenchmanDeductWages()
         {
             if (IsActiveThreadTerminating())
                 return;
-            HenchmanFreakedOutThePlayerTimer.SetTime(180);
+            HenchmanFreakedOutThePlayerTimer = 180;
         }
         Game->NewScriptFrame();
     }

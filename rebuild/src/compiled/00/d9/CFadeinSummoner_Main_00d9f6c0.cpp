@@ -103,13 +103,11 @@ inline CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : m_thing(thing) 
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-class CTimer { public:                                         // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer();                                           // 0x00CD4450
-    ~CTimer();                                          // 0x00CD4470
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 #pragma auto_inline(off)
 CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
 CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
@@ -176,9 +174,9 @@ void CFadeinSummoner::Main()
         return;
     summoner.PlayLoopingAnimation("BREATHE_IDLE", -1, false, false, false, true, g_bScriptAnimationFlag, false, false);
     CTimer idleTimer;
-    idleTimer.SetTime(25);
+    idleTimer = 25;
     CTimer effectTimer;
-    effectTimer.SetTime(12);
+    effectTimer = 12;
     CTimer specialTimer;
     bool playingSpecial = false;
     while (ParentClass->CurrentStage == 2 || ParentClass->CurrentStage == 3) {
@@ -198,7 +196,7 @@ void CFadeinSummoner::Main()
             if (IsActiveThreadTerminating())
                 return;
             effect = Game->CreateEffect("SUMMONER_ALTAR_ACTIVE", Me.GetPos(), "", 0.0f, false, false);
-            effectTimer.SetTime(8);
+            effectTimer = 8;
         }
         if (idleTimer.GetTime() == 0) {
             if (IsActiveThreadTerminating())
@@ -213,9 +211,9 @@ void CFadeinSummoner::Main()
                     return;
                 summoner.PlayAnimation("MC_SPECIAL_IDLE_2", false, true, false, false, g_bScriptAnimationFlag, false, false);
             }
-            idleTimer.SetTime(20);
+            idleTimer = 20;
             playingSpecial = true;
-            specialTimer.SetTime(4);
+            specialTimer = 4;
         }
         if (playingSpecial && specialTimer.GetTime() == 0) {
             if (IsActiveThreadTerminating())

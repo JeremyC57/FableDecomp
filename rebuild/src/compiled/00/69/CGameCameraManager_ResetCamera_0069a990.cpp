@@ -48,9 +48,11 @@ class CTCHeroRangedAttacks { public: public:
     void ResetProjectileWeaponMode();   // 0x00789B30
 };   // 0x00789B30
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };              // 0x00487DC0
-class CPlayerManager { public: public:
-    CPlayer& GetMainPlayer();   // 0x00449970
-};     // 0x00449970
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+     // 0x00449970
 struct CRenderer {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

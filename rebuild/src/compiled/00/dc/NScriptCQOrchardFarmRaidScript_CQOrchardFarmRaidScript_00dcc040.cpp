@@ -21,11 +21,10 @@ class CScriptDataBase;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8 (the global script interface, bound name)
-class CTimer {                                          // Ego_r.pdb: one long TimerIndex
-public:
-    long TimerIndex;
-    CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
 class CCharString {                                     // 4 bytes
 public:
     void* PStringData;
@@ -46,12 +45,10 @@ public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
-class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
-public:
-    CScriptThing() : CBaseClass(), PImp() { }
-    virtual ~CScriptThing();                            // 0x004AA840
-    CCountedPointer<CScriptThing> PImp;                 // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() : CBaseClass(), PImp() { }
 namespace std {
 template <class T> class allocator { };
 template <class T, class A = allocator<T> > class vector {   // STLport 4.6 layout (0x0C)

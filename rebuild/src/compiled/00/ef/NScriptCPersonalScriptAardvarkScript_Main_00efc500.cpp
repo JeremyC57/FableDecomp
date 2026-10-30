@@ -43,10 +43,9 @@ template <class T> class CCountedPointer { public:
 };
 struct CScriptThingImpl;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C {vptr, PImp}
-    CCountedPointer<CScriptThingImpl> PImp;            // +0x04
-    ~CScriptThing();                                   // out-of-line copy 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct CScriptThingInline : CBaseClass {               // the same object, destroyed by the inline body
     CCountedPointer<CScriptThingImpl> PImp;
     __forceinline ~CScriptThingInline() { }

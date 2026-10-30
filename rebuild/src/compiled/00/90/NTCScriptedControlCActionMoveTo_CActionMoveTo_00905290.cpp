@@ -22,17 +22,19 @@ protected:                                   // root of the scripted actions (vt
 
 struct SCountBlock;
 
-struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     void* m_pObject;                            // +0
     SCountBlock* m_pCount;                      // +4
     CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-class CScriptThing : public CBaseClass { public:             // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h layout)
-    CCountedPointer PImp;                       // +0x04
-    CScriptThing() : CBaseClass() { }
-    CScriptThing(const CScriptThing& other);    // non-POD: returned through a hidden pointer
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() : CBaseClass() { }
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 class CThing { public:
     CScriptThing GetScriptThing();              // 0x004C7E50

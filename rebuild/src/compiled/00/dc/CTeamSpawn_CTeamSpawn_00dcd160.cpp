@@ -12,17 +12,19 @@
 // default-constructed OtherSpawnPoint is CBase() + its vtable + the PImp member's inline zeroing (after the vtable store).
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-struct CCountedPointer_Imp {                       // CCountedPointer<CScriptThing>: object + count block
+template <class T> class CCountedPointer { public:                       // CCountedPointer<CScriptThing>: object + count block
     void* m_pObject;                               // +0x00
     void* m_pCount;                                // +0x04
-    CCountedPointer_Imp() : m_pObject(0), m_pCount(0) { }
+    CCountedPointer() : m_pObject(0), m_pCount(0) { }
 };
 
-class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C, 12 bytes
-    CCountedPointer_Imp PImp;                      // +0x04
-    CScriptThing() { }
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 class CCharString { public:
     void* m_pData;

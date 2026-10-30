@@ -20,17 +20,11 @@ class C3DVector { public:
     C3DVector(float x, float y, float z) : X(x), Y(y), Z(z) { }
     C3DVector operator+(const C3DVector& o) const { return C3DVector(X + o.X, Y + o.Y, Z + o.Z); }
 };
-class CScriptThing { public:                                    // 12 bytes, vtable 0x01238C8C
-    virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005();
-    virtual const C3DVector& GetPos() const;             // slot 6 (+0x18) 0x004AA980
-    virtual void s007(); virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012();
-    virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019();
-    virtual bool MsgIsUsedBy(const CCharString& user) const;   // slot 20 (+0x50) 0x004AAB10
-    void* PImp_Data;                                     // +0x04
-    void* PImp_Info;                                     // +0x08
-    CScriptThing(const CScriptThing& other);             // 0x004ABE90
-    virtual ~CScriptThing();                                     // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
  virtual void NewScriptFrame(void) const; //slot7 0x006e7410
@@ -73,19 +67,13 @@ struct GameCalls {                                       // CGameScriptInterface
  virtual void v277(); virtual void v278(); virtual void v279();
  virtual void DeactivateQuest(CCharString const &, unsigned long) const; //slot280 0x00892f00
 };
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                                   // vtable 0x012C32F0: a predicate holding a script thing
-    CScriptThing m_thing;                                // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive();                                    // 0x00E241B0
-};
 }
 using NScript::CIsThingAlive;
 class CEntityScriptBase { public:                               // retail 0x14 bytes

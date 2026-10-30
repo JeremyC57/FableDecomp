@@ -81,6 +81,8 @@ namespace NScript {
 inline CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }   // inline here (retail expands it)
 inline CIsThingConscious::~CIsThingConscious() { }      // inline here; out of line 0x00EF7AB0
 class CQ_SunnyvaleMasterData;
+// Master data (wave 8): RegisterScripts 0x00CD52D0 registers CExpression_FollowScript with no master-data Alloc (`ebx` = 0),
+// so its T is not recoverable from retail; T enters no symbol of this row and stays as landed (unproven).
 class CExpression_FollowScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {
 public:
     virtual void Main();

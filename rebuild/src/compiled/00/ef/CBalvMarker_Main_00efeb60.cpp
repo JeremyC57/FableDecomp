@@ -26,7 +26,7 @@ class CCPPointerInfo { public:                                // CCountedPointer
     void (__fastcall* DeleteFunc)(void* data);         // +4
     void* Data;                                        // +8
 };
-struct CCountedPointerWords {                          // CCountedPointer<T> {Data, Info}
+template <class T> class CCountedPointer { public:                          // CCountedPointer<T> {Data, Info}
     void*           Data;
     CCPPointerInfo* Info;
     __forceinline void ReleaseInline()                 // ~CCountedPointer body
@@ -43,20 +43,18 @@ struct CCountedPointerWords {                          // CCountedPointer<T> {Da
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    virtual const C3DVector& GetPos() const;           // slot 6 (+0x18)
-    CCountedPointerWords PImp;                         // +0x04
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 struct CScriptThingInline : CBaseClass {                    // the same object, destroyed by the inline body
-    CCountedPointerWords PImp;
+    CCountedPointer<CScriptThing> PImp;
     __forceinline ~CScriptThingInline() { PImp.ReleaseInline(); }
 };
 struct CScriptThingLocal {                             // a by-value CScriptThing result held without an implicit destructor
     void*                vptr;
-    CCountedPointerWords PImp;
+    CCountedPointer<CScriptThing> PImp;
     const CScriptThing& Thing() const { return *reinterpret_cast<const CScriptThing*>(this); }
     void Destroy() { reinterpret_cast<CScriptThing*>(this)->CScriptThing::~CScriptThing(); }
     __forceinline void DestroyInline() { reinterpret_cast<CScriptThingInline*>(this)->CScriptThingInline::~CScriptThingInline(); }
@@ -78,7 +76,7 @@ struct CScriptGameResourceObjectBaseDtor : CBaseObjectDtor {   // vtable 0x01260
     __forceinline virtual ~CScriptGameResourceObjectBaseDtor() { }
 };
 class CScriptGameResourceObjectScriptedThingBase : public CBaseObject { public:   // vtable 0x0127094C, 16 bytes
-    CCountedPointerWords PImp;                         // +0x08
+    CCountedPointer<CScriptThing> PImp;                         // +0x08
     CScriptGameResourceObjectScriptedThingBase() { PImp.Data = 0; PImp.Info = 0; }
     virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007(); virtual void s008();
     virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016();

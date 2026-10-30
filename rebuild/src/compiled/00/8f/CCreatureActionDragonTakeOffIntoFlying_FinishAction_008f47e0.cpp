@@ -52,7 +52,11 @@ struct CTC4D {                                        // interface 0x4D on the h
     void RemoveThing(CThing* thing);                  // 0x00770F20
 };
 class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };        // 0x00487DC0
-class CPlayerManager { public: CPlayer& GetMainPlayer(); };  // 0x00449970
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+  // 0x00449970
 class CMainGameComponent { public:
     unsigned char _pad[0x1c];
     CPlayerManager* PlayerManager;                    // +0x1c

@@ -11,7 +11,10 @@
 //   every persisted offset matches the member its string names.
 // Shape: one Transfer call per member in retail's order; each default is a temporary built in the dead argument slot.
 class CCharString { public: void* PStringData; };
-class CTimer { public: long TimerIndex; };
+#define FABLE_RETAIL_NSCRIPT
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 class CPersistContext { public:
     template <class T> void Transfer(const char* name, T& value, const T& defaultValue);   // 0x004045C0 <bool>, 0x00410620 <float>, 0x00410BE0 <long>
 };

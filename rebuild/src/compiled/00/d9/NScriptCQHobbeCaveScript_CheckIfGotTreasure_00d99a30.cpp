@@ -42,19 +42,12 @@ template <class T> class CCountedPointer { public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01238C8C
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    __forceinline virtual ~CScriptThing() {}            // 0x004AA840 where it stays out of line
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011();
-    virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019();
-    virtual bool MsgIsUsedBy(const CCharString& user) const   // slot 20 (+0x50) 0x004AAB10
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsUsedBy(user);
-    }
-    CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
+inline bool CScriptThing::MsgIsUsedBy(const CCharString& user) const { if (!PImp.Data) return false; return PImp.Data->MsgIsUsedBy(user); }
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -62,9 +55,9 @@ class CScriptThing : public CBaseClass { public:        // 12 bytes, vtable 0x01
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
-class CTimer { public:                                  // 4 bytes: an index into the global script timers
-    long TimerIndex;
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 namespace NScript {
 class CQ_HobbeCaveScript : public CScriptBase {
 public:

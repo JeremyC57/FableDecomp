@@ -88,9 +88,10 @@ class CWorld { public:
     unsigned char _pad[0x104];
     long          m_mode;                       // +0x104
 };
-class CPlayerManager { public:
-    long GetMainPlayerNumber() const;                 // 0x00449700
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 
 class CTCBase { public:
     virtual void v00();

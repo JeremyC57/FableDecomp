@@ -23,12 +23,12 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void*);
     void* Data;
 };
-struct CCountedScriptImp {                              // CCountedPointer<CScriptThingImp>
+template <class T> class CCountedPointer { public:                              // CCountedPointer<CScriptThingImp>
     void* Data;
     CCPPointerInfo* Info;
-    CCountedScriptImp() : Data(0), Info(0) {}
-    CCountedScriptImp(const CCountedScriptImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    ~CCountedScriptImp()
+    CCountedPointer() : Data(0), Info(0) {}
+    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -42,19 +42,13 @@ struct CCountedScriptImp {                              // CCountedPointer<CScri
     }
 };
 class CThing;
-class CScriptThing : public CBaseClass { public:                      // vtable 0x01238C8C
-    CCountedScriptImp PImp;                             // +0x04
-    CScriptThing() {}
-    virtual ~CScriptThing() {}
-    virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const;
-    virtual void v05() const;
-    virtual const C3DVector& GetPosition() const;       // slot 6 (+0x18)
-    virtual void v07() const; virtual void v08() const; virtual void v09() const; virtual void v10() const;
-    virtual CThing* GetThing() const;                   // slot 11 (+0x2c)
-    virtual void v12() const; virtual void v13() const; virtual void v14() const; virtual void v15() const; virtual void v16() const; virtual void v17() const; virtual void v18() const; virtual void v19() const; virtual void v20() const; virtual void v21() const; virtual void v22() const; virtual void v23() const; virtual void v24() const; virtual void v25() const; virtual void v26() const; virtual void v27() const; virtual void v28() const; virtual void v29() const; virtual void v30() const; virtual void v31() const; virtual void v32() const; virtual void v33() const; virtual void v34() const; virtual void v35() const; virtual void v36() const; virtual void v37() const; virtual void v38() const; virtual void v39() const; virtual void v40() const; virtual void v41() const; virtual void v42() const; virtual void v43() const; virtual void v44() const; virtual void v45() const; virtual void v46() const; virtual void v47() const; virtual void v48() const; virtual void v49() const; virtual void v50() const; virtual void v51() const; virtual void v52() const; virtual void v53() const; virtual void v54() const; virtual void v55() const; virtual void v56() const; virtual void v57() const; virtual void v58() const; virtual void v59() const; virtual void v60() const; virtual void v61() const; virtual void v62() const; virtual void v63() const; virtual void v64() const; virtual void v65() const; virtual void v66() const; virtual void v67() const; virtual void v68() const; virtual void v69() const; virtual void v70() const; virtual void v71() const; virtual void v72() const; virtual void v73() const; virtual void v74() const;
-    virtual bool IsAlive() const;                       // slot 75 (+0x12c)
-    CScriptThing& operator=(const CScriptThing& other); // 0x008AB980
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() {}
+inline CScriptThing::~CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 
 static __forceinline bool DecRefToZero(long& count) { return --count == 0; }
 class CThingObjectDef { public:
@@ -130,11 +124,11 @@ CScriptThing CGameScriptInterface::CreateObjectOnEntity(const CCharString& defNa
         long index = DefinitionManager->GetDefGlobalIndexFromName(defName);
         CDefPointerThingObjectDef def;
         DefinitionManager->GetDef(index, &def);
-        CThingObject* object = CThingObject::Create(index, entity.GetPosition(), 4, 0, 0, scriptName);
+        CThingObject* object = CThingObject::Create(index, entity.GetPos(), 4, 0, 0, scriptName);
         if (object) {
             CAttachmentHolder* holder = object->Attachments;
             if (holder) {
-                CThingVirtuals* target = entity.GetThing()->GetTargetAttachments();
+                CThingVirtuals* target = entity.GetPThing()->GetTargetAttachments();
                 if (target)
                     holder->Attach(target->GetAttachment());
             }

@@ -46,13 +46,11 @@ template <class T> class CCountedPointer { public:
 };
 class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImpl;
-class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    virtual const C3DVector& GetPos() const;                // slot 6 (+0x18) 0x004AA980
-    CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);                // 0x004ABE90
-    ~CScriptThing() {}                                      // out of line 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
 namespace std {
 template<class T> class allocator { };
 template<class T, class A = allocator<T> > class vector {
@@ -76,10 +74,10 @@ int __cdecl rand();                                         // 0x00BFEB16
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;        // 0x0143E8F8
-class CTimer { public:                                             // a script timer: the interface's timer index
-    long Index;
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 class CScriptDef { public:
     unsigned char _pad0[0xc70];
     float HS_ScreamerCount;                                 // +0xc70
@@ -114,7 +112,7 @@ public:
 };
 void CQ_HeroSoulsMotherScript::CreateScreamers()
 {
-    NewSuperScreamerTimer.SetTime(pGlobalScriptDef->HS_SecondsBeforeNewSuperScreamer);
+    NewSuperScreamerTimer = pGlobalScriptDef->HS_SecondsBeforeNewSuperScreamer;
     std::vector<CScriptThing> screamerPoints;
     Game->GetAllThingsWithScriptName("ScreamerHere", screamerPoints);
     Game->DisplayQuestInfo(true);

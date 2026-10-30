@@ -21,13 +21,10 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
 namespace NScript {
 
-class CIsThingAlive { public:                         // vtable 0x012C32F0
-    virtual void v00();
-    CScriptThing Thing;                        // +0x04
-    CIsThingAlive(const CIsThingAlive& other) : Thing(other.Thing) { }
-};
 
 template<class TLeft, class TRight>
 class CPredicate_And { public:

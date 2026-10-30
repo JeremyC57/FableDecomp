@@ -25,10 +25,10 @@ public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
-class CTimer { public:                                    // a script timer: the interface's timer index
-    long Index;
-    void Set(long time) { const long& index = Index; g_pGameScriptInterface->SetTimer(index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long time) { const long& index = TimerIndex; g_pGameScriptInterface->SetTimer(index, time); return *this; }
 namespace NScript {
 class CQ_HeroSoulsBriarScript {
 public:
@@ -47,8 +47,8 @@ using NScript::CQ_HeroSoulsBriarScript;
 void NScript::CQ_HeroSoulsBriarScript::Init()
 {
     PlayedBriarCS = false;
-    BriarRoseImposterTauntTimer.Set(0);
-    BriarRoseImposterHereTimer.Set(0);
+    BriarRoseImposterTauntTimer = 0;
+    BriarRoseImposterHereTimer = 0;
     KickOffQuestStartScreen = false;
     Game->AddQuestRegion("Q_HeroSoulsBriar", "NorthernWastes3");
 }

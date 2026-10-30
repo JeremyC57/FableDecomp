@@ -12,6 +12,11 @@
 // 0x01260EF4 and the dtor's CCountedPointer release 0x006E7AB0 + GROBase vtable store), and calls the COMDAT copies
 // 0x006E7B60 / 0x006E7B80 at others; the PDB spellings ??0..QAE@XZ / ??1..UAE@XZ are the implicit members' manglings.
 // Contract: the includer defines CCountedPointer<T> before the include (PImp is by value; its inline bodies are the row's).
+// Per-site expansion (wave 8, scripts/mbexp.py + mbsites.py): retail destroys a MovieBase three ways, often mixed in one
+//   function: fully expanded, expanded with a call to the PImp dtor 0x006E7AB0, or a call to this dtor 0x006E7B80. With the
+//   implicit dtor and a plain inline (not __forceinline) CCountedPointer release, VC7.1 itself gives the retail mix in 15 of
+//   the 24 rows that forced it with #pragma inline_depth (byte-identical; 14 kept, wave 8 family MBX). unproven: why the
+//   single-site rows that call 0x006E7AB0 (e.g. 0x00DF2D30) are not expanded: VC7.1 expands them fully (385 v 349 bytes).
 // unproven: SetImplementation (both PDBs: ?SetImplementation@CScriptGameResourceObjectMovieBase@@QAEXPAV1@@Z). Candidate
 // 0x008AB970 `add ecx,8; jmp 0x008AB2B0` (the MovieBase CCountedPointer reset Release calls; the STB twin 0x008AB960 is
 // bound as STB::SetImplementation) is unbound, so the address is not claimed here.

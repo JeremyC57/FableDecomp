@@ -26,7 +26,9 @@ protected:
 public:
     CCharString   EntityScriptName;                                      // +0x04
     T*            PParentScript;                                         // +0x08
-    void (T::*Func)();                                                   // +0x0c
+    void (T::*Func)(CScriptThing);                                       // +0x0c (wave 8: Ego_r.pdb types it pmf_b463565b, the same
+                                                                         //   type as CActiveEntityScript<T>::Func, which FableWin.pdb
+                                                                         //   spells P823@AEXV1@@Z: void (T::*)(CScriptThing))
     TAllocFunc    ClassAllocFunc;                                        // +0x10
     bool          ClassAllocValid;                                       // +0x14
     unsigned long Flags;                                                 // +0x18

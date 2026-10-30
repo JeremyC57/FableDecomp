@@ -79,11 +79,11 @@ struct CIsThingConscious : public NScript::CPredicateBase {                     
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-class CTimer { public:                                        // a script timer: the interface's timer handle
-    long Handle;
-    long GetTime() const { const long& handle = Handle; return g_pGameScriptInterface->GetTimer(handle); }
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Handle, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline long CTimer::GetTime() const { const long& handle = TimerIndex; return g_pGameScriptInterface->GetTimer(handle); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 struct CQ_ArenaScript {                                // retail = Ego_r.pdb - 0x14 up to Rounds, - 0x18 after it
     unsigned char _pad00[0x48];
     CCharString   CrowdLoopTags[4][5];                 // +0x48
@@ -132,7 +132,7 @@ void CSUMMONED_CREATURE::Main()
                     return;
                 Game->PlayCriteriaSoundOnThing(Game->GetNearestWithScriptName(Game->GetHero(), "ArenaSpawn"),
                                                ParentClass->CrowdLoopTags[ParentClass->NewCrowdBaseLevel][3]);
-                ParentClass->GlobalCrowdTimer.SetTime(10);
+                ParentClass->GlobalCrowdTimer = 10;
                 ParentClass->NewCrowdPoints += 5;
             }
         } else if (Me.MsgIsHitByWithDecapitate("SCRIPT_NAME_HERO")) {
@@ -143,7 +143,7 @@ void CSUMMONED_CREATURE::Main()
                     return;
                 Game->PlayCriteriaSoundOnThing(Game->GetNearestWithScriptName(Game->GetHero(), "ArenaSpawn"),
                                                ParentClass->CrowdLoopTags[ParentClass->NewCrowdBaseLevel][3]);
-                ParentClass->GlobalCrowdTimer.SetTime(10);
+                ParentClass->GlobalCrowdTimer = 10;
                 ParentClass->NewCrowdPoints += 7;
             }
         } else if (Me.MsgIsHitBy("SCRIPT_NAME_HERO")

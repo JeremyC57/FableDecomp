@@ -48,13 +48,13 @@ bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScript
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CTimer { public:                                          // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
-    __forceinline ~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }   // out-of-line copy 0x00CD4470
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+__forceinline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 class CScriptDef { public:
     unsigned char _pad[0x3ac];
     CDefString* ShoutSoundsBegin;                        // +0x3ac
@@ -65,13 +65,12 @@ class CScriptDef { public:
     CDefString  DarkwoodAssassinDefName;                 // +0xe18
 };
 extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
+inline NScript::CIsThingAlive::~CIsThingAlive() { }
 namespace NScript {
-class CIsThingAlive { public:                                   // vtable 0x012C32F0
-    virtual void v00();
-    CScriptThing m_thing;
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive() { }
-};
 }
 using NScript::CIsThingAlive;
 struct CDarkwoodAssassinSpawn {
@@ -93,7 +92,7 @@ void CDarkwoodAssassinSpawn::Main()
     if (IsActiveThreadTerminating())
         return;
     CTimer timer;
-    timer.SetTime(2);
+    timer = 2;
     long spawnDistance = pGlobalScriptDef->DarkwoodAssassinSpawnDistance;
     unsigned long count = pGlobalScriptDef->ShoutSoundsEnd - pGlobalScriptDef->ShoutSoundsBegin;
     unsigned long index = rand() % count;
@@ -107,7 +106,7 @@ void CDarkwoodAssassinSpawn::Main()
         } else {
             if (IsActiveThreadTerminating())
                 return;
-            timer.SetTime(2);
+            timer = 2;
         }
         if (timer.GetTime() == 0)
             break;

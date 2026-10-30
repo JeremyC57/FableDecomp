@@ -1,0 +1,4 @@
+00dbe4e0	SRC_FAIL	new.cpp(55): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *const ' to 'const CScriptThing &'
+00def3b0	SRC_FAIL	new.cpp(37): error C2065: 'CScriptThingImp' : undeclared identifier | new.cpp(37): error C2065: 'data' : undeclared identifier | new.cpp(46): error C3861: 'data': identifier not found, even with argument-dependent lookup
+00e04f10	SRC_FAIL	new.cpp(59): error C2664: 'CScriptThing::IsEqualTo' : cannot convert parameter 1 from 'CScriptThing *const ' to 'const CScriptThing &'
+00e1e960	SAME	1004b RELOCATION_MATCH->RELOCATION_MATCH

@@ -16,10 +16,10 @@ void __cdecl operator delete(void* p);             // 0x00BFE9BC
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
-class CTimer { public:
-    long Index;
-    void SetTime(long time) { CGameScriptInterface* gsi = g_pGameScriptInterface; long index = Index; gsi->SetTimer(index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long time) { CGameScriptInterface* gsi = g_pGameScriptInterface; long index = TimerIndex; gsi->SetTimer(index, time); return *this; }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -33,10 +33,10 @@ class CCPPointerInfo { public:
     void* m_pObject;                               // +8
 };
 struct CScriptThingImp;
-struct CCountedPointer_CScriptThing {
+template <class T> class CCountedPointer { public:
     CScriptThingImp* Data;
     CCPPointerInfo*  Info;
-    CCountedPointer_CScriptThing& operator=(const CCountedPointer_CScriptThing& other)
+    CCountedPointer& operator=(const CCountedPointer& other)
     {
         CScriptThingImp* data = other.Data;
         CCPPointerInfo* info = other.Info;
@@ -57,10 +57,12 @@ struct CCountedPointer_CScriptThing {
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CScriptThing : public CBaseClass { public:                 // vtable 0x01238C8C
-    CCountedPointer_CScriptThing PImp;
-    CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 struct CV_SwordInTheStoneScript : CQuestScriptObject {
 #pragma pack(push, 1)
     struct SAttempt {                              // the sword-removal attempt state (6 bytes, unpadded)
@@ -89,7 +91,7 @@ struct CV_SwordInTheStoneScript : CQuestScriptObject {
 void CV_SwordInTheStoneScript::Init()
 {
     Attempt.Reset();
-    CrowdSwordTimer.SetTime(5);
+    CrowdSwordTimer = 5;
     HeroHasBeenToldSwordLegend = false;
     HeroCongratulated = false;
     CrowdDisperse = false;

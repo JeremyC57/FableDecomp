@@ -84,35 +84,16 @@ template <class T> class CCountedPointer { public:
     }
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C {vptr, PImp_Data, PImp_Info}
-    virtual void t001() const;
-    virtual CCharString GetDefName() const               // slot 2 (+0x08), out of line 0x004AA8D0
-    {
-        if (!PImp.Data)
-            return g_EmptyCharString;
-        return PImp.Data->GetDefName();
-    }
-    virtual void t003() const; virtual void t004() const; virtual void t005() const; virtual void t006() const; virtual void t007() const; virtual void t008() const; virtual void t009() const; virtual void t010() const;
-    virtual void t011() const; virtual void t012() const; virtual void t013() const; virtual void t014() const; virtual void t015() const; virtual void t016() const; virtual void t017() const; virtual void t018() const;
-    virtual void t019() const; virtual void t020() const; virtual void t021() const; virtual void t022() const; virtual void t023() const; virtual void t024() const; virtual void t025() const; virtual void t026() const;
-    virtual void t027() const; virtual void t028() const; virtual void t029() const; virtual void t030() const; virtual void t031() const; virtual void t032() const; virtual void t033() const; virtual void t034() const;
-    virtual void t035() const; virtual void t036() const; virtual void t037() const; virtual void t038() const; virtual void t039() const; virtual void t040() const; virtual void t041() const; virtual void t042() const;
-    virtual void t043() const; virtual void t044() const; virtual void t045() const; virtual void t046() const; virtual void t047() const; virtual void t048() const; virtual void t049() const; virtual void t050() const;
-    virtual void t051() const; virtual void t052() const; virtual void t053() const; virtual void t054() const; virtual void t055() const; virtual void t056() const; virtual void t057() const; virtual void t058() const;
-    virtual void t059() const; virtual void t060() const; virtual void t061() const; virtual void t062() const; virtual void t063() const; virtual void t064() const; virtual void t065() const; virtual void t066() const;
-    virtual void t067() const; virtual void t068() const; virtual void t069() const; virtual void t070() const; virtual void t071() const; virtual void t072() const; virtual void t073() const; virtual void t074() const;
-    virtual bool IsAlive() const;                        // slot 75 (+0x12c) 0x004AB130
-    virtual void t076() const;
-    virtual bool IsNull() const                          // slot 77 (+0x134), out of line 0x004AB150
-    {
-        if (!PImp.Data)
-            return true;
-        return PImp.Data->IsNull();
-    }
-    CCountedPointer<CScriptThing> PImp;                  // +0x04 Data, +0x08 Info
-    CScriptThing() { }
-    __forceinline ~CScriptThing() { }                    // out of line 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CCharString CScriptThing::GetDefName() const { if (!PImp.Data) return g_EmptyCharString; return PImp.Data->GetDefName(); }
+inline bool CScriptThing::IsNull() const { if (!PImp.Data) return true; return PImp.Data->IsNull(); }
+inline CScriptThing::CScriptThing() { }
+__forceinline CScriptThing::~CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 struct GameCalls {                                       // CGameScriptInterface, retail vtable 0x01260F0C
  virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006();
  virtual void NewScriptFrame(void) const; //slot7 0x006e7410

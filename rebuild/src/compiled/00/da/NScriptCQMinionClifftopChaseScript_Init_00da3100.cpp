@@ -23,10 +23,10 @@ class CCharString { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CTimer { public:                                         // a script timer: the interface's timer index
-    long Index;
-    void Set(long time) { const long& index = Index; g_pGameScriptInterface->SetTimer(index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long time) { const long& index = TimerIndex; g_pGameScriptInterface->SetTimer(index, time); return *this; }
 class CScriptDef { public:
     unsigned char _pad0[0x138];
     long MCCNakedBoastCost;                             // +0x138
@@ -81,8 +81,8 @@ void NScript::CQ_MinionClifftopChaseScript::Init()
     RockTrollAppeared = false;
     KilledGuardingMinions = 0;
     MCC4Taken = false;
-    MakeUniqueComment.Set(0);
-    MissionTimer.Set(0);
+    MakeUniqueComment = 0;
+    MissionTimer = 0;
     MissionTimerID = 0;
     ReasonForFailure = 0;
     MinionCount = 0;

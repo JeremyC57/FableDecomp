@@ -43,7 +43,11 @@ template <> class CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETC
 typedef CVectorMap<ETCInterfaceType, CTCBase*, CKeyPairCompareLess<ETCInterfaceType, CTCBase*> > IsPCReady_Map;
 
 /* --- engine callees / globals: relocation-masked, declared extern --- */
-class CPlayerManager { public: CPlayer& GetMainPlayer(); }; /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+ /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
 extern float  __fastcall IsPCReady_GetReadiness(void* weapon);               /* call ffeefe50 */
 extern const float IsPCReady_ReadyThreshold;                                 /* ds:0x129ba3c  */
 

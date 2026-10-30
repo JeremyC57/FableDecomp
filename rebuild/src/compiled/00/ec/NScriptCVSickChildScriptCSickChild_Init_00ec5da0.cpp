@@ -37,18 +37,10 @@ inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp =
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace NScript {
 class CQ_SunnyvaleMasterData;
-class CEntityScriptBase {                              // vtable 0x012C3224
-public:
-    virtual ~CEntityScriptBase();                      // slot 0
-private:
-    virtual void Main();                               // slot 1
-    virtual void Init();                               // slot 2
-public:
-    CGameScriptInterfaceBase* Game;                    // +0x04
-    CScriptThing              Me;                      // +0x08
-};
 class CV_SickChildScript {
 public:
     class CSickChild;

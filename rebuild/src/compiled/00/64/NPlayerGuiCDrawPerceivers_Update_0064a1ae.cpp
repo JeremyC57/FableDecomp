@@ -83,9 +83,10 @@ template <class T> bool __fastcall IS_THING_ALIVE_00436380(const T& thing)   // 
 class CPlayer { public:
     const CThingPlayerCreature* PeekPControlledCreature() const; // 0x00487DD0
 };
-class CPlayerManager { public:
-    CPlayer& GetMainPlayer();                      // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 bool __fastcall AreThingsEnemies(const CThing* a, const CThing* b);   // 0x0076D2F0
 void* FindRef_free_AreThingsEnemies_1();   // stand-in callee of the stand-in body below
 // Stand-in body (the real one is out of line in retail): it only writes a word through the reference parameter inline, so

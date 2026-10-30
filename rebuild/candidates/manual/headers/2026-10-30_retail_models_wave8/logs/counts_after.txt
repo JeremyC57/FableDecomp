@@ -1,0 +1,17 @@
+CScriptBase 88
+CLevelScriptBase 1
+CScriptThing 428
+CEntityScriptBase 293
+CIsThingConscious 27
+CIsThingAlive 154
+CPredicateBase 142
+CGameScriptInterface 220
+CGameScriptInterfaceBase 36
+CTimer 16
+CPlayerManager 104
+CScriptGameResourceObjectMovieBase 85
+CActiveEntityScriptBase 42
+CActiveEntityScript 35
+CEntityScriptBindingBase 12
+CEntityScriptBinding 94
+CCountedPointer 4290

@@ -1,0 +1,15 @@
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingMeleeScript_Main_00d55e90.cpp ok
+edit rebuild/src/compiled/00/da/CMinionWarningGuard_Main_00da9c70.cpp ok
+edit rebuild/src/compiled/00/db/NScriptCQNewOakValeIntroScript_PostAttackStuff_00dbeb20.cpp ok
+edit rebuild/src/compiled/00/dc/CGraveyardDemon_Main_00dc3fc0.cpp ok
+edit rebuild/src/compiled/00/dd/NScriptCQOrchardFarmRaidScript_DoMultiplierCutscene_00dd1af0.cpp ok
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScript_PhaseOne_00e1cfd0.cpp ok
+edit rebuild/src/compiled/00/e6/CDFCombatMult_Main_00e6f710.cpp ok
+edit rebuild/src/compiled/00/e6/CDFThunderHelmet_Main_00e6f1c0.cpp ok
+edit rebuild/src/compiled/00/e7/CDFEatPies_Main_00e71450.cpp ok
+edit rebuild/src/compiled/00/e7/CDFMarryLadyGrey_Main_00e73410.cpp ok
+edit rebuild/src/compiled/00/e7/CDFSexMad_Main_00e73930.cpp ok
+edit rebuild/src/compiled/00/e7/CFishCompCompetitor_Main_00e7e640.cpp ok
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScript_DuelChallenge_00e9bbc0.cpp ok
+edit rebuild/src/compiled/00/e9/NScriptCVHeroDuelScript_SecondFleeCutscene_00e9aeb0.cpp ok
+edit rebuild/src/compiled/00/ee/CTrophyDealerInCave_Main_00ee76f0.cpp ok

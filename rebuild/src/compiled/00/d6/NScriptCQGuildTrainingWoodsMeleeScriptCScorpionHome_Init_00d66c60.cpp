@@ -3,18 +3,18 @@
 // Identity: Own named ScorpionHome registration00d6670c ->factory00d66ba0 ->vtable012d1da0 slot2; original PDB nested private virtual Init, named ScorpionsLeft/FlourishHint and CScriptDef GUI_MeleeBeetles; global0143e90c and typed retail field+3856.
 // Layout: original CEntityScriptBase20, parent/master20/24, count28, hint32, full child36. Typed definition prefix through GUI_MeleeBeetles; original def base chain with packed parent57 and STLport12-byte vectors reconciles donor offsets. No opaque base prefix; inactive virtual slots are descriptive.
 #include <stddef.h>
-#define CScriptThing CScriptThing_HeaderLayout
-#include "engine/CScriptThing.h"
-#undef CScriptThing
 #ifndef _MSC_VER
 #define __fastcall
 #endif
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CCPPointerInfo;template<class T>class CCountedPointer{public:T* Data;CCPPointerInfo* Info;};
 class CCharStringData;class CCharString{public:CCharStringData* PStringData;bool FastCompare(const CCharString&)const;};
-class CScriptThing:public CBaseClass{public:CCountedPointer<CScriptThing> PImp;virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CGameScriptInterfaceBase;class CPersistContext;
-class CEntityScriptBase{public:CGameScriptInterfaceBase* Game;CScriptThing Me;virtual ~CEntityScriptBase(){}virtual void UnknownEntitySlot1(){}virtual void Init(){}virtual void UnknownEntitySlot3(){}virtual void OnPersist(CPersistContext&){}virtual void OnPredicateFail(){}};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace NScript{class CQ_SunnyvaleMasterData;}
 #ifndef _MSC_VER
 #define __forceinline inline

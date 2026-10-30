@@ -1,0 +1,35 @@
+00d1d7d0	SAME	1253b RELOCATION_MATCH->RELOCATION_MATCH
+00d2d830	SAME	202b RELOCATION_MATCH->RELOCATION_MATCH
+00d3cbd0	SAME	1167b RELOCATION_MATCH->RELOCATION_MATCH
+00d7ecb0	SRC_FAIL	new.cpp(77): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility' | new.cpp(77): fatal error C1903: unable to recover from previous error(s); stopping compilation
+00d7eed0	SRC_FAIL	new.cpp(79): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility' | new.cpp(79): fatal error C1903: unable to recover from previous error(s); stopping compilation
+00d8fa30	SRC_FAIL	new.cpp(61): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(62): error C2371: 'EOpinion' : redefinition; different basic types | new.cpp(63): error C2371: 'EOpinionAttitudeType' : redefinition; different basic types
+  WARN leaf '?Main@CMC_SpawnPoint@CQ_MinionCampScript@NScript' matches no symbol in old.obj; graded the largest function
+00d9bf60	SRC_FAIL	new.cpp(62): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(63): error C2371: 'EOpinion' : redefinition; different basic types | new.cpp(64): error C2371: 'EOpinionAttitudeType' : redefinition; different basic types
+00d9ee20	SRC_FAIL	new.cpp(59): error C2371: 'EMorality' : redefinition; different basic types | new.cpp(60): error C2371: 'EMusicSetType' : redefinition; different basic types | new.cpp(61): error C2371: 'EOpinion' : redefinition; different basic types
+00dabac0	SAME	2018b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '?DealWithHeroHittingMe@CVictimsBrother@CQ_RansomVictimScript@NScript@@AAEXXZ' matches no symbol in old.obj; graded the largest function
+00dcc770	SAME	1981b RELOCATION_MATCH->RELOCATION_MATCH
+00ded380	SAME	208b RELOCATION_MATCH->RELOCATION_MATCH
+  WARN leaf '?DealWithHeroHittingMe@CVictimsBrother@CQ_RansomVictimScript@NScript@@AAEXXZ' matches no symbol in new.obj; graded the largest function
+00deb000	SAME	636b RELOCATION_MATCH->RELOCATION_MATCH
+00df8970	SRC_FAIL	new.cpp(193): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility' | new.cpp(201): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility' | new.cpp(218): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00df80b0	SRC_FAIL	new.cpp(36): error C2371: 'EScriptAIPriority' : redefinition; different basic types | new.cpp(37): error C2371: 'ETextGroupSelectionMethod' : redefinition; different basic types | new.cpp(255): error C2664: 'GameCalls::StartScriptingEntity' : cannot convert parameter 3 from 'int' to 'EScriptAIPriority'
+00df9180	SRC_FAIL	fable_nscript_forward.h(68): error C2371: 'ESex' : redefinition; different basic types | new.cpp(207): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility' | new.cpp(215): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00dfb320	SRC_FAIL	new.cpp(43): error C2371: 'EScriptAIPriority' : redefinition; different basic types | new.cpp(160): error C2664: 'GameCalls::StartScriptingEntity' : cannot convert parameter 3 from 'int' to 'EScriptAIPriority' | new.cpp(160): fatal error C1903: unable to recover from previous error(s); stopping compilation
+00e047d0	SAME	178b RELOCATION_MATCH->RELOCATION_MATCH
+00e04970	SAME	178b RELOCATION_MATCH->RELOCATION_MATCH
+00e01760	SAME	405b RELOCATION_MATCH->RELOCATION_MATCH
+00e0ea40	SAME	1919b RELOCATION_MATCH->RELOCATION_MATCH
+00eaef30	SAME	675b RELOCATION_MATCH->RELOCATION_MATCH
+00eb5d50	SAME	1185b RELOCATION_MATCH->RELOCATION_MATCH
+00eb4f80	SAME	1044b RELOCATION_MATCH->RELOCATION_MATCH
+00eb23e0	SAME	1298b RELOCATION_MATCH->RELOCATION_MATCH
+00eb3740	SAME	1108b RELOCATION_MATCH->RELOCATION_MATCH
+00eb10c0	SAME	1274b RELOCATION_MATCH->RELOCATION_MATCH
+00eb15c0	SAME	1010b RELOCATION_MATCH->RELOCATION_MATCH
+00eb19c0	SAME	1274b RELOCATION_MATCH->RELOCATION_MATCH
+00eed8b0	SRC_FAIL	new.cpp(77): error C2664: 'CScriptThing::MsgIsHitBySpecialAbilityFrom' : cannot convert parameter 1 from 'int' to 'EHeroAbility'
+00ee0a20	SAME	307b RELOCATION_MATCH->RELOCATION_MATCH
+00ef1e10	SAME	384b RELOCATION_MATCH->RELOCATION_MATCH
+00ef25e0	SAME	568b RELOCATION_MATCH->RELOCATION_MATCH

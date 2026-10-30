@@ -42,7 +42,9 @@ namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CLevelScriptBase.h"
 class CGameScriptInterfaceBase;class CScriptDataBase;
-class CTimer{public:long TimerIndex;};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 namespace NScript{class CQ_EndGameBossBattleScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:bool IntroFinished,FinalDecision,FinalDecisionMade,SisterNeededForCutscene,GuildmasterChat,FinalCutscenePlayed;CScriptGameResourceObjectScriptedThingBase seh_Jack;CScriptThing Jack;CQ_EndGameBossBattleScript(CScriptDataBase* data,CGameScriptInterfaceBase& game);virtual void RegisterMain();virtual void Main();virtual void Init();virtual void OnPersist(CPersistContext&);static CScriptBase* __fastcall Alloc(CScriptDataBase*,CGameScriptInterfaceBase&);};
 CScriptBase* __fastcall CQ_EndGameBossBattleScript::Alloc(CScriptDataBase* data,CGameScriptInterfaceBase& game){return new CQ_EndGameBossBattleScript(data,game);}
 }

@@ -188,11 +188,11 @@ public:
 
 
 extern CGameScriptInterface* g_pGameScriptInterface;          // 0x0143E8F8
-class CTimer { public:
-    long Index;
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 struct CQ_HeroSoulsBriarScript {
     unsigned char _pad[0x68];
     CTimer BriarRoseImposterTauntTimer;                // +0x68
@@ -214,8 +214,8 @@ void CBRIAR_ROSE_IMPOSTER::Main()
     Game->NewScriptFrame();
     if (IsActiveThreadTerminating())
         return;
-    ParentClass->BriarRoseImposterTauntTimer.SetTime(0);
-    ParentClass->BriarRoseImposterHereTimer.SetTime(4);
+    ParentClass->BriarRoseImposterTauntTimer = 0;
+    ParentClass->BriarRoseImposterHereTimer = 4;
     while (!IsActiveThreadTerminating()) {
         bool hit = (Me.MsgIsHitBy("SCRIPT_NAME_HERO")
                     || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
@@ -227,8 +227,8 @@ void CBRIAR_ROSE_IMPOSTER::Main()
             long conversation = Game->AddNewConversation(Me, false, false);
             Game->AddPersonToConversation(conversation, Game->GetHero());
             Game->AddLineToConversation(conversation, "TEXT_QST_B04_BRIAR_COPY_TAUNT", false, Me, Game->GetHero());
-            ParentClass->BriarRoseImposterTauntTimer.SetTime(15);
-            ParentClass->BriarRoseImposterHereTimer.SetTime(4);
+            ParentClass->BriarRoseImposterTauntTimer = 15;
+            ParentClass->BriarRoseImposterHereTimer = 4;
         }
         if (ParentClass->BriarRoseImposterHereTimer.GetTime() == 0
             && ParentClass->BriarRoseImposterTauntTimer.GetTime() > 7
@@ -238,7 +238,7 @@ void CBRIAR_ROSE_IMPOSTER::Main()
             long conversation = Game->AddNewConversation(Me, false, false);
             Game->AddPersonToConversation(conversation, Game->GetHero());
             Game->AddLineToConversation(conversation, "TEXT_QST_B04_BRIAR_COPY_HERE", false, Me, Game->GetHero());
-            ParentClass->BriarRoseImposterHereTimer.SetTime(15);
+            ParentClass->BriarRoseImposterHereTimer = 15;
         }
         Game->NewScriptFrame();
     }

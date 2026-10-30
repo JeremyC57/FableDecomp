@@ -85,9 +85,10 @@ class CPlayer { public:
     unsigned char _pad00[0x0C];
     CGameProfile* PProfile;                                   // +0x0C
 };
-class CPlayerManager { public:
-    const CPlayer& GetMainPlayer() const;                           // 0x00449960 (Ego_r.pdb)
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 
 class CTCInventory : public NInventory::CTCInventoryBase, public NHeroInformationScreens::CBase {   // vtables 0x01250DE4 / 0x01250DD0
 public:

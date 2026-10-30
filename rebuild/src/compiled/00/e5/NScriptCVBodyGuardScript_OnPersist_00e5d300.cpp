@@ -21,11 +21,11 @@ class CPersistContext { public:
 #include "engine/CGameScriptInterface.h"
 
 extern CGameScriptInterface* g_pGameScriptInterface;        // 0x0143E8F8
-class CTimer { public:                                             // 4 bytes
-    long TimerIndex;
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 struct CScriptThingVector {                                 // std::vector<CScriptThing> (STLport, 12 bytes)
     void* _M_start;
     void* _M_finish;
@@ -72,8 +72,8 @@ void NScript::CV_BodyGuardScript::OnPersist(CPersistContext& context)
     context.Transfer("Evil2RespawnTimer", evil2, 0.0f);
     context.Transfer("Good1RespawnTimer", good1, 0.0f);
     context.Transfer("Good2RespawnTimer", good2, 0.0f);
-    HenchmanDeadRespawnTimer[0].SetTime((long)evil1);
-    HenchmanDeadRespawnTimer[1].SetTime((long)evil2);
-    HenchmanDeadRespawnTimer[2].SetTime((long)good1);
-    HenchmanDeadRespawnTimer[3].SetTime((long)good2);
+    HenchmanDeadRespawnTimer[0] = (long)evil1;
+    HenchmanDeadRespawnTimer[1] = (long)evil2;
+    HenchmanDeadRespawnTimer[2] = (long)good1;
+    HenchmanDeadRespawnTimer[3] = (long)good2;
 }

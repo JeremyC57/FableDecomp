@@ -36,20 +36,16 @@ struct CQ_SunnyvaleMasterData {
     bool PrisonKeyStolenByHero;                        // +0xee
 };
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CPrisonKeyDoor : public CEntityScriptBase {
 public:
-    void*                   __vftable;                 // +0x00
-    CGameScriptInterface*   Game;                      // +0x04
-    CScriptThing            Me;                        // +0x08
-    void*                   ParentClass;               // +0x14 (CQ_PrisonEscapeRescueMotherScript*)
+        void*                   ParentClass;               // +0x14 (CQ_PrisonEscapeRescueMotherScript*)
     CQ_SunnyvaleMasterData* PMasterData;               // +0x18
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CPrisonKeyDoor::Main()

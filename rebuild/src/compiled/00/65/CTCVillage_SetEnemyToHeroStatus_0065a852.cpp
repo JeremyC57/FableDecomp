@@ -54,10 +54,10 @@ bool __fastcall IS_THING_ALIVE_00436380(CThing* const& thing);   // 0x00436380
 class CPlayer { public:
     CThingPlayerCreature* GetPControlledCreature() const;                // 0x00487DC0
 };
-class CPlayerManager { public:
-public:
-    CPlayer& GetMainPlayer();   // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CTCEnemy { public:
     void AddEnemyThing(CThing* enemy);          // 0x0076D1B0
     void RemoveEnemyThing(CThing* enemy);       // 0x0076CC00

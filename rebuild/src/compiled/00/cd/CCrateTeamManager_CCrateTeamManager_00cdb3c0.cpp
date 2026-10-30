@@ -17,7 +17,7 @@ struct SCountBlock {
     void* m_pObject;                       // +8
 };
 
-struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     void* m_pObject;                       // +0
     SCountBlock* m_pCount;                 // +4
     ~CCountedPointer()
@@ -36,10 +36,13 @@ struct CCountedPointer {
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CScriptThing : public CBaseClass { public:              // vtable 0x01238C8C
-    CCountedPointer PImp;                  // +0x04
-    virtual ~CScriptThing() { }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 class CGameScriptInterface { public:
     virtual void v000();
@@ -134,10 +137,10 @@ class CGameScriptInterface { public:
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 
-class CTimer { public:
-    long TimerIndex;
-    ~CTimer() { g_pGameScriptInterface->ReleaseTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::~CTimer() { g_pGameScriptInterface->ReleaseTimer(TimerIndex); }
 
 struct CCrateTeamManager {
     long               StateCounter[6];        // +0x00

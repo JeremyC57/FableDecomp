@@ -51,18 +51,14 @@ inline CScriptThing::~CScriptThing() { }
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CM_BanditLeader : public CEntityScriptBase {
 public:
-    void*                 __vftable;               // +0x00
-    CGameScriptInterface* Game;                    // +0x04
-    CScriptThing          Me;                      // +0x08
-    void Main();
+private:
+        virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CM_BanditLeader::Main()

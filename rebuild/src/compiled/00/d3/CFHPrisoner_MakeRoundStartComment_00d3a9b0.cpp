@@ -42,18 +42,12 @@ struct CQuestScript_Retail {
     long          Mood;                                 // +0x184
 };
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CFH_Prisoner : public CEntityScriptBase {
 public:
-    void*                   __vftable;                  // +0x00
-    CGameScriptInterface*   Game;                       // +0x04
-    CScriptThing            Me;                         // +0x08
-    CQuestScript_Retail*    Quest;                      // +0x14
+        CQuestScript_Retail*    Quest;                      // +0x14
     long                    _pad18[2];                  // +0x18
     long                    Round;                      // +0x20
     void MakeRoundStartComment();

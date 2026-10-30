@@ -21,10 +21,10 @@
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;       // 0x0143E8F8
 
-class CTimer { public:                                             // a script timer: the interface's timer index
-    long Index;
-    CTimer() : Index(g_pGameScriptInterface->RegisterTimer()) { }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) { }
 class CCounter { public:                                           // a frame counter: the world frame it started at
     long StartFrame;
     CCounter() : StartFrame(g_pGameScriptInterface->GetWorldFrame()) { }

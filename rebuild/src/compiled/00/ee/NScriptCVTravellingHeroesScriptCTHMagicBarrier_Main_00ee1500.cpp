@@ -29,20 +29,6 @@ class CCPPointerInfo { public:
     void (__fastcall* DeleteFunc)(void* data);
     void* Data;
 };
-struct CScriptThingImpl {                              // the polymorphic implementation behind a script thing
-    virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003(); virtual void i004(); virtual void i005();
-    virtual const C3DVector& GetPos() const;   // slot 6 (+0x18)
-    virtual void i007(); virtual void i008(); virtual void i009(); virtual void i010(); virtual void i011(); virtual void i012(); virtual void i013(); virtual void i014();
-    virtual void i015(); virtual void i016(); virtual void i017(); virtual void i018(); virtual void i019(); virtual void i020(); virtual void i021(); virtual void i022();
-    virtual void i023(); virtual void i024(); virtual void i025(); virtual void i026(); virtual void i027(); virtual void i028(); virtual void i029(); virtual void i030();
-    virtual void i031(); virtual void i032(); virtual void i033(); virtual void i034(); virtual void i035(); virtual void i036(); virtual void i037(); virtual void i038();
-    virtual void i039(); virtual void i040(); virtual void i041(); virtual void i042(); virtual void i043(); virtual void i044(); virtual void i045(); virtual void i046();
-    virtual void i047(); virtual void i048(); virtual void i049(); virtual void i050(); virtual void i051(); virtual void i052(); virtual void i053(); virtual void i054();
-    virtual void i055(); virtual void i056(); virtual void i057(); virtual void i058(); virtual void i059(); virtual void i060(); virtual void i061(); virtual void i062();
-    virtual void i063(); virtual void i064(); virtual void i065(); virtual void i066(); virtual void i067(); virtual void i068(); virtual void i069(); virtual void i070();
-    virtual void i071(); virtual void i072(); virtual void i073(); virtual void i074();
-    virtual bool IsAlive() const;   // slot 75 (+0x12c)
-};
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 template <class T> class CCountedPointer { public:            // {Data, Info}
     T*              Data;
@@ -84,25 +70,14 @@ template <class T> class CCountedPointer { public:            // {Data, Info}
         return *this;
     }
 };
-class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
-    virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005();
-    virtual const C3DVector& GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPos(); }   // slot 6 (+0x18)
-    virtual void s007(); virtual void s008(); virtual void s009();
-    virtual float GetAngleXY() const;   // slot 10 (+0x28)
-    virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015(); virtual void s016(); virtual void s017(); virtual void s018();
-    virtual void s019(); virtual void s020(); virtual void s021(); virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025(); virtual void s026();
-    virtual void s027(); virtual void s028(); virtual void s029(); virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034();
-    virtual void s035(); virtual void s036(); virtual void s037(); virtual void s038(); virtual void s039(); virtual void s040(); virtual void s041(); virtual void s042();
-    virtual void s043(); virtual void s044(); virtual void s045(); virtual void s046(); virtual void s047(); virtual void s048(); virtual void s049(); virtual void s050();
-    virtual void s051(); virtual void s052(); virtual void s053(); virtual void s054(); virtual void s055(); virtual void s056(); virtual void s057(); virtual void s058();
-    virtual void s059(); virtual void s060(); virtual void s061(); virtual void s062(); virtual void s063(); virtual void s064(); virtual void s065(); virtual void s066();
-    virtual void s067(); virtual void s068(); virtual void s069(); virtual void s070(); virtual void s071(); virtual void s072(); virtual void s073(); virtual void s074();
-    virtual bool IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }   // slot 75 (+0x12c)
-    CCountedPointer<CScriptThingImpl> PImp;            // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90 (the out-of-line copy)
-    ~CScriptThing() { }                                // out-of-line copy 0x004AA840
-    CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline const C3DVector& CScriptThing::GetPos() const { return !PImp.Data ? g_ZeroVector : PImp.Data->GetPos(); }
+inline bool CScriptThing::IsAlive() const { return PImp.Data && PImp.Data->IsAlive(); }
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 namespace NScript {
 class __declspec(novtable) CPredicateBase
 {

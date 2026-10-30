@@ -13,11 +13,10 @@ class CCharString { public:
     ~CCharString();                                     // 0x0099EAE0
 };
 class CCPPointerInfo;
-class CScriptThing { public:                                   // vtable 0x01238C8C, 12 bytes
-    virtual ~CScriptThing();                            // slot 0; complete destructor 0x004AA840
-    void*           PImp_Data;                          // +0x04
-    CCPPointerInfo* PImp_Info;                          // +0x08
-};
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 namespace std {
 template<class T> inline void _Destroy(T* first, T* last)
 {
@@ -44,16 +43,14 @@ public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
-class CEntityScriptBase { public:
-    virtual void e00();
-    CGameScriptInterface* Game;                         // +0x04
-    CScriptThing          Me;                           // +0x08
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 struct CHeroBed : CEntityScriptBase {
     void* ParentClass;                                  // +0x14
     void* PMasterData;                                  // +0x18
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CHeroBed::Main()

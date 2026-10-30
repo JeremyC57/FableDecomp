@@ -65,34 +65,19 @@ template <class T> class CCountedPointer { public:
 };
 struct CScriptThingImpl;
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-class CScriptThing : public CBaseClass { public:                           // vtable 0x01238C8C, 12 bytes
-    virtual void s001() const; virtual void s002() const; virtual void s003() const; virtual void s004() const; virtual void s005() const; virtual void s006() const; virtual void s007() const; virtual void s008() const;
-    virtual void s009() const; virtual void s010() const; virtual void s011() const; virtual void s012() const; virtual void s013() const; virtual void s014() const; virtual void s015() const; virtual void s016() const;
-    virtual void s017() const; virtual void s018() const; virtual void s019() const; virtual void s020() const;
-    virtual bool MsgIsHitBy(const CCharString& hitter) const;   // slot 21 (+0x54)
-    virtual void s022() const; virtual void s023() const; virtual void s024() const; virtual void s025() const; virtual void s026() const; virtual void s027() const; virtual void s028() const; virtual void s029() const;
-    virtual void s030() const; virtual void s031() const; virtual void s032() const; virtual void s033() const; virtual void s034() const; virtual void s035() const; virtual void s036() const; virtual void s037() const;
-    virtual void s038() const; virtual void s039() const; virtual void s040() const;
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& from) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& from) const;   // slot 42 (+0xa8)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    ~CScriptThing() { }                                 // out-of-line copy 0x004AA840
-    __forceinline CScriptThing& operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+__forceinline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                                  // vtable 0x012C32F0
-    CScriptThing m_thing;                               // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive();                                   // 0x00E241B0
-};
 }
 using NScript::CIsThingAlive;
 struct CBaseIntelligentPointer {                        // vtable 0x0129A7D8
@@ -129,20 +114,16 @@ struct CQ_SnowTrollScript {
     void PlayCutscene(CCharString name);
     void ReleaseRockPile() { if (RockPile.IsValid()) RockPile.Release(); }                // 0x00EE2DB0
 };
-class CEntityScriptBase { public:
-    virtual void e00();
-    CGameScriptInterface* Game;                         // +0x04
-    CScriptThing          Me;                           // +0x08
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-public:
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 struct CStopDrawing : CEntityScriptBase {
     CQ_SnowTrollScript* ParentClass;                    // +0x14
     void*               PMasterData;                    // +0x18
     CScriptThing        EntrancePoint;                  // +0x1c
     CScriptThing        ExitPoint;                      // +0x28
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CStopDrawing::Main()
@@ -175,7 +156,7 @@ void CStopDrawing::Main()
         for (;;) {
             bool waiting = !(IsDistanceBetweenThingsUnder(Me, Game->GetHero(), 15.0f)
                 || Me.MsgIsHitBy("SCRIPT_NAME_HERO")
-                || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO")));
+                || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO")));
             if (!waiting)
                 break;
             Game->NewScriptFrame();

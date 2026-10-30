@@ -31,11 +31,11 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:                     // 12 bytes, vtable 0x01238C8C
-    CCountedPointer<CScriptThing> PImp;                // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    __forceinline ~CScriptThing() {}                   // out of line 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
 
 enum EScriptEntityMoveType { SCRIPT_ENTITY_MOVE_TYPE_WALK };
 
@@ -91,17 +91,13 @@ struct CAnd : CFilterBase {                            // vtable 0x012F687C, 0x2
     virtual void v00();
 };
 
-class CEntityScriptBase { public:
-    virtual void v00();
-    CGameScriptInterface* Game;                        // +0x04
-    CScriptThing          Me;                          // +0x08
-    bool IsActiveThreadTerminating() const;            // 0x00F35B30
-public:
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 struct CCham : CEntityScriptBase {
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 inline CAnd And(const CIsThing& a, const CIsThing& b) { return CAnd(a, b); }

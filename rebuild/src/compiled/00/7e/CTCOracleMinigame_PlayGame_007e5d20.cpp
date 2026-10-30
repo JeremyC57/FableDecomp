@@ -31,9 +31,10 @@ class CPlayer { public:
     long GetCurrentMode();                              // 0x00633BE0
     void AddMode(long mode, bool exclusive);            // 0x006345C0
 };
-class CPlayerManager { public:
-    CPlayer& GetMainPlayer();                           // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class COracleMinigameDef { public:
     unsigned char _pad00[0x2c];
     float TimeBetweenOutputs;                           // +0x2c (descriptive)

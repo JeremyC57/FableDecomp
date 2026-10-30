@@ -1,0 +1,1748 @@
+addr       parity           behav  name
+00408a70   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00408a70   WARN SHARED_HEADER_AVAILABLE CPlayer
+00408a70   WARN RELOC_NAME: ?ToWideString@CCharString@@QBE?AVCWideString@@XZ -> 0099e480 labelled 'CPersistContext::GetDefaultVal<CAnimationSet>'
+00408a70   RELOCATION_MATCH PASS   SetAllTutorialsAsGiven
+00435070   WARN SHARED_HEADER_AVAILABLE CPlayer
+00435070   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+  WARN leaf '?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z' matches no symbol in 00435070.obj; graded the largest function
+  WARN leaf '?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z' matches no symbol in 00435070.obj; graded the largest function
+00435070   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00435070   RELOCATION_MATCH PASS   DisplayTutorial
+00438310   WARN SHARED_HEADER_AVAILABLE CManager
+00438310   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00438310   RELOCATION_MATCH PASS   ToggleLiveGui
+004383d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+004383d0   RELOCATION_MATCH PASS   GiveHeroExpression
+00438cb0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00438cb0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00438cb0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00438cb0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00438cb0   RELOCATION_MATCH PASS   DrawInventory
+00439ab0   WARN SHARED_HEADER_AVAILABLE CTCInventory
+00439ab0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00439ab0   RELOCATION_MATCH PASS   GetButtonAlpha
+00439e00   WARN SHARED_HEADER_AVAILABLE CPlayer
+00439e00   RELOCATION_MATCH PASS   UpdateRenown
+00439f20   WARN SHARED_HEADER_AVAILABLE CPlayer
+00439f20   RELOCATION_MATCH PASS   UpdateMorality
+0043a080   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0043a080   WARN SHARED_HEADER_AVAILABLE CWorld
+0043a080   WARN SHARED_HEADER_AVAILABLE CPlayer
+0043a080   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0043a080   WARN SHARED_HEADER_AVAILABLE CManager
+0043a080   WARN SHARED_HEADER_AVAILABLE CList
+0043a080   WARN RELOC_NAME: ?Update@CDrawAutoPickups@NPlayerGui@@QAEXXZ -> 00643eb1 labelled '_global::Nop_ret0_00643eb1'
+0043a080   RELOCATION_MATCH PASS   Update
+0047d21c   WARN SHARED_HEADER_AVAILABLE CPlayer
+0047d21c   WARN SHARED_HEADER_AVAILABLE CTCBase
+0047d21c   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0047d21c   RELOCATION_MATCH PASS   CloseInGameMenuViaGameEvent
+0047d78b   WARN SHARED_HEADER_AVAILABLE CIEngine
+0047d78b   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+0047d78b   WARN SHARED_HEADER_AVAILABLE CPlayer
+0047d78b   WARN SHARED_HEADER_AVAILABLE CWorld
+0047d78b   WARN SHARED_HEADER_AVAILABLE CManager
+0047d78b   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0047d78b   WARN SHARED_HEADER_AVAILABLE CTCBase
+0047d78b   WARN RELOC_NAME: ?g_pGameState@@3PAUCGameState@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0047d78b   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0047d78b   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0047d78b   WARN RELOC_NAME: ?ResetMenus@CManager@NUISystem@@SIXXZ -> 0041d165 labelled 'NUISystem::CManager::OnCloseMenus'
+0047d78b   RELOCATION_MATCH PASS   CloseInGameMenu
+0047dc69   WARN SHARED_HEADER_AVAILABLE CObserver
+0047dc69   WARN SHARED_HEADER_AVAILABLE CManager
+0047dc69   WARN SHARED_HEADER_AVAILABLE CPlayer
+0047dc69   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu
+0047dc69   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0047dc69   RELOCATION_MATCH PASS   PCLoad
+00487aa0   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager
+00487aa0   WARN RELOC_NAME: ?GetMainPlayerJoystickDeviceNumber@CGameJoystickManager@@QBEJXZ -> 0049bb40 labelled 'CActiveJoystick::GetDeviceNumber'
+00487aa0   RELOCATION_MATCH PASS   InitJoystickDeviceNumber
+00487bd0   RELOCATION_MATCH PASS   UninitCharacter
+00487ef0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00487ef0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+00487ef0   WARN SHARED_HEADER_AVAILABLE CWorld
+00487ef0   WARN RELOC_NAME: ?SetPlayerNumber@CThing@@QAEXJ@Z -> 004c7440 labelled '_global::SetMember_byte0x90_004c7440'
+00487ef0   RELOCATION_MATCH PASS   InitCharacterFromSave
+004887c0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+004887c0   WARN RELOC_NAME: ?GetAllThings@CThingSearchTools@@QAEXABJAAU?$vector@PAVCThing@@@@@Z -> 0048d400 labelled 'GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::GetAllThings<CThing,std::vector<CThing*,std::allocator<CThing*>_>,CFilter_Bind2<CThingFilter_InMap,std::unary_negate<CThingFilter_InArea>_>_>'
+004887c0   RELOCATION_MATCH PASS   SetupInitialPlayerMode
+0048a070   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0048a070   WARN RELOC_NAME: ?AddThing@CTCPlayerCharacterLinks@@QAEXPAVCThing@@@Z -> 006aedc0 labelled 'CTCRegionFollower::AddFollower'
+0048a070   RELOCATION_MATCH PASS   InitCharacterAs
+0048a210   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0048a210   WARN SHARED_HEADER_AVAILABLE CGameJoystickManager
+0048a210   WARN RELOC_NAME: ?GetMainPlayerJoystickDeviceNumber@CGameJoystickManager@@QBEJXZ -> 0049bb40 labelled 'CActiveJoystick::GetDeviceNumber'
+0048a210   RELOCATION_MATCH PASS   PlayerInit
+00490a22   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00490a22   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+00490a22   WARN SHARED_HEADER_AVAILABLE CPlayer
+00490a22   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00490a22   WARN RELOC_NAME: ?IsTextFullyShown@CSubtitleRenderer@@QBE_NXZ -> 0048e072 labelled 'CSubtitleRenderer::IsTextReadyForClickPast'
+00490a22   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00490a22   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00490a22   WARN RELOC_NAME: ?IsActive@CFrontEnd@@QAE_NXZ -> 00434d60 labelled 'C3DAnimation2::CanRelocateData'
+00490a22   RELOCATION_MATCH PASS   IsInInteractiveState
+0049da00   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+0049da00   RELOCATION_MATCH PASS   GetCurrentRenderCamera
+0049da60   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+0049da60   RELOCATION_MATCH PASS   GetCurrentRenderCamera
+0049daa0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0049daa0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0049daa0   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+0049daa0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0049daa0   RELOCATION_MATCH PASS   GetCurrentSoundCamera
+0049dbe0   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+0049dbe0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0049dbe0   WARN RELOC_NAME: ?GetFrame@CMainGameComponent@@QAEJXZ -> 00416225 labelled '_global::GetMember_dword0x48_00416225'
+0049dbe0   RELOCATION_MATCH PASS   GetGameLODCentre
+0049e590   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0049e590   WARN SHARED_HEADER_AVAILABLE CPlayer
+0049e590   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0049e590   RELOCATION_MATCH PASS   SetSaveGameMarkerPos
+0049ed30   RELOCATION_MATCH PASS   ConsoleSetFreeCameraPos
+0049f3f0   WARN SHARED_HEADER_AVAILABLE CManager
+0049f3f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0049f3f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0049f3f0   RELOCATION_MATCH PASS   OpenHeroInformationScreen
+004a0220   WARN SHARED_HEADER_AVAILABLE CPlayer
+004a0220   WARN SHARED_HEADER_AVAILABLE CManager
+004a0220   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004a0220   WARN SHARED_HEADER_AVAILABLE CEnvironment
+004a0220   WARN SHARED_HEADER_AVAILABLE CWorldMap
+004a0220   WARN SHARED_HEADER_AVAILABLE CBulletTimeManager
+004a0220   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+004a0220   WARN SHARED_HEADER_AVAILABLE CWorld
+004a0220   WARN RELOC_NAME: ?Close@CManager@NHeroInformationScreens@@QAEXXZ -> 0066e73d labelled '_global::SetMemberConst_0066e73d'
+004a0220   WARN RELOC_NAME: ?ClearUIOverridingMusicSet@CMusicManager@@QAEXXZ -> 006be030 labelled 'CGameEvent::AddUBYTE'
+004a0220   WARN RELOC_NAME: ?ClearCinematicOverridingMusicSet@CMusicManager@@QAEXXZ -> 006bdf90 labelled 'CGameEvent::AddUBYTE'
+004a0220   WARN RELOC_NAME: ?ClearOverridingMusicSet@CMusicManager@@QAEXXZ -> 006bdef0 labelled 'CGameEvent::AddUBYTE'
+004a0220   WARN RELOC_NAME: ?EnableDangerMusic@CMusicManager@@QAEX_N@Z -> 006bde50 labelled 'CGameEvent::AddUBYTE'
+004a0220   WARN RELOC_NAME: ?PrepareForLoad@CDisplayEngine@@QAEXXZ -> 00434ad0 labelled 'CPlayerGui::ForceOpen'
+004a0220   RELOCATION_MATCH PASS   PrepareForLoad
+004a0370   WARN SHARED_HEADER_AVAILABLE CPlayer
+004a0370   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+004a0370   WARN RELOC_NAME: ?GetAllLeafThings@CThingSearchTools@@QAEXABVCThingFilter_HasTC@@AAU?$vector@PBVCThing@@@@@Z -> 004ad780 labelled 'GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::GetAllLeafThings<CThingAICreature,std::vector<CThingAICreature*,std::allocator<CThingAICreature*>_>,CFilter_Bind2<CThingFilter_EnemyCreature,CThingFilter_InMap>_>'
+004a0370   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+004a0370   RELOCATION_MATCH PASS   DisplayCollectableRentInformation
+004a0850   WARN SHARED_HEADER_AVAILABLE CPlayer
+004a0850   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004a0850   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+004a0850   RELOCATION_MATCH PASS   AutoSaveInternal
+004a0940   WARN SHARED_HEADER_AVAILABLE CPlayer
+004a0940   WARN SHARED_HEADER_AVAILABLE CWorld
+004a0940   WARN RELOC_CONFLICT: ??$CopyHolySites@USThingListIterator@@U?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@@@YI?AU?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@USThingListIterator@@0U0@@Z -> 004adcb0 here, 0048d5c0 in landed 00488b20
+004a0940   WARN RELOC_NAME: ??$CopyHolySites@USThingListIterator@@U?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@@@YI?AU?$back_insert_iterator@U?$CRetailVector@PAVCThing@@@@@@USThingListIterator@@0U0@@Z -> 004adcb0 labelled '_global::CopyIfFlagSet'
+004a0940   RELOCATION_MATCH PASS   TeleportHeroToHSP
+004a0bb0   WARN SHARED_HEADER_AVAILABLE CPlayer
+004a0bb0   WARN SHARED_HEADER_AVAILABLE CWorld
+004a0bb0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+004a0bb0   RELOCATION_MATCH PASS   AutoSaveCheckPoint
+004afca0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+004afca0   WARN SHARED_HEADER_AVAILABLE CPlayer
+004afca0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004afca0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+004afca0   RELOCATION_MATCH PASS   ResetPositionOfAllQuestCards
+004b4490   WARN SHARED_HEADER_AVAILABLE CPlayer
+004b4490   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+004b4490   WARN SHARED_HEADER_AVAILABLE CScriptBase
+004b4490   WARN SHARED_HEADER_AVAILABLE CWorld
+004b4490   WARN RELOC_NAME: ?UpdateScript@CScriptBase@@QAEXXZ -> 00cb8220 labelled 'CScriptBase::RunSubThreads'
+004b4490   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+004b4490   RELOCATION_MATCH PASS   Update
+004b4c50   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+004b4c50   WARN SHARED_HEADER_AVAILABLE CWorld
+004b4c50   WARN SHARED_HEADER_AVAILABLE CPlayer
+004b4c50   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+004b4c50   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+004b4c50   WARN SHARED_HEADER_AVAILABLE CQuestManager
+004b4c50   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+004b4c50   WARN RELOC_NAME: ??BCDefString@N_00415dd0@@QBE?AVCCharString@@XZ -> 00415dd0 labelled 'CDefString::operator_class_CCharString'
+004b4c50   RELOCATION_MATCH PASS   ActivateTestQuestCard
+004c5ea0   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+004c5ea0   WARN SHARED_HEADER_AVAILABLE CPlayer
+004c5ea0   WARN RELOC_NAME: ?IsInitialised@CPlayer@@QAE_NXZ -> 0099a330 labelled '_global::GetMember_byte0x4_0099a330'
+004c5ea0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+004c5ea0   RELOCATION_MATCH PASS   UpdateCombatRelatedEffects
+004c7a10   RELOCATION_MATCH PASS   PeekPlayer
+004c7a30   RELOCATION_MATCH PASS   GetPlayer
+0051fba0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0051fba0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0051fba0   RELOCATION_MATCH PASS   DeleteAllThings
+00522880   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+00522880   WARN SHARED_HEADER_AVAILABLE CPlayer
+00522880   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00522880   WARN RELOC_NAME: ?InsertGrow@?$CRetailPtrVector@PAVCThing@@@@QAEXPAPAVCThing@@ABQAV2@ABUSScalarTag@@K_N@Z -> 00436ac0 labelled 'std::vector::_M_insert_overflow'
+00522880   WARN RELOC_NAME: ?SaveThingList@CThingManager@@QAEXAAVCCharString@@JAAU?$CRetailPtrVector@PAVCThing@@@@PAU?$CRetailVector@VCCharString@@@@@Z -> 00521eb0 labelled 'CThingManager::SaveEntitiesToScript'
+00522880   RELOCATION_MATCH PASS   SaveMainPlayerCreatureState
+00523b40   WARN SHARED_HEADER_AVAILABLE CPlayer
+00523b40   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00523b40   WARN RELOC_NAME: ?GetSize@CMemoryDataOutputStream@@QAEJXZ -> 00994b40 labelled 'CCreatureActionBase::GetFramesRemaining'
+00523b40   WARN RELOC_NAME: ?Reserve@CCharString@@QAEXJ@Z -> 0099ef90 labelled 'C3DAnimationBlendState::AddCombinationBlend'
+00523b40   RELOCATION_MATCH PASS   RuntimeSaveGameHero
+0055d6c0   RELOCATION_MATCH PASS   DestroyScreen
+0055d770   WARN SHARED_HEADER_AVAILABLE CTCInventory
+0055d770   RELOCATION_MATCH PASS   ClosePhotojournalCapture
+0056be00   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+0056be00   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0056be00   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0056be00   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0056be00   WARN SHARED_HEADER_AVAILABLE CWorld
+0056be00   WARN SHARED_HEADER_AVAILABLE CEngine
+0056be00   WARN SHARED_HEADER_AVAILABLE CFrontEndManager
+0056be00   WARN SHARED_HEADER_AVAILABLE CPlayer
+0056be00   WARN SHARED_HEADER_AVAILABLE CTCBase
+0056be00   WARN RELOC_NAME: ??1?$CCountedPointer@VCBase@NCameraModes@@@@QAE@XZ -> 0056c8d0 labelled '_global::CCountedPointer_Release_0056c8d0'
+0056be00   WARN RELOC_NAME: ?Activate@CTCBoastUI@@QAEXXZ -> 0056ad40 labelled 'CQuestManager::UpdateUI_QuestMenu'
+0056be00   RELOCATION_MATCH PASS   GlobalUpdate
+0057b783   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+0057b783   WARN SHARED_HEADER_AVAILABLE CPlayer
+0057b783   WARN SHARED_HEADER_AVAILABLE CWorld
+0057b783   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057b783   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0057b783   RELOCATION_MATCH PASS   Vomit
+0057cb7e   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0057cb7e   WARN SHARED_HEADER_AVAILABLE CWorld
+0057cb7e   WARN SHARED_HEADER_AVAILABLE CPlayer
+0057cb7e   WARN SHARED_HEADER_AVAILABLE CTCBase
+0057cb7e   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0057cb7e   RELOCATION_MATCH PASS   ProcessDrunkenness
+005819f2   WARN SHARED_HEADER_AVAILABLE CPlayer
+005819f2   WARN SHARED_HEADER_AVAILABLE CTCBase
+005819f2   WARN RELOC_NAME: ?GetCount@CItemList@@QAEKXZ -> 00445950 labelled 'CShaderPreParser::GetConstantCount'
+005819f2   RELOCATION_MATCH PASS   ValidateIndex
+00581fd1   WARN SHARED_HEADER_AVAILABLE CPlayer
+00581fd1   WARN SHARED_HEADER_AVAILABLE CTCBase
+00581fd1   WARN RELOC_NAME: ?GetCount@CItemList@@QAEKXZ -> 00445950 labelled 'CShaderPreParser::GetConstantCount'
+00581fd1   RELOCATION_MATCH PASS   GetQuickAccessItemButtonIndex
+00590d32   WARN SHARED_HEADER_AVAILABLE CTCBase
+00590d32   WARN SHARED_HEADER_AVAILABLE CFadeInFadeOutBase
+00590d32   WARN SHARED_HEADER_AVAILABLE CPlayer
+00590d32   WARN RELOC_NAME: ??0CEditBoxList@@QAE@ABU?$CAllocator@PAX@@@Z -> 005931da labelled 'DoublyLinkedList_InitHead'
+00590d32   WARN RELOC_NAME: ??0CComponentByLongMap@@QAE@XZ -> 00593ed0 labelled 'std::map<T_00593ed0>::map'
+00590d32   WARN RELOC_NAME: ?GetNumQuickAccessSlots@CGameProfile@@QBEKXZ -> 00445950 labelled 'CShaderPreParser::GetConstantCount'
+00590d32   WARN RELOC_NAME: ?reserve@CRetailHandleVector@@QAEXK@Z -> 00443f90 labelled 'std::vector::Resize'
+00590d32   WARN RELOC_NAME: ?GetNumContextSensitiveSlots@CGameProfile@@QBEKXZ -> 00445960 labelled 'CShaderPreParser::GetConstantCount'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@J@@QAEXK@Z -> 004433f0 labelled 'std::vector::resize'
+00590d32   WARN RELOC_NAME: ?reserve@?$CPODVector@VCFadeInFadeOutBase@@@@QAEXK@Z -> 00594df4 labelled 'CTimedEntryArray_00594df4::ResetEntry'
+00590d32   RELOCATION_MATCH PASS   CTCInventory
+005bc527   WARN SHARED_HEADER_AVAILABLE CTCBase
+005bc527   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+005bc527   RELOCATION_MATCH PASS   AddCloseInventoryEvent
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CPlayer
+005bc5c6   WARN SHARED_HEADER_AVAILABLE CTCBase
+005bc5c6   WARN RELOC_NAME: ?GetPlayerNumber@CPlayer@@QBEJXZ -> 00487510 labelled 'CPlayer::GetJoystickDeviceNumber'
+005bc5c6   WARN RELOC_NAME: ?GetAnalogueVector@CInputEvent@@QBE?AVC2DVector@@XZ -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+005bc5c6   RELOCATION_MATCH PASS   GetRightStickPosition
+005be119   WARN SHARED_HEADER_AVAILABLE CPlayer
+005be119   WARN SHARED_HEADER_AVAILABLE CTCBase
+005be119   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+005be119   RELOCATION_MATCH PASS   GetInventoryShoppingValidity
+005beb57   WARN SHARED_HEADER_AVAILABLE CRegion
+005beb57   WARN SHARED_HEADER_AVAILABLE CPlayer
+005beb57   WARN SHARED_HEADER_AVAILABLE CTCBase
+005beb57   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+005beb57   RELOCATION_MATCH PASS   GetMiniMapGraphic
+005ea9b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+005ea9b0   RELOCATION_MATCH PASS   CreateGamePiece
+005eb510   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+005eb510   WARN SHARED_HEADER_AVAILABLE CPlayer
+005eb510   WARN SHARED_HEADER_AVAILABLE CTCBase
+005eb510   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+005eb510   RELOCATION_MATCH PASS   PlayerHasBeenHit
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005ec0f0   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+005ec0f0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+005ec0f0   WARN RELOC_NAME: ?GetSubDef_005ed4a0@CDefClassBase@@QAE_NAAUCDefPointer@@@Z -> 005ed4a0 labelled 'CDefClassBase::GetSubDef<CTavernGameDef>'
+005ec0f0   WARN RELOC_NAME: ?RequestClose@CHeroMenuComponent@@QAEXXZ -> 00625920 labelled 'CTCCreditsUI::Deactivate'
+005ec0f0   WARN RELOC_NAME: ?OpenGameUI@CPlayerGui@@QAEXXZ -> 00437ff0 labelled '_global::Forward_Clear_via0x1f0_00437ff0'
+005ec0f0   RELOCATION_MATCH PASS   EnterGame
+005ec650   WARN SHARED_HEADER_AVAILABLE CWorld
+005ec650   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+005ec650   WARN SHARED_HEADER_AVAILABLE CPlayer
+005ec650   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+005ec650   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+005ec650   WARN SHARED_HEADER_AVAILABLE CTCBase
+005ec650   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+005ec650   RELOCATION_MATCH PASS   LeaveGame
+005fad40   WARN SHARED_HEADER_AVAILABLE CPlayer
+005fad40   WARN SHARED_HEADER_AVAILABLE CEngine
+005fad40   WARN SHARED_HEADER_AVAILABLE CWorld
+005fad40   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fad40   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+005fad40   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+005fad40   RELOCATION_MATCH PASS   TeleportHeroToGuildSealRecallLocation
+005fbd20   WARN SHARED_HEADER_AVAILABLE CPlayer
+005fbd20   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fbd20   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+005fbd20   RELOCATION_MATCH PASS   TeleportHeroToTeleporter
+005fbd90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+005fbd90   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+005fbd90   WARN SHARED_HEADER_AVAILABLE CWorld
+005fbd90   WARN SHARED_HEADER_AVAILABLE CPlayer
+005fbd90   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fbd90   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+005fbd90   WARN RELOC_NAME: ?GetAllThings@CThingSearchTools@@QAEXABVCThingFilter_HasTC@@AAU?$list@PAVCThing@@@@@Z -> 00617860 labelled 'CThingSearchTools::GetAllLeafThings'
+005fbd90   WARN RELOC_NAME: ??1?$list@PAVCThing@@@@QAE@XZ -> 006153c0 labelled '_global::StdList_Clear_006153c0'
+005fbd90   RELOCATION_MATCH PASS   TeleportHeroToGuild
+005fc840   WARN SHARED_HEADER_AVAILABLE CPlayer
+005fc840   WARN SHARED_HEADER_AVAILABLE CWorldMap
+005fc840   WARN SHARED_HEADER_AVAILABLE CTCBase
+005fc840   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+005fc840   RELOCATION_MATCH PASS   TeleportHeroToRegionTeleporter
+00625ed0   WARN SHARED_HEADER_AVAILABLE CManager
+00625ed0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00625ed0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00625ed0   WARN SHARED_HEADER_AVAILABLE CEngine
+00625ed0   WARN SHARED_HEADER_AVAILABLE CTCBase
+00625ed0   WARN RELOC_NAME: ?_M_erase@CRbTree@@QAEXPAUSRbNode@@@Z -> 00592bce labelled 'LTextBinTree<LTextGroup*>::LTextTreeWalkThrough::BuildTreeArray'
+00625ed0   RELOCATION_MATCH PASS   GlobalUpdate
+006292a0   WARN SHARED_HEADER_AVAILABLE CGameEvent
+006292a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+006292a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006292a0   RELOCATION_MATCH PASS   EACreatureCheat
+00629c40   WARN SHARED_HEADER_AVAILABLE CGameEvent
+00629c40   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00629c40   WARN SHARED_HEADER_AVAILABLE CPlayer
+00629c40   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00629c40   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00629c40   WARN SHARED_HEADER_AVAILABLE CWorld
+00629c40   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00629c40   RELOCATION_MATCH PASS   EAControlledCreatureUseAbility
+00643fc8   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00643fc8   RELOCATION_MATCH PASS   GetSpecialMoveIndexForButton
+0064a1ae   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064a1ae   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0064a1ae   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0064a1ae   WARN RELOC_NAME: ??$IS_THING_ALIVE_00436380@PBVCThing@@@@YI_NABQBVCThing@@@Z -> 00436380 labelled '_global::IsThingAlive_ptr_00436380'
+0064a1ae   RELOCATION_MATCH PASS   Update
+0064a4e9   RELOCATION_MATCH PASS   CQuestInfoElementTimer
+0064a568   WARN SHARED_HEADER_AVAILABLE CTCInventory
+0064a568   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064a568   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0064a568   RELOCATION_MATCH PASS   Update
+0064b5c1   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064b5c1   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0064b5c1   WARN SHARED_HEADER_AVAILABLE CTCInventory
+0064b5c1   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0064b5c1   RELOCATION_MATCH PASS   GetActivationTimeForButton
+0064b668   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064b668   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0064b668   WARN RELOC_NAME: ?StopSound@CTCSound@@QAEXK@Z -> 0066ad90 labelled 'CTCSoundPlayer::ReleaseAttachedLoopingSound'
+0064b668   RELOCATION_MATCH PASS   ClearSoundEffects
+0064be45   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0064be45   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064be45   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0064be45   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0064be45   WARN RELOC_NAME: ?IsShowingBaseAbility@CTCCombat@@QAE_NXZ -> 00733290 labelled 'CTCCombat::IsBreakBlockValid'
+0064be45   WARN RELOC_NAME: ?GetPBaseAbility@CTCCombat@@QAE?AV?$CDefPointer@VCAbilityDef@@@@XZ -> 007334b0 labelled 'CThing::GetPBaseDef'
+0064be45   RELOCATION_MATCH PASS   Update
+0064d6a8   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064d6a8   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0064d6a8   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0064d6a8   RELOCATION_MATCH PASS   Update
+0064db2b   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064db2b   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0064db2b   WARN RELOC_NAME: ?GetAbilities@CTCHeroAbilities@@QAEXAAUAbilityVector@@@Z -> 005f4b30 labelled 'CTCInventoryAbilities::GetPrioritisedAbilityDefs'
+0064db2b   WARN RELOC_NAME: ??1AbilityVector@@QAE@XZ -> 005f9f14 labelled '_global::StdList_Dtor_005f9f14'
+0064db2b   RELOCATION_MATCH PASS   DrawAbilityList
+0064e0da   WARN SHARED_HEADER_AVAILABLE CPlayer
+0064e0da   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0064e0da   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0064e0da   RELOCATION_MATCH PASS   AddMessage
+0065196c   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065196c   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+0065196c   WARN SHARED_HEADER_AVAILABLE CWorld
+0065196c   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0065196c   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0065196c   RELOCATION_MATCH PASS   Update
+0065a852   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065a852   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065a852   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0065a852   WARN RELOC_NAME: ?IS_THING_ALIVE_00436380@@YI_NABQAVCThing@@@Z -> 00436380 labelled '_global::IsThingAlive_ptr_00436380'
+0065a852   RELOCATION_MATCH PASS   SetEnemyToHeroStatus
+0065ac0e   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065ac0e   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065ac0e   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0065ac0e   RELOCATION_MATCH PASS   BuildingContainsPlayer
+0065c08a   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065c08a   WARN SHARED_HEADER_AVAILABLE CWorld
+0065c08a   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065c08a   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0065c08a   RELOCATION_MATCH PASS   UpdateSecuritySweepTasks
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorld
+0065c781   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0065c781   WARN SHARED_HEADER_AVAILABLE CPlayer
+0065c781   WARN SHARED_HEADER_AVAILABLE CTCBase
+0065c781   WARN RELOC_NAME: ?ReleaseInvalidTasks@CTCVillage@@QAEXXZ -> 0065be32 labelled 'CGuiControlComboBox_0065be32::ReleaseMembers'
+0065c781   WARN RELOC_NAME: ?IS_THING_ALIVE_Villager@@YI_NABUCBaseIntelligentPointer@@@Z -> 004ab8f0 labelled '_global::IsThingAlive_004ab8f0'
+0065c781   WARN RELOC_NAME: ?GetVillagerState@CThing@@QAEJXZ -> 00662010 labelled 'CThingCreatureBase::GetLifeState'
+0065c781   WARN RELOC_NAME: ?GetString@CCharString@@QBEPBDXZ -> 00404310 labelled 'CCharString_ComputeCRC32'
+0065c781   WARN RELOC_NAME: ?GetPGroupEntry@CTextBank@@QAE?AUCGroupEntryRef@@J_N@Z -> 009c9070 labelled 'NGameText::CDataBank::GetPTextEntry'
+0065c781   WARN RELOC_NAME: ?g_pSoundBankMap@@3PAVCSymbolMap@@A -> 013b8394 labelled 'g_pSoundManager (CASoundManager*; the CSoundManagerLH object stored by CSystemManager::Initialise into +0x7c)'
+0065c781   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0065c781   RELOCATION_MATCH PASS   FrameUpdate
+006610c7   WARN SHARED_HEADER_AVAILABLE CPlayer
+006610c7   WARN SHARED_HEADER_AVAILABLE CTCBase
+006610c7   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+006610c7   RELOCATION_MATCH PASS   FindMostRecentDeed<COpinionDeedFilter_IsCrimeToRunAndFindAGuard>
+00665e90   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+00665e90   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00665e90   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+00665e90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00665e90   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+00665e90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00665e90   RELOCATION_MATCH PASS   IsPickPocketable
+0066e985   WARN SHARED_HEADER_AVAILABLE CPlayer
+0066e985   WARN SHARED_HEADER_AVAILABLE CManager
+0066e985   RELOCATION_MATCH PASS   RemoveAllPlayerModes
+00683590   WARN SHARED_HEADER_AVAILABLE CPlayer
+00683590   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00683590   WARN SHARED_HEADER_AVAILABLE CTCBase
+00683590   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00683590   WARN RELOC_NAME: ?GetDeedEffectsDef@CTCHeroOpinionDeedLog@@QAE?AV?$CDefPointer@VCOpinionDeedEffectsDef@@@@J@Z -> 006c5630 labelled 'CTCHeroOpinionDeedLog::PeekPDeedEffectsDef'
+00683590   RELOCATION_MATCH PASS   InformOfDeed
+00683650   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00683650   WARN SHARED_HEADER_AVAILABLE CPlayer
+00683650   WARN SHARED_HEADER_AVAILABLE CTCBase
+00683650   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00683650   RELOCATION_MATCH PASS   KnowsOfDeed
+00684050   WARN SHARED_HEADER_AVAILABLE CPlayer
+00684050   WARN SHARED_HEADER_AVAILABLE CTCBase
+00684050   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00684050   RELOCATION_MATCH PASS   DecriminaliseAllKnownCrimes
+00684210   WARN SHARED_HEADER_AVAILABLE CPlayer
+00684210   WARN SHARED_HEADER_AVAILABLE CTCVillage
+00684210   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+00684210   WARN SHARED_HEADER_AVAILABLE CTCBase
+00684210   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+00684210   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00684210   WARN RELOC_NAME: ?IsCrimeHandled@CTCVillage@@QAE_NJ@Z -> 0065914b labelled 'CTCVillage::HasCrimeBeenReported'
+00684210   RELOCATION_MATCH PASS   ReportAllCrimes
+00687fd0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00687fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00687fd0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00687fd0   WARN SHARED_HEADER_AVAILABLE CInputProcessMain
+00687fd0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00687fd0   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00687fd0   WARN RELOC_NAME: ?ProcessInput@CConsole@@QAE_NABVCInputEvent@@@Z -> 009ea540 labelled '_global::ReturnFalse_ret4_009ea540'
+00687fd0   WARN RELOC_NAME: ?GetMouseMovement@CInputProcessMain@@QAE?AVC2DVector@@ABVCInputEvent@@@Z -> 00687d20 labelled 'NScript::GFPredicateAnd<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+00687fd0   RELOCATION_MATCH PASS   ProcessInput
+0068ae30   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068ae30   WARN SHARED_HEADER_AVAILABLE CManager
+0068ae30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068ae30   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0068ae30   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068ae30   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068ae30   RELOCATION_MATCH PASS   ProcessInput
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CManager
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068b2e0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0068b2e0   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068b2e0   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068b2e0   RELOCATION_MATCH PASS   ProcessInput
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CManager
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068b7c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0068b7c0   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068b7c0   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068b7c0   RELOCATION_MATCH PASS   ProcessInput
+00690480   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00690480   WARN SHARED_HEADER_AVAILABLE CManager
+00690480   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690480   WARN SHARED_HEADER_AVAILABLE CTCInGameMenu
+00690480   WARN RELOC_NAME: ?GetKey_00a03b40@CInputEvent@@QBEJXZ -> 00a03b40 labelled 'CInputEvent::GetType'
+00690480   WARN RELOC_NAME: ?GetAnalogueVector@CInputEvent@@QBEXAAVC2DVector@@@Z -> 00a043a0 labelled 'CInputEvent::GetJoystickPosition'
+00690480   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00690480   WARN RELOC_NAME: ?IsListReceivingInputA@CTCInGameMenu@@QAE_NXZ -> 0047d6f2 labelled 'CTCInGameMenu::IsSaveComponentReceivingInput'
+00690480   WARN RELOC_NAME: ?IsListReceivingInputB@CTCInGameMenu@@QAE_NXZ -> 0047d648 labelled 'CTCInGameMenu::IsLoadMenuReceivingInput'
+00690480   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00690480   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00690480   RELOCATION_MATCH PASS   ProcessInput
+00690830   WARN SHARED_HEADER_AVAILABLE CManager
+00690830   WARN SHARED_HEADER_AVAILABLE CTCTavernGame
+00690830   WARN SHARED_HEADER_AVAILABLE CPlayer
+00690830   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00690830   RELOCATION_MATCH PASS   ProcessInput
+00691560   WARN SHARED_HEADER_AVAILABLE CTCBase
+00691560   WARN SHARED_HEADER_AVAILABLE CPlayer
+00691560   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00691560   RELOCATION_MATCH PASS   ProcessInput
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CWorld
+0069a8b0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0069a8b0   RELOCATION_MATCH PASS   CIVCountedPointer_Assign_0069a8b0
+0069a920   WARN SHARED_HEADER_AVAILABLE CPlayer
+0069a920   WARN SHARED_HEADER_AVAILABLE CEngine
+0069a920   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+0069a920   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0069a920   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0069a920   WARN SHARED_HEADER_AVAILABLE CWorld
+0069a920   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0069a920   RELOCATION_MATCH PASS   RemoveCombatCameraMode
+0069a990   WARN SHARED_HEADER_AVAILABLE CTCHeroRangedAttacks
+0069a990   WARN SHARED_HEADER_AVAILABLE CPlayer
+0069a990   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+0069a990   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+0069a990   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0069a990   WARN RELOC_NAME: ?RefreshMode@CGameCameraManager@@QAEXXZ -> 0069a2a0 labelled 'CGameCameraManager_UpdateMode'
+0069a990   RELOCATION_MATCH PASS   ResetCamera
+0069ad10   WARN SHARED_HEADER_AVAILABLE CPlayer
+0069ad10   WARN SHARED_HEADER_AVAILABLE CEngine
+0069ad10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0069ad10   WARN RELOC_NAME: ?AddMeleeCameraMode@CGameCameraManager@@QAEXXZ -> 0069a8b0 labelled '_global::CIVCountedPointer_Assign_0069a8b0'
+0069ad10   RELOCATION_MATCH PASS   PushBuildingCameraMode
+0069b610   WARN SHARED_HEADER_AVAILABLE CPlayer
+0069b610   WARN SHARED_HEADER_AVAILABLE CEngine
+0069b610   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+0069b610   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0069b610   WARN RELOC_NAME: ?AddMeleeCameraMode@CGameCameraManager@@QAEXXZ -> 0069a8b0 labelled '_global::CIVCountedPointer_Assign_0069a8b0'
+0069b610   RELOCATION_MATCH PASS   RemoveBuildingCameraMode
+006ad580   WARN SHARED_HEADER_AVAILABLE CPlayer
+006ad580   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+006ad580   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006ad580   RELOCATION_MATCH PASS   OnCollision
+006c0580   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+006c0580   WARN SHARED_HEADER_AVAILABLE CPlayer
+006c0580   WARN SHARED_HEADER_AVAILABLE CTCBase
+006c0580   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006c0580   RELOCATION_MATCH PASS   DestroyMoneyBags
+006c17b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+006c17b0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+006c17b0   WARN SHARED_HEADER_AVAILABLE CWorld
+006c17b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+006c17b0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+006c17b0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+006c17b0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006c17b0   RELOCATION_MATCH PASS   SetOwnedByPlayer
+006cf480   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+006cf480   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006cf480   WARN SHARED_HEADER_AVAILABLE CPlayer
+006cf480   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+006cf480   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cf480   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006cf480   RELOCATION_MATCH PASS   InitWifeAtEndOfMarriageFrescoEndFadeIn
+006cf920   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+006cf920   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+006cf920   WARN SHARED_HEADER_AVAILABLE CPlayer
+006cf920   WARN SHARED_HEADER_AVAILABLE CWorld
+006cf920   WARN SHARED_HEADER_AVAILABLE CHeroMarriageDef
+006cf920   WARN SHARED_HEADER_AVAILABLE CDefPointer
+006cf920   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cf920   WARN RELOC_NAME: ?AddToGlobalUpdateTCs@CTCWife@@QAEXXZ -> 00686ed0 labelled 'CTCBase::AddToGlobalTCs'
+006cf920   WARN RELOC_NAME: ?GetCurrentPlayer@CWorld@@QBEPAVCPlayer@@XZ -> 0049d9d0 labelled 'CWorld::PeekMyPlayer'
+006cf920   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+006cf920   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006cf920   RELOCATION_MATCH PASS   HaveSex
+006cfc00   WARN SHARED_HEADER_AVAILABLE CPlayer
+006cfc00   WARN SHARED_HEADER_AVAILABLE CWorld
+006cfc00   WARN SHARED_HEADER_AVAILABLE CTCBase
+006cfc00   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006cfc00   RELOCATION_MATCH PASS   OnGreet
+006cff10   WARN SHARED_HEADER_AVAILABLE CPlayer
+006cff10   WARN SHARED_HEADER_AVAILABLE CWorld
+006cff10   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+006cff10   WARN SHARED_HEADER_AVAILABLE CTCBuyableHouse
+006cff10   WARN RELOC_NAME: ?SetOccupant@CTCBuyableHouse@@QAEXPAVCThing@@@Z -> 006d3c40 labelled '_unattributed::AssignTarget_006d3c40'
+006cff10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006cff10   RELOCATION_MATCH PASS   Unmarry
+006d0020   WARN SHARED_HEADER_AVAILABLE CPlayer
+006d0020   WARN SHARED_HEADER_AVAILABLE CWorld
+006d0020   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+006d0020   WARN SHARED_HEADER_AVAILABLE CTCWife
+006d0020   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006d0020   RELOCATION_MATCH PASS   Died
+006d0180   WARN SHARED_HEADER_AVAILABLE CWorld
+006d0180   WARN SHARED_HEADER_AVAILABLE CPlayer
+006d0180   WARN SHARED_HEADER_AVAILABLE CTCCreatureOpinionOfHero
+006d0180   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+006d0180   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+006d0180   WARN SHARED_HEADER_AVAILABLE CHeroMarriageDef
+006d0180   WARN SHARED_HEADER_AVAILABLE CTCBase
+006d0180   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+006d0180   WARN RELOC_NAME: ?GetOccupant@CTCHome@@QAEPAUCHomeOccupant@@XZ -> 007ee540 labelled 'CTCVillageMember::GetPVillage'
+006d0180   RELOCATION_MATCH PASS   Divorce
+00702810   WARN SHARED_HEADER_AVAILABLE CDefPointer
+00702810   WARN SHARED_HEADER_AVAILABLE CPlayer
+00702810   WARN SHARED_HEADER_AVAILABLE CTCBase
+00702810   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00702810   RELOCATION_MATCH PASS   IsActivatable
+0072c230   WARN SHARED_HEADER_AVAILABLE CTCInventoryAbilities
+0072c230   WARN SHARED_HEADER_AVAILABLE CTCTargeted
+0072c230   WARN SHARED_HEADER_AVAILABLE CPlayer
+0072c230   WARN SHARED_HEADER_AVAILABLE CTCBase
+0072c230   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0072c230   WARN RELOC_NAME: ?SetSuspendAnimation@CThing@@QAEX_NJ@Z -> 00833a10 labelled 'CThingAICreature::SuspendAI'
+0072c230   RELOCATION_MATCH PASS   FrameUpdate
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayer
+0072e940   WARN SHARED_HEADER_AVAILABLE CTCBase
+0072e940   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0072e940   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0072e940   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0072e940   RELOCATION_MATCH PASS   OnActionUseMain
+0072ed10   WARN SHARED_HEADER_AVAILABLE CPlayer
+0072ed10   WARN SHARED_HEADER_AVAILABLE CBuyHouseDef
+0072ed10   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0072ed10   WARN SHARED_HEADER_AVAILABLE CTCBase
+0072ed10   WARN RELOC_NAME: ?OnActionUse@CTCActionUseBase@@QAEXAAVCThing@@@Z -> 007eab90 labelled 'CTCActionUseBase::vfunc_28'
+0072ed10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0072ed10   RELOCATION_MATCH PASS   OnActionUse
+00736910   WARN SHARED_HEADER_AVAILABLE CTCCombat
+00736910   WARN SHARED_HEADER_AVAILABLE CPlayer
+00736910   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00736910   RELOCATION_MATCH PASS   GiveHeroMeleeAbility
+0074e280   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0074e280   WARN SHARED_HEADER_AVAILABLE CPlayer
+0074e280   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0074e280   WARN SHARED_HEADER_AVAILABLE CTCBase
+0074e280   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0074e280   RELOCATION_MATCH PASS   GetDynamicPotionDefIndex
+0074e460   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0074e460   WARN SHARED_HEADER_AVAILABLE CPlayer
+0074e460   WARN SHARED_HEADER_AVAILABLE CTCBase
+0074e460   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0074e460   RELOCATION_MATCH PASS   GetDynamicResurrectionDefIndex
+0076cfe0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0076cfe0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0076cfe0   RELOCATION_MATCH PASS   CalculateEnemyTC
+00779080   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+00779080   WARN SHARED_HEADER_AVAILABLE CPlayer
+00779080   WARN SHARED_HEADER_AVAILABLE CWorld
+00779080   WARN SHARED_HEADER_AVAILABLE CTCBase
+00779080   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00779080   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+00779080   RELOCATION_MATCH PASS   MoveHeroThroughExit
+007795a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007795a0   WARN SHARED_HEADER_AVAILABLE CWorld
+007795a0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+007795a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007795a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007795a0   RELOCATION_MATCH PASS   ~CTCDRegionExit
+007796b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007796b0   WARN SHARED_HEADER_AVAILABLE CDisplayEngine
+007796b0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007796b0   WARN SHARED_HEADER_AVAILABLE CWorld
+007796b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007796b0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007796b0   RELOCATION_MATCH PASS   FrameUpdate
+0077d4b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0077d4b0   WARN SHARED_HEADER_AVAILABLE CTCBase
+0077d4b0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0077d4b0   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0077d4b0   RELOCATION_MATCH PASS   OpenTrainingScreen
+0077fb00   WARN SHARED_HEADER_AVAILABLE CPlayer
+0077fb00   WARN SHARED_HEADER_AVAILABLE CTCBase
+0077fb00   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0077fb00   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0077fb00   RELOCATION_MATCH PASS   FrameUpdate
+007828e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007828e0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007828e0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007828e0   RELOCATION_MATCH PASS   FrameUpdate
+00782a90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00782a90   WARN SHARED_HEADER_AVAILABLE CTCBase
+00782a90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00782a90   RELOCATION_MATCH PASS   OnKill
+00787e12   WARN SHARED_HEADER_AVAILABLE CPlayer
+00787e12   WARN SHARED_HEADER_AVAILABLE CTCBase
+00787e12   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00787e12   RELOCATION_MATCH PASS   UpdateTrap
+00799140   WARN SHARED_HEADER_AVAILABLE CPlayer
+00799140   WARN SHARED_HEADER_AVAILABLE CTCBase
+00799140   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00799140   RELOCATION_MATCH PASS   CalcAreOtherPeopleInShop
+007aa480   WARN SHARED_HEADER_AVAILABLE CPlayer
+007aa480   WARN SHARED_HEADER_AVAILABLE CTCBase
+007aa480   RELOCATION_MATCH PASS   CancelMove
+007af050   WARN SHARED_HEADER_AVAILABLE CPlayer
+007af050   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007af050   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007af050   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+007af050   WARN SHARED_HEADER_AVAILABLE CTCBase
+007af050   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007af050   RELOCATION_MATCH PASS   FrameUpdate
+007b0880   WARN SHARED_HEADER_AVAILABLE CDefClassBase
+007b0880   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007b0880   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+007b0880   WARN SHARED_HEADER_AVAILABLE CPlayer
+007b0880   WARN SHARED_HEADER_AVAILABLE CTCBase
+007b0880   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007b0880   RELOCATION_MATCH PASS   GetPFishingRodDef
+007b0950   WARN SHARED_HEADER_AVAILABLE CPlayer
+007b0950   WARN SHARED_HEADER_AVAILABLE CWorld
+007b0950   WARN SHARED_HEADER_AVAILABLE CTCBase
+007b0950   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007b0950   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007b0950   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007b0950   WARN RELOC_NAME: ?StopSound@CTCSoundEmitter@@QAEXK@Z -> 0066add0 labelled 'CTCSoundPlayer::StopAttachedSound'
+007b0950   RELOCATION_MATCH PASS   FinishFishing
+007ba550   WARN SHARED_HEADER_AVAILABLE CTCNamedUserActionPoints
+007ba550   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007ba550   WARN SHARED_HEADER_AVAILABLE CWorld
+007ba550   WARN SHARED_HEADER_AVAILABLE CPlayer
+007ba550   WARN SHARED_HEADER_AVAILABLE CTCBase
+007ba550   WARN RELOC_NAME: ?InsertGrow@?$CPtrVector@U?$CIntelligentPointerC@VCThingObject@@@@@@QAEXPAU?$CIntelligentPointerC@VCThingObject@@@@ABU2@ABUSScalarTag@@K_N@Z -> 007b99e0 labelled '_global::Vector_InsertRange_SmartPtr'
+007ba550   RELOCATION_MATCH PASS   OnInitialActivate
+007df6a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007df6a0   WARN SHARED_HEADER_AVAILABLE CWorld
+007df6a0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007df6a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007df6a0   RELOCATION_MATCH PASS   DoEffect
+007dfcf0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007dfcf0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007dfcf0   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+007dfcf0   RELOCATION_MATCH PASS   TeleportHero
+007dff90   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007dff90   WARN SHARED_HEADER_AVAILABLE CWorld
+007dff90   WARN SHARED_HEADER_AVAILABLE CTCBase
+007dff90   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+007dff90   RELOCATION_MATCH PASS   StartTeleporting
+007e5d20   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007e5d20   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e5d20   WARN SHARED_HEADER_AVAILABLE COracleMinigameDef
+007e5d20   WARN RELOC_NAME: ?GetPFirstSpeechThing@CThingSearchTools@@QAE_NABVCThingFilter_HasTrackName@@PAPAVCThing@@@Z -> 0056d050 labelled 'CThingSearchTools::GetPFirstThing<CThingFilter_HasScriptName, CThing>'
+007e5d20   RELOCATION_MATCH PASS   PlayGame
+007e6230   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e6230   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e6230   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007e6230   RELOCATION_MATCH PASS   SetText
+007e62d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e62d0   WARN SHARED_HEADER_AVAILABLE CWorld
+007e62d0   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e62d0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e62d0   WARN SHARED_HEADER_AVAILABLE COracleMinigameDef
+007e62d0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e62d0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007e62d0   RELOCATION_MATCH PASS   Quit
+007e78e0   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007e78e0   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+007e78e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e78e0   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e78e0   WARN RELOC_NAME: ?PeekThingSearchTools@CTCBase@@IBEABVCThingSearchTools@@XZ -> 00686d90 labelled 'CTCBase::GetThingSearchTools'
+007e78e0   RELOCATION_MATCH PASS   PlayGame
+007e7a40   WARN SHARED_HEADER_AVAILABLE CPlayer
+007e7a40   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+007e7a40   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+007e7a40   WARN SHARED_HEADER_AVAILABLE CTCBase
+007e7a40   RELOCATION_MATCH PASS   Quit
+007f1930   WARN SHARED_HEADER_AVAILABLE CDefPointeeBase
+007f1930   WARN SHARED_HEADER_AVAILABLE CDefPointer
+007f1930   WARN SHARED_HEADER_AVAILABLE CPlayer
+007f1930   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+007f1930   WARN SHARED_HEADER_AVAILABLE CAIGameCameraBase
+007f1930   WARN SHARED_HEADER_AVAILABLE CWorld
+007f1930   WARN SHARED_HEADER_AVAILABLE CTCBase
+007f1930   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007f1930   WARN RELOC_NAME: ?RumbleDistanceFalloff@@YIMABVC3DVector@@0@Z -> 007f1840 labelled 'NRumble::GetRumbleDistanceAttenuationAtPos'
+007f1930   RELOCATION_MATCH PASS   OnInitialActivate
+007fbc90   WARN SHARED_HEADER_AVAILABLE CThingSearchTools
+007fbc90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+007fbc90   WARN SHARED_HEADER_AVAILABLE CWorld
+007fbc90   WARN SHARED_HEADER_AVAILABLE CPlayer
+007fbc90   WARN SHARED_HEADER_AVAILABLE CTCBase
+007fbc90   WARN RELOC_NAME: ?GetWorld_00686d60@CTCBase@@QAEPAVCWorld@@XZ -> 00686d60 labelled 'CTCBase::PeekComponent'
+007fbc90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+007fbc90   RELOCATION_MATCH PASS   GetCentreMarker
+0082a9b0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+0082a9b0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0082a9b0   WARN SHARED_HEADER_AVAILABLE CWorld
+0082a9b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0082a9b0   WARN SHARED_HEADER_AVAILABLE CMiniMapDisplay
+0082a9b0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0082a9b0   WARN RELOC_NAME: ?HasInformationFlag@CThing@@QAE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+0082a9b0   WARN RELOC_NAME: ?AddMarker@CMiniMapDisplay@@QAEXPBVCThing@@J@Z -> 0082a500 labelled 'CMiniMapDisplay::AddAutoMarker'
+0082a9b0   RELOCATION_MATCH PASS   InitialiseInformationMarkers
+0082be60   WARN SHARED_HEADER_AVAILABLE CIEngine
+0082be60   WARN SHARED_HEADER_AVAILABLE CPlayer
+0082be60   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0082be60   WARN RELOC_NAME: ?ToScreenBox@@YI?AVC2DBoxF@@ABV1@@Z -> 00643bef labelled 'NScript::operator&&<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CPredicate_And<NScript::CIsThingAlive,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>,NScript::CIsThingAlive>'
+0082be60   RELOCATION_MATCH PASS   DrawMap
+0082db00   WARN SHARED_HEADER_AVAILABLE CTCDoor
+0082db00   WARN SHARED_HEADER_AVAILABLE CPlayer
+0082db00   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+0082db00   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0082db00   RELOCATION_MATCH PASS   LockAllDoors
+008328d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008328d0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008328d0   RELOCATION_MATCH PASS   OnHeroPush
+0083be90   WARN SHARED_HEADER_AVAILABLE CEnvironment
+0083be90   WARN SHARED_HEADER_AVAILABLE CWorld
+0083be90   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0083be90   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0083be90   WARN SHARED_HEADER_AVAILABLE CPlayer
+0083be90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0083be90   WARN RELOC_NAME: ?PeekWorld@CThingSwitch@@QAEPAVCWorld@@XZ -> 004c7aa0 labelled '_global::GetGlobal_013b8a1c_deref0x24_004c7aa0'
+0083be90   RELOCATION_MATCH PASS   TriggerSetEnvironment
+0083c990   WARN SHARED_HEADER_AVAILABLE CTCPhysicsBase
+0083c990   WARN SHARED_HEADER_AVAILABLE CPlayer
+0083c990   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0083c990   RELOCATION_MATCH PASS   TriggerSetPlayerAreaName
+00862780   WARN SHARED_HEADER_AVAILABLE CTCCombat
+00862780   WARN SHARED_HEADER_AVAILABLE CPlayer
+00862780   WARN RELOC_NAME: ?GetHasInformation@CThingAICreature@@QBE_NXZ -> 008300d0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetWaveWithInformation@CThingAICreature@@QBE_NXZ -> 008300f0 labelled 'CTCPhysicsStandard::CanCollideWithLandscape'
+00862780   WARN RELOC_NAME: ?GetNoFramesBeforePlayingWaveAnims@CModeBase@@QAEJW4EMode@@@Z -> 0073a7d0 labelled 'CModeBase::GetNoFramesBeforePlayingCombinationIdleAnims'
+00862780   WARN RELOC_NAME: ?GetNoFramesBeforePlayingIdleAnims@CModeBase@@QAEJW4EMode@@@Z -> 0073a760 labelled 'CModeBase::GetNoFramesBeforePlayingCombinationIdleAnims'
+00862780   WARN RELOC_NAME: ?GetAnimationTransitionInTime@CAnimationEntry@@QBEJXZ -> 005dc1f0 labelled 'CAnimationEntry::GetDelayTime'
+00862780   WARN RELOC_NAME: ?Set@CAnimInit@@QAEXJJJJ_NKJ@Z -> 0070c050 labelled 'CAnimInit::Init'
+00862780   RELOCATION_MATCH PASS   UpdateIdleAnim
+008718b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008718b0   RELOCATION_MATCH PASS   Dispatch
+0088dfa0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0088dfa0   RELOCATION_MATCH PASS   HeroStopDigging
+0088e150   WARN RELOC_NAME: ?Copy@CMemoryBuffer@@QAEXKPBX@Z -> 009f1760 labelled 'CGameEvent::AddData'
+0088e150   RELOCATION_MATCH PASS   RespawnHero
+0088e980   WARN SHARED_HEADER_AVAILABLE CPlayer
+0088e980   RELOCATION_MATCH PASS   IsHeroControlledByPlayer
+0088eb30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0088eb30   RELOCATION_MATCH PASS   EntitySetAsKillable
+0088fc60   WARN SHARED_HEADER_AVAILABLE CPlayer
+0088fc60   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+0088fc60   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0088fc60   RELOCATION_MATCH PASS   GiveHeroExpression
+0088fc90   WARN SHARED_HEADER_AVAILABLE CPlayer
+0088fc90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0088fc90   RELOCATION_MATCH PASS   HeroHasExpression
+0088fcc0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0088fcc0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0088fcc0   WARN RELOC_NAME: ?GiveAbility@HeroObj@@QAEXHHHH@Z -> 006ac690 labelled 'CThingPlayerCreature::LearnAbility'
+0088fcc0   RELOCATION_MATCH PASS   GiveHeroAbility
+0088fe00   WARN SHARED_HEADER_AVAILABLE CPlayer
+0088fe00   RELOCATION_MATCH PASS   AddLogBookEntry
+008902e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008902e0   WARN RELOC_NAME: ?CountObjects@ObjContainer@@QAEHH@Z -> 009ad410 labelled 'CDefinitionManager::GetDefGlobalIndexFromName'
+008902e0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008902e0   WARN RELOC_NAME: ?ctor@Str@@QAEXPBDH@Z -> 0099ebf0 labelled 'CCharString::CCharString'
+008902e0   WARN RELOC_NAME: ?dtor@Str@@QAEXXZ -> 0099eae0 labelled 'CCharString::~CCharString'
+008902e0   RELOCATION_MATCH PASS   GiveHeroObject
+00890370   WARN SHARED_HEADER_AVAILABLE CPlayer
+00890370   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00890370   RELOCATION_MATCH PASS   GetHeroHealth
+008903a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008903a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008903a0   RELOCATION_MATCH PASS   GetHeroHealthMax
+008903d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008903d0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008903d0   WARN RELOC_NAME: ?Sub_GetHealthPct@@YIMPAVCThingPlayerCreature@@@Z -> 006a4e40 labelled 'NParticleEngine::CParticleSystem::GetNormalisedTime'
+008903d0   RELOCATION_MATCH PASS   GetHeroHealthPercentage
+00890470   WARN SHARED_HEADER_AVAILABLE CPlayer
+00890470   RELOCATION_MATCH PASS   EntitySetAsPickPocketed
+008904e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008904e0   RELOCATION_MATCH PASS   EntitySetAsStolen
+008905b0   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+008905b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008905b0   RELOCATION_MATCH PASS   IsPlayerHoldingUnsheatheRangedWeaponButton
+008905e0   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+008905e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008905e0   RELOCATION_MATCH PASS   IsPlayerHoldingLockTargetButton
+00890610   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00890610   WARN SHARED_HEADER_AVAILABLE CPlayer
+00890610   RELOCATION_MATCH PASS   IsPlayerHoldingFireRangedWeaponButton
+00890640   WARN SHARED_HEADER_AVAILABLE CGamePlayerInterface
+00890640   WARN SHARED_HEADER_AVAILABLE CPlayer
+00890640   RELOCATION_MATCH PASS   IsPlayerHoldingFirstPersonTargetingButton
+00890b50   RELOCATION_MATCH PASS   SetToKeepHeroAbilitiesDuringCutscenes
+00890ba0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00890ba0   RELOCATION_MATCH PASS   EntitySheatheWeapons
+00890c10   WARN SHARED_HEADER_AVAILABLE CPlayer
+00890c10   RELOCATION_MATCH PASS   EntityUnsheatheWeapons
+00890ff0   WARN SHARED_HEADER_AVAILABLE CGameCameraManager
+00890ff0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00890ff0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00890ff0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00890ff0   RELOCATION_MATCH PASS   CameraDefault
+008913c0   WARN RELOC_NAME: ?Method2@CResult@@QAE_NH@Z -> 00634160 labelled 'CPlayer::HasMode'
+008913c0   RELOCATION_MATCH PASS   IsHeroInTavernGame
+008916a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008916a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008916a0   WARN RELOC_NAME: ?UpdateSheathe@CGSISheatheHeroWeapons_Target@@QAEXXZ -> 00662650 labelled 'CThingCreatureBase::FinishCurrentAction'
+008916a0   WARN RELOC_NAME: ?FinaliseSheathe@CGSISheatheHeroWeapons_Target@@QAEXXZ -> 006633a0 labelled 'CThingCreatureBase::ClearCurrentAction'
+008916a0   WARN RELOC_NAME: ?Construct@CGSISheatheHeroWeapons_ActionStorage@@QAEPAVCCreatureActionBase@@PAVCGSISheatheHeroWeapons_Target@@PAV2@H@Z -> 0069ffd0 labelled 'CCreatureAction_SheatheItemToInventory::CCreatureAction_SheatheItemToInventory'
+008916a0   WARN RELOC_NAME: ?Destroy@CGSISheatheHeroWeapons_ActionStorage@@QAEXXZ -> 0048c950 labelled '_unattributed::~CPhysicsMeshInfo_Derived_0048c950'
+008916a0   RELOCATION_MATCH PASS   SheatheHeroWeapons
+00891720   WARN SHARED_HEADER_AVAILABLE CCreatureActionBase
+00891720   WARN SHARED_HEADER_AVAILABLE CThingCreatureBase
+00891720   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+00891720   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00891720   WARN RELOC_NAME: ??0CCreatureAction_StabbedToDeath@@QAE@AAVCThingCreatureBase@@_N@Z -> 008ed650 labelled 'CCreatureAction_Die::CCreatureAction_Die'
+00891720   WARN RELOC_NAME: ??1CCreatureAction_StabbedToDeath@@UAE@XZ -> 00693ef0 labelled 'CCreatureActionBase::~CCreatureActionBase'
+00891720   RELOCATION_MATCH PASS   ChangeHeroHealthBy
+00891ca0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00891ca0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00891ca0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00891ca0   RELOCATION_MATCH PASS   GetHero
+00891db0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00891db0   WARN SHARED_HEADER_AVAILABLE CRegion
+00891db0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00891db0   RELOCATION_MATCH PASS   IsRegionDefLoaded
+00891e30   WARN SHARED_HEADER_AVAILABLE CPlayer
+00891e30   RELOCATION_MATCH PASS   GetWanderingPopulationScriptDefNameInRegion
+00892cf0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00892cf0   WARN SHARED_HEADER_AVAILABLE CRegion
+00892cf0   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00892cf0   RELOCATION_MATCH PASS   SetCreatureGeneratorsEnabled
+00892d80   WARN SHARED_HEADER_AVAILABLE CPlayer
+00892d80   WARN SHARED_HEADER_AVAILABLE CRegion
+00892d80   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00892d80   RELOCATION_MATCH PASS   IsCreatureGenerationEnabledForRegion
+00892df0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00892df0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00892df0   WARN RELOC_NAME: ?GetIndex@@YIHPAUCRumbleTarget@@@Z -> 004c7ca0 labelled 'CThing::GetJoystickDeviceNumber'
+00892df0   WARN RELOC_NAME: ?g_manager@@3PAUCRumbleManager@@A -> 013b8388 labelled 'g_pInputManager'
+00892df0   RELOCATION_MATCH PASS   ClearAllRumbles
+00894bf0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00894bf0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00894bf0   RELOCATION_MATCH PASS   IsGiftRomantic
+00894c90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00894c90   RELOCATION_MATCH PASS   IsGiftFriendly
+00894d30   WARN SHARED_HEADER_AVAILABLE CPlayer
+00894d30   RELOCATION_MATCH PASS   IsGiftOffensive
+00894dd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00894dd0   RELOCATION_MATCH PASS   EntitySetAsMarryable
+00895010   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895010   RELOCATION_MATCH PASS   EntitySetAsReceivingEvents
+008953a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008953a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008953a0   RELOCATION_MATCH PASS   IsHeroPerformingExpression
+00895430   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895430   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00895430   RELOCATION_MATCH PASS   IsDPadButtonHeldForExpression
+008955c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008955c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008955c0   WARN RELOC_NAME: ?IsAIFollower@CTCFollowed_Retail@@QAE_NPAUCThing_Retail@@@Z -> 006d4d70 labelled 'CTCFollowed::IsFollower'
+008955c0   RELOCATION_MATCH PASS   IsEntityFollowingHero
+00895a10   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895a10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00895a10   RELOCATION_MATCH PASS   GetBestFishWeight
+00895a90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895a90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00895a90   RELOCATION_MATCH PASS   HeroGoFishing
+00895b00   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895b00   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00895b00   RELOCATION_MATCH PASS   GetHeroFishingLevel
+00895bc0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895bc0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00895bc0   RELOCATION_MATCH PASS   IsHeroPlayingOracleMinigame
+00895c30   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895c30   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00895c30   RELOCATION_MATCH PASS   HasHeroWonOracleMinigame
+00895c90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895c90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00895c90   RELOCATION_MATCH PASS   HeroPlayFireheartMinigame
+00895cf0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895cf0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00895cf0   RELOCATION_MATCH PASS   HeroQuitFireheartMinigame
+00895d50   WARN SHARED_HEADER_AVAILABLE CPlayer
+00895d50   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00895d50   RELOCATION_MATCH PASS   HasHeroForceQuitFireheartMinigame
+00896120   WARN SHARED_HEADER_AVAILABLE CPlayer
+00896120   RELOCATION_MATCH PASS   TryToRespawnDefNamed
+008966c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008966c0   RELOCATION_MATCH PASS   GetNumberOfKeysNeededToUnlockChest
+008968c0   WARN SHARED_HEADER_AVAILABLE CTCQuestCard
+008968c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008968c0   WARN SHARED_HEADER_AVAILABLE CQuestManager
+008968c0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+008968c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008968c0   WARN RELOC_NAME: ?IsVignette@CTCQuestCard@@QBE_NXZ -> 007022e0 labelled 'CTCShotDefinitionBase::CanBeHitByMeleeStrike'
+008968c0   RELOCATION_MATCH PASS   GiveHeroQuestCardDirectly
+00896df0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00896df0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00896df0   RELOCATION_MATCH PASS   KickOffCreditsScreen
+00896ee0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00896ee0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00896ee0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00896ee0   RELOCATION_MATCH PASS   GetDeathRecoveryMarkerName
+00896f60   WARN SHARED_HEADER_AVAILABLE CPlayer
+00896f60   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00896f60   RELOCATION_MATCH PASS   SetDeathRecoveryMarkerName
+00896fd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00896fd0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00896fd0   WARN RELOC_NAME: ?lb@MapKind@@QAEPAUMapNode@@PAH@Z -> 0040f020 labelled 'CVectorMap::LowerBound'
+00896fd0   RELOCATION_MATCH PASS   ResetDeathRecoveryMarkerNameToDefault
+00897030   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897030   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00897030   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00897030   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00897030   RELOCATION_MATCH PASS   IsToFailQuestOnDeath
+00897090   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897090   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00897090   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00897090   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897090   RELOCATION_MATCH PASS   SetWhetherToFailQuestOnDeath
+008970f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008970f0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008970f0   WARN RELOC_NAME: ?Consume@@YIXPAX@Z -> 0057a5b6 labelled '_global::SetMemberConst_0057a5b6'
+008970f0   RELOCATION_MATCH PASS   ResetWhetherToFailQuestOnDeathToDefault
+00897190   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897190   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00897190   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00897190   RELOCATION_MATCH PASS   GetNumberOfItemsOfTypeInInventory
+008973a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008973a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008973a0   RELOCATION_MATCH PASS   IsPlayerCarryingItemOfType
+00897480   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897480   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897480   RELOCATION_MATCH PASS   IsPlayerWieldingWeapon
+00897560   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00897560   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897560   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897560   RELOCATION_MATCH PASS   GetPreviouslyWieldedMeleeWeaponName
+008977f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008977f0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008977f0   RELOCATION_MATCH PASS   ApplyHeroPenaltyForDeath
+00897880   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897880   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897880   RELOCATION_MATCH PASS   GetHeroTitle
+00897940   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897940   RELOCATION_MATCH PASS   EntityForceMarriageToHero
+00897aa0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897aa0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897aa0   RELOCATION_MATCH PASS   GetHeroHasMarried
+00897b10   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897b10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897b10   RELOCATION_MATCH PASS   GetHeroHasCurrentMarriage
+00897b70   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897b70   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897b70   RELOCATION_MATCH PASS   GetHeroHasDivorcedMarriage
+00897bd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897bd0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897bd0   RELOCATION_MATCH PASS   GetHeroHasChildren
+00897c30   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897c30   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897c30   RELOCATION_MATCH PASS   GetHeroHasMurderedWife
+00897c90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897c90   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00897c90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897c90   RELOCATION_MATCH PASS   GetNumberOfTimesHeroHasHadSex
+00897cf0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897cf0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00897cf0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897cf0   RELOCATION_MATCH PASS   SetNumberOfTimesHeroHasHadSex
+00897d50   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897d50   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00897d50   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897d50   RELOCATION_MATCH PASS   SetHeroAsHavingHadSex
+00897db0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897db0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00897db0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897db0   RELOCATION_MATCH PASS   SetHeroAsHavingHadGaySex
+00897e10   WARN SHARED_HEADER_AVAILABLE CPlayer
+00897e10   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00897e10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00897e10   RELOCATION_MATCH PASS   MakeHeroCarryItemInHand
+008981c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008981c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008981c0   RELOCATION_MATCH PASS   AddTattooToHero
+00898340   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898340   WARN SHARED_HEADER_AVAILABLE CRegion
+00898340   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00898340   WARN SHARED_HEADER_AVAILABLE CWorld
+00898340   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898340   RELOCATION_MATCH PASS   SetHeroWillAsUsable
+00898410   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898410   WARN SHARED_HEADER_AVAILABLE CRegion
+00898410   WARN SHARED_HEADER_AVAILABLE CWorldMap
+00898410   WARN SHARED_HEADER_AVAILABLE CWorld
+00898410   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898410   RELOCATION_MATCH PASS   SetHeroWeaponsAsUsable
+008984e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008984e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+008984e0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008984e0   RELOCATION_MATCH PASS   SetWeaponOutCrimeEnabled
+00898540   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898540   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00898540   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898540   RELOCATION_MATCH PASS   SetGuardsIgnoreCrimes
+008985a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '?IsReportedOrUnreportedCrimeKnown@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z' matches no symbol in 008985a0.obj; graded the largest function
+  WARN leaf '?IsReportedOrUnreportedCrimeKnown@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z' matches no symbol in 008985a0.obj; graded the largest function
+008985a0   RELOCATION_MATCH PASS   bool IsReportedOrUnreportedCrimeKnown
+008987e0   WARN GENERIC_STRUCT module=CGameScriptInterface (use engine/CGameScriptInterface.h)
+008987e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008987e0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008987e0   WARN RELOC_NAME: ?DoIt@@YIXPAX@Z -> 005bfa8e labelled 'CTCInventoryBase::ConfiscateAllItems'
+008987e0   RELOCATION_MATCH PASS   ConfiscateAllHeroWeapons
+00898a50   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898a50   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898a50   RELOCATION_MATCH PASS   GiveHeroTutorial
+00898ac0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898ac0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+00898ac0   RELOCATION_MATCH PASS   GiveThingHeroRewardItem
+00898bb0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898bb0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898bb0   RELOCATION_MATCH PASS   GiveHeroItem
+00898c40   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898c40   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898c40   RELOCATION_MATCH PASS   GiveHeroItemsFromContainer
+00898e60   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898e60   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00898e60   RELOCATION_MATCH PASS   IsHeroHandLampLit
+00898ec0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898ec0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898ec0   RELOCATION_MATCH PASS   SetHeroHandLampAsLit
+00898f40   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898f40   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00898f40   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898f40   RELOCATION_MATCH PASS   GiveHeroGold
+00898fa0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00898fa0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+00898fa0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00898fa0   RELOCATION_MATCH PASS   GetHeroGold
+00899000   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899000   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00899000   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899000   RELOCATION_MATCH PASS   GiveHeroExperience
+00899060   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899060   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00899060   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899060   RELOCATION_MATCH PASS   SetHeroAbleToGainExperience
+008990c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008990c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008990c0   RELOCATION_MATCH PASS   GiveHeroRenownPoints
+00899140   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899140   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899140   RELOCATION_MATCH PASS   GetHeroRenownLevel
+008991a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008991a0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+008991a0   RELOCATION_MATCH PASS   IsHeroRenownLevelFull
+00899220   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899220   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899220   RELOCATION_MATCH PASS   IncreaseHeroRenownLevel
+00899290   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899290   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00899290   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899290   WARN RELOC_NAME: ?GetTrainableStatLevel@CTCHeroExperience@@QBEJW4EHeroTrainableStatType@@@Z -> 006d6520 labelled 'CTCInventoryAbilities::GetAbilityLevel'
+00899290   RELOCATION_MATCH PASS   GetHeroStatLevel
+00899310   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899310   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00899310   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899310   RELOCATION_MATCH PASS   GetHeroStatMax
+00899390   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899390   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00899390   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899390   RELOCATION_MATCH PASS   GetHeroStrengthLevel
+00899400   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899400   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00899400   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899400   RELOCATION_MATCH PASS   GetHeroSkillLevel
+00899470   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899470   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00899470   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899470   RELOCATION_MATCH PASS   GetHeroWillLevel
+008994e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008994e0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008994e0   RELOCATION_MATCH PASS   SetHeroAge
+00899560   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899560   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899560   RELOCATION_MATCH PASS   GetHeroAge
+008995d0   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+008995d0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008995d0   WARN RELOC_NAME: ?ResetTrainingStatus_0057a5be@CTCHeroStats@@QAEXXZ -> 0057a5be labelled 'CTCHeroStats::SoberUp'
+008995d0   RELOCATION_MATCH PASS   SetHeroAsTeenager
+00899680   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899680   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899680   RELOCATION_MATCH PASS   SetHeroAsApprentice
+00899700   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899700   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899700   RELOCATION_MATCH PASS   GetDistanceHeroCanBeHeardFrom
+00899770   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899770   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+00899770   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899770   RELOCATION_MATCH PASS   GetHeroRoughExperienceLevel
+008997e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008997e0   WARN SHARED_HEADER_AVAILABLE CTCHeroExperience
+008997e0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+008997e0   RELOCATION_MATCH PASS   GetHeroExperienceAvailableToSpend
+00899850   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899850   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899850   RELOCATION_MATCH PASS   GetHeroFatness
+008998c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008998c0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+008998c0   RELOCATION_MATCH PASS   GetHeroScariness
+00899930   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899930   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+00899930   RELOCATION_MATCH PASS   GetHeroAttractiveness
+008999a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008999a0   WARN RELOC_NAME: ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ -> 00487dd0 labelled 'CPlayer::GetControlledCreature'
+008999a0   RELOCATION_MATCH PASS   GetHeroWillEnergyLevel
+00899a10   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899a10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899a10   RELOCATION_MATCH PASS   SetHeroWillEnergyLevel
+00899a90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899a90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899a90   RELOCATION_MATCH PASS   SetHeroWillEnergyAsAbleToRefill
+00899b10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899b10   RELOCATION_MATCH PASS   IsPlayerZTargetingThing
+00899ba0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899ba0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899ba0   WARN RELOC_NAME: ?CheckBlocking@@YIDPAX@Z -> 007331e0 labelled '_global::GetMember_byte0x63_007331e0'
+00899ba0   RELOCATION_MATCH PASS   IsPlayerCreatureBlocking
+00899c10   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899c10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899c10   WARN RELOC_NAME: ?IsPCReady_GetReadiness@@YIMPAX@Z -> 00789a60 labelled 'CTCHeroRangedAttacks::GetShotBuildupTime'
+00899c10   RELOCATION_MATCH PASS   IsPlayerCreatureReadyToFireProjectileWeapon
+00899c90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899c90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899c90   RELOCATION_MATCH PASS   GetPlayerCreatureCombatMultiplier
+00899cf0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899cf0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899cf0   RELOCATION_MATCH PASS   GetPlayerCreatureCombatMultiplierRunningNumHits
+00899d50   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899d50   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899d50   RELOCATION_MATCH PASS   ResetPlayerCreatureCombatMultiplier
+00899db0   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899db0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899db0   RELOCATION_MATCH PASS   IsPlayerCreatureFlourishEnabled
+00899e10   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899e10   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899e10   WARN RELOC_NAME: ?SetOnlyTarget@CTCTargetingBase@@QAEXPAVCThing@@@Z -> 008abc90 labelled '_unattributed::AssignTarget_008abc90'
+00899e10   RELOCATION_MATCH PASS   SetPlayerCreatureOnlyTarget
+00899e90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899e90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899e90   WARN RELOC_NAME: ?SetOnlyTarget@CTCTargetingBase@@QAEXPAVCThing@@@Z -> 008abc90 labelled '_unattributed::AssignTarget_008abc90'
+00899e90   RELOCATION_MATCH PASS   ResetPlayerCreatureOnlyTarget
+00899f90   WARN SHARED_HEADER_AVAILABLE CPlayer
+00899f90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00899f90   RELOCATION_MATCH PASS   GetHeroMorality
+0089a000   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089a000   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089a000   RELOCATION_MATCH PASS   GetHeroMoralityCategory
+0089a070   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089a070   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089a070   RELOCATION_MATCH PASS   ChangeHeroMoralityDueToTheft
+0089a0e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089a0e0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089a0e0   RELOCATION_MATCH PASS   ChangeHeroMoralityDueToPicklock
+0089a150   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089a150   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089a150   RELOCATION_MATCH PASS   GetHeroWillEnergy
+0089a1b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089a1b0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089a1b0   RELOCATION_MATCH PASS   GetHeroWillEnergyMax
+0089a210   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089a210   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089a210   WARN RELOC_NAME: ?CalcPct@@YIJPAX@Z -> 0057a57a labelled 'CTCHeroStats::GetStaminaPercentage'
+0089a210   WARN RELOC_NAME: ?Finalize@@YAJXZ -> 00bfea70 labelled 'ftol2'
+0089a210   RELOCATION_MATCH PASS   GetHeroWillEnergyPercentage
+0089a270   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089a270   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089a270   WARN RELOC_NAME: ?Iface_Do@@YIXPAUCKillInterface@@UCKillInteger@@@Z -> 005d66ba labelled 'CTCInventoryStats::SetCreatureAsKilled'
+0089a270   RELOCATION_MATCH PASS   SetThingAsKilled
+0089a390   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089a390   WARN SHARED_HEADER_AVAILABLE CTCEntityEvents
+0089a390   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089a390   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089a390   RELOCATION_MATCH PASS   EntitySetAsPickLocked
+0089a490   WARN SHARED_HEADER_AVAILABLE CScriptThing
+0089a490   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089a490   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089a490   RELOCATION_MATCH PASS   GetHeroTargetedThing
+0089ad90   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089ad90   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089ad90   RELOCATION_MATCH PASS   IsQuestStartScreenActive
+0089b210   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089b210   WARN SHARED_HEADER_AVAILABLE CTCBoastUI
+0089b210   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089b210   RELOCATION_MATCH PASS   InternalEndMovieSequence
+0089b2b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089b2b0   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0089b2b0   RELOCATION_MATCH PASS   IsWearingClothingItem
+0089b330   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089b330   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089b330   RELOCATION_MATCH PASS   IsHeroNaked
+0089b390   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089b390   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089b390   WARN RELOC_NAME: ?DoRemove@@YIXPAX@Z -> 005b40e6 labelled 'CTCInventoryClothing::RemoveAllClothing'
+0089b390   RELOCATION_MATCH PASS   RemoveHeroClothing
+0089b3f0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089b3f0   WARN SHARED_HEADER_AVAILABLE CTCInventoryClothing
+0089b3f0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089b3f0   RELOCATION_MATCH PASS   SetHeroAsWearing
+0089b450   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089b450   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0089b450   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers
+0089b450   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089b450   RELOCATION_MATCH PASS   ChangeHeroHairstyle
+0089b4d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089b4d0   WARN SHARED_HEADER_AVAILABLE CTCHeroAttachableAppearanceModifiers
+0089b4d0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089b4d0   RELOCATION_MATCH PASS   RemoveHeroHairstyle
+0089b530   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089b530   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0089b530   RELOCATION_MATCH PASS   IsWearingHairstyle
+0089bb30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089bb30   RELOCATION_MATCH PASS   EntitySetThingAsWantingMoney
+0089bbc0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089bbc0   RELOCATION_MATCH PASS   EntityPlayObjectAnimation
+0089bc50   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089bc50   RELOCATION_MATCH PASS   EntityGetStandingInsideBuilding
+0089bcd0   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '?SetFireToThing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in 0089bcd0.obj; graded the largest function
+  WARN leaf '?SetFireToThing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in 0089bcd0.obj; graded the largest function
+0089bcd0   WARN RELOC_NAME: ?SetOnFire@CTCFlammable_Retail@@QAEXXZ -> 00780410 labelled 'CMusicManager_00780410::ResetMusicEntriesOffsets'
+0089bcd0   RELOCATION_MATCH PASS   void SetFireToThing
+0089bd30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089bd30   RELOCATION_MATCH PASS   void ExtinguishFiresOnThing
+0089bd90   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '?IsThingOnFire@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z' matches no symbol in 0089bd90.obj; graded the largest function
+  WARN leaf '?IsThingOnFire@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z' matches no symbol in 0089bd90.obj; graded the largest function
+0089bd90   RELOCATION_MATCH PASS   bool IsThingOnFire
+0089bf80   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089bf80   WARN SHARED_HEADER_AVAILABLE CTCPerceiveThing
+0089bf80   WARN RELOC_NAME: ?SetSoundRadius@CTCPerceiveThing@@QAEXM@Z -> 00744470 labelled 'CTCPerceiveThing::SetSightRadius'
+0089bf80   WARN RELOC_NAME: ?SetSmellRadius@CTCPerceiveThing@@QAEXM@Z -> 007444a0 labelled 'CTCPerceiveThing::SetSightRadius'
+0089bf80   RELOCATION_MATCH PASS   EntitySetPerceptionVariables
+0089c100   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089c100   RELOCATION_MATCH PASS   ImpSetEntityAsAllyOfThing
+0089c670   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089c670   RELOCATION_MATCH PASS   EntityPostOpinionDeedToRecipient
+0089c710   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089c710   RELOCATION_MATCH PASS   EntityPostOpinionDeedToRecipientVillage
+0089c7b0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089c7b0   RELOCATION_MATCH PASS   EntityPostOpinionDeedKeepSearchingForWitnesses
+0089c8a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089c8a0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089c8a0   WARN RELOC_NAME: ?Final@IDeedIface@@QAE_NPAXH@Z -> 006c5e90 labelled 'CTCHeroOpinionDeedLog::IsDeedWitnessed'
+0089c8a0   RELOCATION_MATCH PASS   IsDeedWitnessed
+0089d0e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089d0e0   RELOCATION_MATCH PASS   EntitySetAsAwareOfThing
+0089d340   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '?EntityGetHearingRadius@CGameScriptInterface@@UBEMABVCScriptThing@@@Z' matches no symbol in 0089d340.obj; graded the largest function
+  WARN leaf '?EntityGetHearingRadius@CGameScriptInterface@@UBEMABVCScriptThing@@@Z' matches no symbol in 0089d340.obj; graded the largest function
+0089d340   WARN RELOC_NAME: ?GetHearingRadius@CTCHearing_Retail@@QAEMXZ -> 00744440 labelled '_global::GetMember_float0x3c_00744440'
+0089d340   RELOCATION_MATCH PASS   float EntityGetHearingRadius
+0089d3a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089d3a0   RELOCATION_MATCH PASS   EntityAttachToVillage
+0089d600   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089d600   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0089d600   WARN SHARED_HEADER_AVAILABLE CTCCombat
+0089d600   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089d600   RELOCATION_MATCH PASS   SetCutsceneMode
+0089d750   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089d750   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089d750   RELOCATION_MATCH PASS   CancelUsingAbility
+0089d7c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089d7c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089d7c0   RELOCATION_MATCH PASS   SetAbilityAvailability
+0089d830   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089d830   RELOCATION_MATCH PASS   EntityForceToLookAtThing
+0089d970   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '?EntityResetForceToLookAt@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in 0089d970.obj; graded the largest function
+  WARN leaf '?EntityResetForceToLookAt@CGameScriptInterface@@UBEXABVCScriptThing@@@Z' matches no symbol in 0089d970.obj; graded the largest function
+0089d970   RELOCATION_MATCH PASS   void EntityResetForceToLookAt
+0089d9d0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089d9d0   RELOCATION_MATCH PASS   EntityDropGenericBox
+0089dc70   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '?EntityGiveGold@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z' matches no symbol in 0089dc70.obj; graded the largest function
+  WARN leaf '?EntityGiveGold@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z' matches no symbol in 0089dc70.obj; graded the largest function
+0089dc70   RELOCATION_MATCH PASS   void EntityGiveGold
+0089dd30   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '?EntityGetBossPhase@CGameScriptInterface@@UBEJABVCScriptThing@@@Z' matches no symbol in 0089dd30.obj; graded the largest function
+  WARN leaf '?EntityGetBossPhase@CGameScriptInterface@@UBEJABVCScriptThing@@@Z' matches no symbol in 0089dd30.obj; graded the largest function
+0089dd30   RELOCATION_MATCH PASS   long EntityGetBossPhase
+0089df10   WARN SHARED_HEADER_AVAILABLE CPlayer
+  WARN leaf '?SetLightColour@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCRGBColour@@@Z' matches no symbol in 0089df10.obj; graded the largest function
+  WARN leaf '?SetLightColour@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCRGBColour@@@Z' matches no symbol in 0089df10.obj; graded the largest function
+0089df10   RELOCATION_MATCH PASS   void SetLightColour
+0089e4c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089e4c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089e4c0   WARN RELOC_NAME: ?lb@AstmMap@@QAEPAUAstmNode@@PAH@Z -> 0040f020 labelled 'CVectorMap::LowerBound'
+0089e4c0   WARN RELOC_NAME: ?d@AstmTarget@@QAEXPAXM_NHH@Z -> 00639ba0 labelled 'CTCRegionDisplay::SetCurrentAreaName'
+0089e4c0   RELOCATION_MATCH PASS   AddScreenTitleMessage
+0089e540   WARN SHARED_HEADER_AVAILABLE CSubtitleRenderer
+0089e540   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0089e540   WARN SHARED_HEADER_AVAILABLE CTCBoastUI
+0089e540   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089e540   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089e540   RELOCATION_MATCH PASS   GiveHeroYesNoQuestion
+0089e710   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089e710   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089e710   RELOCATION_MATCH PASS   DisplayTutorial
+0089e780   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089e780   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0089e780   RELOCATION_MATCH PASS   AddItemToContainer
+0089e810   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089e810   WARN SHARED_HEADER_AVAILABLE CDefinitionManager
+0089e810   RELOCATION_MATCH PASS   RemoveItemFromContainer
+0089e8e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089e8e0   RELOCATION_MATCH PASS   CreatureGeneratorTrigger
+0089e950   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089e950   RELOCATION_MATCH PASS   CreatureGeneratorSetAlwaysCreateCreaturesOnTrigger
+0089ea30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089ea30   RELOCATION_MATCH PASS   CreatureGeneratorIsDestroyed
+0089eaa0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089eaa0   RELOCATION_MATCH PASS   CreatureGeneratorSetGeneratedCreatureScriptName
+0089eb10   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089eb10   RELOCATION_MATCH PASS   CreatureGeneratorSetNumTriggers
+0089ed80   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089ed80   RELOCATION_MATCH PASS   IsCreatureFlying
+0089eec0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0089eec0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089eec0   RELOCATION_MATCH PASS   SetRegionExitAsActive
+0089ef00   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089ef00   MATCH            PASS   SetRegionEntranceAsActive
+0089ef30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089ef30   WARN SHARED_HEADER_AVAILABLE CTCHeroStats
+0089ef30   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0089ef30   RELOCATION_MATCH PASS   SetMoralityChangingAsEnabled
+0089f4a0   WARN SHARED_HEADER_AVAILABLE CDefPointer
+0089f4a0   WARN SHARED_HEADER_AVAILABLE CManager
+0089f4a0   WARN SHARED_HEADER_AVAILABLE CPlayerGui
+0089f4a0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089f4a0   WARN RELOC_NAME: ?SetPlayerCharacter_00487B80@CPlayer@@QAEXPAVCThingPlayerCreature@@@Z -> 00487b80 labelled '_unattributed::AssignTarget_00487b80'
+0089f4a0   RELOCATION_MATCH PASS   TurnCreatureInto
+0089fe20   WARN SHARED_HEADER_AVAILABLE CPlayer
+0089fe20   WARN RELOC_NAME: ?SetAttitude@CTCVillage_Retail@@QAEXJ@Z -> 0065bfbc labelled 'CInputProcessGameBase::AddToInterface'
+0089fe20   RELOCATION_MATCH PASS   SetVillageAttitude
+008a04c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+008a04c0   RELOCATION_MATCH PASS   EntitySetRangedTarget
+008a0720   WARN SHARED_HEADER_AVAILABLE CPlayer
+008a0720   RELOCATION_MATCH PASS   EntityFadeOut
+008a0820   WARN SHARED_HEADER_AVAILABLE CPlayer
+008a0820   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+008a0820   RELOCATION_MATCH PASS   CancelHeroTeleportEffects
+
+WINS: 330
+  00408a70 RELOCATION_MATCH CUserProfileManager::SetAllTutorialsAsGiven
+  00435070 RELOCATION_MATCH CDisplayEngine::?RenderHeroDrunkenness@CDisplayEngine@@IBEXABVCInterpolationInfo@@@Z
+  00438310 RELOCATION_MATCH CPlayerGui::ToggleLiveGui
+  004383d0 RELOCATION_MATCH CPlayerGui::?UpdateQuestInfoIfHeroAlive@CPlayerGui@@QAEXXZ
+  00438cb0 RELOCATION_MATCH CPlayerGui::DrawInventory
+  00439ab0 RELOCATION_MATCH CPlayerGui::GetButtonAlpha
+  00439e00 RELOCATION_MATCH CPlayerGui::UpdateRenown
+  00439f20 RELOCATION_MATCH CPlayerGui::UpdateMorality
+  0043a080 RELOCATION_MATCH CPlayerGui::Update
+  0047d21c RELOCATION_MATCH CTCInGameMenu::CloseInGameMenuViaGameEvent
+  0047d78b RELOCATION_MATCH CTCInGameMenu::CloseInGameMenu
+  0047dc69 RELOCATION_MATCH _global::?PCLoad@@
+  00487aa0 RELOCATION_MATCH CPlayer::InitJoystickDeviceNumber
+  00487bd0 RELOCATION_MATCH CPlayer::UninitCharacter
+  00487ef0 RELOCATION_MATCH CPlayer::InitCharacterFromSave
+  004887c0 RELOCATION_MATCH CPlayer::?SetupInitialPlayerMode@CPlayer_Methods@@QAEXXZ
+  0048a070 RELOCATION_MATCH CPlayer::InitCharacterAs
+  0048a210 RELOCATION_MATCH CPlayer::PlayerInit
+  00490a22 RELOCATION_MATCH CSubtitleRenderer::IsInInteractiveState
+  0049da00 RELOCATION_MATCH CWorld::?GetCurrentRenderCamera@CWorld@@UBE?AVCCamera@@ABVCInterpolationInfo@@@Z
+  0049da60 RELOCATION_MATCH CWorld::?GetCurrentRenderCamera@CWorld@@UBE?AVCCamera@@XZ
+  0049daa0 RELOCATION_MATCH CWorld::GetCurrentSoundCamera
+  0049dbe0 RELOCATION_MATCH CWorld::?GetGameLODCentre@CWorld@@
+  0049e590 RELOCATION_MATCH CWorld::?SetSaveGameMarkerPos@CWorld@@QAEXABVC3DVector@@@Z
+  0049ed30 RELOCATION_MATCH CWorld::ConsoleSetFreeCameraPos
+  0049f3f0 RELOCATION_MATCH CWorld::?OpenHeroInformationScreen@CWorld@@
+  004a0220 RELOCATION_MATCH CWorld::?PrepareForLoad@CWorld@@QAEXXZ
+  004a0370 RELOCATION_MATCH CWorld::DisplayCollectableRentInformation
+  004a0850 RELOCATION_MATCH CWorld::AutoSaveInternal
+  004a0940 RELOCATION_MATCH CWorld::?TeleportHeroToHSP@CWorld@@
+  004a0bb0 RELOCATION_MATCH CWorld::AutoSaveCheckPoint
+  004afca0 RELOCATION_MATCH CQuestManager::ResetPositionOfAllQuestCards
+  004b4490 RELOCATION_MATCH CQuestManager::Update
+  004b4c50 RELOCATION_MATCH CQuestManager::ActivateTestQuestCard
+  004c5ea0 RELOCATION_MATCH CBulletTimeManager::UpdateCombatRelatedEffects
+  004c7a10 RELOCATION_MATCH CThing::?PeekPlayer@CThing@@QBEABVCPlayer@@XZ
+  004c7a30 RELOCATION_MATCH CThing::?GetPlayer@CThing@@QAEAAVCPlayer@@XZ
+  0051fba0 RELOCATION_MATCH CThingManager::DeleteAllThings
+  00522880 RELOCATION_MATCH CThingManager::SaveMainPlayerCreatureState
+  00523b40 RELOCATION_MATCH CThingManager::?RuntimeSaveGameHero@CThingManager@@
+  0055d6c0 RELOCATION_MATCH CTCPhotojournalCapture::DestroyScreen
+  0055d770 RELOCATION_MATCH CTCPhotojournalCapture::ClosePhotojournalCapture
+  0056be00 RELOCATION_MATCH CTCBoastUI::GlobalUpdate
+  0057b783 RELOCATION_MATCH CTCHeroStats::Vomit
+  0057cb7e RELOCATION_MATCH CTCHeroStats::ProcessDrunkenness
+  005819f2 RELOCATION_MATCH CTCInventory::ValidateIndex
+  00581fd1 RELOCATION_MATCH CTCInventory::GetQuickAccessItemButtonIndex
+  00590d32 RELOCATION_MATCH CTCInventory::??0CTCInventory
+  005bc527 RELOCATION_MATCH NInventory::CTCInventoryBase::?AddCloseInventoryEvent@CTCInventoryBase@NInventory@@UAEXXZ
+  005bc5c6 RELOCATION_MATCH CTCInventoryBase::GetRightStickPosition
+  005be119 RELOCATION_MATCH CTCInventoryBase::GetInventoryShoppingValidity
+  005beb57 RELOCATION_MATCH CTCInventoryBase::GetMiniMapGraphic
+  005ea9b0 RELOCATION_MATCH CTCTavernGame::CreateGamePiece
+  005eb510 RELOCATION_MATCH CTCTavernGame::PlayerHasBeenHit
+  005ec0f0 RELOCATION_MATCH CTCTavernGame::?EnterGame@CTCTavernGame
+  005ec650 RELOCATION_MATCH CTCTavernGame::?LeaveGame@CTCTavernGame
+  005fad40 RELOCATION_MATCH CTCInventoryMap::TeleportHeroToGuildSealRecallLocation
+  005fbd20 RELOCATION_MATCH CTCInventoryMap::TeleportHeroToTeleporter
+  005fbd90 RELOCATION_MATCH CTCInventoryMap::TeleportHeroToGuild
+  005fc840 RELOCATION_MATCH CTCInventoryMap::TeleportHeroToRegionTeleporter
+  00625ed0 RELOCATION_MATCH CTCQuickAccessMenu::GlobalUpdate
+  006292a0 RELOCATION_MATCH CWorld::?EACreatureCheat@CWorld@@QAEXPBVCGameEvent@@@Z
+  00629c40 RELOCATION_MATCH CWorld::?EAControlledCreatureUseAbility@CWorld@@QAEXPBVCGameEvent@@@Z
+  00643fc8 RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::GetSpecialMoveIndexForButton
+  0064a1ae RELOCATION_MATCH NPlayerGui::CDrawPerceivers::Update
+  0064a4e9 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer::??0CQuestInfoElementTimer
+  0064a568 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CQuestInfoElementMiniGameBar::Update
+  0064b5c1 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::GetActivationTimeForButton
+  0064b668 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::ClearSoundEffects
+  0064be45 RELOCATION_MATCH NPlayerGui::CDrawMeleeActionButtonEffects::Update
+  0064d6a8 RELOCATION_MATCH NPlayerGui::CDrawQuickAccessIcons::Update
+  0064db2b RELOCATION_MATCH NPlayerGui::CDrawAbilityButtons::DrawAbilityList
+  0064e0da RELOCATION_MATCH NPlayerGui::CDrawGuildSeal::AddMessage
+  0065196c RELOCATION_MATCH NPlayerGui::CDrawGuildSeal::Update
+  0065a852 RELOCATION_MATCH CTCVillage::SetEnemyToHeroStatus
+  0065ac0e RELOCATION_MATCH CTCVillage::BuildingContainsPlayer
+  0065c08a RELOCATION_MATCH CTCVillage::UpdateSecuritySweepTasks
+  0065c781 RELOCATION_MATCH CTCVillage::?FrameUpdate@CTCVillage
+  006610c7 RELOCATION_MATCH CTCCreatureOpinionOfHero::FindMostRecentDeed
+  00665e90 RELOCATION_MATCH CThingCreatureBase::?IsPickPocketable@CThingCreatureBase
+  0066e985 RELOCATION_MATCH NHeroInformationScreens::CManager::RemoveAllPlayerModes
+  00683590 RELOCATION_MATCH CTCCreatureOpinionOfHero::?InformOfDeed@CTCCreatureOpinionOfHero@@QAEXJ_N@Z
+  00683650 RELOCATION_MATCH CTCCreatureOpinionOfHero::?KnowsOfDeed@CTCCreatureOpinionOfHero@@QAE_NJ_N@Z
+  00684050 RELOCATION_MATCH CTCCreatureOpinionOfHero::DecriminaliseAllKnownCrimes
+  00684210 RELOCATION_MATCH CTCCreatureOpinionOfHero::ReportAllCrimes
+  00687fd0 RELOCATION_MATCH CInputProcessMain::ProcessInput
+  0068ae30 RELOCATION_MATCH CInputProcessInventoryMapScreen::ProcessInput
+  0068b2e0 RELOCATION_MATCH CInputProcessInventoryExperienceScreen::ProcessInput
+  0068b7c0 RELOCATION_MATCH CInputProcessInventoryTradeScreen::ProcessInput
+  00690480 RELOCATION_MATCH CInputProcessInGameMenu::ProcessInput
+  00690830 RELOCATION_MATCH CInputProcessTavernGame::ProcessInput
+  00691560 RELOCATION_MATCH CInputProcessBetting::ProcessInput
+  0069a8b0 RELOCATION_MATCH _global::AddMeleeFlourishAbility
+  0069a920 RELOCATION_MATCH CGameCameraManager::RemoveCombatCameraMode
+  0069a990 RELOCATION_MATCH CGameCameraManager::ResetCamera
+  0069ad10 RELOCATION_MATCH CGameCameraManager::PushBuildingCameraMode
+  0069b610 RELOCATION_MATCH CGameCameraManager::RemoveBuildingCameraMode
+  006ad580 RELOCATION_MATCH CThingPlayerCreature::?OnCollision@CThingPlayerCreature
+  006c0580 RELOCATION_MATCH CTCBuyableHouse::DestroyMoneyBags
+  006c17b0 RELOCATION_MATCH CTCBuyableHouse::SetOwnedByPlayer
+  006cf480 RELOCATION_MATCH CTCWife::InitWifeAtEndOfMarriageFrescoEndFadeIn
+  006cf920 RELOCATION_MATCH CTCWife::HaveSex
+  006cfc00 RELOCATION_MATCH CTCWife::OnGreet
+  006cff10 RELOCATION_MATCH CTCWife::?Unmarry@CTCWife
+  006d0020 RELOCATION_MATCH CTCWife::Died
+  006d0180 RELOCATION_MATCH CTCWife::?Divorce@CTCWife
+  00702810 RELOCATION_MATCH CTCQuestCard::?IsActivatable@CTCQuestCard@@
+  0072c230 RELOCATION_MATCH CTCUndeadSoul::?FrameUpdate@CTCUndeadSoul
+  0072e940 RELOCATION_MATCH CTCActionUseBuyHouse::OnActionUseMain
+  0072ed10 RELOCATION_MATCH CTCActionUseBuyHouse::?OnActionUse@CTCActionUseBuyHouse
+  00736910 RELOCATION_MATCH _global::?GiveHeroMeleeAbility@?A0x
+  0074e280 RELOCATION_MATCH CTCContainerRewardHero::GetDynamicPotionDefIndex
+  0074e460 RELOCATION_MATCH CTCContainerRewardHero::GetDynamicResurrectionDefIndex
+  0076cfe0 RELOCATION_MATCH CTCEnemy::?CalculateEnemyTC@CTCEnemy@@CI_NABVCThing@@PAPBV1@AAPBV2@_N@Z
+  00779080 RELOCATION_MATCH CTCDRegionExit::MoveHeroThroughExit
+  007795a0 RELOCATION_MATCH CTCDRegionExit::??1CTCDRegionExit
+  007796b0 RELOCATION_MATCH CTCDRegionExit::FrameUpdate
+  0077d4b0 RELOCATION_MATCH CTCHeroCentre::OpenTrainingScreen
+  0077fb00 RELOCATION_MATCH CTCHeroCentreDoorMarker::FrameUpdate
+  007828e0 RELOCATION_MATCH CTCBoastingArea::FrameUpdate
+  00782a90 RELOCATION_MATCH CTCBoastingArea::OnKill
+  00787e12 RELOCATION_MATCH CTCProjectileTrap::UpdateTrap
+  00799140 RELOCATION_MATCH CTCShopKeeper::CalcAreOtherPeopleInShop
+  007aa480 RELOCATION_MATCH CTCAssassinRush::CancelMove
+  007af050 RELOCATION_MATCH CTCBoss::?FrameUpdate@CTCBoss@@UAEXXZ
+  007b0880 RELOCATION_MATCH CTCFishing::GetPFishingRodDef
+  007b0950 RELOCATION_MATCH CTCFishing::FinishFishing
+  007ba550 RELOCATION_MATCH CTCTavernBar::OnInitialActivate
+  007df6a0 RELOCATION_MATCH CTCWallMountEffects::DoEffect
+  007dfcf0 RELOCATION_MATCH CTCTeleporter::TeleportHero
+  007dff90 RELOCATION_MATCH CTCTeleporter::StartTeleporting
+  007e5d20 RELOCATION_MATCH CTCOracleMinigame::PlayGame
+  007e6230 RELOCATION_MATCH CTCOracleMinigame::SetText
+  007e62d0 RELOCATION_MATCH CTCOracleMinigame::?Quit@CTCOracleMinigame
+  007e78e0 RELOCATION_MATCH CTCFireheartMinigame::PlayGame
+  007e7a40 RELOCATION_MATCH CTCFireheartMinigame::Quit
+  007f1930 RELOCATION_MATCH CTCDRumble::OnInitialActivate
+  007fbc90 RELOCATION_MATCH CTCKraken::GetCentreMarker
+  0082a9b0 RELOCATION_MATCH CMiniMapDisplay::?InitialiseInformationMarkers@CMiniMapDisplay
+  0082be60 RELOCATION_MATCH CMiniMapDisplay::DrawMap
+  0082db00 RELOCATION_MATCH CThingBuilding::LockAllDoors
+  008328d0 RELOCATION_MATCH CThingAICreature::OnHeroPush
+  0083be90 RELOCATION_MATCH CThingSwitch::TriggerSetEnvironment
+  0083c990 RELOCATION_MATCH CThingSwitch::TriggerSetPlayerAreaName
+  00862780 RELOCATION_MATCH CModeStandBase::?UpdateIdleAnim@CModeStandBase
+  008718b0 RELOCATION_MATCH NCreatureAction::CActionEventAddObject::Dispatch
+  0088dfa0 RELOCATION_MATCH CGameScriptInterface::HeroStopDigging
+  0088e150 RELOCATION_MATCH CGameScriptInterface::RespawnHero
+  0088e980 RELOCATION_MATCH CGameScriptInterface::IsHeroControlledByPlayer
+  0088eb30 RELOCATION_MATCH CGameScriptInterface::EntitySetAsKillable
+  0088fc60 RELOCATION_MATCH CGameScriptInterface::GiveHeroExpression
+  0088fc90 RELOCATION_MATCH CGameScriptInterface::HeroHasExpression
+  0088fcc0 RELOCATION_MATCH CGameScriptInterface::GiveHeroAbility
+  0088fe00 RELOCATION_MATCH CGameScriptInterface::AddLogBookEntry
+  008902e0 RELOCATION_MATCH CGameScriptInterface::GiveHeroObject
+  00890370 RELOCATION_MATCH CGameScriptInterface::GetHeroHealth
+  008903a0 RELOCATION_MATCH CGameScriptInterface::GetHeroHealthMax
+  008903d0 RELOCATION_MATCH CGameScriptInterface::GetHeroHealthPercentage
+  00890470 RELOCATION_MATCH CGameScriptInterface::EntitySetAsPickPocketed
+  008904e0 RELOCATION_MATCH CGameScriptInterface::EntitySetAsStolen
+  008905b0 RELOCATION_MATCH CGameScriptInterface::?IsPlayerHoldingUnsheatheRangedWeaponButton@CGameScriptInterface@@UBE_NXZ
+  008905e0 RELOCATION_MATCH CGameScriptInterface::?IsPlayerHoldingLockTargetButton@CGameScriptInterface@@UBE_NXZ
+  00890610 RELOCATION_MATCH CGameScriptInterface::?IsPlayerHoldingFireRangedWeaponButton@CGameScriptInterface@@UBE_NXZ
+  00890640 RELOCATION_MATCH CGameScriptInterface::?IsPlayerHoldingFirstPersonTargetingButton@CGameScriptInterface@@UBE_NXZ
+  00890b50 RELOCATION_MATCH CGameScriptInterface::SetToKeepHeroAbilitiesDuringCutscenes
+  00890ba0 RELOCATION_MATCH CGameScriptInterface::EntitySheatheWeapons
+  00890c10 RELOCATION_MATCH CGameScriptInterface::EntityUnsheatheWeapons
+  00890ff0 RELOCATION_MATCH CGameScriptInterface::CameraDefault
+  008913c0 RELOCATION_MATCH CGameScriptInterface::IsHeroInTavernGame
+  008916a0 RELOCATION_MATCH CGameScriptInterface::SheatheHeroWeapons
+  00891720 RELOCATION_MATCH CGameScriptInterface::ChangeHeroHealthBy
+  00891ca0 RELOCATION_MATCH CGameScriptInterface::?GetHero@CGameScriptInterface@@UAEAAVCScriptThing@@XZ
+  00891db0 RELOCATION_MATCH CGameScriptInterface::IsRegionDefLoaded
+  00891e30 RELOCATION_MATCH CGameScriptInterface::GetWanderingPopulationScriptDefNameInRegion
+  00892cf0 RELOCATION_MATCH CGameScriptInterface::SetCreatureGeneratorsEnabled
+  00892d80 RELOCATION_MATCH CGameScriptInterface::IsCreatureGenerationEnabledForRegion
+  00892df0 RELOCATION_MATCH CGameScriptInterface::ClearAllRumbles
+  00894bf0 RELOCATION_MATCH CGameScriptInterface::IsGiftRomantic
+  00894c90 RELOCATION_MATCH CGameScriptInterface::IsGiftFriendly
+  00894d30 RELOCATION_MATCH CGameScriptInterface::IsGiftOffensive
+  00894dd0 RELOCATION_MATCH CGameScriptInterface::EntitySetAsMarryable
+  00895010 RELOCATION_MATCH CGameScriptInterface::EntitySetAsReceivingEvents
+  008953a0 RELOCATION_MATCH CGameScriptInterface::IsHeroPerformingExpression
+  00895430 RELOCATION_MATCH CGameScriptInterface::IsDPadButtonHeldForExpression
+  008955c0 RELOCATION_MATCH CGameScriptInterface::IsEntityFollowingHero
+  00895a10 RELOCATION_MATCH CGameScriptInterface::GetBestFishWeight
+  00895a90 RELOCATION_MATCH CGameScriptInterface::HeroGoFishing
+  00895b00 RELOCATION_MATCH CGameScriptInterface::GetHeroFishingLevel
+  00895bc0 RELOCATION_MATCH CGameScriptInterface::IsHeroPlayingOracleMinigame
+  00895c30 RELOCATION_MATCH CGameScriptInterface::HasHeroWonOracleMinigame
+  00895c90 RELOCATION_MATCH CGameScriptInterface::HeroPlayFireheartMinigame
+  00895cf0 RELOCATION_MATCH CGameScriptInterface::HeroQuitFireheartMinigame
+  00895d50 RELOCATION_MATCH CGameScriptInterface::HasHeroForceQuitFireheartMinigame
+  00896120 RELOCATION_MATCH CGameScriptInterface::TryToRespawnDefNamed
+  008966c0 RELOCATION_MATCH CGameScriptInterface::GetNumberOfKeysNeededToUnlockChest
+  008968c0 RELOCATION_MATCH CGameScriptInterface::GiveHeroQuestCardDirectly
+  00896df0 RELOCATION_MATCH CGameScriptInterface::KickOffCreditsScreen
+  00896ee0 RELOCATION_MATCH CGameScriptInterface::?GetDeathRecoveryMarkerName@CGameScriptInterface@@UBE?AVCCharString@@XZ
+  00896f60 RELOCATION_MATCH CGameScriptInterface::SetDeathRecoveryMarkerName
+  00896fd0 RELOCATION_MATCH CGameScriptInterface::ResetDeathRecoveryMarkerNameToDefault
+  00897030 RELOCATION_MATCH CGameScriptInterface::?IsToFailQuestOnDeath@CGameScriptInterface@@UBE_NXZ
+  00897090 RELOCATION_MATCH CGameScriptInterface::?SetWhetherToFailQuestOnDeath@CGameScriptInterface@@UBEX_N@Z
+  008970f0 RELOCATION_MATCH CGameScriptInterface::ResetWhetherToFailQuestOnDeathToDefault
+  00897190 RELOCATION_MATCH CGameScriptInterface::?GetNumberOfItemsOfTypeInInventory@CGameScriptInterface@@UBEJABVCCharString@@@Z
+  008973a0 RELOCATION_MATCH CGameScriptInterface::IsPlayerCarryingItemOfType
+  00897480 RELOCATION_MATCH CGameScriptInterface::?IsPlayerWieldingWeapon@CGameScriptInterface@@UBE_NXZ
+  00897560 RELOCATION_MATCH CGameScriptInterface::?GetPreviouslyWieldedMeleeWeaponName@CGameScriptInterface
+  008977f0 RELOCATION_MATCH CGameScriptInterface::?ApplyHeroPenaltyForDeath@CGameScriptInterface@@UBEXXZ
+  00897880 RELOCATION_MATCH CGameScriptInterface::?GetHeroTitle@CGameScriptInterface@@UBE?AW4EHeroTitle@@XZ
+  00897940 RELOCATION_MATCH CGameScriptInterface::?EntityForceMarriageToHero@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  00897aa0 RELOCATION_MATCH CGameScriptInterface::GetHeroHasMarried@CGameScriptInterface
+  00897b10 RELOCATION_MATCH CGameScriptInterface::GetHeroHasCurrentMarriage@CGameScriptInterface
+  00897b70 RELOCATION_MATCH CGameScriptInterface::GetHeroHasDivorcedMarriage@CGameScriptInterface
+  00897bd0 RELOCATION_MATCH CGameScriptInterface::GetHeroHasChildren@CGameScriptInterface
+  00897c30 RELOCATION_MATCH CGameScriptInterface::GetHeroHasMurderedWife@CGameScriptInterface
+  00897c90 RELOCATION_MATCH CGameScriptInterface::?GetNumberOfTimesHeroHasHadSex@CGameScriptInterface@@UBEJXZ
+  00897cf0 RELOCATION_MATCH CGameScriptInterface::?SetNumberOfTimesHeroHasHadSex@CGameScriptInterface@@UBEXJ@Z
+  00897d50 RELOCATION_MATCH CGameScriptInterface::?SetHeroAsHavingHadSex@CGameScriptInterface@@UBEX_N@Z
+  00897db0 RELOCATION_MATCH CGameScriptInterface::?SetHeroAsHavingHadGaySex@CGameScriptInterface@@UBEX_N@Z
+  00897e10 RELOCATION_MATCH CGameScriptInterface::?MakeHeroCarryItemInHand@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  008981c0 RELOCATION_MATCH CGameScriptInterface::AddTattooToHero
+  00898340 RELOCATION_MATCH CGameScriptInterface::SetHeroWillAsUsable
+  00898410 RELOCATION_MATCH CGameScriptInterface::SetHeroWeaponsAsUsable
+  008984e0 RELOCATION_MATCH CGameScriptInterface::?SetWeaponOutCrimeEnabled@CGameScriptInterface@@UBEX_N@Z
+  00898540 RELOCATION_MATCH CGameScriptInterface::?SetGuardsIgnoreCrimes@CGameScriptInterface@@UBEX_N@Z
+  008985a0 RELOCATION_MATCH CGameScriptInterface::?IsReportedOrUnreportedCrimeKnown@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  008987e0 RELOCATION_MATCH CGameScriptInterface::ConfiscateAllHeroWeapons
+  00898a50 RELOCATION_MATCH CGameScriptInterface::?GiveHeroTutorial@CGameScriptInterface@@UBE_NW4ETutorialCategory@@@Z
+  00898ac0 RELOCATION_MATCH CGameScriptInterface::?GiveThingHeroRewardItem@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@1@Z
+  00898bb0 RELOCATION_MATCH CGameScriptInterface::GiveHeroItem
+  00898c40 RELOCATION_MATCH CGameScriptInterface::?GiveHeroItemsFromContainer@CGameScriptInterface@@UBE_NABVCScriptThing@@_N@Z
+  00898e60 RELOCATION_MATCH CGameScriptInterface::?IsHeroHandLampLit@CGameScriptInterface@@UBE_NXZ
+  00898ec0 RELOCATION_MATCH CGameScriptInterface::?SetHeroHandLampAsLit@CGameScriptInterface@@UBEX_N@Z
+  00898f40 RELOCATION_MATCH CGameScriptInterface::?GiveHeroGold@CGameScriptInterface@@UBEXJ@Z
+  00898fa0 RELOCATION_MATCH CGameScriptInterface::?GetHeroGold@CGameScriptInterface@@UBEJXZ
+  00899000 RELOCATION_MATCH CGameScriptInterface::?GiveHeroExperience@CGameScriptInterface@@UBEXJ@Z
+  00899060 RELOCATION_MATCH CGameScriptInterface::SetHeroAbleToGainExperience@CGameScriptInterface
+  008990c0 RELOCATION_MATCH CGameScriptInterface::GiveHeroRenownPoints@CGameScriptInterface
+  00899140 RELOCATION_MATCH CGameScriptInterface::GetHeroRenownLevel@CGameScriptInterface
+  008991a0 RELOCATION_MATCH CGameScriptInterface::IsHeroRenownLevelFull@CGameScriptInterface
+  00899220 RELOCATION_MATCH CGameScriptInterface::IncreaseHeroRenownLevel@CGameScriptInterface
+  00899290 RELOCATION_MATCH CGameScriptInterface::GetHeroStatLevel@CGameScriptInterface
+  00899310 RELOCATION_MATCH CGameScriptInterface::GetHeroStatMax@CGameScriptInterface
+  00899390 RELOCATION_MATCH CGameScriptInterface::GetHeroStrengthLevel@CGameScriptInterface
+  00899400 RELOCATION_MATCH CGameScriptInterface::GetHeroSkillLevel@CGameScriptInterface
+  00899470 RELOCATION_MATCH CGameScriptInterface::GetHeroWillLevel@CGameScriptInterface
+  008994e0 RELOCATION_MATCH CGameScriptInterface::SetHeroAge@CGameScriptInterface
+  00899560 RELOCATION_MATCH CGameScriptInterface::GetHeroAge@CGameScriptInterface
+  008995d0 RELOCATION_MATCH CGameScriptInterface::?SetHeroAsTeenager@CGameScriptInterface@@UBEX_N@Z
+  00899680 RELOCATION_MATCH CGameScriptInterface::SetHeroAsApprentice@CGameScriptInterface
+  00899700 RELOCATION_MATCH CGameScriptInterface::GetDistanceHeroCanBeHeardFrom@CGameScriptInterface
+  00899770 RELOCATION_MATCH CGameScriptInterface::GetHeroRoughExperienceLevel@CGameScriptInterface
+  008997e0 RELOCATION_MATCH CGameScriptInterface::GetHeroExperienceAvailableToSpend@CGameScriptInterface
+  00899850 RELOCATION_MATCH CGameScriptInterface::GetHeroFatness@CGameScriptInterface
+  008998c0 RELOCATION_MATCH CGameScriptInterface::GetHeroScariness@CGameScriptInterface
+  00899930 RELOCATION_MATCH CGameScriptInterface::GetHeroAttractiveness@CGameScriptInterface
+  008999a0 RELOCATION_MATCH CGameScriptInterface::GetHeroWillEnergyLevel@CGameScriptInterface
+  00899a10 RELOCATION_MATCH CGameScriptInterface::SetHeroWillEnergyLevel@CGameScriptInterface
+  00899a90 RELOCATION_MATCH CGameScriptInterface::SetHeroWillEnergyAsAbleToRefill@CGameScriptInterface
+  00899b10 RELOCATION_MATCH CGameScriptInterface::?IsPlayerZTargetingThing@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  00899ba0 RELOCATION_MATCH CGameScriptInterface::IsPlayerCreatureBlocking
+  00899c10 RELOCATION_MATCH CGameScriptInterface::IsPlayerCreatureReadyToFireProjectileWeapon
+  00899c90 RELOCATION_MATCH CGameScriptInterface::GetPlayerCreatureCombatMultiplier
+  00899cf0 RELOCATION_MATCH CGameScriptInterface::GetPlayerCreatureCombatMultiplierRunningNumHits
+  00899d50 RELOCATION_MATCH CGameScriptInterface::ResetPlayerCreatureCombatMultiplier
+  00899db0 RELOCATION_MATCH CGameScriptInterface::IsPlayerCreatureFlourishEnabled
+  00899e10 RELOCATION_MATCH CGameScriptInterface::?SetPlayerCreatureOnlyTarget@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  00899e90 RELOCATION_MATCH CGameScriptInterface::?ResetPlayerCreatureOnlyTarget@CGameScriptInterface@@UBEXXZ
+  00899f90 RELOCATION_MATCH CGameScriptInterface::GetHeroMorality@CGameScriptInterface
+  0089a000 RELOCATION_MATCH CGameScriptInterface::GetHeroMoralityCategory@CGameScriptInterface
+  0089a070 RELOCATION_MATCH CGameScriptInterface::ChangeHeroMoralityDueToTheft
+  0089a0e0 RELOCATION_MATCH CGameScriptInterface::ChangeHeroMoralityDueToPicklock
+  0089a150 RELOCATION_MATCH CGameScriptInterface::GetHeroWillEnergy@CGameScriptInterface
+  0089a1b0 RELOCATION_MATCH CGameScriptInterface::GetHeroWillEnergyMax@CGameScriptInterface
+  0089a210 RELOCATION_MATCH CGameScriptInterface::GetHeroWillEnergyPercentage
+  0089a270 RELOCATION_MATCH CGameScriptInterface::SetThingAsKilled
+  0089a390 RELOCATION_MATCH CGameScriptInterface::?EntitySetAsPickLocked@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089a490 RELOCATION_MATCH CGameScriptInterface::?GetHeroTargetedThing@CGameScriptInterface@@UBE?AVCScriptThing@@XZ
+  0089ad90 RELOCATION_MATCH CGameScriptInterface::?IsQuestStartScreenActive@CGameScriptInterface@@UBE_NAAVCCharString@@@Z
+  0089b210 RELOCATION_MATCH CGameScriptInterface::InternalEndMovieSequence
+  0089b2b0 RELOCATION_MATCH CGameScriptInterface::?IsWearingClothingItem@CGameScriptInterface@@UBE_NABVCScriptThing@@ABVCCharString@@@Z
+  0089b330 RELOCATION_MATCH CGameScriptInterface::IsHeroNaked
+  0089b390 RELOCATION_MATCH CGameScriptInterface::RemoveHeroClothing
+  0089b3f0 RELOCATION_MATCH CGameScriptInterface::?SetHeroAsWearing@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  0089b450 RELOCATION_MATCH CGameScriptInterface::?ChangeHeroHairstyle@CGameScriptInterface@@UBEXABVCCharString@@@Z
+  0089b4d0 RELOCATION_MATCH CGameScriptInterface::RemoveHeroHairstyle@CGameScriptInterface
+  0089b530 RELOCATION_MATCH CGameScriptInterface::?IsWearingHairstyle@CGameScriptInterface@@UBE_NAAVCScriptThing@@ABVCCharString@@@Z
+  0089bb30 RELOCATION_MATCH CGameScriptInterface::?EntitySetThingAsWantingMoney@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+  0089bbc0 RELOCATION_MATCH CGameScriptInterface::?EntityPlayObjectAnimation@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@_N@Z
+  0089bc50 RELOCATION_MATCH CGameScriptInterface::?EntityGetStandingInsideBuilding@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@@Z
+  0089bcd0 RELOCATION_MATCH CGameScriptInterface::?SetFireToThing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089bd30 RELOCATION_MATCH CGameScriptInterface::?ExtinguishFiresOnThing@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089bd90 RELOCATION_MATCH CGameScriptInterface::?IsThingOnFire@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  0089bf80 RELOCATION_MATCH CGameScriptInterface::?EntitySetPerceptionVariables@CGameScriptInterface@@UBEXABVCScriptThing@@MMM@Z
+  0089c100 RELOCATION_MATCH CGameScriptInterface::ImpSetEntityAsAllyOfThing
+  0089c670 RELOCATION_MATCH CGameScriptInterface::EntityPostOpinionDeedToRecipient
+  0089c710 RELOCATION_MATCH CGameScriptInterface::EntityPostOpinionDeedToRecipientVillage
+  0089c7b0 RELOCATION_MATCH CGameScriptInterface::EntityPostOpinionDeedKeepSearchingForWitnesses
+  0089c8a0 RELOCATION_MATCH CGameScriptInterface::IsDeedWitnessed
+  0089d0e0 RELOCATION_MATCH CGameScriptInterface::?EntitySetAsAwareOfThing@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+  0089d340 RELOCATION_MATCH CGameScriptInterface::?EntityGetHearingRadius@CGameScriptInterface@@UBEMABVCScriptThing@@@Z
+  0089d3a0 RELOCATION_MATCH CGameScriptInterface::?EntityAttachToVillage@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+  0089d600 RELOCATION_MATCH CGameScriptInterface::?SetCutsceneMode@CGameScriptInterface@@UBEX_N0@Z
+  0089d750 RELOCATION_MATCH CGameScriptInterface::?CancelUsingAbility@CGameScriptInterface@@UBEXJ@Z
+  0089d7c0 RELOCATION_MATCH CGameScriptInterface::SetAbilityAvailability@CGameScriptInterface
+  0089d830 RELOCATION_MATCH CGameScriptInterface::?EntityForceToLookAtThing@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+  0089d970 RELOCATION_MATCH CGameScriptInterface::?EntityResetForceToLookAt@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089d9d0 RELOCATION_MATCH CGameScriptInterface::?EntityDropGenericBox@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089dc70 RELOCATION_MATCH CGameScriptInterface::?EntityGiveGold@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+  0089dd30 RELOCATION_MATCH CGameScriptInterface::?EntityGetBossPhase@CGameScriptInterface@@UBEJABVCScriptThing@@@Z
+  0089df10 RELOCATION_MATCH CGameScriptInterface::?SetLightColour@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCRGBColour@@@Z
+  0089e4c0 RELOCATION_MATCH CGameScriptInterface::AddScreenTitleMessage
+  0089e540 RELOCATION_MATCH CGameScriptInterface::GiveHeroYesNoQuestion
+  0089e710 RELOCATION_MATCH CGameScriptInterface::?DisplayTutorial@CGameScriptInterface@@UBE_NW4ETutorialCategory@@@Z
+  0089e780 RELOCATION_MATCH CGameScriptInterface::?AddItemToContainer@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+  0089e810 RELOCATION_MATCH CGameScriptInterface::?RemoveItemFromContainer@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+  0089e8e0 RELOCATION_MATCH CGameScriptInterface::?CreatureGeneratorTrigger@CGameScriptInterface@@UBEXABVCScriptThing@@@Z
+  0089e950 RELOCATION_MATCH CGameScriptInterface::?CreatureGeneratorSetAlwaysCreateCreaturesOnTrigger@CGameScriptInterface@@UBEXABVCScriptThing@@_N@Z
+  0089ea30 RELOCATION_MATCH CGameScriptInterface::?CreatureGeneratorIsDestroyed@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  0089eaa0 RELOCATION_MATCH CGameScriptInterface::?CreatureGeneratorSetGeneratedCreatureScriptName@CGameScriptInterface@@UBEXABVCScriptThing@@ABVCCharString@@@Z
+  0089eb10 RELOCATION_MATCH CGameScriptInterface::?CreatureGeneratorSetNumTriggers@CGameScriptInterface@@UBEXABVCScriptThing@@J@Z
+  0089ed80 RELOCATION_MATCH CGameScriptInterface::?IsCreatureFlying@CGameScriptInterface@@UBE_NABVCScriptThing@@@Z
+  0089eec0 RELOCATION_MATCH CGameScriptInterface::SetRegionExitAsActive
+  0089ef00 MATCH CGameScriptInterface::SetRegionEntranceAsActive
+  0089ef30 RELOCATION_MATCH CGameScriptInterface::?SetMoralityChangingAsEnabled@CGameScriptInterface@@UBEX_N@Z
+  0089f4a0 RELOCATION_MATCH CGameScriptInterface::?TurnCreatureInto@CGameScriptInterface@@UBE?AVCScriptThing@@ABV2@ABVCCharString@@@Z
+  0089fe20 RELOCATION_MATCH CGameScriptInterface::?SetVillageAttitude@CGameScriptInterface@@UBEXABVCScriptThing@@W4EScriptVillageAttitude@@@Z
+  008a04c0 RELOCATION_MATCH CGameScriptInterface::?EntitySetRangedTarget@CGameScriptInterface@@UBEXABVCScriptThing@@0@Z
+  008a0720 RELOCATION_MATCH CGameScriptInterface::?EntityFadeOut@CGameScriptInterface@@UBEXABVCScriptThing@@M@Z
+  008a0820 RELOCATION_MATCH CGameScriptInterface::?CancelHeroTeleportEffects@CGameScriptInterface@@UBEXXZ
+exit 0

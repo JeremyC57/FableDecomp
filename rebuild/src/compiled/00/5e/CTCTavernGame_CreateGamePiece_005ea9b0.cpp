@@ -115,7 +115,11 @@ struct CTCInterface5B {                                 // interface 0x5b
     unsigned char Flags;                                // +0x59
 };
 
-class CPlayerManager { public: long GetMainPlayerNumber() const; };   // 0x00449700 (Ego_r.pdb)
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
+   // 0x00449700 (Ego_r.pdb)
 class CTCBase { protected:
     const CPlayerManager& PeekPlayerManager() const;   // 0x00686D50 (Ego_r.pdb CTCBase, protected)
 };

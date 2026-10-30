@@ -147,10 +147,10 @@ public:
     CThingPlayerCreature* GetPControlledCreature() const;                      // 0x00487DC0
 };
 
-class CPlayerManager {
-public:
-    const CPlayer& GetMainPlayer() const;                       // 0x00449960
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 
 class CTCBase {                                      // CTCBase: vtable +0x00, ParentThing +0x04, +0x08
 public:

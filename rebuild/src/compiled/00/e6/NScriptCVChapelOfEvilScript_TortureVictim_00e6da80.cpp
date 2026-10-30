@@ -59,12 +59,9 @@ template <class T> class CCountedPointer { public:
     }
 };
 struct CScriptThingImp;
-class CScriptThing { public:                                   // 12 bytes, vtable 0x01238C8C
-    virtual ~CScriptThing();                            // 0x004AA840
-    virtual void t001();
-    virtual CCharString GetDefName() const;             // slot 2 (+0x08)
-    CCountedPointer<CScriptThingImp> PImp;              // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
 class CScriptGameResourceObjectBase : public CBaseObject { public:    // vtable 0x0126008C

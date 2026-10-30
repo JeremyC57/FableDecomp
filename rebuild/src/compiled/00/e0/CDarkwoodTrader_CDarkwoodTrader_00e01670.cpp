@@ -10,15 +10,17 @@
 // initialiser stored before the base vtable 0x012C3224, the CScriptThing copy follows it, the derived vtable precedes
 // ParentClass, each CTimer's inline constructor asks the service for a timer, PMasterData is a body assignment stored last.
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCountedPointerWords {
+template <class T> class CCountedPointer { public:
     void* Data;
     void* Info;
-    CCountedPointerWords() : Data(0), Info(0) { }
+    CCountedPointer() : Data(0), Info(0) { }
 };
-class CScriptThing : public CBaseClass { public:            // vtable 0x01238C8C, 12 bytes (PImp_Data +4, PImp_Info +8)
-    CCountedPointerWords PImp;                // +0x04
-    CScriptThing(const CScriptThing& other);  // 0x004ABE90
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 class CGameScriptInterface { public:                        // the game-script timer service behind the global at 0x0143E8F8
     virtual void v000();
     virtual void v001();
@@ -110,10 +112,10 @@ class CGameScriptInterface { public:                        // the game-script t
     virtual long NewTimer();                  // slot 87 (+0x15c)
 };
 extern CGameScriptInterface* g_pGameScriptInterface;  // 0x0143E8F8
-class CTimer { public:                               // 4 bytes
-    long TimerIndex;                          // +0x00
-    CTimer() : TimerIndex(g_pGameScriptInterface->NewTimer()) { }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->NewTimer()) { }
 struct CScriptOwner {                         // the quest script that owns this entity script
     unsigned char _pad00[0x40];
     void*         m_pInterface;               // +0x40 CGameScriptInterfaceBase*

@@ -85,9 +85,10 @@ class CPlayer { public:
     unsigned char _pad[0x28];
     long Number;                                // +0x28
 };
-class CPlayerManager { public:
-    const CPlayer& GetMainPlayer() const;       // 0x00449960
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 CThing* __fastcall CreateThingObject(long defIndex, const C3DVector* position, long player, CRightHandedSet* orientation,
     unsigned long flags, const CCharString& scriptName);   // 0x00703210
 class CTCCreatedEntity { public:                       // interface 0x32

@@ -1,0 +1,196 @@
+edit rebuild/src/compiled/00/cd/CKGGate_Main_00cdf260.cpp ok slots0 nomem misplaced:dropwords:CKG_Gate
+edit rebuild/src/compiled/00/ce/CLadyGreysBed_Main_00ce0150.cpp ok slots0 nomem misplaced:dropwords:CLadyGreysBed
+edit rebuild/src/compiled/00/cf/CChunkCollectionIndicator_Main_00cfc990.cpp ok slots0 nomem misplaced:dropwords:CChunkCollectionIndicator
+edit rebuild/src/compiled/00/d2/CEndGameJackOfBladesBoss_Main_00d2fb20.cpp ok slots0 nomem misplaced:dropwords:CEndGameJackOfBladesBoss
+edit rebuild/src/compiled/00/d3/CFHPrisoner_MakeRoundStartComment_00d3a9b0.cpp ok slots0 nomem misplaced:dropwords:CFH_Prisoner
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCFHBriarRose_Init_00d372f0.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCMeleeApprentice_Init_00d40cc0.cpp ok slots7 mem misplaced:flatST
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingSkillScript_RegisterMain_00d5ab40.cpp ok slots1 mem inldtor
+edit rebuild/src/compiled/00/d5/NScriptCQGuildTrainingWillScript_RegisterMain_00d5dd40.cpp ok slots1 mem inldtor
+edit rebuild/src/compiled/00/d6/CHTEExecutioner_Main_00d6a0d0.cpp ok slots0 nomem misplaced:dropwords:CHTE_Executioner
+edit rebuild/src/compiled/00/d6/CHTEPrisoner_Main_00d69f50.cpp ok slots0 nomem misplaced:dropwords:CHTE_Prisoner
+edit rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHeroSoulsArenaScript_CreateActiveEntityScript_00d7fab0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/d7/CEntityScriptBindingNScriptCQHeroSoulsThunderScript_CreateActiveEntityScript_00d7c2e0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/d7/CHTGAmbushPointRear_Main_00d73ae0.cpp ok slots0 nomem misplaced:dropwords:CHTG_AmbushPointRear
+edit rebuild/src/compiled/00/d7/CHTGAmbushPoint_Main_00d73610.cpp ok slots0 nomem misplaced:dropwords:CHTG_AmbushPoint
+edit rebuild/src/compiled/00/d7/CHeroSoulsEnemy_Main_00d7f110.cpp ok slots0 nomem misplaced:dropwords:CHeroSoulsEnemy
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsArenaScriptCNotForODG_Main_00d7dc50.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/d7/NScriptCQHeroSoulsScriptCNotForODG_Main_00d79c40.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsBriarScript_CreateActiveEntityScript_00d82210.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsMotherScript_CreateActiveEntityScript_00d844a0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHeroSoulsNostroScript_CreateActiveEntityScript_00d89580.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/d8/CEntityScriptBindingNScriptCQHerosOldHouseScript_CreateActiveEntityScript_00d8a960.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/d8/CSUMMONEDCREATURE_Main_00d891f0.cpp ok slots0 nomem misplaced:dropwords:CSUMMONED_CREATURE
+edit rebuild/src/compiled/00/d8/CUndeadSoldier_Main_00d88f90.cpp ok slots0 nomem misplaced:dropwords:CUndeadSoldier
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Main_00d89380.cpp ok slots0 nomem misplaced:dropwords:CNostro
+edit rebuild/src/compiled/00/d9/CEntityScriptBindingNScriptCQHobbeCaveScript_CreateActiveEntityScript_00d915b0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/d9/CEntityScriptBindingNScriptCQHobbeToothContestScript_CreateActiveEntityScript_00d9d930.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/d9/CEntityScriptBindingNScriptCQMinionCampScript_CreateActiveEntityScript_00d9ffd0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/da/CEntityScriptBindingNScriptCQMinionClifftopChaseScript_CreateActiveEntityScript_00da8320.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/da/CMinionEscort_Main_00da45c0.cpp ok slots1 nomem misplaced:dropwords:CMinionEscort
+edit rebuild/src/compiled/00/da/CNOVIVillager_GetVillagerSpeechIndex_00daebf0.cpp ok slots0 nomem misplaced:dropwords:CNOVI_Villager
+edit rebuild/src/compiled/00/db/CEntityScriptBindingNScriptCQNewOakValeIntroScript_CreateActiveEntityScript_00db8520.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/db/CNOVIBarrel_Main_00db7e10.cpp ok slots0 nomem misplaced:dropwords:CNOVI_Barrel
+edit rebuild/src/compiled/00/db/CNOVICreatedBeetle_Main_00db80c0.cpp ok slots0 nomem misplaced:dropwords:CNOVI_CreatedBeetle
+edit rebuild/src/compiled/00/dc/CCrateTeamMember_GoOnPatrol_00dcec70.cpp ok slots1 nomem
+edit rebuild/src/compiled/00/dc/CEntityScriptBindingNScriptCQOakValeBanditRaidScript_CreateActiveEntityScript_00dc0170.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/dc/CEntityScriptBindingNScriptCQOpeningGraveyardSecretPassageScript_CreateActiveEntityScript_00dc8700.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/dc/CEntityScriptBindingNScriptCQOrchardFarmRaidScript_CreateActiveEntityScript_00dcf790.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/dc/CVtable012DB4B8_Main_00dcf4c0.cpp ok slots0 nomem misplaced:dropwords:CVtable_012DB4B8
+edit rebuild/src/compiled/00/dd/CEntityScriptBindingNScriptCQPrisonEscapeRescueMotherScript_CreateActiveEntityScript_00dd9300.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/dd/CEntityScriptBindingNScriptCQPrisonRaceScript_CreateActiveEntityScript_00ddc7d0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/dd/CEntityScriptBindingNScriptCQPrisonWardenGameScript_CreateActiveEntityScript_00ddeee0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/dd/CExitWardensOffice_Main_00ddece0.cpp ok slots0 nomem misplaced:flatST
+edit rebuild/src/compiled/00/dd/CPrisonKeyDoor_Main_00dd9180.cpp ok slots0 nomem misplaced:dropwords:CPrisonKeyDoor
+edit rebuild/src/compiled/00/dd/CTortureDoorCourtyard_Main_00dd8ba0.cpp ok slots0 nomem misplaced:dropwords:CTortureDoorCourtyard
+edit rebuild/src/compiled/00/dd/CTortureDoorPassage_Main_00dd8990.cpp ok slots0 nomem misplaced:dropwords:CTortureDoorPassage
+edit rebuild/src/compiled/00/dd/CWaypointSpeedCheck_Main_00ddc6c0.cpp ok slots0 nomem misplaced:dropwords:CWaypointSpeedCheck
+edit rebuild/src/compiled/00/de/CEntityScriptBindingNScriptCQRansomVictimChiefsHouseScript_CreateActiveEntityScript_00dec5b0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/de/CEntityScriptBindingNScriptCQSecretPassageScript_CreateActiveEntityScript_00def220.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansomHelper_Init_00de1e20.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCRansommer_Init_00de1cc0.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrotherHelper_Init_00de20c0.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScriptCVictimsBrother_Init_00de1f70.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQSummoningTheShipScript_CreateActiveEntityScript_00df3550.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQTentacleKrakenBossFightScript_CreateActiveEntityScript_00df4a50.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQTraderConflictEvilScript_CreateActiveEntityScript_00df99f0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/df/CEntityScriptBindingNScriptCQTraderConflictGoodScript_CreateActiveEntityScript_00dfc100.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/df/CFireHeartHolder_Main_00df2d30.cpp ok slots0 nomem misplaced:dropwords:CFireHeartHolder
+edit rebuild/src/compiled/00/df/CSummonerMinion_Main_00df2ab0.cpp ok slots0 nomem misplaced:dropwords:CSummonerMinion
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCGameMaster_Main_00dfbe90.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCBCMTrader_Main_00dfbda0.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/e0/CEntityScriptBindingNScriptCQTraderEscortScript_CreateActiveEntityScript_00e05170.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/e0/CTEBanditLeader_Main_00e035e0.cpp ok slots0 nomem misplaced:dropwords:CTE_BanditLeader
+edit rebuild/src/compiled/00/e3/CACDummyStatic_Main_00e369b0.cpp ok slots0 nomem misplaced:dropwords:CAC_DummyStatic
+edit rebuild/src/compiled/00/e4/CGuildSealWarning_Main_00e4b010.cpp ok slots0 nomem misplaced:dropwords:CGuildSealWarning
+edit rebuild/src/compiled/00/e4/CMBanditLeader_Main_00e4a740.cpp ok slots0 nomem misplaced:dropwords:CM_BanditLeader
+edit rebuild/src/compiled/00/e7/CFishermanWasp_Main_00e7bb30.cpp ok slots0 nomem misplaced:dropwords:CFishermanWasp
+edit rebuild/src/compiled/00/e9/CHHUndead_Main_00e95e80.cpp ok slots0 nomem misplaced:dropwords:CHHUndead
+edit rebuild/src/compiled/00/e9/NScriptCVGuildMasterScript_RegisterMain_00e90830.cpp ok slots1 mem inldtor
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistLeader_Init_00ea8f00.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/ec/CSecretWhisperingFriend_Init_00ec0b00.cpp ok slots0 mem
+edit rebuild/src/compiled/00/ec/CSickChildFishingSpot_Main_00ecd530.cpp ok slots0 nomem misplaced:dropwords:CSickChildFishingSpot
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChild_Init_00ec5da0.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsMother_Init_00ec5c90.cpp ok slots3 mem misplaced:ns
+edit rebuild/src/compiled/00/ed/CTBBard_GetRandomSpeech_00ed99d0.cpp ok slots0 nomem misplaced:dropwords:CTB_Bard
+edit rebuild/src/compiled/00/ee/CTHTriggerGuildRose_Main_00ee3ee0.cpp ok slots0 nomem misplaced:dropwords:CTH_Trigger_Guild_Rose
+edit rebuild/src/compiled/00/ee/CTHTriggerOakvaleGossip_Main_00ee06b0.cpp ok slots0 nomem misplaced:dropwords:CTH_Trigger_Oakvale_Gossip
+edit rebuild/src/compiled/00/ee/NScriptCPersonalScriptalextestScript_RegisterMain_00eed360.cpp ok slots1 mem inldtor
+edit rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00efe700.cpp ok slots0 nomem misplaced:dropwords:CEndGameScarletRobe
+edit rebuild/src/compiled/00/ef/CEndGameScarletRobe_Main_00eff4d0.cpp ok slots0 nomem misplaced:dropwords:CEndGameScarletRobe
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCGuildSealTriggerTestScript_CreateActiveEntityScript_00efbf80.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCHitSwitchTestScript_CreateActiveEntityScript_00efb9c0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCMarkTestScriptsScript_CreateActiveEntityScript_00efda90.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCTonyTestScriptsScript_CreateActiveEntityScript_00eff5c0.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCbanditlevelcutsceneScript_CreateActiveEntityScript_00efad80.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/ef/CEntityScriptBindingNScriptCguyscriptScript_CreateActiveEntityScript_00efa210.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/ef/CTestPos_Main_00ef3840.cpp ok slots0 nomem misplaced:dropwords:CTestPos
+edit rebuild/src/compiled/00/ef/NScriptCBenTestScriptsScript_RegisterMain_00efe4b0.cpp ok slots1 mem inldtor
+edit rebuild/src/compiled/00/ef/NScriptCMarkTestScriptsScript_RegisterMain_00efca00.cpp ok slots1 mem inldtor
+edit rebuild/src/compiled/00/f0/CEndGameScarletRobe_Main_00f01c50.cpp ok slots0 nomem misplaced:dropwords:CEndGameScarletRobe
+edit rebuild/src/compiled/00/f0/CEntityScriptBindingNScriptCOracleMinigameTestScript_CreateActiveEntityScript_00f01150.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/f0/CEntityScriptBindingNScriptCQAmbushTradersScript_CreateActiveEntityScript_00f09b10.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/f0/CEntityScriptBindingNScriptCQCinemaTestScript_CreateActiveEntityScript_00f01d20.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/f1/CEntityScriptBindingNScriptCQArenaScript_CreateActiveEntityScript_00f1cb50.cpp ok slots3 nomem misplaced:Stop,Start->Init x1,flatST,ns
+edit rebuild/src/compiled/00/ce/CMKHS2SOUL_Main_00ce0920.cpp ok slots0 nomem misplaced:dropwords:CMK_HS2_SOUL
+edit rebuild/src/compiled/00/ce/CMKHS2SOUL_Main_00ce0b00.cpp ok slots0 nomem misplaced:dropwords:CMK_HS2_SOUL
+edit rebuild/src/compiled/00/ce/CMKHS2SOUL_Main_00ce0ce0.cpp ok slots0 nomem misplaced:dropwords:CMK_HS2_SOUL
+edit rebuild/src/compiled/00/ce/CMagicBarrierGraveyard_Main_00ce0600.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCFinalSummoner_Main_00cfddc0.cpp ok slots2 mem inldtor
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisEnemy_Main_00cfcb50.cpp ok slots2 mem inldtor
+edit rebuild/src/compiled/00/cf/NScriptCQAwakeningTheOracleScriptCNecropolisGhost_Init_00cfbd90.cpp ok slots3 mem inldtor
+edit rebuild/src/compiled/00/d1/NScriptCQBountyHuntScriptCBHGangLeader_OnPersist_00d179b0.cpp ok slots5 mem inldtor
+edit rebuild/src/compiled/00/d3/CProphetCage_Main_00d38f70.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/d3/CPuzzleBlockMoon_TurnIntoASunSign_00d38000.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/d3/CPuzzleBlockSun_TurnIntoAMoonSign_00d387a0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockMoon_Main_00d37d00.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d3/NScriptCQFireHeartScriptCPuzzleBlockSun_Main_00d384a0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCBirdKiller_Init_00d42ff0.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/d4/NScriptCQGuildTrainingScriptCSkillTarget_Init_00d41ca0.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsDepartureScriptCScorpionHome_Init_00d63d80.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/d6/NScriptCQGuildTrainingWoodsMeleeScriptCScorpionHome_Init_00d66c60.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCGranny_OnPredicateFail_00d8fd20.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeTorrent_Init_00d8f4a0.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCGranny_OnPersist_00d91da0.cpp ok slots5 mem inldtor
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCDrinkingHobbe_OnPredicateFail_00d9bf10.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_OnPredicateFail_00d9b8a0.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/da/CMagicBarrierGraveyard_Main_00da5490.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCBalverineFightingGuard_Init_00da4c30.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCCorneredGuard_Init_00da5d40.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMapKeeper_OnPredicateFail_00da4300.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionFieldGenerator_Init_00da5bf0.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionWarningGuard_Init_00da49d0.cpp ok slots3 mem inldtor
+edit rebuild/src/compiled/00/dc/CArtefact_Main_00dcdc50.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/dc/NScriptCQOrchardFarmRaidScriptCCrateTeamMember_GetNearestCrateToMe_00dcedf0.cpp ok slots7 mem
+edit rebuild/src/compiled/00/dd/NScriptCQPrisonEscapeRescueMotherScriptCCellDoorHero_Main_00dd8de0.cpp ok slots1 mem
+edit rebuild/src/compiled/00/df/CSummonerAttacker_Main_00df2380.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/e0/NScriptCQTraderEscortScriptCDarkwoodBalverineTrader_Main_00e03480.cpp ok slots2 mem inldtor
+edit rebuild/src/compiled/00/e1/CVChapelOfEvilScript_WatchForLeaving_00e10bf0.cpp ok slots0 nomem misplaced:dropwords:CV_ChapelOfEvilScript
+edit rebuild/src/compiled/00/e1/NScriptCQWhiteBalverineWWScriptCKGChief_Init_00e19390.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/e2/NScriptCQSMeetSisterScriptCMeetSisterSister_Main_00e295e0.cpp ok slots2 mem
+edit rebuild/src/compiled/00/e3/NScriptCVAssassinAttacksScriptCChestHidingAssassin_Init_00e38680.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/e3/NScriptCVBordelloScript_OnPersist_00e3b8f0.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/e4/CMTollBandit_Main_00e48a30.cpp ok slots0 nomem misplaced:dropwords:CM_TollBandit
+edit rebuild/src/compiled/00/e5/NScriptCVBodyGuardScriptCBodyGuard_OnPersist_00e5f190.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/e5/NScriptCVBookCollectingScriptCBSTeacher_AdjustHeroReputation_00e56d10.cpp ok slots1 mem
+edit rebuild/src/compiled/00/e6/NScriptCVChapelOfEvilScript_WatchForTermination_00e69f00.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/e8/NScriptCVGhostGrannyNecklaceScriptCGhostGrannyNecklace_OnPersist_00e8d2a0.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/e9/NScriptCVIntroductionToTrophiesScript_OnPersist_00e9e110.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ea/NScriptCVLostTraderScriptCLostTraderTrader_OnPredicateFail_00ea3640.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherFriend_Init_00eae790.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrotherYounger_Init_00eae670.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/ea/NScriptCVMurderTwistScriptCMurderTwistBrother_Init_00eae700.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/eb/NScriptCVMayorsInvitationScriptCWiseVillager_Init_00eb7aa0.cpp ok slots3 mem inldtor
+edit rebuild/src/compiled/00/eb/NScriptCVOracleScript_Main_00ebcd70.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ec/CSecretWhisperingFriend_Main_00ec0ba0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/ec/NScriptCVPicnicAreaAfterWaspBossScript_Main_00ec12e0.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ec/NScriptCVRockTrollFirstEncounterScriptCRTFERockTroll_Init_00ec4540.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCManInLove_Init_00ec8210.cpp ok slots6 mem inldtor
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCSickChildsSister_Init_00ec6860.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader1_Init_00ecbd50.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ec/NScriptCVSickChildScriptCTalkingTrader2_Init_00ecca30.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ed/NScriptCVSwordInTheStoneScriptCSwordOfStrength_Init_00ed51e0.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ed/NScriptCVTempleOfLightScript_WatchForTermination_00edbc80.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ee/CStopDrawing_Main_00ee36a0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/ee/NScriptCTestQuestCard2Script_Main_00eef5d0.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ee/NScriptCTestQuestCard3Script_Main_00eef760.cpp ok slots7 mem inldtor misplaced:GetParentScript,Main
+edit rebuild/src/compiled/00/ef/CCham_Main_00ef84d0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/ef/CSwordChest_Main_00ef2290.cpp ok slots0 nomem misplaced:dropwords:CSwordChest
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLookAtMe1_Main_00ef5cb0.cpp ok slots1 mem gsi misplaced:ns
+edit rebuild/src/compiled/00/d2/CPermanentBarrier_Main_00d2d830.cpp ok slots0 nomem misplaced:dropwords:CPermanentBarrier
+edit rebuild/src/compiled/00/d7/CSummoner1_Main_00d7ecb0.cpp ok slots0 nomem misplaced:dropwords:CSummoner1
+edit rebuild/src/compiled/00/d7/CSummoner2_Main_00d7eed0.cpp ok slots0 nomem misplaced:dropwords:CSummoner2
+edit rebuild/src/compiled/00/de/CSPNymphTrigger_Main_00ded380.cpp ok slots0 nomem misplaced:dropwords:CSP_NymphTrigger
+edit rebuild/src/compiled/00/de/CVictimsBrother_DealWithHeroHittingMe_00deb000.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCVillager_Main_00df9180.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/e0/CDW5Balv_Main_00e047d0.cpp ok slots0 nomem misplaced:dropwords:CDW5_Balv
+edit rebuild/src/compiled/00/e0/CDW5Balv_Main_00e04970.cpp ok slots0 nomem misplaced:dropwords:CDW5_Balv
+edit rebuild/src/compiled/00/ea/CMurderTwistSheriff_Main_00eaef30.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/eb/CMurderTwistAssassinGuard_DoSayingThankYouToHero_00eb5d50.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/eb/CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoBecomingSuspiciousOfHero_00eb10c0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoRemindingHeroToKillSheriff_00eb15c0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/eb/CMurderTwistSheriff_DoSuspicious_00eb19c0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/ee/CStopDrawing_Main_00eed8b0.cpp ok slots0 nomem misplaced:dropwords:CStopDrawing
+edit rebuild/src/compiled/00/ee/CTHTriggerOakvale_Main_00ee0a20.cpp ok slots0 nomem misplaced:dropwords:CTH_Trigger_Oakvale
+edit rebuild/src/compiled/00/ef/CTrappedMan_Main_00ef1e10.cpp ok slots0 nomem misplaced:dropwords:CTrappedMan
+edit rebuild/src/compiled/00/de/CSPUndeadTrigger_Main_00def760.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/e6/CSpectator_Init_00e63730.cpp ok slots0 nomem misplaced:dropwords:CSpectator
+edit rebuild/src/compiled/00/e6/NScriptCVChickenKickingScriptCChickenSign_Main_00e64df0.cpp ok slots1 nomem misplaced:Main,dropwords:CChickenSign
+edit rebuild/src/compiled/00/e8/CFishCompOrganiser_Initialize_00e81d10.cpp ok slots0 nomem misplaced:dropwords:CFishCompOrganiser
+edit rebuild/src/compiled/00/ed/CTBBardSpawnPoint_Main_00ed8120.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/ef/CBalvMarker_Main_00efeb60.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/ef/CCrateDeathMarker_Main_00ef12f0.cpp ok slots0 nomem misplaced:dropwords:CCrateDeathMarker
+edit rebuild/src/compiled/00/d2/CMKGHCHERO3_Main_00d29db0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/d2/CMazeJournal_Main_00d2a180.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/d4/CHeroBed_Main_00d446d0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/d5/CMeleeThunder_Main_00d58080.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/da/CMinionSpawner_Main_00da5980.cpp ok slots0 nomem misplaced:dropwords:CMinionSpawner
+edit rebuild/src/compiled/00/dc/CMRestartMarker_Main_00dc21f0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/e2/CMeetSisterMessenger_Main_00e292c0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/e3/CMeleeThunder_Main_00e386e0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/e4/CMTauntingBandit_Main_00e4b430.cpp ok slots0 nomem misplaced:dropwords:CM_TauntingBandit
+edit rebuild/src/compiled/00/ea/CLostTraderTrader_MakeRandomComment_00ea4de0.cpp ok slots1 mem gsi
+edit rebuild/src/compiled/00/f1/CCham_Main_00f14770.cpp ok slots1 mem gsi

@@ -25,13 +25,13 @@ class CCharString { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;                   // 0x0143E8F8
-class CTimer { public:                                             // a script timer: the interface's timer index
-    long Index;
-    CTimer() { Index = g_pGameScriptInterface->RegisterTimer(); }
-    ~CTimer() { g_pGameScriptInterface->DeregisterTimer(Index); }   // out of line 0x00CD4470
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(Index, time); }
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(Index); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
+inline CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"
@@ -57,7 +57,7 @@ void NScript::CQ_BanditCampScript::CheckForSecondAreaDoorHelp()
     if (IsActiveThreadTerminating())
         return;
     CTimer timer;
-    timer.SetTime(5);
+    timer = 5;
     long stage = 0;
     for (;;) {
         if (IsActiveThreadTerminating())
@@ -101,7 +101,7 @@ void NScript::CQ_BanditCampScript::CheckForSecondAreaDoorHelp()
                 stage = 3;
                 break;
             }
-            timer.SetTime(20);
+            timer = 20;
         }
         Game->NewScriptFrame();
     }

@@ -161,9 +161,7 @@ void NScript::CQ_WizardBattleScript::PhaseOne()
     }
     if (IsActiveThreadTerminating())
     {
-#pragma inline_depth(0)
         return;
-#pragma inline_depth()
     }
     long conversation = Game->AddNewConversation(Game->GetHero(), false, false);
     Game->AddLineToConversation(conversation, "TEXT_CS_075_GM_CHANT", false, Game->GetHero(), Game->GetHero());
@@ -171,16 +169,12 @@ void NScript::CQ_WizardBattleScript::PhaseOne()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     }
     if (IsActiveThreadTerminating())
     {
-#pragma inline_depth(0)
         return;
-#pragma inline_depth()
     }
     CScriptThing endBarrier = Game->GetThingWithScriptName("EndGameBarrier");
     Game->RemoveThing(endBarrier, false, true);
@@ -190,12 +184,9 @@ void NScript::CQ_WizardBattleScript::PhaseOne()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     }
-#pragma inline_depth(0)
     if (IsActiveThreadTerminating())
         return;
     {
@@ -222,4 +213,3 @@ void NScript::CQ_WizardBattleScript::PhaseOne()
     Game->DisplayQuestInfo(true);
     Game->SetQuestCardObjective(Game->GetActiveQuestName(), "TEXT_QUEST_WIZARD_BATTLE_OBJECTIVE_02", "HookCoast", "HookCoast");
 }
-#pragma inline_depth()

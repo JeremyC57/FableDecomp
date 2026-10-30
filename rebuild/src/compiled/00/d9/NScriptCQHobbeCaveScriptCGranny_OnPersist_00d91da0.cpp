@@ -43,7 +43,8 @@ namespace NScript{class CRuntimeScriptedEntityPersist{public:class CPersistInfo;
 class CGameScriptInterfaceBase;
 class CPersistContext{public:template<class T>void Transfer(const char*,T&,const T&);};class CTimer{public:long TimerIndex;};
 // CEntityScriptBase is a polymorphic API projection: Game+4, Me+8, own base vtable012c3224, OnPersist slot4. Unused virtual names are descriptive.
-class CEntityScriptBase{public:virtual ~CEntityScriptBase(){}virtual void UnknownSlot1(){}virtual void UnknownSlot2(){}virtual void UnknownSlot3(){}virtual void OnPersist(CPersistContext&){}CGameScriptInterfaceBase* Game;CScriptThing Me;};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace NScript{class CQ_HobbeCaveScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:class CGranny;};class CQ_HobbeCaveScript::CGranny:public CEntityScriptBase{public:CQ_HobbeCaveScript* ParentClass;CQ_SunnyvaleMasterData* PMasterData;bool IntroducedMyself;long TimesTalkedTo;bool WaitingOutside;private:virtual void OnPersist(CPersistContext&);};void CQ_HobbeCaveScript::CGranny::OnPersist(CPersistContext& context){context.Transfer("IntroducedMyself",IntroducedMyself,false);context.Transfer("TimesTalkedTo",TimesTalkedTo,0L);context.Transfer("WaitingOutside",WaitingOutside,false);}}
 #ifdef _MSC_VER
 typedef char ExactOwnerSize[sizeof(NScript::CQ_HobbeCaveScript::CGranny)==40?1:-1];

@@ -34,26 +34,17 @@ public:
     T* Data;
     void* Info;
 };
-class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C
-public:
-    virtual const CCharString& GetName() const;         // slot 1
-    virtual CCharString GetDefName() const;             // slot 2
-    virtual CCharString GetDataString() const;          // slot 3 (+0x0c) 0x004AA900
-    CCountedPointer<CScriptThing> PImp;                 // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 bool __fastcall IsDistanceBetweenThingsOver(const CScriptThing& a, const CScriptThing& b, float distance);    // 0x00CBE3EA
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CEntityScriptBase {                               // retail 0x14 bytes
-public:
-    virtual ~CEntityScriptBase();
-    CGameScriptInterfaceBase* Game;                     // +0x04
-    CScriptThing Me;                                    // +0x08
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 namespace std {
 template <class _Tp> class allocator { };
 template <class _Tp, class _Alloc = allocator<_Tp> > class vector {   // retail STLport vector, 12 bytes

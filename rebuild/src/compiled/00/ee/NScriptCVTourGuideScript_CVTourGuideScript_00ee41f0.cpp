@@ -29,11 +29,11 @@ struct __declspec(novtable) CLevelScriptBase : CScriptBase {
 class CCharString { public: void* PStringData; CCharString(); };   // default ctor 0x0099E4B0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 template<class T> class CCountedPointer { public: T* Data; void* Info; CCountedPointer() : Data(0), Info(0) { } };
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    CCountedPointer<CScriptThing> PImp;                 // +0x04
-    CScriptThing() : CBaseClass(), PImp() { }
-    virtual ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() : CBaseClass(), PImp() { }
 namespace NScript {
 class CQ_SunnyvaleMasterData;
 class CV_TourGuideScript : public CLevelScriptBase<CQ_SunnyvaleMasterData> {   // vtable 0x012F46B8

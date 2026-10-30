@@ -1,0 +1,10 @@
+00d2d830	RELOC_RENAMED	leafsym ?Main@CPermanentBarrier@@QAEXXZ -> ?Main@CPermanentBarrier@@EAEXXZ
+00d7ecb0	RELOC_RENAMED	leafsym ?Main@CSummoner1@@QAEXXZ -> ?Main@CSummoner1@@EAEXXZ
+00d7eed0	RELOC_RENAMED	leafsym ?Main@CSummoner2@@QAEXXZ -> ?Main@CSummoner2@@EAEXXZ
+00ded380	RELOC_RENAMED	leafsym ?Main@CSP_NymphTrigger@@QAEXXZ -> ?Main@CSP_NymphTrigger@@EAEXXZ
+00e047d0	RELOC_RENAMED	leafsym ?Main@CDW5_Balv@@QAEXXZ -> ?Main@CDW5_Balv@@EAEXXZ
+00e04970	RELOC_RENAMED	leafsym ?Main@CDW5_Balv@@QAEXXZ -> ?Main@CDW5_Balv@@EAEXXZ
+00eaef30	RELOC_RENAMED	leafsym ?Main@CMurderTwistSheriff@@QAEXXZ -> ?Main@CMurderTwistSheriff@@EAEXXZ
+00eed8b0	RELOC_RENAMED	leafsym ?Main@CStopDrawing@@QAEXXZ -> ?Main@CStopDrawing@@EAEXXZ
+00ee0a20	RELOC_RENAMED	leafsym ?Main@CTH_Trigger_Oakvale@@QAEXXZ -> ?Main@CTH_Trigger_Oakvale@@EAEXXZ
+00ef1e10	RELOC_RENAMED	leafsym ?Main@CTrappedMan@@QAEXXZ -> ?Main@CTrappedMan@@EAEXXZ

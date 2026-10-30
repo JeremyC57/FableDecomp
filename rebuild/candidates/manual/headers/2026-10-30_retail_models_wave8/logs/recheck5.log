@@ -1,0 +1,81 @@
+addr       parity           behav  name
+00d55e90   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00d55e90   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d55e90   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d55e90   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d55e90   RELOCATION_MATCH PASS   Main
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00dbeb20   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase
+00dbeb20   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e72a0 labelled 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase'
+00dbeb20   WARN RELOC_NAME: ?Construct@CCutsceneCastMap@@QAEXXZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00dbeb20   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b60 labelled 'CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase'
+00dbeb20   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00dbeb20   WARN RELOC_NAME: ?Destroy@CCutsceneCastMap@@QAEXXZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00dbeb20   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00dbeb20   RELOCATION_MATCH PASS   PostAttackStuff
+00dc3fc0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00dc3fc0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00dc3fc0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00dc3fc0   WARN RELOC_NAME: ??1CScriptGameResourceObjectMovieFull@@UAE@XZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00dc3fc0   RELOCATION_MATCH PASS   Main
+00dd1af0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00dd1af0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00dd1af0   RELOCATION_MATCH PASS   DoMultiplierCutscene
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00e1cfd0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectMovieBase
+00e1cfd0   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e72a0 labelled 'CScriptGameResourceObjectScriptedThingBase::CScriptGameResourceObjectScriptedThingBase'
+00e1cfd0   WARN RELOC_NAME: ?Construct@CCutsceneCastMap@@QAEXXZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00e1cfd0   WARN RELOC_NAME: ?Construct@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b60 labelled 'CScriptGameResourceObjectMovieBase::CScriptGameResourceObjectMovieBase'
+00e1cfd0   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00e1cfd0   WARN RELOC_NAME: ?Destroy@CCutsceneCastMap@@QAEXXZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e1cfd0   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e1cfd0   RELOCATION_MATCH PASS   PhaseOne
+00e6f1c0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e6f1c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e6f1c0   RELOCATION_MATCH PASS   Main
+00e6f710   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e6f710   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e6f710   RELOCATION_MATCH PASS   Main
+00e71450   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e71450   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e71450   RELOCATION_MATCH PASS   Main
+00e73410   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e73410   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e73410   RELOCATION_MATCH PASS   Main
+00e73930   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e73930   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e73930   RELOCATION_MATCH PASS   Main
+00e7e640   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e7e640   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00e7e640   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e7e640   RELOCATION_MATCH PASS   Main
+00e9aeb0   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00e9aeb0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e9aeb0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e9aeb0   RELOCATION_MATCH PASS   SecondFleeCutscene
+00e9bbc0   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e9bbc0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e9bbc0   RELOCATION_MATCH PASS   DuelChallenge
+00ee76f0   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00ee76f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00ee76f0   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00ee76f0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00ee76f0   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00ee76f0   RELOCATION_MATCH PASS   Main
+
+WINS: 14
+  00d55e90 RELOCATION_MATCH NScript::CQ_GuildTrainingMeleeScript::Main
+  00dbeb20 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::PostAttackStuff
+  00dc3fc0 RELOCATION_MATCH CGraveyardDemon::Main
+  00dd1af0 RELOCATION_MATCH NScript::CQ_OrchardFarmRaidScript::DoMultiplierCutscene
+  00e1cfd0 RELOCATION_MATCH NScript::CQ_WizardBattleScript::PhaseOne
+  00e6f1c0 RELOCATION_MATCH CDF_ThunderHelmet::Main
+  00e6f710 RELOCATION_MATCH CDF_CombatMult::?Main@CDF_CombatMult@@
+  00e71450 RELOCATION_MATCH CDF_EatPies::?Main@CDF_EatPies@@
+  00e73410 RELOCATION_MATCH CDF_MarryLadyGrey::Main
+  00e73930 RELOCATION_MATCH CDF_SexMad::Main
+  00e7e640 RELOCATION_MATCH CFishCompCompetitor::Main
+  00e9aeb0 RELOCATION_MATCH NScript::CV_HeroDuelScript::SecondFleeCutscene
+  00e9bbc0 RELOCATION_MATCH NScript::CV_HeroDuelScript::?DuelChallenge@CV_HeroDuelScript@NScript@@QAEXXZ
+  00ee76f0 RELOCATION_MATCH CTrophyDealerInCave::Main
+exit 0

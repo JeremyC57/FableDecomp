@@ -1,4 +1,5 @@
-// CActiveEntityScript_00ea5890::SuspendableProcess() -- suspends the running process or fires the stored callback with a CScriptThing copy, then flags itself
+// CActiveEntityScript<NScript::CV_LostTraderScript>::SuspendableProcess() -- runs the entity script's Main, or calls the bound member function with a CScriptThing copy, then stops the process
+// Leaf: ?SuspendableProcess@?$CActiveEntityScript@VCV_LostTraderScript@NScript@@@@UAEXXZ
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00EA5890, oracle length 68 bytes.
 // Grade: landed -- byte-exact (RELOCATION_MATCH) and behaviour PASS under the Linux lane (Wine + DDK
 //        13.10.4035 cl.exe); generated for a repeated body shape, see the batch README.
@@ -12,41 +13,34 @@
 // vtables (0x01231710, 0x01238C8C; both stores are kept), the thing pointer and the shared count
 // block whose counter is incremented when present. Both paths then set the byte flag at +0x5.
 // One of 120 bodies of this shape.
-class CThing;
-struct SCount { long m_references; };
-
+// Identity (wave 8): slot 4 of the RTTI-less vtable 0x012EE154, which only CEntityScriptBinding<NScript::CV_LostTraderScript>::CreateActiveEntityScript
+//   stores (scripts/aes_T.py); FableWin.pdb ?SuspendableProcess@?$CActiveEntityScript@VCV_LostTraderScript@NScript@@@@UAEXXZ. Layout and
+//   members: engine/CActiveEntityScript.h (PEntityScript +0x34, Entity +0x48, Func +0x58, PParentScript +0x5c; StopRunning +0x05).
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-
-class CScriptThing : public CBaseClass { public:
-    CThing* m_pThing;                      // +4
-    SCount* m_pCount;                      // +8
-    CScriptThing(const CScriptThing& other) : CBaseClass(other), m_pThing(other.m_pThing), m_pCount(other.m_pCount) { if (m_pCount) ++m_pCount->m_references; }
+// CCountedPointer<T>: the Ego_r.pdb members (Data, Info; CCPPointerInfo RefCount +0); the copy is the inline addref retail
+// expands inside the CScriptThing copy below.
+class CCPPointerInfo { public: unsigned long RefCount; };
+template <class T> class CCountedPointer { public:
+    T*              Data;
+    CCPPointerInfo* Info;
+    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
 };
+// CScriptThing / CEntityScriptBase / CActiveEntityScript<T>: the retail models from the shared headers.
+#define FABLE_RETAIL_NSCRIPT
+#define FABLE_RETAIL_SUSPENDABLE_PROCESS
+#include "engine/CScriptThing.h"
+// Retail expands the CScriptThing copy for the by-value argument (CBaseClass vtable 0x01231710 then 0x01238C8C, PImp addref).
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+#include "engine/CEntityScriptBase.h"
+#include "engine/CActiveEntityScript.h"
+namespace NScript { class __single_inheritance CV_LostTraderScript; }   // T: Func is a 4-byte member pointer (single inheritance)
 
-struct CProcess {
-    virtual void v00();
-    virtual void Suspend();                // slot 1
-};
-
-struct CActiveEntityScript_00ea5890 {
-    virtual void v00();
-    unsigned char _pad0[0x1];
-    bool m_bSuspended;                     // +0x5
-    unsigned char _pad1[0x2e];
-    CProcess* m_pProcess;                  // +0x34
-    unsigned char _pad2[0x10];
-    CScriptThing m_thing;                  // +0x48
-    unsigned char _pad3[0x4];
-    void (__fastcall* m_pfnCallback)(void* object, CScriptThing thing);   // +0x58
-    void* m_pCallbackObject;               // +0x5c
-    void SuspendableProcess();
-};
-
-void CActiveEntityScript_00ea5890::SuspendableProcess()
+template <class T> void CActiveEntityScript<T>::SuspendableProcess()
 {
-    if (m_pProcess)
-        m_pProcess->Suspend();
+    if (PEntityScript.Data)
+        PEntityScript.Data->Main();
     else
-        m_pfnCallback(m_pCallbackObject, m_thing);
-    m_bSuspended = true;
+        (PParentScript->*Func)(Entity);
+    StopRunning = true;
 }
+template void CActiveEntityScript<NScript::CV_LostTraderScript>::SuspendableProcess();

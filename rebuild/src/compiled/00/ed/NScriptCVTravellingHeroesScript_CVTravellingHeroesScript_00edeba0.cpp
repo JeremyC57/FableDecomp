@@ -49,12 +49,12 @@ template <class T> class CCountedPointer { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-struct CIsThingConscious {                               // NScript predicate, vtable 0x012C2FE8: Thing alive and not unconscious
-    CScriptThing Thing;                                  // +0x04
-    CIsThingConscious(const CScriptThing& thing) : Thing(thing) {}
-    ~CIsThingConscious() {}
-    virtual bool operator()() const;                     // slot 0 (0x00CDDAB0)
-};
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingConscious: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingConscious.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
+inline NScript::CIsThingConscious::~CIsThingConscious() { }
+using NScript::CIsThingConscious;
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)

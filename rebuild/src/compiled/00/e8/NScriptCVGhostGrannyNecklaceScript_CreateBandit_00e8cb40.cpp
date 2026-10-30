@@ -20,22 +20,9 @@ class CCharString { public:
 class C3DVector { public: float X, Y, Z; };
 struct CScriptThingImpl;
 template <class T> class CCountedPointer { public: T* Data; void* Info; };
-class CScriptThing { public:                                   // vtable 0x01238C8C, 12 bytes
-    virtual ~CScriptThing();                            // 0x004AA840
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    virtual const C3DVector& GetPosition() const;       // slot 6 (+0x18)
-    virtual void t007(); virtual void t008(); virtual void t009();
-    virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019();
-    virtual void t020(); virtual void t021(); virtual void t022(); virtual void t023(); virtual void t024(); virtual void t025(); virtual void t026(); virtual void t027(); virtual void t028(); virtual void t029();
-    virtual void t030(); virtual void t031(); virtual void t032(); virtual void t033(); virtual void t034(); virtual void t035(); virtual void t036(); virtual void t037(); virtual void t038(); virtual void t039();
-    virtual void t040(); virtual void t041(); virtual void t042(); virtual void t043(); virtual void t044(); virtual void t045(); virtual void t046(); virtual void t047(); virtual void t048(); virtual void t049();
-    virtual void t050(); virtual void t051(); virtual void t052(); virtual void t053(); virtual void t054(); virtual void t055(); virtual void t056(); virtual void t057(); virtual void t058(); virtual void t059();
-    virtual void t060(); virtual void t061(); virtual void t062(); virtual void t063(); virtual void t064(); virtual void t065(); virtual void t066(); virtual void t067(); virtual void t068(); virtual void t069();
-    virtual void t070(); virtual void t071(); virtual void t072(); virtual void t073(); virtual void t074();
-    virtual bool IsAlive() const;                       // slot 75 (+0x12c)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // Layout: CSpawnedFuncBase is the retail polymorphic suspendable-process chain from the shared headers
 //   (FABLE_RETAIL_SUSPENDABLE_PROCESS opt-in: CSpawnedFuncBase : CSuspendableProcessMicrothread : CASuspendableProcess :
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
@@ -96,7 +83,7 @@ void NScript::CV_GhostGrannyNecklaceScript::CreateBandit()
         if (Game->IsLevelLoaded("Greatwood_3") && BanditKilled != true && !Game->GetThingWithScriptName("GhostGrannyBandit").IsAlive()) {
             if (IsActiveThreadTerminating())
                 return;
-            CScriptThing bandit = Game->CreateCreature("CREATURE_BANDIT_LIEUTENANT", Game->GetThingWithScriptName("GhostGrannyBanditSpawn").GetPosition(), "GhostGrannyBandit", false);
+            CScriptThing bandit = Game->CreateCreature("CREATURE_BANDIT_LIEUTENANT", Game->GetThingWithScriptName("GhostGrannyBanditSpawn").GetPos(), "GhostGrannyBandit", false);
             Game->EntityAttachToScript(bandit, Game->GetActiveQuestName());
             SpawnFunction(new CSpawnedFunc1<CV_GhostGrannyNecklaceScript, CScriptThing>("CheckBanditDead", 0, this, &NScript::CV_GhostGrannyNecklaceScript::CheckBanditDead, bandit));
             while (!!Game->IsLevelLoaded("Greatwood_3")) {

@@ -24,28 +24,16 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
-    virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
-    virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
-    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
-    virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025(); virtual void s026();
-    virtual bool MsgIsTalkedToBy(const CCharString& name) const;   // slot 27 (+0x6c)
-    virtual void s028(); virtual void s029(); virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034(); virtual void s035();
-    virtual void s036(); virtual void s037(); virtual void s038(); virtual void s039(); virtual void s040();
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CRGBColour { public:                                    // D3DCOLOR byte order
     unsigned char B, G, R, A;
     CRGBColour(unsigned char r, unsigned char g, unsigned char b, unsigned char a) { R = r; G = g; B = b; A = a; }
 };
-typedef long EScriptAIPriority;
-typedef long ETextGroupSelectionMethod;
+#include "engine/fable_nscript_forward.h"   // the PDB enums the row used typedef stand-ins for
 typedef long EScriptEntityMoveType;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -263,7 +251,7 @@ void NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::Main()
             if (IsActiveThreadTerminating()) return;
             if (scripted.IsValid())
                 scripted.Release();
-            while (!Game->StartScriptingEntity(Me, scripted, 4)) {
+            while (!Game->StartScriptingEntity(Me, scripted, (EScriptAIPriority)4)) {
                 Game->NewScriptFrame();
                 if (IsActiveThreadTerminating()) return;
             }
@@ -273,7 +261,7 @@ void NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::Main()
             GameCalls* game = Game;
             game->PauseAllNonScriptedEntities(true);
             if (Game->GetHealth(scripted.GetScriptThing()) > 0.0f) {
-                scripted.Speak(Game->GetHero(), "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO", 2, false, true, false);
+                scripted.Speak(Game->GetHero(), "TEXT_QST_B12_OPENING_BANDIT_ON_SPEAK_TO", (ETextGroupSelectionMethod)2, false, true, false);
                 while (scripted.IsPerformingScriptTask()) {
                     Game->NewScriptFrame();
                     if (IsActiveThreadTerminating()) {
@@ -291,7 +279,7 @@ void NScript::CQ_TraderConflictEvilScript::CTC_BanditFollower::Main()
         bool hitByHero = !SetAgainstHero
                       && (Me.MsgIsHitBy("SCRIPT_NAME_HERO")
                           || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
-                              && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO")));
+                              && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO")));
         if (hitByHero) {
             if (IsActiveThreadTerminating()) return;
             if (!HitWarning) {

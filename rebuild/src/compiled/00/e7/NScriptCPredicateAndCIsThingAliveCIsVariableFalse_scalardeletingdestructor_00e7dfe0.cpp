@@ -19,21 +19,9 @@ template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info
 // CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
 namespace NScript {
-class CPredicateBase {                                  // vtable 0x012C2FF4
-public:
-    virtual bool operator()() const = 0;
-    virtual CPredicateBase* Clone() const = 0;
-    virtual ~CPredicateBase() { }                       // slot 2
-};
-class CIsThingAlive : public CPredicateBase {           // 16 bytes (Ego_r), vtable 0x012C32F0
-public:
-    CIsThingAlive(const CIsThingAlive& other);
-    virtual ~CIsThingAlive();                           // 0x00E241B0
-    virtual bool operator()() const;
-    virtual CPredicateBase* Clone() const;
-    CScriptThing Thing;                                 // +0x04
-};
 class CIsVariableFalse : public CPredicateBase {        // 8 bytes (Ego_r), vtable 0x012EA43C
 public:
     CIsVariableFalse(const bool& variable) : Variable(&variable) { }

@@ -22,12 +22,11 @@ public:
     void* Info;
     CCountedPointer() : Data(0), Info(0) { }
 };
-class CScriptThing : public CBaseClass {               // 12 bytes, vtable 0x01238C8C
-public:
-    CScriptThing() { }
-    virtual ~CScriptThing();
-    CCountedPointer<CScriptThing> PImp;                 // +0x04 Data, +0x08 Info
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
 class CScriptBase { public:                                    // 0x40 bytes, the quest-script root
     virtual ~CScriptBase();
     unsigned char _body[0x3c];                          // +0x04..+0x3f

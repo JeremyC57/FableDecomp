@@ -32,10 +32,11 @@ template <class T> class CCountedPointer { public:      // the counted pointer r
     CCountedPointer() : Object(0), Count(0) { }
 };
 
-class CScriptThing : public CBaseClass { public:             // vtable 0x01238C8C, 12 bytes
-    CCountedPointer<CScriptThing> PImp;         // +0x04 (Ego_r.pdb: CCountedPointer<CScriptThing> PImp -- object, count block)
-    CScriptThing() : CBaseClass(), PImp() { }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() : CBaseClass(), PImp() { }
 
 struct __declspec(novtable) CAction : CBaseClassNonCopyable {   // NTCScriptedControl::CActionBase: abstract, its own vtable store is dead
     void*   PTCScript;                          // +0x04 CTCScriptedControl*

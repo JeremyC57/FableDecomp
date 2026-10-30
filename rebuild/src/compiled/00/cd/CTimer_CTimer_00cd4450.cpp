@@ -33,10 +33,10 @@ class CGameScriptInterface { public:
 };
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
 
-class CTimer { public:
-    long TimerIndex;                               // +0x00
-    CTimer();
-};
+#define FABLE_RETAIL_NSCRIPT
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 
 CTimer::CTimer()
     : TimerIndex(g_pGameScriptInterface->CreateTimer())

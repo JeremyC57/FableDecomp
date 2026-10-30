@@ -21,10 +21,10 @@ class CCPPointerInfo { public:
     void* Data;
 };
 
-struct CCountedScriptImp {
+template <class T> class CCountedPointer { public:
     void* Data;
     CCPPointerInfo* Info;
-    ~CCountedScriptImp()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -38,12 +38,12 @@ struct CCountedScriptImp {
     }
 };
 
-class CScriptThing : public CBaseClass {
-public:
-    CCountedScriptImp PImp;
-    virtual ~CScriptThing() {}
-    CScriptThing& operator=(const CScriptThing& other);     // 0x008AB980
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
 class CGameScriptThing : public CScriptThing {      // Ego_r.pdb: CGameScriptThing derives from CScriptThing
 public:
     static CScriptThing __fastcall CreateNullThing(); // 0x008CFF40 (?CreateNullThing@CGameScriptThing@@SI?AVCScriptThing@@XZ)
@@ -58,9 +58,10 @@ class CPlayer {
 public:
     CThingPlayerCreature* GetPControlledCreature() const;                         // 0x00487DC0
 };
-class CPlayerManager { public:
-    CPlayer& GetMainPlayer();                       // 0x00449970 (the non-const overload; 0x00449960 is the const one)
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 
 class CGameScriptInterface { public:
     virtual void v000();

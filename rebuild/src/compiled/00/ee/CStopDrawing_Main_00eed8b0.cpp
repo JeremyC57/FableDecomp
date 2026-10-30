@@ -17,59 +17,38 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
-    virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
-    virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
-    virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
-    virtual bool MsgIsHitBy(const CCharString& hitter) const;                       // slot 21 (+0x54)
-    virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025(); virtual void s026();
-    virtual bool MsgIsTalkedToBy(const CCharString& talker) const;                  // slot 27 (+0x6c)
-    virtual void s028(); virtual void s029(); virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034(); virtual void s035();
-    virtual void s036(); virtual void s037(); virtual void s038(); virtual void s039(); virtual void s040();
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& from) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& from) const;    // slot 42 (+0xa8)
-    unsigned char _body[8];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    virtual ~CScriptThing();                               // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual bool operator()(const CScriptThing& thing) const;
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                             // vtable 0x012C32F0: a filter holding a script thing
-    CScriptThing m_thing;                          // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
-};
 }
 using NScript::CIsThingAlive;
 extern const char g_scriptNameHero[];              // 0x0125D1C8 "SCRIPT_NAME_HERO"
 class CPersonalScript_alextestScript;
 class CalextestData;
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CStopDrawing : public CEntityScriptBase {
 public:
-    void*                  __vftable;              // +0x00
-    CGameScriptInterface*  Game;                   // +0x04
-    CScriptThing           Me;                     // +0x08
-    CPersonalScript_alextestScript* ParentClass;   // +0x14
+        CPersonalScript_alextestScript* ParentClass;   // +0x14
     CalextestData*         PMasterData;            // +0x18
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CStopDrawing::Main()
@@ -84,7 +63,7 @@ void CStopDrawing::Main()
     while (!IsActiveThreadTerminating()) {
         bool touched = Me.MsgIsTalkedToBy(g_scriptNameHero) || Me.MsgIsHitBy(g_scriptNameHero)
                     || (Me.MsgIsHitByAnySpecialAbilityFrom(g_scriptNameHero)
-                        && !Me.MsgIsHitBySpecialAbilityFrom(0xe, g_scriptNameHero));
+                        && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)0xe, g_scriptNameHero));
         if (touched) {
             if (IsActiveThreadTerminating())
                 return;

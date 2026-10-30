@@ -16,9 +16,10 @@ class CCharString { public:
     CCharString(const char* text, long length);             // 0x0099EBF0
     ~CCharString();                                         // 0x0099EAE0
 };
-class CTimer { public:
-    long Index;
-};
+#define FABLE_RETAIL_NSCRIPT
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -54,7 +55,7 @@ using NScript::CQ_BountyHuntScript;
 
 void NScript::CQ_BountyHuntScript::AddBoastQuestInfo()
 {
-    g_pGameScriptInterface->SetTimer(BoastTime.Index, pGlobalScriptDef->BountyHuntBoastTimeLimit);
+    g_pGameScriptInterface->SetTimer(BoastTime.TimerIndex, pGlobalScriptDef->BountyHuntBoastTimeLimit);
     {
         CCharString text("HUD_CLOCK_ICON", -1);
         BoastTimerID = GSI->AddQuestInfoTimer(BoastTime, text, 1.0f);

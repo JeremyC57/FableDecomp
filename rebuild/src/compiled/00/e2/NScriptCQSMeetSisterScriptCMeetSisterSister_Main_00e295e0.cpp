@@ -76,11 +76,9 @@ public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 class CScriptThingImp;
-class CScriptThing : public CBaseClass {               // 12 bytes, vtable 0x01238C8C
-public:
-    virtual ~CScriptThing();                            // 0x004AA840
-    CCountedPointer<CScriptThingImp> PImp;              // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CBaseObjectPointer;
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -216,14 +214,8 @@ void __fastcall RunCutsceneMacro(const CCharString& name, std::map<CCharString, 
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
 
-class CEntityScriptBase {                               // retail 0x14 bytes
-public:
-    virtual ~CEntityScriptBase();
-    virtual void Main();                                // slot 1
-    CGameScriptInterfaceBase* Game;                     // +0x04
-    CScriptThing Me;                                    // +0x08
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 // CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
 #include "engine/CLevelScriptBase.h"

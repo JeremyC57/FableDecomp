@@ -24,11 +24,11 @@ class CScriptDef { public:
 extern CScriptDef* pGlobalScriptDef;                            // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 inline CScriptDef* GetScriptDef() { return pGlobalScriptDef; }
 
-class CTimer { public:
-    long TimerIndex;                                   // +0x00
-    long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-    void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
+inline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
 
 class CScriptThing { public:                                  // 12 bytes (vtable 0x01238C8C)
     void* __vftable;
@@ -59,7 +59,7 @@ void CQ_HeroSoulsNostroScript::CSUMMONED_CREATURE::OnPredicateFail()
 {
     --ParentClass->UndeadAlive;
     if (ParentClass->NostroVulnerableTimer.GetTime() < GetScriptDef()->NostroVulnerableTimerThreshold)
-        ParentClass->NostroVulnerableTimer.SetTime(ParentClass->NostroVulnerableTimer.GetTime() + GetScriptDef()->NostroVulnerableTimerBonus);
+        ParentClass->NostroVulnerableTimer = ParentClass->NostroVulnerableTimer.GetTime() + GetScriptDef()->NostroVulnerableTimerBonus;
 }
 
 } // namespace NScript

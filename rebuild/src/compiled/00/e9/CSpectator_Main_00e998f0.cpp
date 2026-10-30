@@ -70,13 +70,11 @@ public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-class CTimer { public:                                         // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer();                                           // 0x00CD4450
-    ~CTimer();                                          // 0x00CD4470
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 extern bool g_bScriptAnimationFlag;                    // 0x01375748
 struct CQ_HeroDuelScript {
     unsigned char _pad00[0x4b];
@@ -150,7 +148,7 @@ void CSpectator::Main()
     if (IsActiveThreadTerminating())
         return;
     CTimer cheerTimer;
-    cheerTimer.SetTime(rand() % 60 + 2);
+    cheerTimer = rand() % 60 + 2;
     Game->EntitySetFacingAngleTowardsThing(Me, Game->GetThingWithScriptName("Thunder"), true);
     while (!ParentClass->DuelOver) {
         Game->NewScriptFrame();
@@ -216,7 +214,7 @@ void CSpectator::Main()
                 Game->EntitySetFacingAngleTowardsThing(Me, Game->GetThingWithScriptName("Thunder"), true);
                 FacingHero = true;
             }
-            cheerTimer.SetTime(rand() % 60 + 2);
+            cheerTimer = rand() % 60 + 2;
         }
         if (!ParentClass->Jeering) {
             if (IsActiveThreadTerminating())

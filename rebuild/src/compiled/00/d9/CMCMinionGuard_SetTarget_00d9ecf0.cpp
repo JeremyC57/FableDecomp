@@ -8,10 +8,10 @@ struct SCountBlock {                               // the shared count block of 
     void (__fastcall* m_pfnDestroy)(CThing*);      // +0x04
     CThing* m_pObject;                             // +0x08
 };
-struct CCountedPointer_CThing {                    // {object, count block}
+template <class T> class CCountedPointer { public:                    // {object, count block}
     CThing*      m_pObject;                        // +0x00
     SCountBlock* m_pCount;                         // +0x04
-    CCountedPointer_CThing& operator=(const CCountedPointer_CThing& other)
+    CCountedPointer& operator=(const CCountedPointer& other)
     {
         SCountBlock* count = other.m_pCount;
         CThing* object = other.m_pObject;
@@ -31,10 +31,13 @@ struct CCountedPointer_CThing {                    // {object, count block}
         return *this;
     }
 };
-class CScriptThing { public:                              // 12 bytes: vptr, CCountedPointer<CThing> PImp
-    virtual void v00();
-    CCountedPointer_CThing PImp;                   // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 struct CQuestCalls {
     virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
     virtual void v008(); virtual void v009(); virtual void v010(); virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015();

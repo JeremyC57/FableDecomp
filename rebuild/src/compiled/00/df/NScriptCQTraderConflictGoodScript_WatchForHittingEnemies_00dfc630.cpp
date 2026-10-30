@@ -12,19 +12,11 @@ enum EHeroAbility { HERO_ABILITY_NONE };
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    void* PImpData;                                     // +0x04 CCountedPointer Data
-    void* PImpInfo;                                     // +0x08 CCountedPointer Info
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005(); virtual void t006(); virtual void t007(); virtual void t008();
-    virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016();
-    virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020();
-    virtual bool MsgIsHitBy(const CCharString& attacker) const;   // slot 21 (+0x54)
-    virtual void t022(); virtual void t023(); virtual void t024(); virtual void t025(); virtual void t026(); virtual void t027(); virtual void t028(); virtual void t029();
-    virtual void t030(); virtual void t031(); virtual void t032(); virtual void t033(); virtual void t034(); virtual void t035(); virtual void t036(); virtual void t037();
-    virtual void t038(); virtual void t039(); virtual void t040();
-    virtual bool MsgIsHitBySpecialAbilityFrom(EHeroAbility ability, const CCharString& attacker) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& attacker) const;   // slot 42 (+0xa8)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 

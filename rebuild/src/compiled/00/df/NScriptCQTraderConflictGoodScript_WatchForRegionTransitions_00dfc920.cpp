@@ -11,16 +11,18 @@ class CCharString { public:
 class CThing;
 struct SCount { long m_references; };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
-struct CCPPointerImp {                             // CCPPointer<CScriptThingImp>: Data, Info (memberwise copy adds a reference)
+template <class T> class CCountedPointer { public:                             // CCPPointer<CScriptThingImp>: Data, Info (memberwise copy adds a reference)
     CThing* Data;
     SCount* Info;
-    CCPPointerImp(const CCPPointerImp& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->m_references; }
+    CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->m_references; }
 };
-class CScriptThing : public CBaseClass { public:                 // vtable 0x01238C8C, 12 bytes
-    virtual void s00();
-    CCPPointerImp PImp;                            // +4
-    // the copy constructor is the compiler-generated memberwise one
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 template <class T> struct CRetailVector {          // STLport vector (12 bytes)
     T* _M_start;
     T* _M_finish;

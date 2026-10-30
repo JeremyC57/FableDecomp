@@ -64,10 +64,9 @@ template <class T> class CCountedPointer { public:
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 struct CScriptThingImp;
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    CCountedPointer<CScriptThingImp> PImp;              // +0x04
-    virtual ~CScriptThing();                            // 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -185,17 +184,13 @@ void CQ_OrchardFarmRaidScript::DoMultiplierCutscene()
             if (HeroTeam == 1) {
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
                 RunCutsceneMacro("CS_ORCHARD_EVIL_WHISPERINTRO_GWL", cast, 0, 0, false, true);
             } else {
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
                 RunCutsceneMacro("CS_ORCHARD_GOOD_WHISPERINTRO_GWL", cast, 0, 0, false, true);
             }
@@ -207,17 +202,13 @@ void CQ_OrchardFarmRaidScript::DoMultiplierCutscene()
             if (HeroTeam == 1) {
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
                 RunCutsceneMacro("CS_ORCHARD_EVIL_WHISPERINTRO_LOP", cast, 0, 0, false, true);
             } else {
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
                 RunCutsceneMacro("CS_ORCHARD_GOOD_WHISPERINTRO_LOP", cast, 0, 0, false, true);
             }
@@ -232,24 +223,18 @@ void CQ_OrchardFarmRaidScript::DoMultiplierCutscene()
         if (GSI->DisplayTutorial(TUTORIAL_CATEGORY_COMBAT_MULTIPLIER)) {
             if (IsActiveThreadTerminating()) {
                 game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
             while (!GSI->MsgIsTutorialClickedPast()) {
                 GSI->NewScriptFrame();
                 if (IsActiveThreadTerminating()) {
                     game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             }
             if (IsActiveThreadTerminating()) {
                 game->PauseAllNonScriptedEntities(false);
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
         }
         ShownCombatMultiplierTutorial = true;

@@ -29,25 +29,15 @@ public:
     T* Data;
     void* Info;
 };
-class CScriptThing : public CBaseClass {                // 12 bytes, vtable 0x01238C8C (slot 0 = the CBaseClass dtor)
-public:
-    virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
-    virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
-    virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019();
-    virtual bool MsgIsUsedBy(const CCharString& name) const;      // 0x004AAB10 (Ego_r ?MsgIsUsedBy@CScriptThing@@UBE_NABVCCharString@@@Z)   // slot 20 (+0x50)
-    CCountedPointer<CScriptThing> PImp;                 // +0x04
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 // CGameScriptInterfaceBase is the retail abstract script interface from the shared headers (FABLE_RETAIL_NSCRIPT
 //   opt-in: CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x0126009C, 917 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterfaceBase.h"
-class CEntityScriptBase {                               // retail 0x14 bytes
-public:
-    virtual ~CEntityScriptBase();
-    CGameScriptInterfaceBase* Game;                     // +0x04
-    CScriptThing Me;                                    // +0x08
-    bool IsActiveThreadTerminating() const;             // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 // CScriptBase / CLevelScriptBase<T>: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
 #include "engine/CLevelScriptBase.h"

@@ -67,23 +67,11 @@ struct CThing_Retail {
     }
     unsigned long HasInterface(long interfaceType) const { return m_presentBits[interfaceType >> 5] & (1UL << (interfaceType & 31)); }   // the masked word (a bool would narrow the test)
 };
-class CScriptThing { public:
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007();
-    virtual void v008(); virtual void v009(); virtual void v010();
-    virtual CThing_Retail* GetThing() const;        // slot 11 (+0x2c)
-        virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017(); virtual void v018(); virtual void v019();
-        virtual void v020(); virtual void v021(); virtual void v022(); virtual void v023(); virtual void v024(); virtual void v025(); virtual void v026(); virtual void v027();
-        virtual void v028(); virtual void v029(); virtual void v030(); virtual void v031(); virtual void v032(); virtual void v033(); virtual void v034(); virtual void v035();
-        virtual void v036(); virtual void v037(); virtual void v038(); virtual void v039(); virtual void v040(); virtual void v041(); virtual void v042(); virtual void v043();
-        virtual void v044(); virtual void v045(); virtual void v046(); virtual void v047(); virtual void v048(); virtual void v049(); virtual void v050(); virtual void v051();
-        virtual void v052(); virtual void v053(); virtual void v054(); virtual void v055(); virtual void v056(); virtual void v057(); virtual void v058(); virtual void v059();
-        virtual void v060(); virtual void v061(); virtual void v062(); virtual void v063(); virtual void v064(); virtual void v065(); virtual void v066(); virtual void v067();
-        virtual void v068(); virtual void v069(); virtual void v070(); virtual void v071(); virtual void v072(); virtual void v073(); virtual void v074();
-    virtual bool IsValid() const;                  // slot 75 (+0x12c)
-    CThing_Retail* PImp_Data;                      // +0x04 (engine/CScriptThing.h: CCountedPointer<CScriptThing>::Data)
-    void*          PImp_Info;                      // +0x08
-    CScriptThing();                                // 0x008CFF40 (the default constructor)
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct CTCTrap_Retail {                        // interface type 0x7d
     void Activate();                             // 0x00787C07 (`mov byte ptr [ecx+58h],1 ; ret`; the label is propagated)
     void Deactivate();                           // 0x00787BFE (`mov byte ptr [ecx+58h],0` then a shared tail; the label is propagated)
@@ -95,7 +83,7 @@ struct CTCTrap_Retail {                        // interface type 0x7d
 
 void CGameScriptInterface::SetTrapAsActive(const CScriptThing& thing, bool active) const
 {
-    CThing_Retail* t = thing.GetThing();
+    CThing_Retail* t = ((CThing_Retail*)thing.GetPThing());
     if (t) {
         CTCTrap_Retail* trap;
         if (t->GetInterface(&trap, 0x7d)) {

@@ -47,12 +47,12 @@ template <class T> class CCountedPointer { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CScriptThing.h"
 
-struct CIsThingConscious {                               // NScript predicate, vtable 0x012C2FE8: Thing alive and not unconscious
-    CScriptThing Thing;                                  // +0x04
-    CIsThingConscious(const CScriptThing& thing) : Thing(thing) {}
-    ~CIsThingConscious() {}
-    virtual bool operator()() const;                     // slot 0 (0x00CDDAB0)
-};
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingConscious: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingConscious.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingConscious::CIsThingConscious(const CScriptThing& thing) : Thing(thing) { }
+inline NScript::CIsThingConscious::~CIsThingConscious() { }
+using NScript::CIsThingConscious;
 
 #define FABLE_RETAIL_BASE_OBJECT
 #include "engine/CBaseObject.h"                       // : CBaseClass, vtable 0x0129A7D8 (~ slot 0, Validate slot 1)
@@ -78,10 +78,10 @@ struct __declspec(novtable) CQuestScriptBase : CScriptBase {   // the argument p
 
 extern CGameScriptInterface* g_pGameScriptInterface;     // 0x0143E8F8
 
-class CTimer { public:                                          // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) {}
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer::CTimer() : TimerIndex(g_pGameScriptInterface->RegisterTimer()) {}
 
 namespace NScript {
 class CQ_RansomVictimScript : public CQuestScriptBase {

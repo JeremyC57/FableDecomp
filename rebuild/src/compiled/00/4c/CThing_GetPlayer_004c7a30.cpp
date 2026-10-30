@@ -11,11 +11,10 @@
 //   the Dead bit at +0x91, as in the Ego_r CThing layout (PlayerNumber schar, then the Dead bitfield).
 class CPlayer;
 
-class CPlayerManager {
-public:
-    CPlayer&       GetPlayer(long number);           // 0x004498C0
-    const CPlayer& GetPlayer(long number) const;     // 0x00449910
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 
 class CThingManager {                                // only the field read here (PC offset)
 public:

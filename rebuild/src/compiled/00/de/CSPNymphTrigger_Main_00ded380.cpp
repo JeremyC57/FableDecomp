@@ -18,12 +18,11 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 class C3DVector { public: float X, Y, Z; };
-class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
-    virtual void v000(); virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005();
-    virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
-    virtual ~CScriptThing();                               // 0x004AA840
-    unsigned char _body[8];
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -32,20 +31,16 @@ bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScrip
 struct CQ_SecretPassageScript;
 struct CQ_SunnyvaleMasterData;
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CSP_NymphTrigger : public CEntityScriptBase {
 public:
-    void*                   __vftable;             // +0x00
-    CGameScriptInterface*   Game;                  // +0x04
-    CScriptThing            Me;                    // +0x08
-    CQ_SecretPassageScript* ParentClass;           // +0x14
+        CQ_SecretPassageScript* ParentClass;           // +0x14
     CQ_SunnyvaleMasterData* PMasterData;           // +0x18
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CSP_NymphTrigger::Main()

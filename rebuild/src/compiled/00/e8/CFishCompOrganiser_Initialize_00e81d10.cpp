@@ -18,16 +18,17 @@ class CCharString { public:
 };
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 class CCPPointerInfo { public: long RefCount; void (__fastcall* DeleteFunc)(void*); void* Data; };
-struct CCountedPointerWords {
+template <class T> class CCountedPointer { public:
     void* Data;
     CCPPointerInfo* Info;
-    CCountedPointerWords(const CCountedPointerWords& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
+    CCountedPointer(const CCountedPointer& p) : Data(p.Data), Info(p.Info) { if (Info) ++Info->RefCount; }
 };
-class CScriptThing : public CBaseClass { public:                       // vtable 0x01238C8C
-    CCountedPointerWords PImp;
-    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-    ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
@@ -50,18 +51,12 @@ class CScriptDef { public:
 };
 extern CScriptDef* pGlobalScriptDef;                         // 0x0143E90C (Ego_r.pdb `pGlobalScriptDef`, a def pointer: its first word)
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CFishCompOrganiser : public CEntityScriptBase {
 public:
-    void*                 __vftable;          // +0x00
-    CGameScriptInterface* Game;               // +0x04
-    CScriptThing          Me;                 // +0x08
-    unsigned char         Body[0x34];         // +0x14
+        unsigned char         Body[0x34];         // +0x14
     bool                  CommentHitByHero;   // +0x48
     long                  Conversation;       // +0x4c
     long                  FishingRodsInGame;  // +0x50

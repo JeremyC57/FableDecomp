@@ -28,7 +28,7 @@ template <class T> class CCountedPointer { public:
     CCPPointerInfo* Info;
     CCountedPointer() : Data(0), Info(0) {}
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info) { if (Info) ++Info->RefCount; }
-    __forceinline ~CCountedPointer()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -158,31 +158,23 @@ void CGraveyardDemon::Main()
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
     while (!ParentClass->DoorChange) {
         Game->NewScriptFrame();
         if (IsActiveThreadTerminating())
             {
-#pragma inline_depth(0)
                 return;
-#pragma inline_depth()
             }
         if (Me.MsgIsTalkedToBy("SCRIPT_NAME_HERO")) {
             if (IsActiveThreadTerminating())
                 {
-#pragma inline_depth(0)
                     return;
-#pragma inline_depth()
                 }
             CMovieStorage movieStorage;
             CScriptGameResourceObjectMovieBase& movie = *new (&movieStorage) CScriptGameResourceObjectMovieBase;
@@ -198,17 +190,13 @@ void CGraveyardDemon::Main()
                         if (IsActiveThreadTerminating()) {
                             game->PauseAllNonScriptedEntities(false);
                             movie.DestroyInline();
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                     }
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
                         movie.Destroy();
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 break;
@@ -220,17 +208,13 @@ void CGraveyardDemon::Main()
                         if (IsActiveThreadTerminating()) {
                             game->PauseAllNonScriptedEntities(false);
                             movie.DestroyInline();
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                     }
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
                         movie.Destroy();
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 break;
@@ -242,17 +226,13 @@ void CGraveyardDemon::Main()
                         if (IsActiveThreadTerminating()) {
                             game->PauseAllNonScriptedEntities(false);
                             movie.DestroyInline();
-#pragma inline_depth(0)
                             return;
-#pragma inline_depth()
                         }
                     }
                     if (IsActiveThreadTerminating()) {
                         game->PauseAllNonScriptedEntities(false);
                         movie.Destroy();
-#pragma inline_depth(0)
                         return;
-#pragma inline_depth()
                     }
                 }
                 break;
@@ -263,10 +243,6 @@ void CGraveyardDemon::Main()
     }
     if (IsActiveThreadTerminating())
         {
-#pragma inline_depth(0)
             return;
-#pragma inline_depth()
         }
-#pragma inline_depth(0)
 }
-#pragma inline_depth()

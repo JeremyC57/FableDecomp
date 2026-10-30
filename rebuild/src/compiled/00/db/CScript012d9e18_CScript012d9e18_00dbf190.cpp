@@ -22,11 +22,11 @@ template <class T> class CCountedPointer { public:     // Data, Info (8 bytes); 
     CCountedPointer() : Data(0), Info(0) { }
 };
 
-class CScriptThing : public CBaseClass { public:              // vtable 0x01238C8C (engine/CScriptThing.h: PImp at +4)
-    CCountedPointer<CScriptThing> PImp;         // +0x04
-    CScriptThing() { }
-    virtual ~CScriptThing();
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() { }
 
 class CScriptBase { public:
     virtual ~CScriptBase();

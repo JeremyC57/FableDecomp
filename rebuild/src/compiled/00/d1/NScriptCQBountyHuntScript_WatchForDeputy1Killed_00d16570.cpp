@@ -40,41 +40,14 @@ template <class T> class CCountedPointer { public:
         Info = 0;
     }
 };
-struct CScriptThingImpl {
-    virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003(); virtual void i004(); virtual void i005(); virtual void i006(); virtual void i007();
-    virtual void i008(); virtual void i009(); virtual void i010(); virtual void i011(); virtual void i012(); virtual void i013(); virtual void i014(); virtual void i015();
-    virtual void i016(); virtual void i017();
-    virtual bool MsgIsKilledBy(const CCharString& killer) const;   // slot 18 (+0x48)
-    virtual void i019(); virtual void i020();
-    virtual bool MsgIsHitBy(const CCharString& attacker) const;   // slot 21 (+0x54)
-    virtual void i022(); virtual void i023(); virtual void i024(); virtual void i025(); virtual void i026(); virtual void i027(); virtual void i028(); virtual void i029();
-    virtual void i030(); virtual void i031(); virtual void i032(); virtual void i033(); virtual void i034(); virtual void i035(); virtual void i036(); virtual void i037();
-    virtual void i038(); virtual void i039(); virtual void i040(); virtual void i041(); virtual void i042();
-    virtual bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const;   // slot 43 (+0xac)
-};
-class CScriptThing : public CBaseClass { public:                          // vtable 0x01238C8C, 12 bytes
-    CCountedPointer<CScriptThingImpl> PImp;                 // +0x04 Data, +0x08 Info
-    CScriptThing(const CScriptThing& other);                // 0x004ABE90
-    __forceinline ~CScriptThing() {}                        // out-of-line copy 0x004AA840
-    bool MsgIsKilledBy(const CCharString& killer) const     // 0x004AAAF0
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsKilledBy(killer);
-    }
-    bool MsgIsHitBy(const CCharString& attacker) const      // 0x004AAB30
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsHitBy(attacker);
-    }
-    bool MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const   // 0x004AAD60
-    {
-        if (!PImp.Data)
-            return false;
-        return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker);
-    }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline CScriptThing::~CScriptThing() {}
+inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const { if (!PImp.Data) return false; return PImp.Data->MsgIsKilledBy(killer); }
+inline bool CScriptThing::MsgIsHitBy(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitBy(attacker); }
+inline bool CScriptThing::MsgIsHitByAnyAggressiveSpecialAbilityFrom(const CCharString& attacker) const { if (!PImp.Data) return false; return PImp.Data->MsgIsHitByAnyAggressiveSpecialAbilityFrom(attacker); }
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT

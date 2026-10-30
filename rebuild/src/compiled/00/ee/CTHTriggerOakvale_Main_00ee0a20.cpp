@@ -16,13 +16,11 @@
 //   discarded temporary destroyed first; the handled arm keeps its own RemoveThing + return.
 namespace NScript { class CPredicateBase; }
 class C3DVector { public: float X, Y, Z; };
-class CScriptThing { public:                              // vtable 0x01238C8C, 12 bytes
-    virtual void v00(); virtual void v01(); virtual void v02(); virtual void v03(); virtual void v04(); virtual void v05();
-    virtual const C3DVector& GetPos() const;       // slot 6 (+0x18)
-    unsigned char _body[8];
-    CScriptThing(const CScriptThing& other);       // 0x004ABE90
-    virtual ~CScriptThing();                               // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 class CCharString { public:
     void* PStringData;
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
@@ -32,19 +30,13 @@ class CCharString { public:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
+// NScript predicates: the retail models from the shared headers (CPredicateBase: operator() / Clone / ~ slots 0-2; CIsThingAlive: CScriptThing Thing +0x04, 0x10).
+#include "engine/CIsThingAlive.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline NScript::CIsThingAlive::CIsThingAlive(const CScriptThing& thing) : Thing(thing) { }
 namespace NScript {
-class CPredicateBase
-{
-public:
-    virtual void v00();
-};
 }
 namespace NScript {
-class CIsThingAlive : public NScript::CPredicateBase { public:                             // vtable 0x012C32F0: a filter holding a script thing
-    CScriptThing m_thing;                          // +0x04
-    CIsThingAlive(const CScriptThing& thing) : m_thing(thing) { }
-    virtual ~CIsThingAlive();                              // 0x00E241B0 (out of line in this module)
-};
 }
 using NScript::CIsThingAlive;
 struct CTravellingHeroesMasterData {
@@ -55,21 +47,16 @@ struct CTravellingHeroesMasterData {
 };
 class CV_TravellingHeroesScript;
 
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CTH_Trigger_Oakvale : public CEntityScriptBase {
 public:
-    void*                  __vftable;              // +0x00
-    CGameScriptInterface*  Game;                   // +0x04
-    CScriptThing           Me;                     // +0x08
-    CV_TravellingHeroesScript* ParentClass;        // +0x14
+        CV_TravellingHeroesScript* ParentClass;        // +0x14
     CTravellingHeroesMasterData* PMasterData;      // +0x18
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CTH_Trigger_Oakvale::Main()

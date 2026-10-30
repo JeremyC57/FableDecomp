@@ -1,0 +1,120 @@
+006e7bd0	87	--	ctor0	INL		CScriptGameResourceObjectMovieBase_scalardeletingdestructor_006e7bd0.cpp
+007e7520	87	--	ctor0	INL		CScriptGameResourceObjectScriptedThingBase_scalardeletingdestructor_007e7520.cpp
+00d2d060	308	--	ctor0	INL		CVtable012CC428_Main_00d2d060.cpp
+007e7ed0	163	--	ctor0	INL		CTCFireheartMinigame_CTCFireheartMinigame_007e7ed0.cpp
+00df06a0	162	--	ctor0	INL		NScriptCQSecretPassageScript_PhaseOne_00df06a0.cpp
+00e16a80	199	--	ctor0	INL		CWBScaredVillager_Main_00e16a80.cpp
+00e16c40	199	--	ctor0	INL		CWBVillager_Main_00e16c40.cpp
+00903ac0	256	--	ctor0	INL		CScriptGameResourceObjectScriptedThing_CScriptGameResourceObjectScriptedThing_00903ac0.cpp
+00df2d30	349	--	ctor1	AB0		CFireHeartHolder_Main_00df2d30.cpp
+00e2a900	499	--	ctor1	AB0 INL		CQSScytheInfoScript_PlayCutscene_00e2a900.cpp
+00d246c0	896	--	ctor1	INL AB0		CBowerstoneIntroGuard_Main_00d246c0.cpp
+00e6b400	842	--	ctor0	INL		CCOEVictim_Main_00e6b400.cpp
+00efeb60	751	--	ctor0	INL		CBalvMarker_Main_00efeb60.cpp
+00f01480	734	--	ctor1	AB0		NScriptCCSPlayCutsceneScript_Main_00f01480.cpp
+00f14770	527	--	ctor0	INL		CCham_Main_00f14770.cpp
+00eea460	536	--	ctor1	AB0		CExpressionWaitScript_Main_00eea460.cpp
+00e1bc70	751	--	ctor0	INL		NScriptCQWizardBattleScriptCInitialScreamerPoint_Main_00e1bc70.cpp
+00ef3f00	547	--	ctor0	INL		NScriptCPersonalScriptEmptyScriptCLeader_Main_00ef3f00.cpp
+00d29db0	963	--	ctor1	AB0		CMKGHCHERO3_Main_00d29db0.cpp
+00d58080	633	--	ctor0	INL		CMeleeThunder_Main_00d58080.cpp
+00e292c0	791	--	ctor1	AB0		CMeetSisterMessenger_Main_00e292c0.cpp
+00dc21f0	750	--	ctor1	AB0 B80		CMRestartMarker_Main_00dc21f0.cpp
+00efc500	721	--	ctor1	INL B80 AB0 AB0		NScriptCPersonalScriptAardvarkScript_Main_00efc500.cpp
+00eb15c0	1010	--	ctor2	B80 AB0 B80 B80 AB0		CMurderTwistSheriff_DoRemindingHeroToKillSheriff_00eb15c0.cpp
+00ddd030	1019	--	ctor0	INL B80 B80		CPrisonRaceWarden_Main_00ddd030.cpp
+00d44cb0	944	--	ctor0	B80		NScriptCQGuildTrainingScript_RunArrivalCutscene_00d44cb0.cpp
+00d496f0	815	--	ctor1	AB0 INL		NScriptCQGuildTrainingScript_RunSaveXPCutscene_00d496f0.cpp
+00d49a20	815	--	ctor1	AB0 INL		CQGuildTrainingScript_RunSaveXPCutscene2_00d49a20.cpp
+00d732f0	789	--	ctor1	AB0		NScriptCQHangingTreeGoodScript_RemoveParty_00d732f0.cpp
+00da0230	925	--	ctor0	B80		NScriptCQMinionCampScript_DoMission_00da0230.cpp
+00df4be0	531	--	ctor1	AB0		CTheKraken_Main_00df4be0.cpp
+00f02210	586	--	ctor1	AB0		NScriptCQCinemaTestScript_ArenaIntroduction_00f02210.cpp
+00dd1af0	959	--	ctor1	B80 B80 AB0		NScriptCQOrchardFarmRaidScript_DoMultiplierCutscene_00dd1af0.cpp
+00df0750	755	--	ctor1	AB0		NScriptCQSecretPassageScript_MotherTortureThread_00df0750.cpp
+00e12f20	1002	--	ctor1	AB0 AB0		NScriptCQWaspBossScript_WaspIntro_00e12f20.cpp
+00e1cd40	653	--	ctor1	AB0 AB0		NScriptCQWizardBattleScript_CutsceneScreamers_00e1cd40.cpp
+00ee76f0	813	--	ctor1	INL AB0		CTrophyDealerInCave_Main_00ee76f0.cpp
+00e0ad40	531	--	ctor0	B80		CRockTrollTrigger_Main_00e0ad40.cpp
+00ce15e0	954	--	ctor1	AB0		CTargetForKey_Main_00ce15e0.cpp
+00e3e720	995	--	ctor0	INL		NScriptCVBordelloScript_PlayCutscene_00e3e720.cpp
+00deb000	636	--	ctor1	B80 B80 AB0		CVictimsBrother_DealWithHeroHittingMe_00deb000.cpp
+00e9a270	838	--	ctor0	B80		CVHeroDuelScript_WatchForHeroEnteringCave_00e9a270.cpp
+00e9aeb0	903	--	ctor1	INL AB0		NScriptCVHeroDuelScript_SecondFleeCutscene_00e9aeb0.cpp
+00ee2db0	902	--	ctor1	AB0		NScriptCVTravellingHeroesScript_PlayCutscene_00ee2db0.cpp
+00d823a0	669	--	ctor1	AB0		NScriptCQHeroSoulsBriarScript_PlayCutscene_00d823a0.cpp
+00ed0b10	747	--	ctor0	INL		CWomanToAttract_DoLeavingCutscene_00ed0b10.cpp
+00d2c810	1901	--	ctor0	INL		CEndGameThunder_Main_00d2c810.cpp
+00d79d50	1333	--	ctor0	B80 B80 B80		CEndScythe_Main_00d79d50.cpp
+00d7a360	1333	--	ctor0	B80 B80 B80		CEndBriarRose_Main_00d7a360.cpp
+00e6ea30	1549	--	ctor1	INL B80 B80		CDFShineLight_Main_00e6ea30.cpp
+00e6f1c0	1140	--	ctor1	INL B80 B80		CDFThunderHelmet_Main_00e6f1c0.cpp
+00e6f710	1107	--	ctor1	INL B80 B80		CDFCombatMult_Main_00e6f710.cpp
+00e71450	1108	--	ctor1	INL B80 B80		CDFEatPies_Main_00e71450.cpp
+00e71980	1205	--	ctor1	INL B80 B80		CDFGiveGift_Main_00e71980.cpp
+00e73410	1091	--	ctor1	INL B80 B80		CDFMarryLadyGrey_Main_00e73410.cpp
+00ee7a20	1659	--	ctor0	INL B80 B80 B80 B80		CDemonDoorFace_Main_00ee7a20.cpp
+00f045e0	1520	--	ctor0	INL		CATSentry_Main_00f045e0.cpp
+00d15510	1058	--	ctor0	INL		CBHGangGruntSpawn_Main_00d15510.cpp
+00eea7c0	1506	--	ctor0	B80		CExpressionDigScript_Main_00eea7c0.cpp
+00eeb7b0	1272	--	ctor1	B80 B80		CExpressionPicklockScript_Main_00eeb7b0.cpp
+00eec890	1544	--	ctor0	B80 B80		CGlobalOpenChestScript_Main_00eec890.cpp
+00d02b80	1489	--	ctor2	AB0 AB0 AB0		CGate1GuardInner_Main_00d02b80.cpp
+00d37530	1783	--	ctor1	AB0 AB0 B80		CFHVillager_Main_00d37530.cpp
+00dc3fc0	1111	--	ctor1	INL AB0 AB0 B80		CGraveyardDemon_Main_00dc3fc0.cpp
+00e1b1f0	1131	--	ctor1	AB0 AB0 B80		CHKCVillagerScreamer_Main_00e1b1f0.cpp
+00e7e640	1604	--	ctor1	AB0 INL AB0		CFishCompCompetitor_Main_00e7e640.cpp
+00ea8130	1191	--	ctor0	B80 B80		CEmptyGrave_Main_00ea8130.cpp
+00eb10c0	1274	--	ctor2	B80 B80 AB0 AB0		CMurderTwistSheriff_DoBecomingSuspiciousOfHero_00eb10c0.cpp
+00eb19c0	1274	--	ctor2	B80 B80 AB0 AB0		CMurderTwistSheriff_DoSuspicious_00eb19c0.cpp
+00eb23e0	1298	--	ctor2	B80 AB0 AB0 B80 B80 AB0		CMurderTwistSheriffGuard_DoAskingHeroToSpeakToBoss_00eb23e0.cpp
+00eb3740	1108	--	ctor2	B80 AB0 B80 AB0		CMurderTwistSheriffGuard_DoSayingThankYouToHero_00eb3740.cpp
+00eb4f80	1044	--	ctor2	B80 AB0 AB0 B80		CMurderTwistAssassin_DoRemindingHeroToKillSheriff_00eb4f80.cpp
+00eb5d50	1185	--	ctor2	B80 AB0 B80 B80 AB0		CMurderTwistAssassinGuard_DoSayingThankYouToHero_00eb5d50.cpp
+00d22880	1711	--	ctor2	AB0		CKGChiefBreakSiege_Main_00d22880.cpp
+00d2a180	1592	--	ctor1	AB0		CMazeJournal_Main_00d2a180.cpp
+00da9c70	1509	--	ctor0	B80		CMinionWarningGuard_Main_00da9c70.cpp
+00e96660	1482	--	ctor1	AB0		CMHeroInsideHouse_Main_00e96660.cpp
+00daa260	1172	--	ctor0	B80 INL		CMinionFieldGenerator_Main_00daa260.cpp
+00daa700	1133	--	ctor0	B80 INL		CMinionTrollSummoner_Main_00daa700.cpp
+00d73f40	1256	--	ctor0	INL		CHTGExecutioner_Main_00d73f40.cpp
+00e73930	1725	--	ctor1	INL B80 B80		CDFSexMad_Main_00e73930.cpp
+00d49d50	1304	--	ctor0	B80		CQGuildTrainingScript_RunCeremonyCutscene_00d49d50.cpp
+00d55e90	1820	--	ctor1	AB0 INL		NScriptCQGuildTrainingMeleeScript_Main_00d55e90.cpp
+00f0bb10	1579	--	ctor1	AB0		NScriptCQAmbushTradersScript_Intro_00f0bb10.cpp
+00d86c30	1296	--	ctor0	B80 B80 B80		CSoulInfoAcolyte_Main_00d86c30.cpp
+00e2a320	1503	--	ctor2	AB0 B80 B80		CScytheNearOracle_Main_00e2a320.cpp
+00dbeb20	1095	--	ctor0	B80		NScriptCQNewOakValeIntroScript_PostAttackStuff_00dbeb20.cpp
+00dbf2d0	1785	--	ctor1	AB0		NScriptCQOakValeBanditRaidScript_Main_00dbf2d0.cpp
+00dc8c80	1901	--	ctor0	B80		NScriptCQOpeningGraveyardSecretPassageScript_CheckDoor_00dc8c80.cpp
+00df0b70	1281	--	ctor1	AB0		CQSecretPassageScript_PrisonEscape_00df0b70.cpp
+00e1c580	1330	--	ctor0	INL		NScriptCQWizardBattleScript_PhaseTwo_00e1c580.cpp
+00e1cfd0	1638	--	ctor0	B80		NScriptCQWizardBattleScript_PhaseOne_00e1cfd0.cpp
+00e8b020	1748	--	ctor0	B80 B80		CRingFighter_Main_00e8b020.cpp
+00d50c60	1882	--	ctor1	INL B80 AB0 AB0 B80		NScriptCQGuildTrainingDepartureScriptCTheRealGuildmaster_Main_00d50c60.cpp
+00df80b0	2004	--	ctor1	AB0 AB0 B80		NScriptCQTraderConflictEvilScriptCTCBanditFollower_Main_00df80b0.cpp
+00edf3a0	1387	--	ctor1	AB0 AB0 B80		NScriptCVTravellingHeroesScriptCTHThunderBoy_Main_00edf3a0.cpp
+00edfa00	1387	--	ctor1	AB0 AB0 B80		NScriptCVTravellingHeroesScriptCTHThunderGirl_Main_00edfa00.cpp
+00ee1e40	1603	--	ctor1	AB0 B80 B80 B80 B80 B80		NScriptCVTravellingHeroesScriptCTHMaze_Main_00ee1e40.cpp
+00903810	178	--	ctor0	INL		CScriptGameResourceObjectScriptedThing_CreateNullHandle_00903810.cpp
+00efab40	571	--	ctor0	INL INL		Cwelcomeguy_Main_00efab40.cpp
+00d7aa30	541	--	ctor1	AB0		NScriptCQHeroSoulsScript_PlayCutscene_00d7aa30.cpp
+00d7fc70	541	--	ctor1	AB0		NScriptCQHeroSoulsArenaScript_PlayCutscene_00d7fc70.cpp
+00d89ad0	541	--	ctor1	AB0		NScriptCQHeroSoulsNostroScript_PlayCutscene_00d89ad0.cpp
+00df3e50	541	--	ctor1	AB0		NScriptCQSummoningTheShipScript_PlayCutscene_00df3e50.cpp
+00df9e00	541	--	ctor1	AB0		NScriptCQTraderConflictEvilScript_PlayCutscene_00df9e00.cpp
+00dfded0	541	--	ctor1	AB0		NScriptCQTraderConflictGoodScript_PlayCutscene_00dfded0.cpp
+00e12330	586	--	ctor1	AB0		NScriptCQWaspBossScript_WatchForCutscene_00e12330.cpp
+00e295e0	940	--	ctor1	INL AB0		NScriptCQSMeetSisterScriptCMeetSisterSister_Main_00e295e0.cpp
+00ece460	908	--	ctor0	INL		NScriptCVSickChildScript_PlayCutscene_00ece460.cpp
+00efc300	315	--	ctor0	INL		NScriptCHeroTurningDebuggerScript_MoveHeroTest_00efc300.cpp
+00d27050	489	--	ctor1	AB0		NScriptCQDragonBossFightScript_PlayCutscene_00d27050.cpp
+00d7c470	553	--	ctor1	AB0		NScriptCQHeroSoulsThunderScript_PlayCutscene_00d7c470.cpp
+00d848d0	544	--	ctor1	AB0		NScriptCQHeroSoulsMotherScript_PlayCutscene_00d848d0.cpp
+00d872d0	544	--	ctor1	AB0		NScriptCQHeroSoulsGuildmasterScript_PlayCutscene_00d872d0.cpp
+00e1d7b0	573	--	ctor1	AB0		NScriptCQWizardBattleScript_CutsceneMazeDeath_00e1d7b0.cpp
+00eea020	543	--	ctor1	AB0		NScriptCExpressionFollowScript_Main_00eea020.cpp
+00da2ca0	657	--	ctor1	AB0		NScriptCQMinionCampScriptCBriarRose_PlayCutscene_00da2ca0.cpp
+00e68b20	666	--	ctor0	INL		NScriptCVChickenKickingScript_PlayCutscene_00e68b20.cpp
+00e9bbc0	670	--	ctor1	INL AB0		NScriptCVHeroDuelScript_DuelChallenge_00e9bbc0.cpp
+00cbf6dc	290	--	ctor0	B80		global_GiveGameInfo_00cbf6dc.cpp

@@ -38,20 +38,15 @@ struct CNOVIParent {
     unsigned char _pad[0x82];
     bool          GameInfoShown;                   // +0x82
 };
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-    void SetPredicate(const NScript::CPredicateBase&);   // 0x00F35B10
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 class CNOVI_Barrel : public CEntityScriptBase {
 public:
-    void*                 __vftable;               // +0x00
-    CGameScriptInterface* Game;                    // +0x04
-    CScriptThing          Me;                      // +0x08
-    CNOVIParent*          ParentClass;             // +0x14
-    void Main();
+        CNOVIParent*          ParentClass;             // +0x14
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 void CNOVI_Barrel::Main()
 {

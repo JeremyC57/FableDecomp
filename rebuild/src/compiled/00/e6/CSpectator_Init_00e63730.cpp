@@ -24,10 +24,10 @@ struct SCountBlock {
     void* m_pObject;                               // +8
 };
 struct CScriptThingImp;
-struct CScriptThingPImp {                          // CCountedPointer<CScriptThingImp>
+template <class T> class CCountedPointer { public:                          // CCountedPointer<CScriptThingImp>
     CScriptThingImp* Data;
     SCountBlock*     Info;
-    __forceinline ~CScriptThingPImp()
+    __forceinline ~CCountedPointer()
     {
         if (Info) {
             --Info->m_references;
@@ -40,10 +40,13 @@ struct CScriptThingPImp {                          // CCountedPointer<CScriptThi
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    CScriptThingPImp PImp;
-    __forceinline ~CScriptThing() {}
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline CScriptThing::~CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 bool __fastcall IsDistanceBetweenThingsUnder(const CScriptThing& a, const CScriptThing& b, float distance);   // 0x00CBE2FF
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).
@@ -53,20 +56,16 @@ extern const char g_spectator1[];                  // 0x012E7450 "Spectator1"
 extern const char g_spectator2[];                  // 0x012E7418 "Spectator2"
 struct CV_ChickenKickingScript;
 struct CQ_SunnyvaleMasterData;
-class CEntityScriptBase
-{
-public:
-    bool IsActiveThreadTerminating() const;   // 0x00F35B30
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 struct CSpectator : public CEntityScriptBase {
-    void*                    __vftable;            // +0x00
-    CGameScriptInterface*    Game;                 // +0x04
-    CScriptThing             Me;                   // +0x08
-    CV_ChickenKickingScript* ParentClass;          // +0x14
+        CV_ChickenKickingScript* ParentClass;          // +0x14
     CQ_SunnyvaleMasterData*  PMasterData;          // +0x18
     long                     SpectatorNumber;      // +0x1c
-    void Init();
+private:
+    virtual void Init();   // PDB ?Init@<entity>@..@@EAEXXZ: every entity override is private (slot 2)
+public:
 };
 
 void CSpectator::Init()

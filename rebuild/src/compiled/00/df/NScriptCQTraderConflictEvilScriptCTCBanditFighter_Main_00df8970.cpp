@@ -23,21 +23,11 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-class CScriptThing { public:                                  // 12 bytes, vtable 0x01238C8C
-    virtual void s000(); virtual void s001(); virtual void s002(); virtual void s003(); virtual void s004(); virtual void s005(); virtual void s006(); virtual void s007();
-    virtual void s008(); virtual void s009(); virtual void s010(); virtual void s011(); virtual void s012(); virtual void s013(); virtual void s014(); virtual void s015();
-    virtual void s016(); virtual void s017(); virtual void s018(); virtual void s019(); virtual void s020();
-    virtual bool MsgIsHitBy(const CCharString& name) const;   // slot 21 (+0x54)
-    virtual void s022(); virtual void s023(); virtual void s024(); virtual void s025(); virtual void s026(); virtual void s027(); virtual void s028(); virtual void s029();
-    virtual void s030(); virtual void s031(); virtual void s032(); virtual void s033(); virtual void s034(); virtual void s035(); virtual void s036(); virtual void s037();
-    virtual void s038(); virtual void s039(); virtual void s040();
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& name) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& name) const;   // slot 42 (+0xa8)
-    void* PImp_Data;                                   // +0x04
-    void* PImp_Info;                                   // +0x08
-    CScriptThing(const CScriptThing& other);           // 0x004ABE90
-    virtual ~CScriptThing();                                   // 0x004AA840
-};
+class CCPPointerInfo;
+template <class T> class CCountedPointer { public: T* Data; CCPPointerInfo* Info; };   // Ego_r.pdb members (Data, Info)
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
 struct GameCalls {                                     // CGameScriptInterface vtable 0x01260F0C (ghidra_out/fable_cgsi_slots.h)
     virtual void g000(); virtual void g001(); virtual void g002(); virtual void g003(); virtual void g004(); virtual void g005(); virtual void g006();
     virtual void NewScriptFrame() const;   // slot 7 (+0x1c)
@@ -200,7 +190,7 @@ void NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter::Main()
         bool hitByOther = Me.MsgIsHitBy("")
                        && !Me.MsgIsHitBy("SCRIPT_NAME_HERO")
                        && (!Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
-                           || Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"));
+                           || Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO"));
         if (hitByOther) {
             if (IsActiveThreadTerminating()) return;
             Game->ModifyThingHealth(Me, 100.0f, false);
@@ -208,7 +198,7 @@ void NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter::Main()
         else {
             bool hitByHero = Me.MsgIsHitBy("SCRIPT_NAME_HERO")
                           || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
-                              && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"));
+                              && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO"));
             if (hitByHero) {
                 if (IsActiveThreadTerminating()) return;
                 ParentClass->PlayerEngaged = true;
@@ -225,7 +215,7 @@ void NScript::CQ_TraderConflictEvilScript::CTC_BanditFighter::Main()
         if (IsActiveThreadTerminating()) return;
         bool hitByHero = Me.MsgIsHitBy("SCRIPT_NAME_HERO")
                       || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO")
-                          && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"));
+                          && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO"));
         if (hitByHero) {
             if (IsActiveThreadTerminating()) return;
             if (!HitWarning) {

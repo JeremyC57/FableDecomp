@@ -23,9 +23,9 @@ class CScriptDef { public:
     unsigned char _padc7c[8];
     long          SuperScreamerTimerTime;          // +0xc84
 };
-class CTimer { public:
-    long Handle;                                   // +0x00
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 struct CQ_HeroSoulsMotherScript {
     unsigned char _pad[0x58];
     long          ScreamersAlive;                  // +0x58
@@ -58,7 +58,7 @@ void CHS_Screamer::OnPredicateFail()
     ParentClass->BarToFill += pGlobalScriptDef->ScreamerBarIncrease;
     if (SuperScreamer) {
         ParentClass->GotSuperScreamer = false;
-        g_pGameScriptInterface->SetTimer(ParentClass->NewSuperScreamerTimer.Handle, pGlobalScriptDef->SuperScreamerTimerTime);
+        g_pGameScriptInterface->SetTimer(ParentClass->NewSuperScreamerTimer.TimerIndex, pGlobalScriptDef->SuperScreamerTimerTime);
         Game->RemoveThing(SuperScreamerEffect, false, true);
         Game->EntityEndScreamerSuperAttackThing(Me);
     }

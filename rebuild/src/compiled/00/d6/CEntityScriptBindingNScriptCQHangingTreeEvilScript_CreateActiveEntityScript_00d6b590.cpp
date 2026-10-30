@@ -62,24 +62,10 @@ public:
 //   CBaseClassNonCopyable : CBaseClass, 0x34 bytes, vtable 0x012C2F9C; ctor 0x00CDD450).
 #define FABLE_RETAIL_SUSPENDABLE_PROCESS
 #include "engine/CSpawnedFuncBase.h"
-class CActiveEntityScriptBase : public CSpawnedFuncBase {
-public:
-    CCountedPointer<CEntityScriptBase> PEntityScript;   // +0x34
-    unsigned long Flags;                                // +0x3c
-    unsigned __int64 EntityUID;                         // +0x40
-    CScriptThing Entity;                                // +0x48 (0x58 with the 8-byte tail alignment)
-    CActiveEntityScriptBase(const CScriptThing& entity, unsigned __int64 uid, unsigned long flags);   // 0x00CE1110
-};
-template <class T> class CActiveEntityScript : public CActiveEntityScriptBase {
-public:
-    void (T::*Func)(CScriptThing);                      // +0x58
-    T* PParentScript;                                   // +0x5c
-    __forceinline CActiveEntityScript(const CScriptThing& entity, unsigned __int64 uid, T* parent, void (T::*func)(CScriptThing), unsigned long flags)
-        : CActiveEntityScriptBase(entity, uid, flags), Func(func), PParentScript(parent) {}
-    __forceinline CActiveEntityScript(const CScriptThing& entity, unsigned __int64 uid, T* parent, CCountedPointer<CEntityScriptBase>& script, unsigned long flags)
-        : CActiveEntityScriptBase(entity, uid, flags), PParentScript(parent) { PEntityScript = script; }
-    virtual void SuspendableProcess();
-};
+// CActiveEntityScriptBase / CActiveEntityScript<T>: the retail models from the shared headers (engine/CActiveEntityScript.h:
+//   : CSpawnedFuncBase, vtable 0x012C3594, 0x58; PEntityScript +0x34, Flags +0x3C, EntityUID +0x40, Entity +0x48; Func +0x58,
+//   PParentScript +0x5C; both ctors inline, as retail expands them here).
+#include "engine/CActiveEntityScript.h"
 class CScriptDataBase {
 public:
     virtual ~CScriptDataBase();
@@ -90,25 +76,9 @@ class CGameScriptInterfaceBase;
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40; CLevelScriptBase<T> Game +0x40, MasterScriptData +0x44).
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CLevelScriptBase.h"
-class __declspec(novtable) CEntityScriptBindingBase {
-public:
-    virtual const CCharString& GetEntityScriptName() const = 0;
-protected:
-    virtual CCountedPointer<CActiveEntityScriptBase> CreateActiveEntityScript(const CScriptThing& thing, unsigned __int64 uid) = 0;
-};
-template <class T> class CEntityScriptBinding : public CEntityScriptBindingBase {
-public:
-    typedef CCountedPointer<CEntityScriptBase> (__fastcall* TAllocFunc)(T& parent, CScriptDataBase* data, const CScriptThing& thing);
-    CCharString EntityScriptName;                       // +0x04
-    T* PParentScript;                                   // +0x08
-    void (T::*Func)(CScriptThing);                      // +0x0c
-    TAllocFunc ClassAllocFunc;                          // +0x10
-    bool ClassAllocValid;                               // +0x14
-    unsigned long Flags;                                // +0x18
-    virtual const CCharString& GetEntityScriptName() const { return EntityScriptName; }
-protected:
-    virtual CCountedPointer<CActiveEntityScriptBase> CreateActiveEntityScript(const CScriptThing& thing, unsigned __int64 uid);
-};
+// CEntityScriptBindingBase / CEntityScriptBinding<T>: the retail models from the shared headers (engine/CEntityScriptBinding.h:
+//   0x1C; EntityScriptName +4, PParentScript +8, Func +0xC, ClassAllocFunc +0x10, ClassAllocValid +0x14, Flags +0x18).
+#include "engine/CEntityScriptBinding.h"
 template <class T>
 CCountedPointer<CActiveEntityScriptBase> CEntityScriptBinding<T>::CreateActiveEntityScript(const CScriptThing& thing, unsigned __int64 uid)
 {

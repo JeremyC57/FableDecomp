@@ -72,9 +72,10 @@ class CPlayer { public:
     CIntelligentPointer<CThing> PCharacter;                     // +0x34
     CThing* GetPlayerCharacter() const { return PCharacter.GetPItem(); }
 };
-class CPlayerManager { public:
-    CPlayer& GetMainPlayer();                               // 0x00449970
-};
+// CPlayerManager: the shared model engine/CPlayerManager.h (Ego_r.pdb CPlayerManager; the five accessors declared
+//   there with their retail addresses: GetPlayer 0x004498C0 / 0x00449910, GetMainPlayer 0x00449970 / 0x00449960,
+//   GetMainPlayerNumber 0x00449700).
+#include "engine/CPlayerManager.h"
 class CSubtitleRenderer { public:
     void Update(bool paused);                               // 0x004930D7
 };

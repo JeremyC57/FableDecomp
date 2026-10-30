@@ -26,10 +26,10 @@ class CCPPointerInfo { public:                                  // CCountedPoint
 };
 
 class CScriptThing;
-struct CCountedScriptImp {                               // CCountedPointer<CScriptThing>
+template <class T> class CCountedPointer { public:                               // CCountedPointer<CScriptThing>
     CScriptThing*   Data;
     CCPPointerInfo* Info;
-    CCountedScriptImp& operator=(const CCountedScriptImp& other)
+    CCountedPointer& operator=(const CCountedPointer& other)
     {
         CCPPointerInfo* info = other.Info;
         CScriptThing*   data = other.Data;
@@ -48,7 +48,7 @@ struct CCountedScriptImp {                               // CCountedPointer<CScr
         }
         return *this;
     }
-    ~CCountedScriptImp()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -64,13 +64,13 @@ struct CCountedScriptImp {                               // CCountedPointer<CScr
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
-class CScriptThing : public CBaseClass { public:                       // 12 bytes, vtable 0x01238C8C
-    CCountedScriptImp PImp;                              // +0x04 Data, +0x08 Info
-    virtual ~CScriptThing() {}
-    virtual void v01() const; virtual void v02() const; virtual void v03() const; virtual void v04() const;
-    virtual void v05() const;
-    virtual const C3DVector& GetPos() const;             // slot 6 (+0x18) 0x004AA980
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 #define VF(n) virtual void v##n();
 #define VF10(p) VF(p##0) VF(p##1) VF(p##2) VF(p##3) VF(p##4) VF(p##5) VF(p##6) VF(p##7) VF(p##8) VF(p##9)
@@ -84,16 +84,15 @@ struct CV_TalentlessBardScript {
     CScriptThing  stBard;                                // +0x54 (PDB +0x68)
 };
 
-class CEntityScriptBase { public:
-    virtual void v00();
-    CGameScriptInterface* Game;                          // +0x04
-    CScriptThing          Me;                            // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 struct CTB_BardSpawnPoint : CEntityScriptBase {
     CV_TalentlessBardScript* ParentClass;                // +0x14
     void*                    PMasterData;                // +0x18 CQ_SunnyvaleMasterData*
-    void Main();
+private:
+    virtual void Main();   // PDB ?Main@<entity>@..@@EAEXXZ: every entity override is private (slot 1)
+public:
 };
 
 void CTB_BardSpawnPoint::Main()

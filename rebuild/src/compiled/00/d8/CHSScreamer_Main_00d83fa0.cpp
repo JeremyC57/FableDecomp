@@ -101,13 +101,11 @@ class CScriptGameResourceObjectScriptedThingBase : public CScriptGameResourceObj
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;   // 0x0143E8F8
-class CTimer { public:                                         // 4 bytes: an index into the global script timers
-    long TimerIndex;
-    CTimer();                                           // 0x00CD4450
-    ~CTimer();                                          // 0x00CD4470
-    __forceinline void SetTime(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); }
-    __forceinline long GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+__forceinline CTimer& CTimer::operator=(long time) { g_pGameScriptInterface->SetTimer(TimerIndex, time); return *this; }
+__forceinline long CTimer::GetTime() const { return g_pGameScriptInterface->GetTimer(TimerIndex); }
 #pragma auto_inline(off)
 CTimer::CTimer() { TimerIndex = g_pGameScriptInterface->RegisterTimer(); }
 CTimer::~CTimer() { g_pGameScriptInterface->DeregisterTimer(TimerIndex); }
@@ -195,7 +193,7 @@ void CHS_Screamer::Main()
                 Game->SetIsPushableByHero(Me, false);
                 Game->SetIsThingForcePushable(Me, false);
                 CTimer damageTimer;
-                damageTimer.SetTime(pGlobalScriptDef->HS_SecondsBeforeSuperScreamerDamage);
+                damageTimer = pGlobalScriptDef->HS_SecondsBeforeSuperScreamerDamage;
                 bool attacking = false;
                 for (;;) {
                     if (IsActiveThreadTerminating())
@@ -206,7 +204,7 @@ void CHS_Screamer::Main()
                         if (IsActiveThreadTerminating())
                             return;
                         Game->ChangeHeroHealthBy(pGlobalScriptDef->HS_SuperScreamerDamagePerSecond, true, true);
-                        damageTimer.SetTime(1);
+                        damageTimer = 1;
                         if (ParentClass->BarToFill > pGlobalScriptDef->HS_ScreamerInc) {
                             if (IsActiveThreadTerminating())
                                 return;

@@ -1,0 +1,99 @@
+edit rebuild/src/compiled/00/cd/CKGGate_Main_00cdf260.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/cd/COFMainGates_Main_00cdf080.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/ce/CMagicBarrierGraveyard_Main_00ce0600.cpp ok CIsThingAlive inl2
+edit rebuild/src/compiled/00/d2/CDragon_Main_00d25a00.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d2/CEndGameJackOfBladesBoss_Main_00d2fb20.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d2/CPermanentBarrier_Main_00d2d830.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d2/NScriptCQEndGameScriptCGatewayUndead_Main_00d293f0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD1_Main_00d6a220.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d6/NScriptCQHangingTreeEvilScriptCGUARD2_Main_00d6a360.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d7/CHeroSoulsEnemy_Main_00d7f110.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d7/CSummoner1_Main_00d7ecb0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d7/CSummoner2_Main_00d7eed0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d8/CSUMMONEDCREATURE_Main_00d891f0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d8/CUndeadSoldier_Main_00d88f90.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d8/NScriptCQHeroSoulsNostroScriptCNostro_Main_00d89380.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d8/NScriptCQHobbeCaveScriptCHobbeLeader_Main_00d8fa30.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d9/CDrinkingHobbe_Main_00d9bf60.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarkerAdv_Main_00d90b30.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeCaveScriptCJamesCommentMarker_Main_00d907b0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d9/NScriptCQHobbeToothContestScriptCQHobbeToothHobbe_Main_00d9bdc0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/d9/NScriptCQMinionCampScriptCMCSpawnPoint_Main_00d9ee20.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/da/CMagicBarrierGraveyard_Main_00da5490.cpp ok CIsThingAlive inl2
+edit rebuild/src/compiled/00/da/CMinionEscort_Main_00da45c0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/da/NScriptCQMinionClifftopChaseScriptCMinionAttackingGuard_Main_00da4b10.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/db/CNOVIBarrel_Main_00db7e10.cpp ok CPredicateBase
+edit rebuild/src/compiled/00/dc/CArtefact_Main_00dcdc50.cpp ok CIsThingAlive inl2
+edit rebuild/src/compiled/00/dc/CVtable012DB4B8_Main_00dcf4c0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/de/NScriptCQRansomVictimScript_CQRansomVictimScript_00de0320.cpp ok CIsThingConscious inl2 using
+edit rebuild/src/compiled/00/df/CSummonerAttacker_Main_00df2380.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/df/CSummonerMinion_Main_00df2ab0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/df/NScriptCQSecretPassageScript_PhaseOne_00df06a0.cpp ok CIsThingConscious inl2 using
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFighter_Main_00df8970.cpp ok CIsThingAlive inl2
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictEvilScriptCTCBanditFollower_Main_00df80b0.cpp ok CIsThingAlive inl2
+edit rebuild/src/compiled/00/df/NScriptCQTraderConflictGoodScriptCTCBanditGuard_Main_00dfb320.cpp ok CIsThingAlive inl2
+edit rebuild/src/compiled/00/e0/CBanditCronies_Main_00e03810.cpp ok CIsThingAlive inl2
+edit rebuild/src/compiled/00/e0/CDW5Balv_Main_00e047d0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/e0/CDW5Balv_Main_00e04970.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/e0/CDarkwoodAssassinSpawn_Main_00e02e50.cpp ok CIsThingAlive inl2
+edit rebuild/src/compiled/00/e0/CTEBanditLeader_Main_00e035e0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/e1/CMBanditTrigger_Main_00e1e960.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/e1/CVChapelOfEvilScript_WatchForLeaving_00e10bf0.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/e1/NScriptCQWaspBossScript_GuildmasterHelp_00e12b30.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/e1/NScriptCQWizardBattleScriptCInitialScreamerPoint_Main_00e1bc70.cpp ok CPredicateBase,CIsThingAlive inl2
+edit rebuild/src/compiled/00/e2/NScriptCPredicateAndCIsThingAliveCIsThingAlive_CPredicateAnd_00e24760.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious
+edit rebuild/src/compiled/00/e2/NScriptCPredicateAndCIsThingAliveCIsThingAlive_Clone_00e247a0.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious
+edit rebuild/src/compiled/00/e2/NScriptCPredicateAndCIsThingAliveCIsThingAlive_scalardeletingdestructor_00e245a0.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious dropcopy
+edit rebuild/src/compiled/00/e3/CMeleeThunder_Main_00e386e0.cpp ok CIsThingConscious inl2 using
+edit rebuild/src/compiled/00/e7/CFishermanWasp_Main_00e7bb30.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/e7/NScriptCIsVariableFalse_Clone_00e7dde0.cpp ok CPredicateBase,CIsThingAlive
+edit rebuild/src/compiled/00/e7/NScriptCIsVariableFalse_operator_00e7ddd0.cpp ok CPredicateBase,CIsThingAlive
+edit rebuild/src/compiled/00/e7/NScriptCPredicateAndCIsThingAliveCIsVariableFalse_scalardeletingdestructor_00e7dfe0.cpp ok CPredicateBase,CIsThingAlive dropcopy
+edit rebuild/src/compiled/00/e7/NScriptCPredicateAnd_Clone_00e7e060.cpp ok CPredicateBase,CIsThingAlive
+edit rebuild/src/compiled/00/e9/CHHUndead_Main_00e95e80.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ea/CMurderTwistSheriff_Main_00eaef30.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ec/CSecretWhisperingFriend_Main_00ec0ba0.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ec/CSickChildFishingSpot_Main_00ecd530.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ed/NScriptCVTravellingHeroesScript_CVTravellingHeroesScript_00edeba0.cpp ok CIsThingConscious inl2 using
+edit rebuild/src/compiled/00/ee/CStopDrawing_Main_00ee36a0.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ee/CStopDrawing_Main_00eed8b0.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ee/CTHTriggerOakvaleGossip_Main_00ee06b0.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ee/CTHTriggerOakvale_Main_00ee0a20.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHMagicBarrier_Main_00ee1500.cpp ok CIsThingAlive inl1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerGuildMaze_Main_00ee3b20.cpp ok CIsThingAlive inl1
+edit rebuild/src/compiled/00/ee/NScriptCVTravellingHeroesScriptCTHTriggerNorthernWastes_Main_00ee3fc0.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/CBeggar_Main_00ef3200.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/CCrateDeathMarker_Main_00ef12f0.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/CGuildSealTrigger_Main_00efbe20.cpp ok CIsThingConscious inl1 using
+edit rebuild/src/compiled/00/ef/COpinionMan_Main_00ef7800.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/CSwordChest_Main_00ef2290.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/CTestPos_Main_00ef3840.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/CTrappedMan_Main_00ef1e10.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/CTriggerCrate_Main_00ef25e0.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCLeader_Main_00ef3f00.cpp ok CPredicateBase,CIsThingConscious inl2
+edit rebuild/src/compiled/00/ef/NScriptCPersonalScriptEmptyScriptCStealthGuard_Main_00ef7600.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingAliveCIsThingAlive_CPredicateAnd_00ef5b50.cpp ok CPredicateBase,CIsThingAlive
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingAliveCIsThingAlive_CPredicateAnd_00ef5c00.cpp ok CIsThingAlive dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingAlive_CPredicateAnd_00ef7b50.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingAlive_Clone_00ef7b90.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingAlive_scalardeletingdestructor_00ef7b10.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingConscious_CPredicateAnd_00ef8740.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingConscious_Clone_00ef8780.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCIsThingConsciousCIsThingConscious_scalardeletingdestructor_00ef8700.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_CPredicateAnd_00ef5bc0.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_CPredicateAnd_00ef6d50.cpp ok CPredicateBase,CIsThingAlive
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_CPredicateAnd_00ef6f40.cpp ok CIsThingAlive dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThingAlive_scalardeletingdestructor_00ef5b80.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThing_CPredicateAnd_00ef6d90.cpp ok CPredicateBase,CIsThingAlive
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThing_CPredicateAnd_00ef6f00.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThingAliveCIsThing_CPredicateAnd_00ef6fe0.cpp ok CIsThingAlive dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThing_CPredicateAnd_00ef6de0.cpp ok CPredicateBase,CIsThingAlive
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThing_CPredicateAnd_00ef6fa0.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThingAliveCIsThing_CPredicateAnd_00ef7060.cpp ok CIsThingAlive dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThing_CPredicateAnd_00ef7020.cpp ok CPredicateBase,CIsThingAlive inl1
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAndCPredicateAndCPredicateAndCPredicateAndCPredicateAndCIsThing_scalardeletingdestructor_00ef6ec0.cpp ok CPredicateBase,CIsThingAlive,CIsThingConscious dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_Clone_00ef5c40.cpp ok CPredicateBase,CIsThingAlive dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_Clone_00ef70b0.cpp ok CPredicateBase,CIsThingAlive dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_Clone_00ef7100.cpp ok CPredicateBase,CIsThingAlive dropcopy
+edit rebuild/src/compiled/00/ef/NScriptCPredicateAnd_Clone_00ef7160.cpp ok CPredicateBase,CIsThingAlive dropcopy
+edit rebuild/src/compiled/00/f0/CATPhase3Archer_Main_00f04cc0.cpp ok CPredicateBase,CIsThingAlive inl1

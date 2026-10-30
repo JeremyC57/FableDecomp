@@ -1,0 +1,7 @@
+00def760	SRC_FAIL	new.cpp(154): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(154): error C2227: left of '->GetHero' must point to class/struct/union | new.cpp(154): fatal error C1903: unable to recover from previous error(s); stopping compilation
+00e63730	RELOC_RENAMED	leafsym ?Init@CSpectator@@QAEXXZ -> ?Init@CSpectator@@UAEXXZ
+00e64df0	SAME	391b RELOCATION_MATCH->RELOCATION_MATCH
+00e81d10	SAME	412b RELOCATION_MATCH->RELOCATION_MATCH
+00ed8120	RELOC_RENAMED	leafsym ?Main@CTB_BardSpawnPoint@@QAEXXZ -> ?Main@CTB_BardSpawnPoint@@UAEXXZ
+00efeb60	SRC_FAIL	new.cpp(183): error C2027: use of undefined type 'CGameScriptInterfaceBase' | new.cpp(183): error C2227: left of '->NewScriptFrame' must point to class/struct/union | new.cpp(187): error C2027: use of undefined type 'CGameScriptInterfaceBase'
+00ef12f0	RELOC_RENAMED	leafsym ?Main@CCrateDeathMarker@@QAEXXZ -> ?Main@CCrateDeathMarker@@UAEXXZ

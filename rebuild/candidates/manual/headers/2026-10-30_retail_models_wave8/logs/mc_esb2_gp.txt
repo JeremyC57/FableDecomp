@@ -1,0 +1,3 @@
+00e63730	RELOC_RENAMED	leafsym ?Init@CSpectator@@QAEXXZ -> ?Init@CSpectator@@EAEXXZ
+00ed8120	RELOC_RENAMED	leafsym ?Main@CTB_BardSpawnPoint@@QAEXXZ -> ?Main@CTB_BardSpawnPoint@@EAEXXZ
+00ef12f0	RELOC_RENAMED	leafsym ?Main@CCrateDeathMarker@@QAEXXZ -> ?Main@CCrateDeathMarker@@EAEXXZ

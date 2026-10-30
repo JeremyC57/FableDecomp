@@ -53,10 +53,10 @@ template <class T> class CCountedPointer { public:     // retail CCountedPointer
 
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0 (slot 0), implicit copy
 
-class CScriptThing : public CBaseClass { public:                 // vtable 0x01238C8C, 12 bytes (engine/CScriptThing.h: PImp_Data +4, PImp_Info +8)
-    CCountedPointer<CScriptGameResourceObjectScriptedThingBase> PImp;                     // +0x04 Data, +0x08 Info
-    CScriptThing() : CBaseClass(), PImp() { }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing() : CBaseClass(), PImp() { }
 
 struct CVtable_012cc60c : CScriptObject {          // vtable 0x012CC60C
     unsigned char _pad48[8];                       // +0x48..+0x4f

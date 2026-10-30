@@ -28,10 +28,10 @@ class CCharString { public:
 #define FABLE_RETAIL_NSCRIPT
 #include "engine/CGameScriptInterface.h"
 extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
-class CTimer { public:                                         // a script timer: the interface's timer index
-    long Index;
-    void SetTime(long seconds) { const CTimer* const& self = this; g_pGameScriptInterface->SetTimer(self->Index, seconds); }
-};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
+inline CTimer& CTimer::operator=(long seconds) { const CTimer* const& self = this; g_pGameScriptInterface->SetTimer(self->TimerIndex, seconds); return *this; }
 class CScriptDef { public:
     unsigned char _pad0[0x1c8];
     long TraderConflictEvilNakedBoastCost;              // +0x1C8
@@ -84,7 +84,7 @@ void NScript::CQ_TraderConflictEvilScript::Init()
     NextTimeToSpawnGuards = 24;
     MissionSucceeded = false;
     HeroAttackedBandit = false;
-    ScreamOutTimer.SetTime(15);
+    ScreamOutTimer = 15;
     PlayerEngaged = false;
     Game->AddQuestRegion("Q_TraderConflictEvil", "BarrowFields");
     Game->AddBoast("TEXT_QST_BOAST_DESCRIPTION_NAKED", 1, pGlobalScriptDef->TraderConflictEvilNakedBoastCost,

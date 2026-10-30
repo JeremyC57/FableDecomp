@@ -49,29 +49,13 @@ template <class T> class CCountedPointer { public:     // retail CCountedPointer
     }
 };
 class C3DVector { public: float X, Y, Z; };
-struct CScriptThingImpl {
-    virtual void i000(); virtual void i001(); virtual void i002(); virtual void i003(); virtual void i004(); virtual void i005();
-    virtual const C3DVector& GetPos() const;            // imp slot 6 (+0x18)
-};
 extern const C3DVector g_ZeroVector;                    // 0x0143E8E0
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    virtual void t001(); virtual void t002(); virtual void t003(); virtual void t004(); virtual void t005();
-    __forceinline virtual const C3DVector& GetPos() const   // slot 6 (+0x18) 0x004AA980
-    {
-        if (!PImp.Data)
-            return g_ZeroVector;
-        return PImp.Data->GetPos();
-    }
-    virtual void t007(); virtual void t008(); virtual void t009(); virtual void t010(); virtual void t011(); virtual void t012(); virtual void t013(); virtual void t014(); virtual void t015(); virtual void t016(); virtual void t017(); virtual void t018(); virtual void t019(); virtual void t020();
-    virtual bool MsgIsHitBy(const CCharString& by) const;   // slot 21 (+0x54)
-    virtual void t022(); virtual void t023(); virtual void t024(); virtual void t025(); virtual void t026(); virtual void t027(); virtual void t028(); virtual void t029(); virtual void t030(); virtual void t031(); virtual void t032(); virtual void t033(); virtual void t034(); virtual void t035(); virtual void t036(); virtual void t037(); virtual void t038(); virtual void t039(); virtual void t040();
-    virtual bool MsgIsHitBySpecialAbilityFrom(long ability, const CCharString& by) const;   // slot 41 (+0xa4)
-    virtual bool MsgIsHitByAnySpecialAbilityFrom(const CCharString& by) const;              // slot 42 (+0xa8)
-    CCountedPointer<CScriptThingImpl> PImp;             // +0x04
-    CScriptThing(const CScriptThing& other);            // 0x004ABE90
-    virtual ~CScriptThing();                                    // 0x004AA840
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+__forceinline const C3DVector& CScriptThing::GetPos() const { if (!PImp.Data) return g_ZeroVector; return PImp.Data->GetPos(); }
 struct CScriptPredicate {                               // vtable 0x012C2FF4
     virtual bool Evaluate() const = 0;
     virtual CScriptPredicate* Clone() const = 0;
@@ -176,7 +160,7 @@ void CRingFighter::Main()
         return;
     Game->GiveThingBestEnemyTarget(Me, Game->GetHero());
     while (!IsDone()) {
-        bool hit = Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom(14, "SCRIPT_NAME_HERO"));
+        bool hit = Me.MsgIsHitBy("SCRIPT_NAME_HERO") || (Me.MsgIsHitByAnySpecialAbilityFrom("SCRIPT_NAME_HERO") && !Me.MsgIsHitBySpecialAbilityFrom((EHeroAbility)14, "SCRIPT_NAME_HERO"));
         if (hit) {
             if (IsDone())
                 return;

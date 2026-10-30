@@ -32,10 +32,10 @@ class CCPPointerInfo { public:                                 // counted-pointe
 #include "engine/CBaseClass.h"                         // CBaseClass() 0x0099A2D0, ~CBaseClass 0x0099A2E0
 
 class CScriptThing;
-struct CCountedPointerScriptThing {                     // CCountedPointer<CScriptThing>
+template <class T> class CCountedPointer { public:                     // CCountedPointer<CScriptThing>
     CScriptThing*   Data;                               // +0x00
     CCPPointerInfo* Info;                               // +0x04
-    ~CCountedPointerScriptThing()
+    ~CCountedPointer()
     {
         if (Info) {
             --Info->RefCount;
@@ -49,18 +49,14 @@ struct CCountedPointerScriptThing {                     // CCountedPointer<CScri
     }
 };
 
-class CScriptThing : public CBaseClass { public:                      // 12 bytes, vtable 0x01238C8C
-    CCountedPointerScriptThing PImp;                    // +0x04
-    virtual ~CScriptThing() {}                          // out of line: 0x004AA840
-    virtual void v001(); virtual void v002(); virtual void v003(); virtual void v004(); virtual void v005(); virtual void v006(); virtual void v007(); virtual void v008(); virtual void v009(); virtual void v010();
-    virtual void v011(); virtual void v012(); virtual void v013(); virtual void v014(); virtual void v015(); virtual void v016(); virtual void v017();
-    virtual bool MsgIsKilledBy(const CCharString& killer) const     // slot 18 (+0x48)
-    {
-        if (PImp.Data)
-            return PImp.Data->MsgIsKilledBy(killer);
-        return false;
-    }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::~CScriptThing() {}
+inline bool CScriptThing::MsgIsKilledBy(const CCharString& killer) const { if (PImp.Data) return PImp.Data->MsgIsKilledBy(killer); return false; }
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 
 // CGameScriptInterface is the retail game-script interface from the shared headers (FABLE_RETAIL_NSCRIPT opt-in:
 //   CGameScriptInterface : CGameScriptInterfaceBase : CBaseClassNonCopyable : CBaseClass, vtable 0x01260F0C, 918 slots).

@@ -27,7 +27,7 @@ class CCPPointerInfo { public:                                // CCountedPointer
     void* Data;
 };
 struct CScriptThingImpl;
-struct CCountedPointer {
+template <class T> class CCountedPointer { public:
     CScriptThingImpl* Data;
     CCPPointerInfo*   Info;
     CCountedPointer(const CCountedPointer& other) : Data(other.Data), Info(other.Info)
@@ -48,11 +48,13 @@ struct CCountedPointer {
         Info = 0;
     }
 };
-class CScriptThing : public CBaseClass { public:                     // vtable 0x01238C8C, 12 bytes
-    CCountedPointer PImp;
-    CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
-    virtual ~CScriptThing() { }
-};
+// CScriptThing: the retail model from engine/CScriptThing.h (: CBaseClass, vtable 0x01238C8C, 79 slots, 0xc).
+#define FABLE_RETAIL_NSCRIPT
+#include "engine/CScriptThing.h"
+// Retail expands these at this row's sites (the local model had them in class): defined inline after the header.
+inline CScriptThing::CScriptThing(const CScriptThing& other) : CBaseClass(other), PImp(other.PImp) { }
+inline CScriptThing::~CScriptThing() { }
+inline CScriptThing& CScriptThing::operator=(const CScriptThing& other) { PImp = other.PImp; return *this; }
 inline void _Destroy(CScriptThing* first, CScriptThing* last)
 {
     for (; first != last; ++first)

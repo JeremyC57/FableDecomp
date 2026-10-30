@@ -42,17 +42,16 @@ class CGameScriptInterfaceBase { public:                // only the slot used is
 struct CV_ParanoidWhispersScript;
 struct CQ_SunnyvaleMasterData;
 
-class CEntityScriptBase { public:
-    void*                     __vftable;         // +0x00 entity-script vtable
-    CGameScriptInterfaceBase* Game;              // +0x04
-    CScriptThing              Me;                // +0x08
-};
+// CEntityScriptBase: the retail model from engine/CEntityScriptBase.h (vtable 0x012C3224, 7 slots, 0x14: Game +0x04, Me +0x08).
+#include "engine/CEntityScriptBase.h"
 
 struct CSecretWhisperingFriend : CEntityScriptBase {
     CV_ParanoidWhispersScript* ParentClass;      // +0x14
     CQ_SunnyvaleMasterData*    PMasterData;      // +0x18
     C3DVector                  StartPos;         // +0x1C
-    void Init();
+private:
+    virtual void Init();   // PDB ?Init@<entity>@..@@EAEXXZ: every entity override is private (slot 2)
+public:
 };
 
 void CSecretWhisperingFriend::Init()

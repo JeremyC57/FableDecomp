@@ -50,7 +50,9 @@ template<class T,class A>class _Rb_tree_base{protected:_STLP_alloc_proxy<_Rb_tre
 template<class K,class V,class S,class C,class A>class _Rb_tree:protected _Rb_tree_base<V,A>{public:unsigned int _M_node_count;C _M_key_compare;};
 template<class K,class V,class C=less<K>,class A=allocator<pair<const K,V> > >class map{public:_Rb_tree<K,pair<const K,V>,_Select1st<pair<const K,V> >,C,A> _M_t;};
 }
-class CTimer{public:long TimerIndex;};
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 namespace NScript{class CQ_HeroSoulsBriarScript:public CLevelScriptBase<CQ_SunnyvaleMasterData>{public:bool PlayedBriarCS;CScriptGameResourceObjectScriptedThingBase seh_BriarRose;std::map<CCharString,CCharString> csargs;CTimer BriarRoseImposterTauntTimer,BriarRoseImposterHereTimer;bool KickOffQuestStartScreen;CQ_HeroSoulsBriarScript(CScriptDataBase* data,CGameScriptInterfaceBase& game);virtual void RegisterMain();virtual void Main();virtual void Init();virtual void OnPersist(CPersistContext&);static CScriptBase* __fastcall Alloc(CScriptDataBase*,CGameScriptInterfaceBase&);};
 CScriptBase* __fastcall CQ_HeroSoulsBriarScript::Alloc(CScriptDataBase* data,CGameScriptInterfaceBase& game){return new CQ_HeroSoulsBriarScript(data,game);}
 }

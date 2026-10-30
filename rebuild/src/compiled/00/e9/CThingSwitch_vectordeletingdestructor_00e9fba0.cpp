@@ -9,10 +9,10 @@ struct CRecordSet_00cbd510 {                // catalog/landed name for the class
     void* _vptr;                            // (layout beyond the first word not modelled)
     ~CRecordSet_00cbd510();                 // 0x00CBD510
 };
-class CTimer { public:                             // one word: the timer handle
-    long Handle;
-    ~CTimer();                              // 0x00CD4470 (hands the handle back through the global at 0x0143E8F8, slot 0x160)
-};
+#define FABLE_RETAIL_NSCRIPT
+// CTimer: the retail model from engine/CTimer.h (Ego_r.pdb CTimer {long TimerIndex}, 0x4; the setter is the retail
+//   operator=(long), Ego_r 0x00CCE720). Bodies the row expands inline follow the include.
+#include "engine/CTimer.h"
 void __cdecl operator delete(void* block);  // MSVCR71 import thunk 0x00BFE9BC
 
 #pragma pack(push, 1)
