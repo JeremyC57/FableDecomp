@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00c6e050	DIFFER	367v369	PASS	CVtable_012bed90::SetParameters slot 4; frame 0xC vs retail 0x20 (unshared float slots, CSE homed in dead pan arg slot); differ/

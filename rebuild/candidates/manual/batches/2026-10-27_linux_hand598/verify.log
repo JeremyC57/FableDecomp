@@ -1,0 +1,34 @@
+addr       parity           behav  name
+00c42dd0   WARN RELOC_NAME: ?CreateIndexBuffer@CTCHeroStats_00c3df10@@QAEPAUCIndexBuffer_00c3df10@@XZ -> 00c3df10 labelled 'CTCHeroStats::CTCHeroStats::CreateSoundBankResizeAction'
+00c42dd0   RELOCATION_MATCH PASS   Open
+00c57140   RELOCATION_MATCH PASS   CreateBuffer
+00c621b0   WARN RELOC_NAME: ?GetVolume@CAmbientSource@@QAEMXZ -> 00c46f40 labelled 'TurnToPointer'
+00c621b0   WARN RELOC_NAME: ?Set9_00c20420@CSoundPlayParams_00c37840@@QAEXM@Z -> 00c20420 labelled 'CBrainOutput::SetAsPumpCombatActions'
+00c621b0   WARN RELOC_NAME: ?SetFilter_00c20440@CSoundPlayParams_00c37840@@QAEXJ@Z -> 00c20440 labelled 'std::bind2nd<std::greater<long>,long>'
+00c621b0   WARN RELOC_NAME: ?GetHandleTable@CAmbientChannel@@QAEPAVCHandleTable@@PAVCAmbientSource@@@Z -> 00c62150 labelled 'CTools::GetWorld'
+00c621b0   WARN RELOC_NAME: ?Play_00c13140@CSoundSystem_00c37840@@QAEJJJPBUCSoundPlayParams_00c37840@@@Z -> 00c13140 labelled '_global::CTCHeroExperience_GetBlockParryReward'
+00c621b0   RELOCATION_MATCH PASS   Update
+00c90d60   RELOCATION_MATCH PASS   _analysis_output_always
+00ca36e0   RELOCATION_MATCH PASS   floor0_map_lazy_init
+00ca56e0   RELOCATION_MATCH PASS   SendQuality
+00ca9510   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00ca9510   WARN RELOC_NAME: ?DeleteMediaType@@YGXPAU_AMMediaType@@@Z -> 00cb1f20 labelled '_unattributed::FreeComRecord_00cb1f20'
+00ca9510   RELOCATION_MATCH PASS   SetProperties
+
+WINS: 7
+  00c42dd0 RELOCATION_MATCH CAudioObject::?Open@CAudioObject@@UAE_NK@Z
+  00c57140 RELOCATION_MATCH CDSoundStreamBuffer::?CreateBuffer@CDSoundStreamBuffer@@QAE_NKK_N@Z
+  00c621b0 RELOCATION_MATCH CAmbientChannel::?Update@CAmbientChannel@@QAEXPAVCAmbientSource@@@Z
+  00c90d60 RELOCATION_MATCH libvorbis::@_analysis_output_always@32
+  00ca36e0 RELOCATION_MATCH libvorbis::@floor0_map_lazy_init@12
+  00ca56e0 RELOCATION_MATCH CBaseVideoRenderer::?SendQuality@CBaseVideoRenderer@@UAEJ_J0@Z
+  00ca9510 RELOCATION_MATCH CMediaSample::?SetProperties@CMediaSample@@UAGJKPBE@Z
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  CAudioObject_Open_00c42dd0
+  CDSoundStreamBuffer_CreateBuffer_00c57140
+  CAmbientChannel_Update_00c621b0
+  libvorbis_analysisoutputalways_00c90d60
+  libvorbis_floor0maplazyinit_00ca36e0
+  CBaseVideoRenderer_SendQuality_00ca56e0
+  CMediaSample_SetProperties_00ca9510

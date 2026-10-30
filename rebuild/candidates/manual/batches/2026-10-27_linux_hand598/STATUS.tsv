@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00ca36e0	RELOCATION_MATCH	361v361	PASS	libvorbis floor0.c floor0_map_lazy_init (static noinline, private regs: vb eax, look edi, info stack, ret 4); /Gr; 1 grade
+00ca9510	RELOCATION_MATCH	362v362	PASS	CMediaSample::SetProperties (strmbase amfilter.cpp verbatim, IMediaSample2 slot 20); 1 grade
+00c621b0	RELOCATION_MATCH	363v363	PASS	CAmbientChannel::Update (descriptive libpk); GetHandleTable 0xC62150 is a thiscall member; memberwise position copy; 3 grades
+00c6a460	RELOCATION_MATCH	364v364	PASS	retail_asm/ CReverbProcessor::Allocate (libpk fld/fistp dword float-to-long); 2 grades; test VC7.1 only
+00c57140	RELOCATION_MATCH	366v366	PASS	CDSoundStreamBuffer::CreateBuffer (descriptive libpk); /GS; Lock outputs block-scoped; 3 grades
+00ca56e0	RELOCATION_MATCH	366v366	PASS	CBaseVideoRenderer::SendQuality (strmbase renbase.cpp verbatim); 1 grade
+00c6dea0	RELOCATION_MATCH	369v369	PASS	retail_asm/ CVtable_012bed90::RebuildGain (libpk fld/fistp dword); 1 grade; test VC7.1 only
+00c6e050	DIFFER	367v369	PASS	CVtable_012bed90::SetParameters slot 4; frame 0xC vs retail 0x20 (unshared float slots, CSE homed in dead pan arg slot); differ/
+00c90d60	RELOCATION_MATCH	370v370	PASS	libvorbis analysis.c _analysis_output_always (static noinline todB, ptr in eax); /Gr /GS; 1 grade
+00c42dd0	RELOCATION_MATCH	373v373	PASS	CAudioObject::Open (descriptive libpk); /EHsc; caps re-read after memset, GetContext accessor; 3 grades

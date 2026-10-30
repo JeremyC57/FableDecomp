@@ -1,0 +1,10 @@
+address	name	evidence
+0x00CA36E0	floor0_map_lazy_init	proven per batch 2026-10-27_linux_hand598 NOTES.md (chunk 598; libvorbis 1.0.1 floor0.c static, caller floor0_inverse2)
+0x00CA9510	CMediaSample::SetProperties	proven per batch 2026-10-27_linux_hand598 NOTES.md (chunk 598; DirectShow amfilter.cpp, vtable slot 20 at 0x012BF730)
+0x00C621B0	CAmbientChannel::Update	descriptive per batch 2026-10-27_linux_hand598 NOTES.md (chunk 598; libpk)
+0x00C6A460	CReverbProcessor::Allocate	class proven / method descriptive per batch 2026-10-27_linux_hand598 NOTES.md (chunk 598; libpk, retail_asm fld/fistp)
+0x00C57140	CDSoundStreamBuffer::CreateBuffer	descriptive per batch 2026-10-27_linux_hand598 NOTES.md (chunk 598; libpk)
+0x00CA56E0	CBaseVideoRenderer::SendQuality	proven per batch 2026-10-27_linux_hand598 NOTES.md (chunk 598; DirectShow renbase.cpp)
+0x00C6DEA0	CVtable_012bed90::RebuildGain	descriptive per batch 2026-10-27_linux_hand598 NOTES.md (chunk 598; libpk, retail_asm fld/fistp)
+0x00C90D60	_analysis_output_always	proven per batch 2026-10-27_linux_hand598 NOTES.md (chunk 598; libvorbis 1.0.1 analysis.c)
+0x00C42DD0	CAudioObject::Open	descriptive per batch 2026-10-27_linux_hand598 NOTES.md (chunk 598; libpk)
