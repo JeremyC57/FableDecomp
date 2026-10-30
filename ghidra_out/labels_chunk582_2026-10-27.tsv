@@ -1,0 +1,11 @@
+address	name	evidence
+00ed7a40	NScript::CV_TalentlessBardScript::WatchForCompletedQuests	chunk 582: spawn site 0x00ED795B in landed Main 0x00ED7830 next to its literal; Ego_r.pdb
+00d848d0	NScript::CQ_HeroSoulsMotherScript::PlayCutscene	chunk 582: both callers in landed Main 0x00D835D0; Ego_r.pdb (CCharString arg)
+00d872d0	NScript::CQ_HeroSoulsGuildmasterScript::PlayCutscene	chunk 582: 4 callers incl. landed CGuardOutsideWoods::Main; Ego_r.pdb
+00d7c470	NScript::CQ_HeroSoulsThunderScript::PlayCutscene	chunk 582: both callers in landed Main 0x00D7AE80; Ego_r.pdb (lower-case s; landed caller spells PlayCutScene)
+00e1d7b0	NScript::CQ_WizardBattleScript::CutsceneMazeDeath	chunk 582: only caller EndMission 0x00E1D640; plays CS_WIZARD_BATTLE_MAZE_DEATH; Ego_r order CleanUp/CutsceneMazeDeath = retail 0x00E1D690/0x00E1D7B0; landed caller invented FinishMazeStage
+00e4f7f0	NScript::CV_BeardyBaldyScript::OnPersist	chunk 582: slot 4 of vtable 0x012E5790; 20 persist keys paired with Ego_r members
+00eea020	NScript::CExpression_FollowScript::Main	chunk 582: slot 2 of vtable 0x012F55B8; Ego_r.pdb
+00d6ca90	NScript::CQ_HangingTreeEvilScript::WatchForHeroNearExit	chunk 582: spawn site 0x00D6C6F5 in landed SpawnParty; Ego_r.pdb
+00db4f70	NScript::CQ_NewOakValeIntroScript::StartBarrelTimer	chunk 582: spawn site 0x00DAC255 in landed Main 0x00DABAC0 after the "StartBarrelTimer" literal; Ego_r.pdb
+00d34b30	std::vector<CScriptThing>::_M_fill_insert	chunk 582 (parked DIFFER 474v480): CScriptThing copy ctor 0x004ABE90 called in retail's raw-end loops, inlined by VC7.1

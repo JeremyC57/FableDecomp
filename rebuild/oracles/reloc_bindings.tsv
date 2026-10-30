@@ -35189,3 +35189,6 @@ _icomp	00ca1bc0	00ca1be0
 ?_M_insert_overflow@?$vector@VCFireHeartPatternDef@@V?$allocator@VCFireHeartPatternDef@@@std@@@std@@IAEXPAVCFireHeartPatternDef@@ABV3@ABU__false_type@2@I_N@Z	00f34160	00f33ef0
 ??$uninitialized_fill_n@PAVCFeatDef@@IV1@@std@@YIPAVCFeatDef@@PAV1@IABV1@@Z	00f34830	00f34660
 ?_M_insert_overflow@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@IAEXPAVCFeatDef@@ABV3@ABU__false_type@2@I_N@Z	00f34860	00f34660
+?clear@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEXXZ	009aace0	00d7c470
+?GetQuestIndex@CV_TalentlessBardScript@NScript@@QAEJVCCharString@@@Z	00ed7c70	00ed7a40
+?FollowThread@CExpression_FollowScript@NScript@@QAEXXZ	00eea240	00eea020

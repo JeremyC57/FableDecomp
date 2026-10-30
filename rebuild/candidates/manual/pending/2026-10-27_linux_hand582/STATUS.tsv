@@ -1,0 +1,2 @@
+address	status	bytes	test	note
+00d34b30	DIFFER	474v480	-	std::vector<CScriptThing>::_M_fill_insert; VC7.1 inlines the CScriptThing copy ctor in both raw-end copy loops, retail calls 0x004ABE90 (differ/)

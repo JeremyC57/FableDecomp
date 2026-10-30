@@ -1,0 +1,12 @@
+address	correct_symbol	evidence	wrong_spellings_seen
+0x00D7C470	?PlayCutscene@CQ_HeroSoulsThunderScript@NScript@@QAEXVCCharString@@@Z	Ego_r.pdb name set (lower-case s); both callers in landed Main 0x00D7AE80	PlayCutScene
+0x00D872D0	?PlayCutscene@CQ_HeroSoulsGuildmasterScript@NScript@@QAEXVCCharString@@@Z	Ego_r.pdb; every CQ_ script class is in NScript; callers in Main 0x00D84D60 / CGuardOutsideWoods::Main 0x00D874F0	?PlayCutscene@CQ_HeroSoulsGuildmasterScript@@QAEXVCCharString@@@Z
+0x00E1D7B0	?CutsceneMazeDeath@CQ_WizardBattleScript@NScript@@QAEXXZ	Ego_r.pdb order CleanUp -> CutsceneMazeDeath = retail 0x00E1D690 -> 0x00E1D7B0; plays CS_WIZARD_BATTLE_MAZE_DEATH	FinishMazeStage
+0x00411570	?Compare@?$CBasicString@D@@KIJPBD0@Z	Ego_r.pdb CBasicString<char>::Compare (static fastcall); body matches strcmp-style compare	assorted junk bindings
+0x0099E4B0	??0CCharString@@QAE@XZ	default ctor called for the questName local in 0x00ED7A40; Ego_r.pdb	junk bindings
+0x00704580	??4?$CCountedPointer@VCScriptThing@@@@QAEAAV0@ABV0@@Z	the inline CScriptThing::operator= in 0x00D34B30 calls it on PImp	-
+0x00CBE2FF	?IsDistanceBetweenThingsUnder@@YI_NABVCScriptThing@@0M@Z	__fastcall (ecx, edx, one stack float, ret 4) in 0x00D6CA90 / 0x00DB4F70; Ego_r global	-
+0x012C2FE8	??_7CIsThingConscious@NScript@@6B@	vtable of the predicate whose slots 0x00CDDAB0 / 0x00CDDAE0 / 0x00CDDB10 are landed CIsThingConscious members	-
+0x007E74D0	??1CScriptGameResourceObjectScriptedThingBase@@UAE@XZ	dtor called on the scripted-thing handle local in 0x00EEA020 and landed 0x00D7AA30	-
+0x006E7AB0	??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ	movie PImp member dtor (landed 0x00D7AA30 model); probable	CCountedPointer_Release_006e7ab0; ~CMovieImpPointer; ~CResourcePImp
+0x009AACE0	?clear@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEXXZ	csargs.clear() in 0x00D7C470 and landed Briar 0x00D823A0; map::clear vs _Rb_tree::clear unproven (probable)	CTCCarryable_OnKill; CCutsceneArgMap junk

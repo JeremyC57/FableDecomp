@@ -1,0 +1,37 @@
+addr       parity           behav  name
+00d6ca90   RELOCATION_MATCH PASS   WatchForHeroNearExit
+00d7c470   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d7c470   RELOCATION_MATCH PASS   PlayCutscene
+00d848d0   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d848d0   RELOCATION_MATCH PASS   PlayCutscene
+00d872d0   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d872d0   RELOCATION_MATCH PASS   PlayCutscene
+00db4f70   RELOCATION_MATCH PASS   StartBarrelTimer
+00e1d7b0   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e1d7b0   RELOCATION_MATCH PASS   CutsceneMazeDeath
+00e4f7f0   RELOCATION_MATCH PASS   OnPersist
+00ed7a40   RELOCATION_MATCH PASS   WatchForCompletedQuests
+00eea020   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00eea020   RELOCATION_MATCH PASS   Main
+
+WINS: 9
+  00d6ca90 RELOCATION_MATCH NScript::CQ_HangingTreeEvilScript::?WatchForHeroNearExit@CQ_HangingTreeEvilScript@NScript@@QAEXXZ
+  00d7c470 RELOCATION_MATCH NScript::CQ_HeroSoulsThunderScript::?PlayCutscene@CQ_HeroSoulsThunderScript@NScript@@QAEXVCCharString@@@Z
+  00d848d0 RELOCATION_MATCH NScript::CQ_HeroSoulsMotherScript::?PlayCutscene@CQ_HeroSoulsMotherScript@NScript@@QAEXVCCharString@@@Z
+  00d872d0 RELOCATION_MATCH NScript::CQ_HeroSoulsGuildmasterScript::?PlayCutscene@CQ_HeroSoulsGuildmasterScript@NScript@@QAEXVCCharString@@@Z
+  00db4f70 RELOCATION_MATCH NScript::CQ_NewOakValeIntroScript::?StartBarrelTimer@CQ_NewOakValeIntroScript@NScript@@QAEXXZ
+  00e1d7b0 RELOCATION_MATCH NScript::CQ_WizardBattleScript::?CutsceneMazeDeath@CQ_WizardBattleScript@NScript@@QAEXXZ
+  00e4f7f0 RELOCATION_MATCH NScript::CV_BeardyBaldyScript::?OnPersist@CV_BeardyBaldyScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00ed7a40 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?WatchForCompletedQuests@CV_TalentlessBardScript@NScript@@QAEXXZ
+  00eea020 RELOCATION_MATCH NScript::CExpression_FollowScript::?Main@CExpression_FollowScript@NScript@@UAEXXZ
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  NScriptCQHangingTreeEvilScript_WatchForHeroNearExit_00d6ca90
+  NScriptCQHeroSoulsThunderScript_PlayCutscene_00d7c470
+  NScriptCQHeroSoulsMotherScript_PlayCutscene_00d848d0
+  NScriptCQHeroSoulsGuildmasterScript_PlayCutscene_00d872d0
+  NScriptCQNewOakValeIntroScript_StartBarrelTimer_00db4f70
+  NScriptCQWizardBattleScript_CutsceneMazeDeath_00e1d7b0
+  NScriptCVBeardyBaldyScript_OnPersist_00e4f7f0
+  NScriptCVTalentlessBardScript_WatchForCompletedQuests_00ed7a40
+  NScriptCExpressionFollowScript_Main_00eea020

@@ -364450,6 +364450,69 @@ $catalog = @(
         TestSource = '00/f3/stdvectorCFeatDef_Mfillinsert_00f34660_test.cpp'
         PassPattern = '00f34660_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00d6ca90'
+        Module = 'NScript::CQ_HangingTreeEvilScript'
+        Source = '00/d6/NScriptCQHangingTreeEvilScript_WatchForHeroNearExit_00d6ca90.cpp'
+        TestSource = '00/d6/NScriptCQHangingTreeEvilScript_WatchForHeroNearExit_00d6ca90_test.cpp'
+        PassPattern = '00d6ca90_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d7c470'
+        Module = 'NScript::CQ_HeroSoulsThunderScript'
+        Source = '00/d7/NScriptCQHeroSoulsThunderScript_PlayCutscene_00d7c470.cpp'
+        TestSource = '00/d7/NScriptCQHeroSoulsThunderScript_PlayCutscene_00d7c470_test.cpp'
+        PassPattern = '00d7c470_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d848d0'
+        Module = 'NScript::CQ_HeroSoulsMotherScript'
+        Source = '00/d8/NScriptCQHeroSoulsMotherScript_PlayCutscene_00d848d0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsMotherScript_PlayCutscene_00d848d0_test.cpp'
+        PassPattern = '00d848d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00d872d0'
+        Module = 'NScript::CQ_HeroSoulsGuildmasterScript'
+        Source = '00/d8/NScriptCQHeroSoulsGuildmasterScript_PlayCutscene_00d872d0.cpp'
+        TestSource = '00/d8/NScriptCQHeroSoulsGuildmasterScript_PlayCutscene_00d872d0_test.cpp'
+        PassPattern = '00d872d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00db4f70'
+        Module = 'NScript::CQ_NewOakValeIntroScript'
+        Source = '00/db/NScriptCQNewOakValeIntroScript_StartBarrelTimer_00db4f70.cpp'
+        TestSource = '00/db/NScriptCQNewOakValeIntroScript_StartBarrelTimer_00db4f70_test.cpp'
+        PassPattern = '00db4f70_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e1d7b0'
+        Module = 'NScript::CQ_WizardBattleScript'
+        Source = '00/e1/NScriptCQWizardBattleScript_CutsceneMazeDeath_00e1d7b0.cpp'
+        TestSource = '00/e1/NScriptCQWizardBattleScript_CutsceneMazeDeath_00e1d7b0_test.cpp'
+        PassPattern = '00e1d7b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e4f7f0'
+        Module = 'NScript::CV_BeardyBaldyScript'
+        Source = '00/e4/NScriptCVBeardyBaldyScript_OnPersist_00e4f7f0.cpp'
+        TestSource = '00/e4/NScriptCVBeardyBaldyScript_OnPersist_00e4f7f0_test.cpp'
+        PassPattern = '00e4f7f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7a40'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_WatchForCompletedQuests_00ed7a40.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_WatchForCompletedQuests_00ed7a40_test.cpp'
+        PassPattern = '00ed7a40_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eea020'
+        Module = 'NScript::CExpression_FollowScript'
+        Source = '00/ee/NScriptCExpressionFollowScript_Main_00eea020.cpp'
+        TestSource = '00/ee/NScriptCExpressionFollowScript_Main_00eea020_test.cpp'
+        PassPattern = '00eea020_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

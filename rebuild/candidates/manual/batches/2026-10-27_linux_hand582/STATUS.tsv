@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00d34b30	DIFFER	474v480	-	std::vector<CScriptThing>::_M_fill_insert; VC7.1 inlines the CScriptThing copy ctor in both raw-end copy loops, retail calls 0x004ABE90 (differ/)
+00eea020	RELOCATION_MATCH	543v543	PASS	NScript::CExpression_FollowScript::Main (vtable 0x012F55B8 slot 2); SpawnFunction helper fixes the 0x38v0x3c frame
+00d848d0	RELOCATION_MATCH	544v544	PASS	NScript::CQ_HeroSoulsMotherScript::PlayCutscene; landed 0x00D7AA30 model on shared headers
+00d872d0	RELOCATION_MATCH	544v544	PASS	NScript::CQ_HeroSoulsGuildmasterScript::PlayCutscene; flags map instead of args map
+00ed7a40	RELOCATION_MATCH	546v546	PASS	NScript::CV_TalentlessBardScript::WatchForCompletedQuests; SongThingAvailable is a 12-byte byte vector
+00e4f7f0	RELOCATION_MATCH	549v549	PASS	NScript::CV_BeardyBaldyScript::OnPersist (vtable 0x012E5790 slot 4); 20 Transfers, keys checked
+00d7c470	RELOCATION_MATCH	553v553	PASS	NScript::CQ_HeroSoulsThunderScript::PlayCutscene; csargs.clear() out of line 0x009AACE0 (identity probable)
+00d6ca90	RELOCATION_MATCH	555v555	PASS	NScript::CQ_HangingTreeEvilScript::WatchForHeroNearExit; real STLport vector<CScriptThing> local
+00db4f70	RELOCATION_MATCH	562v562	PASS	NScript::CQ_NewOakValeIntroScript::StartBarrelTimer; inline CTimer::GetTime, byte-aligned C3DVector members
+00e1d7b0	RELOCATION_MATCH	573v573	PASS	NScript::CQ_WizardBattleScript::CutsceneMazeDeath; label FinishMazeStage/DoMission_ wrong
