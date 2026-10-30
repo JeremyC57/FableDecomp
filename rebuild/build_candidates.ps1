@@ -365044,6 +365044,70 @@ $catalog = @(
         TestSource = '00/c6/global_ConvertFloat128BlockToIntInPlace_00c6b490_test.cpp'
         PassPattern = '00c6b490_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ab2ce0'
+        Module = 'std::vector'
+        Source = '00/ab/stdvector_Minsertoverflow_00ab2ce0.cpp'
+        TestSource = '00/ab/stdvector_Minsertoverflow_00ab2ce0_test.cpp'
+        PassPattern = '00ab2ce0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b6c700'
+        Module = 'std::vector'
+        Source = '00/b6/stdvector_Mfillinsert_00b6c700.cpp'
+        TestSource = '00/b6/stdvector_Mfillinsert_00b6c700_test.cpp'
+        PassPattern = '00b6c700_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b7cab0'
+        Module = 'std::vector'
+        Source = '00/b7/stdvector_Mfillinsert_00b7cab0.cpp'
+        TestSource = '00/b7/stdvector_Mfillinsert_00b7cab0_test.cpp'
+        PassPattern = '00b7cab0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00bcdca0'
+        Module = 'std::vector'
+        Source = '00/bc/stdvector_Mfillinsert_00bcdca0.cpp'
+        TestSource = '00/bc/stdvector_Mfillinsert_00bcdca0_test.cpp'
+        PassPattern = '00bcdca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c48e00'
+        Module = 'PKCStaticQueue<SDecoderMessage>'
+        Source = '00/c4/PKCStaticQueueSDecoderMessage_Pop_00c48e00.cpp'
+        TestSource = '00/c4/PKCStaticQueueSDecoderMessage_Pop_00c48e00_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c48e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c58740'
+        Module = 'CUnprovenAudioBuffer_00C591F0'
+        Source = '00/c5/CUnprovenAudioBuffer00C591F0_RouteShort4_00c58740.cpp'
+        TestSource = '00/c5/CUnprovenAudioBuffer00C591F0_RouteShort4_00c58740_test.cpp'
+        PassPattern = '00c58740_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5b300'
+        Module = 'CSoftwareVoice'
+        Source = '00/c5/CSoftwareVoice_AdvanceBuffer_00c5b300.cpp'
+        TestSource = '00/c5/CSoftwareVoice_AdvanceBuffer_00c5b300_test.cpp'
+        PassPattern = '00c5b300_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c67ae0'
+        Module = 'CEaxContext'
+        Source = '00/c6/CEaxContext_SetAllParameters_00c67ae0.cpp'
+        TestSource = '00/c6/CEaxContext_SetAllParameters_00c67ae0_test.cpp'
+        PassPattern = '00c67ae0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cbf6dc'
+        Module = '_global'
+        Source = '00/cb/global_GiveGameInfo_00cbf6dc.cpp'
+        TestSource = '00/cb/global_GiveGameInfo_00cbf6dc_test.cpp'
+        PassPattern = '00cbf6dc_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

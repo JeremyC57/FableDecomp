@@ -1,0 +1,16 @@
+address	name	evidence
+00c58740	CUnprovenAudioBuffer_00C591F0::RouteShort4(const short*, const unsigned short*)	proven per batch 2026-10-27_linux_hand592 NOTES.md (chunk 592)
+00c48e00	PKCStaticQueue<SDecoderMessage>::Pop	chunk 592: DESCRIPTIVE libpk; /EHsc
+00c67ae0	CEaxContext::SetAllParameters	chunk 592: DESCRIPTIVE (EAXCONTEXTPROPERTIES*)
+00cbf6dc	GiveGameInfo	chunk 592: only FableWin.pdb global taking const vector<CCharString>&; passes elements to GiveHeroYesNoQuestion; __fastcall
+00bcdca0	std::vector<CArray<C3DVector> >::_M_fill_insert	chunk 592: Ego_r element class; landed callers; STLport 4.6
+00b6c700	std::vector<CLandscapeTheme>::_M_fill_insert	chunk 592: QAE (resize 0x00B6CB20 binds IAE: wrong); STLport 4.6
+00c58740	CUnprovenAudioBuffer_00C591F0::RouteShort4	chunk 592: DESCRIPTIVE (class unproven); MATCH
+00c5b300	CSoftwareVoice::AdvanceBuffer	chunk 592: DESCRIPTIVE libpk voice
+00ab2ce0	std::vector<N3DAnimationBuilder::CSequenceInfo>::_M_insert_overflow	chunk 592: landed _M_fill_insert 0x00AB2E40 sibling; STLport 4.6
+00b7cab0	std::vector<CPreTransposedBoneMatrix>::_M_fill_insert	chunk 592: landed overflow 0x00B7C870 sibling; STLport 4.6
+00af2640	NParticleEngine::CPSCBase::GetCurrentPosition	chunk 592 (parked DIFFER 298v313): Ego_r.pdb; x87 matrix*vector slot reuse
+00c48f20	PKCStaticQueue<SDecoderMessage>::OldestIndex	chunk 592: DESCRIPTIVE; catalog said HoverHornetQueen
+00c5ce40	CAudioRingBuffer::Clear	chunk 592: DESCRIPTIVE; catalog said CGameflowAssistanceScript::Init (wrong)
+00c64420	CEaxContext::SetPrimaryFXSlotID	chunk 592: DESCRIPTIVE; catalog said CCharacter_SetActiveSkill (wrong)
+00c16900	CHeapBlock::CHeapBlock	chunk 592: copy ctor (operator= is 0x00C16950); landed 0x00C48770 models it as operator=

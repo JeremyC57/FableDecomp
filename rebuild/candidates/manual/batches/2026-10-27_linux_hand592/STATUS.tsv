@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c48e00	RELOCATION_MATCH	288v288	PASS	PKCStaticQueue<SDecoderMessage>::Pop() (libpk, descriptive method name; /EHsc); __forceinline memberwise SDecoderMessage copy ctor; 2 grades
+00c67ae0	RELOCATION_MATCH	288v288	PASS	CEaxContext::SetAllParameters(const EAXCONTEXTPROPERTIES*) (EAX 4.0 context, descriptive); same-TU noinline SetDistanceFactor; 1 grade
+00cbf6dc	RELOCATION_MATCH	290v290	PASS	GiveGameInfo(const std::vector<CCharString>&) __fastcall (FableWin.pdb name); frame-pointer size TU; 3 grades
+00bcdca0	RELOCATION_MATCH	308v308	PASS	std::vector<CArray<C3DVector> >::_M_fill_insert (STLport 4.6 vector.c); 1 grade
+00b6c700	RELOCATION_MATCH	309v309	PASS	std::vector<CLandscapeTheme>::_M_fill_insert (STLport 4.6, QAE); 1 grade
+00c58740	MATCH	309v309	PASS	CUnprovenAudioBuffer_00C591F0::RouteShort4(const short*, const unsigned short*) (libpk mixer, descriptive); 1 grade
+00c5b300	RELOCATION_MATCH	309v309	PASS	CSoftwareVoice::AdvanceBuffer(CAudioSound*) (GameCODA, descriptive); inline bool loop accessor; 4 grades (match at 2; 3-4 respelled a callee)
+00ab2ce0	RELOCATION_MATCH	310v310	PASS	std::vector<N3DAnimationBuilder::CSequenceInfo>::_M_insert_overflow (STLport 4.6); 1 grade
+00af2640	DIFFER	298v313	-	NParticleEngine::CPSCBase::GetCurrentPosition (Ego_r.pdb); parked in differ/ after 4 grades: x87 register/home-slot allocation of the transformed rows
+00b7cab0	RELOCATION_MATCH	314v314	PASS	std::vector<CPreTransposedBoneMatrix>::_M_fill_insert (STLport 4.6); 1 grade

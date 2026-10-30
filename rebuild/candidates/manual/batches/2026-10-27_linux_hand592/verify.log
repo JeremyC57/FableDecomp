@@ -1,0 +1,45 @@
+addr       parity           behav  name
+00ab2ce0   RELOCATION_MATCH PASS   _M_insert_overflow
+00b6c700   RELOCATION_MATCH PASS   _M_fill_insert
+00b7cab0   WARN RELOC_NAME: ??$__uninitialized_copy@PAUCPreTransposedBoneMatrix@@PAU1@@std@@YIPAUCPreTransposedBoneMatrix@@PAU1@00ABU__false_type@0@@Z -> 00b7af30 labelled '_global::_Copy_impl<CActionInputControl*,CActionInputControl*>'
+00b7cab0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAUCPreTransposedBoneMatrix@@IU1@@std@@YIPAUCPreTransposedBoneMatrix@@PAU1@IABU1@@Z -> 00b7afa0 labelled '_global::UninitFillN_00b7afa0'
+00b7cab0   RELOCATION_MATCH PASS   _M_fill_insert
+00bcdca0   WARN RELOC_NAME: ??$__uninitialized_copy@PAV?$CArray@VC3DVector@@@@PAV1@@std@@YIPAV?$CArray@VC3DVector@@@@PAV1@00ABU__false_type@0@@Z -> 00bcd8a0 labelled '_global::UninitCopy_CElement12_006f0810_00bcd8a0'
+00bcdca0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAV?$CArray@VC3DVector@@@@IV1@@std@@YIPAV?$CArray@VC3DVector@@@@PAV1@IABV1@@Z -> 00bcd920 labelled '_global::UninitFillN_CElement12_006f0810_00bcd920'
+00bcdca0   RELOCATION_MATCH PASS   _M_fill_insert
+00c48e00   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c48e00   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c48e00   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c48e00   WARN RELOC_NAME: ?OldestIndex@?$PKCStaticQueue@USDecoderMessage@@@@QAEHXZ -> 00c48f20 labelled 'CAIStateGroup_HoverHornetQueen::GetNextCirclePoint'
+00c48e00   WARN RELOC_NAME: ??0CUnprovenDecoderRecord_00C48770@@QAE@ABU0@@Z -> 00c48770 labelled 'SCreatureRecord_00c48770::operator='
+00c48e00   RELOCATION_MATCH PASS   Pop
+00c58740   MATCH            PASS   RouteShort4
+00c5b300   WARN RELOC_NAME: ?Clear@CAudioRingBuffer@@QAEXXZ -> 00c5ce40 labelled 'NScript::CGameflowAssistanceScript::Init'
+00c5b300   WARN RELOC_NAME: ?GetDesc@CSoundBuffer@@QBEPBUSBufferDesc@@XZ -> 00c3c4a0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c5b300   WARN RELOC_NAME: ?ReportQueueInfo@CAudioObject@@QAEXXZ -> 00c432f0 labelled 'CMarkedBufferOwner_00c43810::ReportMark'
+00c5b300   RELOCATION_MATCH PASS   AdvanceBuffer
+00c67ae0   WARN RELOC_NAME: ?SetPrimaryFXSlotID@CEaxContext@@QAEJUSGuid@@@Z -> 00c64420 labelled 'CCharacter_SetActiveSkill'
+00c67ae0   RELOCATION_MATCH PASS   SetAllParameters
+00cbf6dc   RELOCATION_MATCH PASS   GiveGameInfo
+
+WINS: 9
+  00ab2ce0 RELOCATION_MATCH std::vector::?_M_insert_overflow@?$vector@VCSequenceInfo@N3DAnimationBuilder@@V?$allocator@VCSequenceInfo@N3DAnimationBuilder@@@std@@@std@@IAEXPAVCSequenceInfo@N3DAnimationBuilder@@ABV34@ABU__false_type@2@I_N@Z
+  00b6c700 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@UCLandscapeTheme@@V?$allocator@UCLandscapeTheme@@@std@@@std@@QAEXPAUCLandscapeTheme@@IABU3@@Z
+  00b7cab0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@UCPreTransposedBoneMatrix@@V?$allocator@UCPreTransposedBoneMatrix@@@std@@@std@@QAEXPAUCPreTransposedBoneMatrix@@IABU3@@Z
+  00bcdca0 RELOCATION_MATCH std::vector::?_M_fill_insert@?$vector@V?$CArray@VC3DVector@@@@V?$allocator@V?$CArray@VC3DVector@@@@@std@@@std@@QAEXPAV?$CArray@VC3DVector@@@@IABV3@@Z
+  00c48e00 RELOCATION_MATCH PKCStaticQueue<SDecoderMessage>::?Pop@?$PKCStaticQueue@USDecoderMessage@@@@UAE?AUSDecoderMessage@@XZ
+  00c58740 MATCH CUnprovenAudioBuffer_00C591F0::?RouteShort4@CUnprovenAudioBuffer_00C591F0@@QAEXPBFPBG@Z
+  00c5b300 RELOCATION_MATCH CSoftwareVoice::?AdvanceBuffer@CSoftwareVoice@@QAEXPAUCAudioSound@@@Z
+  00c67ae0 RELOCATION_MATCH CEaxContext::?SetAllParameters@CEaxContext@@QAEJPBUEAXCONTEXTPROPERTIES@@@Z
+  00cbf6dc RELOCATION_MATCH _global::?GiveGameInfo@@YIXABV?$vector@VCCharString@@V?$allocator@VCCharString@@@std@@@std@@@Z
+
+LANDED 9 wins into src/compiled + tests + catalog + oracle
+  stdvector_Minsertoverflow_00ab2ce0
+  stdvector_Mfillinsert_00b6c700
+  stdvector_Mfillinsert_00b7cab0
+  stdvector_Mfillinsert_00bcdca0
+  PKCStaticQueueSDecoderMessage_Pop_00c48e00
+  CUnprovenAudioBuffer00C591F0_RouteShort4_00c58740
+  CSoftwareVoice_AdvanceBuffer_00c5b300
+  CEaxContext_SetAllParameters_00c67ae0
+  global_GiveGameInfo_00cbf6dc
