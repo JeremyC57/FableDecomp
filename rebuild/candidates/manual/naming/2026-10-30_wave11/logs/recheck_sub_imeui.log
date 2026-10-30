@@ -1,0 +1,9 @@
+addr       parity           behav  name
+00cb2860   RELOCATION_MATCH PASS   NPlayerGui::CDrawMouseCursor::Draw
+00cb28e0   RELOCATION_MATCH PASS   CAIStateGroup_Freeze::IsRunnable
+00cb2ec0   RELOCATION_MATCH PASS   CTCWeapon::IsMeleeWeaponClass
+
+WINS: 3
+  00cb2860 RELOCATION_MATCH CDrawMouseCursor::?ImeUi_SetCaretPosition@@YIXII@Z
+  00cb28e0 RELOCATION_MATCH CAIStateGroup_Freeze::?ImeUi_IsEnabled@@YI_NXZ
+  00cb2ec0 RELOCATION_MATCH _global::?ImeUi_GetCaretStatus@@YI_NXZ

@@ -1,0 +1,16 @@
+addr       parity           behav  name
+00b9cfa0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveStaticMesh
+00b9cfa0   RELOCATION_MATCH PASS   CEngineInternalPrimitiveStaticMesh::SetPosition
+00bce9f0   RELOCATION_MATCH PASS   CEngineInternalPrimitiveAnimatedMesh::GetTransformFrameStart
+
+WINS: 2
+  00b9cfa0 RELOCATION_MATCH CEngineInternalPrimitiveStaticMesh::SetPosition
+  00bce9f0 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::GetTransformFrameStart
+addr       parity           behav  name
+00b9d8e0   WARN RELOC_NAME: ?GetMesh@CMeshBank@@QAEPAVC3DMeshInfo@@K@Z -> 00a24280 labelled 'CMeshDataBank::PeekStaticMesh'
+00b9d8e0   RELOCATION_MATCH PASS   CEngineInternalPrimitiveStaticMesh::Update
+00bcea10   RELOCATION_MATCH PASS   CEngineInternalPrimitiveAnimatedMesh::GetTransformFrameEnd
+
+WINS: 2
+  00b9d8e0 RELOCATION_MATCH CEngineInternalPrimitiveStaticMesh::Update
+  00bcea10 RELOCATION_MATCH CEngineInternalPrimitiveAnimatedMesh::GetTransformFrameEnd

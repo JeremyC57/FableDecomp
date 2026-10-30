@@ -1,0 +1,41 @@
+addr       parity           behav  name
+00b93f40   RELOCATION_MATCH PASS   CEngineScene::RenderLayerCells
+  WARN leaf '~CPair_00c39bf0' matches no symbol in 00c39bf0.obj; graded the largest function
+  WARN leaf '~CPair_00c39bf0' matches no symbol in 00c39bf0.obj; graded the largest function
+00c39bf0   WARN RELOC_NAME: ??1CMember_00c29fb0@@QAE@XZ -> 00c29fb0 labelled 'PKCSemaphore::~PKCSemaphore'
+00c39bf0   WARN RELOC_NAME: ??1CBase_00c1c820@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c39bf0   RELOCATION_MATCH PASS   _unattributed::~CPair_00c39bf0
+  WARN leaf '~CPair_00c39c90' matches no symbol in 00c39c90.obj; graded the largest function
+  WARN leaf '~CPair_00c39c90' matches no symbol in 00c39c90.obj; graded the largest function
+00c39c90   WARN RELOC_NAME: ??1CMember_00c29fb0@@QAE@XZ -> 00c29fb0 labelled 'PKCSemaphore::~PKCSemaphore'
+00c39c90   WARN RELOC_NAME: ??1CBase_00c1c820@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c39c90   RELOCATION_MATCH PASS   _unattributed::~CPair_00c39c90
+00c5a1d0   WARN RELOC_NAME: ?Initialise@CVtable_012B5C10@@UAEJPAVCAudioObject@@@Z -> 00c596e0 labelled 'CEnvironmentSpellEffectInterface::ClearScreenFilter'
+00c5a1d0   RELOCATION_MATCH PASS   CTCStealth::OnCreate
+
+WINS: 4
+  00b93f40 RELOCATION_MATCH CEngineScene::?RenderScene@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCEngineCamera@@@Z
+  00c39bf0 RELOCATION_MATCH _unattributed::~CPair_00c39bf0
+  00c39c90 RELOCATION_MATCH _unattributed::~CPair_00c39c90
+  00c5a1d0 RELOCATION_MATCH CTCStealth::?Initialise@CVtable_012B5C60@@UAEJPAVCAudioObject@@@Z
+addr       parity           behav  name
+  WARN leaf '~CPair_00c39ba0' matches no symbol in 00c39ba0.obj; graded the largest function
+  WARN leaf '~CPair_00c39ba0' matches no symbol in 00c39ba0.obj; graded the largest function
+00c39ba0   WARN RELOC_NAME: ??1CMember_00c29fb0@@QAE@XZ -> 00c29fb0 labelled 'PKCSemaphore::~PKCSemaphore'
+00c39ba0   WARN RELOC_NAME: ??1CBase_00c1c820@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c39ba0   RELOCATION_MATCH PASS   _unattributed::~CPair_00c39ba0
+  WARN leaf '~CPair_00c39c40' matches no symbol in 00c39c40.obj; graded the largest function
+  WARN leaf '~CPair_00c39c40' matches no symbol in 00c39c40.obj; graded the largest function
+00c39c40   WARN RELOC_NAME: ??1CMember_00c29fb0@@QAE@XZ -> 00c29fb0 labelled 'PKCSemaphore::~PKCSemaphore'
+00c39c40   WARN RELOC_NAME: ??1CBase_00c1c820@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c39c40   RELOCATION_MATCH PASS   _unattributed::~CPair_00c39c40
+  WARN leaf '~CPair_00c39ce0' matches no symbol in 00c39ce0.obj; graded the largest function
+  WARN leaf '~CPair_00c39ce0' matches no symbol in 00c39ce0.obj; graded the largest function
+00c39ce0   WARN RELOC_NAME: ??1CMember_00c29fb0@@QAE@XZ -> 00c29fb0 labelled 'PKCSemaphore::~PKCSemaphore'
+00c39ce0   WARN RELOC_NAME: ??1CBase_00c1c820@@QAE@XZ -> 00c1c820 labelled 'PKCCriticalSection::~PKCCriticalSection'
+00c39ce0   RELOCATION_MATCH PASS   _unattributed::~CPair_00c39ce0
+
+WINS: 3
+  00c39ba0 RELOCATION_MATCH _unattributed::~CPair_00c39ba0
+  00c39c40 RELOCATION_MATCH _unattributed::~CPair_00c39c40
+  00c39ce0 RELOCATION_MATCH _unattributed::~CPair_00c39ce0

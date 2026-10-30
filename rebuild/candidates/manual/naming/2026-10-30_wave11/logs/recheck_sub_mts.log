@@ -1,0 +1,44 @@
+addr       parity           behav  name
+00eaef30   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eaef30   WARN SHARED_HEADER_AVAILABLE CTimer
+00eaef30   WARN RELOC_NAME: ?DoGivingRewardToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ -> 00eb15c0 labelled 'CMurderTwistSheriff::DoRemindingHeroToKillSheriff'
+00eaef30   WARN RELOC_NAME: ?DoSayingWellDoneToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ -> 00eb19c0 labelled 'CMurderTwistSheriff::DoSuspicious'
+00eaef30   WARN RELOC_NAME: ?AttackHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ -> 00eb1ec0 labelled 'CMurderTwistSheriff::Init'
+00eaef30   RELOCATION_MATCH PASS   CMurderTwistSheriff::Main
+00eb10c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb10c0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb10c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb10c0   WARN SHARED_HEADER_AVAILABLE CTimer
+00eb10c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb10c0   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb10c0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00eb10c0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb10c0   RELOCATION_MATCH PASS   CMurderTwistSheriff::DoBecomingSuspiciousOfHero
+00eb15c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb15c0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb15c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb15c0   WARN SHARED_HEADER_AVAILABLE CTimer
+00eb15c0   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb15c0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00eb15c0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb15c0   RELOCATION_MATCH PASS   CMurderTwistSheriff::DoRemindingHeroToKillSheriff
+00eb19c0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00eb19c0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eb19c0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00eb19c0   WARN SHARED_HEADER_AVAILABLE CTimer
+00eb19c0   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00eb19c0   WARN RELOC_NAME: ?DestroyOutOfLine@CScriptGameResourceObjectMovieBase@@QAEXXZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00eb19c0   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00eb19c0   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00eb19c0   RELOCATION_MATCH PASS   CMurderTwistSheriff::DoSuspicious
+00eb1ec0   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+  WARN leaf 'Init' matches no symbol in 00eb1ec0.obj; graded the largest function
+  WARN leaf 'Init' matches no symbol in 00eb1ec0.obj; graded the largest function
+00eb1ec0   RELOCATION_MATCH PASS   CMurderTwistSheriff::Init
+
+WINS: 5
+  00eaef30 RELOCATION_MATCH CMurderTwistSheriff::Main
+  00eb10c0 RELOCATION_MATCH CMurderTwistSheriff::DoBecomingSuspiciousOfHero
+  00eb15c0 RELOCATION_MATCH CMurderTwistSheriff::?DoGivingRewardToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb19c0 RELOCATION_MATCH CMurderTwistSheriff::?DoSayingWellDoneToHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@AAEXXZ
+  00eb1ec0 RELOCATION_MATCH CMurderTwistSheriff::Init

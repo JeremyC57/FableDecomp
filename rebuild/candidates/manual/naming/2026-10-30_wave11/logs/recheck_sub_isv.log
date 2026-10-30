@@ -1,0 +1,31 @@
+addr       parity           behav  name
+00d2d060   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00d2d060   RELOCATION_MATCH PASS   CVtable_012cc428::vfunc_1
+00e11bb0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e11bb0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e11bb0   WARN RELOC_NAME: ??1ScriptThingCopy@@QAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00e11bb0   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e11bb0   RELOCATION_MATCH PASS   CVtable_012e04fc::vfunc_1
+00ec46b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ec46b0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00ec46b0   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00ec46b0   RELOCATION_MATCH PASS   CVtable_012f16e0::vfunc_1
+
+WINS: 3
+  00d2d060 RELOCATION_MATCH CVtable_012cc428::Main
+  00e11bb0 RELOCATION_MATCH CVtable_012e04fc::Main
+  00ec46b0 RELOCATION_MATCH CVtable_012f16e0::Main
+addr       parity           behav  name
+00d408b0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00d408b0   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00d408b0   WARN RELOC_NAME: ??1ScriptThingCopy@@QAE@XZ -> 004aa840 labelled 'CScriptThing::~CScriptThing'
+00d408b0   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00d408b0   RELOCATION_MATCH PASS   CVtable_012cdf28::vfunc_1
+00e4a060   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e4a060   WARN RELOC_NAME: ??0ScriptThingCopy@@QAE@ABVCScriptThing@@@Z -> 004abe90 labelled 'CScriptThing::CScriptThing'
+00e4a060   WARN RELOC_NAME: ??1ScriptResource@@QAE@XZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00e4a060   RELOCATION_MATCH PASS   CVtable_012e4ef8::vfunc_1
+
+WINS: 2
+  00d408b0 RELOCATION_MATCH CVtable_012cdf28::Main
+  00e4a060 RELOCATION_MATCH CVtable_012e4ef8::Main

@@ -1,0 +1,13 @@
+addr       parity           behav  name
+005e3ea0   WARN SHARED_HEADER_AVAILABLE CPlayer
+005e3ea0   WARN SHARED_HEADER_AVAILABLE CPlayerManager
+005e3ea0   WARN RELOC_UNCHECKED: no object block of the retail length (multi-block TU)
+005e3ea0   RELOCATION_MATCH PASS   CTCQuestCompletionUI::IsHeroControlledByPlayer
+
+WINS: 1
+  005e3ea0 RELOCATION_MATCH CTCQuestCompletionUI::IsHeroControlledByPlayer
+addr       parity           behav  name
+008fd0a0   RELOCATION_MATCH PASS   CAIStateGroupBase::CreateItem
+
+WINS: 1
+  008fd0a0 RELOCATION_MATCH CAIStateGroupBase::CreateItem

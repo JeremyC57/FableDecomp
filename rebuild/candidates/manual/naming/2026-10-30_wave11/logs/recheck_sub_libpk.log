@@ -1,0 +1,22 @@
+addr       parity           behav  name
+00b6cb20   RELOCATION_MATCH PASS   std::vector<CLandscapeTheme>::resize
+00c1ae50   MATCH            PASS   PKCTRRedblackMap_00c1ae50::Find
+00c32f60   RELOCATION_MATCH PASS   CVtable_012b4f4c::Read
+00c69fb0   WARN RELOC_NAME: ?Blend@CCombFilter@@QAEXPBUSCombSettings@@0PAUCRingBuffer@@PAMPBMKK@Z -> 00c76120 labelled 'SignalProcessing_InterpolateAndAccumulate'
+00c69fb0   RELOCATION_MATCH PASS   CReverbProcessor::ProcessCombs
+
+WINS: 4
+  00b6cb20 RELOCATION_MATCH std::vector<CLandscapeTheme>::?resize@?$vector@UCLandscapeTheme@@V?$allocator@UCLandscapeTheme@@@std@@@std@@QAEXIABUCLandscapeTheme@@@Z
+  00c1ae50 MATCH PKCTRRedblackMap_00c1ae50::?Find@PKCTRRedblackMap@@QAEJPBKPAPAX@Z
+  00c32f60 RELOCATION_MATCH CVtable_012b4f4c::?Read@CVtable_012b4f4c@@UAE_NKJPAX000@Z
+  00c69fb0 RELOCATION_MATCH CReverbProcessor::?ProcessCombs@CReverbProcessor@@QAEXPBQBMKPAM@Z
+addr       parity           behav  name
+00c1a070   RELOCATION_MATCH PASS   CFileManager_00c1a070::GetFileSize
+00c32f40   RELOCATION_MATCH PASS   CVtable_012b4f4c::GetSize
+00c57d80   WARN RELOC_NAME: ?SourcePlay@CAudioContext@@QAEXK@Z -> 00c575f0 labelled 'CAudioContext::CAudioContext::PlaySource'
+00c57d80   RELOCATION_MATCH PASS   CVtable_012b8ed4::UnlockChunk
+
+WINS: 3
+  00c1a070 RELOCATION_MATCH CFileManager_00c1a070::?GetFileSize@PKCDefaultFileManager@@QAE_NKPAK@Z
+  00c32f40 RELOCATION_MATCH CVtable_012b4f4c::?GetSize@CVtable_012b4f4c@@UAE_NPAK@Z
+  00c57d80 RELOCATION_MATCH CVtable_012b8ed4::?UnlockChunk@CVtable_012b8ed4@@UAEXPAX@Z

@@ -1,0 +1,124 @@
+addr       parity           behav  name
+00405650   WARN RELOC_NAME: ?Reset@NativeCIME@NUISystem@@QAEXXZ -> 004051c0 labelled 'NUISystem::CIME::Shutdown'
+00405650   WARN RELOC_NAME: ?ImeUi_SetScreenDimension@@YIXII@Z -> 00cb2ee0 labelled '_global::SetCurrentPair_00cb2ee0'
+00405650   RELOCATION_MATCH PASS   CIME::Initialise
+00b917e0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b917e0   RELOCATION_MATCH PASS   CEngineScene::RenderPrimitiveList
+00b92500   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00b92500   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00b92500   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b92500   RELOCATION_MATCH PASS   CEngineSceneGrid::RenderCellClipped
+00b92790   WARN SHARED_HEADER_AVAILABLE CEngineCamera
+00b92790   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00b92790   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b92790   RELOCATION_MATCH PASS   CEngineSceneGrid::RenderCellClippedOcclusion
+00b93f40   RELOCATION_MATCH PASS   CEngineScene::RenderLayerCells
+00b942a0   RELOCATION_MATCH PASS   CEngineScene::RenderSceneAndCheckVisibility
+00b97b60   RELOCATION_MATCH PASS   std::map::operator[]
+00c2e4d0   WARN RELOC_NAME: ?Find@CDriverMap@@QAEPAUCDriver@@K@Z -> 00c3abd0 labelled 'CIndexMap_00c3abd0::Get'
+00c2e4d0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c2e4d0   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<'
+00c2e4d0   WARN RELOC_NAME: ??0CEventTriggerRef@@QAE@PAUCNumberTriggerRegistry@@K@Z -> 00c1ee60 labelled 'CItemAction::CItemAction'
+00c2e4d0   WARN RELOC_NAME: ?InsertDriver@CEventTriggerRef@@QAEXKPAUCDriver@@@Z -> 00c1f4e0 labelled 'CItemAction::Handle'
+00c2e4d0   RELOCATION_MATCH PASS   CBankProcessor::AddNumberTriggers
+00c2e7a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c2e7a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@ABV0@@Z -> 00c0dea0 labelled 'CString::operator<<'
+00c2e7a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<'
+00c2e7a0   WARN RELOC_NAME: ??0CEventTriggerRef@@QAE@PAUCItemDispatcher@@VCString@@_N@Z -> 00c1eee0 labelled 'CItemAction::CItemAction'
+00c2e7a0   WARN RELOC_NAME: ??A?$PKCAutoDeleteArray@K@@QAEAAKK@Z -> 00c2ebc0 labelled '_global::PKCAutoDeleteArray_RangeCheck_Abort'
+00c2e7a0   WARN RELOC_NAME: ?Find@CDriverMap@@QAEPAUCDriver@@K@Z -> 00c3abd0 labelled 'CIndexMap_00c3abd0::Get'
+00c2e7a0   WARN RELOC_NAME: ?InsertDriver@CEventTriggerRef@@QAEXKPAUCDriver@@@Z -> 00c1f4e0 labelled 'CItemAction::Handle'
+00c2e7a0   RELOCATION_MATCH PASS   CBankProcessor::AddEventTrigger
+00c39bf0   SRC_FAIL         PASS   _unattributed::~CPair_00c39bf0
+00c39c90   SRC_FAIL         PASS   _unattributed::~CPair_00c39c90
+  WARN leaf 'CScriptDefinitionManager_Initialize' matches no symbol in 00c48640.obj; graded the largest function
+  WARN leaf 'CScriptDefinitionManager_Initialize' matches no symbol in 00c48640.obj; graded the largest function
+00c48640   WARN RELOC_NAME: ??0CDecoderBase_00c48640@@QAE@XZ -> 00c485e0 labelled '_unattributed::CScriptDefinitionManager_00c485e0'
+00c48640   WARN RELOC_NAME: ??0CWorkerThread_00c355e0@@QAE@PAXPBUSThreadParams_00c355e0@@@Z -> 00c355e0 labelled 'PKCThreadManager::PKCThreadManager::InitializeThread'
+00c48640   WARN RELOC_NAME: ?Append@CString_00c48640@@QAIPAU1@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c48640   WARN RELOC_NAME: ?AppendNumber@CString_00c48640@@QAIPAU1@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c48640   WARN RELOC_NAME: ??1CString_00c48640@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c48640   WARN RELOC_NAME: ??0CTrace_00c48640@@QAE@XZ -> 00c16750 labelled 'CDebugBreak::CDebugBreak'
+00c48640   RELOCATION_MATCH PASS   _global::CScriptDefinitionManager_Initialize
+00c596e0   MATCH            PASS   CEnvironmentSpellEffectInterface::ClearScreenFilter
+00c59bc0   MATCH            PASS   CAudioSource::BeginSound
+00c5b250   WARN RELOC_NAME: ?ScheduleSound@CSoftwareVoice@@QAEXPAVCAudioObject@@_J@Z -> 00c5acb0 labelled 'C3DMeshFileXBoundingBoxChunk::LoadData'
+00c5b250   RELOCATION_MATCH PASS   CSoftwareVoice::StartSound
+00c72930   WARN RELOC_NAME: ?Initialise@CVtable_012B5C10@@UAEJPAVCAudioObject@@@Z -> 00c596e0 labelled 'CEnvironmentSpellEffectInterface::ClearScreenFilter'
+00c72930   RELOCATION_MATCH PASS   CAudioSource::Initialise
+00c72fe0   WARN RELOC_NAME: ?ApplySound@CAudioSource@@QAEXPAVCAudioObject@@_J@Z -> 00c72e00 labelled 'Audio_InitializeSource_AL'
+00c72fe0   RELOCATION_MATCH PASS   CAudioSource::Update
+00ce5620   RELOCATION_MATCH PASS   CHeroBoastsScript::BoastBanditCampKillManyBandits
+00ce5e10   RELOCATION_MATCH PASS   CHeroBoastsScript::BoastOrchardFarmKillNoBandits
+00ce6b10   RELOCATION_MATCH PASS   CHeroBoastsScript::BoastBanditCampKillManyBandits
+
+WINS: 18
+  00405650 RELOCATION_MATCH CIME::Initialise
+  00b917e0 RELOCATION_MATCH CEngineScene::?RenderPrimitiveListToShadowBuffer@CEngineScene@@AAEXPAVCEngineInternalPrimitiveBase@@W4EEngineRenderLayer@@ABVCShadowClipVolume@@AAVCEngineSceneRenderStats@@@Z
+  00b92500 RELOCATION_MATCH CEngineSceneGrid::?RenderCellClipped@CEngineSceneGrid@@QAEXKKW4EEngineRenderLayer@@ABVCEngineCamera@@_NAAVCEngineSceneRenderStats@@@Z
+  00b92790 RELOCATION_MATCH CEngineSceneGrid::?RenderCellClippedOcclusion@CEngineSceneGrid@@QAE_NKKW4EEngineRenderLayer@@KABVCEngineCamera@@_NAAVCEngineSceneRenderStats@@@Z
+  00b93f40 RELOCATION_MATCH CEngineScene::?RenderScene@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCEngineCamera@@@Z
+  00b942a0 RELOCATION_MATCH CEngineScene::?RenderSceneAndCheckVisibility@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCEngineCamera@@W4EEngineOcclusionLayer@@_N@Z
+  00b97b60 RELOCATION_MATCH std::map::??A?$map@W4EEngineRenderLayer@@VCEngineSceneRenderStats@@
+  00c2e4d0 RELOCATION_MATCH CBankProcessor::AddNumberTriggers
+  00c2e7a0 RELOCATION_MATCH CBankProcessor::?AddEventTrigger@CBankProcessor@@QAEXABUCEventRecord@@_N@Z
+  00c48640 RELOCATION_MATCH _unattributed::CScriptDefinitionManager_Initialize
+  00c596e0 MATCH CEnvironmentSpellEffectInterface::?Initialise@CVtable_012B5C10@@UAEJPAVCAudioObject@@@Z
+  00c59bc0 MATCH CAudioSource::?BeginSound@CAudioSource@@QAEXPAVCAudioObject@@@Z
+  00c5b250 RELOCATION_MATCH CSoftwareVoice::?StartSound@CSoftwareVoice@@UAEJPAVCAudioObject@@_J@Z
+  00c72930 RELOCATION_MATCH CAudioSource::?Initialise@CAudioSource@@
+  00c72fe0 RELOCATION_MATCH CAudioSource::?Update@CAudioSource@@
+  00ce5620 RELOCATION_MATCH NScript::CHeroBoastsScript::?BoastHobbeContestKillMoreHobbes@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z
+  00ce5e10 RELOCATION_MATCH NScript::CHeroBoastsScript::?BoastBountyHuntDecapitation@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z
+  00ce6b10 RELOCATION_MATCH NScript::CHeroBoastsScript::?BoastFireHeartKillAllPrisoners@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z
+addr       parity           behav  name
+00b91760   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b91760   RELOCATION_MATCH PASS   CEngineScene::RenderPrimitiveList
+00b91dc0   RELOCATION_MATCH PASS   CEngineSceneGrid::GetCellRenderMask
+00b92660   RELOCATION_MATCH PASS   RenderCellClippedShadowBuffer
+00b92c20   RELOCATION_MATCH PASS   CEngineSceneGrid::RenderCellAll
+00b94060   RELOCATION_MATCH PASS   CEngineScene::RenderLayerCellsShadow
+00b943f0   WARN SHARED_HEADER_AVAILABLE CEnginePrimitiveTypeInfo
+00b943f0   WARN SHARED_HEADER_AVAILABLE CEngineInternalPrimitiveBase
+00b943f0   RELOCATION_MATCH PASS   CEngineScene::RenderEntireScene
+00c2e190   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c2e190   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<'
+00c2e190   RELOCATION_MATCH PASS   CBankProcessor::AddSample
+00c2e5a0   WARN RELOC_NAME: ?Find@CDriverMap@@QAEPAUCDriver@@K@Z -> 00c3abd0 labelled 'CIndexMap_00c3abd0::Get'
+00c2e5a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c2e5a0   WARN RELOC_NAME: ??6CString@@QAIAAV0@K@Z -> 00c0df10 labelled 'CString::operator<<'
+00c2e5a0   WARN RELOC_NAME: ?AddDriver@CDriverGroup@@QAEXPAUCDriver@@@Z -> 00c1e780 labelled 'CBlendOwner::AddBlend'
+00c2e5a0   RELOCATION_MATCH PASS   CBankProcessor::AddDriverToGroup
+00c39ba0   SRC_FAIL         PASS   _unattributed::~CPair_00c39ba0
+00c39c40   SRC_FAIL         PASS   _unattributed::~CPair_00c39c40
+00c39ce0   SRC_FAIL         PASS   _unattributed::~CPair_00c39ce0
+00c54bd0   WARN RELOC_NAME: ?Clear@CAudioRingBuffer@@QAEXXZ -> 00c5ce40 labelled 'NScript::CGameflowAssistanceScript::Init'
+00c54bd0   RELOCATION_MATCH PASS   CAssistanceOwner_00c54bd0::Reset
+00c59720   MATCH            PASS   CCodaVoice::Play
+00c5a1d0   WARN RELOC_NAME: ?Initialise@CVtable_012B5C10@@UAEJPAVCAudioObject@@@Z -> 00c596e0 labelled 'CEnvironmentSpellEffectInterface::ClearScreenFilter'
+00c5a1d0   RELOCATION_MATCH LINK_FAIL CTCStealth::OnCreate
+00c5b300   WARN RELOC_NAME: ?Clear@CAudioRingBuffer@@QAEXXZ -> 00c5ce40 labelled 'NScript::CGameflowAssistanceScript::Init'
+00c5b300   WARN RELOC_NAME: ?GetDesc@CSoundBuffer@@QBEPBUSBufferDesc@@XZ -> 00c3c4a0 labelled 'NCreatureMode::CModeBlock::GetAnimFilter'
+00c5b300   WARN RELOC_NAME: ?ReportQueueInfo@CAudioObject@@QAEXXZ -> 00c432f0 labelled 'CMarkedBufferOwner_00c43810::ReportMark'
+00c5b300   RELOCATION_MATCH PASS   CSoftwareVoice::AdvanceBuffer
+00c72af0   RELOCATION_MATCH PASS   CAudioSource::InitializeProperties
+00ce4b70   RELOCATION_MATCH PASS   CHeroBoastsScript::BoastOrchardFarmKillNoBandits
+00ce56e0   RELOCATION_MATCH PASS   CHeroBoastsScript::BoastBanditCampKillManyBandits
+00ce6a40   RELOCATION_MATCH PASS   CHeroBoastsScript::BoastBanditCampKillManyBandits
+
+WINS: 15
+  00b91760 RELOCATION_MATCH CEngineScene::RenderPrimitiveList
+  00b91dc0 RELOCATION_MATCH CEngineSceneGrid::GetCellRenderMask
+  00b92660 RELOCATION_MATCH CEngineSceneGrid::RenderCellClippedShadowBuffer
+  00b92c20 RELOCATION_MATCH CEngineSceneGrid::RenderCellAll
+  00b94060 RELOCATION_MATCH CEngineScene::?RenderSceneShadowBuffer@CEngineScene@@QAEXW4EEngineRenderLayer@@ABVCShadowClipVolume@@@Z
+  00b943f0 RELOCATION_MATCH CEngineScene::?RenderEntireScene@CEngineScene@@QAEXW4EEngineRenderLayer@@@Z
+  00c2e190 RELOCATION_MATCH CBankProcessor::AddSample
+  00c2e5a0 RELOCATION_MATCH CBankProcessor::AddDriverToGroup
+  00c54bd0 RELOCATION_MATCH CAssistanceOwner_00c54bd0::Reset
+  00c59720 MATCH CCodaVoice::?Play@CCodaVoice@@UAEJPAVCAudioObject@@@Z
+  00c5b300 RELOCATION_MATCH CSoftwareVoice::?AdvanceBuffer@CSoftwareVoice@@QAEXPAVCAudioObject@@@Z
+  00c72af0 RELOCATION_MATCH CAudioSource::InitializeProperties
+  00ce4b70 RELOCATION_MATCH NScript::CHeroBoastsScript::?BoastHobbeCavePerpertratorKilled@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z
+  00ce56e0 RELOCATION_MATCH NScript::CHeroBoastsScript::?BoastGraveyardKillAllInnocents@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z
+  00ce6a40 RELOCATION_MATCH NScript::CHeroBoastsScript::?BoastFireHeartFreeAllPrisoners@CHeroBoastsScript@NScript@@QAEXVCCharString@@@Z

@@ -1,0 +1,156 @@
+addr       parity           behav  name
+0064a4e9   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer::CQuestInfoElementTimer
+00cdf260   RELOCATION_MATCH PASS   CKG_Gate::Main
+00ce1280   RELOCATION_MATCH PASS   CTestGateSwitch::Main
+00d2fb20   RELOCATION_MATCH PASS   CEndGameJackOfBladesBoss::Main
+00d51fc0   WARN SHARED_HEADER_AVAILABLE CQ_GuildTrainingPreMeleeScript
+00d51fc0   RELOCATION_MATCH PASS   CPreMeleeDummy::Main
+00d73610   RELOCATION_MATCH PASS   CHTG_AmbushPoint::Main
+00d7ecb0   RELOCATION_MATCH PASS   CSummoner1::Main
+00d7f110   RELOCATION_MATCH PASS   CHeroSoulsEnemy::Main
+00d891f0   RELOCATION_MATCH PASS   CSUMMONED_CREATURE::Main
+00da5490   RELOCATION_MATCH PASS   CMagicBarrierGraveyard::Main
+00db7e10   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00db7e10   RELOCATION_MATCH PASS   CNOVI_Barrel::Main
+00dcdc50   RELOCATION_MATCH PASS   CArtefact::Main
+00dd8990   RELOCATION_MATCH PASS   CTortureDoorPassage::Main
+00dd9180   RELOCATION_MATCH PASS   CPrisonKeyDoor::Main
+00ded380   RELOCATION_MATCH PASS   CSP_NymphTrigger::Main
+00df2ab0   RELOCATION_MATCH PASS   CSummonerMinion::Main
+00e047d0   RELOCATION_MATCH PASS   CDW5_Balv::Main
+00e369b0   RELOCATION_MATCH PASS   CAC_DummyStatic::Main
+00e48a30   WARN RELOC_CONFLICT: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 here, 00415dd0 in landed 0071c7c0
+00e48a30   WARN RELOC_NAME: ??BCDefString@@QBE?AVCCharString@@XZ -> 00415d70 labelled 'CDefString::operator_class_CCharString'
+00e48a30   RELOCATION_MATCH PASS   CM_TollBandit::Main
+00e4b010   RELOCATION_MATCH PASS   CGuildSealWarning::Main
+00e63730   RELOCATION_MATCH PASS   CSpectator::Init
+00e95e80   RELOCATION_MATCH PASS   CHHUndead::Main
+00ec0b00   WARN SHARED_HEADER_AVAILABLE CGameScriptInterfaceBase
+00ec0b00   MATCH            PASS   CSecretWhisperingFriend::Init
+00ecd530   RELOCATION_MATCH PASS   CSickChildFishingSpot::Main
+00ee06b0   RELOCATION_MATCH PASS   CTH_Trigger_Oakvale_Gossip::Main
+00ee36a0   RELOCATION_MATCH PASS   CStopDrawing::Main
+00ef12f0   RELOCATION_MATCH PASS   CCrateDeathMarker::Main
+00ef2290   RELOCATION_MATCH PASS   CSwordChest::Main
+00ef3840   RELOCATION_MATCH PASS   CTestPos::Main
+00efbe20   WARN RELOC_NAME: ??1CIsThingConscious@NScript@@UAE@XZ -> 00ef7ab0 labelled 'CIsThing::~CIsThing'
+00efbe20   RELOCATION_MATCH PASS   CGuildSealTrigger::Main
+00eff4d0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00eff4d0   WARN RELOC_NAME: ??1CScriptThingFunctor_00ef7ab0@@QAE@XZ -> 00ef7ab0 labelled 'CIsThing::~CIsThing'
+00eff4d0   RELOCATION_MATCH PASS   CEndGameScarletRobe::Main
+00f14770   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00f14770   WARN RELOC_NAME: ?Destroy@CScriptGameResourceObjectScriptedThingBase@@QAEXXZ -> 007e74d0 labelled 'CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase'
+00f14770   WARN RELOC_NAME: ??1CBaseObjectDtor@@UAE@XZ -> 0099a430 labelled 'CBaseObject::~CBaseObject'
+00f14770   RELOCATION_MATCH PASS   CCham::Main
+
+WINS: 32
+  0064a4e9 RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::CQuestInfoElementTimer::??0CQuestInfoElementTimer
+  00cdf260 RELOCATION_MATCH CKG_Gate::Main
+  00ce1280 RELOCATION_MATCH CTestGateSwitch::Main
+  00d2fb20 RELOCATION_MATCH CEndGameJackOfBladesBoss::Main
+  00d51fc0 RELOCATION_MATCH CPreMeleeDummy::Main
+  00d73610 RELOCATION_MATCH CHTG_AmbushPoint::Main
+  00d7ecb0 RELOCATION_MATCH CSummoner1::Main
+  00d7f110 RELOCATION_MATCH CHeroSoulsEnemy::Main
+  00d891f0 RELOCATION_MATCH CSUMMONED_CREATURE::Main
+  00da5490 RELOCATION_MATCH CMagicBarrierGraveyard::?Main@CMagicBarrierGraveyard@
+  00db7e10 RELOCATION_MATCH CNOVI_Barrel::Main
+  00dcdc50 RELOCATION_MATCH CArtefact::Main
+  00dd8990 RELOCATION_MATCH CTortureDoorPassage::Main
+  00dd9180 RELOCATION_MATCH CPrisonKeyDoor::Main
+  00ded380 RELOCATION_MATCH CSP_NymphTrigger::Main
+  00df2ab0 RELOCATION_MATCH CSummonerMinion::Main
+  00e047d0 RELOCATION_MATCH CDW5_Balv::Main
+  00e369b0 RELOCATION_MATCH CAC_DummyStatic::Main
+  00e48a30 RELOCATION_MATCH CM_TollBandit::?Main@CM_TollBandit@CV_BanditTollScript@NScript@@EAEXXZ
+  00e4b010 RELOCATION_MATCH CGuildSealWarning::Main
+  00e63730 RELOCATION_MATCH CSpectator::Init
+  00e95e80 RELOCATION_MATCH CHHUndead::Main
+  00ec0b00 MATCH CSecretWhisperingFriend::Init
+  00ecd530 RELOCATION_MATCH CSickChildFishingSpot::Main
+  00ee06b0 RELOCATION_MATCH CTH_Trigger_Oakvale_Gossip::Main
+  00ee36a0 RELOCATION_MATCH CStopDrawing::Main
+  00ef12f0 RELOCATION_MATCH CCrateDeathMarker::Main
+  00ef2290 RELOCATION_MATCH CSwordChest::Main
+  00ef3840 RELOCATION_MATCH CTestPos::Main
+  00efbe20 RELOCATION_MATCH CGuildSealTrigger::Main
+  00eff4d0 RELOCATION_MATCH CEndGameScarletRobe::Main
+  00f14770 RELOCATION_MATCH CCham::Main
+addr       parity           behav  name
+0064f93f   WARN RELOC_NAME: ??$?0VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@?$CCountedPointer@VCQuestInfoElement@CDrawQuestInfo@NPlayerGui@@@@QAE@ABV?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@@Z -> 00654b7b labelled '_global::CCountedPointer_CopyCtor_00654b7b'
+0064f93f   WARN RELOC_NAME: ??1?$CCountedPointer@VCQuestInfoElementTimer@CDrawQuestInfo@NPlayerGui@@@@QAE@XZ -> 00654b4f labelled '_global::CCountedPointer_Release_00654b4f'
+0064f93f   RELOCATION_MATCH PASS   NPlayerGui::CDrawQuestInfo::AddTimer
+00ce0150   RELOCATION_MATCH PASS   CLadyGreysBed::Main
+00d2d830   RELOCATION_MATCH PASS   CPermanentBarrier::Main
+00d446d0   RELOCATION_MATCH PASS   CHeroBed::Main
+00d58080   RELOCATION_MATCH PASS   CMeleeThunder::Main
+00d73ae0   RELOCATION_MATCH PASS   CHTG_AmbushPointRear::Main
+00d7eed0   RELOCATION_MATCH PASS   CSummoner2::Main
+00d88f90   RELOCATION_MATCH PASS   CUndeadSoldier::Main
+00da45c0   RELOCATION_MATCH PASS   CMinionEscort::Main
+00da5980   RELOCATION_MATCH PASS   CMinionSpawner::Main
+00db80c0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00db80c0   WARN SHARED_HEADER_AVAILABLE CTimer
+00db80c0   RELOCATION_MATCH PASS   CNOVI_CreatedBeetle::Main
+00dcf4c0   RELOCATION_MATCH PASS   CVtable_012DB4B8::Main
+00dd8ba0   RELOCATION_MATCH PASS   CTortureDoorCourtyard::Main
+00ddc6c0   RELOCATION_MATCH PASS   CWaypointSpeedCheck::Main
+00df2380   RELOCATION_MATCH PASS   CSummonerAttacker::Main
+00e035e0   RELOCATION_MATCH PASS   CTE_BanditLeader::Main
+00e04970   RELOCATION_MATCH PASS   CDW5_Balv::Main
+00e386e0   RELOCATION_MATCH PASS   CMeleeThunder::Main
+00e4a740   RELOCATION_MATCH PASS   CM_BanditLeader::Main
+00e4b430   RELOCATION_MATCH PASS   CM_TauntingBandit::Main
+00e7bb30   RELOCATION_MATCH PASS   CFishermanWasp::Main
+00eaef30   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00eaef30   WARN SHARED_HEADER_AVAILABLE CTimer
+00eaef30   WARN RELOC_NAME: ?DoFightHero@CMurderTwistSheriff@CV_MurderTwistFinalScript@NScript@@QAEXXZ -> 00eb1ec0 labelled 'CMurderTwistSheriff::Init'
+00eaef30   RELOCATION_MATCH PASS   CMurderTwistSheriff::Main
+00ec0ba0   RELOCATION_MATCH PASS   CSecretWhisperingFriend::Main
+00ed8120   RELOCATION_MATCH PASS   CTB_BardSpawnPoint::Main
+00ee0a20   RELOCATION_MATCH PASS   CTH_Trigger_Oakvale::Main
+00eed8b0   RELOCATION_MATCH PASS   CStopDrawing::Main
+00ef1e10   RELOCATION_MATCH PASS   CTrappedMan::Main
+00ef3200   RELOCATION_MATCH PASS   CBeggar::Main
+00ef84d0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00ef84d0   WARN RELOC_NAME: ??0CAnd@@QAE@ABUCIsThing@@0@Z -> 00ef8740 labelled 'CConsoleCommandParameters::CConsoleCommandParameters'
+00ef84d0   RELOCATION_MATCH PASS   CCham::Main
+00efe700   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00efe700   WARN RELOC_NAME: ??1CIsThingAliveEndGame@@QAE@XZ -> 00ef7ab0 labelled 'CIsThing::~CIsThing'
+00efe700   RELOCATION_MATCH PASS   CEndGameScarletRobe::Main
+00f01c50   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00f01c50   WARN RELOC_NAME: ??1CScriptThingFunctor_00ef7ab0@@QAE@XZ -> 00ef7ab0 labelled 'CIsThing::~CIsThing'
+00f01c50   RELOCATION_MATCH PASS   CEndGameScarletRobe::Main
+
+WINS: 31
+  0064f93f RELOCATION_MATCH NPlayerGui::CDrawQuestInfo::AddTimer
+  00ce0150 RELOCATION_MATCH CLadyGreysBed::Main
+  00d2d830 RELOCATION_MATCH CPermanentBarrier::Main
+  00d446d0 RELOCATION_MATCH CHeroBed::Main
+  00d58080 RELOCATION_MATCH CMeleeThunder::?Main@CMeleeThunder@
+  00d73ae0 RELOCATION_MATCH CHTG_AmbushPointRear::Main
+  00d7eed0 RELOCATION_MATCH CSummoner2::Main
+  00d88f90 RELOCATION_MATCH CUndeadSoldier::Main
+  00da45c0 RELOCATION_MATCH CMinionEscort::Main
+  00da5980 RELOCATION_MATCH CMinionSpawner::Main
+  00db80c0 RELOCATION_MATCH CNOVI_CreatedBeetle::Main
+  00dcf4c0 RELOCATION_MATCH CVtable_012DB4B8::Main
+  00dd8ba0 RELOCATION_MATCH CTortureDoorCourtyard::Main
+  00ddc6c0 RELOCATION_MATCH CWaypointSpeedCheck::Main
+  00df2380 RELOCATION_MATCH CSummonerAttacker::Main
+  00e035e0 RELOCATION_MATCH CTE_BanditLeader::Main
+  00e04970 RELOCATION_MATCH CDW5_Balv::Main
+  00e386e0 RELOCATION_MATCH CMeleeThunder::?Main@CChestHidingAssassin@CV_AssassinAttacksScript@NScript@@EAEXXZ
+  00e4a740 RELOCATION_MATCH CM_BanditLeader::Main
+  00e4b430 RELOCATION_MATCH CM_TauntingBandit::?Main@CM_TauntingBandit@CV_BanditTollScript@NScript@@EAEXXZ
+  00e7bb30 RELOCATION_MATCH CFishermanWasp::Main
+  00eaef30 RELOCATION_MATCH CMurderTwistSheriff::Main
+  00ec0ba0 RELOCATION_MATCH CSecretWhisperingFriend::Main
+  00ed8120 RELOCATION_MATCH CTB_BardSpawnPoint::Main
+  00ee0a20 RELOCATION_MATCH CTH_Trigger_Oakvale::Main
+  00eed8b0 RELOCATION_MATCH CStopDrawing::Main
+  00ef1e10 RELOCATION_MATCH CTrappedMan::Main
+  00ef3200 RELOCATION_MATCH CBeggar::Main
+  00ef84d0 RELOCATION_MATCH CCham::Main
+  00efe700 RELOCATION_MATCH CEndGameScarletRobe::Main
+  00f01c50 RELOCATION_MATCH CEndGameScarletRobe::Main

@@ -1,0 +1,21 @@
+addr       parity           behav  name
+00ae3330   RELOCATION_MATCH PASS   CVectorPairOwner_00ae3330::ReserveBoth
+00af2780   RELOCATION_MATCH PASS   _global::CParticleUpdateParameters_TransformPosition
+00b18af0   WARN RELOC_NAME: ?GetSystemTransform@CParticleSystem@NParticleEngine@@QBEXAAVCMatrix3x4@@@Z -> 00af2250 labelled 'CParticleSystem::GetInverseSystemTransform'
+00b18af0   WARN RELOC_NAME: ?GetParticleFrameRate@@YAJXZ -> 00aea9f0 labelled 'NParticleEngine::GetParticleUpdateRate'
+00b18af0   RELOCATION_MATCH PASS   NParticleEngine::CPSCLight::AddToBoundingSphere
+
+WINS: 3
+  00ae3330 RELOCATION_MATCH CVectorPairOwner_00ae3330::ReserveBoth
+  00af2780 RELOCATION_MATCH _global::?GetCurrentPositionLocal@CPSCBase@NParticleEngine@@QBE?AVC3DVector@@ABV?$CParticleUpdateParameters@KK@2@ABKM_NK@Z
+  00b18af0 RELOCATION_MATCH NParticleEngine::CPSCLight::AddToBoundingSphere
+addr       parity           behav  name
+00ae8490   RELOCATION_MATCH PASS   CArray<C3DGroup2>::AddDefault
+00b16d50   WARN RELOC_NAME: ?GetParticleFrameTime@@YAMXZ -> 00aeaa00 labelled '_global::GetConstFloat_0_0666667_00aeaa00'
+00b16d50   WARN RELOC_NAME: ?GetParticleRandomSeed@@YAPAKXZ -> 00aeaad0 labelled '_global::GetStaticAddr_013d2e10_00aeaad0'
+00b16d50   WARN RELOC_NAME: ?GetCurrentPositionLocal@CPSCBase@NParticleEngine@@QBE?AVC3DVector@@ABV?$CParticleUpdateParameters@KK@2@ABKM_NK@Z -> 00af2780 labelled '_global::CParticleUpdateParameters_TransformPosition'
+00b16d50   RELOCATION_MATCH PASS   NParticleEngine::CPSCOrbit::StartUpdate
+
+WINS: 2
+  00ae8490 RELOCATION_MATCH CArray<C3DGroup2>::AddDefault
+  00b16d50 RELOCATION_MATCH NParticleEngine::CPSCOrbit::StartUpdate

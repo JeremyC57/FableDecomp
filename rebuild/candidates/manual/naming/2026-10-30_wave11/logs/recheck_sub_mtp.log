@@ -1,0 +1,36 @@
+addr       parity           behav  name
+00cbf679   WARN SHARED_HEADER_AVAILABLE CScriptGameResourceObjectScriptedThingBase
+00cbf679   RELOCATION_MATCH PASS   _global::MoveAllThingsInVectorToPosition
+00d50c60   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00d50c60   WARN SHARED_HEADER_AVAILABLE CIsThingAlive
+00d50c60   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00d50c60   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d50c60   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00d50c60   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00d50c60   WARN RELOC_NAME: ??1CResourcePImp@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d50c60   RELOCATION_MATCH PASS   NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main
+00f045e0   WARN SHARED_HEADER_AVAILABLE CBaseClass
+00f045e0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00f045e0   WARN SHARED_HEADER_AVAILABLE CGameScriptInterface
+00f045e0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00f045e0   RELOCATION_MATCH PASS   CAT_Sentry::Main
+
+WINS: 3
+  00cbf679 RELOCATION_MATCH _global::?MoveAllThingsInVectorToPosition@@
+  00d50c60 RELOCATION_MATCH NScript::CQ_GuildTrainingDepartureScript::CTheRealGuildmaster::Main
+  00f045e0 RELOCATION_MATCH CAT_Sentry::?Main@CAT_Sentry@@
+addr       parity           behav  name
+00d37530   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00d37530   WARN RELOC_NAME: ??BCCharString@@QBEPBDXZ -> 0099e4c0 labelled 'CCharString::operator_char_const*'
+00d37530   WARN RELOC_NAME: ??1CMovieImpPointer@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00d37530   WARN RELOC_NAME: ??1CScriptGameResourceObjectMovieFull@@UAE@XZ -> 006e7b80 labelled 'CScriptGameResourceObjectMovieBase::~CScriptGameResourceObjectMovieBase'
+00d37530   RELOCATION_MATCH PASS   CFH_Villager::Main
+00daa260   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00daa260   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00daa260   WARN RELOC_NAME: ??0CCutsceneCastMap@@QAE@XZ -> 00cdbf70 labelled 'std::_Rb_tree<T_node0x24_00cdbf70>::_Rb_tree'
+00daa260   WARN RELOC_NAME: ??1CCutsceneCastMap@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00daa260   RELOCATION_MATCH PASS   CMinionFieldGenerator::Main
+
+WINS: 2
+  00d37530 RELOCATION_MATCH CFH_Villager::Main
+  00daa260 RELOCATION_MATCH CMinionFieldGenerator::Main
