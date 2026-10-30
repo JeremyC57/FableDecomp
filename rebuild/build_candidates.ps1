@@ -368050,6 +368050,79 @@ $catalog = @(
         TestSource = '00/c6/CVtable012bed90_RebuildGain_00c6dea0_test.cpp'
         PassPattern = '00c6dea0_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ae1730'
+        Module = 'CParticleSimulation'
+        Source = '00/ae/CParticleSimulation_ReadVectorArray_00ae1730.cpp'
+        TestSource = '00/ae/CParticleSimulation_ReadVectorArray_00ae1730_test.cpp'
+        PassPattern = '00ae1730_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b862c0'
+        Module = 'std'
+        Source = '00/b8/std_mergeadaptive_00b862c0.cpp'
+        TestSource = '00/b8/std_mergeadaptive_00b862c0_test.cpp'
+        PassPattern = '00b862c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b99860'
+        Module = 'CEnginePrimitiveManagerRepeatedStaticMeshes'
+        Source = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_CalcFrameConstantSIMDVars_00b99860.cpp'
+        TestSource = '00/b9/CEnginePrimitiveManagerRepeatedStaticMeshes_CalcFrameConstantSIMDVars_00b99860_test.cpp'
+        PassPattern = '00b99860_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c17940'
+        Module = '_global'
+        Source = '00/c1/global_PKSerialiseLoadCBankData_00c17940.cpp'
+        TestSource = '00/c1/global_PKSerialiseLoadCBankData_00c17940_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c17940_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c322e0'
+        Module = 'PKCTRArray'
+        Source = '00/c3/PKCTRArray_RemoveValue_00c322e0.cpp'
+        TestSource = '00/c3/PKCTRArray_RemoveValue_00c322e0_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c322e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c5f150'
+        Module = 'CImaAdpcmCodec'
+        Source = '00/c5/CImaAdpcmCodec_CalculateError_00c5f150.cpp'
+        TestSource = '00/c5/CImaAdpcmCodec_CalculateError_00c5f150_test.cpp'
+        PassPattern = '00c5f150_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c72620'
+        Module = 'CAudioSource'
+        Source = '00/c7/CAudioSource_Stop_00c72620.cpp'
+        TestSource = '00/c7/CAudioSource_Stop_00c72620_test.cpp'
+        PassPattern = '00c72620_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c76c20'
+        Module = 'CReverbDelay'
+        Source = '00/c7/CReverbDelay_Blend_00c76c20.cpp'
+        TestSource = '00/c7/CReverbDelay_Blend_00c76c20_test.cpp'
+        PassPattern = '00c76c20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c92ca0'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_seedcurve_00c92ca0.cpp'
+        TestSource = '00/c9/libvorbis_seedcurve_00c92ca0_test.cpp'
+        PassPattern = '00c92ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ca1e80'
+        Module = 'libvorbis'
+        Source = '00/ca/libvorbis_renderline_00ca1e80.cpp'
+        TestSource = '00/ca/libvorbis_renderline_00ca1e80_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /Gr'
+        PassPattern = '00ca1e80_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

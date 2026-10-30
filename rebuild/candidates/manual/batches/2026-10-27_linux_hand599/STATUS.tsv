@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c92ca0	RELOCATION_MATCH	376v376	PASS	libvorbis psy.c seed_curve (static noinline __stdcall in the landed _vp_tonemask TU, seed in edi, ret 18h); VC stdlib min/max + .1f; 3 grades
+00c5f150	RELOCATION_MATCH	381v381	PASS	CImaAdpcmCodec::CalculateError (class proven, method descriptive); base + i*cbBlock pointers; 1 grade
+00c76c20	RELOCATION_MATCH	381v381	PASS	CReverbDelay::Blend (class proven from the landed Process twin, Blend pattern of the reverb stages); 1 grade
+00c322e0	RELOCATION_MATCH	385v385	PASS	PKCTRArray::RemoveValue (slot 6, descriptive); /EHsc; same-TU FindValueIndex under auto_inline(off); 3 grades
+00c72620	RELOCATION_MATCH	385v385	PASS	CAudioSource::Stop (slot 2, bound Stop on the voice base); reference local to g_AudioContext; 4 grades
+00b99860	RELOCATION_MATCH	386v386	PASS	CEnginePrimitiveManagerRepeatedStaticMeshes::CalcFrameConstantSIMDVars (PDB); C3DVector user copy ctor stops full unroll; 3 grades
+00ca1e80	RELOCATION_MATCH	388v388	PASS	libvorbis floor1.c render_line (static noinline with floor1_inverse2 in the TU, y1 in ecx, ret 10h); /Gr; 2 grades
+00b862c0	RELOCATION_MATCH	389v389	PASS	std::__merge_adaptive<CSortElement*,int,CSortElement*,less<CSortElement>> (STLport 4.6); __forceinline copy chain; 3 grades
+00ae1730	RELOCATION_MATCH	391v391	PASS	CParticleSimulation::ReadVectorArray (PDB); C4DVector::Initialise in the loop gives the 4x unroll; 4 grades
+00c17940	RELOCATION_MATCH	393v393	PASS	PKSerialiseLoad<CBankData> (libpk template, descriptive); /EHsc; same-TU GetChecked/Release under auto_inline(off); 3 grades

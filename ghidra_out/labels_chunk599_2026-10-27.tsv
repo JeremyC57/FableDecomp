@@ -1,0 +1,11 @@
+address	name	evidence
+00ae1730	CParticleSimulation::ReadVectorArray	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599)
+00b99860	CEnginePrimitiveManagerRepeatedStaticMeshes::CalcFrameConstantSIMDVars	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599)
+00c17940	PKSerialiseLoad<CBankData>	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599)
+00c322e0	PKCTRArray::RemoveValue	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599)
+00c5f150	CImaAdpcmCodec::CalculateError	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599)
+00c72620	CAudioSource::Stop	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599)
+00c76c20	CReverbDelay::Blend	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599)
+00c92ca0	seed_curve	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599; libvorbis 1.0.1 psy.c static, caller seed_loop 0x00C92E20)
+00ca1e80	render_line	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599; libvorbis 1.0.1 floor1.c static, caller floor1_inverse2; the hand448 "LTCG gap" label was wrong)
+00b862c0	std::__merge_adaptive<CEngineSubPrimitiveRenderer::CSortElement*,int,CSortElement*,std::less<CSortElement>>	proven per batch 2026-10-27_linux_hand599 NOTES.md (chunk 599; STLport 4.6)

@@ -1,0 +1,47 @@
+addr       parity           behav  name
+00ae1730   WARN RELOC_NAME: ??0?$CArray@VC3DVector@@@@QAE@K@Z -> 007c2ab0 labelled 'CSTLportVector<C3DVector>::CSTLportVector'
+00ae1730   RELOCATION_MATCH PASS   ReadVectorArray
+00b862c0   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b862c0   WARN RELOC_NAME: ??$__merge_adaptive@PAVCSortElement@CEngineSubPrimitiveRenderer@@HPAV12@U?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@std@@@std@@YIXPAVCSortElement@CEngineSubPrimitiveRenderer@@00HH0HU?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@0@@Z -> 00b862c0 labelled 'std_introsort_merge_operation'
+00b862c0   RELOCATION_MATCH PASS   __merge_adaptive
+00b99860   RELOCATION_MATCH PASS   CalcFrameConstantSIMDVars
+00c17940   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c17940   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c17940   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c17940   WARN RELOC_NAME: ??0PKSerialiseCParser@@QAE@PAUIDataStream@@@Z -> 00c31970 labelled 'CUnprovenRecord_00c31970::CUnprovenRecord_00c31970'
+00c17940   WARN RELOC_NAME: ?Release@?$PKCAutoDelete@UCBankData@@@@QAEPAUCBankData@@XZ -> 00c17850 labelled '_global::MessageQueue_CheckAndProcess'
+00c17940   RELOCATION_MATCH PASS   PKSerialiseLoad<CBankData>
+00c322e0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@PBD@Z -> 00c0dec0 labelled 'CString::operator<<'
+00c322e0   WARN RELOC_NAME: ??6CDebugStream@@QAIAAU0@J@Z -> 00c0df00 labelled 'CString::operator<<'
+00c322e0   WARN RELOC_NAME: ??1CDebugStream@@QAE@XZ -> 00c0ba40 labelled 'CString::~CString'
+00c322e0   WARN RELOC_NAME: ?FindValueIndex@PKCTRArray@@QAEHPAVCUnprovenArrayComparator@@PBXPAH@Z -> 00c32160 labelled 'CSortedPtrArray::FindIndex'
+00c322e0   RELOCATION_MATCH PASS   RemoveValue
+00c5f150   RELOCATION_MATCH PASS   CalculateError
+00c72620   RELOCATION_MATCH PASS   Stop
+00c76c20   RELOCATION_MATCH PASS   Blend
+00c92ca0   RELOCATION_MATCH PASS   seed_curve
+00ca1e80   RELOCATION_MATCH PASS   render_line
+
+WINS: 10
+  00ae1730 RELOCATION_MATCH CParticleSimulation::?ReadVectorArray@CParticleSimulation@@KIXPAVC4DVector@@KAAVCDataInputStream@@M@Z
+  00b862c0 RELOCATION_MATCH std::??$__merge_adaptive@PAVCSortElement@CEngineSubPrimitiveRenderer@@HPAV12@U?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@std@@@std@@YIXPAVCSortElement@CEngineSubPrimitiveRenderer@@00HH0HU?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@0@@Z
+  00b99860 RELOCATION_MATCH CEnginePrimitiveManagerRepeatedStaticMeshes::?CalcFrameConstantSIMDVars@CEnginePrimitiveManagerRepeatedStaticMeshes@@AAEXXZ
+  00c17940 RELOCATION_MATCH _global::??$PKSerialiseLoad@UCBankData@@@@YIPAUCBankData@@PAUIRemoteSource@@@Z
+  00c322e0 RELOCATION_MATCH PKCTRArray::?RemoveValue@PKCTRArray@@UAEXPAVCUnprovenArrayComparator@@PBX@Z
+  00c5f150 RELOCATION_MATCH CImaAdpcmCodec::?CalculateError@CImaAdpcmCodec@@QAE_KPBE0III@Z
+  00c72620 RELOCATION_MATCH CAudioSource::?Stop@CAudioSource@@UAEXXZ
+  00c76c20 RELOCATION_MATCH CReverbDelay::?Blend@CReverbDelay@@QAEXPAUSReverbDelayParams@@PBU2@PBMPAMII@Z
+  00c92ca0 RELOCATION_MATCH libvorbis::_seed_curve@28
+  00ca1e80 RELOCATION_MATCH libvorbis::@render_line@20
+
+LANDED 10 wins into src/compiled + tests + catalog + oracle
+  CParticleSimulation_ReadVectorArray_00ae1730
+  std_mergeadaptive_00b862c0
+  CEnginePrimitiveManagerRepeatedStaticMeshes_CalcFrameConstantSIMDVars_00b99860
+  global_PKSerialiseLoadCBankData_00c17940
+  PKCTRArray_RemoveValue_00c322e0
+  CImaAdpcmCodec_CalculateError_00c5f150
+  CAudioSource_Stop_00c72620
+  CReverbDelay_Blend_00c76c20
+  libvorbis_seedcurve_00c92ca0
+  libvorbis_renderline_00ca1e80

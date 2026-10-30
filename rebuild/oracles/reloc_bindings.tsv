@@ -35193,3 +35193,13 @@ __imp__perror	01440010	00c90d60
 ?Allocate@CStereoDelayLine@@QAEXIPAPAMPAI@Z	00c75050	00c6a460
 ?AllocateMemory@CReverbProcessor@@QAEXPBUCReverbConfig@@PAPAMPAI@Z	00c69a70	00c6a460
 ?ComputeGainRamp@CVtable_012bed90@@QAEXPAUSGainRamp@@M@Z	00c6de60	00c6dea0
+??$__merge_backward@PAVCSortElement@CEngineSubPrimitiveRenderer@@PAV12@PAV12@U?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@std@@@std@@YIPAVCSortElement@CEngineSubPrimitiveRenderer@@PAV12@0000U?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@0@@Z	00b859a0	00b862c0
+??$__rotate_adaptive@PAVCSortElement@CEngineSubPrimitiveRenderer@@PAV12@H@std@@YIPAVCSortElement@CEngineSubPrimitiveRenderer@@PAV12@00HH0H@Z	00b85cd0	00b862c0
+??0CBankData@@QAE@XZ	00c2eed0	00c17940
+??0CMemoryStream@@QAE@PAUIRemoteSource@@@Z	00c31f60	00c17940
+??0PKSerialiseCParser@@QAE@PAUIDataStream@@@Z	00c31970	00c17940
+??1CBankData@@QAE@XZ	00c2ef30	00c17940
+??1CMemoryStream@@UAE@XZ	00c31f00	00c17940
+?GetChecked@?$PKCAutoDelete@UCBankData@@@@QAEPAUCBankData@@XZ	00c17740	00c17940
+?Release@?$PKCAutoDelete@UCBankData@@@@QAEPAUCBankData@@XZ	00c17850	00c17940
+?Transfer@CBankData@@QAE_NAAUPKSerialiseCParser@@@Z	00c2ee80	00c17940
