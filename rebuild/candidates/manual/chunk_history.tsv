@@ -25010,3 +25010,13 @@ chunk	address	module	name	length
 597	00c00e60	global	longest_match	359
 597	00ae3360	global	construct	360
 597	00b9e750	global	RenderMeshPrimitiveBlocksDegenerateTriangles	361
+598	00ca36e0	global	Math_PrecomputeAngleLookupTable	361
+598	00ca9510	global	sub_00ca9510	362
+598	00c621b0	global	CItem_ProcessPendingEffects	363
+598	00c6a460	global	CQ_GuildTrainingSkillScript_Init	364
+598	00c57140	global	CSound_AllocateBuffers	366
+598	00ca56e0	global	Audio_ProcessTimeAdjustment	366
+598	00c6dea0	global	Audio_SetOutputVolume	369
+598	00c6e050	global	sub_00c6e050	369
+598	00c90d60	global	Debug_DumpMatlabFile	370
+598	00c42dd0	global	CTCHeroStats_InitializeShadowRenderer	373
