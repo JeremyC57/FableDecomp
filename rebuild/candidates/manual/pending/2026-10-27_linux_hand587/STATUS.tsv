@@ -1,0 +1,4 @@
+address	status	bytes	test	note
+00c5dc60	DIFFER	265v267	PASS	CDSoundAccelerationQuery::OpenDeviceRegistryKey (descriptive) /GS; 4 grades; loop induction-variable allocation + -1 block placement; differ/00c5dc60.test.cpp PASS g++ and VC
+00c89d70	DIFFER	265v269	PASS	libvorbis _get_prev_page; 4 grades; two `mov eax,esi` missing (same-TU _get_next_page static takes vf in esi, retail eax); differ/00c89d70.test.cpp PASS g++ and VC
+00ae3920	DIFFER	266v270	PASS	CParticleProgram::RemapBoneIndices (private static fastcall); 4 grades; key-temp store timing + dtor register choice; differ/00ae3920.test.cpp PASS g++ and VC

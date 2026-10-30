@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00c5dc60	DIFFER	265v267	PASS	CDSoundAccelerationQuery::OpenDeviceRegistryKey (descriptive) /GS; 4 grades; loop induction-variable allocation + -1 block placement; differ/00c5dc60.test.cpp PASS g++ and VC
+00c89d70	DIFFER	265v269	PASS	libvorbis _get_prev_page; 4 grades; two `mov eax,esi` missing (same-TU _get_next_page static takes vf in esi, retail eax); differ/00c89d70.test.cpp PASS g++ and VC
+00c9c2f0	MATCH	269v269	PASS	libvorbis mdct_butterfly_generic; 2 grades (static __stdcall gives the LTCG `ret 4`)
+00cfaf70	RELOCATION_MATCH	269v269	PASS	NScript::CQ_AwakeningTheOracleScript::OnPersist (vtable 0x012C78B0 slot 4); 1 grade + 1 shared-header regrade (engine/CLevelScriptBase.h)
+00ae3920	DIFFER	266v270	PASS	CParticleProgram::RemapBoneIndices (private static fastcall); 4 grades; key-temp store timing + dtor register choice; differ/00ae3920.test.cpp PASS g++ and VC
+00ae82c0	RELOCATION_MATCH	270v270	PASS	std::vector<C3DGroup2>::_M_fill_insert (STLport 4.6); 2 grades (same-TU noinline __uninitialized_copy for the live-slot tag)
+00b86140	RELOCATION_MATCH	274v274	PASS	std::__merge_without_buffer<CSortElement*,int,less<CSortElement>> (bound spelling); 1 grade
+00c43a10	RELOCATION_MATCH	274v274	PASS	CAudioObject::Update(__int64) (descriptive, libpk); 2 grades (inline queue test `cap && !(cap && cnt==0)`)
+00caafc0	RELOCATION_MATCH	276v276	PASS	CEnumPins::Next (DirectShow strmbase, vtable 0x012BF69C slot 3); 1 grade
+00c39130	RELOCATION_MATCH	265v265	PASS	CActivationReceptor_00c38b20 default ctor /EHsc (landed placeholder class); 2 grades (heads are members, not bases)

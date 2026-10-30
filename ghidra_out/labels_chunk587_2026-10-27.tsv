@@ -1,0 +1,14 @@
+address	name	evidence
+00c9c2f0	mdct_butterfly_generic	chunk 587: Xiph mdct.c body (static __stdcall-shaped, caller mdct_butterflies same TU); catalog said FFT_Radix2VariableStride
+00caafc0	CEnumPins::Next	chunk 587: DirectShow amfilter.cpp, vtable 0x012BF69C slot 3; catalog said PopNodes_FromList_UpToCount
+00ae82c0	std::vector<C3DGroup2>::_M_fill_insert	chunk 587: STLport 4.6; resize 0x00AE8540 is its caller; catalog said Vector_Insert_Pair128BitMultipleResize
+00cfaf70	NScript::CQ_AwakeningTheOracleScript::OnPersist	chunk 587: vtable 0x012C78B0 slot 4; ten Transfer calls in retail order; on engine/CLevelScriptBase.h
+00b86140	std::__merge_without_buffer<CEngineSubPrimitiveRenderer::CSortElement*,int,std::less<...> >	chunk 587: SGI body; spelling already bound by caller 0x00B86570
+00c43a10	CAudioObject::Update	chunk 587: DESCRIPTIVE (libpk); __int64 argument; catalog said CDisplayManager_ProcessStateChange
+00c39130	CActivationReceptor_00c38b20::CActivationReceptor_00c38b20	chunk 587: DESCRIPTIVE placeholder class (landed name), default ctor, /EHsc; parts at offset 0 are members not bases
+00c5dc60	CDSoundAccelerationQuery::OpenDeviceRegistryKey	chunk 587 (parked DIFFER 265v267): DESCRIPTIVE; /GS; sibling of landed FindDeviceInterface 0x00C5DB40
+00c89d70	_get_prev_page	chunk 587 (parked DIFFER 265v269): libvorbis vorbisfile.c; same-TU static _get_next_page register choice is a lane gap
+00ae3920	CParticleProgram::RemapBoneIndices	chunk 587 (parked DIFFER 266v270): private static __fastcall; Ego_r.pdb
+00ae75b0	std::uninitialized_fill_n<C3DGroup2*>	chunk 587: vland RELOC_NAME; label UninitFillN
+00ac4070	C3DGroup2::SetBoneIndex	chunk 587: landed as __EH_epilog3@CClass_00ac4070 (wrong)
+00c432f0	CAudioObject::ReportQueueInfo	chunk 587: DESCRIPTIVE; landed as CMarkedBufferOwner_00c43810::ReportMark

@@ -364732,6 +364732,56 @@ $catalog = @(
         TestSource = '00/cd/NScriptCPersonalScriptGlobalThingsScriptCBowerstoneTeleportPointMarker_Main_00cdf800_test.cpp'
         PassPattern = '00cdf800_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00ae82c0'
+        Module = 'std::vector<C3DGroup2>'
+        Source = '00/ae/stdvectorC3DGroup2_Mfillinsert_00ae82c0.cpp'
+        TestSource = '00/ae/stdvectorC3DGroup2_Mfillinsert_00ae82c0_test.cpp'
+        PassPattern = '00ae82c0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00b86140'
+        Module = 'std'
+        Source = '00/b8/std_mergewithoutbuffer_00b86140.cpp'
+        TestSource = '00/b8/std_mergewithoutbuffer_00b86140_test.cpp'
+        PassPattern = '00b86140_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c39130'
+        Module = 'CActivationReceptor_00c38b20'
+        Source = '00/c3/CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130.cpp'
+        TestSource = '00/c3/CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130_test.cpp'
+        CompilerFlags = '/O2 /Oy /W3 /EHsc'
+        PassPattern = '00c39130_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c43a10'
+        Module = 'CAudioObject'
+        Source = '00/c4/CAudioObject_Update_00c43a10.cpp'
+        TestSource = '00/c4/CAudioObject_Update_00c43a10_test.cpp'
+        PassPattern = '00c43a10_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00c9c2f0'
+        Module = 'libvorbis'
+        Source = '00/c9/libvorbis_mdctbutterflygeneric_00c9c2f0.cpp'
+        TestSource = '00/c9/libvorbis_mdctbutterflygeneric_00c9c2f0_test.cpp'
+        PassPattern = '00c9c2f0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00caafc0'
+        Module = 'CEnumPins'
+        Source = '00/ca/CEnumPins_Next_00caafc0.cpp'
+        TestSource = '00/ca/CEnumPins_Next_00caafc0_test.cpp'
+        PassPattern = '00caafc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00cfaf70'
+        Module = 'NScript::CQ_AwakeningTheOracleScript'
+        Source = '00/cf/NScriptCQAwakeningTheOracleScript_OnPersist_00cfaf70.cpp'
+        TestSource = '00/cf/NScriptCQAwakeningTheOracleScript_OnPersist_00cfaf70_test.cpp'
+        PassPattern = '00cfaf70_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

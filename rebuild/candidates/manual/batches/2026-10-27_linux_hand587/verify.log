@@ -1,0 +1,33 @@
+addr       parity           behav  name
+00ae82c0   WARN RELOC_NAME: ??$__uninitialized_copy@PAVC3DGroup2@@PAV1@@std@@YIPAVC3DGroup2@@PAV1@00ABU__false_type@0@@Z -> 00ae7480 labelled '_global::UninitCopy_SPairLongCSecond_00ae5d80_00ae7480'
+00ae82c0   WARN RELOC_NAME: ??$uninitialized_fill_n@PAVC3DGroup2@@IV1@@std@@YIPAVC3DGroup2@@PAV1@IABV1@@Z -> 00ae75b0 labelled '_global::UninitFillN_SPairLongCSecond_00ae5d80_00ae75b0'
+00ae82c0   RELOCATION_MATCH PASS   _M_fill_insert
+00b86140   WARN SHARED_HEADER_AVAILABLE CEngineSubPrimitiveRenderer
+00b86140   WARN RELOC_NAME: ??$__merge_without_buffer@PAVCSortElement@CEngineSubPrimitiveRenderer@@HU?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@std@@@std@@YIXPAVCSortElement@CEngineSubPrimitiveRenderer@@00HHU?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@0@@Z -> 00b86140 labelled 'std_introsort_binary_search'
+00b86140   RELOCATION_MATCH PASS   __merge_without_buffer
+00c39130   WARN RELOC_NAME: ??0CAsyncDecoder_00c48640@@QAE@XZ -> 00c48640 labelled '_global::CScriptDefinitionManager_Initialize'
+00c39130   RELOCATION_MATCH PASS   CActivationReceptor_00c38b20
+00c43a10   WARN RELOC_NAME: ?ReportQueueInfo@CAudioObject@@QAEXXZ -> 00c432f0 labelled 'CMarkedBufferOwner_00c43810::ReportMark'
+00c43a10   RELOCATION_MATCH PASS   Update
+00c9c2f0   MATCH            PASS   mdct_butterfly_generic
+00caafc0   WARN SHARED_HEADER_AVAILABLE CBaseObject
+00caafc0   RELOCATION_MATCH PASS   Next
+00cfaf70   RELOCATION_MATCH PASS   OnPersist
+
+WINS: 7
+  00ae82c0 RELOCATION_MATCH std::vector<C3DGroup2>::?_M_fill_insert@?$vector@VC3DGroup2@@V?$allocator@VC3DGroup2@@@std@@@std@@QAEXPAVC3DGroup2@@IABV3@@Z
+  00b86140 RELOCATION_MATCH std::??$__merge_without_buffer@PAVCSortElement@CEngineSubPrimitiveRenderer@@HU?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@std@@@std@@YIXPAVCSortElement@CEngineSubPrimitiveRenderer@@00HHU?$less@VCSortElement@CEngineSubPrimitiveRenderer@@@0@@Z
+  00c39130 RELOCATION_MATCH CActivationReceptor_00c38b20::??0CActivationReceptor_00c38b20@@QAE@XZ
+  00c43a10 RELOCATION_MATCH CAudioObject::?Update@CAudioObject@@QAEX_J@Z
+  00c9c2f0 MATCH libvorbis::_mdct_butterfly_generic@16
+  00caafc0 RELOCATION_MATCH CEnumPins::?Next@CEnumPins@@UAGJKPAPAUIPin@@PAK@Z
+  00cfaf70 RELOCATION_MATCH NScript::CQ_AwakeningTheOracleScript::?OnPersist@CQ_AwakeningTheOracleScript@NScript@@UAEXAAVCPersistContext@@@Z
+
+LANDED 7 wins into src/compiled + tests + catalog + oracle
+  stdvectorC3DGroup2_Mfillinsert_00ae82c0
+  std_mergewithoutbuffer_00b86140
+  CActivationReceptor00c38b20_CActivationReceptor00c38b20_00c39130
+  CAudioObject_Update_00c43a10
+  libvorbis_mdctbutterflygeneric_00c9c2f0
+  CEnumPins_Next_00caafc0
+  NScriptCQAwakeningTheOracleScript_OnPersist_00cfaf70
