@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00ee91e0	DIFFER	575v613	-	NScript::CGlobal_DebugCycleThroughSpeechScript::Main parked: per-site inlining of the std::set<unsigned long> destructor (see differ/)
+00d2d1a0	DIFFER	556v620	-	NScript::CQ_EndGameFocalSitesScript::CBattleMinion::Main parked: retail inlines ~CScriptGameResourceObjectScriptedThingBase at the first early return only

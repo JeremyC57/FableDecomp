@@ -35192,3 +35192,16 @@ _icomp	00ca1bc0	00ca1be0
 ?clear@?$map@VCCharString@@V1@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@V1@@std@@@3@@std@@QAEXXZ	009aace0	00d7c470
 ?GetQuestIndex@CV_TalentlessBardScript@NScript@@QAEJVCCharString@@@Z	00ed7c70	00ed7a40
 ?FollowThread@CExpression_FollowScript@NScript@@QAEXXZ	00eea240	00eea020
+??$GetDefaultVal@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@CPersistContext@@KI?AW4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@XZ	00e1df50	00e1dcf0
+??$Transfer@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@CPersistContext@@QAEXPBDAAW4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@ABW4123@@Z	00e1df60	00e1dcf0
+??_7?$CEntityScriptBinding@VCV_ParanoidWhispersScript@NScript@@@@6B@	012f0fc8	00ebef80
+?Alloc@CPW_NecklaceDiggingSpot@CV_ParanoidWhispersScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ec0900	00ebef80
+?Alloc@CSecretWhisperingFriend@CV_ParanoidWhispersScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ec0a50	00ebef80
+?Alloc@CSecretWhisperingMan@CV_ParanoidWhispersScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ebfb00	00ebef80
+?CheckForNecklaceAndQuit@CV_ParanoidWhispersScript@NScript@@QAEXXZ	00ebf1e0	00ebef80
+?WatchForAngryTraders@CV_ParanoidWhispersScript@NScript@@QAEXXZ	00ebf390	00ebef80
+??_7?$CEntityScriptBinding@VCV_TourGuideScript@NScript@@@@6B@	012f5104	00ee47b0
+?Alloc@CTourGuideFollower@CV_TourGuideScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ee4cf0	00ee47b0
+?Alloc@CTourGuideGuide@CV_TourGuideScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ee4bb0	00ee47b0
+?WatchForClosingTime@CV_TourGuideScript@NScript@@QAEXXZ	00ee4a00	00ee47b0
+?WatchForGuideKilled@CV_TourGuideScript@NScript@@QAEXXZ	00ee4a70	00ee47b0

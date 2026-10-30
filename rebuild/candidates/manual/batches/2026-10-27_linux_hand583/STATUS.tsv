@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00ee47b0	RELOCATION_MATCH	576v576	PASS	NScript::CV_TourGuideScript::Main (vtable slot 2); two entity bindings, two spawns, wait for QuestFinished
+00e9c8d0	RELOCATION_MATCH	582v582	PASS	NScript::CV_IntroductionToTrophiesScript::WatchForCrowdVolume (spawn literal); inline CTimer operators
+00ed7e00	RELOCATION_MATCH	584v584	PASS	NScript::CV_TalentlessBardScript::CTB_Bard::Init (entity vtable slot 2); memberwise C3DVector copy ctor
+00ebef80	RELOCATION_MATCH	588v588	PASS	NScript::CV_ParanoidWhispersScript::Main (vtable slot 2); three bindings, two spawns
+00edaf30	RELOCATION_MATCH	594v594	PASS	NScript::CV_TempleOfLightScript::OnPersist (vtable slot 4); 23 Transfer calls
+00f14300	RELOCATION_MATCH	594v594	PASS	NScript::CQ_ArenaScript::WatchForTermination (spawn literal in Main 0x00F0FB70); catalog label Script_Arena_Teleport_Thread invented
+00e1dcf0	RELOCATION_MATCH	603v603	PASS	NScript::CQR_EscortTraderScript::OnPersist (vtable slot 4); two-argument Transfer via GetDefaultVal<T>
+00ee91e0	DIFFER	575v613	-	NScript::CGlobal_DebugCycleThroughSpeechScript::Main parked: per-site inlining of the std::set<unsigned long> destructor (see differ/)
+00d2d1a0	DIFFER	556v620	-	NScript::CQ_EndGameFocalSitesScript::CBattleMinion::Main parked: retail inlines ~CScriptGameResourceObjectScriptedThingBase at the first early return only
+00eb7370	RELOCATION_MATCH	625v625	PASS	NScript::CV_MayorsInvitationScript::WatchForTermination (spawn literal); catalog label MayorsInvitation_OnEnter invented

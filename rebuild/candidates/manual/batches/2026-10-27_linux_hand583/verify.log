@@ -1,0 +1,32 @@
+addr       parity           behav  name
+00e1dcf0   WARN RELOC_NAME: ??$GetDefaultVal@W4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@@CPersistContext@@KI?AW4EscortTraderQuestStage@CQR_EscortTraderScript@NScript@@XZ -> 00e1df50 labelled '_global::ReturnZero_ret0_00e1df50'
+00e1dcf0   RELOCATION_MATCH PASS   OnPersist
+00e9c8d0   RELOCATION_MATCH PASS   WatchForCrowdVolume
+00eb7370   RELOCATION_MATCH PASS   WatchForTermination
+00ebef80   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00ebef80   RELOCATION_MATCH PASS   Main
+00ed7e00   RELOCATION_MATCH PASS   Init
+00edaf30   RELOCATION_MATCH PASS   OnPersist
+00ee47b0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00ee47b0   RELOCATION_MATCH PASS   Main
+00f14300   RELOCATION_MATCH PASS   WatchForTermination
+
+WINS: 8
+  00e1dcf0 RELOCATION_MATCH NScript::CQR_EscortTraderScript::?OnPersist@CQR_EscortTraderScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00e9c8d0 RELOCATION_MATCH NScript::CV_IntroductionToTrophiesScript::?WatchForCrowdVolume@CV_IntroductionToTrophiesScript@NScript@@QAEXXZ
+  00eb7370 RELOCATION_MATCH NScript::CV_MayorsInvitationScript::?WatchForTermination@CV_MayorsInvitationScript@NScript@@QAEXXZ
+  00ebef80 RELOCATION_MATCH NScript::CV_ParanoidWhispersScript::?Main@CV_ParanoidWhispersScript@NScript@@UAEXXZ
+  00ed7e00 RELOCATION_MATCH NScript::CV_TalentlessBardScript::CTB_Bard::?Init@CTB_Bard@CV_TalentlessBardScript@NScript@@EAEXXZ
+  00edaf30 RELOCATION_MATCH NScript::CV_TempleOfLightScript::?OnPersist@CV_TempleOfLightScript@NScript@@UAEXAAVCPersistContext@@@Z
+  00ee47b0 RELOCATION_MATCH NScript::CV_TourGuideScript::?Main@CV_TourGuideScript@NScript@@UAEXXZ
+  00f14300 RELOCATION_MATCH NScript::CQ_ArenaScript::?WatchForTermination@CQ_ArenaScript@NScript@@QAEXXZ
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  NScriptCQREscortTraderScript_OnPersist_00e1dcf0
+  NScriptCVIntroductionToTrophiesScript_WatchForCrowdVolume_00e9c8d0
+  NScriptCVMayorsInvitationScript_WatchForTermination_00eb7370
+  NScriptCVParanoidWhispersScript_Main_00ebef80
+  NScriptCVTalentlessBardScriptCTBBard_Init_00ed7e00
+  NScriptCVTempleOfLightScript_OnPersist_00edaf30
+  NScriptCVTourGuideScript_Main_00ee47b0
+  NScriptCQArenaScript_WatchForTermination_00f14300

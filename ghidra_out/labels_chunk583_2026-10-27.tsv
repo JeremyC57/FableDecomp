@@ -1,0 +1,15 @@
+address	name	evidence
+00ee47b0	NScript::CV_TourGuideScript::Main	chunk 583: slot 2 of the quest vtable; Ego_r.pdb
+00e9c8d0	NScript::CV_IntroductionToTrophiesScript::WatchForCrowdVolume	chunk 583: spawn literal 0x012ED588 stored at 0x00E9C711; Ego_r.pdb
+00ed7e00	NScript::CV_TalentlessBardScript::CTB_Bard::Init	chunk 583: slot 2 of entity vtable 0x012F3494; Ego_r.pdb
+00ebef80	NScript::CV_ParanoidWhispersScript::Main	chunk 583: slot 2 of vtable 0x012F0F38; Ego_r.pdb
+00edaf30	NScript::CV_TempleOfLightScript::OnPersist	chunk 583: slot 4 of vtable 0x012F3C68; Ego_r.pdb
+00f14300	NScript::CQ_ArenaScript::WatchForTermination	chunk 583: spawned from Main 0x00F0FB70; Ego_r.pdb
+00e1dcf0	NScript::CQR_EscortTraderScript::OnPersist	chunk 583: slot 4 of the quest vtable; Ego_r.pdb
+00eb7370	NScript::CV_MayorsInvitationScript::WatchForTermination	chunk 583: spawn literal; Ego_r.pdb
+00ee91e0	NScript::CGlobal_DebugCycleThroughSpeechScript::Main	chunk 583 (parked DIFFER 575v613): slot 2 of vtable 0x012F54B4; Ego_r + FableWin
+00d2d1a0	NScript::CQ_EndGameFocalSitesScript::CBattleMinion::Main	chunk 583 (parked DIFFER 556v620): slot 1 of vtable 0x012CC304; Ego_r.pdb
+00e1df50	GetDefaultVal<NScript::CQR_EscortTraderScript::EscortTraderQuestStage>	chunk 583: FableWin.pdb; catalog said ReturnZero_ret0
+0099f830	GFIntToCharString	chunk 583: ?GFIntToCharString@@YI?AVCCharString@@J@Z; landed bindings PrisonerNumberString / CCharString::FromLong are wrong
+007e74d0	CScriptGameResourceObjectScriptedThingBase::~CScriptGameResourceObjectScriptedThingBase	chunk 583: called at the early return of 0x00D2D1A0; Ego_r.pdb
+004cff70	std::_Rb_tree<unsigned long,...>::clear	chunk 583: set<unsigned long> tree clear called by inlined ~set in 0x00EE91E0; landed as CTCCarryable::OnKill (wrong)

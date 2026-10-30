@@ -364513,6 +364513,62 @@ $catalog = @(
         TestSource = '00/ee/NScriptCExpressionFollowScript_Main_00eea020_test.cpp'
         PassPattern = '00eea020_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00e1dcf0'
+        Module = 'NScript::CQR_EscortTraderScript'
+        Source = '00/e1/NScriptCQREscortTraderScript_OnPersist_00e1dcf0.cpp'
+        TestSource = '00/e1/NScriptCQREscortTraderScript_OnPersist_00e1dcf0_test.cpp'
+        PassPattern = '00e1dcf0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9c8d0'
+        Module = 'NScript::CV_IntroductionToTrophiesScript'
+        Source = '00/e9/NScriptCVIntroductionToTrophiesScript_WatchForCrowdVolume_00e9c8d0.cpp'
+        TestSource = '00/e9/NScriptCVIntroductionToTrophiesScript_WatchForCrowdVolume_00e9c8d0_test.cpp'
+        PassPattern = '00e9c8d0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eb7370'
+        Module = 'NScript::CV_MayorsInvitationScript'
+        Source = '00/eb/NScriptCVMayorsInvitationScript_WatchForTermination_00eb7370.cpp'
+        TestSource = '00/eb/NScriptCVMayorsInvitationScript_WatchForTermination_00eb7370_test.cpp'
+        PassPattern = '00eb7370_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ebef80'
+        Module = 'NScript::CV_ParanoidWhispersScript'
+        Source = '00/eb/NScriptCVParanoidWhispersScript_Main_00ebef80.cpp'
+        TestSource = '00/eb/NScriptCVParanoidWhispersScript_Main_00ebef80_test.cpp'
+        PassPattern = '00ebef80_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ed7e00'
+        Module = 'NScript::CV_TalentlessBardScript::CTB_Bard'
+        Source = '00/ed/NScriptCVTalentlessBardScriptCTBBard_Init_00ed7e00.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScriptCTBBard_Init_00ed7e00_test.cpp'
+        PassPattern = '00ed7e00_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00edaf30'
+        Module = 'NScript::CV_TempleOfLightScript'
+        Source = '00/ed/NScriptCVTempleOfLightScript_OnPersist_00edaf30.cpp'
+        TestSource = '00/ed/NScriptCVTempleOfLightScript_OnPersist_00edaf30_test.cpp'
+        PassPattern = '00edaf30_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ee47b0'
+        Module = 'NScript::CV_TourGuideScript'
+        Source = '00/ee/NScriptCVTourGuideScript_Main_00ee47b0.cpp'
+        TestSource = '00/ee/NScriptCVTourGuideScript_Main_00ee47b0_test.cpp'
+        PassPattern = '00ee47b0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00f14300'
+        Module = 'NScript::CQ_ArenaScript'
+        Source = '00/f1/NScriptCQArenaScript_WatchForTermination_00f14300.cpp'
+        TestSource = '00/f1/NScriptCQArenaScript_WatchForTermination_00f14300_test.cpp'
+        PassPattern = '00f14300_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(
