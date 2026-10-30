@@ -364569,6 +364569,62 @@ $catalog = @(
         TestSource = '00/f1/NScriptCQArenaScript_WatchForTermination_00f14300_test.cpp'
         PassPattern = '00f14300_TEST PASS'
     }
+    [pscustomobject]@{
+        Address = '00da2ca0'
+        Module = 'NScript::CQ_MinionCampScript::CBriarRose'
+        Source = '00/da/NScriptCQMinionCampScriptCBriarRose_PlayCutscene_00da2ca0.cpp'
+        TestSource = '00/da/NScriptCQMinionCampScriptCBriarRose_PlayCutscene_00da2ca0_test.cpp'
+        PassPattern = '00da2ca0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e0e040'
+        Module = 'NScript::CQ_UndeadRisingScript'
+        Source = '00/e0/NScriptCQUndeadRisingScript_ActivateNextLamp_00e0e040.cpp'
+        TestSource = '00/e0/NScriptCQUndeadRisingScript_ActivateNextLamp_00e0e040_test.cpp'
+        PassPattern = '00e0e040_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e68b20'
+        Module = 'NScript::CV_ChickenKickingScript'
+        Source = '00/e6/NScriptCVChickenKickingScript_PlayCutscene_00e68b20.cpp'
+        TestSource = '00/e6/NScriptCVChickenKickingScript_PlayCutscene_00e68b20_test.cpp'
+        PassPattern = '00e68b20_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7b4e0'
+        Module = 'NScript::CV_FishermanScript'
+        Source = '00/e7/NScriptCVFishermanScript_Main_00e7b4e0.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScript_Main_00e7b4e0_test.cpp'
+        PassPattern = '00e7b4e0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e7bd60'
+        Module = 'NScript::CV_FishermanScript::CFisherman'
+        Source = '00/e7/NScriptCVFishermanScriptCFisherman_Init_00e7bd60.cpp'
+        TestSource = '00/e7/NScriptCVFishermanScriptCFisherman_Init_00e7bd60_test.cpp'
+        PassPattern = '00e7bd60_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00e9bbc0'
+        Module = 'NScript::CV_HeroDuelScript'
+        Source = '00/e9/NScriptCVHeroDuelScript_DuelChallenge_00e9bbc0.cpp'
+        TestSource = '00/e9/NScriptCVHeroDuelScript_DuelChallenge_00e9bbc0_test.cpp'
+        PassPattern = '00e9bbc0_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00ec2520'
+        Module = 'NScript::CV_RandomPopulationSimScript'
+        Source = '00/ec/NScriptCVRandomPopulationSimScript_SetCurrentPopulationRegionFromRegionName_00ec2520.cpp'
+        TestSource = '00/ec/NScriptCVRandomPopulationSimScript_SetCurrentPopulationRegionFromRegionName_00ec2520_test.cpp'
+        PassPattern = '00ec2520_TEST PASS'
+    }
+    [pscustomobject]@{
+        Address = '00eda5e0'
+        Module = 'NScript::CV_TalentlessBardScript'
+        Source = '00/ed/NScriptCVTalentlessBardScript_IsHeroDressedAsAWoman_00eda5e0.cpp'
+        TestSource = '00/ed/NScriptCVTalentlessBardScript_IsHeroDressedAsAWoman_00eda5e0_test.cpp'
+        PassPattern = '00eda5e0_TEST PASS'
+    }
 )
 
 $requestedAddresses = @(

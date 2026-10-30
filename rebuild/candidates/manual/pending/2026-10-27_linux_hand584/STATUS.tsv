@@ -1,0 +1,3 @@
+address	status	bytes	test	note
+00ef5840	DIFFER(768v727)	727	-	NScript::CPersonalScript_EmptyScript::CBanditWalker::Main() parked: member ~CPredicate_And<A,A> 0x00EF5B50 called out of line in retail, expanded by VC7.1 (3 grades)
+00f3cf50	DIFFER(679v683)	683	-	CTriangleStripifier2::CalcSectionPolyMask (private) parked: allocator temp arg-slot reuse + strength-reduced i*2 (4 grades)

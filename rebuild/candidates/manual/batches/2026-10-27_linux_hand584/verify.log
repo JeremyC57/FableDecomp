@@ -1,0 +1,33 @@
+addr       parity           behav  name
+00da2ca0   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00da2ca0   RELOCATION_MATCH PASS   PlayCutscene
+00e0e040   RELOCATION_MATCH PASS   ActivateNextLamp
+00e68b20   RELOCATION_MATCH PASS   PlayCutscene
+00e7b4e0   WARN RELOC_NAME: ?PostAddScriptedEntities@CScriptBase@@QAEXXZ -> 00cb8930 labelled 'CTCVillage::OnInitialActivate'
+00e7b4e0   RELOCATION_MATCH PASS   Main
+00e7bd60   RELOCATION_MATCH PASS   Init
+00e9bbc0   WARN RELOC_NAME: ??1?$CCountedPointer@VCScriptGameResourceObjectMovieBase@@@@QAE@XZ -> 006e7ab0 labelled '_global::CCountedPointer_Release_006e7ab0'
+00e9bbc0   WARN RELOC_NAME: ??1?$map@VCCharString@@VCScriptGameResourceObjectScriptedThingBase@@U?$less@VCCharString@@@std@@V?$allocator@U?$pair@$$CBVCCharString@@VCScriptGameResourceObjectScriptedThingBase@@@std@@@4@@std@@QAE@XZ -> 00cdbfb0 labelled 'CRetailTree_erase00cd344a::~CRetailTree_erase00cd344a'
+00e9bbc0   RELOCATION_MATCH PASS   DuelChallenge
+00ec2520   RELOCATION_MATCH PASS   SetCurrentPopulationRegionFromRegionName
+00eda5e0   RELOCATION_MATCH PASS   IsHeroDressedAsAWoman
+
+WINS: 8
+  00da2ca0 RELOCATION_MATCH NScript::CQ_MinionCampScript::CBriarRose::?PlayCutscene@CBriarRose@CQ_MinionCampScript@NScript@@AAEXVCCharString@@@Z
+  00e0e040 RELOCATION_MATCH NScript::CQ_UndeadRisingScript::?ActivateNextLamp@CQ_UndeadRisingScript@NScript@@QAEXXZ
+  00e68b20 RELOCATION_MATCH NScript::CV_ChickenKickingScript::?PlayCutscene@CV_ChickenKickingScript@NScript@@QAEXVCCharString@@@Z
+  00e7b4e0 RELOCATION_MATCH NScript::CV_FishermanScript::?Main@CV_FishermanScript@NScript@@UAEXXZ
+  00e7bd60 RELOCATION_MATCH NScript::CV_FishermanScript::CFisherman::?Init@CFisherman@CV_FishermanScript@NScript@@EAEXXZ
+  00e9bbc0 RELOCATION_MATCH NScript::CV_HeroDuelScript::?DuelChallenge@CV_HeroDuelScript@NScript@@QAEXXZ
+  00ec2520 RELOCATION_MATCH NScript::CV_RandomPopulationSimScript::?SetCurrentPopulationRegionFromRegionName@CV_RandomPopulationSimScript@NScript@@QAEXAAVCCharString@@@Z
+  00eda5e0 RELOCATION_MATCH NScript::CV_TalentlessBardScript::?IsHeroDressedAsAWoman@CV_TalentlessBardScript@NScript@@QAE_NXZ
+
+LANDED 8 wins into src/compiled + tests + catalog + oracle
+  NScriptCQMinionCampScriptCBriarRose_PlayCutscene_00da2ca0
+  NScriptCQUndeadRisingScript_ActivateNextLamp_00e0e040
+  NScriptCVChickenKickingScript_PlayCutscene_00e68b20
+  NScriptCVFishermanScript_Main_00e7b4e0
+  NScriptCVFishermanScriptCFisherman_Init_00e7bd60
+  NScriptCVHeroDuelScript_DuelChallenge_00e9bbc0
+  NScriptCVRandomPopulationSimScript_SetCurrentPopulationRegionFromRegionName_00ec2520
+  NScriptCVTalentlessBardScript_IsHeroDressedAsAWoman_00eda5e0

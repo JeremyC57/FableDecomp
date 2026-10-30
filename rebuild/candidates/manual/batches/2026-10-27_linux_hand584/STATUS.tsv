@@ -1,0 +1,11 @@
+address	status	bytes	test	note
+00da2ca0	RELOCATION_MATCH	657	PASS	NScript::CQ_MinionCampScript::CBriarRose::PlayCutscene(CCharString); local CBaseObject/resource/STLport-map models (header debt)
+00e0e040	RELOCATION_MATCH	668	PASS	NScript::CQ_UndeadRisingScript::ActivateNextLamp(); NAME_FIX for the landed caller's global spelling
+00e68b20	RELOCATION_MATCH	666	PASS	NScript::CV_ChickenKickingScript::PlayCutscene(CCharString)
+00e7b4e0	RELOCATION_MATCH	698	PASS	NScript::CV_FishermanScript::Main() (script vtable 0x012EA024 slot 2)
+00e7bd60	RELOCATION_MATCH	680	PASS	NScript::CV_FishermanScript::CFisherman::Init() (entity vtable 0x012EA0B4 slot 2); local CSpawnedFunc1
+00e9bbc0	RELOCATION_MATCH	670	PASS	NScript::CV_HeroDuelScript::DuelChallenge(); per-exit dtor gap beaten with in-body inline_depth(0); IsValid NAME_FIX
+00ec2520	RELOCATION_MATCH	778	PASS	NScript::CV_RandomPopulationSimScript::SetCurrentPopulationRegionFromRegionName(CCharString&)
+00eda5e0	RELOCATION_MATCH	732	PASS	NScript::CV_TalentlessBardScript::IsHeroDressedAsAWoman()
+00ef5840	DIFFER(768v727)	727	-	NScript::CPersonalScript_EmptyScript::CBanditWalker::Main() parked: member ~CPredicate_And<A,A> 0x00EF5B50 called out of line in retail, expanded by VC7.1 (3 grades)
+00f3cf50	DIFFER(679v683)	683	-	CTriangleStripifier2::CalcSectionPolyMask (private) parked: allocator temp arg-slot reuse + strength-reduced i*2 (4 grades)

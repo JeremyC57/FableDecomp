@@ -1,0 +1,14 @@
+address	name	evidence
+00da2ca0	NScript::CQ_MinionCampScript::CBriarRose::PlayCutscene	chunk 584: private (AAE); Ego_r + FableWin; "ROSE" cast key; seh_me at +0x1c
+00e0e040	NScript::CQ_UndeadRisingScript::ActivateNextLamp	chunk 584: landed 0x00E0DE90 spawns it under "ActivateNextLamp"; Ego_r.pdb
+00e68b20	NScript::CV_ChickenKickingScript::PlayCutscene	chunk 584: caller CChickenMaster::Main 0x00E64FB0; member offsets match Ego_r
+00e7b4e0	NScript::CV_FishermanScript::Main	chunk 584: slot 2 of script vtable 0x012EA024 (RegisterMain / Init landed); Ego_r + FableWin
+00e7bd60	NScript::CV_FishermanScript::CFisherman::Init	chunk 584: slot 2 of entity vtable 0x012EA0B4 stored by landed Alloc 0x00E7B7B0; FableWin.pdb
+00e9bbc0	NScript::CV_HeroDuelScript::DuelChallenge	chunk 584: CS_GIBBETHILL_HERODUEL_CHALLENGE strings; Ego_r name and member order
+00ec2520	NScript::CV_RandomPopulationSimScript::SetCurrentPopulationRegionFromRegionName	chunk 584: landed caller 0x00EC2240 binds it; Ego_r.pdb
+00eda5e0	NScript::CV_TalentlessBardScript::IsHeroDressedAsAWoman	chunk 584: Ego_r order of the four dress checks = retail address order; DRESS strings; caller 0x00ED9BB0
+00ef5840	NScript::CPersonalScript_EmptyScript::CBanditWalker::Main	chunk 584 (parked DIFFER 768v727): slot 1 of entity vtable 0x012F60F0 stored by landed Alloc 0x00EF1B70
+00f3cf50	CTriangleStripifier2::CalcSectionPolyMask	chunk 584 (parked DIFFER 679v683): private (AAE); Ego_r.pdb; landed caller 0x00F3D830 binds QAE
+00cd23b9	CScriptGameResourceObjectScriptedThingBase::IsValid	chunk 584: ?IsValid@...@@QBE_NXZ, the class's only non-virtual bool member in Ego_r; body `return PImp.Data != 0`; no IsScripting exists in any PDB
+006e7ab0	CCountedPointer<CScriptGameResourceObjectMovieBase>::~CCountedPointer	chunk 584: vland RELOC_NAME; label CCountedPointer_Release is wrong
+00cdbfb0	std::map<CCharString,CScriptGameResourceObjectScriptedThingBase>::~map	chunk 584: vland RELOC_NAME; label CRetailTree_erase is wrong

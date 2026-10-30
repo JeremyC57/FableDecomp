@@ -35205,3 +35205,11 @@ _icomp	00ca1bc0	00ca1be0
 ?Alloc@CTourGuideGuide@CV_TourGuideScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00ee4bb0	00ee47b0
 ?WatchForClosingTime@CV_TourGuideScript@NScript@@QAEXXZ	00ee4a00	00ee47b0
 ?WatchForGuideKilled@CV_TourGuideScript@NScript@@QAEXXZ	00ee4a70	00ee47b0
+??_7?$CEntityScriptBinding@VCV_FishermanScript@NScript@@@@6B@	012ea0ac	00e7b4e0
+?Alloc@CFisherman@CV_FishermanScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e7b7b0	00e7b4e0
+?Alloc@CFishermanBulletinBoard@CV_FishermanScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e7bbe0	00e7b4e0
+?Alloc@CFishermanWasp@CV_FishermanScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e7ba40	00e7b4e0
+?Alloc@CM_FishermanWaspSpawn@CV_FishermanScript@NScript@@SI?AV?$CCountedPointer@VCEntityScriptBase@@@@AAV23@PAVCScriptDataBase@@ABVCScriptThing@@@Z	00e7b890	00e7b4e0
+??_7?$CSpawnedFunc1@VCV_FishermanScript@NScript@@VCScriptThing@@@@6B@	012ea164	00e7bd60
+?NPCAttitudeProcess@CV_FishermanScript@NScript@@QAEXVCScriptThing@@@Z	00e7c010	00e7bd60
+?IsValid@CScriptGameResourceObjectScriptedThingBase@@QBE_NXZ	00cd23b9	00e9bbc0
