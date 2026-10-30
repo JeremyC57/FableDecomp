@@ -2,7 +2,7 @@
 // push esi; mov esi,ecx; mov eax,[esi+4]; test eax,eax; je +;
 // push eax; call 0xbfea14; add esp,4; mov ecx,esi; pop esi; jmp 0x99a2e0
 
-void __cdecl FreeThing(void* p);              // 0xbfea14 (cdecl free)
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 class CTCInventoryItem
 { public:
@@ -15,6 +15,6 @@ class CTCInventoryItem
 void CTCInventoryItem::OnDie()
 {
     if (this->m_thing)
-        FreeThing(this->m_thing);
+        free(this->m_thing);
     this->BaseOnDie();
 }

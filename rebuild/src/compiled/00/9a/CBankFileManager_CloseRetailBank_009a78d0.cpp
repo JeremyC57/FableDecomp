@@ -10,8 +10,7 @@
 // the member) and frees the node; the match breaks out to the shared name-dtor tail.
 // Layout: retail CBankFileManager (see CreateRetailBank 0x009A7720): RetailBanks +0x10 (list<CCountedPointer<
 // NBankFileManager::CRetailBank>>, 4 bytes); CRetailBank::FilePath (CCharString) +0x24.
-extern "C" int __cdecl strcmp(const char* a, const char* b);   // 0x00BFEBA8
-#pragma function(strcmp)
+extern "C" int __cdecl _stricmp(const char* a, const char* b); // 0x00BFEBA8 MSVCR71 _stricmp (import thunk)
 extern "C" void __cdecl free(void* block);         // 0x00BFEA14
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 extern const char g_emptyString[];                 // "" @ 0x0129AAF4
@@ -84,7 +83,7 @@ void CBankFileManager::CloseRetailBank(const CWideString& name)
 {
     CCharString bankName = name.ConvertToCharString();
     for (SRetailBankNode* it = RetailBanks.begin(); it != RetailBanks.end(); it = it->_M_next) {
-        if (strcmp(bankName.c_str(), it->_M_data.Data->FilePath.c_str()) == 0) {
+        if (_stricmp(bankName.c_str(), it->_M_data.Data->FilePath.c_str()) == 0) {
             RetailBanks.erase(it);
             break;
         }

@@ -11,13 +11,17 @@ extern "C" void __fastcall CActiveFile_PreRead_005f8197(CActiveFile* self) {
     g_pre_called = 1;
     (void)self;
 }
-extern "C" void __cdecl retail_free(void* p) {
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
+{
+    if (!g_free_hook) return;
     g_freed = p;
 }
 
 void __fastcall OnReadFinished(CActiveFile* self);
 
 int main() {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     int mk = 0;
     int slot = 0;
     void* bufptr = (void*)(&slot);

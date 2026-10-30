@@ -21,7 +21,9 @@ namespace
     }
 }
 
-void* FABLE_CDECL FableUserProfileManagerAllocate(fable_u32 size)
+// Replaces the global operator new (MSVCR71 ??2@YAPAXI@Z, import thunk 0x00BFEA1A) that
+// CUserProfileManager::operator new forwards to.
+void* __cdecl operator new(unsigned int size)
 {
     ++g_allocationCalls;
     g_allocationSize = size;
@@ -99,5 +101,6 @@ int main()
     }
 
     puts("FABLETLC_USER_PROFILE_SINGLETON_GET_BEHAVIOR PASS");
+    puts("0040d2a0_TEST PASS");   // the catalog PassPattern
     return 0;
 }

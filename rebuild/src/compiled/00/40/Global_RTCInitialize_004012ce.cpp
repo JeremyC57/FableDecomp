@@ -1,6 +1,7 @@
 // Leaf: __RTC_Initialize
 // Flags: /O1
 // Grade: RELOCATION_MATCH 68/68 on the real span with /O1 (catalog row 61 stopped before the __SEH_epilog tail)
+// Library: msvcrt.lib(..\build\intel\dll_obj\initsect.obj) __RTC_Initialize
 // _RTC_Initialize() -- the VC7.1 CRT walk over the .rtc$I initializer table (initsect.cpp): call every non-null entry
 //   between __rtc_iaa and __rtc_izz, each inside its own __try/__except(EXCEPTION_EXECUTE_HANDLER) so a faulting
 //   initializer cannot abort the walk.

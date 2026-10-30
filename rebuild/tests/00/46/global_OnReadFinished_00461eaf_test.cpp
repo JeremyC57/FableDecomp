@@ -8,17 +8,19 @@ struct CActiveFile {
 static int g_freed = 0;
 static void* g_freed_ptr = 0;
 
-extern "C" void __cdecl free_461eaf(void* p);
 void __fastcall OnReadFinished_461eaf(CActiveFile* thisptr);
 
-extern "C" void __cdecl free_461eaf(void* p)
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
 {
+    if (!g_free_hook) return;
     g_freed = 1;
     g_freed_ptr = p;
 }
 
 int main()
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     // Case 1: non-null pointer -> callee invoked
     int dummy = 0;
     CActiveFile a;

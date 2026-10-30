@@ -7,13 +7,13 @@ struct CActiveFile {
 void __fastcall CActiveFile_base(CActiveFile* self);
 
 // cdecl free function at 0xbfea14
-extern "C" void free_func(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall OnReadFinished(CActiveFile* self)
 {
     CActiveFile_base(self);
     void* p = self->field0;
     if (p) {
-        free_func(p);
+        free(p);
     }
 }

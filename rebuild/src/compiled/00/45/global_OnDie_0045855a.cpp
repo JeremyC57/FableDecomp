@@ -18,7 +18,7 @@ class CTCInventoryItem
 };
 
 // cdecl free-style callee (relocation-masked target)
-extern "C" void __cdecl engine_free_0045855a(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 // base-class OnDie tail-called with __fastcall (this in ecx) -> model as __fastcall(this)
 
@@ -27,7 +27,7 @@ void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* thisptr)
     void* p = thisptr->m_ptr;
     if (p != 0)
     {
-        engine_free_0045855a(p);
+        free(p);
     }
     // tail call to base class OnDie with same this
     ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();

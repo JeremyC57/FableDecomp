@@ -18,13 +18,13 @@ struct CActiveFile
 };
 
 // cdecl callee; caller pushes the arg and cleans it (pop ecx).
-extern "C" void FABLE_CDECL sub_7a22b9(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void FABLE_FASTCALL OnReadFinished_0045c75b(CActiveFile* thisptr)
 {
     void* p = thisptr->m_ptr;
     if (p)
     {
-        sub_7a22b9(p);
+        free(p);
     }
 }

@@ -26,7 +26,7 @@ class CProcessedInput {
 public:
     void SetHandled();                             // 0x00A0D390
 };
-float __cdecl ceil(float value);                   // 0x00689370
+float __cdecl floor(float value);                  // 0x00689370 (float overload of MSVCR71 floor; first landed as ceil)
 namespace NUISystem {
 class CManager {
 public:
@@ -165,7 +165,7 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
         return;
     }
     if (IsEventGameAction(0x65, event)) {
-        NUISystem::CManager::GetInstance()->ScrollMenu((long)ceil(event.GetWheelDelta() * 0.008333334f));
+        NUISystem::CManager::GetInstance()->ScrollMenu((long)floor(event.GetWheelDelta() * 0.008333334f));
         processed.SetHandled();
     }
 }

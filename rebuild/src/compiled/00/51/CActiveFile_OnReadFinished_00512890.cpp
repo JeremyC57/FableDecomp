@@ -7,12 +7,12 @@ struct CActiveFile {
 };
 
 extern "C" void __fastcall base_510d40(CActiveFile* self);   // 00510d40 thiscall
-extern "C" void __cdecl free_bfea14(void* p);                // 00bfea14 cdecl
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     base_510d40(self);
     void* q = self->p;
     if (q)
-        free_bfea14(q);
+        free(q);
 }

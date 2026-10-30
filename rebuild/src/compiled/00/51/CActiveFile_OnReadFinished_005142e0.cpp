@@ -4,7 +4,7 @@
 //   push esi; mov esi,ecx; call base(this); mov esi,[esi];
 //   test esi,esi; je +; push esi; call free; add esp,4; pop esi; ret
 
-void my_free(void*);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 struct CActiveFile;
 
@@ -20,5 +20,5 @@ void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
     CActiveFile_base_00510d40(self);
     void* p = self->buffer;
     if (p)
-        my_free(p);
+        free(p);
 }

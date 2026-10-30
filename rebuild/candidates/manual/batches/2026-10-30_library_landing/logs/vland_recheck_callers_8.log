@@ -1,0 +1,8 @@
+addr       parity           behav  name
+0040d2a0   WARN RELOC_NAME: ??4CCountedUserProfileManager@@QAEXPAVCUserProfileManager@@@Z -> 0040f1b0 labelled 'CCountedPointer_0040d830::Reset'
+0040d2a0   RELOCATION_MATCH PASS   Get
+0040d400   RELOCATION_MATCH PASS   SetProfileName
+
+WINS: 2
+  0040d2a0 RELOCATION_MATCH CTBaseSingleton<CUserProfileManager>::Get
+  0040d400 RELOCATION_MATCH CUserProfileManager::SetProfileName

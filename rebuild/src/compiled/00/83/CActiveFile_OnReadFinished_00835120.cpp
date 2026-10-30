@@ -4,7 +4,7 @@
 struct CActiveFile;
 
 void __fastcall CActiveFile_sub_834F90(CActiveFile* self);  // 0x00834F90 __fastcall
-void  __cdecl  free_helper(void* p);                        // 0x00BFEA14 cdecl
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 struct CActiveFile
 {
@@ -16,5 +16,5 @@ void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
     CActiveFile_sub_834F90(self);
     void* p = self->m_ptr;
     if (p)
-        free_helper(p);
+        free(p);
 }

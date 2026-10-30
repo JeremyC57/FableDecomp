@@ -27,12 +27,12 @@ struct CActiveFile
 extern void FABLE_FASTCALL CActiveFile_call1(void* thisp, int edx, char* p);
 
 // call2: __cdecl free function taking field_0 as a stack arg (pop ecx cleanup).
-extern void FABLE_CDECL CActiveFile_call2(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void FABLE_FASTCALL CActiveFile_OnReadFinished(CActiveFile* thisptr)
 {
     char local;
     CActiveFile_call1(thisptr->field_0, thisptr->DstFileHandle, &local);
     if (thisptr->field_0 != 0)
-        CActiveFile_call2(thisptr->field_0);
+        free(thisptr->field_0);
 }

@@ -4,7 +4,7 @@
 // push esi; call 0xbfea14 (free); add esp,4; pop esi; ret
 
 void __fastcall base_helper_850280(void* self);   // __fastcall void(this)
-void __cdecl free_bfea14(void* p);                 // cdecl free-like
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 struct CActiveFile
 {
@@ -16,5 +16,5 @@ void __fastcall CActiveFile_OnReadFinished(CActiveFile* self, int /*edx*/)
     base_helper_850280(self);
     void* p = self->m_buf;
     if (p)
-        free_bfea14(p);
+        free(p);
 }

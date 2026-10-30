@@ -15,9 +15,11 @@ Counts:
   genuine / retail_asm / toolchain_library / asm_bake  purity class of each landed row's source (crawl/purity.py);
                           retail_asm and toolchain_library (VC7.1 library bytes, docs/pipeline/LIBRARY_SIGNATURES.md)
                           count with the genuine rows
+  library_source          genuine rows whose source is a VC7.1 compile of vendor (CRT) source that byte-matches the
+                          library object retail linked: they carry `// Library: <lib>(<member>) <symbol>`
   landed_genuine_known / landed_genuine_original
   matched_bytes / matched_bytes_genuine   retail bytes covered by landed rows (catalog row lengths)
-  unlanded_bytes_estimate  known functions not landed, each sized as the gap to the next known function start
+  unlanded_bytes_estimate  known functions not landed, each sized as the gap to the next known function start, capped at 64 KB (unlanded_gap_cap; unlanded_gaps_capped counts the caps)
                           (includes alignment padding and any data between functions, so it is an upper bound)
   text_bytes              retail .text VirtualSize (rebuild/manifest/text_section.json)
 The catalog does not record MATCH vs RELOCATION_MATCH per row, so these counts are the two grades together.
@@ -66,6 +68,7 @@ def main() -> int:
             if r.get("agent_source", "") not in ("gapscan", "boundary"):
                 original.add(a)
     kinds = {}
+    library_source = set()
     missing = 0
     for a in catalog:
         rel = sources.get(a)
@@ -77,7 +80,10 @@ def main() -> int:
             missing += 1
             kinds[a] = "missing_source"
             continue
-        kinds[a] = purity.classify(p.read_text(encoding="utf-8", errors="ignore"))
+        text_a = p.read_text(encoding="utf-8", errors="ignore")
+        kinds[a] = purity.classify(text_a)
+        if kinds[a] == "genuine" and re.search(r"^// Library: \S+\(.+\) \S+", text_a, re.M):
+            library_source.add(a)
     genuine = {a for a, k in kinds.items() if purity.is_genuine_kind(k)}
     out = {
         "catalog_rows": len(catalog),
@@ -91,6 +97,7 @@ def main() -> int:
         "retail_asm": sum(1 for k in kinds.values() if k == "retail_asm"),
         "toolchain_library": sum(1 for k in kinds.values() if k == "toolchain_library"),
         "asm_bake": sum(1 for k in kinds.values() if k in ("naked_asm", "emit_bake")),
+        "library_source": len(library_source),
         "missing_source": missing,
         "matched_bytes": sum(catalog.values()),
         "matched_bytes_genuine": sum(n for a, n in catalog.items() if a in genuine),
@@ -98,14 +105,25 @@ def main() -> int:
     starts.sort()
     ts = json.loads((REBUILD / "manifest" / "text_section.json").read_text(encoding="utf-8"))
     text_end = int(ts["virtual_address"], 16) + ts["size"]
+    # Each unlanded function is sized as the gap to the next known start, capped at 64 KB: an unlanded start
+    # followed by a long run of unknown bytes (0x00F3FD50 -> 0x01210A00 before 2026-10-30 was 2.95 MB) is not one
+    # function, so an uncapped gap inflates the estimate; real retail functions stay well under the cap.
+    gap_cap = 0x10000
     left = 0
+    capped = 0
     for i, va in enumerate(starts):
         a = f"{va:08x}"
         if a in catalog:
             continue
         nxt = starts[i + 1] if i + 1 < len(starts) else text_end
-        left += max(0, min(nxt, text_end) - va)
+        gap = max(0, min(nxt, text_end) - va)
+        if gap_cap and gap > gap_cap:
+            gap = gap_cap
+            capped += 1
+        left += gap
     out["unlanded_bytes_estimate"] = left
+    out["unlanded_gap_cap"] = gap_cap
+    out["unlanded_gaps_capped"] = capped
     out["text_bytes"] = ts["size"]
     dest = REBUILD / "manifest" / "landed_metrics.json"
     dest.write_text(json.dumps(out, indent=2) + "\n", encoding="utf-8")

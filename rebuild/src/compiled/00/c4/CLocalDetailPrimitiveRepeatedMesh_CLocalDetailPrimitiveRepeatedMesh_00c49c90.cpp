@@ -4,7 +4,8 @@
 // EH state 0 is entered once the base exists (its destructor is out of line); the body stores the
 // count, allocates the index block through the `__cdecl` allocator and zeroes two members. The
 // class comes from the manifest label; the base and allocator are descriptive.
-void* __cdecl Allocate_00bfeb22(unsigned int size);   // 0x00BFEB22
+
+void* __cdecl operator new[](unsigned int size);      // 0x00BFEB22 MSVCR71 ??_U@YAPAXI@Z (import thunk); VC7.1 predeclares only scalar new/delete
 
 struct CLocalDetailPrimitiveBase_00c49c90 {
     unsigned char _body[0x18];
@@ -23,7 +24,7 @@ struct CLocalDetailPrimitiveRepeatedMesh : CLocalDetailPrimitiveBase_00c49c90 {
 CLocalDetailPrimitiveRepeatedMesh::CLocalDetailPrimitiveRepeatedMesh(long count)
 {
     m_count = count;
-    m_pIndices = Allocate_00bfeb22(count * 4);
+    m_pIndices = ::operator new[](count * 4);              // 0x00BFEB22 MSVCR71 operator new[] (import thunk)
     m_used = 0;
     m_pMesh = 0;
 }

@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-void __cdecl FreeThing(void* p);
 
 class CTCInventoryItem
 { public:
@@ -14,11 +13,15 @@ static int g_freed = 0;
 static void* g_freedPtr = 0;
 static int g_baseCalled = 0;
 
-void __cdecl FreeThing(void* p) { g_freed++; g_freedPtr = p; }
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
+{
+    if (!g_free_hook) return; g_freed++; g_freedPtr = p; }
 void CTCInventoryItem::BaseOnDie() { g_baseCalled++; }
 
 int main()
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     // Case 1: m_thing non-null -> free + base
     int dummy = 123;
     CTCInventoryItem a;

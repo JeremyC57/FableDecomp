@@ -159,6 +159,9 @@ def main() -> int:
         "— landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine)": (
             f"{int(coverage.get('landed_toolchain_library', 0)):,}"
         ),
+        "— landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine)": (
+            f"{int(coverage.get('landed_library_source', 0)):,}"
+        ),
         "— landed hand-written asm bakes (grade `asm_bake`, **not** counted as reconstruction)": (
             f"{int(coverage['landed_asm_bake']):,}"
         ),

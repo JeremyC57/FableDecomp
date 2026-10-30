@@ -11,13 +11,13 @@ struct CActiveFile
 };
 
 // relocation-masked engine callee (operator delete / free-like)
-extern "C" void __cdecl fable_free_461009(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* thisptr)
 {
     void* p = thisptr->ptr;   // mov eax,[ecx]
     if (p != 0)               // test eax,eax / je
     {
-        fable_free_461009(p); // push eax / call ; pop ecx
+        free(p); // push eax / call ; pop ecx
     }
 }

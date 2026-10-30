@@ -8,7 +8,6 @@ struct CActiveFile
 };
 
 extern void FABLE_FASTCALL CActiveFile_call1(void* thisp, int edx, char* p);
-extern void FABLE_CDECL CActiveFile_call2(void* p);
 void FABLE_FASTCALL CActiveFile_OnReadFinished(CActiveFile* thisptr);
 
 static int g_call1_seen_edx = 0;
@@ -22,14 +21,17 @@ void FABLE_FASTCALL CActiveFile_call1(void* thisp, int edx, char* p)
     g_call1_seen_edx = edx;
 }
 
-void FABLE_CDECL CActiveFile_call2(void* p)
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
 {
+    if (!g_free_hook) return;
     (void)p;
     g_call2_hits++;
 }
 
 int main(void)
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     int dummy = 0;
 
     // field_0 non-null: both calls fire.

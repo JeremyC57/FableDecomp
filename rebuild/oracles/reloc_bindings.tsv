@@ -23,7 +23,6 @@ _DAT_0143e990	0143e990	00401296
 _DAT_0143e9a0	0143e9a0	00401296
 ___dllonexit	004013de	00401296
 __imp__CrtOnExit	01440170	00401296
-__onexit_impl	00401296	004012bc
 ?__imp_free_01440190@@3P6AXPAX@ZA	01440190	00401356
 __controlfp	004013e4	0040135c
 N_0099b720	0099b720	00401690
@@ -136,7 +135,6 @@ _free	00bfea14	00408900
 ?Save@CUserProfileManager@@QAEXXZ	0040a740	0040b690
 ??0CUserProfileManager@@QAE@XZ	0040cec0	0040d2a0
 ??4CCountedUserProfileManager@@QAEXPAVCUserProfileManager@@@Z	0040f1b0	0040d2a0
-?FableUserProfileManagerAllocate@@YAPAXI@Z	00bfea1a	0040d2a0
 ?g_CUserProfileManagerSingleton_013B7D4C@@3UCCountedUserProfileManager@@A	013b7d4c	0040d2a0
 ?Load@CUserProfileManager@@AAEXXZ	0040d350	0040d400
 ?Save@CUserProfileManager@@AAEXXZ	0040a740	0040d400
@@ -449,7 +447,6 @@ _Profile_Enter@4	00404500	00431242
 ?Flush@CDisplaySubsystem@@QAEXXZ	006404b0	004354c0
 ??_7CTBaseSingleton@@6B@	0123156c	004360f0
 ?Destroy_004361e0@@YIXPAX@Z	004361e0	004366b0
-_list_node_free	00bfea14	004367c0
 ?Destroy_00436ba0@@YIXPAX@Z	00436ba0	00436cc0
 ??_7CWStringParser@@6B@	01231718	00437260
 ?Set_00a0c8e0@CWStringParser@@QAEXPAG@Z	00a0c8e0	00437260
@@ -836,16 +833,13 @@ _FreeThing@4	00451b82	00453630
 ??_7CSpecialAbilitiesElectrocutedEffectDef@@6B@	01234744	00457e90
 ??_7CSpecialAbilitiesDrunkennessDef@@6B@	012347ac	00457efd
 ??_7CSpecialAbilitiesCreatureTintDef@@6B@	0123494c	004583bd
-_my_free	00bfea14	004583fa
 ??_7CSoundDef@@6B@	012349b4	00458413
 ??_7CAttackPatternDef@@6B@	01234a1c	004584c7
 ??_7CObjectFamilyDef@@6B@	01234a84	0045851d
-_engine_free_0045855a	00bfea14	0045855a
 ??1CMember_00451a85@@QAE@XZ	00451a85	004585bd
 ??1CMember_00451ac6@@QAE@XZ	00451ac6	004585bd
 ??_7CHitLocationDef@@6B@	01234b54	004585e0
 ??_7CCombatSequenceDef@@6B@	01234bbc	004588a5
-_free_field_54	00bfea14	004588e2
 ??_7CLightningDef@@6B@	01234c24	004588fb
 ??0CConversationCameraMap@@QAE@XZ	00454ad1	00458994
 ??_7CGlobalDef@@6B@	01234c8c	00458994
@@ -859,7 +853,6 @@ _free_field_54	00bfea14	004588e2
 ??1CHeroAbilityStatPackage@@QAE@XZ	00451763	00458b9d
 ??1CHeroAbilityStatWeight@@QAE@XZ	004517a4	00458b9d
 @AssassinRush_Sub0x68_Method@4	00451763	00458c66
-_AssassinRush_Free	00bfea14	00458c66
 ??_7CMeleeCombatKnockdownEffects@@6B@	01234dc4	00458c87
 ??_7CThingShotDef@@6B@	01234e2c	00458d3f
 ?WriteFloat@CDataOutputStream@@QAEXM@Z	00993ee0	00458f2b
@@ -875,8 +868,6 @@ _AssassinRush_Free	00bfea14	00458c66
 ??0CMember12_00453309@@QAE@XZ	00453309	0045a0ee
 ??_7CUILocaleGraphicsDef@NUISystem@@6B@	01235344	0045a0ee
 ?Sub3c_Notify@@YIXPAUSub3c@@@Z	0045180f	0045a133
-_sub_7a2e5d	00bfea14	0045bbb7
-_sub_7a2d30	00bfea14	0045bce4
 ?CActiveFile_CopyRange@@YIPAXHHPAXPBX@Z	0045bcc1	0045bcf2
 ??4CBase_00431ed0@@QAEAAU0@ABU0@@Z	00431ed0	0045bdb6
 ??4CBlendedEffectMap@@QAEAAU0@ABU0@@Z	0045c19f	0045c112
@@ -894,7 +885,6 @@ _sub_7a2d30	00bfea14	0045bce4
 ?Base454b4c@CTCKraken@@QAEXXZ	00454b4c	0045c5f6
 ?Sub_vtbl_1230ba0@@3PAXA	01230ba0	0045c5f6
 ??4CGenerateTypeVector@@QAEAAU0@ABU0@@Z	0045c64d	0045c614
-_sub_7a22b9	00bfea14	0045c75b
 ?Copy@SubEffectDef@@QAEXPBX@Z	0045c79e	0045c77f
 ?Clear@CRetailTree_0045c811@@QAEXXZ	00451046	0045c79e
 ?Copy@CRetailTree_0045c811@@QAEPAUnode@1@PAU21@0@Z	0045c811	0045c79e
@@ -963,11 +953,7 @@ _sub_7a22b9	00bfea14	0045c75b
 ??4CMusicSetEntryVector@@QAEAAU0@ABU0@@Z	00460eb5	00460a61
 ??4CReverbEnvironmentEntryVector@@QAEAAU0@ABU0@@Z	00461017	00460a61
 ??4CSoundBankEntryVector@@QAEAAU0@ABU0@@Z	00460aca	00460a61
-_engine_free_460c33	00bfea14	00460c33
-_CActiveFile_ReleaseBuffer	00bfea14	00460d67
-_fable_free_461009	00bfea14	00461009
 ?Copy@SubDef@@QAEXPBX@Z	00454886	004611a1
-_sub_79d6f9	00bfea14	0046131b
 ??4CAugmentationResponseMap@@QAEAAU0@ABU0@@Z	0046139b	00461344
 ??4CDamageAttributeMap@@QAEAAU0@ABU0@@Z	004614c0	00461344
 ?Clear@CRetailTree_0046140e@@QAEXXZ	00451240	0046139b
@@ -994,7 +980,6 @@ _sub_79d6f9	00bfea14	0046131b
 ?Copy@CRetailTree_00461cf3@@QAEPAUnode@1@PAU21@0@Z	00461c63	00461c63
 ?Copy@Member28@@QAEXPBU1@@Z	00461bb7	00461d2c
 ??4CActionRegisteredTypeVector@@QAEAAU0@ABU0@@Z	00461da1	00461d50
-_free_461eaf	00bfea14	00461eaf
 @CHeroCombatDef_Copy_impl@8	00461f7c	00461f77
 ?Clear@CRetailTree_0046225c@@QAEXXZ	00450e92	004621e9
 ?Copy@CRetailTree_0046225c@@QAEPAUnode@1@PAU21@0@Z	0046225c	004621e9
@@ -1005,19 +990,16 @@ _free_461eaf	00bfea14	00461eaf
 ?Buynode@CRetailTree_00462411@@QAEPAUnode@1@AAY03$$CBE@Z	00462411	00462381
 ?Copy@CRetailTree_00462411@@QAEPAUnode@1@PAU21@0@Z	00462381	00462381
 ??4CWeaponClassVector@@QAEAAU0@ABU0@@Z	004624c6	00462451
-?CActiveFile_ReleaseCallee@@YAXPAX@Z	00bfea14	00462595
 @BaseCopy@12	00431ed0	00462888
 ??4CBrainBehaviourVector@@QAEAAU0@ABU0@@Z	00462b4e	00462b15
 ??4CBrainUpdateZoneVector@@QAEAAU0@ABU0@@Z	00462cb0	00462b15
 ??4CBoolVector@@QAEAAU0@ABU0@@Z	00462e78	00462e2d
-_free_active_ptr	00bfea14	00462f42
 ?fable_init_462f50@@YIXPAX00PAD@Z	00462f1f	00462f50
 ?Clear@CRetailTree_00463057@@QAEXXZ	00450f50	00462fe4
 ?Copy@CRetailTree_00463057@@QAEPAUnode@1@PAU21@0@Z	00463057	00462fe4
 ?Buynode@CRetailTree_004630e7@@QAEPAUnode@1@AAY03$$CBE@Z	004630e7	00463057
 ?Copy@CRetailTree_004630e7@@QAEPAUnode@1@PAU21@0@Z	00463057	00463057
 ?Copy@SubVoices@@QAEXPBU1@@Z	0046313e	0046311f
-_freeBuffer_46324a	00bfea14	0046324a
 ?TransferMap@CPersistContext@@QAEXPBDAAUCAtmosGroupMap@@ABJ@Z	00463334	0046329e
 ??0CCharString@@QAE@ABV0@@Z	0099ec30	0046381b
 ??0CStringParserCommentList@@QAE@ABU0@@Z	00463871	0046381b
@@ -1040,7 +1022,6 @@ _freeBuffer_46324a	00bfea14	0046324a
 ?Copy@CRetailTree_004661c5@@QAEPAUnode@1@PAU21@0@Z	004661c5	00466152
 ?Buynode@CRetailTree_00466255@@QAEPAUnode@1@AAY03$$CBE@Z	00466255	004661c5
 ?Copy@CRetailTree_00466255@@QAEPAUnode@1@PAU21@0@Z	004661c5	004661c5
-?sub_cdecl_0046638b@@YAXPAX@Z	00bfea14	0046638b
 ?sub_fastcall_0046638b@@YIXPAX0PAD@Z	00450a14	0046638b
 ??_7CDialogueLayerDef@NSpeechGainManager@@6B@	0123543c	004663e7
 ??_7CIVCountedPointeeBase@@6B@	012354d0	0046649a
@@ -1073,16 +1054,13 @@ _freeBuffer_46324a	00bfea14	0046324a
 ?Buynode@CRetailTree_0046ece7@@QAEPAUnode@1@AAY03$$CBE@Z	0046ece7	0046ec57
 ?Copy@CRetailTree_0046ece7@@QAEPAUnode@1@PAU21@0@Z	0046ec57	0046ec57
 ?CActiveFile_call1@@YIXPAXHPAD@Z	00450a3c	0046ee0a
-?CActiveFile_call2@@YAXPAX@Z	00bfea14	0046ee0a
 ??_7CQuickAccessItemButtonGuiDef@@6B@	012360a4	0046ee2d
 ??0CSubDefInfoVector@@QAE@ABU0@@Z	0046eecf	0046ee98
 @sub_first@12	00450a58	0046f191
-_sub_second	00bfea14	0046f191
 ??_7CAbilityButtonGuiDef@@6B@	0123610c	0046f1b4
 @CAbilityButtonGuiDef_Copy_impl_0046f49f@8	0046f43e	0046f49f
 ??4CLensFlareElementDefVector@@QAEAAU0@ABU0@@Z	0046f565	0046f4f0
 ?CActiveFileReader_Notify@@YIXPAUCActiveFileReader@@HPAE@Z	00450a74	0046f68c
-?CActiveFile_ReleaseReader@@YAXPAUCActiveFileReader@@@Z	00bfea14	0046f68c
 @CLensFlareElementDef_Copy_impl@8	0046f6af	0046f77c
 ?TransferCombatType@CPersistContext@@QAEXPAH@Z	0046f8da	0046f7c8
 ?TransferLongVector@CPersistContext@@QAEXPAUNativeVector32@@@Z	00466a47	0046f7c8
@@ -1093,7 +1071,6 @@ _sub_second	00bfea14	0046f191
 ?Prev@CRetailTree_longkey_ins0046fbc9@@SAPAUnode@1@PAU21@@Z	004294e2	0046fb43
 ?Buynode@CRetailTree_longkey_buy0045c4d2@@QAEPAUnode@1@ABJ@Z	0045c4d2	0046fbc9
 ?Rebalance_0042971d@@YAXPAUnode@CRetailTree_longkey_buy0045c4d2@@PAPAU12@@Z	0042971d	0046fbc9
-_sub_free_46fedb	00bfea14	0046fedb
 ?Erase@CRetailVector_elem24@@QAEPAUSElement24@@PAU2@0@Z	00470019	0046ffd0
 ?Insert@CRetailVector_elem24@@QAEXPAUSElement24@@KABU2@@Z	0047005b	0046ffd0
 ?Transfer_00470301@CPersistContext@@QAEXPAJ@Z	00470301	004702c8
@@ -1110,11 +1087,9 @@ _sub_free_46fedb	00bfea14	0046fedb
 ?InsertRange@CRetailList_00471c19@@QAEXUSIterator_00471c19@@PAX1ABUSTag_00471c19@@@Z	00471c40	00471c19
 ??4CAttitudeVector@@QAEAAV0@ABV0@@Z	00471e44	00471e17
 ??4CParentDefClassBase@@QAEAAV0@ABV0@@Z	00431ed0	00471e17
-_sub_78cac2	00bfea14	00471f52
 ??0CAttitudeVector@@QAE@ABV0@@Z	00471f97	00471f60
 ??0CParentDefClassBase@@QAE@ABV0@@Z	0046ee98	00471f60
 ??_7COpinionDeedReactionDef@@6B@	012361dc	00471f60
-_sub_78C9DC_free	00bfea14	00472038
 ?Insert@CRetailTree_longkey_ins00472a05@@QAE?AUiterator@1@PAUnode@1@0ABJ0@Z	00472a05	0047297f
 ?Prev@CRetailTree_longkey_ins00472a05@@SAPAUnode@1@PAU21@@Z	004294e2	0047297f
 ?Buynode@CRetailTree_longkey_buy00466255@@QAEPAUnode@1@ABJ@Z	00466255	00472a05
@@ -1356,10 +1331,8 @@ N_006a7960	006a7960	004a9da0
 ??1StrRefB@@QAE@XZ	0099eae0	004b8110
 @CActiveFile_base@4	004b8050	004b8940
 ?CActiveFile_baseHandler@@YIXPAUCActiveFile@@@Z	004b8b70	004b99c0
-_free_impl	00bfea14	004b99c0
 ?CActiveFileBase_OnReadFinished@@YIXPAUCActiveFile@@@Z	004b8b70	004ba460
 ?CActiveFile_base_handler@@YIXPAUCActiveFile@@@Z	004b8bb0	004ba4c0
-?FreeHelper@@YAXPAX@Z	00bfea14	004ba4c0
 ?BaseReadDone@@YIXPAUCActiveFile@@@Z	004b8c00	004ba590
 ?BaseOnReadFinished@@YIXPAUCActiveFile@@@Z	004b8c50	004ba620
 ?BaseReadDone@@YIXPAUCActiveFileBase@@@Z	004b9da0	004ba720
@@ -1416,7 +1389,6 @@ _Unlink_0042a34e	0042a34e	004c3f90
 ?UnguardedInsertionSortAux_004c2c00@@YIXPAUSElement12@@00USCompare@@@Z	004c2c00	004c5770
 ?CActiveFile_base_004c5690@@YIXPAUCActiveFile@@@Z	004c5690	004c5990
 ?CActiveFile_BaseReadDone@@YIXPAX@Z	004c5690	004c5c60
-?FreePtr@@YAXPAX@Z	00bfea14	004c5c60
 ?FinalInsertionSort_004c5720@@YIXPAUSElement12@@0USCompare@@@Z	004c5720	004c5c80
 ?IntrosortLoop_004c59b0@@YIXPAUSElement12@@00JUSCompare@@@Z	004c59b0	004c5c80
 ?FinalInsertionSort_004c5770@@YIXPAUSElement12@@0USCompare@@@Z	004c5770	004c5ce0
@@ -1427,13 +1399,11 @@ _Unlink_0042a34e	0042a34e	004c3f90
 ?GetTimeScale@CBulletTime@@QAEMXZ	004c5fa0	004c6010
 ?g_bulletTimeRatioNumerator@@3MB	0122ded8	004c6010
 @sub_4c5fa0@4	004c5fa0	004c6060
-_sub_bfea70	00bfea70	004c6060
 ?UpdateMinMultiplier@CTimeMultiplierController_004c6140@@QAEXXZ	004c5f10	004c6140
 ?Erase@CRetailTree_004c6810@@QAEXPAUSNode@@@Z	004aa650	004c6810
 ?Insert@CRetailTree_004c6a30@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	004c6960	004c6a30
 ??_7CMessageBase@@6B@	012398f8	004c6fb0
 ?AreTasksEmpty@CTCScriptedControl@@QAE_NXZ	007122c0	004c70f0
-_helper_bfeb1c_00bfeb1c	00bfeb1c	004c73b0
 ?g_animGlobal@@3PAUGlobalObj@@A	013b8a1c	004c79a0
 ?g_root@@3PAUGlobalRoot@@A	013b8a1c	004c7a70
 ?g_animRoot@@3PAURootObj@@A	013b8a1c	004c7a80
@@ -2150,7 +2120,6 @@ __stricmp	00bfeba8	004fb880
 ?ReadFromFile@CFileFormatMapHeader@@QAEXPAVCAFile@@PAVCASuspendableProcess@@@Z	0051cbb0	00506bb0
 ??0CBase_009d5f80@@QAE@XZ	009d5f80	0050b420
 ??_7CWADBank@@6B@	012442dc	0050b420
-?NBalverineCombat_GetRandomValue@@YAHXZ	00bfeb16	0050e690
 ?Destroy_0050bcc0@@YIXPAX@Z	0050bcc0	0050f2b0
 ?GetRaw@CIntelligentPointer_CThingCreatureBase@@QAEPAVCThingCreatureBase@@XZ	00a01b50	0050f3d0
 ?SetRaw@CIntelligentPointer_CThingCreatureBase@@QAEXPAVCThingCreatureBase@@@Z	00a01b90	0050f3d0
@@ -2546,7 +2515,6 @@ _puts	00bfeaf2	00565360
 ?Erase@CRetailTree_erase00566110@@QAEXPAUnode@1@@Z	00566110	00567740
 _Rebalance_0042971d	0042971d	00567af0
 ?CActiveFile_FrameUpdate_566dc0@@YIXPAUCActiveFile@@@Z	00566dc0	00567f80
-?re_free@@YAXPAX@Z	00bfea14	00567f80
 ?Insert@CRetailTree_005685e0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	00568500	005685e0
 ?Erase@CRetailTree_erase00567980@@QAEXPAUnode@1@@Z	00567980	005689c0
 ?InsertN@CRetailVector_005697c0@@QAEXPAJKABJ@Z	005686c0	005697c0
@@ -2783,7 +2751,6 @@ _helper@16	005810da	00581266
 @FableFrontEndFirstStateStackTop@4	0059b039	005952c3
 @FableFrontEndManagerConstructInstance@4	005953e2	00595582
 _FableFrontEndManagerSingleton	013b8b5c	00595582
-_FrontEndHistoryDequeMapAllocate_0059a9e0	00bfea0e	0059a9e0
 @FrontEndHistoryDequeIteratorDistance_0059aae3@12	0059a8f3	0059aae3
 ?RegionHelper_4292c0@@YAHH@Z	004292c0	0059ab5f
 ?FreeElements@@YGXPAPAX0@Z	0059aa64	0059ac77
@@ -4090,7 +4057,6 @@ _HEALTH_UNSET	0122dedc	006a98f0
 ?erase@CObjectList@@QAE?AUiterator@1@U21@@Z	006c2ba0	006c2710
 ??4CRecordMap@@QAEAAU0@ABU0@@Z	006b9e00	006c27a0
 ??4CRecordVector@@QAEAAU0@ABU0@@Z	006c2d40	006c27a0
-_FreeReleased	00bfea14	006c2ce0
 ?Destroy_006c3a70@@YIXPAX@Z	006c3a70	006c3ac0
 ??_7CTCFadeOutAndIn@@6B@	0125da0c	006c3c30
 ?GFRemapToThingAfterSerialisation@@YIXPAV?$CIntelligentPointer@VCThing@@@@@Z	0088aff0	006c5680
@@ -4099,7 +4065,6 @@ _FreeReleased	00bfea14	006c2ce0
 ?DestroyDeed@CDeedOwner_006c6010@@QAEXJ@Z	006c59e0	006c6010
 ?RemoveCrimeFromVillage@CDeedOwner_006c6010@@QAEXJ@Z	006c5f80	006c6010
 ?RemoveDeedStillSearchingForWitnesses@CDeedOwner_006c6010@@QAEXJ@Z	006c5920	006c6010
-?CActiveFile_FreeThing@@YAXPAX@Z	00bfea14	006c7dc0
 ?IsAlliedWithFaction@CTCEnemy@@QBE_NJ@Z	0076c7f0	006c8c50
 ?GiveTutorialForCategory@CUserProfileManager@@QAE_NW4ETutorialCategory@@_N@Z	0040b790	006c9fa0
 ??_7CTCHero@@6B@	0125eb54	006c9fe0
@@ -4369,14 +4334,11 @@ __CIfmod	00bfeb28	006f99b0
 ?Erase@CRetailTree_erase0070adb0@@QAEXPAUnode@1@@Z	0070adb0	0070af90
 ?Insert@CRetailTree_0070afe0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	0070aea0	0070afe0
 ??_7CTCAnimationComplex@@6B@	012650a4	0070b3f0
-_free_func	00bfea14	0070b8f0
-?freeThing@@YAXPAX@Z	00bfea14	0070b910
 @base_70b8a0@4	0070b8a0	0070b990
 @CActiveFile_base_Cleanup@4	0070b8a0	0070b9e0
 ?clear@CRetailList_NavigatorQueue@@QAEXXZ	0070b8a0	0070ba00
 ?base_OnReadFinished_impl@@YIXPAUCActiveFile@@@Z	0070ba00	0070ba50
 @CActiveFile_base_0x70ba00@4	0070ba00	0070ba70
-_CActiveFile_free_0xbfea14	00bfea14	0070ba70
 ??1CAnimateThing@@QAE@XZ	0070ba90	0070bb80
 ?g_pEngineSingleton@@3PAUCEngineSingleton@@A	013b86a0	0070c0d0
 ?Insert@SubList@@QAEXPAUCCountedPointer@@@Z	00711800	0070d8c0
@@ -5326,7 +5288,6 @@ __CxxThrowException@8	00bfeb84	0081e960
 ??_7CAnimFilterAnyGroup@@6B@	0127261c	008350d0
 ?CActiveFile_sub_834F90@@YIXPAUCActiveFile@@@Z	00834f90	00835120
 ?CActiveFile_BaseOnReadFinished@@YIXPAX@Z	00834f90	00835390
-?CActiveFile_FreeBuffer@@YAXPAX@Z	00bfea14	00835390
 ?Insert@CRetailTree_00835560@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	00835270	00835560
 ?RemoveByKey@CSubObject@@QAEXH@Z	00836580	00835af0
 ??0CThingPhysical@@QAE@J@Z	005296b0	00835c20
@@ -5611,13 +5572,11 @@ _FableSpellWrap_880200@4	006af630	00880200
 ??_7CRadialBlurEntry@CScreenEffectPriorityStack@NScreenEffect@@6B@	01278050	00882c90
 ??_7CStackEntry@CScreenEffectPriorityStack@NScreenEffect@@6B@	01277ff0	00882c90
 ?CActiveFile_Helper@@YIXPAX@Z	00882b80	008832a0
-?the_free@@YAXPAX@Z	00bfea14	008832a0
 ?Helper_00882c00@CActiveFile@@QAEXXZ	00882c00	00883320
 ?FreeTree_CTreeOwner_008834f0@CTreeOwner_008834f0@@QAEXPAUSNode@@@Z	008834f0	008834f0
 ?SetByPassColorFilter@CTCGraphicAppearance@@QAEX_N@Z	004bfb00	00883aa0
 ?sub_882b80@@YIXPAX@Z	00882b80	00883c00
 ?BaseOnReadFinished@CActiveFileBase@@QAEXXZ	00882c00	00883c80
-?ExternFree@@YAXPAX@Z	00bfea14	00883c80
 ?Erase@CRetailTree_erase00882bc0@@QAEXPAUnode@1@@Z	00882bc0	00883d60
 ??_7CDisplacementMonochromeEffectColourEntry@@6B@	01277ff8	00883f10
 ?Erase@CRetailTree_erase008834f0@@QAEXPAUnode@1@@Z	008834f0	008842d0
@@ -6088,7 +6047,6 @@ _GetTheme@4	0044c6b0	0088ffb0
 ?SetMorality@CGSITheftMoralityStats@@QAEXJ@Z	0057c2e6	0089a070
 ?SetMorality@CGSIPicklockMoralityStats@@QAEXJ@Z	0057c2e6	0089a0e0
 ?CalcPct@@YIJPAX@Z	0057a57a	0089a210
-?Finalize@@YAJXZ	00bfea70	0089a210
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0089a210
 ?Iface_Do@@YIXPAUCKillInterface@@UCKillInteger@@@Z	005d66ba	0089a270
 ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ	00487dc0	0089a270
@@ -7624,7 +7582,6 @@ __imp__SetPriorityClass@8	0143fd70	009a59a0
 ?Write@CFileDataOutputStream@@QAEXPBXJ@Z	00994480	009a7720
 ?g_retailBankMagic@@3QBEB	0129b004	009a7720
 ?g_emptyString@@3QBDB	0129aaf4	009a78d0
-_strcmp	00bfeba8	009a78d0
 ?_Erase@CBankTree@@QAEXPAUSBankNode@@@Z	009aa7c0	009a7990
 ??ACStringMap_009a8150@@QAEAAVCCharString@@ABV1@@Z	009ac700	009a8150
 ?Initialise@CClass_009a9930@@QAEXXZ	0099e4b0	009a9930
@@ -7636,7 +7593,6 @@ _strcmp	00bfeba8	009a78d0
 ?Cleanup@CActiveFile@@QAEXXZ	009aae50	009ab750
 ?Erase@CRetailTree_erase009aa830@@QAEXPAUnode@1@@Z	009aa830	009ab770
 ?Erase@CRetailTree_erase009aa880@@QAEXPAUnode@1@@Z	009aa880	009ab7c0
-_freefn	00bfea14	009ac2b0
 ?WriteCBYTE@CDataOutputStream@@QAEXD@Z	00993e50	009acab0
 ?LowerBound@CFactionMap@@QAEPAUSEntry@1@PBK@Z	009b2290	009ad2e0
 _sub_9ad2e0@4	009ad2e0	009ad390
@@ -7684,7 +7640,6 @@ _sub_9ad2e0@4	009ad2e0	009ad390
 ??_7CThreadedFileCallback@@6B@	0129b388	009bdbe0
 ?Release@SubA@@QAE_JXZ	0099aed0	009bde70
 ?Release@SubB@@QAE_JXZ	0099e4b0	009bde70
-?some_free@@YAXPAX@Z	00bfea14	009be190
 ??_7CVertexShader@@6B@	0129b3d0	009be1e0
 ?FableFindFormatInfoIndexFromD3DFormat_009E3620@@YIHH@Z	009e3620	009be420
 ?g_FablePixelFormatInfoTable_0129BA40@@3PAUFablePixelFormatInfo@@A	0129ba40	009be420
@@ -7749,7 +7704,6 @@ __imp__WaitForSingleObjectEx@12	0143fe08	009c31e0
 __imp__GlobalAlloc@8	0143fdd4	009c5310
 ?InitBuffers@CFileInstaller@@QAEXPAXJ@Z	009c5310	009c5650
 ?Destroy_009c6640@@YIXPAX@Z	009c6640	009c6a70
-?freemem@@YAXPAX@Z	00bfea14	009c6ec0
 ??0?$CRetailVector@E@@QAE@ABU0@@Z	005290e0	009c7060
 ??_7CACompressor_Retail@@6B@	0129b424	009c7060
 ??_7CCompressorZlib_Retail@@6B@	01245974	009c7060
@@ -7888,7 +7842,6 @@ __imp__InitializeCriticalSection@4	0143fee4	009d5eb0
 ?Erase@CRetailTree_erase009d7430@@QAEXPAUnode@1@@Z	009d7430	009d7b80
 ?Insert@CRetailTree_009d7cf0@@QAEPAUSIterator@@PAU2@PAUSNode@@1ABUSValue@@1@Z	009d7990	009d7cf0
 ?Helper_9d7db0@CActiveFile@@QAEXXZ	009d7db0	009d7fa0
-_EngineFree_bfea14	00bfea14	009d7fa0
 ?Override_009d8180@CMulti_009d8180@@UAEXXZ	009d8180	009d80a0
 ?g_pendingFlag_013964a8@@3_NA	013964a8	009d81e0
 ?FreeTree_CTreeOwner_009d8460@CTreeOwner_009d8460@@QAEXPAUSNode@@@Z	009d8460	009d8460
@@ -7931,7 +7884,6 @@ __imp__timeGetTime@0	014404b4	009e1cb0
 ??_7CMaintainedEvent@@6B@	0129c0e0	009e45b0
 @FableMemberDtor_009e45d0@4	00a03b30	009e45d0
 ?helper@CActiveFile@@QAEXXZ	009e4710	009e4830
-_freefn_bfea14	00bfea14	009e4830
 ?Insert@CKeyedOwner_009e4aa0@@QAE?AUCHandle_009e4aa0@@UCKey_009e4aa0@@@Z	009e4a20	009e4aa0
 __wchdir	00bfeafe	009e4ae0
 __imp__GetLastError@0	0143fd58	009e4b70
@@ -7955,7 +7907,6 @@ __imp__SystemTimeToFileTime@8	0143fd4c	009e9d40
 ?g_prog@@3PAUProg@@A	013caa38	009e9f20
 ?g_mgr_9e9f90@@3PAUM@@A	013caa38	009e9f90
 ?g_9e9fb0@@3PAUGI2@@A	013caa38	009e9fb0
-?FableOperatorDelete@@YAXPAX@Z	00bfe9bc	009e9fd0
 ?g_FableProgressDisplayObject_013CAA38@@3PAUCProgressDisplay@@A	013caa38	009e9fd0
 ?g_FableProgressDisplayReference_013CAA3C@@3PAUFableReferenceCount@@A	013caa3c	009e9fd0
 ??_7CGenericVar@@6B@	0129c3e4	009ea230
@@ -8031,13 +7982,10 @@ _D3DXLoadSurfaceFromFileW@32	00bfefbc	009f2dd0
 ??_7CGraphicBankManager@@6B@	0129c7e4	009f8690
 ?clear@list@@QAEXXZ	009f89b0	009f86c0
 ?sub_9f89b0@@YIXPAX@Z	009f89b0	009f8a90
-_FreeIt	00bfea14	009f8ad0
-?ActiveFileFree@@YAXPAX@Z	00bfea14	009f9c20
 ?ProcessReadDone@CActiveFile@@QAEXXZ	009f9b30	009f9c20
 ??_7CRenderTarget@@6B@	0129c800	009f9cd0
 ??0CSurface@@QAE@ABV0@@Z	009f2d60	009f9e00
 ?InitialiseFromTextureMipmap@CSurface@@QAEXPAUIDirect3DSurface9@@@Z	009f2f10	009f9e00
-?sub_bfefce@@YGXPAXHKK@Z	00bfefce	009f9e60
 ?GetColourDepth@CPixelFormatByteLengthView@@QBEIXZ	009e3820	009f9ee0
 ?Initialise@CPixelFormatByteLengthView@@QAEXI@Z	009e3830	009f9ee0
 ?Swizzle@CSurface@@QAEXK@Z	009f4330	009f9fa0
@@ -8121,7 +8069,6 @@ __imp__TryEnterCriticalSection@4	0143fd30	00a02140
 ??_7CMeshBankManager@@6BCMeshBankListener@@@	0129c980	00a0a110
 ?clear@CBankInfoList@@QAEXXZ	00a0a720	00a0a150
 ?Notify@CActiveFile@@QAEXXZ	00a0a720	00a0a840
-_freX	00bfea14	00a0a840
 ?PreFinish@CActiveFile@@QAEXXZ	00a0a720	00a0a880
 ??_7CSystemFont@@6B@	0129c998	00a0a8f0
 ?Initialise@CSystemFont@@QAE_NXZ	00a6c170	00a0a940
@@ -8158,7 +8105,6 @@ _iswdigit	00bfede2	00a0ce90
 ?Destroy_00a16270@@YIXPAX@Z	00a16270	00a16640
 ?Init@SubInit@@QAEXXZ	0099e4b0	00a16d50
 ??0SEntry@@QAE@ABU0@@Z	00a16960	00a17480
-_ReleaseBuf	00bfea14	00a17570
 ?g_navigationEpsilon_0129ba3c@@3MA	0129ba3c	00a18ea0
 ??_7CANavQuadTreeNode@@6B@	0129cbbc	00a19c00
 ??_7CSB@@6B@	0129cc1c	00a19d00
@@ -8368,7 +8314,6 @@ __TI1?AUCFibreException@@	013692f8	00a44740
 ?Destroy_00a51180@@YIXPAX@Z	00a51180	00a52be0
 ?Destroy_00a51190@@YIXPAX@Z	00a51190	00a52ce0
 ?Destroy_00a511a0@@YIXPAX@Z	00a511a0	00a52d90
-_ReleaseBuffer	00bfea14	00a544c0
 ?Erase@CRetailTree_erase00a54240@@QAEXPAUnode@1@@Z	00a54240	00a54950
 ?Override_00a555c0@CMulti_00a555c0@@UAEXXZ	00a555c0	00a55400
 ?g_C2DIntersectionTolerance@@3MA	0129ba3c	00a57ad0
@@ -8382,7 +8327,6 @@ _ReleaseBuffer	00bfea14	00a544c0
 ??_7CMemoryBlock@@6B@	0129d568	00a5c7e0
 ?Reset@CSimpleMemoryPool@@QAEXXZ	00a5c790	00a5c7e0
 ?CreateNewMemoryBlock@CSimpleMemoryPool@@QAEXK@Z	00a5c890	00a5c910
-?D3DXMatrixInverse@@YGPAUD3DXMATRIX@@PAU1@PAMPBU1@@Z	00bfefe0	00a5cb00
 ??_7CShaderResource@@6B@	0129d580	00a5d800
 ?CloseShaderBank@CShaderResource@@QAEXXZ	00a5d750	00a5d800
 ?DestroyRange@@YIXPAUCStreamInfo@@0ABUSNonscalarPtrIteratorTag@@@Z	00a5e900	00a5d800
@@ -10971,7 +10915,6 @@ _StopSource_00c49650@12	00c35c30	00c49650
 ?Pop@CFrameStack@@QAEPAUSFrame@@XZ	00c4a0e0	00c497e0
 ?ProcessMessage@CMailboxQueue@@QAEJPAX@Z	00c49b90	00c497e0
 ??0CLocalDetailPrimitiveBase_00c49c90@@QAE@XZ	00c1c810	00c49c90
-?Allocate_00bfeb22@@YAPAXI@Z	00bfeb22	00c49c90
 ??1CFirst_00c49d00@@QAE@XZ	00c1c820	00c49d00
 ??0CTrace_00c49ff0@@QAE@XZ	00c16750	00c49ff0
 ??1CString_00c49ff0@@QAE@XZ	00c0ba40	00c49ff0
@@ -12220,7 +12163,6 @@ _rand	00bfeb16	00d2c530
 ?g_scaled_0143e8c0@@3JA	0143e8c0	01224c40
 ?g_CCharString_0143e8ec@@3VCCharString@@A	0143e8ec	01224c50
 _FableThrow_1228ed8@16	00401400	01228ed8
-?AutoTinyOptionalTarget@@YAXPAX@Z	00bfea14	01228f14
 ?g_AutoTinyOptionalObject@@3PAXA	013b8b40	01228f14
 ?Erase_005e1f30@CRetailTree@@QAEXPAUSNode@@@Z	005e1f30	012290c0
 _g_BinaryTree_RefcountedNode_Deleter_012290c0	013b8c1c	012290c0
@@ -12889,7 +12831,6 @@ _s_oneOver360	01238e00	00878ce0
 ?IsInThirdPersonRangedMode@CThingCreatureBase@@QAE_NXZ	0068eb20	00688ba0
 ?PeekPControlledCreature@CPlayer@@QBEPBVCThingPlayerCreature@@XZ	00487dd0	0068fee0
 ?Quit@CTCFireheartMinigame@@QAEXXZ	007e7a40	007e7c00
-?sprintf@@YAHPADPBDZZ	00bfeb10	00ac4ec0
 ?GetCostToUpgradeTrainableStat@CTCHeroExperience_Calls@@QAEJW4EHeroTrainableStatType@@@Z	006d67b0	005721fa
 ?GetExperienceCostToUpgradeAbility@CTCInventoryAbilities_Calls@@QAEJW4EHeroAbility@@J_N@Z	005ee77c	005721fa
 ?GetTCHeroExperience@CTCInventoryExperience@@QAEPAUCTCHeroExperience_Calls@@XZ	0056ff3d	005721fa
@@ -15144,7 +15085,6 @@ __CItanh	00bfece2	008ee790
 ?SkipToItem@CStringParser@@QAE_NABVCCharString@@@Z	009b9c00	009bba40
 ??_7CPhysicsFacesSegmentLeaf@@6B@	0129dea4	00a86b30
 ?DoMission@CQ_DragonBossFightScript@NScript@@QAEXXZ	00d26190	00d255e0
-?rand@@YAHXZ	00bfeb16	00d26e60
 ?clear@CCutsceneArgMap@@QAEXXZ	009aace0	00e2a900
 ?clear@CCutsceneCastMap@@QAEXXZ	00cd3699	00e2a900
 ?g_DisplayHeight@NUISystem@@3MA	01375cd8	00543ee0
@@ -16496,7 +16436,6 @@ _LZSS_Decompress	00c069d0	00995fb0
 ?IsEventButtonPressed@CInputProcessQuestCompletionUI@@QAE_NABVCInputEvent@@@Z	00687a90	00691130
 ?IsEventButtonReleased@CInputProcessQuestCompletionUI@@QAE_NABVCInputEvent@@@Z	00687b30	00691130
 ?IsEventGameAction@CInputProcessQuestCompletionUI@@QAE_NJABVCInputEvent@@@Z	00687cf0	00691130
-?ceil@@YAMM@Z	00689370	00691130
 ?PostLoad@CWorld@@QAEXJ@Z	0049f180	00416953
 ?Register@CMainGameComponent@@QAEXPAUCRegistration@@@Z	004bbc00	00416953
 ?g_Registration@@3UCRegistration@@A	013b8674	00416953
@@ -18357,7 +18296,6 @@ _s_BlockCornerOffsets	01385818	0063aee0
 ?GetCurrentWorkingDirectory@ExternalRetry_00999620@@YI?AUCWideString@1@XZ	00997f80	00999620
 ?MakePath@ExternalRetry_00999620@@YI?AUCWideString@1@ABU21@000@Z	00997780	00999620
 ?PathExists@CAFile@ExternalRetry_00999620@@SI_NABUCWideString@2@@Z	00999230	00999620
-?_wsplitpath@ExternalRetry_00999620@@YAXPBGPAG111@Z	00bfed4c	00999620
 ??$__introsort_loop@U?$pair@IU?$pair@II@FableSort_009b7dd0@@@FableSort_009b7dd0@@UCKeyPairCompareLess@2@@FableSort_009b7dd0@@YIXPAU?$pair@IU?$pair@II@FableSort_009b7dd0@@@0@00HUCKeyPairCompareLess@0@@Z	009b7dd0	009b7dd0
 ?__partial_sort@FableSort_009b7dd0@@YIXPAU?$pair@IU?$pair@II@FableSort_009b7dd0@@@1@000UCKeyPairCompareLess@1@@Z	009b6ad0	009b7dd0
 ?__unguarded_partition@FableSort_009b7dd0@@YIPAU?$pair@IU?$pair@II@FableSort_009b7dd0@@@1@PAU21@0U21@UCKeyPairCompareLess@1@@Z	009b3800	009b7dd0
@@ -18626,11 +18564,6 @@ _lzo1x_999_compress	00c08130	00a99840
 ?ExpandPath@AFileSupport@@YI?AUCWideString@1@ABU21@0@Z	00998c90	009994a0
 ?GetCurrentWorkingDirectory@AFileSupport@@YI?AUCWideString@1@XZ	00997f80	009994a0
 ?GetItemFromPath@NFile@AFileSupport@@YI_NPBGKPAG@Z	00997880	009994a0
-?_chdrive@AFileSupport@@YAHH@Z	00bfed6a	009994a0
-?_getdrive@AFileSupport@@YAHXZ	00bfed70	009994a0
-?_wchdir@AFileSupport@@YAHPBG@Z	00bfeafe	009994a0
-?_wmkdir@AFileSupport@@YAHPBG@Z	00bfed64	009994a0
-?_wsplitpath@AFileSupport@@YAXPBGPAG111@Z	00bfed4c	009994a0
 ?AppendCharacter@CCharString@@QAEXD@Z	0099f180	00681ba0
 ?EmptyString@NCharStringPool@@3QBDB	0129aaf4	00681ba0
 ?_M_clear@CMusicSetEntryVector@@QAEXXZ	00461009	00460eb5
@@ -21698,7 +21631,6 @@ __imp__MulDiv@12	0143fee0	00ca5df0
 _IID_IBaseFilter	012a9aa4	00ca6110
 ?WaitDispatchingMessages@@YGKPAXK0I0@Z	00cb09a0	00ca6620
 ?SetRepaintStatus@CBaseRenderer@@QAEXH@Z	00ca4ea0	00ca6b80
-?CompatibleTimeSetEvent@@YGIIIP6GXIIKKK@ZKI@Z	00cb0c10	00ca6f90
 ?EndOfStreamTimer@@YGXIIKKK@Z	00ca6f80	00ca6f90
 ?NotifyEndOfStream@CBaseRenderer@@QAEJXZ	00ca4cc0	00ca6f90
 ?NonDelegatingQueryInterface@CUnknown@@UAGJABU_GUID@@PAPAX@Z	00caccb0	00ca7500
@@ -24483,7 +24415,6 @@ __imp__MultiByteToWideChar@24	0143fe74	00a10800
 ?erase@?$vector@VCFeatDef@@V?$allocator@VCFeatDef@@@std@@@std@@QAEPAVCFeatDef@@PAV3@0@Z	00f345f0	00f34580
 ?_M_fill_insert@?$vector@V?$CArray@G@@V?$allocator@V?$CArray@G@@@std@@@std@@QAEXPAV?$CArray@G@@IABV3@@Z	00f3f960	00f3faf0
 ?erase@?$vector@V?$CArray@G@@V?$allocator@V?$CArray@G@@@std@@@std@@QAEPAV?$CArray@G@@PAV3@0@Z	00f3f7c0	00f3faf0
-?Water_QueryType@@YAHPAVCEngineMap@@H@Z	00bfe94c	00401490
 ?GetEnginePrimitiveManager@@YIPAVCEnginePrimitiveManager@@XZ	00404a80	00401b80
 ?g_InitBase@@3VCInitBaseClass@@A	013b83d0	00401b80
 ?g_FableDisplayManager_013B8390@@3PAVCDisplayManager@@A	013b8390	004022b0
@@ -35228,3 +35159,12 @@ _FtoL	00c6b240	00c6b490
 _swd_initdict	00c06de0	00c06f30
 _swd_insertdict	00c06e50	00c06f30
 ?Find@CObjectMap_00c196a0@@QAEPAUCObject_00c196a0@@PBUSObjectKey_00c196a0@@@Z	00c196a0	00c11ac0
+__onexit	00401296	004012bc
+?CalcPct@@YIMPAX@Z	0057a57a	0089a210
+?floor@@YAMM@Z	00689370	0068ae30
+__wmkdir	00bfed64	009994a0
+__chdrive	00bfed6a	009994a0
+__getdrive	00bfed70	009994a0
+_D3DXFilterTexture@16	00bfefce	009f9e60
+_D3DXMatrixInverse@12	00bfefe0	00a5cb00
+_timeSetEvent@20	00cb0c10	00ca6f90

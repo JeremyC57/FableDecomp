@@ -1,0 +1,14 @@
+addr       parity           behav  name
+009994a0   WARN RELOC_NAME: ?GetCurrentWorkingDirectory@AFileSupport@@YI?AUCWideString@1@XZ -> 00997f80 labelled 'CAFile::GetCurrentPath'
+009994a0   WARN RELOC_NAME: ??BCWideString@AFileSupport@@QAEPBGXZ -> 0099af00 labelled 'CWideString::operator_const_wchar_ptr'
+009994a0   WARN RELOC_ALIAS: __wsplitpath -> 00bfed4c is the import thunk 'MSVCR71.DLL::_wsplitpath'
+009994a0   WARN RELOC_NAME: ??4CWideString@AFileSupport@@QAEAAU01@PBG@Z -> 0099b800 labelled 'CCharString::AssignFromWide'
+009994a0   WARN RELOC_NAME: ??BCWideString@AFileSupport@@QBEPBGXZ -> 0099af10 labelled 'CWideString::GetAsCharArray'
+009994a0   WARN RELOC_ALIAS: __getdrive -> 00bfed70 is the import thunk 'MSVCR71.DLL::_getdrive'
+009994a0   WARN RELOC_ALIAS: __chdrive -> 00bfed6a is the import thunk 'MSVCR71.DLL::_chdrive'
+009994a0   WARN RELOC_ALIAS: __wchdir -> 00bfeafe is the import thunk 'MSVCR71.DLL::_wchdir'
+009994a0   WARN RELOC_ALIAS: __wmkdir -> 00bfed64 is the import thunk 'MSVCR71.DLL::_wmkdir'
+009994a0   RELOCATION_MATCH PASS   CreateDirectoryW
+
+WINS: 1
+  009994a0 RELOCATION_MATCH CAFile::CreateDirectoryW

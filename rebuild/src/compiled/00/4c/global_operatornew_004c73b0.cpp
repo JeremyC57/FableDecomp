@@ -1,13 +1,13 @@
 #pragma optimize("s",on)
-// Leaf: operator_new
-// operator_new @ 004c73b0
-// push ecx ; call helper_bfeb1c ; pop ecx ; ret
-// __fastcall(size in ecx) -> restack as cdecl stack arg, cdecl cleanup via pop ecx
-typedef unsigned int size_type;
+// Leaf: DeleteArray_004c73b0
+// DeleteArray_004c73b0 @ 004c73b0 (catalog name _global::DeleteArray_004c73b0)
+// push ecx ; call 0x00BFEB1C ; pop ecx ; ret -- the pointer in ecx is handed to operator delete[]
+// (0x00BFEB1C is the MSVCR71 ??_V@YAXPAX@Z import thunk; the row was first landed as an allocator stand-in
+// `operator_new` calling an invented `helper_bfeb1c_00bfeb1c`).
 
-extern "C" void * __cdecl helper_bfeb1c_00bfeb1c(size_type n);
+void __cdecl operator delete[](void* p);           // 0x00BFEB1C MSVCR71 ??_V@YAXPAX@Z (import thunk); VC7.1 predeclares only scalar new/delete
 
-void * __fastcall operator_new(size_type n)
+void __fastcall DeleteArray_004c73b0(void* p)
 {
-    return helper_bfeb1c_00bfeb1c(n);
+    ::operator delete[](p);
 }

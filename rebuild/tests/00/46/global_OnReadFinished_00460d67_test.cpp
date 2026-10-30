@@ -6,19 +6,21 @@ struct CActiveFile
     void* m_ptr;
 };
 
-extern "C" void __cdecl CActiveFile_ReleaseBuffer(void* p);
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* thisptr);
 
 static int g_called = 0;
 static void* g_arg = 0;
-extern "C" void __cdecl CActiveFile_ReleaseBuffer(void* p)
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
 {
+    if (!g_free_hook) return;
     g_called++;
     g_arg = p;
 }
 
 int main()
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     CActiveFile a;
     int dummy = 42;
 

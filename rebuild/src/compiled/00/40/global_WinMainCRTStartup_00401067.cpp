@@ -1,4 +1,5 @@
 // WinMainCRTStartup() -- VC7.1 CRT GUI entry point: managed check, CRT/argv init, skip program name, call WinMain
+// Library: msvcrt.lib(build\intel\dll_obj\crtexew.obj) _WinMainCRTStartup
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00401067, 511 bytes (the PE entry point). crtexe.c built with _WINMAIN_ and
 // _MBCS for the msvcr71 DLL model, size-optimised (/O1): the __try/__except frame uses the shared helpers
 // __SEH_prolog 0x0040138C (push 74h ; push scopetable) / __SEH_epilog 0x004013C7.

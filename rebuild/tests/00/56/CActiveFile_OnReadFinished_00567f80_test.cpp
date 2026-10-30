@@ -6,12 +6,16 @@ static int g_frame_called = 0;
 static void* g_freed = (void*)0;
 
 extern void __fastcall CActiveFile_FrameUpdate_566dc0(CActiveFile* self) { g_frame_called++; (void)self; }
-extern void __cdecl re_free(void* p) { g_freed = p; }
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
+{
+    if (!g_free_hook) return; g_freed = p; }
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self);
 
 int main()
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     int dummy = 0;
     CActiveFile a; a.m0 = &dummy;
     CActiveFile_OnReadFinished(&a);

@@ -6,7 +6,6 @@ struct CActiveFile
     void* m_ptr;
 };
 
-extern "C" void FABLE_CDECL sub_7a22b9(void* p);
 
 void FABLE_FASTCALL OnReadFinished_0045c75b(CActiveFile* thisptr);
 
@@ -14,14 +13,17 @@ static int g_calls = 0;
 static void* g_last = 0;
 
 // Provide the callee for the test harness.
-extern "C" void FABLE_CDECL sub_7a22b9(void* p)
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
 {
+    if (!g_free_hook) return;
     g_calls++;
     g_last = p;
 }
 
 int main()
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     int sentinel = 42;
 
     // Case 1: null member -> callee must NOT be called.

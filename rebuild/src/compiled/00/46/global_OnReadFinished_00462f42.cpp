@@ -9,12 +9,12 @@ struct CActiveFile {
 };
 
 // cdecl callee taking the single pointer argument (address relocation-masked)
-extern "C" void __cdecl free_active_ptr(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall OnReadFinished_00462f42(CActiveFile* thisptr)
 {
     void* p = thisptr->ptr0;
     if (p != 0) {
-        free_active_ptr(p);
+        free(p);
     }
 }

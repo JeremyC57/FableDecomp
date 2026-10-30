@@ -34,7 +34,7 @@ extern void FABLE_FASTCALL CActiveFileReader_Notify_00450aea(CActiveFileReader* 
                                                     fable_u8* outByte);
 
 // free release helper (single stack arg, __cdecl)
-extern void FABLE_CDECL CActiveFile_ReleaseReader(CActiveFileReader* reader);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void FABLE_FASTCALL CActiveFile_OnReadFinished_471df4(CActiveFile* thisptr)
 {
@@ -44,5 +44,5 @@ void FABLE_FASTCALL CActiveFile_OnReadFinished_471df4(CActiveFile* thisptr)
 
     CActiveFileReader* r = thisptr->m_reader;
     if (r)
-        CActiveFile_ReleaseReader(r);
+        free(r);
 }

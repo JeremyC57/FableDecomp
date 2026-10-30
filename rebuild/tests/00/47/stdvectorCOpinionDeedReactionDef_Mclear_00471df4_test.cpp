@@ -12,7 +12,6 @@ struct CActiveFile
 extern void FABLE_FASTCALL CActiveFileReader_Notify_00450aea(CActiveFileReader* thisptr,
                                                     fable_i32 status,
                                                     fable_u8* outByte);
-extern void FABLE_CDECL CActiveFile_ReleaseReader(CActiveFileReader* reader);
 void FABLE_FASTCALL CActiveFile_OnReadFinished_471df4(CActiveFile* thisptr);
 
 static int g_notify = 0;
@@ -27,14 +26,18 @@ void FABLE_FASTCALL CActiveFileReader_Notify_00450aea(CActiveFileReader* thisptr
     if (outByte) *outByte = 0;
 }
 
-void FABLE_CDECL CActiveFile_ReleaseReader(CActiveFileReader* reader)
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* reader_v)
 {
+    if (!g_free_hook) return;
+    CActiveFileReader* reader = (CActiveFileReader*)reader_v;
     (void)reader;
     g_release += 1;
 }
 
 int main(void)
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     // Case 1: reader non-null -> notify + release called.
     CActiveFile a;
     a.m_reader = (CActiveFileReader*)0x1234;

@@ -68,5 +68,6 @@ int main()
         return 2;
 
     puts("FABLETLC_USER_PROFILE_SET_PROFILE_NAME_BEHAVIOR PASS");
+    puts("0040d400_TEST PASS");   // the catalog PassPattern
     return 0;
 }

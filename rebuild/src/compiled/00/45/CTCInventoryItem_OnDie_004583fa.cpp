@@ -11,11 +11,11 @@ class CTCInventoryItem { public:
     void* f44;
 };
 
-extern "C" void my_free(void* p);                        // cdecl free @ 0xbfea14
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall OnDie(CTCInventoryItem* self)
 {
     if (self->f44)
-        my_free(self->f44);
+        free(self->f44);
     ((CParentDefClassBase*)(self))->CParentDefClassBase::~CParentDefClassBase();
 }

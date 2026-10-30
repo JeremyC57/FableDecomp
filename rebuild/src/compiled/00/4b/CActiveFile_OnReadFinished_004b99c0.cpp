@@ -10,12 +10,12 @@ struct CActiveFile {
 void __fastcall CActiveFile_baseHandler(CActiveFile* self);
 
 // cdecl free @ 0xbfea14
-extern "C" void free_impl(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     CActiveFile_baseHandler(self);
     void* p = *(void**)self;
     if (p)
-        free_impl(p);
+        free(p);
 }

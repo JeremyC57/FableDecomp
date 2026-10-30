@@ -1,5 +1,6 @@
 // Grade: DIFFER(96v72) -- oracle short, not a code difference: RELOCATION_MATCH against the full 96 retail bytes 0x00BFEED8..0x00BFEF37 (body + the __finally block VC7.1 emits inside the same symbol, checked with qx.py); the catalog row stops at the body`s `ret 10h` (72). Re-cut to 96 to land; test in probe/00bfeed8_test.cpp (PASS).
 // __ehvec_dtor(void* ptr, size_t size, int count, void (*pDtor)(void*)) -- `eh vector destructor iterator'
+// Library: msvcrt.lib(build\intel\dll_obj\ehvecdtr.obj) ??_M@YGXPAXIHP6EX0@Z@Z
 // Retail 0x00BFEED8, 72 bytes (static CRT, ehvecdtr.cpp). Destroys `count` array elements of `size` bytes
 // last-to-first through the element destructor; if a destructor throws, the __finally block (the local
 // termination handler right after the body, 0x00BFEF20) hands the remaining elements to

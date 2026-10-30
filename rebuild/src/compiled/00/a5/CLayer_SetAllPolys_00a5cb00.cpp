@@ -6,7 +6,7 @@
 // determinant out-value is a zeroed float local. The catalog label (CLayer::SetAllPolys) is propagated: the
 // body is a 64-byte matrix's "set to inverse of" member, kept under the catalog name.
 struct D3DXMATRIX { float m[4][4]; };
-D3DXMATRIX* __stdcall D3DXMatrixInverse(D3DXMATRIX* out, float* determinant, const D3DXMATRIX* in);   // 0x00BFEFE0
+extern "C" D3DXMATRIX* __stdcall D3DXMatrixInverse(D3DXMATRIX* out, float* determinant, const D3DXMATRIX* in);   // 0x00BFEFE0
 struct CLayer {                                    // modelled as the 4x4 float matrix the body writes
     float m[4][4];
     void SetAllPolys(const CLayer& source);

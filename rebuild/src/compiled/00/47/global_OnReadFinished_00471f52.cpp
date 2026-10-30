@@ -13,13 +13,13 @@ struct CActiveFile
 };
 
 /* cdecl callee; single pointer arg (caller cleans stack via pop ecx). */
-extern "C" void __cdecl sub_78cac2(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* thisptr)
 {
     void* p = thisptr->ptr;
     if (p)
     {
-        sub_78cac2(p);
+        free(p);
     }
 }

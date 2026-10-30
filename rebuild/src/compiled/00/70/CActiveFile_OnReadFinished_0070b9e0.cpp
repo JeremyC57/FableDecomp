@@ -12,12 +12,12 @@ struct CActiveFile {
 extern "C" void __fastcall CActiveFile_base_Cleanup(CActiveFile* self);
 
 // free @ 0xbfea14, cdecl, one arg, add esp,4
-extern "C" void __cdecl fable_free(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall OnReadFinished(CActiveFile* self)
 {
     CActiveFile_base_Cleanup(self);
     void* p = self->buffer;
     if (p)
-        fable_free(p);
+        free(p);
 }

@@ -6,7 +6,11 @@ struct CActiveFile_obj { int dummy; };
 extern "C" void __fastcall sub_first(CActiveFile_obj* self, unsigned int a2, char* out) {
     (void)self; (void)a2; if (out) *out = 1;
 }
-extern "C" void sub_second(CActiveFile_obj* p) { if (p) p->dummy = 42; }
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p_v)
+{
+    if (!g_free_hook) return;
+    CActiveFile_obj* p = (CActiveFile_obj*)p_v; if (p) p->dummy = 42; }
 
 struct CActiveFile {
     CActiveFile_obj* m_obj;
@@ -16,6 +20,7 @@ struct CActiveFile {
 void __fastcall OnReadFinished_0046f191(CActiveFile* thisptr);
 
 int main() {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     CActiveFile_obj obj; obj.dummy = 0;
     CActiveFile f; f.m_obj = &obj; f.m_arg = 7;
     OnReadFinished_0046f191(&f);

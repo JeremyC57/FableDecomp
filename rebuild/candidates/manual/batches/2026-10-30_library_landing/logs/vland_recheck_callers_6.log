@@ -1,0 +1,7 @@
+addr       parity           behav  name
+00a7c0a0   RELOCATION_MATCH PASS   OperatorDelete_thunk_00a7c0a0
+00c0b900   RELOCATION_MATCH PASS   OperatorDelete_thunk_00c0b900
+
+WINS: 2
+  00a7c0a0 RELOCATION_MATCH _global::OperatorDelete_thunk_00a7c0a0
+  00c0b900 RELOCATION_MATCH _global::OperatorDelete_thunk_00c0b900

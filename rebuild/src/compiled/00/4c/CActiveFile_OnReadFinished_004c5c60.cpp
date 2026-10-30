@@ -11,12 +11,12 @@ struct CActiveFile {
 void __fastcall CActiveFile_BaseReadDone(void* self);
 
 // cdecl free function taking the +0 pointer
-void FreePtr(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     CActiveFile_BaseReadDone(self);
     void* p = self->p;
     if (p)
-        FreePtr(p);
+        free(p);
 }

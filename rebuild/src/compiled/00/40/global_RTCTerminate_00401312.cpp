@@ -1,4 +1,5 @@
 // _global::_RTC_Terminate() -- CRT run-time-check teardown: call every non-null callback in the .rtc$T table, each under its own __try/__except(EXCEPTION_EXECUTE_HANDLER)
+// Library: msvcrt.lib(..\build\intel\dll_obj\initsect.obj) __RTC_Terminate
 // Leaf: _RTC_Terminate
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00401312, 68 bytes. Callees: __SEH_prolog 0x0040138C,
 // __SEH_epilog 0x004013C7 (CRT), the scope table at 0x0122D040, table bounds 0x01369060/0x01369160.

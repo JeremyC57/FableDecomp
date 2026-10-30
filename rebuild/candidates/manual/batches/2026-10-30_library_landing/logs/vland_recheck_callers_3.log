@@ -1,0 +1,8 @@
+addr       parity           behav  name
+004c73b0   RELOCATION_MATCH PASS   DeleteArray_004c73b0
+00c49c90   WARN RELOC_NAME: ??0CLocalDetailPrimitiveBase_00c49c90@@QAE@XZ -> 00c1c810 labelled 'PKCCriticalSection::PKCCriticalSection'
+00c49c90   RELOCATION_MATCH PASS   CLocalDetailPrimitiveRepeatedMesh
+
+WINS: 2
+  004c73b0 RELOCATION_MATCH _global::DeleteArray_004c73b0
+  00c49c90 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::??0CLocalDetailPrimitiveRepeatedMesh@

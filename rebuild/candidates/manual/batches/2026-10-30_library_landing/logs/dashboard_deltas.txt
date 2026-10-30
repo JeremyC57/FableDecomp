@@ -1,0 +1,56 @@
+landed_metrics.json: git HEAD (ca802b46e) -> after this pass
+  asm_bake                             13 ->         13 +0
+  catalog_rows                      51845 ->      51955 +110
+  genuine                           51691 ->      51677 -14
+  known_functions                   57267 ->      57267 +0
+  landed_genuine_known              51800 ->      51910 +110
+  landed_genuine_original           44794 ->      44903 +109
+  landed_known                      51813 ->      51923 +110
+  landed_original                   44807 ->      44916 +109
+  library_source                     None ->          8 +8
+  matched_bytes                   5113924 ->    5115671 +1747
+  matched_bytes_genuine           5110055 ->    5111802 +1747
+  missing_source                        0 ->          0 +0
+  original_functions                49568 ->      49568 +0
+  retail_asm                          137 ->        137 +0
+  text_bytes                     14858408 ->   14858408 +0
+  toolchain_library                     4 ->        128 +124
+  unlanded_bytes_estimate         8127236 ->    5165821 -2961415
+
+README.md diff (HEAD -> after):
+73,74c73,74
+< | Landed byte-matching C++ (genuine) | **44,794 · 90.37%** |
+< | Retail function bytes reproduced | **5,110,055 · 38.60%** |
+---
+> | Landed byte-matching C++ (genuine) | **44,903 · 90.59%** |
+> | Retail function bytes reproduced | **5,111,802 · 49.74%** |
+78,79c78,79
+< Landed byte-matching C++ covers **90.37%** of the 49,568-function catalog by count
+< and **38.60%** of retail function bytes: the functions still to do are the large ones.
+---
+> Landed byte-matching C++ covers **90.59%** of the 49,568-function catalog by count
+> and **49.74%** of retail function bytes: the functions still to do are the large ones.
+96,99c96,99
+< | Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **51,845** |
+< | Reconstruction | Landed byte-matching genuine C++, original catalog | **44,794** (90.37%) |
+< | Reconstruction | Landed byte-matching genuine C++, all 57,267 known functions | 51,800 (90.45%) |
+< | Reconstruction | Retail function bytes reproduced by genuine C++ | 5,110,055 (38.60%) |
+---
+> | Reconstruction | Landed rows (VC7.1 MATCH or RELOCATION_MATCH **and** behaviour-gated) | **51,955** |
+> | Reconstruction | Landed byte-matching genuine C++, original catalog | **44,903** (90.59%) |
+> | Reconstruction | Landed byte-matching genuine C++, all 57,267 known functions | 51,910 (90.65%) |
+> | Reconstruction | Retail function bytes reproduced by genuine C++ | 5,111,802 (49.74%) |
+101c101,102
+< | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 4 |
+---
+> | Reconstruction | — landed rows that are toolchain/vendor library bytes (grade `toolchain_library`, counted as genuine) | 128 |
+> | Reconstruction | — landed VC7.1 compiles of vendor CRT source (`// Library:` line, counted as genuine) | 8 |
+119c120
+< because a structural checker accepted it. The 90.37% figure is intentionally the strict,
+---
+> because a structural checker accepted it. The 90.59% figure is intentionally the strict,
+
+NOTE unlanded_bytes_estimate -2,961,415 and 'Retail function bytes reproduced' 38.60% -> 49.74% are an estimator artifact:
+  landed_metrics.py sizes each unlanded known function as the gap to the next known start; 0x00F3FD50 (__aulldvrm, 149 bytes)
+  was followed by no known start until 0x01210A00, so its 'unlanded' size was ~2.96 MB. Landing the 149-byte row removed that gap
+  from the denominator. Real new bytes matched: +1,747.

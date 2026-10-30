@@ -44,7 +44,7 @@ class CProcessedInput {
 public:
     void SetHandled();                             // 0x00A0D390
 };
-float __cdecl ceil(float value);                   // 0x00689370
+float __cdecl floor(float value);                  // 0x00689370
 namespace NUISystem {
 class CManager {
 public:
@@ -179,7 +179,7 @@ void CInputProcessQuestCompletionUI::ProcessInput(const CInputEvent& event, CPro
         return;
     }
     if (IsEventGameAction(0x65, event)) {
-        NUISystem::CManager::GetInstance()->ScrollMenu((long)ceil(event.GetWheelDelta() * 0.008333334f));
+        NUISystem::CManager::GetInstance()->ScrollMenu((long)floor(event.GetWheelDelta() * 0.008333334f));
         processed.SetHandled();
     }
 }
@@ -210,7 +210,7 @@ void NUISystem::CManager::ScrollMenu(long amount) { ++g_scrolls; g_scrollAmount 
 void CTCQuestCompletionUI::Deactivate() { ++g_deactivated; }
 float CInputEvent::GetWheelDelta() const { return g_wheel; }
 void CProcessedInput::SetHandled() { ++g_handled; }
-float __cdecl ceil(float value) { g_lastWheelArg = value; long t = (long)value; if ((float)t < value) ++t; return (float)t; }
+float __cdecl floor(float value) { g_lastWheelArg = value; long t = (long)value; if ((float)t > value) --t; return (float)t; }
 
 static void Reset() { g_pressed = g_held = g_released = 0; g_action = -1; g_wheel = 0.0f; g_sends = 0; g_lastEvent = -1; g_handled = g_deactivated = g_scrolls = 0; g_scrollAmount = 0; }
 static void Run(CInputProcessQuestCompletionUI& ip, CInputEvent& ev, CProcessedInput& pi, int pressed, int held, int released, long action)
@@ -256,9 +256,9 @@ int main()
     Run(ip, ev, pi, 0, 0, 0, 0x47); CHECK(g_sends == 1 && g_lastEvent == 0x19 && g_handled == 1);
     CHECK(mgr.MousePosition.X == 123.5f && mgr.MousePosition.Y == -42.25f);
     CHECK(ev.Position.X == 123.5f && ev.Position.Y == -42.25f);
-    // wheel: ceil(delta / 120) lines
-    Reset(); g_action = 0x65; g_wheel = 230.0f; ip.ProcessInput(ev, pi); CHECK(g_scrolls == 1 && g_scrollAmount == 2 && g_handled == 1 && g_sends == 0);
-    Reset(); g_action = 0x65; g_wheel = -130.0f; ip.ProcessInput(ev, pi); CHECK(g_scrolls == 1 && g_scrollAmount == -1 && g_handled == 1);
+    // wheel: floor(delta / 120) lines
+    Reset(); g_action = 0x65; g_wheel = 230.0f; ip.ProcessInput(ev, pi); CHECK(g_scrolls == 1 && g_scrollAmount == 1 && g_handled == 1 && g_sends == 0);
+    Reset(); g_action = 0x65; g_wheel = -130.0f; ip.ProcessInput(ev, pi); CHECK(g_scrolls == 1 && g_scrollAmount == -2 && g_handled == 1);
     g_wheel = 0.0f;
     // nothing matched
     Run(ip, ev, pi, 0, 0, 0, 0x99); CHECK(g_sends == 0 && g_handled == 0 && g_scrolls == 0);

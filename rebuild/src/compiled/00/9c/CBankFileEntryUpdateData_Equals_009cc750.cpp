@@ -12,8 +12,7 @@
 // zeroing (no reload: the block pointer is read once).
 // Layout = Ego_r.pdb CBankFileEntryUpdateData: StateBlockCRC +0, Filenames +0xc (CSmallVector<CCharString,8>: Start +0,
 // Size +4 schar).
-extern "C" int __cdecl strcmp(const char* a, const char* b);   // 0x00BFEBA8
-#pragma function(strcmp)                           // a real call, as retail (the intrinsic expands inline)
+extern "C" int __cdecl _stricmp(const char* a, const char* b); // 0x00BFEBA8 MSVCR71 _stricmp (import thunk)
 void __cdecl operator delete(void* p);             // 0x00BFE9BC
 extern const char g_emptyString[];                 // "" @ 0x0129AAF4
 
@@ -79,7 +78,7 @@ bool CBankFileEntryUpdateData::Equals(const CArray<CCharString>& filenames, CCou
         return false;
     for (unsigned long i = 0; i < (unsigned long)filenames.size(); ++i) {
         const CCharString& mine = Filenames[i];
-        if (strcmp(mine.c_str(), filenames[i].c_str()) != 0)
+        if (_stricmp(mine.c_str(), filenames[i].c_str()) != 0)
             return false;
     }
     return true;

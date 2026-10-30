@@ -1,0 +1,20 @@
+{
+  "catalog_rows": 51955,
+  "known_functions": 57267,
+  "original_functions": 49568,
+  "landed_known": 51923,
+  "landed_original": 44916,
+  "landed_genuine_known": 51910,
+  "landed_genuine_original": 44903,
+  "genuine": 51677,
+  "retail_asm": 137,
+  "toolchain_library": 128,
+  "asm_bake": 13,
+  "library_source": 8,
+  "missing_source": 0,
+  "matched_bytes": 5115671,
+  "matched_bytes_genuine": 5111802,
+  "unlanded_bytes_estimate": 5165821,
+  "text_bytes": 14858408
+}
+wrote /tmp/claude-0/-home-user-FableDecomp/a013f3ec-d440-5b47-87a1-ed975cb80dfb/scratchpad/libsig2/repo/rebuild/COVERAGE.md

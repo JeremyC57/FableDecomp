@@ -25,7 +25,7 @@ class CCharString { public:
     ~CCharString();                                    // 0x0099EAE0
 };
 void operator delete(void* p);                          // 0x00BFE9BC (MSVCR71)
-int __cdecl rand();                                     // 0x00BFEB16
+extern "C" int __cdecl rand();                                     // 0x00BFEB16
 class CCPPointerInfo { public:                                 // CCountedPointer's shared block
     long RefCount;                                      // +0
     void (__fastcall* DeleteFunc)(void* data);          // +4

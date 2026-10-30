@@ -1,0 +1,268 @@
+addr	kind	lib/member/symbol	action	lib_verify	recheck
+00401284	first_pass	msvcrt.lib(MSVCR71.dll) _exit	kept (first pass)	MATCH	LIBRARY_MATCH
+0040128a	import_thunk	msvcrt.lib(MSVCR71.dll) __amsg_exit	landed	MATCH	LIBRARY_MATCH
+00401356	import_thunk	msvcrt.lib(MSVCR71.dll) __initterm	regraded	MATCH	LIBRARY_MATCH
+0040138c	first_pass	msvcrt.lib(build\intel\dll_obj\sehprolg.obj) __SEH_prolog	kept (first pass)	MATCH	LIBRARY_MATCH
+004013c7	first_pass	msvcrt.lib(build\intel\dll_obj\sehprolg.obj) __SEH_epilog	kept (first pass)	MATCH	LIBRARY_MATCH
+004013de	import_thunk	msvcrt.lib(MSVCR71.dll) ___dllonexit	regraded	MATCH	LIBRARY_MATCH
+004013e4	import_thunk	msvcrt.lib(MSVCR71.dll) __controlfp	landed	MATCH	LIBRARY_MATCH
+00bfe94c	import_thunk	msvcrt.lib(MSVCR71.dll) _wcscmp	landed	MATCH	LIBRARY_MATCH
+00bfe9bc	import_thunk	msvcrt.lib(MSVCR71.dll) ??3@YAXPAX@Z	regraded	MATCH	LIBRARY_MATCH
+00bfe9c2	import_thunk	msvcrt.lib(MSVCR71.dll) _strncpy	landed	MATCH	LIBRARY_MATCH
+00bfe9c8	coff_section	msvcrt.lib(build\intel\dll_obj\secchk.obj) _report_failure	landed	MATCH	LIBRARY_MATCH
+00bfe9f9	first_pass	msvcrt.lib(build\intel\dll_obj\secchk.obj) @__security_check_cookie@4	kept (first pass)	MATCH	LIBRARY_MATCH
+00bfea08	import_thunk	msvcrt.lib(MSVCR71.dll) __purecall	landed	MATCH	LIBRARY_MATCH
+00bfea0e	import_thunk	msvcrt.lib(MSVCR71.dll) _malloc	regraded	MATCH	LIBRARY_MATCH
+00bfea14	import_thunk	msvcrt.lib(MSVCR71.dll) _free	regraded	MATCH	LIBRARY_MATCH
+00bfea1a	import_thunk	msvcrt.lib(MSVCR71.dll) ??2@YAPAXI@Z	regraded	MATCH	LIBRARY_MATCH
+00bfea20	import_thunk	msvcrt.lib(MSVCR71.dll) _fclose	landed	MATCH	LIBRARY_MATCH
+00bfea26	import_thunk	msvcrt.lib(MSVCR71.dll) __wfopen	landed	MATCH	LIBRARY_MATCH
+00bfea30	coff_section	msvcrt.lib(build\intel\dll_obj\chkstk.obj) __chkstk	landed	MATCH	LIBRARY_MATCH
+00bfea70	coff_section	msvcrt.lib(build\intel\dll_obj\ftol2.obj) __ftol2	landed	MATCH	LIBRARY_MATCH
+00bfeae6	import_thunk	msvcrt.lib(MSVCR71.dll) _memmove	regraded	MATCH	LIBRARY_MATCH
+00bfeaec	import_thunk	msvcrt.lib(MSVCR71.dll) _abort	landed	MATCH	LIBRARY_MATCH
+00bfeaf2	import_thunk	msvcrt.lib(MSVCR71.dll) _puts	regraded	MATCH	LIBRARY_MATCH
+00bfeaf8	import_thunk	msvcrt.lib(MSVCR71.dll) _strncmp	landed	MATCH	LIBRARY_MATCH
+00bfeafe	import_thunk	msvcrt.lib(MSVCR71.dll) __wchdir	landed	MATCH	LIBRARY_MATCH
+00bfeb04	import_thunk	msvcrt.lib(MSVCR71.dll) _wcsncpy	landed	MATCH	LIBRARY_MATCH
+00bfeb0a	import_thunk	msvcrt.lib(MSVCR71.dll) _wcsncmp	landed	MATCH	LIBRARY_MATCH
+00bfeb10	import_thunk	msvcrt.lib(MSVCR71.dll) _sprintf	landed	MATCH	LIBRARY_MATCH
+00bfeb16	import_thunk	msvcrt.lib(MSVCR71.dll) _rand	landed	MATCH	LIBRARY_MATCH
+00bfeb1c	import_thunk	msvcrt.lib(MSVCR71.dll) ??_V@YAXPAX@Z	regraded	MATCH	LIBRARY_MATCH
+00bfeb22	import_thunk	msvcrt.lib(MSVCR71.dll) ??_U@YAPAXI@Z	regraded	MATCH	LIBRARY_MATCH
+00bfeb28	import_thunk	msvcrt.lib(MSVCR71.dll) __CIfmod	landed	MATCH	LIBRARY_MATCH
+00bfeb2e	import_thunk	msvcrt.lib(MSVCR71.dll) _wcsstr	landed	MATCH	LIBRARY_MATCH
+00bfeb34	import_thunk	msvcrt.lib(MSVCR71.dll) ___CxxFrameHandler	landed	MATCH	LIBRARY_MATCH
+00bfeb3a	import_thunk	msvcrt.lib(MSVCR71.dll) _strstr	regraded	MATCH	LIBRARY_MATCH
+00bfeb40	import_thunk	msvcrt.lib(MSVCR71.dll) __CIpow	landed	MATCH	LIBRARY_MATCH
+00bfeb50	coff_section	msvcrt.lib(build\intel\dll_obj\llmul.obj) __allmul	landed	MATCH	LIBRARY_MATCH
+00bfeb84	import_thunk	msvcrt.lib(MSVCR71.dll) __CxxThrowException@8	landed	MATCH	LIBRARY_MATCH
+00bfeb8a	import_thunk	msvcrt.lib(MSVCR71.dll) _floor	landed	MATCH	LIBRARY_MATCH
+00bfeb90	import_thunk	msvcrt.lib(MSVCR71.dll) _iswspace	landed	MATCH	LIBRARY_MATCH
+00bfeb96	import_thunk	msvcrt.lib(MSVCR71.dll) __snprintf	landed	MATCH	LIBRARY_MATCH
+00bfeb9c	import_thunk	msvcrt.lib(MSVCR71.dll) _ceil	landed	MATCH	LIBRARY_MATCH
+00bfeba2	import_thunk	msvcrt.lib(MSVCR71.dll) __CIacos	landed	MATCH	LIBRARY_MATCH
+00bfeba8	import_thunk	msvcrt.lib(MSVCR71.dll) __stricmp	landed	MATCH	LIBRARY_MATCH
+00bfebb0	coff_section	msvcrt.lib(build\intel\dll_obj\ullrem.obj) __aullrem	landed	MATCH	LIBRARY_MATCH
+00bfec26	import_thunk	msvcrt.lib(MSVCR71.dll) __isnan	landed	MATCH	LIBRARY_MATCH
+00bfec30	coff_section	msvcrt.lib(build\intel\dll_obj\llrem.obj) __allrem	landed	MATCH	LIBRARY_MATCH
+00bfece2	import_thunk	msvcrt.lib(MSVCR71.dll) __CItanh	landed	MATCH	LIBRARY_MATCH
+00bfecf0	coff_section	msvcrt.lib(build\intel\dll_obj\ullshr.obj) __aullshr	landed	MATCH	LIBRARY_MATCH
+00bfed10	import_thunk	msvcrt.lib(MSVCR71.dll) _tolower	landed	MATCH	LIBRARY_MATCH
+00bfed16	import_thunk	msvcrt.lib(MSVCR71.dll) _toupper	regraded	MATCH	LIBRARY_MATCH
+00bfed1c	import_thunk	msvcrt.lib(MSVCR71.dll) _sscanf	landed	MATCH	LIBRARY_MATCH
+00bfed22	import_thunk	msvcrt.lib(MSVCR71.dll) _time	landed	MATCH	LIBRARY_MATCH
+00bfed28	import_thunk	msvcrt.lib(MSVCR71.dll) _atoi	landed	MATCH	LIBRARY_MATCH
+00bfed2e	import_thunk	msvcrt.lib(MSVCR71.dll) _atol	landed	MATCH	LIBRARY_MATCH
+00bfed34	import_thunk	msvcrt.lib(MSVCR71.dll) __itoa	landed	MATCH	LIBRARY_MATCH
+00bfed3a	import_thunk	msvcrt.lib(MSVCR71.dll) __beginthread	landed	MATCH	LIBRARY_MATCH
+00bfed40	import_thunk	msvcrt.lib(MSVCR71.dll) __wgetcwd	regraded	MATCH	LIBRARY_MATCH
+00bfed46	import_thunk	msvcrt.lib(MSVCR71.dll) __snwprintf	landed	MATCH	LIBRARY_MATCH
+00bfed4c	import_thunk	msvcrt.lib(MSVCR71.dll) __wsplitpath	regraded	MATCH	LIBRARY_MATCH
+00bfed52	import_thunk	msvcrt.lib(MSVCR71.dll) __splitpath	landed	MATCH	LIBRARY_MATCH
+00bfed58	import_thunk	msvcrt.lib(MSVCR71.dll) __wmakepath	landed	MATCH	LIBRARY_MATCH
+00bfed5e	import_thunk	msvcrt.lib(MSVCR71.dll) _wcscat	landed	MATCH	LIBRARY_MATCH
+00bfed64	import_thunk	msvcrt.lib(MSVCR71.dll) __wmkdir	landed	MATCH	LIBRARY_MATCH
+00bfed6a	import_thunk	msvcrt.lib(MSVCR71.dll) __chdrive	landed	MATCH	LIBRARY_MATCH
+00bfed70	import_thunk	msvcrt.lib(MSVCR71.dll) __getdrive	landed	MATCH	LIBRARY_MATCH
+00bfed76	import_thunk	msvcrt.lib(MSVCR71.dll) _wcscpy	landed	MATCH	LIBRARY_MATCH
+00bfed7c	import_thunk	msvcrt.lib(MSVCR71.dll) __wfindfirst	landed	MATCH	LIBRARY_MATCH
+00bfed82	import_thunk	msvcrt.lib(MSVCR71.dll) __findclose	landed	MATCH	LIBRARY_MATCH
+00bfed88	import_thunk	msvcrt.lib(MSVCR71.dll) __wfindnext	landed	MATCH	LIBRARY_MATCH
+00bfed8e	import_thunk	msvcrt.lib(MSVCR71.dll) _wcschr	landed	MATCH	LIBRARY_MATCH
+00bfed94	import_thunk	msvcrt.lib(MSVCR71.dll) _wcslen	landed	MATCH	LIBRARY_MATCH
+00bfed9a	import_thunk	msvcrt.lib(MSVCR71.dll) __vsnwprintf	landed	MATCH	LIBRARY_MATCH
+00bfeda0	import_thunk	msvcrt.lib(MSVCR71.dll) _strchr	landed	MATCH	LIBRARY_MATCH
+00bfeda6	import_thunk	msvcrt.lib(MSVCR71.dll) _isdigit	landed	MATCH	LIBRARY_MATCH
+00bfedac	import_thunk	msvcrt.lib(MSVCR71.dll) __vsnprintf	landed	MATCH	LIBRARY_MATCH
+00bfedb2	import_thunk	msvcrt.lib(MSVCR71.dll) _wcsrchr	landed	MATCH	LIBRARY_MATCH
+00bfedb8	import_thunk	msvcrt.lib(MSVCR71.dll) _isalpha	landed	MATCH	LIBRARY_MATCH
+00bfedbe	import_thunk	msvcrt.lib(MSVCR71.dll) _isspace	landed	MATCH	LIBRARY_MATCH
+00bfedc4	import_thunk	msvcrt.lib(MSVCR71.dll) __CIasin	landed	MATCH	LIBRARY_MATCH
+00bfedca	import_thunk	msvcrt.lib(MSVCR71.dll) _qsort	landed	MATCH	LIBRARY_MATCH
+00bfedd0	import_thunk	msvcrt.lib(MSVCR71.dll) _vsprintf	landed	MATCH	LIBRARY_MATCH
+00bfede2	import_thunk	msvcrt.lib(MSVCR71.dll) _iswdigit	landed	MATCH	LIBRARY_MATCH
+00bfede8	import_thunk	msvcrt.lib(MSVCR71.dll) _iswalpha	landed	MATCH	LIBRARY_MATCH
+00bfedee	import_thunk	msvcrt.lib(MSVCR71.dll) __itow	landed	MATCH	LIBRARY_MATCH
+00bfedf4	import_thunk	msvcrt.lib(MSVCR71.dll) _fprintf	landed	MATCH	LIBRARY_MATCH
+00bfedfa	import_thunk	msvcrt.lib(MSVCR71.dll) _fopen	landed	MATCH	LIBRARY_MATCH
+00bfee00	coff_section	msvcrt.lib(build\intel\dll_obj\ulldiv.obj) __aulldiv	landed	MATCH	LIBRARY_MATCH
+00bfef38	import_thunk	msvcrt.lib(MSVCR71.dll) ??1type_info@@UAE@XZ	landed	MATCH	LIBRARY_MATCH
+00bfefa4	import_thunk	msvcrt.lib(MSVCR71.dll) ___security_error_handler	landed	MATCH	LIBRARY_MATCH
+00bfefb0	import_thunk	d3d9.lib(d3d9.dll) _Direct3DCreate9@4	landed	MATCH	LIBRARY_MATCH
+00bfefb6	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXSaveSurfaceToFileW@20	landed	MATCH	LIBRARY_MATCH
+00bfefbc	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXLoadSurfaceFromFileW@32	landed	MATCH	LIBRARY_MATCH
+00bfefc2	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXLoadSurfaceFromSurface@32	landed	MATCH	LIBRARY_MATCH
+00bfefc8	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXLoadSurfaceFromMemory@40	landed	MATCH	LIBRARY_MATCH
+00bfefce	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXFilterTexture@16	landed	MATCH	LIBRARY_MATCH
+00bfefd4	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXCreateTextureFromFileExW@56	landed	MATCH	LIBRARY_MATCH
+00bfefda	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXVec3Hermite@24	landed	MATCH	LIBRARY_MATCH
+00bfefe0	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXMatrixInverse@12	landed	MATCH	LIBRARY_MATCH
+00bfefec	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXLoadVolumeFromVolume@32	landed	MATCH	LIBRARY_MATCH
+00bfeff2	import_thunk	d3dx9.lib(d3dx9_25.dll) _D3DXCreateVolumeTexture@36	landed	MATCH	LIBRARY_MATCH
+00bfeff8	import_thunk	dinput8.lib(DINPUT8.dll) _DirectInput8Create@20	landed	MATCH	LIBRARY_MATCH
+00c003ec	import_thunk	wsock32.lib(WSOCK32.dll) ___WSAFDIsSet@8	landed	MATCH	LIBRARY_MATCH
+00cb0c10	import_thunk	winmm.lib(WINMM.dll) _timeSetEvent@20	landed	MATCH	LIBRARY_MATCH
+00cb551c	import_thunk	imm32.lib(IMM32.dll) _ImmGetCandidateListA@16	landed	MATCH	LIBRARY_MATCH
+00cb5522	import_thunk	imm32.lib(IMM32.dll) _ImmGetCompositionStringA@16	landed	MATCH	LIBRARY_MATCH
+00cb5528	import_thunk	imm32.lib(IMM32.dll) _ImmGetIMEFileNameA@12	landed	MATCH	LIBRARY_MATCH
+00cb552e	import_thunk	imm32.lib(IMM32.dll) _ImmGetVirtualKey@4	landed	MATCH	LIBRARY_MATCH
+00cb5534	import_thunk	imm32.lib(IMM32.dll) _ImmReleaseContext@8	landed	MATCH	LIBRARY_MATCH
+00cb553a	import_thunk	imm32.lib(IMM32.dll) _ImmNotifyIME@16	landed	MATCH	LIBRARY_MATCH
+00cb5540	import_thunk	imm32.lib(IMM32.dll) _ImmGetContext@4	landed	MATCH	LIBRARY_MATCH
+00cb5546	import_thunk	imm32.lib(IMM32.dll) _ImmGetDefaultIMEWnd@4	landed	MATCH	LIBRARY_MATCH
+00cb554c	import_thunk	imm32.lib(IMM32.dll) _ImmGetOpenStatus@4	landed	MATCH	LIBRARY_MATCH
+00cb5552	import_thunk	imm32.lib(IMM32.dll) _ImmGetConversionStatus@12	landed	MATCH	LIBRARY_MATCH
+00cb5558	import_thunk	imm32.lib(IMM32.dll) _ImmIsIME@4	landed	MATCH	LIBRARY_MATCH
+00cb555e	import_thunk	imm32.lib(IMM32.dll) _ImmSetConversionStatus@12	landed	MATCH	LIBRARY_MATCH
+00cb5564	import_thunk	imm32.lib(IMM32.dll) _ImmAssociateContext@8	landed	MATCH	LIBRARY_MATCH
+00cb5582	import_thunk	version.lib(VERSION.dll) _VerQueryValueA@16	landed	MATCH	LIBRARY_MATCH
+00cb5588	import_thunk	version.lib(VERSION.dll) _GetFileVersionInfoA@16	landed	MATCH	LIBRARY_MATCH
+00cb558e	import_thunk	version.lib(VERSION.dll) _GetFileVersionInfoSizeA@8	landed	MATCH	LIBRARY_MATCH
+00f3fb84	import_thunk	msvcrt.lib(MSVCR71.dll) __wcsicmp	landed	MATCH	LIBRARY_MATCH
+00f3fb8a	import_thunk	msvcrt.lib(MSVCR71.dll) __wcsupr	landed	MATCH	LIBRARY_MATCH
+00f3fb90	import_thunk	msvcrt.lib(MSVCR71.dll) __strnicmp	landed	MATCH	LIBRARY_MATCH
+00f3fb96	coff_section	msvcrt.lib(build\intel\dll_obj\ehvecctr.obj) ??_L@YGXPAXIHP6EX0@Z1@Z	landed	MATCH	LIBRARY_MATCH
+00f3fc50	coff_section	msvcrt.lib(build\intel\dll_obj\lldiv.obj) __alldiv	landed	MATCH	LIBRARY_MATCH
+00f3fcfa	import_thunk	msvcrt.lib(MSVCR71.dll) _strncat	landed	MATCH	LIBRARY_MATCH
+00f3fd10	coff_section	msvcrt.lib(build\intel\dll_obj\llshr.obj) __allshr	landed	MATCH	LIBRARY_MATCH
+00f3fd50	coff_section	msvcrt.lib(build\intel\dll_obj\ulldvrm.obj) __aulldvrm	landed	MATCH	LIBRARY_MATCH
+00401067	crt_source_compile	msvcrt.lib(build\intel\dll_obj\crtexew.obj) _WinMainCRTStartup	provenance line added	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00401296	crt_source_compile	msvcrt.lib(build\intel\dll_obj\atonexit.obj) __onexit	provenance line added	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004012bc	crt_source_compile	msvcrt.lib(build\intel\dll_obj\atonexit.obj) _atexit	provenance line added	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004012ce	crt_source_compile	msvcrt.lib(..\build\intel\dll_obj\initsect.obj) __RTC_Initialize	provenance line added	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00401312	crt_source_compile	msvcrt.lib(..\build\intel\dll_obj\initsect.obj) __RTC_Terminate	provenance line added	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0040135c	crt_source_compile	msvcrt.lib(build\intel\dll_obj\fp8.obj) __setdefaultprecision	provenance line added	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00bfee7a	crt_source_compile	msvcrt.lib(build\intel\dll_obj\ehvecdtr.obj) ?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z	provenance line added	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00bfeed8	crt_source_compile	msvcrt.lib(build\intel\dll_obj\ehvecdtr.obj) ??_M@YGXPAXIHP6EX0@Z@Z	provenance line added	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004367c0	caller	list_node_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004583fa	caller	my_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+005bb5ae	caller	my_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0045855a	caller	engine_free_0045855a -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004588e2	caller	free_field_54 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00458c66	caller	AssassinRush_Free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0045bbb7	caller	sub_7a2e5d -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0045bce4	caller	sub_7a2d30 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0045c75b	caller	sub_7a22b9 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00460c33	caller	engine_free_460c33 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00460d67	caller	CActiveFile_ReleaseBuffer -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00461009	caller	fable_free_461009 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0046131b	caller	sub_79d6f9 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00461eaf	caller	free_461eaf -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00462595	caller	CActiveFile_ReleaseCallee -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00462f42	caller	free_active_ptr -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0046324a	caller	freeBuffer_46324a -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0046638b	caller	sub_cdecl_0046638b -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0046ee0a	caller	CActiveFile_call2 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0046f191	caller	sub_second -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0046f68c	caller	CActiveFile_ReleaseReader -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00471df4	caller	CActiveFile_ReleaseReader -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0046fedb	caller	sub_free_46fedb -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00471f52	caller	sub_78cac2 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00472038	caller	sub_78C9DC_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004b99c0	caller	free_impl -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0070ba50	caller	free_impl -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004ba4c0	caller	FreeHelper -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004ba590	caller	FreeHelper -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+007a3c80	caller	FreeHelper -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004c5c60	caller	FreePtr -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00567f80	caller	re_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+006c2ce0	caller	FreeReleased -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+006c7dc0	caller	CActiveFile_FreeThing -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0070b8f0	caller	free_func -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00743b10	caller	free_func -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0070b910	caller	freeThing -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0070ba70	caller	CActiveFile_free_0xbfea14 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00835390	caller	CActiveFile_FreeBuffer -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+008832a0	caller	the_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+01228f14	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+012294f0	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+01229530	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+01229990	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+01229a20	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+01229ab0	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0122a660	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0122aa80	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0122aab0	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0122aaf0	caller	AutoTinyOptionalTarget -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00d26e60	caller	?rand@@YAHXZ -> _rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00d84630	caller	?rand@@YAHXZ -> _rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00d9b8f0	caller	?rand@@YAHXZ -> _rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00d9bb50	caller	?rand@@YAHXZ -> _rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00d9ee20	caller	?rand@@YAHXZ -> _rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00d9f270	caller	?rand@@YAHXZ -> _rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00e998f0	caller	?rand@@YAHXZ -> _rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00ea4de0	caller	?rand@@YAHXZ -> _rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050e690	caller	NBalverineCombat_GetRandomValue -> rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00c62350	caller	g_getCount -> __imp__rand	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00ac4ec0	caller	?sprintf@@ -> _sprintf	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+009a78d0	caller	strcmp -> _stricmp	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+009cc750	caller	strcmp -> _stricmp	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+009994a0	caller	AFileSupport::_getdrive/_chdrive/_wchdir/_wmkdir -> extern "C"; ?_wsplitpath@AFileSupport@@YAXPBGPAG111@Z (TU-local body) -> __wsplitpath	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00999620	caller	ExternalRetry::_wsplitpath/_wmakepath -> extern "C"	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004c6060	caller	sub_bfea70 -> __ftol2 (compiler-emitted)	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0089a210	caller	Finalize -> __ftol2 (compiler-emitted)	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004c73b0	caller	helper_bfeb1c_00bfeb1c -> ??_V@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00c49c90	caller	Allocate_00bfeb22 -> ??_U@YAPAXI@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+009e9fd0	caller	FableOperatorDelete -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00401490	caller	Water_QueryType -> _wcscmp	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+009f9e60	caller	sub_bfefce -> _D3DXFilterTexture@16	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00a5cb00	caller	?D3DXMatrixInverse@@ -> _D3DXMatrixInverse@12	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00ca6f90	caller	CompatibleTimeSetEvent -> _timeSetEvent@20	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004ac250	caller	fable_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004b8940	caller	fable_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0070b9e0	caller	fable_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004f9cfc	caller	free_bfea14 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00512890	caller	free_bfea14 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0070b990	caller	free_bfea14 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+005142e0	caller	my_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00529f30	caller	FreeThing -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+005f8908	caller	retail_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0066063f	caller	retail_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0065f1c8	caller	CActiveFile_Free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0065f22c	caller	CActiveFile_Free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+006c2d20	caller	CActiveFile_free -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+007cbc20	caller	FreeBuffer -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00835120	caller	free_helper -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00850310	caller	free_bfea14 -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050cdd0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050cde0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050ceb0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050cec0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050cf90	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050cfa0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050d030	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050d040	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050d0a0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050d120	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050d180	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050d1f0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0050d230	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0069bba0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00822bf0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00822c00	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00822ca0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00822cb0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00822d10	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00822d90	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00822df0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00822e60	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00822ea0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00a7c0a0	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00c0b900	caller	_helper_bfeb1c -> ??3@YAXPAX@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00689370	caller	_ceil / ?ceil@@YAMM@Z -> _floor / ?floor@@YAMM@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0068ae30	caller	?ceil@@YAMM@Z -> ?floor@@YAMM@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0068b2e0	caller	?ceil@@YAMM@Z -> ?floor@@YAMM@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0068b7c0	caller	?ceil@@YAMM@Z -> ?floor@@YAMM@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00691130	caller	?ceil@@YAMM@Z -> ?floor@@YAMM@Z	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00a5e650	caller	FreeThing -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00a9d3a0	caller	FreeThing -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00aacd80	caller	FreeBlock -> free	respelled	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+004022b0	caller (header includer)	fable_boot.h / fable_user_profile.h stand-in -> ::operator new / ::operator delete	recheck	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00403480	caller (header includer)	fable_boot.h / fable_user_profile.h stand-in -> ::operator new / ::operator delete	recheck	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0040d2a0	caller (header includer)	fable_boot.h / fable_user_profile.h stand-in -> ::operator new / ::operator delete	recheck	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0040d400	caller (header includer)	fable_boot.h / fable_user_profile.h stand-in -> ::operator new / ::operator delete	recheck	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00413120	caller (header includer)	fable_boot.h / fable_user_profile.h stand-in -> ::operator new / ::operator delete	recheck	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00497b30	caller (header includer)	fable_boot.h / fable_user_profile.h stand-in -> ::operator new / ::operator delete	recheck	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+00499a70	caller (header includer)	fable_boot.h / fable_user_profile.h stand-in -> ::operator new / ::operator delete	recheck	-	RELOCATION_MATCH PASS (vland_recheck_final_all.log)
+0049b460	caller (header includer)	fable_boot.h / fable_user_profile.h stand-in -> ::operator new / ::operator delete	recheck	-	MATCH PASS (vland_recheck_final_all.log)

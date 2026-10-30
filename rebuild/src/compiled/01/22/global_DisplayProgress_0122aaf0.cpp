@@ -1,8 +1,8 @@
 extern void* g_AutoTinyOptionalObject_013d2d48;
 // Leaf: DisplayProgress
-extern void __cdecl AutoTinyOptionalTarget(void* object);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 void __fastcall DisplayProgress()
 {
     if (g_AutoTinyOptionalObject_013d2d48 != 0)
-        AutoTinyOptionalTarget(g_AutoTinyOptionalObject_013d2d48);
+        free(g_AutoTinyOptionalObject_013d2d48);
 }

@@ -1,0 +1,20 @@
+addr       parity           behav  name
+00401067   WARN RELOC_NAME: __setargv -> 00401377 labelled '_global::ReturnZero_ret0_00401377'
+00401067   WARN RELOC_ALIAS: __initterm -> 00401356 is the import thunk 'MSVCR71.DLL::_initterm'
+00401067   WARN RELOC_ALIAS: __amsg_exit -> 0040128a is the import thunk 'MSVCR71.DLL::_amsg_exit'
+00401067   RELOCATION_MATCH["s"] PASS   WinMainCRTStartup
+00401296   WARN RELOC_ALIAS: ___dllonexit -> 004013de is the import thunk 'MSVCR71.DLL::__dllonexit'
+00401296   RELOCATION_MATCH PASS   __onexit
+004012ce   RELOCATION_MATCH["s"] PASS   __RTC_Initialize
+00401312   RELOCATION_MATCH PASS   _RTC_Terminate
+0040135c   WARN RELOC_ALIAS: __controlfp -> 004013e4 is the import thunk 'MSVCR71.DLL::_controlfp'
+0040135c   RELOCATION_MATCH PASS   __setdefaultprecision
+00bfeed8   RELOCATION_MATCH PASS   `eh_vector_destructor_iterator'
+
+WINS: 6
+  00401067 RELOCATION_MATCH["s"] _global::_WinMainCRTStartup
+  00401296 RELOCATION_MATCH _global::__onexit
+  004012ce RELOCATION_MATCH["s"] _global::__RTC_Initialize
+  00401312 RELOCATION_MATCH _global::_RTC_Terminate
+  0040135c RELOCATION_MATCH _global::__setdefaultprecision
+  00bfeed8 RELOCATION_MATCH _global::__ehvec_dtor

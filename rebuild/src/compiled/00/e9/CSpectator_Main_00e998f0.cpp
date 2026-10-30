@@ -16,7 +16,7 @@ class CCharString { public:
     CCharString(const char* text, long length = -1);   // 0x0099EBF0
     ~CCharString();                                    // 0x0099EAE0
 };
-int __cdecl rand();                                     // 0x00BFEB16 (MSVCR71)
+extern "C" int __cdecl rand();                                     // 0x00BFEB16 (MSVCR71)
 class CCPPointerInfo;
 struct CScriptThingImpl;
 struct CBase {                                          // vtable 0x01231710

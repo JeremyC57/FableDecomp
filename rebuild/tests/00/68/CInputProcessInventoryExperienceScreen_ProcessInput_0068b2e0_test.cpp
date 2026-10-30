@@ -51,7 +51,7 @@ struct Proc {
             else if (IsEventGameAction(0x69, event)) { if (map) map->PanMap(Vec2(1.0f, 0.0f)); }
             else return false;
         } else if (IsEventGameAction(0x47, event)) { g_fe.mouse = event.Position; Send(0x19); }
-        else if (IsEventGameAction(0x65, event)) g_fe.scroll = (long)std::ceil(event.wheel * 0.008333334f);
+        else if (IsEventGameAction(0x65, event)) g_fe.scroll = (long)std::floor(event.wheel * 0.008333334f);
         else return false;
         return true;
     }

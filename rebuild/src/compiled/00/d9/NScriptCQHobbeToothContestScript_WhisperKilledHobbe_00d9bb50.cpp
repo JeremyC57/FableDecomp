@@ -58,7 +58,7 @@ extern CGameScriptInterface* g_pGameScriptInterface;    // 0x0143E8F8
 #include "engine/CTimer.h"
 inline CTimer& CTimer::operator=(long time) { const long& index = TimerIndex; g_pGameScriptInterface->SetTimer(index, time); return *this; }
 inline long CTimer::GetTime() const { const long& index = TimerIndex; return g_pGameScriptInterface->GetTimer(index); }
-int __cdecl rand();                                     // 0x00BFEB16
+extern "C" int __cdecl rand();                                     // 0x00BFEB16
 // CScriptBase: the retail NScript model from the shared headers (FABLE_RETAIL_NSCRIPT: CScriptBase :
 //   CBaseClassNonCopyable : CBaseClass, vtable 0x012C1648, 5 slots, 0x40).
 #include "engine/CScriptBase.h"

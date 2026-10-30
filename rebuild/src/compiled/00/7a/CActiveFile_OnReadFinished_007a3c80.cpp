@@ -9,12 +9,12 @@ struct CActiveFile {
 void __fastcall BaseReadDone_007a3910(CActiveFile* self);
 
 // free cdecl helper at 0xbfea14
-void FreeHelper(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall OnReadFinished(CActiveFile* self)
 {
     BaseReadDone_007a3910(self);
     void* p = self->field0;
     if (p)
-        FreeHelper(p);
+        free(p);
 }

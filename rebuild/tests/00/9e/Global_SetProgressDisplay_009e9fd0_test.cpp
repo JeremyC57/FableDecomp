@@ -35,7 +35,8 @@ void* FABLE_CDECL FableOperatorNew(fable_u32 /* size */)
     return 0;
 }
 
-void FABLE_CDECL FableOperatorDelete(void* allocation)
+// Replaces the global operator delete (MSVCR71 ??3@YAXPAX@Z, import thunk 0x00BFE9BC) to observe the count block release.
+void __cdecl operator delete(void* allocation)
 {
     ++g_deleteCalls;
     g_deletedReference = allocation;

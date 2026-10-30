@@ -7,7 +7,7 @@
 // Pattern: if (this->m_ptr) operator delete(this->m_ptr);
 // The callee is cdecl (single arg cleaned by `pop ecx`), address relocation-masked.
 
-extern "C" void __cdecl freeBuffer_46324a(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 struct CActiveFile_46324a {
     void* m_ptr; // +0x00
@@ -17,6 +17,6 @@ void __fastcall OnReadFinished_46324a(CActiveFile_46324a* thisptr)
 {
     void* p = thisptr->m_ptr;
     if (p) {
-        freeBuffer_46324a(p);
+        free(p);
     }
 }

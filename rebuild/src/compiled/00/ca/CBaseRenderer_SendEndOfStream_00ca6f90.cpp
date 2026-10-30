@@ -212,8 +212,8 @@ public:
 
 typedef void (__stdcall* LPTIMECALLBACK)(unsigned int uTimerID, unsigned int uMsg, unsigned long dwUser,
                                          unsigned long dw1, unsigned long dw2);
-unsigned int __stdcall CompatibleTimeSetEvent(unsigned int uDelay, unsigned int uResolution, LPTIMECALLBACK lpTimeProc,
-                                              unsigned long dwUser, unsigned int fuEvent);              // 0x00CB0C10 (wxutil.cpp)
+extern "C" unsigned int __stdcall timeSetEvent(unsigned int uDelay, unsigned int uResolution, LPTIMECALLBACK lpTimeProc,
+                                               unsigned long dwUser, unsigned int fuEvent);  // 0x00CB0C10 WINMM timeSetEvent (import thunk)
 void __stdcall EndOfStreamTimer(unsigned int uID, unsigned int uMsg, unsigned long dwUser,
                                 unsigned long dw1, unsigned long dw2);                                   // 0x00CA6F80 (renbase.cpp)
 #define TIMEOUT_DELIVERYWAIT 50
@@ -246,7 +246,7 @@ long CBaseRenderer::SendEndOfStream()
 
     // Signal a timer callback on another worker thread
 
-    m_EndOfStreamTimer = CompatibleTimeSetEvent((unsigned int) Delay,  // Period of timer
+    m_EndOfStreamTimer = timeSetEvent((unsigned int) Delay,  // Period of timer
                                                 TIMEOUT_RESOLUTION,     // Timer resolution
                                                 EndOfStreamTimer,       // Callback function
                                                 (unsigned long)(this),  // Used information

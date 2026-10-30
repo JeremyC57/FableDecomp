@@ -3,12 +3,12 @@
 struct CActiveFile { void* m0; };
 
 extern void __fastcall CActiveFile_FrameUpdate_566dc0(CActiveFile* self); // thiscall this->ecx, void
-extern void __cdecl re_free(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     CActiveFile_FrameUpdate_566dc0(self);
     void* p = self->m0;
     if (p)
-        re_free(p);
+        free(p);
 }

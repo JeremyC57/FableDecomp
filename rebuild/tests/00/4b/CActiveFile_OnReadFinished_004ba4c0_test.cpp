@@ -8,12 +8,16 @@ static int g_baseCalls = 0;
 static void* g_freed = (void*)0;
 
 void __fastcall CActiveFile_base_handler(CActiveFile* self) { (void)self; ++g_baseCalls; }
-void FreeHelper(void* p) { g_freed = p; }
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
+{
+    if (!g_free_hook) return; g_freed = p; }
 
 void __fastcall CActiveFile__OnReadFinished(CActiveFile* self);
 
 int main()
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     int dummy = 0;
     CActiveFile a; a.field0 = &dummy;
     g_baseCalls = 0; g_freed = (void*)0;

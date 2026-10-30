@@ -34,8 +34,7 @@ class CPlayer { public: CThingPlayerCreature* GetPControlledCreature() const; };
 //   GetMainPlayerNumber 0x00449700).
 #include "engine/CPlayerManager.h"
  /* 0x00449970 CPlayerManager::GetMainPlayer (Ego_r 0x004450F0) */
-extern long __fastcall CalcPct(void* value);           // call C: this=value
-extern long __cdecl Finalize(void);                    // call D
+extern float __fastcall CalcPct(void* value);          // call C: this=value, returns a float (st0)
 
 long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(CGameScriptInterface* self)
 {
@@ -50,8 +49,7 @@ long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(CGameScriptInte
         } else {
             it = end;
         }
-        CalcPct(((void*)it->second));
-        return Finalize();
+        return (long)CalcPct(((void*)it->second));       // (long) float: call __ftol2 0x00BFEA70
     }
     return 0;
 }

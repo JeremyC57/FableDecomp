@@ -1,5 +1,6 @@
 #pragma optimize("s",on)
 // __onexit(_onexit_t function) -- register an exit-time callback with the C runtime
+// Library: msvcrt.lib(build\intel\dll_obj\atonexit.obj) __onexit
 // Retail: Fable.exe (TLC, VC7.1) @ 0x00401296, 38 bytes. Callees: msvcr71!_onexit (import), __dllonexit (import).
 //
 // This is the CRT's own onexit registrar as linked into the game, not Lionhead code. `atexit` and the

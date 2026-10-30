@@ -24,8 +24,8 @@ static int g_calc_called = 0;
 MapNode* IFaceMap::LowerBound(int* key) { (void)key; return &g_node; }
 extern void* __fastcall GetMgr(void* self) { return self; }
 extern Thing* __fastcall GetThing(void* mgr) { return (Thing*)mgr; }
-extern long __fastcall CalcPct(void* value) { (void)value; g_calc_called = 1; return 0; }
-extern long __cdecl Finalize(void) { return 77; }
+// 0x0057A57A returns a float; the caller converts it with __ftol2 (0x00BFEA70).
+extern float __fastcall CalcPct(void* value) { (void)value; g_calc_called = 1; return 77.0f; }
 
 long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(GSI* self)
 {
@@ -39,8 +39,7 @@ long __fastcall CGameScriptInterface_GetHeroWillEnergyPercentage(GSI* self)
         } else {
             it = end;
         }
-        CalcPct(it->value);
-        return Finalize();
+        return (long)CalcPct(it->value);
     }
     return 0;
 }

@@ -32,7 +32,6 @@ struct GFInitialiseState
 FABLE_STATIC_ASSERT(sizeof(GFInitialiseState) == 0x20D);
 
 void* FABLE_CDECL FableOperatorNew(fable_u32 size);
-void FABLE_CDECL FableOperatorDelete(void* allocation);
 
 struct CProgressDisplay
 {
@@ -144,7 +143,7 @@ struct CCountedProgressDisplay
             if (reference->owners == 0)
             {
                 reference->destroy(reference->object);
-                FableOperatorDelete(reference);
+                ::operator delete(reference);          // 0x00BFE9BC MSVCR71 operator delete
             }
         }
     }

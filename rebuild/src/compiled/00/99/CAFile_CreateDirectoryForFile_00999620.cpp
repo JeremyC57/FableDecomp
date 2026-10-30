@@ -17,9 +17,9 @@ __declspec(noinline) CWideString& CWideString::operator=(const unsigned short*p)
 // Names: bound donor11606 GetCurrentWorkingDirectory=997f80; donor18663 ExpandPath=998c90.
 // AllocStringData=99b3c0; conversion operator=99af00; CAFile::PathExists=999230; CreateDirectoryW=9994a0.
 CWideString __fastcall GetCurrentWorkingDirectory();CWideString __fastcall ExpandPath(const CWideString&,const CWideString&);CWideString __fastcall MakePath(const CWideString&,const CWideString&,const CWideString&,const CWideString&);
-void __cdecl _wsplitpath(const unsigned short*,unsigned short*,unsigned short*,unsigned short*,unsigned short*);
+extern "C" void __cdecl _wsplitpath(const unsigned short*,unsigned short*,unsigned short*,unsigned short*,unsigned short*);
 // Layout: 00997780 calls Text on all four inputs then CRT _wmakepath into MAX_PATH260-word buffer (cookie+0x208) before wide construction.
-void __cdecl _wmakepath(unsigned short*,const unsigned short*,const unsigned short*,const unsigned short*,const unsigned short*);
+extern "C" void __cdecl _wmakepath(unsigned short*,const unsigned short*,const unsigned short*,const unsigned short*,const unsigned short*);
 __declspec(noinline) CWideString __fastcall MakePath(const CWideString& d,const CWideString& p,const CWideString& n,const CWideString& e){unsigned short buffer[260];_wmakepath(buffer,static_cast<const unsigned short*>(const_cast<CWideString&>(d)),static_cast<const unsigned short*>(const_cast<CWideString&>(p)),static_cast<const unsigned short*>(const_cast<CWideString&>(n)),static_cast<const unsigned short*>(const_cast<CWideString&>(e)));return CWideString(buffer);}
 __forceinline CWideString MakeParentDirectory(const CWideString& drive,const CWideString& dir){CWideString extension(L""),name(L"");return MakePath(drive,dir,name,extension);}
 struct CAFile{static bool __fastcall PathExists(const CWideString&);static void __fastcall CreateDirectoryW(const CWideString&);static void __fastcall CreateDirectoryForFile(const CWideString&);};

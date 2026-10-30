@@ -19,7 +19,7 @@
 struct CActiveFile_obj;
 
 extern "C" void __fastcall sub_first(CActiveFile_obj* self, unsigned int a2, char* out);
-extern "C" void sub_second(CActiveFile_obj* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 struct CActiveFile {
     CActiveFile_obj* m_obj;   // +0x00
@@ -33,6 +33,6 @@ void __fastcall OnReadFinished_0046f191(CActiveFile* thisptr)
 
     CActiveFile_obj* p = thisptr->m_obj;
     if (p != 0) {
-        sub_second(p);
+        free(p);
     }
 }

@@ -1,0 +1,106 @@
+addr       parity           behav  name
+00a9d3a0   WARN RELOC_NAME: ?OnDie@BaseItem@@QAEXXZ -> 00aa8490 labelled 'CChunkedFileSuperChunk::~CChunkedFileSuperChunk'
+00a9d3a0   RELOCATION_MATCH PASS   OnDie
+00c49c90   WARN RELOC_NAME: ??0CLocalDetailPrimitiveBase_00c49c90@@QAE@XZ -> 00c1c810 labelled 'PKCCriticalSection::PKCCriticalSection'
+00c49c90   RELOCATION_MATCH PASS   CLocalDetailPrimitiveRepeatedMesh
+00850310   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00850310   WARN RELOC_NAME: ?base_helper_850280@@YIXPAX@Z -> 00850280 labelled 'std::list<std::pair<long, std::list<long> > >::clear'
+00850310   RELOCATION_MATCH PASS   StdList_Dtor_00850310
+0070b910   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0070b910   WARN RELOC_NAME: ?CActiveFile_base@@YIXPAUCActiveFile@@@Z -> 0070b8a0 labelled 'CRetailList_0070b8a0::Clear'
+0070b910   RELOCATION_MATCH PASS   StdList_Dtor_0070b910
+0122aab0   RELOCATION_MATCH PASS   FreeGlobal_0x13d2d1c_0122aab0
+004583fa   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+004583fa   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004583fa   RELOCATION_MATCH PASS   ~CSpecialAbilitiesCreatureTintDef
+0122aa80   RELOCATION_MATCH PASS   FreeGlobal_0x13d2828_0122aa80
+009a78d0   WARN RELOC_ALIAS: __stricmp -> 00bfeba8 is the import thunk 'MSVCR71.DLL::_stricmp'
+009a78d0   RELOCATION_MATCH PASS   CloseRetailBank
+00743b10   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00743b10   RELOCATION_MATCH PASS   StdList_Dtor_00743b10
+005f8908   WARN SHARED_HEADER_AVAILABLE CActiveFile
+005f8908   RELOCATION_MATCH PASS   StdList_Dtor_005f8908
+0069bba0   RELOCATION_MATCH PASS   OperatorDelete_thunk_0069bba0
+0050e690   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+0050e690   RELOCATION_MATCH PASS   SetLungedThisFrame
+00835120   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00835120   WARN RELOC_NAME: ?CActiveFile_sub_834F90@@YIXPAUCActiveFile@@@Z -> 00834f90 labelled 'std::_List_base::clear'
+00835120   RELOCATION_MATCH PASS   StdList_Dtor_00835120
+00822df0   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822df0
+0070b9e0   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0070b9e0   RELOCATION_MATCH PASS   StdList_Dtor_0070b9e0
+007a3c80   WARN SHARED_HEADER_AVAILABLE CActiveFile
+007a3c80   WARN RELOC_NAME: ?BaseReadDone_007a3910@@YIXPAUCActiveFile@@@Z -> 007a3910 labelled 'CRetailList_CountedPointer::clear'
+007a3c80   RELOCATION_MATCH PASS   StdList_Dtor_007a3c80
+009f9e60   WARN RELOC_ALIAS: _D3DXFilterTexture@16 -> 00bfefce is the import thunk 'D3DX9_25.DLL::D3DXFilterTexture'
+009f9e60   RELOCATION_MATCH PASS   GenerateMipmaps
+  WARN leaf 'SortTreeRecursively' matches no symbol in 004367c0.obj; graded the largest function
+  WARN leaf 'SortTreeRecursively' matches no symbol in 004367c0.obj; graded the largest function
+004367c0   RELOCATION_MATCH PASS   StdList_Clear_004367c0
+0065f1c8   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0065f1c8   RELOCATION_MATCH PASS   StdList_Dtor_0065f1c8
+0070b990   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0070b990   RELOCATION_MATCH PASS   StdList_Dtor_0070b990
+0046ee0a   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0046ee0a   WARN RELOC_NAME: ?CActiveFile_call1@@YIXPAXHPAD@Z -> 00450a3c labelled '_global::DestroyRange_Elem0x50_00450a3c'
+0046ee0a   RELOCATION_MATCH PASS   StdList_Dtor_0046ee0a
+00e998f0   WARN SHARED_HEADER_AVAILABLE CPredicateBase
+00e998f0   WARN SHARED_HEADER_AVAILABLE CEntityScriptBase
+00e998f0   WARN RELOC_ALIAS: _rand -> 00bfeb16 is the import thunk 'MSVCR71.DLL::rand'
+00e998f0   RELOCATION_MATCH PASS   Main
+00403480   RELOCATION_MATCH PASS   WinMain
+0046f68c   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0046f68c   WARN RELOC_NAME: ?CActiveFileReader_Notify@@YIXPAUCActiveFileReader@@HPAE@Z -> 00450a74 labelled '_global::DestroyRange_Elem0x4c_00450a74'
+0046f68c   RELOCATION_MATCH PASS   StdList_Dtor_0046f68c
+01229990   RELOCATION_MATCH PASS   FreeGlobal_0x13bad18_01229990
+0070ba50   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0070ba50   WARN RELOC_NAME: ?base_OnReadFinished_impl@@YIXPAUCActiveFile@@@Z -> 0070ba00 labelled 'CRetailList_ListOfNavigatorQueue::clear'
+0070ba50   RELOCATION_MATCH PASS   StdList_Dtor_0070ba50
+0045bce4   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0045bce4   RELOCATION_MATCH PASS   FreeMember0_0045bce4
+00ca6f90   WARN RELOC_ALIAS: _timeSetEvent@20 -> 00cb0c10 is the import thunk 'WINMM.DLL::timeSetEvent'
+00ca6f90   RELOCATION_MATCH PASS   SendEndOfStream
+004b99c0   WARN SHARED_HEADER_AVAILABLE CActiveFile
+004b99c0   WARN RELOC_NAME: ?CActiveFile_baseHandler@@YIXPAUCActiveFile@@@Z -> 004b8b70 labelled 'std::_List_base::clear'
+004b99c0   RELOCATION_MATCH PASS   StdList_Dtor_004b99c0
+00460c33   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00460c33   RELOCATION_MATCH PASS   FreeMember0_00460c33
+004c6060   WARN SHARED_HEADER_AVAILABLE CWorld
+004c6060   RELOCATION_MATCH PASS   IsTimeForFullUpdate
+007cbc20   WARN SHARED_HEADER_AVAILABLE CActiveFile
+007cbc20   WARN RELOC_NAME: ?OnReadFinishedBase@@YIXPAUCActiveFile@@@Z -> 007cbb80 labelled 'std::_List_base::clear'
+007cbc20   RELOCATION_MATCH PASS   StdList_Dtor_007cbc20
+
+WINS: 32
+  00a9d3a0 RELOCATION_MATCH CTCInventoryItem::OnDie
+  00c49c90 RELOCATION_MATCH CLocalDetailPrimitiveRepeatedMesh::??0CLocalDetailPrimitiveRepeatedMesh@
+  00850310 RELOCATION_MATCH _global::OnReadFinished
+  0070b910 RELOCATION_MATCH _global::OnReadFinished
+  0122aab0 RELOCATION_MATCH _global::DisplayProgress
+  004583fa RELOCATION_MATCH CSpecialAbilitiesCreatureTintDef::OnDie
+  0122aa80 RELOCATION_MATCH _global::DisplayProgress
+  009a78d0 RELOCATION_MATCH CBankFileManager::CloseRetailBank
+  00743b10 RELOCATION_MATCH _global::OnReadFinished
+  005f8908 RELOCATION_MATCH _global::OnReadFinished
+  0069bba0 RELOCATION_MATCH _global::OperatorDelete_thunk_0069bba0
+  0050e690 RELOCATION_MATCH _global::SetLungedThisFrame
+  00835120 RELOCATION_MATCH _global::OnReadFinished
+  00822df0 RELOCATION_MATCH _global::OperatorDelete_thunk_00822df0
+  0070b9e0 RELOCATION_MATCH _global::OnReadFinished
+  007a3c80 RELOCATION_MATCH _global::OnReadFinished
+  009f9e60 RELOCATION_MATCH CTexture::GenerateMipmaps
+  004367c0 RELOCATION_MATCH _global::SortTreeRecursively
+  0065f1c8 RELOCATION_MATCH _global::OnReadFinished
+  0070b990 RELOCATION_MATCH _global::OnReadFinished
+  0046ee0a RELOCATION_MATCH _global::OnReadFinished
+  00e998f0 RELOCATION_MATCH CSpectator::Main
+  00403480 RELOCATION_MATCH _global::_WinMain@16
+  0046f68c RELOCATION_MATCH _global::OnReadFinished
+  01229990 RELOCATION_MATCH _global::DisplayProgress
+  0070ba50 RELOCATION_MATCH _global::OnReadFinished
+  0045bce4 RELOCATION_MATCH _global::OnReadFinished
+  00ca6f90 RELOCATION_MATCH CBaseRenderer::?SendEndOfStream@CBaseRenderer@@
+  004b99c0 RELOCATION_MATCH _global::OnReadFinished
+  00460c33 RELOCATION_MATCH _global::OnReadFinished
+  004c6060 RELOCATION_MATCH _global::IsTimeForFullUpdate
+  007cbc20 RELOCATION_MATCH _global::OnReadFinished

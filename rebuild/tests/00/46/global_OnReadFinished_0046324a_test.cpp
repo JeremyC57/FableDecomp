@@ -10,14 +10,17 @@ extern void __fastcall OnReadFinished_46324a(CActiveFile_46324a* thisptr);
 static int g_freed = 0;
 static void* g_lastFreed = 0;
 
-extern "C" void __cdecl freeBuffer_46324a(void* p)
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
 {
+    if (!g_free_hook) return;
     g_freed++;
     g_lastFreed = p;
 }
 
 int main()
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     int dummy = 0;
     CActiveFile_46324a a;
     a.m_ptr = &dummy;

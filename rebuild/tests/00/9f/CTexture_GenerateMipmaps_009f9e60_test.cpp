@@ -10,10 +10,11 @@ static void* g_p;
 static int   g_zero = -1;
 static ulong g_b, g_a;
 
-extern void __stdcall sub_bfefce(void* p, int zero, ulong b, ulong a);
-void __stdcall sub_bfefce(void* p, int zero, ulong b, ulong a)
+// Stands in for D3DXFilterTexture (d3dx9_25 import thunk 0x00BFEFCE): (pBaseTexture, pPalette, SrcLevel, Filter).
+extern "C" long __stdcall D3DXFilterTexture(void* p, const void* palette, unsigned int b, ulong a)
 {
-    g_p = p; g_zero = zero; g_b = b; g_a = a;
+    g_p = p; g_zero = (int)palette; g_b = b; g_a = a;
+    return 0;
 }
 
 void __fastcall GenerateMipmaps(CTexture* texture, int edx, ulong a, ulong b);

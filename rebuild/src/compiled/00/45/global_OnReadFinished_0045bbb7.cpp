@@ -17,11 +17,11 @@ struct CActiveFile
 };
 
 // Relocation-masked callee; takes the member pointer.
-extern "C" void __cdecl sub_7a2e5d(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* thisptr)
 {
     void* p = thisptr->field_0;
     if (p)
-        sub_7a2e5d(p);
+        free(p);
 }

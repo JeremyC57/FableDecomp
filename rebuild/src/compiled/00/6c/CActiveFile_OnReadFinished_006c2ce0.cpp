@@ -17,12 +17,12 @@ struct CActiveFile {
 };
 
 void __fastcall BaseOnReadFinished_006c2c00(CActiveFile* self);
-extern "C" void FreeReleased(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self)
 {
     BaseOnReadFinished_006c2c00(self);
     void* p = self->m_ptr;
     if (p)
-        FreeReleased(p);
+        free(p);
 }

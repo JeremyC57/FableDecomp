@@ -2,8 +2,6 @@
 
 #include "fable_string.h"
 
-void* FABLE_CDECL FableUserProfileManagerAllocate(fable_u32 size);
-
 class CUserProfileManager
 {
 public:
@@ -11,7 +9,7 @@ public:
 
     __forceinline static void* operator new(unsigned int size)
     {
-        return FableUserProfileManagerAllocate(size);
+        return ::operator new(size);           // 0x00BFEA1A MSVCR71 operator new
     }
 
     void SetProfileName(

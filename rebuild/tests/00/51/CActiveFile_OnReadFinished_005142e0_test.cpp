@@ -6,7 +6,10 @@ static int g_baseCalled = 0;
 static int g_freed = 0;
 static void* g_freedPtr = 0;
 
-void my_free(void* p) { g_freed++; g_freedPtr = p; }
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
+{
+    if (!g_free_hook) return; g_freed++; g_freedPtr = p; }
 
 void __fastcall CActiveFile_base_00510d40(CActiveFile* self) { g_baseCalled++; }
 
@@ -14,6 +17,7 @@ void __fastcall CActiveFile_OnReadFinished(CActiveFile* self);
 
 int main()
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     // case 1: non-null buffer -> base called, freed
     int dummy = 0;
     CActiveFile a; a.buffer = &dummy;

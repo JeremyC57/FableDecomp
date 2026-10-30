@@ -1,6 +1,7 @@
 #include <float.h>
 
 // __setdefaultprecision() -- CRT: put the x87 FPU into 53-bit (double) precision at start-up
+// Library: msvcrt.lib(build\intel\dll_obj\fp8.obj) __setdefaultprecision
 // Retail: Fable.exe (TLC, VC7.1) @ 0x0040135C, 18 bytes. Callees: _controlfp (import).
 //
 // Windows starts a process with the FPU in 64-bit (extended) precision. The C runtime's start-up code

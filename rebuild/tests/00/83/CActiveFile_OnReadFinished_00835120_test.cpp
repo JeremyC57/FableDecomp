@@ -7,7 +7,6 @@ static int g_subCalled = 0;
 static void* g_freed = 0;
 
 void __fastcall CActiveFile_sub_834F90(CActiveFile* self);
-void  __cdecl  free_helper(void* p);
 
 struct CActiveFile
 {
@@ -15,12 +14,16 @@ struct CActiveFile
 };
 
 void __fastcall CActiveFile_sub_834F90(CActiveFile* /*self*/) { g_subCalled++; }
-void  __cdecl  free_helper(void* p) { g_freed = p; }
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
+{
+    if (!g_free_hook) return; g_freed = p; }
 
 void __fastcall CActiveFile_OnReadFinished(CActiveFile* self);
 
 int main()
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     // Case 1: non-null pointer -> free_helper called with it
     CActiveFile a;
     int dummy = 0;

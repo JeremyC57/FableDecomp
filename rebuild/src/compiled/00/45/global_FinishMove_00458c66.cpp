@@ -21,7 +21,7 @@ class CTCAssassinRush { public:
 extern "C" void __fastcall AssassinRush_Sub0x68_Method(void* thisptr);
 
 // free-like callee (single stack arg, cdecl, caller pops via 'pop ecx')
-extern "C" void __cdecl AssassinRush_Free(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 // base-class FinishMove (tail-called with ecx=this)
 
@@ -33,7 +33,7 @@ void __fastcall CTCAssassinRush_FinishMove(CTCAssassinRush* thisptr)
 
     void* p = *(void**)(base + 0x50);
     if (p) {
-        AssassinRush_Free(p);
+        free(p);
     }
 
     ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();

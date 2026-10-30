@@ -2,7 +2,7 @@
 // push esi; mov esi,ecx; eax=[esi+0x2c]; if(eax){push eax; call cdecl_free; add esp,4;}
 // ecx=esi; jmp Base::OnDie  (tail call)
 
-extern "C" void __cdecl FreeThing(void* p);   // cdecl helper @ 0xbfea14
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 struct BaseItem {
     void OnDie();                              // @ 0xaa8490 (non-virtual)
@@ -17,6 +17,6 @@ class CTCInventoryItem : public BaseItem { public:
 void CTCInventoryItem::OnDie()
 {
     if (this->ptr2c)
-        FreeThing(this->ptr2c);
+        free(this->ptr2c);
     BaseItem::OnDie();
 }

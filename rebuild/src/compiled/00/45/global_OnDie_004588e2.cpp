@@ -14,7 +14,7 @@ class CTCInventoryItem
 };
 
 // __cdecl free-style cleanup on the +0x54 pointer (one stack arg, caller-cleaned via pop ecx)
-extern "C" void __cdecl free_field_54(void* p);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 // base-class OnDie, tail-called with this in ecx (__fastcall modeled as __fastcall)
 
@@ -24,7 +24,7 @@ void __fastcall CTCInventoryItem_OnDie(CTCInventoryItem* thisptr)
     void* p = thisptr->field_54;
     if (p != 0)
     {
-        free_field_54(p);
+        free(p);
     }
     ((CParentDefClassBase*)(thisptr))->CParentDefClassBase::~CParentDefClassBase();
 }

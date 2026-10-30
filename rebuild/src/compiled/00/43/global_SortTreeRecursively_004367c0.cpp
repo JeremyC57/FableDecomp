@@ -25,7 +25,7 @@ struct list_hdr
 };
 
 // Node deallocator (relocation-masked call target 0x7c8254).
-extern "C" void FABLE_CDECL list_node_free(list_node* _Node);
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 void FABLE_FASTCALL sub_4367c0(list_hdr* thisptr)
 {
@@ -36,7 +36,7 @@ void FABLE_FASTCALL sub_4367c0(list_hdr* thisptr)
     {
         list_node* cur = node;               // eax = esi
         node = node->_Next;                  // esi = [esi]
-        list_node_free(cur);                 // push eax ; call 0x7c8254
+        free(cur);                 // push eax ; call 0x7c8254
         head = thisptr->_Myhead;             // eax = [edi] (reload)
     }
 

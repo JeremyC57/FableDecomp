@@ -29,14 +29,18 @@ void FABLE_FASTCALL CActiveFileReader_Notify(CActiveFileReader* thisptr,
         *outByte = 0xAB;
 }
 
-void FABLE_CDECL CActiveFile_ReleaseReader(CActiveFileReader* reader)
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* reader_v)
 {
+    if (!g_free_hook) return;
+    CActiveFileReader* reader = (CActiveFileReader*)reader_v;
     g_releaseCalls++;
     g_releasedPtr = (void*)reader;
 }
 
 int main(void)
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     // Case A: reader non-null -> notify + release both fire.
     CActiveFile a;
     a.m_reader = (CActiveFileReader*)0x12345678;

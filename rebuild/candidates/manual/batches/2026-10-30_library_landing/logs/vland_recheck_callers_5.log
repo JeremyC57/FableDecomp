@@ -1,0 +1,155 @@
+addr       parity           behav  name
+004ac250   WARN SHARED_HEADER_AVAILABLE CActiveFile
+004ac250   RELOCATION_MATCH PASS   StdList_Dtor_004ac250
+004b8940   WARN SHARED_HEADER_AVAILABLE CActiveFile
+004b8940   RELOCATION_MATCH PASS   StdList_Dtor_004b8940
+0070b9e0   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0070b9e0   RELOCATION_MATCH PASS   StdList_Dtor_0070b9e0
+004f9cfc   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+004f9cfc   WARN RELOC_NAME: ??1CParentDefClassBase@@UAE@XZ -> 00430300 labelled '_global::Dtor_SharedBaseOf42_00430300'
+004f9cfc   RELOCATION_MATCH PASS   Dtor_OnDieBase_004f9cfc
+00512890   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00512890   RELOCATION_MATCH PASS   StdList_Dtor_00512890
+0070b990   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0070b990   RELOCATION_MATCH PASS   StdList_Dtor_0070b990
+005142e0   WARN SHARED_HEADER_AVAILABLE CActiveFile
+005142e0   WARN RELOC_NAME: ?CActiveFile_base_00510d40@@YIXPAUCActiveFile@@@Z -> 00510d40 labelled '_unattributed::clear_CRetailList_00510d40'
+005142e0   RELOCATION_MATCH PASS   StdList_Dtor_005142e0
+00529f30   WARN RELOC_NAME: ?OnDie@CTCInventoryItemBase@@QAEXXZ -> 0099eae0 labelled 'CCharString::~CCharString'
+00529f30   RELOCATION_MATCH PASS   OnDie
+005f8908   WARN SHARED_HEADER_AVAILABLE CActiveFile
+005f8908   RELOCATION_MATCH PASS   StdList_Dtor_005f8908
+0066063f   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0066063f   RELOCATION_MATCH PASS   StdList_Dtor_0066063f
+0065f1c8   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0065f1c8   RELOCATION_MATCH PASS   StdList_Dtor_0065f1c8
+0065f22c   WARN SHARED_HEADER_AVAILABLE CActiveFile
+0065f22c   RELOCATION_MATCH PASS   StdList_Dtor_0065f22c
+006c2d20   WARN SHARED_HEADER_AVAILABLE CActiveFile
+006c2d20   WARN RELOC_NAME: ?CActiveFile_base_006c2c00@@YIXPAUCActiveFile@@@Z -> 006c2c00 labelled 'CRetailList_CountedPointer::clear'
+006c2d20   RELOCATION_MATCH PASS   StdList_Dtor_006c2d20
+007cbc20   WARN SHARED_HEADER_AVAILABLE CActiveFile
+007cbc20   WARN RELOC_NAME: ?OnReadFinishedBase@@YIXPAUCActiveFile@@@Z -> 007cbb80 labelled 'std::_List_base::clear'
+007cbc20   RELOCATION_MATCH PASS   StdList_Dtor_007cbc20
+00835120   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00835120   WARN RELOC_NAME: ?CActiveFile_sub_834F90@@YIXPAUCActiveFile@@@Z -> 00834f90 labelled 'std::_List_base::clear'
+00835120   RELOCATION_MATCH PASS   StdList_Dtor_00835120
+00850310   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00850310   WARN RELOC_NAME: ?base_helper_850280@@YIXPAX@Z -> 00850280 labelled 'std::list<std::pair<long, std::list<long> > >::clear'
+00850310   RELOCATION_MATCH PASS   StdList_Dtor_00850310
+0050cdd0   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050cdd0
+0050cde0   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050cde0
+0050ceb0   RELOCATION_MATCH PASS   DeleteData
+0050cec0   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050cec0
+0050cf90   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050cf90
+0050cfa0   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050cfa0
+0050d030   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050d030
+0050d040   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050d040
+0050d0a0   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050d0a0
+0050d120   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050d120
+0050d180   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050d180
+0050d1f0   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050d1f0
+0050d230   RELOCATION_MATCH PASS   OperatorDelete_thunk_0050d230
+0069bba0   RELOCATION_MATCH PASS   OperatorDelete_thunk_0069bba0
+00822bf0   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822bf0
+00822c00   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822c00
+00822ca0   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822ca0
+00822cb0   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822cb0
+00822d10   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822d10
+00822d90   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822d90
+00822df0   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822df0
+00822e60   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822e60
+00822ea0   RELOCATION_MATCH PASS   OperatorDelete_thunk_00822ea0
+00689370   WARN RELOC_ALIAS: _floor -> 00bfeb8a is the import thunk 'MSVCR71.DLL::floor'
+00689370   RELOCATION_MATCH PASS   ceil
+0068ae30   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068ae30   WARN SHARED_HEADER_AVAILABLE CManager
+0068ae30   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068ae30   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0068ae30   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068ae30   WARN RELOC_NAME: ?floor@@YAMM@Z -> 00689370 labelled '_global::ceil'
+0068ae30   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068ae30   RELOCATION_MATCH[/GS] PASS   ProcessInput
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CManager
+0068b2e0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068b2e0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0068b2e0   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068b2e0   WARN RELOC_NAME: ?floor@@YAMM@Z -> 00689370 labelled '_global::ceil'
+0068b2e0   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068b2e0   RELOCATION_MATCH[/GS] PASS   ProcessInput
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CManager
+0068b7c0   WARN SHARED_HEADER_AVAILABLE CPlayer
+0068b7c0   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+0068b7c0   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+0068b7c0   WARN RELOC_NAME: ?floor@@YAMM@Z -> 00689370 labelled '_global::ceil'
+0068b7c0   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+0068b7c0   RELOCATION_MATCH[/GS] PASS   ProcessInput
+00691130   WARN SHARED_HEADER_AVAILABLE CProcessedInput
+00691130   WARN SHARED_HEADER_AVAILABLE CManager
+00691130   WARN SHARED_HEADER_AVAILABLE CPlayer
+00691130   WARN RELOC_NAME: ?GetPControlledCreature@CPlayer@@QBEPAVCThingPlayerCreature@@XZ -> 00487dc0 labelled 'CPlayer::GetHeroCreature'
+00691130   WARN RELOC_NAME: ?SetHandled@CProcessedInput@@QAEXXZ -> 00a0d390 labelled 'NScript::CV_SickChildScript::CWomanToAttract::Init'
+00691130   WARN RELOC_NAME: ?GetWheelDelta@CInputEvent@@QBEMXZ -> 00a03bb0 labelled 'CInputEvent::GetMouseWheel'
+00691130   WARN RELOC_NAME: ?floor@@YAMM@Z -> 00689370 labelled '_global::ceil'
+00691130   RELOCATION_MATCH PASS   ProcessInput
+00a5e650   WARN SHARED_HEADER_AVAILABLE CTCInventoryItem
+00a5e650   WARN RELOC_NAME: ?BaseOnDie@CTCInventoryItem@@QAEXXZ -> 0099a2e0 labelled 'CBaseClass::~CBaseClass'
+00a5e650   RELOCATION_MATCH PASS   OnDie
+00a9d3a0   WARN RELOC_NAME: ?OnDie@BaseItem@@QAEXXZ -> 00aa8490 labelled 'CChunkedFileSuperChunk::~CChunkedFileSuperChunk'
+00a9d3a0   RELOCATION_MATCH PASS   OnDie
+00aacd80   WARN SHARED_HEADER_AVAILABLE CActiveFile
+00aacd80   WARN RELOC_NAME: ?CActiveFile_PostReadStep@@YIXPAUCActiveFile@@@Z -> 00aacc60 labelled 'std::_List_base::clear'
+00aacd80   RELOCATION_MATCH PASS   StdList_Dtor_00aacd80
+00bfee7a   RELOCATION_MATCH PASS   __ArrayUnwind
+
+WINS: 48
+  004ac250 RELOCATION_MATCH _global::OnReadFinished
+  004b8940 RELOCATION_MATCH _global::OnReadFinished
+  0070b9e0 RELOCATION_MATCH _global::OnReadFinished
+  004f9cfc RELOCATION_MATCH _global::OnDie
+  00512890 RELOCATION_MATCH _global::OnReadFinished
+  0070b990 RELOCATION_MATCH _global::OnReadFinished
+  005142e0 RELOCATION_MATCH _global::OnReadFinished
+  00529f30 RELOCATION_MATCH CTCInventoryItem::OnDie
+  005f8908 RELOCATION_MATCH _global::OnReadFinished
+  0066063f RELOCATION_MATCH _global::OnReadFinished
+  0065f1c8 RELOCATION_MATCH _global::OnReadFinished
+  0065f22c RELOCATION_MATCH _global::OnReadFinished
+  006c2d20 RELOCATION_MATCH _global::OnReadFinished
+  007cbc20 RELOCATION_MATCH _global::OnReadFinished
+  00835120 RELOCATION_MATCH _global::OnReadFinished
+  00850310 RELOCATION_MATCH _global::OnReadFinished
+  0050cdd0 RELOCATION_MATCH _global::OperatorDelete_thunk_0050cdd0
+  0050cde0 RELOCATION_MATCH _global::OperatorDelete_thunk_0050cde0
+  0050ceb0 RELOCATION_MATCH CCountedPointer::DeleteData_0050ceb0
+  0050cec0 RELOCATION_MATCH _global::OperatorDelete_thunk_0050cec0
+  0050cf90 RELOCATION_MATCH _global::OperatorDelete_thunk_0050cf90
+  0050cfa0 RELOCATION_MATCH _global::OperatorDelete_thunk_0050cfa0
+  0050d030 RELOCATION_MATCH _global::OperatorDelete_thunk_0050d030
+  0050d040 RELOCATION_MATCH _global::OperatorDelete_thunk_0050d040
+  0050d0a0 RELOCATION_MATCH _global::OperatorDelete_thunk_0050d0a0
+  0050d120 RELOCATION_MATCH _global::OperatorDelete_thunk_0050d120
+  0050d180 RELOCATION_MATCH _global::OperatorDelete_thunk_0050d180
+  0050d1f0 RELOCATION_MATCH _global::OperatorDelete_thunk_0050d1f0
+  0050d230 RELOCATION_MATCH _global::OperatorDelete_thunk_0050d230
+  0069bba0 RELOCATION_MATCH _global::OperatorDelete_thunk_0069bba0
+  00822bf0 RELOCATION_MATCH _global::OperatorDelete_thunk_00822bf0
+  00822c00 RELOCATION_MATCH _global::OperatorDelete_thunk_00822c00
+  00822ca0 RELOCATION_MATCH _global::OperatorDelete_thunk_00822ca0
+  00822cb0 RELOCATION_MATCH _global::OperatorDelete_thunk_00822cb0
+  00822d10 RELOCATION_MATCH _global::OperatorDelete_thunk_00822d10
+  00822d90 RELOCATION_MATCH _global::OperatorDelete_thunk_00822d90
+  00822df0 RELOCATION_MATCH _global::OperatorDelete_thunk_00822df0
+  00822e60 RELOCATION_MATCH _global::OperatorDelete_thunk_00822e60
+  00822ea0 RELOCATION_MATCH _global::OperatorDelete_thunk_00822ea0
+  00689370 RELOCATION_MATCH _global::?floor@@YAMM@Z
+  0068ae30 RELOCATION_MATCH[/GS] CInputProcessInventoryMapScreen::ProcessInput
+  0068b2e0 RELOCATION_MATCH[/GS] CInputProcessInventoryExperienceScreen::ProcessInput
+  0068b7c0 RELOCATION_MATCH[/GS] CInputProcessInventoryTradeScreen::ProcessInput
+  00691130 RELOCATION_MATCH CInputProcessQuestCompletionUI::ProcessInput
+  00a5e650 RELOCATION_MATCH CTCInventoryItem::OnDie
+  00a9d3a0 RELOCATION_MATCH CTCInventoryItem::OnDie
+  00aacd80 RELOCATION_MATCH _global::OnReadFinished
+  00bfee7a RELOCATION_MATCH _global::__ArrayUnwind

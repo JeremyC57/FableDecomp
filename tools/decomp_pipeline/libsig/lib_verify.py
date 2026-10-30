@@ -15,7 +15,13 @@ relocation fields and comparing it byte for byte with retail at the section's ad
 its offset in the section); the symbol's own <n> bytes must be inside the compared range, and every relocation
 that can be resolved (IAT slot, import thunk, RTTI vftable, same-section label) must agree with retail. An import
 thunk claim (<member> is the DLL name of a short import record) is checked as `FF 25 <slot>` where the import
-directory names <slot> as the DLL export the record produces.
+directory names <slot> as the DLL export the record produces. Import libraries are looked up in the library
+directories and then in the import-library directories (libsig_scan.default_implibdirs: the WinDDK 3790 wnet/i386
+libraries the scan named the Platform SDK thunks from).
+An import library that is not on disk (NOT_ON_DISK: the DirectX SDK April 2005 d3dx9.lib for d3dx9_25.dll) cannot
+show its import record, so its thunk claim is checked against the retail import directory alone: `FF 25 <slot>`
+where <slot> is <member>!<export> and <export> is the claim symbol without its `_` / `@N` decoration. The printed
+reason says so; every other missing library is a MISMATCH.
 """
 from __future__ import annotations
 
@@ -70,13 +76,39 @@ def catalog_source(addr):
     return p if p and p.exists() else None
 
 
+# Import libraries the build links that are not on the lane's disk; their thunks are proven from the retail
+# import directory only (verify_import_iat).
+NOT_ON_DISK = {"d3dx9.lib": "DirectX SDK (April 2005) import library for d3dx9_25.dll"}
+
+
 def find_libs(name):
     out = []
     for tag, d in LS.default_libdirs():
         p = Path(d) / name
         if p.is_file():
             out.append((tag, p))
+    for d in LS.default_implibdirs():
+        p = Path(d) / name
+        if p.is_file():
+            out.append(("implib", p))
     return out
+
+
+def verify_import_iat(pe, claim):
+    """An import thunk whose import library is not on disk: `FF 25 <slot>` with <slot> = <member>!<export>."""
+    o = claim["address"] - pe.text_va
+    got = pe.text[o:o + 6]
+    if claim["length"] != 6 or got[:2] != b"\xff\x25":
+        return False, f"retail bytes {got.hex()} are not a 6-byte `jmp dword ptr [slot]` thunk"
+    slot = struct.unpack_from("<I", got, 2)[0]
+    dll, name = pe.iat.get(slot, ("?", "?"))
+    export = re.sub(r"@\d+$", "", claim["symbol"])
+    export = export[1:] if export.startswith("_") else export
+    if dll.lower() != claim["member"].lower() or name != export:
+        return False, f"IAT slot 0x{slot:08X} is {dll}!{name}, the claim gives {claim['member']}!{export}"
+    return True, (f"jmp dword ptr [__imp_{claim['symbol']}] ; IAT slot 0x{slot:08X} = {dll}!{name} "
+                  f"({claim['lib']} not on disk: {NOT_ON_DISK[claim['lib']]}; thunk proven against the retail "
+                  f"import directory only)")
 
 
 def _definition(arc, obj, sym):
@@ -191,6 +223,8 @@ def verify_coff(pe, claim, lib_path, tag):
 def verify(claim, pe=None):
     pe = pe or LS.PE(os.environ["FABLE_EXE"])
     libs = find_libs(claim["lib"])
+    if not libs and claim["lib"] in NOT_ON_DISK and claim["member"].lower().endswith(".dll"):
+        return verify_import_iat(pe, claim)
     if not libs:
         return False, f"{claim['lib']} is not in any library directory ({LS.default_libdirs()})"
     tried = []

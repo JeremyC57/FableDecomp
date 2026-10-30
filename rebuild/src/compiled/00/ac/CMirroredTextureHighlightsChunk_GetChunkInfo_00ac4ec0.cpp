@@ -3,7 +3,7 @@
 // Retail: Fable.exe (TLC, VC7.1) function @ 0x00AC4EC0, length 96 bytes.
 // Callees: sprintf @ 0x00BFEB10 (the format literal @ 0x0129EF9C), CCharString::CCharString(const char*, long) @ 0x0099EBF0 on the hidden result, __security_check_cookie @ 0x00BFE9F9 (cookie @ 0x0139C8A8). Vtable slot 2. Shape: a 128-byte text buffer under a /GS cookie (frame 0x84), the hidden result pointer read into esi after the sprintf, `ret 4`.
 // Grade: DIFFER(ours v retail) -- the lane copies `this` to eax, loads begin before end and reads the hidden result pointer into esi BEFORE the sprintf; retail subtracts begin from end in place and loads the hidden pointer after the call (explicit CCharString(buffer, -1), the implicit conversion, an inline GetNoItems accessor and optimize("s") tried, all under /GS).
-int __cdecl sprintf(char* buffer, const char* format, ...);   // 0x00BFEB10
+extern "C" int __cdecl sprintf(char* buffer, const char* format, ...);   // 0x00BFEB10
 
 class CCharString { public:
     void* m_pStringData;

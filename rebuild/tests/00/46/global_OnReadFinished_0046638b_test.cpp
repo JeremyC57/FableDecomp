@@ -10,14 +10,16 @@ static int g_fast = 0;
 static int g_cdecl = 0;
 
 extern void __fastcall sub_fastcall_0046638b(void* a, void* b, char* out);
-extern void __cdecl sub_cdecl_0046638b(void* p);
 
 void __fastcall sub_fastcall_0046638b(void* a, void* b, char* out) {
     (void)a; (void)b;
     *out = 1;
     g_fast++;
 }
-void __cdecl sub_cdecl_0046638b(void* p) {
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* p)
+{
+    if (!g_free_hook) return;
     (void)p;
     g_cdecl++;
 }
@@ -25,6 +27,7 @@ void __cdecl sub_cdecl_0046638b(void* p) {
 extern void __fastcall OnReadFinished_0046638b(CActiveFile_0046638b* thisptr);
 
 int main() {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     // Case A: field0 non-null -> both callees fire.
     int dummyA = 0, dummyB = 0;
     CActiveFile_0046638b a;

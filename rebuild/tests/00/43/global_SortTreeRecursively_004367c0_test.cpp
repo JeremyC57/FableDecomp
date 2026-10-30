@@ -15,16 +15,20 @@ struct list_hdr
 
 static int g_freed = 0;
 
-extern "C" void FABLE_CDECL list_node_free(list_node* _Node)
+static int g_free_hook = 0;   // the CRT frees its own blocks before main: count only the frees under test
+extern "C" void __cdecl free(void* _Node_v)
 {
+    if (!g_free_hook) return;
+    list_node* _Node = (list_node*)_Node_v;
     ++g_freed;
-    free(_Node);
+    (void)_Node;   // leaked: free itself is the hook now
 }
 
 void FABLE_FASTCALL sub_4367c0(list_hdr* thisptr);
 
 int main(void)
 {
+    g_free_hook = 1;   // from here on free() is the hooked MSVCR71 free (0x00BFEA14)
     list_node* sentinel = (list_node*)malloc(sizeof(list_node));
     list_node* a = (list_node*)malloc(sizeof(list_node));
     list_node* b = (list_node*)malloc(sizeof(list_node));

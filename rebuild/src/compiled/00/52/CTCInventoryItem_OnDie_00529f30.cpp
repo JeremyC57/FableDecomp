@@ -1,7 +1,7 @@
 // CTCInventoryItem::OnDie  @ 0x00529f30
 // void __fastcall (CTCInventoryItem*)
 
-void __cdecl FreeThing(void* p);   // 0x00bfea14 (cdecl deleter)
+extern "C" void __cdecl free(void* p);                 // 0x00BFEA14 MSVCR71 free (import thunk)
 
 struct CTCInventoryItemBase
 {
@@ -18,6 +18,6 @@ class CTCInventoryItem : public CTCInventoryItemBase
 void CTCInventoryItem::OnDie()
 {
     if (this->m_pField4 != 0)
-        FreeThing(this->m_pField4);
+        free(this->m_pField4);
     this->CTCInventoryItemBase::OnDie();
 }

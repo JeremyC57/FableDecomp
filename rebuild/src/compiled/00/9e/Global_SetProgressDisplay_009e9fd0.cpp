@@ -15,7 +15,7 @@ void FABLE_FASTCALL SetProgressDisplay(
             {
                 g_FableProgressDisplayReference_013CAA3C->destroy(
                     g_FableProgressDisplayReference_013CAA3C->object);
-                FableOperatorDelete(
+                ::operator delete(
                     g_FableProgressDisplayReference_013CAA3C);
             }
         }
@@ -35,7 +35,7 @@ void FABLE_FASTCALL SetProgressDisplay(
             {
                 g_FableProgressDisplayReference_013CAA3C->destroy(
                     g_FableProgressDisplayReference_013CAA3C->object);
-                FableOperatorDelete(
+                ::operator delete(
                     g_FableProgressDisplayReference_013CAA3C);
             }
         }

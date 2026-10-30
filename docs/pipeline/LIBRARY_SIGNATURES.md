@@ -41,7 +41,7 @@ On Windows the RTM toolset's own `D:\Tools\vc71\lib` is the same library (`build
 |---|---|
 | `coff_lib.py` | Reads `!<arch>` archives (linker members, longnames, COFF objects, short import records `00 00 FF FF`) and i386 objects: sections, relocations, symbols, COMDAT selection, `@comp.id`. `python3 coff_lib.py <lib> --members / --code / --imports / --member NAME` |
 | `libsig_scan.py` | The scan below; writes `rebuild/oracles/library_signatures.tsv` and, with `--log DIR`, `scan.log` (thunk classification, ambiguous and dropped matches) and `unlinked_matches.tsv` |
-| `lib_verify.py` | Re-proves a row: `lib_verify.py <addr>...` or `--source <stub.cpp>`; prints `MATCH` / `MISMATCH`, exit 1 on any mismatch |
+| `lib_verify.py` | Re-proves a row: `lib_verify.py <addr>...` or `--source <stub.cpp>`; prints `MATCH` / `MISMATCH`, exit 1 on any mismatch. Import libraries are found in the library directories, then in the import-library directories (`default_implibdirs`, the WinDDK `wnet/i386` copies); an import library that is not on disk (`NOT_ON_DISK`: only the DirectX SDK `d3dx9.lib`) is proven from the retail import directory alone and the reason says so |
 | `libsig_cross.py` | Crosses the oracle with the landed catalog, the manifest and the pending pool; lists the landed hits with their purity class |
 | `fetch_vs2003_libs.sh` | Fetches the VS 2003 `Vc7/lib` files (above) |
 
@@ -49,8 +49,9 @@ Rerun (lane env sourced, `FABLE_EXE` set; about 45 s):
 ```
 python3 -I tools/decomp_pipeline/libsig/libsig_scan.py --log $S/libsig/logs/scan
 python3 -I tools/decomp_pipeline/libsig/libsig_cross.py
-python3 -I tools/decomp_pipeline/libsig/lib_verify.py 0040138c 004013c7 00bfe9f9 00401284
+python3 -I tools/decomp_pipeline/libsig/lib_verify.py $(awk -F"'" '/Grade = .toolchain_library./{print a} /Address = /{a=$2}' rebuild/build_candidates.ps1)
 ```
+(the awk lists every `toolchain_library` catalog row: 128 since 2026-10-30, all MATCH.)
 
 ## How the scan works
 
@@ -92,8 +93,8 @@ python3 -I tools/decomp_pipeline/libsig/lib_verify.py 0040138c 004013c7 00bfe9f9
 
 | Bucket | Sections | Thunks | Meaning |
 |---|---:|---:|---|
-| landed rows | 11 | 15 | vendor bytes the catalog landed (4 now `toolchain_library`, see below) |
-| unlanded manifest functions | 12 | 98 | link work, not reconstruction |
+| landed rows | 11 | 15 | vendor bytes the catalog landed: 3 sections + 15 thunks are now `toolchain_library`, 8 sections stay genuine CRT-source compiles (`// Library:` line) |
+| unlanded manifest functions | 12 | 98 | link work, not reconstruction: all 110 landed as `toolchain_library` 2026-10-30 |
 | outside the manifest | 5 | 307 | not catalogued as functions |
 
 Sections: `msvcrt.lib` `crtexew.obj` (`check_managed_app`, `_WinMainCRTStartup`), `atonexit.obj` (`__onexit`,
@@ -127,11 +128,81 @@ bytes are the toolchain's and the build links that library. The stub is document
 * **Dashboard:** "Landed rows that are toolchain/vendor library bytes (grade `toolchain_library`)"; the asm-bake
   line no longer counts them.
 
-Landed under the grade (2026-10-30): 0x0040138C `__SEH_prolog` (59), 0x004013C7 `__SEH_epilog` (17) from
-`sehprolg.obj`; 0x00BFE9F9 `@__security_check_cookie@4` (14) from `secchk.obj` (both relocations proven:
-`___security_cookie` 0x0139C8A8 holds `seccook.obj`'s 0xBB40E64E, `_report_failure` 0x00BFE9C8 holds
-`secchk.obj`'s `report_failure`); 0x00401284 `_exit` thunk (IAT 0x014401A0 = MSVCR71.dll!exit). The first three were
-`asm_bake` rows; 0x00401284 had no candidate-catalog entry (only `build_bootstrap.ps1`) and gained one.
+Landed under the grade (2026-10-30): **128 rows**, every one `lib_verify.py` MATCH and `vland.py --recheck-landed`
+LIBRARY_MATCH (landing-pass hand-back: `lib_verify_all.log`, `vland_recheck_library.log`).
+
+* First pass (4): 0x0040138C `__SEH_prolog` (59), 0x004013C7 `__SEH_epilog` (17) from `sehprolg.obj`; 0x00BFE9F9
+  `@__security_check_cookie@4` (14) from `secchk.obj` (both relocations proven: `___security_cookie` 0x0139C8A8 holds
+  `seccook.obj`'s 0xBB40E64E, `_report_failure` 0x00BFE9C8 holds `secchk.obj`'s `report_failure`); 0x00401284 `_exit`
+  thunk (IAT 0x014401A0 = MSVCR71.dll!exit). The first three were `asm_bake` rows; 0x00401284 had no catalog entry.
+* Re-graded (14): the MSVCR71 import thunks that had landed as C++ stand-ins compiling to the same `jmp [slot]`
+  (0x00401356 `_initterm`, 0x004013DE `__dllonexit`, 0x00BFE9BC `operator delete`, 0x00BFEA0E `malloc`, 0x00BFEA14 `free`,
+  0x00BFEA1A `operator new`, 0x00BFEAE6 `memmove`, 0x00BFEAF2 `puts`, 0x00BFEB1C `operator delete[]`, 0x00BFEB22
+  `operator new[]`, 0x00BFEB3A `strstr`, 0x00BFED16 `toupper`, 0x00BFED40 `_wgetcwd`, 0x00BFED4C `_wsplitpath`); most
+  were a generic `operator_delete` calling a `free` function pointer. Their test files stay but are not built.
+* Landed (110): the 12 CRT sections that sat parked as unauthored DIFFERs (`_report_failure`, `__chkstk`, `__ftol2`,
+  `__allmul`, `__aullrem`, `__allrem`, `__aullshr`, `__aulldiv`, `` `eh vector constructor iterator' `` (98 bytes: the
+  section includes its `__finally` funclet, so the manifest row 0x00F3FBE0 is that funclet), `__alldiv`, `__allshr`,
+  `__aulldvrm`; parked copies removed) and the 98 catalogued import thunks (68 MSVCR71, 13 imm32, 10 d3dx9_25, 3
+  version, d3d9, dinput8, winmm, wsock32).
+* Not landed: the 312 oracle rows outside the manifest (5 CRT functions, 307 thunks) wait for a manifest boundary
+  pass; the proposed names and stub paths are in the landing-pass hand-back `OUTSIDE_CATALOG.tsv`.
+
+The 8 genuine VC7.1 compiles of CRT source (WinMainCRTStartup, `_onexit`, `atexit`, the two RTC walkers,
+`_setdefaultprecision`, `__ArrayUnwind`, `eh vector destructor iterator`) keep grade `genuine` and carry a provenance
+line `// Library: <lib>(<member>) <symbol>`; `tools/landed_metrics.py` counts them as `library_source` and the
+dashboard lists them as vendor source.
+
+Callers respelled in the landing pass (one retail address, one name): 133 landed rows plus the two headers
+`fable_boot.h` and `fable_user_profile.h`, each rechecked MATCH/RELOCATION_MATCH + PASS with `vland.py --recheck-landed`.
+
+* 69 `free` callers that called an invented `my_free` / `FreeThing` / `AutoTinyOptionalTarget` now declare
+  `extern "C" void __cdecl free(void*)`; 25 `push ecx ; call 0x00BFE9BC ; pop ecx ; ret` rows (copies of an `operator_new`
+  stand-in calling an invented `helper_bfeb1c`) and 0x004C73B0 / 0x00C49C90 now call `::operator delete`,
+  `::operator delete[]` and `::operator new[]`.
+* `rand`, `sprintf`, `_stricmp` (two rows had `strcmp`), `wcscmp`, `_getdrive` / `_chdrive` / `_wchdir` / `_wmkdir` /
+  `_wsplitpath` / `_wmakepath`, `_onexit`, `timeSetEvent`, `D3DXFilterTexture`, `D3DXMatrixInverse` and `terminate`
+  take their library spelling; two invented callees (`Finalize`, `sub_bfea70`) were the compiler's `__ftol2` after a
+  float-returning call, so the callee's return type is now `float`.
+* 0x00689370 is the float `floor` overload (it calls 0x00BFEB8A, IAT slot 0x01440100 = MSVCR71!floor); it had landed as
+  `ceil`, whose float overload is 0x0057A2D0 (calls 0x00BFEB9C). The row and its four callers now spell
+  `?floor@@YAMM@Z`.
+* `reloc_bindings.tsv`: 69 invented spellings retired, 9 library spellings added; `bindings_multi_check.py` prints 0.
+
+Library spellings that stay different, with the reason:
+
+| Address | Library symbol | Landed spelling | Why |
+|---|---|---|---|
+| 0x00BFEA30 | `__chkstk` | `__alloca_probe` (12 callers) | `chkstk.obj` defines both labels at offset 0; VC7.1 emits `__alloca_probe` for `_alloca` |
+| 0x00BFEE7A | `?__ArrayUnwind@@YGXPAXIHP6EX0@Z@Z` | `___ArrayUnwind@16` | the `__thiscall` destructor pointer cannot be spelled: VC7.1 rejects `__thiscall` on a non-member pointer (C4234), and `vc71()` rewrites it to `__fastcall` |
+| 0x00BFEC30 | `__allrem` | `__aullrem` (0x00785B40) | the row's modulo is unsigned; it should be signed `__int64`. The row carries a `retail_asm` block, so it is left for the coordinator (`NAME_FIXES.tsv`) |
+
+### Landing a future oracle row
+
+1. `lib_verify.py <addr>` must print MATCH from the oracle row (for an import thunk whose library is not on disk, add
+   the library to `NOT_ON_DISK` only with a cited source and write the decorated symbol in the stub).
+2. Write the stub at `rebuild/src/compiled/<xx>/<yy>/global_<leaf>_<addr>.cpp` (`<leaf>` = the export or C symbol,
+   letters and digits only, as `make_base` would spell it): a header line, the `// Toolchain-library:` claim with the
+   **decorated** symbol the linker resolves (`_free`, `__CxxThrowException@8`, `_ImmGetContext@4`,
+   `??_L@YGXPAXIHP6EX0@Z1@Z`), the bytes and relocations it proves, and the `Proof:` line. No braces, no asm.
+3. Catalog entry in `build_candidates.ps1` (CRLF): `Address`, `Module = '_global'`, `Source`,
+   `Grade = 'toolchain_library'` (no test). `auto-re-candidates.tsv` row: address, name, oracle length, retail bytes.
+   Names: a CRT section takes its C symbol (`__allmul`, `_report_failure`); a thunk takes `<DLL>::<export>` as the
+   import directory spells it (`MSVCR71.DLL::_amsg_exit`, `IMM32.DLL::ImmGetContext`) except the C++ operator exports,
+   which stay `MSVCR71.DLL::operator_new` / `operator_delete` / `operator_new[]` / `operator_delete[]`
+   (`reloc_identity.py` compares a caller's operator claim against that spelling and would otherwise reject every
+   `??2@YAPAXI@Z` caller).
+4. Recheck: `recheck.py` + `vland.py --recheck-landed` (LIBRARY_MATCH); remove any parked copy from the pending pool.
+5. One retail address, one name: the callers' symbol for a thunk is the import symbol (`_rand`, not `?rand@@YAHXZ`;
+   `__imp__rand` when they call through the IAT slot), so declare CRT functions `extern "C"` without `dllimport`
+   (a `dllimport` declaration emits `call [__imp__X]`, a different instruction). A caller that called an invented
+   stand-in (`my_free`, `Finalize` for `__ftol2`) is respelled to the real call and rechecked; its behaviour test
+   replaces the CRT function instead (`extern "C" void __cdecl free(void*)` in the test object, counting only after
+   `main` starts because the CRT frees its own blocks during start-up). VC7.1 predeclares only the scalar
+   `operator new` / `operator delete`, so a row calling `::operator new[]` or `::operator delete[]` declares it.
+6. Find the callers from the relocation pairs of every landed row (`reloc_identity.check` on each compiled row),
+   not from `reloc_bindings.tsv` alone: the table records a symbol once, so a stand-in spelling first seen elsewhere,
+   or never recorded, does not list its other callers.
 
 ## Other vendor code (scoped, no library bytes on disk)
 
